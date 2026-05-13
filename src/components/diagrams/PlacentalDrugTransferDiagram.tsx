@@ -306,7 +306,7 @@ const PlacentalDrugTransferDiagram = () => {
               const cy = yScale(d.transfer);
               const isSel = d.id === selectedId;
               return (
-                <g key={d.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(d.id)}>
+                    <g key={d.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(d.id)}>
                   <circle cx={cx} cy={cy} r={isSel ? 8 : 5} fill={d.color} opacity={isSel ? 0.95 : 0.7} stroke="hsl(var(--background))" strokeWidth="1.5" />
                   {isSel && (
                     <circle cx={cx} cy={cy} r="14" fill="none" stroke={d.color} strokeWidth="1.5" opacity="0.5">
@@ -318,7 +318,7 @@ const PlacentalDrugTransferDiagram = () => {
                     {d.name.split(" ")[0]}
                   </text>
                 </g>
-              );
+  );
             })}
           </svg>
           <p className="text-[10px] text-muted-foreground text-center italic mt-1">

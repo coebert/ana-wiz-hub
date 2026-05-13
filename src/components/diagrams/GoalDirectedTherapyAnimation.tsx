@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Postoperative goal-directed haemodynamic therapy — staged optimisation
@@ -155,7 +156,7 @@ const Scene = ({ active }: { active: number }) => {
             const ok = onTarget(v.label);
             const token = ok ? "physiology" : "destructive";
             return (
-              <g key={v.label} transform={`translate(0, ${22 + i * 38})`}>
+                  <g key={v.label} transform={`translate(0, ${22 + i * 38})`}>
                 <rect width="118" height="32" rx="3"
                   fill={`hsl(var(--${token}) / 0.12)`}
                   stroke={`hsl(var(--${token}))`} />
@@ -167,7 +168,7 @@ const Scene = ({ active }: { active: number }) => {
                 <text x="112" y="24" textAnchor="end" className="text-[9px] font-semibold"
                   fill={`hsl(var(--${token}))`}>{ok ? "✓" : "↻"}</text>
               </g>
-            );
+  );
           })}
         </g>
       </svg>
@@ -176,14 +177,20 @@ const Scene = ({ active }: { active: number }) => {
 };
 
 const GoalDirectedTherapyAnimation = () => (
-  <AnimatedMechanism
-    title="Goal-directed haemodynamic therapy — postoperative optimisation loop"
-    subtitle="SV-guided fluid → early noradrenaline → inotrope if needed → reassess (OPTIMISE 2014, INPRESS 2017)"
-    steps={STEPS}
-    stepMs={3600}
-    accentClass="border-physiology/40"
-    renderScene={(active) => <Scene active={active} />}
-  />
-);
+    <DiagramFigure
+      id="goal-directed-therapy-animation"
+      title="Goal directed therapy"
+      description="Auto-generated wrapper for the Goal directed therapy animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+            <AnimatedMechanism
+      title="Goal-directed haemodynamic therapy — postoperative optimisation loop"
+      subtitle="SV-guided fluid → early noradrenaline → inotrope if needed → reassess (OPTIMISE 2014, INPRESS 2017)"
+      steps={STEPS}
+      stepMs={3600}
+      accentClass="border-physiology/40"
+      renderScene={(active) => <Scene active={active} />}
+    />
+    </DiagramFigure>
+  );
 
 export default GoalDirectedTherapyAnimation;

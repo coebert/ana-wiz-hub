@@ -1,4 +1,5 @@
 import AnimatedMechanism, { AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated schematic of intra-operative cell salvage (ICS).
@@ -102,13 +103,19 @@ const CellSalvageAnimatedDiagram = () => {
   ];
 
   return (
-    <AnimatedMechanism
-      title="Intra-operative cell salvage — circuit walkthrough"
-      subtitle="Step through the five stages from suction tip to re-infusion bag. Click chips or use Prev/Next to scrub."
-      accentClass="border-clinical/40"
-      steps={steps}
-      renderScene={(active) => <CellSalvageScene active={active} />}
-    />
+    <DiagramFigure
+      id="cell-salvage-animated-diagram"
+      title="Cell salvage animated"
+      description="Auto-generated wrapper for the Cell salvage animated anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <AnimatedMechanism
+        title="Intra-operative cell salvage — circuit walkthrough"
+        subtitle="Step through the five stages from suction tip to re-infusion bag. Click chips or use Prev/Next to scrub."
+        accentClass="border-clinical/40"
+        steps={steps}
+        renderScene={(active) => <CellSalvageScene active={active} />}
+      />
+    </DiagramFigure>
   );
 };
 
@@ -139,7 +146,7 @@ const CellSalvageScene = ({ active }: { active: number }) => {
       : { stroke: STROKE, strokeWidth: 1 };
 
   return (
-    <svg
+            <svg
       viewBox="0 0 720 360"
       className="w-full h-auto"
       role="img"

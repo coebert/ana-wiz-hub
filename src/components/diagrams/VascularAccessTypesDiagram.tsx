@@ -1,4 +1,5 @@
 import React from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Detailed anatomical schematics of the five archetypal vascular access
@@ -713,56 +714,62 @@ const Portacath: React.FC = () => (
 
 // ─── Wrapper ──────────────────────────────────────────────────────────
 export const VascularAccessTypesDiagram: React.FC = () => (
-  <figure className="my-6 rounded-xl border border-border bg-card overflow-hidden">
-    <figcaption className="px-4 py-3 border-b border-border bg-muted/30">
-      <p className="text-sm font-semibold text-foreground">
-        Device archetypes — anatomy, dwell time and supporting evidence
-      </p>
-      <p className="text-xs text-muted-foreground mt-0.5">
-        Five anatomically detailed schematics with surface anatomy, bony
-        landmarks (clavicle, sternum, ribs), the relevant venous tree and
-        the catheter course from skin entry to tip position. Read alongside
-        the Rickard 2012 / epic3 / 3SITES evidence in the Key Learning Points.
-      </p>
-    </figcaption>
-    <div className="p-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-      <Plate
-        title="1 · Peripheral cannula"
-        dwell="Remove when clinically indicated (no fixed 72–96 h)"
-        evidence="Rickard 2012 (Lancet); Cochrane 2019; epic3"
-      >
-        <PeripheralCannula />
-      </Plate>
-      <Plate
-        title="2 · PICC"
-        dwell="Weeks to months (≤ 6 months typical)"
-        evidence="CRBSI ≈ 1.1/1000 catheter-days (Maki 2006)"
-      >
-        <PICC />
-      </Plate>
-      <Plate
-        title="3 · Non-tunnelled CVC"
-        dwell="≤ 7–14 days (no routine replacement — CDC 2017)"
-        evidence="3SITES (Parienti 2015): SCV < IJV < femoral CRBSI"
-      >
-        <NonTunnelledCVC />
-      </Plate>
-      <Plate
-        title="4 · Tunnelled line (Hickman / Groshong / Permcath)"
-        dwell="Months to years"
-        evidence="Subcutaneous Dacron cuff ↓ CRBSI vs non-tunnelled"
-      >
-        <TunnelledLine />
-      </Plate>
-      <Plate
-        title="5 · Implanted port (Portacath)"
-        dwell="Years (intermittent access)"
-        evidence="Lowest CRBSI of any CVAD ≈ 0.1/1000 catheter-days"
-      >
-        <Portacath />
-      </Plate>
-    </div>
-  </figure>
-);
+    <DiagramFigure
+      id="vascular-access-types-diagram"
+      title="Vascular access types"
+      description="Auto-generated wrapper for the Vascular access types anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+            <figure className="my-6 rounded-xl border border-border bg-card overflow-hidden">
+      <figcaption className="px-4 py-3 border-b border-border bg-muted/30">
+        <p className="text-sm font-semibold text-foreground">
+          Device archetypes — anatomy, dwell time and supporting evidence
+        </p>
+        <p className="text-xs text-muted-foreground mt-0.5">
+          Five anatomically detailed schematics with surface anatomy, bony
+          landmarks (clavicle, sternum, ribs), the relevant venous tree and
+          the catheter course from skin entry to tip position. Read alongside
+          the Rickard 2012 / epic3 / 3SITES evidence in the Key Learning Points.
+        </p>
+      </figcaption>
+      <div className="p-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <Plate
+          title="1 · Peripheral cannula"
+          dwell="Remove when clinically indicated (no fixed 72–96 h)"
+          evidence="Rickard 2012 (Lancet); Cochrane 2019; epic3"
+        >
+          <PeripheralCannula />
+        </Plate>
+        <Plate
+          title="2 · PICC"
+          dwell="Weeks to months (≤ 6 months typical)"
+          evidence="CRBSI ≈ 1.1/1000 catheter-days (Maki 2006)"
+        >
+          <PICC />
+        </Plate>
+        <Plate
+          title="3 · Non-tunnelled CVC"
+          dwell="≤ 7–14 days (no routine replacement — CDC 2017)"
+          evidence="3SITES (Parienti 2015): SCV < IJV < femoral CRBSI"
+        >
+          <NonTunnelledCVC />
+        </Plate>
+        <Plate
+          title="4 · Tunnelled line (Hickman / Groshong / Permcath)"
+          dwell="Months to years"
+          evidence="Subcutaneous Dacron cuff ↓ CRBSI vs non-tunnelled"
+        >
+          <TunnelledLine />
+        </Plate>
+        <Plate
+          title="5 · Implanted port (Portacath)"
+          dwell="Years (intermittent access)"
+          evidence="Lowest CRBSI of any CVAD ≈ 0.1/1000 catheter-days"
+        >
+          <Portacath />
+        </Plate>
+      </div>
+    </figure>
+    </DiagramFigure>
+  );
 
 export default VascularAccessTypesDiagram;

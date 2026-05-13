@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type CellType = "ventricular" | "pacemaker";
 
@@ -192,187 +193,193 @@ export const IonChannelTimelineDiagram = () => {
   const totalDuration = cell === "ventricular" ? 350 : 800; // ms (one cycle)
 
   return (
-    <div className="space-y-4">
-      {/* Cell type toggle */}
-      <div className="flex flex-wrap gap-2">
-        {([
-          { id: "ventricular", label: "Ventricular myocyte (fast)" },
-          { id: "pacemaker", label: "SA node pacemaker (slow)" },
-        ] as { id: CellType; label: string }[]).map((c) => (
-          <button
-            key={c.id}
-            onClick={() => setCell(c.id)}
-            className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
-              cell === c.id
-                ? "bg-primary/15 border-primary/50 text-primary"
-                : "bg-secondary/50 border-border text-muted-foreground hover:bg-secondary"
-            }`}
-          >
-            {c.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-        {/* Stacked trace plot */}
-        <div className="lg:col-span-3 rounded-lg border border-border bg-card p-3 overflow-x-auto">
-          <svg
-            viewBox={`0 0 ${W + 70} ${apH + visibleChannels.length * (traceH + 4) + 40}`}
-            className="w-full min-w-[480px]"
-            role="img"
-            aria-label="Ion channel timeline"
-          >
-            {/* Phase backgrounds (full height) */}
-            {phases.map((p) => (
-              <rect
-                key={p.id}
-                x={50 + p.t0 * W}
-                y={0}
-                width={(p.t1 - p.t0) * W}
-                height={apH + visibleChannels.length * (traceH + 4) + 8}
-                fill={p.color}
-                opacity={hover || selected ? 0.04 : 0.06}
-              />
-            ))}
-
-            {/* Phase divider lines */}
-            {phases.slice(1).map((p) => (
-              <line
-                key={`div-${p.id}`}
-                x1={50 + p.t0 * W}
-                y1={0}
-                x2={50 + p.t0 * W}
-                y2={apH + visibleChannels.length * (traceH + 4) + 8}
-                stroke="hsl(var(--border))"
-                strokeDasharray="2 3"
-                strokeWidth="0.5"
-                opacity="0.6"
-              />
-            ))}
-
-            {/* AP plot */}
-            <g transform={`translate(50, 0)`}>
-              <text x="-4" y="10" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end" fontWeight="600">+30</text>
-              <text x="-4" y={apH / 2 + 3} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end">−30</text>
-              <text x="-4" y={apH - 2} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end">−90</text>
-              <line x1="0" y1={apH - ((0 + 90) / 130) * apH} x2={W} y2={apH - ((0 + 90) / 130) * apH}
-                stroke="hsl(var(--border))" strokeDasharray="1 3" strokeWidth="0.5" opacity="0.5" />
-              <path d={apPath} fill="none" stroke="hsl(var(--foreground))" strokeWidth="2" />
-              {/* Phase labels on AP */}
+    <DiagramFigure
+      id="ion-channel-timeline-diagram"
+      title="Ion channel timeline"
+      description="Auto-generated wrapper for the Ion channel timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-4">
+        {/* Cell type toggle */}
+        <div className="flex flex-wrap gap-2">
+          {([
+            { id: "ventricular", label: "Ventricular myocyte (fast)" },
+            { id: "pacemaker", label: "SA node pacemaker (slow)" },
+          ] as { id: CellType; label: string }[]).map((c) => (
+            <button
+              key={c.id}
+              onClick={() => setCell(c.id)}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
+                cell === c.id
+                  ? "bg-primary/15 border-primary/50 text-primary"
+                  : "bg-secondary/50 border-border text-muted-foreground hover:bg-secondary"
+              }`}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+  
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+          {/* Stacked trace plot */}
+          <div className="lg:col-span-3 rounded-lg border border-border bg-card p-3 overflow-x-auto">
+            <svg
+              viewBox={`0 0 ${W + 70} ${apH + visibleChannels.length * (traceH + 4) + 40}`}
+              className="w-full min-w-[480px]"
+              role="img"
+              aria-label="Ion channel timeline"
+            >
+              {/* Phase backgrounds (full height) */}
               {phases.map((p) => (
-                <text
-                  key={`pl-${p.id}`}
-                  x={(p.t0 + (p.t1 - p.t0) / 2) * W}
-                  y={12}
-                  fontSize="9"
+                <rect
+                  key={p.id}
+                  x={50 + p.t0 * W}
+                  y={0}
+                  width={(p.t1 - p.t0) * W}
+                  height={apH + visibleChannels.length * (traceH + 4) + 8}
                   fill={p.color}
-                  textAnchor="middle"
-                  fontWeight="700"
-                >
-                  {p.label}
-                </text>
+                  opacity={hover || selected ? 0.04 : 0.06}
+                />
               ))}
-            </g>
-
-            {/* Channel traces */}
-            {visibleChannels.map((ch, idx) => {
-              const y0 = apH + 8 + idx * (traceH + 4);
-              const points = cell === "ventricular" ? ch.ventricular : ch.pacemaker;
-              const isActive = activeChannel?.id === ch.id;
-              const isDimmed = (hover || selected) && !isActive;
-              return (
-                <g
-                  key={ch.id}
-                  transform={`translate(50, ${y0})`}
-                  className="cursor-pointer"
-                  onMouseEnter={() => setHover(ch.id)}
-                  onMouseLeave={() => setHover(null)}
-                  onClick={() => setSelected(ch.id)}
-                  opacity={isDimmed ? 0.35 : 1}
-                >
-                  {/* Lane background */}
-                  <rect x="0" y="0" width={W} height={traceH} fill={isActive ? ch.color : "hsl(var(--muted))"} opacity={isActive ? 0.08 : 0.15} rx="2" />
-                  {/* Zero line */}
-                  <line x1="0" y1={traceH / 2} x2={W} y2={traceH / 2} stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" />
-                  {/* Trace */}
-                  <path
-                    d={buildTrace(points, W, traceH, ch.direction)}
-                    fill={ch.color}
-                    fillOpacity={isActive ? 0.55 : 0.3}
-                    stroke={ch.color}
-                    strokeWidth={isActive ? 1.6 : 1}
-                  />
-                  {/* Label (left) */}
-                  <g transform={`translate(-46, ${traceH / 2})`}>
-                    <text x="0" y="-2" fontSize="9" fill={ch.color} fontWeight="700">{ch.name}</text>
-                    <text x="0" y="9" fontSize="7" fill="hsl(var(--muted-foreground))">{ch.ion}</text>
+  
+              {/* Phase divider lines */}
+              {phases.slice(1).map((p) => (
+                <line
+                  key={`div-${p.id}`}
+                  x1={50 + p.t0 * W}
+                  y1={0}
+                  x2={50 + p.t0 * W}
+                  y2={apH + visibleChannels.length * (traceH + 4) + 8}
+                  stroke="hsl(var(--border))"
+                  strokeDasharray="2 3"
+                  strokeWidth="0.5"
+                  opacity="0.6"
+                />
+              ))}
+  
+              {/* AP plot */}
+              <g transform={`translate(50, 0)`}>
+                <text x="-4" y="10" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end" fontWeight="600">+30</text>
+                <text x="-4" y={apH / 2 + 3} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end">−30</text>
+                <text x="-4" y={apH - 2} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end">−90</text>
+                <line x1="0" y1={apH - ((0 + 90) / 130) * apH} x2={W} y2={apH - ((0 + 90) / 130) * apH}
+                  stroke="hsl(var(--border))" strokeDasharray="1 3" strokeWidth="0.5" opacity="0.5" />
+                <path d={apPath} fill="none" stroke="hsl(var(--foreground))" strokeWidth="2" />
+                {/* Phase labels on AP */}
+                {phases.map((p) => (
+                  <text
+                    key={`pl-${p.id}`}
+                    x={(p.t0 + (p.t1 - p.t0) / 2) * W}
+                    y={12}
+                    fontSize="9"
+                    fill={p.color}
+                    textAnchor="middle"
+                    fontWeight="700"
+                  >
+                    {p.label}
+                  </text>
+                ))}
+              </g>
+  
+              {/* Channel traces */}
+              {visibleChannels.map((ch, idx) => {
+                const y0 = apH + 8 + idx * (traceH + 4);
+                const points = cell === "ventricular" ? ch.ventricular : ch.pacemaker;
+                const isActive = activeChannel?.id === ch.id;
+                const isDimmed = (hover || selected) && !isActive;
+                return (
+                      <g
+                    key={ch.id}
+                    transform={`translate(50, ${y0})`}
+                    className="cursor-pointer"
+                    onMouseEnter={() => setHover(ch.id)}
+                    onMouseLeave={() => setHover(null)}
+                    onClick={() => setSelected(ch.id)}
+                    opacity={isDimmed ? 0.35 : 1}
+                  >
+                    {/* Lane background */}
+                    <rect x="0" y="0" width={W} height={traceH} fill={isActive ? ch.color : "hsl(var(--muted))"} opacity={isActive ? 0.08 : 0.15} rx="2" />
+                    {/* Zero line */}
+                    <line x1="0" y1={traceH / 2} x2={W} y2={traceH / 2} stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" />
+                    {/* Trace */}
+                    <path
+                      d={buildTrace(points, W, traceH, ch.direction)}
+                      fill={ch.color}
+                      fillOpacity={isActive ? 0.55 : 0.3}
+                      stroke={ch.color}
+                      strokeWidth={isActive ? 1.6 : 1}
+                    />
+                    {/* Label (left) */}
+                    <g transform={`translate(-46, ${traceH / 2})`}>
+                      <text x="0" y="-2" fontSize="9" fill={ch.color} fontWeight="700">{ch.name}</text>
+                      <text x="0" y="9" fontSize="7" fill="hsl(var(--muted-foreground))">{ch.ion}</text>
+                    </g>
+                    {/* Direction arrow (right) */}
+                    <g transform={`translate(${W + 4}, ${traceH / 2})`}>
+                      <text x="0" y="3" fontSize="9" fill={ch.color} fontWeight="700">
+                        {ch.direction === "inward" ? "↓" : "↑"}
+                      </text>
+                    </g>
                   </g>
-                  {/* Direction arrow (right) */}
-                  <g transform={`translate(${W + 4}, ${traceH / 2})`}>
-                    <text x="0" y="3" fontSize="9" fill={ch.color} fontWeight="700">
-                      {ch.direction === "inward" ? "↓" : "↑"}
+    );
+              })}
+  
+              {/* Time axis */}
+              <g transform={`translate(50, ${apH + 8 + visibleChannels.length * (traceH + 4) + 4})`}>
+                <line x1="0" y1="0" x2={W} y2="0" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
+                {[0, 0.25, 0.5, 0.75, 1].map((f) => (
+                  <g key={f}>
+                    <line x1={f * W} y1="0" x2={f * W} y2="3" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
+                    <text x={f * W} y="12" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">
+                      {Math.round(f * totalDuration)}
                     </text>
                   </g>
-                </g>
-              );
-            })}
-
-            {/* Time axis */}
-            <g transform={`translate(50, ${apH + 8 + visibleChannels.length * (traceH + 4) + 4})`}>
-              <line x1="0" y1="0" x2={W} y2="0" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
-              {[0, 0.25, 0.5, 0.75, 1].map((f) => (
-                <g key={f}>
-                  <line x1={f * W} y1="0" x2={f * W} y2="3" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
-                  <text x={f * W} y="12" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">
-                    {Math.round(f * totalDuration)}
-                  </text>
-                </g>
-              ))}
-              <text x={W / 2} y="24" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle">time (ms)</text>
-            </g>
-          </svg>
-          <p className="text-[10px] text-muted-foreground text-center mt-1">
-            Hover or click any current trace to highlight. ↓ = inward, ↑ = outward.
-          </p>
-        </div>
-
-        {/* Channel detail panel */}
-        <div className="lg:col-span-2 space-y-3">
-          {activeChannel ? (
-            <>
-              <div className="rounded-lg border-2 p-3" style={{ borderColor: activeChannel.color, backgroundColor: `${activeChannel.color}15` }}>
-                <div className="flex items-baseline justify-between mb-1">
-                  <p className="text-base font-bold" style={{ color: activeChannel.color }}>{activeChannel.name}</p>
-                  <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
-                    {activeChannel.direction} · {activeChannel.ion}
-                  </span>
+                ))}
+                <text x={W / 2} y="24" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle">time (ms)</text>
+              </g>
+            </svg>
+            <p className="text-[10px] text-muted-foreground text-center mt-1">
+              Hover or click any current trace to highlight. ↓ = inward, ↑ = outward.
+            </p>
+          </div>
+  
+          {/* Channel detail panel */}
+          <div className="lg:col-span-2 space-y-3">
+            {activeChannel ? (
+              <>
+                <div className="rounded-lg border-2 p-3" style={{ borderColor: activeChannel.color, backgroundColor: `${activeChannel.color}15` }}>
+                  <div className="flex items-baseline justify-between mb-1">
+                    <p className="text-base font-bold" style={{ color: activeChannel.color }}>{activeChannel.name}</p>
+                    <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
+                      {activeChannel.direction} · {activeChannel.ion}
+                    </span>
+                  </div>
+                  <p className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">Active during</p>
+                  <p className="text-xs text-foreground/90 font-medium mb-2">{activeChannel.phases}</p>
+                  <p className="text-xs text-foreground/85 leading-relaxed">{activeChannel.description}</p>
                 </div>
-                <p className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">Active during</p>
-                <p className="text-xs text-foreground/90 font-medium mb-2">{activeChannel.phases}</p>
-                <p className="text-xs text-foreground/85 leading-relaxed">{activeChannel.description}</p>
+              </>
+            ) : (
+              <div className="rounded-lg border border-border bg-card p-3">
+                <p className="text-xs text-muted-foreground">Hover or tap any channel trace to see its detail.</p>
               </div>
-            </>
-          ) : (
+            )}
+  
+            {/* Quick legend */}
             <div className="rounded-lg border border-border bg-card p-3">
-              <p className="text-xs text-muted-foreground">Hover or tap any channel trace to see its detail.</p>
-            </div>
-          )}
-
-          {/* Quick legend */}
-          <div className="rounded-lg border border-border bg-card p-3">
-            <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-2">Phase colour key</p>
-            <div className="flex flex-wrap gap-2">
-              {phases.map((p) => (
-                <div key={p.id} className="flex items-center gap-1.5 text-[11px]">
-                  <span className="w-3 h-3 rounded-sm" style={{ backgroundColor: p.color, opacity: 0.5 }} />
-                  <span className="text-foreground/80">Phase {p.label}</span>
-                </div>
-              ))}
+              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-2">Phase colour key</p>
+              <div className="flex flex-wrap gap-2">
+                {phases.map((p) => (
+                  <div key={p.id} className="flex items-center gap-1.5 text-[11px]">
+                    <span className="w-3 h-3 rounded-sm" style={{ backgroundColor: p.color, opacity: 0.5 }} />
+                    <span className="text-foreground/80">Phase {p.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

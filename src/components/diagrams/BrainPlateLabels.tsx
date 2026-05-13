@@ -244,7 +244,7 @@ const BrainPlateLabels = ({ labels, minGap = 4.2 }: BrainPlateLabelsProps) => {
           const pillH = totalH + 0.8;
 
           return (
-            <g key={i} opacity={showAlign ? 0.35 : 1}>
+                <g key={i} opacity={showAlign ? 0.35 : 1}>
               <line
                 x1={l.dot.x}
                 y1={l.dot.y}
@@ -294,7 +294,7 @@ const BrainPlateLabels = ({ labels, minGap = 4.2 }: BrainPlateLabelsProps) => {
                 ))}
               </text>
             </g>
-          );
+  );
         })}
       </svg>
 

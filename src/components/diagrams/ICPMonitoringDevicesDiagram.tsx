@@ -46,7 +46,7 @@ const BrainBase = ({ children, label }: { children: React.ReactNode; label: stri
 
 const ICPMonitoringDevicesDiagram = () => {
   return (
-    <div className="space-y-6">
+                <div className="space-y-6">
       <h3 className="text-lg font-serif font-bold text-foreground">ICP Monitoring Devices — Comparative Diagram</h3>
       <p className="text-sm text-muted-foreground">
         Axial cross-sections at ventricular level showing catheter/sensor placement. Both lateral ventricles, third ventricle, falx cerebri, and cortical surface are shown.
@@ -79,7 +79,8 @@ const ICPMonitoringDevicesDiagram = () => {
           </BrainBase>
           <div className="text-center">
             <p className="font-semibold text-foreground text-sm">EVD (Intraventricular)</p>
-            <p className="text-xs text-muted-foreground">Gold standard. Catheter tip in lateral ventricle (usually right, via Kocher's point). Measures global ICP. Can drain CSF therapeutically. Risk: infection (5–10%), haemorrhage (1–2%).</p>
+            <p className="text-xs text-muted-foreground">Gold standard. Catheter tip in lateral ventricle (usually right, via Kocher's point
+  ). Measures global ICP. Can drain CSF therapeutically. Risk: infection (5–10%), haemorrhage (1–2%).</p>
           </div>
         </div>
 

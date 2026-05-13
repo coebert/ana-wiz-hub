@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Bundle / fascicular block series — RBBB, LBBB, LAFB, LPFB, bifascicular,
@@ -327,130 +328,136 @@ const BundleBranchBlockDiagram = () => {
   const info = BLOCKS[selected];
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Bundle & fascicular blocks — site + V1/V6 morphology"
-          subtitle="RBBB · LBBB · LAFB · LPFB · Bifascicular · Trifascicular. Tap a card for the detail panel."
-          toggles={[
-            { label: "All six", active: showAll, onChange: () => setShowAll((s) => !s) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-          ]}
-        />
-
-        {/* Selector chips */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {ORDER.map((k) => {
-            const b = BLOCKS[k];
-            const active = selected === k;
-            return (
-              <button
-                key={k}
-                onClick={() => setSelected(k)}
-                aria-pressed={active}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-all"
-                style={{
-                  borderColor: active ? b.color : "hsl(var(--border))",
-                  backgroundColor: active ? b.color : "transparent",
-                  color: active ? "white" : "hsl(var(--muted-foreground))",
-                }}
-              >
-                {b.shortLabel}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Cards grid */}
-        {showAll ? (
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
+    <DiagramFigure
+      id="bundle-branch-block-diagram"
+      title="Bundle branch block"
+      description="Auto-generated wrapper for the Bundle branch block anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Bundle & fascicular blocks — site + V1/V6 morphology"
+            subtitle="RBBB · LBBB · LAFB · LPFB · Bifascicular · Trifascicular. Tap a card for the detail panel."
+            toggles={[
+              { label: "All six", active: showAll, onChange: () => setShowAll((s) => !s) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+            ]}
+          />
+  
+          {/* Selector chips */}
+          <div className="flex flex-wrap gap-2 mb-4">
             {ORDER.map((k) => {
               const b = BLOCKS[k];
               const active = selected === k;
               return (
                 <button
                   key={k}
-                  type="button"
                   onClick={() => setSelected(k)}
-                  className="text-left p-3 rounded-lg border bg-background/60 transition-all hover:bg-background"
+                  aria-pressed={active}
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-all"
                   style={{
                     borderColor: active ? b.color : "hsl(var(--border))",
-                    borderWidth: active ? 2 : 1,
-                    boxShadow: active ? `0 4px 14px -6px ${withAlpha(b.color, 0.5)}` : undefined,
+                    backgroundColor: active ? b.color : "transparent",
+                    color: active ? "white" : "hsl(var(--muted-foreground))",
                   }}
                 >
-                  <div className="flex items-center justify-between mb-2 gap-2">
-                    <p className="font-semibold text-sm text-foreground">{b.label}</p>
-                    <span
-                      className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md whitespace-nowrap"
-                      style={{ background: withAlpha(b.color, 0.15), color: b.color }}
-                    >
-                      {b.qrsDuration}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col gap-3">
-                    <div className="w-full max-w-[220px] mx-auto"><TreeMini block={b} color={b.color} /></div>
-                    <div className="min-w-0 space-y-1.5">
-                      <div className="flex gap-2">
-                        <Waveform label="V1" kind={b.v1} color={b.color} wide={b.qrsWide} />
-                        <Waveform label="V6" kind={b.v6} color={b.color} wide={b.qrsWide} />
-                      </div>
-                      {showLabels && (
-                        <p className="text-[10px] text-muted-foreground italic leading-snug">
-                          Axis: {b.axis}
-                        </p>
-                      )}
-                    </div>
-                  </div>
+                  {b.shortLabel}
                 </button>
               );
             })}
           </div>
-        ) : (
-          <div className="p-3 rounded-lg border bg-background/60" style={{ borderColor: info.color, borderWidth: 2 }}>
-            <p className="font-semibold text-sm text-foreground mb-2">{info.label}</p>
-            <div className="flex flex-col gap-3">
-              <TreeMini block={info} color={info.color} hero />
-              <div className="min-w-0 space-y-1.5">
-                <div className="flex gap-2">
-                  <Waveform label="V1" kind={info.v1} color={info.color} wide={info.qrsWide} />
-                  <Waveform label="V6" kind={info.v6} color={info.color} wide={info.qrsWide} />
+  
+          {/* Cards grid */}
+          {showAll ? (
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
+              {ORDER.map((k) => {
+                const b = BLOCKS[k];
+                const active = selected === k;
+                return (
+                      <button
+                    key={k}
+                    type="button"
+                    onClick={() => setSelected(k)}
+                    className="text-left p-3 rounded-lg border bg-background/60 transition-all hover:bg-background"
+                    style={{
+                      borderColor: active ? b.color : "hsl(var(--border))",
+                      borderWidth: active ? 2 : 1,
+                      boxShadow: active ? `0 4px 14px -6px ${withAlpha(b.color, 0.5)}` : undefined,
+                    }}
+                  >
+                    <div className="flex items-center justify-between mb-2 gap-2">
+                      <p className="font-semibold text-sm text-foreground">{b.label}</p>
+                      <span
+                        className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md whitespace-nowrap"
+                        style={{ background: withAlpha(b.color, 0.15), color: b.color }}
+                      >
+                        {b.qrsDuration}
+                      </span>
+                    </div>
+  
+                    <div className="flex flex-col gap-3">
+                      <div className="w-full max-w-[220px] mx-auto"><TreeMini block={b} color={b.color} /></div>
+                      <div className="min-w-0 space-y-1.5">
+                        <div className="flex gap-2">
+                          <Waveform label="V1" kind={b.v1} color={b.color} wide={b.qrsWide} />
+                          <Waveform label="V6" kind={b.v6} color={b.color} wide={b.qrsWide} />
+                        </div>
+                        {showLabels && (
+                          <p className="text-[10px] text-muted-foreground italic leading-snug">
+                            Axis: {b.axis}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </button>
+    );
+              })}
+            </div>
+          ) : (
+            <div className="p-3 rounded-lg border bg-background/60" style={{ borderColor: info.color, borderWidth: 2 }}>
+              <p className="font-semibold text-sm text-foreground mb-2">{info.label}</p>
+              <div className="flex flex-col gap-3">
+                <TreeMini block={info} color={info.color} hero />
+                <div className="min-w-0 space-y-1.5">
+                  <div className="flex gap-2">
+                    <Waveform label="V1" kind={info.v1} color={info.color} wide={info.qrsWide} />
+                    <Waveform label="V6" kind={info.v6} color={info.color} wide={info.qrsWide} />
+                  </div>
+                  <p className="text-[10px] text-muted-foreground italic">Axis: {info.axis}</p>
                 </div>
-                <p className="text-[10px] text-muted-foreground italic">Axis: {info.axis}</p>
               </div>
             </div>
-          </div>
-        )}
-
-        {/* Detail panel */}
-        <div className="mt-4 min-h-[110px]">
-          <div
-            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
-          >
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-              <p className="font-semibold text-foreground text-sm">{info.label}</p>
-              <span
-                className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                style={{ background: withAlpha(info.color, 0.15), color: info.color }}
-              >
-                {info.qrsDuration}
-              </span>
+          )}
+  
+          {/* Detail panel */}
+          <div className="mt-4 min-h-[110px]">
+            <div
+              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+              style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            >
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <p className="font-semibold text-foreground text-sm">{info.label}</p>
+                <span
+                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                  style={{ background: withAlpha(info.color, 0.15), color: info.color }}
+                >
+                  {info.qrsDuration}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">Axis:</span> {info.axis}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">Pathophysiology:</span> {info.pathophysiology}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">Clinical:</span> {info.clinical}
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-medium text-foreground">Axis:</span> {info.axis}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-medium text-foreground">Pathophysiology:</span> {info.pathophysiology}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-medium text-foreground">Clinical:</span> {info.clinical}
-            </p>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

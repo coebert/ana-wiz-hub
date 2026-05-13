@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * MDR Gram-negative agent selector.
@@ -216,150 +217,156 @@ const MDRGramNegativeSelector = () => {
   const org = ORGANISMS.find((o) => o.key === selected)!;
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 my-6">
-      <h3 className="text-lg font-semibold text-foreground">
-        MDR Gram-negative agent selector
-      </h3>
-      <p className="text-xs text-muted-foreground mb-4">
-        Pick a resistant organism / phenotype to see the first-line agent, alternatives,
-        what to avoid, and a brief mechanistic rationale. Aligned with IDSA 2024 AMR
-        guidance — for revision use only, not a prescribing tool.
-      </p>
-
-      {/* Organism chips */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {ORGANISMS.map((o) => (
-          <button
-            key={o.key}
-            onClick={() => setSelected(o.key)}
-            className="text-xs px-3 py-1.5 rounded-full border transition-all"
-            style={{
-              backgroundColor: selected === o.key ? `${o.color}26` : "transparent",
-              borderColor: selected === o.key ? o.color : "hsl(var(--border))",
-              color: selected === o.key ? o.color : "hsl(var(--foreground))",
-              fontWeight: selected === o.key ? 600 : 500,
-            }}
-          >
-            {o.short}
-          </button>
-        ))}
-      </div>
-
-      {/* Header card */}
-      <div
-        className="rounded-lg border-l-4 p-3 mb-3"
-        style={{ borderLeftColor: org.color, backgroundColor: `${org.color}10` }}
-      >
-        <p className="text-xs uppercase tracking-wide font-semibold" style={{ color: org.color }}>
-          Selected organism / phenotype
+    <DiagramFigure
+      id="mdr-gram-negative-selector"
+      title="MDR gram negative selector"
+      description="Auto-generated wrapper for the MDR gram negative selector anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="rounded-xl border border-border bg-card p-4 my-6">
+        <h3 className="text-lg font-semibold text-foreground">
+          MDR Gram-negative agent selector
+        </h3>
+        <p className="text-xs text-muted-foreground mb-4">
+          Pick a resistant organism / phenotype to see the first-line agent, alternatives,
+          what to avoid, and a brief mechanistic rationale. Aligned with IDSA 2024 AMR
+          guidance — for revision use only, not a prescribing tool.
         </p>
-        <p className="text-base font-semibold text-foreground mt-1">{org.full}</p>
-        <p className="text-xs text-muted-foreground mt-1 leading-snug italic">
-          {org.resistance}
-        </p>
-      </div>
-
-      {/* Three-column recommendations */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        {/* First-line */}
-        <div className="rounded-lg border border-emerald-500/40 bg-emerald-500/5 p-3">
-          <p className="text-xs uppercase tracking-wide font-semibold text-emerald-600 dark:text-emerald-400 mb-2">
-            ✓ First-line
-          </p>
-          <div className="space-y-2">
-            {org.firstLine.map((a) => (
-              <div key={a.name} className="rounded-md border border-border bg-background/60 p-2">
-                <p className="text-xs font-semibold text-foreground">{a.name}</p>
-                <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{a.rationale}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Alternatives */}
-        <div className="rounded-lg border border-amber-500/40 bg-amber-500/5 p-3">
-          <p className="text-xs uppercase tracking-wide font-semibold text-amber-600 dark:text-amber-400 mb-2">
-            ↻ Alternatives / salvage
-          </p>
-          <div className="space-y-2">
-            {org.alternatives.map((a) => (
-              <div key={a.name} className="rounded-md border border-border bg-background/60 p-2">
-                <p className="text-xs font-semibold text-foreground">{a.name}</p>
-                <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{a.rationale}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Avoid */}
-        <div className="rounded-lg border border-rose-500/40 bg-rose-500/5 p-3">
-          <p className="text-xs uppercase tracking-wide font-semibold text-rose-600 dark:text-rose-400 mb-2">
-            ✗ Avoid
-          </p>
-          <div className="space-y-2">
-            {org.avoid.map((a) => (
-              <div key={a.name} className="rounded-md border border-border bg-background/60 p-2">
-                <p className="text-xs font-semibold text-foreground">{a.name}</p>
-                <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{a.why}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Pearls */}
-      <div className="mt-3 rounded-lg border border-border bg-muted/30 p-3">
-        <p className="text-xs uppercase tracking-wide font-semibold text-foreground mb-1.5">
-          Clinical pearls
-        </p>
-        <ul className="list-disc list-inside space-y-1">
-          {org.pearls.map((p, i) => (
-            <li key={i} className="text-xs text-muted-foreground leading-snug">{p}</li>
+  
+        {/* Organism chips */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {ORGANISMS.map((o) => (
+            <button
+              key={o.key}
+              onClick={() => setSelected(o.key)}
+              className="text-xs px-3 py-1.5 rounded-full border transition-all"
+              style={{
+                backgroundColor: selected === o.key ? `${o.color}26` : "transparent",
+                borderColor: selected === o.key ? o.color : "hsl(var(--border))",
+                color: selected === o.key ? o.color : "hsl(var(--foreground))",
+                fontWeight: selected === o.key ? 600 : 500,
+              }}
+            >
+              {o.short}
+            </button>
           ))}
-        </ul>
-      </div>
-
-      {/* Inhibitor reference table */}
-      <div className="mt-4 rounded-lg border border-border bg-background p-3">
-        <p className="text-xs uppercase tracking-wide font-semibold text-foreground mb-2">
-          β-lactamase inhibitor coverage — quick reference
-        </p>
-        <div className="overflow-x-auto">
-          <table className="w-full text-[11px]">
-            <thead>
-              <tr className="text-left border-b border-border">
-                <th className="py-1.5 pr-2 font-semibold">Inhibitor</th>
-                <th className="py-1.5 px-2 font-semibold">Class A (ESBL)</th>
-                <th className="py-1.5 px-2 font-semibold">Class A (KPC)</th>
-                <th className="py-1.5 px-2 font-semibold">Class B (NDM/MBL)</th>
-                <th className="py-1.5 px-2 font-semibold">Class C (AmpC)</th>
-                <th className="py-1.5 px-2 font-semibold">Class D (OXA-48)</th>
-              </tr>
-            </thead>
-            <tbody className="text-muted-foreground">
-              {[
-                ["Clavulanate / tazobactam / sulbactam", "✓", "✗", "✗", "✗", "✗"],
-                ["Avibactam", "✓", "✓", "✗", "✓", "✓"],
-                ["Vaborbactam", "✓", "✓", "✗", "partial", "✗"],
-                ["Relebactam", "✓", "✓", "✗", "✓", "✗"],
-                ["Durlobactam", "✓", "✓", "✗", "✓", "✓ (incl. OXA-23)"],
-              ].map((row, i) => (
-                <tr key={i} className="border-b border-border/50 last:border-0">
-                  {row.map((cell, j) => (
-                    <td key={j} className={`py-1.5 ${j === 0 ? "pr-2 font-medium text-foreground" : "px-2 text-center"}`}>
-                      {cell}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
-        <p className="text-[10px] text-muted-foreground italic mt-2">
-          No currently available β-lactamase inhibitor covers metallo-β-lactamases (NDM/VIM/IMP) → cefiderocol or aztreonam-avibactam combinations are needed.
-        </p>
+  
+        {/* Header card */}
+        <div
+          className="rounded-lg border-l-4 p-3 mb-3"
+          style={{ borderLeftColor: org.color, backgroundColor: `${org.color}10` }}
+        >
+          <p className="text-xs uppercase tracking-wide font-semibold" style={{ color: org.color }}>
+            Selected organism / phenotype
+          </p>
+          <p className="text-base font-semibold text-foreground mt-1">{org.full}</p>
+          <p className="text-xs text-muted-foreground mt-1 leading-snug italic">
+            {org.resistance}
+          </p>
+        </div>
+  
+        {/* Three-column recommendations */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {/* First-line */}
+          <div className="rounded-lg border border-emerald-500/40 bg-emerald-500/5 p-3">
+            <p className="text-xs uppercase tracking-wide font-semibold text-emerald-600 dark:text-emerald-400 mb-2">
+              ✓ First-line
+            </p>
+            <div className="space-y-2">
+              {org.firstLine.map((a) => (
+                <div key={a.name} className="rounded-md border border-border bg-background/60 p-2">
+                  <p className="text-xs font-semibold text-foreground">{a.name}</p>
+                  <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{a.rationale}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+  
+          {/* Alternatives */}
+          <div className="rounded-lg border border-amber-500/40 bg-amber-500/5 p-3">
+            <p className="text-xs uppercase tracking-wide font-semibold text-amber-600 dark:text-amber-400 mb-2">
+              ↻ Alternatives / salvage
+            </p>
+            <div className="space-y-2">
+              {org.alternatives.map((a) => (
+                <div key={a.name} className="rounded-md border border-border bg-background/60 p-2">
+                  <p className="text-xs font-semibold text-foreground">{a.name}</p>
+                  <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{a.rationale}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+  
+          {/* Avoid */}
+          <div className="rounded-lg border border-rose-500/40 bg-rose-500/5 p-3">
+            <p className="text-xs uppercase tracking-wide font-semibold text-rose-600 dark:text-rose-400 mb-2">
+              ✗ Avoid
+            </p>
+            <div className="space-y-2">
+              {org.avoid.map((a) => (
+                <div key={a.name} className="rounded-md border border-border bg-background/60 p-2">
+                  <p className="text-xs font-semibold text-foreground">{a.name}</p>
+                  <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{a.why}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+  
+        {/* Pearls */}
+        <div className="mt-3 rounded-lg border border-border bg-muted/30 p-3">
+          <p className="text-xs uppercase tracking-wide font-semibold text-foreground mb-1.5">
+            Clinical pearls
+          </p>
+          <ul className="list-disc list-inside space-y-1">
+            {org.pearls.map((p, i) => (
+              <li key={i} className="text-xs text-muted-foreground leading-snug">{p}</li>
+            ))}
+          </ul>
+        </div>
+  
+        {/* Inhibitor reference table */}
+        <div className="mt-4 rounded-lg border border-border bg-background p-3">
+          <p className="text-xs uppercase tracking-wide font-semibold text-foreground mb-2">
+            β-lactamase inhibitor coverage — quick reference
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-[11px]">
+              <thead>
+                <tr className="text-left border-b border-border">
+                  <th className="py-1.5 pr-2 font-semibold">Inhibitor</th>
+                  <th className="py-1.5 px-2 font-semibold">Class A (ESBL)</th>
+                  <th className="py-1.5 px-2 font-semibold">Class A (KPC)</th>
+                  <th className="py-1.5 px-2 font-semibold">Class B (NDM/MBL)</th>
+                  <th className="py-1.5 px-2 font-semibold">Class C (AmpC)</th>
+                  <th className="py-1.5 px-2 font-semibold">Class D (OXA-48)</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                {[
+                  ["Clavulanate / tazobactam / sulbactam", "✓", "✗", "✗", "✗", "✗"],
+                  ["Avibactam", "✓", "✓", "✗", "✓", "✓"],
+                  ["Vaborbactam", "✓", "✓", "✗", "partial", "✗"],
+                  ["Relebactam", "✓", "✓", "✗", "✓", "✗"],
+                  ["Durlobactam", "✓", "✓", "✗", "✓", "✓ (incl. OXA-23)"],
+                ].map((row, i) => (
+                  <tr key={i} className="border-b border-border/50 last:border-0">
+                    {row.map((cell, j) => (
+                      <td key={j} className={`py-1.5 ${j === 0 ? "pr-2 font-medium text-foreground" : "px-2 text-center"}`}>
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-[10px] text-muted-foreground italic mt-2">
+            No currently available β-lactamase inhibitor covers metallo-β-lactamases (NDM/VIM/IMP) → cefiderocol or aztreonam-avibactam combinations are needed.
+          </p>
+        </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

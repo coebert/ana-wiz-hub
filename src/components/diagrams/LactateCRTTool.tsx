@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Lactate clearance + CRT-guided resuscitation sub-tool.
@@ -22,65 +23,71 @@ const LactateCRTTool = () => {
   );
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 my-6">
-      <h3 className="text-lg font-semibold text-foreground">Lactate Clearance &amp; CRT-Guided Resuscitation</h3>
-      <p className="text-xs text-muted-foreground mb-4">
-        Combines lactate clearance (Nguyen 2004) with peripheral perfusion targeting (ANDROMEDA-SHOCK, Hernández 2019). Goal: ≥ 10% clearance per 2 h <em>or</em> CRT normalisation (≤ 3 s).
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-4">
-        <Slider label="Baseline lactate (T0)" value={l0} min={1.0} max={15} step={0.1} unit="mmol/L" onChange={setL0} decimals={1} />
-        <Slider label="Lactate at 2 h" value={l2} min={0.5} max={15} step={0.1} unit="mmol/L" onChange={setL2} decimals={1} />
-        <Slider label="Lactate at 6 h" value={l6} min={0.5} max={15} step={0.1} unit="mmol/L" onChange={setL6} decimals={1} />
-        <Slider label="Baseline CRT" value={crt0} min={1} max={10} step={0.5} unit="s" onChange={setCrt0} decimals={1} />
-        <Slider label="Current CRT" value={crtNow} min={1} max={10} step={0.5} unit="s" onChange={setCrtNow} decimals={1} />
-        <Slider label="Current MAP" value={map} min={40} max={110} step={1} unit="mmHg" onChange={setMap} />
+    <DiagramFigure
+      id="lactate-crt-tool"
+      title="Lactate CRT tool"
+      description="Auto-generated wrapper for the Lactate CRT tool anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="rounded-xl border border-border bg-card p-4 my-6">
+        <h3 className="text-lg font-semibold text-foreground">Lactate Clearance &amp; CRT-Guided Resuscitation</h3>
+        <p className="text-xs text-muted-foreground mb-4">
+          Combines lactate clearance (Nguyen 2004) with peripheral perfusion targeting (ANDROMEDA-SHOCK, Hernández 2019). Goal: ≥ 10% clearance per 2 h <em>or</em> CRT normalisation (≤ 3 s).
+        </p>
+  
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-4">
+          <Slider label="Baseline lactate (T0)" value={l0} min={1.0} max={15} step={0.1} unit="mmol/L" onChange={setL0} decimals={1} />
+          <Slider label="Lactate at 2 h" value={l2} min={0.5} max={15} step={0.1} unit="mmol/L" onChange={setL2} decimals={1} />
+          <Slider label="Lactate at 6 h" value={l6} min={0.5} max={15} step={0.1} unit="mmol/L" onChange={setL6} decimals={1} />
+          <Slider label="Baseline CRT" value={crt0} min={1} max={10} step={0.5} unit="s" onChange={setCrt0} decimals={1} />
+          <Slider label="Current CRT" value={crtNow} min={1} max={10} step={0.5} unit="s" onChange={setCrtNow} decimals={1} />
+          <Slider label="Current MAP" value={map} min={40} max={110} step={1} unit="mmHg" onChange={setMap} />
+        </div>
+  
+        <label className="flex items-center gap-2 text-xs text-muted-foreground mb-4 cursor-pointer">
+          <input type="checkbox" checked={onVaso} onChange={(e) => setOnVaso(e.target.checked)} className="accent-primary" />
+          On noradrenaline (or other vasopressor)
+        </label>
+  
+        {/* Numeric outputs */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
+          <Stat label="2-h clearance" value={`${result.clear2.toFixed(0)}%`} color={clearanceColor(result.clear2)} />
+          <Stat label="6-h clearance" value={`${result.clear6.toFixed(0)}%`} color={clearanceColor(result.clear6)} />
+          <Stat label="ΔCRT" value={`${(result.crt0 - result.crtNow).toFixed(1)} s`} color={crtChangeColor(result.crt0 - result.crtNow)} />
+          <Stat
+            label="CRT normalised"
+            value={result.crtNow <= 3 ? "Yes" : "No"}
+            color={result.crtNow <= 3 ? "hsl(var(--icu))" : "hsl(var(--destructive))"}
+          />
+        </div>
+  
+        {/* Trajectory chart */}
+        <TrajectoryChart l0={l0} l2={l2} l6={l6} />
+  
+        {/* Recommendation */}
+        <div
+          className="rounded-lg p-3 border-l-4 mt-3 mb-3"
+          style={{ borderLeftColor: result.recColor, backgroundColor: `${result.recColor}1A` }}
+        >
+          <p className="text-sm font-bold" style={{ color: result.recColor }}>{result.recTitle}</p>
+          <p className="text-xs text-foreground mt-1 leading-relaxed">{result.recDetail}</p>
+        </div>
+  
+        {/* Educational box */}
+        <div className="rounded-lg border border-border p-3">
+          <p className="text-sm font-semibold text-foreground mb-1">Key trial evidence</p>
+          <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+            <li><strong>Nguyen 2004</strong>: lactate clearance ≥ 10% over 6 h associated with halved mortality in severe sepsis.</li>
+            <li><strong>Jones 2010 (LACTATES)</strong>: lactate clearance non-inferior to ScvO₂-guided resuscitation in EGDT.</li>
+            <li><strong>ANDROMEDA-SHOCK 2019</strong>: CRT-targeted resuscitation showed lower 28-day mortality (34.9% vs 43.4%, p = 0.06) and less organ dysfunction vs lactate-targeted — Bayesian re-analysis ~96% probability of benefit.</li>
+            <li><strong>Hyperlactataemia ≠ tissue hypoxia alone</strong> — also driven by stress catecholamines, hepatic dysfunction, β₂-agonists, metformin. Trend matters more than absolute value.</li>
+          </ul>
+        </div>
+  
+        <p className="text-[10px] text-muted-foreground mt-3 italic">
+          Refs: Nguyen HB et al. Crit Care Med 2004;32:1637. Jansen TC et al. Am J Respir Crit Care Med 2010;182:752. Hernández G et al. ANDROMEDA-SHOCK. JAMA 2019;321:654.
+        </p>
       </div>
-
-      <label className="flex items-center gap-2 text-xs text-muted-foreground mb-4 cursor-pointer">
-        <input type="checkbox" checked={onVaso} onChange={(e) => setOnVaso(e.target.checked)} className="accent-primary" />
-        On noradrenaline (or other vasopressor)
-      </label>
-
-      {/* Numeric outputs */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
-        <Stat label="2-h clearance" value={`${result.clear2.toFixed(0)}%`} color={clearanceColor(result.clear2)} />
-        <Stat label="6-h clearance" value={`${result.clear6.toFixed(0)}%`} color={clearanceColor(result.clear6)} />
-        <Stat label="ΔCRT" value={`${(result.crt0 - result.crtNow).toFixed(1)} s`} color={crtChangeColor(result.crt0 - result.crtNow)} />
-        <Stat
-          label="CRT normalised"
-          value={result.crtNow <= 3 ? "Yes" : "No"}
-          color={result.crtNow <= 3 ? "hsl(var(--icu))" : "hsl(var(--destructive))"}
-        />
-      </div>
-
-      {/* Trajectory chart */}
-      <TrajectoryChart l0={l0} l2={l2} l6={l6} />
-
-      {/* Recommendation */}
-      <div
-        className="rounded-lg p-3 border-l-4 mt-3 mb-3"
-        style={{ borderLeftColor: result.recColor, backgroundColor: `${result.recColor}1A` }}
-      >
-        <p className="text-sm font-bold" style={{ color: result.recColor }}>{result.recTitle}</p>
-        <p className="text-xs text-foreground mt-1 leading-relaxed">{result.recDetail}</p>
-      </div>
-
-      {/* Educational box */}
-      <div className="rounded-lg border border-border p-3">
-        <p className="text-sm font-semibold text-foreground mb-1">Key trial evidence</p>
-        <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-          <li><strong>Nguyen 2004</strong>: lactate clearance ≥ 10% over 6 h associated with halved mortality in severe sepsis.</li>
-          <li><strong>Jones 2010 (LACTATES)</strong>: lactate clearance non-inferior to ScvO₂-guided resuscitation in EGDT.</li>
-          <li><strong>ANDROMEDA-SHOCK 2019</strong>: CRT-targeted resuscitation showed lower 28-day mortality (34.9% vs 43.4%, p = 0.06) and less organ dysfunction vs lactate-targeted — Bayesian re-analysis ~96% probability of benefit.</li>
-          <li><strong>Hyperlactataemia ≠ tissue hypoxia alone</strong> — also driven by stress catecholamines, hepatic dysfunction, β₂-agonists, metformin. Trend matters more than absolute value.</li>
-        </ul>
-      </div>
-
-      <p className="text-[10px] text-muted-foreground mt-3 italic">
-        Refs: Nguyen HB et al. Crit Care Med 2004;32:1637. Jansen TC et al. Am J Respir Crit Care Med 2010;182:752. Hernández G et al. ANDROMEDA-SHOCK. JAMA 2019;321:654.
-      </p>
-    </div>
+    </DiagramFigure>
   );
 };
 
@@ -196,7 +203,7 @@ function Slider({ label, value, min, max, step, unit, onChange, decimals = 0 }: 
 
 function Legend({ color, label, dashed }: { color: string; label: string; dashed?: boolean }) {
   return (
-    <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5">
       <svg width={20} height={6}>
         <line x1={0} x2={20} y1={3} y2={3} stroke={color} strokeWidth={2} strokeDasharray={dashed ? "3 2" : "0"} />
       </svg>

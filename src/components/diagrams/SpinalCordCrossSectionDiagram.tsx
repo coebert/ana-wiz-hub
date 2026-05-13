@@ -174,7 +174,7 @@ const SpinalCordCrossSectionDiagram = () => {
                     const rY = l.h / 2 - 1;
 
                     return (
-                    <g>
+                        <g>
                       {/* ── White matter: overall cord ellipse ── */}
                       <ellipse
                         cx={cx} cy={cy} rx={rX} ry={rY}
@@ -336,7 +336,7 @@ const SpinalCordCrossSectionDiagram = () => {
                         {isActive && <text x={cx - 80} y={cy} fontSize="3" fill="hsl(var(--muted-foreground))" textAnchor="end" opacity="0.5">Spinal n.</text>}
                       </g>
                     </g>
-                    );
+  );
                   })() : (
                     <g>
                       {/* Base rect */}

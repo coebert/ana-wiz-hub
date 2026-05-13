@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type PanelId = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
@@ -210,83 +211,89 @@ const CPETNinePanelDiagram = () => {
   const info = selected ? panels[selected] : null;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Wasserman 9-Panel CPET Plot</h3>
-      <p className="text-xs text-muted-foreground mb-4">Click any panel for a detailed explanation. The 9-panel layout is the standard format for reporting cardiopulmonary exercise tests.</p>
-
-      {/* 3×3 Grid */}
-      <div className="grid grid-cols-3 gap-2 mb-4">
-        {panelLayout.flat().map((id) => {
-          const p = panels[id];
-          return (
-            <button
-              key={id}
-              onClick={() => setSelected(selected === id ? null : id)}
-              className={`p-2 rounded-lg border text-left transition-all ${
-                selected === id
-                  ? "border-primary bg-primary/10 ring-1 ring-primary/30"
-                  : "border-border hover:border-muted-foreground/40"
-              }`}
-            >
-              <p className="text-[10px] font-bold text-foreground mb-0.5 leading-tight">Panel {id}</p>
-              <p className="text-[9px] text-muted-foreground leading-tight mb-1 line-clamp-1">{p.title}</p>
-              <div className="bg-muted/30 rounded p-1">
-                <PanelChart id={id} />
+    <DiagramFigure
+      id="cpet-nine-panel-diagram"
+      title="CPET nine panel"
+      description="Auto-generated wrapper for the CPET nine panel anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="border border-border rounded-lg p-4 mb-6">
+        <h3 className="text-lg font-serif font-bold text-foreground mb-1">Wasserman 9-Panel CPET Plot</h3>
+        <p className="text-xs text-muted-foreground mb-4">Click any panel for a detailed explanation. The 9-panel layout is the standard format for reporting cardiopulmonary exercise tests.</p>
+  
+        {/* 3×3 Grid */}
+        <div className="grid grid-cols-3 gap-2 mb-4">
+          {panelLayout.flat().map((id) => {
+            const p = panels[id];
+            return (
+                  <button
+                key={id}
+                onClick={() => setSelected(selected === id ? null : id)}
+                className={`p-2 rounded-lg border text-left transition-all ${
+                  selected === id
+                    ? "border-primary bg-primary/10 ring-1 ring-primary/30"
+                    : "border-border hover:border-muted-foreground/40"
+                }`}
+              >
+                <p className="text-[10px] font-bold text-foreground mb-0.5 leading-tight">Panel {id}</p>
+                <p className="text-[9px] text-muted-foreground leading-tight mb-1 line-clamp-1">{p.title}</p>
+                <div className="bg-muted/30 rounded p-1">
+                  <PanelChart id={id} />
+                </div>
+                <div className="flex justify-between mt-1">
+                  <span className="text-[7px] text-muted-foreground">{p.xAxis}</span>
+                  <span className="text-[7px] text-muted-foreground">{p.yAxis.split('(')[0].trim()}</span>
+                </div>
+              </button>
+    );
+          })}
+        </div>
+  
+        {/* Detail panel */}
+        {info && selected && (
+          <div className="p-4 rounded-lg border border-primary/30 bg-primary/5 transition-all">
+            <div className="flex items-start justify-between mb-2">
+              <div>
+                <p className="text-sm font-bold text-foreground">Panel {selected}: {info.title}</p>
+                <p className="text-xs text-muted-foreground">X-axis: {info.xAxis} | Y-axis: {info.yAxis}</p>
               </div>
-              <div className="flex justify-between mt-1">
-                <span className="text-[7px] text-muted-foreground">{p.xAxis}</span>
-                <span className="text-[7px] text-muted-foreground">{p.yAxis.split('(')[0].trim()}</span>
-              </div>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Detail panel */}
-      {info && selected && (
-        <div className="p-4 rounded-lg border border-primary/30 bg-primary/5 transition-all">
-          <div className="flex items-start justify-between mb-2">
-            <div>
-              <p className="text-sm font-bold text-foreground">Panel {selected}: {info.title}</p>
-              <p className="text-xs text-muted-foreground">X-axis: {info.xAxis} | Y-axis: {info.yAxis}</p>
+              <button onClick={() => setSelected(null)} className="text-muted-foreground hover:text-foreground text-xs px-2 py-1 rounded border border-border">✕</button>
             </div>
-            <button onClick={() => setSelected(null)} className="text-muted-foreground hover:text-foreground text-xs px-2 py-1 rounded border border-border">✕</button>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">{info.description}</p>
+            <div className="space-y-1 mb-3">
+              {info.keyPoints.map((pt, i) => (
+                <p key={i} className="text-xs text-muted-foreground leading-relaxed">• {pt}</p>
+              ))}
+            </div>
+            <div className="p-2 rounded border border-destructive/20 bg-destructive/5">
+              <p className="text-xs font-semibold text-destructive mb-0.5">Abnormal Findings</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{info.abnormal}</p>
+            </div>
           </div>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-3">{info.description}</p>
-          <div className="space-y-1 mb-3">
-            {info.keyPoints.map((pt, i) => (
-              <p key={i} className="text-xs text-muted-foreground leading-relaxed">• {pt}</p>
-            ))}
-          </div>
-          <div className="p-2 rounded border border-destructive/20 bg-destructive/5">
-            <p className="text-xs font-semibold text-destructive mb-0.5">Abnormal Findings</p>
-            <p className="text-xs text-muted-foreground leading-relaxed">{info.abnormal}</p>
-          </div>
-        </div>
-      )}
-
-      {/* Summary box */}
-      <div className="mt-4 p-3 rounded-lg border border-border bg-secondary/20">
-        <p className="text-xs font-semibold text-foreground mb-1">Perioperative Risk Thresholds</p>
-        <div className="grid grid-cols-3 gap-2 mt-2">
-          <div className="p-2 rounded border border-green-500/30 bg-green-500/10 text-center">
-            <p className="text-xs font-bold text-green-500">Low Risk</p>
-            <p className="text-[10px] text-muted-foreground">AT &gt;14 ml/kg/min</p>
-            <p className="text-[10px] text-muted-foreground">VE/VCO₂ &lt;34</p>
-          </div>
-          <div className="p-2 rounded border border-yellow-500/30 bg-yellow-500/10 text-center">
-            <p className="text-xs font-bold text-yellow-500">Intermediate</p>
-            <p className="text-[10px] text-muted-foreground">AT 11–14 ml/kg/min</p>
-            <p className="text-[10px] text-muted-foreground">VO₂ peak 15–20</p>
-          </div>
-          <div className="p-2 rounded border border-destructive/30 bg-destructive/10 text-center">
-            <p className="text-xs font-bold text-destructive">High Risk</p>
-            <p className="text-[10px] text-muted-foreground">AT &lt;11 ml/kg/min</p>
-            <p className="text-[10px] text-muted-foreground">VO₂ peak &lt;15</p>
+        )}
+  
+        {/* Summary box */}
+        <div className="mt-4 p-3 rounded-lg border border-border bg-secondary/20">
+          <p className="text-xs font-semibold text-foreground mb-1">Perioperative Risk Thresholds</p>
+          <div className="grid grid-cols-3 gap-2 mt-2">
+            <div className="p-2 rounded border border-green-500/30 bg-green-500/10 text-center">
+              <p className="text-xs font-bold text-green-500">Low Risk</p>
+              <p className="text-[10px] text-muted-foreground">AT &gt;14 ml/kg/min</p>
+              <p className="text-[10px] text-muted-foreground">VE/VCO₂ &lt;34</p>
+            </div>
+            <div className="p-2 rounded border border-yellow-500/30 bg-yellow-500/10 text-center">
+              <p className="text-xs font-bold text-yellow-500">Intermediate</p>
+              <p className="text-[10px] text-muted-foreground">AT 11–14 ml/kg/min</p>
+              <p className="text-[10px] text-muted-foreground">VO₂ peak 15–20</p>
+            </div>
+            <div className="p-2 rounded border border-destructive/30 bg-destructive/10 text-center">
+              <p className="text-xs font-bold text-destructive">High Risk</p>
+              <p className="text-[10px] text-muted-foreground">AT &lt;11 ml/kg/min</p>
+              <p className="text-[10px] text-muted-foreground">VO₂ peak &lt;15</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

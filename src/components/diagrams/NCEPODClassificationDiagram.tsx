@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * NCEPOD urgency classification visualised as a triage clock.
@@ -95,110 +96,116 @@ const STEPS: AnimatedMechanismStep[] = TIERS.map((t) => ({
 
 export const NCEPODClassificationDiagram = () => {
   return (
-    <AnimatedMechanism
-      title="NCEPOD classification — urgency triage"
-      subtitle="The clock dictates the workup. Categories 1–4 set the timeline from decision to knife-to-skin."
-      steps={STEPS}
-      accentClass="border-clinical/40"
-      renderScene={(active) => {
-        const cx = 180;
-        const cy = 180;
-        const r = 140;
-        return (
-          <svg
-            viewBox="0 0 360 360"
-            role="img"
-            aria-label="NCEPOD classification clock — four urgency categories"
-            className="w-full max-w-[420px] mx-auto"
-          >
-            {/* Backdrop */}
-            <defs>
-              <radialGradient id="ncpd-bg" cx="50%" cy="50%" r="60%">
-                <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="hsl(var(--background))" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            <rect width="360" height="360" fill="url(#ncpd-bg)" />
-
-            {/* Tier wedges */}
-            {TIERS.map((t, i) => {
-              const isActive = i === active;
-              return (
-                <g key={t.cat}>
-                  <path
-                    d={arcPath(cx, cy, r, t.startAngle, t.endAngle)}
-                    fill={t.color}
-                    fillOpacity={isActive ? 0.85 : 0.18}
-                    stroke={t.color}
-                    strokeWidth={isActive ? 2 : 1}
-                    style={{ transition: "fill-opacity 400ms ease, stroke-width 400ms ease" }}
+    <DiagramFigure
+      id="ncepod-classification-diagram"
+      title="NCEPOD classification"
+      description="Auto-generated wrapper for the NCEPOD classification anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <AnimatedMechanism
+        title="NCEPOD classification — urgency triage"
+        subtitle="The clock dictates the workup. Categories 1–4 set the timeline from decision to knife-to-skin."
+        steps={STEPS}
+        accentClass="border-clinical/40"
+        renderScene={(active) => {
+          const cx = 180;
+          const cy = 180;
+          const r = 140;
+          return (
+            <svg
+              viewBox="0 0 360 360"
+              role="img"
+              aria-label="NCEPOD classification clock — four urgency categories"
+              className="w-full max-w-[420px] mx-auto"
+            >
+              {/* Backdrop */}
+              <defs>
+                <radialGradient id="ncpd-bg" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="hsl(var(--background))" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+              <rect width="360" height="360" fill="url(#ncpd-bg)" />
+  
+              {/* Tier wedges */}
+              {TIERS.map((t, i) => {
+                const isActive = i === active;
+                return (
+                  <g key={t.cat}>
+                    <path
+                      d={arcPath(cx, cy, r, t.startAngle, t.endAngle)}
+                      fill={t.color}
+                      fillOpacity={isActive ? 0.85 : 0.18}
+                      stroke={t.color}
+                      strokeWidth={isActive ? 2 : 1}
+                      style={{ transition: "fill-opacity 400ms ease, stroke-width 400ms ease" }}
+                    />
+                    {(() => {
+                      const mid = (t.startAngle + t.endAngle) / 2;
+                      const labelPos = polar(cx, cy, r * 0.62, mid);
+                      return (
+                        <text
+                          x={labelPos.x}
+                          y={labelPos.y}
+                          textAnchor="middle"
+                          dominantBaseline="central"
+                          fontSize="13"
+                          fontWeight={isActive ? 700 : 500}
+                          fill={isActive ? "hsl(var(--background))" : "hsl(var(--foreground))"}
+                          style={{ transition: "fill 400ms ease" }}
+                        >
+                          Cat {t.cat}
+                        </text>
+                      );
+                    })()}
+                  </g>
+                );
+              })}
+  
+              {/* Centre hub */}
+              <circle cx={cx} cy={cy} r={28} fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth={1.5} />
+              <text
+                x={cx}
+                y={cy - 4}
+                textAnchor="middle"
+                fontSize="9"
+                fill="hsl(var(--muted-foreground))"
+              >
+                NCEPOD
+              </text>
+              <text
+                x={cx}
+                y={cy + 8}
+                textAnchor="middle"
+                fontSize="11"
+                fontWeight={700}
+                fill="hsl(var(--foreground))"
+              >
+                {TIERS[active]?.window}
+              </text>
+  
+              {/* Pointer */}
+              {(() => {
+                const t = TIERS[active];
+                const mid = (t.startAngle + t.endAngle) / 2;
+                const tip = polar(cx, cy, r - 8, mid);
+                return (
+                      <line
+                    x1={cx}
+                    y1={cy}
+                    x2={tip.x}
+                    y2={tip.y}
+                    stroke="hsl(var(--foreground))"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    style={{ transition: "all 500ms cubic-bezier(0.4,0,0.2,1)" }}
                   />
-                  {(() => {
-                    const mid = (t.startAngle + t.endAngle) / 2;
-                    const labelPos = polar(cx, cy, r * 0.62, mid);
-                    return (
-                      <text
-                        x={labelPos.x}
-                        y={labelPos.y}
-                        textAnchor="middle"
-                        dominantBaseline="central"
-                        fontSize="13"
-                        fontWeight={isActive ? 700 : 500}
-                        fill={isActive ? "hsl(var(--background))" : "hsl(var(--foreground))"}
-                        style={{ transition: "fill 400ms ease" }}
-                      >
-                        Cat {t.cat}
-                      </text>
-                    );
-                  })()}
-                </g>
-              );
-            })}
-
-            {/* Centre hub */}
-            <circle cx={cx} cy={cy} r={28} fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth={1.5} />
-            <text
-              x={cx}
-              y={cy - 4}
-              textAnchor="middle"
-              fontSize="9"
-              fill="hsl(var(--muted-foreground))"
-            >
-              NCEPOD
-            </text>
-            <text
-              x={cx}
-              y={cy + 8}
-              textAnchor="middle"
-              fontSize="11"
-              fontWeight={700}
-              fill="hsl(var(--foreground))"
-            >
-              {TIERS[active]?.window}
-            </text>
-
-            {/* Pointer */}
-            {(() => {
-              const t = TIERS[active];
-              const mid = (t.startAngle + t.endAngle) / 2;
-              const tip = polar(cx, cy, r - 8, mid);
-              return (
-                <line
-                  x1={cx}
-                  y1={cy}
-                  x2={tip.x}
-                  y2={tip.y}
-                  stroke="hsl(var(--foreground))"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  style={{ transition: "all 500ms cubic-bezier(0.4,0,0.2,1)" }}
-                />
-              );
-            })()}
-          </svg>
-        );
-      }}
-    />
+    );
+              })()}
+            </svg>
+          );
+        }}
+      />
+    </DiagramFigure>
   );
 };
 

@@ -4,6 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, XCircle, AlertTriangle, Sun, Moon } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Answer = "yes" | "no" | null;
 
@@ -656,26 +657,32 @@ const StepRow = ({
   }
   const yes = answer === "yes";
   return (
-    <div
-      className={`rounded-md border p-2.5 text-xs ${
-        yes ? "border-destructive/40 bg-destructive/5" : "border-primary/30 bg-primary/5"
-      }`}
+    <DiagramFigure
+      id="camicu-flowchart-diagram"
+      title="CAMICU flowchart"
+      description="Auto-generated wrapper for the CAMICU flowchart clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
     >
-      <div className="flex items-start gap-2">
-        {yes ? (
-          <CheckCircle2 className="w-4 h-4 text-destructive shrink-0 mt-0.5" aria-hidden="true" focusable={false} />
-        ) : (
-          <XCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" focusable={false} />
-        )}
-        <div>
-          <p className="font-semibold text-foreground">
-            <span className="font-mono mr-2">{n}.</span> {title} —{" "}
-            <span className={yes ? "text-destructive" : "text-primary"}>{yes ? "POSITIVE" : "negative"}</span>
-          </p>
-          <p className="text-muted-foreground mt-1">{detail}</p>
+                  <div
+        className={`rounded-md border p-2.5 text-xs ${
+          yes ? "border-destructive/40 bg-destructive/5" : "border-primary/30 bg-primary/5"
+        }`}
+      >
+        <div className="flex items-start gap-2">
+          {yes ? (
+            <CheckCircle2 className="w-4 h-4 text-destructive shrink-0 mt-0.5" aria-hidden="true" focusable={false} />
+          ) : (
+            <XCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" focusable={false} />
+          )}
+          <div>
+            <p className="font-semibold text-foreground">
+              <span className="font-mono mr-2">{n}.</span> {title} —{" "}
+              <span className={yes ? "text-destructive" : "text-primary"}>{yes ? "POSITIVE" : "negative"}</span>
+            </p>
+            <p className="text-muted-foreground mt-1">{detail}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

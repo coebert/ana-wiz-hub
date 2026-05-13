@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ModalityId = "cvvh" | "cvvhd" | "cvvhdf";
 
@@ -180,150 +181,156 @@ const RRTModalitiesDiagram = () => {
   };
 
   return (
-    <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
-      <h3 className="text-lg font-bold text-foreground mb-1">RRT Modalities & Circuit Configuration</h3>
-      <p className="text-sm text-muted-foreground mb-4">CVVH, CVVHD, CVVHDF circuits, anticoagulation, and dosing</p>
-
-      <Tabs defaultValue="circuits" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 mb-4">
-          <TabsTrigger value="circuits" className="text-xs">Circuits</TabsTrigger>
-          <TabsTrigger value="anticoag" className="text-xs">Anticoagulation</TabsTrigger>
-          <TabsTrigger value="dosing" className="text-xs">Dosing</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="circuits">
-          <div className="flex gap-2 mb-4">
-            {(["cvvh", "cvvhd", "cvvhdf"] as ModalityId[]).map((m) => (
-              <button
-                key={m}
-                onClick={() => setSelectedModality(m)}
-                className={`flex-1 p-2 rounded-lg border text-xs font-semibold transition-all uppercase ${selectedModality === m ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}
-              >
-                {m}
-              </button>
-            ))}
-          </div>
-
-          <div className="bg-background rounded-lg border border-border p-2 mb-3">
-            {renderCircuitSVG(selectedModality)}
-          </div>
-
-          {(() => {
-            const m = modalities[selectedModality];
-            return (
-              <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2">
-                <p className="font-bold text-foreground text-sm">{m.name} — {m.full}</p>
-                <p className="text-muted-foreground">{m.mechanism}</p>
-                <div className="p-2 rounded bg-background border border-border">
-                  <span className="font-semibold text-foreground">Clearance: </span>
-                  <span className="text-muted-foreground">{m.clearance}</span>
+    <DiagramFigure
+      id="rrt-modalities-diagram"
+      title="RRT modalities"
+      description="Auto-generated wrapper for the RRT modalities anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
+        <h3 className="text-lg font-bold text-foreground mb-1">RRT Modalities & Circuit Configuration</h3>
+        <p className="text-sm text-muted-foreground mb-4">CVVH, CVVHD, CVVHDF circuits, anticoagulation, and dosing</p>
+  
+        <Tabs defaultValue="circuits" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 mb-4">
+            <TabsTrigger value="circuits" className="text-xs">Circuits</TabsTrigger>
+            <TabsTrigger value="anticoag" className="text-xs">Anticoagulation</TabsTrigger>
+            <TabsTrigger value="dosing" className="text-xs">Dosing</TabsTrigger>
+          </TabsList>
+  
+          <TabsContent value="circuits">
+            <div className="flex gap-2 mb-4">
+              {(["cvvh", "cvvhd", "cvvhdf"] as ModalityId[]).map((m) => (
+                <button
+                  key={m}
+                  onClick={() => setSelectedModality(m)}
+                  className={`flex-1 p-2 rounded-lg border text-xs font-semibold transition-all uppercase ${selectedModality === m ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}
+                >
+                  {m}
+                </button>
+              ))}
+            </div>
+  
+            <div className="bg-background rounded-lg border border-border p-2 mb-3">
+              {renderCircuitSVG(selectedModality)}
+            </div>
+  
+            {(() => {
+              const m = modalities[selectedModality];
+              return (
+                    <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2">
+                  <p className="font-bold text-foreground text-sm">{m.name} — {m.full}</p>
+                  <p className="text-muted-foreground">{m.mechanism}</p>
+                  <div className="p-2 rounded bg-background border border-border">
+                    <span className="font-semibold text-foreground">Clearance: </span>
+                    <span className="text-muted-foreground">{m.clearance}</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">✓ Advantages</span>
+                      <p className="text-muted-foreground mt-0.5">{m.advantages}</p>
+                    </div>
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">✗ Disadvantages</span>
+                      <p className="text-muted-foreground mt-0.5">{m.disadvantages}</p>
+                    </div>
+                  </div>
+                  <p className="text-primary font-semibold">Best for: {m.bestFor}</p>
                 </div>
+    );
+            })()}
+          </TabsContent>
+  
+          <TabsContent value="anticoag">
+            <p className="text-xs text-muted-foreground mb-3">Tap an option for details — regional citrate is first-line (KDIGO)</p>
+            <div className="space-y-1.5">
+              {anticoagOptions.map((a) => (
+                <button
+                  key={a.id}
+                  onClick={() => setSelectedAnticoag(selectedAnticoag === a.id ? null : a.id)}
+                  className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs ${selectedAnticoag === a.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-foreground">{a.name}</span>
+                    {a.preferred && <span className="px-1.5 py-0.5 rounded bg-primary/15 text-primary text-[10px] font-semibold">1st line</span>}
+                  </div>
+                  {selectedAnticoag === a.id && (
+                    <div className="mt-2 space-y-2 animate-fade-in">
+                      <p className="text-muted-foreground">{a.mechanism}</p>
+                      <div className="p-2 rounded bg-background border border-border">
+                        <span className="font-semibold text-foreground">Dose: </span>
+                        <span className="text-muted-foreground">{a.dose}</span>
+                      </div>
+                      <div className="p-2 rounded bg-background border border-border">
+                        <span className="font-semibold text-foreground">Monitoring: </span>
+                        <span className="text-muted-foreground">{a.monitoring}</span>
+                      </div>
+                      <div className="p-2 rounded bg-background border border-border">
+                        <span className="font-semibold text-foreground">Complications: </span>
+                        <span className="text-muted-foreground">{a.complications}</span>
+                      </div>
+                      <div className="p-2 rounded bg-primary/10 border border-primary/20">
+                        <span className="font-semibold text-foreground">Evidence: </span>
+                        <span className="text-muted-foreground">{a.evidence}</span>
+                      </div>
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+          </TabsContent>
+  
+          <TabsContent value="dosing">
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs">
+                <p className="font-bold text-foreground text-sm">CRRT Dose Prescription</p>
+                <p className="text-primary font-semibold mt-1">{doseCalc.target}</p>
+                <p className="text-muted-foreground mt-2">{doseCalc.prescribe}</p>
+              </div>
+  
+              <div className="p-3 rounded-lg border border-border text-xs">
+                <p className="font-semibold text-foreground mb-1">Effluent Dose Formula</p>
+                <div className="p-2 rounded bg-muted/50 font-mono text-foreground text-center">{doseCalc.formula}</div>
+                <p className="text-muted-foreground mt-2">{doseCalc.example}</p>
+              </div>
+  
+              <div className="p-3 rounded-lg border border-border text-xs">
+                <p className="font-semibold text-foreground mb-1">Pre- vs Post-dilution</p>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="p-2 rounded bg-background border border-border">
-                    <span className="font-semibold text-foreground">✓ Advantages</span>
-                    <p className="text-muted-foreground mt-0.5">{m.advantages}</p>
+                    <span className="font-semibold text-foreground">Pre-dilution</span>
+                    <p className="text-muted-foreground mt-0.5">Fluid added before filter. ↓Haemoconcentration → ↑filter life. BUT ↓clearance efficiency (~15% less) — dilutes blood entering filter.</p>
                   </div>
                   <div className="p-2 rounded bg-background border border-border">
-                    <span className="font-semibold text-foreground">✗ Disadvantages</span>
-                    <p className="text-muted-foreground mt-0.5">{m.disadvantages}</p>
+                    <span className="font-semibold text-foreground">Post-dilution</span>
+                    <p className="text-muted-foreground mt-0.5">Fluid added after filter. Maximum clearance efficiency. BUT ↑haemoconcentration → ↑clotting risk. Filtration fraction should be &lt;25%.</p>
                   </div>
                 </div>
-                <p className="text-primary font-semibold">Best for: {m.bestFor}</p>
               </div>
-            );
-          })()}
-        </TabsContent>
-
-        <TabsContent value="anticoag">
-          <p className="text-xs text-muted-foreground mb-3">Tap an option for details — regional citrate is first-line (KDIGO)</p>
-          <div className="space-y-1.5">
-            {anticoagOptions.map((a) => (
-              <button
-                key={a.id}
-                onClick={() => setSelectedAnticoag(selectedAnticoag === a.id ? null : a.id)}
-                className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs ${selectedAnticoag === a.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-foreground">{a.name}</span>
-                  {a.preferred && <span className="px-1.5 py-0.5 rounded bg-primary/15 text-primary text-[10px] font-semibold">1st line</span>}
-                </div>
-                {selectedAnticoag === a.id && (
-                  <div className="mt-2 space-y-2 animate-fade-in">
-                    <p className="text-muted-foreground">{a.mechanism}</p>
-                    <div className="p-2 rounded bg-background border border-border">
-                      <span className="font-semibold text-foreground">Dose: </span>
-                      <span className="text-muted-foreground">{a.dose}</span>
+  
+              <div className="p-2 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
+                <strong className="text-foreground">Key trials: </strong>{doseCalc.trials}
+              </div>
+  
+              <div className="p-3 rounded-lg border border-border text-xs">
+                <p className="font-semibold text-foreground mb-1">Drug Dosing in CRRT</p>
+                <div className="space-y-1">
+                  {[
+                    { drug: "Vancomycin", adjust: "Significant CRRT clearance. Load 25 mg/kg, then level-guided. Target trough 15–20 mg/L." },
+                    { drug: "Piperacillin-tazobactam", adjust: "4.5g Q6–8H (not Q8H as per normal renal dosing). Time-dependent killing — consider extended infusion." },
+                    { drug: "Meropenem", adjust: "1g Q8H standard. 2g Q8H for CNS infections. Cleared by CRRT — do not use 'renal' doses." },
+                  ].map((d) => (
+                    <div key={d.drug} className="p-1.5 rounded bg-muted/50">
+                      <span className="font-semibold text-foreground">{d.drug}: </span>
+                      <span className="text-muted-foreground">{d.adjust}</span>
                     </div>
-                    <div className="p-2 rounded bg-background border border-border">
-                      <span className="font-semibold text-foreground">Monitoring: </span>
-                      <span className="text-muted-foreground">{a.monitoring}</span>
-                    </div>
-                    <div className="p-2 rounded bg-background border border-border">
-                      <span className="font-semibold text-foreground">Complications: </span>
-                      <span className="text-muted-foreground">{a.complications}</span>
-                    </div>
-                    <div className="p-2 rounded bg-primary/10 border border-primary/20">
-                      <span className="font-semibold text-foreground">Evidence: </span>
-                      <span className="text-muted-foreground">{a.evidence}</span>
-                    </div>
-                  </div>
-                )}
-              </button>
-            ))}
-          </div>
-        </TabsContent>
-
-        <TabsContent value="dosing">
-          <div className="space-y-3">
-            <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs">
-              <p className="font-bold text-foreground text-sm">CRRT Dose Prescription</p>
-              <p className="text-primary font-semibold mt-1">{doseCalc.target}</p>
-              <p className="text-muted-foreground mt-2">{doseCalc.prescribe}</p>
-            </div>
-
-            <div className="p-3 rounded-lg border border-border text-xs">
-              <p className="font-semibold text-foreground mb-1">Effluent Dose Formula</p>
-              <div className="p-2 rounded bg-muted/50 font-mono text-foreground text-center">{doseCalc.formula}</div>
-              <p className="text-muted-foreground mt-2">{doseCalc.example}</p>
-            </div>
-
-            <div className="p-3 rounded-lg border border-border text-xs">
-              <p className="font-semibold text-foreground mb-1">Pre- vs Post-dilution</p>
-              <div className="grid grid-cols-2 gap-2">
-                <div className="p-2 rounded bg-background border border-border">
-                  <span className="font-semibold text-foreground">Pre-dilution</span>
-                  <p className="text-muted-foreground mt-0.5">Fluid added before filter. ↓Haemoconcentration → ↑filter life. BUT ↓clearance efficiency (~15% less) — dilutes blood entering filter.</p>
-                </div>
-                <div className="p-2 rounded bg-background border border-border">
-                  <span className="font-semibold text-foreground">Post-dilution</span>
-                  <p className="text-muted-foreground mt-0.5">Fluid added after filter. Maximum clearance efficiency. BUT ↑haemoconcentration → ↑clotting risk. Filtration fraction should be &lt;25%.</p>
+                  ))}
                 </div>
               </div>
             </div>
-
-            <div className="p-2 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
-              <strong className="text-foreground">Key trials: </strong>{doseCalc.trials}
-            </div>
-
-            <div className="p-3 rounded-lg border border-border text-xs">
-              <p className="font-semibold text-foreground mb-1">Drug Dosing in CRRT</p>
-              <div className="space-y-1">
-                {[
-                  { drug: "Vancomycin", adjust: "Significant CRRT clearance. Load 25 mg/kg, then level-guided. Target trough 15–20 mg/L." },
-                  { drug: "Piperacillin-tazobactam", adjust: "4.5g Q6–8H (not Q8H as per normal renal dosing). Time-dependent killing — consider extended infusion." },
-                  { drug: "Meropenem", adjust: "1g Q8H standard. 2g Q8H for CNS infections. Cleared by CRRT — do not use 'renal' doses." },
-                ].map((d) => (
-                  <div key={d.drug} className="p-1.5 rounded bg-muted/50">
-                    <span className="font-semibold text-foreground">{d.drug}: </span>
-                    <span className="text-muted-foreground">{d.adjust}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </TabsContent>
-      </Tabs>
-    </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

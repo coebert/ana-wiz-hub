@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Band = {
   label: string;
@@ -40,93 +41,99 @@ const PaediatricVitalsTable = () => {
   ];
 
   return (
-    <div className="my-6 p-4 rounded-xl border border-border bg-card h-full flex flex-col">
-      <div className="mb-3">
-        <h3 className="text-lg font-serif font-bold text-foreground">Paediatric Vital Signs — Normal Ranges</h3>
-        <p className="text-xs text-muted-foreground mt-0.5">
-          APLS 2021 awake reference ranges. Values lie outside these in stress, sleep, fever — interpret in context.
-        </p>
-      </div>
-
-      <div className="mb-4 p-3 rounded-lg border border-border bg-secondary/30">
-        <label className="text-xs font-semibold text-foreground flex items-center justify-between">
-          <span>Age</span>
-          <span className="text-primary font-mono">{ageLabel}</span>
-        </label>
-        <input
-          type="range"
-          min={0}
-          max={192}
-          step={1}
-          value={ageMonths}
-          onChange={(e) => setAgeMonths(Number(e.target.value))}
-          className="w-full mt-1 accent-primary"
-        />
-        <div className="flex justify-between text-[10px] text-muted-foreground mt-0.5">
-          <span>0 mo</span><span>4 yr</span><span>8 yr</span><span>12 yr</span><span>16 yr</span>
-        </div>
-      </div>
-
-      <div className="flex-1 space-y-1.5">
-        {rows.map((r) => {
-          const band = BANDS[activeIdx];
-          const [lo, hi] = band[r.key];
-          return (
-            <div key={r.key} className="p-3 rounded-lg border border-border bg-background">
-              <div className="flex items-baseline justify-between gap-2">
-                <p className="text-sm font-semibold text-foreground">{r.label}</p>
-                <p className="text-base font-bold font-mono" style={{ color: r.color }}>
-                  {lo}–{hi} <span className="text-xs font-normal text-muted-foreground">{r.unit}</span>
-                </p>
-              </div>
-            </div>
-          );
-        })}
-
-        <div className="p-3 rounded-lg border border-border bg-background">
-          <div className="flex items-baseline justify-between gap-2">
-            <p className="text-sm font-semibold text-foreground">Urine output (adequate)</p>
-            <p className="text-base font-bold font-mono" style={{ color: "hsl(35 90% 45%)" }}>
-              ≥ {BANDS[activeIdx].uo} <span className="text-xs font-normal text-muted-foreground">mL/kg/hr</span>
-            </p>
-          </div>
-          <p className="text-[11px] text-muted-foreground mt-0.5">
-            Oliguria threshold for AKI assessment in children (KDIGO paediatric).
+    <DiagramFigure
+      id="paediatric-vitals-table"
+      title="Paediatric vitals table"
+      description="Auto-generated wrapper for the Paediatric vitals table anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 p-4 rounded-xl border border-border bg-card h-full flex flex-col">
+        <div className="mb-3">
+          <h3 className="text-lg font-serif font-bold text-foreground">Paediatric Vital Signs — Normal Ranges</h3>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            APLS 2021 awake reference ranges. Values lie outside these in stress, sleep, fever — interpret in context.
           </p>
         </div>
-      </div>
-
-      <div className="mt-3 overflow-x-auto">
-        <table className="w-full text-[11px] border-collapse">
-          <thead>
-            <tr className="border-b border-border text-muted-foreground">
-              <th className="text-left py-1 pr-2 font-semibold">Age band</th>
-              <th className="text-right py-1 px-1 font-semibold">HR</th>
-              <th className="text-right py-1 px-1 font-semibold">RR</th>
-              <th className="text-right py-1 pl-1 font-semibold">SBP</th>
-            </tr>
-          </thead>
-          <tbody>
-            {BANDS.map((b, i) => (
-              <tr
-                key={b.label}
-                className={`border-b border-border/50 ${i === activeIdx ? "bg-primary/10 text-foreground font-semibold" : "text-muted-foreground"}`}
-              >
-                <td className="py-1 pr-2">{b.label}</td>
-                <td className="text-right py-1 px-1 font-mono">{b.hr[0]}–{b.hr[1]}</td>
-                <td className="text-right py-1 px-1 font-mono">{b.rr[0]}–{b.rr[1]}</td>
-                <td className="text-right py-1 pl-1 font-mono">{b.sbp[0]}–{b.sbp[1]}</td>
+  
+        <div className="mb-4 p-3 rounded-lg border border-border bg-secondary/30">
+          <label className="text-xs font-semibold text-foreground flex items-center justify-between">
+            <span>Age</span>
+            <span className="text-primary font-mono">{ageLabel}</span>
+          </label>
+          <input
+            type="range"
+            min={0}
+            max={192}
+            step={1}
+            value={ageMonths}
+            onChange={(e) => setAgeMonths(Number(e.target.value))}
+            className="w-full mt-1 accent-primary"
+          />
+          <div className="flex justify-between text-[10px] text-muted-foreground mt-0.5">
+            <span>0 mo</span><span>4 yr</span><span>8 yr</span><span>12 yr</span><span>16 yr</span>
+          </div>
+        </div>
+  
+        <div className="flex-1 space-y-1.5">
+          {rows.map((r) => {
+            const band = BANDS[activeIdx];
+            const [lo, hi] = band[r.key];
+            return (
+                  <div key={r.key} className="p-3 rounded-lg border border-border bg-background">
+                <div className="flex items-baseline justify-between gap-2">
+                  <p className="text-sm font-semibold text-foreground">{r.label}</p>
+                  <p className="text-base font-bold font-mono" style={{ color: r.color }}>
+                    {lo}–{hi} <span className="text-xs font-normal text-muted-foreground">{r.unit}</span>
+                  </p>
+                </div>
+              </div>
+    );
+          })}
+  
+          <div className="p-3 rounded-lg border border-border bg-background">
+            <div className="flex items-baseline justify-between gap-2">
+              <p className="text-sm font-semibold text-foreground">Urine output (adequate)</p>
+              <p className="text-base font-bold font-mono" style={{ color: "hsl(35 90% 45%)" }}>
+                ≥ {BANDS[activeIdx].uo} <span className="text-xs font-normal text-muted-foreground">mL/kg/hr</span>
+              </p>
+            </div>
+            <p className="text-[11px] text-muted-foreground mt-0.5">
+              Oliguria threshold for AKI assessment in children (KDIGO paediatric).
+            </p>
+          </div>
+        </div>
+  
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full text-[11px] border-collapse">
+            <thead>
+              <tr className="border-b border-border text-muted-foreground">
+                <th className="text-left py-1 pr-2 font-semibold">Age band</th>
+                <th className="text-right py-1 px-1 font-semibold">HR</th>
+                <th className="text-right py-1 px-1 font-semibold">RR</th>
+                <th className="text-right py-1 pl-1 font-semibold">SBP</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {BANDS.map((b, i) => (
+                <tr
+                  key={b.label}
+                  className={`border-b border-border/50 ${i === activeIdx ? "bg-primary/10 text-foreground font-semibold" : "text-muted-foreground"}`}
+                >
+                  <td className="py-1 pr-2">{b.label}</td>
+                  <td className="text-right py-1 px-1 font-mono">{b.hr[0]}–{b.hr[1]}</td>
+                  <td className="text-right py-1 px-1 font-mono">{b.rr[0]}–{b.rr[1]}</td>
+                  <td className="text-right py-1 pl-1 font-mono">{b.sbp[0]}–{b.sbp[1]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+  
+        <div className="mt-3 p-2.5 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
+          <strong className="text-foreground">Hypotension threshold: </strong>
+          SBP &lt; 70 mmHg (neonate &lt;60), &lt; 70 + 2×age (yr) for 1–10 yr, &lt; 90 mmHg in adolescents — a <em>late</em> sign of shock in children due to robust vasoconstriction.
+        </div>
       </div>
-
-      <div className="mt-3 p-2.5 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
-        <strong className="text-foreground">Hypotension threshold: </strong>
-        SBP &lt; 70 mmHg (neonate &lt;60), &lt; 70 + 2×age (yr) for 1–10 yr, &lt; 90 mmHg in adolescents — a <em>late</em> sign of shock in children due to robust vasoconstriction.
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

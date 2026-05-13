@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Vasopressor & inotrope ladder — Surviving Sepsis Campaign 2021.
@@ -25,62 +26,68 @@ const VasopressorLadderTool = () => {
   );
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 my-6">
-      <h3 className="text-lg font-semibold text-foreground">Vasopressor &amp; Inotrope Ladder</h3>
-      <p className="text-xs text-muted-foreground mb-4">
-        Surviving Sepsis Campaign 2021 escalation logic. Targets MAP ≥ 65 mmHg with an appropriate haemodynamic profile (CI ≥ 2.5 L/min/m², SVR 800–1200 dyn·s·cm⁻⁵).
-      </p>
-
-      <p className="text-xs font-semibold text-foreground mb-2">Haemodynamics</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-4">
-        <Slider label="MAP" value={map} min={30} max={120} step={1} unit="mmHg" onChange={setMap} />
-        <Slider label="Cardiac index" value={ci} min={1.0} max={6.0} step={0.1} unit="L/min/m²" onChange={setCi} decimals={1} />
-        <Slider label="SVR" value={svr} min={300} max={2000} step={25} unit="dyn·s·cm⁻⁵" onChange={setSvr} />
-        <Slider label="Lactate" value={lactate} min={0.5} max={15} step={0.1} unit="mmol/L" onChange={setLactate} decimals={1} />
-        <Slider label="Noradrenaline dose" value={noradDose} min={0} max={1.0} step={0.01} unit="µg/kg/min" onChange={setNoradDose} decimals={2} />
-      </div>
-
-      <p className="text-xs font-semibold text-foreground mb-2">Current therapy</p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4 text-xs">
-        <Toggle label="Fluid resuscitated (≥30 mL/kg)" checked={fluidResuscitated} onChange={setFluidResuscitated} />
-        <Toggle label="On vasopressin" checked={onVasopressin} onChange={setOnVasopressin} />
-        <Toggle label="On adrenaline" checked={onAdrenaline} onChange={setOnAdrenaline} />
-        <Toggle label="On hydrocortisone" checked={onSteroid} onChange={setOnSteroid} />
-      </div>
-
-      {/* Profile card */}
-      <div className="rounded-lg bg-secondary/40 border border-border p-3 mb-3">
-        <div className="flex items-baseline justify-between flex-wrap gap-2">
-          <p className="text-sm font-semibold text-foreground">Haemodynamic profile</p>
-          <p className="text-base font-bold" style={{ color: result.profileColor }}>{result.profileLabel}</p>
+    <DiagramFigure
+      id="vasopressor-ladder-tool"
+      title="Vasopressor ladder tool"
+      description="Auto-generated wrapper for the Vasopressor ladder tool anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="rounded-xl border border-border bg-card p-4 my-6">
+        <h3 className="text-lg font-semibold text-foreground">Vasopressor &amp; Inotrope Ladder</h3>
+        <p className="text-xs text-muted-foreground mb-4">
+          Surviving Sepsis Campaign 2021 escalation logic. Targets MAP ≥ 65 mmHg with an appropriate haemodynamic profile (CI ≥ 2.5 L/min/m², SVR 800–1200 dyn·s·cm⁻⁵).
+        </p>
+  
+        <p className="text-xs font-semibold text-foreground mb-2">Haemodynamics</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-4">
+          <Slider label="MAP" value={map} min={30} max={120} step={1} unit="mmHg" onChange={setMap} />
+          <Slider label="Cardiac index" value={ci} min={1.0} max={6.0} step={0.1} unit="L/min/m²" onChange={setCi} decimals={1} />
+          <Slider label="SVR" value={svr} min={300} max={2000} step={25} unit="dyn·s·cm⁻⁵" onChange={setSvr} />
+          <Slider label="Lactate" value={lactate} min={0.5} max={15} step={0.1} unit="mmol/L" onChange={setLactate} decimals={1} />
+          <Slider label="Noradrenaline dose" value={noradDose} min={0} max={1.0} step={0.01} unit="µg/kg/min" onChange={setNoradDose} decimals={2} />
         </div>
-        <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{result.profileDetail}</p>
-      </div>
-
-      {/* Ladder visualisation */}
-      <div className="rounded-lg border border-border p-3 mb-3">
-        <p className="text-sm font-semibold text-foreground mb-3">Escalation ladder</p>
-        <div className="space-y-2">
-          {result.ladder.map((step, idx) => (
-            <LadderStep key={step.name} step={step} index={idx + 1} />
-          ))}
+  
+        <p className="text-xs font-semibold text-foreground mb-2">Current therapy</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4 text-xs">
+          <Toggle label="Fluid resuscitated (≥30 mL/kg)" checked={fluidResuscitated} onChange={setFluidResuscitated} />
+          <Toggle label="On vasopressin" checked={onVasopressin} onChange={setOnVasopressin} />
+          <Toggle label="On adrenaline" checked={onAdrenaline} onChange={setOnAdrenaline} />
+          <Toggle label="On hydrocortisone" checked={onSteroid} onChange={setOnSteroid} />
         </div>
+  
+        {/* Profile card */}
+        <div className="rounded-lg bg-secondary/40 border border-border p-3 mb-3">
+          <div className="flex items-baseline justify-between flex-wrap gap-2">
+            <p className="text-sm font-semibold text-foreground">Haemodynamic profile</p>
+            <p className="text-base font-bold" style={{ color: result.profileColor }}>{result.profileLabel}</p>
+          </div>
+          <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{result.profileDetail}</p>
+        </div>
+  
+        {/* Ladder visualisation */}
+        <div className="rounded-lg border border-border p-3 mb-3">
+          <p className="text-sm font-semibold text-foreground mb-3">Escalation ladder</p>
+          <div className="space-y-2">
+            {result.ladder.map((step, idx) => (
+              <LadderStep key={step.name} step={step} index={idx + 1} />
+            ))}
+          </div>
+        </div>
+  
+        {/* Next action */}
+        <div
+          className="rounded-lg p-3 border-l-4 mb-3"
+          style={{ borderLeftColor: result.actionColor, backgroundColor: `${result.actionColor}1A` }}
+        >
+          <p className="text-sm font-bold" style={{ color: result.actionColor }}>Next action</p>
+          <p className="text-sm text-foreground mt-1 leading-relaxed font-semibold">{result.nextAction}</p>
+          <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{result.nextRationale}</p>
+        </div>
+  
+        <p className="text-[10px] text-muted-foreground italic">
+          Refs: Evans L et al. Surviving Sepsis Campaign Guidelines 2021. Crit Care Med 2021;49:e1063. Russell JA et al. VASST. NEJM 2008;358:877. Annane D et al. APROCCHSS. NEJM 2018;378:809. Venkatesh B et al. ADRENAL. NEJM 2018;378:797.
+        </p>
       </div>
-
-      {/* Next action */}
-      <div
-        className="rounded-lg p-3 border-l-4 mb-3"
-        style={{ borderLeftColor: result.actionColor, backgroundColor: `${result.actionColor}1A` }}
-      >
-        <p className="text-sm font-bold" style={{ color: result.actionColor }}>Next action</p>
-        <p className="text-sm text-foreground mt-1 leading-relaxed font-semibold">{result.nextAction}</p>
-        <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{result.nextRationale}</p>
-      </div>
-
-      <p className="text-[10px] text-muted-foreground italic">
-        Refs: Evans L et al. Surviving Sepsis Campaign Guidelines 2021. Crit Care Med 2021;49:e1063. Russell JA et al. VASST. NEJM 2008;358:877. Annane D et al. APROCCHSS. NEJM 2018;378:809. Venkatesh B et al. ADRENAL. NEJM 2018;378:797.
-      </p>
-    </div>
+    </DiagramFigure>
   );
 };
 
@@ -128,7 +135,7 @@ function LadderStep({ step, index }: { step: Step; index: number }) {
     notIndicated:  { color: "hsl(var(--muted-foreground))", badge: "—",      ring: "opacity-40" },
   }[step.status];
   return (
-    <div
+            <div
       className={`flex items-start gap-3 rounded-md border border-border p-2 ${cfg.ring}`}
       style={{ borderLeftWidth: 4, borderLeftColor: cfg.color }}
     >

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* ─── data ─── */
 
@@ -229,176 +230,182 @@ export const AnticoagRestartTimeline = () => {
   }, []);
 
   return (
-    <div className="rounded-xl border border-border bg-card overflow-hidden">
-      {/* Inputs */}
-      <div className="p-4 bg-secondary/30 border-b border-border space-y-4">
-        {/* Drug picker */}
-        <div>
-          <label className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold block mb-1">Drug to restart</label>
-          <select
-            value={drugVal}
-            onChange={e => setDrugVal(e.target.value)}
-            className="w-full rounded-md border border-border bg-background text-foreground text-sm px-3 py-2"
-          >
-            {drugGroups.map(g => (
-              <optgroup key={g.label} label={g.label}>
-                {g.drugs.map(d => (
-                  <option key={d.value} value={d.value}>{d.name}</option>
-                ))}
-              </optgroup>
-            ))}
-          </select>
-        </div>
-
-        {/* Bleed risk */}
-        <div>
-          <label className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold block mb-1">Surgical bleeding risk</label>
-          <div className="grid grid-cols-3 gap-1.5">
-            {BLEED_OPTIONS.map(b => {
-              const active = bleed === b.value;
-              return (
-                <button
-                  key={b.value}
-                  type="button"
-                  onClick={() => setBleed(b.value)}
-                  aria-pressed={active}
-                  className="rounded-lg border-2 px-2 py-2 text-left transition-all"
-                  style={{
-                    borderColor: active ? b.color : "hsl(var(--border))",
-                    backgroundColor: active ? withAlpha(b.color, 0.1) : "transparent",
-                  }}
-                >
-                  <div className="text-xs font-bold" style={{ color: active ? b.color : "hsl(var(--foreground))" }}>{b.label}</div>
-                  <div className="text-[9px] text-muted-foreground leading-tight mt-0.5 hidden sm:block">{b.desc}</div>
-                </button>
-              );
-            })}
+    <DiagramFigure
+      id="anticoag-restart-timeline"
+      title="Anticoag restart timeline"
+      description="Auto-generated wrapper for the Anticoag restart timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="rounded-xl border border-border bg-card overflow-hidden">
+        {/* Inputs */}
+        <div className="p-4 bg-secondary/30 border-b border-border space-y-4">
+          {/* Drug picker */}
+          <div>
+            <label className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold block mb-1">Drug to restart</label>
+            <select
+              value={drugVal}
+              onChange={e => setDrugVal(e.target.value)}
+              className="w-full rounded-md border border-border bg-background text-foreground text-sm px-3 py-2"
+            >
+              {drugGroups.map(g => (
+                <optgroup key={g.label} label={g.label}>
+                  {g.drugs.map(d => (
+                    <option key={d.value} value={d.value}>{d.name}</option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
           </div>
-        </div>
-
-        {/* Epidural */}
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => setHasEpidural(h => !h)}
-            aria-pressed={hasEpidural}
-            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-              hasEpidural ? "bg-primary" : "bg-muted"
-            }`}
-          >
-            <span
-              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                hasEpidural ? "translate-x-6" : "translate-x-1"
+  
+          {/* Bleed risk */}
+          <div>
+            <label className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold block mb-1">Surgical bleeding risk</label>
+            <div className="grid grid-cols-3 gap-1.5">
+              {BLEED_OPTIONS.map(b => {
+                const active = bleed === b.value;
+                return (
+                  <button
+                    key={b.value}
+                    type="button"
+                    onClick={() => setBleed(b.value)}
+                    aria-pressed={active}
+                    className="rounded-lg border-2 px-2 py-2 text-left transition-all"
+                    style={{
+                      borderColor: active ? b.color : "hsl(var(--border))",
+                      backgroundColor: active ? withAlpha(b.color, 0.1) : "transparent",
+                    }}
+                  >
+                    <div className="text-xs font-bold" style={{ color: active ? b.color : "hsl(var(--foreground))" }}>{b.label}</div>
+                    <div className="text-[9px] text-muted-foreground leading-tight mt-0.5 hidden sm:block">{b.desc}</div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+  
+          {/* Epidural */}
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setHasEpidural(h => !h)}
+              aria-pressed={hasEpidural}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                hasEpidural ? "bg-primary" : "bg-muted"
               }`}
-            />
-          </button>
-          <span className="text-sm text-foreground">Indwelling epidural catheter</span>
-        </div>
-      </div>
-
-      {/* Gantt chart */}
-      <div className="p-4">
-        <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-2">
-          Post-operative timeline
-        </div>
-
-        {/* Time axis */}
-        <div className="relative ml-[140px] sm:ml-[180px] mb-1">
-          <div className="flex justify-between text-[9px] text-muted-foreground font-mono">
-            {Array.from({ length: Math.min(7, Math.floor(scaleMax / 6) + 1) }, (_, i) => {
-              const h = Math.round((i / Math.min(6, Math.floor(scaleMax / 6))) * scaleMax);
-              return <span key={i}>{fmtHrsShort(h)}</span>;
-            })}
+            >
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  hasEpidural ? "translate-x-6" : "translate-x-1"
+                }`}
+              />
+            </button>
+            <span className="text-sm text-foreground">Indwelling epidural catheter</span>
           </div>
         </div>
-
-        {/* Bars */}
-        <div className="space-y-1.5">
-          {timeline.map((ev, i) => {
-            const left = (ev.startH / scaleMax) * 100;
-            const width = ev.type === "milestone" ? 0 : ((ev.endH - ev.startH) / scaleMax) * 100;
-
-            return (
-              <div key={i} className="flex items-center gap-2 group">
-                <div className="w-[140px] sm:w-[180px] shrink-0 text-right pr-2">
-                  <span className="text-[10px] sm:text-xs text-muted-foreground leading-tight">{ev.label}</span>
-                </div>
-                <div className="flex-1 relative h-7 rounded bg-secondary/30">
-                  {ev.type === "bar" ? (
-                    <div
-                      className="absolute top-0.5 bottom-0.5 rounded transition-all"
-                      style={{
-                        left: `${left}%`,
-                        width: `${Math.max(1, width)}%`,
-                        backgroundColor: withAlpha(ev.color, 0.5),
-                        borderLeft: `3px solid ${ev.color}`,
-                      }}
-                    />
-                  ) : (
-                    <div
-                      className="absolute top-0 bottom-0 w-0.5 flex items-center"
-                      style={{ left: `${left}%` }}
-                    >
-                      <div className="w-0.5 h-full" style={{ backgroundColor: ev.color }} />
+  
+        {/* Gantt chart */}
+        <div className="p-4">
+          <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-2">
+            Post-operative timeline
+          </div>
+  
+          {/* Time axis */}
+          <div className="relative ml-[140px] sm:ml-[180px] mb-1">
+            <div className="flex justify-between text-[9px] text-muted-foreground font-mono">
+              {Array.from({ length: Math.min(7, Math.floor(scaleMax / 6) + 1) }, (_, i) => {
+                const h = Math.round((i / Math.min(6, Math.floor(scaleMax / 6))) * scaleMax);
+                return <span key={i}>{fmtHrsShort(h)}</span>;
+              })}
+            </div>
+          </div>
+  
+          {/* Bars */}
+          <div className="space-y-1.5">
+            {timeline.map((ev, i) => {
+              const left = (ev.startH / scaleMax) * 100;
+              const width = ev.type === "milestone" ? 0 : ((ev.endH - ev.startH) / scaleMax) * 100;
+  
+              return (
+                    <div key={i} className="flex items-center gap-2 group">
+                  <div className="w-[140px] sm:w-[180px] shrink-0 text-right pr-2">
+                    <span className="text-[10px] sm:text-xs text-muted-foreground leading-tight">{ev.label}</span>
+                  </div>
+                  <div className="flex-1 relative h-7 rounded bg-secondary/30">
+                    {ev.type === "bar" ? (
                       <div
-                        className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2"
-                        style={{ borderColor: ev.color, backgroundColor: withAlpha(ev.color, 0.25) }}
+                        className="absolute top-0.5 bottom-0.5 rounded transition-all"
+                        style={{
+                          left: `${left}%`,
+                          width: `${Math.max(1, width)}%`,
+                          backgroundColor: withAlpha(ev.color, 0.5),
+                          borderLeft: `3px solid ${ev.color}`,
+                        }}
                       />
-                    </div>
-                  )}
-                  {/* Tooltip on hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
-                    <div
-                      className="absolute -top-12 left-1/2 -translate-x-1/2 bg-popover text-popover-foreground border border-border rounded-md px-2 py-1 text-[10px] leading-tight shadow-md w-48 text-center"
-                    >
-                      {ev.detail}
+                    ) : (
+                      <div
+                        className="absolute top-0 bottom-0 w-0.5 flex items-center"
+                        style={{ left: `${left}%` }}
+                      >
+                        <div className="w-0.5 h-full" style={{ backgroundColor: ev.color }} />
+                        <div
+                          className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2"
+                          style={{ borderColor: ev.color, backgroundColor: withAlpha(ev.color, 0.25) }}
+                        />
+                      </div>
+                    )}
+                    {/* Tooltip on hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                      <div
+                        className="absolute -top-12 left-1/2 -translate-x-1/2 bg-popover text-popover-foreground border border-border rounded-md px-2 py-1 text-[10px] leading-tight shadow-md w-48 text-center"
+                      >
+                        {ev.detail}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Summary card */}
-        <div
-          className="mt-4 rounded-lg border p-3"
-          style={{ borderColor: withAlpha(bleedColor, 0.4), backgroundColor: withAlpha(bleedColor, 0.05) }}
-        >
-          <div className="text-[10px] uppercase tracking-wide font-semibold mb-1.5" style={{ color: bleedColor }}>
-            Summary — {drug.name} · {bleed} bleeding risk{hasEpidural ? " · epidural in situ" : ""}
+    );
+            })}
           </div>
-          <div className="text-xs text-muted-foreground leading-relaxed space-y-1">
-            {hasEpidural ? (
-              <>
+  
+          {/* Summary card */}
+          <div
+            className="mt-4 rounded-lg border p-3"
+            style={{ borderColor: withAlpha(bleedColor, 0.4), backgroundColor: withAlpha(bleedColor, 0.05) }}
+          >
+            <div className="text-[10px] uppercase tracking-wide font-semibold mb-1.5" style={{ color: bleedColor }}>
+              Summary — {drug.name} · {bleed} bleeding risk{hasEpidural ? " · epidural in situ" : ""}
+            </div>
+            <div className="text-xs text-muted-foreground leading-relaxed space-y-1">
+              {hasEpidural ? (
+                <>
+                  <p>
+                    <strong className="text-foreground">Catheter removal:</strong> ≥{fmtHrs(Math.max(6, bleed === "low" ? drug.restartLow : bleed === "moderate" ? drug.restartMod : drug.restartHigh))} post-op — verify motor & sensory function before and 2 h after removal.
+                  </p>
+                  <p>
+                    <strong className="text-foreground">Drug restart:</strong> ≥{fmtHrs(drug.cathDelay)} after catheter removal.
+                  </p>
+                </>
+              ) : (
                 <p>
-                  <strong className="text-foreground">Catheter removal:</strong> ≥{fmtHrs(Math.max(6, bleed === "low" ? drug.restartLow : bleed === "moderate" ? drug.restartMod : drug.restartHigh))} post-op — verify motor & sensory function before and 2 h after removal.
+                  <strong className="text-foreground">Drug restart:</strong> ≥{fmtHrs(bleed === "low" ? drug.restartLow : bleed === "moderate" ? drug.restartMod : drug.restartHigh)} post-op, once haemostasis confirmed.
                 </p>
-                <p>
-                  <strong className="text-foreground">Drug restart:</strong> ≥{fmtHrs(drug.cathDelay)} after catheter removal.
-                </p>
-              </>
-            ) : (
-              <p>
-                <strong className="text-foreground">Drug restart:</strong> ≥{fmtHrs(bleed === "low" ? drug.restartLow : bleed === "moderate" ? drug.restartMod : drug.restartHigh)} post-op, once haemostasis confirmed.
-              </p>
-            )}
-            <p className="text-[10px] italic">{drug.note}</p>
+              )}
+              <p className="text-[10px] italic">{drug.note}</p>
+            </div>
           </div>
-        </div>
-
-        {/* Caveats */}
-        <div className="mt-3 rounded-lg border border-border p-3 bg-secondary/10">
-          <div className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-1">Important caveats</div>
-          <ul className="text-[10px] text-muted-foreground leading-relaxed space-y-0.5">
-            <li>• Always confirm surgical haemostasis before restarting any anticoagulant.</li>
-            <li>• Renal impairment: extend intervals for renally cleared drugs (LMWH, dabigatran, fondaparinux).</li>
-            <li>• Epidural catheter: check motor block (Bromage 0) before and after removal; report new weakness immediately.</li>
-            <li>• This is an educational tool based on AAGBI 2013 & ESAIC 2022. Always follow your local protocol.</li>
-          </ul>
+  
+          {/* Caveats */}
+          <div className="mt-3 rounded-lg border border-border p-3 bg-secondary/10">
+            <div className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-1">Important caveats</div>
+            <ul className="text-[10px] text-muted-foreground leading-relaxed space-y-0.5">
+              <li>• Always confirm surgical haemostasis before restarting any anticoagulant.</li>
+              <li>• Renal impairment: extend intervals for renally cleared drugs (LMWH, dabigatran, fondaparinux).</li>
+              <li>• Epidural catheter: check motor block (Bromage 0) before and after removal; report new weakness immediately.</li>
+              <li>• This is an educational tool based on AAGBI 2013 & ESAIC 2022. Always follow your local protocol.</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

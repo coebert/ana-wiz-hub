@@ -413,8 +413,8 @@ export const VAECMOCircuitDiagram = () => {
               const phase = (t * 0.6 + i * 0.2) % 1;
               const y = 118 + phase * 118;
               return (
-                <circle key={`g${i}`} cx={625 + (i % 3) * 18} cy={y} r="1.4" fill="hsl(195 85% 60%)" opacity={0.7 * (1 - phase)} />
-              );
+                    <circle key={`g${i}`} cx={625 + (i % 3) * 18} cy={y} r="1.4" fill="hsl(195 85% 60%)" opacity={0.7 * (1 - phase)} />
+  );
             })}
 
             {/* Oxygenator labels */}

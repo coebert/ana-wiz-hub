@@ -474,7 +474,7 @@ export const MCSPressureVolumeLoopDiagram = () => {
               const isHL = highlight === s;
               const swPct = baselineSW > 0 ? Math.round((SW / baselineSW) * 100) : 0;
               return (
-                <tr key={s} className={isHL ? "bg-muted/40" : ""}>
+                    <tr key={s} className={isHL ? "bg-muted/40" : ""}>
                   <td className="p-2 font-medium text-foreground flex items-center gap-1.5">
                     <span className="inline-block w-2 h-2 rounded-sm" style={{ backgroundColor: p.color }} />
                     {p.shortLabel}
@@ -488,7 +488,7 @@ export const MCSPressureVolumeLoopDiagram = () => {
                   <td className="p-2 text-right">{Math.round(PE)}</td>
                   <td className="p-2 text-right font-semibold text-foreground">{Math.round(PVA)}</td>
                 </tr>
-              );
+  );
             })}
           </tbody>
         </table>

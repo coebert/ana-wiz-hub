@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ComponentKey = "venous" | "reservoir" | "pump" | "oxygenator" | "filter" | "arterial" | "cardioplegia";
 
@@ -87,70 +88,76 @@ const CPBCircuitDiagram = () => {
   const info = components[selected];
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Interactive CPB Circuit</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap a component to explore its function and clinical details</p>
-
-      <svg viewBox="0 0 400 220" className="w-full max-w-xl mx-auto mb-4" style={{ height: "auto" }}>
-        {/* Heart symbol */}
-        <text x="130" y="22" fontSize="10" fill="hsl(var(--muted-foreground))" textAnchor="middle">❤ Patient</text>
-
-        {/* Flow paths with animation */}
-        {/* Venous path: patient → venous → reservoir */}
-        <path d="M130,30 L110,47" stroke="hsl(220, 60%, 50%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
-        <path d="M70,65 L70,95" stroke="hsl(220, 60%, 50%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
-        {/* Reservoir → pump */}
-        <path d="M70,130 L70,160" stroke="hsl(240, 50%, 55%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
-        {/* Pump → oxygenator */}
-        <path d="M110,177 L160,177" stroke="hsl(280, 55%, 55%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
-        {/* Oxygenator → filter */}
-        <path d="M210,160 L210,130" stroke="hsl(0, 60%, 55%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
-        {/* Filter → arterial */}
-        <path d="M210,95 L210,65" stroke="hsl(30, 65%, 55%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
-        {/* Arterial → patient */}
-        <path d="M160,47 L130,30" stroke="hsl(0, 70%, 50%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
-        {/* Cardioplegia line */}
-        <path d="M260,112 L300,112" stroke="hsl(50, 70%, 50%)" strokeWidth="1.5" fill="none" strokeDasharray="4 3" />
-
-        {/* Components */}
-        {componentOrder.map((key) => {
-          const c = components[key];
-          const isActive = selected === key;
-          return (
-            <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
-              <rect
-                x={c.x} y={c.y} width={c.w} height={c.h} rx="6"
-                fill={c.color}
-                fillOpacity={isActive ? 0.25 : 0.1}
-                stroke={c.color}
-                strokeWidth={isActive ? 2.5 : 1}
-              />
-              <text
-                x={c.x + c.w / 2} y={c.y + c.h / 2 + 4}
-                textAnchor="middle" fontSize="9"
-                fill={c.color} fontWeight={isActive ? "bold" : "normal"}
-              >
-                {c.shortLabel}
-              </text>
-            </g>
-          );
-        })}
-
-        {/* Flow direction arrows */}
-        <text x="70" y="88" fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">↓</text>
-        <text x="70" y="153" fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">↓</text>
-        <text x="140" y="174" fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">→</text>
-        <text x="210" y="148" fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">↑</text>
-        <text x="210" y="88" fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">↑</text>
-      </svg>
-
-      {/* Info card */}
-      <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-        <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-        <p className="text-sm text-muted-foreground mt-1">{info.description}</p>
-        <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{info.detail}</p>
+    <DiagramFigure
+      id="cpb-circuit-diagram"
+      title="CPB circuit"
+      description="Auto-generated wrapper for the CPB circuit equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="border border-border rounded-lg p-4 mb-6">
+        <h3 className="text-lg font-serif font-bold text-foreground mb-1">Interactive CPB Circuit</h3>
+        <p className="text-xs text-muted-foreground mb-3">Tap a component to explore its function and clinical details</p>
+  
+        <svg viewBox="0 0 400 220" className="w-full max-w-xl mx-auto mb-4" style={{ height: "auto" }}>
+          {/* Heart symbol */}
+          <text x="130" y="22" fontSize="10" fill="hsl(var(--muted-foreground))" textAnchor="middle">❤ Patient</text>
+  
+          {/* Flow paths with animation */}
+          {/* Venous path: patient → venous → reservoir */}
+          <path d="M130,30 L110,47" stroke="hsl(220, 60%, 50%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
+          <path d="M70,65 L70,95" stroke="hsl(220, 60%, 50%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
+          {/* Reservoir → pump */}
+          <path d="M70,130 L70,160" stroke="hsl(240, 50%, 55%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
+          {/* Pump → oxygenator */}
+          <path d="M110,177 L160,177" stroke="hsl(280, 55%, 55%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
+          {/* Oxygenator → filter */}
+          <path d="M210,160 L210,130" stroke="hsl(0, 60%, 55%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
+          {/* Filter → arterial */}
+          <path d="M210,95 L210,65" stroke="hsl(30, 65%, 55%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
+          {/* Arterial → patient */}
+          <path d="M160,47 L130,30" stroke="hsl(0, 70%, 50%)" strokeWidth="2" fill="none" strokeDasharray="6 3" strokeDashoffset={-flowPhase * 0.5} />
+          {/* Cardioplegia line */}
+          <path d="M260,112 L300,112" stroke="hsl(50, 70%, 50%)" strokeWidth="1.5" fill="none" strokeDasharray="4 3" />
+  
+          {/* Components */}
+          {componentOrder.map((key) => {
+            const c = components[key];
+            const isActive = selected === key;
+            return (
+                  <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
+                <rect
+                  x={c.x} y={c.y} width={c.w} height={c.h} rx="6"
+                  fill={c.color}
+                  fillOpacity={isActive ? 0.25 : 0.1}
+                  stroke={c.color}
+                  strokeWidth={isActive ? 2.5 : 1}
+                />
+                <text
+                  x={c.x + c.w / 2} y={c.y + c.h / 2 + 4}
+                  textAnchor="middle" fontSize="9"
+                  fill={c.color} fontWeight={isActive ? "bold" : "normal"}
+                >
+                  {c.shortLabel}
+                </text>
+              </g>
+    );
+          })}
+  
+          {/* Flow direction arrows */}
+          <text x="70" y="88" fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">↓</text>
+          <text x="70" y="153" fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">↓</text>
+          <text x="140" y="174" fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">→</text>
+          <text x="210" y="148" fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">↑</text>
+          <text x="210" y="88" fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">↑</text>
+        </svg>
+  
+        {/* Info card */}
+        <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
+          <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
+          <p className="text-sm text-muted-foreground mt-1">{info.description}</p>
+          <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{info.detail}</p>
+        </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

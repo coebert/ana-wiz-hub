@@ -584,7 +584,7 @@ const EpiduralSpaceDiagram = () => {
             const active = selected === k;
             const c = REGION_COLOR[s.region];
             return (
-              <button
+                  <button
                 key={k}
                 type="button"
                 onClick={() => handlePick(k)}
@@ -597,7 +597,7 @@ const EpiduralSpaceDiagram = () => {
               >
                 {s.label}
               </button>
-            );
+  );
           })}
         </div>
       </div>

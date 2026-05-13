@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type StructureKey = "biceps-tendon" | "brachial-artery" | "median-nerve" | "radial-nerve" | "bicipital-aponeurosis" | "musculocutaneous" | "cephalic-vein" | "basilic-vein" | "median-cubital-vein" | "pronator-teres" | "brachioradialis" | "supinator" | "radial-recurrent";
 
@@ -107,238 +108,244 @@ const AntecubitalFossaDiagram = () => {
   const isActive = (k: StructureKey) => selected === k;
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Cubital fossa — anterior view"
-          subtitle="Tap structures to explore anatomy. Contents medial → lateral: Nerve, Artery, Tendon (TAN)"
-          toggles={[
-            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-          ]}
-        />
-
-        <div className="flex flex-col lg:flex-row gap-4 items-start">
-        <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="0 0 300 340" className="w-full max-w-[320px]" role="img" aria-label="Anterior view of the cubital fossa with TAN contents and bordering muscles">
-            <defs>
-              <radialGradient id="acf-bgShade" cx="50%" cy="50%" r="65%">
-                <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.16" />
-                <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
-              </radialGradient>
-              <pattern id="acf-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
-                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
-              </pattern>
-              <filter id="acf-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
-                <feOffset dx="0" dy="1.2" result="off" />
-                <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
-                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
-              </filter>
-            </defs>
-
-            <rect x="2" y="2" width="296" height="336" rx="10" fill="url(#acf-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
-            {showSutures && <rect x="2" y="2" width="296" height="336" rx="10" fill="url(#acf-tissue)" pointerEvents="none" />}
-
-            {/* Arm outline */}
-            <path d="M90,10 Q80,60 75,120 Q70,160 60,200 Q55,240 50,280 Q48,300 45,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
-            <path d="M210,10 Q220,60 225,120 Q228,160 235,200 Q238,240 240,280 Q242,300 245,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
-
-            {/* Elbow crease */}
-            {showSutures && (
-              <path d="M70,155 Q150,148 230,155" fill="none" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="4 3" opacity="0.45" />
-            )}
-            {showLabels && (
-              <text x="240" y="150" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Elbow crease</text>
-            )}
-
-            {/* Cubital fossa triangle */}
-            {/* Pronator teres - medial border */}
-            <g className="cursor-pointer" onClick={() => setSelected("pronator-teres")}>
-              <path d="M150,150 L115,220 Q110,235 108,250"
-                fill="none" stroke={structures["pronator-teres"].color}
-                strokeWidth={isActive("pronator-teres") ? 8 : 5}
-                opacity={isActive("pronator-teres") ? 0.4 : 0.15} strokeLinecap="round" />
-              <text x="100" y="230" fontSize="5" fill={structures["pronator-teres"].color} fontWeight={isActive("pronator-teres") ? "bold" : "normal"}>Pronator</text>
-              <text x="100" y="237" fontSize="5" fill={structures["pronator-teres"].color}>teres</text>
-            </g>
-
-            {/* Brachioradialis - lateral border */}
-            <g className="cursor-pointer" onClick={() => setSelected("brachioradialis")}>
-              <path d="M150,150 L190,220 Q195,240 198,260"
-                fill="none" stroke={structures.brachioradialis.color}
-                strokeWidth={isActive("brachioradialis") ? 8 : 5}
-                opacity={isActive("brachioradialis") ? 0.4 : 0.15} strokeLinecap="round" />
-              <text x="195" y="225" fontSize="5" fill={structures.brachioradialis.color} fontWeight={isActive("brachioradialis") ? "bold" : "normal"}>Brachio-</text>
-              <text x="195" y="232" fontSize="5" fill={structures.brachioradialis.color}>radialis</text>
-            </g>
-
-            {/* Floor / supinator */}
-            <g className="cursor-pointer" onClick={() => setSelected("supinator")}>
-              <ellipse cx="155" cy="185" rx="30" ry="20"
-                fill={structures.supinator.color}
-                fillOpacity={isActive("supinator") ? 0.2 : 0.05}
-                stroke={structures.supinator.color}
-                strokeWidth={isActive("supinator") ? 1 : 0.5} />
-              <text x="155" y="188" fontSize="4.5" textAnchor="middle" fill={structures.supinator.color}>Floor: brachialis / supinator</text>
-            </g>
-
-            {/* Bicipital aponeurosis */}
-            <g className="cursor-pointer" onClick={() => setSelected("bicipital-aponeurosis")}>
-              <path d="M150,145 Q140,155 120,165 Q105,175 95,180"
-                fill="none" stroke={structures["bicipital-aponeurosis"].color}
-                strokeWidth={isActive("bicipital-aponeurosis") ? 3 : 1.5}
-                opacity={isActive("bicipital-aponeurosis") ? 0.6 : 0.2}
-                strokeDasharray="5 3" />
-              <text x="85" y="190" fontSize="4.5" fill={structures["bicipital-aponeurosis"].color} textAnchor="end">Lacertus fibrosus</text>
-            </g>
-
-            {/* Biceps tendon - central */}
-            <g className="cursor-pointer" onClick={() => setSelected("biceps-tendon")}>
-              <path d="M150,80 Q150,110 150,145 Q150,155 152,165"
-                fill="none" stroke={structures["biceps-tendon"].color}
-                strokeWidth={isActive("biceps-tendon") ? 5 : 3}
-                opacity={isActive("biceps-tendon") ? 0.8 : 0.4} strokeLinecap="round" />
-              <text x="158" y="120" fontSize="5.5" fill={structures["biceps-tendon"].color} fontWeight="bold">Biceps</text>
-              <text x="158" y="128" fontSize="5.5" fill={structures["biceps-tendon"].color}>tendon</text>
-            </g>
-
-            {/* Brachial artery - medial to tendon */}
-            <g className="cursor-pointer" onClick={() => setSelected("brachial-artery")}>
-              <path d="M140,40 Q139,80 138,120 Q137,150 135,170"
-                fill="none" stroke={structures["brachial-artery"].color}
-                strokeWidth={isActive("brachial-artery") ? 4 : 2.5}
-                opacity={isActive("brachial-artery") ? 0.8 : 0.4} strokeLinecap="round" />
-              {/* Bifurcation */}
-              <circle cx="135" cy="172" r="2" fill={structures["brachial-artery"].color} fillOpacity="0.5" />
-              {/* Radial branch */}
-              <path d="M135,172 Q145,200 160,230" fill="none" stroke={structures["brachial-artery"].color}
-                strokeWidth="1.5" opacity="0.3" />
-              {/* Ulnar branch */}
-              <path d="M135,172 Q125,200 115,240" fill="none" stroke={structures["brachial-artery"].color}
-                strokeWidth="1.5" opacity="0.3" />
-              <text x="115" y="115" fontSize="5.5" fill={structures["brachial-artery"].color} fontWeight="bold" textAnchor="end">Brachial A.</text>
-            </g>
-
-            {/* Radial recurrent */}
-            <g className="cursor-pointer" onClick={() => setSelected("radial-recurrent")}>
-              <path d="M145,180 Q155,175 165,168 Q175,160 180,150"
-                fill="none" stroke={structures["radial-recurrent"].color}
-                strokeWidth={isActive("radial-recurrent") ? 2 : 1}
-                opacity={isActive("radial-recurrent") ? 0.6 : 0.2} />
-              <text x="180" y="145" fontSize="4" fill={structures["radial-recurrent"].color}>Radial recurrent</text>
-            </g>
-
-            {/* Median nerve - most medial */}
-            <g className="cursor-pointer" onClick={() => setSelected("median-nerve")}>
-              <path d="M130,40 Q130,80 130,120 Q129,150 128,175 Q125,200 120,240"
-                fill="none" stroke={structures["median-nerve"].color}
-                strokeWidth={isActive("median-nerve") ? 3 : 1.5}
-                opacity={isActive("median-nerve") ? 0.8 : 0.35} strokeLinecap="round" />
-              <text x="110" y="85" fontSize="5" fill={structures["median-nerve"].color} textAnchor="end" fontWeight="bold">Median N.</text>
-            </g>
-
-            {/* Radial nerve - lateral */}
-            <g className="cursor-pointer" onClick={() => setSelected("radial-nerve")}>
-              <path d="M170,80 Q168,110 166,140 Q164,155 162,165"
-                fill="none" stroke={structures["radial-nerve"].color}
-                strokeWidth={isActive("radial-nerve") ? 2.5 : 1.5}
-                opacity={isActive("radial-nerve") ? 0.7 : 0.3} strokeLinecap="round" />
-              {/* Bifurcation into superficial and deep */}
-              <circle cx="162" cy="167" r="1.5" fill={structures["radial-nerve"].color} fillOpacity="0.5" />
-              <path d="M162,167 Q170,185 178,210" fill="none" stroke={structures["radial-nerve"].color}
-                strokeWidth="1" opacity="0.25" />
-              <path d="M162,167 Q160,180 165,200" fill="none" stroke={structures["radial-nerve"].color}
-                strokeWidth="1" opacity="0.25" strokeDasharray="2 2" />
-              <text x="175" y="90" fontSize="5" fill={structures["radial-nerve"].color} fontWeight="bold">Radial N.</text>
-              <text x="180" y="205" fontSize="4" fill={structures["radial-nerve"].color} opacity="0.6">superficial</text>
-              <text x="165" y="205" fontSize="4" fill={structures["radial-nerve"].color} opacity="0.6">PIN</text>
-            </g>
-
-            {/* Lat cutaneous of forearm */}
-            <g className="cursor-pointer" onClick={() => setSelected("musculocutaneous")}>
-              <path d="M160,130 Q165,145 168,160 Q172,180 175,200"
-                fill="none" stroke={structures.musculocutaneous.color}
-                strokeWidth={isActive("musculocutaneous") ? 2 : 1}
-                opacity={isActive("musculocutaneous") ? 0.7 : 0.25} strokeLinecap="round" />
-              <text x="178" y="170" fontSize="4" fill={structures.musculocutaneous.color}>LCNF</text>
-            </g>
-
-            {/* Superficial veins */}
-            {/* Cephalic vein - lateral */}
-            <g className="cursor-pointer" onClick={() => setSelected("cephalic-vein")}>
-              <path d="M200,280 Q195,240 192,200 Q190,160 195,110 Q198,80 200,50"
-                fill="none" stroke={structures["cephalic-vein"].color}
-                strokeWidth={isActive("cephalic-vein") ? 3 : 2}
-                opacity={isActive("cephalic-vein") ? 0.6 : 0.2} strokeLinecap="round" />
-              <text x="205" y="100" fontSize="5" fill={structures["cephalic-vein"].color}>Cephalic V.</text>
-            </g>
-
-            {/* Basilic vein - medial */}
-            <g className="cursor-pointer" onClick={() => setSelected("basilic-vein")}>
-              <path d="M100,280 Q105,240 108,200 Q110,160 107,110 Q105,80 103,50"
-                fill="none" stroke={structures["basilic-vein"].color}
-                strokeWidth={isActive("basilic-vein") ? 3 : 2}
-                opacity={isActive("basilic-vein") ? 0.6 : 0.2} strokeLinecap="round" />
-              <text x="85" y="100" fontSize="5" fill={structures["basilic-vein"].color} textAnchor="end">Basilic V.</text>
-            </g>
-
-            {/* Median cubital vein - connecting */}
-            <g className="cursor-pointer" onClick={() => setSelected("median-cubital-vein")}>
-              <path d="M190,145 Q165,135 140,130 Q120,128 108,135"
-                fill="none" stroke={structures["median-cubital-vein"].color}
-                strokeWidth={isActive("median-cubital-vein") ? 4 : 2.5}
-                opacity={isActive("median-cubital-vein") ? 0.7 : 0.3} strokeLinecap="round" />
-              <text x="150" y="120" fontSize="5.5" textAnchor="middle" fill={structures["median-cubital-vein"].color} fontWeight="bold">Median cubital V.</text>
-            </g>
-
-            {/* TAN label */}
-            <g opacity="0.5">
-              <text x="150" y="30" fontSize="6" textAnchor="middle" fill="hsl(var(--muted-foreground))">← Medial | Lateral →</text>
-              <text x="125" y="48" fontSize="5" fill={structures["median-nerve"].color}>N</text>
-              <text x="138" y="48" fontSize="5" fill={structures["brachial-artery"].color}>A</text>
-              <text x="150" y="48" fontSize="5" fill={structures["biceps-tendon"].color}>T</text>
-              <text x="165" y="48" fontSize="4.5" fill="hsl(var(--muted-foreground))">(medial → lateral)</text>
-            </g>
-          </svg>
-        </div>
-
-        <div className="flex-1 min-w-0">
-          <div
-            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
-            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
-            key={selected}
-          >
-            <p className="font-semibold text-foreground text-sm">{info.label}</p>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
-            </p>
+    <DiagramFigure
+      id="antecubital-fossa-diagram"
+      title="Antecubital fossa"
+      description="Auto-generated wrapper for the Antecubital fossa anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Cubital fossa — anterior view"
+            subtitle="Tap structures to explore anatomy. Contents medial → lateral: Nerve, Artery, Tendon (TAN)"
+            toggles={[
+              { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+            ]}
+          />
+  
+          <div className="flex flex-col lg:flex-row gap-4 items-start">
+          <div className="flex-shrink-0 mx-auto">
+            <svg viewBox="0 0 300 340" className="w-full max-w-[320px]" role="img" aria-label="Anterior view of the cubital fossa with TAN contents and bordering muscles">
+              <defs>
+                <radialGradient id="acf-bgShade" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.16" />
+                  <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+                </radialGradient>
+                <pattern id="acf-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
+                  <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+                </pattern>
+                <filter id="acf-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                  <feOffset dx="0" dy="1.2" result="off" />
+                  <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
+                  <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+  
+              <rect x="2" y="2" width="296" height="336" rx="10" fill="url(#acf-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+              {showSutures && <rect x="2" y="2" width="296" height="336" rx="10" fill="url(#acf-tissue)" pointerEvents="none" />}
+  
+              {/* Arm outline */}
+              <path d="M90,10 Q80,60 75,120 Q70,160 60,200 Q55,240 50,280 Q48,300 45,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
+              <path d="M210,10 Q220,60 225,120 Q228,160 235,200 Q238,240 240,280 Q242,300 245,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
+  
+              {/* Elbow crease */}
+              {showSutures && (
+                <path d="M70,155 Q150,148 230,155" fill="none" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="4 3" opacity="0.45" />
+              )}
+              {showLabels && (
+                <text x="240" y="150" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Elbow crease</text>
+              )}
+  
+              {/* Cubital fossa triangle */}
+              {/* Pronator teres - medial border */}
+              <g className="cursor-pointer" onClick={() => setSelected("pronator-teres")}>
+                <path d="M150,150 L115,220 Q110,235 108,250"
+                  fill="none" stroke={structures["pronator-teres"].color}
+                  strokeWidth={isActive("pronator-teres") ? 8 : 5}
+                  opacity={isActive("pronator-teres") ? 0.4 : 0.15} strokeLinecap="round" />
+                <text x="100" y="230" fontSize="5" fill={structures["pronator-teres"].color} fontWeight={isActive("pronator-teres") ? "bold" : "normal"}>Pronator</text>
+                <text x="100" y="237" fontSize="5" fill={structures["pronator-teres"].color}>teres</text>
+              </g>
+  
+              {/* Brachioradialis - lateral border */}
+              <g className="cursor-pointer" onClick={() => setSelected("brachioradialis")}>
+                <path d="M150,150 L190,220 Q195,240 198,260"
+                  fill="none" stroke={structures.brachioradialis.color}
+                  strokeWidth={isActive("brachioradialis") ? 8 : 5}
+                  opacity={isActive("brachioradialis") ? 0.4 : 0.15} strokeLinecap="round" />
+                <text x="195" y="225" fontSize="5" fill={structures.brachioradialis.color} fontWeight={isActive("brachioradialis") ? "bold" : "normal"}>Brachio-</text>
+                <text x="195" y="232" fontSize="5" fill={structures.brachioradialis.color}>radialis</text>
+              </g>
+  
+              {/* Floor / supinator */}
+              <g className="cursor-pointer" onClick={() => setSelected("supinator")}>
+                <ellipse cx="155" cy="185" rx="30" ry="20"
+                  fill={structures.supinator.color}
+                  fillOpacity={isActive("supinator") ? 0.2 : 0.05}
+                  stroke={structures.supinator.color}
+                  strokeWidth={isActive("supinator") ? 1 : 0.5} />
+                <text x="155" y="188" fontSize="4.5" textAnchor="middle" fill={structures.supinator.color}>Floor: brachialis / supinator</text>
+              </g>
+  
+              {/* Bicipital aponeurosis */}
+              <g className="cursor-pointer" onClick={() => setSelected("bicipital-aponeurosis")}>
+                <path d="M150,145 Q140,155 120,165 Q105,175 95,180"
+                  fill="none" stroke={structures["bicipital-aponeurosis"].color}
+                  strokeWidth={isActive("bicipital-aponeurosis") ? 3 : 1.5}
+                  opacity={isActive("bicipital-aponeurosis") ? 0.6 : 0.2}
+                  strokeDasharray="5 3" />
+                <text x="85" y="190" fontSize="4.5" fill={structures["bicipital-aponeurosis"].color} textAnchor="end">Lacertus fibrosus</text>
+              </g>
+  
+              {/* Biceps tendon - central */}
+              <g className="cursor-pointer" onClick={() => setSelected("biceps-tendon")}>
+                <path d="M150,80 Q150,110 150,145 Q150,155 152,165"
+                  fill="none" stroke={structures["biceps-tendon"].color}
+                  strokeWidth={isActive("biceps-tendon") ? 5 : 3}
+                  opacity={isActive("biceps-tendon") ? 0.8 : 0.4} strokeLinecap="round" />
+                <text x="158" y="120" fontSize="5.5" fill={structures["biceps-tendon"].color} fontWeight="bold">Biceps</text>
+                <text x="158" y="128" fontSize="5.5" fill={structures["biceps-tendon"].color}>tendon</text>
+              </g>
+  
+              {/* Brachial artery - medial to tendon */}
+              <g className="cursor-pointer" onClick={() => setSelected("brachial-artery")}>
+                <path d="M140,40 Q139,80 138,120 Q137,150 135,170"
+                  fill="none" stroke={structures["brachial-artery"].color}
+                  strokeWidth={isActive("brachial-artery") ? 4 : 2.5}
+                  opacity={isActive("brachial-artery") ? 0.8 : 0.4} strokeLinecap="round" />
+                {/* Bifurcation */}
+                <circle cx="135" cy="172" r="2" fill={structures["brachial-artery"].color} fillOpacity="0.5" />
+                {/* Radial branch */}
+                <path d="M135,172 Q145,200 160,230" fill="none" stroke={structures["brachial-artery"].color}
+                  strokeWidth="1.5" opacity="0.3" />
+                {/* Ulnar branch */}
+                <path d="M135,172 Q125,200 115,240" fill="none" stroke={structures["brachial-artery"].color}
+                  strokeWidth="1.5" opacity="0.3" />
+                <text x="115" y="115" fontSize="5.5" fill={structures["brachial-artery"].color} fontWeight="bold" textAnchor="end">Brachial A.</text>
+              </g>
+  
+              {/* Radial recurrent */}
+              <g className="cursor-pointer" onClick={() => setSelected("radial-recurrent")}>
+                <path d="M145,180 Q155,175 165,168 Q175,160 180,150"
+                  fill="none" stroke={structures["radial-recurrent"].color}
+                  strokeWidth={isActive("radial-recurrent") ? 2 : 1}
+                  opacity={isActive("radial-recurrent") ? 0.6 : 0.2} />
+                <text x="180" y="145" fontSize="4" fill={structures["radial-recurrent"].color}>Radial recurrent</text>
+              </g>
+  
+              {/* Median nerve - most medial */}
+              <g className="cursor-pointer" onClick={() => setSelected("median-nerve")}>
+                <path d="M130,40 Q130,80 130,120 Q129,150 128,175 Q125,200 120,240"
+                  fill="none" stroke={structures["median-nerve"].color}
+                  strokeWidth={isActive("median-nerve") ? 3 : 1.5}
+                  opacity={isActive("median-nerve") ? 0.8 : 0.35} strokeLinecap="round" />
+                <text x="110" y="85" fontSize="5" fill={structures["median-nerve"].color} textAnchor="end" fontWeight="bold">Median N.</text>
+              </g>
+  
+              {/* Radial nerve - lateral */}
+              <g className="cursor-pointer" onClick={() => setSelected("radial-nerve")}>
+                <path d="M170,80 Q168,110 166,140 Q164,155 162,165"
+                  fill="none" stroke={structures["radial-nerve"].color}
+                  strokeWidth={isActive("radial-nerve") ? 2.5 : 1.5}
+                  opacity={isActive("radial-nerve") ? 0.7 : 0.3} strokeLinecap="round" />
+                {/* Bifurcation into superficial and deep */}
+                <circle cx="162" cy="167" r="1.5" fill={structures["radial-nerve"].color} fillOpacity="0.5" />
+                <path d="M162,167 Q170,185 178,210" fill="none" stroke={structures["radial-nerve"].color}
+                  strokeWidth="1" opacity="0.25" />
+                <path d="M162,167 Q160,180 165,200" fill="none" stroke={structures["radial-nerve"].color}
+                  strokeWidth="1" opacity="0.25" strokeDasharray="2 2" />
+                <text x="175" y="90" fontSize="5" fill={structures["radial-nerve"].color} fontWeight="bold">Radial N.</text>
+                <text x="180" y="205" fontSize="4" fill={structures["radial-nerve"].color} opacity="0.6">superficial</text>
+                <text x="165" y="205" fontSize="4" fill={structures["radial-nerve"].color} opacity="0.6">PIN</text>
+              </g>
+  
+              {/* Lat cutaneous of forearm */}
+              <g className="cursor-pointer" onClick={() => setSelected("musculocutaneous")}>
+                <path d="M160,130 Q165,145 168,160 Q172,180 175,200"
+                  fill="none" stroke={structures.musculocutaneous.color}
+                  strokeWidth={isActive("musculocutaneous") ? 2 : 1}
+                  opacity={isActive("musculocutaneous") ? 0.7 : 0.25} strokeLinecap="round" />
+                <text x="178" y="170" fontSize="4" fill={structures.musculocutaneous.color}>LCNF</text>
+              </g>
+  
+              {/* Superficial veins */}
+              {/* Cephalic vein - lateral */}
+              <g className="cursor-pointer" onClick={() => setSelected("cephalic-vein")}>
+                <path d="M200,280 Q195,240 192,200 Q190,160 195,110 Q198,80 200,50"
+                  fill="none" stroke={structures["cephalic-vein"].color}
+                  strokeWidth={isActive("cephalic-vein") ? 3 : 2}
+                  opacity={isActive("cephalic-vein") ? 0.6 : 0.2} strokeLinecap="round" />
+                <text x="205" y="100" fontSize="5" fill={structures["cephalic-vein"].color}>Cephalic V.</text>
+              </g>
+  
+              {/* Basilic vein - medial */}
+              <g className="cursor-pointer" onClick={() => setSelected("basilic-vein")}>
+                <path d="M100,280 Q105,240 108,200 Q110,160 107,110 Q105,80 103,50"
+                  fill="none" stroke={structures["basilic-vein"].color}
+                  strokeWidth={isActive("basilic-vein") ? 3 : 2}
+                  opacity={isActive("basilic-vein") ? 0.6 : 0.2} strokeLinecap="round" />
+                <text x="85" y="100" fontSize="5" fill={structures["basilic-vein"].color} textAnchor="end">Basilic V.</text>
+              </g>
+  
+              {/* Median cubital vein - connecting */}
+              <g className="cursor-pointer" onClick={() => setSelected("median-cubital-vein")}>
+                <path d="M190,145 Q165,135 140,130 Q120,128 108,135"
+                  fill="none" stroke={structures["median-cubital-vein"].color}
+                  strokeWidth={isActive("median-cubital-vein") ? 4 : 2.5}
+                  opacity={isActive("median-cubital-vein") ? 0.7 : 0.3} strokeLinecap="round" />
+                <text x="150" y="120" fontSize="5.5" textAnchor="middle" fill={structures["median-cubital-vein"].color} fontWeight="bold">Median cubital V.</text>
+              </g>
+  
+              {/* TAN label */}
+              <g opacity="0.5">
+                <text x="150" y="30" fontSize="6" textAnchor="middle" fill="hsl(var(--muted-foreground))">← Medial | Lateral →</text>
+                <text x="125" y="48" fontSize="5" fill={structures["median-nerve"].color}>N</text>
+                <text x="138" y="48" fontSize="5" fill={structures["brachial-artery"].color}>A</text>
+                <text x="150" y="48" fontSize="5" fill={structures["biceps-tendon"].color}>T</text>
+                <text x="165" y="48" fontSize="4.5" fill="hsl(var(--muted-foreground))">(medial → lateral)</text>
+              </g>
+            </svg>
           </div>
-
-          <div className="mt-3 space-y-2">
-            {Object.values(categories).map(cat => (
-              <div key={cat.label}>
-                <p className="text-xs text-muted-foreground font-medium mb-1">{cat.label}</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {cat.keys.map(key => (
-                    <button key={key} onClick={() => setSelected(key)}
-                      className={`text-xs px-2 py-1 rounded border transition-all ${
-                        selected === key ? "border-primary bg-primary/10 text-foreground font-medium" : "border-border text-muted-foreground hover:border-primary/50"
-                      }`}>
-                      {structures[key].label.split(" (")[0]}
-                    </button>
-                  ))}
+  
+          <div className="flex-1 min-w-0">
+            <div
+              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+              style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+              key={selected}
+            >
+              <p className="font-semibold text-foreground text-sm">{info.label}</p>
+              <p className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
+              </p>
+            </div>
+  
+            <div className="mt-3 space-y-2">
+              {Object.values(categories).map(cat => (
+                <div key={cat.label}>
+                  <p className="text-xs text-muted-foreground font-medium mb-1">{cat.label}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {cat.keys.map(key => (
+                      <button key={key} onClick={() => setSelected(key)}
+                        className={`text-xs px-2 py-1 rounded border transition-all ${
+                          selected === key ? "border-primary bg-primary/10 text-foreground font-medium" : "border-border text-muted-foreground hover:border-primary/50"
+                        }`}>
+                        {structures[key].label.split(" (")[0]}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
+        </div>
       </div>
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

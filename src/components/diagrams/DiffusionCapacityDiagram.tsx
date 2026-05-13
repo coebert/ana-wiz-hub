@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const DiffusionCapacityDiagram = () => {
   const [view, setView] = useState<"fick" | "dlco" | "factors">("fick");
@@ -13,36 +14,42 @@ const DiffusionCapacityDiagram = () => {
   const normalRate = (70 * 1.0 * 8) / (0.5 * 10);
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-foreground">Diffusion & Gas Transfer</h3>
-
-      <div className="flex gap-2">
-        {([
-          { key: "fick" as const, label: "Fick's Law" },
-          { key: "dlco" as const, label: "DLCO" },
-          { key: "factors" as const, label: "Clinical Factors" },
-        ]).map(v => (
-          <button key={v.key} onClick={() => setView(v.key)}
-            className={`flex-1 px-2 py-1.5 rounded-lg text-xs font-medium transition-all ${
-              view === v.key ? "bg-primary text-primary-foreground shadow-sm" : "bg-secondary/50 text-muted-foreground hover:bg-secondary"
-            }`}>
-            {v.label}
-          </button>
-        ))}
+    <DiagramFigure
+      id="diffusion-capacity-diagram"
+      title="Diffusion capacity"
+      description="Auto-generated wrapper for the Diffusion capacity anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-foreground">Diffusion & Gas Transfer</h3>
+  
+        <div className="flex gap-2">
+          {([
+            { key: "fick" as const, label: "Fick's Law" },
+            { key: "dlco" as const, label: "DLCO" },
+            { key: "factors" as const, label: "Clinical Factors" },
+          ]).map(v => (
+            <button key={v.key} onClick={() => setView(v.key)}
+              className={`flex-1 px-2 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                view === v.key ? "bg-primary text-primary-foreground shadow-sm" : "bg-secondary/50 text-muted-foreground hover:bg-secondary"
+              }`}>
+              {v.label}
+            </button>
+          ))}
+        </div>
+  
+        {view === "fick" && (
+          <FickView
+            thickness={thickness} setThickness={setThickness}
+            area={area} setArea={setArea}
+            gradient={gradient} setGradient={setGradient}
+            solubility={solubility} setSolubility={setSolubility}
+            diffusionRate={diffusionRate} normalRate={normalRate}
+          />
+        )}
+        {view === "dlco" && <DLCOView />}
+        {view === "factors" && <FactorsView />}
       </div>
-
-      {view === "fick" && (
-        <FickView
-          thickness={thickness} setThickness={setThickness}
-          area={area} setArea={setArea}
-          gradient={gradient} setGradient={setGradient}
-          solubility={solubility} setSolubility={setSolubility}
-          diffusionRate={diffusionRate} normalRate={normalRate}
-        />
-      )}
-      {view === "dlco" && <DLCOView />}
-      {view === "factors" && <FactorsView />}
-    </div>
+    </DiagramFigure>
   );
 };
 
@@ -341,7 +348,7 @@ function Slider({ label, value, min, max, step, unit, onChange }: {
   label: string; value: number; min: number; max: number; step: number; unit: string; onChange: (v: number) => void;
 }) {
   return (
-    <div>
+            <div>
       <div className="flex justify-between text-xs mb-0.5">
         <span className="text-muted-foreground">{label}</span>
         <span className="font-mono font-semibold text-foreground">{step < 1 ? value.toFixed(1) : value} {unit}</span>

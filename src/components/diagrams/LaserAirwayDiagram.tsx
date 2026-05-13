@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * LaserAirwayDiagram
@@ -212,240 +213,246 @@ const LaserAirwayDiagram = () => {
   const wave = WAVELENGTHS[waveIdx];
 
   return (
-    <div className="my-6 p-4 rounded-xl border border-border bg-card">
-      <div className="mb-3">
-        <h3 className="text-lg font-serif font-bold text-foreground">Laser airway: tubes & ocular protection</h3>
-        <p className="text-xs text-muted-foreground mt-0.5">
-          Annotated cross-sections of the three laser-resistant ETTs in common UK use, plus the
-          wavelength-specific eye-protection rationale for patient and staff.
-        </p>
-      </div>
-
-      <div className="flex gap-2 mb-3 flex-wrap">
-        {([
-          ["ett", "Laser-resistant ETTs"],
-          ["eyes", "Eye protection"],
-        ] as Array<[Tab, string]>).map(([k, label]) => (
-          <button
-            key={k}
-            onClick={() => setTab(k)}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-md border transition-colors ${
-              tab === k
-                ? "bg-clinical text-white border-clinical"
-                : "bg-background text-muted-foreground border-border hover:border-clinical/50"
-            }`}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-
-      {tab === "ett" && (
-        <>
-          <div className="flex gap-2 mb-3 flex-wrap">
-            {(Object.keys(ETTS) as ETTKey[]).map((k) => (
-              <button
-                key={k}
-                onClick={() => setEttKey(k)}
-                className={`px-2.5 py-1 text-[11px] font-medium rounded-md border transition-colors ${
-                  ettKey === k
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-background text-muted-foreground border-border hover:border-primary/50"
-                }`}
-              >
-                {ETTS[k].name}
-              </button>
-            ))}
-          </div>
-
-          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-4 items-start">
-            <div className="rounded-lg border border-border bg-background p-2">
-              <svg viewBox="0 0 360 170" className="w-full h-auto" role="img" aria-label={`${ett.name} cross-section`}>
-                {/* 15 mm connector */}
-                <rect x="6" y="84" width="34" height="22" rx="3" fill="hsl(0 0% 30%)" />
-                <text x="23" y="78" fontSize="8" textAnchor="middle" fill="hsl(var(--muted-foreground))">15 mm</text>
-                {ett.render()}
-              </svg>
+    <DiagramFigure
+      id="laser-airway-diagram"
+      title="Laser airway"
+      description="Auto-generated wrapper for the Laser airway anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="my-6 p-4 rounded-xl border border-border bg-card">
+        <div className="mb-3">
+          <h3 className="text-lg font-serif font-bold text-foreground">Laser airway: tubes & ocular protection</h3>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Annotated cross-sections of the three laser-resistant ETTs in common UK use, plus the
+            wavelength-specific eye-protection rationale for patient and staff.
+          </p>
+        </div>
+  
+        <div className="flex gap-2 mb-3 flex-wrap">
+          {([
+            ["ett", "Laser-resistant ETTs"],
+            ["eyes", "Eye protection"],
+          ] as Array<[Tab, string]>).map(([k, label]) => (
+            <button
+              key={k}
+              onClick={() => setTab(k)}
+              className={`px-3 py-1.5 text-xs font-semibold rounded-md border transition-colors ${
+                tab === k
+                  ? "bg-clinical text-white border-clinical"
+                  : "bg-background text-muted-foreground border-border hover:border-clinical/50"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+  
+        {tab === "ett" && (
+          <>
+            <div className="flex gap-2 mb-3 flex-wrap">
+              {(Object.keys(ETTS) as ETTKey[]).map((k) => (
+                <button
+                  key={k}
+                  onClick={() => setEttKey(k)}
+                  className={`px-2.5 py-1 text-[11px] font-medium rounded-md border transition-colors ${
+                    ettKey === k
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-background text-muted-foreground border-border hover:border-primary/50"
+                  }`}
+                >
+                  {ETTS[k].name}
+                </button>
+              ))}
             </div>
-
-            <div className="space-y-2">
-              <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
-                <p className="text-sm font-bold text-foreground">{ett.name}</p>
-                <p className="text-xs text-muted-foreground italic mt-0.5">{ett.brand}</p>
+  
+            <div className="grid lg:grid-cols-[1.1fr_1fr] gap-4 items-start">
+              <div className="rounded-lg border border-border bg-background p-2">
+                <svg viewBox="0 0 360 170" className="w-full h-auto" role="img" aria-label={`${ett.name} cross-section`}>
+                  {/* 15 mm connector */}
+                  <rect x="6" y="84" width="34" height="22" rx="3" fill="hsl(0 0% 30%)" />
+                  <text x="23" y="78" fontSize="8" textAnchor="middle" fill="hsl(var(--muted-foreground))">15 mm</text>
+                  {ett.render()}
+                </svg>
               </div>
-
-              <div className="p-2.5 rounded-lg border border-border bg-background">
-                <p className="text-xs font-semibold text-foreground mb-1">Shaft construction</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{ett.shaft}</p>
-              </div>
-
-              <div className="p-2.5 rounded-lg border border-border bg-background">
-                <p className="text-xs font-semibold text-foreground mb-1">Cuff design</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{ett.cuffs}</p>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-2">
-                <div className="p-2.5 rounded-lg border border-emerald-500/30 bg-emerald-500/5">
-                  <p className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 mb-1">Strengths</p>
-                  <ul className="space-y-1">
-                    {ett.pros.map((p, i) => (
-                      <li key={i} className="text-[11px] text-muted-foreground leading-snug pl-3 relative">
-                        <span className="absolute left-0 top-1.5 w-1 h-1 rounded-full bg-emerald-500" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
+  
+              <div className="space-y-2">
+                <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
+                  <p className="text-sm font-bold text-foreground">{ett.name}</p>
+                  <p className="text-xs text-muted-foreground italic mt-0.5">{ett.brand}</p>
                 </div>
-                <div className="p-2.5 rounded-lg border border-amber-500/30 bg-amber-500/5">
-                  <p className="text-[11px] font-semibold text-amber-700 dark:text-amber-400 mb-1">Pitfalls</p>
-                  <ul className="space-y-1">
-                    {ett.cons.map((p, i) => (
-                      <li key={i} className="text-[11px] text-muted-foreground leading-snug pl-3 relative">
-                        <span className="absolute left-0 top-1.5 w-1 h-1 rounded-full bg-amber-500" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
+  
+                <div className="p-2.5 rounded-lg border border-border bg-background">
+                  <p className="text-xs font-semibold text-foreground mb-1">Shaft construction</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{ett.shaft}</p>
+                </div>
+  
+                <div className="p-2.5 rounded-lg border border-border bg-background">
+                  <p className="text-xs font-semibold text-foreground mb-1">Cuff design</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{ett.cuffs}</p>
+                </div>
+  
+                <div className="grid sm:grid-cols-2 gap-2">
+                  <div className="p-2.5 rounded-lg border border-emerald-500/30 bg-emerald-500/5">
+                    <p className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 mb-1">Strengths</p>
+                    <ul className="space-y-1">
+                      {ett.pros.map((p, i) => (
+                        <li key={i} className="text-[11px] text-muted-foreground leading-snug pl-3 relative">
+                          <span className="absolute left-0 top-1.5 w-1 h-1 rounded-full bg-emerald-500" />
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="p-2.5 rounded-lg border border-amber-500/30 bg-amber-500/5">
+                    <p className="text-[11px] font-semibold text-amber-700 dark:text-amber-400 mb-1">Pitfalls</p>
+                    <ul className="space-y-1">
+                      {ett.cons.map((p, i) => (
+                        <li key={i} className="text-[11px] text-muted-foreground leading-snug pl-3 relative">
+                          <span className="absolute left-0 top-1.5 w-1 h-1 rounded-full bg-amber-500" />
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+  
+                <div className="p-2.5 rounded bg-clinical/5 border border-clinical/30 text-xs text-muted-foreground">
+                  <strong className="text-foreground">Tip: </strong>{ett.notes}
                 </div>
               </div>
-
-              <div className="p-2.5 rounded bg-clinical/5 border border-clinical/30 text-xs text-muted-foreground">
-                <strong className="text-foreground">Tip: </strong>{ett.notes}
+            </div>
+  
+            <div className="mt-3 p-2.5 rounded bg-secondary/40 border border-border text-xs text-muted-foreground">
+              <strong className="text-foreground">Universal precautions: </strong>
+              FiO₂ ≤ 0.30, air/O₂ mix only (never N₂O), saline-soaked pledgets at the glottis,
+              saline syringe primed on the airway trolley, surgeon and anaesthetist agree the laser-fire drill before draping,
+              and a fresh ETT pre-loaded for emergency re-intubation.
+            </div>
+          </>
+        )}
+  
+        {tab === "eyes" && (
+          <>
+            <div className="flex gap-2 mb-3 flex-wrap">
+              {WAVELENGTHS.map((w, i) => (
+                <button
+                  key={w.laser}
+                  onClick={() => setWaveIdx(i)}
+                  className={`px-2.5 py-1 text-[11px] font-semibold rounded-md border transition-colors ${
+                    waveIdx === i
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-background text-muted-foreground border-border hover:border-primary/50"
+                  }`}
+                >
+                  {w.laser}
+                </button>
+              ))}
+            </div>
+  
+            <div className="grid lg:grid-cols-[1fr_1fr] gap-4 items-start">
+              {/* Eye cross-section */}
+              <div className="rounded-lg border border-border bg-background p-2">
+                <svg viewBox="0 0 360 240" className="w-full h-auto" role="img" aria-label={`Eye cross-section showing ${wave.laser} target`}>
+                  {/* Globe */}
+                  <ellipse cx="180" cy="120" rx="120" ry="90" fill="hsl(0 0% 99%)" stroke="hsl(0 0% 35%)" strokeWidth="1.5" />
+                  {/* Cornea bulge */}
+                  <path d="M 60 120 Q 30 120 60 90 Q 70 80 75 90" fill="hsl(195 50% 92%)" stroke="hsl(0 0% 35%)" strokeWidth="1.5" />
+                  <path d="M 60 120 Q 30 120 60 150 Q 70 160 75 150" fill="hsl(195 50% 92%)" stroke="hsl(0 0% 35%)" strokeWidth="1.5" />
+                  {/* Iris + pupil */}
+                  <ellipse cx="78" cy="120" rx="6" ry="22" fill="hsl(28 55% 35%)" />
+                  <ellipse cx="78" cy="120" rx="3" ry="11" fill="hsl(0 0% 5%)" />
+                  {/* Lens */}
+                  <ellipse cx="100" cy="120" rx="14" ry="28" fill="hsl(45 50% 90%)" stroke="hsl(40 30% 55%)" />
+                  {/* Vitreous label */}
+                  <text x="200" y="115" fontSize="9" fill="hsl(var(--muted-foreground))">vitreous</text>
+                  {/* Retina arc + fovea */}
+                  <path d="M 290 70 Q 300 120 290 170" fill="none" stroke="hsl(355 70% 45%)" strokeWidth="3" />
+                  <circle cx="297" cy="120" r="4" fill="hsl(355 70% 35%)" />
+                  <text x="305" y="123" fontSize="9" fill="hsl(var(--foreground))">fovea</text>
+                  <text x="305" y="80" fontSize="9" fill="hsl(355 70% 45%)">retina</text>
+                  {/* Optic nerve */}
+                  <path d="M 300 160 Q 330 175 345 195" fill="none" stroke="hsl(0 0% 30%)" strokeWidth="3" />
+                  <text x="332" y="210" fontSize="9" fill="hsl(var(--muted-foreground))">optic n.</text>
+  
+                  {/* Beam — behaviour depends on wavelength */}
+                  {wave.laser === "CO₂" && (
+                    <>
+                      <line x1="0" y1="120" x2="60" y2="120" stroke={wave.colour} strokeWidth="3" />
+                      {/* Burst at cornea */}
+                      <g fill={wave.colour} opacity="0.85">
+                        <circle cx="62" cy="120" r="4" />
+                        <line x1="55" y1="105" x2="68" y2="135" stroke={wave.colour} strokeWidth="1.5" />
+                        <line x1="55" y1="135" x2="68" y2="105" stroke={wave.colour} strokeWidth="1.5" />
+                      </g>
+                      <text x="40" y="100" fontSize="9" fill={wave.colour} fontWeight="600">absorbed at cornea</text>
+                    </>
+                  )}
+                  {(wave.laser === "Nd:YAG" || wave.laser === "KTP / Argon") && (
+                    <>
+                      {/* Beam through cornea, lens → focused on fovea */}
+                      <line x1="0" y1="120" x2="297" y2="120" stroke={wave.colour} strokeWidth="2" />
+                      <line x1="0" y1="116" x2="297" y2="118" stroke={wave.colour} strokeWidth="1" opacity="0.5" />
+                      <line x1="0" y1="124" x2="297" y2="122" stroke={wave.colour} strokeWidth="1" opacity="0.5" />
+                      {/* Focal burn at fovea */}
+                      <circle cx="297" cy="120" r="8" fill="none" stroke={wave.colour} strokeWidth="1.5" opacity="0.7" />
+                      <circle cx="297" cy="120" r="13" fill="none" stroke={wave.colour} strokeWidth="1" opacity="0.4" />
+                      <text x="155" y="108" fontSize="9" fill={wave.colour} fontWeight="600">transmitted to retina</text>
+                    </>
+                  )}
+  
+                  {/* Wavelength label */}
+                  <text x="10" y="20" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">
+                    {wave.laser} — {wave.wavelength}
+                  </text>
+                  <text x="10" y="34" fontSize="9" fill="hsl(var(--muted-foreground))">target: {wave.ocularTarget}</text>
+                </svg>
+              </div>
+  
+              <div className="space-y-2">
+                <div className="p-3 rounded-lg border border-clinical/30 bg-clinical/5">
+                  <p className="text-sm font-bold text-foreground">Why eye protection matters</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed mt-1">
+                    An anaesthetised patient cannot blink, avert their gaze or report pain — the lids are
+                    often taped, and a stray reflection from a metal retractor or wet mucosa can deliver
+                    the full focal energy of the beam to cornea or retina in microseconds. Theatre staff
+                    face the same hazard from invisible (CO₂, Nd:YAG) or brilliantly visible (KTP)
+                    reflections that easily outrun the blink reflex (~200 ms).
+                  </p>
+                </div>
+  
+                <div className="p-2.5 rounded-lg border border-border bg-background">
+                  <p className="text-xs font-semibold text-foreground mb-1">Patient risk</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{wave.patientRisk}</p>
+                  <p className="text-[11px] text-muted-foreground mt-2">
+                    <strong className="text-foreground">Patient eye protocol: </strong>
+                    lids taped closed, lubricated with paraffin-free gel, covered with saline-soaked gauze
+                    and a wet-cloth-wrapped metal eye shield. The whole face is then draped with
+                    damp surgical drapes so any beam strike is absorbed before reaching skin or eye.
+                  </p>
+                </div>
+  
+                <div className="p-2.5 rounded-lg border border-border bg-background">
+                  <p className="text-xs font-semibold text-foreground mb-1">Staff risk</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{wave.staffRisk}</p>
+                  <p className="text-[11px] text-muted-foreground mt-2">
+                    <strong className="text-foreground">Required PPE: </strong>{wave.filter} ({wave.od}).
+                    Eyewear is wavelength-specific — CO₂ glasses give zero retinal protection from Nd:YAG
+                    and vice versa. Door warning sign, theatre windows covered, designated Laser Protection
+                    Supervisor present, matt-finish instruments where possible.
+                  </p>
+                </div>
+  
+                <div className="p-2.5 rounded bg-destructive/5 border border-destructive/30 text-[11px] text-muted-foreground">
+                  <strong className="text-foreground">Fire-triangle reminder: </strong>
+                  the laser is the ignition source, the ETT/drapes/cuff/surgical swabs are the fuel, and
+                  O₂ (± N₂O) is the oxidiser. Ocular injury and airway fire share the same root cause —
+                  an unprotected target meeting an undiluted beam.
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="mt-3 p-2.5 rounded bg-secondary/40 border border-border text-xs text-muted-foreground">
-            <strong className="text-foreground">Universal precautions: </strong>
-            FiO₂ ≤ 0.30, air/O₂ mix only (never N₂O), saline-soaked pledgets at the glottis,
-            saline syringe primed on the airway trolley, surgeon and anaesthetist agree the laser-fire drill before draping,
-            and a fresh ETT pre-loaded for emergency re-intubation.
-          </div>
-        </>
-      )}
-
-      {tab === "eyes" && (
-        <>
-          <div className="flex gap-2 mb-3 flex-wrap">
-            {WAVELENGTHS.map((w, i) => (
-              <button
-                key={w.laser}
-                onClick={() => setWaveIdx(i)}
-                className={`px-2.5 py-1 text-[11px] font-semibold rounded-md border transition-colors ${
-                  waveIdx === i
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-background text-muted-foreground border-border hover:border-primary/50"
-                }`}
-              >
-                {w.laser}
-              </button>
-            ))}
-          </div>
-
-          <div className="grid lg:grid-cols-[1fr_1fr] gap-4 items-start">
-            {/* Eye cross-section */}
-            <div className="rounded-lg border border-border bg-background p-2">
-              <svg viewBox="0 0 360 240" className="w-full h-auto" role="img" aria-label={`Eye cross-section showing ${wave.laser} target`}>
-                {/* Globe */}
-                <ellipse cx="180" cy="120" rx="120" ry="90" fill="hsl(0 0% 99%)" stroke="hsl(0 0% 35%)" strokeWidth="1.5" />
-                {/* Cornea bulge */}
-                <path d="M 60 120 Q 30 120 60 90 Q 70 80 75 90" fill="hsl(195 50% 92%)" stroke="hsl(0 0% 35%)" strokeWidth="1.5" />
-                <path d="M 60 120 Q 30 120 60 150 Q 70 160 75 150" fill="hsl(195 50% 92%)" stroke="hsl(0 0% 35%)" strokeWidth="1.5" />
-                {/* Iris + pupil */}
-                <ellipse cx="78" cy="120" rx="6" ry="22" fill="hsl(28 55% 35%)" />
-                <ellipse cx="78" cy="120" rx="3" ry="11" fill="hsl(0 0% 5%)" />
-                {/* Lens */}
-                <ellipse cx="100" cy="120" rx="14" ry="28" fill="hsl(45 50% 90%)" stroke="hsl(40 30% 55%)" />
-                {/* Vitreous label */}
-                <text x="200" y="115" fontSize="9" fill="hsl(var(--muted-foreground))">vitreous</text>
-                {/* Retina arc + fovea */}
-                <path d="M 290 70 Q 300 120 290 170" fill="none" stroke="hsl(355 70% 45%)" strokeWidth="3" />
-                <circle cx="297" cy="120" r="4" fill="hsl(355 70% 35%)" />
-                <text x="305" y="123" fontSize="9" fill="hsl(var(--foreground))">fovea</text>
-                <text x="305" y="80" fontSize="9" fill="hsl(355 70% 45%)">retina</text>
-                {/* Optic nerve */}
-                <path d="M 300 160 Q 330 175 345 195" fill="none" stroke="hsl(0 0% 30%)" strokeWidth="3" />
-                <text x="332" y="210" fontSize="9" fill="hsl(var(--muted-foreground))">optic n.</text>
-
-                {/* Beam — behaviour depends on wavelength */}
-                {wave.laser === "CO₂" && (
-                  <>
-                    <line x1="0" y1="120" x2="60" y2="120" stroke={wave.colour} strokeWidth="3" />
-                    {/* Burst at cornea */}
-                    <g fill={wave.colour} opacity="0.85">
-                      <circle cx="62" cy="120" r="4" />
-                      <line x1="55" y1="105" x2="68" y2="135" stroke={wave.colour} strokeWidth="1.5" />
-                      <line x1="55" y1="135" x2="68" y2="105" stroke={wave.colour} strokeWidth="1.5" />
-                    </g>
-                    <text x="40" y="100" fontSize="9" fill={wave.colour} fontWeight="600">absorbed at cornea</text>
-                  </>
-                )}
-                {(wave.laser === "Nd:YAG" || wave.laser === "KTP / Argon") && (
-                  <>
-                    {/* Beam through cornea, lens → focused on fovea */}
-                    <line x1="0" y1="120" x2="297" y2="120" stroke={wave.colour} strokeWidth="2" />
-                    <line x1="0" y1="116" x2="297" y2="118" stroke={wave.colour} strokeWidth="1" opacity="0.5" />
-                    <line x1="0" y1="124" x2="297" y2="122" stroke={wave.colour} strokeWidth="1" opacity="0.5" />
-                    {/* Focal burn at fovea */}
-                    <circle cx="297" cy="120" r="8" fill="none" stroke={wave.colour} strokeWidth="1.5" opacity="0.7" />
-                    <circle cx="297" cy="120" r="13" fill="none" stroke={wave.colour} strokeWidth="1" opacity="0.4" />
-                    <text x="155" y="108" fontSize="9" fill={wave.colour} fontWeight="600">transmitted to retina</text>
-                  </>
-                )}
-
-                {/* Wavelength label */}
-                <text x="10" y="20" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">
-                  {wave.laser} — {wave.wavelength}
-                </text>
-                <text x="10" y="34" fontSize="9" fill="hsl(var(--muted-foreground))">target: {wave.ocularTarget}</text>
-              </svg>
-            </div>
-
-            <div className="space-y-2">
-              <div className="p-3 rounded-lg border border-clinical/30 bg-clinical/5">
-                <p className="text-sm font-bold text-foreground">Why eye protection matters</p>
-                <p className="text-xs text-muted-foreground leading-relaxed mt-1">
-                  An anaesthetised patient cannot blink, avert their gaze or report pain — the lids are
-                  often taped, and a stray reflection from a metal retractor or wet mucosa can deliver
-                  the full focal energy of the beam to cornea or retina in microseconds. Theatre staff
-                  face the same hazard from invisible (CO₂, Nd:YAG) or brilliantly visible (KTP)
-                  reflections that easily outrun the blink reflex (~200 ms).
-                </p>
-              </div>
-
-              <div className="p-2.5 rounded-lg border border-border bg-background">
-                <p className="text-xs font-semibold text-foreground mb-1">Patient risk</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{wave.patientRisk}</p>
-                <p className="text-[11px] text-muted-foreground mt-2">
-                  <strong className="text-foreground">Patient eye protocol: </strong>
-                  lids taped closed, lubricated with paraffin-free gel, covered with saline-soaked gauze
-                  and a wet-cloth-wrapped metal eye shield. The whole face is then draped with
-                  damp surgical drapes so any beam strike is absorbed before reaching skin or eye.
-                </p>
-              </div>
-
-              <div className="p-2.5 rounded-lg border border-border bg-background">
-                <p className="text-xs font-semibold text-foreground mb-1">Staff risk</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{wave.staffRisk}</p>
-                <p className="text-[11px] text-muted-foreground mt-2">
-                  <strong className="text-foreground">Required PPE: </strong>{wave.filter} ({wave.od}).
-                  Eyewear is wavelength-specific — CO₂ glasses give zero retinal protection from Nd:YAG
-                  and vice versa. Door warning sign, theatre windows covered, designated Laser Protection
-                  Supervisor present, matt-finish instruments where possible.
-                </p>
-              </div>
-
-              <div className="p-2.5 rounded bg-destructive/5 border border-destructive/30 text-[11px] text-muted-foreground">
-                <strong className="text-foreground">Fire-triangle reminder: </strong>
-                the laser is the ignition source, the ETT/drapes/cuff/surgical swabs are the fuel, and
-                O₂ (± N₂O) is the oxidiser. Ocular injury and airway fire share the same root cause —
-                an unprotected target meeting an undiluted beam.
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </DiagramFigure>
   );
 };
 

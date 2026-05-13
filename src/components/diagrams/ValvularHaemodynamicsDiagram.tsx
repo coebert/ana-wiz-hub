@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Valve = "AS" | "AR" | "MS" | "MR";
 
@@ -97,91 +98,97 @@ const ValvularHaemodynamicsDiagram = () => {
   const data = valveData[selected];
 
   return (
-    <div className="space-y-4 mb-8">
-      <div className="p-4 rounded-lg border border-border bg-card">
-        <h2 className="text-xl font-serif font-bold text-foreground mb-1">Valvular Haemodynamic Goals</h2>
-        <p className="text-sm text-muted-foreground mb-3">Select a valve lesion to see the target haemodynamic parameters and rationale.</p>
-
-        <div className="flex flex-wrap gap-2 mb-4">
-          {valves.map((v) => (
-            <Button key={v} variant={selected === v ? "default" : "outline"} size="sm" onClick={() => setSelected(v)} className="text-xs">
-              {valveData[v].label}
-            </Button>
-          ))}
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-4">
-          {/* Left — parameters */}
-          <div className="space-y-3">
-            <div>
-              <p className="text-xs font-semibold text-foreground mb-1">Heart Rate: <span className="text-primary">{data.rateTarget}</span></p>
-              <BarIndicator value={data.rateBar} lowLabel="Slow" highLabel="Fast" color="bg-primary" />
-            </div>
-            <div>
-              <p className="text-xs font-semibold text-foreground mb-1">Preload: <span className="text-primary">{data.preload}</span></p>
-              <BarIndicator value={data.preloadBar} lowLabel="Low" highLabel="High" color="bg-chart-4" />
-            </div>
-            <div>
-              <p className="text-xs font-semibold text-foreground mb-1">Afterload (SVR): <span className="text-primary">{data.afterload}</span></p>
-              <BarIndicator value={data.afterloadBar} lowLabel="Low" highLabel="High" color="bg-destructive" />
-            </div>
-            <div className="text-xs">
-              <span className="font-semibold text-foreground">Rhythm: </span>
-              <span className="text-muted-foreground">{data.rhythm}</span>
-            </div>
-            <div className="text-xs">
-              <span className="font-semibold text-foreground">Contractility: </span>
-              <span className="text-muted-foreground">{data.contractility}</span>
-            </div>
+    <DiagramFigure
+      id="valvular-haemodynamics-diagram"
+      title="Valvular haemodynamics"
+      description="Auto-generated wrapper for the Valvular haemodynamics anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-4 mb-8">
+        <div className="p-4 rounded-lg border border-border bg-card">
+          <h2 className="text-xl font-serif font-bold text-foreground mb-1">Valvular Haemodynamic Goals</h2>
+          <p className="text-sm text-muted-foreground mb-3">Select a valve lesion to see the target haemodynamic parameters and rationale.</p>
+  
+          <div className="flex flex-wrap gap-2 mb-4">
+            {valves.map((v) => (
+              <Button key={v} variant={selected === v ? "default" : "outline"} size="sm" onClick={() => setSelected(v)} className="text-xs">
+                {valveData[v].label}
+              </Button>
+            ))}
           </div>
-
-          {/* Right — avoid & rationale */}
-          <div className="space-y-3">
-            <div>
-              <p className="text-xs font-semibold text-foreground mb-1">⚠️ Avoid</p>
-              <div className="flex flex-wrap gap-1">
-                {data.avoid.map((a) => (
-                  <span key={a} className="text-[10px] px-2 py-0.5 rounded-full bg-destructive/10 text-destructive border border-destructive/20">{a}</span>
-                ))}
+  
+          <div className="grid sm:grid-cols-2 gap-4">
+            {/* Left — parameters */}
+            <div className="space-y-3">
+              <div>
+                <p className="text-xs font-semibold text-foreground mb-1">Heart Rate: <span className="text-primary">{data.rateTarget}</span></p>
+                <BarIndicator value={data.rateBar} lowLabel="Slow" highLabel="Fast" color="bg-primary" />
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-foreground mb-1">Preload: <span className="text-primary">{data.preload}</span></p>
+                <BarIndicator value={data.preloadBar} lowLabel="Low" highLabel="High" color="bg-chart-4" />
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-foreground mb-1">Afterload (SVR): <span className="text-primary">{data.afterload}</span></p>
+                <BarIndicator value={data.afterloadBar} lowLabel="Low" highLabel="High" color="bg-destructive" />
+              </div>
+              <div className="text-xs">
+                <span className="font-semibold text-foreground">Rhythm: </span>
+                <span className="text-muted-foreground">{data.rhythm}</span>
+              </div>
+              <div className="text-xs">
+                <span className="font-semibold text-foreground">Contractility: </span>
+                <span className="text-muted-foreground">{data.contractility}</span>
               </div>
             </div>
-            <div className="p-3 rounded-lg border border-primary/20 bg-primary/5">
-              <p className="text-xs font-semibold text-foreground mb-1">Rationale</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{data.rationale}</p>
+  
+            {/* Right — avoid & rationale */}
+            <div className="space-y-3">
+              <div>
+                <p className="text-xs font-semibold text-foreground mb-1">⚠️ Avoid</p>
+                <div className="flex flex-wrap gap-1">
+                  {data.avoid.map((a) => (
+                    <span key={a} className="text-[10px] px-2 py-0.5 rounded-full bg-destructive/10 text-destructive border border-destructive/20">{a}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="p-3 rounded-lg border border-primary/20 bg-primary/5">
+                <p className="text-xs font-semibold text-foreground mb-1">Rationale</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">{data.rationale}</p>
+              </div>
             </div>
           </div>
         </div>
+  
+        {/* Comparison mini-table */}
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs border-collapse">
+            <thead>
+              <tr className="border-b border-border">
+                <th className="text-left p-1.5 text-foreground font-semibold">Lesion</th>
+                <th className="text-left p-1.5 text-foreground font-semibold">Rate</th>
+                <th className="text-left p-1.5 text-foreground font-semibold">Preload</th>
+                <th className="text-left p-1.5 text-foreground font-semibold">SVR</th>
+                <th className="text-left p-1.5 text-foreground font-semibold">Rhythm</th>
+              </tr>
+            </thead>
+            <tbody>
+              {valves.map((v) => {
+                const d = valveData[v];
+                return (
+                      <tr key={v} className={`border-b border-border/50 cursor-pointer transition-colors ${selected === v ? "bg-primary/10" : "hover:bg-secondary/30"}`} onClick={() => setSelected(v)}>
+                    <td className="p-1.5 font-medium text-foreground">{d.label}</td>
+                    <td className="p-1.5 text-muted-foreground">{d.rate}</td>
+                    <td className="p-1.5 text-muted-foreground">{d.preload}</td>
+                    <td className="p-1.5 text-muted-foreground">{d.afterload}</td>
+                    <td className="p-1.5 text-muted-foreground">{d.rhythm}</td>
+                  </tr>
+    );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
-
-      {/* Comparison mini-table */}
-      <div className="overflow-x-auto">
-        <table className="w-full text-xs border-collapse">
-          <thead>
-            <tr className="border-b border-border">
-              <th className="text-left p-1.5 text-foreground font-semibold">Lesion</th>
-              <th className="text-left p-1.5 text-foreground font-semibold">Rate</th>
-              <th className="text-left p-1.5 text-foreground font-semibold">Preload</th>
-              <th className="text-left p-1.5 text-foreground font-semibold">SVR</th>
-              <th className="text-left p-1.5 text-foreground font-semibold">Rhythm</th>
-            </tr>
-          </thead>
-          <tbody>
-            {valves.map((v) => {
-              const d = valveData[v];
-              return (
-                <tr key={v} className={`border-b border-border/50 cursor-pointer transition-colors ${selected === v ? "bg-primary/10" : "hover:bg-secondary/30"}`} onClick={() => setSelected(v)}>
-                  <td className="p-1.5 font-medium text-foreground">{d.label}</td>
-                  <td className="p-1.5 text-muted-foreground">{d.rate}</td>
-                  <td className="p-1.5 text-muted-foreground">{d.preload}</td>
-                  <td className="p-1.5 text-muted-foreground">{d.afterload}</td>
-                  <td className="p-1.5 text-muted-foreground">{d.rhythm}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

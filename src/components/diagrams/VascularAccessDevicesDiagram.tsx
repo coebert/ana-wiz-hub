@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Hook: returns true if the user has requested reduced motion at the OS level.
@@ -873,32 +874,38 @@ const SceneIntroducer: React.FC = () => {
 
 export const VascularAccessDevicesDiagram: React.FC = () => {
   return (
-    <figure className="my-6 rounded-xl border border-border bg-card overflow-hidden">
-      <figcaption className="px-4 py-3 border-b border-border bg-muted/30">
-        <p className="text-sm font-semibold text-foreground">
-          Vascular access devices — shown in their anatomical context
-        </p>
-        <p className="text-xs text-muted-foreground mt-0.5">
-          Each device is illustrated <em>in situ</em> on its true insertion
-          site — peripheral cannulae in hand and antecubital fossa veins,
-          central devices in the right internal jugular descending to the
-          SVC. Watch each catheter advance from skin entry to its target
-          vessel position, dwell, then retract on loop. Shaft thickness
-          reflects relative French sizes; lumen count and hub colour follow
-          ISO conventions.
-        </p>
-      </figcaption>
-
-      <div className="p-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <SceneHandCannula />
-        <SceneACF14G />
-        <SceneMidline />
-        <ScenePICC />
-        <SceneCVC />
-        <SceneVascath />
-        <SceneIntroducer />
-      </div>
-    </figure>
+    <DiagramFigure
+      id="vascular-access-devices-diagram"
+      title="Vascular access devices"
+      description="Auto-generated wrapper for the Vascular access devices anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <figure className="my-6 rounded-xl border border-border bg-card overflow-hidden">
+        <figcaption className="px-4 py-3 border-b border-border bg-muted/30">
+          <p className="text-sm font-semibold text-foreground">
+            Vascular access devices — shown in their anatomical context
+          </p>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Each device is illustrated <em>in situ</em> on its true insertion
+            site — peripheral cannulae in hand and antecubital fossa veins,
+            central devices in the right internal jugular descending to the
+            SVC. Watch each catheter advance from skin entry to its target
+            vessel position, dwell, then retract on loop. Shaft thickness
+            reflects relative French sizes; lumen count and hub colour follow
+            ISO conventions.
+          </p>
+        </figcaption>
+  
+        <div className="p-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <SceneHandCannula />
+          <SceneACF14G />
+          <SceneMidline />
+          <ScenePICC />
+          <SceneCVC />
+          <SceneVascath />
+          <SceneIntroducer />
+        </div>
+      </figure>
+    </DiagramFigure>
   );
 };
 
@@ -968,7 +975,7 @@ export const VascularAccessCrossSectionDiagram: React.FC = () => {
   const maxR = 36;
 
   return (
-    <figure className="my-6 rounded-xl border border-border bg-card overflow-hidden">
+        <figure className="my-6 rounded-xl border border-border bg-card overflow-hidden">
       <figcaption className="px-4 py-3 border-b border-border bg-muted/30">
         <p className="text-sm font-semibold text-foreground">
           Lumen geometry — why a CVC is not a resus line
@@ -1041,7 +1048,7 @@ export const VascularAccessCrossSectionDiagram: React.FC = () => {
                       const ly = cy + Math.sin(rad) * r * 0.4;
                       const sizes = [0.36, 0.28, 0.28];
                       return (
-                        <circle
+                            <circle
                           key={deg}
                           cx={lx}
                           cy={ly}
@@ -1050,7 +1057,7 @@ export const VascularAccessCrossSectionDiagram: React.FC = () => {
                           stroke={wallColor}
                           strokeWidth={0.5}
                         />
-                      );
+  );
                     })}
                   </>
                 )}

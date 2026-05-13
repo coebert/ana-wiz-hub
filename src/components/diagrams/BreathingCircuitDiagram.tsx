@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Circuit = "maplesonA" | "maplesonD" | "maplesonF" | "circle";
 
@@ -228,35 +229,41 @@ export const BreathingCircuitDiagram = () => {
   };
 
   return (
-    <div className="space-y-4">
-      <div className="flex gap-2 flex-wrap">
-        {(Object.keys(circuits) as Circuit[]).map((key) => (
-          <Button key={key} variant={active === key ? "default" : "outline"} size="sm" className="text-xs" onClick={() => setActive(key)}>
-            {circuits[key].label}
-          </Button>
-        ))}
-      </div>
-
-      <div className="rounded-lg border border-border bg-secondary/20 p-3">
-        {renderCircuitSVG()}
-      </div>
-
-      <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
-        <p className="text-xs font-semibold text-primary">{c.fullName}</p>
-        <p className="text-sm text-foreground mt-1">{c.efficiency}</p>
-        <p className="text-xs text-muted-foreground mt-1">{c.use}</p>
-      </div>
-
-      <div className="p-3 rounded-lg border border-border">
-        <p className="text-xs font-semibold text-foreground mb-2">Components</p>
-        <ul className="space-y-1">
-          {c.components.map((comp) => (
-            <li key={comp} className="text-xs text-muted-foreground flex items-start gap-1.5">
-              <span className="text-primary mt-0.5">•</span>{comp}
-            </li>
+    <DiagramFigure
+      id="breathing-circuit-diagram"
+      title="Breathing circuit"
+      description="Auto-generated wrapper for the Breathing circuit equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="space-y-4">
+        <div className="flex gap-2 flex-wrap">
+          {(Object.keys(circuits) as Circuit[]).map((key) => (
+            <Button key={key} variant={active === key ? "default" : "outline"} size="sm" className="text-xs" onClick={() => setActive(key)}>
+              {circuits[key].label}
+            </Button>
           ))}
-        </ul>
+        </div>
+  
+        <div className="rounded-lg border border-border bg-secondary/20 p-3">
+          {renderCircuitSVG()}
+        </div>
+  
+        <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+          <p className="text-xs font-semibold text-primary">{c.fullName}</p>
+          <p className="text-sm text-foreground mt-1">{c.efficiency}</p>
+          <p className="text-xs text-muted-foreground mt-1">{c.use}</p>
+        </div>
+  
+        <div className="p-3 rounded-lg border border-border">
+          <p className="text-xs font-semibold text-foreground mb-2">Components</p>
+          <ul className="space-y-1">
+            {c.components.map((comp) => (
+              <li key={comp} className="text-xs text-muted-foreground flex items-start gap-1.5">
+                <span className="text-primary mt-0.5">•</span>{comp}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };

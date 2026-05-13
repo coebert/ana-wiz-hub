@@ -1,3 +1,4 @@
+import { DiagramFigure } from "./_shared/DiagramFigure";
 /**
  * Compact, reusable legend for animated pathophysiology diagrams.
  * Renders small inline SVG glyphs that mirror the vocabulary used inside
@@ -109,22 +110,28 @@ const DiagramAnimationLegend = ({
   title = "Diagram legend",
 }: DiagramAnimationLegendProps) => {
   return (
-    <div className="mt-4 rounded-lg border border-border bg-muted/30 p-3">
-      <p className="text-xs font-semibold text-foreground mb-2">{title}</p>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
-        {items.map((item, i) => (
-          <li key={i} className="flex items-start gap-2 text-xs">
-            <span className="flex-shrink-0 mt-0.5"><Glyph type={item.glyph} /></span>
-            <span className="leading-snug">
-              <span className="font-medium text-foreground">{item.label}</span>
-              {item.meaning && (
-                <span className="text-muted-foreground"> — {item.meaning}</span>
-              )}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <DiagramFigure
+      id="diagram-animation-legend"
+      title="Diagram animation legend"
+      description="Auto-generated wrapper for the Diagram animation legend animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="mt-4 rounded-lg border border-border bg-muted/30 p-3">
+        <p className="text-xs font-semibold text-foreground mb-2">{title}</p>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
+          {items.map((item, i) => (
+            <li key={i} className="flex items-start gap-2 text-xs">
+              <span className="flex-shrink-0 mt-0.5"><Glyph type={item.glyph} /></span>
+              <span className="leading-snug">
+                <span className="font-medium text-foreground">{item.label}</span>
+                {item.meaning && (
+                  <span className="text-muted-foreground"> — {item.meaning}</span>
+                )}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </DiagramFigure>
   );
 };
 

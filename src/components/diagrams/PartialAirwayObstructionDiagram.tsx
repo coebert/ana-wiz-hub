@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * PartialAirwayObstructionDiagram
@@ -136,89 +137,95 @@ export default function PartialAirwayObstructionDiagram() {
   const info = LEVELS[level];
 
   return (
-    <div className="w-full rounded-lg border border-border bg-card p-4">
-      <div className="mb-3">
-        <h3 className="text-lg font-serif font-semibold text-foreground">
-          Partial airway obstruction — level-by-level animation
-        </h3>
-        <p className="text-xs text-muted-foreground mt-1">
-          Each tab loops a single spontaneous breath. Watch the airway lumen, the chest, and the
-          flow–volume loop deform in the phase where the lesion is unmasked.
-        </p>
-      </div>
-
-      {/* Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 mb-3">
-        {(Object.keys(LEVELS) as Level[]).map((l) => (
-          <button
-            key={l}
-            onClick={() => setLevel(l)}
-            className={`text-xs font-medium rounded px-2 py-1.5 border transition ${
-              level === l
-                ? "bg-primary text-primary-foreground border-primary"
-                : "bg-background text-foreground border-border hover:bg-muted"
-            }`}
-          >
-            {LEVELS[l].shortLabel}
-          </button>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr,1fr] gap-4">
-        {/* Anatomy panel */}
-        <div className="rounded-md border border-border bg-background overflow-hidden">
-          <AnatomySvg level={level} lumen={lumen} pleuralP={pleuralP} inInsp={inInsp} />
+    <DiagramFigure
+      id="partial-airway-obstruction-diagram"
+      title="Partial airway obstruction"
+      description="Auto-generated wrapper for the Partial airway obstruction anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="w-full rounded-lg border border-border bg-card p-4">
+        <div className="mb-3">
+          <h3 className="text-lg font-serif font-semibold text-foreground">
+            Partial airway obstruction — level-by-level animation
+          </h3>
+          <p className="text-xs text-muted-foreground mt-1">
+            Each tab loops a single spontaneous breath. Watch the airway lumen, the chest, and the
+            flow–volume loop deform in the phase where the lesion is unmasked.
+          </p>
         </div>
-
-        {/* Flow loop & info */}
-        <div className="flex flex-col gap-3">
-          <div className="rounded-md border border-border bg-background p-3">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                Flow–volume loop
-              </span>
-              <span className="text-[10px] font-mono text-muted-foreground">
-                {inInsp ? "Inspiration" : "Expiration"}
-              </span>
-            </div>
-            <FlowLoop level={level} t={t} flow={flow} inInsp={inInsp} />
+  
+        {/* Tabs */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 mb-3">
+          {(Object.keys(LEVELS) as Level[]).map((l) => (
+            <button
+              key={l}
+              onClick={() => setLevel(l)}
+              className={`text-xs font-medium rounded px-2 py-1.5 border transition ${
+                level === l
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-background text-foreground border-border hover:bg-muted"
+              }`}
+            >
+              {LEVELS[l].shortLabel}
+            </button>
+          ))}
+        </div>
+  
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr,1fr] gap-4">
+          {/* Anatomy panel */}
+          <div className="rounded-md border border-border bg-background overflow-hidden">
+            <AnatomySvg level={level} lumen={lumen} pleuralP={pleuralP} inInsp={inInsp} />
           </div>
-
-          <div className="rounded-md border border-border bg-background p-3 space-y-2">
-            <div>
-              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Level</div>
-              <div className="text-sm font-semibold text-foreground">{info.label}</div>
-            </div>
-            <div>
-              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Audible sign</div>
-              <div className="text-xs text-foreground/85">{info.noise}</div>
-            </div>
-            <div className="text-xs text-foreground/85 leading-relaxed">{info.pearl}</div>
-            <div className="grid grid-cols-2 gap-2 mt-2">
-              <div className="rounded border border-clinical/30 bg-clinical/5 p-2">
-                <div className="text-[9px] uppercase tracking-wider text-clinical font-semibold mb-0.5">
-                  Helpful
-                </div>
-                <div className="text-[11px] text-foreground/85">{info.helpful}</div>
+  
+          {/* Flow loop & info */}
+          <div className="flex flex-col gap-3">
+            <div className="rounded-md border border-border bg-background p-3">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                  Flow–volume loop
+                </span>
+                <span className="text-[10px] font-mono text-muted-foreground">
+                  {inInsp ? "Inspiration" : "Expiration"}
+                </span>
               </div>
-              <div className="rounded border border-destructive/30 bg-destructive/5 p-2">
-                <div className="text-[9px] uppercase tracking-wider text-destructive font-semibold mb-0.5">
-                  Avoid
+              <FlowLoop level={level} t={t} flow={flow} inInsp={inInsp} />
+            </div>
+  
+            <div className="rounded-md border border-border bg-background p-3 space-y-2">
+              <div>
+                <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Level</div>
+                <div className="text-sm font-semibold text-foreground">{info.label}</div>
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Audible sign</div>
+                <div className="text-xs text-foreground/85">{info.noise}</div>
+              </div>
+              <div className="text-xs text-foreground/85 leading-relaxed">{info.pearl}</div>
+              <div className="grid grid-cols-2 gap-2 mt-2">
+                <div className="rounded border border-clinical/30 bg-clinical/5 p-2">
+                  <div className="text-[9px] uppercase tracking-wider text-clinical font-semibold mb-0.5">
+                    Helpful
+                  </div>
+                  <div className="text-[11px] text-foreground/85">{info.helpful}</div>
                 </div>
-                <div className="text-[11px] text-foreground/85">{info.avoid}</div>
+                <div className="rounded border border-destructive/30 bg-destructive/5 p-2">
+                  <div className="text-[9px] uppercase tracking-wider text-destructive font-semibold mb-0.5">
+                    Avoid
+                  </div>
+                  <div className="text-[11px] text-foreground/85">{info.avoid}</div>
+                </div>
               </div>
             </div>
+  
+            <button
+              onClick={() => setRunning((r) => !r)}
+              className="text-xs font-medium rounded bg-primary text-primary-foreground py-1.5 hover:opacity-90 transition"
+            >
+              {running ? "Pause animation" : "Resume animation"}
+            </button>
           </div>
-
-          <button
-            onClick={() => setRunning((r) => !r)}
-            className="text-xs font-medium rounded bg-primary text-primary-foreground py-1.5 hover:opacity-90 transition"
-          >
-            {running ? "Pause animation" : "Resume animation"}
-          </button>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 }
 
@@ -466,7 +473,7 @@ function FlowLoop({
   const displayFlow = inInsp ? -Math.abs(flow) : Math.abs(flow);
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
+            <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
       {/* Axes */}
       <line x1={padX} y1={H / 2} x2={W - padX} y2={H / 2} stroke="hsl(var(--border))" strokeWidth="1" />
       <line x1={padX} y1={padY} x2={padX} y2={H - padY} stroke="hsl(var(--border))" strokeWidth="1" />

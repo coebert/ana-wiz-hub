@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * BonfilsRetromolarAnimation
@@ -86,115 +87,121 @@ export default function BonfilsRetromolarAnimation() {
   const info = STEPS[step];
 
   return (
-    <div className="w-full rounded-lg border border-border bg-card p-4">
-      <div className="mb-3">
-        <h3 className="text-lg font-serif font-semibold text-foreground">
-          Bonfils retromolar intubation — animated sequence
-        </h3>
-        <p className="text-xs text-muted-foreground mt-1">
-          Six-step walkthrough of the retromolar approach with ETT railroading. Toggle “lose view”
-          at any point to trigger the stop-and-escalate protocol.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr,260px] gap-4">
-        {/* Anatomy + scope animation */}
-        <div className="rounded-md border border-border bg-background overflow-hidden relative">
-          <BonfilsSvg step={step} lostView={lostView} />
-          {lostView && <EscalateOverlay onReset={reset} />}
+    <DiagramFigure
+      id="bonfils-retromolar-animation"
+      title="Bonfils retromolar"
+      description="Auto-generated wrapper for the Bonfils retromolar animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="w-full rounded-lg border border-border bg-card p-4">
+        <div className="mb-3">
+          <h3 className="text-lg font-serif font-semibold text-foreground">
+            Bonfils retromolar intubation — animated sequence
+          </h3>
+          <p className="text-xs text-muted-foreground mt-1">
+            Six-step walkthrough of the retromolar approach with ETT railroading. Toggle “lose view”
+            at any point to trigger the stop-and-escalate protocol.
+          </p>
         </div>
-
-        {/* Side panel */}
-        <div className="flex flex-col gap-3">
-          <div className="rounded-md border border-border bg-background p-3">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                Step {step + 1} of 6
-              </span>
-              <span className="text-[10px] font-mono text-muted-foreground">
-                {playing && !lostView ? "auto" : "manual"}
-              </span>
+  
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr,260px] gap-4">
+          {/* Anatomy + scope animation */}
+          <div className="rounded-md border border-border bg-background overflow-hidden relative">
+            <BonfilsSvg step={step} lostView={lostView} />
+            {lostView && <EscalateOverlay onReset={reset} />}
+          </div>
+  
+          {/* Side panel */}
+          <div className="flex flex-col gap-3">
+            <div className="rounded-md border border-border bg-background p-3">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                  Step {step + 1} of 6
+                </span>
+                <span className="text-[10px] font-mono text-muted-foreground">
+                  {playing && !lostView ? "auto" : "manual"}
+                </span>
+              </div>
+              <div className="text-sm font-semibold text-foreground">{info.title}</div>
+              <p className="text-xs text-foreground/85 mt-1 leading-relaxed">{info.body}</p>
+              <div className="mt-2 rounded border border-clinical/30 bg-clinical/5 p-2 text-[11px] text-foreground/85">
+                <span className="font-semibold text-clinical">Cue: </span>
+                {info.cue}
+              </div>
+  
+              {/* Step dots */}
+              <div className="mt-3 flex items-center gap-1">
+                {([0, 1, 2, 3, 4, 5] as Step[]).map((i) => (
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setPlaying(false);
+                      setLostView(false);
+                      setStep(i);
+                    }}
+                    aria-label={`Go to step ${i + 1}`}
+                    className={`flex-1 h-1.5 rounded transition ${
+                      i === step
+                        ? "bg-primary"
+                        : i < step
+                          ? "bg-primary/40"
+                          : "bg-muted"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
-            <div className="text-sm font-semibold text-foreground">{info.title}</div>
-            <p className="text-xs text-foreground/85 mt-1 leading-relaxed">{info.body}</p>
-            <div className="mt-2 rounded border border-clinical/30 bg-clinical/5 p-2 text-[11px] text-foreground/85">
-              <span className="font-semibold text-clinical">Cue: </span>
-              {info.cue}
-            </div>
-
-            {/* Step dots */}
-            <div className="mt-3 flex items-center gap-1">
-              {([0, 1, 2, 3, 4, 5] as Step[]).map((i) => (
+  
+            <div className="rounded-md border border-border bg-background p-3 space-y-2">
+              <button
+                onClick={() => setPlaying((p) => !p)}
+                disabled={lostView}
+                className="w-full text-xs font-medium rounded bg-primary text-primary-foreground py-1.5 hover:opacity-90 transition disabled:opacity-40"
+              >
+                {playing && !lostView ? "Pause" : "Play"}
+              </button>
+              <div className="grid grid-cols-2 gap-2">
                 <button
-                  key={i}
                   onClick={() => {
                     setPlaying(false);
                     setLostView(false);
-                    setStep(i);
+                    setStep(((step + 5) % 6) as Step);
                   }}
-                  aria-label={`Go to step ${i + 1}`}
-                  className={`flex-1 h-1.5 rounded transition ${
-                    i === step
-                      ? "bg-primary"
-                      : i < step
-                        ? "bg-primary/40"
-                        : "bg-muted"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-md border border-border bg-background p-3 space-y-2">
-            <button
-              onClick={() => setPlaying((p) => !p)}
-              disabled={lostView}
-              className="w-full text-xs font-medium rounded bg-primary text-primary-foreground py-1.5 hover:opacity-90 transition disabled:opacity-40"
-            >
-              {playing && !lostView ? "Pause" : "Play"}
-            </button>
-            <div className="grid grid-cols-2 gap-2">
+                  className="text-xs rounded border border-border bg-background py-1.5 hover:bg-muted transition"
+                >
+                  ◀ Step
+                </button>
+                <button
+                  onClick={() => {
+                    setPlaying(false);
+                    setLostView(false);
+                    setStep(((step + 1) % 6) as Step);
+                  }}
+                  className="text-xs rounded border border-border bg-background py-1.5 hover:bg-muted transition"
+                >
+                  Step ▶
+                </button>
+              </div>
               <button
-                onClick={() => {
-                  setPlaying(false);
-                  setLostView(false);
-                  setStep(((step + 5) % 6) as Step);
-                }}
-                className="text-xs rounded border border-border bg-background py-1.5 hover:bg-muted transition"
+                onClick={() => setLostView((v) => !v)}
+                className={`w-full text-xs font-medium rounded py-1.5 border transition ${
+                  lostView
+                    ? "bg-destructive text-destructive-foreground border-destructive"
+                    : "bg-background text-foreground border-border hover:bg-muted"
+                }`}
               >
-                ◀ Step
+                {lostView ? "View lost — escalating" : "Simulate: lose view"}
               </button>
               <button
-                onClick={() => {
-                  setPlaying(false);
-                  setLostView(false);
-                  setStep(((step + 1) % 6) as Step);
-                }}
-                className="text-xs rounded border border-border bg-background py-1.5 hover:bg-muted transition"
+                onClick={reset}
+                className="w-full text-xs rounded border border-border bg-background py-1.5 hover:bg-muted transition"
               >
-                Step ▶
+                Reset
               </button>
             </div>
-            <button
-              onClick={() => setLostView((v) => !v)}
-              className={`w-full text-xs font-medium rounded py-1.5 border transition ${
-                lostView
-                  ? "bg-destructive text-destructive-foreground border-destructive"
-                  : "bg-background text-foreground border-border hover:bg-muted"
-              }`}
-            >
-              {lostView ? "View lost — escalating" : "Simulate: lose view"}
-            </button>
-            <button
-              onClick={reset}
-              className="w-full text-xs rounded border border-border bg-background py-1.5 hover:bg-muted transition"
-            >
-              Reset
-            </button>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 }
 
@@ -1119,7 +1126,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
 
 function EscalateOverlay({ onReset }: { onReset: () => void }) {
   return (
-    <div className="absolute inset-0 bg-destructive/15 flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-destructive/15 flex items-center justify-center p-4">
       <div className="max-w-sm rounded-md border border-destructive bg-card p-4 shadow-lg">
         <div className="text-xs uppercase tracking-wider text-destructive font-bold mb-1">
           Stop & escalate

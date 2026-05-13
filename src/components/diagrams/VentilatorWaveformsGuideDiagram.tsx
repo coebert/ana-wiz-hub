@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type WaveformId = "pressure" | "flow" | "volume";
 type PathologyId = string;
@@ -241,100 +242,106 @@ const VentilatorWaveformsGuideDiagram = () => {
   ];
 
   return (
-    <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
-      <h3 className="text-lg font-bold text-foreground mb-1">Ventilator Waveforms Interpretation</h3>
-      <p className="text-sm text-muted-foreground mb-4">Normal waveforms and pathological patterns with clinical management</p>
-
-      <Tabs defaultValue="normal" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 mb-4">
-          <TabsTrigger value="normal" className="text-xs">Normal Waveforms</TabsTrigger>
-          <TabsTrigger value="pathology" className="text-xs">Pathological Patterns</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="normal">
-          <div className="flex gap-2 mb-4">
-            {(["pressure", "flow", "volume"] as WaveformId[]).map((w) => (
-              <button
-                key={w}
-                onClick={() => setSelectedWaveform(w)}
-                className={`flex-1 p-2 rounded-lg border text-xs font-semibold transition-all capitalize ${selectedWaveform === w ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}
-              >
-                {normalWaveforms[w].title}
-              </button>
-            ))}
-          </div>
-
-          <div className="bg-background rounded-lg border border-border p-3 mb-3">
-            {renderNormalSVG(selectedWaveform)}
-          </div>
-
-          <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs">
-            <p className="font-bold text-foreground text-sm">{normalWaveforms[selectedWaveform].title}</p>
-            <p className="text-muted-foreground mt-1">{normalWaveforms[selectedWaveform].description}</p>
-          </div>
-
-          <div className="mt-3 p-2 rounded bg-muted/50 border border-border text-xs text-muted-foreground">
-            <strong className="text-foreground">VCV vs PCV: </strong>
-            In VCV the <em>flow</em> is square (set) and pressure is variable. In PCV the <em>pressure</em> is square (set) and flow decelerates. Volume is the dependent variable in PCV.
-          </div>
-        </TabsContent>
-
-        <TabsContent value="pathology">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-3">
-            {pathologies.map((p) => (
-              <button
-                key={p.id}
-                onClick={() => setSelectedPathology(selectedPathology === p.id ? null : p.id)}
-                className={`p-2 rounded-lg border text-left transition-all text-xs ${selectedPathology === p.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
-              >
-                <span className="font-bold text-foreground">{p.name}</span>
-                <p className="text-muted-foreground mt-0.5">{p.category}</p>
-              </button>
-            ))}
-          </div>
-
-          {selectedPathology && (() => {
-            const p = pathologies.find((x) => x.id === selectedPathology)!;
-            return (
-              <div className="animate-fade-in space-y-3">
-                <div className="bg-background rounded-lg border border-border p-3">
-                  {p.svg}
-                </div>
-                <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
-                  <p className="font-bold text-foreground text-sm">{p.name}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{p.description}</p>
-                  <div className="grid gap-2 mt-2 text-xs">
-                    <div className="p-2 rounded bg-background border border-border">
-                      <span className="font-semibold text-foreground">Pressure trace: </span>
-                      <span className="text-muted-foreground">{p.pressureSign}</span>
-                    </div>
-                    <div className="p-2 rounded bg-background border border-border">
-                      <span className="font-semibold text-foreground">Flow trace: </span>
-                      <span className="text-muted-foreground">{p.flowSign}</span>
-                    </div>
-                    <div className="p-2 rounded bg-background border border-border">
-                      <span className="font-semibold text-foreground">Volume trace: </span>
-                      <span className="text-muted-foreground">{p.volumeSign}</span>
-                    </div>
-                  </div>
-                  <div className="mt-2 p-2 rounded bg-primary/10 border border-primary/20">
-                    <span className="font-semibold text-foreground text-xs">Management: </span>
-                    <span className="text-xs text-muted-foreground">{p.management}</span>
-                  </div>
-                </div>
-              </div>
-            );
-          })()}
-
-          {!selectedPathology && (
-            <div className="p-3 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
-              <strong className="text-foreground">Systematic approach: </strong>
-              For any ventilator alarm — check all three waveforms systematically. PIP−Pplat gap differentiates resistance (↑gap) from compliance (↓gap) problems. Always check expiratory flow returns to zero (auto-PEEP screen).
+    <DiagramFigure
+      id="ventilator-waveforms-guide-diagram"
+      title="Ventilator waveforms guide"
+      description="Auto-generated wrapper for the Ventilator waveforms guide anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
+        <h3 className="text-lg font-bold text-foreground mb-1">Ventilator Waveforms Interpretation</h3>
+        <p className="text-sm text-muted-foreground mb-4">Normal waveforms and pathological patterns with clinical management</p>
+  
+        <Tabs defaultValue="normal" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 mb-4">
+            <TabsTrigger value="normal" className="text-xs">Normal Waveforms</TabsTrigger>
+            <TabsTrigger value="pathology" className="text-xs">Pathological Patterns</TabsTrigger>
+          </TabsList>
+  
+          <TabsContent value="normal">
+            <div className="flex gap-2 mb-4">
+              {(["pressure", "flow", "volume"] as WaveformId[]).map((w) => (
+                <button
+                  key={w}
+                  onClick={() => setSelectedWaveform(w)}
+                  className={`flex-1 p-2 rounded-lg border text-xs font-semibold transition-all capitalize ${selectedWaveform === w ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}
+                >
+                  {normalWaveforms[w].title}
+                </button>
+              ))}
             </div>
-          )}
-        </TabsContent>
-      </Tabs>
-    </div>
+  
+            <div className="bg-background rounded-lg border border-border p-3 mb-3">
+              {renderNormalSVG(selectedWaveform)}
+            </div>
+  
+            <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs">
+              <p className="font-bold text-foreground text-sm">{normalWaveforms[selectedWaveform].title}</p>
+              <p className="text-muted-foreground mt-1">{normalWaveforms[selectedWaveform].description}</p>
+            </div>
+  
+            <div className="mt-3 p-2 rounded bg-muted/50 border border-border text-xs text-muted-foreground">
+              <strong className="text-foreground">VCV vs PCV: </strong>
+              In VCV the <em>flow</em> is square (set) and pressure is variable. In PCV the <em>pressure</em> is square (set) and flow decelerates. Volume is the dependent variable in PCV.
+            </div>
+          </TabsContent>
+  
+          <TabsContent value="pathology">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-3">
+              {pathologies.map((p) => (
+                <button
+                  key={p.id}
+                  onClick={() => setSelectedPathology(selectedPathology === p.id ? null : p.id)}
+                  className={`p-2 rounded-lg border text-left transition-all text-xs ${selectedPathology === p.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
+                >
+                  <span className="font-bold text-foreground">{p.name}</span>
+                  <p className="text-muted-foreground mt-0.5">{p.category}</p>
+                </button>
+              ))}
+            </div>
+  
+            {selectedPathology && (() => {
+              const p = pathologies.find((x) => x.id === selectedPathology)!;
+              return (
+                    <div className="animate-fade-in space-y-3">
+                  <div className="bg-background rounded-lg border border-border p-3">
+                    {p.svg}
+                  </div>
+                  <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
+                    <p className="font-bold text-foreground text-sm">{p.name}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{p.description}</p>
+                    <div className="grid gap-2 mt-2 text-xs">
+                      <div className="p-2 rounded bg-background border border-border">
+                        <span className="font-semibold text-foreground">Pressure trace: </span>
+                        <span className="text-muted-foreground">{p.pressureSign}</span>
+                      </div>
+                      <div className="p-2 rounded bg-background border border-border">
+                        <span className="font-semibold text-foreground">Flow trace: </span>
+                        <span className="text-muted-foreground">{p.flowSign}</span>
+                      </div>
+                      <div className="p-2 rounded bg-background border border-border">
+                        <span className="font-semibold text-foreground">Volume trace: </span>
+                        <span className="text-muted-foreground">{p.volumeSign}</span>
+                      </div>
+                    </div>
+                    <div className="mt-2 p-2 rounded bg-primary/10 border border-primary/20">
+                      <span className="font-semibold text-foreground text-xs">Management: </span>
+                      <span className="text-xs text-muted-foreground">{p.management}</span>
+                    </div>
+                  </div>
+                </div>
+    );
+            })()}
+  
+            {!selectedPathology && (
+              <div className="p-3 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
+                <strong className="text-foreground">Systematic approach: </strong>
+                For any ventilator alarm — check all three waveforms systematically. PIP−Pplat gap differentiates resistance (↑gap) from compliance (↓gap) problems. Always check expiratory flow returns to zero (auto-PEEP screen).
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

@@ -103,7 +103,7 @@ const DecrementTimeDiagram = () => {
   const activeDrug = hoveredDrug ? drugs.find(d => d.name === hoveredDrug) : null;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
+            <div className="border border-border rounded-lg p-4 mb-6">
       <h3 className="text-lg font-serif font-bold text-foreground mb-1">
         Decrement Times — 20%, 50%, 80%
       </h3>
@@ -196,7 +196,7 @@ const DecrementTimeDiagram = () => {
               const y50 = yScale(drugs[0].curves[1].fn(dur));
               const y80 = yScale(drugs[0].curves[2].fn(dur));
               return (
-                <g opacity="0.4">
+                    <g opacity="0.4">
                   <line x1={xScale(dur) + 8} y1={y50} x2={xScale(dur) + 8} y2={y80}
                     stroke={drugs[0].color} strokeWidth="0.75" />
                   <line x1={xScale(dur) + 5} y1={y50} x2={xScale(dur) + 11} y2={y50}
@@ -208,7 +208,7 @@ const DecrementTimeDiagram = () => {
                     ↕ {Math.round(drugs[0].curves[2].fn(dur) - drugs[0].curves[1].fn(dur))} min gap
                   </text>
                 </g>
-              );
+  );
             })()}
 
             {/* Legend */}
@@ -268,7 +268,7 @@ const DecrementTimeDiagram = () => {
                 The CSHT (50% decrement) only tells you how long for concentration to halve. But clinical wake-up depends on the <strong>ratio of maintenance Ce to wake-up Ce</strong>. If you're running propofol at Ce 4 µg/mL and MAC-awake is ~1.5 µg/mL, you need roughly a 60% decrease — closer to the 80% decrement time than the CSHT.
               </p>
             </div>
-          )}
+  )}
 
           {/* Comparison table */}
           <div className="p-3 rounded-lg border border-border bg-secondary/20">

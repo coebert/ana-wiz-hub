@@ -1,4 +1,5 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "./MechanismCascadeDiagram";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // Reusable source records — referenced by URL across multiple steps so the
 // consolidated bibliography deduplicates them automatically.
@@ -111,12 +112,18 @@ const steps: CascadeStep[] = [
 ];
 
 export const SepsisHostResponseDiagram = () => (
-  <MechanismCascadeDiagram
-    title="Sepsis — Host Response Cascade"
-    subtitle="From pathogen recognition to multi-organ dysfunction, step-by-step."
-    accent="icu"
-    steps={steps}
-  />
-);
+    <DiagramFigure
+      id="sepsis-host-response-diagram"
+      title="Sepsis host response"
+      description="Auto-generated wrapper for the Sepsis host response anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+            <MechanismCascadeDiagram
+      title="Sepsis — Host Response Cascade"
+      subtitle="From pathogen recognition to multi-organ dysfunction, step-by-step."
+      accent="icu"
+      steps={steps}
+    />
+    </DiagramFigure>
+  );
 
 export default SepsisHostResponseDiagram;

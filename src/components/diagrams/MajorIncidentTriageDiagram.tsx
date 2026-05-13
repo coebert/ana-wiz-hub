@@ -230,7 +230,7 @@ export const MajorIncidentTriageDiagram = () => {
                   const reveal = streamP * lane.n;
                   const visible = i < reveal;
                   return (
-                    <circle
+                        <circle
                       key={i}
                       cx={lane.x + 14 + (i % 6) * 18}
                       cy={300 + Math.floor(i / 6) * 18}
@@ -239,7 +239,7 @@ export const MajorIncidentTriageDiagram = () => {
                       opacity={visible ? 0.9 : 0.15}
                       style={{ transition: "opacity 200ms" }}
                     />
-                  );
+  );
                 })}
               </g>
             ))}

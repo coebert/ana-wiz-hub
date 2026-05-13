@@ -426,7 +426,7 @@ const NeckTrianglesDiagram = () => {
                     const isActive = selected === key;
                     if (showSubdivisions && (key === "anterior" || key === "posterior") && !isActive) return null;
                     return (
-                      <text key={key} x={pos.x} y={pos.y}
+                          <text key={key} x={pos.x} y={pos.y}
                         fontSize={pos.fontSize}
                         fill={isActive ? triangles[key].color : "hsl(var(--muted-foreground))"}
                         fontWeight={isActive ? "bold" : "normal"}
@@ -434,7 +434,7 @@ const NeckTrianglesDiagram = () => {
                         opacity={isActive ? 1 : 0.55}>
                         {pos.label}
                       </text>
-                    );
+  );
                   })}
                 </g>
 

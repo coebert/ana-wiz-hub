@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive CT dose explorer.
@@ -185,231 +186,237 @@ export const CTDoseExplorer = () => {
   const effBar = Math.min(100, (eff / 50) * 100); // 50 mSv = full
 
   return (
-    <div className="my-6 rounded-xl border border-border bg-muted/30 p-4 space-y-4">
-      <div>
-        <h3 className="text-lg font-serif font-bold text-foreground leading-tight">
-          CT acquisition → dose explorer
-        </h3>
-        <p className="text-xs text-muted-foreground mt-0.5">
-          Drag the levers to see how scan length, phases, kVp, mAs, pitch and patient size feed into{" "}
-          <a href="#ctdi-vol" className="underline hover:text-foreground">CTDI<sub>vol</sub></a>,{" "}
-          <a href="#dlp" className="underline hover:text-foreground">DLP</a>,{" "}
-          <a href="#ssde" className="underline hover:text-foreground">SSDE</a> and{" "}
-          <a href="#effective-dose-ct" className="underline hover:text-foreground">effective dose</a>.
+    <DiagramFigure
+      id="ct-dose-explorer"
+      title="CT dose explorer"
+      description="Auto-generated wrapper for the CT dose explorer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 rounded-xl border border-border bg-muted/30 p-4 space-y-4">
+        <div>
+          <h3 className="text-lg font-serif font-bold text-foreground leading-tight">
+            CT acquisition → dose explorer
+          </h3>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Drag the levers to see how scan length, phases, kVp, mAs, pitch and patient size feed into{" "}
+            <a href="#ctdi-vol" className="underline hover:text-foreground">CTDI<sub>vol</sub></a>,{" "}
+            <a href="#dlp" className="underline hover:text-foreground">DLP</a>,{" "}
+            <a href="#ssde" className="underline hover:text-foreground">SSDE</a> and{" "}
+            <a href="#effective-dose-ct" className="underline hover:text-foreground">effective dose</a>.
+          </p>
+        </div>
+  
+        {/* Preset row */}
+        <div className="flex flex-wrap gap-1.5">
+          {PRESETS.map((p, i) => (
+            <Button
+              key={p.label}
+              type="button"
+              size="sm"
+              variant={presetIdx === i ? "default" : "outline"}
+              onClick={() => applyPreset(i)}
+              className="h-7 px-2 text-[11px]"
+            >
+              {p.label}
+            </Button>
+          ))}
+        </div>
+  
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+          {/* ─── Controls ─── */}
+          <div className="lg:col-span-2 space-y-3">
+            <ControlBlock label="Body region">
+              <div className="flex flex-wrap gap-1">
+                {(["head", "neck", "chest", "abdomen", "pelvis"] as Region[]).map((r) => (
+                  <button
+                    key={r}
+                    type="button"
+                    onClick={() => setRegion(r)}
+                    className={`text-[11px] px-2 py-0.5 rounded border capitalize ${
+                      region === r
+                        ? "border-primary bg-primary/15 text-foreground"
+                        : "border-border text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {r}
+                  </button>
+                ))}
+              </div>
+              <p className="text-[10px] text-muted-foreground mt-1">
+                k = {kFactor.toFixed(4)} mSv/(mGy·cm)
+              </p>
+            </ControlBlock>
+  
+            <SliderRow
+              label="Tube voltage (kVp)"
+              value={kvp}
+              min={70}
+              max={140}
+              step={5}
+              unit=" kVp"
+              onChange={setKvp}
+              hint="Output ∝ (kVp)^≈2.5 — small changes have a big dose effect."
+              affects={[{ anchor: "ctdi-vol", label: "scales CTDI<sub>vol</sub> by (kVp/120)<sup>2.5</sup>" }]}
+            />
+            <SliderRow
+              label="Effective mAs"
+              value={mas}
+              min={20}
+              max={500}
+              step={5}
+              unit=" mAs"
+              onChange={setMas}
+              hint="Linear with dose; modulation lowers it for thinner anatomy."
+              affects={[{ anchor: "ctdi-vol", label: "scales CTDI<sub>vol</sub> linearly with mAs" }]}
+            />
+            <SliderRow
+              label="Rotation time"
+              value={rotation}
+              min={0.25}
+              max={1.0}
+              step={0.05}
+              unit=" s"
+              onChange={setRotation}
+              hint="Faster rotation = less motion; mAs is the dose driver, not rotation alone."
+              digits={2}
+            />
+            <SliderRow
+              label="Pitch"
+              value={pitch}
+              min={0.4}
+              max={1.6}
+              step={0.05}
+              unit=""
+              onChange={setPitch}
+              hint="Pitch > 1 spreads dose over more anatomy (less dose, more noise)."
+              digits={2}
+              affects={[{ anchor: "ctdi-vol", label: "divides CTDI<sub>vol</sub> by pitch" }]}
+            />
+            <SliderRow
+              label="Scan length (z)"
+              value={scanLength}
+              min={5}
+              max={120}
+              step={1}
+              unit=" cm"
+              onChange={setScanLength}
+              hint="Linear with DLP — only scan what you need."
+              affects={[
+                { anchor: "dlp", label: "scales DLP linearly (× scan length)" },
+                { anchor: "effective-dose-ct", label: "carries through to Effective dose (DLP × k)" },
+              ]}
+            />
+            <SliderRow
+              label="Phases / acquisitions"
+              value={phases}
+              min={1}
+              max={30}
+              step={1}
+              unit="×"
+              onChange={setPhases}
+              hint="Multi-phase (triple-liver, perfusion) multiplies DLP and effective dose directly."
+              affects={[
+                { anchor: "dlp", label: "multiplies DLP (× phases)" },
+                { anchor: "effective-dose-ct", label: "multiplies Effective dose proportionally" },
+              ]}
+            />
+            <SliderRow
+              label="Patient effective diameter"
+              value={diameter}
+              min={10}
+              max={45}
+              step={1}
+              unit=" cm"
+              onChange={setDiameter}
+              hint={`SSDE conversion factor = ${ssdeF.toFixed(2)} — bigger patients absorb less, smaller absorb more relative to phantom.`}
+              affects={[{ anchor: "ssde", label: "sets the f(diameter) factor in SSDE = CTDI<sub>vol</sub> × f(diameter)" }]}
+            />
+          </div>
+  
+          {/* ─── Outputs ─── */}
+          <div className="lg:col-span-3 space-y-2">
+            <DoseCard
+              anchor="ctdi-vol"
+              title={
+                <>
+                  CTDI<sub>vol</sub>
+                </>
+              }
+              value={`${formatNumber(ctdi)} mGy`}
+              bar={ctdiBar}
+              color="hsl(195 80% 55%)"
+              formula={
+                <>
+                  ∝ mAs · (kVp / 120)<sup>2.5</sup> ÷ pitch
+                </>
+              }
+              drivers={["mAs", "kVp", "pitch"]}
+              hint="Per-rotation phantom dose. Reported on every console."
+            />
+            <DoseCard
+              anchor="dlp"
+              title="DLP"
+              value={`${formatNumber(dlp)} mGy·cm`}
+              bar={dlpBar}
+              color="hsl(25 85% 55%)"
+              formula={
+                <>
+                  = CTDI<sub>vol</sub> × scan length × phases
+                  <span className="ml-1 tabular-nums text-foreground">
+                    ({formatNumber(ctdi)} × {scanLength} × {phases})
+                  </span>
+                </>
+              }
+              drivers={["scan length", "phases"]}
+              hint="Best surrogate for total energy deposited."
+            />
+            <DoseCard
+              anchor="ssde"
+              title="SSDE"
+              value={`${formatNumber(ssde)} mGy`}
+              bar={ssdeBar}
+              color="hsl(280 65% 60%)"
+              formula={
+                <>
+                  = CTDI<sub>vol</sub> × f(diameter)
+                  <span className="ml-1 tabular-nums text-foreground">
+                    ({formatNumber(ctdi)} × {ssdeF.toFixed(2)})
+                  </span>
+                </>
+              }
+              drivers={["patient size"]}
+              hint="Size-corrected dose — essential for paediatrics & adult size variation."
+            />
+            <DoseCard
+              anchor="effective-dose-ct"
+              title="Effective dose"
+              value={`${formatNumber(eff, 2)} mSv`}
+              bar={effBar}
+              color="hsl(0 70% 55%)"
+              formula={
+                <>
+                  = DLP × k
+                  <span className="ml-1 tabular-nums text-foreground">
+                    ({formatNumber(dlp)} × {kFactor.toFixed(4)})
+                  </span>
+                </>
+              }
+              drivers={["region (k)", "all of the above"]}
+              hint={`≈ ${yearsBackground.toFixed(yearsBackground >= 1 ? 1 : 2)} yr UK background · ≈ ${
+                cxrEquiv >= 100 ? Math.round(cxrEquiv / 5) * 5 : Math.round(cxrEquiv)
+              }× CXRs`}
+              highlight
+            />
+          </div>
+        </div>
+  
+        {/* Footnote */}
+        <p className="text-[11px] text-muted-foreground italic leading-snug">
+          Simplified pedagogic model. Real scanner consoles report CTDI<sub>vol</sub>/DLP from
+          calibrated phantom measurements; SSDE follows AAPM Report 204; effective dose uses ICRP-103
+          tissue weighting. Use this to feel the levers — not for clinical dosimetry.
         </p>
       </div>
-
-      {/* Preset row */}
-      <div className="flex flex-wrap gap-1.5">
-        {PRESETS.map((p, i) => (
-          <Button
-            key={p.label}
-            type="button"
-            size="sm"
-            variant={presetIdx === i ? "default" : "outline"}
-            onClick={() => applyPreset(i)}
-            className="h-7 px-2 text-[11px]"
-          >
-            {p.label}
-          </Button>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-        {/* ─── Controls ─── */}
-        <div className="lg:col-span-2 space-y-3">
-          <ControlBlock label="Body region">
-            <div className="flex flex-wrap gap-1">
-              {(["head", "neck", "chest", "abdomen", "pelvis"] as Region[]).map((r) => (
-                <button
-                  key={r}
-                  type="button"
-                  onClick={() => setRegion(r)}
-                  className={`text-[11px] px-2 py-0.5 rounded border capitalize ${
-                    region === r
-                      ? "border-primary bg-primary/15 text-foreground"
-                      : "border-border text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {r}
-                </button>
-              ))}
-            </div>
-            <p className="text-[10px] text-muted-foreground mt-1">
-              k = {kFactor.toFixed(4)} mSv/(mGy·cm)
-            </p>
-          </ControlBlock>
-
-          <SliderRow
-            label="Tube voltage (kVp)"
-            value={kvp}
-            min={70}
-            max={140}
-            step={5}
-            unit=" kVp"
-            onChange={setKvp}
-            hint="Output ∝ (kVp)^≈2.5 — small changes have a big dose effect."
-            affects={[{ anchor: "ctdi-vol", label: "scales CTDI<sub>vol</sub> by (kVp/120)<sup>2.5</sup>" }]}
-          />
-          <SliderRow
-            label="Effective mAs"
-            value={mas}
-            min={20}
-            max={500}
-            step={5}
-            unit=" mAs"
-            onChange={setMas}
-            hint="Linear with dose; modulation lowers it for thinner anatomy."
-            affects={[{ anchor: "ctdi-vol", label: "scales CTDI<sub>vol</sub> linearly with mAs" }]}
-          />
-          <SliderRow
-            label="Rotation time"
-            value={rotation}
-            min={0.25}
-            max={1.0}
-            step={0.05}
-            unit=" s"
-            onChange={setRotation}
-            hint="Faster rotation = less motion; mAs is the dose driver, not rotation alone."
-            digits={2}
-          />
-          <SliderRow
-            label="Pitch"
-            value={pitch}
-            min={0.4}
-            max={1.6}
-            step={0.05}
-            unit=""
-            onChange={setPitch}
-            hint="Pitch > 1 spreads dose over more anatomy (less dose, more noise)."
-            digits={2}
-            affects={[{ anchor: "ctdi-vol", label: "divides CTDI<sub>vol</sub> by pitch" }]}
-          />
-          <SliderRow
-            label="Scan length (z)"
-            value={scanLength}
-            min={5}
-            max={120}
-            step={1}
-            unit=" cm"
-            onChange={setScanLength}
-            hint="Linear with DLP — only scan what you need."
-            affects={[
-              { anchor: "dlp", label: "scales DLP linearly (× scan length)" },
-              { anchor: "effective-dose-ct", label: "carries through to Effective dose (DLP × k)" },
-            ]}
-          />
-          <SliderRow
-            label="Phases / acquisitions"
-            value={phases}
-            min={1}
-            max={30}
-            step={1}
-            unit="×"
-            onChange={setPhases}
-            hint="Multi-phase (triple-liver, perfusion) multiplies DLP and effective dose directly."
-            affects={[
-              { anchor: "dlp", label: "multiplies DLP (× phases)" },
-              { anchor: "effective-dose-ct", label: "multiplies Effective dose proportionally" },
-            ]}
-          />
-          <SliderRow
-            label="Patient effective diameter"
-            value={diameter}
-            min={10}
-            max={45}
-            step={1}
-            unit=" cm"
-            onChange={setDiameter}
-            hint={`SSDE conversion factor = ${ssdeF.toFixed(2)} — bigger patients absorb less, smaller absorb more relative to phantom.`}
-            affects={[{ anchor: "ssde", label: "sets the f(diameter) factor in SSDE = CTDI<sub>vol</sub> × f(diameter)" }]}
-          />
-        </div>
-
-        {/* ─── Outputs ─── */}
-        <div className="lg:col-span-3 space-y-2">
-          <DoseCard
-            anchor="ctdi-vol"
-            title={
-              <>
-                CTDI<sub>vol</sub>
-              </>
-            }
-            value={`${formatNumber(ctdi)} mGy`}
-            bar={ctdiBar}
-            color="hsl(195 80% 55%)"
-            formula={
-              <>
-                ∝ mAs · (kVp / 120)<sup>2.5</sup> ÷ pitch
-              </>
-            }
-            drivers={["mAs", "kVp", "pitch"]}
-            hint="Per-rotation phantom dose. Reported on every console."
-          />
-          <DoseCard
-            anchor="dlp"
-            title="DLP"
-            value={`${formatNumber(dlp)} mGy·cm`}
-            bar={dlpBar}
-            color="hsl(25 85% 55%)"
-            formula={
-              <>
-                = CTDI<sub>vol</sub> × scan length × phases
-                <span className="ml-1 tabular-nums text-foreground">
-                  ({formatNumber(ctdi)} × {scanLength} × {phases})
-                </span>
-              </>
-            }
-            drivers={["scan length", "phases"]}
-            hint="Best surrogate for total energy deposited."
-          />
-          <DoseCard
-            anchor="ssde"
-            title="SSDE"
-            value={`${formatNumber(ssde)} mGy`}
-            bar={ssdeBar}
-            color="hsl(280 65% 60%)"
-            formula={
-              <>
-                = CTDI<sub>vol</sub> × f(diameter)
-                <span className="ml-1 tabular-nums text-foreground">
-                  ({formatNumber(ctdi)} × {ssdeF.toFixed(2)})
-                </span>
-              </>
-            }
-            drivers={["patient size"]}
-            hint="Size-corrected dose — essential for paediatrics & adult size variation."
-          />
-          <DoseCard
-            anchor="effective-dose-ct"
-            title="Effective dose"
-            value={`${formatNumber(eff, 2)} mSv`}
-            bar={effBar}
-            color="hsl(0 70% 55%)"
-            formula={
-              <>
-                = DLP × k
-                <span className="ml-1 tabular-nums text-foreground">
-                  ({formatNumber(dlp)} × {kFactor.toFixed(4)})
-                </span>
-              </>
-            }
-            drivers={["region (k)", "all of the above"]}
-            hint={`≈ ${yearsBackground.toFixed(yearsBackground >= 1 ? 1 : 2)} yr UK background · ≈ ${
-              cxrEquiv >= 100 ? Math.round(cxrEquiv / 5) * 5 : Math.round(cxrEquiv)
-            }× CXRs`}
-            highlight
-          />
-        </div>
-      </div>
-
-      {/* Footnote */}
-      <p className="text-[11px] text-muted-foreground italic leading-snug">
-        Simplified pedagogic model. Real scanner consoles report CTDI<sub>vol</sub>/DLP from
-        calibrated phantom measurements; SSDE follows AAPM Report 204; effective dose uses ICRP-103
-        tissue weighting. Use this to feel the levers — not for clinical dosimetry.
-      </p>
-    </div>
+    </DiagramFigure>
   );
 };
 
@@ -489,7 +496,7 @@ interface DoseCardProps {
 }
 
 const DoseCard = ({ anchor, title, value, bar, color, formula, drivers, hint, highlight }: DoseCardProps) => (
-  <div
+      <div
     className={`rounded-lg border bg-background/80 p-2.5 ${
       highlight ? "border-primary/50" : "border-border"
     }`}
@@ -524,6 +531,6 @@ const DoseCard = ({ anchor, title, value, bar, color, formula, drivers, hint, hi
       <span className="text-[10px] text-muted-foreground italic text-right">{hint}</span>
     </div>
   </div>
-);
+  );
 
 export default CTDoseExplorer;

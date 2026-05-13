@@ -303,7 +303,7 @@ const TOEViewsDiagram = () => {
               {selectedView && (() => {
                 const v = views.find((x) => x.id === selectedView)!;
                 return (
-                  <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2 animate-fade-in sticky top-4">
+                      <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2 animate-fade-in sticky top-4">
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <p className="font-bold text-foreground text-sm">{v.name}</p>
@@ -325,7 +325,7 @@ const TOEViewsDiagram = () => {
                       <span className="text-muted-foreground">{v.pearls}</span>
                     </div>
                   </div>
-                );
+  );
               })()}
             </div>
           </div>

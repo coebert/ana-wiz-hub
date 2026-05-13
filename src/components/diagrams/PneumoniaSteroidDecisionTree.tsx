@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * "Should I give steroids?" decision tree for the unwell pneumonia patient.
@@ -214,118 +215,124 @@ const PneumoniaSteroidDecisionTree = () => {
   const style = outcome ? VERDICT_STYLE[outcome.verdict] : null;
 
   return (
-    <div className="my-6 p-4 rounded-xl border border-border bg-card">
-      <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
-        <div>
-          <h3 className="text-lg font-serif font-bold text-foreground">"Should I give steroids?" — Pneumonia Decision Tree</h3>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            Walks through severity → pathogen → shock → contraindications. Synthesises CAPE COD 2023, RECOVERY 2021,
-            ATS/IDSA 2024, ESICM/SCCM 2024, SURVIVING SEPSIS 2021, and Bozzette 1990.
-          </p>
-        </div>
-        <button onClick={reset} type="button" className="text-xs px-2 py-1 rounded border border-border hover:bg-muted/50 text-muted-foreground">
-          Reset
-        </button>
-      </div>
-
-      <div className="space-y-3">
-        {/* Step 1 — severity */}
-        <div className="p-3 rounded-lg border border-border bg-secondary/20">
-          <p className={STEP_LABEL}>Step 1 — How sick is the patient?</p>
-          <div className="flex flex-wrap gap-1.5">
-            <Chip active={severity === "ward"} onClick={() => setSeverity("ward")}>Ward-level (CURB-65 0–2, SpO₂ ≥94%)</Chip>
-            <Chip active={severity === "icu"} onClick={() => setSeverity("icu")}>ICU-level (mech vent, HFNO, NIV, or P/F &lt;300)</Chip>
+    <DiagramFigure
+      id="pneumonia-steroid-decision-tree"
+      title="Pneumonia steroid decision tree"
+      description="Auto-generated wrapper for the Pneumonia steroid decision tree anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="my-6 p-4 rounded-xl border border-border bg-card">
+        <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div>
+            <h3 className="text-lg font-serif font-bold text-foreground">"Should I give steroids?" — Pneumonia Decision Tree</h3>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              Walks through severity → pathogen → shock → contraindications. Synthesises CAPE COD 2023, RECOVERY 2021,
+              ATS/IDSA 2024, ESICM/SCCM 2024, SURVIVING SEPSIS 2021, and Bozzette 1990.
+            </p>
           </div>
+          <button onClick={reset} type="button" className="text-xs px-2 py-1 rounded border border-border hover:bg-muted/50 text-muted-foreground">
+            Reset
+          </button>
         </div>
-
-        {/* Step 2 — pathogen */}
-        {severity && (
+  
+        <div className="space-y-3">
+          {/* Step 1 — severity */}
           <div className="p-3 rounded-lg border border-border bg-secondary/20">
-            <p className={STEP_LABEL}>Step 2 — Suspected / confirmed pathogen?</p>
+            <p className={STEP_LABEL}>Step 1 — How sick is the patient?</p>
             <div className="flex flex-wrap gap-1.5">
-              <Chip active={pathogen === "covid"} onClick={() => setPathogen("covid")}>COVID-19 (SARS-CoV-2 +ve)</Chip>
-              <Chip active={pathogen === "bacterial"} onClick={() => setPathogen("bacterial")}>Bacterial CAP (Strep, atypicals, Gram-neg)</Chip>
-              <Chip active={pathogen === "influenza"} onClick={() => setPathogen("influenza")} color="destructive">Influenza A/B</Chip>
-              <Chip active={pathogen === "pjp"} onClick={() => setPathogen("pjp")}>Pneumocystis (PJP)</Chip>
-              <Chip active={pathogen === "unknown"} onClick={() => setPathogen("unknown")} color="clinical">Unknown — viral PCR pending</Chip>
+              <Chip active={severity === "ward"} onClick={() => setSeverity("ward")}>Ward-level (CURB-65 0–2, SpO₂ ≥94%)</Chip>
+              <Chip active={severity === "icu"} onClick={() => setSeverity("icu")}>ICU-level (mech vent, HFNO, NIV, or P/F &lt;300)</Chip>
             </div>
           </div>
-        )}
-
-        {/* Step 3 — shock (skip for PJP) */}
-        {severity && pathogen && pathogen !== "pjp" && (
-          <div className="p-3 rounded-lg border border-border bg-secondary/20">
-            <p className={STEP_LABEL}>Step 3 — Septic shock requiring vasopressors?</p>
-            <div className="flex flex-wrap gap-1.5">
-              <Chip active={shock === "yes"} onClick={() => setShock("yes")}>Yes — vasopressor-dependent</Chip>
-              <Chip active={shock === "no"} onClick={() => setShock("no")}>No</Chip>
+  
+          {/* Step 2 — pathogen */}
+          {severity && (
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className={STEP_LABEL}>Step 2 — Suspected / confirmed pathogen?</p>
+              <div className="flex flex-wrap gap-1.5">
+                <Chip active={pathogen === "covid"} onClick={() => setPathogen("covid")}>COVID-19 (SARS-CoV-2 +ve)</Chip>
+                <Chip active={pathogen === "bacterial"} onClick={() => setPathogen("bacterial")}>Bacterial CAP (Strep, atypicals, Gram-neg)</Chip>
+                <Chip active={pathogen === "influenza"} onClick={() => setPathogen("influenza")} color="destructive">Influenza A/B</Chip>
+                <Chip active={pathogen === "pjp"} onClick={() => setPathogen("pjp")}>Pneumocystis (PJP)</Chip>
+                <Chip active={pathogen === "unknown"} onClick={() => setPathogen("unknown")} color="clinical">Unknown — viral PCR pending</Chip>
+              </div>
             </div>
-          </div>
-        )}
-
-        {/* Step 4 — contraindications / modifiers */}
-        {severity && pathogen && (
-          <div className="p-3 rounded-lg border border-border bg-secondary/20">
-            <p className={STEP_LABEL}>Step 4 — Modifiers & contraindications (toggle any that apply)</p>
-            <div className="flex flex-wrap gap-1.5">
-              <Chip active={contras.has("immunocompromised")} onClick={() => toggleContra("immunocompromised")} color="clinical">Immunocompromised (haem, transplant, biologics)</Chip>
-              <Chip active={contras.has("active-gi-bleed")} onClick={() => toggleContra("active-gi-bleed")} color="destructive">Active GI bleed</Chip>
-              <Chip active={contras.has("uncontrolled-hyperglyc")} onClick={() => toggleContra("uncontrolled-hyperglyc")}>Uncontrolled hyperglycaemia</Chip>
-              <Chip active={contras.has("strongyloides-risk")} onClick={() => toggleContra("strongyloides-risk")}>Strongyloides-endemic background</Chip>
-              {pathogen === "covid" && severity === "ward" && (
-                <Chip active={contras.has("no-oxygen")} onClick={() => toggleContra("no-oxygen")} color="destructive">Not requiring supplemental O₂</Chip>
+          )}
+  
+          {/* Step 3 — shock (skip for PJP) */}
+          {severity && pathogen && pathogen !== "pjp" && (
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className={STEP_LABEL}>Step 3 — Septic shock requiring vasopressors?</p>
+              <div className="flex flex-wrap gap-1.5">
+                <Chip active={shock === "yes"} onClick={() => setShock("yes")}>Yes — vasopressor-dependent</Chip>
+                <Chip active={shock === "no"} onClick={() => setShock("no")}>No</Chip>
+              </div>
+            </div>
+          )}
+  
+          {/* Step 4 — contraindications / modifiers */}
+          {severity && pathogen && (
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className={STEP_LABEL}>Step 4 — Modifiers & contraindications (toggle any that apply)</p>
+              <div className="flex flex-wrap gap-1.5">
+                <Chip active={contras.has("immunocompromised")} onClick={() => toggleContra("immunocompromised")} color="clinical">Immunocompromised (haem, transplant, biologics)</Chip>
+                <Chip active={contras.has("active-gi-bleed")} onClick={() => toggleContra("active-gi-bleed")} color="destructive">Active GI bleed</Chip>
+                <Chip active={contras.has("uncontrolled-hyperglyc")} onClick={() => toggleContra("uncontrolled-hyperglyc")}>Uncontrolled hyperglycaemia</Chip>
+                <Chip active={contras.has("strongyloides-risk")} onClick={() => toggleContra("strongyloides-risk")}>Strongyloides-endemic background</Chip>
+                {pathogen === "covid" && severity === "ward" && (
+                  <Chip active={contras.has("no-oxygen")} onClick={() => toggleContra("no-oxygen")} color="destructive">Not requiring supplemental O₂</Chip>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+  
+        {/* Outcome */}
+        <div className="mt-4">
+          {outcome && style ? (
+            <div
+              className="p-4 rounded-lg border-2"
+              style={{ borderColor: style.color, backgroundColor: style.bg }}
+            >
+              <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                <p className="text-base font-bold" style={{ color: style.color }}>
+                  {style.label}
+                </p>
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Recommendation</p>
+              </div>
+              <p className="text-sm font-semibold text-foreground mb-2">{outcome.headline}</p>
+              <div className="p-2.5 rounded bg-background/80 border border-border mb-2">
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-0.5">Regimen</p>
+                <p className="text-sm text-foreground font-mono leading-snug">{outcome.regimen}</p>
+              </div>
+              <p className="text-xs text-muted-foreground mb-2">
+                <strong className="text-foreground">Evidence:</strong> {outcome.evidence}
+              </p>
+              {outcome.caveats.length > 0 && (
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Caveats & next steps</p>
+                  <ul className="text-xs text-muted-foreground space-y-0.5 list-disc list-inside">
+                    {outcome.caveats.map((c, i) => (
+                      <li key={i}>{c}</li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </div>
-          </div>
-        )}
-      </div>
-
-      {/* Outcome */}
-      <div className="mt-4">
-        {outcome && style ? (
-          <div
-            className="p-4 rounded-lg border-2"
-            style={{ borderColor: style.color, backgroundColor: style.bg }}
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
-              <p className="text-base font-bold" style={{ color: style.color }}>
-                {style.label}
-              </p>
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Recommendation</p>
+          ) : (
+            <div className="p-4 rounded-lg border border-dashed border-border bg-secondary/10 text-center text-xs text-muted-foreground">
+              Complete the steps above to generate a recommendation.
             </div>
-            <p className="text-sm font-semibold text-foreground mb-2">{outcome.headline}</p>
-            <div className="p-2.5 rounded bg-background/80 border border-border mb-2">
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-0.5">Regimen</p>
-              <p className="text-sm text-foreground font-mono leading-snug">{outcome.regimen}</p>
-            </div>
-            <p className="text-xs text-muted-foreground mb-2">
-              <strong className="text-foreground">Evidence:</strong> {outcome.evidence}
-            </p>
-            {outcome.caveats.length > 0 && (
-              <div>
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Caveats & next steps</p>
-                <ul className="text-xs text-muted-foreground space-y-0.5 list-disc list-inside">
-                  {outcome.caveats.map((c, i) => (
-                    <li key={i}>{c}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="p-4 rounded-lg border border-dashed border-border bg-secondary/10 text-center text-xs text-muted-foreground">
-            Complete the steps above to generate a recommendation.
-          </div>
-        )}
+          )}
+        </div>
+  
+        <div className="mt-3 p-2.5 rounded bg-destructive/5 border border-destructive/20 text-[11px] text-muted-foreground">
+          <strong className="text-foreground">Universal rules: </strong>
+          always send respiratory viral PCR + atypical screen before starting steroids in any pneumonia. Co-prescribe PPI &amp;
+          insulin sliding scale. Reassess at 48 h. Treatment-decision aid only — does not replace senior clinician judgement
+          or local microbiology advice.
+        </div>
       </div>
-
-      <div className="mt-3 p-2.5 rounded bg-destructive/5 border border-destructive/20 text-[11px] text-muted-foreground">
-        <strong className="text-foreground">Universal rules: </strong>
-        always send respiratory viral PCR + atypical screen before starting steroids in any pneumonia. Co-prescribe PPI &amp;
-        insulin sliding scale. Reassess at 48 h. Treatment-decision aid only — does not replace senior clinician judgement
-        or local microbiology advice.
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

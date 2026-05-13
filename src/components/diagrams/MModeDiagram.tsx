@@ -349,7 +349,7 @@ const MModeDiagram = () => {
                   const top = `${c.y1 * 100}%`;
                   const height = `${(c.y2 - c.y1) * 100}%`;
                   return (
-                    <div
+                        <div
                       key={i}
                       className="absolute"
                       style={{ left: `${4 + i * 14}%`, top, height, width: "10px" }}
@@ -364,7 +364,7 @@ const MModeDiagram = () => {
                         {c.label}
                       </div>
                     </div>
-                  );
+  );
                 })}
                 {/* Time scale */}
                 <div className="absolute bottom-1 right-2 text-[9px] text-white/60">

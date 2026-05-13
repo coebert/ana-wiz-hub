@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // ESC/ERS 2022 four-strata risk model for PAH at follow-up.
 // Each variable scored 1 (low) / 2 (intermediate-low) / 3 (intermediate-high) / 4 (high).
@@ -129,100 +130,106 @@ const PHRiskStratificationCalculator = () => {
   const reset = () => setScores({});
 
   return (
-    <div className="space-y-4 mb-8">
-      <div className="p-4 rounded-lg border border-border bg-card">
-        <h2 className="text-xl font-serif font-bold text-foreground mb-1">
-          ESC/ERS 2022 Risk Stratification — PAH Follow-up
-        </h2>
-        <p className="text-sm text-muted-foreground mb-4">
-          Four-strata risk model for follow-up assessment of patients with
-          pulmonary arterial hypertension. Select the band for each available
-          variable; the calculator returns the rounded mean as the estimated
-          1-year mortality risk. Use the simplified ESC/ERS table — not a
-          substitute for full multidimensional assessment in a PH centre.
-        </p>
-
-        <div className="grid sm:grid-cols-2 gap-3">
-          {variables.map((v) => (
-            <div key={v.key} className="p-3 rounded-md border border-border bg-background/50">
-              <p className="text-xs font-semibold text-foreground mb-2">
-                {v.label}
-                {v.unit && (
-                  <span className="text-muted-foreground font-normal"> ({v.unit})</span>
-                )}
-              </p>
-              <div className="flex flex-wrap gap-1">
-                {v.options.map((opt) => {
-                  const isSelected = scores[v.key] === opt.score;
-                  return (
-                    <button
-                      key={opt.label}
-                      onClick={() =>
-                        setScores((prev) => ({ ...prev, [v.key]: isSelected ? null : opt.score }))
-                      }
-                      className={`text-[11px] px-2 py-1 rounded-md border transition-colors ${
-                        isSelected
-                          ? "bg-primary text-primary-foreground border-primary"
-                          : "bg-card text-muted-foreground border-border hover:bg-secondary/50"
-                      }`}
-                    >
-                      {opt.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Result */}
-        <div className="mt-4">
-          {result ? (
-            <div className={`p-4 rounded-lg border-2 ${result.band.tone}`}>
-              <div className="flex items-baseline justify-between flex-wrap gap-2 mb-2">
-                <p className="font-serif text-lg font-bold">{result.band.label}</p>
-                <p className="text-xs font-mono">
-                  Mean score {result.mean.toFixed(2)} · rounded {result.rounded} · {result.n}/{variables.length} variables
+    <DiagramFigure
+      id="ph-risk-stratification-calculator"
+      title="PH risk stratification"
+      description="Auto-generated wrapper for the PH risk stratification interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-4 mb-8">
+        <div className="p-4 rounded-lg border border-border bg-card">
+          <h2 className="text-xl font-serif font-bold text-foreground mb-1">
+            ESC/ERS 2022 Risk Stratification — PAH Follow-up
+          </h2>
+          <p className="text-sm text-muted-foreground mb-4">
+            Four-strata risk model for follow-up assessment of patients with
+            pulmonary arterial hypertension. Select the band for each available
+            variable; the calculator returns the rounded mean as the estimated
+            1-year mortality risk. Use the simplified ESC/ERS table — not a
+            substitute for full multidimensional assessment in a PH centre.
+          </p>
+  
+          <div className="grid sm:grid-cols-2 gap-3">
+            {variables.map((v) => (
+              <div key={v.key} className="p-3 rounded-md border border-border bg-background/50">
+                <p className="text-xs font-semibold text-foreground mb-2">
+                  {v.label}
+                  {v.unit && (
+                    <span className="text-muted-foreground font-normal"> ({v.unit})</span>
+                  )}
                 </p>
-              </div>
-              <p className="text-sm font-semibold mb-1">
-                Estimated 1-year mortality: <span className="font-mono">{result.band.mortality}</span>
-              </p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{result.band.advice}</p>
-            </div>
-          ) : (
-            <div className="p-4 rounded-lg border border-dashed border-border bg-background/30 text-center text-xs text-muted-foreground">
-              Select a band for at least one variable to calculate risk.
-            </div>
-          )}
-          <div className="flex justify-end mt-2">
-            <button
-              onClick={reset}
-              className="text-[11px] px-2 py-1 rounded border border-border text-muted-foreground hover:bg-secondary/50"
-              disabled={!result}
-            >
-              Reset
-            </button>
-          </div>
-        </div>
-
-        {/* Reference key */}
-        <div className="mt-4 pt-3 border-t border-border">
-          <p className="text-[11px] font-semibold text-foreground mb-2">Risk band reference</p>
-          <div className="grid sm:grid-cols-4 gap-2">
-            {bands.map((b) => (
-              <div key={b.score} className={`p-2 rounded border ${b.tone}`}>
-                <p className="text-[11px] font-semibold">{b.label}</p>
-                <p className="text-[10px] font-mono">{b.mortality}</p>
+                <div className="flex flex-wrap gap-1">
+                  {v.options.map((opt) => {
+                    const isSelected = scores[v.key] === opt.score;
+                    return (
+                          <button
+                        key={opt.label}
+                        onClick={() =>
+                          setScores((prev) => ({ ...prev, [v.key]: isSelected ? null : opt.score }))
+                        }
+                        className={`text-[11px] px-2 py-1 rounded-md border transition-colors ${
+                          isSelected
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : "bg-card text-muted-foreground border-border hover:bg-secondary/50"
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+    );
+                  })}
+                </div>
               </div>
             ))}
           </div>
-          <p className="text-[10px] text-muted-foreground italic mt-3">
-            Adapted from Humbert et al., 2022 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension (Eur Heart J 2022;43:3618–3731). The four-strata model is intended for follow-up; the three-strata COMPERA/SPAHR/REVEAL Lite tools may be preferred at baseline.
-          </p>
+  
+          {/* Result */}
+          <div className="mt-4">
+            {result ? (
+              <div className={`p-4 rounded-lg border-2 ${result.band.tone}`}>
+                <div className="flex items-baseline justify-between flex-wrap gap-2 mb-2">
+                  <p className="font-serif text-lg font-bold">{result.band.label}</p>
+                  <p className="text-xs font-mono">
+                    Mean score {result.mean.toFixed(2)} · rounded {result.rounded} · {result.n}/{variables.length} variables
+                  </p>
+                </div>
+                <p className="text-sm font-semibold mb-1">
+                  Estimated 1-year mortality: <span className="font-mono">{result.band.mortality}</span>
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">{result.band.advice}</p>
+              </div>
+            ) : (
+              <div className="p-4 rounded-lg border border-dashed border-border bg-background/30 text-center text-xs text-muted-foreground">
+                Select a band for at least one variable to calculate risk.
+              </div>
+            )}
+            <div className="flex justify-end mt-2">
+              <button
+                onClick={reset}
+                className="text-[11px] px-2 py-1 rounded border border-border text-muted-foreground hover:bg-secondary/50"
+                disabled={!result}
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+  
+          {/* Reference key */}
+          <div className="mt-4 pt-3 border-t border-border">
+            <p className="text-[11px] font-semibold text-foreground mb-2">Risk band reference</p>
+            <div className="grid sm:grid-cols-4 gap-2">
+              {bands.map((b) => (
+                <div key={b.score} className={`p-2 rounded border ${b.tone}`}>
+                  <p className="text-[11px] font-semibold">{b.label}</p>
+                  <p className="text-[10px] font-mono">{b.mortality}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-[10px] text-muted-foreground italic mt-3">
+              Adapted from Humbert et al., 2022 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension (Eur Heart J 2022;43:3618–3731). The four-strata model is intended for follow-up; the three-strata COMPERA/SPAHR/REVEAL Lite tools may be preferred at baseline.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

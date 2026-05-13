@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type NeedleKey = "quincke" | "whitacre" | "sprotte" | "tuohy" | "huber" | "pencilpoint-general";
 
@@ -385,142 +386,148 @@ const NeuraxialNeedlesDiagram = () => {
   const info = needles[selected];
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6 space-y-4">
-      <div>
-        <h3 className="text-lg font-serif font-bold text-foreground">Neuraxial & Specialised Needles</h3>
-        <p className="text-xs text-muted-foreground">Tap a needle type to explore tip geometry, mechanism, and clinical significance</p>
-      </div>
-
-      {/* Needle selector */}
-      <div className="flex flex-wrap gap-1.5">
-        {needleOrder.map(key => {
-          const n = needles[key];
-          const isActive = selected === key;
-          return (
-            <button
-              key={key}
-              onClick={() => setSelected(key)}
-              className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
-                isActive ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
-              }`}
-              style={isActive ? { borderColor: n.color, backgroundColor: withAlpha(n.color, 0.09), color: n.color } : {}}
-            >
-              {n.label}
-            </button>
-          );
-        })}
-      </div>
-
-      <Tabs defaultValue="diagram">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="diagram" className="text-xs">Tip Diagram</TabsTrigger>
-          <TabsTrigger value="details" className="text-xs">Clinical Details</TabsTrigger>
-          <TabsTrigger value="comparison" className="text-xs">PDPH Comparison</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="diagram" className="mt-3">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-shrink-0">
-              <NeedleTipSVG needleKey={selected} isActive={true} />
+    <DiagramFigure
+      id="neuraxial-needles-diagram"
+      title="Neuraxial needles"
+      description="Auto-generated wrapper for the Neuraxial needles anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="border border-border rounded-lg p-4 mb-6 space-y-4">
+        <div>
+          <h3 className="text-lg font-serif font-bold text-foreground">Neuraxial & Specialised Needles</h3>
+          <p className="text-xs text-muted-foreground">Tap a needle type to explore tip geometry, mechanism, and clinical significance</p>
+        </div>
+  
+        {/* Needle selector */}
+        <div className="flex flex-wrap gap-1.5">
+          {needleOrder.map(key => {
+            const n = needles[key];
+            const isActive = selected === key;
+            return (
+                  <button
+                key={key}
+                onClick={() => setSelected(key)}
+                className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
+                  isActive ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
+                }`}
+                style={isActive ? { borderColor: n.color, backgroundColor: withAlpha(n.color, 0.09), color: n.color } : {}}
+              >
+                {n.label}
+              </button>
+    );
+          })}
+        </div>
+  
+        <Tabs defaultValue="diagram">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="diagram" className="text-xs">Tip Diagram</TabsTrigger>
+            <TabsTrigger value="details" className="text-xs">Clinical Details</TabsTrigger>
+            <TabsTrigger value="comparison" className="text-xs">PDPH Comparison</TabsTrigger>
+          </TabsList>
+  
+          <TabsContent value="diagram" className="mt-3">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-shrink-0">
+                <NeedleTipSVG needleKey={selected} isActive={true} />
+              </div>
+              <div className="flex-1 min-w-0 space-y-3">
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{info.altNames}</p>
+                  <Badge variant="outline" className="mt-1 text-xs">{info.gauge}</Badge>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-foreground mb-0.5">Tip Geometry</p>
+                  <p className="text-sm text-muted-foreground">{info.tipDescription}</p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-foreground mb-0.5">Mechanism of Action</p>
+                  <p className="text-sm text-muted-foreground">{info.mechanism}</p>
+                </div>
+              </div>
             </div>
-            <div className="flex-1 min-w-0 space-y-3">
+          </TabsContent>
+  
+          <TabsContent value="details" className="mt-3 space-y-3">
+            <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-3 rounded-lg border border-border">
-                <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-                <p className="text-xs text-muted-foreground mt-0.5">{info.altNames}</p>
-                <Badge variant="outline" className="mt-1 text-xs">{info.gauge}</Badge>
+                <p className="text-xs font-semibold text-foreground mb-1">✅ Advantages</p>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  {info.advantages.map((a, i) => (
+                    <li key={i} className="flex gap-1.5"><span className="text-primary mt-0.5">•</span>{a}</li>
+                  ))}
+                </ul>
               </div>
-              <div>
-                <p className="text-xs font-semibold text-foreground mb-0.5">Tip Geometry</p>
-                <p className="text-sm text-muted-foreground">{info.tipDescription}</p>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="text-xs font-semibold text-foreground mb-1">⚠️ Disadvantages</p>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  {info.disadvantages.map((d, i) => (
+                    <li key={i} className="flex gap-1.5"><span className="text-destructive mt-0.5">•</span>{d}</li>
+                  ))}
+                </ul>
               </div>
-              <div>
-                <p className="text-xs font-semibold text-foreground mb-0.5">Mechanism of Action</p>
-                <p className="text-sm text-muted-foreground">{info.mechanism}</p>
-              </div>
-            </div>
-          </div>
-        </TabsContent>
-
-        <TabsContent value="details" className="mt-3 space-y-3">
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="text-xs font-semibold text-foreground mb-1">✅ Advantages</p>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                {info.advantages.map((a, i) => (
-                  <li key={i} className="flex gap-1.5"><span className="text-primary mt-0.5">•</span>{a}</li>
-                ))}
-              </ul>
             </div>
             <div className="p-3 rounded-lg border border-border">
-              <p className="text-xs font-semibold text-foreground mb-1">⚠️ Disadvantages</p>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                {info.disadvantages.map((d, i) => (
-                  <li key={i} className="flex gap-1.5"><span className="text-destructive mt-0.5">•</span>{d}</li>
-                ))}
-              </ul>
+              <p className="text-xs font-semibold text-foreground mb-0.5">Indications</p>
+              <p className="text-sm text-muted-foreground">{info.indications}</p>
             </div>
-          </div>
-          <div className="p-3 rounded-lg border border-border">
-            <p className="text-xs font-semibold text-foreground mb-0.5">Indications</p>
-            <p className="text-sm text-muted-foreground">{info.indications}</p>
-          </div>
-          <div className="p-3 rounded-lg border border-border bg-secondary/20">
-            <p className="text-xs font-semibold text-foreground mb-0.5">PDPH Risk</p>
-            <p className="text-sm text-muted-foreground">{info.pdphRisk}</p>
-          </div>
-          <div className="p-2 rounded border border-border/50">
-            <p className="text-xs text-muted-foreground italic">📜 {info.historicalNote}</p>
-          </div>
-        </TabsContent>
-
-        <TabsContent value="comparison" className="mt-3 space-y-3">
-          <CrossSectionComparison />
-          <div className="overflow-x-auto">
-            <table className="w-full text-xs border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Needle</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Type</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Tip</th>
-                  <th className="text-left py-2 text-foreground font-semibold">PDPH Risk (25G)</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-1.5 font-medium" style={{ color: needles.quincke.color }}>Quincke</td>
-                  <td>Cutting</td><td>Sharp bevel, end-hole</td><td>3–12%</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-1.5 font-medium" style={{ color: needles.whitacre.color }}>Whitacre</td>
-                  <td>Pencil-point</td><td>Conical, side-port (2mm)</td><td>0.5–2%</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-1.5 font-medium" style={{ color: needles.sprotte.color }}>Sprotte</td>
-                  <td>Pencil-point</td><td>Conical, side-port (5-6mm)</td><td>0.5–2%</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-1.5 font-medium" style={{ color: needles.tuohy.color }}>Tuohy</td>
-                  <td>Epidural</td><td>Curved Huber-point (16G)</td><td>&gt;50% if ADP</td>
-                </tr>
-                <tr>
-                  <td className="py-1.5 font-medium" style={{ color: needles.huber.color }}>Huber</td>
-                  <td>Non-coring</td><td>Deflected bevel</td><td>N/A (port access)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="p-3 rounded-lg border border-border bg-secondary/20">
-            <p className="text-xs font-semibold text-foreground mb-1">Key PDPH Reduction Factors</p>
-            <div className="text-xs text-muted-foreground space-y-0.5">
-              <p>1. <strong>Needle gauge:</strong> Smaller gauge → smaller dural hole → less PDPH (27G &lt; 25G &lt; 22G)</p>
-              <p>2. <strong>Needle tip:</strong> Pencil-point &gt; cutting (50–60% reduction at same gauge)</p>
-              <p>3. <strong>Bevel orientation (cutting only):</strong> Parallel to longitudinal dural fibres reduces PDPH</p>
-              <p>4. <strong>Patient factors:</strong> Young, female, previous PDPH → higher risk</p>
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className="text-xs font-semibold text-foreground mb-0.5">PDPH Risk</p>
+              <p className="text-sm text-muted-foreground">{info.pdphRisk}</p>
             </div>
-          </div>
-        </TabsContent>
-      </Tabs>
-    </div>
+            <div className="p-2 rounded border border-border/50">
+              <p className="text-xs text-muted-foreground italic">📜 {info.historicalNote}</p>
+            </div>
+          </TabsContent>
+  
+          <TabsContent value="comparison" className="mt-3 space-y-3">
+            <CrossSectionComparison />
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Needle</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Type</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Tip</th>
+                    <th className="text-left py-2 text-foreground font-semibold">PDPH Risk (25G)</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border">
+                    <td className="py-1.5 font-medium" style={{ color: needles.quincke.color }}>Quincke</td>
+                    <td>Cutting</td><td>Sharp bevel, end-hole</td><td>3–12%</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-1.5 font-medium" style={{ color: needles.whitacre.color }}>Whitacre</td>
+                    <td>Pencil-point</td><td>Conical, side-port (2mm)</td><td>0.5–2%</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-1.5 font-medium" style={{ color: needles.sprotte.color }}>Sprotte</td>
+                    <td>Pencil-point</td><td>Conical, side-port (5-6mm)</td><td>0.5–2%</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-1.5 font-medium" style={{ color: needles.tuohy.color }}>Tuohy</td>
+                    <td>Epidural</td><td>Curved Huber-point (16G)</td><td>&gt;50% if ADP</td>
+                  </tr>
+                  <tr>
+                    <td className="py-1.5 font-medium" style={{ color: needles.huber.color }}>Huber</td>
+                    <td>Non-coring</td><td>Deflected bevel</td><td>N/A (port access)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className="text-xs font-semibold text-foreground mb-1">Key PDPH Reduction Factors</p>
+              <div className="text-xs text-muted-foreground space-y-0.5">
+                <p>1. <strong>Needle gauge:</strong> Smaller gauge → smaller dural hole → less PDPH (27G &lt; 25G &lt; 22G)</p>
+                <p>2. <strong>Needle tip:</strong> Pencil-point &gt; cutting (50–60% reduction at same gauge)</p>
+                <p>3. <strong>Bevel orientation (cutting only):</strong> Parallel to longitudinal dural fibres reduces PDPH</p>
+                <p>4. <strong>Patient factors:</strong> Young, female, previous PDPH → higher risk</p>
+              </div>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

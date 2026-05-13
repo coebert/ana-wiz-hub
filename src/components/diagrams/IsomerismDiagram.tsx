@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type TabKey = "structural" | "geometric" | "optical" | "tautomer";
 
@@ -20,91 +21,97 @@ const IsomerismDiagram = () => {
   const [mirrorHover, setMirrorHover] = useState(false);
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6 bg-card">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">
-        Isomerism in Anaesthetic Drugs
-      </h3>
-      <p className="text-xs text-muted-foreground mb-4">
-        Same molecular formula, different arrangements — and dramatically different pharmacology
-      </p>
-
-      {/* Tab buttons */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {tabs.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setTab(t.key)}
-            className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
-              tab === t.key
-                ? "bg-chemistry text-white shadow-sm"
-                : "bg-secondary text-muted-foreground hover:bg-secondary/70"
-            }`}
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Diagram + clinical panel */}
-      <div className="grid lg:grid-cols-[1.2fr_1fr] gap-4 items-start">
-        <div className="border border-border rounded-md bg-gradient-to-b from-background to-secondary/20 p-3 overflow-x-auto">
-          {tab === "structural" && <StructuralPanel />}
-          {tab === "geometric" && <GeometricPanel />}
-          {tab === "optical" && <OpticalPanel mirrorHover={mirrorHover} setMirrorHover={setMirrorHover} />}
-          {tab === "tautomer" && <TautomerPanel />}
+    <DiagramFigure
+      id="isomerism-diagram"
+      title="Isomerism"
+      description="Auto-generated wrapper for the Isomerism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="border border-border rounded-lg p-4 mb-6 bg-card">
+        <h3 className="text-lg font-serif font-bold text-foreground mb-1">
+          Isomerism in Anaesthetic Drugs
+        </h3>
+        <p className="text-xs text-muted-foreground mb-4">
+          Same molecular formula, different arrangements — and dramatically different pharmacology
+        </p>
+  
+        {/* Tab buttons */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {tabs.map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setTab(t.key)}
+              className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+                tab === t.key
+                  ? "bg-chemistry text-white shadow-sm"
+                  : "bg-secondary text-muted-foreground hover:bg-secondary/70"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
         </div>
-
-        <div className="space-y-3">
-          <div className="p-3 rounded-lg border border-border bg-secondary/20">
-            <p className="text-xs font-semibold text-foreground mb-1">
-              {tabs.find((t) => t.key === tab)?.label} — {tabs.find((t) => t.key === tab)?.example}
-            </p>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              {tab === "structural" &&
-                "Enflurane and isoflurane share the same molecular formula (C₂HClF₅O) but the atoms are connected differently. Result: isoflurane has lower blood:gas solubility (1.4 vs 1.8), faster onset/offset, and far less epileptogenic potential."}
-              {tab === "geometric" &&
-                "Atracurium has 4 chiral centres and 2 geometric (cis/trans) configurations → 10 stereoisomers in the racemic mixture. Cisatracurium is the single 1R-cis, 1′R-cis isomer — 4× more potent, less histamine release, no laudanosine accumulation."}
-              {tab === "optical" &&
-                "Enantiomers are non-superimposable mirror images at a chiral carbon (4 different groups). They have identical physical properties EXCEPT the direction they rotate plane-polarised light. Biological receptors are chiral, so enantiomers can have very different potency, toxicity, and side-effect profiles."}
-              {tab === "tautomer" &&
-                "Thiopentone exists as keto (stable, white powder) and enol (water-soluble, yellow) tautomers in equilibrium. The enol form predominates in alkaline solution (pH 10.5) — that's why the reconstituted drug is yellow and why mixing with acidic drugs (e.g. rocuronium) causes precipitation."}
-            </p>
+  
+        {/* Diagram + clinical panel */}
+        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-4 items-start">
+          <div className="border border-border rounded-md bg-gradient-to-b from-background to-secondary/20 p-3 overflow-x-auto">
+            {tab === "structural" && <StructuralPanel />}
+            {tab === "geometric" && <GeometricPanel />}
+            {tab === "optical" && <OpticalPanel mirrorHover={mirrorHover} setMirrorHover={setMirrorHover} />}
+            {tab === "tautomer" && <TautomerPanel />}
           </div>
-
-          <div className="p-3 rounded-lg border border-border bg-chemistry/5">
-            <p className="text-xs font-semibold text-foreground mb-1.5">Clinical examples</p>
-            <ul className="text-xs text-muted-foreground space-y-1 leading-relaxed">
-              {tab === "structural" && (
-                <>
-                  <li>• <strong>Enflurane vs isoflurane</strong> — same formula, different ether linkage</li>
-                  <li>• <strong>Diethyl ether vs butanol</strong> — C₄H₁₀O isomers, very different boiling points</li>
-                </>
-              )}
-              {tab === "geometric" && (
-                <>
-                  <li>• <strong>Cisatracurium</strong> — 1 of 10 atracurium isomers, used as a single agent</li>
-                  <li>• <strong>Mivacurium</strong> — 3 stereoisomers, two active (cis-trans + trans-trans)</li>
-                </>
-              )}
-              {tab === "optical" && (
-                <>
-                  <li>• <strong>Ketamine</strong>: S(+) ~4× more potent for analgesia/anaesthesia, fewer emergence reactions than R(−)</li>
-                  <li>• <strong>Bupivacaine → levobupivacaine</strong>: S(−) isomer alone, less cardiotoxic than racemic mix</li>
-                  <li>• <strong>Ropivacaine</strong>: pure S(−) isomer by design</li>
-                  <li>• <strong>Isoflurane, desflurane, sevoflurane</strong>: chiral but used as racemates (no clinical difference)</li>
-                </>
-              )}
-              {tab === "tautomer" && (
-                <>
-                  <li>• <strong>Thiopentone</strong> — keto (insoluble) ⇌ enol/thiol (soluble Na⁺ salt)</li>
-                  <li>• <strong>Midazolam</strong> — open-ring (water-soluble at pH&lt;4) ⇌ closed-ring (lipid-soluble at pH 7.4) — not strict tautomerism but analogous pH-dependent equilibrium</li>
-                </>
-              )}
-            </ul>
+  
+          <div className="space-y-3">
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className="text-xs font-semibold text-foreground mb-1">
+                {tabs.find((t) => t.key === tab)?.label} — {tabs.find((t) => t.key === tab)?.example}
+              </p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {tab === "structural" &&
+                  "Enflurane and isoflurane share the same molecular formula (C₂HClF₅O) but the atoms are connected differently. Result: isoflurane has lower blood:gas solubility (1.4 vs 1.8), faster onset/offset, and far less epileptogenic potential."}
+                {tab === "geometric" &&
+                  "Atracurium has 4 chiral centres and 2 geometric (cis/trans) configurations → 10 stereoisomers in the racemic mixture. Cisatracurium is the single 1R-cis, 1′R-cis isomer — 4× more potent, less histamine release, no laudanosine accumulation."}
+                {tab === "optical" &&
+                  "Enantiomers are non-superimposable mirror images at a chiral carbon (4 different groups). They have identical physical properties EXCEPT the direction they rotate plane-polarised light. Biological receptors are chiral, so enantiomers can have very different potency, toxicity, and side-effect profiles."}
+                {tab === "tautomer" &&
+                  "Thiopentone exists as keto (stable, white powder) and enol (water-soluble, yellow) tautomers in equilibrium. The enol form predominates in alkaline solution (pH 10.5) — that's why the reconstituted drug is yellow and why mixing with acidic drugs (e.g. rocuronium) causes precipitation."}
+              </p>
+            </div>
+  
+            <div className="p-3 rounded-lg border border-border bg-chemistry/5">
+              <p className="text-xs font-semibold text-foreground mb-1.5">Clinical examples</p>
+              <ul className="text-xs text-muted-foreground space-y-1 leading-relaxed">
+                {tab === "structural" && (
+                  <>
+                    <li>• <strong>Enflurane vs isoflurane</strong> — same formula, different ether linkage</li>
+                    <li>• <strong>Diethyl ether vs butanol</strong> — C₄H₁₀O isomers, very different boiling points</li>
+                  </>
+                )}
+                {tab === "geometric" && (
+                  <>
+                    <li>• <strong>Cisatracurium</strong> — 1 of 10 atracurium isomers, used as a single agent</li>
+                    <li>• <strong>Mivacurium</strong> — 3 stereoisomers, two active (cis-trans + trans-trans)</li>
+                  </>
+                )}
+                {tab === "optical" && (
+                  <>
+                    <li>• <strong>Ketamine</strong>: S(+) ~4× more potent for analgesia/anaesthesia, fewer emergence reactions than R(−)</li>
+                    <li>• <strong>Bupivacaine → levobupivacaine</strong>: S(−) isomer alone, less cardiotoxic than racemic mix</li>
+                    <li>• <strong>Ropivacaine</strong>: pure S(−) isomer by design</li>
+                    <li>• <strong>Isoflurane, desflurane, sevoflurane</strong>: chiral but used as racemates (no clinical difference)</li>
+                  </>
+                )}
+                {tab === "tautomer" && (
+                  <>
+                    <li>• <strong>Thiopentone</strong> — keto (insoluble) ⇌ enol/thiol (soluble Na⁺ salt)</li>
+                    <li>• <strong>Midazolam</strong> — open-ring (water-soluble at pH&lt;4) ⇌ closed-ring (lipid-soluble at pH 7.4) — not strict tautomerism but analogous pH-dependent equilibrium</li>
+                  </>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 
@@ -255,7 +262,7 @@ const OpticalPanel = ({ mirrorHover, setMirrorHover }: OpticalProps) => (
 );
 
 const TautomerPanel = () => (
-  <svg viewBox="0 0 460 220" className="w-full h-auto">
+      <svg viewBox="0 0 460 220" className="w-full h-auto">
     <text x="115" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--chemistry))">Keto form</text>
     <text x="115" y="32" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">white powder, insoluble</text>
     {/* C=O */}
@@ -305,6 +312,6 @@ const TautomerPanel = () => (
       Thiopentone Na⁺ in solution = enol; precipitates back to keto when pH falls
     </text>
   </svg>
-);
+  );
 
 export default IsomerismDiagram;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Region = {
   id: string;
@@ -216,210 +217,216 @@ const NerveDermatomeOverlayDiagram = () => {
   const sel = REGIONS.find((r) => r.id === selectedId)!;
 
   return (
-    <div className="my-6 rounded-lg border border-border bg-card p-4">
-      <p className="text-sm font-semibold text-foreground mb-1 text-center">
-        Dermatomes vs Peripheral Nerve Territories — Comparison Overlay
-      </p>
-      <p className="text-xs text-muted-foreground text-center mb-3">
-        Toggle the view to see how nerve-root (dermatomal) and peripheral-nerve cutaneous distributions overlap and diverge — clinically critical for choosing the right block and interpreting nerve injuries.
-      </p>
-
-      {/* Mode toggle */}
-      <div className="flex justify-center gap-1 mb-3 flex-wrap">
-        {([
-          { v: "dermatome", label: "Dermatomes (nerve roots)" },
-          { v: "nerve", label: "Peripheral nerves" },
-          { v: "both", label: "Side-by-side overlay" },
-        ] as const).map((opt) => (
-          <button
-            key={opt.v}
-            onClick={() => setMode(opt.v)}
-            className={`text-[11px] px-3 py-1 rounded border transition uppercase tracking-wide font-semibold ${
-              mode === opt.v
-                ? "border-primary bg-primary text-primary-foreground"
-                : "border-border bg-card hover:bg-muted/50 text-muted-foreground"
-            }`}
-          >
-            {opt.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="grid lg:grid-cols-[1.4fr_1fr] gap-4 items-start">
-        {/* SVG figure */}
-        <div>
-          <svg viewBox="0 0 600 700" className="w-full h-auto max-w-[560px] mx-auto" role="img" aria-label="Anterior and posterior body with dermatomes and peripheral nerve territories">
-            {/* Body silhouettes */}
-            <path d={ANTERIOR_BODY} fill="hsl(var(--muted))" opacity="0.3" stroke="hsl(var(--foreground))" strokeWidth="1" />
-            <path d={POSTERIOR_BODY} fill="hsl(var(--muted))" opacity="0.3" stroke="hsl(var(--foreground))" strokeWidth="1" />
-
-            {/* Labels for views */}
-            <text x="130" y="20" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">ANTERIOR</text>
-            <text x="410" y="20" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">POSTERIOR</text>
-
-            {/* Midline */}
-            <line x1="300" y1="10" x2="300" y2="690" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 4" />
-
-            {/* Region overlays (translucent + dotted boundary) */}
-            {REGIONS.map((r) => {
-              const isSel = r.id === selectedId;
-              if (mode === "dermatome") {
-                return (
-                  <g key={r.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(r.id)}>
-                    <path d={r.path} fill={r.dermatomeColor} opacity={isSel ? 0.55 : 0.32} stroke={r.dermatomeColor} strokeWidth={isSel ? 1.2 : 0.6} strokeDasharray="1.5 2" />
-                  </g>
-                );
-              }
-              if (mode === "nerve") {
-                return (
-                  <g key={r.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(r.id)}>
-                    <path d={r.path} fill={r.nerveColor} opacity={isSel ? 0.55 : 0.32} stroke={r.nerveColor} strokeWidth={isSel ? 1.2 : 0.6} strokeDasharray="1.5 2" />
-                  </g>
-                );
-              }
-              return (
-                <g key={r.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(r.id)}>
-                  <path d={r.path} fill={r.dermatomeColor} opacity={isSel ? 0.5 : 0.28} stroke={r.dermatomeColor} strokeWidth={isSel ? 1.2 : 0.5} strokeDasharray="1.5 2" />
-                  <path d={r.path} fill="none" stroke={r.nerveColor} strokeWidth={isSel ? 1.4 : 0.8} strokeDasharray="4 2" opacity={isSel ? 0.85 : 0.55} />
-                </g>
-              );
-            })}
-
-            {/* Surface anatomy overlay — bony landmarks rendered ON TOP so anatomy stays visible through territories */}
-            <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.55" strokeLinecap="round">
-              {/* ── ANTERIOR (centered ~x=130) ── */}
-              {/* Clavicles */}
-              <path d="M 78 135 Q 105 128 130 138" />
-              <path d="M 130 138 Q 155 128 182 135" />
-              {/* Sternum (manubrium → body → xiphoid) */}
-              <path d="M 130 140 L 130 215" />
-              <line x1="123" y1="155" x2="137" y2="155" />
-              {/* Costal margins */}
-              <path d="M 130 215 Q 100 230 80 255" />
-              <path d="M 130 215 Q 160 230 180 255" />
-              {/* Nipples (T4) */}
-              <circle cx="105" cy="185" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-              <circle cx="155" cy="185" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-              {/* Umbilicus (T10) */}
-              <circle cx="130" cy="258" r="2.4" fill="none" />
-              <circle cx="130" cy="258" r="0.8" fill="hsl(var(--foreground))" opacity="0.6" />
-              {/* ASIS + inguinal ligament hint */}
-              <circle cx="98" cy="305" r="1.8" fill="hsl(var(--foreground))" opacity="0.6" />
-              <circle cx="162" cy="305" r="1.8" fill="hsl(var(--foreground))" opacity="0.6" />
-              <path d="M 98 305 Q 115 318 130 318 Q 145 318 162 305" strokeDasharray="2 2" />
-              {/* Patellae */}
-              <ellipse cx="115" cy="500" rx="9" ry="11" />
-              <ellipse cx="145" cy="500" rx="9" ry="11" />
-              {/* Medial malleoli */}
-              <circle cx="118" cy="650" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-              <circle cx="142" cy="650" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-
-              {/* ── POSTERIOR (centered ~x=410) ── */}
-              {/* C7 vertebra prominens */}
-              <circle cx="410" cy="125" r="2" fill="hsl(var(--foreground))" opacity="0.7" />
-              {/* Spine midline */}
-              <line x1="410" y1="125" x2="410" y2="320" strokeDasharray="2 2" />
-              {/* Scapulae (spine + inferior angle T7) */}
-              <path d="M 365 150 Q 385 158 405 162" />
-              <path d="M 415 162 Q 435 158 455 150" />
-              <path d="M 365 150 L 380 215" />
-              <path d="M 455 150 L 440 215" />
-              <circle cx="380" cy="215" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-              <circle cx="440" cy="215" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-              {/* Iliac crests (L4 plane) + PSIS dimples */}
-              <path d="M 370 320 Q 410 312 450 320" />
-              <circle cx="395" cy="328" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-              <circle cx="425" cy="328" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-              {/* Gluteal fold */}
-              <path d="M 378 410 Q 410 422 442 410" strokeDasharray="2 2" />
-              {/* Popliteal crease */}
-              <path d="M 388 545 Q 410 552 432 545" strokeDasharray="2 2" />
-              {/* Achilles / heel hint */}
-              <path d="M 398 660 L 405 670" />
-              <path d="M 422 660 L 415 670" />
-            </g>
-
-            {/* Selected region marker */}
-            {(() => {
-              const r = sel;
-              // Compute approximate centroid by sampling — use first M coords
-              const m = r.path.match(/M\s*(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)/);
-              if (!m) return null;
-              const cx = parseFloat(m[1]) + 25;
-              const cy = parseFloat(m[2]) + 20;
-              return (
-                <circle cx={cx} cy={cy} r="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
-                  <animate attributeName="r" values="8;16;8" dur="1.6s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="1;0;1" dur="1.6s" repeatCount="indefinite" />
-                </circle>
-              );
-            })()}
-
-            {/* Legend */}
-            <g transform="translate(20 680)">
-              <rect x="0" y="-12" width="14" height="10" fill="hsl(var(--foreground))" opacity="0.5" />
-              <text x="20" y="-3" fontSize="9" fill="hsl(var(--muted-foreground))">solid = dermatome</text>
-              <line x1="155" y1="-7" x2="175" y2="-7" stroke="hsl(var(--foreground))" strokeWidth="2" strokeDasharray="5 3" />
-              <text x="180" y="-3" fontSize="9" fill="hsl(var(--muted-foreground))">dashed = peripheral nerve</text>
-            </g>
-          </svg>
-        </div>
-
-        {/* Detail panel */}
-        <div className="space-y-2">
-          {/* Region chips grouped */}
-          <div>
-            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wide mb-1">Regions (click to inspect)</p>
-            <div className="flex flex-wrap gap-1">
-              {REGIONS.map((r) => (
-                <button
-                  key={r.id}
-                  onClick={() => setSelectedId(r.id)}
-                  className="text-[10px] px-2 py-0.5 rounded border transition font-semibold"
-                  style={{
-                    background: selectedId === r.id ? r.dermatomeColor : "transparent",
-                    color: selectedId === r.id ? "white" : "hsl(var(--foreground))",
-                    borderColor: selectedId === r.id ? r.dermatomeColor : "hsl(var(--border))",
-                  }}
-                >
-                  {r.id.toUpperCase()}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-lg border-2 p-3" style={{ borderColor: `${sel.dermatomeColor}55`, background: `${sel.dermatomeColor}0d` }}>
-            <div className="grid gap-2">
-              <div className="p-2 rounded bg-card/60 border border-border">
-                <p className="text-[10px] font-bold uppercase tracking-wide mb-0.5" style={{ color: sel.dermatomeColor }}>
-                  ▣ Dermatome (nerve root)
-                </p>
-                <p className="text-xs text-foreground font-semibold">{sel.dermatome}</p>
-              </div>
-              <div className="p-2 rounded bg-card/60 border border-border">
-                <p className="text-[10px] font-bold uppercase tracking-wide mb-0.5" style={{ color: sel.nerveColor }}>
-                  ┄ Peripheral nerve
-                </p>
-                <p className="text-xs text-foreground font-semibold">{sel.nerve}</p>
-                <p className="text-[10px] text-muted-foreground italic mt-0.5">Origin: {sel.nerveOrigin}</p>
-              </div>
-              <div className="p-2 rounded bg-secondary/60 border border-primary/20">
-                <p className="text-[10px] font-bold text-foreground uppercase tracking-wide mb-0.5">💡 Clinical pearl</p>
-                <p className="text-[11px] text-muted-foreground leading-snug">{sel.clinicalPearl}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Synthesis */}
-      <div className="mt-3 p-2.5 rounded bg-secondary/40 border border-border">
-        <p className="text-[11px] text-muted-foreground leading-relaxed">
-          <strong className="text-foreground">Why this matters: </strong>
-          Dermatomes follow nerve <em>roots</em> (segmental) — relevant for spinal blocks, radiculopathy and shingles. Peripheral nerve territories follow <em>terminal branches</em> after plexus mixing — relevant for peripheral nerve blocks and traumatic nerve injuries. Classic divergences: <strong>ULNAR n.</strong> stops at the wrist crease, but <strong>C8</strong> extends up the medial forearm; <strong>LCNT</strong> covers anterolateral thigh from L2–L3 roots but is a single trappable nerve under the inguinal ligament (meralgia paraesthetica); <strong>intercostobrachial (T2)</strong> supplies medial upper arm and is missed by interscalene/supraclavicular blocks — a key cause of tourniquet pain.
+    <DiagramFigure
+      id="nerve-dermatome-overlay-diagram"
+      title="Nerve dermatome overlay"
+      description="Auto-generated wrapper for the Nerve dermatome overlay anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 rounded-lg border border-border bg-card p-4">
+        <p className="text-sm font-semibold text-foreground mb-1 text-center">
+          Dermatomes vs Peripheral Nerve Territories — Comparison Overlay
         </p>
+        <p className="text-xs text-muted-foreground text-center mb-3">
+          Toggle the view to see how nerve-root (dermatomal) and peripheral-nerve cutaneous distributions overlap and diverge — clinically critical for choosing the right block and interpreting nerve injuries.
+        </p>
+  
+        {/* Mode toggle */}
+        <div className="flex justify-center gap-1 mb-3 flex-wrap">
+          {([
+            { v: "dermatome", label: "Dermatomes (nerve roots)" },
+            { v: "nerve", label: "Peripheral nerves" },
+            { v: "both", label: "Side-by-side overlay" },
+          ] as const).map((opt) => (
+            <button
+              key={opt.v}
+              onClick={() => setMode(opt.v)}
+              className={`text-[11px] px-3 py-1 rounded border transition uppercase tracking-wide font-semibold ${
+                mode === opt.v
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card hover:bg-muted/50 text-muted-foreground"
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+  
+        <div className="grid lg:grid-cols-[1.4fr_1fr] gap-4 items-start">
+          {/* SVG figure */}
+          <div>
+            <svg viewBox="0 0 600 700" className="w-full h-auto max-w-[560px] mx-auto" role="img" aria-label="Anterior and posterior body with dermatomes and peripheral nerve territories">
+              {/* Body silhouettes */}
+              <path d={ANTERIOR_BODY} fill="hsl(var(--muted))" opacity="0.3" stroke="hsl(var(--foreground))" strokeWidth="1" />
+              <path d={POSTERIOR_BODY} fill="hsl(var(--muted))" opacity="0.3" stroke="hsl(var(--foreground))" strokeWidth="1" />
+  
+              {/* Labels for views */}
+              <text x="130" y="20" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">ANTERIOR</text>
+              <text x="410" y="20" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">POSTERIOR</text>
+  
+              {/* Midline */}
+              <line x1="300" y1="10" x2="300" y2="690" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 4" />
+  
+              {/* Region overlays (translucent + dotted boundary) */}
+              {REGIONS.map((r) => {
+                const isSel = r.id === selectedId;
+                if (mode === "dermatome") {
+                  return (
+                    <g key={r.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(r.id)}>
+                      <path d={r.path} fill={r.dermatomeColor} opacity={isSel ? 0.55 : 0.32} stroke={r.dermatomeColor} strokeWidth={isSel ? 1.2 : 0.6} strokeDasharray="1.5 2" />
+                    </g>
+                  );
+                }
+                if (mode === "nerve") {
+                  return (
+                    <g key={r.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(r.id)}>
+                      <path d={r.path} fill={r.nerveColor} opacity={isSel ? 0.55 : 0.32} stroke={r.nerveColor} strokeWidth={isSel ? 1.2 : 0.6} strokeDasharray="1.5 2" />
+                    </g>
+                  );
+                }
+                return (
+                  <g key={r.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(r.id)}>
+                    <path d={r.path} fill={r.dermatomeColor} opacity={isSel ? 0.5 : 0.28} stroke={r.dermatomeColor} strokeWidth={isSel ? 1.2 : 0.5} strokeDasharray="1.5 2" />
+                    <path d={r.path} fill="none" stroke={r.nerveColor} strokeWidth={isSel ? 1.4 : 0.8} strokeDasharray="4 2" opacity={isSel ? 0.85 : 0.55} />
+                  </g>
+                );
+              })}
+  
+              {/* Surface anatomy overlay — bony landmarks rendered ON TOP so anatomy stays visible through territories */}
+              <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.55" strokeLinecap="round">
+                {/* ── ANTERIOR (centered ~x=130) ── */}
+                {/* Clavicles */}
+                <path d="M 78 135 Q 105 128 130 138" />
+                <path d="M 130 138 Q 155 128 182 135" />
+                {/* Sternum (manubrium → body → xiphoid) */}
+                <path d="M 130 140 L 130 215" />
+                <line x1="123" y1="155" x2="137" y2="155" />
+                {/* Costal margins */}
+                <path d="M 130 215 Q 100 230 80 255" />
+                <path d="M 130 215 Q 160 230 180 255" />
+                {/* Nipples (T4) */}
+                <circle cx="105" cy="185" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
+                <circle cx="155" cy="185" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
+                {/* Umbilicus (T10) */}
+                <circle cx="130" cy="258" r="2.4" fill="none" />
+                <circle cx="130" cy="258" r="0.8" fill="hsl(var(--foreground))" opacity="0.6" />
+                {/* ASIS + inguinal ligament hint */}
+                <circle cx="98" cy="305" r="1.8" fill="hsl(var(--foreground))" opacity="0.6" />
+                <circle cx="162" cy="305" r="1.8" fill="hsl(var(--foreground))" opacity="0.6" />
+                <path d="M 98 305 Q 115 318 130 318 Q 145 318 162 305" strokeDasharray="2 2" />
+                {/* Patellae */}
+                <ellipse cx="115" cy="500" rx="9" ry="11" />
+                <ellipse cx="145" cy="500" rx="9" ry="11" />
+                {/* Medial malleoli */}
+                <circle cx="118" cy="650" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
+                <circle cx="142" cy="650" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
+  
+                {/* ── POSTERIOR (centered ~x=410) ── */}
+                {/* C7 vertebra prominens */}
+                <circle cx="410" cy="125" r="2" fill="hsl(var(--foreground))" opacity="0.7" />
+                {/* Spine midline */}
+                <line x1="410" y1="125" x2="410" y2="320" strokeDasharray="2 2" />
+                {/* Scapulae (spine + inferior angle T7) */}
+                <path d="M 365 150 Q 385 158 405 162" />
+                <path d="M 415 162 Q 435 158 455 150" />
+                <path d="M 365 150 L 380 215" />
+                <path d="M 455 150 L 440 215" />
+                <circle cx="380" cy="215" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
+                <circle cx="440" cy="215" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
+                {/* Iliac crests (L4 plane) + PSIS dimples */}
+                <path d="M 370 320 Q 410 312 450 320" />
+                <circle cx="395" cy="328" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
+                <circle cx="425" cy="328" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
+                {/* Gluteal fold */}
+                <path d="M 378 410 Q 410 422 442 410" strokeDasharray="2 2" />
+                {/* Popliteal crease */}
+                <path d="M 388 545 Q 410 552 432 545" strokeDasharray="2 2" />
+                {/* Achilles / heel hint */}
+                <path d="M 398 660 L 405 670" />
+                <path d="M 422 660 L 415 670" />
+              </g>
+  
+              {/* Selected region marker */}
+              {(() => {
+                const r = sel;
+                // Compute approximate centroid by sampling — use first M coords
+                const m = r.path.match(/M\s*(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)/);
+                if (!m) return null;
+                const cx = parseFloat(m[1]) + 25;
+                const cy = parseFloat(m[2]) + 20;
+                return (
+                      <circle cx={cx} cy={cy} r="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
+                    <animate attributeName="r" values="8;16;8" dur="1.6s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="1;0;1" dur="1.6s" repeatCount="indefinite" />
+                  </circle>
+    );
+              })()}
+  
+              {/* Legend */}
+              <g transform="translate(20 680)">
+                <rect x="0" y="-12" width="14" height="10" fill="hsl(var(--foreground))" opacity="0.5" />
+                <text x="20" y="-3" fontSize="9" fill="hsl(var(--muted-foreground))">solid = dermatome</text>
+                <line x1="155" y1="-7" x2="175" y2="-7" stroke="hsl(var(--foreground))" strokeWidth="2" strokeDasharray="5 3" />
+                <text x="180" y="-3" fontSize="9" fill="hsl(var(--muted-foreground))">dashed = peripheral nerve</text>
+              </g>
+            </svg>
+          </div>
+  
+          {/* Detail panel */}
+          <div className="space-y-2">
+            {/* Region chips grouped */}
+            <div>
+              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wide mb-1">Regions (click to inspect)</p>
+              <div className="flex flex-wrap gap-1">
+                {REGIONS.map((r) => (
+                  <button
+                    key={r.id}
+                    onClick={() => setSelectedId(r.id)}
+                    className="text-[10px] px-2 py-0.5 rounded border transition font-semibold"
+                    style={{
+                      background: selectedId === r.id ? r.dermatomeColor : "transparent",
+                      color: selectedId === r.id ? "white" : "hsl(var(--foreground))",
+                      borderColor: selectedId === r.id ? r.dermatomeColor : "hsl(var(--border))",
+                    }}
+                  >
+                    {r.id.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+            </div>
+  
+            <div className="rounded-lg border-2 p-3" style={{ borderColor: `${sel.dermatomeColor}55`, background: `${sel.dermatomeColor}0d` }}>
+              <div className="grid gap-2">
+                <div className="p-2 rounded bg-card/60 border border-border">
+                  <p className="text-[10px] font-bold uppercase tracking-wide mb-0.5" style={{ color: sel.dermatomeColor }}>
+                    ▣ Dermatome (nerve root)
+                  </p>
+                  <p className="text-xs text-foreground font-semibold">{sel.dermatome}</p>
+                </div>
+                <div className="p-2 rounded bg-card/60 border border-border">
+                  <p className="text-[10px] font-bold uppercase tracking-wide mb-0.5" style={{ color: sel.nerveColor }}>
+                    ┄ Peripheral nerve
+                  </p>
+                  <p className="text-xs text-foreground font-semibold">{sel.nerve}</p>
+                  <p className="text-[10px] text-muted-foreground italic mt-0.5">Origin: {sel.nerveOrigin}</p>
+                </div>
+                <div className="p-2 rounded bg-secondary/60 border border-primary/20">
+                  <p className="text-[10px] font-bold text-foreground uppercase tracking-wide mb-0.5">💡 Clinical pearl</p>
+                  <p className="text-[11px] text-muted-foreground leading-snug">{sel.clinicalPearl}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        {/* Synthesis */}
+        <div className="mt-3 p-2.5 rounded bg-secondary/40 border border-border">
+          <p className="text-[11px] text-muted-foreground leading-relaxed">
+            <strong className="text-foreground">Why this matters: </strong>
+            Dermatomes follow nerve <em>roots</em> (segmental) — relevant for spinal blocks, radiculopathy and shingles. Peripheral nerve territories follow <em>terminal branches</em> after plexus mixing — relevant for peripheral nerve blocks and traumatic nerve injuries. Classic divergences: <strong>ULNAR n.</strong> stops at the wrist crease, but <strong>C8</strong> extends up the medial forearm; <strong>LCNT</strong> covers anterolateral thigh from L2–L3 roots but is a single trappable nerve under the inguinal ligament (meralgia paraesthetica); <strong>intercostobrachial (T2)</strong> supplies medial upper arm and is missed by interscalene/supraclavicular blocks — a key cause of tourniquet pain.
+          </p>
+        </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

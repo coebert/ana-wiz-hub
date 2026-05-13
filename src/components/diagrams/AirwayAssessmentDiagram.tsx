@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Tab = "mallampati" | "predictors" | "fona-anatomy";
 
@@ -312,27 +313,33 @@ const AirwayAssessmentDiagram = () => {
   const [activeTab, setActiveTab] = useState<Tab>("mallampati");
 
   return (
-    <div className="space-y-4">
-      <div className="flex gap-2">
-        {tabs.map((tab) => (
-          <button
-            key={tab.key}
-            onClick={() => setActiveTab(tab.key)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-              activeTab === tab.key
-                ? "bg-primary text-primary-foreground"
-                : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
+    <DiagramFigure
+      id="airway-assessment-diagram"
+      title="Airway assessment"
+      description="Auto-generated wrapper for the Airway assessment anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="space-y-4">
+        <div className="flex gap-2">
+          {tabs.map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                activeTab === tab.key
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+  
+        {activeTab === "mallampati" && <MallampatiDiagram />}
+        {activeTab === "predictors" && <PredictorsDiagram />}
+        {activeTab === "fona-anatomy" && <FONAAnatomyDiagram />}
       </div>
-
-      {activeTab === "mallampati" && <MallampatiDiagram />}
-      {activeTab === "predictors" && <PredictorsDiagram />}
-      {activeTab === "fona-anatomy" && <FONAAnatomyDiagram />}
-    </div>
+    </DiagramFigure>
   );
 };
 

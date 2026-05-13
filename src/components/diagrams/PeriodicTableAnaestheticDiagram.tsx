@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Element {
   symbol: string;
@@ -140,98 +141,104 @@ export const PeriodicTableAnaestheticDiagram = () => {
   const [activeTab, setActiveTab] = useState<"physiology" | "pharmacology" | "clinical">("physiology");
 
   return (
-    <div className="space-y-4">
-      {/* Legend */}
-      <div className="flex flex-wrap gap-2 justify-center">
-        {Object.entries(categoryColors).map(([key, val]) => (
-          <span key={key} className={`inline-flex items-center gap-1.5 text-[10px] px-2 py-1 rounded-full border ${val.border} ${val.bg} ${val.text} font-medium`}>
-            <span className={`w-2 h-2 rounded-full ${val.bg} border ${val.border}`} />
-            {val.label}
-          </span>
-        ))}
-      </div>
-
-      {/* Element Grid */}
-      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-6 gap-1.5 sm:gap-2">
-        {elements.map((el) => {
-          const cat = categoryColors[el.category];
-          const isSelected = selected?.symbol === el.symbol;
-          return (
-            <button
-              key={el.symbol}
-              onClick={() => setSelected(isSelected ? null : el)}
-              className={`relative flex flex-col items-center justify-center p-1.5 sm:p-2 rounded-lg border-2 transition-all duration-200 cursor-pointer min-h-[72px] sm:min-h-[88px]
-                ${isSelected
-                  ? `${cat.bg} ${cat.border} ring-2 ring-offset-1 ring-offset-background scale-105 shadow-lg`
-                  : `${cat.bg} ${cat.border} hover:scale-105 hover:shadow-md`
-                }
-                ${isSelected ? `ring-${el.category === 'alkali' ? 'red' : el.category === 'alkaline' ? 'orange' : el.category === 'transition' ? 'sky' : 'emerald'}-400/50` : ''}
-              `}
-            >
-              <span className="text-[9px] text-muted-foreground leading-none">{el.atomicNumber}</span>
-              <span className={`text-lg sm:text-2xl font-bold ${cat.text} leading-tight`}>{el.symbol}</span>
-              <span className="text-[8px] sm:text-[9px] text-muted-foreground leading-tight truncate w-full text-center">{el.name}</span>
-              <span className="text-[7px] sm:text-[8px] text-muted-foreground/60 leading-none">{el.atomicMass}</span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Detail Panel */}
-      {selected && (
-        <div className={`rounded-xl border-2 ${categoryColors[selected.category].border} ${categoryColors[selected.category].bg} p-4 sm:p-5 space-y-4 animate-in fade-in-0 slide-in-from-bottom-2 duration-300`}>
-          {/* Header */}
-          <div className="flex items-start gap-4">
-            <div className={`flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-xl border-2 ${categoryColors[selected.category].border} bg-background/50`}>
-              <span className="text-xs text-muted-foreground">{selected.atomicNumber}</span>
-              <span className={`text-3xl sm:text-4xl font-bold ${categoryColors[selected.category].text}`}>{selected.symbol}</span>
-              <span className="text-[10px] text-muted-foreground">{selected.atomicMass}</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <h3 className={`text-xl font-bold ${categoryColors[selected.category].text}`}>{selected.name}</h3>
-              <p className="text-xs text-muted-foreground mt-0.5">Electron config: {selected.electronConfig}</p>
-              {selected.normalRange && (
-                <p className="text-xs text-muted-foreground mt-0.5">
-                  Normal range: <span className="font-semibold text-foreground">{selected.normalRange}</span>
-                </p>
-              )}
-              <div className="flex flex-wrap gap-1 mt-2">
-                {selected.disorders.map((d, i) => (
-                  <span key={i} className="text-[10px] px-2 py-0.5 rounded-full bg-background/50 border border-border text-muted-foreground">{d}</span>
-                ))}
+    <DiagramFigure
+      id="periodic-table-anaesthetic-diagram"
+      title="Periodic table anaesthetic"
+      description="Auto-generated wrapper for the Periodic table anaesthetic anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-4">
+        {/* Legend */}
+        <div className="flex flex-wrap gap-2 justify-center">
+          {Object.entries(categoryColors).map(([key, val]) => (
+            <span key={key} className={`inline-flex items-center gap-1.5 text-[10px] px-2 py-1 rounded-full border ${val.border} ${val.bg} ${val.text} font-medium`}>
+              <span className={`w-2 h-2 rounded-full ${val.bg} border ${val.border}`} />
+              {val.label}
+            </span>
+          ))}
+        </div>
+  
+        {/* Element Grid */}
+        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-6 gap-1.5 sm:gap-2">
+          {elements.map((el) => {
+            const cat = categoryColors[el.category];
+            const isSelected = selected?.symbol === el.symbol;
+            return (
+                  <button
+                key={el.symbol}
+                onClick={() => setSelected(isSelected ? null : el)}
+                className={`relative flex flex-col items-center justify-center p-1.5 sm:p-2 rounded-lg border-2 transition-all duration-200 cursor-pointer min-h-[72px] sm:min-h-[88px]
+                  ${isSelected
+                    ? `${cat.bg} ${cat.border} ring-2 ring-offset-1 ring-offset-background scale-105 shadow-lg`
+                    : `${cat.bg} ${cat.border} hover:scale-105 hover:shadow-md`
+                  }
+                  ${isSelected ? `ring-${el.category === 'alkali' ? 'red' : el.category === 'alkaline' ? 'orange' : el.category === 'transition' ? 'sky' : 'emerald'}-400/50` : ''}
+                `}
+              >
+                <span className="text-[9px] text-muted-foreground leading-none">{el.atomicNumber}</span>
+                <span className={`text-lg sm:text-2xl font-bold ${cat.text} leading-tight`}>{el.symbol}</span>
+                <span className="text-[8px] sm:text-[9px] text-muted-foreground leading-tight truncate w-full text-center">{el.name}</span>
+                <span className="text-[7px] sm:text-[8px] text-muted-foreground/60 leading-none">{el.atomicMass}</span>
+              </button>
+    );
+          })}
+        </div>
+  
+        {/* Detail Panel */}
+        {selected && (
+          <div className={`rounded-xl border-2 ${categoryColors[selected.category].border} ${categoryColors[selected.category].bg} p-4 sm:p-5 space-y-4 animate-in fade-in-0 slide-in-from-bottom-2 duration-300`}>
+            {/* Header */}
+            <div className="flex items-start gap-4">
+              <div className={`flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-xl border-2 ${categoryColors[selected.category].border} bg-background/50`}>
+                <span className="text-xs text-muted-foreground">{selected.atomicNumber}</span>
+                <span className={`text-3xl sm:text-4xl font-bold ${categoryColors[selected.category].text}`}>{selected.symbol}</span>
+                <span className="text-[10px] text-muted-foreground">{selected.atomicMass}</span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className={`text-xl font-bold ${categoryColors[selected.category].text}`}>{selected.name}</h3>
+                <p className="text-xs text-muted-foreground mt-0.5">Electron config: {selected.electronConfig}</p>
+                {selected.normalRange && (
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    Normal range: <span className="font-semibold text-foreground">{selected.normalRange}</span>
+                  </p>
+                )}
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {selected.disorders.map((d, i) => (
+                    <span key={i} className="text-[10px] px-2 py-0.5 rounded-full bg-background/50 border border-border text-muted-foreground">{d}</span>
+                  ))}
+                </div>
               </div>
             </div>
+  
+            {/* Tabs */}
+            <div className="flex gap-1 bg-background/30 rounded-lg p-0.5">
+              {(["physiology", "pharmacology", "clinical"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`flex-1 text-xs sm:text-sm font-medium py-2 px-3 rounded-md transition-all capitalize
+                    ${activeTab === tab
+                      ? `${categoryColors[selected.category].bg} ${categoryColors[selected.category].text} shadow-sm`
+                      : "text-muted-foreground hover:text-foreground"
+                    }`}
+                >
+                  {tab === "clinical" ? "Clinical Pearl" : tab}
+                </button>
+              ))}
+            </div>
+  
+            {/* Content */}
+            <div className="text-sm text-muted-foreground leading-relaxed">
+              {activeTab === "physiology" && <p>{selected.physiology}</p>}
+              {activeTab === "pharmacology" && <p>{selected.pharmacology}</p>}
+              {activeTab === "clinical" && <p>{selected.clinicalPearl}</p>}
+            </div>
           </div>
-
-          {/* Tabs */}
-          <div className="flex gap-1 bg-background/30 rounded-lg p-0.5">
-            {(["physiology", "pharmacology", "clinical"] as const).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`flex-1 text-xs sm:text-sm font-medium py-2 px-3 rounded-md transition-all capitalize
-                  ${activeTab === tab
-                    ? `${categoryColors[selected.category].bg} ${categoryColors[selected.category].text} shadow-sm`
-                    : "text-muted-foreground hover:text-foreground"
-                  }`}
-              >
-                {tab === "clinical" ? "Clinical Pearl" : tab}
-              </button>
-            ))}
-          </div>
-
-          {/* Content */}
-          <div className="text-sm text-muted-foreground leading-relaxed">
-            {activeTab === "physiology" && <p>{selected.physiology}</p>}
-            {activeTab === "pharmacology" && <p>{selected.pharmacology}</p>}
-            {activeTab === "clinical" && <p>{selected.clinicalPearl}</p>}
-          </div>
-        </div>
-      )}
-
-      {!selected && (
-        <p className="text-center text-xs text-muted-foreground py-3">Tap an element to explore its physiological and pharmacological significance</p>
-      )}
-    </div>
+        )}
+  
+        {!selected && (
+          <p className="text-center text-xs text-muted-foreground py-3">Tap an element to explore its physiological and pharmacological significance</p>
+        )}
+      </div>
+    </DiagramFigure>
   );
 };

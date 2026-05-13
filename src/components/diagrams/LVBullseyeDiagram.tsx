@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { withAlpha } from "@/lib/color-utils";
 import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * AHA 17-segment short-axis LV bullseye, colour-keyed to the SAME six coronary
@@ -170,181 +171,187 @@ const LVBullseyeDiagram = () => {
   };
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="LV bullseye — AHA 17-segment model"
-          subtitle="Short-axis polar plot. Tap a segment for its territory, artery and ECG leads."
-          toggles={[
-            { label: "Segment numbers", active: showLabels, onChange: () => setShowLabels((v) => !v) },
-            { label: "Ring + wall labels", active: showRingLabels, onChange: () => setShowRingLabels((v) => !v) },
-          ]}
-        />
-
-        {/* Territory legend — clicking a swatch highlights that whole territory across the bullseye */}
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          {territoryOrder.map((t) => {
-            const meta = territoryMeta[t];
-            const active = highlightedTerritory === t;
-            const isRV = t === "rv";
-            return (
-              <button
-                key={t}
-                type="button"
-                onClick={() => !isRV && setHighlightedTerritory(active ? null : t)}
-                disabled={isRV}
-                aria-pressed={active}
-                className={`flex items-center gap-1.5 px-2 py-1 rounded text-[11px] border transition-colors ${
-                  active ? "text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
-                } ${isRV ? "opacity-60 cursor-not-allowed" : ""}`}
-                style={
-                  active
-                    ? { borderColor: meta.color, backgroundColor: withAlpha(meta.color, 0.12) }
-                    : undefined
-                }
-                title={isRV ? "RV is not part of the LV 17-segment model" : `Highlight ${meta.label} territory`}
-              >
-                <span className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: meta.color, opacity: 0.85 }} />
-                {meta.label}
-                {isRV && <span className="text-[9px] opacity-70">(LV only)</span>}
-              </button>
-            );
-          })}
-        </div>
-
-        <svg
-          viewBox="0 0 320 340"
-          className="w-full max-w-md mx-auto"
-          role="img"
-          aria-label="AHA 17-segment short-axis LV bullseye colour-keyed to coronary territories"
-        >
-          <defs>
-            <radialGradient id="lvb-bg" cx="50%" cy="48%" r="60%">
-              <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.18" />
-              <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
-            </radialGradient>
-            <pattern id="lvb-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
-              <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
-            </pattern>
-            <filter id="lvb-shadow" x="-10%" y="-10%" width="120%" height="120%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="1.6" />
-              <feOffset dx="0" dy="1.4" result="off" />
-              <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
-              <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
-            </filter>
-          </defs>
-
-          {/* Background card */}
-          <rect x="0" y="0" width="320" height="340" rx="10" fill="url(#lvb-bg)" />
-          <rect x="0" y="0" width="320" height="340" rx="10" fill="url(#lvb-tissue)" pointerEvents="none" />
-
-          {/* Compass — short-axis convention */}
-          {showRingLabels && (
-            <g className="select-none pointer-events-none" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="500">
-              <text x={cx} y={20} textAnchor="middle">ANTERIOR</text>
-              <text x={cx} y={310} textAnchor="middle">INFERIOR</text>
-              <text x={300} y={cy + 3} textAnchor="end">SEPTAL</text>
-              <text x={20} y={cy + 3} textAnchor="start">LATERAL</text>
-            </g>
-          )}
-
-          {/* Outer ring shadow — gives the bullseye some depth */}
-          <circle
-            cx={cx}
-            cy={cy}
-            r={RING_RADII.basalOuter}
-            fill="none"
-            stroke="hsl(var(--border))"
-            strokeWidth="1"
-            filter="url(#lvb-shadow)"
+    <DiagramFigure
+      id="lv-bullseye-diagram"
+      title="LV bullseye"
+      description="Auto-generated wrapper for the LV bullseye anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="LV bullseye — AHA 17-segment model"
+            subtitle="Short-axis polar plot. Tap a segment for its territory, artery and ECG leads."
+            toggles={[
+              { label: "Segment numbers", active: showLabels, onChange: () => setShowLabels((v) => !v) },
+              { label: "Ring + wall labels", active: showRingLabels, onChange: () => setShowRingLabels((v) => !v) },
+            ]}
           />
-
-          {/* Segments */}
-          <g>
-            {segments.map((s) => {
-              const meta = territoryMeta[s.territory];
-              const isSelected = s.id === selected;
-              const isTerritoryActive = highlightedTerritory === s.territory;
-              const dim = highlightedTerritory && !isTerritoryActive;
-              const fillOpacity = isSelected ? 0.85 : isTerritoryActive ? 0.7 : dim ? 0.18 : 0.45;
-              const strokeWidth = isSelected ? 2 : isTerritoryActive ? 1.4 : 0.9;
+  
+          {/* Territory legend — clicking a swatch highlights that whole territory across the bullseye */}
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {territoryOrder.map((t) => {
+              const meta = territoryMeta[t];
+              const active = highlightedTerritory === t;
+              const isRV = t === "rv";
               return (
-                <path
-                  key={s.id}
-                  d={segmentPath(s)}
-                  fill={meta.color}
-                  fillOpacity={fillOpacity}
-                  stroke={isSelected ? meta.color : "hsl(var(--background))"}
-                  strokeWidth={strokeWidth}
-                  className="cursor-pointer transition-all duration-150"
-                  onClick={() => handleSegmentClick(s)}
-                  aria-label={`Segment ${s.id}: ${s.name}`}
-                />
+                <button
+                  key={t}
+                  type="button"
+                  onClick={() => !isRV && setHighlightedTerritory(active ? null : t)}
+                  disabled={isRV}
+                  aria-pressed={active}
+                  className={`flex items-center gap-1.5 px-2 py-1 rounded text-[11px] border transition-colors ${
+                    active ? "text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
+                  } ${isRV ? "opacity-60 cursor-not-allowed" : ""}`}
+                  style={
+                    active
+                      ? { borderColor: meta.color, backgroundColor: withAlpha(meta.color, 0.12) }
+                      : undefined
+                  }
+                  title={isRV ? "RV is not part of the LV 17-segment model" : `Highlight ${meta.label} territory`}
+                >
+                  <span className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: meta.color, opacity: 0.85 }} />
+                  {meta.label}
+                  {isRV && <span className="text-[9px] opacity-70">(LV only)</span>}
+                </button>
               );
             })}
-          </g>
-
-          {/* Segment numbers */}
-          {showLabels && (
-            <g className="select-none pointer-events-none" fontSize="10" fontWeight="600" fill="hsl(var(--foreground))">
+          </div>
+  
+          <svg
+            viewBox="0 0 320 340"
+            className="w-full max-w-md mx-auto"
+            role="img"
+            aria-label="AHA 17-segment short-axis LV bullseye colour-keyed to coronary territories"
+          >
+            <defs>
+              <radialGradient id="lvb-bg" cx="50%" cy="48%" r="60%">
+                <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.18" />
+                <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+              </radialGradient>
+              <pattern id="lvb-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+              </pattern>
+              <filter id="lvb-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.6" />
+                <feOffset dx="0" dy="1.4" result="off" />
+                <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
+                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+  
+            {/* Background card */}
+            <rect x="0" y="0" width="320" height="340" rx="10" fill="url(#lvb-bg)" />
+            <rect x="0" y="0" width="320" height="340" rx="10" fill="url(#lvb-tissue)" pointerEvents="none" />
+  
+            {/* Compass — short-axis convention */}
+            {showRingLabels && (
+              <g className="select-none pointer-events-none" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="500">
+                <text x={cx} y={20} textAnchor="middle">ANTERIOR</text>
+                <text x={cx} y={310} textAnchor="middle">INFERIOR</text>
+                <text x={300} y={cy + 3} textAnchor="end">SEPTAL</text>
+                <text x={20} y={cy + 3} textAnchor="start">LATERAL</text>
+              </g>
+            )}
+  
+            {/* Outer ring shadow — gives the bullseye some depth */}
+            <circle
+              cx={cx}
+              cy={cy}
+              r={RING_RADII.basalOuter}
+              fill="none"
+              stroke="hsl(var(--border))"
+              strokeWidth="1"
+              filter="url(#lvb-shadow)"
+            />
+  
+            {/* Segments */}
+            <g>
               {segments.map((s) => {
-                const pos = segmentLabelPos(s);
+                const meta = territoryMeta[s.territory];
+                const isSelected = s.id === selected;
+                const isTerritoryActive = highlightedTerritory === s.territory;
+                const dim = highlightedTerritory && !isTerritoryActive;
+                const fillOpacity = isSelected ? 0.85 : isTerritoryActive ? 0.7 : dim ? 0.18 : 0.45;
+                const strokeWidth = isSelected ? 2 : isTerritoryActive ? 1.4 : 0.9;
                 return (
-                  <text key={s.id} x={pos.x} y={pos.y} textAnchor="middle">
-                    {s.id}
-                  </text>
+                  <path
+                    key={s.id}
+                    d={segmentPath(s)}
+                    fill={meta.color}
+                    fillOpacity={fillOpacity}
+                    stroke={isSelected ? meta.color : "hsl(var(--background))"}
+                    strokeWidth={strokeWidth}
+                    className="cursor-pointer transition-all duration-150"
+                    onClick={() => handleSegmentClick(s)}
+                    aria-label={`Segment ${s.id}: ${s.name}`}
+                  />
                 );
               })}
             </g>
-          )}
-
-          {/* Ring labels (basal / mid / apical) */}
-          {showRingLabels && (
-            <g className="select-none pointer-events-none" fontSize="7.5" fill="hsl(var(--muted-foreground))" fontStyle="italic" opacity="0.85">
-              <text x={cx} y={cy - (RING_RADII.basalOuter + 6)} textAnchor="middle" opacity="0">basal</text>
-              <text x={cx + RING_RADII.basalOuter + 4} y={cy - 4} textAnchor="start">basal</text>
-              <text x={cx + RING_RADII.midOuter + 4} y={cy + 8} textAnchor="start">mid</text>
-              <text x={cx + RING_RADII.apicalOuter + 4} y={cy + 20} textAnchor="start">apical</text>
-            </g>
-          )}
-        </svg>
-
-        {/* Detail panel */}
-        <div
-          key={selected}
-          className="mt-4 p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px] animate-fade-in"
-          style={{ borderLeftWidth: 4, borderLeftColor: activeMeta.color }}
-        >
-          <div className="flex items-center gap-2 mb-1 flex-wrap">
-            <p className="font-semibold text-foreground text-sm">
-              Segment {activeSeg.id} — {activeSeg.name}
+  
+            {/* Segment numbers */}
+            {showLabels && (
+              <g className="select-none pointer-events-none" fontSize="10" fontWeight="600" fill="hsl(var(--foreground))">
+                {segments.map((s) => {
+                  const pos = segmentLabelPos(s);
+                  return (
+                        <text key={s.id} x={pos.x} y={pos.y} textAnchor="middle">
+                      {s.id}
+                    </text>
+    );
+                })}
+              </g>
+            )}
+  
+            {/* Ring labels (basal / mid / apical) */}
+            {showRingLabels && (
+              <g className="select-none pointer-events-none" fontSize="7.5" fill="hsl(var(--muted-foreground))" fontStyle="italic" opacity="0.85">
+                <text x={cx} y={cy - (RING_RADII.basalOuter + 6)} textAnchor="middle" opacity="0">basal</text>
+                <text x={cx + RING_RADII.basalOuter + 4} y={cy - 4} textAnchor="start">basal</text>
+                <text x={cx + RING_RADII.midOuter + 4} y={cy + 8} textAnchor="start">mid</text>
+                <text x={cx + RING_RADII.apicalOuter + 4} y={cy + 20} textAnchor="start">apical</text>
+              </g>
+            )}
+          </svg>
+  
+          {/* Detail panel */}
+          <div
+            key={selected}
+            className="mt-4 p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px] animate-fade-in"
+            style={{ borderLeftWidth: 4, borderLeftColor: activeMeta.color }}
+          >
+            <div className="flex items-center gap-2 mb-1 flex-wrap">
+              <p className="font-semibold text-foreground text-sm">
+                Segment {activeSeg.id} — {activeSeg.name}
+              </p>
+              <span
+                className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md ml-auto"
+                style={{ background: withAlpha(activeMeta.color, 0.15), color: activeMeta.color }}
+              >
+                {activeMeta.label}
+              </span>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Artery:</span> {activeMeta.artery}
             </p>
-            <span
-              className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md ml-auto"
-              style={{ background: withAlpha(activeMeta.color, 0.15), color: activeMeta.color }}
-            >
-              {activeMeta.label}
-            </span>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">ECG leads:</span> {activeMeta.leads}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Ring:</span>{" "}
+              {activeSeg.ring === "apex" ? "Apical cap (segment 17)" : `${activeSeg.ring.charAt(0).toUpperCase() + activeSeg.ring.slice(1)} ring`}
+            </p>
           </div>
-          <p className="text-xs text-muted-foreground">
-            <span className="font-medium text-foreground">Artery:</span> {activeMeta.artery}
-          </p>
-          <p className="text-xs text-muted-foreground">
-            <span className="font-medium text-foreground">ECG leads:</span> {activeMeta.leads}
-          </p>
-          <p className="text-xs text-muted-foreground">
-            <span className="font-medium text-foreground">Ring:</span>{" "}
-            {activeSeg.ring === "apex" ? "Apical cap (segment 17)" : `${activeSeg.ring.charAt(0).toUpperCase() + activeSeg.ring.slice(1)} ring`}
+  
+          <p className="text-[11px] text-center text-muted-foreground mt-3 italic leading-relaxed">
+            <span className="font-semibold not-italic text-foreground">Same six colours </span>
+            map this bullseye to the coronary tree above and the territory map below it — pick a culprit artery in any
+            diagram and the affected wall, leads and segments fall out together.
           </p>
         </div>
-
-        <p className="text-[11px] text-center text-muted-foreground mt-3 italic leading-relaxed">
-          <span className="font-semibold not-italic text-foreground">Same six colours </span>
-          map this bullseye to the coronary tree above and the territory map below it — pick a culprit artery in any
-          diagram and the affected wall, leads and segments fall out together.
-        </p>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

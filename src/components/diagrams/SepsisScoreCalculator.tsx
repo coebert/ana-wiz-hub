@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive SOFA + qSOFA + NEWS2 calculator for sepsis screening &
@@ -33,123 +34,129 @@ const SepsisScoreCalculator = () => {
   );
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 my-6">
-      <h3 className="text-lg font-semibold text-foreground">Sepsis Scoring — SOFA · qSOFA · NEWS2</h3>
-      <p className="text-xs text-muted-foreground mb-4">
-        Enter the worst values in the last 24 h. Outputs each score side-by-side with mortality risk and a head-to-head sensitivity/specificity comparison.
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-4">
-        <Slider label="Systolic BP" value={sbp} min={50} max={200} step={1} unit="mmHg" onChange={setSbp} />
-        <Slider label="Mean arterial pressure" value={map} min={30} max={120} step={1} unit="mmHg" onChange={setMap} />
-        <Slider label="Respiratory rate" value={rr} min={6} max={40} step={1} unit="/min" onChange={setRr} />
-        <Slider label="Heart rate" value={hr} min={30} max={180} step={1} unit="/min" onChange={setHr} />
-        <Slider label="SpO₂" value={spo2} min={70} max={100} step={1} unit="%" onChange={setSpo2} />
-        <Slider label="Temperature" value={temp} min={33} max={41} step={0.1} unit="°C" onChange={setTemp} decimals={1} />
-        <Slider label="GCS" value={gcs} min={3} max={15} step={1} unit="" onChange={setGcs} />
-        <Slider label="PaO₂/FiO₂" value={pf} min={50} max={500} step={10} unit="mmHg" onChange={setPf} />
-        <Slider label="Platelets" value={platelets} min={5} max={400} step={5} unit="×10⁹/L" onChange={setPlatelets} />
-        <Slider label="Bilirubin" value={bilirubin} min={5} max={400} step={1} unit="µmol/L" onChange={setBilirubin} />
-        <Slider label="Creatinine" value={creatinine} min={40} max={500} step={5} unit="µmol/L" onChange={setCreatinine} />
-        <div>
-          <p className="text-xs text-muted-foreground mb-1">Vasopressors</p>
-          <select
-            value={vasopressor}
-            onChange={(e) => setVasopressor(e.target.value as typeof vasopressor)}
-            className="w-full px-2 py-1 text-xs rounded-md border border-border bg-background text-foreground"
-          >
-            <option value="none">None</option>
-            <option value="lowDopa">Dopamine ≤ 5 / dobutamine</option>
-            <option value="lowNor">Noradrenaline ≤ 0.1 µg/kg/min</option>
-            <option value="highNor">Noradrenaline &gt; 0.1 µg/kg/min</option>
-          </select>
+    <DiagramFigure
+      id="sepsis-score-calculator"
+      title="Sepsis score"
+      description="Auto-generated wrapper for the Sepsis score interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="rounded-xl border border-border bg-card p-4 my-6">
+        <h3 className="text-lg font-semibold text-foreground">Sepsis Scoring — SOFA · qSOFA · NEWS2</h3>
+        <p className="text-xs text-muted-foreground mb-4">
+          Enter the worst values in the last 24 h. Outputs each score side-by-side with mortality risk and a head-to-head sensitivity/specificity comparison.
+        </p>
+  
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-4">
+          <Slider label="Systolic BP" value={sbp} min={50} max={200} step={1} unit="mmHg" onChange={setSbp} />
+          <Slider label="Mean arterial pressure" value={map} min={30} max={120} step={1} unit="mmHg" onChange={setMap} />
+          <Slider label="Respiratory rate" value={rr} min={6} max={40} step={1} unit="/min" onChange={setRr} />
+          <Slider label="Heart rate" value={hr} min={30} max={180} step={1} unit="/min" onChange={setHr} />
+          <Slider label="SpO₂" value={spo2} min={70} max={100} step={1} unit="%" onChange={setSpo2} />
+          <Slider label="Temperature" value={temp} min={33} max={41} step={0.1} unit="°C" onChange={setTemp} decimals={1} />
+          <Slider label="GCS" value={gcs} min={3} max={15} step={1} unit="" onChange={setGcs} />
+          <Slider label="PaO₂/FiO₂" value={pf} min={50} max={500} step={10} unit="mmHg" onChange={setPf} />
+          <Slider label="Platelets" value={platelets} min={5} max={400} step={5} unit="×10⁹/L" onChange={setPlatelets} />
+          <Slider label="Bilirubin" value={bilirubin} min={5} max={400} step={1} unit="µmol/L" onChange={setBilirubin} />
+          <Slider label="Creatinine" value={creatinine} min={40} max={500} step={5} unit="µmol/L" onChange={setCreatinine} />
+          <div>
+            <p className="text-xs text-muted-foreground mb-1">Vasopressors</p>
+            <select
+              value={vasopressor}
+              onChange={(e) => setVasopressor(e.target.value as typeof vasopressor)}
+              className="w-full px-2 py-1 text-xs rounded-md border border-border bg-background text-foreground"
+            >
+              <option value="none">None</option>
+              <option value="lowDopa">Dopamine ≤ 5 / dobutamine</option>
+              <option value="lowNor">Noradrenaline ≤ 0.1 µg/kg/min</option>
+              <option value="highNor">Noradrenaline &gt; 0.1 µg/kg/min</option>
+            </select>
+          </div>
         </div>
-      </div>
-
-      <div className="flex flex-wrap gap-3 mb-4 text-xs">
-        <label className="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" checked={onO2} onChange={(e) => setOnO2(e.target.checked)} className="accent-primary" />
-          <span className="text-muted-foreground">On supplemental O₂ (NEWS2)</span>
-        </label>
-        <label className="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" checked={confusion} onChange={(e) => setConfusion(e.target.checked)} className="accent-primary" />
-          <span className="text-muted-foreground">New confusion / altered mentation</span>
-        </label>
-      </div>
-
-      {/* Side-by-side score cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-        <ScoreCard
-          name="qSOFA"
-          score={result.qsofa.total}
-          maxScore={3}
-          color={result.qsofa.color}
-          band={result.qsofa.band}
-          breakdown={result.qsofa.breakdown}
-        />
-        <ScoreCard
-          name="NEWS2"
-          score={result.news2.total}
-          maxScore={20}
-          color={result.news2.color}
-          band={result.news2.band}
-          breakdown={result.news2.breakdown}
-        />
-        <ScoreCard
-          name="SOFA"
-          score={result.sofa.total}
-          maxScore={24}
-          color={result.sofa.color}
-          band={result.sofa.band}
-          breakdown={result.sofa.breakdown}
-        />
-      </div>
-
-      {/* Recommendation */}
-      <div
-        className="rounded-lg p-3 border-l-4 mb-4"
-        style={{ borderLeftColor: result.recColor, backgroundColor: `${result.recColor}1A` }}
-      >
-        <p className="text-sm font-bold" style={{ color: result.recColor }}>{result.recTitle}</p>
-        <p className="text-xs text-foreground mt-1 leading-relaxed">{result.recDetail}</p>
-      </div>
-
-      {/* Sensitivity / specificity comparison */}
-      <div className="rounded-lg border border-border p-3">
-        <p className="text-sm font-semibold text-foreground mb-2">Performance for in-hospital mortality</p>
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs">
-            <thead>
-              <tr className="text-muted-foreground border-b border-border">
-                <th className="text-left py-1">Score</th>
-                <th className="text-left py-1">Threshold</th>
-                <th className="text-right py-1">Sens.</th>
-                <th className="text-right py-1">Spec.</th>
-                <th className="text-right py-1">AUROC</th>
-              </tr>
-            </thead>
-            <tbody className="text-foreground">
-              {PERFORMANCE.map((p) => (
-                <tr key={p.name} className="border-b border-border/50">
-                  <td className="py-1 font-medium">{p.name}</td>
-                  <td className="py-1 text-muted-foreground">{p.threshold}</td>
-                  <td className="py-1 text-right font-mono">{p.sens}</td>
-                  <td className="py-1 text-right font-mono">{p.spec}</td>
-                  <td className="py-1 text-right font-mono font-semibold">{p.auroc}</td>
+  
+        <div className="flex flex-wrap gap-3 mb-4 text-xs">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" checked={onO2} onChange={(e) => setOnO2(e.target.checked)} className="accent-primary" />
+            <span className="text-muted-foreground">On supplemental O₂ (NEWS2)</span>
+          </label>
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" checked={confusion} onChange={(e) => setConfusion(e.target.checked)} className="accent-primary" />
+            <span className="text-muted-foreground">New confusion / altered mentation</span>
+          </label>
+        </div>
+  
+        {/* Side-by-side score cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+          <ScoreCard
+            name="qSOFA"
+            score={result.qsofa.total}
+            maxScore={3}
+            color={result.qsofa.color}
+            band={result.qsofa.band}
+            breakdown={result.qsofa.breakdown}
+          />
+          <ScoreCard
+            name="NEWS2"
+            score={result.news2.total}
+            maxScore={20}
+            color={result.news2.color}
+            band={result.news2.band}
+            breakdown={result.news2.breakdown}
+          />
+          <ScoreCard
+            name="SOFA"
+            score={result.sofa.total}
+            maxScore={24}
+            color={result.sofa.color}
+            band={result.sofa.band}
+            breakdown={result.sofa.breakdown}
+          />
+        </div>
+  
+        {/* Recommendation */}
+        <div
+          className="rounded-lg p-3 border-l-4 mb-4"
+          style={{ borderLeftColor: result.recColor, backgroundColor: `${result.recColor}1A` }}
+        >
+          <p className="text-sm font-bold" style={{ color: result.recColor }}>{result.recTitle}</p>
+          <p className="text-xs text-foreground mt-1 leading-relaxed">{result.recDetail}</p>
+        </div>
+  
+        {/* Sensitivity / specificity comparison */}
+        <div className="rounded-lg border border-border p-3">
+          <p className="text-sm font-semibold text-foreground mb-2">Performance for in-hospital mortality</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="text-muted-foreground border-b border-border">
+                  <th className="text-left py-1">Score</th>
+                  <th className="text-left py-1">Threshold</th>
+                  <th className="text-right py-1">Sens.</th>
+                  <th className="text-right py-1">Spec.</th>
+                  <th className="text-right py-1">AUROC</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="text-foreground">
+                {PERFORMANCE.map((p) => (
+                  <tr key={p.name} className="border-b border-border/50">
+                    <td className="py-1 font-medium">{p.name}</td>
+                    <td className="py-1 text-muted-foreground">{p.threshold}</td>
+                    <td className="py-1 text-right font-mono">{p.sens}</td>
+                    <td className="py-1 text-right font-mono">{p.spec}</td>
+                    <td className="py-1 text-right font-mono font-semibold">{p.auroc}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
+            <strong>SOFA</strong> (ICU patients) outperforms qSOFA and NEWS2 for mortality discrimination but requires labs. <strong>NEWS2</strong> has the best sensitivity for ward deterioration. <strong>qSOFA</strong> is highly specific but insensitive — a negative qSOFA does not exclude sepsis. Surviving Sepsis 2021 advises against qSOFA as a single screening tool; use SIRS, NEWS2 or MEWS instead.
+          </p>
         </div>
-        <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
-          <strong>SOFA</strong> (ICU patients) outperforms qSOFA and NEWS2 for mortality discrimination but requires labs. <strong>NEWS2</strong> has the best sensitivity for ward deterioration. <strong>qSOFA</strong> is highly specific but insensitive — a negative qSOFA does not exclude sepsis. Surviving Sepsis 2021 advises against qSOFA as a single screening tool; use SIRS, NEWS2 or MEWS instead.
+  
+        <p className="text-[10px] text-muted-foreground mt-3 italic">
+          Refs: Singer M et al. Sepsis-3. JAMA 2016;315:801. Seymour CW et al. JAMA 2016;315:762. RCP NEWS2 2017 (updated 2020). Surviving Sepsis Campaign 2021.
         </p>
       </div>
-
-      <p className="text-[10px] text-muted-foreground mt-3 italic">
-        Refs: Singer M et al. Sepsis-3. JAMA 2016;315:801. Seymour CW et al. JAMA 2016;315:762. RCP NEWS2 2017 (updated 2020). Surviving Sepsis Campaign 2021.
-      </p>
-    </div>
+    </DiagramFigure>
   );
 };
 
@@ -185,7 +192,7 @@ function Slider({ label, value, min, max, step, unit, onChange, decimals = 0 }: 
   unit: string; onChange: (v: number) => void; decimals?: number;
 }) {
   return (
-    <div>
+            <div>
       <div className="flex justify-between text-xs mb-0.5">
         <span className="text-muted-foreground">{label}</span>
         <span className="font-mono font-semibold text-foreground">{value.toFixed(decimals)} {unit}</span>

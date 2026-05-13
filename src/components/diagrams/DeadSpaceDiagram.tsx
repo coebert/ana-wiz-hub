@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ViewMode = "overview" | "bohr" | "vq";
 
@@ -26,34 +27,40 @@ const DeadSpaceDiagram = () => {
   const [highlightType, setHighlightType] = useState<"anatomical" | "alveolar" | "physiological" | null>(null);
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-foreground">Dead Space & V/Q Mismatch</h3>
-
-      {/* View selector */}
-      <div className="flex flex-wrap gap-2">
-        {([
-          { key: "overview" as ViewMode, label: "Dead Space Types" },
-          { key: "bohr" as ViewMode, label: "Bohr Equation" },
-          { key: "vq" as ViewMode, label: "V/Q Spectrum" },
-        ]).map(({ key, label }) => (
-          <button
-            key={key}
-            onClick={() => { setView(key); setHighlightType(null); setSelectedUnit(null); }}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-              view === key
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "bg-secondary/50 text-muted-foreground hover:bg-secondary"
-            }`}
-          >
-            {label}
-          </button>
-        ))}
+    <DiagramFigure
+      id="dead-space-diagram"
+      title="Dead space"
+      description="Auto-generated wrapper for the Dead space anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-foreground">Dead Space & V/Q Mismatch</h3>
+  
+        {/* View selector */}
+        <div className="flex flex-wrap gap-2">
+          {([
+            { key: "overview" as ViewMode, label: "Dead Space Types" },
+            { key: "bohr" as ViewMode, label: "Bohr Equation" },
+            { key: "vq" as ViewMode, label: "V/Q Spectrum" },
+          ]).map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => { setView(key); setHighlightType(null); setSelectedUnit(null); }}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                view === key
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "bg-secondary/50 text-muted-foreground hover:bg-secondary"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+  
+        {view === "overview" && <OverviewView highlightType={highlightType} setHighlightType={setHighlightType} />}
+        {view === "bohr" && <BohrView />}
+        {view === "vq" && <VQView selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit} />}
       </div>
-
-      {view === "overview" && <OverviewView highlightType={highlightType} setHighlightType={setHighlightType} />}
-      {view === "bohr" && <BohrView />}
-      {view === "vq" && <VQView selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit} />}
-    </div>
+    </DiagramFigure>
   );
 };
 
@@ -280,7 +287,7 @@ function BohrView() {
 /* ─── V/Q Spectrum ─── */
 function VQView({ selectedUnit, setSelectedUnit }: { selectedUnit: number | null; setSelectedUnit: (i: number | null) => void }) {
   return (
-    <div className="space-y-4">
+        <div className="space-y-4">
       <p className="text-xs text-muted-foreground">The V/Q spectrum ranges from shunt (V/Q=0) to dead space (V/Q=∞). Tap each unit to explore.</p>
 
       {/* Spectrum bar */}
@@ -291,7 +298,7 @@ function VQView({ selectedUnit, setSelectedUnit }: { selectedUnit: number | null
           const vBarH = unit.ventilation * 60;
           const qBarH = unit.perfusion * 60;
           return (
-            <g key={i} onClick={() => setSelectedUnit(isSelected ? null : i)} className="cursor-pointer">
+                <g key={i} onClick={() => setSelectedUnit(isSelected ? null : i)} className="cursor-pointer">
               {/* Background highlight */}
               {isSelected && <rect x={x - 15} y={5} width={60} height={150} rx="6" fill={unit.color} opacity={0.08} />}
 
@@ -319,7 +326,7 @@ function VQView({ selectedUnit, setSelectedUnit }: { selectedUnit: number | null
               <circle cx={x + 5} cy={130} r={12} fill={unit.color} opacity={0.15} stroke={unit.color} strokeWidth={isSelected ? 2 : 1} />
               <circle cx={x + 5} cy={130} r={6} fill={unit.color} opacity={0.3} />
             </g>
-          );
+  );
         })}
 
         {/* Spectrum arrow */}

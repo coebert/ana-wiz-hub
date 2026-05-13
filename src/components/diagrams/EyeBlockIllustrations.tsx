@@ -3,6 +3,7 @@ import subTenonsImg from "@/assets/ophthalmic/sub-tenons-block.jpg";
 import peribulbarImg from "@/assets/ophthalmic/peribulbar-block.jpg";
 import retrobulbarImg from "@/assets/ophthalmic/retrobulbar-block.jpg";
 import topicalImg from "@/assets/ophthalmic/topical-intracameral.jpg";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Illustration plates for the four principal ophthalmic regional anaesthesia
@@ -86,15 +87,21 @@ export const RetrobulbarBlockIllustration: React.FC = () => (
 );
 
 export const TopicalIntracameralIllustration: React.FC = () => (
-  <BlockPlate
-    src={topicalImg}
-    alt="Illustration showing topical anaesthetic eye drops and intracameral lidocaine injection into the anterior chamber for cataract surgery"
-    title="Topical ± intracameral — cataract surgery"
-    steps={[
-      "Topical proxymetacaine or tetracaine 0.5% drops anaesthetise corneal epithelium",
-      "Surgeon supplements with intracameral preservative-free lidocaine 1% via clear corneal incision",
-      "No injection-related risks; requires a cooperative, still patient",
-      "No akinesia — patient must keep the eye still and follow surgeon's instructions",
-    ]}
-  />
-);
+    <DiagramFigure
+      id="eye-block-illustrations"
+      title="Eye block illustrations"
+      description="Auto-generated wrapper for the Eye block illustrations anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+            <BlockPlate
+      src={topicalImg}
+      alt="Illustration showing topical anaesthetic eye drops and intracameral lidocaine injection into the anterior chamber for cataract surgery"
+      title="Topical ± intracameral — cataract surgery"
+      steps={[
+        "Topical proxymetacaine or tetracaine 0.5% drops anaesthetise corneal epithelium",
+        "Surgeon supplements with intracameral preservative-free lidocaine 1% via clear corneal incision",
+        "No injection-related risks; requires a cooperative, still patient",
+        "No akinesia — patient must keep the eye still and follow surgeon's instructions",
+      ]}
+    />
+    </DiagramFigure>
+  );

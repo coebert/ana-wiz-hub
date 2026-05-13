@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Addisonian / adrenal crisis — pathophysiology + emergency management.
@@ -123,11 +124,11 @@ const AdrenalCrisisScene = ({ active }: { active: number }) => {
           const lit = active > i;
           const y = 52 + i * 50;
           return (
-            <line key={i} x1="122" x2="122" y1={y} y2={y + 12}
+                <line key={i} x1="122" x2="122" y1={y} y2={y + 12}
               stroke={lit ? "hsl(var(--foreground))" : "hsl(var(--border))"}
               strokeWidth={lit ? 2 : 1}
               markerEnd="url(#ac-arrow)" className="transition-colors duration-500" />
-          );
+  );
         })}
 
         {/* Right panel — vitals + biochem */}
@@ -157,14 +158,20 @@ const AdrenalCrisisScene = ({ active }: { active: number }) => {
 };
 
 const AdrenalCrisisAnimation = () => (
-  <AnimatedMechanism
-    title="Adrenal (Addisonian) crisis — pathophysiology + management"
-    subtitle="Refractory shock with low Na⁺, high K⁺ and low glucose — treat with hydrocortisone before tests"
-    steps={STEPS}
-    stepMs={3400}
-    accentClass="border-destructive/40"
-    renderScene={(active) => <AdrenalCrisisScene active={active} />}
-  />
-);
+    <DiagramFigure
+      id="adrenal-crisis-animation"
+      title="Adrenal crisis"
+      description="Auto-generated wrapper for the Adrenal crisis animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+            <AnimatedMechanism
+      title="Adrenal (Addisonian) crisis — pathophysiology + management"
+      subtitle="Refractory shock with low Na⁺, high K⁺ and low glucose — treat with hydrocortisone before tests"
+      steps={STEPS}
+      stepMs={3400}
+      accentClass="border-destructive/40"
+      renderScene={(active) => <AdrenalCrisisScene active={active} />}
+    />
+    </DiagramFigure>
+  );
 
 export default AdrenalCrisisAnimation;

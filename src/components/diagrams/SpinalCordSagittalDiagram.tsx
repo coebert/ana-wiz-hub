@@ -200,14 +200,14 @@ const SpinalCordSagittalDiagram = () => {
                   const endX = 188 + (i * 24) / 11;
                   const endY = filumEnd + 10 + (i % 3) * 10;
                   return (
-                    <path
+                        <path
                       key={`cauda-${i}`}
                       d={`M ${startX} ${conusEnd} Q ${startX - 2} ${(conusEnd + endY) / 2}, ${endX} ${endY}`}
                       stroke={isHL("cauda") ? "hsl(var(--primary))" : "hsl(var(--anatomy))"}
                       strokeWidth="1"
                       fill="none"
                     />
-                  );
+  );
                 })}
               </g>
               <line x1="218" y1="555" x2="345" y2="555" stroke="hsl(var(--foreground))" strokeWidth="0.75" />

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { normaliseLevel, findLocalLevel, type CanonicalLevel } from "@/lib/dermatome-sync";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Dermatome = {
   level: string;
@@ -244,169 +245,175 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
   );
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Interactive dermatome map"
-          subtitle="Click any dermatome on the body to highlight its spinal cord level."
-          toggles={[
-            { label: "Posterior view", active: showPosterior, onChange: () => setShowPosterior((s) => !s) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-          ]}
-        />
-
-        <div className={`grid gap-4 items-start ${showPosterior ? "lg:grid-cols-[1fr_1fr_auto]" : "lg:grid-cols-[1fr_auto]"}`}>
-          {/* Anterior body */}
-          <div>
-            <p className="text-xs font-semibold text-muted-foreground text-center mb-1">Anterior view</p>
-            {renderBody("anterior")}
-          </div>
-
-          {/* Posterior body */}
-          {showPosterior && (
+    <DiagramFigure
+      id="interactive-dermatome-map"
+      title="Interactive dermatome MAP"
+      description="Auto-generated wrapper for the Interactive dermatome MAP anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Interactive dermatome map"
+            subtitle="Click any dermatome on the body to highlight its spinal cord level."
+            toggles={[
+              { label: "Posterior view", active: showPosterior, onChange: () => setShowPosterior((s) => !s) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+            ]}
+          />
+  
+          <div className={`grid gap-4 items-start ${showPosterior ? "lg:grid-cols-[1fr_1fr_auto]" : "lg:grid-cols-[1fr_auto]"}`}>
+            {/* Anterior body */}
             <div>
-              <p className="text-xs font-semibold text-muted-foreground text-center mb-1">Posterior view</p>
-              {renderBody("posterior")}
+              <p className="text-xs font-semibold text-muted-foreground text-center mb-1">Anterior view</p>
+              {renderBody("anterior")}
             </div>
-          )}
-
-        {/* Coupled cord */}
-        <div className="lg:w-48">
-          <p className="text-xs font-semibold text-muted-foreground text-center mb-1">Spinal level</p>
-          <svg viewBox="0 0 180 680" className="w-full h-auto max-w-[180px] mx-auto" role="img" aria-label="Spinal cord with highlighted level">
-            {/* Vertebral column */}
-            <rect x="60" y="35" width="60" height="610" fill="hsl(var(--muted))" opacity="0.4" stroke="hsl(var(--border))" strokeWidth="0.75" />
-
-            {/* Spinal canal */}
-            <rect x="78" y="40" width="24" height="580" fill="hsl(var(--background))" opacity="0.5" stroke="hsl(var(--border))" strokeDasharray="2 2" strokeWidth="0.5" />
-
-            {/* Cord */}
-            <path
-              d="M 84 40 L 84 125 Q 80 165 84 200 L 84 390 Q 81 420 84 440 L 88 452 L 92 452 L 96 440 Q 99 420 96 390 L 96 200 Q 100 165 96 125 L 96 40 Z"
-              fill="hsl(var(--anatomy) / 0.25)"
-              stroke="hsl(var(--anatomy))"
-              strokeWidth="1"
-            />
-
-            {/* Cauda equina */}
-            {Array.from({ length: 10 }).map((_, i) => {
-              const sx = 86 + (i * 8) / 9;
-              const ex = 70 + (i * 40) / 9;
-              const ey = 580 + (i % 3) * 8;
-              return (
-                <path
-                  key={i}
-                  d={`M ${sx} 452 Q ${sx} ${(452 + ey) / 2}, ${ex} ${ey}`}
-                  stroke="hsl(var(--anatomy))"
-                  strokeWidth="0.75"
-                  fill="none"
-                  opacity="0.7"
-                />
-              );
-            })}
-
-            {/* Region bands on right */}
-            <rect x="125" y="40" width="6" height="135" fill={REGION_COLOR.cervical} opacity="0.6" />
-            <rect x="125" y="175" width="6" height="240" fill={REGION_COLOR.thoracic} opacity="0.6" />
-            <rect x="125" y="415" width="6" height="135" fill={REGION_COLOR.lumbar} opacity="0.6" />
-            <rect x="125" y="550" width="6" height="80" fill={REGION_COLOR.sacral} opacity="0.6" />
-            <text x="135" y="110" fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="600">C1–C8</text>
-            <text x="135" y="295" fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="600">T1–T12</text>
-            <text x="135" y="485" fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="600">L1–L5</text>
-            <text x="135" y="595" fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="600">S1–S5</text>
-
-            {/* Conus marker */}
-            <line x1="60" y1="452" x2="120" y2="452" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" />
-            <text x="58" y="450" textAnchor="end" fontSize="7" fill="hsl(var(--muted-foreground))">Conus L1/2</text>
-
-            {/* Highlighted level */}
-            {sel && (
-              <g>
-                <line
-                  x1="55"
-                  y1={sel.cordY}
-                  x2="120"
-                  y2={sel.cordY}
-                  stroke="hsl(var(--destructive))"
-                  strokeWidth="2"
-                />
-                <circle
-                  cx="90"
-                  cy={sel.cordY}
-                  r="6"
-                  fill="hsl(var(--destructive))"
-                  opacity="0.9"
-                />
-                <rect x="0" y={sel.cordY - 12} width="50" height="24" rx="3" fill="hsl(var(--destructive))" stroke="hsl(var(--border))" strokeWidth="0.75" />
-                <text x="25" y={sel.cordY + 4} textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--destructive-foreground))">
-                  {sel.level}
-                </text>
-              </g>
-            )}
-          </svg>
-          </div>
-        </div>
-
-        {/* Standardised detail panel with left-border accent */}
-        <div className="mt-4 min-h-[80px]">
-          {sel ? (
-            <div
-              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-              style={{ borderLeftWidth: 4, borderLeftColor: REGION_COLOR[sel.region] }}
-            >
-              <div className="flex items-center justify-between gap-2">
-                <p className="font-semibold text-foreground text-sm">{sel.level} — {sel.landmark}</p>
-                <span
-                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                  style={{ background: withAlpha(REGION_COLOR[sel.region], 0.15), color: REGION_COLOR[sel.region] }}
-                >
-                  {sel.region}
-                </span>
+  
+            {/* Posterior body */}
+            {showPosterior && (
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground text-center mb-1">Posterior view</p>
+                {renderBody("posterior")}
               </div>
+            )}
+  
+          {/* Coupled cord */}
+          <div className="lg:w-48">
+            <p className="text-xs font-semibold text-muted-foreground text-center mb-1">Spinal level</p>
+            <svg viewBox="0 0 180 680" className="w-full h-auto max-w-[180px] mx-auto" role="img" aria-label="Spinal cord with highlighted level">
+              {/* Vertebral column */}
+              <rect x="60" y="35" width="60" height="610" fill="hsl(var(--muted))" opacity="0.4" stroke="hsl(var(--border))" strokeWidth="0.75" />
+  
+              {/* Spinal canal */}
+              <rect x="78" y="40" width="24" height="580" fill="hsl(var(--background))" opacity="0.5" stroke="hsl(var(--border))" strokeDasharray="2 2" strokeWidth="0.5" />
+  
+              {/* Cord */}
+              <path
+                d="M 84 40 L 84 125 Q 80 165 84 200 L 84 390 Q 81 420 84 440 L 88 452 L 92 452 L 96 440 Q 99 420 96 390 L 96 200 Q 100 165 96 125 L 96 40 Z"
+                fill="hsl(var(--anatomy) / 0.25)"
+                stroke="hsl(var(--anatomy))"
+                strokeWidth="1"
+              />
+  
+              {/* Cauda equina */}
+              {Array.from({ length: 10 }).map((_, i) => {
+                const sx = 86 + (i * 8) / 9;
+                const ex = 70 + (i * 40) / 9;
+                const ey = 580 + (i % 3) * 8;
+                return (
+                      <path
+                    key={i}
+                    d={`M ${sx} 452 Q ${sx} ${(452 + ey) / 2}, ${ex} ${ey}`}
+                    stroke="hsl(var(--anatomy))"
+                    strokeWidth="0.75"
+                    fill="none"
+                    opacity="0.7"
+                  />
+    );
+              })}
+  
+              {/* Region bands on right */}
+              <rect x="125" y="40" width="6" height="135" fill={REGION_COLOR.cervical} opacity="0.6" />
+              <rect x="125" y="175" width="6" height="240" fill={REGION_COLOR.thoracic} opacity="0.6" />
+              <rect x="125" y="415" width="6" height="135" fill={REGION_COLOR.lumbar} opacity="0.6" />
+              <rect x="125" y="550" width="6" height="80" fill={REGION_COLOR.sacral} opacity="0.6" />
+              <text x="135" y="110" fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="600">C1–C8</text>
+              <text x="135" y="295" fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="600">T1–T12</text>
+              <text x="135" y="485" fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="600">L1–L5</text>
+              <text x="135" y="595" fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="600">S1–S5</text>
+  
+              {/* Conus marker */}
+              <line x1="60" y1="452" x2="120" y2="452" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" />
+              <text x="58" y="450" textAnchor="end" fontSize="7" fill="hsl(var(--muted-foreground))">Conus L1/2</text>
+  
+              {/* Highlighted level */}
+              {sel && (
+                <g>
+                  <line
+                    x1="55"
+                    y1={sel.cordY}
+                    x2="120"
+                    y2={sel.cordY}
+                    stroke="hsl(var(--destructive))"
+                    strokeWidth="2"
+                  />
+                  <circle
+                    cx="90"
+                    cy={sel.cordY}
+                    r="6"
+                    fill="hsl(var(--destructive))"
+                    opacity="0.9"
+                  />
+                  <rect x="0" y={sel.cordY - 12} width="50" height="24" rx="3" fill="hsl(var(--destructive))" stroke="hsl(var(--border))" strokeWidth="0.75" />
+                  <text x="25" y={sel.cordY + 4} textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--destructive-foreground))">
+                    {sel.level}
+                  </text>
+                </g>
+              )}
+            </svg>
             </div>
-          ) : (
-            <div className="p-3 rounded-lg border border-dashed border-border bg-background/40">
-              <p className="text-xs text-muted-foreground italic">Click a dermatome to see its spinal level and landmark.</p>
-            </div>
-          )}
-        </div>
-
-        {/* Legend */}
-        <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-          {(Object.keys(REGION_COLOR) as Dermatome["region"][]).map((r) => (
-            <div key={r} className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded" style={{ background: REGION_COLOR[r] }} />
-              <span className="capitalize text-muted-foreground">{r}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Quick-jump key levels */}
-        <div className="mt-3">
-          <p className="text-xs font-semibold text-foreground mb-2">Key block heights:</p>
-          <div className="flex flex-wrap gap-1.5">
-            {[
-              { level: "C4", note: "Diaphragm — phrenic palsy if blocked" },
-              { level: "T4", note: "Nipple — C-section minimum" },
-              { level: "T6", note: "Xiphisternum — upper abdo surgery" },
-              { level: "T10", note: "Umbilicus — labour analgesia / TURP" },
-              { level: "L1", note: "Inguinal — hernia / lower limb" },
-              { level: "S2-4", note: "Saddle block — perineal" },
-            ].map((k) => (
-              <button
-                key={k.level}
-                onClick={() => setSelected(k.level === "S2-4" ? "S4-S5" : k.level)}
-                className="text-[10px] px-2 py-1 rounded border border-border hover:bg-muted/50 transition"
-                title={k.note}
+          </div>
+  
+          {/* Standardised detail panel with left-border accent */}
+          <div className="mt-4 min-h-[80px]">
+            {sel ? (
+              <div
+                className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+                style={{ borderLeftWidth: 4, borderLeftColor: REGION_COLOR[sel.region] }}
               >
-                <span className="font-bold text-primary">{k.level}</span>
-                <span className="text-muted-foreground ml-1">{k.note}</span>
-              </button>
+                <div className="flex items-center justify-between gap-2">
+                  <p className="font-semibold text-foreground text-sm">{sel.level} — {sel.landmark}</p>
+                  <span
+                    className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                    style={{ background: withAlpha(REGION_COLOR[sel.region], 0.15), color: REGION_COLOR[sel.region] }}
+                  >
+                    {sel.region}
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <div className="p-3 rounded-lg border border-dashed border-border bg-background/40">
+                <p className="text-xs text-muted-foreground italic">Click a dermatome to see its spinal level and landmark.</p>
+              </div>
+            )}
+          </div>
+  
+          {/* Legend */}
+          <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+            {(Object.keys(REGION_COLOR) as Dermatome["region"][]).map((r) => (
+              <div key={r} className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded" style={{ background: REGION_COLOR[r] }} />
+                <span className="capitalize text-muted-foreground">{r}</span>
+              </div>
             ))}
+          </div>
+  
+          {/* Quick-jump key levels */}
+          <div className="mt-3">
+            <p className="text-xs font-semibold text-foreground mb-2">Key block heights:</p>
+            <div className="flex flex-wrap gap-1.5">
+              {[
+                { level: "C4", note: "Diaphragm — phrenic palsy if blocked" },
+                { level: "T4", note: "Nipple — C-section minimum" },
+                { level: "T6", note: "Xiphisternum — upper abdo surgery" },
+                { level: "T10", note: "Umbilicus — labour analgesia / TURP" },
+                { level: "L1", note: "Inguinal — hernia / lower limb" },
+                { level: "S2-4", note: "Saddle block — perineal" },
+              ].map((k) => (
+                <button
+                  key={k.level}
+                  onClick={() => setSelected(k.level === "S2-4" ? "S4-S5" : k.level)}
+                  className="text-[10px] px-2 py-1 rounded border border-border hover:bg-muted/50 transition"
+                  title={k.note}
+                >
+                  <span className="font-bold text-primary">{k.level}</span>
+                  <span className="text-muted-foreground ml-1">{k.note}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

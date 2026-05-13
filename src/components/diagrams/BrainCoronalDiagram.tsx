@@ -2,6 +2,7 @@ import brainCoronalImg from "@/assets/brain-anatomy-coronal.jpg";
 import { DiagramSourcesPanel, DiagramSource } from "./DiagramSourcesPanel";
 import { BrainRegionsList } from "./BrainRegionsList";
 import BrainPlateLabels, { type PlateLabel } from "./BrainPlateLabels";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const plateLabels: PlateLabel[] = [
   // Cortex & deep white matter (left hemisphere)
@@ -185,9 +186,15 @@ export const BrainCoronalPlate = () => (
 );
 
 const BrainCoronalDiagram = () => (
-  <div className="rounded-2xl border border-border bg-card overflow-hidden">
-    <BrainCoronalPlate />
-  </div>
-);
+    <DiagramFigure
+      id="brain-coronal-diagram"
+      title="Brain coronal"
+      description="Auto-generated wrapper for the Brain coronal anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+            <div className="rounded-2xl border border-border bg-card overflow-hidden">
+      <BrainCoronalPlate />
+    </div>
+    </DiagramFigure>
+  );
 
 export default BrainCoronalDiagram;

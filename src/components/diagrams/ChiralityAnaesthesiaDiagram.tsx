@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Form = "racemate" | "single" | "achiral-mix";
 type DrugClass =
@@ -289,152 +290,158 @@ export const ChiralityAnaesthesiaDiagram = () => {
   }, []);
 
   return (
-    <Card className="p-6 bg-gradient-to-br from-background to-muted/20">
-      <div className="flex flex-col gap-1 mb-4">
-        <h3 className="text-xl font-serif font-bold text-foreground">
-          Chirality in Anaesthesia — racemate or single enantiomer?
-        </h3>
-        <p className="text-sm text-muted-foreground">
-          Every chiral anaesthetic drug, the form it is sold in, and the clinical reason why.
-        </p>
-      </div>
-
-      {/* Summary strip */}
-      <div className="grid grid-cols-3 gap-3 mb-5">
-        {(Object.keys(formMeta) as Form[]).map((f) => (
-          <div
-            key={f}
-            className="rounded-lg border border-border bg-card/50 p-3 flex flex-col gap-1"
-          >
-            <div className="flex items-center gap-2">
-              <span className={`h-2 w-2 rounded-full ${formMeta[f].dot}`} />
-              <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                {formMeta[f].label}
+    <DiagramFigure
+      id="chirality-anaesthesia-diagram"
+      title="Chirality anaesthesia"
+      description="Auto-generated wrapper for the Chirality anaesthesia anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <Card className="p-6 bg-gradient-to-br from-background to-muted/20">
+        <div className="flex flex-col gap-1 mb-4">
+          <h3 className="text-xl font-serif font-bold text-foreground">
+            Chirality in Anaesthesia — racemate or single enantiomer?
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Every chiral anaesthetic drug, the form it is sold in, and the clinical reason why.
+          </p>
+        </div>
+  
+        {/* Summary strip */}
+        <div className="grid grid-cols-3 gap-3 mb-5">
+          {(Object.keys(formMeta) as Form[]).map((f) => (
+            <div
+              key={f}
+              className="rounded-lg border border-border bg-card/50 p-3 flex flex-col gap-1"
+            >
+              <div className="flex items-center gap-2">
+                <span className={`h-2 w-2 rounded-full ${formMeta[f].dot}`} />
+                <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                  {formMeta[f].label}
+                </span>
+              </div>
+              <span className="text-2xl font-serif font-bold text-foreground">{counts[f]}</span>
+            </div>
+          ))}
+        </div>
+  
+        {/* Class filter */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {filterOptions.map((o) => (
+            <Button
+              key={o.key}
+              size="sm"
+              variant={filter === o.key ? "default" : "outline"}
+              onClick={() => setFilter(o.key)}
+              className="h-7 text-xs"
+            >
+              {o.label}
+            </Button>
+          ))}
+        </div>
+  
+        <div className="grid lg:grid-cols-5 gap-4">
+          {/* Table */}
+          <div className="lg:col-span-3 rounded-lg border border-border overflow-hidden bg-card/50">
+            <div className="grid grid-cols-12 px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground bg-muted/40 border-b border-border">
+              <div className="col-span-4">Drug</div>
+              <div className="col-span-3">Class</div>
+              <div className="col-span-2 text-center">Centres</div>
+              <div className="col-span-3">Form</div>
+            </div>
+            <div className="max-h-[460px] overflow-y-auto divide-y divide-border">
+              {visible.map((d) => {
+                const isActive = d.name === selected;
+                return (
+                      <button
+                    key={d.name}
+                    onClick={() => setSelected(d.name)}
+                    className={`w-full grid grid-cols-12 items-center px-3 py-2 text-left text-sm transition-colors ${
+                      isActive ? "bg-primary/10" : "hover:bg-muted/40"
+                    }`}
+                  >
+                    <div className="col-span-4">
+                      <div className="font-medium text-foreground leading-tight">{d.name}</div>
+                      {d.enantiomer && (
+                        <div className="text-[11px] text-muted-foreground">{d.enantiomer}</div>
+                      )}
+                    </div>
+                    <div className="col-span-3">
+                      <Badge variant="outline" className={`text-[10px] ${classColors[d.drugClass]}`}>
+                        {d.drugClass}
+                      </Badge>
+                    </div>
+                    <div className="col-span-2 text-center text-xs text-muted-foreground">
+                      {d.centres === 0 ? "—" : d.centres}
+                    </div>
+                    <div className="col-span-3">
+                      <span
+                        className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-medium ${formMeta[d.form].chip}`}
+                      >
+                        <span className={`h-1.5 w-1.5 rounded-full ${formMeta[d.form].dot}`} />
+                        {d.form === "racemate"
+                          ? "Racemate"
+                          : d.form === "single"
+                            ? "Single"
+                            : "Achiral"}
+                      </span>
+                    </div>
+                  </button>
+    );
+              })}
+            </div>
+          </div>
+  
+          {/* Detail panel */}
+          <div className="lg:col-span-2 rounded-lg border border-border bg-card/50 p-4 flex flex-col gap-3">
+            <div className="flex items-start justify-between gap-2">
+              <div>
+                <div className="text-xs uppercase tracking-wide text-muted-foreground">
+                  {active.drugClass}
+                </div>
+                <h4 className="text-lg font-serif font-bold text-foreground leading-tight">
+                  {active.name}
+                </h4>
+                {active.enantiomer && (
+                  <div className="text-xs text-muted-foreground mt-0.5">
+                    Active form: <span className="font-mono">{active.enantiomer}</span>
+                  </div>
+                )}
+              </div>
+              <span
+                className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-medium whitespace-nowrap ${formMeta[active.form].chip}`}
+              >
+                <span className={`h-1.5 w-1.5 rounded-full ${formMeta[active.form].dot}`} />
+                {formMeta[active.form].label}
               </span>
             </div>
-            <span className="text-2xl font-serif font-bold text-foreground">{counts[f]}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Class filter */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {filterOptions.map((o) => (
-          <Button
-            key={o.key}
-            size="sm"
-            variant={filter === o.key ? "default" : "outline"}
-            onClick={() => setFilter(o.key)}
-            className="h-7 text-xs"
-          >
-            {o.label}
-          </Button>
-        ))}
-      </div>
-
-      <div className="grid lg:grid-cols-5 gap-4">
-        {/* Table */}
-        <div className="lg:col-span-3 rounded-lg border border-border overflow-hidden bg-card/50">
-          <div className="grid grid-cols-12 px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground bg-muted/40 border-b border-border">
-            <div className="col-span-4">Drug</div>
-            <div className="col-span-3">Class</div>
-            <div className="col-span-2 text-center">Centres</div>
-            <div className="col-span-3">Form</div>
-          </div>
-          <div className="max-h-[460px] overflow-y-auto divide-y divide-border">
-            {visible.map((d) => {
-              const isActive = d.name === selected;
-              return (
-                <button
-                  key={d.name}
-                  onClick={() => setSelected(d.name)}
-                  className={`w-full grid grid-cols-12 items-center px-3 py-2 text-left text-sm transition-colors ${
-                    isActive ? "bg-primary/10" : "hover:bg-muted/40"
-                  }`}
-                >
-                  <div className="col-span-4">
-                    <div className="font-medium text-foreground leading-tight">{d.name}</div>
-                    {d.enantiomer && (
-                      <div className="text-[11px] text-muted-foreground">{d.enantiomer}</div>
-                    )}
-                  </div>
-                  <div className="col-span-3">
-                    <Badge variant="outline" className={`text-[10px] ${classColors[d.drugClass]}`}>
-                      {d.drugClass}
-                    </Badge>
-                  </div>
-                  <div className="col-span-2 text-center text-xs text-muted-foreground">
-                    {d.centres === 0 ? "—" : d.centres}
-                  </div>
-                  <div className="col-span-3">
-                    <span
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-medium ${formMeta[d.form].chip}`}
-                    >
-                      <span className={`h-1.5 w-1.5 rounded-full ${formMeta[d.form].dot}`} />
-                      {d.form === "racemate"
-                        ? "Racemate"
-                        : d.form === "single"
-                          ? "Single"
-                          : "Achiral"}
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Detail panel */}
-        <div className="lg:col-span-2 rounded-lg border border-border bg-card/50 p-4 flex flex-col gap-3">
-          <div className="flex items-start justify-between gap-2">
-            <div>
-              <div className="text-xs uppercase tracking-wide text-muted-foreground">
-                {active.drugClass}
+  
+            <div className="rounded-md bg-muted/40 px-3 py-2">
+              <div className="text-[11px] uppercase tracking-wide text-muted-foreground mb-0.5">
+                Why this form?
               </div>
-              <h4 className="text-lg font-serif font-bold text-foreground leading-tight">
-                {active.name}
-              </h4>
-              {active.enantiomer && (
-                <div className="text-xs text-muted-foreground mt-0.5">
-                  Active form: <span className="font-mono">{active.enantiomer}</span>
-                </div>
-              )}
+              <div className="text-sm font-medium text-foreground">{active.reason}</div>
             </div>
-            <span
-              className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-medium whitespace-nowrap ${formMeta[active.form].chip}`}
-            >
-              <span className={`h-1.5 w-1.5 rounded-full ${formMeta[active.form].dot}`} />
-              {formMeta[active.form].label}
-            </span>
-          </div>
-
-          <div className="rounded-md bg-muted/40 px-3 py-2">
-            <div className="text-[11px] uppercase tracking-wide text-muted-foreground mb-0.5">
-              Why this form?
+  
+            <div className="text-sm text-muted-foreground leading-relaxed">{active.detail}</div>
+  
+            <div className="mt-auto pt-2 border-t border-border text-[11px] text-muted-foreground">
+              Chiral centres:{" "}
+              <span className="font-mono text-foreground">
+                {active.centres === 0 ? "none (achiral)" : active.centres}
+              </span>
             </div>
-            <div className="text-sm font-medium text-foreground">{active.reason}</div>
-          </div>
-
-          <div className="text-sm text-muted-foreground leading-relaxed">{active.detail}</div>
-
-          <div className="mt-auto pt-2 border-t border-border text-[11px] text-muted-foreground">
-            Chiral centres:{" "}
-            <span className="font-mono text-foreground">
-              {active.centres === 0 ? "none (achiral)" : active.centres}
-            </span>
           </div>
         </div>
-      </div>
-
-      <div className="mt-4 text-xs text-muted-foreground leading-relaxed">
-        <span className="font-semibold text-foreground">Pattern:</span> drugs become single
-        enantiomers when one isomer is meaningfully safer (cisatracurium, levobupivacaine,
-        ropivacaine), more potent (esketamine, dexmedetomidine, etomidate), or biosynthetically
-        unavoidable (morphine, catecholamines). They stay as racemates when enantiomers are
-        complementary (methadone, tramadol), clinically indistinguishable (prilocaine), or
-        separation is uneconomic (volatiles, thiopentone).
-      </div>
-    </Card>
+  
+        <div className="mt-4 text-xs text-muted-foreground leading-relaxed">
+          <span className="font-semibold text-foreground">Pattern:</span> drugs become single
+          enantiomers when one isomer is meaningfully safer (cisatracurium, levobupivacaine,
+          ropivacaine), more potent (esketamine, dexmedetomidine, etomidate), or biosynthetically
+          unavoidable (morphine, catecholamines). They stay as racemates when enantiomers are
+          complementary (methadone, tramadol), clinically indistinguishable (prilocaine), or
+          separation is uneconomic (volatiles, thiopentone).
+        </div>
+      </Card>
+    </DiagramFigure>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* ============================================================
  * Hygrometers — animated diagrams of the four types tested in
@@ -634,87 +635,93 @@ const ElectricalScene = ({ step }: { step: number }) => {
   const reading = step >= 3 ? 78 : step >= 2 ? 60 : step >= 1 ? 35 : 18;
 
   return (
-    <svg viewBox="0 0 360 240" role="img" aria-label="Electrical capacitance hygrometer" className="w-full">
-      {/* Capacitor sensor */}
-      <g transform="translate(60 60)">
-        <text x="60" y="-8" textAnchor="middle" fontSize="10" fontWeight="bold" fill="hsl(var(--foreground))">
-          Hygroscopic polymer capacitor
-        </text>
-        {/* Top electrode (porous) */}
-        <rect x="0" y="0" width="120" height="8" fill="hsl(var(--accent))" />
-        {/* Pores */}
-        {[10, 30, 50, 70, 90, 110].map((x) => (
-          <rect key={x} x={x - 2} y="0" width="4" height="8" fill="hsl(var(--background))" />
-        ))}
-        {/* Polymer dielectric */}
-        <rect
-          x="0"
-          y="8"
-          width="120"
-          height="30"
-          fill={`hsl(var(--primary) / ${0.15 + cap * 0.5})`}
-          className="transition-colors duration-700"
-        />
-        <text x="60" y="28" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))">Polymer film</text>
-        {/* Bottom electrode */}
-        <rect x="0" y="38" width="120" height="8" fill="hsl(var(--accent))" />
-
-        {/* Water absorbed dots */}
-        {step >= 2 &&
-          [10, 30, 50, 70, 90, 110].map((x, i) => (
-            <circle
-              key={x}
-              cx={x}
-              cy={20 + (i % 2) * 8}
-              r="2"
-              fill="hsl(var(--primary))"
-              className="animate-fade-in"
-            />
+    <DiagramFigure
+      id="hygrometers-diagram"
+      title="Hygrometers"
+      description="Auto-generated wrapper for the Hygrometers anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <svg viewBox="0 0 360 240" role="img" aria-label="Electrical capacitance hygrometer" className="w-full">
+        {/* Capacitor sensor */}
+        <g transform="translate(60 60)">
+          <text x="60" y="-8" textAnchor="middle" fontSize="10" fontWeight="bold" fill="hsl(var(--foreground))">
+            Hygroscopic polymer capacitor
+          </text>
+          {/* Top electrode (porous) */}
+          <rect x="0" y="0" width="120" height="8" fill="hsl(var(--accent))" />
+          {/* Pores */}
+          {[10, 30, 50, 70, 90, 110].map((x) => (
+            <rect key={x} x={x - 2} y="0" width="4" height="8" fill="hsl(var(--background))" />
           ))}
-
-        {/* Leads */}
-        <line x1="60" y1="46" x2="60" y2="80" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-        <line x1="-10" y1="4" x2="-10" y2="80" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-        <line x1="-10" y1="4" x2="0" y2="4" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-      </g>
-
-      {/* Humid air molecules */}
-      {step >= 1 && (
-        <g className="animate-fade-in">
-          {[0, 1, 2, 3].map((i) => (
-            <circle key={i} cx={70 + i * 30} cy={40 - (i % 2) * 8} r="2.5" fill="hsl(var(--primary))" opacity="0.6" />
-          ))}
-          <text x="120" y="30" fontSize="8" fill="hsl(var(--primary))">H₂O vapour</text>
+          {/* Polymer dielectric */}
+          <rect
+            x="0"
+            y="8"
+            width="120"
+            height="30"
+            fill={`hsl(var(--primary) / ${0.15 + cap * 0.5})`}
+            className="transition-colors duration-700"
+          />
+          <text x="60" y="28" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))">Polymer film</text>
+          {/* Bottom electrode */}
+          <rect x="0" y="38" width="120" height="8" fill="hsl(var(--accent))" />
+  
+          {/* Water absorbed dots */}
+          {step >= 2 &&
+            [10, 30, 50, 70, 90, 110].map((x, i) => (
+              <circle
+                key={x}
+                cx={x}
+                cy={20 + (i % 2) * 8}
+                r="2"
+                fill="hsl(var(--primary))"
+                className="animate-fade-in"
+              />
+            ))}
+  
+          {/* Leads */}
+          <line x1="60" y1="46" x2="60" y2="80" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+          <line x1="-10" y1="4" x2="-10" y2="80" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+          <line x1="-10" y1="4" x2="0" y2="4" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
         </g>
-      )}
-
-      {/* Bridge / display */}
-      <g transform="translate(230 100)">
-        <rect width="100" height="70" rx="6" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1.5" />
-        <text x="50" y="14" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">Bridge circuit</text>
-        <rect x="10" y="20" width="80" height="32" rx="3" fill="hsl(var(--background))" stroke="hsl(var(--border))" />
-        <text
-          x="50"
-          y="42"
-          textAnchor="middle"
-          fontSize="18"
-          fontWeight="bold"
-          fill="hsl(var(--primary))"
-          className="transition-all duration-500 font-mono"
-        >
-          {reading}%
+  
+        {/* Humid air molecules */}
+        {step >= 1 && (
+          <g className="animate-fade-in">
+            {[0, 1, 2, 3].map((i) => (
+              <circle key={i} cx={70 + i * 30} cy={40 - (i % 2) * 8} r="2.5" fill="hsl(var(--primary))" opacity="0.6" />
+            ))}
+            <text x="120" y="30" fontSize="8" fill="hsl(var(--primary))">H₂O vapour</text>
+          </g>
+        )}
+  
+        {/* Bridge / display */}
+        <g transform="translate(230 100)">
+          <rect width="100" height="70" rx="6" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1.5" />
+          <text x="50" y="14" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">Bridge circuit</text>
+          <rect x="10" y="20" width="80" height="32" rx="3" fill="hsl(var(--background))" stroke="hsl(var(--border))" />
+          <text
+            x="50"
+            y="42"
+            textAnchor="middle"
+            fontSize="18"
+            fontWeight="bold"
+            fill="hsl(var(--primary))"
+            className="transition-all duration-500 font-mono"
+          >
+            {reading}%
+          </text>
+          <text x="50" y="64" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">RH</text>
+        </g>
+  
+        {/* Connecting wires */}
+        <line x1="180" y1="110" x2="230" y2="120" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+        <line x1="180" y1="140" x2="230" y2="155" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+  
+        <text x="180" y="220" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">
+          ΔCapacitance ∝ ΔRelative Humidity
         </text>
-        <text x="50" y="64" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">RH</text>
-      </g>
-
-      {/* Connecting wires */}
-      <line x1="180" y1="110" x2="230" y2="120" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-      <line x1="180" y1="140" x2="230" y2="155" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-
-      <text x="180" y="220" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">
-        ΔCapacitance ∝ ΔRelative Humidity
-      </text>
-    </svg>
+      </svg>
+    </DiagramFigure>
   );
 };
 

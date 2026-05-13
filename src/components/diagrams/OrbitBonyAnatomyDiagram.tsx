@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Bone {
   id: string;
@@ -335,319 +336,325 @@ const OrbitBonyAnatomyDiagram = () => {
   const opening = openings.find((o) => o.id === selectedOpening);
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Bony Orbit — Right Orbit, Anterior View"
-          subtitle="Tap a bone or an opening to reveal its contents and clinical relevance."
-          toggles={[
-            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
-          ]}
-        />
-
-        <svg
-          viewBox="0 0 600 500"
-          className="w-full max-w-2xl mx-auto"
-          role="img"
-          aria-label="Anatomical diagram of the right bony orbit showing the seven constituent bones, foramina and fissures"
-        >
-          <defs>
-            {/* Radial gradient — depth at the apex */}
-            <radialGradient id="apexShade" cx="60%" cy="42%" r="55%">
-              <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.35" />
-              <stop offset="55%" stopColor="hsl(var(--foreground))" stopOpacity="0.08" />
-              <stop offset="100%" stopColor="hsl(var(--foreground))" stopOpacity="0" />
-            </radialGradient>
-            {/* Subtle paper-grain inside the aperture */}
-            <pattern id="grain" patternUnits="userSpaceOnUse" width="6" height="6">
-              <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.15" />
-            </pattern>
-            {/* Clip everything to the orbital aperture so bone polygons can extend beyond without spilling */}
-            <clipPath id="apertureClip">
-              <path d={APERTURE_PATH} />
-            </clipPath>
-            {/* Drop-shadow filter to lift the rim slightly */}
-            <filter id="rimShadow" x="-10%" y="-10%" width="120%" height="120%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" />
-              <feOffset dx="0" dy="1.5" result="off" />
-              <feComponentTransfer>
-                <feFuncA type="linear" slope="0.35" />
-              </feComponentTransfer>
-              <feMerge>
-                <feMergeNode />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-
-          {/* Compass */}
-          <text x={300} y={20} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">
-            SUPERIOR
-          </text>
-          <text x={300} y={490} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">
-            INFERIOR
-          </text>
-          <text x={70} y={250} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">
-            MEDIAL
-          </text>
-          <text x={540} y={250} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">
-            LATERAL
-          </text>
-
-          {/* Background plate */}
-          <path
-            d={APERTURE_PATH}
-            fill="hsl(var(--background))"
-            stroke="hsl(var(--border))"
-            strokeWidth={2}
-            filter="url(#rimShadow)"
+    <DiagramFigure
+      id="orbit-bony-anatomy-diagram"
+      title="Orbit bony anatomy"
+      description="Auto-generated wrapper for the Orbit bony anatomy anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Bony Orbit — Right Orbit, Anterior View"
+            subtitle="Tap a bone or an opening to reveal its contents and clinical relevance."
+            toggles={[
+              { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+            ]}
           />
-
-          {/* Bones — clipped to aperture */}
-          <g clipPath="url(#apertureClip)">
-            {bones.map((b) => {
-              const isSel = selectedBone === b.id;
-              return (
-                <g
-                  key={b.id}
-                  className="cursor-pointer transition-opacity"
-                  onClick={() => {
-                    setSelectedBone(selectedBone === b.id ? null : b.id);
-                    setSelectedOpening(null);
-                  }}
-                >
-                  <path
-                    d={b.path}
-                    fill={`hsl(${b.hue} 55% 60%)`}
-                    fillOpacity={isSel ? 0.7 : 0.28}
-                    stroke={`hsl(${b.hue} 55% 40%)`}
-                    strokeWidth={isSel ? 1.5 : 0.6}
-                    strokeOpacity={isSel ? 0.9 : 0.5}
-                  />
-                </g>
-              );
-            })}
-
-            {/* Paper grain overlay for texture */}
-            <path d={APERTURE_PATH} fill="url(#grain)" pointerEvents="none" />
-
-            {/* Suture lines */}
-            {showSutures &&
-              sutures.map((d, i) => (
-                <path
-                  key={i}
-                  d={d}
-                  fill="none"
-                  stroke="hsl(var(--foreground))"
-                  strokeWidth={0.5}
-                  strokeDasharray="2 2"
-                  opacity={0.45}
-                  pointerEvents="none"
-                />
-              ))}
-
-            {/* Apex depth shading */}
-            <path d={APERTURE_PATH} fill="url(#apexShade)" pointerEvents="none" />
-
-            {/* Faint globe outline for orientation (set anteriorly within the orbit) */}
-            <ellipse
-              cx={290}
-              cy={240}
-              rx={92}
-              ry={88}
-              fill="none"
-              stroke="hsl(var(--foreground))"
-              strokeWidth={0.75}
-              strokeDasharray="3 3"
-              opacity={0.18}
-              pointerEvents="none"
+  
+          <svg
+            viewBox="0 0 600 500"
+            className="w-full max-w-2xl mx-auto"
+            role="img"
+            aria-label="Anatomical diagram of the right bony orbit showing the seven constituent bones, foramina and fissures"
+          >
+            <defs>
+              {/* Radial gradient — depth at the apex */}
+              <radialGradient id="apexShade" cx="60%" cy="42%" r="55%">
+                <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.35" />
+                <stop offset="55%" stopColor="hsl(var(--foreground))" stopOpacity="0.08" />
+                <stop offset="100%" stopColor="hsl(var(--foreground))" stopOpacity="0" />
+              </radialGradient>
+              {/* Subtle paper-grain inside the aperture */}
+              <pattern id="grain" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.15" />
+              </pattern>
+              {/* Clip everything to the orbital aperture so bone polygons can extend beyond without spilling */}
+              <clipPath id="apertureClip">
+                <path d={APERTURE_PATH} />
+              </clipPath>
+              {/* Drop-shadow filter to lift the rim slightly */}
+              <filter id="rimShadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" />
+                <feOffset dx="0" dy="1.5" result="off" />
+                <feComponentTransfer>
+                  <feFuncA type="linear" slope="0.35" />
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+  
+            {/* Compass */}
+            <text x={300} y={20} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">
+              SUPERIOR
+            </text>
+            <text x={300} y={490} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">
+              INFERIOR
+            </text>
+            <text x={70} y={250} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">
+              MEDIAL
+            </text>
+            <text x={540} y={250} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">
+              LATERAL
+            </text>
+  
+            {/* Background plate */}
+            <path
+              d={APERTURE_PATH}
+              fill="hsl(var(--background))"
+              stroke="hsl(var(--border))"
+              strokeWidth={2}
+              filter="url(#rimShadow)"
             />
-          </g>
-
-          {/* Aperture rim drawn on top so it stays crisp */}
-          <path
-            d={APERTURE_PATH}
-            fill="none"
-            stroke="hsl(var(--border))"
-            strokeWidth={2}
-          />
-
-          {/* Bone labels (above clip, never cropped) */}
-          {showLabels &&
-            bones.map((b) => {
-              const isSel = selectedBone === b.id;
-              return (
-                <text
-                  key={`lbl-${b.id}`}
-                  x={b.labelX}
-                  y={b.labelY}
-                  textAnchor="middle"
-                  className="text-[9px] fill-foreground font-medium pointer-events-none select-none"
-                  opacity={isSel ? 1 : 0.85}
-                >
-                  {b.short}
-                </text>
-              );
-            })}
-
-          {/* Openings */}
-          {openings.map((o) => {
-            const isSel = selectedOpening === o.id;
-            const [cx, cy] =
-              o.shape.type === "ellipse" ? [o.shape.cx, o.shape.cy] : o.shape.centroid;
-            return (
-              <g
-                key={o.id}
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedOpening(selectedOpening === o.id ? null : o.id);
-                  setSelectedBone(null);
-                }}
-              >
-                {o.shape.type === "ellipse" ? (
-                  <ellipse
-                    cx={o.shape.cx}
-                    cy={o.shape.cy}
-                    rx={o.shape.rx}
-                    ry={o.shape.ry}
-                    transform={o.shape.rotate ? `rotate(${o.shape.rotate} ${o.shape.cx} ${o.shape.cy})` : undefined}
-                    fill={isSel ? "hsl(var(--primary))" : "hsl(var(--foreground))"}
-                    fillOpacity={isSel ? 0.95 : 0.82}
-                    stroke="hsl(var(--background))"
-                    strokeWidth={1}
-                  />
-                ) : (
-                  <path
-                    d={o.shape.d}
-                    fill={isSel ? "hsl(var(--primary))" : "hsl(var(--foreground))"}
-                    fillOpacity={isSel ? 0.92 : 0.78}
-                    stroke="hsl(var(--background))"
-                    strokeWidth={1}
-                  />
-                )}
-
-                {/* Leader line */}
-                {showLabels && (
-                  <line
-                    x1={cx}
-                    y1={cy}
-                    x2={o.labelX}
-                    y2={o.labelY}
-                    stroke={isSel ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"}
-                    strokeWidth={isSel ? 0.9 : 0.6}
-                    opacity={isSel ? 0.85 : 0.55}
-                    pointerEvents="none"
-                  />
-                )}
-
-                {/* Label */}
-                {showLabels && (
-                  <text
-                    x={o.labelX}
-                    y={o.labelY - 3}
-                    textAnchor={
-                      o.labelX < 230 ? "end" : o.labelX > 470 ? "start" : "middle"
-                    }
-                    className="text-[8.5px] fill-foreground pointer-events-none select-none"
-                    opacity={isSel ? 1 : 0.85}
-                    fontWeight={isSel ? 600 : 400}
-                  >
-                    {o.label}
-                  </text>
-                )}
-              </g>
-            );
-          })}
-        </svg>
-
-        {/* Mnemonics */}
-        <div className="mt-3 space-y-1">
-          <p className="text-xs text-center text-muted-foreground italic">
-            <span className="font-semibold not-italic text-foreground">Seven bones — </span>
-            "Many Friendly Zebras Enjoy Long Sweet Pickles": Maxilla, Frontal, Zygomatic, Ethmoid, Lacrimal, Sphenoid, Palatine.
-          </p>
-          <p className="text-xs text-center text-muted-foreground italic">
-            <span className="font-semibold not-italic text-foreground">SOF contents — </span>
-            "Lazy French Tarts Sit Naked In Anticipation": Lacrimal, Frontal, Trochlear, Superior division of III, Nasociliary, Inferior division of III, Abducens (+ superior ophthalmic vein).
-          </p>
-        </div>
-
-        {/* Detail panel */}
-        <div className="mt-4 min-h-[120px]">
-          {bone ? (
-            <div
-              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-              style={{ borderLeftWidth: 4, borderLeftColor: `hsl(${bone.hue} 55% 45%)` }}
-            >
-              <p className="font-semibold text-foreground text-sm">{bone.label}</p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Walls:</span> {bone.walls}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Clinical:</span> {bone.clinical}
-              </p>
-            </div>
-          ) : opening ? (
-            <div className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 border-l-primary border-l-4">
-              <p className="font-semibold text-foreground text-sm">{opening.label}</p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Location:</span> {opening.location}
-              </p>
-              <div className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Transmits:</span>
-                <ul className="list-disc list-inside mt-0.5 space-y-0.5">
-                  {opening.contents.map((c) => (
-                    <li key={c}>{c}</li>
-                  ))}
-                </ul>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Clinical:</span> {opening.clinical}
-              </p>
-            </div>
-          ) : (
-            <p className="text-xs text-muted-foreground text-center italic">
-              Select a bone or opening above to display details.
-            </p>
-          )}
-        </div>
-
-        {/* Quick-reference table */}
-        <div className="mt-4">
-          <p className="text-xs font-semibold text-foreground mb-2">Foramina & Fissures — Quick Reference</p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-xs border border-border rounded-lg overflow-hidden">
-              <thead className="bg-muted/60">
-                <tr>
-                  <th className="text-left p-2 font-semibold text-foreground">Opening</th>
-                  <th className="text-left p-2 font-semibold text-foreground">Key Contents</th>
-                </tr>
-              </thead>
-              <tbody>
-                {openings.map((o, i) => (
-                  <tr
-                    key={o.id}
-                    className={`cursor-pointer hover:bg-muted/40 transition-colors ${
-                      i % 2 === 0 ? "bg-background/60" : "bg-background/30"
-                    } ${selectedOpening === o.id ? "ring-1 ring-primary" : ""}`}
+  
+            {/* Bones — clipped to aperture */}
+            <g clipPath="url(#apertureClip)">
+              {bones.map((b) => {
+                const isSel = selectedBone === b.id;
+                return (
+                  <g
+                    key={b.id}
+                    className="cursor-pointer transition-opacity"
                     onClick={() => {
-                      setSelectedOpening(o.id);
-                      setSelectedBone(null);
+                      setSelectedBone(selectedBone === b.id ? null : b.id);
+                      setSelectedOpening(null);
                     }}
                   >
-                    <td className="p-2 font-medium text-foreground align-top whitespace-nowrap">
-                      {o.label}
-                    </td>
-                    <td className="p-2 text-muted-foreground">{o.contents.join("; ")}</td>
-                  </tr>
+                    <path
+                      d={b.path}
+                      fill={`hsl(${b.hue} 55% 60%)`}
+                      fillOpacity={isSel ? 0.7 : 0.28}
+                      stroke={`hsl(${b.hue} 55% 40%)`}
+                      strokeWidth={isSel ? 1.5 : 0.6}
+                      strokeOpacity={isSel ? 0.9 : 0.5}
+                    />
+                  </g>
+                );
+              })}
+  
+              {/* Paper grain overlay for texture */}
+              <path d={APERTURE_PATH} fill="url(#grain)" pointerEvents="none" />
+  
+              {/* Suture lines */}
+              {showSutures &&
+                sutures.map((d, i) => (
+                  <path
+                    key={i}
+                    d={d}
+                    fill="none"
+                    stroke="hsl(var(--foreground))"
+                    strokeWidth={0.5}
+                    strokeDasharray="2 2"
+                    opacity={0.45}
+                    pointerEvents="none"
+                  />
                 ))}
-              </tbody>
-            </table>
+  
+              {/* Apex depth shading */}
+              <path d={APERTURE_PATH} fill="url(#apexShade)" pointerEvents="none" />
+  
+              {/* Faint globe outline for orientation (set anteriorly within the orbit) */}
+              <ellipse
+                cx={290}
+                cy={240}
+                rx={92}
+                ry={88}
+                fill="none"
+                stroke="hsl(var(--foreground))"
+                strokeWidth={0.75}
+                strokeDasharray="3 3"
+                opacity={0.18}
+                pointerEvents="none"
+              />
+            </g>
+  
+            {/* Aperture rim drawn on top so it stays crisp */}
+            <path
+              d={APERTURE_PATH}
+              fill="none"
+              stroke="hsl(var(--border))"
+              strokeWidth={2}
+            />
+  
+            {/* Bone labels (above clip, never cropped) */}
+            {showLabels &&
+              bones.map((b) => {
+                const isSel = selectedBone === b.id;
+                return (
+                  <text
+                    key={`lbl-${b.id}`}
+                    x={b.labelX}
+                    y={b.labelY}
+                    textAnchor="middle"
+                    className="text-[9px] fill-foreground font-medium pointer-events-none select-none"
+                    opacity={isSel ? 1 : 0.85}
+                  >
+                    {b.short}
+                  </text>
+                );
+              })}
+  
+            {/* Openings */}
+            {openings.map((o) => {
+              const isSel = selectedOpening === o.id;
+              const [cx, cy] =
+                o.shape.type === "ellipse" ? [o.shape.cx, o.shape.cy] : o.shape.centroid;
+              return (
+                    <g
+                  key={o.id}
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setSelectedOpening(selectedOpening === o.id ? null : o.id);
+                    setSelectedBone(null);
+                  }}
+                >
+                  {o.shape.type === "ellipse" ? (
+                    <ellipse
+                      cx={o.shape.cx}
+                      cy={o.shape.cy}
+                      rx={o.shape.rx}
+                      ry={o.shape.ry}
+                      transform={o.shape.rotate ? `rotate(${o.shape.rotate} ${o.shape.cx} ${o.shape.cy})` : undefined}
+                      fill={isSel ? "hsl(var(--primary))" : "hsl(var(--foreground))"}
+                      fillOpacity={isSel ? 0.95 : 0.82}
+                      stroke="hsl(var(--background))"
+                      strokeWidth={1}
+                    />
+                  ) : (
+                    <path
+                      d={o.shape.d}
+                      fill={isSel ? "hsl(var(--primary))" : "hsl(var(--foreground))"}
+                      fillOpacity={isSel ? 0.92 : 0.78}
+                      stroke="hsl(var(--background))"
+                      strokeWidth={1}
+                    />
+                  )}
+  
+                  {/* Leader line */}
+                  {showLabels && (
+                    <line
+                      x1={cx}
+                      y1={cy}
+                      x2={o.labelX}
+                      y2={o.labelY}
+                      stroke={isSel ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"}
+                      strokeWidth={isSel ? 0.9 : 0.6}
+                      opacity={isSel ? 0.85 : 0.55}
+                      pointerEvents="none"
+                    />
+                  )}
+  
+                  {/* Label */}
+                  {showLabels && (
+                    <text
+                      x={o.labelX}
+                      y={o.labelY - 3}
+                      textAnchor={
+                        o.labelX < 230 ? "end" : o.labelX > 470 ? "start" : "middle"
+                      }
+                      className="text-[8.5px] fill-foreground pointer-events-none select-none"
+                      opacity={isSel ? 1 : 0.85}
+                      fontWeight={isSel ? 600 : 400}
+                    >
+                      {o.label}
+                    </text>
+                  )}
+                </g>
+    );
+            })}
+          </svg>
+  
+          {/* Mnemonics */}
+          <div className="mt-3 space-y-1">
+            <p className="text-xs text-center text-muted-foreground italic">
+              <span className="font-semibold not-italic text-foreground">Seven bones — </span>
+              "Many Friendly Zebras Enjoy Long Sweet Pickles": Maxilla, Frontal, Zygomatic, Ethmoid, Lacrimal, Sphenoid, Palatine.
+            </p>
+            <p className="text-xs text-center text-muted-foreground italic">
+              <span className="font-semibold not-italic text-foreground">SOF contents — </span>
+              "Lazy French Tarts Sit Naked In Anticipation": Lacrimal, Frontal, Trochlear, Superior division of III, Nasociliary, Inferior division of III, Abducens (+ superior ophthalmic vein).
+            </p>
+          </div>
+  
+          {/* Detail panel */}
+          <div className="mt-4 min-h-[120px]">
+            {bone ? (
+              <div
+                className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+                style={{ borderLeftWidth: 4, borderLeftColor: `hsl(${bone.hue} 55% 45%)` }}
+              >
+                <p className="font-semibold text-foreground text-sm">{bone.label}</p>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Walls:</span> {bone.walls}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Clinical:</span> {bone.clinical}
+                </p>
+              </div>
+            ) : opening ? (
+              <div className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 border-l-primary border-l-4">
+                <p className="font-semibold text-foreground text-sm">{opening.label}</p>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Location:</span> {opening.location}
+                </p>
+                <div className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Transmits:</span>
+                  <ul className="list-disc list-inside mt-0.5 space-y-0.5">
+                    {opening.contents.map((c) => (
+                      <li key={c}>{c}</li>
+                    ))}
+                  </ul>
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Clinical:</span> {opening.clinical}
+                </p>
+              </div>
+            ) : (
+              <p className="text-xs text-muted-foreground text-center italic">
+                Select a bone or opening above to display details.
+              </p>
+            )}
+          </div>
+  
+          {/* Quick-reference table */}
+          <div className="mt-4">
+            <p className="text-xs font-semibold text-foreground mb-2">Foramina & Fissures — Quick Reference</p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs border border-border rounded-lg overflow-hidden">
+                <thead className="bg-muted/60">
+                  <tr>
+                    <th className="text-left p-2 font-semibold text-foreground">Opening</th>
+                    <th className="text-left p-2 font-semibold text-foreground">Key Contents</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {openings.map((o, i) => (
+                    <tr
+                      key={o.id}
+                      className={`cursor-pointer hover:bg-muted/40 transition-colors ${
+                        i % 2 === 0 ? "bg-background/60" : "bg-background/30"
+                      } ${selectedOpening === o.id ? "ring-1 ring-primary" : ""}`}
+                      onClick={() => {
+                        setSelectedOpening(o.id);
+                        setSelectedBone(null);
+                      }}
+                    >
+                      <td className="p-2 font-medium text-foreground align-top whitespace-nowrap">
+                        {o.label}
+                      </td>
+                      <td className="p-2 text-muted-foreground">{o.contents.join("; ")}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

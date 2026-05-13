@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Severity = "critical" | "major" | "minor";
 
@@ -175,112 +176,118 @@ const COPitfallsChecklist = () => {
   };
 
   return (
-    <div className="my-6 rounded-xl border border-border bg-card p-4 sm:p-5">
-      <div className="mb-3">
-        <h3 className="text-lg font-bold text-foreground">CO Monitoring — Pitfalls Checklist</h3>
-        <p className="text-sm text-muted-foreground">
-          One-page exam-ready error sources for each modality. Tick as you revise; switch tabs to compare.
-        </p>
-      </div>
-
-      <Tabs value={active} onValueChange={setActive} className="w-full">
-        <TabsList className="grid w-full grid-cols-5 mb-4 h-auto">
+    <DiagramFigure
+      id="co-pitfalls-checklist"
+      title="CO pitfalls checklist"
+      description="Auto-generated wrapper for the CO pitfalls checklist anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 rounded-xl border border-border bg-card p-4 sm:p-5">
+        <div className="mb-3">
+          <h3 className="text-lg font-bold text-foreground">CO Monitoring — Pitfalls Checklist</h3>
+          <p className="text-sm text-muted-foreground">
+            One-page exam-ready error sources for each modality. Tick as you revise; switch tabs to compare.
+          </p>
+        </div>
+  
+        <Tabs value={active} onValueChange={setActive} className="w-full">
+          <TabsList className="grid w-full grid-cols-5 mb-4 h-auto">
+            {modalities.map((m) => (
+              <TabsTrigger key={m.id} value={m.id} className="text-[11px] sm:text-xs px-1.5 py-2 leading-tight whitespace-normal">
+                {m.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+  
           {modalities.map((m) => (
-            <TabsTrigger key={m.id} value={m.id} className="text-[11px] sm:text-xs px-1.5 py-2 leading-tight whitespace-normal">
-              {m.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-
-        {modalities.map((m) => (
-          <TabsContent key={m.id} value={m.id} className="mt-0">
-            {/* Header card */}
-            <div className="rounded-lg border border-border bg-muted/30 p-3 mb-3">
-              <p className="font-semibold text-foreground text-sm">{m.fullName}</p>
-              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{m.oneLiner}</p>
-            </div>
-
-            {/* Controls */}
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-              <div className="flex flex-wrap gap-1.5">
-                {(["all", "critical", "major", "minor"] as const).map((f) => (
-                  <Button
-                    key={f}
-                    size="sm"
-                    variant={filter === f ? "default" : "outline"}
-                    className="h-7 px-2.5 text-xs capitalize"
-                    onClick={() => setFilter(f)}
-                  >
-                    {f}
-                    {f !== "all" && (
-                      <span className="ml-1.5 opacity-70">
-                        {m.pitfalls.filter((p) => p.severity === f).length}
-                      </span>
-                    )}
-                  </Button>
-                ))}
+            <TabsContent key={m.id} value={m.id} className="mt-0">
+              {/* Header card */}
+              <div className="rounded-lg border border-border bg-muted/30 p-3 mb-3">
+                <p className="font-semibold text-foreground text-sm">{m.fullName}</p>
+                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{m.oneLiner}</p>
               </div>
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <span>{completed}/{total} reviewed</span>
-                <div className="w-20 h-1.5 rounded-full bg-muted overflow-hidden">
-                  <div className="h-full bg-primary transition-all" style={{ width: `${pct}%` }} />
+  
+              {/* Controls */}
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div className="flex flex-wrap gap-1.5">
+                  {(["all", "critical", "major", "minor"] as const).map((f) => (
+                    <Button
+                      key={f}
+                      size="sm"
+                      variant={filter === f ? "default" : "outline"}
+                      className="h-7 px-2.5 text-xs capitalize"
+                      onClick={() => setFilter(f)}
+                    >
+                      {f}
+                      {f !== "all" && (
+                        <span className="ml-1.5 opacity-70">
+                          {m.pitfalls.filter((p) => p.severity === f).length}
+                        </span>
+                      )}
+                    </Button>
+                  ))}
                 </div>
-                <Button size="sm" variant="ghost" className="h-7 px-2 text-xs" onClick={resetCurrent}>
-                  Reset
-                </Button>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span>{completed}/{total} reviewed</span>
+                  <div className="w-20 h-1.5 rounded-full bg-muted overflow-hidden">
+                    <div className="h-full bg-primary transition-all" style={{ width: `${pct}%` }} />
+                  </div>
+                  <Button size="sm" variant="ghost" className="h-7 px-2 text-xs" onClick={resetCurrent}>
+                    Reset
+                  </Button>
+                </div>
               </div>
-            </div>
-
-            {/* Pitfall list */}
-            <ul className="space-y-2">
-              {visible.map((p) => {
-                const key = `${m.id}:${p.id}`;
-                const isChecked = !!checked[key];
-                const sev = severityStyles[p.severity];
-                return (
-                  <li
-                    key={p.id}
-                    className={`rounded-lg border border-border p-3 transition-colors ${isChecked ? "bg-muted/40 opacity-70" : "bg-background"}`}
-                  >
-                    <div className="flex items-start gap-3">
-                      <Checkbox
-                        id={key}
-                        checked={isChecked}
-                        onCheckedChange={() => toggle(p.id)}
-                        className="mt-0.5"
-                      />
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-start justify-between gap-2 mb-1">
-                          <label
-                            htmlFor={key}
-                            className={`font-semibold text-sm text-foreground cursor-pointer ${isChecked ? "line-through" : ""}`}
-                          >
-                            <span className={`inline-block w-1.5 h-1.5 rounded-full mr-2 align-middle ${sev.dot}`} />
-                            {p.title}
-                          </label>
-                          <Badge variant="outline" className={`text-[10px] uppercase tracking-wide ${sev.badge}`}>
-                            {sev.label}
-                          </Badge>
+  
+              {/* Pitfall list */}
+              <ul className="space-y-2">
+                {visible.map((p) => {
+                  const key = `${m.id}:${p.id}`;
+                  const isChecked = !!checked[key];
+                  const sev = severityStyles[p.severity];
+                  return (
+                        <li
+                      key={p.id}
+                      className={`rounded-lg border border-border p-3 transition-colors ${isChecked ? "bg-muted/40 opacity-70" : "bg-background"}`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <Checkbox
+                          id={key}
+                          checked={isChecked}
+                          onCheckedChange={() => toggle(p.id)}
+                          className="mt-0.5"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-start justify-between gap-2 mb-1">
+                            <label
+                              htmlFor={key}
+                              className={`font-semibold text-sm text-foreground cursor-pointer ${isChecked ? "line-through" : ""}`}
+                            >
+                              <span className={`inline-block w-1.5 h-1.5 rounded-full mr-2 align-middle ${sev.dot}`} />
+                              {p.title}
+                            </label>
+                            <Badge variant="outline" className={`text-[10px] uppercase tracking-wide ${sev.badge}`}>
+                              {sev.label}
+                            </Badge>
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed">
+                            <span className="font-medium text-foreground">Why:</span> {p.why}
+                          </p>
+                          <p className="text-xs text-muted-foreground leading-relaxed mt-1">
+                            <span className="font-medium text-foreground">Exam pearl:</span> {p.examPearl}
+                          </p>
                         </div>
-                        <p className="text-xs text-muted-foreground leading-relaxed">
-                          <span className="font-medium text-foreground">Why:</span> {p.why}
-                        </p>
-                        <p className="text-xs text-muted-foreground leading-relaxed mt-1">
-                          <span className="font-medium text-foreground">Exam pearl:</span> {p.examPearl}
-                        </p>
                       </div>
-                    </div>
-                  </li>
-                );
-              })}
-              {visible.length === 0 && (
-                <li className="text-xs text-muted-foreground text-center py-6">No pitfalls in this severity for this modality.</li>
-              )}
-            </ul>
-          </TabsContent>
-        ))}
-      </Tabs>
-    </div>
+                    </li>
+    );
+                })}
+                {visible.length === 0 && (
+                  <li className="text-xs text-muted-foreground text-center py-6">No pitfalls in this severity for this modality.</li>
+                )}
+              </ul>
+            </TabsContent>
+          ))}
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

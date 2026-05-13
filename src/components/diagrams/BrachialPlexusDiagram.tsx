@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { PlexusDetailPanel, ROOT_COLORS } from "./plexusShared";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type LevelKey = "roots" | "trunks" | "divisions" | "cords" | "branches";
 
@@ -156,383 +157,389 @@ const BrachialPlexusDiagram = () => {
   const activeBlock = blockSites.find(b => b.id === selectedBlock);
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4 space-y-4">
-        <DiagramToggleBar
-          title="Interactive brachial plexus"
-          subtitle="Tap any element for details. Tap level labels for block approaches."
-          toggles={[
-            { label: "Block sites", active: showBlockSites, onChange: () => setShowBlockSites(!showBlockSites) },
-            { label: "Branches", active: showAnnotations, onChange: () => setShowAnnotations(!showAnnotations) },
-            { label: "Dermatomes", active: showDermatomes, onChange: () => setShowDermatomes(!showDermatomes) },
-          ]}
-        />
-
-      <div className="flex flex-col lg:flex-row gap-4">
-        <div className="flex-1">
-          <svg viewBox="-10 -5 440 450" className="w-full max-w-2xl mx-auto" style={{ height: "auto" }}>
-            <defs>
-              <linearGradient id="scaleneGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(0, 25%, 55%)" stopOpacity="0.12" />
-                <stop offset="100%" stopColor="hsl(0, 20%, 45%)" stopOpacity="0.04" />
-              </linearGradient>
-              <linearGradient id="scalenemidGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(0, 20%, 50%)" stopOpacity="0.1" />
-                <stop offset="100%" stopColor="hsl(0, 15%, 40%)" stopOpacity="0.03" />
-              </linearGradient>
-              <linearGradient id="boneGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(40, 30%, 75%)" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="hsl(40, 25%, 60%)" stopOpacity="0.1" />
-              </linearGradient>
-              <linearGradient id="pectoralisGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(0, 30%, 50%)" stopOpacity="0.06" />
-                <stop offset="100%" stopColor="hsl(0, 25%, 42%)" stopOpacity="0.02" />
-              </linearGradient>
-              {/* Needle glow */}
-              <filter id="needleGlow">
-                <feGaussianBlur stdDeviation="3" result="blur" />
-                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-              </filter>
-              <marker id="needleTip" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
-                <path d="M0,0 L6,3 L0,6 Z" fill="hsl(140, 60%, 45%)" />
-              </marker>
-              {/* Muscle fibre pattern */}
-              <pattern id="muscleFibre" patternUnits="userSpaceOnUse" width="4" height="8" patternTransform="rotate(15)">
-                <line x1="2" y1="0" x2="2" y2="8" stroke="hsl(0, 30%, 50%)" strokeWidth="0.5" opacity="0.12" />
-              </pattern>
-            </defs>
-
-            {/* ===== VERTEBRAL BODIES (C4–T2 hint) ===== */}
-            <g opacity="0.08" fill="url(#boneGrad)" stroke="hsl(40, 25%, 50%)" strokeWidth="0.75">
-              {[0, 28, 56, 84, 112, 140].map((dy, i) => (
-                <rect key={i} x="410" y={-2 + dy} width="22" height="22" rx="3" />
-              ))}
-              <g fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.5">
-                <text x="421" y="12" textAnchor="middle">C4</text>
-                <text x="421" y="40" textAnchor="middle">C5</text>
-                <text x="421" y="68" textAnchor="middle">C6</text>
-                <text x="421" y="96" textAnchor="middle">C7</text>
-                <text x="421" y="124" textAnchor="middle">C8</text>
-                <text x="421" y="152" textAnchor="middle">T1</text>
-              </g>
-            </g>
-
-            {/* ===== ANTERIOR SCALENE — triangular anatomical shape ===== */}
-            <path d="M 65,0 C 62,15 58,40 55,70 C 52,100 50,130 48,160 C 47,175 48,185 52,195 L 75,195 C 72,180 70,160 68,130 C 66,100 68,65 72,30 C 74,15 75,5 75,0 Z"
-              fill="url(#scaleneGrad)" stroke="hsl(0, 20%, 50%)" strokeWidth="0.5" opacity="0.5" />
-            <rect x="48" y="0" width="27" height="195" fill="url(#muscleFibre)" opacity="0.3" />
-            <text x="38" y="100" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.45" transform="rotate(-85, 38, 100)" fontStyle="italic">Anterior scalene</text>
-
-            {/* ===== MIDDLE SCALENE — wider, more posterior ===== */}
-            <path d="M 345,0 C 348,15 352,40 355,70 C 358,100 360,130 362,160 C 363,175 362,185 358,195 L 335,195 C 338,180 340,160 342,130 C 344,100 342,65 338,30 C 336,15 335,5 335,0 Z"
-              fill="url(#scalenemidGrad)" stroke="hsl(0, 15%, 48%)" strokeWidth="0.5" opacity="0.5" />
-            <rect x="335" y="0" width="28" height="195" fill="url(#muscleFibre)" opacity="0.25" />
-            <text x="372" y="100" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.45" transform="rotate(85, 372, 100)" fontStyle="italic">Middle scalene</text>
-
-            {/* ===== INTERSCALENE GROOVE (between scalenes) ===== */}
-            <path d="M 75,20 Q 210,15 335,20 L 335,195 Q 210,188 75,195 Z"
-              fill="hsl(var(--muted-foreground))" fillOpacity="0.015" stroke="none" />
-            <text x="210" y="25" fontSize="4.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.2" fontStyle="italic">interscalene groove</text>
-
-            {/* ===== FIRST RIB — curved anatomical shape ===== */}
-            <path d="M 20,170 Q 50,162 100,158 Q 160,155 210,154 Q 260,155 320,158 Q 370,162 400,170"
-              fill="none" stroke="hsl(40, 30%, 55%)" strokeWidth="3" opacity="0.12" strokeLinecap="round" />
-            <path d="M 20,170 Q 50,162 100,158 Q 160,155 210,154 Q 260,155 320,158 Q 370,162 400,170"
-              fill="none" stroke="hsl(40, 25%, 50%)" strokeWidth="1" opacity="0.18" />
-            {/* Scalene tubercle on first rib */}
-            <circle cx="100" cy="158" r="3" fill="hsl(40, 30%, 60%)" opacity="0.12" />
-            <text x="100" y="172" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.25" fontStyle="italic">scalene tubercle</text>
-            <text x="400" y="168" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3">1st rib</text>
-
-            {/* ===== CLAVICLE — realistic S-shape ===== */}
-            <path d="M 0,192 Q 40,186 80,184 Q 120,182 170,181 Q 220,180 270,181 Q 320,183 370,187 Q 400,190 420,195"
-              fill="none" stroke="hsl(40, 25%, 60%)" strokeWidth="3" opacity="0.13" strokeLinecap="round" />
-            <path d="M 0,192 Q 40,186 80,184 Q 120,182 170,181 Q 220,180 270,181 Q 320,183 370,187 Q 400,190 420,195"
-              fill="none" stroke="hsl(40, 20%, 50%)" strokeWidth="1.5" opacity="0.2" />
-            {/* Sternal end */}
-            <ellipse cx="5" cy="193" rx="6" ry="4" fill="hsl(40, 25%, 60%)" opacity="0.1" />
-            <text x="210" y="178" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.3" fontWeight="600">— CLAVICLE —</text>
-
-            {/* ===== PECTORALIS MAJOR/MINOR — below clavicle ===== */}
-            <path d="M 30,200 Q 100,196 210,195 Q 320,196 390,200 L 380,310 Q 300,295 210,290 Q 120,295 40,310 Z"
-              fill="url(#pectoralisGrad)" stroke="hsl(0, 20%, 50%)" strokeWidth="0.5" opacity="0.3" />
-            <text x="70" y="245" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.2" fontStyle="italic">Pec major</text>
-            {/* Pectoralis minor */}
-            <path d="M 80,225 Q 150,218 220,215 Q 250,218 270,225 L 265,270 Q 200,262 160,262 Q 120,265 85,270 Z"
-              fill="hsl(0, 25%, 48%)" fillOpacity="0.04" stroke="hsl(0, 20%, 48%)" strokeWidth="0.5" opacity="0.3" strokeDasharray="3 2" />
-            <text x="180" y="250" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.18" fontStyle="italic">Pec minor</text>
-
-            {/* ===== SUBCLAVIAN → AXILLARY ARTERY — red, pulsating ===== */}
-            <path d="M 210,158 Q 210,170 210,185 Q 209,200 208,220 Q 206,250 204,280 Q 202,320 200,360 Q 199,385 198,415"
-              fill="none" stroke="hsl(0, 55%, 50%)" strokeWidth="3" opacity="0.12" strokeLinecap="round" />
-            {/* Arterial wall shimmer */}
-            <path d="M 210,158 Q 210,170 210,185 Q 209,200 208,220 Q 206,250 204,280 Q 202,320 200,360 Q 199,385 198,415"
-              fill="none" stroke="hsl(0, 60%, 60%)" strokeWidth="0.75" opacity="0.15" strokeDasharray="1 3" />
-            {/* Companion vein (slightly lateral) */}
-            <path d="M 215,165 Q 215,185 214,210 Q 213,240 212,270 Q 210,310 208,350 Q 206,385 205,415"
-              fill="none" stroke="hsl(220, 45%, 50%)" strokeWidth="2" opacity="0.06" strokeLinecap="round" />
-            <text x="188" y="270" fontSize="5" fill="hsl(0, 55%, 50%)" opacity="0.35" transform="rotate(-88, 188, 270)" fontStyle="italic">Axillary artery</text>
-            <text x="215" y="155" fontSize="4.5" fill="hsl(0, 55%, 50%)" opacity="0.3">Subclavian a.</text>
-            {/* Parts of axillary artery */}
-            <g opacity="0.15" fontSize="3.5" fill="hsl(0, 50%, 50%)">
-              <text x="220" y="195">1st part</text>
-              <text x="220" y="245">2nd part</text>
-              <text x="220" y="330">3rd part</text>
-            </g>
-
-            {/* Level zone backgrounds */}
-            <rect x="-5" y="45" width="430" height="35" rx="4" fill="hsl(0, 60%, 55%)" fillOpacity="0.03" />
-            <rect x="-5" y="125" width="430" height="35" rx="4" fill="hsl(45, 60%, 50%)" fillOpacity="0.03" />
-            <rect x="-5" y="275" width="430" height="35" rx="4" fill="hsl(270, 45%, 50%)" fillOpacity="0.03" />
-            <rect x="-5" y="360" width="430" height="35" rx="4" fill="hsl(200, 50%, 50%)" fillOpacity="0.03" />
-
-            {/* Level labels */}
-            {(Object.entries(levelInfo) as [LevelKey, typeof levelInfo.roots][]).map(([key, info]) => (
-              <g key={key}>
-                <text
-                  x="-5" y={info.y + 5} fontSize="6"
-                  fill={highlightLevel === key ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"}
-                  fontWeight={highlightLevel === key ? "bold" : "normal"}
-                  className="cursor-pointer select-none"
-                  onClick={() => setHighlightLevel(highlightLevel === key ? null : key)}
-                  opacity={highlightLevel === key ? 1 : 0.5}
-                >
-                  {info.label}
-                </text>
-              </g>
-            ))}
-
-            {/* Connection lines */}
-            {elements.map(el =>
-              el.connections.map(targetId => {
-                const target = elements.find(e => e.id === targetId);
-                if (!target) return null;
-                const isHighlighted = selected === el.id || selected === targetId;
-                const midY = (el.y + target.y) / 2;
-                return (
-                  <path
-                    key={`${el.id}-${targetId}`}
-                    d={`M${el.x},${el.y + 14} C${el.x},${midY} ${target.x},${midY} ${target.x},${target.y - 10}`}
-                    fill="none"
-                    stroke={isHighlighted ? el.color : "hsl(var(--border))"}
-                    strokeWidth={isHighlighted ? 3 : 1.2}
-                    opacity={isHighlighted ? 0.8 : 0.25}
-                    className="transition-all duration-200"
-                  />
-                );
-              })
-            )}
-
-            {/* Annotation branches */}
-            {showAnnotations && annotationBranches.map((ann, i) => {
-              const source = elements.find(e => e.id === ann.fromId);
-              if (!source) return null;
-              const isParentSelected = selected === ann.fromId;
-              return (
-                <g key={i} opacity={isParentSelected ? 0.85 : 0.4} className="transition-opacity duration-200">
-                  <path
-                    d={`M${source.x},${source.y} Q${(source.x + ann.target.x) / 2},${(source.y + ann.target.y) / 2 - 10} ${ann.target.x},${ann.target.y}`}
-                    fill="none" stroke={source.color} strokeWidth="0.75" strokeDasharray="3 2" />
-                  <text x={ann.target.x - 2} y={ann.target.y - 3} fontSize="5" fill={source.color} fontWeight="600">
-                    {ann.label}
-                  </text>
-                  {isParentSelected && (
-                    <text x={ann.target.x - 2} y={ann.target.y + 5} fontSize="4" fill="hsl(var(--muted-foreground))">
-                      {ann.detail}
-                    </text>
-                  )}
-                </g>
-              );
-            })}
-
-            {/* Element nodes */}
-            {elements.map(el => {
-              const isActive = selected === el.id;
-              const isLevelHighlighted = highlightLevel === el.level;
-              const w = el.level === "branches" ? 62 : el.level === "divisions" ? 32 : el.level === "cords" ? 68 : 46;
-              const h = 22;
-              return (
-                <g key={el.id} className="cursor-pointer" onClick={() => { setSelected(el.id); setSelectedBlock(null); }}>
-                  <rect
-                    x={el.x - w / 2} y={el.y - 9} width={w} height={h} rx={6}
-                    fill={el.color}
-                    fillOpacity={isActive ? 0.3 : isLevelHighlighted ? 0.15 : 0.07}
-                    stroke={el.color}
-                    strokeWidth={isActive ? 2.5 : 1}
-                    opacity={isActive || isLevelHighlighted ? 1 : 0.5}
-                    className="transition-all duration-200"
-                  />
-                  {isActive && (
-                    <rect
-                      x={el.x - w / 2 - 2} y={el.y - 11} width={w + 4} height={h + 4} rx={8}
-                      fill="none" stroke={el.color} strokeWidth="1" opacity="0.3" className="animate-pulse"
-                    />
-                  )}
-                  <text
-                    x={el.x} y={el.y + 5} textAnchor="middle"
-                    fontSize={el.level === "divisions" ? "6" : el.level === "branches" ? "6.5" : "7.5"}
-                    fill={el.color}
-                    fontWeight={isActive ? "bold" : "600"}
-                    className="select-none"
-                  >
-                    {el.label}
-                  </text>
-                </g>
-              );
-            })}
-
-            {/* Block approach zones */}
-            {highlightLevel === "roots" && (
-              <rect x="65" y="40" width="290" height="45" rx="8" fill="none"
-                stroke="hsl(0, 60%, 55%)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
-            )}
-            {highlightLevel === "trunks" && (
-              <rect x="80" y="120" width="260" height="45" rx="8" fill="none"
-                stroke="hsl(45, 60%, 50%)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
-            )}
-            {highlightLevel === "cords" && (
-              <rect x="65" y="270" width="310" height="45" rx="8" fill="none"
-                stroke="hsl(270, 45%, 50%)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
-            )}
-            {highlightLevel === "branches" && (
-              <rect x="15" y="355" width="395" height="45" rx="8" fill="none"
-                stroke="hsl(210, 50%, 50%)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
-            )}
-
-            {/* ===== BLOCK INJECTION SITES ===== */}
-            {showBlockSites && blockSites.map((bs) => {
-              const isBlockActive = selectedBlock === bs.id;
-              return (
-                <g key={bs.id} className="cursor-pointer" onClick={() => { setSelectedBlock(isBlockActive ? null : bs.id); setSelected(""); }}>
-                  {/* Pulsing target ring */}
-                  <circle cx={bs.x} cy={bs.y} r={isBlockActive ? 18 : 14}
-                    fill="none" stroke="hsl(140, 60%, 45%)" strokeWidth={isBlockActive ? 2 : 1}
-                    opacity={isBlockActive ? 0.6 : 0.3}
-                    strokeDasharray="4 2"
-                    className={isBlockActive ? "animate-pulse" : ""}
-                  />
-                  {/* Inner target */}
-                  <circle cx={bs.x} cy={bs.y} r={isBlockActive ? 6 : 4}
-                    fill="hsl(140, 60%, 45%)" fillOpacity={isBlockActive ? 0.7 : 0.4}
-                    stroke="hsl(140, 60%, 45%)" strokeWidth={isBlockActive ? 2 : 1}
-                  />
-                  {/* Crosshair lines */}
-                  <line x1={bs.x - 10} y1={bs.y} x2={bs.x - 5} y2={bs.y} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
-                  <line x1={bs.x + 5} y1={bs.y} x2={bs.x + 10} y2={bs.y} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
-                  <line x1={bs.x} y1={bs.y - 10} x2={bs.x} y2={bs.y - 5} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
-                  <line x1={bs.x} y1={bs.y + 5} x2={bs.x} y2={bs.y + 10} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
-
-                  {/* Needle line */}
-                  {isBlockActive && (
-                    <g className="animate-fade-in">
-                      <line x1={bs.x + 55} y1={bs.y - 20} x2={bs.x + 8} y2={bs.y - 2}
-                        stroke="hsl(140, 60%, 45%)" strokeWidth="1.5" markerEnd="url(#needleTip)" opacity="0.6" />
-                      <text x={bs.x + 58} y={bs.y - 22} fontSize="5" fill="hsl(140, 60%, 45%)" opacity="0.7">needle</text>
-                    </g>
-                  )}
-
-                  {/* Label */}
-                  <text x={bs.x} y={bs.y - (isBlockActive ? 22 : 17)} textAnchor="middle"
-                    fontSize="6" fill="hsl(140, 60%, 45%)" fontWeight="bold" opacity={isBlockActive ? 1 : 0.7}>
-                    🎯 {bs.label}
-                  </text>
-                </g>
-              );
-            })}
-          </svg>
-        </div>
-
-        {/* Side panels */}
-        <div className="flex flex-col gap-3">
-          {showDermatomes && (
-            <div className="animate-fade-in">
-              <p className="text-xs font-semibold text-muted-foreground mb-1">Cutaneous Dermatomes</p>
-              <HandDermatomeMap />
-              <div className="text-[10px] text-muted-foreground space-y-0.5 text-center mt-1">
-                <p><span className="font-bold" style={{ color: ROOT_COLORS.C6 }}>C6</span> — thumb + lateral</p>
-                <p><span className="font-bold" style={{ color: ROOT_COLORS.C7 }}>C7</span> — middle finger</p>
-                <p><span className="font-bold" style={{ color: ROOT_COLORS.C8 }}>C8</span> — ring + little</p>
-                <p><span className="font-bold" style={{ color: ROOT_COLORS.T1 }}>T1</span> — medial forearm</p>
-              </div>
-            </div>
-          )}
-
-          {/* Block site quick selector */}
-          {showBlockSites && (
-            <div className="animate-fade-in">
-              <p className="text-xs font-semibold text-muted-foreground mb-1.5">Injection Sites</p>
-              <div className="space-y-1">
-                {blockSites.map(bs => (
-                  <button key={bs.id}
-                    onClick={() => { setSelectedBlock(selectedBlock === bs.id ? null : bs.id); setSelected(""); }}
-                    className={`w-full text-left px-2 py-1.5 rounded text-xs transition-all ${selectedBlock === bs.id ? "bg-primary/15 border border-primary/40 text-foreground font-medium" : "bg-secondary/50 border border-border text-muted-foreground hover:text-foreground"}`}>
-                    🎯 {bs.label}
-                    <span className="text-[10px] ml-1 opacity-60">({levelInfo[bs.level].label.split(' ')[0]})</span>
-                  </button>
+    <DiagramFigure
+      id="brachial-plexus-diagram"
+      title="Brachial plexus"
+      description="Auto-generated wrapper for the Brachial plexus anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4 space-y-4">
+          <DiagramToggleBar
+            title="Interactive brachial plexus"
+            subtitle="Tap any element for details. Tap level labels for block approaches."
+            toggles={[
+              { label: "Block sites", active: showBlockSites, onChange: () => setShowBlockSites(!showBlockSites) },
+              { label: "Branches", active: showAnnotations, onChange: () => setShowAnnotations(!showAnnotations) },
+              { label: "Dermatomes", active: showDermatomes, onChange: () => setShowDermatomes(!showDermatomes) },
+            ]}
+          />
+  
+        <div className="flex flex-col lg:flex-row gap-4">
+          <div className="flex-1">
+            <svg viewBox="-10 -5 440 450" className="w-full max-w-2xl mx-auto" style={{ height: "auto" }}>
+              <defs>
+                <linearGradient id="scaleneGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="hsl(0, 25%, 55%)" stopOpacity="0.12" />
+                  <stop offset="100%" stopColor="hsl(0, 20%, 45%)" stopOpacity="0.04" />
+                </linearGradient>
+                <linearGradient id="scalenemidGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="hsl(0, 20%, 50%)" stopOpacity="0.1" />
+                  <stop offset="100%" stopColor="hsl(0, 15%, 40%)" stopOpacity="0.03" />
+                </linearGradient>
+                <linearGradient id="boneGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="hsl(40, 30%, 75%)" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="hsl(40, 25%, 60%)" stopOpacity="0.1" />
+                </linearGradient>
+                <linearGradient id="pectoralisGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="hsl(0, 30%, 50%)" stopOpacity="0.06" />
+                  <stop offset="100%" stopColor="hsl(0, 25%, 42%)" stopOpacity="0.02" />
+                </linearGradient>
+                {/* Needle glow */}
+                <filter id="needleGlow">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+                <marker id="needleTip" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="hsl(140, 60%, 45%)" />
+                </marker>
+                {/* Muscle fibre pattern */}
+                <pattern id="muscleFibre" patternUnits="userSpaceOnUse" width="4" height="8" patternTransform="rotate(15)">
+                  <line x1="2" y1="0" x2="2" y2="8" stroke="hsl(0, 30%, 50%)" strokeWidth="0.5" opacity="0.12" />
+                </pattern>
+              </defs>
+  
+              {/* ===== VERTEBRAL BODIES (C4–T2 hint) ===== */}
+              <g opacity="0.08" fill="url(#boneGrad)" stroke="hsl(40, 25%, 50%)" strokeWidth="0.75">
+                {[0, 28, 56, 84, 112, 140].map((dy, i) => (
+                  <rect key={i} x="410" y={-2 + dy} width="22" height="22" rx="3" />
                 ))}
+                <g fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.5">
+                  <text x="421" y="12" textAnchor="middle">C4</text>
+                  <text x="421" y="40" textAnchor="middle">C5</text>
+                  <text x="421" y="68" textAnchor="middle">C6</text>
+                  <text x="421" y="96" textAnchor="middle">C7</text>
+                  <text x="421" y="124" textAnchor="middle">C8</text>
+                  <text x="421" y="152" textAnchor="middle">T1</text>
+                </g>
+              </g>
+  
+              {/* ===== ANTERIOR SCALENE — triangular anatomical shape ===== */}
+              <path d="M 65,0 C 62,15 58,40 55,70 C 52,100 50,130 48,160 C 47,175 48,185 52,195 L 75,195 C 72,180 70,160 68,130 C 66,100 68,65 72,30 C 74,15 75,5 75,0 Z"
+                fill="url(#scaleneGrad)" stroke="hsl(0, 20%, 50%)" strokeWidth="0.5" opacity="0.5" />
+              <rect x="48" y="0" width="27" height="195" fill="url(#muscleFibre)" opacity="0.3" />
+              <text x="38" y="100" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.45" transform="rotate(-85, 38, 100)" fontStyle="italic">Anterior scalene</text>
+  
+              {/* ===== MIDDLE SCALENE — wider, more posterior ===== */}
+              <path d="M 345,0 C 348,15 352,40 355,70 C 358,100 360,130 362,160 C 363,175 362,185 358,195 L 335,195 C 338,180 340,160 342,130 C 344,100 342,65 338,30 C 336,15 335,5 335,0 Z"
+                fill="url(#scalenemidGrad)" stroke="hsl(0, 15%, 48%)" strokeWidth="0.5" opacity="0.5" />
+              <rect x="335" y="0" width="28" height="195" fill="url(#muscleFibre)" opacity="0.25" />
+              <text x="372" y="100" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.45" transform="rotate(85, 372, 100)" fontStyle="italic">Middle scalene</text>
+  
+              {/* ===== INTERSCALENE GROOVE (between scalenes) ===== */}
+              <path d="M 75,20 Q 210,15 335,20 L 335,195 Q 210,188 75,195 Z"
+                fill="hsl(var(--muted-foreground))" fillOpacity="0.015" stroke="none" />
+              <text x="210" y="25" fontSize="4.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.2" fontStyle="italic">interscalene groove</text>
+  
+              {/* ===== FIRST RIB — curved anatomical shape ===== */}
+              <path d="M 20,170 Q 50,162 100,158 Q 160,155 210,154 Q 260,155 320,158 Q 370,162 400,170"
+                fill="none" stroke="hsl(40, 30%, 55%)" strokeWidth="3" opacity="0.12" strokeLinecap="round" />
+              <path d="M 20,170 Q 50,162 100,158 Q 160,155 210,154 Q 260,155 320,158 Q 370,162 400,170"
+                fill="none" stroke="hsl(40, 25%, 50%)" strokeWidth="1" opacity="0.18" />
+              {/* Scalene tubercle on first rib */}
+              <circle cx="100" cy="158" r="3" fill="hsl(40, 30%, 60%)" opacity="0.12" />
+              <text x="100" y="172" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.25" fontStyle="italic">scalene tubercle</text>
+              <text x="400" y="168" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3">1st rib</text>
+  
+              {/* ===== CLAVICLE — realistic S-shape ===== */}
+              <path d="M 0,192 Q 40,186 80,184 Q 120,182 170,181 Q 220,180 270,181 Q 320,183 370,187 Q 400,190 420,195"
+                fill="none" stroke="hsl(40, 25%, 60%)" strokeWidth="3" opacity="0.13" strokeLinecap="round" />
+              <path d="M 0,192 Q 40,186 80,184 Q 120,182 170,181 Q 220,180 270,181 Q 320,183 370,187 Q 400,190 420,195"
+                fill="none" stroke="hsl(40, 20%, 50%)" strokeWidth="1.5" opacity="0.2" />
+              {/* Sternal end */}
+              <ellipse cx="5" cy="193" rx="6" ry="4" fill="hsl(40, 25%, 60%)" opacity="0.1" />
+              <text x="210" y="178" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.3" fontWeight="600">— CLAVICLE —</text>
+  
+              {/* ===== PECTORALIS MAJOR/MINOR — below clavicle ===== */}
+              <path d="M 30,200 Q 100,196 210,195 Q 320,196 390,200 L 380,310 Q 300,295 210,290 Q 120,295 40,310 Z"
+                fill="url(#pectoralisGrad)" stroke="hsl(0, 20%, 50%)" strokeWidth="0.5" opacity="0.3" />
+              <text x="70" y="245" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.2" fontStyle="italic">Pec major</text>
+              {/* Pectoralis minor */}
+              <path d="M 80,225 Q 150,218 220,215 Q 250,218 270,225 L 265,270 Q 200,262 160,262 Q 120,265 85,270 Z"
+                fill="hsl(0, 25%, 48%)" fillOpacity="0.04" stroke="hsl(0, 20%, 48%)" strokeWidth="0.5" opacity="0.3" strokeDasharray="3 2" />
+              <text x="180" y="250" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.18" fontStyle="italic">Pec minor</text>
+  
+              {/* ===== SUBCLAVIAN → AXILLARY ARTERY — red, pulsating ===== */}
+              <path d="M 210,158 Q 210,170 210,185 Q 209,200 208,220 Q 206,250 204,280 Q 202,320 200,360 Q 199,385 198,415"
+                fill="none" stroke="hsl(0, 55%, 50%)" strokeWidth="3" opacity="0.12" strokeLinecap="round" />
+              {/* Arterial wall shimmer */}
+              <path d="M 210,158 Q 210,170 210,185 Q 209,200 208,220 Q 206,250 204,280 Q 202,320 200,360 Q 199,385 198,415"
+                fill="none" stroke="hsl(0, 60%, 60%)" strokeWidth="0.75" opacity="0.15" strokeDasharray="1 3" />
+              {/* Companion vein (slightly lateral) */}
+              <path d="M 215,165 Q 215,185 214,210 Q 213,240 212,270 Q 210,310 208,350 Q 206,385 205,415"
+                fill="none" stroke="hsl(220, 45%, 50%)" strokeWidth="2" opacity="0.06" strokeLinecap="round" />
+              <text x="188" y="270" fontSize="5" fill="hsl(0, 55%, 50%)" opacity="0.35" transform="rotate(-88, 188, 270)" fontStyle="italic">Axillary artery</text>
+              <text x="215" y="155" fontSize="4.5" fill="hsl(0, 55%, 50%)" opacity="0.3">Subclavian a.</text>
+              {/* Parts of axillary artery */}
+              <g opacity="0.15" fontSize="3.5" fill="hsl(0, 50%, 50%)">
+                <text x="220" y="195">1st part</text>
+                <text x="220" y="245">2nd part</text>
+                <text x="220" y="330">3rd part</text>
+              </g>
+  
+              {/* Level zone backgrounds */}
+              <rect x="-5" y="45" width="430" height="35" rx="4" fill="hsl(0, 60%, 55%)" fillOpacity="0.03" />
+              <rect x="-5" y="125" width="430" height="35" rx="4" fill="hsl(45, 60%, 50%)" fillOpacity="0.03" />
+              <rect x="-5" y="275" width="430" height="35" rx="4" fill="hsl(270, 45%, 50%)" fillOpacity="0.03" />
+              <rect x="-5" y="360" width="430" height="35" rx="4" fill="hsl(200, 50%, 50%)" fillOpacity="0.03" />
+  
+              {/* Level labels */}
+              {(Object.entries(levelInfo) as [LevelKey, typeof levelInfo.roots][]).map(([key, info]) => (
+                <g key={key}>
+                  <text
+                    x="-5" y={info.y + 5} fontSize="6"
+                    fill={highlightLevel === key ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"}
+                    fontWeight={highlightLevel === key ? "bold" : "normal"}
+                    className="cursor-pointer select-none"
+                    onClick={() => setHighlightLevel(highlightLevel === key ? null : key)}
+                    opacity={highlightLevel === key ? 1 : 0.5}
+                  >
+                    {info.label}
+                  </text>
+                </g>
+              ))}
+  
+              {/* Connection lines */}
+              {elements.map(el =>
+                el.connections.map(targetId => {
+                  const target = elements.find(e => e.id === targetId);
+                  if (!target) return null;
+                  const isHighlighted = selected === el.id || selected === targetId;
+                  const midY = (el.y + target.y) / 2;
+                  return (
+                    <path
+                      key={`${el.id}-${targetId}`}
+                      d={`M${el.x},${el.y + 14} C${el.x},${midY} ${target.x},${midY} ${target.x},${target.y - 10}`}
+                      fill="none"
+                      stroke={isHighlighted ? el.color : "hsl(var(--border))"}
+                      strokeWidth={isHighlighted ? 3 : 1.2}
+                      opacity={isHighlighted ? 0.8 : 0.25}
+                      className="transition-all duration-200"
+                    />
+                  );
+                })
+              )}
+  
+              {/* Annotation branches */}
+              {showAnnotations && annotationBranches.map((ann, i) => {
+                const source = elements.find(e => e.id === ann.fromId);
+                if (!source) return null;
+                const isParentSelected = selected === ann.fromId;
+                return (
+                  <g key={i} opacity={isParentSelected ? 0.85 : 0.4} className="transition-opacity duration-200">
+                    <path
+                      d={`M${source.x},${source.y} Q${(source.x + ann.target.x) / 2},${(source.y + ann.target.y) / 2 - 10} ${ann.target.x},${ann.target.y}`}
+                      fill="none" stroke={source.color} strokeWidth="0.75" strokeDasharray="3 2" />
+                    <text x={ann.target.x - 2} y={ann.target.y - 3} fontSize="5" fill={source.color} fontWeight="600">
+                      {ann.label}
+                    </text>
+                    {isParentSelected && (
+                      <text x={ann.target.x - 2} y={ann.target.y + 5} fontSize="4" fill="hsl(var(--muted-foreground))">
+                        {ann.detail}
+                      </text>
+                    )}
+                  </g>
+                );
+              })}
+  
+              {/* Element nodes */}
+              {elements.map(el => {
+                const isActive = selected === el.id;
+                const isLevelHighlighted = highlightLevel === el.level;
+                const w = el.level === "branches" ? 62 : el.level === "divisions" ? 32 : el.level === "cords" ? 68 : 46;
+                const h = 22;
+                return (
+                  <g key={el.id} className="cursor-pointer" onClick={() => { setSelected(el.id); setSelectedBlock(null); }}>
+                    <rect
+                      x={el.x - w / 2} y={el.y - 9} width={w} height={h} rx={6}
+                      fill={el.color}
+                      fillOpacity={isActive ? 0.3 : isLevelHighlighted ? 0.15 : 0.07}
+                      stroke={el.color}
+                      strokeWidth={isActive ? 2.5 : 1}
+                      opacity={isActive || isLevelHighlighted ? 1 : 0.5}
+                      className="transition-all duration-200"
+                    />
+                    {isActive && (
+                      <rect
+                        x={el.x - w / 2 - 2} y={el.y - 11} width={w + 4} height={h + 4} rx={8}
+                        fill="none" stroke={el.color} strokeWidth="1" opacity="0.3" className="animate-pulse"
+                      />
+                    )}
+                    <text
+                      x={el.x} y={el.y + 5} textAnchor="middle"
+                      fontSize={el.level === "divisions" ? "6" : el.level === "branches" ? "6.5" : "7.5"}
+                      fill={el.color}
+                      fontWeight={isActive ? "bold" : "600"}
+                      className="select-none"
+                    >
+                      {el.label}
+                    </text>
+                  </g>
+                );
+              })}
+  
+              {/* Block approach zones */}
+              {highlightLevel === "roots" && (
+                <rect x="65" y="40" width="290" height="45" rx="8" fill="none"
+                  stroke="hsl(0, 60%, 55%)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
+              )}
+              {highlightLevel === "trunks" && (
+                <rect x="80" y="120" width="260" height="45" rx="8" fill="none"
+                  stroke="hsl(45, 60%, 50%)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
+              )}
+              {highlightLevel === "cords" && (
+                <rect x="65" y="270" width="310" height="45" rx="8" fill="none"
+                  stroke="hsl(270, 45%, 50%)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
+              )}
+              {highlightLevel === "branches" && (
+                <rect x="15" y="355" width="395" height="45" rx="8" fill="none"
+                  stroke="hsl(210, 50%, 50%)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
+              )}
+  
+              {/* ===== BLOCK INJECTION SITES ===== */}
+              {showBlockSites && blockSites.map((bs) => {
+                const isBlockActive = selectedBlock === bs.id;
+                return (
+                      <g key={bs.id} className="cursor-pointer" onClick={() => { setSelectedBlock(isBlockActive ? null : bs.id); setSelected(""); }}>
+                    {/* Pulsing target ring */}
+                    <circle cx={bs.x} cy={bs.y} r={isBlockActive ? 18 : 14}
+                      fill="none" stroke="hsl(140, 60%, 45%)" strokeWidth={isBlockActive ? 2 : 1}
+                      opacity={isBlockActive ? 0.6 : 0.3}
+                      strokeDasharray="4 2"
+                      className={isBlockActive ? "animate-pulse" : ""}
+                    />
+                    {/* Inner target */}
+                    <circle cx={bs.x} cy={bs.y} r={isBlockActive ? 6 : 4}
+                      fill="hsl(140, 60%, 45%)" fillOpacity={isBlockActive ? 0.7 : 0.4}
+                      stroke="hsl(140, 60%, 45%)" strokeWidth={isBlockActive ? 2 : 1}
+                    />
+                    {/* Crosshair lines */}
+                    <line x1={bs.x - 10} y1={bs.y} x2={bs.x - 5} y2={bs.y} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+                    <line x1={bs.x + 5} y1={bs.y} x2={bs.x + 10} y2={bs.y} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+                    <line x1={bs.x} y1={bs.y - 10} x2={bs.x} y2={bs.y - 5} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+                    <line x1={bs.x} y1={bs.y + 5} x2={bs.x} y2={bs.y + 10} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+  
+                    {/* Needle line */}
+                    {isBlockActive && (
+                      <g className="animate-fade-in">
+                        <line x1={bs.x + 55} y1={bs.y - 20} x2={bs.x + 8} y2={bs.y - 2}
+                          stroke="hsl(140, 60%, 45%)" strokeWidth="1.5" markerEnd="url(#needleTip)" opacity="0.6" />
+                        <text x={bs.x + 58} y={bs.y - 22} fontSize="5" fill="hsl(140, 60%, 45%)" opacity="0.7">needle</text>
+                      </g>
+                    )}
+  
+                    {/* Label */}
+                    <text x={bs.x} y={bs.y - (isBlockActive ? 22 : 17)} textAnchor="middle"
+                      fontSize="6" fill="hsl(140, 60%, 45%)" fontWeight="bold" opacity={isBlockActive ? 1 : 0.7}>
+                      🎯 {bs.label}
+                    </text>
+                  </g>
+    );
+              })}
+            </svg>
+          </div>
+  
+          {/* Side panels */}
+          <div className="flex flex-col gap-3">
+            {showDermatomes && (
+              <div className="animate-fade-in">
+                <p className="text-xs font-semibold text-muted-foreground mb-1">Cutaneous Dermatomes</p>
+                <HandDermatomeMap />
+                <div className="text-[10px] text-muted-foreground space-y-0.5 text-center mt-1">
+                  <p><span className="font-bold" style={{ color: ROOT_COLORS.C6 }}>C6</span> — thumb + lateral</p>
+                  <p><span className="font-bold" style={{ color: ROOT_COLORS.C7 }}>C7</span> — middle finger</p>
+                  <p><span className="font-bold" style={{ color: ROOT_COLORS.C8 }}>C8</span> — ring + little</p>
+                  <p><span className="font-bold" style={{ color: ROOT_COLORS.T1 }}>T1</span> — medial forearm</p>
+                </div>
+              </div>
+            )}
+  
+            {/* Block site quick selector */}
+            {showBlockSites && (
+              <div className="animate-fade-in">
+                <p className="text-xs font-semibold text-muted-foreground mb-1.5">Injection Sites</p>
+                <div className="space-y-1">
+                  {blockSites.map(bs => (
+                    <button key={bs.id}
+                      onClick={() => { setSelectedBlock(selectedBlock === bs.id ? null : bs.id); setSelected(""); }}
+                      className={`w-full text-left px-2 py-1.5 rounded text-xs transition-all ${selectedBlock === bs.id ? "bg-primary/15 border border-primary/40 text-foreground font-medium" : "bg-secondary/50 border border-border text-muted-foreground hover:text-foreground"}`}>
+                      🎯 {bs.label}
+                      <span className="text-[10px] ml-1 opacity-60">({levelInfo[bs.level].label.split(' ')[0]})</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+  
+        {/* Block approach highlight */}
+        {highlightLevel && !selectedBlock && (
+          <div className="p-3 rounded-lg bg-secondary/50 border border-border animate-fade-in">
+            <p className="text-xs font-semibold text-foreground">🎯 Block approach — {levelInfo[highlightLevel].label}:</p>
+            <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{levelInfo[highlightLevel].blockApproach}</p>
+          </div>
+        )}
+  
+        {/* Block site detail card */}
+        {activeBlock && (
+          <div className="p-4 rounded-lg border border-primary/30 bg-primary/5 animate-fade-in" key={selectedBlock}>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-sm">🎯</span>
+              <p className="font-bold text-sm text-foreground">{activeBlock.label} Block</p>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-wide ml-auto">{levelInfo[activeBlock.level].label}</span>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-3 text-xs">
+              <div>
+                <p className="font-semibold text-foreground mb-0.5">Coverage</p>
+                <p className="text-muted-foreground">{activeBlock.coverage}</p>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-0.5">US Landmarks</p>
+                <p className="text-muted-foreground">{activeBlock.usLandmarks}</p>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-0.5">Needle Direction</p>
+                <p className="text-muted-foreground">{activeBlock.needleDirection}</p>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-0.5">Volume</p>
+                <p className="text-muted-foreground">{activeBlock.volume}</p>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-0.5">Indication</p>
+                <p className="text-muted-foreground">{activeBlock.indication}</p>
+              </div>
+              <div>
+                <p className="font-semibold text-destructive mb-0.5">Risks</p>
+                <p className="text-muted-foreground">{activeBlock.risks}</p>
               </div>
             </div>
-          )}
+          </div>
+        )}
+  
+        {/* Plexus element detail card */}
+        {activeEl && !activeBlock && (
+          <PlexusDetailPanel
+            reactKey={selected}
+            title={activeEl.label}
+            region={levelInfo[activeEl.level].label}
+            accent={activeEl.color}
+            fields={[{ label: "Detail", value: activeEl.detail }]}
+          />
+        )}
         </div>
       </div>
-
-      {/* Block approach highlight */}
-      {highlightLevel && !selectedBlock && (
-        <div className="p-3 rounded-lg bg-secondary/50 border border-border animate-fade-in">
-          <p className="text-xs font-semibold text-foreground">🎯 Block approach — {levelInfo[highlightLevel].label}:</p>
-          <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{levelInfo[highlightLevel].blockApproach}</p>
-        </div>
-      )}
-
-      {/* Block site detail card */}
-      {activeBlock && (
-        <div className="p-4 rounded-lg border border-primary/30 bg-primary/5 animate-fade-in" key={selectedBlock}>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-sm">🎯</span>
-            <p className="font-bold text-sm text-foreground">{activeBlock.label} Block</p>
-            <span className="text-[10px] text-muted-foreground uppercase tracking-wide ml-auto">{levelInfo[activeBlock.level].label}</span>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-3 text-xs">
-            <div>
-              <p className="font-semibold text-foreground mb-0.5">Coverage</p>
-              <p className="text-muted-foreground">{activeBlock.coverage}</p>
-            </div>
-            <div>
-              <p className="font-semibold text-foreground mb-0.5">US Landmarks</p>
-              <p className="text-muted-foreground">{activeBlock.usLandmarks}</p>
-            </div>
-            <div>
-              <p className="font-semibold text-foreground mb-0.5">Needle Direction</p>
-              <p className="text-muted-foreground">{activeBlock.needleDirection}</p>
-            </div>
-            <div>
-              <p className="font-semibold text-foreground mb-0.5">Volume</p>
-              <p className="text-muted-foreground">{activeBlock.volume}</p>
-            </div>
-            <div>
-              <p className="font-semibold text-foreground mb-0.5">Indication</p>
-              <p className="text-muted-foreground">{activeBlock.indication}</p>
-            </div>
-            <div>
-              <p className="font-semibold text-destructive mb-0.5">Risks</p>
-              <p className="text-muted-foreground">{activeBlock.risks}</p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Plexus element detail card */}
-      {activeEl && !activeBlock && (
-        <PlexusDetailPanel
-          reactKey={selected}
-          title={activeEl.label}
-          region={levelInfo[activeEl.level].label}
-          accent={activeEl.color}
-          fields={[{ label: "Detail", value: activeEl.detail }]}
-        />
-      )}
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

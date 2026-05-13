@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type LayerId = "endothelium" | "gbm" | "podocytes" | "slit-diaphragm" | "mesangial" | "filtrate";
 
@@ -96,14 +97,20 @@ const FiltrationParticle = ({ delay, speed, size, color, blocked, label }: {
   const opacity = phase === "done" ? 0 : phase === "blocked" ? (0.4 + Math.sin(Date.now() / 300) * 0.2) : 0.8;
 
   return (
-    <g opacity={opacity}>
-      <circle cx={x} cy={y} r={size} fill={color} />
-      {size > 3 && <circle cx={x} cy={y} r={size} fill="none" stroke={color} strokeWidth="0.5" opacity="0.4" />}
-      <text x={x} y={y - size - 2} fontSize="5" fill={color} textAnchor="middle" fontWeight="600">{label}</text>
-      {phase === "blocked" && (
-        <text x={x + size + 4} y={y + 2} fontSize="5" fill="hsl(0 60% 55%)" fontWeight="700">✕</text>
-      )}
-    </g>
+    <DiagramFigure
+      id="glomerular-barrier-diagram"
+      title="Glomerular barrier"
+      description="Auto-generated wrapper for the Glomerular barrier anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <g opacity={opacity}>
+        <circle cx={x} cy={y} r={size} fill={color} />
+        {size > 3 && <circle cx={x} cy={y} r={size} fill="none" stroke={color} strokeWidth="0.5" opacity="0.4" />}
+        <text x={x} y={y - size - 2} fontSize="5" fill={color} textAnchor="middle" fontWeight="600">{label}</text>
+        {phase === "blocked" && (
+          <text x={x + size + 4} y={y + 2} fontSize="5" fill="hsl(0 60% 55%)" fontWeight="700">✕</text>
+        )}
+      </g>
+    </DiagramFigure>
   );
 };
 
@@ -251,7 +258,7 @@ export const GlomerularBarrierDiagram = () => {
           {Array.from({ length: 10 }).map((_, i) => {
             const x = 15 + i * 48;
             return (
-              <g key={`fp-${i}`}>
+                  <g key={`fp-${i}`}>
                 {/* Left foot process */}
                 <path d={`M ${x} 180 L ${x} 220 Q ${x + 5} 240 ${x + 10} 240 L ${x + 18} 240 Q ${x + 20} 240 ${x + 20} 235 L ${x + 20} 220`}
                   fill="hsl(200 50% 50%)" fillOpacity="0.15" stroke="hsl(200 55% 50%)" strokeWidth="1" />
@@ -277,7 +284,7 @@ export const GlomerularBarrierDiagram = () => {
                   </g>
                 )}
               </g>
-            );
+  );
           })}
           <text x="475" y="198" fontSize="6" fill="hsl(200 55% 50%)" textAnchor="end" fontWeight="600" opacity="0.8">
             Podocyte Foot Processes

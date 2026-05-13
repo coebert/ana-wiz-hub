@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Pause, Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated handover / resource flow across NATO Roles 1–4 with CCAST in transit.
@@ -112,188 +113,194 @@ export const MilitaryRolesFlowDiagram = () => {
   const dashOffset = -t * 200;
 
   return (
-    <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
-      <figcaption className="mb-3 flex items-start justify-between gap-3">
-        <div>
-          <h3 className="text-base font-semibold text-foreground">
-            Roles of medical care &amp; CCAST handover flow
-          </h3>
-          <p className="text-xs text-muted-foreground mt-1">
-            Animated journey of a single casualty from point of wounding through Role 4, with ISBAR handovers
-            at each interface and reverse logistics of blood / consumables forward.
-          </p>
-        </div>
-        <div className="flex items-center gap-1 shrink-0">
-          <Button variant="ghost" size="icon" onClick={() => setPlaying((p) => !p)} aria-label={playing ? "Pause" : "Play"}>
-            {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-          </Button>
-          <Button variant="ghost" size="icon" onClick={() => setT(0)} aria-label="Restart">
-            <RotateCcw className="h-4 w-4" />
-          </Button>
-        </div>
-      </figcaption>
-
-      {/* Timeline strip */}
-      <div className="mb-3 grid grid-cols-5 gap-1">
-        {NODES.map((n) => {
-          const isActive = active === n.id;
-          const isDone = active > n.id;
-          return (
-            <div
-              key={n.id}
-              className={cn(
-                "rounded-md border px-2 py-1.5 text-[11px] font-medium transition-colors",
-                isActive
-                  ? "border-primary bg-primary/10 text-primary"
-                  : isDone
-                  ? "border-border bg-muted/50 text-muted-foreground"
-                  : "border-border bg-background text-muted-foreground"
-              )}
-            >
-              {n.label}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Diagram */}
-      <div className="rounded-lg border border-border bg-background p-3">
-        <svg viewBox="0 0 800 280" className="w-full h-auto" role="img" aria-label="Roles 1-4 flow">
-          <defs>
-            <marker id="arrFwd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
-            </marker>
-            <marker id="arrBack" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--muted-foreground))" />
-            </marker>
-          </defs>
-
-          {/* Forward casualty path (background line) */}
-          <line x1={NODES[0].x} y1="120" x2={NODES[NODES.length - 1].x} y2="120"
-                stroke="hsl(var(--border))" strokeWidth="2" />
-
-          {/* Reverse logistics dashed line (top) */}
-          <line
-            x1={NODES[NODES.length - 1].x}
-            y1="62"
-            x2={NODES[0].x}
-            y2="62"
-            stroke="hsl(var(--muted-foreground))"
-            strokeWidth="1"
-            strokeDasharray="6 6"
-            strokeDashoffset={dashOffset}
-            markerEnd="url(#arrBack)"
-            opacity="0.55"
-          />
-          <text x="400" y="52" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))">
-            Reverse logistics: blood, drugs, oxygen, consumables, expertise
-          </text>
-
-          {/* Nodes */}
+    <DiagramFigure
+      id="military-roles-flow-diagram"
+      title="Military roles flow"
+      description="Auto-generated wrapper for the Military roles flow anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
+        <figcaption className="mb-3 flex items-start justify-between gap-3">
+          <div>
+            <h3 className="text-base font-semibold text-foreground">
+              Roles of medical care &amp; CCAST handover flow
+            </h3>
+            <p className="text-xs text-muted-foreground mt-1">
+              Animated journey of a single casualty from point of wounding through Role 4, with ISBAR handovers
+              at each interface and reverse logistics of blood / consumables forward.
+            </p>
+          </div>
+          <div className="flex items-center gap-1 shrink-0">
+            <Button variant="ghost" size="icon" onClick={() => setPlaying((p) => !p)} aria-label={playing ? "Pause" : "Play"}>
+              {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+            </Button>
+            <Button variant="ghost" size="icon" onClick={() => setT(0)} aria-label="Restart">
+              <RotateCcw className="h-4 w-4" />
+            </Button>
+          </div>
+        </figcaption>
+  
+        {/* Timeline strip */}
+        <div className="mb-3 grid grid-cols-5 gap-1">
           {NODES.map((n) => {
             const isActive = active === n.id;
+            const isDone = active > n.id;
             return (
-              <g key={n.id}>
-                <circle
-                  cx={n.x}
-                  cy={120}
-                  r={isActive ? 22 : 18}
-                  fill={isActive ? n.color : "hsl(var(--card))"}
-                  stroke={n.color}
-                  strokeWidth={isActive ? 2.5 : 1.6}
-                  style={{ transition: "r 250ms" }}
-                />
-                <text x={n.x} y={124} textAnchor="middle" fontSize="11" fontWeight="700"
-                      fill={isActive ? "hsl(var(--background))" : n.color}>
-                  {n.id === 0 ? "PoW" : `R${n.id}`}
-                </text>
-                <text x={n.x} y={156} textAnchor="middle" fontSize="11" fontWeight="600"
-                      fill="hsl(var(--foreground))">{n.label}</text>
-                <text x={n.x} y={172} textAnchor="middle" fontSize="9.5" fill="hsl(var(--muted-foreground))">
-                  {n.sub}
-                </text>
-
-                {/* Handover ISBAR pulse */}
-                {handoverPulse?.node === n.id && (
-                  <circle cx={n.x} cy={120} r={22 + handoverPulse.p * 25}
-                          fill="none" stroke="hsl(var(--primary))" strokeWidth="2"
-                          opacity={1 - handoverPulse.p} />
+              <div
+                key={n.id}
+                className={cn(
+                  "rounded-md border px-2 py-1.5 text-[11px] font-medium transition-colors",
+                  isActive
+                    ? "border-primary bg-primary/10 text-primary"
+                    : isDone
+                    ? "border-border bg-muted/50 text-muted-foreground"
+                    : "border-border bg-background text-muted-foreground"
                 )}
-              </g>
+              >
+                {n.label}
+              </div>
             );
           })}
-
-          {/* Casualty token */}
-          <g style={{ transition: "transform 80ms linear" }}>
-            <circle cx={x} cy={120} r={7} fill="hsl(var(--primary))" stroke="hsl(var(--background))" strokeWidth="2" />
-          </g>
-
-          {/* Transit label + vehicle icon */}
-          {transit && (
-            <g>
-              <rect x={x - 70} y={88} width={140} height={20} rx={4}
-                    fill="hsl(var(--primary) / 0.12)" stroke="hsl(var(--primary))" strokeWidth="1" />
-              <text x={x} y={102} textAnchor="middle" fontSize="10" fontWeight="600" fill="hsl(var(--primary))">
-                {transit.mode}
+        </div>
+  
+        {/* Diagram */}
+        <div className="rounded-lg border border-border bg-background p-3">
+          <svg viewBox="0 0 800 280" className="w-full h-auto" role="img" aria-label="Roles 1-4 flow">
+            <defs>
+              <marker id="arrFwd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
+              </marker>
+              <marker id="arrBack" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--muted-foreground))" />
+              </marker>
+            </defs>
+  
+            {/* Forward casualty path (background line) */}
+            <line x1={NODES[0].x} y1="120" x2={NODES[NODES.length - 1].x} y2="120"
+                  stroke="hsl(var(--border))" strokeWidth="2" />
+  
+            {/* Reverse logistics dashed line (top) */}
+            <line
+              x1={NODES[NODES.length - 1].x}
+              y1="62"
+              x2={NODES[0].x}
+              y2="62"
+              stroke="hsl(var(--muted-foreground))"
+              strokeWidth="1"
+              strokeDasharray="6 6"
+              strokeDashoffset={dashOffset}
+              markerEnd="url(#arrBack)"
+              opacity="0.55"
+            />
+            <text x="400" y="52" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))">
+              Reverse logistics: blood, drugs, oxygen, consumables, expertise
+            </text>
+  
+            {/* Nodes */}
+            {NODES.map((n) => {
+              const isActive = active === n.id;
+              return (
+                    <g key={n.id}>
+                  <circle
+                    cx={n.x}
+                    cy={120}
+                    r={isActive ? 22 : 18}
+                    fill={isActive ? n.color : "hsl(var(--card))"}
+                    stroke={n.color}
+                    strokeWidth={isActive ? 2.5 : 1.6}
+                    style={{ transition: "r 250ms" }}
+                  />
+                  <text x={n.x} y={124} textAnchor="middle" fontSize="11" fontWeight="700"
+                        fill={isActive ? "hsl(var(--background))" : n.color}>
+                    {n.id === 0 ? "PoW" : `R${n.id}`}
+                  </text>
+                  <text x={n.x} y={156} textAnchor="middle" fontSize="11" fontWeight="600"
+                        fill="hsl(var(--foreground))">{n.label}</text>
+                  <text x={n.x} y={172} textAnchor="middle" fontSize="9.5" fill="hsl(var(--muted-foreground))">
+                    {n.sub}
+                  </text>
+  
+                  {/* Handover ISBAR pulse */}
+                  {handoverPulse?.node === n.id && (
+                    <circle cx={n.x} cy={120} r={22 + handoverPulse.p * 25}
+                            fill="none" stroke="hsl(var(--primary))" strokeWidth="2"
+                            opacity={1 - handoverPulse.p} />
+                  )}
+                </g>
+    );
+            })}
+  
+            {/* Casualty token */}
+            <g style={{ transition: "transform 80ms linear" }}>
+              <circle cx={x} cy={120} r={7} fill="hsl(var(--primary))" stroke="hsl(var(--background))" strokeWidth="2" />
+            </g>
+  
+            {/* Transit label + vehicle icon */}
+            {transit && (
+              <g>
+                <rect x={x - 70} y={88} width={140} height={20} rx={4}
+                      fill="hsl(var(--primary) / 0.12)" stroke="hsl(var(--primary))" strokeWidth="1" />
+                <text x={x} y={102} textAnchor="middle" fontSize="10" fontWeight="600" fill="hsl(var(--primary))">
+                  {transit.mode}
+                </text>
+                {/* helicopter / plane glyph */}
+                <text x={x} y={82} textAnchor="middle" fontSize="14">
+                  {transit.to === 4 ? "✈" : "🚁"}
+                </text>
+              </g>
+            )}
+  
+            {/* ISBAR handover label at active interface */}
+            {handoverPulse && (
+              <g>
+                <rect x={NODES[handoverPulse.node].x - 50} y={195} width={100} height={20} rx={4}
+                      fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
+                <text x={NODES[handoverPulse.node].x} y={209} textAnchor="middle"
+                      fontSize="10" fontWeight="700" fill="hsl(var(--primary-foreground))">
+                  ISBAR handover
+                </text>
+              </g>
+            )}
+  
+            {/* Bottom legend bar */}
+            <g transform="translate(0,235)">
+              <text x="20" y="14" fontSize="10.5" fontWeight="700" fill="hsl(var(--foreground))">Care escalation:</text>
+              <text x="120" y="14" fontSize="10" fill="hsl(var(--muted-foreground))">
+                self/buddy → first responder → forward surgical → deployed hospital → home
               </text>
-              {/* helicopter / plane glyph */}
-              <text x={x} y={82} textAnchor="middle" fontSize="14">
-                {transit.to === 4 ? "✈" : "🚁"}
+              <text x="20" y="30" fontSize="10.5" fontWeight="700" fill="hsl(var(--foreground))">CCAST:</text>
+              <text x="65" y="30" fontSize="10" fill="hsl(var(--muted-foreground))">
+                consultant-led ICU team that delivers Level 3 care in transit between Roles 2/3 and Role 4
               </text>
             </g>
+          </svg>
+        </div>
+  
+        {/* Phase explainer */}
+        <div className="mt-3 text-xs text-muted-foreground">
+          {transit ? (
+            <p>
+              <span className="font-semibold text-foreground">In transit ({transit.mode}):</span>{" "}
+              ongoing sedation, lung-protective ventilation, blood products and warming continue under the
+              transferring team. ETCO₂, oxygen reserve and battery are checked before departure.
+            </p>
+          ) : (
+            <p>
+              <span className="font-semibold text-foreground">{NODES[active].label}:</span>{" "}
+              {active === 0 && "Self / buddy aid: catastrophic haemorrhage control (CAT, haemostatic dressing), open airway, decompress chest, call for MERT."}
+              {active === 1 && "Regimental Aid Post — primary survey, advanced airway if trained, TXA <3 h, antibiotics, package for forward MEDEVAC."}
+              {active === 2 && "Forward surgical (Role 2) — Damage Control Resuscitation (whole blood / 1:1:1) + Damage Control Surgery (<90 min). Stabilise for onward CCAST."}
+              {active === 3 && "Deployed hospital (Role 3) — definitive surgery, ICU, imaging, blood bank. Re-evaluate physiology before strategic evacuation."}
+              {active === 4 && "Home base (Role 4) — definitive reconstructive surgery, rehabilitation, psychological support, governance and learning."}
+            </p>
           )}
-
-          {/* ISBAR handover label at active interface */}
-          {handoverPulse && (
-            <g>
-              <rect x={NODES[handoverPulse.node].x - 50} y={195} width={100} height={20} rx={4}
-                    fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
-              <text x={NODES[handoverPulse.node].x} y={209} textAnchor="middle"
-                    fontSize="10" fontWeight="700" fill="hsl(var(--primary-foreground))">
-                ISBAR handover
-              </text>
-            </g>
-          )}
-
-          {/* Bottom legend bar */}
-          <g transform="translate(0,235)">
-            <text x="20" y="14" fontSize="10.5" fontWeight="700" fill="hsl(var(--foreground))">Care escalation:</text>
-            <text x="120" y="14" fontSize="10" fill="hsl(var(--muted-foreground))">
-              self/buddy → first responder → forward surgical → deployed hospital → home
-            </text>
-            <text x="20" y="30" fontSize="10.5" fontWeight="700" fill="hsl(var(--foreground))">CCAST:</text>
-            <text x="65" y="30" fontSize="10" fill="hsl(var(--muted-foreground))">
-              consultant-led ICU team that delivers Level 3 care in transit between Roles 2/3 and Role 4
-            </text>
-          </g>
-        </svg>
-      </div>
-
-      {/* Phase explainer */}
-      <div className="mt-3 text-xs text-muted-foreground">
-        {transit ? (
-          <p>
-            <span className="font-semibold text-foreground">In transit ({transit.mode}):</span>{" "}
-            ongoing sedation, lung-protective ventilation, blood products and warming continue under the
-            transferring team. ETCO₂, oxygen reserve and battery are checked before departure.
+          <p className="mt-2">
+            <span className="font-semibold text-foreground">Handover principle:</span> ISBAR (Identification ·
+            Situation · Background · Assessment · Recommendation) at every interface, with written transfer
+            documentation, drug and blood-product logs, and incident timeline.
           </p>
-        ) : (
-          <p>
-            <span className="font-semibold text-foreground">{NODES[active].label}:</span>{" "}
-            {active === 0 && "Self / buddy aid: catastrophic haemorrhage control (CAT, haemostatic dressing), open airway, decompress chest, call for MERT."}
-            {active === 1 && "Regimental Aid Post — primary survey, advanced airway if trained, TXA <3 h, antibiotics, package for forward MEDEVAC."}
-            {active === 2 && "Forward surgical (Role 2) — Damage Control Resuscitation (whole blood / 1:1:1) + Damage Control Surgery (<90 min). Stabilise for onward CCAST."}
-            {active === 3 && "Deployed hospital (Role 3) — definitive surgery, ICU, imaging, blood bank. Re-evaluate physiology before strategic evacuation."}
-            {active === 4 && "Home base (Role 4) — definitive reconstructive surgery, rehabilitation, psychological support, governance and learning."}
-          </p>
-        )}
-        <p className="mt-2">
-          <span className="font-semibold text-foreground">Handover principle:</span> ISBAR (Identification ·
-          Situation · Background · Assessment · Recommendation) at every interface, with written transfer
-          documentation, drug and blood-product logs, and incident timeline.
-        </p>
-      </div>
-    </figure>
+        </div>
+      </figure>
+    </DiagramFigure>
   );
 };
 

@@ -233,12 +233,12 @@ export const CSHTComparisonDiagram = () => {
           {visible.map((d) => {
             const y = interpolate(d.points, duration);
             return (
-              <g key={`dot-${d.key}`}>
+                  <g key={`dot-${d.key}`}>
                 <circle cx={xScale(duration)} cy={yScale(y)} r="4.5" fill={d.color} stroke="hsl(var(--background))" strokeWidth="1.5">
                   <animate attributeName="r" values="3.5;5.5;3.5" dur="1.6s" repeatCount="indefinite" />
                 </circle>
               </g>
-            );
+  );
           })}
         </svg>
       </div>

@@ -1,6 +1,7 @@
 import brainMedialImg from "@/assets/brain-anatomy-medial.jpg";
 import { DiagramSourcesPanel, DiagramSource } from "./DiagramSourcesPanel";
 import { BrainRegionsList } from "./BrainRegionsList";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const references: DiagramSource[] = [
   {
@@ -351,9 +352,15 @@ export const BrainMedialPlate = () => {
 };
 
 const BrainMedialDiagram = () => (
-  <div className="rounded-2xl border border-border bg-card overflow-hidden">
-    <BrainMedialPlate />
-  </div>
-);
+    <DiagramFigure
+      id="brain-medial-diagram"
+      title="Brain medial"
+      description="Auto-generated wrapper for the Brain medial anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+            <div className="rounded-2xl border border-border bg-card overflow-hidden">
+      <BrainMedialPlate />
+    </div>
+    </DiagramFigure>
+  );
 
 export default BrainMedialDiagram;

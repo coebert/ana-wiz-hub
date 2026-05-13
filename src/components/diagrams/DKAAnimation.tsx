@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Diabetic ketoacidosis — pathophysiology animation.
@@ -130,11 +131,11 @@ const DKAScene = ({ active }: { active: number }) => {
           const lit = active > i;
           const y = 50 + i * 48;
           return (
-            <line key={i} x1="122" x2="122" y1={y} y2={y + 10}
+                <line key={i} x1="122" x2="122" y1={y} y2={y + 10}
               stroke={lit ? "hsl(var(--foreground))" : "hsl(var(--border))"}
               strokeWidth={lit ? 2 : 1}
               markerEnd="url(#dka-arrow)" className="transition-colors duration-500" />
-          );
+  );
         })}
 
         {/* Right panel — biochemistry snapshot */}
@@ -163,14 +164,20 @@ const DKAScene = ({ active }: { active: number }) => {
 };
 
 const DKAAnimation = () => (
-  <AnimatedMechanism
-    title="Diabetic ketoacidosis — pathophysiology"
-    subtitle="From insulin deficiency to ketogenesis, HAGMA, dehydration and the potassium paradox (JBDS-IP 2023)"
-    steps={STEPS}
-    stepMs={3200}
-    accentClass="border-clinical/40"
-    renderScene={(active) => <DKAScene active={active} />}
-  />
-);
+    <DiagramFigure
+      id="dka-animation"
+      title="DKA"
+      description="Auto-generated wrapper for the DKA animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+            <AnimatedMechanism
+      title="Diabetic ketoacidosis — pathophysiology"
+      subtitle="From insulin deficiency to ketogenesis, HAGMA, dehydration and the potassium paradox (JBDS-IP 2023)"
+      steps={STEPS}
+      stepMs={3200}
+      accentClass="border-clinical/40"
+      renderScene={(active) => <DKAScene active={active} />}
+    />
+    </DiagramFigure>
+  );
 
 export default DKAAnimation;

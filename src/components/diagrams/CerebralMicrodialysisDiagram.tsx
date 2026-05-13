@@ -321,7 +321,7 @@ const CerebralMicrodialysisDiagram = () => {
                 const normalPct = (b.normalHigh / b.max) * 100;
                 const abnormal = isAbnormal(b, val);
                 return (
-                  <div key={b.key}>
+                      <div key={b.key}>
                     <div className="flex justify-between items-baseline mb-0.5">
                       <span className="text-[11px] font-semibold text-foreground">{b.label}</span>
                       <span className={`text-[11px] font-mono font-bold ${abnormal ? "text-destructive" : "text-foreground"}`}>
@@ -344,7 +344,7 @@ const CerebralMicrodialysisDiagram = () => {
                       />
                     </div>
                   </div>
-                );
+  );
               })}
             </div>
           </div>

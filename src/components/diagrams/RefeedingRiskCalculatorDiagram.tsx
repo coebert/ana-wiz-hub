@@ -3,6 +3,7 @@ import { AlertTriangle, ShieldCheck } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Refeeding Risk Stratifier — interactive NICE CG32 calculator.
@@ -101,146 +102,152 @@ export const RefeedingRiskCalculatorDiagram = () => {
   const copy = VERDICT_COPY[result.verdict];
 
   return (
-    <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
-      <div className="flex items-start justify-between gap-3 mb-4">
-        <div>
-          <h3 className="text-lg font-serif font-bold text-foreground">
-            Refeeding Risk Stratifier (NICE CG32)
-          </h3>
-          <p className="text-xs text-muted-foreground mt-1">
-            Adjust the sliders / toggles to mirror your patient. Recommendation updates live.
-          </p>
-        </div>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-5">
-        <div className="space-y-5">
+    <DiagramFigure
+      id="refeeding-risk-calculator-diagram"
+      title="Refeeding risk calculator"
+      description="Auto-generated wrapper for the Refeeding risk calculator interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+        <div className="flex items-start justify-between gap-3 mb-4">
           <div>
-            <div className="flex items-center justify-between mb-1.5">
-              <Label className="text-sm">BMI (kg/m²)</Label>
-              <span className="text-sm font-mono font-semibold text-foreground">{inputs.bmi.toFixed(1)}</span>
-            </div>
-            <Slider
-              value={[inputs.bmi]}
-              min={10}
-              max={30}
-              step={0.5}
-              onValueChange={([v]) => setInputs((s) => ({ ...s, bmi: v }))}
-            />
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-1.5">
-              <Label className="text-sm">Unintentional weight loss (% in 3–6 mo)</Label>
-              <span className="text-sm font-mono font-semibold text-foreground">{inputs.weightLossPct}%</span>
-            </div>
-            <Slider
-              value={[inputs.weightLossPct]}
-              min={0}
-              max={30}
-              step={1}
-              onValueChange={([v]) => setInputs((s) => ({ ...s, weightLossPct: v }))}
-            />
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-1.5">
-              <Label className="text-sm">Days of little / no nutrition</Label>
-              <span className="text-sm font-mono font-semibold text-foreground">{inputs.daysNbm} d</span>
-            </div>
-            <Slider
-              value={[inputs.daysNbm]}
-              min={0}
-              max={20}
-              step={1}
-              onValueChange={([v]) => setInputs((s) => ({ ...s, daysNbm: v }))}
-            />
-          </div>
-
-          <div className="flex items-center justify-between rounded-lg border border-border p-3">
-            <Label className="text-sm leading-tight">
-              Low pre-feed K⁺ / PO₄³⁻ / Mg²⁺
-            </Label>
-            <Switch
-              checked={inputs.lowElectrolytes}
-              onCheckedChange={(v) => setInputs((s) => ({ ...s, lowElectrolytes: v }))}
-            />
-          </div>
-
-          <div className="flex items-center justify-between rounded-lg border border-border p-3">
-            <Label className="text-sm leading-tight">
-              Alcohol misuse, chemo, insulin, antacids or diuretics
-            </Label>
-            <Switch
-              checked={inputs.alcoholOrDrugs}
-              onCheckedChange={(v) => setInputs((s) => ({ ...s, alcoholOrDrugs: v }))}
-            />
-          </div>
-        </div>
-
-        <div className={`rounded-lg border-2 ${copy.ring} ${copy.bg} p-4 space-y-3`}>
-          <div className="flex items-center gap-2">
-            {result.verdict === "low" ? (
-              <ShieldCheck className={`h-5 w-5 ${copy.tone}`} />
-            ) : (
-              <AlertTriangle className={`h-5 w-5 ${copy.tone}`} />
-            )}
-            <p className={`text-sm font-bold uppercase tracking-wide ${copy.tone}`}>
-              {copy.title}
+            <h3 className="text-lg font-serif font-bold text-foreground">
+              Refeeding Risk Stratifier (NICE CG32)
+            </h3>
+            <p className="text-xs text-muted-foreground mt-1">
+              Adjust the sliders / toggles to mirror your patient. Recommendation updates live.
             </p>
           </div>
-
-          {result.reasons.length > 0 && (
+        </div>
+  
+        <div className="grid md:grid-cols-2 gap-5">
+          <div className="space-y-5">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-1">
-                Triggering criteria
-              </p>
-              <ul className="text-xs text-foreground space-y-0.5 list-disc list-inside">
-                {result.reasons.map((r) => (
-                  <li key={r}>{r}</li>
-                ))}
-              </ul>
+              <div className="flex items-center justify-between mb-1.5">
+                <Label className="text-sm">BMI (kg/m²)</Label>
+                <span className="text-sm font-mono font-semibold text-foreground">{inputs.bmi.toFixed(1)}</span>
+              </div>
+              <Slider
+                value={[inputs.bmi]}
+                min={10}
+                max={30}
+                step={0.5}
+                onValueChange={([v]) => setInputs((s) => ({ ...s, bmi: v }))}
+              />
             </div>
-          )}
-
-          <div className="rounded-md bg-background/60 border border-border/60 p-3 space-y-1.5">
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-              Starting regimen
-            </p>
-            <p className="text-sm text-foreground leading-relaxed">
-              <strong>{result.startKcal} kcal/kg/day</strong>
-              {result.verdict !== "low" && (
-                <>
-                  {" "}for the first 24 h, then increase over <strong>4–7 days</strong> to full target.
-                </>
+  
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <Label className="text-sm">Unintentional weight loss (% in 3–6 mo)</Label>
+                <span className="text-sm font-mono font-semibold text-foreground">{inputs.weightLossPct}%</span>
+              </div>
+              <Slider
+                value={[inputs.weightLossPct]}
+                min={0}
+                max={30}
+                step={1}
+                onValueChange={([v]) => setInputs((s) => ({ ...s, weightLossPct: v }))}
+              />
+            </div>
+  
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <Label className="text-sm">Days of little / no nutrition</Label>
+                <span className="text-sm font-mono font-semibold text-foreground">{inputs.daysNbm} d</span>
+              </div>
+              <Slider
+                value={[inputs.daysNbm]}
+                min={0}
+                max={20}
+                step={1}
+                onValueChange={([v]) => setInputs((s) => ({ ...s, daysNbm: v }))}
+              />
+            </div>
+  
+            <div className="flex items-center justify-between rounded-lg border border-border p-3">
+              <Label className="text-sm leading-tight">
+                Low pre-feed K⁺ / PO₄³⁻ / Mg²⁺
+              </Label>
+              <Switch
+                checked={inputs.lowElectrolytes}
+                onCheckedChange={(v) => setInputs((s) => ({ ...s, lowElectrolytes: v }))}
+              />
+            </div>
+  
+            <div className="flex items-center justify-between rounded-lg border border-border p-3">
+              <Label className="text-sm leading-tight">
+                Alcohol misuse, chemo, insulin, antacids or diuretics
+              </Label>
+              <Switch
+                checked={inputs.alcoholOrDrugs}
+                onCheckedChange={(v) => setInputs((s) => ({ ...s, alcoholOrDrugs: v }))}
+              />
+            </div>
+          </div>
+  
+          <div className={`rounded-lg border-2 ${copy.ring} ${copy.bg} p-4 space-y-3`}>
+            <div className="flex items-center gap-2">
+              {result.verdict === "low" ? (
+                <ShieldCheck className={`h-5 w-5 ${copy.tone}`} />
+              ) : (
+                <AlertTriangle className={`h-5 w-5 ${copy.tone}`} />
               )}
-              {result.verdict === "low" && (
-                <> — feed to full target (20–25 kcal/kg/day) over 24–48 h.</>
-              )}
-            </p>
-            {result.verdict !== "low" && (
-              <ul className="text-xs text-muted-foreground space-y-1 mt-2 list-disc list-inside leading-relaxed">
-                <li>
-                  IV thiamine <strong>200–300 mg</strong> at least 30 min before feeding, then daily for 3–10 days
-                </li>
-                <li>
-                  Vitamin B compound + multivitamin / trace elements
-                </li>
-                <li>
-                  Replace K⁺, PO₄³⁻ and Mg²⁺ <em>before</em> and <em>during</em> feeding (do not delay feed for normal levels)
-                </li>
-                <li>
-                  Daily K⁺ / PO₄ / Mg²⁺ for the first week; ECG monitoring if extreme risk
-                </li>
-                <li>
-                  Cardiac monitoring for fluid overload — risk of cardiac failure on day 3–7
-                </li>
-              </ul>
+              <p className={`text-sm font-bold uppercase tracking-wide ${copy.tone}`}>
+                {copy.title}
+              </p>
+            </div>
+  
+            {result.reasons.length > 0 && (
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-1">
+                  Triggering criteria
+                </p>
+                <ul className="text-xs text-foreground space-y-0.5 list-disc list-inside">
+                  {result.reasons.map((r) => (
+                    <li key={r}>{r}</li>
+                  ))}
+                </ul>
+              </div>
             )}
+  
+            <div className="rounded-md bg-background/60 border border-border/60 p-3 space-y-1.5">
+              <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                Starting regimen
+              </p>
+              <p className="text-sm text-foreground leading-relaxed">
+                <strong>{result.startKcal} kcal/kg/day</strong>
+                {result.verdict !== "low" && (
+                  <>
+                    {" "}for the first 24 h, then increase over <strong>4–7 days</strong> to full target.
+                  </>
+                )}
+                {result.verdict === "low" && (
+                  <> — feed to full target (20–25 kcal/kg/day) over 24–48 h.</>
+                )}
+              </p>
+              {result.verdict !== "low" && (
+                <ul className="text-xs text-muted-foreground space-y-1 mt-2 list-disc list-inside leading-relaxed">
+                  <li>
+                    IV thiamine <strong>200–300 mg</strong> at least 30 min before feeding, then daily for 3–10 days
+                  </li>
+                  <li>
+                    Vitamin B compound + multivitamin / trace elements
+                  </li>
+                  <li>
+                    Replace K⁺, PO₄³⁻ and Mg²⁺ <em>before</em> and <em>during</em> feeding (do not delay feed for normal levels)
+                  </li>
+                  <li>
+                    Daily K⁺ / PO₄ / Mg²⁺ for the first week; ECG monitoring if extreme risk
+                  </li>
+                  <li>
+                    Cardiac monitoring for fluid overload — risk of cardiac failure on day 3–7
+                  </li>
+                </ul>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

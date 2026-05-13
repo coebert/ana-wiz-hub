@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive EOLIA / Murray Lung Injury Score calculator for ARDS.
@@ -46,106 +47,112 @@ const EOLIAMurrayCalculator = () => {
     setHistory([{ t: 0, dp, pplat, compliance }]);
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 my-6">
-      <h3 className="text-lg font-semibold text-foreground">EOLIA / Murray ECMO Eligibility Calculator</h3>
-      <p className="text-xs text-muted-foreground mb-4">
-        Combines the Murray Lung Injury Score (0–4) with EOLIA trial referral criteria. Indicative only — final decision sits with the regional ECMO centre.
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-        <Slider label="PaO₂ / FiO₂" value={pf} min={30} max={300} step={5} unit="mmHg" onChange={setPf} />
-        <Slider label="pH" value={ph} min={6.9} max={7.5} step={0.01} unit="" onChange={setPh} decimals={2} />
-        <Slider label="PaCO₂" value={paco2} min={30} max={120} step={1} unit="mmHg" onChange={setPaco2} />
-        <Slider label="Plateau pressure" value={pplat} min={15} max={45} step={1} unit="cmH₂O" onChange={setPplat} />
-        <Slider label="Static compliance" value={compliance} min={5} max={80} step={1} unit="mL/cmH₂O" onChange={setCompliance} />
-        <Slider label="PEEP" value={peep} min={5} max={24} step={1} unit="cmH₂O" onChange={setPeep} />
-        <div className="md:col-span-2">
-          <Slider label="CXR quadrants with consolidation" value={quadrants} min={0} max={4} step={1} unit="/ 4" onChange={setQuadrants} />
+    <DiagramFigure
+      id="eolia-murray-calculator"
+      title="EOLIA murray"
+      description="Auto-generated wrapper for the EOLIA murray interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="rounded-xl border border-border bg-card p-4 my-6">
+        <h3 className="text-lg font-semibold text-foreground">EOLIA / Murray ECMO Eligibility Calculator</h3>
+        <p className="text-xs text-muted-foreground mb-4">
+          Combines the Murray Lung Injury Score (0–4) with EOLIA trial referral criteria. Indicative only — final decision sits with the regional ECMO centre.
+        </p>
+  
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <Slider label="PaO₂ / FiO₂" value={pf} min={30} max={300} step={5} unit="mmHg" onChange={setPf} />
+          <Slider label="pH" value={ph} min={6.9} max={7.5} step={0.01} unit="" onChange={setPh} decimals={2} />
+          <Slider label="PaCO₂" value={paco2} min={30} max={120} step={1} unit="mmHg" onChange={setPaco2} />
+          <Slider label="Plateau pressure" value={pplat} min={15} max={45} step={1} unit="cmH₂O" onChange={setPplat} />
+          <Slider label="Static compliance" value={compliance} min={5} max={80} step={1} unit="mL/cmH₂O" onChange={setCompliance} />
+          <Slider label="PEEP" value={peep} min={5} max={24} step={1} unit="cmH₂O" onChange={setPeep} />
+          <div className="md:col-span-2">
+            <Slider label="CXR quadrants with consolidation" value={quadrants} min={0} max={4} step={1} unit="/ 4" onChange={setQuadrants} />
+          </div>
         </div>
-      </div>
-
-      <label className="flex items-center gap-2 text-xs text-muted-foreground mb-4 cursor-pointer">
-        <input
-          type="checkbox"
-          checked={optimised}
-          onChange={(e) => setOptimised(e.target.checked)}
-          className="accent-primary"
-        />
-        Conventional therapy optimised (lung-protective ventilation, prone ≥ 16 h, NMB if needed) for ≥ 6 h
-      </label>
-
-      {/* Murray score breakdown */}
-      <div className="rounded-lg bg-secondary/40 border border-border p-3 mb-3">
-        <div className="flex items-baseline justify-between mb-2">
-          <p className="text-sm font-semibold text-foreground">Murray Lung Injury Score</p>
-          <p className="text-2xl font-bold" style={{ color: result.murrayColor }}>
-            {result.murray.toFixed(2)}
-            <span className="text-xs text-muted-foreground font-normal ml-1">/ 4.0</span>
+  
+        <label className="flex items-center gap-2 text-xs text-muted-foreground mb-4 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={optimised}
+            onChange={(e) => setOptimised(e.target.checked)}
+            className="accent-primary"
+          />
+          Conventional therapy optimised (lung-protective ventilation, prone ≥ 16 h, NMB if needed) for ≥ 6 h
+        </label>
+  
+        {/* Murray score breakdown */}
+        <div className="rounded-lg bg-secondary/40 border border-border p-3 mb-3">
+          <div className="flex items-baseline justify-between mb-2">
+            <p className="text-sm font-semibold text-foreground">Murray Lung Injury Score</p>
+            <p className="text-2xl font-bold" style={{ color: result.murrayColor }}>
+              {result.murray.toFixed(2)}
+              <span className="text-xs text-muted-foreground font-normal ml-1">/ 4.0</span>
+            </p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="text-muted-foreground border-b border-border">
+                  <th className="text-left py-1">Component</th>
+                  <th className="text-right py-1">Value</th>
+                  <th className="text-right py-1">Points</th>
+                </tr>
+              </thead>
+              <tbody className="text-foreground">
+                {result.breakdown.map((b) => (
+                  <tr key={b.label} className="border-b border-border/50">
+                    <td className="py-1">{b.label}</td>
+                    <td className="py-1 text-right font-mono">{b.value}</td>
+                    <td className="py-1 text-right font-mono font-semibold">{b.points}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-[11px] text-muted-foreground mt-2">
+            Total ÷ 4 components = score. <strong>0</strong> no injury · <strong>0.1–2.5</strong> mild–moderate · <strong>&gt; 2.5</strong> severe (ARDS).
           </p>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs">
-            <thead>
-              <tr className="text-muted-foreground border-b border-border">
-                <th className="text-left py-1">Component</th>
-                <th className="text-right py-1">Value</th>
-                <th className="text-right py-1">Points</th>
-              </tr>
-            </thead>
-            <tbody className="text-foreground">
-              {result.breakdown.map((b) => (
-                <tr key={b.label} className="border-b border-border/50">
-                  <td className="py-1">{b.label}</td>
-                  <td className="py-1 text-right font-mono">{b.value}</td>
-                  <td className="py-1 text-right font-mono font-semibold">{b.points}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+  
+        {/* EOLIA criteria */}
+        <div className="rounded-lg border border-border p-3 mb-3">
+          <p className="text-sm font-semibold text-foreground mb-2">EOLIA (2018) referral criteria</p>
+          <ul className="text-xs space-y-1">
+            {result.eoliaChecks.map((c) => (
+              <li key={c.label} className="flex items-start gap-2">
+                <span className={c.met ? "text-icu" : "text-muted-foreground"}>
+                  {c.met ? "✓" : "○"}
+                </span>
+                <span className={c.met ? "text-foreground" : "text-muted-foreground"}>
+                  {c.label}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <p className="text-[11px] text-muted-foreground mt-2">
-          Total ÷ 4 components = score. <strong>0</strong> no injury · <strong>0.1–2.5</strong> mild–moderate · <strong>&gt; 2.5</strong> severe (ARDS).
+  
+        {/* Trend mini-chart */}
+        <TrendChart history={history} onReset={resetHistory} />
+  
+        {/* Recommendation */}
+        <div
+          className="rounded-lg p-3 border-l-4"
+          style={{
+            borderLeftColor: result.recColor,
+            backgroundColor: `${result.recColor}1A`,
+          }}
+        >
+          <p className="text-sm font-bold" style={{ color: result.recColor }}>
+            {result.recTitle}
+          </p>
+          <p className="text-xs text-foreground mt-1 leading-relaxed">{result.recDetail}</p>
+        </div>
+  
+        <p className="text-[10px] text-muted-foreground mt-3 italic">
+          Refs: Murray DR et al. Am Rev Respir Dis 1988;138:720. Combes A et al. EOLIA. NEJM 2018;378:1965. ELSO guidelines 2021.
         </p>
       </div>
-
-      {/* EOLIA criteria */}
-      <div className="rounded-lg border border-border p-3 mb-3">
-        <p className="text-sm font-semibold text-foreground mb-2">EOLIA (2018) referral criteria</p>
-        <ul className="text-xs space-y-1">
-          {result.eoliaChecks.map((c) => (
-            <li key={c.label} className="flex items-start gap-2">
-              <span className={c.met ? "text-icu" : "text-muted-foreground"}>
-                {c.met ? "✓" : "○"}
-              </span>
-              <span className={c.met ? "text-foreground" : "text-muted-foreground"}>
-                {c.label}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Trend mini-chart */}
-      <TrendChart history={history} onReset={resetHistory} />
-
-      {/* Recommendation */}
-      <div
-        className="rounded-lg p-3 border-l-4"
-        style={{
-          borderLeftColor: result.recColor,
-          backgroundColor: `${result.recColor}1A`,
-        }}
-      >
-        <p className="text-sm font-bold" style={{ color: result.recColor }}>
-          {result.recTitle}
-        </p>
-        <p className="text-xs text-foreground mt-1 leading-relaxed">{result.recDetail}</p>
-      </div>
-
-      <p className="text-[10px] text-muted-foreground mt-3 italic">
-        Refs: Murray DR et al. Am Rev Respir Dis 1988;138:720. Combes A et al. EOLIA. NEJM 2018;378:1965. ELSO guidelines 2021.
-      </p>
-    </div>
+    </DiagramFigure>
   );
 };
 
@@ -359,7 +366,7 @@ function TrendChart({ history, onReset }: { history: TrendPoint[]; onReset: () =
 
 function LegendDot({ color, label, dashed }: { color: string; label: string; dashed?: boolean }) {
   return (
-    <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5">
       <svg width={20} height={6}>
         <line x1={0} x2={20} y1={3} y2={3} stroke={color} strokeWidth={2} strokeDasharray={dashed ? "3 2" : "0"} />
       </svg>

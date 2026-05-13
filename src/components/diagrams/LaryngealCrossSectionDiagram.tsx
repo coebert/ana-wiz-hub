@@ -548,7 +548,7 @@ const LaryngealCrossSectionDiagram = () => {
                 {[0, 1, 2, 3].map((i) => {
                   const ty = 224 + i * 20;
                   return (
-                    <g key={i} className="cursor-pointer" onClick={click("trachea")}>
+                        <g key={i} className="cursor-pointer" onClick={click("trachea")}>
                       <path
                         d={`M95,${ty} C95,${ty - 4} 105,${ty - 6} 130,${ty - 6} C155,${ty - 6} 165,${ty - 4} 165,${ty} L165,${ty + 10} C165,${ty + 14} 155,${ty + 16} 130,${ty + 16} C105,${ty + 16} 95,${ty + 14} 95,${ty + 10} Z`}
                         fill={structures.trachea.color}
@@ -559,7 +559,7 @@ const LaryngealCrossSectionDiagram = () => {
                       />
                       <line x1="105" y1={ty + 5} x2="155" y2={ty + 5} stroke={structures.trachea.color} strokeWidth="0.5" strokeDasharray="2 2" opacity="0.3" />
                     </g>
-                  );
+  );
                 })}
                 <text x="210" y="250" fontSize="7" fill={isActive("trachea") ? structures.trachea.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("trachea") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("trachea")}>Trachea</text>
 

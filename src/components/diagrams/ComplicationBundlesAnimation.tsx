@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Postoperative complication-prevention bundles. Cycles through the four
@@ -204,7 +205,7 @@ const Scene = ({ active }: { active: number }) => {
           {BUNDLES.map((b, i) => {
             const isActive = i === active;
             return (
-              <g key={b.key} transform={`translate(0, ${22 + i * 44})`}
+                  <g key={b.key} transform={`translate(0, ${22 + i * 44})`}
                  opacity={isActive ? 1 : 0.5}
                  className="transition-opacity duration-500">
                 <rect width="124" height="38" rx="6"
@@ -220,7 +221,7 @@ const Scene = ({ active }: { active: number }) => {
                   {b.key === "Infection" && "Sepsis-6 + stewardship"}
                 </text>
               </g>
-            );
+  );
           })}
         </g>
 
@@ -245,14 +246,20 @@ const Scene = ({ active }: { active: number }) => {
 };
 
 const ComplicationBundlesAnimation = () => (
-  <AnimatedMechanism
-    title="Complication-prevention bundles — AKI · Delirium · VTE · Infection"
-    subtitle="Apply all four from day 1 of postoperative critical care — KDIGO, ABCDEF, NICE NG89, Surviving Sepsis"
-    steps={STEPS}
-    stepMs={4200}
-    accentClass="border-clinical/40"
-    renderScene={(active) => <Scene active={active} />}
-  />
-);
+    <DiagramFigure
+      id="complication-bundles-animation"
+      title="Complication bundles"
+      description="Auto-generated wrapper for the Complication bundles animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+            <AnimatedMechanism
+      title="Complication-prevention bundles — AKI · Delirium · VTE · Infection"
+      subtitle="Apply all four from day 1 of postoperative critical care — KDIGO, ABCDEF, NICE NG89, Surviving Sepsis"
+      steps={STEPS}
+      stepMs={4200}
+      accentClass="border-clinical/40"
+      renderScene={(active) => <Scene active={active} />}
+    />
+    </DiagramFigure>
+  );
 
 export default ComplicationBundlesAnimation;

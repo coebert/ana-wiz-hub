@@ -233,13 +233,13 @@ export const PropofolTCISimulatorDiagram = () => {
           {[0, 0.25, 0.5, 0.75, 1].map((f) => {
             const x = pad.left + f * plotW;
             return (
-              <g key={f}>
+                  <g key={f}>
                 <line x1={x} y1={pad.top} x2={x} y2={pad.top + plotH} stroke="hsl(210 20% 95%)" />
                 <text x={x} y={pad.top + plotH + 14} textAnchor="middle" fontSize="10" className="fill-muted-foreground">
                   {Math.round(f * durationMin)}
                 </text>
               </g>
-            );
+  );
           })}
           {/* axes */}
           <line x1={pad.left} y1={pad.top} x2={pad.left} y2={pad.top + plotH} stroke="hsl(215 25% 15%)" strokeWidth="1.5" />

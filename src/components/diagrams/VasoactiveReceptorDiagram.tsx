@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Agent = "adrenaline" | "noradrenaline" | "phenylephrine" | "dobutamine" | "dopamine" | "isoprenaline" | "ephedrine";
 
@@ -109,153 +110,159 @@ const VasoactiveReceptorDiagram = () => {
   const hasVariableDose = selected !== "phenylephrine" && selected !== "isoprenaline";
 
   return (
-    <div className="space-y-5">
-      <h4 className="font-semibold text-foreground">Interactive Receptor Selectivity</h4>
-
-      {/* Agent selector */}
-      <div className="flex flex-wrap gap-2">
-        {agentKeys.map((key) => (
-          <button
-            key={key}
-            onClick={() => { setSelected(key); setDose(50); }}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-              selected === key
-                ? "bg-primary text-primary-foreground"
-                : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-            }`}
-          >
-            {agents[key].label}
-          </button>
-        ))}
-      </div>
-
-      <div className="bg-secondary/30 rounded-xl p-5 border border-border space-y-5">
-        {/* Dose slider */}
-        {hasVariableDose && (
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <label className="text-sm font-medium text-foreground">Dose</label>
-              <span className="text-xs text-muted-foreground">{agent.doseLabel(dose)}</span>
-            </div>
-            <input
-              type="range"
-              min={0}
-              max={100}
-              value={dose}
-              onChange={(e) => setDose(Number(e.target.value))}
-              className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-primary bg-secondary"
-            />
-            <div className="flex justify-between text-[10px] text-muted-foreground">
-              <span>Low</span>
-              <span>High</span>
-            </div>
-          </div>
-        )}
-
-        {/* Bar chart */}
-        <div className="space-y-3">
-          {receptorLabels.map((label, i) => {
-            const value = Math.round(profile[i]);
-            if (selected === "phenylephrine" && i > 0 && value === 0) {
-              // Still show zeros for pure agents to emphasise selectivity
-            }
-            return (
-              <div key={label} className="space-y-1">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-foreground w-8">{label}</span>
-                  <span className="text-xs text-muted-foreground">{value}%</span>
-                </div>
-                <div className="w-full h-5 bg-secondary rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-all duration-500 ease-out"
-                    style={{
-                      width: `${Math.max(value, 0)}%`,
-                      backgroundColor: receptorColors[i],
-                      opacity: value > 0 ? 1 : 0.15,
-                    }}
-                  />
-                </div>
+    <DiagramFigure
+      id="vasoactive-receptor-diagram"
+      title="Vasoactive receptor"
+      description="Auto-generated wrapper for the Vasoactive receptor anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-5">
+        <h4 className="font-semibold text-foreground">Interactive Receptor Selectivity</h4>
+  
+        {/* Agent selector */}
+        <div className="flex flex-wrap gap-2">
+          {agentKeys.map((key) => (
+            <button
+              key={key}
+              onClick={() => { setSelected(key); setDose(50); }}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                selected === key
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+              }`}
+            >
+              {agents[key].label}
+            </button>
+          ))}
+        </div>
+  
+        <div className="bg-secondary/30 rounded-xl p-5 border border-border space-y-5">
+          {/* Dose slider */}
+          {hasVariableDose && (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="text-sm font-medium text-foreground">Dose</label>
+                <span className="text-xs text-muted-foreground">{agent.doseLabel(dose)}</span>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Clinical effect summary */}
-        <div className="rounded-lg bg-background/60 p-3 border border-border">
-          <p className="text-xs font-medium text-foreground mb-1">Clinical Effect at Current Dose</p>
-          <div className="flex flex-wrap gap-2 mb-2">
-            {profile[0] > 40 && (
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-destructive/10 text-destructive">
-                ↑ SVR / Vasoconstriction
-              </span>
-            )}
-            {profile[1] > 40 && (
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary">
-                ↑ Inotropy / Chronotropy
-              </span>
-            )}
-            {profile[2] > 30 && (
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-accent/30 text-accent-foreground">
-                Vasodilation / Bronchodilation
-              </span>
-            )}
-            {profile[3] > 20 && (
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary text-foreground">
-                Renal/Splanchnic Vasodilation
-              </span>
-            )}
-            {profile[0] <= 40 && profile[1] <= 40 && profile[2] <= 30 && profile[3] <= 20 && (
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-muted text-muted-foreground">
-                Minimal effect at this dose
-              </span>
-            )}
+              <input
+                type="range"
+                min={0}
+                max={100}
+                value={dose}
+                onChange={(e) => setDose(Number(e.target.value))}
+                className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-primary bg-secondary"
+              />
+              <div className="flex justify-between text-[10px] text-muted-foreground">
+                <span>Low</span>
+                <span>High</span>
+              </div>
+            </div>
+          )}
+  
+          {/* Bar chart */}
+          <div className="space-y-3">
+            {receptorLabels.map((label, i) => {
+              const value = Math.round(profile[i]);
+              if (selected === "phenylephrine" && i > 0 && value === 0) {
+                // Still show zeros for pure agents to emphasise selectivity
+              }
+              return (
+                <div key={label} className="space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-foreground w-8">{label}</span>
+                    <span className="text-xs text-muted-foreground">{value}%</span>
+                  </div>
+                  <div className="w-full h-5 bg-secondary rounded-full overflow-hidden">
+                    <div
+                      className="h-full rounded-full transition-all duration-500 ease-out"
+                      style={{
+                        width: `${Math.max(value, 0)}%`,
+                        backgroundColor: receptorColors[i],
+                        opacity: value > 0 ? 1 : 0.15,
+                      }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <p className="text-xs text-muted-foreground">{agent.notes}</p>
-        </div>
-
-        {/* Comparison mode */}
-        <details className="group">
-          <summary className="text-sm font-medium text-primary cursor-pointer hover:underline">
-            Compare all agents at current dose setting
-          </summary>
-          <div className="mt-3 overflow-x-auto">
-            <table className="min-w-full text-xs border border-border rounded-lg">
-              <thead>
-                <tr className="bg-secondary/50">
-                  <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Agent</th>
-                  {receptorLabels.map((r) => (
-                    <th key={r} className="px-3 py-2 text-center text-foreground font-semibold border-b border-border">{r}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {agentKeys.map((key) => {
-                  const p = agents[key].getProfile(dose);
-                  return (
-                    <tr key={key} className={`border-b border-border ${key === selected ? "bg-primary/5" : ""}`}>
-                      <td className="px-3 py-1.5 font-medium text-foreground">{agents[key].label}</td>
-                      {p.map((v, i) => (
-                        <td key={i} className="px-3 py-1.5 text-center">
-                          <span
-                            className="inline-block min-w-[28px] px-1 py-0.5 rounded text-[10px] font-bold"
-                            style={{
-                              backgroundColor: v > 0 ? `${receptorColors[i]}20` : "transparent",
-                              color: v > 0 ? receptorColors[i] : "hsl(var(--muted-foreground))",
-                            }}
-                          >
-                            {Math.round(v)}
-                          </span>
-                        </td>
-                      ))}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+  
+          {/* Clinical effect summary */}
+          <div className="rounded-lg bg-background/60 p-3 border border-border">
+            <p className="text-xs font-medium text-foreground mb-1">Clinical Effect at Current Dose</p>
+            <div className="flex flex-wrap gap-2 mb-2">
+              {profile[0] > 40 && (
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-destructive/10 text-destructive">
+                  ↑ SVR / Vasoconstriction
+                </span>
+              )}
+              {profile[1] > 40 && (
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary">
+                  ↑ Inotropy / Chronotropy
+                </span>
+              )}
+              {profile[2] > 30 && (
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-accent/30 text-accent-foreground">
+                  Vasodilation / Bronchodilation
+                </span>
+              )}
+              {profile[3] > 20 && (
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary text-foreground">
+                  Renal/Splanchnic Vasodilation
+                </span>
+              )}
+              {profile[0] <= 40 && profile[1] <= 40 && profile[2] <= 30 && profile[3] <= 20 && (
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-muted text-muted-foreground">
+                  Minimal effect at this dose
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-muted-foreground">{agent.notes}</p>
           </div>
-        </details>
+  
+          {/* Comparison mode */}
+          <details className="group">
+            <summary className="text-sm font-medium text-primary cursor-pointer hover:underline">
+              Compare all agents at current dose setting
+            </summary>
+            <div className="mt-3 overflow-x-auto">
+              <table className="min-w-full text-xs border border-border rounded-lg">
+                <thead>
+                  <tr className="bg-secondary/50">
+                    <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Agent</th>
+                    {receptorLabels.map((r) => (
+                      <th key={r} className="px-3 py-2 text-center text-foreground font-semibold border-b border-border">{r}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {agentKeys.map((key) => {
+                    const p = agents[key].getProfile(dose);
+                    return (
+                          <tr key={key} className={`border-b border-border ${key === selected ? "bg-primary/5" : ""}`}>
+                        <td className="px-3 py-1.5 font-medium text-foreground">{agents[key].label}</td>
+                        {p.map((v, i) => (
+                          <td key={i} className="px-3 py-1.5 text-center">
+                            <span
+                              className="inline-block min-w-[28px] px-1 py-0.5 rounded text-[10px] font-bold"
+                              style={{
+                                backgroundColor: v > 0 ? `${receptorColors[i]}20` : "transparent",
+                                color: v > 0 ? receptorColors[i] : "hsl(var(--muted-foreground))",
+                              }}
+                            >
+                              {Math.round(v)}
+                            </span>
+                          </td>
+                        ))}
+                      </tr>
+    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

@@ -229,14 +229,14 @@ export const DefibrillatorCapacitorDiagram = () => {
               // Path: top plate (380,120) → up (380,100) → left (100,100) → down (100,160) → through battery → out at (100,240) → right (100,300) → up (420,300) → up to bottom plate (420,200)
               // Approximate as simple traversal animation
               return (
-                <g key={`charge-e-${i}`}>
+                    <g key={`charge-e-${i}`}>
                   <circle r="4" fill="hsl(45 85% 50%)" stroke="hsl(var(--foreground))" strokeWidth="0.5">
                     <animateMotion dur="2.4s" repeatCount="indefinite" begin={`-${offset * 2.4}s`}>
                       <mpath href="#chargePath" />
                     </animateMotion>
                   </circle>
                 </g>
-              );
+  );
             })}
 
           {/* Define electron path for charging (loop) */}
