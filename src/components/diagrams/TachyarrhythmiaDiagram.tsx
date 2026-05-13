@@ -578,7 +578,7 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
   }
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label={`Rhythm strip for ${tachy.label}`}>
+    <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="w-full min-h-[120px] sm:min-h-[140px]" role="img" aria-label={`Rhythm strip for ${tachy.label}`}>
       <defs>
         <pattern id={`tachy-grid-${uid}`} width="10" height="10" patternUnits="userSpaceOnUse">
           <path d="M 10 0 L 0 0 0 10" fill="none" stroke={color} strokeOpacity="0.18" strokeWidth="0.4" />

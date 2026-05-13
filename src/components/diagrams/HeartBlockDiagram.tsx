@@ -284,7 +284,7 @@ const RhythmStrip = ({ block, color }: { block: BlockInfo; color: string }) => {
   }
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label={`Rhythm strip for ${block.label}`}>
+    <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="w-full min-h-[120px] sm:min-h-[140px]" role="img" aria-label={`Rhythm strip for ${block.label}`}>
       <defs>
         <pattern id={`rs-grid-${block.shortLabel}`} width="10" height="10" patternUnits="userSpaceOnUse">
           <path d="M 10 0 L 0 0 0 10" fill="none" stroke={color} strokeOpacity="0.18" strokeWidth="0.4" />
