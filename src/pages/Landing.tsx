@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
 import { SupportSection } from "@/components/SupportSection";
@@ -105,6 +106,10 @@ const choices: LandingChoiceExt[] = [
 const Landing = () => {
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-background flex flex-col">
+      <Helmet>
+        <link rel="canonical" href="https://anaesthesiacore.app/" />
+        <meta property="og:url" content="https://anaesthesiacore.app/" />
+      </Helmet>
       <section className="relative overflow-hidden">
         <div
           className="absolute inset-0"

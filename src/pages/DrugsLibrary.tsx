@@ -117,7 +117,7 @@ export default function DrugsLibrary() {
         <title>Drug Formulary — anaesthesia & critical care | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Searchable formulary of anaesthesia and critical care drugs. Monographs cover presentation, mechanism, pharmacokinetics, preparation, dosing, monitoring and side effects."
+          content="Searchable formulary of anaesthesia and critical care drugs — presentation, mechanism, pharmacokinetics, dosing and monitoring."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/drugs" />
         <meta property="og:title" content="Drug Formulary — anaesthesia & critical care" />

@@ -663,11 +663,29 @@ const VivaQuestionLibrary = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {faqJsonLd && (
-        <Helmet>
+      <Helmet>
+        <title>Viva Question Library – AnaesthesiaCore</title>
+        <meta
+          name="description"
+          content="Browse and filter FRCA & FFICM viva questions by section, exam and topic — practise structured answers with model responses and curriculum mapping."
+        />
+        <link rel="canonical" href="https://anaesthesiacore.app/viva/library" />
+        <meta property="og:title" content="Viva Question Library – AnaesthesiaCore" />
+        <meta
+          property="og:description"
+          content="Filterable bank of FRCA & FFICM viva questions with model answers and curriculum mapping."
+        />
+        <meta property="og:url" content="https://anaesthesiacore.app/viva/library" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:title" content="Viva Question Library – AnaesthesiaCore" />
+        <meta
+          name="twitter:description"
+          content="Filterable bank of FRCA & FFICM viva questions with model answers and curriculum mapping."
+        />
+        {faqJsonLd && (
           <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
-        </Helmet>
-      )}
+        )}
+      </Helmet>
       <div className="container mx-auto px-4 py-8 max-w-5xl">
         <Link
           to="/viva"

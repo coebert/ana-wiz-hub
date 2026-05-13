@@ -749,10 +749,13 @@ export default function DrugDetail() {
   );
 
   const canonicalUrl = `https://anaesthesiacore.app/drugs/${drug.slug}`;
-  const metaDescription = (
+  const rawMetaDescription = (
     drug.indication_oneliner ||
     `${drug.name} (${drug.drug_class}) monograph: presentation, mechanism, pharmacokinetics, dosing, monitoring and side effects.`
-  ).slice(0, 300);
+  );
+  const metaDescription = rawMetaDescription.length > 160
+    ? `${rawMetaDescription.slice(0, 157).trimEnd()}…`
+    : rawMetaDescription;
   const drugJsonLd = {
     "@context": "https://schema.org",
     "@type": "Drug",
