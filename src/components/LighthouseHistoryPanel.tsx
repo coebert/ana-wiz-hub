@@ -94,24 +94,22 @@ export default function LighthouseHistoryPanel() {
   });
 
   const [reportUrls, setReportUrls] = useState<Record<string, string>>({});
+  const [seedStrategy, setSeedStrategy] = useState<"mobile" | "desktop">("mobile");
 
   const seedRun = useMutation({
-    mutationFn: async () => {
-      const target =
-        typeof window !== "undefined" && window.location.origin.includes("anaesthesiacore.app")
-          ? "https://anaesthesiacore.app/"
-          : "https://anaesthesiacore.app/";
+    mutationFn: async (strategy: "mobile" | "desktop") => {
+      const target = "https://anaesthesiacore.app/";
       const { data, error } = await supabase.functions.invoke("seed-lighthouse-run", {
-        body: { url: target, strategy: "desktop" },
+        body: { url: target, strategy },
       });
       if (error) throw error;
       if ((data as { error?: string })?.error) throw new Error((data as { error: string }).error);
-      return data as { ok: true; scores: Record<string, number> };
+      return data as { ok: true; scores: Record<string, number>; strategy?: string };
     },
-    onSuccess: (res) => {
+    onSuccess: (res, strategy) => {
       const s = res.scores;
       toast({
-        title: "Lighthouse run seeded",
+        title: `Lighthouse ${strategy} run seeded`,
         description: `Perf ${s.performance} · A11y ${s.accessibility} · BP ${s.best_practices} · SEO ${s.seo}`,
       });
       qc.invalidateQueries({ queryKey: ["lighthouse-runs"] });
