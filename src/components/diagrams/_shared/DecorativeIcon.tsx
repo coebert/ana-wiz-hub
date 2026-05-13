@@ -88,7 +88,10 @@ export const DecorativeIcon: React.FC<DecorativeIconProps> = ({
     <Icon
       className={cn(iconClassName ?? "w-3.5 h-3.5", badge === "none" ? className : undefined)}
       strokeWidth={strokeWidth}
-      {...a11yProps}
+      aria-hidden
+      role="presentation"
+      focusable={false}
+      tabIndex={-1}
       {...iconProps}
     />
   );
