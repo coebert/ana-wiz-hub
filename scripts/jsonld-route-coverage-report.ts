@@ -707,7 +707,17 @@ writeFileSync(OUT_JSON, JSON.stringify({
     missingTypes: failingTypes.length,
     badBlocks: failingBlocks.length,
     unresolved: unresolved.length,
+    regressions: DIFF?.regressions.length ?? 0,
+    fixes: DIFF?.fixes.length ?? 0,
+    addedUrls: DIFF?.added.length ?? 0,
+    removedUrls: DIFF?.removed.length ?? 0,
   },
+  baseline: DIFF ? {
+    path: BASELINE_PATH,
+    generatedAt: BASELINE_META?.generatedAt ?? null,
+    rowCount: BASELINE_META?.rowCount ?? 0,
+  } : null,
+  diff: DIFF,
   rows: ROWS,
 }, null, 2), "utf8");
 
@@ -718,9 +728,15 @@ console.log(`  ✅ passing:            ${passing.length}`);
 console.log(`  ❌ missing @type:      ${failingTypes.length}`);
 console.log(`  ❌ bad blocks:         ${failingBlocks.length}`);
 console.log(`  ⚠️  unresolved routes: ${unresolved.length}`);
+if (DIFF) {
+  console.log(`  🔻 regressions:        ${DIFF.regressions.length}`);
+  console.log(`  🟢 fixes:              ${DIFF.fixes.length}`);
+  console.log(`  ➕ added urls:         ${DIFF.added.length}`);
+  console.log(`  ➖ removed urls:       ${DIFF.removed.length}`);
+}
 console.log(`Wrote ${rel(OUT_MD)}, ${rel(OUT_HTML)}, ${rel(OUT_JSON)}`);
 
 const STRICT = process.env.JSONLD_COVERAGE_STRICT === "1";
-if (STRICT && (failingTypes.length || failingBlocks.length || unresolved.length)) {
+if (STRICT && (failingTypes.length || failingBlocks.length || unresolved.length || (DIFF && DIFF.regressions.length))) {
   process.exitCode = 1;
 }
