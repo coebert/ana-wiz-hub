@@ -170,7 +170,7 @@ export const MajorIncidentTriageDiagram = () => {
             ].map((row, i) => {
               const active = phase === 1 && sieveStep === i;
               return (
-                <g key={i}>
+                <g key={i} {...svgNodeProps(`Sieve decision ${i + 1}: ${row.q} — yes ${row.yes}, no ${row.no}`)}>
                   <rect
                     x="300"
                     y={row.y}
