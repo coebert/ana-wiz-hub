@@ -486,6 +486,7 @@ let html = `<!DOCTYPE html>
   <tr><td><span class="fail">Bad / incomplete blocks</span></td><td>${failingBlocks.length}</td></tr>
   <tr><td><span class="warn">Unresolved route</span></td><td>${unresolved.length}</td></tr>
 </table>
+${FILTER_DESCRIPTION ? `<p><strong>Filtered view</strong> — ${esc(FILTER_DESCRIPTION)} (${ROWS.length} of ${ALL_ROWS.length} URLs)</p>` : ""}
 <p>Sitewide @types inherited from <code>index.html</code>: ${[...SITEWIDE].map((t) => `<code>${esc(t)}</code>`).join(", ")}.</p>
 `;
 for (const k of groupOrder) {
