@@ -49,7 +49,7 @@ const BADGE_CLASSES: Record<Exclude<DecorativeIconBadge, "none">, string> = {
     "bg-[hsl(var(--physiology)/0.15)] text-[hsl(var(--physiology))] ring-1 ring-[hsl(var(--physiology)/0.3)]",
 };
 
-type IconLike = React.ComponentType<React.SVGProps<SVGSVGElement> & { strokeWidth?: number; size?: number | string }>;
+type IconLike = React.ComponentType<React.SVGProps<SVGSVGElement> & { strokeWidth?: number | string; size?: number | string }>;
 
 export interface DecorativeIconProps {
   /** The icon component to render (e.g. lucide `AlertTriangle`). */
