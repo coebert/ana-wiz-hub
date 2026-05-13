@@ -43,8 +43,9 @@ export const SectionLayout = ({
   const location = useLocation();
   const canonicalUrl = `${SITE_URL}${location.pathname}`;
   const pageTitle = `${title} – ${SITE_NAME}`;
+  const rawDescription = `${title} — ${subtitle}`;
   const truncatedDescription =
-    subtitle.length > 200 ? `${subtitle.slice(0, 197).trimEnd()}…` : subtitle;
+    rawDescription.length > 200 ? `${rawDescription.slice(0, 197).trimEnd()}…` : rawDescription;
 
   // Build BreadcrumbList JSON-LD from the current path. Segment 1 is the
   // section (e.g. /physics), segment 2 is the topic — we use the page's
