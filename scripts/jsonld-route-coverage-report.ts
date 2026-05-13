@@ -93,6 +93,8 @@ Env:
 const OUT_MD = arg("--out", "/mnt/documents/jsonld-route-coverage.md");
 const OUT_HTML = OUT_MD.replace(/\.md$/i, ".html");
 const OUT_JSON = OUT_MD.replace(/\.md$/i, ".json");
+const OUT_DIFF_JSON = OUT_MD.replace(/\.md$/i, ".diff.json");
+const OUT_DIFF_CSV = OUT_MD.replace(/\.md$/i, ".diff.csv");
 
 const KIND_FILTER = new Set<Kind>();
 for (const k of argAll("--kind")) {
@@ -737,6 +739,66 @@ writeFileSync(OUT_JSON, JSON.stringify({
   rows: ROWS,
 }, null, 2), "utf8");
 
+// ── diff exports (CSV + JSON) ─────────────────────────────────────────────
+if (DIFF) {
+  const diffJson = {
+    generatedAt: new Date().toISOString(),
+    baseline: { path: BASELINE_PATH, generatedAt: BASELINE_META?.generatedAt ?? null },
+    regressions: DIFF.regressions,
+    fixes: DIFF.fixes,
+    changed: DIFF.changedSameStatus,
+    added: DIFF.added.map((r) => ({ url: r.url, kind: r.kind, status: rowStatus(r) })),
+    removed: DIFF.removed,
+  };
+  writeFileSync(OUT_DIFF_JSON, JSON.stringify(diffJson, null, 2), "utf8");
+
+  const csvLines: string[] = [
+    "url,kind,category,before,after,newMissingTypes,fixedMissingTypes,newBadBlocksCount,newBadBlocks,fixedBadBlocksCount,fixedBadBlocks",
+  ];
+  const escCsv = (s: string) => `"${s.replace(/"/g, '""')}"`;
+  const rowCsv = (
+    url: string,
+    kind: string,
+    category: string,
+    before: string,
+    after: string,
+    newMissing: string[],
+    fixedMissing: string[],
+    newBad: Row["badBlocks"],
+    fixedBad: Row["badBlocks"],
+  ) => {
+    csvLines.push([
+      escCsv(url),
+      escCsv(kind),
+      escCsv(category),
+      escCsv(before),
+      escCsv(after),
+      escCsv(newMissing.join("; ")),
+      escCsv(fixedMissing.join("; ")),
+      String(newBad.length),
+      escCsv(newBad.map((b) => `${b.file}:${b.line}(${b.type ?? "?"})`).join("; ")),
+      String(fixedBad.length),
+      escCsv(fixedBad.map((b) => `${b.file}:${b.line}(${b.type ?? "?"})`).join("; ")),
+    ].join(","));
+  };
+  for (const e of DIFF.regressions) {
+    rowCsv(e.url, e.kind, "regression", e.before, e.after, e.newMissingTypes, e.fixedMissingTypes, e.newBadBlocks, e.fixedBadBlocks);
+  }
+  for (const e of DIFF.fixes) {
+    rowCsv(e.url, e.kind, "fix", e.before, e.after, e.newMissingTypes, e.fixedMissingTypes, e.newBadBlocks, e.fixedBadBlocks);
+  }
+  for (const e of DIFF.changedSameStatus) {
+    rowCsv(e.url, e.kind, "changed", e.before, e.after, e.newMissingTypes, e.fixedMissingTypes, e.newBadBlocks, e.fixedBadBlocks);
+  }
+  for (const r of DIFF.added) {
+    rowCsv(r.url, r.kind, "added", "", rowStatus(r), [], [], [], []);
+  }
+  for (const r of DIFF.removed) {
+    rowCsv(r.url, r.kind ?? "", "removed", rowStatus({ missingTypes: r.missingTypes ?? [], badBlocks: r.badBlocks ?? [], routePath: r.routePath ?? "x" }), "", [], [], [], []);
+  }
+  writeFileSync(OUT_DIFF_CSV, csvLines.join("\n") + "\n", "utf8");
+}
+
 // ── console summary ───────────────────────────────────────────────────────
 console.log(`JSON-LD route-to-URL coverage:`);
 console.log(`  URLs evaluated:        ${total}`);
@@ -750,7 +812,9 @@ if (DIFF) {
   console.log(`  ➕ added urls:         ${DIFF.added.length}`);
   console.log(`  ➖ removed urls:       ${DIFF.removed.length}`);
 }
-console.log(`Wrote ${rel(OUT_MD)}, ${rel(OUT_HTML)}, ${rel(OUT_JSON)}`);
+const wroteFiles = [rel(OUT_MD), rel(OUT_HTML), rel(OUT_JSON)];
+if (DIFF) { wroteFiles.push(rel(OUT_DIFF_JSON), rel(OUT_DIFF_CSV)); }
+console.log(`Wrote ${wroteFiles.join(", ")}`);
 
 const STRICT = process.env.JSONLD_COVERAGE_STRICT === "1";
 if (STRICT && (failingTypes.length || failingBlocks.length || unresolved.length || (DIFF && DIFF.regressions.length))) {
