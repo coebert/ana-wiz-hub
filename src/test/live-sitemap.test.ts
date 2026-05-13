@@ -37,12 +37,11 @@ describeOrSkip("live sitemap & robots.txt", () => {
   ): Promise<Response> {
     let lastError: unknown;
     for (let attempt = 0; attempt <= retries; attempt++) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 10_000);
       try {
-        const res = await fetch(url, {
-          signal: AbortSignal.timeout(10_000),
-        });
-        // Retry on transient server errors / rate limits
-        if (res.status >= 500 || res.status === 429) {
+        const res = await fetch(url, { signal: controller.signal });
+        clearTimeout(timer);
           lastError = new Error(`${url} -> HTTP ${res.status}`);
         } else {
           return res;
