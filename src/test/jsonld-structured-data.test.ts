@@ -169,7 +169,7 @@ function loadSourceBlocks(): JsonLdBlock[] {
       payload = payload
         .replace(/\$\{[^}]*\}/g, '"__INTERPOLATED__"')
         .replace(/\bas\s+const\b/g, "")
-        .replace(/\bsatisfies\s+[A-Za-z_$][\w$.<>,\s|&[\]]*/g, "")
+        .replace(/\bsatisfies\s+[A-Za-z_$][\w$.<>,\s|&[\]]*/g, "");
       // Replace function calls (innermost-first) with a sentinel so e.g.
       // crumbs.map((c, i) => ({...})) doesn't break the parser.
       const callRe = /[A-Za-z_$][\w$.]*\s*\([^()]*\)/g;
