@@ -116,24 +116,12 @@ function classify(name) {
  * Uses a parenthesis-balanced scan from the `return (` opening paren.
  * Returns null if no safe match.
  */
-function findLastReturnBlock(src) {
-  const re = /\n\s{2,}return\s*\(\s*\n/g;
-  let lastMatch = null;
-  let m;
-  while ((m = re.exec(src)) !== null) lastMatch = m;
-  if (!lastMatch) return null;
-
-  // Position of the `(` after `return`
-  const openParenIdx = src.indexOf("(", lastMatch.index);
-  if (openParenIdx === -1) return null;
-
+function balancedParenEnd(src, openParenIdx) {
   let depth = 0;
-  let i = openParenIdx;
-  let inStr = null; // ', ", `
+  let inStr = null;
   let inLineComment = false;
   let inBlockComment = false;
-
-  for (; i < src.length; i++) {
+  for (let i = openParenIdx; i < src.length; i++) {
     const c = src[i];
     const next = src[i + 1];
     if (inLineComment) { if (c === "\n") inLineComment = false; continue; }
@@ -149,18 +137,51 @@ function findLastReturnBlock(src) {
     if (c === "(") depth++;
     else if (c === ")") {
       depth--;
-      if (depth === 0) {
-        // Inner is between openParenIdx+1 and i, trim leading \n and trailing whitespace
-        const innerRaw = src.slice(openParenIdx + 1, i);
-        return {
-          openParenIdx,
-          closeParenIdx: i,
-          innerRaw,
-        };
-      }
+      if (depth === 0) return i;
     }
   }
-  return null;
+  return -1;
+}
+
+/**
+ * Find the LAST top-level component return block. Two patterns:
+ *
+ *   1. Function body return:  `\n  return (\n` (exactly 2-space indent —
+ *      i.e. directly inside a top-level component function).
+ *   2. Arrow component body:  `^const Name … = (…) => (\n` at column 0.
+ *
+ * Returns { openParenIdx, closeParenIdx, innerRaw, innerIndent } or null.
+ */
+function findComponentReturnBlock(src) {
+  const candidates = [];
+
+  // Pattern 1: 2-space-indented `return (`
+  const re1 = /\n {2}return \(\n/g;
+  let m;
+  while ((m = re1.exec(src)) !== null) {
+    const openParenIdx = src.indexOf("(", m.index);
+    const closeParenIdx = balancedParenEnd(src, openParenIdx);
+    if (closeParenIdx === -1) continue;
+    candidates.push({ openParenIdx, closeParenIdx, innerIndent: 4, kind: "fn" });
+  }
+
+  // Pattern 2: top-level arrow component `^const Name = (...) => (\n`
+  const re2 = /\nexport\s+(?:const|default)\s+\w+[^=]*=\s*\([^)]*\)\s*(?::\s*[^=]+)?=>\s*\(\n|\nconst\s+\w+[^=]*=\s*\([^)]*\)\s*(?::\s*[^=]+)?=>\s*\(\n/g;
+  while ((m = re2.exec(src)) !== null) {
+    // Find the `(` immediately before `\n` at end of match
+    const arrowIdx = src.indexOf("=>", m.index);
+    const openParenIdx = src.indexOf("(", arrowIdx);
+    const closeParenIdx = balancedParenEnd(src, openParenIdx);
+    if (closeParenIdx === -1) continue;
+    candidates.push({ openParenIdx, closeParenIdx, innerIndent: 2, kind: "arrow" });
+  }
+
+  if (candidates.length === 0) return null;
+  // Pick the LAST candidate by openParenIdx (typical: main exported component is last)
+  candidates.sort((a, b) => a.openParenIdx - b.openParenIdx);
+  const pick = candidates[candidates.length - 1];
+  pick.innerRaw = src.slice(pick.openParenIdx + 1, pick.closeParenIdx);
+  return pick;
 }
 
 function ensureImport(src) {
