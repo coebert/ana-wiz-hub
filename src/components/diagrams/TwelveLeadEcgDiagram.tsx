@@ -2,7 +2,6 @@ import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * 12-lead ECG schematic — fourth synced view of the coronary trio.
@@ -190,191 +189,185 @@ const TwelveLeadEcgDiagram = () => {
   const rhythmStripColor = rhythmStripStOffset > 0 ? info.color : rhythmStripStOffset < 0 ? "hsl(var(--muted-foreground))" : "hsl(var(--foreground))";
 
   return (
-    <DiagramFigure
-      id="twelve-lead-ecg-diagram"
-      title="Twelve lead ECG"
-      description="Auto-generated wrapper for the Twelve lead ECG anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 space-y-4">
-        <div className="bg-muted/30 rounded-xl border border-border p-4">
-          <DiagramToggleBar
-            title="12-lead ECG — synced view"
-            subtitle="Tap any lead to select its territory across all four diagrams. Active territory leads show ST elevation; reciprocal leads show ST depression."
-            toggles={[
-              { label: "Posterior + RV leads", active: showExtra, onChange: () => setShowExtra((s) => !s) },
-              { label: "ST labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-            ]}
+        <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="12-lead ECG — synced view"
+          subtitle="Tap any lead to select its territory across all four diagrams. Active territory leads show ST elevation; reciprocal leads show ST depression."
+          toggles={[
+            { label: "Posterior + RV leads", active: showExtra, onChange: () => setShowExtra((s) => !s) },
+            { label: "ST labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
+
+        {/* Territory chips — same UX as the other three diagrams */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {(Object.keys(territoryMeta) as Territory[]).map((t) => (
+            <button
+              key={t}
+              onClick={() => setSelected(t)}
+              aria-pressed={selected === t}
+              className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-all"
+              style={{
+                borderColor: selected === t ? territoryMeta[t].color : "hsl(var(--border))",
+                backgroundColor: selected === t ? territoryMeta[t].color : "transparent",
+                color: selected === t ? "white" : "hsl(var(--muted-foreground))",
+              }}
+            >
+              {territoryMeta[t].label}
+            </button>
+          ))}
+        </div>
+
+        {/* SVG */}
+        <svg
+          viewBox={`0 0 ${TOTAL_W} ${TOTAL_H}`}
+          className="w-full max-w-[640px] mx-auto"
+          role="img"
+          aria-label="12-lead ECG schematic with ST elevation in the selected coronary territory"
+        >
+          <defs>
+            <radialGradient id="ecg12-bg" cx="50%" cy="40%" r="70%">
+              <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.16" />
+              <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+            </radialGradient>
+            <pattern id="ecg12-grid" patternUnits="userSpaceOnUse" width="5" height="5">
+              <path d="M 5 0 L 0 0 0 5" fill="none" stroke="hsl(var(--muted-foreground))" strokeOpacity="0.1" strokeWidth="0.5" />
+            </pattern>
+            <filter id="ecg12-shadow" x="-10%" y="-10%" width="120%" height="120%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+              <feOffset dx="0" dy="1" result="off" />
+              <feComponentTransfer><feFuncA type="linear" slope="0.25" /></feComponentTransfer>
+              <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+          </defs>
+
+          <rect x="0" y="0" width={TOTAL_W} height={TOTAL_H} rx={10} fill="url(#ecg12-bg)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+          <rect x="0" y="0" width={TOTAL_W} height={TOTAL_H} rx={10} fill="url(#ecg12-grid)" pointerEvents="none" />
+
+          {/* Column headers */}
+          {showLabels && (
+            <g fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="bold" opacity="0.6">
+              <text x={gridX(0) + BOX_W / 2} y={PAD + 10} textAnchor="middle">Limb</text>
+              <text x={gridX(1) + BOX_W / 2} y={PAD + 10} textAnchor="middle">Augmented</text>
+              <text x={gridX(2) + BOX_W / 2} y={PAD + 10} textAnchor="middle">Septal/Ant</text>
+              <text x={gridX(3) + BOX_W / 2} y={PAD + 10} textAnchor="middle">Lateral</text>
+            </g>
+          )}
+
+          {/* Standard 12-lead grid */}
+          {STANDARD_LEADS.map((lead) =>
+            renderLead(lead, gridX(lead.col), gridY(lead.row))
+          )}
+
+          {/* Divider */}
+          <line
+            x1={PAD} y1={STD_H - PAD / 2}
+            x2={TOTAL_W - PAD} y2={STD_H - PAD / 2}
+            stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3"
           />
-  
-          {/* Territory chips — same UX as the other three diagrams */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {(Object.keys(territoryMeta) as Territory[]).map((t) => (
-              <button
-                key={t}
-                onClick={() => setSelected(t)}
-                aria-pressed={selected === t}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-all"
-                style={{
-                  borderColor: selected === t ? territoryMeta[t].color : "hsl(var(--border))",
-                  backgroundColor: selected === t ? territoryMeta[t].color : "transparent",
-                  color: selected === t ? "white" : "hsl(var(--muted-foreground))",
-                }}
-              >
-                {territoryMeta[t].label}
-              </button>
-            ))}
-          </div>
-  
-          {/* SVG */}
-          <svg
-            viewBox={`0 0 ${TOTAL_W} ${TOTAL_H}`}
-            className="w-full max-w-[640px] mx-auto"
-            role="img"
-            aria-label="12-lead ECG schematic with ST elevation in the selected coronary territory"
-          >
-            <defs>
-              <radialGradient id="ecg12-bg" cx="50%" cy="40%" r="70%">
-                <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.16" />
-                <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
-              </radialGradient>
-              <pattern id="ecg12-grid" patternUnits="userSpaceOnUse" width="5" height="5">
-                <path d="M 5 0 L 0 0 0 5" fill="none" stroke="hsl(var(--muted-foreground))" strokeOpacity="0.1" strokeWidth="0.5" />
-              </pattern>
-              <filter id="ecg12-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
-                <feOffset dx="0" dy="1" result="off" />
-                <feComponentTransfer><feFuncA type="linear" slope="0.25" /></feComponentTransfer>
-                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
-              </filter>
-            </defs>
-  
-            <rect x="0" y="0" width={TOTAL_W} height={TOTAL_H} rx={10} fill="url(#ecg12-bg)" stroke="hsl(var(--border))" strokeWidth="0.5" />
-            <rect x="0" y="0" width={TOTAL_W} height={TOTAL_H} rx={10} fill="url(#ecg12-grid)" pointerEvents="none" />
-  
-            {/* Column headers */}
-            {showLabels && (
-              <g fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="bold" opacity="0.6">
-                <text x={gridX(0) + BOX_W / 2} y={PAD + 10} textAnchor="middle">Limb</text>
-                <text x={gridX(1) + BOX_W / 2} y={PAD + 10} textAnchor="middle">Augmented</text>
-                <text x={gridX(2) + BOX_W / 2} y={PAD + 10} textAnchor="middle">Septal/Ant</text>
-                <text x={gridX(3) + BOX_W / 2} y={PAD + 10} textAnchor="middle">Lateral</text>
-              </g>
-            )}
-  
-            {/* Standard 12-lead grid */}
-            {STANDARD_LEADS.map((lead) =>
-              renderLead(lead, gridX(lead.col), gridY(lead.row))
-            )}
-  
-            {/* Divider */}
-            <line
-              x1={PAD} y1={STD_H - PAD / 2}
-              x2={TOTAL_W - PAD} y2={STD_H - PAD / 2}
-              stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3"
-            />
-  
-            {/* Extra leads (RV + posterior) */}
-            {showExtra && (
-              <g>
-                {showLabels && (
-                  <text x={PAD} y={STD_H + 10} fontSize="7.5" fill="hsl(var(--muted-foreground))" opacity="0.7" fontWeight="600">
-                    Additional leads (V3R / V4R for RV; V7–V9 for posterior)
-                  </text>
-                )}
-                {EXTRA_LEADS.map((lead) => {
-                  // 5 leads across — tighter boxes
-                  const w = (TOTAL_W - PAD * 2 - 4 * GAP_X) / 5;
-                  const x = PAD + lead.col * (w + GAP_X);
-                  const y = STD_H + 16;
-                  return renderLead(lead, x, y, w, EXTRA_H - 20);
-                })}
-              </g>
-            )}
-  
-            {/* Rhythm strip — long lead II */}
+
+          {/* Extra leads (RV + posterior) */}
+          {showExtra && (
             <g>
               {showLabels && (
-                <text x={PAD} y={TOTAL_H - STRIP_H - 4} fontSize="7.5" fill="hsl(var(--muted-foreground))" opacity="0.7" fontWeight="600">
-                  Rhythm strip (lead II)
+                <text x={PAD} y={STD_H + 10} fontSize="7.5" fill="hsl(var(--muted-foreground))" opacity="0.7" fontWeight="600">
+                  Additional leads (V3R / V4R for RV; V7–V9 for posterior)
                 </text>
               )}
-              <rect
-                x={PAD}
-                y={TOTAL_H - STRIP_H + 2}
-                width={TOTAL_W - PAD * 2}
-                height={STRIP_H - 14}
-                rx={4}
-                fill={rhythmStripStOffset > 0 ? withAlpha(info.color, 0.08) : "hsl(var(--background) / 0.4)"}
-                stroke={rhythmStripStOffset > 0 ? info.color : "hsl(var(--border))"}
-                strokeWidth={rhythmStripStOffset > 0 ? 1.4 : 0.6}
-              />
-              {(() => {
-                const stripY = TOTAL_H - STRIP_H + (STRIP_H - 14) / 2 + 4;
-                const stripStartX = PAD + 12;
-                const stripEndX = TOTAL_W - PAD - 12;
-                const beats = 5;
-                const beatGap = (stripEndX - stripStartX) / beats;
-                return (
-                  <>
-                    <line x1={stripStartX - 4} y1={stripY} x2={stripEndX + 4} y2={stripY} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.25" strokeWidth="0.5" />
-                    {Array.from({ length: beats }).map((_, i) => (
-                      <path
-                        key={i}
-                        d={beatPath(stripStartX + i * beatGap, stripY, rhythmStripStOffset, beatGap / 32)}
-                        fill="none"
-                        stroke={rhythmStripColor}
-                        strokeWidth={rhythmStripStOffset > 0 ? 1.5 : 1.1}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    ))}
-                    <text x={stripStartX - 6} y={stripY - (STRIP_H - 14) / 2 + 10} fontSize="8" fontWeight="bold" fill={rhythmStripColor}>II</text>
-                  </>
-                );
-              })()}
+              {EXTRA_LEADS.map((lead) => {
+                // 5 leads across — tighter boxes
+                const w = (TOTAL_W - PAD * 2 - 4 * GAP_X) / 5;
+                const x = PAD + lead.col * (w + GAP_X);
+                const y = STD_H + 16;
+                return renderLead(lead, x, y, w, EXTRA_H - 20);
+              })}
             </g>
-          </svg>
-  
-          {/* Detail panel — matches the other three diagrams */}
-          <div className="mt-4 min-h-[110px]">
-            <div
-              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-              style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
-            >
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <p className="font-semibold text-foreground text-sm">{info.label} territory</p>
-                <span
-                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                  style={{ background: withAlpha(info.color, 0.15), color: info.color }}
-                >
-                  {info.artery}
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-1">
-                {STANDARD_LEADS.concat(EXTRA_LEADS)
-                  .filter((l) => leadState(l).st > 0)
-                  .map((l) => (
-                    <span key={l.id} className="px-2 py-0.5 rounded text-[10px] font-bold text-white" style={{ backgroundColor: info.color }}>
+          )}
+
+          {/* Rhythm strip — long lead II */}
+          <g>
+            {showLabels && (
+              <text x={PAD} y={TOTAL_H - STRIP_H - 4} fontSize="7.5" fill="hsl(var(--muted-foreground))" opacity="0.7" fontWeight="600">
+                Rhythm strip (lead II)
+              </text>
+            )}
+            <rect
+              x={PAD}
+              y={TOTAL_H - STRIP_H + 2}
+              width={TOTAL_W - PAD * 2}
+              height={STRIP_H - 14}
+              rx={4}
+              fill={rhythmStripStOffset > 0 ? withAlpha(info.color, 0.08) : "hsl(var(--background) / 0.4)"}
+              stroke={rhythmStripStOffset > 0 ? info.color : "hsl(var(--border))"}
+              strokeWidth={rhythmStripStOffset > 0 ? 1.4 : 0.6}
+            />
+            {(() => {
+              const stripY = TOTAL_H - STRIP_H + (STRIP_H - 14) / 2 + 4;
+              const stripStartX = PAD + 12;
+              const stripEndX = TOTAL_W - PAD - 12;
+              const beats = 5;
+              const beatGap = (stripEndX - stripStartX) / beats;
+              return (
+                <>
+                  <line x1={stripStartX - 4} y1={stripY} x2={stripEndX + 4} y2={stripY} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.25" strokeWidth="0.5" />
+                  {Array.from({ length: beats }).map((_, i) => (
+                    <path
+                      key={i}
+                      d={beatPath(stripStartX + i * beatGap, stripY, rhythmStripStOffset, beatGap / 32)}
+                      fill="none"
+                      stroke={rhythmStripColor}
+                      strokeWidth={rhythmStripStOffset > 0 ? 1.5 : 1.1}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  ))}
+                  <text x={stripStartX - 6} y={stripY - (STRIP_H - 14) / 2 + 10} fontSize="8" fontWeight="bold" fill={rhythmStripColor}>II</text>
+                </>
+              );
+            })()}
+          </g>
+        </svg>
+
+        {/* Detail panel — matches the other three diagrams */}
+        <div className="mt-4 min-h-[110px]">
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+          >
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <p className="font-semibold text-foreground text-sm">{info.label} territory</p>
+              <span
+                className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                style={{ background: withAlpha(info.color, 0.15), color: info.color }}
+              >
+                {info.artery}
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-1">
+              {STANDARD_LEADS.concat(EXTRA_LEADS)
+                .filter((l) => leadState(l).st > 0)
+                .map((l) => (
+                  <span key={l.id} className="px-2 py-0.5 rounded text-[10px] font-bold text-white" style={{ backgroundColor: info.color }}>
+                    {l.id}
+                  </span>
+                ))}
+              {STANDARD_LEADS.filter((l) => leadState(l).st < 0).length > 0 && (
+                <>
+                  <span className="text-[10px] text-muted-foreground self-center mx-1">reciprocal ↓</span>
+                  {STANDARD_LEADS.filter((l) => leadState(l).st < 0).map((l) => (
+                    <span key={`r-${l.id}`} className="px-2 py-0.5 rounded text-[10px] font-medium bg-muted text-muted-foreground">
                       {l.id}
                     </span>
                   ))}
-                {STANDARD_LEADS.filter((l) => leadState(l).st < 0).length > 0 && (
-                  <>
-                    <span className="text-[10px] text-muted-foreground self-center mx-1">reciprocal ↓</span>
-                    {STANDARD_LEADS.filter((l) => leadState(l).st < 0).map((l) => (
-                      <span key={`r-${l.id}`} className="px-2 py-0.5 rounded text-[10px] font-medium bg-muted text-muted-foreground">
-                        {l.id}
-                      </span>
-                    ))}
-                  </>
-                )}
-              </div>
-              <p className="text-xs text-muted-foreground">{info.detail}</p>
+                </>
+              )}
             </div>
+            <p className="text-xs text-muted-foreground">{info.detail}</p>
           </div>
         </div>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

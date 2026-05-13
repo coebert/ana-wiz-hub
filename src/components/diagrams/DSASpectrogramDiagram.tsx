@@ -1,5 +1,4 @@
 import { useState, useMemo, useCallback } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Phase = "preinduction" | "induction" | "maintenance" | "emergence" | "recovery";
 
@@ -201,163 +200,157 @@ const DSASpectrogramDiagram = () => {
   }, [specData]);
 
   return (
-    <DiagramFigure
-      id="dsa-spectrogram-diagram"
-      title="DSA spectrogram"
-      description="Auto-generated wrapper for the DSA spectrogram anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="border border-border rounded-lg p-4 mb-6">
-        <h3 className="text-lg font-serif font-bold text-foreground mb-1">
-          Density Spectral Array (DSA) — Spectrogram
-        </h3>
-        <p className="text-xs text-muted-foreground mb-4">
-          Colour-coded frequency × time display showing power spectral changes through induction, maintenance, and emergence. Hover or tap a phase to see details.
-        </p>
-  
-        <div className="flex flex-col lg:flex-row gap-4 items-start">
-          <div className="flex-shrink-0 mx-auto lg:mx-0 overflow-x-auto">
-            <svg viewBox={`0 0 ${svgW} ${svgH}`} width={svgW} height={svgH}
-              className="border border-border rounded bg-[hsl(240,20%,6%)] max-w-full">
-  
-              {/* Background */}
-              <rect x={plotX} y={plotY} width={plotW} height={plotH} fill="hsl(240, 30%, 5%)" />
-  
-              {/* Spectrogram pixels */}
-              {spectrogramRects}
-  
-              {/* Phase boundaries & hover zones */}
-              {phaseBounds.map(({ phase, x1, x2 }) => {
-                const px1 = plotX + x1 * plotW;
-                const px2 = plotX + x2 * plotW;
-                const isActive = hoveredPhase === phase;
-                return (
-                  <g key={phase}>
-                    {/* Hover zone */}
+        <div className="border border-border rounded-lg p-4 mb-6">
+      <h3 className="text-lg font-serif font-bold text-foreground mb-1">
+        Density Spectral Array (DSA) — Spectrogram
+      </h3>
+      <p className="text-xs text-muted-foreground mb-4">
+        Colour-coded frequency × time display showing power spectral changes through induction, maintenance, and emergence. Hover or tap a phase to see details.
+      </p>
+
+      <div className="flex flex-col lg:flex-row gap-4 items-start">
+        <div className="flex-shrink-0 mx-auto lg:mx-0 overflow-x-auto">
+          <svg viewBox={`0 0 ${svgW} ${svgH}`} width={svgW} height={svgH}
+            className="border border-border rounded bg-[hsl(240,20%,6%)] max-w-full">
+
+            {/* Background */}
+            <rect x={plotX} y={plotY} width={plotW} height={plotH} fill="hsl(240, 30%, 5%)" />
+
+            {/* Spectrogram pixels */}
+            {spectrogramRects}
+
+            {/* Phase boundaries & hover zones */}
+            {phaseBounds.map(({ phase, x1, x2 }) => {
+              const px1 = plotX + x1 * plotW;
+              const px2 = plotX + x2 * plotW;
+              const isActive = hoveredPhase === phase;
+              return (
+                <g key={phase}>
+                  {/* Hover zone */}
+                  <rect x={px1} y={plotY} width={px2 - px1} height={plotH}
+                    fill="transparent" cursor="pointer"
+                    onMouseEnter={() => handleHover(phase)}
+                    onClick={() => handleHover(phase)} />
+                  {/* Active highlight border */}
+                  {isActive && (
                     <rect x={px1} y={plotY} width={px2 - px1} height={plotH}
-                      fill="transparent" cursor="pointer"
-                      onMouseEnter={() => handleHover(phase)}
-                      onClick={() => handleHover(phase)} />
-                    {/* Active highlight border */}
-                    {isActive && (
-                      <rect x={px1} y={plotY} width={px2 - px1} height={plotH}
-                        fill="none" stroke="hsl(var(--primary-foreground))" strokeWidth="1.5" opacity="0.6" strokeDasharray="4 3" />
-                    )}
-                    {/* Phase divider */}
-                    {x1 > 0 && (
-                      <line x1={px1} y1={plotY} x2={px1} y2={plotY + plotH}
-                        stroke="hsl(0, 0%, 60%)" strokeWidth="0.5" opacity="0.4" strokeDasharray="3 3" />
-                    )}
-                    {/* Phase label at top */}
-                    <text x={(px1 + px2) / 2} y={plotY + plotH + 14} textAnchor="middle"
-                      fontSize="6.5" fontWeight={isActive ? "700" : "400"}
-                      fill={isActive ? "hsl(var(--primary-foreground))" : "hsl(0, 0%, 70%)"} opacity={isActive ? 1 : 0.5}>
-                      {phaseInfo[phase].label.split("(")[0].trim()}
-                    </text>
-                  </g>
-                );
-              })}
-  
-              {/* Y-axis: frequency labels */}
-              {[0, 5, 10, 15, 20, 25, 30, 35, 40].map(f => (
-                <g key={f}>
-                  <text x={plotX - 4} y={plotY + plotH - f * cellH + 2} textAnchor="end"
-                    fontSize="5.5" fill="hsl(0, 0%, 65%)" opacity="0.6">{f}</text>
-                  <line x1={plotX} y1={plotY + plotH - f * cellH} x2={plotX + plotW} y2={plotY + plotH - f * cellH}
-                    stroke="hsl(0, 0%, 50%)" strokeWidth="0.5" opacity="0.15" />
+                      fill="none" stroke="hsl(var(--primary-foreground))" strokeWidth="1.5" opacity="0.6" strokeDasharray="4 3" />
+                  )}
+                  {/* Phase divider */}
+                  {x1 > 0 && (
+                    <line x1={px1} y1={plotY} x2={px1} y2={plotY + plotH}
+                      stroke="hsl(0, 0%, 60%)" strokeWidth="0.5" opacity="0.4" strokeDasharray="3 3" />
+                  )}
+                  {/* Phase label at top */}
+                  <text x={(px1 + px2) / 2} y={plotY + plotH + 14} textAnchor="middle"
+                    fontSize="6.5" fontWeight={isActive ? "700" : "400"}
+                    fill={isActive ? "hsl(var(--primary-foreground))" : "hsl(0, 0%, 70%)"} opacity={isActive ? 1 : 0.5}>
+                    {phaseInfo[phase].label.split("(")[0].trim()}
+                  </text>
                 </g>
-              ))}
-              <text x="12" y={plotY + plotH / 2} textAnchor="middle" fontSize="7" fill="hsl(0, 0%, 70%)" opacity="0.6"
-                transform={`rotate(-90, 12, ${plotY + plotH / 2})`}>
-                Frequency (Hz)
-              </text>
-  
-              {/* X-axis label */}
-              <text x={plotX + plotW / 2} y={svgH - 8} textAnchor="middle" fontSize="7" fill="hsl(0, 0%, 65%)" opacity="0.5">
-                Time →
-              </text>
-  
-              {/* Time ticks */}
-              {["0", "15", "30", "45", "60", "75", "90", "105"].map((t, i) => (
-                <text key={t} x={plotX + (i / 7) * plotW} y={plotY + plotH + 24} textAnchor="middle"
-                  fontSize="5" fill="hsl(0, 0%, 60%)" opacity="0.4">{t} min</text>
-              ))}
-  
-              {/* EEG band reference markers on right */}
-              {[
-                { label: "δ", y1: 0, y2: 4, color: "hsl(280, 60%, 55%)" },
-                { label: "θ", y1: 4, y2: 8, color: "hsl(200, 60%, 55%)" },
-                { label: "α", y1: 8, y2: 13, color: "hsl(120, 55%, 50%)" },
-                { label: "β", y1: 13, y2: 30, color: "hsl(45, 70%, 55%)" },
-                { label: "γ", y1: 30, y2: 40, color: "hsl(15, 70%, 55%)" },
-              ].map(({ label, y1, y2, color }) => {
-                const py1 = plotY + plotH - y2 * cellH;
-                const py2 = plotY + plotH - y1 * cellH;
-                return (
-                      <g key={label}>
-                    <line x1={plotX + plotW + 4} y1={py1} x2={plotX + plotW + 4} y2={py2}
-                      stroke={color} strokeWidth="3" opacity="0.5" strokeLinecap="round" />
-                    <text x={plotX + plotW + 12} y={(py1 + py2) / 2 + 2} fontSize="7" fill={color} opacity="0.7" fontWeight="600">
-                      {label}
-                    </text>
-                  </g>
-    );
-              })}
-  
-              {/* Colour bar legend */}
-              <defs>
-                <linearGradient id="dsa-colorbar" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="hsl(240, 60%, 10%)" />
-                  <stop offset="20%" stopColor="hsl(200, 65%, 30%)" />
-                  <stop offset="40%" stopColor="hsl(160, 70%, 40%)" />
-                  <stop offset="60%" stopColor="hsl(60, 75%, 50%)" />
-                  <stop offset="80%" stopColor="hsl(30, 80%, 55%)" />
-                  <stop offset="100%" stopColor="hsl(10, 85%, 65%)" />
-                </linearGradient>
-              </defs>
-              <rect x={plotX} y={svgH - 18} width="120" height="6" rx="2" fill="url(#dsa-colorbar)" />
-              <text x={plotX - 2} y={svgH - 13} fontSize="4.5" fill="hsl(0,0%,60%)" opacity="0.5" textAnchor="end">Low</text>
-              <text x={plotX + 124} y={svgH - 13} fontSize="4.5" fill="hsl(0,0%,60%)" opacity="0.5">High</text>
-              <text x={plotX + 60} y={svgH - 8} textAnchor="middle" fontSize="4.5" fill="hsl(0,0%,55%)" opacity="0.4">Power (µV²/Hz)</text>
-  
-              {/* Key features: alpha bridge visible in maintenance phase */}
-            </svg>
+              );
+            })}
+
+            {/* Y-axis: frequency labels */}
+            {[0, 5, 10, 15, 20, 25, 30, 35, 40].map(f => (
+              <g key={f}>
+                <text x={plotX - 4} y={plotY + plotH - f * cellH + 2} textAnchor="end"
+                  fontSize="5.5" fill="hsl(0, 0%, 65%)" opacity="0.6">{f}</text>
+                <line x1={plotX} y1={plotY + plotH - f * cellH} x2={plotX + plotW} y2={plotY + plotH - f * cellH}
+                  stroke="hsl(0, 0%, 50%)" strokeWidth="0.5" opacity="0.15" />
+              </g>
+            ))}
+            <text x="12" y={plotY + plotH / 2} textAnchor="middle" fontSize="7" fill="hsl(0, 0%, 70%)" opacity="0.6"
+              transform={`rotate(-90, 12, ${plotY + plotH / 2})`}>
+              Frequency (Hz)
+            </text>
+
+            {/* X-axis label */}
+            <text x={plotX + plotW / 2} y={svgH - 8} textAnchor="middle" fontSize="7" fill="hsl(0, 0%, 65%)" opacity="0.5">
+              Time →
+            </text>
+
+            {/* Time ticks */}
+            {["0", "15", "30", "45", "60", "75", "90", "105"].map((t, i) => (
+              <text key={t} x={plotX + (i / 7) * plotW} y={plotY + plotH + 24} textAnchor="middle"
+                fontSize="5" fill="hsl(0, 0%, 60%)" opacity="0.4">{t} min</text>
+            ))}
+
+            {/* EEG band reference markers on right */}
+            {[
+              { label: "δ", y1: 0, y2: 4, color: "hsl(280, 60%, 55%)" },
+              { label: "θ", y1: 4, y2: 8, color: "hsl(200, 60%, 55%)" },
+              { label: "α", y1: 8, y2: 13, color: "hsl(120, 55%, 50%)" },
+              { label: "β", y1: 13, y2: 30, color: "hsl(45, 70%, 55%)" },
+              { label: "γ", y1: 30, y2: 40, color: "hsl(15, 70%, 55%)" },
+            ].map(({ label, y1, y2, color }) => {
+              const py1 = plotY + plotH - y2 * cellH;
+              const py2 = plotY + plotH - y1 * cellH;
+              return (
+                    <g key={label}>
+                  <line x1={plotX + plotW + 4} y1={py1} x2={plotX + plotW + 4} y2={py2}
+                    stroke={color} strokeWidth="3" opacity="0.5" strokeLinecap="round" />
+                  <text x={plotX + plotW + 12} y={(py1 + py2) / 2 + 2} fontSize="7" fill={color} opacity="0.7" fontWeight="600">
+                    {label}
+                  </text>
+                </g>
+  );
+            })}
+
+            {/* Colour bar legend */}
+            <defs>
+              <linearGradient id="dsa-colorbar" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="hsl(240, 60%, 10%)" />
+                <stop offset="20%" stopColor="hsl(200, 65%, 30%)" />
+                <stop offset="40%" stopColor="hsl(160, 70%, 40%)" />
+                <stop offset="60%" stopColor="hsl(60, 75%, 50%)" />
+                <stop offset="80%" stopColor="hsl(30, 80%, 55%)" />
+                <stop offset="100%" stopColor="hsl(10, 85%, 65%)" />
+              </linearGradient>
+            </defs>
+            <rect x={plotX} y={svgH - 18} width="120" height="6" rx="2" fill="url(#dsa-colorbar)" />
+            <text x={plotX - 2} y={svgH - 13} fontSize="4.5" fill="hsl(0,0%,60%)" opacity="0.5" textAnchor="end">Low</text>
+            <text x={plotX + 124} y={svgH - 13} fontSize="4.5" fill="hsl(0,0%,60%)" opacity="0.5">High</text>
+            <text x={plotX + 60} y={svgH - 8} textAnchor="middle" fontSize="4.5" fill="hsl(0,0%,55%)" opacity="0.4">Power (µV²/Hz)</text>
+
+            {/* Key features: alpha bridge visible in maintenance phase */}
+          </svg>
+        </div>
+
+        {/* Info panel */}
+        <div className="flex-1 min-w-0 space-y-3 animate-fade-in" key={hoveredPhase}>
+          <div className="p-3 rounded-lg border border-border">
+            <p className="font-semibold text-foreground text-sm">{info.label}</p>
+            <p className="text-[10px] text-muted-foreground opacity-60 mb-1">{info.timeLabel} · BIS {info.bisRange}</p>
+            <p className="text-xs text-muted-foreground leading-relaxed">{info.description}</p>
           </div>
-  
-          {/* Info panel */}
-          <div className="flex-1 min-w-0 space-y-3 animate-fade-in" key={hoveredPhase}>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">{info.label}</p>
-              <p className="text-[10px] text-muted-foreground opacity-60 mb-1">{info.timeLabel} · BIS {info.bisRange}</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{info.description}</p>
-            </div>
-  
-            <div className="p-3 rounded-lg border border-border bg-secondary/20">
-              <div className="flex items-start gap-2">
-                <div className="shrink-0">
-                  <p className="text-[10px] text-muted-foreground font-semibold">EEG Pattern</p>
-                  <p className="text-xs text-foreground mt-0.5">{info.eegPattern}</p>
-                </div>
-              </div>
-              <div className="mt-2 pt-2 border-t border-border">
-                <p className="text-[10px] text-muted-foreground font-semibold">Dominant Band</p>
-                <p className="text-xs text-foreground mt-0.5">{info.dominantBand}</p>
+
+          <div className="p-3 rounded-lg border border-border bg-secondary/20">
+            <div className="flex items-start gap-2">
+              <div className="shrink-0">
+                <p className="text-[10px] text-muted-foreground font-semibold">EEG Pattern</p>
+                <p className="text-xs text-foreground mt-0.5">{info.eegPattern}</p>
               </div>
             </div>
-  
-            <div className="p-3 rounded-lg border border-border bg-secondary/20">
-              <p className="text-[10px] text-muted-foreground font-semibold mb-1">DSA Interpretation Tips</p>
-              <ul className="text-xs text-muted-foreground space-y-1.5 leading-relaxed">
-                <li>• <strong>Two-band pattern</strong> (delta + alpha) = adequate anaesthesia (propofol/volatile)</li>
-                <li>• <strong>Alpha band loss</strong> with only delta = excessive depth → reduce agent</li>
-                <li>• <strong>Alpha band rising / fragmenting</strong> = lightening → emergence approaching</li>
-                <li>• <strong>Broadband activation</strong> (beta/gamma) = awake or inadequate anaesthesia</li>
-                <li>• Ketamine and N₂O produce different patterns — gamma predominance, not classic alpha + delta</li>
-              </ul>
+            <div className="mt-2 pt-2 border-t border-border">
+              <p className="text-[10px] text-muted-foreground font-semibold">Dominant Band</p>
+              <p className="text-xs text-foreground mt-0.5">{info.dominantBand}</p>
             </div>
+          </div>
+
+          <div className="p-3 rounded-lg border border-border bg-secondary/20">
+            <p className="text-[10px] text-muted-foreground font-semibold mb-1">DSA Interpretation Tips</p>
+            <ul className="text-xs text-muted-foreground space-y-1.5 leading-relaxed">
+              <li>• <strong>Two-band pattern</strong> (delta + alpha) = adequate anaesthesia (propofol/volatile)</li>
+              <li>• <strong>Alpha band loss</strong> with only delta = excessive depth → reduce agent</li>
+              <li>• <strong>Alpha band rising / fragmenting</strong> = lightening → emergence approaching</li>
+              <li>• <strong>Broadband activation</strong> (beta/gamma) = awake or inadequate anaesthesia</li>
+              <li>• Ketamine and N₂O produce different patterns — gamma predominance, not classic alpha + delta</li>
+            </ul>
           </div>
         </div>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

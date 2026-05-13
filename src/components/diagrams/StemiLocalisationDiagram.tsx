@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * STEMI localisation interactive — *lead-driven* counterpart to
@@ -162,330 +161,324 @@ const StemiLocalisationDiagram = () => {
   }, [territory]);
 
   return (
-    <DiagramFigure
-      id="stemi-localisation-diagram"
-      title="STEMI localisation"
-      description="Auto-generated wrapper for the STEMI localisation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 space-y-4">
-        <div className="bg-muted/30 rounded-xl border border-border p-4">
-          <DiagramToggleBar
-            title="STEMI localisation"
-            subtitle="Click any ECG lead — the culprit artery, LV territory and reciprocal-change leads light up"
-            toggles={[
-              { label: "Grid", active: showGrid, onChange: () => setShowGrid((s) => !s) },
-              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-            ]}
-          />
-  
-          <div className="flex flex-col lg:flex-row gap-5">
-            {/* 12-lead ECG grid (interactive) */}
-            <div className="flex-1 min-w-0 mx-auto">
-              <svg
-                viewBox="0 0 340 210"
-                className="w-full max-w-[420px] mx-auto block"
-                role="img"
-                aria-label="Interactive 12-lead ECG. Click a lead to identify the culprit coronary artery."
-              >
-                <defs>
-                  <radialGradient id="stemi-bg" cx="50%" cy="50%" r="65%">
-                    <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.18" />
-                    <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.04" />
-                  </radialGradient>
-                  <pattern id="stemi-grid" patternUnits="userSpaceOnUse" width="6" height="6">
-                    <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
-                  </pattern>
-                  <filter id="stemi-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                    <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
-                    <feOffset dx="0" dy="1.2" result="off" />
-                    <feComponentTransfer><feFuncA type="linear" slope="0.3" /></feComponentTransfer>
-                    <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
-                  </filter>
-                </defs>
-  
-                <rect x="2" y="2" width="336" height="206" rx="8" fill="url(#stemi-bg)" stroke="hsl(var(--border))" strokeWidth="0.5" />
-                {showGrid && (
-                  <rect x="2" y="2" width="336" height="206" rx="8" fill="url(#stemi-grid)" pointerEvents="none" />
-                )}
-  
-                {/* Standard 12-lead boxes */}
-                {Object.entries(ecgLeadPositions).map(([lead, pos]) => {
-                  const highlighted = isLeadHighlighted(lead);
-                  const reciprocal = isLeadReciprocal(lead);
-                  const isActive = lead === activeLead;
-                  const color = highlighted ? info.color : reciprocal ? "hsl(var(--muted-foreground))" : "hsl(var(--muted-foreground))";
-                  const opacity = highlighted ? 1 : reciprocal ? 0.85 : 0.35;
-                  const clickable = lead !== "aVR";
-  
-                  return (
-                    <g
-                      key={lead}
-                      filter={highlighted ? "url(#stemi-shadow)" : undefined}
-                      style={{ cursor: clickable ? "pointer" : "not-allowed" }}
-                      onClick={() => clickable && handleLeadClick(lead)}
+        <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="STEMI localisation"
+          subtitle="Click any ECG lead — the culprit artery, LV territory and reciprocal-change leads light up"
+          toggles={[
+            { label: "Grid", active: showGrid, onChange: () => setShowGrid((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
+
+        <div className="flex flex-col lg:flex-row gap-5">
+          {/* 12-lead ECG grid (interactive) */}
+          <div className="flex-1 min-w-0 mx-auto">
+            <svg
+              viewBox="0 0 340 210"
+              className="w-full max-w-[420px] mx-auto block"
+              role="img"
+              aria-label="Interactive 12-lead ECG. Click a lead to identify the culprit coronary artery."
+            >
+              <defs>
+                <radialGradient id="stemi-bg" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.18" />
+                  <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.04" />
+                </radialGradient>
+                <pattern id="stemi-grid" patternUnits="userSpaceOnUse" width="6" height="6">
+                  <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+                </pattern>
+                <filter id="stemi-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                  <feOffset dx="0" dy="1.2" result="off" />
+                  <feComponentTransfer><feFuncA type="linear" slope="0.3" /></feComponentTransfer>
+                  <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+
+              <rect x="2" y="2" width="336" height="206" rx="8" fill="url(#stemi-bg)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+              {showGrid && (
+                <rect x="2" y="2" width="336" height="206" rx="8" fill="url(#stemi-grid)" pointerEvents="none" />
+              )}
+
+              {/* Standard 12-lead boxes */}
+              {Object.entries(ecgLeadPositions).map(([lead, pos]) => {
+                const highlighted = isLeadHighlighted(lead);
+                const reciprocal = isLeadReciprocal(lead);
+                const isActive = lead === activeLead;
+                const color = highlighted ? info.color : reciprocal ? "hsl(var(--muted-foreground))" : "hsl(var(--muted-foreground))";
+                const opacity = highlighted ? 1 : reciprocal ? 0.85 : 0.35;
+                const clickable = lead !== "aVR";
+
+                return (
+                  <g
+                    key={lead}
+                    filter={highlighted ? "url(#stemi-shadow)" : undefined}
+                    style={{ cursor: clickable ? "pointer" : "not-allowed" }}
+                    onClick={() => clickable && handleLeadClick(lead)}
+                  >
+                    <rect
+                      x={pos.x - 28} y={pos.y - 14} width="56" height="28" rx="5"
+                      fill={highlighted ? color : reciprocal ? "hsl(var(--muted-foreground))" : "hsl(var(--background))"}
+                      fillOpacity={highlighted ? 0.22 : reciprocal ? 0.08 : 0.5}
+                      stroke={isActive ? "hsl(var(--foreground))" : highlighted ? color : reciprocal ? color : "hsl(var(--border))"}
+                      strokeWidth={isActive ? 2.2 : highlighted ? 1.8 : reciprocal ? 1.2 : 0.8}
+                      strokeDasharray={reciprocal && !highlighted ? "3 2" : undefined}
+                      opacity={opacity}
+                    />
+                    <text
+                      x={pos.x} y={pos.y - 1}
+                      textAnchor="middle" dominantBaseline="middle"
+                      fontSize="10" fontWeight={highlighted || isActive ? "bold" : "normal"}
+                      fill={highlighted ? color : reciprocal ? color : "hsl(var(--foreground))"}
+                      opacity={opacity}
+                      pointerEvents="none"
                     >
-                      <rect
-                        x={pos.x - 28} y={pos.y - 14} width="56" height="28" rx="5"
-                        fill={highlighted ? color : reciprocal ? "hsl(var(--muted-foreground))" : "hsl(var(--background))"}
-                        fillOpacity={highlighted ? 0.22 : reciprocal ? 0.08 : 0.5}
-                        stroke={isActive ? "hsl(var(--foreground))" : highlighted ? color : reciprocal ? color : "hsl(var(--border))"}
-                        strokeWidth={isActive ? 2.2 : highlighted ? 1.8 : reciprocal ? 1.2 : 0.8}
-                        strokeDasharray={reciprocal && !highlighted ? "3 2" : undefined}
-                        opacity={opacity}
-                      />
-                      <text
-                        x={pos.x} y={pos.y - 1}
-                        textAnchor="middle" dominantBaseline="middle"
-                        fontSize="10" fontWeight={highlighted || isActive ? "bold" : "normal"}
-                        fill={highlighted ? color : reciprocal ? color : "hsl(var(--foreground))"}
-                        opacity={opacity}
-                        pointerEvents="none"
-                      >
-                        {lead}
-                      </text>
-                      {highlighted && (
-                        <text x={pos.x} y={pos.y + 9} textAnchor="middle" fontSize="6" fontWeight="bold" fill={color} opacity="0.9" pointerEvents="none">ST ↑</text>
-                      )}
-                      {reciprocal && (
-                        <text x={pos.x} y={pos.y + 9} textAnchor="middle" fontSize="6" fontWeight="bold" fill={color} opacity="0.7" pointerEvents="none">ST ↓</text>
-                      )}
-                    </g>
-                  );
-                })}
-  
-                {/* Extra leads row */}
-                <line x1="20" y1="168" x2="320" y2="168" stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
-                {extraLeads.map((lead, i) => {
-                  const x = 50 + i * 60;
-                  const y = 188;
-                  const highlighted = isLeadHighlighted(lead);
-                  const reciprocal = isLeadReciprocal(lead);
-                  const isActive = lead === activeLead;
-                  const color = highlighted ? info.color : reciprocal ? "hsl(var(--muted-foreground))" : "hsl(var(--muted-foreground))";
-                  const opacity = highlighted ? 1 : reciprocal ? 0.8 : 0.4;
-  
-                  return (
-                    <g
-                      key={lead}
-                      filter={highlighted ? "url(#stemi-shadow)" : undefined}
-                      style={{ cursor: "pointer" }}
-                      onClick={() => handleLeadClick(lead)}
+                      {lead}
+                    </text>
+                    {highlighted && (
+                      <text x={pos.x} y={pos.y + 9} textAnchor="middle" fontSize="6" fontWeight="bold" fill={color} opacity="0.9" pointerEvents="none">ST ↑</text>
+                    )}
+                    {reciprocal && (
+                      <text x={pos.x} y={pos.y + 9} textAnchor="middle" fontSize="6" fontWeight="bold" fill={color} opacity="0.7" pointerEvents="none">ST ↓</text>
+                    )}
+                  </g>
+                );
+              })}
+
+              {/* Extra leads row */}
+              <line x1="20" y1="168" x2="320" y2="168" stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
+              {extraLeads.map((lead, i) => {
+                const x = 50 + i * 60;
+                const y = 188;
+                const highlighted = isLeadHighlighted(lead);
+                const reciprocal = isLeadReciprocal(lead);
+                const isActive = lead === activeLead;
+                const color = highlighted ? info.color : reciprocal ? "hsl(var(--muted-foreground))" : "hsl(var(--muted-foreground))";
+                const opacity = highlighted ? 1 : reciprocal ? 0.8 : 0.4;
+
+                return (
+                  <g
+                    key={lead}
+                    filter={highlighted ? "url(#stemi-shadow)" : undefined}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleLeadClick(lead)}
+                  >
+                    <rect
+                      x={x - 24} y={y - 11} width="48" height="22" rx="4"
+                      fill={highlighted ? color : "hsl(var(--background))"}
+                      fillOpacity={highlighted ? 0.18 : 0.5}
+                      stroke={isActive ? "hsl(var(--foreground))" : highlighted ? color : "hsl(var(--border))"}
+                      strokeWidth={isActive ? 2 : highlighted ? 1.6 : 0.6}
+                      strokeDasharray={highlighted ? undefined : "3 2"}
+                      opacity={opacity}
+                    />
+                    <text
+                      x={x} y={y} textAnchor="middle" dominantBaseline="middle"
+                      fontSize="8" fontWeight={highlighted || isActive ? "bold" : "normal"}
+                      fill={highlighted ? color : "hsl(var(--foreground))"}
+                      opacity={opacity}
+                      pointerEvents="none"
                     >
-                      <rect
-                        x={x - 24} y={y - 11} width="48" height="22" rx="4"
-                        fill={highlighted ? color : "hsl(var(--background))"}
-                        fillOpacity={highlighted ? 0.18 : 0.5}
-                        stroke={isActive ? "hsl(var(--foreground))" : highlighted ? color : "hsl(var(--border))"}
-                        strokeWidth={isActive ? 2 : highlighted ? 1.6 : 0.6}
-                        strokeDasharray={highlighted ? undefined : "3 2"}
-                        opacity={opacity}
-                      />
-                      <text
-                        x={x} y={y} textAnchor="middle" dominantBaseline="middle"
-                        fontSize="8" fontWeight={highlighted || isActive ? "bold" : "normal"}
-                        fill={highlighted ? color : "hsl(var(--foreground))"}
-                        opacity={opacity}
-                        pointerEvents="none"
-                      >
-                        {lead}
-                      </text>
-                    </g>
-                  );
-                })}
-                {showLabels && (
-                  <text x="170" y="172" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.5">
-                    Additional leads — V3R/V4R for RV, V7–V9 for posterior
-                  </text>
-                )}
-              </svg>
-            </div>
-  
-            {/* Coronary tree schematic */}
-            <div className="flex-shrink-0 mx-auto">
-              <svg
-                viewBox="0 0 200 220"
-                className="w-full max-w-[200px]"
-                role="img"
-                aria-label="Schematic coronary tree highlighting the culprit artery"
-              >
-                <defs>
-                  <radialGradient id="stemi-heart-bg" cx="50%" cy="55%" r="60%">
-                    <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.15" />
-                    <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.02" />
-                  </radialGradient>
-                </defs>
-  
-                {/* Heart silhouette */}
-                <path
-                  d="M 100 25 Q 50 25 35 75 Q 25 130 60 175 Q 90 205 100 205 Q 110 205 140 175 Q 175 130 165 75 Q 150 25 100 25 Z"
-                  fill="url(#stemi-heart-bg)"
-                  stroke="hsl(var(--border))"
-                  strokeWidth="0.75"
-                />
-  
-                {/* Aorta stub */}
-                <path d="M 95 12 L 95 28 L 105 28 L 105 12 Z" fill="hsl(var(--muted-foreground))" opacity="0.3" />
-                {showLabels && (
-                  <text x="115" y="20" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.6">Aorta</text>
-                )}
-  
-                {/* Left main bifurcation point marker */}
-                <circle cx="100" cy="30" r="2.5" fill="hsl(var(--muted-foreground))" opacity="0.5" />
-  
-                {/* Arteries */}
-                {arteries.map((a) => (
-                  <g key={a.id}>
+                      {lead}
+                    </text>
+                  </g>
+                );
+              })}
+              {showLabels && (
+                <text x="170" y="172" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.5">
+                  Additional leads — V3R/V4R for RV, V7–V9 for posterior
+                </text>
+              )}
+            </svg>
+          </div>
+
+          {/* Coronary tree schematic */}
+          <div className="flex-shrink-0 mx-auto">
+            <svg
+              viewBox="0 0 200 220"
+              className="w-full max-w-[200px]"
+              role="img"
+              aria-label="Schematic coronary tree highlighting the culprit artery"
+            >
+              <defs>
+                <radialGradient id="stemi-heart-bg" cx="50%" cy="55%" r="60%">
+                  <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.15" />
+                  <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.02" />
+                </radialGradient>
+              </defs>
+
+              {/* Heart silhouette */}
+              <path
+                d="M 100 25 Q 50 25 35 75 Q 25 130 60 175 Q 90 205 100 205 Q 110 205 140 175 Q 175 130 165 75 Q 150 25 100 25 Z"
+                fill="url(#stemi-heart-bg)"
+                stroke="hsl(var(--border))"
+                strokeWidth="0.75"
+              />
+
+              {/* Aorta stub */}
+              <path d="M 95 12 L 95 28 L 105 28 L 105 12 Z" fill="hsl(var(--muted-foreground))" opacity="0.3" />
+              {showLabels && (
+                <text x="115" y="20" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.6">Aorta</text>
+              )}
+
+              {/* Left main bifurcation point marker */}
+              <circle cx="100" cy="30" r="2.5" fill="hsl(var(--muted-foreground))" opacity="0.5" />
+
+              {/* Arteries */}
+              {arteries.map((a) => (
+                <g key={a.id}>
+                  <path
+                    d={a.path}
+                    fill="none"
+                    stroke={a.active ? a.color : "hsl(var(--muted-foreground))"}
+                    strokeWidth={a.active ? 3.5 : 1.5}
+                    strokeOpacity={a.active ? 1 : 0.35}
+                    strokeLinecap="round"
+                    style={{ transition: "all 0.3s ease" }}
+                  />
+                  {a.active && (
                     <path
                       d={a.path}
                       fill="none"
-                      stroke={a.active ? a.color : "hsl(var(--muted-foreground))"}
-                      strokeWidth={a.active ? 3.5 : 1.5}
-                      strokeOpacity={a.active ? 1 : 0.35}
+                      stroke={a.color}
+                      strokeWidth="3"
+                      strokeOpacity="0.18"
                       strokeLinecap="round"
-                      style={{ transition: "all 0.3s ease" }}
                     />
-                    {a.active && (
-                      <path
-                        d={a.path}
-                        fill="none"
-                        stroke={a.color}
-                        strokeWidth="3"
-                        strokeOpacity="0.18"
-                        strokeLinecap="round"
-                      />
-                    )}
-                    {showLabels && (
-                      <text
-                        x={a.labelPos.x}
-                        y={a.labelPos.y}
-                        fontSize="9"
-                        fontWeight={a.active ? "bold" : "normal"}
-                        fill={a.active ? a.color : "hsl(var(--muted-foreground))"}
-                        opacity={a.active ? 1 : 0.5}
-                        textAnchor="middle"
-                      >
-                        {a.label}
-                      </text>
-                    )}
+                  )}
+                  {showLabels && (
+                    <text
+                      x={a.labelPos.x}
+                      y={a.labelPos.y}
+                      fontSize="9"
+                      fontWeight={a.active ? "bold" : "normal"}
+                      fill={a.active ? a.color : "hsl(var(--muted-foreground))"}
+                      opacity={a.active ? 1 : 0.5}
+                      textAnchor="middle"
+                    >
+                      {a.label}
+                    </text>
+                  )}
+                </g>
+              ))}
+
+              {/* PDA branch — only shown for inferior/posterior/rv */}
+              {["inferior", "posterior", "rv"].includes(territory) && (
+                <>
+                  <path
+                    d="M 60 185 Q 80 195 100 195"
+                    fill="none"
+                    stroke={territories.inferior.color}
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    opacity="0.9"
+                  />
+                  {showLabels && (
+                    <text x="100" y="215" fontSize="7" fill={territories.inferior.color} textAnchor="middle" fontWeight="bold">PDA</text>
+                  )}
+                </>
+              )}
+
+              {/* RV branch marker for RV territory */}
+              {territory === "rv" && (
+                <circle cx="55" cy="105" r="6" fill="none" stroke={territories.rv.color} strokeWidth="2" strokeDasharray="2 1.5">
+                  <animate attributeName="r" values="6;9;6" dur="1.6s" repeatCount="indefinite" />
+                </circle>
+              )}
+
+              {/* Occlusion marker on active artery */}
+              {territory && (() => {
+                const t = territory;
+                const marker =
+                  t === "anterior" ? { x: 92, y: 95 } :
+                  t === "septal" ? { x: 95, y: 75 } :
+                  t === "lateral" ? { x: 145, y: 100 } :
+                  t === "inferior" ? { x: 52, y: 130 } :
+                  t === "posterior" ? { x: 58, y: 165 } :
+                  t === "rv" ? { x: 55, y: 105 } : null;
+                if (!marker) return null;
+                return (
+                      <g>
+                    <circle cx={marker.x} cy={marker.y} r="5" fill={info.color} stroke="hsl(var(--background))" strokeWidth="1.5" />
+                    <text x={marker.x} y={marker.y + 1.5} fontSize="7" fontWeight="bold" fill="hsl(var(--background))" textAnchor="middle" dominantBaseline="middle">×</text>
                   </g>
-                ))}
-  
-                {/* PDA branch — only shown for inferior/posterior/rv */}
-                {["inferior", "posterior", "rv"].includes(territory) && (
-                  <>
-                    <path
-                      d="M 60 185 Q 80 195 100 195"
-                      fill="none"
-                      stroke={territories.inferior.color}
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      opacity="0.9"
-                    />
-                    {showLabels && (
-                      <text x="100" y="215" fontSize="7" fill={territories.inferior.color} textAnchor="middle" fontWeight="bold">PDA</text>
-                    )}
-                  </>
-                )}
-  
-                {/* RV branch marker for RV territory */}
-                {territory === "rv" && (
-                  <circle cx="55" cy="105" r="6" fill="none" stroke={territories.rv.color} strokeWidth="2" strokeDasharray="2 1.5">
-                    <animate attributeName="r" values="6;9;6" dur="1.6s" repeatCount="indefinite" />
-                  </circle>
-                )}
-  
-                {/* Occlusion marker on active artery */}
-                {territory && (() => {
-                  const t = territory;
-                  const marker =
-                    t === "anterior" ? { x: 92, y: 95 } :
-                    t === "septal" ? { x: 95, y: 75 } :
-                    t === "lateral" ? { x: 145, y: 100 } :
-                    t === "inferior" ? { x: 52, y: 130 } :
-                    t === "posterior" ? { x: 58, y: 165 } :
-                    t === "rv" ? { x: 55, y: 105 } : null;
-                  if (!marker) return null;
-                  return (
-                        <g>
-                      <circle cx={marker.x} cy={marker.y} r="5" fill={info.color} stroke="hsl(var(--background))" strokeWidth="1.5" />
-                      <text x={marker.x} y={marker.y + 1.5} fontSize="7" fontWeight="bold" fill="hsl(var(--background))" textAnchor="middle" dominantBaseline="middle">×</text>
-                    </g>
-    );
-                })()}
-              </svg>
-            </div>
+  );
+              })()}
+            </svg>
           </div>
-  
-          {/* Detail panel */}
-          <div
-            className="mt-4 p-3 rounded-lg border border-border bg-background/80 space-y-2"
-            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
-          >
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-              <div className="flex items-center gap-2">
-                <p className="font-semibold text-foreground text-sm">
-                  Lead <span style={{ color: info.color }}>{activeLead}</span> → {info.label} STEMI
-                </p>
-              </div>
-              <span
-                className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-md font-bold"
-                style={{ background: withAlpha(info.color, 0.15), color: info.color }}
-              >
-                Culprit: {info.arteryShort}
-              </span>
+        </div>
+
+        {/* Detail panel */}
+        <div
+          className="mt-4 p-3 rounded-lg border border-border bg-background/80 space-y-2"
+          style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+        >
+          <div className="flex items-center justify-between gap-2 flex-wrap">
+            <div className="flex items-center gap-2">
+              <p className="font-semibold text-foreground text-sm">
+                Lead <span style={{ color: info.color }}>{activeLead}</span> → {info.label} STEMI
+              </p>
             </div>
-  
-            <div className="grid sm:grid-cols-3 gap-2 pt-1">
-              <div>
-                <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">ST elevation</p>
-                <div className="flex flex-wrap gap-1">
-                  {info.leads.map((l) => (
+            <span
+              className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-md font-bold"
+              style={{ background: withAlpha(info.color, 0.15), color: info.color }}
+            >
+              Culprit: {info.arteryShort}
+            </span>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-2 pt-1">
+            <div>
+              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">ST elevation</p>
+              <div className="flex flex-wrap gap-1">
+                {info.leads.map((l) => (
+                  <span
+                    key={l}
+                    className="px-1.5 py-0.5 rounded text-[11px] font-bold text-white"
+                    style={{ backgroundColor: info.color }}
+                  >
+                    {l}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Reciprocal ↓</p>
+              <div className="flex flex-wrap gap-1">
+                {info.reciprocal.length > 0 ? (
+                  info.reciprocal.map((l) => (
                     <span
                       key={l}
-                      className="px-1.5 py-0.5 rounded text-[11px] font-bold text-white"
-                      style={{ backgroundColor: info.color }}
+                      className="px-1.5 py-0.5 rounded text-[11px] font-medium border"
+                      style={{ borderColor: info.color, color: info.color }}
                     >
                       {l}
                     </span>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Reciprocal ↓</p>
-                <div className="flex flex-wrap gap-1">
-                  {info.reciprocal.length > 0 ? (
-                    info.reciprocal.map((l) => (
-                      <span
-                        key={l}
-                        className="px-1.5 py-0.5 rounded text-[11px] font-medium border"
-                        style={{ borderColor: info.color, color: info.color }}
-                      >
-                        {l}
-                      </span>
-                    ))
-                  ) : (
-                    <span className="text-xs text-muted-foreground">—</span>
-                  )}
-                </div>
-              </div>
-              <div>
-                <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Artery</p>
-                <p className="text-xs text-foreground font-medium">{info.artery}</p>
+                  ))
+                ) : (
+                  <span className="text-xs text-muted-foreground">—</span>
+                )}
               </div>
             </div>
-  
-            <div className="pt-1 border-t border-border/50">
-              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Clinical pearl</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{info.pearl}</p>
+            <div>
+              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Artery</p>
+              <p className="text-xs text-foreground font-medium">{info.artery}</p>
             </div>
           </div>
-  
-          <p className="text-[11px] text-muted-foreground mt-2 text-center italic">
-            Tip: aVR has no single territory but ST↑ in aVR (with diffuse ST↓) suggests left main or proximal LAD occlusion / triple-vessel disease.
-          </p>
+
+          <div className="pt-1 border-t border-border/50">
+            <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Clinical pearl</p>
+            <p className="text-xs text-muted-foreground leading-relaxed">{info.pearl}</p>
+          </div>
         </div>
+
+        <p className="text-[11px] text-muted-foreground mt-2 text-center italic">
+          Tip: aVR has no single territory but ST↑ in aVR (with diffuse ST↓) suggests left main or proximal LAD occlusion / triple-vessel disease.
+        </p>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

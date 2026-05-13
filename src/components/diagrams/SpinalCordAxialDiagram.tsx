@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // =================================================================
 // Types & data
@@ -286,625 +285,619 @@ const SpinalCordAxialDiagram = () => {
   // We split white matter into wedges around the cord's outer rim (rIn=0.55 .. rOut=0.97).
 
   return (
-    <DiagramFigure
-      id="spinal-cord-axial-diagram"
-      title="Spinal cord axial"
-      description="Auto-generated wrapper for the Spinal cord axial anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 space-y-4">
-        <div className="bg-muted/30 rounded-xl border border-border p-4">
-          <DiagramToggleBar
-            title="Spinal Cord — Axial Cross-Section"
-            subtitle="Tap a structure for details. Switch cord level to see how the cord changes shape and proportion."
-            toggles={[
-              { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
-              { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
-            ]}
-          />
-  
-        {/* Level selector with size hint */}
-        <div className="flex flex-wrap gap-1.5 mb-2">
-          {(Object.keys(LEVEL_INFO) as CordLevel[]).map((lv) => {
-            const g = LEVEL_INFO[lv];
-            const size = Math.round((g.rx * g.ry) / 100);
-            const active = cordLevel === lv;
-            return (
-                  <button
-                key={lv}
-                onClick={() => setCordLevel(lv)}
-                className={`px-2.5 py-1 rounded text-[11px] font-medium border transition-all flex items-center gap-1.5 ${
-                  active ? "border-primary/60 bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
-                }`}
-              >
-                {/* Tiny inline cord-size icon scales with level */}
-                <span
-                  className="inline-block rounded-full"
-                  style={{
-                    width: `${Math.max(6, g.rx / 12)}px`,
-                    height: `${Math.max(6, g.ry / 12)}px`,
-                    background: active ? "hsl(var(--primary) / 0.4)" : "hsl(var(--muted-foreground) / 0.4)",
-                  }}
-                  aria-hidden
-                />
-                {lv.charAt(0).toUpperCase() + lv.slice(1)}
-                <span className="text-[9px] opacity-60">({size})</span>
-              </button>
-    );
-          })}
-        </div>
-        <div className="rounded-md bg-muted/40 p-2 mb-3 text-[11px] text-muted-foreground leading-snug">
-          <span className="font-semibold text-foreground">{level.label}.</span> {level.desc}{" "}
-          <span className="italic">{level.whiteToGreyRatio}.</span>
-        </div>
-  
-        {/* Syndrome overlay selector */}
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          <span className="text-[10px] text-muted-foreground self-center mr-1">Cord syndromes:</span>
-          {(Object.keys(SYNDROMES) as SyndromeKey[]).map((sk) => (
-            <button
-              key={sk}
-              onClick={() => { setSelectedSyndrome(selectedSyndrome === sk ? null : sk); setSelectedTract(null); }}
-              className={`px-2 py-0.5 rounded text-[10px] font-medium border transition-all ${
-                selectedSyndrome === sk ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
+        <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Spinal Cord — Axial Cross-Section"
+          subtitle="Tap a structure for details. Switch cord level to see how the cord changes shape and proportion."
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+          ]}
+        />
+
+      {/* Level selector with size hint */}
+      <div className="flex flex-wrap gap-1.5 mb-2">
+        {(Object.keys(LEVEL_INFO) as CordLevel[]).map((lv) => {
+          const g = LEVEL_INFO[lv];
+          const size = Math.round((g.rx * g.ry) / 100);
+          const active = cordLevel === lv;
+          return (
+                <button
+              key={lv}
+              onClick={() => setCordLevel(lv)}
+              className={`px-2.5 py-1 rounded text-[11px] font-medium border transition-all flex items-center gap-1.5 ${
+                active ? "border-primary/60 bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
               }`}
-              style={selectedSyndrome === sk ? { borderColor: SYNDROMES[sk].color, backgroundColor: withAlpha(SYNDROMES[sk].color, 0.12) } : {}}
             >
-              {SYNDROMES[sk].label.replace(" Syndrome", "").replace(" (Hemisection)", "")}
+              {/* Tiny inline cord-size icon scales with level */}
+              <span
+                className="inline-block rounded-full"
+                style={{
+                  width: `${Math.max(6, g.rx / 12)}px`,
+                  height: `${Math.max(6, g.ry / 12)}px`,
+                  background: active ? "hsl(var(--primary) / 0.4)" : "hsl(var(--muted-foreground) / 0.4)",
+                }}
+                aria-hidden
+              />
+              {lv.charAt(0).toUpperCase() + lv.slice(1)}
+              <span className="text-[9px] opacity-60">({size})</span>
             </button>
-          ))}
-        </div>
-  
-        <div className="flex flex-col lg:flex-row gap-4">
-          {/* SVG */}
-          <svg viewBox={`0 0 ${VB_W} ${VB_H}`} className="w-full max-w-md mx-auto flex-shrink-0">
-            {/* clip path = cord ellipse, ensures NOTHING escapes */}
-            <defs>
-              <clipPath id="cordClip">
-                <ellipse cx={cx} cy={cy} rx={rx} ry={ry} />
-              </clipPath>
-              <marker id="arrUp" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
-                <path d="M4 1 L7 7 L1 7 Z" fill={ASC} />
-              </marker>
-              <marker id="arrDown" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
-                <path d="M4 7 L7 1 L1 1 Z" fill={DESC} />
-              </marker>
-            </defs>
-  
-            {/* Orientation labels */}
-            <text x={cx} y={18} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight={600}>POSTERIOR</text>
-            <text x={cx} y={VB_H - 6} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight={600}>ANTERIOR</text>
-  
-            {/* Asc/Desc legend within SVG */}
-            <g transform={`translate(${VB_W - 130}, 18)`}>
-              <g>
-                <path d="M5 12 L5 2" stroke={ASC} strokeWidth={1.5} markerEnd="url(#arrUp)" />
-                <text x={14} y={11} fontSize="9" fill={ASC} fontWeight={600}>Ascending (sensory)</text>
-              </g>
-              <g transform="translate(0, 14)">
-                <path d="M5 2 L5 12" stroke={DESC} strokeWidth={1.5} markerEnd="url(#arrDown)" />
-                <text x={14} y={11} fontSize="9" fill={DESC} fontWeight={600}>Descending (motor)</text>
-              </g>
+  );
+        })}
+      </div>
+      <div className="rounded-md bg-muted/40 p-2 mb-3 text-[11px] text-muted-foreground leading-snug">
+        <span className="font-semibold text-foreground">{level.label}.</span> {level.desc}{" "}
+        <span className="italic">{level.whiteToGreyRatio}.</span>
+      </div>
+
+      {/* Syndrome overlay selector */}
+      <div className="flex flex-wrap gap-1.5 mb-3">
+        <span className="text-[10px] text-muted-foreground self-center mr-1">Cord syndromes:</span>
+        {(Object.keys(SYNDROMES) as SyndromeKey[]).map((sk) => (
+          <button
+            key={sk}
+            onClick={() => { setSelectedSyndrome(selectedSyndrome === sk ? null : sk); setSelectedTract(null); }}
+            className={`px-2 py-0.5 rounded text-[10px] font-medium border transition-all ${
+              selectedSyndrome === sk ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
+            }`}
+            style={selectedSyndrome === sk ? { borderColor: SYNDROMES[sk].color, backgroundColor: withAlpha(SYNDROMES[sk].color, 0.12) } : {}}
+          >
+            {SYNDROMES[sk].label.replace(" Syndrome", "").replace(" (Hemisection)", "")}
+          </button>
+        ))}
+      </div>
+
+      <div className="flex flex-col lg:flex-row gap-4">
+        {/* SVG */}
+        <svg viewBox={`0 0 ${VB_W} ${VB_H}`} className="w-full max-w-md mx-auto flex-shrink-0">
+          {/* clip path = cord ellipse, ensures NOTHING escapes */}
+          <defs>
+            <clipPath id="cordClip">
+              <ellipse cx={cx} cy={cy} rx={rx} ry={ry} />
+            </clipPath>
+            <marker id="arrUp" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+              <path d="M4 1 L7 7 L1 7 Z" fill={ASC} />
+            </marker>
+            <marker id="arrDown" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+              <path d="M4 7 L7 1 L1 1 Z" fill={DESC} />
+            </marker>
+          </defs>
+
+          {/* Orientation labels */}
+          <text x={cx} y={18} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight={600}>POSTERIOR</text>
+          <text x={cx} y={VB_H - 6} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight={600}>ANTERIOR</text>
+
+          {/* Asc/Desc legend within SVG */}
+          <g transform={`translate(${VB_W - 130}, 18)`}>
+            <g>
+              <path d="M5 12 L5 2" stroke={ASC} strokeWidth={1.5} markerEnd="url(#arrUp)" />
+              <text x={14} y={11} fontSize="9" fill={ASC} fontWeight={600}>Ascending (sensory)</text>
             </g>
-  
-            {/* Cord outline */}
-            <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth={2} />
-  
-            {/* Everything inside the cord is clipped to the outline */}
-            <g clipPath="url(#cordClip)">
-              {/* Anterior median fissure & posterior median sulcus */}
-              <line x1={cx} y1={cy + ry} x2={cx} y2={cy + ry * 0.2} stroke="hsl(var(--border))" strokeWidth={1.5} />
-              <line x1={cx} y1={cy - ry} x2={cx} y2={cy - ry * 0.25} stroke="hsl(var(--border))" strokeWidth={1} />
-  
-              {/* ───── WHITE MATTER WEDGES (radial) ─────
-                  Convention: inner radial 0.55, outer 0.97. */}
-  
-              {/* Dorsal columns — posterior, hugs midline (top wedges) */}
-              {[
-                [-Math.PI / 2 - 0.55, -Math.PI / 2 - 0.05],
-                [-Math.PI / 2 + 0.05, -Math.PI / 2 + 0.55],
-              ].map(([a0, a1], i) => (
-                <path
-                  key={`dc-${i}`}
-                  d={arcRing(a0, a1, 0.97, 0.45)}
-                  fill={TRACTS["dorsal-col"].color}
-                  fillOpacity={fillOp("dorsal-col")}
-                  stroke={TRACTS["dorsal-col"].color}
-                  strokeOpacity={strokeOp("dorsal-col")}
-                  strokeWidth={strokeW("dorsal-col")}
-                  className="cursor-pointer transition-all"
-                  onClick={() => select("dorsal-col")}
-                />
-              ))}
-  
-              {/* Posterior spinocerebellar — postero-lateral surface */}
-              {[
-                [-Math.PI / 2 - 1.15, -Math.PI / 2 - 0.6],
-                [-Math.PI / 2 + 0.6, -Math.PI / 2 + 1.15],
-              ].map(([a0, a1], i) => (
-                <path
-                  key={`psc-${i}`}
-                  d={arcRing(a0, a1, 0.97, 0.78)}
-                  fill={TRACTS["post-spinocerebellar"].color}
-                  fillOpacity={fillOp("post-spinocerebellar")}
-                  stroke={TRACTS["post-spinocerebellar"].color}
-                  strokeOpacity={strokeOp("post-spinocerebellar")}
-                  strokeWidth={strokeW("post-spinocerebellar")}
-                  className="cursor-pointer transition-all"
-                  onClick={() => select("post-spinocerebellar")}
-                />
-              ))}
-  
-              {/* Lateral CST — lateral funiculus, deep to surface */}
-              {[
-                [-Math.PI / 2 - 1.55, -Math.PI / 2 - 1.15],
-                [-Math.PI / 2 + 1.15, -Math.PI / 2 + 1.55],
-              ].map(([a0, a1], i) => (
-                <path
-                  key={`lcst-${i}`}
-                  d={arcRing(a0, a1, 0.78, 0.55)}
-                  fill={TRACTS["lat-cst"].color}
-                  fillOpacity={fillOp("lat-cst")}
-                  stroke={TRACTS["lat-cst"].color}
-                  strokeOpacity={strokeOp("lat-cst")}
-                  strokeWidth={strokeW("lat-cst")}
-                  className="cursor-pointer transition-all"
-                  onClick={() => select("lat-cst")}
-                />
-              ))}
-  
-              {/* Rubrospinal — sliver superficial to lat CST, mid-lateral */}
-              {[
-                [-Math.PI / 2 - 1.55, -Math.PI / 2 - 1.15],
-                [-Math.PI / 2 + 1.15, -Math.PI / 2 + 1.55],
-              ].map(([a0, a1], i) => (
-                <path
-                  key={`rub-${i}`}
-                  d={arcRing(a0, a1, 0.97, 0.78)}
-                  fill={TRACTS.rubrospinal.color}
-                  fillOpacity={fillOp("rubrospinal")}
-                  stroke={TRACTS.rubrospinal.color}
-                  strokeOpacity={strokeOp("rubrospinal")}
-                  strokeWidth={strokeW("rubrospinal")}
-                  className="cursor-pointer transition-all"
-                  onClick={() => select("rubrospinal")}
-                />
-              ))}
-  
-              {/* Spinothalamic — anterolateral, antero-lateral surface */}
-              {[
-                [-Math.PI / 2 - 2.1, -Math.PI / 2 - 1.55],
-                [-Math.PI / 2 + 1.55, -Math.PI / 2 + 2.1],
-              ].map(([a0, a1], i) => (
-                <path
-                  key={`stt-${i}`}
-                  d={arcRing(a0, a1, 0.97, 0.6)}
-                  fill={TRACTS.stt.color}
-                  fillOpacity={fillOp("stt")}
-                  stroke={TRACTS.stt.color}
-                  strokeOpacity={strokeOp("stt")}
-                  strokeWidth={strokeW("stt")}
-                  className="cursor-pointer transition-all"
-                  onClick={() => select("stt")}
-                />
-              ))}
-  
-              {/* Anterior spinocerebellar — sliver superficial to STT, anterolateral */}
-              {[
-                [-Math.PI / 2 - 2.1, -Math.PI / 2 - 1.85],
-                [-Math.PI / 2 + 1.85, -Math.PI / 2 + 2.1],
-              ].map(([a0, a1], i) => (
-                <path
-                  key={`asc-${i}`}
-                  d={arcRing(a0, a1, 0.97, 0.85)}
-                  fill={TRACTS["ant-spinocerebellar"].color}
-                  fillOpacity={fillOp("ant-spinocerebellar")}
-                  stroke={TRACTS["ant-spinocerebellar"].color}
-                  strokeOpacity={strokeOp("ant-spinocerebellar")}
-                  strokeWidth={strokeW("ant-spinocerebellar")}
-                  className="cursor-pointer transition-all"
-                  onClick={() => select("ant-spinocerebellar")}
-                />
-              ))}
-  
-              {/* Reticulospinal — anterior funiculus, paramedian */}
-              {[
-                [-Math.PI / 2 - 2.6, -Math.PI / 2 - 2.1],
-                [-Math.PI / 2 + 2.1, -Math.PI / 2 + 2.6],
-              ].map(([a0, a1], i) => (
-                <path
-                  key={`ret-${i}`}
-                  d={arcRing(a0, a1, 0.97, 0.55)}
-                  fill={TRACTS.reticulospinal.color}
-                  fillOpacity={fillOp("reticulospinal")}
-                  stroke={TRACTS.reticulospinal.color}
-                  strokeOpacity={strokeOp("reticulospinal")}
-                  strokeWidth={strokeW("reticulospinal")}
-                  className="cursor-pointer transition-all"
-                  onClick={() => select("reticulospinal")}
-                />
-              ))}
-  
-              {/* Anterior CST — anterior, hugs midline */}
-              {[
-                [Math.PI / 2 - 0.55, Math.PI / 2 - 0.05],
-                [Math.PI / 2 + 0.05, Math.PI / 2 + 0.55],
-              ].map(([a0, a1], i) => (
-                <path
-                  key={`acst-${i}`}
-                  d={arcRing(a0, a1, 0.97, 0.55)}
-                  fill={TRACTS["ant-cst"].color}
-                  fillOpacity={fillOp("ant-cst")}
-                  stroke={TRACTS["ant-cst"].color}
-                  strokeOpacity={strokeOp("ant-cst")}
-                  strokeWidth={strokeW("ant-cst")}
-                  className="cursor-pointer transition-all"
-                  onClick={() => select("ant-cst")}
-                />
-              ))}
-  
-              {/* ───── GREY MATTER — H-shape, scaled per level ───── */}
-              <g transform={`translate(${cx}, ${cy}) scale(${greyScale})`}>
-                {/* central commissure */}
-                <rect x={-10} y={-4} width={20} height={8} rx={2} fill={GREY} fillOpacity={0.35} />
-                {/* central canal */}
-                <circle
-                  cx={0}
-                  cy={0}
-                  r={4}
-                  fill={TRACTS.central.color}
-                  fillOpacity={isHL("central") ? 0.7 : isDim("central") ? 0.05 : 0.35}
-                  stroke={TRACTS.central.color}
-                  strokeWidth={isHL("central") ? 1.5 : 0.8}
-                  className="cursor-pointer"
-                  onClick={() => select("central")}
-                />
-  
-                {/* Posterior horns — narrow, point dorsally */}
-                {[-1, 1].map((side) => (
-                  <path
-                    key={`ph-${side}`}
-                    d={`M ${side * 4} -4 Q ${side * 12 * postHornScale} -22 ${side * 18 * postHornScale} -42
-                        Q ${side * 22 * postHornScale} -50 ${side * 16 * postHornScale} -52
-                        Q ${side * 10 * postHornScale} -48 ${side * 12 * postHornScale} -36
-                        Q ${side * 8 * postHornScale} -22 ${side * 4} -4 Z`}
-                    fill={TRACTS["post-horn"].color}
-                    fillOpacity={isHL("post-horn") ? 0.65 : isDim("post-horn") ? 0.05 : 0.32}
-                    stroke={TRACTS["post-horn"].color}
-                    strokeOpacity={0.8}
-                    strokeWidth={isHL("post-horn") ? 1.5 : 0.7}
-                    className="cursor-pointer transition-all"
-                    onClick={() => select("post-horn")}
-                  />
-                ))}
-  
-                {/* Anterior horns — broad, scaled larger at enlargements */}
-                {[-1, 1].map((side) => (
-                  <path
-                    key={`ah-${side}`}
-                    d={`M ${side * 4} 4 Q ${side * 14 * antHornScale} 18 ${side * 32 * antHornScale} 38
-                        Q ${side * 40 * antHornScale} 46 ${side * 32 * antHornScale} 52
-                        Q ${side * 22 * antHornScale} 50 ${side * 18 * antHornScale} 38
-                        Q ${side * 10 * antHornScale} 22 ${side * 4} 4 Z`}
-                    fill={TRACTS["ant-horn"].color}
-                    fillOpacity={isHL("ant-horn") ? 0.65 : isDim("ant-horn") ? 0.05 : 0.32}
-                    stroke={TRACTS["ant-horn"].color}
-                    strokeOpacity={0.8}
-                    strokeWidth={isHL("ant-horn") ? 1.5 : 0.7}
-                    className="cursor-pointer transition-all"
-                    onClick={() => select("ant-horn")}
-                  />
-                ))}
-  
-                {/* Lateral horns — only thoracic (and L1–L2) */}
-                {hasLateralHorn &&
-                  [-1, 1].map((side) => (
-                    <path
-                      key={`lh-${side}`}
-                      d={`M ${side * 8} -2 Q ${side * 20} -8 ${side * 28} -12
-                          Q ${side * 32} -10 ${side * 28} -4
-                          Q ${side * 18} 0 ${side * 8} 2 Z`}
-                      fill={TRACTS["lat-horn"].color}
-                      fillOpacity={isHL("lat-horn") ? 0.65 : isDim("lat-horn") ? 0.05 : 0.4}
-                      stroke={TRACTS["lat-horn"].color}
-                      strokeOpacity={0.9}
-                      strokeWidth={isHL("lat-horn") ? 1.5 : 0.8}
-                      className="cursor-pointer transition-all"
-                      onClick={() => select("lat-horn")}
-                    />
-                  ))}
-  
-                {/* Clarke's column nodes — thoracic only */}
-                {hasClarke &&
-                  [-1, 1].map((side) => (
-                    <ellipse
-                      key={`ck-${side}`}
-                      cx={side * 14}
-                      cy={-18}
-                      rx={4}
-                      ry={3.5}
-                      fill={TRACTS["post-spinocerebellar"].color}
-                      fillOpacity={isHL("post-spinocerebellar") ? 0.7 : 0.3}
-                      stroke={TRACTS["post-spinocerebellar"].color}
-                      strokeWidth={0.75}
-                    />
-                  ))}
-  
-                {/* SG cap on tip of dorsal horn */}
-                {[-1, 1].map((side) => (
-                  <ellipse
-                    key={`sg-${side}`}
-                    cx={side * 17 * postHornScale}
-                    cy={-50}
-                    rx={6}
-                    ry={3}
-                    transform={`rotate(${side * -15} ${side * 17 * postHornScale} -50)`}
-                    fill="none"
-                    stroke={TRACTS["post-horn"].color}
-                    strokeOpacity={isDim("post-horn") ? 0.05 : 0.5}
-                    strokeWidth={1.5}
-                  />
-                ))}
-              </g>
-  
-              {/* Direction arrows on each tract — placed at wedge centroid */}
-              {([
-                ["dorsal-col", -Math.PI / 2 - 0.3],
-                ["dorsal-col", -Math.PI / 2 + 0.3],
-                ["stt", -Math.PI / 2 - 1.85],
-                ["stt", -Math.PI / 2 + 1.85],
-                ["post-spinocerebellar", -Math.PI / 2 - 0.9],
-                ["post-spinocerebellar", -Math.PI / 2 + 0.9],
-                ["ant-spinocerebellar", -Math.PI / 2 - 1.97],
-                ["ant-spinocerebellar", -Math.PI / 2 + 1.97],
-                ["lat-cst", -Math.PI / 2 - 1.35],
-                ["lat-cst", -Math.PI / 2 + 1.35],
-                ["rubrospinal", -Math.PI / 2 - 1.35],
-                ["rubrospinal", -Math.PI / 2 + 1.35],
-                ["reticulospinal", -Math.PI / 2 - 2.35],
-                ["reticulospinal", -Math.PI / 2 + 2.35],
-                ["ant-cst", Math.PI / 2 - 0.3],
-                ["ant-cst", Math.PI / 2 + 0.3],
-              ] as Array<[TractKey, number]>).map(([k, angle], i) => {
-                const dir = TRACTS[k].direction;
-                if (dir === "none") return null;
-                // Choose radius depending on tract band
-                const r =
-                  k === "dorsal-col" ? 0.7 :
-                  k === "stt" ? 0.78 :
-                  k === "post-spinocerebellar" ? 0.88 :
-                  k === "ant-spinocerebellar" ? 0.91 :
-                  k === "lat-cst" ? 0.66 :
-                  k === "rubrospinal" ? 0.88 :
-                  k === "reticulospinal" ? 0.75 :
-                  k === "ant-cst" ? 0.76 : 0.7;
-                const [px, py] = centroid(angle, angle + 0.001, r);
-                const op = isDim(k) ? 0.1 : isHL(k) ? 1 : 0.7;
-                const len = isHL(k) ? 14 : 10;
-                return dir === "ascending" ? (
-                  <line
-                    key={`dir-${i}`}
-                    x1={px}
-                    y1={py + len / 2}
-                    x2={px}
-                    y2={py - len / 2}
-                    stroke={ASC}
-                    strokeWidth={isHL(k) ? 2 : 1.4}
-                    opacity={op}
-                    markerEnd="url(#arrUp)"
-                  />
-                ) : (
-                  <line
-                    key={`dir-${i}`}
-                    x1={px}
-                    y1={py - len / 2}
-                    x2={px}
-                    y2={py + len / 2}
-                    stroke={DESC}
-                    strokeWidth={isHL(k) ? 2 : 1.4}
-                    opacity={op}
-                    markerEnd="url(#arrDown)"
-                  />
-                );
-              })}
-  
-              {/* Anterior white commissure — STT crossing, animated when STT highlighted */}
-              <g opacity={isHL("stt") ? 0.8 : 0.15}>
-                <path d={`M ${cx - 8} ${cy + 6} Q ${cx} ${cy + 12} ${cx + 8} ${cy + 6}`} stroke={TRACTS.stt.color} strokeWidth={1} fill="none" strokeDasharray="2 1.5" />
-                <path d={`M ${cx + 8} ${cy + 6} Q ${cx} ${cy + 14} ${cx - 8} ${cy + 6}`} stroke={TRACTS.stt.color} strokeWidth={0.75} fill="none" strokeDasharray="1.5 1.5" />
-              </g>
-  
-              {/* Syndrome overlays — clipped so they hug the cord */}
-              {selectedSyndrome === "brown-sequard" && (
-                <rect x={cx - rx} y={cy - ry} width={rx} height={ry * 2} fill={SYNDROMES["brown-sequard"].color} fillOpacity={0.12} stroke={SYNDROMES["brown-sequard"].color} strokeDasharray="4 3" strokeWidth={1.5} />
-              )}
-              {selectedSyndrome === "anterior" && (
-                <path d={arcRing(0.05, Math.PI - 0.05, 0.97, 0)} fill={SYNDROMES.anterior.color} fillOpacity={0.12} stroke={SYNDROMES.anterior.color} strokeDasharray="4 3" strokeWidth={1.5} />
-              )}
-              {selectedSyndrome === "central" && (
-                <ellipse cx={cx} cy={cy} rx={rx * 0.45} ry={ry * 0.45} fill={SYNDROMES.central.color} fillOpacity={0.12} stroke={SYNDROMES.central.color} strokeDasharray="4 3" strokeWidth={1.5} />
-              )}
-              {selectedSyndrome === "posterior" && (
-                <path d={arcRing(-Math.PI + 0.05, -0.05, 0.97, 0.4)} fill={SYNDROMES.posterior.color} fillOpacity={0.12} stroke={SYNDROMES.posterior.color} strokeDasharray="4 3" strokeWidth={1.5} />
-              )}
-              {selectedSyndrome === "complete" && (
-                <ellipse cx={cx} cy={cy} rx={rx * 0.98} ry={ry * 0.98} fill={SYNDROMES.complete.color} fillOpacity={0.12} stroke={SYNDROMES.complete.color} strokeDasharray="6 3" strokeWidth={2} />
-              )}
+            <g transform="translate(0, 14)">
+              <path d="M5 2 L5 12" stroke={DESC} strokeWidth={1.5} markerEnd="url(#arrDown)" />
+              <text x={14} y={11} fontSize="9" fill={DESC} fontWeight={600}>Descending (motor)</text>
             </g>
-  
-            {/* ───── OUTSIDE-CORD ELEMENTS ───── */}
-  
-            {/* ASA — anterior midline (sits OUTSIDE cord on purpose) */}
-            <circle
-              cx={cx}
-              cy={cy + ry + 10}
-              r={5}
-              fill={TRACTS.asa.color}
-              fillOpacity={isHL("asa") ? 0.7 : isDim("asa") ? 0.05 : 0.4}
-              stroke={TRACTS.asa.color}
-              strokeWidth={isHL("asa") ? 1.6 : 0.9}
-              className="cursor-pointer transition-all"
-              onClick={() => select("asa")}
-            />
-            <text x={cx + 10} y={cy + ry + 13} fontSize="8" fill={TRACTS.asa.color} fontWeight={600} opacity={isDim("asa") ? 0.1 : 0.85}>ASA</text>
-  
-            {/* PSA — paired posterior */}
-            {[-1, 1].map((s) => (
-              <circle
-                key={`psa-${s}`}
-                cx={cx + s * rx * 0.35}
-                cy={cy - ry - 8}
-                r={3.5}
-                fill={TRACTS.psa.color}
-                fillOpacity={isHL("psa") ? 0.7 : isDim("psa") ? 0.05 : 0.4}
-                stroke={TRACTS.psa.color}
-                strokeWidth={isHL("psa") ? 1.6 : 0.9}
+          </g>
+
+          {/* Cord outline */}
+          <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth={2} />
+
+          {/* Everything inside the cord is clipped to the outline */}
+          <g clipPath="url(#cordClip)">
+            {/* Anterior median fissure & posterior median sulcus */}
+            <line x1={cx} y1={cy + ry} x2={cx} y2={cy + ry * 0.2} stroke="hsl(var(--border))" strokeWidth={1.5} />
+            <line x1={cx} y1={cy - ry} x2={cx} y2={cy - ry * 0.25} stroke="hsl(var(--border))" strokeWidth={1} />
+
+            {/* ───── WHITE MATTER WEDGES (radial) ─────
+                Convention: inner radial 0.55, outer 0.97. */}
+
+            {/* Dorsal columns — posterior, hugs midline (top wedges) */}
+            {[
+              [-Math.PI / 2 - 0.55, -Math.PI / 2 - 0.05],
+              [-Math.PI / 2 + 0.05, -Math.PI / 2 + 0.55],
+            ].map(([a0, a1], i) => (
+              <path
+                key={`dc-${i}`}
+                d={arcRing(a0, a1, 0.97, 0.45)}
+                fill={TRACTS["dorsal-col"].color}
+                fillOpacity={fillOp("dorsal-col")}
+                stroke={TRACTS["dorsal-col"].color}
+                strokeOpacity={strokeOp("dorsal-col")}
+                strokeWidth={strokeW("dorsal-col")}
                 className="cursor-pointer transition-all"
-                onClick={() => select("psa")}
+                onClick={() => select("dorsal-col")}
               />
             ))}
-            <text x={cx} y={cy - ry - 14} fontSize="8" fill={TRACTS.psa.color} fontWeight={600} textAnchor="middle" opacity={isDim("psa") ? 0.1 : 0.85}>PSA (paired)</text>
-  
-            {/* Roots */}
-            {[-1, 1].map((s) => (
-              <g key={`roots-${s}`}>
-                {/* Dorsal root */}
-                <path
-                  d={`M ${cx + s * (rx - 4)} ${cy - ry * 0.55} Q ${cx + s * (rx + 25)} ${cy - ry * 0.7} ${cx + s * (rx + 50)} ${cy - ry * 0.65}`}
-                  fill="none"
-                  stroke={TRACTS["dorsal-root"].color}
-                  strokeWidth={isHL("dorsal-root") ? 2 : 1.2}
-                  opacity={isDim("dorsal-root") ? 0.08 : 0.7}
-                  className="cursor-pointer"
-                  onClick={() => select("dorsal-root")}
-                />
-                <ellipse
-                  cx={cx + s * (rx + 55)}
-                  cy={cy - ry * 0.65}
-                  rx={8}
-                  ry={5}
-                  fill={TRACTS["dorsal-root"].color}
-                  fillOpacity={isHL("dorsal-root") ? 0.6 : isDim("dorsal-root") ? 0.05 : 0.25}
-                  stroke={TRACTS["dorsal-root"].color}
-                  strokeWidth={isHL("dorsal-root") ? 1.5 : 0.8}
-                  className="cursor-pointer"
-                  onClick={() => select("dorsal-root")}
-                />
-                <text x={cx + s * (rx + 55)} y={cy - ry * 0.65 - 10} fontSize="7" fill={TRACTS["dorsal-root"].color} textAnchor="middle" opacity={isDim("dorsal-root") ? 0.1 : 0.7}>DRG</text>
-  
-                {/* Ventral root */}
-                <path
-                  d={`M ${cx + s * (rx - 4)} ${cy + ry * 0.55} Q ${cx + s * (rx + 25)} ${cy + ry * 0.7} ${cx + s * (rx + 50)} ${cy + ry * 0.65}`}
-                  fill="none"
-                  stroke={TRACTS["ventral-root"].color}
-                  strokeWidth={isHL("ventral-root") ? 2 : 1.2}
-                  opacity={isDim("ventral-root") ? 0.08 : 0.7}
-                  className="cursor-pointer"
-                  onClick={() => select("ventral-root")}
-                />
-                <text x={cx + s * (rx + 55)} y={cy + ry * 0.65 + 12} fontSize="7" fill={TRACTS["ventral-root"].color} textAnchor="middle" opacity={isDim("ventral-root") ? 0.1 : 0.7}>Vent.</text>
-              </g>
+
+            {/* Posterior spinocerebellar — postero-lateral surface */}
+            {[
+              [-Math.PI / 2 - 1.15, -Math.PI / 2 - 0.6],
+              [-Math.PI / 2 + 0.6, -Math.PI / 2 + 1.15],
+            ].map(([a0, a1], i) => (
+              <path
+                key={`psc-${i}`}
+                d={arcRing(a0, a1, 0.97, 0.78)}
+                fill={TRACTS["post-spinocerebellar"].color}
+                fillOpacity={fillOp("post-spinocerebellar")}
+                stroke={TRACTS["post-spinocerebellar"].color}
+                strokeOpacity={strokeOp("post-spinocerebellar")}
+                strokeWidth={strokeW("post-spinocerebellar")}
+                className="cursor-pointer transition-all"
+                onClick={() => select("post-spinocerebellar")}
+              />
             ))}
-          </svg>
-  
-          {/* Info panel */}
-          <div className="flex-1 min-w-0">
-            {syndInfo ? (
-              <div className="p-4 rounded-lg border animate-fade-in" style={{ borderColor: withAlpha(syndInfo.color, 0.25) }}>
-                <p className="font-bold text-sm" style={{ color: syndInfo.color }}>{syndInfo.label}</p>
-                <p className="text-xs text-muted-foreground mt-1"><span className="font-semibold text-foreground">Cause:</span> {syndInfo.cause}</p>
-                <p className="text-xs text-muted-foreground mt-1"><span className="font-semibold text-foreground">Deficit:</span> {syndInfo.deficit}</p>
-                <div className="flex flex-wrap gap-1 mt-2">
-                  {syndInfo.affected.map((tk) => (
-                    <span key={tk} className="px-1.5 py-0.5 rounded text-[9px] border" style={{ borderColor: withAlpha(TRACTS[tk].color, 0.31), color: TRACTS[tk].color }}>
-                      {TRACTS[tk].label}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ) : activeInfo ? (
-              <div className="p-4 rounded-lg border border-border animate-fade-in">
-                <div className="flex items-center gap-2 mb-1 flex-wrap">
-                  <span className="w-3 h-3 rounded-full" style={{ backgroundColor: activeInfo.color }} />
-                  <p className="font-bold text-sm" style={{ color: activeInfo.color }}>{activeInfo.label}</p>
-                  {activeInfo.direction !== "none" && (
-                    <span
-                      className="text-[10px] px-1.5 py-0.5 rounded font-semibold uppercase tracking-wide"
-                      style={{
-                        color: activeInfo.direction === "ascending" ? ASC : DESC,
-                        backgroundColor: withAlpha(activeInfo.direction === "ascending" ? ASC : DESC, 0.12),
-                      }}
-                    >
-                      {activeInfo.direction === "ascending" ? "▲ Ascending" : "▼ Descending"}
-                    </span>
-                  )}
-                  <span className="text-[10px] px-1.5 py-0.5 rounded border border-border text-muted-foreground capitalize">{activeInfo.category}</span>
-                </div>
-                <p className="text-xs text-primary/80 font-medium mt-1 mb-1">Modality: {activeInfo.modality}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{activeInfo.detail}</p>
-              </div>
-            ) : (
-              <p className="text-xs text-muted-foreground text-center italic py-2">Tap a structure for details, or select a cord syndrome above.</p>
+
+            {/* Lateral CST — lateral funiculus, deep to surface */}
+            {[
+              [-Math.PI / 2 - 1.55, -Math.PI / 2 - 1.15],
+              [-Math.PI / 2 + 1.15, -Math.PI / 2 + 1.55],
+            ].map(([a0, a1], i) => (
+              <path
+                key={`lcst-${i}`}
+                d={arcRing(a0, a1, 0.78, 0.55)}
+                fill={TRACTS["lat-cst"].color}
+                fillOpacity={fillOp("lat-cst")}
+                stroke={TRACTS["lat-cst"].color}
+                strokeOpacity={strokeOp("lat-cst")}
+                strokeWidth={strokeW("lat-cst")}
+                className="cursor-pointer transition-all"
+                onClick={() => select("lat-cst")}
+              />
+            ))}
+
+            {/* Rubrospinal — sliver superficial to lat CST, mid-lateral */}
+            {[
+              [-Math.PI / 2 - 1.55, -Math.PI / 2 - 1.15],
+              [-Math.PI / 2 + 1.15, -Math.PI / 2 + 1.55],
+            ].map(([a0, a1], i) => (
+              <path
+                key={`rub-${i}`}
+                d={arcRing(a0, a1, 0.97, 0.78)}
+                fill={TRACTS.rubrospinal.color}
+                fillOpacity={fillOp("rubrospinal")}
+                stroke={TRACTS.rubrospinal.color}
+                strokeOpacity={strokeOp("rubrospinal")}
+                strokeWidth={strokeW("rubrospinal")}
+                className="cursor-pointer transition-all"
+                onClick={() => select("rubrospinal")}
+              />
+            ))}
+
+            {/* Spinothalamic — anterolateral, antero-lateral surface */}
+            {[
+              [-Math.PI / 2 - 2.1, -Math.PI / 2 - 1.55],
+              [-Math.PI / 2 + 1.55, -Math.PI / 2 + 2.1],
+            ].map(([a0, a1], i) => (
+              <path
+                key={`stt-${i}`}
+                d={arcRing(a0, a1, 0.97, 0.6)}
+                fill={TRACTS.stt.color}
+                fillOpacity={fillOp("stt")}
+                stroke={TRACTS.stt.color}
+                strokeOpacity={strokeOp("stt")}
+                strokeWidth={strokeW("stt")}
+                className="cursor-pointer transition-all"
+                onClick={() => select("stt")}
+              />
+            ))}
+
+            {/* Anterior spinocerebellar — sliver superficial to STT, anterolateral */}
+            {[
+              [-Math.PI / 2 - 2.1, -Math.PI / 2 - 1.85],
+              [-Math.PI / 2 + 1.85, -Math.PI / 2 + 2.1],
+            ].map(([a0, a1], i) => (
+              <path
+                key={`asc-${i}`}
+                d={arcRing(a0, a1, 0.97, 0.85)}
+                fill={TRACTS["ant-spinocerebellar"].color}
+                fillOpacity={fillOp("ant-spinocerebellar")}
+                stroke={TRACTS["ant-spinocerebellar"].color}
+                strokeOpacity={strokeOp("ant-spinocerebellar")}
+                strokeWidth={strokeW("ant-spinocerebellar")}
+                className="cursor-pointer transition-all"
+                onClick={() => select("ant-spinocerebellar")}
+              />
+            ))}
+
+            {/* Reticulospinal — anterior funiculus, paramedian */}
+            {[
+              [-Math.PI / 2 - 2.6, -Math.PI / 2 - 2.1],
+              [-Math.PI / 2 + 2.1, -Math.PI / 2 + 2.6],
+            ].map(([a0, a1], i) => (
+              <path
+                key={`ret-${i}`}
+                d={arcRing(a0, a1, 0.97, 0.55)}
+                fill={TRACTS.reticulospinal.color}
+                fillOpacity={fillOp("reticulospinal")}
+                stroke={TRACTS.reticulospinal.color}
+                strokeOpacity={strokeOp("reticulospinal")}
+                strokeWidth={strokeW("reticulospinal")}
+                className="cursor-pointer transition-all"
+                onClick={() => select("reticulospinal")}
+              />
+            ))}
+
+            {/* Anterior CST — anterior, hugs midline */}
+            {[
+              [Math.PI / 2 - 0.55, Math.PI / 2 - 0.05],
+              [Math.PI / 2 + 0.05, Math.PI / 2 + 0.55],
+            ].map(([a0, a1], i) => (
+              <path
+                key={`acst-${i}`}
+                d={arcRing(a0, a1, 0.97, 0.55)}
+                fill={TRACTS["ant-cst"].color}
+                fillOpacity={fillOp("ant-cst")}
+                stroke={TRACTS["ant-cst"].color}
+                strokeOpacity={strokeOp("ant-cst")}
+                strokeWidth={strokeW("ant-cst")}
+                className="cursor-pointer transition-all"
+                onClick={() => select("ant-cst")}
+              />
+            ))}
+
+            {/* ───── GREY MATTER — H-shape, scaled per level ───── */}
+            <g transform={`translate(${cx}, ${cy}) scale(${greyScale})`}>
+              {/* central commissure */}
+              <rect x={-10} y={-4} width={20} height={8} rx={2} fill={GREY} fillOpacity={0.35} />
+              {/* central canal */}
+              <circle
+                cx={0}
+                cy={0}
+                r={4}
+                fill={TRACTS.central.color}
+                fillOpacity={isHL("central") ? 0.7 : isDim("central") ? 0.05 : 0.35}
+                stroke={TRACTS.central.color}
+                strokeWidth={isHL("central") ? 1.5 : 0.8}
+                className="cursor-pointer"
+                onClick={() => select("central")}
+              />
+
+              {/* Posterior horns — narrow, point dorsally */}
+              {[-1, 1].map((side) => (
+                <path
+                  key={`ph-${side}`}
+                  d={`M ${side * 4} -4 Q ${side * 12 * postHornScale} -22 ${side * 18 * postHornScale} -42
+                      Q ${side * 22 * postHornScale} -50 ${side * 16 * postHornScale} -52
+                      Q ${side * 10 * postHornScale} -48 ${side * 12 * postHornScale} -36
+                      Q ${side * 8 * postHornScale} -22 ${side * 4} -4 Z`}
+                  fill={TRACTS["post-horn"].color}
+                  fillOpacity={isHL("post-horn") ? 0.65 : isDim("post-horn") ? 0.05 : 0.32}
+                  stroke={TRACTS["post-horn"].color}
+                  strokeOpacity={0.8}
+                  strokeWidth={isHL("post-horn") ? 1.5 : 0.7}
+                  className="cursor-pointer transition-all"
+                  onClick={() => select("post-horn")}
+                />
+              ))}
+
+              {/* Anterior horns — broad, scaled larger at enlargements */}
+              {[-1, 1].map((side) => (
+                <path
+                  key={`ah-${side}`}
+                  d={`M ${side * 4} 4 Q ${side * 14 * antHornScale} 18 ${side * 32 * antHornScale} 38
+                      Q ${side * 40 * antHornScale} 46 ${side * 32 * antHornScale} 52
+                      Q ${side * 22 * antHornScale} 50 ${side * 18 * antHornScale} 38
+                      Q ${side * 10 * antHornScale} 22 ${side * 4} 4 Z`}
+                  fill={TRACTS["ant-horn"].color}
+                  fillOpacity={isHL("ant-horn") ? 0.65 : isDim("ant-horn") ? 0.05 : 0.32}
+                  stroke={TRACTS["ant-horn"].color}
+                  strokeOpacity={0.8}
+                  strokeWidth={isHL("ant-horn") ? 1.5 : 0.7}
+                  className="cursor-pointer transition-all"
+                  onClick={() => select("ant-horn")}
+                />
+              ))}
+
+              {/* Lateral horns — only thoracic (and L1–L2) */}
+              {hasLateralHorn &&
+                [-1, 1].map((side) => (
+                  <path
+                    key={`lh-${side}`}
+                    d={`M ${side * 8} -2 Q ${side * 20} -8 ${side * 28} -12
+                        Q ${side * 32} -10 ${side * 28} -4
+                        Q ${side * 18} 0 ${side * 8} 2 Z`}
+                    fill={TRACTS["lat-horn"].color}
+                    fillOpacity={isHL("lat-horn") ? 0.65 : isDim("lat-horn") ? 0.05 : 0.4}
+                    stroke={TRACTS["lat-horn"].color}
+                    strokeOpacity={0.9}
+                    strokeWidth={isHL("lat-horn") ? 1.5 : 0.8}
+                    className="cursor-pointer transition-all"
+                    onClick={() => select("lat-horn")}
+                  />
+                ))}
+
+              {/* Clarke's column nodes — thoracic only */}
+              {hasClarke &&
+                [-1, 1].map((side) => (
+                  <ellipse
+                    key={`ck-${side}`}
+                    cx={side * 14}
+                    cy={-18}
+                    rx={4}
+                    ry={3.5}
+                    fill={TRACTS["post-spinocerebellar"].color}
+                    fillOpacity={isHL("post-spinocerebellar") ? 0.7 : 0.3}
+                    stroke={TRACTS["post-spinocerebellar"].color}
+                    strokeWidth={0.75}
+                  />
+                ))}
+
+              {/* SG cap on tip of dorsal horn */}
+              {[-1, 1].map((side) => (
+                <ellipse
+                  key={`sg-${side}`}
+                  cx={side * 17 * postHornScale}
+                  cy={-50}
+                  rx={6}
+                  ry={3}
+                  transform={`rotate(${side * -15} ${side * 17 * postHornScale} -50)`}
+                  fill="none"
+                  stroke={TRACTS["post-horn"].color}
+                  strokeOpacity={isDim("post-horn") ? 0.05 : 0.5}
+                  strokeWidth={1.5}
+                />
+              ))}
+            </g>
+
+            {/* Direction arrows on each tract — placed at wedge centroid */}
+            {([
+              ["dorsal-col", -Math.PI / 2 - 0.3],
+              ["dorsal-col", -Math.PI / 2 + 0.3],
+              ["stt", -Math.PI / 2 - 1.85],
+              ["stt", -Math.PI / 2 + 1.85],
+              ["post-spinocerebellar", -Math.PI / 2 - 0.9],
+              ["post-spinocerebellar", -Math.PI / 2 + 0.9],
+              ["ant-spinocerebellar", -Math.PI / 2 - 1.97],
+              ["ant-spinocerebellar", -Math.PI / 2 + 1.97],
+              ["lat-cst", -Math.PI / 2 - 1.35],
+              ["lat-cst", -Math.PI / 2 + 1.35],
+              ["rubrospinal", -Math.PI / 2 - 1.35],
+              ["rubrospinal", -Math.PI / 2 + 1.35],
+              ["reticulospinal", -Math.PI / 2 - 2.35],
+              ["reticulospinal", -Math.PI / 2 + 2.35],
+              ["ant-cst", Math.PI / 2 - 0.3],
+              ["ant-cst", Math.PI / 2 + 0.3],
+            ] as Array<[TractKey, number]>).map(([k, angle], i) => {
+              const dir = TRACTS[k].direction;
+              if (dir === "none") return null;
+              // Choose radius depending on tract band
+              const r =
+                k === "dorsal-col" ? 0.7 :
+                k === "stt" ? 0.78 :
+                k === "post-spinocerebellar" ? 0.88 :
+                k === "ant-spinocerebellar" ? 0.91 :
+                k === "lat-cst" ? 0.66 :
+                k === "rubrospinal" ? 0.88 :
+                k === "reticulospinal" ? 0.75 :
+                k === "ant-cst" ? 0.76 : 0.7;
+              const [px, py] = centroid(angle, angle + 0.001, r);
+              const op = isDim(k) ? 0.1 : isHL(k) ? 1 : 0.7;
+              const len = isHL(k) ? 14 : 10;
+              return dir === "ascending" ? (
+                <line
+                  key={`dir-${i}`}
+                  x1={px}
+                  y1={py + len / 2}
+                  x2={px}
+                  y2={py - len / 2}
+                  stroke={ASC}
+                  strokeWidth={isHL(k) ? 2 : 1.4}
+                  opacity={op}
+                  markerEnd="url(#arrUp)"
+                />
+              ) : (
+                <line
+                  key={`dir-${i}`}
+                  x1={px}
+                  y1={py - len / 2}
+                  x2={px}
+                  y2={py + len / 2}
+                  stroke={DESC}
+                  strokeWidth={isHL(k) ? 2 : 1.4}
+                  opacity={op}
+                  markerEnd="url(#arrDown)"
+                />
+              );
+            })}
+
+            {/* Anterior white commissure — STT crossing, animated when STT highlighted */}
+            <g opacity={isHL("stt") ? 0.8 : 0.15}>
+              <path d={`M ${cx - 8} ${cy + 6} Q ${cx} ${cy + 12} ${cx + 8} ${cy + 6}`} stroke={TRACTS.stt.color} strokeWidth={1} fill="none" strokeDasharray="2 1.5" />
+              <path d={`M ${cx + 8} ${cy + 6} Q ${cx} ${cy + 14} ${cx - 8} ${cy + 6}`} stroke={TRACTS.stt.color} strokeWidth={0.75} fill="none" strokeDasharray="1.5 1.5" />
+            </g>
+
+            {/* Syndrome overlays — clipped so they hug the cord */}
+            {selectedSyndrome === "brown-sequard" && (
+              <rect x={cx - rx} y={cy - ry} width={rx} height={ry * 2} fill={SYNDROMES["brown-sequard"].color} fillOpacity={0.12} stroke={SYNDROMES["brown-sequard"].color} strokeDasharray="4 3" strokeWidth={1.5} />
             )}
-  
-            {/* Direction-grouped legend */}
-            <div className="mt-3 grid grid-cols-2 gap-2 text-[11px]">
-              <div className="rounded-md border border-border p-2">
-                <div className="font-semibold mb-1 flex items-center gap-1" style={{ color: ASC }}>▲ Ascending (sensory)</div>
-                <div className="space-y-0.5">
-                  {(Object.entries(TRACTS) as Array<[TractKey, TractInfo]>)
-                    .filter(([, t]) => t.direction === "ascending" && t.category === "white")
-                    .map(([k, t]) => (
-                      <button
-                        key={k}
-                        onClick={() => select(k)}
-                        className="block w-full text-left hover:underline"
-                        style={{ color: t.color }}
-                      >
-                        {t.label}
-                      </button>
-                    ))}
-                </div>
+            {selectedSyndrome === "anterior" && (
+              <path d={arcRing(0.05, Math.PI - 0.05, 0.97, 0)} fill={SYNDROMES.anterior.color} fillOpacity={0.12} stroke={SYNDROMES.anterior.color} strokeDasharray="4 3" strokeWidth={1.5} />
+            )}
+            {selectedSyndrome === "central" && (
+              <ellipse cx={cx} cy={cy} rx={rx * 0.45} ry={ry * 0.45} fill={SYNDROMES.central.color} fillOpacity={0.12} stroke={SYNDROMES.central.color} strokeDasharray="4 3" strokeWidth={1.5} />
+            )}
+            {selectedSyndrome === "posterior" && (
+              <path d={arcRing(-Math.PI + 0.05, -0.05, 0.97, 0.4)} fill={SYNDROMES.posterior.color} fillOpacity={0.12} stroke={SYNDROMES.posterior.color} strokeDasharray="4 3" strokeWidth={1.5} />
+            )}
+            {selectedSyndrome === "complete" && (
+              <ellipse cx={cx} cy={cy} rx={rx * 0.98} ry={ry * 0.98} fill={SYNDROMES.complete.color} fillOpacity={0.12} stroke={SYNDROMES.complete.color} strokeDasharray="6 3" strokeWidth={2} />
+            )}
+          </g>
+
+          {/* ───── OUTSIDE-CORD ELEMENTS ───── */}
+
+          {/* ASA — anterior midline (sits OUTSIDE cord on purpose) */}
+          <circle
+            cx={cx}
+            cy={cy + ry + 10}
+            r={5}
+            fill={TRACTS.asa.color}
+            fillOpacity={isHL("asa") ? 0.7 : isDim("asa") ? 0.05 : 0.4}
+            stroke={TRACTS.asa.color}
+            strokeWidth={isHL("asa") ? 1.6 : 0.9}
+            className="cursor-pointer transition-all"
+            onClick={() => select("asa")}
+          />
+          <text x={cx + 10} y={cy + ry + 13} fontSize="8" fill={TRACTS.asa.color} fontWeight={600} opacity={isDim("asa") ? 0.1 : 0.85}>ASA</text>
+
+          {/* PSA — paired posterior */}
+          {[-1, 1].map((s) => (
+            <circle
+              key={`psa-${s}`}
+              cx={cx + s * rx * 0.35}
+              cy={cy - ry - 8}
+              r={3.5}
+              fill={TRACTS.psa.color}
+              fillOpacity={isHL("psa") ? 0.7 : isDim("psa") ? 0.05 : 0.4}
+              stroke={TRACTS.psa.color}
+              strokeWidth={isHL("psa") ? 1.6 : 0.9}
+              className="cursor-pointer transition-all"
+              onClick={() => select("psa")}
+            />
+          ))}
+          <text x={cx} y={cy - ry - 14} fontSize="8" fill={TRACTS.psa.color} fontWeight={600} textAnchor="middle" opacity={isDim("psa") ? 0.1 : 0.85}>PSA (paired)</text>
+
+          {/* Roots */}
+          {[-1, 1].map((s) => (
+            <g key={`roots-${s}`}>
+              {/* Dorsal root */}
+              <path
+                d={`M ${cx + s * (rx - 4)} ${cy - ry * 0.55} Q ${cx + s * (rx + 25)} ${cy - ry * 0.7} ${cx + s * (rx + 50)} ${cy - ry * 0.65}`}
+                fill="none"
+                stroke={TRACTS["dorsal-root"].color}
+                strokeWidth={isHL("dorsal-root") ? 2 : 1.2}
+                opacity={isDim("dorsal-root") ? 0.08 : 0.7}
+                className="cursor-pointer"
+                onClick={() => select("dorsal-root")}
+              />
+              <ellipse
+                cx={cx + s * (rx + 55)}
+                cy={cy - ry * 0.65}
+                rx={8}
+                ry={5}
+                fill={TRACTS["dorsal-root"].color}
+                fillOpacity={isHL("dorsal-root") ? 0.6 : isDim("dorsal-root") ? 0.05 : 0.25}
+                stroke={TRACTS["dorsal-root"].color}
+                strokeWidth={isHL("dorsal-root") ? 1.5 : 0.8}
+                className="cursor-pointer"
+                onClick={() => select("dorsal-root")}
+              />
+              <text x={cx + s * (rx + 55)} y={cy - ry * 0.65 - 10} fontSize="7" fill={TRACTS["dorsal-root"].color} textAnchor="middle" opacity={isDim("dorsal-root") ? 0.1 : 0.7}>DRG</text>
+
+              {/* Ventral root */}
+              <path
+                d={`M ${cx + s * (rx - 4)} ${cy + ry * 0.55} Q ${cx + s * (rx + 25)} ${cy + ry * 0.7} ${cx + s * (rx + 50)} ${cy + ry * 0.65}`}
+                fill="none"
+                stroke={TRACTS["ventral-root"].color}
+                strokeWidth={isHL("ventral-root") ? 2 : 1.2}
+                opacity={isDim("ventral-root") ? 0.08 : 0.7}
+                className="cursor-pointer"
+                onClick={() => select("ventral-root")}
+              />
+              <text x={cx + s * (rx + 55)} y={cy + ry * 0.65 + 12} fontSize="7" fill={TRACTS["ventral-root"].color} textAnchor="middle" opacity={isDim("ventral-root") ? 0.1 : 0.7}>Vent.</text>
+            </g>
+          ))}
+        </svg>
+
+        {/* Info panel */}
+        <div className="flex-1 min-w-0">
+          {syndInfo ? (
+            <div className="p-4 rounded-lg border animate-fade-in" style={{ borderColor: withAlpha(syndInfo.color, 0.25) }}>
+              <p className="font-bold text-sm" style={{ color: syndInfo.color }}>{syndInfo.label}</p>
+              <p className="text-xs text-muted-foreground mt-1"><span className="font-semibold text-foreground">Cause:</span> {syndInfo.cause}</p>
+              <p className="text-xs text-muted-foreground mt-1"><span className="font-semibold text-foreground">Deficit:</span> {syndInfo.deficit}</p>
+              <div className="flex flex-wrap gap-1 mt-2">
+                {syndInfo.affected.map((tk) => (
+                  <span key={tk} className="px-1.5 py-0.5 rounded text-[9px] border" style={{ borderColor: withAlpha(TRACTS[tk].color, 0.31), color: TRACTS[tk].color }}>
+                    {TRACTS[tk].label}
+                  </span>
+                ))}
               </div>
-              <div className="rounded-md border border-border p-2">
-                <div className="font-semibold mb-1 flex items-center gap-1" style={{ color: DESC }}>▼ Descending (motor)</div>
-                <div className="space-y-0.5">
-                  {(Object.entries(TRACTS) as Array<[TractKey, TractInfo]>)
-                    .filter(([, t]) => t.direction === "descending" && t.category === "white")
-                    .map(([k, t]) => (
-                      <button
-                        key={k}
-                        onClick={() => select(k)}
-                        className="block w-full text-left hover:underline"
-                        style={{ color: t.color }}
-                      >
-                        {t.label}
-                      </button>
-                    ))}
-                </div>
+            </div>
+          ) : activeInfo ? (
+            <div className="p-4 rounded-lg border border-border animate-fade-in">
+              <div className="flex items-center gap-2 mb-1 flex-wrap">
+                <span className="w-3 h-3 rounded-full" style={{ backgroundColor: activeInfo.color }} />
+                <p className="font-bold text-sm" style={{ color: activeInfo.color }}>{activeInfo.label}</p>
+                {activeInfo.direction !== "none" && (
+                  <span
+                    className="text-[10px] px-1.5 py-0.5 rounded font-semibold uppercase tracking-wide"
+                    style={{
+                      color: activeInfo.direction === "ascending" ? ASC : DESC,
+                      backgroundColor: withAlpha(activeInfo.direction === "ascending" ? ASC : DESC, 0.12),
+                    }}
+                  >
+                    {activeInfo.direction === "ascending" ? "▲ Ascending" : "▼ Descending"}
+                  </span>
+                )}
+                <span className="text-[10px] px-1.5 py-0.5 rounded border border-border text-muted-foreground capitalize">{activeInfo.category}</span>
               </div>
-              <div className="rounded-md border border-border p-2 col-span-2">
-                <div className="font-semibold mb-1 text-foreground">Grey matter, vessels & roots</div>
-                <div className="flex flex-wrap gap-x-2 gap-y-0.5">
-                  {(Object.entries(TRACTS) as Array<[TractKey, TractInfo]>)
-                    .filter(([, t]) => t.category !== "white")
-                    .map(([k, t]) => (
-                      <button
-                        key={k}
-                        onClick={() => select(k)}
-                        className="hover:underline"
-                        style={{ color: t.color }}
-                      >
-                        {t.label}
-                      </button>
-                    ))}
-                </div>
+              <p className="text-xs text-primary/80 font-medium mt-1 mb-1">Modality: {activeInfo.modality}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{activeInfo.detail}</p>
+            </div>
+          ) : (
+            <p className="text-xs text-muted-foreground text-center italic py-2">Tap a structure for details, or select a cord syndrome above.</p>
+          )}
+
+          {/* Direction-grouped legend */}
+          <div className="mt-3 grid grid-cols-2 gap-2 text-[11px]">
+            <div className="rounded-md border border-border p-2">
+              <div className="font-semibold mb-1 flex items-center gap-1" style={{ color: ASC }}>▲ Ascending (sensory)</div>
+              <div className="space-y-0.5">
+                {(Object.entries(TRACTS) as Array<[TractKey, TractInfo]>)
+                  .filter(([, t]) => t.direction === "ascending" && t.category === "white")
+                  .map(([k, t]) => (
+                    <button
+                      key={k}
+                      onClick={() => select(k)}
+                      className="block w-full text-left hover:underline"
+                      style={{ color: t.color }}
+                    >
+                      {t.label}
+                    </button>
+                  ))}
+              </div>
+            </div>
+            <div className="rounded-md border border-border p-2">
+              <div className="font-semibold mb-1 flex items-center gap-1" style={{ color: DESC }}>▼ Descending (motor)</div>
+              <div className="space-y-0.5">
+                {(Object.entries(TRACTS) as Array<[TractKey, TractInfo]>)
+                  .filter(([, t]) => t.direction === "descending" && t.category === "white")
+                  .map(([k, t]) => (
+                    <button
+                      key={k}
+                      onClick={() => select(k)}
+                      className="block w-full text-left hover:underline"
+                      style={{ color: t.color }}
+                    >
+                      {t.label}
+                    </button>
+                  ))}
+              </div>
+            </div>
+            <div className="rounded-md border border-border p-2 col-span-2">
+              <div className="font-semibold mb-1 text-foreground">Grey matter, vessels & roots</div>
+              <div className="flex flex-wrap gap-x-2 gap-y-0.5">
+                {(Object.entries(TRACTS) as Array<[TractKey, TractInfo]>)
+                  .filter(([, t]) => t.category !== "white")
+                  .map(([k, t]) => (
+                    <button
+                      key={k}
+                      onClick={() => select(k)}
+                      className="hover:underline"
+                      style={{ color: t.color }}
+                    >
+                      {t.label}
+                    </button>
+                  ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-        </div>
-    </DiagramFigure>
+    </div>
+      </div>
   );
 };
 

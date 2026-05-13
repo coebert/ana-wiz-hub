@@ -1,5 +1,4 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "./MechanismCascadeDiagram";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const BJA17: CascadeSource = {
   label: "BJA Educ 2017",
@@ -74,18 +73,12 @@ const steps: CascadeStep[] = [
 ];
 
 export const GlycocalyxSheddingCascadeDiagram = () => (
-    <DiagramFigure
-      id="glycocalyx-shedding-cascade-diagram"
-      title="Glycocalyx shedding cascade"
-      description="Auto-generated wrapper for the Glycocalyx shedding cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <MechanismCascadeDiagram
-      title="Glycocalyx shedding — capillary leak cascade"
-      subtitle="Why aggressive crystalloid worsens oedema — the revised Starling model in action."
-      accent="physiology"
-      steps={steps}
-    />
-    </DiagramFigure>
+      <MechanismCascadeDiagram
+    title="Glycocalyx shedding — capillary leak cascade"
+    subtitle="Why aggressive crystalloid worsens oedema — the revised Starling model in action."
+    accent="physiology"
+    steps={steps}
+  />
   );
 
 export default GlycocalyxSheddingCascadeDiagram;

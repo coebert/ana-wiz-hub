@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type LayerId = "endothelium" | "gbm" | "podocytes" | "slit-diaphragm" | "mesangial" | "filtrate";
 
@@ -97,20 +96,14 @@ const FiltrationParticle = ({ delay, speed, size, color, blocked, label }: {
   const opacity = phase === "done" ? 0 : phase === "blocked" ? (0.4 + Math.sin(Date.now() / 300) * 0.2) : 0.8;
 
   return (
-    <DiagramFigure
-      id="glomerular-barrier-diagram"
-      title="Glomerular barrier"
-      description="Auto-generated wrapper for the Glomerular barrier anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <g opacity={opacity}>
-        <circle cx={x} cy={y} r={size} fill={color} />
-        {size > 3 && <circle cx={x} cy={y} r={size} fill="none" stroke={color} strokeWidth="0.5" opacity="0.4" />}
-        <text x={x} y={y - size - 2} fontSize="5" fill={color} textAnchor="middle" fontWeight="600">{label}</text>
-        {phase === "blocked" && (
-          <text x={x + size + 4} y={y + 2} fontSize="5" fill="hsl(0 60% 55%)" fontWeight="700">✕</text>
-        )}
-      </g>
-    </DiagramFigure>
+        <g opacity={opacity}>
+      <circle cx={x} cy={y} r={size} fill={color} />
+      {size > 3 && <circle cx={x} cy={y} r={size} fill="none" stroke={color} strokeWidth="0.5" opacity="0.4" />}
+      <text x={x} y={y - size - 2} fontSize="5" fill={color} textAnchor="middle" fontWeight="600">{label}</text>
+      {phase === "blocked" && (
+        <text x={x + size + 4} y={y + 2} fontSize="5" fill="hsl(0 60% 55%)" fontWeight="700">✕</text>
+      )}
+    </g>
   );
 };
 

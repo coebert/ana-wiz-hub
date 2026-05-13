@@ -2,7 +2,6 @@ import { useState, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { RotateCcw } from "lucide-react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type StepKey = "plasmaOsm" | "urineOsm" | "urineNa" | "volume";
 type PlasmaOsm = "low" | "normalHigh";
@@ -387,25 +386,19 @@ const Choice = ({
 const Chip = ({
   label, value, active, disabled,
 }: { label: string; value: string | null; active: boolean; disabled?: boolean }) => (
-    <DiagramFigure
-      id="hyponatraemia-workup-diagram"
-      title="Hyponatraemia workup"
-      description="Auto-generated wrapper for the Hyponatraemia workup anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <span
-      className={`px-2 py-1 rounded-md border text-[10px] font-semibold transition-all ${
-        disabled
-          ? "border-border/40 text-muted-foreground/40 bg-transparent"
-          : value
-          ? "border-primary bg-primary/10 text-primary"
-          : active
-          ? "border-primary/60 text-primary bg-primary/5 animate-pulse"
-          : "border-border text-muted-foreground bg-transparent"
-      }`}
-    >
-      {label}{value ? `: ${value}` : ""}
-    </span>
-    </DiagramFigure>
+      <span
+    className={`px-2 py-1 rounded-md border text-[10px] font-semibold transition-all ${
+      disabled
+        ? "border-border/40 text-muted-foreground/40 bg-transparent"
+        : value
+        ? "border-primary bg-primary/10 text-primary"
+        : active
+        ? "border-primary/60 text-primary bg-primary/5 animate-pulse"
+        : "border-border text-muted-foreground bg-transparent"
+    }`}
+  >
+    {label}{value ? `: ${value}` : ""}
+  </span>
   );
 
 const Arrow = () => <span className="text-muted-foreground/50 text-xs">→</span>;

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Drug = "adrenaline" | "noradrenaline" | "dopamine" | "dobutamine" | "phenylephrine" | "isoprenaline" | "ephedrine";
 
@@ -370,54 +369,48 @@ const VasoactiveStructures = () => {
   const isWide = selected === "dobutamine";
 
   return (
-    <DiagramFigure
-      id="vasoactive-structures"
-      title="Vasoactive structures"
-      description="Auto-generated wrapper for the Vasoactive structures anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <div className="space-y-4">
-        <h4 className="font-semibold text-foreground">Molecular Structures</h4>
-        <div className="flex flex-wrap gap-2">
-          {drugs.map((drug) => (
-            <button
-              key={drug.key}
-              onClick={() => setSelected(drug.key)}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                selected === drug.key ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-              }`}
-            >
-              {drug.label}
-            </button>
-          ))}
-        </div>
-        <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-          <svg viewBox={isWide ? "0 0 480 160" : "0 0 420 170"} className="w-full h-auto">
-            <text x={isWide ? 240 : 210} y="14" textAnchor="middle" className="fill-foreground text-[13px] font-bold">{d.name}</text>
-            <SVGComponent />
-          </svg>
-          <div className="mt-3 space-y-1">
-            <p className="text-xs font-medium text-foreground">MW: {d.mw} | Formula: {d.formula}</p>
-            <ul className="text-xs text-muted-foreground space-y-0.5">
-              {d.features.map((f, i) => (
-                <li key={i}>• {f}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-  
-        {/* SAR summary */}
-        <div className="rounded-lg bg-background/60 p-3 border border-border">
-          <p className="text-xs font-bold text-foreground mb-2">Structure-Activity Relationships (SAR)</p>
-          <ul className="text-xs text-muted-foreground space-y-1">
-            <li>• <strong>Catechol ring</strong> (3,4-diOH): required for α and β activity. Absent → not a catecholamine</li>
-            <li>• <strong>β-hydroxyl</strong>: required for significant adrenoreceptor binding. Absent in dopamine → D₁ preference</li>
-            <li>• <strong>↑ N-substituent size</strong>: H (NA) → CH₃ (adrenaline) → isopropyl (isoprenaline) → ↑ β / ↓ α</li>
-            <li>• <strong>α-methyl</strong> (ephedrine): resists MAO, enables oral bioavailability, indirect action</li>
-            <li>• <strong>Absent 4-OH</strong> (phenylephrine): resists COMT → longer acting, pure α₁</li>
+            <div className="space-y-4">
+      <h4 className="font-semibold text-foreground">Molecular Structures</h4>
+      <div className="flex flex-wrap gap-2">
+        {drugs.map((drug) => (
+          <button
+            key={drug.key}
+            onClick={() => setSelected(drug.key)}
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+              selected === drug.key ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+            }`}
+          >
+            {drug.label}
+          </button>
+        ))}
+      </div>
+      <div className="bg-secondary/30 rounded-xl p-5 border border-border">
+        <svg viewBox={isWide ? "0 0 480 160" : "0 0 420 170"} className="w-full h-auto">
+          <text x={isWide ? 240 : 210} y="14" textAnchor="middle" className="fill-foreground text-[13px] font-bold">{d.name}</text>
+          <SVGComponent />
+        </svg>
+        <div className="mt-3 space-y-1">
+          <p className="text-xs font-medium text-foreground">MW: {d.mw} | Formula: {d.formula}</p>
+          <ul className="text-xs text-muted-foreground space-y-0.5">
+            {d.features.map((f, i) => (
+              <li key={i}>• {f}</li>
+            ))}
           </ul>
         </div>
       </div>
-    </DiagramFigure>
+
+      {/* SAR summary */}
+      <div className="rounded-lg bg-background/60 p-3 border border-border">
+        <p className="text-xs font-bold text-foreground mb-2">Structure-Activity Relationships (SAR)</p>
+        <ul className="text-xs text-muted-foreground space-y-1">
+          <li>• <strong>Catechol ring</strong> (3,4-diOH): required for α and β activity. Absent → not a catecholamine</li>
+          <li>• <strong>β-hydroxyl</strong>: required for significant adrenoreceptor binding. Absent in dopamine → D₁ preference</li>
+          <li>• <strong>↑ N-substituent size</strong>: H (NA) → CH₃ (adrenaline) → isopropyl (isoprenaline) → ↑ β / ↓ α</li>
+          <li>• <strong>α-methyl</strong> (ephedrine): resists MAO, enables oral bioavailability, indirect action</li>
+          <li>• <strong>Absent 4-OH</strong> (phenylephrine): resists COMT → longer acting, pure α₁</li>
+        </ul>
+      </div>
+    </div>
   );
 };
 

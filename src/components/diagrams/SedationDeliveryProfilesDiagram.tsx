@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Play, Pause, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated comparison of three IV sedation delivery profiles:
@@ -422,110 +421,104 @@ export const SedationDeliveryProfilesDiagram = () => {
   };
 
   return (
-    <DiagramFigure
-      id="sedation-delivery-profiles-diagram"
-      title="Sedation delivery profiles"
-      description="Auto-generated wrapper for the Sedation delivery profiles anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <figure className="my-6 rounded-xl border border-border bg-secondary/20 p-4">
-        <figcaption className="mb-3 flex items-start justify-between gap-3">
-          <div>
-            <p className="font-serif font-bold text-foreground text-base">
-              IV sedation delivery profiles
-            </p>
-            <p className="text-xs text-muted-foreground mt-0.5">
-              Plasma concentration (Cp) vs time. Shaded band = therapeutic sedation window.
-            </p>
-          </div>
-          <div className="flex items-center gap-1.5 flex-shrink-0">
-            <Button
-              type="button"
-              size="sm"
-              variant="outline"
-              onClick={handleToggle}
-              aria-label={playing ? "Pause animation" : "Play animation"}
-              className="h-8 px-2"
-            >
-              {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
-            </Button>
-            <Button
-              type="button"
-              size="sm"
-              variant="outline"
-              onClick={handleReset}
-              aria-label="Restart animation"
-              className="h-8 px-2"
-            >
-              <RotateCcw className="h-3.5 w-3.5" />
-            </Button>
-          </div>
-        </figcaption>
-  
-        <div className="grid gap-3 md:grid-cols-3">
-          <Panel
-            title="Intermittent boluses"
-            subtitle="peak–trough sawtooth"
-            curve={bolusCurve}
-            progress={progress}
-            colorVar="--destructive"
-            markers={[0.0, 0.25, 0.5, 0.75]}
-            targetId="technique-bolus"
-            linkLabel="Read about boluses →"
-            callouts={[
-              { at: 0.04, label: "1st bolus", dy: -14 },
-              { at: 0.18, label: "trough — patient moves", dy: 16 },
-              { at: 0.54, label: "peak — apnoea risk", dy: -14 },
-              { at: 0.92, label: "sawtooth pattern", dy: 14 },
-            ]}
-          />
-          <Panel
-            title="Manual infusion"
-            subtitle="slow approach to steady state"
-            curve={infusionCurve}
-            progress={progress}
-            colorVar="--accent-foreground"
-            targetId="technique-infusion"
-            linkLabel="Read about manual infusion →"
-            callouts={[
-              { at: 0.05, label: "infusion starts", dy: 14 },
-              { at: 0.32, label: "1τ ≈ 63% of target", dy: -14 },
-              { at: 0.7, label: "approaching steady state", dy: -14 },
-              { at: 0.95, label: "≈ 4–5τ to plateau", dy: 12 },
-            ]}
-          />
-          <Panel
-            title="TCI (Cp/Ce target)"
-            subtitle="bolus + variable maintenance"
-            curve={tciCurve}
-            progress={progress}
-            colorVar="--primary"
-            targetId="technique-tci"
-            linkLabel="Read about TCI →"
-            callouts={[
-              { at: 0.04, label: "loading bolus", dy: 14 },
-              { at: 0.1, label: "brief overshoot", dy: -14 },
-              { at: 0.4, label: "rate adjusts to hold target", dy: -14 },
-              { at: 0.85, label: "stable Ce — easy titration", dy: 14 },
-            ]}
-          />
+            <figure className="my-6 rounded-xl border border-border bg-secondary/20 p-4">
+      <figcaption className="mb-3 flex items-start justify-between gap-3">
+        <div>
+          <p className="font-serif font-bold text-foreground text-base">
+            IV sedation delivery profiles
+          </p>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Plasma concentration (Cp) vs time. Shaded band = therapeutic sedation window.
+          </p>
         </div>
-  
-        <ul className="mt-4 grid gap-2 md:grid-cols-3 text-xs text-muted-foreground leading-relaxed">
-          <li>
-            <span className={cn("inline-block w-2 h-2 rounded-full mr-1.5 align-middle bg-destructive")} />
-            Boluses overshoot then fall below target → apnoea, then patient movement.
-          </li>
-          <li>
-            <span className="inline-block w-2 h-2 rounded-full mr-1.5 align-middle bg-muted-foreground" />
-            Fixed-rate infusion is smoother but takes ~4–5 time constants to reach target.
-          </li>
-          <li>
-            <span className="inline-block w-2 h-2 rounded-full mr-1.5 align-middle bg-primary" />
-            TCI uses a PK model to give an initial bolus then continually adjusts the rate to hold Cp/Ce on target.
-          </li>
-        </ul>
-      </figure>
-    </DiagramFigure>
+        <div className="flex items-center gap-1.5 flex-shrink-0">
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={handleToggle}
+            aria-label={playing ? "Pause animation" : "Play animation"}
+            className="h-8 px-2"
+          >
+            {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+          </Button>
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={handleReset}
+            aria-label="Restart animation"
+            className="h-8 px-2"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+          </Button>
+        </div>
+      </figcaption>
+
+      <div className="grid gap-3 md:grid-cols-3">
+        <Panel
+          title="Intermittent boluses"
+          subtitle="peak–trough sawtooth"
+          curve={bolusCurve}
+          progress={progress}
+          colorVar="--destructive"
+          markers={[0.0, 0.25, 0.5, 0.75]}
+          targetId="technique-bolus"
+          linkLabel="Read about boluses →"
+          callouts={[
+            { at: 0.04, label: "1st bolus", dy: -14 },
+            { at: 0.18, label: "trough — patient moves", dy: 16 },
+            { at: 0.54, label: "peak — apnoea risk", dy: -14 },
+            { at: 0.92, label: "sawtooth pattern", dy: 14 },
+          ]}
+        />
+        <Panel
+          title="Manual infusion"
+          subtitle="slow approach to steady state"
+          curve={infusionCurve}
+          progress={progress}
+          colorVar="--accent-foreground"
+          targetId="technique-infusion"
+          linkLabel="Read about manual infusion →"
+          callouts={[
+            { at: 0.05, label: "infusion starts", dy: 14 },
+            { at: 0.32, label: "1τ ≈ 63% of target", dy: -14 },
+            { at: 0.7, label: "approaching steady state", dy: -14 },
+            { at: 0.95, label: "≈ 4–5τ to plateau", dy: 12 },
+          ]}
+        />
+        <Panel
+          title="TCI (Cp/Ce target)"
+          subtitle="bolus + variable maintenance"
+          curve={tciCurve}
+          progress={progress}
+          colorVar="--primary"
+          targetId="technique-tci"
+          linkLabel="Read about TCI →"
+          callouts={[
+            { at: 0.04, label: "loading bolus", dy: 14 },
+            { at: 0.1, label: "brief overshoot", dy: -14 },
+            { at: 0.4, label: "rate adjusts to hold target", dy: -14 },
+            { at: 0.85, label: "stable Ce — easy titration", dy: 14 },
+          ]}
+        />
+      </div>
+
+      <ul className="mt-4 grid gap-2 md:grid-cols-3 text-xs text-muted-foreground leading-relaxed">
+        <li>
+          <span className={cn("inline-block w-2 h-2 rounded-full mr-1.5 align-middle bg-destructive")} />
+          Boluses overshoot then fall below target → apnoea, then patient movement.
+        </li>
+        <li>
+          <span className="inline-block w-2 h-2 rounded-full mr-1.5 align-middle bg-muted-foreground" />
+          Fixed-rate infusion is smoother but takes ~4–5 time constants to reach target.
+        </li>
+        <li>
+          <span className="inline-block w-2 h-2 rounded-full mr-1.5 align-middle bg-primary" />
+          TCI uses a PK model to give an initial bolus then continually adjusts the rate to hold Cp/Ce on target.
+        </li>
+      </ul>
+    </figure>
   );
 };
 

@@ -1,5 +1,4 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Addisonian / adrenal crisis — pathophysiology + emergency management.
@@ -158,20 +157,14 @@ const AdrenalCrisisScene = ({ active }: { active: number }) => {
 };
 
 const AdrenalCrisisAnimation = () => (
-    <DiagramFigure
-      id="adrenal-crisis-animation"
-      title="Adrenal crisis"
-      description="Auto-generated wrapper for the Adrenal crisis animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <AnimatedMechanism
-      title="Adrenal (Addisonian) crisis — pathophysiology + management"
-      subtitle="Refractory shock with low Na⁺, high K⁺ and low glucose — treat with hydrocortisone before tests"
-      steps={STEPS}
-      stepMs={3400}
-      accentClass="border-destructive/40"
-      renderScene={(active) => <AdrenalCrisisScene active={active} />}
-    />
-    </DiagramFigure>
+      <AnimatedMechanism
+    title="Adrenal (Addisonian) crisis — pathophysiology + management"
+    subtitle="Refractory shock with low Na⁺, high K⁺ and low glucose — treat with hydrocortisone before tests"
+    steps={STEPS}
+    stepMs={3400}
+    accentClass="border-destructive/40"
+    renderScene={(active) => <AdrenalCrisisScene active={active} />}
+  />
   );
 
 export default AdrenalCrisisAnimation;

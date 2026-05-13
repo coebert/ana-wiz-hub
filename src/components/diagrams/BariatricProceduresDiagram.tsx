@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Procedure = "rygb" | "sleeve" | "band";
 
@@ -172,28 +171,22 @@ const SleeveImage = ({ color }: { color: string }) => (
 );
 
 const BandImage = ({ color }: { color: string }) => (
-    <DiagramFigure
-      id="bariatric-procedures-diagram"
-      title="Bariatric procedures"
-      description="Auto-generated wrapper for the Bariatric procedures anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <g>
-      {/* Oesophagus */}
-      <path d="M90 10 L90 50" stroke="hsl(var(--muted-foreground))" strokeWidth="3" fill="none" strokeLinecap="round" />
-      {/* Full stomach */}
-      <path d="M90 50 Q60 50 50 80 Q35 130 55 180 Q70 210 100 205 Q130 200 140 160 Q150 120 130 80 Q120 55 90 50Z" fill="hsl(var(--muted))" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
-      {/* Band */}
-      <ellipse cx="90" cy="72" rx="28" ry="6" fill="none" stroke={color} strokeWidth="3" />
-      <text x="90" y="60" textAnchor="middle" fontSize="6" fill={color} fontWeight="bold">small pouch</text>
-      <text x="90" y="145" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">stomach</text>
-      {/* Tubing to port */}
-      <path d="M118 72 L150 60 L170 40" stroke={color} strokeWidth="1.5" fill="none" />
-      <rect x="163" y="30" width="20" height="14" rx="3" fill={color} opacity="0.3" stroke={color} strokeWidth="1.5" />
-      <text x="173" y="39" textAnchor="middle" fontSize="5" fill={color}>port</text>
-      {/* Duodenum */}
-      <path d="M100 205 Q110 220 105 240 L100 260" stroke="hsl(var(--muted-foreground))" strokeWidth="3" fill="none" strokeLinecap="round" />
-    </g>
-    </DiagramFigure>
+      <g>
+    {/* Oesophagus */}
+    <path d="M90 10 L90 50" stroke="hsl(var(--muted-foreground))" strokeWidth="3" fill="none" strokeLinecap="round" />
+    {/* Full stomach */}
+    <path d="M90 50 Q60 50 50 80 Q35 130 55 180 Q70 210 100 205 Q130 200 140 160 Q150 120 130 80 Q120 55 90 50Z" fill="hsl(var(--muted))" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
+    {/* Band */}
+    <ellipse cx="90" cy="72" rx="28" ry="6" fill="none" stroke={color} strokeWidth="3" />
+    <text x="90" y="60" textAnchor="middle" fontSize="6" fill={color} fontWeight="bold">small pouch</text>
+    <text x="90" y="145" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">stomach</text>
+    {/* Tubing to port */}
+    <path d="M118 72 L150 60 L170 40" stroke={color} strokeWidth="1.5" fill="none" />
+    <rect x="163" y="30" width="20" height="14" rx="3" fill={color} opacity="0.3" stroke={color} strokeWidth="1.5" />
+    <text x="173" y="39" textAnchor="middle" fontSize="5" fill={color}>port</text>
+    {/* Duodenum */}
+    <path d="M100 205 Q110 220 105 240 L100 260" stroke="hsl(var(--muted-foreground))" strokeWidth="3" fill="none" strokeLinecap="round" />
+  </g>
   );
 
 export default BariatricProceduresDiagram;

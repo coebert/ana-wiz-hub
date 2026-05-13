@@ -1,5 +1,4 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "./MechanismCascadeDiagram";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const NAP6: CascadeSource = {
   label: "NAP Reports",
@@ -74,18 +73,12 @@ const steps: CascadeStep[] = [
 ];
 
 export const AnaphylaxisCascadeDiagram = () => (
-    <DiagramFigure
-      id="anaphylaxis-cascade-diagram"
-      title="Anaphylaxis cascade"
-      description="Auto-generated wrapper for the Anaphylaxis cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <MechanismCascadeDiagram
-      title="Perioperative anaphylaxis — mechanism cascade"
-      subtitle="From trigger to adrenaline rescue, with NAP6 epidemiology and refractory escalation."
-      accent="clinical"
-      steps={steps}
-    />
-    </DiagramFigure>
+      <MechanismCascadeDiagram
+    title="Perioperative anaphylaxis — mechanism cascade"
+    subtitle="From trigger to adrenaline rescue, with NAP6 epidemiology and refractory escalation."
+    accent="clinical"
+    steps={steps}
+  />
   );
 
 export default AnaphylaxisCascadeDiagram;

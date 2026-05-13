@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface VolumeSegment {
   id: string;
@@ -76,222 +75,216 @@ export const LungVolumesDiagram = () => {
   const activeInfo = activeCapacity || activeSegment;
 
   return (
-    <DiagramFigure
-      id="lung-volumes-diagram"
-      title="Lung volumes"
-      description="Auto-generated wrapper for the Lung volumes anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-4">
-        <h3 className="font-semibold text-foreground text-sm">Lung Volumes & Capacities</h3>
-  
-        {/* SVG */}
-        <div className="bg-background rounded-lg border border-border overflow-hidden">
-          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
-            {/* Volume segments */}
-            {segPositions.map((seg) => {
-              const dimmed = highlightedSegIds && !highlightedSegIds.has(seg.id);
-              const isActive = activeItem === seg.id;
-              return (
-                <g key={seg.id} onClick={() => setActiveItem(activeItem === seg.id ? null : seg.id)} style={{ cursor: "pointer" }}>
-                  <rect
-                    x={BAR_LEFT}
-                    y={seg.y}
-                    width={BAR_WIDTH}
-                    height={seg.h}
-                    fill={seg.color}
-                    opacity={dimmed ? 0.15 : 0.35}
-                    stroke={isActive ? seg.color : "hsl(var(--border))"}
-                    strokeWidth={isActive ? 2 : 0.5}
-                    rx="2"
-                  />
-                  {/* Segment label inside bar */}
-                  {seg.h > 20 && (
-                    <text
-                      x={BAR_LEFT + BAR_WIDTH / 2}
-                      y={seg.y + seg.h / 2 + 4}
-                      textAnchor="middle"
-                      fontSize="11"
-                      fontWeight="700"
-                      fill={dimmed ? "hsl(var(--muted-foreground))" : seg.color}
-                      opacity={dimmed ? 0.4 : 1}
-                    >
-                      {seg.label}
-                    </text>
-                  )}
-                  {/* Volume value on left */}
-                  <text
-                    x={BAR_LEFT - 8}
-                    y={seg.y + seg.h / 2 + 4}
-                    textAnchor="end"
-                    fontSize="9"
-                    fill="hsl(var(--muted-foreground))"
-                    opacity={dimmed ? 0.3 : 0.8}
-                  >
-                    {seg.value} ml
-                  </text>
-                </g>
-              );
-            })}
-  
-            {/* Horizontal divider lines between segments */}
-            {segPositions.slice(0, -1).map((seg, i) => (
-              <line
-                key={`div-${i}`}
-                x1={BAR_LEFT}
-                x2={BAR_LEFT + BAR_WIDTH}
-                y1={seg.y + seg.h}
-                y2={seg.y + seg.h}
-                stroke="hsl(var(--background))"
-                strokeWidth="2"
-              />
-            ))}
-  
-            {/* Level labels on the right (TLC line, FRC line, RV line) */}
-            {[
-              { label: "TLC", y: BAR_TOP },
-              { label: "FRC", y: segPositions[1].y + segPositions[1].h },
-              { label: "RV", y: segPositions[2].y + segPositions[2].h },
-            ].map((lvl) => (
-              <g key={lvl.label}>
-                <line
-                  x1={BAR_LEFT + BAR_WIDTH}
-                  x2={BAR_LEFT + BAR_WIDTH + 15}
-                  y1={lvl.y}
-                  y2={lvl.y}
-                  stroke="hsl(var(--muted-foreground))"
-                  strokeWidth="0.5"
-                  strokeDasharray="2,2"
+        <div className="space-y-4">
+      <h3 className="font-semibold text-foreground text-sm">Lung Volumes & Capacities</h3>
+
+      {/* SVG */}
+      <div className="bg-background rounded-lg border border-border overflow-hidden">
+        <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
+          {/* Volume segments */}
+          {segPositions.map((seg) => {
+            const dimmed = highlightedSegIds && !highlightedSegIds.has(seg.id);
+            const isActive = activeItem === seg.id;
+            return (
+              <g key={seg.id} onClick={() => setActiveItem(activeItem === seg.id ? null : seg.id)} style={{ cursor: "pointer" }}>
+                <rect
+                  x={BAR_LEFT}
+                  y={seg.y}
+                  width={BAR_WIDTH}
+                  height={seg.h}
+                  fill={seg.color}
+                  opacity={dimmed ? 0.15 : 0.35}
+                  stroke={isActive ? seg.color : "hsl(var(--border))"}
+                  strokeWidth={isActive ? 2 : 0.5}
+                  rx="2"
                 />
+                {/* Segment label inside bar */}
+                {seg.h > 20 && (
+                  <text
+                    x={BAR_LEFT + BAR_WIDTH / 2}
+                    y={seg.y + seg.h / 2 + 4}
+                    textAnchor="middle"
+                    fontSize="11"
+                    fontWeight="700"
+                    fill={dimmed ? "hsl(var(--muted-foreground))" : seg.color}
+                    opacity={dimmed ? 0.4 : 1}
+                  >
+                    {seg.label}
+                  </text>
+                )}
+                {/* Volume value on left */}
                 <text
-                  x={BAR_LEFT + BAR_WIDTH + 18}
-                  y={lvl.y + 3}
-                  fontSize="8"
+                  x={BAR_LEFT - 8}
+                  y={seg.y + seg.h / 2 + 4}
+                  textAnchor="end"
+                  fontSize="9"
                   fill="hsl(var(--muted-foreground))"
+                  opacity={dimmed ? 0.3 : 0.8}
                 >
-                  {lvl.label}
+                  {seg.value} ml
                 </text>
               </g>
-            ))}
-  
-            {/* Capacity brackets on the far right */}
-            {capBrackets.map((cap, idx) => {
-              const bx = BAR_LEFT + BAR_WIDTH + 45 + idx * 38;
-              const isActive = activeItem === cap.id;
-              const dimmed = highlightedSegIds && !highlightedSegIds.has(cap.segmentIds[0]) && activeItem !== cap.id;
-              return (
-                <g key={cap.id} onClick={() => setActiveItem(activeItem === cap.id ? null : cap.id)} style={{ cursor: "pointer" }}>
-                  {/* Vertical bracket line */}
-                  <line
-                    x1={bx} x2={bx}
-                    y1={cap.top + 2} y2={cap.bottom - 2}
-                    stroke={cap.color}
-                    strokeWidth={isActive ? 2.5 : 1.5}
-                    opacity={dimmed ? 0.3 : 0.8}
-                  />
-                  {/* Top tick */}
-                  <line x1={bx - 4} x2={bx} y1={cap.top + 2} y2={cap.top + 2} stroke={cap.color} strokeWidth={isActive ? 2.5 : 1.5} opacity={dimmed ? 0.3 : 0.8} />
-                  {/* Bottom tick */}
-                  <line x1={bx - 4} x2={bx} y1={cap.bottom - 2} y2={cap.bottom - 2} stroke={cap.color} strokeWidth={isActive ? 2.5 : 1.5} opacity={dimmed ? 0.3 : 0.8} />
-                  {/* Label */}
-                  <text
-                    x={bx + 2}
-                    y={(cap.top + cap.bottom) / 2 + 4}
-                    fontSize="9"
-                    fontWeight="700"
-                    fill={cap.color}
-                    opacity={dimmed ? 0.3 : 1}
-                    transform={`rotate(-90, ${bx + 2}, ${(cap.top + cap.bottom) / 2 + 4})`}
-                    textAnchor="middle"
-                  >
-                    {cap.label}
-                  </text>
-                </g>
-              );
-            })}
-  
-            {/* Highlight bracket fill when capacity selected */}
-            {activeCapacity && (() => {
-              const bracket = capBrackets.find((c) => c.id === activeCapacity.id)!;
-              return (
-                    <rect
-                  x={BAR_LEFT}
-                  y={bracket.top}
-                  width={BAR_WIDTH}
-                  height={bracket.bottom - bracket.top}
-                  fill={activeCapacity.color}
-                  opacity={0.08}
-                  stroke={activeCapacity.color}
-                  strokeWidth="1.5"
-                  strokeDasharray="4,3"
-                  rx="2"
-                  pointerEvents="none"
+            );
+          })}
+
+          {/* Horizontal divider lines between segments */}
+          {segPositions.slice(0, -1).map((seg, i) => (
+            <line
+              key={`div-${i}`}
+              x1={BAR_LEFT}
+              x2={BAR_LEFT + BAR_WIDTH}
+              y1={seg.y + seg.h}
+              y2={seg.y + seg.h}
+              stroke="hsl(var(--background))"
+              strokeWidth="2"
+            />
+          ))}
+
+          {/* Level labels on the right (TLC line, FRC line, RV line) */}
+          {[
+            { label: "TLC", y: BAR_TOP },
+            { label: "FRC", y: segPositions[1].y + segPositions[1].h },
+            { label: "RV", y: segPositions[2].y + segPositions[2].h },
+          ].map((lvl) => (
+            <g key={lvl.label}>
+              <line
+                x1={BAR_LEFT + BAR_WIDTH}
+                x2={BAR_LEFT + BAR_WIDTH + 15}
+                y1={lvl.y}
+                y2={lvl.y}
+                stroke="hsl(var(--muted-foreground))"
+                strokeWidth="0.5"
+                strokeDasharray="2,2"
+              />
+              <text
+                x={BAR_LEFT + BAR_WIDTH + 18}
+                y={lvl.y + 3}
+                fontSize="8"
+                fill="hsl(var(--muted-foreground))"
+              >
+                {lvl.label}
+              </text>
+            </g>
+          ))}
+
+          {/* Capacity brackets on the far right */}
+          {capBrackets.map((cap, idx) => {
+            const bx = BAR_LEFT + BAR_WIDTH + 45 + idx * 38;
+            const isActive = activeItem === cap.id;
+            const dimmed = highlightedSegIds && !highlightedSegIds.has(cap.segmentIds[0]) && activeItem !== cap.id;
+            return (
+              <g key={cap.id} onClick={() => setActiveItem(activeItem === cap.id ? null : cap.id)} style={{ cursor: "pointer" }}>
+                {/* Vertical bracket line */}
+                <line
+                  x1={bx} x2={bx}
+                  y1={cap.top + 2} y2={cap.bottom - 2}
+                  stroke={cap.color}
+                  strokeWidth={isActive ? 2.5 : 1.5}
+                  opacity={dimmed ? 0.3 : 0.8}
                 />
-    );
-            })()}
-          </svg>
-        </div>
-  
-        {/* Interactive buttons below for mobile */}
-        <div className="space-y-2">
-          <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">Volumes</p>
-          <div className="flex flex-wrap gap-1.5">
-            {segments.map((seg) => (
-              <button
-                key={seg.id}
-                onClick={() => setActiveItem(activeItem === seg.id ? null : seg.id)}
-                className={cn(
-                  "text-xs px-2.5 py-1.5 rounded-lg border transition-all font-medium",
-                  activeItem === seg.id
-                    ? "shadow-sm"
-                    : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
-                )}
-                style={activeItem === seg.id ? { borderColor: seg.color, background: `${seg.color}15`, color: seg.color } : undefined}
-              >
-                {seg.label}
-              </button>
-            ))}
-          </div>
-          <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold mt-3">Capacities</p>
-          <div className="flex flex-wrap gap-1.5">
-            {capacities.map((cap) => (
-              <button
-                key={cap.id}
-                onClick={() => setActiveItem(activeItem === cap.id ? null : cap.id)}
-                className={cn(
-                  "text-xs px-2.5 py-1.5 rounded-lg border transition-all font-medium",
-                  activeItem === cap.id
-                    ? "shadow-sm"
-                    : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
-                )}
-                style={activeItem === cap.id ? { borderColor: cap.color, background: `${cap.color}15`, color: cap.color } : undefined}
-              >
-                {cap.label}
-              </button>
-            ))}
-          </div>
-        </div>
-  
-        {/* Info panel */}
-        {activeInfo && (
-          <div
-            className="p-3 rounded-lg border border-border"
-            style={{ background: `${"color" in activeInfo ? activeInfo.color : "hsl(var(--primary))"}10` }}
-          >
-            <p className="text-xs font-semibold mb-1" style={{ color: activeInfo.color }}>
-              {activeInfo.fullName} ({activeInfo.label})
-              {"value" in activeInfo && ` — ${(activeInfo as VolumeSegment).value} ml`}
-              {activeCapacity && ` — ${activeCapacity.segmentIds.reduce((sum, id) => sum + (segments.find(s => s.id === id)?.value || 0), 0)} ml`}
-            </p>
-            <p className="text-xs text-muted-foreground leading-relaxed">{activeInfo.definition}</p>
-          </div>
-        )}
-  
-        {!activeInfo && (
-          <p className="text-xs text-muted-foreground/60 text-center italic">
-            Tap a volume or capacity to see its definition
-          </p>
-        )}
+                {/* Top tick */}
+                <line x1={bx - 4} x2={bx} y1={cap.top + 2} y2={cap.top + 2} stroke={cap.color} strokeWidth={isActive ? 2.5 : 1.5} opacity={dimmed ? 0.3 : 0.8} />
+                {/* Bottom tick */}
+                <line x1={bx - 4} x2={bx} y1={cap.bottom - 2} y2={cap.bottom - 2} stroke={cap.color} strokeWidth={isActive ? 2.5 : 1.5} opacity={dimmed ? 0.3 : 0.8} />
+                {/* Label */}
+                <text
+                  x={bx + 2}
+                  y={(cap.top + cap.bottom) / 2 + 4}
+                  fontSize="9"
+                  fontWeight="700"
+                  fill={cap.color}
+                  opacity={dimmed ? 0.3 : 1}
+                  transform={`rotate(-90, ${bx + 2}, ${(cap.top + cap.bottom) / 2 + 4})`}
+                  textAnchor="middle"
+                >
+                  {cap.label}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* Highlight bracket fill when capacity selected */}
+          {activeCapacity && (() => {
+            const bracket = capBrackets.find((c) => c.id === activeCapacity.id)!;
+            return (
+                  <rect
+                x={BAR_LEFT}
+                y={bracket.top}
+                width={BAR_WIDTH}
+                height={bracket.bottom - bracket.top}
+                fill={activeCapacity.color}
+                opacity={0.08}
+                stroke={activeCapacity.color}
+                strokeWidth="1.5"
+                strokeDasharray="4,3"
+                rx="2"
+                pointerEvents="none"
+              />
+  );
+          })()}
+        </svg>
       </div>
-    </DiagramFigure>
+
+      {/* Interactive buttons below for mobile */}
+      <div className="space-y-2">
+        <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">Volumes</p>
+        <div className="flex flex-wrap gap-1.5">
+          {segments.map((seg) => (
+            <button
+              key={seg.id}
+              onClick={() => setActiveItem(activeItem === seg.id ? null : seg.id)}
+              className={cn(
+                "text-xs px-2.5 py-1.5 rounded-lg border transition-all font-medium",
+                activeItem === seg.id
+                  ? "shadow-sm"
+                  : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
+              )}
+              style={activeItem === seg.id ? { borderColor: seg.color, background: `${seg.color}15`, color: seg.color } : undefined}
+            >
+              {seg.label}
+            </button>
+          ))}
+        </div>
+        <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold mt-3">Capacities</p>
+        <div className="flex flex-wrap gap-1.5">
+          {capacities.map((cap) => (
+            <button
+              key={cap.id}
+              onClick={() => setActiveItem(activeItem === cap.id ? null : cap.id)}
+              className={cn(
+                "text-xs px-2.5 py-1.5 rounded-lg border transition-all font-medium",
+                activeItem === cap.id
+                  ? "shadow-sm"
+                  : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
+              )}
+              style={activeItem === cap.id ? { borderColor: cap.color, background: `${cap.color}15`, color: cap.color } : undefined}
+            >
+              {cap.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Info panel */}
+      {activeInfo && (
+        <div
+          className="p-3 rounded-lg border border-border"
+          style={{ background: `${"color" in activeInfo ? activeInfo.color : "hsl(var(--primary))"}10` }}
+        >
+          <p className="text-xs font-semibold mb-1" style={{ color: activeInfo.color }}>
+            {activeInfo.fullName} ({activeInfo.label})
+            {"value" in activeInfo && ` — ${(activeInfo as VolumeSegment).value} ml`}
+            {activeCapacity && ` — ${activeCapacity.segmentIds.reduce((sum, id) => sum + (segments.find(s => s.id === id)?.value || 0), 0)} ml`}
+          </p>
+          <p className="text-xs text-muted-foreground leading-relaxed">{activeInfo.definition}</p>
+        </div>
+      )}
+
+      {!activeInfo && (
+        <p className="text-xs text-muted-foreground/60 text-center italic">
+          Tap a volume or capacity to see its definition
+        </p>
+      )}
+    </div>
   );
 };

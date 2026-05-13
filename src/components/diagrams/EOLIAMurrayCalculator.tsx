@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive EOLIA / Murray Lung Injury Score calculator for ARDS.
@@ -360,18 +359,12 @@ function TrendChart({ history, onReset }: { history: TrendPoint[]; onReset: () =
 
 function LegendDot({ color, label, dashed }: { color: string; label: string; dashed?: boolean }) {
   return (
-    <DiagramFigure
-      id="eolia-murray-calculator"
-      title="EOLIA murray"
-      description="Auto-generated wrapper for the EOLIA murray interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <div className="flex items-center gap-1.5">
-        <svg width={20} height={6}>
-          <line x1={0} x2={20} y1={3} y2={3} stroke={color} strokeWidth={2} strokeDasharray={dashed ? "3 2" : "0"} />
-        </svg>
-        <span className="text-muted-foreground font-mono">{label}</span>
-      </div>
-    </DiagramFigure>
+            <div className="flex items-center gap-1.5">
+      <svg width={20} height={6}>
+        <line x1={0} x2={20} y1={3} y2={3} stroke={color} strokeWidth={2} strokeDasharray={dashed ? "3 2" : "0"} />
+      </svg>
+      <span className="text-muted-foreground font-mono">{label}</span>
+    </div>
   );
 }
 

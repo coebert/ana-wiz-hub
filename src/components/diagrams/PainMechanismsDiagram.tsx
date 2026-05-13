@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive comparison of the three IASP-recognised pain mechanisms:
@@ -218,153 +217,147 @@ export const PainMechanismsDiagram = () => {
   const isLesion = (s: string) => lesionStages[selected].includes(s);
 
   return (
-    <DiagramFigure
-      id="pain-mechanisms-diagram"
-      title="Pain mechanisms"
-      description="Auto-generated wrapper for the Pain mechanisms anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 space-y-4">
-        <div className="bg-muted/30 rounded-xl border border-border p-4">
-          <DiagramToggleBar
-            toggles={[
-              { label: "Features", active: showFeatures, onChange: () => setShowFeatures((v) => !v) },
-              { label: "Avoid", active: showAvoid, onChange: () => setShowAvoid((v) => !v) },
-            ]}
-          />
-  
-          {/* Schematic of the pain pathway with lesion site highlighted */}
-          <svg
-            viewBox={`0 0 ${W} ${H}`}
-            className="w-full h-auto"
-            role="img"
-            aria-label="Schematic of the pain pathway from peripheral tissue through nerve and dorsal horn to brain, with the lesion site highlighted for the selected mechanism"
-          >
-            <defs>
-              <radialGradient id="pmd-depth" cx="50%" cy="50%" r="65%">
-                <stop offset="0%" stopColor="hsl(var(--background))" stopOpacity="0" />
-                <stop offset="100%" stopColor="hsl(var(--background))" stopOpacity="0.25" />
-              </radialGradient>
-              <filter id="pmd-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                <feDropShadow dx="0" dy="1.5" stdDeviation="2" floodOpacity="0.18" />
-              </filter>
-              <marker id="pmd-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--muted-foreground))" />
-              </marker>
-            </defs>
-  
-            {/* Pathway line */}
-            <line x1="70" y1="100" x2="650" y2="100" stroke="hsl(var(--border))" strokeWidth="2" markerEnd="url(#pmd-arrow)" />
-  
-            {/* Stages */}
-            {stages.map((s, _i) => {
-              const lesion = isLesion(s.key);
-              const r = lesion ? 38 : 28;
-              const fill = lesion ? info.color : "hsl(var(--background))";
-              const stroke = lesion ? info.color : "hsl(var(--border))";
-              const opacity = lesion ? 0.85 : 1;
-  
-              // Icon glyph
-              const glyph =
-                s.key === "tissue" ? "🔥" :
-                s.key === "nerve"  ? "⚡" :
-                s.key === "cord"   ? "═"  :
-                                     "🧠";
-  
-              return (
-                <g key={s.key} filter="url(#pmd-shadow)">
-                  <circle cx={s.x} cy="100" r={r} fill={fill} stroke={stroke} strokeWidth={lesion ? 3 : 1.5} opacity={opacity} />
-                  <text x={s.x} y={107} textAnchor="middle" fontSize={lesion ? 22 : 16} fill={lesion ? "white" : "hsl(var(--foreground))"}>
-                    {glyph}
+        <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          toggles={[
+            { label: "Features", active: showFeatures, onChange: () => setShowFeatures((v) => !v) },
+            { label: "Avoid", active: showAvoid, onChange: () => setShowAvoid((v) => !v) },
+          ]}
+        />
+
+        {/* Schematic of the pain pathway with lesion site highlighted */}
+        <svg
+          viewBox={`0 0 ${W} ${H}`}
+          className="w-full h-auto"
+          role="img"
+          aria-label="Schematic of the pain pathway from peripheral tissue through nerve and dorsal horn to brain, with the lesion site highlighted for the selected mechanism"
+        >
+          <defs>
+            <radialGradient id="pmd-depth" cx="50%" cy="50%" r="65%">
+              <stop offset="0%" stopColor="hsl(var(--background))" stopOpacity="0" />
+              <stop offset="100%" stopColor="hsl(var(--background))" stopOpacity="0.25" />
+            </radialGradient>
+            <filter id="pmd-shadow" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="1.5" stdDeviation="2" floodOpacity="0.18" />
+            </filter>
+            <marker id="pmd-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--muted-foreground))" />
+            </marker>
+          </defs>
+
+          {/* Pathway line */}
+          <line x1="70" y1="100" x2="650" y2="100" stroke="hsl(var(--border))" strokeWidth="2" markerEnd="url(#pmd-arrow)" />
+
+          {/* Stages */}
+          {stages.map((s, _i) => {
+            const lesion = isLesion(s.key);
+            const r = lesion ? 38 : 28;
+            const fill = lesion ? info.color : "hsl(var(--background))";
+            const stroke = lesion ? info.color : "hsl(var(--border))";
+            const opacity = lesion ? 0.85 : 1;
+
+            // Icon glyph
+            const glyph =
+              s.key === "tissue" ? "🔥" :
+              s.key === "nerve"  ? "⚡" :
+              s.key === "cord"   ? "═"  :
+                                   "🧠";
+
+            return (
+              <g key={s.key} filter="url(#pmd-shadow)">
+                <circle cx={s.x} cy="100" r={r} fill={fill} stroke={stroke} strokeWidth={lesion ? 3 : 1.5} opacity={opacity} />
+                <text x={s.x} y={107} textAnchor="middle" fontSize={lesion ? 22 : 16} fill={lesion ? "white" : "hsl(var(--foreground))"}>
+                  {glyph}
+                </text>
+                <text x={s.x} y={160} textAnchor="middle" fontSize="11" fill="hsl(var(--foreground))" fontWeight={lesion ? 600 : 400}>
+                  {s.label}
+                </text>
+                {lesion && (
+                  <text x={s.x} y={177} textAnchor="middle" fontSize="9" fontWeight={600} fill={info.color}>
+                    LESION SITE
                   </text>
-                  <text x={s.x} y={160} textAnchor="middle" fontSize="11" fill="hsl(var(--foreground))" fontWeight={lesion ? 600 : 400}>
-                    {s.label}
-                  </text>
-                  {lesion && (
-                    <text x={s.x} y={177} textAnchor="middle" fontSize="9" fontWeight={600} fill={info.color}>
-                      LESION SITE
-                    </text>
-                  )}
-                  {lesion && (
-                    <circle cx={s.x} cy="100" r={r + 6} fill="none" stroke={info.color} strokeWidth="1" opacity="0.6">
-                      <animate attributeName="r" from={r + 4} to={r + 14} dur="1.6s" repeatCount="indefinite" />
-                      <animate attributeName="opacity" from="0.6" to="0" dur="1.6s" repeatCount="indefinite" />
-                    </circle>
-                  )}
-                </g>
-              );
-            })}
-  
-            {/* Stage axis labels */}
-            <text x={W / 2} y={25} textAnchor="middle" fontSize="11" fill="hsl(var(--muted-foreground))">
-              Pain pathway — periphery to cortex
-            </text>
-  
-            <rect x="0" y="0" width={W} height={H} fill="url(#pmd-depth)" pointerEvents="none" />
-          </svg>
-  
-          {/* Mechanism selector — three colour bands */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3">
-            {ORDER.map((k) => {
-              const m = MECHS[k];
-              const isSel = selected === k;
-              return (
-                    <button
-                  key={k}
-                  type="button"
-                  onClick={() => setSelected(k)}
-                  aria-pressed={isSel}
-                  className={`text-left p-3 rounded-lg border-2 transition-all ${
-                    isSel ? "shadow-md" : "hover:bg-background/60"
-                  }`}
-                  style={{
-                    borderColor: isSel ? m.color : "hsl(var(--border))",
-                    background: isSel ? `${m.color.replace(")", " / 0.08)").replace("hsl", "hsl")}` : "hsl(var(--background))",
-                  }}
-                >
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="font-serif font-bold text-base" style={{ color: m.color }}>
-                      {m.label}
-                    </span>
-                    <span className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded border" style={{ borderColor: m.color, color: m.color }}>
-                      {k === "nociplastic" ? "Newest" : k === "neuropathic" ? "2008" : "Classical"}
-                    </span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-snug">{m.oneLiner}</p>
-                </button>
-    );
-            })}
-          </div>
-  
-          {/* Detail panel */}
-          <div
-            className="mt-4 rounded-lg border border-border bg-background p-4 border-l-4"
-            style={{ borderLeftColor: info.color }}
-          >
-            <div className="flex items-baseline justify-between gap-3 flex-wrap mb-2">
-              <h4 className="font-serif font-bold text-foreground text-lg">
-                {info.label} pain
-              </h4>
-              <span className="text-[10px] uppercase tracking-wide text-muted-foreground">{info.iaspYear}</span>
-            </div>
-            <p className="text-sm text-muted-foreground italic mb-3">
-              <strong className="not-italic text-foreground">Lesion site:</strong> {info.lesion}
-            </p>
-  
-            <div className="grid md:grid-cols-2 gap-4">
-              <Section title="Mechanism" items={info.mechanism} color={info.color} />
-              <Section title="Example conditions" items={info.examples} color={info.color} />
-              {showFeatures && <Section title="Clinical features" items={info.features} color={info.color} />}
-              <Section title="Mechanism-targeted treatment" items={info.treatment} color={info.color} />
-              {showAvoid && <Section title="Avoid / low-value" items={info.avoid} color={info.color} variant="warning" />}
-            </div>
-          </div>
-  
-          <p className="mt-3 text-[11px] text-muted-foreground">
-            Many real-world chronic pain syndromes are <strong className="text-foreground">mixed</strong> — e.g. chronic low back pain often has nociceptive (facet, disc), neuropathic (radicular) and nociplastic (central sensitisation) components. Treatment should target each contributing mechanism.
-          </p>
+                )}
+                {lesion && (
+                  <circle cx={s.x} cy="100" r={r + 6} fill="none" stroke={info.color} strokeWidth="1" opacity="0.6">
+                    <animate attributeName="r" from={r + 4} to={r + 14} dur="1.6s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" from="0.6" to="0" dur="1.6s" repeatCount="indefinite" />
+                  </circle>
+                )}
+              </g>
+            );
+          })}
+
+          {/* Stage axis labels */}
+          <text x={W / 2} y={25} textAnchor="middle" fontSize="11" fill="hsl(var(--muted-foreground))">
+            Pain pathway — periphery to cortex
+          </text>
+
+          <rect x="0" y="0" width={W} height={H} fill="url(#pmd-depth)" pointerEvents="none" />
+        </svg>
+
+        {/* Mechanism selector — three colour bands */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3">
+          {ORDER.map((k) => {
+            const m = MECHS[k];
+            const isSel = selected === k;
+            return (
+                  <button
+                key={k}
+                type="button"
+                onClick={() => setSelected(k)}
+                aria-pressed={isSel}
+                className={`text-left p-3 rounded-lg border-2 transition-all ${
+                  isSel ? "shadow-md" : "hover:bg-background/60"
+                }`}
+                style={{
+                  borderColor: isSel ? m.color : "hsl(var(--border))",
+                  background: isSel ? `${m.color.replace(")", " / 0.08)").replace("hsl", "hsl")}` : "hsl(var(--background))",
+                }}
+              >
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <span className="font-serif font-bold text-base" style={{ color: m.color }}>
+                    {m.label}
+                  </span>
+                  <span className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded border" style={{ borderColor: m.color, color: m.color }}>
+                    {k === "nociplastic" ? "Newest" : k === "neuropathic" ? "2008" : "Classical"}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground leading-snug">{m.oneLiner}</p>
+              </button>
+  );
+          })}
         </div>
+
+        {/* Detail panel */}
+        <div
+          className="mt-4 rounded-lg border border-border bg-background p-4 border-l-4"
+          style={{ borderLeftColor: info.color }}
+        >
+          <div className="flex items-baseline justify-between gap-3 flex-wrap mb-2">
+            <h4 className="font-serif font-bold text-foreground text-lg">
+              {info.label} pain
+            </h4>
+            <span className="text-[10px] uppercase tracking-wide text-muted-foreground">{info.iaspYear}</span>
+          </div>
+          <p className="text-sm text-muted-foreground italic mb-3">
+            <strong className="not-italic text-foreground">Lesion site:</strong> {info.lesion}
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <Section title="Mechanism" items={info.mechanism} color={info.color} />
+            <Section title="Example conditions" items={info.examples} color={info.color} />
+            {showFeatures && <Section title="Clinical features" items={info.features} color={info.color} />}
+            <Section title="Mechanism-targeted treatment" items={info.treatment} color={info.color} />
+            {showAvoid && <Section title="Avoid / low-value" items={info.avoid} color={info.color} variant="warning" />}
+          </div>
+        </div>
+
+        <p className="mt-3 text-[11px] text-muted-foreground">
+          Many real-world chronic pain syndromes are <strong className="text-foreground">mixed</strong> — e.g. chronic low back pain often has nociceptive (facet, disc), neuropathic (radicular) and nociplastic (central sensitisation) components. Treatment should target each contributing mechanism.
+        </p>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

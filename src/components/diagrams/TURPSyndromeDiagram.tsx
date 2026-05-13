@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * TURP Syndrome — interactive process diagram.
@@ -100,112 +99,106 @@ export const TURPSyndromeDiagram = () => {
   };
 
   return (
-    <DiagramFigure
-      id="turp-syndrome-diagram"
-      title="TURP syndrome"
-      description="Auto-generated wrapper for the TURP syndrome anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 space-y-4">
-        <div className="rounded-xl border border-border bg-card p-4 sm:p-5">
-          <div className="mb-3">
-            <h3 className="text-sm font-semibold text-foreground">TURP Syndrome — Cascade & Management</h3>
-            <p className="text-xs text-muted-foreground">
-              Tap a stage to see the underlying pathophysiology and clinical action.
-            </p>
-          </div>
-  
-          <svg
-            viewBox="0 0 600 340"
-            className="w-full h-auto max-w-3xl mx-auto"
-            role="img"
-            aria-label="TURP syndrome cascade from glycine absorption to clinical features and management"
-          >
-            <defs>
-              <marker id="trp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                <path d="M0,0 L10,5 L0,10 z" fill="hsl(var(--muted-foreground))" />
-              </marker>
-              <linearGradient id="trp-flow" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="hsl(var(--clinical) / 0.15)" />
-                <stop offset="100%" stopColor="hsl(var(--destructive) / 0.15)" />
-              </linearGradient>
-            </defs>
-  
-            {/* Top row backdrop */}
-            <rect x="20" y="20" width="570" height="80" rx="10" fill="url(#trp-flow)" opacity="0.5" />
-  
-            {/* Connectors top row */}
-            <line x1="200" y1="58" x2="220" y2="58" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#trp-arrow)" />
-            <line x1="390" y1="58" x2="410" y2="58" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#trp-arrow)" />
-  
-            {/* Down connectors from dilution to cns/cv/visual */}
-            <path d="M115 86 L115 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
-            <path d="M305 86 L305 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
-            <path d="M495 86 L495 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
-  
-            {/* Down connectors features → management */}
-            <path d="M115 196 L260 250" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.5" fill="none" />
-            <path d="M305 196 L305 250" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.5" fill="none" />
-            <path d="M495 196 L350 250" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.5" fill="none" />
-  
-            {/* Nodes */}
-            {(Object.keys(nodes) as StageKey[]).map((key) => {
-              const n = nodes[key];
-              const isSel = selected === key;
-              const stage = stages.find((s) => s.key === key)!;
-              return (
-                    <g key={key} onClick={() => setSelected(key)} style={{ cursor: "pointer" }}>
-                  <rect
-                    x={n.x}
-                    y={n.y}
-                    width={n.w}
-                    height={n.h}
-                    rx={8}
-                    fill={isSel ? stage.color : "hsl(var(--background))"}
-                    fillOpacity={isSel ? 0.18 : 1}
-                    stroke={stage.color}
-                    strokeWidth={isSel ? 2 : 1}
-                  />
-                  {n.label.split("\n").map((line, i) => (
-                    <text
-                      key={i}
-                      x={n.x + n.w / 2}
-                      y={n.y + (n.h / 2) - 4 + i * 12}
-                      textAnchor="middle"
-                      className="fill-foreground select-none"
-                      fontSize="10"
-                      fontWeight={isSel ? 600 : 500}
-                    >
-                      {line}
-                    </text>
-                  ))}
-                </g>
-    );
-            })}
-          </svg>
-  
-          {/* Detail panel */}
-          <div
-            className="mt-4 p-3 rounded-lg border border-border bg-background/80"
-            style={{ borderLeftWidth: 4, borderLeftColor: current.color }}
-          >
-            <div className="flex items-center justify-between gap-2 mb-1">
-              <p className="font-semibold text-foreground text-sm">{current.title}</p>
-              <span
-                className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                style={{ background: `${current.color}26`, color: current.color }}
-              >
-                {current.badge}
-              </span>
-            </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">{current.detail}</p>
-          </div>
-  
-          <p className="text-[11px] text-muted-foreground mt-3 italic text-center">
-            Risk factors: gland &gt;40 g · resection time &gt;60 min · capsule perforation · irrigant bag &gt;60 cm above patient.
+        <div className="my-6 space-y-4">
+      <div className="rounded-xl border border-border bg-card p-4 sm:p-5">
+        <div className="mb-3">
+          <h3 className="text-sm font-semibold text-foreground">TURP Syndrome — Cascade & Management</h3>
+          <p className="text-xs text-muted-foreground">
+            Tap a stage to see the underlying pathophysiology and clinical action.
           </p>
         </div>
+
+        <svg
+          viewBox="0 0 600 340"
+          className="w-full h-auto max-w-3xl mx-auto"
+          role="img"
+          aria-label="TURP syndrome cascade from glycine absorption to clinical features and management"
+        >
+          <defs>
+            <marker id="trp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="hsl(var(--muted-foreground))" />
+            </marker>
+            <linearGradient id="trp-flow" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="hsl(var(--clinical) / 0.15)" />
+              <stop offset="100%" stopColor="hsl(var(--destructive) / 0.15)" />
+            </linearGradient>
+          </defs>
+
+          {/* Top row backdrop */}
+          <rect x="20" y="20" width="570" height="80" rx="10" fill="url(#trp-flow)" opacity="0.5" />
+
+          {/* Connectors top row */}
+          <line x1="200" y1="58" x2="220" y2="58" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#trp-arrow)" />
+          <line x1="390" y1="58" x2="410" y2="58" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#trp-arrow)" />
+
+          {/* Down connectors from dilution to cns/cv/visual */}
+          <path d="M115 86 L115 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
+          <path d="M305 86 L305 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
+          <path d="M495 86 L495 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
+
+          {/* Down connectors features → management */}
+          <path d="M115 196 L260 250" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.5" fill="none" />
+          <path d="M305 196 L305 250" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.5" fill="none" />
+          <path d="M495 196 L350 250" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.5" fill="none" />
+
+          {/* Nodes */}
+          {(Object.keys(nodes) as StageKey[]).map((key) => {
+            const n = nodes[key];
+            const isSel = selected === key;
+            const stage = stages.find((s) => s.key === key)!;
+            return (
+                  <g key={key} onClick={() => setSelected(key)} style={{ cursor: "pointer" }}>
+                <rect
+                  x={n.x}
+                  y={n.y}
+                  width={n.w}
+                  height={n.h}
+                  rx={8}
+                  fill={isSel ? stage.color : "hsl(var(--background))"}
+                  fillOpacity={isSel ? 0.18 : 1}
+                  stroke={stage.color}
+                  strokeWidth={isSel ? 2 : 1}
+                />
+                {n.label.split("\n").map((line, i) => (
+                  <text
+                    key={i}
+                    x={n.x + n.w / 2}
+                    y={n.y + (n.h / 2) - 4 + i * 12}
+                    textAnchor="middle"
+                    className="fill-foreground select-none"
+                    fontSize="10"
+                    fontWeight={isSel ? 600 : 500}
+                  >
+                    {line}
+                  </text>
+                ))}
+              </g>
+  );
+          })}
+        </svg>
+
+        {/* Detail panel */}
+        <div
+          className="mt-4 p-3 rounded-lg border border-border bg-background/80"
+          style={{ borderLeftWidth: 4, borderLeftColor: current.color }}
+        >
+          <div className="flex items-center justify-between gap-2 mb-1">
+            <p className="font-semibold text-foreground text-sm">{current.title}</p>
+            <span
+              className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+              style={{ background: `${current.color}26`, color: current.color }}
+            >
+              {current.badge}
+            </span>
+          </div>
+          <p className="text-xs text-muted-foreground leading-relaxed">{current.detail}</p>
+        </div>
+
+        <p className="text-[11px] text-muted-foreground mt-3 italic text-center">
+          Risk factors: gland &gt;40 g · resection time &gt;60 min · capsule perforation · irrigant bag &gt;60 cm above patient.
+        </p>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

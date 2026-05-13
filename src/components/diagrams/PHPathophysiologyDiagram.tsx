@@ -1,5 +1,4 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "./MechanismCascadeDiagram";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // ---------- Sources (deduped by URL in the consolidated bibliography) ----------
 const ESC_ERS_2022: CascadeSource = {
@@ -112,18 +111,12 @@ const steps: CascadeStep[] = [
 ];
 
 export const PHPathophysiologyDiagram = () => (
-    <DiagramFigure
-      id="ph-pathophysiology-diagram"
-      title="PH pathophysiology"
-      description="Auto-generated wrapper for the PH pathophysiology anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <MechanismCascadeDiagram
-      title="Pulmonary Hypertension — Pathophysiology Cascade"
-      subtitle="From endothelial injury to right-ventricular failure, step-by-step."
-      accent="icu"
-      steps={steps}
-    />
-    </DiagramFigure>
+      <MechanismCascadeDiagram
+    title="Pulmonary Hypertension — Pathophysiology Cascade"
+    subtitle="From endothelial injury to right-ventricular failure, step-by-step."
+    accent="icu"
+    steps={steps}
+  />
   );
 
 export default PHPathophysiologyDiagram;

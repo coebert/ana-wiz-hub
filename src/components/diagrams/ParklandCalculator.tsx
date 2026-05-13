@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive burn-fluid resuscitation calculator.
@@ -235,19 +234,13 @@ export const ParklandCalculator = () => {
 };
 
 const OutputCard = ({ icon, label, value, sub }: { icon: React.ReactNode; label: string; value: string; sub: string }) => (
-    <DiagramFigure
-      id="parkland-calculator"
-      title="Parkland"
-      description="Auto-generated wrapper for the Parkland interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <div className="rounded-lg border border-border bg-background p-3">
-      <p className="flex items-center gap-1.5 text-[11px] uppercase tracking-wide text-muted-foreground">
-        {icon} {label}
-      </p>
-      <p className="mt-1 text-lg font-semibold text-foreground">{value}</p>
-      <p className="text-[11px] text-muted-foreground">{sub}</p>
-    </div>
-    </DiagramFigure>
+      <div className="rounded-lg border border-border bg-background p-3">
+    <p className="flex items-center gap-1.5 text-[11px] uppercase tracking-wide text-muted-foreground">
+      {icon} {label}
+    </p>
+    <p className="mt-1 text-lg font-semibold text-foreground">{value}</p>
+    <p className="text-[11px] text-muted-foreground">{sub}</p>
+  </div>
   );
 
 const ExampleButton = ({ title, children, onClick }: { title: string; children: React.ReactNode; onClick: () => void }) => (

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Fungal cell schematic showing antifungal target sites.
@@ -251,28 +250,22 @@ function Annotation({ x1, y1, x2, y2, tx, ty, label, sub, color, active, onClick
   anchor: "start" | "end";
 }) {
   return (
-    <DiagramFigure
-      id="antifungal-targets-diagram"
-      title="Antifungal targets"
-      description="Auto-generated wrapper for the Antifungal targets anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <g className="cursor-pointer" onClick={onClick}>
-        <line
-          x1={x1} y1={y1} x2={x2} y2={y2}
-          stroke={active ? color : "hsl(var(--muted-foreground))"}
-          strokeWidth={active ? 2 : 1}
-          strokeDasharray={active ? "0" : "3 2"}
-        />
-        <text x={tx} y={ty} fontSize="11" fontWeight={active ? 700 : 600}
-          fill={active ? color : "hsl(var(--foreground))"} textAnchor={anchor}>
-          {label}
-        </text>
-        <text x={tx} y={ty + 12} fontSize="9"
-          fill="hsl(var(--muted-foreground))" textAnchor={anchor}>
-          {sub}
-        </text>
-      </g>
-    </DiagramFigure>
+            <g className="cursor-pointer" onClick={onClick}>
+      <line
+        x1={x1} y1={y1} x2={x2} y2={y2}
+        stroke={active ? color : "hsl(var(--muted-foreground))"}
+        strokeWidth={active ? 2 : 1}
+        strokeDasharray={active ? "0" : "3 2"}
+      />
+      <text x={tx} y={ty} fontSize="11" fontWeight={active ? 700 : 600}
+        fill={active ? color : "hsl(var(--foreground))"} textAnchor={anchor}>
+        {label}
+      </text>
+      <text x={tx} y={ty + 12} fontSize="9"
+        fill="hsl(var(--muted-foreground))" textAnchor={anchor}>
+        {sub}
+      </text>
+    </g>
   );
 }
 

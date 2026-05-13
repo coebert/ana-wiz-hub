@@ -13,7 +13,6 @@ import {
   XCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive worked Burns ICU case stepper.
@@ -473,16 +472,10 @@ const Vital = ({ label, value, alert }: { label: string; value: string; alert?: 
 );
 
 const ScoreCell = ({ label, value, icon, tone }: { label: string; value: string; icon?: React.ReactNode; tone?: Tone }) => (
-    <DiagramFigure
-      id="burns-icu-case-stepper"
-      title="Burns ICU case stepper"
-      description="Auto-generated wrapper for the Burns ICU case stepper anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <div className={cn("rounded-md border p-2", tone ? TONE_BG[tone] : "border-border bg-muted/30")}>
-      <p className="flex items-center gap-1 text-[10px] uppercase tracking-wide text-muted-foreground">{icon}{label}</p>
-      <p className={cn("text-sm font-bold", tone ? TONE_TEXT[tone] : "text-foreground")}>{value}</p>
-    </div>
-    </DiagramFigure>
+      <div className={cn("rounded-md border p-2", tone ? TONE_BG[tone] : "border-border bg-muted/30")}>
+    <p className="flex items-center gap-1 text-[10px] uppercase tracking-wide text-muted-foreground">{icon}{label}</p>
+    <p className={cn("text-sm font-bold", tone ? TONE_TEXT[tone] : "text-foreground")}>{value}</p>
+  </div>
   );
 
 export default BurnsIcuCaseStepper;

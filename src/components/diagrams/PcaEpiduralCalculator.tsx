@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * PCA + Epidural Prescribing Calculator
@@ -377,27 +376,21 @@ const PcaCard = ({
   highlight?: boolean;
   warn?: boolean;
 }) => (
-    <DiagramFigure
-      id="pca-epidural-calculator"
-      title="PCA epidural"
-      description="Auto-generated wrapper for the PCA epidural interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <div
-      className={`p-2 rounded border ${
-        warn
-          ? "border-destructive/40 bg-destructive/5"
-          : highlight
-          ? "border-primary/40 bg-primary/5"
-          : "border-border bg-background"
-      }`}
-    >
-      <p className="text-[10px] text-muted-foreground uppercase tracking-wide">{label}</p>
-      <p className={`text-base font-mono font-bold ${warn ? "text-destructive" : highlight ? "text-primary" : "text-foreground"}`}>
-        {value}
-      </p>
-      {sub && <p className="text-[10px] text-muted-foreground mt-0.5">{sub}</p>}
-    </div>
-    </DiagramFigure>
+      <div
+    className={`p-2 rounded border ${
+      warn
+        ? "border-destructive/40 bg-destructive/5"
+        : highlight
+        ? "border-primary/40 bg-primary/5"
+        : "border-border bg-background"
+    }`}
+  >
+    <p className="text-[10px] text-muted-foreground uppercase tracking-wide">{label}</p>
+    <p className={`text-base font-mono font-bold ${warn ? "text-destructive" : highlight ? "text-primary" : "text-foreground"}`}>
+      {value}
+    </p>
+    {sub && <p className="text-[10px] text-muted-foreground mt-0.5">{sub}</p>}
+  </div>
   );
 
 export default PcaEpiduralCalculator;

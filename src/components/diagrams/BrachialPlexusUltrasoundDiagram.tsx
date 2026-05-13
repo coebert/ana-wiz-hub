@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type BlockLevel = "interscalene" | "supraclavicular" | "infraclavicular" | "axillary";
 
@@ -328,61 +327,55 @@ const BrachialPlexusUltrasoundDiagram = () => {
   const info = levels[selected];
 
   return (
-    <DiagramFigure
-      id="brachial-plexus-ultrasound-diagram"
-      title="Brachial plexus ultrasound"
-      description="Auto-generated wrapper for the Brachial plexus ultrasound anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <div className="my-6 space-y-4">
-        <div className="bg-muted/30 rounded-xl border border-border p-4">
-          <DiagramToggleBar
-            title="Ultrasound anatomy — brachial plexus blocks"
-            subtitle="Select a block level to see the sonographic appearance and key landmarks"
-            toggles={[
-              { label: "Needle", active: showNeedle, onChange: () => setShowNeedle(!showNeedle) },
-            ]}
-          />
-  
-          <div className="flex flex-wrap gap-2 mb-4">
-            {(Object.keys(levels) as BlockLevel[]).map((l) => (
-              <button key={l} onClick={() => setSelected(l)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-                  selected === l
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "border-border text-muted-foreground hover:text-foreground"
-                }`}>
-                {levels[l].label}
-              </button>
-            ))}
+            <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Ultrasound anatomy — brachial plexus blocks"
+          subtitle="Select a block level to see the sonographic appearance and key landmarks"
+          toggles={[
+            { label: "Needle", active: showNeedle, onChange: () => setShowNeedle(!showNeedle) },
+          ]}
+        />
+
+        <div className="flex flex-wrap gap-2 mb-4">
+          {(Object.keys(levels) as BlockLevel[]).map((l) => (
+            <button key={l} onClick={() => setSelected(l)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                selected === l
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "border-border text-muted-foreground hover:text-foreground"
+              }`}>
+              {levels[l].label}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-5 items-start animate-fade-in" key={`${selected}-${showNeedle}`}>
+          <div className="flex-shrink-0 mx-auto">
+            <SonoView level={selected} size={220} showNeedle={showNeedle} />
           </div>
-  
-          <div className="flex flex-col md:flex-row gap-5 items-start animate-fade-in" key={`${selected}-${showNeedle}`}>
-            <div className="flex-shrink-0 mx-auto">
-              <SonoView level={selected} size={220} showNeedle={showNeedle} />
+
+          <div className="flex-1 min-w-0 space-y-3">
+            <div className="p-3 rounded-lg border border-border bg-background/80 min-h-[110px]" style={{ borderLeftWidth: 4, borderLeftColor: "hsl(var(--primary))" }}>
+              <p className="font-semibold text-foreground text-sm">{info.label} — {info.subtitle}</p>
+              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{info.description}</p>
             </div>
-  
-            <div className="flex-1 min-w-0 space-y-3">
-              <div className="p-3 rounded-lg border border-border bg-background/80 min-h-[110px]" style={{ borderLeftWidth: 4, borderLeftColor: "hsl(var(--primary))" }}>
-                <p className="font-semibold text-foreground text-sm">{info.label} — {info.subtitle}</p>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{info.description}</p>
-              </div>
-              <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-xs">Key landmarks</p>
-                <p className="text-xs text-muted-foreground mt-1">{info.landmarks}</p>
-              </div>
-              <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-xs">Needle technique</p>
-                <p className="text-xs text-muted-foreground mt-1">{info.needle}</p>
-              </div>
-              <div className="p-3 rounded-lg border border-border bg-secondary/20">
-                <p className="font-semibold text-foreground text-xs">Scanning tips</p>
-                <p className="text-xs text-muted-foreground mt-1">{info.tips}</p>
-              </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-xs">Key landmarks</p>
+              <p className="text-xs text-muted-foreground mt-1">{info.landmarks}</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-xs">Needle technique</p>
+              <p className="text-xs text-muted-foreground mt-1">{info.needle}</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-xs">Scanning tips</p>
+              <p className="text-xs text-muted-foreground mt-1">{info.tips}</p>
             </div>
           </div>
         </div>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Clickable medication quick-reference for endocrine emergency drugs.
@@ -380,175 +379,169 @@ const EndocrineEmergencyDrugs = () => {
   const visible = filter === "all" ? DRUGS : DRUGS.filter((d) => d.cls === filter);
 
   return (
-    <DiagramFigure
-      id="endocrine-emergency-drugs"
-      title="Endocrine emergency drugs"
-      description="Auto-generated wrapper for the Endocrine emergency drugs anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 space-y-3">
-        <div className="rounded-xl border border-border bg-muted/20 p-4">
-          <div className="mb-3">
-            <h3 className="text-base sm:text-lg font-serif font-semibold text-foreground">
-              Medication quick reference — endocrine emergencies
-            </h3>
-            <p className="text-xs text-muted-foreground mt-0.5">
-              Tap a drug for dose, onset, mechanism, contraindications and an exam pearl.
-              Filter by class to compare alternatives side by side.
-            </p>
-          </div>
-  
-          {/* Class filter chips */}
-          <div className="flex flex-wrap gap-1.5 mb-3">
-            <button
-              type="button"
-              onClick={() => setFilter("all")}
-              aria-pressed={filter === "all"}
-              className={cn(
-                "rounded-md border px-2.5 py-1 text-[11px] font-semibold transition-colors",
-                filter === "all"
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-card text-muted-foreground hover:text-foreground hover:border-primary/50",
-              )}
-            >
-              All ({DRUGS.length})
-            </button>
-            {CLASS_ORDER.map((c) => {
-              const count = DRUGS.filter((d) => d.cls === c).length;
-              const meta = CLASS_META[c];
-              const active = filter === c;
-              return (
+        <div className="my-6 space-y-3">
+      <div className="rounded-xl border border-border bg-muted/20 p-4">
+        <div className="mb-3">
+          <h3 className="text-base sm:text-lg font-serif font-semibold text-foreground">
+            Medication quick reference — endocrine emergencies
+          </h3>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Tap a drug for dose, onset, mechanism, contraindications and an exam pearl.
+            Filter by class to compare alternatives side by side.
+          </p>
+        </div>
+
+        {/* Class filter chips */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          <button
+            type="button"
+            onClick={() => setFilter("all")}
+            aria-pressed={filter === "all"}
+            className={cn(
+              "rounded-md border px-2.5 py-1 text-[11px] font-semibold transition-colors",
+              filter === "all"
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border bg-card text-muted-foreground hover:text-foreground hover:border-primary/50",
+            )}
+          >
+            All ({DRUGS.length})
+          </button>
+          {CLASS_ORDER.map((c) => {
+            const count = DRUGS.filter((d) => d.cls === c).length;
+            const meta = CLASS_META[c];
+            const active = filter === c;
+            return (
+              <button
+                key={c}
+                type="button"
+                onClick={() => setFilter(c)}
+                aria-pressed={active}
+                className={cn(
+                  "rounded-md border px-2.5 py-1 text-[11px] font-semibold transition-colors",
+                  active
+                    ? cn("border-primary", meta.chip, "ring-1 ring-primary/40")
+                    : cn("border-border bg-card text-muted-foreground hover:text-foreground hover:border-primary/40"),
+                )}
+              >
+                {meta.label} ({count})
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Drug grid */}
+        <div className="grid sm:grid-cols-2 gap-2">
+          {visible.map((d) => {
+            const meta = CLASS_META[d.cls];
+            const isOpen = openId === d.id;
+            return (
+                  <div
+                key={d.id}
+                className={cn(
+                  "rounded-lg border-2 transition-all",
+                  meta.tone,
+                  isOpen && "ring-2 ring-primary/40 shadow-md sm:col-span-2",
+                )}
+              >
                 <button
-                  key={c}
                   type="button"
-                  onClick={() => setFilter(c)}
-                  aria-pressed={active}
-                  className={cn(
-                    "rounded-md border px-2.5 py-1 text-[11px] font-semibold transition-colors",
-                    active
-                      ? cn("border-primary", meta.chip, "ring-1 ring-primary/40")
-                      : cn("border-border bg-card text-muted-foreground hover:text-foreground hover:border-primary/40"),
-                  )}
+                  onClick={() => setOpenId(isOpen ? null : d.id)}
+                  aria-expanded={isOpen}
+                  className="w-full text-left px-3 py-2"
                 >
-                  {meta.label} ({count})
-                </button>
-              );
-            })}
-          </div>
-  
-          {/* Drug grid */}
-          <div className="grid sm:grid-cols-2 gap-2">
-            {visible.map((d) => {
-              const meta = CLASS_META[d.cls];
-              const isOpen = openId === d.id;
-              return (
-                    <div
-                  key={d.id}
-                  className={cn(
-                    "rounded-lg border-2 transition-all",
-                    meta.tone,
-                    isOpen && "ring-2 ring-primary/40 shadow-md sm:col-span-2",
-                  )}
-                >
-                  <button
-                    type="button"
-                    onClick={() => setOpenId(isOpen ? null : d.id)}
-                    aria-expanded={isOpen}
-                    className="w-full text-left px-3 py-2"
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="min-w-0">
-                        <p className="text-sm font-semibold text-foreground leading-tight truncate">
-                          {d.name}
-                        </p>
-                        {d.brand && (
-                          <p className="text-[10px] text-muted-foreground italic truncate">
-                            {d.brand}
-                          </p>
-                        )}
-                      </div>
-                      <span
-                        className={cn(
-                          "shrink-0 rounded px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider",
-                          meta.chip,
-                        )}
-                      >
-                        {meta.label}
-                      </span>
-                    </div>
-                    <p className="text-[10px] text-muted-foreground mt-1 leading-snug">
-                      <span className="font-semibold text-foreground">Use: </span>
-                      {d.use}
-                    </p>
-                    {!isOpen && (
-                      <p className="text-[9px] text-primary mt-1 font-semibold">
-                        Tap for dose, onset, contraindications →
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-foreground leading-tight truncate">
+                        {d.name}
                       </p>
-                    )}
-                  </button>
-  
-                  {isOpen && (
-                    <div className="px-3 pb-3 space-y-2 border-t border-border/60 pt-2 mt-1 animate-fade-in">
-                      <div className="rounded border-l-2 border-pharmacology/70 bg-pharmacology/10 px-2 py-1.5">
-                        <p className="text-[9px] uppercase tracking-wider font-semibold text-pharmacology mb-0.5">
-                          Dose
+                      {d.brand && (
+                        <p className="text-[10px] text-muted-foreground italic truncate">
+                          {d.brand}
                         </p>
-                        <pre className="text-[11px] font-mono font-bold text-foreground whitespace-pre-wrap leading-snug">
-                          {d.dose}
-                        </pre>
-                      </div>
-  
-                      <div className="grid sm:grid-cols-2 gap-2">
-                        <div>
-                          <p className="text-[9px] uppercase tracking-wider font-semibold text-muted-foreground">
-                            Onset
-                          </p>
-                          <p className="text-[11px] text-foreground leading-snug">{d.onset}</p>
-                        </div>
-                        {d.duration && (
-                          <div>
-                            <p className="text-[9px] uppercase tracking-wider font-semibold text-muted-foreground">
-                              Duration
-                            </p>
-                            <p className="text-[11px] text-foreground leading-snug">
-                              {d.duration}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-  
+                      )}
+                    </div>
+                    <span
+                      className={cn(
+                        "shrink-0 rounded px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider",
+                        meta.chip,
+                      )}
+                    >
+                      {meta.label}
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-muted-foreground mt-1 leading-snug">
+                    <span className="font-semibold text-foreground">Use: </span>
+                    {d.use}
+                  </p>
+                  {!isOpen && (
+                    <p className="text-[9px] text-primary mt-1 font-semibold">
+                      Tap for dose, onset, contraindications →
+                    </p>
+                  )}
+                </button>
+
+                {isOpen && (
+                  <div className="px-3 pb-3 space-y-2 border-t border-border/60 pt-2 mt-1 animate-fade-in">
+                    <div className="rounded border-l-2 border-pharmacology/70 bg-pharmacology/10 px-2 py-1.5">
+                      <p className="text-[9px] uppercase tracking-wider font-semibold text-pharmacology mb-0.5">
+                        Dose
+                      </p>
+                      <pre className="text-[11px] font-mono font-bold text-foreground whitespace-pre-wrap leading-snug">
+                        {d.dose}
+                      </pre>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-2">
                       <div>
                         <p className="text-[9px] uppercase tracking-wider font-semibold text-muted-foreground">
-                          Mechanism
+                          Onset
                         </p>
-                        <p className="text-[11px] text-muted-foreground leading-snug">
-                          {d.mechanism}
-                        </p>
+                        <p className="text-[11px] text-foreground leading-snug">{d.onset}</p>
                       </div>
-  
-                      <div className="rounded border-l-2 border-destructive/60 bg-destructive/5 px-2 py-1.5">
-                        <p className="text-[9px] uppercase tracking-wider font-semibold text-destructive mb-0.5">
-                          Contraindications &amp; cautions
-                        </p>
-                        <p className="text-[11px] text-foreground leading-snug">
-                          {d.contraindications}
-                        </p>
-                      </div>
-  
-                      <div className="rounded border-l-2 border-primary/60 bg-primary/5 px-2 py-1.5">
-                        <p className="text-[9px] uppercase tracking-wider font-semibold text-primary mb-0.5">
-                          Exam pearl
-                        </p>
-                        <p className="text-[11px] text-foreground leading-snug">{d.pearl}</p>
-                      </div>
+                      {d.duration && (
+                        <div>
+                          <p className="text-[9px] uppercase tracking-wider font-semibold text-muted-foreground">
+                            Duration
+                          </p>
+                          <p className="text-[11px] text-foreground leading-snug">
+                            {d.duration}
+                          </p>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-    );
-            })}
-          </div>
+
+                    <div>
+                      <p className="text-[9px] uppercase tracking-wider font-semibold text-muted-foreground">
+                        Mechanism
+                      </p>
+                      <p className="text-[11px] text-muted-foreground leading-snug">
+                        {d.mechanism}
+                      </p>
+                    </div>
+
+                    <div className="rounded border-l-2 border-destructive/60 bg-destructive/5 px-2 py-1.5">
+                      <p className="text-[9px] uppercase tracking-wider font-semibold text-destructive mb-0.5">
+                        Contraindications &amp; cautions
+                      </p>
+                      <p className="text-[11px] text-foreground leading-snug">
+                        {d.contraindications}
+                      </p>
+                    </div>
+
+                    <div className="rounded border-l-2 border-primary/60 bg-primary/5 px-2 py-1.5">
+                      <p className="text-[9px] uppercase tracking-wider font-semibold text-primary mb-0.5">
+                        Exam pearl
+                      </p>
+                      <p className="text-[11px] text-foreground leading-snug">{d.pearl}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+  );
+          })}
         </div>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

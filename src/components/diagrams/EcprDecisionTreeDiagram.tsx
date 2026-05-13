@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * ECMO-CPR (eCPR) decision tree.
@@ -126,113 +125,107 @@ const EcprDecisionTreeDiagram = () => {
   const reset = () => setAnswers({});
 
   return (
-    <DiagramFigure
-      id="ecpr-decision-tree-diagram"
-      title="Ecpr decision tree"
-      description="Auto-generated wrapper for the Ecpr decision tree anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 space-y-4">
-        <div className="bg-muted/30 rounded-xl border border-border p-4">
-          <DiagramToggleBar
-            title="eCPR (ECMO-CPR) decision tree"
-            subtitle="Walk through the 6 selection criteria — answers feed a real-time eligibility verdict"
-            toggles={[{ label: "Rationale", active: showRationale, onChange: () => setShowRationale((s) => !s) }]}
-          />
-  
-          <div className="space-y-2">
-            {stepOrder.map((step, i) => {
-              const node = tree[step];
-              const ans = answers[step];
-              const answered = ans !== undefined;
-              const fav = answered ? node.options[ans!].favourable : null;
-              const stepColor = answered
-                ? fav
-                  ? "hsl(140, 55%, 42%)"
-                  : "hsl(0, 65%, 50%)"
-                : "hsl(var(--muted-foreground))";
-              return (
-                <div
-                  key={step}
-                  className="rounded-lg border border-border bg-background/70 p-3"
-                  style={{ borderLeftWidth: 4, borderLeftColor: stepColor }}
-                >
-                  <div className="flex items-start gap-2 mb-2">
-                    <span
-                      className="flex-shrink-0 w-6 h-6 rounded-full text-[11px] font-bold flex items-center justify-center text-white"
-                      style={{ backgroundColor: stepColor }}
-                    >
-                      {i + 1}
-                    </span>
-                    <p className="text-sm font-semibold text-foreground">{node.question}</p>
-                  </div>
-                  <div className="flex flex-wrap gap-2 ml-8">
-                    {node.options.map((opt, oi) => {
-                      const selected = ans === oi;
-                      return (
-                            <button
-                          key={opt.label}
-                          onClick={() => setAnswers((a) => ({ ...a, [step]: oi }))}
-                          aria-pressed={selected}
-                          className="px-2.5 py-1 rounded-md text-[11px] font-medium border transition-all"
-                          style={{
-                            borderColor: selected ? (opt.favourable ? "hsl(140, 55%, 42%)" : "hsl(0, 65%, 50%)") : "hsl(var(--border))",
-                            backgroundColor: selected
-                              ? withAlpha(opt.favourable ? "hsl(140, 55%, 42%)" : "hsl(0, 65%, 50%)", 0.15)
-                              : "transparent",
-                            color: selected ? (opt.favourable ? "hsl(140, 55%, 35%)" : "hsl(0, 65%, 45%)") : "hsl(var(--foreground))",
-                          }}
-                        >
-                          {opt.label}
-                        </button>
-    );
-                    })}
-                  </div>
-                  {showRationale && answered && (
-                    <p className="text-[11px] text-muted-foreground mt-2 ml-8 italic leading-relaxed">
-                      {node.options[ans!].rationale}
-                    </p>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-  
-          {/* Verdict */}
-          <div className="mt-4">
-            {verdict ? (
+        <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="eCPR (ECMO-CPR) decision tree"
+          subtitle="Walk through the 6 selection criteria — answers feed a real-time eligibility verdict"
+          toggles={[{ label: "Rationale", active: showRationale, onChange: () => setShowRationale((s) => !s) }]}
+        />
+
+        <div className="space-y-2">
+          {stepOrder.map((step, i) => {
+            const node = tree[step];
+            const ans = answers[step];
+            const answered = ans !== undefined;
+            const fav = answered ? node.options[ans!].favourable : null;
+            const stepColor = answered
+              ? fav
+                ? "hsl(140, 55%, 42%)"
+                : "hsl(0, 65%, 50%)"
+              : "hsl(var(--muted-foreground))";
+            return (
               <div
-                className="p-3 rounded-lg border-2"
-                style={{
-                  borderColor: verdict.color,
-                  backgroundColor: withAlpha(verdict.color, 0.08),
-                }}
+                key={step}
+                className="rounded-lg border border-border bg-background/70 p-3"
+                style={{ borderLeftWidth: 4, borderLeftColor: stepColor }}
               >
-                <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
-                  <p className="text-sm font-bold" style={{ color: verdict.color }}>
-                    {verdict.label}
-                  </p>
-                  <button
-                    onClick={reset}
-                    className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+                <div className="flex items-start gap-2 mb-2">
+                  <span
+                    className="flex-shrink-0 w-6 h-6 rounded-full text-[11px] font-bold flex items-center justify-center text-white"
+                    style={{ backgroundColor: stepColor }}
                   >
-                    Reset
-                  </button>
+                    {i + 1}
+                  </span>
+                  <p className="text-sm font-semibold text-foreground">{node.question}</p>
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{verdict.message}</p>
+                <div className="flex flex-wrap gap-2 ml-8">
+                  {node.options.map((opt, oi) => {
+                    const selected = ans === oi;
+                    return (
+                          <button
+                        key={opt.label}
+                        onClick={() => setAnswers((a) => ({ ...a, [step]: oi }))}
+                        aria-pressed={selected}
+                        className="px-2.5 py-1 rounded-md text-[11px] font-medium border transition-all"
+                        style={{
+                          borderColor: selected ? (opt.favourable ? "hsl(140, 55%, 42%)" : "hsl(0, 65%, 50%)") : "hsl(var(--border))",
+                          backgroundColor: selected
+                            ? withAlpha(opt.favourable ? "hsl(140, 55%, 42%)" : "hsl(0, 65%, 50%)", 0.15)
+                            : "transparent",
+                          color: selected ? (opt.favourable ? "hsl(140, 55%, 35%)" : "hsl(0, 65%, 45%)") : "hsl(var(--foreground))",
+                        }}
+                      >
+                        {opt.label}
+                      </button>
+  );
+                  })}
+                </div>
+                {showRationale && answered && (
+                  <p className="text-[11px] text-muted-foreground mt-2 ml-8 italic leading-relaxed">
+                    {node.options[ans!].rationale}
+                  </p>
+                )}
               </div>
-            ) : (
-              <p className="text-xs text-muted-foreground italic text-center py-2">
-                Answer the questions above to see the eCPR eligibility verdict.
-              </p>
-            )}
-          </div>
-  
-          <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
-            Frameworks: ELSO 2020/2023, ARREST (2020), Prague OHCA (2022), INCEPTION (2023). Always involve the local ECMO retrieval service early — minutes matter.
-          </p>
+            );
+          })}
         </div>
+
+        {/* Verdict */}
+        <div className="mt-4">
+          {verdict ? (
+            <div
+              className="p-3 rounded-lg border-2"
+              style={{
+                borderColor: verdict.color,
+                backgroundColor: withAlpha(verdict.color, 0.08),
+              }}
+            >
+              <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
+                <p className="text-sm font-bold" style={{ color: verdict.color }}>
+                  {verdict.label}
+                </p>
+                <button
+                  onClick={reset}
+                  className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+                >
+                  Reset
+                </button>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">{verdict.message}</p>
+            </div>
+          ) : (
+            <p className="text-xs text-muted-foreground italic text-center py-2">
+              Answer the questions above to see the eCPR eligibility verdict.
+            </p>
+          )}
+        </div>
+
+        <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
+          Frameworks: ELSO 2020/2023, ARREST (2020), Prague OHCA (2022), INCEPTION (2023). Always involve the local ECMO retrieval service early — minutes matter.
+        </p>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

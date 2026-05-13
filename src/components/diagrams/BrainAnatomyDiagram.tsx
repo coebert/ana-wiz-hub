@@ -1,7 +1,6 @@
 import brainAnatomyImg from "@/assets/brain-anatomy-lateral.jpg";
 import { DiagramSourcesPanel, DiagramSource } from "./DiagramSourcesPanel";
 import { BrainRegionsList } from "./BrainRegionsList";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const references: DiagramSource[] = [
   {
@@ -191,15 +190,9 @@ export const BrainLateralPlate = () => (
 );
 
 const BrainAnatomyDiagram = () => (
-    <DiagramFigure
-      id="brain-anatomy-diagram"
-      title="Brain anatomy"
-      description="Auto-generated wrapper for the Brain anatomy anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <div className="rounded-2xl border border-border bg-card overflow-hidden">
-      <BrainLateralPlate />
-    </div>
-    </DiagramFigure>
+      <div className="rounded-2xl border border-border bg-card overflow-hidden">
+    <BrainLateralPlate />
+  </div>
   );
 
 export default BrainAnatomyDiagram;

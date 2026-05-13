@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type IndicationKey = "afib" | "mhv" | "vte";
 type ValveRisk = "low" | "intermediate" | "high";
@@ -368,24 +367,18 @@ interface RiskCardProps {
 }
 
 const RiskCard = ({ title, body, color, active }: RiskCardProps) => (
-    <DiagramFigure
-      id="bridging-anticoagulation-pathway"
-      title="Bridging anticoagulation pathway"
-      description="Auto-generated wrapper for the Bridging anticoagulation pathway clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <div
-      className="rounded-lg border p-2.5 transition-all"
-      style={{
-        borderColor: active ? withAlpha(color, 0.5) : "hsl(var(--border))",
-        backgroundColor: active ? withAlpha(color, 0.06) : "transparent",
-      }}
-    >
-      <div className="text-[10px] uppercase tracking-wide font-semibold mb-1" style={{ color }}>
-        {title}
-      </div>
-      <div className="text-xs text-foreground/85 leading-relaxed">{body}</div>
+      <div
+    className="rounded-lg border p-2.5 transition-all"
+    style={{
+      borderColor: active ? withAlpha(color, 0.5) : "hsl(var(--border))",
+      backgroundColor: active ? withAlpha(color, 0.06) : "transparent",
+    }}
+  >
+    <div className="text-[10px] uppercase tracking-wide font-semibold mb-1" style={{ color }}>
+      {title}
     </div>
-    </DiagramFigure>
+    <div className="text-xs text-foreground/85 leading-relaxed">{body}</div>
+  </div>
   );
 
 export default BridgingAnticoagulationPathway;

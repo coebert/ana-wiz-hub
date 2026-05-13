@@ -2,7 +2,6 @@ import brainAxialImg from "@/assets/brain-anatomy-axial.jpg";
 import { DiagramSourcesPanel, DiagramSource } from "./DiagramSourcesPanel";
 import { BrainRegionsList } from "./BrainRegionsList";
 import BrainPlateLabels, { type PlateLabel } from "./BrainPlateLabels";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const plateLabels: PlateLabel[] = [
   // Anterior pole
@@ -190,15 +189,9 @@ export const BrainAxialPlate = () => (
 );
 
 const BrainAxialDiagram = () => (
-    <DiagramFigure
-      id="brain-axial-diagram"
-      title="Brain axial"
-      description="Auto-generated wrapper for the Brain axial anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <div className="rounded-2xl border border-border bg-card overflow-hidden">
-      <BrainAxialPlate />
-    </div>
-    </DiagramFigure>
+      <div className="rounded-2xl border border-border bg-card overflow-hidden">
+    <BrainAxialPlate />
+  </div>
   );
 
 export default BrainAxialDiagram;

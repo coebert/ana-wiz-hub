@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface DermatomeLevel {
   id: string;
@@ -548,174 +547,168 @@ const DermatomeMapDiagram = () => {
   );
 
   return (
-    <DiagramFigure
-      id="dermatome-map-diagram"
-      title="Dermatome MAP"
-      description="Auto-generated wrapper for the Dermatome MAP anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <Card className="mb-8 border-border bg-card">
-        <CardHeader className="pb-3">
-          <CardTitle className="text-lg font-serif text-foreground">
-            Interactive Dermatome Map
-          </CardTitle>
-          <p className="text-sm text-muted-foreground">
-            Tap a dermatome region on either view to see its landmark, block target, and surgical coverage. Use filters to isolate regions.
-          </p>
-        </CardHeader>
-        <CardContent>
-          <Tabs defaultValue="map">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="map" className="text-xs">Dermatome Map</TabsTrigger>
-              <TabsTrigger value="surgical" className="text-xs">Surgical Levels</TabsTrigger>
-            </TabsList>
-  
-            <TabsContent value="map" className="mt-4">
-              {/* Region filter chips */}
-              <div className="flex flex-wrap gap-1.5 mb-4">
+            <Card className="mb-8 border-border bg-card">
+      <CardHeader className="pb-3">
+        <CardTitle className="text-lg font-serif text-foreground">
+          Interactive Dermatome Map
+        </CardTitle>
+        <p className="text-sm text-muted-foreground">
+          Tap a dermatome region on either view to see its landmark, block target, and surgical coverage. Use filters to isolate regions.
+        </p>
+      </CardHeader>
+      <CardContent>
+        <Tabs defaultValue="map">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="map" className="text-xs">Dermatome Map</TabsTrigger>
+            <TabsTrigger value="surgical" className="text-xs">Surgical Levels</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="map" className="mt-4">
+            {/* Region filter chips */}
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              <Badge
+                variant={regionFilter === null ? "default" : "outline"}
+                className="cursor-pointer text-xs"
+                onClick={() => setRegionFilter(null)}
+              >
+                All
+              </Badge>
+              {(["cervical", "thoracic", "lumbar", "sacral"] as const).map(r => (
                 <Badge
-                  variant={regionFilter === null ? "default" : "outline"}
-                  className="cursor-pointer text-xs"
-                  onClick={() => setRegionFilter(null)}
+                  key={r}
+                  variant={regionFilter === r ? "default" : "outline"}
+                  className={`cursor-pointer text-xs ${regionFilter === r ? "" : regionColors[r]}`}
+                  onClick={() => setRegionFilter(regionFilter === r ? null : r)}
                 >
-                  All
+                  {regionLabels[r]}
                 </Badge>
-                {(["cervical", "thoracic", "lumbar", "sacral"] as const).map(r => (
-                  <Badge
-                    key={r}
-                    variant={regionFilter === r ? "default" : "outline"}
-                    className={`cursor-pointer text-xs ${regionFilter === r ? "" : regionColors[r]}`}
-                    onClick={() => setRegionFilter(regionFilter === r ? null : r)}
-                  >
-                    {regionLabels[r]}
-                  </Badge>
-                ))}
+              ))}
+            </div>
+
+            {/* View toggle — mobile */}
+            <div className="flex gap-2 mb-3 sm:hidden">
+              <button
+                onClick={() => setBodyView("anterior")}
+                className={`flex-1 text-xs py-1.5 rounded border transition-colors ${bodyView === "anterior" ? "bg-primary/20 border-primary text-foreground" : "border-border text-muted-foreground"}`}
+              >
+                Anterior
+              </button>
+              <button
+                onClick={() => setBodyView("posterior")}
+                className={`flex-1 text-xs py-1.5 rounded border transition-colors ${bodyView === "posterior" ? "bg-primary/20 border-primary text-foreground" : "border-border text-muted-foreground"}`}
+              >
+                Posterior
+              </button>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 items-start">
+              {/* Body diagrams */}
+              <div className="flex gap-2 flex-shrink-0 mx-auto">
+                <div className="hidden sm:block">{renderBodySVG("anterior")}</div>
+                <div className="hidden sm:block">{renderBodySVG("posterior")}</div>
+                <div className="sm:hidden">{renderBodySVG(bodyView)}</div>
               </div>
-  
-              {/* View toggle — mobile */}
-              <div className="flex gap-2 mb-3 sm:hidden">
-                <button
-                  onClick={() => setBodyView("anterior")}
-                  className={`flex-1 text-xs py-1.5 rounded border transition-colors ${bodyView === "anterior" ? "bg-primary/20 border-primary text-foreground" : "border-border text-muted-foreground"}`}
-                >
-                  Anterior
-                </button>
-                <button
-                  onClick={() => setBodyView("posterior")}
-                  className={`flex-1 text-xs py-1.5 rounded border transition-colors ${bodyView === "posterior" ? "bg-primary/20 border-primary text-foreground" : "border-border text-muted-foreground"}`}
-                >
-                  Posterior
-                </button>
-              </div>
-  
-              <div className="flex flex-col sm:flex-row gap-4 items-start">
-                {/* Body diagrams */}
-                <div className="flex gap-2 flex-shrink-0 mx-auto">
-                  <div className="hidden sm:block">{renderBodySVG("anterior")}</div>
-                  <div className="hidden sm:block">{renderBodySVG("posterior")}</div>
-                  <div className="sm:hidden">{renderBodySVG(bodyView)}</div>
-                </div>
-  
-                {/* Info panel */}
-                <div className="flex-1 min-w-0 space-y-3">
-                  {/* Level selector */}
-                  <div>
-                    <p className="text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Select Level</p>
-                    <div className="flex flex-wrap gap-1">
-                      {filteredDermatomes.map(d => (
-                        <button
-                          key={d.id}
-                          onClick={() => setSelected(selected === d.id ? null : d.id)}
-                          className={`px-1.5 py-0.5 rounded text-xs font-medium transition-colors border ${
-                            selected === d.id
-                              ? "border-primary bg-primary/20 text-foreground"
-                              : "border-border hover:bg-muted/50 text-muted-foreground"
-                          }`}
-                          style={selected === d.id ? { borderColor: d.color, backgroundColor: withAlpha(d.color, 0.13) } : {}}
-                        >
-                          {d.level}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-  
-                  {/* Detail */}
-                  {activeLevel ? (
-                    <div className="p-4 rounded-lg border border-border animate-fade-in space-y-2.5">
-                      <div className="flex items-center gap-2">
-                        <span className="text-lg font-bold" style={{ color: activeLevel.color }}>{activeLevel.level}</span>
-                        <Badge variant="outline" className={`text-xs ${regionColors[activeLevel.region]}`}>
-                          {regionLabels[activeLevel.region]}
-                        </Badge>
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-0.5">Clinical Landmark</p>
-                        <p className="text-sm text-muted-foreground">{activeLevel.landmark}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-0.5">Block Target</p>
-                        <p className="text-sm text-muted-foreground">{activeLevel.blockTarget}</p>
-                      </div>
-                      <div className="pt-2 border-t border-border/50">
-                        <p className="text-xs font-semibold text-amber-400 mb-0.5">Surgical Coverage</p>
-                        <p className="text-sm text-muted-foreground">{activeLevel.surgicalCoverage}</p>
-                      </div>
-                    </div>
-                  ) : (
-                    <p className="text-xs text-muted-foreground italic">Tap a level or body region to view details</p>
-                  )}
-  
-                  {/* Quick landmarks */}
-                  <div className="p-3 rounded-lg border border-border/60 bg-muted/20">
-                    <p className="text-xs font-semibold text-foreground mb-1">Key Sensory Landmarks</p>
-                    <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
-                      <span>C5 — Deltoid badge</span><span>T4 — Nipple</span>
-                      <span>C6 — Thumb</span><span>T6 — Xiphoid</span>
-                      <span>C7 — Middle finger</span><span>T10 — Umbilicus</span>
-                      <span>C8 — Little finger</span><span>L1 — Groin</span>
-                      <span>T1 — Medial arm</span><span>L3 — Knee</span>
-                      <span>T3 — Spine of scapula</span><span>S1 — Lateral foot</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-  
-            <TabsContent value="surgical" className="mt-4">
-              <p className="text-sm text-muted-foreground mb-3">
-                Minimum sensory block height required for common surgical procedures under neuraxial anaesthesia.
-              </p>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm border-collapse">
-                  <thead>
-                    <tr className="border-b border-border">
-                      <th className="text-left py-2 text-foreground font-semibold">Procedure</th>
-                      <th className="text-left py-2 text-foreground font-semibold">Min. Block Level</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-muted-foreground">
-                    {surgicalLevels.map((s, i) => (
-                      <tr key={i} className="border-b border-border/50">
-                        <td className="py-2">{s.procedure}</td>
-                        <td className="py-2 font-medium" style={{ color: s.color }}>{s.level}</td>
-                      </tr>
+
+              {/* Info panel */}
+              <div className="flex-1 min-w-0 space-y-3">
+                {/* Level selector */}
+                <div>
+                  <p className="text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Select Level</p>
+                  <div className="flex flex-wrap gap-1">
+                    {filteredDermatomes.map(d => (
+                      <button
+                        key={d.id}
+                        onClick={() => setSelected(selected === d.id ? null : d.id)}
+                        className={`px-1.5 py-0.5 rounded text-xs font-medium transition-colors border ${
+                          selected === d.id
+                            ? "border-primary bg-primary/20 text-foreground"
+                            : "border-border hover:bg-muted/50 text-muted-foreground"
+                        }`}
+                        style={selected === d.id ? { borderColor: d.color, backgroundColor: withAlpha(d.color, 0.13) } : {}}
+                      >
+                        {d.level}
+                      </button>
                     ))}
-                  </tbody>
-                </table>
+                  </div>
+                </div>
+
+                {/* Detail */}
+                {activeLevel ? (
+                  <div className="p-4 rounded-lg border border-border animate-fade-in space-y-2.5">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg font-bold" style={{ color: activeLevel.color }}>{activeLevel.level}</span>
+                      <Badge variant="outline" className={`text-xs ${regionColors[activeLevel.region]}`}>
+                        {regionLabels[activeLevel.region]}
+                      </Badge>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-0.5">Clinical Landmark</p>
+                      <p className="text-sm text-muted-foreground">{activeLevel.landmark}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-0.5">Block Target</p>
+                      <p className="text-sm text-muted-foreground">{activeLevel.blockTarget}</p>
+                    </div>
+                    <div className="pt-2 border-t border-border/50">
+                      <p className="text-xs font-semibold text-amber-400 mb-0.5">Surgical Coverage</p>
+                      <p className="text-sm text-muted-foreground">{activeLevel.surgicalCoverage}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-xs text-muted-foreground italic">Tap a level or body region to view details</p>
+                )}
+
+                {/* Quick landmarks */}
+                <div className="p-3 rounded-lg border border-border/60 bg-muted/20">
+                  <p className="text-xs font-semibold text-foreground mb-1">Key Sensory Landmarks</p>
+                  <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
+                    <span>C5 — Deltoid badge</span><span>T4 — Nipple</span>
+                    <span>C6 — Thumb</span><span>T6 — Xiphoid</span>
+                    <span>C7 — Middle finger</span><span>T10 — Umbilicus</span>
+                    <span>C8 — Little finger</span><span>L1 — Groin</span>
+                    <span>T1 — Medial arm</span><span>L3 — Knee</span>
+                    <span>T3 — Spine of scapula</span><span>S1 — Lateral foot</span>
+                  </div>
+                </div>
               </div>
-              <div className="mt-4 p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
-                <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
-                <p className="text-xs text-muted-foreground">
-                  <strong>Caesarean section requires T4</strong> (nipple line) to cover peritoneal traction pain.
-                  Test block height with cold spray or ethyl chloride — check bilaterally.
-                  Motor block (Bromage scale) does not correlate with sensory level.
-                  Always test before surgical incision.
-                </p>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </CardContent>
-      </Card>
-    </DiagramFigure>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="surgical" className="mt-4">
+            <p className="text-sm text-muted-foreground mb-3">
+              Minimum sensory block height required for common surgical procedures under neuraxial anaesthesia.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Procedure</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Min. Block Level</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  {surgicalLevels.map((s, i) => (
+                    <tr key={i} className="border-b border-border/50">
+                      <td className="py-2">{s.procedure}</td>
+                      <td className="py-2 font-medium" style={{ color: s.color }}>{s.level}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="mt-4 p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
+              <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
+              <p className="text-xs text-muted-foreground">
+                <strong>Caesarean section requires T4</strong> (nipple line) to cover peritoneal traction pain.
+                Test block height with cold spray or ethyl chloride — check bilaterally.
+                Motor block (Bromage scale) does not correlate with sensory level.
+                Always test before surgical incision.
+              </p>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </CardContent>
+    </Card>
   );
 };
 

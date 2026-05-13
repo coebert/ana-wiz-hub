@@ -1,5 +1,4 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Diabetic ketoacidosis — pathophysiology animation.
@@ -164,20 +163,14 @@ const DKAScene = ({ active }: { active: number }) => {
 };
 
 const DKAAnimation = () => (
-    <DiagramFigure
-      id="dka-animation"
-      title="DKA"
-      description="Auto-generated wrapper for the DKA animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <AnimatedMechanism
-      title="Diabetic ketoacidosis — pathophysiology"
-      subtitle="From insulin deficiency to ketogenesis, HAGMA, dehydration and the potassium paradox (JBDS-IP 2023)"
-      steps={STEPS}
-      stepMs={3200}
-      accentClass="border-clinical/40"
-      renderScene={(active) => <DKAScene active={active} />}
-    />
-    </DiagramFigure>
+      <AnimatedMechanism
+    title="Diabetic ketoacidosis — pathophysiology"
+    subtitle="From insulin deficiency to ketogenesis, HAGMA, dehydration and the potassium paradox (JBDS-IP 2023)"
+    steps={STEPS}
+    stepMs={3200}
+    accentClass="border-clinical/40"
+    renderScene={(active) => <DKAScene active={active} />}
+  />
   );
 
 export default DKAAnimation;

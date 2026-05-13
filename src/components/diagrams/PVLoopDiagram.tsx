@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface PVPoint { v: number; p: number }
 
@@ -111,146 +110,140 @@ const PVLoopDiagram = () => {
   ];
 
   return (
-    <DiagramFigure
-      id="pv-loop-diagram"
-      title="PV loop"
-      description="Auto-generated wrapper for the PV loop anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-4">
-        <svg viewBox={`0 0 ${svgW} ${svgH}`} className="w-full">
-          {/* Grid */}
-          {[0, 40, 80, 120, 160].map(p => (
-            <g key={`pg-${p}`}>
-              <line x1={padL} y1={toY(p)} x2={svgW - padR} y2={toY(p)} stroke="hsl(var(--border))" strokeWidth="0.5" />
-              <text x={padL - 6} y={toY(p) + 3} textAnchor="end" fontSize="8" fill="hsl(var(--muted-foreground))">{p}</text>
-            </g>
-          ))}
-          {[0, 40, 80, 120, 160].map(v => (
-            <g key={`vg-${v}`}>
-              <line x1={toX(v)} y1={padT} x2={toX(v)} y2={svgH - padB} stroke="hsl(var(--border))" strokeWidth="0.5" />
-              <text x={toX(v)} y={svgH - padB + 12} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">{v}</text>
-            </g>
-          ))}
-          <text x={10} y={padT + plotH / 2} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600"
-            transform={`rotate(-90, 10, ${padT + plotH / 2})`}>LV Pressure (mmHg)</text>
-          <text x={padL + plotW / 2} y={svgH - 3} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600">LV Volume (ml)</text>
-  
-          {/* ESPVR line */}
-          <line x1={toX(espvr[0].v)} y1={toY(espvr[0].p)} x2={toX(espvr[1].v)} y2={toY(espvr[1].p)}
-            stroke="hsl(0 65% 50%)" strokeWidth="1" strokeDasharray="6 3" opacity="0.4" />
-          <text x={toX(100)} y={toY(100 * 2.5 * contractMult) - 6} fontSize="7" fill="hsl(0 65% 50%)" opacity="0.6">ESPVR</text>
-  
-          {/* EDPVR curve */}
-          <path d={toPath(edpvr)} fill="none" stroke="hsl(210 60% 50%)" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
-          <text x={toX(155)} y={toY(edpvr[edpvr.length - 3]?.p ?? 20) + 4} fontSize="7" fill="hsl(210 60% 50%)" opacity="0.6">EDPVR</text>
-  
-          {/* Reference loop */}
-          {showReference && (
-            <path d={toPath(refLoop) + " Z"} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 3" opacity="0.25" />
-          )}
-  
-          {/* Main PV loop — each phase colored */}
-          {phaseRanges.map((range, i) => {
-            const phasePts = loop.slice(range.start, range.end);
-            return (
-              <path key={i} d={toPath(phasePts)} fill="none"
-                stroke={PHASES[i].color}
-                strokeWidth={activePhase === i ? 4 : 2.5}
-                opacity={activePhase === null || activePhase === i ? 1 : 0.3}
-                className="cursor-pointer transition-all"
-                onClick={() => setActivePhase(activePhase === i ? null : i)} />
-            );
-          })}
-  
-          {/* Direction arrows on loop */}
-          {phaseRanges.map((range, i) => {
-            const mid = Math.floor((range.start + range.end) / 2);
-            const p1 = loop[mid - 1], p2 = loop[mid + 1];
-            if (!p1 || !p2) return null;
-            const angle = Math.atan2(toY(p2.p) - toY(p1.p), toX(p2.v) - toX(p1.v)) * (180 / Math.PI);
-            return (
-                  <polygon key={`arr-${i}`}
-                points="-4,-3 4,0 -4,3"
-                fill={PHASES[i].color}
-                opacity={activePhase === null || activePhase === i ? 0.8 : 0.2}
-                transform={`translate(${toX(loop[mid].v)}, ${toY(loop[mid].p)}) rotate(${angle})`} />
-    );
-          })}
-  
-          {/* Corner labels */}
-          <circle cx={toX(edv)} cy={toY(loop[0].p)} r="3" fill="hsl(260 50% 55%)" />
-          <text x={toX(edv) + 5} y={toY(loop[0].p) + 3} fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">EDV</text>
-          <circle cx={toX(esv)} cy={toY(loop[3 * n]?.p ?? 0)} r="3" fill="hsl(170 50% 40%)" />
-          <text x={toX(esv) - 5} y={toY(loop[3 * n]?.p ?? 0) + 3} fontSize="7" fill="hsl(var(--foreground))" fontWeight="600" textAnchor="end">ESV</text>
-  
-          {/* Stroke volume bracket */}
-          <line x1={toX(esv)} y1={svgH - padB - 3} x2={toX(edv)} y2={svgH - padB - 3} stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.4" />
-          <text x={toX((esv + edv) / 2)} y={svgH - padB - 7} fontSize="7" fill="hsl(var(--foreground))" textAnchor="middle" opacity="0.6">SV = {sv} ml</text>
-        </svg>
-  
-        {/* Hemodynamic values */}
-        <div className="grid grid-cols-3 gap-2 text-center">
-          {[
-            { label: "EDV", value: `${Math.round(edv)} ml`, color: "text-blue-500" },
-            { label: "ESV", value: `${Math.round(esv)} ml`, color: "text-emerald-500" },
-            { label: "EF", value: `${ef}%`, color: ef < 40 ? "text-red-500" : "text-foreground" },
-          ].map(item => (
-            <div key={item.label} className="rounded-lg border border-border p-2">
-              <p className="text-xs text-muted-foreground">{item.label}</p>
-              <p className={`text-sm font-semibold ${item.color}`}>{item.value}</p>
-            </div>
-          ))}
-        </div>
-  
-        {/* Phase info */}
-        {activePhase !== null && (
-          <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 animate-fade-in">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-3 h-3 rounded-full" style={{ backgroundColor: PHASES[activePhase].color }} />
-              <p className="text-sm font-semibold text-foreground">{PHASES[activePhase].name}</p>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">{PHASES[activePhase].description}</p>
+        <div className="space-y-4">
+      <svg viewBox={`0 0 ${svgW} ${svgH}`} className="w-full">
+        {/* Grid */}
+        {[0, 40, 80, 120, 160].map(p => (
+          <g key={`pg-${p}`}>
+            <line x1={padL} y1={toY(p)} x2={svgW - padR} y2={toY(p)} stroke="hsl(var(--border))" strokeWidth="0.5" />
+            <text x={padL - 6} y={toY(p) + 3} textAnchor="end" fontSize="8" fill="hsl(var(--muted-foreground))">{p}</text>
+          </g>
+        ))}
+        {[0, 40, 80, 120, 160].map(v => (
+          <g key={`vg-${v}`}>
+            <line x1={toX(v)} y1={padT} x2={toX(v)} y2={svgH - padB} stroke="hsl(var(--border))" strokeWidth="0.5" />
+            <text x={toX(v)} y={svgH - padB + 12} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">{v}</text>
+          </g>
+        ))}
+        <text x={10} y={padT + plotH / 2} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600"
+          transform={`rotate(-90, 10, ${padT + plotH / 2})`}>LV Pressure (mmHg)</text>
+        <text x={padL + plotW / 2} y={svgH - 3} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600">LV Volume (ml)</text>
+
+        {/* ESPVR line */}
+        <line x1={toX(espvr[0].v)} y1={toY(espvr[0].p)} x2={toX(espvr[1].v)} y2={toY(espvr[1].p)}
+          stroke="hsl(0 65% 50%)" strokeWidth="1" strokeDasharray="6 3" opacity="0.4" />
+        <text x={toX(100)} y={toY(100 * 2.5 * contractMult) - 6} fontSize="7" fill="hsl(0 65% 50%)" opacity="0.6">ESPVR</text>
+
+        {/* EDPVR curve */}
+        <path d={toPath(edpvr)} fill="none" stroke="hsl(210 60% 50%)" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
+        <text x={toX(155)} y={toY(edpvr[edpvr.length - 3]?.p ?? 20) + 4} fontSize="7" fill="hsl(210 60% 50%)" opacity="0.6">EDPVR</text>
+
+        {/* Reference loop */}
+        {showReference && (
+          <path d={toPath(refLoop) + " Z"} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 3" opacity="0.25" />
+        )}
+
+        {/* Main PV loop — each phase colored */}
+        {phaseRanges.map((range, i) => {
+          const phasePts = loop.slice(range.start, range.end);
+          return (
+            <path key={i} d={toPath(phasePts)} fill="none"
+              stroke={PHASES[i].color}
+              strokeWidth={activePhase === i ? 4 : 2.5}
+              opacity={activePhase === null || activePhase === i ? 1 : 0.3}
+              className="cursor-pointer transition-all"
+              onClick={() => setActivePhase(activePhase === i ? null : i)} />
+          );
+        })}
+
+        {/* Direction arrows on loop */}
+        {phaseRanges.map((range, i) => {
+          const mid = Math.floor((range.start + range.end) / 2);
+          const p1 = loop[mid - 1], p2 = loop[mid + 1];
+          if (!p1 || !p2) return null;
+          const angle = Math.atan2(toY(p2.p) - toY(p1.p), toX(p2.v) - toX(p1.v)) * (180 / Math.PI);
+          return (
+                <polygon key={`arr-${i}`}
+              points="-4,-3 4,0 -4,3"
+              fill={PHASES[i].color}
+              opacity={activePhase === null || activePhase === i ? 0.8 : 0.2}
+              transform={`translate(${toX(loop[mid].v)}, ${toY(loop[mid].p)}) rotate(${angle})`} />
+  );
+        })}
+
+        {/* Corner labels */}
+        <circle cx={toX(edv)} cy={toY(loop[0].p)} r="3" fill="hsl(260 50% 55%)" />
+        <text x={toX(edv) + 5} y={toY(loop[0].p) + 3} fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">EDV</text>
+        <circle cx={toX(esv)} cy={toY(loop[3 * n]?.p ?? 0)} r="3" fill="hsl(170 50% 40%)" />
+        <text x={toX(esv) - 5} y={toY(loop[3 * n]?.p ?? 0) + 3} fontSize="7" fill="hsl(var(--foreground))" fontWeight="600" textAnchor="end">ESV</text>
+
+        {/* Stroke volume bracket */}
+        <line x1={toX(esv)} y1={svgH - padB - 3} x2={toX(edv)} y2={svgH - padB - 3} stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.4" />
+        <text x={toX((esv + edv) / 2)} y={svgH - padB - 7} fontSize="7" fill="hsl(var(--foreground))" textAnchor="middle" opacity="0.6">SV = {sv} ml</text>
+      </svg>
+
+      {/* Hemodynamic values */}
+      <div className="grid grid-cols-3 gap-2 text-center">
+        {[
+          { label: "EDV", value: `${Math.round(edv)} ml`, color: "text-blue-500" },
+          { label: "ESV", value: `${Math.round(esv)} ml`, color: "text-emerald-500" },
+          { label: "EF", value: `${ef}%`, color: ef < 40 ? "text-red-500" : "text-foreground" },
+        ].map(item => (
+          <div key={item.label} className="rounded-lg border border-border p-2">
+            <p className="text-xs text-muted-foreground">{item.label}</p>
+            <p className={`text-sm font-semibold ${item.color}`}>{item.value}</p>
           </div>
-        )}
-        {activePhase === null && (
-          <p className="text-xs text-muted-foreground text-center">Click a phase on the loop to learn about it</p>
-        )}
-  
-        {/* Sliders */}
-        <div className="space-y-3 pt-2">
-          {[
-            { label: "Preload (EDV)", value: preload, set: setPreload, color: "accent-blue-500", hint: "↑ Preload shifts loop right (Frank-Starling)" },
-            { label: "Afterload", value: afterload, set: setAfterload, color: "accent-red-500", hint: "↑ Afterload raises peak pressure, ↓ SV" },
-            { label: "Contractility", value: contractility, set: setContractility, color: "accent-emerald-500", hint: "↑ Contractility steepens ESPVR, ↑ EF" },
-          ].map(s => (
-            <div key={s.label}>
-              <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-medium text-foreground">{s.label}</label>
-                <span className="text-xs text-muted-foreground">{s.value}%</span>
-              </div>
-              <input type="range" min={0} max={100} value={s.value}
-                onChange={e => s.set(Number(e.target.value))}
-                className={`w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer ${s.color}`} />
-              <p className="text-[10px] text-muted-foreground mt-0.5">{s.hint}</p>
-            </div>
-          ))}
-        </div>
-  
-        {/* Toggle */}
-        <div className="flex justify-center gap-2">
-          <button onClick={() => setShowReference(!showReference)}
-            className={`px-3 py-1 rounded-lg text-xs font-medium border transition-all ${
-              showReference ? "bg-primary/10 border-primary/40 text-primary" : "border-border text-muted-foreground"
-            }`}>
-            {showReference ? "Reference ✓" : "Reference"}
-          </button>
-          <button onClick={() => { setPreload(50); setAfterload(50); setContractility(50); }}
-            className="px-3 py-1 rounded-lg text-xs font-medium border border-border text-muted-foreground hover:bg-secondary transition-all">
-            Reset
-          </button>
-        </div>
+        ))}
       </div>
-    </DiagramFigure>
+
+      {/* Phase info */}
+      {activePhase !== null && (
+        <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 animate-fade-in">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="w-3 h-3 rounded-full" style={{ backgroundColor: PHASES[activePhase].color }} />
+            <p className="text-sm font-semibold text-foreground">{PHASES[activePhase].name}</p>
+          </div>
+          <p className="text-sm text-muted-foreground leading-relaxed">{PHASES[activePhase].description}</p>
+        </div>
+      )}
+      {activePhase === null && (
+        <p className="text-xs text-muted-foreground text-center">Click a phase on the loop to learn about it</p>
+      )}
+
+      {/* Sliders */}
+      <div className="space-y-3 pt-2">
+        {[
+          { label: "Preload (EDV)", value: preload, set: setPreload, color: "accent-blue-500", hint: "↑ Preload shifts loop right (Frank-Starling)" },
+          { label: "Afterload", value: afterload, set: setAfterload, color: "accent-red-500", hint: "↑ Afterload raises peak pressure, ↓ SV" },
+          { label: "Contractility", value: contractility, set: setContractility, color: "accent-emerald-500", hint: "↑ Contractility steepens ESPVR, ↑ EF" },
+        ].map(s => (
+          <div key={s.label}>
+            <div className="flex items-center justify-between mb-1">
+              <label className="text-xs font-medium text-foreground">{s.label}</label>
+              <span className="text-xs text-muted-foreground">{s.value}%</span>
+            </div>
+            <input type="range" min={0} max={100} value={s.value}
+              onChange={e => s.set(Number(e.target.value))}
+              className={`w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer ${s.color}`} />
+            <p className="text-[10px] text-muted-foreground mt-0.5">{s.hint}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Toggle */}
+      <div className="flex justify-center gap-2">
+        <button onClick={() => setShowReference(!showReference)}
+          className={`px-3 py-1 rounded-lg text-xs font-medium border transition-all ${
+            showReference ? "bg-primary/10 border-primary/40 text-primary" : "border-border text-muted-foreground"
+          }`}>
+          {showReference ? "Reference ✓" : "Reference"}
+        </button>
+        <button onClick={() => { setPreload(50); setAfterload(50); setContractility(50); }}
+          className="px-3 py-1 rounded-lg text-xs font-medium border border-border text-muted-foreground hover:bg-secondary transition-all">
+          Reset
+        </button>
+      </div>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Play, Pause, RotateCcw } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated comparison of CRRT (CVVHDF) vs Intermittent Haemodialysis (IHD).
@@ -363,33 +362,27 @@ interface FlowPathProps {
 }
 
 const FlowPath = ({ d, color, dur, highlight, accent, reverse }: FlowPathProps) => (
-    <DiagramFigure
-      id="rrt-circuit-flow-diagram"
-      title="RRT circuit flow"
-      description="Auto-generated wrapper for the RRT circuit flow equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      <g>
+    {/* base path */}
+    <path d={d} stroke={highlight ? accent : color} strokeWidth={highlight ? 3 : 2} fill="none" opacity={highlight ? 1 : 0.55} />
+    {/* animated flow dashes */}
+    <path
+      d={d}
+      stroke={color}
+      strokeWidth="2"
+      fill="none"
+      strokeDasharray="6 8"
+      opacity="0.95"
     >
-        <g>
-      {/* base path */}
-      <path d={d} stroke={highlight ? accent : color} strokeWidth={highlight ? 3 : 2} fill="none" opacity={highlight ? 1 : 0.55} />
-      {/* animated flow dashes */}
-      <path
-        d={d}
-        stroke={color}
-        strokeWidth="2"
-        fill="none"
-        strokeDasharray="6 8"
-        opacity="0.95"
-      >
-        <animate
-          attributeName="stroke-dashoffset"
-          from={reverse ? "0" : "28"}
-          to={reverse ? "28" : "0"}
-          dur={dur}
-          repeatCount="indefinite"
-        />
-      </path>
-    </g>
-    </DiagramFigure>
+      <animate
+        attributeName="stroke-dashoffset"
+        from={reverse ? "0" : "28"}
+        to={reverse ? "28" : "0"}
+        dur={dur}
+        repeatCount="indefinite"
+      />
+    </path>
+  </g>
   );
 
 export default RRTCircuitFlowDiagram;

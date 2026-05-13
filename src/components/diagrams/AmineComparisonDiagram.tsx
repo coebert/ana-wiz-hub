@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Mode = "tertiary" | "quaternary";
 
@@ -227,16 +226,10 @@ const Property = ({ label, value }: { label: string; value: string }) => (
 );
 
 const Pearl = ({ title, body }: { title: string; body: string }) => (
-    <DiagramFigure
-      id="amine-comparison-diagram"
-      title="Amine comparison"
-      description="Auto-generated wrapper for the Amine comparison anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <div className="rounded-lg border border-border bg-card/50 p-3">
-      <div className="text-xs font-semibold text-foreground mb-1">{title}</div>
-      <div className="text-xs text-muted-foreground leading-relaxed">{body}</div>
-    </div>
-    </DiagramFigure>
+      <div className="rounded-lg border border-border bg-card/50 p-3">
+    <div className="text-xs font-semibold text-foreground mb-1">{title}</div>
+    <div className="text-xs text-muted-foreground leading-relaxed">{body}</div>
+  </div>
   );
 
 export default AmineComparisonDiagram;

@@ -1,5 +1,4 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated timeline showing how the pancreas (and the peripancreatic spaces)
@@ -333,19 +332,13 @@ const steps: AnimatedMechanismStep[] = [
 ];
 
 export const PancreatitisEvolutionTimeline = () => (
-    <DiagramFigure
-      id="pancreatitis-evolution-timeline"
-      title="Pancreatitis evolution timeline"
-      description="Auto-generated wrapper for the Pancreatitis evolution timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <AnimatedMechanism
-      title="Evolution of Pancreatic Necrosis & Fluid Collections"
-      subtitle="Atlanta 2012 morphological timeline — interstitial oedema → necrosis → acute necrotic collection → walled-off necrosis."
-      steps={steps}
-      renderScene={(active) => <PancreasScene active={active} />}
-      accentClass="border-icu/40"
-    />
-    </DiagramFigure>
+      <AnimatedMechanism
+    title="Evolution of Pancreatic Necrosis & Fluid Collections"
+    subtitle="Atlanta 2012 morphological timeline — interstitial oedema → necrosis → acute necrotic collection → walled-off necrosis."
+    steps={steps}
+    renderScene={(active) => <PancreasScene active={active} />}
+    accentClass="border-icu/40"
+  />
   );
 
 export default PancreatitisEvolutionTimeline;

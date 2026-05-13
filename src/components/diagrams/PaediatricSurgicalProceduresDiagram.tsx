@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Procedure = {
   id: string;
@@ -171,171 +170,165 @@ const PaediatricSurgicalProceduresDiagram = () => {
   const sel = PROCEDURES.find((p) => p.id === selectedId)!;
 
   return (
-    <DiagramFigure
-      id="paediatric-surgical-procedures-diagram"
-      title="Paediatric surgical procedures"
-      description="Auto-generated wrapper for the Paediatric surgical procedures anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 rounded-lg border border-border bg-card p-4">
-        <p className="text-sm font-semibold text-foreground mb-1 text-center">
-          Key Paediatric Surgical Procedures — Anaesthetic Implications
-        </p>
-        <p className="text-xs text-muted-foreground text-center mb-3">
-          Click a procedure to see preoperative priorities, induction plan, intraoperative considerations and the highest-yield exam pearl.
-        </p>
-  
-        {/* Anatomical schematic */}
-        <svg viewBox="0 0 600 220" className="w-full h-auto max-w-[700px] mx-auto mb-3" role="img" aria-label="Anatomical sites of paediatric surgical conditions">
-          {/* Infant body silhouette */}
-          <path
-            d="M 300 20 Q 270 20, 265 50 Q 263 70, 280 80 L 240 90 Q 215 95, 215 130 L 215 180 Q 218 195, 235 200 L 270 200 L 280 215 L 320 215 L 330 200 L 365 200 Q 382 195, 385 180 L 385 130 Q 385 95, 360 90 L 320 80 Q 337 70, 335 50 Q 330 20, 300 20 Z"
-            fill="hsl(var(--muted))"
-            opacity="0.35"
-            stroke="hsl(var(--foreground))"
-            strokeWidth="1"
-          />
-          {/* Trachea */}
-          <line x1="300" y1="55" x2="300" y2="105" stroke="hsl(195 75% 50%)" strokeWidth="3" opacity="0.7" />
-          {/* Bronchi */}
-          <line x1="300" y1="105" x2="280" y2="125" stroke="hsl(195 75% 50%)" strokeWidth="2" opacity="0.7" />
-          <line x1="300" y1="105" x2="325" y2="130" stroke="hsl(195 75% 50%)" strokeWidth="3" opacity="0.85" />
-          {/* Lungs */}
-          <ellipse cx="265" cy="135" rx="22" ry="32" fill="hsl(195 60% 60%)" opacity="0.18" stroke="hsl(195 60% 50%)" strokeWidth="0.5" />
-          <ellipse cx="335" cy="135" rx="24" ry="32" fill="hsl(195 60% 60%)" opacity="0.18" stroke="hsl(195 60% 50%)" strokeWidth="0.5" />
-          {/* Stomach + pylorus */}
-          <path d="M 285 145 Q 275 155, 280 170 Q 290 178, 305 175 L 320 168 L 318 158 L 305 152 Z" fill="hsl(40 80% 50%)" opacity="0.22" stroke="hsl(40 80% 50%)" strokeWidth="0.75" />
-          {/* Bowel coils */}
-          <g fill="none" stroke="hsl(0 75% 55%)" strokeWidth="1.5" opacity="0.65">
-            <path d="M 250 178 Q 270 188, 290 182 Q 310 176, 330 186 Q 350 192, 365 184" />
-            <path d="M 248 188 Q 270 196, 295 190 Q 320 184, 348 192" />
-          </g>
-          {/* Scrotum */}
-          <ellipse cx="300" cy="212" rx="14" ry="6" fill="hsl(280 60% 55%)" opacity="0.25" stroke="hsl(280 60% 55%)" strokeWidth="0.75" />
-  
-          {/* Markers */}
-          {[
-            { id: "toef", x: 300, y: 90, label: "TOF" },
-            { id: "fb", x: 325, y: 130, label: "FB" },
-            { id: "pyloric", x: 318, y: 158, label: "Pylorus" },
-            { id: "nec", x: 295, y: 188, label: "NEC" },
-            { id: "torsion", x: 300, y: 212, label: "Torsion" },
-          ].map((mk) => {
-            const proc = PROCEDURES.find((p) => p.id === mk.id)!;
-            const isSel = selectedId === mk.id;
-            return (
-              <g key={mk.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(mk.id)}>
-                <circle cx={mk.x} cy={mk.y} r={isSel ? 9 : 6} fill={proc.color} opacity={isSel ? 0.95 : 0.7} stroke="hsl(var(--background))" strokeWidth="1.5" />
-                {isSel && <circle cx={mk.x} cy={mk.y} r="14" fill="none" stroke={proc.color} strokeWidth="1.5" opacity="0.6">
-                  <animate attributeName="r" values="9;18;9" dur="1.8s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="0.7;0;0.7" dur="1.8s" repeatCount="indefinite" />
-                </circle>}
-              </g>
-            );
-          })}
-  
-          {/* Side labels with leader lines */}
-          {[
-            { id: "toef", lx: 470, ly: 60, ax: 300, ay: 90 },
-            { id: "fb", lx: 470, ly: 105, ax: 325, ay: 130 },
-            { id: "pyloric", lx: 470, ly: 150, ax: 318, ay: 158 },
-            { id: "nec", lx: 470, ly: 180, ax: 295, ay: 188 },
-            { id: "torsion", lx: 470, ly: 205, ax: 300, ay: 212 },
-          ].map((lp) => {
-            const proc = PROCEDURES.find((p) => p.id === lp.id)!;
-            const isSel = selectedId === lp.id;
-            return (
-                  <g key={`lbl-${lp.id}`} opacity={isSel ? 1 : 0.6} style={{ cursor: "pointer" }} onClick={() => setSelectedId(lp.id)}>
-                <line x1={lp.ax} y1={lp.ay} x2={lp.lx - 4} y2={lp.ly} stroke={proc.color} strokeWidth={isSel ? 1.2 : 0.6} />
-                <text x={lp.lx} y={lp.ly + 3} fontSize="10" fontWeight="700" fill={proc.color}>
-                  {proc.name.split(" — ")[0]}
-                </text>
-              </g>
-    );
-          })}
-  
-          {/* Left side labels too */}
-          {[
-            { txt: "Trachea", x: 130, y: 60, ax: 300, ay: 60 },
-            { txt: "Stomach", x: 130, y: 165, ax: 290, ay: 165 },
-          ].map((l, i) => (
-            <g key={`anat-${i}`} opacity="0.55">
-              <line x1={l.ax} y1={l.ay} x2={l.x + 40} y2={l.y} stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" />
-              <text x={l.x} y={l.y + 3} fontSize="9" fill="hsl(var(--muted-foreground))" fontStyle="italic">
-                {l.txt}
+        <div className="my-6 rounded-lg border border-border bg-card p-4">
+      <p className="text-sm font-semibold text-foreground mb-1 text-center">
+        Key Paediatric Surgical Procedures — Anaesthetic Implications
+      </p>
+      <p className="text-xs text-muted-foreground text-center mb-3">
+        Click a procedure to see preoperative priorities, induction plan, intraoperative considerations and the highest-yield exam pearl.
+      </p>
+
+      {/* Anatomical schematic */}
+      <svg viewBox="0 0 600 220" className="w-full h-auto max-w-[700px] mx-auto mb-3" role="img" aria-label="Anatomical sites of paediatric surgical conditions">
+        {/* Infant body silhouette */}
+        <path
+          d="M 300 20 Q 270 20, 265 50 Q 263 70, 280 80 L 240 90 Q 215 95, 215 130 L 215 180 Q 218 195, 235 200 L 270 200 L 280 215 L 320 215 L 330 200 L 365 200 Q 382 195, 385 180 L 385 130 Q 385 95, 360 90 L 320 80 Q 337 70, 335 50 Q 330 20, 300 20 Z"
+          fill="hsl(var(--muted))"
+          opacity="0.35"
+          stroke="hsl(var(--foreground))"
+          strokeWidth="1"
+        />
+        {/* Trachea */}
+        <line x1="300" y1="55" x2="300" y2="105" stroke="hsl(195 75% 50%)" strokeWidth="3" opacity="0.7" />
+        {/* Bronchi */}
+        <line x1="300" y1="105" x2="280" y2="125" stroke="hsl(195 75% 50%)" strokeWidth="2" opacity="0.7" />
+        <line x1="300" y1="105" x2="325" y2="130" stroke="hsl(195 75% 50%)" strokeWidth="3" opacity="0.85" />
+        {/* Lungs */}
+        <ellipse cx="265" cy="135" rx="22" ry="32" fill="hsl(195 60% 60%)" opacity="0.18" stroke="hsl(195 60% 50%)" strokeWidth="0.5" />
+        <ellipse cx="335" cy="135" rx="24" ry="32" fill="hsl(195 60% 60%)" opacity="0.18" stroke="hsl(195 60% 50%)" strokeWidth="0.5" />
+        {/* Stomach + pylorus */}
+        <path d="M 285 145 Q 275 155, 280 170 Q 290 178, 305 175 L 320 168 L 318 158 L 305 152 Z" fill="hsl(40 80% 50%)" opacity="0.22" stroke="hsl(40 80% 50%)" strokeWidth="0.75" />
+        {/* Bowel coils */}
+        <g fill="none" stroke="hsl(0 75% 55%)" strokeWidth="1.5" opacity="0.65">
+          <path d="M 250 178 Q 270 188, 290 182 Q 310 176, 330 186 Q 350 192, 365 184" />
+          <path d="M 248 188 Q 270 196, 295 190 Q 320 184, 348 192" />
+        </g>
+        {/* Scrotum */}
+        <ellipse cx="300" cy="212" rx="14" ry="6" fill="hsl(280 60% 55%)" opacity="0.25" stroke="hsl(280 60% 55%)" strokeWidth="0.75" />
+
+        {/* Markers */}
+        {[
+          { id: "toef", x: 300, y: 90, label: "TOF" },
+          { id: "fb", x: 325, y: 130, label: "FB" },
+          { id: "pyloric", x: 318, y: 158, label: "Pylorus" },
+          { id: "nec", x: 295, y: 188, label: "NEC" },
+          { id: "torsion", x: 300, y: 212, label: "Torsion" },
+        ].map((mk) => {
+          const proc = PROCEDURES.find((p) => p.id === mk.id)!;
+          const isSel = selectedId === mk.id;
+          return (
+            <g key={mk.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(mk.id)}>
+              <circle cx={mk.x} cy={mk.y} r={isSel ? 9 : 6} fill={proc.color} opacity={isSel ? 0.95 : 0.7} stroke="hsl(var(--background))" strokeWidth="1.5" />
+              {isSel && <circle cx={mk.x} cy={mk.y} r="14" fill="none" stroke={proc.color} strokeWidth="1.5" opacity="0.6">
+                <animate attributeName="r" values="9;18;9" dur="1.8s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.7;0;0.7" dur="1.8s" repeatCount="indefinite" />
+              </circle>}
+            </g>
+          );
+        })}
+
+        {/* Side labels with leader lines */}
+        {[
+          { id: "toef", lx: 470, ly: 60, ax: 300, ay: 90 },
+          { id: "fb", lx: 470, ly: 105, ax: 325, ay: 130 },
+          { id: "pyloric", lx: 470, ly: 150, ax: 318, ay: 158 },
+          { id: "nec", lx: 470, ly: 180, ax: 295, ay: 188 },
+          { id: "torsion", lx: 470, ly: 205, ax: 300, ay: 212 },
+        ].map((lp) => {
+          const proc = PROCEDURES.find((p) => p.id === lp.id)!;
+          const isSel = selectedId === lp.id;
+          return (
+                <g key={`lbl-${lp.id}`} opacity={isSel ? 1 : 0.6} style={{ cursor: "pointer" }} onClick={() => setSelectedId(lp.id)}>
+              <line x1={lp.ax} y1={lp.ay} x2={lp.lx - 4} y2={lp.ly} stroke={proc.color} strokeWidth={isSel ? 1.2 : 0.6} />
+              <text x={lp.lx} y={lp.ly + 3} fontSize="10" fontWeight="700" fill={proc.color}>
+                {proc.name.split(" — ")[0]}
               </text>
             </g>
-          ))}
-        </svg>
-  
-        {/* Procedure chip selector */}
-        <div className="flex flex-wrap gap-1.5 justify-center mb-4">
-          {PROCEDURES.map((p) => (
-            <button
-              key={p.id}
-              onClick={() => setSelectedId(p.id)}
-              className="text-[11px] px-2.5 py-1 rounded border transition font-semibold"
-              style={{
-                background: selectedId === p.id ? p.color : "transparent",
-                color: selectedId === p.id ? "white" : "hsl(var(--foreground))",
-                borderColor: selectedId === p.id ? p.color : "hsl(var(--border))",
-              }}
-            >
-              {p.name.split(" — ")[0]}
-            </button>
-          ))}
+  );
+        })}
+
+        {/* Left side labels too */}
+        {[
+          { txt: "Trachea", x: 130, y: 60, ax: 300, ay: 60 },
+          { txt: "Stomach", x: 130, y: 165, ax: 290, ay: 165 },
+        ].map((l, i) => (
+          <g key={`anat-${i}`} opacity="0.55">
+            <line x1={l.ax} y1={l.ay} x2={l.x + 40} y2={l.y} stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" />
+            <text x={l.x} y={l.y + 3} fontSize="9" fill="hsl(var(--muted-foreground))" fontStyle="italic">
+              {l.txt}
+            </text>
+          </g>
+        ))}
+      </svg>
+
+      {/* Procedure chip selector */}
+      <div className="flex flex-wrap gap-1.5 justify-center mb-4">
+        {PROCEDURES.map((p) => (
+          <button
+            key={p.id}
+            onClick={() => setSelectedId(p.id)}
+            className="text-[11px] px-2.5 py-1 rounded border transition font-semibold"
+            style={{
+              background: selectedId === p.id ? p.color : "transparent",
+              color: selectedId === p.id ? "white" : "hsl(var(--foreground))",
+              borderColor: selectedId === p.id ? p.color : "hsl(var(--border))",
+            }}
+          >
+            {p.name.split(" — ")[0]}
+          </button>
+        ))}
+      </div>
+
+      {/* Detail panel */}
+      <div className="rounded-lg border-2 p-3" style={{ borderColor: `${sel.color}55`, background: `${sel.color}0d` }}>
+        <div className="flex items-baseline gap-2 flex-wrap mb-1">
+          <span className="text-base font-bold text-foreground">{sel.name}</span>
         </div>
-  
-        {/* Detail panel */}
-        <div className="rounded-lg border-2 p-3" style={{ borderColor: `${sel.color}55`, background: `${sel.color}0d` }}>
-          <div className="flex items-baseline gap-2 flex-wrap mb-1">
-            <span className="text-base font-bold text-foreground">{sel.name}</span>
+        <div className="flex flex-wrap gap-1.5 mb-2">
+          <span className="text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide" style={{ background: `${URGENCY_COLOR[sel.urgency]}25`, color: URGENCY_COLOR[sel.urgency], border: `1px solid ${URGENCY_COLOR[sel.urgency]}55` }}>
+            {sel.urgency}
+          </span>
+          <span className="text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide bg-muted text-muted-foreground border border-border">
+            {sel.age}
+          </span>
+        </div>
+        <p className="text-xs text-foreground leading-relaxed mb-3">
+          <strong>Pathology:</strong> <span className="text-muted-foreground">{sel.pathology}</span>
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-3 mb-3">
+          <div>
+            <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Preop priorities</p>
+            <ul className="text-[11px] text-muted-foreground space-y-1 list-disc list-inside leading-snug">
+              {sel.preopPriorities.map((s, i) => <li key={i}>{s}</li>)}
+            </ul>
           </div>
-          <div className="flex flex-wrap gap-1.5 mb-2">
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide" style={{ background: `${URGENCY_COLOR[sel.urgency]}25`, color: URGENCY_COLOR[sel.urgency], border: `1px solid ${URGENCY_COLOR[sel.urgency]}55` }}>
-              {sel.urgency}
-            </span>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide bg-muted text-muted-foreground border border-border">
-              {sel.age}
-            </span>
+          <div>
+            <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Intraop considerations</p>
+            <ul className="text-[11px] text-muted-foreground space-y-1 list-disc list-inside leading-snug">
+              {sel.intraopConsiderations.map((s, i) => <li key={i}>{s}</li>)}
+            </ul>
           </div>
-          <p className="text-xs text-foreground leading-relaxed mb-3">
-            <strong>Pathology:</strong> <span className="text-muted-foreground">{sel.pathology}</span>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-3 mb-2">
+          <div className="p-2 rounded bg-card/60 border border-border">
+            <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Induction plan</p>
+            <p className="text-[11px] text-muted-foreground leading-snug">{sel.inductionPlan}</p>
+          </div>
+          <div className="p-2 rounded bg-card/60 border border-border">
+            <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Postop plan</p>
+            <p className="text-[11px] text-muted-foreground leading-snug">{sel.postopPlan}</p>
+          </div>
+        </div>
+
+        <div className="p-2 rounded bg-secondary/50 border border-primary/20 mt-2">
+          <p className="text-[11px] text-muted-foreground leading-snug">
+            <strong className="text-foreground">💡 Exam pearl: </strong>{sel.examPearl}
           </p>
-  
-          <div className="grid md:grid-cols-2 gap-3 mb-3">
-            <div>
-              <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Preop priorities</p>
-              <ul className="text-[11px] text-muted-foreground space-y-1 list-disc list-inside leading-snug">
-                {sel.preopPriorities.map((s, i) => <li key={i}>{s}</li>)}
-              </ul>
-            </div>
-            <div>
-              <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Intraop considerations</p>
-              <ul className="text-[11px] text-muted-foreground space-y-1 list-disc list-inside leading-snug">
-                {sel.intraopConsiderations.map((s, i) => <li key={i}>{s}</li>)}
-              </ul>
-            </div>
-          </div>
-  
-          <div className="grid md:grid-cols-2 gap-3 mb-2">
-            <div className="p-2 rounded bg-card/60 border border-border">
-              <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Induction plan</p>
-              <p className="text-[11px] text-muted-foreground leading-snug">{sel.inductionPlan}</p>
-            </div>
-            <div className="p-2 rounded bg-card/60 border border-border">
-              <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Postop plan</p>
-              <p className="text-[11px] text-muted-foreground leading-snug">{sel.postopPlan}</p>
-            </div>
-          </div>
-  
-          <div className="p-2 rounded bg-secondary/50 border border-primary/20 mt-2">
-            <p className="text-[11px] text-muted-foreground leading-snug">
-              <strong className="text-foreground">💡 Exam pearl: </strong>{sel.examPearl}
-            </p>
-          </div>
         </div>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

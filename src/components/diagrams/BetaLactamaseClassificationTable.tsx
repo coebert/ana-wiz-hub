@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Ambler classification of β-lactamases (A-D) with substrate spectrum
@@ -111,127 +110,121 @@ const BetaLactamaseClassificationTable = () => {
   const cls = CLASSES.find((c) => c.key === selected)!;
 
   return (
-    <DiagramFigure
-      id="beta-lactamase-classification-table"
-      title="Beta lactamase classification table"
-      description="Auto-generated wrapper for the Beta lactamase classification table anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="rounded-xl border border-border bg-card p-4 my-6">
-        <h3 className="text-lg font-semibold text-foreground">
-          β-lactamase classification — Ambler classes A–D
-        </h3>
-        <p className="text-xs text-muted-foreground mb-4">
-          Click a row in the matrix to see organisms, substrate spectrum, sparing
-          agents and clinical implications. Inhibitor coverage shown as ✓ inhibited
-          / ✗ no effect / ~ partial.
-        </p>
-  
-        {/* Coverage matrix */}
-        <div className="overflow-x-auto rounded-lg border border-border">
-          <table className="w-full text-[11px]">
-            <thead>
-              <tr className="bg-muted/50 border-b border-border">
-                <th className="py-2 px-2 text-left font-semibold sticky left-0 bg-muted/50">Ambler / group</th>
-                <th className="py-2 px-2 text-left font-semibold">Key examples</th>
-                <th className="py-2 px-2 text-left font-semibold min-w-[180px]">Substrates hydrolysed</th>
-                {INHIBITORS.map((inh) => (
-                  <th key={inh.key} className="py-2 px-2 text-center font-semibold">
-                    <div>{inh.name}</div>
-                    <div className="text-[9px] font-normal text-muted-foreground">{inh.sub}</div>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {CLASSES.map((c) => {
-                const isActive = selected === c.key;
-                return (
-                  <tr
-                    key={c.key}
-                    onClick={() => setSelected(c.key)}
-                    className="border-b border-border last:border-0 cursor-pointer transition-colors hover:bg-muted/30"
+        <div className="rounded-xl border border-border bg-card p-4 my-6">
+      <h3 className="text-lg font-semibold text-foreground">
+        β-lactamase classification — Ambler classes A–D
+      </h3>
+      <p className="text-xs text-muted-foreground mb-4">
+        Click a row in the matrix to see organisms, substrate spectrum, sparing
+        agents and clinical implications. Inhibitor coverage shown as ✓ inhibited
+        / ✗ no effect / ~ partial.
+      </p>
+
+      {/* Coverage matrix */}
+      <div className="overflow-x-auto rounded-lg border border-border">
+        <table className="w-full text-[11px]">
+          <thead>
+            <tr className="bg-muted/50 border-b border-border">
+              <th className="py-2 px-2 text-left font-semibold sticky left-0 bg-muted/50">Ambler / group</th>
+              <th className="py-2 px-2 text-left font-semibold">Key examples</th>
+              <th className="py-2 px-2 text-left font-semibold min-w-[180px]">Substrates hydrolysed</th>
+              {INHIBITORS.map((inh) => (
+                <th key={inh.key} className="py-2 px-2 text-center font-semibold">
+                  <div>{inh.name}</div>
+                  <div className="text-[9px] font-normal text-muted-foreground">{inh.sub}</div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {CLASSES.map((c) => {
+              const isActive = selected === c.key;
+              return (
+                <tr
+                  key={c.key}
+                  onClick={() => setSelected(c.key)}
+                  className="border-b border-border last:border-0 cursor-pointer transition-colors hover:bg-muted/30"
+                  style={{
+                    backgroundColor: isActive ? `${c.color}14` : undefined,
+                  }}
+                >
+                  <td
+                    className="py-2 px-2 sticky left-0 border-l-4"
                     style={{
-                      backgroundColor: isActive ? `${c.color}14` : undefined,
+                      borderLeftColor: c.color,
+                      backgroundColor: isActive ? `${c.color}14` : "hsl(var(--card))",
                     }}
                   >
-                    <td
-                      className="py-2 px-2 sticky left-0 border-l-4"
-                      style={{
-                        borderLeftColor: c.color,
-                        backgroundColor: isActive ? `${c.color}14` : "hsl(var(--card))",
-                      }}
-                    >
-                      <div className="font-semibold text-foreground">{c.ambler}</div>
-                      <div className="text-muted-foreground text-[10px]">{c.group}</div>
-                    </td>
-                    <td className="py-2 px-2 text-foreground font-mono text-[10.5px]">{c.examples}</td>
-                    <td className="py-2 px-2 text-muted-foreground leading-snug">{c.substrates}</td>
-                    {INHIBITORS.map((inh) => {
-                      const v = c.inhibitors[inh.key];
-                      const d = COV_DISPLAY[v];
-                      return (
-                            <td key={inh.key} className="py-2 px-2 text-center">
-                          <span
-                            className={`inline-flex items-center justify-center w-7 h-7 rounded-full font-bold ${d.cls}`}
-                            title={d.label}
-                          >
-                            {d.symbol}
-                          </span>
-                        </td>
-    );
-                    })}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-  
-        {/* Legend */}
-        <div className="mt-2 flex flex-wrap gap-3 text-[10px] text-muted-foreground">
-          {(Object.keys(COV_DISPLAY) as Cov[]).map((k) => (
-            <div key={k} className="flex items-center gap-1.5">
-              <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full font-bold ${COV_DISPLAY[k].cls}`}>
-                {COV_DISPLAY[k].symbol}
-              </span>
-              <span>{COV_DISPLAY[k].label}</span>
-            </div>
-          ))}
-        </div>
-  
-        {/* Selected detail */}
-        <div
-          className="mt-4 rounded-lg border-l-4 p-3"
-          style={{ borderLeftColor: cls.color, backgroundColor: `${cls.color}10` }}
-        >
-          <p className="text-xs uppercase tracking-wide font-semibold" style={{ color: cls.color }}>
-            {cls.ambler} — {cls.group}
-          </p>
-          <p className="text-xs text-foreground mt-1 leading-snug">
-            <span className="font-semibold">Mechanism: </span>
-            <span className="text-muted-foreground">{cls.mechanism}</span>
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
-            <div className="rounded-md border border-border bg-background/50 p-2">
-              <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground">Typical organisms</p>
-              <p className="text-xs text-foreground leading-snug mt-0.5">{cls.organisms}</p>
-            </div>
-            <div className="rounded-md border border-border bg-background/50 p-2">
-              <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground">Spares (still active)</p>
-              <p className="text-xs text-foreground leading-snug mt-0.5">{cls.spares}</p>
-            </div>
-          </div>
-          <div className="mt-2 rounded-md border border-border bg-background/50 p-2">
-            <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground">Clinical approach</p>
-            <p className="text-xs text-foreground leading-snug mt-0.5">{cls.clinical}</p>
-          </div>
-        </div>
-  
-        <p className="text-[10px] text-muted-foreground italic mt-3">
-          Bush-Jacoby functional classification overlaps Ambler structural: 2be = ESBLs (Class A), 2f = serine carbapenemases (KPC), 3 = MBLs (Class B), 1 = AmpC (Class C), 2d/2df = OXA (Class D). For revision use only.
-        </p>
+                    <div className="font-semibold text-foreground">{c.ambler}</div>
+                    <div className="text-muted-foreground text-[10px]">{c.group}</div>
+                  </td>
+                  <td className="py-2 px-2 text-foreground font-mono text-[10.5px]">{c.examples}</td>
+                  <td className="py-2 px-2 text-muted-foreground leading-snug">{c.substrates}</td>
+                  {INHIBITORS.map((inh) => {
+                    const v = c.inhibitors[inh.key];
+                    const d = COV_DISPLAY[v];
+                    return (
+                          <td key={inh.key} className="py-2 px-2 text-center">
+                        <span
+                          className={`inline-flex items-center justify-center w-7 h-7 rounded-full font-bold ${d.cls}`}
+                          title={d.label}
+                        >
+                          {d.symbol}
+                        </span>
+                      </td>
+  );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
-    </DiagramFigure>
+
+      {/* Legend */}
+      <div className="mt-2 flex flex-wrap gap-3 text-[10px] text-muted-foreground">
+        {(Object.keys(COV_DISPLAY) as Cov[]).map((k) => (
+          <div key={k} className="flex items-center gap-1.5">
+            <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full font-bold ${COV_DISPLAY[k].cls}`}>
+              {COV_DISPLAY[k].symbol}
+            </span>
+            <span>{COV_DISPLAY[k].label}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Selected detail */}
+      <div
+        className="mt-4 rounded-lg border-l-4 p-3"
+        style={{ borderLeftColor: cls.color, backgroundColor: `${cls.color}10` }}
+      >
+        <p className="text-xs uppercase tracking-wide font-semibold" style={{ color: cls.color }}>
+          {cls.ambler} — {cls.group}
+        </p>
+        <p className="text-xs text-foreground mt-1 leading-snug">
+          <span className="font-semibold">Mechanism: </span>
+          <span className="text-muted-foreground">{cls.mechanism}</span>
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
+          <div className="rounded-md border border-border bg-background/50 p-2">
+            <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground">Typical organisms</p>
+            <p className="text-xs text-foreground leading-snug mt-0.5">{cls.organisms}</p>
+          </div>
+          <div className="rounded-md border border-border bg-background/50 p-2">
+            <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground">Spares (still active)</p>
+            <p className="text-xs text-foreground leading-snug mt-0.5">{cls.spares}</p>
+          </div>
+        </div>
+        <div className="mt-2 rounded-md border border-border bg-background/50 p-2">
+          <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground">Clinical approach</p>
+          <p className="text-xs text-foreground leading-snug mt-0.5">{cls.clinical}</p>
+        </div>
+      </div>
+
+      <p className="text-[10px] text-muted-foreground italic mt-3">
+        Bush-Jacoby functional classification overlaps Ambler structural: 2be = ESBLs (Class A), 2f = serine carbapenemases (KPC), 3 = MBLs (Class B), 1 = AmpC (Class C), 2d/2df = OXA (Class D). For revision use only.
+      </p>
+    </div>
   );
 };
 

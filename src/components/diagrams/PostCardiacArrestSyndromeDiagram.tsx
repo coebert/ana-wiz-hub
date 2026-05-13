@@ -1,5 +1,4 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "./MechanismCascadeDiagram";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const ERC_2021: CascadeSource = {
   label: "ERC/ESICM 2021",
@@ -75,20 +74,14 @@ const steps: CascadeStep[] = [
 ];
 
 export const PostCardiacArrestSyndromeDiagram = () => (
-    <DiagramFigure
-      id="post-cardiac-arrest-syndrome-diagram"
-      title="Post cardiac arrest syndrome"
-      description="Auto-generated wrapper for the Post cardiac arrest syndrome anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <MechanismCascadeDiagram
-      title="Post-Cardiac-Arrest Syndrome — The Four Pillars"
-      subtitle="Each pillar drives mortality and needs targeted post-ROSC therapy."
-      accent="icu"
-      steps={steps}
-      layout="radial"
-      centerLabel="Post-Cardiac-Arrest Syndrome"
-    />
-    </DiagramFigure>
+      <MechanismCascadeDiagram
+    title="Post-Cardiac-Arrest Syndrome — The Four Pillars"
+    subtitle="Each pillar drives mortality and needs targeted post-ROSC therapy."
+    accent="icu"
+    steps={steps}
+    layout="radial"
+    centerLabel="Post-Cardiac-Arrest Syndrome"
+  />
   );
 
 export default PostCardiacArrestSyndromeDiagram;

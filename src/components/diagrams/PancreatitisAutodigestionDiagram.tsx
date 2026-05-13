@@ -1,5 +1,4 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "./MechanismCascadeDiagram";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const BJA_AP: CascadeSource = {
   label: "BJA Educ 2018",
@@ -103,18 +102,12 @@ const steps: CascadeStep[] = [
 ];
 
 export const PancreatitisAutodigestionDiagram = () => (
-    <DiagramFigure
-      id="pancreatitis-autodigestion-diagram"
-      title="Pancreatitis autodigestion"
-      description="Auto-generated wrapper for the Pancreatitis autodigestion anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <MechanismCascadeDiagram
-      title="Acute Pancreatitis — Autodigestion Cascade"
-      subtitle="From trypsinogen activation to multi-organ failure."
-      accent="icu"
-      steps={steps}
-    />
-    </DiagramFigure>
+      <MechanismCascadeDiagram
+    title="Acute Pancreatitis — Autodigestion Cascade"
+    subtitle="From trypsinogen activation to multi-organ failure."
+    accent="icu"
+    steps={steps}
+  />
   );
 
 export default PancreatitisAutodigestionDiagram;

@@ -7,7 +7,6 @@ import proneImg from "@/assets/positioning/prone.jpg";
 import parkBenchImg from "@/assets/positioning/park-bench.jpg";
 import sittingImg from "@/assets/positioning/sitting.jpg";
 import beachChairImg from "@/assets/positioning/beach-chair.jpg";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Illustration-style image plates for the principal surgical positions.
@@ -153,21 +152,15 @@ export const SittingIllustration: React.FC = () => (
 );
 
 export const BeachChairIllustration: React.FC = () => (
-    <DiagramFigure
-      id="patient-positioning-illustrations"
-      title="Patient positioning illustrations"
-      description="Auto-generated wrapper for the Patient positioning illustrations anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <PositionPlate
-      src={beachChairImg}
-      alt="Patient in beach-chair position for shoulder surgery"
-      title="Beach chair (shoulder surgery)"
-      checkpoints={[
-        "Trunk elevated 45–70°; head in padded holder, neck neutral — avoid lateral flexion",
-        "Zero arterial transducer at the EXTERNAL AUDITORY MEATUS — MAP at heart over-reads CPP by 12–20 mmHg",
-        "Knees flexed and supported; calf compression to ↓ venous pooling",
-        "Cerebral hypoperfusion / stroke risk — keep MAP at brain ≥ 70 mmHg",
-      ]}
-    />
-    </DiagramFigure>
+      <PositionPlate
+    src={beachChairImg}
+    alt="Patient in beach-chair position for shoulder surgery"
+    title="Beach chair (shoulder surgery)"
+    checkpoints={[
+      "Trunk elevated 45–70°; head in padded holder, neck neutral — avoid lateral flexion",
+      "Zero arterial transducer at the EXTERNAL AUDITORY MEATUS — MAP at heart over-reads CPP by 12–20 mmHg",
+      "Knees flexed and supported; calf compression to ↓ venous pooling",
+      "Cerebral hypoperfusion / stroke risk — keep MAP at brain ≥ 70 mmHg",
+    ]}
+  />
   );

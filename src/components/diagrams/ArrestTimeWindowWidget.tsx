@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, Pause, RotateCcw } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Threshold {
   at: number; // seconds
@@ -108,148 +107,142 @@ export default function ArrestTimeWindowWidget() {
   } as const;
 
   return (
-    <DiagramFigure
-      id="arrest-time-window-widget"
-      title="Arrest time window widget"
-      description="Auto-generated wrapper for the Arrest time window widget anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="rounded-xl border border-border bg-card p-4 my-6">
-        <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">
-          <div>
-            <h3 className="text-base font-serif font-bold text-foreground">
-              Arrest Time-Window Widget
-            </h3>
-            <p className="text-xs text-muted-foreground mt-1">
-              Simulate elapsed arrest time. The widget highlights the action
-              required as you approach each EACTS/EACTA threshold.
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setRunning((r) => !r)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-primary bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              {running ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-              {running ? "Pause" : seconds === 0 ? "Start" : "Resume"}
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setRunning(false);
-                setSeconds(0);
-              }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-border bg-background text-muted-foreground hover:bg-accent/40"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              Reset
-            </button>
-          </div>
+        <div className="rounded-xl border border-border bg-card p-4 my-6">
+      <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">
+        <div>
+          <h3 className="text-base font-serif font-bold text-foreground">
+            Arrest Time-Window Widget
+          </h3>
+          <p className="text-xs text-muted-foreground mt-1">
+            Simulate elapsed arrest time. The widget highlights the action
+            required as you approach each EACTS/EACTA threshold.
+          </p>
         </div>
-  
-        {/* Quick-jump chips */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {THRESHOLDS.map((t) => (
-            <button
-              key={t.at}
-              type="button"
-              onClick={() => setSeconds(t.at)}
-              className={`px-2 py-1 rounded text-[11px] font-medium border transition-colors ${
-                seconds >= t.at
-                  ? "border-transparent text-white"
-                  : "border-border bg-background text-muted-foreground hover:bg-accent/40"
-              }`}
-              style={seconds >= t.at ? { background: t.color } : undefined}
-            >
-              {t.label}
-            </button>
-          ))}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setRunning((r) => !r)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-primary bg-primary text-primary-foreground hover:bg-primary/90"
+          >
+            {running ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+            {running ? "Pause" : seconds === 0 ? "Start" : "Resume"}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setRunning(false);
+              setSeconds(0);
+            }}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-border bg-background text-muted-foreground hover:bg-accent/40"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+            Reset
+          </button>
         </div>
-  
-        {/* Timeline */}
-        <div className="relative mb-6">
-          <div className="h-2 rounded-full bg-secondary/60 overflow-hidden">
-            <div
-              className="h-full transition-all duration-300"
-              style={{
-                width: `${progressPct}%`,
-                background: `linear-gradient(90deg, ${THRESHOLDS[0].color}, ${current.color})`,
-              }}
-            />
-          </div>
-          <div className="relative h-6 mt-1">
-            {THRESHOLDS.map((t) => {
-              const left = (t.at / MAX_SECONDS) * 100;
-              const reached = seconds >= t.at;
-              return (
-                    <div
-                  key={t.at}
-                  className="absolute -translate-x-1/2 flex flex-col items-center"
-                  style={{ left: `${left}%` }}
-                >
-                  <div
-                    className={`w-2 h-2 rounded-full -mt-3 ring-2 ring-background transition-all ${
-                      reached ? "scale-125" : ""
-                    }`}
-                    style={{ background: reached ? t.color : "hsl(var(--muted-foreground) / 0.4)" }}
-                  />
-                  <span
-                    className={`text-[10px] mt-1 font-medium ${
-                      reached ? "text-foreground" : "text-muted-foreground"
-                    }`}
-                  >
-                    {t.label}
-                  </span>
-                </div>
-    );
-            })}
-          </div>
-        </div>
-  
-        {/* Current state */}
-        <div className="grid sm:grid-cols-[140px_1fr] gap-3 items-stretch">
-          <div className="rounded-lg border border-border bg-secondary/30 p-3 flex flex-col items-center justify-center">
-            <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-              Elapsed
-            </span>
-            <span className="text-3xl font-mono font-bold text-foreground tabular-nums">
-              {fmt(seconds)}
-            </span>
-            {secondsToNext !== null && next && (
-              <span className="text-[10px] text-muted-foreground mt-1 text-center">
-                Next threshold {next.label}
-                <br />
-                in {fmt(secondsToNext)}
-              </span>
-            )}
-          </div>
-  
-          <div className={`rounded-lg border p-3 min-h-[180px] sm:min-h-[150px] ${toneClasses[current.tone]}`}>
-            <div className="flex items-center gap-2 mb-1">
-              <span
-                className="inline-block w-2 h-2 rounded-full"
-                style={{ background: current.color }}
-                aria-hidden
-              />
-              <span className={`text-[10px] font-semibold uppercase tracking-wider ${toneText[current.tone]}`}>
-                {current.label} · {current.tone === "critical" ? "Critical" : current.tone === "warn" ? "Action now" : "Initial"}
-              </span>
-            </div>
-            <p className="text-sm font-semibold text-foreground mb-1">
-              {current.title}
-            </p>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              {current.action}
-            </p>
-          </div>
-        </div>
-  
-        <p className="text-[11px] text-muted-foreground italic mt-4">
-          Educational tool only — not for live clinical use. Thresholds adapted
-          from Dunning et al., EACTS/EACTA Guideline for resuscitation after
-          cardiac surgery.
-        </p>
       </div>
-    </DiagramFigure>
+
+      {/* Quick-jump chips */}
+      <div className="flex flex-wrap gap-1.5 mb-4">
+        {THRESHOLDS.map((t) => (
+          <button
+            key={t.at}
+            type="button"
+            onClick={() => setSeconds(t.at)}
+            className={`px-2 py-1 rounded text-[11px] font-medium border transition-colors ${
+              seconds >= t.at
+                ? "border-transparent text-white"
+                : "border-border bg-background text-muted-foreground hover:bg-accent/40"
+            }`}
+            style={seconds >= t.at ? { background: t.color } : undefined}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Timeline */}
+      <div className="relative mb-6">
+        <div className="h-2 rounded-full bg-secondary/60 overflow-hidden">
+          <div
+            className="h-full transition-all duration-300"
+            style={{
+              width: `${progressPct}%`,
+              background: `linear-gradient(90deg, ${THRESHOLDS[0].color}, ${current.color})`,
+            }}
+          />
+        </div>
+        <div className="relative h-6 mt-1">
+          {THRESHOLDS.map((t) => {
+            const left = (t.at / MAX_SECONDS) * 100;
+            const reached = seconds >= t.at;
+            return (
+                  <div
+                key={t.at}
+                className="absolute -translate-x-1/2 flex flex-col items-center"
+                style={{ left: `${left}%` }}
+              >
+                <div
+                  className={`w-2 h-2 rounded-full -mt-3 ring-2 ring-background transition-all ${
+                    reached ? "scale-125" : ""
+                  }`}
+                  style={{ background: reached ? t.color : "hsl(var(--muted-foreground) / 0.4)" }}
+                />
+                <span
+                  className={`text-[10px] mt-1 font-medium ${
+                    reached ? "text-foreground" : "text-muted-foreground"
+                  }`}
+                >
+                  {t.label}
+                </span>
+              </div>
+  );
+          })}
+        </div>
+      </div>
+
+      {/* Current state */}
+      <div className="grid sm:grid-cols-[140px_1fr] gap-3 items-stretch">
+        <div className="rounded-lg border border-border bg-secondary/30 p-3 flex flex-col items-center justify-center">
+          <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
+            Elapsed
+          </span>
+          <span className="text-3xl font-mono font-bold text-foreground tabular-nums">
+            {fmt(seconds)}
+          </span>
+          {secondsToNext !== null && next && (
+            <span className="text-[10px] text-muted-foreground mt-1 text-center">
+              Next threshold {next.label}
+              <br />
+              in {fmt(secondsToNext)}
+            </span>
+          )}
+        </div>
+
+        <div className={`rounded-lg border p-3 min-h-[180px] sm:min-h-[150px] ${toneClasses[current.tone]}`}>
+          <div className="flex items-center gap-2 mb-1">
+            <span
+              className="inline-block w-2 h-2 rounded-full"
+              style={{ background: current.color }}
+              aria-hidden
+            />
+            <span className={`text-[10px] font-semibold uppercase tracking-wider ${toneText[current.tone]}`}>
+              {current.label} · {current.tone === "critical" ? "Critical" : current.tone === "warn" ? "Action now" : "Initial"}
+            </span>
+          </div>
+          <p className="text-sm font-semibold text-foreground mb-1">
+            {current.title}
+          </p>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            {current.action}
+          </p>
+        </div>
+      </div>
+
+      <p className="text-[11px] text-muted-foreground italic mt-4">
+        Educational tool only — not for live clinical use. Thresholds adapted
+        from Dunning et al., EACTS/EACTA Guideline for resuscitation after
+        cardiac surgery.
+      </p>
+    </div>
   );
 }

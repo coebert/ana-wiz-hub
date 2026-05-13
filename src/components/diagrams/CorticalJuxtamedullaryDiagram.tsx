@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Feature = "anatomy" | "vasculature" | "function" | "clinical";
 
@@ -340,86 +339,80 @@ export const CorticalJuxtamedullaryDiagram = () => {
   const [highlight, setHighlight] = useState<Feature | null>(null);
 
   return (
-    <DiagramFigure
-      id="cortical-juxtamedullary-diagram"
-      title="Cortical juxtamedullary"
-      description="Auto-generated wrapper for the Cortical juxtamedullary anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <div className="space-y-4">
-        {/* Feature toggle pills */}
-        <div className="flex flex-wrap gap-2">
-          {features.map(f => (
-            <button
-              key={f.id}
-              onClick={() => setHighlight(highlight === f.id ? null : f.id)}
-              className={`px-3 py-1 rounded-full text-xs font-medium border transition-all ${
-                highlight === f.id
-                  ? "bg-primary/15 border-primary/50 text-primary"
-                  : "bg-secondary/50 border-border text-muted-foreground hover:bg-secondary"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
+            <div className="space-y-4">
+      {/* Feature toggle pills */}
+      <div className="flex flex-wrap gap-2">
+        {features.map(f => (
+          <button
+            key={f.id}
+            onClick={() => setHighlight(highlight === f.id ? null : f.id)}
+            className={`px-3 py-1 rounded-full text-xs font-medium border transition-all ${
+              highlight === f.id
+                ? "bg-primary/15 border-primary/50 text-primary"
+                : "bg-secondary/50 border-border text-muted-foreground hover:bg-secondary"
+            }`}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Side-by-side schematics */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="rounded-lg border border-border bg-card p-3">
+          <div className="flex items-center justify-between mb-2">
+            <h4 className="text-sm font-semibold text-foreground">Cortical Nephron</h4>
+            <span className="text-[10px] uppercase tracking-wide text-muted-foreground bg-secondary/60 px-2 py-0.5 rounded-full">~85%</span>
+          </div>
+          <NephronSchematic variant="cortical" highlight={highlight} />
         </div>
-  
-        {/* Side-by-side schematics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <div className="rounded-lg border border-border bg-card p-3">
-            <div className="flex items-center justify-between mb-2">
-              <h4 className="text-sm font-semibold text-foreground">Cortical Nephron</h4>
-              <span className="text-[10px] uppercase tracking-wide text-muted-foreground bg-secondary/60 px-2 py-0.5 rounded-full">~85%</span>
-            </div>
-            <NephronSchematic variant="cortical" highlight={highlight} />
+        <div className="rounded-lg border border-border bg-card p-3">
+          <div className="flex items-center justify-between mb-2">
+            <h4 className="text-sm font-semibold text-foreground">Juxtamedullary Nephron</h4>
+            <span className="text-[10px] uppercase tracking-wide text-muted-foreground bg-secondary/60 px-2 py-0.5 rounded-full">~15%</span>
           </div>
-          <div className="rounded-lg border border-border bg-card p-3">
-            <div className="flex items-center justify-between mb-2">
-              <h4 className="text-sm font-semibold text-foreground">Juxtamedullary Nephron</h4>
-              <span className="text-[10px] uppercase tracking-wide text-muted-foreground bg-secondary/60 px-2 py-0.5 rounded-full">~15%</span>
-            </div>
-            <NephronSchematic variant="juxta" highlight={highlight} />
-          </div>
-        </div>
-  
-        {/* Active feature comparison */}
-        {highlight ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 animate-fade-in">
-            <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
-              <p className="text-[10px] uppercase tracking-wide text-emerald-500 font-semibold mb-1">Cortical · {features.find(f => f.id === highlight)?.label}</p>
-              <p className="text-sm text-foreground/90 leading-relaxed">{features.find(f => f.id === highlight)?.cortical}</p>
-            </div>
-            <div className="rounded-lg border border-blue-500/30 bg-blue-500/5 p-3">
-              <p className="text-[10px] uppercase tracking-wide text-blue-500 font-semibold mb-1">Juxtamedullary · {features.find(f => f.id === highlight)?.label}</p>
-              <p className="text-sm text-foreground/90 leading-relaxed">{features.find(f => f.id === highlight)?.juxta}</p>
-            </div>
-          </div>
-        ) : (
-          <p className="text-xs text-muted-foreground text-center">Select a feature above to highlight differences on the diagrams</p>
-        )}
-  
-        {/* Quick-fact comparison table */}
-        <div className="rounded-lg border border-border overflow-hidden">
-          <table className="w-full text-xs">
-            <thead className="bg-secondary/40">
-              <tr>
-                <th className="text-left p-2 font-medium text-muted-foreground">Feature</th>
-                <th className="text-left p-2 font-medium text-emerald-500">Cortical</th>
-                <th className="text-left p-2 font-medium text-blue-500">Juxtamedullary</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
-              {stats.map(s => (
-                <tr key={s.label}>
-                  <td className="p-2 font-medium text-foreground">{s.label}</td>
-                  <td className="p-2 text-foreground/85">{s.cortical}</td>
-                  <td className="p-2 text-foreground/85">{s.juxta}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <NephronSchematic variant="juxta" highlight={highlight} />
         </div>
       </div>
-    </DiagramFigure>
+
+      {/* Active feature comparison */}
+      {highlight ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 animate-fade-in">
+          <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
+            <p className="text-[10px] uppercase tracking-wide text-emerald-500 font-semibold mb-1">Cortical · {features.find(f => f.id === highlight)?.label}</p>
+            <p className="text-sm text-foreground/90 leading-relaxed">{features.find(f => f.id === highlight)?.cortical}</p>
+          </div>
+          <div className="rounded-lg border border-blue-500/30 bg-blue-500/5 p-3">
+            <p className="text-[10px] uppercase tracking-wide text-blue-500 font-semibold mb-1">Juxtamedullary · {features.find(f => f.id === highlight)?.label}</p>
+            <p className="text-sm text-foreground/90 leading-relaxed">{features.find(f => f.id === highlight)?.juxta}</p>
+          </div>
+        </div>
+      ) : (
+        <p className="text-xs text-muted-foreground text-center">Select a feature above to highlight differences on the diagrams</p>
+      )}
+
+      {/* Quick-fact comparison table */}
+      <div className="rounded-lg border border-border overflow-hidden">
+        <table className="w-full text-xs">
+          <thead className="bg-secondary/40">
+            <tr>
+              <th className="text-left p-2 font-medium text-muted-foreground">Feature</th>
+              <th className="text-left p-2 font-medium text-emerald-500">Cortical</th>
+              <th className="text-left p-2 font-medium text-blue-500">Juxtamedullary</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border">
+            {stats.map(s => (
+              <tr key={s.label}>
+                <td className="p-2 font-medium text-foreground">{s.label}</td>
+                <td className="p-2 text-foreground/85">{s.cortical}</td>
+                <td className="p-2 text-foreground/85">{s.juxta}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 

@@ -1,5 +1,4 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "./MechanismCascadeDiagram";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const AAGBI: CascadeSource = {
   label: "AAGBI Steroid Cover",
@@ -74,18 +73,12 @@ const steps: CascadeStep[] = [
 ];
 
 export const HPAAxisSuppressionDiagram = () => (
-    <DiagramFigure
-      id="hpa-axis-suppression-diagram"
-      title="HPA axis suppression"
-      description="Auto-generated wrapper for the HPA axis suppression anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <MechanismCascadeDiagram
-      title="HPA axis — chronic steroid suppression cascade"
-      subtitle="From CRH to perioperative adrenal crisis — why long-term steroids need cover."
-      accent="pharmacology"
-      steps={steps}
-    />
-    </DiagramFigure>
+      <MechanismCascadeDiagram
+    title="HPA axis — chronic steroid suppression cascade"
+    subtitle="From CRH to perioperative adrenal crisis — why long-term steroids need cover."
+    accent="pharmacology"
+    steps={steps}
+  />
   );
 
 export default HPAAxisSuppressionDiagram;

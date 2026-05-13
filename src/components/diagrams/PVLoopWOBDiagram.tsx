@@ -1,6 +1,5 @@
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Pattern = "normal" | "obstructive" | "restrictive";
 
@@ -191,218 +190,212 @@ export const PVLoopWOBDiagram = () => {
   ];
 
   return (
-    <DiagramFigure
-      id="pv-loop-wob-diagram"
-      title="PV loop WOB"
-      description="Auto-generated wrapper for the PV loop WOB anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-4">
-        <h3 className="font-semibold text-foreground text-sm">Pressure-Volume Loop — Work of Breathing</h3>
-  
-        {/* Pattern selector */}
-        <div className="flex flex-wrap gap-1.5">
-          {(Object.keys(patterns) as Pattern[]).map((key) => (
-            <button
-              key={key}
-              onClick={() => { setSelected(key); setHighlight("all"); }}
-              className={cn(
-                "text-xs px-2.5 py-1.5 rounded-lg border transition-all font-medium",
-                selected === key
-                  ? "border-primary bg-primary/10 text-primary shadow-sm"
-                  : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
-              )}
-            >
-              {patterns[key].label}
-            </button>
-          ))}
-        </div>
-  
-        {/* Work component toggles */}
-        <div className="flex flex-wrap gap-1.5">
-          {workLabels.map((w) => (
-            <button
-              key={w.key}
-              onClick={() => setHighlight(w.key)}
-              className={cn(
-                "text-xs px-2.5 py-1 rounded-full border transition-all font-medium",
-                highlight === w.key
-                  ? "shadow-sm"
-                  : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
-              )}
-              style={
-                highlight === w.key
-                  ? { borderColor: w.color, background: `${w.color}15`, color: w.color }
-                  : undefined
-              }
-            >
-              {w.label}
-            </button>
-          ))}
-        </div>
-  
-        {/* SVG */}
-        <div className="bg-background rounded-lg border border-border overflow-hidden">
-          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
-            {/* Horizontal grid (volume) */}
-            {vTicks.map((v) => {
-              const [, y] = toSvg(0, v);
-              return (
-                <g key={`v${v}`}>
-                  <line x1={PAD.left} x2={W - PAD.right} y1={y} y2={y}
-                    stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray={v === 0 ? "none" : "3,3"} />
-                  <text x={PAD.left - 6} y={y + 3} textAnchor="end" fontSize="8" fill="hsl(var(--muted-foreground))">
-                    {v}
-                  </text>
-                </g>
-              );
-            })}
-  
-            {/* Vertical grid (pressure) */}
-            {pTicks.map((p) => {
-              const [x] = toSvg(p, 0);
-              return (
-                <g key={`p${p}`}>
-                  <line x1={x} x2={x} y1={PAD.top} y2={H - PAD.bottom}
-                    stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray={p === 0 ? "none" : "3,3"} />
-                  <text x={x} y={H - PAD.bottom + 14} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">
-                    {p}
-                  </text>
-                </g>
-              );
-            })}
-  
-            {/* Axes */}
-            <line x1={PAD.left} x2={PAD.left} y1={PAD.top} y2={H - PAD.bottom} stroke="hsl(var(--foreground))" strokeWidth="1" />
-            <line x1={PAD.left} x2={W - PAD.right} y1={H - PAD.bottom} y2={H - PAD.bottom} stroke="hsl(var(--foreground))" strokeWidth="1" />
-  
-            {/* Axis labels */}
-            <text
-              x={PAD.left - 48} y={PAD.top + PH / 2}
-              textAnchor="middle" fontSize="10" fill="hsl(var(--foreground))"
-              transform={`rotate(-90, ${PAD.left - 48}, ${PAD.top + PH / 2})`}
-              fontWeight="600"
-            >
-              Volume (ml)
-            </text>
-            <text
-              x={PAD.left + PW / 2} y={H - 5}
-              textAnchor="middle" fontSize="10" fill="hsl(var(--foreground))"
-              fontWeight="600"
-            >
-              Pressure (cmH₂O)
-            </text>
-  
-            {/* Shaded areas */}
-            {(highlight === "all" || highlight === "elastic") && (
-              <path d={data.elasticArea} fill={elasticColor} opacity={highlight === "elastic" ? 0.25 : 0.1} />
+        <div className="space-y-4">
+      <h3 className="font-semibold text-foreground text-sm">Pressure-Volume Loop — Work of Breathing</h3>
+
+      {/* Pattern selector */}
+      <div className="flex flex-wrap gap-1.5">
+        {(Object.keys(patterns) as Pattern[]).map((key) => (
+          <button
+            key={key}
+            onClick={() => { setSelected(key); setHighlight("all"); }}
+            className={cn(
+              "text-xs px-2.5 py-1.5 rounded-lg border transition-all font-medium",
+              selected === key
+                ? "border-primary bg-primary/10 text-primary shadow-sm"
+                : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
             )}
-            {(highlight === "all" || highlight === "insp-resistive") && (
-              <path d={data.inspResistiveArea} fill={inspResColor} opacity={highlight === "insp-resistive" ? 0.3 : 0.1} />
-            )}
-            {(highlight === "all" || highlight === "exp-resistive") && (
-              <path d={data.expResistiveArea} fill={expResColor} opacity={highlight === "exp-resistive" ? 0.3 : 0.1} />
-            )}
-  
-            {/* Compliance line */}
-            <path d={compPath} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="6,3" />
-            {/* Label on compliance line */}
-            {(() => {
-              const midP = (info.vt / info.compliance) / 2;
-              const midV = info.vt / 2;
-              const [lx, ly] = toSvg(midP, midV);
-              return (
-                <text x={lx - 12} y={ly - 6} fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="600"
-                  transform={`rotate(${-Math.atan2(PH * info.vt / MAX_V, PW * (info.vt / info.compliance) / P_RANGE) * 180 / Math.PI}, ${lx - 12}, ${ly - 6})`}
-                >
-                  C = {info.compliance}
-                </text>
-              );
-            })()}
-  
-            {/* PV loop curves */}
-            <path d={inspPath} fill="none" stroke={info.color} strokeWidth="2" strokeLinecap="round" />
-            <path d={expPath} fill="none" stroke={info.color} strokeWidth="2" strokeLinecap="round" />
-  
-            {/* Arrows for direction */}
-            {(() => {
-              // Inspiration arrow at ~40% up
-              const idx = Math.round(data.inspiratory.length * 0.4);
-              const [p1, v1] = data.inspiratory[idx];
-              const [p2, v2] = data.inspiratory[idx + 2];
-              const [x1, y1] = toSvg(p1, v1);
-              const [x2, y2] = toSvg(p2, v2);
-              const angle = Math.atan2(y2 - y1, x2 - x1);
-              const aLen = 6;
-              return (
-                <g>
-                  <polygon
-                    points={`${x1},${y1} ${x1 - aLen * Math.cos(angle - 0.4)},${y1 - aLen * Math.sin(angle - 0.4)} ${x1 - aLen * Math.cos(angle + 0.4)},${y1 - aLen * Math.sin(angle + 0.4)}`}
-                    fill={info.color}
-                  />
-                  <text x={x1 + 8} y={y1 - 4} fontSize="8" fill={info.color} fontWeight="600">Insp</text>
-                </g>
-              );
-            })()}
-            {(() => {
-              const idx = Math.round(data.expiratory.length * 0.4);
-              const [p1, v1] = data.expiratory[idx];
-              const [p2, v2] = data.expiratory[idx + 2];
-              const [x1, y1] = toSvg(p1, v1);
-              const [x2, y2] = toSvg(p2, v2);
-              const angle = Math.atan2(y2 - y1, x2 - x1);
-              const aLen = 6;
-              return (
-                    <g>
-                  <polygon
-                    points={`${x1},${y1} ${x1 - aLen * Math.cos(angle - 0.4)},${y1 - aLen * Math.sin(angle - 0.4)} ${x1 - aLen * Math.cos(angle + 0.4)},${y1 - aLen * Math.sin(angle + 0.4)}`}
-                    fill={info.color}
-                  />
-                  <text x={x1 - 28} y={y1 + 4} fontSize="8" fill={info.color} fontWeight="600">Exp</text>
-                </g>
-    );
-            })()}
-          </svg>
-        </div>
-  
-        {/* Values */}
-        <div className="grid grid-cols-3 gap-2">
-          <div className="p-2 rounded-lg bg-secondary/30 border border-border text-center">
-            <p className="text-[10px] text-muted-foreground">Compliance</p>
-            <p className="text-sm font-semibold text-foreground">{info.compliance} ml/cmH₂O</p>
-          </div>
-          <div className="p-2 rounded-lg bg-secondary/30 border border-border text-center">
-            <p className="text-[10px] text-muted-foreground">Resistance</p>
-            <p className="text-sm font-semibold text-foreground">{info.resistance} cmH₂O/L/s</p>
-          </div>
-          <div className="p-2 rounded-lg bg-secondary/30 border border-border text-center">
-            <p className="text-[10px] text-muted-foreground">Tidal Volume</p>
-            <p className="text-sm font-semibold text-foreground">{info.vt} ml</p>
-          </div>
-        </div>
-  
-        {/* Description */}
-        <div className="p-3 rounded-lg bg-secondary/30 border border-border">
-          <p className="text-xs font-semibold text-foreground mb-1">{info.label}</p>
-          <p className="text-xs text-muted-foreground leading-relaxed">{info.description}</p>
-        </div>
-  
-        {/* Component description */}
-        {highlight !== "all" && (
-          <div className="p-3 rounded-lg border border-border"
-            style={{ background: `${workLabels.find(w => w.key === highlight)!.color}10` }}
           >
-            <p className="text-xs font-semibold mb-1" style={{ color: workLabels.find(w => w.key === highlight)!.color }}>
-              {workLabels.find(w => w.key === highlight)!.label} Work
-            </p>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              {workLabels.find(w => w.key === highlight)!.desc}
-              {highlight === "elastic" && " — represented by the triangle under the compliance line. Increased in restrictive disease (steeper slope)."}
-              {highlight === "insp-resistive" && " — the area between the inspiratory curve and compliance line. Increased in obstructive disease."}
-              {highlight === "exp-resistive" && " — the area between the compliance line and expiratory curve. Normally passive (elastic recoil provides the driving pressure). Becomes active work in severe obstruction."}
-            </p>
-          </div>
-        )}
+            {patterns[key].label}
+          </button>
+        ))}
       </div>
-    </DiagramFigure>
+
+      {/* Work component toggles */}
+      <div className="flex flex-wrap gap-1.5">
+        {workLabels.map((w) => (
+          <button
+            key={w.key}
+            onClick={() => setHighlight(w.key)}
+            className={cn(
+              "text-xs px-2.5 py-1 rounded-full border transition-all font-medium",
+              highlight === w.key
+                ? "shadow-sm"
+                : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
+            )}
+            style={
+              highlight === w.key
+                ? { borderColor: w.color, background: `${w.color}15`, color: w.color }
+                : undefined
+            }
+          >
+            {w.label}
+          </button>
+        ))}
+      </div>
+
+      {/* SVG */}
+      <div className="bg-background rounded-lg border border-border overflow-hidden">
+        <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
+          {/* Horizontal grid (volume) */}
+          {vTicks.map((v) => {
+            const [, y] = toSvg(0, v);
+            return (
+              <g key={`v${v}`}>
+                <line x1={PAD.left} x2={W - PAD.right} y1={y} y2={y}
+                  stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray={v === 0 ? "none" : "3,3"} />
+                <text x={PAD.left - 6} y={y + 3} textAnchor="end" fontSize="8" fill="hsl(var(--muted-foreground))">
+                  {v}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* Vertical grid (pressure) */}
+          {pTicks.map((p) => {
+            const [x] = toSvg(p, 0);
+            return (
+              <g key={`p${p}`}>
+                <line x1={x} x2={x} y1={PAD.top} y2={H - PAD.bottom}
+                  stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray={p === 0 ? "none" : "3,3"} />
+                <text x={x} y={H - PAD.bottom + 14} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">
+                  {p}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* Axes */}
+          <line x1={PAD.left} x2={PAD.left} y1={PAD.top} y2={H - PAD.bottom} stroke="hsl(var(--foreground))" strokeWidth="1" />
+          <line x1={PAD.left} x2={W - PAD.right} y1={H - PAD.bottom} y2={H - PAD.bottom} stroke="hsl(var(--foreground))" strokeWidth="1" />
+
+          {/* Axis labels */}
+          <text
+            x={PAD.left - 48} y={PAD.top + PH / 2}
+            textAnchor="middle" fontSize="10" fill="hsl(var(--foreground))"
+            transform={`rotate(-90, ${PAD.left - 48}, ${PAD.top + PH / 2})`}
+            fontWeight="600"
+          >
+            Volume (ml)
+          </text>
+          <text
+            x={PAD.left + PW / 2} y={H - 5}
+            textAnchor="middle" fontSize="10" fill="hsl(var(--foreground))"
+            fontWeight="600"
+          >
+            Pressure (cmH₂O)
+          </text>
+
+          {/* Shaded areas */}
+          {(highlight === "all" || highlight === "elastic") && (
+            <path d={data.elasticArea} fill={elasticColor} opacity={highlight === "elastic" ? 0.25 : 0.1} />
+          )}
+          {(highlight === "all" || highlight === "insp-resistive") && (
+            <path d={data.inspResistiveArea} fill={inspResColor} opacity={highlight === "insp-resistive" ? 0.3 : 0.1} />
+          )}
+          {(highlight === "all" || highlight === "exp-resistive") && (
+            <path d={data.expResistiveArea} fill={expResColor} opacity={highlight === "exp-resistive" ? 0.3 : 0.1} />
+          )}
+
+          {/* Compliance line */}
+          <path d={compPath} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="6,3" />
+          {/* Label on compliance line */}
+          {(() => {
+            const midP = (info.vt / info.compliance) / 2;
+            const midV = info.vt / 2;
+            const [lx, ly] = toSvg(midP, midV);
+            return (
+              <text x={lx - 12} y={ly - 6} fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="600"
+                transform={`rotate(${-Math.atan2(PH * info.vt / MAX_V, PW * (info.vt / info.compliance) / P_RANGE) * 180 / Math.PI}, ${lx - 12}, ${ly - 6})`}
+              >
+                C = {info.compliance}
+              </text>
+            );
+          })()}
+
+          {/* PV loop curves */}
+          <path d={inspPath} fill="none" stroke={info.color} strokeWidth="2" strokeLinecap="round" />
+          <path d={expPath} fill="none" stroke={info.color} strokeWidth="2" strokeLinecap="round" />
+
+          {/* Arrows for direction */}
+          {(() => {
+            // Inspiration arrow at ~40% up
+            const idx = Math.round(data.inspiratory.length * 0.4);
+            const [p1, v1] = data.inspiratory[idx];
+            const [p2, v2] = data.inspiratory[idx + 2];
+            const [x1, y1] = toSvg(p1, v1);
+            const [x2, y2] = toSvg(p2, v2);
+            const angle = Math.atan2(y2 - y1, x2 - x1);
+            const aLen = 6;
+            return (
+              <g>
+                <polygon
+                  points={`${x1},${y1} ${x1 - aLen * Math.cos(angle - 0.4)},${y1 - aLen * Math.sin(angle - 0.4)} ${x1 - aLen * Math.cos(angle + 0.4)},${y1 - aLen * Math.sin(angle + 0.4)}`}
+                  fill={info.color}
+                />
+                <text x={x1 + 8} y={y1 - 4} fontSize="8" fill={info.color} fontWeight="600">Insp</text>
+              </g>
+            );
+          })()}
+          {(() => {
+            const idx = Math.round(data.expiratory.length * 0.4);
+            const [p1, v1] = data.expiratory[idx];
+            const [p2, v2] = data.expiratory[idx + 2];
+            const [x1, y1] = toSvg(p1, v1);
+            const [x2, y2] = toSvg(p2, v2);
+            const angle = Math.atan2(y2 - y1, x2 - x1);
+            const aLen = 6;
+            return (
+                  <g>
+                <polygon
+                  points={`${x1},${y1} ${x1 - aLen * Math.cos(angle - 0.4)},${y1 - aLen * Math.sin(angle - 0.4)} ${x1 - aLen * Math.cos(angle + 0.4)},${y1 - aLen * Math.sin(angle + 0.4)}`}
+                  fill={info.color}
+                />
+                <text x={x1 - 28} y={y1 + 4} fontSize="8" fill={info.color} fontWeight="600">Exp</text>
+              </g>
+  );
+          })()}
+        </svg>
+      </div>
+
+      {/* Values */}
+      <div className="grid grid-cols-3 gap-2">
+        <div className="p-2 rounded-lg bg-secondary/30 border border-border text-center">
+          <p className="text-[10px] text-muted-foreground">Compliance</p>
+          <p className="text-sm font-semibold text-foreground">{info.compliance} ml/cmH₂O</p>
+        </div>
+        <div className="p-2 rounded-lg bg-secondary/30 border border-border text-center">
+          <p className="text-[10px] text-muted-foreground">Resistance</p>
+          <p className="text-sm font-semibold text-foreground">{info.resistance} cmH₂O/L/s</p>
+        </div>
+        <div className="p-2 rounded-lg bg-secondary/30 border border-border text-center">
+          <p className="text-[10px] text-muted-foreground">Tidal Volume</p>
+          <p className="text-sm font-semibold text-foreground">{info.vt} ml</p>
+        </div>
+      </div>
+
+      {/* Description */}
+      <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+        <p className="text-xs font-semibold text-foreground mb-1">{info.label}</p>
+        <p className="text-xs text-muted-foreground leading-relaxed">{info.description}</p>
+      </div>
+
+      {/* Component description */}
+      {highlight !== "all" && (
+        <div className="p-3 rounded-lg border border-border"
+          style={{ background: `${workLabels.find(w => w.key === highlight)!.color}10` }}
+        >
+          <p className="text-xs font-semibold mb-1" style={{ color: workLabels.find(w => w.key === highlight)!.color }}>
+            {workLabels.find(w => w.key === highlight)!.label} Work
+          </p>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            {workLabels.find(w => w.key === highlight)!.desc}
+            {highlight === "elastic" && " — represented by the triangle under the compliance line. Increased in restrictive disease (steeper slope)."}
+            {highlight === "insp-resistive" && " — the area between the inspiratory curve and compliance line. Increased in obstructive disease."}
+            {highlight === "exp-resistive" && " — the area between the compliance line and expiratory curve. Normally passive (elastic recoil provides the driving pressure). Becomes active work in severe obstruction."}
+          </p>
+        </div>
+      )}
+    </div>
   );
 };

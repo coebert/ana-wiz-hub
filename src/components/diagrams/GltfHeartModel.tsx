@@ -8,7 +8,6 @@ import { SimplifyModifier } from "three/examples/jsm/modifiers/SimplifyModifier.
 import { MeshoptDecoder } from "meshoptimizer";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useDeviceTier, type DeviceTier } from "@/lib/deviceTier";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Heart GLB loader with full optimisation pipeline:
@@ -323,25 +322,19 @@ export function GltfHeartModel({
   });
 
   return (
-    <DiagramFigure
-      id="gltf-heart-model"
-      title="Gltf heart"
-      description="Auto-generated wrapper for the Gltf heart anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+            <group
+      ref={groupRef}
+      onClick={
+        onClick
+          ? (e) => {
+              e.stopPropagation();
+              onClick();
+            }
+          : undefined
+      }
     >
-              <group
-        ref={groupRef}
-        onClick={
-          onClick
-            ? (e) => {
-                e.stopPropagation();
-                onClick();
-              }
-            : undefined
-        }
-      >
-        <primitive ref={lodRef} object={lod} />
-      </group>
-    </DiagramFigure>
+      <primitive ref={lodRef} object={lod} />
+    </group>
   );
 }
 

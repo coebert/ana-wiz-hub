@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type StepId = "trigger" | "pvr" | "rv-dilate" | "septal" | "lv-fill" | "hypotension" | "ischaemia";
 
@@ -154,397 +153,391 @@ const RVFailureSpiralDiagram = () => {
   const selectedIdx = steps.findIndex((s) => s.id === selected);
 
   return (
-    <DiagramFigure
-      id="rv-failure-spiral-diagram"
-      title="RV failure spiral"
-      description="Auto-generated wrapper for the RV failure spiral anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-4 mb-8">
-        <div className="p-4 rounded-lg border border-border bg-card">
-          <h2 className="text-xl font-serif font-bold text-foreground mb-1">
-            The RV Failure Spiral
-          </h2>
-          <p className="text-sm text-muted-foreground mb-4">
-            A self-perpetuating cycle in pulmonary hypertension. Each turn tightens
-            inward: rising PVR overloads the right ventricle, septal shift starves
-            the left, and falling MAP cuts off RV coronary perfusion. Tap any node
-            to see the mechanism and management.
-          </p>
-  
-          <div className="grid lg:grid-cols-[auto_1fr] gap-6 items-start">
-            {/* Spiral SVG */}
-            <div className="flex justify-center">
-              <svg
-                viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
-                className="w-full max-w-[360px] h-auto"
-                role="img"
-                aria-label="RV failure spiral diagram"
+        <div className="space-y-4 mb-8">
+      <div className="p-4 rounded-lg border border-border bg-card">
+        <h2 className="text-xl font-serif font-bold text-foreground mb-1">
+          The RV Failure Spiral
+        </h2>
+        <p className="text-sm text-muted-foreground mb-4">
+          A self-perpetuating cycle in pulmonary hypertension. Each turn tightens
+          inward: rising PVR overloads the right ventricle, septal shift starves
+          the left, and falling MAP cuts off RV coronary perfusion. Tap any node
+          to see the mechanism and management.
+        </p>
+
+        <div className="grid lg:grid-cols-[auto_1fr] gap-6 items-start">
+          {/* Spiral SVG */}
+          <div className="flex justify-center">
+            <svg
+              viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
+              className="w-full max-w-[360px] h-auto"
+              role="img"
+              aria-label="RV failure spiral diagram"
+            >
+              <defs>
+                <marker
+                  id="arrow-spiral"
+                  viewBox="0 0 10 10"
+                  refX="8"
+                  refY="5"
+                  markerWidth="6"
+                  markerHeight="6"
+                  orient="auto-start-reverse"
+                >
+                  <path d="M 0 0 L 10 5 L 0 10 z" className="fill-destructive" />
+                </marker>
+              </defs>
+
+              {/* faint guide circles */}
+              {[0.95, 0.7, 0.45, 0.2].map((r) => (
+                <circle
+                  key={r}
+                  cx={CENTRE}
+                  cy={CENTRE}
+                  r={r * MAX_R}
+                  fill="none"
+                  className="stroke-border"
+                  strokeDasharray="2 4"
+                  strokeWidth={0.5}
+                  opacity={0.5}
+                />
+              ))}
+
+              {/* spiral arrow */}
+              <path
+                d={spiralPath()}
+                fill="none"
+                className="stroke-destructive"
+                strokeWidth={2}
+                strokeLinecap="round"
+                markerEnd="url(#arrow-spiral)"
+                opacity={0.8}
+              />
+
+              {/* central PEA arrest label */}
+              <circle
+                cx={CENTRE}
+                cy={CENTRE}
+                r={26}
+                className="fill-destructive"
+                opacity={0.12}
+              />
+              <circle
+                cx={CENTRE}
+                cy={CENTRE}
+                r={26}
+                fill="none"
+                className="stroke-destructive"
+                strokeWidth={1}
+                strokeDasharray="3 2"
+              />
+              <text
+                x={CENTRE}
+                y={CENTRE - 2}
+                textAnchor="middle"
+                className="fill-destructive font-bold"
+                style={{ fontSize: "10px" }}
               >
-                <defs>
-                  <marker
-                    id="arrow-spiral"
-                    viewBox="0 0 10 10"
-                    refX="8"
-                    refY="5"
-                    markerWidth="6"
-                    markerHeight="6"
-                    orient="auto-start-reverse"
+                PEA
+              </text>
+              <text
+                x={CENTRE}
+                y={CENTRE + 9}
+                textAnchor="middle"
+                className="fill-destructive font-semibold"
+                style={{ fontSize: "8px" }}
+              >
+                arrest
+              </text>
+
+              {/* nodes */}
+              {steps.map((s, i) => {
+                const { x, y } = polar(s.angle, s.radius);
+                const isSelected = s.id === selected;
+                const nodeR = isSelected ? 18 : 14;
+                return (
+                      <g
+                    key={s.id}
+                    onClick={() => setSelected(s.id)}
+                    className="cursor-pointer"
                   >
-                    <path d="M 0 0 L 10 5 L 0 10 z" className="fill-destructive" />
-                  </marker>
-                </defs>
-  
-                {/* faint guide circles */}
-                {[0.95, 0.7, 0.45, 0.2].map((r) => (
-                  <circle
-                    key={r}
-                    cx={CENTRE}
-                    cy={CENTRE}
-                    r={r * MAX_R}
-                    fill="none"
-                    className="stroke-border"
-                    strokeDasharray="2 4"
-                    strokeWidth={0.5}
-                    opacity={0.5}
-                  />
-                ))}
-  
-                {/* spiral arrow */}
-                <path
-                  d={spiralPath()}
-                  fill="none"
-                  className="stroke-destructive"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  markerEnd="url(#arrow-spiral)"
-                  opacity={0.8}
-                />
-  
-                {/* central PEA arrest label */}
-                <circle
-                  cx={CENTRE}
-                  cy={CENTRE}
-                  r={26}
-                  className="fill-destructive"
-                  opacity={0.12}
-                />
-                <circle
-                  cx={CENTRE}
-                  cy={CENTRE}
-                  r={26}
-                  fill="none"
-                  className="stroke-destructive"
-                  strokeWidth={1}
-                  strokeDasharray="3 2"
-                />
-                <text
-                  x={CENTRE}
-                  y={CENTRE - 2}
-                  textAnchor="middle"
-                  className="fill-destructive font-bold"
-                  style={{ fontSize: "10px" }}
-                >
-                  PEA
-                </text>
-                <text
-                  x={CENTRE}
-                  y={CENTRE + 9}
-                  textAnchor="middle"
-                  className="fill-destructive font-semibold"
-                  style={{ fontSize: "8px" }}
-                >
-                  arrest
-                </text>
-  
-                {/* nodes */}
-                {steps.map((s, i) => {
-                  const { x, y } = polar(s.angle, s.radius);
-                  const isSelected = s.id === selected;
-                  const nodeR = isSelected ? 18 : 14;
-                  return (
-                        <g
-                      key={s.id}
-                      onClick={() => setSelected(s.id)}
-                      className="cursor-pointer"
-                    >
-                      {/* halo for selected */}
-                      {isSelected && (
-                        <circle
-                          cx={x}
-                          cy={y}
-                          r={nodeR + 5}
-                          className="fill-primary"
-                          opacity={0.18}
-                        />
-                      )}
+                    {/* halo for selected */}
+                    {isSelected && (
                       <circle
                         cx={x}
                         cy={y}
-                        r={nodeR}
-                        className={
-                          isSelected
-                            ? "fill-primary stroke-primary"
-                            : "fill-card stroke-destructive"
-                        }
-                        strokeWidth={isSelected ? 2 : 1.5}
+                        r={nodeR + 5}
+                        className="fill-primary"
+                        opacity={0.18}
                       />
-                      <text
-                        x={x}
-                        y={y + 1}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                        className={
-                          isSelected
-                            ? "fill-primary-foreground font-bold"
-                            : "fill-foreground font-bold"
-                        }
-                        style={{ fontSize: "10px" }}
-                      >
-                        {i + 1}
-                      </text>
-                      {/* short label outside the node */}
-                      <text
-                        x={x + (x >= CENTRE ? nodeR + 4 : -(nodeR + 4))}
-                        y={y + 3}
-                        textAnchor={x >= CENTRE ? "start" : "end"}
-                        className={
-                          isSelected
-                            ? "fill-foreground font-semibold"
-                            : "fill-muted-foreground"
-                        }
-                        style={{ fontSize: "9px" }}
-                      >
-                        {s.shortLabel}
-                      </text>
-                    </g>
-    );
-                })}
-              </svg>
-            </div>
-  
-            {/* Detail panel */}
-            <div className="space-y-3">
-              <div className="flex flex-wrap gap-1.5">
-                {steps.map((s, i) => (
-                  <button
-                    key={s.id}
-                    onClick={() => setSelected(s.id)}
-                    className={`text-[10px] px-2 py-1 rounded-md border transition-colors ${
-                      s.id === selected
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-card text-muted-foreground border-border hover:bg-secondary/50"
-                    }`}
-                  >
-                    {i + 1}. {s.shortLabel}
-                  </button>
-                ))}
-              </div>
-  
-              <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
-                <p className="text-sm font-semibold text-foreground mb-1">
-                  {data.title}
-                </p>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {data.mechanism}
-                </p>
-              </div>
-  
-              <div>
-                <p className="text-[11px] font-semibold text-foreground mb-1">
-                  Haemodynamic consequence
-                </p>
-                <ul className="space-y-0.5">
-                  {data.consequences.map((c) => (
-                    <li
-                      key={c}
-                      className="text-xs text-muted-foreground flex gap-1.5"
+                    )}
+                    <circle
+                      cx={x}
+                      cy={y}
+                      r={nodeR}
+                      className={
+                        isSelected
+                          ? "fill-primary stroke-primary"
+                          : "fill-card stroke-destructive"
+                      }
+                      strokeWidth={isSelected ? 2 : 1.5}
+                    />
+                    <text
+                      x={x}
+                      y={y + 1}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      className={
+                        isSelected
+                          ? "fill-primary-foreground font-bold"
+                          : "fill-foreground font-bold"
+                      }
+                      style={{ fontSize: "10px" }}
                     >
-                      <span className="text-destructive">▸</span>
-                      <span>{c}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-  
-              <div className="p-3 rounded-lg border border-clinical/30 bg-clinical/5">
-                <p className="text-[11px] font-semibold text-foreground mb-1">
-                  Management at this step
-                </p>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {data.intervention}
-                </p>
-              </div>
-  
-              <div className="flex items-center justify-between text-[10px] text-muted-foreground border-t border-border pt-2">
-                <span>
-                  Step {selectedIdx + 1} of {steps.length}
-                </span>
-                <div className="flex gap-1">
-                  <button
-                    onClick={() =>
-                      setSelected(
-                        steps[(selectedIdx - 1 + steps.length) % steps.length].id
-                      )
-                    }
-                    className="px-2 py-0.5 rounded border border-border hover:bg-secondary/50"
-                  >
-                    ← Prev
-                  </button>
-                  <button
-                    onClick={() =>
-                      setSelected(steps[(selectedIdx + 1) % steps.length].id)
-                    }
-                    className="px-2 py-0.5 rounded border border-border hover:bg-secondary/50"
-                  >
-                    Next →
-                  </button>
-                </div>
-              </div>
-            </div>
+                      {i + 1}
+                    </text>
+                    {/* short label outside the node */}
+                    <text
+                      x={x + (x >= CENTRE ? nodeR + 4 : -(nodeR + 4))}
+                      y={y + 3}
+                      textAnchor={x >= CENTRE ? "start" : "end"}
+                      className={
+                        isSelected
+                          ? "fill-foreground font-semibold"
+                          : "fill-muted-foreground"
+                      }
+                      style={{ fontSize: "9px" }}
+                    >
+                      {s.shortLabel}
+                    </text>
+                  </g>
+  );
+              })}
+            </svg>
           </div>
-  
-          {/* Septal shift cross-section */}
-          <div className="mt-6 pt-4 border-t border-border">
-            <p className="text-sm font-semibold text-foreground mb-2">
-              Short-axis echo: the D-shaped LV
-            </p>
-            <div className="grid sm:grid-cols-2 gap-4 items-center">
-              <svg
-                viewBox="0 0 300 160"
-                className="w-full max-w-[300px] h-auto mx-auto"
-                role="img"
-                aria-label="Normal vs PH short-axis cross-section"
-              >
-                {/* Normal heart */}
-                <g>
-                  <text
-                    x="75"
-                    y="14"
-                    textAnchor="middle"
-                    className="fill-foreground font-semibold"
-                    style={{ fontSize: "10px" }}
+
+          {/* Detail panel */}
+          <div className="space-y-3">
+            <div className="flex flex-wrap gap-1.5">
+              {steps.map((s, i) => (
+                <button
+                  key={s.id}
+                  onClick={() => setSelected(s.id)}
+                  className={`text-[10px] px-2 py-1 rounded-md border transition-colors ${
+                    s.id === selected
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-card text-muted-foreground border-border hover:bg-secondary/50"
+                  }`}
+                >
+                  {i + 1}. {s.shortLabel}
+                </button>
+              ))}
+            </div>
+
+            <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
+              <p className="text-sm font-semibold text-foreground mb-1">
+                {data.title}
+              </p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {data.mechanism}
+              </p>
+            </div>
+
+            <div>
+              <p className="text-[11px] font-semibold text-foreground mb-1">
+                Haemodynamic consequence
+              </p>
+              <ul className="space-y-0.5">
+                {data.consequences.map((c) => (
+                  <li
+                    key={c}
+                    className="text-xs text-muted-foreground flex gap-1.5"
                   >
-                    Normal
-                  </text>
-                  {/* RV crescent */}
-                  <path
-                    d="M 25 80 Q 30 30 75 30 Q 100 50 100 80 Q 100 110 75 130 Q 30 130 25 80 Z"
-                    className="fill-muted stroke-foreground"
-                    strokeWidth={1}
-                    opacity={0.5}
-                  />
-                  {/* LV circle */}
-                  <circle
-                    cx="85"
-                    cy="80"
-                    r="32"
-                    className="fill-card stroke-foreground"
-                    strokeWidth={1}
-                  />
-                  <text
-                    x="60"
-                    y="55"
-                    className="fill-muted-foreground font-semibold"
-                    style={{ fontSize: "9px" }}
-                  >
-                    RV
-                  </text>
-                  <text
-                    x="80"
-                    y="84"
-                    className="fill-foreground font-semibold"
-                    style={{ fontSize: "10px" }}
-                  >
-                    LV
-                  </text>
-                </g>
-  
-                {/* PH heart with septal shift */}
-                <g transform="translate(150,0)">
-                  <text
-                    x="75"
-                    y="14"
-                    textAnchor="middle"
-                    className="fill-destructive font-semibold"
-                    style={{ fontSize: "10px" }}
-                  >
-                    PH crisis
-                  </text>
-                  {/* Dilated RV */}
-                  <path
-                    d="M 10 80 Q 15 20 80 20 Q 110 50 110 80 Q 110 110 80 140 Q 15 140 10 80 Z"
-                    className="fill-destructive stroke-destructive"
-                    strokeWidth={1}
-                    opacity={0.18}
-                  />
-                  {/* D-shaped LV — septum bulges right→left */}
-                  <path
-                    d="M 105 50 Q 90 80 105 110 A 28 30 0 1 0 105 50 Z"
-                    className="fill-card stroke-foreground"
-                    strokeWidth={1}
-                  />
-                  {/* Septal arrow */}
-                  <line
-                    x1="118"
-                    y1="80"
-                    x2="98"
-                    y2="80"
-                    className="stroke-destructive"
-                    strokeWidth={2}
-                    markerEnd="url(#arrow-spiral)"
-                  />
-                  <text
-                    x="55"
-                    y="50"
-                    className="fill-destructive font-semibold"
-                    style={{ fontSize: "9px" }}
-                  >
-                    RV ↑↑
-                  </text>
-                  <text
-                    x="118"
-                    y="84"
-                    className="fill-foreground font-semibold"
-                    style={{ fontSize: "10px" }}
-                  >
-                    LV
-                  </text>
-                  <text
-                    x="60"
-                    y="155"
-                    className="fill-destructive italic"
-                    style={{ fontSize: "8px" }}
-                  >
-                    Septal shift → ↓ LV preload
-                  </text>
-                </g>
-              </svg>
-  
-              <div className="text-xs text-muted-foreground space-y-2 leading-relaxed">
-                <p>
-                  <span className="font-semibold text-foreground">Normal:</span> the
-                  LV is circular in short axis; the crescentic RV is a passive
-                  conduit at low pressure.
-                </p>
-                <p>
-                  <span className="font-semibold text-destructive">
-                    PH crisis:
-                  </span>{" "}
-                  the dilated RV pushes the interventricular septum leftward
-                  (reverse Bernheim effect). The LV becomes D-shaped, loses
-                  preload, and cardiac output collapses despite a normal LVEF.
-                </p>
-                <p className="italic">
-                  Bedside transthoracic echo at the parasternal short-axis view is
-                  the fastest way to confirm RV-dominant haemodynamic
-                  decompensation.
-                </p>
+                    <span className="text-destructive">▸</span>
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="p-3 rounded-lg border border-clinical/30 bg-clinical/5">
+              <p className="text-[11px] font-semibold text-foreground mb-1">
+                Management at this step
+              </p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {data.intervention}
+              </p>
+            </div>
+
+            <div className="flex items-center justify-between text-[10px] text-muted-foreground border-t border-border pt-2">
+              <span>
+                Step {selectedIdx + 1} of {steps.length}
+              </span>
+              <div className="flex gap-1">
+                <button
+                  onClick={() =>
+                    setSelected(
+                      steps[(selectedIdx - 1 + steps.length) % steps.length].id
+                    )
+                  }
+                  className="px-2 py-0.5 rounded border border-border hover:bg-secondary/50"
+                >
+                  ← Prev
+                </button>
+                <button
+                  onClick={() =>
+                    setSelected(steps[(selectedIdx + 1) % steps.length].id)
+                  }
+                  className="px-2 py-0.5 rounded border border-border hover:bg-secondary/50"
+                >
+                  Next →
+                </button>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Septal shift cross-section */}
+        <div className="mt-6 pt-4 border-t border-border">
+          <p className="text-sm font-semibold text-foreground mb-2">
+            Short-axis echo: the D-shaped LV
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4 items-center">
+            <svg
+              viewBox="0 0 300 160"
+              className="w-full max-w-[300px] h-auto mx-auto"
+              role="img"
+              aria-label="Normal vs PH short-axis cross-section"
+            >
+              {/* Normal heart */}
+              <g>
+                <text
+                  x="75"
+                  y="14"
+                  textAnchor="middle"
+                  className="fill-foreground font-semibold"
+                  style={{ fontSize: "10px" }}
+                >
+                  Normal
+                </text>
+                {/* RV crescent */}
+                <path
+                  d="M 25 80 Q 30 30 75 30 Q 100 50 100 80 Q 100 110 75 130 Q 30 130 25 80 Z"
+                  className="fill-muted stroke-foreground"
+                  strokeWidth={1}
+                  opacity={0.5}
+                />
+                {/* LV circle */}
+                <circle
+                  cx="85"
+                  cy="80"
+                  r="32"
+                  className="fill-card stroke-foreground"
+                  strokeWidth={1}
+                />
+                <text
+                  x="60"
+                  y="55"
+                  className="fill-muted-foreground font-semibold"
+                  style={{ fontSize: "9px" }}
+                >
+                  RV
+                </text>
+                <text
+                  x="80"
+                  y="84"
+                  className="fill-foreground font-semibold"
+                  style={{ fontSize: "10px" }}
+                >
+                  LV
+                </text>
+              </g>
+
+              {/* PH heart with septal shift */}
+              <g transform="translate(150,0)">
+                <text
+                  x="75"
+                  y="14"
+                  textAnchor="middle"
+                  className="fill-destructive font-semibold"
+                  style={{ fontSize: "10px" }}
+                >
+                  PH crisis
+                </text>
+                {/* Dilated RV */}
+                <path
+                  d="M 10 80 Q 15 20 80 20 Q 110 50 110 80 Q 110 110 80 140 Q 15 140 10 80 Z"
+                  className="fill-destructive stroke-destructive"
+                  strokeWidth={1}
+                  opacity={0.18}
+                />
+                {/* D-shaped LV — septum bulges right→left */}
+                <path
+                  d="M 105 50 Q 90 80 105 110 A 28 30 0 1 0 105 50 Z"
+                  className="fill-card stroke-foreground"
+                  strokeWidth={1}
+                />
+                {/* Septal arrow */}
+                <line
+                  x1="118"
+                  y1="80"
+                  x2="98"
+                  y2="80"
+                  className="stroke-destructive"
+                  strokeWidth={2}
+                  markerEnd="url(#arrow-spiral)"
+                />
+                <text
+                  x="55"
+                  y="50"
+                  className="fill-destructive font-semibold"
+                  style={{ fontSize: "9px" }}
+                >
+                  RV ↑↑
+                </text>
+                <text
+                  x="118"
+                  y="84"
+                  className="fill-foreground font-semibold"
+                  style={{ fontSize: "10px" }}
+                >
+                  LV
+                </text>
+                <text
+                  x="60"
+                  y="155"
+                  className="fill-destructive italic"
+                  style={{ fontSize: "8px" }}
+                >
+                  Septal shift → ↓ LV preload
+                </text>
+              </g>
+            </svg>
+
+            <div className="text-xs text-muted-foreground space-y-2 leading-relaxed">
+              <p>
+                <span className="font-semibold text-foreground">Normal:</span> the
+                LV is circular in short axis; the crescentic RV is a passive
+                conduit at low pressure.
+              </p>
+              <p>
+                <span className="font-semibold text-destructive">
+                  PH crisis:
+                </span>{" "}
+                the dilated RV pushes the interventricular septum leftward
+                (reverse Bernheim effect). The LV becomes D-shaped, loses
+                preload, and cardiac output collapses despite a normal LVEF.
+              </p>
+              <p className="italic">
+                Bedside transthoracic echo at the parasternal short-axis view is
+                the fastest way to confirm RV-dominant haemodynamic
+                decompensation.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // Segments along the nephron, x positions, and baseline osmolality behaviour.
 // We model osmolality (mOsm/kg) as a function of nephron segment and ADH level (0..1).
@@ -183,186 +182,180 @@ export const UrineConcentrationSimulator = () => {
   const finalSegment = segments[segments.length - 1];
 
   return (
-    <DiagramFigure
-      id="urine-concentration-simulator"
-      title="Urine concentration"
-      description="Auto-generated wrapper for the Urine concentration anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-4">
-        {/* ADH slider + presets */}
-        <div className="rounded-lg border border-border bg-card p-4 space-y-3">
-          <div className="flex items-center justify-between">
-            <div>
-              <label htmlFor="adh-slider" className="text-sm font-semibold text-foreground">
-                ADH (vasopressin) level
-              </label>
-              <p className="text-[11px] text-muted-foreground">Drives AQP2 insertion in the collecting duct</p>
-            </div>
-            <div className="text-right">
-              <p className="text-2xl font-bold text-primary">{Math.round(adh * 100)}%</p>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-wide">of maximum</p>
-            </div>
+        <div className="space-y-4">
+      {/* ADH slider + presets */}
+      <div className="rounded-lg border border-border bg-card p-4 space-y-3">
+        <div className="flex items-center justify-between">
+          <div>
+            <label htmlFor="adh-slider" className="text-sm font-semibold text-foreground">
+              ADH (vasopressin) level
+            </label>
+            <p className="text-[11px] text-muted-foreground">Drives AQP2 insertion in the collecting duct</p>
           </div>
-          <input
-            id="adh-slider"
-            type="range"
-            min={0}
-            max={100}
-            value={Math.round(adh * 100)}
-            onChange={(e) => setAdh(Number(e.target.value) / 100)}
-            className="w-full accent-primary cursor-pointer"
-            aria-label="ADH level"
-          />
-          <div className="flex flex-wrap gap-1.5">
-            {adhPresets.map((p) => (
-              <button
-                key={p.label}
-                onClick={() => setAdh(p.value)}
-                className={`px-2.5 py-1 rounded-full text-[11px] font-medium border transition-all ${
-                  Math.abs(adh - p.value) < 0.04
-                    ? "bg-primary/15 border-primary/50 text-primary"
-                    : "bg-secondary/50 border-border text-muted-foreground hover:bg-secondary"
-                }`}
-                title={p.hint}
-              >
-                {p.label}
-              </button>
-            ))}
+          <div className="text-right">
+            <p className="text-2xl font-bold text-primary">{Math.round(adh * 100)}%</p>
+            <p className="text-[10px] text-muted-foreground uppercase tracking-wide">of maximum</p>
           </div>
         </div>
-  
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-          {/* Plot */}
-          <div className="lg:col-span-3 rounded-lg border border-border bg-card p-3 overflow-x-auto">
-            <svg viewBox={`0 0 ${W} ${H}`} className="w-full min-w-[520px]" role="img" aria-label="Tubular fluid osmolality">
-              {/* Y axis grid + labels */}
-              {[0, 300, 600, 900, 1200].map((osm) => (
-                <g key={osm}>
-                  <line x1={padL} y1={yForOsm(osm)} x2={W - padR} y2={yForOsm(osm)} stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.6" />
-                  <text x={padL - 6} y={yForOsm(osm) + 3} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end">{osm}</text>
-                </g>
-              ))}
-              <text x="10" y={padT + plotH / 2} fontSize="9" fill="hsl(var(--muted-foreground))" textAnchor="middle"
-                transform={`rotate(-90, 10, ${padT + plotH / 2})`}>mOsm/kg</text>
-  
-              {/* Plasma reference (300) */}
-              <line x1={padL} y1={yForOsm(300)} x2={W - padR} y2={yForOsm(300)} stroke="hsl(var(--primary))" strokeWidth="0.75" strokeDasharray="4 3" opacity="0.5" />
-              <text x={W - padR - 4} y={yForOsm(300) - 4} fontSize="8" fill="hsl(var(--primary))" textAnchor="end" fontWeight="600">plasma 300</text>
-  
-              {/* Interstitial max line */}
-              <line x1={padL} y1={yForOsm(interstitialMax)} x2={W - padR} y2={yForOsm(interstitialMax)}
-                stroke="hsl(15 55% 45%)" strokeWidth="0.75" strokeDasharray="2 4" opacity="0.55" />
-              <text x={W - padR - 4} y={yForOsm(interstitialMax) - 3} fontSize="8" fill="hsl(15 55% 45%)" textAnchor="end" fontWeight="600">
-                medullary peak {interstitialMax}
-              </text>
-  
-              {/* Trace */}
-              <path d={tracePath} fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
-  
-              {/* Segment markers */}
-              {segments.map((s) => {
-                const osm = s.osm(adh);
-                return (
-                      <g key={s.id}>
-                    <line x1={xForT(s.x)} y1={padT} x2={xForT(s.x)} y2={padT + plotH} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
-                    <circle cx={xForT(s.x)} cy={yForOsm(osm)} r="3.5" fill="hsl(var(--primary))" stroke="hsl(var(--background))" strokeWidth="1" />
-                  </g>
-    );
-              })}
-  
-              {/* X axis segment labels */}
-              {segments.map((s, i) => (
-                <text
-                  key={`xl-${s.id}`}
-                  x={xForT(s.x)}
-                  y={padT + plotH + 14}
-                  fontSize="7.5"
-                  fill="hsl(var(--muted-foreground))"
-                  textAnchor="middle"
-                  transform={`rotate(-25, ${xForT(s.x)}, ${padT + plotH + 14})`}
-                  fontWeight={i === segments.length - 1 ? 700 : 500}
-                >
-                  {s.label}
-                </text>
-              ))}
-  
-              {/* Final urine readout */}
-              <g transform={`translate(${xForT(0.99) + 6}, ${yForOsm(finalSegment.osm(adh))})`}>
-                <rect x="0" y="-12" width="58" height="20" rx="3" fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
-                <text x="29" y="2" fontSize="10" fill="hsl(var(--primary-foreground))" textAnchor="middle" fontWeight="700">
-                  {finalOsm}
-                </text>
+        <input
+          id="adh-slider"
+          type="range"
+          min={0}
+          max={100}
+          value={Math.round(adh * 100)}
+          onChange={(e) => setAdh(Number(e.target.value) / 100)}
+          className="w-full accent-primary cursor-pointer"
+          aria-label="ADH level"
+        />
+        <div className="flex flex-wrap gap-1.5">
+          {adhPresets.map((p) => (
+            <button
+              key={p.label}
+              onClick={() => setAdh(p.value)}
+              className={`px-2.5 py-1 rounded-full text-[11px] font-medium border transition-all ${
+                Math.abs(adh - p.value) < 0.04
+                  ? "bg-primary/15 border-primary/50 text-primary"
+                  : "bg-secondary/50 border-border text-muted-foreground hover:bg-secondary"
+              }`}
+              title={p.hint}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+        {/* Plot */}
+        <div className="lg:col-span-3 rounded-lg border border-border bg-card p-3 overflow-x-auto">
+          <svg viewBox={`0 0 ${W} ${H}`} className="w-full min-w-[520px]" role="img" aria-label="Tubular fluid osmolality">
+            {/* Y axis grid + labels */}
+            {[0, 300, 600, 900, 1200].map((osm) => (
+              <g key={osm}>
+                <line x1={padL} y1={yForOsm(osm)} x2={W - padR} y2={yForOsm(osm)} stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.6" />
+                <text x={padL - 6} y={yForOsm(osm) + 3} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end">{osm}</text>
               </g>
-            </svg>
-          </div>
-  
-          {/* Readouts */}
-          <div className="lg:col-span-2 space-y-3">
-            {/* Final urine */}
-            <div className={`rounded-lg border p-3 ${
-              finalOsm < 100 ? "border-blue-500/40 bg-blue-500/10" :
-              finalOsm < 300 ? "border-cyan-500/40 bg-cyan-500/10" :
-              finalOsm < 600 ? "border-emerald-500/40 bg-emerald-500/10" :
-              finalOsm < 900 ? "border-amber-500/40 bg-amber-500/10" :
-              "border-red-500/40 bg-red-500/10"
-            }`}>
-              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Final urine osmolality</p>
-              <p className="text-3xl font-bold text-foreground">{finalOsm} <span className="text-sm font-medium text-muted-foreground">mOsm/kg</span></p>
-              <p className="text-xs text-foreground/85 leading-relaxed mt-1">{finalSegment.note(adh)}</p>
-            </div>
-  
-            {/* Key segment osmolalities */}
-            <div className="rounded-lg border border-border bg-card p-3">
-              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-2">Tubular fluid at key sites</p>
-              <div className="space-y-1.5">
-                {[
-                  segments[1], // end PCT
-                  segments[2], // tip of loop
-                  segments[3], // end TAL
-                  segments[5], // end CCD
-                  segments[7], // final
-                ].map((s) => (
-                  <div key={s.id} className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground">{s.label}</span>
-                    <span className="font-semibold text-foreground tabular-nums">{Math.round(s.osm(adh))} mOsm/kg</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-  
-            {/* Mechanism note */}
-            <div className="rounded-lg border border-border bg-secondary/20 p-3">
-              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Mechanism</p>
-              <p className="text-[11px] text-foreground/85 leading-relaxed">
-                ADH binds V2 receptors on principal cell basolateral membrane → Gs/cAMP/PKA → AQP2 vesicles fuse with apical membrane. Water flows down the corticomedullary gradient (created by the loop of Henle countercurrent multiplier and maintained by vasa recta countercurrent exchange). Urea recycling via UT-A1/A3 transporters amplifies the inner medullary gradient at high ADH.
-              </p>
-            </div>
-          </div>
+            ))}
+            <text x="10" y={padT + plotH / 2} fontSize="9" fill="hsl(var(--muted-foreground))" textAnchor="middle"
+              transform={`rotate(-90, 10, ${padT + plotH / 2})`}>mOsm/kg</text>
+
+            {/* Plasma reference (300) */}
+            <line x1={padL} y1={yForOsm(300)} x2={W - padR} y2={yForOsm(300)} stroke="hsl(var(--primary))" strokeWidth="0.75" strokeDasharray="4 3" opacity="0.5" />
+            <text x={W - padR - 4} y={yForOsm(300) - 4} fontSize="8" fill="hsl(var(--primary))" textAnchor="end" fontWeight="600">plasma 300</text>
+
+            {/* Interstitial max line */}
+            <line x1={padL} y1={yForOsm(interstitialMax)} x2={W - padR} y2={yForOsm(interstitialMax)}
+              stroke="hsl(15 55% 45%)" strokeWidth="0.75" strokeDasharray="2 4" opacity="0.55" />
+            <text x={W - padR - 4} y={yForOsm(interstitialMax) - 3} fontSize="8" fill="hsl(15 55% 45%)" textAnchor="end" fontWeight="600">
+              medullary peak {interstitialMax}
+            </text>
+
+            {/* Trace */}
+            <path d={tracePath} fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
+
+            {/* Segment markers */}
+            {segments.map((s) => {
+              const osm = s.osm(adh);
+              return (
+                    <g key={s.id}>
+                  <line x1={xForT(s.x)} y1={padT} x2={xForT(s.x)} y2={padT + plotH} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
+                  <circle cx={xForT(s.x)} cy={yForOsm(osm)} r="3.5" fill="hsl(var(--primary))" stroke="hsl(var(--background))" strokeWidth="1" />
+                </g>
+  );
+            })}
+
+            {/* X axis segment labels */}
+            {segments.map((s, i) => (
+              <text
+                key={`xl-${s.id}`}
+                x={xForT(s.x)}
+                y={padT + plotH + 14}
+                fontSize="7.5"
+                fill="hsl(var(--muted-foreground))"
+                textAnchor="middle"
+                transform={`rotate(-25, ${xForT(s.x)}, ${padT + plotH + 14})`}
+                fontWeight={i === segments.length - 1 ? 700 : 500}
+              >
+                {s.label}
+              </text>
+            ))}
+
+            {/* Final urine readout */}
+            <g transform={`translate(${xForT(0.99) + 6}, ${yForOsm(finalSegment.osm(adh))})`}>
+              <rect x="0" y="-12" width="58" height="20" rx="3" fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
+              <text x="29" y="2" fontSize="10" fill="hsl(var(--primary-foreground))" textAnchor="middle" fontWeight="700">
+                {finalOsm}
+              </text>
+            </g>
+          </svg>
         </div>
-  
-        {/* Clinical scenarios */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <div className="rounded-lg border border-border bg-secondary/20 p-3">
-            <p className="text-xs font-semibold text-foreground mb-1">Diabetes insipidus</p>
-            <p className="text-[11px] text-muted-foreground leading-relaxed">
-              Central (no ADH) or nephrogenic (V2/AQP2 resistance) — urine osmolality stuck low (&lt;300 mOsm/kg) despite high plasma osmolality. Polyuria (&gt;3 L/day), hypernatraemia. Slide ADH to 0%.
-            </p>
+
+        {/* Readouts */}
+        <div className="lg:col-span-2 space-y-3">
+          {/* Final urine */}
+          <div className={`rounded-lg border p-3 ${
+            finalOsm < 100 ? "border-blue-500/40 bg-blue-500/10" :
+            finalOsm < 300 ? "border-cyan-500/40 bg-cyan-500/10" :
+            finalOsm < 600 ? "border-emerald-500/40 bg-emerald-500/10" :
+            finalOsm < 900 ? "border-amber-500/40 bg-amber-500/10" :
+            "border-red-500/40 bg-red-500/10"
+          }`}>
+            <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Final urine osmolality</p>
+            <p className="text-3xl font-bold text-foreground">{finalOsm} <span className="text-sm font-medium text-muted-foreground">mOsm/kg</span></p>
+            <p className="text-xs text-foreground/85 leading-relaxed mt-1">{finalSegment.note(adh)}</p>
           </div>
-          <div className="rounded-lg border border-border bg-secondary/20 p-3">
-            <p className="text-xs font-semibold text-foreground mb-1">SIADH</p>
-            <p className="text-[11px] text-muted-foreground leading-relaxed">
-              Inappropriately high ADH → concentrated urine (&gt;100 mOsm/kg) with hyponatraemia and low plasma osmolality. Common post-op, with SSRIs, small-cell lung Ca, head injury. Slide ADH to 100%.
-            </p>
+
+          {/* Key segment osmolalities */}
+          <div className="rounded-lg border border-border bg-card p-3">
+            <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-2">Tubular fluid at key sites</p>
+            <div className="space-y-1.5">
+              {[
+                segments[1], // end PCT
+                segments[2], // tip of loop
+                segments[3], // end TAL
+                segments[5], // end CCD
+                segments[7], // final
+              ].map((s) => (
+                <div key={s.id} className="flex items-center justify-between text-xs">
+                  <span className="text-muted-foreground">{s.label}</span>
+                  <span className="font-semibold text-foreground tabular-nums">{Math.round(s.osm(adh))} mOsm/kg</span>
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* Mechanism note */}
           <div className="rounded-lg border border-border bg-secondary/20 p-3">
-            <p className="text-xs font-semibold text-foreground mb-1">Loop diuretics</p>
-            <p className="text-[11px] text-muted-foreground leading-relaxed">
-              Furosemide blocks NKCC2 in the TAL → abolishes the medullary gradient → kidney can no longer concentrate or fully dilute urine, regardless of ADH. Therapeutic in fluid overload and hyponatraemia.
+            <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Mechanism</p>
+            <p className="text-[11px] text-foreground/85 leading-relaxed">
+              ADH binds V2 receptors on principal cell basolateral membrane → Gs/cAMP/PKA → AQP2 vesicles fuse with apical membrane. Water flows down the corticomedullary gradient (created by the loop of Henle countercurrent multiplier and maintained by vasa recta countercurrent exchange). Urea recycling via UT-A1/A3 transporters amplifies the inner medullary gradient at high ADH.
             </p>
           </div>
         </div>
       </div>
-    </DiagramFigure>
+
+      {/* Clinical scenarios */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="rounded-lg border border-border bg-secondary/20 p-3">
+          <p className="text-xs font-semibold text-foreground mb-1">Diabetes insipidus</p>
+          <p className="text-[11px] text-muted-foreground leading-relaxed">
+            Central (no ADH) or nephrogenic (V2/AQP2 resistance) — urine osmolality stuck low (&lt;300 mOsm/kg) despite high plasma osmolality. Polyuria (&gt;3 L/day), hypernatraemia. Slide ADH to 0%.
+          </p>
+        </div>
+        <div className="rounded-lg border border-border bg-secondary/20 p-3">
+          <p className="text-xs font-semibold text-foreground mb-1">SIADH</p>
+          <p className="text-[11px] text-muted-foreground leading-relaxed">
+            Inappropriately high ADH → concentrated urine (&gt;100 mOsm/kg) with hyponatraemia and low plasma osmolality. Common post-op, with SSRIs, small-cell lung Ca, head injury. Slide ADH to 100%.
+          </p>
+        </div>
+        <div className="rounded-lg border border-border bg-secondary/20 p-3">
+          <p className="text-xs font-semibold text-foreground mb-1">Loop diuretics</p>
+          <p className="text-[11px] text-muted-foreground leading-relaxed">
+            Furosemide blocks NKCC2 in the TAL → abolishes the medullary gradient → kidney can no longer concentrate or fully dilute urine, regardless of ADH. Therapeutic in fluid overload and hyponatraemia.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Pause, Play, RotateCcw } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive walkthrough of the Radon transform and filtered back-projection.
@@ -371,234 +370,228 @@ export const SinogramFBPWalkthrough = () => {
   const detY = overlayCy + overlayR * Math.sin(lastTheta);
 
   return (
-    <DiagramFigure
-      id="sinogram-fbp-walkthrough"
-      title="Sinogram FBP walkthrough"
-      description="Auto-generated wrapper for the Sinogram FBP walkthrough anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <div className="my-6 rounded-xl border border-border bg-muted/30 p-4 space-y-4">
-        <div className="flex items-start justify-between gap-3 flex-wrap">
-          <div>
-            <h3 className="text-lg font-serif font-bold text-foreground leading-tight">
-              Sinogram &amp; filtered back-projection — interactive walkthrough
-            </h3>
-            <p className="text-xs text-muted-foreground mt-0.5">
-              Sweep the number of projection angles (1 → {MAX_ANGLES}) over a half-turn and watch the sinogram fill,
-              the unfiltered back-projection blur, and the ramp-filtered reconstruction sharpen.
-            </p>
-          </div>
-          <div className="flex gap-1.5">
-            <Button
+            <div className="my-6 rounded-xl border border-border bg-muted/30 p-4 space-y-4">
+      <div className="flex items-start justify-between gap-3 flex-wrap">
+        <div>
+          <h3 className="text-lg font-serif font-bold text-foreground leading-tight">
+            Sinogram &amp; filtered back-projection — interactive walkthrough
+          </h3>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Sweep the number of projection angles (1 → {MAX_ANGLES}) over a half-turn and watch the sinogram fill,
+            the unfiltered back-projection blur, and the ramp-filtered reconstruction sharpen.
+          </p>
+        </div>
+        <div className="flex gap-1.5">
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={() => {
+              if (nAngles >= MAX_ANGLES) setNAngles(1);
+              setPlaying((p) => !p);
+            }}
+            className="h-7 px-2 text-xs"
+          >
+            {playing ? <Pause className="w-3 h-3 mr-1" /> : <Play className="w-3 h-3 mr-1" />}
+            {playing ? "Pause" : "Play"}
+          </Button>
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={() => {
+              setPlaying(false);
+              setNAngles(1);
+            }}
+            className="h-7 px-2 text-xs"
+          >
+            <RotateCcw className="w-3 h-3" />
+          </Button>
+        </div>
+      </div>
+
+      {/* Slider */}
+      <div className="space-y-1.5">
+        <div className="flex items-center justify-between text-xs">
+          <span className="text-muted-foreground">Projection angles</span>
+          <span className="tabular-nums font-medium text-foreground">
+            {nAnglesInt} <span className="text-muted-foreground">/ {MAX_ANGLES}</span>
+            <span className="text-muted-foreground ml-2">({angularCoverage}° coverage)</span>
+          </span>
+        </div>
+        <Slider
+          value={[nAnglesInt]}
+          min={1}
+          max={MAX_ANGLES}
+          step={1}
+          onValueChange={(v) => {
+            setPlaying(false);
+            setNAngles(v[0]);
+          }}
+        />
+        <div className="flex flex-wrap gap-1 pt-0.5">
+          {[1, 4, 8, 16, 32, 64, 128, 180].map((n) => (
+            <button
+              key={n}
               type="button"
-              size="sm"
-              variant="outline"
-              onClick={() => {
-                if (nAngles >= MAX_ANGLES) setNAngles(1);
-                setPlaying((p) => !p);
-              }}
-              className="h-7 px-2 text-xs"
-            >
-              {playing ? <Pause className="w-3 h-3 mr-1" /> : <Play className="w-3 h-3 mr-1" />}
-              {playing ? "Pause" : "Play"}
-            </Button>
-            <Button
-              type="button"
-              size="sm"
-              variant="outline"
               onClick={() => {
                 setPlaying(false);
-                setNAngles(1);
+                setNAngles(n);
               }}
-              className="h-7 px-2 text-xs"
+              className={`text-[10px] px-1.5 py-0.5 rounded border ${
+                nAnglesInt === n
+                  ? "border-primary bg-primary/15 text-foreground"
+                  : "border-border text-muted-foreground hover:text-foreground"
+              }`}
             >
-              <RotateCcw className="w-3 h-3" />
-            </Button>
-          </div>
+              {n}
+            </button>
+          ))}
         </div>
-  
-        {/* Slider */}
-        <div className="space-y-1.5">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted-foreground">Projection angles</span>
-            <span className="tabular-nums font-medium text-foreground">
-              {nAnglesInt} <span className="text-muted-foreground">/ {MAX_ANGLES}</span>
-              <span className="text-muted-foreground ml-2">({angularCoverage}° coverage)</span>
-            </span>
-          </div>
-          <Slider
-            value={[nAnglesInt]}
-            min={1}
-            max={MAX_ANGLES}
-            step={1}
-            onValueChange={(v) => {
-              setPlaying(false);
-              setNAngles(v[0]);
-            }}
-          />
-          <div className="flex flex-wrap gap-1 pt-0.5">
-            {[1, 4, 8, 16, 32, 64, 128, 180].map((n) => (
-              <button
-                key={n}
-                type="button"
-                onClick={() => {
-                  setPlaying(false);
-                  setNAngles(n);
-                }}
-                className={`text-[10px] px-1.5 py-0.5 rounded border ${
-                  nAnglesInt === n
-                    ? "border-primary bg-primary/15 text-foreground"
-                    : "border-border text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {n}
-              </button>
-            ))}
-          </div>
-        </div>
-  
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {/* Phantom + current projection */}
-          <figure className="rounded-lg border border-border bg-background/80 p-2">
-            <p className="text-[10px] uppercase tracking-wide text-muted-foreground text-center mb-1">
-              Phantom
-            </p>
-            <div className="relative aspect-square">
-              <canvas
-                ref={phantomCanvas}
-                width={N}
-                height={N}
-                className="w-full h-full rounded"
-                style={{ imageRendering: "pixelated" }}
-              />
-              <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none">
-                <circle cx={overlayCx} cy={overlayCy} r={overlayR} fill="none" stroke="hsl(var(--border))" strokeWidth={0.5} strokeDasharray="2 2" />
-                {/* Beam line */}
-                <line
-                  x1={tubeX + dirX * 50}
-                  y1={tubeY + dirY * 50}
-                  x2={tubeX - dirX * 50}
-                  y2={tubeY - dirY * 50}
-                  stroke="hsl(45 95% 60%)"
-                  strokeWidth={0.5}
-                  opacity={0.6}
-                />
-                <line
-                  x1={detX + dirX * 50}
-                  y1={detY + dirY * 50}
-                  x2={detX - dirX * 50}
-                  y2={detY - dirY * 50}
-                  stroke="hsl(45 95% 60%)"
-                  strokeWidth={0.5}
-                  opacity={0.6}
-                />
-                {/* Tube */}
-                <circle cx={tubeX} cy={tubeY} r={3} fill="hsl(25 85% 55%)" />
-                {/* Detector */}
-                <line
-                  x1={detX + dirX * 8}
-                  y1={detY + dirY * 8}
-                  x2={detX - dirX * 8}
-                  y2={detY - dirY * 8}
-                  stroke="hsl(195 80% 55%)"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-            <figcaption className="text-[10px] text-muted-foreground text-center mt-1">
-              θ = {((lastTheta * 180) / Math.PI).toFixed(0)}°
-            </figcaption>
-          </figure>
-  
-          {/* Sinogram */}
-          <figure className="rounded-lg border border-border bg-background/80 p-2">
-            <p className="text-[10px] uppercase tracking-wide text-muted-foreground text-center mb-1">
-              Sinogram
-            </p>
-            <div className="relative aspect-square">
-              <canvas
-                ref={sinoCanvas}
-                width={N_DET}
-                height={MAX_ANGLES}
-                className="w-full h-full rounded"
-                style={{ imageRendering: "pixelated" }}
-              />
-              <div className="absolute left-0 top-0 text-[8px] text-white/70 px-0.5">θ=0</div>
-              <div className="absolute left-0 bottom-0 text-[8px] text-white/70 px-0.5">π</div>
-              <div className="absolute right-0 bottom-0 text-[8px] text-white/70 px-0.5">s</div>
-            </div>
-            <figcaption className="text-[10px] text-muted-foreground text-center mt-1">
-              each row = one projection
-            </figcaption>
-          </figure>
-  
-          {/* Unfiltered BP */}
-          <figure className="rounded-lg border border-border bg-background/80 p-2">
-            <p className="text-[10px] uppercase tracking-wide text-muted-foreground text-center mb-1">
-              Back-projection
-            </p>
-            <div className="aspect-square">
-              <canvas
-                ref={bpCanvas}
-                width={N}
-                height={N}
-                className="w-full h-full rounded"
-                style={{ imageRendering: "pixelated" }}
-              />
-            </div>
-            <figcaption className="text-[10px] text-muted-foreground text-center mt-1 italic">
-              unfiltered → 1/r blur
-            </figcaption>
-          </figure>
-  
-          {/* Filtered BP */}
-          <figure className="rounded-lg border border-primary/40 bg-background/80 p-2">
-            <p className="text-[10px] uppercase tracking-wide text-primary text-center mb-1">
-              Filtered BP
-            </p>
-            <div className="aspect-square">
-              <canvas
-                ref={fbpCanvas}
-                width={N}
-                height={N}
-                className="w-full h-full rounded"
-                style={{ imageRendering: "pixelated" }}
-              />
-            </div>
-            <figcaption className="text-[10px] text-muted-foreground text-center mt-1">
-              ramp (Ram-Lak) filter → crisp
-            </figcaption>
-          </figure>
-        </div>
-  
-        {/* Explainer */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-[11px] text-muted-foreground">
-          <div className="rounded-md border border-border bg-background/60 p-2">
-            <strong className="text-foreground">1. Forward (Radon).</strong> At each angle θ, a parallel
-            beam integrates attenuation along every ray, producing a 1-D projection p(s, θ). Stack all
-            angles → sinogram.
-          </div>
-          <div className="rounded-md border border-border bg-background/60 p-2">
-            <strong className="text-foreground">2. Back-project.</strong> Smear each projection back along its
-            rays. With few angles you get a star pattern; with many you get a blurred image (1/r convolution
-            of the truth).
-          </div>
-          <div className="rounded-md border border-border bg-background/60 p-2">
-            <strong className="text-foreground">3. Filter first.</strong> Convolving each projection with a{" "}
-            <em>ramp (|ω|) filter</em> before back-projecting cancels the 1/r blur — this is{" "}
-            <strong className="text-foreground">filtered back-projection (FBP)</strong>, the analytical
-            baseline for CT reconstruction.
-          </div>
-        </div>
-  
-        <p className="text-[11px] text-muted-foreground italic leading-snug">
-          Try 1 angle (single smear) → 8 angles (visible streaks) → 32 angles (recognisable shape) →
-          180 angles (clean image). Iterative / model-based methods (ASIR, IMR) extend this idea by
-          re-projecting the estimate and correcting noise statistics, allowing equivalent image quality
-          at lower dose.
-        </p>
       </div>
-    </DiagramFigure>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {/* Phantom + current projection */}
+        <figure className="rounded-lg border border-border bg-background/80 p-2">
+          <p className="text-[10px] uppercase tracking-wide text-muted-foreground text-center mb-1">
+            Phantom
+          </p>
+          <div className="relative aspect-square">
+            <canvas
+              ref={phantomCanvas}
+              width={N}
+              height={N}
+              className="w-full h-full rounded"
+              style={{ imageRendering: "pixelated" }}
+            />
+            <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none">
+              <circle cx={overlayCx} cy={overlayCy} r={overlayR} fill="none" stroke="hsl(var(--border))" strokeWidth={0.5} strokeDasharray="2 2" />
+              {/* Beam line */}
+              <line
+                x1={tubeX + dirX * 50}
+                y1={tubeY + dirY * 50}
+                x2={tubeX - dirX * 50}
+                y2={tubeY - dirY * 50}
+                stroke="hsl(45 95% 60%)"
+                strokeWidth={0.5}
+                opacity={0.6}
+              />
+              <line
+                x1={detX + dirX * 50}
+                y1={detY + dirY * 50}
+                x2={detX - dirX * 50}
+                y2={detY - dirY * 50}
+                stroke="hsl(45 95% 60%)"
+                strokeWidth={0.5}
+                opacity={0.6}
+              />
+              {/* Tube */}
+              <circle cx={tubeX} cy={tubeY} r={3} fill="hsl(25 85% 55%)" />
+              {/* Detector */}
+              <line
+                x1={detX + dirX * 8}
+                y1={detY + dirY * 8}
+                x2={detX - dirX * 8}
+                y2={detY - dirY * 8}
+                stroke="hsl(195 80% 55%)"
+                strokeWidth={2}
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+          <figcaption className="text-[10px] text-muted-foreground text-center mt-1">
+            θ = {((lastTheta * 180) / Math.PI).toFixed(0)}°
+          </figcaption>
+        </figure>
+
+        {/* Sinogram */}
+        <figure className="rounded-lg border border-border bg-background/80 p-2">
+          <p className="text-[10px] uppercase tracking-wide text-muted-foreground text-center mb-1">
+            Sinogram
+          </p>
+          <div className="relative aspect-square">
+            <canvas
+              ref={sinoCanvas}
+              width={N_DET}
+              height={MAX_ANGLES}
+              className="w-full h-full rounded"
+              style={{ imageRendering: "pixelated" }}
+            />
+            <div className="absolute left-0 top-0 text-[8px] text-white/70 px-0.5">θ=0</div>
+            <div className="absolute left-0 bottom-0 text-[8px] text-white/70 px-0.5">π</div>
+            <div className="absolute right-0 bottom-0 text-[8px] text-white/70 px-0.5">s</div>
+          </div>
+          <figcaption className="text-[10px] text-muted-foreground text-center mt-1">
+            each row = one projection
+          </figcaption>
+        </figure>
+
+        {/* Unfiltered BP */}
+        <figure className="rounded-lg border border-border bg-background/80 p-2">
+          <p className="text-[10px] uppercase tracking-wide text-muted-foreground text-center mb-1">
+            Back-projection
+          </p>
+          <div className="aspect-square">
+            <canvas
+              ref={bpCanvas}
+              width={N}
+              height={N}
+              className="w-full h-full rounded"
+              style={{ imageRendering: "pixelated" }}
+            />
+          </div>
+          <figcaption className="text-[10px] text-muted-foreground text-center mt-1 italic">
+            unfiltered → 1/r blur
+          </figcaption>
+        </figure>
+
+        {/* Filtered BP */}
+        <figure className="rounded-lg border border-primary/40 bg-background/80 p-2">
+          <p className="text-[10px] uppercase tracking-wide text-primary text-center mb-1">
+            Filtered BP
+          </p>
+          <div className="aspect-square">
+            <canvas
+              ref={fbpCanvas}
+              width={N}
+              height={N}
+              className="w-full h-full rounded"
+              style={{ imageRendering: "pixelated" }}
+            />
+          </div>
+          <figcaption className="text-[10px] text-muted-foreground text-center mt-1">
+            ramp (Ram-Lak) filter → crisp
+          </figcaption>
+        </figure>
+      </div>
+
+      {/* Explainer */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-[11px] text-muted-foreground">
+        <div className="rounded-md border border-border bg-background/60 p-2">
+          <strong className="text-foreground">1. Forward (Radon).</strong> At each angle θ, a parallel
+          beam integrates attenuation along every ray, producing a 1-D projection p(s, θ). Stack all
+          angles → sinogram.
+        </div>
+        <div className="rounded-md border border-border bg-background/60 p-2">
+          <strong className="text-foreground">2. Back-project.</strong> Smear each projection back along its
+          rays. With few angles you get a star pattern; with many you get a blurred image (1/r convolution
+          of the truth).
+        </div>
+        <div className="rounded-md border border-border bg-background/60 p-2">
+          <strong className="text-foreground">3. Filter first.</strong> Convolving each projection with a{" "}
+          <em>ramp (|ω|) filter</em> before back-projecting cancels the 1/r blur — this is{" "}
+          <strong className="text-foreground">filtered back-projection (FBP)</strong>, the analytical
+          baseline for CT reconstruction.
+        </div>
+      </div>
+
+      <p className="text-[11px] text-muted-foreground italic leading-snug">
+        Try 1 angle (single smear) → 8 angles (visible streaks) → 32 angles (recognisable shape) →
+        180 angles (clean image). Iterative / model-based methods (ASIR, IMR) extend this idea by
+        re-projecting the estimate and correcting noise statistics, allowing equivalent image quality
+        at lower dose.
+      </p>
+    </div>
   );
 };
 

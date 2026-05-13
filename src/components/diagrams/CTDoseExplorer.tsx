@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive CT dose explorer.
@@ -490,47 +489,41 @@ interface DoseCardProps {
 }
 
 const DoseCard = ({ anchor, title, value, bar, color, formula, drivers, hint, highlight }: DoseCardProps) => (
-    <DiagramFigure
-      id="ct-dose-explorer"
-      title="CT dose explorer"
-      description="Auto-generated wrapper for the CT dose explorer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <div
-      className={`rounded-lg border bg-background/80 p-2.5 ${
-        highlight ? "border-primary/50" : "border-border"
-      }`}
-      style={{ borderLeftWidth: 4, borderLeftColor: color }}
-    >
-      <div className="flex items-baseline justify-between gap-2">
-        <a
-          href={`#${anchor}`}
-          className="text-sm font-semibold text-foreground underline-offset-2 hover:underline"
-        >
-          {title}
-        </a>
-        <span className="text-base tabular-nums font-bold" style={{ color }}>
-          {value}
-        </span>
-      </div>
-      <div className="text-[10px] text-muted-foreground mt-0.5 font-mono">{formula}</div>
-      <div className="mt-1.5 h-1.5 w-full bg-muted rounded-full overflow-hidden">
-        <div className="h-full rounded-full transition-all" style={{ width: `${bar}%`, background: color }} />
-      </div>
-      <div className="flex items-center justify-between mt-1 gap-2">
-        <div className="flex flex-wrap gap-1">
-          {drivers.map((d) => (
-            <span
-              key={d}
-              className="text-[9px] uppercase tracking-wide px-1 py-0.5 rounded border border-border text-muted-foreground"
-            >
-              {d}
-            </span>
-          ))}
-        </div>
-        <span className="text-[10px] text-muted-foreground italic text-right">{hint}</span>
-      </div>
+      <div
+    className={`rounded-lg border bg-background/80 p-2.5 ${
+      highlight ? "border-primary/50" : "border-border"
+    }`}
+    style={{ borderLeftWidth: 4, borderLeftColor: color }}
+  >
+    <div className="flex items-baseline justify-between gap-2">
+      <a
+        href={`#${anchor}`}
+        className="text-sm font-semibold text-foreground underline-offset-2 hover:underline"
+      >
+        {title}
+      </a>
+      <span className="text-base tabular-nums font-bold" style={{ color }}>
+        {value}
+      </span>
     </div>
-    </DiagramFigure>
+    <div className="text-[10px] text-muted-foreground mt-0.5 font-mono">{formula}</div>
+    <div className="mt-1.5 h-1.5 w-full bg-muted rounded-full overflow-hidden">
+      <div className="h-full rounded-full transition-all" style={{ width: `${bar}%`, background: color }} />
+    </div>
+    <div className="flex items-center justify-between mt-1 gap-2">
+      <div className="flex flex-wrap gap-1">
+        {drivers.map((d) => (
+          <span
+            key={d}
+            className="text-[9px] uppercase tracking-wide px-1 py-0.5 rounded border border-border text-muted-foreground"
+          >
+            {d}
+          </span>
+        ))}
+      </div>
+      <span className="text-[10px] text-muted-foreground italic text-right">{hint}</span>
+    </div>
+  </div>
   );
 
 export default CTDoseExplorer;

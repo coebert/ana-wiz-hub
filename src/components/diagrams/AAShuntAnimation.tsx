@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Arachidonic-acid shunt animation
@@ -447,21 +446,15 @@ const EnzymeBox = ({
 const ProductBox = ({
   x, y, color, title, sub, intensity, highlighted = false,
 }: { x: number; y: number; color: string; title: string; sub: string; intensity: number; highlighted?: boolean }) => (
-    <DiagramFigure
-      id="aa-shunt-animation"
-      title="AA shunt"
-      description="Auto-generated wrapper for the AA shunt animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <g>
-      <line x1={x} x2={x} y1={y - 30} y2={y - 8} stroke={color} strokeWidth={1.2 * (0.4 + intensity)} opacity={0.3 + intensity * 0.6} markerEnd="url(#aa-arrow)" />
-      {highlighted && (
-        <rect x={x - 92} y={y - 10} width={184} height={40} rx={7} fill={color} opacity={0.12}>
-          <animate attributeName="opacity" values="0.08;0.22;0.08" dur="1s" repeatCount="indefinite" />
-        </rect>
-      )}
-      <rect x={x - 90} y={y - 8} width={180} height={36} rx={6} fill="hsl(var(--background))" stroke={color} strokeWidth={1} opacity={0.4 + intensity * 0.6} />
-      <text x={x} y={y + 6} textAnchor="middle" fontSize="9.5" fontWeight={700} fill={color} opacity={0.4 + intensity * 0.6}>{title}</text>
-      <text x={x} y={y + 19} textAnchor="middle" fontSize="7.5" className="fill-muted-foreground" opacity={0.4 + intensity * 0.6}>{sub}</text>
-    </g>
-    </DiagramFigure>
+      <g>
+    <line x1={x} x2={x} y1={y - 30} y2={y - 8} stroke={color} strokeWidth={1.2 * (0.4 + intensity)} opacity={0.3 + intensity * 0.6} markerEnd="url(#aa-arrow)" />
+    {highlighted && (
+      <rect x={x - 92} y={y - 10} width={184} height={40} rx={7} fill={color} opacity={0.12}>
+        <animate attributeName="opacity" values="0.08;0.22;0.08" dur="1s" repeatCount="indefinite" />
+      </rect>
+    )}
+    <rect x={x - 90} y={y - 8} width={180} height={36} rx={6} fill="hsl(var(--background))" stroke={color} strokeWidth={1} opacity={0.4 + intensity * 0.6} />
+    <text x={x} y={y + 6} textAnchor="middle" fontSize="9.5" fontWeight={700} fill={color} opacity={0.4 + intensity * 0.6}>{title}</text>
+    <text x={x} y={y + 19} textAnchor="middle" fontSize="7.5" className="fill-muted-foreground" opacity={0.4 + intensity * 0.6}>{sub}</text>
+  </g>
   );

@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Postpartum leg weakness / sensory disturbance decision tree.
@@ -260,122 +259,116 @@ const PostpartumLegWeaknessDecisionTree = () => {
   const reset = () => setAnswers({});
 
   return (
-    <DiagramFigure
-      id="postpartum-leg-weakness-decision-tree"
-      title="Postpartum leg weakness decision tree"
-      description="Auto-generated wrapper for the Postpartum leg weakness decision tree anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 space-y-4">
-        <div className="bg-muted/30 rounded-xl border border-border p-4">
-          <DiagramToggleBar
-            title="Postpartum leg weakness — decision tree"
-            subtitle="Walk through 5 discriminators to separate neuraxial emergencies from intrinsic obstetric nerve injuries"
-            toggles={[{ label: "Hints", active: showHints, onChange: () => setShowHints((s) => !s) }]}
-          />
-  
-          <div className="space-y-2">
-            {stepOrder.map((step, i) => {
-              const node = tree[step];
-              const ans = answers[step];
-              const answered = ans !== undefined;
-              const selected = node.options.find((o) => o.value === ans);
-              const stepColor = answered
-                ? selected?.red
-                  ? "hsl(0, 75%, 48%)"
-                  : "hsl(140, 55%, 42%)"
-                : "hsl(var(--muted-foreground))";
-              return (
-                <div
-                  key={step}
-                  className="rounded-lg border border-border bg-background/70 p-3"
-                  style={{ borderLeftWidth: 4, borderLeftColor: stepColor }}
-                >
-                  <div className="flex items-start gap-2 mb-2">
-                    <span
-                      className="flex-shrink-0 w-6 h-6 rounded-full text-[11px] font-bold flex items-center justify-center text-white"
-                      style={{ backgroundColor: stepColor }}
-                    >
-                      {i + 1}
-                    </span>
-                    <div className="min-w-0">
-                      <p className="text-sm font-semibold text-foreground">{node.question}</p>
-                      {showHints && node.hint && (
-                        <p className="text-[11px] text-muted-foreground italic mt-0.5 leading-relaxed">{node.hint}</p>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-2 ml-8">
-                    {node.options.map((opt) => {
-                      const isSelected = ans === opt.value;
-                      const accent = opt.red ? "hsl(0, 75%, 48%)" : "hsl(140, 55%, 42%)";
-                      return (
-                            <button
-                          key={opt.value}
-                          onClick={() => setAnswers((a) => ({ ...a, [step]: opt.value }))}
-                          aria-pressed={isSelected}
-                          className="px-2.5 py-1 rounded-md text-[11px] font-medium border transition-all text-left"
-                          style={{
-                            borderColor: isSelected ? accent : "hsl(var(--border))",
-                            backgroundColor: isSelected ? withAlpha(accent, 0.15) : "transparent",
-                            color: isSelected
-                              ? opt.red
-                                ? "hsl(0, 70%, 42%)"
-                                : "hsl(140, 55%, 32%)"
-                              : "hsl(var(--foreground))",
-                          }}
-                        >
-                          {opt.label}
-                        </button>
-    );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-  
-          {/* Verdict */}
-          <div className="mt-4">
-            {verdict ? (
+        <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Postpartum leg weakness — decision tree"
+          subtitle="Walk through 5 discriminators to separate neuraxial emergencies from intrinsic obstetric nerve injuries"
+          toggles={[{ label: "Hints", active: showHints, onChange: () => setShowHints((s) => !s) }]}
+        />
+
+        <div className="space-y-2">
+          {stepOrder.map((step, i) => {
+            const node = tree[step];
+            const ans = answers[step];
+            const answered = ans !== undefined;
+            const selected = node.options.find((o) => o.value === ans);
+            const stepColor = answered
+              ? selected?.red
+                ? "hsl(0, 75%, 48%)"
+                : "hsl(140, 55%, 42%)"
+              : "hsl(var(--muted-foreground))";
+            return (
               <div
-                className="p-3 rounded-lg border-2"
-                style={{ borderColor: verdict.color, backgroundColor: withAlpha(verdict.color, 0.08) }}
+                key={step}
+                className="rounded-lg border border-border bg-background/70 p-3"
+                style={{ borderLeftWidth: 4, borderLeftColor: stepColor }}
               >
-                <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
-                  <p className="text-sm font-bold" style={{ color: verdict.color }}>
-                    {verdict.label}
-                  </p>
-                  <button
-                    onClick={reset}
-                    className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+                <div className="flex items-start gap-2 mb-2">
+                  <span
+                    className="flex-shrink-0 w-6 h-6 rounded-full text-[11px] font-bold flex items-center justify-center text-white"
+                    style={{ backgroundColor: stepColor }}
                   >
-                    Reset
-                  </button>
+                    {i + 1}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-foreground">{node.question}</p>
+                    {showHints && node.hint && (
+                      <p className="text-[11px] text-muted-foreground italic mt-0.5 leading-relaxed">{node.hint}</p>
+                    )}
+                  </div>
                 </div>
-                <p className="text-xs text-foreground/90 leading-relaxed mb-2">
-                  <span className="font-semibold">Likely diagnosis: </span>
-                  {verdict.diagnosis}
-                </p>
-                {verdict.action && (
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    <span className="font-semibold text-foreground/80">Action: </span>
-                    {verdict.action}
-                  </p>
-                )}
+                <div className="flex flex-wrap gap-2 ml-8">
+                  {node.options.map((opt) => {
+                    const isSelected = ans === opt.value;
+                    const accent = opt.red ? "hsl(0, 75%, 48%)" : "hsl(140, 55%, 42%)";
+                    return (
+                          <button
+                        key={opt.value}
+                        onClick={() => setAnswers((a) => ({ ...a, [step]: opt.value }))}
+                        aria-pressed={isSelected}
+                        className="px-2.5 py-1 rounded-md text-[11px] font-medium border transition-all text-left"
+                        style={{
+                          borderColor: isSelected ? accent : "hsl(var(--border))",
+                          backgroundColor: isSelected ? withAlpha(accent, 0.15) : "transparent",
+                          color: isSelected
+                            ? opt.red
+                              ? "hsl(0, 70%, 42%)"
+                              : "hsl(140, 55%, 32%)"
+                            : "hsl(var(--foreground))",
+                        }}
+                      >
+                        {opt.label}
+                      </button>
+  );
+                  })}
+                </div>
               </div>
-            ) : (
-              <p className="text-xs text-muted-foreground italic text-center py-2">
-                Answer the questions above to generate a likely diagnosis and management recommendation.
-              </p>
-            )}
-          </div>
-  
-          <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
-            Aligned with OAA/RCoA <em>Management of postpartum nerve injuries</em> (2023) and NAP3 (RCoA, 2009). Always discuss with senior obstetric anaesthetist; this tool supports — not replaces — bedside clinical judgement.
-          </p>
+            );
+          })}
         </div>
+
+        {/* Verdict */}
+        <div className="mt-4">
+          {verdict ? (
+            <div
+              className="p-3 rounded-lg border-2"
+              style={{ borderColor: verdict.color, backgroundColor: withAlpha(verdict.color, 0.08) }}
+            >
+              <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
+                <p className="text-sm font-bold" style={{ color: verdict.color }}>
+                  {verdict.label}
+                </p>
+                <button
+                  onClick={reset}
+                  className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+                >
+                  Reset
+                </button>
+              </div>
+              <p className="text-xs text-foreground/90 leading-relaxed mb-2">
+                <span className="font-semibold">Likely diagnosis: </span>
+                {verdict.diagnosis}
+              </p>
+              {verdict.action && (
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  <span className="font-semibold text-foreground/80">Action: </span>
+                  {verdict.action}
+                </p>
+              )}
+            </div>
+          ) : (
+            <p className="text-xs text-muted-foreground italic text-center py-2">
+              Answer the questions above to generate a likely diagnosis and management recommendation.
+            </p>
+          )}
+        </div>
+
+        <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
+          Aligned with OAA/RCoA <em>Management of postpartum nerve injuries</em> (2023) and NAP3 (RCoA, 2009). Always discuss with senior obstetric anaesthetist; this tool supports — not replaces — bedside clinical judgement.
+        </p>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

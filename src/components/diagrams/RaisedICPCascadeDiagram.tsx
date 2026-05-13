@@ -1,5 +1,4 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "./MechanismCascadeDiagram";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const BJA15: CascadeSource = {
   label: "BJA Educ 2015",
@@ -74,18 +73,12 @@ const steps: CascadeStep[] = [
 ];
 
 export const RaisedICPCascadeDiagram = () => (
-    <DiagramFigure
-      id="raised-icp-cascade-diagram"
-      title="Raised ICP cascade"
-      description="Auto-generated wrapper for the Raised ICP cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <MechanismCascadeDiagram
-      title="Raised ICP — Monro-Kellie cascade"
-      subtitle="From insult through decompensation to herniation — and where each therapy interrupts the loop."
-      accent="clinical"
-      steps={steps}
-    />
-    </DiagramFigure>
+      <MechanismCascadeDiagram
+    title="Raised ICP — Monro-Kellie cascade"
+    subtitle="From insult through decompensation to herniation — and where each therapy interrupts the loop."
+    accent="clinical"
+    steps={steps}
+  />
   );
 
 export default RaisedICPCascadeDiagram;

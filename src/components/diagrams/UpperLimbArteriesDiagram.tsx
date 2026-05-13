@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ArteryKey = "subclavian" | "axillary" | "brachial" | "profunda-brachii" | "radial" | "ulnar" | "anterior-interosseous" | "posterior-interosseous" | "superficial-palmar" | "deep-palmar" | "princeps-pollicis";
 
@@ -94,182 +93,176 @@ const UpperLimbArteriesDiagram = () => {
   const isActive = (k: ArteryKey) => selected === k;
 
   return (
-    <DiagramFigure
-      id="upper-limb-arteries-diagram"
-      title="Upper limb arteries"
-      description="Auto-generated wrapper for the Upper limb arteries anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <div className="my-6 space-y-4">
-        <div className="bg-muted/30 rounded-xl border border-border p-4">
-          <DiagramToggleBar
-            title="Arterial supply of the upper limb"
-            subtitle="Tap any vessel to explore its course and clinical relevance"
-            toggles={[
-              { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
-              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-            ]}
-          />
-  
-          <div className="flex flex-col lg:flex-row gap-4 items-start">
-          <div className="flex-shrink-0 mx-auto">
-            <svg viewBox="0 0 200 500" className="w-full max-w-[220px]" role="img" aria-label="Arterial supply of the upper limb from subclavian to digital arteries">
-              <defs>
-                <radialGradient id="ula-bgShade" cx="50%" cy="40%" r="65%">
-                  <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.16" />
-                  <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
-                </radialGradient>
-                <pattern id="ula-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
-                  <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
-                </pattern>
-                <filter id="ula-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
-                  <feOffset dx="0" dy="1.2" result="off" />
-                  <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
-                  <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
-                </filter>
-              </defs>
-  
-              <rect x="2" y="2" width="196" height="496" rx="10" fill="url(#ula-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
-              {showSutures && <rect x="2" y="2" width="196" height="496" rx="10" fill="url(#ula-tissue)" pointerEvents="none" />}
-  
-              {/* Arm outline */}
-              <path d="M70,10 Q50,80 55,150 Q57,200 60,250 Q55,300 50,350 Q45,380 30,450 M130,10 Q150,80 145,150 Q143,200 140,250 Q142,300 140,350 Q138,380 115,450" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
-              {/* Compass + landmarks (gated by sutures) */}
-              {showSutures && (
-                <g pointerEvents="none">
-                  <line x1="50" y1="230" x2="150" y2="230" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.45" />
-                  <line x1="40" y1="390" x2="140" y2="390" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.45" />
-                </g>
-              )}
-              {showLabels && (
-                <g pointerEvents="none">
-                  <text x="100" y="25" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.55" textAnchor="middle" fontWeight="600">SHOULDER</text>
-                  <text x="155" y="233" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55">Elbow</text>
-                  <text x="145" y="393" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55">Wrist</text>
-                </g>
-              )}
-  
-              {/* Subclavian */}
-              <g className="cursor-pointer" onClick={() => setSelected("subclavian")}>
-                <path d="M60,15 Q80,12 100,15" fill="none" stroke={arteries.subclavian.color}
-                  strokeWidth={isActive("subclavian") ? 5 : 3.5} opacity={isActive("subclavian") ? 0.8 : 0.4} strokeLinecap="round" />
-                <text x="60" y="10" fontSize="5" fill={arteries.subclavian.color}>Subclavian</text>
+            <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Arterial supply of the upper limb"
+          subtitle="Tap any vessel to explore its course and clinical relevance"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
+
+        <div className="flex flex-col lg:flex-row gap-4 items-start">
+        <div className="flex-shrink-0 mx-auto">
+          <svg viewBox="0 0 200 500" className="w-full max-w-[220px]" role="img" aria-label="Arterial supply of the upper limb from subclavian to digital arteries">
+            <defs>
+              <radialGradient id="ula-bgShade" cx="50%" cy="40%" r="65%">
+                <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.16" />
+                <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+              </radialGradient>
+              <pattern id="ula-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+              </pattern>
+              <filter id="ula-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                <feOffset dx="0" dy="1.2" result="off" />
+                <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
+                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+
+            <rect x="2" y="2" width="196" height="496" rx="10" fill="url(#ula-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+            {showSutures && <rect x="2" y="2" width="196" height="496" rx="10" fill="url(#ula-tissue)" pointerEvents="none" />}
+
+            {/* Arm outline */}
+            <path d="M70,10 Q50,80 55,150 Q57,200 60,250 Q55,300 50,350 Q45,380 30,450 M130,10 Q150,80 145,150 Q143,200 140,250 Q142,300 140,350 Q138,380 115,450" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
+            {/* Compass + landmarks (gated by sutures) */}
+            {showSutures && (
+              <g pointerEvents="none">
+                <line x1="50" y1="230" x2="150" y2="230" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.45" />
+                <line x1="40" y1="390" x2="140" y2="390" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.45" />
               </g>
-  
-              {/* Axillary */}
-              <g className="cursor-pointer" onClick={() => setSelected("axillary")}>
-                <path d="M100,15 Q100,40 100,70" fill="none" stroke={arteries.axillary.color}
-                  strokeWidth={isActive("axillary") ? 4.5 : 3} opacity={isActive("axillary") ? 0.8 : 0.4} strokeLinecap="round" />
-                <text x="108" y="45" fontSize="5" fill={arteries.axillary.color}>Axillary</text>
+            )}
+            {showLabels && (
+              <g pointerEvents="none">
+                <text x="100" y="25" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.55" textAnchor="middle" fontWeight="600">SHOULDER</text>
+                <text x="155" y="233" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55">Elbow</text>
+                <text x="145" y="393" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55">Wrist</text>
               </g>
-  
-              {/* Brachial */}
-              <g className="cursor-pointer" onClick={() => setSelected("brachial")}>
-                <path d="M100,70 Q98,120 97,170 Q96,200 95,225" fill="none" stroke={arteries.brachial.color}
-                  strokeWidth={isActive("brachial") ? 4 : 2.5} opacity={isActive("brachial") ? 0.8 : 0.4} strokeLinecap="round" />
-                <text x="103" y="150" fontSize="5" fill={arteries.brachial.color}>Brachial</text>
-              </g>
-  
-              {/* Profunda brachii */}
-              <g className="cursor-pointer" onClick={() => setSelected("profunda-brachii")}>
-                <path d="M100,85 Q115,100 125,130 Q130,150 125,170" fill="none" stroke={arteries["profunda-brachii"].color}
-                  strokeWidth={isActive("profunda-brachii") ? 2.5 : 1.5} opacity={isActive("profunda-brachii") ? 0.7 : 0.3} strokeLinecap="round" />
-                <text x="130" y="120" fontSize="4.5" fill={arteries["profunda-brachii"].color}>Profunda</text>
-                <text x="130" y="126" fontSize="4.5" fill={arteries["profunda-brachii"].color}>brachii</text>
-              </g>
-  
-              {/* Bifurcation point */}
-              <circle cx="95" cy="235" r="2.5" fill={arteries.brachial.color} fillOpacity="0.5" />
-  
-              {/* Radial */}
-              <g className="cursor-pointer" onClick={() => setSelected("radial")}>
-                <path d="M95,235 Q88,280 82,330 Q78,360 75,390 Q70,410 65,430" fill="none" stroke={arteries.radial.color}
-                  strokeWidth={isActive("radial") ? 3 : 2} opacity={isActive("radial") ? 0.8 : 0.4} strokeLinecap="round" />
-                <text x="60" y="320" fontSize="5" fill={arteries.radial.color}>Radial</text>
-              </g>
-  
-              {/* Ulnar */}
-              <g className="cursor-pointer" onClick={() => setSelected("ulnar")}>
-                <path d="M95,235 Q102,280 108,330 Q112,360 115,390 Q118,410 120,430" fill="none" stroke={arteries.ulnar.color}
-                  strokeWidth={isActive("ulnar") ? 3 : 2} opacity={isActive("ulnar") ? 0.8 : 0.4} strokeLinecap="round" />
-                <text x="115" y="320" fontSize="5" fill={arteries.ulnar.color}>Ulnar</text>
-              </g>
-  
-              {/* Common interosseous → anterior and posterior */}
-              <g className="cursor-pointer" onClick={() => setSelected("anterior-interosseous")}>
-                <path d="M100,255 Q97,290 95,340 Q94,360 93,385" fill="none" stroke={arteries["anterior-interosseous"].color}
-                  strokeWidth={isActive("anterior-interosseous") ? 2 : 1} opacity={isActive("anterior-interosseous") ? 0.7 : 0.25} strokeLinecap="round" />
-                <text x="96" y="355" fontSize="4" fill={arteries["anterior-interosseous"].color}>AIO</text>
-              </g>
-  
-              <g className="cursor-pointer" onClick={() => setSelected("posterior-interosseous")}>
-                <path d="M100,255 Q105,270 108,290 Q110,310 108,340" fill="none" stroke={arteries["posterior-interosseous"].color}
-                  strokeWidth={isActive("posterior-interosseous") ? 2 : 1} opacity={isActive("posterior-interosseous") ? 0.7 : 0.25}
-                  strokeDasharray="3 2" strokeLinecap="round" />
-                <text x="112" y="300" fontSize="4" fill={arteries["posterior-interosseous"].color}>PIO</text>
-              </g>
-  
-              {/* Superficial palmar arch */}
-              <g className="cursor-pointer" onClick={() => setSelected("superficial-palmar")}>
-                <path d="M120,430 Q110,450 95,455 Q80,450 70,440" fill="none" stroke={arteries["superficial-palmar"].color}
-                  strokeWidth={isActive("superficial-palmar") ? 2.5 : 1.5} opacity={isActive("superficial-palmar") ? 0.7 : 0.3} strokeLinecap="round" />
-                <text x="95" y="468" fontSize="4.5" textAnchor="middle" fill={arteries["superficial-palmar"].color}>Superficial arch</text>
-              </g>
-  
-              {/* Deep palmar arch */}
-              <g className="cursor-pointer" onClick={() => setSelected("deep-palmar")}>
-                <path d="M65,430 Q75,438 90,440 Q105,438 115,430" fill="none" stroke={arteries["deep-palmar"].color}
-                  strokeWidth={isActive("deep-palmar") ? 2 : 1} opacity={isActive("deep-palmar") ? 0.7 : 0.25}
-                  strokeDasharray="4 2" strokeLinecap="round" />
-                <text x="90" y="447" fontSize="4" textAnchor="middle" fill={arteries["deep-palmar"].color}>Deep arch</text>
-              </g>
-  
-              {/* Digital arteries hint */}
-              <g className="cursor-pointer" onClick={() => setSelected("princeps-pollicis")}>
-                {[0,1,2,3].map(i => (
-                  <line key={i} x1={75 + i*15} y1={455} x2={70 + i*15} y2={485}
-                    stroke={arteries["princeps-pollicis"].color}
-                    strokeWidth={isActive("princeps-pollicis") ? 1.5 : 0.8}
-                    opacity={isActive("princeps-pollicis") ? 0.6 : 0.2} />
-                ))}
-                <text x="55" y="490" fontSize="4" fill={arteries["princeps-pollicis"].color}>Digital aa.</text>
-              </g>
-            </svg>
-          </div>
-  
-          <div className="flex-1 min-w-0">
-            <div
-              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
-              style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
-              key={selected}
-            >
-              <p className="font-semibold text-foreground text-sm">{info.label}</p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
-              </p>
-            </div>
-  
-            <div className="mt-3 space-y-1.5">
-              <p className="text-xs text-muted-foreground font-medium">Proximal → Distal</p>
-              <div className="flex flex-wrap gap-1.5">
-                {arteryOrder.map(key => (
-                  <button key={key} onClick={() => setSelected(key)}
-                    className={`text-xs px-2 py-1 rounded border transition-all ${
-                      selected === key ? "border-primary bg-primary/10 text-foreground font-medium" : "border-border text-muted-foreground hover:border-primary/50"
-                    }`}>
-                    {arteries[key].label.split(" (")[0]}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+            )}
+
+            {/* Subclavian */}
+            <g className="cursor-pointer" onClick={() => setSelected("subclavian")}>
+              <path d="M60,15 Q80,12 100,15" fill="none" stroke={arteries.subclavian.color}
+                strokeWidth={isActive("subclavian") ? 5 : 3.5} opacity={isActive("subclavian") ? 0.8 : 0.4} strokeLinecap="round" />
+              <text x="60" y="10" fontSize="5" fill={arteries.subclavian.color}>Subclavian</text>
+            </g>
+
+            {/* Axillary */}
+            <g className="cursor-pointer" onClick={() => setSelected("axillary")}>
+              <path d="M100,15 Q100,40 100,70" fill="none" stroke={arteries.axillary.color}
+                strokeWidth={isActive("axillary") ? 4.5 : 3} opacity={isActive("axillary") ? 0.8 : 0.4} strokeLinecap="round" />
+              <text x="108" y="45" fontSize="5" fill={arteries.axillary.color}>Axillary</text>
+            </g>
+
+            {/* Brachial */}
+            <g className="cursor-pointer" onClick={() => setSelected("brachial")}>
+              <path d="M100,70 Q98,120 97,170 Q96,200 95,225" fill="none" stroke={arteries.brachial.color}
+                strokeWidth={isActive("brachial") ? 4 : 2.5} opacity={isActive("brachial") ? 0.8 : 0.4} strokeLinecap="round" />
+              <text x="103" y="150" fontSize="5" fill={arteries.brachial.color}>Brachial</text>
+            </g>
+
+            {/* Profunda brachii */}
+            <g className="cursor-pointer" onClick={() => setSelected("profunda-brachii")}>
+              <path d="M100,85 Q115,100 125,130 Q130,150 125,170" fill="none" stroke={arteries["profunda-brachii"].color}
+                strokeWidth={isActive("profunda-brachii") ? 2.5 : 1.5} opacity={isActive("profunda-brachii") ? 0.7 : 0.3} strokeLinecap="round" />
+              <text x="130" y="120" fontSize="4.5" fill={arteries["profunda-brachii"].color}>Profunda</text>
+              <text x="130" y="126" fontSize="4.5" fill={arteries["profunda-brachii"].color}>brachii</text>
+            </g>
+
+            {/* Bifurcation point */}
+            <circle cx="95" cy="235" r="2.5" fill={arteries.brachial.color} fillOpacity="0.5" />
+
+            {/* Radial */}
+            <g className="cursor-pointer" onClick={() => setSelected("radial")}>
+              <path d="M95,235 Q88,280 82,330 Q78,360 75,390 Q70,410 65,430" fill="none" stroke={arteries.radial.color}
+                strokeWidth={isActive("radial") ? 3 : 2} opacity={isActive("radial") ? 0.8 : 0.4} strokeLinecap="round" />
+              <text x="60" y="320" fontSize="5" fill={arteries.radial.color}>Radial</text>
+            </g>
+
+            {/* Ulnar */}
+            <g className="cursor-pointer" onClick={() => setSelected("ulnar")}>
+              <path d="M95,235 Q102,280 108,330 Q112,360 115,390 Q118,410 120,430" fill="none" stroke={arteries.ulnar.color}
+                strokeWidth={isActive("ulnar") ? 3 : 2} opacity={isActive("ulnar") ? 0.8 : 0.4} strokeLinecap="round" />
+              <text x="115" y="320" fontSize="5" fill={arteries.ulnar.color}>Ulnar</text>
+            </g>
+
+            {/* Common interosseous → anterior and posterior */}
+            <g className="cursor-pointer" onClick={() => setSelected("anterior-interosseous")}>
+              <path d="M100,255 Q97,290 95,340 Q94,360 93,385" fill="none" stroke={arteries["anterior-interosseous"].color}
+                strokeWidth={isActive("anterior-interosseous") ? 2 : 1} opacity={isActive("anterior-interosseous") ? 0.7 : 0.25} strokeLinecap="round" />
+              <text x="96" y="355" fontSize="4" fill={arteries["anterior-interosseous"].color}>AIO</text>
+            </g>
+
+            <g className="cursor-pointer" onClick={() => setSelected("posterior-interosseous")}>
+              <path d="M100,255 Q105,270 108,290 Q110,310 108,340" fill="none" stroke={arteries["posterior-interosseous"].color}
+                strokeWidth={isActive("posterior-interosseous") ? 2 : 1} opacity={isActive("posterior-interosseous") ? 0.7 : 0.25}
+                strokeDasharray="3 2" strokeLinecap="round" />
+              <text x="112" y="300" fontSize="4" fill={arteries["posterior-interosseous"].color}>PIO</text>
+            </g>
+
+            {/* Superficial palmar arch */}
+            <g className="cursor-pointer" onClick={() => setSelected("superficial-palmar")}>
+              <path d="M120,430 Q110,450 95,455 Q80,450 70,440" fill="none" stroke={arteries["superficial-palmar"].color}
+                strokeWidth={isActive("superficial-palmar") ? 2.5 : 1.5} opacity={isActive("superficial-palmar") ? 0.7 : 0.3} strokeLinecap="round" />
+              <text x="95" y="468" fontSize="4.5" textAnchor="middle" fill={arteries["superficial-palmar"].color}>Superficial arch</text>
+            </g>
+
+            {/* Deep palmar arch */}
+            <g className="cursor-pointer" onClick={() => setSelected("deep-palmar")}>
+              <path d="M65,430 Q75,438 90,440 Q105,438 115,430" fill="none" stroke={arteries["deep-palmar"].color}
+                strokeWidth={isActive("deep-palmar") ? 2 : 1} opacity={isActive("deep-palmar") ? 0.7 : 0.25}
+                strokeDasharray="4 2" strokeLinecap="round" />
+              <text x="90" y="447" fontSize="4" textAnchor="middle" fill={arteries["deep-palmar"].color}>Deep arch</text>
+            </g>
+
+            {/* Digital arteries hint */}
+            <g className="cursor-pointer" onClick={() => setSelected("princeps-pollicis")}>
+              {[0,1,2,3].map(i => (
+                <line key={i} x1={75 + i*15} y1={455} x2={70 + i*15} y2={485}
+                  stroke={arteries["princeps-pollicis"].color}
+                  strokeWidth={isActive("princeps-pollicis") ? 1.5 : 0.8}
+                  opacity={isActive("princeps-pollicis") ? 0.6 : 0.2} />
+              ))}
+              <text x="55" y="490" fontSize="4" fill={arteries["princeps-pollicis"].color}>Digital aa.</text>
+            </g>
+          </svg>
         </div>
+
+        <div className="flex-1 min-w-0">
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            key={selected}
+          >
+            <p className="font-semibold text-foreground text-sm">{info.label}</p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
+            </p>
+          </div>
+
+          <div className="mt-3 space-y-1.5">
+            <p className="text-xs text-muted-foreground font-medium">Proximal → Distal</p>
+            <div className="flex flex-wrap gap-1.5">
+              {arteryOrder.map(key => (
+                <button key={key} onClick={() => setSelected(key)}
+                  className={`text-xs px-2 py-1 rounded border transition-all ${
+                    selected === key ? "border-primary bg-primary/10 text-foreground font-medium" : "border-border text-muted-foreground hover:border-primary/50"
+                  }`}>
+                  {arteries[key].label.split(" (")[0]}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </DiagramFigure>
+      </div>
+    </div>
   );
 };
 

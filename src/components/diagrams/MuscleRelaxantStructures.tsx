@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Drug = "suxamethonium" | "rocuronium" | "atracurium" | "sugammadex";
 
@@ -236,42 +235,36 @@ const MuscleRelaxantStructures = () => {
   const d = info[selected];
 
   return (
-    <DiagramFigure
-      id="muscle-relaxant-structures"
-      title="Muscle relaxant structures"
-      description="Auto-generated wrapper for the Muscle relaxant structures anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <div className="space-y-4">
-        <h4 className="font-semibold text-foreground">Molecular Structures</h4>
-        <div className="flex flex-wrap gap-2">
-          {drugs.map((drug) => (
-            <button
-              key={drug.key}
-              onClick={() => setSelected(drug.key)}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                selected === drug.key ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-              }`}
-            >
-              {drug.label}
-            </button>
-          ))}
-        </div>
-        <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-          <svg viewBox="0 0 460 270" className="w-full h-auto">
-            <text x="230" y="16" textAnchor="middle" className="fill-foreground text-[13px] font-bold">{d.name}</text>
-            <SVGComponent />
-          </svg>
-          <div className="mt-3 space-y-1">
-            <p className="text-xs font-medium text-foreground">MW: {d.mw} | Formula: {d.formula}</p>
-            <ul className="text-xs text-muted-foreground space-y-0.5">
-              {d.features.map((f, i) => (
-                <li key={i}>• {f}</li>
-              ))}
-            </ul>
-          </div>
+            <div className="space-y-4">
+      <h4 className="font-semibold text-foreground">Molecular Structures</h4>
+      <div className="flex flex-wrap gap-2">
+        {drugs.map((drug) => (
+          <button
+            key={drug.key}
+            onClick={() => setSelected(drug.key)}
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+              selected === drug.key ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+            }`}
+          >
+            {drug.label}
+          </button>
+        ))}
+      </div>
+      <div className="bg-secondary/30 rounded-xl p-5 border border-border">
+        <svg viewBox="0 0 460 270" className="w-full h-auto">
+          <text x="230" y="16" textAnchor="middle" className="fill-foreground text-[13px] font-bold">{d.name}</text>
+          <SVGComponent />
+        </svg>
+        <div className="mt-3 space-y-1">
+          <p className="text-xs font-medium text-foreground">MW: {d.mw} | Formula: {d.formula}</p>
+          <ul className="text-xs text-muted-foreground space-y-0.5">
+            {d.features.map((f, i) => (
+              <li key={i}>• {f}</li>
+            ))}
+          </ul>
         </div>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

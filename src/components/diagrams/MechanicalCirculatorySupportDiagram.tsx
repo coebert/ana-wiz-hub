@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Device = "iabp" | "impella" | "lvad";
 
@@ -580,98 +579,92 @@ export const MechanicalCirculatorySupportDiagram = () => {
   const [running, setRunning] = useState(true);
 
   return (
-    <DiagramFigure
-      id="mechanical-circulatory-support-diagram"
-      title="Mechanical circulatory support"
-      description="Auto-generated wrapper for the Mechanical circulatory support anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <div className="w-full max-w-3xl mx-auto space-y-3 my-6">
-        <div className="text-center">
-          <h3 className="text-lg font-serif font-bold text-foreground">Mechanical Circulatory Support — anatomically detailed device animations</h3>
-          <p className="text-xs text-muted-foreground">Interactive diagrams of IABP, Impella and LVAD with annotated cardiac anatomy</p>
-        </div>
-  
-        <Tabs value={device} onValueChange={(v) => setDevice(v as Device)}>
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="iabp">IABP</TabsTrigger>
-            <TabsTrigger value="impella">Impella</TabsTrigger>
-            <TabsTrigger value="lvad">LVAD</TabsTrigger>
-          </TabsList>
-  
-          <TabsContent value="iabp" className="mt-3 space-y-3">
-            <IABPDiagram running={running && device === "iabp"} />
-            <div className="bg-secondary/30 rounded p-3 border border-border text-xs text-muted-foreground">
-              <p><strong className="text-foreground">Counterpulsation:</strong> a 30–50 mL helium-filled polyurethane balloon sits in the descending aorta, tip 1–2 cm distal to the left subclavian artery origin. It <strong>inflates at the dicrotic notch</strong> (T-wave on ECG / aortic incisura) and <strong>deflates just before systole</strong> (R-wave / aortic upstroke).</p>
-              <ul className="list-disc pl-5 mt-2 space-y-0.5">
-                <li><strong>Diastolic augmentation</strong> — inflated balloon displaces ~40 mL of blood retrograde towards the aortic root → ↑ aortic root pressure → ↑ <span className="text-[hsl(15_85%_45%)] font-medium">coronary perfusion</span> (perfused only in diastole).</li>
-                <li><strong>Afterload reduction</strong> — sudden pre-systolic deflation creates a low-pressure void → ↓ aortic end-diastolic pressure → ↓ LV wall tension and MVO₂ → ↑ stroke volume by ~10–20%.</li>
-                <li>CO augmentation: <strong>0.5–1 L/min</strong>. Requires <em>some</em> native CO and a competent aortic valve. <strong>IABP-SHOCK II (NEJM 2012)</strong>: no mortality benefit in MI cardiogenic shock — IABP no longer Class I.</li>
-                <li>Contraindications: severe AR (worsens regurgitation), aortic dissection, severe peripheral vascular disease, abdominal aortic aneurysm.</li>
-              </ul>
-            </div>
-          </TabsContent>
-  
-          <TabsContent value="impella" className="mt-3 space-y-3">
-            <ImpellaDiagram running={running && device === "impella"} />
-            <div className="bg-secondary/30 rounded p-3 border border-border text-xs text-muted-foreground">
-              <p><strong className="text-foreground">Microaxial pump (Archimedes screw):</strong> a high-speed rotor (~50 000 rpm) housed in a cannula that crosses the aortic valve. The pigtail-tipped <em>inlet</em> sits in the LV cavity; the <em>outlet</em> ports are 3–4 cm above the aortic valve in the ascending aorta — bypassing the native valve completely.</p>
-              <ul className="list-disc pl-5 mt-2 space-y-0.5">
-                <li><strong>Direct LV unloading</strong> → ↓ LVEDP, ↓ wall stress (Laplace), ↓ MVO₂, ↑ subendocardial perfusion (CPP = DBP − LVEDP).</li>
-                <li><strong>Continuous, non-pulsatile flow</strong> — output is independent of native ejection (works in profound LV failure or VF/VT).</li>
-                <li>CO augmentation: <strong>2.5 L/min (Impella 2.5)</strong> → <strong>3.5 L/min (CP)</strong> → <strong>5.5 L/min (Impella 5.5</strong>, surgical axillary cut-down).</li>
-                <li><strong>Purge fluid</strong> (5–30% dextrose + heparin) flows continuously around the motor at 2–30 mL/h — prevents blood entering the motor housing.</li>
-                <li>Contraindications: mechanical AV, severe AS/AR, LV thrombus, VSD, severe peripheral arterial disease.</li>
-              </ul>
-            </div>
-          </TabsContent>
-  
-          <TabsContent value="lvad" className="mt-3 space-y-3">
-            <LVADDiagram running={running && device === "lvad"} />
-            <div className="bg-secondary/30 rounded p-3 border border-border text-xs text-muted-foreground">
-              <p><strong className="text-foreground">Implantable centrifugal pump:</strong> the inflow cannula is sewn into the LV apex via a sewing ring, and a fully magnetically-levitated impeller (HeartMate 3 — no mechanical bearings, no contact wear) propels blood through an outflow graft anastomosed end-to-side to the ascending aorta. A driveline tunnels through the abdominal wall to an external controller and two batteries.</p>
-              <ul className="list-disc pl-5 mt-2 space-y-0.5">
-                <li><strong>Total LV bypass</strong> — most CO travels through the pump; the native aortic valve may stay closed for several beats (intermittent opening reduces leaflet fusion and AI).</li>
-                <li><strong>Continuous flow</strong> with narrow pulse pressure — peripheral pulses may be impalpable; MAP is measured by Doppler over the brachial artery.</li>
-                <li>Output: <strong>4–10 L/min</strong>, modulated by preload (sensitive to hypovolaemia/RV failure → suction events) and afterload (high SVR → ↓ flow).</li>
-                <li>Indications: <strong>bridge to transplant</strong>, <strong>destination therapy</strong>, bridge to recovery / candidacy.</li>
-                <li>Anticoagulation: <strong>warfarin</strong> (INR 2.0–3.0) <strong>+ aspirin</strong>. Major complications: GI bleeding (acquired vWF deficiency), driveline infection, stroke, RV failure, pump thrombosis (less common with HM3).</li>
-              </ul>
-            </div>
-          </TabsContent>
-        </Tabs>
-  
-        <div className="flex justify-center gap-2">
-          <button
-            onClick={() => setRunning((r) => !r)}
-            className="px-3 py-1.5 rounded bg-icu text-white text-sm font-medium hover:bg-icu/90"
-          >
-            {running ? "⏸ Pause" : "▶ Play"}
-          </button>
-        </div>
-  
-        <div className="overflow-x-auto rounded-lg border border-border">
-          <table className="w-full text-xs">
-            <thead className="bg-muted/50">
-              <tr className="border-b border-border">
-                <th className="text-left p-2 font-semibold text-foreground">Feature</th>
-                <th className="text-left p-2 font-semibold text-foreground">IABP</th>
-                <th className="text-left p-2 font-semibold text-foreground">Impella</th>
-                <th className="text-left p-2 font-semibold text-foreground">LVAD</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border text-muted-foreground">
-              <tr><td className="p-2 font-medium text-foreground">Mechanism</td><td className="p-2">Counterpulsation</td><td className="p-2">Axial pump across AV</td><td className="p-2">Centrifugal LV→aorta bypass</td></tr>
-              <tr><td className="p-2 font-medium text-foreground">Flow pattern</td><td className="p-2">Pulsatile (synced to ECG)</td><td className="p-2">Continuous</td><td className="p-2">Continuous</td></tr>
-              <tr><td className="p-2 font-medium text-foreground">CO support</td><td className="p-2">0.5–1 L/min</td><td className="p-2">2.5–5.5 L/min</td><td className="p-2">4–10 L/min</td></tr>
-              <tr><td className="p-2 font-medium text-foreground">LV unloading</td><td className="p-2">Indirect (↓ afterload)</td><td className="p-2">Direct (↓ LVEDP)</td><td className="p-2">Maximal</td></tr>
-              <tr><td className="p-2 font-medium text-foreground">Native CO required</td><td className="p-2">Yes</td><td className="p-2">No</td><td className="p-2">No</td></tr>
-              <tr><td className="p-2 font-medium text-foreground">Duration</td><td className="p-2">Days</td><td className="p-2">Days–weeks</td><td className="p-2">Months–years</td></tr>
-              <tr><td className="p-2 font-medium text-foreground">Anticoagulation</td><td className="p-2">Heparin</td><td className="p-2">Heparin (purge + systemic)</td><td className="p-2">Warfarin + antiplatelet</td></tr>
-            </tbody>
-          </table>
-        </div>
+            <div className="w-full max-w-3xl mx-auto space-y-3 my-6">
+      <div className="text-center">
+        <h3 className="text-lg font-serif font-bold text-foreground">Mechanical Circulatory Support — anatomically detailed device animations</h3>
+        <p className="text-xs text-muted-foreground">Interactive diagrams of IABP, Impella and LVAD with annotated cardiac anatomy</p>
       </div>
-    </DiagramFigure>
+
+      <Tabs value={device} onValueChange={(v) => setDevice(v as Device)}>
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="iabp">IABP</TabsTrigger>
+          <TabsTrigger value="impella">Impella</TabsTrigger>
+          <TabsTrigger value="lvad">LVAD</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="iabp" className="mt-3 space-y-3">
+          <IABPDiagram running={running && device === "iabp"} />
+          <div className="bg-secondary/30 rounded p-3 border border-border text-xs text-muted-foreground">
+            <p><strong className="text-foreground">Counterpulsation:</strong> a 30–50 mL helium-filled polyurethane balloon sits in the descending aorta, tip 1–2 cm distal to the left subclavian artery origin. It <strong>inflates at the dicrotic notch</strong> (T-wave on ECG / aortic incisura) and <strong>deflates just before systole</strong> (R-wave / aortic upstroke).</p>
+            <ul className="list-disc pl-5 mt-2 space-y-0.5">
+              <li><strong>Diastolic augmentation</strong> — inflated balloon displaces ~40 mL of blood retrograde towards the aortic root → ↑ aortic root pressure → ↑ <span className="text-[hsl(15_85%_45%)] font-medium">coronary perfusion</span> (perfused only in diastole).</li>
+              <li><strong>Afterload reduction</strong> — sudden pre-systolic deflation creates a low-pressure void → ↓ aortic end-diastolic pressure → ↓ LV wall tension and MVO₂ → ↑ stroke volume by ~10–20%.</li>
+              <li>CO augmentation: <strong>0.5–1 L/min</strong>. Requires <em>some</em> native CO and a competent aortic valve. <strong>IABP-SHOCK II (NEJM 2012)</strong>: no mortality benefit in MI cardiogenic shock — IABP no longer Class I.</li>
+              <li>Contraindications: severe AR (worsens regurgitation), aortic dissection, severe peripheral vascular disease, abdominal aortic aneurysm.</li>
+            </ul>
+          </div>
+        </TabsContent>
+
+        <TabsContent value="impella" className="mt-3 space-y-3">
+          <ImpellaDiagram running={running && device === "impella"} />
+          <div className="bg-secondary/30 rounded p-3 border border-border text-xs text-muted-foreground">
+            <p><strong className="text-foreground">Microaxial pump (Archimedes screw):</strong> a high-speed rotor (~50 000 rpm) housed in a cannula that crosses the aortic valve. The pigtail-tipped <em>inlet</em> sits in the LV cavity; the <em>outlet</em> ports are 3–4 cm above the aortic valve in the ascending aorta — bypassing the native valve completely.</p>
+            <ul className="list-disc pl-5 mt-2 space-y-0.5">
+              <li><strong>Direct LV unloading</strong> → ↓ LVEDP, ↓ wall stress (Laplace), ↓ MVO₂, ↑ subendocardial perfusion (CPP = DBP − LVEDP).</li>
+              <li><strong>Continuous, non-pulsatile flow</strong> — output is independent of native ejection (works in profound LV failure or VF/VT).</li>
+              <li>CO augmentation: <strong>2.5 L/min (Impella 2.5)</strong> → <strong>3.5 L/min (CP)</strong> → <strong>5.5 L/min (Impella 5.5</strong>, surgical axillary cut-down).</li>
+              <li><strong>Purge fluid</strong> (5–30% dextrose + heparin) flows continuously around the motor at 2–30 mL/h — prevents blood entering the motor housing.</li>
+              <li>Contraindications: mechanical AV, severe AS/AR, LV thrombus, VSD, severe peripheral arterial disease.</li>
+            </ul>
+          </div>
+        </TabsContent>
+
+        <TabsContent value="lvad" className="mt-3 space-y-3">
+          <LVADDiagram running={running && device === "lvad"} />
+          <div className="bg-secondary/30 rounded p-3 border border-border text-xs text-muted-foreground">
+            <p><strong className="text-foreground">Implantable centrifugal pump:</strong> the inflow cannula is sewn into the LV apex via a sewing ring, and a fully magnetically-levitated impeller (HeartMate 3 — no mechanical bearings, no contact wear) propels blood through an outflow graft anastomosed end-to-side to the ascending aorta. A driveline tunnels through the abdominal wall to an external controller and two batteries.</p>
+            <ul className="list-disc pl-5 mt-2 space-y-0.5">
+              <li><strong>Total LV bypass</strong> — most CO travels through the pump; the native aortic valve may stay closed for several beats (intermittent opening reduces leaflet fusion and AI).</li>
+              <li><strong>Continuous flow</strong> with narrow pulse pressure — peripheral pulses may be impalpable; MAP is measured by Doppler over the brachial artery.</li>
+              <li>Output: <strong>4–10 L/min</strong>, modulated by preload (sensitive to hypovolaemia/RV failure → suction events) and afterload (high SVR → ↓ flow).</li>
+              <li>Indications: <strong>bridge to transplant</strong>, <strong>destination therapy</strong>, bridge to recovery / candidacy.</li>
+              <li>Anticoagulation: <strong>warfarin</strong> (INR 2.0–3.0) <strong>+ aspirin</strong>. Major complications: GI bleeding (acquired vWF deficiency), driveline infection, stroke, RV failure, pump thrombosis (less common with HM3).</li>
+            </ul>
+          </div>
+        </TabsContent>
+      </Tabs>
+
+      <div className="flex justify-center gap-2">
+        <button
+          onClick={() => setRunning((r) => !r)}
+          className="px-3 py-1.5 rounded bg-icu text-white text-sm font-medium hover:bg-icu/90"
+        >
+          {running ? "⏸ Pause" : "▶ Play"}
+        </button>
+      </div>
+
+      <div className="overflow-x-auto rounded-lg border border-border">
+        <table className="w-full text-xs">
+          <thead className="bg-muted/50">
+            <tr className="border-b border-border">
+              <th className="text-left p-2 font-semibold text-foreground">Feature</th>
+              <th className="text-left p-2 font-semibold text-foreground">IABP</th>
+              <th className="text-left p-2 font-semibold text-foreground">Impella</th>
+              <th className="text-left p-2 font-semibold text-foreground">LVAD</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border text-muted-foreground">
+            <tr><td className="p-2 font-medium text-foreground">Mechanism</td><td className="p-2">Counterpulsation</td><td className="p-2">Axial pump across AV</td><td className="p-2">Centrifugal LV→aorta bypass</td></tr>
+            <tr><td className="p-2 font-medium text-foreground">Flow pattern</td><td className="p-2">Pulsatile (synced to ECG)</td><td className="p-2">Continuous</td><td className="p-2">Continuous</td></tr>
+            <tr><td className="p-2 font-medium text-foreground">CO support</td><td className="p-2">0.5–1 L/min</td><td className="p-2">2.5–5.5 L/min</td><td className="p-2">4–10 L/min</td></tr>
+            <tr><td className="p-2 font-medium text-foreground">LV unloading</td><td className="p-2">Indirect (↓ afterload)</td><td className="p-2">Direct (↓ LVEDP)</td><td className="p-2">Maximal</td></tr>
+            <tr><td className="p-2 font-medium text-foreground">Native CO required</td><td className="p-2">Yes</td><td className="p-2">No</td><td className="p-2">No</td></tr>
+            <tr><td className="p-2 font-medium text-foreground">Duration</td><td className="p-2">Days</td><td className="p-2">Days–weeks</td><td className="p-2">Months–years</td></tr>
+            <tr><td className="p-2 font-medium text-foreground">Anticoagulation</td><td className="p-2">Heparin</td><td className="p-2">Heparin (purge + systemic)</td><td className="p-2">Warfarin + antiplatelet</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 

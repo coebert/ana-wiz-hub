@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Dermatome = {
   level: string;
@@ -71,160 +70,154 @@ const SpinalBlockHeightAssessmentTool = () => {
   const _notBlocked = DERMATOMES.filter((d) => d.rank > target.rank);
 
   return (
-    <DiagramFigure
-      id="spinal-block-height-assessment-tool"
-      title="Spinal block height assessment tool"
-      description="Auto-generated wrapper for the Spinal block height assessment tool anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 rounded-lg border border-border bg-card p-4">
-        <p className="text-sm font-semibold text-foreground mb-1 text-center">
-          Block Height Assessment Tool
-        </p>
-        <p className="text-xs text-muted-foreground text-center mb-3">
-          Choose a procedure (or set a custom target) to see which dermatomes must be anaesthetised, with bedside testing landmarks.
-        </p>
-  
-        {/* Procedure selector */}
-        <div className="mb-3">
-          <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Select procedure</p>
-          <div className="flex flex-wrap gap-1.5">
-            {PROCEDURES.map((p, i) => (
-              <button
-                key={p.name}
-                onClick={() => { setProcIndex(i); setCustomLevel(null); }}
-                className={`text-[11px] px-2.5 py-1 rounded border transition font-semibold ${
-                  procIndex === i && !customLevel
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-card hover:bg-muted/50 text-foreground"
-                }`}
-              >
-                {p.name} <span className="opacity-70">({p.level})</span>
-              </button>
-            ))}
-          </div>
+        <div className="my-6 rounded-lg border border-border bg-card p-4">
+      <p className="text-sm font-semibold text-foreground mb-1 text-center">
+        Block Height Assessment Tool
+      </p>
+      <p className="text-xs text-muted-foreground text-center mb-3">
+        Choose a procedure (or set a custom target) to see which dermatomes must be anaesthetised, with bedside testing landmarks.
+      </p>
+
+      {/* Procedure selector */}
+      <div className="mb-3">
+        <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Select procedure</p>
+        <div className="flex flex-wrap gap-1.5">
+          {PROCEDURES.map((p, i) => (
+            <button
+              key={p.name}
+              onClick={() => { setProcIndex(i); setCustomLevel(null); }}
+              className={`text-[11px] px-2.5 py-1 rounded border transition font-semibold ${
+                procIndex === i && !customLevel
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card hover:bg-muted/50 text-foreground"
+              }`}
+            >
+              {p.name} <span className="opacity-70">({p.level})</span>
+            </button>
+          ))}
         </div>
-  
-        {/* Custom target */}
-        <div className="mb-4">
-          <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Or set custom target level</p>
-          <div className="flex flex-wrap gap-1">
-            {DERMATOMES.map((d) => (
-              <button
-                key={d.level}
-                onClick={() => setCustomLevel(d.level)}
-                className={`text-[10px] px-1.5 py-0.5 rounded border transition font-bold ${
-                  customLevel === d.level
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-card hover:bg-muted/50 text-muted-foreground"
-                }`}
-              >
-                {d.level}
-              </button>
-            ))}
-          </div>
+      </div>
+
+      {/* Custom target */}
+      <div className="mb-4">
+        <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">Or set custom target level</p>
+        <div className="flex flex-wrap gap-1">
+          {DERMATOMES.map((d) => (
+            <button
+              key={d.level}
+              onClick={() => setCustomLevel(d.level)}
+              className={`text-[10px] px-1.5 py-0.5 rounded border transition font-bold ${
+                customLevel === d.level
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card hover:bg-muted/50 text-muted-foreground"
+              }`}
+            >
+              {d.level}
+            </button>
+          ))}
         </div>
-  
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-4 items-start">
-          {/* Dermatome ladder visual */}
-          <div className="rounded-lg border border-border bg-secondary/20 p-3">
-            <div className="flex items-baseline justify-between mb-2">
-              <p className="text-xs font-bold text-foreground">Dermatome ladder</p>
-              <p className="text-[10px] text-muted-foreground italic">Target: <span className="font-bold text-primary">{targetLevel}</span></p>
-            </div>
-            <div className="space-y-0.5">
-              {DERMATOMES.map((d) => {
-                const isBlocked = d.rank <= target.rank;
-                const isTarget = d.level === targetTopLevel;
-                return (
-                      <div
-                    key={d.level}
-                    className={`flex items-center gap-2 py-1 px-2 rounded text-[11px] transition ${
-                      isTarget ? "bg-primary/15 border border-primary/40" : isBlocked ? "bg-clinical/10" : ""
-                    }`}
-                  >
-                    <span className="font-bold text-foreground w-10 text-right">{d.level}</span>
-                    <span className="text-base leading-none">
-                      {isBlocked ? "🟢" : "⚪"}
-                    </span>
-                    <span className="text-muted-foreground flex-1">{d.landmark}</span>
-                    {isTarget && <span className="text-[9px] font-bold text-primary uppercase">TARGET</span>}
-                  </div>
-    );
-              })}
-            </div>
-            <p className="text-[10px] text-muted-foreground italic mt-2">
-              🟢 = should be anaesthetised &nbsp;·&nbsp; ⚪ = expected to retain sensation
-            </p>
+      </div>
+
+      <div className="grid lg:grid-cols-[1fr_1.2fr] gap-4 items-start">
+        {/* Dermatome ladder visual */}
+        <div className="rounded-lg border border-border bg-secondary/20 p-3">
+          <div className="flex items-baseline justify-between mb-2">
+            <p className="text-xs font-bold text-foreground">Dermatome ladder</p>
+            <p className="text-[10px] text-muted-foreground italic">Target: <span className="font-bold text-primary">{targetLevel}</span></p>
           </div>
-  
-          {/* Right panel: rationale + testing */}
-          <div className="space-y-3">
-            {/* Procedure rationale */}
-            {!customLevel && (
-              <div className="rounded-lg border-2 border-clinical/40 bg-clinical/5 p-3">
-                <p className="text-[10px] font-bold text-clinical uppercase tracking-wide mb-1">Why {proc.level} for {proc.name}?</p>
-                <p className="text-xs text-foreground leading-snug mb-1">{proc.rationale}</p>
-                {proc.warning && (
-                  <p className="text-[11px] text-muted-foreground leading-snug mt-2 pt-2 border-t border-border">
-                    <strong className="text-foreground">⚠ Note: </strong>{proc.warning}
-                  </p>
-                )}
+          <div className="space-y-0.5">
+            {DERMATOMES.map((d) => {
+              const isBlocked = d.rank <= target.rank;
+              const isTarget = d.level === targetTopLevel;
+              return (
+                    <div
+                  key={d.level}
+                  className={`flex items-center gap-2 py-1 px-2 rounded text-[11px] transition ${
+                    isTarget ? "bg-primary/15 border border-primary/40" : isBlocked ? "bg-clinical/10" : ""
+                  }`}
+                >
+                  <span className="font-bold text-foreground w-10 text-right">{d.level}</span>
+                  <span className="text-base leading-none">
+                    {isBlocked ? "🟢" : "⚪"}
+                  </span>
+                  <span className="text-muted-foreground flex-1">{d.landmark}</span>
+                  {isTarget && <span className="text-[9px] font-bold text-primary uppercase">TARGET</span>}
+                </div>
+  );
+            })}
+          </div>
+          <p className="text-[10px] text-muted-foreground italic mt-2">
+            🟢 = should be anaesthetised &nbsp;·&nbsp; ⚪ = expected to retain sensation
+          </p>
+        </div>
+
+        {/* Right panel: rationale + testing */}
+        <div className="space-y-3">
+          {/* Procedure rationale */}
+          {!customLevel && (
+            <div className="rounded-lg border-2 border-clinical/40 bg-clinical/5 p-3">
+              <p className="text-[10px] font-bold text-clinical uppercase tracking-wide mb-1">Why {proc.level} for {proc.name}?</p>
+              <p className="text-xs text-foreground leading-snug mb-1">{proc.rationale}</p>
+              {proc.warning && (
+                <p className="text-[11px] text-muted-foreground leading-snug mt-2 pt-2 border-t border-border">
+                  <strong className="text-foreground">⚠ Note: </strong>{proc.warning}
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* Testing modalities */}
+          <div className="rounded-lg border border-border p-3">
+            <p className="text-[10px] font-bold text-foreground uppercase tracking-wide mb-2">Bedside testing — three modalities</p>
+            <div className="space-y-2">
+              <div className="p-2 rounded border-l-4" style={{ borderLeftColor: COLD, background: `${COLD}10` }}>
+                <p className="text-xs font-bold" style={{ color: COLD }}>❄ Cold (ethyl chloride spray / ice cube)</p>
+                <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
+                  Tests Aδ fibres (small, lightly myelinated). <strong className="text-foreground">Highest level</strong> — use to assess the upper margin of sympathetic block. Most sensitive. Apply from clearly blocked area UP to clearly unblocked area.
+                </p>
               </div>
-            )}
-  
-            {/* Testing modalities */}
-            <div className="rounded-lg border border-border p-3">
-              <p className="text-[10px] font-bold text-foreground uppercase tracking-wide mb-2">Bedside testing — three modalities</p>
-              <div className="space-y-2">
-                <div className="p-2 rounded border-l-4" style={{ borderLeftColor: COLD, background: `${COLD}10` }}>
-                  <p className="text-xs font-bold" style={{ color: COLD }}>❄ Cold (ethyl chloride spray / ice cube)</p>
-                  <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
-                    Tests Aδ fibres (small, lightly myelinated). <strong className="text-foreground">Highest level</strong> — use to assess the upper margin of sympathetic block. Most sensitive. Apply from clearly blocked area UP to clearly unblocked area.
-                  </p>
-                </div>
-                <div className="p-2 rounded border-l-4" style={{ borderLeftColor: TOUCH, background: `${TOUCH}10` }}>
-                  <p className="text-xs font-bold" style={{ color: TOUCH }}>✋ Light touch (cotton wool / gauze)</p>
-                  <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
-                    Tests Aβ fibres (large, myelinated). <strong className="text-foreground">~2 segments lower than cold.</strong> Best correlates with surgical readiness for LSCS. RCOA recommends light-touch level to T5 + cold to T4 before knife-to-skin.
-                  </p>
-                </div>
-                <div className="p-2 rounded border-l-4" style={{ borderLeftColor: PIN, background: `${PIN}10` }}>
-                  <p className="text-xs font-bold" style={{ color: PIN }}>📍 Pinprick (Neurotip)</p>
-                  <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
-                    Tests Aδ + C fibres (sharp pain). <strong className="text-foreground">Often 1–2 segments lower than cold.</strong> Useful but less reproducible; some avoid in obstetrics (patient anxiety).
-                  </p>
-                </div>
+              <div className="p-2 rounded border-l-4" style={{ borderLeftColor: TOUCH, background: `${TOUCH}10` }}>
+                <p className="text-xs font-bold" style={{ color: TOUCH }}>✋ Light touch (cotton wool / gauze)</p>
+                <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
+                  Tests Aβ fibres (large, myelinated). <strong className="text-foreground">~2 segments lower than cold.</strong> Best correlates with surgical readiness for LSCS. RCOA recommends light-touch level to T5 + cold to T4 before knife-to-skin.
+                </p>
               </div>
-              <div className="mt-2 p-2 rounded bg-secondary/50 border border-primary/20">
-                <p className="text-[11px] text-muted-foreground leading-snug">
-                  <strong className="text-foreground">💡 Block hierarchy: </strong>
-                  Sympathetic block ≥ 2 segments above cold ≥ touch ≥ motor. Document all modalities AND time. For LSCS the standard documentation is: <em>"Cold to T4 bilaterally, light touch to T5 bilaterally, motor block Bromage 3."</em>
+              <div className="p-2 rounded border-l-4" style={{ borderLeftColor: PIN, background: `${PIN}10` }}>
+                <p className="text-xs font-bold" style={{ color: PIN }}>📍 Pinprick (Neurotip)</p>
+                <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
+                  Tests Aδ + C fibres (sharp pain). <strong className="text-foreground">Often 1–2 segments lower than cold.</strong> Useful but less reproducible; some avoid in obstetrics (patient anxiety).
                 </p>
               </div>
             </div>
-  
-            {/* Test site for target level */}
-            <div className="rounded-lg border border-border p-3 bg-card">
-              <p className="text-[10px] font-bold text-foreground uppercase tracking-wide mb-1">Where to test the target level ({targetTopLevel})</p>
-              <p className="text-xs text-foreground leading-snug">
-                <strong>Landmark:</strong> {target.landmark}
-              </p>
-              <p className="text-xs text-muted-foreground leading-snug mt-1">
-                <strong className="text-foreground">Test site:</strong> {target.testSite}
+            <div className="mt-2 p-2 rounded bg-secondary/50 border border-primary/20">
+              <p className="text-[11px] text-muted-foreground leading-snug">
+                <strong className="text-foreground">💡 Block hierarchy: </strong>
+                Sympathetic block ≥ 2 segments above cold ≥ touch ≥ motor. Document all modalities AND time. For LSCS the standard documentation is: <em>"Cold to T4 bilaterally, light touch to T5 bilaterally, motor block Bromage 3."</em>
               </p>
             </div>
           </div>
-        </div>
-  
-        {/* Bottom synthesis */}
-        <div className="mt-3 p-2.5 rounded bg-secondary/40 border border-border">
-          <p className="text-[11px] text-muted-foreground leading-relaxed">
-            <strong className="text-foreground">Common pitfalls: </strong>
-            (1) <em>Testing only at the umbilicus and assuming T10 = adequate</em> — for LSCS you need T4. (2) <em>Confusing T10 with the iliac crest</em> — iliac crest is L1; umbilicus is T10. (3) <em>Documenting only "block adequate"</em> — medico-legal disasters; always state modality + level + side + time. (4) <em>Forgetting that cold returns first</em> — a patient who can suddenly feel cold is signalling block regression, not nothing.
-          </p>
+
+          {/* Test site for target level */}
+          <div className="rounded-lg border border-border p-3 bg-card">
+            <p className="text-[10px] font-bold text-foreground uppercase tracking-wide mb-1">Where to test the target level ({targetTopLevel})</p>
+            <p className="text-xs text-foreground leading-snug">
+              <strong>Landmark:</strong> {target.landmark}
+            </p>
+            <p className="text-xs text-muted-foreground leading-snug mt-1">
+              <strong className="text-foreground">Test site:</strong> {target.testSite}
+            </p>
+          </div>
         </div>
       </div>
-    </DiagramFigure>
+
+      {/* Bottom synthesis */}
+      <div className="mt-3 p-2.5 rounded bg-secondary/40 border border-border">
+        <p className="text-[11px] text-muted-foreground leading-relaxed">
+          <strong className="text-foreground">Common pitfalls: </strong>
+          (1) <em>Testing only at the umbilicus and assuming T10 = adequate</em> — for LSCS you need T4. (2) <em>Confusing T10 with the iliac crest</em> — iliac crest is L1; umbilicus is T10. (3) <em>Documenting only "block adequate"</em> — medico-legal disasters; always state modality + level + side + time. (4) <em>Forgetting that cold returns first</em> — a patient who can suddenly feel cold is signalling block regression, not nothing.
+        </p>
+      </div>
+    </div>
   );
 };
 

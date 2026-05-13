@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * NSAID Mechanism Diagram
@@ -777,79 +776,73 @@ const ProductBox = ({ x, y, color, inhibition, title, sub }: ProductBoxProps) =>
   const blocked = inhibition > 0.25;
   const boosted = inhibition < -0.25;
   return (
-    <DiagramFigure
-      id="nsaid-mechanism-diagram"
-      title="NSAID mechanism"
-      description="Auto-generated wrapper for the NSAID mechanism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <g>
-        <line
-          x1={x}
-          x2={x}
-          y1={y - 30}
-          y2={y - 8}
-          stroke={color}
-          strokeWidth={1}
-          opacity={0.6}
-          markerEnd="url(#nsaid-arrow)"
-        />
-        <rect
-          x={x - 90}
-          y={y - 8}
-          width={180}
-          height={36}
-          rx={6}
-          fill="hsl(var(--background))"
-          stroke={color}
-          strokeWidth={1}
-          opacity={blocked ? 0.5 : 1}
-        />
+            <g>
+      <line
+        x1={x}
+        x2={x}
+        y1={y - 30}
+        y2={y - 8}
+        stroke={color}
+        strokeWidth={1}
+        opacity={0.6}
+        markerEnd="url(#nsaid-arrow)"
+      />
+      <rect
+        x={x - 90}
+        y={y - 8}
+        width={180}
+        height={36}
+        rx={6}
+        fill="hsl(var(--background))"
+        stroke={color}
+        strokeWidth={1}
+        opacity={blocked ? 0.5 : 1}
+      />
+      <text
+        x={x}
+        y={y + 6}
+        textAnchor="middle"
+        fontSize="9.5"
+        fontWeight={700}
+        fill={color}
+        opacity={blocked ? 0.45 : 1}
+      >
+        {title}
+      </text>
+      <text
+        x={x}
+        y={y + 19}
+        textAnchor="middle"
+        fontSize="7.5"
+        className="fill-muted-foreground"
+        opacity={blocked ? 0.45 : 1}
+      >
+        {sub}
+      </text>
+      {blocked && (
         <text
-          x={x}
-          y={y + 6}
-          textAnchor="middle"
-          fontSize="9.5"
+          x={x + 80}
+          y={y - 12}
+          textAnchor="end"
+          fontSize="9"
           fontWeight={700}
-          fill={color}
-          opacity={blocked ? 0.45 : 1}
+          fill="hsl(0 65% 50%)"
         >
-          {title}
+          ↓↓
         </text>
+      )}
+      {boosted && (
         <text
-          x={x}
-          y={y + 19}
-          textAnchor="middle"
-          fontSize="7.5"
-          className="fill-muted-foreground"
-          opacity={blocked ? 0.45 : 1}
+          x={x + 80}
+          y={y - 12}
+          textAnchor="end"
+          fontSize="9"
+          fontWeight={700}
+          fill="hsl(0 65% 50%)"
         >
-          {sub}
+          ↑↑
         </text>
-        {blocked && (
-          <text
-            x={x + 80}
-            y={y - 12}
-            textAnchor="end"
-            fontSize="9"
-            fontWeight={700}
-            fill="hsl(0 65% 50%)"
-          >
-            ↓↓
-          </text>
-        )}
-        {boosted && (
-          <text
-            x={x + 80}
-            y={y - 12}
-            textAnchor="end"
-            fontSize="9"
-            fontWeight={700}
-            fill="hsl(0 65% 50%)"
-          >
-            ↑↑
-          </text>
-        )}
-      </g>
-    </DiagramFigure>
+      )}
+    </g>
   );
 };

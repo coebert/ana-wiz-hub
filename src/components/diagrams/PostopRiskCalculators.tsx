@@ -10,7 +10,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* -----------------------------------------------------------
  * Shared helpers
@@ -484,36 +483,30 @@ const CfsCalc = () => {
  * --------------------------------------------------------- */
 
 const PostopRiskCalculators = () => (
-    <DiagramFigure
-      id="postop-risk-calculators"
-      title="Postop risk calculators"
-      description="Auto-generated wrapper for the Postop risk calculators interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-        <div className="my-6 rounded-xl border border-border bg-card shadow-sm overflow-hidden">
-      <header className="px-4 sm:px-5 pt-4 pb-3 border-b border-border bg-muted/30">
-        <h3 className="text-base sm:text-lg font-serif font-semibold text-foreground leading-tight">
-          Bedside risk calculators
-        </h3>
-        <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
-          Apply each score to the worked examples — values update live. Educational tools, not validated for sole clinical decision-making.
-        </p>
-      </header>
-      <div className="p-4 sm:p-5">
-        <Tabs defaultValue="ppossum">
-          <TabsList className="grid grid-cols-4 w-full">
-            <TabsTrigger value="ppossum">P-POSSUM</TabsTrigger>
-            <TabsTrigger value="sort">SORT</TabsTrigger>
-            <TabsTrigger value="cpet">CPET</TabsTrigger>
-            <TabsTrigger value="cfs">CFS</TabsTrigger>
-          </TabsList>
-          <TabsContent value="ppossum" className="mt-4"><PPossumCalc /></TabsContent>
-          <TabsContent value="sort"    className="mt-4"><SortCalc /></TabsContent>
-          <TabsContent value="cpet"    className="mt-4"><CpetCalc /></TabsContent>
-          <TabsContent value="cfs"     className="mt-4"><CfsCalc /></TabsContent>
-        </Tabs>
-      </div>
+      <div className="my-6 rounded-xl border border-border bg-card shadow-sm overflow-hidden">
+    <header className="px-4 sm:px-5 pt-4 pb-3 border-b border-border bg-muted/30">
+      <h3 className="text-base sm:text-lg font-serif font-semibold text-foreground leading-tight">
+        Bedside risk calculators
+      </h3>
+      <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+        Apply each score to the worked examples — values update live. Educational tools, not validated for sole clinical decision-making.
+      </p>
+    </header>
+    <div className="p-4 sm:p-5">
+      <Tabs defaultValue="ppossum">
+        <TabsList className="grid grid-cols-4 w-full">
+          <TabsTrigger value="ppossum">P-POSSUM</TabsTrigger>
+          <TabsTrigger value="sort">SORT</TabsTrigger>
+          <TabsTrigger value="cpet">CPET</TabsTrigger>
+          <TabsTrigger value="cfs">CFS</TabsTrigger>
+        </TabsList>
+        <TabsContent value="ppossum" className="mt-4"><PPossumCalc /></TabsContent>
+        <TabsContent value="sort"    className="mt-4"><SortCalc /></TabsContent>
+        <TabsContent value="cpet"    className="mt-4"><CpetCalc /></TabsContent>
+        <TabsContent value="cfs"     className="mt-4"><CfsCalc /></TabsContent>
+      </Tabs>
     </div>
-    </DiagramFigure>
+  </div>
   );
 
 export default PostopRiskCalculators;

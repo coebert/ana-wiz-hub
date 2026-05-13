@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Monitor = "pac" | "picco" | "doppler" | "echo";
 
@@ -89,111 +88,105 @@ export const CardiacOutputMonitorDiagram = () => {
   const dashOffset = animPhase * 3;
 
   return (
-    <DiagramFigure
-      id="cardiac-output-monitor-diagram"
-      title="Cardiac output monitor"
-      description="Auto-generated wrapper for the Cardiac output monitor anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <div className="space-y-4">
-        <div className="flex gap-2 flex-wrap">
-          {(Object.keys(monitors) as Monitor[]).map((key) => (
-            <Button key={key} variant={active === key ? "default" : "outline"} size="sm" onClick={() => setActive(key)}>
-              {monitors[key].label}
-            </Button>
+            <div className="space-y-4">
+      <div className="flex gap-2 flex-wrap">
+        {(Object.keys(monitors) as Monitor[]).map((key) => (
+          <Button key={key} variant={active === key ? "default" : "outline"} size="sm" onClick={() => setActive(key)}>
+            {monitors[key].label}
+          </Button>
+        ))}
+      </div>
+
+      {/* Animated waveform */}
+      <div>
+        <p className="text-xs font-medium text-muted-foreground mb-1">{m.fullName} — Characteristic Waveform</p>
+        <svg viewBox="0 0 280 100" className="w-full rounded-lg border border-border bg-secondary/20">
+          {/* Grid lines */}
+          {[20, 40, 60, 80].map((y) => (
+            <line key={y} x1="15" y1={y} x2="265" y2={y} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
+          ))}
+          {/* Animated waveform trace */}
+          <path
+            d={w.path}
+            fill="none"
+            stroke={w.color}
+            strokeWidth="2"
+            strokeDasharray="600"
+            strokeDashoffset={-dashOffset}
+          />
+          {/* Sweep line */}
+          <line
+            x1={20 + ((animPhase * 2.4) % 240)}
+            y1="5"
+            x2={20 + ((animPhase * 2.4) % 240)}
+            y2="95"
+            stroke="hsl(var(--primary))"
+            strokeWidth="1"
+            opacity="0.3"
+          />
+        </svg>
+        <p className="text-xs text-muted-foreground mt-1 italic">{w.label}</p>
+      </div>
+
+      {/* Invasiveness indicator */}
+      <div className="flex items-center gap-2">
+        <span className="text-xs font-medium text-muted-foreground">Invasiveness:</span>
+        <div className="flex gap-1">
+          {[1, 2, 3, 4].map((level) => (
+            <div
+              key={level}
+              className={`w-6 h-2 rounded-full transition-colors ${
+                level <= m.invasiveness
+                  ? "bg-primary"
+                  : "bg-muted"
+              }`}
+            />
           ))}
         </div>
-  
-        {/* Animated waveform */}
-        <div>
-          <p className="text-xs font-medium text-muted-foreground mb-1">{m.fullName} — Characteristic Waveform</p>
-          <svg viewBox="0 0 280 100" className="w-full rounded-lg border border-border bg-secondary/20">
-            {/* Grid lines */}
-            {[20, 40, 60, 80].map((y) => (
-              <line key={y} x1="15" y1={y} x2="265" y2={y} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
+        <span className="text-xs text-muted-foreground">
+          {m.invasiveness === 1 ? "Non-invasive" : m.invasiveness === 2 ? "Minimally invasive" : m.invasiveness === 3 ? "Moderately invasive" : "Highly invasive"}
+        </span>
+      </div>
+
+      {/* Principle */}
+      <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+        <p className="text-xs font-semibold text-primary mb-1">Principle</p>
+        <p className="text-sm text-foreground">{m.principle}</p>
+      </div>
+
+      {/* Measures, Pros, Cons */}
+      <div className="grid sm:grid-cols-3 gap-3">
+        <div className="p-3 rounded-lg border border-border">
+          <p className="text-xs font-semibold text-foreground mb-2">Measures</p>
+          <ul className="space-y-1">
+            {m.measures.map((item) => (
+              <li key={item} className="text-xs text-muted-foreground flex items-start gap-1">
+                <span className="text-primary mt-0.5">•</span>{item}
+              </li>
             ))}
-            {/* Animated waveform trace */}
-            <path
-              d={w.path}
-              fill="none"
-              stroke={w.color}
-              strokeWidth="2"
-              strokeDasharray="600"
-              strokeDashoffset={-dashOffset}
-            />
-            {/* Sweep line */}
-            <line
-              x1={20 + ((animPhase * 2.4) % 240)}
-              y1="5"
-              x2={20 + ((animPhase * 2.4) % 240)}
-              y2="95"
-              stroke="hsl(var(--primary))"
-              strokeWidth="1"
-              opacity="0.3"
-            />
-          </svg>
-          <p className="text-xs text-muted-foreground mt-1 italic">{w.label}</p>
+          </ul>
         </div>
-  
-        {/* Invasiveness indicator */}
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-medium text-muted-foreground">Invasiveness:</span>
-          <div className="flex gap-1">
-            {[1, 2, 3, 4].map((level) => (
-              <div
-                key={level}
-                className={`w-6 h-2 rounded-full transition-colors ${
-                  level <= m.invasiveness
-                    ? "bg-primary"
-                    : "bg-muted"
-                }`}
-              />
+        <div className="p-3 rounded-lg border border-border">
+          <p className="text-xs font-semibold text-emerald-600 mb-2">Advantages</p>
+          <ul className="space-y-1">
+            {m.pros.map((item) => (
+              <li key={item} className="text-xs text-muted-foreground flex items-start gap-1">
+                <span className="text-emerald-500 mt-0.5">✓</span>{item}
+              </li>
             ))}
-          </div>
-          <span className="text-xs text-muted-foreground">
-            {m.invasiveness === 1 ? "Non-invasive" : m.invasiveness === 2 ? "Minimally invasive" : m.invasiveness === 3 ? "Moderately invasive" : "Highly invasive"}
-          </span>
+          </ul>
         </div>
-  
-        {/* Principle */}
-        <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
-          <p className="text-xs font-semibold text-primary mb-1">Principle</p>
-          <p className="text-sm text-foreground">{m.principle}</p>
-        </div>
-  
-        {/* Measures, Pros, Cons */}
-        <div className="grid sm:grid-cols-3 gap-3">
-          <div className="p-3 rounded-lg border border-border">
-            <p className="text-xs font-semibold text-foreground mb-2">Measures</p>
-            <ul className="space-y-1">
-              {m.measures.map((item) => (
-                <li key={item} className="text-xs text-muted-foreground flex items-start gap-1">
-                  <span className="text-primary mt-0.5">•</span>{item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="p-3 rounded-lg border border-border">
-            <p className="text-xs font-semibold text-emerald-600 mb-2">Advantages</p>
-            <ul className="space-y-1">
-              {m.pros.map((item) => (
-                <li key={item} className="text-xs text-muted-foreground flex items-start gap-1">
-                  <span className="text-emerald-500 mt-0.5">✓</span>{item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="p-3 rounded-lg border border-border">
-            <p className="text-xs font-semibold text-destructive mb-2">Limitations</p>
-            <ul className="space-y-1">
-              {m.cons.map((item) => (
-                <li key={item} className="text-xs text-muted-foreground flex items-start gap-1">
-                  <span className="text-destructive mt-0.5">✗</span>{item}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="p-3 rounded-lg border border-border">
+          <p className="text-xs font-semibold text-destructive mb-2">Limitations</p>
+          <ul className="space-y-1">
+            {m.cons.map((item) => (
+              <li key={item} className="text-xs text-muted-foreground flex items-start gap-1">
+                <span className="text-destructive mt-0.5">✗</span>{item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };

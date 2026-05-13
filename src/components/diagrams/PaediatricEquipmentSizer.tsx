@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Mode = "age" | "weight";
 
@@ -320,160 +319,154 @@ const PaediatricEquipmentSizer = () => {
   const categories = ["Airway", "Access", "Drainage", "Resus"] as const;
 
   return (
-    <DiagramFigure
-      id="paediatric-equipment-sizer"
-      title="Paediatric equipment sizer"
-      description="Auto-generated wrapper for the Paediatric equipment sizer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 p-4 rounded-xl border border-border bg-card">
-        <div className="mb-3">
-          <h3 className="text-lg font-serif font-bold text-foreground">
-            Paediatric Equipment Sizer + Emergency Drug Doses
-          </h3>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            APLS 2021 / BNFc / RCH Melbourne. Enter age <em>or</em> measured weight — all sizes & doses recompute live.
-            Designed for the resus trolley wall and the anaesthetic check.
-          </p>
+        <div className="my-6 p-4 rounded-xl border border-border bg-card">
+      <div className="mb-3">
+        <h3 className="text-lg font-serif font-bold text-foreground">
+          Paediatric Equipment Sizer + Emergency Drug Doses
+        </h3>
+        <p className="text-xs text-muted-foreground mt-0.5">
+          APLS 2021 / BNFc / RCH Melbourne. Enter age <em>or</em> measured weight — all sizes & doses recompute live.
+          Designed for the resus trolley wall and the anaesthetic check.
+        </p>
+      </div>
+
+      {/* Input panel */}
+      <div className="p-3 rounded-lg border border-border bg-secondary/30 mb-4">
+        <div className="flex flex-wrap gap-1.5 mb-3 text-xs">
+          {(["age", "weight"] as Mode[]).map((m) => (
+            <button
+              key={m}
+              type="button"
+              onClick={() => setMode(m)}
+              aria-pressed={mode === m}
+              className={`px-3 py-1 rounded border transition-colors ${
+                mode === m
+                  ? "border-primary bg-primary/10 text-foreground"
+                  : "border-border text-muted-foreground hover:bg-muted/50"
+              }`}
+            >
+              {m === "age" ? "Estimate from age" : "Use measured weight"}
+            </button>
+          ))}
         </div>
-  
-        {/* Input panel */}
-        <div className="p-3 rounded-lg border border-border bg-secondary/30 mb-4">
-          <div className="flex flex-wrap gap-1.5 mb-3 text-xs">
-            {(["age", "weight"] as Mode[]).map((m) => (
-              <button
-                key={m}
-                type="button"
-                onClick={() => setMode(m)}
-                aria-pressed={mode === m}
-                className={`px-3 py-1 rounded border transition-colors ${
-                  mode === m
-                    ? "border-primary bg-primary/10 text-foreground"
-                    : "border-border text-muted-foreground hover:bg-muted/50"
-                }`}
-              >
-                {m === "age" ? "Estimate from age" : "Use measured weight"}
-              </button>
-            ))}
-          </div>
-  
-          <div className="grid sm:grid-cols-2 gap-3">
-            {mode === "age" ? (
-              <div>
-                <label className="text-xs font-semibold text-foreground flex items-center justify-between">
-                  <span>Age (years)</span>
-                  <span className="text-primary font-mono">{age < 1 ? "<1 yr" : `${age} yr`}</span>
-                </label>
-                <input
-                  type="range"
-                  min={0}
-                  max={14}
-                  step={1}
-                  value={age}
-                  onChange={(e) => setAge(Number(e.target.value))}
-                  className="w-full mt-1 accent-primary"
-                />
-                <p className="text-[10px] text-muted-foreground mt-0.5">
-                  Estimated weight: <span className="font-mono text-foreground">{estimatedWeight} kg</span> ({age < 1 ? "(0.5 × mo) + 4, assumes 6 mo" : age < 5 ? "(2 × age) + 8" : "(3 × age) + 7"})
-                </p>
-              </div>
-            ) : (
-              <div>
-                <label className="text-xs font-semibold text-foreground flex items-center justify-between">
-                  <span>Measured weight (kg)</span>
-                  <span className="text-primary font-mono">{measuredWeight} kg</span>
-                </label>
-                <input
-                  type="number"
-                  min={1}
-                  max={100}
-                  step={0.5}
-                  value={measuredWeight}
-                  onChange={(e) => setMeasuredWeight(Math.max(0.5, Number(e.target.value) || 0))}
-                  className="w-full mt-1 px-2 py-1 rounded border border-border bg-background text-sm"
-                />
-                <p className="text-[10px] text-muted-foreground mt-0.5">
-                  Inferred age for tube/length: <span className="font-mono text-foreground">{a < 1 ? "<1" : a} yr</span>
-                </p>
-              </div>
-            )}
-  
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="p-2 rounded bg-background border border-border">
-                <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Working weight</p>
-                <p className="text-lg font-bold font-mono text-foreground">{w} kg</p>
-              </div>
-              <div className="p-2 rounded bg-background border border-border">
-                <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Defib energy</p>
-                <p className="text-lg font-bold font-mono text-destructive">{Math.round(4 * w)} J</p>
-              </div>
+
+        <div className="grid sm:grid-cols-2 gap-3">
+          {mode === "age" ? (
+            <div>
+              <label className="text-xs font-semibold text-foreground flex items-center justify-between">
+                <span>Age (years)</span>
+                <span className="text-primary font-mono">{age < 1 ? "<1 yr" : `${age} yr`}</span>
+              </label>
+              <input
+                type="range"
+                min={0}
+                max={14}
+                step={1}
+                value={age}
+                onChange={(e) => setAge(Number(e.target.value))}
+                className="w-full mt-1 accent-primary"
+              />
+              <p className="text-[10px] text-muted-foreground mt-0.5">
+                Estimated weight: <span className="font-mono text-foreground">{estimatedWeight} kg</span> ({age < 1 ? "(0.5 × mo) + 4, assumes 6 mo" : age < 5 ? "(2 × age) + 8" : "(3 × age) + 7"})
+              </p>
+            </div>
+          ) : (
+            <div>
+              <label className="text-xs font-semibold text-foreground flex items-center justify-between">
+                <span>Measured weight (kg)</span>
+                <span className="text-primary font-mono">{measuredWeight} kg</span>
+              </label>
+              <input
+                type="number"
+                min={1}
+                max={100}
+                step={0.5}
+                value={measuredWeight}
+                onChange={(e) => setMeasuredWeight(Math.max(0.5, Number(e.target.value) || 0))}
+                className="w-full mt-1 px-2 py-1 rounded border border-border bg-background text-sm"
+              />
+              <p className="text-[10px] text-muted-foreground mt-0.5">
+                Inferred age for tube/length: <span className="font-mono text-foreground">{a < 1 ? "<1" : a} yr</span>
+              </p>
+            </div>
+          )}
+
+          <div className="grid grid-cols-2 gap-2 text-xs">
+            <div className="p-2 rounded bg-background border border-border">
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Working weight</p>
+              <p className="text-lg font-bold font-mono text-foreground">{w} kg</p>
+            </div>
+            <div className="p-2 rounded bg-background border border-border">
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Defib energy</p>
+              <p className="text-lg font-bold font-mono text-destructive">{Math.round(4 * w)} J</p>
             </div>
           </div>
         </div>
-  
-        {/* Equipment by category */}
-        <div className="space-y-3 mb-4">
-          <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">Airway & Equipment Sizing</h4>
-          {categories.map((cat) => {
-            const rows = equipment.filter((e) => e.category === cat);
-            if (!rows.length) return null;
-            return (
-                  <div key={cat}>
-                <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">{cat}</p>
-                <div className="grid md:grid-cols-2 gap-1.5">
-                  {rows.map((row) => (
-                    <div
-                      key={row.item}
-                      className="p-2.5 rounded-lg border border-border bg-background"
-                      style={{ borderLeftWidth: 3, borderLeftColor: row.color }}
-                    >
-                      <div className="flex items-baseline justify-between gap-2">
-                        <p className="text-sm font-semibold text-foreground">{row.item}</p>
-                        <p className="text-sm font-bold font-mono" style={{ color: row.color }}>
-                          {row.value}
-                        </p>
-                      </div>
-                      <p className="text-[10px] text-muted-foreground font-mono mt-0.5">Formula: {row.formula}</p>
-                      <p className="text-xs text-muted-foreground/90 mt-1 leading-snug">{row.note}</p>
+      </div>
+
+      {/* Equipment by category */}
+      <div className="space-y-3 mb-4">
+        <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">Airway & Equipment Sizing</h4>
+        {categories.map((cat) => {
+          const rows = equipment.filter((e) => e.category === cat);
+          if (!rows.length) return null;
+          return (
+                <div key={cat}>
+              <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">{cat}</p>
+              <div className="grid md:grid-cols-2 gap-1.5">
+                {rows.map((row) => (
+                  <div
+                    key={row.item}
+                    className="p-2.5 rounded-lg border border-border bg-background"
+                    style={{ borderLeftWidth: 3, borderLeftColor: row.color }}
+                  >
+                    <div className="flex items-baseline justify-between gap-2">
+                      <p className="text-sm font-semibold text-foreground">{row.item}</p>
+                      <p className="text-sm font-bold font-mono" style={{ color: row.color }}>
+                        {row.value}
+                      </p>
                     </div>
-                  ))}
-                </div>
+                    <p className="text-[10px] text-muted-foreground font-mono mt-0.5">Formula: {row.formula}</p>
+                    <p className="text-xs text-muted-foreground/90 mt-1 leading-snug">{row.note}</p>
+                  </div>
+                ))}
               </div>
-    );
-          })}
-        </div>
-  
-        {/* Emergency drugs */}
-        <div className="space-y-1.5">
-          <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">Emergency Drug Doses (WETFLAG+)</h4>
-          <div className="grid md:grid-cols-2 gap-1.5">
-            {drugs.map((d) => (
-              <div
-                key={d.drug}
-                className="p-2.5 rounded-lg border border-border bg-background"
-                style={{ borderLeftWidth: 3, borderLeftColor: d.color }}
-              >
-                <div className="flex items-baseline justify-between gap-2">
-                  <p className="text-sm font-semibold text-foreground">{d.drug}</p>
-                  <p className="text-sm font-bold font-mono text-right" style={{ color: d.color }}>
-                    {d.dose}
-                  </p>
-                </div>
-                <p className="text-[10px] text-muted-foreground mt-0.5 italic">{d.indication}</p>
-                <p className="text-[10px] text-muted-foreground font-mono mt-0.5">Formula: {d.formula}</p>
-                <p className="text-xs text-muted-foreground/90 mt-1 leading-snug">{d.note}</p>
+            </div>
+  );
+        })}
+      </div>
+
+      {/* Emergency drugs */}
+      <div className="space-y-1.5">
+        <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">Emergency Drug Doses (WETFLAG+)</h4>
+        <div className="grid md:grid-cols-2 gap-1.5">
+          {drugs.map((d) => (
+            <div
+              key={d.drug}
+              className="p-2.5 rounded-lg border border-border bg-background"
+              style={{ borderLeftWidth: 3, borderLeftColor: d.color }}
+            >
+              <div className="flex items-baseline justify-between gap-2">
+                <p className="text-sm font-semibold text-foreground">{d.drug}</p>
+                <p className="text-sm font-bold font-mono text-right" style={{ color: d.color }}>
+                  {d.dose}
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
-  
-        <div className="mt-3 p-2.5 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
-          <strong className="text-foreground">Clinical use: </strong>
-          Calculate at the start of every paediatric list and on PICU/ED admission. Always cross-check with a Broselow tape or
-          measured weight when available — estimates may be inaccurate in obesity, prematurity, or syndromic children.
-          Cuffed microcuff ETTs are now first-line at any age; have ½ size above and below ready.
+              <p className="text-[10px] text-muted-foreground mt-0.5 italic">{d.indication}</p>
+              <p className="text-[10px] text-muted-foreground font-mono mt-0.5">Formula: {d.formula}</p>
+              <p className="text-xs text-muted-foreground/90 mt-1 leading-snug">{d.note}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </DiagramFigure>
+
+      <div className="mt-3 p-2.5 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
+        <strong className="text-foreground">Clinical use: </strong>
+        Calculate at the start of every paediatric list and on PICU/ED admission. Always cross-check with a Broselow tape or
+        measured weight when available — estimates may be inaccurate in obesity, prematurity, or syndromic children.
+        Cuffed microcuff ETTs are now first-line at any age; have ½ size above and below ready.
+      </div>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ArteryKey = "external-iliac" | "femoral" | "profunda-femoris" | "popliteal" | "anterior-tibial" | "posterior-tibial" | "peroneal" | "dorsalis-pedis" | "medial-plantar" | "lateral-plantar" | "genicular" | "circumflex-femoral";
 
@@ -101,211 +100,205 @@ const LowerLimbArteriesDiagram = () => {
   const isActive = (k: ArteryKey) => selected === k;
 
   return (
-    <DiagramFigure
-      id="lower-limb-arteries-diagram"
-      title="Lower limb arteries"
-      description="Auto-generated wrapper for the Lower limb arteries anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-              <div className="my-6 space-y-4">
-        <div className="bg-muted/30 rounded-xl border border-border p-4">
-          <DiagramToggleBar
-            title="Arterial supply of the lower limb"
-            subtitle="Tap any vessel to explore its course and clinical relevance"
-            toggles={[
-              { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
-              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-            ]}
-          />
-  
-          <div className="flex flex-col lg:flex-row gap-4 items-start">
-          <div className="flex-shrink-0 mx-auto">
-            <svg viewBox="0 0 200 580" className="w-full max-w-[220px]" role="img" aria-label="Arterial supply of the lower limb from external iliac to plantar arches">
-              <defs>
-                <radialGradient id="lla-bgShade" cx="50%" cy="40%" r="65%">
-                  <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.14" />
-                  <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
-                </radialGradient>
-                <pattern id="lla-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
-                  <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
-                </pattern>
-                <filter id="lla-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
-                  <feOffset dx="0" dy="1.2" result="off" />
-                  <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
-                  <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
-                </filter>
-              </defs>
-  
-              <rect x="2" y="2" width="196" height="576" rx="10" fill="url(#lla-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
-              {showSutures && <rect x="2" y="2" width="196" height="576" rx="10" fill="url(#lla-tissue)" pointerEvents="none" />}
-  
-              {/* Leg outline */}
-              <path d="M65,15 Q55,80 55,150 Q52,220 50,280 Q48,340 45,400 Q42,440 38,480 Q35,510 30,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
-              <path d="M135,15 Q145,80 145,150 Q148,220 150,280 Q152,340 148,400 Q145,440 140,480 Q135,510 125,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
-  
-              {showSutures && (
-                <g pointerEvents="none">
-                  <line x1="40" y1="30" x2="160" y2="30" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
-                  <line x1="40" y1="280" x2="160" y2="280" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
-                  <line x1="35" y1="460" x2="145" y2="460" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
-                </g>
-              )}
-              {showLabels && (
-                <g pointerEvents="none">
-                  <text x="165" y="33" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Inguinal lig.</text>
-                  <text x="165" y="283" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Knee</text>
-                  <text x="150" y="463" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Ankle</text>
-                </g>
-              )}
-  
-              {/* External iliac */}
-              <g className="cursor-pointer" onClick={() => setSelected("external-iliac")}>
-                <path d="M80,5 Q85,15 90,28" fill="none" stroke={arteries["external-iliac"].color}
-                  strokeWidth={isActive("external-iliac") ? 5 : 3.5} opacity={isActive("external-iliac") ? 0.8 : 0.35} strokeLinecap="round" />
-                <text x="55" y="12" fontSize="5" fill={arteries["external-iliac"].color} textAnchor="end">Ext. iliac</text>
+            <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Arterial supply of the lower limb"
+          subtitle="Tap any vessel to explore its course and clinical relevance"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
+
+        <div className="flex flex-col lg:flex-row gap-4 items-start">
+        <div className="flex-shrink-0 mx-auto">
+          <svg viewBox="0 0 200 580" className="w-full max-w-[220px]" role="img" aria-label="Arterial supply of the lower limb from external iliac to plantar arches">
+            <defs>
+              <radialGradient id="lla-bgShade" cx="50%" cy="40%" r="65%">
+                <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.14" />
+                <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+              </radialGradient>
+              <pattern id="lla-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+              </pattern>
+              <filter id="lla-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                <feOffset dx="0" dy="1.2" result="off" />
+                <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
+                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+
+            <rect x="2" y="2" width="196" height="576" rx="10" fill="url(#lla-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+            {showSutures && <rect x="2" y="2" width="196" height="576" rx="10" fill="url(#lla-tissue)" pointerEvents="none" />}
+
+            {/* Leg outline */}
+            <path d="M65,15 Q55,80 55,150 Q52,220 50,280 Q48,340 45,400 Q42,440 38,480 Q35,510 30,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
+            <path d="M135,15 Q145,80 145,150 Q148,220 150,280 Q152,340 148,400 Q145,440 140,480 Q135,510 125,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
+
+            {showSutures && (
+              <g pointerEvents="none">
+                <line x1="40" y1="30" x2="160" y2="30" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
+                <line x1="40" y1="280" x2="160" y2="280" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
+                <line x1="35" y1="460" x2="145" y2="460" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
               </g>
-  
-              {/* Femoral */}
-              <g className="cursor-pointer" onClick={() => setSelected("femoral")}>
-                <path d="M90,28 Q92,80 93,130 Q94,180 95,220 Q95,240 95,260" fill="none" stroke={arteries.femoral.color}
-                  strokeWidth={isActive("femoral") ? 4.5 : 3} opacity={isActive("femoral") ? 0.8 : 0.4} strokeLinecap="round" />
-                <text x="100" y="140" fontSize="5.5" fill={arteries.femoral.color} fontWeight="bold">Femoral A.</text>
-                <text x="100" y="250" fontSize="4" fill={arteries.femoral.color} opacity="0.5">→ adductor hiatus</text>
+            )}
+            {showLabels && (
+              <g pointerEvents="none">
+                <text x="165" y="33" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Inguinal lig.</text>
+                <text x="165" y="283" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Knee</text>
+                <text x="150" y="463" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Ankle</text>
               </g>
-  
-              {/* Profunda femoris */}
-              <g className="cursor-pointer" onClick={() => setSelected("profunda-femoris")}>
-                <path d="M92,55 Q100,80 108,120 Q115,160 118,200 Q120,230 118,260" fill="none" stroke={arteries["profunda-femoris"].color}
-                  strokeWidth={isActive("profunda-femoris") ? 3 : 2} opacity={isActive("profunda-femoris") ? 0.7 : 0.3} strokeLinecap="round" />
-                {/* Perforating branches */}
-                {[100, 140, 180, 220].map((y, i) => (
-                  <line key={i} x1={105 + i * 3} y1={y} x2={120 + i * 2} y2={y + 10}
-                    stroke={arteries["profunda-femoris"].color} strokeWidth="0.75" opacity="0.25" />
-                ))}
-                <text x="125" y="150" fontSize="4.5" fill={arteries["profunda-femoris"].color}>Profunda</text>
-                <text x="125" y="157" fontSize="4.5" fill={arteries["profunda-femoris"].color}>femoris</text>
-              </g>
-  
-              {/* Circumflex femoral */}
-              <g className="cursor-pointer" onClick={() => setSelected("circumflex-femoral")}>
-                <path d="M93,50 Q80,55 70,65 Q62,75 60,85" fill="none" stroke={arteries["circumflex-femoral"].color}
-                  strokeWidth={isActive("circumflex-femoral") ? 2 : 1.2} opacity={isActive("circumflex-femoral") ? 0.7 : 0.25} strokeLinecap="round" />
-                <path d="M95,55 Q108,60 118,68 Q128,78 130,90" fill="none" stroke={arteries["circumflex-femoral"].color}
-                  strokeWidth={isActive("circumflex-femoral") ? 2 : 1.2} opacity={isActive("circumflex-femoral") ? 0.7 : 0.25} strokeLinecap="round" />
-                <text x="50" y="82" fontSize="4" fill={arteries["circumflex-femoral"].color} textAnchor="end">MCFA</text>
-                <text x="135" y="88" fontSize="4" fill={arteries["circumflex-femoral"].color}>LCFA</text>
-              </g>
-  
-              {/* Popliteal */}
-              <g className="cursor-pointer" onClick={() => setSelected("popliteal")}>
-                <path d="M95,260 Q94,275 93,290 Q92,305 91,318" fill="none" stroke={arteries.popliteal.color}
-                  strokeWidth={isActive("popliteal") ? 4 : 2.5} opacity={isActive("popliteal") ? 0.8 : 0.4} strokeLinecap="round" />
-                <text x="65" y="295" fontSize="5" fill={arteries.popliteal.color} textAnchor="end" fontWeight="bold">Popliteal</text>
-              </g>
-  
-              {/* Genicular */}
-              <g className="cursor-pointer" onClick={() => setSelected("genicular")}>
-                {[-15, -8, 8, 15].map((dx, i) => (
-                  <line key={i} x1={93} y1={275 + i * 3} x2={93 + dx * 2} y2={278 + i * 3}
-                    stroke={arteries.genicular.color}
-                    strokeWidth={isActive("genicular") ? 1.5 : 0.8}
-                    opacity={isActive("genicular") ? 0.6 : 0.2} />
-                ))}
-                <text x="130" y="275" fontSize="4" fill={arteries.genicular.color}>Genicular</text>
-              </g>
-  
-              {/* Bifurcation */}
-              <circle cx="91" cy="320" r="2" fill={arteries.popliteal.color} fillOpacity="0.4" />
-  
-              {/* Anterior tibial */}
-              <g className="cursor-pointer" onClick={() => setSelected("anterior-tibial")}>
-                <path d="M91,320 Q85,350 80,390 Q76,420 73,450 Q70,465 68,475" fill="none" stroke={arteries["anterior-tibial"].color}
-                  strokeWidth={isActive("anterior-tibial") ? 3 : 2} opacity={isActive("anterior-tibial") ? 0.8 : 0.35} strokeLinecap="round" />
-                <text x="58" y="400" fontSize="4.5" fill={arteries["anterior-tibial"].color} textAnchor="end">Ant. tibial</text>
-              </g>
-  
-              {/* Posterior tibial */}
-              <g className="cursor-pointer" onClick={() => setSelected("posterior-tibial")}>
-                <path d="M91,320 Q95,360 97,400 Q98,430 96,460 Q92,480 85,500" fill="none" stroke={arteries["posterior-tibial"].color}
-                  strokeWidth={isActive("posterior-tibial") ? 3 : 2} opacity={isActive("posterior-tibial") ? 0.8 : 0.35} strokeLinecap="round" />
-                <text x="105" y="410" fontSize="4.5" fill={arteries["posterior-tibial"].color}>Post. tibial</text>
-              </g>
-  
-              {/* Peroneal */}
-              <g className="cursor-pointer" onClick={() => setSelected("peroneal")}>
-                <path d="M94,335 Q100,370 105,410 Q108,435 107,455" fill="none" stroke={arteries.peroneal.color}
-                  strokeWidth={isActive("peroneal") ? 2.5 : 1.5} opacity={isActive("peroneal") ? 0.7 : 0.25}
-                  strokeDasharray="4 2" strokeLinecap="round" />
-                <text x="115" y="440" fontSize="4" fill={arteries.peroneal.color}>Peroneal</text>
-              </g>
-  
-              {/* Dorsalis pedis */}
-              <g className="cursor-pointer" onClick={() => setSelected("dorsalis-pedis")}>
-                <path d="M68,475 Q65,490 60,510 Q55,530 50,545" fill="none" stroke={arteries["dorsalis-pedis"].color}
-                  strokeWidth={isActive("dorsalis-pedis") ? 2.5 : 1.5} opacity={isActive("dorsalis-pedis") ? 0.7 : 0.3} strokeLinecap="round" />
-                <text x="40" y="525" fontSize="4.5" fill={arteries["dorsalis-pedis"].color} textAnchor="end">Dorsalis</text>
-                <text x="40" y="532" fontSize="4.5" fill={arteries["dorsalis-pedis"].color} textAnchor="end">pedis</text>
-              </g>
-  
-              {/* Plantar arteries */}
-              <g className="cursor-pointer" onClick={() => setSelected("medial-plantar")}>
-                <path d="M85,500 Q78,520 70,535 Q60,545 50,548" fill="none" stroke={arteries["medial-plantar"].color}
-                  strokeWidth={isActive("medial-plantar") ? 2 : 1} opacity={isActive("medial-plantar") ? 0.6 : 0.2} strokeLinecap="round" />
-                <text x="60" y="555" fontSize="3.5" fill={arteries["medial-plantar"].color}>Med. plantar</text>
-              </g>
-  
-              <g className="cursor-pointer" onClick={() => setSelected("lateral-plantar")}>
-                <path d="M85,500 Q90,520 95,535 Q100,545 105,550" fill="none" stroke={arteries["lateral-plantar"].color}
-                  strokeWidth={isActive("lateral-plantar") ? 2 : 1} opacity={isActive("lateral-plantar") ? 0.6 : 0.2} strokeLinecap="round" />
-                {/* Plantar arch */}
-                <path d="M105,550 Q90,555 70,552 Q55,550 50,548" fill="none" stroke={arteries["lateral-plantar"].color}
-                  strokeWidth="0.75" opacity="0.2" strokeDasharray="3 2" />
-                <text x="108" y="548" fontSize="3.5" fill={arteries["lateral-plantar"].color}>Lat. plantar</text>
-                <text x="80" y="565" fontSize="3.5" fill={arteries["lateral-plantar"].color} textAnchor="middle" opacity="0.5">plantar arch</text>
-              </g>
-  
-              {/* Orientation */}
-              <text x="100" y="577" fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.3" fontStyle="italic">Anterior view</text>
-            </svg>
-          </div>
-  
-          <div className="flex-1 min-w-0">
-            <div
-              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
-              style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
-              key={selected}
-            >
-              <p className="font-semibold text-foreground text-sm">{info.label}</p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
-              </p>
-            </div>
-  
-            <div className="mt-3 space-y-2">
-              {Object.values(categories).map(cat => (
-                <div key={cat.label}>
-                  <p className="text-xs text-muted-foreground font-medium mb-1">{cat.label}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {cat.keys.map(key => (
-                      <button key={key} onClick={() => setSelected(key)}
-                        className={`text-xs px-2 py-1 rounded border transition-all ${
-                          selected === key ? "border-primary bg-primary/10 text-foreground font-medium" : "border-border text-muted-foreground hover:border-primary/50"
-                        }`}>
-                        {arteries[key].label.split(" (")[0]}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+            )}
+
+            {/* External iliac */}
+            <g className="cursor-pointer" onClick={() => setSelected("external-iliac")}>
+              <path d="M80,5 Q85,15 90,28" fill="none" stroke={arteries["external-iliac"].color}
+                strokeWidth={isActive("external-iliac") ? 5 : 3.5} opacity={isActive("external-iliac") ? 0.8 : 0.35} strokeLinecap="round" />
+              <text x="55" y="12" fontSize="5" fill={arteries["external-iliac"].color} textAnchor="end">Ext. iliac</text>
+            </g>
+
+            {/* Femoral */}
+            <g className="cursor-pointer" onClick={() => setSelected("femoral")}>
+              <path d="M90,28 Q92,80 93,130 Q94,180 95,220 Q95,240 95,260" fill="none" stroke={arteries.femoral.color}
+                strokeWidth={isActive("femoral") ? 4.5 : 3} opacity={isActive("femoral") ? 0.8 : 0.4} strokeLinecap="round" />
+              <text x="100" y="140" fontSize="5.5" fill={arteries.femoral.color} fontWeight="bold">Femoral A.</text>
+              <text x="100" y="250" fontSize="4" fill={arteries.femoral.color} opacity="0.5">→ adductor hiatus</text>
+            </g>
+
+            {/* Profunda femoris */}
+            <g className="cursor-pointer" onClick={() => setSelected("profunda-femoris")}>
+              <path d="M92,55 Q100,80 108,120 Q115,160 118,200 Q120,230 118,260" fill="none" stroke={arteries["profunda-femoris"].color}
+                strokeWidth={isActive("profunda-femoris") ? 3 : 2} opacity={isActive("profunda-femoris") ? 0.7 : 0.3} strokeLinecap="round" />
+              {/* Perforating branches */}
+              {[100, 140, 180, 220].map((y, i) => (
+                <line key={i} x1={105 + i * 3} y1={y} x2={120 + i * 2} y2={y + 10}
+                  stroke={arteries["profunda-femoris"].color} strokeWidth="0.75" opacity="0.25" />
               ))}
-            </div>
-          </div>
+              <text x="125" y="150" fontSize="4.5" fill={arteries["profunda-femoris"].color}>Profunda</text>
+              <text x="125" y="157" fontSize="4.5" fill={arteries["profunda-femoris"].color}>femoris</text>
+            </g>
+
+            {/* Circumflex femoral */}
+            <g className="cursor-pointer" onClick={() => setSelected("circumflex-femoral")}>
+              <path d="M93,50 Q80,55 70,65 Q62,75 60,85" fill="none" stroke={arteries["circumflex-femoral"].color}
+                strokeWidth={isActive("circumflex-femoral") ? 2 : 1.2} opacity={isActive("circumflex-femoral") ? 0.7 : 0.25} strokeLinecap="round" />
+              <path d="M95,55 Q108,60 118,68 Q128,78 130,90" fill="none" stroke={arteries["circumflex-femoral"].color}
+                strokeWidth={isActive("circumflex-femoral") ? 2 : 1.2} opacity={isActive("circumflex-femoral") ? 0.7 : 0.25} strokeLinecap="round" />
+              <text x="50" y="82" fontSize="4" fill={arteries["circumflex-femoral"].color} textAnchor="end">MCFA</text>
+              <text x="135" y="88" fontSize="4" fill={arteries["circumflex-femoral"].color}>LCFA</text>
+            </g>
+
+            {/* Popliteal */}
+            <g className="cursor-pointer" onClick={() => setSelected("popliteal")}>
+              <path d="M95,260 Q94,275 93,290 Q92,305 91,318" fill="none" stroke={arteries.popliteal.color}
+                strokeWidth={isActive("popliteal") ? 4 : 2.5} opacity={isActive("popliteal") ? 0.8 : 0.4} strokeLinecap="round" />
+              <text x="65" y="295" fontSize="5" fill={arteries.popliteal.color} textAnchor="end" fontWeight="bold">Popliteal</text>
+            </g>
+
+            {/* Genicular */}
+            <g className="cursor-pointer" onClick={() => setSelected("genicular")}>
+              {[-15, -8, 8, 15].map((dx, i) => (
+                <line key={i} x1={93} y1={275 + i * 3} x2={93 + dx * 2} y2={278 + i * 3}
+                  stroke={arteries.genicular.color}
+                  strokeWidth={isActive("genicular") ? 1.5 : 0.8}
+                  opacity={isActive("genicular") ? 0.6 : 0.2} />
+              ))}
+              <text x="130" y="275" fontSize="4" fill={arteries.genicular.color}>Genicular</text>
+            </g>
+
+            {/* Bifurcation */}
+            <circle cx="91" cy="320" r="2" fill={arteries.popliteal.color} fillOpacity="0.4" />
+
+            {/* Anterior tibial */}
+            <g className="cursor-pointer" onClick={() => setSelected("anterior-tibial")}>
+              <path d="M91,320 Q85,350 80,390 Q76,420 73,450 Q70,465 68,475" fill="none" stroke={arteries["anterior-tibial"].color}
+                strokeWidth={isActive("anterior-tibial") ? 3 : 2} opacity={isActive("anterior-tibial") ? 0.8 : 0.35} strokeLinecap="round" />
+              <text x="58" y="400" fontSize="4.5" fill={arteries["anterior-tibial"].color} textAnchor="end">Ant. tibial</text>
+            </g>
+
+            {/* Posterior tibial */}
+            <g className="cursor-pointer" onClick={() => setSelected("posterior-tibial")}>
+              <path d="M91,320 Q95,360 97,400 Q98,430 96,460 Q92,480 85,500" fill="none" stroke={arteries["posterior-tibial"].color}
+                strokeWidth={isActive("posterior-tibial") ? 3 : 2} opacity={isActive("posterior-tibial") ? 0.8 : 0.35} strokeLinecap="round" />
+              <text x="105" y="410" fontSize="4.5" fill={arteries["posterior-tibial"].color}>Post. tibial</text>
+            </g>
+
+            {/* Peroneal */}
+            <g className="cursor-pointer" onClick={() => setSelected("peroneal")}>
+              <path d="M94,335 Q100,370 105,410 Q108,435 107,455" fill="none" stroke={arteries.peroneal.color}
+                strokeWidth={isActive("peroneal") ? 2.5 : 1.5} opacity={isActive("peroneal") ? 0.7 : 0.25}
+                strokeDasharray="4 2" strokeLinecap="round" />
+              <text x="115" y="440" fontSize="4" fill={arteries.peroneal.color}>Peroneal</text>
+            </g>
+
+            {/* Dorsalis pedis */}
+            <g className="cursor-pointer" onClick={() => setSelected("dorsalis-pedis")}>
+              <path d="M68,475 Q65,490 60,510 Q55,530 50,545" fill="none" stroke={arteries["dorsalis-pedis"].color}
+                strokeWidth={isActive("dorsalis-pedis") ? 2.5 : 1.5} opacity={isActive("dorsalis-pedis") ? 0.7 : 0.3} strokeLinecap="round" />
+              <text x="40" y="525" fontSize="4.5" fill={arteries["dorsalis-pedis"].color} textAnchor="end">Dorsalis</text>
+              <text x="40" y="532" fontSize="4.5" fill={arteries["dorsalis-pedis"].color} textAnchor="end">pedis</text>
+            </g>
+
+            {/* Plantar arteries */}
+            <g className="cursor-pointer" onClick={() => setSelected("medial-plantar")}>
+              <path d="M85,500 Q78,520 70,535 Q60,545 50,548" fill="none" stroke={arteries["medial-plantar"].color}
+                strokeWidth={isActive("medial-plantar") ? 2 : 1} opacity={isActive("medial-plantar") ? 0.6 : 0.2} strokeLinecap="round" />
+              <text x="60" y="555" fontSize="3.5" fill={arteries["medial-plantar"].color}>Med. plantar</text>
+            </g>
+
+            <g className="cursor-pointer" onClick={() => setSelected("lateral-plantar")}>
+              <path d="M85,500 Q90,520 95,535 Q100,545 105,550" fill="none" stroke={arteries["lateral-plantar"].color}
+                strokeWidth={isActive("lateral-plantar") ? 2 : 1} opacity={isActive("lateral-plantar") ? 0.6 : 0.2} strokeLinecap="round" />
+              {/* Plantar arch */}
+              <path d="M105,550 Q90,555 70,552 Q55,550 50,548" fill="none" stroke={arteries["lateral-plantar"].color}
+                strokeWidth="0.75" opacity="0.2" strokeDasharray="3 2" />
+              <text x="108" y="548" fontSize="3.5" fill={arteries["lateral-plantar"].color}>Lat. plantar</text>
+              <text x="80" y="565" fontSize="3.5" fill={arteries["lateral-plantar"].color} textAnchor="middle" opacity="0.5">plantar arch</text>
+            </g>
+
+            {/* Orientation */}
+            <text x="100" y="577" fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.3" fontStyle="italic">Anterior view</text>
+          </svg>
         </div>
+
+        <div className="flex-1 min-w-0">
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            key={selected}
+          >
+            <p className="font-semibold text-foreground text-sm">{info.label}</p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
+            </p>
+          </div>
+
+          <div className="mt-3 space-y-2">
+            {Object.values(categories).map(cat => (
+              <div key={cat.label}>
+                <p className="text-xs text-muted-foreground font-medium mb-1">{cat.label}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {cat.keys.map(key => (
+                    <button key={key} onClick={() => setSelected(key)}
+                      className={`text-xs px-2 py-1 rounded border transition-all ${
+                        selected === key ? "border-primary bg-primary/10 text-foreground font-medium" : "border-border text-muted-foreground hover:border-primary/50"
+                      }`}>
+                      {arteries[key].label.split(" (")[0]}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </DiagramFigure>
+      </div>
+    </div>
   );
 };
 
