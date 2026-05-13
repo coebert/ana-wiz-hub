@@ -77,8 +77,10 @@ Options:
   --url-prefix <prefix>   Only include URLs starting with this prefix (repeatable).
   --invert                Invert the kind/URL filter (exclude matches instead).
   --baseline <path>       Compare against a previous JSON sidecar and emit a
-                          diff section (regressions / fixes / unchanged).
+                           diff section (regressions / fixes / unchanged).
   --diff-only             Only print the diff vs --baseline (skip group tables).
+  --diff-group-by-kind    Inside the diff section, group regressions / fixes /
+                           changed by page kind (home, section, topic, …).
   --help, -h              Show this help.
 
 Env:
@@ -106,6 +108,7 @@ const URL_PATTERNS: RegExp[] = argAll("--url-pattern").map((p) => {
 });
 const URL_PREFIXES = argAll("--url-prefix");
 const INVERT = hasFlag("--invert");
+const DIFF_GROUP_BY_KIND = hasFlag("--diff-group-by-kind");
 const FILTERS_ACTIVE = KIND_FILTER.size > 0 || URL_PATTERNS.length > 0 || URL_PREFIXES.length > 0;
 
 function passesFilter(url: string, kind: Kind): boolean {
@@ -545,18 +548,31 @@ if (DIFF) {
     return `- ${bits.join(" — ")}`;
   };
 
-  md += `### 🔻 Regressions (${DIFF.regressions.length})\n\n`;
-  if (!DIFF.regressions.length) md += "_None — no URL newly started failing._\n\n";
-  else { for (const e of DIFF.regressions) md += renderEntry(e) + "\n"; md += "\n"; }
+  function renderFlat(list: DiffEntry[], title: string, emptyMsg: string) {
+    md += `### ${title} (${list.length})\n\n`;
+    if (!list.length) md += `_${emptyMsg}_\n\n`;
+    else { for (const e of list) md += renderEntry(e) + "\n"; md += "\n"; }
+  }
 
-  md += `### 🟢 Fixes (${DIFF.fixes.length})\n\n`;
-  if (!DIFF.fixes.length) md += "_None._\n\n";
-  else { for (const e of DIFF.fixes) md += renderEntry(e) + "\n"; md += "\n"; }
+  function renderGrouped(list: DiffEntry[], title: string, emptyMsg: string) {
+    md += `### ${title} (${list.length})\n\n`;
+    if (!list.length) { md += `_${emptyMsg}_\n\n`; return; }
+    for (const k of groupOrder) {
+      const g = list.filter((e) => e.kind === k);
+      if (!g.length) continue;
+      md += `#### ${groupLabels[k]} (${g.length})\n\n`;
+      for (const e of g) md += renderEntry(e) + "\n";
+      md += "\n";
+    }
+  }
+
+  const renderDiff = DIFF_GROUP_BY_KIND ? renderGrouped : renderFlat;
+
+  renderDiff(DIFF.regressions, "🔻 Regressions", "None — no URL newly started failing.");
+  renderDiff(DIFF.fixes, "🟢 Fixes", "None.");
 
   if (DIFF.changedSameStatus.length) {
-    md += `### 🔄 Changed (same status, different details) (${DIFF.changedSameStatus.length})\n\n`;
-    for (const e of DIFF.changedSameStatus) md += renderEntry(e) + "\n";
-    md += "\n";
+    renderDiff(DIFF.changedSameStatus, "🔄 Changed (same status, different details)", "None.");
   }
 
   if (DIFF.added.length) {
