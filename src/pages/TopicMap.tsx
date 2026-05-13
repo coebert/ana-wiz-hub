@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Search, Network, ArrowRight, Sparkles } from "lucide-react";
 import {
   allTopics,
