@@ -77,12 +77,49 @@ function walk(dir: string, out: string[] = []): string[] {
 }
 
 /**
+ * Find balanced { ... } block starting at `start` (must point at the `{`).
+ * Returns the substring including both braces, ignoring braces inside string
+ * literals and template literals. Good enough for typical object literals
+ * we ship in route components.
+ */
+function extractBalancedBraces(src: string, start: number): string | null {
+  if (src[start] !== "{") return null;
+  let depth = 0;
+  let inStr: string | null = null;
+  let inTpl = false;
+  let tplBraceDepth = 0;
+  for (let i = start; i < src.length; i++) {
+    const c = src[i];
+    const prev = src[i - 1];
+    if (inStr) {
+      if (c === inStr && prev !== "\\") inStr = null;
+      continue;
+    }
+    if (inTpl) {
+      if (c === "`" && prev !== "\\") { inTpl = false; continue; }
+      if (c === "$" && src[i + 1] === "{") { tplBraceDepth++; i++; continue; }
+      if (c === "}" && tplBraceDepth > 0) { tplBraceDepth--; continue; }
+      continue;
+    }
+    if (c === '"' || c === "'") { inStr = c; continue; }
+    if (c === "`") { inTpl = true; continue; }
+    if (c === "{") depth++;
+    else if (c === "}") {
+      depth--;
+      if (depth === 0) return src.substring(start, i + 1);
+    }
+  }
+  return null;
+}
+
+/**
  * Find JSON-LD blocks declared inside src/ via Helmet or raw <script>:
- *   <script type="application/ld+json">{JSON.stringify(...)}</script>
- *   <script type="application/ld+json">{`{...}`}</script>
- * We extract the literal object expression and JSON.parse it. Templated values
- * like `${slug}` are tolerated by replacing them with a sentinel string before
- * parsing — we are validating shape, not the rendered values.
+ *   <script type="application/ld+json">{JSON.stringify(<expr>)}</script>
+ * For each match we resolve <expr> to a literal: either a raw object literal
+ * inline, or a `const NAME = { ... }` declared in the same file. Then we
+ * sanitize TS/JS-isms (`as const`, `${...}` interpolations, satisfies/typed
+ * casts, function-call values) and evaluate via `new Function` in strict mode
+ * to validate shape — values are not asserted, only structure.
  */
 function loadSourceBlocks(): JsonLdBlock[] {
   const files = walk(resolve("src"));
@@ -95,39 +132,63 @@ function loadSourceBlocks(): JsonLdBlock[] {
     let match: RegExpExecArray | null;
     while ((match = scriptRe.exec(src)) !== null) {
       const inner = match[1].trim();
-      // Strip JSX braces around JSON.stringify(...) or template literal
-      let payload = inner.replace(/^{|}$/g, "").trim();
+      let payload = inner.replace(/^\{|\}$/g, "").trim();
 
-      // JSON.stringify(<obj>) → use the object literal directly
+      // JSON.stringify(<expr>) → use <expr>
       const stringifyMatch = /^JSON\.stringify\(([\s\S]+)\)$/m.exec(payload);
       if (stringifyMatch) payload = stringifyMatch[1].trim();
 
-      // Template literal: `{...}` → strip backticks
+      // Strip trailing template-literal backticks
       payload = payload.replace(/^`|`$/g, "").trim();
 
-      // Replace ${...} interpolations with a sentinel string
-      payload = payload.replace(/\$\{[^}]*\}/g, '"__INTERPOLATED__"');
+      // If payload is now an identifier, look up its declaration in the file.
+      if (/^[A-Za-z_$][\w$]*$/.test(payload)) {
+        const name = payload;
+        const declRe = new RegExp(`(?:const|let|var)\\s+${name}\\s*(?::[^=]+)?=\\s*`, "g");
+        const declMatch = declRe.exec(src);
+        if (!declMatch) {
+          // Variable not found (could be a hook/useMemo result). Try useMemo.
+          const memoRe = new RegExp(
+            `(?:const|let|var)\\s+${name}\\s*(?::[^=]+)?=\\s*useMemo\\(\\s*\\(\\)\\s*=>\\s*`,
+            "g",
+          );
+          const memoMatch = memoRe.exec(src);
+          if (!memoMatch) {
+            throw new Error(`${file}: cannot resolve JSON-LD variable "${name}"`);
+          }
+          const objStart = src.indexOf("{", memoMatch.index + memoMatch[0].length);
+          payload = extractBalancedBraces(src, objStart) ?? "";
+        } else {
+          const objStart = src.indexOf("{", declMatch.index + declMatch[0].length);
+          payload = extractBalancedBraces(src, objStart) ?? "";
+        }
+      }
 
-      // Try strict JSON first, then a loose JS-object eval as a fallback for
-      // unquoted keys (we run it in a sandboxed Function for shape only).
+      // Sanitize TS-isms and runtime-only constructs so `new Function` accepts
+      // the literal. We only care about structural shape, not exact values.
+      payload = payload
+        .replace(/\$\{[^}]*\}/g, '"__INTERPOLATED__"')
+        .replace(/\bas\s+const\b/g, "")
+        .replace(/\bsatisfies\s+[A-Za-z_$][\w$.<>,\s|&[\]]*/g, "")
+        // Replace function-call values with a sentinel so e.g. computeSomething()
+        // doesn't break the parser. We keep object/array literals intact.
+        .replace(/[A-Za-z_$][\w$.]*\s*\([^()]*\)/g, '"__CALL__"');
+
       let parsed: unknown;
       try {
-        parsed = JSON.parse(payload);
-      } catch {
-        try {
-          // eslint-disable-next-line no-new-func
-          parsed = new Function(`"use strict"; return (${payload});`)();
-        } catch (e) {
-          throw new Error(
-            `${file}: JSON-LD block does not parse — ${(e as Error).message}\n--- payload ---\n${payload}`,
-          );
-        }
+        // eslint-disable-next-line no-new-func
+        parsed = new Function(`"use strict"; return (${payload});`)();
+      } catch (e) {
+        throw new Error(
+          `${file}: JSON-LD block does not parse — ${(e as Error).message}\n--- payload ---\n${payload}`,
+        );
       }
       blocks.push({ source: file, raw: payload, parsed });
     }
   }
   return blocks;
 }
+
 
 function assertSchemaShape(block: JsonLdBlock) {
   const node = block.parsed as Record<string, unknown> | unknown[];
