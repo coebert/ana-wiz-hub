@@ -532,7 +532,7 @@ if (BASELINE_PATH) {
     const better = (before !== "ok" && after === "ok") || (fixedMissingTypes.length > 0 && newMissingTypes.length === 0 && newBadBlocks.length === 0) || (fixedBadBlocks.length > 0 && newBadBlocks.length === 0 && newMissingTypes.length === 0);
     if (worse) regressions.push(entry);
     else if (better) fixes.push(entry);
-    else if (newMissingTypes.length || fixedMissingTypes.length || newBadBlocks.length || fixedBadBlocks.length || before !== after) {
+    else if (newMissingTypes.length || fixedMissingTypes.length || newBadBlocks.length || fixedBadBlocks.length || before !== after || routeChanged) {
       changedSameStatus.push(entry);
     }
   }
