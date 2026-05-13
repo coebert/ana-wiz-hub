@@ -227,7 +227,7 @@ export const CAMICUFlowchartDiagram = () => {
                 If RASS ≤ −4 → unassessable (stop)
               </text>
 
-              <path d="M 320 54 L 320 78" stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd="url(#cam-arr)" />
+              <path d="M 320 54 L 320 78" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
 
               {/* Feature 1 */}
               <rect x="180" y="80" width="280" height="58" rx="6" fill="hsl(var(--clinical))" opacity="0.85" />
@@ -242,10 +242,10 @@ export const CAMICUFlowchartDiagram = () => {
               </text>
 
               {/* No → CAM-ICU negative */}
-              <path d="M 180 109 L 60 109 L 60 200" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" markerEnd="url(#cam-arr)" />
+              <path d="M 180 109 L 60 109 L 60 200" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
               <text x="100" y="100" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
 
-              <path d="M 320 138 L 320 162" stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd="url(#cam-arr)" />
+              <path d="M 320 138 L 320 162" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
               <text x="328" y="155" fontSize="9" className="fill-foreground" fontWeight="600">YES</text>
 
               {/* Feature 2 */}
@@ -260,10 +260,10 @@ export const CAMICUFlowchartDiagram = () => {
                 {">"} 2 errors = positive
               </text>
 
-              <path d="M 180 192 L 60 192 L 60 230" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" markerEnd="url(#cam-arr)" />
+              <path d="M 180 192 L 60 192 L 60 230" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
               <text x="100" y="183" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
 
-              <path d="M 320 220 L 320 244" stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd="url(#cam-arr)" />
+              <path d="M 320 220 L 320 244" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
               <text x="328" y="237" fontSize="9" className="fill-foreground" fontWeight="600">YES</text>
 
               {/* Feature 3 */}
@@ -276,11 +276,11 @@ export const CAMICUFlowchartDiagram = () => {
               </text>
 
               {/* If F3 yes → POSITIVE */}
-              <path d="M 460 268 L 540 268 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" markerEnd="url(#cam-arr-danger)" />
+              <path d="M 460 268 L 540 268 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" />
               <text x="475" y="262" fontSize="9" className="fill-destructive" fontWeight="600">YES</text>
 
               {/* If F3 no → check F4 */}
-              <path d="M 320 290 L 320 312" stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd="url(#cam-arr)" />
+              <path d="M 320 290 L 320 312" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
               <text x="328" y="305" fontSize="9" className="fill-foreground" fontWeight="600">NO</text>
 
               {/* Feature 4 */}
@@ -295,10 +295,10 @@ export const CAMICUFlowchartDiagram = () => {
                 {">"} 1 error = positive
               </text>
 
-              <path d="M 180 342 L 60 342 L 60 392" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" markerEnd="url(#cam-arr)" />
+              <path d="M 180 342 L 60 342 L 60 392" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
               <text x="100" y="333" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
 
-              <path d="M 460 342 L 540 342 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" markerEnd="url(#cam-arr-danger)" />
+              <path d="M 460 342 L 540 342 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" />
               <text x="475" y="333" fontSize="9" className="fill-destructive" fontWeight="600">YES</text>
 
               {/* Outcome — Negative */}
