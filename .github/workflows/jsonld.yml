@@ -74,12 +74,58 @@ jobs:
           tail -n 40 reports/jsonld-route-coverage.log || true
 
       - name: Upload coverage report
+        id: upload
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: jsonld-route-coverage
           path: reports/
           if-no-files-found: warn
+
+      - name: Write job summary with report link
+        if: always()
+        env:
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
+          TOTAL: ${{ steps.coverage.outputs.total }}
+          PASSING: ${{ steps.coverage.outputs.passing }}
+          MISSING_TYPES: ${{ steps.coverage.outputs.missing_types }}
+          BAD_BLOCKS: ${{ steps.coverage.outputs.bad_blocks }}
+          UNRESOLVED: ${{ steps.coverage.outputs.unresolved }}
+          EXIT_CODE: ${{ steps.coverage.outputs.exit_code }}
+        run: |
+          status_icon="✅"
+          [ "${EXIT_CODE:-0}" != "0" ] && status_icon="❌"
+          {
+            echo "## ${status_icon} JSON-LD route coverage"
+            echo ""
+            echo "| Metric | Count |"
+            echo "| --- | ---: |"
+            echo "| URLs evaluated | ${TOTAL:-0} |"
+            echo "| ✅ Passing | ${PASSING:-0} |"
+            echo "| ❌ Missing required @type | ${MISSING_TYPES:-0} |"
+            echo "| ❌ Bad blocks | ${BAD_BLOCKS:-0} |"
+            echo "| ⚠️ Unresolved routes | ${UNRESOLVED:-0} |"
+            echo ""
+            if [ -n "${ARTIFACT_URL}" ]; then
+              echo "📦 **Download report:** [\`jsonld-route-coverage\` artifact](${ARTIFACT_URL})"
+            else
+              echo "📦 Report uploaded as the \`jsonld-route-coverage\` artifact on this run."
+            fi
+            echo ""
+            echo "Files in the artifact:"
+            echo "- \`jsonld-route-coverage.md\` — Markdown summary"
+            echo "- \`jsonld-route-coverage.html\` — Browsable HTML report"
+            echo "- \`jsonld-route-coverage.json\` — Machine-readable data"
+            echo "- \`jsonld-route-coverage.log\` — Per-URL run log"
+            echo ""
+            if [ -f reports/jsonld-route-coverage.md ]; then
+              echo "<details><summary>Inline Markdown report</summary>"
+              echo ""
+              cat reports/jsonld-route-coverage.md
+              echo ""
+              echo "</details>"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Comment on PR with coverage summary
         if: >
@@ -93,14 +139,15 @@ jobs:
           MISSING_TYPES: ${{ steps.coverage.outputs.missing_types }}
           BAD_BLOCKS: ${{ steps.coverage.outputs.bad_blocks }}
           UNRESOLVED: ${{ steps.coverage.outputs.unresolved }}
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
         with:
           script: |
-            const { TOTAL, PASSING, MISSING_TYPES, BAD_BLOCKS, UNRESOLVED } = process.env;
+            const { TOTAL, PASSING, MISSING_TYPES, BAD_BLOCKS, UNRESOLVED, ARTIFACT_URL } = process.env;
             const total = Number(TOTAL || 0);
             const passing = Number(PASSING || 0);
             const failing = total - passing;
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const artifactUrl = `${runUrl}#artifacts`;
+            const artifactUrl = ARTIFACT_URL || `${runUrl}#artifacts`;
             const marker = '<!-- jsonld-coverage-comment -->';
             const body = [
               marker,
