@@ -42,11 +42,13 @@ describeOrSkip("live sitemap & robots.txt", () => {
       try {
         const res = await fetch(url, { signal: controller.signal });
         clearTimeout(timer);
+        if (res.status >= 500 || res.status === 429) {
           lastError = new Error(`${url} -> HTTP ${res.status}`);
         } else {
           return res;
         }
       } catch (err) {
+        clearTimeout(timer);
         lastError = err;
       }
       if (attempt < retries) {
