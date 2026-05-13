@@ -330,7 +330,20 @@ function evaluateUrl(u: UrlExpectation): Row {
   };
 }
 
-const ROWS = URL_EXPECTATIONS.map(evaluateUrl);
+const ALL_ROWS = URL_EXPECTATIONS.map(evaluateUrl);
+const ROWS = ALL_ROWS.filter((r) => passesFilter(r.url, r.kind as Kind));
+if (FILTERS_ACTIVE && ROWS.length === 0) {
+  console.error(`✖ filter excluded all ${ALL_ROWS.length} URL(s); nothing to report.`);
+  process.exit(2);
+}
+const FILTER_DESCRIPTION = (() => {
+  if (!FILTERS_ACTIVE) return null;
+  const parts: string[] = [];
+  if (KIND_FILTER.size) parts.push(`kind ∈ {${[...KIND_FILTER].join(", ")}}`);
+  if (URL_PATTERNS.length) parts.push(`url matches ${URL_PATTERNS.map((r) => `/${r.source}/`).join(" | ")}`);
+  if (URL_PREFIXES.length) parts.push(`url startsWith ${URL_PREFIXES.map((p) => `\`${p}\``).join(" | ")}`);
+  return `${INVERT ? "NOT (" : ""}${parts.join(" AND ")}${INVERT ? ")" : ""}`;
+})();
 
 // ── render Markdown ───────────────────────────────────────────────────────
 const total = ROWS.length;
