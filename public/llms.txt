@@ -1,0 +1,31 @@
+# Anaesthesia Core
+
+> Unified FRCA Primary, Final, and FFICM revision resource: structured topics, diagrams, quizzes, and viva practice across physics, physiology, pharmacology, clinical anaesthesia, intensive care, and perioperative medicine.
+
+Anaesthesia Core organises the UK anaesthesia and intensive care curricula into six sections, with exam-tagged topics (Primary / Final / FFICM), interactive diagrams, worked examples, key learning points, sourced references, and viva practice tools.
+
+## Core pages
+
+- [Home](/): Overview and entry point.
+- [Revise](/revise): Topic revision hub.
+- [Topic Map](/map): Visual map of all curriculum topics.
+- [Progress](/progress): Personal revision progress tracker.
+- [Viva Hub](/viva): Viva practice with AI examiner.
+- [Viva Library](/viva/library): Library of viva scenarios.
+- [Drugs Library](/drugs): Anaesthesia drug reference.
+- [Podcasts](/podcasts): Topic audio summaries.
+
+## Sections
+
+- [Physics](/physics): Measurement, equipment, and applied physics for anaesthesia.
+- [Physiology](/physiology): Cardiovascular, respiratory, renal, neuro, and applied physiology.
+- [Pharmacology](/pharmacology): Anaesthetic drugs, pharmacokinetics, and pharmacodynamics.
+- [Clinical Anaesthesia](/clinical): Subspecialty anaesthesia, airway, and regional.
+- [Intensive Care](/intensive-care): FFICM-aligned critical care topics.
+- [Perioperative Medicine](/perioperative): Comorbidities, assessment, and enhanced recovery.
+- [Anatomy](/anatomy): Applied anatomy for anaesthesia and regional blocks.
+- [Chemistry](/chemistry): Underlying chemistry for pharmacology and physics.
+
+## Optional
+
+- [Sitemap](/sitemap.xml): Full machine-readable list of public routes.
