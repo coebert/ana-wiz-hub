@@ -494,7 +494,7 @@ const BradyarrhythmiaDiagram = () => {
                   </div>
 
                   <div className="flex flex-col gap-3">
-                    <TreeMini brady={b} color={b.color} />
+                    <div className="w-full max-w-[220px] mx-auto"><TreeMini brady={b} color={b.color} /></div>
                     <div className="min-w-0">
                       {showLabels && (
                         <p className="text-[11px] text-muted-foreground mb-1.5 leading-snug">
