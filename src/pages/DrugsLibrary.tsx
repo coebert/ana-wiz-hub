@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Pill, Search, ChevronDown, ChevronUp, Minimize2, Maximize2, Info } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
