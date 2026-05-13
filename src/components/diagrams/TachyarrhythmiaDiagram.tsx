@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { EcgStripFrame } from "./EcgStripFrame";
 
 /**
  * Tachyarrhythmia series — sinus tach, AF, atrial flutter, AVNRT, AVRT,
@@ -578,6 +579,7 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
   }
 
   return (
+    <EcgStripFrame label={`${tachy.label} rhythm strip`}>
     <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="w-full min-h-[120px] sm:min-h-[140px]" role="img" aria-label={`Rhythm strip for ${tachy.label}`}>
       <defs>
         <pattern id={`tachy-grid-${uid}`} width="10" height="10" patternUnits="userSpaceOnUse">
@@ -604,6 +606,7 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
 
       <text x={6} y={11} fontSize="7" fill={color} fontWeight="bold">{tachy.shortLabel}</text>
     </svg>
+    </EcgStripFrame>
   );
 };
 
