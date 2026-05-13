@@ -19,6 +19,12 @@ interface SectionLayoutProps {
   disableAutoTOC?: boolean;
   /** Minimum number of h2s required before the TOC is rendered. Defaults to 4. */
   autoTOCMinHeadings?: number;
+  /**
+   * Optional richer meta description for crawlers. When omitted we derive one
+   * from `title` + `subtitle`, but topic pages usually pass a longer
+   * curriculum-specific blurb so descriptions clear the 50-char SEO floor.
+   */
+  metaDescription?: string;
 }
 
 const slugify = (text: string) =>
@@ -38,13 +44,16 @@ export const SectionLayout = ({
   accentColor,
   disableAutoTOC,
   autoTOCMinHeadings = 4,
+  metaDescription,
 }: SectionLayoutProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [autoItems, setAutoItems] = useState<TOCItem[]>([]);
   const location = useLocation();
   const canonicalUrl = `${SITE_URL}${location.pathname}`;
   const pageTitle = `${title} – ${SITE_NAME}`;
-  const rawDescription = `${title} — ${subtitle}`;
+  const rawDescription = (metaDescription && metaDescription.trim().length >= 50)
+    ? metaDescription.trim()
+    : `${title} — ${subtitle} — exam-focused revision notes, diagrams and viva practice on AnaesthesiaCore for FRCA and FFICM trainees.`;
   const truncatedDescription =
     rawDescription.length > 200 ? `${rawDescription.slice(0, 197).trimEnd()}…` : rawDescription;
 
