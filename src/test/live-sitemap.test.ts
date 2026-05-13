@@ -142,3 +142,55 @@ describeOrSkip("live sitemap & robots.txt", () => {
     ).toEqual(repoLocs);
   });
 });
+
+/**
+ * Walks the live sitemap index, fetches every per-section sitemap it lists,
+ * and asserts each returns 200 with a valid <urlset> whose <loc> entries
+ * match the canonical-domain URLs shipped in the repo file. Catches stale
+ * CDN copies, missing files on the deployed host, and unexpected entries
+ * (e.g. preview-domain URLs leaking into the live sitemap).
+ */
+describeOrSkip("live per-section sitemaps", () => {
+  const sitemapsDir = resolve(process.cwd(), "public/sitemaps");
+  const files = existsSync(sitemapsDir)
+    ? readdirSync(sitemapsDir).filter((f) => f.endsWith(".xml"))
+    : [];
+
+  for (const file of files) {
+    it(`GET /sitemaps/${file} returns 200 and matches repo entries`, async () => {
+      const url = `${SITE_URL}/sitemaps/${file}`;
+      const res = await fetchWithRetry(url);
+      expect(res.status, `${url} returned ${res.status}`).toBe(200);
+
+      const body = await res.text();
+      expect(body, `${url} is not a valid <urlset>`).toMatch(/<urlset[^>]*>/);
+      expect(body).toMatch(/<\/urlset>/);
+
+      const liveLocs = Array.from(body.matchAll(/<loc>([^<]+)<\/loc>/g))
+        .map((m) => m[1])
+        .sort();
+
+      const repoBody = readFileSync(resolve(sitemapsDir, file), "utf8");
+      const repoLocs = Array.from(repoBody.matchAll(/<loc>([^<]+)<\/loc>/g))
+        .map((m) => m[1])
+        .sort();
+
+      const missing = repoLocs.filter((u) => !liveLocs.includes(u));
+      const unexpected = liveLocs.filter((u) => !repoLocs.includes(u));
+
+      expect(
+        { missing, unexpected },
+        `Live ${file} drifted from repo.\n` +
+          `Missing: ${missing.join(", ") || "(none)"}\n` +
+          `Unexpected: ${unexpected.join(", ") || "(none)"}\n` +
+          `Click Publish → Update to redeploy, or regenerate via \`bunx tsx scripts/generate-sitemap.ts\`.`,
+      ).toEqual({ missing: [], unexpected: [] });
+
+      const offDomain = liveLocs.filter((u) => !u.startsWith(SITE_URL));
+      expect(
+        offDomain,
+        `${file} contains <loc>s on a different host: ${offDomain.join(", ")}`,
+      ).toEqual([]);
+    }, 60_000);
+  }
+});
