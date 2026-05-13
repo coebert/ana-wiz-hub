@@ -159,7 +159,7 @@ export const MajorIncidentTriageDiagram = () => {
           </defs>
 
           {/* ===== Phase 1: Triage Sieve decision tree ===== */}
-          <g opacity={phase === 1 ? 1 : phase > 1 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
+          <g {...svgNodeProps("Phase 2 — Triage Sieve: scene-based physiological sort, four sequential decision points")} opacity={phase === 1 ? 1 : phase > 1 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
             <text x="300" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Triage Sieve (&lt; 30 s per casualty)</text>
 
             {[
