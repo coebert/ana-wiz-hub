@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type CellType = "contractile" | "pacemaker";
 
@@ -225,6 +226,7 @@ const CardiacActionPotentialDiagram = () => {
   const detail = phase ? (cellType === "contractile" ? phase.contractile : phase.pacemaker) : null;
 
   return (
+    <DiagramFigure id="cardiac-ap" title="Cardiac action potentials: contractile myocyte versus pacemaker cell" description="Phase-by-phase ventricular myocyte and SA-node pacemaker action potentials with the underlying ion currents.">
     <div className="space-y-4">
       <Tabs defaultValue="waveforms" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
@@ -376,6 +378,7 @@ const CardiacActionPotentialDiagram = () => {
         </TabsContent>
       </Tabs>
     </div>
+    </DiagramFigure>
   );
 };
 

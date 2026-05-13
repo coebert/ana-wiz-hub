@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type SegmentId = "glomerulus" | "pct" | "desc-loh" | "thin-asc" | "thick-asc" | "dct" | "ccd" | "mcd" | "afferent" | "efferent" | "macula" | "vasa-recta" | "peritubular";
 
@@ -146,6 +147,7 @@ export const NephronDiagram = () => {
   const toggle = (id: SegmentId) => () => setActive(active === id ? null : id);
 
   return (
+    <DiagramFigure id="nephron" title="Nephron segments: glomerulus, tubule, loop of Henle and collecting duct" description="Selectable nephron segments — glomerulus, proximal and distal tubules, loop of Henle, collecting duct, juxtaglomerular apparatus and vasa recta — with handling of solutes and water.">
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2 items-center">
         {categories.map(cat => (
@@ -665,6 +667,7 @@ export const NephronDiagram = () => {
         <p className="text-sm text-muted-foreground text-center">Click any nephron segment, the vasa recta, or peritubular capillaries to explore — toggle the cortex/medulla zones with the button above</p>
       )}
     </div>
+    </DiagramFigure>
   );
 };
 

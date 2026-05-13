@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type MallampatiClass = "I" | "II" | "III" | "IV";
 
@@ -113,6 +114,7 @@ const MallampatiDiagram = () => {
   const info = classes[selected];
 
   return (
+    <DiagramFigure id="mallampati" title="Mallampati classification: oropharyngeal view classes I–IV" description="Selectable Mallampati classes I to IV with the corresponding visible pharyngeal structures and predicted intubation difficulty.">
     <div className="border border-border rounded-lg p-4 mb-6">
       <h3 className="text-lg font-serif font-bold text-foreground mb-1">Mallampati Classification</h3>
       <p className="text-xs text-muted-foreground mb-4">Patient sitting, tongue protruded, no phonation. Select a class to explore.</p>
@@ -166,6 +168,7 @@ const MallampatiDiagram = () => {
         </p>
       </div>
     </div>
+    </DiagramFigure>
   );
 };
 

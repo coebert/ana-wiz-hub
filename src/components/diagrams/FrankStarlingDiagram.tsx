@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface CurveConfig {
   label: string;
@@ -124,6 +125,7 @@ const FrankStarlingDiagram = () => {
   const sarcomereZone = lvedv < 80 ? "Suboptimal overlap" : lvedv < 160 ? "Optimal actin-myosin overlap" : "Over-stretched — ↓ cross-bridges";
 
   return (
+    <DiagramFigure id="frank-starling" title="Frank–Starling curves: contractility and afterload modifiers" description="Family of ventricular function curves showing how preload, contractility and afterload reposition the Frank–Starling relationship.">
     <div className="space-y-4">
       {/* Curve selector */}
       <div className="flex flex-wrap gap-1.5">
@@ -305,6 +307,7 @@ const FrankStarlingDiagram = () => {
         </div>
       )}
     </div>
+    </DiagramFigure>
   );
 };
 

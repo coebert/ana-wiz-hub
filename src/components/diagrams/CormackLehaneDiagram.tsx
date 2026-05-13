@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Grade = "I" | "II" | "IIa" | "IIb" | "III" | "IV";
 
@@ -210,6 +211,7 @@ const CormackLehaneDiagram = () => {
   const info = grades[selected];
 
   return (
+    <DiagramFigure id="cormack-lehane" title="Cormack–Lehane laryngoscopic view grades I–IV" description="Cormack–Lehane grading of the direct laryngoscopic view, including the IIa/IIb subdivision and matching airway management implications.">
     <div className="border border-border rounded-lg p-4 mb-6">
       <h3 className="text-lg font-serif font-bold text-foreground mb-1">Cormack–Lehane Laryngoscopic Grading</h3>
       <p className="text-xs text-muted-foreground mb-4">Select a grade to see the laryngoscopic view and management tips</p>
@@ -291,6 +293,7 @@ const CormackLehaneDiagram = () => {
         </div>
       </div>
     </div>
+    </DiagramFigure>
   );
 };
 

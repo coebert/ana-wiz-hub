@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const PHASES = [
   { id: "rest", label: "Resting State", duration: 70 },
@@ -109,6 +110,7 @@ export const NMJDiagram = () => {
     : 140;
 
   return (
+    <DiagramFigure id="nmj" title="Neuromuscular junction: action potential to muscle contraction" description="Animated sequence at the motor end-plate — pre-synaptic depolarisation, ACh release, post-synaptic nicotinic receptor activation and end-plate potential.">
     <div className="w-full max-w-xl mx-auto">
       <svg viewBox={`0 0 ${w} ${h}`} className="w-full">
         {/* Nerve terminal */}
@@ -484,5 +486,6 @@ export const NMJDiagram = () => {
         </button>
       </div>
     </div>
+    </DiagramFigure>
   );
 };

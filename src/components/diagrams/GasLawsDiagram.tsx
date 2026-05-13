@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type GasLaw = "boyles" | "charles" | "gaylussac" | "daltons";
 
@@ -17,6 +18,7 @@ export const GasLawsDiagram = () => {
   const oscillate = Math.sin(t * Math.PI * 2) * 0.5 + 0.5; // 0 to 1
 
   return (
+    <DiagramFigure id="gas-laws" title="Gas laws: Boyle, Charles, Gay-Lussac and Dalton" description="Interactive illustration of the four ideal-gas laws relevant to anaesthesia, with animated pressure–volume–temperature relationships.">
     <div className="w-full max-w-lg mx-auto">
       <div className="flex gap-2 justify-center mb-6">
         {(["boyles", "charles", "gaylussac", "daltons"] as GasLaw[]).map((law) => (
@@ -215,5 +217,6 @@ export const GasLawsDiagram = () => {
         )}
       </svg>
     </div>
+    </DiagramFigure>
   );
 };

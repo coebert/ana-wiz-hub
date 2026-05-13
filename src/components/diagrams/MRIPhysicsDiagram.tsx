@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { WorkedExampleCallout } from "./WorkedExampleCallout";
 import { DiagramLearningPoints } from "./DiagramLearningPoints";
 import { ZoomableSVG } from "./ZoomableSVG";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const NuclearSpinTab = () => (
   <div className="space-y-4">
@@ -287,6 +288,7 @@ const MRIPhysicsDiagram = () => {
   const [activeTab, setActiveTab] = useState("spin");
 
   return (
+    <DiagramFigure id="mri-physics" title="MRI physics: precession, RF excitation, T1/T2 relaxation and image contrast" description="Diagram of magnetic resonance imaging physics — proton precession in B0, radiofrequency excitation, T1 and T2 relaxation curves and how they map to image contrast.">
     <div className="space-y-4">
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="grid grid-cols-3 w-full">
@@ -400,6 +402,7 @@ const MRIPhysicsDiagram = () => {
         </TabsContent>
       </Tabs>
     </div>
+    </DiagramFigure>
   );
 };
 

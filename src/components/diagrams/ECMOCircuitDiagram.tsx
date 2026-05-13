@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ECMOMode = "vv" | "va";
 
@@ -150,6 +151,7 @@ const ECMOCircuitDiagram = () => {
   const [mode, setMode] = useState<ECMOMode>("vv");
 
   return (
+    <DiagramFigure id="ecmo-circuit" title="ECMO circuit: veno-venous and veno-arterial configurations" description="Animated extracorporeal membrane oxygenation circuit toggling between VV and VA configurations, with cannulation sites, pump, oxygenator and heat exchanger.">
     <div className="border border-border rounded-lg p-4 mb-6">
       <h3 className="text-lg font-serif font-bold text-foreground mb-1">ECMO Circuit — VV vs VA</h3>
       <p className="text-xs text-muted-foreground mb-3">Interactive diagram showing circuit components, flow paths, and monitoring points</p>
@@ -362,6 +364,7 @@ const ECMOCircuitDiagram = () => {
         </div>
       </div>
     </div>
+    </DiagramFigure>
   );
 };
 

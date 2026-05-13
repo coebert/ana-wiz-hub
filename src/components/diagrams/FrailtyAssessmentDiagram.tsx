@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const FrailtyAssessmentDiagram = () => {
   const [selectedCFS, setSelectedCFS] = useState<number | null>(null);
@@ -33,6 +34,7 @@ const FrailtyAssessmentDiagram = () => {
   ];
 
   return (
+    <DiagramFigure id="frailty-assessment" title="Elderly assessment: Clinical Frailty Scale, physiological changes and delirium prevention" description="Tabbed perioperative geriatric assessment — Clinical Frailty Scale levels 1–9, age-related physiological changes and a delirium prevention pathway.">
     <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
       <h3 className="text-lg font-bold text-foreground mb-1">Elderly Patient — Assessment & Management</h3>
       <p className="text-sm text-muted-foreground mb-4">Clinical Frailty Scale, physiological changes, and delirium prevention</p>
@@ -133,6 +135,7 @@ const FrailtyAssessmentDiagram = () => {
         </TabsContent>
       </Tabs>
     </div>
+    </DiagramFigure>
   );
 };
 

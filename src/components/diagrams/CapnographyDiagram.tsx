@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Pathology = "normal" | "bronchospasm" | "rebreathing" | "oesophageal" | "cardiac-oscillations" | "curare-cleft";
 
@@ -330,6 +331,7 @@ export const CapnographyDiagram = () => {
   const betaColor = "hsl(200, 80%, 50%)";
 
   return (
+    <DiagramFigure id="capnography" title="Capnography waveforms: normal trace and pathological patterns" description="End-tidal CO2 traces with selectable pathologies — bronchospasm, rebreathing, oesophageal intubation, cardiac oscillations and curare cleft.">
     <div className="space-y-4">
       <div className="flex items-center justify-between flex-wrap gap-2">
         <h3 className="font-semibold text-foreground text-sm">Capnography Waveforms</h3>
@@ -556,5 +558,6 @@ export const CapnographyDiagram = () => {
         </p>
       )}
     </div>
+    </DiagramFigure>
   );
 };

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Tab = "overview" | "pipeline" | "cylinders" | "regulators" | "flowmeters" | "safety";
 
@@ -462,6 +463,7 @@ const AnaestheticMachineDiagram = () => {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
 
   return (
+    <DiagramFigure id="anaesthetic-machine" title="Anaesthetic machine: pipeline, cylinders, regulators and safety features" description="Interactive overview of the anaesthetic machine — gas supply pipeline, back-up cylinders, pressure regulators, flowmeters, vapouriser and key safety interlocks.">
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
         {tabs.map((t) => (
@@ -486,6 +488,7 @@ const AnaestheticMachineDiagram = () => {
       {activeTab === "flowmeters" && <FlowmetersDiagram />}
       {activeTab === "safety" && <SafetyFeaturesDiagram />}
     </div>
+    </DiagramFigure>
   );
 };
 
