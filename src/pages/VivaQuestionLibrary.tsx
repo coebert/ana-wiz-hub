@@ -644,23 +644,22 @@ const VivaQuestionLibrary = () => {
   }, [rows, examFilter, rowDifficulty]);
 
   const faqJsonLd = useMemo(() => {
-    if (rows.length === 0) return null;
-    const sample = rows.slice(0, 25);
+    if (filtered.length === 0) return null;
     return {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       name: "AnaesthesiaCore Viva Question Library",
       url: "https://anaesthesiacore.app/viva/library",
-      mainEntity: sample.map((r) => ({
+      mainEntity: filtered.map((r) => ({
         "@type": "Question",
         name: r.question,
         acceptedAnswer: {
           "@type": "Answer",
-          text: r.model_answer.length > 1000 ? `${r.model_answer.slice(0, 997)}...` : r.model_answer,
+          text: r.model_answer,
         },
       })),
     };
-  }, [rows]);
+  }, [filtered]);
 
   return (
     <div className="min-h-screen bg-background">
