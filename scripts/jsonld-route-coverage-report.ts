@@ -548,18 +548,31 @@ if (DIFF) {
     return `- ${bits.join(" — ")}`;
   };
 
-  md += `### 🔻 Regressions (${DIFF.regressions.length})\n\n`;
-  if (!DIFF.regressions.length) md += "_None — no URL newly started failing._\n\n";
-  else { for (const e of DIFF.regressions) md += renderEntry(e) + "\n"; md += "\n"; }
+  function renderFlat(list: DiffEntry[], title: string, emptyMsg: string) {
+    md += `### ${title} (${list.length})\n\n`;
+    if (!list.length) md += `_${emptyMsg}_\n\n`;
+    else { for (const e of list) md += renderEntry(e) + "\n"; md += "\n"; }
+  }
 
-  md += `### 🟢 Fixes (${DIFF.fixes.length})\n\n`;
-  if (!DIFF.fixes.length) md += "_None._\n\n";
-  else { for (const e of DIFF.fixes) md += renderEntry(e) + "\n"; md += "\n"; }
+  function renderGrouped(list: DiffEntry[], title: string, emptyMsg: string) {
+    md += `### ${title} (${list.length})\n\n`;
+    if (!list.length) { md += `_${emptyMsg}_\n\n`; return; }
+    for (const k of groupOrder) {
+      const g = list.filter((e) => e.kind === k);
+      if (!g.length) continue;
+      md += `#### ${groupLabels[k]} (${g.length})\n\n`;
+      for (const e of g) md += renderEntry(e) + "\n";
+      md += "\n";
+    }
+  }
+
+  const renderDiff = DIFF_GROUP_BY_KIND ? renderGrouped : renderFlat;
+
+  renderDiff(DIFF.regressions, "🔻 Regressions", "None — no URL newly started failing.");
+  renderDiff(DIFF.fixes, "🟢 Fixes", "None.");
 
   if (DIFF.changedSameStatus.length) {
-    md += `### 🔄 Changed (same status, different details) (${DIFF.changedSameStatus.length})\n\n`;
-    for (const e of DIFF.changedSameStatus) md += renderEntry(e) + "\n";
-    md += "\n";
+    renderDiff(DIFF.changedSameStatus, "🔄 Changed (same status, different details)", "None.");
   }
 
   if (DIFF.added.length) {
