@@ -43,13 +43,76 @@ const SCHEMA_ORG = /^https?:\/\/schema\.org\/?$/;
 const SITEWIDE = new Set<string>(SITEWIDE_TYPES);
 
 // ── arg parsing ───────────────────────────────────────────────────────────
+const VALID_KINDS = ["home", "section", "topic", "viva", "drug", "utility"] as const;
+type Kind = (typeof VALID_KINDS)[number];
+
 function arg(name: string, def: string): string {
   const i = process.argv.indexOf(name);
   return i >= 0 ? process.argv[i + 1] ?? def : def;
 }
+function argAll(name: string): string[] {
+  const out: string[] = [];
+  for (let i = 0; i < process.argv.length; i++) {
+    if (process.argv[i] === name && process.argv[i + 1]) out.push(process.argv[i + 1]);
+  }
+  for (const a of process.argv) {
+    if (a.startsWith(`${name}=`)) out.push(a.slice(name.length + 1));
+  }
+  return out.flatMap((v) => v.split(",")).map((v) => v.trim()).filter(Boolean);
+}
+function hasFlag(name: string): boolean { return process.argv.includes(name); }
+
+if (hasFlag("--help") || hasFlag("-h")) {
+  console.log(`JSON-LD route-to-URL coverage report
+
+Usage:
+  tsx scripts/jsonld-route-coverage-report.ts [options]
+
+Options:
+  --out <path>            Markdown output path (.html and .json written alongside)
+  --kind <list>           Comma-separated kinds to include (repeatable).
+                          One of: ${VALID_KINDS.join(", ")}
+  --url-pattern <regex>   Only include URLs matching this regex (repeatable;
+                          rows match if ANY pattern matches).
+  --url-prefix <prefix>   Only include URLs starting with this prefix (repeatable).
+  --invert                Invert the kind/URL filter (exclude matches instead).
+  --help, -h              Show this help.
+
+Env:
+  JSONLD_COVERAGE_STRICT=1   Exit non-zero if any failure remains in the
+                             *filtered* set.
+`);
+  process.exit(0);
+}
+
 const OUT_MD = arg("--out", "/mnt/documents/jsonld-route-coverage.md");
 const OUT_HTML = OUT_MD.replace(/\.md$/i, ".html");
 const OUT_JSON = OUT_MD.replace(/\.md$/i, ".json");
+
+const KIND_FILTER = new Set<Kind>();
+for (const k of argAll("--kind")) {
+  if (!(VALID_KINDS as readonly string[]).includes(k)) {
+    console.error(`✖ unknown --kind "${k}". Valid: ${VALID_KINDS.join(", ")}`);
+    process.exit(2);
+  }
+  KIND_FILTER.add(k as Kind);
+}
+const URL_PATTERNS: RegExp[] = argAll("--url-pattern").map((p) => {
+  try { return new RegExp(p); }
+  catch (e) { console.error(`✖ invalid --url-pattern /${p}/: ${(e as Error).message}`); process.exit(2); }
+});
+const URL_PREFIXES = argAll("--url-prefix");
+const INVERT = hasFlag("--invert");
+const FILTERS_ACTIVE = KIND_FILTER.size > 0 || URL_PATTERNS.length > 0 || URL_PREFIXES.length > 0;
+
+function passesFilter(url: string, kind: Kind): boolean {
+  if (!FILTERS_ACTIVE) return true;
+  const matches =
+    (KIND_FILTER.size === 0 || KIND_FILTER.has(kind)) &&
+    (URL_PATTERNS.length === 0 || URL_PATTERNS.some((re) => re.test(url))) &&
+    (URL_PREFIXES.length === 0 || URL_PREFIXES.some((p) => url.startsWith(p)));
+  return INVERT ? !matches : matches;
+}
 
 // ── App.tsx route table ───────────────────────────────────────────────────
 interface RouteDecl { path: string; component: string; appLine: number; componentFile: string | null }
@@ -267,7 +330,20 @@ function evaluateUrl(u: UrlExpectation): Row {
   };
 }
 
-const ROWS = URL_EXPECTATIONS.map(evaluateUrl);
+const ALL_ROWS = URL_EXPECTATIONS.map(evaluateUrl);
+const ROWS = ALL_ROWS.filter((r) => passesFilter(r.url, r.kind as Kind));
+if (FILTERS_ACTIVE && ROWS.length === 0) {
+  console.error(`✖ filter excluded all ${ALL_ROWS.length} URL(s); nothing to report.`);
+  process.exit(2);
+}
+const FILTER_DESCRIPTION = (() => {
+  if (!FILTERS_ACTIVE) return null;
+  const parts: string[] = [];
+  if (KIND_FILTER.size) parts.push(`kind ∈ {${[...KIND_FILTER].join(", ")}}`);
+  if (URL_PATTERNS.length) parts.push(`url matches ${URL_PATTERNS.map((r) => `/${r.source}/`).join(" | ")}`);
+  if (URL_PREFIXES.length) parts.push(`url startsWith ${URL_PREFIXES.map((p) => `\`${p}\``).join(" | ")}`);
+  return `${INVERT ? "NOT (" : ""}${parts.join(" AND ")}${INVERT ? ")" : ""}`;
+})();
 
 // ── render Markdown ───────────────────────────────────────────────────────
 const total = ROWS.length;
@@ -326,9 +402,12 @@ const groupLabels: Record<UrlExpectation["kind"], string> = {
 let md = "";
 md += "# JSON-LD Route-to-URL Coverage Report\n\n";
 md += `Generated: ${new Date().toISOString()}\n\n`;
+if (FILTER_DESCRIPTION) {
+  md += `> **Filtered view** — ${FILTER_DESCRIPTION} _(${ROWS.length} of ${ALL_ROWS.length} URLs)_\n\n`;
+}
 md += "## Summary\n\n";
 md += `| Metric | Count |\n|---|---:|\n`;
-md += `| URLs evaluated | ${total} |\n`;
+md += `| URLs evaluated${FILTER_DESCRIPTION ? " (filtered)" : ""} | ${total}${FILTER_DESCRIPTION ? ` / ${ALL_ROWS.length}` : ""} |\n`;
 md += `| ✅ Passing | ${passing.length} |\n`;
 md += `| ❌ Missing required @type | ${failingTypes.length} |\n`;
 md += `| ❌ Bad / incomplete blocks | ${failingBlocks.length} |\n`;
@@ -407,6 +486,7 @@ let html = `<!DOCTYPE html>
   <tr><td><span class="fail">Bad / incomplete blocks</span></td><td>${failingBlocks.length}</td></tr>
   <tr><td><span class="warn">Unresolved route</span></td><td>${unresolved.length}</td></tr>
 </table>
+${FILTER_DESCRIPTION ? `<p><strong>Filtered view</strong> — ${esc(FILTER_DESCRIPTION)} (${ROWS.length} of ${ALL_ROWS.length} URLs)</p>` : ""}
 <p>Sitewide @types inherited from <code>index.html</code>: ${[...SITEWIDE].map((t) => `<code>${esc(t)}</code>`).join(", ")}.</p>
 `;
 for (const k of groupOrder) {
@@ -453,6 +533,15 @@ writeFileSync(OUT_MD, md, "utf8");
 writeFileSync(OUT_HTML, html, "utf8");
 writeFileSync(OUT_JSON, JSON.stringify({
   generatedAt: new Date().toISOString(),
+  filter: FILTERS_ACTIVE ? {
+    description: FILTER_DESCRIPTION,
+    kinds: [...KIND_FILTER],
+    urlPatterns: URL_PATTERNS.map((r) => r.source),
+    urlPrefixes: URL_PREFIXES,
+    invert: INVERT,
+    matchedCount: ROWS.length,
+    totalCount: ALL_ROWS.length,
+  } : null,
   summary: {
     total, passing: passing.length,
     missingTypes: failingTypes.length,
