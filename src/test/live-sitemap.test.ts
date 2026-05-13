@@ -19,55 +19,53 @@ const SKIP = process.env.SKIP_LIVE_SITEMAP_CHECK === "1";
 
 const describeOrSkip = SKIP ? describe.skip : describe;
 
+/**
+ * Fetch with retry + exponential backoff. Retries transient failures
+ * (network errors, 5xx, 429); 4xx fails fast.
+ */
+async function fetchWithRetry(
+  url: string,
+  { retries = 4, baseDelayMs = 500 }: { retries?: number; baseDelayMs?: number } = {},
+): Promise<Response> {
+  let lastError: unknown;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 10_000);
+    try {
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(timer);
+      if (res.status >= 500 || res.status === 429) {
+        lastError = new Error(`${url} -> HTTP ${res.status}`);
+      } else {
+        return res;
+      }
+    } catch (err) {
+      clearTimeout(timer);
+      lastError = err;
+    }
+    if (attempt < retries) {
+      const delay = baseDelayMs * 2 ** attempt + Math.floor(Math.random() * 250);
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[live-sitemap] ${url} attempt ${attempt + 1}/${retries + 1} failed (${
+          (lastError as Error)?.message ?? lastError
+        }); retrying in ${delay}ms`,
+      );
+      await new Promise((r) => setTimeout(r, delay));
+    }
+  }
+  throw new Error(
+    `Failed to fetch ${url} after ${retries + 1} attempts: ${
+      (lastError as Error)?.message ?? lastError
+    }`,
+  );
+}
+
 describeOrSkip("live sitemap & robots.txt", () => {
   let robots = "";
   let sitemap = "";
   let robotsStatus = 0;
   let sitemapStatus = 0;
-
-  /**
-   * Fetch with retry + exponential backoff. CI runners and CDNs occasionally
-   * blip (DNS, TLS handshake, 5xx during deploy). We retry transient failures
-   * — network errors and 5xx/429 responses — but surface 4xx immediately
-   * since those indicate a real configuration problem.
-   */
-  async function fetchWithRetry(
-    url: string,
-    { retries = 4, baseDelayMs = 500 }: { retries?: number; baseDelayMs?: number } = {},
-  ): Promise<Response> {
-    let lastError: unknown;
-    for (let attempt = 0; attempt <= retries; attempt++) {
-      const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), 10_000);
-      try {
-        const res = await fetch(url, { signal: controller.signal });
-        clearTimeout(timer);
-        if (res.status >= 500 || res.status === 429) {
-          lastError = new Error(`${url} -> HTTP ${res.status}`);
-        } else {
-          return res;
-        }
-      } catch (err) {
-        clearTimeout(timer);
-        lastError = err;
-      }
-      if (attempt < retries) {
-        const delay = baseDelayMs * 2 ** attempt + Math.floor(Math.random() * 250);
-        // eslint-disable-next-line no-console
-        console.warn(
-          `[live-sitemap] ${url} attempt ${attempt + 1}/${retries + 1} failed (${
-            (lastError as Error)?.message ?? lastError
-          }); retrying in ${delay}ms`,
-        );
-        await new Promise((r) => setTimeout(r, delay));
-      }
-    }
-    throw new Error(
-      `Failed to fetch ${url} after ${retries + 1} attempts: ${
-        (lastError as Error)?.message ?? lastError
-      }`,
-    );
-  }
 
   beforeAll(async () => {
     const [r, s] = await Promise.all([
@@ -143,4 +141,56 @@ describeOrSkip("live sitemap & robots.txt", () => {
       `Live <loc>s do not match repo <loc>s — deploy is stale or a CDN is rewriting URLs.`,
     ).toEqual(repoLocs);
   });
+});
+
+/**
+ * Walks the live sitemap index, fetches every per-section sitemap it lists,
+ * and asserts each returns 200 with a valid <urlset> whose <loc> entries
+ * match the canonical-domain URLs shipped in the repo file. Catches stale
+ * CDN copies, missing files on the deployed host, and unexpected entries
+ * (e.g. preview-domain URLs leaking into the live sitemap).
+ */
+describeOrSkip("live per-section sitemaps", () => {
+  const sitemapsDir = resolve(process.cwd(), "public/sitemaps");
+  const files = existsSync(sitemapsDir)
+    ? readdirSync(sitemapsDir).filter((f) => f.endsWith(".xml"))
+    : [];
+
+  for (const file of files) {
+    it(`GET /sitemaps/${file} returns 200 and matches repo entries`, async () => {
+      const url = `${SITE_URL}/sitemaps/${file}`;
+      const res = await fetchWithRetry(url);
+      expect(res.status, `${url} returned ${res.status}`).toBe(200);
+
+      const body = await res.text();
+      expect(body, `${url} is not a valid <urlset>`).toMatch(/<urlset[^>]*>/);
+      expect(body).toMatch(/<\/urlset>/);
+
+      const liveLocs = Array.from(body.matchAll(/<loc>([^<]+)<\/loc>/g))
+        .map((m) => m[1])
+        .sort();
+
+      const repoBody = readFileSync(resolve(sitemapsDir, file), "utf8");
+      const repoLocs = Array.from(repoBody.matchAll(/<loc>([^<]+)<\/loc>/g))
+        .map((m) => m[1])
+        .sort();
+
+      const missing = repoLocs.filter((u) => !liveLocs.includes(u));
+      const unexpected = liveLocs.filter((u) => !repoLocs.includes(u));
+
+      expect(
+        { missing, unexpected },
+        `Live ${file} drifted from repo.\n` +
+          `Missing: ${missing.join(", ") || "(none)"}\n` +
+          `Unexpected: ${unexpected.join(", ") || "(none)"}\n` +
+          `Click Publish → Update to redeploy, or regenerate via \`bunx tsx scripts/generate-sitemap.ts\`.`,
+      ).toEqual({ missing: [], unexpected: [] });
+
+      const offDomain = liveLocs.filter((u) => !u.startsWith(SITE_URL));
+      expect(
+        offDomain,
+        `${file} contains <loc>s on a different host: ${offDomain.join(", ")}`,
+      ).toEqual([]);
+    }, 60_000);
+  }
 });
