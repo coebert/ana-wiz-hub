@@ -19,6 +19,12 @@ interface SectionLayoutProps {
   disableAutoTOC?: boolean;
   /** Minimum number of h2s required before the TOC is rendered. Defaults to 4. */
   autoTOCMinHeadings?: number;
+  /**
+   * Optional richer meta description for crawlers. When omitted we derive one
+   * from `title` + `subtitle`, but topic pages usually pass a longer
+   * curriculum-specific blurb so descriptions clear the 50-char SEO floor.
+   */
+  metaDescription?: string;
 }
 
 const slugify = (text: string) =>
