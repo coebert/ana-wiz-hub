@@ -93,9 +93,42 @@ export default function DrugsLibrary() {
     });
   }, [rows, q, activeClass, activeBroad]);
 
+  const collectionJsonLd = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Drug Formulary — AnaesthesiaCore",
+    description:
+      "Searchable formulary of anaesthesia and critical care drugs with monographs covering presentation, mechanism, pharmacokinetics, dosing, monitoring and side effects.",
+    url: "https://anaesthesiacore.app/drugs",
+    inLanguage: "en-GB",
+    isPartOf: { "@type": "WebSite", name: "AnaesthesiaCore", url: "https://anaesthesiacore.app/" },
+    hasPart: rows.slice(0, 200).map((r) => ({
+      "@type": "Drug",
+      name: r.name,
+      drugClass: r.drug_class,
+      description: r.indication_oneliner,
+      url: `https://anaesthesiacore.app/drugs/${r.slug}`,
+    })),
+  }), [rows]);
+
   return (
     <div className="min-h-screen bg-background">
-      
+      <Helmet>
+        <title>Drug Formulary — anaesthesia & critical care | AnaesthesiaCore</title>
+        <meta
+          name="description"
+          content="Searchable formulary of anaesthesia and critical care drugs. Monographs cover presentation, mechanism, pharmacokinetics, preparation, dosing, monitoring and side effects."
+        />
+        <link rel="canonical" href="https://anaesthesiacore.app/drugs" />
+        <meta property="og:title" content="Drug Formulary — anaesthesia & critical care" />
+        <meta property="og:description" content="Searchable monographs across anaesthesia and critical care drugs." />
+        <meta property="og:url" content="https://anaesthesiacore.app/drugs" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:title" content="Drug Formulary — anaesthesia & critical care" />
+        <meta name="twitter:description" content="Searchable monographs across anaesthesia and critical care drugs." />
+        <script type="application/ld+json">{JSON.stringify(collectionJsonLd)}</script>
+      </Helmet>
+
       <main className="container mx-auto px-4 py-8 max-w-6xl">
         <Breadcrumbs items={[{ label: "Drug Formulary" }]} />
         <div className="mb-6 flex items-start gap-3">
