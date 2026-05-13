@@ -106,6 +106,10 @@ const choices: LandingChoiceExt[] = [
 const Landing = () => {
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-background flex flex-col">
+      <Helmet>
+        <link rel="canonical" href="https://anaesthesiacore.app/" />
+        <meta property="og:url" content="https://anaesthesiacore.app/" />
+      </Helmet>
       <section className="relative overflow-hidden">
         <div
           className="absolute inset-0"
