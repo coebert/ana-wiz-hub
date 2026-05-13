@@ -1,4 +1,5 @@
 import * as React from "react";
+import type { LucideIcon, LucideProps } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -49,24 +50,75 @@ const BADGE_CLASSES: Record<Exclude<DecorativeIconBadge, "none">, string> = {
     "bg-[hsl(var(--physiology)/0.15)] text-[hsl(var(--physiology))] ring-1 ring-[hsl(var(--physiology)/0.3)]",
 };
 
-type IconLike = React.ComponentType<React.SVGProps<SVGSVGElement> & { strokeWidth?: number | string; size?: number | string }>;
+/**
+ * Acceptable icon component shape.
+ *
+ * Primary target is `lucide-react`'s `LucideIcon`. We also accept any
+ * forwardRef-compatible SVG component that takes `LucideProps` so custom
+ * pictograms drawn in the same style can be used interchangeably.
+ *
+ * Plain `React.ComponentType<any>`, HTML intrinsics, strings, lazy elements,
+ * etc. are rejected at compile time.
+ */
+export type DecorativeIconComponent =
+  | LucideIcon
+  | React.ForwardRefExoticComponent<
+      LucideProps & React.RefAttributes<SVGSVGElement>
+    >;
 
-export interface DecorativeIconProps {
+/**
+ * Props that callers must NEVER override — they would defeat the whole
+ * purpose of this wrapper (which is to guarantee the icon is invisible to
+ * assistive tech). Listed here so the compiler rejects them on `iconProps`.
+ */
+type ForbiddenA11yProps =
+  | "aria-hidden"
+  | "aria-label"
+  | "aria-labelledby"
+  | "aria-describedby"
+  | "role"
+  | "tabIndex"
+  | "focusable"
+  | "ref"
+  | "children";
+
+export type SafeIconProps = Omit<LucideProps, ForbiddenA11yProps>;
+
+interface DecorativeIconBaseProps {
   /** The icon component to render (e.g. lucide `AlertTriangle`). */
-  icon: IconLike;
-  /** Optional tinted circular badge wrapper. Defaults to "none". */
-  badge?: DecorativeIconBadge;
-  /** Tailwind size for the badge wrapper (default w-5 h-5). */
-  badgeClassName?: string;
+  icon: DecorativeIconComponent;
   /** Tailwind classes applied to the icon itself. Default w-3.5 h-3.5. */
   iconClassName?: string;
   /** Stroke width forwarded to the icon. */
   strokeWidth?: number;
-  /** Extra props forwarded to the icon (style, etc.). */
-  iconProps?: React.SVGProps<SVGSVGElement>;
+  /**
+   * Extra props forwarded to the icon. A11y/role/tabIndex/focusable/ref/children
+   * are intentionally forbidden — those are owned by DecorativeIcon.
+   */
+  iconProps?: SafeIconProps;
+  /** This component never renders children. */
+  children?: never;
+}
+
+interface DecorativeIconNoBadgeProps extends DecorativeIconBaseProps {
+  badge?: "none";
   /** When badge is "none", classes are applied to the icon directly. */
   className?: string;
+  /** Not valid without a badge. */
+  badgeClassName?: never;
 }
+
+interface DecorativeIconBadgedProps extends DecorativeIconBaseProps {
+  badge: Exclude<DecorativeIconBadge, "none">;
+  /** Tailwind classes applied to the badge wrapper. */
+  className?: string;
+  /** Tailwind size for the badge wrapper (default w-5 h-5). */
+  badgeClassName?: string;
+}
+
+export type DecorativeIconProps =
+  | DecorativeIconNoBadgeProps
+  | DecorativeIconBadgedProps;
 
 const a11yProps = {
   "aria-hidden": true as const,
@@ -86,13 +138,10 @@ export const DecorativeIcon: React.FC<DecorativeIconProps> = ({
 }) => {
   const iconElement = (
     <Icon
+      {...iconProps}
       className={cn(iconClassName ?? "w-3.5 h-3.5", badge === "none" ? className : undefined)}
       strokeWidth={strokeWidth}
-      aria-hidden
-      role="presentation"
-      focusable={false}
-      tabIndex={-1}
-      {...iconProps}
+      {...a11yProps}
     />
   );
 
