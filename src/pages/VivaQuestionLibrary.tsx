@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X, CheckCircle2, Circle, RotateCcw, Flame, CalendarCheck, Rewind, FastForward, Gauge } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -643,7 +644,32 @@ const VivaQuestionLibrary = () => {
   }, [rows, examFilter, rowDifficulty]);
 
   return (
+  const faqJsonLd = useMemo(() => {
+    if (rows.length === 0) return null;
+    const sample = rows.slice(0, 25);
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      name: "AnaesthesiaCore Viva Question Library",
+      url: "https://anaesthesiacore.app/viva/library",
+      mainEntity: sample.map((r) => ({
+        "@type": "Question",
+        name: r.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: r.model_answer.length > 1000 ? `${r.model_answer.slice(0, 997)}...` : r.model_answer,
+        },
+      })),
+    };
+  }, [rows]);
+
+  return (
     <div className="min-h-screen bg-background">
+      {faqJsonLd && (
+        <Helmet>
+          <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+        </Helmet>
+      )}
       <div className="container mx-auto px-4 py-8 max-w-5xl">
         <Link
           to="/viva"
