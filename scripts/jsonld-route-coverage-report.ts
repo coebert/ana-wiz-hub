@@ -27,7 +27,10 @@ import {
   existsSync,
   statSync,
   mkdirSync,
+  mkdtempSync,
 } from "fs";
+import { tmpdir } from "os";
+import { execSync } from "child_process";
 import { resolve, join, relative, dirname } from "path";
 import {
   URL_EXPECTATIONS,
