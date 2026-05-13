@@ -22,6 +22,7 @@ const VivaQuestionLibrary = lazy(() => import("./pages/VivaQuestionLibrary"));
 const CoverageBarsResponsiveTest = lazy(() => import("./pages/CoverageBarsResponsiveTest"));
 const DrugsLibrary = lazy(() => import("./pages/DrugsLibrary"));
 const DrugDetail = lazy(() => import("./pages/DrugDetail"));
+const SeoIndexing = lazy(() => import("./pages/SeoIndexing"));
 
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
@@ -205,6 +206,7 @@ const App = () => (
           <Route path="/viva" element={<VivaHub />} />
           <Route path="/viva/library" element={<VivaQuestionLibrary />} />
           <Route path="/dev/coverage-bars" element={<CoverageBarsResponsiveTest />} />
+          <Route path="/dev/seo-indexing" element={<SeoIndexing />} />
           <Route path="/drugs" element={<DrugsLibrary />} />
           <Route path="/drugs/:slug" element={<DrugDetail />} />
           <Route path="/physics" element={<PhysicsSection />} />
