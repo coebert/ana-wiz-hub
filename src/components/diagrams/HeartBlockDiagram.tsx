@@ -513,7 +513,7 @@ const HeartBlockDiagram = () => {
                           {b.leads.rv && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(35,80%,50%)]/15 text-[hsl(35,80%,38%)] dark:text-[hsl(35,80%,60%)] font-semibold">RV</span>}
                           {b.leads.lv && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(0,70%,50%)]/15 text-[hsl(0,70%,45%)] dark:text-[hsl(0,70%,65%)] font-semibold">LV (CS)</span>}
                         </div>
-                        <p className="text-[10px] text-muted-foreground leading-snug">{b.deviceRationale}</p>
+                        <p className="text-[11px] text-muted-foreground leading-relaxed">{b.deviceRationale}</p>
                       </div>
                     </div>
                   )}
@@ -545,7 +545,7 @@ const HeartBlockDiagram = () => {
                       {info.device}
                     </span>
                   </div>
-                  <p className="text-[10px] text-muted-foreground leading-snug">{info.deviceRationale}</p>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">{info.deviceRationale}</p>
                 </div>
               </div>
             )}
