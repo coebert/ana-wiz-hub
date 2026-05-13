@@ -152,34 +152,64 @@ function balancedParenEnd(src, openParenIdx) {
  *
  * Returns { openParenIdx, closeParenIdx, innerRaw, innerIndent } or null.
  */
-function findComponentReturnBlock(src) {
+function findComponentReturnBlock(src, componentName) {
   const candidates = [];
 
-  // Pattern 1: 2-space-indented `return (`
+  // Pattern 1: 2-space-indented `return (` — the body of a top-level
+  // function declared like `function Name(...) { … }` or
+  // `const Name = (...) => { … }`. Capture the enclosing function's
+  // identifier when we can find one going backwards.
   const re1 = /\n {2}return \(\n/g;
   let m;
   while ((m = re1.exec(src)) !== null) {
     const openParenIdx = src.indexOf("(", m.index);
     const closeParenIdx = balancedParenEnd(src, openParenIdx);
     if (closeParenIdx === -1) continue;
-    candidates.push({ openParenIdx, closeParenIdx, innerIndent: 4, kind: "fn" });
+    // Look backwards for the nearest preceding top-level declaration
+    // identifier (line starts with `const X` / `function X` / `export …`).
+    const before = src.slice(0, m.index);
+    const declRe = /\n(?:export\s+(?:default\s+)?)?(?:function|const)\s+(\w+)/g;
+    let lastDecl = null;
+    let d;
+    while ((d = declRe.exec(before)) !== null) lastDecl = d;
+    candidates.push({
+      openParenIdx,
+      closeParenIdx,
+      innerIndent: 4,
+      kind: "fn",
+      ownerName: lastDecl?.[1] ?? null,
+    });
   }
 
-  // Pattern 2: top-level arrow component `^const Name = (...) => (\n`
-  const re2 = /\nexport\s+(?:const|default)\s+\w+[^=]*=\s*\([^)]*\)\s*(?::\s*[^=]+)?=>\s*\(\n|\nconst\s+\w+[^=]*=\s*\([^)]*\)\s*(?::\s*[^=]+)?=>\s*\(\n/g;
+  // Pattern 2: top-level arrow component returning JSX directly:
+  //   const Name = (...) => (\n   …  \n);
+  const re2 =
+    /\n(?:export\s+(?:default\s+)?)?const\s+(\w+)[^=]*=\s*\([^)]*\)\s*(?::\s*[^=]+)?=>\s*\(\n/g;
   while ((m = re2.exec(src)) !== null) {
-    // Find the `(` immediately before `\n` at end of match
+    const ownerName = m[1];
     const arrowIdx = src.indexOf("=>", m.index);
     const openParenIdx = src.indexOf("(", arrowIdx);
     const closeParenIdx = balancedParenEnd(src, openParenIdx);
     if (closeParenIdx === -1) continue;
-    candidates.push({ openParenIdx, closeParenIdx, innerIndent: 2, kind: "arrow" });
+    candidates.push({
+      openParenIdx,
+      closeParenIdx,
+      innerIndent: 2,
+      kind: "arrow",
+      ownerName,
+    });
   }
 
   if (candidates.length === 0) return null;
-  // Pick the LAST candidate by openParenIdx (typical: main exported component is last)
+
+  // Prefer the candidate whose owner identifier matches the filename's
+  // component name; otherwise fall back to the last candidate (typical
+  // convention: main exported component is declared last).
   candidates.sort((a, b) => a.openParenIdx - b.openParenIdx);
-  const pick = candidates[candidates.length - 1];
+  const named = componentName
+    ? candidates.find((c) => c.ownerName === componentName)
+    : null;
+  const pick = named ?? candidates[candidates.length - 1];
   pick.innerRaw = src.slice(pick.openParenIdx + 1, pick.closeParenIdx);
   return pick;
 }
