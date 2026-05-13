@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type VariableKey = "sid" | "atot" | "pco2";
 
@@ -114,46 +113,40 @@ const StewartAcidBaseDiagram = () => {
           const val = values[key];
           const isNormal = Math.abs(val - v.normal) <= v.step;
           return (
-    <DiagramFigure
-      id="stewart-acid-base-diagram"
-      title="Stewart acid base"
-      description="Auto-generated wrapper for the Stewart acid base anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <button
-                key={key}
-                onClick={() => setSelected(key)}
-                className={`w-full text-left p-3 rounded-lg border transition-all ${selected === key ? "border-2" : ""}`}
-                style={{ borderColor: selected === key ? v.color : "hsl(var(--border))" }}
-              >
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-sm font-bold" style={{ color: v.color }}>{v.label}</span>
-                  <span className={`text-sm font-mono font-bold ${isNormal ? "text-foreground" : ""}`} style={!isNormal ? { color: v.color } : {}}>
-                    {val} {v.unit}
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min={v.min}
-                  max={v.max}
-                  step={v.step}
-                  value={val}
-                  onChange={(e) => {
-                    e.stopPropagation();
-                    setValues({ ...values, [key]: Number(e.target.value) });
-                  }}
-                  className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
-                  style={{
-                    background: `linear-gradient(90deg, ${v.color} ${((val - v.min) / (v.max - v.min)) * 100}%, hsl(var(--muted)) ${((val - v.min) / (v.max - v.min)) * 100}%)`,
-                  }}
-                  onClick={(e) => e.stopPropagation()}
-                />
-                <div className="flex justify-between text-[10px] text-muted-foreground mt-0.5">
-                  <span>{v.min}</span>
-                  <span className="font-medium">Normal: {v.normal}</span>
-                  <span>{v.max}</span>
-                </div>
-              </button>
-    </DiagramFigure>
+                <button
+              key={key}
+              onClick={() => setSelected(key)}
+              className={`w-full text-left p-3 rounded-lg border transition-all ${selected === key ? "border-2" : ""}`}
+              style={{ borderColor: selected === key ? v.color : "hsl(var(--border))" }}
+            >
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-sm font-bold" style={{ color: v.color }}>{v.label}</span>
+                <span className={`text-sm font-mono font-bold ${isNormal ? "text-foreground" : ""}`} style={!isNormal ? { color: v.color } : {}}>
+                  {val} {v.unit}
+                </span>
+              </div>
+              <input
+                type="range"
+                min={v.min}
+                max={v.max}
+                step={v.step}
+                value={val}
+                onChange={(e) => {
+                  e.stopPropagation();
+                  setValues({ ...values, [key]: Number(e.target.value) });
+                }}
+                className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
+                style={{
+                  background: `linear-gradient(90deg, ${v.color} ${((val - v.min) / (v.max - v.min)) * 100}%, hsl(var(--muted)) ${((val - v.min) / (v.max - v.min)) * 100}%)`,
+                }}
+                onClick={(e) => e.stopPropagation()}
+              />
+              <div className="flex justify-between text-[10px] text-muted-foreground mt-0.5">
+                <span>{v.min}</span>
+                <span className="font-medium">Normal: {v.normal}</span>
+                <span>{v.max}</span>
+              </div>
+            </button>
   );
         })}
       </div>

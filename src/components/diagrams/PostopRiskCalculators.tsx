@@ -10,7 +10,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* -----------------------------------------------------------
  * Shared helpers
@@ -430,29 +429,23 @@ const CfsCalc = () => {
           {CFS_LEVELS.map((lvl) => {
             const active = lvl.score === score;
             return (
-    <DiagramFigure
-      id="postop-risk-calculators"
-      title="Postop risk calculators"
-      description="Auto-generated wrapper for the Postop risk calculators interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <button
-                  key={lvl.score}
-                  type="button"
-                  onClick={() => setScore(lvl.score)}
-                  aria-pressed={active}
-                  className="flex flex-col items-center px-3 py-2 rounded-md border transition-all min-w-[72px]"
-                  style={{
-                    background: active ? `hsl(var(--${token}) / 0.15)` : "hsl(var(--card))",
-                    borderColor: active ? `hsl(var(--${token}))` : "hsl(var(--border))",
-                    borderWidth: active ? 2 : 1,
-                  }}
-                >
-                  <span className="font-mono font-bold text-base text-foreground">{lvl.score}</span>
-                  <span className="text-[10px] text-muted-foreground text-center leading-tight mt-0.5">
-                    {lvl.label}
-                  </span>
-                </button>
-    </DiagramFigure>
+                  <button
+                key={lvl.score}
+                type="button"
+                onClick={() => setScore(lvl.score)}
+                aria-pressed={active}
+                className="flex flex-col items-center px-3 py-2 rounded-md border transition-all min-w-[72px]"
+                style={{
+                  background: active ? `hsl(var(--${token}) / 0.15)` : "hsl(var(--card))",
+                  borderColor: active ? `hsl(var(--${token}))` : "hsl(var(--border))",
+                  borderWidth: active ? 2 : 1,
+                }}
+              >
+                <span className="font-mono font-bold text-base text-foreground">{lvl.score}</span>
+                <span className="text-[10px] text-muted-foreground text-center leading-tight mt-0.5">
+                  {lvl.label}
+                </span>
+              </button>
   );
           })}
         </div>

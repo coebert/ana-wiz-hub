@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Bundle / fascicular block series — RBBB, LBBB, LAFB, LPFB, bifascicular,
@@ -369,48 +368,42 @@ const BundleBranchBlockDiagram = () => {
               const b = BLOCKS[k];
               const active = selected === k;
               return (
-    <DiagramFigure
-      id="bundle-branch-block-diagram"
-      title="Bundle branch block"
-      description="Auto-generated wrapper for the Bundle branch block anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <button
-                    key={k}
-                    type="button"
-                    onClick={() => setSelected(k)}
-                    className="text-left p-3 rounded-lg border bg-background/60 transition-all hover:bg-background"
-                    style={{
-                      borderColor: active ? b.color : "hsl(var(--border))",
-                      borderWidth: active ? 2 : 1,
-                      boxShadow: active ? `0 4px 14px -6px ${withAlpha(b.color, 0.5)}` : undefined,
-                    }}
-                  >
-                    <div className="flex items-center justify-between mb-2 gap-2">
-                      <p className="font-semibold text-sm text-foreground">{b.label}</p>
-                      <span
-                        className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md whitespace-nowrap"
-                        style={{ background: withAlpha(b.color, 0.15), color: b.color }}
-                      >
-                        {b.qrsDuration}
-                      </span>
-                    </div>
-  
-                    <div className="flex flex-col gap-3">
-                      <div className="w-full max-w-[220px] mx-auto"><TreeMini block={b} color={b.color} /></div>
-                      <div className="min-w-0 space-y-1.5">
-                        <div className="flex gap-2">
-                          <Waveform label="V1" kind={b.v1} color={b.color} wide={b.qrsWide} />
-                          <Waveform label="V6" kind={b.v6} color={b.color} wide={b.qrsWide} />
-                        </div>
-                        {showLabels && (
-                          <p className="text-[10px] text-muted-foreground italic leading-snug">
-                            Axis: {b.axis}
-                          </p>
-                        )}
+                    <button
+                  key={k}
+                  type="button"
+                  onClick={() => setSelected(k)}
+                  className="text-left p-3 rounded-lg border bg-background/60 transition-all hover:bg-background"
+                  style={{
+                    borderColor: active ? b.color : "hsl(var(--border))",
+                    borderWidth: active ? 2 : 1,
+                    boxShadow: active ? `0 4px 14px -6px ${withAlpha(b.color, 0.5)}` : undefined,
+                  }}
+                >
+                  <div className="flex items-center justify-between mb-2 gap-2">
+                    <p className="font-semibold text-sm text-foreground">{b.label}</p>
+                    <span
+                      className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md whitespace-nowrap"
+                      style={{ background: withAlpha(b.color, 0.15), color: b.color }}
+                    >
+                      {b.qrsDuration}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col gap-3">
+                    <div className="w-full max-w-[220px] mx-auto"><TreeMini block={b} color={b.color} /></div>
+                    <div className="min-w-0 space-y-1.5">
+                      <div className="flex gap-2">
+                        <Waveform label="V1" kind={b.v1} color={b.color} wide={b.qrsWide} />
+                        <Waveform label="V6" kind={b.v6} color={b.color} wide={b.qrsWide} />
                       </div>
+                      {showLabels && (
+                        <p className="text-[10px] text-muted-foreground italic leading-snug">
+                          Axis: {b.axis}
+                        </p>
+                      )}
                     </div>
-                  </button>
-    </DiagramFigure>
+                  </div>
+                </button>
   );
             })}
           </div>

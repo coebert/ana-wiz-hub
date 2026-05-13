@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type TimePoint = "pre72" | "72h" | "modalities" | "decision";
 
@@ -289,32 +288,26 @@ const PostCardiacArrestProgDiagram = () => {
         {activeModality !== null && (() => {
           const m = modalities[activeModality];
           return (
-    <DiagramFigure
-      id="post-cardiac-arrest-prog-diagram"
-      title="Post cardiac arrest prog"
-      description="Auto-generated wrapper for the Post cardiac arrest prog anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <div
-                className="rounded-lg border p-4 mb-4 animate-fade-in bg-card"
-                style={{ borderColor: withAlpha(m.color, 0.45) }}
-              >
-                <div className="flex items-start gap-2 mb-2">
-                  <span className="text-xl">{m.icon}</span>
-                  <div>
-                    <h4 className="text-sm font-bold text-foreground">{m.name}</h4>
-                    <p className="text-[10px] font-semibold text-muted-foreground">{m.timing}</p>
-                  </div>
-                </div>
                 <div
-                  className="rounded px-2 py-1.5 mb-2 border-l-2 bg-background"
-                  style={{ borderLeftColor: m.color }}
-                >
-                  <p className="text-xs font-semibold" style={{ color: m.color }}>Poor prognostic sign</p>
-                  <p className="text-xs text-foreground font-medium leading-snug">{m.poorPrognosticSign}</p>
+              className="rounded-lg border p-4 mb-4 animate-fade-in bg-card"
+              style={{ borderColor: withAlpha(m.color, 0.45) }}
+            >
+              <div className="flex items-start gap-2 mb-2">
+                <span className="text-xl">{m.icon}</span>
+                <div>
+                  <h4 className="text-sm font-bold text-foreground">{m.name}</h4>
+                  <p className="text-[10px] font-semibold text-muted-foreground">{m.timing}</p>
                 </div>
-                <p className="text-xs text-foreground/80 leading-relaxed">{m.detail}</p>
               </div>
-    </DiagramFigure>
+              <div
+                className="rounded px-2 py-1.5 mb-2 border-l-2 bg-background"
+                style={{ borderLeftColor: m.color }}
+              >
+                <p className="text-xs font-semibold" style={{ color: m.color }}>Poor prognostic sign</p>
+                <p className="text-xs text-foreground font-medium leading-snug">{m.poorPrognosticSign}</p>
+              </div>
+              <p className="text-xs text-foreground/80 leading-relaxed">{m.detail}</p>
+            </div>
   );
         })()}
       </div>

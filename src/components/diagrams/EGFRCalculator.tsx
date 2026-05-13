@@ -3,7 +3,6 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Sex = "female" | "male";
 
@@ -97,98 +96,92 @@ export const EGFRCalculator = () => {
   };
 
   return (
-    <DiagramFigure
-      id="egfr-calculator"
-      title="Egfr"
-      description="Auto-generated wrapper for the Egfr interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-6">
-        <div className="grid gap-4 sm:grid-cols-3">
-          <div className="space-y-2">
-            <Label htmlFor="egfr-cr">Serum creatinine (µmol/L)</Label>
-            <Input
-              id="egfr-cr"
-              type="number"
-              inputMode="decimal"
-              value={creatinine}
-              onChange={(e) => setCreatinine(e.target.value)}
-              placeholder="e.g. 80"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="egfr-age">Age (years)</Label>
-            <Input
-              id="egfr-age"
-              type="number"
-              inputMode="numeric"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              placeholder="e.g. 60"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label>Sex</Label>
-            <div className="flex gap-2">
-              <Button
-                type="button"
-                variant={sex === "female" ? "default" : "outline"}
-                className="flex-1"
-                onClick={() => setSex("female")}
-              >
-                Female
-              </Button>
-              <Button
-                type="button"
-                variant={sex === "male" ? "default" : "outline"}
-                className="flex-1"
-                onClick={() => setSex("male")}
-              >
-                Male
-              </Button>
-            </div>
-          </div>
+        <div className="space-y-6">
+      <div className="grid gap-4 sm:grid-cols-3">
+        <div className="space-y-2">
+          <Label htmlFor="egfr-cr">Serum creatinine (µmol/L)</Label>
+          <Input
+            id="egfr-cr"
+            type="number"
+            inputMode="decimal"
+            value={creatinine}
+            onChange={(e) => setCreatinine(e.target.value)}
+            placeholder="e.g. 80"
+          />
         </div>
-  
-        <div className="flex gap-2">
-          <Button onClick={() => setSubmitted(true)}>Calculate eGFR</Button>
-          <Button variant="outline" onClick={reset}>Reset</Button>
+        <div className="space-y-2">
+          <Label htmlFor="egfr-age">Age (years)</Label>
+          <Input
+            id="egfr-age"
+            type="number"
+            inputMode="numeric"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            placeholder="e.g. 60"
+          />
         </div>
-  
-        {submitted && result && (
-          <div className={cn("rounded-xl border p-5 space-y-3", result.stage.band)}>
-            <div className="flex items-baseline justify-between gap-3 flex-wrap">
-              <div>
-                <p className="text-xs uppercase tracking-wide opacity-80">CKD-EPI 2021 eGFR</p>
-                <p className="text-3xl font-serif font-bold">
-                  {result.egfr.toFixed(1)}
-                  <span className="text-base font-normal opacity-80"> ml/min/1.73 m²</span>
-                </p>
-              </div>
-              <div className="text-right">
-                <p className="text-2xl font-serif font-bold">{result.stage.stage}</p>
-                <p className="text-sm font-medium">{result.stage.label}</p>
-              </div>
-            </div>
-            <p className="text-sm text-foreground/90 border-t border-current/20 pt-3">{result.stage.description}</p>
-            <p className="text-sm text-foreground/90"><strong>Action:</strong> {result.stage.action}</p>
+        <div className="space-y-2">
+          <Label>Sex</Label>
+          <div className="flex gap-2">
+            <Button
+              type="button"
+              variant={sex === "female" ? "default" : "outline"}
+              className="flex-1"
+              onClick={() => setSex("female")}
+            >
+              Female
+            </Button>
+            <Button
+              type="button"
+              variant={sex === "male" ? "default" : "outline"}
+              className="flex-1"
+              onClick={() => setSex("male")}
+            >
+              Male
+            </Button>
           </div>
-        )}
-  
-        {submitted && !result && (
-          <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-sm text-foreground">
-            Please enter valid creatinine and age values.
-          </div>
-        )}
-  
-        <div className="rounded-lg bg-muted/40 border border-border p-4 text-xs text-foreground/80 space-y-1">
-          <p className="font-semibold text-foreground">CKD-EPI 2021 (race-free) equation</p>
-          <p>
-            eGFR = 142 × min(Scr/κ, 1)<sup>α</sup> × max(Scr/κ, 1)<sup>−1.200</sup> × 0.9938<sup>age</sup>
-            × (1.012 if female), where κ = 0.7 (F) / 0.9 (M); α = −0.241 (F) / −0.302 (M); Scr in mg/dL.
-          </p>
-          <p>The 2021 equation removed the race coefficient. Less accurate at extremes of muscle mass, AKI, pregnancy, and amputees — use measured GFR (Cr-EDTA, iohexol) when precision matters.</p>
         </div>
       </div>
-    </DiagramFigure>
+
+      <div className="flex gap-2">
+        <Button onClick={() => setSubmitted(true)}>Calculate eGFR</Button>
+        <Button variant="outline" onClick={reset}>Reset</Button>
+      </div>
+
+      {submitted && result && (
+        <div className={cn("rounded-xl border p-5 space-y-3", result.stage.band)}>
+          <div className="flex items-baseline justify-between gap-3 flex-wrap">
+            <div>
+              <p className="text-xs uppercase tracking-wide opacity-80">CKD-EPI 2021 eGFR</p>
+              <p className="text-3xl font-serif font-bold">
+                {result.egfr.toFixed(1)}
+                <span className="text-base font-normal opacity-80"> ml/min/1.73 m²</span>
+              </p>
+            </div>
+            <div className="text-right">
+              <p className="text-2xl font-serif font-bold">{result.stage.stage}</p>
+              <p className="text-sm font-medium">{result.stage.label}</p>
+            </div>
+          </div>
+          <p className="text-sm text-foreground/90 border-t border-current/20 pt-3">{result.stage.description}</p>
+          <p className="text-sm text-foreground/90"><strong>Action:</strong> {result.stage.action}</p>
+        </div>
+      )}
+
+      {submitted && !result && (
+        <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-sm text-foreground">
+          Please enter valid creatinine and age values.
+        </div>
+      )}
+
+      <div className="rounded-lg bg-muted/40 border border-border p-4 text-xs text-foreground/80 space-y-1">
+        <p className="font-semibold text-foreground">CKD-EPI 2021 (race-free) equation</p>
+        <p>
+          eGFR = 142 × min(Scr/κ, 1)<sup>α</sup> × max(Scr/κ, 1)<sup>−1.200</sup> × 0.9938<sup>age</sup>
+          × (1.012 if female), where κ = 0.7 (F) / 0.9 (M); α = −0.241 (F) / −0.302 (M); Scr in mg/dL.
+        </p>
+        <p>The 2021 equation removed the race coefficient. Less accurate at extremes of muscle mass, AKI, pregnancy, and amputees — use measured GFR (Cr-EDTA, iohexol) when precision matters.</p>
+      </div>
+    </div>
   );
 };

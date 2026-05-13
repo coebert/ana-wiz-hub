@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Schematic axial contrast-enhanced CT slice through the upper abdomen
@@ -641,55 +640,49 @@ const SeverePancreatitisCTDiagram = () => {
               const isSel = selected === f.id;
               const lines = f.text.split("\n");
               return (
-    <DiagramFigure
-      id="severe-pancreatitis-ct-diagram"
-      title="Severe pancreatitis ct"
-      description="Auto-generated wrapper for the Severe pancreatitis ct anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <g
-                    key={f.id}
-                    onClick={() => setSelected(f.id)}
-                    style={{ cursor: "pointer" }}
-                    opacity={isSel ? 1 : 0.85}
+                    <g
+                  key={f.id}
+                  onClick={() => setSelected(f.id)}
+                  style={{ cursor: "pointer" }}
+                  opacity={isSel ? 1 : 0.85}
+                >
+                  <line
+                    x1={f.dot.x}
+                    y1={f.dot.y}
+                    x2={labelX}
+                    y2={f.labelY}
+                    stroke={isSel ? "hsl(45 90% 65%)" : "hsl(var(--clinical))"}
+                    strokeWidth={isSel ? 0.3 : 0.2}
+                    vectorEffect="non-scaling-stroke"
+                  />
+                  <circle
+                    cx={f.dot.x}
+                    cy={f.dot.y}
+                    r={isSel ? 0.9 : 0.7}
+                    fill={isSel ? "hsl(45 90% 65%)" : "hsl(var(--clinical))"}
+                    stroke="hsl(var(--background))"
+                    strokeWidth="0.5"
+                  />
+                  <text
+                    x={labelX}
+                    y={f.labelY - (lines.length - 1) * 1.05}
+                    fontSize="1.85"
+                    fontWeight="600"
+                    textAnchor={anchor}
+                    dominantBaseline="middle"
+                    fill={isSel ? "hsl(45 90% 70%)" : "hsl(var(--foreground))"}
+                    stroke="hsl(var(--background))"
+                    strokeWidth="0.5"
+                    paintOrder="stroke"
+                    style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                   >
-                    <line
-                      x1={f.dot.x}
-                      y1={f.dot.y}
-                      x2={labelX}
-                      y2={f.labelY}
-                      stroke={isSel ? "hsl(45 90% 65%)" : "hsl(var(--clinical))"}
-                      strokeWidth={isSel ? 0.3 : 0.2}
-                      vectorEffect="non-scaling-stroke"
-                    />
-                    <circle
-                      cx={f.dot.x}
-                      cy={f.dot.y}
-                      r={isSel ? 0.9 : 0.7}
-                      fill={isSel ? "hsl(45 90% 65%)" : "hsl(var(--clinical))"}
-                      stroke="hsl(var(--background))"
-                      strokeWidth="0.5"
-                    />
-                    <text
-                      x={labelX}
-                      y={f.labelY - (lines.length - 1) * 1.05}
-                      fontSize="1.85"
-                      fontWeight="600"
-                      textAnchor={anchor}
-                      dominantBaseline="middle"
-                      fill={isSel ? "hsl(45 90% 70%)" : "hsl(var(--foreground))"}
-                      stroke="hsl(var(--background))"
-                      strokeWidth="0.5"
-                      paintOrder="stroke"
-                      style={{ fontFamily: "Inter, system-ui, sans-serif" }}
-                    >
-                      {lines.map((line, i) => (
-                        <tspan key={i} x={labelX} dy={i === 0 ? 0 : 2.1}>
-                          {line}
-                        </tspan>
-                      ))}
-                    </text>
-                  </g>
-    </DiagramFigure>
+                    {lines.map((line, i) => (
+                      <tspan key={i} x={labelX} dy={i === 0 ? 0 : 2.1}>
+                        {line}
+                      </tspan>
+                    ))}
+                  </text>
+                </g>
   );
             })}
           </svg>

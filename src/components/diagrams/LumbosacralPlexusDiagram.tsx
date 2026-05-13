@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { PlexusChipRow, PlexusDetailPanel, ROOT_COLORS } from "./plexusShared";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type NerveKey = "femoral" | "obturator" | "lcnt" | "sciatic" | "tibial" | "peroneal" | "pudendal";
 
@@ -148,18 +147,12 @@ const LumbosacralPlexusDiagram = () => {
               {allRoots.map((level) => {
                 const isSacral = level.startsWith("S");
                 return (
-    <DiagramFigure
-      id="lumbosacral-plexus-diagram"
-      title="Lumbosacral plexus"
-      description="Auto-generated wrapper for the Lumbosacral plexus anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <g key={level}>
-                      <rect x={spineX - 12} y={rootY[level] - 9} width={isSacral ? 24 : 26} height={isSacral ? 18 : 20}
-                        rx="3" fill="hsl(var(--muted))" stroke={ROOT_COLORS[level]} strokeWidth="1" />
-                      <text x={spineX} y={rootY[level] + 4} fontSize="8" fill={ROOT_COLORS[level]}
-                        textAnchor="middle" fontWeight="700">{level}</text>
-                    </g>
-    </DiagramFigure>
+                      <g key={level}>
+                    <rect x={spineX - 12} y={rootY[level] - 9} width={isSacral ? 24 : 26} height={isSacral ? 18 : 20}
+                      rx="3" fill="hsl(var(--muted))" stroke={ROOT_COLORS[level]} strokeWidth="1" />
+                    <text x={spineX} y={rootY[level] + 4} fontSize="8" fill={ROOT_COLORS[level]}
+                      textAnchor="middle" fontWeight="700">{level}</text>
+                  </g>
   );
               })}
               {/* Spinal cord / conus */}

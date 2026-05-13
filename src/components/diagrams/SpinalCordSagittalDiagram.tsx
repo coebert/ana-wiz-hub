@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const SpinalCordSagittalDiagram = () => {
   const [highlight, setHighlight] = useState<string | null>(null);
@@ -201,19 +200,13 @@ const SpinalCordSagittalDiagram = () => {
                   const endX = 188 + (i * 24) / 11;
                   const endY = filumEnd + 10 + (i % 3) * 10;
                   return (
-    <DiagramFigure
-      id="spinal-cord-sagittal-diagram"
-      title="Spinal cord sagittal"
-      description="Auto-generated wrapper for the Spinal cord sagittal anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                          <path
-                        key={`cauda-${i}`}
-                        d={`M ${startX} ${conusEnd} Q ${startX - 2} ${(conusEnd + endY) / 2}, ${endX} ${endY}`}
-                        stroke={isHL("cauda") ? "hsl(var(--primary))" : "hsl(var(--anatomy))"}
-                        strokeWidth="1"
-                        fill="none"
-                      />
-    </DiagramFigure>
+                        <path
+                      key={`cauda-${i}`}
+                      d={`M ${startX} ${conusEnd} Q ${startX - 2} ${(conusEnd + endY) / 2}, ${endX} ${endY}`}
+                      stroke={isHL("cauda") ? "hsl(var(--primary))" : "hsl(var(--anatomy))"}
+                      strokeWidth="1"
+                      fill="none"
+                    />
   );
                 })}
               </g>

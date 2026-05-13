@@ -3,7 +3,6 @@ import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 export const MidazolamPharmacologyDiagram = () => {
   const [eGFR, setEGFR] = useState([90]); // ml/min/1.73m²
@@ -284,16 +283,10 @@ export const MidazolamPharmacologyDiagram = () => {
               {[0, 30, 60, 90, 120, 180, 240].map((t) => {
                 const x = 40 + (t / 240) * 540;
                 return (
-    <DiagramFigure
-      id="midazolam-pharmacology-diagram"
-      title="Midazolam pharmacology"
-      description="Auto-generated wrapper for the Midazolam pharmacology anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <g key={t}>
-                      <line x1={x} y1="148" x2={x} y2="154" stroke="hsl(var(--border))" />
-                      <text x={x} y="166" textAnchor="middle" fontSize="9" className="fill-muted-foreground">{t}</text>
-                    </g>
-    </DiagramFigure>
+                      <g key={t}>
+                    <line x1={x} y1="148" x2={x} y2="154" stroke="hsl(var(--border))" />
+                    <text x={x} y="166" textAnchor="middle" fontSize="9" className="fill-muted-foreground">{t}</text>
+                  </g>
   );
               })}
               <text x="310" y="178" textAnchor="middle" fontSize="9" className="fill-muted-foreground">time (min)</text>

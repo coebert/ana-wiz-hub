@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Procedure = {
   id: string;
@@ -239,18 +238,12 @@ const PaediatricSurgicalProceduresDiagram = () => {
           const proc = PROCEDURES.find((p) => p.id === lp.id)!;
           const isSel = selectedId === lp.id;
           return (
-    <DiagramFigure
-      id="paediatric-surgical-procedures-diagram"
-      title="Paediatric surgical procedures"
-      description="Auto-generated wrapper for the Paediatric surgical procedures anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <g key={`lbl-${lp.id}`} opacity={isSel ? 1 : 0.6} style={{ cursor: "pointer" }} onClick={() => setSelectedId(lp.id)}>
-                <line x1={lp.ax} y1={lp.ay} x2={lp.lx - 4} y2={lp.ly} stroke={proc.color} strokeWidth={isSel ? 1.2 : 0.6} />
-                <text x={lp.lx} y={lp.ly + 3} fontSize="10" fontWeight="700" fill={proc.color}>
-                  {proc.name.split(" — ")[0]}
-                </text>
-              </g>
-    </DiagramFigure>
+                <g key={`lbl-${lp.id}`} opacity={isSel ? 1 : 0.6} style={{ cursor: "pointer" }} onClick={() => setSelectedId(lp.id)}>
+              <line x1={lp.ax} y1={lp.ay} x2={lp.lx - 4} y2={lp.ly} stroke={proc.color} strokeWidth={isSel ? 1.2 : 0.6} />
+              <text x={lp.lx} y={lp.ly + 3} fontSize="10" fontWeight="700" fill={proc.color}>
+                {proc.name.split(" — ")[0]}
+              </text>
+            </g>
   );
         })}
 

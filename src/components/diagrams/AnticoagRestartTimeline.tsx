@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* ─── data ─── */
 
@@ -320,49 +319,43 @@ export const AnticoagRestartTimeline = () => {
             const width = ev.type === "milestone" ? 0 : ((ev.endH - ev.startH) / scaleMax) * 100;
 
             return (
-    <DiagramFigure
-      id="anticoag-restart-timeline"
-      title="Anticoag restart timeline"
-      description="Auto-generated wrapper for the Anticoag restart timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <div key={i} className="flex items-center gap-2 group">
-                  <div className="w-[140px] sm:w-[180px] shrink-0 text-right pr-2">
-                    <span className="text-[10px] sm:text-xs text-muted-foreground leading-tight">{ev.label}</span>
-                  </div>
-                  <div className="flex-1 relative h-7 rounded bg-secondary/30">
-                    {ev.type === "bar" ? (
+                  <div key={i} className="flex items-center gap-2 group">
+                <div className="w-[140px] sm:w-[180px] shrink-0 text-right pr-2">
+                  <span className="text-[10px] sm:text-xs text-muted-foreground leading-tight">{ev.label}</span>
+                </div>
+                <div className="flex-1 relative h-7 rounded bg-secondary/30">
+                  {ev.type === "bar" ? (
+                    <div
+                      className="absolute top-0.5 bottom-0.5 rounded transition-all"
+                      style={{
+                        left: `${left}%`,
+                        width: `${Math.max(1, width)}%`,
+                        backgroundColor: withAlpha(ev.color, 0.5),
+                        borderLeft: `3px solid ${ev.color}`,
+                      }}
+                    />
+                  ) : (
+                    <div
+                      className="absolute top-0 bottom-0 w-0.5 flex items-center"
+                      style={{ left: `${left}%` }}
+                    >
+                      <div className="w-0.5 h-full" style={{ backgroundColor: ev.color }} />
                       <div
-                        className="absolute top-0.5 bottom-0.5 rounded transition-all"
-                        style={{
-                          left: `${left}%`,
-                          width: `${Math.max(1, width)}%`,
-                          backgroundColor: withAlpha(ev.color, 0.5),
-                          borderLeft: `3px solid ${ev.color}`,
-                        }}
+                        className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2"
+                        style={{ borderColor: ev.color, backgroundColor: withAlpha(ev.color, 0.25) }}
                       />
-                    ) : (
-                      <div
-                        className="absolute top-0 bottom-0 w-0.5 flex items-center"
-                        style={{ left: `${left}%` }}
-                      >
-                        <div className="w-0.5 h-full" style={{ backgroundColor: ev.color }} />
-                        <div
-                          className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2"
-                          style={{ borderColor: ev.color, backgroundColor: withAlpha(ev.color, 0.25) }}
-                        />
-                      </div>
-                    )}
-                    {/* Tooltip on hover */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
-                      <div
-                        className="absolute -top-12 left-1/2 -translate-x-1/2 bg-popover text-popover-foreground border border-border rounded-md px-2 py-1 text-[10px] leading-tight shadow-md w-48 text-center"
-                      >
-                        {ev.detail}
-                      </div>
+                    </div>
+                  )}
+                  {/* Tooltip on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                    <div
+                      className="absolute -top-12 left-1/2 -translate-x-1/2 bg-popover text-popover-foreground border border-border rounded-md px-2 py-1 text-[10px] leading-tight shadow-md w-48 text-center"
+                    >
+                      {ev.detail}
                     </div>
                   </div>
                 </div>
-    </DiagramFigure>
+              </div>
   );
           })}
         </div>

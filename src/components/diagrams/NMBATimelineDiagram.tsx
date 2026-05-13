@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const agents = [
   { name: "Suxamethonium", type: "depol", onset: 0.5, duration: 8, color: "hsl(0, 70%, 55%)", intubation: 1 },
@@ -94,43 +93,37 @@ const NMBATimelineDiagram = () => {
             const isActive = cursorMin >= a.onset && cursorMin <= a.onset + a.duration;
 
             return (
-    <DiagramFigure
-      id="nmba-timeline-diagram"
-      title="Nmba timeline"
-      description="Auto-generated wrapper for the Nmba timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g key={a.name}>
-                  {/* Row bg */}
-                  {i % 2 === 0 && (
-                    <rect x={CHART_X} y={y - 2} width={CHART_W} height={ROW_H} fill="hsl(var(--muted))" opacity={0.15} rx={2} stroke="hsl(var(--border))" strokeWidth="0.75" />
-                  )}
-  
-                  {/* Label */}
-                  <text x={CHART_X - 6} y={y + ROW_H / 2 + 1} textAnchor="end" fontSize={10} fill={isActive ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"} fontWeight={isActive ? 600 : 400}>
-                    {a.name}
-                  </text>
-  
-                  {/* Onset ramp */}
-                  <polygon
-                    points={`${minToX(0)},${y + ROW_H - 8} ${barStart},${y + 6} ${barStart},${y + ROW_H - 8}`}
-                    fill={a.color}
-                    opacity={0.25}
-                  />
-  
-                  {/* Duration bar */}
-                  <rect x={barStart} y={y + 6} width={barEnd - barStart} height={ROW_H - 14} rx={3} fill={a.color} opacity={0.6} />
-  
-                  {/* Intubation marker */}
-                  <line x1={intubX} y1={y + 4} x2={intubX} y2={y + ROW_H - 6} stroke={a.color} strokeWidth={2} />
-                  <circle cx={intubX} cy={y + 4} r={2.5} fill={a.color} />
-  
-                  {/* Type badge */}
-                  <rect x={barStart + 3} y={y + 8} width={a.type === "depol" ? 30 : 28} height={12} rx={2} fill="hsl(var(--background))" opacity={0.7} />
-                  <text x={barStart + 5} y={y + 17} fontSize={7} fill={a.color} fontWeight={600}>
-                    {a.type === "depol" ? "DEPOL" : "NDMR"}
-                  </text>
-                </g>
-    </DiagramFigure>
+                  <g key={a.name}>
+                {/* Row bg */}
+                {i % 2 === 0 && (
+                  <rect x={CHART_X} y={y - 2} width={CHART_W} height={ROW_H} fill="hsl(var(--muted))" opacity={0.15} rx={2} stroke="hsl(var(--border))" strokeWidth="0.75" />
+                )}
+
+                {/* Label */}
+                <text x={CHART_X - 6} y={y + ROW_H / 2 + 1} textAnchor="end" fontSize={10} fill={isActive ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"} fontWeight={isActive ? 600 : 400}>
+                  {a.name}
+                </text>
+
+                {/* Onset ramp */}
+                <polygon
+                  points={`${minToX(0)},${y + ROW_H - 8} ${barStart},${y + 6} ${barStart},${y + ROW_H - 8}`}
+                  fill={a.color}
+                  opacity={0.25}
+                />
+
+                {/* Duration bar */}
+                <rect x={barStart} y={y + 6} width={barEnd - barStart} height={ROW_H - 14} rx={3} fill={a.color} opacity={0.6} />
+
+                {/* Intubation marker */}
+                <line x1={intubX} y1={y + 4} x2={intubX} y2={y + ROW_H - 6} stroke={a.color} strokeWidth={2} />
+                <circle cx={intubX} cy={y + 4} r={2.5} fill={a.color} />
+
+                {/* Type badge */}
+                <rect x={barStart + 3} y={y + 8} width={a.type === "depol" ? 30 : 28} height={12} rx={2} fill="hsl(var(--background))" opacity={0.7} />
+                <text x={barStart + 5} y={y + 17} fontSize={7} fill={a.color} fontWeight={600}>
+                  {a.type === "depol" ? "DEPOL" : "NDMR"}
+                </text>
+              </g>
   );
           })}
 

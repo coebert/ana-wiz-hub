@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Scenario = "type1" | "type2diet" | "type2oral" | "type2insulin";
 
@@ -93,81 +92,75 @@ const PerioperativeDiabetesDiagram = () => {
   const data = scenarios[selected];
 
   return (
-    <DiagramFigure
-      id="perioperative-diabetes-diagram"
-      title="Perioperative diabetes"
-      description="Auto-generated wrapper for the Perioperative diabetes anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-4 mb-8">
-        <div className="p-4 rounded-lg border border-border bg-card">
-          <h2 className="text-xl font-serif font-bold text-foreground mb-1">Perioperative Diabetes Management</h2>
-          <p className="text-sm text-muted-foreground mb-3">Select patient type to see medication adjustments. Based on JBDS-IP 2021 guidelines.</p>
-  
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {scenarioKeys.map((s) => (
-              <Button key={s} variant={selected === s ? "default" : "outline"} size="sm" onClick={() => setSelected(s)} className="text-xs">
-                {scenarios[s].label}
-              </Button>
-            ))}
-          </div>
-  
-          <p className="text-xs text-muted-foreground mb-3 italic">{data.description}</p>
-  
-          {/* Medication timeline table */}
-          <div className="overflow-x-auto mb-3">
-            <table className="w-full text-xs border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left p-2 text-foreground font-semibold">Medication</th>
-                  <th className="text-left p-2 text-foreground font-semibold">Day Before</th>
-                  <th className="text-left p-2 text-foreground font-semibold">Morning of Surgery</th>
-                  <th className="text-left p-2 text-foreground font-semibold">Postoperative</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.meds.map((m) => (
-                  <tr key={m.med} className={`border-b border-border/50 ${m.color}`}>
-                    <td className="p-2 font-medium text-foreground">{m.med}</td>
-                    <td className="p-2 text-muted-foreground">{m.day_before}</td>
-                    <td className="p-2 text-muted-foreground">{m.morning_of}</td>
-                    <td className="p-2 text-muted-foreground">{m.postop}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-  
-          {/* Notes */}
-          <div className="space-y-1.5">
-            {data.notes.map((n, i) => (
-              <div key={i} className="flex gap-2 items-start">
-                <span className="flex-shrink-0 w-4 h-4 rounded-full bg-accent/20 text-accent text-[9px] font-bold flex items-center justify-center mt-0.5">!</span>
-                <p className="text-xs text-muted-foreground leading-relaxed">{n}</p>
-              </div>
-            ))}
-          </div>
+        <div className="space-y-4 mb-8">
+      <div className="p-4 rounded-lg border border-border bg-card">
+        <h2 className="text-xl font-serif font-bold text-foreground mb-1">Perioperative Diabetes Management</h2>
+        <p className="text-sm text-muted-foreground mb-3">Select patient type to see medication adjustments. Based on JBDS-IP 2021 guidelines.</p>
+
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {scenarioKeys.map((s) => (
+            <Button key={s} variant={selected === s ? "default" : "outline"} size="sm" onClick={() => setSelected(s)} className="text-xs">
+              {scenarios[s].label}
+            </Button>
+          ))}
         </div>
-  
-        {/* Glucose targets */}
-        <div className="grid sm:grid-cols-3 gap-2">
-          <div className="p-3 rounded-lg border border-chart-4/30 bg-chart-4/5">
-            <p className="text-xs font-semibold text-foreground">Target Glucose</p>
-            <p className="text-lg font-bold text-chart-4">6–10 mmol/L</p>
-            <p className="text-[10px] text-muted-foreground">NICE-SUGAR: tight control (4.5–6) increased mortality</p>
-          </div>
-          <div className="p-3 rounded-lg border border-destructive/30 bg-destructive/5">
-            <p className="text-xs font-semibold text-foreground">Hypoglycaemia</p>
-            <p className="text-lg font-bold text-destructive">&lt;4 mmol/L</p>
-            <p className="text-[10px] text-muted-foreground">75–100 mL 20% glucose IV; glucagon 1 mg IM</p>
-          </div>
-          <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
-            <p className="text-xs font-semibold text-foreground">Start VRIII when</p>
-            <p className="text-lg font-bold text-primary">&gt;12 mmol/L</p>
-            <p className="text-[10px] text-muted-foreground">Or missing ≥1 meal, or Type 1 DM always</p>
-          </div>
+
+        <p className="text-xs text-muted-foreground mb-3 italic">{data.description}</p>
+
+        {/* Medication timeline table */}
+        <div className="overflow-x-auto mb-3">
+          <table className="w-full text-xs border-collapse">
+            <thead>
+              <tr className="border-b border-border">
+                <th className="text-left p-2 text-foreground font-semibold">Medication</th>
+                <th className="text-left p-2 text-foreground font-semibold">Day Before</th>
+                <th className="text-left p-2 text-foreground font-semibold">Morning of Surgery</th>
+                <th className="text-left p-2 text-foreground font-semibold">Postoperative</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.meds.map((m) => (
+                <tr key={m.med} className={`border-b border-border/50 ${m.color}`}>
+                  <td className="p-2 font-medium text-foreground">{m.med}</td>
+                  <td className="p-2 text-muted-foreground">{m.day_before}</td>
+                  <td className="p-2 text-muted-foreground">{m.morning_of}</td>
+                  <td className="p-2 text-muted-foreground">{m.postop}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Notes */}
+        <div className="space-y-1.5">
+          {data.notes.map((n, i) => (
+            <div key={i} className="flex gap-2 items-start">
+              <span className="flex-shrink-0 w-4 h-4 rounded-full bg-accent/20 text-accent text-[9px] font-bold flex items-center justify-center mt-0.5">!</span>
+              <p className="text-xs text-muted-foreground leading-relaxed">{n}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </DiagramFigure>
+
+      {/* Glucose targets */}
+      <div className="grid sm:grid-cols-3 gap-2">
+        <div className="p-3 rounded-lg border border-chart-4/30 bg-chart-4/5">
+          <p className="text-xs font-semibold text-foreground">Target Glucose</p>
+          <p className="text-lg font-bold text-chart-4">6–10 mmol/L</p>
+          <p className="text-[10px] text-muted-foreground">NICE-SUGAR: tight control (4.5–6) increased mortality</p>
+        </div>
+        <div className="p-3 rounded-lg border border-destructive/30 bg-destructive/5">
+          <p className="text-xs font-semibold text-foreground">Hypoglycaemia</p>
+          <p className="text-lg font-bold text-destructive">&lt;4 mmol/L</p>
+          <p className="text-[10px] text-muted-foreground">75–100 mL 20% glucose IV; glucagon 1 mg IM</p>
+        </div>
+        <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
+          <p className="text-xs font-semibold text-foreground">Start VRIII when</p>
+          <p className="text-lg font-bold text-primary">&gt;12 mmol/L</p>
+          <p className="text-[10px] text-muted-foreground">Or missing ≥1 meal, or Type 1 DM always</p>
+        </div>
+      </div>
+    </div>
   );
 };
 

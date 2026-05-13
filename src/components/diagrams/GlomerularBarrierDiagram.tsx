@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type LayerId = "endothelium" | "gbm" | "podocytes" | "slit-diaphragm" | "mesangial" | "filtrate";
 
@@ -252,38 +251,32 @@ export const GlomerularBarrierDiagram = () => {
           {Array.from({ length: 10 }).map((_, i) => {
             const x = 15 + i * 48;
             return (
-    <DiagramFigure
-      id="glomerular-barrier-diagram"
-      title="Glomerular barrier"
-      description="Auto-generated wrapper for the Glomerular barrier anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g key={`fp-${i}`}>
-                  {/* Left foot process */}
-                  <path d={`M ${x} 180 L ${x} 220 Q ${x + 5} 240 ${x + 10} 240 L ${x + 18} 240 Q ${x + 20} 240 ${x + 20} 235 L ${x + 20} 220`}
-                    fill="hsl(200 50% 50%)" fillOpacity="0.15" stroke="hsl(200 55% 50%)" strokeWidth="1" />
-                  {/* Right foot process */}
-                  <path d={`M ${x + 28} 180 L ${x + 28} 220 Q ${x + 33} 240 ${x + 35} 240 L ${x + 42} 240 Q ${x + 46} 240 ${x + 46} 235 L ${x + 46} 220`}
-                    fill="hsl(200 50% 50%)" fillOpacity="0.15" stroke="hsl(200 55% 50%)" strokeWidth="1" />
-                  {/* Slit diaphragm between */}
-                  <g className="cursor-pointer" onClick={(e) => { e.stopPropagation(); setActiveLayer(activeLayer === "slit-diaphragm" ? null : "slit-diaphragm"); }}>
-                    {/* Nephrin zipper structure */}
-                    {[222, 226, 230, 234].map((sy, j) => (
-                      <line key={`sd-${i}-${j}`} x1={x + 20} y1={sy} x2={x + 28} y2={sy + (j % 2 === 0 ? 1 : -1)}
-                        stroke="hsl(270 50% 55%)" strokeWidth={activeLayer === "slit-diaphragm" ? 1.2 : 0.6}
-                        opacity={activeLayer === "slit-diaphragm" ? 0.8 : 0.4} />
-                    ))}
-                  </g>
-                  {/* Actin filaments inside foot processes */}
-                  {activeLayer === "podocytes" && (
-                    <g opacity="0.3">
-                      <line x1={x + 5} y1={185} x2={x + 5} y2={230} stroke="hsl(200 40% 55%)" strokeWidth="0.5" />
-                      <line x1={x + 15} y1={185} x2={x + 15} y2={230} stroke="hsl(200 40% 55%)" strokeWidth="0.5" />
-                      <line x1={x + 33} y1={185} x2={x + 33} y2={230} stroke="hsl(200 40% 55%)" strokeWidth="0.5" />
-                      <line x1={x + 41} y1={185} x2={x + 41} y2={230} stroke="hsl(200 40% 55%)" strokeWidth="0.5" />
-                    </g>
-                  )}
+                  <g key={`fp-${i}`}>
+                {/* Left foot process */}
+                <path d={`M ${x} 180 L ${x} 220 Q ${x + 5} 240 ${x + 10} 240 L ${x + 18} 240 Q ${x + 20} 240 ${x + 20} 235 L ${x + 20} 220`}
+                  fill="hsl(200 50% 50%)" fillOpacity="0.15" stroke="hsl(200 55% 50%)" strokeWidth="1" />
+                {/* Right foot process */}
+                <path d={`M ${x + 28} 180 L ${x + 28} 220 Q ${x + 33} 240 ${x + 35} 240 L ${x + 42} 240 Q ${x + 46} 240 ${x + 46} 235 L ${x + 46} 220`}
+                  fill="hsl(200 50% 50%)" fillOpacity="0.15" stroke="hsl(200 55% 50%)" strokeWidth="1" />
+                {/* Slit diaphragm between */}
+                <g className="cursor-pointer" onClick={(e) => { e.stopPropagation(); setActiveLayer(activeLayer === "slit-diaphragm" ? null : "slit-diaphragm"); }}>
+                  {/* Nephrin zipper structure */}
+                  {[222, 226, 230, 234].map((sy, j) => (
+                    <line key={`sd-${i}-${j}`} x1={x + 20} y1={sy} x2={x + 28} y2={sy + (j % 2 === 0 ? 1 : -1)}
+                      stroke="hsl(270 50% 55%)" strokeWidth={activeLayer === "slit-diaphragm" ? 1.2 : 0.6}
+                      opacity={activeLayer === "slit-diaphragm" ? 0.8 : 0.4} />
+                  ))}
                 </g>
-    </DiagramFigure>
+                {/* Actin filaments inside foot processes */}
+                {activeLayer === "podocytes" && (
+                  <g opacity="0.3">
+                    <line x1={x + 5} y1={185} x2={x + 5} y2={230} stroke="hsl(200 40% 55%)" strokeWidth="0.5" />
+                    <line x1={x + 15} y1={185} x2={x + 15} y2={230} stroke="hsl(200 40% 55%)" strokeWidth="0.5" />
+                    <line x1={x + 33} y1={185} x2={x + 33} y2={230} stroke="hsl(200 40% 55%)" strokeWidth="0.5" />
+                    <line x1={x + 41} y1={185} x2={x + 41} y2={230} stroke="hsl(200 40% 55%)" strokeWidth="0.5" />
+                  </g>
+                )}
+              </g>
   );
           })}
           <text x="475" y="198" fontSize="6" fill="hsl(200 55% 50%)" textAnchor="end" fontWeight="600" opacity="0.8">

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Track = "lv" | "mv" | "ao";
 
@@ -350,27 +349,21 @@ const MModeDiagram = () => {
                   const top = `${c.y1 * 100}%`;
                   const height = `${(c.y2 - c.y1) * 100}%`;
                   return (
-    <DiagramFigure
-      id="m-mode-diagram"
-      title="M mode"
-      description="Auto-generated wrapper for the M mode anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                          <div
-                        key={i}
-                        className="absolute"
-                        style={{ left: `${4 + i * 14}%`, top, height, width: "10px" }}
-                      >
-                        <div className="absolute inset-y-0 left-1/2 -translate-x-1/2" style={{ width: "1px", background: c.color, opacity: 0.85 }} />
-                        <div className="absolute top-0 -left-1" style={{ width: "12px", height: "1px", background: c.color }} />
-                        <div className="absolute bottom-0 -left-1" style={{ width: "12px", height: "1px", background: c.color }} />
                         <div
-                          className="absolute text-[9px] font-bold whitespace-nowrap"
-                          style={{ color: c.color, left: "16px", top: "50%", transform: "translateY(-50%)", textShadow: "0 0 4px #000, 0 0 4px #000" }}
-                        >
-                          {c.label}
-                        </div>
+                      key={i}
+                      className="absolute"
+                      style={{ left: `${4 + i * 14}%`, top, height, width: "10px" }}
+                    >
+                      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2" style={{ width: "1px", background: c.color, opacity: 0.85 }} />
+                      <div className="absolute top-0 -left-1" style={{ width: "12px", height: "1px", background: c.color }} />
+                      <div className="absolute bottom-0 -left-1" style={{ width: "12px", height: "1px", background: c.color }} />
+                      <div
+                        className="absolute text-[9px] font-bold whitespace-nowrap"
+                        style={{ color: c.color, left: "16px", top: "50%", transform: "translateY(-50%)", textShadow: "0 0 4px #000, 0 0 4px #000" }}
+                      >
+                        {c.label}
                       </div>
-    </DiagramFigure>
+                    </div>
   );
                 })}
                 {/* Time scale */}

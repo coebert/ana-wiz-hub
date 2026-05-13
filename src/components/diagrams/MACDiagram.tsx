@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Agent {
   name: string;
@@ -186,26 +185,20 @@ export const MACDiagram = () => {
                 pts.push(`${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`);
               }
               return (
-    <DiagramFigure
-      id="mac-diagram"
-      title="Mac"
-      description="Auto-generated wrapper for the Mac anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <g key={agent.name}>
-                    <path d={pts.join(" ")} fill="none" stroke={agent.color} strokeWidth="2" strokeLinecap="round" />
-                    {progress >= 0.9 && (
-                      <text
-                        x={pad.left + plotW + 4}
-                        y={pad.top + plotH - uptakeCurve(agent.bgpc, 20) * plotH + 4}
-                        fontSize="9"
-                        className="font-medium"
-                        style={{ fill: agent.color }}
-                      >
-                        {agent.name}
-                      </text>
-                    )}
-                  </g>
-    </DiagramFigure>
+                    <g key={agent.name}>
+                  <path d={pts.join(" ")} fill="none" stroke={agent.color} strokeWidth="2" strokeLinecap="round" />
+                  {progress >= 0.9 && (
+                    <text
+                      x={pad.left + plotW + 4}
+                      y={pad.top + plotH - uptakeCurve(agent.bgpc, 20) * plotH + 4}
+                      fontSize="9"
+                      className="font-medium"
+                      style={{ fill: agent.color }}
+                    >
+                      {agent.name}
+                    </text>
+                  )}
+                </g>
   );
             })}
 

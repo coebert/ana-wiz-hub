@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Vasopressor & inotrope ladder — Surviving Sepsis Campaign 2021.
@@ -129,33 +128,27 @@ function LadderStep({ step, index }: { step: Step; index: number }) {
     notIndicated:  { color: "hsl(var(--muted-foreground))", badge: "—",      ring: "opacity-40" },
   }[step.status];
   return (
-    <DiagramFigure
-      id="vasopressor-ladder-tool"
-      title="Vasopressor ladder tool"
-      description="Auto-generated wrapper for the Vasopressor ladder tool anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div
-        className={`flex items-start gap-3 rounded-md border border-border p-2 ${cfg.ring}`}
-        style={{ borderLeftWidth: 4, borderLeftColor: cfg.color }}
-      >
         <div
-          className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white"
-          style={{ backgroundColor: cfg.color }}
-        >
-          {index}
-        </div>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-baseline justify-between gap-2 flex-wrap">
-            <p className="text-sm font-semibold text-foreground">{step.name}</p>
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ backgroundColor: `${cfg.color}26`, color: cfg.color }}>
-              {cfg.badge}
-            </span>
-          </div>
-          <p className="text-xs font-mono text-foreground/80">{step.dose}</p>
-          <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{step.rationale}</p>
-        </div>
+      className={`flex items-start gap-3 rounded-md border border-border p-2 ${cfg.ring}`}
+      style={{ borderLeftWidth: 4, borderLeftColor: cfg.color }}
+    >
+      <div
+        className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white"
+        style={{ backgroundColor: cfg.color }}
+      >
+        {index}
       </div>
-    </DiagramFigure>
+      <div className="flex-1 min-w-0">
+        <div className="flex items-baseline justify-between gap-2 flex-wrap">
+          <p className="text-sm font-semibold text-foreground">{step.name}</p>
+          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ backgroundColor: `${cfg.color}26`, color: cfg.color }}>
+            {cfg.badge}
+          </span>
+        </div>
+        <p className="text-xs font-mono text-foreground/80">{step.dose}</p>
+        <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{step.rationale}</p>
+      </div>
+    </div>
   );
 }
 

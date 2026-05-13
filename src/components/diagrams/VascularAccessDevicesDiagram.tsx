@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Hook: returns true if the user has requested reduced motion at the OS level.
@@ -1042,21 +1041,15 @@ export const VascularAccessCrossSectionDiagram: React.FC = () => {
                       const ly = cy + Math.sin(rad) * r * 0.4;
                       const sizes = [0.36, 0.28, 0.28];
                       return (
-    <DiagramFigure
-      id="vascular-access-devices-diagram"
-      title="Vascular access devices"
-      description="Auto-generated wrapper for the Vascular access devices anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                              <circle
-                            key={deg}
-                            cx={lx}
-                            cy={ly}
-                            r={r * sizes[idx]}
-                            fill={lumenFill}
-                            stroke={wallColor}
-                            strokeWidth={0.5}
-                          />
-    </DiagramFigure>
+                            <circle
+                          key={deg}
+                          cx={lx}
+                          cy={ly}
+                          r={r * sizes[idx]}
+                          fill={lumenFill}
+                          stroke={wallColor}
+                          strokeWidth={0.5}
+                        />
   );
                     })}
                   </>

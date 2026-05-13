@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated maternal physiology timeline.
@@ -295,22 +294,16 @@ const PregnancyTimelineDiagram = () => {
             {activeEvents.map((e) => {
               const track = TRACKS.find((t) => t.id === e.track)!;
               return (
-    <DiagramFigure
-      id="pregnancy-timeline-diagram"
-      title="Pregnancy timeline"
-      description="Auto-generated wrapper for the Pregnancy timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <li key={e.id} className="flex gap-2 text-xs">
-                    <span
-                      className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: track.color }}
-                    />
-                    <div>
-                      <span className="font-semibold text-foreground">{e.label}</span>
-                      <span className="text-muted-foreground"> — {e.detail}</span>
-                    </div>
-                  </li>
-    </DiagramFigure>
+                    <li key={e.id} className="flex gap-2 text-xs">
+                  <span
+                    className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: track.color }}
+                  />
+                  <div>
+                    <span className="font-semibold text-foreground">{e.label}</span>
+                    <span className="text-muted-foreground"> — {e.detail}</span>
+                  </div>
+                </li>
   );
             })}
           </ul>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Foramen {
   id: string;
@@ -518,66 +517,60 @@ const SkullBaseDiagram = () => {
             if (yOffsets[f.id] !== undefined) labelY = cy + yOffsets[f.id];
 
             return (
-    <DiagramFigure
-      id="skull-base-diagram"
-      title="Skull base"
-      description="Auto-generated wrapper for the Skull base anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g
-                  key={f.id}
-                  className="cursor-pointer"
-                  onClick={() => setSelected(selected === f.id ? null : f.id)}
-                >
-                  {f.shape.type === "ellipse" ? (
-                    <ellipse
-                      cx={f.shape.cx}
-                      cy={f.shape.cy}
-                      rx={f.shape.rx}
-                      ry={f.shape.ry}
-                      transform={f.shape.rotate ? `rotate(${f.shape.rotate} ${f.shape.cx} ${f.shape.cy})` : undefined}
-                      fill={isSelected ? color : "hsl(var(--foreground))"}
-                      fillOpacity={isSelected ? 0.85 : 0.55}
-                      stroke={isSelected ? color : "hsl(var(--foreground))"}
-                      strokeWidth={isSelected ? 1.6 : 0.8}
+                  <g
+                key={f.id}
+                className="cursor-pointer"
+                onClick={() => setSelected(selected === f.id ? null : f.id)}
+              >
+                {f.shape.type === "ellipse" ? (
+                  <ellipse
+                    cx={f.shape.cx}
+                    cy={f.shape.cy}
+                    rx={f.shape.rx}
+                    ry={f.shape.ry}
+                    transform={f.shape.rotate ? `rotate(${f.shape.rotate} ${f.shape.cx} ${f.shape.cy})` : undefined}
+                    fill={isSelected ? color : "hsl(var(--foreground))"}
+                    fillOpacity={isSelected ? 0.85 : 0.55}
+                    stroke={isSelected ? color : "hsl(var(--foreground))"}
+                    strokeWidth={isSelected ? 1.6 : 0.8}
+                  />
+                ) : (
+                  <path
+                    d={f.shape.d}
+                    fill={isSelected ? color : "hsl(var(--foreground))"}
+                    fillOpacity={isSelected ? 0.85 : 0.55}
+                    stroke={isSelected ? color : "hsl(var(--foreground))"}
+                    strokeWidth={isSelected ? 1.4 : 0.8}
+                  />
+                )}
+
+                {/* Show label only on the "primary" side (left half) to avoid duplication;
+                    midline foramina (cribriform halves, foramen magnum) show one label centred. */}
+                {showLabels && !f.id.endsWith("-r") && (
+                  <>
+                    <line
+                      x1={cx}
+                      y1={cy}
+                      x2={labelX + (anchor === "end" ? 6 : anchor === "start" ? -6 : 0)}
+                      y2={labelY - 2}
+                      stroke={isSelected ? color : "hsl(var(--muted-foreground))"}
+                      strokeWidth={isSelected ? 0.9 : 0.5}
+                      opacity={isSelected ? 0.85 : 0.45}
+                      pointerEvents="none"
                     />
-                  ) : (
-                    <path
-                      d={f.shape.d}
-                      fill={isSelected ? color : "hsl(var(--foreground))"}
-                      fillOpacity={isSelected ? 0.85 : 0.55}
-                      stroke={isSelected ? color : "hsl(var(--foreground))"}
-                      strokeWidth={isSelected ? 1.4 : 0.8}
-                    />
-                  )}
-  
-                  {/* Show label only on the "primary" side (left half) to avoid duplication;
-                      midline foramina (cribriform halves, foramen magnum) show one label centred. */}
-                  {showLabels && !f.id.endsWith("-r") && (
-                    <>
-                      <line
-                        x1={cx}
-                        y1={cy}
-                        x2={labelX + (anchor === "end" ? 6 : anchor === "start" ? -6 : 0)}
-                        y2={labelY - 2}
-                        stroke={isSelected ? color : "hsl(var(--muted-foreground))"}
-                        strokeWidth={isSelected ? 0.9 : 0.5}
-                        opacity={isSelected ? 0.85 : 0.45}
-                        pointerEvents="none"
-                      />
-                      <text
-                        x={labelX}
-                        y={labelY}
-                        textAnchor={anchor}
-                        className="text-[8px] fill-foreground select-none pointer-events-none"
-                        fontWeight={isSelected ? 600 : 400}
-                        opacity={isSelected ? 1 : 0.85}
-                      >
-                        {f.label}
-                      </text>
-                    </>
-                  )}
-                </g>
-    </DiagramFigure>
+                    <text
+                      x={labelX}
+                      y={labelY}
+                      textAnchor={anchor}
+                      className="text-[8px] fill-foreground select-none pointer-events-none"
+                      fontWeight={isSelected ? 600 : 400}
+                      opacity={isSelected ? 1 : 0.85}
+                    >
+                      {f.label}
+                    </text>
+                  </>
+                )}
+              </g>
   );
           })}
         </svg>

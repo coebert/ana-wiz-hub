@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ChevronRight, AlertTriangle, CheckCircle2, Activity, BookOpen, ExternalLink } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Inhalation-injury management flowchart for burns ICU.
@@ -377,24 +376,18 @@ export const InhalationInjuryFlowchart = () => {
               {cited.map((key, i) => {
                 const r = REFERENCES[key];
                 return (
-    <DiagramFigure
-      id="inhalation-injury-flowchart"
-      title="Inhalation injury"
-      description="Auto-generated wrapper for the Inhalation injury clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <li key={key} id={`inhal-ref-${key}`} className="flex gap-1.5 scroll-mt-24">
-                      <span className="font-bold text-primary shrink-0">[{i + 1}]</span>
-                      <a
-                        href={r.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-foreground hover:underline inline-flex items-baseline gap-1"
-                      >
-                        <span>{r.label}</span>
-                        <ExternalLink className="h-2.5 w-2.5 shrink-0 opacity-60" />
-                      </a>
-                    </li>
-    </DiagramFigure>
+                      <li key={key} id={`inhal-ref-${key}`} className="flex gap-1.5 scroll-mt-24">
+                    <span className="font-bold text-primary shrink-0">[{i + 1}]</span>
+                    <a
+                      href={r.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground hover:underline inline-flex items-baseline gap-1"
+                    >
+                      <span>{r.label}</span>
+                      <ExternalLink className="h-2.5 w-2.5 shrink-0 opacity-60" />
+                    </a>
+                  </li>
   );
               })}
             </ol>

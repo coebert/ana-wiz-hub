@@ -86,17 +86,11 @@ export function SpinalCordStimulatorDiagram() {
                 {Array.from({ length: 8 }).map((_, i) => {
                   const cy = bot - i * 7 - 4;
                   return (
-    <DiagramFigure
-      id="spinal-cord-stimulator-diagram"
-      title="Spinal cord stimulator"
-      description="Auto-generated wrapper for the Spinal cord stimulator anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                          <rect key={i} x={leadX - 2.4} y={cy} width="4.8" height="4" rx="1"
-                        fill="hsl(45 90% 60%)" stroke="hsl(45 70% 35%)" strokeWidth="0.5">
-                        <animate attributeName="opacity"
-                          values="1;0.4;1" dur="1.6s" begin={`${i * 0.08}s`} repeatCount="indefinite" />
-                      </rect>
-    </DiagramFigure>
+                        <rect key={i} x={leadX - 2.4} y={cy} width="4.8" height="4" rx="1"
+                      fill="hsl(45 90% 60%)" stroke="hsl(45 70% 35%)" strokeWidth="0.5">
+                      <animate attributeName="opacity"
+                        values="1;0.4;1" dur="1.6s" begin={`${i * 0.08}s`} repeatCount="indefinite" />
+                    </rect>
   );
                 })}
                 {/* paraesthesia/stimulation halo */}

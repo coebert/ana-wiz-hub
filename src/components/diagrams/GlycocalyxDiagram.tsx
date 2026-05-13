@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Detailed cross-section of the endothelial glycocalyx.
@@ -195,22 +194,16 @@ export const GlycocalyxDiagram = () => {
                 const broken = i % 3 !== 0;
                 const len = broken ? 8 + (i % 4) * 2 : 38;
                 return (
-    <DiagramFigure
-      id="glycocalyx-diagram"
-      title="Glycocalyx"
-      description="Auto-generated wrapper for the Glycocalyx anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <line
-                      key={`gx2-${i}`}
-                      x1={x}
-                      y1={228}
-                      x2={x}
-                      y2={228 - len}
-                      stroke="hsl(var(--accent))"
-                      strokeWidth={broken ? 0.8 : 1.4}
-                      opacity={broken ? 0.5 : 1}
-                    />
-    </DiagramFigure>
+                      <line
+                    key={`gx2-${i}`}
+                    x1={x}
+                    y1={228}
+                    x2={x}
+                    y2={228 - len}
+                    stroke="hsl(var(--accent))"
+                    strokeWidth={broken ? 0.8 : 1.4}
+                    opacity={broken ? 0.5 : 1}
+                  />
   );
               })}
 

@@ -2,7 +2,6 @@ import { useState, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { RotateCcw } from "lucide-react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type StepKey = "plasmaOsm" | "urineOsm" | "urineNa" | "volume";
 type PlasmaOsm = "low" | "normalHigh";
@@ -159,191 +158,185 @@ const HyponatraemiaWorkupDiagram = () => {
   const showVolumeUrineNa = volume === "hypo" || volume === "hyper";
 
   return (
-    <DiagramFigure
-      id="hyponatraemia-workup-diagram"
-      title="Hyponatraemia workup"
-      description="Auto-generated wrapper for the Hyponatraemia workup anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-5">
-        <div className="flex items-center justify-between gap-3 flex-wrap">
-          <p className="text-sm text-muted-foreground">
-            Plasma Na⁺ &lt; 135 mmol/L. Work through the algorithm step-by-step.
-          </p>
-          <button
-            onClick={reset}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-muted text-foreground text-xs font-semibold hover:bg-muted/70 transition-colors"
-          >
-            <RotateCcw className="w-3 h-3" />
-            Reset
-          </button>
+        <div className="space-y-5">
+      <div className="flex items-center justify-between gap-3 flex-wrap">
+        <p className="text-sm text-muted-foreground">
+          Plasma Na⁺ &lt; 135 mmol/L. Work through the algorithm step-by-step.
+        </p>
+        <button
+          onClick={reset}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-muted text-foreground text-xs font-semibold hover:bg-muted/70 transition-colors"
+        >
+          <RotateCcw className="w-3 h-3" />
+          Reset
+        </button>
+      </div>
+
+      {/* Progress chips */}
+      <div className="flex flex-wrap gap-2 items-center text-xs">
+        <Chip label="Plasma osm" value={plasmaOsm ? (plasmaOsm === "low" ? "Low" : "Normal/High") : null} active={currentStep === "plasmaOsm"} />
+        <Arrow />
+        <Chip label="Urine osm" value={urineOsm ? (urineOsm === "lt100" ? "<100" : "≥100") : null} active={currentStep === "urineOsm"} disabled={plasmaOsm !== "low"} />
+        <Arrow />
+        <Chip label="Volume status" value={volume ? volume === "hypo" ? "Hypo" : volume === "eu" ? "Eu" : "Hyper" : null} active={currentStep === "volume"} disabled={urineOsm !== "gte100"} />
+        <Arrow />
+        <Chip label="Urine Na⁺" value={urineNa ? (urineNa === "lt20" ? "<20" : "≥30") : null} active={currentStep === "urineNa"} disabled={!showVolumeUrineNa} />
+      </div>
+
+      {/* Step 1: Plasma osmolality */}
+      <Step
+        number={1}
+        title="Measure plasma osmolality"
+        helper="Normal: 275–295 mOsm/kg. Distinguishes true hypotonic hyponatraemia from pseudo / translocational."
+        active={currentStep === "plasmaOsm"}
+        completed={plasmaOsm !== null}
+      >
+        <div className="grid sm:grid-cols-2 gap-2">
+          <Choice
+            label="Low (< 275 mOsm/kg)"
+            sublabel="True hypotonic hyponatraemia → continue"
+            selected={plasmaOsm === "low"}
+            onClick={() => { setPlasmaOsm("low"); setUrineOsm(null); setVolume(null); setUrineNa(null); }}
+          />
+          <Choice
+            label="Normal or High (≥ 275)"
+            sublabel="Pseudo- or translocational hyponatraemia"
+            selected={plasmaOsm === "normalHigh"}
+            onClick={() => { setPlasmaOsm("normalHigh"); setUrineOsm(null); setVolume(null); setUrineNa(null); }}
+          />
         </div>
-  
-        {/* Progress chips */}
-        <div className="flex flex-wrap gap-2 items-center text-xs">
-          <Chip label="Plasma osm" value={plasmaOsm ? (plasmaOsm === "low" ? "Low" : "Normal/High") : null} active={currentStep === "plasmaOsm"} />
-          <Arrow />
-          <Chip label="Urine osm" value={urineOsm ? (urineOsm === "lt100" ? "<100" : "≥100") : null} active={currentStep === "urineOsm"} disabled={plasmaOsm !== "low"} />
-          <Arrow />
-          <Chip label="Volume status" value={volume ? volume === "hypo" ? "Hypo" : volume === "eu" ? "Eu" : "Hyper" : null} active={currentStep === "volume"} disabled={urineOsm !== "gte100"} />
-          <Arrow />
-          <Chip label="Urine Na⁺" value={urineNa ? (urineNa === "lt20" ? "<20" : "≥30") : null} active={currentStep === "urineNa"} disabled={!showVolumeUrineNa} />
-        </div>
-  
-        {/* Step 1: Plasma osmolality */}
+      </Step>
+
+      {/* Step 2: Urine osmolality (only if plasma low) */}
+      {plasmaOsm === "low" && (
         <Step
-          number={1}
-          title="Measure plasma osmolality"
-          helper="Normal: 275–295 mOsm/kg. Distinguishes true hypotonic hyponatraemia from pseudo / translocational."
-          active={currentStep === "plasmaOsm"}
-          completed={plasmaOsm !== null}
+          number={2}
+          title="Measure urine osmolality"
+          helper="Distinguishes appropriate ADH suppression (dilute urine) from inappropriate ADH activity."
+          active={currentStep === "urineOsm"}
+          completed={urineOsm !== null}
         >
           <div className="grid sm:grid-cols-2 gap-2">
             <Choice
-              label="Low (< 275 mOsm/kg)"
-              sublabel="True hypotonic hyponatraemia → continue"
-              selected={plasmaOsm === "low"}
-              onClick={() => { setPlasmaOsm("low"); setUrineOsm(null); setVolume(null); setUrineNa(null); }}
+              label="< 100 mOsm/kg (dilute)"
+              sublabel="Appropriate ADH suppression → primary polydipsia / low solute"
+              selected={urineOsm === "lt100"}
+              onClick={() => { setUrineOsm("lt100"); setVolume(null); setUrineNa(null); }}
             />
             <Choice
-              label="Normal or High (≥ 275)"
-              sublabel="Pseudo- or translocational hyponatraemia"
-              selected={plasmaOsm === "normalHigh"}
-              onClick={() => { setPlasmaOsm("normalHigh"); setUrineOsm(null); setVolume(null); setUrineNa(null); }}
+              label="≥ 100 mOsm/kg (concentrated)"
+              sublabel="ADH activity present → assess volume status"
+              selected={urineOsm === "gte100"}
+              onClick={() => { setUrineOsm("gte100"); setVolume(null); setUrineNa(null); }}
             />
           </div>
         </Step>
-  
-        {/* Step 2: Urine osmolality (only if plasma low) */}
-        {plasmaOsm === "low" && (
-          <Step
-            number={2}
-            title="Measure urine osmolality"
-            helper="Distinguishes appropriate ADH suppression (dilute urine) from inappropriate ADH activity."
-            active={currentStep === "urineOsm"}
-            completed={urineOsm !== null}
-          >
-            <div className="grid sm:grid-cols-2 gap-2">
-              <Choice
-                label="< 100 mOsm/kg (dilute)"
-                sublabel="Appropriate ADH suppression → primary polydipsia / low solute"
-                selected={urineOsm === "lt100"}
-                onClick={() => { setUrineOsm("lt100"); setVolume(null); setUrineNa(null); }}
-              />
-              <Choice
-                label="≥ 100 mOsm/kg (concentrated)"
-                sublabel="ADH activity present → assess volume status"
-                selected={urineOsm === "gte100"}
-                onClick={() => { setUrineOsm("gte100"); setVolume(null); setUrineNa(null); }}
-              />
-            </div>
-          </Step>
-        )}
-  
-        {/* Step 3: Volume status */}
-        {urineOsm === "gte100" && (
-          <Step
-            number={3}
-            title="Assess clinical volume status"
-            helper="Clinical exam ± dynamic markers (CVP, IVC US, passive leg raise). Often the hardest step."
-            active={currentStep === "volume"}
-            completed={volume !== null}
-          >
-            <div className="grid sm:grid-cols-3 gap-2">
-              <Choice
-                label="Hypovolaemic"
-                sublabel="Tachycardia, ↓ skin turgor, dry mucosa, postural ↓ BP"
-                selected={volume === "hypo"}
-                onClick={() => { setVolume("hypo"); setUrineNa(null); }}
-              />
-              <Choice
-                label="Euvolaemic"
-                sublabel="No oedema, normal JVP, normal BP"
-                selected={volume === "eu"}
-                onClick={() => { setVolume("eu"); setUrineNa(null); }}
-              />
-              <Choice
-                label="Hypervolaemic"
-                sublabel="Oedema, ↑ JVP, ascites, S3 gallop"
-                selected={volume === "hyper"}
-                onClick={() => { setVolume("hyper"); setUrineNa(null); }}
-              />
-            </div>
-          </Step>
-        )}
-  
-        {/* Step 4: Urine Na (for hypo and hyper paths) */}
-        {showVolumeUrineNa && (
-          <Step
-            number={4}
-            title="Measure urine sodium"
-            helper={
-              volume === "hypo"
-                ? "Distinguishes renal vs extra-renal losses."
-                : "Distinguishes effective volume depletion (CCF/cirrhosis/nephrotic) from primary renal failure."
-            }
-            active={currentStep === "urineNa"}
-            completed={urineNa !== null}
-          >
-            <div className="grid sm:grid-cols-2 gap-2">
-              <Choice
-                label="< 20 mmol/L"
-                sublabel={volume === "hypo" ? "Extra-renal Na⁺ loss (GI, skin, third-space)" : "Avid Na⁺ retention — CCF, cirrhosis, nephrotic"}
-                selected={urineNa === "lt20"}
-                onClick={() => setUrineNa("lt20")}
-              />
-              <Choice
-                label="≥ 30 mmol/L"
-                sublabel={volume === "hypo" ? "Renal Na⁺ loss — diuretics, CSW, Addison" : "Renal failure (AKI / advanced CKD)"}
-                selected={urineNa === "gte30"}
-                onClick={() => setUrineNa("gte30")}
-              />
-            </div>
-          </Step>
-        )}
-  
-        {/* Diagnosis output */}
-        {diagnosis && (
-          <div
-            className="border-2 rounded-xl p-5 space-y-3 animate-in fade-in-0 slide-in-from-bottom-2 duration-300"
-            style={{ borderColor: diagnosis.color, backgroundColor: withAlpha(diagnosis.color, 0.06) }}
-          >
-            <div className="flex items-center gap-2 flex-wrap">
-              <Badge className="text-xs font-bold text-white" style={{ backgroundColor: diagnosis.color }}>
-                Diagnosis
+      )}
+
+      {/* Step 3: Volume status */}
+      {urineOsm === "gte100" && (
+        <Step
+          number={3}
+          title="Assess clinical volume status"
+          helper="Clinical exam ± dynamic markers (CVP, IVC US, passive leg raise). Often the hardest step."
+          active={currentStep === "volume"}
+          completed={volume !== null}
+        >
+          <div className="grid sm:grid-cols-3 gap-2">
+            <Choice
+              label="Hypovolaemic"
+              sublabel="Tachycardia, ↓ skin turgor, dry mucosa, postural ↓ BP"
+              selected={volume === "hypo"}
+              onClick={() => { setVolume("hypo"); setUrineNa(null); }}
+            />
+            <Choice
+              label="Euvolaemic"
+              sublabel="No oedema, normal JVP, normal BP"
+              selected={volume === "eu"}
+              onClick={() => { setVolume("eu"); setUrineNa(null); }}
+            />
+            <Choice
+              label="Hypervolaemic"
+              sublabel="Oedema, ↑ JVP, ascites, S3 gallop"
+              selected={volume === "hyper"}
+              onClick={() => { setVolume("hyper"); setUrineNa(null); }}
+            />
+          </div>
+        </Step>
+      )}
+
+      {/* Step 4: Urine Na (for hypo and hyper paths) */}
+      {showVolumeUrineNa && (
+        <Step
+          number={4}
+          title="Measure urine sodium"
+          helper={
+            volume === "hypo"
+              ? "Distinguishes renal vs extra-renal losses."
+              : "Distinguishes effective volume depletion (CCF/cirrhosis/nephrotic) from primary renal failure."
+          }
+          active={currentStep === "urineNa"}
+          completed={urineNa !== null}
+        >
+          <div className="grid sm:grid-cols-2 gap-2">
+            <Choice
+              label="< 20 mmol/L"
+              sublabel={volume === "hypo" ? "Extra-renal Na⁺ loss (GI, skin, third-space)" : "Avid Na⁺ retention — CCF, cirrhosis, nephrotic"}
+              selected={urineNa === "lt20"}
+              onClick={() => setUrineNa("lt20")}
+            />
+            <Choice
+              label="≥ 30 mmol/L"
+              sublabel={volume === "hypo" ? "Renal Na⁺ loss — diuretics, CSW, Addison" : "Renal failure (AKI / advanced CKD)"}
+              selected={urineNa === "gte30"}
+              onClick={() => setUrineNa("gte30")}
+            />
+          </div>
+        </Step>
+      )}
+
+      {/* Diagnosis output */}
+      {diagnosis && (
+        <div
+          className="border-2 rounded-xl p-5 space-y-3 animate-in fade-in-0 slide-in-from-bottom-2 duration-300"
+          style={{ borderColor: diagnosis.color, backgroundColor: withAlpha(diagnosis.color, 0.06) }}
+        >
+          <div className="flex items-center gap-2 flex-wrap">
+            <Badge className="text-xs font-bold text-white" style={{ backgroundColor: diagnosis.color }}>
+              Diagnosis
+            </Badge>
+            <h3 className="text-lg font-serif font-bold text-foreground">{diagnosis.label}</h3>
+            {plasmaOsm === "normalHigh" && (
+              <Badge variant="outline" className="text-[10px]">
+                Also consider translocational (hyperglycaemia, mannitol, glycine)
               </Badge>
-              <h3 className="text-lg font-serif font-bold text-foreground">{diagnosis.label}</h3>
-              {plasmaOsm === "normalHigh" && (
-                <Badge variant="outline" className="text-[10px]">
-                  Also consider translocational (hyperglycaemia, mannitol, glycine)
-                </Badge>
-              )}
-            </div>
-            <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Common causes</p>
-              <ul className="text-sm text-foreground space-y-1 list-disc list-inside">
-                {diagnosis.causes.map((c) => (
-                  <li key={c}>{c}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Management</p>
-              <p className="text-sm text-foreground leading-relaxed">{diagnosis.management}</p>
-            </div>
-            <div className="pt-2 border-t border-border/50 text-xs text-muted-foreground italic">
-              ⚠ Correction rate: ≤ 8 mmol/L/24h in chronic hyponatraemia to avoid osmotic demyelination syndrome (central pontine myelinolysis).
-            </div>
+            )}
           </div>
-        )}
-  
-        {/* SIADH note */}
-        {volume === "eu" && diagnosis?.id === "siadh" && (
-          <div className="text-xs text-muted-foreground p-3 bg-muted/30 rounded-md border border-border">
-            <strong>Before diagnosing SIADH:</strong> exclude hypothyroidism (TFTs) and adrenal insufficiency (cortisol). Both produce a near-identical biochemical picture and require hormone replacement, not fluid restriction.
+          <div>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Common causes</p>
+            <ul className="text-sm text-foreground space-y-1 list-disc list-inside">
+              {diagnosis.causes.map((c) => (
+                <li key={c}>{c}</li>
+              ))}
+            </ul>
           </div>
-        )}
-      </div>
-    </DiagramFigure>
+          <div>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Management</p>
+            <p className="text-sm text-foreground leading-relaxed">{diagnosis.management}</p>
+          </div>
+          <div className="pt-2 border-t border-border/50 text-xs text-muted-foreground italic">
+            ⚠ Correction rate: ≤ 8 mmol/L/24h in chronic hyponatraemia to avoid osmotic demyelination syndrome (central pontine myelinolysis).
+          </div>
+        </div>
+      )}
+
+      {/* SIADH note */}
+      {volume === "eu" && diagnosis?.id === "siadh" && (
+        <div className="text-xs text-muted-foreground p-3 bg-muted/30 rounded-md border border-border">
+          <strong>Before diagnosing SIADH:</strong> exclude hypothyroidism (TFTs) and adrenal insufficiency (cortisol). Both produce a near-identical biochemical picture and require hormone replacement, not fluid restriction.
+        </div>
+      )}
+    </div>
   );
 };
 

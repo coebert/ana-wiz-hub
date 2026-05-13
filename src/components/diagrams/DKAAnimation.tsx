@@ -1,5 +1,4 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Diabetic ketoacidosis — pathophysiology animation.
@@ -131,16 +130,10 @@ const DKAScene = ({ active }: { active: number }) => {
           const lit = active > i;
           const y = 50 + i * 48;
           return (
-    <DiagramFigure
-      id="dka-animation"
-      title="DKA"
-      description="Auto-generated wrapper for the DKA animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <line key={i} x1="122" x2="122" y1={y} y2={y + 10}
-                stroke={lit ? "hsl(var(--foreground))" : "hsl(var(--border))"}
-                strokeWidth={lit ? 2 : 1}
-                markerEnd="url(#dka-arrow)" className="transition-colors duration-500" />
-    </DiagramFigure>
+                <line key={i} x1="122" x2="122" y1={y} y2={y + 10}
+              stroke={lit ? "hsl(var(--foreground))" : "hsl(var(--border))"}
+              strokeWidth={lit ? 2 : 1}
+              markerEnd="url(#dka-arrow)" className="transition-colors duration-500" />
   );
         })}
 

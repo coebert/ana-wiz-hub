@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // Sigmoid PV curve: V = Vmax / (1 + e^(-k*(P - P_infl)))
 // Lung: needs positive (transpulmonary) pressure to inflate
@@ -149,19 +148,13 @@ export const ComplianceDiagram = () => {
           const cfg = CURVE_CONFIG[id];
           const on = visible.has(id);
           return (
-    <DiagramFigure
-      id="compliance-diagram"
-      title="Compliance"
-      description="Auto-generated wrapper for the Compliance anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <button key={id} onClick={() => toggle(id)}
-                className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
-                  on ? "border-primary/50 bg-primary/10 text-foreground" : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
-                }`}>
-                <span className="inline-block w-2 h-2 rounded-full mr-1" style={{ backgroundColor: cfg.color, opacity: on ? 1 : 0.3 }} />
-                {cfg.label}
-              </button>
-    </DiagramFigure>
+                <button key={id} onClick={() => toggle(id)}
+              className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
+                on ? "border-primary/50 bg-primary/10 text-foreground" : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
+              }`}>
+              <span className="inline-block w-2 h-2 rounded-full mr-1" style={{ backgroundColor: cfg.color, opacity: on ? 1 : 0.3 }} />
+              {cfg.label}
+            </button>
   );
         })}
       </div>

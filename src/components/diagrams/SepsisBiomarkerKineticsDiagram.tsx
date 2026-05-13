@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface BiomarkerConfig {
   id: string;
@@ -237,22 +236,16 @@ const SepsisBiomarkerKineticsDiagram = () => {
                     const peakX = chartLeft + (b.peakHour / maxHours) * chartW;
                     const peakPxY = chartBottom - b.peakY * (chartBottom - chartTop);
                     return (
-    <DiagramFigure
-      id="sepsis-biomarker-kinetics-diagram"
-      title="Sepsis biomarker kinetics"
-      description="Auto-generated wrapper for the Sepsis biomarker kinetics anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                            <text
-                          x={peakX}
-                          y={peakPxY - 6}
-                          textAnchor="middle"
-                          className="text-[7px] font-bold"
-                          fill={b.color}
-                          opacity={hoveredBiomarker && !isHovered ? 0.2 : 0.9}
-                        >
-                          {b.label}
-                        </text>
-    </DiagramFigure>
+                          <text
+                        x={peakX}
+                        y={peakPxY - 6}
+                        textAnchor="middle"
+                        className="text-[7px] font-bold"
+                        fill={b.color}
+                        opacity={hoveredBiomarker && !isHovered ? 0.2 : 0.9}
+                      >
+                        {b.label}
+                      </text>
   );
                   })()}
                 </g>

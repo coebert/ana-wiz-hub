@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive comparison of the three IASP-recognised pain mechanisms:
@@ -303,35 +302,29 @@ export const PainMechanismsDiagram = () => {
             const m = MECHS[k];
             const isSel = selected === k;
             return (
-    <DiagramFigure
-      id="pain-mechanisms-diagram"
-      title="Pain mechanisms"
-      description="Auto-generated wrapper for the Pain mechanisms anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <button
-                  key={k}
-                  type="button"
-                  onClick={() => setSelected(k)}
-                  aria-pressed={isSel}
-                  className={`text-left p-3 rounded-lg border-2 transition-all ${
-                    isSel ? "shadow-md" : "hover:bg-background/60"
-                  }`}
-                  style={{
-                    borderColor: isSel ? m.color : "hsl(var(--border))",
-                    background: isSel ? `${m.color.replace(")", " / 0.08)").replace("hsl", "hsl")}` : "hsl(var(--background))",
-                  }}
-                >
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="font-serif font-bold text-base" style={{ color: m.color }}>
-                      {m.label}
-                    </span>
-                    <span className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded border" style={{ borderColor: m.color, color: m.color }}>
-                      {k === "nociplastic" ? "Newest" : k === "neuropathic" ? "2008" : "Classical"}
-                    </span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-snug">{m.oneLiner}</p>
-                </button>
-    </DiagramFigure>
+                  <button
+                key={k}
+                type="button"
+                onClick={() => setSelected(k)}
+                aria-pressed={isSel}
+                className={`text-left p-3 rounded-lg border-2 transition-all ${
+                  isSel ? "shadow-md" : "hover:bg-background/60"
+                }`}
+                style={{
+                  borderColor: isSel ? m.color : "hsl(var(--border))",
+                  background: isSel ? `${m.color.replace(")", " / 0.08)").replace("hsl", "hsl")}` : "hsl(var(--background))",
+                }}
+              >
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <span className="font-serif font-bold text-base" style={{ color: m.color }}>
+                    {m.label}
+                  </span>
+                  <span className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded border" style={{ borderColor: m.color, color: m.color }}>
+                    {k === "nociplastic" ? "Newest" : k === "neuropathic" ? "2008" : "Classical"}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground leading-snug">{m.oneLiner}</p>
+              </button>
   );
           })}
         </div>

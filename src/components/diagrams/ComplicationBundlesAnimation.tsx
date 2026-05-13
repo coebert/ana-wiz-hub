@@ -1,5 +1,4 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Postoperative complication-prevention bundles. Cycles through the four
@@ -205,28 +204,22 @@ const Scene = ({ active }: { active: number }) => {
           {BUNDLES.map((b, i) => {
             const isActive = i === active;
             return (
-    <DiagramFigure
-      id="complication-bundles-animation"
-      title="Complication bundles"
-      description="Auto-generated wrapper for the Complication bundles animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g key={b.key} transform={`translate(0, ${22 + i * 44})`}
-                   opacity={isActive ? 1 : 0.5}
-                   className="transition-opacity duration-500">
-                  <rect width="124" height="38" rx="6"
-                    fill={isActive ? `hsl(var(--${b.token}) / 0.18)` : "hsl(var(--card))"}
-                    stroke={isActive ? `hsl(var(--${b.token}))` : "hsl(var(--border))"}
-                    strokeWidth={isActive ? 2 : 1} />
-                  <circle cx="14" cy="19" r="6" fill={`hsl(var(--${b.token}))`} />
-                  <text x="26" y="16" className="text-[10px] font-semibold" fill="hsl(var(--foreground))">{b.key}</text>
-                  <text x="26" y="29" className="text-[8px]" fill="hsl(var(--muted-foreground))">
-                    {b.key === "AKI" && "KDIGO bundle"}
-                    {b.key === "Delirium" && "ABCDEF bundle"}
-                    {b.key === "VTE" && "IPC + LMWH"}
-                    {b.key === "Infection" && "Sepsis-6 + stewardship"}
-                  </text>
-                </g>
-    </DiagramFigure>
+                  <g key={b.key} transform={`translate(0, ${22 + i * 44})`}
+                 opacity={isActive ? 1 : 0.5}
+                 className="transition-opacity duration-500">
+                <rect width="124" height="38" rx="6"
+                  fill={isActive ? `hsl(var(--${b.token}) / 0.18)` : "hsl(var(--card))"}
+                  stroke={isActive ? `hsl(var(--${b.token}))` : "hsl(var(--border))"}
+                  strokeWidth={isActive ? 2 : 1} />
+                <circle cx="14" cy="19" r="6" fill={`hsl(var(--${b.token}))`} />
+                <text x="26" y="16" className="text-[10px] font-semibold" fill="hsl(var(--foreground))">{b.key}</text>
+                <text x="26" y="29" className="text-[8px]" fill="hsl(var(--muted-foreground))">
+                  {b.key === "AKI" && "KDIGO bundle"}
+                  {b.key === "Delirium" && "ABCDEF bundle"}
+                  {b.key === "VTE" && "IPC + LMWH"}
+                  {b.key === "Infection" && "Sepsis-6 + stewardship"}
+                </text>
+              </g>
   );
           })}
         </g>

@@ -1,6 +1,5 @@
 import React, { useId, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 
 /**
@@ -149,67 +148,61 @@ const AnatomyPlate: React.FC<AnatomyPlateProps> = ({
                   ? `${lineEndX},${lineEndY} ${label.elbow[0]},${label.elbow[1]} ${label.target[0]},${label.target[1]}`
                   : `${lineEndX},${lineEndY} ${label.target[0]},${label.target[1]}`;
                 return (
-    <DiagramFigure
-      id="anatomy-plate"
-      title="Anatomy plate"
-      description="Auto-generated wrapper for the Anatomy plate anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <g
-                      key={label.id}
-                      onMouseEnter={() => setHovered(label.id)}
-                      onMouseLeave={() => setHovered(null)}
-                      style={{ cursor: "default" }}
+                      <g
+                    key={label.id}
+                    onMouseEnter={() => setHovered(label.id)}
+                    onMouseLeave={() => setHovered(null)}
+                    style={{ cursor: "default" }}
+                  >
+                    <polyline
+                      points={points}
+                      fill="none"
+                      stroke={accent}
+                      strokeWidth={isHover ? 1.6 : 1}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      opacity={isHover ? 1 : 0.75}
+                    />
+                    <circle
+                      cx={label.target[0]}
+                      cy={label.target[1]}
+                      r={LEADER_DOT_R}
+                      fill={accent}
+                    />
+                    <rect
+                      x={labelX}
+                      y={labelY}
+                      width={w}
+                      height={h}
+                      rx={4}
+                      ry={4}
+                      fill="hsl(var(--card))"
+                      stroke={accent}
+                      strokeWidth={isHover ? 1.2 : 0.8}
+                      opacity={0.97}
+                    />
+                    <text
+                      x={labelX + w / 2}
+                      y={labelY + LABEL_PADDING_Y + LABEL_FONT_SIZE - 1}
+                      textAnchor="middle"
+                      fontSize={LABEL_FONT_SIZE}
+                      fontWeight={600}
+                      fill="hsl(var(--anatomy-stroke))"
                     >
-                      <polyline
-                        points={points}
-                        fill="none"
-                        stroke={accent}
-                        strokeWidth={isHover ? 1.6 : 1}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        opacity={isHover ? 1 : 0.75}
-                      />
-                      <circle
-                        cx={label.target[0]}
-                        cy={label.target[1]}
-                        r={LEADER_DOT_R}
-                        fill={accent}
-                      />
-                      <rect
-                        x={labelX}
-                        y={labelY}
-                        width={w}
-                        height={h}
-                        rx={4}
-                        ry={4}
-                        fill="hsl(var(--card))"
-                        stroke={accent}
-                        strokeWidth={isHover ? 1.2 : 0.8}
-                        opacity={0.97}
-                      />
+                      {label.text}
+                    </text>
+                    {label.sub && (
                       <text
                         x={labelX + w / 2}
-                        y={labelY + LABEL_PADDING_Y + LABEL_FONT_SIZE - 1}
+                        y={labelY + LABEL_PADDING_Y + 2 * LABEL_FONT_SIZE + 1}
                         textAnchor="middle"
-                        fontSize={LABEL_FONT_SIZE}
-                        fontWeight={600}
-                        fill="hsl(var(--anatomy-stroke))"
+                        fontSize={LABEL_FONT_SIZE - 2}
+                        fill="hsl(var(--muted-foreground))"
                       >
-                        {label.text}
+                        {label.sub}
                       </text>
-                      {label.sub && (
-                        <text
-                          x={labelX + w / 2}
-                          y={labelY + LABEL_PADDING_Y + 2 * LABEL_FONT_SIZE + 1}
-                          textAnchor="middle"
-                          fontSize={LABEL_FONT_SIZE - 2}
-                          fill="hsl(var(--muted-foreground))"
-                        >
-                          {label.sub}
-                        </text>
-                      )}
-                    </g>
-    </DiagramFigure>
+                    )}
+                  </g>
   );
               })}
             </g>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const ThermocoupleTab = () => (
   <div className="space-y-4">
@@ -366,28 +365,22 @@ const TemperatureMeasurementDiagram = () => {
   const [activeTab, setActiveTab] = useState("thermocouple");
 
   return (
-    <DiagramFigure
-      id="temperature-measurement-diagram"
-      title="Temperature measurement"
-      description="Auto-generated wrapper for the Temperature measurement anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-4">
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid grid-cols-5 w-full">
-            <TabsTrigger value="thermocouple" className="text-xs">Thermocouple</TabsTrigger>
-            <TabsTrigger value="thermistor" className="text-xs">Thermistor</TabsTrigger>
-            <TabsTrigger value="rtd" className="text-xs">RTD</TabsTrigger>
-            <TabsTrigger value="infrared" className="text-xs">IR Tympanic</TabsTrigger>
-            <TabsTrigger value="comparison" className="text-xs">Compare</TabsTrigger>
-          </TabsList>
-          <TabsContent value="thermocouple"><ThermocoupleTab /></TabsContent>
-          <TabsContent value="thermistor"><ThermistorTab /></TabsContent>
-          <TabsContent value="rtd"><RTDTab /></TabsContent>
-          <TabsContent value="infrared"><InfraredTab /></TabsContent>
-          <TabsContent value="comparison"><ComparisonTab /></TabsContent>
-        </Tabs>
-      </div>
-    </DiagramFigure>
+        <div className="space-y-4">
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <TabsList className="grid grid-cols-5 w-full">
+          <TabsTrigger value="thermocouple" className="text-xs">Thermocouple</TabsTrigger>
+          <TabsTrigger value="thermistor" className="text-xs">Thermistor</TabsTrigger>
+          <TabsTrigger value="rtd" className="text-xs">RTD</TabsTrigger>
+          <TabsTrigger value="infrared" className="text-xs">IR Tympanic</TabsTrigger>
+          <TabsTrigger value="comparison" className="text-xs">Compare</TabsTrigger>
+        </TabsList>
+        <TabsContent value="thermocouple"><ThermocoupleTab /></TabsContent>
+        <TabsContent value="thermistor"><ThermistorTab /></TabsContent>
+        <TabsContent value="rtd"><RTDTab /></TabsContent>
+        <TabsContent value="infrared"><InfraredTab /></TabsContent>
+        <TabsContent value="comparison"><ComparisonTab /></TabsContent>
+      </Tabs>
+    </div>
   );
 };
 

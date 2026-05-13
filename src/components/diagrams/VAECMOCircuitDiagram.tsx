@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const useFrame = (running: boolean) => {
   const [t, setT] = useState(0);
@@ -414,13 +413,7 @@ export const VAECMOCircuitDiagram = () => {
               const phase = (t * 0.6 + i * 0.2) % 1;
               const y = 118 + phase * 118;
               return (
-    <DiagramFigure
-      id="vaecmo-circuit-diagram"
-      title="Vaecmo circuit"
-      description="Auto-generated wrapper for the Vaecmo circuit equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <circle key={`g${i}`} cx={625 + (i % 3) * 18} cy={y} r="1.4" fill="hsl(195 85% 60%)" opacity={0.7 * (1 - phase)} />
-    </DiagramFigure>
+                    <circle key={`g${i}`} cx={625 + (i % 3) * 18} cy={y} r="1.4" fill="hsl(195 85% 60%)" opacity={0.7 * (1 - phase)} />
   );
             })}
 

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Foetal circulation — animated diagram.
@@ -126,26 +125,20 @@ const FoetalCirculationDiagram = () => {
           const info = SHUNT_INFO[id];
           const isActive = activeShunt === id;
           return (
-    <DiagramFigure
-      id="foetal-circulation-diagram"
-      title="Foetal circulation"
-      description="Auto-generated wrapper for the Foetal circulation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <button
-                key={id}
-                onClick={() => {
-                  setActiveShunt(isActive ? null : id);
-                  setStepIdx(null);
-                }}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
-                  isActive
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-secondary/50 text-muted-foreground border-border hover:border-primary/50"
-                }`}
-              >
-                {info.name}
-              </button>
-    </DiagramFigure>
+                <button
+              key={id}
+              onClick={() => {
+                setActiveShunt(isActive ? null : id);
+                setStepIdx(null);
+              }}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
+                isActive
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-secondary/50 text-muted-foreground border-border hover:border-primary/50"
+              }`}
+            >
+              {info.name}
+            </button>
   );
         })}
         <div className="flex items-center gap-1 ml-auto">

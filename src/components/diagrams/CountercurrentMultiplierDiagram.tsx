@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface StepData {
   title: string;
@@ -240,80 +239,74 @@ export const CountercurrentMultiplierDiagram = () => {
             const cdActive = step.highlight === "cd" || step.highlight === "all";
 
             return (
-    <DiagramFigure
-      id="countercurrent-multiplier-diagram"
-      title="Countercurrent multiplier"
-      description="Auto-generated wrapper for the Countercurrent multiplier anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g key={`row-${i}`}>
-                  {/* Descending limb bar */}
-                  <rect x="90" y={y} width="80" height="28" rx="3"
-                    fill={descColor} fillOpacity={descActive ? 0.15 : 0.06}
-                    stroke={descColor} strokeWidth={descActive ? 1.2 : 0.5} />
-                  <rect x="92" y={y + 4} width={Math.min(76, (step.descending[i] / 1200) * 76)} height="20" rx="2"
-                    fill={descColor} fillOpacity="0.35"
-                    className="transition-all duration-700" />
-                  <text x="130" y={y + 18} fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">
-                    {step.descending[i]}
-                  </text>
-  
-                  {/* Interstitium bar */}
-                  <rect x="220" y={y} width="80" height="28" rx="3"
-                    fill={intColor} fillOpacity={intActive ? 0.15 : 0.06}
-                    stroke={intColor} strokeWidth={intActive ? 1.2 : 0.5} />
-                  <rect x="222" y={y + 4} width={Math.min(76, (step.interstitium[i] / 1200) * 76)} height="20" rx="2"
-                    fill={intColor} fillOpacity="0.35"
-                    className="transition-all duration-700" />
-                  <text x="260" y={y + 18} fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">
-                    {step.interstitium[i]}
-                  </text>
-  
-                  {/* Ascending limb bar */}
-                  <rect x="350" y={y} width="80" height="28" rx="3"
-                    fill={ascColor} fillOpacity={ascActive ? 0.15 : 0.06}
-                    stroke={ascColor} strokeWidth={ascActive ? 1.2 : 0.5} />
-                  <rect x="352" y={y + 4} width={Math.min(76, (step.ascending[i] / 1200) * 76)} height="20" rx="2"
-                    fill={ascColor} fillOpacity="0.35"
-                    className="transition-all duration-700" />
-                  <text x="390" y={y + 18} fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">
-                    {step.ascending[i]}
-                  </text>
-  
-                  {/* Collecting duct bar */}
-                  {step.collectingDuct && (
-                    <>
-                      <rect x="450" y={y} width="55" height="28" rx="3"
-                        fill={cdColor} fillOpacity={cdActive ? 0.15 : 0.06}
-                        stroke={cdColor} strokeWidth={cdActive ? 1.2 : 0.5} />
-                      <rect x="452" y={y + 4} width={Math.min(51, (step.collectingDuct[i] / 1200) * 51)} height="20" rx="2"
-                        fill={cdColor} fillOpacity="0.35"
-                        className="transition-all duration-700" />
-                      <text x="477" y={y + 18} fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">
-                        {step.collectingDuct[i]}
-                      </text>
-                    </>
-                  )}
-  
-                  {/* Animated flow arrows */}
-                  {/* Ascending → Interstitium (NaCl pumping) */}
-                  {(step.highlight === "asc" || step.highlight === "both") && (
-                    <AnimatedParticles fromX={350} fromY={y + 14} toX={300} toY={y + 14}
-                      color={ascColor} count={3} active={true} label="NaCl→" />
-                  )}
-  
-                  {/* Descending → Interstitium (H₂O out) */}
-                  {(step.highlight === "desc" || step.highlight === "both") && step.interstitium[i] > step.descending[i] - 50 && (
-                    <AnimatedParticles fromX={170} fromY={y + 14} toX={220} toY={y + 14}
-                      color={descColor} count={2} active={true} label="H₂O→" />
-                  )}
-  
-                  {/* CD → Interstitium (H₂O out with ADH) */}
-                  {step.highlight === "cd" && step.collectingDuct && (
-                    <AnimatedParticles fromX={450} fromY={y + 14} toX={300} toY={y + 14}
-                      color={cdColor} count={2} active={true} label="H₂O→" />
-                  )}
-                </g>
-    </DiagramFigure>
+                  <g key={`row-${i}`}>
+                {/* Descending limb bar */}
+                <rect x="90" y={y} width="80" height="28" rx="3"
+                  fill={descColor} fillOpacity={descActive ? 0.15 : 0.06}
+                  stroke={descColor} strokeWidth={descActive ? 1.2 : 0.5} />
+                <rect x="92" y={y + 4} width={Math.min(76, (step.descending[i] / 1200) * 76)} height="20" rx="2"
+                  fill={descColor} fillOpacity="0.35"
+                  className="transition-all duration-700" />
+                <text x="130" y={y + 18} fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">
+                  {step.descending[i]}
+                </text>
+
+                {/* Interstitium bar */}
+                <rect x="220" y={y} width="80" height="28" rx="3"
+                  fill={intColor} fillOpacity={intActive ? 0.15 : 0.06}
+                  stroke={intColor} strokeWidth={intActive ? 1.2 : 0.5} />
+                <rect x="222" y={y + 4} width={Math.min(76, (step.interstitium[i] / 1200) * 76)} height="20" rx="2"
+                  fill={intColor} fillOpacity="0.35"
+                  className="transition-all duration-700" />
+                <text x="260" y={y + 18} fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">
+                  {step.interstitium[i]}
+                </text>
+
+                {/* Ascending limb bar */}
+                <rect x="350" y={y} width="80" height="28" rx="3"
+                  fill={ascColor} fillOpacity={ascActive ? 0.15 : 0.06}
+                  stroke={ascColor} strokeWidth={ascActive ? 1.2 : 0.5} />
+                <rect x="352" y={y + 4} width={Math.min(76, (step.ascending[i] / 1200) * 76)} height="20" rx="2"
+                  fill={ascColor} fillOpacity="0.35"
+                  className="transition-all duration-700" />
+                <text x="390" y={y + 18} fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">
+                  {step.ascending[i]}
+                </text>
+
+                {/* Collecting duct bar */}
+                {step.collectingDuct && (
+                  <>
+                    <rect x="450" y={y} width="55" height="28" rx="3"
+                      fill={cdColor} fillOpacity={cdActive ? 0.15 : 0.06}
+                      stroke={cdColor} strokeWidth={cdActive ? 1.2 : 0.5} />
+                    <rect x="452" y={y + 4} width={Math.min(51, (step.collectingDuct[i] / 1200) * 51)} height="20" rx="2"
+                      fill={cdColor} fillOpacity="0.35"
+                      className="transition-all duration-700" />
+                    <text x="477" y={y + 18} fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">
+                      {step.collectingDuct[i]}
+                    </text>
+                  </>
+                )}
+
+                {/* Animated flow arrows */}
+                {/* Ascending → Interstitium (NaCl pumping) */}
+                {(step.highlight === "asc" || step.highlight === "both") && (
+                  <AnimatedParticles fromX={350} fromY={y + 14} toX={300} toY={y + 14}
+                    color={ascColor} count={3} active={true} label="NaCl→" />
+                )}
+
+                {/* Descending → Interstitium (H₂O out) */}
+                {(step.highlight === "desc" || step.highlight === "both") && step.interstitium[i] > step.descending[i] - 50 && (
+                  <AnimatedParticles fromX={170} fromY={y + 14} toX={220} toY={y + 14}
+                    color={descColor} count={2} active={true} label="H₂O→" />
+                )}
+
+                {/* CD → Interstitium (H₂O out with ADH) */}
+                {step.highlight === "cd" && step.collectingDuct && (
+                  <AnimatedParticles fromX={450} fromY={y + 14} toX={300} toY={y + 14}
+                    color={cdColor} count={2} active={true} label="H₂O→" />
+                )}
+              </g>
   );
           })}
 

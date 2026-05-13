@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Phase = "normal" | "mild" | "severe" | "arrest";
 
@@ -437,18 +436,12 @@ function renderBreath(startX: number, truncation: number, color: string, returns
   `;
 
   return (
-    <DiagramFigure
-      id="dynamic-hyperinflation-diagram"
-      title="Dynamic hyperinflation"
-      description="Auto-generated wrapper for the Dynamic hyperinflation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <path
-        d={path}
-        fill="none"
-        stroke={color}
-        strokeWidth="2"
-      />
-    </DiagramFigure>
+        <path
+      d={path}
+      fill="none"
+      stroke={color}
+      strokeWidth="2"
+    />
   );
 }
 

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Viral replication cycle schematic with antiviral drug class annotations.
@@ -186,31 +185,25 @@ const AntiviralCycleDiagram = () => {
               const anchor: "start" | "middle" | "end" =
                 Math.abs(dx) < 30 ? "middle" : dx > 0 ? "start" : "end";
               return (
-    <DiagramFigure
-      id="antiviral-cycle-diagram"
-      title="Antiviral cycle"
-      description="Auto-generated wrapper for the Antiviral cycle anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <g key={s.key} className="cursor-pointer transition-all" onClick={() => setActive(s.key)}>
-                    <circle
-                      cx={s.cx} cy={s.cy} r={isActive ? 22 : 18}
-                      fill={s.color}
-                      fillOpacity={isActive ? 1 : 0.78}
-                      stroke={isActive ? s.color : "transparent"}
-                      strokeWidth={isActive ? 4 : 0}
-                      strokeOpacity="0.35"
-                    />
-                    <text x={s.cx} y={s.cy + 5} textAnchor="middle"
-                      fontSize="14" fontWeight="700" fill="hsl(var(--background))">
-                      {num}
-                    </text>
-                    <text x={lx} y={ly} textAnchor={anchor}
-                      fontSize="11" fontWeight={isActive ? 700 : 600}
-                      fill={isActive ? s.color : "hsl(var(--foreground))"}>
-                      {labelText}
-                    </text>
-                  </g>
-    </DiagramFigure>
+                    <g key={s.key} className="cursor-pointer transition-all" onClick={() => setActive(s.key)}>
+                  <circle
+                    cx={s.cx} cy={s.cy} r={isActive ? 22 : 18}
+                    fill={s.color}
+                    fillOpacity={isActive ? 1 : 0.78}
+                    stroke={isActive ? s.color : "transparent"}
+                    strokeWidth={isActive ? 4 : 0}
+                    strokeOpacity="0.35"
+                  />
+                  <text x={s.cx} y={s.cy + 5} textAnchor="middle"
+                    fontSize="14" fontWeight="700" fill="hsl(var(--background))">
+                    {num}
+                  </text>
+                  <text x={lx} y={ly} textAnchor={anchor}
+                    fontSize="11" fontWeight={isActive ? 700 : 600}
+                    fill={isActive ? s.color : "hsl(var(--foreground))"}>
+                    {labelText}
+                  </text>
+                </g>
   );
             })}
           </svg>

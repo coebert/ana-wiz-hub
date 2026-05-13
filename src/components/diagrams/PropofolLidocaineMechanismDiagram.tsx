@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated two-panel diagram contrasting plain propofol vs propofol + lidocaine
@@ -302,57 +301,51 @@ const PropofolLidocaineMechanismDiagram = () => {
   }, [playing]);
 
   return (
-    <DiagramFigure
-      id="propofol-lidocaine-mechanism-diagram"
-      title="Propofol lidocaine mechanism"
-      description="Auto-generated wrapper for the Propofol lidocaine mechanism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <figure className="my-6">
-        <figcaption className="sr-only">
-          Animated comparison of plain propofol injection versus propofol mixed with
-          lidocaine, showing reduced free aqueous propofol, sodium channel block at
-          venous nociceptors, and absence of pain firing.
-        </figcaption>
-  
-        <div className="flex flex-wrap gap-4">
-          <Panel mode="plain" tick={tick} />
-          <Panel mode="with-lido" tick={tick} />
+        <figure className="my-6">
+      <figcaption className="sr-only">
+        Animated comparison of plain propofol injection versus propofol mixed with
+        lidocaine, showing reduced free aqueous propofol, sodium channel block at
+        venous nociceptors, and absence of pain firing.
+      </figcaption>
+
+      <div className="flex flex-wrap gap-4">
+        <Panel mode="plain" tick={tick} />
+        <Panel mode="with-lido" tick={tick} />
+      </div>
+
+      <div className="flex flex-wrap items-center gap-3 mt-3 text-xs">
+        <button
+          type="button"
+          onClick={() => setPlaying((p) => !p)}
+          className="px-3 py-1 rounded-md border border-border bg-card hover:bg-muted transition-colors text-foreground font-medium"
+          aria-pressed={playing}
+        >
+          {playing ? "Pause animation" : "Play animation"}
+        </button>
+        <div className="flex items-center gap-1.5">
+          <span className="inline-block w-3 h-3 rounded-full bg-pharmacology" />
+          <span className="text-muted-foreground">Propofol (P)</span>
         </div>
-  
-        <div className="flex flex-wrap items-center gap-3 mt-3 text-xs">
-          <button
-            type="button"
-            onClick={() => setPlaying((p) => !p)}
-            className="px-3 py-1 rounded-md border border-border bg-card hover:bg-muted transition-colors text-foreground font-medium"
-            aria-pressed={playing}
-          >
-            {playing ? "Pause animation" : "Play animation"}
-          </button>
-          <div className="flex items-center gap-1.5">
-            <span className="inline-block w-3 h-3 rounded-full bg-pharmacology" />
-            <span className="text-muted-foreground">Propofol (P)</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="inline-block w-3 h-3 rounded-full bg-primary" />
-            <span className="text-muted-foreground">Lidocaine (L)</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="inline-block w-3 h-3 rounded-sm bg-destructive" />
-            <span className="text-muted-foreground">Activated Na⁺ channel / pain</span>
-          </div>
+        <div className="flex items-center gap-1.5">
+          <span className="inline-block w-3 h-3 rounded-full bg-primary" />
+          <span className="text-muted-foreground">Lidocaine (L)</span>
         </div>
-  
-        <p className="mt-3 text-sm text-foreground/80 leading-relaxed">
-          <span className="font-semibold text-foreground">Left:</span> Free propofol
-          leaves the lipid micelle, contacts venous endothelial nociceptors, opens
-          Na⁺ channels, and triggers an action potential.{" "}
-          <span className="font-semibold text-foreground">Right:</span> Lidocaine
-          sits in the Na⁺ channel pore (raising firing threshold) and the lower
-          mixture pH favours partition of propofol back into the lipid phase, so
-          far less free drug reaches the vein wall — pain is suppressed.
-        </p>
-      </figure>
-    </DiagramFigure>
+        <div className="flex items-center gap-1.5">
+          <span className="inline-block w-3 h-3 rounded-sm bg-destructive" />
+          <span className="text-muted-foreground">Activated Na⁺ channel / pain</span>
+        </div>
+      </div>
+
+      <p className="mt-3 text-sm text-foreground/80 leading-relaxed">
+        <span className="font-semibold text-foreground">Left:</span> Free propofol
+        leaves the lipid micelle, contacts venous endothelial nociceptors, opens
+        Na⁺ channels, and triggers an action potential.{" "}
+        <span className="font-semibold text-foreground">Right:</span> Lidocaine
+        sits in the Na⁺ channel pore (raising firing threshold) and the lower
+        mixture pH favours partition of propofol back into the lipid phase, so
+        far less free drug reaches the vein wall — pain is suppressed.
+      </p>
+    </figure>
   );
 };
 

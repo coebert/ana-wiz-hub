@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type View = "overview" | "co2" | "o2" | "ph";
 
@@ -405,17 +404,11 @@ function Slider({ label, value, min, max, unit, onChange }: {
 
 function Metric({ label, value, unit }: { label: string; value: string; unit: string }) {
   return (
-    <DiagramFigure
-      id="control-of-breathing-diagram"
-      title="Control of breathing"
-      description="Auto-generated wrapper for the Control of breathing anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="text-center bg-card rounded-lg p-2 border border-border">
-        <p className="text-[10px] text-muted-foreground">{label}</p>
-        <p className="text-base font-mono font-bold text-foreground">{value}</p>
-        <p className="text-[9px] text-muted-foreground">{unit}</p>
-      </div>
-    </DiagramFigure>
+        <div className="text-center bg-card rounded-lg p-2 border border-border">
+      <p className="text-[10px] text-muted-foreground">{label}</p>
+      <p className="text-base font-mono font-bold text-foreground">{value}</p>
+      <p className="text-[9px] text-muted-foreground">{unit}</p>
+    </div>
   );
 }
 

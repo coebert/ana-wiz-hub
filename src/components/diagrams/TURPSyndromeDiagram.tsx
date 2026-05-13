@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * TURP Syndrome — interactive process diagram.
@@ -148,38 +147,32 @@ export const TURPSyndromeDiagram = () => {
             const isSel = selected === key;
             const stage = stages.find((s) => s.key === key)!;
             return (
-    <DiagramFigure
-      id="turp-syndrome-diagram"
-      title="Turp syndrome"
-      description="Auto-generated wrapper for the Turp syndrome anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g key={key} onClick={() => setSelected(key)} style={{ cursor: "pointer" }}>
-                  <rect
-                    x={n.x}
-                    y={n.y}
-                    width={n.w}
-                    height={n.h}
-                    rx={8}
-                    fill={isSel ? stage.color : "hsl(var(--background))"}
-                    fillOpacity={isSel ? 0.18 : 1}
-                    stroke={stage.color}
-                    strokeWidth={isSel ? 2 : 1}
-                  />
-                  {n.label.split("\n").map((line, i) => (
-                    <text
-                      key={i}
-                      x={n.x + n.w / 2}
-                      y={n.y + (n.h / 2) - 4 + i * 12}
-                      textAnchor="middle"
-                      className="fill-foreground select-none"
-                      fontSize="10"
-                      fontWeight={isSel ? 600 : 500}
-                    >
-                      {line}
-                    </text>
-                  ))}
-                </g>
-    </DiagramFigure>
+                  <g key={key} onClick={() => setSelected(key)} style={{ cursor: "pointer" }}>
+                <rect
+                  x={n.x}
+                  y={n.y}
+                  width={n.w}
+                  height={n.h}
+                  rx={8}
+                  fill={isSel ? stage.color : "hsl(var(--background))"}
+                  fillOpacity={isSel ? 0.18 : 1}
+                  stroke={stage.color}
+                  strokeWidth={isSel ? 2 : 1}
+                />
+                {n.label.split("\n").map((line, i) => (
+                  <text
+                    key={i}
+                    x={n.x + n.w / 2}
+                    y={n.y + (n.h / 2) - 4 + i * 12}
+                    textAnchor="middle"
+                    className="fill-foreground select-none"
+                    fontSize="10"
+                    fontWeight={isSel ? 600 : 500}
+                  >
+                    {line}
+                  </text>
+                ))}
+              </g>
   );
           })}
         </svg>

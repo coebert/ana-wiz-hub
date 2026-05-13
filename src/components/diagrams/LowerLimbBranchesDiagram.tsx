@@ -2,7 +2,6 @@ import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { PlexusCard, PlexusChipRow, PlexusDetailPanel, ROOT_COLORS } from "./plexusShared";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* =========================================================================
    Lower-limb peripheral nerve branches + block coverage.
@@ -385,77 +384,71 @@ const LowerLimbBranchesDiagram = () => {
   })();
 
   return (
-    <DiagramFigure
-      id="lower-limb-branches-diagram"
-      title="Lower limb branches"
-      description="Auto-generated wrapper for the Lower limb branches anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <PlexusCard>
-        <DiagramToggleBar
-          title="Lower-limb nerve branches & block coverage"
-          subtitle={mode === "branches"
-            ? "Select a nerve to trace its course and see motor / sensory / clinical pearls."
-            : "Select a regional block — covered nerves and their sensory zones light up; missed nerves are listed."}
-          toggles={[
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels((v) => !v) },
-          ]}
+        <PlexusCard>
+      <DiagramToggleBar
+        title="Lower-limb nerve branches & block coverage"
+        subtitle={mode === "branches"
+          ? "Select a nerve to trace its course and see motor / sensory / clinical pearls."
+          : "Select a regional block — covered nerves and their sensory zones light up; missed nerves are listed."}
+        toggles={[
+          { label: "Labels", active: showLabels, onChange: () => setShowLabels((v) => !v) },
+        ]}
+      />
+
+      {/* Mode switch */}
+      <div className="flex gap-1 mb-2">
+        {(["branches", "blocks"] as Mode[]).map((m) => (
+          <button
+            key={m}
+            type="button"
+            onClick={() => setMode(m)}
+            className={`px-3 py-1 text-xs rounded-full border transition-colors ${
+              mode === m
+                ? "border-primary bg-primary/10 text-foreground font-medium"
+                : "border-border text-muted-foreground hover:bg-muted/50"
+            }`}
+          >
+            {m === "branches" ? "Branches" : "Block coverage"}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-2 gap-2 sm:gap-4 justify-items-center">
+        {renderLimb("ant")}
+        {renderLimb("post")}
+      </div>
+
+      {detail}
+
+      {mode === "branches" ? (
+        <PlexusChipRow<NerveKey>
+          items={(Object.keys(NERVES) as NerveKey[]).map((k) => ({
+            key: k, label: NERVES[k].label, color: NERVE_COLOR[k],
+          }))}
+          selected={selectedNerve}
+          onSelect={setSelectedNerve}
         />
-  
-        {/* Mode switch */}
-        <div className="flex gap-1 mb-2">
-          {(["branches", "blocks"] as Mode[]).map((m) => (
-            <button
-              key={m}
-              type="button"
-              onClick={() => setMode(m)}
-              className={`px-3 py-1 text-xs rounded-full border transition-colors ${
-                mode === m
-                  ? "border-primary bg-primary/10 text-foreground font-medium"
-                  : "border-border text-muted-foreground hover:bg-muted/50"
-              }`}
-            >
-              {m === "branches" ? "Branches" : "Block coverage"}
-            </button>
-          ))}
-        </div>
-  
-        <div className="grid grid-cols-2 gap-2 sm:gap-4 justify-items-center">
-          {renderLimb("ant")}
-          {renderLimb("post")}
-        </div>
-  
-        {detail}
-  
-        {mode === "branches" ? (
-          <PlexusChipRow<NerveKey>
-            items={(Object.keys(NERVES) as NerveKey[]).map((k) => ({
-              key: k, label: NERVES[k].label, color: NERVE_COLOR[k],
-            }))}
-            selected={selectedNerve}
-            onSelect={setSelectedNerve}
-          />
-        ) : (
-          <PlexusChipRow<BlockKey>
-            items={(Object.keys(BLOCKS) as BlockKey[]).map((k) => ({
-              key: k, label: BLOCKS[k].label, color: "hsl(var(--clinical))",
-            }))}
-            selected={selectedBlock}
-            onSelect={setSelectedBlock}
-          />
-        )}
-  
-        {/* Legend */}
-        <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-muted-foreground pt-1 border-t border-border">
-          <span className="inline-flex items-center gap-1">
-            <span className="inline-block w-4 border-t-2" style={{ borderColor: palette }} /> Nerve course
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <span className="inline-block w-3 h-3 rounded" style={{ background: withAlpha(palette, 0.18), border: `1px dashed ${palette}` }} /> Sensory zone
-          </span>
-          <span>Lumbar-plexus nerves shown anteriorly; sciatic + sural shown posteriorly.</span>
-        </div>
-      </PlexusCard>
-    </DiagramFigure>
+      ) : (
+        <PlexusChipRow<BlockKey>
+          items={(Object.keys(BLOCKS) as BlockKey[]).map((k) => ({
+            key: k, label: BLOCKS[k].label, color: "hsl(var(--clinical))",
+          }))}
+          selected={selectedBlock}
+          onSelect={setSelectedBlock}
+        />
+      )}
+
+      {/* Legend */}
+      <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-muted-foreground pt-1 border-t border-border">
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block w-4 border-t-2" style={{ borderColor: palette }} /> Nerve course
+        </span>
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block w-3 h-3 rounded" style={{ background: withAlpha(palette, 0.18), border: `1px dashed ${palette}` }} /> Sensory zone
+        </span>
+        <span>Lumbar-plexus nerves shown anteriorly; sciatic + sural shown posteriorly.</span>
+      </div>
+    </PlexusCard>
   );
 };
 

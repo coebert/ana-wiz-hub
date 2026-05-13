@@ -11,7 +11,6 @@ import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 
 type Territory = CoronaryTerritory;
@@ -221,24 +220,18 @@ const CoronaryTreeDiagram = () => {
                 const isSelected = b.territory === selected;
                 const color = territories[b.territory].color;
                 return (
-    <DiagramFigure
-      id="coronary-tree-diagram"
-      title="Coronary tree"
-      description="Auto-generated wrapper for the Coronary tree anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <text
-                      key={`l-${i}`}
-                      x={b.labelX}
-                      y={b.labelY}
-                      textAnchor={b.labelAnchor ?? "middle"}
-                      fontSize="8"
-                      fontWeight={isSelected ? "bold" : "normal"}
-                      fill={isSelected ? color : "hsl(var(--muted-foreground))"}
-                      opacity={isSelected ? 1 : 0.65}
-                    >
-                      {b.label}
-                    </text>
-    </DiagramFigure>
+                      <text
+                    key={`l-${i}`}
+                    x={b.labelX}
+                    y={b.labelY}
+                    textAnchor={b.labelAnchor ?? "middle"}
+                    fontSize="8"
+                    fontWeight={isSelected ? "bold" : "normal"}
+                    fill={isSelected ? color : "hsl(var(--muted-foreground))"}
+                    opacity={isSelected ? 1 : 0.65}
+                  >
+                    {b.label}
+                  </text>
   );
               })}
 

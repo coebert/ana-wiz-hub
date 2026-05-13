@@ -3,7 +3,6 @@ import { PlayCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import GuidedWalkthroughOverlay, { WalkthroughStep } from "./GuidedWalkthroughOverlay";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface AlgorithmStep {
   id: string;
@@ -200,77 +199,71 @@ const OLVTroubleshootingDiagram = () => {
             const isActive = activeStep === i;
 
             return (
-    <DiagramFigure
-      id="olv-troubleshooting-diagram"
-      title="Olv troubleshooting"
-      description="Auto-generated wrapper for the Olv troubleshooting anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <div key={step.id}>
-                  {/* Connector line */}
-                  {i > 0 && (
-                    <div className="flex items-center gap-2 pl-5 py-1">
-                      <div className="w-0.5 h-4 bg-border" />
-                      <span className="text-xs text-muted-foreground italic">Unresolved ↓</span>
+                  <div key={step.id}>
+                {/* Connector line */}
+                {i > 0 && (
+                  <div className="flex items-center gap-2 pl-5 py-1">
+                    <div className="w-0.5 h-4 bg-border" />
+                    <span className="text-xs text-muted-foreground italic">Unresolved ↓</span>
+                  </div>
+                )}
+
+                {/* Step card */}
+                <button
+                  onClick={() => toggleStep(i)}
+                  className={`w-full text-left rounded-lg border p-3 transition-all duration-200 ${
+                    isActive
+                      ? "border-primary/50 bg-primary/5"
+                      : "border-border hover:bg-muted/30"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${
+                      isActive ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+                    }`}>
+                      {i + 1}
+                    </span>
+                    <span className={`text-sm font-semibold flex-1 ${isActive ? "text-foreground" : "text-muted-foreground"}`}>
+                      {step.title.replace(/^\d+\.\s*/, "")}
+                    </span>
+                    <Badge variant="outline" className={`text-xs ${urgencyColors[step.urgency]}`}>
+                      {urgencyLabels[step.urgency]}
+                    </Badge>
+                  </div>
+
+                  {isExpanded && (
+                    <div className="mt-3 ml-9 space-y-3 animate-fade-in" onClick={e => e.stopPropagation()}>
+                      <p className="text-sm text-muted-foreground">{step.detail}</p>
+
+                      <div className="space-y-1">
+                        <p className="text-xs font-semibold text-foreground uppercase tracking-wide">Actions</p>
+                        {step.actions.map((action, j) => (
+                          <div key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <span className="text-primary mt-0.5 flex-shrink-0">→</span>
+                            <span>{action}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {step.resolved && (
+                        <div className="p-2 rounded border border-green-500/20 bg-green-500/5">
+                          <p className="text-xs text-green-400">
+                            <strong>✓ Resolved:</strong> {step.resolved}
+                          </p>
+                        </div>
+                      )}
+
+                      {step.examTip && (
+                        <div className="p-2 rounded border border-amber-500/20 bg-amber-500/5">
+                          <p className="text-xs text-amber-400">
+                            <strong>⚠ Exam Tip:</strong> {step.examTip}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   )}
-  
-                  {/* Step card */}
-                  <button
-                    onClick={() => toggleStep(i)}
-                    className={`w-full text-left rounded-lg border p-3 transition-all duration-200 ${
-                      isActive
-                        ? "border-primary/50 bg-primary/5"
-                        : "border-border hover:bg-muted/30"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${
-                        isActive ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
-                      }`}>
-                        {i + 1}
-                      </span>
-                      <span className={`text-sm font-semibold flex-1 ${isActive ? "text-foreground" : "text-muted-foreground"}`}>
-                        {step.title.replace(/^\d+\.\s*/, "")}
-                      </span>
-                      <Badge variant="outline" className={`text-xs ${urgencyColors[step.urgency]}`}>
-                        {urgencyLabels[step.urgency]}
-                      </Badge>
-                    </div>
-  
-                    {isExpanded && (
-                      <div className="mt-3 ml-9 space-y-3 animate-fade-in" onClick={e => e.stopPropagation()}>
-                        <p className="text-sm text-muted-foreground">{step.detail}</p>
-  
-                        <div className="space-y-1">
-                          <p className="text-xs font-semibold text-foreground uppercase tracking-wide">Actions</p>
-                          {step.actions.map((action, j) => (
-                            <div key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                              <span className="text-primary mt-0.5 flex-shrink-0">→</span>
-                              <span>{action}</span>
-                            </div>
-                          ))}
-                        </div>
-  
-                        {step.resolved && (
-                          <div className="p-2 rounded border border-green-500/20 bg-green-500/5">
-                            <p className="text-xs text-green-400">
-                              <strong>✓ Resolved:</strong> {step.resolved}
-                            </p>
-                          </div>
-                        )}
-  
-                        {step.examTip && (
-                          <div className="p-2 rounded border border-amber-500/20 bg-amber-500/5">
-                            <p className="text-xs text-amber-400">
-                              <strong>⚠ Exam Tip:</strong> {step.examTip}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </button>
-                </div>
-    </DiagramFigure>
+                </button>
+              </div>
   );
           })}
         </div>

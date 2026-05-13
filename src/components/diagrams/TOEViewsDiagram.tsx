@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type TOEView = {
   id: string;
@@ -304,34 +303,28 @@ const TOEViewsDiagram = () => {
               {selectedView && (() => {
                 const v = views.find((x) => x.id === selectedView)!;
                 return (
-    <DiagramFigure
-      id="toe-views-diagram"
-      title="Toe views"
-      description="Auto-generated wrapper for the Toe views anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2 animate-fade-in sticky top-4">
-                      <div className="flex items-start justify-between gap-2">
-                        <div>
-                          <p className="font-bold text-foreground text-sm">{v.name}</p>
-                          <p className="text-[10px] text-muted-foreground">
-                            {v.depth === "ME" ? "Mid-oesophageal" : v.depth === "TG" ? "Transgastric" : "Upper-oesophageal"} · depth {v.depthCm} · multiplane {v.angle}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="p-2 rounded bg-background border border-border">
-                        <span className="font-semibold text-foreground">Structures: </span>
-                        <span className="text-muted-foreground">{v.structures}</span>
-                      </div>
-                      <div className="p-2 rounded bg-background border border-border">
-                        <span className="font-semibold text-foreground">Measurements: </span>
-                        <span className="text-muted-foreground">{v.measures}</span>
-                      </div>
-                      <div className="p-2 rounded bg-primary/10 border border-primary/20">
-                        <span className="font-semibold text-foreground">Clinical pearls: </span>
-                        <span className="text-muted-foreground">{v.pearls}</span>
+                      <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2 animate-fade-in sticky top-4">
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <p className="font-bold text-foreground text-sm">{v.name}</p>
+                        <p className="text-[10px] text-muted-foreground">
+                          {v.depth === "ME" ? "Mid-oesophageal" : v.depth === "TG" ? "Transgastric" : "Upper-oesophageal"} · depth {v.depthCm} · multiplane {v.angle}
+                        </p>
                       </div>
                     </div>
-    </DiagramFigure>
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">Structures: </span>
+                      <span className="text-muted-foreground">{v.structures}</span>
+                    </div>
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">Measurements: </span>
+                      <span className="text-muted-foreground">{v.measures}</span>
+                    </div>
+                    <div className="p-2 rounded bg-primary/10 border border-primary/20">
+                      <span className="font-semibold text-foreground">Clinical pearls: </span>
+                      <span className="text-muted-foreground">{v.pearls}</span>
+                    </div>
+                  </div>
   );
               })()}
             </div>

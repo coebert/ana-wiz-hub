@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface OrbitalStructure {
   id: string;
@@ -105,15 +104,9 @@ const OrbitAnatomyDiagram = () => {
           {muscles.map(m => {
             const isSelected = selected === m.id;
             return (
-    <DiagramFigure
-      id="orbit-anatomy-diagram"
-      title="Orbit anatomy"
-      description="Auto-generated wrapper for the Orbit anatomy anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g key={m.id} onClick={() => setSelected(selected === m.id ? null : m.id)} className="cursor-pointer">
-                  <path d={m.path} fill={m.color} opacity={isSelected ? 0.8 : 0.25} stroke={m.color} strokeWidth={isSelected ? 2 : 1} />
-                </g>
-    </DiagramFigure>
+                  <g key={m.id} onClick={() => setSelected(selected === m.id ? null : m.id)} className="cursor-pointer">
+                <path d={m.path} fill={m.color} opacity={isSelected ? 0.8 : 0.25} stroke={m.color} strokeWidth={isSelected ? 2 : 1} />
+              </g>
   );
           })}
 

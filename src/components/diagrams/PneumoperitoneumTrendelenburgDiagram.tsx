@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Pneumoperitoneum + steep Trendelenburg — multi-system effects diagram.
@@ -169,31 +168,25 @@ export const PneumoperitoneumTrendelenburgDiagram = () => {
             const w = 130;
             const x = pos.anchor === "start" ? pos.x : pos.x - w;
             return (
-    <DiagramFigure
-      id="pneumoperitoneum-trendelenburg-diagram"
-      title="Pneumoperitoneum trendelenburg"
-      description="Auto-generated wrapper for the Pneumoperitoneum trendelenburg anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g key={pos.key} onClick={() => setSelected(pos.key)} style={{ cursor: "pointer" }}>
-                  <rect
-                    x={x}
-                    y={pos.y - 18}
-                    width={w}
-                    height={36}
-                    rx={6}
-                    fill={isSel ? sys.color : "hsl(var(--background))"}
-                    fillOpacity={isSel ? 0.18 : 1}
-                    stroke={sys.color}
-                    strokeWidth={isSel ? 2 : 1}
-                  />
-                  <text x={x + w / 2} y={pos.y - 4} textAnchor="middle" className="fill-foreground" fontSize="10" fontWeight={600}>
-                    {sys.label}
-                  </text>
-                  <text x={x + w / 2} y={pos.y + 9} textAnchor="middle" className="fill-muted-foreground" fontSize="8">
-                    {sys.short}
-                  </text>
-                </g>
-    </DiagramFigure>
+                  <g key={pos.key} onClick={() => setSelected(pos.key)} style={{ cursor: "pointer" }}>
+                <rect
+                  x={x}
+                  y={pos.y - 18}
+                  width={w}
+                  height={36}
+                  rx={6}
+                  fill={isSel ? sys.color : "hsl(var(--background))"}
+                  fillOpacity={isSel ? 0.18 : 1}
+                  stroke={sys.color}
+                  strokeWidth={isSel ? 2 : 1}
+                />
+                <text x={x + w / 2} y={pos.y - 4} textAnchor="middle" className="fill-foreground" fontSize="10" fontWeight={600}>
+                  {sys.label}
+                </text>
+                <text x={x + w / 2} y={pos.y + 9} textAnchor="middle" className="fill-muted-foreground" fontSize="8">
+                  {sys.short}
+                </text>
+              </g>
   );
           })}
         </svg>

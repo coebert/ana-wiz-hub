@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const DiffusionCapacityDiagram = () => {
   const [view, setView] = useState<"fick" | "dlco" | "factors">("fick");
@@ -342,21 +341,15 @@ function Slider({ label, value, min, max, step, unit, onChange }: {
   label: string; value: number; min: number; max: number; step: number; unit: string; onChange: (v: number) => void;
 }) {
   return (
-    <DiagramFigure
-      id="diffusion-capacity-diagram"
-      title="Diffusion capacity"
-      description="Auto-generated wrapper for the Diffusion capacity anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div>
-        <div className="flex justify-between text-xs mb-0.5">
-          <span className="text-muted-foreground">{label}</span>
-          <span className="font-mono font-semibold text-foreground">{step < 1 ? value.toFixed(1) : value} {unit}</span>
-        </div>
-        <input type="range" min={min} max={max} step={step} value={value}
-          onChange={e => onChange(Number(e.target.value))}
-          className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
+        <div>
+      <div className="flex justify-between text-xs mb-0.5">
+        <span className="text-muted-foreground">{label}</span>
+        <span className="font-mono font-semibold text-foreground">{step < 1 ? value.toFixed(1) : value} {unit}</span>
       </div>
-    </DiagramFigure>
+      <input type="range" min={min} max={max} step={step} value={value}
+        onChange={e => onChange(Number(e.target.value))}
+        className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
+    </div>
   );
 }
 

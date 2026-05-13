@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive SOFA + qSOFA + NEWS2 calculator for sepsis screening &
@@ -186,23 +185,17 @@ function Slider({ label, value, min, max, step, unit, onChange, decimals = 0 }: 
   unit: string; onChange: (v: number) => void; decimals?: number;
 }) {
   return (
-    <DiagramFigure
-      id="sepsis-score-calculator"
-      title="Sepsis score"
-      description="Auto-generated wrapper for the Sepsis score interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div>
-        <div className="flex justify-between text-xs mb-0.5">
-          <span className="text-muted-foreground">{label}</span>
-          <span className="font-mono font-semibold text-foreground">{value.toFixed(decimals)} {unit}</span>
-        </div>
-        <input
-          type="range" min={min} max={max} step={step} value={value}
-          onChange={(e) => onChange(Number(e.target.value))}
-          className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-primary"
-        />
+        <div>
+      <div className="flex justify-between text-xs mb-0.5">
+        <span className="text-muted-foreground">{label}</span>
+        <span className="font-mono font-semibold text-foreground">{value.toFixed(decimals)} {unit}</span>
       </div>
-    </DiagramFigure>
+      <input
+        type="range" min={min} max={max} step={step} value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-primary"
+      />
+    </div>
   );
 }
 

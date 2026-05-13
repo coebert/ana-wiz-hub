@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Agonism spectrum: full agonist → partial agonist → antagonist → inverse agonist.
@@ -120,25 +119,19 @@ export const AgonismSpectrumDiagram = () => {
           {LIGANDS.map((l) => {
             const isActive = activeId === l.id;
             return (
-    <DiagramFigure
-      id="agonism-spectrum-diagram"
-      title="Agonism spectrum"
-      description="Auto-generated wrapper for the Agonism spectrum anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <button
-                  key={l.id}
-                  onClick={() => setActiveId(l.id)}
-                  className={`px-3 py-1.5 rounded-full text-xs border transition-colors ${
-                    isActive
-                      ? "text-primary-foreground border-transparent"
-                      : "bg-background text-foreground border-border hover:bg-muted"
-                  }`}
-                  style={isActive ? { background: l.color } : undefined}
-                  aria-pressed={isActive}
-                >
-                  {l.label}
-                </button>
-    </DiagramFigure>
+                  <button
+                key={l.id}
+                onClick={() => setActiveId(l.id)}
+                className={`px-3 py-1.5 rounded-full text-xs border transition-colors ${
+                  isActive
+                    ? "text-primary-foreground border-transparent"
+                    : "bg-background text-foreground border-border hover:bg-muted"
+                }`}
+                style={isActive ? { background: l.color } : undefined}
+                aria-pressed={isActive}
+              >
+                {l.label}
+              </button>
   );
           })}
         </div>

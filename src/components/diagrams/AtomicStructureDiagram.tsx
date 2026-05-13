@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type BondType = "ionic" | "covalent" | "metallic" | "hydrogen" | "vanderwaals";
 
@@ -284,17 +283,11 @@ export const AtomicStructureDiagram = () => {
           ].sort((a,b) => a.en - b.en).map((item, i) => {
             const x = 30 + (item.en / 4.2) * 340;
             return (
-    <DiagramFigure
-      id="atomic-structure-diagram"
-      title="Atomic structure"
-      description="Auto-generated wrapper for the Atomic structure anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g key={i}>
-                  <line x1={x} y1={30} x2={x} y2={45} stroke={item.color} strokeWidth="2" />
-                  <text x={x} y={22} textAnchor="middle" fontSize="10" fill={item.color} fontWeight="bold">{item.el}</text>
-                  <text x={x} y={55} textAnchor="middle" fontSize="7" className="fill-muted-foreground">{item.en}</text>
-                </g>
-    </DiagramFigure>
+                  <g key={i}>
+                <line x1={x} y1={30} x2={x} y2={45} stroke={item.color} strokeWidth="2" />
+                <text x={x} y={22} textAnchor="middle" fontSize="10" fill={item.color} fontWeight="bold">{item.el}</text>
+                <text x={x} y={55} textAnchor="middle" fontSize="7" className="fill-muted-foreground">{item.en}</text>
+              </g>
   );
           })}
           <line x1={25} y1={38} x2={385} y2={38} stroke="hsl(var(--border))" strokeWidth="1" />

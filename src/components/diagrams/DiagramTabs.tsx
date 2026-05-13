@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 export interface DiagramTab {
   /** Stable tab id */
@@ -34,42 +33,36 @@ export const DiagramTabs = ({ title, description, tabs, defaultValue }: DiagramT
   const initial = defaultValue ?? tabs[0].value;
 
   return (
-    <DiagramFigure
-      id="diagram-tabs"
-      title="Diagram tabs"
-      description="Auto-generated wrapper for the Diagram tabs anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <section className="bg-card rounded-xl border border-border p-4 md:p-6">
-        <div className="mb-4">
-          <h3 className="text-base md:text-lg font-semibold text-foreground">{title}</h3>
-          {description ? (
-            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{description}</p>
-          ) : null}
-        </div>
-  
-        <Tabs defaultValue={initial} className="w-full">
-          <ScrollArea className="w-full whitespace-nowrap">
-            <TabsList className="h-auto flex-wrap justify-start gap-1 bg-muted/60 p-1">
-              {tabs.map((tab) => (
-                <TabsTrigger key={tab.value} value={tab.value} className="text-xs md:text-sm">
-                  {tab.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            <ScrollBar orientation="horizontal" />
-          </ScrollArea>
-  
-          {tabs.map((tab) => (
-            <TabsContent key={tab.value} value={tab.value} className="mt-4 focus-visible:ring-0">
-              {tab.caption ? (
-                <p className="text-xs md:text-sm text-muted-foreground mb-3 italic">{tab.caption}</p>
-              ) : null}
-              {tab.content}
-            </TabsContent>
-          ))}
-        </Tabs>
-      </section>
-    </DiagramFigure>
+        <section className="bg-card rounded-xl border border-border p-4 md:p-6">
+      <div className="mb-4">
+        <h3 className="text-base md:text-lg font-semibold text-foreground">{title}</h3>
+        {description ? (
+          <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{description}</p>
+        ) : null}
+      </div>
+
+      <Tabs defaultValue={initial} className="w-full">
+        <ScrollArea className="w-full whitespace-nowrap">
+          <TabsList className="h-auto flex-wrap justify-start gap-1 bg-muted/60 p-1">
+            {tabs.map((tab) => (
+              <TabsTrigger key={tab.value} value={tab.value} className="text-xs md:text-sm">
+                {tab.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
+
+        {tabs.map((tab) => (
+          <TabsContent key={tab.value} value={tab.value} className="mt-4 focus-visible:ring-0">
+            {tab.caption ? (
+              <p className="text-xs md:text-sm text-muted-foreground mb-3 italic">{tab.caption}</p>
+            ) : null}
+            {tab.content}
+          </TabsContent>
+        ))}
+      </Tabs>
+    </section>
   );
 };
 

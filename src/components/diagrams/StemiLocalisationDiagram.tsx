@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * STEMI localisation interactive — *lead-driven* counterpart to
@@ -401,16 +400,10 @@ const StemiLocalisationDiagram = () => {
                   t === "rv" ? { x: 55, y: 105 } : null;
                 if (!marker) return null;
                 return (
-    <DiagramFigure
-      id="stemi-localisation-diagram"
-      title="STEMI localisation"
-      description="Auto-generated wrapper for the STEMI localisation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <g>
-                      <circle cx={marker.x} cy={marker.y} r="5" fill={info.color} stroke="hsl(var(--background))" strokeWidth="1.5" />
-                      <text x={marker.x} y={marker.y + 1.5} fontSize="7" fontWeight="bold" fill="hsl(var(--background))" textAnchor="middle" dominantBaseline="middle">×</text>
-                    </g>
-    </DiagramFigure>
+                      <g>
+                    <circle cx={marker.x} cy={marker.y} r="5" fill={info.color} stroke="hsl(var(--background))" strokeWidth="1.5" />
+                    <text x={marker.x} y={marker.y + 1.5} fontSize="7" fontWeight="bold" fill="hsl(var(--background))" textAnchor="middle" dominantBaseline="middle">×</text>
+                  </g>
   );
               })()}
             </svg>

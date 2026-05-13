@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated infographic comparing recommended dwell-time approach
@@ -156,66 +155,60 @@ export const DwellTimeInfographic: React.FC = () => {
           const styles = STRATEGY_STYLES[r.strategy];
           const delay = 120 + i * 140;
           return (
-    <DiagramFigure
-      id="dwell-time-infographic"
-      title="Dwell time infographic"
-      description="Auto-generated wrapper for the Dwell time infographic graphical relationship. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <div
-                key={r.device}
-                className="grid grid-cols-[180px_1fr] items-center gap-3"
-              >
-                {/* Label column */}
-                <div className="text-right">
-                  <p className="text-sm font-semibold text-foreground leading-tight">
-                    {r.device}
-                  </p>
-                  <p className="text-[10px] text-muted-foreground italic mt-0.5">
-                    {r.evidence}
-                  </p>
+                <div
+              key={r.device}
+              className="grid grid-cols-[180px_1fr] items-center gap-3"
+            >
+              {/* Label column */}
+              <div className="text-right">
+                <p className="text-sm font-semibold text-foreground leading-tight">
+                  {r.device}
+                </p>
+                <p className="text-[10px] text-muted-foreground italic mt-0.5">
+                  {r.evidence}
+                </p>
+              </div>
+
+              {/* Bar + tag column */}
+              <div className="relative h-10">
+                {/* Track */}
+                <div className="absolute inset-y-3 left-0 right-0 rounded-full bg-muted/60" />
+                {/* Animated fill */}
+                <div
+                  className="absolute inset-y-3 left-0 rounded-full"
+                  style={{
+                    width: animate ? `${r.bar}%` : "0%",
+                    background: `linear-gradient(90deg, hsl(${r.hue} 60% 70%), hsl(${r.hue} 60% 45%))`,
+                    transition: `width 900ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
+                  }}
+                />
+                {/* End-of-bar dwell label */}
+                <div
+                  className="absolute top-0 -translate-x-1/2 text-[10px] font-medium text-foreground whitespace-nowrap"
+                  style={{
+                    left: animate ? `${Math.min(r.bar, 92)}%` : "0%",
+                    opacity: animate ? 1 : 0,
+                    transition: `left 900ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, opacity 400ms ease-out ${delay + 600}ms`,
+                  }}
+                >
+                  {r.dwellLabel}
                 </div>
-  
-                {/* Bar + tag column */}
-                <div className="relative h-10">
-                  {/* Track */}
-                  <div className="absolute inset-y-3 left-0 right-0 rounded-full bg-muted/60" />
-                  {/* Animated fill */}
-                  <div
-                    className="absolute inset-y-3 left-0 rounded-full"
-                    style={{
-                      width: animate ? `${r.bar}%` : "0%",
-                      background: `linear-gradient(90deg, hsl(${r.hue} 60% 70%), hsl(${r.hue} 60% 45%))`,
-                      transition: `width 900ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
-                    }}
-                  />
-                  {/* End-of-bar dwell label */}
-                  <div
-                    className="absolute top-0 -translate-x-1/2 text-[10px] font-medium text-foreground whitespace-nowrap"
-                    style={{
-                      left: animate ? `${Math.min(r.bar, 92)}%` : "0%",
-                      opacity: animate ? 1 : 0,
-                      transition: `left 900ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, opacity 400ms ease-out ${delay + 600}ms`,
-                    }}
-                  >
-                    {r.dwellLabel}
-                  </div>
-                  {/* Strategy tag */}
-                  <div
-                    className="absolute bottom-0 right-0 text-[10px] font-semibold px-2 py-0.5 rounded-full border"
-                    style={{
-                      backgroundColor: styles.bg,
-                      color: styles.fg,
-                      borderColor: styles.ring,
-                      opacity: animate ? 1 : 0,
-                      transform: animate ? "translateX(0)" : "translateX(8px)",
-                      transition: `opacity 400ms ease-out ${delay + 400}ms, transform 400ms ease-out ${delay + 400}ms`,
-                    }}
-                  >
-                    {r.strategyLabel}
-                  </div>
+                {/* Strategy tag */}
+                <div
+                  className="absolute bottom-0 right-0 text-[10px] font-semibold px-2 py-0.5 rounded-full border"
+                  style={{
+                    backgroundColor: styles.bg,
+                    color: styles.fg,
+                    borderColor: styles.ring,
+                    opacity: animate ? 1 : 0,
+                    transform: animate ? "translateX(0)" : "translateX(8px)",
+                    transition: `opacity 400ms ease-out ${delay + 400}ms, transform 400ms ease-out ${delay + 400}ms`,
+                  }}
+                >
+                  {r.strategyLabel}
                 </div>
               </div>
-    </DiagramFigure>
+            </div>
   );
         })}
 

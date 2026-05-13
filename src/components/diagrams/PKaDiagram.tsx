@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface LAAgent {
   name: string;
@@ -179,23 +178,17 @@ export const PKaDiagram = () => {
           {Array.from({ length: totalMols }).map((_, i) => {
             const isIonised = i < ionisedCount;
             return (
-    <DiagramFigure
-      id="p-ka-diagram"
-      title="P ka"
-      description="Auto-generated wrapper for the P ka anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <div
-                  key={i}
-                  className="w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-bold transition-colors duration-300"
-                  style={{
-                    backgroundColor: isIonised ? "hsl(340 60% 90%)" : "hsl(170 50% 88%)",
-                    color: isIonised ? "hsl(340 60% 40%)" : "hsl(170 50% 30%)",
-                    border: `1.5px solid ${isIonised ? "hsl(340 60% 50%)" : "hsl(170 50% 40%)"}`,
-                  }}
-                >
-                  {isIonised ? "+" : "B"}
-                </div>
-    </DiagramFigure>
+                  <div
+                key={i}
+                className="w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-bold transition-colors duration-300"
+                style={{
+                  backgroundColor: isIonised ? "hsl(340 60% 90%)" : "hsl(170 50% 88%)",
+                  color: isIonised ? "hsl(340 60% 40%)" : "hsl(170 50% 30%)",
+                  border: `1.5px solid ${isIonised ? "hsl(340 60% 50%)" : "hsl(170 50% 40%)"}`,
+                }}
+              >
+                {isIonised ? "+" : "B"}
+              </div>
   );
           })}
         </div>

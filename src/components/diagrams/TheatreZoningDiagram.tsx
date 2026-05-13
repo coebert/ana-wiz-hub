@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, RotateCcw, User, Users, Trash2 } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Flow = "patient" | "staff" | "waste" | "all";
 
@@ -315,25 +314,19 @@ const TheatreZoningDiagram = () => {
             const pathStr = f.points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
             const dot = pointsAt(f.points, t);
             return (
-    <DiagramFigure
-      id="theatre-zoning-diagram"
-      title="Theatre zoning"
-      description="Auto-generated wrapper for the Theatre zoning anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g key={f.id}>
-                  <path
-                    d={pathStr}
-                    fill="none"
-                    stroke={f.color}
-                    strokeWidth="1.5"
-                    strokeDasharray="4 3"
-                    opacity="0.7"
-                    markerEnd={`url(#arrow-${f.id})`}
-                  />
-                  <circle cx={dot.x} cy={dot.y} r="4.5" fill={f.color} />
-                  <circle cx={dot.x} cy={dot.y} r="7" fill={f.color} opacity="0.25" />
-                </g>
-    </DiagramFigure>
+                  <g key={f.id}>
+                <path
+                  d={pathStr}
+                  fill="none"
+                  stroke={f.color}
+                  strokeWidth="1.5"
+                  strokeDasharray="4 3"
+                  opacity="0.7"
+                  markerEnd={`url(#arrow-${f.id})`}
+                />
+                <circle cx={dot.x} cy={dot.y} r="4.5" fill={f.color} />
+                <circle cx={dot.x} cy={dot.y} r="7" fill={f.color} opacity="0.25" />
+              </g>
   );
           })}
         </svg>

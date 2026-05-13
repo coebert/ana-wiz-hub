@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const VILIDiagram = () => {
   const [vt, setVt] = useState(6);
@@ -213,21 +212,15 @@ function Slider({ label, value, min, max, unit, onChange }: {
   label: string; value: number; min: number; max: number; unit: string; onChange: (v: number) => void;
 }) {
   return (
-    <DiagramFigure
-      id="vili-diagram"
-      title="Vili"
-      description="Auto-generated wrapper for the Vili anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div>
-        <div className="flex justify-between text-xs mb-0.5">
-          <span className="text-muted-foreground">{label}</span>
-          <span className="font-mono font-semibold text-foreground">{value} {unit}</span>
-        </div>
-        <input type="range" min={min} max={max} value={value}
-          onChange={e => onChange(Number(e.target.value))}
-          className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
+        <div>
+      <div className="flex justify-between text-xs mb-0.5">
+        <span className="text-muted-foreground">{label}</span>
+        <span className="font-mono font-semibold text-foreground">{value} {unit}</span>
       </div>
-    </DiagramFigure>
+      <input type="range" min={min} max={max} value={value}
+        onChange={e => onChange(Number(e.target.value))}
+        className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
+    </div>
   );
 }
 

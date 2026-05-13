@@ -1,5 +1,4 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Category 1 caesarean — rapid sequence induction (RSI) under general
@@ -211,18 +210,12 @@ export const Cat1RSIAnimation = () => {
               ].map((d, i) => {
                 const visible = active >= d.step;
                 return (
-    <DiagramFigure
-      id="cat1-rsi-animation"
-      title="Cat1 RSI"
-      description="Auto-generated wrapper for the Cat1 RSI animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <g key={d.label} transform={`translate(${i * 80}, 0)`} opacity={visible ? 1 : 0.25} className="transition-opacity duration-500">
-                      <rect width="60" height="22" rx="3" fill={`hsl(var(--${d.token}) / 0.2)`} stroke={`hsl(var(--${d.token}))`} />
-                      <text x="30" y="15" textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(var(--foreground))">
-                        {d.label}
-                      </text>
-                    </g>
-    </DiagramFigure>
+                      <g key={d.label} transform={`translate(${i * 80}, 0)`} opacity={visible ? 1 : 0.25} className="transition-opacity duration-500">
+                    <rect width="60" height="22" rx="3" fill={`hsl(var(--${d.token}) / 0.2)`} stroke={`hsl(var(--${d.token}))`} />
+                    <text x="30" y="15" textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(var(--foreground))">
+                      {d.label}
+                    </text>
+                  </g>
   );
               })}
             </g>

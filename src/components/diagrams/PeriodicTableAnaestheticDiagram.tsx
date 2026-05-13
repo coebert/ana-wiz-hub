@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Element {
   symbol: string;
@@ -158,28 +157,22 @@ export const PeriodicTableAnaestheticDiagram = () => {
           const cat = categoryColors[el.category];
           const isSelected = selected?.symbol === el.symbol;
           return (
-    <DiagramFigure
-      id="periodic-table-anaesthetic-diagram"
-      title="Periodic table anaesthetic"
-      description="Auto-generated wrapper for the Periodic table anaesthetic anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <button
-                key={el.symbol}
-                onClick={() => setSelected(isSelected ? null : el)}
-                className={`relative flex flex-col items-center justify-center p-1.5 sm:p-2 rounded-lg border-2 transition-all duration-200 cursor-pointer min-h-[72px] sm:min-h-[88px]
-                  ${isSelected
-                    ? `${cat.bg} ${cat.border} ring-2 ring-offset-1 ring-offset-background scale-105 shadow-lg`
-                    : `${cat.bg} ${cat.border} hover:scale-105 hover:shadow-md`
-                  }
-                  ${isSelected ? `ring-${el.category === 'alkali' ? 'red' : el.category === 'alkaline' ? 'orange' : el.category === 'transition' ? 'sky' : 'emerald'}-400/50` : ''}
-                `}
-              >
-                <span className="text-[9px] text-muted-foreground leading-none">{el.atomicNumber}</span>
-                <span className={`text-lg sm:text-2xl font-bold ${cat.text} leading-tight`}>{el.symbol}</span>
-                <span className="text-[8px] sm:text-[9px] text-muted-foreground leading-tight truncate w-full text-center">{el.name}</span>
-                <span className="text-[7px] sm:text-[8px] text-muted-foreground/60 leading-none">{el.atomicMass}</span>
-              </button>
-    </DiagramFigure>
+                <button
+              key={el.symbol}
+              onClick={() => setSelected(isSelected ? null : el)}
+              className={`relative flex flex-col items-center justify-center p-1.5 sm:p-2 rounded-lg border-2 transition-all duration-200 cursor-pointer min-h-[72px] sm:min-h-[88px]
+                ${isSelected
+                  ? `${cat.bg} ${cat.border} ring-2 ring-offset-1 ring-offset-background scale-105 shadow-lg`
+                  : `${cat.bg} ${cat.border} hover:scale-105 hover:shadow-md`
+                }
+                ${isSelected ? `ring-${el.category === 'alkali' ? 'red' : el.category === 'alkaline' ? 'orange' : el.category === 'transition' ? 'sky' : 'emerald'}-400/50` : ''}
+              `}
+            >
+              <span className="text-[9px] text-muted-foreground leading-none">{el.atomicNumber}</span>
+              <span className={`text-lg sm:text-2xl font-bold ${cat.text} leading-tight`}>{el.symbol}</span>
+              <span className="text-[8px] sm:text-[9px] text-muted-foreground leading-tight truncate w-full text-center">{el.name}</span>
+              <span className="text-[7px] sm:text-[8px] text-muted-foreground/60 leading-none">{el.atomicMass}</span>
+            </button>
   );
         })}
       </div>

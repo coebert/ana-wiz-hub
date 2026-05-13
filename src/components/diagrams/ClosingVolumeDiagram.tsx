@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { clampValue, createLinearScale, makeTicks, niceAxisMax } from "@/lib/diagram-scale";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Phase = 1 | 2 | 3 | 4;
 
@@ -189,17 +188,11 @@ const ClosingVolumeDiagram = () => {
       {selectedPhase !== null && (() => {
         const p = phases[selectedPhase - 1];
         return (
-    <DiagramFigure
-      id="closing-volume-diagram"
-      title="Closing volume"
-      description="Auto-generated wrapper for the Closing volume anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                <div className="bg-secondary/30 rounded-lg p-3 border border-border" style={{ borderLeftColor: p.color, borderLeftWidth: 3 }}>
-              <p className="text-sm font-semibold text-foreground">{p.label}</p>
-              <p className="text-[10px] text-muted-foreground mt-0.5">Source: {p.source}</p>
-              <p className="text-xs text-muted-foreground mt-2">{p.description}</p>
-            </div>
-    </DiagramFigure>
+              <div className="bg-secondary/30 rounded-lg p-3 border border-border" style={{ borderLeftColor: p.color, borderLeftWidth: 3 }}>
+            <p className="text-sm font-semibold text-foreground">{p.label}</p>
+            <p className="text-[10px] text-muted-foreground mt-0.5">Source: {p.source}</p>
+            <p className="text-xs text-muted-foreground mt-2">{p.description}</p>
+          </div>
   );
       })()}
 

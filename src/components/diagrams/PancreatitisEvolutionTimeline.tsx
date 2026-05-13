@@ -1,5 +1,4 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated timeline showing how the pancreas (and the peripancreatic spaces)
@@ -38,205 +37,199 @@ const PancreasScene = ({ active }: SceneProps) => {
       : { stroke: "hsl(220 8% 18%)", strokeWidth: 0.4, filter: undefined };
 
   return (
-    <DiagramFigure
-      id="pancreatitis-evolution-timeline"
-      title="Pancreatitis evolution timeline"
-      description="Auto-generated wrapper for the Pancreatitis evolution timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-3">
-        <svg
-          viewBox="0 0 100 60"
-          preserveAspectRatio="xMidYMid meet"
-          role="img"
-          aria-label={`Schematic axial section through the pancreatic bed at time-point ${active + 1} of 5.`}
-          className="w-full h-auto block rounded-lg border border-border bg-[hsl(220_18%_8%)]"
-        >
-          <defs>
-            <radialGradient id="pet-bg" cx="50%" cy="50%" r="60%">
-              <stop offset="0%" stopColor="hsl(220 14% 14%)" />
-              <stop offset="100%" stopColor="hsl(220 18% 6%)" />
-            </radialGradient>
-            <pattern id="pet-stranding" width="3" height="3" patternUnits="userSpaceOnUse">
-              <rect width="3" height="3" fill="hsl(220 14% 26%)" />
-              <path d="M0 0 L3 3 M0 3 L3 0" stroke="hsl(220 8% 14%)" strokeWidth="0.5" />
-            </pattern>
-            <filter id="pet-glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="0.5" result="b" />
-              <feMerge>
-                <feMergeNode in="b" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-            {/* Pulse for active oedema */}
-            <style>{`
-              @keyframes petPulse { 0%,100% { opacity: 0.55 } 50% { opacity: 0.85 } }
-              @keyframes petBubble { 0%,100% { opacity: 0.7 } 50% { opacity: 1 } }
-              .pet-pulse { animation: petPulse 2.4s ease-in-out infinite; }
-              .pet-bubble { animation: petBubble 1.6s ease-in-out infinite; }
-              @media (prefers-reduced-motion: reduce) {
-                .pet-pulse, .pet-bubble { animation: none; }
-              }
-            `}</style>
-          </defs>
-  
-          <rect x="0" y="0" width="100" height="60" fill="url(#pet-bg)" />
-  
-          {/* Vertebra (orientation marker) */}
-          <ellipse cx="50" cy="48" rx="6" ry="4" fill="hsl(40 18% 78%)" stroke="hsl(220 8% 14%)" strokeWidth="0.5" />
-          <ellipse cx="50" cy="49" rx="2" ry="1.5" fill="hsl(220 14% 22%)" />
-  
-          {/* Aorta + IVC */}
-          <circle cx="55" cy="42" r="2.4" fill="hsl(0 70% 48%)" stroke="hsl(0 60% 25%)" strokeWidth="0.5" />
-          <ellipse cx="46" cy="42" rx="2.6" ry="2" fill="hsl(220 70% 45%)" stroke="hsl(220 60% 22%)" strokeWidth="0.5" />
-  
-          {/* Stomach (anterior) */}
-          <ellipse cx="42" cy="14" rx="14" ry="4" fill="hsl(220 18% 22%)" stroke="hsl(220 12% 10%)" strokeWidth="0.5" />
-  
-          {/* Peripancreatic fat stranding — fades in from step 1 onwards, brightest at step 1 */}
-          {showOedema && (
+        <div className="space-y-3">
+      <svg
+        viewBox="0 0 100 60"
+        preserveAspectRatio="xMidYMid meet"
+        role="img"
+        aria-label={`Schematic axial section through the pancreatic bed at time-point ${active + 1} of 5.`}
+        className="w-full h-auto block rounded-lg border border-border bg-[hsl(220_18%_8%)]"
+      >
+        <defs>
+          <radialGradient id="pet-bg" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stopColor="hsl(220 14% 14%)" />
+            <stop offset="100%" stopColor="hsl(220 18% 6%)" />
+          </radialGradient>
+          <pattern id="pet-stranding" width="3" height="3" patternUnits="userSpaceOnUse">
+            <rect width="3" height="3" fill="hsl(220 14% 26%)" />
+            <path d="M0 0 L3 3 M0 3 L3 0" stroke="hsl(220 8% 14%)" strokeWidth="0.5" />
+          </pattern>
+          <filter id="pet-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="0.5" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          {/* Pulse for active oedema */}
+          <style>{`
+            @keyframes petPulse { 0%,100% { opacity: 0.55 } 50% { opacity: 0.85 } }
+            @keyframes petBubble { 0%,100% { opacity: 0.7 } 50% { opacity: 1 } }
+            .pet-pulse { animation: petPulse 2.4s ease-in-out infinite; }
+            .pet-bubble { animation: petBubble 1.6s ease-in-out infinite; }
+            @media (prefers-reduced-motion: reduce) {
+              .pet-pulse, .pet-bubble { animation: none; }
+            }
+          `}</style>
+        </defs>
+
+        <rect x="0" y="0" width="100" height="60" fill="url(#pet-bg)" />
+
+        {/* Vertebra (orientation marker) */}
+        <ellipse cx="50" cy="48" rx="6" ry="4" fill="hsl(40 18% 78%)" stroke="hsl(220 8% 14%)" strokeWidth="0.5" />
+        <ellipse cx="50" cy="49" rx="2" ry="1.5" fill="hsl(220 14% 22%)" />
+
+        {/* Aorta + IVC */}
+        <circle cx="55" cy="42" r="2.4" fill="hsl(0 70% 48%)" stroke="hsl(0 60% 25%)" strokeWidth="0.5" />
+        <ellipse cx="46" cy="42" rx="2.6" ry="2" fill="hsl(220 70% 45%)" stroke="hsl(220 60% 22%)" strokeWidth="0.5" />
+
+        {/* Stomach (anterior) */}
+        <ellipse cx="42" cy="14" rx="14" ry="4" fill="hsl(220 18% 22%)" stroke="hsl(220 12% 10%)" strokeWidth="0.5" />
+
+        {/* Peripancreatic fat stranding — fades in from step 1 onwards, brightest at step 1 */}
+        {showOedema && (
+          <path
+            d="M22 28 Q40 18 56 22 Q74 24 82 18 Q86 32 76 38 Q56 42 36 40 Q24 38 22 32 Z"
+            fill="url(#pet-stranding)"
+            opacity={active === 0 ? 0.7 : 0.45}
+            className={active === 0 ? "pet-pulse" : undefined}
+          />
+        )}
+
+        {/* Acute peripancreatic / necrotic collection — appears step 2+, encapsulates step 3+ */}
+        {showCollection && (
+          <g>
             <path
-              d="M22 28 Q40 18 56 22 Q74 24 82 18 Q86 32 76 38 Q56 42 36 40 Q24 38 22 32 Z"
-              fill="url(#pet-stranding)"
-              opacity={active === 0 ? 0.7 : 0.45}
-              className={active === 0 ? "pet-pulse" : undefined}
+              d="M14 30 Q24 24 34 30 Q42 36 38 44 Q26 48 16 44 Q10 38 14 30 Z"
+              fill="hsl(210 55% 38%)"
+              stroke={showWall ? "hsl(45 80% 60%)" : "hsl(210 50% 22%)"}
+              strokeWidth={showWall ? 1.2 : 0.4}
+              strokeDasharray={showWall ? undefined : "0.8 0.8"}
             />
-          )}
-  
-          {/* Acute peripancreatic / necrotic collection — appears step 2+, encapsulates step 3+ */}
-          {showCollection && (
-            <g>
-              <path
-                d="M14 30 Q24 24 34 30 Q42 36 38 44 Q26 48 16 44 Q10 38 14 30 Z"
-                fill="hsl(210 55% 38%)"
-                stroke={showWall ? "hsl(45 80% 60%)" : "hsl(210 50% 22%)"}
-                strokeWidth={showWall ? 1.2 : 0.4}
-                strokeDasharray={showWall ? undefined : "0.8 0.8"}
-              />
-              {showWall && (
-                <text
-                  x="24"
-                  y="36"
-                  fontSize="2.6"
-                  textAnchor="middle"
-                  fill="hsl(45 90% 75%)"
-                  stroke="hsl(220 18% 8%)"
-                  strokeWidth="0.75"
-                  paintOrder="stroke"
-                  fontWeight="600"
-                  style={{ fontFamily: "Inter, system-ui, sans-serif" }}
-                >
-                  {active >= 4 ? "Infected WON" : "WON"}
-                </text>
-              )}
-            </g>
-          )}
-  
-          {/* Pancreas — body + tail */}
-          <g {...highlight(0)}>
-            <path
-              d="M28 30 Q40 22 54 26 Q66 30 74 26 Q72 36 56 34 Q40 36 28 34 Z"
-              fill="hsl(20 30% 38%)"
-            />
-          </g>
-  
-          {/* Necrotic non-enhancing core — appears step 1+ */}
-          {showNecrosisCore && (
-            <g {...highlight(1)}>
-              <path
-                d="M40 28 Q52 25 62 28 Q60 33 50 33 Q42 33 40 30 Z"
-                fill="hsl(220 18% 18%)"
-              />
-              {/* Liquefying centre — softens from step 2 */}
-              {active >= 2 && (
-                <path
-                  d="M44 29 Q52 27 60 29 Q58 32 50 32 Q44 32 44 29 Z"
-                  fill="hsl(210 50% 32%)"
-                  opacity="0.85"
-                />
-              )}
-            </g>
-          )}
-  
-          {/* Gas bubbles (infected necrosis) — final step only */}
-          {showGas && (
-            <g {...highlight(4)} className="pet-bubble">
-              <circle cx="50" cy="30" r="1.1" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
-              <circle cx="53" cy="31" r="0.8" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
-              <circle cx="47" cy="31.5" r="0.6" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
-              <circle cx="22" cy="36" r="0.9" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
-              <circle cx="26" cy="40" r="0.7" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
-            </g>
-          )}
-  
-          {/* Step 4 — percutaneous drain (step-up) */}
-          {active >= 4 && (
-            <g>
-              <line
-                x1="2"
-                y1="50"
-                x2="20"
-                y2="40"
-                stroke="hsl(45 90% 70%)"
-                strokeWidth="1"
-                strokeLinecap="round"
-              />
-              <circle cx="20" cy="40" r="0.9" fill="hsl(45 90% 70%)" />
+            {showWall && (
               <text
-                x="3"
-                y="56"
-                fontSize="2.2"
-                fill="hsl(45 90% 70%)"
+                x="24"
+                y="36"
+                fontSize="2.6"
+                textAnchor="middle"
+                fill="hsl(45 90% 75%)"
+                stroke="hsl(220 18% 8%)"
+                strokeWidth="0.75"
+                paintOrder="stroke"
                 fontWeight="600"
                 style={{ fontFamily: "Inter, system-ui, sans-serif" }}
               >
-                Percutaneous drain
+                {active >= 4 ? "Infected WON" : "WON"}
               </text>
-            </g>
-          )}
-  
-          {/* Compass + time stamp */}
-          <text x="50" y="3" fontSize="2" textAnchor="middle" fill="hsl(var(--muted-foreground))" style={{ fontFamily: "JetBrains Mono, monospace" }}>A</text>
-          <text x="50" y="59" fontSize="2" textAnchor="middle" fill="hsl(var(--muted-foreground))" style={{ fontFamily: "JetBrains Mono, monospace" }}>P</text>
-  
-          {/* Time-point banner */}
-          <rect x="68" y="2" width="30" height="6" rx="1" fill="hsl(220 18% 12%)" stroke="hsl(220 8% 22%)" strokeWidth="0.5" />
-          <text
-            x="83"
-            y="6.4"
-            fontSize="3"
-            textAnchor="middle"
-            fill="hsl(45 90% 70%)"
-            fontWeight="700"
-            style={{ fontFamily: "JetBrains Mono, monospace" }}
-          >
-            {["0–24 h", "48–72 h", "Day 4–14", "≥ 4 weeks", "Late / infected"][active]}
-          </text>
-        </svg>
-  
-        {/* Sub-legend — current Atlanta term */}
-        <div className="flex flex-wrap gap-2 text-[11px]">
-          {[
-            { i: 0, term: "Interstitial oedematous pancreatitis", color: "hsl(var(--clinical))" },
-            { i: 1, term: "Necrotising pancreatitis", color: "hsl(var(--icu))" },
-            { i: 2, term: "Acute necrotic collection (ANC)", color: "hsl(var(--icu))" },
-            { i: 3, term: "Walled-off necrosis (WON)", color: "hsl(var(--icu))" },
-            { i: 4, term: "Infected WON", color: "hsl(var(--destructive))" },
-          ].map((t) => (
-            <span
-              key={t.i}
-              className={`px-2 py-0.5 rounded-full border ${
-                active === t.i
-                  ? "border-foreground/40 bg-foreground/10 text-foreground font-semibold"
-                  : "border-border bg-background text-muted-foreground"
-              }`}
-              style={active === t.i ? { borderLeft: `3px solid ${t.color}` } : undefined}
+            )}
+          </g>
+        )}
+
+        {/* Pancreas — body + tail */}
+        <g {...highlight(0)}>
+          <path
+            d="M28 30 Q40 22 54 26 Q66 30 74 26 Q72 36 56 34 Q40 36 28 34 Z"
+            fill="hsl(20 30% 38%)"
+          />
+        </g>
+
+        {/* Necrotic non-enhancing core — appears step 1+ */}
+        {showNecrosisCore && (
+          <g {...highlight(1)}>
+            <path
+              d="M40 28 Q52 25 62 28 Q60 33 50 33 Q42 33 40 30 Z"
+              fill="hsl(220 18% 18%)"
+            />
+            {/* Liquefying centre — softens from step 2 */}
+            {active >= 2 && (
+              <path
+                d="M44 29 Q52 27 60 29 Q58 32 50 32 Q44 32 44 29 Z"
+                fill="hsl(210 50% 32%)"
+                opacity="0.85"
+              />
+            )}
+          </g>
+        )}
+
+        {/* Gas bubbles (infected necrosis) — final step only */}
+        {showGas && (
+          <g {...highlight(4)} className="pet-bubble">
+            <circle cx="50" cy="30" r="1.1" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
+            <circle cx="53" cy="31" r="0.8" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
+            <circle cx="47" cy="31.5" r="0.6" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
+            <circle cx="22" cy="36" r="0.9" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
+            <circle cx="26" cy="40" r="0.7" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
+          </g>
+        )}
+
+        {/* Step 4 — percutaneous drain (step-up) */}
+        {active >= 4 && (
+          <g>
+            <line
+              x1="2"
+              y1="50"
+              x2="20"
+              y2="40"
+              stroke="hsl(45 90% 70%)"
+              strokeWidth="1"
+              strokeLinecap="round"
+            />
+            <circle cx="20" cy="40" r="0.9" fill="hsl(45 90% 70%)" />
+            <text
+              x="3"
+              y="56"
+              fontSize="2.2"
+              fill="hsl(45 90% 70%)"
+              fontWeight="600"
+              style={{ fontFamily: "Inter, system-ui, sans-serif" }}
             >
-              {t.term}
-            </span>
-          ))}
-        </div>
+              Percutaneous drain
+            </text>
+          </g>
+        )}
+
+        {/* Compass + time stamp */}
+        <text x="50" y="3" fontSize="2" textAnchor="middle" fill="hsl(var(--muted-foreground))" style={{ fontFamily: "JetBrains Mono, monospace" }}>A</text>
+        <text x="50" y="59" fontSize="2" textAnchor="middle" fill="hsl(var(--muted-foreground))" style={{ fontFamily: "JetBrains Mono, monospace" }}>P</text>
+
+        {/* Time-point banner */}
+        <rect x="68" y="2" width="30" height="6" rx="1" fill="hsl(220 18% 12%)" stroke="hsl(220 8% 22%)" strokeWidth="0.5" />
+        <text
+          x="83"
+          y="6.4"
+          fontSize="3"
+          textAnchor="middle"
+          fill="hsl(45 90% 70%)"
+          fontWeight="700"
+          style={{ fontFamily: "JetBrains Mono, monospace" }}
+        >
+          {["0–24 h", "48–72 h", "Day 4–14", "≥ 4 weeks", "Late / infected"][active]}
+        </text>
+      </svg>
+
+      {/* Sub-legend — current Atlanta term */}
+      <div className="flex flex-wrap gap-2 text-[11px]">
+        {[
+          { i: 0, term: "Interstitial oedematous pancreatitis", color: "hsl(var(--clinical))" },
+          { i: 1, term: "Necrotising pancreatitis", color: "hsl(var(--icu))" },
+          { i: 2, term: "Acute necrotic collection (ANC)", color: "hsl(var(--icu))" },
+          { i: 3, term: "Walled-off necrosis (WON)", color: "hsl(var(--icu))" },
+          { i: 4, term: "Infected WON", color: "hsl(var(--destructive))" },
+        ].map((t) => (
+          <span
+            key={t.i}
+            className={`px-2 py-0.5 rounded-full border ${
+              active === t.i
+                ? "border-foreground/40 bg-foreground/10 text-foreground font-semibold"
+                : "border-border bg-background text-muted-foreground"
+            }`}
+            style={active === t.i ? { borderLeft: `3px solid ${t.color}` } : undefined}
+          >
+            {t.term}
+          </span>
+        ))}
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

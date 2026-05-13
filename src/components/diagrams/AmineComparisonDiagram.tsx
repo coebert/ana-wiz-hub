@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Mode = "tertiary" | "quaternary";
 
@@ -133,95 +132,89 @@ export const AmineComparisonDiagram = () => {
   const filtered = drugs.filter((d) => d.type === mode);
 
   return (
-    <DiagramFigure
-      id="amine-comparison-diagram"
-      title="Amine comparison"
-      description="Auto-generated wrapper for the Amine comparison anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <Card className="p-6 bg-gradient-to-br from-background to-muted/20">
-        <div className="flex flex-col gap-1 mb-4">
-          <h3 className="text-xl font-serif font-bold text-foreground">
-            Tertiary vs Quaternary Amines
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            Why one nitrogen substitution determines whether a drug crosses the blood–brain barrier, the placenta, and the cell membrane.
-          </p>
-        </div>
-  
-        <div className="flex gap-2 mb-4">
-          <Button
-            variant={mode === "tertiary" ? "default" : "outline"}
-            onClick={() => setMode("tertiary")}
-            className="flex-1"
-          >
-            Tertiary amine (R₃N)
-          </Button>
-          <Button
-            variant={mode === "quaternary" ? "default" : "outline"}
-            onClick={() => setMode("quaternary")}
-            className="flex-1"
-          >
-            Quaternary amine (R₄N⁺)
-          </Button>
-        </div>
-  
-        <div className="grid lg:grid-cols-5 gap-4">
-          {/* Diagram + properties */}
-          <div className="lg:col-span-2 space-y-3">
-            <div className="rounded-lg border border-border bg-card/50 p-3">
-              <AmineSVG mode={mode} />
-            </div>
-  
-            <div className="rounded-lg border border-border bg-card/50 p-3 space-y-2 text-xs">
-              <Property label="Charge" value={mode === "tertiary" ? "Variable — depends on pKa & pH (Henderson–Hasselbalch)" : "Permanent positive (+1)"} />
-              <Property label="Water solubility" value={mode === "tertiary" ? "Moderate — increases when protonated" : "High (always charged)"} />
-              <Property label="Lipid solubility" value={mode === "tertiary" ? "Unionised form is highly lipid-soluble" : "Very low — cannot dissolve in lipid bilayer"} />
-              <Property label="BBB penetration" value={mode === "tertiary" ? "Yes (via unionised form)" : "No"} />
-              <Property label="Placental crossing" value={mode === "tertiary" ? "Yes" : "No — foetus protected"} />
-              <Property label="GI absorption" value={mode === "tertiary" ? "Generally good (oral bioavailability variable)" : "Poor — must be given parenterally"} />
-              <Property label="Vd" value={mode === "tertiary" ? "Often large — distributes into tissue" : "Small — confined to extracellular fluid"} />
-            </div>
+        <Card className="p-6 bg-gradient-to-br from-background to-muted/20">
+      <div className="flex flex-col gap-1 mb-4">
+        <h3 className="text-xl font-serif font-bold text-foreground">
+          Tertiary vs Quaternary Amines
+        </h3>
+        <p className="text-sm text-muted-foreground">
+          Why one nitrogen substitution determines whether a drug crosses the blood–brain barrier, the placenta, and the cell membrane.
+        </p>
+      </div>
+
+      <div className="flex gap-2 mb-4">
+        <Button
+          variant={mode === "tertiary" ? "default" : "outline"}
+          onClick={() => setMode("tertiary")}
+          className="flex-1"
+        >
+          Tertiary amine (R₃N)
+        </Button>
+        <Button
+          variant={mode === "quaternary" ? "default" : "outline"}
+          onClick={() => setMode("quaternary")}
+          className="flex-1"
+        >
+          Quaternary amine (R₄N⁺)
+        </Button>
+      </div>
+
+      <div className="grid lg:grid-cols-5 gap-4">
+        {/* Diagram + properties */}
+        <div className="lg:col-span-2 space-y-3">
+          <div className="rounded-lg border border-border bg-card/50 p-3">
+            <AmineSVG mode={mode} />
           </div>
-  
-          {/* Drug list */}
-          <div className="lg:col-span-3 rounded-lg border border-border bg-card/50 overflow-hidden">
-            <div className="px-3 py-2 bg-muted/40 border-b border-border flex items-center justify-between">
-              <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-                {mode === "tertiary" ? "Tertiary-amine drugs in anaesthesia" : "Quaternary-amine drugs in anaesthesia"}
-              </span>
-              <Badge variant="outline" className="text-[10px]">{filtered.length} drugs</Badge>
-            </div>
-            <div className="max-h-[420px] overflow-y-auto divide-y divide-border">
-              {filtered.map((d) => (
-                <div key={d.name} className="px-3 py-2.5">
-                  <div className="flex items-baseline justify-between gap-2 mb-0.5">
-                    <span className="font-medium text-foreground text-sm">{d.name}</span>
-                    <span className="text-[10px] text-muted-foreground uppercase tracking-wide">{d.use}{d.pKa && ` · pKa ${d.pKa}`}</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-snug">{d.note}</p>
+
+          <div className="rounded-lg border border-border bg-card/50 p-3 space-y-2 text-xs">
+            <Property label="Charge" value={mode === "tertiary" ? "Variable — depends on pKa & pH (Henderson–Hasselbalch)" : "Permanent positive (+1)"} />
+            <Property label="Water solubility" value={mode === "tertiary" ? "Moderate — increases when protonated" : "High (always charged)"} />
+            <Property label="Lipid solubility" value={mode === "tertiary" ? "Unionised form is highly lipid-soluble" : "Very low — cannot dissolve in lipid bilayer"} />
+            <Property label="BBB penetration" value={mode === "tertiary" ? "Yes (via unionised form)" : "No"} />
+            <Property label="Placental crossing" value={mode === "tertiary" ? "Yes" : "No — foetus protected"} />
+            <Property label="GI absorption" value={mode === "tertiary" ? "Generally good (oral bioavailability variable)" : "Poor — must be given parenterally"} />
+            <Property label="Vd" value={mode === "tertiary" ? "Often large — distributes into tissue" : "Small — confined to extracellular fluid"} />
+          </div>
+        </div>
+
+        {/* Drug list */}
+        <div className="lg:col-span-3 rounded-lg border border-border bg-card/50 overflow-hidden">
+          <div className="px-3 py-2 bg-muted/40 border-b border-border flex items-center justify-between">
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+              {mode === "tertiary" ? "Tertiary-amine drugs in anaesthesia" : "Quaternary-amine drugs in anaesthesia"}
+            </span>
+            <Badge variant="outline" className="text-[10px]">{filtered.length} drugs</Badge>
+          </div>
+          <div className="max-h-[420px] overflow-y-auto divide-y divide-border">
+            {filtered.map((d) => (
+              <div key={d.name} className="px-3 py-2.5">
+                <div className="flex items-baseline justify-between gap-2 mb-0.5">
+                  <span className="font-medium text-foreground text-sm">{d.name}</span>
+                  <span className="text-[10px] text-muted-foreground uppercase tracking-wide">{d.use}{d.pKa && ` · pKa ${d.pKa}`}</span>
                 </div>
-              ))}
-            </div>
+                <p className="text-xs text-muted-foreground leading-snug">{d.note}</p>
+              </div>
+            ))}
           </div>
         </div>
-  
-        {/* Clinical pearls strip */}
-        <div className="grid md:grid-cols-3 gap-3 mt-4">
-          <Pearl
-            title="Reversal pairing"
-            body="Neostigmine (quaternary, can't cross BBB) is paired with glycopyrrolate (also quaternary) so neither produces central effects. If you used atropine (tertiary), you'd risk central anticholinergic syndrome — useful in elderly only when avoiding bradycardia matters more."
-          />
-          <Pearl
-            title="Obstetric vasopressor"
-            body="Phenylephrine (a tertiary amine, but at physiological pH largely ionised) crosses placenta minimally and is now first-line for spinal hypotension at caesarean section over ephedrine, which crossed more freely and caused foetal acidosis."
-          />
-          <Pearl
-            title="Local anaesthetic onset"
-            body="LAs are tertiary amines. Only the unionised base crosses the nerve membrane, then re-ionises in the axoplasm to block the Na⁺ channel from within. Higher pKa = more ionised at pH 7.4 = slower onset (bupivacaine 8.1 vs lidocaine 7.9)."
-          />
-        </div>
-      </Card>
-    </DiagramFigure>
+      </div>
+
+      {/* Clinical pearls strip */}
+      <div className="grid md:grid-cols-3 gap-3 mt-4">
+        <Pearl
+          title="Reversal pairing"
+          body="Neostigmine (quaternary, can't cross BBB) is paired with glycopyrrolate (also quaternary) so neither produces central effects. If you used atropine (tertiary), you'd risk central anticholinergic syndrome — useful in elderly only when avoiding bradycardia matters more."
+        />
+        <Pearl
+          title="Obstetric vasopressor"
+          body="Phenylephrine (a tertiary amine, but at physiological pH largely ionised) crosses placenta minimally and is now first-line for spinal hypotension at caesarean section over ephedrine, which crossed more freely and caused foetal acidosis."
+        />
+        <Pearl
+          title="Local anaesthetic onset"
+          body="LAs are tertiary amines. Only the unionised base crosses the nerve membrane, then re-ionises in the axoplasm to block the Na⁺ channel from within. Higher pKa = more ionised at pH 7.4 = slower onset (bupivacaine 8.1 vs lidocaine 7.9)."
+        />
+      </div>
+    </Card>
   );
 };
 

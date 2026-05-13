@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const ICPVolumeCurveDiagram = () => {
   const [selectedZone, setSelectedZone] = useState<number | null>(null);
@@ -161,39 +160,33 @@ const ICPVolumeCurveDiagram = () => {
       {selectedZone !== null && (() => {
         const z = zones[selectedZone];
         return (
-    <DiagramFigure
-      id="icp-volume-curve-diagram"
-      title="ICP volume curve"
-      description="Auto-generated wrapper for the ICP volume curve graphical relationship. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 animate-fade-in space-y-3">
-              <div>
-                <p className="font-bold text-foreground text-sm" style={{ color: z.color }}>{z.label}</p>
-                <p className="text-xs text-muted-foreground">ICP: {z.icp} | Volume: {z.volume}</p>
-              </div>
-  
-              <div>
-                <p className="text-xs font-semibold text-foreground mb-1">Compensatory Mechanisms</p>
-                <ul className="space-y-1">
-                  {z.compensation.map((c, i) => (
-                    <li key={i} className="text-xs text-muted-foreground flex gap-1.5">
-                      <span className="mt-0.5" style={{ color: z.color }}>•</span>{c}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-  
-              <div>
-                <p className="text-xs font-semibold text-foreground mb-1">Clinical Features</p>
-                <p className="text-xs text-muted-foreground">{z.clinical}</p>
-              </div>
-  
-              <div className="p-2 rounded bg-background border border-border">
-                <p className="text-xs font-semibold text-foreground mb-1">Interventions</p>
-                <p className="text-xs text-muted-foreground">{z.interventions}</p>
-              </div>
+              <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 animate-fade-in space-y-3">
+            <div>
+              <p className="font-bold text-foreground text-sm" style={{ color: z.color }}>{z.label}</p>
+              <p className="text-xs text-muted-foreground">ICP: {z.icp} | Volume: {z.volume}</p>
             </div>
-    </DiagramFigure>
+
+            <div>
+              <p className="text-xs font-semibold text-foreground mb-1">Compensatory Mechanisms</p>
+              <ul className="space-y-1">
+                {z.compensation.map((c, i) => (
+                  <li key={i} className="text-xs text-muted-foreground flex gap-1.5">
+                    <span className="mt-0.5" style={{ color: z.color }}>•</span>{c}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold text-foreground mb-1">Clinical Features</p>
+              <p className="text-xs text-muted-foreground">{z.clinical}</p>
+            </div>
+
+            <div className="p-2 rounded bg-background border border-border">
+              <p className="text-xs font-semibold text-foreground mb-1">Interventions</p>
+              <p className="text-xs text-muted-foreground">{z.interventions}</p>
+            </div>
+          </div>
   );
       })()}
 

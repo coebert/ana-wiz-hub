@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Scenario = "desaturation" | "circuit" | "pump";
 
@@ -101,34 +100,28 @@ const ECMOTroubleshootingDiagram = () => {
           {info.steps.map((step, i) => {
             const p = priorityStyles[step.priority || "normal"];
             return (
-    <DiagramFigure
-      id="ecmo-troubleshooting-diagram"
-      title="ECMO troubleshooting"
-      description="Auto-generated wrapper for the ECMO troubleshooting anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <div key={i} className={`p-3 rounded-lg border ${p.bg} ${p.border} transition-all`}>
-                  <div className="flex items-start gap-3">
-                    <div className="flex flex-col items-center flex-shrink-0">
-                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${p.badge}`}>{i + 1}</span>
-                      {i < info.steps.length - 1 && (
-                        <div className="w-px h-full min-h-[8px] bg-border mt-1" />
+                  <div key={i} className={`p-3 rounded-lg border ${p.bg} ${p.border} transition-all`}>
+                <div className="flex items-start gap-3">
+                  <div className="flex flex-col items-center flex-shrink-0">
+                    <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${p.badge}`}>{i + 1}</span>
+                    {i < info.steps.length - 1 && (
+                      <div className="w-px h-full min-h-[8px] bg-border mt-1" />
+                    )}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <p className="font-semibold text-foreground text-sm">{step.action}</p>
+                      {step.priority === "critical" && (
+                        <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-destructive text-destructive-foreground">CRITICAL</span>
+                      )}
+                      {step.priority === "high" && (
+                        <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-primary/20 text-primary">HIGH</span>
                       )}
                     </div>
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <p className="font-semibold text-foreground text-sm">{step.action}</p>
-                        {step.priority === "critical" && (
-                          <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-destructive text-destructive-foreground">CRITICAL</span>
-                        )}
-                        {step.priority === "high" && (
-                          <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-primary/20 text-primary">HIGH</span>
-                        )}
-                      </div>
-                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{step.detail}</p>
-                    </div>
+                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{step.detail}</p>
                   </div>
                 </div>
-    </DiagramFigure>
+              </div>
   );
           })}
         </div>

@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { Pill, Clock, AlertTriangle } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive UK paracetamol treatment-line nomogram (Rumack–Matthew, 100 mg/L
@@ -80,18 +79,12 @@ const ParacetamolNomogramDiagram = () => {
             {[4, 8, 12, 16, 20, 24].map((t) => {
               const x = xToPx(t);
               return (
-    <DiagramFigure
-      id="paracetamol-nomogram-diagram"
-      title="Paracetamol nomogram"
-      description="Auto-generated wrapper for the Paracetamol nomogram anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <g key={t}>
-                    <line x1={x} y1="20" x2={x} y2="260" stroke="hsl(var(--border))" strokeOpacity="0.3" />
-                    <text x={x} y="275" textAnchor="middle" className="fill-muted-foreground" fontSize="9">
-                      {t}h
-                    </text>
-                  </g>
-    </DiagramFigure>
+                    <g key={t}>
+                  <line x1={x} y1="20" x2={x} y2="260" stroke="hsl(var(--border))" strokeOpacity="0.3" />
+                  <text x={x} y="275" textAnchor="middle" className="fill-muted-foreground" fontSize="9">
+                    {t}h
+                  </text>
+                </g>
   );
             })}
 

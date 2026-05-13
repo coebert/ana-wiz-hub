@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive lower-limb regional block coverage diagram.
@@ -346,28 +345,22 @@ export const LowerLimbBlocksDiagram = () => {
             const b = BLOCKS[k];
             const isSel = selected === k;
             return (
-    <DiagramFigure
-      id="lower-limb-blocks-diagram"
-      title="Lower limb blocks"
-      description="Auto-generated wrapper for the Lower limb blocks anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <button
-                  key={k}
-                  type="button"
-                  onClick={() => setSelected(k)}
-                  aria-pressed={isSel}
-                  className="text-xs px-2.5 py-1 rounded-full border transition-colors"
-                  style={{
-                    borderColor: isSel ? b.color : "hsl(var(--border))",
-                    background: isSel ? `${b.color.replace(")", " / 0.12)").replace("hsl", "hsl")}` : "transparent",
-                    color: isSel ? b.color : "hsl(var(--muted-foreground))",
-                    fontWeight: isSel ? 600 : 400,
-                  }}
-                >
-                  {b.shortLabel}
-                  {b.motorSparing && <span className="ml-1 opacity-70">·MS</span>}
-                </button>
-    </DiagramFigure>
+                  <button
+                key={k}
+                type="button"
+                onClick={() => setSelected(k)}
+                aria-pressed={isSel}
+                className="text-xs px-2.5 py-1 rounded-full border transition-colors"
+                style={{
+                  borderColor: isSel ? b.color : "hsl(var(--border))",
+                  background: isSel ? `${b.color.replace(")", " / 0.12)").replace("hsl", "hsl")}` : "transparent",
+                  color: isSel ? b.color : "hsl(var(--muted-foreground))",
+                  fontWeight: isSel ? 600 : 400,
+                }}
+              >
+                {b.shortLabel}
+                {b.motorSparing && <span className="ml-1 opacity-70">·MS</span>}
+              </button>
   );
           })}
         </div>

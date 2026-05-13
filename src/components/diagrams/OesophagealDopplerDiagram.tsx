@@ -191,85 +191,79 @@ const SagittalView = () => (
 
 const OesophagealDopplerDiagram = () => {
   return (
-    <DiagramFigure
-      id="oesophageal-doppler-diagram"
-      title="Oesophageal doppler"
-      description="Auto-generated wrapper for the Oesophageal doppler anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-4 my-8">
-        <h3 className="text-xl font-serif font-bold text-foreground">Oesophageal Doppler — Probe Placement & Principle</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Two views showing the anatomical relationship between the oesophagus and descending aorta, with the Doppler probe positioned to insonate aortic blood flow at the T5-T6 level.
-        </p>
-  
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="rounded-xl border border-border bg-card p-4">
-            <AxialView />
-          </div>
-          <div className="rounded-xl border border-border bg-card p-4">
-            <SagittalView />
-          </div>
-        </div>
-  
-        {/* Velocity-time waveform */}
+        <div className="space-y-4 my-8">
+      <h3 className="text-xl font-serif font-bold text-foreground">Oesophageal Doppler — Probe Placement & Principle</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed">
+        Two views showing the anatomical relationship between the oesophagus and descending aorta, with the Doppler probe positioned to insonate aortic blood flow at the T5-T6 level.
+      </p>
+
+      <div className="grid md:grid-cols-2 gap-4">
         <div className="rounded-xl border border-border bg-card p-4">
-          <svg viewBox="0 0 500 100" className="w-full">
-            <text x="250" y="12" fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Aortic Velocity-Time Waveform</text>
-  
-            {/* Axes */}
-            <line x1="50" y1="85" x2="470" y2="85" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
-            <line x1="50" y1="85" x2="50" y2="22" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
-            <text x="45" y="55" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="end" transform="rotate(-90,45,55)">Velocity</text>
-            <text x="470" y="95" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="end">Time →</text>
-  
-            {/* Waveforms */}
-            <path d="M 70 85 Q 80 82 90 72 Q 115 28 140 25 Q 160 23 170 35 Q 185 60 200 80 Q 205 85 210 85"
-              fill="hsl(var(--primary)/0.15)" stroke="hsl(var(--primary))" strokeWidth="2" />
-            <path d="M 230 85 Q 240 82 250 72 Q 275 28 300 25 Q 320 23 330 35 Q 345 60 360 80 Q 365 85 370 85"
-              fill="hsl(var(--primary)/0.15)" stroke="hsl(var(--primary))" strokeWidth="2" />
-  
-            {/* FTc */}
-            <line x1="70" y1="88" x2="70" y2="94" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
-            <line x1="210" y1="88" x2="210" y2="94" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
-            <line x1="70" y1="92" x2="210" y2="92" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
-            <text x="140" y="100" fontSize="6" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">FTc (corrected flow time)</text>
-  
-            {/* PV */}
-            <line x1="140" y1="25" x2="140" y2="85" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" />
-            <text x="144" y="22" fontSize="6" fill="hsl(var(--foreground))" fontWeight="600">PV</text>
-  
-            {/* CO box */}
-            <rect x="380" y="20" width="110" height="42" rx="4" fill="hsl(var(--primary)/0.05)" stroke="hsl(var(--primary)/0.2)" strokeWidth="0.75" />
-            <text x="435" y="34" fontSize="6.5" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">CO = SV × HR</text>
-            <text x="435" y="45" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">SV = VTI × CSA (aorta)</text>
-            <text x="435" y="55" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">VTI = area under curve</text>
-          </svg>
+          <AxialView />
         </div>
-  
-        {/* Clinical interpretation */}
-        <div className="grid sm:grid-cols-2 gap-3">
-          <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
-            <p className="text-xs font-semibold text-primary mb-2">Key Measurements</p>
-            <ul className="space-y-1 text-xs text-muted-foreground">
-              <li><strong className="text-foreground">FTc</strong> — corrected flow time (normal 330-360 ms). &lt;330 ms → hypovolaemia; &gt;360 ms → vasodilation or myocardial failure</li>
-              <li><strong className="text-foreground">Peak Velocity (PV)</strong> — reflects LV contractility (normal 50-120 cm/s). Decreases with age, negative inotropy</li>
-              <li><strong className="text-foreground">Stroke Distance (SD)</strong> — VTI of waveform, proportional to stroke volume</li>
-              <li><strong className="text-foreground">Minute Distance (MD)</strong> — SD × HR, proportional to cardiac output</li>
-            </ul>
-          </div>
-          <div className="p-3 rounded-lg border border-border">
-            <p className="text-xs font-semibold text-foreground mb-2">Assumptions & Limitations</p>
-            <ul className="space-y-1 text-xs text-muted-foreground">
-              <li>Assumes aortic CSA is constant (estimated by nomogram from age, height, weight)</li>
-              <li>Only measures descending aortic flow (~70% of CO) — assumes fixed split</li>
-              <li>Angle-dependent — θ must remain ~45° for accuracy</li>
-              <li>Requires GA or heavy sedation — probe poorly tolerated awake</li>
-              <li>Unreliable with aortic coarctation, IABP, or severe aortic regurgitation</li>
-            </ul>
-          </div>
+        <div className="rounded-xl border border-border bg-card p-4">
+          <SagittalView />
         </div>
       </div>
-    </DiagramFigure>
+
+      {/* Velocity-time waveform */}
+      <div className="rounded-xl border border-border bg-card p-4">
+        <svg viewBox="0 0 500 100" className="w-full">
+          <text x="250" y="12" fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Aortic Velocity-Time Waveform</text>
+
+          {/* Axes */}
+          <line x1="50" y1="85" x2="470" y2="85" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
+          <line x1="50" y1="85" x2="50" y2="22" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
+          <text x="45" y="55" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="end" transform="rotate(-90,45,55)">Velocity</text>
+          <text x="470" y="95" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="end">Time →</text>
+
+          {/* Waveforms */}
+          <path d="M 70 85 Q 80 82 90 72 Q 115 28 140 25 Q 160 23 170 35 Q 185 60 200 80 Q 205 85 210 85"
+            fill="hsl(var(--primary)/0.15)" stroke="hsl(var(--primary))" strokeWidth="2" />
+          <path d="M 230 85 Q 240 82 250 72 Q 275 28 300 25 Q 320 23 330 35 Q 345 60 360 80 Q 365 85 370 85"
+            fill="hsl(var(--primary)/0.15)" stroke="hsl(var(--primary))" strokeWidth="2" />
+
+          {/* FTc */}
+          <line x1="70" y1="88" x2="70" y2="94" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
+          <line x1="210" y1="88" x2="210" y2="94" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
+          <line x1="70" y1="92" x2="210" y2="92" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
+          <text x="140" y="100" fontSize="6" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">FTc (corrected flow time)</text>
+
+          {/* PV */}
+          <line x1="140" y1="25" x2="140" y2="85" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" />
+          <text x="144" y="22" fontSize="6" fill="hsl(var(--foreground))" fontWeight="600">PV</text>
+
+          {/* CO box */}
+          <rect x="380" y="20" width="110" height="42" rx="4" fill="hsl(var(--primary)/0.05)" stroke="hsl(var(--primary)/0.2)" strokeWidth="0.75" />
+          <text x="435" y="34" fontSize="6.5" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">CO = SV × HR</text>
+          <text x="435" y="45" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">SV = VTI × CSA (aorta)</text>
+          <text x="435" y="55" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">VTI = area under curve</text>
+        </svg>
+      </div>
+
+      {/* Clinical interpretation */}
+      <div className="grid sm:grid-cols-2 gap-3">
+        <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+          <p className="text-xs font-semibold text-primary mb-2">Key Measurements</p>
+          <ul className="space-y-1 text-xs text-muted-foreground">
+            <li><strong className="text-foreground">FTc</strong> — corrected flow time (normal 330-360 ms). &lt;330 ms → hypovolaemia; &gt;360 ms → vasodilation or myocardial failure</li>
+            <li><strong className="text-foreground">Peak Velocity (PV)</strong> — reflects LV contractility (normal 50-120 cm/s). Decreases with age, negative inotropy</li>
+            <li><strong className="text-foreground">Stroke Distance (SD)</strong> — VTI of waveform, proportional to stroke volume</li>
+            <li><strong className="text-foreground">Minute Distance (MD)</strong> — SD × HR, proportional to cardiac output</li>
+          </ul>
+        </div>
+        <div className="p-3 rounded-lg border border-border">
+          <p className="text-xs font-semibold text-foreground mb-2">Assumptions & Limitations</p>
+          <ul className="space-y-1 text-xs text-muted-foreground">
+            <li>Assumes aortic CSA is constant (estimated by nomogram from age, height, weight)</li>
+            <li>Only measures descending aortic flow (~70% of CO) — assumes fixed split</li>
+            <li>Angle-dependent — θ must remain ~45° for accuracy</li>
+            <li>Requires GA or heavy sedation — probe poorly tolerated awake</li>
+            <li>Unreliable with aortic coarctation, IABP, or severe aortic regurgitation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 };
 

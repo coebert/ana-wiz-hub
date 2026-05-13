@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type LayerKey = "skin" | "ext-intercostal" | "int-intercostal" | "innermost" | "neurovascular" | "endothoracic" | "parietal-pleura" | "pleural-space" | "visceral-pleura" | "lung" | "rib-above" | "rib-below";
 
@@ -116,130 +115,124 @@ const IntercostalAnatomyDiagram = () => {
               const isRib = key.includes("rib");
 
               return (
-    <DiagramFigure
-      id="intercostal-anatomy-diagram"
-      title="Intercostal anatomy"
-      description="Auto-generated wrapper for the Intercostal anatomy anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
-                    {isRib ? (
-                      // Anatomical rib cross-section - oval bone shape
-                      <g>
-                        <ellipse
-                          cx={xOff + layerW / 2}
-                          cy={g.y + g.h / 2}
-                          rx={layerW / 2}
-                          ry={g.h / 2}
-                          fill={l.color}
-                          fillOpacity={isActive ? 0.5 : 0.18}
-                          stroke={l.color}
-                          strokeWidth={isActive ? 2 : 1}
-                          className="transition-all duration-200"
-                        />
-                        {/* Cortical bone outline */}
-                        <ellipse
-                          cx={xOff + layerW / 2}
-                          cy={g.y + g.h / 2}
-                          rx={layerW / 2 - 4}
-                          ry={g.h / 2 - 3}
-                          fill="none"
-                          stroke={l.color}
-                          strokeWidth="0.5"
-                          opacity={isActive ? 0.4 : 0.15}
-                        />
-                        {/* Costal groove on lower border of upper rib */}
-                        {key === "rib-above" && (
-                          <path
-                            d={`M${xOff + 20},${g.y + g.h - 4} Q${xOff + layerW / 2},${g.y + g.h + 2} ${xOff + layerW - 20},${g.y + g.h - 4}`}
-                            stroke={layers.neurovascular.color}
-                            strokeWidth="1.5"
-                            fill="none"
-                            opacity={isActive ? 0.6 : 0.25}
-                            strokeDasharray="3 2"
-                          />
-                        )}
-                      </g>
-                    ) : (
-                      <rect
-                        x={xOff}
-                        y={g.y}
-                        width={layerW}
-                        height={g.h}
-                        rx={2}
+                    <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
+                  {isRib ? (
+                    // Anatomical rib cross-section - oval bone shape
+                    <g>
+                      <ellipse
+                        cx={xOff + layerW / 2}
+                        cy={g.y + g.h / 2}
+                        rx={layerW / 2}
+                        ry={g.h / 2}
                         fill={l.color}
-                        fillOpacity={isActive ? 0.5 : 0.15}
-                        stroke={isActive ? l.color : "transparent"}
-                        strokeWidth={isActive ? 2 : 0}
+                        fillOpacity={isActive ? 0.5 : 0.18}
+                        stroke={l.color}
+                        strokeWidth={isActive ? 2 : 1}
                         className="transition-all duration-200"
                       />
-                    )}
-  
-                    {/* VAN detail */}
-                    {key === "neurovascular" && (
-                      <g opacity={isActive ? 0.85 : 0.4}>
-                        {/* Vein - largest, most superior */}
-                        <circle cx={xOff + 35} cy={g.y + 3} r="3" fill="hsl(220, 60%, 55%)" />
-                        <text x={xOff + 42} y={g.y + 5} fontSize="5" fill="hsl(220, 60%, 55%)" fontWeight="bold">V</text>
-                        {/* Artery */}
-                        <circle cx={xOff + 35} cy={g.y + 7} r="2.2" fill="hsl(0, 65%, 50%)" />
-                        <text x={xOff + 42} y={g.y + 9} fontSize="5" fill="hsl(0, 65%, 50%)" fontWeight="bold">A</text>
-                        {/* Nerve - smallest, most inferior */}
-                        <circle cx={xOff + 35} cy={g.y + 10.5} r="1.5" fill="hsl(50, 65%, 48%)" />
-                        <text x={xOff + 42} y={g.y + 12} fontSize="5" fill="hsl(50, 65%, 48%)" fontWeight="bold">N</text>
-                      </g>
-                    )}
-  
-                    {/* Muscle fibre directions */}
-                    {key === "ext-intercostal" && (
-                      <g opacity={isActive ? 0.5 : 0.2}>
-                        {[0, 1, 2, 3, 4, 5].map(i => (
-                          <line key={i} x1={xOff + 20 + i * 22} y1={g.y + 4} x2={xOff + 32 + i * 22} y2={g.y + g.h - 4}
-                            stroke={l.color} strokeWidth="0.75" />
-                        ))}
-                        <text x={xOff + 5} y={g.y + 14} fontSize="5" fill={l.color}>↘ fibres</text>
-                      </g>
-                    )}
-                    {key === "int-intercostal" && (
-                      <g opacity={isActive ? 0.5 : 0.2}>
-                        {[0, 1, 2, 3, 4, 5].map(i => (
-                          <line key={i} x1={xOff + 32 + i * 22} y1={g.y + 4} x2={xOff + 20 + i * 22} y2={g.y + g.h - 4}
-                            stroke={l.color} strokeWidth="0.75" />
-                        ))}
-                        <text x={xOff + 5} y={g.y + 13} fontSize="5" fill={l.color}>↙ fibres</text>
-                      </g>
-                    )}
-  
-                    {/* Pleural space stipple */}
-                    {key === "pleural-space" && (
-                      <g opacity={isActive ? 0.4 : 0.15}>
-                        {Array.from({ length: 20 }).map((_, i) => (
-                          <circle key={i} cx={xOff + 10 + (i % 10) * 15} cy={g.y + 4 + Math.floor(i / 10) * 8} r="0.8" fill={l.color} />
-                        ))}
-                      </g>
-                    )}
-  
-                    {/* Alveoli pattern in lung */}
-                    {key === "lung" && (
-                      <g opacity={isActive ? 0.3 : 0.1}>
-                        {Array.from({ length: 12 }).map((_, i) => (
-                          <circle key={i} cx={xOff + 15 + (i % 6) * 24} cy={g.y + 8 + Math.floor(i / 6) * 14} r="5" fill="none" stroke={l.color} strokeWidth="0.5" />
-                        ))}
-                      </g>
-                    )}
-  
-                    {/* Label */}
-                    <text
-                      x={xOff + layerW + 8}
-                      y={g.y + g.h / 2 + 3}
-                      fontSize="6"
-                      fill={isActive ? l.color : "hsl(var(--muted-foreground))"}
-                      fontWeight={isActive ? "bold" : "normal"}
-                      className="select-none"
-                    >
-                      {l.label}
-                    </text>
-                  </g>
-    </DiagramFigure>
+                      {/* Cortical bone outline */}
+                      <ellipse
+                        cx={xOff + layerW / 2}
+                        cy={g.y + g.h / 2}
+                        rx={layerW / 2 - 4}
+                        ry={g.h / 2 - 3}
+                        fill="none"
+                        stroke={l.color}
+                        strokeWidth="0.5"
+                        opacity={isActive ? 0.4 : 0.15}
+                      />
+                      {/* Costal groove on lower border of upper rib */}
+                      {key === "rib-above" && (
+                        <path
+                          d={`M${xOff + 20},${g.y + g.h - 4} Q${xOff + layerW / 2},${g.y + g.h + 2} ${xOff + layerW - 20},${g.y + g.h - 4}`}
+                          stroke={layers.neurovascular.color}
+                          strokeWidth="1.5"
+                          fill="none"
+                          opacity={isActive ? 0.6 : 0.25}
+                          strokeDasharray="3 2"
+                        />
+                      )}
+                    </g>
+                  ) : (
+                    <rect
+                      x={xOff}
+                      y={g.y}
+                      width={layerW}
+                      height={g.h}
+                      rx={2}
+                      fill={l.color}
+                      fillOpacity={isActive ? 0.5 : 0.15}
+                      stroke={isActive ? l.color : "transparent"}
+                      strokeWidth={isActive ? 2 : 0}
+                      className="transition-all duration-200"
+                    />
+                  )}
+
+                  {/* VAN detail */}
+                  {key === "neurovascular" && (
+                    <g opacity={isActive ? 0.85 : 0.4}>
+                      {/* Vein - largest, most superior */}
+                      <circle cx={xOff + 35} cy={g.y + 3} r="3" fill="hsl(220, 60%, 55%)" />
+                      <text x={xOff + 42} y={g.y + 5} fontSize="5" fill="hsl(220, 60%, 55%)" fontWeight="bold">V</text>
+                      {/* Artery */}
+                      <circle cx={xOff + 35} cy={g.y + 7} r="2.2" fill="hsl(0, 65%, 50%)" />
+                      <text x={xOff + 42} y={g.y + 9} fontSize="5" fill="hsl(0, 65%, 50%)" fontWeight="bold">A</text>
+                      {/* Nerve - smallest, most inferior */}
+                      <circle cx={xOff + 35} cy={g.y + 10.5} r="1.5" fill="hsl(50, 65%, 48%)" />
+                      <text x={xOff + 42} y={g.y + 12} fontSize="5" fill="hsl(50, 65%, 48%)" fontWeight="bold">N</text>
+                    </g>
+                  )}
+
+                  {/* Muscle fibre directions */}
+                  {key === "ext-intercostal" && (
+                    <g opacity={isActive ? 0.5 : 0.2}>
+                      {[0, 1, 2, 3, 4, 5].map(i => (
+                        <line key={i} x1={xOff + 20 + i * 22} y1={g.y + 4} x2={xOff + 32 + i * 22} y2={g.y + g.h - 4}
+                          stroke={l.color} strokeWidth="0.75" />
+                      ))}
+                      <text x={xOff + 5} y={g.y + 14} fontSize="5" fill={l.color}>↘ fibres</text>
+                    </g>
+                  )}
+                  {key === "int-intercostal" && (
+                    <g opacity={isActive ? 0.5 : 0.2}>
+                      {[0, 1, 2, 3, 4, 5].map(i => (
+                        <line key={i} x1={xOff + 32 + i * 22} y1={g.y + 4} x2={xOff + 20 + i * 22} y2={g.y + g.h - 4}
+                          stroke={l.color} strokeWidth="0.75" />
+                      ))}
+                      <text x={xOff + 5} y={g.y + 13} fontSize="5" fill={l.color}>↙ fibres</text>
+                    </g>
+                  )}
+
+                  {/* Pleural space stipple */}
+                  {key === "pleural-space" && (
+                    <g opacity={isActive ? 0.4 : 0.15}>
+                      {Array.from({ length: 20 }).map((_, i) => (
+                        <circle key={i} cx={xOff + 10 + (i % 10) * 15} cy={g.y + 4 + Math.floor(i / 10) * 8} r="0.8" fill={l.color} />
+                      ))}
+                    </g>
+                  )}
+
+                  {/* Alveoli pattern in lung */}
+                  {key === "lung" && (
+                    <g opacity={isActive ? 0.3 : 0.1}>
+                      {Array.from({ length: 12 }).map((_, i) => (
+                        <circle key={i} cx={xOff + 15 + (i % 6) * 24} cy={g.y + 8 + Math.floor(i / 6) * 14} r="5" fill="none" stroke={l.color} strokeWidth="0.5" />
+                      ))}
+                    </g>
+                  )}
+
+                  {/* Label */}
+                  <text
+                    x={xOff + layerW + 8}
+                    y={g.y + g.h / 2 + 3}
+                    fontSize="6"
+                    fill={isActive ? l.color : "hsl(var(--muted-foreground))"}
+                    fontWeight={isActive ? "bold" : "normal"}
+                    className="select-none"
+                  >
+                    {l.label}
+                  </text>
+                </g>
   );
             })}
           </svg>

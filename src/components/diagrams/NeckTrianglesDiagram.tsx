@@ -3,7 +3,6 @@ import { DiagramToggleBar } from "./DiagramToggleBar";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type TriangleKey = "anterior" | "posterior" | "carotid" | "muscular" | "submandibular" | "submental" | "occipital" | "supraclavicular";
 
@@ -427,20 +426,14 @@ const NeckTrianglesDiagram = () => {
                     const isActive = selected === key;
                     if (showSubdivisions && (key === "anterior" || key === "posterior") && !isActive) return null;
                     return (
-    <DiagramFigure
-      id="neck-triangles-diagram"
-      title="Neck triangles"
-      description="Auto-generated wrapper for the Neck triangles anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                            <text key={key} x={pos.x} y={pos.y}
-                          fontSize={pos.fontSize}
-                          fill={isActive ? triangles[key].color : "hsl(var(--muted-foreground))"}
-                          fontWeight={isActive ? "bold" : "normal"}
-                          textAnchor="middle"
-                          opacity={isActive ? 1 : 0.55}>
-                          {pos.label}
-                        </text>
-    </DiagramFigure>
+                          <text key={key} x={pos.x} y={pos.y}
+                        fontSize={pos.fontSize}
+                        fill={isActive ? triangles[key].color : "hsl(var(--muted-foreground))"}
+                        fontWeight={isActive ? "bold" : "normal"}
+                        textAnchor="middle"
+                        opacity={isActive ? 1 : 0.55}>
+                        {pos.label}
+                      </text>
   );
                   })}
                 </g>

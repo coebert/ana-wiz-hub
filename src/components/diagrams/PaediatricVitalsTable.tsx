@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Band = {
   label: string;
@@ -73,20 +72,14 @@ const PaediatricVitalsTable = () => {
           const band = BANDS[activeIdx];
           const [lo, hi] = band[r.key];
           return (
-    <DiagramFigure
-      id="paediatric-vitals-table"
-      title="Paediatric vitals table"
-      description="Auto-generated wrapper for the Paediatric vitals table anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <div key={r.key} className="p-3 rounded-lg border border-border bg-background">
-                <div className="flex items-baseline justify-between gap-2">
-                  <p className="text-sm font-semibold text-foreground">{r.label}</p>
-                  <p className="text-base font-bold font-mono" style={{ color: r.color }}>
-                    {lo}–{hi} <span className="text-xs font-normal text-muted-foreground">{r.unit}</span>
-                  </p>
-                </div>
+                <div key={r.key} className="p-3 rounded-lg border border-border bg-background">
+              <div className="flex items-baseline justify-between gap-2">
+                <p className="text-sm font-semibold text-foreground">{r.label}</p>
+                <p className="text-base font-bold font-mono" style={{ color: r.color }}>
+                  {lo}–{hi} <span className="text-xs font-normal text-muted-foreground">{r.unit}</span>
+                </p>
               </div>
-    </DiagramFigure>
+            </div>
   );
         })}
 

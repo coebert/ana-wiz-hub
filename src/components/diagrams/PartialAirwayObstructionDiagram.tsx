@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * PartialAirwayObstructionDiagram
@@ -467,31 +466,25 @@ function FlowLoop({
   const displayFlow = inInsp ? -Math.abs(flow) : Math.abs(flow);
 
   return (
-    <DiagramFigure
-      id="partial-airway-obstruction-diagram"
-      title="Partial airway obstruction"
-      description="Auto-generated wrapper for the Partial airway obstruction anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
-        {/* Axes */}
-        <line x1={padX} y1={H / 2} x2={W - padX} y2={H / 2} stroke="hsl(var(--border))" strokeWidth="1" />
-        <line x1={padX} y1={padY} x2={padX} y2={H - padY} stroke="hsl(var(--border))" strokeWidth="1" />
-        <text x={W - padX} y={H / 2 - 3} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end">
-          Volume →
-        </text>
-        <text x={padX + 4} y={padY + 8} fontSize="8" fill="hsl(var(--muted-foreground))">
-          Exp ↑
-        </text>
-        <text x={padX + 4} y={H - padY - 2} fontSize="8" fill="hsl(var(--muted-foreground))">
-          Insp ↓
-        </text>
-  
-        {/* Loop envelope */}
-        <path d={pathD} stroke="hsl(var(--clinical))" strokeWidth="1.5" fill="none" />
-  
-        {/* Animated marker */}
-        <circle cx={x(vol)} cy={y(displayFlow)} r="4" fill="hsl(var(--primary))" />
-      </svg>
-    </DiagramFigure>
+        <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
+      {/* Axes */}
+      <line x1={padX} y1={H / 2} x2={W - padX} y2={H / 2} stroke="hsl(var(--border))" strokeWidth="1" />
+      <line x1={padX} y1={padY} x2={padX} y2={H - padY} stroke="hsl(var(--border))" strokeWidth="1" />
+      <text x={W - padX} y={H / 2 - 3} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end">
+        Volume →
+      </text>
+      <text x={padX + 4} y={padY + 8} fontSize="8" fill="hsl(var(--muted-foreground))">
+        Exp ↑
+      </text>
+      <text x={padX + 4} y={H - padY - 2} fontSize="8" fill="hsl(var(--muted-foreground))">
+        Insp ↓
+      </text>
+
+      {/* Loop envelope */}
+      <path d={pathD} stroke="hsl(var(--clinical))" strokeWidth="1.5" fill="none" />
+
+      {/* Animated marker */}
+      <circle cx={x(vol)} cy={y(displayFlow)} r="4" fill="hsl(var(--primary))" />
+    </svg>
   );
 }

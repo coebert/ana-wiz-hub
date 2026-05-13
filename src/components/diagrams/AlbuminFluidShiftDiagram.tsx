@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, RotateCcw } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Fluid = "crystalloid" | "albumin5" | "albumin20";
 type Capillary = "healthy" | "septic";
@@ -211,20 +210,14 @@ const AlbuminFluidShiftDiagram = () => {
               inVessel && (fluid === "crystalloid" || capillary === "septic") && phase > 0.55;
             const lateral = leakOut ? (phase - 0.55) * 200 * (p.id % 2 === 0 ? 1 : -1) : 0;
             return (
-    <DiagramFigure
-      id="albumin-fluid-shift-diagram"
-      title="Albumin fluid shift"
-      description="Auto-generated wrapper for the Albumin fluid shift anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <circle
-                  key={p.id}
-                  cx={200 + lateral}
-                  cy={Math.min(y, 130 + (leakOut ? (phase - 0.55) * 60 : 0))}
-                  r={fluid === "albumin20" ? 3.2 : fluid === "albumin5" ? 2.6 : 2}
-                  fill={scenario.color}
-                  opacity={leakOut ? 0.5 : 0.9}
-                />
-    </DiagramFigure>
+                  <circle
+                key={p.id}
+                cx={200 + lateral}
+                cy={Math.min(y, 130 + (leakOut ? (phase - 0.55) * 60 : 0))}
+                r={fluid === "albumin20" ? 3.2 : fluid === "albumin5" ? 2.6 : 2}
+                fill={scenario.color}
+                opacity={leakOut ? 0.5 : 0.9}
+              />
   );
           })}
 

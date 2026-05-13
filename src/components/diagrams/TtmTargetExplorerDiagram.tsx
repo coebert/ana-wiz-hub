@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Targeted Temperature Management (TTM) explorer.
@@ -260,15 +259,9 @@ const TtmTargetExplorerDiagram = () => {
                 const xMid = hToX(xCursor + p.durationH / 2);
                 xCursor += p.durationH;
                 return (
-    <DiagramFigure
-      id="ttm-target-explorer-diagram"
-      title="Ttm target explorer"
-      description="Auto-generated wrapper for the Ttm target explorer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <text key={p.key} x={xMid} y={32} fontSize={6.5} fontWeight="600" fill={p.color} textAnchor="middle">
-                      {p.label}
-                    </text>
-    </DiagramFigure>
+                      <text key={p.key} x={xMid} y={32} fontSize={6.5} fontWeight="600" fill={p.color} textAnchor="middle">
+                    {p.label}
+                  </text>
   );
               });
             })()}

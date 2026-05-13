@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Ambler classification of β-lactamases (A-D) with substrate spectrum
@@ -165,20 +164,14 @@ const BetaLactamaseClassificationTable = () => {
                     const v = c.inhibitors[inh.key];
                     const d = COV_DISPLAY[v];
                     return (
-    <DiagramFigure
-      id="beta-lactamase-classification-table"
-      title="Beta lactamase classification table"
-      description="Auto-generated wrapper for the Beta lactamase classification table anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                            <td key={inh.key} className="py-2 px-2 text-center">
-                          <span
-                            className={`inline-flex items-center justify-center w-7 h-7 rounded-full font-bold ${d.cls}`}
-                            title={d.label}
-                          >
-                            {d.symbol}
-                          </span>
-                        </td>
-    </DiagramFigure>
+                          <td key={inh.key} className="py-2 px-2 text-center">
+                        <span
+                          className={`inline-flex items-center justify-center w-7 h-7 rounded-full font-bold ${d.cls}`}
+                          title={d.label}
+                        >
+                          {d.symbol}
+                        </span>
+                      </td>
   );
                   })}
                 </tr>

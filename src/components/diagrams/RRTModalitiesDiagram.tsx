@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ModalityId = "cvvh" | "cvvhd" | "cvvhdf";
 
@@ -212,31 +211,25 @@ const RRTModalitiesDiagram = () => {
           {(() => {
             const m = modalities[selectedModality];
             return (
-    <DiagramFigure
-      id="rrt-modalities-diagram"
-      title="RRT modalities"
-      description="Auto-generated wrapper for the RRT modalities anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2">
-                  <p className="font-bold text-foreground text-sm">{m.name} — {m.full}</p>
-                  <p className="text-muted-foreground">{m.mechanism}</p>
-                  <div className="p-2 rounded bg-background border border-border">
-                    <span className="font-semibold text-foreground">Clearance: </span>
-                    <span className="text-muted-foreground">{m.clearance}</span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="p-2 rounded bg-background border border-border">
-                      <span className="font-semibold text-foreground">✓ Advantages</span>
-                      <p className="text-muted-foreground mt-0.5">{m.advantages}</p>
-                    </div>
-                    <div className="p-2 rounded bg-background border border-border">
-                      <span className="font-semibold text-foreground">✗ Disadvantages</span>
-                      <p className="text-muted-foreground mt-0.5">{m.disadvantages}</p>
-                    </div>
-                  </div>
-                  <p className="text-primary font-semibold">Best for: {m.bestFor}</p>
+                  <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2">
+                <p className="font-bold text-foreground text-sm">{m.name} — {m.full}</p>
+                <p className="text-muted-foreground">{m.mechanism}</p>
+                <div className="p-2 rounded bg-background border border-border">
+                  <span className="font-semibold text-foreground">Clearance: </span>
+                  <span className="text-muted-foreground">{m.clearance}</span>
                 </div>
-    </DiagramFigure>
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="p-2 rounded bg-background border border-border">
+                    <span className="font-semibold text-foreground">✓ Advantages</span>
+                    <p className="text-muted-foreground mt-0.5">{m.advantages}</p>
+                  </div>
+                  <div className="p-2 rounded bg-background border border-border">
+                    <span className="font-semibold text-foreground">✗ Disadvantages</span>
+                    <p className="text-muted-foreground mt-0.5">{m.disadvantages}</p>
+                  </div>
+                </div>
+                <p className="text-primary font-semibold">Best for: {m.bestFor}</p>
+              </div>
   );
           })()}
         </TabsContent>

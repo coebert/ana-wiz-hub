@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type VeinKey = "great-saphenous" | "small-saphenous" | "femoral-vein" | "popliteal-vein" | "deep-veins-leg" | "external-iliac-vein" | "dorsal-venous-arch" | "perforators" | "saphenofemoral" | "saphenopopliteal";
 
@@ -88,199 +87,193 @@ const LowerLimbVeinsDiagram = () => {
   const isActive = (k: VeinKey) => selected === k;
 
   return (
-    <DiagramFigure
-      id="lower-limb-veins-diagram"
-      title="Lower limb veins"
-      description="Auto-generated wrapper for the Lower limb veins anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 space-y-4">
-        <div className="bg-muted/30 rounded-xl border border-border p-4">
-          <DiagramToggleBar
-            title="Venous drainage of the lower limb"
-            subtitle="Superficial and deep venous systems with surgical and DVT correlations"
-            toggles={[
-              { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
-              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-            ]}
-          />
-  
-          <div className="flex flex-col lg:flex-row gap-4 items-start">
-          <div className="flex-shrink-0 mx-auto">
-            <svg viewBox="0 0 220 580" className="w-full max-w-[240px]" role="img" aria-label="Venous drainage of the lower limb showing superficial and deep systems with perforators">
-              <defs>
-                <radialGradient id="llv-bgShade" cx="50%" cy="40%" r="65%">
-                  <stop offset="0%" stopColor="hsl(220, 50%, 30%)" stopOpacity="0.14" />
-                  <stop offset="100%" stopColor="hsl(220, 40%, 20%)" stopOpacity="0.03" />
-                </radialGradient>
-                <pattern id="llv-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
-                  <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
-                </pattern>
-                <filter id="llv-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
-                  <feOffset dx="0" dy="1.2" result="off" />
-                  <feComponentTransfer><feFuncA type="linear" slope="0.26" /></feComponentTransfer>
-                  <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
-                </filter>
-              </defs>
-  
-              <rect x="2" y="2" width="216" height="576" rx="10" fill="url(#llv-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
-              {showSutures && <rect x="2" y="2" width="216" height="576" rx="10" fill="url(#llv-tissue)" pointerEvents="none" />}
-  
-              {/* Leg outline */}
-              <path d="M70,15 Q60,80 58,150 Q55,220 52,280 Q50,340 48,400 Q45,440 40,480 Q37,510 32,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
-              <path d="M150,15 Q160,80 162,150 Q165,220 168,280 Q168,340 165,400 Q160,440 155,480 Q150,510 140,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
-  
-              {showSutures && (
-                <g pointerEvents="none">
-                  <line x1="45" y1="30" x2="175" y2="30" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
-                  <line x1="45" y1="280" x2="175" y2="280" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
-                  <line x1="35" y1="460" x2="160" y2="460" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
+        <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Venous drainage of the lower limb"
+          subtitle="Superficial and deep venous systems with surgical and DVT correlations"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
+
+        <div className="flex flex-col lg:flex-row gap-4 items-start">
+        <div className="flex-shrink-0 mx-auto">
+          <svg viewBox="0 0 220 580" className="w-full max-w-[240px]" role="img" aria-label="Venous drainage of the lower limb showing superficial and deep systems with perforators">
+            <defs>
+              <radialGradient id="llv-bgShade" cx="50%" cy="40%" r="65%">
+                <stop offset="0%" stopColor="hsl(220, 50%, 30%)" stopOpacity="0.14" />
+                <stop offset="100%" stopColor="hsl(220, 40%, 20%)" stopOpacity="0.03" />
+              </radialGradient>
+              <pattern id="llv-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+              </pattern>
+              <filter id="llv-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                <feOffset dx="0" dy="1.2" result="off" />
+                <feComponentTransfer><feFuncA type="linear" slope="0.26" /></feComponentTransfer>
+                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+
+            <rect x="2" y="2" width="216" height="576" rx="10" fill="url(#llv-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+            {showSutures && <rect x="2" y="2" width="216" height="576" rx="10" fill="url(#llv-tissue)" pointerEvents="none" />}
+
+            {/* Leg outline */}
+            <path d="M70,15 Q60,80 58,150 Q55,220 52,280 Q50,340 48,400 Q45,440 40,480 Q37,510 32,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
+            <path d="M150,15 Q160,80 162,150 Q165,220 168,280 Q168,340 165,400 Q160,440 155,480 Q150,510 140,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
+
+            {showSutures && (
+              <g pointerEvents="none">
+                <line x1="45" y1="30" x2="175" y2="30" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
+                <line x1="45" y1="280" x2="175" y2="280" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
+                <line x1="35" y1="460" x2="160" y2="460" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
+              </g>
+            )}
+            {showLabels && (
+              <g pointerEvents="none">
+                <text x="178" y="33" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Groin</text>
+                <text x="178" y="283" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Knee</text>
+                <text x="165" y="463" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Ankle</text>
+                <text x="110" y="12" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55" textAnchor="middle" fontWeight="600">MEDIAL VIEW</text>
+              </g>
+            )}
+
+            {/* External iliac / IVC */}
+            <g className="cursor-pointer" onClick={() => setSelected("external-iliac-vein")}>
+              <path d="M100,5 Q102,15 103,28" fill="none" stroke={veins["external-iliac-vein"].color}
+                strokeWidth={isActive("external-iliac-vein") ? 5 : 3.5} opacity={isActive("external-iliac-vein") ? 0.7 : 0.3} strokeLinecap="round" />
+              <text x="108" y="10" fontSize="4.5" fill={veins["external-iliac-vein"].color}>→ IVC</text>
+            </g>
+
+            {/* Femoral vein (deep) */}
+            <g className="cursor-pointer" onClick={() => setSelected("femoral-vein")}>
+              <path d="M103,28 Q104,80 105,140 Q106,200 107,260" fill="none" stroke={veins["femoral-vein"].color}
+                strokeWidth={isActive("femoral-vein") ? 4 : 2.5} opacity={isActive("femoral-vein") ? 0.7 : 0.3}
+                strokeDasharray="6 3" strokeLinecap="round" />
+              <text x="115" y="150" fontSize="5" fill={veins["femoral-vein"].color}>Femoral V.</text>
+              <text x="115" y="158" fontSize="4" fill={veins["femoral-vein"].color} opacity="0.5">(deep)</text>
+            </g>
+
+            {/* SFJ */}
+            <g className="cursor-pointer" onClick={() => setSelected("saphenofemoral")}>
+              <circle cx="103" cy="35" r="4" fill={veins.saphenofemoral.color}
+                fillOpacity={isActive("saphenofemoral") ? 0.5 : 0.15}
+                stroke={veins.saphenofemoral.color} strokeWidth={isActive("saphenofemoral") ? 2 : 1} />
+              <text x="80" y="42" fontSize="4.5" fill={veins.saphenofemoral.color} textAnchor="end" fontWeight="bold">SFJ</text>
+            </g>
+
+            {/* Great saphenous vein (superficial, medial) */}
+            <g className="cursor-pointer" onClick={() => setSelected("great-saphenous")}>
+              <path d="M103,35 Q90,60 82,100 Q75,150 72,200 Q70,240 68,280 Q65,330 62,380 Q58,420 55,460 Q52,480 50,500 Q48,520 45,540" fill="none" stroke={veins["great-saphenous"].color}
+                strokeWidth={isActive("great-saphenous") ? 3.5 : 2} opacity={isActive("great-saphenous") ? 0.7 : 0.3} strokeLinecap="round" />
+              <text x="55" y="200" fontSize="5" fill={veins["great-saphenous"].color} textAnchor="end" fontWeight="bold">GSV</text>
+              <text x="55" y="208" fontSize="4" fill={veins["great-saphenous"].color} textAnchor="end" opacity="0.6">(medial)</text>
+              {/* Ankle landmark */}
+              <circle cx="52" cy="465" r="2" fill={veins["great-saphenous"].color} fillOpacity="0.4" />
+              <text x="35" y="475" fontSize="3.5" fill={veins["great-saphenous"].color} textAnchor="end">ant. to med.</text>
+              <text x="35" y="481" fontSize="3.5" fill={veins["great-saphenous"].color} textAnchor="end">malleolus</text>
+            </g>
+
+            {/* Popliteal vein (deep) */}
+            <g className="cursor-pointer" onClick={() => setSelected("popliteal-vein")}>
+              <path d="M107,260 Q108,275 108,295 Q108,310 108,320" fill="none" stroke={veins["popliteal-vein"].color}
+                strokeWidth={isActive("popliteal-vein") ? 4 : 2.5} opacity={isActive("popliteal-vein") ? 0.7 : 0.3}
+                strokeDasharray="6 3" strokeLinecap="round" />
+              <text x="118" y="300" fontSize="4.5" fill={veins["popliteal-vein"].color}>Popliteal V.</text>
+            </g>
+
+            {/* SPJ */}
+            <g className="cursor-pointer" onClick={() => setSelected("saphenopopliteal")}>
+              <circle cx="108" cy="285" r="3.5" fill={veins.saphenopopliteal.color}
+                fillOpacity={isActive("saphenopopliteal") ? 0.5 : 0.15}
+                stroke={veins.saphenopopliteal.color} strokeWidth={isActive("saphenopopliteal") ? 2 : 1} />
+              <text x="130" y="288" fontSize="4.5" fill={veins.saphenopopliteal.color} fontWeight="bold">SPJ</text>
+            </g>
+
+            {/* Small saphenous vein (superficial, posterior/lateral) */}
+            <g className="cursor-pointer" onClick={() => setSelected("small-saphenous")}>
+              <path d="M108,285 Q125,310 135,350 Q140,390 142,430 Q143,450 143,460 Q142,480 140,510 Q138,530 135,545" fill="none" stroke={veins["small-saphenous"].color}
+                strokeWidth={isActive("small-saphenous") ? 3 : 1.8} opacity={isActive("small-saphenous") ? 0.7 : 0.3} strokeLinecap="round" />
+              <text x="148" y="390" fontSize="5" fill={veins["small-saphenous"].color}>SSV</text>
+              <text x="148" y="398" fontSize="4" fill={veins["small-saphenous"].color} opacity="0.6">(posterior)</text>
+              <text x="148" y="465" fontSize="3.5" fill={veins["small-saphenous"].color} opacity="0.5">post. to lat.</text>
+              <text x="148" y="471" fontSize="3.5" fill={veins["small-saphenous"].color} opacity="0.5">malleolus</text>
+            </g>
+
+            {/* Deep veins of leg */}
+            <g className="cursor-pointer" onClick={() => setSelected("deep-veins-leg")}>
+              <path d="M108,320 Q107,370 106,420 Q105,450 104,460" fill="none" stroke={veins["deep-veins-leg"].color}
+                strokeWidth={isActive("deep-veins-leg") ? 3 : 1.5} opacity={isActive("deep-veins-leg") ? 0.5 : 0.15}
+                strokeDasharray="5 3" strokeLinecap="round" />
+              <text x="90" y="380" fontSize="4" fill={veins["deep-veins-leg"].color} textAnchor="end">Tibial vv.</text>
+              <text x="90" y="387" fontSize="3.5" fill={veins["deep-veins-leg"].color} textAnchor="end" opacity="0.6">(deep)</text>
+            </g>
+
+            {/* Perforating veins */}
+            <g className="cursor-pointer" onClick={() => setSelected("perforators")}>
+              {[{y:350,l:"Cockett"}, {y:270,l:"Boyd"}, {y:180,l:"Dodd"}].map(p => (
+                <g key={p.l}>
+                  <line x1={68} y1={p.y} x2={106} y2={p.y}
+                    stroke={veins.perforators.color}
+                    strokeWidth={isActive("perforators") ? 2 : 1}
+                    opacity={isActive("perforators") ? 0.6 : 0.2}
+                    strokeDasharray="2 2" />
+                  <text x={65} y={p.y - 3} fontSize="3.5" fill={veins.perforators.color} textAnchor="end"
+                    opacity={isActive("perforators") ? 0.8 : 0.4}>{p.l}</text>
                 </g>
-              )}
-              {showLabels && (
-                <g pointerEvents="none">
-                  <text x="178" y="33" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Groin</text>
-                  <text x="178" y="283" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Knee</text>
-                  <text x="165" y="463" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Ankle</text>
-                  <text x="110" y="12" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55" textAnchor="middle" fontWeight="600">MEDIAL VIEW</text>
-                </g>
-              )}
-  
-              {/* External iliac / IVC */}
-              <g className="cursor-pointer" onClick={() => setSelected("external-iliac-vein")}>
-                <path d="M100,5 Q102,15 103,28" fill="none" stroke={veins["external-iliac-vein"].color}
-                  strokeWidth={isActive("external-iliac-vein") ? 5 : 3.5} opacity={isActive("external-iliac-vein") ? 0.7 : 0.3} strokeLinecap="round" />
-                <text x="108" y="10" fontSize="4.5" fill={veins["external-iliac-vein"].color}>→ IVC</text>
-              </g>
-  
-              {/* Femoral vein (deep) */}
-              <g className="cursor-pointer" onClick={() => setSelected("femoral-vein")}>
-                <path d="M103,28 Q104,80 105,140 Q106,200 107,260" fill="none" stroke={veins["femoral-vein"].color}
-                  strokeWidth={isActive("femoral-vein") ? 4 : 2.5} opacity={isActive("femoral-vein") ? 0.7 : 0.3}
-                  strokeDasharray="6 3" strokeLinecap="round" />
-                <text x="115" y="150" fontSize="5" fill={veins["femoral-vein"].color}>Femoral V.</text>
-                <text x="115" y="158" fontSize="4" fill={veins["femoral-vein"].color} opacity="0.5">(deep)</text>
-              </g>
-  
-              {/* SFJ */}
-              <g className="cursor-pointer" onClick={() => setSelected("saphenofemoral")}>
-                <circle cx="103" cy="35" r="4" fill={veins.saphenofemoral.color}
-                  fillOpacity={isActive("saphenofemoral") ? 0.5 : 0.15}
-                  stroke={veins.saphenofemoral.color} strokeWidth={isActive("saphenofemoral") ? 2 : 1} />
-                <text x="80" y="42" fontSize="4.5" fill={veins.saphenofemoral.color} textAnchor="end" fontWeight="bold">SFJ</text>
-              </g>
-  
-              {/* Great saphenous vein (superficial, medial) */}
-              <g className="cursor-pointer" onClick={() => setSelected("great-saphenous")}>
-                <path d="M103,35 Q90,60 82,100 Q75,150 72,200 Q70,240 68,280 Q65,330 62,380 Q58,420 55,460 Q52,480 50,500 Q48,520 45,540" fill="none" stroke={veins["great-saphenous"].color}
-                  strokeWidth={isActive("great-saphenous") ? 3.5 : 2} opacity={isActive("great-saphenous") ? 0.7 : 0.3} strokeLinecap="round" />
-                <text x="55" y="200" fontSize="5" fill={veins["great-saphenous"].color} textAnchor="end" fontWeight="bold">GSV</text>
-                <text x="55" y="208" fontSize="4" fill={veins["great-saphenous"].color} textAnchor="end" opacity="0.6">(medial)</text>
-                {/* Ankle landmark */}
-                <circle cx="52" cy="465" r="2" fill={veins["great-saphenous"].color} fillOpacity="0.4" />
-                <text x="35" y="475" fontSize="3.5" fill={veins["great-saphenous"].color} textAnchor="end">ant. to med.</text>
-                <text x="35" y="481" fontSize="3.5" fill={veins["great-saphenous"].color} textAnchor="end">malleolus</text>
-              </g>
-  
-              {/* Popliteal vein (deep) */}
-              <g className="cursor-pointer" onClick={() => setSelected("popliteal-vein")}>
-                <path d="M107,260 Q108,275 108,295 Q108,310 108,320" fill="none" stroke={veins["popliteal-vein"].color}
-                  strokeWidth={isActive("popliteal-vein") ? 4 : 2.5} opacity={isActive("popliteal-vein") ? 0.7 : 0.3}
-                  strokeDasharray="6 3" strokeLinecap="round" />
-                <text x="118" y="300" fontSize="4.5" fill={veins["popliteal-vein"].color}>Popliteal V.</text>
-              </g>
-  
-              {/* SPJ */}
-              <g className="cursor-pointer" onClick={() => setSelected("saphenopopliteal")}>
-                <circle cx="108" cy="285" r="3.5" fill={veins.saphenopopliteal.color}
-                  fillOpacity={isActive("saphenopopliteal") ? 0.5 : 0.15}
-                  stroke={veins.saphenopopliteal.color} strokeWidth={isActive("saphenopopliteal") ? 2 : 1} />
-                <text x="130" y="288" fontSize="4.5" fill={veins.saphenopopliteal.color} fontWeight="bold">SPJ</text>
-              </g>
-  
-              {/* Small saphenous vein (superficial, posterior/lateral) */}
-              <g className="cursor-pointer" onClick={() => setSelected("small-saphenous")}>
-                <path d="M108,285 Q125,310 135,350 Q140,390 142,430 Q143,450 143,460 Q142,480 140,510 Q138,530 135,545" fill="none" stroke={veins["small-saphenous"].color}
-                  strokeWidth={isActive("small-saphenous") ? 3 : 1.8} opacity={isActive("small-saphenous") ? 0.7 : 0.3} strokeLinecap="round" />
-                <text x="148" y="390" fontSize="5" fill={veins["small-saphenous"].color}>SSV</text>
-                <text x="148" y="398" fontSize="4" fill={veins["small-saphenous"].color} opacity="0.6">(posterior)</text>
-                <text x="148" y="465" fontSize="3.5" fill={veins["small-saphenous"].color} opacity="0.5">post. to lat.</text>
-                <text x="148" y="471" fontSize="3.5" fill={veins["small-saphenous"].color} opacity="0.5">malleolus</text>
-              </g>
-  
-              {/* Deep veins of leg */}
-              <g className="cursor-pointer" onClick={() => setSelected("deep-veins-leg")}>
-                <path d="M108,320 Q107,370 106,420 Q105,450 104,460" fill="none" stroke={veins["deep-veins-leg"].color}
-                  strokeWidth={isActive("deep-veins-leg") ? 3 : 1.5} opacity={isActive("deep-veins-leg") ? 0.5 : 0.15}
-                  strokeDasharray="5 3" strokeLinecap="round" />
-                <text x="90" y="380" fontSize="4" fill={veins["deep-veins-leg"].color} textAnchor="end">Tibial vv.</text>
-                <text x="90" y="387" fontSize="3.5" fill={veins["deep-veins-leg"].color} textAnchor="end" opacity="0.6">(deep)</text>
-              </g>
-  
-              {/* Perforating veins */}
-              <g className="cursor-pointer" onClick={() => setSelected("perforators")}>
-                {[{y:350,l:"Cockett"}, {y:270,l:"Boyd"}, {y:180,l:"Dodd"}].map(p => (
-                  <g key={p.l}>
-                    <line x1={68} y1={p.y} x2={106} y2={p.y}
-                      stroke={veins.perforators.color}
-                      strokeWidth={isActive("perforators") ? 2 : 1}
-                      opacity={isActive("perforators") ? 0.6 : 0.2}
-                      strokeDasharray="2 2" />
-                    <text x={65} y={p.y - 3} fontSize="3.5" fill={veins.perforators.color} textAnchor="end"
-                      opacity={isActive("perforators") ? 0.8 : 0.4}>{p.l}</text>
-                  </g>
-                ))}
-              </g>
-  
-              {/* Dorsal venous arch */}
-              <g className="cursor-pointer" onClick={() => setSelected("dorsal-venous-arch")}>
-                <path d="M45,540 Q60,550 80,555 Q100,558 120,555 Q130,550 135,545" fill="none" stroke={veins["dorsal-venous-arch"].color}
-                  strokeWidth={isActive("dorsal-venous-arch") ? 3 : 1.5} opacity={isActive("dorsal-venous-arch") ? 0.6 : 0.25} strokeLinecap="round" />
-                <text x="90" y="570" fontSize="5" textAnchor="middle" fill={veins["dorsal-venous-arch"].color}>Dorsal venous arch</text>
-              </g>
-  
-              {/* Flow arrow */}
-              <polygon points="98,8 102,2 106,8" fill={veins["external-iliac-vein"].color} opacity="0.3" />
-            </svg>
-          </div>
-  
-          <div className="flex-1 min-w-0">
-            <div
-              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
-              style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
-              key={selected}
-            >
-              <p className="font-semibold text-foreground text-sm">{info.label}</p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
-              </p>
-            </div>
-  
-            <div className="mt-3 space-y-2">
-              {Object.values(categories).map(cat => (
-                <div key={cat.label}>
-                  <p className="text-xs text-muted-foreground font-medium mb-1">{cat.label}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {cat.keys.map(key => (
-                      <button key={key} onClick={() => setSelected(key)}
-                        className={`text-xs px-2 py-1 rounded border transition-all ${
-                          selected === key ? "border-primary bg-primary/10 text-foreground font-medium" : "border-border text-muted-foreground hover:border-primary/50"
-                        }`}>
-                        {veins[key].label.split(" (")[0]}
-                      </button>
-                    ))}
-                  </div>
-                </div>
               ))}
-            </div>
-          </div>
+            </g>
+
+            {/* Dorsal venous arch */}
+            <g className="cursor-pointer" onClick={() => setSelected("dorsal-venous-arch")}>
+              <path d="M45,540 Q60,550 80,555 Q100,558 120,555 Q130,550 135,545" fill="none" stroke={veins["dorsal-venous-arch"].color}
+                strokeWidth={isActive("dorsal-venous-arch") ? 3 : 1.5} opacity={isActive("dorsal-venous-arch") ? 0.6 : 0.25} strokeLinecap="round" />
+              <text x="90" y="570" fontSize="5" textAnchor="middle" fill={veins["dorsal-venous-arch"].color}>Dorsal venous arch</text>
+            </g>
+
+            {/* Flow arrow */}
+            <polygon points="98,8 102,2 106,8" fill={veins["external-iliac-vein"].color} opacity="0.3" />
+          </svg>
         </div>
+
+        <div className="flex-1 min-w-0">
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            key={selected}
+          >
+            <p className="font-semibold text-foreground text-sm">{info.label}</p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
+            </p>
+          </div>
+
+          <div className="mt-3 space-y-2">
+            {Object.values(categories).map(cat => (
+              <div key={cat.label}>
+                <p className="text-xs text-muted-foreground font-medium mb-1">{cat.label}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {cat.keys.map(key => (
+                    <button key={key} onClick={() => setSelected(key)}
+                      className={`text-xs px-2 py-1 rounded border transition-all ${
+                        selected === key ? "border-primary bg-primary/10 text-foreground font-medium" : "border-border text-muted-foreground hover:border-primary/50"
+                      }`}>
+                      {veins[key].label.split(" (")[0]}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </DiagramFigure>
+      </div>
+    </div>
   );
 };
 

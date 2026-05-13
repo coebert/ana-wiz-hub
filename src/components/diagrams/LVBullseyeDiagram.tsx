@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { withAlpha } from "@/lib/color-utils";
 import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * AHA 17-segment short-axis LV bullseye, colour-keyed to the SAME six coronary
@@ -291,15 +290,9 @@ const LVBullseyeDiagram = () => {
               {segments.map((s) => {
                 const pos = segmentLabelPos(s);
                 return (
-    <DiagramFigure
-      id="lv-bullseye-diagram"
-      title="Lv bullseye"
-      description="Auto-generated wrapper for the Lv bullseye anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <text key={s.id} x={pos.x} y={pos.y} textAnchor="middle">
-                      {s.id}
-                    </text>
-    </DiagramFigure>
+                      <text key={s.id} x={pos.x} y={pos.y} textAnchor="middle">
+                    {s.id}
+                  </text>
   );
               })}
             </g>

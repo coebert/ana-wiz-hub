@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ViewMode = "overview" | "bohr" | "vq";
 
@@ -292,40 +291,34 @@ function VQView({ selectedUnit, setSelectedUnit }: { selectedUnit: number | null
           const vBarH = unit.ventilation * 60;
           const qBarH = unit.perfusion * 60;
           return (
-    <DiagramFigure
-      id="dead-space-diagram"
-      title="Dead space"
-      description="Auto-generated wrapper for the Dead space anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <g key={i} onClick={() => setSelectedUnit(isSelected ? null : i)} className="cursor-pointer">
-                {/* Background highlight */}
-                {isSelected && <rect x={x - 15} y={5} width={60} height={150} rx="6" fill={unit.color} opacity={0.08} />}
-  
-                {/* V bar */}
-                <rect x={x - 8} y={80 - vBarH} width={14} height={vBarH} rx="2"
-                  fill="hsl(210, 70%, 55%)" opacity={isSelected ? 1 : 0.5}
-                />
-                <text x={x - 1} y={75 - vBarH} textAnchor="middle" className="text-[8px] fill-muted-foreground">V</text>
-  
-                {/* Q bar */}
-                <rect x={x + 10} y={80 - qBarH} width={14} height={qBarH} rx="2"
-                  fill="hsl(0, 70%, 55%)" opacity={isSelected ? 1 : 0.5}
-                />
-                <text x={x + 17} y={75 - qBarH} textAnchor="middle" className="text-[8px] fill-muted-foreground">Q</text>
-  
-                {/* Label */}
-                <text x={x + 5} y={95} textAnchor="middle" className={`text-[9px] font-medium ${isSelected ? "fill-foreground" : "fill-muted-foreground"}`}>
-                  {unit.label}
-                </text>
-                <text x={x + 5} y={107} textAnchor="middle" className="text-[8px] fill-muted-foreground">
-                  {unit.vq === Infinity ? "V/Q=∞" : unit.vq === 0 ? "V/Q=0" : `V/Q=${unit.vq}`}
-                </text>
-  
-                {/* Alveolus icon */}
-                <circle cx={x + 5} cy={130} r={12} fill={unit.color} opacity={0.15} stroke={unit.color} strokeWidth={isSelected ? 2 : 1} />
-                <circle cx={x + 5} cy={130} r={6} fill={unit.color} opacity={0.3} />
-              </g>
-    </DiagramFigure>
+                <g key={i} onClick={() => setSelectedUnit(isSelected ? null : i)} className="cursor-pointer">
+              {/* Background highlight */}
+              {isSelected && <rect x={x - 15} y={5} width={60} height={150} rx="6" fill={unit.color} opacity={0.08} />}
+
+              {/* V bar */}
+              <rect x={x - 8} y={80 - vBarH} width={14} height={vBarH} rx="2"
+                fill="hsl(210, 70%, 55%)" opacity={isSelected ? 1 : 0.5}
+              />
+              <text x={x - 1} y={75 - vBarH} textAnchor="middle" className="text-[8px] fill-muted-foreground">V</text>
+
+              {/* Q bar */}
+              <rect x={x + 10} y={80 - qBarH} width={14} height={qBarH} rx="2"
+                fill="hsl(0, 70%, 55%)" opacity={isSelected ? 1 : 0.5}
+              />
+              <text x={x + 17} y={75 - qBarH} textAnchor="middle" className="text-[8px] fill-muted-foreground">Q</text>
+
+              {/* Label */}
+              <text x={x + 5} y={95} textAnchor="middle" className={`text-[9px] font-medium ${isSelected ? "fill-foreground" : "fill-muted-foreground"}`}>
+                {unit.label}
+              </text>
+              <text x={x + 5} y={107} textAnchor="middle" className="text-[8px] fill-muted-foreground">
+                {unit.vq === Infinity ? "V/Q=∞" : unit.vq === 0 ? "V/Q=0" : `V/Q=${unit.vq}`}
+              </text>
+
+              {/* Alveolus icon */}
+              <circle cx={x + 5} cy={130} r={12} fill={unit.color} opacity={0.15} stroke={unit.color} strokeWidth={isSelected ? 2 : 1} />
+              <circle cx={x + 5} cy={130} r={6} fill={unit.color} opacity={0.3} />
+            </g>
   );
         })}
 

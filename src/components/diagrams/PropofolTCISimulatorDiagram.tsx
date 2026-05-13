@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ModelName = "marsh" | "schnider";
 
@@ -234,18 +233,12 @@ export const PropofolTCISimulatorDiagram = () => {
           {[0, 0.25, 0.5, 0.75, 1].map((f) => {
             const x = pad.left + f * plotW;
             return (
-    <DiagramFigure
-      id="propofol-tci-simulator-diagram"
-      title="Propofol tci simulator"
-      description="Auto-generated wrapper for the Propofol tci simulator anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g key={f}>
-                  <line x1={x} y1={pad.top} x2={x} y2={pad.top + plotH} stroke="hsl(210 20% 95%)" />
-                  <text x={x} y={pad.top + plotH + 14} textAnchor="middle" fontSize="10" className="fill-muted-foreground">
-                    {Math.round(f * durationMin)}
-                  </text>
-                </g>
-    </DiagramFigure>
+                  <g key={f}>
+                <line x1={x} y1={pad.top} x2={x} y2={pad.top + plotH} stroke="hsl(210 20% 95%)" />
+                <text x={x} y={pad.top + plotH + 14} textAnchor="middle" fontSize="10" className="fill-muted-foreground">
+                  {Math.round(f * durationMin)}
+                </text>
+              </g>
   );
           })}
           {/* axes */}

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Tab = "arterial" | "damping" | "cvp" | "cardiac-output";
 
@@ -409,34 +408,28 @@ const ClinicalMeasurementDiagram = () => {
   const [activeTab, setActiveTab] = useState<Tab>("arterial");
 
   return (
-    <DiagramFigure
-      id="clinical-measurement-diagram"
-      title="Clinical measurement"
-      description="Auto-generated wrapper for the Clinical measurement anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-4">
-        <div className="flex flex-wrap gap-2">
-          {tabs.map((t) => (
-            <button
-              key={t.key}
-              onClick={() => setActiveTab(t.key)}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                activeTab === t.key
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
-  
-        {activeTab === "arterial" && <ArterialLineDiagram />}
-        {activeTab === "damping" && <DampingDiagram />}
-        {activeTab === "cvp" && <CVPDiagram />}
-        {activeTab === "cardiac-output" && <CardiacOutputDiagram />}
+        <div className="space-y-4">
+      <div className="flex flex-wrap gap-2">
+        {tabs.map((t) => (
+          <button
+            key={t.key}
+            onClick={() => setActiveTab(t.key)}
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+              activeTab === t.key
+                ? "bg-primary text-primary-foreground"
+                : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+            }`}
+          >
+            {t.label}
+          </button>
+        ))}
       </div>
-    </DiagramFigure>
+
+      {activeTab === "arterial" && <ArterialLineDiagram />}
+      {activeTab === "damping" && <DampingDiagram />}
+      {activeTab === "cvp" && <CVPDiagram />}
+      {activeTab === "cardiac-output" && <CardiacOutputDiagram />}
+    </div>
   );
 };
 

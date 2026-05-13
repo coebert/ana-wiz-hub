@@ -1,5 +1,4 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Addisonian / adrenal crisis — pathophysiology + emergency management.
@@ -124,16 +123,10 @@ const AdrenalCrisisScene = ({ active }: { active: number }) => {
           const lit = active > i;
           const y = 52 + i * 50;
           return (
-    <DiagramFigure
-      id="adrenal-crisis-animation"
-      title="Adrenal crisis"
-      description="Auto-generated wrapper for the Adrenal crisis animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <line key={i} x1="122" x2="122" y1={y} y2={y + 12}
-                stroke={lit ? "hsl(var(--foreground))" : "hsl(var(--border))"}
-                strokeWidth={lit ? 2 : 1}
-                markerEnd="url(#ac-arrow)" className="transition-colors duration-500" />
-    </DiagramFigure>
+                <line key={i} x1="122" x2="122" y1={y} y2={y + 12}
+              stroke={lit ? "hsl(var(--foreground))" : "hsl(var(--border))"}
+              strokeWidth={lit ? 2 : 1}
+              markerEnd="url(#ac-arrow)" className="transition-colors duration-500" />
   );
         })}
 

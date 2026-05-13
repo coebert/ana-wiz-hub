@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Scenario = "normal" | "ndmr" | "sux" | "neostigmine" | "sugammadex";
 
@@ -265,36 +264,30 @@ export const NMBAMechanismDiagram = () => {
           const driftY = captured ? rocY - Math.min((progress - 0.4) * 60, 30) : rocY;
           if (encapProgress <= 0) return null;
           return (
-    <DiagramFigure
-      id="nmba-mechanism-diagram"
-      title="Nmba mechanism"
-      description="Auto-generated wrapper for the Nmba mechanism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <g key={`sug-${i}`} opacity={Math.min(encapProgress * 2, 1)}>
-                {/* Rocuronium molecule leaving receptor */}
-                <rect x={x - 5} y={driftY} width={10} height={6} rx={1.5}
-                  fill="hsl(0 60% 50%)" fillOpacity={captured ? 0.7 : 0.5} stroke="hsl(0 60% 50%)" strokeWidth="0.5" />
-                <text x={x} y={driftY + 4.5} textAnchor="middle" fontSize="3.5" fill="hsl(0 60% 50%)" fontWeight="700">Roc</text>
-                {/* Sugammadex cyclodextrin ring */}
-                {showRing && (
-                  <g>
-                    <circle cx={x} cy={driftY + 3} r={10}
-                      fill="hsl(270 55% 55%/0.15)" stroke="hsl(270 55% 55%)" strokeWidth={captured ? 1.5 : 1}
-                      strokeDasharray={captured ? "0" : "3 2"}>
-                      {!captured && <animate attributeName="r" values="10;12;10" dur="1s" repeatCount="indefinite" />}
-                    </circle>
-                    {/* Cone shape hint — inner ring */}
-                    {captured && (
-                      <circle cx={x} cy={driftY + 3} r={6}
-                        fill="none" stroke="hsl(270 55% 55%)" strokeWidth="0.5" opacity="0.4" />
-                    )}
-                    <text x={x} y={driftY - 10} textAnchor="middle" fontSize="4" fill="hsl(270 55% 55%)" fontWeight="600">
-                      {captured ? "Sug–Roc" : "Sug"}
-                    </text>
-                  </g>
-                )}
-              </g>
-    </DiagramFigure>
+                <g key={`sug-${i}`} opacity={Math.min(encapProgress * 2, 1)}>
+              {/* Rocuronium molecule leaving receptor */}
+              <rect x={x - 5} y={driftY} width={10} height={6} rx={1.5}
+                fill="hsl(0 60% 50%)" fillOpacity={captured ? 0.7 : 0.5} stroke="hsl(0 60% 50%)" strokeWidth="0.5" />
+              <text x={x} y={driftY + 4.5} textAnchor="middle" fontSize="3.5" fill="hsl(0 60% 50%)" fontWeight="700">Roc</text>
+              {/* Sugammadex cyclodextrin ring */}
+              {showRing && (
+                <g>
+                  <circle cx={x} cy={driftY + 3} r={10}
+                    fill="hsl(270 55% 55%/0.15)" stroke="hsl(270 55% 55%)" strokeWidth={captured ? 1.5 : 1}
+                    strokeDasharray={captured ? "0" : "3 2"}>
+                    {!captured && <animate attributeName="r" values="10;12;10" dur="1s" repeatCount="indefinite" />}
+                  </circle>
+                  {/* Cone shape hint — inner ring */}
+                  {captured && (
+                    <circle cx={x} cy={driftY + 3} r={6}
+                      fill="none" stroke="hsl(270 55% 55%)" strokeWidth="0.5" opacity="0.4" />
+                  )}
+                  <text x={x} y={driftY - 10} textAnchor="middle" fontSize="4" fill="hsl(270 55% 55%)" fontWeight="600">
+                    {captured ? "Sug–Roc" : "Sug"}
+                  </text>
+                </g>
+              )}
+            </g>
   );
         })}
 

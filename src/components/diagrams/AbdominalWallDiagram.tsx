@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type LayerKey = "skin" | "camper" | "scarpa" | "ext-oblique" | "int-oblique" | "tap-plane" | "transversus" | "transversalis" | "extraperitoneal" | "peritoneum";
 
@@ -151,170 +150,164 @@ const AbdominalWallDiagram = () => {
               const isTAP = key === "tap-plane";
 
               return (
-    <DiagramFigure
-      id="abdominal-wall-diagram"
-      title="Abdominal wall"
-      description="Auto-generated wrapper for the Abdominal wall anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
-                    {/* Base layer */}
-                    <rect
-                      x={xOff}
-                      y={g.y}
-                      width={layerW}
-                      height={g.h}
-                      rx={key === "skin" ? 3 : 1}
-                      fill={l.color}
-                      fillOpacity={isActive ? 0.55 : isTAP ? 0.45 : 0.18}
-                      stroke={isActive ? l.color : isTAP ? l.color : "transparent"}
-                      strokeWidth={isActive ? 2.5 : isTAP ? 1.5 : 0}
-                      strokeDasharray={isTAP && !isActive ? "4 2" : ""}
-                      className="transition-all duration-200"
-                    />
-  
-                    {/* Skin: stippled texture + hair follicles */}
-                    {key === "skin" && (
-                      <g>
-                        <rect x={xOff} y={g.y} width={layerW} height={g.h} rx={3} fill="url(#skinTex)" />
-                        {/* Hair follicle hints */}
-                        <g opacity={isActive ? 0.35 : 0.12}>
-                          {[30, 65, 100, 135, 165].map((hx, i) => (
-                            <g key={i}>
-                              <line x1={xOff + hx} y1={g.y + 2} x2={xOff + hx - 1} y2={g.y + g.h - 2} stroke="hsl(25, 35%, 45%)" strokeWidth="0.5" />
-                              <ellipse cx={xOff + hx} cy={g.y + g.h - 1} rx="1.5" ry="1" fill="hsl(25, 40%, 50%)" opacity="0.3" />
-                            </g>
-                          ))}
-                        </g>
-                      </g>
-                    )}
-  
-                    {/* Camper's: fat globule texture */}
-                    {key === "camper" && (
-                      <g opacity={isActive ? 0.6 : 0.2}>
-                        <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fatTex)" />
-                        {/* Superficial vessels */}
-                        <path d={`M${xOff + 40},${g.y + 4} C${xOff + 55},${g.y + 8} ${xOff + 70},${g.y + 10} ${xOff + 90},${g.y + 7}`}
-                          stroke="hsl(0, 50%, 55%)" strokeWidth="0.75" fill="none" opacity="0.4" />
-                        <path d={`M${xOff + 120},${g.y + 6} C${xOff + 140},${g.y + 10} ${xOff + 155},${g.y + 12} ${xOff + 170},${g.y + 9}`}
-                          stroke="hsl(220, 45%, 55%)" strokeWidth="0.75" fill="none" opacity="0.3" />
-                      </g>
-                    )}
-  
-                    {/* Scarpa's: dense fibrous membrane */}
-                    {key === "scarpa" && (
-                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fasciaTex)" opacity={isActive ? 0.8 : 0.3} />
-                    )}
-  
-                    {/* External oblique: diagonal fibres down-medial */}
-                    {key === "ext-oblique" && (
-                      <g>
-                        <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#eoFibre)" opacity={isActive ? 1 : 0.5} />
-                        {/* Connective tissue septa */}
-                        <g opacity={isActive ? 0.2 : 0.06}>
-                          {[0, 1, 2].map(i => (
-                            <line key={i} x1={xOff + 5} y1={g.y + 8 + i * 10} x2={xOff + layerW - 5} y2={g.y + 8 + i * 10}
-                              stroke="hsl(0, 0%, 70%)" strokeWidth="0.5" strokeDasharray="2 4" />
-                          ))}
-                        </g>
-                        {/* Fibre direction arrow */}
-                        <g opacity={isActive ? 0.35 : 0.1}>
-                          <path d={`M${xOff + 30},${g.y + 6} L${xOff + 80},${g.y + g.h - 6}`} stroke="hsl(0, 60%, 60%)" strokeWidth="1" fill="none" markerEnd="none" />
-                          <text x={xOff + 55} y={g.y + g.h / 2 - 2} fontSize="4" fill="hsl(0, 55%, 55%)" transform={`rotate(-30, ${xOff + 55}, ${g.y + g.h / 2 - 2})`}>fibres ↘</text>
-                        </g>
-                      </g>
-                    )}
-  
-                    {/* Internal oblique: diagonal fibres up-medial */}
-                    {key === "int-oblique" && (
-                      <g>
-                        <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#ioFibre)" opacity={isActive ? 1 : 0.5} />
-                        {/* Nerve running between IO and TA */}
-                        <g opacity={isActive ? 0.45 : 0.12}>
-                          <path d={`M${xOff + 10},${g.y + g.h - 3} C${xOff + 50},${g.y + g.h - 5} ${xOff + 100},${g.y + g.h - 2} ${xOff + 150},${g.y + g.h - 4}`}
-                            stroke="hsl(50, 70%, 55%)" strokeWidth="1" fill="none" />
-                          <text x={xOff + 80} y={g.y + g.h - 7} fontSize="3.5" fill="hsl(50, 70%, 55%)" textAnchor="middle">Ilioinguinal n. (L1)</text>
-                        </g>
-                        {/* Fibre direction */}
-                        <g opacity={isActive ? 0.35 : 0.1}>
-                          <text x={xOff + 55} y={g.y + g.h / 2 - 2} fontSize="4" fill="hsl(210, 55%, 52%)" transform={`rotate(30, ${xOff + 55}, ${g.y + g.h / 2 - 2})`}>fibres ↗</text>
-                        </g>
-                      </g>
-                    )}
-  
-                    {/* TAP plane: nerve cross-sections + fascial shimmer */}
-                    {isTAP && (
-                      <g>
-                        {/* Nerve cross-sections - realistic circles with myelin */}
-                        {[18, 40, 62, 84, 106, 128, 150, 172].map((nx, i) => (
-                          <g key={i} opacity={isActive ? 0.9 : 0.45}>
-                            <circle cx={xOff + nx} cy={g.y + g.h / 2} r="3.5" fill="hsl(45, 80%, 85%)" stroke="hsl(45, 70%, 45%)" strokeWidth="0.75" />
-                            <circle cx={xOff + nx} cy={g.y + g.h / 2} r="1.8" fill="hsl(45, 90%, 50%)" opacity="0.6" />
-                            <circle cx={xOff + nx} cy={g.y + g.h / 2} r="0.8" fill="hsl(0, 0%, 30%)" opacity="0.5" />
+                    <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
+                  {/* Base layer */}
+                  <rect
+                    x={xOff}
+                    y={g.y}
+                    width={layerW}
+                    height={g.h}
+                    rx={key === "skin" ? 3 : 1}
+                    fill={l.color}
+                    fillOpacity={isActive ? 0.55 : isTAP ? 0.45 : 0.18}
+                    stroke={isActive ? l.color : isTAP ? l.color : "transparent"}
+                    strokeWidth={isActive ? 2.5 : isTAP ? 1.5 : 0}
+                    strokeDasharray={isTAP && !isActive ? "4 2" : ""}
+                    className="transition-all duration-200"
+                  />
+
+                  {/* Skin: stippled texture + hair follicles */}
+                  {key === "skin" && (
+                    <g>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} rx={3} fill="url(#skinTex)" />
+                      {/* Hair follicle hints */}
+                      <g opacity={isActive ? 0.35 : 0.12}>
+                        {[30, 65, 100, 135, 165].map((hx, i) => (
+                          <g key={i}>
+                            <line x1={xOff + hx} y1={g.y + 2} x2={xOff + hx - 1} y2={g.y + g.h - 2} stroke="hsl(25, 35%, 45%)" strokeWidth="0.5" />
+                            <ellipse cx={xOff + hx} cy={g.y + g.h - 1} rx="1.5" ry="1" fill="hsl(25, 40%, 50%)" opacity="0.3" />
                           </g>
                         ))}
-                        <text x={xOff + layerW / 2} y={g.y - 2} fontSize="4.5" textAnchor="middle" fill="hsl(45, 90%, 50%)" fontWeight="bold" opacity={isActive ? 1 : 0.6}>T6–L1 intercostal nerves</text>
                       </g>
-                    )}
-  
-                    {/* Transversus: horizontal fibres */}
-                    {key === "transversus" && (
-                      <g>
-                        <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#taFibre)" opacity={isActive ? 1 : 0.5} />
-                        <g opacity={isActive ? 0.35 : 0.1}>
-                          <text x={xOff + layerW / 2} y={g.y + g.h / 2 + 1} fontSize="4" fill="hsl(160, 50%, 48%)" textAnchor="middle">fibres →</text>
+                    </g>
+                  )}
+
+                  {/* Camper's: fat globule texture */}
+                  {key === "camper" && (
+                    <g opacity={isActive ? 0.6 : 0.2}>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fatTex)" />
+                      {/* Superficial vessels */}
+                      <path d={`M${xOff + 40},${g.y + 4} C${xOff + 55},${g.y + 8} ${xOff + 70},${g.y + 10} ${xOff + 90},${g.y + 7}`}
+                        stroke="hsl(0, 50%, 55%)" strokeWidth="0.75" fill="none" opacity="0.4" />
+                      <path d={`M${xOff + 120},${g.y + 6} C${xOff + 140},${g.y + 10} ${xOff + 155},${g.y + 12} ${xOff + 170},${g.y + 9}`}
+                        stroke="hsl(220, 45%, 55%)" strokeWidth="0.75" fill="none" opacity="0.3" />
+                    </g>
+                  )}
+
+                  {/* Scarpa's: dense fibrous membrane */}
+                  {key === "scarpa" && (
+                    <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fasciaTex)" opacity={isActive ? 0.8 : 0.3} />
+                  )}
+
+                  {/* External oblique: diagonal fibres down-medial */}
+                  {key === "ext-oblique" && (
+                    <g>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#eoFibre)" opacity={isActive ? 1 : 0.5} />
+                      {/* Connective tissue septa */}
+                      <g opacity={isActive ? 0.2 : 0.06}>
+                        {[0, 1, 2].map(i => (
+                          <line key={i} x1={xOff + 5} y1={g.y + 8 + i * 10} x2={xOff + layerW - 5} y2={g.y + 8 + i * 10}
+                            stroke="hsl(0, 0%, 70%)" strokeWidth="0.5" strokeDasharray="2 4" />
+                        ))}
+                      </g>
+                      {/* Fibre direction arrow */}
+                      <g opacity={isActive ? 0.35 : 0.1}>
+                        <path d={`M${xOff + 30},${g.y + 6} L${xOff + 80},${g.y + g.h - 6}`} stroke="hsl(0, 60%, 60%)" strokeWidth="1" fill="none" markerEnd="none" />
+                        <text x={xOff + 55} y={g.y + g.h / 2 - 2} fontSize="4" fill="hsl(0, 55%, 55%)" transform={`rotate(-30, ${xOff + 55}, ${g.y + g.h / 2 - 2})`}>fibres ↘</text>
+                      </g>
+                    </g>
+                  )}
+
+                  {/* Internal oblique: diagonal fibres up-medial */}
+                  {key === "int-oblique" && (
+                    <g>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#ioFibre)" opacity={isActive ? 1 : 0.5} />
+                      {/* Nerve running between IO and TA */}
+                      <g opacity={isActive ? 0.45 : 0.12}>
+                        <path d={`M${xOff + 10},${g.y + g.h - 3} C${xOff + 50},${g.y + g.h - 5} ${xOff + 100},${g.y + g.h - 2} ${xOff + 150},${g.y + g.h - 4}`}
+                          stroke="hsl(50, 70%, 55%)" strokeWidth="1" fill="none" />
+                        <text x={xOff + 80} y={g.y + g.h - 7} fontSize="3.5" fill="hsl(50, 70%, 55%)" textAnchor="middle">Ilioinguinal n. (L1)</text>
+                      </g>
+                      {/* Fibre direction */}
+                      <g opacity={isActive ? 0.35 : 0.1}>
+                        <text x={xOff + 55} y={g.y + g.h / 2 - 2} fontSize="4" fill="hsl(210, 55%, 52%)" transform={`rotate(30, ${xOff + 55}, ${g.y + g.h / 2 - 2})`}>fibres ↗</text>
+                      </g>
+                    </g>
+                  )}
+
+                  {/* TAP plane: nerve cross-sections + fascial shimmer */}
+                  {isTAP && (
+                    <g>
+                      {/* Nerve cross-sections - realistic circles with myelin */}
+                      {[18, 40, 62, 84, 106, 128, 150, 172].map((nx, i) => (
+                        <g key={i} opacity={isActive ? 0.9 : 0.45}>
+                          <circle cx={xOff + nx} cy={g.y + g.h / 2} r="3.5" fill="hsl(45, 80%, 85%)" stroke="hsl(45, 70%, 45%)" strokeWidth="0.75" />
+                          <circle cx={xOff + nx} cy={g.y + g.h / 2} r="1.8" fill="hsl(45, 90%, 50%)" opacity="0.6" />
+                          <circle cx={xOff + nx} cy={g.y + g.h / 2} r="0.8" fill="hsl(0, 0%, 30%)" opacity="0.5" />
                         </g>
+                      ))}
+                      <text x={xOff + layerW / 2} y={g.y - 2} fontSize="4.5" textAnchor="middle" fill="hsl(45, 90%, 50%)" fontWeight="bold" opacity={isActive ? 1 : 0.6}>T6–L1 intercostal nerves</text>
+                    </g>
+                  )}
+
+                  {/* Transversus: horizontal fibres */}
+                  {key === "transversus" && (
+                    <g>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#taFibre)" opacity={isActive ? 1 : 0.5} />
+                      <g opacity={isActive ? 0.35 : 0.1}>
+                        <text x={xOff + layerW / 2} y={g.y + g.h / 2 + 1} fontSize="4" fill="hsl(160, 50%, 48%)" textAnchor="middle">fibres →</text>
                       </g>
-                    )}
-  
-                    {/* Transversalis: thin fascial line */}
-                    {key === "transversalis" && (
-                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fasciaTex)" opacity={isActive ? 0.7 : 0.25} />
-                    )}
-  
-                    {/* Extraperitoneal fat with vessels */}
-                    {key === "extraperitoneal" && (
-                      <g opacity={isActive ? 0.6 : 0.2}>
-                        <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fatTex)" />
-                        {/* Inferior epigastric artery */}
-                        <path d={`M${xOff + 45},${g.y + 2} C${xOff + 55},${g.y + 6} ${xOff + 65},${g.y + 8} ${xOff + 80},${g.y + 5}`}
-                          stroke="hsl(0, 60%, 50%)" strokeWidth="1" fill="none" opacity="0.5" />
-                        <text x={xOff + 85} y={g.y + 7} fontSize="3" fill="hsl(0, 60%, 50%)" opacity="0.5">IEA</text>
-                        {/* Companion vein */}
-                        <path d={`M${xOff + 47},${g.y + 4} C${xOff + 57},${g.y + 8} ${xOff + 67},${g.y + 10} ${xOff + 82},${g.y + 7}`}
-                          stroke="hsl(220, 50%, 50%)" strokeWidth="0.5" fill="none" opacity="0.4" />
+                    </g>
+                  )}
+
+                  {/* Transversalis: thin fascial line */}
+                  {key === "transversalis" && (
+                    <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fasciaTex)" opacity={isActive ? 0.7 : 0.25} />
+                  )}
+
+                  {/* Extraperitoneal fat with vessels */}
+                  {key === "extraperitoneal" && (
+                    <g opacity={isActive ? 0.6 : 0.2}>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fatTex)" />
+                      {/* Inferior epigastric artery */}
+                      <path d={`M${xOff + 45},${g.y + 2} C${xOff + 55},${g.y + 6} ${xOff + 65},${g.y + 8} ${xOff + 80},${g.y + 5}`}
+                        stroke="hsl(0, 60%, 50%)" strokeWidth="1" fill="none" opacity="0.5" />
+                      <text x={xOff + 85} y={g.y + 7} fontSize="3" fill="hsl(0, 60%, 50%)" opacity="0.5">IEA</text>
+                      {/* Companion vein */}
+                      <path d={`M${xOff + 47},${g.y + 4} C${xOff + 57},${g.y + 8} ${xOff + 67},${g.y + 10} ${xOff + 82},${g.y + 7}`}
+                        stroke="hsl(220, 50%, 50%)" strokeWidth="0.5" fill="none" opacity="0.4" />
+                    </g>
+                  )}
+
+                  {/* Peritoneum: glistening membrane effect */}
+                  {key === "peritoneum" && (
+                    <g>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} rx={1} fill="url(#peritonealGrad)" />
+                      {/* Mesothelial cell layer suggestion */}
+                      <g opacity={isActive ? 0.25 : 0.08}>
+                        {Array.from({ length: 20 }).map((_, i) => (
+                          <circle key={i} cx={xOff + 8 + i * 9} cy={g.y + 3} r="0.8" fill="hsl(280, 40%, 55%)" />
+                        ))}
                       </g>
-                    )}
-  
-                    {/* Peritoneum: glistening membrane effect */}
-                    {key === "peritoneum" && (
-                      <g>
-                        <rect x={xOff} y={g.y} width={layerW} height={g.h} rx={1} fill="url(#peritonealGrad)" />
-                        {/* Mesothelial cell layer suggestion */}
-                        <g opacity={isActive ? 0.25 : 0.08}>
-                          {Array.from({ length: 20 }).map((_, i) => (
-                            <circle key={i} cx={xOff + 8 + i * 9} cy={g.y + 3} r="0.8" fill="hsl(280, 40%, 55%)" />
-                          ))}
-                        </g>
-                        {/* Peritoneal cavity label */}
-                        <g opacity={isActive ? 0.4 : 0.15}>
-                          <text x={xOff + layerW / 2} y={g.y + g.h + 8} fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontStyle="italic">← Peritoneal cavity →</text>
-                        </g>
+                      {/* Peritoneal cavity label */}
+                      <g opacity={isActive ? 0.4 : 0.15}>
+                        <text x={xOff + layerW / 2} y={g.y + g.h + 8} fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontStyle="italic">← Peritoneal cavity →</text>
                       </g>
-                    )}
-  
-                    {/* Layer label */}
-                    <text
-                      x={xOff + layerW + 8}
-                      y={g.y + g.h / 2 + 3}
-                      fontSize={isTAP ? "5.5" : "6"}
-                      fill={isActive ? l.color : "hsl(var(--muted-foreground))"}
-                      fontWeight={isActive || isTAP ? "bold" : "normal"}
-                      className="select-none"
-                    >
-                      {l.label}
-                    </text>
-                  </g>
-    </DiagramFigure>
+                    </g>
+                  )}
+
+                  {/* Layer label */}
+                  <text
+                    x={xOff + layerW + 8}
+                    y={g.y + g.h / 2 + 3}
+                    fontSize={isTAP ? "5.5" : "6"}
+                    fill={isActive ? l.color : "hsl(var(--muted-foreground))"}
+                    fontWeight={isActive || isTAP ? "bold" : "normal"}
+                    className="select-none"
+                  >
+                    {l.label}
+                  </text>
+                </g>
   );
             })}
 

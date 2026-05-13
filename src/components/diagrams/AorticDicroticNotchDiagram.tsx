@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Pause, Play, RotateCcw } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated aortic pressure waveform that highlights the dichrotic notch as
@@ -315,87 +314,81 @@ const AorticDicroticNotchDiagram = () => {
               augD += i === 0 ? `M ${px.toFixed(2)} ${py.toFixed(2)}` : ` L ${px.toFixed(2)} ${py.toFixed(2)}`;
             }
             return (
-    <DiagramFigure
-      id="aortic-dicrotic-notch-diagram"
-      title="Aortic dicrotic notch"
-      description="Auto-generated wrapper for the Aortic dicrotic notch anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g>
-                  <rect
-                    x={inflateX}
-                    y={PAD_T}
-                    width={deflateX - inflateX}
-                    height={PLOT_H}
-                    fill="hsl(var(--accent) / 0.08)"
-                  />
-                  <path
-                    d={augD}
-                    fill="none"
-                    stroke="hsl(var(--accent))"
-                    strokeWidth={2}
-                    strokeDasharray="5 3"
-                    opacity={0.9}
-                  />
-                  <line
-                    x1={inflateX}
-                    x2={inflateX}
-                    y1={PAD_T + 4}
-                    y2={PAD_T + PLOT_H}
-                    stroke="hsl(var(--accent))"
-                    strokeWidth={1.5}
-                  />
-                  <polygon
-                    points={`${inflateX - 5},${PAD_T + 2} ${inflateX + 5},${PAD_T + 2} ${inflateX},${PAD_T + 10}`}
-                    fill="hsl(var(--accent))"
-                  />
-                  <text x={inflateX + 6} y={PAD_T + 18} fontSize={10} fontWeight={600} fill="hsl(var(--accent))">
-                    ↑ INFLATE
-                  </text>
-                  <text x={inflateX + 6} y={PAD_T + 30} fontSize={9} fill="hsl(var(--muted-foreground))">
-                    at notch → ↑ coronary perfusion
-                  </text>
-                  <line
-                    x1={deflateX}
-                    x2={deflateX}
-                    y1={PAD_T + 4}
-                    y2={PAD_T + PLOT_H}
-                    stroke="hsl(var(--accent))"
-                    strokeWidth={1.5}
-                  />
-                  <polygon
-                    points={`${deflateX - 5},${PAD_T + 2} ${deflateX + 5},${PAD_T + 2} ${deflateX},${PAD_T + 10}`}
-                    fill="hsl(var(--accent))"
-                  />
-                  <text x={deflateX - 6} y={PAD_T + 18} fontSize={10} fontWeight={600} fill="hsl(var(--accent))" textAnchor="end">
-                    ↓ DEFLATE
-                  </text>
-                  <text x={deflateX - 6} y={PAD_T + 30} fontSize={9} fill="hsl(var(--muted-foreground))" textAnchor="end">
-                    pre-systole → ↓ afterload
-                  </text>
-                  {balloonActive && (
-                    <g>
-                      <circle
-                        cx={cursorX}
-                        cy={PAD_T + PLOT_H - 14}
-                        r={7}
-                        fill="hsl(var(--accent))"
-                        opacity={0.9}
-                        className="animate-pulse"
-                      />
-                      <text
-                        x={cursorX}
-                        y={PAD_T + PLOT_H - 22}
-                        textAnchor="middle"
-                        fontSize={9}
-                        fontWeight={600}
-                        fill="hsl(var(--accent))"
-                      >
-                        balloon inflated
-                      </text>
-                    </g>
-                  )}
-                </g>
-    </DiagramFigure>
+                  <g>
+                <rect
+                  x={inflateX}
+                  y={PAD_T}
+                  width={deflateX - inflateX}
+                  height={PLOT_H}
+                  fill="hsl(var(--accent) / 0.08)"
+                />
+                <path
+                  d={augD}
+                  fill="none"
+                  stroke="hsl(var(--accent))"
+                  strokeWidth={2}
+                  strokeDasharray="5 3"
+                  opacity={0.9}
+                />
+                <line
+                  x1={inflateX}
+                  x2={inflateX}
+                  y1={PAD_T + 4}
+                  y2={PAD_T + PLOT_H}
+                  stroke="hsl(var(--accent))"
+                  strokeWidth={1.5}
+                />
+                <polygon
+                  points={`${inflateX - 5},${PAD_T + 2} ${inflateX + 5},${PAD_T + 2} ${inflateX},${PAD_T + 10}`}
+                  fill="hsl(var(--accent))"
+                />
+                <text x={inflateX + 6} y={PAD_T + 18} fontSize={10} fontWeight={600} fill="hsl(var(--accent))">
+                  ↑ INFLATE
+                </text>
+                <text x={inflateX + 6} y={PAD_T + 30} fontSize={9} fill="hsl(var(--muted-foreground))">
+                  at notch → ↑ coronary perfusion
+                </text>
+                <line
+                  x1={deflateX}
+                  x2={deflateX}
+                  y1={PAD_T + 4}
+                  y2={PAD_T + PLOT_H}
+                  stroke="hsl(var(--accent))"
+                  strokeWidth={1.5}
+                />
+                <polygon
+                  points={`${deflateX - 5},${PAD_T + 2} ${deflateX + 5},${PAD_T + 2} ${deflateX},${PAD_T + 10}`}
+                  fill="hsl(var(--accent))"
+                />
+                <text x={deflateX - 6} y={PAD_T + 18} fontSize={10} fontWeight={600} fill="hsl(var(--accent))" textAnchor="end">
+                  ↓ DEFLATE
+                </text>
+                <text x={deflateX - 6} y={PAD_T + 30} fontSize={9} fill="hsl(var(--muted-foreground))" textAnchor="end">
+                  pre-systole → ↓ afterload
+                </text>
+                {balloonActive && (
+                  <g>
+                    <circle
+                      cx={cursorX}
+                      cy={PAD_T + PLOT_H - 14}
+                      r={7}
+                      fill="hsl(var(--accent))"
+                      opacity={0.9}
+                      className="animate-pulse"
+                    />
+                    <text
+                      x={cursorX}
+                      y={PAD_T + PLOT_H - 22}
+                      textAnchor="middle"
+                      fontSize={9}
+                      fontWeight={600}
+                      fill="hsl(var(--accent))"
+                    >
+                      balloon inflated
+                    </text>
+                  </g>
+                )}
+              </g>
   );
           })()}
 

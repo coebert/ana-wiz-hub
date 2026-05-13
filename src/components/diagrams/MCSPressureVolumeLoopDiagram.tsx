@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type State = "baseline" | "shock" | "iabp" | "impella" | "ecmo" | "lvad";
 
@@ -475,26 +474,20 @@ export const MCSPressureVolumeLoopDiagram = () => {
               const isHL = highlight === s;
               const swPct = baselineSW > 0 ? Math.round((SW / baselineSW) * 100) : 0;
               return (
-    <DiagramFigure
-      id="mcs-pressure-volume-loop-diagram"
-      title="Mcs pressure volume loop"
-      description="Auto-generated wrapper for the Mcs pressure volume loop anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <tr key={s} className={isHL ? "bg-muted/40" : ""}>
-                    <td className="p-2 font-medium text-foreground flex items-center gap-1.5">
-                      <span className="inline-block w-2 h-2 rounded-sm" style={{ backgroundColor: p.color }} />
-                      {p.shortLabel}
-                    </td>
-                    <td className="p-2 text-right">{p.EDV}</td>
-                    <td className="p-2 text-right">{p.ESV}</td>
-                    <td className="p-2 text-right">{SV}</td>
-                    <td className="p-2 text-right">{EF}%</td>
-                    <td className="p-2 text-right">{p.Pmax}</td>
-                    <td className="p-2 text-right">{Math.round(SW)} <span className="text-[10px] text-muted-foreground">({swPct}%)</span></td>
-                    <td className="p-2 text-right">{Math.round(PE)}</td>
-                    <td className="p-2 text-right font-semibold text-foreground">{Math.round(PVA)}</td>
-                  </tr>
-    </DiagramFigure>
+                    <tr key={s} className={isHL ? "bg-muted/40" : ""}>
+                  <td className="p-2 font-medium text-foreground flex items-center gap-1.5">
+                    <span className="inline-block w-2 h-2 rounded-sm" style={{ backgroundColor: p.color }} />
+                    {p.shortLabel}
+                  </td>
+                  <td className="p-2 text-right">{p.EDV}</td>
+                  <td className="p-2 text-right">{p.ESV}</td>
+                  <td className="p-2 text-right">{SV}</td>
+                  <td className="p-2 text-right">{EF}%</td>
+                  <td className="p-2 text-right">{p.Pmax}</td>
+                  <td className="p-2 text-right">{Math.round(SW)} <span className="text-[10px] text-muted-foreground">({swPct}%)</span></td>
+                  <td className="p-2 text-right">{Math.round(PE)}</td>
+                  <td className="p-2 text-right font-semibold text-foreground">{Math.round(PVA)}</td>
+                </tr>
   );
             })}
           </tbody>

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { PlexusDetailPanel, ROOT_COLORS } from "./plexusShared";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type LevelKey = "roots" | "trunks" | "divisions" | "cords" | "branches";
 
@@ -404,46 +403,40 @@ const BrachialPlexusDiagram = () => {
             {showBlockSites && blockSites.map((bs) => {
               const isBlockActive = selectedBlock === bs.id;
               return (
-    <DiagramFigure
-      id="brachial-plexus-diagram"
-      title="Brachial plexus"
-      description="Auto-generated wrapper for the Brachial plexus anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <g key={bs.id} className="cursor-pointer" onClick={() => { setSelectedBlock(isBlockActive ? null : bs.id); setSelected(""); }}>
-                    {/* Pulsing target ring */}
-                    <circle cx={bs.x} cy={bs.y} r={isBlockActive ? 18 : 14}
-                      fill="none" stroke="hsl(140, 60%, 45%)" strokeWidth={isBlockActive ? 2 : 1}
-                      opacity={isBlockActive ? 0.6 : 0.3}
-                      strokeDasharray="4 2"
-                      className={isBlockActive ? "animate-pulse" : ""}
-                    />
-                    {/* Inner target */}
-                    <circle cx={bs.x} cy={bs.y} r={isBlockActive ? 6 : 4}
-                      fill="hsl(140, 60%, 45%)" fillOpacity={isBlockActive ? 0.7 : 0.4}
-                      stroke="hsl(140, 60%, 45%)" strokeWidth={isBlockActive ? 2 : 1}
-                    />
-                    {/* Crosshair lines */}
-                    <line x1={bs.x - 10} y1={bs.y} x2={bs.x - 5} y2={bs.y} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
-                    <line x1={bs.x + 5} y1={bs.y} x2={bs.x + 10} y2={bs.y} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
-                    <line x1={bs.x} y1={bs.y - 10} x2={bs.x} y2={bs.y - 5} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
-                    <line x1={bs.x} y1={bs.y + 5} x2={bs.x} y2={bs.y + 10} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
-  
-                    {/* Needle line */}
-                    {isBlockActive && (
-                      <g className="animate-fade-in">
-                        <line x1={bs.x + 55} y1={bs.y - 20} x2={bs.x + 8} y2={bs.y - 2}
-                          stroke="hsl(140, 60%, 45%)" strokeWidth="1.5" markerEnd="url(#needleTip)" opacity="0.6" />
-                        <text x={bs.x + 58} y={bs.y - 22} fontSize="5" fill="hsl(140, 60%, 45%)" opacity="0.7">needle</text>
-                      </g>
-                    )}
-  
-                    {/* Label */}
-                    <text x={bs.x} y={bs.y - (isBlockActive ? 22 : 17)} textAnchor="middle"
-                      fontSize="6" fill="hsl(140, 60%, 45%)" fontWeight="bold" opacity={isBlockActive ? 1 : 0.7}>
-                      🎯 {bs.label}
-                    </text>
-                  </g>
-    </DiagramFigure>
+                    <g key={bs.id} className="cursor-pointer" onClick={() => { setSelectedBlock(isBlockActive ? null : bs.id); setSelected(""); }}>
+                  {/* Pulsing target ring */}
+                  <circle cx={bs.x} cy={bs.y} r={isBlockActive ? 18 : 14}
+                    fill="none" stroke="hsl(140, 60%, 45%)" strokeWidth={isBlockActive ? 2 : 1}
+                    opacity={isBlockActive ? 0.6 : 0.3}
+                    strokeDasharray="4 2"
+                    className={isBlockActive ? "animate-pulse" : ""}
+                  />
+                  {/* Inner target */}
+                  <circle cx={bs.x} cy={bs.y} r={isBlockActive ? 6 : 4}
+                    fill="hsl(140, 60%, 45%)" fillOpacity={isBlockActive ? 0.7 : 0.4}
+                    stroke="hsl(140, 60%, 45%)" strokeWidth={isBlockActive ? 2 : 1}
+                  />
+                  {/* Crosshair lines */}
+                  <line x1={bs.x - 10} y1={bs.y} x2={bs.x - 5} y2={bs.y} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+                  <line x1={bs.x + 5} y1={bs.y} x2={bs.x + 10} y2={bs.y} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+                  <line x1={bs.x} y1={bs.y - 10} x2={bs.x} y2={bs.y - 5} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+                  <line x1={bs.x} y1={bs.y + 5} x2={bs.x} y2={bs.y + 10} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+
+                  {/* Needle line */}
+                  {isBlockActive && (
+                    <g className="animate-fade-in">
+                      <line x1={bs.x + 55} y1={bs.y - 20} x2={bs.x + 8} y2={bs.y - 2}
+                        stroke="hsl(140, 60%, 45%)" strokeWidth="1.5" markerEnd="url(#needleTip)" opacity="0.6" />
+                      <text x={bs.x + 58} y={bs.y - 22} fontSize="5" fill="hsl(140, 60%, 45%)" opacity="0.7">needle</text>
+                    </g>
+                  )}
+
+                  {/* Label */}
+                  <text x={bs.x} y={bs.y - (isBlockActive ? 22 : 17)} textAnchor="middle"
+                    fontSize="6" fill="hsl(140, 60%, 45%)" fontWeight="bold" opacity={isBlockActive ? 1 : 0.7}>
+                    🎯 {bs.label}
+                  </text>
+                </g>
   );
             })}
           </svg>

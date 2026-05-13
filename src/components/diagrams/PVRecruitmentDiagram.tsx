@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Severity = "normal" | "mild" | "severe";
 
@@ -226,27 +225,21 @@ const PVRecruitmentDiagram = () => {
       {peepSelected !== null && (() => {
         const status = peepSelected < prof.lip ? "below" : peepSelected > prof.uip ? "above" : peepSelected <= optPeepHigh ? "optimal" : "high";
         return (
-    <DiagramFigure
-      id="pv-recruitment-diagram"
-      title="Pv recruitment"
-      description="Auto-generated wrapper for the Pv recruitment anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                <div className={`rounded-lg p-3 border ${
-              status === "below" ? "bg-destructive/5 border-destructive/30" :
-              status === "above" ? "bg-destructive/5 border-destructive/30" :
-              status === "high" ? "bg-yellow-500/5 border-yellow-500/30" :
-              "bg-green-500/5 border-green-500/30"
+              <div className={`rounded-lg p-3 border ${
+            status === "below" ? "bg-destructive/5 border-destructive/30" :
+            status === "above" ? "bg-destructive/5 border-destructive/30" :
+            status === "high" ? "bg-yellow-500/5 border-yellow-500/30" :
+            "bg-green-500/5 border-green-500/30"
+          }`}>
+            <p className={`text-xs font-semibold ${
+              status === "optimal" ? "text-green-600" : status === "high" ? "text-yellow-600" : "text-destructive"
             }`}>
-              <p className={`text-xs font-semibold ${
-                status === "optimal" ? "text-green-600" : status === "high" ? "text-yellow-600" : "text-destructive"
-              }`}>
-                {status === "below" && `PEEP ${peepSelected} < LIP (${prof.lip}): Below inflection — cyclic recruitment/derecruitment → atelectrauma`}
-                {status === "optimal" && `PEEP ${peepSelected}: Above LIP, within optimal zone — alveoli recruited, minimal overdistension`}
-                {status === "high" && `PEEP ${peepSelected}: Above optimal zone — approaching UIP, monitor for overdistension`}
-                {status === "above" && `PEEP ${peepSelected} > UIP (${prof.uip}): Overdistension — flat part of curve, minimal recruitment, ↑ dead space`}
-              </p>
-            </div>
-    </DiagramFigure>
+              {status === "below" && `PEEP ${peepSelected} < LIP (${prof.lip}): Below inflection — cyclic recruitment/derecruitment → atelectrauma`}
+              {status === "optimal" && `PEEP ${peepSelected}: Above LIP, within optimal zone — alveoli recruited, minimal overdistension`}
+              {status === "high" && `PEEP ${peepSelected}: Above optimal zone — approaching UIP, monitor for overdistension`}
+              {status === "above" && `PEEP ${peepSelected} > UIP (${prof.uip}): Overdistension — flat part of curve, minimal recruitment, ↑ dead space`}
+            </p>
+          </div>
   );
       })()}
 

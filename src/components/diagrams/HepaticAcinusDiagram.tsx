@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface ZoneInfo {
   id: number;
@@ -174,21 +173,15 @@ const HepaticAcinusDiagram = () => {
               const x2 = cx + Math.sin(rad) * 25;
               const y2 = cy - Math.cos(rad) * 25;
               return (
-    <DiagramFigure
-      id="hepatic-acinus-diagram"
-      title="Hepatic acinus"
-      description="Auto-generated wrapper for the Hepatic acinus anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <line
-                    key={angle}
-                    x1={x1} y1={y1} x2={x2} y2={y2}
-                    stroke="hsl(var(--muted-foreground))"
-                    strokeWidth="1"
-                    strokeDasharray="4,3"
-                    opacity={0.3}
-                    markerEnd="url(#arrowhead)"
-                  />
-    </DiagramFigure>
+                    <line
+                  key={angle}
+                  x1={x1} y1={y1} x2={x2} y2={y2}
+                  stroke="hsl(var(--muted-foreground))"
+                  strokeWidth="1"
+                  strokeDasharray="4,3"
+                  opacity={0.3}
+                  markerEnd="url(#arrowhead)"
+                />
   );
             })}
           </svg>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type NodeId = "angiotensinogen" | "renin" | "ang1" | "ace" | "ang2" | "at1" | "at2" | "aldosterone" | "adh" | "acei" | "arb" | "dri" | "mra";
 
@@ -136,46 +135,40 @@ export const RAASCascadeDiagram = () => {
           // Particles for each cascade step
           const stepDur = "3s";
           return (
-    <DiagramFigure
-      id="raas-cascade-diagram"
-      title="Raas cascade"
-      description="Auto-generated wrapper for the Raas cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <g opacity="0.85">
-                {/* Angiotensinogen → ANG I (renin step) */}
-                {!driBlocks && [0, 1, 2].map(i => (
-                  <circle key={`p1-${i}`} r="2.6" fill="hsl(30 60% 50%)">
-                    <animate attributeName="cy" values="48;92" dur={stepDur} begin={`${-i}s`} repeatCount="indefinite" />
-                    <animate attributeName="cx" values={`${cx};${cx}`} dur={stepDur} repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur={stepDur} begin={`${-i}s`} repeatCount="indefinite" />
-                  </circle>
-                ))}
-                {/* ANG I → ANG II (ACE step) */}
-                {!driBlocks && !aceiBlocks && [0, 1, 2].map(i => (
-                  <circle key={`p2-${i}`} r="2.6" fill="hsl(270 50% 55%)">
-                    <animate attributeName="cy" values="132;176" dur={stepDur} begin={`${-i - 0.5}s`} repeatCount="indefinite" />
-                    <animate attributeName="cx" values={`${cx};${cx}`} dur={stepDur} repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur={stepDur} begin={`${-i - 0.5}s`} repeatCount="indefinite" />
-                  </circle>
-                ))}
-                {/* ANG II → AT₁ (downstream effector) */}
-                {!driBlocks && !aceiBlocks && active !== "arb" && [0, 1].map(i => (
-                  <circle key={`p3-${i}`} r="2.4" fill="hsl(0 60% 50%)">
-                    <animateMotion dur={stepDur} begin={`${-i - 1}s`} repeatCount="indefinite"
-                      path="M 280 216 Q 260 235 240 250" />
-                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur={stepDur} begin={`${-i - 1}s`} repeatCount="indefinite" />
-                  </circle>
-                ))}
-                {/* ANG II → AT₂ */}
-                {!driBlocks && !aceiBlocks && [0, 1].map(i => (
-                  <circle key={`p4-${i}`} r="2.4" fill="hsl(210 50% 50%)">
-                    <animateMotion dur={stepDur} begin={`${-i - 1.2}s`} repeatCount="indefinite"
-                      path="M 360 216 Q 410 235 470 252" />
-                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur={stepDur} begin={`${-i - 1.2}s`} repeatCount="indefinite" />
-                  </circle>
-                ))}
-              </g>
-    </DiagramFigure>
+                <g opacity="0.85">
+              {/* Angiotensinogen → ANG I (renin step) */}
+              {!driBlocks && [0, 1, 2].map(i => (
+                <circle key={`p1-${i}`} r="2.6" fill="hsl(30 60% 50%)">
+                  <animate attributeName="cy" values="48;92" dur={stepDur} begin={`${-i}s`} repeatCount="indefinite" />
+                  <animate attributeName="cx" values={`${cx};${cx}`} dur={stepDur} repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur={stepDur} begin={`${-i}s`} repeatCount="indefinite" />
+                </circle>
+              ))}
+              {/* ANG I → ANG II (ACE step) */}
+              {!driBlocks && !aceiBlocks && [0, 1, 2].map(i => (
+                <circle key={`p2-${i}`} r="2.6" fill="hsl(270 50% 55%)">
+                  <animate attributeName="cy" values="132;176" dur={stepDur} begin={`${-i - 0.5}s`} repeatCount="indefinite" />
+                  <animate attributeName="cx" values={`${cx};${cx}`} dur={stepDur} repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur={stepDur} begin={`${-i - 0.5}s`} repeatCount="indefinite" />
+                </circle>
+              ))}
+              {/* ANG II → AT₁ (downstream effector) */}
+              {!driBlocks && !aceiBlocks && active !== "arb" && [0, 1].map(i => (
+                <circle key={`p3-${i}`} r="2.4" fill="hsl(0 60% 50%)">
+                  <animateMotion dur={stepDur} begin={`${-i - 1}s`} repeatCount="indefinite"
+                    path="M 280 216 Q 260 235 240 250" />
+                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur={stepDur} begin={`${-i - 1}s`} repeatCount="indefinite" />
+                </circle>
+              ))}
+              {/* ANG II → AT₂ */}
+              {!driBlocks && !aceiBlocks && [0, 1].map(i => (
+                <circle key={`p4-${i}`} r="2.4" fill="hsl(210 50% 50%)">
+                  <animateMotion dur={stepDur} begin={`${-i - 1.2}s`} repeatCount="indefinite"
+                    path="M 360 216 Q 410 235 470 252" />
+                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur={stepDur} begin={`${-i - 1.2}s`} repeatCount="indefinite" />
+                </circle>
+              ))}
+            </g>
   );
         })()}
         {/* ===== MAIN CASCADE (vertical centre, x = 260..380) ===== */}

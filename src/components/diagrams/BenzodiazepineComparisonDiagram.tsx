@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type DrugKey = "diazepam" | "lorazepam" | "midazolam" | "temazepam";
 
@@ -412,23 +411,17 @@ export const BenzodiazepineComparisonDiagram = () => {
               {DRUGS.map((d) => {
                 const isPick = d.key === scenario.pick;
                 return (
-    <DiagramFigure
-      id="benzodiazepine-comparison-diagram"
-      title="Benzodiazepine comparison"
-      description="Auto-generated wrapper for the Benzodiazepine comparison anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <div
-                      key={d.key}
-                      className={`text-center p-1.5 rounded text-[10px] border ${
-                        isPick
-                          ? "border-primary bg-primary/10 text-foreground font-semibold"
-                          : "border-border bg-secondary/20 text-muted-foreground"
-                      }`}
-                    >
-                      {d.name}
-                      <div className="text-[9px] mt-0.5">{isPick ? "✓ pick" : "alt"}</div>
-                    </div>
-    </DiagramFigure>
+                      <div
+                    key={d.key}
+                    className={`text-center p-1.5 rounded text-[10px] border ${
+                      isPick
+                        ? "border-primary bg-primary/10 text-foreground font-semibold"
+                        : "border-border bg-secondary/20 text-muted-foreground"
+                    }`}
+                  >
+                    {d.name}
+                    <div className="text-[9px] mt-0.5">{isPick ? "✓ pick" : "alt"}</div>
+                  </div>
   );
               })}
             </div>

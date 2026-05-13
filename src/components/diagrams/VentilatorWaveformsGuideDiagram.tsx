@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type WaveformId = "pressure" | "flow" | "volume";
 type PathologyId = string;
@@ -297,39 +296,33 @@ const VentilatorWaveformsGuideDiagram = () => {
           {selectedPathology && (() => {
             const p = pathologies.find((x) => x.id === selectedPathology)!;
             return (
-    <DiagramFigure
-      id="ventilator-waveforms-guide-diagram"
-      title="Ventilator waveforms guide"
-      description="Auto-generated wrapper for the Ventilator waveforms guide anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <div className="animate-fade-in space-y-3">
-                  <div className="bg-background rounded-lg border border-border p-3">
-                    {p.svg}
+                  <div className="animate-fade-in space-y-3">
+                <div className="bg-background rounded-lg border border-border p-3">
+                  {p.svg}
+                </div>
+                <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
+                  <p className="font-bold text-foreground text-sm">{p.name}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{p.description}</p>
+                  <div className="grid gap-2 mt-2 text-xs">
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">Pressure trace: </span>
+                      <span className="text-muted-foreground">{p.pressureSign}</span>
+                    </div>
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">Flow trace: </span>
+                      <span className="text-muted-foreground">{p.flowSign}</span>
+                    </div>
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">Volume trace: </span>
+                      <span className="text-muted-foreground">{p.volumeSign}</span>
+                    </div>
                   </div>
-                  <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
-                    <p className="font-bold text-foreground text-sm">{p.name}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{p.description}</p>
-                    <div className="grid gap-2 mt-2 text-xs">
-                      <div className="p-2 rounded bg-background border border-border">
-                        <span className="font-semibold text-foreground">Pressure trace: </span>
-                        <span className="text-muted-foreground">{p.pressureSign}</span>
-                      </div>
-                      <div className="p-2 rounded bg-background border border-border">
-                        <span className="font-semibold text-foreground">Flow trace: </span>
-                        <span className="text-muted-foreground">{p.flowSign}</span>
-                      </div>
-                      <div className="p-2 rounded bg-background border border-border">
-                        <span className="font-semibold text-foreground">Volume trace: </span>
-                        <span className="text-muted-foreground">{p.volumeSign}</span>
-                      </div>
-                    </div>
-                    <div className="mt-2 p-2 rounded bg-primary/10 border border-primary/20">
-                      <span className="font-semibold text-foreground text-xs">Management: </span>
-                      <span className="text-xs text-muted-foreground">{p.management}</span>
-                    </div>
+                  <div className="mt-2 p-2 rounded bg-primary/10 border border-primary/20">
+                    <span className="font-semibold text-foreground text-xs">Management: </span>
+                    <span className="text-xs text-muted-foreground">{p.management}</span>
                   </div>
                 </div>
-    </DiagramFigure>
+              </div>
   );
           })()}
 

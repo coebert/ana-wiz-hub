@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ViewMode = "overview" | "inspiration" | "expiration" | "setup";
 
@@ -71,23 +70,17 @@ const SedacondaDiagram = () => {
         {viewOrder.map((view) => {
           const isActive = activeView === view;
           return (
-    <DiagramFigure
-      id="sedaconda-diagram"
-      title="Sedaconda"
-      description="Auto-generated wrapper for the Sedaconda anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <button
-                key={view}
-                onClick={() => setActiveView(view)}
-                className={`p-2 rounded-lg border text-xs font-medium transition-all duration-200 ${
-                  isActive
-                    ? "border-primary bg-primary/10 text-foreground shadow-sm"
-                    : "border-border bg-secondary/20 text-muted-foreground hover:bg-secondary/40"
-                }`}
-              >
-                {views[view].label}
-              </button>
-    </DiagramFigure>
+                <button
+              key={view}
+              onClick={() => setActiveView(view)}
+              className={`p-2 rounded-lg border text-xs font-medium transition-all duration-200 ${
+                isActive
+                  ? "border-primary bg-primary/10 text-foreground shadow-sm"
+                  : "border-border bg-secondary/20 text-muted-foreground hover:bg-secondary/40"
+              }`}
+            >
+              {views[view].label}
+            </button>
   );
         })}
       </div>

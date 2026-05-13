@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const FluidResponsivenessDiagram = () => {
   const [selectedPredictor, setSelectedPredictor] = useState<string | null>(null);
@@ -172,34 +171,28 @@ const FluidResponsivenessDiagram = () => {
           {selectedDynamic && (() => {
             const p = dynamicPredictors.find((x) => x.id === selectedDynamic)!;
             return (
-    <DiagramFigure
-      id="fluid-responsiveness-diagram"
-      title="Fluid responsiveness"
-      description="Auto-generated wrapper for the Fluid responsiveness anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <div className="animate-fade-in space-y-3">
-                  <div className="bg-background rounded-lg border border-border p-3">{p.svg}</div>
-                  <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
-                    <p className="font-bold text-foreground text-sm">{p.name}</p>
-                    <p className="text-xs text-primary font-semibold mt-1">{p.threshold}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{p.mechanism}</p>
-                    <div className="grid gap-2 mt-2 text-xs">
-                      <div className="p-2 rounded bg-background border border-border">
-                        <span className="font-semibold text-foreground">Requirements: </span>
-                        <span className="text-muted-foreground">{p.requirements}</span>
-                      </div>
-                      <div className="p-2 rounded bg-background border border-border">
-                        <span className="font-semibold text-foreground">Limitations: </span>
-                        <span className="text-muted-foreground">{p.limitations}</span>
-                      </div>
-                      <div className="p-2 rounded bg-background border border-border">
-                        <span className="font-semibold text-foreground">Evidence: </span>
-                        <span className="text-muted-foreground">{p.evidence}</span>
-                      </div>
+                  <div className="animate-fade-in space-y-3">
+                <div className="bg-background rounded-lg border border-border p-3">{p.svg}</div>
+                <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
+                  <p className="font-bold text-foreground text-sm">{p.name}</p>
+                  <p className="text-xs text-primary font-semibold mt-1">{p.threshold}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{p.mechanism}</p>
+                  <div className="grid gap-2 mt-2 text-xs">
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">Requirements: </span>
+                      <span className="text-muted-foreground">{p.requirements}</span>
+                    </div>
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">Limitations: </span>
+                      <span className="text-muted-foreground">{p.limitations}</span>
+                    </div>
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">Evidence: </span>
+                      <span className="text-muted-foreground">{p.evidence}</span>
                     </div>
                   </div>
                 </div>
-    </DiagramFigure>
+              </div>
   );
           })()}
 

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Tab = "locus" | "sleep" | "biphasic" | "dosing" | "vsClonidine";
 
@@ -246,16 +245,10 @@ export const DexmedetomidineDiagram = () => {
             {[0, 10, 20, 30, 60, 90, 120].map((min) => {
               const x = 50 + (min / 120) * 570;
               return (
-    <DiagramFigure
-      id="dexmedetomidine-diagram"
-      title="Dexmedetomidine"
-      description="Auto-generated wrapper for the Dexmedetomidine anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <g key={min}>
-                    <line x1={x} y1={250} x2={x} y2={254} stroke="hsl(215 25% 50%)" strokeWidth="1" />
-                    <text x={x} y={266} textAnchor="middle" fontSize="9" className="fill-muted-foreground">{min}</text>
-                  </g>
-    </DiagramFigure>
+                    <g key={min}>
+                  <line x1={x} y1={250} x2={x} y2={254} stroke="hsl(215 25% 50%)" strokeWidth="1" />
+                  <text x={x} y={266} textAnchor="middle" fontSize="9" className="fill-muted-foreground">{min}</text>
+                </g>
   );
             })}
 

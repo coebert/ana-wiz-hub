@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type CellType = "ventricular" | "pacemaker";
 
@@ -282,45 +281,39 @@ export const IonChannelTimelineDiagram = () => {
               const isActive = activeChannel?.id === ch.id;
               const isDimmed = (hover || selected) && !isActive;
               return (
-    <DiagramFigure
-      id="ion-channel-timeline-diagram"
-      title="Ion channel timeline"
-      description="Auto-generated wrapper for the Ion channel timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <g
-                    key={ch.id}
-                    transform={`translate(50, ${y0})`}
-                    className="cursor-pointer"
-                    onMouseEnter={() => setHover(ch.id)}
-                    onMouseLeave={() => setHover(null)}
-                    onClick={() => setSelected(ch.id)}
-                    opacity={isDimmed ? 0.35 : 1}
-                  >
-                    {/* Lane background */}
-                    <rect x="0" y="0" width={W} height={traceH} fill={isActive ? ch.color : "hsl(var(--muted))"} opacity={isActive ? 0.08 : 0.15} rx="2" />
-                    {/* Zero line */}
-                    <line x1="0" y1={traceH / 2} x2={W} y2={traceH / 2} stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" />
-                    {/* Trace */}
-                    <path
-                      d={buildTrace(points, W, traceH, ch.direction)}
-                      fill={ch.color}
-                      fillOpacity={isActive ? 0.55 : 0.3}
-                      stroke={ch.color}
-                      strokeWidth={isActive ? 1.6 : 1}
-                    />
-                    {/* Label (left) */}
-                    <g transform={`translate(-46, ${traceH / 2})`}>
-                      <text x="0" y="-2" fontSize="9" fill={ch.color} fontWeight="700">{ch.name}</text>
-                      <text x="0" y="9" fontSize="7" fill="hsl(var(--muted-foreground))">{ch.ion}</text>
-                    </g>
-                    {/* Direction arrow (right) */}
-                    <g transform={`translate(${W + 4}, ${traceH / 2})`}>
-                      <text x="0" y="3" fontSize="9" fill={ch.color} fontWeight="700">
-                        {ch.direction === "inward" ? "↓" : "↑"}
-                      </text>
-                    </g>
+                    <g
+                  key={ch.id}
+                  transform={`translate(50, ${y0})`}
+                  className="cursor-pointer"
+                  onMouseEnter={() => setHover(ch.id)}
+                  onMouseLeave={() => setHover(null)}
+                  onClick={() => setSelected(ch.id)}
+                  opacity={isDimmed ? 0.35 : 1}
+                >
+                  {/* Lane background */}
+                  <rect x="0" y="0" width={W} height={traceH} fill={isActive ? ch.color : "hsl(var(--muted))"} opacity={isActive ? 0.08 : 0.15} rx="2" />
+                  {/* Zero line */}
+                  <line x1="0" y1={traceH / 2} x2={W} y2={traceH / 2} stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" />
+                  {/* Trace */}
+                  <path
+                    d={buildTrace(points, W, traceH, ch.direction)}
+                    fill={ch.color}
+                    fillOpacity={isActive ? 0.55 : 0.3}
+                    stroke={ch.color}
+                    strokeWidth={isActive ? 1.6 : 1}
+                  />
+                  {/* Label (left) */}
+                  <g transform={`translate(-46, ${traceH / 2})`}>
+                    <text x="0" y="-2" fontSize="9" fill={ch.color} fontWeight="700">{ch.name}</text>
+                    <text x="0" y="9" fontSize="7" fill="hsl(var(--muted-foreground))">{ch.ion}</text>
                   </g>
-    </DiagramFigure>
+                  {/* Direction arrow (right) */}
+                  <g transform={`translate(${W + 4}, ${traceH / 2})`}>
+                    <text x="0" y="3" fontSize="9" fill={ch.color} fontWeight="700">
+                      {ch.direction === "inward" ? "↓" : "↑"}
+                    </text>
+                  </g>
+                </g>
   );
             })}
 

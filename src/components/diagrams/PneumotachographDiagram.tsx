@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, Pause, RotateCcw } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Variant = "fleisch" | "lilly";
 
@@ -221,30 +220,24 @@ const PneumotachographDiagram = () => {
             // Higher pressure side is "upstream" of the resistance, lower side "downstream"
             const leftHigh = flow > 0;
             return (
-    <DiagramFigure
-      id="pneumotachograph-diagram"
-      title="Pneumotachograph"
-      description="Auto-generated wrapper for the Pneumotachograph graphical relationship. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g>
-                  <circle
-                    cx="140"
-                    cy="80"
-                    r={leftHigh ? r : r * 0.4}
-                    fill={leftHigh ? "hsl(0 70% 55%)" : "hsl(210 60% 55%)"}
-                    fillOpacity="0.5"
-                  />
-                  <circle
-                    cx="260"
-                    cy="80"
-                    r={leftHigh ? r * 0.4 : r}
-                    fill={leftHigh ? "hsl(210 60% 55%)" : "hsl(0 70% 55%)"}
-                    fillOpacity="0.5"
-                  />
-                  <text x="140" y="95" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">P₁</text>
-                  <text x="260" y="95" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">P₂</text>
-                </g>
-    </DiagramFigure>
+                  <g>
+                <circle
+                  cx="140"
+                  cy="80"
+                  r={leftHigh ? r : r * 0.4}
+                  fill={leftHigh ? "hsl(0 70% 55%)" : "hsl(210 60% 55%)"}
+                  fillOpacity="0.5"
+                />
+                <circle
+                  cx="260"
+                  cy="80"
+                  r={leftHigh ? r * 0.4 : r}
+                  fill={leftHigh ? "hsl(210 60% 55%)" : "hsl(0 70% 55%)"}
+                  fillOpacity="0.5"
+                />
+                <text x="140" y="95" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">P₁</text>
+                <text x="260" y="95" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">P₂</text>
+              </g>
   );
           })()}
 

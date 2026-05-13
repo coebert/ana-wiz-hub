@@ -821,7 +821,6 @@ const FrameCard = ({
  *    forehead/malar bone bears the load.
  */
 import proneFaceProtectorImg from "@/assets/positioning/prone-face-protector.jpg";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 export const ProneFaceProtectionDiagram = () => {
   return (
@@ -2201,13 +2200,7 @@ const AnimatedArm = ({
   }, [sx, sy, ex, ey, wx, wy]);
 
   return (
-    <DiagramFigure
-      id="patient-positioning-diagrams"
-      title="Patient positioning diagrams"
-      description="Auto-generated wrapper for the Patient positioning diagrams anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <Arm sx={coords.sx} sy={coords.sy} ex={coords.ex} ey={coords.ey} wx={coords.wx} wy={coords.wy}
-        idPrefix="pf" upperW={13} foreW={11} handLen={12} gownSleeve />
-    </DiagramFigure>
+        <Arm sx={coords.sx} sy={coords.sy} ex={coords.ex} ey={coords.ey} wx={coords.wx} wy={coords.wy}
+      idPrefix="pf" upperW={13} foreW={11} handLen={12} gownSleeve />
   );
 };

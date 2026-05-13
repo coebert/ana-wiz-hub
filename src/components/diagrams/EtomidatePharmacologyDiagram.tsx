@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Tab = "pathway" | "duration" | "sepsis" | "alternatives";
 
@@ -221,19 +220,13 @@ export const EtomidatePharmacologyDiagram = () => {
               const x = 50 + (hoursPostDose / 48) * 570;
               const y = 250 - (cortisolPct / 100) * 190;
               return (
-    <DiagramFigure
-      id="etomidate-pharmacology-diagram"
-      title="Etomidate pharmacology"
-      description="Auto-generated wrapper for the Etomidate pharmacology anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <g>
-                    <line x1={x} y1={60} x2={x} y2={250} stroke="hsl(0 70% 50%)" strokeWidth="1" strokeDasharray="2 2" />
-                    <circle cx={x} cy={y} r={5} fill="hsl(0 70% 50%)" />
-                    <rect x={x + 8} y={y - 22} width={120} height={36} rx={4} fill="hsl(210 30% 98%)" stroke="hsl(215 25% 60%)" strokeWidth="1" />
-                    <text x={x + 14} y={y - 8} fontSize="10" className="fill-foreground font-semibold">{hoursPostDose}h post-dose</text>
-                    <text x={x + 14} y={y + 7} fontSize="10" className="fill-foreground">cortisol ≈ {cortisolPct.toFixed(0)}%</text>
-                  </g>
-    </DiagramFigure>
+                    <g>
+                  <line x1={x} y1={60} x2={x} y2={250} stroke="hsl(0 70% 50%)" strokeWidth="1" strokeDasharray="2 2" />
+                  <circle cx={x} cy={y} r={5} fill="hsl(0 70% 50%)" />
+                  <rect x={x + 8} y={y - 22} width={120} height={36} rx={4} fill="hsl(210 30% 98%)" stroke="hsl(215 25% 60%)" strokeWidth="1" />
+                  <text x={x + 14} y={y - 8} fontSize="10" className="fill-foreground font-semibold">{hoursPostDose}h post-dose</text>
+                  <text x={x + 14} y={y + 7} fontSize="10" className="fill-foreground">cortisol ≈ {cortisolPct.toFixed(0)}%</text>
+                </g>
   );
             })()}
 

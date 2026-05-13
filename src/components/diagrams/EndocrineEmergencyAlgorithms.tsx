@@ -1,6 +1,5 @@
 import { useState, ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Step-by-step emergency treatment algorithms for the four headline endocrine
@@ -527,27 +526,21 @@ const EndocrineEmergencyAlgorithms = () => {
           {ALGOS.map((a) => {
             const isActive = a.key === active;
             return (
-    <DiagramFigure
-      id="endocrine-emergency-algorithms"
-      title="Endocrine emergency algorithms"
-      description="Auto-generated wrapper for the Endocrine emergency algorithms clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <button
-                  key={a.key}
-                  role="tab"
-                  aria-selected={isActive}
-                  type="button"
-                  onClick={() => setActive(a.key)}
-                  className={cn(
-                    "rounded-md border px-3 py-1.5 text-xs font-semibold transition-colors",
-                    isActive
-                      ? cn("border-primary bg-primary text-primary-foreground shadow-sm")
-                      : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground",
-                  )}
-                >
-                  {a.shortLabel}
-                </button>
-    </DiagramFigure>
+                  <button
+                key={a.key}
+                role="tab"
+                aria-selected={isActive}
+                type="button"
+                onClick={() => setActive(a.key)}
+                className={cn(
+                  "rounded-md border px-3 py-1.5 text-xs font-semibold transition-colors",
+                  isActive
+                    ? cn("border-primary bg-primary text-primary-foreground shadow-sm")
+                    : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground",
+                )}
+              >
+                {a.shortLabel}
+              </button>
   );
           })}
         </div>

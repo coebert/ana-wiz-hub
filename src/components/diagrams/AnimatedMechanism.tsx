@@ -2,7 +2,6 @@ import { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "re
 import { Pause, Play, RotateCcw, ChevronLeft, ChevronRight, BookOpen, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const slugifyLabel = (label: string) =>
   label
@@ -291,25 +290,19 @@ export const AnimatedMechanism = ({
                   const isExternal = !!s.url;
                   const href = s.url ?? `#ref-${slugifyLabel(s.label)}`;
                   return (
-    <DiagramFigure
-      id="animated-mechanism"
-      title="Animated mechanism"
-      description="Auto-generated wrapper for the Animated mechanism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                          <li key={`${s.label}-${i}`}>
-                        <a
-                          href={href}
-                          {...(isExternal
-                            ? { target: "_blank", rel: "noopener noreferrer" }
-                            : {})}
-                          className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-2 py-0.5 text-[11px] font-medium text-foreground hover:bg-muted hover:border-primary/40 transition-colors"
-                          title={isExternal ? `Open ${s.label}` : `Jump to "${s.label}" in the references list`}
-                        >
-                          <span>{s.label}</span>
-                          {isExternal && <ExternalLink className="h-2.5 w-2.5 text-muted-foreground" />}
-                        </a>
-                      </li>
-    </DiagramFigure>
+                        <li key={`${s.label}-${i}`}>
+                      <a
+                        href={href}
+                        {...(isExternal
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                        className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-2 py-0.5 text-[11px] font-medium text-foreground hover:bg-muted hover:border-primary/40 transition-colors"
+                        title={isExternal ? `Open ${s.label}` : `Jump to "${s.label}" in the references list`}
+                      >
+                        <span>{s.label}</span>
+                        {isExternal && <ExternalLink className="h-2.5 w-2.5 text-muted-foreground" />}
+                      </a>
+                    </li>
   );
                 })}
               </ul>

@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Play, Pause, RotateCcw } from "lucide-react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* Channel activity windows as fraction of cycle (0..1) for each view */
 const contractileChannels: { id: string; label: string; start: number; end: number; color: string }[] = [
@@ -788,49 +787,43 @@ const ECGStrip = ({ selected, time }: { selected: DrugClass | undefined | null; 
   ].join(" ");
 
   return (
-    <DiagramFigure
-      id="vaughan-williams-ap-diagram"
-      title="Vaughan williams ap"
-      description="Auto-generated wrapper for the Vaughan williams ap anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-xl mx-auto" style={{ minWidth: 360 }}>
-        <text x={w / 2} y={14} fontSize="10" fill="currentColor" opacity={0.5} textAnchor="middle" fontWeight="600">
-          Surface ECG (Lead II)
+        <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-xl mx-auto" style={{ minWidth: 360 }}>
+      <text x={w / 2} y={14} fontSize="10" fill="currentColor" opacity={0.5} textAnchor="middle" fontWeight="600">
+        Surface ECG (Lead II)
+      </text>
+
+      <defs>
+        <pattern id="ecgGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="hsl(0, 70%, 60%)" strokeWidth="0.5" opacity="0.25" />
+        </pattern>
+      </defs>
+      <rect x={stripStart} y={30} width={stripWidth} height={200} fill="url(#ecgGrid)" />
+
+      {selected && (
+        <path d={ghostPath} fill="none" stroke="currentColor" strokeWidth={1} opacity={0.3} strokeDasharray="3,3" />
+      )}
+
+      <path d={path} fill="none" stroke={selected ? selected.color : "hsl(var(--primary))"} strokeWidth={2} strokeLinejoin="round" />
+
+      <text x={ms2x(pPeak)} y={y0 - 24} fontSize="10" fill="currentColor" opacity={0.7} textAnchor="middle" fontWeight="bold">P</text>
+      <text x={ms2x(rPeak)} y={y0 - 96} fontSize="10" fill="currentColor" opacity={0.7} textAnchor="middle" fontWeight="bold">R</text>
+      <text x={ms2x(tPeak)} y={y0 - 40} fontSize="10" fill="currentColor" opacity={0.7} textAnchor="middle" fontWeight="bold">T</text>
+
+      <Bar x1={ms2x(pStart)} x2={ms2x(prEnd)} y={y0 + 55} label="PR" value={`${prMs}ms`} color={prCol} />
+      <Bar x1={ms2x(qStart)} x2={ms2x(qrsEnd)} y={y0 + 75} label="QRS" value={`${qrsMs}ms`} color={qrsCol} />
+      <Bar x1={ms2x(qStart)} x2={ms2x(tEnd)} y={y0 + 95} label="QT" value={`${qtMs}ms`} color={qtCol} />
+
+      <line x1={playX} y1={30} x2={playX} y2={230} stroke="hsl(var(--primary))" strokeWidth={1.5} opacity={0.6} strokeDasharray="3,3" />
+
+      <text x={w / 2} y={278} fontSize="10" fill="currentColor" opacity={0.75} textAnchor="middle" fontStyle="italic">
+        {selected ? `Class ${selected.id}: ${m.note}` : "Select a drug class to see PR / QRS / QT change"}
+      </text>
+      {selected && (
+        <text x={w / 2} y={293} fontSize="9" fill="currentColor" opacity={0.45} textAnchor="middle">
+          dashed = baseline · solid coloured = on Class {selected.id}
         </text>
-  
-        <defs>
-          <pattern id="ecgGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="hsl(0, 70%, 60%)" strokeWidth="0.5" opacity="0.25" />
-          </pattern>
-        </defs>
-        <rect x={stripStart} y={30} width={stripWidth} height={200} fill="url(#ecgGrid)" />
-  
-        {selected && (
-          <path d={ghostPath} fill="none" stroke="currentColor" strokeWidth={1} opacity={0.3} strokeDasharray="3,3" />
-        )}
-  
-        <path d={path} fill="none" stroke={selected ? selected.color : "hsl(var(--primary))"} strokeWidth={2} strokeLinejoin="round" />
-  
-        <text x={ms2x(pPeak)} y={y0 - 24} fontSize="10" fill="currentColor" opacity={0.7} textAnchor="middle" fontWeight="bold">P</text>
-        <text x={ms2x(rPeak)} y={y0 - 96} fontSize="10" fill="currentColor" opacity={0.7} textAnchor="middle" fontWeight="bold">R</text>
-        <text x={ms2x(tPeak)} y={y0 - 40} fontSize="10" fill="currentColor" opacity={0.7} textAnchor="middle" fontWeight="bold">T</text>
-  
-        <Bar x1={ms2x(pStart)} x2={ms2x(prEnd)} y={y0 + 55} label="PR" value={`${prMs}ms`} color={prCol} />
-        <Bar x1={ms2x(qStart)} x2={ms2x(qrsEnd)} y={y0 + 75} label="QRS" value={`${qrsMs}ms`} color={qrsCol} />
-        <Bar x1={ms2x(qStart)} x2={ms2x(tEnd)} y={y0 + 95} label="QT" value={`${qtMs}ms`} color={qtCol} />
-  
-        <line x1={playX} y1={30} x2={playX} y2={230} stroke="hsl(var(--primary))" strokeWidth={1.5} opacity={0.6} strokeDasharray="3,3" />
-  
-        <text x={w / 2} y={278} fontSize="10" fill="currentColor" opacity={0.75} textAnchor="middle" fontStyle="italic">
-          {selected ? `Class ${selected.id}: ${m.note}` : "Select a drug class to see PR / QRS / QT change"}
-        </text>
-        {selected && (
-          <text x={w / 2} y={293} fontSize="9" fill="currentColor" opacity={0.45} textAnchor="middle">
-            dashed = baseline · solid coloured = on Class {selected.id}
-          </text>
-        )}
-      </svg>
-    </DiagramFigure>
+      )}
+    </svg>
   );
 };
 

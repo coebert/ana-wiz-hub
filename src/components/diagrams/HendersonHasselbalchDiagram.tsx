@@ -1,6 +1,5 @@
 import { useState, useMemo } from "react";
 import { Slider } from "@/components/ui/slider";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // =====================================================================
 // Henderson–Hasselbalch interactive
@@ -328,27 +327,21 @@ export const HendersonHasselbalchDiagram = () => {
                 const f = fractionUnionised(scenario.drugType, scenario.pKa, c.pH) * 100;
                 const tone = c.tone === "good" ? "hsl(140 50% 45%)" : c.tone === "bad" ? "hsl(0 65% 50%)" : "hsl(var(--muted-foreground))";
                 return (
-    <DiagramFigure
-      id="henderson-hasselbalch-diagram"
-      title="Henderson hasselbalch"
-      description="Auto-generated wrapper for the Henderson hasselbalch anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <button
-                      key={c.name}
-                      onClick={() => setPH(c.pH)}
-                      className={`text-left p-2 rounded border transition-all hover:bg-card ${
-                        Math.abs(pH - c.pH) < 0.02 ? "border-primary/60 bg-card" : "border-border"
-                      }`}
-                    >
-                      <p className="text-[10px] font-medium" style={{ color: tone }}>{c.name}</p>
-                      <p className="text-[10px] text-muted-foreground mt-0.5">
-                        Unionised: <span className="font-mono font-semibold text-foreground">{f.toFixed(1)}%</span>
-                      </p>
-                      <p className="text-[10px] text-muted-foreground">
-                        Ionised: <span className="font-mono font-semibold text-foreground">{(100 - f).toFixed(1)}%</span>
-                      </p>
-                    </button>
-    </DiagramFigure>
+                      <button
+                    key={c.name}
+                    onClick={() => setPH(c.pH)}
+                    className={`text-left p-2 rounded border transition-all hover:bg-card ${
+                      Math.abs(pH - c.pH) < 0.02 ? "border-primary/60 bg-card" : "border-border"
+                    }`}
+                  >
+                    <p className="text-[10px] font-medium" style={{ color: tone }}>{c.name}</p>
+                    <p className="text-[10px] text-muted-foreground mt-0.5">
+                      Unionised: <span className="font-mono font-semibold text-foreground">{f.toFixed(1)}%</span>
+                    </p>
+                    <p className="text-[10px] text-muted-foreground">
+                      Ionised: <span className="font-mono font-semibold text-foreground">{(100 - f).toFixed(1)}%</span>
+                    </p>
+                  </button>
   );
               })}
             </div>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Tab = "nmda" | "enantiomers" | "sympathetic" | "doses" | "emergence";
 
@@ -343,14 +342,8 @@ export const KetaminePharmacologyDiagram = () => {
                 const y2 = 100 + 60 * Math.sin(rad);
                 const dash = (t * 2 + i * 5) % 12;
                 return (
-    <DiagramFigure
-      id="ketamine-pharmacology-diagram"
-      title="Ketamine pharmacology"
-      description="Auto-generated wrapper for the Ketamine pharmacology anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-                      stroke="hsl(0 70% 55%)" strokeWidth="1" strokeDasharray="4 8" strokeDashoffset={-dash} opacity={0.7} />
-    </DiagramFigure>
+                      <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
+                    stroke="hsl(0 70% 55%)" strokeWidth="1" strokeDasharray="4 8" strokeDashoffset={-dash} opacity={0.7} />
   );
               })}
               <text x={120} y={180} textAnchor="middle" fontSize="9" className="fill-[hsl(0_60%_45%)] font-medium">thalamocortical dissociation</text>

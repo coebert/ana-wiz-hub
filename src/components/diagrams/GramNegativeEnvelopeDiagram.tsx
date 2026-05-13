@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Gram-negative envelope schematic — LPS outer membrane, porins, periplasm
@@ -329,26 +328,20 @@ function Annotation({ x1, y1, x2, y2, tx, ty, label, sub, color, active, onClick
   label: string; sub: string; color: string; active: boolean; onClick: () => void;
 }) {
   return (
-    <DiagramFigure
-      id="gram-negative-envelope-diagram"
-      title="Gram negative envelope"
-      description="Auto-generated wrapper for the Gram negative envelope anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <g className="cursor-pointer" onClick={onClick}>
-        <line x1={x1} y1={y1} x2={x2} y2={y2}
-          stroke={active ? color : "hsl(var(--muted-foreground))"}
-          strokeWidth={active ? 2 : 1}
-          strokeDasharray={active ? "0" : "3 2"} />
-        <text x={tx} y={ty} fontSize="10" fontWeight={active ? 700 : 600}
-          fill={active ? color : "hsl(var(--foreground))"} textAnchor="end">
-          {label}
-        </text>
-        <text x={tx} y={ty + 11} fontSize="8.5"
-          fill="hsl(var(--muted-foreground))" textAnchor="end">
-          {sub}
-        </text>
-      </g>
-    </DiagramFigure>
+        <g className="cursor-pointer" onClick={onClick}>
+      <line x1={x1} y1={y1} x2={x2} y2={y2}
+        stroke={active ? color : "hsl(var(--muted-foreground))"}
+        strokeWidth={active ? 2 : 1}
+        strokeDasharray={active ? "0" : "3 2"} />
+      <text x={tx} y={ty} fontSize="10" fontWeight={active ? 700 : 600}
+        fill={active ? color : "hsl(var(--foreground))"} textAnchor="end">
+        {label}
+      </text>
+      <text x={tx} y={ty + 11} fontSize="8.5"
+        fill="hsl(var(--muted-foreground))" textAnchor="end">
+        {sub}
+      </text>
+    </g>
   );
 }
 

@@ -1,5 +1,4 @@
 import { useEffect, useState, useMemo } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Scenario = {
   id: string;
@@ -150,233 +149,227 @@ const IonTrappingDiagram = () => {
   };
 
   return (
-    <DiagramFigure
-      id="ion-trapping-diagram"
-      title="Ion trapping"
-      description="Auto-generated wrapper for the Ion trapping anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="my-6 rounded-lg border border-border bg-card p-4">
-        <p className="text-sm font-semibold text-foreground mb-1 text-center">
-          Ion Trapping — Two-Compartment Animation
-        </p>
-        <p className="text-xs text-muted-foreground text-center mb-3">
-          Only unionised drug crosses the membrane. On the acidic side, weak bases protonate and become trapped.
-        </p>
-  
-        {/* Scenario picker */}
-        <div className="flex flex-wrap gap-1.5 justify-center mb-3">
-          {SCENARIOS.map((s) => (
-            <button
-              key={s.id}
-              onClick={() => setScenarioId(s.id)}
-              className={`text-[11px] px-2.5 py-1 rounded border transition ${
-                scenarioId === s.id
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-card hover:bg-muted/50 text-foreground"
-              }`}
-            >
-              {s.label}
-            </button>
-          ))}
+        <div className="my-6 rounded-lg border border-border bg-card p-4">
+      <p className="text-sm font-semibold text-foreground mb-1 text-center">
+        Ion Trapping — Two-Compartment Animation
+      </p>
+      <p className="text-xs text-muted-foreground text-center mb-3">
+        Only unionised drug crosses the membrane. On the acidic side, weak bases protonate and become trapped.
+      </p>
+
+      {/* Scenario picker */}
+      <div className="flex flex-wrap gap-1.5 justify-center mb-3">
+        {SCENARIOS.map((s) => (
           <button
-            onClick={() => setRunning((r) => !r)}
-            className="text-[11px] px-2.5 py-1 rounded border border-border hover:bg-muted/50 transition text-foreground ml-2"
+            key={s.id}
+            onClick={() => setScenarioId(s.id)}
+            className={`text-[11px] px-2.5 py-1 rounded border transition ${
+              scenarioId === s.id
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border bg-card hover:bg-muted/50 text-foreground"
+            }`}
           >
-            {running ? "⏸ Pause" : "▶ Play"}
+            {s.label}
           </button>
-        </div>
-  
-        {/* SVG diagram */}
-        <div className="overflow-x-auto">
-          <svg viewBox="0 0 500 320" className="w-full h-auto max-w-[600px] mx-auto" role="img" aria-label="Ion trapping animation">
-            {/* Left compartment background */}
-            <rect
-              x="20"
-              y="50"
-              width="200"
-              height="240"
-              rx="8"
-              fill={pHColor(scenario.leftPH)}
-              opacity="0.12"
-              stroke={pHColor(scenario.leftPH)}
-              strokeWidth="1.5"
-            />
-            {/* Right compartment */}
-            <rect
-              x="280"
-              y="50"
-              width="200"
-              height="240"
-              rx="8"
-              fill={pHColor(scenario.rightPH)}
-              opacity="0.12"
-              stroke={pHColor(scenario.rightPH)}
-              strokeWidth="1.5"
-            />
-  
-            {/* Membrane */}
-            <rect x="220" y="50" width="60" height="240" fill="hsl(var(--muted))" opacity="0.6" />
-            <line x1="220" y1="50" x2="220" y2="290" stroke="hsl(var(--foreground))" strokeWidth="0.75" strokeDasharray="3 2" />
-            <line x1="280" y1="50" x2="280" y2="290" stroke="hsl(var(--foreground))" strokeWidth="0.75" strokeDasharray="3 2" />
-            <text x="250" y="45" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600">
-              MEMBRANE
-            </text>
-            <text x="250" y="305" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">
-              (lipid bilayer)
-            </text>
-  
-            {/* Compartment labels */}
-            <text x="120" y="35" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">
-              {scenario.leftName}
-            </text>
-            <text x="380" y="35" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">
-              {scenario.rightName}
-            </text>
-  
-            {/* pH badges */}
-            <rect x="80" y="55" width="80" height="20" rx="10" fill={pHColor(scenario.leftPH)} opacity="0.85" />
-            <text x="120" y="69" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--background))">
-              pH {scenario.leftPH.toFixed(1)}
-            </text>
-            <rect x="340" y="55" width="80" height="20" rx="10" fill={pHColor(scenario.rightPH)} opacity="0.85" />
-            <text x="380" y="69" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--background))">
-              pH {scenario.rightPH.toFixed(1)}
-            </text>
-  
-            {/* Molecules — left */}
-            {leftMolecules.map((m) => (
-              <g key={m.key} style={{ transition: "all 1.4s ease-in-out" }}>
-                <circle
-                  cx={m.x}
-                  cy={m.y}
-                  r={m.ionised ? 5 : 4}
-                  fill={m.ionised ? "hsl(15 85% 55%)" : "hsl(210 70% 55%)"}
-                  opacity="0.85"
-                  stroke="hsl(var(--background))"
-                  strokeWidth="0.5"
-                />
-                {m.ionised && (
-                  <text x={m.x} y={m.y + 2} textAnchor="middle" fontSize="6" fill="hsl(var(--background))" fontWeight="700" pointerEvents="none">
-                    {scenario.drugType === "base" ? "+" : "−"}
-                  </text>
-                )}
-              </g>
-            ))}
-            {/* Molecules — right */}
-            {rightMolecules.map((m) => (
-              <g key={m.key} style={{ transition: "all 1.4s ease-in-out" }}>
-                <circle
-                  cx={m.x}
-                  cy={m.y}
-                  r={m.ionised ? 5 : 4}
-                  fill={m.ionised ? "hsl(15 85% 55%)" : "hsl(210 70% 55%)"}
-                  opacity="0.85"
-                  stroke="hsl(var(--background))"
-                  strokeWidth="0.5"
-                />
-                {m.ionised && (
-                  <text x={m.x} y={m.y + 2} textAnchor="middle" fontSize="6" fill="hsl(var(--background))" fontWeight="700" pointerEvents="none">
-                    {scenario.drugType === "base" ? "+" : "−"}
-                  </text>
-                )}
-              </g>
-            ))}
-  
-            {/* Crossing molecules (unionised — animated) */}
-            {running && crossing.map((c) => (
+        ))}
+        <button
+          onClick={() => setRunning((r) => !r)}
+          className="text-[11px] px-2.5 py-1 rounded border border-border hover:bg-muted/50 transition text-foreground ml-2"
+        >
+          {running ? "⏸ Pause" : "▶ Play"}
+        </button>
+      </div>
+
+      {/* SVG diagram */}
+      <div className="overflow-x-auto">
+        <svg viewBox="0 0 500 320" className="w-full h-auto max-w-[600px] mx-auto" role="img" aria-label="Ion trapping animation">
+          {/* Left compartment background */}
+          <rect
+            x="20"
+            y="50"
+            width="200"
+            height="240"
+            rx="8"
+            fill={pHColor(scenario.leftPH)}
+            opacity="0.12"
+            stroke={pHColor(scenario.leftPH)}
+            strokeWidth="1.5"
+          />
+          {/* Right compartment */}
+          <rect
+            x="280"
+            y="50"
+            width="200"
+            height="240"
+            rx="8"
+            fill={pHColor(scenario.rightPH)}
+            opacity="0.12"
+            stroke={pHColor(scenario.rightPH)}
+            strokeWidth="1.5"
+          />
+
+          {/* Membrane */}
+          <rect x="220" y="50" width="60" height="240" fill="hsl(var(--muted))" opacity="0.6" />
+          <line x1="220" y1="50" x2="220" y2="290" stroke="hsl(var(--foreground))" strokeWidth="0.75" strokeDasharray="3 2" />
+          <line x1="280" y1="50" x2="280" y2="290" stroke="hsl(var(--foreground))" strokeWidth="0.75" strokeDasharray="3 2" />
+          <text x="250" y="45" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600">
+            MEMBRANE
+          </text>
+          <text x="250" y="305" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">
+            (lipid bilayer)
+          </text>
+
+          {/* Compartment labels */}
+          <text x="120" y="35" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">
+            {scenario.leftName}
+          </text>
+          <text x="380" y="35" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">
+            {scenario.rightName}
+          </text>
+
+          {/* pH badges */}
+          <rect x="80" y="55" width="80" height="20" rx="10" fill={pHColor(scenario.leftPH)} opacity="0.85" />
+          <text x="120" y="69" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--background))">
+            pH {scenario.leftPH.toFixed(1)}
+          </text>
+          <rect x="340" y="55" width="80" height="20" rx="10" fill={pHColor(scenario.rightPH)} opacity="0.85" />
+          <text x="380" y="69" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--background))">
+            pH {scenario.rightPH.toFixed(1)}
+          </text>
+
+          {/* Molecules — left */}
+          {leftMolecules.map((m) => (
+            <g key={m.key} style={{ transition: "all 1.4s ease-in-out" }}>
               <circle
-                key={c.key}
-                r="4"
-                fill="hsl(210 70% 55%)"
-                opacity="0.9"
+                cx={m.x}
+                cy={m.y}
+                r={m.ionised ? 5 : 4}
+                fill={m.ionised ? "hsl(15 85% 55%)" : "hsl(210 70% 55%)"}
+                opacity="0.85"
                 stroke="hsl(var(--background))"
                 strokeWidth="0.5"
-              >
-                <animate
-                  attributeName="cx"
-                  from={c.dir === "ltr" ? 215 : 285}
-                  to={c.dir === "ltr" ? 285 : 215}
-                  dur="2s"
-                  begin={`${c.delay}s`}
-                  repeatCount="indefinite"
-                />
-                <animate
-                  attributeName="cy"
-                  values={`${c.y};${c.y - 6};${c.y + 4};${c.y}`}
-                  dur="2s"
-                  begin={`${c.delay}s`}
-                  repeatCount="indefinite"
-                />
-                <animate
-                  attributeName="opacity"
-                  values="0;0.95;0.95;0"
-                  dur="2s"
-                  begin={`${c.delay}s`}
-                  repeatCount="indefinite"
-                />
-              </circle>
-            ))}
-  
-            {/* Trapped-side glow indicator */}
-            <rect
-              x={trappedSide === "left" ? 20 : 280}
-              y="50"
-              width="200"
-              height="240"
-              rx="8"
-              fill="none"
-              stroke="hsl(var(--destructive))"
-              strokeWidth="2"
-              strokeDasharray="6 4"
-              opacity="0.7"
+              />
+              {m.ionised && (
+                <text x={m.x} y={m.y + 2} textAnchor="middle" fontSize="6" fill="hsl(var(--background))" fontWeight="700" pointerEvents="none">
+                  {scenario.drugType === "base" ? "+" : "−"}
+                </text>
+              )}
+            </g>
+          ))}
+          {/* Molecules — right */}
+          {rightMolecules.map((m) => (
+            <g key={m.key} style={{ transition: "all 1.4s ease-in-out" }}>
+              <circle
+                cx={m.x}
+                cy={m.y}
+                r={m.ionised ? 5 : 4}
+                fill={m.ionised ? "hsl(15 85% 55%)" : "hsl(210 70% 55%)"}
+                opacity="0.85"
+                stroke="hsl(var(--background))"
+                strokeWidth="0.5"
+              />
+              {m.ionised && (
+                <text x={m.x} y={m.y + 2} textAnchor="middle" fontSize="6" fill="hsl(var(--background))" fontWeight="700" pointerEvents="none">
+                  {scenario.drugType === "base" ? "+" : "−"}
+                </text>
+              )}
+            </g>
+          ))}
+
+          {/* Crossing molecules (unionised — animated) */}
+          {running && crossing.map((c) => (
+            <circle
+              key={c.key}
+              r="4"
+              fill="hsl(210 70% 55%)"
+              opacity="0.9"
+              stroke="hsl(var(--background))"
+              strokeWidth="0.5"
             >
-              <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite" />
-            </rect>
-  
-            {/* Concentration bars at bottom */}
-            <text x="250" y="320" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600">
-              Equilibrium ratio (R:L) = {ratio >= 1 ? ratio.toFixed(2) : (1 / ratio).toFixed(2)}× {ratio >= 1 ? "trapped right" : "trapped left"}
-            </text>
-          </svg>
+              <animate
+                attributeName="cx"
+                from={c.dir === "ltr" ? 215 : 285}
+                to={c.dir === "ltr" ? 285 : 215}
+                dur="2s"
+                begin={`${c.delay}s`}
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="cy"
+                values={`${c.y};${c.y - 6};${c.y + 4};${c.y}`}
+                dur="2s"
+                begin={`${c.delay}s`}
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="opacity"
+                values="0;0.95;0.95;0"
+                dur="2s"
+                begin={`${c.delay}s`}
+                repeatCount="indefinite"
+              />
+            </circle>
+          ))}
+
+          {/* Trapped-side glow indicator */}
+          <rect
+            x={trappedSide === "left" ? 20 : 280}
+            y="50"
+            width="200"
+            height="240"
+            rx="8"
+            fill="none"
+            stroke="hsl(var(--destructive))"
+            strokeWidth="2"
+            strokeDasharray="6 4"
+            opacity="0.7"
+          >
+            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite" />
+          </rect>
+
+          {/* Concentration bars at bottom */}
+          <text x="250" y="320" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600">
+            Equilibrium ratio (R:L) = {ratio >= 1 ? ratio.toFixed(2) : (1 / ratio).toFixed(2)}× {ratio >= 1 ? "trapped right" : "trapped left"}
+          </text>
+        </svg>
+      </div>
+
+      {/* Legend */}
+      <div className="flex flex-wrap gap-3 justify-center mt-2 text-[11px] text-muted-foreground">
+        <div className="flex items-center gap-1.5">
+          <span className="w-3 h-3 rounded-full" style={{ background: "hsl(210 70% 55%)" }} />
+          <span>Unionised (lipid-soluble, crosses membrane)</span>
         </div>
-  
-        {/* Legend */}
-        <div className="flex flex-wrap gap-3 justify-center mt-2 text-[11px] text-muted-foreground">
-          <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-full" style={{ background: "hsl(210 70% 55%)" }} />
-            <span>Unionised (lipid-soluble, crosses membrane)</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-full" style={{ background: "hsl(15 85% 55%)" }} />
-            <span>Ionised ({scenario.drugType === "base" ? "BH⁺" : "A⁻"} — trapped)</span>
-          </div>
+        <div className="flex items-center gap-1.5">
+          <span className="w-3 h-3 rounded-full" style={{ background: "hsl(15 85% 55%)" }} />
+          <span>Ionised ({scenario.drugType === "base" ? "BH⁺" : "A⁻"} — trapped)</span>
         </div>
-  
-        {/* Scenario info card */}
-        <div className="mt-3 p-3 rounded-lg border-2 border-primary/30 bg-primary/5">
-          <p className="text-sm font-semibold text-foreground mb-1">
-            {scenario.drugName} <span className="text-xs text-muted-foreground">(pKa {scenario.pKa})</span>
-          </p>
-          <p className="text-xs text-muted-foreground leading-relaxed">{scenario.teaching}</p>
-          <div className="grid grid-cols-3 gap-2 mt-2 text-[11px]">
-            <div className="p-2 rounded bg-card border border-border">
-              <p className="text-muted-foreground">{scenario.leftName.split(" ")[0]} unionised</p>
-              <p className="font-bold text-foreground">{(leftFracU * 100).toFixed(1)}%</p>
-            </div>
-            <div className="p-2 rounded bg-card border border-border">
-              <p className="text-muted-foreground">{scenario.rightName.split(" ")[0]} unionised</p>
-              <p className="font-bold text-foreground">{(rightFracU * 100).toFixed(1)}%</p>
-            </div>
-            <div className="p-2 rounded bg-destructive/10 border border-destructive/30">
-              <p className="text-muted-foreground">Trapping ratio</p>
-              <p className="font-bold text-destructive">
-                {(ratio >= 1 ? ratio : 1 / ratio).toFixed(2)}×
-              </p>
-            </div>
+      </div>
+
+      {/* Scenario info card */}
+      <div className="mt-3 p-3 rounded-lg border-2 border-primary/30 bg-primary/5">
+        <p className="text-sm font-semibold text-foreground mb-1">
+          {scenario.drugName} <span className="text-xs text-muted-foreground">(pKa {scenario.pKa})</span>
+        </p>
+        <p className="text-xs text-muted-foreground leading-relaxed">{scenario.teaching}</p>
+        <div className="grid grid-cols-3 gap-2 mt-2 text-[11px]">
+          <div className="p-2 rounded bg-card border border-border">
+            <p className="text-muted-foreground">{scenario.leftName.split(" ")[0]} unionised</p>
+            <p className="font-bold text-foreground">{(leftFracU * 100).toFixed(1)}%</p>
+          </div>
+          <div className="p-2 rounded bg-card border border-border">
+            <p className="text-muted-foreground">{scenario.rightName.split(" ")[0]} unionised</p>
+            <p className="font-bold text-foreground">{(rightFracU * 100).toFixed(1)}%</p>
+          </div>
+          <div className="p-2 rounded bg-destructive/10 border border-destructive/30">
+            <p className="text-muted-foreground">Trapping ratio</p>
+            <p className="font-bold text-destructive">
+              {(ratio >= 1 ? ratio : 1 / ratio).toFixed(2)}×
+            </p>
           </div>
         </div>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

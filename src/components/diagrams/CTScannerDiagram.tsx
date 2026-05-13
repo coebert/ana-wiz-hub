@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Pause, Play, RotateCcw } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated CT scanner diagram.
@@ -343,21 +342,15 @@ export const CTScannerDiagram = () => {
                   const x2 = 172.5 - 32 * Math.cos(a);
                   const y2 = 65 - 32 * Math.sin(a);
                   return (
-    <DiagramFigure
-      id="ct-scanner-diagram"
-      title="Ct scanner"
-      description="Auto-generated wrapper for the Ct scanner anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                          <line
-                        key={i}
-                        x1={x1}
-                        y1={y1}
-                        x2={x2}
-                        y2={y2}
-                        stroke="hsl(195 80% 55%)"
-                        strokeWidth={0.5}
-                      />
-    </DiagramFigure>
+                        <line
+                      key={i}
+                      x1={x1}
+                      y1={y1}
+                      x2={x2}
+                      y2={y2}
+                      stroke="hsl(195 80% 55%)"
+                      strokeWidth={0.5}
+                    />
   );
                 })}
               </g>

@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { Slider } from "@/components/ui/slider";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Andrews' isotherms for N₂O on a P–V diagram.
@@ -134,157 +133,151 @@ export const AndrewsIsothermsDiagram = () => {
   const pressureBar = isSubcritical && sat ? sat.pSat * PC_BAR : null;
 
   return (
-    <DiagramFigure
-      id="andrews-isotherms-diagram"
-      title="Andrews isotherms"
-      description="Auto-generated wrapper for the Andrews isotherms anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-          <div className="space-y-4">
-        <div className="rounded-lg border border-border bg-card p-4">
-          <svg viewBox="0 0 760 410" className="w-full h-auto" role="img" aria-label="Andrews isotherms for nitrous oxide">
-            {/* Plot background */}
-            <rect x={PLOT.x0} y={PLOT.y0} width={PLOT.x1 - PLOT.x0} height={PLOT.y1 - PLOT.y0} fill="hsl(var(--background))" />
-  
-            {/* Axes */}
-            <line x1={PLOT.x0} y1={PLOT.y1} x2={PLOT.x1} y2={PLOT.y1} stroke="hsl(var(--foreground))" strokeWidth={1} />
-            <line x1={PLOT.x0} y1={PLOT.y0} x2={PLOT.x0} y2={PLOT.y1} stroke="hsl(var(--foreground))" strokeWidth={1} />
-  
-            {/* Axis labels */}
-            <text x={(PLOT.x0 + PLOT.x1) / 2} y={PLOT.y1 + 32} textAnchor="middle" fontSize="13" fill="hsl(var(--foreground))">
-              Volume (V) →  (log scale, reduced)
-            </text>
-            <text
-              x={-((PLOT.y0 + PLOT.y1) / 2)}
-              y={18}
-              textAnchor="middle"
-              transform="rotate(-90)"
-              fontSize="13"
-              fill="hsl(var(--foreground))"
-            >
-              Pressure (P) →  (P/Pc)
-            </text>
-  
-            {/* Tick marks for reduced pressure */}
-            {[0, 0.5, 1, 1.5, 2].map((p) => (
-              <g key={`yt-${p}`}>
-                <line x1={PLOT.x0 - 4} y1={yScale(p)} x2={PLOT.x0} y2={yScale(p)} stroke="hsl(var(--foreground))" />
-                <text x={PLOT.x0 - 8} y={yScale(p) + 4} textAnchor="end" fontSize="11" fill="hsl(var(--muted-foreground))">
-                  {p.toFixed(1)}
-                </text>
-                {p === 1 && (
-                  <text x={PLOT.x0 - 32} y={yScale(p) + 4} textAnchor="end" fontSize="10" fill="hsl(var(--physics))">
-                    Pc
-                  </text>
-                )}
-              </g>
-            ))}
-  
-            {/* Saturation dome (two-phase region) */}
-            <path d={domePath} fill="hsl(var(--physics) / 0.10)" stroke="hsl(var(--physics) / 0.45)" strokeWidth={1} strokeDasharray="3 3" />
-            <text x={xScale(1.6)} y={yScale(0.55)} fontSize="11" fill="hsl(var(--physics))" textAnchor="middle">
-              Two-phase region
-            </text>
-            <text x={xScale(1.6)} y={yScale(0.45)} fontSize="10" fill="hsl(var(--muted-foreground))" textAnchor="middle">
-              (liquid + vapour)
-            </text>
-  
-            {/* Reference isotherms */}
-            {refTrs.map((rt) => (
-              <path
-                key={`ref-${rt}`}
-                d={buildIsothermPath(rt)}
-                fill="none"
-                stroke="hsl(var(--muted-foreground) / 0.35)"
-                strokeWidth={1}
-              />
-            ))}
-  
-            {/* Label the critical isotherm */}
-            <text x={xScale(0.55)} y={yScale(1.55)} fontSize="11" fill="hsl(var(--physics))">
-              Tc isotherm (36.5 °C)
-            </text>
-            <text x={xScale(0.55)} y={yScale(1.85)} fontSize="10" fill="hsl(var(--muted-foreground))">
-              Above Tc: gas only
-            </text>
-            <text x={xScale(5)} y={yScale(0.18)} fontSize="10" fill="hsl(var(--muted-foreground))">
-              T = 0.7 Tc
-            </text>
-  
-            {/* Critical point marker */}
-            <circle cx={xScale(1)} cy={yScale(1)} r={5} fill="hsl(var(--physics))" stroke="hsl(var(--background))" strokeWidth={1.5} />
-            <text x={xScale(1) + 8} y={yScale(1) - 8} fontSize="11" fill="hsl(var(--physics))" fontWeight="bold">
-              Critical point
-            </text>
-  
-            {/* Active isotherm */}
-            <path
-              d={isothermPath}
-              fill="none"
-              stroke={isCritical ? "hsl(var(--physics))" : "hsl(var(--primary))"}
-              strokeWidth={2}
-            />
-  
-            {/* Saturation tie-line endpoints (only when sub-critical) */}
-            {sat && (
-              <>
-                <circle cx={xScale(sat.vLiq)} cy={yScale(sat.pSat)} r={4} fill="hsl(var(--primary))" />
-                <circle cx={xScale(sat.vVap)} cy={yScale(sat.pSat)} r={4} fill="hsl(var(--primary))" />
-                <text x={xScale(sat.vLiq) - 6} y={yScale(sat.pSat) - 8} textAnchor="end" fontSize="10" fill="hsl(var(--primary))">
-                  sat. liquid
-                </text>
-                <text x={xScale(sat.vVap) + 6} y={yScale(sat.pSat) - 8} fontSize="10" fill="hsl(var(--primary))">
-                  sat. vapour
-                </text>
-              </>
-            )}
-  
-            {/* Active isotherm label (top-right) */}
-            <g>
-              <rect x={PLOT.x1 - 165} y={PLOT.y0 + 6} width={158} height={48} rx={6} fill="hsl(var(--card))" stroke="hsl(var(--border))" />
-              <text x={PLOT.x1 - 158} y={PLOT.y0 + 24} fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">
-                T = {tempC.toFixed(0)} °C  (Tr = {tr.toFixed(2)})
+        <div className="space-y-4">
+      <div className="rounded-lg border border-border bg-card p-4">
+        <svg viewBox="0 0 760 410" className="w-full h-auto" role="img" aria-label="Andrews isotherms for nitrous oxide">
+          {/* Plot background */}
+          <rect x={PLOT.x0} y={PLOT.y0} width={PLOT.x1 - PLOT.x0} height={PLOT.y1 - PLOT.y0} fill="hsl(var(--background))" />
+
+          {/* Axes */}
+          <line x1={PLOT.x0} y1={PLOT.y1} x2={PLOT.x1} y2={PLOT.y1} stroke="hsl(var(--foreground))" strokeWidth={1} />
+          <line x1={PLOT.x0} y1={PLOT.y0} x2={PLOT.x0} y2={PLOT.y1} stroke="hsl(var(--foreground))" strokeWidth={1} />
+
+          {/* Axis labels */}
+          <text x={(PLOT.x0 + PLOT.x1) / 2} y={PLOT.y1 + 32} textAnchor="middle" fontSize="13" fill="hsl(var(--foreground))">
+            Volume (V) →  (log scale, reduced)
+          </text>
+          <text
+            x={-((PLOT.y0 + PLOT.y1) / 2)}
+            y={18}
+            textAnchor="middle"
+            transform="rotate(-90)"
+            fontSize="13"
+            fill="hsl(var(--foreground))"
+          >
+            Pressure (P) →  (P/Pc)
+          </text>
+
+          {/* Tick marks for reduced pressure */}
+          {[0, 0.5, 1, 1.5, 2].map((p) => (
+            <g key={`yt-${p}`}>
+              <line x1={PLOT.x0 - 4} y1={yScale(p)} x2={PLOT.x0} y2={yScale(p)} stroke="hsl(var(--foreground))" />
+              <text x={PLOT.x0 - 8} y={yScale(p) + 4} textAnchor="end" fontSize="11" fill="hsl(var(--muted-foreground))">
+                {p.toFixed(1)}
               </text>
-              <text x={PLOT.x1 - 158} y={PLOT.y0 + 42} fontSize="11" fill="hsl(var(--muted-foreground))">
-                {isCritical
-                  ? "On critical isotherm"
-                  : isSubcritical
-                  ? `P_sat ≈ ${pressureBar?.toFixed(1)} bar`
-                  : "Above Tc — gas only"}
-              </text>
+              {p === 1 && (
+                <text x={PLOT.x0 - 32} y={yScale(p) + 4} textAnchor="end" fontSize="10" fill="hsl(var(--physics))">
+                  Pc
+                </text>
+              )}
             </g>
-          </svg>
-        </div>
-  
-        <div className="rounded-lg border border-border bg-card p-4 space-y-3">
-          <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-foreground">Temperature: {tempC.toFixed(0)} °C</label>
-            <span className="text-xs text-muted-foreground">Tc(N₂O) = 36.5 °C</span>
-          </div>
-          <Slider
-            value={[tempC]}
-            onValueChange={(v) => setTempC(v[0])}
-            min={0}
-            max={80}
-            step={1}
-            aria-label="Temperature in degrees Celsius"
+          ))}
+
+          {/* Saturation dome (two-phase region) */}
+          <path d={domePath} fill="hsl(var(--physics) / 0.10)" stroke="hsl(var(--physics) / 0.45)" strokeWidth={1} strokeDasharray="3 3" />
+          <text x={xScale(1.6)} y={yScale(0.55)} fontSize="11" fill="hsl(var(--physics))" textAnchor="middle">
+            Two-phase region
+          </text>
+          <text x={xScale(1.6)} y={yScale(0.45)} fontSize="10" fill="hsl(var(--muted-foreground))" textAnchor="middle">
+            (liquid + vapour)
+          </text>
+
+          {/* Reference isotherms */}
+          {refTrs.map((rt) => (
+            <path
+              key={`ref-${rt}`}
+              d={buildIsothermPath(rt)}
+              fill="none"
+              stroke="hsl(var(--muted-foreground) / 0.35)"
+              strokeWidth={1}
+            />
+          ))}
+
+          {/* Label the critical isotherm */}
+          <text x={xScale(0.55)} y={yScale(1.55)} fontSize="11" fill="hsl(var(--physics))">
+            Tc isotherm (36.5 °C)
+          </text>
+          <text x={xScale(0.55)} y={yScale(1.85)} fontSize="10" fill="hsl(var(--muted-foreground))">
+            Above Tc: gas only
+          </text>
+          <text x={xScale(5)} y={yScale(0.18)} fontSize="10" fill="hsl(var(--muted-foreground))">
+            T = 0.7 Tc
+          </text>
+
+          {/* Critical point marker */}
+          <circle cx={xScale(1)} cy={yScale(1)} r={5} fill="hsl(var(--physics))" stroke="hsl(var(--background))" strokeWidth={1.5} />
+          <text x={xScale(1) + 8} y={yScale(1) - 8} fontSize="11" fill="hsl(var(--physics))" fontWeight="bold">
+            Critical point
+          </text>
+
+          {/* Active isotherm */}
+          <path
+            d={isothermPath}
+            fill="none"
+            stroke={isCritical ? "hsl(var(--physics))" : "hsl(var(--primary))"}
+            strokeWidth={2}
           />
-          <div className="grid grid-cols-3 gap-2 text-xs text-center">
-            <div className={`rounded p-2 ${tempC < 36.5 ? "bg-physics/15 text-physics font-medium" : "bg-muted text-muted-foreground"}`}>
-              Below Tc<br />
-              <span className="text-[10px]">two-phase possible</span>
-            </div>
-            <div className={`rounded p-2 ${isCritical ? "bg-physics/15 text-physics font-medium" : "bg-muted text-muted-foreground"}`}>
-              At Tc<br />
-              <span className="text-[10px]">critical isotherm</span>
-            </div>
-            <div className={`rounded p-2 ${tempC > 36.5 ? "bg-physics/15 text-physics font-medium" : "bg-muted text-muted-foreground"}`}>
-              Above Tc<br />
-              <span className="text-[10px]">gas only — cannot liquefy</span>
-            </div>
+
+          {/* Saturation tie-line endpoints (only when sub-critical) */}
+          {sat && (
+            <>
+              <circle cx={xScale(sat.vLiq)} cy={yScale(sat.pSat)} r={4} fill="hsl(var(--primary))" />
+              <circle cx={xScale(sat.vVap)} cy={yScale(sat.pSat)} r={4} fill="hsl(var(--primary))" />
+              <text x={xScale(sat.vLiq) - 6} y={yScale(sat.pSat) - 8} textAnchor="end" fontSize="10" fill="hsl(var(--primary))">
+                sat. liquid
+              </text>
+              <text x={xScale(sat.vVap) + 6} y={yScale(sat.pSat) - 8} fontSize="10" fill="hsl(var(--primary))">
+                sat. vapour
+              </text>
+            </>
+          )}
+
+          {/* Active isotherm label (top-right) */}
+          <g>
+            <rect x={PLOT.x1 - 165} y={PLOT.y0 + 6} width={158} height={48} rx={6} fill="hsl(var(--card))" stroke="hsl(var(--border))" />
+            <text x={PLOT.x1 - 158} y={PLOT.y0 + 24} fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">
+              T = {tempC.toFixed(0)} °C  (Tr = {tr.toFixed(2)})
+            </text>
+            <text x={PLOT.x1 - 158} y={PLOT.y0 + 42} fontSize="11" fill="hsl(var(--muted-foreground))">
+              {isCritical
+                ? "On critical isotherm"
+                : isSubcritical
+                ? `P_sat ≈ ${pressureBar?.toFixed(1)} bar`
+                : "Above Tc — gas only"}
+            </text>
+          </g>
+        </svg>
+      </div>
+
+      <div className="rounded-lg border border-border bg-card p-4 space-y-3">
+        <div className="flex items-center justify-between">
+          <label className="text-sm font-medium text-foreground">Temperature: {tempC.toFixed(0)} °C</label>
+          <span className="text-xs text-muted-foreground">Tc(N₂O) = 36.5 °C</span>
+        </div>
+        <Slider
+          value={[tempC]}
+          onValueChange={(v) => setTempC(v[0])}
+          min={0}
+          max={80}
+          step={1}
+          aria-label="Temperature in degrees Celsius"
+        />
+        <div className="grid grid-cols-3 gap-2 text-xs text-center">
+          <div className={`rounded p-2 ${tempC < 36.5 ? "bg-physics/15 text-physics font-medium" : "bg-muted text-muted-foreground"}`}>
+            Below Tc<br />
+            <span className="text-[10px]">two-phase possible</span>
+          </div>
+          <div className={`rounded p-2 ${isCritical ? "bg-physics/15 text-physics font-medium" : "bg-muted text-muted-foreground"}`}>
+            At Tc<br />
+            <span className="text-[10px]">critical isotherm</span>
+          </div>
+          <div className={`rounded p-2 ${tempC > 36.5 ? "bg-physics/15 text-physics font-medium" : "bg-muted text-muted-foreground"}`}>
+            Above Tc<br />
+            <span className="text-[10px]">gas only — cannot liquefy</span>
           </div>
         </div>
       </div>
-    </DiagramFigure>
+    </div>
   );
 };
 

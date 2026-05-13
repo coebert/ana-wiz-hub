@@ -1,5 +1,4 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * NCEPOD urgency classification visualised as a triage clock.
@@ -184,22 +183,16 @@ export const NCEPODClassificationDiagram = () => {
               const mid = (t.startAngle + t.endAngle) / 2;
               const tip = polar(cx, cy, r - 8, mid);
               return (
-    <DiagramFigure
-      id="ncepod-classification-diagram"
-      title="Ncepod classification"
-      description="Auto-generated wrapper for the Ncepod classification anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <line
-                    x1={cx}
-                    y1={cy}
-                    x2={tip.x}
-                    y2={tip.y}
-                    stroke="hsl(var(--foreground))"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    style={{ transition: "all 500ms cubic-bezier(0.4,0,0.2,1)" }}
-                  />
-    </DiagramFigure>
+                    <line
+                  x1={cx}
+                  y1={cy}
+                  x2={tip.x}
+                  y2={tip.y}
+                  stroke="hsl(var(--foreground))"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  style={{ transition: "all 500ms cubic-bezier(0.4,0,0.2,1)" }}
+                />
   );
             })()}
           </svg>

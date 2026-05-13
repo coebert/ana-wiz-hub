@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Side-by-side comparison of aortic pressure waveform morphology — focusing on
@@ -271,32 +270,26 @@ const DichroticNotchComparisonPanel = () => {
         {CONDITIONS.map((c) => {
           const isActive = c.id === activeId;
           return (
-    <DiagramFigure
-      id="dichrotic-notch-comparison-panel"
-      title="Dichrotic notch comparison panel"
-      description="Auto-generated wrapper for the Dichrotic notch comparison panel anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <button
-                key={c.id}
-                type="button"
-                onClick={() => setActiveId(c.id)}
-                className={cn(
-                  "text-left rounded-xl border bg-card p-3 transition-all",
-                  isActive
-                    ? "border-primary shadow-md ring-2 ring-primary/30"
-                    : "border-border hover:border-primary/40 hover:shadow-sm"
+                <button
+              key={c.id}
+              type="button"
+              onClick={() => setActiveId(c.id)}
+              className={cn(
+                "text-left rounded-xl border bg-card p-3 transition-all",
+                isActive
+                  ? "border-primary shadow-md ring-2 ring-primary/30"
+                  : "border-border hover:border-primary/40 hover:shadow-sm"
+              )}
+            >
+              <div className="flex items-baseline justify-between gap-2 mb-1">
+                <h4 className="text-sm font-semibold text-foreground">{c.label}</h4>
+                {c.id !== "normal" && (
+                  <span className="text-[10px] text-muted-foreground">vs normal —</span>
                 )}
-              >
-                <div className="flex items-baseline justify-between gap-2 mb-1">
-                  <h4 className="text-sm font-semibold text-foreground">{c.label}</h4>
-                  {c.id !== "normal" && (
-                    <span className="text-[10px] text-muted-foreground">vs normal —</span>
-                  )}
-                </div>
-                <p className="text-xs text-muted-foreground mb-2">{c.oneLiner}</p>
-                <MiniWaveform c={c} isNormal={c.id === "normal"} />
-              </button>
-    </DiagramFigure>
+              </div>
+              <p className="text-xs text-muted-foreground mb-2">{c.oneLiner}</p>
+              <MiniWaveform c={c} isNormal={c.id === "normal"} />
+            </button>
   );
         })}
       </div>

@@ -1,5 +1,4 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Postoperative goal-directed haemodynamic therapy — staged optimisation
@@ -156,24 +155,18 @@ const Scene = ({ active }: { active: number }) => {
             const ok = onTarget(v.label);
             const token = ok ? "physiology" : "destructive";
             return (
-    <DiagramFigure
-      id="goal-directed-therapy-animation"
-      title="Goal directed therapy"
-      description="Auto-generated wrapper for the Goal directed therapy animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                    <g key={v.label} transform={`translate(0, ${22 + i * 38})`}>
-                  <rect width="118" height="32" rx="3"
-                    fill={`hsl(var(--${token}) / 0.12)`}
-                    stroke={`hsl(var(--${token}))`} />
-                  <text x="6" y="11" className="text-[8px]" fill="hsl(var(--muted-foreground))">{v.label}</text>
-                  <text x="6" y="24" className="text-[12px] font-mono font-bold tabular-nums"
-                    fill={`hsl(var(--${token}))`}>
-                    {v.val}<tspan className="text-[8px] font-normal" dx="2">{v.unit}</tspan>
-                  </text>
-                  <text x="112" y="24" textAnchor="end" className="text-[9px] font-semibold"
-                    fill={`hsl(var(--${token}))`}>{ok ? "✓" : "↻"}</text>
-                </g>
-    </DiagramFigure>
+                  <g key={v.label} transform={`translate(0, ${22 + i * 38})`}>
+                <rect width="118" height="32" rx="3"
+                  fill={`hsl(var(--${token}) / 0.12)`}
+                  stroke={`hsl(var(--${token}))`} />
+                <text x="6" y="11" className="text-[8px]" fill="hsl(var(--muted-foreground))">{v.label}</text>
+                <text x="6" y="24" className="text-[12px] font-mono font-bold tabular-nums"
+                  fill={`hsl(var(--${token}))`}>
+                  {v.val}<tspan className="text-[8px] font-normal" dx="2">{v.unit}</tspan>
+                </text>
+                <text x="112" y="24" textAnchor="end" className="text-[9px] font-semibold"
+                  fill={`hsl(var(--${token}))`}>{ok ? "✓" : "↻"}</text>
+              </g>
   );
           })}
         </g>

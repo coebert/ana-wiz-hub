@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Drug = {
   id: string;
@@ -307,24 +306,18 @@ const PlacentalDrugTransferDiagram = () => {
               const cy = yScale(d.transfer);
               const isSel = d.id === selectedId;
               return (
-    <DiagramFigure
-      id="placental-drug-transfer-diagram"
-      title="Placental drug transfer"
-      description="Auto-generated wrapper for the Placental drug transfer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <g key={d.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(d.id)}>
-                    <circle cx={cx} cy={cy} r={isSel ? 8 : 5} fill={d.color} opacity={isSel ? 0.95 : 0.7} stroke="hsl(var(--background))" strokeWidth="1.5" />
-                    {isSel && (
-                      <circle cx={cx} cy={cy} r="14" fill="none" stroke={d.color} strokeWidth="1.5" opacity="0.5">
-                        <animate attributeName="r" values="8;18;8" dur="1.6s" repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="0.7;0;0.7" dur="1.6s" repeatCount="indefinite" />
-                      </circle>
-                    )}
-                    <text x={cx + 10} y={cy + 3} fontSize={isSel ? 10 : 8} fontWeight={isSel ? 700 : 500} fill={d.color}>
-                      {d.name.split(" ")[0]}
-                    </text>
-                  </g>
-    </DiagramFigure>
+                    <g key={d.id} style={{ cursor: "pointer" }} onClick={() => setSelectedId(d.id)}>
+                  <circle cx={cx} cy={cy} r={isSel ? 8 : 5} fill={d.color} opacity={isSel ? 0.95 : 0.7} stroke="hsl(var(--background))" strokeWidth="1.5" />
+                  {isSel && (
+                    <circle cx={cx} cy={cy} r="14" fill="none" stroke={d.color} strokeWidth="1.5" opacity="0.5">
+                      <animate attributeName="r" values="8;18;8" dur="1.6s" repeatCount="indefinite" />
+                      <animate attributeName="opacity" values="0.7;0;0.7" dur="1.6s" repeatCount="indefinite" />
+                    </circle>
+                  )}
+                  <text x={cx + 10} y={cy + 3} fontSize={isSel ? 10 : 8} fontWeight={isSel ? 700 : 500} fill={d.color}>
+                    {d.name.split(" ")[0]}
+                  </text>
+                </g>
   );
             })}
           </svg>

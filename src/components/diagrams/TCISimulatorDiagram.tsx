@@ -1,5 +1,4 @@
 import { useState, useMemo, useCallback } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Model = "marsh" | "schnider";
 
@@ -291,20 +290,14 @@ const TCISimulatorDiagram = () => {
                   const peak = schniderData[peakIdx];
                   if (!peak) return null;
                   return (
-    <DiagramFigure
-      id="tci-simulator-diagram"
-      title="Tci simulator"
-      description="Auto-generated wrapper for the Tci simulator anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                          <g>
-                        <circle cx={xScale(peak.t)} cy={yScale(peak.cp)} r="3"
-                          fill={schniderColor} opacity="0.5" />
-                        <text x={xScale(peak.t) + 5} y={yScale(peak.cp) + 10} fontSize="5.5"
-                          fill={schniderColor} opacity="0.7">
-                          Cp peak {schniderPeakCp.toFixed(1)}
-                        </text>
-                      </g>
-    </DiagramFigure>
+                        <g>
+                      <circle cx={xScale(peak.t)} cy={yScale(peak.cp)} r="3"
+                        fill={schniderColor} opacity="0.5" />
+                      <text x={xScale(peak.t) + 5} y={yScale(peak.cp) + 10} fontSize="5.5"
+                        fill={schniderColor} opacity="0.7">
+                        Cp peak {schniderPeakCp.toFixed(1)}
+                      </text>
+                    </g>
   );
                 })()}
               </g>

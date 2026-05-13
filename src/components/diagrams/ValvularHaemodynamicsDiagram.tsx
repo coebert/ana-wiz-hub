@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Valve = "AS" | "AR" | "MS" | "MR";
 
@@ -170,19 +169,13 @@ const ValvularHaemodynamicsDiagram = () => {
             {valves.map((v) => {
               const d = valveData[v];
               return (
-    <DiagramFigure
-      id="valvular-haemodynamics-diagram"
-      title="Valvular haemodynamics"
-      description="Auto-generated wrapper for the Valvular haemodynamics anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                      <tr key={v} className={`border-b border-border/50 cursor-pointer transition-colors ${selected === v ? "bg-primary/10" : "hover:bg-secondary/30"}`} onClick={() => setSelected(v)}>
-                    <td className="p-1.5 font-medium text-foreground">{d.label}</td>
-                    <td className="p-1.5 text-muted-foreground">{d.rate}</td>
-                    <td className="p-1.5 text-muted-foreground">{d.preload}</td>
-                    <td className="p-1.5 text-muted-foreground">{d.afterload}</td>
-                    <td className="p-1.5 text-muted-foreground">{d.rhythm}</td>
-                  </tr>
-    </DiagramFigure>
+                    <tr key={v} className={`border-b border-border/50 cursor-pointer transition-colors ${selected === v ? "bg-primary/10" : "hover:bg-secondary/30"}`} onClick={() => setSelected(v)}>
+                  <td className="p-1.5 font-medium text-foreground">{d.label}</td>
+                  <td className="p-1.5 text-muted-foreground">{d.rate}</td>
+                  <td className="p-1.5 text-muted-foreground">{d.preload}</td>
+                  <td className="p-1.5 text-muted-foreground">{d.afterload}</td>
+                  <td className="p-1.5 text-muted-foreground">{d.rhythm}</td>
+                </tr>
   );
             })}
           </tbody>

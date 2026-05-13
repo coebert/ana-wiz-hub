@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Modality = {
   id: string;
@@ -402,18 +401,12 @@ const MultimodalNeuromonitoringDiagram = () => {
                 const cy = 280 - m.temporalScore * 52;
                 const isSel = m.id === selectedId;
                 return (
-    <DiagramFigure
-      id="multimodal-neuromonitoring-diagram"
-      title="Multimodal neuromonitoring"
-      description="Auto-generated wrapper for the Multimodal neuromonitoring anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                        <g key={`dot-${m.id}`} style={{ cursor: "pointer" }} onClick={() => setSelectedId(m.id)}>
-                      <circle cx={cx} cy={cy} r={isSel ? 14 : 10} fill={m.color} opacity={isSel ? 0.95 : 0.6} stroke={m.color} strokeWidth={isSel ? 2 : 1} />
-                      <text x={cx} y={cy + 3} textAnchor="middle" fontSize={isSel ? 9 : 8} fontWeight="700" fill="hsl(var(--background))" pointerEvents="none">
-                        {m.abbreviation.replace(" (rSO₂)", "")}
-                      </text>
-                    </g>
-    </DiagramFigure>
+                      <g key={`dot-${m.id}`} style={{ cursor: "pointer" }} onClick={() => setSelectedId(m.id)}>
+                    <circle cx={cx} cy={cy} r={isSel ? 14 : 10} fill={m.color} opacity={isSel ? 0.95 : 0.6} stroke={m.color} strokeWidth={isSel ? 2 : 1} />
+                    <text x={cx} y={cy + 3} textAnchor="middle" fontSize={isSel ? 9 : 8} fontWeight="700" fill="hsl(var(--background))" pointerEvents="none">
+                      {m.abbreviation.replace(" (rSO₂)", "")}
+                    </text>
+                  </g>
   );
               })}
 

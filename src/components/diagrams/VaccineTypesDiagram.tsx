@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type VaccineKey = "live" | "inactivated" | "subunit" | "toxoid" | "mrna" | "vector";
 
@@ -195,27 +194,21 @@ export const VaccineTypesDiagram = () => {
         {VACCINES.map(v => {
           const isActive = v.key === selected;
           return (
-    <DiagramFigure
-      id="vaccine-types-diagram"
-      title="Vaccine types"
-      description="Auto-generated wrapper for the Vaccine types anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
-    >
-                  <button
-                key={v.key}
-                type="button"
-                onClick={() => setSelected(v.key)}
-                aria-pressed={isActive}
-                className="px-2 py-2 rounded-lg border-2 text-left transition-all"
-                style={{
-                  borderColor: isActive ? v.color : "hsl(var(--border))",
-                  backgroundColor: isActive ? withAlpha(v.color, 0.1) : "transparent",
-                }}
-              >
-                <div className="text-xs font-bold" style={{ color: isActive ? v.color : "hsl(var(--foreground))" }}>
-                  {v.shortName}
-                </div>
-              </button>
-    </DiagramFigure>
+                <button
+              key={v.key}
+              type="button"
+              onClick={() => setSelected(v.key)}
+              aria-pressed={isActive}
+              className="px-2 py-2 rounded-lg border-2 text-left transition-all"
+              style={{
+                borderColor: isActive ? v.color : "hsl(var(--border))",
+                backgroundColor: isActive ? withAlpha(v.color, 0.1) : "transparent",
+              }}
+            >
+              <div className="text-xs font-bold" style={{ color: isActive ? v.color : "hsl(var(--foreground))" }}>
+                {v.shortName}
+              </div>
+            </button>
   );
         })}
       </div>
