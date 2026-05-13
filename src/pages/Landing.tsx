@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
 import { SupportSection } from "@/components/SupportSection";
