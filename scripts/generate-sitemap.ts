@@ -184,19 +184,28 @@ const entries: SitemapEntry[] = [
 // each sitemap entry's last-modified date from the file backing that route.
 function buildPathToFileMap(): Record<string, string> {
   const app = readFileSync(resolve("src/App.tsx"), "utf8");
-  const importRe = /import\s+(?:{[^}]+}|(\w+))\s+from\s+["'](\.\/pages\/[^"']+)["']/g;
   const componentToFile: Record<string, string> = {};
-  for (const m of app.matchAll(importRe)) {
-    const name = m[1];
-    if (!name) continue;
-    const rel = m[2].replace(/^\.\//, "src/");
+  const recordImport = (name: string, rel: string) => {
+    const base = rel.replace(/^\.\//, "src/");
     for (const ext of [".tsx", ".ts", "/index.tsx", "/index.ts"]) {
-      const candidate = resolve(rel + ext);
+      const candidate = resolve(base + ext);
       if (existsSync(candidate)) {
         componentToFile[name] = candidate;
         break;
       }
     }
+  };
+  // Static imports: `import Name from "./pages/..."`
+  for (const m of app.matchAll(
+    /import\s+(\w+)\s+from\s+["'](\.\/pages\/[^"']+)["']/g,
+  )) {
+    recordImport(m[1], m[2]);
+  }
+  // Lazy imports: `const Name = lazy(() => import("./pages/..."))`
+  for (const m of app.matchAll(
+    /const\s+(\w+)\s*=\s*lazy\(\s*\(\)\s*=>\s*import\(["'](\.\/pages\/[^"']+)["']\)/g,
+  )) {
+    recordImport(m[1], m[2]);
   }
   const routeRe = /<Route\s+path="([^"]+)"\s+element=\{<(\w+)/g;
   const map: Record<string, string> = {};
