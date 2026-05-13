@@ -413,7 +413,7 @@ for (const k of groupOrder) {
   const group = ROWS.filter((r) => r.kind === k);
   if (!group.length) continue;
   html += `<h2>${esc(groupLabels[k])} (${group.length})</h2>`;
-  html += `<table><thead><tr><th>Status</th><th>URL</th><th>Expected</th><th>Detected</th><th>Missing</th><th>Component</th></tr></thead><tbody>`;
+  html += `<table><thead><tr><th>Status</th><th>URL</th><th>Expected</th><th>Detected</th><th>Missing @type</th><th>Missing properties (per @type)</th><th>Component</th></tr></thead><tbody>`;
   for (const r of group) {
     const cls = !r.routePath ? "warn" : r.missingTypes.length || r.badBlocks.length ? "fail" : "ok";
     html += `<tr>
@@ -422,6 +422,7 @@ for (const k of groupOrder) {
       <td>${htmlList(r.expected)}</td>
       <td>${htmlList(r.detected)}</td>
       <td>${htmlList(r.missingTypes)}</td>
+      <td>${fmtMissingPropsHtml(r)}</td>
       <td>${esc(r.component ?? "—")}</td>
     </tr>`;
   }
