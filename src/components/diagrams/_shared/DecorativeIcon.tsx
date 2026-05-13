@@ -127,6 +127,82 @@ const a11yProps = {
   tabIndex: -1,
 };
 
+/* ------------------------------------------------------------------ */
+/*  Dev-only runtime guard                                            */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Warn (once per offending component) if a non-Lucide-like value is
+ * passed as `icon`. Stripped from production bundles by the
+ * `process.env.NODE_ENV !== "production"` guard.
+ *
+ * Heuristics for "Lucide-like":
+ *   1. A `forwardRef` exotic object  — matches lucide-react icons
+ *      (their `$$typeof === Symbol.for("react.forward_ref")`).
+ *   2. A plain function component whose displayName/name looks like a
+ *      PascalCase icon (matches custom hand-rolled SVG components).
+ *
+ * Anything else — strings, HTML intrinsics, lazy components, class
+ * components, plain objects — gets a console.warn pointing at the call
+ * site so the developer can fix it before it ships.
+ */
+const REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref");
+const REACT_MEMO_TYPE = Symbol.for("react.memo");
+const warnedIcons = new WeakSet<object>();
+
+function assertLucideLike(icon: unknown): void {
+  if (process.env.NODE_ENV === "production") return;
+  if (icon == null) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "[DecorativeIcon] `icon` prop is null/undefined. Pass a lucide-react icon component, e.g. `icon={AlertTriangle}`.",
+    );
+    return;
+  }
+
+  // Already-warned components — bail out to avoid log spam.
+  if (typeof icon === "object" && warnedIcons.has(icon as object)) return;
+
+  const isForwardRef =
+    typeof icon === "object" &&
+    icon !== null &&
+    (icon as { $$typeof?: symbol }).$$typeof === REACT_FORWARD_REF_TYPE;
+
+  const isMemoOfForwardRef =
+    typeof icon === "object" &&
+    icon !== null &&
+    (icon as { $$typeof?: symbol }).$$typeof === REACT_MEMO_TYPE &&
+    (icon as { type?: { $$typeof?: symbol } }).type?.$$typeof ===
+      REACT_FORWARD_REF_TYPE;
+
+  let isPascalCaseFnComponent = false;
+  if (typeof icon === "function") {
+    const fnName =
+      (icon as { displayName?: string; name?: string }).displayName ??
+      (icon as { name?: string }).name ??
+      "";
+    isPascalCaseFnComponent = /^[A-Z][A-Za-z0-9]*$/.test(fnName);
+  }
+
+  if (isForwardRef || isMemoOfForwardRef || isPascalCaseFnComponent) return;
+
+  if (typeof icon === "object") warnedIcons.add(icon as object);
+
+  const description =
+    typeof icon === "string"
+      ? `string ("${icon}")`
+      : typeof icon === "function"
+      ? `function "${(icon as { name?: string }).name || "anonymous"}" — name is not PascalCase`
+      : `${typeof icon}`;
+
+  // eslint-disable-next-line no-console
+  console.warn(
+    `[DecorativeIcon] Expected a Lucide-like icon component (forwardRef ` +
+      `SVG component or PascalCase function component). Received: ${description}. ` +
+      `This will not render the expected icon.`,
+  );
+}
+
 export const DecorativeIcon: React.FC<DecorativeIconProps> = ({
   icon: Icon,
   badge = "none",
