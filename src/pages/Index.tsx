@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Atom, Heart, FlaskConical, GraduationCap, ArrowRight, Stethoscope, Activity, ClipboardList, Bone, Beaker } from "lucide-react";
 import brainLogo from "/brain-logo.png";
 import { useProgress } from "@/contexts/ProgressContext";
@@ -90,10 +91,21 @@ const sections: {
   },
 ];
 
+const SITE_URL = "https://anaesthesiacore.app";
+
 const Index = () => {
   const { getSectionProgress, getOverallProgress } = useProgress();
   const { matchesFilter } = useExamFilter();
   const overall = getOverallProgress();
+  const location = useLocation();
+  const isRevise = location.pathname === "/revise";
+  const canonical = `${SITE_URL}${isRevise ? "/revise" : "/"}`;
+  const pageTitle = isRevise
+    ? "Revise FRCA & FFICM — AnaesthesiaCore"
+    : "AnaesthesiaCore – FRCA & FFICM Revision";
+  const pageDescription = isRevise
+    ? "Pick a section and revise FRCA Primary, Final or FFICM topics with structured notes, diagrams, quizzes and viva practice mapped to the official curriculum."
+    : "Study companion for FRCA Primary, Final and FFICM trainees: structured notes, interactive diagrams, quizzes, AI-generated podcasts and an AI viva examiner.";
 
   const visibleSections = sections.filter((s) => {
     const topics = topicsBySection[s.sectionKey] || [];
@@ -102,6 +114,17 @@ const Index = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+      </Helmet>
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, BookOpen, Mic, Search, Shuffle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -109,6 +110,26 @@ const VivaHub = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Viva voce practice — AI FRCA & FFICM examiner | AnaesthesiaCore</title>
+        <meta
+          name="description"
+          content="Rehearse FRCA Primary, Final and FFICM viva questions out loud. An AI examiner asks spoken questions, listens to your answer, and gives rubric-based feedback."
+        />
+        <link rel="canonical" href="https://anaesthesiacore.app/viva" />
+        <meta property="og:title" content="Viva voce practice — AI FRCA & FFICM examiner" />
+        <meta
+          property="og:description"
+          content="Spoken viva practice with an AI examiner calibrated to FRCA Primary, Final and FFICM standards."
+        />
+        <meta property="og:url" content="https://anaesthesiacore.app/viva" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:title" content="Viva voce practice — AI FRCA & FFICM examiner" />
+        <meta
+          name="twitter:description"
+          content="Spoken viva practice with an AI examiner calibrated to FRCA Primary, Final and FFICM standards."
+        />
+      </Helmet>
       <div className="container mx-auto px-4 py-8 max-w-5xl">
         <Link
           to="/"
