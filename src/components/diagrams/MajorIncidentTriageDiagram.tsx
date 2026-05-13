@@ -133,7 +133,7 @@ export const MajorIncidentTriageDiagram = () => {
       <div className="rounded-lg border border-border bg-background p-3">
         <svg viewBox="0 0 800 360" className="w-full h-auto" role="img" aria-label="Triage flow">
           {/* ===== Phase 0: METHANE radio bubble ===== */}
-          <g {...svgNodeProps("Phase 1 — METHANE alert: structured radio message from scene")} opacity={phase === 0 ? 1 : 0.18} style={{ transition: "opacity 300ms" }}>
+          <g {...svgNodeProps("Step 1 of 4: METHANE alert — structured radio message from scene")} opacity={phase === 0 ? 1 : 0.18} style={{ transition: "opacity 300ms" }}>
             <rect x="20" y="20" width="220" height="120" rx="10" fill="hsl(var(--card))" stroke="hsl(var(--primary))" strokeWidth="1.5" />
             <text x="32" y="42" fontSize="13" fontWeight="700" fill="hsl(var(--primary))">METHANE</text>
             <text x="32" y="60" fontSize="10" fill="hsl(var(--foreground))"><tspan fontWeight="700">M</tspan>ajor incident declared</text>
@@ -159,7 +159,7 @@ export const MajorIncidentTriageDiagram = () => {
           </defs>
 
           {/* ===== Phase 1: Triage Sieve decision tree ===== */}
-          <g {...svgNodeProps("Phase 2 — Triage Sieve: scene-based physiological sort, four sequential decision points")} opacity={phase === 1 ? 1 : phase > 1 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
+          <g {...svgNodeProps("Step 2 of 4: Triage Sieve at scene — physiological sort with four sequential decision points")} opacity={phase === 1 ? 1 : phase > 1 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
             <text x="300" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Triage Sieve (&lt; 30 s per casualty)</text>
 
             {[
@@ -170,7 +170,7 @@ export const MajorIncidentTriageDiagram = () => {
             ].map((row, i) => {
               const active = phase === 1 && sieveStep === i;
               return (
-                <g key={i} {...svgNodeProps(`Sieve decision ${i + 1}: ${row.q} — yes ${row.yes}, no ${row.no}`)}>
+                <g key={i} {...svgNodeProps(`Decision ${i + 1} of 4: ${row.q} — yes ${row.yes}; no ${row.no}`)}>
                   <rect
                     x="300"
                     y={row.y}
@@ -194,7 +194,7 @@ export const MajorIncidentTriageDiagram = () => {
           <path d="M 530 130 L 565 130" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arr)" opacity={phase >= 2 ? 1 : 0.3} />
 
           {/* ===== Phase 2: Triage Sort / TRTS ===== */}
-          <g {...svgNodeProps("Phase 3 — Triage Sort using Triage Revised Trauma Score on hospital arrival")} opacity={phase === 2 ? 1 : phase > 2 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
+          <g {...svgNodeProps("Step 3 of 4: Triage Sort using Triage Revised Trauma Score on hospital arrival")} opacity={phase === 2 ? 1 : phase > 2 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
             <text x="575" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Triage Sort — TRTS (ED)</text>
             <rect x="575" y="50" width="205" height="170" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--border))" />
             <text x="585" y="68" fontSize="10" fontWeight="600" fill="hsl(var(--foreground))">Score 0–4 each:</text>
@@ -212,7 +212,7 @@ export const MajorIncidentTriageDiagram = () => {
           </g>
 
           {/* ===== Phase 3: Casualty stream ===== */}
-          <g {...svgNodeProps("Phase 4 — Stream casualties to geographic priority areas, re-triage every 15 minutes")} opacity={phase === 3 ? 1 : 0.2} style={{ transition: "opacity 300ms" }}>
+          <g {...svgNodeProps("Step 4 of 4: Stream casualties to geographic priority areas — re-triage every 15 minutes")} opacity={phase === 3 ? 1 : 0.2} style={{ transition: "opacity 300ms" }}>
             <text x="20" y="245" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Stream to area · re-triage every 15 min</text>
 
             {/* Lanes */}
@@ -223,7 +223,7 @@ export const MajorIncidentTriageDiagram = () => {
               { x: 485, label: "P4 Expectant", color: PRIORITY.P4.color, n: 2 },
               { x: 640, label: "Deceased", color: "hsl(var(--foreground))", n: 2 },
             ].map((lane) => (
-              <g key={lane.label} {...svgNodeProps(`Stream lane: ${lane.label}, ${lane.n} casualties`)}>
+              <g key={lane.label} {...svgNodeProps(`Outcome lane: ${lane.label} — ${lane.n} casualties`)}>
                 <rect x={lane.x} y={260} width={140} height={80} rx={6} fill="hsl(var(--card))" stroke={lane.color} strokeWidth="1" />
                 <text x={lane.x + 8} y={278} fontSize="10.5" fontWeight="700" fill={lane.color}>{lane.label}</text>
                 {/* casualty dots populating with streamP */}

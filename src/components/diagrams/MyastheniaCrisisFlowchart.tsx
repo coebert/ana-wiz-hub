@@ -132,7 +132,7 @@ const MyastheniaCrisisScene = ({ active }: { active: number }) => {
         <line x1="200" y1="42" x2="200" y2="58" stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd="url(#mc-arrow)" />
 
         {/* MIDDLE: bedside metrics box */}
-        <g transform="translate(50, 62)" opacity={active >= 1 ? 1 : 0.4} className="transition-opacity duration-500" {...svgNodeProps("Step 2 of 6: Bedside respiratory metrics every 4 hours — FVC, NIF, single-breath count and PaCO2")}>
+        <g transform="translate(50, 62)" opacity={active >= 1 ? 1 : 0.4} className="transition-opacity duration-500" {...svgNodeProps("Step 2 of 6: Bedside respiratory metrics every 4 hours — FVC in mL/kg, NIF in cmH2O, single-breath count and PaCO2 in kPa")}>
           <rect width="300" height="78" rx="6"
             fill={active === 1 ? "hsl(var(--clinical) / 0.12)" : "hsl(var(--card))"}
             stroke={active === 1 ? "hsl(var(--clinical))" : "hsl(var(--border))"}
@@ -159,7 +159,7 @@ const MyastheniaCrisisScene = ({ active }: { active: number }) => {
 
         {/* DECISION DIAMOND: bulbar / NIV-eligible? */}
         <line x1="200" y1="140" x2="200" y2="156" stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd="url(#mc-arrow)" />
-        <g transform="translate(140, 158)" opacity={active >= 2 ? 1 : 0.4} className="transition-opacity duration-500" {...svgNodeProps("Decision point: bulbar function intact and PaCO2 less than 6.5 kPa? Yes routes to NIV trial, no or fail routes to intubation")}>
+        <g transform="translate(140, 158)" opacity={active >= 2 ? 1 : 0.4} className="transition-opacity duration-500" {...svgNodeProps("Decision 1 of 1: Bulbar function intact and PaCO2 less than 6.5 kPa? — yes route to NIV trial; no or fail route to intubation")}>
           <polygon points="60,0 120,28 60,56 0,28"
             fill={active === 2 ? "hsl(var(--physiology) / 0.15)" : "hsl(var(--card))"}
             stroke={active === 2 ? "hsl(var(--physiology))" : "hsl(var(--border))"}
@@ -172,7 +172,7 @@ const MyastheniaCrisisScene = ({ active }: { active: number }) => {
         <line x1="140" y1="186" x2="80" y2="220" stroke={niv ? "hsl(var(--physiology))" : "hsl(var(--border))"}
           strokeWidth={niv ? 2 : 1} markerEnd="url(#mc-arrow)" />
         <text x="100" y="205" className="text-[8px]" fill="hsl(var(--muted-foreground))">YES</text>
-        <g transform="translate(15, 222)" opacity={active >= 2 ? 1 : 0.35} className="transition-opacity duration-500" {...svgNodeProps("Step 3a (yes branch): NIV trial with BiPAP 8 over 4 escalating to 12 over 5 — avoids intubation in around 70 percent")}>
+        <g transform="translate(15, 222)" opacity={active >= 2 ? 1 : 0.35} className="transition-opacity duration-500" {...svgNodeProps("Step 3a of 6 (yes branch): NIV trial with BiPAP 8 over 4 cmH2O escalating to 12 over 5 cmH2O — avoids intubation in around 70 percent")}>
           <rect width="130" height="44" rx="6"
             fill={niv ? "hsl(var(--physiology) / 0.18)" : "hsl(var(--card))"}
             stroke={niv ? "hsl(var(--physiology))" : "hsl(var(--border))"}
@@ -186,7 +186,7 @@ const MyastheniaCrisisScene = ({ active }: { active: number }) => {
         <line x1="260" y1="186" x2="320" y2="220" stroke={tube ? "hsl(var(--destructive))" : "hsl(var(--border))"}
           strokeWidth={tube ? 2 : 1} markerEnd="url(#mc-arrow)" />
         <text x="290" y="205" className="text-[8px]" fill="hsl(var(--muted-foreground))">NO / FAIL</text>
-        <g transform="translate(255, 222)" opacity={active >= 3 ? 1 : 0.35} className="transition-opacity duration-500" {...svgNodeProps("Step 3b (no or fail branch): Intubate when FVC less than 15 mL/kg or NIF more positive than minus 20 — reduce neuromuscular blocker dose to one fifth or one tenth")}>
+        <g transform="translate(255, 222)" opacity={active >= 3 ? 1 : 0.35} className="transition-opacity duration-500" {...svgNodeProps("Step 3b of 6 (no/fail branch): Intubate when FVC less than 15 mL/kg or NIF less negative than minus 20 cmH2O — reduce neuromuscular blocker dose to one fifth or one tenth")}>
           <rect width="130" height="44" rx="6"
             fill={tube ? "hsl(var(--destructive) / 0.18)" : "hsl(var(--card))"}
             stroke={tube ? "hsl(var(--destructive))" : "hsl(var(--border))"}
@@ -203,7 +203,7 @@ const MyastheniaCrisisScene = ({ active }: { active: number }) => {
           strokeWidth={plex ? 2 : 1} markerEnd="url(#mc-arrow)" />
 
         {/* Immunotherapy split: IVIg / PLEX */}
-        <g transform="translate(50, 282)" opacity={active >= 4 ? 1 : 0.35} className="transition-opacity duration-500" {...svgNodeProps("Step 4a: Immunotherapy option IVIg 0.4 g/kg for 5 days — avoid in IgA deficiency, AKI or VTE risk")}>
+        <g transform="translate(50, 282)" opacity={active >= 4 ? 1 : 0.35} className="transition-opacity duration-500" {...svgNodeProps("Step 4a of 6: Immunotherapy option IVIg 0.4 g/kg per day for 5 days — avoid in IgA deficiency, AKI or VTE risk")}>
           <rect width="140" height="32" rx="6"
             fill={ivig ? "hsl(var(--clinical) / 0.18)" : "hsl(var(--card))"}
             stroke={ivig ? "hsl(var(--clinical))" : "hsl(var(--border))"}
@@ -211,7 +211,7 @@ const MyastheniaCrisisScene = ({ active }: { active: number }) => {
           <text x="70" y="14" textAnchor="middle" className="text-[10px] font-semibold" fill="hsl(var(--foreground))">IVIg 0.4 g/kg × 5</text>
           <text x="70" y="26" textAnchor="middle" className="text-[8px]" fill="hsl(var(--muted-foreground))">avoid: IgA def · AKI · VTE</text>
         </g>
-        <g transform="translate(210, 282)" opacity={active >= 4 ? 1 : 0.35} className="transition-opacity duration-500" {...svgNodeProps("Step 4b: Immunotherapy option PLEX (plasma exchange) — 5 sessions, faster onset, preferred in MuSK-antibody positive or severe bulbar disease")}>
+        <g transform="translate(210, 282)" opacity={active >= 4 ? 1 : 0.35} className="transition-opacity duration-500" {...svgNodeProps("Step 4b of 6: Immunotherapy option PLEX (plasma exchange) for 5 sessions — faster onset, preferred in MuSK-antibody positive or severe bulbar disease")}>
           <rect width="140" height="32" rx="6"
             fill={plex ? "hsl(var(--clinical) / 0.18)" : "hsl(var(--card))"}
             stroke={plex ? "hsl(var(--clinical))" : "hsl(var(--border))"}
@@ -222,7 +222,7 @@ const MyastheniaCrisisScene = ({ active }: { active: number }) => {
 
         {/* Steroid follow-on label */}
         {active >= 5 && (
-          <g className="animate-fade-in" {...svgNodeProps("Step 5 of 6: Add steroids only after immunotherapy is established to avoid early steroid-induced worsening")}>
+          <g className="animate-fade-in" {...svgNodeProps("Step 6 of 6: Add steroids only after immunotherapy is established — avoids early steroid-induced worsening")}>
             <text x="200" y="316" textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(var(--physiology))">
               + Steroids AFTER immunotherapy established
             </text>
