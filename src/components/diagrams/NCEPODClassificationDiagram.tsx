@@ -130,7 +130,7 @@ export const NCEPODClassificationDiagram = () => {
               {TIERS.map((t, i) => {
                 const isActive = i === active;
                 return (
-                  <g key={t.cat} {...svgNodeProps(`Tier ${i + 1}/4 — Cat ${t.cat} ${t.label} (${t.window})`)}>
+                  <g key={t.cat} {...svgNodeProps(`Tier ${i + 1}/4: Cat ${t.cat} ${t.label} — within ${t.window.toLowerCase()}`)}>
                     <path
                       d={arcPath(cx, cy, r, t.startAngle, t.endAngle)}
                       fill={t.color}
