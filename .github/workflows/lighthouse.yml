@@ -106,3 +106,24 @@ jobs:
           fi
           curl "${ARGS[@]}" | tee /tmp/ingest-response.json
           grep -q '"ok":true' /tmp/ingest-response.json
+
+      - name: Run post-publish SEO scan
+        env:
+          SCAN_URL: https://aqkusdwwhlqqttvnxuwu.functions.supabase.co/run-seo-scan
+          TOKEN: ${{ secrets.LIGHTHOUSE_INGEST_TOKEN }}
+          TARGET_URL: ${{ github.event.inputs.url || github.event.deployment_status.environment_url || 'https://anaesthesiacore.app/' }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::LIGHTHOUSE_INGEST_TOKEN repo secret not set"
+            exit 1
+          fi
+          BODY=$(jq -nc \
+            --arg url "$TARGET_URL" \
+            --arg sha "$GITHUB_SHA" \
+            '{base_url: $url, commit_sha: $sha, max_pages: 80}')
+          curl -sS -X POST "$SCAN_URL" \
+            -H "x-seo-scan-token: $TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "$BODY" | tee /tmp/seo-scan-response.json
+          grep -q '"ok":true' /tmp/seo-scan-response.json
+
