@@ -81,6 +81,8 @@ function humanize(name) {
 
   const out = parts.map((p, i) => {
     const upper = p.toUpperCase();
+    // Pure uppercase part of length >= 2: treat as acronym, keep verbatim.
+    if (p === upper && p.length >= 2 && /[A-Z]/.test(p)) return upper;
     if (ACRONYMS.has(upper)) return upper;
     if (/^\d+$/.test(p)) return p;
     if (i === 0) return p[0].toUpperCase() + p.slice(1).toLowerCase();
