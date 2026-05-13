@@ -283,18 +283,57 @@ Deno.serve(async (req) => {
     audits.push(...results);
   }
 
+  // Normalize text for duplicate detection: collapse whitespace, lowercase, strip
+  // trailing punctuation. Avoids flagging trivial differences like extra spaces or
+  // capitalization as meaningful duplicates.
+  const normText = (s: string | undefined | null): string => {
+    if (!s) return "";
+    return s
+      .replace(/\s+/g, " ")
+      .trim()
+      .replace(/[.\s]+$/g, "")
+      .toLowerCase();
+  };
+  // Normalize URLs for canonical comparison: lowercase host, strip trailing slash,
+  // drop hash, drop common tracking params, ignore default ports.
+  const normUrl = (s: string | undefined | null): string => {
+    if (!s) return "";
+    try {
+      const u = new URL(s);
+      u.hash = "";
+      u.hostname = u.hostname.toLowerCase();
+      const drop = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid", "ref"];
+      for (const k of drop) u.searchParams.delete(k);
+      // Sort params for stable comparison
+      const sorted = [...u.searchParams.entries()].sort(([a], [b]) => a.localeCompare(b));
+      u.search = "";
+      for (const [k, v] of sorted) u.searchParams.append(k, v);
+      let out = u.toString();
+      if (u.pathname !== "/" && out.endsWith("/")) out = out.slice(0, -1);
+      return out.toLowerCase();
+    } catch {
+      return s.trim().toLowerCase().replace(/\/+$/, "");
+    }
+  };
+
   const titleMap = new Map<string, number>();
   const descMap = new Map<string, number>();
   const canonMap = new Map<string, number>();
   for (const a of audits) {
-    if (a.title) titleMap.set(a.title, (titleMap.get(a.title) ?? 0) + 1);
-    if (a.description) descMap.set(a.description, (descMap.get(a.description) ?? 0) + 1);
-    if (a.canonical) canonMap.set(a.canonical, (canonMap.get(a.canonical) ?? 0) + 1);
+    const t = normText(a.title);
+    const d = normText(a.description);
+    const c = normUrl(a.canonical);
+    if (t) titleMap.set(t, (titleMap.get(t) ?? 0) + 1);
+    if (d) descMap.set(d, (descMap.get(d) ?? 0) + 1);
+    if (c) canonMap.set(c, (canonMap.get(c) ?? 0) + 1);
   }
   for (const a of audits) {
-    if (a.title && (titleMap.get(a.title) ?? 0) > 1) a.findings.push("duplicate_title");
-    if (a.description && (descMap.get(a.description) ?? 0) > 1) a.findings.push("duplicate_description");
-    if (a.canonical && (canonMap.get(a.canonical) ?? 0) > 1) a.findings.push("duplicate_canonical");
+    const t = normText(a.title);
+    const d = normText(a.description);
+    const c = normUrl(a.canonical);
+    if (t && (titleMap.get(t) ?? 0) > 1) a.findings.push("duplicate_title");
+    if (d && (descMap.get(d) ?? 0) > 1) a.findings.push("duplicate_description");
+    if (c && (canonMap.get(c) ?? 0) > 1) a.findings.push("duplicate_canonical");
   }
 
   const pages_ok = audits.filter((a) => a.status >= 200 && a.status < 400).length;
