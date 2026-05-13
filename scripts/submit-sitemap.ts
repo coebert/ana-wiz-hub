@@ -68,9 +68,16 @@ async function main(): Promise<void> {
 
   const baseUrl = process.env.VITE_SUPABASE_URL;
   const anonKey = process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-  if (!baseUrl || !anonKey) {
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const bearerToken = serviceKey || anonKey;
+  if (!baseUrl || !bearerToken || !anonKey) {
     throw new Error(
-      "Missing VITE_SUPABASE_URL or VITE_SUPABASE_PUBLISHABLE_KEY — cannot reach the gsc-submit-sitemap edge function.",
+      "Missing VITE_SUPABASE_URL, VITE_SUPABASE_PUBLISHABLE_KEY, or SUPABASE_SERVICE_ROLE_KEY — cannot reach the gsc-submit-sitemap edge function.",
+    );
+  }
+  if (!serviceKey) {
+    console.warn(
+      "⚠  SUPABASE_SERVICE_ROLE_KEY not set — falling back to anon key. The edge function now requires admin auth and this call will likely fail with 401/403.",
     );
   }
 
@@ -82,7 +89,7 @@ async function main(): Promise<void> {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${anonKey}`,
+      Authorization: `Bearer ${bearerToken}`,
       apikey: anonKey,
     },
     body: "{}",
