@@ -279,6 +279,38 @@ const passing = ROWS.filter((r) => r.missingTypes.length === 0 && r.badBlocks.le
 function fmtList(xs: string[]): string {
   return xs.length ? xs.map((x) => `\`${x}\``).join(", ") : "—";
 }
+/** Per-@type missing-required summary, e.g. `Course`: name, description; `FAQPage`: mainEntity. */
+function fmtMissingProps(r: Row, sep = "; "): string {
+  // Aggregate missing props across all bad blocks of the same @type for this URL.
+  const byType = new Map<string, Set<string>>();
+  for (const b of r.badBlocks) {
+    if (!b.type || b.missing.length === 0) continue;
+    const set = byType.get(b.type) ?? new Set<string>();
+    b.missing.forEach((p) => set.add(p));
+    byType.set(b.type, set);
+  }
+  if (byType.size === 0) return "—";
+  return [...byType.entries()]
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([t, set]) => `\`${t}\`: ${[...set].sort().map((p) => `\`${p}\``).join(", ")}`)
+    .join(sep);
+}
+function fmtMissingPropsHtml(r: Row): string {
+  const byType = new Map<string, Set<string>>();
+  for (const b of r.badBlocks) {
+    if (!b.type || b.missing.length === 0) continue;
+    const set = byType.get(b.type) ?? new Set<string>();
+    b.missing.forEach((p) => set.add(p));
+    byType.set(b.type, set);
+  }
+  if (byType.size === 0) return "—";
+  return [...byType.entries()]
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([t, set]) =>
+      `<code>${esc(t)}</code>: ${[...set].sort().map((p) => `<code>${esc(p)}</code>`).join(", ")}`
+    )
+    .join("<br>");
+}
 function statusOf(r: Row): string {
   if (!r.routePath) return "⚠️ unresolved";
   if (r.missingTypes.length || r.badBlocks.length) return "❌ fail";
@@ -307,11 +339,11 @@ for (const k of groupOrder) {
   const group = ROWS.filter((r) => r.kind === k);
   if (!group.length) continue;
   md += `## ${groupLabels[k]} (${group.length})\n\n`;
-  md += "| Status | URL | Expected | Detected | Missing | Component |\n";
-  md += "|---|---|---|---|---|---|\n";
+  md += "| Status | URL | Expected | Detected | Missing @type | Missing properties (per @type) | Component |\n";
+  md += "|---|---|---|---|---|---|---|\n";
   for (const r of group) {
     md +=
-      `| ${statusOf(r)} | \`${r.url}\` | ${fmtList(r.expected)} | ${fmtList(r.detected)} | ${fmtList(r.missingTypes)} | ${r.component ?? "—"} |\n`;
+      `| ${statusOf(r)} | \`${r.url}\` | ${fmtList(r.expected)} | ${fmtList(r.detected)} | ${fmtList(r.missingTypes)} | ${fmtMissingProps(r)} | ${r.component ?? "—"} |\n`;
   }
   md += "\n";
 }
@@ -381,7 +413,7 @@ for (const k of groupOrder) {
   const group = ROWS.filter((r) => r.kind === k);
   if (!group.length) continue;
   html += `<h2>${esc(groupLabels[k])} (${group.length})</h2>`;
-  html += `<table><thead><tr><th>Status</th><th>URL</th><th>Expected</th><th>Detected</th><th>Missing</th><th>Component</th></tr></thead><tbody>`;
+  html += `<table><thead><tr><th>Status</th><th>URL</th><th>Expected</th><th>Detected</th><th>Missing @type</th><th>Missing properties (per @type)</th><th>Component</th></tr></thead><tbody>`;
   for (const r of group) {
     const cls = !r.routePath ? "warn" : r.missingTypes.length || r.badBlocks.length ? "fail" : "ok";
     html += `<tr>
@@ -390,6 +422,7 @@ for (const k of groupOrder) {
       <td>${htmlList(r.expected)}</td>
       <td>${htmlList(r.detected)}</td>
       <td>${htmlList(r.missingTypes)}</td>
+      <td>${fmtMissingPropsHtml(r)}</td>
       <td>${esc(r.component ?? "—")}</td>
     </tr>`;
   }
