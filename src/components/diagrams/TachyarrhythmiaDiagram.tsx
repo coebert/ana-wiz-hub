@@ -813,13 +813,13 @@ const TachyarrhythmiaDiagram = () => {
                     <div className="w-full max-w-[220px] mx-auto"><TreeMini tachy={t} color={t.color} /></div>
                     <div className="min-w-0">
                       {showLabels && (
-                        <p className="text-[11px] text-muted-foreground mb-1.5 leading-snug">
+                        <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
                           <span className="font-semibold text-foreground">Origin:</span> {t.origin} · <span className="font-semibold text-foreground">Rate:</span> {t.rate}
                         </p>
                       )}
                       <RhythmStrip tachy={t} color={t.color} />
                       {showLabels && (
-                        <p className="text-[10px] text-muted-foreground mt-1.5 italic leading-snug">{t.ecg}</p>
+                        <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{t.ecg}</p>
                       )}
                       <AdenosineRow info={t.adenosine} compact />
                     </div>
@@ -834,11 +834,11 @@ const TachyarrhythmiaDiagram = () => {
             <div className="flex flex-col gap-3">
               <div className="w-full max-w-[220px] mx-auto"><TreeMini tachy={info} color={info.color} /></div>
               <div className="min-w-0">
-                <p className="text-[11px] text-muted-foreground mb-1.5">
+                <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
                   <span className="font-semibold text-foreground">Origin:</span> {info.origin} · <span className="font-semibold text-foreground">Rate:</span> {info.rate}
                 </p>
                 <RhythmStrip tachy={info} color={info.color} />
-                <p className="text-[10px] text-muted-foreground mt-1.5 italic">{info.ecg}</p>
+                <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{info.ecg}</p>
                 <AdenosineRow info={info.adenosine} compact />
               </div>
             </div>

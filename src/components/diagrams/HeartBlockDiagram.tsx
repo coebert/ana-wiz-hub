@@ -488,11 +488,11 @@ const HeartBlockDiagram = () => {
                     <div className="w-full max-w-[200px] mx-auto"><TreeMini block={b} color={b.color} /></div>
                     <div className="min-w-0">
                       {showLabels && (
-                        <p className="text-[11px] text-muted-foreground mb-1.5 leading-snug">{b.siteDescription}</p>
+                        <p className="text-xs text-muted-foreground mb-2 leading-relaxed">{b.siteDescription}</p>
                       )}
                       <RhythmStrip block={b} color={b.color} />
                       {showLabels && (
-                        <p className="text-[10px] text-muted-foreground mt-1.5 italic leading-snug">{b.ecg}</p>
+                        <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{b.ecg}</p>
                       )}
                     </div>
                   </div>
@@ -513,7 +513,7 @@ const HeartBlockDiagram = () => {
                           {b.leads.rv && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(35,80%,50%)]/15 text-[hsl(35,80%,38%)] dark:text-[hsl(35,80%,60%)] font-semibold">RV</span>}
                           {b.leads.lv && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(0,70%,50%)]/15 text-[hsl(0,70%,45%)] dark:text-[hsl(0,70%,65%)] font-semibold">LV (CS)</span>}
                         </div>
-                        <p className="text-[10px] text-muted-foreground leading-snug">{b.deviceRationale}</p>
+                        <p className="text-[11px] text-muted-foreground leading-relaxed">{b.deviceRationale}</p>
                       </div>
                     </div>
                   )}
@@ -527,9 +527,9 @@ const HeartBlockDiagram = () => {
             <div className="flex flex-col gap-3">
               <div className="w-full max-w-[200px] mx-auto"><TreeMini block={info} color={info.color} /></div>
               <div className="min-w-0">
-                <p className="text-[11px] text-muted-foreground mb-1.5">{info.siteDescription}</p>
+                <p className="text-xs text-muted-foreground mb-2 leading-relaxed">{info.siteDescription}</p>
                 <RhythmStrip block={info} color={info.color} />
-                <p className="text-[10px] text-muted-foreground mt-1.5 italic">{info.ecg}</p>
+                <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{info.ecg}</p>
               </div>
             </div>
             {showPacing && (
@@ -545,7 +545,7 @@ const HeartBlockDiagram = () => {
                       {info.device}
                     </span>
                   </div>
-                  <p className="text-[10px] text-muted-foreground leading-snug">{info.deviceRationale}</p>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">{info.deviceRationale}</p>
                 </div>
               </div>
             )}

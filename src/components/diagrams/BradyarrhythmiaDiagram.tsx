@@ -497,16 +497,16 @@ const BradyarrhythmiaDiagram = () => {
                     <div className="w-full max-w-[220px] mx-auto"><TreeMini brady={b} color={b.color} /></div>
                     <div className="min-w-0">
                       {showLabels && (
-                        <p className="text-[11px] text-muted-foreground mb-1.5 leading-snug">
+                        <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
                           <span className="font-semibold text-foreground">Rate:</span> {b.rate}
                         </p>
                       )}
                       <RhythmStrip brady={b} color={b.color} />
                       {showLabels && (
-                        <p className="text-[10px] text-muted-foreground mt-1.5 italic leading-snug">{b.ecg}</p>
+                        <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{b.ecg}</p>
                       )}
                       <p
-                        className="text-[10px] mt-1.5 px-2 py-1 rounded font-medium"
+                        className="text-[11px] mt-2 px-2.5 py-1 rounded font-semibold leading-relaxed"
                         style={{ background: withAlpha(b.color, 0.1), color: b.color }}
                       >
                         Device: {b.device}
@@ -523,11 +523,11 @@ const BradyarrhythmiaDiagram = () => {
             <div className="flex flex-col gap-3">
               <div className="w-full max-w-[220px] mx-auto"><TreeMini brady={info} color={info.color} /></div>
               <div className="min-w-0">
-                <p className="text-[11px] text-muted-foreground mb-1.5">
+                <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
                   <span className="font-semibold text-foreground">Pacemaker:</span> {info.pacemaker} · <span className="font-semibold text-foreground">Rate:</span> {info.rate}
                 </p>
                 <RhythmStrip brady={info} color={info.color} />
-                <p className="text-[10px] text-muted-foreground mt-1.5 italic">{info.ecg}</p>
+                <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{info.ecg}</p>
               </div>
             </div>
           </div>
