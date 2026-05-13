@@ -443,6 +443,13 @@ interface BaselineRow {
   missingTypes?: string[];
   badBlocks?: Row["badBlocks"];
   routePath?: string | null;
+  component?: string | null;
+  componentFile?: string | null;
+}
+interface RouteSnapshot {
+  routePath: string | null;
+  component: string | null;
+  componentFile: string | null;
 }
 interface DiffEntry {
   url: string;
@@ -453,6 +460,7 @@ interface DiffEntry {
   fixedMissingTypes: string[];   // absent now, present before
   newBadBlocks: Row["badBlocks"];
   fixedBadBlocks: Row["badBlocks"];
+  route: { before: RouteSnapshot; after: RouteSnapshot; changed: boolean };
 }
 
 let BASELINE_META: { generatedAt?: string; rowCount: number } | null = null;
@@ -502,16 +510,29 @@ if (BASELINE_PATH) {
       routePath: prev.routePath ?? "x",
     });
     const after = rowStatus(cur);
+    const beforeRoute: RouteSnapshot = {
+      routePath: prev.routePath ?? null,
+      component: prev.component ?? null,
+      componentFile: prev.componentFile ?? null,
+    };
+    const afterRoute: RouteSnapshot = {
+      routePath: cur.routePath, component: cur.component, componentFile: cur.componentFile,
+    };
+    const routeChanged =
+      beforeRoute.routePath !== afterRoute.routePath ||
+      beforeRoute.component !== afterRoute.component ||
+      beforeRoute.componentFile !== afterRoute.componentFile;
     const entry: DiffEntry = {
       url: cur.url, kind: cur.kind,
       before, after,
       newMissingTypes, fixedMissingTypes, newBadBlocks, fixedBadBlocks,
+      route: { before: beforeRoute, after: afterRoute, changed: routeChanged },
     };
     const worse = (before === "ok" && after !== "ok") || newMissingTypes.length > 0 || newBadBlocks.length > 0;
     const better = (before !== "ok" && after === "ok") || (fixedMissingTypes.length > 0 && newMissingTypes.length === 0 && newBadBlocks.length === 0) || (fixedBadBlocks.length > 0 && newBadBlocks.length === 0 && newMissingTypes.length === 0);
     if (worse) regressions.push(entry);
     else if (better) fixes.push(entry);
-    else if (newMissingTypes.length || fixedMissingTypes.length || newBadBlocks.length || fixedBadBlocks.length || before !== after) {
+    else if (newMissingTypes.length || fixedMissingTypes.length || newBadBlocks.length || fixedBadBlocks.length || before !== after || routeChanged) {
       changedSameStatus.push(entry);
     }
   }
@@ -602,8 +623,19 @@ if (DIFF) {
   md += "## Diff vs baseline\n\n";
   md += `Baseline: \`${BASELINE_PATH}\`${BASELINE_META?.generatedAt ? ` (generated ${BASELINE_META.generatedAt})` : ""} — ${BASELINE_META?.rowCount ?? 0} rows.\n\n`;
 
+  const fmtRoute = (s: RouteSnapshot): string => {
+    const path = s.routePath ? `\`${s.routePath}\`` : "_(unresolved)_";
+    const comp = s.component ? ` → \`${s.component}\`` : "";
+    const file = s.componentFile ? ` (\`${s.componentFile}\`)` : "";
+    return `${path}${comp}${file}`;
+  };
   const renderEntry = (e: DiffEntry): string => {
     const bits: string[] = [`\`${e.url}\` _(${e.kind})_ — \`${e.before}\` → \`${e.after}\``];
+    if (e.route.changed) {
+      bits.push(`route: ${fmtRoute(e.route.before)} → ${fmtRoute(e.route.after)}`);
+    } else {
+      bits.push(`route: ${fmtRoute(e.route.after)}`);
+    }
     if (e.newMissingTypes.length) bits.push(`new missing @type: ${e.newMissingTypes.map((t) => `\`${t}\``).join(", ")}`);
     if (e.fixedMissingTypes.length) bits.push(`fixed @type: ${e.fixedMissingTypes.map((t) => `\`${t}\``).join(", ")}`);
     if (e.newBadBlocks.length) {
@@ -818,7 +850,7 @@ if (DIFF) {
   writeFileSync(OUT_DIFF_JSON, JSON.stringify(diffJson, null, 2), "utf8");
 
   const csvLines: string[] = [
-    "url,kind,category,before,after,newMissingTypes,fixedMissingTypes,newBadBlocksCount,newBadBlocks,fixedBadBlocksCount,fixedBadBlocks",
+    "url,kind,category,before,after,routePathBefore,routePathAfter,componentBefore,componentAfter,componentFileBefore,componentFileAfter,routeChanged,newMissingTypes,fixedMissingTypes,newBadBlocksCount,newBadBlocks,fixedBadBlocksCount,fixedBadBlocks",
   ];
   const escCsv = (s: string) => `"${s.replace(/"/g, '""')}"`;
   const rowCsv = (
@@ -827,6 +859,9 @@ if (DIFF) {
     category: string,
     before: string,
     after: string,
+    routeBefore: RouteSnapshot,
+    routeAfter: RouteSnapshot,
+    routeChanged: boolean,
     newMissing: string[],
     fixedMissing: string[],
     newBad: Row["badBlocks"],
@@ -838,6 +873,13 @@ if (DIFF) {
       escCsv(category),
       escCsv(before),
       escCsv(after),
+      escCsv(routeBefore.routePath ?? ""),
+      escCsv(routeAfter.routePath ?? ""),
+      escCsv(routeBefore.component ?? ""),
+      escCsv(routeAfter.component ?? ""),
+      escCsv(routeBefore.componentFile ?? ""),
+      escCsv(routeAfter.componentFile ?? ""),
+      routeChanged ? "true" : "false",
       escCsv(newMissing.join("; ")),
       escCsv(fixedMissing.join("; ")),
       String(newBad.length),
@@ -846,20 +888,24 @@ if (DIFF) {
       escCsv(fixedBad.map((b) => `${b.file}:${b.line}(${b.type ?? "?"})`).join("; ")),
     ].join(","));
   };
+  const emptySnap: RouteSnapshot = { routePath: null, component: null, componentFile: null };
+  const snapOfRow = (r: Row): RouteSnapshot => ({ routePath: r.routePath, component: r.component, componentFile: r.componentFile });
+  const snapOfBaseline = (r: BaselineRow): RouteSnapshot => ({ routePath: r.routePath ?? null, component: r.component ?? null, componentFile: r.componentFile ?? null });
+
   for (const e of DIFF.regressions) {
-    rowCsv(e.url, e.kind, "regression", e.before, e.after, e.newMissingTypes, e.fixedMissingTypes, e.newBadBlocks, e.fixedBadBlocks);
+    rowCsv(e.url, e.kind, "regression", e.before, e.after, e.route.before, e.route.after, e.route.changed, e.newMissingTypes, e.fixedMissingTypes, e.newBadBlocks, e.fixedBadBlocks);
   }
   for (const e of DIFF.fixes) {
-    rowCsv(e.url, e.kind, "fix", e.before, e.after, e.newMissingTypes, e.fixedMissingTypes, e.newBadBlocks, e.fixedBadBlocks);
+    rowCsv(e.url, e.kind, "fix", e.before, e.after, e.route.before, e.route.after, e.route.changed, e.newMissingTypes, e.fixedMissingTypes, e.newBadBlocks, e.fixedBadBlocks);
   }
   for (const e of DIFF.changedSameStatus) {
-    rowCsv(e.url, e.kind, "changed", e.before, e.after, e.newMissingTypes, e.fixedMissingTypes, e.newBadBlocks, e.fixedBadBlocks);
+    rowCsv(e.url, e.kind, "changed", e.before, e.after, e.route.before, e.route.after, e.route.changed, e.newMissingTypes, e.fixedMissingTypes, e.newBadBlocks, e.fixedBadBlocks);
   }
   for (const r of DIFF.added) {
-    rowCsv(r.url, r.kind, "added", "", rowStatus(r), [], [], [], []);
+    rowCsv(r.url, r.kind, "added", "", rowStatus(r), emptySnap, snapOfRow(r), false, [], [], [], []);
   }
   for (const r of DIFF.removed) {
-    rowCsv(r.url, r.kind ?? "", "removed", rowStatus({ missingTypes: r.missingTypes ?? [], badBlocks: r.badBlocks ?? [], routePath: r.routePath ?? "x" }), "", [], [], [], []);
+    rowCsv(r.url, r.kind ?? "", "removed", rowStatus({ missingTypes: r.missingTypes ?? [], badBlocks: r.badBlocks ?? [], routePath: r.routePath ?? "x" }), "", snapOfBaseline(r), emptySnap, false, [], [], [], []);
   }
   writeFileSync(OUT_DIFF_CSV, csvLines.join("\n") + "\n", "utf8");
 }
