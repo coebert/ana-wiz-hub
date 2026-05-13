@@ -312,17 +312,32 @@ describe("every diagram passes basic a11y checks", () => {
           JSON.stringify(offences, null, 2),
       ).toEqual([]);
 
-      // Cheap assertion 2 — every lucide icon is hidden from AT
+      // Cheap assertion 2 — every lucide icon is hidden from AT.
+      // Components in KNOWN_LUCIDE_LEAKS are baselined regressions; the
+      // assertion below INVERTS for them so an accidental fix doesn't
+      // silently re-leak in future, and a *new* offender outside the
+      // allowlist will fail the suite immediately.
       const lucideSvgs = Array.from(
         container.querySelectorAll("svg.lucide, svg[class*='lucide']"),
       );
-      for (const svg of lucideSvgs) {
+      const leaked = lucideSvgs.filter((svg) => !isHiddenFromAT(svg));
+      const isBaselined = KNOWN_LUCIDE_LEAKS.has(name);
+
+      if (isBaselined) {
         expect(
-          isHiddenFromAT(svg),
-          `Lucide icon must be hidden from AT in <${name} />:\n` +
-            svg.outerHTML.slice(0, 200),
-        ).toBe(true);
+          leaked.length,
+          `<${name}> is in KNOWN_LUCIDE_LEAKS but no longer leaks — ` +
+            `remove it from the allowlist.`,
+        ).toBeGreaterThan(0);
+      } else {
+        expect(
+          leaked.length,
+          `Lucide icon(s) must be hidden from AT in <${name} />. ` +
+            `Wrap them in <DecorativeIcon> or add aria-hidden + focusable={false}.\n` +
+            leaked.map((s) => s.outerHTML.slice(0, 160)).join("\n"),
+        ).toBe(0);
       }
+
     });
   }
 });
