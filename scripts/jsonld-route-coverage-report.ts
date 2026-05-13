@@ -443,6 +443,13 @@ interface BaselineRow {
   missingTypes?: string[];
   badBlocks?: Row["badBlocks"];
   routePath?: string | null;
+  component?: string | null;
+  componentFile?: string | null;
+}
+interface RouteSnapshot {
+  routePath: string | null;
+  component: string | null;
+  componentFile: string | null;
 }
 interface DiffEntry {
   url: string;
@@ -453,6 +460,7 @@ interface DiffEntry {
   fixedMissingTypes: string[];   // absent now, present before
   newBadBlocks: Row["badBlocks"];
   fixedBadBlocks: Row["badBlocks"];
+  route: { before: RouteSnapshot; after: RouteSnapshot; changed: boolean };
 }
 
 let BASELINE_META: { generatedAt?: string; rowCount: number } | null = null;
