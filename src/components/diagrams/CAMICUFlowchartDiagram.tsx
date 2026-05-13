@@ -402,6 +402,44 @@ export const CAMICUFlowchartDiagram = () => {
               If RASS ≤ −4, the patient is unassessable — re-screen when lighter.
             </p>
           </div>
+
+          <div
+            className="rounded-md p-3 bg-secondary/20 border border-border text-[11px]"
+            aria-label="Icon legend"
+          >
+            <p className="font-semibold text-foreground mb-1.5">Icon legend</p>
+            <ul className="space-y-1.5 text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span
+                  role="presentation"
+                  aria-hidden="true"
+                  className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-destructive/15 text-destructive ring-1 ring-destructive/30 shrink-0 mt-0.5"
+                >
+                  <AlertTriangle className="w-2.5 h-2.5" strokeWidth={2} aria-hidden="true" focusable={false} role="presentation" />
+                </span>
+                <span>
+                  <strong className="text-foreground">UI badge</strong> — circular tinted icon used in surrounding callouts (e.g.&nbsp;“Why screen?”). Decorative, not part of the flowchart.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span
+                  role="presentation"
+                  aria-hidden="true"
+                  className="inline-block w-4 h-4 rounded-sm shrink-0 mt-0.5"
+                  style={{ background: "hsl(var(--destructive) / 0.9)", border: "0.75px solid hsl(var(--border))" }}
+                />
+                <span>
+                  <strong className="text-foreground">In-diagram node</strong> — solid rounded rectangle inside the SVG. The red/destructive fill marks the <em>CAM-ICU positive</em> outcome; coloured edges leaving a feature node show the “positive” branch.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" aria-hidden="true" focusable={false} />
+                <span>
+                  <strong className="text-foreground">Walkthrough tick / cross</strong> — appears only in the step-by-step walkthrough tab to mark a feature answered YES or NO. Not shown inside the flowchart SVG.
+                </span>
+              </li>
+            </ul>
+          </div>
         </TabsContent>
 
         {/* === WALKTHROUGH === */}
