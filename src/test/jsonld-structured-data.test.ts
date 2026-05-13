@@ -170,9 +170,14 @@ function loadSourceBlocks(): JsonLdBlock[] {
         .replace(/\$\{[^}]*\}/g, '"__INTERPOLATED__"')
         .replace(/\bas\s+const\b/g, "")
         .replace(/\bsatisfies\s+[A-Za-z_$][\w$.<>,\s|&[\]]*/g, "")
-        // Replace function-call values with a sentinel so e.g. computeSomething()
-        // doesn't break the parser. We keep object/array literals intact.
-        .replace(/[A-Za-z_$][\w$.]*\s*\([^()]*\)/g, '"__CALL__"');
+      // Replace function calls (innermost-first) with a sentinel so e.g.
+      // crumbs.map((c, i) => ({...})) doesn't break the parser.
+      const callRe = /[A-Za-z_$][\w$.]*\s*\([^()]*\)/g;
+      let prev = "";
+      while (prev !== payload) {
+        prev = payload;
+        payload = payload.replace(callRe, '"__CALL__"');
+      }
 
       let parsed: unknown;
       try {
