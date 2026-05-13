@@ -26,8 +26,8 @@ class ResizeObserverStub {
   disconnect() {}
 }
 if (typeof globalThis.ResizeObserver === "undefined") {
-  // @ts-expect-error — assigning a minimal stub is enough for render-time checks
-  globalThis.ResizeObserver = ResizeObserverStub;
+  (globalThis as unknown as { ResizeObserver: unknown }).ResizeObserver =
+    ResizeObserverStub;
 }
 
 class IntersectionObserverStub {
@@ -42,8 +42,8 @@ class IntersectionObserverStub {
   }
 }
 if (typeof globalThis.IntersectionObserver === "undefined") {
-  // Minimal stub for jsdom (no need to match the full DOM type).
-  globalThis.IntersectionObserver = IntersectionObserverStub;
+  (globalThis as unknown as { IntersectionObserver: unknown }).IntersectionObserver =
+    IntersectionObserverStub;
 }
 
 // SVGPathElement.getTotalLength is used by some animated cascades.
