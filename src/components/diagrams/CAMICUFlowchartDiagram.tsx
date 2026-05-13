@@ -261,7 +261,7 @@ export const CAMICUFlowchartDiagram = () => {
               {/* No → CAM-ICU negative */}
               <g role="group" aria-label="If NO at Feature 1, route to CAM-ICU negative outcome">
                 <title>Feature 1 NO → CAM-ICU negative</title>
-                <path d="M 180 109 L 60 109 L 60 200" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
+                <path d="M 180 109 L 60 109 L 60 200" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
                 <text x="100" y="100" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
               </g>
 
@@ -288,7 +288,7 @@ export const CAMICUFlowchartDiagram = () => {
 
               <g role="group" aria-label="If NO at Feature 2, route to CAM-ICU negative outcome">
                 <title>Feature 2 NO → CAM-ICU negative</title>
-                <path d="M 180 192 L 60 192 L 60 230" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
+                <path d="M 180 192 L 60 192 L 60 230" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
                 <text x="100" y="183" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
               </g>
 
@@ -341,7 +341,7 @@ export const CAMICUFlowchartDiagram = () => {
 
               <g role="group" aria-label="If NO at Feature 4, route to CAM-ICU negative outcome">
                 <title>Feature 4 NO → CAM-ICU negative</title>
-                <path d="M 180 342 L 60 342 L 60 392" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
+                <path d="M 180 342 L 60 342 L 60 392" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
                 <text x="100" y="333" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
               </g>
 
