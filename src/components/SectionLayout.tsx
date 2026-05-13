@@ -46,6 +46,49 @@ export const SectionLayout = ({
   const truncatedDescription =
     subtitle.length > 200 ? `${subtitle.slice(0, 197).trimEnd()}…` : subtitle;
 
+  // Build BreadcrumbList JSON-LD from the current path. Segment 1 is the
+  // section (e.g. /physics), segment 2 is the topic — we use the page's
+  // own title for the leaf so labels match what the user sees.
+  const SECTION_LABELS: Record<string, string> = {
+    physics: "Physics",
+    physiology: "Physiology",
+    pharmacology: "Pharmacology",
+    clinical: "Clinical Anaesthesia",
+    "intensive-care": "Intensive Care",
+    perioperative: "Perioperative Medicine",
+    anatomy: "Anatomy",
+    chemistry: "Chemistry",
+    revise: "Revise",
+    map: "Topic Map",
+    progress: "Progress",
+    podcasts: "Podcasts",
+    viva: "Viva",
+    drugs: "Drugs",
+  };
+  const segments = location.pathname.split("/").filter(Boolean);
+  const crumbs: { name: string; url: string }[] = [
+    { name: "Home", url: `${SITE_URL}/` },
+  ];
+  segments.forEach((seg, i) => {
+    const path = `/${segments.slice(0, i + 1).join("/")}`;
+    const isLeaf = i === segments.length - 1;
+    const name = isLeaf
+      ? title
+      : SECTION_LABELS[seg] ??
+        seg.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+    crumbs.push({ name, url: `${SITE_URL}${path}` });
+  });
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.name,
+      item: c.url,
+    })),
+  };
+
   useEffect(() => {
     if (disableAutoTOC) return;
     const root = contentRef.current;
@@ -96,6 +139,7 @@ export const SectionLayout = ({
         <meta property="og:site_name" content={SITE_NAME} />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={truncatedDescription} />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
       </Helmet>
       {backPath && (
         <Link
