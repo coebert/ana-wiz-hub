@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+/* Google Fonts moved to a <link> in index.html so the stylesheet fetch
+   runs in parallel with our JS bundle instead of blocking it serially
+   behind this CSS file. */
 
 @tailwind base;
 @tailwind components;
