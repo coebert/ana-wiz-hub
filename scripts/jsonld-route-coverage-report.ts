@@ -587,7 +587,7 @@ if (DIFF_ONLY) {
   md += "\n";
 }
 
-if (failingBlocks.length) {
+if (!DIFF_ONLY && failingBlocks.length) {
   md += "## Bad / incomplete JSON-LD blocks\n\n";
   for (const r of failingBlocks) {
     md += `### \`${r.url}\`\n\n`;
@@ -601,7 +601,7 @@ if (failingBlocks.length) {
   }
 }
 
-if (unresolved.length) {
+if (!DIFF_ONLY && unresolved.length) {
   md += "## ⚠️ URLs with no matching <Route> in App.tsx\n\n";
   for (const r of unresolved) md += `- \`${r.url}\`\n`;
   md += "\n";
