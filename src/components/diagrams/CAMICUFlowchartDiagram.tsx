@@ -230,7 +230,7 @@ export const CAMICUFlowchartDiagram = () => {
               {/* Step 0: RASS */}
               <g role="group" aria-label="Step 1: Assess RASS. If RASS less than or equal to minus 4, patient is unassessable, stop screening">
                 <title>Step 1 — Assess RASS</title>
-                <rect x="220" y="10" width="200" height="44" rx="6" fill="hsl(var(--primary))" opacity="0.85" />
+                <rect x="220" y="10" width="200" height="44" rx="6" fill="hsl(var(--primary))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="30" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
                   Step 1 — Assess RASS
                 </text>
@@ -246,7 +246,7 @@ export const CAMICUFlowchartDiagram = () => {
               {/* Feature 1 */}
               <g role="group" aria-label="Feature 1: Acute onset or fluctuating course. Change from baseline in last 24 hours, or mental status fluctuated in past 24 hours">
                 <title>Feature 1 — Acute onset OR fluctuating course</title>
-                <rect x="180" y="80" width="280" height="58" rx="6" fill="hsl(var(--clinical))" opacity="0.85" />
+                <rect x="180" y="80" width="280" height="58" rx="6" fill="hsl(var(--clinical))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="100" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
                   Feature 1 — Acute onset OR fluctuating course
                 </text>
@@ -261,7 +261,7 @@ export const CAMICUFlowchartDiagram = () => {
               {/* No → CAM-ICU negative */}
               <g role="group" aria-label="If NO at Feature 1, route to CAM-ICU negative outcome">
                 <title>Feature 1 NO → CAM-ICU negative</title>
-                <path d="M 180 109 L 60 109 L 60 200" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
+                <path d="M 180 109 L 60 109 L 60 200" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
                 <text x="100" y="100" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
               </g>
 
@@ -274,7 +274,7 @@ export const CAMICUFlowchartDiagram = () => {
               {/* Feature 2 */}
               <g role="group" aria-label="Feature 2: Inattention. Use SAVEAHAART letters or pictures. More than 2 errors is positive">
                 <title>Feature 2 — Inattention</title>
-                <rect x="180" y="164" width="280" height="56" rx="6" fill="hsl(var(--icu))" opacity="0.85" />
+                <rect x="180" y="164" width="280" height="56" rx="6" fill="hsl(var(--icu))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="184" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
                   Feature 2 — Inattention
                 </text>
@@ -288,7 +288,7 @@ export const CAMICUFlowchartDiagram = () => {
 
               <g role="group" aria-label="If NO at Feature 2, route to CAM-ICU negative outcome">
                 <title>Feature 2 NO → CAM-ICU negative</title>
-                <path d="M 180 192 L 60 192 L 60 230" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
+                <path d="M 180 192 L 60 192 L 60 230" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
                 <text x="100" y="183" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
               </g>
 
@@ -301,7 +301,7 @@ export const CAMICUFlowchartDiagram = () => {
               {/* Feature 3 */}
               <g role="group" aria-label="Feature 3: Altered consciousness. Current RASS not equal to zero">
                 <title>Feature 3 — Altered consciousness</title>
-                <rect x="180" y="246" width="280" height="44" rx="6" fill="hsl(var(--pharmacology))" opacity="0.85" />
+                <rect x="180" y="246" width="280" height="44" rx="6" fill="hsl(var(--pharmacology))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="266" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
                   Feature 3 — Altered consciousness
                 </text>
@@ -327,7 +327,7 @@ export const CAMICUFlowchartDiagram = () => {
               {/* Feature 4 */}
               <g role="group" aria-label="Feature 4: Disorganised thinking. 4 yes-no questions plus a 2-step command. More than 1 error is positive">
                 <title>Feature 4 — Disorganised thinking</title>
-                <rect x="180" y="314" width="280" height="56" rx="6" fill="hsl(var(--physiology))" opacity="0.85" />
+                <rect x="180" y="314" width="280" height="56" rx="6" fill="hsl(var(--physiology))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="334" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
                   Feature 4 — Disorganised thinking
                 </text>
@@ -341,7 +341,7 @@ export const CAMICUFlowchartDiagram = () => {
 
               <g role="group" aria-label="If NO at Feature 4, route to CAM-ICU negative outcome">
                 <title>Feature 4 NO → CAM-ICU negative</title>
-                <path d="M 180 342 L 60 342 L 60 392" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
+                <path d="M 180 342 L 60 342 L 60 392" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
                 <text x="100" y="333" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
               </g>
 
@@ -366,7 +366,7 @@ export const CAMICUFlowchartDiagram = () => {
               {/* Outcome — Positive */}
               <g role="group" aria-label="Outcome: CAM-ICU positive. Delirium present. Apply the ABCDEF bundle">
                 <title>CAM-ICU POSITIVE — delirium present, apply ABCDEF bundle</title>
-                <rect x="450" y="382" width="180" height="58" rx="6" fill="hsl(var(--destructive))" opacity="0.85" />
+                <rect x="450" y="382" width="180" height="58" rx="6" fill="hsl(var(--destructive))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="540" y="404" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
                   CAM-ICU POSITIVE
                 </text>
