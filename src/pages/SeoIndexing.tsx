@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { RefreshCw, ExternalLink } from "lucide-react";
+import LighthouseHistoryPanel from "@/components/LighthouseHistoryPanel";
 
 interface SitemapInfo {
   path?: string;
@@ -271,6 +272,8 @@ export default function SeoIndexing() {
           )}
         </CardContent>
       </Card>
+
+      <LighthouseHistoryPanel />
     </main>
   );
 }

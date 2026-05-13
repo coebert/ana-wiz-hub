@@ -196,6 +196,63 @@ export type Database = {
         }
         Relationships: []
       }
+      lighthouse_runs: {
+        Row: {
+          branch: string | null
+          cls: number | null
+          commit_sha: string | null
+          created_at: string
+          id: string
+          inp_ms: number | null
+          lcp_ms: number | null
+          lh_version: string | null
+          raw_summary: Json
+          report_path: string | null
+          score_accessibility: number | null
+          score_best_practices: number | null
+          score_performance: number | null
+          score_seo: number | null
+          tbt_ms: number | null
+          url: string
+        }
+        Insert: {
+          branch?: string | null
+          cls?: number | null
+          commit_sha?: string | null
+          created_at?: string
+          id?: string
+          inp_ms?: number | null
+          lcp_ms?: number | null
+          lh_version?: string | null
+          raw_summary?: Json
+          report_path?: string | null
+          score_accessibility?: number | null
+          score_best_practices?: number | null
+          score_performance?: number | null
+          score_seo?: number | null
+          tbt_ms?: number | null
+          url: string
+        }
+        Update: {
+          branch?: string | null
+          cls?: number | null
+          commit_sha?: string | null
+          created_at?: string
+          id?: string
+          inp_ms?: number | null
+          lcp_ms?: number | null
+          lh_version?: string | null
+          raw_summary?: Json
+          report_path?: string | null
+          score_accessibility?: number | null
+          score_best_practices?: number | null
+          score_performance?: number | null
+          score_seo?: number | null
+          tbt_ms?: number | null
+          url?: string
+        }
+        Relationships: []
+      }
       podcasts: {
         Row: {
           audio_path: string | null
