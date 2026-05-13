@@ -239,6 +239,7 @@ export default function LighthouseHistoryPanel() {
               <TabsList>
                 <TabsTrigger value="categories">Categories</TabsTrigger>
                 <TabsTrigger value="cwv">Core Web Vitals</TabsTrigger>
+                <TabsTrigger value="compare">Mobile vs Desktop</TabsTrigger>
               </TabsList>
               <TabsContent value="categories" className="mt-4">
                 <div className="h-64 w-full">
