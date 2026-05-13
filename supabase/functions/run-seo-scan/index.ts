@@ -10,11 +10,15 @@ const ingestToken = Deno.env.get("LIGHTHOUSE_INGEST_TOKEN")!; // shared CI secre
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
 const serviceRole = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+const firecrawlKey = Deno.env.get("FIRECRAWL_API_KEY"); // optional; required when rendered=true
 
 const BodySchema = z.object({
   base_url: z.string().url(),
   commit_sha: z.string().max(64).optional().nullable(),
   max_pages: z.number().int().positive().max(200).optional().default(60),
+  // When true, render each page with a headless browser (Firecrawl) so
+  // client-side Helmet meta tags are visible. Slower + uses Firecrawl credits.
+  rendered: z.boolean().optional().default(false),
 });
 
 interface PageAudit {
