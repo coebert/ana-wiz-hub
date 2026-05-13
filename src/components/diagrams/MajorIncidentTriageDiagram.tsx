@@ -223,7 +223,7 @@ export const MajorIncidentTriageDiagram = () => {
               { x: 485, label: "P4 Expectant", color: PRIORITY.P4.color, n: 2 },
               { x: 640, label: "Deceased", color: "hsl(var(--foreground))", n: 2 },
             ].map((lane) => (
-              <g key={lane.label}>
+              <g key={lane.label} {...svgNodeProps(`Stream lane: ${lane.label}, ${lane.n} casualties`)}>
                 <rect x={lane.x} y={260} width={140} height={80} rx={6} fill="hsl(var(--card))" stroke={lane.color} strokeWidth="1" />
                 <text x={lane.x + 8} y={278} fontSize="10.5" fontWeight="700" fill={lane.color}>{lane.label}</text>
                 {/* casualty dots populating with streamP */}
