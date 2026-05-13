@@ -533,6 +533,15 @@ writeFileSync(OUT_MD, md, "utf8");
 writeFileSync(OUT_HTML, html, "utf8");
 writeFileSync(OUT_JSON, JSON.stringify({
   generatedAt: new Date().toISOString(),
+  filter: FILTERS_ACTIVE ? {
+    description: FILTER_DESCRIPTION,
+    kinds: [...KIND_FILTER],
+    urlPatterns: URL_PATTERNS.map((r) => r.source),
+    urlPrefixes: URL_PREFIXES,
+    invert: INVERT,
+    matchedCount: ROWS.length,
+    totalCount: ALL_ROWS.length,
+  } : null,
   summary: {
     total, passing: passing.length,
     missingTypes: failingTypes.length,
