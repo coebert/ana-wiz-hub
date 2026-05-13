@@ -322,7 +322,7 @@ Deno.serve(async (req) => {
       pages_failed,
       findings_count,
       duration_ms,
-      results: { pages: audits, finding_totals: findingTotals, sitemap_size: urls.length },
+      results: { pages: audits, finding_totals: findingTotals, sitemap_size: urls.length, rendered },
     })
     .select("id")
     .single();
