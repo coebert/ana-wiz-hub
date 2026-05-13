@@ -180,18 +180,71 @@ const entries: SitemapEntry[] = [
   { path: "/chemistry/oxidation-reduction", changefreq: "monthly", priority: "0.6" },
 ];
 
+// Build a path -> source-file map from src/App.tsx routes so we can resolve
+// each sitemap entry's last-modified date from the file backing that route.
+function buildPathToFileMap(): Record<string, string> {
+  const app = readFileSync(resolve("src/App.tsx"), "utf8");
+  const importRe = /import\s+(?:{[^}]+}|(\w+))\s+from\s+["'](\.\/pages\/[^"']+)["']/g;
+  const componentToFile: Record<string, string> = {};
+  for (const m of app.matchAll(importRe)) {
+    const name = m[1];
+    if (!name) continue;
+    const rel = m[2].replace(/^\.\//, "src/");
+    for (const ext of [".tsx", ".ts", "/index.tsx", "/index.ts"]) {
+      const candidate = resolve(rel + ext);
+      if (existsSync(candidate)) {
+        componentToFile[name] = candidate;
+        break;
+      }
+    }
+  }
+  const routeRe = /<Route\s+path="([^"]+)"\s+element=\{<(\w+)/g;
+  const map: Record<string, string> = {};
+  for (const m of app.matchAll(routeRe)) {
+    const file = componentToFile[m[2]];
+    if (file) map[m[1]] = file;
+  }
+  return map;
+}
+
+const pathToFile = buildPathToFileMap();
+
+// Prefer git's last-commit timestamp (stable across rebuilds); fall back to
+// filesystem mtime when git history isn't available.
+function lastModFor(path: string): string | undefined {
+  const file = pathToFile[path];
+  if (!file) return undefined;
+  try {
+    const iso = execSync(`git log -1 --format=%cI -- "${file}"`, {
+      stdio: ["ignore", "pipe", "ignore"],
+    })
+      .toString()
+      .trim();
+    if (iso) return iso.slice(0, 10);
+  } catch {
+    /* fall through to mtime */
+  }
+  try {
+    return statSync(file).mtime.toISOString().slice(0, 10);
+  } catch {
+    return undefined;
+  }
+}
+
 function generateSitemap(entries: SitemapEntry[]) {
-  const urls = entries.map((e) =>
-    [
+  const urls = entries.map((e) => {
+    const lastmod = e.lastmod ?? lastModFor(e.path);
+    return [
       `  <url>`,
       `    <loc>${BASE_URL}${e.path}</loc>`,
+      lastmod ? `    <lastmod>${lastmod}</lastmod>` : null,
       e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
       e.priority ? `    <priority>${e.priority}</priority>` : null,
       `  </url>`,
     ]
       .filter(Boolean)
-      .join("\n"),
-  );
+      .join("\n");
+  });
 
   return [
     `<?xml version="1.0" encoding="UTF-8"?>`,
@@ -202,4 +255,5 @@ function generateSitemap(entries: SitemapEntry[]) {
 }
 
 writeFileSync(resolve("public/sitemap.xml"), generateSitemap(entries));
-console.log(`sitemap.xml written (${entries.length} entries)`);
+const matched = Object.keys(pathToFile).length;
+console.log(`sitemap.xml written (${entries.length} entries, ${matched} routes mapped to files for lastmod)`);
