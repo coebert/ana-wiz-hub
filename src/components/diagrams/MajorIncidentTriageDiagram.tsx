@@ -194,7 +194,7 @@ export const MajorIncidentTriageDiagram = () => {
           <path d="M 530 130 L 565 130" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arr)" opacity={phase >= 2 ? 1 : 0.3} />
 
           {/* ===== Phase 2: Triage Sort / TRTS ===== */}
-          <g opacity={phase === 2 ? 1 : phase > 2 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
+          <g {...svgNodeProps("Phase 3 — Triage Sort using Triage Revised Trauma Score on hospital arrival")} opacity={phase === 2 ? 1 : phase > 2 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
             <text x="575" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Triage Sort — TRTS (ED)</text>
             <rect x="575" y="50" width="205" height="170" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--border))" />
             <text x="585" y="68" fontSize="10" fontWeight="600" fill="hsl(var(--foreground))">Score 0–4 each:</text>
