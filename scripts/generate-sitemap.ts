@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, statSync, existsSync } from "fs";
+import { readFileSync, writeFileSync, statSync, existsSync, mkdirSync } from "fs";
 import { resolve } from "path";
 import { execSync } from "child_process";
 
@@ -240,7 +240,26 @@ function lastModFor(path: string): string | undefined {
   }
 }
 
-function generateSitemap(entries: SitemapEntry[]) {
+const SECTION_GROUPS = [
+  "physics",
+  "physiology",
+  "pharmacology",
+  "clinical",
+  "intensive-care",
+  "perioperative",
+  "anatomy",
+  "chemistry",
+] as const;
+type Group = (typeof SECTION_GROUPS)[number] | "core";
+
+function groupOf(path: string): Group {
+  const first = path.split("/").filter(Boolean)[0];
+  return (SECTION_GROUPS as readonly string[]).includes(first ?? "")
+    ? (first as Group)
+    : "core";
+}
+
+function renderUrlset(entries: SitemapEntry[]) {
   const urls = entries.map((e) => {
     const lastmod = e.lastmod ?? lastModFor(e.path);
     return [
@@ -263,6 +282,58 @@ function generateSitemap(entries: SitemapEntry[]) {
   ].join("\n");
 }
 
-writeFileSync(resolve("public/sitemap.xml"), generateSitemap(entries));
+function renderIndex(groups: { name: string; lastmod?: string }[]) {
+  const items = groups.map((g) =>
+    [
+      `  <sitemap>`,
+      `    <loc>${BASE_URL}/sitemaps/${g.name}.xml</loc>`,
+      g.lastmod ? `    <lastmod>${g.lastmod}</lastmod>` : null,
+      `  </sitemap>`,
+    ]
+      .filter(Boolean)
+      .join("\n"),
+  );
+  return [
+    `<?xml version="1.0" encoding="UTF-8"?>`,
+    `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+    ...items,
+    `</sitemapindex>`,
+  ].join("\n");
+}
+
+// Bucket entries by section group
+const buckets = new Map<Group, SitemapEntry[]>();
+for (const entry of entries) {
+  const g = groupOf(entry.path);
+  if (!buckets.has(g)) buckets.set(g, []);
+  buckets.get(g)!.push(entry);
+}
+
+// Ensure sitemaps directory exists
+const sitemapsDir = resolve("public/sitemaps");
+if (!existsSync(sitemapsDir)) {
+  mkdirSync(sitemapsDir, { recursive: true });
+}
+
+// Write per-group sitemaps and collect index metadata (latest lastmod per group)
+const indexGroups: { name: string; lastmod?: string }[] = [];
+const orderedGroups: Group[] = ["core", ...SECTION_GROUPS];
+for (const g of orderedGroups) {
+  const groupEntries = buckets.get(g);
+  if (!groupEntries || groupEntries.length === 0) continue;
+  writeFileSync(resolve(`public/sitemaps/${g}.xml`), renderUrlset(groupEntries));
+  const lastmods = groupEntries
+    .map((e) => e.lastmod ?? lastModFor(e.path))
+    .filter((d): d is string => Boolean(d))
+    .sort();
+  indexGroups.push({ name: g, lastmod: lastmods.at(-1) });
+}
+
+// Write the sitemap index at the well-known location
+writeFileSync(resolve("public/sitemap.xml"), renderIndex(indexGroups));
+
 const matched = Object.keys(pathToFile).length;
-console.log(`sitemap.xml written (${entries.length} entries, ${matched} routes mapped to files for lastmod)`);
+console.log(
+  `sitemap.xml index written (${indexGroups.length} sub-sitemaps, ${entries.length} URLs total, ${matched} routes mapped to files for lastmod)`,
+);
+
