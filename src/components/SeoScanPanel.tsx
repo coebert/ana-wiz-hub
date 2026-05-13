@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 import { RefreshCw, AlertCircle, CheckCircle2, ChevronDown, ChevronRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -84,6 +86,7 @@ export default function SeoScanPanel() {
   const { toast } = useToast();
   const qc = useQueryClient();
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [rendered, setRendered] = useState(false);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["seo-scans"],
@@ -98,7 +101,8 @@ export default function SeoScanPanel() {
           base_url: window.location.origin.includes("anaesthesiacore.app")
             ? "https://anaesthesiacore.app"
             : window.location.origin,
-          max_pages: 80,
+          max_pages: rendered ? 25 : 80,
+          rendered,
         },
       });
       if (error) throw error;
@@ -107,7 +111,7 @@ export default function SeoScanPanel() {
     },
     onSuccess: (res) => {
       toast({
-        title: "SEO scan complete",
+        title: rendered ? "Rendered SEO scan complete" : "SEO scan complete",
         description: `${res.pages_total} pages · ${res.findings_count} findings`,
       });
       qc.invalidateQueries({ queryKey: ["seo-scans"] });
@@ -133,15 +137,33 @@ export default function SeoScanPanel() {
             {data?.length === 1 ? "" : "s"} on file
           </p>
         </div>
-        <Button
-          size="sm"
-          variant="outline"
-          onClick={() => runScan.mutate()}
-          disabled={runScan.isPending}
-        >
-          <RefreshCw className={`mr-2 h-4 w-4 ${runScan.isPending ? "animate-spin" : ""}`} />
-          Run scan now
-        </Button>
+        <div className="flex flex-col items-end gap-2">
+          <div className="flex items-center gap-2">
+            <Switch
+              id="rendered-toggle"
+              checked={rendered}
+              onCheckedChange={setRendered}
+              disabled={runScan.isPending}
+            />
+            <Label htmlFor="rendered-toggle" className="text-xs">
+              Headless render
+            </Label>
+          </div>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => runScan.mutate()}
+            disabled={runScan.isPending}
+          >
+            <RefreshCw className={`mr-2 h-4 w-4 ${runScan.isPending ? "animate-spin" : ""}`} />
+            Run scan now
+          </Button>
+          {rendered ? (
+            <p className="max-w-[14rem] text-right text-[10px] leading-tight text-muted-foreground">
+              Uses Firecrawl to capture client-rendered Helmet tags. Slower; capped at 25 pages.
+            </p>
+          ) : null}
+        </div>
       </CardHeader>
       <CardContent className="space-y-6">
         {error ? (

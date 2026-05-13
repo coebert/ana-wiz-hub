@@ -10,11 +10,15 @@ const ingestToken = Deno.env.get("LIGHTHOUSE_INGEST_TOKEN")!; // shared CI secre
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
 const serviceRole = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+const firecrawlKey = Deno.env.get("FIRECRAWL_API_KEY"); // optional; required when rendered=true
 
 const BodySchema = z.object({
   base_url: z.string().url(),
   commit_sha: z.string().max(64).optional().nullable(),
   max_pages: z.number().int().positive().max(200).optional().default(60),
+  // When true, render each page with a headless browser (Firecrawl) so
+  // client-side Helmet meta tags are visible. Slower + uses Firecrawl credits.
+  rendered: z.boolean().optional().default(false),
 });
 
 interface PageAudit {
@@ -61,18 +65,51 @@ async function parseSitemap(baseUrl: string): Promise<string[]> {
   return [...new Set(urls)];
 }
 
-async function auditPage(url: string): Promise<PageAudit> {
+async function fetchStatic(url: string): Promise<{ status: number; html: string }> {
+  const res = await fetch(url, {
+    redirect: "follow",
+    headers: { "user-agent": "AnaesthesiaCore-SEO-Scanner/1.0" },
+  });
+  return { status: res.status, html: await res.text() };
+}
+
+async function fetchRendered(url: string): Promise<{ status: number; html: string }> {
+  // Firecrawl v2 scrape — returns the post-JS HTML so client-side
+  // Helmet meta tags are present.
+  const res = await fetch("https://api.firecrawl.dev/v2/scrape", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${firecrawlKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      url,
+      formats: ["rawHtml"],
+      onlyMainContent: false,
+      waitFor: 1500,
+    }),
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`firecrawl_${res.status}: ${text.slice(0, 200)}`);
+  }
+  const data = await res.json();
+  // v2 may return fields top-level or under data.
+  const root = data?.data ?? data;
+  const html: string = root?.rawHtml ?? root?.html ?? "";
+  const status: number = root?.metadata?.statusCode ?? 200;
+  return { status, html };
+}
+
+async function auditPage(url: string, rendered: boolean): Promise<PageAudit> {
   const t0 = performance.now();
   const findings: string[] = [];
   let status = 0;
   let html = "";
   try {
-    const res = await fetch(url, {
-      redirect: "follow",
-      headers: { "user-agent": "AnaesthesiaCore-SEO-Scanner/1.0" },
-    });
-    status = res.status;
-    html = await res.text();
+    const result = rendered ? await fetchRendered(url) : await fetchStatic(url);
+    status = result.status;
+    html = result.html;
   } catch (e) {
     return {
       url,
@@ -205,7 +242,17 @@ Deno.serve(async (req) => {
       { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   }
-  const { base_url, commit_sha, max_pages } = parsed.data;
+  const { base_url, commit_sha, max_pages, rendered } = parsed.data;
+
+  if (rendered && !firecrawlKey) {
+    return new Response(
+      JSON.stringify({
+        error:
+          "Rendered scan requested but FIRECRAWL_API_KEY is not configured. Connect Firecrawl in Connectors and retry.",
+      }),
+      { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
+  }
 
   const t0 = performance.now();
   let urls: string[];
@@ -228,10 +275,11 @@ Deno.serve(async (req) => {
 
   // Cross-page checks: duplicate titles / descriptions / canonicals
   const audits: PageAudit[] = [];
-  const concurrency = 6;
+  // Headless rendering is much slower and uses Firecrawl credits, so cap at 3.
+  const concurrency = rendered ? 3 : 6;
   for (let i = 0; i < limited.length; i += concurrency) {
     const batch = limited.slice(i, i + concurrency);
-    const results = await Promise.all(batch.map(auditPage));
+    const results = await Promise.all(batch.map((u) => auditPage(u, rendered)));
     audits.push(...results);
   }
 
@@ -274,7 +322,7 @@ Deno.serve(async (req) => {
       pages_failed,
       findings_count,
       duration_ms,
-      results: { pages: audits, finding_totals: findingTotals, sitemap_size: urls.length },
+      results: { pages: audits, finding_totals: findingTotals, sitemap_size: urls.length, rendered },
     })
     .select("id")
     .single();
