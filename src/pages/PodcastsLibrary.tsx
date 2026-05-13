@@ -289,6 +289,7 @@ const PodcastsLibrary = () => {
     <SectionLayout
       title="Podcast Library"
       subtitle="All AI-generated topic podcasts in one place — listen or download without opening the topic page."
+      metaDescription="Listen to AI-generated FRCA & FFICM revision podcasts for every AnaesthesiaCore topic — stream or download from a single library page."
       backPath="/"
       backLabel="Home"
       disableAutoTOC
