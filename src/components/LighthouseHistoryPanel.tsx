@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { ExternalLink, RefreshCw } from "lucide-react";
+import { ExternalLink, RefreshCw, Smartphone, Monitor, ArrowUpRight, ArrowDownRight } from "lucide-react";
 import {
   CartesianGrid,
   Line,
@@ -144,6 +144,28 @@ export default function LighthouseHistoryPanel() {
   // Charts use chronological order (oldest -> newest).
   const chronological = useMemo(() => (data ? [...data].reverse() : []), [data]);
 
+  // Build latest mobile/desktop per URL for the comparison view.
+  const stratOf = (r: LighthouseRun): "mobile" | "desktop" => {
+    const b = (r.branch ?? "").toLowerCase();
+    if (b === "psi-desktop") return "desktop";
+    if (b === "psi-mobile") return "mobile";
+    // CI/Lighthouse default form factor is mobile.
+    return "mobile";
+  };
+  const comparison = useMemo(() => {
+    const map = new Map<string, { url: string; mobile?: LighthouseRun; desktop?: LighthouseRun }>();
+    for (const r of data ?? []) {
+      const key = r.url;
+      const entry = map.get(key) ?? { url: r.url };
+      const s = stratOf(r);
+      // data is sorted desc, so first seen is latest.
+      if (s === "mobile" && !entry.mobile) entry.mobile = r;
+      if (s === "desktop" && !entry.desktop) entry.desktop = r;
+      map.set(key, entry);
+    }
+    return [...map.values()];
+  }, [data]);
+
   const categoryData = chronological.map((r) => ({
     label: new Date(r.created_at).toLocaleDateString(undefined, {
       month: "short",
@@ -217,6 +239,7 @@ export default function LighthouseHistoryPanel() {
               <TabsList>
                 <TabsTrigger value="categories">Categories</TabsTrigger>
                 <TabsTrigger value="cwv">Core Web Vitals</TabsTrigger>
+                <TabsTrigger value="compare">Mobile vs Desktop</TabsTrigger>
               </TabsList>
               <TabsContent value="categories" className="mt-4">
                 <div className="h-64 w-full">
@@ -268,6 +291,9 @@ export default function LighthouseHistoryPanel() {
                 <p className="mt-2 text-xs text-muted-foreground">
                   Values in ms (CLS scaled ×1000 to share axis).
                 </p>
+              </TabsContent>
+              <TabsContent value="compare" className="mt-4">
+                <ComparisonView rows={comparison} />
               </TabsContent>
             </Tabs>
 
@@ -353,6 +379,92 @@ function EmptyState() {
           GitHub Actions <ExternalLink className="h-3 w-3" />
         </a>
       </Button>
+    </div>
+  );
+}
+
+interface ComparisonRow {
+  url: string;
+  mobile?: LighthouseRun;
+  desktop?: LighthouseRun;
+}
+
+function Delta({ mobile, desktop }: { mobile: number | null | undefined; desktop: number | null | undefined }) {
+  if (mobile == null || desktop == null) return null;
+  const diff = desktop - mobile;
+  if (diff === 0) return <span className="text-xs text-muted-foreground">±0</span>;
+  const positive = diff > 0;
+  const Icon = positive ? ArrowUpRight : ArrowDownRight;
+  const cls = positive
+    ? "text-emerald-600 dark:text-emerald-400"
+    : "text-destructive";
+  return (
+    <span className={`inline-flex items-center gap-0.5 text-xs ${cls}`}>
+      <Icon className="h-3 w-3" />
+      {positive ? "+" : ""}
+      {diff}
+    </span>
+  );
+}
+
+function StratCell({ run, label, icon: Icon }: { run?: LighthouseRun; label: string; icon: typeof Smartphone }) {
+  if (!run) {
+    return (
+      <div className="rounded-md border border-dashed border-border bg-muted/20 p-3 text-center">
+        <div className="mb-1 inline-flex items-center gap-1 text-xs text-muted-foreground">
+          <Icon className="h-3 w-3" /> {label}
+        </div>
+        <p className="text-xs text-muted-foreground">No run yet</p>
+      </div>
+    );
+  }
+  return (
+    <div className="rounded-md border border-border bg-card p-3">
+      <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
+        <span className="inline-flex items-center gap-1">
+          <Icon className="h-3 w-3" /> {label}
+        </span>
+        <span className="tabular-nums">{new Date(run.created_at).toLocaleDateString()}</span>
+      </div>
+      <div className="grid grid-cols-4 gap-1.5">
+        <ScoreChip label="Perf" score={run.score_performance} />
+        <ScoreChip label="A11y" score={run.score_accessibility} />
+        <ScoreChip label="BP" score={run.score_best_practices} />
+        <ScoreChip label="SEO" score={run.score_seo} />
+      </div>
+    </div>
+  );
+}
+
+function ComparisonView({ rows }: { rows: ComparisonRow[] }) {
+  if (rows.length === 0) {
+    return (
+      <p className="text-sm text-muted-foreground">No runs to compare yet.</p>
+    );
+  }
+  return (
+    <div className="space-y-4">
+      {rows.map((row) => (
+        <div key={row.url} className="rounded-lg border border-border p-3">
+          <div className="mb-3 flex items-center justify-between gap-2">
+            <p className="truncate text-sm font-medium" title={row.url}>{row.url}</p>
+            {row.mobile && row.desktop ? (
+              <div className="flex shrink-0 items-center gap-3 text-xs text-muted-foreground">
+                <span className="inline-flex items-center gap-1">
+                  Perf <Delta mobile={row.mobile.score_performance} desktop={row.desktop.score_performance} />
+                </span>
+                <span className="inline-flex items-center gap-1">
+                  SEO <Delta mobile={row.mobile.score_seo} desktop={row.desktop.score_seo} />
+                </span>
+              </div>
+            ) : null}
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <StratCell run={row.mobile} label="Mobile" icon={Smartphone} />
+            <StratCell run={row.desktop} label="Desktop" icon={Monitor} />
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
