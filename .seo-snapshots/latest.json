@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-05-13",
+  "findings": {
+    "meta:title:length": {
+      "id": "meta:title:length",
+      "category": "meta",
+      "severity": "pass",
+      "message": "<title> is 39 chars (target ≤ 60): \"AnaesthesiaCore – FRCA & FFICM Revision\""
+    },
+    "meta:description:length": {
+      "id": "meta:description:length",
+      "category": "meta",
+      "severity": "pass",
+      "message": "meta description is 135 chars (target ≤ 160)"
+    },
+    "og:og:title": {
+      "id": "og:og:title",
+      "category": "og",
+      "severity": "pass",
+      "message": "og:title present"
+    },
+    "og:og:description": {
+      "id": "og:og:description",
+      "category": "og",
+      "severity": "pass",
+      "message": "og:description present"
+    },
+    "og:og:url": {
+      "id": "og:og:url",
+      "category": "og",
+      "severity": "pass",
+      "message": "og:url present"
+    },
+    "og:og:type": {
+      "id": "og:og:type",
+      "category": "og",
+      "severity": "pass",
+      "message": "og:type present"
+    },
+    "og:og:image": {
+      "id": "og:og:image",
+      "category": "og",
+      "severity": "warn",
+      "message": "og:image missing (optional but recommended for social previews)"
+    },
+    "heading:topic-template-h1": {
+      "id": "heading:topic-template-h1",
+      "category": "heading",
+      "severity": "fail",
+      "message": "TopicTemplate is missing an <h1> — every topic page inherits this gap"
+    },
+    "heading:pages-with-h1": {
+      "id": "heading:pages-with-h1",
+      "category": "heading",
+      "severity": "warn",
+      "message": "13/154 page components contain an <h1>"
+    },
+    "heading:level-skips": {
+      "id": "heading:level-skips",
+      "category": "heading",
+      "severity": "warn",
+      "message": "1 page(s) skip a heading level: src/pages/DrugDetail.tsx"
+    },
+    "sitemap:url-count": {
+      "id": "sitemap:url-count",
+      "category": "sitemap",
+      "severity": "pass",
+      "message": "148 URLs across per-section sitemaps; 157 <Route> entries in src/App.tsx"
+    }
+  }
+}
