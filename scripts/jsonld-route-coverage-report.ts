@@ -77,8 +77,10 @@ Options:
   --url-prefix <prefix>   Only include URLs starting with this prefix (repeatable).
   --invert                Invert the kind/URL filter (exclude matches instead).
   --baseline <path>       Compare against a previous JSON sidecar and emit a
-                          diff section (regressions / fixes / unchanged).
+                           diff section (regressions / fixes / unchanged).
   --diff-only             Only print the diff vs --baseline (skip group tables).
+  --diff-group-by-kind    Inside the diff section, group regressions / fixes /
+                           changed by page kind (home, section, topic, …).
   --help, -h              Show this help.
 
 Env:
