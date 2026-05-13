@@ -292,6 +292,9 @@ export default function LighthouseHistoryPanel() {
                   Values in ms (CLS scaled ×1000 to share axis).
                 </p>
               </TabsContent>
+              <TabsContent value="compare" className="mt-4">
+                <ComparisonView rows={comparison} />
+              </TabsContent>
             </Tabs>
 
             {/* Run table */}
