@@ -107,6 +107,11 @@ const Landing = () => {
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-background flex flex-col">
       <Helmet>
+        <title>AnaesthesiaCore – FRCA & FFICM Revision</title>
+        <meta
+          name="description"
+          content="Master anaesthesia and intensive care with interactive diagrams, quizzes, and exam-focused summaries. Mapped to FRCA & FFICM curricula."
+        />
         <link rel="canonical" href="https://anaesthesiacore.app/" />
         <meta property="og:url" content="https://anaesthesiacore.app/" />
       </Helmet>
