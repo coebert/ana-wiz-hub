@@ -67,13 +67,7 @@ describeOrSkip("live sitemap & robots.txt", () => {
   let robotsStatus = 0;
   let sitemapStatus = 0;
 
-  /**
-   * Fetch with retry + exponential backoff. CI runners and CDNs occasionally
-   * blip (DNS, TLS handshake, 5xx during deploy). We retry transient failures
-   * — network errors and 5xx/429 responses — but surface 4xx immediately
-   * since those indicate a real configuration problem.
-   */
-    const [r, s] = await Promise.all([
+  beforeAll(async () => {
       fetchWithRetry(`${SITE_URL}/robots.txt`),
       fetchWithRetry(`${SITE_URL}/sitemap.xml`),
     ]);
