@@ -76,6 +76,9 @@ Options:
                           rows match if ANY pattern matches).
   --url-prefix <prefix>   Only include URLs starting with this prefix (repeatable).
   --invert                Invert the kind/URL filter (exclude matches instead).
+  --baseline <path>       Compare against a previous JSON sidecar and emit a
+                          diff section (regressions / fixes / unchanged).
+  --diff-only             Only print the diff vs --baseline (skip group tables).
   --help, -h              Show this help.
 
 Env:
@@ -345,7 +348,111 @@ const FILTER_DESCRIPTION = (() => {
   return `${INVERT ? "NOT (" : ""}${parts.join(" AND ")}${INVERT ? ")" : ""}`;
 })();
 
-// ── render Markdown ───────────────────────────────────────────────────────
+// ── baseline / diff ───────────────────────────────────────────────────────
+const BASELINE_PATH = arg("--baseline", "");
+const DIFF_ONLY = hasFlag("--diff-only");
+if (DIFF_ONLY && !BASELINE_PATH) {
+  console.error(`✖ --diff-only requires --baseline <path>`);
+  process.exit(2);
+}
+
+type StatusKind = "ok" | "missing-types" | "bad-blocks" | "unresolved";
+function rowStatus(r: Pick<Row, "missingTypes" | "badBlocks" | "routePath">): StatusKind {
+  if (!r.routePath) return "unresolved";
+  if (r.missingTypes.length > 0) return "missing-types";
+  if (r.badBlocks.length > 0) return "bad-blocks";
+  return "ok";
+}
+function badBlockKey(b: Row["badBlocks"][number]): string {
+  // file:line:type:contextOk:missing — uniquely identifies a bad-block report.
+  return `${b.file}:${b.line}:${b.type ?? "?"}:${b.contextOk ? 1 : 0}:${[...b.missing].sort().join(",")}`;
+}
+
+interface BaselineRow {
+  url: string; kind?: string;
+  missingTypes?: string[];
+  badBlocks?: Row["badBlocks"];
+  routePath?: string | null;
+}
+interface DiffEntry {
+  url: string;
+  kind: UrlExpectation["kind"];
+  before: StatusKind;
+  after: StatusKind;
+  newMissingTypes: string[];     // present now, absent before
+  fixedMissingTypes: string[];   // absent now, present before
+  newBadBlocks: Row["badBlocks"];
+  fixedBadBlocks: Row["badBlocks"];
+}
+
+let BASELINE_META: { generatedAt?: string; rowCount: number } | null = null;
+let DIFF: {
+  regressions: DiffEntry[];   // got worse (ok→fail OR more missing/bad than before)
+  fixes: DiffEntry[];         // got better
+  changedSameStatus: DiffEntry[]; // status unchanged but missing/bad set differs
+  added: Row[];               // URL exists now, not in baseline
+  removed: BaselineRow[];     // URL existed in baseline, gone now
+} | null = null;
+
+if (BASELINE_PATH) {
+  if (!existsSync(BASELINE_PATH)) {
+    console.error(`✖ baseline not found: ${BASELINE_PATH}`);
+    process.exit(2);
+  }
+  let baseRaw: unknown;
+  try { baseRaw = JSON.parse(readFileSync(BASELINE_PATH, "utf8")); }
+  catch (e) { console.error(`✖ baseline JSON parse error: ${(e as Error).message}`); process.exit(2); }
+  const obj = baseRaw as { generatedAt?: string; rows?: BaselineRow[] };
+  const baseRows: BaselineRow[] = Array.isArray(obj?.rows) ? obj.rows : [];
+  BASELINE_META = { generatedAt: obj.generatedAt, rowCount: baseRows.length };
+
+  const baseByUrl = new Map(baseRows.map((r) => [r.url, r]));
+  const nowByUrl = new Map(ROWS.map((r) => [r.url, r]));
+
+  const regressions: DiffEntry[] = [];
+  const fixes: DiffEntry[] = [];
+  const changedSameStatus: DiffEntry[] = [];
+  const added: Row[] = [];
+  const removed: BaselineRow[] = [];
+
+  for (const cur of ROWS) {
+    const prev = baseByUrl.get(cur.url);
+    if (!prev) { added.push(cur); continue; }
+    const beforeMissing = new Set(prev.missingTypes ?? []);
+    const afterMissing = new Set(cur.missingTypes);
+    const beforeBlocks = new Map((prev.badBlocks ?? []).map((b) => [badBlockKey(b), b]));
+    const afterBlocks = new Map(cur.badBlocks.map((b) => [badBlockKey(b), b]));
+    const newMissingTypes = [...afterMissing].filter((t) => !beforeMissing.has(t));
+    const fixedMissingTypes = [...beforeMissing].filter((t) => !afterMissing.has(t));
+    const newBadBlocks = [...afterBlocks].filter(([k]) => !beforeBlocks.has(k)).map(([, v]) => v);
+    const fixedBadBlocks = [...beforeBlocks].filter(([k]) => !afterBlocks.has(k)).map(([, v]) => v);
+    const before = rowStatus({
+      missingTypes: prev.missingTypes ?? [],
+      badBlocks: prev.badBlocks ?? [],
+      routePath: prev.routePath ?? "x",
+    });
+    const after = rowStatus(cur);
+    const entry: DiffEntry = {
+      url: cur.url, kind: cur.kind,
+      before, after,
+      newMissingTypes, fixedMissingTypes, newBadBlocks, fixedBadBlocks,
+    };
+    const worse = (before === "ok" && after !== "ok") || newMissingTypes.length > 0 || newBadBlocks.length > 0;
+    const better = (before !== "ok" && after === "ok") || (fixedMissingTypes.length > 0 && newMissingTypes.length === 0 && newBadBlocks.length === 0) || (fixedBadBlocks.length > 0 && newBadBlocks.length === 0 && newMissingTypes.length === 0);
+    if (worse) regressions.push(entry);
+    else if (better) fixes.push(entry);
+    else if (newMissingTypes.length || fixedMissingTypes.length || newBadBlocks.length || fixedBadBlocks.length || before !== after) {
+      changedSameStatus.push(entry);
+    }
+  }
+  for (const prev of baseRows) {
+    if (!nowByUrl.has(prev.url)) removed.push(prev);
+  }
+
+  DIFF = { regressions, fixes, changedSameStatus, added, removed };
+}
+
+
 const total = ROWS.length;
 const failingTypes = ROWS.filter((r) => r.missingTypes.length > 0);
 const failingBlocks = ROWS.filter((r) => r.badBlocks.length > 0);
@@ -411,10 +518,63 @@ md += `| URLs evaluated${FILTER_DESCRIPTION ? " (filtered)" : ""} | ${total}${FI
 md += `| ✅ Passing | ${passing.length} |\n`;
 md += `| ❌ Missing required @type | ${failingTypes.length} |\n`;
 md += `| ❌ Bad / incomplete blocks | ${failingBlocks.length} |\n`;
-md += `| ⚠️ Unresolved route | ${unresolved.length} |\n\n`;
+md += `| ⚠️ Unresolved route | ${unresolved.length} |\n`;
+if (DIFF) {
+  md += `| 🔻 Regressions vs baseline | ${DIFF.regressions.length} |\n`;
+  md += `| 🟢 Fixes vs baseline | ${DIFF.fixes.length} |\n`;
+  md += `| ➕ Added URLs | ${DIFF.added.length} |\n`;
+  md += `| ➖ Removed URLs | ${DIFF.removed.length} |\n`;
+}
+md += "\n";
 md += `Sitewide @types inherited from \`index.html\`: ${[...SITEWIDE].map((t) => `\`${t}\``).join(", ")}.\n\n`;
 
-for (const k of groupOrder) {
+if (DIFF) {
+  md += "## Diff vs baseline\n\n";
+  md += `Baseline: \`${BASELINE_PATH}\`${BASELINE_META?.generatedAt ? ` (generated ${BASELINE_META.generatedAt})` : ""} — ${BASELINE_META?.rowCount ?? 0} rows.\n\n`;
+
+  const renderEntry = (e: DiffEntry): string => {
+    const bits: string[] = [`\`${e.url}\` _(${e.kind})_ — \`${e.before}\` → \`${e.after}\``];
+    if (e.newMissingTypes.length) bits.push(`new missing @type: ${e.newMissingTypes.map((t) => `\`${t}\``).join(", ")}`);
+    if (e.fixedMissingTypes.length) bits.push(`fixed @type: ${e.fixedMissingTypes.map((t) => `\`${t}\``).join(", ")}`);
+    if (e.newBadBlocks.length) {
+      bits.push(`new bad blocks: ${e.newBadBlocks.map((b) => `\`${b.file}:${b.line}\` (\`${b.type ?? "?"}\`${b.missing.length ? ` missing ${b.missing.map((p) => `\`${p}\``).join(",")}` : ""})`).join("; ")}`);
+    }
+    if (e.fixedBadBlocks.length) {
+      bits.push(`fixed bad blocks: ${e.fixedBadBlocks.map((b) => `\`${b.file}:${b.line}\` (\`${b.type ?? "?"}\`)`).join("; ")}`);
+    }
+    return `- ${bits.join(" — ")}`;
+  };
+
+  md += `### 🔻 Regressions (${DIFF.regressions.length})\n\n`;
+  if (!DIFF.regressions.length) md += "_None — no URL newly started failing._\n\n";
+  else { for (const e of DIFF.regressions) md += renderEntry(e) + "\n"; md += "\n"; }
+
+  md += `### 🟢 Fixes (${DIFF.fixes.length})\n\n`;
+  if (!DIFF.fixes.length) md += "_None._\n\n";
+  else { for (const e of DIFF.fixes) md += renderEntry(e) + "\n"; md += "\n"; }
+
+  if (DIFF.changedSameStatus.length) {
+    md += `### 🔄 Changed (same status, different details) (${DIFF.changedSameStatus.length})\n\n`;
+    for (const e of DIFF.changedSameStatus) md += renderEntry(e) + "\n";
+    md += "\n";
+  }
+
+  if (DIFF.added.length) {
+    md += `### ➕ Added URLs (${DIFF.added.length})\n\n`;
+    for (const r of DIFF.added) md += `- \`${r.url}\` _(${r.kind})_ — status \`${rowStatus(r)}\`\n`;
+    md += "\n";
+  }
+  if (DIFF.removed.length) {
+    md += `### ➖ Removed URLs (${DIFF.removed.length})\n\n`;
+    for (const r of DIFF.removed) md += `- \`${r.url}\`\n`;
+    md += "\n";
+  }
+}
+
+if (DIFF_ONLY) {
+  // Skip the per-group tables and bad-block / unresolved sections when the
+  // user only wants the diff.
+} else for (const k of groupOrder) {
   const group = ROWS.filter((r) => r.kind === k);
   if (!group.length) continue;
   md += `## ${groupLabels[k]} (${group.length})\n\n`;
@@ -427,7 +587,7 @@ for (const k of groupOrder) {
   md += "\n";
 }
 
-if (failingBlocks.length) {
+if (!DIFF_ONLY && failingBlocks.length) {
   md += "## Bad / incomplete JSON-LD blocks\n\n";
   for (const r of failingBlocks) {
     md += `### \`${r.url}\`\n\n`;
@@ -441,7 +601,7 @@ if (failingBlocks.length) {
   }
 }
 
-if (unresolved.length) {
+if (!DIFF_ONLY && unresolved.length) {
   md += "## ⚠️ URLs with no matching <Route> in App.tsx\n\n";
   for (const r of unresolved) md += `- \`${r.url}\`\n`;
   md += "\n";
@@ -547,7 +707,17 @@ writeFileSync(OUT_JSON, JSON.stringify({
     missingTypes: failingTypes.length,
     badBlocks: failingBlocks.length,
     unresolved: unresolved.length,
+    regressions: DIFF?.regressions.length ?? 0,
+    fixes: DIFF?.fixes.length ?? 0,
+    addedUrls: DIFF?.added.length ?? 0,
+    removedUrls: DIFF?.removed.length ?? 0,
   },
+  baseline: DIFF ? {
+    path: BASELINE_PATH,
+    generatedAt: BASELINE_META?.generatedAt ?? null,
+    rowCount: BASELINE_META?.rowCount ?? 0,
+  } : null,
+  diff: DIFF,
   rows: ROWS,
 }, null, 2), "utf8");
 
@@ -558,9 +728,15 @@ console.log(`  ✅ passing:            ${passing.length}`);
 console.log(`  ❌ missing @type:      ${failingTypes.length}`);
 console.log(`  ❌ bad blocks:         ${failingBlocks.length}`);
 console.log(`  ⚠️  unresolved routes: ${unresolved.length}`);
+if (DIFF) {
+  console.log(`  🔻 regressions:        ${DIFF.regressions.length}`);
+  console.log(`  🟢 fixes:              ${DIFF.fixes.length}`);
+  console.log(`  ➕ added urls:         ${DIFF.added.length}`);
+  console.log(`  ➖ removed urls:       ${DIFF.removed.length}`);
+}
 console.log(`Wrote ${rel(OUT_MD)}, ${rel(OUT_HTML)}, ${rel(OUT_JSON)}`);
 
 const STRICT = process.env.JSONLD_COVERAGE_STRICT === "1";
-if (STRICT && (failingTypes.length || failingBlocks.length || unresolved.length)) {
+if (STRICT && (failingTypes.length || failingBlocks.length || unresolved.length || (DIFF && DIFF.regressions.length))) {
   process.exitCode = 1;
 }
