@@ -130,7 +130,7 @@ const ThyroidStormScene = ({ active }: { active: number }) => {
         {/* BWPS gauge + vitals */}
         <g transform="translate(250, 12)">
           <text x="0" y="10" className="text-[10px] font-semibold" fill="hsl(var(--foreground))">Burch-Wartofsky</text>
-          <rect x="0" y="14" width="118" height="14" rx="2" fill="hsl(var(--muted))" />
+          <rect x="0" y="14" width="118" height="14" rx="2" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.75" />
           <rect x="0" y="14" width={(118 * Math.min(bwps, 100)) / 100} height="14" rx="2"
             fill={bwps >= 45 ? "hsl(var(--destructive))" : bwps >= 25 ? "hsl(var(--clinical))" : "hsl(var(--accent))"}
             className="transition-all duration-700 ease-out" />

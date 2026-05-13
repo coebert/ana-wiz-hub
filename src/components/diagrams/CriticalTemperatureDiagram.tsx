@@ -75,7 +75,7 @@ export const CriticalTemperatureDiagram = () => {
           rx="10"
           fill="hsl(210 20% 95%)"
           stroke="hsl(210 30% 35%)"
-          strokeWidth="2.5"
+          strokeWidth="2"
         />
         {/* Cylinder neck/valve */}
         <rect x={cylX + cylW / 2 - 8} y={cylY - 18} width={16} height={18} fill="hsl(210 30% 35%)" />
@@ -121,7 +121,7 @@ export const CriticalTemperatureDiagram = () => {
 
         {/* Pressure gauge */}
         <g>
-          <circle cx={280} cy={130} r={55} fill="hsl(210 20% 97%)" stroke="hsl(210 30% 35%)" strokeWidth="2.5" />
+          <circle cx={280} cy={130} r={55} fill="hsl(210 20% 97%)" stroke="hsl(210 30% 35%)" strokeWidth="2" />
           {/* Tick marks */}
           {Array.from({ length: 9 }).map((_, i) => {
             const a = (-120 + i * 30) * (Math.PI / 180);

@@ -128,7 +128,7 @@ const HepaticAcinusDiagram = () => {
             <circle cx={cx} cy={cy} r={14} fill="hsl(220, 70%, 45%)" stroke="hsl(220, 80%, 35%)" strokeWidth="2" />
             <text x={cx} y={cy - 20} textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(220, 70%, 35%)">Central</text>
             <text x={cx} y={cy - 11} textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(220, 70%, 35%)">Vein</text>
-            <text x={cx} y={cy + 4} textAnchor="middle" className="text-[8px]" fill="white">CV</text>
+            <text x={cx} y={cy + 4} textAnchor="middle" className="text-[8px]" fill="hsl(var(--background))">CV</text>
 
             {/* Portal triads at vertices */}
             {[
@@ -141,7 +141,7 @@ const HepaticAcinusDiagram = () => {
             ].map((pt, i) => (
               <g key={i}>
                 <circle cx={pt.x} cy={pt.y} r={10} fill="hsl(0, 65%, 50%)" stroke="hsl(0, 70%, 40%)" strokeWidth="1.5" opacity={0.8} />
-                <text x={pt.x} y={pt.y + 3.5} textAnchor="middle" className="text-[7px] font-bold" fill="white">PT</text>
+                <text x={pt.x} y={pt.y + 3.5} textAnchor="middle" className="text-[7px] font-bold" fill="hsl(var(--background))">PT</text>
               </g>
             ))}
 

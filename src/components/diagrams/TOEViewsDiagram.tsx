@@ -187,8 +187,8 @@ const TOEViewsDiagram = () => {
         <text x="305" y="40" fontSize="8" fill="hsl(var(--muted-foreground))">L lung</text>
 
         {/* Oesophagus — vertical tube */}
-        <path d="M 195,15 Q 198,80 200,150 Q 202,210 200,265" fill="none" stroke="hsl(var(--border))" strokeWidth="14" strokeLinecap="round" />
-        <path d="M 195,15 Q 198,80 200,150 Q 202,210 200,265" fill="none" stroke="url(#oesoph-grad)" strokeWidth="11" strokeLinecap="round" />
+        <path d="M 195,15 Q 198,80 200,150 Q 202,210 200,265" fill="none" stroke="hsl(var(--border))" strokeWidth="3" strokeLinecap="round" />
+        <path d="M 195,15 Q 198,80 200,150 Q 202,210 200,265" fill="none" stroke="url(#oesoph-grad)" strokeWidth="3" strokeLinecap="round" />
 
         {/* Depth zone markers */}
         <g fontSize="7" fill="hsl(var(--muted-foreground))">
@@ -207,7 +207,7 @@ const TOEViewsDiagram = () => {
         <text x="265" y="155" fontSize="10" fill="hsl(var(--icu))" fontWeight="700" textAnchor="middle">HEART</text>
 
         {/* Diaphragm */}
-        <path d="M 50,235 Q 200,250 350,235" fill="none" stroke="hsl(var(--border))" strokeWidth="1.2" strokeDasharray="4 3" />
+        <path d="M 50,235 Q 200,250 350,235" fill="none" stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4 3" />
         <text x="55" y="248" fontSize="7" fill="hsl(var(--muted-foreground))">diaphragm</text>
 
         {/* Stomach (TG) */}
@@ -224,8 +224,8 @@ const TOEViewsDiagram = () => {
                 <animate attributeName="opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite" />
               </circle>
               <circle cx="200" cy={y} r="5" fill="hsl(var(--primary))" />
-              <line x1="200" y1={y} x2="240" y2={y - 5} stroke="hsl(var(--primary))" strokeWidth="0.6" strokeDasharray="2 1" opacity="0.7" />
-              <line x1="200" y1={y} x2="245" y2={y + 18} stroke="hsl(var(--primary))" strokeWidth="0.6" strokeDasharray="2 1" opacity="0.7" />
+              <line x1="200" y1={y} x2="240" y2={y - 5} stroke="hsl(var(--primary))" strokeWidth="0.5" strokeDasharray="2 1" opacity="0.7" />
+              <line x1="200" y1={y} x2="245" y2={y + 18} stroke="hsl(var(--primary))" strokeWidth="0.5" strokeDasharray="2 1" opacity="0.7" />
               <text x="178" y={y + 2} fontSize="7" fill="hsl(var(--primary))" fontWeight="700" textAnchor="end">{depth}</text>
             </g>
           );
@@ -234,8 +234,8 @@ const TOEViewsDiagram = () => {
         {/* Multiplane angle indicator */}
         {v && (
           <g transform="translate(345,260)">
-            <circle r="20" fill="none" stroke="hsl(var(--border))" strokeWidth="0.6" />
-            <line x1="-20" y1="0" x2="20" y2="0" stroke="hsl(var(--border))" strokeWidth="0.4" />
+            <circle r="20" fill="none" stroke="hsl(var(--border))" strokeWidth="0.5" />
+            <line x1="-20" y1="0" x2="20" y2="0" stroke="hsl(var(--border))" strokeWidth="0.5" />
             {(() => {
               // parse first numeric angle from string like "60–90°" or "0°"
               const m = v.angle.match(/(\d+)/);

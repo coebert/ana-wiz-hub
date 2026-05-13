@@ -199,7 +199,7 @@ const CellSalvageScene = ({ active }: { active: number }) => {
 
       {/* ---------- 2. Reservoir ---------- */}
       <g aria-label="Collection reservoir">
-        <rect x="180" y="60" width="90" height="110" rx="10" fill="hsl(var(--card))" {...ringFor(1)} />
+        <rect x="180" y="60" width="90" height="110" rx="10" fill="hsl(var(--card))" {...ringFor(1)} stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* Fill level animates as we progress */}
         <rect
           x="184"
@@ -280,10 +280,10 @@ const CellSalvageScene = ({ active }: { active: number }) => {
         {/* Spinning indicator lines */}
         {(lit(2) || lit(3)) && (
           <g style={{ transformOrigin: "410px 140px" }}>
-            <ellipse cx="410" cy="140" rx="32" ry="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8" opacity="0.6">
+            <ellipse cx="410" cy="140" rx="32" ry="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.75" opacity="0.6">
               <animateTransform attributeName="transform" type="rotate" from="0 410 140" to="360 410 140" dur="0.6s" repeatCount="indefinite" />
             </ellipse>
-            <ellipse cx="410" cy="140" rx="32" ry="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8" opacity="0.4" transform="rotate(60 410 140)">
+            <ellipse cx="410" cy="140" rx="32" ry="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.75" opacity="0.4" transform="rotate(60 410 140)">
               <animateTransform attributeName="transform" type="rotate" from="60 410 140" to="420 410 140" dur="0.6s" repeatCount="indefinite" />
             </ellipse>
           </g>
@@ -319,7 +319,7 @@ const CellSalvageScene = ({ active }: { active: number }) => {
       {/* ---------- 4b. Waste bag (right of bowl) ---------- */}
       <g aria-label="Waste bag">
         <path d="M450,140 C490,140 510,140 540,140" stroke={MUTED} strokeWidth="1.5" fill="none" markerEnd="url(#cs-arrow)" />
-        <rect x="540" y="115" width="60" height="60" rx="6" fill="hsl(var(--card))" {...ringFor(3)} />
+        <rect x="540" y="115" width="60" height="60" rx="6" fill="hsl(var(--card))" {...ringFor(3)} stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* Plasma waste fills as we wash */}
         <rect x="544" y={lit(3) ? 130 : done(3) ? 122 : 165} width="52" height={lit(3) ? 41 : done(3) ? 49 : 6} rx="4" fill={PLASMA} opacity="0.6">
           {lit(3) && <animate attributeName="height" values="10;48;10" dur="2.4s" repeatCount="indefinite" />}
@@ -350,7 +350,7 @@ const CellSalvageScene = ({ active }: { active: number }) => {
         <text x="466" y="262" textAnchor="middle" fontSize="8" fill={MUTED}>40 µm</text>
 
         {/* Re-infusion bag */}
-        <rect x="525" y="215" width="60" height="55" rx="6" fill="hsl(var(--card))" {...ringFor(4)} />
+        <rect x="525" y="215" width="60" height="55" rx="6" fill="hsl(var(--card))" {...ringFor(4)} stroke="hsl(var(--border))" strokeWidth="0.75" />
         <rect x="529" y={lit(4) ? 230 : done(4) ? 222 : 263} width="52" height={lit(4) ? 36 : done(4) ? 44 : 4} rx="4" fill={RED} opacity="0.7">
           {lit(4) && <animate attributeName="height" values="6;42;6" dur="2.4s" repeatCount="indefinite" />}
           {lit(4) && <animate attributeName="y" values="260;224;260" dur="2.4s" repeatCount="indefinite" />}

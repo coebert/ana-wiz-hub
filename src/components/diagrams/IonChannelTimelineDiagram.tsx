@@ -257,7 +257,7 @@ export const IonChannelTimelineDiagram = () => {
               <text x="-4" y={apH - 2} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end">−90</text>
               <line x1="0" y1={apH - ((0 + 90) / 130) * apH} x2={W} y2={apH - ((0 + 90) / 130) * apH}
                 stroke="hsl(var(--border))" strokeDasharray="1 3" strokeWidth="0.5" opacity="0.5" />
-              <path d={apPath} fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.8" />
+              <path d={apPath} fill="none" stroke="hsl(var(--foreground))" strokeWidth="2" />
               {/* Phase labels on AP */}
               {phases.map((p) => (
                 <text

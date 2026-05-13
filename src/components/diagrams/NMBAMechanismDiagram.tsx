@@ -116,7 +116,7 @@ export const NMBAMechanismDiagram = () => {
         {/* VGCC */}
         {receptors.map((x, i) => (
           <rect key={`vgcc-${i}`} x={x - 5} y={124} width={10} height={12} rx={2}
-            fill="hsl(210 25% 80%)" stroke="hsl(210 25% 55%)" strokeWidth="0.8" />
+            fill="hsl(210 25% 80%)" stroke="hsl(210 25% 55%)" strokeWidth="0.75" />
         ))}
         <text x={435} y={133} fontSize="7" fill="hsl(var(--muted-foreground))">VGCCs</text>
 
@@ -143,7 +143,7 @@ export const NMBAMechanismDiagram = () => {
               <ellipse cx={x} cy={175} rx={10} ry={6}
                 fill={inhibited ? "hsl(150 55% 40%/0.3)" : "hsl(0 55% 50%/0.15)"}
                 stroke={inhibited ? "hsl(150 55% 40%)" : "hsl(0 55% 50%)"}
-                strokeWidth="0.8" />
+                strokeWidth="0.75" />
               <text x={x} y={178} textAnchor="middle" fontSize="5.5"
                 fill={inhibited ? "hsl(150 55% 40%)" : "hsl(0 55% 50%)"} fontWeight="600">AChE</text>
               {inhibited && (
@@ -160,7 +160,7 @@ export const NMBAMechanismDiagram = () => {
         {neostigmineActive && progress > 0.1 && receptors.map((x, i) => (
           <g key={`neo-${i}`} opacity={Math.min((progress - 0.1) * 3, 0.9)}>
             <rect x={x - 7} y={166} width={14} height={8} rx={2}
-              fill="hsl(150 55% 40%)" fillOpacity="0.3" stroke="hsl(150 55% 40%)" strokeWidth="0.8" />
+              fill="hsl(150 55% 40%)" fillOpacity="0.3" stroke="hsl(150 55% 40%)" strokeWidth="0.75" />
             <text x={x} y={173} textAnchor="middle" fontSize="4" fill="hsl(150 55% 40%)" fontWeight="600">Neo</text>
           </g>
         ))}
@@ -200,7 +200,7 @@ export const NMBAMechanismDiagram = () => {
                     fill={blocked ? "hsl(0 60% 50%)" : suxBound ? "hsl(30 70% 50%)" : neostigmineActive && progress > 0.4 ? "hsl(170 55% 45%)" : "hsl(260 40% 65%)"}
                     fillOpacity={0.3}
                     stroke={blocked ? "hsl(0 60% 50%)" : suxBound ? "hsl(30 70% 50%)" : "hsl(260 40% 65%)"}
-                    strokeWidth="0.8" />
+                    strokeWidth="0.75" />
                   <text x={x + dx * 2.5} y={200} textAnchor="middle" fontSize="5"
                     fill={blocked ? "hsl(0 60% 50%)" : suxBound ? "hsl(30 70% 50%)" : "hsl(260 40% 55%)"} fontWeight="700">α</text>
                 </g>
@@ -221,11 +221,11 @@ export const NMBAMechanismDiagram = () => {
               {blocked && (
                 <g>
                   <rect x={x - 10} y={192} width={8} height={6} rx={1.5}
-                    fill="hsl(0 60% 50%)" fillOpacity="0.5" stroke="hsl(0 60% 50%)" strokeWidth="0.6">
+                    fill="hsl(0 60% 50%)" fillOpacity="0.5" stroke="hsl(0 60% 50%)" strokeWidth="0.5">
                     <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />
                   </rect>
                   <rect x={x + 2} y={192} width={8} height={6} rx={1.5}
-                    fill="hsl(0 60% 50%)" fillOpacity="0.5" stroke="hsl(0 60% 50%)" strokeWidth="0.6">
+                    fill="hsl(0 60% 50%)" fillOpacity="0.5" stroke="hsl(0 60% 50%)" strokeWidth="0.5">
                     <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />
                   </rect>
                 </g>
@@ -235,7 +235,7 @@ export const NMBAMechanismDiagram = () => {
               {suxBound && (
                 <g>
                   <rect x={x - 10} y={192} width={20} height={6} rx={1.5}
-                    fill="hsl(30 70% 50%)" fillOpacity="0.5" stroke="hsl(30 70% 50%)" strokeWidth="0.6">
+                    fill="hsl(30 70% 50%)" fillOpacity="0.5" stroke="hsl(30 70% 50%)" strokeWidth="0.5">
                     <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite" />
                   </rect>
                 </g>
@@ -267,7 +267,7 @@ export const NMBAMechanismDiagram = () => {
             <g key={`sug-${i}`} opacity={Math.min(encapProgress * 2, 1)}>
               {/* Rocuronium molecule leaving receptor */}
               <rect x={x - 5} y={driftY} width={10} height={6} rx={1.5}
-                fill="hsl(0 60% 50%)" fillOpacity={captured ? 0.7 : 0.5} stroke="hsl(0 60% 50%)" strokeWidth="0.6" />
+                fill="hsl(0 60% 50%)" fillOpacity={captured ? 0.7 : 0.5} stroke="hsl(0 60% 50%)" strokeWidth="0.5" />
               <text x={x} y={driftY + 4.5} textAnchor="middle" fontSize="3.5" fill="hsl(0 60% 50%)" fontWeight="700">Roc</text>
               {/* Sugammadex cyclodextrin ring */}
               {showRing && (
@@ -319,7 +319,7 @@ export const NMBAMechanismDiagram = () => {
         {/* Safety margin annotation for NDMR */}
         {ndmrBound && (
           <g opacity="0.6">
-            <rect x={80} y={380} width={340} height={30} rx={4} fill="hsl(0 50% 50%/0.05)" stroke="hsl(0 50% 50%)" strokeWidth="0.6" />
+            <rect x={80} y={380} width={340} height={30} rx={4} fill="hsl(0 50% 50%/0.05)" stroke="hsl(0 50% 50%)" strokeWidth="0.5" />
             <text x={250} y={393} textAnchor="middle" fontSize="6.5" fill="hsl(0 50% 50%)" fontWeight="600">
               &gt;75% receptor occupancy for clinical weakness • &gt;95% for complete block
             </text>
@@ -332,10 +332,10 @@ export const NMBAMechanismDiagram = () => {
         {/* Phase I/II for Sux */}
         {suxBound && (
           <g opacity="0.6">
-            <rect x={80} y={380} width={165} height={30} rx={4} fill="hsl(30 60% 50%/0.05)" stroke="hsl(30 60% 50%)" strokeWidth="0.6" />
+            <rect x={80} y={380} width={165} height={30} rx={4} fill="hsl(30 60% 50%/0.05)" stroke="hsl(30 60% 50%)" strokeWidth="0.5" />
             <text x={162} y={393} textAnchor="middle" fontSize="6" fill="hsl(30 60% 50%)" fontWeight="600">Phase I (Depolarising)</text>
             <text x={162} y={403} textAnchor="middle" fontSize="5" fill="hsl(30 50% 50%)">No fade, no PTP</text>
-            <rect x={255} y={380} width={165} height={30} rx={4} fill="hsl(0 50% 50%/0.05)" stroke="hsl(0 50% 50%)" strokeWidth="0.6" />
+            <rect x={255} y={380} width={165} height={30} rx={4} fill="hsl(0 50% 50%/0.05)" stroke="hsl(0 50% 50%)" strokeWidth="0.5" />
             <text x={337} y={393} textAnchor="middle" fontSize="6" fill="hsl(0 50% 50%)" fontWeight="600">Phase II (Prolonged)</text>
             <text x={337} y={403} textAnchor="middle" fontSize="5" fill="hsl(0 40% 50%)">Fade + PTP (like NDMR)</text>
           </g>
@@ -344,7 +344,7 @@ export const NMBAMechanismDiagram = () => {
         {/* Neostigmine mechanism */}
         {neostigmineActive && (
           <g opacity="0.6">
-            <rect x={80} y={380} width={340} height={30} rx={4} fill="hsl(150 50% 40%/0.05)" stroke="hsl(150 50% 40%)" strokeWidth="0.6" />
+            <rect x={80} y={380} width={340} height={30} rx={4} fill="hsl(150 50% 40%/0.05)" stroke="hsl(150 50% 40%)" strokeWidth="0.5" />
             <text x={250} y={393} textAnchor="middle" fontSize="6.5" fill="hsl(150 50% 40%)" fontWeight="600">
               AChE inhibited → ↑[ACh] → competitively displaces NDMR from α subunits
             </text>
@@ -357,7 +357,7 @@ export const NMBAMechanismDiagram = () => {
         {/* Sugammadex mechanism */}
         {sugammadexActive && (
           <g opacity="0.6">
-            <rect x={80} y={380} width={340} height={30} rx={4} fill="hsl(270 50% 55%/0.05)" stroke="hsl(270 50% 55%)" strokeWidth="0.6" />
+            <rect x={80} y={380} width={340} height={30} rx={4} fill="hsl(270 50% 55%/0.05)" stroke="hsl(270 50% 55%)" strokeWidth="0.5" />
             <text x={250} y={393} textAnchor="middle" fontSize="6.5" fill="hsl(270 50% 55%)" fontWeight="600">
               γ-cyclodextrin encapsulates rocuronium → concentration gradient pulls Roc from NMJ
             </text>
@@ -370,7 +370,7 @@ export const NMBAMechanismDiagram = () => {
         {/* Normal transmission */}
         {scenario === "normal" && (
           <g opacity="0.5">
-            <rect x={80} y={380} width={340} height={25} rx={4} fill="hsl(170 40% 40%/0.05)" stroke="hsl(170 40% 40%)" strokeWidth="0.6" />
+            <rect x={80} y={380} width={340} height={25} rx={4} fill="hsl(170 40% 40%/0.05)" stroke="hsl(170 40% 40%)" strokeWidth="0.5" />
             <text x={250} y={396} textAnchor="middle" fontSize="6" fill="hsl(170 40% 40%)" fontWeight="600">
               Safety margin: ~75% receptors can be blocked before clinical weakness
             </text>

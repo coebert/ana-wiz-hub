@@ -417,7 +417,7 @@ const ContractileView = ({
 
       <path
         d="M 50,225 L 80,225 L 88,40 Q 95,55 100,75 Q 105,80 115,80 Q 200,76 300,85 Q 340,140 400,225 L 480,225"
-        fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} strokeLinejoin="round"
+        fill="none" stroke="hsl(var(--primary))" strokeWidth={2} strokeLinejoin="round"
       />
 
       <text x={82} y={135} fontSize="13" fill="currentColor" fontWeight="bold" opacity={0.7}>0</text>
@@ -468,8 +468,8 @@ const ContractileView = ({
           <g style={{ pointerEvents: "none" }}>
             <line x1={x} y1={20} x2={x} y2={240} stroke="hsl(var(--primary))" strokeWidth={1.5} opacity={0.85} />
             <circle cx={x} cy={20} r={4} fill="hsl(var(--primary))" />
-            <rect x={x - 16} y={4} width={32} height={12} rx={2} fill="hsl(var(--primary))" opacity={0.92} />
-            <text x={x} y={13} fontSize="7" fill="white" textAnchor="middle" fontWeight="bold">
+            <rect x={x - 16} y={4} width={32} height={12} rx={2} fill="hsl(var(--primary))" opacity={0.92} stroke="hsl(var(--border))" strokeWidth="0.75" />
+            <text x={x} y={13} fontSize="7" fill="hsl(var(--background))" textAnchor="middle" fontWeight="bold">
               {(time * 2.4).toFixed(2)}s
             </text>
           </g>
@@ -579,7 +579,7 @@ const PacemakerView = ({
           Q 445,52 450,50
           Q 460,55 470,80
         `}
-        fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} strokeLinejoin="round"
+        fill="none" stroke="hsl(var(--primary))" strokeWidth={2} strokeLinejoin="round"
       />
 
       {/* Slowed Phase 4 slope (drug effect — dashed) */}
@@ -677,8 +677,8 @@ const PacemakerView = ({
           <g style={{ pointerEvents: "none" }}>
             <line x1={x} y1={25} x2={x} y2={250} stroke="hsl(var(--primary))" strokeWidth={1.5} opacity={0.85} />
             <circle cx={x} cy={25} r={4} fill="hsl(var(--primary))" />
-            <rect x={x - 16} y={9} width={32} height={12} rx={2} fill="hsl(var(--primary))" opacity={0.92} />
-            <text x={x} y={18} fontSize="7" fill="white" textAnchor="middle" fontWeight="bold">
+            <rect x={x - 16} y={9} width={32} height={12} rx={2} fill="hsl(var(--primary))" opacity={0.92} stroke="hsl(var(--border))" strokeWidth="0.75" />
+            <text x={x} y={18} fontSize="7" fill="hsl(var(--background))" textAnchor="middle" fontWeight="bold">
               {(time * 2.4).toFixed(2)}s
             </text>
           </g>
@@ -794,7 +794,7 @@ const ECGStrip = ({ selected, time }: { selected: DrugClass | undefined | null; 
 
       <defs>
         <pattern id="ecgGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="hsl(0, 70%, 60%)" strokeWidth="0.4" opacity="0.25" />
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="hsl(0, 70%, 60%)" strokeWidth="0.5" opacity="0.25" />
         </pattern>
       </defs>
       <rect x={stripStart} y={30} width={stripWidth} height={200} fill="url(#ecgGrid)" />

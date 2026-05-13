@@ -440,7 +440,7 @@ const OrbitBonyAnatomyDiagram = () => {
                   d={d}
                   fill="none"
                   stroke="hsl(var(--foreground))"
-                  strokeWidth={0.6}
+                  strokeWidth={0.5}
                   strokeDasharray="2 2"
                   opacity={0.45}
                   pointerEvents="none"
@@ -458,7 +458,7 @@ const OrbitBonyAnatomyDiagram = () => {
               ry={88}
               fill="none"
               stroke="hsl(var(--foreground))"
-              strokeWidth={0.8}
+              strokeWidth={0.75}
               strokeDasharray="3 3"
               opacity={0.18}
               pointerEvents="none"
@@ -515,7 +515,7 @@ const OrbitBonyAnatomyDiagram = () => {
                     fill={isSel ? "hsl(var(--primary))" : "hsl(var(--foreground))"}
                     fillOpacity={isSel ? 0.95 : 0.82}
                     stroke="hsl(var(--background))"
-                    strokeWidth={1.2}
+                    strokeWidth={1}
                   />
                 ) : (
                   <path

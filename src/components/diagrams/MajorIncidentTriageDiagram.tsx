@@ -144,7 +144,7 @@ export const MajorIncidentTriageDiagram = () => {
             {phase === 0 && [0, 1, 2].map((i) => {
               const r = 8 + ((t * 5 + i / 3) % 1) * 30;
               const o = 1 - ((t * 5 + i / 3) % 1);
-              return <circle key={i} cx="240" cy="80" r={r} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.2" opacity={o * 0.8} />;
+              return <circle key={i} cx="240" cy="80" r={r} fill="none" stroke="hsl(var(--primary))" strokeWidth="1" opacity={o * 0.8} />;
             })}
           </g>
 
@@ -223,7 +223,7 @@ export const MajorIncidentTriageDiagram = () => {
               { x: 640, label: "Deceased", color: "hsl(var(--foreground))", n: 2 },
             ].map((lane) => (
               <g key={lane.label}>
-                <rect x={lane.x} y={260} width={140} height={80} rx={6} fill="hsl(var(--card))" stroke={lane.color} strokeWidth="1.2" />
+                <rect x={lane.x} y={260} width={140} height={80} rx={6} fill="hsl(var(--card))" stroke={lane.color} strokeWidth="1" />
                 <text x={lane.x + 8} y={278} fontSize="10.5" fontWeight="700" fill={lane.color}>{lane.label}</text>
                 {/* casualty dots populating with streamP */}
                 {Array.from({ length: lane.n }).map((_, i) => {
@@ -251,7 +251,7 @@ export const MajorIncidentTriageDiagram = () => {
                   d="M 90 260 C 90 230, 250 230, 250 260"
                   fill="none"
                   stroke="hsl(var(--primary))"
-                  strokeWidth="1.4"
+                  strokeWidth="1.5"
                   strokeDasharray="4 3"
                   markerEnd="url(#arr)"
                 />

@@ -113,7 +113,7 @@ const AirwayInnervationDiagram = () => {
             <text x="200" y="222" className="text-[7px]" fill="hsl(var(--muted-foreground))" fontStyle="italic">Epiglottis</text>
 
             {/* Hyoid bone */}
-            <line x1="145" y1="228" x2="175" y2="228" stroke="hsl(var(--foreground))" strokeWidth={2.5} opacity={0.4} />
+            <line x1="145" y1="228" x2="175" y2="228" stroke="hsl(var(--foreground))" strokeWidth={2} opacity={0.4} />
             <text x="95" y="232" className="text-[7px]" fill="hsl(var(--muted-foreground))" fontStyle="italic">Hyoid</text>
 
             {/* Vocal cords line */}
@@ -159,20 +159,20 @@ const AirwayInnervationDiagram = () => {
 
             {/* Nerve label arrows (right side) */}
             <g opacity={0.7}>
-              <line x1="220" y1="68" x2="280" y2="55" stroke="hsl(210,70%,55%)" strokeWidth={0.8} />
+              <line x1="220" y1="68" x2="280" y2="55" stroke="hsl(210,70%,55%)" strokeWidth={0.75} />
               <text x="283" y="58" className="text-[7px]" fill="hsl(210,70%,55%)">V₂</text>
 
               <text x="283" y="140" className="text-[7px]" fill="hsl(270,55%,55%)">V₃</text>
-              <line x1="232" y1="136" x2="280" y2="138" stroke="hsl(270,55%,55%)" strokeWidth={0.8} />
+              <line x1="232" y1="136" x2="280" y2="138" stroke="hsl(270,55%,55%)" strokeWidth={0.75} />
 
               <text x="283" y="198" className="text-[7px]" fill="hsl(340,65%,55%)">IX</text>
-              <line x1="240" y1="195" x2="280" y2="196" stroke="hsl(340,65%,55%)" strokeWidth={0.8} />
+              <line x1="240" y1="195" x2="280" y2="196" stroke="hsl(340,65%,55%)" strokeWidth={0.75} />
 
               <text x="283" y="270" className="text-[7px]" fill="hsl(45,80%,50%)">X (iSLN)</text>
-              <line x1="237" y1="268" x2="280" y2="268" stroke="hsl(45,80%,50%)" strokeWidth={0.8} />
+              <line x1="237" y1="268" x2="280" y2="268" stroke="hsl(45,80%,50%)" strokeWidth={0.75} />
 
               <text x="283" y="378" className="text-[7px]" fill="hsl(150,60%,45%)">X (RLN)</text>
-              <line x1="232" y1="375" x2="280" y2="376" stroke="hsl(150,60%,45%)" strokeWidth={0.8} />
+              <line x1="232" y1="375" x2="280" y2="376" stroke="hsl(150,60%,45%)" strokeWidth={0.75} />
             </g>
           </svg>
         </div>

@@ -141,8 +141,8 @@ const AntecubitalFossaDiagram = () => {
             {showSutures && <rect x="2" y="2" width="296" height="336" rx="10" fill="url(#acf-tissue)" pointerEvents="none" />}
 
             {/* Arm outline */}
-            <path d="M90,10 Q80,60 75,120 Q70,160 60,200 Q55,240 50,280 Q48,300 45,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
-            <path d="M210,10 Q220,60 225,120 Q228,160 235,200 Q238,240 240,280 Q242,300 245,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+            <path d="M90,10 Q80,60 75,120 Q70,160 60,200 Q55,240 50,280 Q48,300 45,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
+            <path d="M210,10 Q220,60 225,120 Q228,160 235,200 Q238,240 240,280 Q242,300 245,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
 
             {/* Elbow crease */}
             {showSutures && (

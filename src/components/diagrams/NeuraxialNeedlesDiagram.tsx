@@ -209,7 +209,7 @@ const NeedleTipSVG = ({ needleKey, isActive }: { needleKey: NeedleKey; isActive:
       {needleKey === "quincke" && (
         <g opacity={opacity}>
           {/* Cutting bevel — angled sharp point */}
-          <path d="M62,218 L62,248 L80,268 L98,248 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.8" />
+          <path d="M62,218 L62,248 L80,268 L98,248 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.75" />
           {/* Bevel face */}
           <path d="M62,248 L80,268 L98,248" fill="none" stroke={n.color} strokeWidth="1.5" />
           {/* Sharp tip indicator */}
@@ -233,7 +233,7 @@ const NeedleTipSVG = ({ needleKey, isActive }: { needleKey: NeedleKey; isActive:
       {needleKey === "whitacre" && (
         <g opacity={opacity}>
           {/* Conical pencil-point tip */}
-          <path d="M62,218 L62,252 Q62,262 72,268 L80,272 L88,268 Q98,262 98,252 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.8" />
+          <path d="M62,218 L62,252 Q62,262 72,268 L80,272 L88,268 Q98,262 98,252 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.75" />
           {/* Solid tip — no opening */}
           <path d="M72,268 L80,272 L88,268" fill="hsl(0,0%,65%)" stroke="hsl(0,0%,50%)" strokeWidth="1" />
           <circle cx="80" cy="272" r="1.2" fill="hsl(0,0%,55%)" />
@@ -255,7 +255,7 @@ const NeedleTipSVG = ({ needleKey, isActive }: { needleKey: NeedleKey; isActive:
       {needleKey === "sprotte" && (
         <g opacity={opacity}>
           {/* Pencil-point tip similar to Whitacre */}
-          <path d="M62,218 L62,252 Q62,262 72,268 L80,272 L88,268 Q98,262 98,252 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.8" />
+          <path d="M62,218 L62,252 Q62,262 72,268 L80,272 L88,268 Q98,262 98,252 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.75" />
           <path d="M72,268 L80,272 L88,268" fill="hsl(0,0%,65%)" stroke="hsl(0,0%,50%)" strokeWidth="1" />
           <circle cx="80" cy="272" r="1.2" fill="hsl(0,0%,55%)" />
           {/* Large elongated side port */}
@@ -264,9 +264,9 @@ const NeedleTipSVG = ({ needleKey, isActive }: { needleKey: NeedleKey; isActive:
           <text x="42" y="236" textAnchor="end" fontSize="5.5" fill={n.color}>Large side port</text>
           <text x="42" y="244" textAnchor="end" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.7">(~5-6mm)</text>
           {/* Comparison bracket */}
-          <line x1="54" y1="228" x2="54" y2="252" stroke={n.color} strokeWidth="0.8" opacity="0.5" />
-          <line x1="52" y1="228" x2="56" y2="228" stroke={n.color} strokeWidth="0.8" opacity="0.5" />
-          <line x1="52" y1="252" x2="56" y2="252" stroke={n.color} strokeWidth="0.8" opacity="0.5" />
+          <line x1="54" y1="228" x2="54" y2="252" stroke={n.color} strokeWidth="0.75" opacity="0.5" />
+          <line x1="52" y1="228" x2="56" y2="228" stroke={n.color} strokeWidth="0.75" opacity="0.5" />
+          <line x1="52" y1="252" x2="56" y2="252" stroke={n.color} strokeWidth="0.75" opacity="0.5" />
           <text x="80" y="280" textAnchor="middle" fontSize="6.5" fill={n.color} fontWeight="600">Elongated aperture tip</text>
         </g>
       )}
@@ -274,7 +274,7 @@ const NeedleTipSVG = ({ needleKey, isActive }: { needleKey: NeedleKey; isActive:
       {needleKey === "tuohy" && (
         <g opacity={opacity}>
           {/* Curved Huber-point bevel */}
-          <path d="M62,218 L62,250 Q62,258 66,262 Q72,268 80,268 Q88,264 92,258 L98,250 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.8" />
+          <path d="M62,218 L62,250 Q62,258 66,262 Q72,268 80,268 Q88,264 92,258 L98,250 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.75" />
           {/* Curved tip — the key feature */}
           <path d="M62,250 Q62,258 66,262 Q72,268 80,268" fill="none" stroke={n.color} strokeWidth="2" />
           {/* Lumen opening at curve */}
@@ -296,7 +296,7 @@ const NeedleTipSVG = ({ needleKey, isActive }: { needleKey: NeedleKey; isActive:
       {needleKey === "huber" && (
         <g opacity={opacity}>
           {/* Deflected bevel — key difference from standard bevel */}
-          <path d="M62,218 L62,250 L68,260 L80,266 L92,256 L98,248 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.8" />
+          <path d="M62,218 L62,250 L68,260 L80,266 L92,256 L98,248 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.75" />
           {/* Deflected tip face */}
           <path d="M62,250 L68,260 L80,266" fill="none" stroke={n.color} strokeWidth="2" />
           {/* Non-coring illustration */}
@@ -315,13 +315,13 @@ const NeedleTipSVG = ({ needleKey, isActive }: { needleKey: NeedleKey; isActive:
       {needleKey === "pencilpoint-general" && (
         <g opacity={opacity}>
           {/* Generic pencil-point */}
-          <path d="M62,218 L62,252 Q62,262 72,268 L80,272 L88,268 Q98,262 98,252 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.8" />
+          <path d="M62,218 L62,252 Q62,262 72,268 L80,272 L88,268 Q98,262 98,252 L98,218 Z" fill={`url(#shaft-${needleKey})`} stroke="hsl(0,0%,55%)" strokeWidth="0.75" />
           <circle cx="80" cy="272" r="1.2" fill="hsl(0,0%,55%)" />
           {/* Dural fibre interaction diagram */}
           {/* Fibres before */}
           <g opacity="0.6">
             {[-20, -14, -8, 8, 14, 20].map((dy, i) => (
-              <line key={i} x1="30" y1={250 + dy} x2="50" y2={250 + dy} stroke="hsl(270, 30%, 55%)" strokeWidth="0.8" />
+              <line key={i} x1="30" y1={250 + dy} x2="50" y2={250 + dy} stroke="hsl(270, 30%, 55%)" strokeWidth="0.75" />
             ))}
             <text x="40" y="276" textAnchor="middle" fontSize="5" fill="hsl(270, 30%, 55%)">Dural fibres</text>
             <text x="40" y="282" textAnchor="middle" fontSize="5" fill="hsl(270, 30%, 55%)">(intact)</text>
@@ -329,7 +329,7 @@ const NeedleTipSVG = ({ needleKey, isActive }: { needleKey: NeedleKey; isActive:
           {/* Fibres after — separated and sprung back */}
           <g opacity="0.6">
             {[-20, -14, -8, 8, 14, 20].map((dy, i) => (
-              <line key={i} x1="110" y1={250 + dy} x2="130" y2={250 + dy} stroke="hsl(270, 30%, 55%)" strokeWidth="0.8" />
+              <line key={i} x1="110" y1={250 + dy} x2="130" y2={250 + dy} stroke="hsl(270, 30%, 55%)" strokeWidth="0.75" />
             ))}
             <text x="120" y="276" textAnchor="middle" fontSize="5" fill="hsl(270, 30%, 55%)">After withdrawal</text>
             <text x="120" y="282" textAnchor="middle" fontSize="5" fill="hsl(270, 30%, 55%)">(fibres recoil)</text>
@@ -352,8 +352,8 @@ const CrossSectionComparison = () => (
         {/* Dural fibres — cut */}
         {[-18, -12, -6, 0, 6, 12, 18].map((dy, i) => (
           <g key={i}>
-            <line x1="30" y1={50 + dy} x2="60" y2={50 + dy} stroke="hsl(270, 30%, 55%)" strokeWidth="1.2" opacity="0.6" />
-            <line x1="90" y1={50 + dy} x2="120" y2={50 + dy} stroke="hsl(270, 30%, 55%)" strokeWidth="1.2" opacity="0.6" />
+            <line x1="30" y1={50 + dy} x2="60" y2={50 + dy} stroke="hsl(270, 30%, 55%)" strokeWidth="1" opacity="0.6" />
+            <line x1="90" y1={50 + dy} x2="120" y2={50 + dy} stroke="hsl(270, 30%, 55%)" strokeWidth="1" opacity="0.6" />
           </g>
         ))}
         {/* Gap — fibres cut */}
@@ -369,7 +369,7 @@ const CrossSectionComparison = () => (
         <text x="225" y="14" textAnchor="middle" fontSize="8" fill="hsl(210, 60%, 52%)" fontWeight="bold">Pencil-point (Whitacre)</text>
         {/* Dural fibres — separated then recoiled */}
         {[-18, -12, -6, 0, 6, 12, 18].map((dy, i) => (
-          <line key={i} x1="180" y1={50 + dy} x2="270" y2={50 + dy} stroke="hsl(270, 30%, 55%)" strokeWidth="1.2" opacity="0.6" />
+          <line key={i} x1="180" y1={50 + dy} x2="270" y2={50 + dy} stroke="hsl(270, 30%, 55%)" strokeWidth="1" opacity="0.6" />
         ))}
         {/* Tiny slit — fibres spring back */}
         <line x1="225" y1="34" x2="225" y2="66" stroke="hsl(210, 60%, 52%)" strokeWidth="1.5" opacity="0.6" />

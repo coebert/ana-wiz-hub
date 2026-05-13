@@ -171,7 +171,7 @@ export const OIHToleranceDiagram = () => {
               {/* internalised vesicle */}
               <circle cx="320" cy="245" r="32" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" strokeDasharray="3 3" />
               {[0, 1, 2, 3, 4].map((i) => (
-                <rect key={i} x={302 + i * 7} y="232" width="5" height="26" fill={active.color} opacity="0.85" stroke="hsl(var(--foreground))" strokeWidth="0.8" rx="1" />
+                <rect key={i} x={302 + i * 7} y="232" width="5" height="26" fill={active.color} opacity="0.85" stroke="hsl(var(--foreground))" strokeWidth="0.75" rx="1" />
               ))}
               <text x="320" y="290" textAnchor="middle" className="fill-foreground" fontSize="10" fontWeight="600">Internalised MOR</text>
               <text x="320" y="302" textAnchor="middle" className="fill-muted-foreground" fontSize="9">(endosome)</text>

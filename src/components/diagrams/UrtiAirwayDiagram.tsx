@@ -101,7 +101,7 @@ const UrtiAirwayDiagram = () => {
             <text x="110" y="22" textAnchor="middle" className="fill-foreground" fontSize="12" fontWeight="700">Bronchospasm</text>
             <rect x="40" y="36" width="140" height="50" rx="6" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
             <rect x="40" y="36" width="140" height="50" rx="6" fill="hsl(var(--clinical) / 0.4)">
-              <animate attributeName="height" values="14;36;14" dur="2s" repeatCount="indefinite" />
+              <animate attributeName="height" values="14;36;14" dur="2s" repeatCount="indefinite" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <animate attributeName="y" values="54;43;54" dur="2s" repeatCount="indefinite" />
             </rect>
             <text x="110" y="102" textAnchor="middle" className="fill-muted-foreground" fontSize="9">M3 mediated</text>
@@ -125,9 +125,9 @@ const UrtiAirwayDiagram = () => {
           <g transform="translate(540, 290)">
             <rect width="220" height="110" rx="10" fill="hsl(var(--card))" stroke="hsl(var(--border))" />
             <text x="110" y="22" textAnchor="middle" className="fill-foreground" fontSize="12" fontWeight="700">Desaturation · breath-hold</text>
-            <rect x="20" y="50" width="180" height="14" rx="7" fill="hsl(var(--muted))" />
+            <rect x="20" y="50" width="180" height="14" rx="7" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.75" />
             <rect x="20" y="50" width="180" height="14" rx="7" fill="hsl(var(--clinical))">
-              <animate attributeName="width" values="180;40;180" dur="3s" repeatCount="indefinite" />
+              <animate attributeName="width" values="180;40;180" dur="3s" repeatCount="indefinite" stroke="hsl(var(--border))" strokeWidth="0.75" />
             </rect>
             <text x="110" y="84" textAnchor="middle" className="fill-clinical" fontSize="10" fontWeight="600">↓ SpO₂</text>
             <text x="110" y="102" textAnchor="middle" className="fill-muted-foreground" fontSize="9">2–4× risk in children</text>

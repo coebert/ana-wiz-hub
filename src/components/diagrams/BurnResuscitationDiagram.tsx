@@ -181,7 +181,7 @@ export const BurnResuscitationDiagram = () => {
 
             {/* Zone of hyperaemia (outermost lateral) — fixed */}
             <ellipse cx="205" cy="60" rx="135" ry="42"
-              fill="hsl(0 75% 60% / 0.18)" stroke="hsl(0 75% 60%)" strokeWidth="0.8" strokeDasharray="2 2" />
+              fill="hsl(0 75% 60% / 0.18)" stroke="hsl(0 75% 60%)" strokeWidth="0.75" strokeDasharray="2 2" />
             {/* Zone of stasis — shrinks (recovers) or deepens (converts) */}
             {(() => {
               const baseR = 95;

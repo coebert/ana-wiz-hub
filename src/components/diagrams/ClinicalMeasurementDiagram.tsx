@@ -89,7 +89,7 @@ const DampingDiagram = () => (
       <svg viewBox="0 0 620 280" className="w-full h-auto">
         <text x="310" y="18" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Frequency Response (Amplitude Ratio vs Input Frequency)</text>
 
-        <rect x="60" y="28" width="530" height="200" rx="6" fill="hsl(var(--secondary)/0.15)" stroke="hsl(var(--border))" strokeWidth="0.8" />
+        <rect x="60" y="28" width="530" height="200" rx="6" fill="hsl(var(--secondary)/0.15)" stroke="hsl(var(--border))" strokeWidth="0.75" />
 
         {/* Y-axis */}
         <line x1="80" y1="40" x2="80" y2="220" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
@@ -110,7 +110,7 @@ const DampingDiagram = () => (
           { v: "1.2", x: 540 },
         ].map((t) => (
           <g key={t.v}>
-            <line x1={t.x} y1={220} x2={t.x} y2={224} stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" />
+            <line x1={t.x} y1={220} x2={t.x} y2={224} stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" />
             <text x={t.x} y={233} textAnchor="middle" className="fill-muted-foreground text-[7px]">{t.v}</text>
           </g>
         ))}
@@ -131,7 +131,7 @@ const DampingDiagram = () => (
         <text x="445" y="80" className="fill-muted-foreground text-[8px]">D = 0.4</text>
 
         {/* D = 0.64 Optimal — flat then gentle rolloff */}
-        <path d="M 80 132 Q 200 131, 320 130 Q 400 128, 440 130 Q 480 136, 510 155 Q 540 178, 570 200" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+        <path d="M 80 132 Q 200 131, 320 130 Q 400 128, 440 130 Q 480 136, 510 155 Q 540 178, 570 200" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
         <text x="530" y="150" className="fill-primary text-[9px] font-bold">D = 0.64</text>
 
         {/* D = 1.0 Critical — monotonic rolloff */}
@@ -143,7 +143,7 @@ const DampingDiagram = () => (
         <text x="300" y="172" className="fill-muted-foreground text-[8px]">D = 2.0 (overdamped)</text>
 
         {/* Shaded flat bandwidth zone for D=0.64 */}
-        <rect x="80" y="126" width="380" height="12" rx="2" fill="hsl(var(--primary)/0.08)" />
+        <rect x="80" y="126" width="380" height="12" rx="2" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="270" y="124" textAnchor="middle" className="fill-primary/60 text-[7px]">Usable flat bandwidth (D = 0.64)</text>
 
         {/* Legend */}
@@ -171,23 +171,23 @@ const DampingDiagram = () => (
         {/* Optimal */}
         <text x="108" y="38" textAnchor="middle" className="fill-primary text-[9px] font-bold">Optimal (D ≈ 0.64)</text>
         <rect x="20" y="42" width="176" height="85" rx="5" fill="hsl(var(--secondary)/0.15)" stroke="hsl(var(--primary))" strokeWidth="1" />
-        <path d="M 28 100 L 48 100 L 48 55 L 120 55 L 120 100 L 122 92 L 126 106 L 130 100 L 140 100 L 188 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.8" />
+        <path d="M 28 100 L 48 100 L 48 55 L 120 55 L 120 100 L 122 92 L 126 106 L 130 100 L 140 100 L 188 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
         <text x="108" y="120" textAnchor="middle" className="fill-primary text-[7.5px]">1–2 oscillations then baseline</text>
 
         {/* Underdamped */}
         <text x="324" y="38" textAnchor="middle" className="fill-destructive text-[9px] font-bold">Underdamped (D &lt; 0.64)</text>
         <rect x="236" y="42" width="176" height="85" rx="5" fill="hsl(var(--secondary)/0.15)" stroke="hsl(var(--destructive))" strokeWidth="1" />
-        <path d="M 244 100 L 264 100 L 264 55 L 336 55 L 336 100 L 339 82 L 343 114 L 347 86 L 351 110 L 355 90 L 359 108 L 363 94 L 367 104 L 371 98 L 404 100" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.8" />
+        <path d="M 244 100 L 264 100 L 264 55 L 336 55 L 336 100 L 339 82 L 343 114 L 347 86 L 351 110 L 355 90 L 359 108 L 363 94 L 367 104 L 371 98 L 404 100" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2" />
         <text x="324" y="120" textAnchor="middle" className="fill-destructive text-[7.5px]">&gt;2 oscillations (ringing)</text>
 
         {/* Overdamped */}
         <text x="530" y="38" textAnchor="middle" className="fill-muted-foreground text-[9px] font-bold">Overdamped (D &gt; 0.64)</text>
         <rect x="442" y="42" width="176" height="85" rx="5" fill="hsl(var(--secondary)/0.15)" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
-        <path d="M 450 100 L 470 100 L 470 55 L 542 55 L 542 80 Q 548 98, 560 100 L 610 100" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.8" />
+        <path d="M 450 100 L 470 100 L 470 55 L 542 55 L 542 80 Q 548 98, 560 100 L 610 100" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="2" />
         <text x="530" y="120" textAnchor="middle" className="fill-muted-foreground text-[7.5px]">Sluggish return, no oscillations</text>
 
         {/* Effect on waveform */}
-        <rect x="20" y="142" width="580" height="100" rx="6" fill="hsl(var(--secondary)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.8" />
+        <rect x="20" y="142" width="580" height="100" rx="6" fill="hsl(var(--secondary)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="310" y="158" textAnchor="middle" className="fill-foreground text-[10px] font-bold">Effect on Arterial Waveform</text>
         {[
           { label: "Underdamped", effects: "↑SBP, ↓DBP, MAP preserved. Systolic overshoot, ringing after dicrotic notch.", color: "destructive" },
@@ -236,20 +236,20 @@ const DampingDiagram = () => (
         ))}
 
         {/* Amplitude ratio equation */}
-        <rect x="20" y="178" width="580" height="44" rx="6" fill="hsl(var(--secondary)/0.2)" stroke="hsl(var(--border))" strokeWidth="0.8" />
+        <rect x="20" y="178" width="580" height="44" rx="6" fill="hsl(var(--secondary)/0.2)" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="310" y="195" textAnchor="middle" className="fill-foreground text-[9.5px] font-semibold">Amplitude Ratio = 1 / √[ (1 − (f/fn)²)² + (2D × f/fn)² ]</text>
         <text x="310" y="214" textAnchor="middle" className="fill-muted-foreground text-[8px]">At f/fn = 1 (resonance): ratio = 1/(2D) — hence smaller D → larger resonant peak</text>
 
         {/* Causes table */}
         <text x="310" y="244" textAnchor="middle" className="fill-foreground text-[10px] font-bold">Common Causes of Abnormal Damping</text>
 
-        <rect x="20" y="252" width="280" height="62" rx="5" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive))" strokeWidth="0.8" />
+        <rect x="20" y="252" width="280" height="62" rx="5" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive))" strokeWidth="0.75" />
         <text x="160" y="266" textAnchor="middle" className="fill-destructive text-[9px] font-bold">Underdamping</text>
         {["Long tubing / extension sets", "Stiff non-compliant tubing", "Additional stopcocks / connectors"].map((t, i) => (
           <text key={i} x="32" y={280 + i * 11} className="fill-muted-foreground text-[8px]">• {t}</text>
         ))}
 
-        <rect x="320" y="252" width="280" height="62" rx="5" fill="hsl(var(--muted)/0.5)" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" />
+        <rect x="320" y="252" width="280" height="62" rx="5" fill="hsl(var(--muted)/0.5)" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" />
         <text x="460" y="266" textAnchor="middle" className="fill-muted-foreground text-[9px] font-bold">Overdamping</text>
         {["Air bubbles in system (most common)", "Blood clot / fibrin in catheter", "Kinked or partially occluded tubing"].map((t, i) => (
           <text key={i} x="332" y={280 + i * 11} className="fill-muted-foreground text-[8px]">• {t}</text>
@@ -273,7 +273,7 @@ const CVPDiagram = () => (
         <line x1="60" y1="50" x2="60" y2="170" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
 
         {/* CVP waveform - a, c, x, v, y */}
-        <path d="M 60 130 Q 80 130, 100 85 Q 110 70, 120 85 Q 135 110, 145 100 Q 155 90, 160 100 Q 180 140, 220 145 Q 240 145, 260 105 Q 270 90, 280 105 Q 300 135, 330 140 Q 350 140, 380 85 Q 390 70, 400 85 Q 415 110, 425 100 Q 435 90, 440 100 Q 460 140, 500 145 Q 520 145, 540 105" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+        <path d="M 60 130 Q 80 130, 100 85 Q 110 70, 120 85 Q 135 110, 145 100 Q 155 90, 160 100 Q 180 140, 220 145 Q 240 145, 260 105 Q 270 90, 280 105 Q 300 135, 330 140 Q 350 140, 380 85 Q 390 70, 400 85 Q 415 110, 425 100 Q 435 90, 440 100 Q 460 140, 500 145 Q 520 145, 540 105" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
 
         {/* Labels */}
         <text x="110" y="63" textAnchor="middle" className="fill-destructive text-[11px] font-bold">a</text>
@@ -373,7 +373,7 @@ const CardiacOutputDiagram = () => (
         {/* Comparison */}
         <text x="300" y="295" textAnchor="middle" className="fill-foreground text-[12px] font-bold">Method Comparison</text>
         {/* Header */}
-        <rect x="20" y="302" width="560" height="22" rx="4" fill="hsl(var(--primary)/0.1)" />
+        <rect x="20" y="302" width="560" height="22" rx="4" fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="120" y="317" textAnchor="middle" className="fill-foreground text-[9px] font-bold">Method</text>
         <text x="270" y="317" textAnchor="middle" className="fill-foreground text-[9px] font-bold">Invasiveness</text>
         <text x="390" y="317" textAnchor="middle" className="fill-foreground text-[9px] font-bold">Calibration</text>

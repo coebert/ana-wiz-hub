@@ -314,8 +314,8 @@ export const PVLoopWOBDiagram = () => {
           })()}
 
           {/* PV loop curves */}
-          <path d={inspPath} fill="none" stroke={info.color} strokeWidth="2.5" strokeLinecap="round" />
-          <path d={expPath} fill="none" stroke={info.color} strokeWidth="2.5" strokeLinecap="round" />
+          <path d={inspPath} fill="none" stroke={info.color} strokeWidth="2" strokeLinecap="round" />
+          <path d={expPath} fill="none" stroke={info.color} strokeWidth="2" strokeLinecap="round" />
 
           {/* Arrows for direction */}
           {(() => {

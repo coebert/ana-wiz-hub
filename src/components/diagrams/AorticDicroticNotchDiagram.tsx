@@ -237,7 +237,7 @@ const AorticDicroticNotchDiagram = () => {
             y1={PAD_T + PLOT_H}
             y2={PAD_T + PLOT_H}
             stroke="hsl(var(--foreground))"
-            strokeWidth={1.2}
+            strokeWidth={1}
           />
           <line
             x1={PAD_L}
@@ -245,7 +245,7 @@ const AorticDicroticNotchDiagram = () => {
             y1={PAD_T}
             y2={PAD_T + PLOT_H}
             stroke="hsl(var(--foreground))"
-            strokeWidth={1.2}
+            strokeWidth={1}
           />
 
           {/* Phase labels above plot */}
@@ -284,7 +284,7 @@ const AorticDicroticNotchDiagram = () => {
             d={tracePath(t)}
             fill="none"
             stroke={inSystole ? "hsl(var(--physiology))" : "hsl(var(--clinical))"}
-            strokeWidth={2.5}
+            strokeWidth={2}
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -469,7 +469,7 @@ const AorticDicroticNotchDiagram = () => {
             r={6}
             fill="hsl(var(--background))"
             stroke={inSystole ? "hsl(var(--physiology))" : "hsl(var(--clinical))"}
-            strokeWidth={2.5}
+            strokeWidth={2}
           />
 
           {/* X-axis: time */}

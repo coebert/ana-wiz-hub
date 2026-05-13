@@ -143,60 +143,60 @@ const LaryngealNervesDiagram = () => {
           <ellipse cx="148" cy="100" rx="14" ry="12"
             fill={hi("carotid-sheath") ? "#60a5fa" : "transparent"}
             fillOpacity={0.1}
-            stroke="#60a5fa"
+            stroke="hsl(var(--primary))"
             strokeWidth={hi("carotid-sheath") ? 2 : 0.8}
             strokeDasharray={hi("carotid-sheath") ? "" : "3 2"}
             opacity={op("carotid-sheath")}
             onClick={() => setSelected(selected === "carotid-sheath" ? null : "carotid-sheath")}
             className="cursor-pointer"
           />
-          <circle cx="143" cy="98" r="5" fill="url(#ln-vesselRed)" stroke="#7f1d1d" strokeWidth="0.6" opacity={op("carotid-sheath")} filter="url(#ln-shadow)" />
-          <text x="143" y="100" textAnchor="middle" fontSize="3.5" fill="#fff" opacity={op("carotid-sheath")} fontWeight="600">CCA</text>
-          <ellipse cx="155" cy="98" rx="6" ry="5" fill="url(#ln-vesselBlue)" stroke="#1e3a8a" strokeWidth="0.6" opacity={op("carotid-sheath")} filter="url(#ln-shadow)" />
-          <text x="155" y="100" textAnchor="middle" fontSize="3.5" fill="#fff" opacity={op("carotid-sheath")} fontWeight="600">IJV</text>
+          <circle cx="143" cy="98" r="5" fill="url(#ln-vesselRed)" stroke="hsl(var(--destructive))" strokeWidth="0.5" opacity={op("carotid-sheath")} filter="url(#ln-shadow)" />
+          <text x="143" y="100" textAnchor="middle" fontSize="3.5" fill="hsl(var(--background))" opacity={op("carotid-sheath")} fontWeight="600">CCA</text>
+          <ellipse cx="155" cy="98" rx="6" ry="5" fill="url(#ln-vesselBlue)" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity={op("carotid-sheath")} filter="url(#ln-shadow)" />
+          <text x="155" y="100" textAnchor="middle" fontSize="3.5" fill="hsl(var(--background))" opacity={op("carotid-sheath")} fontWeight="600">IJV</text>
           {hi("carotid-sheath") && showLabels && (
-            <text x="115" y="88" fontSize="7" fill="#60a5fa" fontWeight="600">Carotid sheath</text>
+            <text x="115" y="88" fontSize="7" fill="hsl(var(--primary))" fontWeight="600">Carotid sheath</text>
           )}
 
           {/* === CAROTID SHEATH (right) === */}
           <ellipse cx="315" cy="100" rx="14" ry="12"
             fill={hi("carotid-sheath") ? "#60a5fa" : "transparent"}
             fillOpacity={0.1}
-            stroke="#60a5fa"
+            stroke="hsl(var(--primary))"
             strokeWidth={hi("carotid-sheath") ? 2 : 0.8}
             strokeDasharray={hi("carotid-sheath") ? "" : "3 2"}
             opacity={op("carotid-sheath")}
             onClick={() => setSelected(selected === "carotid-sheath" ? null : "carotid-sheath")}
             className="cursor-pointer"
           />
-          <circle cx="320" cy="98" r="5" fill="url(#ln-vesselRed)" stroke="#7f1d1d" strokeWidth="0.6" opacity={op("carotid-sheath")} filter="url(#ln-shadow)" />
-          <ellipse cx="308" cy="98" rx="6" ry="5" fill="url(#ln-vesselBlue)" stroke="#1e3a8a" strokeWidth="0.6" opacity={op("carotid-sheath")} filter="url(#ln-shadow)" />
+          <circle cx="320" cy="98" r="5" fill="url(#ln-vesselRed)" stroke="hsl(var(--destructive))" strokeWidth="0.5" opacity={op("carotid-sheath")} filter="url(#ln-shadow)" />
+          <ellipse cx="308" cy="98" rx="6" ry="5" fill="url(#ln-vesselBlue)" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity={op("carotid-sheath")} filter="url(#ln-shadow)" />
 
           {/* === TRACHEA — anatomically shaped with cartilaginous rings === */}
-          <rect x="200" y="160" width="60" height="380" rx="28" fill="url(#ln-tracheaGrad)" stroke="#92400e" strokeWidth="1.5" filter="url(#ln-shadow)" />
+          <rect x="200" y="160" width="60" height="380" rx="28" fill="url(#ln-tracheaGrad)" stroke="hsl(var(--accent))" strokeWidth="1.5" filter="url(#ln-shadow)" />
           {/* C-shaped cartilage rings */}
           {[0,1,2,3,4,5,6,7,8].map(i => (
             <path key={i}
               d={`M204,${185 + i * 40} Q230,${178 + i * 40} 256,${185 + i * 40}`}
-              stroke="#92400e" strokeWidth="1.6" fill="none" opacity="0.55" strokeLinecap="round" />
+              stroke="hsl(var(--accent))" strokeWidth="1.5" fill="none" opacity="0.55" strokeLinecap="round" />
           ))}
           {/* Posterior membranous wall (annular ligament) */}
           {showSutures && [0,1,2,3,4,5,6,7,8].map(i => (
             <line key={`m${i}`} x1="208" y1={205 + i * 40} x2="252" y2={205 + i * 40}
-              stroke="#92400e" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.35" />
+              stroke="hsl(var(--accent))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.35" />
           ))}
-          {showLabels && <text x="230" y="525" textAnchor="middle" fontSize="8" fill="#92400e" fontWeight="600">Trachea</text>}
+          {showLabels && <text x="230" y="525" textAnchor="middle" fontSize="8" fill="hsl(var(--accent))" fontWeight="600">Trachea</text>}
 
           {/* === OESOPHAGUS — behind trachea, partially visible === */}
-          <ellipse cx="230" cy="560" rx="20" ry="11" fill="#fef3c7" stroke="#b45309" strokeWidth="1.2" opacity="0.55" />
+          <ellipse cx="230" cy="560" rx="20" ry="11" fill="hsl(var(--accent))" stroke="hsl(var(--accent))" strokeWidth="1" opacity="0.55" />
           {/* Mucosal folds */}
           {showSutures && (
             <>
-              <path d="M215,560 Q230,557 245,560" stroke="#b45309" strokeWidth="0.4" fill="none" opacity="0.4" />
-              <path d="M215,562 Q230,565 245,562" stroke="#b45309" strokeWidth="0.4" fill="none" opacity="0.4" />
+              <path d="M215,560 Q230,557 245,560" stroke="hsl(var(--accent))" strokeWidth="0.5" fill="none" opacity="0.4" />
+              <path d="M215,562 Q230,565 245,562" stroke="hsl(var(--accent))" strokeWidth="0.5" fill="none" opacity="0.4" />
             </>
           )}
-          {showLabels && <text x="230" y="563" textAnchor="middle" fontSize="6" fill="#92400e" fontWeight="600">Oesoph.</text>}
+          {showLabels && <text x="230" y="563" textAnchor="middle" fontSize="6" fill="hsl(var(--accent))" fontWeight="600">Oesoph.</text>}
 
           {/* T-O groove indicator */}
           {showSutures && showLabels && (
@@ -206,16 +206,16 @@ const LaryngealNervesDiagram = () => {
           {/* === AORTIC ARCH — anatomically curved with depth === */}
           <path
             d="M300,490 Q300,420 280,398 Q250,365 220,398 Q200,420 200,490"
-            fill="none" stroke="url(#ln-aortaGrad)" strokeWidth="20" strokeLinecap="round" opacity={0.85}
+            fill="none" stroke="url(#ln-aortaGrad)" strokeWidth="3" strokeLinecap="round" opacity={0.85}
             filter="url(#ln-shadow)"
           />
           {/* Inner highlight on arch (vessel lumen suggestion) */}
           <path
             d="M300,490 Q300,420 280,398 Q250,365 220,398 Q200,420 200,490"
-            fill="none" stroke="#fca5a5" strokeWidth="3" strokeLinecap="round" opacity="0.4"
+            fill="none" stroke="hsl(var(--destructive))" strokeWidth="3" strokeLinecap="round" opacity="0.4"
             transform="translate(0,-4)"
           />
-          {showLabels && <text x="250" y="392" textAnchor="middle" fontSize="9" fill="#7f1d1d" fontWeight="700">Aortic Arch</text>}
+          {showLabels && <text x="250" y="392" textAnchor="middle" fontSize="9" fill="hsl(var(--destructive))" fontWeight="700">Aortic Arch</text>}
 
           {/* Ligamentum arteriosum */}
           {showSutures && (
@@ -226,8 +226,8 @@ const LaryngealNervesDiagram = () => {
           )}
 
           {/* Right subclavian — with depth gradient */}
-          <path d="M300,480 Q330,470 370,465" fill="none" stroke="url(#ln-aortaGrad)" strokeWidth="9" strokeLinecap="round" opacity="0.7" filter="url(#ln-shadow)" />
-          {showLabels && <text x="375" y="460" fontSize="7" fill="#7f1d1d" fontWeight="600">R. Subclavian A.</text>}
+          <path d="M300,480 Q330,470 370,465" fill="none" stroke="url(#ln-aortaGrad)" strokeWidth="3" strokeLinecap="round" opacity="0.7" filter="url(#ln-shadow)" />
+          {showLabels && <text x="375" y="460" fontSize="7" fill="hsl(var(--destructive))" fontWeight="600">R. Subclavian A.</text>}
 
           {/* === THYROID GLAND — paired lobes with realistic shape === */}
           {/* Left lobe: anatomical pyriform shape */}
@@ -254,10 +254,10 @@ const LaryngealNervesDiagram = () => {
           />
           {/* Isthmus — joins lobes anteriorly across trachea */}
           <path d="M195,235 Q230,228 265,235 Q265,245 230,247 Q195,245 195,235 Z"
-            fill="url(#ln-thyroidGrad)" stroke="#9d174d" strokeWidth="1.2" opacity={op("thyroid") * 0.85} />
+            fill="url(#ln-thyroidGrad)" stroke="hsl(var(--accent))" strokeWidth="1" opacity={op("thyroid") * 0.85} />
           {/* Vascular pattern hint on lobes */}
           {showSutures && (
-            <g opacity={op("thyroid") * 0.4} stroke="#be185d" strokeWidth="0.4" fill="none">
+            <g opacity={op("thyroid") * 0.4} stroke="hsl(var(--accent))" strokeWidth="0.5" fill="none">
               <path d="M170,210 Q175,235 178,265" />
               <path d="M185,205 Q188,235 188,275" />
               <path d="M290,210 Q285,235 282,265" />
@@ -266,8 +266,8 @@ const LaryngealNervesDiagram = () => {
           )}
           {showLabels && (
             <>
-              <text x="170" y="245" textAnchor="middle" fontSize="7" fill="#9d174d" fontWeight="600" opacity={op("thyroid")}>Thyroid</text>
-              <text x="290" y="245" textAnchor="middle" fontSize="7" fill="#9d174d" fontWeight="600" opacity={op("thyroid")}>Thyroid</text>
+              <text x="170" y="245" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))" fontWeight="600" opacity={op("thyroid")}>Thyroid</text>
+              <text x="290" y="245" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))" fontWeight="600" opacity={op("thyroid")}>Thyroid</text>
             </>
           )}
 
@@ -286,8 +286,8 @@ const LaryngealNervesDiagram = () => {
           />
           {hi("thyroid") && showLabels && (
             <>
-              <text x="158" y="223" textAnchor="end" fontSize="5" fill="#be185d" fontWeight="600">Zuckerkandl's</text>
-              <text x="158" y="230" textAnchor="end" fontSize="5" fill="#be185d">tubercle</text>
+              <text x="158" y="223" textAnchor="end" fontSize="5" fill="hsl(var(--accent))" fontWeight="600">Zuckerkandl's</text>
+              <text x="158" y="230" textAnchor="end" fontSize="5" fill="hsl(var(--accent))">tubercle</text>
             </>
           )}
 
@@ -297,18 +297,18 @@ const LaryngealNervesDiagram = () => {
               <line x1="195" y1="215" x2="203" y2="207" stroke={hi("thyroid") ? "#be185d" : "#9d174d"} strokeWidth={hi("thyroid") ? 2 : 1} strokeDasharray="2 1.5" opacity={op("thyroid")} />
               <line x1="265" y1="215" x2="257" y2="207" stroke={hi("thyroid") ? "#be185d" : "#9d174d"} strokeWidth={hi("thyroid") ? 2 : 1} strokeDasharray="2 1.5" opacity={op("thyroid")} />
               {hi("thyroid") && showLabels && (
-                <text x="230" y="204" textAnchor="middle" fontSize="5" fill="#be185d" fontWeight="600">Berry's lig.</text>
+                <text x="230" y="204" textAnchor="middle" fontSize="5" fill="hsl(var(--accent))" fontWeight="600">Berry's lig.</text>
               )}
             </>
           )}
 
           {/* Superior thyroid artery — with depth */}
-          <path d="M140,170 Q155,188 172,200" fill="none" stroke="url(#ln-vesselRed)" strokeWidth="2.5" opacity={op("eln")} strokeLinecap="round" />
-          {showLabels && <text x="115" y="168" fontSize="6.5" fill="#7f1d1d" opacity={op("eln")} fontWeight="600">Sup. thyroid A.</text>}
+          <path d="M140,170 Q155,188 172,200" fill="none" stroke="url(#ln-vesselRed)" strokeWidth="2" opacity={op("eln")} strokeLinecap="round" />
+          {showLabels && <text x="115" y="168" fontSize="6.5" fill="hsl(var(--destructive))" opacity={op("eln")} fontWeight="600">Sup. thyroid A.</text>}
 
           {/* Inferior thyroid artery */}
-          <path d="M118,322 Q150,302 178,278" fill="none" stroke="url(#ln-vesselRed)" strokeWidth="2.5" opacity={op("thyroid")} strokeLinecap="round" />
-          {showLabels && <text x="92" y="328" fontSize="6.5" fill="#7f1d1d" opacity={op("thyroid")} fontWeight="600">Inf. thyroid A.</text>}
+          <path d="M118,322 Q150,302 178,278" fill="none" stroke="url(#ln-vesselRed)" strokeWidth="2" opacity={op("thyroid")} strokeLinecap="round" />
+          {showLabels && <text x="92" y="328" fontSize="6.5" fill="hsl(var(--destructive))" opacity={op("thyroid")} fontWeight="600">Inf. thyroid A.</text>}
           {hi("thyroid") && showLabels && (
             <g fill="hsl(var(--muted-foreground))" fontSize="5">
               <text x="92" y="340">ITA-RLN relationship:</text>
@@ -321,29 +321,29 @@ const LaryngealNervesDiagram = () => {
           {/* === LARYNX — shaped like a shield (thyroid cartilage) === */}
           <path
             d="M195,108 L265,108 L268,128 Q258,148 230,160 Q202,148 192,128 Z"
-            fill="url(#ln-larynxGrad)" stroke="#0369a1" strokeWidth="1.5" filter="url(#ln-shadow)"
+            fill="url(#ln-larynxGrad)" stroke="hsl(var(--primary))" strokeWidth="1.5" filter="url(#ln-shadow)"
           />
           {/* Laryngeal prominence (Adam's apple) */}
-          <path d="M225,108 L230,114 L235,108" fill="none" stroke="#0369a1" strokeWidth="0.8" opacity="0.6" />
-          {showLabels && <text x="230" y="125" textAnchor="middle" fontSize="8" fill="#0369a1" fontWeight="700">Larynx</text>}
+          <path d="M225,108 L230,114 L235,108" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.75" opacity="0.6" />
+          {showLabels && <text x="230" y="125" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="700">Larynx</text>}
 
           {/* Thyrohyoid membrane */}
           {showSutures && (
             <>
-              <line x1="195" y1="108" x2="265" y2="108" stroke="#0369a1" strokeWidth="1" strokeDasharray="3 2" opacity="0.7" />
-              {showLabels && <text x="275" y="110" fontSize="5.5" fill="#0369a1">Thyrohyoid memb.</text>}
+              <line x1="195" y1="108" x2="265" y2="108" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray="3 2" opacity="0.7" />
+              {showLabels && <text x="275" y="110" fontSize="5.5" fill="hsl(var(--primary))">Thyrohyoid memb.</text>}
             </>
           )}
 
           {/* Vocal cords — pearly white inside larynx */}
           <line x1="208" y1="142" x2="252" y2="142" stroke="hsl(var(--foreground))" strokeWidth="2" strokeLinecap="round" opacity="0.85" />
-          <line x1="208" y1="144" x2="252" y2="144" stroke="hsl(var(--background))" strokeWidth="0.6" strokeLinecap="round" />
-          {showLabels && <text x="275" y="145" fontSize="5.5" fill="#0369a1">Vocal cords</text>}
+          <line x1="208" y1="144" x2="252" y2="144" stroke="hsl(var(--background))" strokeWidth="0.5" strokeLinecap="round" />
+          {showLabels && <text x="275" y="145" fontSize="5.5" fill="hsl(var(--primary))">Vocal cords</text>}
 
           {/* Cricothyroid muscle — paired triangular slips */}
           <path d="M210,158 L240,158 L248,168 L232,170 L222,170 L212,168 Z"
-            fill="url(#ln-larynxGrad)" stroke="#0284c7" strokeWidth="1" opacity={op("eln") * 0.8} />
-          {showLabels && <text x="275" y="166" fontSize="5.5" fill="#0369a1" opacity={op("eln")}>Cricothyroid m.</text>}
+            fill="url(#ln-larynxGrad)" stroke="hsl(var(--primary))" strokeWidth="1" opacity={op("eln") * 0.8} />
+          {showLabels && <text x="275" y="166" fontSize="5.5" fill="hsl(var(--primary))" opacity={op("eln")}>Cricothyroid m.</text>}
 
           {/* Entry point label — RLN enters posterior to CT joint */}
           {showSutures && showLabels && (
@@ -364,26 +364,26 @@ const LaryngealNervesDiagram = () => {
               />
               {/* Inner highlight along nerve fascicle */}
               <line x1={x} y1="60" x2={x} y2="140"
-                stroke="#fef9c3" strokeWidth="0.8" opacity={op("vagus") * 0.7} />
+                stroke="hsl(var(--accent))" strokeWidth="0.75" opacity={op("vagus") * 0.7} />
             </g>
           ))}
           {showLabels && (
             <>
-              <text x="140" y="55" textAnchor="middle" fontSize="8.5" fill="#854d0e" fontWeight="700" opacity={op("vagus")}>L. Vagus (X)</text>
-              <text x="330" y="55" textAnchor="middle" fontSize="8.5" fill="#854d0e" fontWeight="700" opacity={op("vagus")}>R. Vagus (X)</text>
+              <text x="140" y="55" textAnchor="middle" fontSize="8.5" fill="hsl(var(--accent))" fontWeight="700" opacity={op("vagus")}>L. Vagus (X)</text>
+              <text x="330" y="55" textAnchor="middle" fontSize="8.5" fill="hsl(var(--accent))" fontWeight="700" opacity={op("vagus")}>R. Vagus (X)</text>
             </>
           )}
 
           {/* Left vagus continues to thorax (dashed) */}
           <path
             d="M150,140 L150,400 Q155,420 200,438"
-            fill="none" stroke="#facc15" strokeWidth="2.5" opacity={op("vagus")} strokeDasharray="6 3"
+            fill="none" stroke="hsl(var(--accent))" strokeWidth="2" opacity={op("vagus")} strokeDasharray="6 3"
             strokeLinecap="round"
           />
           {/* Right vagus continues */}
           <path
             d="M320,140 L320,460"
-            fill="none" stroke="#facc15" strokeWidth="2.5" opacity={op("vagus")} strokeDasharray="6 3"
+            fill="none" stroke="hsl(var(--accent))" strokeWidth="2" opacity={op("vagus")} strokeDasharray="6 3"
             strokeLinecap="round"
           />
 
@@ -404,8 +404,8 @@ const LaryngealNervesDiagram = () => {
           />
           {showLabels && (
             <>
-              <text x="170" y="92" textAnchor="middle" fontSize="7.5" fill="#166534" fontWeight="600" opacity={op("sln")}>SLN</text>
-              <text x="295" y="92" textAnchor="middle" fontSize="7.5" fill="#166534" fontWeight="600" opacity={op("sln")}>SLN</text>
+              <text x="170" y="92" textAnchor="middle" fontSize="7.5" fill="hsl(var(--clinical))" fontWeight="600" opacity={op("sln")}>SLN</text>
+              <text x="295" y="92" textAnchor="middle" fontSize="7.5" fill="hsl(var(--clinical))" fontWeight="600" opacity={op("sln")}>SLN</text>
             </>
           )}
 
@@ -417,13 +417,13 @@ const LaryngealNervesDiagram = () => {
             onClick={() => setSelected(selected === "iln" ? null : "iln")}
             className="cursor-pointer"
           />
-          <circle cx="195" cy="114" r="3" fill="#34d399" stroke="#047857" strokeWidth="0.8" opacity={op("iln")} />
+          <circle cx="195" cy="114" r="3" fill="hsl(var(--clinical))" stroke="hsl(var(--clinical))" strokeWidth="0.75" opacity={op("iln")} />
           <path d="M280,100 Q272,105 268,114" fill="none" stroke={hi("iln") ? "#047857" : "#34d399"} strokeWidth={hi("iln") ? 3.5 : 2.2} opacity={op("iln")} strokeLinecap="round" />
-          <circle cx="268" cy="114" r="3" fill="#34d399" stroke="#047857" strokeWidth="0.8" opacity={op("iln")} />
+          <circle cx="268" cy="114" r="3" fill="hsl(var(--clinical))" stroke="hsl(var(--clinical))" strokeWidth="0.75" opacity={op("iln")} />
           {showLabels && (
             <>
-              <text x="183" y="123" fontSize="6.5" fill="#065f46" opacity={op("iln")} fontWeight="600">ILN</text>
-              {hi("iln") && <text x="158" y="132" fontSize="5.5" fill="#065f46" fontStyle="italic" opacity={op("iln")}>(sensory above cords)</text>}
+              <text x="183" y="123" fontSize="6.5" fill="hsl(var(--clinical))" opacity={op("iln")} fontWeight="600">ILN</text>
+              {hi("iln") && <text x="158" y="132" fontSize="5.5" fill="hsl(var(--clinical))" fontStyle="italic" opacity={op("iln")}>(sensory above cords)</text>}
             </>
           )}
 
@@ -435,19 +435,19 @@ const LaryngealNervesDiagram = () => {
             onClick={() => setSelected(selected === "eln" ? null : "eln")}
             className="cursor-pointer"
           />
-          <circle cx="215" cy="162" r="3" fill="#22d3ee" stroke="#0e7490" strokeWidth="0.8" opacity={op("eln")} />
+          <circle cx="215" cy="162" r="3" fill="hsl(var(--icu))" stroke="hsl(var(--icu))" strokeWidth="0.75" opacity={op("eln")} />
           <path d="M280,100 Q285,120 275,145 Q272,158 245,162" fill="none" stroke={hi("eln") ? "#0e7490" : "#22d3ee"} strokeWidth={hi("eln") ? 3.5 : 2.2} opacity={op("eln")} strokeLinecap="round" />
-          <circle cx="245" cy="162" r="3" fill="#22d3ee" stroke="#0e7490" strokeWidth="0.8" opacity={op("eln")} />
+          <circle cx="245" cy="162" r="3" fill="hsl(var(--icu))" stroke="hsl(var(--icu))" strokeWidth="0.75" opacity={op("eln")} />
           {showLabels && (
             <>
-              <text x="178" y="152" fontSize="6.5" fill="#155e75" opacity={op("eln")} fontWeight="600">ELN</text>
-              {hi("eln") && <text x="148" y="160" fontSize="5.5" fill="#155e75" fontStyle="italic" opacity={op("eln")}>(motor to cricothyroid)</text>}
+              <text x="178" y="152" fontSize="6.5" fill="hsl(var(--icu))" opacity={op("eln")} fontWeight="600">ELN</text>
+              {hi("eln") && <text x="148" y="160" fontSize="5.5" fill="hsl(var(--icu))" fontStyle="italic" opacity={op("eln")}>(motor to cricothyroid)</text>}
             </>
           )}
 
           {/* Cernea classification for ELN */}
           {hi("eln") && showLabels && (
-            <g fill="#155e75" fontSize="5">
+            <g fill="hsl(var(--icu))" fontSize="5">
               <text x="138" y="180">Cernea: Type 1 (&gt;1cm above pole)</text>
               <text x="138" y="188">Type 2a (&lt;1cm above)</text>
               <text x="138" y="196" fontWeight="700">Type 2b (below pole — highest risk)</text>
@@ -463,10 +463,10 @@ const LaryngealNervesDiagram = () => {
             className="cursor-pointer"
             filter={hi("rln-left") ? "url(#ln-shadow)" : undefined}
           />
-          {showLabels && <text x="190" y="350" fontSize="7.5" fill="#7f1d1d" fontWeight="600" opacity={op("rln-left")} transform="rotate(-90 190 350)">L. RLN</text>}
-          <circle cx="200" cy="438" r="4.5" fill="#f87171" stroke="#b91c1c" strokeWidth="1.5" opacity={op("rln-left")} />
+          {showLabels && <text x="190" y="350" fontSize="7.5" fill="hsl(var(--destructive))" fontWeight="600" opacity={op("rln-left")} transform="rotate(-90 190 350)">L. RLN</text>}
+          <circle cx="200" cy="438" r="4.5" fill="hsl(var(--destructive))" stroke="hsl(var(--destructive))" strokeWidth="1.5" opacity={op("rln-left")} />
           {hi("rln-left") && showLabels && (
-            <text x="172" y="420" fontSize="5" fill="#7f1d1d" fontWeight="600">Loops under arch (12 cm course)</text>
+            <text x="172" y="420" fontSize="5" fill="hsl(var(--destructive))" fontWeight="600">Loops under arch (12 cm course)</text>
           )}
 
           {/* === RIGHT RLN — loops under right subclavian === */}
@@ -478,42 +478,42 @@ const LaryngealNervesDiagram = () => {
             className="cursor-pointer"
             filter={hi("rln-right") ? "url(#ln-shadow)" : undefined}
           />
-          {showLabels && <text x="340" y="340" fontSize="7.5" fill="#7c2d12" fontWeight="600" opacity={op("rln-right")} transform="rotate(90 340 340)">R. RLN</text>}
-          <circle cx="320" cy="460" r="4.5" fill="#fb923c" stroke="#c2410c" strokeWidth="1.5" opacity={op("rln-right")} />
+          {showLabels && <text x="340" y="340" fontSize="7.5" fill="hsl(var(--accent))" fontWeight="600" opacity={op("rln-right")} transform="rotate(90 340 340)">R. RLN</text>}
+          <circle cx="320" cy="460" r="4.5" fill="hsl(var(--accent))" stroke="hsl(var(--accent))" strokeWidth="1.5" opacity={op("rln-right")} />
           {hi("rln-right") && showLabels && (
-            <text x="350" y="420" fontSize="5" fill="#7c2d12" fontWeight="600">Shorter (5–6 cm), more oblique</text>
+            <text x="350" y="420" fontSize="5" fill="hsl(var(--accent))" fontWeight="600">Shorter (5–6 cm), more oblique</text>
           )}
 
           {/* Non-recurrent RLN variant */}
           {hi("rln-right") && (
             <>
               <path d="M320,120 Q310,140 295,155 Q280,162 270,168"
-                fill="none" stroke="#fb923c" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.55" strokeLinecap="round" />
+                fill="none" stroke="hsl(var(--accent))" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.55" strokeLinecap="round" />
               {showLabels && (
                 <>
-                  <text x="330" y="135" fontSize="5" fill="#7c2d12" opacity="0.8">Non-recurrent variant</text>
-                  <text x="330" y="143" fontSize="5" fill="#7c2d12" opacity="0.8">(0.5–1%, with arteria lusoria)</text>
+                  <text x="330" y="135" fontSize="5" fill="hsl(var(--accent))" opacity="0.8">Non-recurrent variant</text>
+                  <text x="330" y="143" fontSize="5" fill="hsl(var(--accent))" opacity="0.8">(0.5–1%, with arteria lusoria)</text>
                 </>
               )}
             </>
           )}
 
           {/* RLN motor endpoint arrows into larynx */}
-          <path d="M206,168 L210,158" fill="none" stroke="#f87171" strokeWidth="2" opacity={op("rln-left")} strokeLinecap="round" />
-          <path d="M270,168 L266,158" fill="none" stroke="#fb923c" strokeWidth="2" opacity={op("rln-right")} strokeLinecap="round" />
+          <path d="M206,168 L210,158" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2" opacity={op("rln-left")} strokeLinecap="round" />
+          <path d="M270,168 L266,158" fill="none" stroke="hsl(var(--accent))" strokeWidth="2" opacity={op("rln-right")} strokeLinecap="round" />
 
           {/* RLN motor label */}
           {(selected === "rln-motor" || !selected) && showLabels && (
-            <text x="230" y="178" textAnchor="middle" fontSize="5.5" fill="#7c3aed" fontWeight="600">Motor: all intrinsic mm. except cricothyroid</text>
+            <text x="230" y="178" textAnchor="middle" fontSize="5.5" fill="hsl(var(--pharmacology))" fontWeight="600">Motor: all intrinsic mm. except cricothyroid</text>
           )}
 
           {/* Sensory territory annotations */}
           {(selected === "iln" || selected === "rln-motor") && showLabels && (
             <>
-              <line x1="195" y1="118" x2="195" y2="140" stroke="#34d399" strokeWidth="1" strokeDasharray="2 2" />
-              <text x="178" y="137" fontSize="6" fill="#065f46" fontWeight="600">↑ Sensory above</text>
-              <line x1="208" y1="168" x2="208" y2="148" stroke="#c084fc" strokeWidth="1" strokeDasharray="2 2" />
-              <text x="232" y="188" fontSize="6" fill="#7c3aed" fontWeight="600">↓ Sensory below</text>
+              <line x1="195" y1="118" x2="195" y2="140" stroke="hsl(var(--clinical))" strokeWidth="1" strokeDasharray="2 2" />
+              <text x="178" y="137" fontSize="6" fill="hsl(var(--clinical))" fontWeight="600">↑ Sensory above</text>
+              <line x1="208" y1="168" x2="208" y2="148" stroke="hsl(var(--pharmacology))" strokeWidth="1" strokeDasharray="2 2" />
+              <text x="232" y="188" fontSize="6" fill="hsl(var(--pharmacology))" fontWeight="600">↓ Sensory below</text>
             </>
           )}
 

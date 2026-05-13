@@ -75,7 +75,7 @@ const CsfFlowDiagram = () => {
           {/* Foramen of Monro */}
           <circle cx="380" cy="240" r="6" fill="hsl(var(--clinical) / 0.5)" stroke="hsl(var(--clinical))" strokeWidth="1.5" />
           <text x="430" y="244" className="fill-foreground" fontSize="10" fontWeight="600">Foramen of Monro</text>
-          <line x1="386" y1="240" x2="425" y2="240" stroke="hsl(var(--border))" strokeWidth="0.8" />
+          <line x1="386" y1="240" x2="425" y2="240" stroke="hsl(var(--border))" strokeWidth="0.75" />
 
           {/* Third ventricle (vertical slit) */}
           <path
@@ -180,7 +180,7 @@ const CsfFlowDiagram = () => {
           {/* === Common blockage markers === */}
           {/* Block 1: foramen of Monro (colloid cyst) */}
           <g>
-            <circle cx="380" cy="240" r="14" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="3 3">
+            <circle cx="380" cy="240" r="14" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2" strokeDasharray="3 3">
               <animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite" />
             </circle>
             <line x1="395" y1="225" x2="370" y2="255" stroke="hsl(var(--destructive))" strokeWidth="2" />
@@ -188,7 +188,7 @@ const CsfFlowDiagram = () => {
 
           {/* Block 2: cerebral aqueduct stenosis */}
           <g>
-            <circle cx="405" cy="345" r="14" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="3 3">
+            <circle cx="405" cy="345" r="14" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2" strokeDasharray="3 3">
               <animate attributeName="r" values="12;18;12" dur="2s" begin="0.6s" repeatCount="indefinite" />
             </circle>
             <line x1="420" y1="330" x2="395" y2="360" stroke="hsl(var(--destructive))" strokeWidth="2" />
@@ -196,7 +196,7 @@ const CsfFlowDiagram = () => {
 
           {/* Block 3: 4th ventricle outflow (posterior fossa tumour) */}
           <g>
-            <circle cx="495" cy="432" r="16" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="3 3">
+            <circle cx="495" cy="432" r="16" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2" strokeDasharray="3 3">
               <animate attributeName="r" values="14;20;14" dur="2s" begin="1.2s" repeatCount="indefinite" />
             </circle>
             <line x1="510" y1="417" x2="485" y2="447" stroke="hsl(var(--destructive))" strokeWidth="2" />
@@ -204,7 +204,7 @@ const CsfFlowDiagram = () => {
 
           {/* Block 4: arachnoid granulation reabsorption failure (communicating) */}
           <g>
-            <circle cx="380" cy="58" r="14" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="3 3">
+            <circle cx="380" cy="58" r="14" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2" strokeDasharray="3 3">
               <animate attributeName="r" values="12;18;12" dur="2s" begin="1.8s" repeatCount="indefinite" />
             </circle>
           </g>

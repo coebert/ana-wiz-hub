@@ -208,18 +208,18 @@ const LegView = ({
         </defs>
 
         {/* Hip / pelvis hint */}
-        <ellipse cx="100" cy="140" rx="48" ry="20" fill="url(#${id}-skin)" stroke="hsl(var(--border))" strokeWidth="1.2" opacity="0.4" />
+        <ellipse cx="100" cy="140" rx="48" ry="20" fill="url(#${id}-skin)" stroke="hsl(var(--border))" strokeWidth="1" opacity="0.4" />
 
         {/* Leg silhouette */}
         <g filter={`url(#${id}-shadow)`}>
-          <path d={view === "anterior" ? ANTERIOR_LEG_PATH : POSTERIOR_LEG_PATH} fill={`url(#${id}-skin)`} stroke="hsl(var(--border))" strokeWidth="1.4" />
+          <path d={view === "anterior" ? ANTERIOR_LEG_PATH : POSTERIOR_LEG_PATH} fill={`url(#${id}-skin)`} stroke="hsl(var(--border))" strokeWidth="1.5" />
         </g>
 
         {/* Knee crease */}
-        <line x1="70" y1="380" x2="140" y2="380" stroke="hsl(var(--border))" strokeWidth="0.8" strokeDasharray="2 2" opacity="0.6" />
+        <line x1="70" y1="380" x2="140" y2="380" stroke="hsl(var(--border))" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6" />
         <text x="148" y="384" fontSize="8" fill="hsl(var(--muted-foreground))">knee</text>
         {/* Ankle crease */}
-        <line x1="78" y1="510" x2="122" y2="510" stroke="hsl(var(--border))" strokeWidth="0.8" strokeDasharray="2 2" opacity="0.6" />
+        <line x1="78" y1="510" x2="122" y2="510" stroke="hsl(var(--border))" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6" />
         <text x="128" y="514" fontSize="8" fill="hsl(var(--muted-foreground))">ankle</text>
 
         {/* Optional simplified nerve tracks */}
@@ -245,7 +245,7 @@ const LegView = ({
         {/* Coverage shading */}
         {path && (
           <g>
-            <path d={path} fill={info.color} opacity="0.2" stroke={info.color} strokeWidth="1.2" />
+            <path d={path} fill={info.color} opacity="0.2" stroke={info.color} strokeWidth="1" />
             <path d={path} fill={`url(#${id}-stripe)`} opacity="0.65" />
           </g>
         )}
@@ -253,7 +253,7 @@ const LegView = ({
         {/* Needle marker for blocks on this view */}
         {info.marker.side === view && (
           <g onClick={() => onPick(selected)} style={{ cursor: "pointer" }}>
-            <circle cx={info.marker.cx} cy={info.marker.cy} r="6" fill={info.color} stroke="white" strokeWidth="1.5" />
+            <circle cx={info.marker.cx} cy={info.marker.cy} r="6" fill={info.color} stroke="hsl(var(--background))" strokeWidth="1.5" />
             <circle cx={info.marker.cx} cy={info.marker.cy} r="11" fill="none" stroke={info.color} strokeWidth="1" opacity="0.7">
               <animate attributeName="r" from="7" to="14" dur="1.4s" repeatCount="indefinite" />
               <animate attributeName="opacity" from="0.7" to="0" dur="1.4s" repeatCount="indefinite" />

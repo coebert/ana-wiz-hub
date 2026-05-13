@@ -181,10 +181,10 @@ export const NaloxoneDiagram = () => {
               </g>
 
               {/* labels */}
-              <path d="M 220 50 L 240 70" stroke="hsl(var(--foreground))" strokeWidth="1.2" markerEnd="url(#nx-arr)" />
+              <path d="M 220 50 L 240 70" stroke="hsl(var(--foreground))" strokeWidth="1" markerEnd="url(#nx-arr)" />
               <text x="170" y="46" fontSize="9" className="fill-foreground" fontWeight="600">Agonist → ↓ cAMP, K⁺ efflux → analgesia + ↓RR</text>
 
-              <path d="M 460 50 L 440 70" stroke="hsl(var(--destructive))" strokeWidth="1.2" markerEnd="url(#nx-arr-r)" />
+              <path d="M 460 50 L 440 70" stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#nx-arr-r)" />
               <text x="440" y="46" fontSize="9" className="fill-destructive" fontWeight="600">Antagonist → no signalling</text>
 
               <defs>
@@ -265,9 +265,9 @@ export const NaloxoneDiagram = () => {
               </text>
 
               {/* Parent opioid */}
-              <path d={parentCurve} fill="none" stroke={scenario.color} strokeWidth="2.4" />
+              <path d={parentCurve} fill="none" stroke={scenario.color} strokeWidth="2" />
               {/* Naloxone */}
-              <path d={naloxoneCurve} fill="none" stroke="hsl(0 75% 55%)" strokeWidth="2.4" />
+              <path d={naloxoneCurve} fill="none" stroke="hsl(0 75% 55%)" strokeWidth="2" />
 
               {naloxoneGoneAt < X_MAX && (
                 <g>

@@ -320,7 +320,7 @@ export const NSAIDMechanismDiagram = () => {
             y1={42}
             y2={aaY - 12}
             stroke="hsl(var(--muted-foreground))"
-            strokeWidth={1.4}
+            strokeWidth={1.5}
             markerEnd="url(#nsaid-arrow)"
           />
           <text
@@ -341,7 +341,7 @@ export const NSAIDMechanismDiagram = () => {
             rx={6}
             fill="hsl(var(--background))"
             stroke="hsl(var(--muted-foreground))"
-            strokeWidth={1.2}
+            strokeWidth={1}
           />
           <text
             x={aaX}
@@ -540,7 +540,7 @@ export const NSAIDMechanismDiagram = () => {
                 d={`M ${sourceX} ${sourceY} C ${sourceX} ${(sourceY + targetY) / 2}, ${targetX} ${(sourceY + targetY) / 2}, ${targetX} ${targetY}`}
                 fill="none"
                 stroke={dColor}
-                strokeWidth={1.6}
+                strokeWidth={1.5}
                 strokeDasharray="4 3"
                 opacity={0.85}
               />
@@ -678,7 +678,7 @@ const Branch = ({
         rx={6}
         fill={`${color}20`}
         stroke={color}
-        strokeWidth={1.4}
+        strokeWidth={1.5}
       />
       <text
         x={x}
@@ -783,7 +783,7 @@ const ProductBox = ({ x, y, color, inhibition, title, sub }: ProductBoxProps) =>
         y1={y - 30}
         y2={y - 8}
         stroke={color}
-        strokeWidth={1.2}
+        strokeWidth={1}
         opacity={0.6}
         markerEnd="url(#nsaid-arrow)"
       />
@@ -795,7 +795,7 @@ const ProductBox = ({ x, y, color, inhibition, title, sub }: ProductBoxProps) =>
         rx={6}
         fill="hsl(var(--background))"
         stroke={color}
-        strokeWidth={1.2}
+        strokeWidth={1}
         opacity={blocked ? 0.5 : 1}
       />
       <text

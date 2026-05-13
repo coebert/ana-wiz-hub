@@ -294,21 +294,21 @@ const CircleOfWillisDiagram = () => {
               {/* Longitudinal fissure */}
               <line x1="180" y1="42" x2="180" y2="92" strokeDasharray="3 3" />
               {/* Orbital surfaces (frontal lobe gyri) */}
-              <path d="M120,70 C130,75 140,78 150,78" strokeWidth="0.6" opacity="0.4" />
-              <path d="M240,70 C230,75 220,78 210,78" strokeWidth="0.6" opacity="0.4" />
+              <path d="M120,70 C130,75 140,78 150,78" strokeWidth="0.5" opacity="0.4" />
+              <path d="M240,70 C230,75 220,78 210,78" strokeWidth="0.5" opacity="0.4" />
 
               {/* Temporal lobes — curved inferiorly with uncus */}
               <path d="M65,193 C58,205 52,222 50,240 C48,258 52,275 62,288 C72,300 88,308 110,314 C125,318 140,320 155,318" />
               <path d="M295,193 C302,205 308,222 310,240 C312,258 308,275 298,288 C288,300 272,308 250,314 C235,318 220,320 205,318" />
               {/* Temporal uncus (medial temporal lobe — tentorial notch) */}
-              <path d="M125,175 C118,182 112,188 110,195" strokeWidth="1.2" opacity="0.5" />
-              <path d="M235,175 C242,182 248,188 250,195" strokeWidth="1.2" opacity="0.5" />
+              <path d="M125,175 C118,182 112,188 110,195" strokeWidth="1" opacity="0.5" />
+              <path d="M235,175 C242,182 248,188 250,195" strokeWidth="1" opacity="0.5" />
               <text x="100" y="200" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">uncus</text>
               <text x="256" y="200" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">uncus</text>
 
               {/* Sylvian fissures — more anatomically correct lateral sulcus */}
-              <path d="M145,148 C130,143 112,140 95,140 C82,142 72,146 65,152" strokeDasharray="2 2" strokeWidth="0.8" />
-              <path d="M215,148 C230,143 248,140 265,140 C278,142 288,146 295,152" strokeDasharray="2 2" strokeWidth="0.8" />
+              <path d="M145,148 C130,143 112,140 95,140 C82,142 72,146 65,152" strokeDasharray="2 2" strokeWidth="0.75" />
+              <path d="M215,148 C230,143 248,140 265,140 C278,142 288,146 295,152" strokeDasharray="2 2" strokeWidth="0.75" />
 
               {/* Occipital lobes */}
               <path d="M155,318 C165,322 175,324 180,324 C185,324 195,322 205,318" />
@@ -316,10 +316,10 @@ const CircleOfWillisDiagram = () => {
 
               {/* ===== BRAINSTEM — anatomically detailed ===== */}
               {/* Midbrain (cerebral peduncles) */}
-              <ellipse cx="180" cy="210" rx="18" ry="10" strokeWidth="1.2" />
+              <ellipse cx="180" cy="210" rx="18" ry="10" strokeWidth="1" />
               <text x="180" y="213" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">midbrain</text>
               {/* Pons — wider, rectangular with basilar sulcus */}
-              <path d="M160,220 L160,255 Q165,260 180,262 Q195,260 200,255 L200,220 Q195,218 180,217 Q165,218 160,220 Z" strokeWidth="1.2" />
+              <path d="M160,220 L160,255 Q165,260 180,262 Q195,260 200,255 L200,220 Q195,218 180,217 Q165,218 160,220 Z" strokeWidth="1" />
               <line x1="180" y1="220" x2="180" y2="258" strokeWidth="0.5" strokeDasharray="1 2" opacity="0.4" />
               <text x="180" y="242" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">pons</text>
               {/* Medulla oblongata — tapered */}
@@ -330,15 +330,15 @@ const CircleOfWillisDiagram = () => {
               <text x="180" y="278" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">medulla</text>
 
               {/* Cerebellum — more detailed inferior view */}
-              <path d="M115,250 C105,258 95,272 90,288 C86,302 88,314 98,320 C108,326 122,326 138,322 C152,318 162,312 168,305" strokeWidth="1.2" />
-              <path d="M245,250 C255,258 265,272 270,288 C274,302 272,314 262,320 C252,326 238,326 222,322 C208,318 198,312 192,305" strokeWidth="1.2" />
+              <path d="M115,250 C105,258 95,272 90,288 C86,302 88,314 98,320 C108,326 122,326 138,322 C152,318 162,312 168,305" strokeWidth="1" />
+              <path d="M245,250 C255,258 265,272 270,288 C274,302 272,314 262,320 C252,326 238,326 222,322 C208,318 198,312 192,305" strokeWidth="1" />
               {/* Cerebellar folia (surface folds) */}
               <path d="M100,275 C110,278 125,280 135,278" strokeWidth="0.5" opacity="0.4" />
               <path d="M95,290 C108,294 125,296 140,294" strokeWidth="0.5" opacity="0.4" />
               <path d="M260,275 C250,278 235,280 225,278" strokeWidth="0.5" opacity="0.4" />
               <path d="M265,290 C252,294 235,296 220,294" strokeWidth="0.5" opacity="0.4" />
               {/* Vermis */}
-              <path d="M168,305 C174,310 180,312 186,312 C190,310 192,305" strokeWidth="0.6" opacity="0.5" />
+              <path d="M168,305 C174,310 180,312 186,312 C190,310 192,305" strokeWidth="0.5" opacity="0.5" />
               <text x="180" y="318" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">vermis</text>
 
               {/* Optic chiasm — more anatomical */}
@@ -349,15 +349,15 @@ const CircleOfWillisDiagram = () => {
               <path d="M152,138 C140,128 128,118 115,112" strokeWidth="1.5" opacity="0.5" />
               <path d="M208,138 C220,128 232,118 245,112" strokeWidth="1.5" opacity="0.5" />
               {/* Optic tracts */}
-              <path d="M168,148 C158,158 145,168 135,175" strokeWidth="1.2" opacity="0.4" strokeDasharray="2 2" />
-              <path d="M192,148 C202,158 215,168 225,175" strokeWidth="1.2" opacity="0.4" strokeDasharray="2 2" />
+              <path d="M168,148 C158,158 145,168 135,175" strokeWidth="1" opacity="0.4" strokeDasharray="2 2" />
+              <path d="M192,148 C202,158 215,168 225,175" strokeWidth="1" opacity="0.4" strokeDasharray="2 2" />
 
               {/* Tentorium cerebelli — dural fold */}
-              <path d="M65,200 C95,192 135,188 180,188 C225,188 265,192 295,200" strokeDasharray="5 3" opacity="0.5" strokeWidth="1.2" />
+              <path d="M65,200 C95,192 135,188 180,188 C225,188 265,192 295,200" strokeDasharray="5 3" opacity="0.5" strokeWidth="1" />
               <text x="310" y="195" fontSize="4" fill="hsl(var(--muted-foreground))">Tentorium</text>
 
               {/* Sella turcica / pituitary fossa hint */}
-              <path d="M170,155 Q175,162 180,164 Q185,162 190,155" strokeWidth="0.8" opacity="0.4" />
+              <path d="M170,155 Q175,162 180,164 Q185,162 190,155" strokeWidth="0.75" opacity="0.4" />
               <text x="180" y="170" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.35" fontStyle="italic">sella</text>
 
               {/* Cranial nerve exit points */}
@@ -390,7 +390,7 @@ const CircleOfWillisDiagram = () => {
                         opacity={isActive ? 1 : visible ? 0.45 : 0.1}
                         className="transition-all duration-200"
                       />
-                      <path d={p} fill="none" stroke="transparent" strokeWidth="14" />
+                      <path d={p} fill="none" stroke="transparent" strokeWidth="3" />
                     </g>
                   ))}
                 </g>
@@ -411,7 +411,7 @@ const CircleOfWillisDiagram = () => {
             {/* Cranial nerves */}
             {showCNs && cranialNerves.map((cn, i) => (
               <g key={i} opacity="0.6">
-                <circle cx={cn.x} cy={cn.y} r="3.5" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
+                <circle cx={cn.x} cy={cn.y} r="3.5" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
                 <text x={cn.x} y={cn.y + 1.5} fontSize="4.5" textAnchor="middle" fill="hsl(var(--foreground))" fontWeight="bold">{cn.label}</text>
               </g>
             ))}

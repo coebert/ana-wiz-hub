@@ -144,8 +144,8 @@ export const DefibrillatorCapacitorDiagram = () => {
           <text x="78" y="235" textAnchor="end" className="fill-foreground" fontSize="11" fontWeight="700">−</text>
 
           {/* Capacitor (centre) */}
-          <line x1="380" y1="120" x2="380" y2="200" stroke="hsl(var(--foreground))" strokeWidth="4" />
-          <line x1="420" y1="120" x2="420" y2="200" stroke="hsl(var(--foreground))" strokeWidth="4" />
+          <line x1="380" y1="120" x2="380" y2="200" stroke="hsl(var(--foreground))" strokeWidth="3" />
+          <line x1="420" y1="120" x2="420" y2="200" stroke="hsl(var(--foreground))" strokeWidth="3" />
           <text x="400" y="100" textAnchor="middle" className="fill-foreground" fontSize="11" fontWeight="700">Capacitor</text>
           <text x="400" y="115" textAnchor="middle" className="fill-muted-foreground" fontSize="9">~32 µF</text>
 
@@ -176,7 +176,7 @@ export const DefibrillatorCapacitorDiagram = () => {
           <circle cx="540" cy="100" r="4" fill="hsl(var(--foreground))" />
           <circle cx="600" cy="100" r="4" fill="hsl(var(--foreground))" />
           {isDischarging ? (
-            <line x1="540" y1="100" x2="600" y2="100" stroke="hsl(0 70% 55%)" strokeWidth="2.5" />
+            <line x1="540" y1="100" x2="600" y2="100" stroke="hsl(0 70% 55%)" strokeWidth="2" />
           ) : (
             <line x1="540" y1="100" x2="595" y2="80" stroke="hsl(var(--foreground))" strokeWidth="2" />
           )}

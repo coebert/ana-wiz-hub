@@ -179,7 +179,7 @@ export const MilitaryRolesFlowDiagram = () => {
             x2={NODES[0].x}
             y2="62"
             stroke="hsl(var(--muted-foreground))"
-            strokeWidth="1.2"
+            strokeWidth="1"
             strokeDasharray="6 6"
             strokeDashoffset={dashOffset}
             markerEnd="url(#arrBack)"
@@ -247,7 +247,7 @@ export const MilitaryRolesFlowDiagram = () => {
           {handoverPulse && (
             <g>
               <rect x={NODES[handoverPulse.node].x - 50} y={195} width={100} height={20} rx={4}
-                    fill="hsl(var(--primary))" />
+                    fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x={NODES[handoverPulse.node].x} y={209} textAnchor="middle"
                     fontSize="10" fontWeight="700" fill="hsl(var(--primary-foreground))">
                 ISBAR handover

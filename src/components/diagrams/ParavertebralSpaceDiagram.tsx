@@ -316,7 +316,7 @@ const ParavertebralSpaceDiagram = () => {
                 opacity={opa("epidural-comm", 0.8, 0.3)} />
               <path d="M85,100 L70,95 M85,120 L70,125"
                 fill="none" stroke={regions["epidural-comm"].color}
-                strokeWidth="0.8" strokeDasharray="2 2"
+                strokeWidth="0.75" strokeDasharray="2 2"
                 opacity={opa("epidural-comm", 0.6, 0.15)} />
               {isActive("epidural-comm") && (
                 <text x="60" y="112" fontSize="4" textAnchor="end"
@@ -495,7 +495,7 @@ const ParavertebralSpaceDiagram = () => {
               {/* Costal groove on rib above */}
               <path d="M285,92 Q295,95 320,95"
                 fill="none" stroke={regions["rib-periosteum"].color}
-                strokeWidth="0.8" opacity={opa("rib-periosteum", 0.6, 0.15)} />
+                strokeWidth="0.75" opacity={opa("rib-periosteum", 0.6, 0.15)} />
               {isActive("rib-periosteum") && (
                 <text x="300" y="100" fontSize="3.5" fill={regions["rib-periosteum"].color} opacity="0.6">costal groove (VAN)</text>
               )}

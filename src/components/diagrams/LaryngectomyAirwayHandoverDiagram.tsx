@@ -93,7 +93,7 @@ const LaryngectomyAirwayHandoverDiagram = () => {
             {/* Mouth */}
             <ellipse cx="200" cy="55" rx="22" ry="6" fill="hsl(0 40% 35%)" />
             {/* Nose hint */}
-            <path d="M 195 30 Q 200 40 205 30" fill="none" stroke={skinStroke} strokeWidth="1.2" />
+            <path d="M 195 30 Q 200 40 205 30" fill="none" stroke={skinStroke} strokeWidth="1" />
 
             {/* Neck soft tissue */}
             <path
@@ -106,23 +106,23 @@ const LaryngectomyAirwayHandoverDiagram = () => {
 
             {/* Larynx (cricoid + thyroid cartilage) — only present in stage 0 (still in body before resection conceptually intact) */}
             <g>
-              <rect x="183" y="115" width="34" height="40" rx="6" fill={ringFill} stroke={tracheaStroke} strokeWidth="1.2" />
+              <rect x="183" y="115" width="34" height="40" rx="6" fill={ringFill} stroke={tracheaStroke} strokeWidth="1" />
               <rect x="185" y="155" width="30" height="14" rx="3" fill={ringFill} stroke={tracheaStroke} strokeWidth="1" />
               {/* tumour */}
               <ellipse cx="205" cy="135" rx="9" ry="11" fill={tumour} opacity={stage === 2 ? 0.15 : 0.85} />
             </g>
 
             {/* Trachea */}
-            <rect x="186" y="170" width="28" height="120" fill={tracheaFill} stroke={tracheaStroke} strokeWidth="1.2" />
+            <rect x="186" y="170" width="28" height="120" fill={tracheaFill} stroke={tracheaStroke} strokeWidth="1" />
             {/* Tracheal rings */}
             {[180, 195, 210, 225, 240, 255, 270].map((y) => (
-              <line key={y} x1="186" y1={y} x2="214" y2={y} stroke={tracheaStroke} strokeWidth="0.8" opacity="0.6" />
+              <line key={y} x1="186" y1={y} x2="214" y2={y} stroke={tracheaStroke} strokeWidth="0.75" opacity="0.6" />
             ))}
 
             {/* Division line — visible in stages 1 & 2 */}
             {stage >= 1 && (
               <>
-                <line x1="170" y1="220" x2="230" y2="220" stroke="hsl(0 80% 50%)" strokeWidth="2.2" strokeDasharray="3 2" />
+                <line x1="170" y1="220" x2="230" y2="220" stroke="hsl(0 80% 50%)" strokeWidth="2" strokeDasharray="3 2" />
                 <text x="234" y="223" fontSize="9" fill="hsl(0 80% 50%)" fontWeight="600">division</text>
               </>
             )}
@@ -136,7 +136,7 @@ const LaryngectomyAirwayHandoverDiagram = () => {
             {stage >= 1 && (
               <>
                 <rect x="0" y="280" width="400" height="120" fill={drapeColor} opacity="0.18" />
-                <line x1="0" y1="280" x2="400" y2="280" stroke={drapeColor} strokeWidth="1.2" strokeDasharray="4 3" />
+                <line x1="0" y1="280" x2="400" y2="280" stroke={drapeColor} strokeWidth="1" strokeDasharray="4 3" />
                 <text x="8" y="295" fontSize="9" fill={drapeColor} fontWeight="600">sterile field ↓</text>
               </>
             )}
@@ -148,7 +148,7 @@ const LaryngectomyAirwayHandoverDiagram = () => {
                 <path
                   d="M 200 -10 L 200 55 Q 200 90 200 130 L 200 270"
                   stroke={tubeOral}
-                  strokeWidth="10"
+                  strokeWidth="3"
                   fill="none"
                   strokeLinecap="round"
                 />
@@ -160,9 +160,9 @@ const LaryngectomyAirwayHandoverDiagram = () => {
                   fill="none"
                 />
                 {/* cuff */}
-                <ellipse cx="200" cy="255" rx="11" ry="6" fill={cuff} stroke={tracheaStroke} strokeWidth="0.8" />
+                <ellipse cx="200" cy="255" rx="11" ry="6" fill={cuff} stroke={tracheaStroke} strokeWidth="0.75" />
                 <text x="270" y="50" fontSize="10" fill={tubeOral} fontWeight="700">Oral armoured ETT</text>
-                <line x1="265" y1="48" x2="212" y2="50" stroke={tubeOral} strokeWidth="0.8" />
+                <line x1="265" y1="48" x2="212" y2="50" stroke={tubeOral} strokeWidth="0.75" />
               </g>
             )}
 
@@ -172,16 +172,16 @@ const LaryngectomyAirwayHandoverDiagram = () => {
                 <path
                   d="M 200 -10 L 200 55 Q 200 90 200 130 L 200 210"
                   stroke={tubeOral}
-                  strokeWidth="10"
+                  strokeWidth="3"
                   fill="none"
                   strokeLinecap="round"
                 />
                 <path d="M 200 -10 L 200 210" stroke="hsl(220 50% 75%)" strokeWidth="3" fill="none" />
                 {/* cuff deflated — flat */}
-                <ellipse cx="200" cy="200" rx="6" ry="3" fill={cuff} opacity="0.5" stroke={tracheaStroke} strokeWidth="0.6" />
+                <ellipse cx="200" cy="200" rx="6" ry="3" fill={cuff} opacity="0.5" stroke={tracheaStroke} strokeWidth="0.5" />
                 <text x="270" y="190" fontSize="10" fill={tubeOral} fontWeight="700">ETT withdrawn</text>
                 <text x="270" y="202" fontSize="9" fill={tubeOral}>(cuff deflated)</text>
-                <line x1="265" y1="195" x2="212" y2="208" stroke={tubeOral} strokeWidth="0.8" />
+                <line x1="265" y1="195" x2="212" y2="208" stroke={tubeOral} strokeWidth="0.75" />
 
                 {/* upward arrow */}
                 <path d="M 175 250 L 175 220 M 170 225 L 175 220 L 180 225" stroke={tubeOral} strokeWidth="1.5" fill="none" />
@@ -195,7 +195,7 @@ const LaryngectomyAirwayHandoverDiagram = () => {
                 <path
                   d="M 200 -10 L 200 55 Q 200 90 200 130 L 200 200"
                   stroke={tubeOral}
-                  strokeWidth="10"
+                  strokeWidth="3"
                   fill="none"
                   opacity="0.12"
                   strokeLinecap="round"
@@ -206,7 +206,7 @@ const LaryngectomyAirwayHandoverDiagram = () => {
                 <path
                   d="M 380 340 Q 320 320 270 290 Q 240 270 215 245 L 200 240 L 200 290"
                   stroke={tubeStomal}
-                  strokeWidth="10"
+                  strokeWidth="3"
                   fill="none"
                   strokeLinecap="round"
                 />
@@ -218,7 +218,7 @@ const LaryngectomyAirwayHandoverDiagram = () => {
                   fill="none"
                 />
                 {/* cuff inflated in distal trachea */}
-                <ellipse cx="200" cy="265" rx="13" ry="7" fill={cuff} stroke={tracheaStroke} strokeWidth="0.8" />
+                <ellipse cx="200" cy="265" rx="13" ry="7" fill={cuff} stroke={tracheaStroke} strokeWidth="0.75" />
                 {/* connector to circuit */}
                 <rect x="372" y="332" width="22" height="14" rx="3" fill={tubeStomal} />
                 <text x="240" y="370" fontSize="10" fill={tubeStomal} fontWeight="700">Sterile armoured tube</text>

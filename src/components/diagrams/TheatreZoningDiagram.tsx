@@ -319,7 +319,7 @@ const TheatreZoningDiagram = () => {
                   d={pathStr}
                   fill="none"
                   stroke={f.color}
-                  strokeWidth="1.6"
+                  strokeWidth="1.5"
                   strokeDasharray="4 3"
                   opacity="0.7"
                   markerEnd={`url(#arrow-${f.id})`}
@@ -336,9 +336,9 @@ const TheatreZoningDiagram = () => {
       <div className="rounded-md border border-border bg-muted/40 p-3 flex items-center gap-4">
         <svg viewBox="0 0 120 70" className="w-32 h-20 flex-shrink-0" role="img" aria-label="Pressure gauge">
           {/* Arc background segments */}
-          <path d="M 10 60 A 50 50 0 0 1 36 17" fill="none" stroke="hsl(var(--destructive) / 0.5)" strokeWidth="6" strokeLinecap="round" />
-          <path d="M 36 17 A 50 50 0 0 1 84 17" fill="none" stroke="hsl(var(--muted-foreground) / 0.3)" strokeWidth="6" strokeLinecap="round" />
-          <path d="M 84 17 A 50 50 0 0 1 110 60" fill="none" stroke="hsl(var(--clinical) / 0.6)" strokeWidth="6" strokeLinecap="round" />
+          <path d="M 10 60 A 50 50 0 0 1 36 17" fill="none" stroke="hsl(var(--destructive) / 0.5)" strokeWidth="3" strokeLinecap="round" />
+          <path d="M 36 17 A 50 50 0 0 1 84 17" fill="none" stroke="hsl(var(--muted-foreground) / 0.3)" strokeWidth="3" strokeLinecap="round" />
+          <path d="M 84 17 A 50 50 0 0 1 110 60" fill="none" stroke="hsl(var(--clinical) / 0.6)" strokeWidth="3" strokeLinecap="round" />
           {/* Tick labels */}
           <text x="10" y="68" fontSize="6" textAnchor="middle" className="fill-muted-foreground">−10</text>
           <text x="60" y="14" fontSize="6" textAnchor="middle" className="fill-muted-foreground">+10</text>

@@ -183,7 +183,7 @@ const SedacondaDiagram = () => {
             <text x="255" y="296" textAnchor="middle" className="fill-muted-foreground text-[6px]">Fe'Iso / Fe'Sevo</text>
 
             {/* Sampling line */}
-            <line x1="255" y1="235" x2="255" y2="265" stroke="hsl(var(--primary))" strokeWidth="1.2" strokeDasharray={activeView === "setup" ? "none" : "3,3"} opacity={activeView === "setup" ? 1 : 0.5} />
+            <line x1="255" y1="235" x2="255" y2="265" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray={activeView === "setup" ? "none" : "3,3"} opacity={activeView === "setup" ? 1 : 0.5} />
             <circle cx="255" cy="240" r="3" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" opacity={activeView === "setup" ? 1 : 0.5} />
             <text x="270" y="252" className="text-[6px] fill-primary" opacity={activeView === "setup" ? 1 : 0.6}>Sampling port</text>
 
@@ -209,7 +209,7 @@ const SedacondaDiagram = () => {
             <text x="70" y="267" textAnchor="middle" className="fill-foreground text-[7px] font-semibold">Charcoal Filter</text>
             <text x="70" y="278" textAnchor="middle" className="fill-muted-foreground text-[6px]">Scavenging</text>
 
-            <line x1="70" y1="210" x2="70" y2="250" stroke="hsl(35, 92%, 50%)" strokeWidth="1.2" strokeDasharray="3,3" opacity={activeView === "setup" ? 1 : 0.4} />
+            <line x1="70" y1="210" x2="70" y2="250" stroke="hsl(35, 92%, 50%)" strokeWidth="1" strokeDasharray="3,3" opacity={activeView === "setup" ? 1 : 0.4} />
             <text x="85" y="235" className="text-[6px]" fill="hsl(35, 92%, 50%)" opacity={activeView === "setup" ? 1 : 0.5}>~10% exhaust</text>
 
             {/* ===== FLOW ARROWS (phase-dependent) ===== */}

@@ -128,13 +128,13 @@ export const TURPSyndromeDiagram = () => {
           <rect x="20" y="20" width="570" height="80" rx="10" fill="url(#trp-flow)" opacity="0.5" />
 
           {/* Connectors top row */}
-          <line x1="200" y1="58" x2="220" y2="58" stroke="hsl(var(--muted-foreground))" strokeWidth="1.4" markerEnd="url(#trp-arrow)" />
-          <line x1="390" y1="58" x2="410" y2="58" stroke="hsl(var(--muted-foreground))" strokeWidth="1.4" markerEnd="url(#trp-arrow)" />
+          <line x1="200" y1="58" x2="220" y2="58" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#trp-arrow)" />
+          <line x1="390" y1="58" x2="410" y2="58" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#trp-arrow)" />
 
           {/* Down connectors from dilution to cns/cv/visual */}
-          <path d="M115 86 L115 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
-          <path d="M305 86 L305 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
-          <path d="M495 86 L495 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
+          <path d="M115 86 L115 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
+          <path d="M305 86 L305 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
+          <path d="M495 86 L495 140" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 3" markerEnd="url(#trp-arrow)" fill="none" />
 
           {/* Down connectors features → management */}
           <path d="M115 196 L260 250" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.5" fill="none" />

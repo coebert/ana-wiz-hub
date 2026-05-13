@@ -216,8 +216,8 @@ const LaryngealCrossSectionDiagram = () => {
                   </radialGradient>
                   <pattern id="lcx-grain" patternUnits="userSpaceOnUse" width="5" height="5">
                     <rect width="5" height="5" fill="transparent" />
-                    <circle cx="1" cy="1" r="0.3" fill="#7a5a3a" opacity="0.18" />
-                    <circle cx="3.5" cy="3.5" r="0.3" fill="#7a5a3a" opacity="0.12" />
+                    <circle cx="1" cy="1" r="0.3" fill="hsl(var(--accent))" opacity="0.18" />
+                    <circle cx="3.5" cy="3.5" r="0.3" fill="hsl(var(--accent))" opacity="0.12" />
                   </pattern>
                   <filter id="lcx-shadow" x="-10%" y="-10%" width="120%" height="120%">
                     <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
@@ -400,7 +400,7 @@ const LaryngealCrossSectionDiagram = () => {
                   stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.35" />
                 <text x="130" y="115" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">ventricle (Morgagni)</text>
                 {/* Saccule extending superiorly from anterior ventricle */}
-                <path d="M118,110 C116,106 115,100 116,94" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" strokeDasharray="1.5 1.5" opacity="0.2" />
+                <path d="M118,110 C116,106 115,100 116,94" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="1.5 1.5" opacity="0.2" />
                 <text x="108" y="100" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.25">saccule</text>
 
                 {/* True vocal cords */}
@@ -566,11 +566,11 @@ const LaryngealCrossSectionDiagram = () => {
                 {/* Nerves & vessels */}
                 {/* Superior laryngeal artery — accompanies internal SLN through thyrohyoid membrane */}
                 <path d="M40,42 C52,44 62,49 74,56 C80,60 84,64 87,68"
-                  stroke="#cc3333" strokeWidth={isActive("sln-internal") ? 1.5 : 0.8}
+                  stroke="hsl(var(--destructive))" strokeWidth={isActive("sln-internal") ? 1.5 : 0.8}
                   fill="none" opacity={isActive("sln-internal") ? 0.6 : 0.15}
                 />
                 {isActive("sln-internal") && (
-                  <text x="50" y="40" fontSize="3.5" fill="#cc3333" opacity="0.6">Sup. laryngeal A.</text>
+                  <text x="50" y="40" fontSize="3.5" fill="hsl(var(--destructive))" opacity="0.6">Sup. laryngeal A.</text>
                 )}
 
                 {/* Internal SLN */}
@@ -618,7 +618,7 @@ const LaryngealCrossSectionDiagram = () => {
                       fill={isActive("sln-internal") ? structures["sln-internal"].color : "transparent"}
                       fillOpacity="0.08"
                       stroke={isActive("sln-internal") ? structures["sln-internal"].color : "transparent"}
-                      strokeWidth="0.8" strokeDasharray="3 2" />
+                      strokeWidth="0.75" strokeDasharray="3 2" />
                     {isActive("sln-internal") && (
                       <text x="130" y="78" fontSize="4" textAnchor="middle" fill={structures["sln-internal"].color} opacity="0.6">sensory zone ↑</text>
                     )}
@@ -626,7 +626,7 @@ const LaryngealCrossSectionDiagram = () => {
                       fill={isActive("rln") ? structures.rln.color : "transparent"}
                       fillOpacity="0.08"
                       stroke={isActive("rln") ? structures.rln.color : "transparent"}
-                      strokeWidth="0.8" strokeDasharray="3 2" />
+                      strokeWidth="0.75" strokeDasharray="3 2" />
                     {isActive("rln") && (
                       <text x="130" y="165" fontSize="4" textAnchor="middle" fill={structures.rln.color} opacity="0.6">sensory zone ↓</text>
                     )}
@@ -689,19 +689,19 @@ const LaryngealCrossSectionDiagram = () => {
                 <text x="120" y="222" fontSize="5" textAnchor="middle" fill="hsl(220, 55%, 50%)" opacity="0.5">Cricoid (posterior)</text>
 
                 {/* Arytenoid cartilages */}
-                <path d="M95,160 L105,145 L115,160 Z" fill="hsl(280, 45%, 52%)" fillOpacity="0.3" stroke="hsl(280, 45%, 52%)" strokeWidth="1.2" />
-                <path d="M125,160 L135,145 L145,160 Z" fill="hsl(280, 45%, 52%)" fillOpacity="0.3" stroke="hsl(280, 45%, 52%)" strokeWidth="1.2" />
+                <path d="M95,160 L105,145 L115,160 Z" fill="hsl(280, 45%, 52%)" fillOpacity="0.3" stroke="hsl(280, 45%, 52%)" strokeWidth="1" />
+                <path d="M125,160 L135,145 L145,160 Z" fill="hsl(280, 45%, 52%)" fillOpacity="0.3" stroke="hsl(280, 45%, 52%)" strokeWidth="1" />
                 <text x="88" y="170" fontSize="4.5" fill="hsl(280, 45%, 52%)">Arytenoid</text>
                 <text x="130" y="170" fontSize="4.5" fill="hsl(280, 45%, 52%)">Arytenoid</text>
 
                 {/* Corniculate cartilages — on arytenoid apex, visible as tubercles */}
-                <circle cx="105" cy="144" r="3" fill="hsl(270, 40%, 55%)" fillOpacity="0.4" stroke="hsl(270, 40%, 55%)" strokeWidth="0.8" />
-                <circle cx="135" cy="144" r="3" fill="hsl(270, 40%, 55%)" fillOpacity="0.4" stroke="hsl(270, 40%, 55%)" strokeWidth="0.8" />
+                <circle cx="105" cy="144" r="3" fill="hsl(270, 40%, 55%)" fillOpacity="0.4" stroke="hsl(270, 40%, 55%)" strokeWidth="0.75" />
+                <circle cx="135" cy="144" r="3" fill="hsl(270, 40%, 55%)" fillOpacity="0.4" stroke="hsl(270, 40%, 55%)" strokeWidth="0.75" />
                 <text x="120" y="140" fontSize="3.5" textAnchor="middle" fill="hsl(270, 40%, 55%)" opacity="0.6">Corniculate tubercles</text>
 
                 {/* Cuneiform cartilages — within aryepiglottic folds */}
-                <ellipse cx="88" cy="138" rx="3" ry="5" fill="hsl(310, 40%, 55%)" fillOpacity="0.3" stroke="hsl(310, 40%, 55%)" strokeWidth="0.6" transform="rotate(-15 88 138)" />
-                <ellipse cx="152" cy="138" rx="3" ry="5" fill="hsl(310, 40%, 55%)" fillOpacity="0.3" stroke="hsl(310, 40%, 55%)" strokeWidth="0.6" transform="rotate(15 152 138)" />
+                <ellipse cx="88" cy="138" rx="3" ry="5" fill="hsl(310, 40%, 55%)" fillOpacity="0.3" stroke="hsl(310, 40%, 55%)" strokeWidth="0.5" transform="rotate(-15 88 138)" />
+                <ellipse cx="152" cy="138" rx="3" ry="5" fill="hsl(310, 40%, 55%)" fillOpacity="0.3" stroke="hsl(310, 40%, 55%)" strokeWidth="0.5" transform="rotate(15 152 138)" />
                 <text x="76" y="130" fontSize="3.5" fill="hsl(310, 40%, 55%)" opacity="0.6">Cuneiform</text>
                 <text x="158" y="130" fontSize="3.5" fill="hsl(310, 40%, 55%)" opacity="0.6">Cuneiform</text>
 
@@ -730,8 +730,8 @@ const LaryngealCrossSectionDiagram = () => {
                 <line x1="142" y1="155" x2="125" y2="95" stroke="hsl(300, 35%, 50%)" strokeWidth="1.5" opacity="0.3" strokeDasharray="3 2" />
 
                 {/* Piriform fossae */}
-                <ellipse cx="72" cy="130" rx="10" ry="20" fill="hsl(190, 45%, 50%)" fillOpacity="0.15" stroke="hsl(190, 45%, 50%)" strokeWidth="0.8" />
-                <ellipse cx="168" cy="130" rx="10" ry="20" fill="hsl(190, 45%, 50%)" fillOpacity="0.15" stroke="hsl(190, 45%, 50%)" strokeWidth="0.8" />
+                <ellipse cx="72" cy="130" rx="10" ry="20" fill="hsl(190, 45%, 50%)" fillOpacity="0.15" stroke="hsl(190, 45%, 50%)" strokeWidth="0.75" />
+                <ellipse cx="168" cy="130" rx="10" ry="20" fill="hsl(190, 45%, 50%)" fillOpacity="0.15" stroke="hsl(190, 45%, 50%)" strokeWidth="0.75" />
                 <text x="72" y="158" fontSize="4" textAnchor="middle" fill="hsl(190, 45%, 50%)">Piriform</text>
                 <text x="168" y="158" fontSize="4" textAnchor="middle" fill="hsl(190, 45%, 50%)">Piriform</text>
 

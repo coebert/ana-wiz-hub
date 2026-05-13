@@ -244,10 +244,10 @@ export const WiggersDiagram = () => {
         ))}
 
         {/* Background panels */}
-        <rect x={padL} y={ecgTop} width={plotW} height={ecgH} fill="hsl(var(--secondary)/0.15)" rx="4" />
-        <rect x={padL} y={pressTop} width={plotW} height={pressH} fill="hsl(var(--secondary)/0.15)" rx="4" />
-        {showVolume && <rect x={padL} y={volTop} width={plotW} height={volH} fill="hsl(var(--secondary)/0.15)" rx="4" />}
-        <rect x={padL} y={hsTop} width={plotW} height={hsH} fill="hsl(var(--secondary)/0.15)" rx="4" />
+        <rect x={padL} y={ecgTop} width={plotW} height={ecgH} fill="hsl(var(--secondary)/0.15)" rx="4" stroke="hsl(var(--border))" strokeWidth="0.75" />
+        <rect x={padL} y={pressTop} width={plotW} height={pressH} fill="hsl(var(--secondary)/0.15)" rx="4" stroke="hsl(var(--border))" strokeWidth="0.75" />
+        {showVolume && <rect x={padL} y={volTop} width={plotW} height={volH} fill="hsl(var(--secondary)/0.15)" rx="4" stroke="hsl(var(--border))" strokeWidth="0.75" />}
+        <rect x={padL} y={hsTop} width={plotW} height={hsH} fill="hsl(var(--secondary)/0.15)" rx="4" stroke="hsl(var(--border))" strokeWidth="0.75" />
 
         {/* Axis labels */}
         <text x={padL - 8} y={ecgTop + ecgH / 2 + 3} textAnchor="end" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600">ECG</text>

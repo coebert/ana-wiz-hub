@@ -60,7 +60,7 @@ const CorrugatedTube = ({ x1, y1, x2, y2, colour = "hsl(var(--foreground))", wid
       <path d={outerBot} fill="none" stroke={colour} strokeWidth="1.5" opacity="0.5" />
       {/* Corrugation ribs */}
       {ribs.map((r, i) => (
-        <line key={i} x1={r.rx1} y1={r.ry1} x2={r.rx2} y2={r.ry2} stroke={colour} strokeWidth="0.6" opacity="0.3" />
+        <line key={i} x1={r.rx1} y1={r.ry1} x2={r.rx2} y2={r.ry2} stroke={colour} strokeWidth="0.5" opacity="0.3" />
       ))}
       {/* End caps */}
       <line x1={x1 + nx * halfW} y1={y1 + ny * halfW} x2={x1 - nx * halfW} y2={y1 - ny * halfW} stroke={colour} strokeWidth="1.5" opacity="0.5" />
@@ -96,7 +96,7 @@ const ReservoirBag = ({ cx, cy, r = 18, colour = "hsl(var(--primary))" }: { cx: 
         fill={colour} fillOpacity="0.25" stroke={colour} strokeWidth="1" />
       {/* Highlight/sheen */}
       <ellipse cx={cx - bodyW * 0.25} cy={cy + bodyH * 0.1} rx={bodyW * 0.15} ry={bodyH * 0.3}
-        fill="white" fillOpacity="0.12" />
+        fill="hsl(var(--background))" fillOpacity="0.12" />
       <text x={cx} y={cy + 4} textAnchor="middle" fontSize="7" fill={colour} fontWeight="bold">Bag</text>
     </g>
   );
@@ -110,26 +110,26 @@ const APLValve = ({ cx, cy }: { cx: number; cy: number }) => (
       fill="hsl(var(--destructive)/0.08)" stroke="hsl(var(--destructive))" strokeWidth="1.5" />
     {/* Adjustable dial/cap on top */}
     <ellipse cx={cx} cy={cy - 14} rx={10} ry={4}
-      fill="hsl(var(--destructive)/0.2)" stroke="hsl(var(--destructive))" strokeWidth="1.2" />
+      fill="hsl(var(--destructive)/0.2)" stroke="hsl(var(--destructive))" strokeWidth="1" />
     <ellipse cx={cx} cy={cy - 17} rx={7} ry={3}
       fill="hsl(var(--destructive)/0.35)" stroke="hsl(var(--destructive))" strokeWidth="1" />
     {/* Knurled grip lines on dial */}
     {[-4, -1.5, 1, 3.5].map((dx, i) => (
       <line key={i} x1={cx + dx} y1={cy - 20} x2={cx + dx} y2={cy - 15}
-        stroke="hsl(var(--destructive))" strokeWidth="0.6" opacity="0.5" />
+        stroke="hsl(var(--destructive))" strokeWidth="0.5" opacity="0.5" />
     ))}
     {/* Exhaust arrow */}
-    <line x1={cx} y1={cy - 20} x2={cx} y2={cy - 27} stroke="hsl(var(--destructive))" strokeWidth="1.2" />
+    <line x1={cx} y1={cy - 20} x2={cx} y2={cy - 27} stroke="hsl(var(--destructive))" strokeWidth="1" />
     <polygon points={`${cx - 3},${cy - 25} ${cx + 3},${cy - 25} ${cx},${cy - 29}`}
       fill="hsl(var(--destructive))" opacity="0.6" />
     {/* Internal disc/spring hint */}
     <line x1={cx - 7} y1={cy - 2} x2={cx + 7} y2={cy - 2}
-      stroke="hsl(var(--destructive))" strokeWidth="1.2" opacity="0.5" />
+      stroke="hsl(var(--destructive))" strokeWidth="1" opacity="0.5" />
     <line x1={cx - 5} y1={cy + 3} x2={cx + 5} y2={cy + 3}
-      stroke="hsl(var(--destructive))" strokeWidth="0.8" opacity="0.3" />
+      stroke="hsl(var(--destructive))" strokeWidth="0.75" opacity="0.3" />
     {/* Outlet port at bottom */}
     <rect x={cx - 5} y={cy + 10} width={10} height={4} rx={1.5}
-      fill="hsl(var(--destructive)/0.15)" stroke="hsl(var(--destructive))" strokeWidth="0.8" />
+      fill="hsl(var(--destructive)/0.15)" stroke="hsl(var(--destructive))" strokeWidth="0.75" />
     <text x={cx} y={cy + 24} textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))" fontWeight="bold">APL</text>
   </g>
 );
@@ -139,7 +139,7 @@ const PatientEnd = ({ cx, cy }: { cx: number; cy: number }) => (
   <g>
     {/* Face/mask outline */}
     <path d={`M ${cx - 10} ${cy + 8} Q ${cx - 12} ${cy - 2} ${cx - 6} ${cy - 10} Q ${cx} ${cy - 14} ${cx + 6} ${cy - 10} Q ${cx + 12} ${cy - 2} ${cx + 10} ${cy + 8} Z`}
-      fill="hsl(var(--accent)/0.2)" stroke="hsl(var(--foreground))" strokeWidth="1.2" />
+      fill="hsl(var(--accent)/0.2)" stroke="hsl(var(--foreground))" strokeWidth="1" />
     <text x={cx} y={cy + 2} textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="bold">Pt</text>
   </g>
 );
@@ -149,22 +149,22 @@ const FGFInlet = ({ cx, cy, label }: { cx: number; cy: number; label?: string })
   <g>
     {/* Supply pipe */}
     <rect x={cx - 3} y={cy - 22} width={6} height={14} rx={2}
-      fill="#10B981" fillOpacity="0.2" stroke="#10B981" strokeWidth="1.2" />
+      fill="hsl(var(--clinical))" fillOpacity="0.2" stroke="hsl(var(--clinical))" strokeWidth="1" />
     {/* Connector/flowmeter body */}
     <rect x={cx - 12} y={cy - 10} width={24} height={18} rx={5}
-      fill="#10B981" fillOpacity="0.12" stroke="#10B981" strokeWidth="1.5" />
+      fill="hsl(var(--clinical))" fillOpacity="0.12" stroke="hsl(var(--clinical))" strokeWidth="1.5" />
     {/* Flow indicator (bobbin) */}
     <rect x={cx - 2} y={cy - 18} width={4} height={6} rx={1.5}
-      fill="#10B981" fillOpacity="0.6" stroke="#10B981" strokeWidth="0.8" />
+      fill="hsl(var(--clinical))" fillOpacity="0.6" stroke="hsl(var(--clinical))" strokeWidth="0.75" />
     {/* Flow arrow into circuit */}
     <polygon points={`${cx - 4},${cy - 22} ${cx + 4},${cy - 22} ${cx},${cy - 14}`}
-      fill="#10B981" opacity="0.7" />
+      fill="hsl(var(--clinical))" opacity="0.7" />
     {/* O₂/gas dots */}
     {[{dx: -5, dy: -4}, {dx: 4, dy: -2}, {dx: -2, dy: 2}].map((d, i) => (
       <circle key={i} cx={cx + d.dx} cy={cy + d.dy} r={1.5}
-        fill="#10B981" opacity="0.35" />
+        fill="hsl(var(--clinical))" opacity="0.35" />
     ))}
-    <text x={cx} y={cy + 3} textAnchor="middle" fontSize="6" fill="#10B981" fontWeight="bold">FGF</text>
+    <text x={cx} y={cy + 3} textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))" fontWeight="bold">FGF</text>
     {label && <text x={cx} y={cy + 16} textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">{label}</text>}
   </g>
 );
@@ -288,12 +288,12 @@ const MaplesonTab = () => {
       <div className="bg-secondary/30 rounded-xl p-3 border border-border">
         <svg viewBox="0 0 520 620" className="w-full h-auto">
           <defs>
-            <marker id="bcFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#10B981" /></marker>
+            <marker id="bcFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--clinical))" /></marker>
             <marker id="bcExpFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--destructive))" /></marker>
           </defs>
           {/* ── Legend ── */}
           <g transform="translate(320, 0)">
-            <rect x="0" y="0" width="190" height="18" rx="4" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.8" />
+            <rect x="0" y="0" width="190" height="18" rx="4" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.75" />
             <circle cx="12" cy="9" r="4" fill={inspCol} opacity="0.8" />
             <text x="20" y="13" fontSize="7" fill={inspCol} fontWeight="bold">Inspiration</text>
             <circle cx="102" cy="9" r="4" fill={expCol} opacity="0.8" />
@@ -399,12 +399,12 @@ const MaplesonTab = () => {
             <APLValve cx={60} cy={55} />
             <ReservoirBag cx={110} cy={55} r={14} />
             <CorrugatedTube x1={135} y1={55} x2={420} y2={55} width={14} />
-            <line x1="135" y1="55" x2="420" y2="55" stroke="#10B981" strokeWidth="2" strokeDasharray="6,3" />
-            <text x="280" y="48" textAnchor="middle" fontSize="6" fill="#10B981" fontWeight="bold">← Inner FGF tube (coaxial) →</text>
+            <line x1="135" y1="55" x2="420" y2="55" stroke="hsl(var(--clinical))" strokeWidth="2" strokeDasharray="6,3" />
+            <text x="280" y="48" textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))" fontWeight="bold">← Inner FGF tube (coaxial) →</text>
             <text x="280" y="68" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">Outer tube carries expired gas back</text>
             <PatientEnd cx={450} cy={55} />
 
-            <rect x="120" y="78" width="290" height="16" rx="4" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive)/0.3)" strokeWidth="0.8" />
+            <rect x="120" y="78" width="290" height="16" rx="4" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive)/0.3)" strokeWidth="0.75" />
             <text x="265" y="89" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">⚠ Pethick test: occlude inner tube + flush O₂ → should not pressurise circuit</text>
 
             {phase === "insp" && (
@@ -558,7 +558,7 @@ const CircleTab = () => {
       <div className="bg-secondary/30 rounded-xl p-3 border border-border">
         <svg viewBox="0 0 520 530" className="w-full h-auto">
           <defs>
-            <marker id="cInsp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#10B981" /></marker>
+            <marker id="cInsp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--clinical))" /></marker>
             <marker id="cExp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--destructive))" /></marker>
           </defs>
 
@@ -652,7 +652,7 @@ const CircleTab = () => {
                 fill={exhausted ? "#A855F7" : "hsl(var(--primary)/0.15)"}
                 fillOpacity={exhausted ? 0.5 : 0.4}
                 stroke={exhausted ? "#A855F7" : "hsl(var(--primary)/0.4)"}
-                strokeWidth="0.7" />
+                strokeWidth="0.75" />
             );
           })}
           <text x="260" y="422" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="bold">CO₂ Absorber (Soda Lime)</text>
@@ -661,9 +661,9 @@ const CircleTab = () => {
           {/* Recirculation arrow from absorber back to insp limb */}
           {circlePhase === "exp" && (
             <g>
-              <path d="M 210 390 Q 160 390 150 370 Q 140 350 85 330" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.5" strokeDasharray="4,3" />
-              <text x="130" y="395" fontSize="6" fill="#8B5CF6" fontWeight="bold">Recirculated</text>
-              <text x="130" y="403" fontSize="5" fill="#8B5CF6">(CO₂ removed)</text>
+              <path d="M 210 390 Q 160 390 150 370 Q 140 350 85 330" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" opacity="0.5" strokeDasharray="4,3" />
+              <text x="130" y="395" fontSize="6" fill="hsl(var(--primary))" fontWeight="bold">Recirculated</text>
+              <text x="130" y="403" fontSize="5" fill="hsl(var(--primary))">(CO₂ removed)</text>
             </g>
           )}
 
@@ -679,7 +679,7 @@ const CircleTab = () => {
             <line x1="490" y1="215" x2="490" y2="190" stroke="hsl(var(--destructive))" strokeWidth="2" opacity="0.5" />
             {/* Scavenging collection bag/unit */}
             <rect x="475" y="175" width="30" height="18" rx="4"
-              fill="hsl(var(--destructive)/0.1)" stroke="hsl(var(--destructive))" strokeWidth="1.2" />
+              fill="hsl(var(--destructive)/0.1)" stroke="hsl(var(--destructive))" strokeWidth="1" />
             <text x="490" y="187" textAnchor="middle" fontSize="5.5" fill="hsl(var(--destructive))" fontWeight="bold">AGSS</text>
             {circlePhase === "exp" && (
               <>
@@ -773,15 +773,15 @@ const SodaLimeTab = () => (
               fill={exhausted ? "#A855F7" : "hsl(var(--primary)/0.12)"}
               fillOpacity={exhausted ? 0.4 : 0.5}
               stroke={exhausted ? "#7C3AED" : "hsl(var(--primary)/0.5)"}
-              strokeWidth="0.8" />
+              strokeWidth="0.75" />
           );
         })}
 
         {/* Indicator label */}
-        <rect x="355" y="115" width="140" height="40" rx="6" fill="#A855F7" fillOpacity="0.08" stroke="#7C3AED" strokeWidth="1" />
-        <text x="425" y="132" textAnchor="middle" fontSize="7" fill="#7C3AED" fontWeight="bold">Indicator: Ethyl Violet</text>
+        <rect x="355" y="115" width="140" height="40" rx="6" fill="hsl(var(--pharmacology))" fillOpacity="0.08" stroke="hsl(var(--pharmacology))" strokeWidth="1" />
+        <text x="425" y="132" textAnchor="middle" fontSize="7" fill="hsl(var(--pharmacology))" fontWeight="bold">Indicator: Ethyl Violet</text>
         <text x="425" y="145" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">White → Purple when exhausted</text>
-        <line x1="350" y1="135" x2="355" y2="135" stroke="#7C3AED" strokeWidth="1" />
+        <line x1="350" y1="135" x2="355" y2="135" stroke="hsl(var(--pharmacology))" strokeWidth="1" />
 
         {/* Gas in/out arrows */}
         <line x1="260" y1="200" x2="260" y2="210" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
@@ -828,13 +828,13 @@ const SodaLimeTab = () => (
         <rect x="50" y="320" width="290" height="24" rx="5" fill="hsl(var(--primary)/0.06)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
         <text x="55" y="335" fontSize="7" fill="hsl(var(--primary))" fontWeight="bold">③</text>
         <text x="70" y="335" fontSize="8" fill="hsl(var(--primary))">Na₂CO₃ + Ca(OH)₂ → CaCO₃ + 2NaOH</text>
-        <text x="315" y="335" fontSize="6" fill="#10B981" fontWeight="bold">↻ NaOH regenerated</text>
+        <text x="315" y="335" fontSize="6" fill="hsl(var(--clinical))" fontWeight="bold">↻ NaOH regenerated</text>
 
         {/* Net reaction */}
-        <rect x="360" y="260" width="120" height="42" rx="6" fill="#F59E0B" fillOpacity="0.1" stroke="#F59E0B" strokeWidth="1.2" />
-        <text x="420" y="276" textAnchor="middle" fontSize="7" fill="#F59E0B" fontWeight="bold">Net Reaction:</text>
+        <rect x="360" y="260" width="120" height="42" rx="6" fill="hsl(var(--accent))" fillOpacity="0.1" stroke="hsl(var(--accent))" strokeWidth="1" />
+        <text x="420" y="276" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))" fontWeight="bold">Net Reaction:</text>
         <text x="420" y="292" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))">CO₂ → CaCO₃ + H₂O</text>
-        <text x="420" y="304" textAnchor="middle" fontSize="6" fill="#F59E0B">+ Heat (40–60°C)</text>
+        <text x="420" y="304" textAnchor="middle" fontSize="6" fill="hsl(var(--accent))">+ Heat (40–60°C)</text>
 
         {/* ── Hazards section ── */}
         <text x="260" y="370" textAnchor="middle" fontSize="10" fill="hsl(var(--destructive))" fontWeight="bold">⚠ Hazards of Desiccated Soda Lime</text>
@@ -854,8 +854,8 @@ const SodaLimeTab = () => (
         <text x="377" y="438" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">Worse on Monday morning (weekend desiccation)</text>
 
         {/* Prevention */}
-        <rect x="30" y="455" width="460" height="55" rx="8" fill="#10B981" fillOpacity="0.06" stroke="#10B981" strokeOpacity="0.3" strokeWidth="1" />
-        <text x="260" y="472" textAnchor="middle" fontSize="8" fill="#10B981" fontWeight="bold">Prevention Strategies</text>
+        <rect x="30" y="455" width="460" height="55" rx="8" fill="hsl(var(--clinical))" fillOpacity="0.06" stroke="hsl(var(--clinical))" strokeOpacity="0.3" strokeWidth="1" />
+        <text x="260" y="472" textAnchor="middle" fontSize="8" fill="hsl(var(--clinical))" fontWeight="bold">Prevention Strategies</text>
         <text x="260" y="487" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">Turn off FGF when not in use • Use Ca(OH)₂-only absorbent (Amsorb® — no NaOH/KOH)</text>
         <text x="260" y="500" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">Change soda lime if desiccated • Granule size 4–8 mesh • Capacity ~26 L CO₂ / 100g</text>
       </svg>
@@ -900,8 +900,8 @@ const ScavengingTab = () => (
         <line x1="130" y1="72" x2="165" y2="72" stroke="hsl(var(--foreground))" strokeWidth="2" markerEnd="url(#scvA)" />
 
         {/* ── 2. TRANSFER ── */}
-        <rect x="170" y="40" width="110" height="65" rx="10" fill="#F59E0B" fillOpacity="0.08" stroke="#F59E0B" strokeWidth="1.5" />
-        <text x="225" y="58" textAnchor="middle" fontSize="9" fill="#F59E0B" fontWeight="bold">② Transfer</text>
+        <rect x="170" y="40" width="110" height="65" rx="10" fill="hsl(var(--accent))" fillOpacity="0.08" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+        <text x="225" y="58" textAnchor="middle" fontSize="9" fill="hsl(var(--accent))" fontWeight="bold">② Transfer</text>
         <text x="225" y="72" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">Wide-bore tubing</text>
         <text x="225" y="84" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">Low resistance</text>
         <text x="225" y="96" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">30mm fittings throughout</text>
@@ -918,15 +918,15 @@ const ScavengingTab = () => (
         <text x="370" y="93" textAnchor="middle" fontSize="6" fill="hsl(var(--primary))">Reservoir</text>
 
         {/* Safety valves */}
-        <rect x="405" y="65" width="85" height="55" rx="6" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive))" strokeWidth="1.2" />
+        <rect x="405" y="65" width="85" height="55" rx="6" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive))" strokeWidth="1" />
         <text x="448" y="78" textAnchor="middle" fontSize="7" fill="hsl(var(--destructive))" fontWeight="bold">Safety Valves</text>
 
         {/* Positive pressure valve */}
-        <rect x="410" y="82" width="35" height="14" rx="3" fill="hsl(var(--destructive)/0.1)" stroke="hsl(var(--destructive))" strokeWidth="0.8" />
+        <rect x="410" y="82" width="35" height="14" rx="3" fill="hsl(var(--destructive)/0.1)" stroke="hsl(var(--destructive))" strokeWidth="0.75" />
         <text x="428" y="92" textAnchor="middle" fontSize="5.5" fill="hsl(var(--destructive))">+ve</text>
 
         {/* Negative pressure valve */}
-        <rect x="450" y="82" width="35" height="14" rx="3" fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+        <rect x="450" y="82" width="35" height="14" rx="3" fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--primary))" strokeWidth="0.75" />
         <text x="468" y="92" textAnchor="middle" fontSize="5.5" fill="hsl(var(--primary))">−ve</text>
 
         <text x="448" y="112" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))" fontWeight="bold">±0.5 cmH₂O limit</text>
@@ -937,21 +937,21 @@ const ScavengingTab = () => (
 
         {/* ── 4. DISPOSAL ── */}
         {/* Active */}
-        <rect x="170" y="170" width="160" height="90" rx="10" fill="#10B981" fillOpacity="0.06" stroke="#10B981" strokeWidth="1.5" />
-        <text x="250" y="188" textAnchor="middle" fontSize="9" fill="#10B981" fontWeight="bold">④a Active Disposal</text>
+        <rect x="170" y="170" width="160" height="90" rx="10" fill="hsl(var(--clinical))" fillOpacity="0.06" stroke="hsl(var(--clinical))" strokeWidth="1.5" />
+        <text x="250" y="188" textAnchor="middle" fontSize="9" fill="hsl(var(--clinical))" fontWeight="bold">④a Active Disposal</text>
         {/* Fan symbol */}
-        <circle cx="220" cy="218" r="14" fill="#10B981" fillOpacity="0.1" stroke="#10B981" strokeWidth="1.5" />
-        <path d="M 215 210 Q 220 218, 225 210 M 212 220 Q 220 218, 212 225 M 225 225 Q 220 218, 228 220" fill="none" stroke="#10B981" strokeWidth="1.5" />
+        <circle cx="220" cy="218" r="14" fill="hsl(var(--clinical))" fillOpacity="0.1" stroke="hsl(var(--clinical))" strokeWidth="1.5" />
+        <path d="M 215 210 Q 220 218, 225 210 M 212 220 Q 220 218, 212 225 M 225 225 Q 220 218, 228 220" fill="none" stroke="hsl(var(--clinical))" strokeWidth="1.5" />
         <text x="250" y="215" fontSize="7" fill="hsl(var(--foreground))">Fan or piped</text>
         <text x="250" y="228" fontSize="7" fill="hsl(var(--foreground))">vacuum system</text>
         <text x="250" y="248" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Flow rate: 75 L/min</text>
 
         {/* Passive */}
-        <rect x="345" y="170" width="155" height="90" rx="10" fill="#6366F1" fillOpacity="0.06" stroke="#6366F1" strokeWidth="1.5" />
-        <text x="422" y="188" textAnchor="middle" fontSize="9" fill="#6366F1" fontWeight="bold">④b Passive Disposal</text>
+        <rect x="345" y="170" width="155" height="90" rx="10" fill="hsl(var(--primary))" fillOpacity="0.06" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+        <text x="422" y="188" textAnchor="middle" fontSize="9" fill="hsl(var(--primary))" fontWeight="bold">④b Passive Disposal</text>
         {/* Duct to outside */}
-        <rect x="390" y="200" width="50" height="18" rx="4" fill="#6366F1" fillOpacity="0.08" stroke="#6366F1" strokeWidth="1" />
-        <text x="415" y="212" textAnchor="middle" fontSize="6" fill="#6366F1">Duct</text>
+        <rect x="390" y="200" width="50" height="18" rx="4" fill="hsl(var(--primary))" fillOpacity="0.08" stroke="hsl(var(--primary))" strokeWidth="1" />
+        <text x="415" y="212" textAnchor="middle" fontSize="6" fill="hsl(var(--primary))">Duct</text>
         <text x="422" y="232" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))">Vents to outside</text>
         <text x="422" y="246" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Wind-dependent; simpler</text>
 
@@ -969,8 +969,8 @@ const ScavengingTab = () => (
           <text x="30" y="12" fontSize="7" fill="hsl(var(--foreground))">Machine end</text>
         </g>
         <g transform="translate(340,305)">
-          <circle cx="0" cy="8" r="7" fill="#F59E0B" fillOpacity="0.15" stroke="#F59E0B" strokeWidth="1.5" />
-          <text x="0" y="12" textAnchor="middle" fontSize="7" fill="#F59E0B" fontWeight="bold">15</text>
+          <circle cx="0" cy="8" r="7" fill="hsl(var(--accent))" fillOpacity="0.15" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+          <text x="0" y="12" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))" fontWeight="bold">15</text>
           <text x="30" y="12" fontSize="7" fill="hsl(var(--foreground))">Patient end</text>
         </g>
 
@@ -983,7 +983,7 @@ const ScavengingTab = () => (
           <text x="80" y="22" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Long-term: haematological risk</text>
         </g>
         <g transform="translate(280,372)">
-          <rect x="0" y="0" width="160" height="25" rx="5" fill="#F59E0B" fillOpacity="0.06" stroke="#F59E0B" strokeOpacity="0.3" strokeWidth="1" />
+          <rect x="0" y="0" width="160" height="25" rx="5" fill="hsl(var(--accent))" fillOpacity="0.06" stroke="hsl(var(--accent))" strokeOpacity="0.3" strokeWidth="1" />
           <text x="80" y="12" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="bold">Volatiles: &lt;50 ppm</text>
           <text x="80" y="22" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Halogenated agents</text>
         </g>

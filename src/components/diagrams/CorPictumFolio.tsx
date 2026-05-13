@@ -843,7 +843,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                           </polygon>
                           {/* index badge at centroid */}
                           <g transform={`translate(${cx} ${cy})`}>
-                            <circle r={0.018} fill="hsl(0 0% 100%)" stroke={colour} strokeWidth={0.003}
+                            <circle r={0.018} fill="hsl(0 0% 100%)" stroke={colour} strokeWidth={0.5}
                               style={{ vectorEffect: "non-scaling-stroke" }} />
                             <text textAnchor="middle" dominantBaseline="central"
                               fontSize="0.022" fontWeight={700} fill={colour}>
@@ -860,7 +860,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                                   r={0.012}
                                   fill="hsl(0 0% 100%)"
                                   stroke={colour}
-                                  strokeWidth={0.004}
+                                  strokeWidth={0.5}
                                   style={{ vectorEffect: "non-scaling-stroke", cursor: "grab", touchAction: "none" }}
                                   onPointerDown={beginVertexDrag(idx, vi)}
                                   onDoubleClick={removeVertex(idx, vi)}

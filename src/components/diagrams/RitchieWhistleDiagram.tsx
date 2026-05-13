@@ -4,10 +4,10 @@ const RitchieWhistleDiagram = () => {
       <svg viewBox="0 0 480 320" className="w-full max-w-[480px] mx-auto" style={{ minWidth: 300 }}>
         <defs>
           <marker id="rw-arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-            <path d="M0,0 L8,3 L0,6" fill="#3B82F6" />
+            <path d="M0,0 L8,3 L0,6" fill="hsl(var(--primary))" />
           </marker>
           <marker id="rw-arr-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-            <path d="M0,0 L8,3 L0,6" fill="#EF4444" />
+            <path d="M0,0 L8,3 L0,6" fill="hsl(var(--destructive))" />
           </marker>
         </defs>
 
@@ -35,7 +35,7 @@ const RitchieWhistleDiagram = () => {
 
         {/* Gas fill color */}
         <polygon points="60,121 180,121 195,133 205,133 220,121 420,121 420,169 220,169 205,157 195,157 180,169 60,169"
-          fill="#3B82F620" />
+          fill="hsl(var(--primary))" />
 
         {/* Constriction label */}
         <text x="200" y="150" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontFamily="Inter, sans-serif" fontWeight="600">
@@ -43,13 +43,13 @@ const RitchieWhistleDiagram = () => {
         </text>
 
         {/* === Gas flow arrows === */}
-        <line x1="80" y1="145" x2="165" y2="145" stroke="#3B82F6" strokeWidth="1.5" markerEnd="url(#rw-arr)" />
-        <line x1="225" y1="145" x2="400" y2="145" stroke="#3B82F6" strokeWidth="1.5" markerEnd="url(#rw-arr)" />
+        <line x1="80" y1="145" x2="165" y2="145" stroke="hsl(var(--primary))" strokeWidth="1.5" markerEnd="url(#rw-arr)" />
+        <line x1="225" y1="145" x2="400" y2="145" stroke="hsl(var(--primary))" strokeWidth="1.5" markerEnd="url(#rw-arr)" />
         {/* Animated flow dots */}
-        <circle r="3" fill="#3B82F6">
+        <circle r="3" fill="hsl(var(--primary))">
           <animateMotion dur="2s" repeatCount="indefinite" path="M80,145 L170,145 L200,145 L230,145 L400,145" />
         </circle>
-        <circle r="3" fill="#3B82F6" opacity="0.4">
+        <circle r="3" fill="hsl(var(--primary))" opacity="0.4">
           <animateMotion dur="2s" repeatCount="indefinite" begin="0.7s" path="M80,145 L170,145 L200,145 L230,145 L400,145" />
         </circle>
 
@@ -58,16 +58,16 @@ const RitchieWhistleDiagram = () => {
         <line x1="200" y1="65" x2="320" y2="65" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
 
         {/* Low pressure zone indicator */}
-        <text x="200" y="112" textAnchor="middle" fontSize="8" fill="#EF4444" fontFamily="Inter, sans-serif" fontWeight="600">
+        <text x="200" y="112" textAnchor="middle" fontSize="8" fill="hsl(var(--destructive))" fontFamily="Inter, sans-serif" fontWeight="600">
           Low P
         </text>
         {/* Downward arrow showing suction */}
-        <line x1="208" y1="70" x2="208" y2="115" stroke="#EF4444" strokeWidth="1" markerEnd="url(#rw-arr-red)" strokeDasharray="3,2" />
-        <text x="218" y="95" fontSize="7" fill="#EF4444" fontFamily="Inter, sans-serif">Suction</text>
+        <line x1="208" y1="70" x2="208" y2="115" stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#rw-arr-red)" strokeDasharray="3,2" />
+        <text x="218" y="95" fontSize="7" fill="hsl(var(--destructive))" fontFamily="Inter, sans-serif">Suction</text>
 
         {/* === Whistle chamber === */}
-        <rect x="320" y="45" width="80" height="40" rx="8" fill="#F59E0B20" stroke="#F59E0B" strokeWidth="2" />
-        <text x="360" y="62" textAnchor="middle" fontSize="9" fill="#F59E0B" fontFamily="Inter, sans-serif" fontWeight="700">
+        <rect x="320" y="45" width="80" height="40" rx="8" fill="hsl(var(--accent))" stroke="hsl(var(--accent))" strokeWidth="2" />
+        <text x="360" y="62" textAnchor="middle" fontSize="9" fill="hsl(var(--accent))" fontFamily="Inter, sans-serif" fontWeight="700">
           WHISTLE
         </text>
         <text x="360" y="76" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" fontFamily="Inter, sans-serif">
@@ -83,7 +83,7 @@ const RitchieWhistleDiagram = () => {
         {[0, 1, 2].map((i) => (
           <path key={i}
             d={`M${355 + i * 12},38 Q${360 + i * 12},30 ${365 + i * 12},38`}
-            fill="none" stroke="#F59E0B" strokeWidth="1.5" opacity={0.7 - i * 0.15}>
+            fill="none" stroke="hsl(var(--accent))" strokeWidth="1.5" opacity={0.7 - i * 0.15}>
             <animate attributeName="opacity" values={`${0.7 - i * 0.15};${0.3};${0.7 - i * 0.15}`} dur="0.8s" repeatCount="indefinite" begin={`${i * 0.15}s`} />
           </path>
         ))}
@@ -97,18 +97,18 @@ const RitchieWhistleDiagram = () => {
         </text>
 
         {/* === Pressure labels === */}
-        <text x="120" y="195" textAnchor="middle" fontSize="8" fill="#3B82F6" fontFamily="Inter, sans-serif">
+        <text x="120" y="195" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontFamily="Inter, sans-serif">
           High velocity at constriction
         </text>
-        <text x="120" y="206" textAnchor="middle" fontSize="8" fill="#EF4444" fontFamily="Inter, sans-serif">
+        <text x="120" y="206" textAnchor="middle" fontSize="8" fill="hsl(var(--destructive))" fontFamily="Inter, sans-serif">
           → Low pressure (Bernoulli)
         </text>
 
         {/* === Explanation box === */}
-        <rect x="30" y="225" width="420" height="85" rx="8" fill="hsl(var(--secondary))" opacity="0.3" />
+        <rect x="30" y="225" width="420" height="85" rx="8" fill="hsl(var(--secondary))" opacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <rect x="30" y="225" width="420" height="85" rx="8" fill="none" stroke="hsl(var(--border))" strokeWidth="1" />
 
-        <text x="240" y="245" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#F59E0B" fontFamily="Inter, sans-serif">
+        <text x="240" y="245" textAnchor="middle" fontSize="10" fontWeight="bold" fill="hsl(var(--accent))" fontFamily="Inter, sans-serif">
           How It Works
         </text>
         <text x="240" y="261" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontFamily="Inter, sans-serif">
@@ -120,7 +120,7 @@ const RitchieWhistleDiagram = () => {
         <text x="240" y="291" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontFamily="Inter, sans-serif">
           If O₂ supply fails → no flow → no Venturi effect → whistle stops → SILENCE = alarm.
         </text>
-        <text x="240" y="306" textAnchor="middle" fontSize="9" fill="#EF4444" fontFamily="Inter, sans-serif" fontWeight="600">
+        <text x="240" y="306" textAnchor="middle" fontSize="9" fill="hsl(var(--destructive))" fontFamily="Inter, sans-serif" fontWeight="600">
           The alarm sounds DURING normal operation and STOPS on failure (fail-safe design).
         </text>
       </svg>

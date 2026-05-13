@@ -31,11 +31,11 @@ const EchoDiagram = () => {
       <path d="M 200,5 L 60,235 A 180,180 0 0 0 340,235 Z" fill="url(#sector-bg)" stroke="hsl(var(--border))" strokeWidth="0.5" />
       {[60, 110, 160, 210].map((r) => (
         <path key={r} d={`M ${200 - r * 0.6},${5 + r * 0.8} A ${r},${r} 0 0 0 ${200 + r * 0.6},${5 + r * 0.8}`}
-          fill="none" stroke="#ffffff" strokeWidth="0.3" opacity="0.18" strokeDasharray="2 3" />
+          fill="none" stroke="hsl(var(--background))" strokeWidth="0.5" opacity="0.18" strokeDasharray="2 3" />
       ))}
       <circle cx="92" cy="60" r="2.5" fill="hsl(var(--primary))" />
-      <text x="88" y="50" fontSize="5" fill="#ffffff" opacity="0.7" textAnchor="end">probe ▸</text>
-      <text x="345" y="240" fontSize="6" fill="#ffffff" opacity="0.6" textAnchor="end">16 cm</text>
+      <text x="88" y="50" fontSize="5" fill="hsl(var(--background))" opacity="0.7" textAnchor="end">probe ▸</text>
+      <text x="345" y="240" fontSize="6" fill="hsl(var(--background))" opacity="0.6" textAnchor="end">16 cm</text>
     </g>
   );
 
@@ -69,11 +69,11 @@ const EchoDiagram = () => {
 
   const DopplerScale = () => (
     <g>
-      <rect x="350" y="55" width="6" height="55" fill="url(#jet-mosaic)" stroke="#fff8d0" strokeWidth="0.3" />
-      <text x="358" y="60" fontSize="5" fill="#ff5050" fontWeight="700">+0.6</text>
-      <text x="358" y="86" fontSize="5" fill="#fff8d0">0</text>
-      <text x="358" y="112" fontSize="5" fill="#3a8dff" fontWeight="700">−0.6</text>
-      <text x="358" y="120" fontSize="4" fill="#fff8d0" opacity="0.8">m/s Nyq</text>
+      <rect x="350" y="55" width="6" height="55" fill="url(#jet-mosaic)" stroke="hsl(var(--accent))" strokeWidth="0.5" />
+      <text x="358" y="60" fontSize="5" fill="hsl(var(--destructive))" fontWeight="700">+0.6</text>
+      <text x="358" y="86" fontSize="5" fill="hsl(var(--accent))">0</text>
+      <text x="358" y="112" fontSize="5" fill="hsl(var(--primary))" fontWeight="700">−0.6</text>
+      <text x="358" y="120" fontSize="4" fill="hsl(var(--accent))" opacity="0.8">m/s Nyq</text>
     </g>
   );
 
@@ -85,37 +85,37 @@ const EchoDiagram = () => {
           <>
             <ellipse cx="215" cy="135" rx="22" ry="12" fill="url(#jet-red)" transform="rotate(-25 215 135)" />
             <ellipse cx="295" cy="115" rx="20" ry="9" fill="url(#jet-blue)" transform="rotate(-15 295 115)" />
-            <text x="218" y="128" fontSize="5" fill="#fff8d0" fontWeight="700">MV inflow</text>
-            <text x="282" y="108" fontSize="5" fill="#fff8d0" fontWeight="700">LVOT→Ao</text>
+            <text x="218" y="128" fontSize="5" fill="hsl(var(--accent))" fontWeight="700">MV inflow</text>
+            <text x="282" y="108" fontSize="5" fill="hsl(var(--accent))" fontWeight="700">LVOT→Ao</text>
           </>
         )}
         {mode === "mr" && (
           <>
             <path d="M 252,150 Q 285,160 320,180 Q 305,195 280,195 Q 260,180 248,158 Z" fill="url(#jet-mosaic)" opacity="0.92" />
             <path d="M 235,148 A 10,10 0 0 1 255,148 Z" fill="url(#pisa-shell)" />
-            <line x1="245" y1="148" x2="245" y2="138" stroke="#fff04a" strokeWidth="0.5" strokeDasharray="1 1" />
-            <text x="248" y="140" fontSize="5" fill="#fff04a" fontWeight="700">PISA r</text>
-            <text x="295" y="172" fontSize="6" fill="#fff8d0" fontWeight="700">MR jet</text>
-            <text x="295" y="180" fontSize="4" fill="#fff8d0" opacity="0.85">(mosaic = aliased)</text>
+            <line x1="245" y1="148" x2="245" y2="138" stroke="hsl(var(--accent))" strokeWidth="0.5" strokeDasharray="1 1" />
+            <text x="248" y="140" fontSize="5" fill="hsl(var(--accent))" fontWeight="700">PISA r</text>
+            <text x="295" y="172" fontSize="6" fill="hsl(var(--accent))" fontWeight="700">MR jet</text>
+            <text x="295" y="180" fontSize="4" fill="hsl(var(--accent))" opacity="0.85">(mosaic = aliased)</text>
           </>
         )}
         {mode === "ar" && (
           <>
             <path d="M 290,118 Q 270,135 240,160 Q 225,170 215,158 Q 235,135 270,115 Z" fill="url(#jet-mosaic)" opacity="0.9" />
-            <text x="225" y="155" fontSize="6" fill="#fff8d0" fontWeight="700">AR jet</text>
-            <text x="225" y="163" fontSize="4" fill="#fff8d0" opacity="0.85">(diastolic, into LV)</text>
+            <text x="225" y="155" fontSize="6" fill="hsl(var(--accent))" fontWeight="700">AR jet</text>
+            <text x="225" y="163" fontSize="4" fill="hsl(var(--accent))" opacity="0.85">(diastolic, into LV)</text>
           </>
         )}
         {mode === "ms" && (
           <>
             <path d="M 248,148 Q 235,160 220,172 Q 200,178 180,170 Q 200,160 230,150 Z" fill="url(#jet-mosaic)" opacity="0.92" />
             <path d="M 240,152 A 9,9 0 0 0 258,152 Z" fill="url(#pisa-shell)" transform="rotate(180 249 152)" />
-            <text x="195" y="168" fontSize="6" fill="#fff8d0" fontWeight="700">MS jet</text>
-            <text x="195" y="176" fontSize="4" fill="#fff8d0" opacity="0.85">(diastolic, narrow)</text>
+            <text x="195" y="168" fontSize="6" fill="hsl(var(--accent))" fontWeight="700">MS jet</text>
+            <text x="195" y="176" fontSize="4" fill="hsl(var(--accent))" opacity="0.85">(diastolic, narrow)</text>
           </>
         )}
         {mode === "tr" && (
-          <text x="200" y="80" fontSize="6" fill="#fff8d0" fontWeight="700" textAnchor="middle">TR best seen on A4C</text>
+          <text x="200" y="80" fontSize="6" fill="hsl(var(--accent))" fontWeight="700" textAnchor="middle">TR best seen on A4C</text>
         )}
         <DopplerScale />
       </g>
@@ -130,36 +130,36 @@ const EchoDiagram = () => {
           <>
             <ellipse cx="170" cy="180" rx="18" ry="10" fill="url(#jet-red)" />
             <ellipse cx="225" cy="172" rx="15" ry="9" fill="url(#jet-red)" />
-            <text x="148" y="178" fontSize="5" fill="#fff8d0" fontWeight="700">MV in</text>
-            <text x="232" y="170" fontSize="5" fill="#fff8d0" fontWeight="700">TV in</text>
+            <text x="148" y="178" fontSize="5" fill="hsl(var(--accent))" fontWeight="700">MV in</text>
+            <text x="232" y="170" fontSize="5" fill="hsl(var(--accent))" fontWeight="700">TV in</text>
           </>
         )}
         {mode === "mr" && (
           <>
             <path d="M 178,200 Q 175,212 175,222 Q 195,228 205,222 Q 200,210 192,200 Z" fill="url(#jet-mosaic)" opacity="0.92" />
             <path d="M 175,198 A 8,8 0 0 1 191,198 Z" fill="url(#pisa-shell)" transform="rotate(180 183 198)" />
-            <text x="148" y="218" fontSize="6" fill="#fff8d0" fontWeight="700">MR jet</text>
-            <text x="148" y="225" fontSize="4" fill="#fff8d0" opacity="0.85">(into LA)</text>
+            <text x="148" y="218" fontSize="6" fill="hsl(var(--accent))" fontWeight="700">MR jet</text>
+            <text x="148" y="225" fontSize="4" fill="hsl(var(--accent))" opacity="0.85">(into LA)</text>
           </>
         )}
         {mode === "tr" && (
           <>
             <path d="M 222,193 Q 230,210 240,222 Q 248,225 245,210 Q 235,198 228,190 Z" fill="url(#jet-mosaic)" opacity="0.92" />
-            <text x="252" y="215" fontSize="6" fill="#fff8d0" fontWeight="700">TR jet</text>
-            <text x="252" y="222" fontSize="4" fill="#fff8d0" opacity="0.85">→ PASP (Bernoulli)</text>
+            <text x="252" y="215" fontSize="6" fill="hsl(var(--accent))" fontWeight="700">TR jet</text>
+            <text x="252" y="222" fontSize="4" fill="hsl(var(--accent))" opacity="0.85">→ PASP (Bernoulli)</text>
           </>
         )}
         {mode === "ms" && (
           <>
             <path d="M 178,196 Q 168,180 158,165 Q 148,150 155,140 Q 175,160 188,190 Z" fill="url(#jet-mosaic)" opacity="0.92" />
-            <text x="130" y="158" fontSize="6" fill="#fff8d0" fontWeight="700">MS jet</text>
-            <text x="130" y="165" fontSize="4" fill="#fff8d0" opacity="0.85">(diastolic, narrow)</text>
+            <text x="130" y="158" fontSize="6" fill="hsl(var(--accent))" fontWeight="700">MS jet</text>
+            <text x="130" y="165" fontSize="4" fill="hsl(var(--accent))" opacity="0.85">(diastolic, narrow)</text>
           </>
         )}
         {mode === "ar" && (
           <>
-            <text x="160" y="120" fontSize="6" fill="#fff8d0" fontWeight="700">AR not well seen on A4C</text>
-            <text x="160" y="128" fontSize="5" fill="#fff8d0" opacity="0.85">— use PLAX / A5C</text>
+            <text x="160" y="120" fontSize="6" fill="hsl(var(--accent))" fontWeight="700">AR not well seen on A4C</text>
+            <text x="160" y="128" fontSize="5" fill="hsl(var(--accent))" opacity="0.85">— use PLAX / A5C</text>
           </>
         )}
         <DopplerScale />
@@ -181,49 +181,49 @@ const EchoDiagram = () => {
           <SectorFrame />
           <g clipPath="url(#sector-clip)">
             {/* Anterior chest wall echo (bright top band) */}
-            <rect x="60" y="48" width="280" height="6" fill="#e8e8c8" opacity="0.5" />
+            <rect x="60" y="48" width="280" height="6" fill="hsl(var(--accent))" opacity="0.5" />
             {/* RV */}
-            <path d="M 110,58 Q 150,55 215,62 L 220,95 Q 165,90 115,92 Z" fill="#1a1a1a" stroke="#d8d8a8" strokeWidth="1.2" />
+            <path d="M 110,58 Q 150,55 215,62 L 220,95 Q 165,90 115,92 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1" />
             {/* IVS */}
-            <path d="M 115,92 Q 175,98 240,108 L 240,118 Q 175,108 115,103 Z" fill="#c8c098" opacity="0.85" />
+            <path d="M 115,92 Q 175,98 240,108 L 240,118 Q 175,108 115,103 Z" fill="hsl(var(--accent))" opacity="0.85" />
             {/* LV cavity */}
-            <path d="M 115,103 Q 175,108 240,118 L 270,165 Q 200,180 120,165 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.2" />
+            <path d="M 115,103 Q 175,108 240,118 L 270,165 Q 200,180 120,165 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1" />
             {/* Posterior wall */}
-            <path d="M 120,165 Q 200,180 270,165 L 275,180 Q 200,195 120,180 Z" fill="#c8c098" opacity="0.85" />
+            <path d="M 120,165 Q 200,180 270,165 L 275,180 Q 200,195 120,180 Z" fill="hsl(var(--accent))" opacity="0.85" />
             {/* Mitral valve leaflets */}
-            <path d="M 240,108 Q 248,128 245,148" fill="none" stroke="#fff8d0" strokeWidth="1.4" />
-            <path d="M 270,118 Q 262,138 250,148" fill="none" stroke="#fff8d0" strokeWidth="1.4" />
+            <path d="M 240,108 Q 248,128 245,148" fill="none" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+            <path d="M 270,118 Q 262,138 250,148" fill="none" stroke="hsl(var(--accent))" strokeWidth="1.5" />
             {/* Chordae */}
-            <line x1="245" y1="148" x2="232" y2="170" stroke="#fff8d0" strokeWidth="0.4" opacity="0.7" />
-            <line x1="250" y1="148" x2="240" y2="172" stroke="#fff8d0" strokeWidth="0.4" opacity="0.7" />
+            <line x1="245" y1="148" x2="232" y2="170" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.7" />
+            <line x1="250" y1="148" x2="240" y2="172" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.7" />
             {/* LVOT + Aortic root */}
-            <path d="M 240,108 L 290,80 L 320,90 L 325,135 L 280,148 L 270,118 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.2" />
+            <path d="M 240,108 L 290,80 L 320,90 L 325,135 L 280,148 L 270,118 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1" />
             {/* AV cusps */}
-            <line x1="278" y1="100" x2="282" y2="115" stroke="#fff8d0" strokeWidth="1.2" />
-            <line x1="305" y1="105" x2="301" y2="120" stroke="#fff8d0" strokeWidth="1.2" />
-            <path d="M 282,115 Q 292,128 301,120" fill="none" stroke="#d8d8a8" strokeWidth="0.6" opacity="0.7" />
+            <line x1="278" y1="100" x2="282" y2="115" stroke="hsl(var(--accent))" strokeWidth="1" />
+            <line x1="305" y1="105" x2="301" y2="120" stroke="hsl(var(--accent))" strokeWidth="1" />
+            <path d="M 282,115 Q 292,128 301,120" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.7" />
             {/* LA */}
-            <path d="M 270,148 Q 320,160 335,180 L 330,205 Q 280,205 245,190 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.2" />
+            <path d="M 270,148 Q 320,160 335,180 L 330,205 Q 280,205 245,190 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1" />
             {/* Descending aorta */}
-            <circle cx="295" cy="215" r="9" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1" />
+            <circle cx="295" cy="215" r="9" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1" />
             {/* Pericardium */}
-            <path d="M 120,180 Q 200,195 275,180" fill="none" stroke="#ffffd0" strokeWidth="0.8" opacity="0.6" strokeDasharray="3 2" />
+            <path d="M 120,180 Q 200,195 275,180" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.75" opacity="0.6" strokeDasharray="3 2" />
             {/* M-mode caliper line */}
             <line x1="180" y1="92" x2="180" y2="180" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity="0.6" strokeDasharray="2 2" />
           </g>
           {/* Labels (outside clipPath so never clipped) */}
           <g fontFamily="system-ui, sans-serif">
-            <text x="160" y="78" fontSize="9" fill="#fff8d0" fontWeight="700">RV</text>
-            <text x="180" y="105" fontSize="6" fill="#1a1a1a" fontWeight="600">IVS</text>
-            <text x="180" y="148" fontSize="14" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
-            <text x="200" y="175" fontSize="6" fill="#1a1a1a" fontWeight="600" textAnchor="middle">PW</text>
-            <text x="247" y="135" fontSize="6" fill="#fff8d0" fontWeight="600">AMVL</text>
-            <text x="252" y="158" fontSize="6" fill="#fff8d0" fontWeight="600">PMVL</text>
-            <text x="298" y="113" fontSize="6.5" fill="#fff8d0" fontWeight="600">Ao root</text>
-            <text x="278" y="95" fontSize="6" fill="#fff8d0" fontWeight="600">AV</text>
-            <text x="290" y="178" fontSize="11" fill="#fff8d0" fontWeight="800">LA</text>
-            <text x="295" y="218" fontSize="5" fill="#fff8d0" fontWeight="600" textAnchor="middle">DAo</text>
-            <text x="160" y="200" fontSize="5" fill="#fff8d0" opacity="0.7">pericardium</text>
+            <text x="160" y="78" fontSize="9" fill="hsl(var(--accent))" fontWeight="700">RV</text>
+            <text x="180" y="105" fontSize="6" fill="hsl(var(--foreground))" fontWeight="600">IVS</text>
+            <text x="180" y="148" fontSize="14" fill="hsl(var(--accent))" fontWeight="800" textAnchor="middle">LV</text>
+            <text x="200" y="175" fontSize="6" fill="hsl(var(--foreground))" fontWeight="600" textAnchor="middle">PW</text>
+            <text x="247" y="135" fontSize="6" fill="hsl(var(--accent))" fontWeight="600">AMVL</text>
+            <text x="252" y="158" fontSize="6" fill="hsl(var(--accent))" fontWeight="600">PMVL</text>
+            <text x="298" y="113" fontSize="6.5" fill="hsl(var(--accent))" fontWeight="600">Ao root</text>
+            <text x="278" y="95" fontSize="6" fill="hsl(var(--accent))" fontWeight="600">AV</text>
+            <text x="290" y="178" fontSize="11" fill="hsl(var(--accent))" fontWeight="800">LA</text>
+            <text x="295" y="218" fontSize="5" fill="hsl(var(--accent))" fontWeight="600" textAnchor="middle">DAo</text>
+            <text x="160" y="200" fontSize="5" fill="hsl(var(--accent))" opacity="0.7">pericardium</text>
             <text x="184" y="135" fontSize="5" fill="hsl(var(--primary))" opacity="0.85">M-mode</text>
           </g>
           <PlaxDoppler mode={doppler} />
@@ -245,47 +245,47 @@ const EchoDiagram = () => {
           <SectorFrame />
           <g clipPath="url(#sector-clip)">
             {/* LV — circular doughnut */}
-            <circle cx="200" cy="148" r="58" fill="#c8c098" opacity="0.9" />
-            <circle cx="200" cy="148" r="42" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.4" />
+            <circle cx="200" cy="148" r="58" fill="hsl(var(--accent))" opacity="0.9" />
+            <circle cx="200" cy="148" r="42" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1.5" />
             {/* Coronary segmentation lines */}
-            <g stroke="#fff8d0" strokeWidth="0.4" opacity="0.45" fill="none">
+            <g stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.45" fill="none">
               <line x1="200" y1="106" x2="200" y2="190" />
               <line x1="163" y1="127" x2="237" y2="169" />
               <line x1="163" y1="169" x2="237" y2="127" />
             </g>
             {/* Papillary muscles */}
-            <ellipse cx="174" cy="128" rx="6" ry="5" fill="#c8c098" opacity="0.9" />
-            <ellipse cx="222" cy="172" rx="6" ry="5" fill="#c8c098" opacity="0.9" />
+            <ellipse cx="174" cy="128" rx="6" ry="5" fill="hsl(var(--accent))" opacity="0.9" />
+            <ellipse cx="222" cy="172" rx="6" ry="5" fill="hsl(var(--accent))" opacity="0.9" />
             {/* RV crescent */}
-            <path d="M 155,90 Q 100,135 165,205 Q 180,180 168,148 Q 160,115 185,95 Z" fill="#1a1a1a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <circle cx="200" cy="148" r="60" fill="none" stroke="#ffffd0" strokeWidth="0.5" opacity="0.5" strokeDasharray="3 2" />
+            <path d="M 155,90 Q 100,135 165,205 Q 180,180 168,148 Q 160,115 185,95 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+            <circle cx="200" cy="148" r="60" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.5" strokeDasharray="3 2" />
           </g>
           {/* Labels — placed outside clipPath but inside the visible sector area */}
           <g fontFamily="system-ui, sans-serif">
-            <text x="200" y="151" fontSize="13" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
-            <text x="128" y="148" fontSize="10" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
-            <text x="187" y="151" fontSize="5" fill="#1a1a1a" fontWeight="700" textAnchor="middle">IVS</text>
+            <text x="200" y="151" fontSize="13" fill="hsl(var(--accent))" fontWeight="800" textAnchor="middle">LV</text>
+            <text x="128" y="148" fontSize="10" fill="hsl(var(--accent))" fontWeight="800" textAnchor="middle">RV</text>
+            <text x="187" y="151" fontSize="5" fill="hsl(var(--foreground))" fontWeight="700" textAnchor="middle">IVS</text>
             {/* Coronary territory labels — moved INSIDE the donut sector, around the ring */}
-            <text x="200" y="118" fontSize="5.5" fill="#ff9090" fontWeight="700" textAnchor="middle">ANT (LAD)</text>
-            <text x="226" y="132" fontSize="5" fill="#90c0ff" fontWeight="700" textAnchor="middle">ANT-SEPT</text>
-            <text x="226" y="170" fontSize="5" fill="#90ffb0" fontWeight="700" textAnchor="middle">INF-SEPT</text>
-            <text x="200" y="186" fontSize="5.5" fill="#ffd090" fontWeight="700" textAnchor="middle">INF (RCA)</text>
-            <text x="174" y="170" fontSize="5" fill="#c090ff" fontWeight="700" textAnchor="middle">INF-LAT</text>
-            <text x="174" y="132" fontSize="5" fill="#ff90d0" fontWeight="700" textAnchor="middle">ANT-LAT</text>
-            <text x="170" y="120" fontSize="4.5" fill="#fff8d0" opacity="0.85">AL pap</text>
-            <text x="226" y="186" fontSize="4.5" fill="#fff8d0" opacity="0.85">PM pap</text>
+            <text x="200" y="118" fontSize="5.5" fill="hsl(var(--destructive))" fontWeight="700" textAnchor="middle">ANT (LAD)</text>
+            <text x="226" y="132" fontSize="5" fill="hsl(var(--primary))" fontWeight="700" textAnchor="middle">ANT-SEPT</text>
+            <text x="226" y="170" fontSize="5" fill="hsl(var(--clinical))" fontWeight="700" textAnchor="middle">INF-SEPT</text>
+            <text x="200" y="186" fontSize="5.5" fill="hsl(var(--accent))" fontWeight="700" textAnchor="middle">INF (RCA)</text>
+            <text x="174" y="170" fontSize="5" fill="hsl(var(--pharmacology))" fontWeight="700" textAnchor="middle">INF-LAT</text>
+            <text x="174" y="132" fontSize="5" fill="hsl(var(--accent))" fontWeight="700" textAnchor="middle">ANT-LAT</text>
+            <text x="170" y="120" fontSize="4.5" fill="hsl(var(--accent))" opacity="0.85">AL pap</text>
+            <text x="226" y="186" fontSize="4.5" fill="hsl(var(--accent))" opacity="0.85">PM pap</text>
           </g>
           {/* AV inset — moved BELOW the sector tip on the right, fully visible */}
           <g transform="translate(345,150)">
-            <rect x="-32" y="-30" width="64" height="60" fill="#000" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
-            <circle cx="0" cy="-3" r="18" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1" />
-            <line x1="0" y1="-3" x2="0" y2="-21" stroke="#fff8d0" strokeWidth="1" />
-            <line x1="0" y1="-3" x2="15.6" y2="6" stroke="#fff8d0" strokeWidth="1" />
-            <line x1="0" y1="-3" x2="-15.6" y2="6" stroke="#fff8d0" strokeWidth="1" />
-            <text x="0" y="-22" fontSize="5" fill="#fff8d0" textAnchor="middle">L</text>
-            <text x="14" y="10" fontSize="5" fill="#fff8d0">R</text>
-            <text x="-14" y="10" fontSize="5" fill="#fff8d0" textAnchor="end">N</text>
-            <text x="0" y="24" fontSize="5" fill="#fff8d0" textAnchor="middle" fontWeight="600">AV (base)</text>
+            <rect x="-32" y="-30" width="64" height="60" fill="hsl(var(--foreground))" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
+            <circle cx="0" cy="-3" r="18" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1" />
+            <line x1="0" y1="-3" x2="0" y2="-21" stroke="hsl(var(--accent))" strokeWidth="1" />
+            <line x1="0" y1="-3" x2="15.6" y2="6" stroke="hsl(var(--accent))" strokeWidth="1" />
+            <line x1="0" y1="-3" x2="-15.6" y2="6" stroke="hsl(var(--accent))" strokeWidth="1" />
+            <text x="0" y="-22" fontSize="5" fill="hsl(var(--accent))" textAnchor="middle">L</text>
+            <text x="14" y="10" fontSize="5" fill="hsl(var(--accent))">R</text>
+            <text x="-14" y="10" fontSize="5" fill="hsl(var(--accent))" textAnchor="end">N</text>
+            <text x="0" y="24" fontSize="5" fill="hsl(var(--accent))" textAnchor="middle" fontWeight="600">AV (base)</text>
           </g>
           <text x="200" y="245" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">PSAX mid-papillary — 6 coronary segments + AV inset</text>
         </svg>
@@ -304,43 +304,43 @@ const EchoDiagram = () => {
           <SectorFrame />
           <g clipPath="url(#sector-clip)">
             {/* LV */}
-            <path d="M 200,55 Q 165,70 145,100 Q 132,135 138,170 Q 148,195 195,200 L 200,135 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
+            <path d="M 200,55 Q 165,70 145,100 Q 132,135 138,170 Q 148,195 195,200 L 200,135 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1.5" />
             {/* RV */}
-            <path d="M 200,55 Q 232,70 252,100 Q 263,130 258,162 Q 248,182 205,188 L 200,135 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
+            <path d="M 200,55 Q 232,70 252,100 Q 263,130 258,162 Q 248,182 205,188 L 200,135 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1.5" />
             {/* Moderator band */}
-            <line x1="218" y1="155" x2="245" y2="170" stroke="#fff8d0" strokeWidth="1" opacity="0.7" />
+            <line x1="218" y1="155" x2="245" y2="170" stroke="hsl(var(--accent))" strokeWidth="1" opacity="0.7" />
             {/* IVS */}
-            <path d="M 200,60 L 198,135 L 200,195" fill="none" stroke="#c8c098" strokeWidth="3" opacity="0.9" />
+            <path d="M 200,60 L 198,135 L 200,195" fill="none" stroke="hsl(var(--accent))" strokeWidth="3" opacity="0.9" />
             {/* MV */}
-            <line x1="148" y1="200" x2="180" y2="195" stroke="#fff8d0" strokeWidth="1.5" />
-            <line x1="180" y1="195" x2="200" y2="200" stroke="#fff8d0" strokeWidth="1.5" />
+            <line x1="148" y1="200" x2="180" y2="195" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+            <line x1="180" y1="195" x2="200" y2="200" stroke="hsl(var(--accent))" strokeWidth="1.5" />
             {/* TV */}
-            <line x1="200" y1="195" x2="220" y2="190" stroke="#fff8d0" strokeWidth="1.5" />
-            <line x1="220" y1="190" x2="252" y2="185" stroke="#fff8d0" strokeWidth="1.5" />
+            <line x1="200" y1="195" x2="220" y2="190" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+            <line x1="220" y1="190" x2="252" y2="185" stroke="hsl(var(--accent))" strokeWidth="1.5" />
             {/* Atria */}
-            <path d="M 148,200 Q 150,225 200,228 Q 250,225 252,185 L 220,190 L 200,200 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
+            <path d="M 148,200 Q 150,225 200,228 Q 250,225 252,185 L 220,190 L 200,200 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1.5" />
             {/* IAS */}
-            <line x1="200" y1="200" x2="200" y2="228" stroke="#c8c098" strokeWidth="2" opacity="0.9" />
+            <line x1="200" y1="200" x2="200" y2="228" stroke="hsl(var(--accent))" strokeWidth="2" opacity="0.9" />
             {/* Pulmonary vein */}
-            <path d="M 150,225 Q 135,232 122,230" fill="none" stroke="#d8d8a8" strokeWidth="1" opacity="0.7" />
+            <path d="M 150,225 Q 135,232 122,230" fill="none" stroke="hsl(var(--accent))" strokeWidth="1" opacity="0.7" />
             {/* TAPSE caliper */}
-            <line x1="252" y1="185" x2="252" y2="170" stroke="hsl(var(--primary))" strokeWidth="0.6" />
-            <line x1="248" y1="185" x2="256" y2="185" stroke="hsl(var(--primary))" strokeWidth="0.6" />
-            <line x1="248" y1="170" x2="256" y2="170" stroke="hsl(var(--primary))" strokeWidth="0.6" />
+            <line x1="252" y1="185" x2="252" y2="170" stroke="hsl(var(--primary))" strokeWidth="0.5" />
+            <line x1="248" y1="185" x2="256" y2="185" stroke="hsl(var(--primary))" strokeWidth="0.5" />
+            <line x1="248" y1="170" x2="256" y2="170" stroke="hsl(var(--primary))" strokeWidth="0.5" />
           </g>
           {/* Labels outside clipPath */}
           <g fontFamily="system-ui, sans-serif">
-            <text x="200" y="50" fontSize="6" fill="#fff8d0" textAnchor="middle" fontWeight="700">apex</text>
-            <text x="170" y="135" fontSize="13" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
-            <text x="232" y="125" fontSize="11" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
-            <text x="184" y="80" fontSize="5" fill="#fff8d0" opacity="0.85">IVS</text>
-            <text x="218" y="165" fontSize="4.5" fill="#fff8d0" opacity="0.85">mod band</text>
-            <text x="158" y="192" fontSize="6" fill="#fff8d0" fontWeight="700">MV</text>
-            <text x="232" y="184" fontSize="6" fill="#fff8d0" fontWeight="700">TV</text>
-            <text x="172" y="221" fontSize="10" fill="#fff8d0" fontWeight="800">LA</text>
-            <text x="222" y="218" fontSize="10" fill="#fff8d0" fontWeight="800">RA</text>
-            <text x="184" y="217" fontSize="5" fill="#fff8d0" opacity="0.85">IAS</text>
-            <text x="118" y="240" fontSize="5" fill="#fff8d0" opacity="0.7" textAnchor="end">PV</text>
+            <text x="200" y="50" fontSize="6" fill="hsl(var(--accent))" textAnchor="middle" fontWeight="700">apex</text>
+            <text x="170" y="135" fontSize="13" fill="hsl(var(--accent))" fontWeight="800" textAnchor="middle">LV</text>
+            <text x="232" y="125" fontSize="11" fill="hsl(var(--accent))" fontWeight="800" textAnchor="middle">RV</text>
+            <text x="184" y="80" fontSize="5" fill="hsl(var(--accent))" opacity="0.85">IVS</text>
+            <text x="218" y="165" fontSize="4.5" fill="hsl(var(--accent))" opacity="0.85">mod band</text>
+            <text x="158" y="192" fontSize="6" fill="hsl(var(--accent))" fontWeight="700">MV</text>
+            <text x="232" y="184" fontSize="6" fill="hsl(var(--accent))" fontWeight="700">TV</text>
+            <text x="172" y="221" fontSize="10" fill="hsl(var(--accent))" fontWeight="800">LA</text>
+            <text x="222" y="218" fontSize="10" fill="hsl(var(--accent))" fontWeight="800">RA</text>
+            <text x="184" y="217" fontSize="5" fill="hsl(var(--accent))" opacity="0.85">IAS</text>
+            <text x="118" y="240" fontSize="5" fill="hsl(var(--accent))" opacity="0.7" textAnchor="end">PV</text>
             <text x="260" y="180" fontSize="5" fill="hsl(var(--primary))" fontWeight="700">TAPSE</text>
           </g>
           <A4cDoppler mode={doppler} />
@@ -362,57 +362,57 @@ const EchoDiagram = () => {
           <SectorFrame />
           <defs>
             <marker id="arrow-down-sm" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto">
-              <path d="M 0,0 L 4,2 L 0,4 Z" fill="#90ff90" />
+              <path d="M 0,0 L 4,2 L 0,4 Z" fill="hsl(var(--clinical))" />
             </marker>
             <marker id="arrow-up-sm" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto-start-reverse">
-              <path d="M 0,0 L 4,2 L 0,4 Z" fill="#90ff90" />
+              <path d="M 0,0 L 4,2 L 0,4 Z" fill="hsl(var(--clinical))" />
             </marker>
           </defs>
           <g clipPath="url(#sector-clip)">
             {/* Liver — narrowed to fit sector */}
-            <path d="M 95,55 Q 200,52 305,62 L 295,108 Q 200,113 105,106 Z" fill="#5a4838" opacity="0.55" />
-            <path d="M 260,75 Q 235,90 222,108" fill="none" stroke="#9bb8d8" strokeWidth="1.5" opacity="0.7" />
+            <path d="M 95,55 Q 200,52 305,62 L 295,108 Q 200,113 105,106 Z" fill="hsl(var(--accent))" opacity="0.55" />
+            <path d="M 260,75 Q 235,90 222,108" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" opacity="0.7" />
             {/* RA — shifted right and narrowed */}
-            <path d="M 105,118 Q 95,140 105,165 Q 130,176 158,168 L 158,120 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
+            <path d="M 105,118 Q 95,140 105,165 Q 130,176 158,168 L 158,120 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1.5" />
             {/* RV */}
-            <path d="M 158,120 L 158,168 Q 195,180 225,168 L 225,120 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
+            <path d="M 158,120 L 158,168 Q 195,180 225,168 L 225,120 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1.5" />
             {/* LA */}
-            <path d="M 225,120 L 225,168 Q 250,176 275,165 L 275,122 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
+            <path d="M 225,120 L 225,168 Q 250,176 275,165 L 275,122 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1.5" />
             {/* LV — pulled INSIDE the sector (was at x=300-340, clipped) */}
-            <path d="M 275,122 L 275,165 Q 295,178 312,168 L 312,127 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
+            <path d="M 275,122 L 275,165 Q 295,178 312,168 L 312,127 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="1.5" />
             {/* Septae */}
-            <line x1="225" y1="120" x2="225" y2="170" stroke="#c8c098" strokeWidth="2" opacity="0.9" />
-            <line x1="192" y1="122" x2="192" y2="170" stroke="#c8c098" strokeWidth="0.5" opacity="0.6" />
+            <line x1="225" y1="120" x2="225" y2="170" stroke="hsl(var(--accent))" strokeWidth="2" opacity="0.9" />
+            <line x1="192" y1="122" x2="192" y2="170" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.6" />
             {/* AV valve plane */}
-            <line x1="162" y1="143" x2="188" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
-            <line x1="196" y1="143" x2="221" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
-            <line x1="229" y1="143" x2="271" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
-            <line x1="279" y1="143" x2="308" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
+            <line x1="162" y1="143" x2="188" y2="143" stroke="hsl(var(--accent))" strokeWidth="1" />
+            <line x1="196" y1="143" x2="221" y2="143" stroke="hsl(var(--accent))" strokeWidth="1" />
+            <line x1="229" y1="143" x2="271" y2="143" stroke="hsl(var(--accent))" strokeWidth="1" />
+            <line x1="279" y1="143" x2="308" y2="143" stroke="hsl(var(--accent))" strokeWidth="1" />
             {/* Pericardium */}
-            <path d="M 105,118 Q 95,140 105,165 Q 200,185 312,168 L 312,127 Q 200,114 105,118 Z" fill="none" stroke="#ffffd0" strokeWidth="0.6" opacity="0.55" strokeDasharray="3 2" />
+            <path d="M 105,118 Q 95,140 105,165 Q 200,185 312,168 L 312,127 Q 200,114 105,118 Z" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.55" strokeDasharray="3 2" />
           </g>
           {/* Labels outside clipPath */}
           <g fontFamily="system-ui, sans-serif">
-            <text x="200" y="85" fontSize="9" fill="#f0e0c0" fontWeight="700" textAnchor="middle">Liver (acoustic window)</text>
-            <text x="263" y="73" fontSize="5" fill="#9bb8d8">hepatic v.</text>
-            <text x="125" y="148" fontSize="9" fill="#fff8d0" fontWeight="800">RA</text>
-            <text x="190" y="148" fontSize="10" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
-            <text x="250" y="148" fontSize="9" fill="#fff8d0" fontWeight="800">LA</text>
-            <text x="293" y="150" fontSize="9" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
+            <text x="200" y="85" fontSize="9" fill="hsl(var(--accent))" fontWeight="700" textAnchor="middle">Liver (acoustic window)</text>
+            <text x="263" y="73" fontSize="5" fill="hsl(var(--primary))">hepatic v.</text>
+            <text x="125" y="148" fontSize="9" fill="hsl(var(--accent))" fontWeight="800">RA</text>
+            <text x="190" y="148" fontSize="10" fill="hsl(var(--accent))" fontWeight="800" textAnchor="middle">RV</text>
+            <text x="250" y="148" fontSize="9" fill="hsl(var(--accent))" fontWeight="800">LA</text>
+            <text x="293" y="150" fontSize="9" fill="hsl(var(--accent))" fontWeight="800" textAnchor="middle">LV</text>
           </g>
           {/* IVC inset — moved BELOW sector so it doesn't overlap chambers */}
           <g transform="translate(200,225)">
-            <rect x="-95" y="-15" width="190" height="28" fill="#000" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
-            <path d="M -88,2 Q -45,-3 0,-5 Q 45,-7 82,-9 L 82,-1 Q 45,3 0,5 Q -45,7 -88,10 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="0.8" />
-            <text x="-78" y="3" fontSize="5" fill="#fff8d0" fontWeight="700">IVC</text>
-            <line x1="-30" y1="-6" x2="-30" y2="6" stroke="hsl(var(--primary))" strokeWidth="0.4" strokeDasharray="1 1" />
+            <rect x="-95" y="-15" width="190" height="28" fill="hsl(var(--foreground))" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
+            <path d="M -88,2 Q -45,-3 0,-5 Q 45,-7 82,-9 L 82,-1 Q 45,3 0,5 Q -45,7 -88,10 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="0.75" />
+            <text x="-78" y="3" fontSize="5" fill="hsl(var(--accent))" fontWeight="700">IVC</text>
+            <line x1="-30" y1="-6" x2="-30" y2="6" stroke="hsl(var(--primary))" strokeWidth="0.5" strokeDasharray="1 1" />
             <text x="-26" y="-7" fontSize="4" fill="hsl(var(--primary))">d</text>
-            <circle cx="82" cy="-5" r="3" fill="#d8d8a8" />
-            <text x="86" y="-7" fontSize="4" fill="#fff8d0">→ RA</text>
-            <path d="M 0,-12 L 0,-7" stroke="#90ff90" strokeWidth="0.5" markerEnd="url(#arrow-down-sm)" />
-            <path d="M 0,11 L 0,6" stroke="#90ff90" strokeWidth="0.5" markerEnd="url(#arrow-up-sm)" />
-            <text x="4" y="-10" fontSize="4" fill="#90ff90">inspiration</text>
-            <text x="0" y="-10" fontSize="4" fill="#fff8d0" opacity="0.7" textAnchor="middle">IVC long-axis (90° rotation)</text>
+            <circle cx="82" cy="-5" r="3" fill="hsl(var(--accent))" />
+            <text x="86" y="-7" fontSize="4" fill="hsl(var(--accent))">→ RA</text>
+            <path d="M 0,-12 L 0,-7" stroke="hsl(var(--clinical))" strokeWidth="0.5" markerEnd="url(#arrow-down-sm)" />
+            <path d="M 0,11 L 0,6" stroke="hsl(var(--clinical))" strokeWidth="0.5" markerEnd="url(#arrow-up-sm)" />
+            <text x="4" y="-10" fontSize="4" fill="hsl(var(--clinical))">inspiration</text>
+            <text x="0" y="-10" fontSize="4" fill="hsl(var(--accent))" opacity="0.7" textAnchor="middle">IVC long-axis (90° rotation)</text>
           </g>
           <text x="200" y="248" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">Subcostal 4-chamber + IVC inset</text>
         </svg>

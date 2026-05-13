@@ -119,7 +119,7 @@ const CoagulationCascadeDiagram = () => {
         <line x1="70" y1="117" x2="70" y2="130" stroke={pathwayMeta.intrinsic.color} strokeWidth="1" />
         <path d="M70,148 C70,158 130,165 155,165" stroke={pathwayMeta.intrinsic.color} strokeWidth="1" fill="none" strokeDasharray="3 2" markerEnd="url(#arrow-i)" />
         {/* Tenase complex bracket */}
-        <rect x="15" y="96" width="110" height="50" rx="6" fill="none" stroke={pathwayMeta.intrinsic.color} strokeWidth="0.6" strokeDasharray="4 2" opacity="0.4" />
+        <rect x="15" y="96" width="110" height="50" rx="6" fill="none" stroke={pathwayMeta.intrinsic.color} strokeWidth="0.5" strokeDasharray="4 2" opacity="0.4" />
         <text x="20" y="152" fontSize="5" fill={pathwayMeta.intrinsic.color} opacity="0.6">Tenase complex</text>
       </g>
 
@@ -127,7 +127,7 @@ const CoagulationCascadeDiagram = () => {
       <g opacity={isVisible("extrinsic") ? 0.5 : 0.08}>
         <path d="M330,70 C330,115 260,165 245,165" stroke={pathwayMeta.extrinsic.color} strokeWidth="1" fill="none" strokeDasharray="3 2" markerEnd="url(#arrow-e)" />
         {/* TF-VIIa also activates IX */}
-        <path d="M280,58 L130,100" stroke={pathwayMeta.extrinsic.color} strokeWidth="0.7" fill="none" strokeDasharray="2 2" opacity="0.4" markerEnd="url(#arrow-e)" />
+        <path d="M280,58 L130,100" stroke={pathwayMeta.extrinsic.color} strokeWidth="0.75" fill="none" strokeDasharray="2 2" opacity="0.4" markerEnd="url(#arrow-e)" />
         <text x="190" y="72" fontSize="5" fill={pathwayMeta.extrinsic.color} opacity="0.5">also activates IX</text>
       </g>
 
@@ -138,18 +138,18 @@ const CoagulationCascadeDiagram = () => {
         <line x1="200" y1="246" x2="200" y2="259" stroke={pathwayMeta.common.color} strokeWidth="1" markerEnd="url(#arrow-c)" />
         <line x1="200" y1="281" x2="200" y2="292" stroke={pathwayMeta.common.color} strokeWidth="1" markerEnd="url(#arrow-c)" />
         {/* Prothrombinase complex bracket */}
-        <rect x="145" y="155" width="110" height="55" rx="6" fill="none" stroke={pathwayMeta.common.color} strokeWidth="0.6" strokeDasharray="4 2" opacity="0.4" />
+        <rect x="145" y="155" width="110" height="55" rx="6" fill="none" stroke={pathwayMeta.common.color} strokeWidth="0.5" strokeDasharray="4 2" opacity="0.4" />
         <text x="150" y="215" fontSize="5" fill={pathwayMeta.common.color} opacity="0.6">Prothrombinase</text>
       </g>
 
       {/* Thrombin feedback arrows */}
       <g opacity={isVisible("common") ? 0.3 : 0.05}>
         {/* IIa → V */}
-        <path d="M225,235 C245,225 245,208 225,200" stroke="hsl(45 80% 50%)" strokeWidth="0.6" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-fb)" />
+        <path d="M225,235 C245,225 245,208 225,200" stroke="hsl(45 80% 50%)" strokeWidth="0.5" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-fb)" />
         {/* IIa → VIII */}
-        <path d="M225,235 C270,210 270,145 115,140" stroke="hsl(45 80% 50%)" strokeWidth="0.6" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-fb)" />
+        <path d="M225,235 C270,210 270,145 115,140" stroke="hsl(45 80% 50%)" strokeWidth="0.5" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-fb)" />
         {/* IIa → XI */}
-        <path d="M175,235 C140,220 135,80 110,68" stroke="hsl(45 80% 50%)" strokeWidth="0.6" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-fb)" />
+        <path d="M175,235 C140,220 135,80 110,68" stroke="hsl(45 80% 50%)" strokeWidth="0.5" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-fb)" />
         {/* IIa → platelets */}
         <text x="268" y="163" fontSize="5" fill="hsl(45 80% 50%)" opacity="0.7" fontWeight="600">Thrombin</text>
         <text x="268" y="170" fontSize="4.5" fill="hsl(45 80% 50%)" opacity="0.5">feedback</text>
@@ -158,13 +158,13 @@ const CoagulationCascadeDiagram = () => {
       {/* Regulatory pathways */}
       <g opacity={isVisible("regulatory") ? 0.5 : 0.08}>
         {/* ATIII inhibits IIa and Xa */}
-        <path d="M305,200 L250,200" stroke={pathwayMeta.regulatory.color} strokeWidth="0.8" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-reg)" />
-        <path d="M305,200 L250,175" stroke={pathwayMeta.regulatory.color} strokeWidth="0.8" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-reg)" />
+        <path d="M305,200 L250,200" stroke={pathwayMeta.regulatory.color} strokeWidth="0.75" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-reg)" />
+        <path d="M305,200 L250,175" stroke={pathwayMeta.regulatory.color} strokeWidth="0.75" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-reg)" />
         {/* APC inhibits Va and VIIIa */}
-        <path d="M305,235 L250,207" stroke={pathwayMeta.regulatory.color} strokeWidth="0.6" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-reg)" />
-        <path d="M305,235 L120,142" stroke={pathwayMeta.regulatory.color} strokeWidth="0.6" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-reg)" />
+        <path d="M305,235 L250,207" stroke={pathwayMeta.regulatory.color} strokeWidth="0.5" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-reg)" />
+        <path d="M305,235 L120,142" stroke={pathwayMeta.regulatory.color} strokeWidth="0.5" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-reg)" />
         {/* TFPI inhibits TF-VIIa-Xa */}
-        <path d="M310,120 L290,80" stroke={pathwayMeta.regulatory.color} strokeWidth="0.6" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-reg)" />
+        <path d="M310,120 L290,80" stroke={pathwayMeta.regulatory.color} strokeWidth="0.5" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-reg)" />
       </g>
 
       {/* Fibrinolysis arrows */}
@@ -204,7 +204,7 @@ const CoagulationCascadeDiagram = () => {
             {hasDrug && (
               <>
                 <circle cx={p.x + w / 2 - 4} cy={p.y - 6} r="3" fill="hsl(0,65%,55%)" fillOpacity="0.7" />
-                <text x={p.x + w / 2 - 4} y={p.y - 4} textAnchor="middle" fontSize="4" fill="white" fontWeight="bold">Rx</text>
+                <text x={p.x + w / 2 - 4} y={p.y - 4} textAnchor="middle" fontSize="4" fill="hsl(var(--background))" fontWeight="bold">Rx</text>
               </>
             )}
           </g>

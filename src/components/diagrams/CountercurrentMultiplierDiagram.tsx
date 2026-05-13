@@ -335,7 +335,7 @@ export const CountercurrentMultiplierDiagram = () => {
                 d="M 460 305 C 430 290, 360 285, 320 297"
                 fill="none"
                 stroke="hsl(280 60% 55%)"
-                strokeWidth="1.2"
+                strokeWidth="1"
                 strokeDasharray="3 2"
                 markerEnd="url(#ureaArrow)"
                 opacity="0.85"

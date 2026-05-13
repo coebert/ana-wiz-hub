@@ -76,7 +76,7 @@ const ManleyMVDDiagram = () => {
           </text>
 
           {/* ===== FGF Inlet ===== */}
-          <line x1="30" y1="130" x2="120" y2="130" stroke={colorFGF} strokeWidth="2.5" />
+          <line x1="30" y1="130" x2="120" y2="130" stroke={colorFGF} strokeWidth="2" />
           <text x="25" y="122" textAnchor="end" fontSize="9" fill={colorFGF} fontFamily="Inter, sans-serif" fontWeight="600">Fresh Gas</text>
           <text x="25" y="133" textAnchor="end" fontSize="9" fill={colorFGF} fontFamily="Inter, sans-serif" fontWeight="600">Flow (FGF)</text>
           {/* FGF arrow always flowing in */}
@@ -105,15 +105,14 @@ const ManleyMVDDiagram = () => {
             <line key={`a-${f}`}
               x1="70" y1={bellowsATop + f * bellowsAH}
               x2="130" y2={bellowsATop + f * bellowsAH}
-              stroke={aDelivers ? colorDeliver : colorFill} strokeWidth="0.7" opacity="0.5"
+              stroke={aDelivers ? colorDeliver : colorFill} strokeWidth="0.75" opacity="0.5"
               style={{ transition: "all 0.8s ease-in-out" }}
             />
           ))}
           {/* Weight on top */}
           <rect x="75" y={bellowsATop - 10} width="50" height="10" rx="2"
             fill="hsl(var(--muted-foreground))" opacity="0.4"
-            style={{ transition: "all 0.8s ease-in-out" }}
-          />
+            style={{ transition: "all 0.8s ease-in-out" }} stroke="hsl(var(--border))" strokeWidth="0.75" />
           <text x="100" y={bellowsATop - 2} textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontFamily="Inter, sans-serif"
             style={{ transition: "all 0.8s ease-in-out" }}>
             Weight
@@ -138,14 +137,13 @@ const ManleyMVDDiagram = () => {
             <line key={`b-${f}`}
               x1="270" y1={bellowsBTop + f * bellowsBH}
               x2="330" y2={bellowsBTop + f * bellowsBH}
-              stroke={!aDelivers ? colorDeliver : colorFill} strokeWidth="0.7" opacity="0.5"
+              stroke={!aDelivers ? colorDeliver : colorFill} strokeWidth="0.75" opacity="0.5"
               style={{ transition: "all 0.8s ease-in-out" }}
             />
           ))}
           <rect x="275" y={bellowsBTop - 10} width="50" height="10" rx="2"
             fill="hsl(var(--muted-foreground))" opacity="0.4"
-            style={{ transition: "all 0.8s ease-in-out" }}
-          />
+            style={{ transition: "all 0.8s ease-in-out" }} stroke="hsl(var(--border))" strokeWidth="0.75" />
           <text x="300" y={bellowsBTop - 2} textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontFamily="Inter, sans-serif"
             style={{ transition: "all 0.8s ease-in-out" }}>
             Weight
@@ -174,8 +172,8 @@ const ManleyMVDDiagram = () => {
           {/* Patient icon */}
           <circle cx="430" cy="125" r="18" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.6" />
           <circle cx="430" cy="120" r="5" fill="hsl(var(--foreground))" opacity="0.4" />
-          <line x1="430" y1="125" x2="430" y2="137" stroke="hsl(var(--foreground))" strokeWidth="1.2" opacity="0.4" />
-          <line x1="423" y1="130" x2="437" y2="130" stroke="hsl(var(--foreground))" strokeWidth="1.2" opacity="0.4" />
+          <line x1="430" y1="125" x2="430" y2="137" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.4" />
+          <line x1="423" y1="130" x2="437" y2="130" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.4" />
           <text x="430" y="155" textAnchor="middle" fontSize="10" fill="hsl(var(--foreground))" fontFamily="Inter, sans-serif" fontWeight="600">Patient</text>
 
           {/* ===== Flow arrows ===== */}
@@ -241,7 +239,7 @@ const ManleyMVDDiagram = () => {
           </text>
 
           {/* ===== Explanation box ===== */}
-          <rect x="20" y="265" width="480" height="155" rx="8" fill="hsl(var(--secondary))" opacity="0.3" />
+          <rect x="20" y="265" width="480" height="155" rx="8" fill="hsl(var(--secondary))" opacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.75" />
           <rect x="20" y="265" width="480" height="155" rx="8" fill="none" stroke="hsl(var(--border))" strokeWidth="1" />
 
           <text x="260" y="287" textAnchor="middle" fontSize="11" fontWeight="bold" fill={colorDeliver} fontFamily="Inter, sans-serif">
@@ -264,7 +262,7 @@ const ManleyMVDDiagram = () => {
           <text x="260" y="383" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontFamily="Inter, sans-serif">
             Entirely pneumatic — no electricity required. Changing FGF changes tidal volume.
           </text>
-          <text x="260" y="403" textAnchor="middle" fontSize="9" fill="#EF4444" fontFamily="Inter, sans-serif">
+          <text x="260" y="403" textAnchor="middle" fontSize="9" fill="hsl(var(--destructive))" fontFamily="Inter, sans-serif">
             ⚠ Cannot deliver PEEP. Limited alarms. No waveform monitoring.
           </text>
 

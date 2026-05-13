@@ -182,7 +182,7 @@ function CO2ResponseCurve({ paCO2, setPaCO2, paO2 }: { paCO2: number; setPaCO2: 
         <path d={Array.from({ length: 80 }, (_, i) => {
           const co2 = pMin + (i / 79) * (pMax - pMin);
           return `${i === 0 ? "M" : "L"} ${toX(co2).toFixed(1)},${toY(Math.min(calcVE(co2, normalSlope), veMax)).toFixed(1)}`;
-        }).join(" ")} fill="none" stroke="hsl(210, 70%, 55%)" strokeWidth="2.5" />
+        }).join(" ")} fill="none" stroke="hsl(210, 70%, 55%)" strokeWidth="2" />
 
         {/* Hypoxic curve */}
         <path d={Array.from({ length: 80 }, (_, i) => {
@@ -205,10 +205,10 @@ function CO2ResponseCurve({ paCO2, setPaCO2, paO2 }: { paCO2: number; setPaCO2: 
 
         {/* Current point */}
         <circle cx={toX(paCO2)} cy={toY(Math.min(currentVE, veMax))} r="5"
-          fill="hsl(210, 70%, 55%)" stroke="white" strokeWidth="1.5" />
+          fill="hsl(210, 70%, 55%)" stroke="hsl(var(--background))" strokeWidth="1.5" />
 
         {/* Legend */}
-        <line x1={PL + 5} y1={PT + 8} x2={PL + 25} y2={PT + 8} stroke="hsl(210, 70%, 55%)" strokeWidth="2.5" />
+        <line x1={PL + 5} y1={PT + 8} x2={PL + 25} y2={PT + 8} stroke="hsl(210, 70%, 55%)" strokeWidth="2" />
         <text x={PL + 28} y={PT + 11} className="text-[7px] fill-muted-foreground">Normal</text>
         <line x1={PL + 5} y1={PT + 18} x2={PL + 25} y2={PT + 18} stroke="hsl(0, 70%, 55%)" strokeWidth="2" strokeDasharray="4,2" />
         <text x={PL + 28} y={PT + 21} className="text-[7px] fill-muted-foreground">+ Hypoxia</text>
@@ -275,7 +275,7 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
         <path d={Array.from({ length: 100 }, (_, i) => {
           const o2 = pMin + (i / 99) * (pMaxO2 - pMin);
           return `${i === 0 ? "M" : "L"} ${toX(o2).toFixed(1)},${toY(Math.min(calcVE(o2, 5.3), veMax)).toFixed(1)}`;
-        }).join(" ")} fill="none" stroke="hsl(210, 70%, 55%)" strokeWidth="2.5" />
+        }).join(" ")} fill="none" stroke="hsl(210, 70%, 55%)" strokeWidth="2" />
 
         {/* High CO2 */}
         <path d={Array.from({ length: 100 }, (_, i) => {
@@ -290,10 +290,10 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
 
         {/* Current point */}
         <circle cx={toX(paO2)} cy={toY(Math.min(currentVE, veMax))} r="5"
-          fill="hsl(210, 70%, 55%)" stroke="white" strokeWidth="1.5" />
+          fill="hsl(210, 70%, 55%)" stroke="hsl(var(--background))" strokeWidth="1.5" />
 
         {/* Legend */}
-        <line x1={W - 120} y1={PT + 8} x2={W - 100} y2={PT + 8} stroke="hsl(210, 70%, 55%)" strokeWidth="2.5" />
+        <line x1={W - 120} y1={PT + 8} x2={W - 100} y2={PT + 8} stroke="hsl(210, 70%, 55%)" strokeWidth="2" />
         <text x={W - 97} y={PT + 11} className="text-[7px] fill-muted-foreground">PaCO₂ 5.3</text>
         <line x1={W - 120} y1={PT + 18} x2={W - 100} y2={PT + 18} stroke="hsl(0, 70%, 55%)" strokeWidth="2" strokeDasharray="4,2" />
         <text x={W - 97} y={PT + 21} className="text-[7px] fill-muted-foreground">PaCO₂ 6.7</text>
@@ -351,13 +351,13 @@ function PHResponseCurve({ pH, setPH }: { pH: number; setPH: (v: number) => void
           const ph = 7.0 + i * 0.01;
           const ve = Math.min(Math.max(calcVE(ph), 0), veMax);
           return `${i === 0 ? "M" : "L"} ${toX(ph).toFixed(1)},${toY(ve).toFixed(1)}`;
-        }).join(" ")} fill="none" stroke="hsl(35, 80%, 50%)" strokeWidth="2.5" />
+        }).join(" ")} fill="none" stroke="hsl(35, 80%, 50%)" strokeWidth="2" />
 
         {/* Normal pH zone */}
         <rect x={toX(7.35)} y={PT} width={toX(7.45) - toX(7.35)} height={plotH}
           fill="hsl(142, 60%, 45%)" opacity={0.06} />
 
-        <circle cx={toX(pH)} cy={toY(currentVE)} r="5" fill="hsl(35, 80%, 50%)" stroke="white" strokeWidth="1.5" />
+        <circle cx={toX(pH)} cy={toY(currentVE)} r="5" fill="hsl(35, 80%, 50%)" stroke="hsl(var(--background))" strokeWidth="1.5" />
       </svg>
 
       <div>

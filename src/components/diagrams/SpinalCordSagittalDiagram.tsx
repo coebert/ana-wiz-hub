@@ -149,7 +149,7 @@ const SpinalCordSagittalDiagram = () => {
               />
 
               {/* Cervical enlargement label */}
-              <line x1={cordX - 12} y1="160" x2="155" y2="160" stroke="hsl(var(--anatomy))" strokeWidth="0.8" />
+              <line x1={cordX - 12} y1="160" x2="155" y2="160" stroke="hsl(var(--anatomy))" strokeWidth="0.75" />
               <text x="150" y="163" textAnchor="end" fontSize="9" fill="hsl(var(--anatomy))" fontWeight="600">
                 Cervical enlargement
               </text>
@@ -158,7 +158,7 @@ const SpinalCordSagittalDiagram = () => {
               </text>
 
               {/* Lumbar enlargement label */}
-              <line x1={cordX - 12} y1="415" x2="155" y2="415" stroke="hsl(var(--anatomy))" strokeWidth="0.8" />
+              <line x1={cordX - 12} y1="415" x2="155" y2="415" stroke="hsl(var(--anatomy))" strokeWidth="0.75" />
               <text x="150" y="418" textAnchor="end" fontSize="9" fill="hsl(var(--anatomy))" fontWeight="600">
                 Lumbosacral enlargement
               </text>
@@ -178,7 +178,7 @@ const SpinalCordSagittalDiagram = () => {
                 onMouseEnter={() => setHighlight("conus")}
                 onMouseLeave={() => setHighlight(null)}
               />
-              <line x1={cordX + 12} y1={conusEnd} x2="340" y2={conusEnd} stroke="hsl(var(--foreground))" strokeWidth="0.8" />
+              <line x1={cordX + 12} y1={conusEnd} x2="340" y2={conusEnd} stroke="hsl(var(--foreground))" strokeWidth="0.75" />
               <text x="345" y={conusEnd - 2} fontSize="10" fill="hsl(var(--foreground))" fontWeight="700">
                 Conus medullaris
               </text>
@@ -210,7 +210,7 @@ const SpinalCordSagittalDiagram = () => {
                   );
                 })}
               </g>
-              <line x1="218" y1="555" x2="345" y2="555" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
+              <line x1="218" y1="555" x2="345" y2="555" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
               <text x="345" y="553" fontSize="10" fill="hsl(var(--foreground))" fontWeight="700">
                 Cauda equina
               </text>
@@ -229,7 +229,7 @@ const SpinalCordSagittalDiagram = () => {
 
               {/* Dural sac termination at S2 */}
               <line x1="180" y1="580" x2="220" y2="580" stroke="hsl(var(--anatomy))" strokeWidth="1.5" />
-              <line x1="178" y1="580" x2="155" y2="610" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
+              <line x1="178" y1="580" x2="155" y2="610" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
               <text x="150" y="615" textAnchor="end" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">
                 Dural sac ends S2
               </text>
@@ -297,7 +297,7 @@ const SpinalCordSagittalDiagram = () => {
               </text>
 
               {/* Foramen magnum marker */}
-              <line x1="180" y1="40" x2="220" y2="40" stroke="hsl(var(--foreground))" strokeWidth="1.2" />
+              <line x1="180" y1="40" x2="220" y2="40" stroke="hsl(var(--foreground))" strokeWidth="1" />
               <text x="178" y="38" textAnchor="end" fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="600">
                 Foramen magnum
               </text>

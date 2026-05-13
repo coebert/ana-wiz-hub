@@ -274,7 +274,7 @@ const FoetalCirculationDiagram = () => {
 
           {/* ══════ SVC → RA ══════ */}
           <g opacity={dim()}>
-            <path d="M265,140 L265,225" fill="none" stroke={C.deoxy} strokeWidth="4.5" strokeLinecap="round"
+            <path d="M265,140 L265,225" fill="none" stroke={C.deoxy} strokeWidth="3" strokeLinecap="round"
               markerEnd="url(#fc-arr-deoxy)" />
             <text x="240" y="175" fontSize="9" fontWeight="600" fill={C.deoxy} transform="rotate(-90,240,175)">SVC</text>
             <circle r="4" fill={C.deoxy} opacity="0.9">
@@ -287,7 +287,7 @@ const FoetalCirculationDiagram = () => {
 
           {/* ══════ IVC → RA ══════ */}
           <g opacity={dim()}>
-            <path d="M265,480 L265,400" fill="none" stroke={C.mixed} strokeWidth="5" strokeLinecap="round"
+            <path d="M265,480 L265,400" fill="none" stroke={C.mixed} strokeWidth="3" strokeLinecap="round"
               markerEnd="url(#fc-arr-mixed)" />
             <text x="240" y="450" fontSize="9" fontWeight="600" fill={C.mixed} transform="rotate(-90,240,450)">IVC</text>
             <text x="282" y="465" fontSize="7" fill={C.mixed} opacity="0.8">SpO₂ ~67%</text>
@@ -324,7 +324,7 @@ const FoetalCirculationDiagram = () => {
           {/* ══════ Ascending aorta ══════ */}
           <g opacity={dim()}>
             <path d="M380,320 Q410,290 405,250 Q400,215 385,190 Q370,165 350,140 L340,120"
-              fill="none" stroke={C.oxy} strokeWidth="5" strokeLinecap="round"
+              fill="none" stroke={C.oxy} strokeWidth="3" strokeLinecap="round"
               markerEnd="url(#fc-arr-oxy)" />
             <text x="420" y="245" fontSize="8.5" fontWeight="600" fill={C.oxy}>Asc. Aorta</text>
             <circle r="4" fill={C.oxy} opacity="0.9">
@@ -332,11 +332,11 @@ const FoetalCirculationDiagram = () => {
             </circle>
           </g>
           <g opacity={dim()}>
-            <path d="M340,120 Q325,105 310,102 Q290,100 275,108" fill="none" stroke={C.oxy} strokeWidth="4.5" strokeLinecap="round" />
+            <path d="M340,120 Q325,105 310,102 Q290,100 275,108" fill="none" stroke={C.oxy} strokeWidth="3" strokeLinecap="round" />
             <text x="310" y="96" textAnchor="middle" fontSize="7.5" fontWeight="500" fill={C.oxy} opacity="0.75">Aortic Arch</text>
           </g>
           <g opacity={dim()}>
-            <path d="M340,120 L330,95 Q320,78 310,72" fill="none" stroke={C.oxy} strokeWidth="2.5" strokeLinecap="round" opacity="0.7" />
+            <path d="M340,120 L330,95 Q320,78 310,72" fill="none" stroke={C.oxy} strokeWidth="2" strokeLinecap="round" opacity="0.7" />
             <circle r="3" fill={C.oxy} opacity="0.8">
               <animateMotion dur="2s" repeatCount="indefinite" path="M340,120 L330,95 Q320,78 310,72" />
             </circle>
@@ -345,7 +345,7 @@ const FoetalCirculationDiagram = () => {
           {/* ══════ Descending aorta ══════ */}
           <g opacity={dim()}>
             <path d="M275,108 L180,180 L175,350 L180,480 L190,570"
-              fill="none" stroke={C.mixed} strokeWidth="4.5" strokeLinecap="round" />
+              fill="none" stroke={C.mixed} strokeWidth="3" strokeLinecap="round" />
             <text x="155" y="420" fontSize="8.5" fontWeight="600" fill={C.mixed} transform="rotate(-90,155,420)">Descending Aorta</text>
             <circle r="4" fill={C.mixed} opacity="0.85">
               <animateMotion dur="5s" repeatCount="indefinite" path="M275,108 L180,180 L175,350 L180,480 L190,570" />
@@ -358,7 +358,7 @@ const FoetalCirculationDiagram = () => {
           {/* ══════ PA ══════ */}
           <g opacity={dim()}>
             <path d="M245,340 Q225,320 210,290 Q200,265 195,240"
-              fill="none" stroke={C.deoxy} strokeWidth="4.5" strokeLinecap="round" />
+              fill="none" stroke={C.deoxy} strokeWidth="3" strokeLinecap="round" />
             <text x="195" y="280" fontSize="9" fontWeight="600" fill={C.deoxy} transform="rotate(-70,195,280)">PA</text>
             <path d="M195,240 Q185,235 172,242 Q160,255 155,275" fill="none" stroke={C.deoxy} strokeWidth="2" opacity="0.5" />
             <path d="M195,240 Q210,225 260,218 Q340,210 410,225 Q440,235 460,250"
@@ -528,8 +528,8 @@ const FoetalCirculationDiagram = () => {
 
           {/* Desc. aorta → umbilical arteries */}
           <g opacity={dim()}>
-            <path d="M215,625 Q260,640 340,647" fill="none" stroke={C.mixed} strokeWidth="2.5" opacity={showBirth ? 0.2 : 0.5} />
-            <path d="M215,625 Q270,645 350,647" fill="none" stroke={C.mixed} strokeWidth="2.5" opacity={showBirth ? 0.2 : 0.5} />
+            <path d="M215,625 Q260,640 340,647" fill="none" stroke={C.mixed} strokeWidth="2" opacity={showBirth ? 0.2 : 0.5} />
+            <path d="M215,625 Q270,645 350,647" fill="none" stroke={C.mixed} strokeWidth="2" opacity={showBirth ? 0.2 : 0.5} />
           </g>
 
           {/* ══════ LEGEND — SpO₂ gradient ══════ */}
@@ -555,7 +555,7 @@ const FoetalCirculationDiagram = () => {
           {/* Active step badge overlay */}
           {activeStep && (
             <g>
-              <rect x="20" y="20" width="170" height="46" rx="8" fill="hsl(var(--primary))" opacity="0.95" />
+              <rect x="20" y="20" width="170" height="46" rx="8" fill="hsl(var(--primary))" opacity="0.95" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x="30" y="40" fontSize="10" fontWeight="700" fill="hsl(var(--primary-foreground))">
                 Step {(stepIdx ?? 0) + 1} of {STEPS.length}
               </text>

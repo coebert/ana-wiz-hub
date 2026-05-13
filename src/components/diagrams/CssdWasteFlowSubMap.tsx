@@ -241,7 +241,7 @@ const CssdWasteFlowSubMap = () => {
                     d={d}
                     fill="none"
                     stroke={p.color}
-                    strokeWidth="1.8"
+                    strokeWidth="2"
                     strokeDasharray="4 3"
                     opacity="0.75"
                     markerEnd={`url(#sub-arrow-${p.id})`}
@@ -254,8 +254,8 @@ const CssdWasteFlowSubMap = () => {
 
           {/* No-entry symbol on the boundary back into theatre from dirty side */}
           <g transform="translate(115 92)">
-            <circle r="7" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive))" strokeWidth="1.2" />
-            <line x1="-4.5" y1="-4.5" x2="4.5" y2="4.5" stroke="hsl(var(--destructive))" strokeWidth="1.4" />
+            <circle r="7" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive))" strokeWidth="1" />
+            <line x1="-4.5" y1="-4.5" x2="4.5" y2="4.5" stroke="hsl(var(--destructive))" strokeWidth="1.5" />
             <text x="11" y="3" fontSize="6.5" className="fill-destructive" fontWeight="600">
               No back-flow from dirty corridor
             </text>

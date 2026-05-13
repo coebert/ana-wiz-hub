@@ -248,7 +248,7 @@ const PostCardiacArrestProgDiagram = () => {
                     {m.icon} {m.shortName}
                   </text>
                   {/* Invalid zone (hatched/dimmed) */}
-                  <rect x={80} y={y + 2} width={barX1 - 80} height="16" rx="2" fill="hsl(var(--muted-foreground))" opacity="0.05" />
+                  <rect x={80} y={y + 2} width={barX1 - 80} height="16" rx="2" fill="hsl(var(--muted-foreground))" opacity="0.05" stroke="hsl(var(--border))" strokeWidth="0.75" />
                   {/* Valid window bar */}
                   <rect
                     x={barX1} y={y + 2} width={barX2 - barX1} height="16" rx="3"
@@ -259,7 +259,7 @@ const PostCardiacArrestProgDiagram = () => {
                   {peakX && (
                     <g>
                       <circle cx={peakX} cy={y + 10} r="4" fill={m.color} opacity={isHighlighted ? 0.9 : 0.6} />
-                      <circle cx={peakX} cy={y + 10} r="2" fill="white" opacity="0.8" />
+                      <circle cx={peakX} cy={y + 10} r="2" fill="hsl(var(--background))" opacity="0.8" />
                     </g>
                   )}
                   {/* Timing label on bar — dark text for contrast against translucent fill */}

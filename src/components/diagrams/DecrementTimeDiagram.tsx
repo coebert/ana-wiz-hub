@@ -120,7 +120,7 @@ const DecrementTimeDiagram = () => {
             {yTicks.map(v => (
               <g key={v}>
                 <line x1={plotX} y1={yScale(v)} x2={plotX + plotW} y2={yScale(v)}
-                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.15" />
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.15" />
                 <text x={plotX - 4} y={yScale(v) + 3} textAnchor="end" fontSize="6"
                   fill="hsl(var(--muted-foreground))" opacity="0.5">{v}</text>
               </g>
@@ -128,7 +128,7 @@ const DecrementTimeDiagram = () => {
             {xTicks.map(d => (
               <g key={d}>
                 <line x1={xScale(d)} y1={plotY} x2={xScale(d)} y2={plotY + plotH}
-                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.2" opacity="0.1" />
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.1" />
                 <text x={xScale(d)} y={plotY + plotH + 13} textAnchor="middle" fontSize="6"
                   fill="hsl(var(--muted-foreground))" opacity="0.5">{d / 60}h</text>
               </g>
@@ -198,7 +198,7 @@ const DecrementTimeDiagram = () => {
               return (
                 <g opacity="0.4">
                   <line x1={xScale(dur) + 8} y1={y50} x2={xScale(dur) + 8} y2={y80}
-                    stroke={drugs[0].color} strokeWidth="0.8" />
+                    stroke={drugs[0].color} strokeWidth="0.75" />
                   <line x1={xScale(dur) + 5} y1={y50} x2={xScale(dur) + 11} y2={y50}
                     stroke={drugs[0].color} strokeWidth="0.5" />
                   <line x1={xScale(dur) + 5} y1={y80} x2={xScale(dur) + 11} y2={y80}

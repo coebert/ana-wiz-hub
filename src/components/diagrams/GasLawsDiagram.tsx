@@ -164,7 +164,7 @@ export const GasLawsDiagram = () => {
               x2={325 + Math.cos(Math.PI * (1 - oscillate * 0.9) + Math.PI) * 20}
               y2={130 + Math.sin(Math.PI * (1 - oscillate * 0.9) + Math.PI) * 20}
               stroke="hsl(0 70% 50%)"
-              strokeWidth="2.5"
+              strokeWidth="2"
               strokeLinecap="round"
             />
             <circle cx={325} cy={130} r={3} fill="hsl(210 20% 30%)" />

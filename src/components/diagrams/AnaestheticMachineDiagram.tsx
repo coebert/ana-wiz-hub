@@ -64,27 +64,27 @@ const OverviewDiagram = () => {
           {/* Safety features annotations */}
           <g opacity="0.5">
             {/* O₂ failure alarm */}
-            <line x1="70" y1="85" x2="70" y2="100" stroke="#EF4444" strokeWidth="0.8" />
-            <text x="70" y="110" textAnchor="middle" fontSize="6" fill="#EF4444">O₂ failure alarm</text>
+            <line x1="70" y1="85" x2="70" y2="100" stroke="hsl(var(--destructive))" strokeWidth="0.75" />
+            <text x="70" y="110" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">O₂ failure alarm</text>
             <text x="70" y="120" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">(Ritchie whistle)</text>
 
             {/* Anti-hypoxia device */}
-            <line x1="330" y1="85" x2="330" y2="100" stroke="#10B981" strokeWidth="0.8" />
-            <text x="330" y="110" textAnchor="middle" fontSize="6" fill="#10B981">Anti-hypoxia</text>
+            <line x1="330" y1="85" x2="330" y2="100" stroke="hsl(var(--clinical))" strokeWidth="0.75" />
+            <text x="330" y="110" textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))">Anti-hypoxia</text>
             <text x="330" y="120" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">Min 25% O₂</text>
 
             {/* O₂ flush */}
-            <path d="M 520 40 Q 530 20 490 15 L 490 55" fill="none" stroke="#EF4444" strokeWidth="1" strokeDasharray="3 2" />
-            <text x="505" y="12" fontSize="6" fill="#EF4444">O₂ flush</text>
+            <path d="M 520 40 Q 530 20 490 15 L 490 55" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1" strokeDasharray="3 2" />
+            <text x="505" y="12" fontSize="6" fill="hsl(var(--destructive))">O₂ flush</text>
             <text x="505" y="22" fontSize="5" fill="hsl(var(--muted-foreground))">35–75 L/min</text>
 
             {/* Vaporizer interlock */}
-            <line x1="415" y1="85" x2="415" y2="100" stroke="#F59E0B" strokeWidth="0.8" />
-            <text x="415" y="110" textAnchor="middle" fontSize="6" fill="#F59E0B">Interlock</text>
+            <line x1="415" y1="85" x2="415" y2="100" stroke="hsl(var(--accent))" strokeWidth="0.75" />
+            <text x="415" y="110" textAnchor="middle" fontSize="6" fill="hsl(var(--accent))">Interlock</text>
 
             {/* Pressure relief */}
-            <line x1="490" y1="85" x2="490" y2="100" stroke="#EF4444" strokeWidth="0.8" />
-            <text x="490" y="110" textAnchor="middle" fontSize="6" fill="#EF4444">Relief valve</text>
+            <line x1="490" y1="85" x2="490" y2="100" stroke="hsl(var(--destructive))" strokeWidth="0.75" />
+            <text x="490" y="110" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">Relief valve</text>
             <text x="490" y="120" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">~35 kPa</text>
           </g>
 
@@ -92,14 +92,14 @@ const OverviewDiagram = () => {
           <text x="525" y="92" fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">→ Circuit</text>
 
           {/* Pressure zones */}
-          <rect x="15" y="140" width="175" height="22" rx="4" fill="#EF4444" fillOpacity="0.06" stroke="#EF4444" strokeWidth="0.8" opacity="0.5" />
-          <text x="102" y="155" textAnchor="middle" fontSize="7" fill="#EF4444">HIGH PRESSURE (137 bar → 400 kPa)</text>
+          <rect x="15" y="140" width="175" height="22" rx="4" fill="hsl(var(--destructive))" fillOpacity="0.06" stroke="hsl(var(--destructive))" strokeWidth="0.75" opacity="0.5" />
+          <text x="102" y="155" textAnchor="middle" fontSize="7" fill="hsl(var(--destructive))">HIGH PRESSURE (137 bar → 400 kPa)</text>
 
-          <rect x="200" y="140" width="170" height="22" rx="4" fill="#F59E0B" fillOpacity="0.06" stroke="#F59E0B" strokeWidth="0.8" opacity="0.5" />
-          <text x="285" y="155" textAnchor="middle" fontSize="7" fill="#F59E0B">INTERMEDIATE (~400 kPa)</text>
+          <rect x="200" y="140" width="170" height="22" rx="4" fill="hsl(var(--accent))" fillOpacity="0.06" stroke="hsl(var(--accent))" strokeWidth="0.75" opacity="0.5" />
+          <text x="285" y="155" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))">INTERMEDIATE (~400 kPa)</text>
 
-          <rect x="380" y="140" width="140" height="22" rx="4" fill="#10B981" fillOpacity="0.06" stroke="#10B981" strokeWidth="0.8" opacity="0.5" />
-          <text x="450" y="155" textAnchor="middle" fontSize="7" fill="#10B981">LOW PRESSURE (~100 kPa)</text>
+          <rect x="380" y="140" width="140" height="22" rx="4" fill="hsl(var(--clinical))" fillOpacity="0.06" stroke="hsl(var(--clinical))" strokeWidth="0.75" opacity="0.5" />
+          <text x="450" y="155" textAnchor="middle" fontSize="7" fill="hsl(var(--clinical))">LOW PRESSURE (~100 kPa)</text>
         </svg>
       </div>
 
@@ -128,7 +128,7 @@ const PipelineSupplyDiagram = () => (
         <text x="80" y="80" textAnchor="middle" className="fill-muted-foreground text-[7px]">Safety valve + superheater coil</text>
 
         {/* Pipeline */}
-        <line x1="140" y1="55" x2="250" y2="55" stroke="hsl(var(--primary))" strokeWidth="4" />
+        <line x1="140" y1="55" x2="250" y2="55" stroke="hsl(var(--primary))" strokeWidth="3" />
         <text x="195" y="42" textAnchor="middle" className="fill-muted-foreground text-[9px]">400 kPa (4 bar)</text>
         {/* Copper pipe cross-section hint */}
         <circle cx="195" cy="55" r="4" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" opacity="0.4" />
@@ -198,17 +198,17 @@ const CylinderStorageDiagram = () => (
             <path d={`M${c.x},100 Q${c.x},65 ${c.x + 20},55 L${c.x + 60},55 Q${c.x + 80},65 ${c.x + 80},100`}
               fill={c.shoulder} stroke="hsl(var(--border))" strokeWidth="1.5" opacity="0.85" />
             {/* Valve spindle */}
-            <rect x={c.x + 32} y={38} width="16" height="22" rx="3" fill="#ccc" stroke="hsl(var(--border))" strokeWidth="1" />
+            <rect x={c.x + 32} y={38} width="16" height="22" rx="3" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="1" />
             {/* Handwheel */}
-            <ellipse cx={c.x + 40} cy={38} rx={12} ry={5} fill="#ddd" stroke="hsl(var(--border))" strokeWidth="1" />
+            <ellipse cx={c.x + 40} cy={38} rx={12} ry={5} fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="1" />
             {/* Pin index holes */}
-            <circle cx={c.x + 33} cy={48} r={2} fill="#999" />
-            <circle cx={c.x + 47} cy={48} r={2} fill="#999" />
+            <circle cx={c.x + 33} cy={48} r={2} fill="hsl(var(--border))" />
+            <circle cx={c.x + 47} cy={48} r={2} fill="hsl(var(--border))" />
 
-            <text x={c.x + 40} y={95} textAnchor="middle" fill="#fff" className="text-[13px] font-bold">{c.gas}</text>
-            <text x={c.x + 40} y={140} textAnchor="middle" fill="#fff" className="text-[9px]">{c.pressure}</text>
-            <text x={c.x + 40} y={155} textAnchor="middle" fill="#fff" className="text-[9px]">{c.litres} (size E)</text>
-            <text x={c.x + 40} y={170} textAnchor="middle" fill="#fff" className="text-[8px]" opacity="0.7">{c.state}</text>
+            <text x={c.x + 40} y={95} textAnchor="middle" fill="hsl(var(--background))" className="text-[13px] font-bold">{c.gas}</text>
+            <text x={c.x + 40} y={140} textAnchor="middle" fill="hsl(var(--background))" className="text-[9px]">{c.pressure}</text>
+            <text x={c.x + 40} y={155} textAnchor="middle" fill="hsl(var(--background))" className="text-[9px]">{c.litres} (size E)</text>
+            <text x={c.x + 40} y={170} textAnchor="middle" fill="hsl(var(--background))" className="text-[8px]" opacity="0.7">{c.state}</text>
 
             <text x={c.x + 40} y={215} textAnchor="middle" className="fill-muted-foreground text-[9px] font-medium">Pin: {c.pin}</text>
             <text x={c.x + 40} y={228} textAnchor="middle" className="fill-muted-foreground text-[8px]">Gauge: {c.gauge}</text>
@@ -250,7 +250,7 @@ const PressureRegulatorsDiagram = () => (
         <text x="190" y="88" textAnchor="middle" className="fill-muted-foreground text-[8px]">(from cylinder)</text>
 
         {/* Diaphragm */}
-        <path d="M 250 50 Q 265 80 250 110" stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" />
+        <path d="M 250 50 Q 265 80 250 110" stroke="hsl(var(--primary))" strokeWidth="2" fill="none" />
         <text x="260" y="85" className="fill-primary text-[7px]" transform="rotate(90, 260, 85)">Diaphragm</text>
 
         {/* Valve seat */}
@@ -328,7 +328,7 @@ const FlowmetersDiagram = () => (
         {[80, 120, 160, 200, 240, 280, 320].map((y, i) => (
           <g key={i}>
             <line x1={72 + (360 - y) * 0.025} y1={y} x2={72 + (360 - y) * 0.025 + 8} y2={y}
-              stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.3" />
+              stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.3" />
           </g>
         ))}
 
@@ -336,7 +336,7 @@ const FlowmetersDiagram = () => (
         <ellipse cx="120" cy="200" rx="22" ry="7" fill="hsl(var(--primary)/0.5)" stroke="hsl(var(--primary))" strokeWidth="2" />
         {/* Top flute */}
         <line x1="115" y1="193" x2="125" y2="193" stroke="hsl(var(--primary))" strokeWidth="1.5" />
-        <text x="120" y="204" textAnchor="middle" fill="#fff" className="text-[8px] font-bold">Bobbin</text>
+        <text x="120" y="204" textAnchor="middle" fill="hsl(var(--background))" className="text-[8px] font-bold">Bobbin</text>
 
         {/* Annular gap annotations */}
         <line x1="145" y1="200" x2="160" y2="200" stroke="hsl(var(--accent))" strokeWidth="1.5" opacity="0.6" />

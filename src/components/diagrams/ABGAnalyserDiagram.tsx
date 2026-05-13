@@ -36,7 +36,7 @@ const PHElectrodeDiagram = () => {
 
         {/* Ag/AgCl wire */}
         <rect x="148" y="90" width="24" height="6" rx="2" fill="hsl(var(--muted-foreground)/0.7)" stroke="hsl(var(--foreground))" strokeWidth="1" />
-        <line x1="160" y1="96" x2="160" y2="160" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="160" y1="96" x2="160" y2="160" stroke="hsl(var(--foreground))" strokeWidth="2" strokeLinecap="round" />
         <text x="160" y="107" textAnchor="middle" className="fill-foreground text-[8px] font-bold">Ag wire</text>
         <text x="160" y="117" textAnchor="middle" className="fill-muted-foreground text-[7px]">coated AgCl</text>
 
@@ -82,7 +82,7 @@ const PHElectrodeDiagram = () => {
 
         {/* Ag/AgCl wire */}
         <rect x="388" y="90" width="24" height="6" rx="2" fill="hsl(var(--muted-foreground)/0.7)" stroke="hsl(var(--foreground))" strokeWidth="1" />
-        <line x1="400" y1="96" x2="400" y2="160" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="400" y1="96" x2="400" y2="160" stroke="hsl(var(--foreground))" strokeWidth="2" strokeLinecap="round" />
         <text x="400" y="107" textAnchor="middle" className="fill-foreground text-[8px] font-bold">Ag/AgCl</text>
 
         {/* Internal buffer */}
@@ -92,16 +92,16 @@ const PHElectrodeDiagram = () => {
         <text x="400" y="190" textAnchor="middle" className="fill-muted-foreground text-[7px]">Known [H⁺]</text>
 
         {/* pH-sensitive glass membrane */}
-        <ellipse cx="400" cy="260" rx="45" ry="22" fill="hsl(var(--destructive)/0.15)" stroke="hsl(var(--destructive))" strokeWidth="2.5" />
+        <ellipse cx="400" cy="260" rx="45" ry="22" fill="hsl(var(--destructive)/0.15)" stroke="hsl(var(--destructive))" strokeWidth="2" />
         <text x="400" y="256" textAnchor="middle" className="fill-destructive text-[8px] font-bold">pH-sensitive</text>
         <text x="400" y="268" textAnchor="middle" className="fill-destructive text-[8px] font-bold">glass bulb</text>
 
         {/* Glass membrane detail — hydrated gel layers */}
-        <rect x="370" y="285" width="60" height="8" rx="1" fill="hsl(var(--destructive)/0.3)" stroke="hsl(var(--destructive))" strokeWidth="0.8" />
+        <rect x="370" y="285" width="60" height="8" rx="1" fill="hsl(var(--destructive)/0.3)" stroke="hsl(var(--destructive))" strokeWidth="0.75" />
         <text x="400" y="291" textAnchor="middle" className="fill-destructive text-[5px]">hydrated gel layer</text>
-        <rect x="375" y="295" width="50" height="4" rx="1" fill="hsl(var(--foreground)/0.3)" />
+        <rect x="375" y="295" width="50" height="4" rx="1" fill="hsl(var(--foreground)/0.3)" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="400" y="298" textAnchor="middle" className="fill-foreground text-[4px]">dry glass</text>
-        <rect x="370" y="301" width="60" height="8" rx="1" fill="hsl(var(--destructive)/0.3)" stroke="hsl(var(--destructive))" strokeWidth="0.8" />
+        <rect x="370" y="301" width="60" height="8" rx="1" fill="hsl(var(--destructive)/0.3)" stroke="hsl(var(--destructive))" strokeWidth="0.75" />
         <text x="400" y="307" textAnchor="middle" className="fill-destructive text-[5px]">hydrated gel layer</text>
 
         {/* H⁺ exchange arrows on glass membrane */}
@@ -559,7 +559,7 @@ const GalvanicFuelCellDiagram = () => {
         <text x="151" y="290" textAnchor="middle" className="fill-foreground text-[8px] font-semibold">CATHODE</text>
         {/* Mesh lines */}
         {[0, 1, 2, 3, 4, 5].map((i) => (
-          <line key={i} x1="143" y1={165 + i * 18} x2="159" y2={165 + i * 18} stroke="hsl(var(--chart-4))" strokeWidth="0.8" />
+          <line key={i} x1="143" y1={165 + i * 18} x2="159" y2={165 + i * 18} stroke="hsl(var(--chart-4))" strokeWidth="0.75" />
         ))}
 
         {/* Cathode reaction */}

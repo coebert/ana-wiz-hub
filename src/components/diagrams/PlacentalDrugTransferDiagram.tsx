@@ -276,7 +276,7 @@ const PlacentalDrugTransferDiagram = () => {
             {/* Y axis labels */}
             {[0, 25, 50, 75, 100].map((v) => (
               <g key={v}>
-                <line x1={PAD_L - 4} y1={yScale(v)} x2={PAD_L} y2={yScale(v)} stroke="hsl(var(--foreground))" strokeWidth="0.6" />
+                <line x1={PAD_L - 4} y1={yScale(v)} x2={PAD_L} y2={yScale(v)} stroke="hsl(var(--foreground))" strokeWidth="0.5" />
                 <text x={PAD_L - 8} y={yScale(v) + 3} textAnchor="end" fontSize="9" fill="hsl(var(--muted-foreground))">{v}%</text>
               </g>
             ))}
@@ -287,7 +287,7 @@ const PlacentalDrugTransferDiagram = () => {
             {/* X axis labels (log scale) */}
             {[100, 300, 1000, 3000, 10000].map((v) => (
               <g key={v}>
-                <line x1={xScale(v)} y1={H - PAD_B} x2={xScale(v)} y2={H - PAD_B + 4} stroke="hsl(var(--foreground))" strokeWidth="0.6" />
+                <line x1={xScale(v)} y1={H - PAD_B} x2={xScale(v)} y2={H - PAD_B + 4} stroke="hsl(var(--foreground))" strokeWidth="0.5" />
                 <text x={xScale(v)} y={H - PAD_B + 14} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">{v >= 1000 ? `${v / 1000}k` : v}</text>
               </g>
             ))}

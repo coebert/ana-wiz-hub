@@ -55,16 +55,16 @@ const AnaphylaxisPathophysiologyDiagram = () => {
         <text x="350" y="251" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '9px' }}>Histamine · Tryptase · PGD₂ · Leukotrienes · PAF</text>
 
         {/* Three branches */}
-        <line x1="260" y1="262" x2="140" y2="300" stroke="hsl(var(--clinical))" strokeWidth="1.3" markerEnd="url(#ana-arrow)" />
-        <line x1="350" y1="262" x2="350" y2="300" stroke="hsl(var(--clinical))" strokeWidth="1.3" markerEnd="url(#ana-arrow)" />
-        <line x1="440" y1="262" x2="560" y2="300" stroke="hsl(var(--clinical))" strokeWidth="1.3" markerEnd="url(#ana-arrow)" />
+        <line x1="260" y1="262" x2="140" y2="300" stroke="hsl(var(--clinical))" strokeWidth="1.5" markerEnd="url(#ana-arrow)" />
+        <line x1="350" y1="262" x2="350" y2="300" stroke="hsl(var(--clinical))" strokeWidth="1.5" markerEnd="url(#ana-arrow)" />
+        <line x1="440" y1="262" x2="560" y2="300" stroke="hsl(var(--clinical))" strokeWidth="1.5" markerEnd="url(#ana-arrow)" />
 
         {/* ── LEFT: Vasodilation ── */}
         <rect x="45" y="303" width="190" height="44" rx="7" fill="hsl(var(--clinical) / 0.1)" stroke="hsl(var(--clinical) / 0.3)" strokeWidth="1" />
         <text x="140" y="321" textAnchor="middle" className="fill-foreground" style={{ fontSize: '10px', fontWeight: 600 }}>Vasodilation</text>
         <text x="140" y="337" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '9px' }}>Histamine on H₁/H₂ + NO release</text>
 
-        <line x1="140" y1="347" x2="140" y2="378" stroke="hsl(var(--clinical))" strokeWidth="1.2" markerEnd="url(#ana-arrow)" />
+        <line x1="140" y1="347" x2="140" y2="378" stroke="hsl(var(--clinical))" strokeWidth="1" markerEnd="url(#ana-arrow)" />
 
         <rect x="45" y="381" width="190" height="55" rx="7" fill="hsl(var(--clinical) / 0.06)" stroke="hsl(var(--clinical) / 0.2)" strokeWidth="1" />
         <text x="140" y="399" textAnchor="middle" className="fill-foreground" style={{ fontSize: '10px', fontWeight: 600 }}>Distributive Shock</text>
@@ -76,7 +76,7 @@ const AnaphylaxisPathophysiologyDiagram = () => {
         <text x="350" y="321" textAnchor="middle" className="fill-foreground" style={{ fontSize: '10px', fontWeight: 600 }}>↑ Capillary Permeability</text>
         <text x="350" y="337" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '9px' }}>Endothelial gap formation</text>
 
-        <line x1="350" y1="347" x2="350" y2="378" stroke="hsl(var(--clinical))" strokeWidth="1.2" markerEnd="url(#ana-arrow)" />
+        <line x1="350" y1="347" x2="350" y2="378" stroke="hsl(var(--clinical))" strokeWidth="1" markerEnd="url(#ana-arrow)" />
 
         <rect x="255" y="381" width="190" height="55" rx="7" fill="hsl(var(--clinical) / 0.06)" stroke="hsl(var(--clinical) / 0.2)" strokeWidth="1" />
         <text x="350" y="399" textAnchor="middle" className="fill-foreground" style={{ fontSize: '10px', fontWeight: 600 }}>Tissue Oedema</text>
@@ -88,7 +88,7 @@ const AnaphylaxisPathophysiologyDiagram = () => {
         <text x="560" y="321" textAnchor="middle" className="fill-foreground" style={{ fontSize: '10px', fontWeight: 600 }}>Bronchospasm</text>
         <text x="560" y="337" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '9px' }}>Leukotrienes C₄/D₄ + histamine</text>
 
-        <line x1="560" y1="347" x2="560" y2="378" stroke="hsl(var(--clinical))" strokeWidth="1.2" markerEnd="url(#ana-arrow)" />
+        <line x1="560" y1="347" x2="560" y2="378" stroke="hsl(var(--clinical))" strokeWidth="1" markerEnd="url(#ana-arrow)" />
 
         <rect x="465" y="381" width="190" height="55" rx="7" fill="hsl(var(--clinical) / 0.06)" stroke="hsl(var(--clinical) / 0.2)" strokeWidth="1" />
         <text x="560" y="399" textAnchor="middle" className="fill-foreground" style={{ fontSize: '10px', fontWeight: 600 }}>Respiratory Failure</text>

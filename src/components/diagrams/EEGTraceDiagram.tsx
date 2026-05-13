@@ -243,7 +243,7 @@ const EEGTraceDiagram = () => {
             {/* ═══ EEG TRACE (top) ═══ */}
             {[0.25, 0.5, 0.75].map(frac => (
               <line key={frac} x1="40" y1={eegH * frac} x2={svgW - 10} y2={eegH * frac}
-                stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.15" />
+                stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.15" />
             ))}
             <line x1="40" y1={traceY} x2={svgW - 10} y2={traceY}
               stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.2" strokeDasharray="4 4" />
@@ -260,7 +260,7 @@ const EEGTraceDiagram = () => {
             {/* EEG trace */}
             <g transform="translate(40,0)">
               <polyline key={stageIdx} points={tracePoints} fill="none" stroke={bisColor}
-                strokeWidth="1.2" opacity="0.85" strokeLinejoin="round" />
+                strokeWidth="1" opacity="0.85" strokeLinejoin="round" />
             </g>
 
             {/* Stage label */}
@@ -284,7 +284,7 @@ const EEGTraceDiagram = () => {
             {/* Plot background */}
             <rect x={fftPlotX} y={fftPlotY} width={fftPlotW} height={fftPlotH}
               fill="hsl(var(--muted-foreground))" fillOpacity="0.02"
-              stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.2" />
+              stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.2" />
 
             {/* Band background shading */}
             {[
@@ -308,7 +308,7 @@ const EEGTraceDiagram = () => {
             {fftBars}
 
             {/* FFT outline */}
-            <path d={fftPath} fill="none" stroke={bisColor} strokeWidth="1.2" opacity="0.6" />
+            <path d={fftPath} fill="none" stroke={bisColor} strokeWidth="1" opacity="0.6" />
 
             {/* Y axis for FFT */}
             <text x={fftPlotX - 4} y={fftPlotY + 5} textAnchor="end" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.4">Power</text>

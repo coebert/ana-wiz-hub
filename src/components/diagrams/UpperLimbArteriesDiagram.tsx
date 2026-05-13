@@ -127,7 +127,7 @@ const UpperLimbArteriesDiagram = () => {
             {showSutures && <rect x="2" y="2" width="196" height="496" rx="10" fill="url(#ula-tissue)" pointerEvents="none" />}
 
             {/* Arm outline */}
-            <path d="M70,10 Q50,80 55,150 Q57,200 60,250 Q55,300 50,350 Q45,380 30,450 M130,10 Q150,80 145,150 Q143,200 140,250 Q142,300 140,350 Q138,380 115,450" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+            <path d="M70,10 Q50,80 55,150 Q57,200 60,250 Q55,300 50,350 Q45,380 30,450 M130,10 Q150,80 145,150 Q143,200 140,250 Q142,300 140,350 Q138,380 115,450" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
             {/* Compass + landmarks (gated by sutures) */}
             {showSutures && (
               <g pointerEvents="none">

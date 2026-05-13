@@ -148,7 +148,7 @@ const HairScene = ({ step }: { step: number }) => {
           x2="0"
           y2="-30"
           stroke="hsl(var(--destructive))"
-          strokeWidth="2.5"
+          strokeWidth="2"
           strokeLinecap="round"
           transform={`rotate(${needleAngle})`}
           className="transition-transform duration-700 ease-out"
@@ -382,7 +382,7 @@ const DewPointScene = ({ step }: { step: number }) => {
       </text>
 
       {/* Ether inside */}
-      <rect x="86" y="86" width="188" height="48" rx="3" fill="hsl(var(--primary)/0.15)" />
+      <rect x="86" y="86" width="188" height="48" rx="3" fill="hsl(var(--primary)/0.15)" stroke="hsl(var(--border))" strokeWidth="0.75" />
       <text x="180" y="115" textAnchor="middle" fontSize="9" fill="hsl(var(--primary))" fontWeight="bold">
         Liquid ether
       </text>
@@ -431,7 +431,7 @@ const DewPointScene = ({ step }: { step: number }) => {
             x2="158"
             y2={90 - (Td - 5)}
             stroke="hsl(var(--primary))"
-            strokeWidth="1.2"
+            strokeWidth="1"
             strokeDasharray="3 2"
           />
           <text
@@ -522,7 +522,7 @@ const DewPointScene = ({ step }: { step: number }) => {
             rx="6"
             fill={atDewPoint ? "hsl(var(--primary) / 0.15)" : "hsl(var(--muted))"}
             stroke={atDewPoint ? "hsl(var(--primary))" : "hsl(var(--border))"}
-            strokeWidth="1.2"
+            strokeWidth="1"
           />
           <text
             x="180"

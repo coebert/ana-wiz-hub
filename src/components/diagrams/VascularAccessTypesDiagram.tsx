@@ -115,7 +115,7 @@ const PeripheralCannula: React.FC = () => (
              C58,128 64,128 70,130 L70,205 L0,205 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
     {/* Wrist crease */}
-    <path d="M50,131 C58,134 64,135 70,134" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.7}/>
+    <path d="M50,131 C58,134 64,135 70,134" stroke={SkinShade} strokeWidth={0.5} fill="none" opacity={0.7}/>
     <path d="M52,138 C60,141 66,142 70,141" stroke={SkinShade} strokeWidth={0.5} fill="none" opacity={0.55}/>
     {/* Ulnar styloid prominence */}
     <ellipse cx={58} cy={132} rx={5} ry={3} fill={SkinShade} opacity={0.5}/>
@@ -153,12 +153,12 @@ const PeripheralCannula: React.FC = () => (
     ))}
     {/* Finger nails */}
     {[[143, 60],[157, 50],[172, 48],[188, 58]].map(([x,y],i)=>(
-      <ellipse key={`n-${i}`} cx={x} cy={y} rx={2.4} ry={2.8} fill="hsl(28 35% 86%)" stroke={SkinEdge} strokeWidth={0.3} opacity={0.85}/>
+      <ellipse key={`n-${i}`} cx={x} cy={y} rx={2.4} ry={2.8} fill="hsl(28 35% 86%)" stroke={SkinEdge} strokeWidth={0.5} opacity={0.85}/>
     ))}
     {/* Extensor tendon shading on dorsum */}
     {[[100,165,140,118],[112,170,156,116],[124,172,170,118],[140,170,186,122]].map(([x1,y1,x2,y2],i)=>(
       <line key={`et-${i}`} x1={x1} y1={y1} x2={x2} y2={y2}
-            stroke={SkinShade} strokeWidth={1.2} opacity={0.35} strokeLinecap="round"/>
+            stroke={SkinShade} strokeWidth={1} opacity={0.35} strokeLinecap="round"/>
     ))}
     {/* Metacarpal shadow */}
     <ellipse cx={140} cy={170} rx={55} ry={20} fill={SkinShade} opacity={0.18}/>
@@ -166,13 +166,13 @@ const PeripheralCannula: React.FC = () => (
     {/* Dorsal venous network — superficial veins */}
     {/* Cephalic-leading metacarpal */}
     <path d="M210,205 C200,180 185,155 170,135 L165,115"
-          stroke="url(#veinGrad)" strokeWidth={3.2} fill="none" strokeLinecap="round" opacity={0.85}/>
+          stroke="url(#veinGrad)" strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.85}/>
     {/* Dorsal metacarpal vein (target) */}
     <path d="M85,205 C95,175 110,150 130,130 L140,112"
-          stroke="url(#veinGrad)" strokeWidth={3.5} fill="none" strokeLinecap="round" opacity={0.9}/>
+          stroke="url(#veinGrad)" strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.9}/>
     {/* Connecting arch */}
     <path d="M130,130 C150,128 165,128 170,135"
-          stroke="url(#veinGrad)" strokeWidth={2.8} fill="none" opacity={0.8}/>
+          stroke="url(#veinGrad)" strokeWidth={3} fill="none" opacity={0.8}/>
     {/* Smaller branches */}
     <path d="M120,160 C130,150 140,140 150,128" stroke={VeinLight} strokeWidth={1.5} fill="none" opacity={0.7}/>
     <path d="M155,200 C155,180 160,160 165,140" stroke={VeinLight} strokeWidth={1.5} fill="none" opacity={0.7}/>
@@ -183,22 +183,22 @@ const PeripheralCannula: React.FC = () => (
     <path d="M88,158 L94,150 L94,166 Z" fill="hsl(200 60% 70%)" stroke={CatheterEdge} strokeWidth={0.5}/>
     {/* Hub — colour coded pink (20G) */}
     <rect x="92" y="153" width="34" height="10" rx="2.5"
-          fill="hsl(335 70% 65%)" stroke={CatheterEdge} strokeWidth={0.6}/>
+          fill="hsl(335 70% 65%)" stroke={CatheterEdge} strokeWidth={0.5}/>
     <rect x="92" y="153" width="34" height="3" rx="1" fill="hsl(335 70% 78%)" />
     {/* Injection port (cap) */}
     <circle cx="115" cy="148" r="3" fill="hsl(335 70% 55%)" stroke={CatheterEdge} strokeWidth={0.5}/>
     {/* Flashback chamber */}
     <rect x="124" y="156" width="6" height="4" rx="1" fill="hsl(0 60% 55%)" opacity={0.7}/>
     {/* Catheter — entering vein */}
-    <line x1="126" y1="158" x2="148" y2="138" stroke={Catheter} strokeWidth={2.8} strokeLinecap="round" />
-    <line x1="126" y1="158" x2="148" y2="138" stroke={CatheterEdge} strokeWidth={0.4} strokeLinecap="round" />
+    <line x1="126" y1="158" x2="148" y2="138" stroke={Catheter} strokeWidth={3} strokeLinecap="round" />
+    <line x1="126" y1="158" x2="148" y2="138" stroke={CatheterEdge} strokeWidth={0.5} strokeLinecap="round" />
     {/* Tip inside vein (slightly darker) */}
     <circle cx="148" cy="138" r="1.8" fill={FgEdge} />
 
     {/* Transparent dressing outline */}
     <rect x="78" y="138" width="60" height="42" rx="3"
           fill="hsl(200 30% 90%)" opacity={0.18}
-          stroke={MutedFg} strokeWidth={0.4} strokeDasharray="2 1.5"/>
+          stroke={MutedFg} strokeWidth={0.5} strokeDasharray="2 1.5"/>
 
     {/* Labels */}
     <text x="86" y="135" textAnchor="end" {...labelStyle as object}>Pink hub = 20G (≈ 60 mL/min)</text>
@@ -250,14 +250,14 @@ const PICC: React.FC = () => (
              C115,80 110,55 105,32 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
     {/* Deltoid contour on right shoulder */}
-    <path d="M62,80 C58,98 55,118 56,138" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.6}/>
+    <path d="M62,80 C58,98 55,118 56,138" stroke={SkinShade} strokeWidth={0.75} fill="none" opacity={0.6}/>
     {/* Pectoral fold */}
-    <path d="M118,75 C140,80 165,85 188,92" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
+    <path d="M118,75 C140,80 165,85 188,92" stroke={SkinShade} strokeWidth={0.75} fill="none" opacity={0.55}/>
     {/* Neck */}
     <path d="M122,10 C124,22 126,28 130,32 L155,32 C159,28 161,22 163,10 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
     {/* Sternocleidomastoid hint */}
-    <path d="M132,12 C134,22 138,28 142,32" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.55}/>
+    <path d="M132,12 C134,22 138,28 142,32" stroke={SkinShade} strokeWidth={0.5} fill="none" opacity={0.55}/>
     {/* Right arm (viewer's left), abducted — shoulder, biceps, antecubital, forearm */}
     <path d="M62,80
              C50,90 38,108 30,130
@@ -267,15 +267,15 @@ const PICC: React.FC = () => (
              C68,140 72,118 78,102 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
     {/* Antecubital crease */}
-    <path d="M30,168 C40,170 48,170 56,167" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.6}/>
+    <path d="M30,168 C40,170 48,170 56,167" stroke={SkinShade} strokeWidth={0.5} fill="none" opacity={0.6}/>
     {/* Biceps shading */}
     <ellipse cx={48} cy={140} rx={10} ry={18} fill={SkinShade} opacity={0.25}/>
 
     {/* Clavicles — terminate at AC joint over deltoid (matches CVC/tunnelled/port plates) */}
-    <path d="M85,62 C115,55 138,52 150,52" stroke={Bone} strokeWidth={5} strokeLinecap="round" fill="none"/>
-    <path d="M150,52 C162,52 185,55 215,62" stroke={Bone} strokeWidth={5} strokeLinecap="round" fill="none"/>
+    <path d="M85,62 C115,55 138,52 150,52" stroke={Bone} strokeWidth={3} strokeLinecap="round" fill="none"/>
+    <path d="M150,52 C162,52 185,55 215,62" stroke={Bone} strokeWidth={3} strokeLinecap="round" fill="none"/>
     {/* Sternum (manubrium → body) */}
-    <rect x="146" y="55" width="8" height="55" rx="3" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
+    <rect x="146" y="55" width="8" height="55" rx="3" fill={Bone} stroke={BoneEdge} strokeWidth={0.5}/>
     {/* Ribs — 18 px spacing, span 100→200 (matches CVC/Port plates).
         First rib is one intercostal below the clavicle (y=52) so the cage
         scales proportionally to the other chest plates. */}
@@ -286,37 +286,37 @@ const PICC: React.FC = () => (
 
     {/* Heart silhouette */}
     <path d="M130,135 C115,135 110,160 130,180 L155,200 L180,180 C195,160 185,135 170,135 C162,135 155,142 150,148 C145,142 138,135 130,135 Z"
-          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.6}/>
+          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.5}/>
 
     {/* Venous tree on patient's right */}
     {/* Basilic vein (medial arm) */}
     <path d="M55,235 C58,200 65,170 75,140 C82,115 90,98 105,85"
-          stroke="url(#veinGrad)" strokeWidth={3.5} fill="none" strokeLinecap="round" opacity={0.55}/>
+          stroke="url(#veinGrad)" strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.55}/>
     {/* Axillary vein */}
-    <path d="M105,85 C115,82 125,80 135,78" stroke="url(#veinGrad)" strokeWidth={4} fill="none" opacity={0.55}/>
+    <path d="M105,85 C115,82 125,80 135,78" stroke="url(#veinGrad)" strokeWidth={3} fill="none" opacity={0.55}/>
     {/* Subclavian — joins at (158,68) */}
-    <path d="M135,78 C145,75 152,72 158,68" stroke="url(#veinGrad)" strokeWidth={4} fill="none" opacity={0.55}/>
+    <path d="M135,78 C145,75 152,72 158,68" stroke="url(#veinGrad)" strokeWidth={3} fill="none" opacity={0.55}/>
     {/* Brachiocephalic + SVC — runs from (158,68) to cavoatrial junction (156,142) */}
-    <path d="M158,68 C160,90 158,115 156,142" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none" opacity={0.55}/>
+    <path d="M158,68 C160,90 158,115 156,142" stroke="url(#veinGrad)" strokeWidth={3} fill="none" opacity={0.55}/>
 
     {/* Cephalic vein (lateral, alternative) */}
-    <path d="M30,180 C35,150 50,120 70,100" stroke={VeinLight} strokeWidth={2.2} fill="none" opacity={0.5}/>
+    <path d="M30,180 C35,150 50,120 70,100" stroke={VeinLight} strokeWidth={2} fill="none" opacity={0.5}/>
 
     {/* Brachial artery (deep) */}
-    <path d="M58,235 C62,200 70,170 80,140 C88,115 95,98 108,85" stroke={ArteryLight} strokeWidth={1.8} fill="none" opacity={0.6} strokeDasharray="3 2"/>
+    <path d="M58,235 C62,200 70,170 80,140 C88,115 95,98 108,85" stroke={ArteryLight} strokeWidth={2} fill="none" opacity={0.6} strokeDasharray="3 2"/>
 
     {/* PICC catheter (purple) — basilic → axillary → SCV junction (158,68) → SVC tip (156,142) */}
     <path d="M40,232 C50,225 56,215 60,200 C66,170 75,140 88,118 C98,100 110,88 130,82 C145,78 152,72 158,68 C160,90 158,115 156,142"
-          stroke="hsl(280 50% 45%)" strokeWidth={2.5} fill="none" strokeLinecap="round"/>
+          stroke="hsl(280 50% 45%)" strokeWidth={2} fill="none" strokeLinecap="round"/>
     {/* Catheter highlight */}
     <path d="M40,232 C50,225 56,215 60,200 C66,170 75,140 88,118 C98,100 110,88 130,82 C145,78 152,72 158,68 C160,90 158,115 156,142"
-          stroke="hsl(280 60% 70%)" strokeWidth={0.8} fill="none" strokeLinecap="round" opacity={0.7}/>
+          stroke="hsl(280 60% 70%)" strokeWidth={0.75} fill="none" strokeLinecap="round" opacity={0.7}/>
     {/* External hub bifurcation */}
-    <rect x="32" y="228" width="14" height="5" rx="1.2" fill="hsl(280 50% 45%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
-    <rect x="32" y="234" width="14" height="5" rx="1.2" fill="hsl(0 60% 50%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
+    <rect x="32" y="228" width="14" height="5" rx="1.2" fill="hsl(280 50% 45%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.5}/>
+    <rect x="32" y="234" width="14" height="5" rx="1.2" fill="hsl(0 60% 50%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.5}/>
     {/* Securement device */}
     <rect x="48" y="218" width="20" height="12" rx="1.5" fill="hsl(200 30% 92%)" opacity={0.6}
-          stroke={MutedFg} strokeWidth={0.4} strokeDasharray="1.5 1"/>
+          stroke={MutedFg} strokeWidth={0.5} strokeDasharray="1.5 1"/>
     {/* Tip marker */}
     <circle cx="156" cy="142" r="2" fill={FgEdge}/>
     <line x1="153" y1="142" x2="159" y2="142" stroke={Catheter} strokeWidth={1}/>
@@ -364,7 +364,7 @@ const NonTunnelledCVC: React.FC = () => (
              L125,62 C121,58 119,52 118,40 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
     {/* Mandible/jawline shading */}
-    <path d="M128,60 C140,72 160,72 172,60" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.6}/>
+    <path d="M128,60 C140,72 160,72 172,60" stroke={SkinShade} strokeWidth={0.75} fill="none" opacity={0.6}/>
     {/* Ear (right side, exposed by head turn) */}
     <path d="M180,38 C186,38 188,46 184,52 L180,52 Z" fill={SkinShade} stroke={SkinEdge} strokeWidth={0.5} opacity={0.85}/>
     {/* Neck — extended */}
@@ -381,20 +381,20 @@ const NonTunnelledCVC: React.FC = () => (
              C210,114 192,108 172,104 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
     {/* Pectoral fold and shoulder slope */}
-    <path d="M85,128 C90,138 95,148 102,154" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.55}/>
-    <path d="M215,128 C210,138 205,148 198,154" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.55}/>
+    <path d="M85,128 C90,138 95,148 102,154" stroke={SkinShade} strokeWidth={0.5} fill="none" opacity={0.55}/>
+    <path d="M215,128 C210,138 205,148 198,154" stroke={SkinShade} strokeWidth={0.5} fill="none" opacity={0.55}/>
 
     {/* Sternocleidomastoid (right side, viewer's left) */}
     <path d="M138,60 C130,75 122,90 118,100 L130,100 C135,88 142,75 145,62 Z"
-          fill={Muscle} opacity={0.35} stroke={SkinEdge} strokeWidth={0.4}/>
+          fill={Muscle} opacity={0.35} stroke={SkinEdge} strokeWidth={0.5}/>
     {/* Two heads of SCM */}
-    <line x1="135" y1="100" x2="142" y2="62" stroke={SkinEdge} strokeWidth={0.4} opacity={0.5}/>
+    <line x1="135" y1="100" x2="142" y2="62" stroke={SkinEdge} strokeWidth={0.5} opacity={0.5}/>
 
     {/* Clavicles */}
-    <path d="M85,118 C115,112 145,108 155,108" stroke={Bone} strokeWidth={5.5} strokeLinecap="round" fill="none"/>
-    <path d="M155,108 C170,108 195,112 215,118" stroke={Bone} strokeWidth={5.5} strokeLinecap="round" fill="none"/>
+    <path d="M85,118 C115,112 145,108 155,108" stroke={Bone} strokeWidth={3} strokeLinecap="round" fill="none"/>
+    <path d="M155,108 C170,108 195,112 215,118" stroke={Bone} strokeWidth={3} strokeLinecap="round" fill="none"/>
     {/* Sternum */}
-    <rect x="146" y="115" width="8" height="50" rx="3" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
+    <rect x="146" y="115" width="8" height="50" rx="3" fill={Bone} stroke={BoneEdge} strokeWidth={0.5}/>
     {/* Ribs — 18 px intercostal spacing, span 100→200 (shared scale) */}
     {[130, 148, 166, 184].map((y, i) => (
       <path key={i} d={`M100,${y} Q150,${y + 8} 200,${y}`}
@@ -402,18 +402,18 @@ const NonTunnelledCVC: React.FC = () => (
     ))}
 
     {/* Carotid (deep, dashed) */}
-    <path d="M135,60 L132,100 L138,118" stroke="url(#arteryGrad)" strokeWidth={3.5} fill="none" strokeDasharray="3 2" opacity={0.85}/>
+    <path d="M135,60 L132,100 L138,118" stroke="url(#arteryGrad)" strokeWidth={3} fill="none" strokeDasharray="3 2" opacity={0.85}/>
 
     {/* Right IJV — running lateral to carotid in carotid sheath */}
-    <path d="M148,60 L146,100 L152,118" stroke="url(#veinGrad)" strokeWidth={4.2} fill="none"/>
+    <path d="M148,60 L146,100 L152,118" stroke="url(#veinGrad)" strokeWidth={3} fill="none"/>
 
     {/* Subclavian + brachiocephalic + SVC */}
-    <path d="M152,118 C150,130 148,140 150,150" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
-    <path d="M150,150 L150,200" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
+    <path d="M152,118 C150,130 148,140 150,150" stroke="url(#veinGrad)" strokeWidth={3} fill="none"/>
+    <path d="M150,150 L150,200" stroke="url(#veinGrad)" strokeWidth={3} fill="none"/>
 
     {/* Heart */}
     <path d="M135,205 C120,210 115,235 140,250 L165,260 L185,250 C205,235 195,210 175,205 C167,205 160,212 155,218 C150,212 142,205 135,205 Z"
-          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.6}/>
+          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.5}/>
 
     {/* Pleural apex (lung) */}
     <path d="M85,118 C90,135 100,155 105,175 L75,175 L75,118 Z" fill="hsl(200 30% 80%)" opacity={0.3}/>
@@ -422,7 +422,7 @@ const NonTunnelledCVC: React.FC = () => (
     {/* Catheter — skin entry at apex of SCM triangle, threading IJV (146,100)
         → SCV junction (152,118) → brachiocephalic/SVC (150,150) → tip (150,200) */}
     <path d="M168,90 L146,100 L152,118 L150,150 L150,200"
-          stroke={Catheter} strokeWidth={2.8} fill="none" strokeLinecap="round"/>
+          stroke={Catheter} strokeWidth={3} fill="none" strokeLinecap="round"/>
     <path d="M168,90 L146,100 L152,118 L150,150 L150,200"
           stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
     {/* Tip */}
@@ -432,16 +432,16 @@ const NonTunnelledCVC: React.FC = () => (
     <rect x="162" y="86" width="12" height="6" rx="1.5" fill="hsl(0 0% 95%)" stroke={MutedFg} strokeWidth={0.5}/>
 
     {/* External 3-lumen hub assembly */}
-    <rect x="172" y="80" width="22" height="4" rx="1" fill="hsl(0 70% 50%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
-    <text x="183" y="83.2" textAnchor="middle" fontSize={3.5} fill="white">D</text>
-    <rect x="172" y="74" width="22" height="4" rx="1" fill="hsl(220 70% 50%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
-    <text x="183" y="77.2" textAnchor="middle" fontSize={3.5} fill="white">M</text>
-    <rect x="172" y="68" width="22" height="4" rx="1" fill="hsl(150 60% 40%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
-    <text x="183" y="71.2" textAnchor="middle" fontSize={3.5} fill="white">P</text>
+    <rect x="172" y="80" width="22" height="4" rx="1" fill="hsl(0 70% 50%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.5}/>
+    <text x="183" y="83.2" textAnchor="middle" fontSize={3.5} fill="hsl(var(--background))">D</text>
+    <rect x="172" y="74" width="22" height="4" rx="1" fill="hsl(220 70% 50%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.5}/>
+    <text x="183" y="77.2" textAnchor="middle" fontSize={3.5} fill="hsl(var(--background))">M</text>
+    <rect x="172" y="68" width="22" height="4" rx="1" fill="hsl(150 60% 40%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.5}/>
+    <text x="183" y="71.2" textAnchor="middle" fontSize={3.5} fill="hsl(var(--background))">P</text>
 
     {/* Transparent dressing */}
     <rect x="155" y="82" width="22" height="22" rx="2" fill="hsl(200 30% 90%)" opacity={0.18}
-          stroke={MutedFg} strokeDasharray="1.5 1" strokeWidth={0.4}/>
+          stroke={MutedFg} strokeDasharray="1.5 1" strokeWidth={0.5}/>
 
     {/* Labels */}
     <text x="105" y="78" textAnchor="end" {...labelStyle as object}>SCM (sternocleidomastoid)</text>
@@ -488,17 +488,17 @@ const TunnelledLine: React.FC = () => (
              C82,54 100,46 118,40 L118,30 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
     {/* Deltoid contours */}
-    <path d="M64,72 C58,90 54,108 56,128" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
-    <path d="M236,72 C242,90 246,108 244,128" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
+    <path d="M64,72 C58,90 54,108 56,128" stroke={SkinShade} strokeWidth={0.75} fill="none" opacity={0.55}/>
+    <path d="M236,72 C242,90 246,108 244,128" stroke={SkinShade} strokeWidth={0.75} fill="none" opacity={0.55}/>
     {/* Pectoral fold */}
-    <path d="M80,100 C120,108 180,108 220,100" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.45}/>
+    <path d="M80,100 C120,108 180,108 220,100" stroke={SkinShade} strokeWidth={0.5} fill="none" opacity={0.45}/>
     {/* Suprasternal notch */}
     <ellipse cx={150} cy={58} rx={5} ry={2} fill={SkinShade} opacity={0.55}/>
 
     {/* Skin "cut-away" window showing subcutaneous tissue + tunnel */}
     <path d="M70,95 C90,80 200,80 220,95 L220,180 C200,195 90,195 70,180 Z"
           fill="hsl(35 50% 78%)" opacity={0.5}
-          stroke={SkinEdge} strokeDasharray="3 2" strokeWidth={0.6}/>
+          stroke={SkinEdge} strokeDasharray="3 2" strokeWidth={0.5}/>
     {/* Subcutaneous fat texture (stippled) */}
     {Array.from({ length: 30 }).map((_, i) => {
       const x = 75 + (i * 4.7) % 140;
@@ -507,19 +507,19 @@ const TunnelledLine: React.FC = () => (
     })}
 
     {/* Clavicles — terminate at AC joint over deltoid (not off-shoulder) */}
-    <path d="M78,88 C108,78 138,72 150,72" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
-    <path d="M150,72 C162,72 192,78 222,88" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    <path d="M78,88 C108,78 138,72 150,72" stroke={Bone} strokeWidth={3} strokeLinecap="round" fill="none"/>
+    <path d="M150,72 C162,72 192,78 222,88" stroke={Bone} strokeWidth={3} strokeLinecap="round" fill="none"/>
     {/* Sternum (manubrium) */}
-    <rect x="146" y="74" width="8" height="40" rx="2.5" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
+    <rect x="146" y="74" width="8" height="40" rx="2.5" fill={Bone} stroke={BoneEdge} strokeWidth={0.5}/>
 
     {/* Subclavian vein (under clavicle) */}
-    <path d="M100,90 C140,84 175,78 200,72" stroke="url(#veinGrad)" strokeWidth={4} fill="none"/>
+    <path d="M100,90 C140,84 175,78 200,72" stroke="url(#veinGrad)" strokeWidth={3} fill="none"/>
     {/* Brachiocephalic + SVC */}
-    <path d="M200,72 C202,92 195,116 190,140" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
+    <path d="M200,72 C202,92 195,116 190,140" stroke="url(#veinGrad)" strokeWidth={3} fill="none"/>
 
     {/* Heart */}
     <path d="M170,150 C155,155 150,180 175,195 L195,205 L215,195 C232,180 220,155 205,150 C198,150 192,158 187,164 C182,158 176,150 170,150 Z"
-          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.6}/>
+          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.5}/>
 
     {/* Tunnel — exit site (chest wall) → subcutaneous course → venotomy */}
     {/* Exit site */}
@@ -527,7 +527,7 @@ const TunnelledLine: React.FC = () => (
     <circle cx="100" cy="170" r="1.5" fill="hsl(45 30% 30%)" />
     {/* Subcutaneous tunnel — solid (visible in cut-away) */}
     <path d="M100,170 C120,160 150,130 175,100 L200,72"
-          stroke={Catheter} strokeWidth={3.2} fill="none" strokeLinecap="round"/>
+          stroke={Catheter} strokeWidth={3} fill="none" strokeLinecap="round"/>
     <path d="M100,170 C120,160 150,130 175,100 L200,72"
           stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
     {/* Dacron cuff — tissue ingrowth zone */}
@@ -538,24 +538,24 @@ const TunnelledLine: React.FC = () => (
       {/* Cuff texture lines */}
       {[0,1,2,3].map(i => (
         <line key={i} x1={137 + i*3} y1={140} x2={140 + i*3} y2={146}
-              stroke="hsl(35 30% 35%)" strokeWidth={0.4}
+              stroke="hsl(35 30% 35%)" strokeWidth={0.5}
               transform="rotate(-32 142 141.5)"/>
       ))}
     </g>
 
     {/* Intravascular segment (entering subclavian → SVC) */}
     <path d="M200,72 C202,94 196,116 190,140"
-          stroke={Catheter} strokeWidth={2.8} fill="none"/>
+          stroke={Catheter} strokeWidth={3} fill="none"/>
     <path d="M200,72 C202,94 196,116 190,140"
-          stroke={CatheterEdge} strokeWidth={0.4} fill="none"/>
+          stroke={CatheterEdge} strokeWidth={0.5} fill="none"/>
     <circle cx="190" cy="140" r="2.2" fill={FgEdge}/>
 
     {/* External catheter & bifurcated hub */}
-    <path d="M100,170 L75,200" stroke={Catheter} strokeWidth={2.8} fill="none" strokeLinecap="round"/>
-    <path d="M100,170 L75,200" stroke={CatheterEdge} strokeWidth={0.4} fill="none" strokeLinecap="round"/>
+    <path d="M100,170 L75,200" stroke={Catheter} strokeWidth={3} fill="none" strokeLinecap="round"/>
+    <path d="M100,170 L75,200" stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
     {/* Y connector */}
-    <path d="M75,200 L60,212 L60,225" stroke={Catheter} strokeWidth={2.4} fill="none" strokeLinecap="round"/>
-    <path d="M75,200 L90,212 L90,225" stroke={Catheter} strokeWidth={2.4} fill="none" strokeLinecap="round"/>
+    <path d="M75,200 L60,212 L60,225" stroke={Catheter} strokeWidth={2} fill="none" strokeLinecap="round"/>
+    <path d="M75,200 L90,212 L90,225" stroke={Catheter} strokeWidth={2} fill="none" strokeLinecap="round"/>
     {/* Clamps */}
     <rect x="56" y="216" width="8" height="4" rx="1" fill="hsl(0 0% 25%)"/>
     <rect x="86" y="216" width="8" height="4" rx="1" fill="hsl(0 0% 25%)"/>
@@ -564,7 +564,7 @@ const TunnelledLine: React.FC = () => (
     <circle cx="90" cy="228" r="3.5" fill="hsl(220 65% 50%)" stroke={FgEdge} strokeOpacity={0.4}/>
 
     {/* Skin layer indicator on cut-away */}
-    <line x1="70" y1="95" x2="220" y2="95" stroke={SkinEdge} strokeWidth={0.6}/>
+    <line x1="70" y1="95" x2="220" y2="95" stroke={SkinEdge} strokeWidth={0.5}/>
     <text x="68" y="93" textAnchor="end" {...tinyLabel as object}>Skin</text>
     <text x="68" y="115" textAnchor="end" {...tinyLabel as object}>Subcutis</text>
 
@@ -610,9 +610,9 @@ const Portacath: React.FC = () => (
              C40,98 48,82 64,68
              C82,54 100,46 118,40 L118,30 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
-    <path d="M64,72 C58,90 54,108 56,128" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
-    <path d="M236,72 C242,90 246,108 244,128" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
-    <path d="M80,100 C120,108 180,108 220,100" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.45}/>
+    <path d="M64,72 C58,90 54,108 56,128" stroke={SkinShade} strokeWidth={0.75} fill="none" opacity={0.55}/>
+    <path d="M236,72 C242,90 246,108 244,128" stroke={SkinShade} strokeWidth={0.75} fill="none" opacity={0.55}/>
+    <path d="M80,100 C120,108 180,108 220,100" stroke={SkinShade} strokeWidth={0.5} fill="none" opacity={0.45}/>
     <ellipse cx={150} cy={58} rx={5} ry={2} fill={SkinShade} opacity={0.55}/>
 
     {/* Cut-away showing subcutaneous pocket */}
@@ -620,10 +620,10 @@ const Portacath: React.FC = () => (
              stroke={SkinEdge} strokeDasharray="3 2" strokeWidth={0.5}/>
 
     {/* Clavicles — terminate at AC joint over deltoid */}
-    <path d="M78,88 C108,78 138,72 150,72" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
-    <path d="M150,72 C162,72 192,78 222,88" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    <path d="M78,88 C108,78 138,72 150,72" stroke={Bone} strokeWidth={3} strokeLinecap="round" fill="none"/>
+    <path d="M150,72 C162,72 192,78 222,88" stroke={Bone} strokeWidth={3} strokeLinecap="round" fill="none"/>
     {/* Sternum */}
-    <rect x="146" y="74" width="8" height="40" rx="2.5" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
+    <rect x="146" y="74" width="8" height="40" rx="2.5" fill={Bone} stroke={BoneEdge} strokeWidth={0.5}/>
     {/* Ribs — 18 px intercostal spacing, span 100→200 (shared scale) */}
     {[120, 138, 156, 174].map((y, i) => (
       <path key={i} d={`M100,${y} Q150,${y + 8} 200,${y}`}
@@ -631,19 +631,19 @@ const Portacath: React.FC = () => (
     ))}
 
     {/* Subclavian + SVC */}
-    <path d="M100,90 C140,84 175,78 200,72" stroke="url(#veinGrad)" strokeWidth={4} fill="none"/>
-    <path d="M200,72 C202,92 195,116 190,140" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
+    <path d="M100,90 C140,84 175,78 200,72" stroke="url(#veinGrad)" strokeWidth={3} fill="none"/>
+    <path d="M200,72 C202,92 195,116 190,140" stroke="url(#veinGrad)" strokeWidth={3} fill="none"/>
 
     {/* Heart */}
     <path d="M170,150 C155,155 150,180 175,195 L195,205 L215,195 C232,180 220,155 205,150 C198,150 192,158 187,164 C182,158 176,150 170,150 Z"
-          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.6}/>
+          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.5}/>
 
     {/* Port reservoir — titanium body */}
-    <ellipse cx="100" cy="145" rx="22" ry="14" fill="url(#portGrad)" stroke={FgEdge} strokeOpacity={0.6} strokeWidth={0.6}/>
+    <ellipse cx="100" cy="145" rx="22" ry="14" fill="url(#portGrad)" stroke={FgEdge} strokeOpacity={0.6} strokeWidth={0.5}/>
     {/* Reservoir base highlight */}
-    <ellipse cx="100" cy="142" rx="20" ry="11" fill="none" stroke="hsl(210 30% 85%)" strokeWidth={0.4} opacity={0.7}/>
+    <ellipse cx="100" cy="142" rx="20" ry="11" fill="none" stroke="hsl(210 30% 85%)" strokeWidth={0.5} opacity={0.7}/>
     {/* Septum (silicone) — palpable triangular markers */}
-    <ellipse cx="100" cy="142" rx="11" ry="7" fill="hsl(280 35% 32%)" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
+    <ellipse cx="100" cy="142" rx="11" ry="7" fill="hsl(280 35% 32%)" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.5}/>
     <ellipse cx="100" cy="141" rx="9" ry="5" fill="hsl(280 30% 40%)" opacity={0.7}/>
     {/* Three palpation bumps */}
     {[0, 120, 240].map(deg => {
@@ -651,11 +651,11 @@ const Portacath: React.FC = () => (
       const rad = (deg * Math.PI) / 180;
       const cx = 100 + r * Math.cos(rad);
       const cy = 142 + r * 0.55 * Math.sin(rad);
-      return <circle key={deg} cx={cx} cy={cy} r={1.4} fill="hsl(210 20% 80%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.3}/>;
+      return <circle key={deg} cx={cx} cy={cy} r={1.4} fill="hsl(210 20% 80%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.5}/>;
     })}
     {/* Suture eyelets at base */}
-    <circle cx={78} cy={155} r={1.5} fill="none" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
-    <circle cx={122} cy={155} r={1.5} fill="none" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
+    <circle cx={78} cy={155} r={1.5} fill="none" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.5}/>
+    <circle cx={122} cy={155} r={1.5} fill="none" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.5}/>
 
     {/* Catheter from port → subclavian → SVC */}
     <path d="M120,140 C150,128 175,100 200,72"
@@ -663,28 +663,28 @@ const Portacath: React.FC = () => (
     <path d="M120,140 C150,128 175,100 200,72"
           stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
     <path d="M200,72 C202,94 196,116 190,140"
-          stroke={Catheter} strokeWidth={2.8} fill="none"/>
+          stroke={Catheter} strokeWidth={3} fill="none"/>
     <path d="M200,72 C202,94 196,116 190,140"
-          stroke={CatheterEdge} strokeWidth={0.4} fill="none"/>
+          stroke={CatheterEdge} strokeWidth={0.5} fill="none"/>
     <circle cx="190" cy="140" r="2.2" fill={FgEdge}/>
 
     {/* Huber non-coring needle — angled 90° through skin into septum */}
     {/* Needle shaft */}
-    <line x1="100" y1="100" x2="100" y2="140" stroke="hsl(0 0% 35%)" strokeWidth={1.6}/>
+    <line x1="100" y1="100" x2="100" y2="140" stroke="hsl(0 0% 35%)" strokeWidth={1.5}/>
     {/* Bevel detail at tip */}
     <path d="M100,140 L98,138 L102,138 Z" fill="hsl(0 0% 55%)"/>
     {/* Right-angle hub of Huber needle */}
-    <path d="M100,100 L100,93 L120,93" stroke="hsl(0 0% 35%)" strokeWidth={1.6} fill="none" strokeLinecap="round"/>
+    <path d="M100,100 L100,93 L120,93" stroke="hsl(0 0% 35%)" strokeWidth={1.5} fill="none" strokeLinecap="round"/>
     {/* Wings */}
-    <path d="M95,98 L90,92 L90,108 Z" fill="hsl(220 50% 65%)" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
-    <path d="M105,98 L110,92 L110,108 Z" fill="hsl(220 50% 65%)" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
+    <path d="M95,98 L90,92 L90,108 Z" fill="hsl(220 50% 65%)" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.5}/>
+    <path d="M105,98 L110,92 L110,108 Z" fill="hsl(220 50% 65%)" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.5}/>
     {/* Connecting tubing */}
-    <path d="M120,93 C140,90 155,88 170,90" stroke={Catheter} strokeWidth={1.8} fill="none"/>
+    <path d="M120,93 C140,90 155,88 170,90" stroke={Catheter} strokeWidth={2} fill="none"/>
     {/* Luer */}
-    <rect x="168" y="86" width="10" height="8" rx="1.5" fill="hsl(0 0% 92%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
+    <rect x="168" y="86" width="10" height="8" rx="1.5" fill="hsl(0 0% 92%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.5}/>
 
     {/* Skin surface line on cut-away */}
-    <path d="M50,108 C90,103 110,103 150,108" stroke={SkinEdge} strokeWidth={0.7}/>
+    <path d="M50,108 C90,103 110,103 150,108" stroke={SkinEdge} strokeWidth={0.75}/>
     <text x="48" y="106" textAnchor="end" {...tinyLabel as object}>Skin</text>
 
     {/* Labels */}

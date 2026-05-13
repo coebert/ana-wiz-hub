@@ -451,7 +451,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         "
         fill="url(#bf-skin)"
         stroke="hsl(20 40% 42%)"
-        strokeWidth="1.4"
+        strokeWidth="1.5"
         strokeLinejoin="round"
       />
       {/* Posterior skin shading — wraps from vertex around the occiput
@@ -484,7 +484,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         d="M 384 162 Q 402 208 392 252"
         fill="none"
         stroke="hsl(20 40% 30% / 0.75)"
-        strokeWidth="1.1"
+        strokeWidth="1"
         strokeLinecap="round"
       />
       {/* Inion crest highlight (thin lit edge above the shadow). */}
@@ -492,15 +492,15 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         d="M 380 178 Q 392 208 388 240"
         fill="none"
         stroke="hsl(28 60% 92% / 0.55)"
-        strokeWidth="0.6"
+        strokeWidth="0.5"
       />
       {/* Labiomental sulcus (chin/lip groove) */}
-      <path d="M 56 196 q 4 4 0 8" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.8" strokeLinecap="round" />
+      <path d="M 56 196 q 4 4 0 8" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.75" strokeLinecap="round" />
       {/* Mental protuberance highlight (more prominent chin) */}
-      <path d="M 50 210 q 4 -2 8 6" fill="none" stroke="hsl(20 40% 38% / 0.55)" strokeWidth="0.9" />
+      <path d="M 50 210 q 4 -2 8 6" fill="none" stroke="hsl(20 40% 38% / 0.55)" strokeWidth="1" />
       {/* Thyroid prominence (Adam's apple) — moved closer to chin so the
           thyromental distance is anatomically realistic. */}
-      <path d="M 122 240 q 4 -3 10 0" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.9" strokeLinecap="round" />
+      <path d="M 122 240 q 4 -3 10 0" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="1" strokeLinecap="round" />
 
       {/* ===== Sternocleidomastoid (SCM) — mastoid → sternoclavicular =====
           Coupled to jaw thrust: the lower (sternoclavicular) end is fixed,
@@ -530,7 +530,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         <path d="M 304 142 Q 286 208 248 296"
           fill="none" stroke="hsl(20 40% 40% / 0.4)" strokeWidth="1" strokeLinecap="round" />
         <path d="M 258 232 q 6 -2 10 4"
-          fill="none" stroke="hsl(20 40% 40% / 0.4)" strokeWidth="0.7" />
+          fill="none" stroke="hsl(20 40% 40% / 0.4)" strokeWidth="0.75" />
       </g>
 
       {/* ===== Platysma — fan of fine fibres tensed by jaw thrust =====
@@ -559,7 +559,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         <path d="M 152 236 Q 188 270 252 304" />
         {/* Faint anterior jugular vein over platysma */}
         <path d="M 132 232 Q 156 260 188 296"
-          stroke="hsl(220 45% 45% / 0.35)" strokeWidth="0.7" />
+          stroke="hsl(220 45% 45% / 0.35)" strokeWidth="0.75" />
       </g>
 
       {/* Hairline + ear */}
@@ -581,49 +581,49 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         fill="url(#bf-ear-concha)"
       />
       {/* Antihelix ridge */}
-      <path d="M 302 130 q 6 2 6 14" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.8" />
+      <path d="M 302 130 q 6 2 6 14" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.75" />
       {/* Tragus + lobule highlight */}
-      <path d="M 298 138 q 3 1 3 5" fill="none" stroke="hsl(20 40% 38%)" strokeWidth="0.7" />
-      <path d="M 296 154 q 3 2 5 0" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.7" />
+      <path d="M 298 138 q 3 1 3 5" fill="none" stroke="hsl(20 40% 38%)" strokeWidth="0.75" />
+      <path d="M 296 154 q 3 2 5 0" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.75" />
 
       {/* Eye */}
       <g>
-        <path d="M 138 116 q 14 -8 28 0 q -14 6 -28 0 z" fill="hsl(0 0% 100%)" stroke="hsl(20 40% 35%)" strokeWidth="0.8" />
+        <path d="M 138 116 q 14 -8 28 0 q -14 6 -28 0 z" fill="hsl(0 0% 100%)" stroke="hsl(20 40% 35%)" strokeWidth="0.75" />
         <circle cx="152" cy="116" r="3" fill="hsl(220 50% 25%)" />
         <path d="M 134 110 q 14 -6 30 0" fill="none" stroke="hsl(20 40% 30%)" strokeWidth="1" />
       </g>
 
       {/* Eyebrow */}
-      <path d="M 132 104 q 16 -6 34 -1" fill="none" stroke="hsl(20 45% 25%)" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M 132 104 q 16 -6 34 -1" fill="none" stroke="hsl(20 45% 25%)" strokeWidth="2" strokeLinecap="round" />
 
       {/* Nose — nostril sits on the INFERIOR (under) surface of the nose,
           between the tip (~x 36, y 148) and the subnasal point (x 76, y 158).
           Ala (nostril rim), columella, and a soft dorsum highlight. */}
       {/* Ala curve — outlines the fleshy nostril wing on the underside */}
       <path d="M 52 156 Q 62 162 74 158" fill="none"
-        stroke="hsl(20 40% 38%)" strokeWidth="0.9" strokeLinecap="round" />
+        stroke="hsl(20 40% 38%)" strokeWidth="1" strokeLinecap="round" />
       {/* Nostril opening — elongated, slightly tilted, on the underside */}
       <ellipse cx="62" cy="156" rx="4.2" ry="1.4"
         transform="rotate(-12 62 156)"
         fill="hsl(20 45% 18%)" />
       {/* Columella shadow at the medial base of the nose */}
       <path d="M 70 156 q 3 2 5 2" fill="none"
-        stroke="hsl(20 40% 35% / 0.7)" strokeWidth="0.7" strokeLinecap="round" />
+        stroke="hsl(20 40% 35% / 0.7)" strokeWidth="0.75" strokeLinecap="round" />
       {/* Subtle alar groove (where nostril wing meets cheek) */}
       <path d="M 74 154 q 4 4 6 8" fill="none"
-        stroke="hsl(20 40% 42% / 0.5)" strokeWidth="0.6" />
+        stroke="hsl(20 40% 42% / 0.5)" strokeWidth="0.5" />
       {/* Nasal dorsum highlight — thin lit ridge along the bridge */}
       <path d="M 78 130 Q 70 138 60 146" fill="none"
-        stroke="hsl(40 80% 94% / 0.55)" strokeWidth="0.6" strokeLinecap="round" />
+        stroke="hsl(40 80% 94% / 0.55)" strokeWidth="0.5" strokeLinecap="round" />
 
       {/* Cheek contour */}
-      <path d="M 120 150 Q 150 162 178 158" fill="none" stroke="hsl(20 40% 55% / 0.5)" strokeWidth="0.8" />
+      <path d="M 120 150 Q 150 162 178 158" fill="none" stroke="hsl(20 40% 55% / 0.5)" strokeWidth="0.75" />
 
       {/* LIPS */}
       {/* Upper lip (fixed — moves with maxilla) */}
-      <path d="M 80 158 Q 95 152 112 158 Q 120 162 110 166 L 84 164 Q 78 162 80 158 Z" fill="url(#bf-lip)" stroke="hsl(355 55% 30%)" strokeWidth="0.8" />
+      <path d="M 80 158 Q 95 152 112 158 Q 120 162 110 166 L 84 164 Q 78 162 80 158 Z" fill="url(#bf-lip)" stroke="hsl(355 55% 30%)" strokeWidth="0.75" />
       {/* Philtrum */}
-      <path d="M 90 148 L 92 156" stroke="hsl(20 40% 45%)" strokeWidth="0.6" />
+      <path d="M 90 148 L 92 156" stroke="hsl(20 40% 45%)" strokeWidth="0.5" />
 
       {/* ==================================================================
           ORAL CAVITY + AIRWAY (inside head, opens to the left at the lips)
@@ -636,17 +636,17 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       />
 
       {/* Hard palate (roof of mouth) */}
-      <path d="M 112 162 Q 170 158 230 168" fill="none" stroke="hsl(0 0% 100% / 0.6)" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M 112 162 Q 170 158 230 168" fill="none" stroke="hsl(0 0% 100% / 0.6)" strokeWidth="1.5" strokeLinecap="round" />
       {/* Soft palate + uvula (hangs down) */}
       <path
         d="M 230 168 Q 248 178 246 196 Q 244 208 238 200 Q 234 192 238 182"
         fill="hsl(355 50% 45%)"
         stroke="hsl(355 55% 30%)"
-        strokeWidth="0.9"
+        strokeWidth="1"
       />
 
       {/* Maxilla (upper jaw bone reference) */}
-      <path d="M 86 156 Q 130 152 220 160" fill="none" stroke="hsl(30 30% 55%)" strokeWidth="0.6" strokeDasharray="2 2" />
+      <path d="M 86 156 Q 130 152 220 160" fill="none" stroke="hsl(30 30% 55%)" strokeWidth="0.5" strokeDasharray="2 2" />
 
       {/* TEETH — upper arcade (fixed) */}
       <g fill="hsl(0 0% 98%)" stroke="hsl(30 25% 55%)" strokeWidth="0.5">
@@ -668,11 +668,11 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         }}
       >
         {/* Lower lip */}
-        <path d="M 60 168 Q 85 174 116 168 Q 120 172 110 178 Q 90 184 70 180 Q 56 178 60 168 Z" fill="url(#bf-lip)" stroke="hsl(355 55% 30%)" strokeWidth="0.8" />
+        <path d="M 60 168 Q 85 174 116 168 Q 120 172 110 178 Q 90 184 70 180 Q 56 178 60 168 Z" fill="url(#bf-lip)" stroke="hsl(355 55% 30%)" strokeWidth="0.75" />
         {/* Chin shadow */}
-        <path d="M 86 198 Q 100 210 116 218" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.7" />
+        <path d="M 86 198 Q 100 210 116 218" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.75" />
         {/* Mandible body + ramus */}
-        <path d="M 86 188 Q 140 220 230 218 Q 280 216 295 196 Q 305 175 290 150" fill="none" stroke="hsl(30 30% 50%)" strokeWidth="1.4" />
+        <path d="M 86 188 Q 140 220 230 218 Q 280 216 295 196 Q 305 175 290 150" fill="none" stroke="hsl(30 30% 50%)" strokeWidth="1.5" />
         {/* TEETH — lower arcade */}
         <g fill="hsl(0 0% 98%)" stroke="hsl(30 25% 55%)" strokeWidth="0.5">
           <rect x="84" y="170" width="6" height="9" rx="1" />
@@ -697,7 +697,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           strokeWidth="1"
         />
         {/* Median sulcus */}
-        <path d="M 110 180 Q 160 168 210 188" fill="none" stroke="hsl(355 55% 28% / 0.6)" strokeWidth="0.7" />
+        <path d="M 110 180 Q 160 168 210 188" fill="none" stroke="hsl(355 55% 28% / 0.6)" strokeWidth="0.75" />
         {/* Tongue-base lift — extra subtle anterior/superior shift of the
             posterior tongue + vallecula contour during jaw thrust, showing
             the tongue base pulled OFF the posterior pharyngeal wall (the
@@ -711,26 +711,26 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         >
           {/* Posterior tongue / base outline */}
           <path d="M 200 196 Q 222 204 230 220"
-            fill="none" stroke="hsl(355 55% 28% / 0.55)" strokeWidth="0.8" strokeLinecap="round" />
+            fill="none" stroke="hsl(355 55% 28% / 0.55)" strokeWidth="0.75" strokeLinecap="round" />
           {/* Vallecular dip just above the epiglottis */}
           <path d="M 224 218 q 4 -3 8 0"
-            fill="none" stroke="hsl(355 55% 28% / 0.45)" strokeWidth="0.7" strokeLinecap="round" />
+            fill="none" stroke="hsl(355 55% 28% / 0.45)" strokeWidth="0.75" strokeLinecap="round" />
         </g>
         {/* Genioglossus / geniohyoid muscle line — runs from the mental
             spine of the mandible back to the hyoid; it tenses with jaw
             thrust to pull the tongue and hyoid forward. */}
         <path d="M 96 196 Q 170 218 240 230"
-          fill="none" stroke="hsl(20 40% 38% / 0.5)" strokeWidth="0.7" strokeLinecap="round" />
+          fill="none" stroke="hsl(20 40% 38% / 0.5)" strokeWidth="0.75" strokeLinecap="round" />
         {/* Mylohyoid sling — thin floor-of-mouth contour */}
         <path d="M 100 204 Q 170 226 238 236"
-          fill="none" stroke="hsl(20 40% 42% / 0.35)" strokeWidth="0.6" strokeLinecap="round" />
+          fill="none" stroke="hsl(20 40% 42% / 0.35)" strokeWidth="0.5" strokeLinecap="round" />
         {/* HYOID (suspended from mandible) */}
         <ellipse cx="245" cy="232" rx="6" ry="2.4"
-          fill="hsl(0 0% 96%)" stroke="hsl(30 25% 50%)" strokeWidth="0.8" />
+          fill="hsl(0 0% 96%)" stroke="hsl(30 25% 50%)" strokeWidth="0.75" />
         {/* Thyrohyoid membrane — short line dropping from the hyoid toward
             the thyroid prominence, visibly stretched in jaw thrust. */}
         <path d="M 245 235 Q 240 244 232 252"
-          fill="none" stroke="hsl(20 40% 40% / 0.55)" strokeWidth="0.7" strokeLinecap="round" />
+          fill="none" stroke="hsl(20 40% 40% / 0.55)" strokeWidth="0.75" strokeLinecap="round" />
         {/* Hyoid shadow — gives the bone a sense of lift off the soft
             tissue when the jaw is thrust. */}
         <ellipse cx="246" cy="236" rx="7" ry="1.2"
@@ -753,7 +753,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         d="M 240 226 Q 252 220 260 226 L 258 252 Q 250 258 244 252 Z"
         fill="hsl(350 55% 50%)"
         stroke="hsl(350 55% 30%)"
-        strokeWidth="0.9"
+        strokeWidth="1"
       />
 
       {/* THYROID & CRICOID cartilage */}
@@ -766,14 +766,14 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       {/* TRACHEA with cartilage rings */}
       <rect x="246" y="274" width="14" height="40" rx="2" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
       {[280, 287, 294, 301, 308].map((y) => (
-        <line key={y} x1="247" y1={y} x2="259" y2={y} stroke="hsl(var(--foreground) / 0.35)" strokeWidth="0.6" />
+        <line key={y} x1="247" y1={y} x2="259" y2={y} stroke="hsl(var(--foreground) / 0.35)" strokeWidth="0.5" />
       ))}
 
       {/* Oesophagus (posterior, dashed) */}
       <path d="M 280 268 Q 282 295 280 320" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="2 3" />
 
       {/* Posterior pharyngeal wall mucosa shading */}
-      <path d="M 270 200 Q 282 240 278 285" fill="none" stroke="hsl(350 50% 35%)" strokeWidth="1.4" />
+      <path d="M 270 200 Q 282 240 278 285" fill="none" stroke="hsl(350 50% 35%)" strokeWidth="1.5" />
 
       {/* ==================================================================
           BONFILS SCOPE
@@ -811,7 +811,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
               </g>
               {/* Eyepiece on top of handle */}
               <circle cx={handleAnchor.x} cy={handleAnchor.y - 124} r="11"
-                fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1.4" />
+                fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1.5" />
               <circle cx={handleAnchor.x} cy={handleAnchor.y - 124} r="5"
                 fill="hsl(var(--primary) / 0.45)" />
               {/* O₂ side-port on lateral aspect of handle */}
@@ -819,30 +819,30 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
                 fill="hsl(var(--accent))" />
               <line x1={handleAnchor.x - 25} y1={handleAnchor.y - 80}
                 x2={handleAnchor.x - 42} y2={handleAnchor.y - 86}
-                stroke="hsl(var(--accent))" strokeWidth="1.4" />
+                stroke="hsl(var(--accent))" strokeWidth="1.5" />
 
               {/* External shaft — HORIZONTAL at lip level */}
               <line x1={handleAnchor.x} y1={handleAnchor.y}
                 x2={ENTRY.x} y2={ENTRY.y}
-                stroke="url(#bf-shaft)" strokeWidth="6.5" strokeLinecap="round" />
+                stroke="url(#bf-shaft)" strokeWidth="3" strokeLinecap="round" />
               <line x1={handleAnchor.x + 1} y1={handleAnchor.y - 1}
                 x2={ENTRY.x - 2} y2={ENTRY.y - 2}
-                stroke="hsl(0 0% 100% / 0.55)" strokeWidth="1.2" strokeLinecap="round" />
+                stroke="hsl(0 0% 100% / 0.55)" strokeWidth="1" strokeLinecap="round" />
 
               {/* ETT pre-loaded over external shaft */}
               {ettEndT > 0 && (
                 <g>
                   <line x1={handleAnchor.x} y1={handleAnchor.y}
                     x2={ettX} y2={ettY}
-                    stroke="url(#bf-ett)" strokeWidth="14" strokeLinecap="round" />
+                    stroke="url(#bf-ett)" strokeWidth="3" strokeLinecap="round" />
                   {/* Pilot tubing + balloon — drape DOWNWARD from proximal end */}
                   <path d={`M ${handleAnchor.x + 4} ${handleAnchor.y + 6}
                             q -8 14 -22 16`}
-                    fill="none" stroke="hsl(var(--primary) / 0.6)" strokeWidth="1.2" />
+                    fill="none" stroke="hsl(var(--primary) / 0.6)" strokeWidth="1" />
                   <ellipse cx={handleAnchor.x - 22} cy={handleAnchor.y + 26}
                     rx="6" ry="3.6"
                     fill="hsl(var(--primary) / 0.35)"
-                    stroke="hsl(var(--primary))" strokeWidth="0.8" />
+                    stroke="hsl(var(--primary))" strokeWidth="0.75" />
                 </g>
               )}
 
@@ -850,17 +850,17 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
 
             {/* === INTRA-ORAL shaft — curves through airway, never crosses face === */}
             <path d={innerPath}
-              stroke="url(#bf-shaft)" strokeWidth="6.5"
+              stroke="url(#bf-shaft)" strokeWidth="3"
               strokeLinecap="round" fill="none"
               style={{ transition: `d 900ms ${ease}` }} />
             <path d={innerPath}
-              stroke="hsl(0 0% 100% / 0.4)" strokeWidth="1.1"
+              stroke="hsl(0 0% 100% / 0.4)" strokeWidth="1"
               strokeLinecap="round" fill="none" />
 
             {/* ETT railroaded into the airway (only late, step 4) */}
             {step === 4 && (
               <path d={innerPath}
-                stroke="hsl(var(--primary) / 0.55)" strokeWidth="13"
+                stroke="hsl(var(--primary) / 0.55)" strokeWidth="3"
                 strokeLinecap="round" fill="none" />
             )}
 
@@ -885,14 +885,14 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       {step === 5 && (
         <g>
           <path d="M 30 130 Q 130 160 230 230 L 252 270"
-            stroke="hsl(var(--primary) / 0.25)" strokeWidth="22" strokeLinecap="round" fill="none" />
+            stroke="hsl(var(--primary) / 0.25)" strokeWidth="3" strokeLinecap="round" fill="none" />
           <path d="M 30 130 Q 130 160 230 230 L 252 270"
-            stroke="url(#bf-ett)" strokeWidth="13" strokeLinecap="round" fill="none" />
+            stroke="url(#bf-ett)" strokeWidth="3" strokeLinecap="round" fill="none" />
           <path d="M 32 128 Q 130 158 230 228"
             stroke="hsl(0 0% 100% / 0.45)" strokeWidth="2" fill="none" />
           {/* Cuff inflated below cords */}
           <ellipse cx="254" cy="288" rx="11" ry="7"
-            fill="hsl(var(--primary) / 0.5)" stroke="hsl(var(--primary))" strokeWidth="1.2" />
+            fill="hsl(var(--primary) / 0.5)" stroke="hsl(var(--primary))" strokeWidth="1" />
           <text x="270" y="291" fontSize="9" fill="hsl(var(--muted-foreground))">cuff inflated</text>
           {/* Pilot balloon */}
           <g transform="translate(20, 118)">
@@ -933,7 +933,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         ].map((l, i) => (
           <g key={`a-${i}`}>
             <line x1={l.tx} y1={l.ty} x2={l.lx} y2={l.ly}
-              stroke="hsl(var(--muted-foreground) / 0.55)" strokeWidth="0.6" />
+              stroke="hsl(var(--muted-foreground) / 0.55)" strokeWidth="0.5" />
             <circle cx={l.tx} cy={l.ty} r="1.6" fill="hsl(var(--foreground) / 0.7)" />
             <text x={l.lx + (l.align === "start" ? 4 : l.align === "end" ? -4 : 0)} y={l.ly} fontSize="9"
               fill="hsl(var(--foreground))" textAnchor={l.align}
@@ -967,7 +967,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
               {items.map((l) => (
                 <g key={`m-${l.n}`}>
                   <circle cx={l.mx} cy={l.my} r="7"
-                    fill="hsl(var(--accent))" stroke="hsl(var(--background))" strokeWidth="1.4" />
+                    fill="hsl(var(--accent))" stroke="hsl(var(--background))" strokeWidth="1.5" />
                   <text x={l.mx} y={l.my + 3} fontSize="9" fontWeight="700"
                     textAnchor="middle" fill="hsl(var(--accent-foreground))">
                     {l.n}
@@ -1019,7 +1019,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         <text x="42" y="-4" fontSize="9" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontWeight="600">
           eyepiece view
         </text>
-        <circle cx="42" cy="42" r="40" fill="url(#bf-eye)" stroke="hsl(var(--border))" strokeWidth="1.4" />
+        <circle cx="42" cy="42" r="40" fill="url(#bf-eye)" stroke="hsl(var(--border))" strokeWidth="1.5" />
         <g clipPath="url(#bf-eye-clip)">
           {(eyepieceContent === "wall" || eyepieceContent === "epiglottis" ||
             eyepieceContent === "cords" || eyepieceContent === "carina" ||
@@ -1033,8 +1033,8 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
 
           {eyepieceContent === "wall" && (
             <g>
-              <path d="M 6 60 Q 30 40 78 56" fill="none" stroke="hsl(350 80% 35%)" strokeWidth="0.8" />
-              <path d="M 10 70 Q 40 52 80 66" fill="none" stroke="hsl(350 80% 35%)" strokeWidth="0.6" />
+              <path d="M 6 60 Q 30 40 78 56" fill="none" stroke="hsl(350 80% 35%)" strokeWidth="0.75" />
+              <path d="M 10 70 Q 40 52 80 66" fill="none" stroke="hsl(350 80% 35%)" strokeWidth="0.5" />
               <text x="42" y="76" fontSize="7" fill="hsl(0 0% 100%)" textAnchor="middle">pharyngeal wall</text>
             </g>
           )}
@@ -1042,28 +1042,28 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           {eyepieceContent === "epiglottis" && (
             <g>
               <path d="M 16 50 Q 42 24 68 50 Q 64 68 42 70 Q 20 68 16 50 Z"
-                fill="hsl(350 60% 50%)" stroke="hsl(350 60% 30%)" strokeWidth="0.8" />
-              <path d="M 42 30 Q 42 50 42 66" stroke="hsl(350 60% 30%)" strokeWidth="0.6" fill="none" />
+                fill="hsl(350 60% 50%)" stroke="hsl(350 60% 30%)" strokeWidth="0.75" />
+              <path d="M 42 30 Q 42 50 42 66" stroke="hsl(350 60% 30%)" strokeWidth="0.5" fill="none" />
               <text x="42" y="80" fontSize="7" fill="hsl(0 0% 100%)" textAnchor="middle">epiglottis</text>
             </g>
           )}
 
           {eyepieceContent === "cords" && (
             <g>
-              <path d="M 42 22 L 24 64 Q 42 60 42 56 Z" fill="hsl(0 0% 95%)" stroke="hsl(0 0% 60%)" strokeWidth="0.6" />
-              <path d="M 42 22 L 60 64 Q 42 60 42 56 Z" fill="hsl(0 0% 95%)" stroke="hsl(0 0% 60%)" strokeWidth="0.6" />
+              <path d="M 42 22 L 24 64 Q 42 60 42 56 Z" fill="hsl(0 0% 95%)" stroke="hsl(0 0% 60%)" strokeWidth="0.5" />
+              <path d="M 42 22 L 60 64 Q 42 60 42 56 Z" fill="hsl(0 0% 95%)" stroke="hsl(0 0% 60%)" strokeWidth="0.5" />
               <ellipse cx="28" cy="66" rx="4" ry="3" fill="hsl(350 50% 50%)" />
               <ellipse cx="56" cy="66" rx="4" ry="3" fill="hsl(350 50% 50%)" />
-              <path d="M 42 24 L 42 60" stroke="hsl(0 0% 15%)" strokeWidth="0.8" />
+              <path d="M 42 24 L 42 60" stroke="hsl(0 0% 15%)" strokeWidth="0.75" />
               <text x="42" y="80" fontSize="7" fill="hsl(0 0% 100%)" textAnchor="middle">cords centred</text>
             </g>
           )}
 
           {eyepieceContent === "tube" && (
             <g>
-              <path d="M 42 22 L 24 64" stroke="hsl(0 0% 70%)" strokeWidth="0.6" fill="none" />
-              <path d="M 42 22 L 60 64" stroke="hsl(0 0% 70%)" strokeWidth="0.6" fill="none" />
-              <ellipse cx="42" cy="48" rx="14" ry="10" fill="hsl(var(--primary) / 0.55)" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+              <path d="M 42 22 L 24 64" stroke="hsl(0 0% 70%)" strokeWidth="0.5" fill="none" />
+              <path d="M 42 22 L 60 64" stroke="hsl(0 0% 70%)" strokeWidth="0.5" fill="none" />
+              <ellipse cx="42" cy="48" rx="14" ry="10" fill="hsl(var(--primary) / 0.55)" stroke="hsl(var(--primary))" strokeWidth="0.75" />
               <ellipse cx="42" cy="48" rx="9" ry="6" fill="hsl(0 0% 8%)" />
               <text x="42" y="80" fontSize="7" fill="hsl(0 0% 100%)" textAnchor="middle">ETT through cords</text>
             </g>
@@ -1075,8 +1075,8 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
               <path d="M 42 18 L 62 70" stroke="hsl(350 50% 30%)" strokeWidth="2" />
               {[28, 36, 44, 52].map((y, i) => (
                 <g key={i}>
-                  <path d={`M ${42 - (y - 20) * 0.4} ${y} q -2 -1 -4 0`} fill="none" stroke="hsl(0 0% 90% / 0.6)" strokeWidth="0.6" />
-                  <path d={`M ${42 + (y - 20) * 0.4} ${y} q 2 -1 4 0`} fill="none" stroke="hsl(0 0% 90% / 0.6)" strokeWidth="0.6" />
+                  <path d={`M ${42 - (y - 20) * 0.4} ${y} q -2 -1 -4 0`} fill="none" stroke="hsl(0 0% 90% / 0.6)" strokeWidth="0.5" />
+                  <path d={`M ${42 + (y - 20) * 0.4} ${y} q 2 -1 4 0`} fill="none" stroke="hsl(0 0% 90% / 0.6)" strokeWidth="0.5" />
                 </g>
               ))}
               <text x="42" y="80" fontSize="7" fill="hsl(0 0% 100%)" textAnchor="middle">carina</text>
@@ -1099,7 +1099,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         </g>
         <line x1="42" y1="6" x2="42" y2="78" stroke="hsl(var(--foreground) / 0.18)" strokeWidth="0.5" />
         <line x1="6" y1="42" x2="78" y2="42" stroke="hsl(var(--foreground) / 0.18)" strokeWidth="0.5" />
-        <circle cx="42" cy="42" r="40" fill="none" stroke="hsl(var(--border))" strokeWidth="1.4" />
+        <circle cx="42" cy="42" r="40" fill="none" stroke="hsl(var(--border))" strokeWidth="1.5" />
       </g>
 
       {/* Live indicators */}

@@ -89,8 +89,8 @@ const AmineSVG = ({ mode }: { mode: Mode }) => {
       {isQuat ? (
         <g>
           <line x1="160" y1="60" x2="240" y2="60" stroke="hsl(var(--destructive))" strokeWidth="2" />
-          <line x1="232" y1="48" x2="248" y2="72" stroke="hsl(var(--destructive))" strokeWidth="2.5" />
-          <line x1="248" y1="48" x2="232" y2="72" stroke="hsl(var(--destructive))" strokeWidth="2.5" />
+          <line x1="232" y1="48" x2="248" y2="72" stroke="hsl(var(--destructive))" strokeWidth="2" />
+          <line x1="248" y1="48" x2="232" y2="72" stroke="hsl(var(--destructive))" strokeWidth="2" />
           <text x="200" y="50" textAnchor="middle" fontSize="9" fill="hsl(var(--destructive))" fontWeight={600} fontFamily="sans-serif">
             blocked
           </text>

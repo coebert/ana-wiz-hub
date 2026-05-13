@@ -61,10 +61,10 @@ const AddisonianCrisisDiagram = () => {
 
           {/* Cortisol output FAILED - red X */}
           <g transform="translate(220 310)">
-            <line x1="0" y1="0" x2="30" y2="30" stroke="hsl(var(--destructive))" strokeWidth="4" strokeLinecap="round">
+            <line x1="0" y1="0" x2="30" y2="30" stroke="hsl(var(--destructive))" strokeWidth="3" strokeLinecap="round">
               <animate attributeName="opacity" values="0.4;1;0.4" dur="1.2s" repeatCount="indefinite" />
             </line>
-            <line x1="30" y1="0" x2="0" y2="30" stroke="hsl(var(--destructive))" strokeWidth="4" strokeLinecap="round">
+            <line x1="30" y1="0" x2="0" y2="30" stroke="hsl(var(--destructive))" strokeWidth="3" strokeLinecap="round">
               <animate attributeName="opacity" values="0.4;1;0.4" dur="1.2s" repeatCount="indefinite" />
             </line>
           </g>

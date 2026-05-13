@@ -223,16 +223,16 @@ const TtmTargetExplorerDiagram = () => {
             })()}
 
             {/* Y axis */}
-            <line x1={40} y1={20} x2={40} y2={180} stroke="hsl(var(--border))" strokeWidth={0.8} />
+            <line x1={40} y1={20} x2={40} y2={180} stroke="hsl(var(--border))" strokeWidth={0.75} />
             {/* Temperature gridlines */}
             {[33, 34, 35, 36, 37, 38].map((t) => (
               <g key={t}>
-                <line x1={40} y1={tToY(t)} x2={460} y2={tToY(t)} stroke="hsl(var(--muted-foreground))" strokeWidth={0.3} strokeDasharray="2 3" opacity={0.4} />
+                <line x1={40} y1={tToY(t)} x2={460} y2={tToY(t)} stroke="hsl(var(--muted-foreground))" strokeWidth={0.5} strokeDasharray="2 3" opacity={0.4} />
                 <text x={36} y={tToY(t) + 3} fontSize={7} fill="hsl(var(--muted-foreground))" textAnchor="end">{t}°</text>
               </g>
             ))}
             {/* X axis */}
-            <line x1={40} y1={180} x2={460} y2={180} stroke="hsl(var(--border))" strokeWidth={0.8} />
+            <line x1={40} y1={180} x2={460} y2={180} stroke="hsl(var(--border))" strokeWidth={0.75} />
             {[0, 12, 24, 36, 48, 60, 72].map((h) => (
               <g key={h}>
                 <line x1={hToX(h)} y1={180} x2={hToX(h)} y2={183} stroke="hsl(var(--muted-foreground))" strokeWidth={0.5} />
@@ -247,7 +247,7 @@ const TtmTargetExplorerDiagram = () => {
             )}
 
             {/* Fever cap line */}
-            <line x1={40} y1={tToY(fevercapT)} x2={460} y2={tToY(fevercapT)} stroke={targets.fever.color} strokeWidth={1.2} strokeDasharray="4 3" opacity={0.7} />
+            <line x1={40} y1={tToY(fevercapT)} x2={460} y2={tToY(fevercapT)} stroke={targets.fever.color} strokeWidth={1} strokeDasharray="4 3" opacity={0.7} />
             {showLabels && (
               <text x={455} y={tToY(fevercapT) - 3} fontSize={6.5} fill={targets.fever.color} textAnchor="end" fontWeight="600">Fever cap 37.7 °C</text>
             )}
@@ -267,7 +267,7 @@ const TtmTargetExplorerDiagram = () => {
             })()}
 
             {/* The temperature curve */}
-            <path d={path} fill="none" stroke={info.color} strokeWidth={2.6} strokeLinejoin="round" strokeLinecap="round" />
+            <path d={path} fill="none" stroke={info.color} strokeWidth={3} strokeLinejoin="round" strokeLinecap="round" />
 
             {/* Target marker */}
             <circle cx={hToX(induceEnd + 12)} cy={tToY(targetT)} r={3.2} fill={info.color} />

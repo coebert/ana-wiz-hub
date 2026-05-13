@@ -64,7 +64,7 @@ export const DiathermyDiagram = () => {
               </text>
 
               {/* generator */}
-              <rect x="20" y="20" width="80" height="40" rx="4" fill="hsl(var(--primary))" opacity="0.85" />
+              <rect x="20" y="20" width="80" height="40" rx="4" fill="hsl(var(--primary))" opacity="0.85" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x="60" y="45" textAnchor="middle" className="fill-primary-foreground" fontSize="10" fontWeight="600">
                 ESU 0.4–3 MHz
               </text>
@@ -94,7 +94,7 @@ export const DiathermyDiagram = () => {
                   ))}
 
                   {/* return plate on thigh */}
-                  <rect x="400" y="200" width="120" height="20" rx="3" fill="hsl(var(--primary))" opacity="0.7" />
+                  <rect x="400" y="200" width="120" height="20" rx="3" fill="hsl(var(--primary))" opacity="0.7" stroke="hsl(var(--border))" strokeWidth="0.75" />
                   <text x="460" y="195" textAnchor="middle" className="fill-foreground" fontSize="9" fontWeight="600">
                     return plate
                   </text>
@@ -280,7 +280,7 @@ export const DiathermyDiagram = () => {
               {/* current funnelling through narrow base */}
               {[0, 1, 2].map((i) => (
                 <path key={i} d={`M 155 75 Q ${145 + i * 5} 130 ${180 + i * 30} 175`}
-                  stroke="hsl(var(--destructive))" strokeWidth="1.2" fill="none" opacity="0.5" strokeDasharray="2 2">
+                  stroke="hsl(var(--destructive))" strokeWidth="1" fill="none" opacity="0.5" strokeDasharray="2 2">
                   <animate attributeName="opacity" values="0.2;0.8;0.2" dur="1.2s" repeatCount="indefinite" begin={`${i * 0.3}s`} />
                 </path>
               ))}

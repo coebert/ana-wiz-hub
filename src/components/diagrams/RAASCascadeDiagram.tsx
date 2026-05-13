@@ -182,13 +182,13 @@ export const RAASCascadeDiagram = () => {
         </g>
 
         {/* Arrow + Renin label (label placed RIGHT of arrow at x=400) */}
-        <line x1={cx} y1={48} x2={cx} y2={92} stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" markerEnd="url(#raasArr)" opacity={dim("renin") ? 0.2 : 0.7} />
+        <line x1={cx} y1={48} x2={cx} y2={92} stroke="hsl(var(--muted-foreground))" strokeWidth="1" markerEnd="url(#raasArr)" opacity={dim("renin") ? 0.2 : 0.7} />
         <g className="cursor-pointer" onClick={toggle("renin")} opacity={dim("renin") ? 0.3 : 1}>
           <rect x={395} y={58} width={70} height={20} rx={4}
             fill={hl("renin") ? "hsl(260 55% 55%/0.2)" : "hsl(260 55% 55%/0.08)"}
             stroke="hsl(260 55% 55%)" strokeWidth={hl("renin") ? 1.5 : 0.8} />
           <text x={430} y={72} fontSize="8" fill="hsl(260 55% 55%)" textAnchor="middle" fontWeight="600">Renin</text>
-          <line x1={395} y1={68} x2={cx + boxW / 2 + 2} y2={68} stroke="hsl(260 55% 55%)" strokeWidth="0.6" strokeDasharray="2 2" opacity="0.5" />
+          <line x1={395} y1={68} x2={cx + boxW / 2 + 2} y2={68} stroke="hsl(260 55% 55%)" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.5" />
         </g>
 
         {/* ANG I y=92..130 */}
@@ -201,13 +201,13 @@ export const RAASCascadeDiagram = () => {
         </g>
 
         {/* Arrow + ACE label (right) */}
-        <line x1={cx} y1={132} x2={cx} y2={176} stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" markerEnd="url(#raasArr)" opacity={dim("ace") ? 0.2 : 0.7} />
+        <line x1={cx} y1={132} x2={cx} y2={176} stroke="hsl(var(--muted-foreground))" strokeWidth="1" markerEnd="url(#raasArr)" opacity={dim("ace") ? 0.2 : 0.7} />
         <g className="cursor-pointer" onClick={toggle("ace")} opacity={dim("ace") ? 0.3 : 1}>
           <rect x={395} y={142} width={80} height={20} rx={4}
             fill={hl("ace") ? "hsl(0 50% 50%/0.2)" : "hsl(0 50% 50%/0.08)"}
             stroke="hsl(0 50% 50%)" strokeWidth={hl("ace") ? 1.5 : 0.8} />
           <text x={435} y={156} fontSize="8" fill="hsl(0 50% 50%)" textAnchor="middle" fontWeight="600">ACE (lung)</text>
-          <line x1={395} y1={152} x2={cx + boxW / 2 + 2} y2={152} stroke="hsl(0 50% 50%)" strokeWidth="0.6" strokeDasharray="2 2" opacity="0.5" />
+          <line x1={395} y1={152} x2={cx + boxW / 2 + 2} y2={152} stroke="hsl(0 50% 50%)" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.5" />
         </g>
 
         {/* ANG II y=178..216 */}
@@ -222,7 +222,7 @@ export const RAASCascadeDiagram = () => {
         {/* ===== BRANCHING FROM ANG II ===== */}
         {/* AT₁ — left branch — box x=160..300, y=250..360 */}
         <path d="M 280 216 Q 260 235 240 250" fill="none"
-          stroke="hsl(0 55% 48%)" strokeWidth="1.2" markerEnd="url(#raasArrRed)" opacity={dim("at1") ? 0.2 : 0.6} />
+          stroke="hsl(0 55% 48%)" strokeWidth="1" markerEnd="url(#raasArrRed)" opacity={dim("at1") ? 0.2 : 0.6} />
         <g className="cursor-pointer" onClick={toggle("at1")} opacity={dim("at1") ? 0.3 : 1}>
           <rect x={160} y={252} width={140} height={108} rx={6}
             fill={hl("at1") ? "hsl(0 55% 48%/0.15)" : "hsl(0 55% 48%/0.05)"}
@@ -243,7 +243,7 @@ export const RAASCascadeDiagram = () => {
 
         {/* AT₂ — right branch — box x=470..610, y=250..340 */}
         <path d="M 360 216 Q 410 235 470 252" fill="none"
-          stroke="hsl(210 50% 50%)" strokeWidth="1.2" markerEnd="url(#raasArrBlue)" opacity={dim("at2") ? 0.2 : 0.6} />
+          stroke="hsl(210 50% 50%)" strokeWidth="1" markerEnd="url(#raasArrBlue)" opacity={dim("at2") ? 0.2 : 0.6} />
         <g className="cursor-pointer" onClick={toggle("at2")} opacity={dim("at2") ? 0.3 : 1}>
           <rect x={470} y={254} width={140} height={88} rx={6}
             fill={hl("at2") ? "hsl(210 50% 50%/0.15)" : "hsl(210 50% 50%/0.05)"}
@@ -261,7 +261,7 @@ export const RAASCascadeDiagram = () => {
         </g>
 
         {/* Aldosterone — from AT₁ — box x=160..300, y=400..470 */}
-        <line x1={200} y1={360} x2={200} y2={398} stroke="hsl(45 60% 48%)" strokeWidth="1.2" markerEnd="url(#raasArr)" opacity={dim("aldosterone") ? 0.2 : 0.6} />
+        <line x1={200} y1={360} x2={200} y2={398} stroke="hsl(45 60% 48%)" strokeWidth="1" markerEnd="url(#raasArr)" opacity={dim("aldosterone") ? 0.2 : 0.6} />
         <g className="cursor-pointer" onClick={toggle("aldosterone")} opacity={dim("aldosterone") ? 0.3 : 1}>
           <rect x={160} y={400} width={140} height={70} rx={6}
             fill={hl("aldosterone") ? "hsl(45 60% 48%/0.15)" : "hsl(45 60% 48%/0.05)"}
@@ -274,7 +274,7 @@ export const RAASCascadeDiagram = () => {
 
         {/* ADH — from AT₁, routed to right of cascade — box x=470..610, y=400..460 */}
         <path d="M 300 320 Q 400 320 470 420" fill="none"
-          stroke="hsl(200 50% 48%)" strokeWidth="1.2" markerEnd="url(#raasArr)" opacity={dim("adh") ? 0.2 : 0.6} />
+          stroke="hsl(200 50% 48%)" strokeWidth="1" markerEnd="url(#raasArr)" opacity={dim("adh") ? 0.2 : 0.6} />
         <g className="cursor-pointer" onClick={toggle("adh")} opacity={dim("adh") ? 0.3 : 1}>
           <rect x={470} y={400} width={140} height={60} rx={6}
             fill={hl("adh") ? "hsl(200 50% 48%/0.15)" : "hsl(200 50% 48%/0.05)"}
@@ -293,7 +293,7 @@ export const RAASCascadeDiagram = () => {
           <text x={drugX + drugW / 2} y={67} fontSize="7.5" fill="hsl(90 45% 40%)" textAnchor="middle" fontWeight="700">DRI</text>
           <text x={drugX + drugW / 2} y={78} fontSize="6" fill="hsl(90 45% 40%)" textAnchor="middle" opacity="0.7">(aliskiren)</text>
         </g>
-        <line x1={drugX + drugW} y1={68} x2={cx - boxW / 2 - 4} y2={68} stroke="hsl(90 45% 40%)" strokeWidth="0.9" strokeDasharray="3 2" opacity={dim("dri") ? 0.15 : 0.55} />
+        <line x1={drugX + drugW} y1={68} x2={cx - boxW / 2 - 4} y2={68} stroke="hsl(90 45% 40%)" strokeWidth="1" strokeDasharray="3 2" opacity={dim("dri") ? 0.15 : 0.55} />
         <text x={cx - boxW / 2 - 8} y={71} fontSize="9" fill="hsl(90 45% 40%)" textAnchor="end" fontWeight="800" opacity={dim("dri") ? 0.2 : 0.85}>✕</text>
 
         {/* ACEi — blocks ACE (target: ACE label at y≈152) */}
@@ -304,11 +304,11 @@ export const RAASCascadeDiagram = () => {
           <text x={drugX + drugW / 2} y={151} fontSize="7.5" fill="hsl(150 55% 40%)" textAnchor="middle" fontWeight="700">ACE Inhibitors</text>
           <text x={drugX + drugW / 2} y={162} fontSize="6" fill="hsl(150 55% 40%)" textAnchor="middle" opacity="0.7">(ramipril, enalapril)</text>
         </g>
-        <line x1={drugX + drugW} y1={152} x2={cx - boxW / 2 - 4} y2={152} stroke="hsl(150 55% 40%)" strokeWidth="0.9" strokeDasharray="3 2" opacity={dim("acei") ? 0.15 : 0.55} />
+        <line x1={drugX + drugW} y1={152} x2={cx - boxW / 2 - 4} y2={152} stroke="hsl(150 55% 40%)" strokeWidth="1" strokeDasharray="3 2" opacity={dim("acei") ? 0.15 : 0.55} />
         <text x={cx - boxW / 2 - 8} y={155} fontSize="9" fill="hsl(150 55% 40%)" textAnchor="end" fontWeight="800" opacity={dim("acei") ? 0.2 : 0.85}>✕</text>
         {hl("acei") && (
           <g>
-            <rect x={400} y={476} width={210} height={32} rx={4} fill="hsl(150 50% 40%/0.1)" stroke="hsl(150 50% 40%)" strokeWidth="0.6" />
+            <rect x={400} y={476} width={210} height={32} rx={4} fill="hsl(150 50% 40%/0.1)" stroke="hsl(150 50% 40%)" strokeWidth="0.5" />
             <text x={505} y={490} fontSize="6.5" fill="hsl(150 55% 40%)" textAnchor="middle" fontWeight="600">Also: ↑ Bradykinin</text>
             <text x={505} y={501} fontSize="6" fill="hsl(150 55% 40%)" textAnchor="middle" opacity="0.7">→ vasodilation, cough (10-15%)</text>
           </g>
@@ -322,7 +322,7 @@ export const RAASCascadeDiagram = () => {
           <text x={drugX + drugW / 2} y={291} fontSize="7.5" fill="hsl(180 50% 40%)" textAnchor="middle" fontWeight="700">ARBs</text>
           <text x={drugX + drugW / 2} y={302} fontSize="6" fill="hsl(180 50% 40%)" textAnchor="middle" opacity="0.7">(losartan, candesartan)</text>
         </g>
-        <line x1={drugX + drugW} y1={293} x2={158} y2={293} stroke="hsl(180 50% 40%)" strokeWidth="0.9" strokeDasharray="3 2" opacity={dim("arb") ? 0.15 : 0.55} />
+        <line x1={drugX + drugW} y1={293} x2={158} y2={293} stroke="hsl(180 50% 40%)" strokeWidth="1" strokeDasharray="3 2" opacity={dim("arb") ? 0.15 : 0.55} />
         <text x={155} y={296} fontSize="9" fill="hsl(180 50% 40%)" textAnchor="end" fontWeight="800" opacity={dim("arb") ? 0.2 : 0.85}>✕</text>
 
         {/* MRA — blocks aldosterone receptor */}
@@ -334,16 +334,16 @@ export const RAASCascadeDiagram = () => {
           <text x={drugX + drugW / 2} y={445} fontSize="6" fill="hsl(320 50% 45%)" textAnchor="middle" opacity="0.7">(spironolactone,</text>
           <text x={drugX + drugW / 2} y={453} fontSize="6" fill="hsl(320 50% 45%)" textAnchor="middle" opacity="0.7">eplerenone)</text>
         </g>
-        <line x1={drugX + drugW} y1={435} x2={158} y2={435} stroke="hsl(320 50% 45%)" strokeWidth="0.9" strokeDasharray="3 2" opacity={dim("mra") ? 0.15 : 0.55} />
+        <line x1={drugX + drugW} y1={435} x2={158} y2={435} stroke="hsl(320 50% 45%)" strokeWidth="1" strokeDasharray="3 2" opacity={dim("mra") ? 0.15 : 0.55} />
         <text x={155} y={438} fontSize="9" fill="hsl(320 50% 45%)" textAnchor="end" fontWeight="800" opacity={dim("mra") ? 0.2 : 0.85}>✕</text>
 
         {/* ===== NEGATIVE FEEDBACK ARROW — runs along far right, well clear of AT₂/ADH ===== */}
         <path d="M 380 197 Q 625 197 625 110 Q 625 30 540 22 Q 460 16 380 22" fill="none"
-          stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" strokeDasharray="4 2" markerEnd="url(#raasArr)" opacity="0.3" />
+          stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" strokeDasharray="4 2" markerEnd="url(#raasArr)" opacity="0.3" />
         <text x={620} y={130} fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.55" transform="rotate(90, 620, 130)">negative feedback (↓ renin)</text>
 
         {/* ===== SUMMARY BOX (bottom centre) ===== */}
-        <rect x={170} y={540} width={300} height={100} rx={6} fill="hsl(var(--secondary))" fillOpacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.8" />
+        <rect x={170} y={540} width={300} height={100} rx={6} fill="hsl(var(--secondary))" fillOpacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x={320} y={558} fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">Net Effect of RAAS</text>
         {[
           "↑ Blood pressure (vasoconstriction)",

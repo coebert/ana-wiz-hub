@@ -189,7 +189,7 @@ export const NCEPODClassificationDiagram = () => {
                   x2={tip.x}
                   y2={tip.y}
                   stroke="hsl(var(--foreground))"
-                  strokeWidth={2.5}
+                  strokeWidth={2}
                   strokeLinecap="round"
                   style={{ transition: "all 500ms cubic-bezier(0.4,0,0.2,1)" }}
                 />

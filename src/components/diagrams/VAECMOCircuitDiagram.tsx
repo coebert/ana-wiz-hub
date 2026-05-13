@@ -182,21 +182,21 @@ export const VAECMOCircuitDiagram = () => {
           <path d="M 170 88 Q 165 95, 165 105 L 215 105 Q 215 95, 210 88 Z" fill="url(#vae-skin)" stroke="hsl(var(--clinical))" strokeWidth="1" opacity="0.9" />
           {/* Thorax — trapezoid shoulders narrowing to ribs */}
           <path d="M 165 105 Q 110 110, 95 145 L 95 270 Q 110 285, 130 290 L 250 290 Q 270 285, 285 270 L 285 145 Q 270 110, 215 105 Z"
-            fill="url(#vae-skin)" stroke="hsl(var(--clinical))" strokeWidth="1.2" opacity="0.9" />
+            fill="url(#vae-skin)" stroke="hsl(var(--clinical))" strokeWidth="1" opacity="0.9" />
           {/* Ribs hinted */}
           {[0, 1, 2, 3, 4].map((i) => (
             <path key={`rib${i}`}
               d={`M 110 ${135 + i * 22} Q 190 ${128 + i * 22}, 270 ${135 + i * 22}`}
-              stroke="hsl(var(--clinical))" strokeWidth="0.6" fill="none" opacity="0.18" />
+              stroke="hsl(var(--clinical))" strokeWidth="0.5" fill="none" opacity="0.18" />
           ))}
           {/* Diaphragm */}
-          <path d="M 100 285 Q 190 275, 280 285" stroke="hsl(var(--clinical))" strokeWidth="0.8" fill="none" opacity="0.35" strokeDasharray="3 2" />
+          <path d="M 100 285 Q 190 275, 280 285" stroke="hsl(var(--clinical))" strokeWidth="0.75" fill="none" opacity="0.35" strokeDasharray="3 2" />
           {/* Abdomen */}
           <path d="M 100 285 L 95 365 Q 110 380, 130 385 L 250 385 Q 270 380, 285 365 L 280 285 Z"
-            fill="url(#vae-skin)" stroke="hsl(var(--clinical))" strokeWidth="1.2" opacity="0.9" />
+            fill="url(#vae-skin)" stroke="hsl(var(--clinical))" strokeWidth="1" opacity="0.9" />
           {/* Pelvis */}
           <path d="M 95 365 Q 90 405, 105 430 L 165 440 L 215 440 L 275 430 Q 290 405, 285 365 Z"
-            fill="url(#vae-skin)" stroke="hsl(var(--clinical))" strokeWidth="1.2" opacity="0.9" />
+            fill="url(#vae-skin)" stroke="hsl(var(--clinical))" strokeWidth="1" opacity="0.9" />
           {/* Thighs (R then L) */}
           <path d="M 105 430 Q 100 470, 115 510 L 175 510 Q 180 470, 170 440 Z"
             fill="url(#vae-skin)" stroke="hsl(var(--clinical))" strokeWidth="1" opacity="0.85" />
@@ -205,61 +205,61 @@ export const VAECMOCircuitDiagram = () => {
 
           {/* ===== LUNGS ===== */}
           <path d="M 115 140 Q 100 170, 105 230 Q 115 265, 140 270 Q 155 250, 152 195 Q 150 155, 140 140 Z"
-            fill="hsl(var(--icu))" opacity="0.10" stroke="hsl(var(--icu))" strokeWidth="0.8" />
+            fill="hsl(var(--icu))" opacity="0.10" stroke="hsl(var(--icu))" strokeWidth="0.75" />
           <path d="M 265 140 Q 280 170, 275 230 Q 265 265, 245 270 Q 232 250, 235 195 Q 237 155, 245 140 Z"
-            fill="hsl(var(--icu))" opacity="0.10" stroke="hsl(var(--icu))" strokeWidth="0.8" />
+            fill="hsl(var(--icu))" opacity="0.10" stroke="hsl(var(--icu))" strokeWidth="0.75" />
           {showLabels && <text x="120" y="195" fontSize="8" className="fill-muted-foreground">R lung</text>}
           {showLabels && <text x="252" y="195" fontSize="8" className="fill-muted-foreground">L lung</text>}
 
           {/* ===== GREAT VESSELS ===== */}
           {/* SVC — descends from R brachiocephalic vein into RA */}
-          <path d="M 175 110 Q 178 140, 188 175" stroke="hsl(220 70% 45%)" strokeWidth="6" fill="none" strokeLinecap="round" opacity="0.9" />
+          <path d="M 175 110 Q 178 140, 188 175" stroke="hsl(220 70% 45%)" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" />
           {/* IVC — long blue vessel from pelvis through abdomen to RA */}
-          <path d="M 200 195 L 200 280 L 202 360 Q 205 400, 215 425" stroke="hsl(220 70% 45%)" strokeWidth="6.5" fill="none" strokeLinecap="round" opacity="0.9" />
+          <path d="M 200 195 L 200 280 L 202 360 Q 205 400, 215 425" stroke="hsl(220 70% 45%)" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" />
           {/* L common iliac feeding IVC (via R common iliac) */}
-          <path d="M 215 425 Q 195 415, 175 425" stroke="hsl(220 70% 45%)" strokeWidth="4" fill="none" strokeLinecap="round" opacity="0.7" />
+          <path d="M 215 425 Q 195 415, 175 425" stroke="hsl(220 70% 45%)" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.7" />
 
           {/* Aortic arch — anatomical curve with three branches */}
           {/* Ascending aorta */}
-          <path d="M 215 220 Q 213 185, 210 160" stroke="url(#vae-aorta-oxy)" strokeWidth="6.5" fill="none" strokeLinecap="round" opacity="0.95" />
+          <path d="M 215 220 Q 213 185, 210 160" stroke="url(#vae-aorta-oxy)" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.95" />
           {/* Arch curve */}
-          <path d="M 210 160 Q 200 125, 220 120 Q 240 122, 235 160" stroke="url(#vae-aorta-oxy)" strokeWidth="6.5" fill="none" strokeLinecap="round" opacity="0.95" />
+          <path d="M 210 160 Q 200 125, 220 120 Q 240 122, 235 160" stroke="url(#vae-aorta-oxy)" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.95" />
           {/* Three arch branches: brachiocephalic (R), L common carotid, L subclavian */}
           {/* Brachiocephalic trunk */}
           <path d="M 205 135 L 185 110 L 175 95"
             stroke={showHarlequin ? "url(#vae-aorta-deox)" : "url(#vae-aorta-oxy)"}
-            strokeWidth="4" fill="none" strokeLinecap="round" opacity="0.9" />
+            strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" />
           {/* R common carotid + R subclavian split */}
           <path d="M 175 95 L 165 75" stroke={showHarlequin ? "hsl(220 70% 45%)" : "hsl(0 75% 50%)"} strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" />
           <path d="M 175 95 L 145 95 L 130 105" stroke={showHarlequin ? "hsl(220 70% 45%)" : "hsl(0 75% 50%)"} strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" />
           {/* L common carotid */}
           <path d="M 218 118 L 215 90 L 213 70"
             stroke={showHarlequin ? "hsl(220 70% 45%)" : "hsl(0 75% 50%)"}
-            strokeWidth="3.2" fill="none" strokeLinecap="round" opacity="0.9" />
+            strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" />
           {/* L subclavian */}
           <path d="M 232 122 L 250 105 L 270 100"
             stroke={showHarlequin ? "hsl(220 70% 45%)" : "hsl(0 75% 50%)"}
-            strokeWidth="3.2" fill="none" strokeLinecap="round" opacity="0.9" />
+            strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" />
 
           {/* Descending thoracic + abdominal aorta — always oxygenated by ECMO */}
-          <path d="M 235 160 Q 232 220, 230 280 L 230 360 Q 232 400, 240 425" stroke="url(#vae-aorta-oxy)" strokeWidth="6" fill="none" strokeLinecap="round" opacity="0.95" />
+          <path d="M 235 160 Q 232 220, 230 280 L 230 360 Q 232 400, 240 425" stroke="url(#vae-aorta-oxy)" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.95" />
 
           {/* Iliac bifurcation */}
-          <path d="M 240 425 Q 220 432, 200 442" stroke="hsl(0 75% 50%)" strokeWidth="3.5" fill="none" strokeLinecap="round" opacity="0.85" />
+          <path d="M 240 425 Q 220 432, 200 442" stroke="hsl(0 75% 50%)" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.85" />
           {/* Femoral arteries (down each thigh) */}
           <path d="M 240 425 Q 245 470, 240 505" stroke="hsl(0 75% 50%)" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.85" />
           <path d="M 200 442 Q 145 470, 145 505" stroke="hsl(0 75% 50%)" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.85" />
 
           {/* Pulmonary trunk + arteries (from RV) */}
-          <path d="M 175 240 Q 165 220, 155 200 Q 140 195, 130 200" stroke="hsl(220 60% 50%)" strokeWidth="3.5" fill="none" strokeLinecap="round" opacity="0.7" strokeDasharray="2 2" />
-          <path d="M 175 240 Q 185 220, 200 215 Q 220 215, 235 215" stroke="hsl(220 60% 50%)" strokeWidth="3.5" fill="none" strokeLinecap="round" opacity="0.7" strokeDasharray="2 2" />
+          <path d="M 175 240 Q 165 220, 155 200 Q 140 195, 130 200" stroke="hsl(220 60% 50%)" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.7" strokeDasharray="2 2" />
+          <path d="M 175 240 Q 185 220, 200 215 Q 220 215, 235 215" stroke="hsl(220 60% 50%)" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.7" strokeDasharray="2 2" />
           {/* Pulmonary veins (oxy → LA) */}
-          <path d="M 152 220 Q 180 200, 215 200" stroke="hsl(0 65% 50%)" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.6" strokeDasharray="2 2" />
+          <path d="M 152 220 Q 180 200, 215 200" stroke="hsl(0 65% 50%)" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.6" strokeDasharray="2 2" />
 
           {/* ===== HEART (anatomical, 4 chambers + valves) ===== */}
           {/* Pericardium silhouette */}
           <path d="M 165 175 Q 145 175, 140 215 Q 138 260, 175 280 Q 220 290, 250 275 Q 270 260, 260 220 Q 250 178, 215 175 Z"
-            fill="url(#vae-heart-grad)" stroke="hsl(0 60% 35%)" strokeWidth="1.2" opacity="0.85" filter="url(#vae-shadow)" />
+            fill="url(#vae-heart-grad)" stroke="hsl(0 60% 35%)" strokeWidth="1" opacity="0.85" filter="url(#vae-shadow)" />
 
           {/* RA */}
           <ellipse cx="190" cy="195" rx={18 + contract * 1.5} ry={20 + contract * 1.5}
@@ -285,13 +285,13 @@ export const VAECMOCircuitDiagram = () => {
 
           {/* Valves — schematic */}
           {/* Tricuspid (RA-RV) */}
-          <line x1="178" y1="215" x2="195" y2="215" stroke="hsl(45 80% 50%)" strokeWidth="1.2" opacity="0.7" />
+          <line x1="178" y1="215" x2="195" y2="215" stroke="hsl(45 80% 50%)" strokeWidth="1" opacity="0.7" />
           {/* Mitral (LA-LV) */}
-          <line x1="218" y1="215" x2="235" y2="215" stroke="hsl(45 80% 50%)" strokeWidth="1.2" opacity="0.7" />
+          <line x1="218" y1="215" x2="235" y2="215" stroke="hsl(45 80% 50%)" strokeWidth="1" opacity="0.7" />
           {/* Aortic */}
           <circle cx="218" cy="218" r="3" fill="none" stroke="hsl(45 80% 50%)" strokeWidth={showLVDistension ? 1.2 : 1.6} opacity={showLVDistension ? 0.5 : 0.9} />
           {/* Pulmonary */}
-          <circle cx="180" cy="222" r="2.5" fill="none" stroke="hsl(45 80% 50%)" strokeWidth="1.2" opacity="0.7" />
+          <circle cx="180" cy="222" r="2.5" fill="none" stroke="hsl(45 80% 50%)" strokeWidth="1" opacity="0.7" />
 
           {showLabels && (
             <>
@@ -320,7 +320,7 @@ export const VAECMOCircuitDiagram = () => {
           {/* Native ejection arrow if Harlequin */}
           {showHarlequin && (
             <>
-              <path d={svgPath(nativeEjectSegs.segs)} stroke="hsl(220 70% 45%)" strokeWidth="2.2" fill="none" strokeDasharray="4 3" />
+              <path d={svgPath(nativeEjectSegs.segs)} stroke="hsl(220 70% 45%)" strokeWidth="2" fill="none" strokeDasharray="4 3" />
               {particles(0.3).map((p, i) => {
                 const pt = pointAt(nativeEjectSegs, p);
                 return <circle key={`ne${i}`} cx={pt.x} cy={pt.y} r="2.5" fill="hsl(220 70% 45%)" opacity={0.6 + 0.4 * Math.sin(p * Math.PI)} />;
@@ -331,7 +331,7 @@ export const VAECMOCircuitDiagram = () => {
 
           {/* ===== ECMO CIRCUIT ===== */}
           {/* Drainage cannula (venous, blue) — IVC tip → femoral vein → out to pump */}
-          <path d={svgPath(drainSegs.segs)} stroke="hsl(220 75% 42%)" strokeWidth="6" fill="none" strokeLinecap="round" />
+          <path d={svgPath(drainSegs.segs)} stroke="hsl(220 75% 42%)" strokeWidth="3" fill="none" strokeLinecap="round" />
           <path d={svgPath(drainSegs.segs)} stroke="hsl(220 50% 80%)" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.5" />
           {/* Side-holes hint near tip */}
           {[0, 1, 2, 3].map((i) => (
@@ -374,7 +374,7 @@ export const VAECMOCircuitDiagram = () => {
           </g>
 
           {/* Pump → oxygenator tubing (still venous = blue) */}
-          <path d={svgPath(pumpToOxy.segs)} stroke="hsl(220 75% 42%)" strokeWidth="6" fill="none" strokeLinecap="round" />
+          <path d={svgPath(pumpToOxy.segs)} stroke="hsl(220 75% 42%)" strokeWidth="3" fill="none" strokeLinecap="round" />
           {particles(0.4).map((p, i) => {
             const pt = pointAt(pumpToOxy, p);
             return <circle key={`po${i}`} cx={pt.x} cy={pt.y} r="2.6" fill="hsl(220 80% 55%)" opacity={0.8} />;
@@ -395,16 +395,16 @@ export const VAECMOCircuitDiagram = () => {
                 x2={622 + i * 5.5}
                 y2="236"
                 stroke="hsl(215 30% 65%)"
-                strokeWidth="0.6"
+                strokeWidth="0.5"
                 opacity="0.7"
               />
             ))}
             {/* Sweep gas inlet (top) */}
-            <line x1="645" y1="95" x2="645" y2="110" stroke="hsl(195 70% 50%)" strokeWidth="2.5" />
+            <line x1="645" y1="95" x2="645" y2="110" stroke="hsl(195 70% 50%)" strokeWidth="2" />
             <polygon points="642,108 648,108 645,113" fill="hsl(195 70% 50%)" />
             {showLabels && <text x="645" y="88" textAnchor="middle" fontSize="7.5" className="fill-[hsl(195_70%_45%)] font-semibold">sweep gas (FiO₂ 21–100%)</text>}
             {/* Sweep gas outlet (bottom) */}
-            <line x1="645" y1="245" x2="645" y2="258" stroke="hsl(0 60% 50%)" strokeWidth="2.5" />
+            <line x1="645" y1="245" x2="645" y2="258" stroke="hsl(0 60% 50%)" strokeWidth="2" />
             <polygon points="642,255 648,255 645,260" fill="hsl(0 60% 50%)" />
             {showLabels && <text x="645" y="270" textAnchor="middle" fontSize="7.5" className="fill-muted-foreground">CO₂ + H₂O exhaust</text>}
 
@@ -430,11 +430,11 @@ export const VAECMOCircuitDiagram = () => {
           </g>
 
           {/* Heat exchanger label (integral) */}
-          <rect x="615" y="248" width="60" height="14" rx="3" fill="hsl(45 50% 50%)" opacity="0.3" stroke="hsl(45 50% 40%)" strokeWidth="0.8" />
+          <rect x="615" y="248" width="60" height="14" rx="3" fill="hsl(45 50% 50%)" opacity="0.3" stroke="hsl(45 50% 40%)" strokeWidth="0.75" />
           <text x="645" y="258" textAnchor="middle" fontSize="7.5" className="fill-foreground">Heater 36–37 °C</text>
 
           {/* Oxygenator outlet → arterial return */}
-          <path d={svgPath(oxyToArt.segs)} stroke="hsl(0 75% 48%)" strokeWidth="6" fill="none" strokeLinecap="round" />
+          <path d={svgPath(oxyToArt.segs)} stroke="hsl(0 75% 48%)" strokeWidth="3" fill="none" strokeLinecap="round" />
           <path d={svgPath(oxyToArt.segs)} stroke="hsl(0 50% 80%)" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.5" />
           {showLabels && <text x="295" y="490" fontSize="8" className="fill-muted-foreground">arterial return cannula 15–19 Fr · retrograde flow ↑</text>}
           {oxyParticles.map((p, i) => {
@@ -445,10 +445,10 @@ export const VAECMOCircuitDiagram = () => {
           {/* Cannula entry markers at groin */}
           <g>
             {/* venous (R groin) */}
-            <circle cx="215" cy="425" r="4.5" fill="hsl(220 70% 30%)" stroke="white" strokeWidth="1.2" />
+            <circle cx="215" cy="425" r="4.5" fill="hsl(220 70% 30%)" stroke="hsl(var(--background))" strokeWidth="1" />
             {showLabels && <text x="178" y="418" fontSize="7" className="fill-muted-foreground">R fem v.</text>}
             {/* arterial (L groin) */}
-            <circle cx="245" cy="435" r="4.5" fill="hsl(0 70% 38%)" stroke="white" strokeWidth="1.2" />
+            <circle cx="245" cy="435" r="4.5" fill="hsl(0 70% 38%)" stroke="hsl(var(--background))" strokeWidth="1" />
             {showLabels && <text x="252" y="430" fontSize="7" className="fill-muted-foreground">L fem a.</text>}
           </g>
 
@@ -468,7 +468,7 @@ export const VAECMOCircuitDiagram = () => {
           {/* Compass / orientation */}
           <g transform="translate(40 40)" opacity="0.5">
             <text x="0" y="-2" fontSize="7" textAnchor="middle" className="fill-muted-foreground">cranial</text>
-            <line x1="0" y1="0" x2="0" y2="20" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" />
+            <line x1="0" y1="0" x2="0" y2="20" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" />
             <polygon points="-3,3 3,3 0,-2" fill="hsl(var(--muted-foreground))" />
             <text x="0" y="32" fontSize="7" textAnchor="middle" className="fill-muted-foreground">caudal</text>
           </g>

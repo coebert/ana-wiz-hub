@@ -71,7 +71,7 @@ export const RCDDiagram = () => {
           <text x={60} y={205} textAnchor="middle" fontSize="9" className="fill-muted-foreground">N</text>
 
           {/* RCD housing */}
-          <rect x={140} y={95} width={140} height={150} rx={8} fill="hsl(210 30% 98%)" stroke={showTripped ? "hsl(0 70% 50%)" : "hsl(215 25% 35%)"} strokeWidth="1.8" />
+          <rect x={140} y={95} width={140} height={150} rx={8} fill="hsl(210 30% 98%)" stroke={showTripped ? "hsl(0 70% 50%)" : "hsl(215 25% 35%)"} strokeWidth="2" />
           <text x={210} y={85} textAnchor="middle" fontSize="11" className="fill-foreground font-semibold">RCD / RCCB</text>
 
           {/* Toroidal current transformer (central element) */}
@@ -102,7 +102,7 @@ export const RCDDiagram = () => {
           </g>
 
           {/* Trip coil */}
-          <rect x={195} y={210} width={30} height={28} fill="none" stroke="hsl(215 25% 50%)" strokeWidth="1.2" />
+          <rect x={195} y={210} width={30} height={28} fill="none" stroke="hsl(215 25% 50%)" strokeWidth="1" />
           <text x={210} y={228} textAnchor="middle" fontSize="8" className="fill-muted-foreground">trip</text>
 
           {/* Arrow from torroid to trip coil */}
@@ -157,7 +157,7 @@ export const RCDDiagram = () => {
             <>
               <line
                 x1={100} y1={liveY} x2={420} y2={liveY}
-                stroke="hsl(45 100% 55%)" strokeWidth="2.5"
+                stroke="hsl(45 100% 55%)" strokeWidth="2"
                 strokeDasharray="6 14" strokeDashoffset={-offset}
                 opacity={0.95}
               />
@@ -174,17 +174,17 @@ export const RCDDiagram = () => {
                 <>
                   <line
                     x1={520} y1={130} x2={547} y2={150}
-                    stroke="hsl(0 80% 55%)" strokeWidth="2.5"
+                    stroke="hsl(0 80% 55%)" strokeWidth="2"
                     strokeDasharray="5 8" strokeDashoffset={-offset}
                   />
                   <line
                     x1={550} y1={207} x2={550} y2={earthY}
-                    stroke="hsl(0 80% 55%)" strokeWidth="2.5"
+                    stroke="hsl(0 80% 55%)" strokeWidth="2"
                     strokeDasharray="5 8" strokeDashoffset={-offset}
                   />
                   <line
                     x1={570} y1={207} x2={570} y2={earthY}
-                    stroke="hsl(0 80% 55%)" strokeWidth="2.5"
+                    stroke="hsl(0 80% 55%)" strokeWidth="2"
                     strokeDasharray="5 8" strokeDashoffset={-offset}
                   />
                 </>

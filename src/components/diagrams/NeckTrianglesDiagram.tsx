@@ -253,7 +253,7 @@ const NeckTrianglesDiagram = () => {
                   {/* Cranium vault */}
                   <path d="M108,10 C88,8 68,16 58,30 C50,44 52,56 58,62" strokeWidth="1.5" />
                   {/* Occiput → mastoid */}
-                  <path d="M58,62 C62,66 68,70 72,62" strokeWidth="1.2" />
+                  <path d="M58,62 C62,66 68,70 72,62" strokeWidth="1" />
                   {/* Ear */}
                   <path d="M64,44 C56,48 54,56 58,62 C60,65 64,66 67,63" strokeWidth="1" opacity="0.6" />
                   {/* Forehead → nose → upper lip */}
@@ -275,14 +275,14 @@ const NeckTrianglesDiagram = () => {
                     C78,66 80,72 82,76
                     L82,76
                   `}
-                    stroke="hsl(var(--foreground))" strokeWidth="2.2" fill="url(#nt-boneGrad)" opacity="0.4"
+                    stroke="hsl(var(--foreground))" strokeWidth="2" fill="url(#nt-boneGrad)" opacity="0.4"
                   />
                   {/* Mandible body — thick lower border */}
                   <path d="M118,82 C114,81 108,79 106,78 L94,77 L82,76"
-                    stroke="hsl(var(--foreground))" strokeWidth="2.5" fill="none" opacity="0.35" />
+                    stroke="hsl(var(--foreground))" strokeWidth="2" fill="none" opacity="0.35" />
                   {/* Ramus ascending */}
                   <path d="M82,76 C80,70 78,64 78,58 C78,52 80,48 82,46"
-                    stroke="hsl(var(--foreground))" strokeWidth="1.8" fill="none" opacity="0.25" />
+                    stroke="hsl(var(--foreground))" strokeWidth="2" fill="none" opacity="0.25" />
                   {/* Condyle and coronoid process hints */}
                   <path d="M82,46 C84,42 86,40 88,40" stroke="hsl(var(--foreground))" strokeWidth="1" fill="none" opacity="0.15" />
                   {/* Mental foramen */}
@@ -304,7 +304,7 @@ const NeckTrianglesDiagram = () => {
                   C72,62 70,61 68,60
                   Z
                 `}
-                  fill="url(#nt-scmGrad)" stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.5"
+                  fill="url(#nt-scmGrad)" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.5"
                 />
                 {/* SCM sternal head (narrower, tendinous) */}
                 <path d="M132,218 C133,222 134,228 134,232 L140,232 C140,228 139,224 138,218"
@@ -313,7 +313,7 @@ const NeckTrianglesDiagram = () => {
                 <path d="M138,218 C140,222 142,226 148,228 L154,226 C150,222 146,218 142,214"
                   fill="hsl(var(--foreground))" fillOpacity="0.06" stroke="hsl(var(--foreground))" strokeWidth="0.5" opacity="0.25" />
                 {/* SCM internal fibre direction lines */}
-                <g stroke="hsl(var(--foreground))" strokeWidth="0.3" fill="none" opacity="0.08">
+                <g stroke="hsl(var(--foreground))" strokeWidth="0.5" fill="none" opacity="0.08">
                   <path d="M72,64 C86,100 102,140 120,185" />
                   <path d="M74,66 C88,104 106,148 124,192" />
                   <path d="M70,62 C84,96 100,134 116,178" />
@@ -321,7 +321,7 @@ const NeckTrianglesDiagram = () => {
 
                 {/* ════════ TRAPEZIUS — anterior border ════════ */}
                 <path d={`M60,40 C95,75 140,130 180,178 C200,202 215,218 224,224`}
-                  stroke="hsl(var(--foreground))" strokeWidth="1.8" fill="none" opacity="0.15"
+                  stroke="hsl(var(--foreground))" strokeWidth="2" fill="none" opacity="0.15"
                   strokeDasharray="8 4" />
                 {/* Trapezius muscle mass suggestion */}
                 <path d={`M60,40 C95,75 140,130 180,178 C200,202 215,218 224,224
@@ -342,14 +342,14 @@ const NeckTrianglesDiagram = () => {
 
                 {/* ════════ MIDLINE ════════ */}
                 <line x1="118" y1="82" x2="118" y2="232" stroke="hsl(var(--foreground))"
-                  strokeWidth="0.6" opacity="0.1" strokeDasharray="5 4" />
+                  strokeWidth="0.5" opacity="0.1" strokeDasharray="5 4" />
 
                 {/* ════════ DIGASTRIC MUSCLE (subdivision boundary) ════════ */}
                 {showSubdivisions && showSutures && (
                   <g>
                     {/* Post belly: mastoid → intermediate tendon */}
                     <path d="M76,72 C82,78 90,86 98,92 C104,95 108,96 108,96"
-                      stroke="hsl(var(--foreground))" strokeWidth="2.5" fill="none" opacity="0.18" />
+                      stroke="hsl(var(--foreground))" strokeWidth="2" fill="none" opacity="0.18" />
                     {/* Intermediate tendon (at hyoid) */}
                     <circle cx="108" cy="96" r="2" fill="hsl(var(--foreground))" fillOpacity="0.15"
                       stroke="hsl(var(--foreground))" strokeWidth="0.5" opacity="0.25" />
@@ -372,13 +372,13 @@ const NeckTrianglesDiagram = () => {
                   <g>
                     {/* Sup belly: hyoid region → crosses SCM */}
                     <path d="M118,164 C120,166 124,170 128,172"
-                      stroke="hsl(var(--foreground))" strokeWidth="2.5" fill="none" opacity="0.2" />
+                      stroke="hsl(var(--foreground))" strokeWidth="2" fill="none" opacity="0.2" />
                     {/* Intermediate tendon at SCM */}
                     <circle cx="128" cy="172" r="1.8" fill="hsl(var(--foreground))" fillOpacity="0.12"
                       stroke="hsl(var(--foreground))" strokeWidth="0.5" opacity="0.2" />
                     {/* Inf belly: SCM → lateral */}
                     <path d="M128,172 C145,170 165,169 184,170"
-                      stroke="hsl(var(--foreground))" strokeWidth="2.5" fill="none" opacity="0.18" />
+                      stroke="hsl(var(--foreground))" strokeWidth="2" fill="none" opacity="0.18" />
                     {showLabels && (
                       <text x="152" y="166" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.4">Omohyoid</text>
                     )}
@@ -460,7 +460,7 @@ const NeckTrianglesDiagram = () => {
                     <text x="82" y="125" fontSize="4.5" fill="hsl(0, 55%, 52%)" fontWeight="500">Carotid bifurc.</text>
                     <text x="82" y="130" fontSize="3.5" fill="hsl(0, 55%, 52%)" opacity="0.6">(C3/4 level)</text>
                     {/* ICA + ECA */}
-                    <path d="M100,115 L94,98 L90,85" stroke="hsl(0, 65%, 55%)" strokeWidth="1.2" fill="none" opacity="0.45" />
+                    <path d="M100,115 L94,98 L90,85" stroke="hsl(0, 65%, 55%)" strokeWidth="1" fill="none" opacity="0.45" />
                     <path d="M100,115 L106,100 L104,88" stroke="hsl(0, 45%, 45%)" strokeWidth="1" fill="none" opacity="0.35" />
                     <text x="82" y="84" fontSize="3.5" fill="hsl(0, 65%, 55%)">ICA</text>
                     <text x="106" y="86" fontSize="3.5" fill="hsl(0, 45%, 45%)">ECA</text>
@@ -482,7 +482,7 @@ const NeckTrianglesDiagram = () => {
                     <path d="M110,182 C130,186 155,188 180,190" stroke="hsl(30, 60%, 52%)" strokeWidth="2" fill="none" opacity="0.4" />
                     <text x="148" y="198" fontSize="4" fill="hsl(30, 60%, 52%)">Brachial plexus</text>
                     {/* Phrenic nerve */}
-                    <path d="M105,130 C108,155 112,180 116,205" stroke="hsl(60, 50%, 50%)" strokeWidth="0.8" fill="none" strokeDasharray="2 1.5" opacity="0.35" />
+                    <path d="M105,130 C108,155 112,180 116,205" stroke="hsl(60, 50%, 50%)" strokeWidth="0.75" fill="none" strokeDasharray="2 1.5" opacity="0.35" />
                     <text x="88" y="158" fontSize="3.5" fill="hsl(60, 50%, 50%)">Phrenic n.</text>
                   </g>
                 )}
@@ -490,7 +490,7 @@ const NeckTrianglesDiagram = () => {
                   <g className="animate-fade-in">
                     <path d="M145,210 C158,205 172,203 188,206" stroke="hsl(320, 40%, 48%)" strokeWidth="2" fill="none" opacity="0.55" />
                     <text x="160" y="200" fontSize="4" fill="hsl(320, 40%, 48%)">Subclavian a.</text>
-                    <path d="M164,230 C172,222 182,218 194,222" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" fill="none" strokeDasharray="2 1.5" opacity="0.3" />
+                    <path d="M164,230 C172,222 182,218 194,222" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" fill="none" strokeDasharray="2 1.5" opacity="0.3" />
                     <text x="196" y="220" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.45">Lung apex</text>
                   </g>
                 )}
@@ -498,7 +498,7 @@ const NeckTrianglesDiagram = () => {
                   <g className="animate-fade-in">
                     <path d="M119,164 C120,180 120,198 120,218" stroke="hsl(50, 65%, 48%)" strokeWidth="1" fill="none" strokeDasharray="2 2" opacity="0.45" />
                     <text x="104" y="214" fontSize="4" fill="hsl(50, 65%, 48%)">RLN</text>
-                    <ellipse cx="124" cy="182" rx="12" ry="16" fill="none" stroke="hsl(270, 45%, 52%)" strokeWidth="0.8" opacity="0.3" strokeDasharray="3 1.5" />
+                    <ellipse cx="124" cy="182" rx="12" ry="16" fill="none" stroke="hsl(270, 45%, 52%)" strokeWidth="0.75" opacity="0.3" strokeDasharray="3 1.5" />
                     <text x="138" y="184" fontSize="3.5" fill="hsl(270, 45%, 52%)" opacity="0.5">Thyroid</text>
                   </g>
                 )}
@@ -514,7 +514,7 @@ const NeckTrianglesDiagram = () => {
                 {/* ════════ MASTOID PROCESS (prominent) ════════ */}
                 <g>
                   <ellipse cx="72" cy="62" rx="4" ry="5" fill="hsl(var(--foreground))" fillOpacity="0.06"
-                    stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.2" />
+                    stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.2" />
                 </g>
               </svg>
             </div>

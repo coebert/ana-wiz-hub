@@ -188,7 +188,7 @@ const IntercostalAnatomyDiagram = () => {
                     <g opacity={isActive ? 0.5 : 0.2}>
                       {[0, 1, 2, 3, 4, 5].map(i => (
                         <line key={i} x1={xOff + 20 + i * 22} y1={g.y + 4} x2={xOff + 32 + i * 22} y2={g.y + g.h - 4}
-                          stroke={l.color} strokeWidth="0.8" />
+                          stroke={l.color} strokeWidth="0.75" />
                       ))}
                       <text x={xOff + 5} y={g.y + 14} fontSize="5" fill={l.color}>↘ fibres</text>
                     </g>
@@ -197,7 +197,7 @@ const IntercostalAnatomyDiagram = () => {
                     <g opacity={isActive ? 0.5 : 0.2}>
                       {[0, 1, 2, 3, 4, 5].map(i => (
                         <line key={i} x1={xOff + 32 + i * 22} y1={g.y + 4} x2={xOff + 20 + i * 22} y2={g.y + g.h - 4}
-                          stroke={l.color} strokeWidth="0.8" />
+                          stroke={l.color} strokeWidth="0.75" />
                       ))}
                       <text x={xOff + 5} y={g.y + 13} fontSize="5" fill={l.color}>↙ fibres</text>
                     </g>

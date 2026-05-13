@@ -178,7 +178,7 @@ export const CaudalBlockDiagram = () => {
               <stop offset="100%" stopColor="hsl(var(--background))" stopOpacity="0.35" />
             </radialGradient>
             <pattern id="cbd-bone" patternUnits="userSpaceOnUse" width="6" height="6">
-              <path d="M0 6 L6 0" stroke="hsl(35, 30%, 35%)" strokeWidth="0.4" opacity="0.35" />
+              <path d="M0 6 L6 0" stroke="hsl(35, 30%, 35%)" strokeWidth="0.5" opacity="0.35" />
             </pattern>
             <pattern id="cbd-tissue" patternUnits="userSpaceOnUse" width="5" height="5">
               <circle cx="2.5" cy="2.5" r="0.4" fill="hsl(30, 40%, 40%)" opacity="0.3" />
@@ -229,7 +229,7 @@ export const CaudalBlockDiagram = () => {
             />
             {/* Inter-segmental lines (S1–S5) */}
             {showLandmarks && (
-              <g stroke="hsl(35, 30%, 30%)" strokeWidth="0.6" opacity="0.5" strokeDasharray="2 2">
+              <g stroke="hsl(35, 30%, 30%)" strokeWidth="0.5" opacity="0.5" strokeDasharray="2 2">
                 <line x1="160" y1="105" x2="195" y2="135" />
                 <line x1="190" y1="155" x2="240" y2="180" />
                 <line x1="220" y1="200" x2="290" y2="220" />
@@ -287,7 +287,7 @@ export const CaudalBlockDiagram = () => {
               }}
               style={{ cursor: "pointer", opacity: dim("cauda") }}
               stroke={STRUCTURES.cauda.color}
-              strokeWidth="0.8"
+              strokeWidth="0.75"
               fill="none"
             >
               <path d="M 170 90 Q 210 130 250 160 Q 280 185 290 210" />
@@ -409,11 +409,11 @@ export const CaudalBlockDiagram = () => {
           {/* Dura termination marker */}
           {showLandmarks && (
             <g fontSize="9" fill="hsl(var(--muted-foreground))" fontFamily="sans-serif">
-              <line x1="295" y1="215" x2="380" y2="215" stroke="hsl(var(--muted-foreground))" strokeDasharray="3 3" strokeWidth="0.6" />
+              <line x1="295" y1="215" x2="380" y2="215" stroke="hsl(var(--muted-foreground))" strokeDasharray="3 3" strokeWidth="0.5" />
               <text x="385" y="213">S2 — adult dura ends</text>
-              <line x1="305" y1="232" x2="395" y2="232" stroke="hsl(270, 40%, 55%)" strokeDasharray="3 3" strokeWidth="0.6" />
+              <line x1="305" y1="232" x2="395" y2="232" stroke="hsl(270, 40%, 55%)" strokeDasharray="3 3" strokeWidth="0.5" />
               <text x="400" y="230">S3/4 — neonatal dura ends</text>
-              <line x1="160" y1="50" x2="240" y2="50" stroke="hsl(var(--muted-foreground))" strokeDasharray="3 3" strokeWidth="0.6" />
+              <line x1="160" y1="50" x2="240" y2="50" stroke="hsl(var(--muted-foreground))" strokeDasharray="3 3" strokeWidth="0.5" />
               <text x="245" y="52">L3 — neonatal cord ends (L1 by 1y)</text>
             </g>
           )}

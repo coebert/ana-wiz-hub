@@ -109,14 +109,14 @@ const LeFortFractureDiagram = () => {
                  C 60 70, 110 20, 180 20 Z"
               fill={bone}
               stroke={boneStroke}
-              strokeWidth="1.6"
+              strokeWidth="1.5"
             />
 
             {/* Frontal bone shading */}
             <path d="M 80 90 Q 180 50 280 90 L 280 130 Q 180 110 80 130 Z" fill="hsl(40 25% 86%)" opacity="0.5" />
 
             {/* Skull base reference (purple) */}
-            <line x1="60" y1="125" x2="300" y2="125" stroke={skullBase} strokeWidth="0.8" strokeDasharray="3 3" opacity="0.55" />
+            <line x1="60" y1="125" x2="300" y2="125" stroke={skullBase} strokeWidth="0.75" strokeDasharray="3 3" opacity="0.55" />
             <text x="305" y="128" fontSize="8" fill={skullBase}>skull base</text>
 
             {/* Orbits */}
@@ -132,14 +132,14 @@ const LeFortFractureDiagram = () => {
             <line x1="180" y1="120" x2="180" y2="175" stroke={boneStroke} strokeWidth="1" />
 
             {/* Zygomatic arches (cheekbones) */}
-            <path d="M 75 180 Q 95 195 130 200" fill="none" stroke={boneStroke} strokeWidth="1.4" />
-            <path d="M 285 180 Q 265 195 230 200" fill="none" stroke={boneStroke} strokeWidth="1.4" />
+            <path d="M 75 180 Q 95 195 130 200" fill="none" stroke={boneStroke} strokeWidth="1.5" />
+            <path d="M 285 180 Q 265 195 230 200" fill="none" stroke={boneStroke} strokeWidth="1.5" />
 
             {/* Maxilla */}
             <path d="M 110 240 Q 180 250 250 240 L 245 305 Q 180 320 115 305 Z" fill="hsl(40 30% 90%)" stroke={boneStroke} strokeWidth="1" />
 
             {/* Teeth */}
-            <g stroke={boneStroke} strokeWidth="0.6">
+            <g stroke={boneStroke} strokeWidth="0.5">
               {Array.from({ length: 10 }).map((_, i) => (
                 <rect
                   key={i}
@@ -164,7 +164,7 @@ const LeFortFractureDiagram = () => {
 
             {/* === FRACTURE LINES === */}
             {type === 1 && (
-              <g stroke={fractureColor} strokeWidth="2.5" fill="none" strokeLinecap="round">
+              <g stroke={fractureColor} strokeWidth="2" fill="none" strokeLinecap="round">
                 {/* Horizontal across maxilla just above teeth */}
                 <path d="M 105 285 Q 180 278 255 285" strokeDasharray="0" />
                 {/* Through pterygoids (hidden — show small ticks at ends) */}
@@ -175,7 +175,7 @@ const LeFortFractureDiagram = () => {
             )}
 
             {type === 2 && (
-              <g stroke={fractureColor} strokeWidth="2.5" fill="none" strokeLinecap="round">
+              <g stroke={fractureColor} strokeWidth="2" fill="none" strokeLinecap="round">
                 {/* Pyramidal: nasal bridge → medial orbit → infraorbital rim → maxilla → pterygoids */}
                 <path d="M 180 130 L 160 150 L 140 178 L 110 215 L 95 280" />
                 <path d="M 180 130 L 200 150 L 220 178 L 250 215 L 265 280" />
@@ -186,7 +186,7 @@ const LeFortFractureDiagram = () => {
             )}
 
             {type === 3 && (
-              <g stroke={fractureColor} strokeWidth="2.5" fill="none" strokeLinecap="round">
+              <g stroke={fractureColor} strokeWidth="2" fill="none" strokeLinecap="round">
                 {/* Transverse: naso-frontal → through orbits → zygomatic arches */}
                 <path d="M 60 145 Q 90 140 105 145 L 130 135 Q 150 125 170 122 L 180 118 L 190 122 Q 210 125 230 135 L 255 145 Q 270 140 300 145" />
                 {/* Mark naso-frontal */}

@@ -257,7 +257,7 @@ const DSASpectrogramDiagram = () => {
                 <text x={plotX - 4} y={plotY + plotH - f * cellH + 2} textAnchor="end"
                   fontSize="5.5" fill="hsl(0, 0%, 65%)" opacity="0.6">{f}</text>
                 <line x1={plotX} y1={plotY + plotH - f * cellH} x2={plotX + plotW} y2={plotY + plotH - f * cellH}
-                  stroke="hsl(0, 0%, 50%)" strokeWidth="0.2" opacity="0.15" />
+                  stroke="hsl(0, 0%, 50%)" strokeWidth="0.5" opacity="0.15" />
               </g>
             ))}
             <text x="12" y={plotY + plotH / 2} textAnchor="middle" fontSize="7" fill="hsl(0, 0%, 70%)" opacity="0.6"

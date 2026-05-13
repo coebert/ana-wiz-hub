@@ -235,7 +235,7 @@ const BISTrendDiagram = () => {
             {[0, 20, 40, 60, 80, 100].map(v => (
               <g key={v}>
                 <line x1={plotX} y1={yScale(v)} x2={plotX + plotW} y2={yScale(v)}
-                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.15" />
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.15" />
                 <text x={plotX - 4} y={yScale(v) + 3} textAnchor="end" fontSize="6"
                   fill="hsl(var(--muted-foreground))" opacity="0.5">{v}</text>
               </g>
@@ -243,7 +243,7 @@ const BISTrendDiagram = () => {
             {Array.from({ length: 11 }, (_, i) => i * 60).map(t => (
               <g key={t}>
                 <line x1={xScale(t)} y1={plotY} x2={xScale(t)} y2={plotY + plotH}
-                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.2" opacity="0.1" />
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.1" />
                 <text x={xScale(t)} y={plotY + plotH + 12} textAnchor="middle" fontSize="5.5"
                   fill="hsl(var(--muted-foreground))" opacity="0.4">{t / 60} min</text>
               </g>
@@ -283,7 +283,7 @@ const BISTrendDiagram = () => {
                   fill={bisToColor(currentBIS)} opacity="0.8" />
                 <rect x={xScale(simTime) + 7} y={yScale(currentBIS) - 10} width="32" height="16" rx="3"
                   fill="hsl(var(--background))" fillOpacity="0.85"
-                  stroke={bisToColor(currentBIS)} strokeWidth="0.8" />
+                  stroke={bisToColor(currentBIS)} strokeWidth="0.75" />
                 <text x={xScale(simTime) + 23} y={yScale(currentBIS) + 1} textAnchor="middle"
                   fontSize="8" fill={bisToColor(currentBIS)} fontWeight="700">
                   {Math.round(currentBIS)}

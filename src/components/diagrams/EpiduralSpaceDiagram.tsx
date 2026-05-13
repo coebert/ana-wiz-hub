@@ -225,7 +225,7 @@ const EpiduralSpaceDiagram = () => {
               {/* Subcutaneous fat globules */}
               <pattern id="eps-fatTex" patternUnits="userSpaceOnUse" width="14" height="11">
                 <ellipse cx="7" cy="5.5" rx="4.5" ry="3.2" fill="hsl(40, 55%, 72%)" opacity="0.28"
-                  stroke="hsl(38, 40%, 58%)" strokeWidth="0.3" />
+                  stroke="hsl(38, 40%, 58%)" strokeWidth="0.5" />
               </pattern>
 
               {/* Collagen — supraspinous / interspinous */}
@@ -235,18 +235,18 @@ const EpiduralSpaceDiagram = () => {
 
               {/* Elastic fibres — flavum */}
               <pattern id="eps-elastic" patternUnits="userSpaceOnUse" width="8" height="20">
-                <path d="M4,0 Q6,5 4,10 Q2,15 4,20" fill="none" stroke="hsl(55, 50%, 45%)" strokeWidth="0.6" opacity="0.4" />
+                <path d="M4,0 Q6,5 4,10 Q2,15 4,20" fill="none" stroke="hsl(55, 50%, 45%)" strokeWidth="0.5" opacity="0.4" />
               </pattern>
 
               {/* Epidural fat — chunky lobules */}
               <pattern id="eps-epiFat" patternUnits="userSpaceOnUse" width="12" height="10">
                 <ellipse cx="6" cy="5" rx="3.5" ry="2.6" fill="hsl(140, 45%, 60%)" opacity="0.22"
-                  stroke="hsl(140, 40%, 45%)" strokeWidth="0.3" />
+                  stroke="hsl(140, 40%, 45%)" strokeWidth="0.5" />
               </pattern>
 
               {/* Dural fibre lines */}
               <pattern id="eps-duraTex" patternUnits="userSpaceOnUse" width="6" height="3">
-                <line x1="0" y1="1.5" x2="6" y2="1.5" stroke="hsl(270, 35%, 45%)" strokeWidth="0.45" opacity="0.45" />
+                <line x1="0" y1="1.5" x2="6" y2="1.5" stroke="hsl(270, 35%, 45%)" strokeWidth="0.5" opacity="0.45" />
               </pattern>
 
               {/* Vault shadow filter */}
@@ -508,7 +508,7 @@ const EpiduralSpaceDiagram = () => {
             {/* Catheter being threaded into space */}
             {showSutures && (
               <path d="M358,324 Q380,318 400,330 Q420,340 440,336 Q460,332 478,338"
-                fill="none" stroke="hsl(140,55%,40%)" strokeWidth="1.4"
+                fill="none" stroke="hsl(140,55%,40%)" strokeWidth="1.5"
                 strokeDasharray="3 2" opacity="0.55" />
             )}
 

@@ -191,20 +191,20 @@ const PaediatricSurgicalProceduresDiagram = () => {
         {/* Trachea */}
         <line x1="300" y1="55" x2="300" y2="105" stroke="hsl(195 75% 50%)" strokeWidth="3" opacity="0.7" />
         {/* Bronchi */}
-        <line x1="300" y1="105" x2="280" y2="125" stroke="hsl(195 75% 50%)" strokeWidth="2.2" opacity="0.7" />
-        <line x1="300" y1="105" x2="325" y2="130" stroke="hsl(195 75% 50%)" strokeWidth="2.6" opacity="0.85" />
+        <line x1="300" y1="105" x2="280" y2="125" stroke="hsl(195 75% 50%)" strokeWidth="2" opacity="0.7" />
+        <line x1="300" y1="105" x2="325" y2="130" stroke="hsl(195 75% 50%)" strokeWidth="3" opacity="0.85" />
         {/* Lungs */}
-        <ellipse cx="265" cy="135" rx="22" ry="32" fill="hsl(195 60% 60%)" opacity="0.18" stroke="hsl(195 60% 50%)" strokeWidth="0.6" />
-        <ellipse cx="335" cy="135" rx="24" ry="32" fill="hsl(195 60% 60%)" opacity="0.18" stroke="hsl(195 60% 50%)" strokeWidth="0.6" />
+        <ellipse cx="265" cy="135" rx="22" ry="32" fill="hsl(195 60% 60%)" opacity="0.18" stroke="hsl(195 60% 50%)" strokeWidth="0.5" />
+        <ellipse cx="335" cy="135" rx="24" ry="32" fill="hsl(195 60% 60%)" opacity="0.18" stroke="hsl(195 60% 50%)" strokeWidth="0.5" />
         {/* Stomach + pylorus */}
-        <path d="M 285 145 Q 275 155, 280 170 Q 290 178, 305 175 L 320 168 L 318 158 L 305 152 Z" fill="hsl(40 80% 50%)" opacity="0.22" stroke="hsl(40 80% 50%)" strokeWidth="0.8" />
+        <path d="M 285 145 Q 275 155, 280 170 Q 290 178, 305 175 L 320 168 L 318 158 L 305 152 Z" fill="hsl(40 80% 50%)" opacity="0.22" stroke="hsl(40 80% 50%)" strokeWidth="0.75" />
         {/* Bowel coils */}
-        <g fill="none" stroke="hsl(0 75% 55%)" strokeWidth="1.4" opacity="0.65">
+        <g fill="none" stroke="hsl(0 75% 55%)" strokeWidth="1.5" opacity="0.65">
           <path d="M 250 178 Q 270 188, 290 182 Q 310 176, 330 186 Q 350 192, 365 184" />
           <path d="M 248 188 Q 270 196, 295 190 Q 320 184, 348 192" />
         </g>
         {/* Scrotum */}
-        <ellipse cx="300" cy="212" rx="14" ry="6" fill="hsl(280 60% 55%)" opacity="0.25" stroke="hsl(280 60% 55%)" strokeWidth="0.8" />
+        <ellipse cx="300" cy="212" rx="14" ry="6" fill="hsl(280 60% 55%)" opacity="0.25" stroke="hsl(280 60% 55%)" strokeWidth="0.75" />
 
         {/* Markers */}
         {[

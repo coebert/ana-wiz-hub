@@ -253,7 +253,7 @@ function ModePanel({ mode, t }: { mode: ModeDef; t: number }) {
         <path d={pathD} fill="none" stroke="hsl(var(--primary))" strokeWidth={2} strokeLinejoin="round" />
 
         {/* Playhead */}
-        <line x1={xHead} x2={xHead} y1={PT} y2={PT + plotH} stroke="hsl(var(--foreground))" strokeWidth={0.8} opacity={0.4} />
+        <line x1={xHead} x2={xHead} y1={PT} y2={PT + plotH} stroke="hsl(var(--foreground))" strokeWidth={0.75} opacity={0.4} />
         <circle cx={xHead} cy={yHead} r={3.5} fill="hsl(var(--primary))" stroke="hsl(var(--card))" strokeWidth={1} />
 
         {/* X axis */}

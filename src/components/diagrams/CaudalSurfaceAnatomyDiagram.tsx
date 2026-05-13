@@ -181,7 +181,7 @@ const CaudalSurfaceAnatomyDiagram = () => {
             <line
               x1="160" y1="40" x2="160" y2="395"
               stroke="hsl(var(--foreground))"
-              strokeWidth="0.7"
+              strokeWidth="0.75"
               strokeDasharray="3 3"
               opacity="0.45"
             />
@@ -205,8 +205,8 @@ const CaudalSurfaceAnatomyDiagram = () => {
                 strokeWidth={selected === "iliac-crest" ? 2 : 1}
                 opacity={selected === "iliac-crest" ? 1 : 0.85}
               />
-              <path d="M 60 150 C 75 130 100 122 130 130" fill="none" stroke="url(#csa-bone-pattern)" strokeWidth="6" opacity="0.4" />
-              <path d="M 260 150 C 245 130 220 122 190 130" fill="none" stroke="url(#csa-bone-pattern)" strokeWidth="6" opacity="0.4" />
+              <path d="M 60 150 C 75 130 100 122 130 130" fill="none" stroke="url(#csa-bone-pattern)" strokeWidth="3" opacity="0.4" />
+              <path d="M 260 150 C 245 130 220 122 190 130" fill="none" stroke="url(#csa-bone-pattern)" strokeWidth="3" opacity="0.4" />
             </g>
 
             {/* 3. Sacrum */}
@@ -259,7 +259,7 @@ const CaudalSurfaceAnatomyDiagram = () => {
                   fill={REGION_COLOR.soft}
                   opacity={selected === "membrane" ? 0.55 : 0.30}
                   stroke={selected === "membrane" ? REGION_COLOR.soft : "transparent"}
-                  strokeWidth="1.2"
+                  strokeWidth="1"
                   strokeDasharray="2 2"
                 />
               </g>

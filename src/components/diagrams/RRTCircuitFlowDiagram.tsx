@@ -276,7 +276,7 @@ const CircuitSvg = ({ variant, step }: CircuitSvgProps) => {
               x2={155 + i * 5}
               y2={183}
               stroke="hsl(var(--muted-foreground))"
-              strokeWidth="0.4"
+              strokeWidth="0.5"
               opacity="0.6"
             />
           ))}

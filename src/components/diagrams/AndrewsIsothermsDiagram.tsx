@@ -140,8 +140,8 @@ export const AndrewsIsothermsDiagram = () => {
           <rect x={PLOT.x0} y={PLOT.y0} width={PLOT.x1 - PLOT.x0} height={PLOT.y1 - PLOT.y0} fill="hsl(var(--background))" />
 
           {/* Axes */}
-          <line x1={PLOT.x0} y1={PLOT.y1} x2={PLOT.x1} y2={PLOT.y1} stroke="hsl(var(--foreground))" strokeWidth={1.2} />
-          <line x1={PLOT.x0} y1={PLOT.y0} x2={PLOT.x0} y2={PLOT.y1} stroke="hsl(var(--foreground))" strokeWidth={1.2} />
+          <line x1={PLOT.x0} y1={PLOT.y1} x2={PLOT.x1} y2={PLOT.y1} stroke="hsl(var(--foreground))" strokeWidth={1} />
+          <line x1={PLOT.x0} y1={PLOT.y0} x2={PLOT.x0} y2={PLOT.y1} stroke="hsl(var(--foreground))" strokeWidth={1} />
 
           {/* Axis labels */}
           <text x={(PLOT.x0 + PLOT.x1) / 2} y={PLOT.y1 + 32} textAnchor="middle" fontSize="13" fill="hsl(var(--foreground))">
@@ -174,7 +174,7 @@ export const AndrewsIsothermsDiagram = () => {
           ))}
 
           {/* Saturation dome (two-phase region) */}
-          <path d={domePath} fill="hsl(var(--physics) / 0.10)" stroke="hsl(var(--physics) / 0.45)" strokeWidth={1.2} strokeDasharray="3 3" />
+          <path d={domePath} fill="hsl(var(--physics) / 0.10)" stroke="hsl(var(--physics) / 0.45)" strokeWidth={1} strokeDasharray="3 3" />
           <text x={xScale(1.6)} y={yScale(0.55)} fontSize="11" fill="hsl(var(--physics))" textAnchor="middle">
             Two-phase region
           </text>
@@ -205,7 +205,7 @@ export const AndrewsIsothermsDiagram = () => {
           </text>
 
           {/* Critical point marker */}
-          <circle cx={xScale(1)} cy={yScale(1)} r={5} fill="hsl(var(--physics))" stroke="white" strokeWidth={1.5} />
+          <circle cx={xScale(1)} cy={yScale(1)} r={5} fill="hsl(var(--physics))" stroke="hsl(var(--background))" strokeWidth={1.5} />
           <text x={xScale(1) + 8} y={yScale(1) - 8} fontSize="11" fill="hsl(var(--physics))" fontWeight="bold">
             Critical point
           </text>
@@ -215,7 +215,7 @@ export const AndrewsIsothermsDiagram = () => {
             d={isothermPath}
             fill="none"
             stroke={isCritical ? "hsl(var(--physics))" : "hsl(var(--primary))"}
-            strokeWidth={2.5}
+            strokeWidth={2}
           />
 
           {/* Saturation tie-line endpoints (only when sub-critical) */}

@@ -55,9 +55,9 @@ const OsaCycleDiagram = () => {
             <rect x="580" y="130" width="200" height="80" rx="10" fill="hsl(var(--card))" stroke="hsl(var(--border))" />
             <text x="680" y="152" textAnchor="middle" className="fill-foreground" fontSize="12" fontWeight="700">Hypoxaemia + hypercapnia</text>
             {/* SpO2 bar */}
-            <rect x="600" y="165" width="160" height="10" rx="5" fill="hsl(var(--muted))" />
+            <rect x="600" y="165" width="160" height="10" rx="5" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.75" />
             <rect x="600" y="165" width="160" height="10" rx="5" fill="hsl(var(--clinical))">
-              <animate attributeName="width" values="160;60;160" dur="4s" repeatCount="indefinite" />
+              <animate attributeName="width" values="160;60;160" dur="4s" repeatCount="indefinite" stroke="hsl(var(--border))" strokeWidth="0.75" />
             </rect>
             <text x="680" y="195" textAnchor="middle" className="fill-clinical" fontSize="10" fontWeight="700">↓ SpO₂ · ↑ PaCO₂</text>
           </g>
@@ -79,19 +79,19 @@ const OsaCycleDiagram = () => {
           </g>
 
           {/* Cycle arrows */}
-          <path d="M300 130 Q 340 90 360 80" stroke="hsl(var(--clinical))" strokeWidth="2.5" fill="none" markerEnd="url(#arr-osa)">
+          <path d="M300 130 Q 340 90 360 80" stroke="hsl(var(--clinical))" strokeWidth="2" fill="none" markerEnd="url(#arr-osa)">
             <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="4s" repeatCount="indefinite" />
           </path>
-          <path d="M540 90 Q 600 110 600 135" stroke="hsl(var(--clinical))" strokeWidth="2.5" fill="none" markerEnd="url(#arr-osa)">
+          <path d="M540 90 Q 600 110 600 135" stroke="hsl(var(--clinical))" strokeWidth="2" fill="none" markerEnd="url(#arr-osa)">
             <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="4s" begin="1s" repeatCount="indefinite" />
           </path>
-          <path d="M680 215 Q 660 235 640 245" stroke="hsl(var(--clinical))" strokeWidth="2.5" fill="none" markerEnd="url(#arr-osa)">
+          <path d="M680 215 Q 660 235 640 245" stroke="hsl(var(--clinical))" strokeWidth="2" fill="none" markerEnd="url(#arr-osa)">
             <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="4s" begin="2s" repeatCount="indefinite" />
           </path>
-          <path d="M540 295 Q 500 320 500 330" stroke="hsl(var(--clinical))" strokeWidth="2.5" fill="none" markerEnd="url(#arr-osa)">
+          <path d="M540 295 Q 500 320 500 330" stroke="hsl(var(--clinical))" strokeWidth="2" fill="none" markerEnd="url(#arr-osa)">
             <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="4s" begin="3s" repeatCount="indefinite" />
           </path>
-          <path d="M320 350 Q 220 320 180 270" stroke="hsl(var(--clinical))" strokeWidth="2.5" fill="none" markerEnd="url(#arr-osa)" strokeDasharray="6 4" />
+          <path d="M320 350 Q 220 320 180 270" stroke="hsl(var(--clinical))" strokeWidth="2" fill="none" markerEnd="url(#arr-osa)" strokeDasharray="6 4" />
 
           {/* Long term consequences */}
           <g>

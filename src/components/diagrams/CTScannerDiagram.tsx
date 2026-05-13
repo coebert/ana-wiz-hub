@@ -168,7 +168,7 @@ export const CTScannerDiagram = () => {
                   x2={r.x}
                   y2={r.y}
                   stroke="hsl(45 95% 60%)"
-                  strokeWidth={0.6}
+                  strokeWidth={0.5}
                   opacity={0.55}
                 />
               ))}
@@ -216,14 +216,14 @@ export const CTScannerDiagram = () => {
             </text>
             {/* Gantry (side-on, simplified as two rings) */}
             <ellipse cx={110} cy={90} rx={18} ry={55} fill="none" stroke="hsl(var(--border))" strokeWidth={1.5} />
-            <ellipse cx={110} cy={90} rx={14} ry={48} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth={0.6} opacity={0.5} />
+            <ellipse cx={110} cy={90} rx={14} ry={48} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth={0.5} opacity={0.5} />
             {/* Z-axis */}
-            <line x1={20} y1={150} x2={210} y2={150} stroke="hsl(var(--border))" strokeWidth={0.6} strokeDasharray="2 2" />
+            <line x1={20} y1={150} x2={210} y2={150} stroke="hsl(var(--border))" strokeWidth={0.5} strokeDasharray="2 2" />
             <text x={210} y={160} textAnchor="end" fontSize={6} fill="hsl(var(--muted-foreground))">
               z (table travel)
             </text>
             {/* Helix trace */}
-            <path d={helixPath} fill="none" stroke="hsl(25 85% 55%)" strokeWidth={1.2} opacity={0.55} />
+            <path d={helixPath} fill="none" stroke="hsl(25 85% 55%)" strokeWidth={1} opacity={0.55} />
             {/* Couch */}
             <rect
               x={tableX - 35}
@@ -243,7 +243,7 @@ export const CTScannerDiagram = () => {
               ry={5}
               fill="hsl(var(--accent) / 0.3)"
               stroke="hsl(var(--accent))"
-              strokeWidth={0.8}
+              strokeWidth={0.75}
             />
             <circle cx={tableX + 25} cy={84} r={3.5} fill="hsl(var(--accent) / 0.5)" />
             {/* Travel arrow */}
@@ -349,14 +349,14 @@ export const CTScannerDiagram = () => {
                       x2={x2}
                       y2={y2}
                       stroke="hsl(195 80% 55%)"
-                      strokeWidth={0.4}
+                      strokeWidth={0.5}
                     />
                   );
                 })}
               </g>
             )}
             {/* HU colour bar */}
-            <rect x={135} y={112} width={75} height={4} fill="url(#huGrad)" stroke="hsl(var(--border))" strokeWidth={0.4} />
+            <rect x={135} y={112} width={75} height={4} fill="url(#huGrad)" stroke="hsl(var(--border))" strokeWidth={0.5} />
             <defs>
               <linearGradient id="huGrad" x1="0" x2="1">
                 <stop offset="0%" stopColor="hsl(0 0% 5%)" />
@@ -377,7 +377,7 @@ export const CTScannerDiagram = () => {
             </text>
 
             {/* Progress bar */}
-            <rect x={20} y={170} width={180} height={3} rx={1.5} fill="hsl(var(--muted))" />
+            <rect x={20} y={170} width={180} height={3} rx={1.5} fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.75" />
             <rect x={20} y={170} width={180 * (filledCols / sinoCols)} height={3} rx={1.5} fill="hsl(195 80% 55%)" />
           </svg>
           <figcaption className="text-[10px] text-muted-foreground text-center mt-1">

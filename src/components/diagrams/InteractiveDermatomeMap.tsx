@@ -132,7 +132,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
         fill="hsl(var(--muted))"
         opacity="0.35"
         stroke="hsl(var(--border))"
-        strokeWidth="0.8"
+        strokeWidth="0.75"
       />
 
       {/* 2. Dermatome polygons — translucent so anatomy reads through */}
@@ -183,7 +183,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
       })}
 
       {/* 3. Surface anatomy plate (on top of territories) */}
-      <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.7" opacity="0.55"
+      <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.55"
         style={{ pointerEvents: "none" }}>
         {side === "anterior" ? (
           <>
@@ -191,7 +191,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
             <path d="M82,82 C72,84 64,86 58,90" />
             <path d="M118,82 C128,84 136,86 142,90" />
             {/* Sternum */}
-            <path d="M100,90 L100,165" strokeWidth="0.9" />
+            <path d="M100,90 L100,165" strokeWidth="1" />
             <line x1="94" y1="100" x2="106" y2="100" strokeWidth="0.5" />
             {/* Costal margin */}
             <path d="M65,165 C82,200 100,210 100,210 C100,210 118,200 135,165" strokeDasharray="2 2" />
@@ -199,7 +199,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
             <circle cx="78" cy="148" r="1.6" fill="hsl(var(--foreground))" stroke="none" />
             <circle cx="122" cy="148" r="1.6" fill="hsl(var(--foreground))" stroke="none" />
             {/* Umbilicus (T10) */}
-            <circle cx="100" cy="248" r="2.2" strokeWidth="0.7" />
+            <circle cx="100" cy="248" r="2.2" strokeWidth="0.75" />
             {/* ASIS + inguinal */}
             <circle cx="78" cy="302" r="1.8" fill="hsl(var(--foreground))" stroke="none" />
             <circle cx="122" cy="302" r="1.8" fill="hsl(var(--foreground))" stroke="none" />
@@ -214,7 +214,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
         ) : (
           <>
             {/* Spine */}
-            <line x1="100" y1="60" x2="100" y2="290" strokeWidth="0.8" strokeDasharray="2 3" />
+            <line x1="100" y1="60" x2="100" y2="290" strokeWidth="0.75" strokeDasharray="2 3" />
             {/* C7 vertebra prominens */}
             <circle cx="100" cy="80" r="1.8" fill="hsl(var(--foreground))" stroke="none" />
             {/* Scapulae */}
@@ -224,8 +224,8 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
             <circle cx="84" cy="160" r="1.5" fill="hsl(var(--foreground))" stroke="none" />
             <circle cx="116" cy="160" r="1.5" fill="hsl(var(--foreground))" stroke="none" />
             {/* Iliac crests (L4) */}
-            <path d="M68,272 C76,282 88,288 100,290" strokeWidth="0.9" />
-            <path d="M132,272 C124,282 112,288 100,290" strokeWidth="0.9" />
+            <path d="M68,272 C76,282 88,288 100,290" strokeWidth="1" />
+            <path d="M132,272 C124,282 112,288 100,290" strokeWidth="1" />
             {/* PSIS dimples */}
             <circle cx="92" cy="295" r="1.4" fill="hsl(var(--foreground))" stroke="none" />
             <circle cx="108" cy="295" r="1.4" fill="hsl(var(--foreground))" stroke="none" />
@@ -275,7 +275,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
           <p className="text-xs font-semibold text-muted-foreground text-center mb-1">Spinal level</p>
           <svg viewBox="0 0 180 680" className="w-full h-auto max-w-[180px] mx-auto" role="img" aria-label="Spinal cord with highlighted level">
             {/* Vertebral column */}
-            <rect x="60" y="35" width="60" height="610" fill="hsl(var(--muted))" opacity="0.4" stroke="hsl(var(--border))" strokeWidth="0.8" />
+            <rect x="60" y="35" width="60" height="610" fill="hsl(var(--muted))" opacity="0.4" stroke="hsl(var(--border))" strokeWidth="0.75" />
 
             {/* Spinal canal */}
             <rect x="78" y="40" width="24" height="580" fill="hsl(var(--background))" opacity="0.5" stroke="hsl(var(--border))" strokeDasharray="2 2" strokeWidth="0.5" />
@@ -285,7 +285,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
               d="M 84 40 L 84 125 Q 80 165 84 200 L 84 390 Q 81 420 84 440 L 88 452 L 92 452 L 96 440 Q 99 420 96 390 L 96 200 Q 100 165 96 125 L 96 40 Z"
               fill="hsl(var(--anatomy) / 0.25)"
               stroke="hsl(var(--anatomy))"
-              strokeWidth="1.2"
+              strokeWidth="1"
             />
 
             {/* Cauda equina */}
@@ -298,7 +298,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
                   key={i}
                   d={`M ${sx} 452 Q ${sx} ${(452 + ey) / 2}, ${ex} ${ey}`}
                   stroke="hsl(var(--anatomy))"
-                  strokeWidth="0.8"
+                  strokeWidth="0.75"
                   fill="none"
                   opacity="0.7"
                 />
@@ -337,7 +337,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
                   fill="hsl(var(--destructive))"
                   opacity="0.9"
                 />
-                <rect x="0" y={sel.cordY - 12} width="50" height="24" rx="3" fill="hsl(var(--destructive))" />
+                <rect x="0" y={sel.cordY - 12} width="50" height="24" rx="3" fill="hsl(var(--destructive))" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="25" y={sel.cordY + 4} textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--destructive-foreground))">
                   {sel.level}
                 </text>

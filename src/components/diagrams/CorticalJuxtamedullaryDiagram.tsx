@@ -97,7 +97,7 @@ const NephronSchematic = ({ variant, highlight }: NephronProps) => {
 
       {/* Zone divider lines */}
       <line x1="0" y1={cortexBottom} x2="300" y2={cortexBottom} stroke="hsl(15 50% 40%)" strokeWidth="1" opacity="0.5" />
-      <line x1="0" y1={outerMedBottom} x2="300" y2={outerMedBottom} stroke="hsl(15 50% 35%)" strokeWidth="0.7" strokeDasharray="4 3" opacity="0.45" />
+      <line x1="0" y1={outerMedBottom} x2="300" y2={outerMedBottom} stroke="hsl(15 50% 35%)" strokeWidth="0.75" strokeDasharray="4 3" opacity="0.45" />
 
       {/* Zone labels */}
       <text x="6" y="14" fontSize="8" fill="hsl(35 55% 45%)" fontWeight="700" opacity="0.7">CORTEX</text>
@@ -107,14 +107,14 @@ const NephronSchematic = ({ variant, highlight }: NephronProps) => {
 
       {/* === Interlobular artery (left) === */}
       <g opacity="0.6">
-        <path d={`M 30 10 L 32 ${cortexBottom - 5}`} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.6" />
-        <path d={`M 36 10 L 38 ${cortexBottom - 5}`} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.6" />
+        <path d={`M 30 10 L 32 ${cortexBottom - 5}`} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.5" />
+        <path d={`M 36 10 L 38 ${cortexBottom - 5}`} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.5" />
       </g>
 
       {/* === Afferent arteriole === */}
       <g opacity="0.85">
-        <path d={`M 38 ${glomY - 6} Q 55 ${glomY - 8} ${glomX - 18} ${glomY - 6}`} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.4" />
-        <path d={`M 38 ${glomY + 4} Q 55 ${glomY + 2} ${glomX - 18} ${glomY + 4}`} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.4" />
+        <path d={`M 38 ${glomY - 6} Q 55 ${glomY - 8} ${glomX - 18} ${glomY - 6}`} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.5" />
+        <path d={`M 38 ${glomY + 4} Q 55 ${glomY + 2} ${glomX - 18} ${glomY + 4}`} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.5" />
       </g>
 
       {/* === Glomerulus + Bowman === */}
@@ -128,7 +128,7 @@ const NephronSchematic = ({ variant, highlight }: NephronProps) => {
           `M ${glomX + 4} ${glomY - 8} Q ${glomX} ${glomY - 2} ${glomX + 6} ${glomY + 4}`,
           `M ${glomX + 10} ${glomY - 6} Q ${glomX + 14} ${glomY} ${glomX + 8} ${glomY + 4}`,
         ].map((d, i) => (
-          <path key={i} d={d} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.6" opacity="0.6" />
+          <path key={i} d={d} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.5" opacity="0.6" />
         ))}
       </g>
 
@@ -137,13 +137,13 @@ const NephronSchematic = ({ variant, highlight }: NephronProps) => {
         {!isJuxta ? (
           <>
             {/* Cortical: efferent stays in cortex, branches into peritubular network */}
-            <path d={`M ${glomX + 18} ${glomY - 4} Q ${glomX + 60} ${glomY - 10} ${glomX + 100} ${glomY + 10}`} fill="none" stroke="hsl(0 45% 45%)" strokeWidth="1.1" />
+            <path d={`M ${glomX + 18} ${glomY - 4} Q ${glomX + 60} ${glomY - 10} ${glomX + 100} ${glomY + 10}`} fill="none" stroke="hsl(0 45% 45%)" strokeWidth="1" />
           </>
         ) : (
           <>
             {/* Juxta: efferent dives into medulla */}
-            <path d={`M ${glomX + 18} ${glomY - 4} Q ${glomX + 35} ${glomY + 10} ${glomX + 60} ${cortexBottom - 5}`} fill="none" stroke="hsl(0 45% 45%)" strokeWidth="1.2" />
-            <path d={`M ${glomX + 18} ${glomY + 4} Q ${glomX + 35} ${glomY + 18} ${glomX + 65} ${cortexBottom - 5}`} fill="none" stroke="hsl(0 45% 45%)" strokeWidth="1.2" />
+            <path d={`M ${glomX + 18} ${glomY - 4} Q ${glomX + 35} ${glomY + 10} ${glomX + 60} ${cortexBottom - 5}`} fill="none" stroke="hsl(0 45% 45%)" strokeWidth="1" />
+            <path d={`M ${glomX + 18} ${glomY + 4} Q ${glomX + 35} ${glomY + 18} ${glomX + 65} ${cortexBottom - 5}`} fill="none" stroke="hsl(0 45% 45%)" strokeWidth="1" />
           </>
         )}
       </g>
@@ -155,8 +155,8 @@ const NephronSchematic = ({ variant, highlight }: NephronProps) => {
         const pctPath = `M ${pctStartX} ${pctStartY} Q ${pctStartX + 15} ${pctStartY + 12} ${pctStartX + 30} ${pctStartY + 4} Q ${pctStartX + 50} ${pctStartY - 4} ${pctStartX + 65} ${pctStartY + 8} Q ${pctStartX + 78} ${pctStartY + 18} ${pctStartX + 70} ${pctStartY + 30}`;
         return (
           <g>
-            <path d={pctPath} fill="none" stroke="hsl(150 50% 40%)" strokeWidth="2.4" strokeLinecap="round" />
-            <path d={pctPath} fill="none" stroke="hsl(150 55% 50%)" strokeWidth="1.2" opacity="0.15" />
+            <path d={pctPath} fill="none" stroke="hsl(150 50% 40%)" strokeWidth="2" strokeLinecap="round" />
+            <path d={pctPath} fill="none" stroke="hsl(150 55% 50%)" strokeWidth="1" opacity="0.15" />
           </g>
         );
       })()}
@@ -172,11 +172,11 @@ const NephronSchematic = ({ variant, highlight }: NephronProps) => {
           return (
             <g>
               {/* Descending */}
-              <path d={`M ${loopX1} ${loopTopY} L ${loopX1} ${loopBottom}`} fill="none" stroke="hsl(200 55% 48%)" strokeWidth="1.6" />
+              <path d={`M ${loopX1} ${loopTopY} L ${loopX1} ${loopBottom}`} fill="none" stroke="hsl(200 55% 48%)" strokeWidth="1.5" />
               {/* Hairpin */}
-              <path d={`M ${loopX1} ${loopBottom} Q ${(loopX1 + loopX2) / 2} ${loopBottom + 10} ${loopX2} ${loopBottom}`} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" opacity="0.5" />
+              <path d={`M ${loopX1} ${loopBottom} Q ${(loopX1 + loopX2) / 2} ${loopBottom + 10} ${loopX2} ${loopBottom}`} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.5" />
               {/* Thick ascending */}
-              <path d={`M ${loopX2} ${loopBottom} L ${loopX2 + 4} ${loopTopY}`} fill="none" stroke="hsl(30 65% 45%)" strokeWidth="2.2" />
+              <path d={`M ${loopX2} ${loopBottom} L ${loopX2 + 4} ${loopTopY}`} fill="none" stroke="hsl(30 65% 45%)" strokeWidth="2" />
               <text x={loopX1 - 8} y={loopBottom + 24} fontSize="6.5" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic" opacity="0.7">short loop</text>
             </g>
           );
@@ -186,13 +186,13 @@ const NephronSchematic = ({ variant, highlight }: NephronProps) => {
         return (
           <g>
             {/* Thin descending — full length */}
-            <path d={`M ${loopX1} ${loopTopY} L ${loopX1 - 2} ${loopBottom}`} fill="none" stroke="hsl(200 55% 48%)" strokeWidth="1.4" />
+            <path d={`M ${loopX1} ${loopTopY} L ${loopX1 - 2} ${loopBottom}`} fill="none" stroke="hsl(200 55% 48%)" strokeWidth="1.5" />
             {/* Hairpin at papilla */}
-            <path d={`M ${loopX1 - 2} ${loopBottom} Q ${(loopX1 + loopX2) / 2} ${loopBottom + 12} ${loopX2 + 2} ${loopBottom}`} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.3" opacity="0.5" />
+            <path d={`M ${loopX1 - 2} ${loopBottom} Q ${(loopX1 + loopX2) / 2} ${loopBottom + 12} ${loopX2 + 2} ${loopBottom}`} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" opacity="0.5" />
             {/* Thin ascending — only in inner medulla */}
-            <path d={`M ${loopX2 + 2} ${loopBottom} L ${loopX2 + 4} ${outerMedBottom}`} fill="none" stroke="hsl(30 55% 48%)" strokeWidth="1.4" />
+            <path d={`M ${loopX2 + 2} ${loopBottom} L ${loopX2 + 4} ${outerMedBottom}`} fill="none" stroke="hsl(30 55% 48%)" strokeWidth="1.5" />
             {/* Thick ascending — outer medulla → cortex */}
-            <path d={`M ${loopX2 + 4} ${outerMedBottom} L ${loopX2 + 6} ${loopTopY}`} fill="none" stroke="hsl(30 65% 45%)" strokeWidth="2.2" />
+            <path d={`M ${loopX2 + 4} ${outerMedBottom} L ${loopX2 + 6} ${loopTopY}`} fill="none" stroke="hsl(30 65% 45%)" strokeWidth="2" />
             <text x={(loopX1 + loopX2) / 2} y={loopBottom + 26} fontSize="6.5" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic" opacity="0.7">long loop → papilla</text>
           </g>
         );
@@ -208,12 +208,12 @@ const NephronSchematic = ({ variant, highlight }: NephronProps) => {
             <path d={`M ${dctStart + 6} ${dctY} Q ${dctStart + 25} ${dctY - 10} ${dctStart + 40} ${dctY + 4} Q ${dctStart + 50} ${dctY + 14} ${dctStart + 60} ${dctY + 8}`}
               fill="none" stroke="hsl(45 60% 42%)" strokeWidth="2" />
             {/* Cortical collecting duct */}
-            <path d={`M ${dctStart + 60} ${dctY + 8} L ${dctStart + 60} ${cortexBottom}`} fill="none" stroke="hsl(270 50% 48%)" strokeWidth="1.8" strokeDasharray="5 2" />
+            <path d={`M ${dctStart + 60} ${dctY + 8} L ${dctStart + 60} ${cortexBottom}`} fill="none" stroke="hsl(270 50% 48%)" strokeWidth="2" strokeDasharray="5 2" />
             {/* Medullary collecting duct down to papilla (shared destination shown for both) */}
             {isJuxta ? (
-              <path d={`M ${dctStart + 60} ${cortexBottom} L ${dctStart + 58} ${loopBottom + 5}`} fill="none" stroke="hsl(270 45% 42%)" strokeWidth="1.8" strokeDasharray="5 2" />
+              <path d={`M ${dctStart + 60} ${cortexBottom} L ${dctStart + 58} ${loopBottom + 5}`} fill="none" stroke="hsl(270 45% 42%)" strokeWidth="2" strokeDasharray="5 2" />
             ) : (
-              <path d={`M ${dctStart + 60} ${cortexBottom} L ${dctStart + 58} ${cortexBottom + 35}`} fill="none" stroke="hsl(270 45% 42%)" strokeWidth="1.6" strokeDasharray="5 2" opacity="0.45" />
+              <path d={`M ${dctStart + 60} ${cortexBottom} L ${dctStart + 58} ${cortexBottom + 35}`} fill="none" stroke="hsl(270 45% 42%)" strokeWidth="1.5" strokeDasharray="5 2" opacity="0.45" />
             )}
             {/* Urine arrow */}
             {isJuxta && (

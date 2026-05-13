@@ -153,7 +153,7 @@ const TwelveLeadEcgDiagram = () => {
           strokeDasharray={isLeadActiveTerritory && !elevated ? "3 2" : undefined}
         />
         {/* baseline */}
-        <line x1={x + 4} y1={beatY} x2={x + w - 4} y2={beatY} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.3" strokeWidth="0.4" />
+        <line x1={x + 4} y1={beatY} x2={x + w - 4} y2={beatY} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.3" strokeWidth="0.5" />
         {/* beat */}
         <path
           d={beatPath(beatX, beatY, st, beatScale)}
@@ -232,7 +232,7 @@ const TwelveLeadEcgDiagram = () => {
               <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
             </radialGradient>
             <pattern id="ecg12-grid" patternUnits="userSpaceOnUse" width="5" height="5">
-              <path d="M 5 0 L 0 0 0 5" fill="none" stroke="hsl(var(--muted-foreground))" strokeOpacity="0.1" strokeWidth="0.3" />
+              <path d="M 5 0 L 0 0 0 5" fill="none" stroke="hsl(var(--muted-foreground))" strokeOpacity="0.1" strokeWidth="0.5" />
             </pattern>
             <filter id="ecg12-shadow" x="-10%" y="-10%" width="120%" height="120%">
               <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
@@ -310,7 +310,7 @@ const TwelveLeadEcgDiagram = () => {
               const beatGap = (stripEndX - stripStartX) / beats;
               return (
                 <>
-                  <line x1={stripStartX - 4} y1={stripY} x2={stripEndX + 4} y2={stripY} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.25" strokeWidth="0.4" />
+                  <line x1={stripStartX - 4} y1={stripY} x2={stripEndX + 4} y2={stripY} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.25" strokeWidth="0.5" />
                   {Array.from({ length: beats }).map((_, i) => (
                     <path
                       key={i}

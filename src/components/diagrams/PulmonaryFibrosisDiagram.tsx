@@ -59,7 +59,7 @@ const PulmonaryFibrosisDiagram = () => {
             <g transform="translate(20, 40)">
               <text x="70" y="0" textAnchor="middle" className="fill-muted-foreground" fontSize="10">Normal</text>
               <circle cx="70" cy="60" r="42" fill="hsl(var(--clinical) / 0.05)" stroke="hsl(var(--clinical))" strokeWidth="1.5" />
-              <ellipse cx="70" cy="60" rx="38" ry="38" fill="none" stroke="hsl(var(--clinical))" strokeWidth="0.8" strokeDasharray="2 2" />
+              <ellipse cx="70" cy="60" rx="38" ry="38" fill="none" stroke="hsl(var(--clinical))" strokeWidth="0.75" strokeDasharray="2 2" />
               <text x="70" y="62" textAnchor="middle" className="fill-foreground" fontSize="9">thin wall</text>
               <text x="70" y="120" textAnchor="middle" className="fill-clinical" fontSize="9" fontWeight="600">DLCO normal</text>
             </g>
@@ -70,7 +70,7 @@ const PulmonaryFibrosisDiagram = () => {
             {/* Fibrosed alveolus */}
             <g transform="translate(240, 40)">
               <text x="70" y="0" textAnchor="middle" className="fill-muted-foreground" fontSize="10">Fibrosed</text>
-              <circle cx="70" cy="60" r="42" fill="hsl(var(--clinical) / 0.25)" stroke="hsl(var(--clinical))" strokeWidth="6" />
+              <circle cx="70" cy="60" r="42" fill="hsl(var(--clinical) / 0.25)" stroke="hsl(var(--clinical))" strokeWidth="3" />
               {/* Collagen scribbles */}
               {[0, 60, 120, 180, 240, 300].map((angle) => (
                 <line

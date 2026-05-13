@@ -198,7 +198,7 @@ const RVFailureSpiralDiagram = () => {
                   fill="none"
                   className="stroke-border"
                   strokeDasharray="2 4"
-                  strokeWidth={0.6}
+                  strokeWidth={0.5}
                   opacity={0.5}
                 />
               ))}
@@ -228,7 +228,7 @@ const RVFailureSpiralDiagram = () => {
                 r={26}
                 fill="none"
                 className="stroke-destructive"
-                strokeWidth={1.2}
+                strokeWidth={1}
                 strokeDasharray="3 2"
               />
               <text
@@ -433,7 +433,7 @@ const RVFailureSpiralDiagram = () => {
                   cy="80"
                   r="32"
                   className="fill-card stroke-foreground"
-                  strokeWidth={1.2}
+                  strokeWidth={1}
                 />
                 <text
                   x="60"
@@ -468,14 +468,14 @@ const RVFailureSpiralDiagram = () => {
                 <path
                   d="M 10 80 Q 15 20 80 20 Q 110 50 110 80 Q 110 110 80 140 Q 15 140 10 80 Z"
                   className="fill-destructive stroke-destructive"
-                  strokeWidth={1.2}
+                  strokeWidth={1}
                   opacity={0.18}
                 />
                 {/* D-shaped LV — septum bulges right→left */}
                 <path
                   d="M 105 50 Q 90 80 105 110 A 28 30 0 1 0 105 50 Z"
                   className="fill-card stroke-foreground"
-                  strokeWidth={1.2}
+                  strokeWidth={1}
                 />
                 {/* Septal arrow */}
                 <line

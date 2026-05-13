@@ -136,9 +136,9 @@ export const IsolationTransformerDiagram = () => {
           {/* Patient */}
           <g>
             {/* Head */}
-            <circle cx={patient.x + patient.w / 2} cy={patient.y - 5} r={14} fill="hsl(20 50% 85%)" stroke="hsl(215 25% 35%)" strokeWidth="1.2" />
+            <circle cx={patient.x + patient.w / 2} cy={patient.y - 5} r={14} fill="hsl(20 50% 85%)" stroke="hsl(215 25% 35%)" strokeWidth="1" />
             {/* Body */}
-            <rect x={patient.x} y={patient.y + 10} width={patient.w} height={patient.h - 20} rx={10} fill="hsl(210 60% 92%)" stroke="hsl(215 25% 35%)" strokeWidth="1.2" />
+            <rect x={patient.x} y={patient.y + 10} width={patient.w} height={patient.h - 20} rx={10} fill="hsl(210 60% 92%)" stroke="hsl(215 25% 35%)" strokeWidth="1" />
             {/* Heart */}
             <path d="M 510 245 q -8 -10 -16 0 q 0 10 16 22 q 16 -12 16 -22 q -8 -10 -16 0" fill="hsl(0 70% 55%)" opacity={showCurrentThroughPatient ? 1 : 0.7}>
               {showCurrentThroughPatient && (
@@ -152,8 +152,8 @@ export const IsolationTransformerDiagram = () => {
           </g>
 
           {/* Patient feet to earth */}
-          <line x1={patient.x + 20} y1={patient.y + patient.h} x2={patient.x + 20} y2={earthY} stroke="hsl(215 25% 35%)" strokeWidth="1.2" />
-          <line x1={patient.x + patient.w - 20} y1={patient.y + patient.h} x2={patient.x + patient.w - 20} y2={earthY} stroke="hsl(215 25% 35%)" strokeWidth="1.2" />
+          <line x1={patient.x + 20} y1={patient.y + patient.h} x2={patient.x + 20} y2={earthY} stroke="hsl(215 25% 35%)" strokeWidth="1" />
+          <line x1={patient.x + patient.w - 20} y1={patient.y + patient.h} x2={patient.x + patient.w - 20} y2={earthY} stroke="hsl(215 25% 35%)" strokeWidth="1" />
 
           {/* Earth bar */}
           <line x1={40} y1={earthY} x2={W - 40} y2={earthY} stroke="hsl(140 50% 30%)" strokeWidth="2" />
@@ -219,9 +219,9 @@ export const IsolationTransformerDiagram = () => {
               </text>
 
               {/* LIM senses both lines vs earth */}
-              <path d="M 270 250 L 270 150" fill="none" stroke="hsl(215 25% 50%)" strokeWidth="0.8" strokeDasharray="2 2" />
-              <path d="M 350 250 L 350 185" fill="none" stroke="hsl(215 25% 50%)" strokeWidth="0.8" strokeDasharray="2 2" />
-              <path d="M 310 305 L 310 320" fill="none" stroke="hsl(215 25% 50%)" strokeWidth="0.8" strokeDasharray="2 2" />
+              <path d="M 270 250 L 270 150" fill="none" stroke="hsl(215 25% 50%)" strokeWidth="0.75" strokeDasharray="2 2" />
+              <path d="M 350 250 L 350 185" fill="none" stroke="hsl(215 25% 50%)" strokeWidth="0.75" strokeDasharray="2 2" />
+              <path d="M 310 305 L 310 320" fill="none" stroke="hsl(215 25% 50%)" strokeWidth="0.75" strokeDasharray="2 2" />
             </g>
           )}
 

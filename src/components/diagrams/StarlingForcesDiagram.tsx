@@ -104,7 +104,7 @@ const StarlingForcesDiagram = () => {
 
             {/* Blood flow arrow */}
             <line x1="80" y1={capY + capH / 2} x2={w - 80} y2={capY + capH / 2}
-              stroke="hsl(0, 50%, 50%)" strokeWidth="0.8" opacity="0.2" markerEnd="url(#flowArrow)" />
+              stroke="hsl(0, 50%, 50%)" strokeWidth="0.75" opacity="0.2" markerEnd="url(#flowArrow)" />
             <defs>
               <marker id="flowArrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
                 <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(0, 50%, 50%)" opacity="0.3" />

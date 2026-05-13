@@ -78,8 +78,8 @@ const AnimatedMolecule = ({ path, color, label, delay, duration, fontSize = 7 }:
   return (
     <g opacity={opacity}>
       <circle cx={x} cy={y} r={4} fill={color} fillOpacity="0.7" />
-      <circle cx={x} cy={y} r={4} fill="none" stroke={color} strokeWidth="0.8" opacity="0.5" />
-      <text x={x} y={y + 0.5} fontSize={fontSize} fill="white" textAnchor="middle" dominantBaseline="middle" fontWeight="600">
+      <circle cx={x} cy={y} r={4} fill="none" stroke={color} strokeWidth="0.75" opacity="0.5" />
+      <text x={x} y={y + 0.5} fontSize={fontSize} fill="hsl(var(--background))" textAnchor="middle" dominantBaseline="middle" fontWeight="600">
         {label.length > 3 ? "" : label}
       </text>
       {label.length > 3 && (
@@ -112,7 +112,7 @@ const ChannelIcon = ({ x, y, width, height, label, sublabel, color, type, rotati
     {type === "pump" ? (
       <>
         <rect x={-width / 2} y={-height / 2} width={width} height={height} rx={3}
-          fill={color} fillOpacity="0.15" stroke={color} strokeWidth="1.2" />
+          fill={color} fillOpacity="0.15" stroke={color} strokeWidth="1" />
         <circle cx={0} cy={-2} r={4} fill="none" stroke={color} strokeWidth="1" />
         <text x={0} y={0} fontSize="5" fill={color} textAnchor="middle" fontWeight="700">ATP</text>
       </>
@@ -125,14 +125,14 @@ const ChannelIcon = ({ x, y, width, height, label, sublabel, color, type, rotati
       <>
         <rect x={-width / 2} y={-height / 2} width={width} height={height} rx={3}
           fill={color} fillOpacity="0.12" stroke={color} strokeWidth="1" />
-        <line x1={-3} y1={-3} x2={3} y2={3} stroke={color} strokeWidth="0.8" />
-        <line x1={3} y1={-3} x2={-3} y2={3} stroke={color} strokeWidth="0.8" />
+        <line x1={-3} y1={-3} x2={3} y2={3} stroke={color} strokeWidth="0.75" />
+        <line x1={3} y1={-3} x2={-3} y2={3} stroke={color} strokeWidth="0.75" />
       </>
     ) : (
       <>
         <rect x={-width / 2} y={-height / 2} width={width} height={height} rx={2}
-          fill={color} fillOpacity="0.1" stroke={color} strokeWidth="0.8" />
-        <line x1={0} y1={-height / 2 + 2} x2={0} y2={height / 2 - 2} stroke={color} strokeWidth="0.6" opacity="0.4" />
+          fill={color} fillOpacity="0.1" stroke={color} strokeWidth="0.75" />
+        <line x1={0} y1={-height / 2 + 2} x2={0} y2={height / 2 - 2} stroke={color} strokeWidth="0.5" opacity="0.4" />
       </>
     )}
     <text x={0} y={height / 2 + 9} fontSize="5.5" fill={color} textAnchor="middle" fontWeight="600">{label}</text>
@@ -161,7 +161,7 @@ const PCTCellSVG = () => (
     {/* Brush border microvilli */}
     {Array.from({ length: 20 }).map((_, i) => (
       <line key={`mv-${i}`} x1={120} y1={35 + i * 13} x2={108} y2={35 + i * 13}
-        stroke="hsl(150 50% 45%)" strokeWidth="1.2" opacity="0.5" />
+        stroke="hsl(150 50% 45%)" strokeWidth="1" opacity="0.5" />
     ))}
     <text x="108" y="305" fontSize="5" fill="hsl(150 50% 45%)" textAnchor="middle" opacity="0.6">Apical (brush border)</text>
 
@@ -177,7 +177,7 @@ const PCTCellSVG = () => (
     {[60, 120, 180, 240].map((y, i) => (
       <g key={`mito-${i}`} opacity="0.3">
         <ellipse cx={345} cy={y} rx={8} ry={4} fill="none" stroke="hsl(150 40% 50%)" strokeWidth="1" />
-        <path d={`M${340},${y} Q${345},${y - 2} ${350},${y}`} fill="none" stroke="hsl(150 40% 50%)" strokeWidth="0.6" />
+        <path d={`M${340},${y} Q${345},${y - 2} ${350},${y}`} fill="none" stroke="hsl(150 40% 50%)" strokeWidth="0.5" />
       </g>
     ))}
 
@@ -207,7 +207,7 @@ const PCTCellSVG = () => (
     {/* === Carbonic anhydrase in cell === */}
     <g opacity="0.6">
       <rect x={190} y={140} width={60} height={22} rx={4} fill="hsl(200 40% 50%)" fillOpacity="0.1"
-        stroke="hsl(200 40% 50%)" strokeWidth="0.8" />
+        stroke="hsl(200 40% 50%)" strokeWidth="0.75" />
       <text x={220} y={148} fontSize="5" fill="hsl(200 40% 50%)" textAnchor="middle" fontWeight="600">CA II</text>
       <text x={220} y={157} fontSize="4.5" fill="hsl(200 40% 50%)" textAnchor="middle">CO₂+H₂O → H⁺+HCO₃⁻</text>
     </g>
@@ -222,14 +222,14 @@ const PCTCellSVG = () => (
 
     {/* === Paracellular Na⁺/H₂O === */}
     <g opacity="0.35">
-      <line x1={120} y1={255} x2={360} y2={255} stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" strokeDasharray="4 3" />
+      <line x1={120} y1={255} x2={360} y2={255} stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="4 3" />
       <text x={240} y={268} fontSize="5" fill="hsl(var(--muted-foreground))" textAnchor="middle">Paracellular: Na⁺, H₂O (solvent drag)</text>
     </g>
 
     {/* Lumen CA IV */}
     <g opacity="0.5">
       <rect x={45} y={170} width={40} height={18} rx={3} fill="hsl(200 40% 50%)" fillOpacity="0.1"
-        stroke="hsl(200 40% 50%)" strokeWidth="0.6" />
+        stroke="hsl(200 40% 50%)" strokeWidth="0.5" />
       <text x={65} y={178} fontSize="4.5" fill="hsl(200 40% 50%)" textAnchor="middle" fontWeight="600">CA IV</text>
       <text x={65} y={185} fontSize="3.5" fill="hsl(200 40% 50%)" textAnchor="middle">HCO₃⁻+H⁺→CO₂+H₂O</text>
     </g>
@@ -282,7 +282,7 @@ const TALCellSVG = () => (
 
     {/* Paracellular Ca²⁺/Mg²⁺ driven by lumen-positive potential */}
     <g opacity="0.5">
-      <line x1={120} y1={225} x2={360} y2={225} stroke="hsl(45 60% 50%)" strokeWidth="0.8" strokeDasharray="4 3" />
+      <line x1={120} y1={225} x2={360} y2={225} stroke="hsl(45 60% 50%)" strokeWidth="0.75" strokeDasharray="4 3" />
       <text x={240} y={240} fontSize="5.5" fill="hsl(45 60% 50%)" textAnchor="middle" fontWeight="500">Paracellular: Ca²⁺, Mg²⁺</text>
       <text x={240} y={250} fontSize="4.5" fill="hsl(45 50% 50%)" textAnchor="middle">(driven by +8 mV lumen potential)</text>
     </g>
@@ -291,7 +291,7 @@ const TALCellSVG = () => (
 
     {/* Lumen-positive potential indicator */}
     <g opacity="0.6">
-      <rect x={15} y={38} width={30} height={16} rx={3} fill="hsl(45 60% 50%)" fillOpacity="0.15" stroke="hsl(45 60% 50%)" strokeWidth="0.8" />
+      <rect x={15} y={38} width={30} height={16} rx={3} fill="hsl(45 60% 50%)" fillOpacity="0.15" stroke="hsl(45 60% 50%)" strokeWidth="0.75" />
       <text x={30} y={49} fontSize="6" fill="hsl(45 60% 50%)" textAnchor="middle" fontWeight="700">+8mV</text>
     </g>
   </svg>
@@ -339,7 +339,7 @@ const DCTCellSVG = () => (
     {/* Calbindin shuttle */}
     <g opacity="0.5">
       <rect x={200} y={192} width={50} height={18} rx={4} fill="hsl(45 50% 50%)" fillOpacity="0.1"
-        stroke="hsl(45 50% 50%)" strokeWidth="0.6" />
+        stroke="hsl(45 50% 50%)" strokeWidth="0.5" />
       <text x={225} y={204} fontSize="5" fill="hsl(45 50% 50%)" textAnchor="middle">Calbindin-D28k</text>
     </g>
     <MoleculeStream path={{ x1: 150, y1: 200, x2: 340, y2: 200 }} color="hsl(45 65% 50%)" label="Ca²⁺" count={2} baseDuration={3000} baseDelay={600} />
@@ -388,7 +388,7 @@ const PrincipalCellSVG = () => (
     {/* Aldosterone / MR receptor */}
     <g opacity="0.5">
       <rect x={195} y={45} width={65} height={22} rx={4} fill="hsl(270 40% 50%)" fillOpacity="0.1"
-        stroke="hsl(270 40% 50%)" strokeWidth="0.8" />
+        stroke="hsl(270 40% 50%)" strokeWidth="0.75" />
       <text x={227} y={55} fontSize="5" fill="hsl(270 40% 50%)" textAnchor="middle" fontWeight="600">Mineralocorticoid R</text>
       <text x={227} y={63} fontSize="4.5" fill="hsl(270 40% 50%)" textAnchor="middle">Aldosterone → ↑ENaC, ↑ROMK</text>
     </g>
@@ -404,7 +404,7 @@ const PrincipalCellSVG = () => (
     {/* ADH / V2R / cAMP cascade */}
     <g opacity="0.45">
       <rect x={195} y={230} width={65} height={30} rx={4} fill="hsl(200 40% 50%)" fillOpacity="0.1"
-        stroke="hsl(200 40% 50%)" strokeWidth="0.6" />
+        stroke="hsl(200 40% 50%)" strokeWidth="0.5" />
       <text x={227} y={241} fontSize="4.5" fill="hsl(200 40% 50%)" textAnchor="middle" fontWeight="600">ADH → V2R</text>
       <text x={227} y={249} fontSize="4" fill="hsl(200 40% 50%)" textAnchor="middle">→ cAMP → PKA</text>
       <text x={227} y={257} fontSize="4" fill="hsl(200 40% 50%)" textAnchor="middle">→ AQP2 vesicle exocytosis</text>
@@ -412,7 +412,7 @@ const PrincipalCellSVG = () => (
 
     {/* Lumen-negative potential indicator */}
     <g opacity="0.6">
-      <rect x={20} y={38} width={28} height={16} rx={3} fill="hsl(270 50% 50%)" fillOpacity="0.15" stroke="hsl(270 50% 50%)" strokeWidth="0.8" />
+      <rect x={20} y={38} width={28} height={16} rx={3} fill="hsl(270 50% 50%)" fillOpacity="0.15" stroke="hsl(270 50% 50%)" strokeWidth="0.75" />
       <text x={34} y={49} fontSize="6" fill="hsl(270 50% 50%)" textAnchor="middle" fontWeight="700">−ve</text>
     </g>
   </svg>
@@ -448,7 +448,7 @@ const IntercalatedACellSVG = () => (
     {/* CA II in cell */}
     <g opacity="0.55">
       <rect x={200} y={80} width={55} height={30} rx={4} fill="hsl(200 40% 50%)" fillOpacity="0.1"
-        stroke="hsl(200 40% 50%)" strokeWidth="0.8" />
+        stroke="hsl(200 40% 50%)" strokeWidth="0.75" />
       <text x={227} y={91} fontSize="5" fill="hsl(200 40% 50%)" textAnchor="middle" fontWeight="600">CA II</text>
       <text x={227} y={100} fontSize="4.5" fill="hsl(200 40% 50%)" textAnchor="middle">CO₂ + H₂O</text>
       <text x={227} y={107} fontSize="4.5" fill="hsl(200 40% 50%)" textAnchor="middle">→ H⁺ + HCO₃⁻</text>
@@ -463,7 +463,7 @@ const IntercalatedACellSVG = () => (
     {/* Lumen buffering */}
     <g opacity="0.45">
       <rect x={20} y={180} width={75} height={40} rx={4} fill="hsl(30 40% 50%)" fillOpacity="0.08"
-        stroke="hsl(30 40% 50%)" strokeWidth="0.6" />
+        stroke="hsl(30 40% 50%)" strokeWidth="0.5" />
       <text x={57} y={192} fontSize="5" fill="hsl(30 40% 50%)" textAnchor="middle" fontWeight="600">Urinary Buffers</text>
       <text x={57} y={202} fontSize="4.5" fill="hsl(30 40% 50%)" textAnchor="middle">HPO₄²⁻ + H⁺ → H₂PO₄⁻</text>
       <text x={57} y={212} fontSize="4.5" fill="hsl(30 40% 50%)" textAnchor="middle">NH₃ + H⁺ → NH₄⁺</text>
@@ -471,7 +471,7 @@ const IntercalatedACellSVG = () => (
 
     {/* NH₃ diffusion into lumen */}
     <g opacity="0.4">
-      <line x1={360} y1={200} x2={120} y2={230} stroke="hsl(30 45% 50%)" strokeWidth="0.6" strokeDasharray="3 2" />
+      <line x1={360} y1={200} x2={120} y2={230} stroke="hsl(30 45% 50%)" strokeWidth="0.5" strokeDasharray="3 2" />
       <text x={240} y={222} fontSize="4.5" fill="hsl(30 45% 50%)" textAnchor="middle">NH₃ diffuses in → trapped as NH₄⁺</text>
     </g>
     <MoleculeStream path={{ x1: 350, y1: 200, x2: 60, y2: 235 }} color="hsl(30 50% 50%)" label="NH₃" count={2} baseDuration={3500} />

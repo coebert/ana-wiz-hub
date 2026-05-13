@@ -112,7 +112,7 @@ const Lead = ({
     >
       <defs>
         <pattern id={`wellens-grid-${lead.id}-${pattern}`} width="5" height="5" patternUnits="userSpaceOnUse">
-          <path d="M 5 0 L 0 0 0 5" fill="none" stroke={isAffected ? patternColor : "hsl(var(--muted-foreground))"} strokeOpacity={isAffected ? 0.18 : 0.1} strokeWidth="0.3" />
+          <path d="M 5 0 L 0 0 0 5" fill="none" stroke={isAffected ? patternColor : "hsl(var(--muted-foreground))"} strokeOpacity={isAffected ? 0.18 : 0.1} strokeWidth="0.5" />
         </pattern>
       </defs>
 
@@ -129,7 +129,7 @@ const Lead = ({
       <rect x="0.5" y="0.5" width={W - 1} height={H - 1} rx="3" fill={`url(#wellens-grid-${lead.id}-${pattern})`} pointerEvents="none" />
 
       {/* Baseline */}
-      <line x1="4" y1={baseline} x2={W - 4} y2={baseline} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.35" strokeWidth="0.4" />
+      <line x1="4" y1={baseline} x2={W - 4} y2={baseline} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.35" strokeWidth="0.5" />
 
       {/* Trace */}
       <path d={path} fill="none" stroke={traceColor} strokeWidth={isAffected ? 1.6 : 1.2} strokeLinecap="round" strokeLinejoin="round" />

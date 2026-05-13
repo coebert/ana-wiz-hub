@@ -162,7 +162,7 @@ export const RenalBloodFlowDiagram = () => {
 
             {/* Renal artery + branching */}
             <g>
-              <path d="M 340 200 L 300 200" stroke="hsl(0 70% 50%)" strokeWidth="6" strokeLinecap="round" />
+              <path d="M 340 200 L 300 200" stroke="hsl(0 70% 50%)" strokeWidth="3" strokeLinecap="round" />
               <text x="345" y="195" fontSize="9" fill="hsl(0 65% 50%)" fontWeight="700">Renal a.</text>
               <text x="345" y="207" fontSize="7" fill="hsl(var(--muted-foreground))">{totalRBF} ml/min</text>
 

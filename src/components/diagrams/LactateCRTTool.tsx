@@ -126,7 +126,7 @@ function TrajectoryChart({ l0, l2, l6 }: { l0: number; l2: number; l6: number })
         ))}
 
         {/* 2 mmol/L threshold */}
-        <line x1={PL} x2={W - PR} y1={yScale(2)} y2={yScale(2)} stroke="hsl(var(--icu))" strokeWidth={0.8} strokeDasharray="4 3" opacity={0.6} />
+        <line x1={PL} x2={W - PR} y1={yScale(2)} y2={yScale(2)} stroke="hsl(var(--icu))" strokeWidth={0.75} strokeDasharray="4 3" opacity={0.6} />
         <text x={W - PR - 2} y={yScale(2) - 2} textAnchor="end" fontSize={8} fill="hsl(var(--icu))">2 mmol/L target</text>
 
         {/* Axes */}
@@ -144,13 +144,13 @@ function TrajectoryChart({ l0, l2, l6 }: { l0: number; l2: number; l6: number })
         <text x={PL + plotW / 2} y={H - 2} textAnchor="middle" fontSize={9} fill="hsl(var(--muted-foreground))">Time</text>
 
         {/* Reference target trajectory */}
-        <path d={targetPath} fill="none" stroke="hsl(var(--accent))" strokeWidth={1.2} strokeDasharray="3 3" opacity={0.7} />
+        <path d={targetPath} fill="none" stroke="hsl(var(--accent))" strokeWidth={1} strokeDasharray="3 3" opacity={0.7} />
 
         {/* Actual trajectory */}
-        <path d={pathD} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.4} strokeLinejoin="round" />
+        <path d={pathD} fill="none" stroke="hsl(var(--primary))" strokeWidth={2} strokeLinejoin="round" />
         {points.map((p, i) => (
           <g key={i}>
-            <circle cx={xScale(p.t)} cy={yScale(p.v)} r={4} fill="hsl(var(--primary))" stroke="hsl(var(--card))" strokeWidth={1.2} />
+            <circle cx={xScale(p.t)} cy={yScale(p.v)} r={4} fill="hsl(var(--primary))" stroke="hsl(var(--card))" strokeWidth={1} />
             <text x={xScale(p.t) + 6} y={yScale(p.v) - 4} fontSize={9} fontWeight="bold" fill="hsl(var(--foreground))">
               {p.v.toFixed(1)}
             </text>

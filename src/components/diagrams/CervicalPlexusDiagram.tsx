@@ -76,7 +76,7 @@ const CervicalPlexusDiagram = () => {
               {["C1", "C2", "C3", "C4", "C5"].map((level) => (
                 <g key={level}>
                   <rect x={spineX - 14} y={rootY[level] - 10} width="28" height="20" rx="3"
-                    fill="hsl(var(--muted))" stroke={ROOT_COLORS[level]} strokeWidth="1.25" />
+                    fill="hsl(var(--muted))" stroke={ROOT_COLORS[level]} strokeWidth="1" />
                   <text x={spineX} y={rootY[level] + 4} fontSize="9" fill={ROOT_COLORS[level]}
                     textAnchor="middle" fontWeight="700">{level}</text>
                 </g>
@@ -120,27 +120,27 @@ const CervicalPlexusDiagram = () => {
               <path d={`M${rootStartX + 25},${rootY.C3} C145,${rootY.C3} 175,100 195,95`}
                 stroke={branches.superficial.color} strokeWidth="1.5" fill="none" />
               <path d={`M${rootStartX + 25},${rootY.C4} C150,130 180,105 195,95`}
-                stroke={branches.superficial.color} strokeWidth="1.2" fill="none" opacity="0.7" />
+                stroke={branches.superficial.color} strokeWidth="1" fill="none" opacity="0.7" />
 
               {/* 4 cutaneous branches fanning out */}
               {/* Lesser occipital (C2) — up & back */}
               <path d="M195,95 C210,80 225,60 240,45" stroke={branches.superficial.color}
-                strokeWidth="1.3" fill="none" />
+                strokeWidth="1.5" fill="none" />
               <text x="242" y="44" fontSize="5.5" fill={branches.superficial.color}>Lesser occipital (C2)</text>
 
               {/* Great auricular (C2,3) — up to ear */}
               <path d="M195,95 C215,85 230,75 245,65" stroke={branches.superficial.color}
-                strokeWidth="1.3" fill="none" />
+                strokeWidth="1.5" fill="none" />
               <text x="247" y="64" fontSize="5.5" fill={branches.superficial.color}>Great auricular (C2,3)</text>
 
               {/* Transverse cervical (C2,3) — forward */}
               <path d="M195,95 C215,95 235,95 260,95" stroke={branches.superficial.color}
-                strokeWidth="1.3" fill="none" />
+                strokeWidth="1.5" fill="none" />
               <text x="262" y="94" fontSize="5.5" fill={branches.superficial.color}>Transverse cervical (C2,3)</text>
 
               {/* Supraclavicular (C3,4) — down */}
               <path d="M195,95 C210,115 225,140 245,165" stroke={branches.superficial.color}
-                strokeWidth="1.3" fill="none" />
+                strokeWidth="1.5" fill="none" />
               <text x="247" y="164" fontSize="5.5" fill={branches.superficial.color}>Supraclavicular (C3,4)</text>
             </g>
 
@@ -158,7 +158,7 @@ const CervicalPlexusDiagram = () => {
                 stroke={branches.deep.color} strokeWidth="2" fill="none" />
               {/* Motor to prevertebral */}
               <rect x="142" y="42" width="40" height="108" rx="5" fill={branches.deep.color}
-                fillOpacity="0.08" stroke={branches.deep.color} strokeWidth="0.8" strokeDasharray="3 2" />
+                fillOpacity="0.08" stroke={branches.deep.color} strokeWidth="0.75" strokeDasharray="3 2" />
               {selected === "deep" && (
                 <text x="162" y="100" fontSize="5" fill={branches.deep.color} textAnchor="middle"
                   fontWeight="500">Prevertebral mm.</text>
@@ -170,14 +170,14 @@ const CervicalPlexusDiagram = () => {
               onClick={() => setSelected("phrenic")}>
               {/* C3,4,5 contributions */}
               <path d={`M${rootStartX + 25},${rootY.C3} C130,${rootY.C3} 138,120 142,125`}
-                stroke={branches.phrenic.color} strokeWidth="1.3" fill="none" />
+                stroke={branches.phrenic.color} strokeWidth="1.5" fill="none" />
               <path d={`M${rootStartX + 25},${rootY.C4} C130,${rootY.C4} 138,135 142,125`}
-                stroke={branches.phrenic.color} strokeWidth="1.8" fill="none" />
+                stroke={branches.phrenic.color} strokeWidth="2" fill="none" />
               <path d={`M${rootStartX + 25},${rootY.C5} C130,160 138,145 142,125`}
-                stroke={branches.phrenic.color} strokeWidth="1.3" fill="none" />
+                stroke={branches.phrenic.color} strokeWidth="1.5" fill="none" />
               {/* Descending on scalenus anterior */}
               <path d="M142,125 C140,140 138,155 136,170 C134,180 132,190 130,200"
-                stroke={branches.phrenic.color} strokeWidth="2.5" fill="none" />
+                stroke={branches.phrenic.color} strokeWidth="2" fill="none" />
               {/* Arrow to diaphragm */}
               <polygon points="128,200 132,200 130,207" fill={branches.phrenic.color} />
               {selected === "phrenic" && <>

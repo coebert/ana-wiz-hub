@@ -25,7 +25,7 @@ const NeuromuscularMonitoringDiagram = () => {
               </g>
             );
           })}
-          <path d="M 52,15 L 52,25 L 292,25 L 292,15" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" />
+          <path d="M 52,15 L 52,25 L 292,25 L 292,15" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" />
           <text x="172" y="12" textAnchor="middle" fontSize="8" className="fill-muted-foreground">TOF ratio = T4/T1</text>
           <text x="172" y="45" textAnchor="middle" fontSize="9" fill="hsl(var(--primary))" fontWeight="600">Fade = non-depolarising block</text>
         </svg>
@@ -40,7 +40,7 @@ const NeuromuscularMonitoringDiagram = () => {
         <svg viewBox="0 0 360 120" className="w-full h-auto">
           <line x1="20" y1="100" x2="340" y2="100" stroke="hsl(var(--border))" strokeWidth="1" />
           {/* Tetanus burst */}
-          <rect x="30" y="20" width="80" height="80" fill="hsl(var(--primary))" opacity="0.3" rx="2" />
+          <rect x="30" y="20" width="80" height="80" fill="hsl(var(--primary))" opacity="0.3" rx="2" stroke="hsl(var(--border))" strokeWidth="0.75" />
           <rect x="30" y="20" width="80" height="3" fill="hsl(var(--primary))" opacity="0.8" />
           {Array.from({ length: 20 }).map((_, i) => (
             <line key={i} x1={32 + i * 4} y1="23" x2={32 + i * 4} y2="100" stroke="hsl(var(--primary))" strokeWidth="1.5" opacity="0.5" />
@@ -98,11 +98,11 @@ const NeuromuscularMonitoringDiagram = () => {
           <line x1="20" y1="100" x2="340" y2="100" stroke="hsl(var(--border))" strokeWidth="1" />
           {/* Non-depolarising: fade */}
           <path d="M 40,30 L 40,100" stroke="hsl(var(--primary))" strokeWidth="2" />
-          <path d="M 40,30 Q 120,30 200,70 L 200,100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+          <path d="M 40,30 Q 120,30 200,70 L 200,100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
           <text x="120" y="22" textAnchor="middle" fontSize="8" className="fill-primary" fontWeight="600">Non-depolarising (FADE)</text>
           {/* Depolarising: sustained */}
           <path d="M 230,50 L 230,100" stroke="hsl(142,60%,45%)" strokeWidth="2" />
-          <line x1="230" y1="50" x2="330" y2="50" stroke="hsl(142,60%,45%)" strokeWidth="2.5" />
+          <line x1="230" y1="50" x2="330" y2="50" stroke="hsl(142,60%,45%)" strokeWidth="2" />
           <path d="M 330,50 L 330,100" stroke="hsl(142,60%,45%)" strokeWidth="2" />
           <text x="280" y="42" textAnchor="middle" fontSize="8" fill="hsl(142,60%,45%)" fontWeight="600">Depolarising (NO fade)</text>
         </svg>

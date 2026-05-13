@@ -1,7 +1,7 @@
 const BrainBase = ({ children, label }: { children: React.ReactNode; label: string }) => (
   <svg viewBox="0 0 300 280" className="w-full max-w-xs mx-auto" aria-label={label}>
     {/* Skull outer table */}
-    <ellipse cx="150" cy="150" rx="125" ry="115" fill="none" stroke="hsl(var(--foreground))" strokeWidth="4" opacity="0.25" />
+    <ellipse cx="150" cy="150" rx="125" ry="115" fill="none" stroke="hsl(var(--foreground))" strokeWidth="3" opacity="0.25" />
     {/* Skull inner table */}
     <ellipse cx="150" cy="150" rx="119" ry="109" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.15" />
     {/* Dura mater */}
@@ -9,29 +9,29 @@ const BrainBase = ({ children, label }: { children: React.ReactNode; label: stri
     {/* Brain parenchyma fill */}
     <ellipse cx="150" cy="150" rx="108" ry="98" fill="hsl(var(--secondary))" opacity="0.35" />
     {/* Cortical sulci — left hemisphere */}
-    <path d="M60,120 Q80,115 95,130" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.3" />
-    <path d="M50,150 Q70,140 90,155" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.3" />
-    <path d="M55,180 Q75,170 95,182" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.3" />
-    <path d="M70,100 Q85,95 100,108" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.25" />
-    <path d="M65,205 Q85,195 100,208" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.25" />
+    <path d="M60,120 Q80,115 95,130" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.3" />
+    <path d="M50,150 Q70,140 90,155" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.3" />
+    <path d="M55,180 Q75,170 95,182" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.3" />
+    <path d="M70,100 Q85,95 100,108" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.25" />
+    <path d="M65,205 Q85,195 100,208" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.25" />
     {/* Cortical sulci — right hemisphere */}
-    <path d="M205,130 Q220,115 240,120" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.3" />
-    <path d="M210,155 Q230,140 250,150" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.3" />
-    <path d="M205,182 Q225,170 245,180" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.3" />
-    <path d="M200,108 Q215,95 230,100" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.25" />
-    <path d="M200,208 Q215,195 235,205" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.25" />
+    <path d="M205,130 Q220,115 240,120" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.3" />
+    <path d="M210,155 Q230,140 250,150" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.3" />
+    <path d="M205,182 Q225,170 245,180" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.3" />
+    <path d="M200,108 Q215,95 230,100" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.25" />
+    <path d="M200,208 Q215,195 235,205" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.25" />
     {/* Falx cerebri (midline) */}
-    <line x1="150" y1="46" x2="150" y2="145" stroke="hsl(var(--foreground))" strokeWidth="1.2" opacity="0.2" />
+    <line x1="150" y1="46" x2="150" y2="145" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.2" />
     {/* Right lateral ventricle */}
-    <path d="M160,110 Q170,95 190,100 Q200,108 198,125 Q195,140 180,145 Q165,148 158,140 Q155,130 160,110Z" fill="hsl(var(--primary))" opacity="0.12" stroke="hsl(var(--primary))" strokeWidth="1.2" />
+    <path d="M160,110 Q170,95 190,100 Q200,108 198,125 Q195,140 180,145 Q165,148 158,140 Q155,130 160,110Z" fill="hsl(var(--primary))" opacity="0.12" stroke="hsl(var(--primary))" strokeWidth="1" />
     {/* Left lateral ventricle */}
-    <path d="M140,110 Q130,95 110,100 Q100,108 102,125 Q105,140 120,145 Q135,148 142,140 Q145,130 140,110Z" fill="hsl(var(--primary))" opacity="0.12" stroke="hsl(var(--primary))" strokeWidth="1.2" />
+    <path d="M140,110 Q130,95 110,100 Q100,108 102,125 Q105,140 120,145 Q135,148 142,140 Q145,130 140,110Z" fill="hsl(var(--primary))" opacity="0.12" stroke="hsl(var(--primary))" strokeWidth="1" />
     {/* Third ventricle (midline slit) */}
     <path d="M147,140 Q150,155 153,140" fill="hsl(var(--primary))" opacity="0.12" stroke="hsl(var(--primary))" strokeWidth="1" />
     <ellipse cx="150" cy="155" rx="4" ry="10" fill="hsl(var(--primary))" opacity="0.12" stroke="hsl(var(--primary))" strokeWidth="1" />
     {/* Foramina of Monro (connecting lateral to 3rd) */}
-    <line x1="142" y1="140" x2="148" y2="147" stroke="hsl(var(--primary))" strokeWidth="0.8" opacity="0.4" />
-    <line x1="158" y1="140" x2="152" y2="147" stroke="hsl(var(--primary))" strokeWidth="0.8" opacity="0.4" />
+    <line x1="142" y1="140" x2="148" y2="147" stroke="hsl(var(--primary))" strokeWidth="0.75" opacity="0.4" />
+    <line x1="158" y1="140" x2="152" y2="147" stroke="hsl(var(--primary))" strokeWidth="0.75" opacity="0.4" />
     {/* Ventricle labels */}
     <text x="120" y="125" textAnchor="middle" fontSize="7" fill="hsl(var(--primary))" fontWeight="500" opacity="0.8">L. lat.</text>
     <text x="120" y="133" textAnchor="middle" fontSize="7" fill="hsl(var(--primary))" fontWeight="500" opacity="0.8">vent.</text>
@@ -59,11 +59,11 @@ const ICPMonitoringDevicesDiagram = () => {
             {/* Burr hole — right frontal (Kocher's point) */}
             <circle cx="165" cy="40" r="5" fill="hsl(var(--foreground))" opacity="0.3" />
             {/* Catheter traversing parenchyma into R lateral ventricle */}
-            <line x1="165" y1="40" x2="170" y2="108" stroke="hsl(var(--destructive))" strokeWidth="2.5" />
+            <line x1="165" y1="40" x2="170" y2="108" stroke="hsl(var(--destructive))" strokeWidth="2" />
             {/* Catheter tip inside ventricle */}
             <circle cx="170" cy="108" r="3" fill="hsl(var(--destructive))" />
             {/* External tubing */}
-            <line x1="165" y1="40" x2="165" y2="12" stroke="hsl(var(--destructive))" strokeWidth="2.5" />
+            <line x1="165" y1="40" x2="165" y2="12" stroke="hsl(var(--destructive))" strokeWidth="2" />
             <line x1="165" y1="12" x2="235" y2="12" stroke="hsl(var(--destructive))" strokeWidth="2" />
             {/* Collection system */}
             <rect x="235" y="4" width="32" height="16" rx="3" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" />
@@ -214,7 +214,7 @@ const ICPMonitoringDevicesDiagram = () => {
           {/* Lens */}
           <ellipse cx="105" cy="110" rx="8" ry="18" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.3" />
           {/* Optic nerve */}
-          <rect x="205" y="104" width="120" height="12" rx="4" fill="hsl(var(--muted-foreground))" opacity="0.3" />
+          <rect x="205" y="104" width="120" height="12" rx="4" fill="hsl(var(--muted-foreground))" opacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.75" />
           <text x="265" y="100" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Optic nerve</text>
           {/* Optic nerve sheath — normal */}
           <rect x="205" y="97" width="120" height="26" rx="6" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" />
@@ -227,7 +227,7 @@ const ICPMonitoringDevicesDiagram = () => {
           <line x1="206" y1="123" x2="214" y2="123" stroke="hsl(var(--chart-2))" strokeWidth="1.5" />
           <text x="196" y="114" textAnchor="end" fontSize="8" fill="hsl(var(--chart-2))" fontWeight="600">ONSD</text>
           {/* Ultrasound probe on closed eyelid */}
-          <rect x="55" y="55" width="30" height="12" rx="4" fill="hsl(var(--foreground))" opacity="0.5" />
+          <rect x="55" y="55" width="30" height="12" rx="4" fill="hsl(var(--foreground))" opacity="0.5" stroke="hsl(var(--border))" strokeWidth="0.75" />
           <text x="70" y="50" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">Linear probe</text>
           <text x="70" y="80" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">(closed eyelid)</text>
           {/* Ultrasound beam */}
@@ -242,7 +242,7 @@ const ICPMonitoringDevicesDiagram = () => {
           {/* Globe label */}
           <text x="150" y="115" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" opacity="0.5">Globe</text>
           {/* Threshold info box */}
-          <rect x="10" y="155" width="420" height="55" rx="6" fill="hsl(var(--secondary))" opacity="0.3" />
+          <rect x="10" y="155" width="420" height="55" rx="6" fill="hsl(var(--secondary))" opacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.75" />
           <text x="220" y="172" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">Interpretation</text>
           <text x="220" y="186" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">ONSD &gt;5.0 mm → suggests ICP &gt;20 mmHg (sensitivity ~90%, specificity ~85%)</text>
           <text x="220" y="199" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">Normal ONSD: 3.5–5.0 mm | Measured 3 mm posterior to globe in transverse & sagittal planes</text>

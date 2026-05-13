@@ -60,7 +60,7 @@ export const KetaminePharmacologyDiagram = () => {
 
             {/* Channel pore */}
             <rect x={290} y={140} width={80} height={60} fill="hsl(210 30% 95%)" stroke="hsl(215 25% 35%)" strokeWidth="1.5" />
-            <rect x={300} y={150} width={60} height={40} fill="hsl(210 30% 99%)" stroke="hsl(215 25% 60%)" strokeWidth="0.8" />
+            <rect x={300} y={150} width={60} height={40} fill="hsl(210 30% 99%)" stroke="hsl(215 25% 60%)" strokeWidth="0.75" />
             <text x={330} y={210} textAnchor="middle" fontSize="9" className="fill-muted-foreground">NMDA receptor</text>
 
             {/* Glutamate (extracellular) */}
@@ -119,7 +119,7 @@ export const KetaminePharmacologyDiagram = () => {
             <text x={W / 2} y={28} textAnchor="middle" fontSize="13" className="fill-foreground font-bold">S(+) vs R(−) — chirality matters</text>
 
             {/* Mirror axis */}
-            <line x1={W / 2} y1={50} x2={W / 2} y2={H - 30} stroke="hsl(215 25% 70%)" strokeWidth="0.8" strokeDasharray="3 3" />
+            <line x1={W / 2} y1={50} x2={W / 2} y2={H - 30} stroke="hsl(215 25% 70%)" strokeWidth="0.75" strokeDasharray="3 3" />
             <text x={W / 2 + 6} y={60} fontSize="9" className="fill-muted-foreground">mirror plane</text>
 
             {/* Left: S(+) */}
@@ -129,7 +129,7 @@ export const KetaminePharmacologyDiagram = () => {
 
               {/* Schematic molecule */}
               <g transform="translate(125, 75)">
-                <circle r={20} fill="none" stroke="hsl(215 25% 35%)" strokeWidth="1.2" />
+                <circle r={20} fill="none" stroke="hsl(215 25% 35%)" strokeWidth="1" />
                 <circle cx={-30} r={6} fill="hsl(140 60% 50%)" />
                 <text x={-30} y={3} textAnchor="middle" fontSize="8" className="fill-white font-bold">Cl</text>
                 <circle cx={20} cy={-15} r={6} fill="hsl(220 60% 60%)" />
@@ -153,7 +153,7 @@ export const KetaminePharmacologyDiagram = () => {
 
               {/* Mirror molecule */}
               <g transform="translate(125, 75) scale(-1, 1)">
-                <circle r={20} fill="none" stroke="hsl(215 25% 35%)" strokeWidth="1.2" />
+                <circle r={20} fill="none" stroke="hsl(215 25% 35%)" strokeWidth="1" />
                 <circle cx={-30} r={6} fill="hsl(140 60% 50%)" />
                 <text x={-30} y={3} textAnchor="middle" fontSize="8" className="fill-white font-bold" transform="scale(-1, 1)">Cl</text>
                 <circle cx={20} cy={-15} r={6} fill="hsl(220 60% 60%)" />
@@ -265,7 +265,7 @@ export const KetaminePharmacologyDiagram = () => {
               ];
               return bands.map((b, i) => (
                 <g key={i}>
-                  <rect x={b.x} y={70} width={b.w} height={50} fill={b.color} stroke="hsl(215 25% 30%)" strokeWidth="0.6" />
+                  <rect x={b.x} y={70} width={b.w} height={50} fill={b.color} stroke="hsl(215 25% 30%)" strokeWidth="0.5" />
                   <text x={b.x + b.w / 2} y={92} textAnchor="middle" fontSize="11" className="fill-foreground font-bold">{b.label}</text>
                   <text x={b.x + b.w / 2} y={108} textAnchor="middle" fontSize="9" className="fill-foreground">{b.sub}</text>
                 </g>
@@ -278,7 +278,7 @@ export const KetaminePharmacologyDiagram = () => {
               const x = Math.min(610, Math.max(50, 50 + (doseMgKg / 3) * 560));
               return (
                 <g>
-                  <line x1={x} y1={55} x2={x} y2={130} stroke={doseEffect.color} strokeWidth="2.5" />
+                  <line x1={x} y1={55} x2={x} y2={130} stroke={doseEffect.color} strokeWidth="2" />
                   <polygon points={`${x - 6},55 ${x + 6},55 ${x},65`} fill={doseEffect.color} />
                   <text x={x} y={48} textAnchor="middle" fontSize="10" className="fill-foreground font-bold">{doseMgKg.toFixed(2)} mg/kg</text>
                 </g>
@@ -343,7 +343,7 @@ export const KetaminePharmacologyDiagram = () => {
                 const dash = (t * 2 + i * 5) % 12;
                 return (
                   <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-                    stroke="hsl(0 70% 55%)" strokeWidth="1.2" strokeDasharray="4 8" strokeDashoffset={-dash} opacity={0.7} />
+                    stroke="hsl(0 70% 55%)" strokeWidth="1" strokeDasharray="4 8" strokeDashoffset={-dash} opacity={0.7} />
                 );
               })}
               <text x={120} y={180} textAnchor="middle" fontSize="9" className="fill-[hsl(0_60%_45%)] font-medium">thalamocortical dissociation</text>

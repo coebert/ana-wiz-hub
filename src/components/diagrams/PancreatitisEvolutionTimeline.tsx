@@ -52,7 +52,7 @@ const PancreasScene = ({ active }: SceneProps) => {
           </radialGradient>
           <pattern id="pet-stranding" width="3" height="3" patternUnits="userSpaceOnUse">
             <rect width="3" height="3" fill="hsl(220 14% 26%)" />
-            <path d="M0 0 L3 3 M0 3 L3 0" stroke="hsl(220 8% 14%)" strokeWidth="0.25" />
+            <path d="M0 0 L3 3 M0 3 L3 0" stroke="hsl(220 8% 14%)" strokeWidth="0.5" />
           </pattern>
           <filter id="pet-glow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="0.5" result="b" />
@@ -76,15 +76,15 @@ const PancreasScene = ({ active }: SceneProps) => {
         <rect x="0" y="0" width="100" height="60" fill="url(#pet-bg)" />
 
         {/* Vertebra (orientation marker) */}
-        <ellipse cx="50" cy="48" rx="6" ry="4" fill="hsl(40 18% 78%)" stroke="hsl(220 8% 14%)" strokeWidth="0.4" />
+        <ellipse cx="50" cy="48" rx="6" ry="4" fill="hsl(40 18% 78%)" stroke="hsl(220 8% 14%)" strokeWidth="0.5" />
         <ellipse cx="50" cy="49" rx="2" ry="1.5" fill="hsl(220 14% 22%)" />
 
         {/* Aorta + IVC */}
-        <circle cx="55" cy="42" r="2.4" fill="hsl(0 70% 48%)" stroke="hsl(0 60% 25%)" strokeWidth="0.3" />
-        <ellipse cx="46" cy="42" rx="2.6" ry="2" fill="hsl(220 70% 45%)" stroke="hsl(220 60% 22%)" strokeWidth="0.3" />
+        <circle cx="55" cy="42" r="2.4" fill="hsl(0 70% 48%)" stroke="hsl(0 60% 25%)" strokeWidth="0.5" />
+        <ellipse cx="46" cy="42" rx="2.6" ry="2" fill="hsl(220 70% 45%)" stroke="hsl(220 60% 22%)" strokeWidth="0.5" />
 
         {/* Stomach (anterior) */}
-        <ellipse cx="42" cy="14" rx="14" ry="4" fill="hsl(220 18% 22%)" stroke="hsl(220 12% 10%)" strokeWidth="0.3" />
+        <ellipse cx="42" cy="14" rx="14" ry="4" fill="hsl(220 18% 22%)" stroke="hsl(220 12% 10%)" strokeWidth="0.5" />
 
         {/* Peripancreatic fat stranding — fades in from step 1 onwards, brightest at step 1 */}
         {showOedema && (
@@ -114,7 +114,7 @@ const PancreasScene = ({ active }: SceneProps) => {
                 textAnchor="middle"
                 fill="hsl(45 90% 75%)"
                 stroke="hsl(220 18% 8%)"
-                strokeWidth="0.7"
+                strokeWidth="0.75"
                 paintOrder="stroke"
                 fontWeight="600"
                 style={{ fontFamily: "Inter, system-ui, sans-serif" }}
@@ -154,11 +154,11 @@ const PancreasScene = ({ active }: SceneProps) => {
         {/* Gas bubbles (infected necrosis) — final step only */}
         {showGas && (
           <g {...highlight(4)} className="pet-bubble">
-            <circle cx="50" cy="30" r="1.1" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.3" />
-            <circle cx="53" cy="31" r="0.8" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.3" />
-            <circle cx="47" cy="31.5" r="0.6" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.3" />
-            <circle cx="22" cy="36" r="0.9" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.3" />
-            <circle cx="26" cy="40" r="0.7" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.3" />
+            <circle cx="50" cy="30" r="1.1" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
+            <circle cx="53" cy="31" r="0.8" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
+            <circle cx="47" cy="31.5" r="0.6" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
+            <circle cx="22" cy="36" r="0.9" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
+            <circle cx="26" cy="40" r="0.7" fill="hsl(220 10% 4%)" stroke="hsl(45 90% 65%)" strokeWidth="0.5" />
           </g>
         )}
 
@@ -171,7 +171,7 @@ const PancreasScene = ({ active }: SceneProps) => {
               x2="20"
               y2="40"
               stroke="hsl(45 90% 70%)"
-              strokeWidth="1.2"
+              strokeWidth="1"
               strokeLinecap="round"
             />
             <circle cx="20" cy="40" r="0.9" fill="hsl(45 90% 70%)" />
@@ -193,7 +193,7 @@ const PancreasScene = ({ active }: SceneProps) => {
         <text x="50" y="59" fontSize="2" textAnchor="middle" fill="hsl(var(--muted-foreground))" style={{ fontFamily: "JetBrains Mono, monospace" }}>P</text>
 
         {/* Time-point banner */}
-        <rect x="68" y="2" width="30" height="6" rx="1" fill="hsl(220 18% 12%)" stroke="hsl(220 8% 22%)" strokeWidth="0.3" />
+        <rect x="68" y="2" width="30" height="6" rx="1" fill="hsl(220 18% 12%)" stroke="hsl(220 8% 22%)" strokeWidth="0.5" />
         <text
           x="83"
           y="6.4"

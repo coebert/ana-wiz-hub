@@ -24,8 +24,8 @@ const PiezoelectricTab = () => (
       <text x="200" y="87" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="bold">PZT Crystal (Lead Zirconate Titanate)</text>
 
       {/* Matching layer */}
-      <rect x="130" y="101" width="140" height="15" rx="3" fill="#10B981" opacity="0.2" stroke="#10B981" strokeWidth="1" />
-      <text x="200" y="112" textAnchor="middle" fontSize="6" fill="#10B981" fontWeight="bold">Matching Layer (λ/4)</text>
+      <rect x="130" y="101" width="140" height="15" rx="3" fill="hsl(var(--clinical))" opacity="0.2" stroke="hsl(var(--clinical))" strokeWidth="1" />
+      <text x="200" y="112" textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))" fontWeight="bold">Matching Layer (λ/4)</text>
 
       {/* Acoustic lens */}
       <path d="M 130 118 Q 200 130, 270 118" stroke="hsl(var(--foreground))" strokeWidth="2" fill="hsl(var(--accent)/0.3)" />
@@ -35,9 +35,9 @@ const PiezoelectricTab = () => (
       <line x1="125" y1="75" x2="110" y2="75" stroke="hsl(var(--destructive))" strokeWidth="2" />
       <line x1="110" y1="68" x2="110" y2="82" stroke="hsl(var(--destructive))" strokeWidth="2" />
       <text x="100" y="78" textAnchor="end" fontSize="6" fill="hsl(var(--destructive))">+</text>
-      <line x1="275" y1="75" x2="290" y2="75" stroke="#6366F1" strokeWidth="2" />
-      <line x1="290" y1="68" x2="290" y2="82" stroke="#6366F1" strokeWidth="2" />
-      <text x="300" y="78" fontSize="6" fill="#6366F1">−</text>
+      <line x1="275" y1="75" x2="290" y2="75" stroke="hsl(var(--primary))" strokeWidth="2" />
+      <line x1="290" y1="68" x2="290" y2="82" stroke="hsl(var(--primary))" strokeWidth="2" />
+      <text x="300" y="78" fontSize="6" fill="hsl(var(--primary))">−</text>
 
       {/* Sound waves emanating */}
       {[0, 1, 2, 3].map((i) => (
@@ -105,10 +105,10 @@ const FrequencyResolutionTab = () => (
       <text x="200" y="36" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="bold">↑ Frequency →</text>
 
       {/* Resolution arrow */}
-      <text x="60" y="75" fontSize="7" fill="#10B981">Low</text>
-      <path d="M 85 72 L 310 72" stroke="#10B981" strokeWidth="1.5" fill="none" markerEnd="url(#usArrow)" />
-      <text x="315" y="75" fontSize="7" fill="#10B981" fontWeight="bold">High</text>
-      <text x="200" y="85" textAnchor="middle" fontSize="7" fill="#10B981">↑ Resolution</text>
+      <text x="60" y="75" fontSize="7" fill="hsl(var(--clinical))">Low</text>
+      <path d="M 85 72 L 310 72" stroke="hsl(var(--clinical))" strokeWidth="1.5" fill="none" markerEnd="url(#usArrow)" />
+      <text x="315" y="75" fontSize="7" fill="hsl(var(--clinical))" fontWeight="bold">High</text>
+      <text x="200" y="85" textAnchor="middle" fontSize="7" fill="hsl(var(--clinical))">↑ Resolution</text>
 
       {/* Penetration arrow (opposite) */}
       <text x="60" y="95" fontSize="7" fill="hsl(var(--destructive))" fontWeight="bold">Deep</text>
@@ -125,15 +125,15 @@ const FrequencyResolutionTab = () => (
       <text x="105" y="172" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">Along beam axis (depth)</text>
       <text x="105" y="188" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">= SPL / 2</text>
       <text x="105" y="202" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">(spatial pulse length)</text>
-      <text x="105" y="214" textAnchor="middle" fontSize="7" fill="#10B981">↑ freq → shorter pulse → better</text>
+      <text x="105" y="214" textAnchor="middle" fontSize="7" fill="hsl(var(--clinical))">↑ freq → shorter pulse → better</text>
 
       {/* Lateral resolution */}
-      <rect x="210" y="140" width="170" height="80" rx="8" fill="hsl(var(--card))" stroke="#6366F1" strokeWidth="1.5" />
-      <text x="295" y="158" textAnchor="middle" fontSize="9" fill="#6366F1" fontWeight="bold">Lateral Resolution</text>
+      <rect x="210" y="140" width="170" height="80" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+      <text x="295" y="158" textAnchor="middle" fontSize="9" fill="hsl(var(--primary))" fontWeight="bold">Lateral Resolution</text>
       <text x="295" y="172" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">Perpendicular to beam</text>
       <text x="295" y="188" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">= Beam width</text>
       <text x="295" y="202" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">Narrowest at focal zone</text>
-      <text x="295" y="214" textAnchor="middle" fontSize="7" fill="#10B981">Focusing improves this</text>
+      <text x="295" y="214" textAnchor="middle" fontSize="7" fill="hsl(var(--clinical))">Focusing improves this</text>
 
       {/* Clinical probes */}
       <text x="200" y="245" textAnchor="middle" fontSize="10" fill="hsl(var(--foreground))" fontWeight="bold">Clinical Probe Selection</text>
@@ -148,14 +148,14 @@ const FrequencyResolutionTab = () => (
       <text x="200" y="284" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">1–5 MHz</text>
       <text x="200" y="296" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Cardiac (TTE/TOE)</text>
 
-      <rect x="270" y="255" width="110" height="55" rx="6" fill="#10B981" fillOpacity="0.08" stroke="#10B981" strokeOpacity="0.3" strokeWidth="1" />
-      <text x="325" y="272" textAnchor="middle" fontSize="8" fill="#10B981" fontWeight="bold">Linear</text>
+      <rect x="270" y="255" width="110" height="55" rx="6" fill="hsl(var(--clinical))" fillOpacity="0.08" stroke="hsl(var(--clinical))" strokeOpacity="0.3" strokeWidth="1" />
+      <text x="325" y="272" textAnchor="middle" fontSize="8" fill="hsl(var(--clinical))" fontWeight="bold">Linear</text>
       <text x="325" y="284" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">6–15 MHz</text>
       <text x="325" y="296" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Nerve blocks, vascular</text>
 
       <defs>
         <marker id="usArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="#10B981" />
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--clinical))" />
         </marker>
         <marker id="usArrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
           <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--destructive))" />
@@ -222,11 +222,11 @@ const DopplerTab = () => (
       <text x="78" y="248" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="bold">CW Doppler</text>
       <text x="78" y="262" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Continuous wave</text>
       <text x="78" y="274" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">No depth info</text>
-      <text x="78" y="286" textAnchor="middle" fontSize="6" fill="#10B981">No aliasing</text>
+      <text x="78" y="286" textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))">No aliasing</text>
       <text x="78" y="296" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">High velocities ✓</text>
 
       <rect x="145" y="230" width="115" height="70" rx="6" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
-      <text x="203" y="248" textAnchor="middle" fontSize="8" fill="#6366F1" fontWeight="bold">PW Doppler</text>
+      <text x="203" y="248" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="bold">PW Doppler</text>
       <text x="203" y="262" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Pulsed wave</text>
       <text x="203" y="274" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Depth-specific</text>
       <text x="203" y="286" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">Aliasing if v &gt; Nyquist</text>
@@ -288,9 +288,9 @@ const ArtefactsTab = () => (
       <ellipse cx="200" cy="95" rx="25" ry="15" fill="hsl(var(--primary)/0.15)" stroke="hsl(var(--primary))" strokeWidth="1" />
       <text x="200" y="98" textAnchor="middle" fontSize="5" fill="hsl(var(--primary))">Fluid</text>
       {/* Bright below */}
-      <rect x="175" y="112" width="50" height="50" fill="#10B981" opacity="0.15" />
-      <text x="200" y="140" textAnchor="middle" fontSize="6" fill="#10B981">Brighter</text>
-      <text x="200" y="150" textAnchor="middle" fontSize="6" fill="#10B981">(enhanced)</text>
+      <rect x="175" y="112" width="50" height="50" fill="hsl(var(--clinical))" opacity="0.15" />
+      <text x="200" y="140" textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))">Brighter</text>
+      <text x="200" y="150" textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))">(enhanced)</text>
 
       {/* Reverberation */}
       <rect x="270" y="30" width="120" height="140" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
@@ -338,7 +338,7 @@ const ArtefactsTab = () => (
       {/* Clinical significance */}
       <rect x="10" y="270" width="380" height="60" rx="8" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
       <text x="200" y="288" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">Clinical Significance of Lung Artefacts</text>
-      <text x="200" y="302" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))"><tspan fontWeight="bold" fill="#10B981">A-lines</tspan> = normal aerated lung (reverberation) | <tspan fontWeight="bold" fill="hsl(var(--primary))">B-lines</tspan> = interstitial oedema</text>
+      <text x="200" y="302" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))"><tspan fontWeight="bold" fill="hsl(var(--clinical))">A-lines</tspan> = normal aerated lung (reverberation) | <tspan fontWeight="bold" fill="hsl(var(--primary))">B-lines</tspan> = interstitial oedema</text>
       <text x="200" y="316" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))"><tspan fontWeight="bold">Lung sliding</tspan> = rules out pneumothorax at that point | <tspan fontWeight="bold">Barcode sign</tspan> = absent sliding (M-mode)</text>
     </svg>
 

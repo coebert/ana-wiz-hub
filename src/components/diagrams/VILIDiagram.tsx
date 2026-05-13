@@ -90,7 +90,7 @@ const VILIDiagram = () => {
             const col = strainSafe ? "hsl(142, 60%, 45%)" : "hsl(0, 70%, 55%)";
             return (
               <>
-                <circle cx={x} cy={y} r="6" fill={col} stroke="white" strokeWidth="1.5" />
+                <circle cx={x} cy={y} r="6" fill={col} stroke="hsl(var(--background))" strokeWidth="1.5" />
                 <line x1={x} y1={y} x2={x} y2={150} stroke={col} strokeWidth="1" strokeDasharray="3,3" opacity={0.5} />
                 <text x={x} y={y - 10} textAnchor="middle" className="text-[8px] fill-foreground font-semibold">
                   Current

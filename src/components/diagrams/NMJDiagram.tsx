@@ -220,7 +220,7 @@ export const NMJDiagram = () => {
                     <circle cx={v.cx + dx} cy={sytY} r={2.5}
                       fill={bound ? "hsl(35 95% 55%)" : "hsl(280 30% 65%)"}
                       stroke={bound ? "hsl(25 90% 35%)" : "hsl(280 30% 40%)"}
-                      strokeWidth="0.8"
+                      strokeWidth="0.75"
                       opacity={opacity} />
                     {bound && (
                       <circle cx={v.cx + dx} cy={sytY - 1} r={1.2}
@@ -263,7 +263,7 @@ export const NMJDiagram = () => {
             <line x1={295} y1={88} x2={355} y2={132} stroke="hsl(280 50% 55%)" strokeWidth="1" strokeDasharray="2,2" opacity="0.6" />
             {/* Callout card */}
             <rect x={150} y={48} width={295} height={42} rx={6}
-              fill="hsl(280 60% 97%)" stroke="hsl(280 50% 55%)" strokeWidth="1.2" />
+              fill="hsl(280 60% 97%)" stroke="hsl(280 50% 55%)" strokeWidth="1" />
             <text x={160} y={62} fontSize="9" fontWeight="700" fill="hsl(280 55% 35%)">
               Molecular trigger
             </text>

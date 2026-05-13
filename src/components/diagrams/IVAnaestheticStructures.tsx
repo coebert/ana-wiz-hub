@@ -198,7 +198,7 @@ const EtomidateSVG = () => (
     <line x1="230" y1="115" x2="210" y2="148" stroke="hsl(var(--foreground))" strokeWidth="2" />
     {/* Chiral centre */}
     <text x="230" y="128" textAnchor="middle" className="fill-accent text-[8px] font-bold">*</text>
-    <line x1="210" y1="148" x2="210" y2="150" stroke="hsl(var(--foreground))" strokeWidth="0" />
+    <line x1="210" y1="148" x2="210" y2="150" stroke="hsl(var(--foreground))" strokeWidth="0.5" />
     <polygon points="210,148 180,128 150,148 150,188 180,208 210,188" fill="none" stroke="hsl(var(--foreground))" strokeWidth="2" />
     <polygon points="204,152 184,136 158,152 158,184 184,200 204,184" fill="none" stroke="hsl(var(--foreground))" strokeWidth="2" />
     {/* Labels */}

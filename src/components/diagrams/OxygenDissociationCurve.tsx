@@ -235,7 +235,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           </text>
 
           {/* Main curve */}
-          <path d={normalPath} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="2.5" />
+          <path d={normalPath} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="2" />
 
           {/* Dissolved O₂ line */}
           {showDissolved && (
@@ -249,8 +249,8 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           {/* P50 crosshairs */}
           {viewMode === "saturation" && (
             <>
-              <line x1={toX(26.7 / 7.5)} y1={toY(50)} x2={toX(26.7 / 7.5)} y2={toY(0)} stroke="hsl(170 50% 40%)" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.5" />
-              <line x1={toX(0)} y1={toY(50)} x2={toX(26.7 / 7.5)} y2={toY(50)} stroke="hsl(170 50% 40%)" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.5" />
+              <line x1={toX(26.7 / 7.5)} y1={toY(50)} x2={toX(26.7 / 7.5)} y2={toY(0)} stroke="hsl(170 50% 40%)" strokeWidth="0.75" strokeDasharray="3 3" opacity="0.5" />
+              <line x1={toX(0)} y1={toY(50)} x2={toX(26.7 / 7.5)} y2={toY(50)} stroke="hsl(170 50% 40%)" strokeWidth="0.75" strokeDasharray="3 3" opacity="0.5" />
               <circle cx={toX(26.7 / 7.5)} cy={toY(50)} r="4" fill="hsl(170 50% 40%)" />
               <text x={toX(26.7 / 7.5) + 8} y={toY(50) - 6} fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">P₅₀ = 3.5 kPa (26.7 mmHg)</text>
             </>
@@ -389,7 +389,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
         {/* Shifted curve */}
         <path d={shiftedPath} fill="none"
           stroke={shiftDirection === "right" ? "hsl(0 65% 50%)" : shiftDirection === "left" ? "hsl(210 70% 55%)" : "hsl(170 50% 40%)"}
-          strokeWidth="2.5" />
+          strokeWidth="2" />
 
         {/* Dissolved O₂ line */}
         {showDissolved && (
@@ -428,7 +428,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
             {isShifted && (
               <>
                 <line x1={toX(p50 / 7.5)} y1={toY(effectiveSat(50, cohbFrac))} x2={toX(p50 / 7.5)} y2={toY(0)}
-                  stroke={shiftDirection === "right" ? "hsl(0 65% 50%)" : "hsl(210 70% 55%)"} strokeWidth="0.8" strokeDasharray="3 3" opacity="0.5" />
+                  stroke={shiftDirection === "right" ? "hsl(0 65% 50%)" : "hsl(210 70% 55%)"} strokeWidth="0.75" strokeDasharray="3 3" opacity="0.5" />
                 <circle cx={toX(p50 / 7.5)} cy={toY(effectiveSat(50, cohbFrac))} r="4"
                   fill={shiftDirection === "right" ? "hsl(0 65% 50%)" : "hsl(210 70% 55%)"} />
                 <text x={toX(p50 / 7.5) + (shiftDirection === "right" ? 8 : -8)} y={toY(effectiveSat(50, cohbFrac)) - 6}

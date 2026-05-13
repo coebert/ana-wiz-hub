@@ -180,7 +180,7 @@ export const XRayTubeDiagram = () => {
               <stop offset="100%" stopColor="hsl(15 90% 45%)" stopOpacity="0.6" />
             </radialGradient>
             <pattern id="xrt-leadHatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
-              <line x1="0" y1="3" x2="6" y2="3" stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" opacity="0.35" />
+              <line x1="0" y1="3" x2="6" y2="3" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.35" />
             </pattern>
             <filter id="xrt-tubeShadow" x="-10%" y="-10%" width="120%" height="120%">
               <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
@@ -272,7 +272,7 @@ export const XRayTubeDiagram = () => {
                 d="M 112 175 q 3 -3 6 0 t 6 0 M 112 180 q 3 -3 6 0 t 6 0 M 112 185 q 3 -3 6 0 t 6 0"
                 fill="none"
                 stroke="hsl(15 90% 35%)"
-                strokeWidth="0.6"
+                strokeWidth="0.5"
                 opacity="0.7"
               />
             )}
@@ -310,7 +310,7 @@ export const XRayTubeDiagram = () => {
                   d="M 425 245 a 18 18 0 1 0 -2 -32"
                   fill="none"
                   stroke="hsl(var(--foreground))"
-                  strokeWidth="0.8"
+                  strokeWidth="0.75"
                   opacity="0.6"
                 />
                 <polygon points="421,212 426,209 425,217" fill="hsl(var(--foreground))" opacity="0.6" />
@@ -339,7 +339,7 @@ export const XRayTubeDiagram = () => {
                 r="3"
                 fill="hsl(195 90% 65%)"
                 stroke="hsl(195 80% 35%)"
-                strokeWidth="0.4"
+                strokeWidth="0.5"
                 opacity={animate ? 0.95 : 0}
               >
                 {animate && (
@@ -471,7 +471,7 @@ export const XRayTubeDiagram = () => {
               fill="hsl(280 65% 60%)"
               opacity={opacityFor("window", 0.18)}
               stroke="hsl(280 65% 60%)"
-              strokeWidth="0.6"
+              strokeWidth="0.5"
               strokeDasharray="3 3"
             />
             {showLabels && (
@@ -558,8 +558,8 @@ export const XRayTubeDiagram = () => {
                 return (
                   <>
                     {/* axes */}
-                    <line x1={x0} y1={y0} x2={x1} y2={y0} stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.6" />
-                    <line x1={x0} y1={y0} x2={x0} y2={yTop - 8} stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.6" />
+                    <line x1={x0} y1={y0} x2={x1} y2={y0} stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.6" />
+                    <line x1={x0} y1={y0} x2={x0} y2={yTop - 8} stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.6" />
 
                     {/* x ticks every 25 keV */}
                     {[0, 25, 50, 75, 100, 125, 150].map((kev) => (
@@ -570,7 +570,7 @@ export const XRayTubeDiagram = () => {
                           x2={xAt(kev)}
                           y2={y0 + 4}
                           stroke="hsl(var(--muted-foreground))"
-                          strokeWidth="0.6"
+                          strokeWidth="0.5"
                           opacity="0.7"
                         />
                         <text
@@ -610,7 +610,7 @@ export const XRayTubeDiagram = () => {
                           x2={xAt(kVp)}
                           y2={y0}
                           stroke="hsl(var(--muted-foreground))"
-                          strokeWidth="0.6"
+                          strokeWidth="0.5"
                           strokeDasharray="2 3"
                           opacity="0.7"
                         />

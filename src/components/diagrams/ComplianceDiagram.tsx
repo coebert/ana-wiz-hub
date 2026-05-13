@@ -182,7 +182,7 @@ export const ComplianceDiagram = () => {
           transform={`rotate(-90, 12, ${padT + plotH / 2})`}>Volume (L)</text>
 
         {/* Zero pressure line highlight */}
-        <line x1={toX(0)} y1={padT} x2={toX(0)} y2={svgH - padB} stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.2" />
+        <line x1={toX(0)} y1={padT} x2={toX(0)} y2={svgH - padB} stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.2" />
 
         {/* Tidal volume shading */}
         <rect x={padL} y={toY(frc + tv)} width={plotW} height={toY(frc) - toY(frc + tv)}
@@ -213,13 +213,13 @@ export const ComplianceDiagram = () => {
 
         {/* Curves */}
         {visible.has("lung") && (
-          <path d={toPath(lungPts)} fill="none" stroke={CURVE_CONFIG.lung.color} strokeWidth="2.5" />
+          <path d={toPath(lungPts)} fill="none" stroke={CURVE_CONFIG.lung.color} strokeWidth="2" />
         )}
         {visible.has("chestwall") && (
-          <path d={toPath(cwPts)} fill="none" stroke={CURVE_CONFIG.chestwall.color} strokeWidth="2.5" />
+          <path d={toPath(cwPts)} fill="none" stroke={CURVE_CONFIG.chestwall.color} strokeWidth="2" />
         )}
         {visible.has("total") && (
-          <path d={toPath(totalPts)} fill="none" stroke={CURVE_CONFIG.total.color} strokeWidth="2.5" strokeDasharray="8 4" />
+          <path d={toPath(totalPts)} fill="none" stroke={CURVE_CONFIG.total.color} strokeWidth="2" strokeDasharray="8 4" />
         )}
 
         {/* FRC equilibrium point — where total system P = 0 */}

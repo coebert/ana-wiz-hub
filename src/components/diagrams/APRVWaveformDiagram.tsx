@@ -99,7 +99,7 @@ const APRVWaveformDiagram = () => {
         <text x={ml + plotW / 2} y={H - 8} textAnchor="middle" fontSize={11} fill="hsl(var(--foreground))">Time</text>
 
         {/* Pressure waveform */}
-        <path d={pathD} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} strokeLinejoin="round" />
+        <path d={pathD} fill="none" stroke="hsl(var(--primary))" strokeWidth={2} strokeLinejoin="round" />
 
         {/* Spontaneous breathing ripples */}
         {ripples.map((r, i) => (

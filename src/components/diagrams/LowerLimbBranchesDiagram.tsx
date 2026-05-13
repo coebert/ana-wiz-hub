@@ -256,7 +256,7 @@ const LowerLimbBranchesDiagram = () => {
         const c = mode === "branches" ? NERVE_COLOR[k] : palette;
         return (
           <path key={`patch-${k}`} d={patch} fill={c} fillOpacity="0.32"
-            stroke={c} strokeWidth="0.6" strokeDasharray="1.5 2" />
+            stroke={c} strokeWidth="0.5" strokeDasharray="1.5 2" />
         );
       })}
 
@@ -278,7 +278,7 @@ const LowerLimbBranchesDiagram = () => {
                 fill={c} fontWeight={isActive ? 700 : 500}
                 opacity={isActive ? 1 : 0.55}
                 style={{ paintOrder: "stroke" }}
-                stroke="hsl(var(--background))" strokeWidth="0.4">
+                stroke="hsl(var(--background))" strokeWidth="0.5">
                 {n.short}
               </text>
             )}
@@ -287,7 +287,7 @@ const LowerLimbBranchesDiagram = () => {
       })}
 
       {/* Surface anatomy overlay — bony landmarks ON TOP */}
-      <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.7" opacity="0.55" strokeLinecap="round">
+      <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.55" strokeLinecap="round">
         {view === "ant" ? (
           <>
             {/* Iliac crest + ASIS */}

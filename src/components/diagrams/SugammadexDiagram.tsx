@@ -93,7 +93,7 @@ const MechanismDiagram = ({ encapsulated }: { encapsulated: boolean }) => {
     <svg viewBox="0 0 600 320" className="w-full h-auto">
       {/* Receptor zone */}
       <g>
-        <rect x="20" y="220" width="560" height="80" rx="8" fill="hsl(var(--muted))" />
+        <rect x="20" y="220" width="560" height="80" rx="8" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="300" y="290" textAnchor="middle" fontSize="11" fill="hsl(var(--muted-foreground))" fontFamily="sans-serif">
           Neuromuscular junction — nicotinic ACh receptors
         </text>
@@ -158,7 +158,7 @@ const Cyclodextrin = () => {
         const y1 = Math.sin(a) * inner;
         const x2 = Math.cos(a) * r;
         const y2 = Math.sin(a) * r;
-        return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--primary))" strokeWidth={0.8} opacity={0.5} />;
+        return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--primary))" strokeWidth={0.75} opacity={0.5} />;
       })}
       <text x={0} y={r + 14} textAnchor="middle" fontSize="9" fill="hsl(var(--primary))" fontFamily="sans-serif">
         γ-cyclodextrin
@@ -172,14 +172,14 @@ const Rocuronium = ({ dimmed }: { dimmed: boolean }) => {
   const op = dimmed ? 0.55 : 1;
   return (
     <g opacity={op}>
-      <g stroke="hsl(var(--foreground))" strokeWidth={1.2} fill="hsl(var(--background))">
+      <g stroke="hsl(var(--foreground))" strokeWidth={1} fill="hsl(var(--background))">
         <polygon points="-22,-10 -10,-18 2,-10 2,4 -10,12 -22,4" />
         <polygon points="2,-10 14,-18 26,-10 26,4 14,12 2,4" />
         <polygon points="14,12 26,4 36,12 32,24 18,24" />
       </g>
       {/* Quaternary nitrogen as charged head */}
       <circle cx={-26} cy={-2} r={5} fill="hsl(var(--destructive))" />
-      <text x={-26} y={1} textAnchor="middle" fontSize="7" fill="white" fontWeight={700}>+</text>
+      <text x={-26} y={1} textAnchor="middle" fontSize="7" fill="hsl(var(--background))" fontWeight={700}>+</text>
     </g>
   );
 };
@@ -349,7 +349,7 @@ const KineticsDiagram = () => {
         ))}
 
         {/* Curves */}
-        <path d={pathFor("complex")} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} />
+        <path d={pathFor("complex")} fill="none" stroke="hsl(var(--primary))" strokeWidth={2} />
         <path d={pathFor("free")} fill="none" stroke="hsl(var(--destructive))" strokeWidth={2} strokeDasharray="4 3" />
 
         {/* Renal warning band */}
@@ -364,7 +364,7 @@ const KineticsDiagram = () => {
 
         {/* Legend */}
         <g transform={`translate(${PAD + 8}, 28)`}>
-          <line x1={0} y1={0} x2={20} y2={0} stroke="hsl(var(--primary))" strokeWidth={2.5} />
+          <line x1={0} y1={0} x2={20} y2={0} stroke="hsl(var(--primary))" strokeWidth={2} />
           <text x={26} y={3} fontSize="10" fill="hsl(var(--foreground))">Sugammadex–rocuronium complex</text>
           <line x1={0} y1={16} x2={20} y2={16} stroke="hsl(var(--destructive))" strokeWidth={2} strokeDasharray="4 3" />
           <text x={26} y={19} fontSize="10" fill="hsl(var(--foreground))">Free rocuronium</text>

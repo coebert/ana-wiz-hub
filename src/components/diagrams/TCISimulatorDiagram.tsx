@@ -211,7 +211,7 @@ const TCISimulatorDiagram = () => {
               return (
                 <g key={i}>
                   <line x1={plotX} y1={y} x2={plotX + plotW} y2={y}
-                    stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.15" />
+                    stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.15" />
                   <text x={plotX - 4} y={y + 3} textAnchor="end" fontSize="6"
                     fill="hsl(var(--muted-foreground))" opacity="0.5">
                     {v.toFixed(1)}
@@ -222,7 +222,7 @@ const TCISimulatorDiagram = () => {
             {Array.from({ length: 16 }, (_, i) => (
               <g key={i}>
                 <line x1={xScale(i)} y1={plotY} x2={xScale(i)} y2={plotY + plotH}
-                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.2" opacity="0.1" />
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.1" />
                 {i % 3 === 0 && (
                   <text x={xScale(i)} y={plotY + plotH + 12} textAnchor="middle" fontSize="6"
                     fill="hsl(var(--muted-foreground))" opacity="0.5">{i}</text>
@@ -255,9 +255,9 @@ const TCISimulatorDiagram = () => {
             {showMarsh && (
               <g>
                 <polyline points={marshCpLine} fill="none" stroke={marshColor}
-                  strokeWidth="1.8" opacity="0.7" strokeLinejoin="round" />
+                  strokeWidth="2" opacity="0.7" strokeLinejoin="round" />
                 <polyline points={marshCeLine} fill="none" stroke={marshColor}
-                  strokeWidth="1.8" opacity="0.9" strokeDasharray="5 2" strokeLinejoin="round" />
+                  strokeWidth="2" opacity="0.9" strokeDasharray="5 2" strokeLinejoin="round" />
                 {/* Peak Cp annotation */}
                 {marshData.length > 0 && (() => {
                   const peakIdx = marshData.findIndex(d => d.cp === marshPeakCp);
@@ -281,9 +281,9 @@ const TCISimulatorDiagram = () => {
             {showSchnider && (
               <g>
                 <polyline points={schniderCpLine} fill="none" stroke={schniderColor}
-                  strokeWidth="1.8" opacity="0.7" strokeLinejoin="round" />
+                  strokeWidth="2" opacity="0.7" strokeLinejoin="round" />
                 <polyline points={schniderCeLine} fill="none" stroke={schniderColor}
-                  strokeWidth="1.8" opacity="0.9" strokeDasharray="5 2" strokeLinejoin="round" />
+                  strokeWidth="2" opacity="0.9" strokeDasharray="5 2" strokeLinejoin="round" />
                 {/* Peak Cp annotation */}
                 {schniderData.length > 0 && (() => {
                   const peakIdx = schniderData.findIndex(d => d.cp === schniderPeakCp);
@@ -324,7 +324,7 @@ const TCISimulatorDiagram = () => {
             {showMarsh && marshPeakCp > targetCe * 1.2 && (
               <g>
                 <line x1={xScale(0.3)} y1={yScale(targetCe)} x2={xScale(0.3)} y2={yScale(marshPeakCp)}
-                  stroke={marshColor} strokeWidth="0.8" opacity="0.3" strokeDasharray="2 2" />
+                  stroke={marshColor} strokeWidth="0.75" opacity="0.3" strokeDasharray="2 2" />
                 <text x={xScale(0.3) + 4} y={yScale((targetCe + marshPeakCp) / 2) + 2} fontSize="5"
                   fill={marshColor} opacity="0.5">
                   ↕ overshoot

@@ -149,7 +149,7 @@ const LumbosacralPlexusDiagram = () => {
                 return (
                   <g key={level}>
                     <rect x={spineX - 12} y={rootY[level] - 9} width={isSacral ? 24 : 26} height={isSacral ? 18 : 20}
-                      rx="3" fill="hsl(var(--muted))" stroke={ROOT_COLORS[level]} strokeWidth="1.25" />
+                      rx="3" fill="hsl(var(--muted))" stroke={ROOT_COLORS[level]} strokeWidth="1" />
                     <text x={spineX} y={rootY[level] + 4} fontSize="8" fill={ROOT_COLORS[level]}
                       textAnchor="middle" fontWeight="700">{level}</text>
                   </g>
@@ -185,15 +185,15 @@ const LumbosacralPlexusDiagram = () => {
             {/* ═══ FEMORAL NERVE ═══ */}
             <g opacity={selected === "femoral" ? 1 : 0.2} className="cursor-pointer transition-opacity duration-200"
               onClick={() => setSelected("femoral")}>
-              <path d={`M${spineX + 35},${rootY.L2} C110,55 120,65 125,75`} stroke={nerves.femoral.color} strokeWidth="1.3" fill="none" />
+              <path d={`M${spineX + 35},${rootY.L2} C110,55 120,65 125,75`} stroke={nerves.femoral.color} strokeWidth="1.5" fill="none" />
               <path d={`M${spineX + 35},${rootY.L3} C110,80 120,78 125,75`} stroke={nerves.femoral.color} strokeWidth="1.5" fill="none" />
-              <path d={`M${spineX + 35},${rootY.L4} C110,105 120,90 125,75`} stroke={nerves.femoral.color} strokeWidth="1.3" fill="none" />
+              <path d={`M${spineX + 35},${rootY.L4} C110,105 120,90 125,75`} stroke={nerves.femoral.color} strokeWidth="1.5" fill="none" />
               {/* Main trunk descending */}
               <path d="M125,75 C130,90 135,110 140,130 C145,150 150,170 155,190 L158,210"
-                stroke={nerves.femoral.color} strokeWidth="2.5" fill="none" />
+                stroke={nerves.femoral.color} strokeWidth="2" fill="none" />
               {/* Inguinal ligament crossing */}
               {selected === "femoral" && <>
-                <line x1="120" y1="135" x2="175" y2="128" stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.2" strokeDasharray="3 2" />
+                <line x1="120" y1="135" x2="175" y2="128" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.2" strokeDasharray="3 2" />
                 <text x="176" y="127" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.4">Inguinal lig.</text>
                 <text x="160" y="205" fontSize="6" fill={nerves.femoral.color} fontWeight="600">Femoral n.</text>
                 {/* Saphenous branch */}
@@ -206,26 +206,26 @@ const LumbosacralPlexusDiagram = () => {
             {/* ═══ OBTURATOR NERVE ═══ */}
             <g opacity={selected === "obturator" ? 1 : 0.15} className="cursor-pointer transition-opacity duration-200"
               onClick={() => setSelected("obturator")}>
-              <path d={`M${spineX + 35},${rootY.L2} C100,60 108,68 112,75`} stroke={nerves.obturator.color} strokeWidth="1.2" fill="none" />
-              <path d={`M${spineX + 35},${rootY.L3} C100,82 108,80 112,75`} stroke={nerves.obturator.color} strokeWidth="1.3" fill="none" />
-              <path d={`M${spineX + 35},${rootY.L4} C100,100 108,90 112,75`} stroke={nerves.obturator.color} strokeWidth="1.2" fill="none" />
+              <path d={`M${spineX + 35},${rootY.L2} C100,60 108,68 112,75`} stroke={nerves.obturator.color} strokeWidth="1" fill="none" />
+              <path d={`M${spineX + 35},${rootY.L3} C100,82 108,80 112,75`} stroke={nerves.obturator.color} strokeWidth="1.5" fill="none" />
+              <path d={`M${spineX + 35},${rootY.L4} C100,100 108,90 112,75`} stroke={nerves.obturator.color} strokeWidth="1" fill="none" />
               <path d="M112,75 C108,90 105,110 103,130 C100,150 98,170 97,190"
                 stroke={nerves.obturator.color} strokeWidth="2" fill="none" />
               {selected === "obturator" && <>
                 <text x="80" y="195" fontSize="6" fill={nerves.obturator.color} fontWeight="600">Obturator n.</text>
                 <text x="85" y="145" fontSize="4.5" fill={nerves.obturator.color} opacity="0.5">Obt. foramen</text>
                 <ellipse cx="102" cy="140" rx="6" ry="8" fill="none" stroke={nerves.obturator.color}
-                  strokeWidth="0.8" opacity="0.4" />
+                  strokeWidth="0.75" opacity="0.4" />
               </>}
             </g>
 
             {/* ═══ LATERAL CUTANEOUS NERVE OF THIGH ═══ */}
             <g opacity={selected === "lcnt" ? 1 : 0.12} className="cursor-pointer transition-opacity duration-200"
               onClick={() => setSelected("lcnt")}>
-              <path d={`M${spineX + 35},${rootY.L2} C115,50 130,48 140,50`} stroke={nerves.lcnt.color} strokeWidth="1.3" fill="none" />
+              <path d={`M${spineX + 35},${rootY.L2} C115,50 130,48 140,50`} stroke={nerves.lcnt.color} strokeWidth="1.5" fill="none" />
               <path d={`M${spineX + 35},${rootY.L3} C115,72 130,60 140,50`} stroke={nerves.lcnt.color} strokeWidth="1" fill="none" />
               <path d="M140,50 C155,55 168,70 178,90 C188,110 195,140 200,170"
-                stroke={nerves.lcnt.color} strokeWidth="1.8" fill="none" />
+                stroke={nerves.lcnt.color} strokeWidth="2" fill="none" />
               {selected === "lcnt" && <>
                 <text x="202" y="168" fontSize="5.5" fill={nerves.lcnt.color} fontWeight="500">LCNT</text>
                 <text x="202" y="176" fontSize="4" fill={nerves.lcnt.color} opacity="0.6">(pure sensory)</text>
@@ -239,19 +239,19 @@ const LumbosacralPlexusDiagram = () => {
               onClick={() => setSelected("sciatic")}>
               {/* Roots L4-S3 converging */}
               <path d={`M${spineX + 35},${rootY.L4} C110,110 125,130 135,150`} stroke={nerves.sciatic.color} strokeWidth="1" fill="none" />
-              <path d={`M${spineX + 35},${rootY.L5} C110,135 125,142 135,150`} stroke={nerves.sciatic.color} strokeWidth="1.2" fill="none" />
+              <path d={`M${spineX + 35},${rootY.L5} C110,135 125,142 135,150`} stroke={nerves.sciatic.color} strokeWidth="1" fill="none" />
               <path d={`M${spineX + 35},${rootY.S1} C110,162 125,155 135,150`} stroke={nerves.sciatic.color} strokeWidth="1.5" fill="none" />
-              <path d={`M${spineX + 35},${rootY.S2} C110,180 125,165 135,150`} stroke={nerves.sciatic.color} strokeWidth="1.3" fill="none" />
+              <path d={`M${spineX + 35},${rootY.S2} C110,180 125,165 135,150`} stroke={nerves.sciatic.color} strokeWidth="1.5" fill="none" />
               <path d={`M${spineX + 35},${rootY.S3} C110,200 125,175 135,150`} stroke={nerves.sciatic.color} strokeWidth="1" fill="none" />
               {/* Main trunk — thick! */}
               <path d="M135,150 C140,165 145,185 148,200 C150,215 152,225 154,240"
-                stroke={nerves.sciatic.color} strokeWidth="3.5" fill="none" />
+                stroke={nerves.sciatic.color} strokeWidth="3" fill="none" />
               {selected === "sciatic" && <>
                 <text x="156" y="175" fontSize="6" fill={nerves.sciatic.color} fontWeight="700">Sciatic n.</text>
                 <text x="158" y="183" fontSize="4.5" fill={nerves.sciatic.color} opacity="0.5">(largest nerve)</text>
                 {/* Piriformis */}
                 <path d="M95,155 C110,148 130,145 145,148" stroke="hsl(var(--muted-foreground))"
-                  strokeWidth="4" fill="none" opacity="0.1" />
+                  strokeWidth="3" fill="none" opacity="0.1" />
                 <text x="105" y="147" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">Piriformis</text>
               </>}
             </g>
@@ -261,9 +261,9 @@ const LumbosacralPlexusDiagram = () => {
               onClick={() => setSelected("tibial")}>
               {/* Emerges from sciatic bifurcation */}
               <path d="M135,150 C140,165 145,185 148,200"
-                stroke={nerves.tibial.color} strokeWidth="2.5" fill="none" opacity="0.4" />
+                stroke={nerves.tibial.color} strokeWidth="2" fill="none" opacity="0.4" />
               <path d="M148,200 C146,215 142,230 138,245"
-                stroke={nerves.tibial.color} strokeWidth="2.5" fill="none" />
+                stroke={nerves.tibial.color} strokeWidth="2" fill="none" />
               {selected === "tibial" && <>
                 <text x="115" y="242" fontSize="6" fill={nerves.tibial.color} fontWeight="600">Tibial n.</text>
                 <text x="150" y="198" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.4">Popliteal fossa bifurc.</text>
@@ -289,7 +289,7 @@ const LumbosacralPlexusDiagram = () => {
             <g opacity={selected === "pudendal" ? 1 : 0.12} className="cursor-pointer transition-opacity duration-200"
               onClick={() => setSelected("pudendal")}>
               <path d={`M${spineX + 35},${rootY.S2} C100,185 110,195 115,200`} stroke={nerves.pudendal.color} strokeWidth="1" fill="none" />
-              <path d={`M${spineX + 35},${rootY.S3} C100,205 110,205 115,200`} stroke={nerves.pudendal.color} strokeWidth="1.2" fill="none" />
+              <path d={`M${spineX + 35},${rootY.S3} C100,205 110,205 115,200`} stroke={nerves.pudendal.color} strokeWidth="1" fill="none" />
               <path d={`M${spineX + 35},${rootY.S4} C100,220 110,210 115,200`} stroke={nerves.pudendal.color} strokeWidth="1" fill="none" />
               <path d="M115,200 C105,210 95,218 88,225 C82,230 80,235 82,240"
                 stroke={nerves.pudendal.color} strokeWidth="2" fill="none" />

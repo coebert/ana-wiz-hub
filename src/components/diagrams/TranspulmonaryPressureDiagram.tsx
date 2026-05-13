@@ -86,7 +86,7 @@ const TranspulmonaryPressureDiagram = () => {
         <line x1="290" y1="110" x2="265" y2="110" stroke="hsl(35, 80%, 50%)" strokeWidth="2" markerEnd="url(#arrLeft)" />
 
         {/* Transpulmonary = Paw - Ppl */}
-        <line x1="200" y1="135" x2="200" y2="155" stroke="hsl(142, 60%, 45%)" strokeWidth="2.5" markerEnd="url(#arrDownG)" />
+        <line x1="200" y1="135" x2="200" y2="155" stroke="hsl(142, 60%, 45%)" strokeWidth="2" markerEnd="url(#arrDownG)" />
         <text x="200" y="168" textAnchor="middle" className="text-[10px] font-semibold" fill="hsl(142, 60%, 45%)">
           PTP = Paw − Ppl
         </text>

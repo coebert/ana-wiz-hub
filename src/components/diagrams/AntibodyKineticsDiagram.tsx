@@ -146,10 +146,10 @@ const AntibodyKineticsDiagram = () => {
               <path d={buildPath(primaryIgG)} fill="none" stroke={igGColor} strokeWidth="2" strokeDasharray="6 4" />
             )}
             {showSecondary && showIgM && (
-              <path d={buildPath(secondaryIgM)} fill="none" stroke={igmColor} strokeWidth="2.5" />
+              <path d={buildPath(secondaryIgM)} fill="none" stroke={igmColor} strokeWidth="2" />
             )}
             {showSecondary && showIgG && (
-              <path d={buildPath(secondaryIgG)} fill="none" stroke={igGColor} strokeWidth="2.5" />
+              <path d={buildPath(secondaryIgG)} fill="none" stroke={igGColor} strokeWidth="2" />
             )}
 
             {/* In-line annotations */}
@@ -191,7 +191,7 @@ const AntibodyKineticsDiagram = () => {
             Primary (dashed)
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <svg width="22" height="6"><line x1="0" y1="3" x2="22" y2="3" stroke="hsl(var(--foreground))" strokeWidth="2.5" /></svg>
+            <svg width="22" height="6"><line x1="0" y1="3" x2="22" y2="3" stroke="hsl(var(--foreground))" strokeWidth="2" /></svg>
             Secondary (solid)
           </span>
         </div>

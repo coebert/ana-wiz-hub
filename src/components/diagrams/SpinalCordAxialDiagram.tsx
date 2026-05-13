@@ -381,7 +381,7 @@ const SpinalCordAxialDiagram = () => {
           </g>
 
           {/* Cord outline */}
-          <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth={1.8} />
+          <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth={2} />
 
           {/* Everything inside the cord is clipped to the outline */}
           <g clipPath="url(#cordClip)">
@@ -619,7 +619,7 @@ const SpinalCordAxialDiagram = () => {
                     fill={TRACTS["post-spinocerebellar"].color}
                     fillOpacity={isHL("post-spinocerebellar") ? 0.7 : 0.3}
                     stroke={TRACTS["post-spinocerebellar"].color}
-                    strokeWidth={0.8}
+                    strokeWidth={0.75}
                   />
                 ))}
 
@@ -703,8 +703,8 @@ const SpinalCordAxialDiagram = () => {
 
             {/* Anterior white commissure — STT crossing, animated when STT highlighted */}
             <g opacity={isHL("stt") ? 0.8 : 0.15}>
-              <path d={`M ${cx - 8} ${cy + 6} Q ${cx} ${cy + 12} ${cx + 8} ${cy + 6}`} stroke={TRACTS.stt.color} strokeWidth={0.9} fill="none" strokeDasharray="2 1.5" />
-              <path d={`M ${cx + 8} ${cy + 6} Q ${cx} ${cy + 14} ${cx - 8} ${cy + 6}`} stroke={TRACTS.stt.color} strokeWidth={0.7} fill="none" strokeDasharray="1.5 1.5" />
+              <path d={`M ${cx - 8} ${cy + 6} Q ${cx} ${cy + 12} ${cx + 8} ${cy + 6}`} stroke={TRACTS.stt.color} strokeWidth={1} fill="none" strokeDasharray="2 1.5" />
+              <path d={`M ${cx + 8} ${cy + 6} Q ${cx} ${cy + 14} ${cx - 8} ${cy + 6}`} stroke={TRACTS.stt.color} strokeWidth={0.75} fill="none" strokeDasharray="1.5 1.5" />
             </g>
 
             {/* Syndrome overlays — clipped so they hug the cord */}
@@ -721,7 +721,7 @@ const SpinalCordAxialDiagram = () => {
               <path d={arcRing(-Math.PI + 0.05, -0.05, 0.97, 0.4)} fill={SYNDROMES.posterior.color} fillOpacity={0.12} stroke={SYNDROMES.posterior.color} strokeDasharray="4 3" strokeWidth={1.5} />
             )}
             {selectedSyndrome === "complete" && (
-              <ellipse cx={cx} cy={cy} rx={rx * 0.98} ry={ry * 0.98} fill={SYNDROMES.complete.color} fillOpacity={0.12} stroke={SYNDROMES.complete.color} strokeDasharray="6 3" strokeWidth={1.8} />
+              <ellipse cx={cx} cy={cy} rx={rx * 0.98} ry={ry * 0.98} fill={SYNDROMES.complete.color} fillOpacity={0.12} stroke={SYNDROMES.complete.color} strokeDasharray="6 3" strokeWidth={2} />
             )}
           </g>
 

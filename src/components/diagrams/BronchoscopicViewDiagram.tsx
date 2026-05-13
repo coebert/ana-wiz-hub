@@ -365,7 +365,7 @@ const BronchoscopicViewDiagram = () => {
                       style={selected === "bronchus-intermedius" ? { filter: "url(#bvd-glow)" } : undefined}
                     />
                     {/* Internal carina between RUL and BI */}
-                    <path d="M 220,150 Q 215,170 205,190" stroke="hsl(20, 30%, 75%)" strokeWidth="2.5" fill="none" opacity="0.7" strokeLinecap="round" />
+                    <path d="M 220,150 Q 215,170 205,190" stroke="hsl(20, 30%, 75%)" strokeWidth="2" fill="none" opacity="0.7" strokeLinecap="round" />
                     {/* RML and RLL hinted as smaller distal lumens within BI */}
                     <ellipse
                       cx="142" cy="218" rx="22" ry="20"
@@ -425,7 +425,7 @@ const BronchoscopicViewDiagram = () => {
                       style={selected === "lll" ? { filter: "url(#bvd-glow)" } : undefined}
                     />
                     {/* Internal carina between LUL and LLL */}
-                    <path d="M 175,165 Q 168,180 160,195" stroke="hsl(20, 30%, 75%)" strokeWidth="2.5" fill="none" opacity="0.7" strokeLinecap="round" />
+                    <path d="M 175,165 Q 168,180 160,195" stroke="hsl(20, 30%, 75%)" strokeWidth="2" fill="none" opacity="0.7" strokeLinecap="round" />
                     <Hotspot cx={200} cy={115} r={5} isSelected={selected === "lul"} color={sideColors.left} onClick={() => setSelected("lul")} pulse />
                     <Hotspot cx={155} cy={220} r={5} isSelected={selected === "lll"} color={sideColors.left} onClick={() => setSelected("lll")} />
                   </>

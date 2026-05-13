@@ -240,18 +240,18 @@ export const UrineConcentrationSimulator = () => {
               transform={`rotate(-90, 10, ${padT + plotH / 2})`}>mOsm/kg</text>
 
             {/* Plasma reference (300) */}
-            <line x1={padL} y1={yForOsm(300)} x2={W - padR} y2={yForOsm(300)} stroke="hsl(var(--primary))" strokeWidth="0.8" strokeDasharray="4 3" opacity="0.5" />
+            <line x1={padL} y1={yForOsm(300)} x2={W - padR} y2={yForOsm(300)} stroke="hsl(var(--primary))" strokeWidth="0.75" strokeDasharray="4 3" opacity="0.5" />
             <text x={W - padR - 4} y={yForOsm(300) - 4} fontSize="8" fill="hsl(var(--primary))" textAnchor="end" fontWeight="600">plasma 300</text>
 
             {/* Interstitial max line */}
             <line x1={padL} y1={yForOsm(interstitialMax)} x2={W - padR} y2={yForOsm(interstitialMax)}
-              stroke="hsl(15 55% 45%)" strokeWidth="0.8" strokeDasharray="2 4" opacity="0.55" />
+              stroke="hsl(15 55% 45%)" strokeWidth="0.75" strokeDasharray="2 4" opacity="0.55" />
             <text x={W - padR - 4} y={yForOsm(interstitialMax) - 3} fontSize="8" fill="hsl(15 55% 45%)" textAnchor="end" fontWeight="600">
               medullary peak {interstitialMax}
             </text>
 
             {/* Trace */}
-            <path d={tracePath} fill="none" stroke="hsl(var(--primary))" strokeWidth="2.2" />
+            <path d={tracePath} fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
 
             {/* Segment markers */}
             {segments.map((s) => {
@@ -259,7 +259,7 @@ export const UrineConcentrationSimulator = () => {
               return (
                 <g key={s.id}>
                   <line x1={xForT(s.x)} y1={padT} x2={xForT(s.x)} y2={padT + plotH} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
-                  <circle cx={xForT(s.x)} cy={yForOsm(osm)} r="3.5" fill="hsl(var(--primary))" stroke="hsl(var(--background))" strokeWidth="1.2" />
+                  <circle cx={xForT(s.x)} cy={yForOsm(osm)} r="3.5" fill="hsl(var(--primary))" stroke="hsl(var(--background))" strokeWidth="1" />
                 </g>
               );
             })}
@@ -282,7 +282,7 @@ export const UrineConcentrationSimulator = () => {
 
             {/* Final urine readout */}
             <g transform={`translate(${xForT(0.99) + 6}, ${yForOsm(finalSegment.osm(adh))})`}>
-              <rect x="0" y="-12" width="58" height="20" rx="3" fill="hsl(var(--primary))" />
+              <rect x="0" y="-12" width="58" height="20" rx="3" fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x="29" y="2" fontSize="10" fill="hsl(var(--primary-foreground))" textAnchor="middle" fontWeight="700">
                 {finalOsm}
               </text>

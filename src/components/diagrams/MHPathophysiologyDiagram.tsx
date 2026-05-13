@@ -50,11 +50,11 @@ const MHPathophysiologyDiagram = () => {
 
         {/* Branching arrows from Ca²⁺ */}
         {/* Left branch: sustained contraction */}
-        <line x1="280" y1="236" x2="140" y2="275" stroke="hsl(var(--clinical))" strokeWidth="1.3" markerEnd="url(#mh-arrow)" />
+        <line x1="280" y1="236" x2="140" y2="275" stroke="hsl(var(--clinical))" strokeWidth="1.5" markerEnd="url(#mh-arrow)" />
         {/* Centre branch: mitochondrial overload */}
-        <line x1="350" y1="236" x2="350" y2="275" stroke="hsl(var(--clinical))" strokeWidth="1.3" markerEnd="url(#mh-arrow)" />
+        <line x1="350" y1="236" x2="350" y2="275" stroke="hsl(var(--clinical))" strokeWidth="1.5" markerEnd="url(#mh-arrow)" />
         {/* Right branch: ATP consumption */}
-        <line x1="420" y1="236" x2="560" y2="275" stroke="hsl(var(--clinical))" strokeWidth="1.3" markerEnd="url(#mh-arrow)" />
+        <line x1="420" y1="236" x2="560" y2="275" stroke="hsl(var(--clinical))" strokeWidth="1.5" markerEnd="url(#mh-arrow)" />
 
         {/* ── LEFT: Sustained Contraction ── */}
         <rect x="50" y="278" width="180" height="44" rx="7" fill="hsl(var(--clinical) / 0.1)" stroke="hsl(var(--clinical) / 0.3)" strokeWidth="1" />
@@ -62,7 +62,7 @@ const MHPathophysiologyDiagram = () => {
         <text x="140" y="312" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '9px' }}>Actin-myosin cross-bridge cycling</text>
 
         {/* Left downstream: rigidity + rhabdo */}
-        <line x1="140" y1="322" x2="140" y2="355" stroke="hsl(var(--clinical))" strokeWidth="1.2" markerEnd="url(#mh-arrow)" />
+        <line x1="140" y1="322" x2="140" y2="355" stroke="hsl(var(--clinical))" strokeWidth="1" markerEnd="url(#mh-arrow)" />
         <rect x="55" y="358" width="170" height="50" rx="7" fill="hsl(var(--clinical) / 0.06)" stroke="hsl(var(--clinical) / 0.2)" strokeWidth="1" />
         <text x="140" y="376" textAnchor="middle" className="fill-foreground" style={{ fontSize: '10px', fontWeight: 600 }}>Muscle Rigidity</text>
         <text x="140" y="390" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '8px' }}>Masseter spasm (earliest sign)</text>
@@ -74,7 +74,7 @@ const MHPathophysiologyDiagram = () => {
         <text x="350" y="312" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '9px' }}>Mitochondrial O₂ consumption</text>
 
         {/* Centre downstream: heat + CO₂ */}
-        <line x1="350" y1="322" x2="350" y2="355" stroke="hsl(var(--clinical))" strokeWidth="1.2" markerEnd="url(#mh-arrow)" />
+        <line x1="350" y1="322" x2="350" y2="355" stroke="hsl(var(--clinical))" strokeWidth="1" markerEnd="url(#mh-arrow)" />
         <rect x="265" y="358" width="170" height="50" rx="7" fill="hsl(var(--clinical) / 0.06)" stroke="hsl(var(--clinical) / 0.2)" strokeWidth="1" />
         <text x="350" y="376" textAnchor="middle" className="fill-foreground" style={{ fontSize: '10px', fontWeight: 600 }}>↑↑ Heat + ↑↑ CO₂</text>
         <text x="350" y="390" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '8px' }}>↑EtCO₂ (earliest monitor sign)</text>
@@ -86,7 +86,7 @@ const MHPathophysiologyDiagram = () => {
         <text x="560" y="312" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '9px' }}>Ca²⁺ pump + contraction demand</text>
 
         {/* Right downstream: metabolic crisis */}
-        <line x1="560" y1="322" x2="560" y2="355" stroke="hsl(var(--clinical))" strokeWidth="1.2" markerEnd="url(#mh-arrow)" />
+        <line x1="560" y1="322" x2="560" y2="355" stroke="hsl(var(--clinical))" strokeWidth="1" markerEnd="url(#mh-arrow)" />
         <rect x="475" y="358" width="170" height="50" rx="7" fill="hsl(var(--clinical) / 0.06)" stroke="hsl(var(--clinical) / 0.2)" strokeWidth="1" />
         <text x="560" y="376" textAnchor="middle" className="fill-foreground" style={{ fontSize: '10px', fontWeight: 600 }}>Metabolic Crisis</text>
         <text x="560" y="390" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '8px' }}>Anaerobic → Lactic acidosis</text>

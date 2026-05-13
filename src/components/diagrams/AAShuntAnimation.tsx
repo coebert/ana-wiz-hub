@@ -105,7 +105,7 @@ export const AAShuntAnimation = () => {
   // ── Helper: render a small "AA" token at (x,y) ──
   const AAToken = ({ x, y, opacity = 1 }: { x: number; y: number; opacity?: number }) => (
     <g opacity={opacity}>
-      <circle cx={x} cy={y} r={5} fill="hsl(45 85% 55%)" stroke="hsl(35 80% 35%)" strokeWidth={0.8} />
+      <circle cx={x} cy={y} r={5} fill="hsl(45 85% 55%)" stroke="hsl(35 80% 35%)" strokeWidth={0.75} />
       <text x={x} y={y + 1.8} textAnchor="middle" fontSize="5" fontWeight={700} fill="hsl(0 0% 100%)">AA</text>
     </g>
   );
@@ -144,7 +144,7 @@ export const AAShuntAnimation = () => {
         <text x={W / 2} y={34} textAnchor="middle" fontSize="9.5" className="fill-foreground font-semibold">
           Membrane phospholipids
         </text>
-        <line x1={W / 2} x2={W / 2} y1={40} y2={aaY - 12} stroke="hsl(var(--muted-foreground))" strokeWidth={1.4} markerEnd="url(#aa-arrow)" />
+        <line x1={W / 2} x2={W / 2} y1={40} y2={aaY - 12} stroke="hsl(var(--muted-foreground))" strokeWidth={1.5} markerEnd="url(#aa-arrow)" />
         <text x={W / 2 + 8} y={55} fontSize="8.5" className="fill-muted-foreground italic">phospholipase A₂</text>
 
         {/* AA pool — glows when accumulating */}
@@ -157,7 +157,7 @@ export const AAShuntAnimation = () => {
           </ellipse>
         )}
         <rect x={aaX - 80} y={aaY - 12} width={160} height={26} rx={6}
-          fill="hsl(var(--background))" stroke="hsl(var(--muted-foreground))" strokeWidth={1.2} />
+          fill="hsl(var(--background))" stroke="hsl(var(--muted-foreground))" strokeWidth={1} />
         <text x={aaX} y={aaY + 5} textAnchor="middle" fontSize="10.5" fontWeight={700} className="fill-foreground">
           Arachidonic acid (AA)
         </text>
@@ -255,7 +255,7 @@ export const AAShuntAnimation = () => {
           const y = (1 - u) * (1 - u) * startY + 2 * (1 - u) * u * cy + u * u * endY;
           return (
             <g key={i}>
-              <circle cx={x} cy={y} r={5} fill="hsl(0 65% 55%)" stroke="hsl(0 70% 30%)" strokeWidth={0.8} opacity={0.9} />
+              <circle cx={x} cy={y} r={5} fill="hsl(0 65% 55%)" stroke="hsl(0 70% 30%)" strokeWidth={0.75} opacity={0.9} />
               <text x={x} y={y + 1.8} textAnchor="middle" fontSize="4.5" fontWeight={700} fill="hsl(0 0% 100%)">LT</text>
             </g>
           );
@@ -300,7 +300,7 @@ export const AAShuntAnimation = () => {
             return (
               <>
                 <rect x={lumenX} y={405} width={lumenWidth} height={26} rx={10}
-                  fill="hsl(200 60% 88%)" stroke="hsl(200 50% 55%)" strokeWidth={1.2} />
+                  fill="hsl(200 60% 88%)" stroke="hsl(200 50% 55%)" strokeWidth={1} />
                 <text x={280} y={422} textAnchor="middle" fontSize="9" fontWeight={700} fill="hsl(200 50% 30%)">
                   {bronchoConstrict > 0.4 ? "constricted lumen" : "airway lumen"}
                 </text>
@@ -313,7 +313,7 @@ export const AAShuntAnimation = () => {
         {bronchoConstrict > 0.5 && (
           <g opacity={bronchoConstrict}>
             <rect x={W - 180} y={345} width={170} height={36} rx={6}
-              fill="hsl(0 70% 95%)" stroke="hsl(0 65% 50%)" strokeWidth={1.2} />
+              fill="hsl(0 70% 95%)" stroke="hsl(0 65% 50%)" strokeWidth={1} />
             <text x={W - 95} y={360} textAnchor="middle" fontSize="9" fontWeight={700} fill="hsl(0 65% 35%)">
               Aspirin-Exacerbated
             </text>
@@ -428,7 +428,7 @@ const EnzymeBox = ({
   x, y, label, sublabel, color, inhibited,
 }: { x: number; y: number; label: string; sublabel: string; color: string; inhibited: number }) => (
   <g>
-    <rect x={x - 38} y={y - 16} width={76} height={32} rx={6} fill={`${color}20`} stroke={color} strokeWidth={1.4} />
+    <rect x={x - 38} y={y - 16} width={76} height={32} rx={6} fill={`${color}20`} stroke={color} strokeWidth={1.5} />
     <text x={x} y={y - 2} textAnchor="middle" fontSize="11" fontWeight={700} fill={color}>{label}</text>
     <text x={x} y={y + 10} textAnchor="middle" fontSize="7.5" className="fill-muted-foreground italic">{sublabel}</text>
     {inhibited > 0.1 && (
@@ -453,7 +453,7 @@ const ProductBox = ({
         <animate attributeName="opacity" values="0.08;0.22;0.08" dur="1s" repeatCount="indefinite" />
       </rect>
     )}
-    <rect x={x - 90} y={y - 8} width={180} height={36} rx={6} fill="hsl(var(--background))" stroke={color} strokeWidth={1.2} opacity={0.4 + intensity * 0.6} />
+    <rect x={x - 90} y={y - 8} width={180} height={36} rx={6} fill="hsl(var(--background))" stroke={color} strokeWidth={1} opacity={0.4 + intensity * 0.6} />
     <text x={x} y={y + 6} textAnchor="middle" fontSize="9.5" fontWeight={700} fill={color} opacity={0.4 + intensity * 0.6}>{title}</text>
     <text x={x} y={y + 19} textAnchor="middle" fontSize="7.5" className="fill-muted-foreground" opacity={0.4 + intensity * 0.6}>{sub}</text>
   </g>

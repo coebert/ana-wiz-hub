@@ -67,11 +67,11 @@ export const GlycocalyxDiagram = () => {
                 return (
                   <g key={`gx-${i}`}>
                     {/* core protein anchored to endothelium (syndecan / glypican) */}
-                    <line x1={x} y1={230} x2={x} y2={185} stroke="hsl(var(--accent))" strokeWidth="1.4" />
+                    <line x1={x} y1={230} x2={x} y2={185} stroke="hsl(var(--accent))" strokeWidth="1.5" />
                     {/* GAG side branches (heparan sulfate, hyaluronic acid, chondroitin) */}
-                    <line x1={x} y1={210} x2={x - 5} y2={195} stroke="hsl(var(--accent))" strokeWidth="0.8" />
-                    <line x1={x} y1={205} x2={x + 5} y2={190} stroke="hsl(var(--accent))" strokeWidth="0.8" />
-                    <line x1={x} y1={200} x2={x - 4} y2={188} stroke="hsl(var(--accent))" strokeWidth="0.8" />
+                    <line x1={x} y1={210} x2={x - 5} y2={195} stroke="hsl(var(--accent))" strokeWidth="0.75" />
+                    <line x1={x} y1={205} x2={x + 5} y2={190} stroke="hsl(var(--accent))" strokeWidth="0.75" />
+                    <line x1={x} y1={200} x2={x - 4} y2={188} stroke="hsl(var(--accent))" strokeWidth="0.75" />
                     {/* tip */}
                     <circle cx={x} cy={185} r="1.6" fill="hsl(var(--accent))" />
                   </g>
@@ -81,7 +81,7 @@ export const GlycocalyxDiagram = () => {
               {/* Endothelial cells with tight junctions */}
               <rect x="0" y="230" width="720" height="60" fill="url(#endo)" />
               {[180, 360, 540].map((x) => (
-                <line key={x} x1={x} y1={230} x2={x} y2={290} stroke="hsl(var(--foreground))" strokeWidth="1.2" strokeDasharray="2 3" />
+                <line key={x} x1={x} y1={230} x2={x} y2={290} stroke="hsl(var(--foreground))" strokeWidth="1" strokeDasharray="2 3" />
               ))}
               <text x="20" y="265" className="fill-foreground" fontSize="11" fontFamily="ui-sans-serif">ENDOTHELIUM</text>
 
@@ -104,9 +104,9 @@ export const GlycocalyxDiagram = () => {
               {/* Annotation callouts */}
               <g fontFamily="ui-sans-serif" fontSize="10" className="fill-foreground">
                 {/* ESL thickness */}
-                <line x1="700" y1="170" x2="700" y2="230" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
-                <line x1="695" y1="170" x2="705" y2="170" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
-                <line x1="695" y1="230" x2="705" y2="230" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
+                <line x1="700" y1="170" x2="700" y2="230" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
+                <line x1="695" y1="170" x2="705" y2="170" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
+                <line x1="695" y1="230" x2="705" y2="230" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
                 <text x="660" y="205" textAnchor="end" fontSize="9" className="fill-foreground">0.5–1 µm</text>
 
                 {/* Sub-glycocalyx label */}
@@ -181,7 +181,7 @@ export const GlycocalyxDiagram = () => {
               </g>
 
               {/* Adherent leucocyte (now exposed because ESL gone) */}
-              <circle cx="380" cy="155" r="14" fill="hsl(var(--accent))" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
+              <circle cx="380" cy="155" r="14" fill="hsl(var(--accent))" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
               <text x="380" y="145" textAnchor="middle" fontSize="9" fontFamily="ui-sans-serif" className="fill-foreground">PMN</text>
 
               {/* RBCs leaking through */}
@@ -224,11 +224,11 @@ export const GlycocalyxDiagram = () => {
               {/* Endothelium */}
               <rect x="0" y="230" width="720" height="50" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
               {[180, 360, 540].map((x) => (
-                <line key={x} x1={x} y1={230} x2={x} y2={280} stroke="hsl(var(--foreground))" strokeWidth="1.2" strokeDasharray="2 3" />
+                <line key={x} x1={x} y1={230} x2={x} y2={280} stroke="hsl(var(--foreground))" strokeWidth="1" strokeDasharray="2 3" />
               ))}
               {/* Widened junction */}
-              <line x1={360} y1={230} x2={356} y2={280} stroke="hsl(var(--destructive))" strokeWidth="1.6" />
-              <line x1={360} y1={230} x2={364} y2={280} stroke="hsl(var(--destructive))" strokeWidth="1.6" />
+              <line x1={360} y1={230} x2={356} y2={280} stroke="hsl(var(--destructive))" strokeWidth="1.5" />
+              <line x1={360} y1={230} x2={364} y2={280} stroke="hsl(var(--destructive))" strokeWidth="1.5" />
               <text x="20" y="262" className="fill-foreground" fontSize="11" fontFamily="ui-sans-serif">ENDOTHELIUM (gaps widened)</text>
 
               {/* BM */}

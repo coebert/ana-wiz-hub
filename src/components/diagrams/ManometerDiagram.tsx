@@ -170,7 +170,7 @@ const ManometerDiagram = () => {
               d="M 220 150 Q 280 100 280 150 Q 280 200 220 200"
               fill="none"
               stroke="hsl(var(--physics))"
-              strokeWidth="6"
+              strokeWidth="3"
               strokeLinecap="round"
               opacity="0.85"
             />
@@ -194,10 +194,10 @@ const ManometerDiagram = () => {
 
             {/* Inlet stem */}
             <rect x="210" y="270" width="20" height="40" fill="hsl(var(--muted))" stroke="hsl(var(--foreground))" strokeWidth="2" />
-            <line x1="220" y1="270" x2="220" y2="200" stroke="hsl(var(--physics))" strokeWidth="6" strokeLinecap="round" />
+            <line x1="220" y1="270" x2="220" y2="200" stroke="hsl(var(--physics))" strokeWidth="3" strokeLinecap="round" />
 
             {/* Pressure inlet arrow */}
-            <line x1="220" y1="315" x2="220" y2="285" stroke="hsl(var(--destructive))" strokeWidth="2.5" markerEnd="url(#arrowUpRed)" />
+            <line x1="220" y1="315" x2="220" y2="285" stroke="hsl(var(--destructive))" strokeWidth="2" markerEnd="url(#arrowUpRed)" />
             <text x="245" y="305" className="fill-foreground" fontSize="11" fontWeight="600">
               Gas in (P)
             </text>

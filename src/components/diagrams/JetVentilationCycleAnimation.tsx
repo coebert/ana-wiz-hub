@@ -133,7 +133,7 @@ export default function JetVentilationCycleAnimation() {
               d={`M 90 ${chestY} Q 110 ${chestY - 8} 210 ${chestY - 8} Q 310 ${chestY - 8} 330 ${chestY} L 320 220 Q 210 232 100 220 Z`}
               fill="url(#jvc-chest)"
               stroke="hsl(var(--clinical))"
-              strokeWidth="1.4"
+              strokeWidth="1.5"
             />
             {/* Ribs (suggestive) */}
             {[0, 1, 2].map((i) => (
@@ -149,7 +149,7 @@ export default function JetVentilationCycleAnimation() {
             <path
               d={`M 100 ${diaphragmY} Q 210 ${diaphragmY + 18} 320 ${diaphragmY}`}
               stroke="hsl(var(--clinical))"
-              strokeWidth="1.6"
+              strokeWidth="1.5"
               fill="none"
               strokeDasharray="3 3"
             />
@@ -178,7 +178,7 @@ export default function JetVentilationCycleAnimation() {
                   opacity={jetIntensity}
                 />
                 {/* Entrainment arrows */}
-                <g opacity={jetIntensity * 0.7} stroke="hsl(var(--primary))" strokeWidth="1.2" fill="none">
+                <g opacity={jetIntensity * 0.7} stroke="hsl(var(--primary))" strokeWidth="1" fill="none">
                   <path d="M 175 55 Q 195 60 204 64" markerEnd="url(#jvc-arrow)" />
                   <path d="M 245 55 Q 225 60 216 64" markerEnd="url(#jvc-arrow)" />
                 </g>
@@ -187,7 +187,7 @@ export default function JetVentilationCycleAnimation() {
 
             {/* Expiratory flow during exp */}
             {phase.phase === "exp" && (
-              <g opacity={expFlow} stroke="hsl(var(--accent-foreground))" strokeWidth="1.4" fill="none">
+              <g opacity={expFlow} stroke="hsl(var(--accent-foreground))" strokeWidth="1.5" fill="none">
                 <path d="M 210 60 Q 200 40 178 28" markerEnd="url(#jvc-arrow-exp)" />
                 <path d="M 210 60 Q 220 40 242 28" markerEnd="url(#jvc-arrow-exp)" />
               </g>
@@ -221,7 +221,7 @@ export default function JetVentilationCycleAnimation() {
             {stopAlert && (
               <g>
                 <rect x="0" y="0" width="420" height="260" fill="hsl(var(--destructive) / 0.12)" />
-                <rect x="80" y="100" width="260" height="60" rx="6" fill="hsl(var(--destructive))" />
+                <rect x="80" y="100" width="260" height="60" rx="6" fill="hsl(var(--destructive))" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="210" y="128" fontSize="18" fontWeight="700" fill="hsl(var(--destructive-foreground))" textAnchor="middle">
                   STOP JETTING
                 </text>

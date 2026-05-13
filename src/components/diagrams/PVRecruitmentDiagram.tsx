@@ -124,13 +124,13 @@ const PVRecruitmentDiagram = () => {
         {/* Grid lines */}
         {[0, 10, 20, 30, 40].map(p => (
           <g key={p}>
-            <line x1={toX(p)} y1={PT} x2={toX(p)} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="0.3" />
+            <line x1={toX(p)} y1={PT} x2={toX(p)} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="0.5" />
             <text x={toX(p)} y={PT + plotH + 13} textAnchor="middle" className="text-[7px] fill-muted-foreground">{p}</text>
           </g>
         ))}
         {[0, 200, 400, 600, 800].map(v => (
           <g key={v}>
-            <line x1={PL} y1={toY(v)} x2={PL + plotW} y2={toY(v)} stroke="hsl(var(--border))" strokeWidth="0.3" />
+            <line x1={PL} y1={toY(v)} x2={PL + plotW} y2={toY(v)} stroke="hsl(var(--border))" strokeWidth="0.5" />
             <text x={PL - 4} y={toY(v) + 3} textAnchor="end" className="text-[7px] fill-muted-foreground">{v}</text>
           </g>
         ))}
@@ -147,7 +147,7 @@ const PVRecruitmentDiagram = () => {
         )}
 
         {/* Inflation curve */}
-        <path d={inflationPath} fill="none" stroke={prof.color} strokeWidth="2.5" />
+        <path d={inflationPath} fill="none" stroke={prof.color} strokeWidth="2" />
 
         {/* Deflation curve */}
         {showHysteresis && (
@@ -158,7 +158,7 @@ const PVRecruitmentDiagram = () => {
         {showAnnotations && (
           <g>
             <circle cx={toX(prof.lip)} cy={toY(pvCurve(prof.lip, prof.lip, prof.uip, prof.maxVol, false, prof.hysteresis))}
-              r="5" fill="hsl(35, 80%, 50%)" stroke="white" strokeWidth="1.5" />
+              r="5" fill="hsl(35, 80%, 50%)" stroke="hsl(var(--background))" strokeWidth="1.5" />
             <text x={toX(prof.lip) + 8} y={toY(pvCurve(prof.lip, prof.lip, prof.uip, prof.maxVol, false, prof.hysteresis)) - 5}
               className="text-[8px] fill-foreground font-semibold">LIP ({prof.lip})</text>
           </g>
@@ -168,7 +168,7 @@ const PVRecruitmentDiagram = () => {
         {showAnnotations && (
           <g>
             <circle cx={toX(prof.uip)} cy={toY(pvCurve(prof.uip, prof.lip, prof.uip, prof.maxVol, false, prof.hysteresis))}
-              r="5" fill="hsl(0, 70%, 55%)" stroke="white" strokeWidth="1.5" />
+              r="5" fill="hsl(0, 70%, 55%)" stroke="hsl(var(--background))" strokeWidth="1.5" />
             <text x={toX(prof.uip) - 8} y={toY(pvCurve(prof.uip, prof.lip, prof.uip, prof.maxVol, false, prof.hysteresis)) - 5}
               textAnchor="end" className="text-[8px] fill-foreground font-semibold">UIP ({prof.uip})</text>
           </g>
@@ -179,7 +179,7 @@ const PVRecruitmentDiagram = () => {
           <g>
             <line x1={toX(peepSelected)} y1={PT} x2={toX(peepSelected)} y2={PT + plotH}
               stroke="hsl(210, 70%, 55%)" strokeWidth="1.5" strokeDasharray="4,3" />
-            <circle cx={toX(peepSelected)} cy={toY(volAtPeep)} r="5" fill="hsl(210, 70%, 55%)" stroke="white" strokeWidth="1.5" />
+            <circle cx={toX(peepSelected)} cy={toY(volAtPeep)} r="5" fill="hsl(210, 70%, 55%)" stroke="hsl(var(--background))" strokeWidth="1.5" />
             <text x={toX(peepSelected) + 3} y={toY(volAtPeep) + 15} className="text-[8px] fill-foreground font-mono font-semibold">
               PEEP {peepSelected}
             </text>
@@ -195,7 +195,7 @@ const PVRecruitmentDiagram = () => {
         )}
 
         {/* Legend */}
-        <line x1={PL + 10} y1={PT + plotH - 20} x2={PL + 30} y2={PT + plotH - 20} stroke={prof.color} strokeWidth="2.5" />
+        <line x1={PL + 10} y1={PT + plotH - 20} x2={PL + 30} y2={PT + plotH - 20} stroke={prof.color} strokeWidth="2" />
         <text x={PL + 34} y={PT + plotH - 17} className="text-[7px] fill-muted-foreground">Inflation</text>
         {showHysteresis && (
           <>

@@ -110,7 +110,7 @@ const EquipmentClassesDiagram = () => (
           </g>
         ))}
 
-        <rect x="30" y="415" width="540" height="20" rx="4" fill="hsl(var(--destructive)/0.08)" />
+        <rect x="30" y="415" width="540" height="20" rx="4" fill="hsl(var(--destructive)/0.08)" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="300" y="429" textAnchor="middle" className="fill-destructive text-[10px] font-medium">Key: Type CF equipment MUST be used for any intracardiac connection (pacing wires, PA catheters)</text>
       </svg>
     </div>
@@ -130,7 +130,7 @@ const DiathermyDiagram = () => (
         <text x="155" y="78" textAnchor="middle" className="fill-primary text-[12px] font-bold">MONOPOLAR</text>
 
         {/* Active electrode */}
-        <rect x="130" y="90" width="50" height="8" rx="2" fill="hsl(var(--primary))" />
+        <rect x="130" y="90" width="50" height="8" rx="2" fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="155" y="86" textAnchor="middle" className="fill-primary text-[9px] font-medium">Active electrode</text>
         <text x="155" y="112" textAnchor="middle" className="fill-muted-foreground text-[8px]">Small area → high current density</text>
 
@@ -139,7 +139,7 @@ const DiathermyDiagram = () => (
         <text x="155" y="153" textAnchor="middle" className="fill-foreground text-[9px]">Patient</text>
 
         {/* Return plate */}
-        <rect x="100" y="200" width="110" height="12" rx="3" fill="hsl(var(--accent))" />
+        <rect x="100" y="200" width="110" height="12" rx="3" fill="hsl(var(--accent))" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="155" y="228" textAnchor="middle" className="fill-accent text-[9px] font-medium">Return plate</text>
         <text x="155" y="242" textAnchor="middle" className="fill-muted-foreground text-[8px]">Large area → low current density</text>
 
@@ -152,8 +152,8 @@ const DiathermyDiagram = () => (
         <text x="445" y="78" textAnchor="middle" className="fill-accent text-[12px] font-bold">BIPOLAR</text>
 
         {/* Forceps */}
-        <line x1="420" y1="90" x2="435" y2="140" stroke="hsl(var(--accent))" strokeWidth="2.5" />
-        <line x1="470" y1="90" x2="455" y2="140" stroke="hsl(var(--accent))" strokeWidth="2.5" />
+        <line x1="420" y1="90" x2="435" y2="140" stroke="hsl(var(--accent))" strokeWidth="2" />
+        <line x1="470" y1="90" x2="455" y2="140" stroke="hsl(var(--accent))" strokeWidth="2" />
         <circle cx="445" cy="145" r="8" fill="hsl(var(--muted))" stroke="hsl(var(--foreground)/0.3)" strokeWidth="1" />
         <text x="445" y="100" textAnchor="middle" className="fill-accent text-[9px] font-medium">Bipolar forceps</text>
 
@@ -182,7 +182,7 @@ const DiathermyDiagram = () => (
         ))}
 
         {/* Cutting vs coagulation */}
-        <rect x="30" y="455" width="540" height="20" rx="4" fill="hsl(var(--primary)/0.08)" />
+        <rect x="30" y="455" width="540" height="20" rx="4" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="300" y="469" textAnchor="middle" className="fill-foreground text-[10px] font-medium">Cut: continuous sine wave (high temp) | Coag: interrupted bursts (lower temp, wider spread) | Blend: mixed</text>
 
         <defs>
@@ -278,7 +278,7 @@ const DefibrillationDiagram = () => (
 
         {/* Monophasic damped sinusoidal waveform */}
         <path d="M50,170 Q70,95 90,100 Q120,105 140,130 Q160,155 180,165 Q200,170 220,170" 
-          fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+          fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
         <text x="155" y="210" textAnchor="middle" className="fill-muted-foreground text-[9px]">Single direction of current flow</text>
         <text x="155" y="222" textAnchor="middle" className="fill-primary text-[9px] font-medium">Energy: 360 J</text>
 
@@ -294,9 +294,9 @@ const DefibrillationDiagram = () => (
 
         {/* Biphasic truncated exponential waveform */}
         <path d="M340,145 L340,100 L370,100 Q390,100 400,108 L420,120 L420,145" 
-          fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--accent))" strokeWidth="2.5" />
+          fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--accent))" strokeWidth="2" />
         <path d="M420,145 L420,175 L450,175 Q470,175 480,170 L500,162 L500,145" 
-          fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+          fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--primary))" strokeWidth="2" />
         
         <text x="380" y="95" textAnchor="middle" className="fill-accent text-[8px] font-medium">Phase 1 (+)</text>
         <text x="460" y="192" textAnchor="middle" className="fill-primary text-[8px] font-medium">Phase 2 (−)</text>
@@ -306,9 +306,9 @@ const DefibrillationDiagram = () => (
         <text x="300" y="250" textAnchor="middle" className="fill-foreground text-[12px] font-bold">Comparison</text>
 
         {/* Table header */}
-        <rect x="30" y="260" width="170" height="22" rx="3" fill="hsl(var(--muted))" />
-        <rect x="200" y="260" width="190" height="22" rx="3" fill="hsl(var(--primary)/0.1)" />
-        <rect x="390" y="260" width="190" height="22" rx="3" fill="hsl(var(--accent)/0.1)" />
+        <rect x="30" y="260" width="170" height="22" rx="3" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.75" />
+        <rect x="200" y="260" width="190" height="22" rx="3" fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
+        <rect x="390" y="260" width="190" height="22" rx="3" fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="115" y="275" textAnchor="middle" className="fill-foreground text-[10px] font-bold">Feature</text>
         <text x="295" y="275" textAnchor="middle" className="fill-primary text-[10px] font-bold">Monophasic</text>
         <text x="485" y="275" textAnchor="middle" className="fill-accent text-[10px] font-bold">Biphasic</text>

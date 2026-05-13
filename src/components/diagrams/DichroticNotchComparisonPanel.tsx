@@ -194,7 +194,7 @@ const MiniWaveform = ({ c, isNormal }: { c: Condition; isNormal: boolean }) => {
             y2={yP(p)}
             stroke="hsl(var(--border))"
             strokeDasharray="2 4"
-            strokeWidth={0.8}
+            strokeWidth={0.75}
           />
           <text x={PAD_L - 4} y={yP(p) + 3} textAnchor="end" fontSize={8} fill="hsl(var(--muted-foreground))">
             {p}
@@ -202,8 +202,8 @@ const MiniWaveform = ({ c, isNormal }: { c: Condition; isNormal: boolean }) => {
         </g>
       ))}
       {/* axes */}
-      <line x1={PAD_L} x2={PAD_L + PW} y1={PAD_T + PH} y2={PAD_T + PH} stroke="hsl(var(--foreground))" strokeWidth={0.8} />
-      <line x1={PAD_L} x2={PAD_L} y1={PAD_T} y2={PAD_T + PH} stroke="hsl(var(--foreground))" strokeWidth={0.8} />
+      <line x1={PAD_L} x2={PAD_L + PW} y1={PAD_T + PH} y2={PAD_T + PH} stroke="hsl(var(--foreground))" strokeWidth={0.75} />
+      <line x1={PAD_L} x2={PAD_L} y1={PAD_T} y2={PAD_T + PH} stroke="hsl(var(--foreground))" strokeWidth={0.75} />
 
       <NormalOverlay active={isNormal} />
 
@@ -224,7 +224,7 @@ const MiniWaveform = ({ c, isNormal }: { c: Condition; isNormal: boolean }) => {
         y2={PAD_T + PH}
         stroke="hsl(var(--primary))"
         strokeDasharray="3 3"
-        strokeWidth={0.8}
+        strokeWidth={0.75}
         opacity={0.5}
       />
       <circle cx={notchX} cy={notchY} r={2.6} fill="hsl(var(--primary))" />

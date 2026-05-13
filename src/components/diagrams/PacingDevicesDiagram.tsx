@@ -146,10 +146,10 @@ const HeartWithLeads = ({ device }: { device: DeviceInfo }) => {
         d="M 120 50 C 90 30, 50 45, 50 90 C 50 140, 100 175, 120 195 C 140 175, 190 140, 190 90 C 190 45, 150 30, 120 50 Z"
         fill="hsl(var(--muted) / 0.25)"
         stroke="hsl(var(--border))"
-        strokeWidth="1.2"
+        strokeWidth="1"
       />
       {/* Septum */}
-      <path d="M 120 55 Q 122 120 120 190" stroke="hsl(var(--border))" strokeWidth="0.8" strokeDasharray="2 2" fill="none" />
+      <path d="M 120 55 Q 122 120 120 190" stroke="hsl(var(--border))" strokeWidth="0.75" strokeDasharray="2 2" fill="none" />
 
       {/* Chamber labels */}
       <text x="80" y="80" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle">RA</text>
@@ -184,7 +184,7 @@ const HeartWithLeads = ({ device }: { device: DeviceInfo }) => {
           {/* Shock coil */}
           {shock && (
             <path d="M 95 130 Q 97 135 99 130 Q 101 135 103 130 Q 105 135 107 130"
-              stroke="hsl(var(--destructive))" strokeWidth="2.5" fill="none" />
+              stroke="hsl(var(--destructive))" strokeWidth="2" fill="none" />
           )}
         </g>
       )}
@@ -203,7 +203,7 @@ const HeartWithLeads = ({ device }: { device: DeviceInfo }) => {
       {/* Leadless capsule in RV septum */}
       {leadless && (
         <g>
-          <ellipse cx="118" cy="150" rx="6" ry="10" fill="hsl(var(--primary))" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
+          <ellipse cx="118" cy="150" rx="6" ry="10" fill="hsl(var(--primary))" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
           <text x="118" y="153" fontSize="6" fill="hsl(var(--primary-foreground))" textAnchor="middle" fontWeight="bold">M</text>
           <text x="135" y="152" fontSize="7" fill="hsl(var(--primary))" fontWeight="bold">Micra</text>
         </g>

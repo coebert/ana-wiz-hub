@@ -184,7 +184,7 @@ export const CICODrillAnimation = () => {
                 ry="6"
                 fill="hsl(var(--card))"
                 stroke="hsl(var(--border))"
-                strokeWidth="1.2"
+                strokeWidth="1"
               />
             ))}
 
@@ -244,7 +244,7 @@ export const CICODrillAnimation = () => {
                   d="M30,165 Q90,165 130,175 L160,200 L160,250"
                   fill="none"
                   stroke="hsl(var(--primary))"
-                  strokeWidth="9"
+                  strokeWidth="3"
                   strokeLinecap="round"
                   opacity="0.85"
                 />

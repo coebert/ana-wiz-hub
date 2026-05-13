@@ -144,18 +144,18 @@ export const LiverTransplantPhasesDiagram = () => {
 
           {/* Y-axis label (BP) */}
           <text x="14" y="105" textAnchor="middle" className="fill-muted-foreground" fontSize="9" transform="rotate(-90 14 105)">MAP</text>
-          <line x1="20" y1="180" x2="580" y2="180" stroke="hsl(var(--border))" strokeWidth="0.8" />
+          <line x1="20" y1="180" x2="580" y2="180" stroke="hsl(var(--border))" strokeWidth="0.75" />
 
           {/* Reference normal MAP line */}
-          <line x1="20" y1="105" x2="580" y2="105" stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" strokeDasharray="3 4" opacity="0.5" />
+          <line x1="20" y1="105" x2="580" y2="105" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="3 4" opacity="0.5" />
           <text x="585" y="108" className="fill-muted-foreground" fontSize="8">baseline</text>
 
           {/* BP trace */}
-          <path d={tracePath} fill="none" stroke="hsl(var(--primary))" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+          <path d={tracePath} fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 
           {/* Phase boundary markers */}
-          <line x1="220" y1="20" x2="220" y2="180" stroke="hsl(var(--border))" strokeWidth="0.8" strokeDasharray="2 3" />
-          <line x1="400" y1="20" x2="400" y2="180" stroke="hsl(var(--border))" strokeWidth="0.8" strokeDasharray="2 3" />
+          <line x1="220" y1="20" x2="220" y2="180" stroke="hsl(var(--border))" strokeWidth="0.75" strokeDasharray="2 3" />
+          <line x1="400" y1="20" x2="400" y2="180" stroke="hsl(var(--border))" strokeWidth="0.75" strokeDasharray="2 3" />
 
           {/* Annotation: post-reperfusion crash */}
           <circle cx="400" cy="175" r="4" fill="hsl(var(--destructive))" />

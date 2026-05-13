@@ -189,7 +189,7 @@ const CBFAutoregulationDiagram = () => {
 
                 {selectedGas === "co2" ? (
                   <>
-                    <path d="M 60,140 Q 120,135 180,90 Q 240,45 320,30 L 370,25" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M 60,140 Q 120,135 180,90 Q 240,45 320,30 L 370,25" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
                     <text x="100" y="125" fontSize="8" className="fill-muted-foreground">Hypocapnia</text>
                     <text x="220" y="60" fontSize="8" className="fill-muted-foreground">Normocapnia</text>
                     <text x="330" y="45" fontSize="8" className="fill-muted-foreground">Hypercapnia</text>
@@ -199,7 +199,7 @@ const CBFAutoregulationDiagram = () => {
                   </>
                 ) : (
                   <>
-                    <path d="M 60,30 Q 80,32 100,35 Q 130,55 160,100 Q 180,130 220,135 L 370,138" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M 60,30 Q 80,32 100,35 Q 130,55 160,100 Q 180,130 220,135 L 370,138" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
                     <text x="90" y="55" fontSize="8" className="fill-destructive" fontWeight="600">Hypoxic</text>
                     <text x="90" y="65" fontSize="8" className="fill-destructive">vasodilatation</text>
                     <text x="270" y="128" fontSize="8" className="fill-muted-foreground">Minimal O₂ effect</text>
