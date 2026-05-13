@@ -1,0 +1,108 @@
+name: Lighthouse on publish
+
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "URL to audit"
+        required: false
+        default: "https://anaesthesiacore.app/"
+
+permissions:
+  contents: read
+
+jobs:
+  lhci:
+    # Only run for successful production deployments (or manual dispatch).
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Lighthouse CI
+        run: npm i -g @lhci/cli@0.14.x
+
+      - name: Run Lighthouse
+        id: lh
+        env:
+          TARGET_URL: ${{ github.event.inputs.url || github.event.deployment_status.environment_url || 'https://anaesthesiacore.app/' }}
+        run: |
+          mkdir -p .lhci
+          lhci collect \
+            --url="$TARGET_URL" \
+            --numberOfRuns=3 \
+            --settings.preset=desktop \
+            --settings.chromeFlags="--headless=new --no-sandbox"
+          # Pick the median run by performance score.
+          node -e '
+            const fs = require("fs");
+            const path = require("path");
+            const dir = ".lighthouseci";
+            const files = fs.readdirSync(dir).filter(f => f.startsWith("lhr-") && f.endsWith(".json"));
+            const reports = files.map(f => ({
+              name: f,
+              data: JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")),
+            }));
+            reports.sort((a, b) => a.data.categories.performance.score - b.data.categories.performance.score);
+            const median = reports[Math.floor(reports.length / 2)];
+            const r = median.data;
+            const audits = r.audits || {};
+            const summary = {
+              url: r.finalDisplayedUrl || r.finalUrl || r.requestedUrl,
+              commit_sha: process.env.GITHUB_SHA || null,
+              branch: (process.env.GITHUB_REF || "").replace(/^refs\/heads\//, "") || null,
+              lh_version: r.lighthouseVersion || null,
+              scores: {
+                performance: Math.round((r.categories.performance?.score ?? 0) * 100),
+                accessibility: Math.round((r.categories.accessibility?.score ?? 0) * 100),
+                best_practices: Math.round((r.categories["best-practices"]?.score ?? 0) * 100),
+                seo: Math.round((r.categories.seo?.score ?? 0) * 100),
+              },
+              metrics: {
+                lcp_ms: audits["largest-contentful-paint"]?.numericValue
+                  ? Math.round(audits["largest-contentful-paint"].numericValue) : null,
+                cls: audits["cumulative-layout-shift"]?.numericValue ?? null,
+                inp_ms: audits["interaction-to-next-paint"]?.numericValue
+                  ? Math.round(audits["interaction-to-next-paint"].numericValue) : null,
+                tbt_ms: audits["total-blocking-time"]?.numericValue
+                  ? Math.round(audits["total-blocking-time"].numericValue) : null,
+              },
+              raw: {
+                fetchTime: r.fetchTime,
+                userAgent: r.userAgent,
+                configSettings: { formFactor: r.configSettings?.formFactor },
+              },
+            };
+            fs.writeFileSync(".lhci/summary.json", JSON.stringify(summary));
+            // Also pick the matching HTML report if present.
+            const htmlName = median.name.replace(/\.json$/, ".html");
+            const htmlPath = path.join(dir, htmlName);
+            if (fs.existsSync(htmlPath)) {
+              fs.copyFileSync(htmlPath, ".lhci/report.html");
+            }
+          '
+
+      - name: Post results to ingest function
+        env:
+          INGEST_URL: https://aqkusdwwhlqqttvnxuwu.functions.supabase.co/ingest-lighthouse-run
+          TOKEN: ${{ secrets.LIGHTHOUSE_INGEST_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::LIGHTHOUSE_INGEST_TOKEN repo secret not set"
+            exit 1
+          fi
+          ARGS=(-sS -X POST "$INGEST_URL" \
+            -H "x-lighthouse-ingest-token: $TOKEN" \
+            -F "summary=<.lhci/summary.json")
+          if [ -f .lhci/report.html ]; then
+            ARGS+=(-F "report=@.lhci/report.html;type=text/html")
+          fi
+          curl "${ARGS[@]}" | tee /tmp/ingest-response.json
+          grep -q '"ok":true' /tmp/ingest-response.json
