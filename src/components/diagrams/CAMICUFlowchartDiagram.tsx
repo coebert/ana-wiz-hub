@@ -216,115 +216,182 @@ export const CAMICUFlowchartDiagram = () => {
                 className="w-full h-auto block"
                 style={isMobile ? { minWidth: "520px" } : undefined}
                 role="img"
-                aria-label="CAM-ICU delirium screening flowchart"
+                aria-labelledby="cam-icu-title cam-icu-desc"
               >
-              {/* Step 0: RASS */}
-              <rect x="220" y="10" width="200" height="44" rx="6" fill="hsl(var(--primary))" opacity="0.85" />
-              <text x="320" y="30" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
-                Step 1 — Assess RASS
-              </text>
-              <text x="320" y="44" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                If RASS ≤ −4 → unassessable (stop)
-              </text>
+              <title id="cam-icu-title">CAM-ICU delirium screening flowchart</title>
+              <desc id="cam-icu-desc">
+                Sequential delirium screen. Step 1 assesses sedation with RASS (skip if RASS ≤ −4).
+                Then four features are checked in order: Feature 1 acute onset or fluctuating course,
+                Feature 2 inattention, Feature 3 altered consciousness, Feature 4 disorganised thinking.
+                A NO at Feature 1 or Feature 2 ends as CAM-ICU negative. CAM-ICU is positive when
+                Feature 1 AND Feature 2 are present AND either Feature 3 or Feature 4 is present.
+              </desc>
 
-              <path d="M 320 54 L 320 78" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+              {/* Step 0: RASS */}
+              <g role="group" aria-label="Step 1: Assess RASS. If RASS less than or equal to minus 4, patient is unassessable, stop screening">
+                <title>Step 1 — Assess RASS</title>
+                <rect x="220" y="10" width="200" height="44" rx="6" fill="hsl(var(--primary))" opacity="0.85" />
+                <text x="320" y="30" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
+                  Step 1 — Assess RASS
+                </text>
+                <text x="320" y="44" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
+                  If RASS ≤ −4 → unassessable (stop)
+                </text>
+              </g>
+
+              <path d="M 320 54 L 320 78" stroke="hsl(var(--foreground))" strokeWidth="1.5" aria-label="Proceed to Feature 1">
+                <title>Proceed from Step 1 to Feature 1</title>
+              </path>
 
               {/* Feature 1 */}
-              <rect x="180" y="80" width="280" height="58" rx="6" fill="hsl(var(--clinical))" opacity="0.85" />
-              <text x="320" y="100" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
-                Feature 1 — Acute onset OR fluctuating course
-              </text>
-              <text x="320" y="116" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                Δ from baseline in last 24 h?
-              </text>
-              <text x="320" y="128" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                Mental status fluctuated in past 24 h?
-              </text>
+              <g role="group" aria-label="Feature 1: Acute onset or fluctuating course. Change from baseline in last 24 hours, or mental status fluctuated in past 24 hours">
+                <title>Feature 1 — Acute onset OR fluctuating course</title>
+                <rect x="180" y="80" width="280" height="58" rx="6" fill="hsl(var(--clinical))" opacity="0.85" />
+                <text x="320" y="100" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
+                  Feature 1 — Acute onset OR fluctuating course
+                </text>
+                <text x="320" y="116" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
+                  Δ from baseline in last 24 h?
+                </text>
+                <text x="320" y="128" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
+                  Mental status fluctuated in past 24 h?
+                </text>
+              </g>
 
               {/* No → CAM-ICU negative */}
-              <path d="M 180 109 L 60 109 L 60 200" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
-              <text x="100" y="100" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
+              <g role="group" aria-label="If NO at Feature 1, route to CAM-ICU negative outcome">
+                <title>Feature 1 NO → CAM-ICU negative</title>
+                <path d="M 180 109 L 60 109 L 60 200" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
+                <text x="100" y="100" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
+              </g>
 
-              <path d="M 320 138 L 320 162" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-              <text x="328" y="155" fontSize="9" className="fill-foreground" fontWeight="600">YES</text>
+              <g role="group" aria-label="If YES at Feature 1, proceed to Feature 2">
+                <title>Feature 1 YES → Feature 2</title>
+                <path d="M 320 138 L 320 162" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+                <text x="328" y="155" fontSize="9" className="fill-foreground" fontWeight="600">YES</text>
+              </g>
 
               {/* Feature 2 */}
-              <rect x="180" y="164" width="280" height="56" rx="6" fill="hsl(var(--icu))" opacity="0.85" />
-              <text x="320" y="184" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
-                Feature 2 — Inattention
-              </text>
-              <text x="320" y="200" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                SAVEAHAART letters or pictures
-              </text>
-              <text x="320" y="212" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                {">"} 2 errors = positive
-              </text>
+              <g role="group" aria-label="Feature 2: Inattention. Use SAVEAHAART letters or pictures. More than 2 errors is positive">
+                <title>Feature 2 — Inattention</title>
+                <rect x="180" y="164" width="280" height="56" rx="6" fill="hsl(var(--icu))" opacity="0.85" />
+                <text x="320" y="184" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
+                  Feature 2 — Inattention
+                </text>
+                <text x="320" y="200" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
+                  SAVEAHAART letters or pictures
+                </text>
+                <text x="320" y="212" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
+                  {">"} 2 errors = positive
+                </text>
+              </g>
 
-              <path d="M 180 192 L 60 192 L 60 230" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
-              <text x="100" y="183" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
+              <g role="group" aria-label="If NO at Feature 2, route to CAM-ICU negative outcome">
+                <title>Feature 2 NO → CAM-ICU negative</title>
+                <path d="M 180 192 L 60 192 L 60 230" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
+                <text x="100" y="183" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
+              </g>
 
-              <path d="M 320 220 L 320 244" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-              <text x="328" y="237" fontSize="9" className="fill-foreground" fontWeight="600">YES</text>
+              <g role="group" aria-label="If YES at Feature 2, proceed to Feature 3">
+                <title>Feature 2 YES → Feature 3</title>
+                <path d="M 320 220 L 320 244" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+                <text x="328" y="237" fontSize="9" className="fill-foreground" fontWeight="600">YES</text>
+              </g>
 
               {/* Feature 3 */}
-              <rect x="180" y="246" width="280" height="44" rx="6" fill="hsl(var(--pharmacology))" opacity="0.85" />
-              <text x="320" y="266" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
-                Feature 3 — Altered consciousness
-              </text>
-              <text x="320" y="280" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                Current RASS ≠ 0
-              </text>
+              <g role="group" aria-label="Feature 3: Altered consciousness. Current RASS not equal to zero">
+                <title>Feature 3 — Altered consciousness</title>
+                <rect x="180" y="246" width="280" height="44" rx="6" fill="hsl(var(--pharmacology))" opacity="0.85" />
+                <text x="320" y="266" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
+                  Feature 3 — Altered consciousness
+                </text>
+                <text x="320" y="280" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
+                  Current RASS ≠ 0
+                </text>
+              </g>
 
               {/* If F3 yes → POSITIVE */}
-              <path d="M 460 268 L 540 268 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" />
-              <text x="475" y="262" fontSize="9" className="fill-destructive" fontWeight="600">YES</text>
+              <g role="group" aria-label="If YES at Feature 3, route to CAM-ICU positive outcome">
+                <title>Feature 3 YES → CAM-ICU positive</title>
+                <path d="M 460 268 L 540 268 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" />
+                <text x="475" y="262" fontSize="9" className="fill-destructive" fontWeight="600">YES</text>
+              </g>
 
               {/* If F3 no → check F4 */}
-              <path d="M 320 290 L 320 312" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-              <text x="328" y="305" fontSize="9" className="fill-foreground" fontWeight="600">NO</text>
+              <g role="group" aria-label="If NO at Feature 3, proceed to Feature 4">
+                <title>Feature 3 NO → Feature 4</title>
+                <path d="M 320 290 L 320 312" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+                <text x="328" y="305" fontSize="9" className="fill-foreground" fontWeight="600">NO</text>
+              </g>
 
               {/* Feature 4 */}
-              <rect x="180" y="314" width="280" height="56" rx="6" fill="hsl(var(--physiology))" opacity="0.85" />
-              <text x="320" y="334" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
-                Feature 4 — Disorganised thinking
-              </text>
-              <text x="320" y="350" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                4 yes/no questions + 2-step command
-              </text>
-              <text x="320" y="362" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                {">"} 1 error = positive
-              </text>
+              <g role="group" aria-label="Feature 4: Disorganised thinking. 4 yes-no questions plus a 2-step command. More than 1 error is positive">
+                <title>Feature 4 — Disorganised thinking</title>
+                <rect x="180" y="314" width="280" height="56" rx="6" fill="hsl(var(--physiology))" opacity="0.85" />
+                <text x="320" y="334" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
+                  Feature 4 — Disorganised thinking
+                </text>
+                <text x="320" y="350" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
+                  4 yes/no questions + 2-step command
+                </text>
+                <text x="320" y="362" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
+                  {">"} 1 error = positive
+                </text>
+              </g>
 
-              <path d="M 180 342 L 60 342 L 60 392" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
-              <text x="100" y="333" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
+              <g role="group" aria-label="If NO at Feature 4, route to CAM-ICU negative outcome">
+                <title>Feature 4 NO → CAM-ICU negative</title>
+                <path d="M 180 342 L 60 342 L 60 392" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" />
+                <text x="100" y="333" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
+              </g>
 
-              <path d="M 460 342 L 540 342 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" />
-              <text x="475" y="333" fontSize="9" className="fill-destructive" fontWeight="600">YES</text>
+              <g role="group" aria-label="If YES at Feature 4, route to CAM-ICU positive outcome">
+                <title>Feature 4 YES → CAM-ICU positive</title>
+                <path d="M 460 342 L 540 342 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" />
+                <text x="475" y="333" fontSize="9" className="fill-destructive" fontWeight="600">YES</text>
+              </g>
 
               {/* Outcome — Negative */}
-              <rect x="10" y="392" width="180" height="48" rx="6" fill="hsl(var(--muted))" opacity="0.6" stroke="hsl(var(--border))" />
-              <text x="100" y="413" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-foreground">
-                CAM-ICU NEGATIVE
-              </text>
-              <text x="100" y="428" textAnchor="middle" fontSize="9" className="fill-muted-foreground">
-                no delirium
-              </text>
+              <g role="group" aria-label="Outcome: CAM-ICU negative. No delirium">
+                <title>CAM-ICU NEGATIVE — no delirium</title>
+                <rect x="10" y="392" width="180" height="48" rx="6" fill="hsl(var(--muted))" opacity="0.6" stroke="hsl(var(--border))" />
+                <text x="100" y="413" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-foreground">
+                  CAM-ICU NEGATIVE
+                </text>
+                <text x="100" y="428" textAnchor="middle" fontSize="9" className="fill-muted-foreground">
+                  no delirium
+                </text>
+              </g>
 
               {/* Outcome — Positive */}
-              <rect x="450" y="382" width="180" height="58" rx="6" fill="hsl(var(--destructive))" opacity="0.85" />
-              <text x="540" y="404" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
-                CAM-ICU POSITIVE
-              </text>
-              <text x="540" y="420" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                Delirium present
-              </text>
-              <text x="540" y="432" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                Apply ABCDEF bundle
-              </text>
+              <g role="group" aria-label="Outcome: CAM-ICU positive. Delirium present. Apply the ABCDEF bundle">
+                <title>CAM-ICU POSITIVE — delirium present, apply ABCDEF bundle</title>
+                <rect x="450" y="382" width="180" height="58" rx="6" fill="hsl(var(--destructive))" opacity="0.85" />
+                <text x="540" y="404" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
+                  CAM-ICU POSITIVE
+                </text>
+                <text x="540" y="420" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
+                  Delirium present
+                </text>
+                <text x="540" y="432" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
+                  Apply ABCDEF bundle
+                </text>
+              </g>
 
               <defs />
 
               </svg>
+
+              {/* Screen-reader-only linear walkthrough — many SR's skip into SVG internals
+                  when role=img, so we mirror the flow as semantic HTML for assistive tech. */}
+              <ol className="sr-only" aria-label="CAM-ICU flowchart, step-by-step">
+                <li>Step 1 — Assess RASS. If RASS is less than or equal to minus 4, the patient is unassessable; stop screening.</li>
+                <li>Feature 1 — Acute onset or fluctuating course. If NO, the result is CAM-ICU negative. If YES, continue to Feature 2.</li>
+                <li>Feature 2 — Inattention (SAVEAHAART; more than 2 errors is positive). If NO, the result is CAM-ICU negative. If YES, continue to Feature 3.</li>
+                <li>Feature 3 — Altered consciousness (RASS not equal to 0). If YES, the result is CAM-ICU positive. If NO, continue to Feature 4.</li>
+                <li>Feature 4 — Disorganised thinking (4 yes/no questions plus 2-step command; more than 1 error is positive). If YES, the result is CAM-ICU positive. If NO, the result is CAM-ICU negative.</li>
+                <li>CAM-ICU positive: delirium present — apply the ABCDEF bundle. CAM-ICU negative: no delirium.</li>
+              </ol>
             </div>
           </div>
 
