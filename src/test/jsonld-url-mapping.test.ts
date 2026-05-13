@@ -238,7 +238,9 @@ function expectedTypesFor(url: string): string[] {
 }
 
 // ── build mapping ─────────────────────────────────────────────────────────
-const ROUTES = parseRoutes();
+// Skip <Navigate> redirect routes — they have no JSON-LD of their own; the
+// destination URL is exercised by its own <Route> entry.
+const ROUTES = parseRoutes().filter((r) => r.component !== "Navigate");
 
 interface UrlRow {
   url: string;
