@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* ───────── Corrugated tubing helper (hollow double-walled) ───────── */
 const CorrugatedTube = ({ x1, y1, x2, y2, colour = "hsl(var(--foreground))", width = 12 }: { x1: number; y1: number; x2: number; y2: number; colour?: string; width?: number }) => {
@@ -1009,20 +1010,26 @@ const BreathingCircuitsDiagram = () => {
   const [activeTab, setActiveTab] = useState("mapleson");
 
   return (
-        <div className="space-y-4">
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="grid grid-cols-4 w-full">
-          <TabsTrigger value="mapleson" className="text-xs">Mapleson</TabsTrigger>
-          <TabsTrigger value="circle" className="text-xs">Circle</TabsTrigger>
-          <TabsTrigger value="sodalime" className="text-xs">Soda Lime</TabsTrigger>
-          <TabsTrigger value="scavenging" className="text-xs">Scavenging</TabsTrigger>
-        </TabsList>
-        <TabsContent value="mapleson"><MaplesonTab /></TabsContent>
-        <TabsContent value="circle"><CircleTab /></TabsContent>
-        <TabsContent value="sodalime"><SodaLimeTab /></TabsContent>
-        <TabsContent value="scavenging"><ScavengingTab /></TabsContent>
-      </Tabs>
-    </div>
+    <DiagramFigure
+      id="breathing-circuits-diagram"
+      title="Breathing circuits"
+      description="Auto-generated wrapper for the Breathing circuits equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-4">
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <TabsList className="grid grid-cols-4 w-full">
+            <TabsTrigger value="mapleson" className="text-xs">Mapleson</TabsTrigger>
+            <TabsTrigger value="circle" className="text-xs">Circle</TabsTrigger>
+            <TabsTrigger value="sodalime" className="text-xs">Soda Lime</TabsTrigger>
+            <TabsTrigger value="scavenging" className="text-xs">Scavenging</TabsTrigger>
+          </TabsList>
+          <TabsContent value="mapleson"><MaplesonTab /></TabsContent>
+          <TabsContent value="circle"><CircleTab /></TabsContent>
+          <TabsContent value="sodalime"><SodaLimeTab /></TabsContent>
+          <TabsContent value="scavenging"><ScavengingTab /></TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

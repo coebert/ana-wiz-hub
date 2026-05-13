@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Shared visual grammar for nerve plexus diagrams (cervical, brachial, lumbosacral).
@@ -172,7 +173,13 @@ export const PlexusChipRow = <K extends string>({
  * Matches STYLE_GUIDE.md §1.
  */
 export const PlexusCard = ({ children }: { children: ReactNode }) => (
-  <div className="my-6 space-y-4">
-    <div className="bg-muted/30 rounded-xl border border-border p-4">{children}</div>
-  </div>
-);
+    <DiagramFigure
+      id="plexus-shared"
+      title="Plexus shared"
+      description="Auto-generated wrapper for the Plexus shared anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+        <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">{children}</div>
+    </div>
+    </DiagramFigure>
+  );

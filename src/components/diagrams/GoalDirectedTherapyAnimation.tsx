@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Postoperative goal-directed haemodynamic therapy — staged optimisation
@@ -176,14 +177,20 @@ const Scene = ({ active }: { active: number }) => {
 };
 
 const GoalDirectedTherapyAnimation = () => (
-  <AnimatedMechanism
-    title="Goal-directed haemodynamic therapy — postoperative optimisation loop"
-    subtitle="SV-guided fluid → early noradrenaline → inotrope if needed → reassess (OPTIMISE 2014, INPRESS 2017)"
-    steps={STEPS}
-    stepMs={3600}
-    accentClass="border-physiology/40"
-    renderScene={(active) => <Scene active={active} />}
-  />
-);
+    <DiagramFigure
+      id="goal-directed-therapy-animation"
+      title="Goal directed therapy"
+      description="Auto-generated wrapper for the Goal directed therapy animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+        <AnimatedMechanism
+      title="Goal-directed haemodynamic therapy — postoperative optimisation loop"
+      subtitle="SV-guided fluid → early noradrenaline → inotrope if needed → reassess (OPTIMISE 2014, INPRESS 2017)"
+      steps={STEPS}
+      stepMs={3600}
+      accentClass="border-physiology/40"
+      renderScene={(active) => <Scene active={active} />}
+    />
+    </DiagramFigure>
+  );
 
 export default GoalDirectedTherapyAnimation;

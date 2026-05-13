@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* ─────────── pH (Sanz) Glass Electrode ─────────── */
 const PHElectrodeDiagram = () => {
@@ -767,29 +768,35 @@ const NernstEquationDiagram = () => (
 
 /* ─────────── Main Component ─────────── */
 const ABGAnalyserDiagram = () => (
-  <div className="space-y-8 mb-10">
-    <div className="p-4 rounded-lg border border-border bg-card">
-      <h2 className="text-2xl font-serif font-bold text-foreground mb-2">Electrochemical Measurement Principles</h2>
-      <p className="text-sm text-muted-foreground">
-        An ABG analyser contains three electrodes in a thermostatted chamber at 37°C. Each electrode uses a different electrochemical principle to measure pH, PO₂, and PCO₂. The galvanic fuel cell uses the same oxygen reduction chemistry but in a self-generating configuration for gas analysis. Use the <strong>Animate</strong> buttons to visualise ion and electron movement within each electrode.
-      </p>
+    <DiagramFigure
+      id="abg-analyser-diagram"
+      title="ABG analyser"
+      description="Auto-generated wrapper for the ABG analyser anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+        <div className="space-y-8 mb-10">
+      <div className="p-4 rounded-lg border border-border bg-card">
+        <h2 className="text-2xl font-serif font-bold text-foreground mb-2">Electrochemical Measurement Principles</h2>
+        <p className="text-sm text-muted-foreground">
+          An ABG analyser contains three electrodes in a thermostatted chamber at 37°C. Each electrode uses a different electrochemical principle to measure pH, PO₂, and PCO₂. The galvanic fuel cell uses the same oxygen reduction chemistry but in a self-generating configuration for gas analysis. Use the <strong>Animate</strong> buttons to visualise ion and electron movement within each electrode.
+        </p>
+      </div>
+  
+      <Tabs defaultValue="ph" className="w-full">
+        <TabsList className="grid w-full grid-cols-5">
+          <TabsTrigger value="ph" className="text-xs">pH Electrode</TabsTrigger>
+          <TabsTrigger value="nernst" className="text-xs">Nernst Eq.</TabsTrigger>
+          <TabsTrigger value="clark" className="text-xs">Clark (PO₂)</TabsTrigger>
+          <TabsTrigger value="co2" className="text-xs">PCO₂</TabsTrigger>
+          <TabsTrigger value="galvanic" className="text-xs">Fuel Cell</TabsTrigger>
+        </TabsList>
+        <TabsContent value="ph"><PHElectrodeDiagram /></TabsContent>
+        <TabsContent value="nernst"><NernstEquationDiagram /></TabsContent>
+        <TabsContent value="clark"><ClarkElectrodeDiagram /></TabsContent>
+        <TabsContent value="co2"><SeveringhausCO2Diagram /></TabsContent>
+        <TabsContent value="galvanic"><GalvanicFuelCellDiagram /></TabsContent>
+      </Tabs>
     </div>
-
-    <Tabs defaultValue="ph" className="w-full">
-      <TabsList className="grid w-full grid-cols-5">
-        <TabsTrigger value="ph" className="text-xs">pH Electrode</TabsTrigger>
-        <TabsTrigger value="nernst" className="text-xs">Nernst Eq.</TabsTrigger>
-        <TabsTrigger value="clark" className="text-xs">Clark (PO₂)</TabsTrigger>
-        <TabsTrigger value="co2" className="text-xs">PCO₂</TabsTrigger>
-        <TabsTrigger value="galvanic" className="text-xs">Fuel Cell</TabsTrigger>
-      </TabsList>
-      <TabsContent value="ph"><PHElectrodeDiagram /></TabsContent>
-      <TabsContent value="nernst"><NernstEquationDiagram /></TabsContent>
-      <TabsContent value="clark"><ClarkElectrodeDiagram /></TabsContent>
-      <TabsContent value="co2"><SeveringhausCO2Diagram /></TabsContent>
-      <TabsContent value="galvanic"><GalvanicFuelCellDiagram /></TabsContent>
-    </Tabs>
-  </div>
-);
+    </DiagramFigure>
+  );
 
 export default ABGAnalyserDiagram;

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Pause, Play } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Pathology = "sam" | "bbump" | "flutter" | "midClosure" | "doming";
 
@@ -406,81 +407,87 @@ const MModePathologyDiagram = () => {
   };
 
   return (
-        <div className="space-y-4 mb-8">
-      <div className="p-4 rounded-lg border border-border bg-card">
-        <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-          <div>
-            <h2 className="text-xl font-serif font-bold text-foreground">M-mode Pathology Gallery</h2>
-            <p className="text-sm text-muted-foreground">Classic abnormal M-mode patterns — animated in real time.</p>
-          </div>
-          <Button variant="outline" size="sm" onClick={() => setPaused((p) => !p)} className="text-xs gap-1.5">
-            {paused ? <Play className="h-3 w-3" /> : <Pause className="h-3 w-3" />}
-            {paused ? "Resume" : "Pause"}
-          </Button>
-        </div>
-
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          {pathologies.map((p) => (
-            <Button key={p.id} variant={selected === p.id ? "default" : "outline"} size="sm" onClick={() => setSelected(p.id)} className="text-xs">
-              {p.label}
-            </Button>
-          ))}
-        </div>
-
-        <div className="grid lg:grid-cols-[1fr_300px] gap-4">
-          <div>
-            <div className="relative rounded-md overflow-hidden border border-border bg-black">
-              <canvas ref={canvasRef} width={W} height={H} className="w-full h-auto block" />
-              {/* Annotation overlay */}
-              <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 w-full h-full pointer-events-none">
-                {/* Side scale */}
-                <g fontFamily="system-ui, sans-serif">
-                  <text x="6" y="14" fontSize="9" fill="hsl(var(--accent))" opacity="0.7">RV/IVS</text>
-                  <text x="6" y={H - 6} fontSize="9" fill="hsl(var(--accent))" opacity="0.7">PW/posterior</text>
-                  <text x={W - 6} y="14" fontSize="9" fill="hsl(var(--destructive))" textAnchor="end">{def.short}</text>
-                  <text x={W - 6} y={H - 6} fontSize="8" fill="hsl(var(--accent))" opacity="0.6" textAnchor="end">sweep ≈ 4 s · 75 bpm</text>
-                </g>
-                {annotations[selected].map((a, i) => (
-                  <g key={i}>
-                    <text x={a.x * W} y={a.y * H} fontSize="10" fontWeight="700" fill={a.color ?? "#fff8d0"} style={{ paintOrder: "stroke", stroke: "#000", strokeWidth: 2 }}>
-                      {a.label}
-                    </text>
-                  </g>
-                ))}
-              </svg>
-            </div>
-            <p className="text-[11px] text-muted-foreground mt-1.5 italic">{def.cursor}</p>
-          </div>
-
-          <div className="space-y-3 text-xs">
-            <div className="p-3 rounded-md border border-border bg-secondary/30">
-              <p className="font-semibold text-foreground mb-1">Findings</p>
-              <ul className="space-y-1 text-muted-foreground">
-                {def.findings.map((f) => (
-                  <li key={f} className="flex gap-1.5"><span className="text-primary">•</span><span>{f}</span></li>
-                ))}
-              </ul>
-            </div>
-            <div className="p-3 rounded-md border border-primary/20 bg-primary/5">
-              <p className="font-semibold text-foreground mb-1">Mechanism</p>
-              <p className="text-muted-foreground leading-relaxed">{def.mechanism}</p>
-            </div>
-            <div className="p-3 rounded-md border border-destructive/20 bg-destructive/5">
-              <p className="font-semibold text-foreground mb-1">Clinical pearl</p>
-              <p className="text-muted-foreground leading-relaxed">{def.clinical}</p>
-            </div>
+    <DiagramFigure
+      id="m-mode-pathology-diagram"
+      title="M mode pathology"
+      description="Auto-generated wrapper for the M mode pathology anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-4 mb-8">
+        <div className="p-4 rounded-lg border border-border bg-card">
+          <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
             <div>
-              <p className="font-semibold text-foreground mb-1">Associations</p>
-              <div className="flex flex-wrap gap-1">
-                {def.associations.map((a) => (
-                  <span key={a} className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground border border-border">{a}</span>
-                ))}
+              <h2 className="text-xl font-serif font-bold text-foreground">M-mode Pathology Gallery</h2>
+              <p className="text-sm text-muted-foreground">Classic abnormal M-mode patterns — animated in real time.</p>
+            </div>
+            <Button variant="outline" size="sm" onClick={() => setPaused((p) => !p)} className="text-xs gap-1.5">
+              {paused ? <Play className="h-3 w-3" /> : <Pause className="h-3 w-3" />}
+              {paused ? "Resume" : "Pause"}
+            </Button>
+          </div>
+  
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {pathologies.map((p) => (
+              <Button key={p.id} variant={selected === p.id ? "default" : "outline"} size="sm" onClick={() => setSelected(p.id)} className="text-xs">
+                {p.label}
+              </Button>
+            ))}
+          </div>
+  
+          <div className="grid lg:grid-cols-[1fr_300px] gap-4">
+            <div>
+              <div className="relative rounded-md overflow-hidden border border-border bg-black">
+                <canvas ref={canvasRef} width={W} height={H} className="w-full h-auto block" />
+                {/* Annotation overlay */}
+                <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 w-full h-full pointer-events-none">
+                  {/* Side scale */}
+                  <g fontFamily="system-ui, sans-serif">
+                    <text x="6" y="14" fontSize="9" fill="hsl(var(--accent))" opacity="0.7">RV/IVS</text>
+                    <text x="6" y={H - 6} fontSize="9" fill="hsl(var(--accent))" opacity="0.7">PW/posterior</text>
+                    <text x={W - 6} y="14" fontSize="9" fill="hsl(var(--destructive))" textAnchor="end">{def.short}</text>
+                    <text x={W - 6} y={H - 6} fontSize="8" fill="hsl(var(--accent))" opacity="0.6" textAnchor="end">sweep ≈ 4 s · 75 bpm</text>
+                  </g>
+                  {annotations[selected].map((a, i) => (
+                    <g key={i}>
+                      <text x={a.x * W} y={a.y * H} fontSize="10" fontWeight="700" fill={a.color ?? "#fff8d0"} style={{ paintOrder: "stroke", stroke: "#000", strokeWidth: 2 }}>
+                        {a.label}
+                      </text>
+                    </g>
+                  ))}
+                </svg>
+              </div>
+              <p className="text-[11px] text-muted-foreground mt-1.5 italic">{def.cursor}</p>
+            </div>
+  
+            <div className="space-y-3 text-xs">
+              <div className="p-3 rounded-md border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground mb-1">Findings</p>
+                <ul className="space-y-1 text-muted-foreground">
+                  {def.findings.map((f) => (
+                    <li key={f} className="flex gap-1.5"><span className="text-primary">•</span><span>{f}</span></li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-3 rounded-md border border-primary/20 bg-primary/5">
+                <p className="font-semibold text-foreground mb-1">Mechanism</p>
+                <p className="text-muted-foreground leading-relaxed">{def.mechanism}</p>
+              </div>
+              <div className="p-3 rounded-md border border-destructive/20 bg-destructive/5">
+                <p className="font-semibold text-foreground mb-1">Clinical pearl</p>
+                <p className="text-muted-foreground leading-relaxed">{def.clinical}</p>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-1">Associations</p>
+                <div className="flex flex-wrap gap-1">
+                  {def.associations.map((a) => (
+                    <span key={a} className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground border border-border">{a}</span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

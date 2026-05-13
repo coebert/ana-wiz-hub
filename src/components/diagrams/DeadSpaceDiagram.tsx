@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ViewMode = "overview" | "bohr" | "vq";
 
@@ -280,92 +281,98 @@ function BohrView() {
 /* ─── V/Q Spectrum ─── */
 function VQView({ selectedUnit, setSelectedUnit }: { selectedUnit: number | null; setSelectedUnit: (i: number | null) => void }) {
   return (
-    <div className="space-y-4">
-      <p className="text-xs text-muted-foreground">The V/Q spectrum ranges from shunt (V/Q=0) to dead space (V/Q=∞). Tap each unit to explore.</p>
-
-      {/* Spectrum bar */}
-      <svg viewBox="0 0 400 160" className="w-full">
-        {alveolarUnits.map((unit, i) => {
-          const x = 30 + i * 80;
-          const isSelected = selectedUnit === i;
-          const vBarH = unit.ventilation * 60;
-          const qBarH = unit.perfusion * 60;
-          return (
-                <g key={i} onClick={() => setSelectedUnit(isSelected ? null : i)} className="cursor-pointer">
-              {/* Background highlight */}
-              {isSelected && <rect x={x - 15} y={5} width={60} height={150} rx="6" fill={unit.color} opacity={0.08} />}
-
-              {/* V bar */}
-              <rect x={x - 8} y={80 - vBarH} width={14} height={vBarH} rx="2"
-                fill="hsl(210, 70%, 55%)" opacity={isSelected ? 1 : 0.5}
-              />
-              <text x={x - 1} y={75 - vBarH} textAnchor="middle" className="text-[8px] fill-muted-foreground">V</text>
-
-              {/* Q bar */}
-              <rect x={x + 10} y={80 - qBarH} width={14} height={qBarH} rx="2"
-                fill="hsl(0, 70%, 55%)" opacity={isSelected ? 1 : 0.5}
-              />
-              <text x={x + 17} y={75 - qBarH} textAnchor="middle" className="text-[8px] fill-muted-foreground">Q</text>
-
-              {/* Label */}
-              <text x={x + 5} y={95} textAnchor="middle" className={`text-[9px] font-medium ${isSelected ? "fill-foreground" : "fill-muted-foreground"}`}>
-                {unit.label}
-              </text>
-              <text x={x + 5} y={107} textAnchor="middle" className="text-[8px] fill-muted-foreground">
-                {unit.vq === Infinity ? "V/Q=∞" : unit.vq === 0 ? "V/Q=0" : `V/Q=${unit.vq}`}
-              </text>
-
-              {/* Alveolus icon */}
-              <circle cx={x + 5} cy={130} r={12} fill={unit.color} opacity={0.15} stroke={unit.color} strokeWidth={isSelected ? 2 : 1} />
-              <circle cx={x + 5} cy={130} r={6} fill={unit.color} opacity={0.3} />
-            </g>
-  );
-        })}
-
-        {/* Spectrum arrow */}
-        <line x1="30" y1="148" x2="370" y2="148" stroke="hsl(var(--border))" strokeWidth="1" markerEnd="url(#arrowDS)" />
-        <defs>
-          <marker id="arrowDS" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6" fill="hsl(var(--muted-foreground))" />
-          </marker>
-        </defs>
-        <text x="30" y="158" className="text-[8px] fill-muted-foreground">Shunt</text>
-        <text x="370" y="158" textAnchor="end" className="text-[8px] fill-muted-foreground">Dead Space</text>
-      </svg>
-
-      {/* Detail panel */}
-      {selectedUnit !== null && (
-        <div className="bg-secondary/30 rounded-lg p-3 border border-border" style={{ borderLeftColor: alveolarUnits[selectedUnit].color, borderLeftWidth: 3 }}>
-          <p className="text-sm font-semibold text-foreground">{alveolarUnits[selectedUnit].label}</p>
-          <p className="text-xs text-muted-foreground mt-1">{alveolarUnits[selectedUnit].description}</p>
-          <div className="flex gap-4 mt-2">
-            <div className="text-xs">
-              <span className="text-muted-foreground">Ventilation: </span>
-              <span className="font-mono font-semibold text-foreground">{alveolarUnits[selectedUnit].ventilation === 0 ? "None" : `${(alveolarUnits[selectedUnit].ventilation * 100).toFixed(0)}%`}</span>
-            </div>
-            <div className="text-xs">
-              <span className="text-muted-foreground">Perfusion: </span>
-              <span className="font-mono font-semibold text-foreground">{alveolarUnits[selectedUnit].perfusion === 0 ? "None" : `${(alveolarUnits[selectedUnit].perfusion * 100).toFixed(0)}%`}</span>
+    <DiagramFigure
+      id="dead-space-diagram"
+      title="Dead space"
+      description="Auto-generated wrapper for the Dead space anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="space-y-4">
+        <p className="text-xs text-muted-foreground">The V/Q spectrum ranges from shunt (V/Q=0) to dead space (V/Q=∞). Tap each unit to explore.</p>
+  
+        {/* Spectrum bar */}
+        <svg viewBox="0 0 400 160" className="w-full">
+          {alveolarUnits.map((unit, i) => {
+            const x = 30 + i * 80;
+            const isSelected = selectedUnit === i;
+            const vBarH = unit.ventilation * 60;
+            const qBarH = unit.perfusion * 60;
+            return (
+                  <g key={i} onClick={() => setSelectedUnit(isSelected ? null : i)} className="cursor-pointer">
+                {/* Background highlight */}
+                {isSelected && <rect x={x - 15} y={5} width={60} height={150} rx="6" fill={unit.color} opacity={0.08} />}
+  
+                {/* V bar */}
+                <rect x={x - 8} y={80 - vBarH} width={14} height={vBarH} rx="2"
+                  fill="hsl(210, 70%, 55%)" opacity={isSelected ? 1 : 0.5}
+                />
+                <text x={x - 1} y={75 - vBarH} textAnchor="middle" className="text-[8px] fill-muted-foreground">V</text>
+  
+                {/* Q bar */}
+                <rect x={x + 10} y={80 - qBarH} width={14} height={qBarH} rx="2"
+                  fill="hsl(0, 70%, 55%)" opacity={isSelected ? 1 : 0.5}
+                />
+                <text x={x + 17} y={75 - qBarH} textAnchor="middle" className="text-[8px] fill-muted-foreground">Q</text>
+  
+                {/* Label */}
+                <text x={x + 5} y={95} textAnchor="middle" className={`text-[9px] font-medium ${isSelected ? "fill-foreground" : "fill-muted-foreground"}`}>
+                  {unit.label}
+                </text>
+                <text x={x + 5} y={107} textAnchor="middle" className="text-[8px] fill-muted-foreground">
+                  {unit.vq === Infinity ? "V/Q=∞" : unit.vq === 0 ? "V/Q=0" : `V/Q=${unit.vq}`}
+                </text>
+  
+                {/* Alveolus icon */}
+                <circle cx={x + 5} cy={130} r={12} fill={unit.color} opacity={0.15} stroke={unit.color} strokeWidth={isSelected ? 2 : 1} />
+                <circle cx={x + 5} cy={130} r={6} fill={unit.color} opacity={0.3} />
+              </g>
+    );
+          })}
+  
+          {/* Spectrum arrow */}
+          <line x1="30" y1="148" x2="370" y2="148" stroke="hsl(var(--border))" strokeWidth="1" markerEnd="url(#arrowDS)" />
+          <defs>
+            <marker id="arrowDS" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6" fill="hsl(var(--muted-foreground))" />
+            </marker>
+          </defs>
+          <text x="30" y="158" className="text-[8px] fill-muted-foreground">Shunt</text>
+          <text x="370" y="158" textAnchor="end" className="text-[8px] fill-muted-foreground">Dead Space</text>
+        </svg>
+  
+        {/* Detail panel */}
+        {selectedUnit !== null && (
+          <div className="bg-secondary/30 rounded-lg p-3 border border-border" style={{ borderLeftColor: alveolarUnits[selectedUnit].color, borderLeftWidth: 3 }}>
+            <p className="text-sm font-semibold text-foreground">{alveolarUnits[selectedUnit].label}</p>
+            <p className="text-xs text-muted-foreground mt-1">{alveolarUnits[selectedUnit].description}</p>
+            <div className="flex gap-4 mt-2">
+              <div className="text-xs">
+                <span className="text-muted-foreground">Ventilation: </span>
+                <span className="font-mono font-semibold text-foreground">{alveolarUnits[selectedUnit].ventilation === 0 ? "None" : `${(alveolarUnits[selectedUnit].ventilation * 100).toFixed(0)}%`}</span>
+              </div>
+              <div className="text-xs">
+                <span className="text-muted-foreground">Perfusion: </span>
+                <span className="font-mono font-semibold text-foreground">{alveolarUnits[selectedUnit].perfusion === 0 ? "None" : `${(alveolarUnits[selectedUnit].perfusion * 100).toFixed(0)}%`}</span>
+              </div>
             </div>
           </div>
+        )}
+  
+        {selectedUnit === null && (
+          <p className="text-xs text-muted-foreground text-center">Tap a unit above to see details</p>
+        )}
+  
+        {/* Key relationships */}
+        <div className="bg-secondary/30 rounded-lg p-3 border border-border">
+          <p className="text-xs font-medium text-foreground">Key V/Q Relationships</p>
+          <ul className="text-xs text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+            <li>Overall lung V/Q ≈ 0.8 (VA 4 L/min ÷ Q 5 L/min)</li>
+            <li>Apex: V/Q ≈ 3.3 (relatively over-ventilated)</li>
+            <li>Base: V/Q ≈ 0.6 (relatively over-perfused)</li>
+            <li>Hypoxic pulmonary vasoconstriction (HPV) minimises V/Q mismatch</li>
+          </ul>
         </div>
-      )}
-
-      {selectedUnit === null && (
-        <p className="text-xs text-muted-foreground text-center">Tap a unit above to see details</p>
-      )}
-
-      {/* Key relationships */}
-      <div className="bg-secondary/30 rounded-lg p-3 border border-border">
-        <p className="text-xs font-medium text-foreground">Key V/Q Relationships</p>
-        <ul className="text-xs text-muted-foreground mt-1 space-y-1 list-disc list-inside">
-          <li>Overall lung V/Q ≈ 0.8 (VA 4 L/min ÷ Q 5 L/min)</li>
-          <li>Apex: V/Q ≈ 3.3 (relatively over-ventilated)</li>
-          <li>Base: V/Q ≈ 0.6 (relatively over-perfused)</li>
-          <li>Hypoxic pulmonary vasoconstriction (HPV) minimises V/Q mismatch</li>
-        </ul>
       </div>
-    </div>
+    </DiagramFigure>
   );
 }
 

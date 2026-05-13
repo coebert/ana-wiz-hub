@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Tab = "ohms" | "capacitance" | "inductance" | "transformers" | "wheatstone";
 
@@ -307,29 +308,35 @@ const ElectricityMagnetismDiagram = () => {
   const [activeTab, setActiveTab] = useState<Tab>("ohms");
 
   return (
-        <div className="space-y-4">
-      <div className="flex flex-wrap gap-2">
-        {tabs.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setActiveTab(t.key)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-              activeTab === t.key
-                ? "bg-primary text-primary-foreground"
-                : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-            }`}
-          >
-            {t.label}
-          </button>
-        ))}
+    <DiagramFigure
+      id="electricity-magnetism-diagram"
+      title="Electricity magnetism"
+      description="Auto-generated wrapper for the Electricity magnetism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-4">
+        <div className="flex flex-wrap gap-2">
+          {tabs.map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setActiveTab(t.key)}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                activeTab === t.key
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+  
+        {activeTab === "ohms" && <OhmsLawDiagram />}
+        {activeTab === "capacitance" && <CapacitanceDiagram />}
+        {activeTab === "inductance" && <InductanceDiagram />}
+        {activeTab === "transformers" && <TransformersDiagram />}
+        {activeTab === "wheatstone" && <WheatstoneBridgeDiagram />}
       </div>
-
-      {activeTab === "ohms" && <OhmsLawDiagram />}
-      {activeTab === "capacitance" && <CapacitanceDiagram />}
-      {activeTab === "inductance" && <InductanceDiagram />}
-      {activeTab === "transformers" && <TransformersDiagram />}
-      {activeTab === "wheatstone" && <WheatstoneBridgeDiagram />}
-    </div>
+    </DiagramFigure>
   );
 };
 

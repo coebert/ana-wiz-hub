@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Play, Pause, RotateCcw, BookOpen, ExternalLink } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Re-usable animated mechanism cascade.
@@ -375,77 +376,83 @@ const RadialSvg = ({ steps, active, accentVar, centerLabel }: RadialSvgProps) =>
   });
 
   return (
-    <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-auto max-h-[420px]">
-      {/* Spokes */}
-      {positions.map((p, i) => (
-        <line
-          key={`spoke-${i}`}
-          x1={cx}
-          y1={cy}
-          x2={p.x}
-          y2={p.y}
-          stroke={i === active ? accentVar : "hsl(var(--border))"}
-          strokeWidth={i === active ? 2.5 : 1}
-          strokeDasharray={i === active ? "0" : "3 3"}
-        />
-      ))}
-      {/* Centre */}
-      <circle cx={cx} cy={cy} r={36} fill="hsl(var(--muted))" stroke={accentVar} strokeWidth={1.5} />
-      <text x={cx} y={cy + 4} textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">
-        {centerLabel.split(" ").slice(0, 2).join(" ")}
-      </text>
-      {centerLabel.split(" ").length > 2 && (
-        <text x={cx} y={cy + 16} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">
-          {centerLabel.split(" ").slice(2).join(" ")}
+    <DiagramFigure
+      id="mechanism-cascade-diagram"
+      title="Mechanism cascade"
+      description="Auto-generated wrapper for the Mechanism cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-auto max-h-[420px]">
+        {/* Spokes */}
+        {positions.map((p, i) => (
+          <line
+            key={`spoke-${i}`}
+            x1={cx}
+            y1={cy}
+            x2={p.x}
+            y2={p.y}
+            stroke={i === active ? accentVar : "hsl(var(--border))"}
+            strokeWidth={i === active ? 2.5 : 1}
+            strokeDasharray={i === active ? "0" : "3 3"}
+          />
+        ))}
+        {/* Centre */}
+        <circle cx={cx} cy={cy} r={36} fill="hsl(var(--muted))" stroke={accentVar} strokeWidth={1.5} />
+        <text x={cx} y={cy + 4} textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">
+          {centerLabel.split(" ").slice(0, 2).join(" ")}
         </text>
-      )}
-
-      {/* Pillar nodes */}
-      {steps.map((s, i) => {
-        const p = positions[i];
-        const isActive = i === active;
-        return (
-              <g key={s.node}>
-            <circle
-              cx={p.x}
-              cy={p.y}
-              r={nodeR}
-              fill={isActive ? accentVar : "hsl(var(--card))"}
-              stroke={isActive ? accentVar : "hsl(var(--border))"}
-              strokeWidth={isActive ? 2.5 : 1.4}
-            />
-            {/* Wrap label to up to 3 lines */}
-            {wrapLabel(s.node, 12).map((line, li, arr) => (
-              <text
-                key={li}
-                x={p.x}
-                y={p.y + (li - (arr.length - 1) / 2) * 11 + 4}
-                textAnchor="middle"
-                fontSize="10"
-                fontWeight="700"
-                fill={isActive ? "hsl(var(--background))" : "hsl(var(--foreground))"}
-              >
-                {line}
-              </text>
-            ))}
-            {isActive && (
+        {centerLabel.split(" ").length > 2 && (
+          <text x={cx} y={cy + 16} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">
+            {centerLabel.split(" ").slice(2).join(" ")}
+          </text>
+        )}
+  
+        {/* Pillar nodes */}
+        {steps.map((s, i) => {
+          const p = positions[i];
+          const isActive = i === active;
+          return (
+                <g key={s.node}>
               <circle
                 cx={p.x}
                 cy={p.y}
-                r={nodeR + 4}
-                fill="none"
-                stroke={accentVar}
-                strokeWidth="1"
-                opacity="0.5"
-              >
-                <animate attributeName="opacity" from="0.6" to="0" dur="1.4s" repeatCount="indefinite" />
-                <animate attributeName="r" from={String(nodeR + 2)} to={String(nodeR + 14)} dur="1.4s" repeatCount="indefinite" />
-              </circle>
-            )}
-          </g>
-  );
-      })}
-    </svg>
+                r={nodeR}
+                fill={isActive ? accentVar : "hsl(var(--card))"}
+                stroke={isActive ? accentVar : "hsl(var(--border))"}
+                strokeWidth={isActive ? 2.5 : 1.4}
+              />
+              {/* Wrap label to up to 3 lines */}
+              {wrapLabel(s.node, 12).map((line, li, arr) => (
+                <text
+                  key={li}
+                  x={p.x}
+                  y={p.y + (li - (arr.length - 1) / 2) * 11 + 4}
+                  textAnchor="middle"
+                  fontSize="10"
+                  fontWeight="700"
+                  fill={isActive ? "hsl(var(--background))" : "hsl(var(--foreground))"}
+                >
+                  {line}
+                </text>
+              ))}
+              {isActive && (
+                <circle
+                  cx={p.x}
+                  cy={p.y}
+                  r={nodeR + 4}
+                  fill="none"
+                  stroke={accentVar}
+                  strokeWidth="1"
+                  opacity="0.5"
+                >
+                  <animate attributeName="opacity" from="0.6" to="0" dur="1.4s" repeatCount="indefinite" />
+                  <animate attributeName="r" from={String(nodeR + 2)} to={String(nodeR + 14)} dur="1.4s" repeatCount="indefinite" />
+                </circle>
+              )}
+            </g>
+    );
+        })}
+      </svg>
+    </DiagramFigure>
   );
 };
 

@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // =================================================================
 // Decision-aid logic — re-paralysis & reversal scenarios
@@ -407,118 +408,124 @@ export const SugammadexDiagram = () => {
   const [encapsulated, setEncapsulated] = useState(true);
 
   return (
-        <Card className="p-6 bg-gradient-to-br from-background to-muted/20">
-      <div className="flex flex-col gap-1 mb-4">
-        <h3 className="text-xl font-serif font-bold text-foreground">
-          Sugammadex — encapsulation, dosing, kinetics & re-paralysis
-        </h3>
-        <p className="text-sm text-muted-foreground">
-          Modified γ-cyclodextrin that encapsulates aminosteroid NMBAs in a 1:1 complex. The whole reversal story in four panels.
-        </p>
-      </div>
-
-      <Tabs defaultValue="mechanism" className="w-full">
-        <TabsList className="grid grid-cols-4 w-full">
-          <TabsTrigger value="mechanism">Mechanism</TabsTrigger>
-          <TabsTrigger value="dose">Dose vs depth</TabsTrigger>
-          <TabsTrigger value="kinetics">Kinetics</TabsTrigger>
-          <TabsTrigger value="decision">Decision aid</TabsTrigger>
-        </TabsList>
-
-        {/* MECHANISM */}
-        <TabsContent value="mechanism" className="mt-4 space-y-3">
-          <div className="flex justify-end">
-            <Button size="sm" variant="outline" onClick={() => setEncapsulated((v) => !v)}>
-              {encapsulated ? "Show free rocuronium" : "Encapsulate"}
-            </Button>
-          </div>
-          <MechanismDiagram encapsulated={encapsulated} />
-          <div className="grid md:grid-cols-2 gap-3 text-sm">
-            <div className="rounded-lg border border-border bg-card/50 p-3">
-              <div className="font-semibold text-foreground">1:1 stoichiometry</div>
-              <div className="text-muted-foreground mt-1">
-                One sugammadex molecule wraps one rocuronium molecule by hydrophobic interaction with the steroid core, anchored by electrostatic interaction between the negatively-charged carboxyl groups on the cyclodextrin rim and the positively-charged quaternary nitrogen on rocuronium. The complex is biologically inert.
-              </div>
+    <DiagramFigure
+      id="sugammadex-diagram"
+      title="Sugammadex"
+      description="Auto-generated wrapper for the Sugammadex anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <Card className="p-6 bg-gradient-to-br from-background to-muted/20">
+        <div className="flex flex-col gap-1 mb-4">
+          <h3 className="text-xl font-serif font-bold text-foreground">
+            Sugammadex — encapsulation, dosing, kinetics & re-paralysis
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Modified γ-cyclodextrin that encapsulates aminosteroid NMBAs in a 1:1 complex. The whole reversal story in four panels.
+          </p>
+        </div>
+  
+        <Tabs defaultValue="mechanism" className="w-full">
+          <TabsList className="grid grid-cols-4 w-full">
+            <TabsTrigger value="mechanism">Mechanism</TabsTrigger>
+            <TabsTrigger value="dose">Dose vs depth</TabsTrigger>
+            <TabsTrigger value="kinetics">Kinetics</TabsTrigger>
+            <TabsTrigger value="decision">Decision aid</TabsTrigger>
+          </TabsList>
+  
+          {/* MECHANISM */}
+          <TabsContent value="mechanism" className="mt-4 space-y-3">
+            <div className="flex justify-end">
+              <Button size="sm" variant="outline" onClick={() => setEncapsulated((v) => !v)}>
+                {encapsulated ? "Show free rocuronium" : "Encapsulate"}
+              </Button>
             </div>
-            <div className="rounded-lg border border-border bg-card/50 p-3">
-              <div className="font-semibold text-foreground">Affinity ladder</div>
-              <div className="text-muted-foreground mt-1">
-                Rocuronium ≫ vecuronium &gt; pancuronium. Does <span className="text-foreground font-medium">not</span> bind benzylisoquinoliniums (atracurium, cisatracurium, mivacurium) or suxamethonium — wrong shape, wrong charge.
-              </div>
-            </div>
-          </div>
-        </TabsContent>
-
-        {/* DOSE VS DEPTH */}
-        <TabsContent value="dose" className="mt-4">
-          <DoseDepthDiagram />
-        </TabsContent>
-
-        {/* KINETICS */}
-        <TabsContent value="kinetics" className="mt-4">
-          <KineticsDiagram />
-        </TabsContent>
-
-        {/* DECISION AID */}
-        <TabsContent value="decision" className="mt-4 space-y-3">
-          <div className="space-y-2">
-            {QUESTIONS.map((q) => (
-              <div key={q.id} className="rounded-lg border border-border bg-card/50 p-3">
-                <div className="text-sm text-foreground mb-2">{q.text}</div>
-                <div className="flex gap-2">
-                  {(["yes", "no", "unknown"] as Answer[]).map((v) => (
-                    <Button
-                      key={v}
-                      size="sm"
-                      variant={answers[q.id] === v ? "default" : "outline"}
-                      onClick={() => setA(q.id, v)}
-                      className="capitalize h-7 text-xs"
-                    >
-                      {v}
-                    </Button>
-                  ))}
+            <MechanismDiagram encapsulated={encapsulated} />
+            <div className="grid md:grid-cols-2 gap-3 text-sm">
+              <div className="rounded-lg border border-border bg-card/50 p-3">
+                <div className="font-semibold text-foreground">1:1 stoichiometry</div>
+                <div className="text-muted-foreground mt-1">
+                  One sugammadex molecule wraps one rocuronium molecule by hydrophobic interaction with the steroid core, anchored by electrostatic interaction between the negatively-charged carboxyl groups on the cyclodextrin rim and the positively-charged quaternary nitrogen on rocuronium. The complex is biologically inert.
                 </div>
               </div>
-            ))}
-            <div className="flex justify-end">
-              <Button size="sm" variant="ghost" onClick={reset}>Reset</Button>
+              <div className="rounded-lg border border-border bg-card/50 p-3">
+                <div className="font-semibold text-foreground">Affinity ladder</div>
+                <div className="text-muted-foreground mt-1">
+                  Rocuronium ≫ vecuronium &gt; pancuronium. Does <span className="text-foreground font-medium">not</span> bind benzylisoquinoliniums (atracurium, cisatracurium, mivacurium) or suxamethonium — wrong shape, wrong charge.
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div
-            className={`rounded-lg border p-4 ${
-              verdict.give === "give"
-                ? "border-emerald-500/40 bg-emerald-500/5"
-                : verdict.give === "withhold"
-                  ? "border-muted bg-muted/30"
-                  : "border-amber-500/40 bg-amber-500/5"
-            }`}
-          >
-            <div className="flex items-center gap-2 mb-1">
-              <span
-                className={`inline-block h-2 w-2 rounded-full ${
-                  verdict.give === "give"
-                    ? "bg-emerald-500"
-                    : verdict.give === "withhold"
-                      ? "bg-muted-foreground"
-                      : "bg-amber-500"
-                }`}
-              />
-              <div className="text-sm font-semibold text-foreground">{verdict.headline}</div>
+          </TabsContent>
+  
+          {/* DOSE VS DEPTH */}
+          <TabsContent value="dose" className="mt-4">
+            <DoseDepthDiagram />
+          </TabsContent>
+  
+          {/* KINETICS */}
+          <TabsContent value="kinetics" className="mt-4">
+            <KineticsDiagram />
+          </TabsContent>
+  
+          {/* DECISION AID */}
+          <TabsContent value="decision" className="mt-4 space-y-3">
+            <div className="space-y-2">
+              {QUESTIONS.map((q) => (
+                <div key={q.id} className="rounded-lg border border-border bg-card/50 p-3">
+                  <div className="text-sm text-foreground mb-2">{q.text}</div>
+                  <div className="flex gap-2">
+                    {(["yes", "no", "unknown"] as Answer[]).map((v) => (
+                      <Button
+                        key={v}
+                        size="sm"
+                        variant={answers[q.id] === v ? "default" : "outline"}
+                        onClick={() => setA(q.id, v)}
+                        className="capitalize h-7 text-xs"
+                      >
+                        {v}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+              <div className="flex justify-end">
+                <Button size="sm" variant="ghost" onClick={reset}>Reset</Button>
+              </div>
             </div>
-            <div className="text-sm text-muted-foreground leading-relaxed">{verdict.detail}</div>
-            <div className="mt-2 text-xs">
-              <span className="font-semibold text-foreground">Dose:</span>{" "}
-              <span className="text-muted-foreground">{verdict.dose}</span>
+  
+            <div
+              className={`rounded-lg border p-4 ${
+                verdict.give === "give"
+                  ? "border-emerald-500/40 bg-emerald-500/5"
+                  : verdict.give === "withhold"
+                    ? "border-muted bg-muted/30"
+                    : "border-amber-500/40 bg-amber-500/5"
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <span
+                  className={`inline-block h-2 w-2 rounded-full ${
+                    verdict.give === "give"
+                      ? "bg-emerald-500"
+                      : verdict.give === "withhold"
+                        ? "bg-muted-foreground"
+                        : "bg-amber-500"
+                  }`}
+                />
+                <div className="text-sm font-semibold text-foreground">{verdict.headline}</div>
+              </div>
+              <div className="text-sm text-muted-foreground leading-relaxed">{verdict.detail}</div>
+              <div className="mt-2 text-xs">
+                <span className="font-semibold text-foreground">Dose:</span>{" "}
+                <span className="text-muted-foreground">{verdict.dose}</span>
+              </div>
+              <div className="mt-1 text-xs">
+                <span className="font-semibold text-foreground">Re-paralysis plan:</span>{" "}
+                <span className="text-muted-foreground">{verdict.reparalysis}</span>
+              </div>
             </div>
-            <div className="mt-1 text-xs">
-              <span className="font-semibold text-foreground">Re-paralysis plan:</span>{" "}
-              <span className="text-muted-foreground">{verdict.reparalysis}</span>
-            </div>
-          </div>
-        </TabsContent>
-      </Tabs>
-    </Card>
+          </TabsContent>
+        </Tabs>
+      </Card>
+    </DiagramFigure>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Wellens syndrome — pattern A (biphasic) vs pattern B (deeply inverted)
@@ -161,72 +162,78 @@ const WellensSyndromeDiagram = () => {
   const meta = PATTERN_META[pattern];
 
   return (
-        <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Wellens syndrome — pattern A vs pattern B on the 12-lead"
-          subtitle="LAD-territory T-wave changes recorded in the pain-free interval. Toggle between the two morphologies."
-          toggles={[
-            { label: "Pattern A (biphasic)", active: pattern === "A", onChange: () => setPattern("A") },
-            { label: "Pattern B (deep inv)", active: pattern === "B", onChange: () => setPattern("B") },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-          ]}
-        />
-
-        {/* Active pattern badge */}
-        <div className="flex items-center justify-between gap-2 flex-wrap mb-3">
-          <div className="flex items-center gap-2 min-w-0">
-            <span
-              className="text-[10px] uppercase tracking-wide font-bold px-2 py-1 rounded"
-              style={{ background: withAlpha(meta.color, 0.15), color: meta.color }}
-            >
-              {meta.short}
-            </span>
-            <p className="text-xs text-muted-foreground truncate">{meta.prevalence}</p>
+    <DiagramFigure
+      id="wellens-syndrome-diagram"
+      title="Wellens syndrome"
+      description="Auto-generated wrapper for the Wellens syndrome anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Wellens syndrome — pattern A vs pattern B on the 12-lead"
+            subtitle="LAD-territory T-wave changes recorded in the pain-free interval. Toggle between the two morphologies."
+            toggles={[
+              { label: "Pattern A (biphasic)", active: pattern === "A", onChange: () => setPattern("A") },
+              { label: "Pattern B (deep inv)", active: pattern === "B", onChange: () => setPattern("B") },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+            ]}
+          />
+  
+          {/* Active pattern badge */}
+          <div className="flex items-center justify-between gap-2 flex-wrap mb-3">
+            <div className="flex items-center gap-2 min-w-0">
+              <span
+                className="text-[10px] uppercase tracking-wide font-bold px-2 py-1 rounded"
+                style={{ background: withAlpha(meta.color, 0.15), color: meta.color }}
+              >
+                {meta.short}
+              </span>
+              <p className="text-xs text-muted-foreground truncate">{meta.prevalence}</p>
+            </div>
+            <p className="text-[11px] text-muted-foreground italic">Pain-free at time of ECG · troponin often normal</p>
           </div>
-          <p className="text-[11px] text-muted-foreground italic">Pain-free at time of ECG · troponin often normal</p>
-        </div>
-
-        {/* 12-lead grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {LEADS.map((lead) => (
-            <Lead key={lead.id} lead={lead} pattern={pattern} patternColor={meta.color} showLabels={showLabels} />
-          ))}
-        </div>
-
-        {/* Pattern explanation */}
-        <div
-          className="mt-4 p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-          style={{ borderLeftWidth: 4, borderLeftColor: meta.color }}
-        >
-          <p className="font-semibold text-foreground text-sm">{meta.label}</p>
-          <p className="text-xs text-muted-foreground leading-snug">{meta.description}</p>
-        </div>
-
-        {/* Diagnostic criteria */}
-        <div className="mt-3 grid sm:grid-cols-2 gap-2">
-          <div className="p-3 rounded-lg border border-border bg-background/60">
-            <p className="font-semibold text-foreground text-xs mb-1">Diagnostic criteria (de Zwaan)</p>
-            <ul className="text-[11px] text-muted-foreground space-y-0.5 leading-snug">
-              <li>· History of recent angina (now pain-free)</li>
-              <li>· Biphasic or deeply inverted T waves in V2–V3 (± V1, V4)</li>
-              <li>· Isoelectric or minimally elevated ST (&lt; 1 mm)</li>
-              <li>· No precordial Q waves, preserved R-wave progression</li>
-              <li>· Normal or only mildly elevated troponin</li>
-            </ul>
+  
+          {/* 12-lead grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            {LEADS.map((lead) => (
+              <Lead key={lead.id} lead={lead} pattern={pattern} patternColor={meta.color} showLabels={showLabels} />
+            ))}
           </div>
-          <div className="p-3 rounded-lg border border-border bg-background/60">
-            <p className="font-semibold text-foreground text-xs mb-1">Why it matters</p>
-            <ul className="text-[11px] text-muted-foreground space-y-0.5 leading-snug">
-              <li>· Critical proximal LAD stenosis — high risk of large anterior MI within days</li>
-              <li>· <span className="font-medium text-foreground">Do not stress test</span> — provoked ischaemia can precipitate infarct</li>
-              <li>· Refer for early invasive coronary angiography ± PCI</li>
-              <li>· T-wave changes typically resolve once the lesion is revascularised</li>
-            </ul>
+  
+          {/* Pattern explanation */}
+          <div
+            className="mt-4 p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+            style={{ borderLeftWidth: 4, borderLeftColor: meta.color }}
+          >
+            <p className="font-semibold text-foreground text-sm">{meta.label}</p>
+            <p className="text-xs text-muted-foreground leading-snug">{meta.description}</p>
+          </div>
+  
+          {/* Diagnostic criteria */}
+          <div className="mt-3 grid sm:grid-cols-2 gap-2">
+            <div className="p-3 rounded-lg border border-border bg-background/60">
+              <p className="font-semibold text-foreground text-xs mb-1">Diagnostic criteria (de Zwaan)</p>
+              <ul className="text-[11px] text-muted-foreground space-y-0.5 leading-snug">
+                <li>· History of recent angina (now pain-free)</li>
+                <li>· Biphasic or deeply inverted T waves in V2–V3 (± V1, V4)</li>
+                <li>· Isoelectric or minimally elevated ST (&lt; 1 mm)</li>
+                <li>· No precordial Q waves, preserved R-wave progression</li>
+                <li>· Normal or only mildly elevated troponin</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-background/60">
+              <p className="font-semibold text-foreground text-xs mb-1">Why it matters</p>
+              <ul className="text-[11px] text-muted-foreground space-y-0.5 leading-snug">
+                <li>· Critical proximal LAD stenosis — high risk of large anterior MI within days</li>
+                <li>· <span className="font-medium text-foreground">Do not stress test</span> — provoked ischaemia can precipitate infarct</li>
+                <li>· Refer for early invasive coronary angiography ± PCI</li>
+                <li>· T-wave changes typically resolve once the lesion is revascularised</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

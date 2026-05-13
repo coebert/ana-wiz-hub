@@ -3,6 +3,7 @@ import { Play, RotateCcw, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { HotspotLayer, HotspotHint, type HotspotDef } from "./HotspotLayer";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Apply a "seek" to every CSS animation under the container so the user can
@@ -989,12 +990,18 @@ export const MDPathophysDiagram = () => (
   </Wrap>
 );
 export const SCIPathophysDiagram = () => (
-  <Wrap
-    title="Spinal cord injury — autonomic dysreflexia"
-    mechanismLabel="Animate sympathetic surge"
-    tagline="Loss of supraspinal inhibition above a T6+ lesion lets noxious stimuli below trigger massive unmodulated sympathetic discharge."
-  >
-    <SCIDiagram />
-  </Wrap>
-);
+    <DiagramFigure
+      id="neuro-disease-pathophys-diagram"
+      title="Neuro disease pathophys"
+      description="Auto-generated wrapper for the Neuro disease pathophys anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+        <Wrap
+      title="Spinal cord injury — autonomic dysreflexia"
+      mechanismLabel="Animate sympathetic surge"
+      tagline="Loss of supraspinal inhibition above a T6+ lesion lets noxious stimuli below trigger massive unmodulated sympathetic discharge."
+    >
+      <SCIDiagram />
+    </Wrap>
+    </DiagramFigure>
+  );
 

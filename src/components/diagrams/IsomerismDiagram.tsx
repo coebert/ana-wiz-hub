@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type TabKey = "structural" | "geometric" | "optical" | "tautomer";
 
@@ -255,56 +256,62 @@ const OpticalPanel = ({ mirrorHover, setMirrorHover }: OpticalProps) => (
 );
 
 const TautomerPanel = () => (
-  <svg viewBox="0 0 460 220" className="w-full h-auto">
-    <text x="115" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--chemistry))">Keto form</text>
-    <text x="115" y="32" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">white powder, insoluble</text>
-    {/* C=O */}
-    <g stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none">
-      <line x1="60" y1="120" x2="100" y2="100" />
-      <line x1="100" y1="100" x2="140" y2="120" />
-      <line x1="100" y1="100" x2="100" y2="60" />
-      <line x1="103" y1="100" x2="103" y2="60" />
-    </g>
-    <g fontSize="10" fontWeight="700" textAnchor="middle">
-      <text x="55" y="123" fill="hsl(var(--muted-foreground))">C</text>
-      <text x="145" y="123" fill="hsl(var(--muted-foreground))">C</text>
-      <text x="100" y="55" fill="hsl(var(--destructive))">O</text>
-      <text x="100" y="145" fill="hsl(var(--muted-foreground))">H₂</text>
-    </g>
-
-    {/* Equilibrium arrows */}
-    <g stroke="hsl(var(--chemistry))" strokeWidth="1.5" fill="none">
-      <line x1="190" y1="95" x2="270" y2="95" markerEnd="url(#tauto-arrow)" />
-      <line x1="270" y1="115" x2="190" y2="115" markerEnd="url(#tauto-arrow)" />
-    </g>
-    <defs>
-      <marker id="tauto-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--chemistry))" />
-      </marker>
-    </defs>
-    <text x="230" y="88" textAnchor="middle" fontSize="8" fill="hsl(var(--chemistry))" fontWeight="600">alkaline pH</text>
-    <text x="230" y="130" textAnchor="middle" fontSize="8" fill="hsl(var(--chemistry))" fontWeight="600">acidic pH</text>
-
-    <text x="345" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--chemistry))">Enol (thiol) form</text>
-    <text x="345" y="32" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">yellow Na⁺ salt, water-soluble</text>
-    {/* C=C with OH */}
-    <g stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none">
-      <line x1="290" y1="120" x2="330" y2="100" />
-      <line x1="330" y1="100" x2="370" y2="120" />
-      <line x1="333" y1="103" x2="373" y2="123" />
-      <line x1="370" y1="120" x2="370" y2="80" />
-    </g>
-    <g fontSize="10" fontWeight="700" textAnchor="middle">
-      <text x="285" y="123" fill="hsl(var(--muted-foreground))">C</text>
-      <text x="370" y="75" fill="hsl(var(--destructive))">SH</text>
-      <text x="328" y="98" fill="hsl(var(--muted-foreground))">C</text>
-      <text x="330" y="143" fill="hsl(var(--muted-foreground))">H</text>
-    </g>
-
-    <text x="230" y="195" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontStyle="italic">
-      Thiopentone Na⁺ in solution = enol; precipitates back to keto when pH falls
-    </text>
-  </svg>
-);
+    <DiagramFigure
+      id="isomerism-diagram"
+      title="Isomerism"
+      description="Auto-generated wrapper for the Isomerism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+        <svg viewBox="0 0 460 220" className="w-full h-auto">
+      <text x="115" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--chemistry))">Keto form</text>
+      <text x="115" y="32" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">white powder, insoluble</text>
+      {/* C=O */}
+      <g stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none">
+        <line x1="60" y1="120" x2="100" y2="100" />
+        <line x1="100" y1="100" x2="140" y2="120" />
+        <line x1="100" y1="100" x2="100" y2="60" />
+        <line x1="103" y1="100" x2="103" y2="60" />
+      </g>
+      <g fontSize="10" fontWeight="700" textAnchor="middle">
+        <text x="55" y="123" fill="hsl(var(--muted-foreground))">C</text>
+        <text x="145" y="123" fill="hsl(var(--muted-foreground))">C</text>
+        <text x="100" y="55" fill="hsl(var(--destructive))">O</text>
+        <text x="100" y="145" fill="hsl(var(--muted-foreground))">H₂</text>
+      </g>
+  
+      {/* Equilibrium arrows */}
+      <g stroke="hsl(var(--chemistry))" strokeWidth="1.5" fill="none">
+        <line x1="190" y1="95" x2="270" y2="95" markerEnd="url(#tauto-arrow)" />
+        <line x1="270" y1="115" x2="190" y2="115" markerEnd="url(#tauto-arrow)" />
+      </g>
+      <defs>
+        <marker id="tauto-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--chemistry))" />
+        </marker>
+      </defs>
+      <text x="230" y="88" textAnchor="middle" fontSize="8" fill="hsl(var(--chemistry))" fontWeight="600">alkaline pH</text>
+      <text x="230" y="130" textAnchor="middle" fontSize="8" fill="hsl(var(--chemistry))" fontWeight="600">acidic pH</text>
+  
+      <text x="345" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--chemistry))">Enol (thiol) form</text>
+      <text x="345" y="32" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">yellow Na⁺ salt, water-soluble</text>
+      {/* C=C with OH */}
+      <g stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none">
+        <line x1="290" y1="120" x2="330" y2="100" />
+        <line x1="330" y1="100" x2="370" y2="120" />
+        <line x1="333" y1="103" x2="373" y2="123" />
+        <line x1="370" y1="120" x2="370" y2="80" />
+      </g>
+      <g fontSize="10" fontWeight="700" textAnchor="middle">
+        <text x="285" y="123" fill="hsl(var(--muted-foreground))">C</text>
+        <text x="370" y="75" fill="hsl(var(--destructive))">SH</text>
+        <text x="328" y="98" fill="hsl(var(--muted-foreground))">C</text>
+        <text x="330" y="143" fill="hsl(var(--muted-foreground))">H</text>
+      </g>
+  
+      <text x="230" y="195" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontStyle="italic">
+        Thiopentone Na⁺ in solution = enol; precipitates back to keto when pH falls
+      </text>
+    </svg>
+    </DiagramFigure>
+  );
 
 export default IsomerismDiagram;

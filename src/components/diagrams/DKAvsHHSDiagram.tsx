@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Side-by-side comparison of Diabetic Ketoacidosis (DKA) vs Hyperosmolar
@@ -122,83 +123,89 @@ const DKAvsHHSDiagram = () => {
   const sel = ROWS.find((r) => r.key === selected)!;
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <div className="mb-3">
-          <h3 className="text-base sm:text-lg font-serif font-semibold text-foreground">
-            DKA vs HHS — the hyperglycaemic emergency spectrum
-          </h3>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            JBDS-IP 2023 / 2022. Tap a row to see the teaching point.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)] text-xs">
-          {/* Header */}
-          <div className="px-2 py-1.5 font-semibold text-[10px] uppercase tracking-wider text-muted-foreground">
-            Feature
+    <DiagramFigure
+      id="dk-avs-hhs-diagram"
+      title="DK avs HHS"
+      description="Auto-generated wrapper for the DK avs HHS anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <div className="mb-3">
+            <h3 className="text-base sm:text-lg font-serif font-semibold text-foreground">
+              DKA vs HHS — the hyperglycaemic emergency spectrum
+            </h3>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              JBDS-IP 2023 / 2022. Tap a row to see the teaching point.
+            </p>
           </div>
-          <div className="px-2 py-1.5 font-semibold text-[10px] uppercase tracking-wider text-clinical text-center bg-clinical/10 rounded-tl-md">
-            DKA
-          </div>
-          <div className="px-2 py-1.5 font-semibold text-[10px] uppercase tracking-wider text-pharmacology text-center bg-pharmacology/10 rounded-tr-md">
-            HHS
-          </div>
-
-          {/* Rows */}
-          {ROWS.map((r, i) => {
-            const isSel = r.key === selected;
-            const isLast = i === ROWS.length - 1;
-            return (
-                  <button
-                key={r.key}
-                type="button"
-                onClick={() => setSelected(r.key)}
-                aria-pressed={isSel}
-                className={cn(
-                  "contents text-left",
-                )}
-              >
-                <span
+  
+          <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)] text-xs">
+            {/* Header */}
+            <div className="px-2 py-1.5 font-semibold text-[10px] uppercase tracking-wider text-muted-foreground">
+              Feature
+            </div>
+            <div className="px-2 py-1.5 font-semibold text-[10px] uppercase tracking-wider text-clinical text-center bg-clinical/10 rounded-tl-md">
+              DKA
+            </div>
+            <div className="px-2 py-1.5 font-semibold text-[10px] uppercase tracking-wider text-pharmacology text-center bg-pharmacology/10 rounded-tr-md">
+              HHS
+            </div>
+  
+            {/* Rows */}
+            {ROWS.map((r, i) => {
+              const isSel = r.key === selected;
+              const isLast = i === ROWS.length - 1;
+              return (
+                    <button
+                  key={r.key}
+                  type="button"
+                  onClick={() => setSelected(r.key)}
+                  aria-pressed={isSel}
                   className={cn(
-                    "px-2 py-1.5 border-t border-border text-foreground font-medium transition-colors",
-                    isSel && "bg-primary/10 text-primary",
-                    isLast && "rounded-bl-md",
+                    "contents text-left",
                   )}
                 >
-                  {r.label}
-                </span>
-                <span
-                  className={cn(
-                    "px-2 py-1.5 border-t border-border text-muted-foreground bg-clinical/5 transition-colors",
-                    isSel && "bg-clinical/15 text-foreground",
-                  )}
-                >
-                  {r.dka}
-                </span>
-                <span
-                  className={cn(
-                    "px-2 py-1.5 border-t border-border text-muted-foreground bg-pharmacology/5 transition-colors",
-                    isSel && "bg-pharmacology/15 text-foreground",
-                    isLast && "rounded-br-md",
-                  )}
-                >
-                  {r.hhs}
-                </span>
-              </button>
-  );
-          })}
-        </div>
-
-        {/* Detail panel */}
-        <div className="mt-3 rounded-md border-l-4 border-primary/60 bg-card px-3 py-2 min-h-[64px]">
-          <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1">
-            {sel.label}
-          </p>
-          <p className="text-sm text-foreground leading-relaxed">{sel.detail}</p>
+                  <span
+                    className={cn(
+                      "px-2 py-1.5 border-t border-border text-foreground font-medium transition-colors",
+                      isSel && "bg-primary/10 text-primary",
+                      isLast && "rounded-bl-md",
+                    )}
+                  >
+                    {r.label}
+                  </span>
+                  <span
+                    className={cn(
+                      "px-2 py-1.5 border-t border-border text-muted-foreground bg-clinical/5 transition-colors",
+                      isSel && "bg-clinical/15 text-foreground",
+                    )}
+                  >
+                    {r.dka}
+                  </span>
+                  <span
+                    className={cn(
+                      "px-2 py-1.5 border-t border-border text-muted-foreground bg-pharmacology/5 transition-colors",
+                      isSel && "bg-pharmacology/15 text-foreground",
+                      isLast && "rounded-br-md",
+                    )}
+                  >
+                    {r.hhs}
+                  </span>
+                </button>
+    );
+            })}
+          </div>
+  
+          {/* Detail panel */}
+          <div className="mt-3 rounded-md border-l-4 border-primary/60 bg-card px-3 py-2 min-h-[64px]">
+            <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+              {sel.label}
+            </p>
+            <p className="text-sm text-foreground leading-relaxed">{sel.detail}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

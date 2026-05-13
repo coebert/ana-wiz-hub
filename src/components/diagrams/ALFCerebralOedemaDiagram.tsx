@@ -1,4 +1,5 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "./MechanismCascadeDiagram";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const EASL: CascadeSource = {
   label: "EASL 2017",
@@ -102,12 +103,18 @@ const steps: CascadeStep[] = [
 ];
 
 export const ALFCerebralOedemaDiagram = () => (
-  <MechanismCascadeDiagram
-    title="Acute Liver Failure — Ammonia to Cerebral Oedema"
-    subtitle="The pathway from hepatic necrosis to herniation."
-    accent="icu"
-    steps={steps}
-  />
-);
+    <DiagramFigure
+      id="alf-cerebral-oedema-diagram"
+      title="ALF cerebral oedema"
+      description="Auto-generated wrapper for the ALF cerebral oedema anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+        <MechanismCascadeDiagram
+      title="Acute Liver Failure — Ammonia to Cerebral Oedema"
+      subtitle="The pathway from hepatic necrosis to herniation."
+      accent="icu"
+      steps={steps}
+    />
+    </DiagramFigure>
+  );
 
 export default ALFCerebralOedemaDiagram;

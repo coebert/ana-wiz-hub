@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* ────────────────────────── data ────────────────────────── */
 
@@ -227,169 +228,175 @@ const CoagulationCascadeDiagram = () => {
   );
 
   return (
-    <div className="mb-8">
-      <div className="mb-3">
-        <h3 className="text-lg font-serif font-bold text-foreground">Coagulation Cascade & Anticoagulant Targets</h3>
-        <p className="text-sm text-muted-foreground">Tap factors to explore. Switch tabs for cell-based model, drug targets, and monitoring.</p>
-      </div>
-
-      <Tabs value={tab} onValueChange={v => { setTab(v as ViewTab); setSelectedFactor(null); setSelectedDrug(null); setHighlightPhase(null); }}>
-        <TabsList className="grid w-full grid-cols-4 mb-3">
-          <TabsTrigger value="cascade" className="text-[10px] sm:text-xs">Cascade</TabsTrigger>
-          <TabsTrigger value="cell-based" className="text-[10px] sm:text-xs">Cell-Based</TabsTrigger>
-          <TabsTrigger value="drugs" className="text-[10px] sm:text-xs">Drugs</TabsTrigger>
-          <TabsTrigger value="tests" className="text-[10px] sm:text-xs">Tests</TabsTrigger>
-        </TabsList>
-
-        {/* ──── CASCADE TAB ──── */}
-        <TabsContent value="cascade">
-          <div className="flex flex-wrap gap-1.5 mb-3">
-            <Badge variant={activePathway === "all" ? "default" : "outline"} className="cursor-pointer text-xs"
-              onClick={() => { setActivePathway("all"); setSelectedFactor(null); }}>All</Badge>
-            {(["intrinsic", "extrinsic", "common", "regulatory", "fibrinolysis"] as Pathway[]).map(p => (
-              <Badge key={p} variant={activePathway === p ? "default" : "outline"} className="cursor-pointer text-xs"
-                onClick={() => { setActivePathway(p); setSelectedFactor(null); }}
-                style={activePathway === p ? { backgroundColor: pathwayMeta[p].color } : { color: pathwayMeta[p].color }}>
-                {pathwayMeta[p].label}
-              </Badge>
-            ))}
-          </div>
-
-          {renderCascadeSVG()}
-
-          {activeFactor ? (
-            <div className="p-4 rounded-lg border border-border animate-fade-in">
-              <div className="flex items-center gap-2 mb-1 flex-wrap">
-                <span className="font-bold text-sm" style={{ color: pathwayMeta[activeFactor.pathway].color }}>{activeFactor.label}</span>
-                <Badge variant="outline" className="text-xs" style={{ color: pathwayMeta[activeFactor.pathway].color }}>{pathwayMeta[activeFactor.pathway].label}</Badge>
-                {activeFactor.cellPhase && activeFactor.cellPhase.map(cp => (
-                  <Badge key={cp} variant="outline" className="text-[10px]" style={{ color: cellPhaseColors[cp] }}>{cp}</Badge>
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">{activeFactor.detail}</p>
-              {activeFactor.drugs && activeFactor.drugs.length > 0 && (
-                <div className="mt-2 pt-2 border-t border-border/50">
-                  <p className="text-xs font-semibold text-red-400 mb-1">Drug Targets at This Step</p>
-                  {activeFactor.drugs.map((d, i) => (
-                    <p key={i} className="text-xs text-muted-foreground">• {d}</p>
+    <DiagramFigure
+      id="coagulation-cascade-diagram"
+      title="Coagulation cascade"
+      description="Auto-generated wrapper for the Coagulation cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="mb-8">
+        <div className="mb-3">
+          <h3 className="text-lg font-serif font-bold text-foreground">Coagulation Cascade & Anticoagulant Targets</h3>
+          <p className="text-sm text-muted-foreground">Tap factors to explore. Switch tabs for cell-based model, drug targets, and monitoring.</p>
+        </div>
+  
+        <Tabs value={tab} onValueChange={v => { setTab(v as ViewTab); setSelectedFactor(null); setSelectedDrug(null); setHighlightPhase(null); }}>
+          <TabsList className="grid w-full grid-cols-4 mb-3">
+            <TabsTrigger value="cascade" className="text-[10px] sm:text-xs">Cascade</TabsTrigger>
+            <TabsTrigger value="cell-based" className="text-[10px] sm:text-xs">Cell-Based</TabsTrigger>
+            <TabsTrigger value="drugs" className="text-[10px] sm:text-xs">Drugs</TabsTrigger>
+            <TabsTrigger value="tests" className="text-[10px] sm:text-xs">Tests</TabsTrigger>
+          </TabsList>
+  
+          {/* ──── CASCADE TAB ──── */}
+          <TabsContent value="cascade">
+            <div className="flex flex-wrap gap-1.5 mb-3">
+              <Badge variant={activePathway === "all" ? "default" : "outline"} className="cursor-pointer text-xs"
+                onClick={() => { setActivePathway("all"); setSelectedFactor(null); }}>All</Badge>
+              {(["intrinsic", "extrinsic", "common", "regulatory", "fibrinolysis"] as Pathway[]).map(p => (
+                <Badge key={p} variant={activePathway === p ? "default" : "outline"} className="cursor-pointer text-xs"
+                  onClick={() => { setActivePathway(p); setSelectedFactor(null); }}
+                  style={activePathway === p ? { backgroundColor: pathwayMeta[p].color } : { color: pathwayMeta[p].color }}>
+                  {pathwayMeta[p].label}
+                </Badge>
+              ))}
+            </div>
+  
+            {renderCascadeSVG()}
+  
+            {activeFactor ? (
+              <div className="p-4 rounded-lg border border-border animate-fade-in">
+                <div className="flex items-center gap-2 mb-1 flex-wrap">
+                  <span className="font-bold text-sm" style={{ color: pathwayMeta[activeFactor.pathway].color }}>{activeFactor.label}</span>
+                  <Badge variant="outline" className="text-xs" style={{ color: pathwayMeta[activeFactor.pathway].color }}>{pathwayMeta[activeFactor.pathway].label}</Badge>
+                  {activeFactor.cellPhase && activeFactor.cellPhase.map(cp => (
+                    <Badge key={cp} variant="outline" className="text-[10px]" style={{ color: cellPhaseColors[cp] }}>{cp}</Badge>
                   ))}
                 </div>
-              )}
-            </div>
-          ) : (
-            <p className="text-xs text-muted-foreground text-center italic">Tap a factor box to view details and drug targets</p>
-          )}
-        </TabsContent>
-
-        {/* ──── CELL-BASED MODEL TAB ──── */}
-        <TabsContent value="cell-based">
-          <p className="text-sm text-muted-foreground mb-3">
-            The cell-based model describes coagulation occurring on cell surfaces in three overlapping phases. Highlight a phase to see which factors are involved.
-          </p>
-
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {(["initiation", "amplification", "propagation", "termination"] as CellPhase[]).map(phase => (
-              <button key={phase} onClick={() => setHighlightPhase(highlightPhase === phase ? null : phase)}
-                className={`px-2.5 py-1 rounded text-[10px] sm:text-xs font-medium border transition-all ${
-                  highlightPhase === phase ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
-                }`}
-                style={highlightPhase === phase ? { borderColor: cellPhaseColors[phase], color: cellPhaseColors[phase] } : {}}>
-                {phase.charAt(0).toUpperCase() + phase.slice(1)}
-              </button>
-            ))}
-          </div>
-
-          {renderCascadeSVG()}
-
-          <div className="space-y-3">
-            {([
-              { phase: "initiation" as CellPhase, title: "1. Initiation (TF-bearing cell)", desc: "Tissue factor exposed on damaged/activated cells binds VIIa → TF·VIIa complex activates small amounts of X → Xa. Xa + Va generate a small 'priming' dose of thrombin. Rapidly shut down by TFPI." },
-              { phase: "amplification" as CellPhase, title: "2. Amplification (Platelet surface)", desc: "Small thrombin burst activates platelets (PAR-1/4 receptors → shape change, degranulation, PS exposure). Thrombin also activates V → Va, VIII → VIIIa (releases from vWF), XI → XIa. Primes the system for massive thrombin generation." },
-              { phase: "propagation" as CellPhase, title: "3. Propagation (Activated platelet)", desc: "On activated platelet phospholipid surface: IXa + VIIIa (tenase) generate large amounts of Xa. Xa + Va (prothrombinase) produce a 'thrombin burst'. Fibrinogen → fibrin mesh. XIIIa cross-links clot. This is the main haemostatic event." },
-              { phase: "termination" as CellPhase, title: "4. Termination / Regulation", desc: "ATIII (enhanced by heparin) neutralises IIa, Xa. Thrombin + thrombomodulin activate Protein C → APC + Protein S inactivate Va, VIIIa. TFPI inhibits TF·VIIa·Xa. Fibrinolysis: tPA → plasmin degrades fibrin. Balance prevents thrombosis." },
-            ]).map(({ phase, title, desc }) => (
-              <div key={phase} className={`p-3 rounded-lg border transition-all ${highlightPhase === phase ? "border-primary/30 bg-primary/5" : "border-border"}`}
-                style={highlightPhase === phase ? { borderColor: withAlpha(cellPhaseColors[phase], 0.38) } : {}}>
-                <p className="text-sm font-semibold text-foreground" style={{ color: cellPhaseColors[phase] }}>{title}</p>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </TabsContent>
-
-        {/* ──── DRUGS TAB ──── */}
-        <TabsContent value="drugs">
-          <div className="space-y-3">
-            {drugs.map(d => {
-              const isActive = selectedDrug === d.name;
-              return (
-                <div key={d.name} className={`p-3 rounded-lg border transition-all cursor-pointer ${isActive ? "border-primary/30 bg-primary/5" : "border-border hover:bg-secondary/20"}`}
-                  onClick={() => setSelectedDrug(isActive ? null : d.name)}>
-                  <p className="font-semibold text-foreground text-sm">{d.name}</p>
-                  <p className="text-xs text-muted-foreground mt-1"><span className="text-foreground font-medium">Target:</span> {d.target}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5"><span className="text-foreground font-medium">Monitor:</span> {d.monitor}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5"><span className="text-foreground font-medium">Reversal:</span> {d.reversal}</p>
-                  {isActive && d.notes && (
-                    <p className="text-xs text-muted-foreground mt-1.5 pt-1.5 border-t border-border/50 italic animate-fade-in">
-                      💡 {d.notes}
-                    </p>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {selectedDrug && (
-            <div className="mt-4">
-              <p className="text-xs font-semibold text-foreground mb-2">Cascade view — {selectedDrug} targets highlighted</p>
-              {renderCascadeSVG()}
-            </div>
-          )}
-        </TabsContent>
-
-        {/* ──── TESTS TAB ──── */}
-        <TabsContent value="tests">
-          <div className="space-y-3">
-            {(["intrinsic", "extrinsic", "common", "regulatory", "fibrinolysis"] as Pathway[]).map(p => {
-              const m = pathwayMeta[p];
-              return (
-                    <div key={p} className="p-3 rounded-lg border border-border" style={{ borderColor: withAlpha(m.color, 0.25) }}>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-sm" style={{ color: m.color }}>{m.test}</span>
-                    <Badge variant="outline" className="text-xs" style={{ color: m.color }}>{m.label}</Badge>
+                <p className="text-sm text-muted-foreground leading-relaxed">{activeFactor.detail}</p>
+                {activeFactor.drugs && activeFactor.drugs.length > 0 && (
+                  <div className="mt-2 pt-2 border-t border-border/50">
+                    <p className="text-xs font-semibold text-red-400 mb-1">Drug Targets at This Step</p>
+                    {activeFactor.drugs.map((d, i) => (
+                      <p key={i} className="text-xs text-muted-foreground">• {d}</p>
+                    ))}
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{m.testDetail}</p>
+                )}
+              </div>
+            ) : (
+              <p className="text-xs text-muted-foreground text-center italic">Tap a factor box to view details and drug targets</p>
+            )}
+          </TabsContent>
+  
+          {/* ──── CELL-BASED MODEL TAB ──── */}
+          <TabsContent value="cell-based">
+            <p className="text-sm text-muted-foreground mb-3">
+              The cell-based model describes coagulation occurring on cell surfaces in three overlapping phases. Highlight a phase to see which factors are involved.
+            </p>
+  
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {(["initiation", "amplification", "propagation", "termination"] as CellPhase[]).map(phase => (
+                <button key={phase} onClick={() => setHighlightPhase(highlightPhase === phase ? null : phase)}
+                  className={`px-2.5 py-1 rounded text-[10px] sm:text-xs font-medium border transition-all ${
+                    highlightPhase === phase ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
+                  }`}
+                  style={highlightPhase === phase ? { borderColor: cellPhaseColors[phase], color: cellPhaseColors[phase] } : {}}>
+                  {phase.charAt(0).toUpperCase() + phase.slice(1)}
+                </button>
+              ))}
+            </div>
+  
+            {renderCascadeSVG()}
+  
+            <div className="space-y-3">
+              {([
+                { phase: "initiation" as CellPhase, title: "1. Initiation (TF-bearing cell)", desc: "Tissue factor exposed on damaged/activated cells binds VIIa → TF·VIIa complex activates small amounts of X → Xa. Xa + Va generate a small 'priming' dose of thrombin. Rapidly shut down by TFPI." },
+                { phase: "amplification" as CellPhase, title: "2. Amplification (Platelet surface)", desc: "Small thrombin burst activates platelets (PAR-1/4 receptors → shape change, degranulation, PS exposure). Thrombin also activates V → Va, VIII → VIIIa (releases from vWF), XI → XIa. Primes the system for massive thrombin generation." },
+                { phase: "propagation" as CellPhase, title: "3. Propagation (Activated platelet)", desc: "On activated platelet phospholipid surface: IXa + VIIIa (tenase) generate large amounts of Xa. Xa + Va (prothrombinase) produce a 'thrombin burst'. Fibrinogen → fibrin mesh. XIIIa cross-links clot. This is the main haemostatic event." },
+                { phase: "termination" as CellPhase, title: "4. Termination / Regulation", desc: "ATIII (enhanced by heparin) neutralises IIa, Xa. Thrombin + thrombomodulin activate Protein C → APC + Protein S inactivate Va, VIIIa. TFPI inhibits TF·VIIa·Xa. Fibrinolysis: tPA → plasmin degrades fibrin. Balance prevents thrombosis." },
+              ]).map(({ phase, title, desc }) => (
+                <div key={phase} className={`p-3 rounded-lg border transition-all ${highlightPhase === phase ? "border-primary/30 bg-primary/5" : "border-border"}`}
+                  style={highlightPhase === phase ? { borderColor: withAlpha(cellPhaseColors[phase], 0.38) } : {}}>
+                  <p className="text-sm font-semibold text-foreground" style={{ color: cellPhaseColors[phase] }}>{title}</p>
+                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{desc}</p>
                 </div>
-  );
-            })}
-            <div className="p-3 rounded-lg border border-border bg-muted/20">
-              <p className="text-xs font-semibold text-foreground mb-1">Viscoelastic Testing (ROTEM / TEG)</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Point-of-care whole blood testing. ROTEM: EXTEM (extrinsic activation) — CT prolonged → FFP/PCC. FIBTEM A5 {"<"} 12mm → cryoprecipitate/fibrinogen concentrate.
-                EXTEM MCF low with normal FIBTEM → platelets. HEPTEM CT shorter than INTEM CT → residual heparin → protamine. EXTEM ML {">"} 15% → hyperfibrinolysis → TXA.
-                APTEM (TXA added) confirms fibrinolysis if EXTEM ML normalises.
-              </p>
-              <div className="grid grid-cols-2 gap-2 mt-2">
-                <div className="rounded border border-border p-2 text-center">
-                  <p className="text-[10px] font-semibold text-foreground">ROTEM Parameters</p>
-                  <p className="text-[9px] text-muted-foreground">CT → clotting time (initiation)</p>
-                  <p className="text-[9px] text-muted-foreground">CFT → clot formation time</p>
-                  <p className="text-[9px] text-muted-foreground">MCF → max clot firmness</p>
-                  <p className="text-[9px] text-muted-foreground">ML → max lysis (%)</p>
-                </div>
-                <div className="rounded border border-border p-2 text-center">
-                  <p className="text-[10px] font-semibold text-foreground">TEG Parameters</p>
-                  <p className="text-[9px] text-muted-foreground">R → reaction time</p>
-                  <p className="text-[9px] text-muted-foreground">K → kinetics time</p>
-                  <p className="text-[9px] text-muted-foreground">MA → max amplitude</p>
-                  <p className="text-[9px] text-muted-foreground">LY30 → lysis at 30 min</p>
+              ))}
+            </div>
+          </TabsContent>
+  
+          {/* ──── DRUGS TAB ──── */}
+          <TabsContent value="drugs">
+            <div className="space-y-3">
+              {drugs.map(d => {
+                const isActive = selectedDrug === d.name;
+                return (
+                  <div key={d.name} className={`p-3 rounded-lg border transition-all cursor-pointer ${isActive ? "border-primary/30 bg-primary/5" : "border-border hover:bg-secondary/20"}`}
+                    onClick={() => setSelectedDrug(isActive ? null : d.name)}>
+                    <p className="font-semibold text-foreground text-sm">{d.name}</p>
+                    <p className="text-xs text-muted-foreground mt-1"><span className="text-foreground font-medium">Target:</span> {d.target}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5"><span className="text-foreground font-medium">Monitor:</span> {d.monitor}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5"><span className="text-foreground font-medium">Reversal:</span> {d.reversal}</p>
+                    {isActive && d.notes && (
+                      <p className="text-xs text-muted-foreground mt-1.5 pt-1.5 border-t border-border/50 italic animate-fade-in">
+                        💡 {d.notes}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+  
+            {selectedDrug && (
+              <div className="mt-4">
+                <p className="text-xs font-semibold text-foreground mb-2">Cascade view — {selectedDrug} targets highlighted</p>
+                {renderCascadeSVG()}
+              </div>
+            )}
+          </TabsContent>
+  
+          {/* ──── TESTS TAB ──── */}
+          <TabsContent value="tests">
+            <div className="space-y-3">
+              {(["intrinsic", "extrinsic", "common", "regulatory", "fibrinolysis"] as Pathway[]).map(p => {
+                const m = pathwayMeta[p];
+                return (
+                      <div key={p} className="p-3 rounded-lg border border-border" style={{ borderColor: withAlpha(m.color, 0.25) }}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-semibold text-sm" style={{ color: m.color }}>{m.test}</span>
+                      <Badge variant="outline" className="text-xs" style={{ color: m.color }}>{m.label}</Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{m.testDetail}</p>
+                  </div>
+    );
+              })}
+              <div className="p-3 rounded-lg border border-border bg-muted/20">
+                <p className="text-xs font-semibold text-foreground mb-1">Viscoelastic Testing (ROTEM / TEG)</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Point-of-care whole blood testing. ROTEM: EXTEM (extrinsic activation) — CT prolonged → FFP/PCC. FIBTEM A5 {"<"} 12mm → cryoprecipitate/fibrinogen concentrate.
+                  EXTEM MCF low with normal FIBTEM → platelets. HEPTEM CT shorter than INTEM CT → residual heparin → protamine. EXTEM ML {">"} 15% → hyperfibrinolysis → TXA.
+                  APTEM (TXA added) confirms fibrinolysis if EXTEM ML normalises.
+                </p>
+                <div className="grid grid-cols-2 gap-2 mt-2">
+                  <div className="rounded border border-border p-2 text-center">
+                    <p className="text-[10px] font-semibold text-foreground">ROTEM Parameters</p>
+                    <p className="text-[9px] text-muted-foreground">CT → clotting time (initiation)</p>
+                    <p className="text-[9px] text-muted-foreground">CFT → clot formation time</p>
+                    <p className="text-[9px] text-muted-foreground">MCF → max clot firmness</p>
+                    <p className="text-[9px] text-muted-foreground">ML → max lysis (%)</p>
+                  </div>
+                  <div className="rounded border border-border p-2 text-center">
+                    <p className="text-[10px] font-semibold text-foreground">TEG Parameters</p>
+                    <p className="text-[9px] text-muted-foreground">R → reaction time</p>
+                    <p className="text-[9px] text-muted-foreground">K → kinetics time</p>
+                    <p className="text-[9px] text-muted-foreground">MA → max amplitude</p>
+                    <p className="text-[9px] text-muted-foreground">LY30 → lysis at 30 min</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </TabsContent>
-      </Tabs>
-    </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

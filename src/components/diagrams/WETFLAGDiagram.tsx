@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const WETFLAGDiagram = () => {
   const [age, setAge] = useState<number>(4); // years
@@ -97,85 +98,91 @@ const WETFLAGDiagram = () => {
   ];
 
   return (
-        <div className="my-6 p-4 rounded-xl border border-border bg-card">
-      <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-        <div>
-          <h3 className="text-lg font-serif font-bold text-foreground">WETFLAG — Paediatric Resuscitation Calculator</h3>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            APLS 2021 mnemonic for weight-based emergency drug & equipment doses. Calculated when a child arrives in resus.
-          </p>
-        </div>
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-3 mb-4 p-3 rounded-lg border border-border bg-secondary/30">
-        <div>
-          <label className="text-xs font-semibold text-foreground flex items-center justify-between">
-            <span>Age (years)</span>
-            <span className="text-primary font-mono">{age < 1 ? "<1 yr" : `${age} yr`}</span>
-          </label>
-          <input
-            type="range"
-            min={0}
-            max={14}
-            step={1}
-            value={age}
-            onChange={(e) => setAge(Number(e.target.value))}
-            className="w-full mt-1 accent-primary"
-          />
-          <p className="text-[10px] text-muted-foreground mt-0.5">
-            Estimated weight: {estimatedWeight} kg (APLS formula{age < 1 ? " — assumes 6 mo" : ""})
-          </p>
-        </div>
-        <div>
-          <label className="text-xs font-semibold text-foreground flex items-center justify-between">
-            <span>Override weight (kg)</span>
-            {weight != null && (
-              <button onClick={() => setWeight(null)} className="text-[10px] text-primary underline">use estimate</button>
-            )}
-          </label>
-          <input
-            type="number"
-            min={1}
-            max={100}
-            step={0.5}
-            value={weight ?? ""}
-            placeholder={`${estimatedWeight}`}
-            onChange={(e) => setWeight(e.target.value === "" ? null : Number(e.target.value))}
-            className="w-full mt-1 px-2 py-1 rounded border border-border bg-background text-sm"
-          />
-          <p className="text-[10px] text-muted-foreground mt-0.5">Use measured weight when available.</p>
-        </div>
-      </div>
-
-      <div className="space-y-1.5">
-        {items.map((it) => (
-          <div
-            key={it.letter}
-            className="grid grid-cols-[40px_1fr] gap-3 p-3 rounded-lg border border-border bg-background"
-          >
-            <div
-              className="flex items-center justify-center text-2xl font-serif font-bold rounded-md text-white"
-              style={{ backgroundColor: it.color }}
-            >
-              {it.letter}
-            </div>
-            <div className="min-w-0">
-              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-                <p className="text-sm font-semibold text-foreground">{it.title}</p>
-                <p className="text-sm font-bold" style={{ color: it.color }}>{it.value}</p>
-              </div>
-              <p className="text-[11px] text-muted-foreground font-mono mt-0.5">Formula: {it.formula}</p>
-              <p className="text-xs text-muted-foreground/90 mt-1 leading-relaxed">{it.detail}</p>
-            </div>
+    <DiagramFigure
+      id="wetflag-diagram"
+      title="WETFLAG"
+      description="Auto-generated wrapper for the WETFLAG anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 p-4 rounded-xl border border-border bg-card">
+        <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+          <div>
+            <h3 className="text-lg font-serif font-bold text-foreground">WETFLAG — Paediatric Resuscitation Calculator</h3>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              APLS 2021 mnemonic for weight-based emergency drug & equipment doses. Calculated when a child arrives in resus.
+            </p>
           </div>
-        ))}
+        </div>
+  
+        <div className="grid sm:grid-cols-2 gap-3 mb-4 p-3 rounded-lg border border-border bg-secondary/30">
+          <div>
+            <label className="text-xs font-semibold text-foreground flex items-center justify-between">
+              <span>Age (years)</span>
+              <span className="text-primary font-mono">{age < 1 ? "<1 yr" : `${age} yr`}</span>
+            </label>
+            <input
+              type="range"
+              min={0}
+              max={14}
+              step={1}
+              value={age}
+              onChange={(e) => setAge(Number(e.target.value))}
+              className="w-full mt-1 accent-primary"
+            />
+            <p className="text-[10px] text-muted-foreground mt-0.5">
+              Estimated weight: {estimatedWeight} kg (APLS formula{age < 1 ? " — assumes 6 mo" : ""})
+            </p>
+          </div>
+          <div>
+            <label className="text-xs font-semibold text-foreground flex items-center justify-between">
+              <span>Override weight (kg)</span>
+              {weight != null && (
+                <button onClick={() => setWeight(null)} className="text-[10px] text-primary underline">use estimate</button>
+              )}
+            </label>
+            <input
+              type="number"
+              min={1}
+              max={100}
+              step={0.5}
+              value={weight ?? ""}
+              placeholder={`${estimatedWeight}`}
+              onChange={(e) => setWeight(e.target.value === "" ? null : Number(e.target.value))}
+              className="w-full mt-1 px-2 py-1 rounded border border-border bg-background text-sm"
+            />
+            <p className="text-[10px] text-muted-foreground mt-0.5">Use measured weight when available.</p>
+          </div>
+        </div>
+  
+        <div className="space-y-1.5">
+          {items.map((it) => (
+            <div
+              key={it.letter}
+              className="grid grid-cols-[40px_1fr] gap-3 p-3 rounded-lg border border-border bg-background"
+            >
+              <div
+                className="flex items-center justify-center text-2xl font-serif font-bold rounded-md text-white"
+                style={{ backgroundColor: it.color }}
+              >
+                {it.letter}
+              </div>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                  <p className="text-sm font-semibold text-foreground">{it.title}</p>
+                  <p className="text-sm font-bold" style={{ color: it.color }}>{it.value}</p>
+                </div>
+                <p className="text-[11px] text-muted-foreground font-mono mt-0.5">Formula: {it.formula}</p>
+                <p className="text-xs text-muted-foreground/90 mt-1 leading-relaxed">{it.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+  
+        <div className="mt-3 p-2.5 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
+          <strong className="text-foreground">Clinical use: </strong>
+          Calculate WETFLAG on PICU admission and at the start of any resuscitation. Write the values on the whiteboard / drug chart so the team can act without recalculating under stress.
+        </div>
       </div>
-
-      <div className="mt-3 p-2.5 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
-        <strong className="text-foreground">Clinical use: </strong>
-        Calculate WETFLAG on PICU admission and at the start of any resuscitation. Write the values on the whiteboard / drug chart so the team can act without recalculating under stress.
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Cor Pictum folio — unified, in-app anatomical plate viewer in the
@@ -392,792 +393,798 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
   };
 
   return (
-    <div className={cn("rounded-2xl border border-border bg-card overflow-hidden", className)}>
-      {/* Atlas header strip */}
-      <div className="px-4 sm:px-6 pt-4 pb-3 border-b border-border bg-muted/20">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
-              {atlasTitle}
-            </p>
-            <p className="text-xs text-muted-foreground mt-0.5 italic">{atlasSubtitle}</p>
-          </div>
-          {plates.length > 1 ? (
-            <div className="relative flex items-center gap-1 max-w-full sm:max-w-[34rem]">
-              <button
-                type="button"
-                aria-label="Scroll plates left"
-                onClick={() => tabRailRef.current?.scrollBy({ left: -160, behavior: "smooth" })}
-                className="hidden sm:flex h-7 w-7 flex-none items-center justify-center rounded-md border border-border bg-background hover:bg-accent text-foreground/70"
-              >
-                <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
-              </button>
-              <div
-                ref={tabRailRef}
-                role="tablist"
-                aria-label={atlasTitle}
-                className="flex flex-1 overflow-x-auto snap-x snap-mandatory rounded-md border border-border bg-background p-0.5 gap-0.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-              >
-                {plates.map((p) => (
-                  <Button
-                    key={p.id}
-                    role="tab"
-                    aria-selected={activeId === p.id}
-                    size="sm"
-                    variant={activeId === p.id ? "default" : "ghost"}
-                    className="h-8 px-3 text-xs flex flex-col items-start leading-tight flex-none snap-start"
-                    onClick={() => setActiveId(p.id)}
-                  >
-                    <span className="font-semibold whitespace-nowrap">{p.tabLabel}</span>
-                    <span className="text-[9px] opacity-70 -mt-0.5 italic whitespace-nowrap">Plate {p.folio}</span>
-                  </Button>
-                ))}
-              </div>
-              <button
-                type="button"
-                aria-label="Scroll plates right"
-                onClick={() => tabRailRef.current?.scrollBy({ left: 160, behavior: "smooth" })}
-                className="hidden sm:flex h-7 w-7 flex-none items-center justify-center rounded-md border border-border bg-background hover:bg-accent text-foreground/70"
-              >
-                <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </button>
+    <DiagramFigure
+      id="cor-pictum-folio"
+      title="Cor pictum folio"
+      description="Auto-generated wrapper for the Cor pictum folio anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className={cn("rounded-2xl border border-border bg-card overflow-hidden", className)}>
+        {/* Atlas header strip */}
+        <div className="px-4 sm:px-6 pt-4 pb-3 border-b border-border bg-muted/20">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
+                {atlasTitle}
+              </p>
+              <p className="text-xs text-muted-foreground mt-0.5 italic">{atlasSubtitle}</p>
             </div>
-          ) : null}
-        </div>
-      </div>
-
-      {/* Painted plate on cream stock */}
-      <div
-        role="tabpanel"
-        aria-label={`${active.title} plate`}
-        className="relative bg-[hsl(38_38%_94%)] dark:bg-[hsl(38_18%_14%)]"
-      >
-        {/* Plate numeral, top-right (Netter-style small caps roman) */}
-        <span
-          aria-hidden
-          className="absolute top-3 right-4 sm:top-4 sm:right-6 font-serif text-foreground/55 text-[11px] sm:text-xs tracking-[0.25em] select-none z-10"
-        >
-          PLATE&nbsp;{active.folio}
-        </span>
-
-        {/* Plate title, top-left */}
-        <div className="absolute top-3 left-4 sm:top-4 sm:left-6 max-w-[70%] z-10">
-          <p className="font-serif text-[12px] sm:text-[13px] tracking-[0.04em] text-foreground">
-            {active.title}
-          </p>
-          <p className="font-serif text-[10.5px] sm:text-[11px] text-muted-foreground/90 mt-0.5 tracking-[0.01em]">
-            {active.subtitle}
-          </p>
-        </div>
-
-        {/* Review-mode toolbar */}
-        {reviewAllowed ? (
-          <div className="px-4 sm:px-6 pt-3 -mb-2 flex flex-wrap items-center gap-2 text-[11px]">
-            <button
-              type="button"
-              onClick={() => { setReviewMode((v) => !v); setSelectedEditIdx(null); }}
-              className={cn(
-                "px-2.5 py-1 rounded-md border font-semibold tracking-wide uppercase",
-                reviewMode
-                  ? "bg-[hsl(8_70%_50%)] text-white border-[hsl(8_55%_38%)]"
-                  : "bg-background text-foreground border-border hover:bg-accent",
-              )}
-              title="Toggle polygon-accuracy review mode"
-            >
-              {reviewMode ? "● Reviewing polygons" : "Review polygons"}
-            </button>
-            {reviewMode ? (
-              <>
-                <span className="text-muted-foreground">Tool:</span>
-                <div className="inline-flex rounded-md border border-border overflow-hidden">
-                  <button
-                    type="button"
-                    onClick={() => setTool("select")}
-                    className={cn("px-2 py-1", tool === "select" ? "bg-accent text-accent-foreground" : "bg-background hover:bg-muted")}
-                  >Select / drag</button>
-                  <button
-                    type="button"
-                    onClick={() => setTool("add")}
-                    className={cn("px-2 py-1 border-l border-border", tool === "add" ? "bg-accent text-accent-foreground" : "bg-background hover:bg-muted")}
-                    disabled={selectedEditIdx === null}
-                    title={selectedEditIdx === null ? "Select a label first" : "Click on plate to append vertex"}
-                  >+ Add vertex</button>
-                </div>
-                <label className="inline-flex items-center gap-1 ml-1">
-                  <input
-                    type="checkbox"
-                    checked={showAllOutlines}
-                    onChange={(e) => setShowAllOutlines(e.target.checked)}
-                    className="accent-[hsl(8_70%_50%)]"
-                  />
-                  Show all outlines
-                </label>
-                <span className="text-muted-foreground ml-auto">
-                  {selectedEditIdx !== null
-                    ? <>Editing: <strong className="text-foreground">{selectedEditIdx + 1}. {active.labels[selectedEditIdx]?.english}</strong></>
-                    : <>Click a polygon, badge, or label below to select.</>}
-                </span>
+            {plates.length > 1 ? (
+              <div className="relative flex items-center gap-1 max-w-full sm:max-w-[34rem]">
                 <button
                   type="button"
-                  onClick={copyExport}
-                  className="px-2.5 py-1 rounded-md border border-border bg-background hover:bg-accent font-semibold"
-                  title="Copy this plate's polygons as JSON for paste-back into anatomyFolios.ts"
+                  aria-label="Scroll plates left"
+                  onClick={() => tabRailRef.current?.scrollBy({ left: -160, behavior: "smooth" })}
+                  className="hidden sm:flex h-7 w-7 flex-none items-center justify-center rounded-md border border-border bg-background hover:bg-accent text-foreground/70"
                 >
-                  {copyFlash ? "✓ Copied!" : "Copy JSON"}
+                  <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
                 </button>
-                {selectedEditIdx !== null ? (
+                <div
+                  ref={tabRailRef}
+                  role="tablist"
+                  aria-label={atlasTitle}
+                  className="flex flex-1 overflow-x-auto snap-x snap-mandatory rounded-md border border-border bg-background p-0.5 gap-0.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                >
+                  {plates.map((p) => (
+                    <Button
+                      key={p.id}
+                      role="tab"
+                      aria-selected={activeId === p.id}
+                      size="sm"
+                      variant={activeId === p.id ? "default" : "ghost"}
+                      className="h-8 px-3 text-xs flex flex-col items-start leading-tight flex-none snap-start"
+                      onClick={() => setActiveId(p.id)}
+                    >
+                      <span className="font-semibold whitespace-nowrap">{p.tabLabel}</span>
+                      <span className="text-[9px] opacity-70 -mt-0.5 italic whitespace-nowrap">Plate {p.folio}</span>
+                    </Button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  aria-label="Scroll plates right"
+                  onClick={() => tabRailRef.current?.scrollBy({ left: 160, behavior: "smooth" })}
+                  className="hidden sm:flex h-7 w-7 flex-none items-center justify-center rounded-md border border-border bg-background hover:bg-accent text-foreground/70"
+                >
+                  <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </button>
+              </div>
+            ) : null}
+          </div>
+        </div>
+  
+        {/* Painted plate on cream stock */}
+        <div
+          role="tabpanel"
+          aria-label={`${active.title} plate`}
+          className="relative bg-[hsl(38_38%_94%)] dark:bg-[hsl(38_18%_14%)]"
+        >
+          {/* Plate numeral, top-right (Netter-style small caps roman) */}
+          <span
+            aria-hidden
+            className="absolute top-3 right-4 sm:top-4 sm:right-6 font-serif text-foreground/55 text-[11px] sm:text-xs tracking-[0.25em] select-none z-10"
+          >
+            PLATE&nbsp;{active.folio}
+          </span>
+  
+          {/* Plate title, top-left */}
+          <div className="absolute top-3 left-4 sm:top-4 sm:left-6 max-w-[70%] z-10">
+            <p className="font-serif text-[12px] sm:text-[13px] tracking-[0.04em] text-foreground">
+              {active.title}
+            </p>
+            <p className="font-serif text-[10.5px] sm:text-[11px] text-muted-foreground/90 mt-0.5 tracking-[0.01em]">
+              {active.subtitle}
+            </p>
+          </div>
+  
+          {/* Review-mode toolbar */}
+          {reviewAllowed ? (
+            <div className="px-4 sm:px-6 pt-3 -mb-2 flex flex-wrap items-center gap-2 text-[11px]">
+              <button
+                type="button"
+                onClick={() => { setReviewMode((v) => !v); setSelectedEditIdx(null); }}
+                className={cn(
+                  "px-2.5 py-1 rounded-md border font-semibold tracking-wide uppercase",
+                  reviewMode
+                    ? "bg-[hsl(8_70%_50%)] text-white border-[hsl(8_55%_38%)]"
+                    : "bg-background text-foreground border-border hover:bg-accent",
+                )}
+                title="Toggle polygon-accuracy review mode"
+              >
+                {reviewMode ? "● Reviewing polygons" : "Review polygons"}
+              </button>
+              {reviewMode ? (
+                <>
+                  <span className="text-muted-foreground">Tool:</span>
+                  <div className="inline-flex rounded-md border border-border overflow-hidden">
+                    <button
+                      type="button"
+                      onClick={() => setTool("select")}
+                      className={cn("px-2 py-1", tool === "select" ? "bg-accent text-accent-foreground" : "bg-background hover:bg-muted")}
+                    >Select / drag</button>
+                    <button
+                      type="button"
+                      onClick={() => setTool("add")}
+                      className={cn("px-2 py-1 border-l border-border", tool === "add" ? "bg-accent text-accent-foreground" : "bg-background hover:bg-muted")}
+                      disabled={selectedEditIdx === null}
+                      title={selectedEditIdx === null ? "Select a label first" : "Click on plate to append vertex"}
+                    >+ Add vertex</button>
+                  </div>
+                  <label className="inline-flex items-center gap-1 ml-1">
+                    <input
+                      type="checkbox"
+                      checked={showAllOutlines}
+                      onChange={(e) => setShowAllOutlines(e.target.checked)}
+                      className="accent-[hsl(8_70%_50%)]"
+                    />
+                    Show all outlines
+                  </label>
+                  <span className="text-muted-foreground ml-auto">
+                    {selectedEditIdx !== null
+                      ? <>Editing: <strong className="text-foreground">{selectedEditIdx + 1}. {active.labels[selectedEditIdx]?.english}</strong></>
+                      : <>Click a polygon, badge, or label below to select.</>}
+                  </span>
                   <button
                     type="button"
-                    onClick={() => setPolyFor(selectedEditIdx, active.labels[selectedEditIdx]?.polygon ? [...active.labels[selectedEditIdx].polygon!] as Array<[number, number]> : undefined)}
-                    className="px-2 py-1 rounded-md border border-border bg-background hover:bg-accent"
-                    title="Reset selected polygon to its original coordinates"
-                  >Reset</button>
-                ) : null}
-              </>
-            ) : (
-              <span className="text-muted-foreground">Visualise & nudge hotspot polygons, then copy the corrected JSON back into <code className="font-mono text-[10.5px]">anatomyFolios.ts</code>.</span>
-            )}
-          </div>
-        ) : null}
-
-        {/* Hairline plate-mark with zoom/pan stage.
-            On desktop we cap the stage width so the painted plate stays at
-            a comfortable reading size and constrain image height so portrait
-            plates never overflow the viewport. */}
-        <div className="px-4 sm:px-8 pt-14 sm:pt-16 pb-6">
-          <div ref={stageWrapRef} className="relative mx-auto w-full max-w-2xl lg:max-w-3xl border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
-            <div
-              ref={stageRef}
-              role="application"
-              aria-label="Zoomable painted plate. Use scroll or pinch to zoom, drag to pan."
-              onPointerDown={reviewMode ? undefined : onPointerDown}
-              onPointerMove={reviewMode ? undefined : onPointerMove}
-              onPointerUp={reviewMode ? undefined : onPointerUp}
-              onPointerCancel={reviewMode ? undefined : onPointerUp}
-              className="relative overflow-hidden touch-none select-none max-h-[78vh]"
-              style={{ cursor: reviewMode ? "default" : scale > 1 ? (panStart.current ? "grabbing" : "grab") : "default" }}
-            >
+                    onClick={copyExport}
+                    className="px-2.5 py-1 rounded-md border border-border bg-background hover:bg-accent font-semibold"
+                    title="Copy this plate's polygons as JSON for paste-back into anatomyFolios.ts"
+                  >
+                    {copyFlash ? "✓ Copied!" : "Copy JSON"}
+                  </button>
+                  {selectedEditIdx !== null ? (
+                    <button
+                      type="button"
+                      onClick={() => setPolyFor(selectedEditIdx, active.labels[selectedEditIdx]?.polygon ? [...active.labels[selectedEditIdx].polygon!] as Array<[number, number]> : undefined)}
+                      className="px-2 py-1 rounded-md border border-border bg-background hover:bg-accent"
+                      title="Reset selected polygon to its original coordinates"
+                    >Reset</button>
+                  ) : null}
+                </>
+              ) : (
+                <span className="text-muted-foreground">Visualise & nudge hotspot polygons, then copy the corrected JSON back into <code className="font-mono text-[10.5px]">anatomyFolios.ts</code>.</span>
+              )}
+            </div>
+          ) : null}
+  
+          {/* Hairline plate-mark with zoom/pan stage.
+              On desktop we cap the stage width so the painted plate stays at
+              a comfortable reading size and constrain image height so portrait
+              plates never overflow the viewport. */}
+          <div className="px-4 sm:px-8 pt-14 sm:pt-16 pb-6">
+            <div ref={stageWrapRef} className="relative mx-auto w-full max-w-2xl lg:max-w-3xl border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
               <div
-                style={{
-                  transform: `translate(${tx}px, ${ty}px) scale(${scale})`,
-                  transformOrigin: "center center",
-                  transition: pointers.current.size > 0 ? "none" : "transform 120ms ease-out",
-                  willChange: "transform",
-                }}
-                className="relative flex justify-center"
+                ref={stageRef}
+                role="application"
+                aria-label="Zoomable painted plate. Use scroll or pinch to zoom, drag to pan."
+                onPointerDown={reviewMode ? undefined : onPointerDown}
+                onPointerMove={reviewMode ? undefined : onPointerMove}
+                onPointerUp={reviewMode ? undefined : onPointerUp}
+                onPointerCancel={reviewMode ? undefined : onPointerUp}
+                className="relative overflow-hidden touch-none select-none max-h-[78vh]"
+                style={{ cursor: reviewMode ? "default" : scale > 1 ? (panStart.current ? "grabbing" : "grab") : "default" }}
               >
-                <img
-                  src={active.image}
-                  alt={active.alt}
-                  loading="lazy"
-                  draggable={false}
-                  className="w-full h-auto max-h-[78vh] object-contain block"
-                />
-
-                {/* Polygon hotspot overlay (display) */}
-                {hasAnyPolygons && !reviewMode ? (
-                  <svg
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                    aria-hidden
-                    className="absolute inset-0 w-full h-full pointer-events-none"
-                  >
-                    {active.labels.map((label, idx) => {
-                      if (!label.polygon || label.polygon.length < 3) return null;
-                      const isActive = activeLabelIdx === idx || pinnedLabelIdx === idx;
-                      const updatePanelPos = (clientX: number, clientY: number, i: number) => {
-                        const wrap = stageWrapRef.current;
-                        if (!wrap) return;
-                        const rect = wrap.getBoundingClientRect();
-                        setHoverPanel({ idx: i, x: clientX - rect.left, y: clientY - rect.top });
-                      };
-                      return (
-                        <polygon
-                          key={`${label.latin}-${idx}`}
-                          points={polygonToPoints(label.polygon)}
-                          className={cn(
-                            "transition-[fill,stroke,stroke-width,opacity] duration-150 cursor-pointer",
-                            isActive
-                              ? "fill-[hsl(8_70%_50%)]/25 stroke-[hsl(8_55%_38%)]"
-                              : "fill-transparent stroke-[hsl(8_55%_38%)]/45 hover:fill-[hsl(8_70%_50%)]/12 hover:stroke-[hsl(8_55%_38%)]/80",
-                          )}
-                          style={{
-                            strokeWidth: isActive ? 0.5 : 0.3,
-                            vectorEffect: "non-scaling-stroke",
-                            pointerEvents: "auto",
-                          }}
-                          onPointerEnter={(e) => {
-                            setActiveLabelIdx(idx);
-                            if (pinnedLabelIdx === null) updatePanelPos(e.clientX, e.clientY, idx);
-                          }}
-                          onPointerMove={(e) => {
-                            if (pinnedLabelIdx === null) updatePanelPos(e.clientX, e.clientY, idx);
-                          }}
-                          onPointerLeave={() => {
-                            setActiveLabelIdx((prev) => (prev === idx ? null : prev));
-                            if (pinnedLabelIdx === null) setHoverPanel(null);
-                          }}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setPinnedLabelIdx((prev) => (prev === idx ? null : idx));
-                            updatePanelPos(e.clientX, e.clientY, idx);
-                          }}
-                        >
-                          <title>{label.english}</title>
-                        </polygon>
-                      );
-                    })}
-                    {/* Always-on direct labels with overlap-avoidance + leaders */}
-                    {!suppressOverlayLabels && (() => {
-                      type Box = {
-                        idx: number;
-                        text: string;
-                        ax: number; ay: number;   // anchor (centroid)
-                        x: number; y: number;     // current centre
-                        hw: number; hh: number;   // half-width / half-height in viewBox units (0..100)
-                      };
-                      // Counter-scale font/stroke against the zoom transform so
-                      // labels stay at roughly constant screen size as users zoom.
-                      const zoomComp = 1 / Math.sqrt(Math.max(1, scale));
-                      // Slightly smaller, lighter face — easier to layer over busy art.
-                      const FS = 1.85 * zoomComp;
-                      const charW = FS * 0.52;
-                      const padX = 0.7 * zoomComp;
-                      const padY = 0.55 * zoomComp;
-                      const exclusions = active.labelExclusionZones ?? [];
-
-                      const boxes: Box[] = [];
-                      active.labels.forEach((label, idx) => {
-                        if (!label.polygon || label.polygon.length < 3) return;
-                        const cx = (label.polygon.reduce((s, p) => s + p[0], 0) / label.polygon.length) * 100;
-                        const cy = (label.polygon.reduce((s, p) => s + p[1], 0) / label.polygon.length) * 100;
-                        boxes.push({
-                          idx,
-                          text: label.english,
-                          ax: cx, ay: cy, x: cx, y: cy,
-                          hw: (label.english.length * charW) / 2 + padX,
-                          hh: FS / 2 + padY,
-                        });
-                      });
-
-                      // Iterative repulsion to separate overlapping label boxes,
-                      // with a soft pull back toward each anchor (centroid) and
-                      // hard-push away from baked-in label exclusion zones.
-                      const ITERS = 120;
-                      for (let it = 0; it < ITERS; it++) {
-                        let moved = false;
-                        for (let i = 0; i < boxes.length; i++) {
-                          const a = boxes[i];
-
-                          // 1. label vs label
-                          for (let j = i + 1; j < boxes.length; j++) {
-                            const b = boxes[j];
-                            const dx = b.x - a.x;
-                            const dy = b.y - a.y;
-                            const ox = a.hw + b.hw - Math.abs(dx);
-                            const oy = a.hh + b.hh - Math.abs(dy);
-                            if (ox > 0 && oy > 0) {
-                              moved = true;
-                              if (oy <= ox * 0.9) {
-                                const push = (oy / 2) + 0.05;
-                                const sgn = dy === 0 ? (i % 2 ? 1 : -1) : Math.sign(dy);
-                                a.y -= sgn * push;
-                                b.y += sgn * push;
-                              } else {
-                                const push = (ox / 2) + 0.05;
-                                const sgn = dx === 0 ? (i % 2 ? 1 : -1) : Math.sign(dx);
-                                a.x -= sgn * push;
-                                b.x += sgn * push;
-                              }
-                            }
-                          }
-
-                          // 2. label vs baked-in exclusion zones
-                          for (const [zx, zy, zw, zh] of exclusions) {
-                            const ex = zx * 100;
-                            const ey = zy * 100;
-                            const ehw = (zw * 100) / 2;
-                            const ehh = (zh * 100) / 2;
-                            const ecx = ex + ehw;
-                            const ecy = ey + ehh;
-                            const dx = a.x - ecx;
-                            const dy = a.y - ecy;
-                            const ox = a.hw + ehw - Math.abs(dx);
-                            const oy = a.hh + ehh - Math.abs(dy);
-                            if (ox > 0 && oy > 0) {
-                              moved = true;
-                              if (oy <= ox) {
-                                const sgn = dy === 0 ? -1 : Math.sign(dy);
-                                a.y += sgn * (oy + 0.1);
-                              } else {
-                                const sgn = dx === 0 ? -1 : Math.sign(dx);
-                                a.x += sgn * (ox + 0.1);
-                              }
-                            }
-                          }
-
-                          // Soft pull back toward anchor so labels stay near their structure
-                          a.x += (a.ax - a.x) * 0.04;
-                          a.y += (a.ay - a.y) * 0.04;
-                          // Clamp inside plate
-                          a.x = Math.max(a.hw + 0.5, Math.min(100 - a.hw - 0.5, a.x));
-                          a.y = Math.max(a.hh + 0.5, Math.min(100 - a.hh - 0.5, a.y));
-                        }
-                        if (!moved) break;
-                      }
-
-                      return boxes.map((b) => {
-                        const isActive = activeLabelIdx === b.idx || pinnedLabelIdx === b.idx;
-                        const dist = Math.hypot(b.x - b.ax, b.y - b.ay);
-                        const showLeader = dist > b.hh + 0.8;
-
-                        // Where the leader meets the box edge — clip to the
-                        // bounding rectangle so it never crosses the text.
-                        let edgeX = b.x;
-                        let edgeY = b.y;
-                        if (showLeader) {
-                          const dx = b.ax - b.x;
-                          const dy = b.ay - b.y;
-                          const ax = Math.abs(dx) || 1e-6;
-                          const ay = Math.abs(dy) || 1e-6;
-                          const t = Math.min(b.hw / ax, b.hh / ay);
-                          edgeX = b.x + dx * t;
-                          edgeY = b.y + dy * t;
-                        }
-
+                <div
+                  style={{
+                    transform: `translate(${tx}px, ${ty}px) scale(${scale})`,
+                    transformOrigin: "center center",
+                    transition: pointers.current.size > 0 ? "none" : "transform 120ms ease-out",
+                    willChange: "transform",
+                  }}
+                  className="relative flex justify-center"
+                >
+                  <img
+                    src={active.image}
+                    alt={active.alt}
+                    loading="lazy"
+                    draggable={false}
+                    className="w-full h-auto max-h-[78vh] object-contain block"
+                  />
+  
+                  {/* Polygon hotspot overlay (display) */}
+                  {hasAnyPolygons && !reviewMode ? (
+                    <svg
+                      viewBox="0 0 100 100"
+                      preserveAspectRatio="none"
+                      aria-hidden
+                      className="absolute inset-0 w-full h-full pointer-events-none"
+                    >
+                      {active.labels.map((label, idx) => {
+                        if (!label.polygon || label.polygon.length < 3) return null;
+                        const isActive = activeLabelIdx === idx || pinnedLabelIdx === idx;
+                        const updatePanelPos = (clientX: number, clientY: number, i: number) => {
+                          const wrap = stageWrapRef.current;
+                          if (!wrap) return;
+                          const rect = wrap.getBoundingClientRect();
+                          setHoverPanel({ idx: i, x: clientX - rect.left, y: clientY - rect.top });
+                        };
                         return (
-                          <g key={`lbl-${b.idx}`}>
-                            {showLeader && (
-                              <>
-                                {/* Subtle white halo so the leader reads over busy art */}
-                                <line
-                                  x1={b.ax} y1={b.ay} x2={edgeX} y2={edgeY}
-                                  stroke="hsl(40 50% 96%)"
-                                  strokeWidth={0.55 * zoomComp}
-                                  strokeOpacity={0.85}
-                                  strokeLinecap="round"
-                                  style={{ vectorEffect: "non-scaling-stroke" }}
-                                />
-                                <line
-                                  x1={b.ax} y1={b.ay} x2={edgeX} y2={edgeY}
-                                  stroke={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 25%)"}
-                                  strokeWidth={0.22 * zoomComp}
-                                  strokeOpacity={isActive ? 0.95 : 0.7}
-                                  strokeLinecap="round"
-                                  style={{ vectorEffect: "non-scaling-stroke" }}
-                                />
-                                {/* Endpoint dot at the anatomical anchor */}
-                                <circle
-                                  cx={b.ax} cy={b.ay}
-                                  r={0.35 * zoomComp}
-                                  fill={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 25%)"}
-                                  stroke="hsl(40 50% 96%)"
-                                  strokeWidth={0.18 * zoomComp}
-                                  style={{ vectorEffect: "non-scaling-stroke" }}
-                                />
-                              </>
-                            )}
-                            <text
-                              x={b.x}
-                              y={b.y}
-                              textAnchor="middle"
-                              dominantBaseline="central"
-                              fontSize={FS}
-                              fontWeight={isActive ? 700 : 600}
-                              fill={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 18%)"}
-                              stroke="hsl(40 50% 96%)"
-                              strokeWidth={0.85 * zoomComp}
-                              strokeLinejoin="round"
-                              paintOrder="stroke"
-                              style={{ pointerEvents: "none", letterSpacing: "0.015em" }}
-                            >
-                              {b.text}
-                            </text>
-                          </g>
-                        );
-                      });
-                    })()}
-                  </svg>
-                ) : null}
-
-                {/* Polygon REVIEW overlay (editor) */}
-                {reviewMode ? (
-                  <svg
-                    ref={overlaySvgRef}
-                    viewBox="0 0 1 1"
-                    preserveAspectRatio="none"
-                    className="absolute inset-0 w-full h-full"
-                    style={{ cursor: tool === "add" && selectedEditIdx !== null ? "crosshair" : "default" }}
-                    onPointerMove={moveVertexDrag}
-                    onPointerUp={endVertexDrag}
-                    onPointerCancel={endVertexDrag}
-                    onClick={handleOverlayClick}
-                  >
-                    {active.labels.map((label, idx) => {
-                      const poly = polyFor(idx);
-                      if (!poly || poly.length < 3) return null;
-                      const isSelected = selectedEditIdx === idx;
-                      const visible = isSelected || showAllOutlines;
-                      if (!visible) return null;
-                      const colour = reviewColor(idx);
-                      const pts = poly.map(([x, y]) => `${x},${y}`).join(" ");
-                      const cx = poly.reduce((s, p) => s + p[0], 0) / poly.length;
-                      const cy = poly.reduce((s, p) => s + p[1], 0) / poly.length;
-                      return (
-                        <g key={`${label.latin}-${idx}`}>
                           <polygon
-                            points={pts}
-                            fill={colour}
-                            fillOpacity={isSelected ? 0.22 : 0.05}
-                            stroke={colour}
-                            strokeOpacity={isSelected ? 1 : 0.7}
-                            strokeWidth={isSelected ? 0.005 : 0.0025}
-                            style={{ vectorEffect: "non-scaling-stroke", cursor: "pointer" }}
-                            onClick={(ev) => {
-                              ev.stopPropagation();
-                              setSelectedEditIdx(idx);
+                            key={`${label.latin}-${idx}`}
+                            points={polygonToPoints(label.polygon)}
+                            className={cn(
+                              "transition-[fill,stroke,stroke-width,opacity] duration-150 cursor-pointer",
+                              isActive
+                                ? "fill-[hsl(8_70%_50%)]/25 stroke-[hsl(8_55%_38%)]"
+                                : "fill-transparent stroke-[hsl(8_55%_38%)]/45 hover:fill-[hsl(8_70%_50%)]/12 hover:stroke-[hsl(8_55%_38%)]/80",
+                            )}
+                            style={{
+                              strokeWidth: isActive ? 0.5 : 0.3,
+                              vectorEffect: "non-scaling-stroke",
+                              pointerEvents: "auto",
+                            }}
+                            onPointerEnter={(e) => {
                               setActiveLabelIdx(idx);
+                              if (pinnedLabelIdx === null) updatePanelPos(e.clientX, e.clientY, idx);
+                            }}
+                            onPointerMove={(e) => {
+                              if (pinnedLabelIdx === null) updatePanelPos(e.clientX, e.clientY, idx);
+                            }}
+                            onPointerLeave={() => {
+                              setActiveLabelIdx((prev) => (prev === idx ? null : prev));
+                              if (pinnedLabelIdx === null) setHoverPanel(null);
+                            }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setPinnedLabelIdx((prev) => (prev === idx ? null : idx));
+                              updatePanelPos(e.clientX, e.clientY, idx);
                             }}
                           >
-                            <title>{`${idx + 1}. ${label.english}`}</title>
+                            <title>{label.english}</title>
                           </polygon>
-                          {/* index badge at centroid */}
-                          <g transform={`translate(${cx} ${cy})`}>
-                            <circle r={0.018} fill="hsl(0 0% 100%)" stroke={colour} strokeWidth={0.5}
-                              style={{ vectorEffect: "non-scaling-stroke" }} />
-                            <text textAnchor="middle" dominantBaseline="central"
-                              fontSize="0.022" fontWeight={700} fill={colour}>
-                              {idx + 1}
-                            </text>
-                          </g>
-                          {/* draggable vertices when selected */}
-                          {isSelected
-                            ? poly.map(([x, y], vi) => (
-                                <circle
-                                  key={vi}
-                                  cx={x}
-                                  cy={y}
-                                  r={0.012}
-                                  fill="hsl(0 0% 100%)"
-                                  stroke={colour}
-                                  strokeWidth={0.5}
-                                  style={{ vectorEffect: "non-scaling-stroke", cursor: "grab", touchAction: "none" }}
-                                  onPointerDown={beginVertexDrag(idx, vi)}
-                                  onDoubleClick={removeVertex(idx, vi)}
-                                  onContextMenu={removeVertex(idx, vi)}
-                                >
-                                  <title>{`vertex ${vi + 1} — drag to move, double-click or right-click to delete`}</title>
-                                </circle>
-                              ))
-                            : null}
-                        </g>
-                      );
-                    })}
-                  </svg>
-                ) : null}
-              </div>
-            </div>
-
-            {/* Zoom controls */}
-            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex flex-col gap-1 opacity-80 hover:opacity-100 focus-within:opacity-100 transition-opacity">
-              <button
-                type="button"
-                onClick={() => zoomAt(1.4)}
-                aria-label="Zoom in"
-                className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground"
-              >
-                <ZoomIn className="h-3.5 w-3.5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                onClick={() => zoomAt(1 / 1.4)}
-                aria-label="Zoom out"
-                className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground"
-              >
-                <ZoomOut className="h-3.5 w-3.5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                onClick={reset}
-                aria-label="Reset zoom and pan"
-                disabled={!isZoomed}
-                className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-              </button>
-            </div>
-
-            {!isZoomed ? (
-              <p className="absolute bottom-2 left-3 text-[10px] text-muted-foreground/70 pointer-events-none select-none">
-                Scroll / pinch to zoom · drag to pan
-                {hasAnyPolygons ? " · click a structure for details" : ""}
-              </p>
-            ) : null}
-
-            {/* Floating polygon info panel (hover/click) */}
-            {!reviewMode && hoverPanel && (() => {
-              const idx = pinnedLabelIdx ?? hoverPanel.idx;
-              const label = active.labels[idx];
-              if (!label) return null;
-              const wrap = stageWrapRef.current;
-              const wrapW = wrap?.clientWidth ?? 0;
-              const wrapH = wrap?.clientHeight ?? 0;
-              const PANEL_W = 280;
-              // flip to the left if the cursor is in the right half
-              const flipX = hoverPanel.x + PANEL_W + 18 > wrapW;
-              const left = flipX ? Math.max(8, hoverPanel.x - PANEL_W - 14) : hoverPanel.x + 14;
-              // clamp vertically — assume a generous max height
-              const top = Math.max(8, Math.min(wrapH - 40, hoverPanel.y + 14));
-              const isPinned = pinnedLabelIdx === idx;
-              return (
-                <div
-                  role="dialog"
-                  aria-label={`${label.english} — details`}
-                  className={cn(
-                    "absolute z-20 pointer-events-auto rounded-lg border bg-background/95 backdrop-blur-sm shadow-lg p-3 text-left animate-fade-in",
-                    isPinned ? "border-[hsl(8_55%_38%)]" : "border-border",
-                  )}
-                  style={{ left, top, width: PANEL_W }}
-                  onPointerDown={(e) => e.stopPropagation()}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <div className="flex items-start justify-between gap-2 mb-1">
-                    <div className="min-w-0">
-                      <p className="font-serif text-[13.5px] leading-snug text-foreground truncate">
-                        {label.english}
-                      </p>
-                      <p className="font-serif italic text-[11px] text-muted-foreground/90 leading-snug">
-                        {label.latin}
-                      </p>
-                    </div>
-                    {isPinned ? (
-                      <button
-                        type="button"
-                        aria-label="Close details"
-                        onClick={() => { setPinnedLabelIdx(null); setHoverPanel(null); }}
-                        className="-mr-1 -mt-1 h-5 w-5 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground flex items-center justify-center text-sm leading-none"
-                      >×</button>
-                    ) : null}
-                  </div>
-
-                  {label.examTags && label.examTags.length > 0 ? (
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      {label.examTags.map((t) => (
-                        <span
-                          key={t}
-                          className="text-[9px] uppercase tracking-wide rounded-sm border border-[hsl(8_55%_38%)]/40 bg-[hsl(8_70%_50%)]/10 px-1.5 py-0.5 font-semibold text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)]"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {label.note ? (
-                    <p className="text-[11.5px] text-muted-foreground leading-snug mb-1.5">
-                      {label.note}
-                    </p>
-                  ) : null}
-
-                  {label.learningPoint ? (
-                    <p className="text-[11.5px] text-foreground/90 leading-relaxed border-l-2 border-[hsl(8_55%_38%)]/60 pl-2 mt-1">
-                      <span className="font-semibold uppercase tracking-wide text-[9.5px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] mr-1">
-                        FRCA learning point
-                      </span>
-                      {label.learningPoint}
-                    </p>
-                  ) : null}
-
-                  <p className="text-[9.5px] text-muted-foreground/70 mt-2">
-                    {isPinned ? "Pinned · click × or another structure to dismiss" : "Click polygon to pin · scroll to read"}
-                  </p>
-                </div>
-              );
-            })()}
-
-          </div>
-
-          {/* English caption strip beneath the plate-mark */}
-          <p className="mt-3 text-center font-serif text-xs sm:text-sm text-muted-foreground">
-            {active.caption}
-          </p>
-
-          {/* FRCA curriculum mapping chips — filtered by the exam header */}
-          {visibleCurriculumLinks.length > 0 ? (
-            <div className="mt-4 flex flex-col items-center gap-2">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
-                Mapped to FRCA curriculum
-              </p>
-              <div className="relative w-full max-w-2xl">
-                <div
-                  className="flex overflow-x-auto snap-x gap-1.5 px-1 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-                >
-                  {visibleCurriculumLinks.map((link) => {
-                    const examLabel = link.exams
-                      .map((e) =>
-                        e === "primary" ? "Primary" : e === "final" ? "Final" : e === "fficm" ? "FFICM" : "EDIC",
-                      )
-                      .join(" · ");
-                    const Tag = link.anchor ? "a" : "span";
-                    const onClick = link.anchor
-                      ? (ev: ReactMouseEvent) => {
-                          const node = document.getElementById(link.anchor!);
-                          if (node) {
-                            ev.preventDefault();
-                            node.scrollIntoView({ behavior: "smooth", block: "start" });
-                            node.classList.add("ring-2", "ring-primary/60", "rounded-md");
-                            window.setTimeout(
-                              () => node.classList.remove("ring-2", "ring-primary/60", "rounded-md"),
-                              1600,
-                            );
+                        );
+                      })}
+                      {/* Always-on direct labels with overlap-avoidance + leaders */}
+                      {!suppressOverlayLabels && (() => {
+                        type Box = {
+                          idx: number;
+                          text: string;
+                          ax: number; ay: number;   // anchor (centroid)
+                          x: number; y: number;     // current centre
+                          hw: number; hh: number;   // half-width / half-height in viewBox units (0..100)
+                        };
+                        // Counter-scale font/stroke against the zoom transform so
+                        // labels stay at roughly constant screen size as users zoom.
+                        const zoomComp = 1 / Math.sqrt(Math.max(1, scale));
+                        // Slightly smaller, lighter face — easier to layer over busy art.
+                        const FS = 1.85 * zoomComp;
+                        const charW = FS * 0.52;
+                        const padX = 0.7 * zoomComp;
+                        const padY = 0.55 * zoomComp;
+                        const exclusions = active.labelExclusionZones ?? [];
+  
+                        const boxes: Box[] = [];
+                        active.labels.forEach((label, idx) => {
+                          if (!label.polygon || label.polygon.length < 3) return;
+                          const cx = (label.polygon.reduce((s, p) => s + p[0], 0) / label.polygon.length) * 100;
+                          const cy = (label.polygon.reduce((s, p) => s + p[1], 0) / label.polygon.length) * 100;
+                          boxes.push({
+                            idx,
+                            text: label.english,
+                            ax: cx, ay: cy, x: cx, y: cy,
+                            hw: (label.english.length * charW) / 2 + padX,
+                            hh: FS / 2 + padY,
+                          });
+                        });
+  
+                        // Iterative repulsion to separate overlapping label boxes,
+                        // with a soft pull back toward each anchor (centroid) and
+                        // hard-push away from baked-in label exclusion zones.
+                        const ITERS = 120;
+                        for (let it = 0; it < ITERS; it++) {
+                          let moved = false;
+                          for (let i = 0; i < boxes.length; i++) {
+                            const a = boxes[i];
+  
+                            // 1. label vs label
+                            for (let j = i + 1; j < boxes.length; j++) {
+                              const b = boxes[j];
+                              const dx = b.x - a.x;
+                              const dy = b.y - a.y;
+                              const ox = a.hw + b.hw - Math.abs(dx);
+                              const oy = a.hh + b.hh - Math.abs(dy);
+                              if (ox > 0 && oy > 0) {
+                                moved = true;
+                                if (oy <= ox * 0.9) {
+                                  const push = (oy / 2) + 0.05;
+                                  const sgn = dy === 0 ? (i % 2 ? 1 : -1) : Math.sign(dy);
+                                  a.y -= sgn * push;
+                                  b.y += sgn * push;
+                                } else {
+                                  const push = (ox / 2) + 0.05;
+                                  const sgn = dx === 0 ? (i % 2 ? 1 : -1) : Math.sign(dx);
+                                  a.x -= sgn * push;
+                                  b.x += sgn * push;
+                                }
+                              }
+                            }
+  
+                            // 2. label vs baked-in exclusion zones
+                            for (const [zx, zy, zw, zh] of exclusions) {
+                              const ex = zx * 100;
+                              const ey = zy * 100;
+                              const ehw = (zw * 100) / 2;
+                              const ehh = (zh * 100) / 2;
+                              const ecx = ex + ehw;
+                              const ecy = ey + ehh;
+                              const dx = a.x - ecx;
+                              const dy = a.y - ecy;
+                              const ox = a.hw + ehw - Math.abs(dx);
+                              const oy = a.hh + ehh - Math.abs(dy);
+                              if (ox > 0 && oy > 0) {
+                                moved = true;
+                                if (oy <= ox) {
+                                  const sgn = dy === 0 ? -1 : Math.sign(dy);
+                                  a.y += sgn * (oy + 0.1);
+                                } else {
+                                  const sgn = dx === 0 ? -1 : Math.sign(dx);
+                                  a.x += sgn * (ox + 0.1);
+                                }
+                              }
+                            }
+  
+                            // Soft pull back toward anchor so labels stay near their structure
+                            a.x += (a.ax - a.x) * 0.04;
+                            a.y += (a.ay - a.y) * 0.04;
+                            // Clamp inside plate
+                            a.x = Math.max(a.hw + 0.5, Math.min(100 - a.hw - 0.5, a.x));
+                            a.y = Math.max(a.hh + 0.5, Math.min(100 - a.hh - 0.5, a.y));
                           }
+                          if (!moved) break;
                         }
-                      : undefined;
-                    return (
-                      <Tag
-                        key={`${link.code}-${link.title}`}
-                        href={link.anchor ? `#${link.anchor}` : undefined}
-                        onClick={onClick}
-                        title={`${link.code} — ${link.title} (${examLabel})`}
-                        className={cn(
-                          "inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[10.5px] font-medium flex-none snap-start",
-                          "border-border bg-background/80 text-foreground/85",
-                          link.anchor
-                            ? "hover:bg-accent hover:text-accent-foreground hover:border-primary/40 cursor-pointer transition-colors"
-                            : "cursor-default",
-                        )}
-                      >
-                        <span className="font-mono text-[9.5px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] whitespace-nowrap">
-                          {link.code}
-                        </span>
-                        <span className="opacity-70">·</span>
-                        <span className="whitespace-nowrap">{link.title}</span>
-                        <span className="text-[9px] uppercase tracking-wider opacity-60 whitespace-nowrap">{examLabel}</span>
-                      </Tag>
-                    );
-                  })}
-                </div>
-                {/* edge fades */}
-                <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-[hsl(38_38%_94%)] dark:from-[hsl(38_18%_14%)] to-transparent" />
-                <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-[hsl(38_38%_94%)] dark:from-[hsl(38_18%_14%)] to-transparent" />
-              </div>
-            </div>
-          ) : null}
-        </div>
-      </div>
-
-      {/* Labelled regions list */}
-      <div className="border-t border-border bg-card px-4 sm:px-6 py-4">
-        <div className="flex items-baseline justify-between gap-3 mb-3">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
-            Index nominum — labelled structures
-          </p>
-          {hasAnyExamTags ? (
-            <p className="text-[10px] text-muted-foreground italic">
-              Filtered by the exam chips in the header
-            </p>
-          ) : null}
-        </div>
-
-        {visibleLabels.length === 0 ? (
-          <p className="text-sm text-muted-foreground italic">
-            No structures match the current exam filter.
-          </p>
-        ) : (
-          <div
-            className="relative max-h-[26rem] overflow-y-auto pr-1 -mr-1 [scrollbar-width:thin]"
-            aria-label="Scroll to browse all labelled structures"
-          >
-            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
-            {visibleLabels.map(({ label, idx }) => {
-              const isActive = activeLabelIdx === idx;
-              const interactive = !!(label.polygon && label.polygon.length >= 3);
-              return (
-                    <li
-                  key={`${label.latin}-${idx}`}
-                  id={`${reactId}-label-${idx}`}
-                  className={cn(
-                    "flex gap-3 rounded-md p-1.5 -m-1.5 transition-colors",
-                    (interactive || reviewMode) && "cursor-pointer",
-                    isActive && "bg-[hsl(8_55%_38%)]/8 dark:bg-[hsl(8_60%_60%)]/10",
-                    reviewMode && selectedEditIdx === idx && "ring-2 ring-[hsl(8_70%_50%)]/70",
-                  )}
-                  onPointerEnter={() => interactive && setActiveLabelIdx(idx)}
-                  onPointerLeave={() =>
-                    interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))
-                  }
-                  onFocus={() => interactive && setActiveLabelIdx(idx)}
-                  onBlur={() => interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))}
-                  onClick={() => { if (reviewMode) setSelectedEditIdx(idx); }}
-                  tabIndex={interactive || reviewMode ? 0 : -1}
-                >
-                  {reviewMode ? (
-                    <span
-                      aria-hidden
-                      className="mt-[0.4rem] flex-none w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center text-white"
-                      style={{ background: reviewColor(idx) }}
-                    >
-                      {idx + 1}
-                    </span>
+  
+                        return boxes.map((b) => {
+                          const isActive = activeLabelIdx === b.idx || pinnedLabelIdx === b.idx;
+                          const dist = Math.hypot(b.x - b.ax, b.y - b.ay);
+                          const showLeader = dist > b.hh + 0.8;
+  
+                          // Where the leader meets the box edge — clip to the
+                          // bounding rectangle so it never crosses the text.
+                          let edgeX = b.x;
+                          let edgeY = b.y;
+                          if (showLeader) {
+                            const dx = b.ax - b.x;
+                            const dy = b.ay - b.y;
+                            const ax = Math.abs(dx) || 1e-6;
+                            const ay = Math.abs(dy) || 1e-6;
+                            const t = Math.min(b.hw / ax, b.hh / ay);
+                            edgeX = b.x + dx * t;
+                            edgeY = b.y + dy * t;
+                          }
+  
+                          return (
+                            <g key={`lbl-${b.idx}`}>
+                              {showLeader && (
+                                <>
+                                  {/* Subtle white halo so the leader reads over busy art */}
+                                  <line
+                                    x1={b.ax} y1={b.ay} x2={edgeX} y2={edgeY}
+                                    stroke="hsl(40 50% 96%)"
+                                    strokeWidth={0.55 * zoomComp}
+                                    strokeOpacity={0.85}
+                                    strokeLinecap="round"
+                                    style={{ vectorEffect: "non-scaling-stroke" }}
+                                  />
+                                  <line
+                                    x1={b.ax} y1={b.ay} x2={edgeX} y2={edgeY}
+                                    stroke={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 25%)"}
+                                    strokeWidth={0.22 * zoomComp}
+                                    strokeOpacity={isActive ? 0.95 : 0.7}
+                                    strokeLinecap="round"
+                                    style={{ vectorEffect: "non-scaling-stroke" }}
+                                  />
+                                  {/* Endpoint dot at the anatomical anchor */}
+                                  <circle
+                                    cx={b.ax} cy={b.ay}
+                                    r={0.35 * zoomComp}
+                                    fill={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 25%)"}
+                                    stroke="hsl(40 50% 96%)"
+                                    strokeWidth={0.18 * zoomComp}
+                                    style={{ vectorEffect: "non-scaling-stroke" }}
+                                  />
+                                </>
+                              )}
+                              <text
+                                x={b.x}
+                                y={b.y}
+                                textAnchor="middle"
+                                dominantBaseline="central"
+                                fontSize={FS}
+                                fontWeight={isActive ? 700 : 600}
+                                fill={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 18%)"}
+                                stroke="hsl(40 50% 96%)"
+                                strokeWidth={0.85 * zoomComp}
+                                strokeLinejoin="round"
+                                paintOrder="stroke"
+                                style={{ pointerEvents: "none", letterSpacing: "0.015em" }}
+                              >
+                                {b.text}
+                              </text>
+                            </g>
+                          );
+                        });
+                      })()}
+                    </svg>
                   ) : null}
-                  <span
-                    aria-hidden
+  
+                  {/* Polygon REVIEW overlay (editor) */}
+                  {reviewMode ? (
+                    <svg
+                      ref={overlaySvgRef}
+                      viewBox="0 0 1 1"
+                      preserveAspectRatio="none"
+                      className="absolute inset-0 w-full h-full"
+                      style={{ cursor: tool === "add" && selectedEditIdx !== null ? "crosshair" : "default" }}
+                      onPointerMove={moveVertexDrag}
+                      onPointerUp={endVertexDrag}
+                      onPointerCancel={endVertexDrag}
+                      onClick={handleOverlayClick}
+                    >
+                      {active.labels.map((label, idx) => {
+                        const poly = polyFor(idx);
+                        if (!poly || poly.length < 3) return null;
+                        const isSelected = selectedEditIdx === idx;
+                        const visible = isSelected || showAllOutlines;
+                        if (!visible) return null;
+                        const colour = reviewColor(idx);
+                        const pts = poly.map(([x, y]) => `${x},${y}`).join(" ");
+                        const cx = poly.reduce((s, p) => s + p[0], 0) / poly.length;
+                        const cy = poly.reduce((s, p) => s + p[1], 0) / poly.length;
+                        return (
+                          <g key={`${label.latin}-${idx}`}>
+                            <polygon
+                              points={pts}
+                              fill={colour}
+                              fillOpacity={isSelected ? 0.22 : 0.05}
+                              stroke={colour}
+                              strokeOpacity={isSelected ? 1 : 0.7}
+                              strokeWidth={isSelected ? 0.005 : 0.0025}
+                              style={{ vectorEffect: "non-scaling-stroke", cursor: "pointer" }}
+                              onClick={(ev) => {
+                                ev.stopPropagation();
+                                setSelectedEditIdx(idx);
+                                setActiveLabelIdx(idx);
+                              }}
+                            >
+                              <title>{`${idx + 1}. ${label.english}`}</title>
+                            </polygon>
+                            {/* index badge at centroid */}
+                            <g transform={`translate(${cx} ${cy})`}>
+                              <circle r={0.018} fill="hsl(0 0% 100%)" stroke={colour} strokeWidth={0.5}
+                                style={{ vectorEffect: "non-scaling-stroke" }} />
+                              <text textAnchor="middle" dominantBaseline="central"
+                                fontSize="0.022" fontWeight={700} fill={colour}>
+                                {idx + 1}
+                              </text>
+                            </g>
+                            {/* draggable vertices when selected */}
+                            {isSelected
+                              ? poly.map(([x, y], vi) => (
+                                  <circle
+                                    key={vi}
+                                    cx={x}
+                                    cy={y}
+                                    r={0.012}
+                                    fill="hsl(0 0% 100%)"
+                                    stroke={colour}
+                                    strokeWidth={0.5}
+                                    style={{ vectorEffect: "non-scaling-stroke", cursor: "grab", touchAction: "none" }}
+                                    onPointerDown={beginVertexDrag(idx, vi)}
+                                    onDoubleClick={removeVertex(idx, vi)}
+                                    onContextMenu={removeVertex(idx, vi)}
+                                  >
+                                    <title>{`vertex ${vi + 1} — drag to move, double-click or right-click to delete`}</title>
+                                  </circle>
+                                ))
+                              : null}
+                          </g>
+                        );
+                      })}
+                    </svg>
+                  ) : null}
+                </div>
+              </div>
+  
+              {/* Zoom controls */}
+              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex flex-col gap-1 opacity-80 hover:opacity-100 focus-within:opacity-100 transition-opacity">
+                <button
+                  type="button"
+                  onClick={() => zoomAt(1.4)}
+                  aria-label="Zoom in"
+                  className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground"
+                >
+                  <ZoomIn className="h-3.5 w-3.5" aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => zoomAt(1 / 1.4)}
+                  aria-label="Zoom out"
+                  className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground"
+                >
+                  <ZoomOut className="h-3.5 w-3.5" aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  onClick={reset}
+                  aria-label="Reset zoom and pan"
+                  disabled={!isZoomed}
+                  className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
+                </button>
+              </div>
+  
+              {!isZoomed ? (
+                <p className="absolute bottom-2 left-3 text-[10px] text-muted-foreground/70 pointer-events-none select-none">
+                  Scroll / pinch to zoom · drag to pan
+                  {hasAnyPolygons ? " · click a structure for details" : ""}
+                </p>
+              ) : null}
+  
+              {/* Floating polygon info panel (hover/click) */}
+              {!reviewMode && hoverPanel && (() => {
+                const idx = pinnedLabelIdx ?? hoverPanel.idx;
+                const label = active.labels[idx];
+                if (!label) return null;
+                const wrap = stageWrapRef.current;
+                const wrapW = wrap?.clientWidth ?? 0;
+                const wrapH = wrap?.clientHeight ?? 0;
+                const PANEL_W = 280;
+                // flip to the left if the cursor is in the right half
+                const flipX = hoverPanel.x + PANEL_W + 18 > wrapW;
+                const left = flipX ? Math.max(8, hoverPanel.x - PANEL_W - 14) : hoverPanel.x + 14;
+                // clamp vertically — assume a generous max height
+                const top = Math.max(8, Math.min(wrapH - 40, hoverPanel.y + 14));
+                const isPinned = pinnedLabelIdx === idx;
+                return (
+                  <div
+                    role="dialog"
+                    aria-label={`${label.english} — details`}
                     className={cn(
-                      "mt-[0.55rem] flex-none flex items-center transition-all",
-                      isActive ? "w-7" : "w-5",
+                      "absolute z-20 pointer-events-auto rounded-lg border bg-background/95 backdrop-blur-sm shadow-lg p-3 text-left animate-fade-in",
+                      isPinned ? "border-[hsl(8_55%_38%)]" : "border-border",
                     )}
+                    style={{ left, top, width: PANEL_W }}
+                    onPointerDown={(e) => e.stopPropagation()}
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <span
-                      className={cn(
-                        "h-px flex-1 transition-colors",
-                        isActive
-                          ? "bg-foreground/70 dark:bg-foreground/80"
-                          : "bg-foreground/35 dark:bg-foreground/40",
-                      )}
-                    />
-                    <span
-                      className={cn(
-                        "h-1 w-1 rounded-full transition-colors",
-                        isActive
-                          ? "bg-foreground/80 dark:bg-foreground/90"
-                          : "bg-foreground/45 dark:bg-foreground/50",
-                      )}
-                    />
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="font-serif text-[13px] sm:text-[13.5px] leading-snug tracking-[0.005em] text-foreground">
-                      {label.english}
-                    </p>
-                    <p className="font-serif italic text-[11.5px] text-muted-foreground/90 leading-snug mt-0.5">{label.note}</p>
-                    {label.learningPoint ? (
-                      <p className="text-xs text-foreground/85 leading-relaxed mt-1 border-l-2 border-[hsl(8_55%_38%)]/60 pl-2">
-                        <span className="font-semibold uppercase tracking-wide text-[10px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] mr-1">
-                          FRCA
-                        </span>
-                        {label.learningPoint}
-                      </p>
-                    ) : null}
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <div className="min-w-0">
+                        <p className="font-serif text-[13.5px] leading-snug text-foreground truncate">
+                          {label.english}
+                        </p>
+                        <p className="font-serif italic text-[11px] text-muted-foreground/90 leading-snug">
+                          {label.latin}
+                        </p>
+                      </div>
+                      {isPinned ? (
+                        <button
+                          type="button"
+                          aria-label="Close details"
+                          onClick={() => { setPinnedLabelIdx(null); setHoverPanel(null); }}
+                          className="-mr-1 -mt-1 h-5 w-5 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground flex items-center justify-center text-sm leading-none"
+                        >×</button>
+                      ) : null}
+                    </div>
+  
                     {label.examTags && label.examTags.length > 0 ? (
-                      <div className="flex flex-wrap gap-1 mt-1.5">
+                      <div className="flex flex-wrap gap-1 mb-2">
                         {label.examTags.map((t) => (
                           <span
                             key={t}
-                            className="text-[9px] uppercase tracking-wide rounded-sm border border-border bg-muted/40 px-1.5 py-0.5 text-muted-foreground"
+                            className="text-[9px] uppercase tracking-wide rounded-sm border border-[hsl(8_55%_38%)]/40 bg-[hsl(8_70%_50%)]/10 px-1.5 py-0.5 font-semibold text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)]"
                           >
                             {t}
                           </span>
                         ))}
                       </div>
                     ) : null}
+  
+                    {label.note ? (
+                      <p className="text-[11.5px] text-muted-foreground leading-snug mb-1.5">
+                        {label.note}
+                      </p>
+                    ) : null}
+  
+                    {label.learningPoint ? (
+                      <p className="text-[11.5px] text-foreground/90 leading-relaxed border-l-2 border-[hsl(8_55%_38%)]/60 pl-2 mt-1">
+                        <span className="font-semibold uppercase tracking-wide text-[9.5px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] mr-1">
+                          FRCA learning point
+                        </span>
+                        {label.learningPoint}
+                      </p>
+                    ) : null}
+  
+                    <p className="text-[9.5px] text-muted-foreground/70 mt-2">
+                      {isPinned ? "Pinned · click × or another structure to dismiss" : "Click polygon to pin · scroll to read"}
+                    </p>
                   </div>
-                </li>
-  );
-            })}
-            </ul>
+                );
+              })()}
+  
+            </div>
+  
+            {/* English caption strip beneath the plate-mark */}
+            <p className="mt-3 text-center font-serif text-xs sm:text-sm text-muted-foreground">
+              {active.caption}
+            </p>
+  
+            {/* FRCA curriculum mapping chips — filtered by the exam header */}
+            {visibleCurriculumLinks.length > 0 ? (
+              <div className="mt-4 flex flex-col items-center gap-2">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                  Mapped to FRCA curriculum
+                </p>
+                <div className="relative w-full max-w-2xl">
+                  <div
+                    className="flex overflow-x-auto snap-x gap-1.5 px-1 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                  >
+                    {visibleCurriculumLinks.map((link) => {
+                      const examLabel = link.exams
+                        .map((e) =>
+                          e === "primary" ? "Primary" : e === "final" ? "Final" : e === "fficm" ? "FFICM" : "EDIC",
+                        )
+                        .join(" · ");
+                      const Tag = link.anchor ? "a" : "span";
+                      const onClick = link.anchor
+                        ? (ev: ReactMouseEvent) => {
+                            const node = document.getElementById(link.anchor!);
+                            if (node) {
+                              ev.preventDefault();
+                              node.scrollIntoView({ behavior: "smooth", block: "start" });
+                              node.classList.add("ring-2", "ring-primary/60", "rounded-md");
+                              window.setTimeout(
+                                () => node.classList.remove("ring-2", "ring-primary/60", "rounded-md"),
+                                1600,
+                              );
+                            }
+                          }
+                        : undefined;
+                      return (
+                        <Tag
+                          key={`${link.code}-${link.title}`}
+                          href={link.anchor ? `#${link.anchor}` : undefined}
+                          onClick={onClick}
+                          title={`${link.code} — ${link.title} (${examLabel})`}
+                          className={cn(
+                            "inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[10.5px] font-medium flex-none snap-start",
+                            "border-border bg-background/80 text-foreground/85",
+                            link.anchor
+                              ? "hover:bg-accent hover:text-accent-foreground hover:border-primary/40 cursor-pointer transition-colors"
+                              : "cursor-default",
+                          )}
+                        >
+                          <span className="font-mono text-[9.5px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] whitespace-nowrap">
+                            {link.code}
+                          </span>
+                          <span className="opacity-70">·</span>
+                          <span className="whitespace-nowrap">{link.title}</span>
+                          <span className="text-[9px] uppercase tracking-wider opacity-60 whitespace-nowrap">{examLabel}</span>
+                        </Tag>
+                      );
+                    })}
+                  </div>
+                  {/* edge fades */}
+                  <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-[hsl(38_38%_94%)] dark:from-[hsl(38_18%_14%)] to-transparent" />
+                  <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-[hsl(38_38%_94%)] dark:from-[hsl(38_18%_14%)] to-transparent" />
+                </div>
+              </div>
+            ) : null}
           </div>
-        )}
+        </div>
+  
+        {/* Labelled regions list */}
+        <div className="border-t border-border bg-card px-4 sm:px-6 py-4">
+          <div className="flex items-baseline justify-between gap-3 mb-3">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
+              Index nominum — labelled structures
+            </p>
+            {hasAnyExamTags ? (
+              <p className="text-[10px] text-muted-foreground italic">
+                Filtered by the exam chips in the header
+              </p>
+            ) : null}
+          </div>
+  
+          {visibleLabels.length === 0 ? (
+            <p className="text-sm text-muted-foreground italic">
+              No structures match the current exam filter.
+            </p>
+          ) : (
+            <div
+              className="relative max-h-[26rem] overflow-y-auto pr-1 -mr-1 [scrollbar-width:thin]"
+              aria-label="Scroll to browse all labelled structures"
+            >
+              <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+              {visibleLabels.map(({ label, idx }) => {
+                const isActive = activeLabelIdx === idx;
+                const interactive = !!(label.polygon && label.polygon.length >= 3);
+                return (
+                      <li
+                    key={`${label.latin}-${idx}`}
+                    id={`${reactId}-label-${idx}`}
+                    className={cn(
+                      "flex gap-3 rounded-md p-1.5 -m-1.5 transition-colors",
+                      (interactive || reviewMode) && "cursor-pointer",
+                      isActive && "bg-[hsl(8_55%_38%)]/8 dark:bg-[hsl(8_60%_60%)]/10",
+                      reviewMode && selectedEditIdx === idx && "ring-2 ring-[hsl(8_70%_50%)]/70",
+                    )}
+                    onPointerEnter={() => interactive && setActiveLabelIdx(idx)}
+                    onPointerLeave={() =>
+                      interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))
+                    }
+                    onFocus={() => interactive && setActiveLabelIdx(idx)}
+                    onBlur={() => interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))}
+                    onClick={() => { if (reviewMode) setSelectedEditIdx(idx); }}
+                    tabIndex={interactive || reviewMode ? 0 : -1}
+                  >
+                    {reviewMode ? (
+                      <span
+                        aria-hidden
+                        className="mt-[0.4rem] flex-none w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center text-white"
+                        style={{ background: reviewColor(idx) }}
+                      >
+                        {idx + 1}
+                      </span>
+                    ) : null}
+                    <span
+                      aria-hidden
+                      className={cn(
+                        "mt-[0.55rem] flex-none flex items-center transition-all",
+                        isActive ? "w-7" : "w-5",
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          "h-px flex-1 transition-colors",
+                          isActive
+                            ? "bg-foreground/70 dark:bg-foreground/80"
+                            : "bg-foreground/35 dark:bg-foreground/40",
+                        )}
+                      />
+                      <span
+                        className={cn(
+                          "h-1 w-1 rounded-full transition-colors",
+                          isActive
+                            ? "bg-foreground/80 dark:bg-foreground/90"
+                            : "bg-foreground/45 dark:bg-foreground/50",
+                        )}
+                      />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-serif text-[13px] sm:text-[13.5px] leading-snug tracking-[0.005em] text-foreground">
+                        {label.english}
+                      </p>
+                      <p className="font-serif italic text-[11.5px] text-muted-foreground/90 leading-snug mt-0.5">{label.note}</p>
+                      {label.learningPoint ? (
+                        <p className="text-xs text-foreground/85 leading-relaxed mt-1 border-l-2 border-[hsl(8_55%_38%)]/60 pl-2">
+                          <span className="font-semibold uppercase tracking-wide text-[10px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] mr-1">
+                            FRCA
+                          </span>
+                          {label.learningPoint}
+                        </p>
+                      ) : null}
+                      {label.examTags && label.examTags.length > 0 ? (
+                        <div className="flex flex-wrap gap-1 mt-1.5">
+                          {label.examTags.map((t) => (
+                            <span
+                              key={t}
+                              className="text-[9px] uppercase tracking-wide rounded-sm border border-border bg-muted/40 px-1.5 py-0.5 text-muted-foreground"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  </li>
+    );
+              })}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

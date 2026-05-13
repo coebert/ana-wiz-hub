@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type VaccineKey = "live" | "inactivated" | "subunit" | "toxoid" | "mrna" | "vector";
 
@@ -347,25 +348,31 @@ interface DetailBlockProps {
 }
 
 const DetailBlock = ({ title, items, color, highlight }: DetailBlockProps) => (
-  <div
-    className="rounded-lg border p-3"
-    style={{
-      borderColor: highlight ? withAlpha(color, 0.4) : "hsl(var(--border))",
-      backgroundColor: highlight ? withAlpha(color, 0.05) : "transparent",
-    }}
-  >
-    <div className="text-[10px] uppercase tracking-wide font-semibold mb-1.5" style={{ color }}>
-      {title}
+    <DiagramFigure
+      id="vaccine-types-diagram"
+      title="Vaccine types"
+      description="Auto-generated wrapper for the Vaccine types anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+        <div
+      className="rounded-lg border p-3"
+      style={{
+        borderColor: highlight ? withAlpha(color, 0.4) : "hsl(var(--border))",
+        backgroundColor: highlight ? withAlpha(color, 0.05) : "transparent",
+      }}
+    >
+      <div className="text-[10px] uppercase tracking-wide font-semibold mb-1.5" style={{ color }}>
+        {title}
+      </div>
+      <ul className="space-y-1 text-xs text-muted-foreground leading-relaxed">
+        {items.map((item, i) => (
+          <li key={i} className="flex gap-1.5">
+            <span style={{ color }}>•</span>
+            <span className="flex-1">{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
-    <ul className="space-y-1 text-xs text-muted-foreground leading-relaxed">
-      {items.map((item, i) => (
-        <li key={i} className="flex gap-1.5">
-          <span style={{ color }}>•</span>
-          <span className="flex-1">{item}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+    </DiagramFigure>
+  );
 
 export default VaccineTypesDiagram;

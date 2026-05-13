@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type DeviceCategory = "ett" | "sad1" | "sad2" | "vl-channelled" | "vl-standard";
 
@@ -180,39 +181,45 @@ export const AirwayDevicesDiagram = () => {
   const d = devices[active];
 
   return (
-        <div className="space-y-4">
-      <div className="flex gap-1.5 flex-wrap">
-        {(Object.keys(devices) as DeviceCategory[]).map((key) => (
-          <Button key={key} variant={active === key ? "default" : "outline"} size="sm" className="text-xs" onClick={() => setActive(key)}>
-            {devices[key].label}
-          </Button>
-        ))}
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-4">
-        {/* Cross-section diagram */}
-        <div className="rounded-lg border border-border bg-secondary/20 p-3">
-          {d.crossSection}
+    <DiagramFigure
+      id="airway-devices-diagram"
+      title="Airway devices"
+      description="Auto-generated wrapper for the Airway devices anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-4">
+        <div className="flex gap-1.5 flex-wrap">
+          {(Object.keys(devices) as DeviceCategory[]).map((key) => (
+            <Button key={key} variant={active === key ? "default" : "outline"} size="sm" className="text-xs" onClick={() => setActive(key)}>
+              {devices[key].label}
+            </Button>
+          ))}
         </div>
-
-        {/* Features */}
-        <div className="space-y-3">
-          <div>
-            <p className="font-semibold text-foreground text-sm">{d.fullName}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">{d.examples}</p>
-            {d.sealPressure && (
-              <p className="text-xs text-primary font-medium mt-1">Seal pressure: {d.sealPressure}</p>
-            )}
+  
+        <div className="grid sm:grid-cols-2 gap-4">
+          {/* Cross-section diagram */}
+          <div className="rounded-lg border border-border bg-secondary/20 p-3">
+            {d.crossSection}
           </div>
-          <ul className="space-y-1.5">
-            {d.keyFeatures.map((f) => (
-              <li key={f} className="text-xs text-muted-foreground flex items-start gap-1.5">
-                <span className="text-primary mt-0.5 shrink-0">▸</span>{f}
-              </li>
-            ))}
-          </ul>
+  
+          {/* Features */}
+          <div className="space-y-3">
+            <div>
+              <p className="font-semibold text-foreground text-sm">{d.fullName}</p>
+              <p className="text-xs text-muted-foreground mt-0.5">{d.examples}</p>
+              {d.sealPressure && (
+                <p className="text-xs text-primary font-medium mt-1">Seal pressure: {d.sealPressure}</p>
+              )}
+            </div>
+            <ul className="space-y-1.5">
+              {d.keyFeatures.map((f) => (
+                <li key={f} className="text-xs text-muted-foreground flex items-start gap-1.5">
+                  <span className="text-primary mt-0.5 shrink-0">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Category = "induction" | "volatile" | "nmba" | "analgesic" | "reversal" | "other";
 
@@ -63,45 +64,51 @@ const RespiratoryDrugSafetyDiagram = () => {
   const [category, setCategory] = useState<Category>("induction");
 
   return (
-        <div className="space-y-4 mb-8">
-      <div className="p-4 rounded-lg border border-border bg-card">
-        <h2 className="text-xl font-serif font-bold text-foreground mb-1">Drug Safety in Reactive Airways</h2>
-        <p className="text-sm text-muted-foreground mb-3">Interactive guide to safe and avoid drugs for patients with asthma or COPD. Select a category.</p>
-
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {categories.map((c) => (
-            <Button key={c.key} variant={category === c.key ? "default" : "outline"} size="sm" onClick={() => setCategory(c.key)} className="text-xs">
-              {c.label}
-            </Button>
-          ))}
-        </div>
-
-        <div className="space-y-2">
-          {drugs[category].map((d) => (
-            <div key={d.name} className={`flex items-start gap-3 p-3 rounded-lg border transition-colors ${d.safe ? "border-chart-4/30 bg-chart-4/5" : "border-destructive/30 bg-destructive/5"}`}>
-              <span className={`flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-bold ${d.safe ? "bg-chart-4/20 text-chart-4" : "bg-destructive/20 text-destructive"}`}>
-                {d.safe ? "✓" : "✗"}
-              </span>
-              <div>
-                <p className="text-sm font-semibold text-foreground">{d.name}</p>
-                <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{d.note}</p>
+    <DiagramFigure
+      id="respiratory-drug-safety-diagram"
+      title="Respiratory drug safety"
+      description="Auto-generated wrapper for the Respiratory drug safety anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-4 mb-8">
+        <div className="p-4 rounded-lg border border-border bg-card">
+          <h2 className="text-xl font-serif font-bold text-foreground mb-1">Drug Safety in Reactive Airways</h2>
+          <p className="text-sm text-muted-foreground mb-3">Interactive guide to safe and avoid drugs for patients with asthma or COPD. Select a category.</p>
+  
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {categories.map((c) => (
+              <Button key={c.key} variant={category === c.key ? "default" : "outline"} size="sm" onClick={() => setCategory(c.key)} className="text-xs">
+                {c.label}
+              </Button>
+            ))}
+          </div>
+  
+          <div className="space-y-2">
+            {drugs[category].map((d) => (
+              <div key={d.name} className={`flex items-start gap-3 p-3 rounded-lg border transition-colors ${d.safe ? "border-chart-4/30 bg-chart-4/5" : "border-destructive/30 bg-destructive/5"}`}>
+                <span className={`flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-bold ${d.safe ? "bg-chart-4/20 text-chart-4" : "bg-destructive/20 text-destructive"}`}>
+                  {d.safe ? "✓" : "✗"}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">{d.name}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{d.note}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+  
+        <div className="p-3 rounded-lg border border-border bg-card">
+          <p className="text-xs font-semibold text-foreground mb-1">Acute Intraoperative Bronchospasm Protocol</p>
+          <div className="flex flex-wrap gap-1.5">
+            {["Deepen anaesthesia", "100% O₂", "Salbutamol MDI (8 puffs)", "IV salbutamol 250 µg", "IV MgSO₄ 2 g", "IV hydrocortisone 200 mg", "IV aminophylline (last-line)"].map((step, i) => (
+              <span key={step} className="text-[10px] px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                {i + 1}. {step}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-
-      <div className="p-3 rounded-lg border border-border bg-card">
-        <p className="text-xs font-semibold text-foreground mb-1">Acute Intraoperative Bronchospasm Protocol</p>
-        <div className="flex flex-wrap gap-1.5">
-          {["Deepen anaesthesia", "100% O₂", "Salbutamol MDI (8 puffs)", "IV salbutamol 250 µg", "IV MgSO₄ 2 g", "IV hydrocortisone 200 mg", "IV aminophylline (last-line)"].map((step, i) => (
-            <span key={step} className="text-[10px] px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-              {i + 1}. {step}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

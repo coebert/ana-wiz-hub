@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type DopplerJet =
   | "off"
@@ -439,193 +440,199 @@ const EchoDiagram = () => {
   ];
 
   return (
-    <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
-      <h3 className="text-lg font-bold text-foreground mb-1">Echocardiography for Anaesthesia & ICU</h3>
-      <p className="text-sm text-muted-foreground mb-4">Standard views, key measurements, and focused echo in shock</p>
-
-      <Tabs defaultValue="views" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 mb-4">
-          <TabsTrigger value="views" className="text-xs">Standard Views</TabsTrigger>
-          <TabsTrigger value="measurements" className="text-xs">Measurements</TabsTrigger>
-          <TabsTrigger value="fuse" className="text-xs">FUSE Protocol</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="views">
-          <div className="grid grid-cols-2 gap-1.5 mb-3">
-            {views.map((v) => (
-              <button
-                key={v.id}
-                onClick={() => setSelectedView(selectedView === v.id ? null : v.id)}
-                className={`p-2 rounded-lg border text-left transition-all text-xs ${selectedView === v.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
-              >
-                <span className="font-bold text-foreground">{v.name}</span>
-                <p className="text-muted-foreground mt-0.5 text-[10px]">{v.full}</p>
-              </button>
-            ))}
-          </div>
-
-          {selectedView && (() => {
-            const v = views.find((x) => x.id === selectedView)!;
-            return (
-              <div className="animate-fade-in space-y-3">
-                <div className="bg-background rounded-lg border border-border p-2">{v.svg}</div>
-                {(v.id === "plax" || v.id === "a4c") && (
-                  <div className="p-2 rounded-lg border border-border bg-background space-y-2">
-                    <div className="flex items-center justify-between gap-2 flex-wrap">
-                      <span className="text-[11px] font-semibold text-foreground">Colour Doppler overlay</span>
-                      <span className="text-[10px] text-muted-foreground">Red = towards probe · Blue = away · Mosaic = aliased (above Nyquist)</span>
+    <DiagramFigure
+      id="echo-diagram"
+      title="Echo"
+      description="Auto-generated wrapper for the Echo anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
+        <h3 className="text-lg font-bold text-foreground mb-1">Echocardiography for Anaesthesia & ICU</h3>
+        <p className="text-sm text-muted-foreground mb-4">Standard views, key measurements, and focused echo in shock</p>
+  
+        <Tabs defaultValue="views" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 mb-4">
+            <TabsTrigger value="views" className="text-xs">Standard Views</TabsTrigger>
+            <TabsTrigger value="measurements" className="text-xs">Measurements</TabsTrigger>
+            <TabsTrigger value="fuse" className="text-xs">FUSE Protocol</TabsTrigger>
+          </TabsList>
+  
+          <TabsContent value="views">
+            <div className="grid grid-cols-2 gap-1.5 mb-3">
+              {views.map((v) => (
+                <button
+                  key={v.id}
+                  onClick={() => setSelectedView(selectedView === v.id ? null : v.id)}
+                  className={`p-2 rounded-lg border text-left transition-all text-xs ${selectedView === v.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
+                >
+                  <span className="font-bold text-foreground">{v.name}</span>
+                  <p className="text-muted-foreground mt-0.5 text-[10px]">{v.full}</p>
+                </button>
+              ))}
+            </div>
+  
+            {selectedView && (() => {
+              const v = views.find((x) => x.id === selectedView)!;
+              return (
+                <div className="animate-fade-in space-y-3">
+                  <div className="bg-background rounded-lg border border-border p-2">{v.svg}</div>
+                  {(v.id === "plax" || v.id === "a4c") && (
+                    <div className="p-2 rounded-lg border border-border bg-background space-y-2">
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <span className="text-[11px] font-semibold text-foreground">Colour Doppler overlay</span>
+                        <span className="text-[10px] text-muted-foreground">Red = towards probe · Blue = away · Mosaic = aliased (above Nyquist)</span>
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        {([
+                          { id: "off", label: "Off" },
+                          { id: "normal", label: "Normal flow" },
+                          { id: "mr", label: "MR" },
+                          { id: "ar", label: "AR" },
+                          { id: "tr", label: "TR" },
+                          { id: "ms", label: "MS" },
+                        ] as { id: DopplerJet; label: string }[]).map((opt) => (
+                          <button
+                            key={opt.id}
+                            onClick={() => setDoppler(opt.id)}
+                            className={`px-2 py-1 rounded text-[10px] font-semibold border transition-all ${doppler === opt.id ? "border-primary bg-primary/15 text-foreground ring-1 ring-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}
+                          >
+                            {opt.label}
+                          </button>
+                        ))}
+                      </div>
+                      {doppler !== "off" && (
+                        <div className="text-[11px] text-muted-foreground space-y-1 pt-1 border-t border-border">
+                          {doppler === "normal" && (
+                            <p><strong className="text-foreground">Normal flow:</strong> low-velocity laminar flow stays within the Nyquist limit, so colour stays pure red (towards probe) or pure blue (away). MV inflow appears red on PLAX/A4C in diastole; LVOT→Ao appears blue on PLAX in systole.</p>
+                          )}
+                          {doppler === "mr" && (
+                            <p><strong className="text-foreground">Mitral regurgitation:</strong> high-velocity systolic jet from LV→LA. Mosaic colours indicate aliasing (velocity exceeds Nyquist limit ≈ ½ PRF). <strong className="text-foreground">PISA</strong> (proximal isovelocity surface area) — flow converges into hemispheric shells on the LV side; measure the radius (r) at the aliasing velocity (Va) to calculate <em>EROA = 2πr² × Va / Vmax</em>. Severe MR: EROA ≥0.4 cm², jet area &gt;40% of LA, vena contracta ≥7 mm.</p>
+                          )}
+                          {doppler === "ar" && (
+                            <p><strong className="text-foreground">Aortic regurgitation:</strong> diastolic mosaic jet from aortic root back into the LV (PLAX or A5C). Severity by jet width / LVOT diameter ratio (&gt;65% = severe), vena contracta ≥6 mm, pressure half-time &lt;200 ms (severe), holodiastolic flow reversal in descending aorta.</p>
+                          )}
+                          {doppler === "tr" && (
+                            <p><strong className="text-foreground">Tricuspid regurgitation:</strong> systolic jet RV→RA on A4C. CW Doppler peak velocity (TR Vmax) used to estimate <strong className="text-foreground">PASP = 4·(TR Vmax)² + RAP</strong> (modified Bernoulli). Mild TR is present in ~70% of normal subjects and is the main route to non-invasive PASP estimation.</p>
+                          )}
+                          {doppler === "ms" && (
+                            <p><strong className="text-foreground">Mitral stenosis:</strong> narrow high-velocity diastolic mosaic jet through stenotic orifice (rheumatic in most cases). Severity by mean gradient (severe &gt;10 mmHg), pressure half-time (MVA = 220 / PHT; severe ≤1.0 cm²) and planimetered orifice area on PSAX.</p>
+                          )}
+                          <p className="pt-1 border-t border-border/60"><strong className="text-foreground">Nyquist limit:</strong> the maximum unambiguous velocity = ½ PRF. Velocities above this <em>alias</em> — red wraps to blue (or vice-versa), producing the characteristic mosaic. Lowering the Nyquist (colour scale) increases sensitivity to slow flow but worsens aliasing for high-velocity jets.</p>
+                        </div>
+                      )}
                     </div>
-                    <div className="flex flex-wrap gap-1">
-                      {([
-                        { id: "off", label: "Off" },
-                        { id: "normal", label: "Normal flow" },
-                        { id: "mr", label: "MR" },
-                        { id: "ar", label: "AR" },
-                        { id: "tr", label: "TR" },
-                        { id: "ms", label: "MS" },
-                      ] as { id: DopplerJet; label: string }[]).map((opt) => (
-                        <button
-                          key={opt.id}
-                          onClick={() => setDoppler(opt.id)}
-                          className={`px-2 py-1 rounded text-[10px] font-semibold border transition-all ${doppler === opt.id ? "border-primary bg-primary/15 text-foreground ring-1 ring-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}
-                        >
-                          {opt.label}
-                        </button>
-                      ))}
+                  )}
+                  <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2">
+                    <p className="font-bold text-foreground text-sm">{v.full} ({v.name})</p>
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">Probe position: </span>
+                      <span className="text-muted-foreground">{v.probe}</span>
                     </div>
-                    {doppler !== "off" && (
-                      <div className="text-[11px] text-muted-foreground space-y-1 pt-1 border-t border-border">
-                        {doppler === "normal" && (
-                          <p><strong className="text-foreground">Normal flow:</strong> low-velocity laminar flow stays within the Nyquist limit, so colour stays pure red (towards probe) or pure blue (away). MV inflow appears red on PLAX/A4C in diastole; LVOT→Ao appears blue on PLAX in systole.</p>
-                        )}
-                        {doppler === "mr" && (
-                          <p><strong className="text-foreground">Mitral regurgitation:</strong> high-velocity systolic jet from LV→LA. Mosaic colours indicate aliasing (velocity exceeds Nyquist limit ≈ ½ PRF). <strong className="text-foreground">PISA</strong> (proximal isovelocity surface area) — flow converges into hemispheric shells on the LV side; measure the radius (r) at the aliasing velocity (Va) to calculate <em>EROA = 2πr² × Va / Vmax</em>. Severe MR: EROA ≥0.4 cm², jet area &gt;40% of LA, vena contracta ≥7 mm.</p>
-                        )}
-                        {doppler === "ar" && (
-                          <p><strong className="text-foreground">Aortic regurgitation:</strong> diastolic mosaic jet from aortic root back into the LV (PLAX or A5C). Severity by jet width / LVOT diameter ratio (&gt;65% = severe), vena contracta ≥6 mm, pressure half-time &lt;200 ms (severe), holodiastolic flow reversal in descending aorta.</p>
-                        )}
-                        {doppler === "tr" && (
-                          <p><strong className="text-foreground">Tricuspid regurgitation:</strong> systolic jet RV→RA on A4C. CW Doppler peak velocity (TR Vmax) used to estimate <strong className="text-foreground">PASP = 4·(TR Vmax)² + RAP</strong> (modified Bernoulli). Mild TR is present in ~70% of normal subjects and is the main route to non-invasive PASP estimation.</p>
-                        )}
-                        {doppler === "ms" && (
-                          <p><strong className="text-foreground">Mitral stenosis:</strong> narrow high-velocity diastolic mosaic jet through stenotic orifice (rheumatic in most cases). Severity by mean gradient (severe &gt;10 mmHg), pressure half-time (MVA = 220 / PHT; severe ≤1.0 cm²) and planimetered orifice area on PSAX.</p>
-                        )}
-                        <p className="pt-1 border-t border-border/60"><strong className="text-foreground">Nyquist limit:</strong> the maximum unambiguous velocity = ½ PRF. Velocities above this <em>alias</em> — red wraps to blue (or vice-versa), producing the characteristic mosaic. Lowering the Nyquist (colour scale) increases sensitivity to slow flow but worsens aliasing for high-velocity jets.</p>
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">Structures: </span>
+                      <span className="text-muted-foreground">{v.structures}</span>
+                    </div>
+                    <div className="p-2 rounded bg-background border border-border">
+                      <span className="font-semibold text-foreground">Measurements: </span>
+                      <span className="text-muted-foreground">{v.measures}</span>
+                    </div>
+                    <div className="p-2 rounded bg-primary/10 border border-primary/20">
+                      <span className="font-semibold text-foreground">Pathology: </span>
+                      <span className="text-muted-foreground">{v.pathology}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+  
+            {!selectedView && (
+              <div className="p-3 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
+                <strong className="text-foreground">Echo windows: </strong>
+                Parasternal views use the cardiac notch (lung-free zone). Apical views: patient must be in left lateral decubitus. Subcostal: best window in ventilated/obese patients (liver as acoustic window). Always adjust gain, depth, and sector width before assessing.
+              </div>
+            )}
+          </TabsContent>
+  
+          <TabsContent value="measurements">
+            <p className="text-xs text-muted-foreground mb-3">Core quantitative measurements — tap for method and grading</p>
+            <div className="grid grid-cols-2 gap-1.5 mb-3">
+              {measurements.map((m) => (
+                <button
+                  key={m.id}
+                  onClick={() => setSelectedMeasurement(selectedMeasurement === m.id ? null : m.id)}
+                  className={`p-2 rounded-lg border text-left transition-all text-xs ${selectedMeasurement === m.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
+                >
+                  <span className="font-bold text-foreground">{m.name}</span>
+                  <p className="text-muted-foreground mt-0.5 text-[10px]">{m.full}</p>
+                  <p className="text-primary text-[10px] font-semibold mt-0.5">Normal: {m.normal}</p>
+                </button>
+              ))}
+            </div>
+  
+            {selectedMeasurement && (() => {
+              const m = measurements.find((x) => x.id === selectedMeasurement)!;
+              return (
+                    <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 animate-fade-in text-xs space-y-2">
+                  <p className="font-bold text-foreground text-sm">{m.name} — {m.full}</p>
+                  <div className="p-2 rounded bg-background border border-border">
+                    <span className="font-semibold text-foreground">How to measure: </span>
+                    <span className="text-muted-foreground">{m.method}</span>
+                  </div>
+                  <div className="p-2 rounded bg-background border border-border">
+                    <span className="font-semibold text-foreground">Grading: </span>
+                    <span className="text-muted-foreground">{m.grades}</span>
+                  </div>
+                  <div className="p-2 rounded bg-primary/10 border border-primary/20">
+                    <span className="font-semibold text-foreground">Clinical significance: </span>
+                    <span className="text-muted-foreground">{m.clinical}</span>
+                  </div>
+                </div>
+    );
+            })()}
+          </TabsContent>
+  
+          <TabsContent value="fuse">
+            <p className="text-xs text-muted-foreground mb-1 font-semibold">Focused Ultrasound in Shock & Emergencies</p>
+            <p className="text-xs text-muted-foreground mb-3">Systematic 6-step protocol — identify the cause of shock at the bedside in &lt;5 minutes</p>
+  
+            <div className="space-y-2">
+              {fuseSteps.map((s, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSelectedFUSE(selectedFUSE === i ? null : i)}
+                  className={`w-full text-left transition-all ${selectedFUSE === i ? "ring-1 ring-primary" : ""}`}
+                >
+                  <div className={`p-3 rounded-lg border ${selectedFUSE === i ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>
+                    <div className="flex items-center gap-2">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center text-xs font-bold text-primary">{i + 1}</span>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <p className="font-bold text-foreground text-sm">{s.step}</p>
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground">{s.view}</span>
+                        </div>
+                      </div>
+                    </div>
+                    {selectedFUSE === i && (
+                      <div className="mt-2 ml-8 space-y-1.5 animate-fade-in text-xs">
+                        <p className="text-muted-foreground"><strong className="text-foreground">Look for:</strong> {s.look}</p>
+                        <div className="p-2 rounded bg-primary/10 border border-primary/20">
+                          <span className="font-semibold text-foreground">Action: </span>
+                          <span className="text-muted-foreground">{s.action}</span>
+                        </div>
                       </div>
                     )}
                   </div>
-                )}
-                <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2">
-                  <p className="font-bold text-foreground text-sm">{v.full} ({v.name})</p>
-                  <div className="p-2 rounded bg-background border border-border">
-                    <span className="font-semibold text-foreground">Probe position: </span>
-                    <span className="text-muted-foreground">{v.probe}</span>
-                  </div>
-                  <div className="p-2 rounded bg-background border border-border">
-                    <span className="font-semibold text-foreground">Structures: </span>
-                    <span className="text-muted-foreground">{v.structures}</span>
-                  </div>
-                  <div className="p-2 rounded bg-background border border-border">
-                    <span className="font-semibold text-foreground">Measurements: </span>
-                    <span className="text-muted-foreground">{v.measures}</span>
-                  </div>
-                  <div className="p-2 rounded bg-primary/10 border border-primary/20">
-                    <span className="font-semibold text-foreground">Pathology: </span>
-                    <span className="text-muted-foreground">{v.pathology}</span>
-                  </div>
-                </div>
-              </div>
-            );
-          })()}
-
-          {!selectedView && (
-            <div className="p-3 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
-              <strong className="text-foreground">Echo windows: </strong>
-              Parasternal views use the cardiac notch (lung-free zone). Apical views: patient must be in left lateral decubitus. Subcostal: best window in ventilated/obese patients (liver as acoustic window). Always adjust gain, depth, and sector width before assessing.
+                </button>
+              ))}
             </div>
-          )}
-        </TabsContent>
-
-        <TabsContent value="measurements">
-          <p className="text-xs text-muted-foreground mb-3">Core quantitative measurements — tap for method and grading</p>
-          <div className="grid grid-cols-2 gap-1.5 mb-3">
-            {measurements.map((m) => (
-              <button
-                key={m.id}
-                onClick={() => setSelectedMeasurement(selectedMeasurement === m.id ? null : m.id)}
-                className={`p-2 rounded-lg border text-left transition-all text-xs ${selectedMeasurement === m.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
-              >
-                <span className="font-bold text-foreground">{m.name}</span>
-                <p className="text-muted-foreground mt-0.5 text-[10px]">{m.full}</p>
-                <p className="text-primary text-[10px] font-semibold mt-0.5">Normal: {m.normal}</p>
-              </button>
-            ))}
-          </div>
-
-          {selectedMeasurement && (() => {
-            const m = measurements.find((x) => x.id === selectedMeasurement)!;
-            return (
-                  <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 animate-fade-in text-xs space-y-2">
-                <p className="font-bold text-foreground text-sm">{m.name} — {m.full}</p>
-                <div className="p-2 rounded bg-background border border-border">
-                  <span className="font-semibold text-foreground">How to measure: </span>
-                  <span className="text-muted-foreground">{m.method}</span>
-                </div>
-                <div className="p-2 rounded bg-background border border-border">
-                  <span className="font-semibold text-foreground">Grading: </span>
-                  <span className="text-muted-foreground">{m.grades}</span>
-                </div>
-                <div className="p-2 rounded bg-primary/10 border border-primary/20">
-                  <span className="font-semibold text-foreground">Clinical significance: </span>
-                  <span className="text-muted-foreground">{m.clinical}</span>
-                </div>
-              </div>
-  );
-          })()}
-        </TabsContent>
-
-        <TabsContent value="fuse">
-          <p className="text-xs text-muted-foreground mb-1 font-semibold">Focused Ultrasound in Shock & Emergencies</p>
-          <p className="text-xs text-muted-foreground mb-3">Systematic 6-step protocol — identify the cause of shock at the bedside in &lt;5 minutes</p>
-
-          <div className="space-y-2">
-            {fuseSteps.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => setSelectedFUSE(selectedFUSE === i ? null : i)}
-                className={`w-full text-left transition-all ${selectedFUSE === i ? "ring-1 ring-primary" : ""}`}
-              >
-                <div className={`p-3 rounded-lg border ${selectedFUSE === i ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>
-                  <div className="flex items-center gap-2">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center text-xs font-bold text-primary">{i + 1}</span>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <p className="font-bold text-foreground text-sm">{s.step}</p>
-                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground">{s.view}</span>
-                      </div>
-                    </div>
-                  </div>
-                  {selectedFUSE === i && (
-                    <div className="mt-2 ml-8 space-y-1.5 animate-fade-in text-xs">
-                      <p className="text-muted-foreground"><strong className="text-foreground">Look for:</strong> {s.look}</p>
-                      <div className="p-2 rounded bg-primary/10 border border-primary/20">
-                        <span className="font-semibold text-foreground">Action: </span>
-                        <span className="text-muted-foreground">{s.action}</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </button>
-            ))}
-          </div>
-
-          <div className="mt-3 p-2 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
-            <strong className="text-foreground">FATE protocol (Focus Assessed Transthoracic Echo): </strong>
-            4 views in &lt;2 minutes: subcostal 4C → A4C → PLAX → pleural. Answers: Is there a pericardial effusion? Is LV/RV severely impaired? Is the patient severely hypovolaemic? Any pleural effusion? Level 1 echo competence — all anaesthetists/intensivists should achieve.
-          </div>
-        </TabsContent>
-      </Tabs>
-    </div>
+  
+            <div className="mt-3 p-2 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
+              <strong className="text-foreground">FATE protocol (Focus Assessed Transthoracic Echo): </strong>
+              4 views in &lt;2 minutes: subcostal 4C → A4C → PLAX → pleural. Answers: Is there a pericardial effusion? Is LV/RV severely impaired? Is the patient severely hypovolaemic? Any pleural effusion? Level 1 echo competence — all anaesthetists/intensivists should achieve.
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

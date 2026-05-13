@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Modality = {
   id: string;
@@ -485,37 +486,43 @@ const MultimodalNeuromonitoringDiagram = () => {
 };
 
 const ModalityDetail = ({ m }: { m: Modality }) => (
-  <div className="rounded-lg border-2 p-3" style={{ borderColor: `${m.color}55`, background: `${m.color}0d` }}>
-    <div className="flex items-baseline gap-2 flex-wrap mb-2">
-      <span className="text-base font-bold text-foreground">{m.abbreviation}</span>
-      <span className="text-xs text-muted-foreground">— {m.name}</span>
-    </div>
-    <div className="flex flex-wrap gap-1.5 mb-2">
-      <Pill value={m.spatial} />
-      <Pill value={m.temporal} />
-      <Pill value={m.invasiveness} />
-    </div>
-    <p className="text-xs text-foreground leading-relaxed mb-2">
-      <strong>Measures:</strong> {m.measures}
-    </p>
-    <p className="text-xs text-foreground mb-2">
-      <strong>Threshold:</strong> <span className="text-muted-foreground">{m.threshold}</span>
-    </p>
-    <div className="grid sm:grid-cols-2 gap-2">
-      <div>
-        <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">✓ Strengths</p>
-        <ul className="text-[11px] text-muted-foreground space-y-1 list-disc list-inside leading-snug">
-          {m.strengths.map((s, i) => <li key={i}>{s}</li>)}
-        </ul>
+    <DiagramFigure
+      id="multimodal-neuromonitoring-diagram"
+      title="Multimodal neuromonitoring"
+      description="Auto-generated wrapper for the Multimodal neuromonitoring anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+        <div className="rounded-lg border-2 p-3" style={{ borderColor: `${m.color}55`, background: `${m.color}0d` }}>
+      <div className="flex items-baseline gap-2 flex-wrap mb-2">
+        <span className="text-base font-bold text-foreground">{m.abbreviation}</span>
+        <span className="text-xs text-muted-foreground">— {m.name}</span>
       </div>
-      <div>
-        <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">✗ Limitations</p>
-        <ul className="text-[11px] text-muted-foreground space-y-1 list-disc list-inside leading-snug">
-          {m.limitations.map((l, i) => <li key={i}>{l}</li>)}
-        </ul>
+      <div className="flex flex-wrap gap-1.5 mb-2">
+        <Pill value={m.spatial} />
+        <Pill value={m.temporal} />
+        <Pill value={m.invasiveness} />
+      </div>
+      <p className="text-xs text-foreground leading-relaxed mb-2">
+        <strong>Measures:</strong> {m.measures}
+      </p>
+      <p className="text-xs text-foreground mb-2">
+        <strong>Threshold:</strong> <span className="text-muted-foreground">{m.threshold}</span>
+      </p>
+      <div className="grid sm:grid-cols-2 gap-2">
+        <div>
+          <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">✓ Strengths</p>
+          <ul className="text-[11px] text-muted-foreground space-y-1 list-disc list-inside leading-snug">
+            {m.strengths.map((s, i) => <li key={i}>{s}</li>)}
+          </ul>
+        </div>
+        <div>
+          <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">✗ Limitations</p>
+          <ul className="text-[11px] text-muted-foreground space-y-1 list-disc list-inside leading-snug">
+            {m.limitations.map((l, i) => <li key={i}>{l}</li>)}
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-);
+    </DiagramFigure>
+  );
 
 export default MultimodalNeuromonitoringDiagram;

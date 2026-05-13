@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Scenario = "desaturation" | "circuit" | "pump";
 
@@ -66,75 +67,81 @@ const ECMOTroubleshootingDiagram = () => {
   };
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">ECMO Troubleshooting Algorithm</h3>
-      <p className="text-xs text-muted-foreground mb-4">Structured approach to ECMO emergencies — select a scenario</p>
-
-      <div className="flex flex-wrap gap-2 mb-5">
-        {(Object.keys(scenarios) as Scenario[]).map((s) => (
-          <button key={s} onClick={() => setSelected(s)}
-            className="px-3 py-2 rounded-lg text-sm font-medium border transition-all flex items-center gap-2"
-            style={{
-              borderColor: selected === s ? scenarios[s].color : "hsl(var(--border))",
-              backgroundColor: selected === s ? withAlpha(scenarios[s].color, 0.08) : "transparent",
-              color: selected === s ? scenarios[s].color : "hsl(var(--muted-foreground))",
-            }}>
-            <span>{scenarios[s].icon}</span>
-            {scenarios[s].label}
-          </button>
-        ))}
-      </div>
-
-      <div className="animate-fade-in" key={selected}>
-        {/* Header */}
-        <div className="flex items-center gap-2 mb-4 p-3 rounded-lg border" style={{ borderColor: withAlpha(info.color, 0.25), backgroundColor: withAlpha(info.color, 0.03) }}>
-          <span className="text-2xl">{info.icon}</span>
-          <div>
-            <p className="font-bold text-foreground">{info.label}</p>
-            <p className="text-xs text-muted-foreground">Follow steps sequentially — address critical actions first</p>
-          </div>
+    <DiagramFigure
+      id="ecmo-troubleshooting-diagram"
+      title="ECMO troubleshooting"
+      description="Auto-generated wrapper for the ECMO troubleshooting anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="border border-border rounded-lg p-4 mb-6">
+        <h3 className="text-lg font-serif font-bold text-foreground mb-1">ECMO Troubleshooting Algorithm</h3>
+        <p className="text-xs text-muted-foreground mb-4">Structured approach to ECMO emergencies — select a scenario</p>
+  
+        <div className="flex flex-wrap gap-2 mb-5">
+          {(Object.keys(scenarios) as Scenario[]).map((s) => (
+            <button key={s} onClick={() => setSelected(s)}
+              className="px-3 py-2 rounded-lg text-sm font-medium border transition-all flex items-center gap-2"
+              style={{
+                borderColor: selected === s ? scenarios[s].color : "hsl(var(--border))",
+                backgroundColor: selected === s ? withAlpha(scenarios[s].color, 0.08) : "transparent",
+                color: selected === s ? scenarios[s].color : "hsl(var(--muted-foreground))",
+              }}>
+              <span>{scenarios[s].icon}</span>
+              {scenarios[s].label}
+            </button>
+          ))}
         </div>
-
-        {/* Steps */}
-        <div className="space-y-2">
-          {info.steps.map((step, i) => {
-            const p = priorityStyles[step.priority || "normal"];
-            return (
-                  <div key={i} className={`p-3 rounded-lg border ${p.bg} ${p.border} transition-all`}>
-                <div className="flex items-start gap-3">
-                  <div className="flex flex-col items-center flex-shrink-0">
-                    <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${p.badge}`}>{i + 1}</span>
-                    {i < info.steps.length - 1 && (
-                      <div className="w-px h-full min-h-[8px] bg-border mt-1" />
-                    )}
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <p className="font-semibold text-foreground text-sm">{step.action}</p>
-                      {step.priority === "critical" && (
-                        <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-destructive text-destructive-foreground">CRITICAL</span>
-                      )}
-                      {step.priority === "high" && (
-                        <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-primary/20 text-primary">HIGH</span>
+  
+        <div className="animate-fade-in" key={selected}>
+          {/* Header */}
+          <div className="flex items-center gap-2 mb-4 p-3 rounded-lg border" style={{ borderColor: withAlpha(info.color, 0.25), backgroundColor: withAlpha(info.color, 0.03) }}>
+            <span className="text-2xl">{info.icon}</span>
+            <div>
+              <p className="font-bold text-foreground">{info.label}</p>
+              <p className="text-xs text-muted-foreground">Follow steps sequentially — address critical actions first</p>
+            </div>
+          </div>
+  
+          {/* Steps */}
+          <div className="space-y-2">
+            {info.steps.map((step, i) => {
+              const p = priorityStyles[step.priority || "normal"];
+              return (
+                    <div key={i} className={`p-3 rounded-lg border ${p.bg} ${p.border} transition-all`}>
+                  <div className="flex items-start gap-3">
+                    <div className="flex flex-col items-center flex-shrink-0">
+                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${p.badge}`}>{i + 1}</span>
+                      {i < info.steps.length - 1 && (
+                        <div className="w-px h-full min-h-[8px] bg-border mt-1" />
                       )}
                     </div>
-                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{step.detail}</p>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <p className="font-semibold text-foreground text-sm">{step.action}</p>
+                        {step.priority === "critical" && (
+                          <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-destructive text-destructive-foreground">CRITICAL</span>
+                        )}
+                        {step.priority === "high" && (
+                          <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-primary/20 text-primary">HIGH</span>
+                        )}
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{step.detail}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-  );
-          })}
-        </div>
-
-        {/* Emergency reminder */}
-        <div className="mt-4 p-3 rounded-lg border border-destructive/30 bg-destructive/5">
-          <p className="text-xs font-bold text-destructive mb-1">⚡ Universal ECMO Emergency Principles</p>
-          <p className="text-xs text-muted-foreground">
-            <strong>1.</strong> If in doubt, CLAMP both lines and ventilate conventionally. <strong>2.</strong> Never leave an ECMO patient unattended. <strong>3.</strong> Emergency equipment at bedside: clamps (×2 per line), backup oxygenator, backup pump head, hand-crank. <strong>4.</strong> Call for help early — perfusionist + senior intensivist + ECMO coordinator. <strong>5.</strong> The patient survives on their native physiology while the circuit is down — optimise ventilation and haemodynamics immediately.
-          </p>
+    );
+            })}
+          </div>
+  
+          {/* Emergency reminder */}
+          <div className="mt-4 p-3 rounded-lg border border-destructive/30 bg-destructive/5">
+            <p className="text-xs font-bold text-destructive mb-1">⚡ Universal ECMO Emergency Principles</p>
+            <p className="text-xs text-muted-foreground">
+              <strong>1.</strong> If in doubt, CLAMP both lines and ventilate conventionally. <strong>2.</strong> Never leave an ECMO patient unattended. <strong>3.</strong> Emergency equipment at bedside: clamps (×2 per line), backup oxygenator, backup pump head, hand-crank. <strong>4.</strong> Call for help early — perfusionist + senior intensivist + ECMO coordinator. <strong>5.</strong> The patient survives on their native physiology while the circuit is down — optimise ventilation and haemodynamics immediately.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

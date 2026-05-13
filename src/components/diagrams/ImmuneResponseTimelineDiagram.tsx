@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive immune-response timeline.
@@ -290,168 +291,174 @@ const ImmuneResponseTimelineDiagram = () => {
   const exposureLabel = exposure === "naive" ? "Naïve — first encounter" : "Re-exposure — memory recall";
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Immune response timeline"
-          subtitle={`${pathogenLabel} · ${exposureLabel}`}
-          toggles={[
-            { label: "Bacterial", active: pathogen === "bacterial", onChange: () => setPathogen("bacterial") },
-            { label: "Viral", active: pathogen === "viral", onChange: () => setPathogen("viral") },
-            { label: "Naïve", active: exposure === "naive", onChange: () => { setExposure("naive"); setSelectedIdx(0); } },
-            { label: "Re-exposed", active: exposure === "memory", onChange: () => { setExposure("memory"); setSelectedIdx(0); } },
-          ]}
-        />
-
-        <div className="w-full overflow-x-auto">
-          <svg
-            viewBox={`0 0 ${W} ${H}`}
-            className="w-full min-w-[600px]"
-            role="img"
-            aria-label={`Immune response timeline for ${pathogenLabel}, ${exposureLabel}`}
-          >
-            <defs>
-              <linearGradient id="irt-burden-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(0, 65%, 50%)" stopOpacity="0.45" />
-                <stop offset="100%" stopColor="hsl(0, 65%, 50%)" stopOpacity="0.02" />
-              </linearGradient>
-              <pattern id="irt-grid" width="50" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 50 0 L 0 0 0 40" fill="none" stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
-              </pattern>
-            </defs>
-
-            {/* Plot area */}
-            <rect x={padL} y={padT} width={innerW} height={innerH} fill="url(#irt-grid)" />
-
-            {/* y axis label */}
-            <text
-              x={padL - 6}
-              y={padT + innerH / 2}
-              textAnchor="middle"
-              transform={`rotate(-90 ${padL - 6} ${padT + innerH / 2})`}
-              className="fill-muted-foreground"
-              style={{ fontSize: 10 }}
+    <DiagramFigure
+      id="immune-response-timeline-diagram"
+      title="Immune response timeline"
+      description="Auto-generated wrapper for the Immune response timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Immune response timeline"
+            subtitle={`${pathogenLabel} · ${exposureLabel}`}
+            toggles={[
+              { label: "Bacterial", active: pathogen === "bacterial", onChange: () => setPathogen("bacterial") },
+              { label: "Viral", active: pathogen === "viral", onChange: () => setPathogen("viral") },
+              { label: "Naïve", active: exposure === "naive", onChange: () => { setExposure("naive"); setSelectedIdx(0); } },
+              { label: "Re-exposed", active: exposure === "memory", onChange: () => { setExposure("memory"); setSelectedIdx(0); } },
+            ]}
+          />
+  
+          <div className="w-full overflow-x-auto">
+            <svg
+              viewBox={`0 0 ${W} ${H}`}
+              className="w-full min-w-[600px]"
+              role="img"
+              aria-label={`Immune response timeline for ${pathogenLabel}, ${exposureLabel}`}
             >
-              Pathogen burden / symptoms
-            </text>
-
-            {/* Pathogen burden area + line */}
-            <path
-              d={`${burdenPath} L${padL + innerW},${padT + innerH} L${padL},${padT + innerH} Z`}
-              fill="url(#irt-burden-grad)"
-            />
-            <path d={burdenPath} fill="none" stroke="hsl(0, 70%, 48%)" strokeWidth="2" />
-
-            {/* Phase swimlane bars */}
-            {activePhases.map((p, i) => {
-              const x = padL + (innerW * i) / activePhases.length + 2;
-              const w = innerW / activePhases.length - 4;
-              const isSelected = i === selectedIdx;
-              const c = armColors[p.arm];
-              return (
-                    <g
-                  key={p.label}
-                  onClick={() => setSelectedIdx(i)}
-                  style={{ cursor: "pointer" }}
-                  aria-label={`Select phase ${p.label}: ${p.title}`}
-                >
-                  <rect
-                    x={x}
-                    y={padT + innerH + 6}
-                    width={w}
-                    height={20}
-                    rx={4}
-                    fill={isSelected ? c : withAlpha(c, 0.18)}
-                    stroke={c}
-                    strokeWidth={isSelected ? 2 : 1}
-                  />
-                  <text
-                    x={x + w / 2}
-                    y={padT + innerH + 20}
-                    textAnchor="middle"
-                    style={{ fontSize: 10, fontWeight: 600 }}
-                    fill={isSelected ? "white" : "hsl(var(--foreground))"}
-                  >
-                    {p.label}
-                  </text>
-                  {/* connector tick from curve to phase */}
-                  <line
-                    x1={xForIdx(i)}
-                    y1={padT}
-                    x2={xForIdx(i)}
-                    y2={padT + innerH}
-                    stroke={isSelected ? c : "hsl(var(--border))"}
-                    strokeWidth={isSelected ? 1.5 : 0.5}
-                    strokeDasharray={isSelected ? "0" : "3 3"}
-                    opacity={isSelected ? 0.5 : 0.6}
-                  />
-                </g>
-  );
-            })}
-
-            {/* x axis caption */}
-            <text x={W / 2} y={H - 4} textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: 10 }}>
-              Time after exposure (log scale, hours → weeks)
-            </text>
-          </svg>
-        </div>
-
-        {/* Arm legend */}
-        <div className="flex flex-wrap gap-3 mt-2 text-[11px] text-muted-foreground">
-          {(Object.keys(armColors) as (keyof typeof armColors)[]).map((k) => (
-            <span key={k} className="inline-flex items-center gap-1.5">
-              <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: armColors[k] }} />
-              <span className="capitalize">{k}</span>
-            </span>
-          ))}
-          <span className="inline-flex items-center gap-1.5">
-            <span className="inline-block w-3 h-2 rounded-sm" style={{ backgroundColor: "hsl(0, 70%, 48%)" }} />
-            <span>Pathogen burden</span>
-          </span>
-        </div>
-
-        {/* Selected phase detail panel */}
-        <div
-          className="mt-3 rounded-lg border-2 p-3"
-          style={{
-            borderColor: armColors[selected.arm],
-            backgroundColor: withAlpha(armColors[selected.arm], 0.06),
-          }}
-        >
-          <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
-            <p className="text-sm font-bold text-foreground">
-              <span style={{ color: armColors[selected.arm] }}>{selected.label}</span>{" "}
-              · {selected.title}
-            </p>
-            <span
-              className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full"
-              style={{
-                backgroundColor: withAlpha(armColors[selected.arm], 0.15),
-                color: armColors[selected.arm],
-              }}
-            >
-              {selected.arm}
-            </span>
-          </div>
-          <div className="flex flex-wrap gap-1.5 mb-2">
-            {selected.players.map((p) => (
-              <span
-                key={p}
-                className="text-[11px] px-2 py-0.5 rounded border bg-background/70"
-                style={{ borderColor: withAlpha(armColors[selected.arm], 0.4) }}
+              <defs>
+                <linearGradient id="irt-burden-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="hsl(0, 65%, 50%)" stopOpacity="0.45" />
+                  <stop offset="100%" stopColor="hsl(0, 65%, 50%)" stopOpacity="0.02" />
+                </linearGradient>
+                <pattern id="irt-grid" width="50" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 50 0 L 0 0 0 40" fill="none" stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
+                </pattern>
+              </defs>
+  
+              {/* Plot area */}
+              <rect x={padL} y={padT} width={innerW} height={innerH} fill="url(#irt-grid)" />
+  
+              {/* y axis label */}
+              <text
+                x={padL - 6}
+                y={padT + innerH / 2}
+                textAnchor="middle"
+                transform={`rotate(-90 ${padL - 6} ${padT + innerH / 2})`}
+                className="fill-muted-foreground"
+                style={{ fontSize: 10 }}
               >
-                {p}
+                Pathogen burden / symptoms
+              </text>
+  
+              {/* Pathogen burden area + line */}
+              <path
+                d={`${burdenPath} L${padL + innerW},${padT + innerH} L${padL},${padT + innerH} Z`}
+                fill="url(#irt-burden-grad)"
+              />
+              <path d={burdenPath} fill="none" stroke="hsl(0, 70%, 48%)" strokeWidth="2" />
+  
+              {/* Phase swimlane bars */}
+              {activePhases.map((p, i) => {
+                const x = padL + (innerW * i) / activePhases.length + 2;
+                const w = innerW / activePhases.length - 4;
+                const isSelected = i === selectedIdx;
+                const c = armColors[p.arm];
+                return (
+                      <g
+                    key={p.label}
+                    onClick={() => setSelectedIdx(i)}
+                    style={{ cursor: "pointer" }}
+                    aria-label={`Select phase ${p.label}: ${p.title}`}
+                  >
+                    <rect
+                      x={x}
+                      y={padT + innerH + 6}
+                      width={w}
+                      height={20}
+                      rx={4}
+                      fill={isSelected ? c : withAlpha(c, 0.18)}
+                      stroke={c}
+                      strokeWidth={isSelected ? 2 : 1}
+                    />
+                    <text
+                      x={x + w / 2}
+                      y={padT + innerH + 20}
+                      textAnchor="middle"
+                      style={{ fontSize: 10, fontWeight: 600 }}
+                      fill={isSelected ? "white" : "hsl(var(--foreground))"}
+                    >
+                      {p.label}
+                    </text>
+                    {/* connector tick from curve to phase */}
+                    <line
+                      x1={xForIdx(i)}
+                      y1={padT}
+                      x2={xForIdx(i)}
+                      y2={padT + innerH}
+                      stroke={isSelected ? c : "hsl(var(--border))"}
+                      strokeWidth={isSelected ? 1.5 : 0.5}
+                      strokeDasharray={isSelected ? "0" : "3 3"}
+                      opacity={isSelected ? 0.5 : 0.6}
+                    />
+                  </g>
+    );
+              })}
+  
+              {/* x axis caption */}
+              <text x={W / 2} y={H - 4} textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: 10 }}>
+                Time after exposure (log scale, hours → weeks)
+              </text>
+            </svg>
+          </div>
+  
+          {/* Arm legend */}
+          <div className="flex flex-wrap gap-3 mt-2 text-[11px] text-muted-foreground">
+            {(Object.keys(armColors) as (keyof typeof armColors)[]).map((k) => (
+              <span key={k} className="inline-flex items-center gap-1.5">
+                <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: armColors[k] }} />
+                <span className="capitalize">{k}</span>
               </span>
             ))}
+            <span className="inline-flex items-center gap-1.5">
+              <span className="inline-block w-3 h-2 rounded-sm" style={{ backgroundColor: "hsl(0, 70%, 48%)" }} />
+              <span>Pathogen burden</span>
+            </span>
           </div>
-          <p className="text-xs text-muted-foreground leading-relaxed">{selected.detail}</p>
+  
+          {/* Selected phase detail panel */}
+          <div
+            className="mt-3 rounded-lg border-2 p-3"
+            style={{
+              borderColor: armColors[selected.arm],
+              backgroundColor: withAlpha(armColors[selected.arm], 0.06),
+            }}
+          >
+            <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
+              <p className="text-sm font-bold text-foreground">
+                <span style={{ color: armColors[selected.arm] }}>{selected.label}</span>{" "}
+                · {selected.title}
+              </p>
+              <span
+                className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full"
+                style={{
+                  backgroundColor: withAlpha(armColors[selected.arm], 0.15),
+                  color: armColors[selected.arm],
+                }}
+              >
+                {selected.arm}
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-1.5 mb-2">
+              {selected.players.map((p) => (
+                <span
+                  key={p}
+                  className="text-[11px] px-2 py-0.5 rounded border bg-background/70"
+                  style={{ borderColor: withAlpha(armColors[selected.arm], 0.4) }}
+                >
+                  {p}
+                </span>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground leading-relaxed">{selected.detail}</p>
+          </div>
+  
+          <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
+            Switch pathogen class and exposure type to compare timelines. Re-exposure suppresses pathogen burden almost entirely — the basis of vaccination.
+          </p>
         </div>
-
-        <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
-          Switch pathogen class and exposure type to compare timelines. Re-exposure suppresses pathogen burden almost entirely — the basis of vaccination.
-        </p>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

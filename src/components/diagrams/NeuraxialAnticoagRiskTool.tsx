@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Neuraxial complication risk stratification tool.
@@ -204,168 +205,174 @@ const NeuraxialAnticoagRiskTool = () => {
   }, []);
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Neuraxial complication risk stratification"
-          subtitle="Coagulation × drug timing × platelets × procedure → AAGBI / ESAIC verdict"
-          toggles={[{ label: "Sources", active: showSources, onChange: () => setShowSources((s) => !s) }]}
-        />
-
-        <div className="grid sm:grid-cols-2 gap-3">
-          {/* Procedure */}
-          <div className="space-y-1">
-            <label htmlFor="proc" className="text-xs font-semibold text-foreground">
-              Intended procedure
-            </label>
-            <select
-              id="proc"
-              value={procedure}
-              onChange={(e) => setProcedure(e.target.value as Procedure)}
-              className="w-full text-sm rounded-md border border-border bg-background px-2 py-1.5"
-            >
-              {procedures.map((p) => (
-                <option key={p.value} value={p.value}>
-                  {p.label} ({p.risk}-risk)
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Drug */}
-          <div className="space-y-1">
-            <label htmlFor="drug" className="text-xs font-semibold text-foreground">
-              Antiplatelet / anticoagulant
-            </label>
-            <select
-              id="drug"
-              value={drug}
-              onChange={(e) => {
-                setDrug(e.target.value);
-                setHoursSince(0);
-              }}
-              className="w-full text-sm rounded-md border border-border bg-background px-2 py-1.5"
-            >
-              {grouped.map(([group, list]) => (
-                <optgroup key={group} label={group}>
-                  {list.map((d) => (
-                    <option key={d.value} value={d.value}>
-                      {d.name}
-                    </option>
-                  ))}
-                </optgroup>
-              ))}
-            </select>
-          </div>
-
-          {/* Hours since last dose */}
-          <div className="space-y-1">
-            <label htmlFor="hrs" className="text-xs font-semibold text-foreground">
-              Hours since last dose
-              <span className="text-muted-foreground font-normal">
-                {drugObj.preBlock > 0 ? ` (need ≥${drugObj.preBlock} h)` : ""}
-              </span>
-            </label>
-            <input
-              id="hrs"
-              type="number"
-              min={0}
-              max={500}
-              value={hoursSince}
-              onChange={(e) => {
-                const v = Number(e.target.value);
-                if (Number.isFinite(v)) setHoursSince(Math.max(0, Math.min(500, v)));
-              }}
-              className="w-full text-sm rounded-md border border-border bg-background px-2 py-1.5"
-              disabled={drug === "none"}
-            />
-          </div>
-
-          {/* Platelets */}
-          <div className="space-y-1">
-            <label htmlFor="plt" className="text-xs font-semibold text-foreground">
-              Platelet count (×10⁹/L)
-            </label>
-            <select
-              id="plt"
-              value={platelets}
-              onChange={(e) => setPlatelets(e.target.value as Plt)}
-              className="w-full text-sm rounded-md border border-border bg-background px-2 py-1.5"
-            >
-              <option value=">100">&gt;100 (normal)</option>
-              <option value="75-100">75–100</option>
-              <option value="50-75">50–75</option>
-              <option value="<50">&lt;50 (severe)</option>
-            </select>
-          </div>
-
-          {/* Coag status */}
-          <div className="space-y-1 sm:col-span-2">
-            <p className="text-xs font-semibold text-foreground">Coagulation screen (PT / APTT / fibrinogen)</p>
-            <div className="flex flex-wrap gap-2">
-              {(["normal", "abnormal", "unknown"] as Coag[]).map((c) => {
-                const active = coag === c;
-                const accent = c === "abnormal" ? "hsl(0, 75%, 48%)" : c === "unknown" ? "hsl(38, 92%, 48%)" : "hsl(140, 55%, 42%)";
-                return (
-                      <button
-                    key={c}
-                    onClick={() => setCoag(c)}
-                    aria-pressed={active}
-                    className="px-3 py-1 rounded-md text-xs font-medium border transition-all capitalize"
-                    style={{
-                      borderColor: active ? accent : "hsl(var(--border))",
-                      backgroundColor: active ? withAlpha(accent, 0.15) : "transparent",
-                      color: active ? accent : "hsl(var(--foreground))",
-                    }}
-                  >
-                    {c}
-                  </button>
-  );
-              })}
+    <DiagramFigure
+      id="neuraxial-anticoag-risk-tool"
+      title="Neuraxial anticoag risk tool"
+      description="Auto-generated wrapper for the Neuraxial anticoag risk tool anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Neuraxial complication risk stratification"
+            subtitle="Coagulation × drug timing × platelets × procedure → AAGBI / ESAIC verdict"
+            toggles={[{ label: "Sources", active: showSources, onChange: () => setShowSources((s) => !s) }]}
+          />
+  
+          <div className="grid sm:grid-cols-2 gap-3">
+            {/* Procedure */}
+            <div className="space-y-1">
+              <label htmlFor="proc" className="text-xs font-semibold text-foreground">
+                Intended procedure
+              </label>
+              <select
+                id="proc"
+                value={procedure}
+                onChange={(e) => setProcedure(e.target.value as Procedure)}
+                className="w-full text-sm rounded-md border border-border bg-background px-2 py-1.5"
+              >
+                {procedures.map((p) => (
+                  <option key={p.value} value={p.value}>
+                    {p.label} ({p.risk}-risk)
+                  </option>
+                ))}
+              </select>
+            </div>
+  
+            {/* Drug */}
+            <div className="space-y-1">
+              <label htmlFor="drug" className="text-xs font-semibold text-foreground">
+                Antiplatelet / anticoagulant
+              </label>
+              <select
+                id="drug"
+                value={drug}
+                onChange={(e) => {
+                  setDrug(e.target.value);
+                  setHoursSince(0);
+                }}
+                className="w-full text-sm rounded-md border border-border bg-background px-2 py-1.5"
+              >
+                {grouped.map(([group, list]) => (
+                  <optgroup key={group} label={group}>
+                    {list.map((d) => (
+                      <option key={d.value} value={d.value}>
+                        {d.name}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+            </div>
+  
+            {/* Hours since last dose */}
+            <div className="space-y-1">
+              <label htmlFor="hrs" className="text-xs font-semibold text-foreground">
+                Hours since last dose
+                <span className="text-muted-foreground font-normal">
+                  {drugObj.preBlock > 0 ? ` (need ≥${drugObj.preBlock} h)` : ""}
+                </span>
+              </label>
+              <input
+                id="hrs"
+                type="number"
+                min={0}
+                max={500}
+                value={hoursSince}
+                onChange={(e) => {
+                  const v = Number(e.target.value);
+                  if (Number.isFinite(v)) setHoursSince(Math.max(0, Math.min(500, v)));
+                }}
+                className="w-full text-sm rounded-md border border-border bg-background px-2 py-1.5"
+                disabled={drug === "none"}
+              />
+            </div>
+  
+            {/* Platelets */}
+            <div className="space-y-1">
+              <label htmlFor="plt" className="text-xs font-semibold text-foreground">
+                Platelet count (×10⁹/L)
+              </label>
+              <select
+                id="plt"
+                value={platelets}
+                onChange={(e) => setPlatelets(e.target.value as Plt)}
+                className="w-full text-sm rounded-md border border-border bg-background px-2 py-1.5"
+              >
+                <option value=">100">&gt;100 (normal)</option>
+                <option value="75-100">75–100</option>
+                <option value="50-75">50–75</option>
+                <option value="<50">&lt;50 (severe)</option>
+              </select>
+            </div>
+  
+            {/* Coag status */}
+            <div className="space-y-1 sm:col-span-2">
+              <p className="text-xs font-semibold text-foreground">Coagulation screen (PT / APTT / fibrinogen)</p>
+              <div className="flex flex-wrap gap-2">
+                {(["normal", "abnormal", "unknown"] as Coag[]).map((c) => {
+                  const active = coag === c;
+                  const accent = c === "abnormal" ? "hsl(0, 75%, 48%)" : c === "unknown" ? "hsl(38, 92%, 48%)" : "hsl(140, 55%, 42%)";
+                  return (
+                        <button
+                      key={c}
+                      onClick={() => setCoag(c)}
+                      aria-pressed={active}
+                      className="px-3 py-1 rounded-md text-xs font-medium border transition-all capitalize"
+                      style={{
+                        borderColor: active ? accent : "hsl(var(--border))",
+                        backgroundColor: active ? withAlpha(accent, 0.15) : "transparent",
+                        color: active ? accent : "hsl(var(--foreground))",
+                      }}
+                    >
+                      {c}
+                    </button>
+    );
+                })}
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Verdict */}
-        <div
-          className="mt-4 p-3 rounded-lg border-2"
-          style={{ borderColor: verdict.color, backgroundColor: withAlpha(verdict.color, 0.08) }}
-        >
-          <p className="text-sm font-bold mb-2" style={{ color: verdict.color }}>
-            {verdict.label}
-          </p>
-          <ul className="text-xs text-foreground/90 leading-relaxed list-disc list-inside space-y-1">
-            {verdict.rationale.map((r, i) => (
-              <li key={i}>{r}</li>
-            ))}
-          </ul>
-          {verdict.postOp && (
-            <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-              <span className="font-semibold text-foreground/80">Post-block / restart: </span>
-              {verdict.postOp}
+  
+          {/* Verdict */}
+          <div
+            className="mt-4 p-3 rounded-lg border-2"
+            style={{ borderColor: verdict.color, backgroundColor: withAlpha(verdict.color, 0.08) }}
+          >
+            <p className="text-sm font-bold mb-2" style={{ color: verdict.color }}>
+              {verdict.label}
             </p>
-          )}
-        </div>
-
-        {showSources && (
-          <div className="mt-3 p-3 rounded-lg border border-border bg-background/50">
-            <p className="text-[11px] font-semibold text-foreground mb-1">Selected drug — published intervals</p>
-            <ul className="text-[11px] text-muted-foreground leading-relaxed space-y-0.5">
-              <li>
-                <strong>{drugObj.name}</strong>
-              </li>
-              <li>Time before block: <strong>{drugObj.preBlock} h</strong></li>
-              <li>Time before next dose after block / catheter removal: <strong>{drugObj.postBlock} h</strong></li>
-              {drugObj.note && <li className="italic">{drugObj.note}</li>}
+            <ul className="text-xs text-foreground/90 leading-relaxed list-disc list-inside space-y-1">
+              {verdict.rationale.map((r, i) => (
+                <li key={i}>{r}</li>
+              ))}
             </ul>
+            {verdict.postOp && (
+              <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                <span className="font-semibold text-foreground/80">Post-block / restart: </span>
+                {verdict.postOp}
+              </p>
+            )}
           </div>
-        )}
-
-        <p className="text-[11px] text-muted-foreground mt-2 italic text-center leading-relaxed">
-          Sources: AAGBI <em>Regional anaesthesia and patients with abnormalities of coagulation</em> (2013); ESAIC <em>European guidelines on regional anaesthesia and antithrombotic agents</em> (2022). Educational tool only — always check current product literature, local guidance and discuss with senior colleagues. Catheter removal carries the same bleeding risk as insertion — apply the same intervals.
-        </p>
+  
+          {showSources && (
+            <div className="mt-3 p-3 rounded-lg border border-border bg-background/50">
+              <p className="text-[11px] font-semibold text-foreground mb-1">Selected drug — published intervals</p>
+              <ul className="text-[11px] text-muted-foreground leading-relaxed space-y-0.5">
+                <li>
+                  <strong>{drugObj.name}</strong>
+                </li>
+                <li>Time before block: <strong>{drugObj.preBlock} h</strong></li>
+                <li>Time before next dose after block / catheter removal: <strong>{drugObj.postBlock} h</strong></li>
+                {drugObj.note && <li className="italic">{drugObj.note}</li>}
+              </ul>
+            </div>
+          )}
+  
+          <p className="text-[11px] text-muted-foreground mt-2 italic text-center leading-relaxed">
+            Sources: AAGBI <em>Regional anaesthesia and patients with abnormalities of coagulation</em> (2013); ESAIC <em>European guidelines on regional anaesthesia and antithrombotic agents</em> (2022). Educational tool only — always check current product literature, local guidance and discuss with senior colleagues. Catheter removal carries the same bleeding risk as insertion — apply the same intervals.
+          </p>
+        </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

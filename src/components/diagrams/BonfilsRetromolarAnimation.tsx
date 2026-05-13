@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * BonfilsRetromolarAnimation
@@ -1119,31 +1120,37 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
 
 function EscalateOverlay({ onReset }: { onReset: () => void }) {
   return (
-        <div className="absolute inset-0 bg-destructive/15 flex items-center justify-center p-4">
-      <div className="max-w-sm rounded-md border border-destructive bg-card p-4 shadow-lg">
-        <div className="text-xs uppercase tracking-wider text-destructive font-bold mb-1">
-          Stop & escalate
+    <DiagramFigure
+      id="bonfils-retromolar-animation"
+      title="Bonfils retromolar"
+      description="Auto-generated wrapper for the Bonfils retromolar animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="absolute inset-0 bg-destructive/15 flex items-center justify-center p-4">
+        <div className="max-w-sm rounded-md border border-destructive bg-card p-4 shadow-lg">
+          <div className="text-xs uppercase tracking-wider text-destructive font-bold mb-1">
+            Stop & escalate
+          </div>
+          <p className="text-sm text-foreground font-semibold leading-snug mb-2">
+            View lost — do not advance the ETT.
+          </p>
+          <ol className="list-decimal list-inside text-xs text-foreground/85 space-y-1 mb-3">
+            <li>Withdraw the scope to the last identifiable landmark.</li>
+            <li>Suction; increase side-port O₂; clear lens.</li>
+            <li>Re-attempt only if cause reversible (fog, secretions).</li>
+            <li>If still no view: declare failure, oxygenate, call for help.</li>
+            <li>
+              Move to <strong>plan B</strong> per DAS 2015 — SAD rescue, awake tracheostomy, or
+              scalpel-bougie-tube cricothyroidotomy if CICO.
+            </li>
+          </ol>
+          <button
+            onClick={onReset}
+            className="w-full text-xs font-medium rounded bg-primary text-primary-foreground py-1.5 hover:opacity-90 transition"
+          >
+            Reset sequence
+          </button>
         </div>
-        <p className="text-sm text-foreground font-semibold leading-snug mb-2">
-          View lost — do not advance the ETT.
-        </p>
-        <ol className="list-decimal list-inside text-xs text-foreground/85 space-y-1 mb-3">
-          <li>Withdraw the scope to the last identifiable landmark.</li>
-          <li>Suction; increase side-port O₂; clear lens.</li>
-          <li>Re-attempt only if cause reversible (fog, secretions).</li>
-          <li>If still no view: declare failure, oxygenate, call for help.</li>
-          <li>
-            Move to <strong>plan B</strong> per DAS 2015 — SAD rescue, awake tracheostomy, or
-            scalpel-bougie-tube cricothyroidotomy if CICO.
-          </li>
-        </ol>
-        <button
-          onClick={onReset}
-          className="w-full text-xs font-medium rounded bg-primary text-primary-foreground py-1.5 hover:opacity-90 transition"
-        >
-          Reset sequence
-        </button>
       </div>
-    </div>
+    </DiagramFigure>
   );
 }

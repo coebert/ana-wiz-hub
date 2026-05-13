@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const PACDiagram = () => {
   const [selectedChamber, setSelectedChamber] = useState<string | null>(null);
@@ -120,158 +121,164 @@ const PACDiagram = () => {
   ];
 
   return (
-    <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
-      <h3 className="text-lg font-bold text-foreground mb-1">Pulmonary Artery Catheter (Swan-Ganz)</h3>
-      <p className="text-sm text-muted-foreground mb-4">Insertion waveforms, clinical applications, and evidence</p>
-
-      <Tabs defaultValue="waveforms" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 mb-4">
-          <TabsTrigger value="waveforms" className="text-xs">Waveforms</TabsTrigger>
-          <TabsTrigger value="applications" className="text-xs">Applications</TabsTrigger>
-          <TabsTrigger value="evidence" className="text-xs">Evidence</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="waveforms">
-          {/* Position SVG */}
-          <div className="bg-background rounded-lg border border-border p-3 mb-3">
-            <svg viewBox="0 0 400 130" className="w-full h-auto">
-              <text x="200" y="15" textAnchor="middle" className="fill-foreground" fontSize="10" fontWeight="700">Catheter Path & Depth (IJ approach)</text>
-              {/* Chambers as connected boxes */}
-              {[
-                { name: "RA", depth: "20cm", x: 30, color: "hsl(200,70%,50%)" },
-                { name: "RV", depth: "30cm", x: 120, color: "hsl(0,70%,55%)" },
-                { name: "PA", depth: "40cm", x: 210, color: "hsl(var(--primary))" },
-                { name: "PAOP", depth: "45–55cm", x: 300, color: "hsl(142,60%,45%)" },
-              ].map((c, i) => (
-                <g key={c.name}>
-                  <rect x={c.x} y="30" width="70" height="45" rx="6" fill={c.color} opacity="0.12" stroke={c.color} strokeWidth={selectedChamber === chambers[i].id ? "2.5" : "1.5"} className="cursor-pointer" onClick={() => setSelectedChamber(selectedChamber === chambers[i].id ? null : chambers[i].id)} />
-                  <text x={c.x + 35} y="50" textAnchor="middle" fill={c.color} fontSize="12" fontWeight="700">{c.name}</text>
-                  <text x={c.x + 35} y="68" textAnchor="middle" fill={c.color} fontSize="7">{c.depth}</text>
-                  {i < 3 && <line x1={c.x + 70} y1="52" x2={c.x + 90} y2="52" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arrowPath)" />}
-                </g>
-              ))}
-              <defs><marker id="arrowPath" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="hsl(var(--muted-foreground))" /></marker></defs>
-              {/* Pressure scale below */}
-              <text x="65" y="95" textAnchor="middle" className="fill-muted-foreground" fontSize="7">0–8</text>
-              <text x="155" y="95" textAnchor="middle" className="fill-muted-foreground" fontSize="7">15–30/0–8</text>
-              <text x="245" y="95" textAnchor="middle" className="fill-muted-foreground" fontSize="7">15–30/8–15</text>
-              <text x="335" y="95" textAnchor="middle" className="fill-muted-foreground" fontSize="7">6–12</text>
-              <text x="200" y="112" textAnchor="middle" className="fill-muted-foreground" fontSize="8">Pressures in mmHg — tap a chamber for waveform detail</text>
-              {/* Balloon annotation */}
-              <circle cx="335" cy="32" r="5" fill="hsl(142,60%,45%)" opacity="0.3" stroke="hsl(142,60%,45%)" strokeWidth="0.75" />
-              <text x="365" y="28" fontSize="5" fill="hsl(142,60%,45%)" fontWeight="600">Balloon</text>
-              <text x="365" y="36" fontSize="5" fill="hsl(142,60%,45%)">inflated</text>
-            </svg>
-          </div>
-
-          {/* Chamber selector buttons */}
-          <div className="grid grid-cols-4 gap-1.5 mb-3">
-            {chambers.map((c) => (
-              <button
-                key={c.id}
-                onClick={() => setSelectedChamber(selectedChamber === c.id ? null : c.id)}
-                className={`p-1.5 rounded-lg border text-center transition-all text-xs font-bold ${selectedChamber === c.id ? "border-primary bg-primary/10 text-primary" : "border-border text-foreground hover:border-primary/50"}`}
-              >
-                {c.name}
-              </button>
-            ))}
-          </div>
-
-          {selectedChamber && (() => {
-            const c = chambers.find((x) => x.id === selectedChamber)!;
-            return (
-                  <div className="animate-fade-in space-y-3">
-                <div className="bg-background rounded-lg border border-border p-2">{c.svg}</div>
-                <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2">
-                  <p className="font-bold text-foreground text-sm">{c.name}</p>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    <div className="p-1.5 rounded bg-background border border-border">
-                      <span className="text-muted-foreground">Depth:</span>
-                      <p className="font-semibold text-foreground">{c.depth}</p>
-                    </div>
-                    <div className="p-1.5 rounded bg-background border border-border">
-                      <span className="text-muted-foreground">Pressure:</span>
-                      <p className="font-semibold text-foreground">{c.pressure}</p>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground"><strong>Waveform:</strong> {c.waveform}</p>
-                  <p className="text-muted-foreground"><strong>Abnormal:</strong> {c.abnormal}</p>
-                  <div className="p-2 rounded bg-primary/10 border border-primary/20">
-                    <span className="font-semibold text-foreground">Tips: </span>
-                    <span className="text-muted-foreground">{c.tips}</span>
-                  </div>
-                </div>
-              </div>
-  );
-          })()}
-
-          {!selectedChamber && (
-            <div className="p-3 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
-              <strong className="text-foreground">PAC structure: </strong>
-              7.5 Fr, 110 cm. Proximal port (RA — 30 cm), distal port (PA tip), thermistor (3.7 cm from tip), balloon (1.5 mL capacity). Introducer sheath via IJ/SC/femoral. Flow-directed with balloon inflated.
+    <DiagramFigure
+      id="pac-diagram"
+      title="PAC"
+      description="Auto-generated wrapper for the PAC anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
+        <h3 className="text-lg font-bold text-foreground mb-1">Pulmonary Artery Catheter (Swan-Ganz)</h3>
+        <p className="text-sm text-muted-foreground mb-4">Insertion waveforms, clinical applications, and evidence</p>
+  
+        <Tabs defaultValue="waveforms" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 mb-4">
+            <TabsTrigger value="waveforms" className="text-xs">Waveforms</TabsTrigger>
+            <TabsTrigger value="applications" className="text-xs">Applications</TabsTrigger>
+            <TabsTrigger value="evidence" className="text-xs">Evidence</TabsTrigger>
+          </TabsList>
+  
+          <TabsContent value="waveforms">
+            {/* Position SVG */}
+            <div className="bg-background rounded-lg border border-border p-3 mb-3">
+              <svg viewBox="0 0 400 130" className="w-full h-auto">
+                <text x="200" y="15" textAnchor="middle" className="fill-foreground" fontSize="10" fontWeight="700">Catheter Path & Depth (IJ approach)</text>
+                {/* Chambers as connected boxes */}
+                {[
+                  { name: "RA", depth: "20cm", x: 30, color: "hsl(200,70%,50%)" },
+                  { name: "RV", depth: "30cm", x: 120, color: "hsl(0,70%,55%)" },
+                  { name: "PA", depth: "40cm", x: 210, color: "hsl(var(--primary))" },
+                  { name: "PAOP", depth: "45–55cm", x: 300, color: "hsl(142,60%,45%)" },
+                ].map((c, i) => (
+                  <g key={c.name}>
+                    <rect x={c.x} y="30" width="70" height="45" rx="6" fill={c.color} opacity="0.12" stroke={c.color} strokeWidth={selectedChamber === chambers[i].id ? "2.5" : "1.5"} className="cursor-pointer" onClick={() => setSelectedChamber(selectedChamber === chambers[i].id ? null : chambers[i].id)} />
+                    <text x={c.x + 35} y="50" textAnchor="middle" fill={c.color} fontSize="12" fontWeight="700">{c.name}</text>
+                    <text x={c.x + 35} y="68" textAnchor="middle" fill={c.color} fontSize="7">{c.depth}</text>
+                    {i < 3 && <line x1={c.x + 70} y1="52" x2={c.x + 90} y2="52" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arrowPath)" />}
+                  </g>
+                ))}
+                <defs><marker id="arrowPath" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="hsl(var(--muted-foreground))" /></marker></defs>
+                {/* Pressure scale below */}
+                <text x="65" y="95" textAnchor="middle" className="fill-muted-foreground" fontSize="7">0–8</text>
+                <text x="155" y="95" textAnchor="middle" className="fill-muted-foreground" fontSize="7">15–30/0–8</text>
+                <text x="245" y="95" textAnchor="middle" className="fill-muted-foreground" fontSize="7">15–30/8–15</text>
+                <text x="335" y="95" textAnchor="middle" className="fill-muted-foreground" fontSize="7">6–12</text>
+                <text x="200" y="112" textAnchor="middle" className="fill-muted-foreground" fontSize="8">Pressures in mmHg — tap a chamber for waveform detail</text>
+                {/* Balloon annotation */}
+                <circle cx="335" cy="32" r="5" fill="hsl(142,60%,45%)" opacity="0.3" stroke="hsl(142,60%,45%)" strokeWidth="0.75" />
+                <text x="365" y="28" fontSize="5" fill="hsl(142,60%,45%)" fontWeight="600">Balloon</text>
+                <text x="365" y="36" fontSize="5" fill="hsl(142,60%,45%)">inflated</text>
+              </svg>
             </div>
-          )}
-        </TabsContent>
-
-        <TabsContent value="applications">
-          <p className="text-xs text-muted-foreground mb-3">Clinical indications and measured/derived parameters</p>
-          <div className="space-y-1.5">
-            {applications.map((a) => (
-              <button
-                key={a.id}
-                onClick={() => setSelectedApp(selectedApp === a.id ? null : a.id)}
-                className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs ${selectedApp === a.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
-              >
-                <span className="font-bold text-foreground">{a.name}</span>
-                {selectedApp === a.id && (
-                  <p className="text-muted-foreground mt-1.5 animate-fade-in">{a.detail}</p>
-                )}
-              </button>
-            ))}
-          </div>
-
-          <div className="mt-3 p-3 rounded-lg border border-border text-xs">
-            <p className="font-semibold text-foreground mb-1">PAC Complications</p>
-            <div className="grid grid-cols-2 gap-1.5">
-              {[
-                "Arrhythmias (VT/VF during insertion)",
-                "PA rupture (balloon over-inflation — mortality >50%)",
-                "Pulmonary infarction (prolonged wedge)",
-                "Catheter knotting",
-                "Thromboembolism",
-                "Infection (line sepsis)",
-                "Valve damage (tricuspid/pulmonary)",
-                "Air embolism",
-              ].map((c) => (
-                <div key={c} className="p-1.5 rounded bg-muted/50 text-muted-foreground text-[10px]">• {c}</div>
+  
+            {/* Chamber selector buttons */}
+            <div className="grid grid-cols-4 gap-1.5 mb-3">
+              {chambers.map((c) => (
+                <button
+                  key={c.id}
+                  onClick={() => setSelectedChamber(selectedChamber === c.id ? null : c.id)}
+                  className={`p-1.5 rounded-lg border text-center transition-all text-xs font-bold ${selectedChamber === c.id ? "border-primary bg-primary/10 text-primary" : "border-border text-foreground hover:border-primary/50"}`}
+                >
+                  {c.name}
+                </button>
               ))}
             </div>
-          </div>
-        </TabsContent>
-
-        <TabsContent value="evidence">
-          <p className="text-xs text-muted-foreground mb-3">Key trials that changed PAC practice</p>
-          <div className="space-y-2">
-            {trials.map((t) => (
-              <div key={t.trial} className="p-3 rounded-lg border border-border text-xs">
-                <p className="font-bold text-foreground text-sm">{t.trial}</p>
-                <p className="text-muted-foreground mt-1"><strong>Design:</strong> {t.design}</p>
-                <p className="text-muted-foreground mt-1"><strong>Result:</strong> {t.result}</p>
-                <div className="mt-2 p-2 rounded bg-primary/10 border border-primary/20">
-                  <span className="font-semibold text-foreground">Conclusion: </span>
-                  <span className="text-muted-foreground">{t.conclusion}</span>
+  
+            {selectedChamber && (() => {
+              const c = chambers.find((x) => x.id === selectedChamber)!;
+              return (
+                    <div className="animate-fade-in space-y-3">
+                  <div className="bg-background rounded-lg border border-border p-2">{c.svg}</div>
+                  <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2">
+                    <p className="font-bold text-foreground text-sm">{c.name}</p>
+                    <div className="grid grid-cols-2 gap-1.5">
+                      <div className="p-1.5 rounded bg-background border border-border">
+                        <span className="text-muted-foreground">Depth:</span>
+                        <p className="font-semibold text-foreground">{c.depth}</p>
+                      </div>
+                      <div className="p-1.5 rounded bg-background border border-border">
+                        <span className="text-muted-foreground">Pressure:</span>
+                        <p className="font-semibold text-foreground">{c.pressure}</p>
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground"><strong>Waveform:</strong> {c.waveform}</p>
+                    <p className="text-muted-foreground"><strong>Abnormal:</strong> {c.abnormal}</p>
+                    <div className="p-2 rounded bg-primary/10 border border-primary/20">
+                      <span className="font-semibold text-foreground">Tips: </span>
+                      <span className="text-muted-foreground">{c.tips}</span>
+                    </div>
+                  </div>
                 </div>
+    );
+            })()}
+  
+            {!selectedChamber && (
+              <div className="p-3 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
+                <strong className="text-foreground">PAC structure: </strong>
+                7.5 Fr, 110 cm. Proximal port (RA — 30 cm), distal port (PA tip), thermistor (3.7 cm from tip), balloon (1.5 mL capacity). Introducer sheath via IJ/SC/femoral. Flow-directed with balloon inflated.
               </div>
-            ))}
-          </div>
-
-          <div className="mt-3 p-2 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
-            <strong className="text-foreground">Current indications (selective use): </strong>
-            Pulmonary hypertension diagnosis/management, cardiac surgery (complex), cardiac transplant, refractory shock with unclear aetiology, intracardiac shunt quantification. Routine use in ICU is NOT supported by evidence.
-          </div>
-        </TabsContent>
-      </Tabs>
-    </div>
+            )}
+          </TabsContent>
+  
+          <TabsContent value="applications">
+            <p className="text-xs text-muted-foreground mb-3">Clinical indications and measured/derived parameters</p>
+            <div className="space-y-1.5">
+              {applications.map((a) => (
+                <button
+                  key={a.id}
+                  onClick={() => setSelectedApp(selectedApp === a.id ? null : a.id)}
+                  className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs ${selectedApp === a.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
+                >
+                  <span className="font-bold text-foreground">{a.name}</span>
+                  {selectedApp === a.id && (
+                    <p className="text-muted-foreground mt-1.5 animate-fade-in">{a.detail}</p>
+                  )}
+                </button>
+              ))}
+            </div>
+  
+            <div className="mt-3 p-3 rounded-lg border border-border text-xs">
+              <p className="font-semibold text-foreground mb-1">PAC Complications</p>
+              <div className="grid grid-cols-2 gap-1.5">
+                {[
+                  "Arrhythmias (VT/VF during insertion)",
+                  "PA rupture (balloon over-inflation — mortality >50%)",
+                  "Pulmonary infarction (prolonged wedge)",
+                  "Catheter knotting",
+                  "Thromboembolism",
+                  "Infection (line sepsis)",
+                  "Valve damage (tricuspid/pulmonary)",
+                  "Air embolism",
+                ].map((c) => (
+                  <div key={c} className="p-1.5 rounded bg-muted/50 text-muted-foreground text-[10px]">• {c}</div>
+                ))}
+              </div>
+            </div>
+          </TabsContent>
+  
+          <TabsContent value="evidence">
+            <p className="text-xs text-muted-foreground mb-3">Key trials that changed PAC practice</p>
+            <div className="space-y-2">
+              {trials.map((t) => (
+                <div key={t.trial} className="p-3 rounded-lg border border-border text-xs">
+                  <p className="font-bold text-foreground text-sm">{t.trial}</p>
+                  <p className="text-muted-foreground mt-1"><strong>Design:</strong> {t.design}</p>
+                  <p className="text-muted-foreground mt-1"><strong>Result:</strong> {t.result}</p>
+                  <div className="mt-2 p-2 rounded bg-primary/10 border border-primary/20">
+                    <span className="font-semibold text-foreground">Conclusion: </span>
+                    <span className="text-muted-foreground">{t.conclusion}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+  
+            <div className="mt-3 p-2 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
+              <strong className="text-foreground">Current indications (selective use): </strong>
+              Pulmonary hypertension diagnosis/management, cardiac surgery (complex), cardiac transplant, refractory shock with unclear aetiology, intracardiac shunt quantification. Routine use in ICU is NOT supported by evidence.
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

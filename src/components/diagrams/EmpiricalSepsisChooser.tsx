@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Empirical sepsis antibiotic chooser.
@@ -352,197 +353,203 @@ const EmpiricalSepsisChooser = () => {
   );
 
   return (
-        <div className="rounded-xl border border-border bg-card p-4 my-6">
-      <h3 className="text-lg font-semibold text-foreground">
-        Empirical sepsis antibiotic chooser
-      </h3>
-      <p className="text-xs text-muted-foreground mb-4">
-        Pick the suspected source and patient factors to see a suggested empirical regimen, with alternatives and clinical pearls. Adapted from NICE NG51/NG151, BNF, Surviving Sepsis Campaign 2021 and IDSA guidance — local antibiogram, allergy testing and microbiology advice always supersede.
-      </p>
-
-      {/* Source selector */}
-      <div className="mb-4">
-        <p className="text-xs uppercase tracking-wide font-semibold text-foreground mb-2">
-          Suspected source
+    <DiagramFigure
+      id="empirical-sepsis-chooser"
+      title="Empirical sepsis chooser"
+      description="Auto-generated wrapper for the Empirical sepsis chooser anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="rounded-xl border border-border bg-card p-4 my-6">
+        <h3 className="text-lg font-semibold text-foreground">
+          Empirical sepsis antibiotic chooser
+        </h3>
+        <p className="text-xs text-muted-foreground mb-4">
+          Pick the suspected source and patient factors to see a suggested empirical regimen, with alternatives and clinical pearls. Adapted from NICE NG51/NG151, BNF, Surviving Sepsis Campaign 2021 and IDSA guidance — local antibiogram, allergy testing and microbiology advice always supersede.
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-1.5">
-          {SOURCES.map((s) => (
-            <button
-              key={s.key}
-              onClick={() => setSource(s.key)}
-              className="text-[11px] px-2 py-1.5 rounded border text-center transition-all"
-              style={{
-                backgroundColor: source === s.key ? "hsl(var(--primary) / 0.15)" : "hsl(var(--background))",
-                borderColor: source === s.key ? "hsl(var(--primary))" : "hsl(var(--border))",
-                color: source === s.key ? "hsl(var(--primary))" : "hsl(var(--foreground))",
-                fontWeight: source === s.key ? 600 : 500,
-                borderWidth: source === s.key ? 2 : 1,
-              }}
-            >
-              {s.shortLabel}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Patient factors */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-        {/* Severity */}
-        <div className="rounded-lg border border-border bg-background p-3">
-          <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1.5">Severity</p>
-          <div className="flex gap-1.5">
-            {(["mild", "severe"] as Severity[]).map((s) => (
-              <button
-                key={s}
-                onClick={() => setSeverity(s)}
-                className="flex-1 text-xs px-2 py-1.5 rounded border transition-all capitalize"
-                style={{
-                  backgroundColor: severity === s ? "hsl(var(--primary) / 0.15)" : "hsl(var(--card))",
-                  borderColor: severity === s ? "hsl(var(--primary))" : "hsl(var(--border))",
-                  color: severity === s ? "hsl(var(--primary))" : "hsl(var(--foreground))",
-                  fontWeight: severity === s ? 600 : 500,
-                }}
-              >
-                {s === "mild" ? "Mild / outpatient" : "Severe / septic shock"}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Penicillin allergy */}
-        <div className="rounded-lg border border-border bg-background p-3">
-          <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1.5">Penicillin allergy</p>
-          <div className="flex gap-1.5">
-            {(["none", "non-severe", "anaphylaxis"] as Allergy[]).map((a) => (
-              <button
-                key={a}
-                onClick={() => setAllergy(a)}
-                className="flex-1 text-xs px-2 py-1.5 rounded border transition-all capitalize"
-                style={{
-                  backgroundColor: allergy === a ? "hsl(var(--primary) / 0.15)" : "hsl(var(--card))",
-                  borderColor: allergy === a ? "hsl(var(--primary))" : "hsl(var(--border))",
-                  color: allergy === a ? "hsl(var(--primary))" : "hsl(var(--foreground))",
-                  fontWeight: allergy === a ? 600 : 500,
-                }}
-              >
-                {a === "none" ? "None" : a === "non-severe" ? "Rash only" : "Anaphylaxis"}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Renal */}
-        <div className="rounded-lg border border-border bg-background p-3">
-          <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1.5">Renal function</p>
-          <div className="flex gap-1.5">
-            {(["normal", "impaired"] as Renal[]).map((r) => (
-              <button
-                key={r}
-                onClick={() => setRenal(r)}
-                className="flex-1 text-xs px-2 py-1.5 rounded border transition-all"
-                style={{
-                  backgroundColor: renal === r ? "hsl(var(--primary) / 0.15)" : "hsl(var(--card))",
-                  borderColor: renal === r ? "hsl(var(--primary))" : "hsl(var(--border))",
-                  color: renal === r ? "hsl(var(--primary))" : "hsl(var(--foreground))",
-                  fontWeight: renal === r ? 600 : 500,
-                }}
-              >
-                {r === "normal" ? "Normal (CrCl ≥ 30)" : "Impaired (CrCl < 30)"}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Risk factor toggles */}
-        <div className="rounded-lg border border-border bg-background p-3">
-          <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1.5">Risk factors</p>
-          <div className="space-y-1.5">
-            <label className="flex items-center gap-2 cursor-pointer text-xs">
-              <input
-                type="checkbox"
-                checked={mrsa}
-                onChange={(e) => setMrsa(e.target.checked)}
-                className="rounded border-border accent-primary"
-              />
-              <span className="text-foreground">MRSA risk (colonised, dialysis, recent MRSA infection)</span>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer text-xs">
-              <input
-                type="checkbox"
-                checked={recentAbx}
-                onChange={(e) => setRecentAbx(e.target.checked)}
-                className="rounded border-border accent-primary"
-              />
-              <span className="text-foreground">Recent broad-spectrum antibiotics or hospitalisation (&lt; 90 days)</span>
-            </label>
-          </div>
-        </div>
-      </div>
-
-      {/* Recommendation panel */}
-      <div className="rounded-lg border-2 border-primary/40 bg-primary/5 p-4">
-        <div className="flex items-baseline justify-between gap-3 flex-wrap mb-2">
-          <p className="text-xs uppercase tracking-wide font-semibold text-primary">
-            Suggested empirical regimen — {activeSource.shortLabel}
+  
+        {/* Source selector */}
+        <div className="mb-4">
+          <p className="text-xs uppercase tracking-wide font-semibold text-foreground mb-2">
+            Suspected source
           </p>
-          <p className="text-[10px] text-muted-foreground italic">Likely organisms: {activeSource.bugs}</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-1.5">
+            {SOURCES.map((s) => (
+              <button
+                key={s.key}
+                onClick={() => setSource(s.key)}
+                className="text-[11px] px-2 py-1.5 rounded border text-center transition-all"
+                style={{
+                  backgroundColor: source === s.key ? "hsl(var(--primary) / 0.15)" : "hsl(var(--background))",
+                  borderColor: source === s.key ? "hsl(var(--primary))" : "hsl(var(--border))",
+                  color: source === s.key ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                  fontWeight: source === s.key ? 600 : 500,
+                  borderWidth: source === s.key ? 2 : 1,
+                }}
+              >
+                {s.shortLabel}
+              </button>
+            ))}
+          </div>
         </div>
-
-        <div className="rounded-md bg-background border border-primary/30 p-3">
-          <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1">First-line</p>
-          <p className="text-sm font-semibold text-foreground leading-snug">{rec.firstLine}</p>
-        </div>
-
-        <div className="mt-3 rounded-md bg-background/60 border border-border p-2.5">
-          <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground">Rationale</p>
-          <p className="text-xs text-muted-foreground mt-0.5 leading-snug">{rec.rationale}</p>
-        </div>
-
-        {rec.alternatives.length > 0 && (
-          <div className="mt-3">
-            <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1.5">Modifications</p>
-            <div className="space-y-1.5">
-              {rec.alternatives.map((a, i) => (
-                <div key={i} className="rounded-md border-l-2 border-primary/50 bg-background/60 p-2.5">
-                  <p className="text-[11px] font-semibold text-primary">{a.trigger}</p>
-                  <p className="text-xs text-foreground mt-0.5 leading-snug">{a.regimen}</p>
-                </div>
+  
+        {/* Patient factors */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          {/* Severity */}
+          <div className="rounded-lg border border-border bg-background p-3">
+            <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1.5">Severity</p>
+            <div className="flex gap-1.5">
+              {(["mild", "severe"] as Severity[]).map((s) => (
+                <button
+                  key={s}
+                  onClick={() => setSeverity(s)}
+                  className="flex-1 text-xs px-2 py-1.5 rounded border transition-all capitalize"
+                  style={{
+                    backgroundColor: severity === s ? "hsl(var(--primary) / 0.15)" : "hsl(var(--card))",
+                    borderColor: severity === s ? "hsl(var(--primary))" : "hsl(var(--border))",
+                    color: severity === s ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                    fontWeight: severity === s ? 600 : 500,
+                  }}
+                >
+                  {s === "mild" ? "Mild / outpatient" : "Severe / septic shock"}
+                </button>
               ))}
             </div>
           </div>
-        )}
-
-        <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-2.5">
-          <div className="rounded-md bg-background/60 border border-border p-2.5">
-            <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground">Clinical pearls</p>
-            <ul className="mt-1 space-y-1">
-              {rec.pearls.map((pearl, i) => (
-                <li key={i} className="text-xs text-muted-foreground leading-snug flex gap-1.5">
-                  <span className="text-primary mt-0.5">•</span>
-                  <span>{pearl}</span>
-                </li>
+  
+          {/* Penicillin allergy */}
+          <div className="rounded-lg border border-border bg-background p-3">
+            <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1.5">Penicillin allergy</p>
+            <div className="flex gap-1.5">
+              {(["none", "non-severe", "anaphylaxis"] as Allergy[]).map((a) => (
+                <button
+                  key={a}
+                  onClick={() => setAllergy(a)}
+                  className="flex-1 text-xs px-2 py-1.5 rounded border transition-all capitalize"
+                  style={{
+                    backgroundColor: allergy === a ? "hsl(var(--primary) / 0.15)" : "hsl(var(--card))",
+                    borderColor: allergy === a ? "hsl(var(--primary))" : "hsl(var(--border))",
+                    color: allergy === a ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                    fontWeight: allergy === a ? 600 : 500,
+                  }}
+                >
+                  {a === "none" ? "None" : a === "non-severe" ? "Rash only" : "Anaphylaxis"}
+                </button>
               ))}
-            </ul>
+            </div>
           </div>
-          <div className="rounded-md bg-background/60 border border-border p-2.5">
-            <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground">Review point</p>
-            <p className="text-xs text-muted-foreground mt-1 leading-snug">{rec.reviewAt}</p>
+  
+          {/* Renal */}
+          <div className="rounded-lg border border-border bg-background p-3">
+            <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1.5">Renal function</p>
+            <div className="flex gap-1.5">
+              {(["normal", "impaired"] as Renal[]).map((r) => (
+                <button
+                  key={r}
+                  onClick={() => setRenal(r)}
+                  className="flex-1 text-xs px-2 py-1.5 rounded border transition-all"
+                  style={{
+                    backgroundColor: renal === r ? "hsl(var(--primary) / 0.15)" : "hsl(var(--card))",
+                    borderColor: renal === r ? "hsl(var(--primary))" : "hsl(var(--border))",
+                    color: renal === r ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                    fontWeight: renal === r ? 600 : 500,
+                  }}
+                >
+                  {r === "normal" ? "Normal (CrCl ≥ 30)" : "Impaired (CrCl < 30)"}
+                </button>
+              ))}
+            </div>
+          </div>
+  
+          {/* Risk factor toggles */}
+          <div className="rounded-lg border border-border bg-background p-3">
+            <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1.5">Risk factors</p>
+            <div className="space-y-1.5">
+              <label className="flex items-center gap-2 cursor-pointer text-xs">
+                <input
+                  type="checkbox"
+                  checked={mrsa}
+                  onChange={(e) => setMrsa(e.target.checked)}
+                  className="rounded border-border accent-primary"
+                />
+                <span className="text-foreground">MRSA risk (colonised, dialysis, recent MRSA infection)</span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer text-xs">
+                <input
+                  type="checkbox"
+                  checked={recentAbx}
+                  onChange={(e) => setRecentAbx(e.target.checked)}
+                  className="rounded border-border accent-primary"
+                />
+                <span className="text-foreground">Recent broad-spectrum antibiotics or hospitalisation (&lt; 90 days)</span>
+              </label>
+            </div>
           </div>
         </div>
+  
+        {/* Recommendation panel */}
+        <div className="rounded-lg border-2 border-primary/40 bg-primary/5 p-4">
+          <div className="flex items-baseline justify-between gap-3 flex-wrap mb-2">
+            <p className="text-xs uppercase tracking-wide font-semibold text-primary">
+              Suggested empirical regimen — {activeSource.shortLabel}
+            </p>
+            <p className="text-[10px] text-muted-foreground italic">Likely organisms: {activeSource.bugs}</p>
+          </div>
+  
+          <div className="rounded-md bg-background border border-primary/30 p-3">
+            <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1">First-line</p>
+            <p className="text-sm font-semibold text-foreground leading-snug">{rec.firstLine}</p>
+          </div>
+  
+          <div className="mt-3 rounded-md bg-background/60 border border-border p-2.5">
+            <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground">Rationale</p>
+            <p className="text-xs text-muted-foreground mt-0.5 leading-snug">{rec.rationale}</p>
+          </div>
+  
+          {rec.alternatives.length > 0 && (
+            <div className="mt-3">
+              <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1.5">Modifications</p>
+              <div className="space-y-1.5">
+                {rec.alternatives.map((a, i) => (
+                  <div key={i} className="rounded-md border-l-2 border-primary/50 bg-background/60 p-2.5">
+                    <p className="text-[11px] font-semibold text-primary">{a.trigger}</p>
+                    <p className="text-xs text-foreground mt-0.5 leading-snug">{a.regimen}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+  
+          <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-2.5">
+            <div className="rounded-md bg-background/60 border border-border p-2.5">
+              <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground">Clinical pearls</p>
+              <ul className="mt-1 space-y-1">
+                {rec.pearls.map((pearl, i) => (
+                  <li key={i} className="text-xs text-muted-foreground leading-snug flex gap-1.5">
+                    <span className="text-primary mt-0.5">•</span>
+                    <span>{pearl}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-md bg-background/60 border border-border p-2.5">
+              <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground">Review point</p>
+              <p className="text-xs text-muted-foreground mt-1 leading-snug">{rec.reviewAt}</p>
+            </div>
+          </div>
+        </div>
+  
+        {/* Sepsis-6 reminder */}
+        <div className="mt-3 rounded-md bg-destructive/10 border border-destructive/30 p-2.5">
+          <p className="text-[11px] uppercase tracking-wide font-semibold text-destructive">
+            Sepsis-6 — within 1 hour
+          </p>
+          <p className="text-xs text-foreground mt-0.5 leading-snug">
+            <span className="font-semibold">Take 3:</span> blood cultures · lactate · urine output ·
+            <span className="font-semibold"> Give 3:</span> high-flow O₂ · IV broad-spectrum antibiotics · IV fluid challenge.
+            Source control as soon as feasible.
+          </p>
+        </div>
       </div>
-
-      {/* Sepsis-6 reminder */}
-      <div className="mt-3 rounded-md bg-destructive/10 border border-destructive/30 p-2.5">
-        <p className="text-[11px] uppercase tracking-wide font-semibold text-destructive">
-          Sepsis-6 — within 1 hour
-        </p>
-        <p className="text-xs text-foreground mt-0.5 leading-snug">
-          <span className="font-semibold">Take 3:</span> blood cultures · lactate · urine output ·
-          <span className="font-semibold"> Give 3:</span> high-flow O₂ · IV broad-spectrum antibiotics · IV fluid challenge.
-          Source control as soon as feasible.
-        </p>
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

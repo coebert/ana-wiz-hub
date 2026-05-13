@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const SepsisManagementDiagram = () => {
   const [selectedBundle, setSelectedBundle] = useState<number | null>(null);
@@ -30,145 +31,151 @@ const SepsisManagementDiagram = () => {
   ];
 
   return (
-    <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
-      <h3 className="text-lg font-bold text-foreground mb-1">Sepsis Management Pathway</h3>
-      <p className="text-sm text-muted-foreground mb-4">SSC Hour-1 bundle, vasopressor algorithm, and decision pathway</p>
-
-      <Tabs defaultValue="bundle" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 mb-4">
-          <TabsTrigger value="bundle" className="text-xs">Hour-1 Bundle</TabsTrigger>
-          <TabsTrigger value="vasopressors" className="text-xs">Vasopressors</TabsTrigger>
-          <TabsTrigger value="pathway" className="text-xs">Decision Path</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="bundle">
-          <div className="space-y-2">
-            {hour1Bundle.map((b, i) => (
-              <button
-                key={i}
-                onClick={() => setSelectedBundle(selectedBundle === i ? null : i)}
-                className={`w-full text-left transition-all ${selectedBundle === i ? "ring-1 ring-primary" : ""}`}
-              >
-                <div className={`p-3 rounded-lg border ${selectedBundle === i ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg">{b.icon}</span>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <p className="font-bold text-foreground text-sm">{b.step}</p>
-                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/15 text-primary font-semibold">{b.time}</span>
+    <DiagramFigure
+      id="sepsis-management-diagram"
+      title="Sepsis management"
+      description="Auto-generated wrapper for the Sepsis management anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
+        <h3 className="text-lg font-bold text-foreground mb-1">Sepsis Management Pathway</h3>
+        <p className="text-sm text-muted-foreground mb-4">SSC Hour-1 bundle, vasopressor algorithm, and decision pathway</p>
+  
+        <Tabs defaultValue="bundle" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 mb-4">
+            <TabsTrigger value="bundle" className="text-xs">Hour-1 Bundle</TabsTrigger>
+            <TabsTrigger value="vasopressors" className="text-xs">Vasopressors</TabsTrigger>
+            <TabsTrigger value="pathway" className="text-xs">Decision Path</TabsTrigger>
+          </TabsList>
+  
+          <TabsContent value="bundle">
+            <div className="space-y-2">
+              {hour1Bundle.map((b, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSelectedBundle(selectedBundle === i ? null : i)}
+                  className={`w-full text-left transition-all ${selectedBundle === i ? "ring-1 ring-primary" : ""}`}
+                >
+                  <div className={`p-3 rounded-lg border ${selectedBundle === i ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg">{b.icon}</span>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <p className="font-bold text-foreground text-sm">{b.step}</p>
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/15 text-primary font-semibold">{b.time}</span>
+                        </div>
                       </div>
                     </div>
+                    {selectedBundle === i && (
+                      <p className="text-xs text-muted-foreground mt-2 ml-8 animate-fade-in">{b.detail}</p>
+                    )}
                   </div>
-                  {selectedBundle === i && (
-                    <p className="text-xs text-muted-foreground mt-2 ml-8 animate-fade-in">{b.detail}</p>
+                  {i < hour1Bundle.length - 1 && (
+                    <div className="flex justify-center"><div className="w-0.5 h-1.5 bg-border" /></div>
                   )}
-                </div>
-                {i < hour1Bundle.length - 1 && (
-                  <div className="flex justify-center"><div className="w-0.5 h-1.5 bg-border" /></div>
-                )}
-              </button>
-            ))}
-          </div>
-
-          <div className="mt-3 p-2 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
-            <strong className="text-foreground">TIME = LIVES: </strong>
-            All 5 elements should begin within 1 hour of sepsis recognition. Bundle compliance associated with 25% relative risk reduction in mortality (Levy 2018). Do not wait for ICU admission to start.
-          </div>
-        </TabsContent>
-
-        <TabsContent value="vasopressors">
-          {/* Escalation SVG */}
-          <div className="bg-background rounded-lg border border-border p-3 mb-3">
-            <svg viewBox="0 0 420 180" className="w-full h-auto">
-              <text x="14" y="100" fontSize="9" className="fill-muted-foreground" transform="rotate(-90,14,100)">Escalation →</text>
-              {vasopressors.slice(0, 4).map((v, i) => {
-                const y = 18 + i * 38;
-                const width = [340, 280, 220, 170][i];
-                return (
-                      <g key={v.id}>
-                    <rect x="36" y={y} width={width} height="20" rx="4" fill={v.color} opacity="0.15" stroke={v.color} strokeWidth="1" />
-                    <text x="44" y={y + 13} fontSize="9" fill={v.color} fontWeight="700">{v.line}: {v.name}</text>
-                    <text x="44" y={y + 30} fontSize="8" className="fill-muted-foreground">{v.dose}</text>
-                  </g>
-  );
-              })}
-            </svg>
-          </div>
-
-          <div className="space-y-1.5">
-            {vasopressors.map((v) => (
-              <button
-                key={v.id}
-                onClick={() => setSelectedVP(selectedVP === v.id ? null : v.id)}
-                className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs ${selectedVP === v.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-foreground">{v.name}</span>
-                  <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold" style={{ backgroundColor: `${v.color}20`, color: v.color }}>{v.line}</span>
-                </div>
-                {selectedVP === v.id && (
-                  <div className="mt-2 space-y-2 animate-fade-in">
-                    <div className="grid grid-cols-2 gap-1.5">
-                      <div className="p-1.5 rounded bg-background border border-border">
-                        <span className="text-muted-foreground">Dose:</span>
-                        <p className="font-semibold text-foreground">{v.dose}</p>
-                      </div>
-                      <div className="p-1.5 rounded bg-background border border-border">
-                        <span className="text-muted-foreground">Receptor:</span>
-                        <p className="font-semibold text-foreground">{v.receptor}</p>
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground">{v.effect}</p>
-                    <div className="p-2 rounded bg-primary/10 border border-primary/20">
-                      <span className="font-semibold text-foreground">Evidence: </span>
-                      <span className="text-muted-foreground">{v.evidence}</span>
-                    </div>
-                  </div>
-                )}
-              </button>
-            ))}
-          </div>
-        </TabsContent>
-
-        <TabsContent value="pathway">
-          <p className="text-xs text-muted-foreground mb-3">Step-through decision pathway for septic shock management</p>
-          <div className="space-y-2">
-            {decisionPathway.map((d, i) => (
-              <div key={i} className="rounded-lg border border-border overflow-hidden">
-                <div className="p-2.5 bg-muted/30">
-                  <p className="font-bold text-foreground text-xs">❓ {d.question}</p>
-                </div>
-                <div className="grid grid-cols-2 divide-x divide-border">
-                  <div className="p-2 text-xs">
-                    <span className="font-bold text-xs" style={{ color: "hsl(142,60%,45%)" }}>YES →</span>
-                    <p className="text-muted-foreground mt-0.5">{d.yes}</p>
-                  </div>
-                  <div className="p-2 text-xs">
-                    <span className="font-bold text-xs" style={{ color: "hsl(200,70%,50%)" }}>NO →</span>
-                    <p className="text-muted-foreground mt-0.5">{d.no}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-3 p-3 rounded-lg border border-border text-xs">
-            <p className="font-semibold text-foreground mb-1">Steroids in Septic Shock</p>
-            <div className="grid grid-cols-2 gap-2">
-              <div className="p-2 rounded bg-background border border-border">
-                <span className="font-semibold text-foreground">ADRENAL (2018)</span>
-                <p className="text-muted-foreground mt-0.5">Hydrocortisone vs placebo: no 90-day mortality difference. Faster shock resolution. ↓Duration of ventilation.</p>
-              </div>
-              <div className="p-2 rounded bg-background border border-border">
-                <span className="font-semibold text-foreground">APROCCHSS (2018)</span>
-                <p className="text-muted-foreground mt-0.5">Hydrocortisone + fludrocortisone: ↓90-day mortality (NNT=18). Faster shock reversal. French ICU population.</p>
-              </div>
+                </button>
+              ))}
             </div>
-            <p className="text-muted-foreground mt-2"><strong>SSC 2021:</strong> Suggest IV hydrocortisone 200 mg/day if norad ≥0.25 μg/kg/min for ≥4 hours. Weak recommendation. Start within 24h of shock onset.</p>
-          </div>
-        </TabsContent>
-      </Tabs>
-    </div>
+  
+            <div className="mt-3 p-2 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
+              <strong className="text-foreground">TIME = LIVES: </strong>
+              All 5 elements should begin within 1 hour of sepsis recognition. Bundle compliance associated with 25% relative risk reduction in mortality (Levy 2018). Do not wait for ICU admission to start.
+            </div>
+          </TabsContent>
+  
+          <TabsContent value="vasopressors">
+            {/* Escalation SVG */}
+            <div className="bg-background rounded-lg border border-border p-3 mb-3">
+              <svg viewBox="0 0 420 180" className="w-full h-auto">
+                <text x="14" y="100" fontSize="9" className="fill-muted-foreground" transform="rotate(-90,14,100)">Escalation →</text>
+                {vasopressors.slice(0, 4).map((v, i) => {
+                  const y = 18 + i * 38;
+                  const width = [340, 280, 220, 170][i];
+                  return (
+                        <g key={v.id}>
+                      <rect x="36" y={y} width={width} height="20" rx="4" fill={v.color} opacity="0.15" stroke={v.color} strokeWidth="1" />
+                      <text x="44" y={y + 13} fontSize="9" fill={v.color} fontWeight="700">{v.line}: {v.name}</text>
+                      <text x="44" y={y + 30} fontSize="8" className="fill-muted-foreground">{v.dose}</text>
+                    </g>
+    );
+                })}
+              </svg>
+            </div>
+  
+            <div className="space-y-1.5">
+              {vasopressors.map((v) => (
+                <button
+                  key={v.id}
+                  onClick={() => setSelectedVP(selectedVP === v.id ? null : v.id)}
+                  className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs ${selectedVP === v.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-foreground">{v.name}</span>
+                    <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold" style={{ backgroundColor: `${v.color}20`, color: v.color }}>{v.line}</span>
+                  </div>
+                  {selectedVP === v.id && (
+                    <div className="mt-2 space-y-2 animate-fade-in">
+                      <div className="grid grid-cols-2 gap-1.5">
+                        <div className="p-1.5 rounded bg-background border border-border">
+                          <span className="text-muted-foreground">Dose:</span>
+                          <p className="font-semibold text-foreground">{v.dose}</p>
+                        </div>
+                        <div className="p-1.5 rounded bg-background border border-border">
+                          <span className="text-muted-foreground">Receptor:</span>
+                          <p className="font-semibold text-foreground">{v.receptor}</p>
+                        </div>
+                      </div>
+                      <p className="text-muted-foreground">{v.effect}</p>
+                      <div className="p-2 rounded bg-primary/10 border border-primary/20">
+                        <span className="font-semibold text-foreground">Evidence: </span>
+                        <span className="text-muted-foreground">{v.evidence}</span>
+                      </div>
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+          </TabsContent>
+  
+          <TabsContent value="pathway">
+            <p className="text-xs text-muted-foreground mb-3">Step-through decision pathway for septic shock management</p>
+            <div className="space-y-2">
+              {decisionPathway.map((d, i) => (
+                <div key={i} className="rounded-lg border border-border overflow-hidden">
+                  <div className="p-2.5 bg-muted/30">
+                    <p className="font-bold text-foreground text-xs">❓ {d.question}</p>
+                  </div>
+                  <div className="grid grid-cols-2 divide-x divide-border">
+                    <div className="p-2 text-xs">
+                      <span className="font-bold text-xs" style={{ color: "hsl(142,60%,45%)" }}>YES →</span>
+                      <p className="text-muted-foreground mt-0.5">{d.yes}</p>
+                    </div>
+                    <div className="p-2 text-xs">
+                      <span className="font-bold text-xs" style={{ color: "hsl(200,70%,50%)" }}>NO →</span>
+                      <p className="text-muted-foreground mt-0.5">{d.no}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+  
+            <div className="mt-3 p-3 rounded-lg border border-border text-xs">
+              <p className="font-semibold text-foreground mb-1">Steroids in Septic Shock</p>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="p-2 rounded bg-background border border-border">
+                  <span className="font-semibold text-foreground">ADRENAL (2018)</span>
+                  <p className="text-muted-foreground mt-0.5">Hydrocortisone vs placebo: no 90-day mortality difference. Faster shock resolution. ↓Duration of ventilation.</p>
+                </div>
+                <div className="p-2 rounded bg-background border border-border">
+                  <span className="font-semibold text-foreground">APROCCHSS (2018)</span>
+                  <p className="text-muted-foreground mt-0.5">Hydrocortisone + fludrocortisone: ↓90-day mortality (NNT=18). Faster shock reversal. French ICU population.</p>
+                </div>
+              </div>
+              <p className="text-muted-foreground mt-2"><strong>SSC 2021:</strong> Suggest IV hydrocortisone 200 mg/day if norad ≥0.25 μg/kg/min for ≥4 hours. Weak recommendation. Start within 24h of shock onset.</p>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

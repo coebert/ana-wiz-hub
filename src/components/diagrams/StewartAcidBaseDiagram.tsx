@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type VariableKey = "sid" | "atot" | "pco2";
 
@@ -83,92 +84,98 @@ const StewartAcidBaseDiagram = () => {
   const info = variables[selected];
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Stewart Approach to Acid-Base</h3>
-      <p className="text-xs text-muted-foreground mb-4">Adjust the three independent variables to see their effect on pH</p>
-
-      {/* pH display */}
-      <div className="text-center mb-5 p-4 rounded-lg border border-border">
-        <p className="text-xs text-muted-foreground">Calculated pH</p>
-        <p className="text-4xl font-bold font-mono" style={{ color: phColor }}>{pH.toFixed(2)}</p>
-        <p className="text-sm font-semibold" style={{ color: phColor }}>{phLabel}</p>
-        <div className="mt-2 h-2 rounded-full bg-secondary overflow-hidden max-w-xs mx-auto">
-          <div
-            className="h-full rounded-full transition-all duration-300"
-            style={{
-              width: `${((pH - 6.8) / 1.0) * 100}%`,
-              background: `linear-gradient(90deg, hsl(0, 70%, 50%), hsl(145, 55%, 42%) 55%, hsl(260, 60%, 55%))`,
-            }}
-          />
+    <DiagramFigure
+      id="stewart-acid-base-diagram"
+      title="Stewart acid base"
+      description="Auto-generated wrapper for the Stewart acid base anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="border border-border rounded-lg p-4 mb-6">
+        <h3 className="text-lg font-serif font-bold text-foreground mb-1">Stewart Approach to Acid-Base</h3>
+        <p className="text-xs text-muted-foreground mb-4">Adjust the three independent variables to see their effect on pH</p>
+  
+        {/* pH display */}
+        <div className="text-center mb-5 p-4 rounded-lg border border-border">
+          <p className="text-xs text-muted-foreground">Calculated pH</p>
+          <p className="text-4xl font-bold font-mono" style={{ color: phColor }}>{pH.toFixed(2)}</p>
+          <p className="text-sm font-semibold" style={{ color: phColor }}>{phLabel}</p>
+          <div className="mt-2 h-2 rounded-full bg-secondary overflow-hidden max-w-xs mx-auto">
+            <div
+              className="h-full rounded-full transition-all duration-300"
+              style={{
+                width: `${((pH - 6.8) / 1.0) * 100}%`,
+                background: `linear-gradient(90deg, hsl(0, 70%, 50%), hsl(145, 55%, 42%) 55%, hsl(260, 60%, 55%))`,
+              }}
+            />
+          </div>
+          <div className="flex justify-between text-[10px] text-muted-foreground max-w-xs mx-auto mt-1">
+            <span>6.80</span><span>7.35</span><span>7.45</span><span>7.80</span>
+          </div>
         </div>
-        <div className="flex justify-between text-[10px] text-muted-foreground max-w-xs mx-auto mt-1">
-          <span>6.80</span><span>7.35</span><span>7.45</span><span>7.80</span>
+  
+        {/* Variable sliders */}
+        <div className="space-y-4 mb-5">
+          {variableOrder.map((key) => {
+            const v = variables[key];
+            const val = values[key];
+            const isNormal = Math.abs(val - v.normal) <= v.step;
+            return (
+                  <button
+                key={key}
+                onClick={() => setSelected(key)}
+                className={`w-full text-left p-3 rounded-lg border transition-all ${selected === key ? "border-2" : ""}`}
+                style={{ borderColor: selected === key ? v.color : "hsl(var(--border))" }}
+              >
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-sm font-bold" style={{ color: v.color }}>{v.label}</span>
+                  <span className={`text-sm font-mono font-bold ${isNormal ? "text-foreground" : ""}`} style={!isNormal ? { color: v.color } : {}}>
+                    {val} {v.unit}
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min={v.min}
+                  max={v.max}
+                  step={v.step}
+                  value={val}
+                  onChange={(e) => {
+                    e.stopPropagation();
+                    setValues({ ...values, [key]: Number(e.target.value) });
+                  }}
+                  className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
+                  style={{
+                    background: `linear-gradient(90deg, ${v.color} ${((val - v.min) / (v.max - v.min)) * 100}%, hsl(var(--muted)) ${((val - v.min) / (v.max - v.min)) * 100}%)`,
+                  }}
+                  onClick={(e) => e.stopPropagation()}
+                />
+                <div className="flex justify-between text-[10px] text-muted-foreground mt-0.5">
+                  <span>{v.min}</span>
+                  <span className="font-medium">Normal: {v.normal}</span>
+                  <span>{v.max}</span>
+                </div>
+              </button>
+    );
+          })}
+        </div>
+  
+        {/* Reset button */}
+        <div className="text-center mb-4">
+          <button
+            onClick={() => setValues({ sid: 40, atot: 17, pco2: 40 })}
+            className="text-xs text-muted-foreground hover:text-foreground border border-border px-3 py-1 rounded transition-colors"
+          >
+            Reset to normal
+          </button>
+        </div>
+  
+        {/* Detail card */}
+        <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
+          <p className="font-bold text-sm" style={{ color: info.color }}>{info.fullName} ({info.label})</p>
+          <p className="text-sm text-muted-foreground mt-1">{info.description}</p>
+          <p className="text-xs text-muted-foreground mt-2"><strong className="text-foreground">Effect:</strong> {info.acidDirection}</p>
+          <p className="text-xs text-primary mt-2 font-medium">Clinical: {info.examples}</p>
         </div>
       </div>
-
-      {/* Variable sliders */}
-      <div className="space-y-4 mb-5">
-        {variableOrder.map((key) => {
-          const v = variables[key];
-          const val = values[key];
-          const isNormal = Math.abs(val - v.normal) <= v.step;
-          return (
-                <button
-              key={key}
-              onClick={() => setSelected(key)}
-              className={`w-full text-left p-3 rounded-lg border transition-all ${selected === key ? "border-2" : ""}`}
-              style={{ borderColor: selected === key ? v.color : "hsl(var(--border))" }}
-            >
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-sm font-bold" style={{ color: v.color }}>{v.label}</span>
-                <span className={`text-sm font-mono font-bold ${isNormal ? "text-foreground" : ""}`} style={!isNormal ? { color: v.color } : {}}>
-                  {val} {v.unit}
-                </span>
-              </div>
-              <input
-                type="range"
-                min={v.min}
-                max={v.max}
-                step={v.step}
-                value={val}
-                onChange={(e) => {
-                  e.stopPropagation();
-                  setValues({ ...values, [key]: Number(e.target.value) });
-                }}
-                className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
-                style={{
-                  background: `linear-gradient(90deg, ${v.color} ${((val - v.min) / (v.max - v.min)) * 100}%, hsl(var(--muted)) ${((val - v.min) / (v.max - v.min)) * 100}%)`,
-                }}
-                onClick={(e) => e.stopPropagation()}
-              />
-              <div className="flex justify-between text-[10px] text-muted-foreground mt-0.5">
-                <span>{v.min}</span>
-                <span className="font-medium">Normal: {v.normal}</span>
-                <span>{v.max}</span>
-              </div>
-            </button>
-  );
-        })}
-      </div>
-
-      {/* Reset button */}
-      <div className="text-center mb-4">
-        <button
-          onClick={() => setValues({ sid: 40, atot: 17, pco2: 40 })}
-          className="text-xs text-muted-foreground hover:text-foreground border border-border px-3 py-1 rounded transition-colors"
-        >
-          Reset to normal
-        </button>
-      </div>
-
-      {/* Detail card */}
-      <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-        <p className="font-bold text-sm" style={{ color: info.color }}>{info.fullName} ({info.label})</p>
-        <p className="text-sm text-muted-foreground mt-1">{info.description}</p>
-        <p className="text-xs text-muted-foreground mt-2"><strong className="text-foreground">Effect:</strong> {info.acidDirection}</p>
-        <p className="text-xs text-primary mt-2 font-medium">Clinical: {info.examples}</p>
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { GltfHeartModel, useHeartAssetAvailable, probeHeartAsset } from "./GltfHeartModel";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // ── Structure data ────────────────────────────────────────────────────────────
 
@@ -1156,203 +1157,209 @@ const CardiacAnatomyDiagram = () => {
   const stepPrev = useCallback(() => setDissectStep((s) => Math.max(0, s - 1)), []);
 
   return (
-        <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Interactive 3D cardiac anatomy"
-          subtitle={
-            dissectMode
-              ? `Dissect mode · step ${dissectStep + 1}/${DISSECT_STEPS.length} · ${DISSECT_STEPS[dissectStep].label.replace(/^\d+\.\s*/, "")}`
-              : heartGlbAvailable
-              ? "Realistic GLB heart loaded · drag to rotate · scroll to zoom · tap a chip"
-              : "Drag to rotate · scroll to zoom · tap a structure for clinical detail"
-          }
-          toggles={[
-            { label: "Dissect mode", active: dissectMode, onChange: () => { setDissectMode((d) => !d); setAutoRotate(false); } },
-            { label: "Cross-section", active: cutaway, onChange: () => setCutaway((c) => !c) },
-            { label: "Auto-rotate", active: autoRotate, onChange: () => setAutoRotate((s) => !s) },
-            { label: "Camera fly-to", active: autoFocus, onChange: () => setAutoFocus((s) => !s) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-          ]}
-        />
-
-        <div className="flex flex-col sm:flex-row gap-4 items-start">
-          <div
-            className="flex-shrink-0 w-full sm:w-[380px] md:w-[420px] lg:w-[460px] h-[280px] xs:h-[320px] sm:h-[400px] md:h-[440px] lg:h-[480px] rounded-lg border border-border overflow-hidden touch-none"
-            style={{ background: "linear-gradient(135deg, hsl(var(--muted)), hsl(var(--background)))" }}
-          >
-            <Canvas
-              camera={{ position: [0, 0.3, 4], fov: 40 }}
-              dpr={isMobile ? [1, 1.5] : [1, 2]}
-              performance={{ min: 0.5 }}
-              gl={{ antialias: !isMobile, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05, powerPreference: "high-performance" }}
-            >
-              <ResponsiveHeartRig paddingFactor={isMobile ? 1.24 : 1.18} />
-              <ambientLight intensity={0.45} />
-              <hemisphereLight color="#ffd9c8" groundColor="#1a2540" intensity={0.35} />
-              <directionalLight position={[4, 6, 5]} intensity={0.95} color="#fff5ee" castShadow />
-              <directionalLight position={[-3, -2, -4]} intensity={0.3} color="#aabbdd" />
-              <pointLight position={[0, 0, 3]} intensity={0.35} color="#ffccbb" />
-              <pointLight position={[0, 2, -1]} intensity={0.22} color="#bbccff" />
-              <Suspense fallback={null}>
-                <HeartModel
-                  selected={selected}
-                  onSelect={handleSelect}
-                  cutaway={cutaway || (dissectMode && activeLayers.internals)}
-                  autoRotate={autoRotate}
-                  rotationSpeed={0.18}
-                  focusCategory={focusCategory}
-                  useGltf={heartGlbAvailable && !dissectMode}
-                  layers={activeLayers}
-                  emphasis={dissectMode ? DISSECT_STEPS[dissectStep].emphasis : null}
-                />
-                <CameraFocus target={focalPoints[selected]} enabled={autoFocus} />
-              </Suspense>
-              <OrbitControls
-                makeDefault
-                enablePan={false}
-                minDistance={isMobile ? 1.8 : 1.6}
-                maxDistance={isMobile ? 7 : 5.5}
-                onStart={() => setAutoRotate(false)}
-              />
-            </Canvas>
-          </div>
-
-          <div className="flex-1 min-w-0 space-y-3">
-            {/* Dissect-mode stepper */}
-            {dissectMode && (
-              <div className="rounded-lg border border-primary/40 bg-primary/5 p-3 space-y-2">
-                <div className="flex items-center justify-between gap-2">
-                  <p className="text-xs font-semibold text-foreground">
-                    Layer {dissectStep + 1} of {DISSECT_STEPS.length}
-                  </p>
-                  <div className="flex items-center gap-1">
-                    <button
-                      type="button"
-                      onClick={stepPrev}
-                      disabled={dissectStep === 0}
-                      className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-background hover:bg-muted/50 disabled:opacity-40 disabled:cursor-not-allowed"
-                      aria-label="Previous layer"
-                    >‹ Prev</button>
-                    <button
-                      type="button"
-                      onClick={stepNext}
-                      disabled={dissectStep === DISSECT_STEPS.length - 1}
-                      className="text-[11px] px-2 py-0.5 rounded-md border border-primary bg-primary/15 text-foreground hover:bg-primary/25 disabled:opacity-40 disabled:cursor-not-allowed"
-                      aria-label="Peel next layer"
-                    >Peel ›</button>
-                    <button
-                      type="button"
-                      onClick={() => setDissectStep(0)}
-                      className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-background hover:bg-muted/50"
-                      aria-label="Reset dissection"
-                    >↺</button>
-                  </div>
-                </div>
-
-                {/* Step rail */}
-                <div className="flex flex-wrap gap-1">
-                  {DISSECT_STEPS.map((s, i) => (
-                    <button
-                      key={s.id}
-                      type="button"
-                      onClick={() => setDissectStep(i)}
-                      aria-pressed={dissectStep === i}
-                      title={s.label}
-                      className={`text-[10px] px-1.5 py-0.5 rounded-md border transition-colors ${
-                        dissectStep === i
-                          ? "border-primary bg-primary text-primary-foreground"
-                          : i < dissectStep
-                          ? "border-primary/40 bg-primary/10 text-foreground"
-                          : "border-border bg-background text-muted-foreground hover:bg-muted/50"
-                      }`}
-                    >
-                      {i + 1}
-                    </button>
-                  ))}
-                </div>
-
-                <p className="text-xs font-medium text-foreground">
-                  {DISSECT_STEPS[dissectStep].label.replace(/^\d+\.\s*/, "")}
-                </p>
-                <p className="text-[11px] leading-relaxed text-muted-foreground">
-                  {DISSECT_STEPS[dissectStep].teaching}
-                </p>
-              </div>
-            )}
-
-            {/* Category focus chips */}
-            <div className="flex flex-wrap gap-1.5 text-[11px]">
-              <span className="text-muted-foreground mr-1 self-center">Focus:</span>
-              {([
-                { id: "all" as const, label: "All systems" },
-                { id: "coronary" as const, label: "Coronary" },
-                { id: "conduction" as const, label: "Conduction" },
-                { id: "valve" as const, label: "Valves" },
-              ]).map((opt) => (
-                <button
-                  key={opt.id}
-                  type="button"
-                  onClick={() => setFocusCategory(opt.id)}
-                  aria-pressed={focusCategory === opt.id}
-                  className={`px-2 py-0.5 rounded-full border transition-colors ${
-                    focusCategory === opt.id
-                      ? "border-primary bg-primary/10 text-foreground"
-                      : "border-border text-muted-foreground hover:bg-muted/50"
-                  }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-
-            {showLabels && (
-              <div className="flex flex-wrap gap-1">
-                {categories
-                  .filter((cat) => focusCategory === "all" || focusCategory === cat.key)
-                  .map((cat) => (
-                    <div key={cat.key} className="flex flex-wrap gap-1">
-                      {cat.keys.map((k) => (
-                        <button
-                          key={k}
-                          onClick={() => handleSelect(k)}
-                          className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${
-                            selected === k ? "border-current font-bold" : "border-border text-muted-foreground hover:text-foreground"
-                          }`}
-                          style={selected === k ? { color: structures[k].color, borderColor: structures[k].color } : {}}
-                        >
-                          {structures[k].label.split("(")[0].replace("Left ", "L ").replace("Right ", "R ").trim()}
-                        </button>
-                      ))}
-                    </div>
-                  ))}
-              </div>
-            )}
-
+    <DiagramFigure
+      id="cardiac-anatomy-diagram"
+      title="Cardiac anatomy"
+      description="Auto-generated wrapper for the Cardiac anatomy anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Interactive 3D cardiac anatomy"
+            subtitle={
+              dissectMode
+                ? `Dissect mode · step ${dissectStep + 1}/${DISSECT_STEPS.length} · ${DISSECT_STEPS[dissectStep].label.replace(/^\d+\.\s*/, "")}`
+                : heartGlbAvailable
+                ? "Realistic GLB heart loaded · drag to rotate · scroll to zoom · tap a chip"
+                : "Drag to rotate · scroll to zoom · tap a structure for clinical detail"
+            }
+            toggles={[
+              { label: "Dissect mode", active: dissectMode, onChange: () => { setDissectMode((d) => !d); setAutoRotate(false); } },
+              { label: "Cross-section", active: cutaway, onChange: () => setCutaway((c) => !c) },
+              { label: "Auto-rotate", active: autoRotate, onChange: () => setAutoRotate((s) => !s) },
+              { label: "Camera fly-to", active: autoFocus, onChange: () => setAutoFocus((s) => !s) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+            ]}
+          />
+  
+          <div className="flex flex-col sm:flex-row gap-4 items-start">
             <div
-              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-              style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+              className="flex-shrink-0 w-full sm:w-[380px] md:w-[420px] lg:w-[460px] h-[280px] xs:h-[320px] sm:h-[400px] md:h-[440px] lg:h-[480px] rounded-lg border border-border overflow-hidden touch-none"
+              style={{ background: "linear-gradient(135deg, hsl(var(--muted)), hsl(var(--background)))" }}
             >
-              <div className="flex items-center justify-between gap-2">
-                <p className="font-semibold text-foreground text-sm">{info.label}</p>
-                <span
-                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                  style={{ background: `${info.color}26`, color: info.color }}
-                >
-                  {categoryLabel}
-                </span>
+              <Canvas
+                camera={{ position: [0, 0.3, 4], fov: 40 }}
+                dpr={isMobile ? [1, 1.5] : [1, 2]}
+                performance={{ min: 0.5 }}
+                gl={{ antialias: !isMobile, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05, powerPreference: "high-performance" }}
+              >
+                <ResponsiveHeartRig paddingFactor={isMobile ? 1.24 : 1.18} />
+                <ambientLight intensity={0.45} />
+                <hemisphereLight color="#ffd9c8" groundColor="#1a2540" intensity={0.35} />
+                <directionalLight position={[4, 6, 5]} intensity={0.95} color="#fff5ee" castShadow />
+                <directionalLight position={[-3, -2, -4]} intensity={0.3} color="#aabbdd" />
+                <pointLight position={[0, 0, 3]} intensity={0.35} color="#ffccbb" />
+                <pointLight position={[0, 2, -1]} intensity={0.22} color="#bbccff" />
+                <Suspense fallback={null}>
+                  <HeartModel
+                    selected={selected}
+                    onSelect={handleSelect}
+                    cutaway={cutaway || (dissectMode && activeLayers.internals)}
+                    autoRotate={autoRotate}
+                    rotationSpeed={0.18}
+                    focusCategory={focusCategory}
+                    useGltf={heartGlbAvailable && !dissectMode}
+                    layers={activeLayers}
+                    emphasis={dissectMode ? DISSECT_STEPS[dissectStep].emphasis : null}
+                  />
+                  <CameraFocus target={focalPoints[selected]} enabled={autoFocus} />
+                </Suspense>
+                <OrbitControls
+                  makeDefault
+                  enablePan={false}
+                  minDistance={isMobile ? 1.8 : 1.6}
+                  maxDistance={isMobile ? 7 : 5.5}
+                  onStart={() => setAutoRotate(false)}
+                />
+              </Canvas>
+            </div>
+  
+            <div className="flex-1 min-w-0 space-y-3">
+              {/* Dissect-mode stepper */}
+              {dissectMode && (
+                <div className="rounded-lg border border-primary/40 bg-primary/5 p-3 space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-xs font-semibold text-foreground">
+                      Layer {dissectStep + 1} of {DISSECT_STEPS.length}
+                    </p>
+                    <div className="flex items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={stepPrev}
+                        disabled={dissectStep === 0}
+                        className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-background hover:bg-muted/50 disabled:opacity-40 disabled:cursor-not-allowed"
+                        aria-label="Previous layer"
+                      >‹ Prev</button>
+                      <button
+                        type="button"
+                        onClick={stepNext}
+                        disabled={dissectStep === DISSECT_STEPS.length - 1}
+                        className="text-[11px] px-2 py-0.5 rounded-md border border-primary bg-primary/15 text-foreground hover:bg-primary/25 disabled:opacity-40 disabled:cursor-not-allowed"
+                        aria-label="Peel next layer"
+                      >Peel ›</button>
+                      <button
+                        type="button"
+                        onClick={() => setDissectStep(0)}
+                        className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-background hover:bg-muted/50"
+                        aria-label="Reset dissection"
+                      >↺</button>
+                    </div>
+                  </div>
+  
+                  {/* Step rail */}
+                  <div className="flex flex-wrap gap-1">
+                    {DISSECT_STEPS.map((s, i) => (
+                      <button
+                        key={s.id}
+                        type="button"
+                        onClick={() => setDissectStep(i)}
+                        aria-pressed={dissectStep === i}
+                        title={s.label}
+                        className={`text-[10px] px-1.5 py-0.5 rounded-md border transition-colors ${
+                          dissectStep === i
+                            ? "border-primary bg-primary text-primary-foreground"
+                            : i < dissectStep
+                            ? "border-primary/40 bg-primary/10 text-foreground"
+                            : "border-border bg-background text-muted-foreground hover:bg-muted/50"
+                        }`}
+                      >
+                        {i + 1}
+                      </button>
+                    ))}
+                  </div>
+  
+                  <p className="text-xs font-medium text-foreground">
+                    {DISSECT_STEPS[dissectStep].label.replace(/^\d+\.\s*/, "")}
+                  </p>
+                  <p className="text-[11px] leading-relaxed text-muted-foreground">
+                    {DISSECT_STEPS[dissectStep].teaching}
+                  </p>
+                </div>
+              )}
+  
+              {/* Category focus chips */}
+              <div className="flex flex-wrap gap-1.5 text-[11px]">
+                <span className="text-muted-foreground mr-1 self-center">Focus:</span>
+                {([
+                  { id: "all" as const, label: "All systems" },
+                  { id: "coronary" as const, label: "Coronary" },
+                  { id: "conduction" as const, label: "Conduction" },
+                  { id: "valve" as const, label: "Valves" },
+                ]).map((opt) => (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    onClick={() => setFocusCategory(opt.id)}
+                    aria-pressed={focusCategory === opt.id}
+                    className={`px-2 py-0.5 rounded-full border transition-colors ${
+                      focusCategory === opt.id
+                        ? "border-primary bg-primary/10 text-foreground"
+                        : "border-border text-muted-foreground hover:bg-muted/50"
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
               </div>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
-              </p>
+  
+              {showLabels && (
+                <div className="flex flex-wrap gap-1">
+                  {categories
+                    .filter((cat) => focusCategory === "all" || focusCategory === cat.key)
+                    .map((cat) => (
+                      <div key={cat.key} className="flex flex-wrap gap-1">
+                        {cat.keys.map((k) => (
+                          <button
+                            key={k}
+                            onClick={() => handleSelect(k)}
+                            className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${
+                              selected === k ? "border-current font-bold" : "border-border text-muted-foreground hover:text-foreground"
+                            }`}
+                            style={selected === k ? { color: structures[k].color, borderColor: structures[k].color } : {}}
+                          >
+                            {structures[k].label.split("(")[0].replace("Left ", "L ").replace("Right ", "R ").trim()}
+                          </button>
+                        ))}
+                      </div>
+                    ))}
+                </div>
+              )}
+  
+              <div
+                className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+                style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <p className="font-semibold text-foreground text-sm">{info.label}</p>
+                  <span
+                    className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                    style={{ background: `${info.color}26`, color: info.color }}
+                  >
+                    {categoryLabel}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

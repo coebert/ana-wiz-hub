@@ -1,5 +1,6 @@
 import { useState, ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Step-by-step emergency treatment algorithms for the four headline endocrine
@@ -510,78 +511,84 @@ const EndocrineEmergencyAlgorithms = () => {
   const algo = ALGOS.find((a) => a.key === active)!;
 
   return (
-    <div className="my-6 space-y-3">
-      <div className="rounded-xl border border-border bg-muted/20 p-4">
-        <div className="mb-3">
-          <h3 className="text-base sm:text-lg font-serif font-semibold text-foreground">
-            Step-by-step emergency algorithms
-          </h3>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            Action · Decision · Drug · Monitor nodes with dosing callouts. Tap a tab to switch emergency.
-          </p>
-        </div>
-
-        {/* Tabs */}
-        <div role="tablist" className="flex flex-wrap gap-1.5 mb-4">
-          {ALGOS.map((a) => {
-            const isActive = a.key === active;
-            return (
-                  <button
-                key={a.key}
-                role="tab"
-                aria-selected={isActive}
-                type="button"
-                onClick={() => setActive(a.key)}
+    <DiagramFigure
+      id="endocrine-emergency-algorithms"
+      title="Endocrine emergency algorithms"
+      description="Auto-generated wrapper for the Endocrine emergency algorithms clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 space-y-3">
+        <div className="rounded-xl border border-border bg-muted/20 p-4">
+          <div className="mb-3">
+            <h3 className="text-base sm:text-lg font-serif font-semibold text-foreground">
+              Step-by-step emergency algorithms
+            </h3>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              Action · Decision · Drug · Monitor nodes with dosing callouts. Tap a tab to switch emergency.
+            </p>
+          </div>
+  
+          {/* Tabs */}
+          <div role="tablist" className="flex flex-wrap gap-1.5 mb-4">
+            {ALGOS.map((a) => {
+              const isActive = a.key === active;
+              return (
+                    <button
+                  key={a.key}
+                  role="tab"
+                  aria-selected={isActive}
+                  type="button"
+                  onClick={() => setActive(a.key)}
+                  className={cn(
+                    "rounded-md border px-3 py-1.5 text-xs font-semibold transition-colors",
+                    isActive
+                      ? cn("border-primary bg-primary text-primary-foreground shadow-sm")
+                      : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground",
+                  )}
+                >
+                  {a.shortLabel}
+                </button>
+    );
+            })}
+          </div>
+  
+          {/* Algo header ribbon */}
+          <div className={cn("rounded-md border-l-4 px-3 py-2 mb-3", algo.ribbon)}>
+            <p className={cn("text-sm font-serif font-semibold", algo.accent)}>
+              {algo.label}
+            </p>
+            <p className="text-[10px] text-muted-foreground italic">
+              Source: {algo.source}
+            </p>
+          </div>
+  
+          {/* Legend */}
+          <div className="flex flex-wrap gap-2 mb-3 text-[9px]">
+            {(["start", "action", "decision", "drug", "monitor", "end"] as NodeKind[]).map((k) => (
+              <span
+                key={k}
                 className={cn(
-                  "rounded-md border px-3 py-1.5 text-xs font-semibold transition-colors",
-                  isActive
-                    ? cn("border-primary bg-primary text-primary-foreground shadow-sm")
-                    : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground",
+                  "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-semibold uppercase tracking-wider",
+                  nodeStyles[k].wrapper,
                 )}
               >
-                {a.shortLabel}
-              </button>
-  );
-          })}
+                <span className={cn("h-1.5 w-1.5 rounded-full", nodeStyles[k].chip)} />
+                {nodeStyles[k].label}
+              </span>
+            ))}
+          </div>
+  
+          {/* Vertical flow */}
+          <ol className="space-y-0 list-none pl-2">
+            {algo.nodes.map((node, i) => (
+              <li key={node.id}>
+                <AlgoNodeCard node={node} index={i} />
+                {i < algo.nodes.length - 1 && <Connector />}
+              </li>
+            ))}
+          </ol>
         </div>
-
-        {/* Algo header ribbon */}
-        <div className={cn("rounded-md border-l-4 px-3 py-2 mb-3", algo.ribbon)}>
-          <p className={cn("text-sm font-serif font-semibold", algo.accent)}>
-            {algo.label}
-          </p>
-          <p className="text-[10px] text-muted-foreground italic">
-            Source: {algo.source}
-          </p>
-        </div>
-
-        {/* Legend */}
-        <div className="flex flex-wrap gap-2 mb-3 text-[9px]">
-          {(["start", "action", "decision", "drug", "monitor", "end"] as NodeKind[]).map((k) => (
-            <span
-              key={k}
-              className={cn(
-                "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-semibold uppercase tracking-wider",
-                nodeStyles[k].wrapper,
-              )}
-            >
-              <span className={cn("h-1.5 w-1.5 rounded-full", nodeStyles[k].chip)} />
-              {nodeStyles[k].label}
-            </span>
-          ))}
-        </div>
-
-        {/* Vertical flow */}
-        <ol className="space-y-0 list-none pl-2">
-          {algo.nodes.map((node, i) => (
-            <li key={node.id}>
-              <AlgoNodeCard node={node} index={i} />
-              {i < algo.nodes.length - 1 && <Connector />}
-            </li>
-          ))}
-        </ol>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

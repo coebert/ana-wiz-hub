@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface GraphData {
   id: string;
@@ -266,144 +267,150 @@ const MathConceptsDiagram = () => {
   };
 
   return (
-        <div className="space-y-5">
-      {/* Mode toggle */}
-      <div className="flex items-center gap-2">
-        <button
-          onClick={() => setMode("single")}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-            mode === "single"
-              ? "bg-primary/15 text-primary ring-1 ring-primary/30"
-              : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-          }`}
-        >
-          Single View
-        </button>
-        <button
-          onClick={() => setMode("compare")}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-            mode === "compare"
-              ? "bg-primary/15 text-primary ring-1 ring-primary/30"
-              : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-          }`}
-        >
-          Compare Two
-        </button>
-      </div>
-
-      {mode === "single" ? (
-        <>
-          {/* Grid of selectable graph types */}
-          <div className="grid grid-cols-3 gap-2">
-            {graphs.map((g) => (
-              <GraphChip key={g.id} g={g} active={g.id === selectedId} onClick={() => setSelectedId(g.id)} />
-            ))}
-          </div>
-
-          {/* Selected graph detail */}
-          <div className="rounded-xl border border-border bg-card p-5 space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-              <div className="flex-shrink-0 mx-auto sm:mx-0">
-                <SharedAxes curves={[selected]} />
+    <DiagramFigure
+      id="math-concepts-diagram"
+      title="Math concepts"
+      description="Auto-generated wrapper for the Math concepts anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-5">
+        {/* Mode toggle */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setMode("single")}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+              mode === "single"
+                ? "bg-primary/15 text-primary ring-1 ring-primary/30"
+                : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+            }`}
+          >
+            Single View
+          </button>
+          <button
+            onClick={() => setMode("compare")}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+              mode === "compare"
+                ? "bg-primary/15 text-primary ring-1 ring-primary/30"
+                : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+            }`}
+          >
+            Compare Two
+          </button>
+        </div>
+  
+        {mode === "single" ? (
+          <>
+            {/* Grid of selectable graph types */}
+            <div className="grid grid-cols-3 gap-2">
+              {graphs.map((g) => (
+                <GraphChip key={g.id} g={g} active={g.id === selectedId} onClick={() => setSelectedId(g.id)} />
+              ))}
+            </div>
+  
+            {/* Selected graph detail */}
+            <div className="rounded-xl border border-border bg-card p-5 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+                <div className="flex-shrink-0 mx-auto sm:mx-0">
+                  <SharedAxes curves={[selected]} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-bold text-foreground mb-1">{selected.title}</h3>
+                  <p className="text-xs font-mono text-primary mb-2">{selected.equation}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{selected.description}</p>
+                </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-bold text-foreground mb-1">{selected.title}</h3>
-                <p className="text-xs font-mono text-primary mb-2">{selected.equation}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{selected.description}</p>
+  
+              <div>
+                <h4 className="text-sm font-semibold text-foreground mb-2">Clinical & Physiological Examples</h4>
+                <div className="space-y-2">
+                  {selected.examples.map((ex, i) => (
+                    <div key={i} className="flex items-start gap-2 p-3 rounded-lg bg-secondary/30 border border-border">
+                      <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: selected.color }} />
+                      <div>
+                        <p className="text-sm font-medium text-foreground">{ex.name}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{ex.detail}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-
-            <div>
-              <h4 className="text-sm font-semibold text-foreground mb-2">Clinical & Physiological Examples</h4>
-              <div className="space-y-2">
-                {selected.examples.map((ex, i) => (
-                  <div key={i} className="flex items-start gap-2 p-3 rounded-lg bg-secondary/30 border border-border">
-                    <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: selected.color }} />
-                    <div>
-                      <p className="text-sm font-medium text-foreground">{ex.name}</p>
-                      <p className="text-xs text-muted-foreground mt-0.5">{ex.detail}</p>
+          </>
+        ) : (
+          <>
+            {/* Compare mode */}
+            <p className="text-sm text-muted-foreground">Select two graph types to overlay on the same axes.</p>
+  
+            <div className="grid grid-cols-2 gap-4">
+              {/* Graph A selector */}
+              <div>
+                <p className="text-xs font-semibold text-foreground mb-2 flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: compareGraphs[0]?.color }} />
+                  Graph A
+                </p>
+                <div className="grid grid-cols-1 gap-1.5 max-h-[280px] overflow-y-auto pr-1">
+                  {graphs.map((g) => (
+                    <GraphChip key={g.id} g={g} active={compareIds[0] === g.id}
+                      onClick={() => setFirstCompare(g.id)} compareColor={compareIds[0] === g.id ? g.color : undefined} />
+                  ))}
+                </div>
+              </div>
+              {/* Graph B selector */}
+              <div>
+                <p className="text-xs font-semibold text-foreground mb-2 flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: compareGraphs[1]?.color }} />
+                  Graph B
+                </p>
+                <div className="grid grid-cols-1 gap-1.5 max-h-[280px] overflow-y-auto pr-1">
+                  {graphs.map((g) => (
+                    <GraphChip key={g.id} g={g} active={compareIds[1] === g.id}
+                      onClick={() => toggleCompare(g.id)} compareColor={compareIds[1] === g.id ? g.color : undefined} />
+                  ))}
+                </div>
+              </div>
+            </div>
+  
+            {/* Overlay chart */}
+            <div className="rounded-xl border border-border bg-card p-5 space-y-4">
+              <div className="mx-auto">
+                <SharedAxes curves={compareGraphs} />
+              </div>
+  
+              {/* Side-by-side details */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                {compareGraphs.map((g) => (
+                  <div key={g.id} className="p-4 rounded-lg border border-border" style={{ borderColor: `${g.color}40` }}>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: g.color }} />
+                      <h4 className="font-bold text-foreground text-sm">{g.title}</h4>
+                    </div>
+                    <p className="text-xs font-mono mb-2" style={{ color: g.color }}>{g.equation}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed mb-3">{g.description}</p>
+                    <div className="space-y-1.5">
+                      {g.examples.slice(0, 2).map((ex, i) => (
+                        <div key={i} className="flex items-start gap-1.5">
+                          <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: g.color }} />
+                          <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">{ex.name}</span> — {ex.detail}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </>
-      ) : (
-        <>
-          {/* Compare mode */}
-          <p className="text-sm text-muted-foreground">Select two graph types to overlay on the same axes.</p>
-
-          <div className="grid grid-cols-2 gap-4">
-            {/* Graph A selector */}
-            <div>
-              <p className="text-xs font-semibold text-foreground mb-2 flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: compareGraphs[0]?.color }} />
-                Graph A
-              </p>
-              <div className="grid grid-cols-1 gap-1.5 max-h-[280px] overflow-y-auto pr-1">
-                {graphs.map((g) => (
-                  <GraphChip key={g.id} g={g} active={compareIds[0] === g.id}
-                    onClick={() => setFirstCompare(g.id)} compareColor={compareIds[0] === g.id ? g.color : undefined} />
-                ))}
-              </div>
-            </div>
-            {/* Graph B selector */}
-            <div>
-              <p className="text-xs font-semibold text-foreground mb-2 flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: compareGraphs[1]?.color }} />
-                Graph B
-              </p>
-              <div className="grid grid-cols-1 gap-1.5 max-h-[280px] overflow-y-auto pr-1">
-                {graphs.map((g) => (
-                  <GraphChip key={g.id} g={g} active={compareIds[1] === g.id}
-                    onClick={() => toggleCompare(g.id)} compareColor={compareIds[1] === g.id ? g.color : undefined} />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Overlay chart */}
-          <div className="rounded-xl border border-border bg-card p-5 space-y-4">
-            <div className="mx-auto">
-              <SharedAxes curves={compareGraphs} />
-            </div>
-
-            {/* Side-by-side details */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              {compareGraphs.map((g) => (
-                <div key={g.id} className="p-4 rounded-lg border border-border" style={{ borderColor: `${g.color}40` }}>
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: g.color }} />
-                    <h4 className="font-bold text-foreground text-sm">{g.title}</h4>
-                  </div>
-                  <p className="text-xs font-mono mb-2" style={{ color: g.color }}>{g.equation}</p>
-                  <p className="text-xs text-muted-foreground leading-relaxed mb-3">{g.description}</p>
-                  <div className="space-y-1.5">
-                    {g.examples.slice(0, 2).map((ex, i) => (
-                      <div key={i} className="flex items-start gap-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: g.color }} />
-                        <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">{ex.name}</span> — {ex.detail}</p>
-                      </div>
-                    ))}
-                  </div>
+  
+              {/* Comparison insight */}
+              {compareIds[0] !== compareIds[1] && (
+                <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+                  <p className="text-xs font-semibold text-primary mb-1">Comparison Insight</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {getComparisonInsight(compareIds[0], compareIds[1])}
+                  </p>
                 </div>
-              ))}
+              )}
             </div>
-
-            {/* Comparison insight */}
-            {compareIds[0] !== compareIds[1] && (
-              <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
-                <p className="text-xs font-semibold text-primary mb-1">Comparison Insight</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {getComparisonInsight(compareIds[0], compareIds[1])}
-                </p>
-              </div>
-            )}
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </DiagramFigure>
   );
 };
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { EcgStripFrame } from "./EcgStripFrame";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Bradyarrhythmia series — sinus brady, sinus arrest, junctional escape,
@@ -434,145 +435,151 @@ const BradyarrhythmiaDiagram = () => {
   const info = BRADYS[selected];
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Bradyarrhythmias — escape hierarchy + rhythm strip"
-          subtitle="Sinus brady · Sinus arrest · Junctional escape · Ventricular escape · Sick sinus. Tap a card for the detail panel."
-          toggles={[
-            { label: "All five", active: showAll, onChange: () => setShowAll((s) => !s) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-          ]}
-        />
-
-        {/* Selector chips */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {ORDER.map((k) => {
-            const b = BRADYS[k];
-            const active = selected === k;
-            return (
-              <button
-                key={k}
-                onClick={() => setSelected(k)}
-                aria-pressed={active}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-all"
-                style={{
-                  borderColor: active ? b.color : "hsl(var(--border))",
-                  backgroundColor: active ? b.color : "transparent",
-                  color: active ? "white" : "hsl(var(--muted-foreground))",
-                }}
-              >
-                {b.shortLabel}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Cards grid */}
-        {showAll ? (
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
+    <DiagramFigure
+      id="bradyarrhythmia-diagram"
+      title="Bradyarrhythmia"
+      description="Auto-generated wrapper for the Bradyarrhythmia anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Bradyarrhythmias — escape hierarchy + rhythm strip"
+            subtitle="Sinus brady · Sinus arrest · Junctional escape · Ventricular escape · Sick sinus. Tap a card for the detail panel."
+            toggles={[
+              { label: "All five", active: showAll, onChange: () => setShowAll((s) => !s) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+            ]}
+          />
+  
+          {/* Selector chips */}
+          <div className="flex flex-wrap gap-2 mb-4">
             {ORDER.map((k) => {
               const b = BRADYS[k];
               const active = selected === k;
               return (
-                    <button
+                <button
                   key={k}
-                  type="button"
                   onClick={() => setSelected(k)}
-                  className="text-left p-3 rounded-lg border bg-background/60 transition-all hover:bg-background"
+                  aria-pressed={active}
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-all"
                   style={{
                     borderColor: active ? b.color : "hsl(var(--border))",
-                    borderWidth: active ? 2 : 1,
-                    boxShadow: active ? `0 4px 14px -6px ${withAlpha(b.color, 0.5)}` : undefined,
+                    backgroundColor: active ? b.color : "transparent",
+                    color: active ? "white" : "hsl(var(--muted-foreground))",
                   }}
                 >
-                  <div className="flex items-center justify-between mb-2 gap-2">
-                    <p className="font-semibold text-sm text-foreground">{b.label}</p>
-                    <span
-                      className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md whitespace-nowrap"
-                      style={{ background: withAlpha(b.color, 0.15), color: b.color }}
-                    >
-                      {b.pacemaker}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col gap-3">
-                    <div className="w-full max-w-[220px] mx-auto"><TreeMini brady={b} color={b.color} /></div>
-                    <div className="min-w-0">
-                      {showLabels && (
-                        <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
-                          <span className="font-semibold text-foreground">Rate:</span> {b.rate}
-                        </p>
-                      )}
-                      <RhythmStrip brady={b} color={b.color} />
-                      {showLabels && (
-                        <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{b.ecg}</p>
-                      )}
-                      <p
-                        className="text-[11px] mt-2 px-2.5 py-1 rounded font-semibold leading-relaxed"
-                        style={{ background: withAlpha(b.color, 0.1), color: b.color }}
-                      >
-                        Device: {b.device}
-                      </p>
-                    </div>
-                  </div>
+                  {b.shortLabel}
                 </button>
-  );
+              );
             })}
           </div>
-        ) : (
-          <div className="p-3 rounded-lg border bg-background/60" style={{ borderColor: info.color, borderWidth: 2 }}>
-            <p className="font-semibold text-sm text-foreground mb-2">{info.label}</p>
-            <div className="flex flex-col gap-3">
-              <div className="w-full max-w-[220px] mx-auto"><TreeMini brady={info} color={info.color} /></div>
-              <div className="min-w-0">
-                <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
-                  <span className="font-semibold text-foreground">Pacemaker:</span> {info.pacemaker} · <span className="font-semibold text-foreground">Rate:</span> {info.rate}
-                </p>
-                <RhythmStrip brady={info} color={info.color} />
-                <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{info.ecg}</p>
+  
+          {/* Cards grid */}
+          {showAll ? (
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
+              {ORDER.map((k) => {
+                const b = BRADYS[k];
+                const active = selected === k;
+                return (
+                      <button
+                    key={k}
+                    type="button"
+                    onClick={() => setSelected(k)}
+                    className="text-left p-3 rounded-lg border bg-background/60 transition-all hover:bg-background"
+                    style={{
+                      borderColor: active ? b.color : "hsl(var(--border))",
+                      borderWidth: active ? 2 : 1,
+                      boxShadow: active ? `0 4px 14px -6px ${withAlpha(b.color, 0.5)}` : undefined,
+                    }}
+                  >
+                    <div className="flex items-center justify-between mb-2 gap-2">
+                      <p className="font-semibold text-sm text-foreground">{b.label}</p>
+                      <span
+                        className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md whitespace-nowrap"
+                        style={{ background: withAlpha(b.color, 0.15), color: b.color }}
+                      >
+                        {b.pacemaker}
+                      </span>
+                    </div>
+  
+                    <div className="flex flex-col gap-3">
+                      <div className="w-full max-w-[220px] mx-auto"><TreeMini brady={b} color={b.color} /></div>
+                      <div className="min-w-0">
+                        {showLabels && (
+                          <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
+                            <span className="font-semibold text-foreground">Rate:</span> {b.rate}
+                          </p>
+                        )}
+                        <RhythmStrip brady={b} color={b.color} />
+                        {showLabels && (
+                          <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{b.ecg}</p>
+                        )}
+                        <p
+                          className="text-[11px] mt-2 px-2.5 py-1 rounded font-semibold leading-relaxed"
+                          style={{ background: withAlpha(b.color, 0.1), color: b.color }}
+                        >
+                          Device: {b.device}
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+    );
+              })}
+            </div>
+          ) : (
+            <div className="p-3 rounded-lg border bg-background/60" style={{ borderColor: info.color, borderWidth: 2 }}>
+              <p className="font-semibold text-sm text-foreground mb-2">{info.label}</p>
+              <div className="flex flex-col gap-3">
+                <div className="w-full max-w-[220px] mx-auto"><TreeMini brady={info} color={info.color} /></div>
+                <div className="min-w-0">
+                  <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
+                    <span className="font-semibold text-foreground">Pacemaker:</span> {info.pacemaker} · <span className="font-semibold text-foreground">Rate:</span> {info.rate}
+                  </p>
+                  <RhythmStrip brady={info} color={info.color} />
+                  <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{info.ecg}</p>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-
-        {/* Detail panel */}
-        <div className="mt-4 min-h-[110px]">
-          <div
-            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
-          >
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-              <p className="font-semibold text-foreground text-sm">{info.label}</p>
-              <span
-                className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                style={{ background: withAlpha(info.color, 0.15), color: info.color }}
-              >
-                Pacemaker: {info.pacemaker} · {info.qrs} QRS
-              </span>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-medium text-foreground">Rate:</span> {info.rate}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-medium text-foreground">ECG:</span> {info.ecg}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-medium text-foreground">Pathophysiology:</span> {info.pathophysiology}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-medium text-foreground">Management:</span> {info.management}
-            </p>
-            <p
-              className="text-[11px] font-medium px-2 py-1 rounded inline-block"
-              style={{ background: withAlpha(info.color, 0.12), color: info.color }}
+          )}
+  
+          {/* Detail panel */}
+          <div className="mt-4 min-h-[110px]">
+            <div
+              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+              style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
             >
-              Device choice: {info.device}
-            </p>
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <p className="font-semibold text-foreground text-sm">{info.label}</p>
+                <span
+                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                  style={{ background: withAlpha(info.color, 0.15), color: info.color }}
+                >
+                  Pacemaker: {info.pacemaker} · {info.qrs} QRS
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">Rate:</span> {info.rate}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">ECG:</span> {info.ecg}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">Pathophysiology:</span> {info.pathophysiology}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">Management:</span> {info.management}
+              </p>
+              <p
+                className="text-[11px] font-medium px-2 py-1 rounded inline-block"
+                style={{ background: withAlpha(info.color, 0.12), color: info.color }}
+              >
+                Device choice: {info.device}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

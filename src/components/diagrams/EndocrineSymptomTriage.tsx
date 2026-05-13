@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { RotateCcw, Stethoscope, FlaskConical, AlertTriangle } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive symptom-to-diagnosis flowchart for endocrine emergencies.
@@ -236,137 +237,143 @@ const EndocrineSymptomTriage = () => {
   const hasInput = selected.size > 0 && maxScore > 0;
 
   return (
-    <Card className="p-5 my-6 border-icu/40">
-      <div className="flex items-start justify-between gap-3 mb-4">
-        <div>
-          <h3 className="text-lg font-serif font-bold text-foreground flex items-center gap-2">
-            <Stethoscope className="h-5 w-5 text-icu" />
-            Symptom-to-diagnosis triage
-          </h3>
-          <p className="text-sm text-muted-foreground mt-1">
-            Tick presenting features — the engine ranks the most likely endocrine emergency
-            and surfaces the focused investigation panel. <strong>Educational tool only</strong> —
-            does not replace clinical judgement.
-          </p>
-        </div>
-        {selected.size > 0 && (
-          <Button variant="outline" size="sm" onClick={reset} className="shrink-0">
-            <RotateCcw className="h-3.5 w-3.5 mr-1" /> Reset
-          </Button>
-        )}
-      </div>
-
-      <div className="grid lg:grid-cols-2 gap-5">
-        {/* LEFT: symptom picker */}
-        <div className="space-y-4">
-          {CATEGORIES.map((cat) => (
-            <div key={cat.id}>
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
-                {cat.label}
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {SYMPTOMS.filter((s) => s.category === cat.id).map((s) => {
-                  const on = selected.has(s.id);
-                  return (
-                    <button
-                      key={s.id}
-                      type="button"
-                      onClick={() => toggle(s.id)}
-                      className={`text-[11px] px-2.5 py-1.5 rounded-md border transition-colors ${
-                        on
-                          ? "bg-icu/15 border-icu text-foreground font-medium"
-                          : "bg-card border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                      }`}
-                      aria-pressed={on}
-                    >
-                      {s.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* RIGHT: ranked diagnoses + investigations */}
-        <div className="space-y-3">
+    <DiagramFigure
+      id="endocrine-symptom-triage"
+      title="Endocrine symptom triage"
+      description="Auto-generated wrapper for the Endocrine symptom triage anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <Card className="p-5 my-6 border-icu/40">
+        <div className="flex items-start justify-between gap-3 mb-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
-              Differential ranking
+            <h3 className="text-lg font-serif font-bold text-foreground flex items-center gap-2">
+              <Stethoscope className="h-5 w-5 text-icu" />
+              Symptom-to-diagnosis triage
+            </h3>
+            <p className="text-sm text-muted-foreground mt-1">
+              Tick presenting features — the engine ranks the most likely endocrine emergency
+              and surfaces the focused investigation panel. <strong>Educational tool only</strong> —
+              does not replace clinical judgement.
             </p>
-            {!hasInput ? (
-              <div className="p-4 rounded-lg border border-dashed border-border text-sm text-muted-foreground text-center">
-                Select features on the left to see the ranked differential.
-              </div>
-            ) : (
-              <ul className="space-y-1.5">
-                {ranked.map(({ dx, score }, i) => {
-                  const pct = maxScore > 0 ? Math.max(0, (score / maxScore) * 100) : 0;
-                  const isTop = i === 0 && score > 0;
-                  return (
-                        <li key={dx.key}>
-                      <div className="flex items-center justify-between gap-2">
-                        <span className={`text-xs ${isTop ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
-                          {i + 1}. {dx.name}
-                        </span>
-                        <Badge variant={isTop ? "default" : "outline"} className="text-[10px] tabular-nums">
-                          {score > 0 ? `+${score}` : score}
-                        </Badge>
-                      </div>
-                      <div className="h-1.5 mt-1 rounded-full bg-muted overflow-hidden">
-                        <div
-                          className={`h-full transition-all duration-500 ${
-                            isTop ? BAR_CLASS[dx.tokenClass] ?? "bg-primary" : "bg-muted-foreground/40"
-                          }`}
-                          style={{ width: `${score > 0 ? pct : 0}%` }}
-                        />
-                      </div>
-                    </li>
-  );
-                })}
-              </ul>
-            )}
           </div>
-
-          {hasInput && top.score > 0 && (
-            <div className={`p-4 rounded-lg border-2 ${PANEL_CLASS[top.dx.tokenClass] ?? "border-primary/40 bg-primary/5"}`}>
-              <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
-                Most likely
-              </p>
-              <p className="text-base font-serif font-bold text-foreground mt-0.5">{top.dx.name}</p>
-              <p className="text-xs text-muted-foreground mt-1 italic">{top.dx.oneLiner}</p>
-
-              <div className="mt-3 p-2.5 rounded-md bg-card border border-border">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-destructive flex items-center gap-1">
-                  <AlertTriangle className="h-3 w-3" /> Immediate action
-                </p>
-                <p className="text-xs text-foreground mt-1">{top.dx.immediate}</p>
-              </div>
-
-              <div className="mt-3">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground flex items-center gap-1 mb-1.5">
-                  <FlaskConical className="h-3 w-3" /> Required investigations
-                </p>
-                <ul className="space-y-2">
-                  {top.dx.investigations.map((inv, i) => (
-                    <li key={i} className="text-xs text-foreground flex gap-1.5">
-                      <span className="text-muted-foreground shrink-0">{i + 1}.</span>
-                      <div className="space-y-0.5">
-                        <p>{inv.test}</p>
-                        <p className="text-[10px] leading-snug text-muted-foreground italic">
-                          <span className="not-italic font-semibold uppercase tracking-wider text-[9px] mr-1">Why</span>
-                          {inv.why}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+          {selected.size > 0 && (
+            <Button variant="outline" size="sm" onClick={reset} className="shrink-0">
+              <RotateCcw className="h-3.5 w-3.5 mr-1" /> Reset
+            </Button>
           )}
         </div>
-      </div>
-    </Card>
+  
+        <div className="grid lg:grid-cols-2 gap-5">
+          {/* LEFT: symptom picker */}
+          <div className="space-y-4">
+            {CATEGORIES.map((cat) => (
+              <div key={cat.id}>
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+                  {cat.label}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {SYMPTOMS.filter((s) => s.category === cat.id).map((s) => {
+                    const on = selected.has(s.id);
+                    return (
+                      <button
+                        key={s.id}
+                        type="button"
+                        onClick={() => toggle(s.id)}
+                        className={`text-[11px] px-2.5 py-1.5 rounded-md border transition-colors ${
+                          on
+                            ? "bg-icu/15 border-icu text-foreground font-medium"
+                            : "bg-card border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                        }`}
+                        aria-pressed={on}
+                      >
+                        {s.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+  
+          {/* RIGHT: ranked diagnoses + investigations */}
+          <div className="space-y-3">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+                Differential ranking
+              </p>
+              {!hasInput ? (
+                <div className="p-4 rounded-lg border border-dashed border-border text-sm text-muted-foreground text-center">
+                  Select features on the left to see the ranked differential.
+                </div>
+              ) : (
+                <ul className="space-y-1.5">
+                  {ranked.map(({ dx, score }, i) => {
+                    const pct = maxScore > 0 ? Math.max(0, (score / maxScore) * 100) : 0;
+                    const isTop = i === 0 && score > 0;
+                    return (
+                          <li key={dx.key}>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className={`text-xs ${isTop ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
+                            {i + 1}. {dx.name}
+                          </span>
+                          <Badge variant={isTop ? "default" : "outline"} className="text-[10px] tabular-nums">
+                            {score > 0 ? `+${score}` : score}
+                          </Badge>
+                        </div>
+                        <div className="h-1.5 mt-1 rounded-full bg-muted overflow-hidden">
+                          <div
+                            className={`h-full transition-all duration-500 ${
+                              isTop ? BAR_CLASS[dx.tokenClass] ?? "bg-primary" : "bg-muted-foreground/40"
+                            }`}
+                            style={{ width: `${score > 0 ? pct : 0}%` }}
+                          />
+                        </div>
+                      </li>
+    );
+                  })}
+                </ul>
+              )}
+            </div>
+  
+            {hasInput && top.score > 0 && (
+              <div className={`p-4 rounded-lg border-2 ${PANEL_CLASS[top.dx.tokenClass] ?? "border-primary/40 bg-primary/5"}`}>
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                  Most likely
+                </p>
+                <p className="text-base font-serif font-bold text-foreground mt-0.5">{top.dx.name}</p>
+                <p className="text-xs text-muted-foreground mt-1 italic">{top.dx.oneLiner}</p>
+  
+                <div className="mt-3 p-2.5 rounded-md bg-card border border-border">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-destructive flex items-center gap-1">
+                    <AlertTriangle className="h-3 w-3" /> Immediate action
+                  </p>
+                  <p className="text-xs text-foreground mt-1">{top.dx.immediate}</p>
+                </div>
+  
+                <div className="mt-3">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground flex items-center gap-1 mb-1.5">
+                    <FlaskConical className="h-3 w-3" /> Required investigations
+                  </p>
+                  <ul className="space-y-2">
+                    {top.dx.investigations.map((inv, i) => (
+                      <li key={i} className="text-xs text-foreground flex gap-1.5">
+                        <span className="text-muted-foreground shrink-0">{i + 1}.</span>
+                        <div className="space-y-0.5">
+                          <p>{inv.test}</p>
+                          <p className="text-[10px] leading-snug text-muted-foreground italic">
+                            <span className="not-italic font-semibold uppercase tracking-wider text-[9px] mr-1">Why</span>
+                            {inv.why}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </Card>
+    </DiagramFigure>
   );
 };
 

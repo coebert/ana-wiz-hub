@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Hook: returns true if the user has requested reduced motion at the OS level.
@@ -968,129 +969,135 @@ export const VascularAccessCrossSectionDiagram: React.FC = () => {
   const maxR = 36;
 
   return (
-    <figure className="my-6 rounded-xl border border-border bg-card overflow-hidden">
-      <figcaption className="px-4 py-3 border-b border-border bg-muted/30">
-        <p className="text-sm font-semibold text-foreground">
-          Lumen geometry — why a CVC is not a resus line
-        </p>
-        <p className="text-xs text-muted-foreground mt-0.5">
-          End-on cross-sections drawn to scale (1 Fr = 0.33 mm OD). Maximum
-          flow follows Hagen–Poiseuille — proportional to r⁴ and inversely
-          proportional to length. A short, wide single lumen (14 G, RIC,
-          introducer) outflows a long, narrow multi-lumen CVC by an order
-          of magnitude.
-        </p>
-      </figcaption>
-      <div className="p-3 overflow-x-auto">
-        <svg
-          viewBox={`0 0 ${W} ${H}`}
-          className="w-full h-auto min-w-[640px]"
-          role="img"
-          aria-label="Cross-sectional comparison of vascular access device lumens"
-        >
-          {CROSS_SECTIONS.map((c, i) => {
-            const cx = i * cellW + cellW / 2;
-            const r = (c.outerFr / maxFr) * maxR;
-            const wallColor = `hsl(${c.hue} 30% 55%)`;
-            const lumenFill = `hsl(${c.hue} 60% 92%)`;
-            return (
-              <g key={c.name}>
-                {/* Outer wall */}
-                <circle
-                  cx={cx}
-                  cy={cy}
-                  r={r}
-                  fill={wallColor}
-                  stroke="hsl(var(--foreground))"
-                  strokeOpacity={0.4}
-                  strokeWidth={0.75}
-                />
-                {/* Lumens */}
-                {c.layout === "single" && (
-                  <circle cx={cx} cy={cy} r={r * 0.78} fill={lumenFill} />
-                )}
-                {c.layout === "double" && (
-                  <>
-                    <path
-                      d={`M ${cx} ${cy - r * 0.85} A ${r * 0.85} ${r * 0.85} 0 0 1 ${cx} ${
-                        cy + r * 0.85
-                      } Z`}
-                      fill={lumenFill}
-                    />
-                    <path
-                      d={`M ${cx} ${cy - r * 0.85} A ${r * 0.85} ${r * 0.85} 0 0 0 ${cx} ${
-                        cy + r * 0.85
-                      } Z`}
-                      fill={`hsl(${c.hue} 40% 80%)`}
-                    />
-                    <line
-                      x1={cx}
-                      y1={cy - r * 0.85}
-                      x2={cx}
-                      y2={cy + r * 0.85}
-                      stroke={wallColor}
-                      strokeWidth={1}
-                    />
-                  </>
-                )}
-                {c.layout === "triple" && (
-                  <>
-                    {[0, 120, 240].map((deg, idx) => {
-                      const rad = (deg * Math.PI) / 180;
-                      const lx = cx + Math.cos(rad) * r * 0.4;
-                      const ly = cy + Math.sin(rad) * r * 0.4;
-                      const sizes = [0.36, 0.28, 0.28];
-                      return (
-                            <circle
-                          key={deg}
-                          cx={lx}
-                          cy={ly}
-                          r={r * sizes[idx]}
-                          fill={lumenFill}
-                          stroke={wallColor}
-                          strokeWidth={0.5}
-                        />
-  );
-                    })}
-                  </>
-                )}
-
-                {/* Label */}
-                <text
-                  x={cx}
-                  y={cy + r + 16}
-                  textAnchor="middle"
-                  fontSize={11}
-                  fontWeight={700}
-                  fill="hsl(var(--foreground))"
-                >
-                  {c.name}
-                </text>
-                <text
-                  x={cx}
-                  y={cy + r + 30}
-                  textAnchor="middle"
-                  fontSize={9}
-                  fill="hsl(var(--muted-foreground))"
-                >
-                  {c.flow}
-                </text>
-                <text
-                  x={cx}
-                  y={cy + r + 44}
-                  textAnchor="middle"
-                  fontSize={9}
-                  fill="hsl(var(--muted-foreground))"
-                  fontStyle="italic"
-                >
-                  {c.use}
-                </text>
-              </g>
-            );
-          })}
-        </svg>
-      </div>
-    </figure>
+    <DiagramFigure
+      id="vascular-access-devices-diagram"
+      title="Vascular access devices"
+      description="Auto-generated wrapper for the Vascular access devices anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <figure className="my-6 rounded-xl border border-border bg-card overflow-hidden">
+        <figcaption className="px-4 py-3 border-b border-border bg-muted/30">
+          <p className="text-sm font-semibold text-foreground">
+            Lumen geometry — why a CVC is not a resus line
+          </p>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            End-on cross-sections drawn to scale (1 Fr = 0.33 mm OD). Maximum
+            flow follows Hagen–Poiseuille — proportional to r⁴ and inversely
+            proportional to length. A short, wide single lumen (14 G, RIC,
+            introducer) outflows a long, narrow multi-lumen CVC by an order
+            of magnitude.
+          </p>
+        </figcaption>
+        <div className="p-3 overflow-x-auto">
+          <svg
+            viewBox={`0 0 ${W} ${H}`}
+            className="w-full h-auto min-w-[640px]"
+            role="img"
+            aria-label="Cross-sectional comparison of vascular access device lumens"
+          >
+            {CROSS_SECTIONS.map((c, i) => {
+              const cx = i * cellW + cellW / 2;
+              const r = (c.outerFr / maxFr) * maxR;
+              const wallColor = `hsl(${c.hue} 30% 55%)`;
+              const lumenFill = `hsl(${c.hue} 60% 92%)`;
+              return (
+                <g key={c.name}>
+                  {/* Outer wall */}
+                  <circle
+                    cx={cx}
+                    cy={cy}
+                    r={r}
+                    fill={wallColor}
+                    stroke="hsl(var(--foreground))"
+                    strokeOpacity={0.4}
+                    strokeWidth={0.75}
+                  />
+                  {/* Lumens */}
+                  {c.layout === "single" && (
+                    <circle cx={cx} cy={cy} r={r * 0.78} fill={lumenFill} />
+                  )}
+                  {c.layout === "double" && (
+                    <>
+                      <path
+                        d={`M ${cx} ${cy - r * 0.85} A ${r * 0.85} ${r * 0.85} 0 0 1 ${cx} ${
+                          cy + r * 0.85
+                        } Z`}
+                        fill={lumenFill}
+                      />
+                      <path
+                        d={`M ${cx} ${cy - r * 0.85} A ${r * 0.85} ${r * 0.85} 0 0 0 ${cx} ${
+                          cy + r * 0.85
+                        } Z`}
+                        fill={`hsl(${c.hue} 40% 80%)`}
+                      />
+                      <line
+                        x1={cx}
+                        y1={cy - r * 0.85}
+                        x2={cx}
+                        y2={cy + r * 0.85}
+                        stroke={wallColor}
+                        strokeWidth={1}
+                      />
+                    </>
+                  )}
+                  {c.layout === "triple" && (
+                    <>
+                      {[0, 120, 240].map((deg, idx) => {
+                        const rad = (deg * Math.PI) / 180;
+                        const lx = cx + Math.cos(rad) * r * 0.4;
+                        const ly = cy + Math.sin(rad) * r * 0.4;
+                        const sizes = [0.36, 0.28, 0.28];
+                        return (
+                              <circle
+                            key={deg}
+                            cx={lx}
+                            cy={ly}
+                            r={r * sizes[idx]}
+                            fill={lumenFill}
+                            stroke={wallColor}
+                            strokeWidth={0.5}
+                          />
+    );
+                      })}
+                    </>
+                  )}
+  
+                  {/* Label */}
+                  <text
+                    x={cx}
+                    y={cy + r + 16}
+                    textAnchor="middle"
+                    fontSize={11}
+                    fontWeight={700}
+                    fill="hsl(var(--foreground))"
+                  >
+                    {c.name}
+                  </text>
+                  <text
+                    x={cx}
+                    y={cy + r + 30}
+                    textAnchor="middle"
+                    fontSize={9}
+                    fill="hsl(var(--muted-foreground))"
+                  >
+                    {c.flow}
+                  </text>
+                  <text
+                    x={cx}
+                    y={cy + r + 44}
+                    textAnchor="middle"
+                    fontSize={9}
+                    fill="hsl(var(--muted-foreground))"
+                    fontStyle="italic"
+                  >
+                    {c.use}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+      </figure>
+    </DiagramFigure>
   );
 };
 

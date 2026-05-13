@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, ReactNode } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 export interface HotspotDef {
   id: string;
@@ -178,9 +179,15 @@ export const HotspotLayer = ({
  * Convenience caption shown beneath the diagram explaining the hotspots.
  */
 export const HotspotHint = ({ children }: { children?: ReactNode }) => (
-  <p className="text-[11px] text-muted-foreground mt-1 italic">
-    {children ?? "Hover or tap the dashed regions to reveal what each labelled structure does."}
-  </p>
-);
+    <DiagramFigure
+      id="hotspot-layer"
+      title="Hotspot layer"
+      description="Auto-generated wrapper for the Hotspot layer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+        <p className="text-[11px] text-muted-foreground mt-1 italic">
+      {children ?? "Hover or tap the dashed regions to reveal what each labelled structure does."}
+    </p>
+    </DiagramFigure>
+  );
 
 export default HotspotLayer;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Tab = "shock" | "equipment" | "diathermy" | "earthing" | "defibrillation";
 
@@ -346,28 +347,34 @@ const ElectricalSafetyDiagram = () => {
   const [activeTab, setActiveTab] = useState<Tab>("shock");
 
   return (
-        <div className="my-8">
-      <div className="flex flex-wrap gap-2 mb-4">
-        {tabs.map((tab) => (
-          <button
-            key={tab.key}
-            onClick={() => setActiveTab(tab.key)}
-            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              activeTab === tab.key
-                ? "bg-primary text-primary-foreground"
-                : "bg-secondary text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
+    <DiagramFigure
+      id="electrical-safety-diagram"
+      title="Electrical safety"
+      description="Auto-generated wrapper for the Electrical safety anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-8">
+        <div className="flex flex-wrap gap-2 mb-4">
+          {tabs.map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                activeTab === tab.key
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+        {activeTab === "shock" && <ShockThresholdsDiagram />}
+        {activeTab === "equipment" && <EquipmentClassesDiagram />}
+        {activeTab === "diathermy" && <DiathermyDiagram />}
+        {activeTab === "earthing" && <EarthingProtectionDiagram />}
+        {activeTab === "defibrillation" && <DefibrillationDiagram />}
       </div>
-      {activeTab === "shock" && <ShockThresholdsDiagram />}
-      {activeTab === "equipment" && <EquipmentClassesDiagram />}
-      {activeTab === "diathermy" && <DiathermyDiagram />}
-      {activeTab === "earthing" && <EarthingProtectionDiagram />}
-      {activeTab === "defibrillation" && <DefibrillationDiagram />}
-    </div>
+    </DiagramFigure>
   );
 };
 

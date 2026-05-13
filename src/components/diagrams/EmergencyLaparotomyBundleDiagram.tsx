@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * NELA emergency-laparotomy care bundle visualised as a horizontal pathway
@@ -107,139 +108,145 @@ const STEPS: AnimatedMechanismStep[] = [
 
 export const EmergencyLaparotomyBundleDiagram = () => {
   return (
-    <AnimatedMechanism
-      title="NELA emergency-laparotomy care bundle"
-      subtitle="The audited pathway from decision-to-operate to ICU. Each node is a measured standard."
-      steps={STEPS}
-      accentClass="border-icu/40"
-      stepMs={2800}
-      renderScene={(active) => (
-        <svg
-          viewBox="0 0 510 220"
-          role="img"
-          aria-label="NELA care bundle pathway with six sequential nodes"
-          className="w-full"
-        >
-          <defs>
-            <radialGradient id="nela-bg" cx="50%" cy="50%" r="65%">
-              <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="hsl(var(--background))" stopOpacity="0" />
-            </radialGradient>
-          </defs>
-          <rect width="510" height="220" fill="url(#nela-bg)" />
-
-          {/* Pathway track */}
-          <line
-            x1={NODES[0].x}
-            y1={110}
-            x2={NODES[NODES.length - 1].x}
-            y2={110}
-            stroke="hsl(var(--border))"
-            strokeWidth={3}
-            strokeLinecap="round"
-          />
-          {/* Progress overlay */}
-          <line
-            x1={NODES[0].x}
-            y1={110}
-            x2={NODES[active].x}
-            y2={110}
-            stroke="hsl(var(--icu))"
-            strokeWidth={3}
-            strokeLinecap="round"
-            style={{ transition: "all 600ms cubic-bezier(0.4,0,0.2,1)" }}
-          />
-
-          {/* Nodes */}
-          {NODES.map((n, i) => {
-            const isActive = i === active;
-            const isDone = i < active;
-            const fill = isActive
-              ? "hsl(var(--icu))"
-              : isDone
-              ? "hsl(var(--clinical))"
-              : "hsl(var(--card))";
-            return (
-                  <g key={n.key}>
-                <circle
-                  cx={n.x}
-                  cy={110}
-                  r={isActive ? 18 : 13}
-                  fill={fill}
-                  stroke={isActive ? "hsl(var(--icu))" : "hsl(var(--border))"}
-                  strokeWidth={isActive ? 2.5 : 1.5}
-                  style={{ transition: "all 400ms ease" }}
-                />
-                <text
-                  x={n.x}
-                  y={114}
-                  textAnchor="middle"
-                  fontSize="11"
-                  fontWeight={700}
-                  fill={isActive || isDone ? "hsl(var(--background))" : "hsl(var(--muted-foreground))"}
-                >
-                  {i + 1}
-                </text>
-                <text
-                  x={n.x}
-                  y={isActive ? 150 : 145}
-                  textAnchor="middle"
-                  fontSize="10"
-                  fontWeight={isActive ? 700 : 500}
-                  fill={isActive ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"}
-                  style={{ transition: "all 400ms ease" }}
-                >
-                  {n.short}
-                </text>
-              </g>
-  );
-          })}
-
-          {/* Active node detail callout */}
-          <g transform={`translate(${NODES[active].x - 90}, 30)`} style={{ transition: "transform 500ms ease" }}>
-            <rect
-              x={0}
-              y={0}
-              width={180}
-              height={52}
-              rx={6}
-              fill="hsl(var(--card))"
-              stroke="hsl(var(--icu))"
-              strokeWidth={1.5}
+    <DiagramFigure
+      id="emergency-laparotomy-bundle-diagram"
+      title="Emergency laparotomy bundle"
+      description="Auto-generated wrapper for the Emergency laparotomy bundle anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <AnimatedMechanism
+        title="NELA emergency-laparotomy care bundle"
+        subtitle="The audited pathway from decision-to-operate to ICU. Each node is a measured standard."
+        steps={STEPS}
+        accentClass="border-icu/40"
+        stepMs={2800}
+        renderScene={(active) => (
+          <svg
+            viewBox="0 0 510 220"
+            role="img"
+            aria-label="NELA care bundle pathway with six sequential nodes"
+            className="w-full"
+          >
+            <defs>
+              <radialGradient id="nela-bg" cx="50%" cy="50%" r="65%">
+                <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="hsl(var(--background))" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            <rect width="510" height="220" fill="url(#nela-bg)" />
+  
+            {/* Pathway track */}
+            <line
+              x1={NODES[0].x}
+              y1={110}
+              x2={NODES[NODES.length - 1].x}
+              y2={110}
+              stroke="hsl(var(--border))"
+              strokeWidth={3}
+              strokeLinecap="round"
             />
-            <foreignObject x={8} y={6} width={164} height={44}>
-              <div
-                style={{
-                  fontSize: "10px",
-                  lineHeight: "1.3",
-                  color: "hsl(var(--foreground))",
-                  fontFamily: "inherit",
-                }}
-              >
-                {NODES[active].detail}
-              </div>
-            </foreignObject>
-            {/* pointer triangle */}
-            <polygon
-              points="84,52 96,52 90,62"
-              fill="hsl(var(--card))"
+            {/* Progress overlay */}
+            <line
+              x1={NODES[0].x}
+              y1={110}
+              x2={NODES[active].x}
+              y2={110}
               stroke="hsl(var(--icu))"
-              strokeWidth={1.5}
+              strokeWidth={3}
+              strokeLinecap="round"
+              style={{ transition: "all 600ms cubic-bezier(0.4,0,0.2,1)" }}
             />
-          </g>
-
-          {/* Legend */}
-          <g transform="translate(50, 190)">
-            <circle cx={6} cy={0} r={5} fill="hsl(var(--clinical))" />
-            <text x={16} y={3} fontSize="9" fill="hsl(var(--muted-foreground))">Done</text>
-            <circle cx={66} cy={0} r={5} fill="hsl(var(--icu))" />
-            <text x={76} y={3} fontSize="9" fill="hsl(var(--muted-foreground))">Active</text>
-            <circle cx={130} cy={0} r={5} fill="hsl(var(--card))" stroke="hsl(var(--border))" />
-            <text x={140} y={3} fontSize="9" fill="hsl(var(--muted-foreground))">Pending</text>
-          </g>
-        </svg>
-      )}
-    />
+  
+            {/* Nodes */}
+            {NODES.map((n, i) => {
+              const isActive = i === active;
+              const isDone = i < active;
+              const fill = isActive
+                ? "hsl(var(--icu))"
+                : isDone
+                ? "hsl(var(--clinical))"
+                : "hsl(var(--card))";
+              return (
+                    <g key={n.key}>
+                  <circle
+                    cx={n.x}
+                    cy={110}
+                    r={isActive ? 18 : 13}
+                    fill={fill}
+                    stroke={isActive ? "hsl(var(--icu))" : "hsl(var(--border))"}
+                    strokeWidth={isActive ? 2.5 : 1.5}
+                    style={{ transition: "all 400ms ease" }}
+                  />
+                  <text
+                    x={n.x}
+                    y={114}
+                    textAnchor="middle"
+                    fontSize="11"
+                    fontWeight={700}
+                    fill={isActive || isDone ? "hsl(var(--background))" : "hsl(var(--muted-foreground))"}
+                  >
+                    {i + 1}
+                  </text>
+                  <text
+                    x={n.x}
+                    y={isActive ? 150 : 145}
+                    textAnchor="middle"
+                    fontSize="10"
+                    fontWeight={isActive ? 700 : 500}
+                    fill={isActive ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"}
+                    style={{ transition: "all 400ms ease" }}
+                  >
+                    {n.short}
+                  </text>
+                </g>
+    );
+            })}
+  
+            {/* Active node detail callout */}
+            <g transform={`translate(${NODES[active].x - 90}, 30)`} style={{ transition: "transform 500ms ease" }}>
+              <rect
+                x={0}
+                y={0}
+                width={180}
+                height={52}
+                rx={6}
+                fill="hsl(var(--card))"
+                stroke="hsl(var(--icu))"
+                strokeWidth={1.5}
+              />
+              <foreignObject x={8} y={6} width={164} height={44}>
+                <div
+                  style={{
+                    fontSize: "10px",
+                    lineHeight: "1.3",
+                    color: "hsl(var(--foreground))",
+                    fontFamily: "inherit",
+                  }}
+                >
+                  {NODES[active].detail}
+                </div>
+              </foreignObject>
+              {/* pointer triangle */}
+              <polygon
+                points="84,52 96,52 90,62"
+                fill="hsl(var(--card))"
+                stroke="hsl(var(--icu))"
+                strokeWidth={1.5}
+              />
+            </g>
+  
+            {/* Legend */}
+            <g transform="translate(50, 190)">
+              <circle cx={6} cy={0} r={5} fill="hsl(var(--clinical))" />
+              <text x={16} y={3} fontSize="9" fill="hsl(var(--muted-foreground))">Done</text>
+              <circle cx={66} cy={0} r={5} fill="hsl(var(--icu))" />
+              <text x={76} y={3} fontSize="9" fill="hsl(var(--muted-foreground))">Active</text>
+              <circle cx={130} cy={0} r={5} fill="hsl(var(--card))" stroke="hsl(var(--border))" />
+              <text x={140} y={3} fontSize="9" fill="hsl(var(--muted-foreground))">Pending</text>
+            </g>
+          </svg>
+        )}
+      />
+    </DiagramFigure>
   );
 };
 

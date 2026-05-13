@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
 import LabGlossaryPopover from "@/components/LabGlossaryPopover";
 import type { LabKey as SharedLabKey, SourceLink } from "@/lib/lab-glossary";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Refeeding syndrome — pathophysiology animation.
@@ -578,14 +579,20 @@ const LabsPanel = ({ active }: { active: number }) => {
 
 const RefeedingSyndromeAnimation = () => {
   return (
-        <AnimatedMechanism
-      title="Refeeding syndrome — pathophysiology"
-      subtitle="From starvation to insulin-driven electrolyte shift, thiamine depletion and end-organ injury"
-      steps={STEPS}
-      stepMs={3200}
-      accentClass="border-destructive/40"
-      renderScene={(active) => <RefeedingScene active={active} />}
-    />
+    <DiagramFigure
+      id="refeeding-syndrome-animation"
+      title="Refeeding syndrome"
+      description="Auto-generated wrapper for the Refeeding syndrome animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <AnimatedMechanism
+        title="Refeeding syndrome — pathophysiology"
+        subtitle="From starvation to insulin-driven electrolyte shift, thiamine depletion and end-organ injury"
+        steps={STEPS}
+        stepMs={3200}
+        accentClass="border-destructive/40"
+        renderScene={(active) => <RefeedingScene active={active} />}
+      />
+    </DiagramFigure>
   );
 };
 

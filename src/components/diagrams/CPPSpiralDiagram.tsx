@@ -1,4 +1,5 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "./MechanismCascadeDiagram";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // ---------- Sources ----------
 const BJA_CPP: CascadeSource = {
@@ -97,12 +98,18 @@ const steps: CascadeStep[] = [
 ];
 
 export const CPPSpiralDiagram = () => (
-  <MechanismCascadeDiagram
-    title="Subendocardial Ischaemic Spiral — Why Vasopressors Save Hearts"
-    subtitle="The CPP = DBP − LVEDP cycle that drives, and reverses, shock-induced myocardial failure."
-    accent="icu"
-    steps={steps}
-  />
-);
+    <DiagramFigure
+      id="cpp-spiral-diagram"
+      title="CPP spiral"
+      description="Auto-generated wrapper for the CPP spiral anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+        <MechanismCascadeDiagram
+      title="Subendocardial Ischaemic Spiral — Why Vasopressors Save Hearts"
+      subtitle="The CPP = DBP − LVEDP cycle that drives, and reverses, shock-induced myocardial failure."
+      accent="icu"
+      steps={steps}
+    />
+    </DiagramFigure>
+  );
 
 export default CPPSpiralDiagram;

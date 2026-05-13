@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Side-by-side analgesic profile: single-shot peripheral nerve block vs
@@ -151,181 +152,187 @@ export const BlockAnalgesiaProfileDiagram = () => {
   const hoverCath = hoverHour != null ? catheter(hoverHour) : null;
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        {/* Toggle bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-          <div className="flex items-center gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <span className="inline-block w-4 h-0.5" style={{ background: "hsl(0, 75%, 55%)" }} />
-              <span className="text-foreground font-medium">Single-shot block</span>
+    <DiagramFigure
+      id="block-analgesia-profile-diagram"
+      title="Block analgesia profile"
+      description="Auto-generated wrapper for the Block analgesia profile anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          {/* Toggle bar */}
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+            <div className="flex items-center gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="inline-block w-4 h-0.5" style={{ background: "hsl(0, 75%, 55%)" }} />
+                <span className="text-foreground font-medium">Single-shot block</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="inline-block w-4 h-0.5" style={{ background: "hsl(170, 55%, 45%)" }} />
+                <span className="text-foreground font-medium">Continuous catheter</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="inline-block w-4 h-0.5" style={{ background: "hsl(170, 55%, 45%)" }} />
-              <span className="text-foreground font-medium">Continuous catheter</span>
+            <div className="flex items-center gap-3 text-xs">
+              <label className="flex items-center gap-1.5 cursor-pointer">
+                <input type="checkbox" checked={showPhases} onChange={(e) => setShowPhases(e.target.checked)} className="accent-primary" />
+                <span className="text-muted-foreground">Phases</span>
+              </label>
+              <label className="flex items-center gap-1.5 cursor-pointer">
+                <input type="checkbox" checked={showRebound} onChange={(e) => setShowRebound(e.target.checked)} className="accent-primary" />
+                <span className="text-muted-foreground">Rebound annotation</span>
+              </label>
             </div>
           </div>
-          <div className="flex items-center gap-3 text-xs">
-            <label className="flex items-center gap-1.5 cursor-pointer">
-              <input type="checkbox" checked={showPhases} onChange={(e) => setShowPhases(e.target.checked)} className="accent-primary" />
-              <span className="text-muted-foreground">Phases</span>
-            </label>
-            <label className="flex items-center gap-1.5 cursor-pointer">
-              <input type="checkbox" checked={showRebound} onChange={(e) => setShowRebound(e.target.checked)} className="accent-primary" />
-              <span className="text-muted-foreground">Rebound annotation</span>
-            </label>
+  
+          <svg
+            viewBox={`0 0 ${W} ${H}`}
+            className="w-full"
+            role="img"
+            aria-label="Pain score profile over 72 hours comparing single-shot peripheral nerve block with continuous perineural catheter"
+            onMouseMove={handleMove}
+            onMouseLeave={() => setHoverHour(null)}
+          >
+            <defs>
+              <linearGradient id="bapd-single-fill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stopColor="hsl(0, 75%, 55%)" stopOpacity="0.18" />
+                <stop offset="100%" stopColor="hsl(0, 75%, 55%)" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="bapd-cath-fill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stopColor="hsl(170, 55%, 45%)" stopOpacity="0.18" />
+                <stop offset="100%" stopColor="hsl(170, 55%, 45%)" stopOpacity="0" />
+              </linearGradient>
+              <filter id="bapd-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="1" stdDeviation="1.2" floodOpacity="0.18" />
+              </filter>
+            </defs>
+  
+            {/* Phase shading (top half = single, bottom half = catheter) */}
+            {showPhases && PHASES.map((p) => {
+              const x1 = xForHour(p.start);
+              const x2 = xForHour(p.end);
+              const isSel = p.key === selectedKey;
+              const yBand = p.profile === "single" ? PAD.top : PAD.top + plotH / 2;
+              return (
+                <rect
+                  key={p.key}
+                  x={x1}
+                  y={yBand}
+                  width={x2 - x1}
+                  height={plotH / 2}
+                  fill={p.color}
+                  opacity={isSel ? 0.22 : 0.08}
+                  onClick={() => setSelectedKey(p.key)}
+                  style={{ cursor: "pointer" }}
+                />
+              );
+            })}
+  
+            {/* Mid divider */}
+            <line x1={PAD.left} y1={PAD.top + plotH / 2} x2={PAD.left + plotW} y2={PAD.top + plotH / 2} stroke="hsl(var(--border))" strokeDasharray="2,3" strokeWidth={0.5} />
+  
+            {/* Y-axis grid (pain 0–10) */}
+            {[0, 2, 4, 6, 8, 10].map((v) => (
+              <g key={v}>
+                <line x1={PAD.left} y1={yForScore(v)} x2={PAD.left + plotW} y2={yForScore(v)} stroke="hsl(var(--border))" strokeWidth={0.5} opacity={0.5} />
+                <text x={PAD.left - 6} y={yForScore(v) + 3} textAnchor="end" fontSize={9} fill="hsl(var(--muted-foreground))">{v}</text>
+              </g>
+            ))}
+            <text x={10} y={PAD.top + plotH / 2} textAnchor="middle" fontSize={10} fill="hsl(var(--muted-foreground))" transform={`rotate(-90, 10, ${PAD.top + plotH / 2})`}>
+              Pain (NRS 0–10)
+            </text>
+  
+            {/* X-axis grid (every 12 h) */}
+            {[0, 12, 24, 36, 48, 60, 72].map((h) => (
+              <g key={h}>
+                <line x1={xForHour(h)} y1={PAD.top} x2={xForHour(h)} y2={PAD.top + plotH} stroke="hsl(var(--border))" strokeWidth={0.5} opacity={0.4} strokeDasharray="2,3" />
+                <text x={xForHour(h)} y={H - 18} textAnchor="middle" fontSize={9} fill="hsl(var(--muted-foreground))">{h}h</text>
+              </g>
+            ))}
+            <text x={PAD.left + plotW / 2} y={H - 4} textAnchor="middle" fontSize={10} fill="hsl(var(--muted-foreground))">
+              Time since block placement
+            </text>
+  
+            {/* Filled areas under curves */}
+            <path d={`${singlePath} L ${PAD.left + plotW} ${PAD.top + plotH} L ${PAD.left} ${PAD.top + plotH} Z`} fill="url(#bapd-single-fill)" />
+            <path d={`${cathPath} L ${PAD.left + plotW} ${PAD.top + plotH} L ${PAD.left} ${PAD.top + plotH} Z`} fill="url(#bapd-cath-fill)" />
+  
+            {/* Curves */}
+            <path d={singlePath} fill="none" stroke="hsl(0, 75%, 55%)" strokeWidth={2} filter="url(#bapd-shadow)" />
+            <path d={cathPath} fill="none" stroke="hsl(170, 55%, 45%)" strokeWidth={2} filter="url(#bapd-shadow)" />
+  
+            {/* Rebound annotation */}
+            {showRebound && (
+              <g>
+                <circle cx={xForHour(22)} cy={yForScore(singleShot(22))} r={4} fill="hsl(0, 75%, 55%)" />
+                <line x1={xForHour(22)} y1={yForScore(singleShot(22))} x2={xForHour(22) + 50} y2={yForScore(singleShot(22)) - 18} stroke="hsl(0, 75%, 55%)" strokeWidth={1} />
+                <rect x={xForHour(22) + 48} y={yForScore(singleShot(22)) - 32} width={108} height={18} rx={3} fill="hsl(0, 75%, 55%)" />
+                <text x={xForHour(22) + 102} y={yForScore(singleShot(22)) - 19} textAnchor="middle" fontSize={9} fill="hsl(var(--background))" fontWeight={600}>
+                  Rebound peak ~22 h
+                </text>
+              </g>
+            )}
+  
+            {/* Hover cursor */}
+            {hoverHour != null && hoverSingle != null && hoverCath != null && (
+              <g>
+                <line x1={xForHour(hoverHour)} y1={PAD.top} x2={xForHour(hoverHour)} y2={PAD.top + plotH} stroke="hsl(var(--foreground))" strokeWidth={1} strokeDasharray="3,3" opacity={0.5} />
+                <circle cx={xForHour(hoverHour)} cy={yForScore(hoverSingle)} r={3.5} fill="hsl(0, 75%, 55%)" stroke="hsl(var(--background))" strokeWidth={1} />
+                <circle cx={xForHour(hoverHour)} cy={yForScore(hoverCath)} r={3.5} fill="hsl(170, 55%, 45%)" stroke="hsl(var(--background))" strokeWidth={1} />
+                <rect x={xForHour(hoverHour) > W - 110 ? xForHour(hoverHour) - 108 : xForHour(hoverHour) + 6} y={PAD.top + 4} width={102} height={42} rx={4} fill="hsl(var(--background))" stroke="hsl(var(--border))" />
+                <text x={xForHour(hoverHour) > W - 110 ? xForHour(hoverHour) - 102 : xForHour(hoverHour) + 12} y={PAD.top + 17} fontSize={10} fill="hsl(var(--foreground))" fontWeight={600}>
+                  t = {hoverHour.toFixed(0)} h
+                </text>
+                <text x={xForHour(hoverHour) > W - 110 ? xForHour(hoverHour) - 102 : xForHour(hoverHour) + 12} y={PAD.top + 30} fontSize={9} fill="hsl(0, 75%, 55%)">
+                  SS: {hoverSingle.toFixed(1)}
+                </text>
+                <text x={xForHour(hoverHour) > W - 110 ? xForHour(hoverHour) - 102 : xForHour(hoverHour) + 12} y={PAD.top + 41} fontSize={9} fill="hsl(170, 55%, 45%)">
+                  Cath: {hoverCath.toFixed(1)}
+                </text>
+              </g>
+            )}
+  
+            {/* Profile labels on left edge */}
+            <text x={PAD.left + 4} y={PAD.top + 12} fontSize={9} fill="hsl(0, 75%, 55%)" fontWeight={600}>SINGLE-SHOT</text>
+            <text x={PAD.left + 4} y={PAD.top + plotH / 2 + 12} fontSize={9} fill="hsl(170, 55%, 45%)" fontWeight={600}>CATHETER</text>
+          </svg>
+  
+          {/* Phase chips */}
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {PHASES.map((p) => {
+              const isSel = p.key === selectedKey;
+              return (
+                    <button
+                  key={p.key}
+                  onClick={() => setSelectedKey(p.key)}
+                  className={`text-xs px-2 py-1 rounded-full border transition-all ${
+                    isSel ? "border-foreground/30 bg-background" : "border-border bg-background/50 hover:bg-background"
+                  }`}
+                  style={{
+                    color: isSel ? p.color : "hsl(var(--muted-foreground))",
+                    borderColor: isSel ? p.color : undefined,
+                  }}
+                >
+                  {p.profile === "single" ? "● " : "○ "}{p.label}
+                </button>
+    );
+            })}
           </div>
-        </div>
-
-        <svg
-          viewBox={`0 0 ${W} ${H}`}
-          className="w-full"
-          role="img"
-          aria-label="Pain score profile over 72 hours comparing single-shot peripheral nerve block with continuous perineural catheter"
-          onMouseMove={handleMove}
-          onMouseLeave={() => setHoverHour(null)}
-        >
-          <defs>
-            <linearGradient id="bapd-single-fill" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stopColor="hsl(0, 75%, 55%)" stopOpacity="0.18" />
-              <stop offset="100%" stopColor="hsl(0, 75%, 55%)" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient id="bapd-cath-fill" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stopColor="hsl(170, 55%, 45%)" stopOpacity="0.18" />
-              <stop offset="100%" stopColor="hsl(170, 55%, 45%)" stopOpacity="0" />
-            </linearGradient>
-            <filter id="bapd-shadow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="1" stdDeviation="1.2" floodOpacity="0.18" />
-            </filter>
-          </defs>
-
-          {/* Phase shading (top half = single, bottom half = catheter) */}
-          {showPhases && PHASES.map((p) => {
-            const x1 = xForHour(p.start);
-            const x2 = xForHour(p.end);
-            const isSel = p.key === selectedKey;
-            const yBand = p.profile === "single" ? PAD.top : PAD.top + plotH / 2;
-            return (
-              <rect
-                key={p.key}
-                x={x1}
-                y={yBand}
-                width={x2 - x1}
-                height={plotH / 2}
-                fill={p.color}
-                opacity={isSel ? 0.22 : 0.08}
-                onClick={() => setSelectedKey(p.key)}
-                style={{ cursor: "pointer" }}
-              />
-            );
-          })}
-
-          {/* Mid divider */}
-          <line x1={PAD.left} y1={PAD.top + plotH / 2} x2={PAD.left + plotW} y2={PAD.top + plotH / 2} stroke="hsl(var(--border))" strokeDasharray="2,3" strokeWidth={0.5} />
-
-          {/* Y-axis grid (pain 0–10) */}
-          {[0, 2, 4, 6, 8, 10].map((v) => (
-            <g key={v}>
-              <line x1={PAD.left} y1={yForScore(v)} x2={PAD.left + plotW} y2={yForScore(v)} stroke="hsl(var(--border))" strokeWidth={0.5} opacity={0.5} />
-              <text x={PAD.left - 6} y={yForScore(v) + 3} textAnchor="end" fontSize={9} fill="hsl(var(--muted-foreground))">{v}</text>
-            </g>
-          ))}
-          <text x={10} y={PAD.top + plotH / 2} textAnchor="middle" fontSize={10} fill="hsl(var(--muted-foreground))" transform={`rotate(-90, 10, ${PAD.top + plotH / 2})`}>
-            Pain (NRS 0–10)
-          </text>
-
-          {/* X-axis grid (every 12 h) */}
-          {[0, 12, 24, 36, 48, 60, 72].map((h) => (
-            <g key={h}>
-              <line x1={xForHour(h)} y1={PAD.top} x2={xForHour(h)} y2={PAD.top + plotH} stroke="hsl(var(--border))" strokeWidth={0.5} opacity={0.4} strokeDasharray="2,3" />
-              <text x={xForHour(h)} y={H - 18} textAnchor="middle" fontSize={9} fill="hsl(var(--muted-foreground))">{h}h</text>
-            </g>
-          ))}
-          <text x={PAD.left + plotW / 2} y={H - 4} textAnchor="middle" fontSize={10} fill="hsl(var(--muted-foreground))">
-            Time since block placement
-          </text>
-
-          {/* Filled areas under curves */}
-          <path d={`${singlePath} L ${PAD.left + plotW} ${PAD.top + plotH} L ${PAD.left} ${PAD.top + plotH} Z`} fill="url(#bapd-single-fill)" />
-          <path d={`${cathPath} L ${PAD.left + plotW} ${PAD.top + plotH} L ${PAD.left} ${PAD.top + plotH} Z`} fill="url(#bapd-cath-fill)" />
-
-          {/* Curves */}
-          <path d={singlePath} fill="none" stroke="hsl(0, 75%, 55%)" strokeWidth={2} filter="url(#bapd-shadow)" />
-          <path d={cathPath} fill="none" stroke="hsl(170, 55%, 45%)" strokeWidth={2} filter="url(#bapd-shadow)" />
-
-          {/* Rebound annotation */}
-          {showRebound && (
-            <g>
-              <circle cx={xForHour(22)} cy={yForScore(singleShot(22))} r={4} fill="hsl(0, 75%, 55%)" />
-              <line x1={xForHour(22)} y1={yForScore(singleShot(22))} x2={xForHour(22) + 50} y2={yForScore(singleShot(22)) - 18} stroke="hsl(0, 75%, 55%)" strokeWidth={1} />
-              <rect x={xForHour(22) + 48} y={yForScore(singleShot(22)) - 32} width={108} height={18} rx={3} fill="hsl(0, 75%, 55%)" />
-              <text x={xForHour(22) + 102} y={yForScore(singleShot(22)) - 19} textAnchor="middle" fontSize={9} fill="hsl(var(--background))" fontWeight={600}>
-                Rebound peak ~22 h
-              </text>
-            </g>
-          )}
-
-          {/* Hover cursor */}
-          {hoverHour != null && hoverSingle != null && hoverCath != null && (
-            <g>
-              <line x1={xForHour(hoverHour)} y1={PAD.top} x2={xForHour(hoverHour)} y2={PAD.top + plotH} stroke="hsl(var(--foreground))" strokeWidth={1} strokeDasharray="3,3" opacity={0.5} />
-              <circle cx={xForHour(hoverHour)} cy={yForScore(hoverSingle)} r={3.5} fill="hsl(0, 75%, 55%)" stroke="hsl(var(--background))" strokeWidth={1} />
-              <circle cx={xForHour(hoverHour)} cy={yForScore(hoverCath)} r={3.5} fill="hsl(170, 55%, 45%)" stroke="hsl(var(--background))" strokeWidth={1} />
-              <rect x={xForHour(hoverHour) > W - 110 ? xForHour(hoverHour) - 108 : xForHour(hoverHour) + 6} y={PAD.top + 4} width={102} height={42} rx={4} fill="hsl(var(--background))" stroke="hsl(var(--border))" />
-              <text x={xForHour(hoverHour) > W - 110 ? xForHour(hoverHour) - 102 : xForHour(hoverHour) + 12} y={PAD.top + 17} fontSize={10} fill="hsl(var(--foreground))" fontWeight={600}>
-                t = {hoverHour.toFixed(0)} h
-              </text>
-              <text x={xForHour(hoverHour) > W - 110 ? xForHour(hoverHour) - 102 : xForHour(hoverHour) + 12} y={PAD.top + 30} fontSize={9} fill="hsl(0, 75%, 55%)">
-                SS: {hoverSingle.toFixed(1)}
-              </text>
-              <text x={xForHour(hoverHour) > W - 110 ? xForHour(hoverHour) - 102 : xForHour(hoverHour) + 12} y={PAD.top + 41} fontSize={9} fill="hsl(170, 55%, 45%)">
-                Cath: {hoverCath.toFixed(1)}
-              </text>
-            </g>
-          )}
-
-          {/* Profile labels on left edge */}
-          <text x={PAD.left + 4} y={PAD.top + 12} fontSize={9} fill="hsl(0, 75%, 55%)" fontWeight={600}>SINGLE-SHOT</text>
-          <text x={PAD.left + 4} y={PAD.top + plotH / 2 + 12} fontSize={9} fill="hsl(170, 55%, 45%)" fontWeight={600}>CATHETER</text>
-        </svg>
-
-        {/* Phase chips */}
-        <div className="mt-3 flex flex-wrap gap-1.5">
-          {PHASES.map((p) => {
-            const isSel = p.key === selectedKey;
-            return (
-                  <button
-                key={p.key}
-                onClick={() => setSelectedKey(p.key)}
-                className={`text-xs px-2 py-1 rounded-full border transition-all ${
-                  isSel ? "border-foreground/30 bg-background" : "border-border bg-background/50 hover:bg-background"
-                }`}
-                style={{
-                  color: isSel ? p.color : "hsl(var(--muted-foreground))",
-                  borderColor: isSel ? p.color : undefined,
-                }}
-              >
-                {p.profile === "single" ? "● " : "○ "}{p.label}
-              </button>
-  );
-          })}
-        </div>
-
-        {/* Detail panel */}
-        <div
-          className="mt-3 min-h-[110px] p-3 rounded-lg bg-background border-l-4 border-border"
-          style={{ borderLeftColor: selected.color }}
-        >
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: selected.color }}>
-              {selected.profile === "single" ? "Single-shot" : "Catheter"} · {selected.start}–{selected.end} h
-            </span>
+  
+          {/* Detail panel */}
+          <div
+            className="mt-3 min-h-[110px] p-3 rounded-lg bg-background border-l-4 border-border"
+            style={{ borderLeftColor: selected.color }}
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: selected.color }}>
+                {selected.profile === "single" ? "Single-shot" : "Catheter"} · {selected.start}–{selected.end} h
+              </span>
+            </div>
+            <p className="font-semibold text-foreground text-sm mb-1">{selected.label}</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">{selected.description}</p>
           </div>
-          <p className="font-semibold text-foreground text-sm mb-1">{selected.label}</p>
-          <p className="text-sm text-muted-foreground leading-relaxed">{selected.description}</p>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

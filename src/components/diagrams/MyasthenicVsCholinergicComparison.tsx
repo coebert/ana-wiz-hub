@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, Eye, Droplet, Activity, Heart, Pill, FlaskConical, Stethoscope } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive comparison: myasthenic vs cholinergic crisis.
@@ -135,138 +136,144 @@ const MyasthenicVsCholinergicComparison = () => {
   const pctC = (tally.cholinergic / total) * 100;
 
   return (
-    <Card className="p-5 my-6 border-clinical/40">
-      <div className="flex items-start justify-between gap-3 mb-4">
-        <div>
-          <h3 className="text-lg font-serif font-bold text-foreground flex items-center gap-2">
-            <Stethoscope className="h-5 w-5 text-clinical" />
-            Myasthenic vs cholinergic crisis — interactive comparison
-          </h3>
-          <p className="text-sm text-muted-foreground mt-1">
-            Click each feature axis to reveal the contrasting findings and the
-            cue it adds. The tally and treatment panel update with the leading
-            picture — opposite treatments, so it matters.
-          </p>
+    <DiagramFigure
+      id="myasthenic-vs-cholinergic-comparison"
+      title="Myasthenic vs cholinergic"
+      description="Auto-generated wrapper for the Myasthenic vs cholinergic anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <Card className="p-5 my-6 border-clinical/40">
+        <div className="flex items-start justify-between gap-3 mb-4">
+          <div>
+            <h3 className="text-lg font-serif font-bold text-foreground flex items-center gap-2">
+              <Stethoscope className="h-5 w-5 text-clinical" />
+              Myasthenic vs cholinergic crisis — interactive comparison
+            </h3>
+            <p className="text-sm text-muted-foreground mt-1">
+              Click each feature axis to reveal the contrasting findings and the
+              cue it adds. The tally and treatment panel update with the leading
+              picture — opposite treatments, so it matters.
+            </p>
+          </div>
+          {active.size > 0 && (
+            <Button variant="outline" size="sm" onClick={() => setActive(new Set())} className="shrink-0">
+              Reset
+            </Button>
+          )}
         </div>
-        {active.size > 0 && (
-          <Button variant="outline" size="sm" onClick={() => setActive(new Set())} className="shrink-0">
-            Reset
-          </Button>
+  
+        {/* Header strip showing column identities */}
+        <div className="grid grid-cols-[110px_1fr_1fr] gap-2 mb-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+          <div>Feature</div>
+          <div className="text-destructive">Myasthenic</div>
+          <div className="text-clinical">Cholinergic</div>
+        </div>
+  
+        {/* Feature rows */}
+        <div className="space-y-2">
+          {FEATURES.map((f) => {
+            const on = active.has(f.id);
+            const Icon = f.icon;
+            return (
+                  <button
+                key={f.id}
+                type="button"
+                onClick={() => toggle(f.id)}
+                aria-pressed={on}
+                className={`w-full grid grid-cols-[110px_1fr_1fr] gap-2 text-left rounded-lg border p-2.5 transition-all ${
+                  on
+                    ? "border-clinical bg-clinical/5"
+                    : "border-border bg-card hover:bg-accent/30"
+                }`}
+              >
+                <div className="flex items-center gap-1.5">
+                  <Icon className={`h-4 w-4 shrink-0 ${on ? "text-clinical" : "text-muted-foreground"}`} />
+                  <span className="text-xs font-semibold text-foreground">{f.label}</span>
+                </div>
+  
+                <div className={`text-xs ${on ? "text-foreground" : "text-muted-foreground"}`}>
+                  <p className="font-medium">{on ? f.myasthenic.finding : "Tap to reveal"}</p>
+                  {on && (
+                    <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{f.myasthenic.cue}</p>
+                  )}
+                </div>
+  
+                <div className={`text-xs ${on ? "text-foreground" : "text-muted-foreground"}`}>
+                  <p className="font-medium">{on ? f.cholinergic.finding : "Tap to reveal"}</p>
+                  {on && (
+                    <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{f.cholinergic.cue}</p>
+                  )}
+                </div>
+              </button>
+    );
+          })}
+        </div>
+  
+        {/* Tally bar */}
+        <div className="mt-4 p-3 rounded-lg border border-border bg-muted/30">
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Picture favours</p>
+            <div className="flex gap-2">
+              <Badge variant="outline" className="border-destructive/50 text-destructive text-[10px]">
+                Myasthenic {tally.myasthenic}
+              </Badge>
+              <Badge variant="outline" className="border-clinical/50 text-clinical text-[10px]">
+                Cholinergic {tally.cholinergic}
+              </Badge>
+            </div>
+          </div>
+          <div className="h-2 rounded-full bg-muted overflow-hidden flex">
+            <div className="h-full bg-destructive transition-all duration-500" style={{ width: `${pctM}%` }} />
+            <div className="h-full bg-clinical transition-all duration-500" style={{ width: `${pctC}%` }} />
+          </div>
+        </div>
+  
+        {/* Treatment panel */}
+        {leading && (
+          <div
+            className={`mt-3 p-4 rounded-lg border-2 ${
+              leading === "myasthenic"
+                ? "border-destructive/40 bg-destructive/5"
+                : "border-clinical/40 bg-clinical/5"
+            }`}
+          >
+            <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">Working diagnosis</p>
+            <p className="text-base font-serif font-bold text-foreground mt-0.5">{TREATMENTS[leading].title}</p>
+  
+            <div className="mt-3 p-2.5 rounded-md bg-card border border-border">
+              <p className="text-[10px] font-semibold uppercase tracking-wide text-destructive flex items-center gap-1">
+                <AlertTriangle className="h-3 w-3" /> Immediate action
+              </p>
+              <p className="text-xs text-foreground mt-1">{TREATMENTS[leading].immediate}</p>
+            </div>
+  
+            <div className="mt-3">
+              <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground mb-1.5">
+                Treatment pearls
+              </p>
+              <ul className="space-y-1">
+                {TREATMENTS[leading].pearls.map((p, i) => (
+                  <li key={i} className="text-xs text-foreground flex gap-1.5">
+                    <span className="text-muted-foreground shrink-0">{i + 1}.</span>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+  
+            <div className="mt-3 p-2 rounded-md bg-muted/40 border border-border">
+              <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">Avoid</p>
+              <p className="text-xs text-foreground mt-1">{TREATMENTS[leading].avoid}</p>
+            </div>
+          </div>
         )}
-      </div>
-
-      {/* Header strip showing column identities */}
-      <div className="grid grid-cols-[110px_1fr_1fr] gap-2 mb-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
-        <div>Feature</div>
-        <div className="text-destructive">Myasthenic</div>
-        <div className="text-clinical">Cholinergic</div>
-      </div>
-
-      {/* Feature rows */}
-      <div className="space-y-2">
-        {FEATURES.map((f) => {
-          const on = active.has(f.id);
-          const Icon = f.icon;
-          return (
-                <button
-              key={f.id}
-              type="button"
-              onClick={() => toggle(f.id)}
-              aria-pressed={on}
-              className={`w-full grid grid-cols-[110px_1fr_1fr] gap-2 text-left rounded-lg border p-2.5 transition-all ${
-                on
-                  ? "border-clinical bg-clinical/5"
-                  : "border-border bg-card hover:bg-accent/30"
-              }`}
-            >
-              <div className="flex items-center gap-1.5">
-                <Icon className={`h-4 w-4 shrink-0 ${on ? "text-clinical" : "text-muted-foreground"}`} />
-                <span className="text-xs font-semibold text-foreground">{f.label}</span>
-              </div>
-
-              <div className={`text-xs ${on ? "text-foreground" : "text-muted-foreground"}`}>
-                <p className="font-medium">{on ? f.myasthenic.finding : "Tap to reveal"}</p>
-                {on && (
-                  <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{f.myasthenic.cue}</p>
-                )}
-              </div>
-
-              <div className={`text-xs ${on ? "text-foreground" : "text-muted-foreground"}`}>
-                <p className="font-medium">{on ? f.cholinergic.finding : "Tap to reveal"}</p>
-                {on && (
-                  <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{f.cholinergic.cue}</p>
-                )}
-              </div>
-            </button>
-  );
-        })}
-      </div>
-
-      {/* Tally bar */}
-      <div className="mt-4 p-3 rounded-lg border border-border bg-muted/30">
-        <div className="flex items-center justify-between mb-2">
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Picture favours</p>
-          <div className="flex gap-2">
-            <Badge variant="outline" className="border-destructive/50 text-destructive text-[10px]">
-              Myasthenic {tally.myasthenic}
-            </Badge>
-            <Badge variant="outline" className="border-clinical/50 text-clinical text-[10px]">
-              Cholinergic {tally.cholinergic}
-            </Badge>
-          </div>
-        </div>
-        <div className="h-2 rounded-full bg-muted overflow-hidden flex">
-          <div className="h-full bg-destructive transition-all duration-500" style={{ width: `${pctM}%` }} />
-          <div className="h-full bg-clinical transition-all duration-500" style={{ width: `${pctC}%` }} />
-        </div>
-      </div>
-
-      {/* Treatment panel */}
-      {leading && (
-        <div
-          className={`mt-3 p-4 rounded-lg border-2 ${
-            leading === "myasthenic"
-              ? "border-destructive/40 bg-destructive/5"
-              : "border-clinical/40 bg-clinical/5"
-          }`}
-        >
-          <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">Working diagnosis</p>
-          <p className="text-base font-serif font-bold text-foreground mt-0.5">{TREATMENTS[leading].title}</p>
-
-          <div className="mt-3 p-2.5 rounded-md bg-card border border-border">
-            <p className="text-[10px] font-semibold uppercase tracking-wide text-destructive flex items-center gap-1">
-              <AlertTriangle className="h-3 w-3" /> Immediate action
-            </p>
-            <p className="text-xs text-foreground mt-1">{TREATMENTS[leading].immediate}</p>
-          </div>
-
-          <div className="mt-3">
-            <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground mb-1.5">
-              Treatment pearls
-            </p>
-            <ul className="space-y-1">
-              {TREATMENTS[leading].pearls.map((p, i) => (
-                <li key={i} className="text-xs text-foreground flex gap-1.5">
-                  <span className="text-muted-foreground shrink-0">{i + 1}.</span>
-                  <span>{p}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mt-3 p-2 rounded-md bg-muted/40 border border-border">
-            <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">Avoid</p>
-            <p className="text-xs text-foreground mt-1">{TREATMENTS[leading].avoid}</p>
-          </div>
-        </div>
-      )}
-
-      {!leading && active.size > 0 && (
-        <p className="mt-3 text-xs text-muted-foreground italic text-center">
-          Tally is tied — toggle more axes (especially Tensilon, secretions, pupils) to break the tie.
-        </p>
-      )}
-    </Card>
+  
+        {!leading && active.size > 0 && (
+          <p className="mt-3 text-xs text-muted-foreground italic text-center">
+            Tally is tied — toggle more axes (especially Tensilon, secretions, pupils) to break the tie.
+          </p>
+        )}
+      </Card>
+    </DiagramFigure>
   );
 };
 

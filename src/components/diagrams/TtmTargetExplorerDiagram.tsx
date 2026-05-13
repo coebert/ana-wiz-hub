@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Targeted Temperature Management (TTM) explorer.
@@ -173,168 +174,174 @@ const TtmTargetExplorerDiagram = () => {
   const path = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ");
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Targeted Temperature Management — pick a target"
-          subtitle="Compare 33 °C, 36 °C, targeted normothermia and fever control after ROSC"
-          toggles={[
-            { label: "Phases", active: showPhases, onChange: () => setShowPhases((s) => !s) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-          ]}
-        />
-
-        {/* Target selector */}
-        <div className="flex flex-wrap gap-2 mb-3">
-          {(Object.keys(targets) as Target[]).map((t) => (
-            <button
-              key={t}
-              onClick={() => setTarget(t)}
-              aria-pressed={target === t}
-              className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-all"
-              style={{
-                borderColor: target === t ? targets[t].color : "hsl(var(--border))",
-                backgroundColor: target === t ? targets[t].color : "transparent",
-                color: target === t ? "white" : "hsl(var(--muted-foreground))",
-              }}
-            >
-              {targets[t].label}
-            </button>
-          ))}
-        </div>
-
-        {/* SVG curve */}
-        <div className="bg-background/70 rounded-lg border border-border p-3">
-          <svg viewBox="0 0 480 210" className="w-full" role="img" aria-label="Temperature vs time curve for the selected TTM strategy">
-            {/* Phase backgrounds */}
-            {showPhases && (() => {
-              let xCursor = 0;
-              return phaseSpec.map((p) => {
-                const x0 = hToX(xCursor);
-                const x1 = hToX(xCursor + p.durationH);
-                xCursor += p.durationH;
-                return (
-                  <g key={p.key}>
-                    <rect x={x0} y={20} width={x1 - x0} height={160} fill={p.color} fillOpacity={0.06} />
-                    <line x1={x1} y1={20} x2={x1} y2={180} stroke="hsl(var(--border))" strokeWidth={0.5} strokeDasharray="2 2" />
-                  </g>
-                );
-              });
-            })()}
-
-            {/* Y axis */}
-            <line x1={40} y1={20} x2={40} y2={180} stroke="hsl(var(--border))" strokeWidth={0.75} />
-            {/* Temperature gridlines */}
-            {[33, 34, 35, 36, 37, 38].map((t) => (
-              <g key={t}>
-                <line x1={40} y1={tToY(t)} x2={460} y2={tToY(t)} stroke="hsl(var(--muted-foreground))" strokeWidth={0.5} strokeDasharray="2 3" opacity={0.4} />
-                <text x={36} y={tToY(t) + 3} fontSize={7} fill="hsl(var(--muted-foreground))" textAnchor="end">{t}°</text>
-              </g>
+    <DiagramFigure
+      id="ttm-target-explorer-diagram"
+      title="Ttm target explorer"
+      description="Auto-generated wrapper for the Ttm target explorer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Targeted Temperature Management — pick a target"
+            subtitle="Compare 33 °C, 36 °C, targeted normothermia and fever control after ROSC"
+            toggles={[
+              { label: "Phases", active: showPhases, onChange: () => setShowPhases((s) => !s) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+            ]}
+          />
+  
+          {/* Target selector */}
+          <div className="flex flex-wrap gap-2 mb-3">
+            {(Object.keys(targets) as Target[]).map((t) => (
+              <button
+                key={t}
+                onClick={() => setTarget(t)}
+                aria-pressed={target === t}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-all"
+                style={{
+                  borderColor: target === t ? targets[t].color : "hsl(var(--border))",
+                  backgroundColor: target === t ? targets[t].color : "transparent",
+                  color: target === t ? "white" : "hsl(var(--muted-foreground))",
+                }}
+              >
+                {targets[t].label}
+              </button>
             ))}
-            {/* X axis */}
-            <line x1={40} y1={180} x2={460} y2={180} stroke="hsl(var(--border))" strokeWidth={0.75} />
-            {[0, 12, 24, 36, 48, 60, 72].map((h) => (
-              <g key={h}>
-                <line x1={hToX(h)} y1={180} x2={hToX(h)} y2={183} stroke="hsl(var(--muted-foreground))" strokeWidth={0.5} />
-                <text x={hToX(h)} y={193} fontSize={7} fill="hsl(var(--muted-foreground))" textAnchor="middle">{h}h</text>
-              </g>
-            ))}
-            {showLabels && (
-              <>
-                <text x={250} y={205} fontSize={7} fill="hsl(var(--muted-foreground))" textAnchor="middle">Hours post-ROSC</text>
-                <text x={14} y={100} fontSize={7} fill="hsl(var(--muted-foreground))" textAnchor="middle" transform="rotate(-90 14 100)">Core temperature (°C)</text>
-              </>
-            )}
-
-            {/* Fever cap line */}
-            <line x1={40} y1={tToY(fevercapT)} x2={460} y2={tToY(fevercapT)} stroke={targets.fever.color} strokeWidth={1} strokeDasharray="4 3" opacity={0.7} />
-            {showLabels && (
-              <text x={455} y={tToY(fevercapT) - 3} fontSize={6.5} fill={targets.fever.color} textAnchor="end" fontWeight="600">Fever cap 37.7 °C</text>
-            )}
-
-            {/* Phase labels */}
-            {showPhases && showLabels && (() => {
-              let xCursor = 0;
-              return phaseSpec.map((p) => {
-                const xMid = hToX(xCursor + p.durationH / 2);
-                xCursor += p.durationH;
-                return (
-                      <text key={p.key} x={xMid} y={32} fontSize={6.5} fontWeight="600" fill={p.color} textAnchor="middle">
-                    {p.label}
-                  </text>
-  );
-              });
-            })()}
-
-            {/* The temperature curve */}
-            <path d={path} fill="none" stroke={info.color} strokeWidth={3} strokeLinejoin="round" strokeLinecap="round" />
-
-            {/* Target marker */}
-            <circle cx={hToX(induceEnd + 12)} cy={tToY(targetT)} r={3.2} fill={info.color} />
-            {showLabels && (
-              <text x={hToX(induceEnd + 12) + 5} y={tToY(targetT) - 5} fontSize={7} fill={info.color} fontWeight="bold">
-                Target {targetT.toFixed(1)} °C
-              </text>
-            )}
-
-            {/* ROSC marker */}
-            <circle cx={hToX(0)} cy={tToY(startT)} r={3} fill="hsl(var(--foreground))" />
-            {showLabels && (
-              <text x={hToX(0) + 4} y={tToY(startT) - 5} fontSize={7} fill="hsl(var(--foreground))" fontWeight="bold">ROSC</text>
-            )}
-          </svg>
-        </div>
-
-        {/* Detail panel */}
-        <div
-          className="mt-4 p-3 rounded-lg border border-border bg-background/80 space-y-2"
-          style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
-        >
-          <div className="flex items-center justify-between gap-2 flex-wrap">
-            <p className="font-semibold text-foreground text-sm">{info.label}</p>
-            <span
-              className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-md font-bold"
-              style={{ background: withAlpha(info.color, 0.15), color: info.color }}
-            >
-              Target {info.temp} °C
-            </span>
           </div>
-
-          <div>
-            <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Evidence</p>
-            <p className="text-xs text-muted-foreground leading-relaxed">{info.evidence}</p>
+  
+          {/* SVG curve */}
+          <div className="bg-background/70 rounded-lg border border-border p-3">
+            <svg viewBox="0 0 480 210" className="w-full" role="img" aria-label="Temperature vs time curve for the selected TTM strategy">
+              {/* Phase backgrounds */}
+              {showPhases && (() => {
+                let xCursor = 0;
+                return phaseSpec.map((p) => {
+                  const x0 = hToX(xCursor);
+                  const x1 = hToX(xCursor + p.durationH);
+                  xCursor += p.durationH;
+                  return (
+                    <g key={p.key}>
+                      <rect x={x0} y={20} width={x1 - x0} height={160} fill={p.color} fillOpacity={0.06} />
+                      <line x1={x1} y1={20} x2={x1} y2={180} stroke="hsl(var(--border))" strokeWidth={0.5} strokeDasharray="2 2" />
+                    </g>
+                  );
+                });
+              })()}
+  
+              {/* Y axis */}
+              <line x1={40} y1={20} x2={40} y2={180} stroke="hsl(var(--border))" strokeWidth={0.75} />
+              {/* Temperature gridlines */}
+              {[33, 34, 35, 36, 37, 38].map((t) => (
+                <g key={t}>
+                  <line x1={40} y1={tToY(t)} x2={460} y2={tToY(t)} stroke="hsl(var(--muted-foreground))" strokeWidth={0.5} strokeDasharray="2 3" opacity={0.4} />
+                  <text x={36} y={tToY(t) + 3} fontSize={7} fill="hsl(var(--muted-foreground))" textAnchor="end">{t}°</text>
+                </g>
+              ))}
+              {/* X axis */}
+              <line x1={40} y1={180} x2={460} y2={180} stroke="hsl(var(--border))" strokeWidth={0.75} />
+              {[0, 12, 24, 36, 48, 60, 72].map((h) => (
+                <g key={h}>
+                  <line x1={hToX(h)} y1={180} x2={hToX(h)} y2={183} stroke="hsl(var(--muted-foreground))" strokeWidth={0.5} />
+                  <text x={hToX(h)} y={193} fontSize={7} fill="hsl(var(--muted-foreground))" textAnchor="middle">{h}h</text>
+                </g>
+              ))}
+              {showLabels && (
+                <>
+                  <text x={250} y={205} fontSize={7} fill="hsl(var(--muted-foreground))" textAnchor="middle">Hours post-ROSC</text>
+                  <text x={14} y={100} fontSize={7} fill="hsl(var(--muted-foreground))" textAnchor="middle" transform="rotate(-90 14 100)">Core temperature (°C)</text>
+                </>
+              )}
+  
+              {/* Fever cap line */}
+              <line x1={40} y1={tToY(fevercapT)} x2={460} y2={tToY(fevercapT)} stroke={targets.fever.color} strokeWidth={1} strokeDasharray="4 3" opacity={0.7} />
+              {showLabels && (
+                <text x={455} y={tToY(fevercapT) - 3} fontSize={6.5} fill={targets.fever.color} textAnchor="end" fontWeight="600">Fever cap 37.7 °C</text>
+              )}
+  
+              {/* Phase labels */}
+              {showPhases && showLabels && (() => {
+                let xCursor = 0;
+                return phaseSpec.map((p) => {
+                  const xMid = hToX(xCursor + p.durationH / 2);
+                  xCursor += p.durationH;
+                  return (
+                        <text key={p.key} x={xMid} y={32} fontSize={6.5} fontWeight="600" fill={p.color} textAnchor="middle">
+                      {p.label}
+                    </text>
+    );
+                });
+              })()}
+  
+              {/* The temperature curve */}
+              <path d={path} fill="none" stroke={info.color} strokeWidth={3} strokeLinejoin="round" strokeLinecap="round" />
+  
+              {/* Target marker */}
+              <circle cx={hToX(induceEnd + 12)} cy={tToY(targetT)} r={3.2} fill={info.color} />
+              {showLabels && (
+                <text x={hToX(induceEnd + 12) + 5} y={tToY(targetT) - 5} fontSize={7} fill={info.color} fontWeight="bold">
+                  Target {targetT.toFixed(1)} °C
+                </text>
+              )}
+  
+              {/* ROSC marker */}
+              <circle cx={hToX(0)} cy={tToY(startT)} r={3} fill="hsl(var(--foreground))" />
+              {showLabels && (
+                <text x={hToX(0) + 4} y={tToY(startT) - 5} fontSize={7} fill="hsl(var(--foreground))" fontWeight="bold">ROSC</text>
+              )}
+            </svg>
           </div>
-          <div>
-            <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Rationale</p>
-            <p className="text-xs text-muted-foreground leading-relaxed">{info.rationale}</p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-2 pt-1">
-            <div className="p-2 rounded border border-border/60">
-              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Pros</p>
-              <ul className="text-[11px] text-foreground/85 space-y-0.5 list-disc list-inside">
-                {info.pros.map((p) => <li key={p}>{p}</li>)}
-              </ul>
+  
+          {/* Detail panel */}
+          <div
+            className="mt-4 p-3 rounded-lg border border-border bg-background/80 space-y-2"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+          >
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <p className="font-semibold text-foreground text-sm">{info.label}</p>
+              <span
+                className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-md font-bold"
+                style={{ background: withAlpha(info.color, 0.15), color: info.color }}
+              >
+                Target {info.temp} °C
+              </span>
             </div>
-            <div className="p-2 rounded border border-border/60">
-              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Cons / risks</p>
-              <ul className="text-[11px] text-foreground/85 space-y-0.5 list-disc list-inside">
-                {info.cons.map((p) => <li key={p}>{p}</li>)}
-              </ul>
+  
+            <div>
+              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Evidence</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{info.evidence}</p>
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Rationale</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{info.rationale}</p>
+            </div>
+  
+            <div className="grid sm:grid-cols-2 gap-2 pt-1">
+              <div className="p-2 rounded border border-border/60">
+                <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Pros</p>
+                <ul className="text-[11px] text-foreground/85 space-y-0.5 list-disc list-inside">
+                  {info.pros.map((p) => <li key={p}>{p}</li>)}
+                </ul>
+              </div>
+              <div className="p-2 rounded border border-border/60">
+                <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Cons / risks</p>
+                <ul className="text-[11px] text-foreground/85 space-y-0.5 list-disc list-inside">
+                  {info.cons.map((p) => <li key={p}>{p}</li>)}
+                </ul>
+              </div>
+            </div>
+  
+            <div className="pt-1 border-t border-border/50">
+              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Who benefits</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{info.whoBenefits}</p>
             </div>
           </div>
-
-          <div className="pt-1 border-t border-border/50">
-            <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Who benefits</p>
-            <p className="text-xs text-muted-foreground leading-relaxed">{info.whoBenefits}</p>
-          </div>
+  
+          <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
+            Tip: TTM2 (2021) is the largest contemporary RCT — favoured normothermia ≤ 37.7 °C. ERC/ESICM 2021 endorses any target between 32 and 37.5 °C provided fever is actively prevented for ≥ 72 h.
+          </p>
         </div>
-
-        <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
-          Tip: TTM2 (2021) is the largest contemporary RCT — favoured normothermia ≤ 37.7 °C. ERC/ESICM 2021 endorses any target between 32 and 37.5 °C provided fever is actively prevented for ≥ 72 h.
-        </p>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

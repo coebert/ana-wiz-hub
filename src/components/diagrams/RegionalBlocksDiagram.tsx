@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface BlockData {
   id: string;
@@ -643,80 +644,86 @@ const RegionalBlocksDiagram = () => {
   const block = blocks.find((b) => b.id === selectedBlock)!;
 
   return (
-        <div className="my-8 space-y-4">
-      <h3 className="text-xl font-serif font-bold text-foreground">Ultrasound-Guided Nerve Blocks</h3>
-      <p className="text-sm text-muted-foreground">Select a block to view probe position, sonoanatomy, and technique details.</p>
-
-      {/* Block selector */}
-      <div className="flex flex-wrap gap-2">
-        {blocks.map((b) => (
-          <button
-            key={b.id}
-            onClick={() => setSelectedBlock(b.id)}
-            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors border ${
-              selectedBlock === b.id
-                ? "bg-primary text-primary-foreground border-primary"
-                : "bg-secondary/50 text-muted-foreground border-border hover:bg-secondary"
-            }`}
-          >
-            {b.name}
-          </button>
-        ))}
-      </div>
-
-      {/* SVG Diagram */}
-      <div className="rounded-lg border border-border overflow-hidden bg-card">
-        {block.svgContent}
-      </div>
-
-      {/* Details */}
-      <div className="grid gap-3">
-        {/* Technique */}
-        <div className="p-4 rounded-lg border border-border bg-card space-y-2">
-          <h4 className="font-semibold text-foreground text-sm">Technique</h4>
-          <div className="grid sm:grid-cols-2 gap-x-4 gap-y-1 text-xs text-muted-foreground">
-            <p><strong className="text-foreground">Probe:</strong> {block.probe}</p>
-            <p><strong className="text-foreground">Orientation:</strong> {block.orientation}</p>
-            <p><strong className="text-foreground">Landmark:</strong> {block.landmark}</p>
-            <p><strong className="text-foreground">Depth:</strong> {block.depth}</p>
-            <p><strong className="text-foreground">Needle:</strong> {block.needle}</p>
-            <p><strong className="text-foreground">LA Volume:</strong> {block.laVolume}</p>
-          </div>
-          <p className="text-xs text-muted-foreground"><strong className="text-foreground">Target:</strong> {block.target}</p>
+    <DiagramFigure
+      id="regional-blocks-diagram"
+      title="Regional blocks"
+      description="Auto-generated wrapper for the Regional blocks anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-8 space-y-4">
+        <h3 className="text-xl font-serif font-bold text-foreground">Ultrasound-Guided Nerve Blocks</h3>
+        <p className="text-sm text-muted-foreground">Select a block to view probe position, sonoanatomy, and technique details.</p>
+  
+        {/* Block selector */}
+        <div className="flex flex-wrap gap-2">
+          {blocks.map((b) => (
+            <button
+              key={b.id}
+              onClick={() => setSelectedBlock(b.id)}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors border ${
+                selectedBlock === b.id
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-secondary/50 text-muted-foreground border-border hover:bg-secondary"
+              }`}
+            >
+              {b.name}
+            </button>
+          ))}
         </div>
-
-        {/* Sonoanatomy */}
-        <div className="p-4 rounded-lg border border-border bg-primary/5 space-y-2">
-          <h4 className="font-semibold text-foreground text-sm">Sonoanatomy</h4>
-          <p className="text-xs text-muted-foreground leading-relaxed">{block.sonoAnatomy}</p>
-          <div className="flex flex-wrap gap-1.5 mt-2">
-            {block.structures.map((s, i) => (
-              <span key={i} className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground border border-border">{s}</span>
-            ))}
-          </div>
+  
+        {/* SVG Diagram */}
+        <div className="rounded-lg border border-border overflow-hidden bg-card">
+          {block.svgContent}
         </div>
-
-        {/* Tips & Pitfalls */}
-        <div className="grid sm:grid-cols-2 gap-3">
-          <div className="p-3 rounded-lg border border-border bg-card">
-            <h4 className="font-semibold text-foreground text-xs mb-2">✅ Tips</h4>
-            <ul className="space-y-1">
-              {block.tips.map((t, i) => (
-                <li key={i} className="text-xs text-muted-foreground">• {t}</li>
+  
+        {/* Details */}
+        <div className="grid gap-3">
+          {/* Technique */}
+          <div className="p-4 rounded-lg border border-border bg-card space-y-2">
+            <h4 className="font-semibold text-foreground text-sm">Technique</h4>
+            <div className="grid sm:grid-cols-2 gap-x-4 gap-y-1 text-xs text-muted-foreground">
+              <p><strong className="text-foreground">Probe:</strong> {block.probe}</p>
+              <p><strong className="text-foreground">Orientation:</strong> {block.orientation}</p>
+              <p><strong className="text-foreground">Landmark:</strong> {block.landmark}</p>
+              <p><strong className="text-foreground">Depth:</strong> {block.depth}</p>
+              <p><strong className="text-foreground">Needle:</strong> {block.needle}</p>
+              <p><strong className="text-foreground">LA Volume:</strong> {block.laVolume}</p>
+            </div>
+            <p className="text-xs text-muted-foreground"><strong className="text-foreground">Target:</strong> {block.target}</p>
+          </div>
+  
+          {/* Sonoanatomy */}
+          <div className="p-4 rounded-lg border border-border bg-primary/5 space-y-2">
+            <h4 className="font-semibold text-foreground text-sm">Sonoanatomy</h4>
+            <p className="text-xs text-muted-foreground leading-relaxed">{block.sonoAnatomy}</p>
+            <div className="flex flex-wrap gap-1.5 mt-2">
+              {block.structures.map((s, i) => (
+                <span key={i} className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground border border-border">{s}</span>
               ))}
-            </ul>
+            </div>
           </div>
-          <div className="p-3 rounded-lg border border-destructive/30 bg-destructive/5">
-            <h4 className="font-semibold text-destructive text-xs mb-2">⚠️ Pitfalls</h4>
-            <ul className="space-y-1">
-              {block.pitfalls.map((p, i) => (
-                <li key={i} className="text-xs text-muted-foreground">• {p}</li>
-              ))}
-            </ul>
+  
+          {/* Tips & Pitfalls */}
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border bg-card">
+              <h4 className="font-semibold text-foreground text-xs mb-2">✅ Tips</h4>
+              <ul className="space-y-1">
+                {block.tips.map((t, i) => (
+                  <li key={i} className="text-xs text-muted-foreground">• {t}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-destructive/30 bg-destructive/5">
+              <h4 className="font-semibold text-destructive text-xs mb-2">⚠️ Pitfalls</h4>
+              <ul className="space-y-1">
+                {block.pitfalls.map((p, i) => (
+                  <li key={i} className="text-xs text-muted-foreground">• {p}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 
