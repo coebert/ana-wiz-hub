@@ -5,6 +5,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import FinapresDiagram from "@/components/diagrams/FinapresDiagram";
 import NIBPOscillometricDiagram from "@/components/diagrams/NIBPOscillometricDiagram";
 import AuscultatoryNIBPDiagram from "@/components/diagrams/AuscultatoryNIBPDiagram";
+import NIBPvsArterialDiagram from "@/components/diagrams/NIBPvsArterialDiagram";
 import FrankStarlingDiagram from "@/components/diagrams/FrankStarlingDiagram";
 import ManometerDiagram from "@/components/diagrams/ManometerDiagram";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
@@ -163,6 +164,7 @@ const PressureMeasurementTopic = () => {
             </p>
             <AuscultatoryNIBPDiagram />
             <NIBPOscillometricDiagram />
+            <NIBPvsArterialDiagram />
             <div className="mt-4 p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm mb-2">Finapres (FINger Arterial PRESsure)</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
