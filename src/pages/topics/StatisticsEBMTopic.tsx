@@ -263,6 +263,80 @@ const StatisticsEBMTopic = () => {
                 </p>
               </div>
             </div>
+
+            <div className="mt-6 space-y-4">
+              <h3 className="text-lg font-semibold text-foreground">Confidence interval vs standard deviation</h3>
+              <p className="text-sm text-muted-foreground">
+                SD and CI both quote a "± something" around a mean, which makes them easy to confuse — but they answer completely different questions.
+                The <strong>SD</strong> describes the <em>spread of individual values</em> in the sample. The <strong>95% CI of the mean</strong> describes the <em>precision of the sample mean as an estimate of the population mean</em>.
+                Crucially, the CI shrinks as the sample grows (because SE = SD/√n), whereas the SD does not — adding patients makes you more certain about the average, not less variable as individuals.
+              </p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border rounded-md">
+                  <thead className="bg-secondary/50">
+                    <tr>
+                      <th className="text-left p-2 font-semibold text-foreground">Quantity</th>
+                      <th className="text-left p-2 font-semibold text-foreground">Standard deviation (SD)</th>
+                      <th className="text-left p-2 font-semibold text-foreground">95% confidence interval</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Question answered</td>
+                      <td className="p-2">How spread out are the individual values?</td>
+                      <td className="p-2">How precisely have we estimated the population mean?</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Formula</td>
+                      <td className="p-2 font-mono text-xs">√[Σ(x − x̄)² / (n − 1)]</td>
+                      <td className="p-2 font-mono text-xs">x̄ ± 1.96 × SD/√n</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Effect of larger n</td>
+                      <td className="p-2">Stable — describes the population's natural variability.</td>
+                      <td className="p-2">Narrows in proportion to 1/√n.</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Used for</td>
+                      <td className="p-2">Reference ranges, describing a sample.</td>
+                      <td className="p-2">Inference about the underlying population, significance testing.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="p-4 rounded-lg border border-physics/30 bg-physics/5">
+                <p className="text-xs uppercase tracking-wide text-physics font-semibold mb-1">Worked example</p>
+                <p className="font-semibold text-foreground mb-2">Same SD, very different CI</p>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Two studies measure systolic BP in healthy adults. Both report a mean of <strong>120 mmHg</strong> with an <strong>SD of 15 mmHg</strong>.
+                  Study A enrols <strong>n = 25</strong>; Study B enrols <strong>n = 400</strong>. Compare the 95% CI of the mean.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-3 text-sm">
+                  <div className="p-3 rounded-md bg-card border border-border">
+                    <p className="font-semibold text-foreground mb-1">Study A (n = 25)</p>
+                    <p className="font-mono text-xs text-muted-foreground">SE = 15 / √25 = 15 / 5 = 3.0 mmHg</p>
+                    <p className="font-mono text-xs text-muted-foreground">95% CI = 120 ± 1.96 × 3.0</p>
+                    <p className="font-mono text-xs text-muted-foreground">      = 120 ± 5.88 → 114.1 – 125.9 mmHg</p>
+                  </div>
+                  <div className="p-3 rounded-md bg-card border border-border">
+                    <p className="font-semibold text-foreground mb-1">Study B (n = 400)</p>
+                    <p className="font-mono text-xs text-muted-foreground">SE = 15 / √400 = 15 / 20 = 0.75 mmHg</p>
+                    <p className="font-mono text-xs text-muted-foreground">95% CI = 120 ± 1.96 × 0.75</p>
+                    <p className="font-mono text-xs text-muted-foreground">      = 120 ± 1.47 → 118.5 – 121.5 mmHg</p>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground mt-3">
+                  <strong className="text-foreground">Interpretation:</strong> the SD is identical (15 mmHg) — both studies show the same biological variability between individuals,
+                  and the reference range (mean ± 2 SD ≈ 90–150 mmHg) is unchanged. But Study B's CI is roughly four times narrower because n is sixteen times larger (√16 = 4).
+                  Study B has therefore <em>estimated the population mean four times more precisely</em>, even though the spread of individual readings is the same.
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  <strong className="text-foreground">Take-home:</strong> use SD when describing how variable patients are, and CI when describing how confident you are about an average. Quoting "mean ± SD" tells the reader about the population; "mean (95% CI)" tells them about the estimate.
+                </p>
+              </div>
+            </div>
           </ExamSection>
 
           <ExamSection id="skew" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
