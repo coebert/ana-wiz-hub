@@ -143,7 +143,7 @@ const CoreConcepts = () => (
       <p className="text-muted-foreground leading-relaxed mb-3">
         Devices are validated by Bland-Altman analysis (bias, precision, limits of agreement) and percentage error vs a reference. A percentage error ≤30% (Critchley & Critchley, 1999) is regarded as clinically interchangeable.
       </p>
-      <div className="rounded-lg border border-border overflow-hidden">
+      <div className="rounded-lg border border-border overflow-x-auto">
         <table className="w-full text-xs sm:text-sm">
           <thead className="bg-muted/50">
             <tr>
@@ -228,7 +228,7 @@ const CoreConcepts = () => (
       <p className="text-muted-foreground leading-relaxed mb-3">
         "Fluid responsive" means a ≥10–15% increase in SV after a 250–500 mL fluid challenge — i.e. operating on the steep portion of the Starling curve. Static markers (CVP, PAOP) are poor predictors; dynamic markers exploit heart-lung interactions.
       </p>
-      <div className="rounded-lg border border-border overflow-hidden">
+      <div className="rounded-lg border border-border overflow-x-auto">
         <table className="w-full text-xs sm:text-sm">
           <thead className="bg-muted/50">
             <tr>
@@ -273,7 +273,7 @@ const CoreConcepts = () => (
     {/* 11. Choosing a monitor */}
     <div>
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">10. Choosing a Monitor — Clinical Scenarios</h2>
-      <div className="rounded-lg border border-border overflow-hidden">
+      <div className="rounded-lg border border-border overflow-x-auto">
         <table className="w-full text-xs sm:text-sm">
           <thead className="bg-muted/50">
             <tr>
@@ -306,7 +306,7 @@ const CoreConcepts = () => (
     {/* 13. Evidence base */}
     <div>
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">12. Evidence Base — Key Trials</h2>
-      <div className="rounded-lg border border-border overflow-hidden">
+      <div className="rounded-lg border border-border overflow-x-auto">
         <table className="w-full text-xs sm:text-sm">
           <thead className="bg-muted/50">
             <tr>
