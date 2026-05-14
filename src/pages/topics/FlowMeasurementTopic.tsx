@@ -259,6 +259,155 @@ const FlowMeasurementTopic = () => {
               </p>
             </div>
           </ExamSection>
+
+          <ExamSection id="coanda-vignettes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clinical vignettes — Coandă in practice</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              The Coandă effect is a favourite of FRCA Primary SAQs and Final structured orals because
+              it links a single physics principle to several disparate clinical scenarios. Recognising
+              the pattern — <em>a jet, a nearby surface, asymmetric distribution</em> — usually scores
+              the mark.
+            </p>
+
+            <div className="grid gap-4 mt-4">
+              {/* Vignette 1 */}
+              <div className="rounded-lg border border-border bg-card p-4">
+                <div className="flex items-start gap-3">
+                  <span className="shrink-0 mt-0.5 text-xs font-semibold px-2 py-0.5 rounded bg-primary/15 text-primary">Vignette 1 · Airway</span>
+                  <p className="text-sm font-medium text-foreground">
+                    Endobronchial intubation suspicion
+                  </p>
+                </div>
+                <p className="text-sm text-foreground/90 mt-2">
+                  A patient is ventilated with the ETT tip just above the carina. CXR shows
+                  preferential expansion of the <strong>right lung</strong> with a relatively
+                  collapsed left lung, despite the tube being above the carina. Auscultation
+                  confirms reduced breath sounds on the left.
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  <strong>Why:</strong> The high-velocity inspiratory jet exiting the ETT bevel adheres
+                  to the right lateral tracheal wall (the right main bronchus is wider and more axial)
+                  and is <em>preferentially deflected into the right main bronchus</em> — Coandă-driven
+                  asymmetric ventilation without true endobronchial migration.
+                </p>
+                <p className="text-sm text-foreground mt-2">
+                  <strong>Take-home:</strong> Asymmetric ventilation with a correctly positioned ETT
+                  may be Coandă-mediated. Reposition the bevel, consider a smaller-bore tube or change
+                  fresh gas flow to reduce jet velocity.
+                </p>
+              </div>
+
+              {/* Vignette 2 */}
+              <div className="rounded-lg border border-border bg-card p-4">
+                <div className="flex items-start gap-3">
+                  <span className="shrink-0 mt-0.5 text-xs font-semibold px-2 py-0.5 rounded bg-primary/15 text-primary">Vignette 2 · Echocardiography</span>
+                  <p className="text-sm font-medium text-foreground">
+                    Underestimated mitral regurgitation
+                  </p>
+                </div>
+                <p className="text-sm text-foreground/90 mt-2">
+                  Pre-operative TTE in a patient for non-cardiac surgery shows a small, eccentric MR
+                  jet tracking along the lateral LA wall. The patient is in florid pulmonary oedema
+                  with a markedly dilated LA.
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  <strong>Why:</strong> Eccentric, wall-hugging regurgitant jets entrain less surrounding
+                  blood and appear narrower on colour Doppler than free central jets of the same volume —
+                  the classic Coandă-related <em>underestimation of severity</em>.
+                </p>
+                <p className="text-sm text-foreground mt-2">
+                  <strong>Take-home:</strong> A small wall-impinging jet can mask severe MR. Use PISA,
+                  vena contracta and indirect signs (LA size, pulmonary vein flow reversal) rather than
+                  jet area alone.
+                </p>
+              </div>
+
+              {/* Vignette 3 */}
+              <div className="rounded-lg border border-border bg-card p-4">
+                <div className="flex items-start gap-3">
+                  <span className="shrink-0 mt-0.5 text-xs font-semibold px-2 py-0.5 rounded bg-primary/15 text-primary">Vignette 3 · ICU / Jet ventilation</span>
+                  <p className="text-sm font-medium text-foreground">
+                    Variable FiO₂ during high-frequency jet ventilation
+                  </p>
+                </div>
+                <p className="text-sm text-foreground/90 mt-2">
+                  During HFJV for rigid bronchoscopy, the measured FiO₂ at the carina swings
+                  unpredictably despite a constant driving pressure and entrainment fraction set on
+                  the ventilator.
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  <strong>Why:</strong> The jet leaving the injector hugs the tracheal wall
+                  (Coandă attachment), which alters the geometry available for room-air entrainment.
+                  Small changes in catheter position flip the jet from one wall to the other,
+                  changing the entrainment ratio and delivered FiO₂.
+                </p>
+                <p className="text-sm text-foreground mt-2">
+                  <strong>Take-home:</strong> Entrainment in jet ventilation is <em>not</em> as
+                  predictable as in a Venturi mask. Always measure delivered FiO₂ and watch SpO₂
+                  closely.
+                </p>
+              </div>
+
+              {/* Vignette 4 */}
+              <div className="rounded-lg border border-border bg-card p-4">
+                <div className="flex items-start gap-3">
+                  <span className="shrink-0 mt-0.5 text-xs font-semibold px-2 py-0.5 rounded bg-primary/15 text-primary">Vignette 4 · Equipment</span>
+                  <p className="text-sm font-medium text-foreground">
+                    Bistable fluidic ventilator
+                  </p>
+                </div>
+                <p className="text-sm text-foreground/90 mt-2">
+                  An older transport ventilator with no moving parts cycles between inspiration and
+                  expiration solely from the gas supply pressure. How does it work?
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  <strong>Why:</strong> A jet enters a chamber with two symmetrical curved walls and
+                  attaches to one (Coandă). A small control jet at the opposite wall destabilises
+                  attachment, flipping the main jet to the other wall — a bistable fluidic switch.
+                  The oscillation drives the respiratory cycle.
+                </p>
+                <p className="text-sm text-foreground mt-2">
+                  <strong>Take-home:</strong> Coandă is the basis of <em>fluidic logic</em> — useful
+                  in MRI environments where moving / electrical parts are problematic.
+                </p>
+              </div>
+
+              {/* Vignette 5 */}
+              <div className="rounded-lg border border-border bg-card p-4">
+                <div className="flex items-start gap-3">
+                  <span className="shrink-0 mt-0.5 text-xs font-semibold px-2 py-0.5 rounded bg-primary/15 text-primary">Vignette 5 · Vascular</span>
+                  <p className="text-sm font-medium text-foreground">
+                    Asymmetric distribution at a Y-junction
+                  </p>
+                </div>
+                <p className="text-sm text-foreground/90 mt-2">
+                  A high-velocity infusion through a triple-lumen catheter, or rapid blood flow at an
+                  arterial bifurcation, distributes preferentially down one daughter limb even when
+                  the two limbs appear geometrically symmetric.
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  <strong>Why:</strong> Tiny asymmetries in the bifurcation cause the jet to attach
+                  to one wall; once attached, the low-pressure region locks it there. The branch
+                  that "captures" the jet receives a disproportionate share of flow.
+                </p>
+                <p className="text-sm text-foreground mt-2">
+                  <strong>Take-home:</strong> Mixing of drugs and contrast at high flow is not
+                  guaranteed to be uniform — relevant for vasoactive infusions co-running with
+                  carriers, and for selective angiographic injection.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+              <p className="text-sm font-medium text-foreground">Exam pearls</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li><strong>Recognise the trigger words:</strong> "eccentric jet", "wall-hugging", "preferential", "asymmetric ventilation despite correct ETT position".</li>
+                <li><strong>Always state the mechanism:</strong> reduced entrainment between jet and wall → low pressure → jet adheres.</li>
+                <li><strong>Distinguish from Venturi:</strong> Venturi is constriction-driven entrainment (predictable); Coandă is surface-driven attachment (asymmetric, can flip).</li>
+                <li><strong>Clinical consequence is what scores marks</strong> — underestimated MR severity, asymmetric ventilation, variable FiO₂ in HFJV, fluidic logic.</li>
+              </ul>
+            </div>
+          </ExamSection>
         </>
       }
     />
