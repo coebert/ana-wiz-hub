@@ -161,6 +161,10 @@ const StatisticsEBMTopic = () => {
                 <li><strong>Categorical / nominal:</strong> only the mode is meaningful (e.g. most common ASA grade).</li>
               </ul>
             </div>
+
+            <div className="mt-6">
+              <CentralTendencyShiftDiagram />
+            </div>
           </ExamSection>
 
           <ExamSection id="normal-distribution" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
