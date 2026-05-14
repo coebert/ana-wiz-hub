@@ -6,6 +6,7 @@ import { Exam } from "@/data/curriculum";
 import NormalDistributionDiagram from "@/components/diagrams/NormalDistributionDiagram";
 import SkewDistributionDiagram from "@/components/diagrams/SkewDistributionDiagram";
 import CentralTendencyShiftDiagram from "@/components/diagrams/CentralTendencyShiftDiagram";
+import BoxPlotDiagram from "@/components/diagrams/BoxPlotDiagram";
 
 const objectives = [
   "Distinguish RCT, cohort, case-control, cross-sectional and ecological designs and their measures of effect",
