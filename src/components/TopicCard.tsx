@@ -43,11 +43,11 @@ export const TopicCard = ({ title, description, path, section, topicId, examTags
               )}
             </div>
           )}
-          <div className="min-w-0">
-            <h3 className={`font-semibold group-hover:text-primary transition-colors ${completed ? "text-muted-foreground" : "text-foreground"}`}>
+          <div className="min-w-0 flex-1">
+            <h3 className={`font-semibold group-hover:text-primary transition-colors break-words ${completed ? "text-muted-foreground" : "text-foreground"}`}>
               {title}
             </h3>
-            <p className="text-sm text-muted-foreground mt-1">{description}</p>
+            <p className="text-sm text-muted-foreground mt-1 break-words">{description}</p>
             {examTags && examTags.length > 0 && (
               <div className="flex flex-wrap gap-1 mt-1.5">
                 {examTags.map((tag) => (

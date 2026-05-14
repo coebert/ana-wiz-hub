@@ -178,7 +178,7 @@ export const SectionLayout = ({
   }, [children, disableAutoTOC, autoTOCMinHeadings]);
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 max-w-4xl">
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={truncatedDescription} />
@@ -204,11 +204,11 @@ export const SectionLayout = ({
           {backLabel || "Back"}
         </Link>
       )}
-      <div className="mb-8">
-        <h1 className={`text-3xl md:text-4xl font-serif font-bold ${accentColor || "text-foreground"}`}>
+      <div className="mb-6 sm:mb-8">
+        <h1 className={`text-2xl sm:text-3xl md:text-4xl font-serif font-bold break-words ${accentColor || "text-foreground"}`}>
           {title}
         </h1>
-        <p className="text-muted-foreground mt-2 text-lg">{subtitle}</p>
+        <p className="text-muted-foreground mt-2 text-base sm:text-lg break-words">{subtitle}</p>
       </div>
       {autoItems.length > 0 && <StickyTOC items={autoItems} />}
       <div ref={contentRef}>{children}</div>
