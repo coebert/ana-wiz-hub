@@ -129,27 +129,54 @@ async function findOverflowingElements(page: Page, viewportWidth: number) {
 
 /**
  * Detect overlapping in-flow sibling block elements within main content.
- * Ignores elements that are absolutely / fixed positioned, or whose
- * computed style suggests intentional layering (z-index set, transforms).
+ *
+ * Scoped narrowly to avoid false positives:
+ *  - Only walks containers whose computed `display` is `block` or `flow-root`
+ *    (i.e. genuine vertical block-flow). Flex / grid / inline / table parents
+ *    legitimately position children with their own algorithm and are skipped.
+ *  - Skips containers whose class names indicate an intentional grid / card /
+ *    masonry / carousel / overlay wrapper (regardless of display).
+ *  - Ignores `absolute`/`fixed`/`sticky` children, hidden / zero-opacity
+ *    children, and elements with a non-`none` `transform` (decorative offsets).
+ *  - Reports at most one overlap per parent so a single bug doesn't drown
+ *    the report in pairwise duplicates.
  */
 async function findOverlappingSiblings(page: Page) {
   return page.evaluate((tolerance) => {
-    type Hit = { a: string; b: string; area: number };
+    type Hit = { container: string; a: string; b: string; area: number };
     const hits: Hit[] = [];
+
+    /** class fragments that mark a container as "not a vertical block flow". */
+    const SKIP_CLASS_RE =
+      /\b(grid|flex|columns?|masonry|carousel|swiper|slider|tabs|stack|absolute|relative-stack|overlap|overlay|backdrop|popover|tooltip|sticky-toc|toc-rail)\b/i;
 
     function describe(el: Element): string {
       const id = (el as HTMLElement).id ? `#${(el as HTMLElement).id}` : "";
-      const cls = (el as HTMLElement).className && typeof (el as HTMLElement).className === "string"
-        ? "." + (el as HTMLElement).className.trim().split(/\s+/).slice(0, 2).join(".")
-        : "";
+      const cls =
+        (el as HTMLElement).className && typeof (el as HTMLElement).className === "string"
+          ? "." + (el as HTMLElement).className.trim().split(/\s+/).slice(0, 2).join(".")
+          : "";
       return `${el.tagName.toLowerCase()}${id}${cls}`;
+    }
+
+    function isBlockFlowContainer(el: Element): boolean {
+      const cs = getComputedStyle(el);
+      // Only true vertical block flow stacks siblings predictably.
+      if (cs.display !== "block" && cs.display !== "flow-root") return false;
+      const cls = typeof (el as HTMLElement).className === "string" ? (el as HTMLElement).className : "";
+      if (SKIP_CLASS_RE.test(cls)) return false;
+      return true;
     }
 
     function isInFlow(el: Element): boolean {
       const cs = getComputedStyle(el);
       if (cs.position === "absolute" || cs.position === "fixed" || cs.position === "sticky") return false;
-      if (cs.display === "none" || cs.visibility === "hidden") return false;
+      if (cs.display === "none" || cs.visibility === "hidden" || cs.display === "contents") return false;
       if (parseFloat(cs.opacity) === 0) return false;
+      // Skip children with a transform — used for hover lifts / decorative offsets.
+      if (cs.transform && cs.transform !== "none") return false;
+      // Skip floated children (legitimately allowed to overlap following content).
+      if (cs.float && cs.float !== "none") return false;
       return true;
     }
 
@@ -159,22 +186,37 @@ async function findOverlappingSiblings(page: Page) {
       return x * y;
     }
 
-    // Examine direct children of <main>, <section>, and common content wrappers.
-    const containers = document.querySelectorAll<HTMLElement>(
-      "main, main section, main article, main > div, [role='main']"
-    );
+    // Walk every descendant under <main> (or [role=main]) — at each level,
+    // only the parents that pass `isBlockFlowContainer` contribute pairs.
+    const roots = document.querySelectorAll<HTMLElement>("main, [role='main']");
+    const containers = new Set<HTMLElement>();
+    roots.forEach((root) => {
+      containers.add(root);
+      root.querySelectorAll<HTMLElement>("*").forEach((el) => containers.add(el));
+    });
 
     containers.forEach((container) => {
+      if (!isBlockFlowContainer(container)) return;
       const kids = Array.from(container.children).filter(isInFlow) as HTMLElement[];
-      for (let i = 0; i < kids.length; i++) {
-        for (let j = i + 1; j < kids.length; j++) {
-          const a = kids[i].getBoundingClientRect();
-          const b = kids[j].getBoundingClientRect();
-          if (a.width === 0 || a.height === 0 || b.width === 0 || b.height === 0) continue;
-          const area = intersect(a, b);
-          if (area > tolerance) {
-            hits.push({ a: describe(kids[i]), b: describe(kids[j]), area: Math.round(area) });
-          }
+      if (kids.length < 2) return;
+
+      // Only compare consecutive siblings — block-flow stacks vertically, so
+      // an honest "overlap" bug always shows up between neighbours. Skipping
+      // non-adjacent pairs also avoids flagging a tall sticky/aside that
+      // visually crosses many later blocks.
+      for (let i = 0; i < kids.length - 1; i++) {
+        const a = kids[i].getBoundingClientRect();
+        const b = kids[i + 1].getBoundingClientRect();
+        if (a.width === 0 || a.height === 0 || b.width === 0 || b.height === 0) continue;
+        const area = intersect(a, b);
+        if (area > tolerance) {
+          hits.push({
+            container: describe(container),
+            a: describe(kids[i]),
+            b: describe(kids[i + 1]),
+            area: Math.round(area),
+          });
+          break; // one report per container is enough
         }
       }
     });
