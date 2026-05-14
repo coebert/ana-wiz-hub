@@ -203,15 +203,15 @@ export const TopicTemplate = ({
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(learningResourceJsonLd)}</script>
       </Helmet>
-      <div className="space-y-10">
+      <div className="space-y-8 sm:space-y-10">
         <TopicExamFilterBar />
         <TopicPodcastPlayer topicId={topicId} topicTitle={topicTitle ?? title} />
-        <div className="flex items-center justify-between gap-3 flex-wrap rounded-lg border border-border bg-muted/30 px-4 py-3">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-lg border border-border bg-muted/30 px-3 sm:px-4 py-3">
           <div className="min-w-0">
             <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
               Viva voce practice
             </p>
-            <p className="text-sm text-foreground leading-tight">
+            <p className="text-sm text-foreground leading-tight break-words">
               Spoken question · live transcription · constructive AI feedback.
             </p>
           </div>
