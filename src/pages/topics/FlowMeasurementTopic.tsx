@@ -6,6 +6,7 @@ import { RotameterDiagram } from "@/components/diagrams/RotameterDiagram";
 import PneumotachographDiagram from "@/components/diagrams/PneumotachographDiagram";
 import WrightRespirometerDiagram from "@/components/diagrams/WrightRespirometerDiagram";
 import BernoulliVenturiDiagram from "@/components/diagrams/BernoulliVenturiDiagram";
+import CoandaEffectDiagram from "@/components/diagrams/CoandaEffectDiagram";
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -160,6 +161,32 @@ const FlowMeasurementTopic = () => {
                 A 28% Venturi mask uses an entrainment ratio of ~10:1 (air:oxygen). The total flow (~40 L/min) exceeds peak
                 inspiratory flow, ensuring accurate FiO₂ delivery regardless of breathing pattern.
               </p>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="coanda" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Coandă Effect</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              The <strong>Coandă effect</strong> is the tendency of a fluid jet to follow a nearby convex surface
+              rather than continue in a straight line. Entrainment of surrounding fluid is restricted on the wall
+              side of the jet, lowering pressure there; the resulting pressure gradient deflects the jet onto the
+              surface, where it remains attached until the curvature becomes too sharp.
+            </p>
+            <p className="text-foreground/90 leading-relaxed mt-2">
+              It is closely related to Bernoulli's principle (faster flow → lower pressure) but specifically
+              describes <em>jet attachment</em>, not flow through a constriction.
+            </p>
+            <div className="mt-4">
+              <CoandaEffectDiagram />
+            </div>
+            <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+              <p className="text-sm font-medium text-foreground">Anaesthetic relevance</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li>Maldistribution of gas or blood at airway and vascular bifurcations (one daughter branch preferentially "captures" the jet)</li>
+                <li>Historic <strong>fluidic ventilators</strong> used Coandă-based bistable switches with no moving parts</li>
+                <li>During <strong>jet ventilation</strong>, the jet may hug the tracheal wall, altering entrainment and delivered FiO₂</li>
+                <li>Echocardiography: regurgitant jets (e.g. eccentric MR) tracking along an atrial wall appear smaller than they are — Coandă-related underestimation</li>
+              </ul>
             </div>
           </ExamSection>
         </>
