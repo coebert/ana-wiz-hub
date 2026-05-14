@@ -426,6 +426,7 @@ const XRayRadiationSafetyTopic = () => {
                 abdomen/pelvis CT ~10 mSv.
               </p>
               <RadiationDoseComparisonTable />
+              <RadiationDoseUnitsDiagram />
             </div>
           </ExamSection>
 
