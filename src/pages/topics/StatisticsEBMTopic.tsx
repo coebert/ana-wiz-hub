@@ -171,6 +171,47 @@ const StatisticsEBMTopic = () => {
               <BoxPlotDiagram />
             </div>
 
+            <div className="mt-6 space-y-4">
+              <p className="text-xs uppercase tracking-wide text-physics font-semibold">Worked clinical examples</p>
+
+              <div className="p-4 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground mb-1">1. Mean arterial pressure (MAP) in a healthy preoperative cohort</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  In 200 ASA 1–2 adults the MAP follows a roughly symmetric, bell-shaped distribution: mean 92 mmHg, median 91 mmHg, SD 8 mmHg, IQR 86–97 mmHg.
+                </p>
+                <p className="text-sm"><strong className="text-foreground">Report:</strong> mean ± SD → <span className="font-mono">MAP 92 ± 8 mmHg</span>.</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong className="text-foreground">Why:</strong> the data are continuous, approximately normally distributed and free of meaningful outliers, so the mean is an unbiased
+                  central estimate and the SD captures variability efficiently. Use parametric tests (t-test, ANOVA) for between-group comparisons and quote a 95% CI for the mean.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground mb-1">2. ICU length of stay after emergency laparotomy</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  In 150 patients, LOS ranges from 1 to 42 days. Most discharge within a week; a tail of patients with sepsis or AKI stays much longer. Mean LOS 7.4 days, median 4 days, IQR 2–8 days.
+                </p>
+                <p className="text-sm"><strong className="text-foreground">Report:</strong> median (IQR) → <span className="font-mono">LOS 4 days (IQR 2–8)</span>.</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong className="text-foreground">Why:</strong> LOS is positively skewed and bounded at zero — the mean is dragged up by a handful of long-stay outliers and overstates the
+                  "typical" experience. The median resists this; the IQR conveys the spread of the middle 50%. Use non-parametric tests (Mann–Whitney U for two groups, Kruskal–Wallis for three or more), or
+                  log-transform before a parametric test.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground mb-1">3. Postoperative pain score (NRS 0–10) at 24 h</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Pain is an <strong>ordinal</strong> 11-point scale. In 80 day-case patients the most frequent score is 2 (n = 26), median is 3, IQR 2–5; only a few patients report ≥8.
+                </p>
+                <p className="text-sm"><strong className="text-foreground">Report:</strong> median (IQR) — and the mode if you want to highlight the typical experience → <span className="font-mono">NRS 3 (IQR 2–5), mode 2</span>.</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong className="text-foreground">Why:</strong> ordinal categories don't have equal arithmetic spacing, so the mean (e.g. 3.4) implies a precision the scale doesn't support. The median respects rank and the mode
+                  identifies the commonest response. Compare groups with non-parametric tests (Wilcoxon signed-rank for paired, Mann–Whitney U for unpaired); for proportions above a clinical threshold (e.g. NRS ≥4) use χ² or Fisher's exact.
+                </p>
+              </div>
+            </div>
+
             <div className="mt-6 p-4 rounded-lg border border-physics/30 bg-physics/5">
               <p className="text-xs uppercase tracking-wide text-physics font-semibold mb-2">Key learning points</p>
               <ul className="text-sm text-foreground space-y-1.5 list-disc list-inside marker:text-physics">
