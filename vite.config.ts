@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => ({
     mode === "development" && componentTagger(),
     {
       name: "inject-app-version",
-      transformIndexHtml(html) {
+      transformIndexHtml(html: string) {
         return html.replace(
           /<\/head>/i,
           `    <meta name="app-version" content="${BUILD_ID}" />\n  </head>`,
