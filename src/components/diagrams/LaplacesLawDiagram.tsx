@@ -64,9 +64,6 @@ const LaplacesLawDiagram = () => {
               <text x={180 + rSmall / 2} y={163} textAnchor="middle" className="fill-primary text-[10px] font-semibold">
                 r = {rSmall_mm.toFixed(2)} mm
               </text>
-              <text x="180" y="170 - rSmall - 10" textAnchor="middle" className="fill-foreground text-[11px] font-semibold">
-                Small alveolus
-              </text>
               <text x="180" y={170 - rSmall - 12} textAnchor="middle" className="fill-foreground text-[11px] font-semibold">
                 Small alveolus
               </text>
