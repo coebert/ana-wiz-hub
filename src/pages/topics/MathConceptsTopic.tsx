@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import MathConceptsDiagram from "@/components/diagrams/MathConceptsDiagram";
+import TimeConstantDiagram from "@/components/diagrams/TimeConstantDiagram";
 import { mathConceptsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -112,7 +113,10 @@ const MathConceptsTopic = () => {
               <p className="text-sm font-mono text-primary text-center mb-2">t½ = τ × ln(2) = 0.693 × τ</p>
               <p className="text-sm text-muted-foreground text-center">
                 The half-life is always shorter than the time constant (by a factor of 0.693).
-              </p>
+            </p>
+            <div className="my-4">
+              <TimeConstantDiagram />
+            </div>
             </div>
           </ExamSection>
 
