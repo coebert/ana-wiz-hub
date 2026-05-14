@@ -189,6 +189,76 @@ const FlowMeasurementTopic = () => {
               </ul>
             </div>
           </ExamSection>
+
+          <ExamSection id="coanda-vs-bernoulli" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coandă vs Bernoulli — jet attachment vs constriction flow</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              Both effects share the same underlying physics — the conservation of energy expressed by
+              Bernoulli's equation, in which a rise in fluid velocity is matched by a fall in static
+              pressure. They differ in <em>where</em> the velocity change occurs and <em>what the low-pressure
+              region does</em> to the flow.
+            </p>
+
+            <div className="overflow-x-auto mt-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-secondary/50">
+                    <th className="text-left p-3 border border-border font-semibold text-foreground">Feature</th>
+                    <th className="text-left p-3 border border-border font-semibold text-foreground">Bernoulli / Venturi (constriction flow)</th>
+                    <th className="text-left p-3 border border-border font-semibold text-foreground">Coandă (jet attachment)</th>
+                  </tr>
+                </thead>
+                <tbody className="text-foreground/90">
+                  <tr>
+                    <td className="p-3 border border-border font-medium">Geometry</td>
+                    <td className="p-3 border border-border">Fluid confined inside a tube that narrows then widens</td>
+                    <td className="p-3 border border-border">Free (or semi-free) jet emerging next to a curved surface</td>
+                  </tr>
+                  <tr className="bg-secondary/20">
+                    <td className="p-3 border border-border font-medium">Cause of low pressure</td>
+                    <td className="p-3 border border-border">Velocity ↑ at the throat (continuity: A·v = constant) → static pressure ↓</td>
+                    <td className="p-3 border border-border">Entrainment is blocked on the wall side → pressure between jet and wall ↓</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-border font-medium">Effect on the flow</td>
+                    <td className="p-3 border border-border">Drives <strong>entrainment</strong> of a second fluid through a side port</td>
+                    <td className="p-3 border border-border">Deflects the jet so it <strong>adheres</strong> to the surface</td>
+                  </tr>
+                  <tr className="bg-secondary/20">
+                    <td className="p-3 border border-border font-medium">Direction of jet</td>
+                    <td className="p-3 border border-border">Stays axial — straight through the tube</td>
+                    <td className="p-3 border border-border">Bends toward the wall, may follow significant curvature</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-border font-medium">Predictability</td>
+                    <td className="p-3 border border-border">Highly predictable — used for <strong>fixed</strong> entrainment ratios</td>
+                    <td className="p-3 border border-border">Bistable / can flip between branches — exploited in fluidic logic, but a nuisance clinically</td>
+                  </tr>
+                  <tr className="bg-secondary/20">
+                    <td className="p-3 border border-border font-medium">Clinical example</td>
+                    <td className="p-3 border border-border">Venturi mask (fixed FiO₂), nebulisers, jet entrainment ports</td>
+                    <td className="p-3 border border-border">Eccentric MR jet hugging the LA wall, gas maldistribution at carina, fluidic ventilator switching</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-border font-medium">When it matters</td>
+                    <td className="p-3 border border-border">When you <em>want</em> a calibrated mixture</td>
+                    <td className="p-3 border border-border">When asymmetric flow distribution affects measurement or delivery</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+              <p className="text-sm font-medium text-foreground">Bottom line</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Bernoulli explains <strong>why</strong> a fast-moving jet has lower lateral pressure; the Venturi
+                effect uses that to entrain gas through a constriction; the Coandă effect uses the same
+                low-pressure region — this time between the jet and a nearby surface — to bend the jet onto
+                that surface. Constriction flow is symmetric and predictable; jet attachment is asymmetric
+                and surface-dependent.
+              </p>
+            </div>
+          </ExamSection>
         </>
       }
     />
