@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { burnsPlasticsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { BurnDepthDiagram } from "@/components/diagrams/BurnDepthDiagram";
 
 const objectives = [
   "Estimate burn extent and depth using Wallace's Rule of Nines and Lund & Browder",
@@ -73,6 +74,9 @@ const BurnsPlasticsTopic = () => {
                 <li><strong className="text-foreground">Deep partial thickness</strong> — mottled, reduced sensation, sluggish capillary refill. May need grafting</li>
                 <li><strong className="text-foreground">Full thickness</strong> — waxy/leathery, painless, no blanching. Requires excision and grafting</li>
               </ul>
+            </div>
+            <div className="mt-4">
+              <BurnDepthDiagram />
             </div>
           </ExamSection>
 
