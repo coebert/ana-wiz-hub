@@ -25,16 +25,16 @@ const VIEWPORTS = [
 
 const TOL = 1;
 
-async function audit(page, route, vw) {
+async function audit(page, route) {
   await page.goto(BASE + route, { waitUntil: "domcontentloaded", timeout: 30000 }).catch(()=>{});
   await page.waitForLoadState("networkidle", { timeout: 8000 }).catch(()=>{});
-  await page.evaluate(() => (document as any).fonts?.ready).catch(()=>{});
+  await page.evaluate(() => document.fonts?.ready).catch(()=>{});
   await page.waitForTimeout(400);
 
   return await page.evaluate((tol) => {
     const vw = document.documentElement.clientWidth;
     const pageScroll = document.documentElement.scrollWidth;
-    const offenders: any[] = [];
+    const offenders = [];
     const all = document.querySelectorAll<HTMLElement>("body *");
     all.forEach((el) => {
       const cs = getComputedStyle(el);
@@ -44,7 +44,7 @@ async function audit(page, route, vw) {
       if (r.width === 0 || r.height === 0) return;
       if (r.right > vw + tol) {
         // skip if inside scroll wrapper
-        let cur: HTMLElement | null = el.parentElement;
+        let cur = el.parentElement;
         let scrollAncestor = false;
         while (cur && cur !== document.documentElement) {
           const a = getComputedStyle(cur);
@@ -60,7 +60,7 @@ async function audit(page, route, vw) {
       }
     });
     // Tiny SVGs (diagrams that are too small)
-    const tinySvgs: any[] = [];
+    const tinySvgs = [];
     document.querySelectorAll("svg[role='img']").forEach((svg) => {
       const r = (svg as SVGElement).getBoundingClientRect();
       if (r.width > 0 && r.width < 260) {
@@ -72,7 +72,7 @@ async function audit(page, route, vw) {
 }
 
 const browser = await chromium.launch();
-const results: any[] = [];
+const results = [];
 for (const v of VIEWPORTS) {
   const ctx = await browser.newContext({ viewport: { width: v.width, height: v.height } });
   const page = await ctx.newPage();
@@ -83,12 +83,12 @@ for (const v of VIEWPORTS) {
       if (flagged) {
         results.push({ vp: v.name, route, ...r });
         console.log(`\n[${v.name}] ${route} pageOverflow=${r.pageOverflow} (sw=${r.pageScroll} vw=${r.vw})`);
-        r.offenders.forEach((o:any)=>console.log(`  OVERFLOW ${o.sel} right=${o.right} w=${o.w} "${o.text}"`));
-        r.tinySvgs.forEach((s:any)=>console.log(`  TINY SVG aria="${s.aria}" ${s.w}x${s.h}`));
+        r.offenders.forEach((o)=>console.log(`  OVERFLOW ${o.sel} right=${o.right} w=${o.w} "${o.text}"`));
+        r.tinySvgs.forEach((s)=>console.log(`  TINY SVG aria="${s.aria}" ${s.w}x${s.h}`));
       } else {
         console.log(`[${v.name}] ${route} ok`);
       }
-    } catch (e:any) {
+    } catch (e) {
       console.log(`[${v.name}] ${route} ERROR ${e.message}`);
     }
   }
