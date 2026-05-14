@@ -123,10 +123,19 @@
     @apply border-border;
   }
 
+  html, body {
+    /* Belt-and-braces: prevent stray wide content (tables, SVG diagrams,
+       long inline tokens) from forcing horizontal page scroll. Components
+       that need horizontal overflow (TOC chip strip, wide tables) wrap
+       themselves with overflow-x-auto and remain scrollable. */
+    @apply overflow-x-hidden;
+  }
+
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', sans-serif;
   }
+
 
   h1, h2, h3 {
     font-family: 'Playfair Display', serif;
