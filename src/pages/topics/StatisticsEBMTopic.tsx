@@ -166,6 +166,10 @@ const StatisticsEBMTopic = () => {
             <div className="mt-6">
               <CentralTendencyShiftDiagram />
             </div>
+
+            <div className="mt-6">
+              <BoxPlotDiagram />
+            </div>
           </ExamSection>
 
           <ExamSection id="normal-distribution" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
