@@ -51,7 +51,7 @@ export const TimeConstantDiagram = () => {
                 : "border-border text-muted-foreground hover:bg-muted"
             }`}
           >
-            Decay (e<tspan>⁻ᵗ/τ</tspan>)
+            Decay (e⁻ᵗ/τ)
           </button>
           <button
             onClick={() => setMode("washin")}
