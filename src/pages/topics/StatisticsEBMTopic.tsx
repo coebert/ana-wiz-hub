@@ -112,6 +112,56 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
+          <ExamSection id="central-tendency" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Measures of Central Tendency & Spread</h2>
+            <div className="text-muted-foreground leading-relaxed space-y-3 mb-4">
+              <p>
+                A measure of central tendency summarises a dataset with a single "typical" value. The choice depends on the <strong>data type</strong> (nominal, ordinal, interval/ratio)
+                and the <strong>shape of the distribution</strong>. Each measure has a paired measure of spread that should be reported alongside it.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-3 gap-3 mb-4">
+              <div className="p-3 rounded-md border border-border bg-card">
+                <p className="font-semibold text-foreground">Mean (x̄)</p>
+                <p className="text-xs font-mono text-muted-foreground mt-1">Σx / n</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Arithmetic average. Uses every value, so it is sensitive to outliers and skew.
+                </p>
+                <p className="text-xs text-foreground mt-2"><strong>Best for:</strong> symmetric, interval/ratio data (e.g. MAP, weight).</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Spread:</strong> standard deviation (SD), variance, SEM.</p>
+              </div>
+              <div className="p-3 rounded-md border border-border bg-card">
+                <p className="font-semibold text-foreground">Median</p>
+                <p className="text-xs font-mono text-muted-foreground mt-1">middle value when ranked</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  The 50th centile. Robust to outliers and skew because it ignores their magnitude.
+                </p>
+                <p className="text-xs text-foreground mt-2"><strong>Best for:</strong> skewed or ordinal data (e.g. ICU LOS, pain scores, Apgar).</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Spread:</strong> interquartile range (IQR, Q1–Q3), range.</p>
+              </div>
+              <div className="p-3 rounded-md border border-border bg-card">
+                <p className="font-semibold text-foreground">Mode</p>
+                <p className="text-xs font-mono text-muted-foreground mt-1">most frequent value</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  The peak of the distribution. The only valid measure for nominal categorical data, and useful for bimodal datasets.
+                </p>
+                <p className="text-xs text-foreground mt-2"><strong>Best for:</strong> nominal data (e.g. blood group), categorical counts.</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Spread:</strong> frequency table, proportions.</p>
+              </div>
+            </div>
+
+            <div className="p-3 rounded-md bg-secondary/40 border border-border">
+              <p className="font-semibold text-foreground text-sm">Choosing between them</p>
+              <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
+                <li><strong>Symmetric, normally distributed:</strong> mean = median = mode → report mean (SD).</li>
+                <li><strong>Skewed:</strong> mean is dragged toward the tail → report median (IQR) and consider non-parametric tests.</li>
+                <li><strong>Bimodal:</strong> a single mean can be misleading; report both modes and consider whether two sub-populations are present.</li>
+                <li><strong>Categorical / nominal:</strong> only the mode is meaningful (e.g. most common ASA grade).</li>
+              </ul>
+            </div>
+          </ExamSection>
+
           <ExamSection id="normal-distribution" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Normal Distribution & Confidence Intervals</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3 mb-4">
