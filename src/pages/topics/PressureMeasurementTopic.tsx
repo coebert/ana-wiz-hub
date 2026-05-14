@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { DiagramSection } from "@/components/DiagramSection";
 import FinapresDiagram from "@/components/diagrams/FinapresDiagram";
 import NIBPOscillometricDiagram from "@/components/diagrams/NIBPOscillometricDiagram";
+import FrankStarlingDiagram from "@/components/diagrams/FrankStarlingDiagram";
 import ManometerDiagram from "@/components/diagrams/ManometerDiagram";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
@@ -173,6 +174,49 @@ const PressureMeasurementTopic = () => {
               </ul>
             </div>
             <FinapresDiagram />
+          </ExamSection>
+
+          <ExamSection id="frank-starling" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Starling's Law of the Heart (Frank–Starling)</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              <strong>Starling's law</strong> states that, within physiological limits, the <strong>force of cardiac contraction
+              (and therefore stroke volume) is proportional to the end-diastolic fibre length</strong> of the ventricular muscle.
+              In intact ventricles this is expressed as the relationship between <strong>preload</strong> (end-diastolic volume or
+              filling pressure) and <strong>stroke volume</strong>.
+            </p>
+
+            <div className="mt-4 grid md:grid-cols-2 gap-3 text-sm">
+              <div className="p-4 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground mb-1">Underlying mechanism</p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Stretching the sarcomere toward its optimal length (~2.0–2.2 µm) increases the overlap of actin and myosin filaments
+                  and raises the calcium sensitivity of troponin C. More cross-bridges form per beat → greater force of contraction.
+                  It is an <em>intrinsic</em> property of cardiac muscle — independent of neural or humoral input.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground mb-1">Why it matters at the bedside</p>
+                <ul className="text-muted-foreground leading-relaxed list-disc list-inside space-y-1">
+                  <li>Matches right and left ventricular outputs beat-to-beat without external control.</li>
+                  <li>Underpins the rationale for fluid challenges in the hypotensive patient.</li>
+                  <li>Explains why excessive volume loading on a flat/descending curve worsens output (e.g. dilated cardiomyopathy).</li>
+                  <li>Inotropes shift the curve up and left; failure shifts it down and right.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-4 p-4 rounded-lg border border-physics/30 bg-physics/5">
+              <p className="text-xs uppercase tracking-wide text-physics font-semibold mb-2">Linking to pressure measurement</p>
+              <p className="text-sm text-foreground/90 leading-relaxed">
+                In clinical practice we cannot measure end-diastolic <em>volume</em> directly at the bedside, so we use a
+                <strong> filling pressure</strong> as a surrogate — CVP for the right ventricle, PAOP (pulmonary artery occlusion
+                pressure) for the left. The accuracy of the Frank–Starling interpretation therefore depends entirely on a correctly
+                <em> zeroed and levelled</em> transducer at the phlebostatic axis: a 13 cm levelling error gives ~10 mmHg of artefact,
+                which is enough to move the patient onto a completely different part of the curve.
+              </p>
+            </div>
+
+            <FrankStarlingDiagram />
           </ExamSection>
         </>
       }
