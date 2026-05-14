@@ -182,6 +182,31 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
+          <ExamSection id="laplaces-law" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_01"]}>
+            <section className="mb-8">
+              <h2 className="text-2xl font-serif font-bold text-foreground">Laplace's Law</h2>
+              <p className="text-foreground/90 leading-relaxed mt-2">
+                <strong>Laplace's law</strong> relates the pressure across a curved surface to its
+                wall tension and radius of curvature. For a <strong>sphere</strong> (two surfaces):
+                <span className="font-mono"> P = 2T / r</span>; for a <strong>cylinder</strong>
+                (single surface): <span className="font-mono">P = T / r</span>. The clinical
+                significance is the same in both cases — for a given wall tension, pressure rises
+                steeply as radius falls.
+              </p>
+              <p className="text-foreground/90 leading-relaxed mt-3">
+                Applied to the lung, Laplace predicts that small alveoli (small r) would generate a
+                higher inward pressure than large ones and empty into them — alveoli would be
+                inherently unstable. <strong>Pulmonary surfactant</strong> resolves the paradox by
+                lowering surface tension preferentially in smaller alveoli, equalising the
+                distending pressures and preventing collapse. The same equation explains aneurysm
+                rupture risk (rises with diameter), ventricular wall stress
+                (<span className="font-mono">σ = P · r / 2h</span>), and the ease of bag-mask
+                ventilation in larger vs collapsed airways.
+              </p>
+              <LaplacesLawDiagram />
+            </section>
+          </ExamSection>
+
           <ExamSection id="surfactant" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RC_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Surfactant</h2>
