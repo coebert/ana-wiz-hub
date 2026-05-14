@@ -92,14 +92,14 @@ export const Header = () => {
                   to={item.path}
                   title={item.label}
                   aria-label={item.label}
-                  className={`flex items-center gap-1.5 px-2 xl:px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                  className={`flex items-center gap-1.5 px-2 2xl:px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                     isActive
                       ? "bg-secondary text-foreground"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   }`}
                 >
                   <item.icon className={`h-3.5 w-3.5 ${isActive ? item.color : ""}`} />
-                  <span className="hidden xl:inline">{item.label}</span>
+                  <span className="hidden 2xl:inline">{item.label}</span>
                 </Link>
               );
             })}
