@@ -177,6 +177,30 @@ const StatisticsEBMTopic = () => {
               </p>
             </div>
             <NormalDistributionDiagram />
+
+            <div className="mt-6 p-4 rounded-lg border border-physics/30 bg-physics/5">
+              <p className="text-xs uppercase tracking-wide text-physics font-semibold mb-1">Worked example</p>
+              <p className="font-semibold text-foreground mb-2">Calculating a 95% confidence interval</p>
+              <p className="text-sm text-muted-foreground mb-3">
+                A trial of a new induction agent reports a mean time to loss of consciousness of <strong>42 s</strong> in 64 patients, with a standard deviation of <strong>8 s</strong>. Calculate the 95% confidence interval for the mean and interpret it.
+              </p>
+              <div className="space-y-1.5 text-sm">
+                <p className="font-semibold text-foreground">Working</p>
+                <p className="font-mono text-xs text-muted-foreground">SE = SD / √n = 8 / √64 = 8 / 8 = 1.0 s</p>
+                <p className="font-mono text-xs text-muted-foreground">95% CI = mean ± 1.96 × SE = 42 ± 1.96 × 1.0</p>
+                <p className="font-mono text-xs text-muted-foreground">      = 42 ± 1.96 s → 40.04 s to 43.96 s</p>
+              </div>
+              <div className="mt-3 space-y-1.5 text-sm">
+                <p className="font-semibold text-foreground">Answer</p>
+                <p className="text-muted-foreground">
+                  Mean time to LOC <strong>42 s (95% CI 40.0–44.0 s)</strong>.
+                </p>
+                <p className="font-semibold text-foreground mt-2">Interpretation</p>
+                <p className="text-muted-foreground">
+                  If this trial were repeated many times, 95% of the resulting confidence intervals would contain the true population mean induction time. The narrow interval (~4 s wide) reflects a reasonably large sample and modest variability, so the estimate is precise. Because the interval does <em>not</em> include a clinically meaningful comparator (e.g. propofol's typical 30 s), the new agent is unlikely to be non-inferior on speed of onset.
+                </p>
+              </div>
+            </div>
           </ExamSection>
 
           <ExamSection id="skew" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
