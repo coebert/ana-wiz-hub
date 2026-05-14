@@ -61,11 +61,14 @@ export const StickyTOC = ({ items, offset = 96, className }: StickyTOCProps) => 
 
   return (
     <>
-      {/* Mobile: horizontal chip bar */}
+      {/* Mobile / laptop (<1536px): horizontal chip bar.
+          We keep the in-flow chip bar all the way up to 2xl so the floating
+          desktop rail (which sits at fixed left:1rem) never overlaps the
+          centered max-w-4xl content column on 1024–1535px laptops. */}
       <nav
         aria-label="On this page"
         className={cn(
-          "lg:hidden sticky top-16 z-30 -mx-4 px-4 py-2 bg-background/85 backdrop-blur border-b border-border",
+          "2xl:hidden sticky top-14 z-30 -mx-4 px-4 py-2 bg-background/85 backdrop-blur border-b border-border",
           className
         )}
       >
@@ -76,7 +79,7 @@ export const StickyTOC = ({ items, offset = 96, className }: StickyTOCProps) => 
                 href={`#${item.id}`}
                 onClick={(e) => handleClick(e, item.id)}
                 className={cn(
-                  "inline-block px-3 py-1.5 rounded-full text-xs font-medium border transition-colors",
+                  "inline-block px-3 py-1.5 rounded-full text-xs font-medium border whitespace-nowrap transition-colors",
                   activeId === item.id
                     ? "bg-primary text-primary-foreground border-primary"
                     : "bg-card text-muted-foreground border-border hover:text-foreground hover:border-foreground/30"
@@ -89,11 +92,12 @@ export const StickyTOC = ({ items, offset = 96, className }: StickyTOCProps) => 
         </ul>
       </nav>
 
-      {/* Desktop: floating left rail */}
+      {/* Wide desktop (≥1536px): floating left rail. Position guarantees a
+          gap from the centered 4xl (56rem) content column. */}
       <nav
         aria-label="On this page"
         className={cn(
-          "hidden lg:block fixed left-[max(1rem,calc(50%-32rem-12rem))] top-32 w-44 max-h-[70vh] overflow-y-auto",
+          "hidden 2xl:block fixed left-[max(1rem,calc(50%-32rem-13rem))] top-32 w-48 max-h-[70vh] overflow-y-auto pr-2",
           className
         )}
       >
@@ -107,7 +111,7 @@ export const StickyTOC = ({ items, offset = 96, className }: StickyTOCProps) => 
                 href={`#${item.id}`}
                 onClick={(e) => handleClick(e, item.id)}
                 className={cn(
-                  "block pl-3 py-1.5 text-sm border-l-2 -ml-px transition-colors",
+                  "block pl-3 py-1.5 text-sm border-l-2 -ml-px transition-colors break-words",
                   activeId === item.id
                     ? "border-primary text-foreground font-medium"
                     : "border-transparent text-muted-foreground hover:text-foreground hover:border-foreground/30"
