@@ -255,6 +255,34 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  /* TOC chip strip: clean horizontal scroll on narrow screens, wraps on
+     wider mobile/tablet. Guarantees the strip never visually overlaps the
+     cards below by reserving its own block space + a hairline divider. */
+  .toc-chip-strip {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    padding-bottom: 0.25rem; /* room for momentum scroll shadow */
+  }
+  .toc-chip-strip > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+  /* On very narrow viewports (≤390px) allow chips to wrap to a second row
+     instead of forcing horizontal scroll, so long labels never clip the
+     card grid that follows. */
+  @media (max-width: 390px) {
+    .toc-chip-strip {
+      flex-wrap: wrap;
+      overflow-x: visible;
+    }
+  }
 }
 
 /* =====================================================================

@@ -72,7 +72,7 @@ export const StickyTOC = ({ items, offset = 96, className }: StickyTOCProps) => 
           className
         )}
       >
-        <ul className="flex gap-2 overflow-x-auto no-scrollbar">
+        <ul className="toc-chip-strip no-scrollbar">
           {items.map((item) => (
             <li key={item.id} className="shrink-0">
               <a
