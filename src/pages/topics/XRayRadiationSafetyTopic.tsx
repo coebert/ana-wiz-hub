@@ -6,6 +6,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
 import { CTScannerDiagram } from "@/components/diagrams/CTScannerDiagram";
 import ElectromagneticSpectrumDiagram from "@/components/diagrams/ElectromagneticSpectrumDiagram";
+import RadiationDoseUnitsDiagram from "@/components/diagrams/RadiationDoseUnitsDiagram";
 import { SinogramFBPWalkthrough } from "@/components/diagrams/SinogramFBPWalkthrough";
 import { CTDoseExplorer } from "@/components/diagrams/CTDoseExplorer";
 import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
@@ -425,6 +426,7 @@ const XRayRadiationSafetyTopic = () => {
                 abdomen/pelvis CT ~10 mSv.
               </p>
               <RadiationDoseComparisonTable />
+              <RadiationDoseUnitsDiagram />
             </div>
           </ExamSection>
 
