@@ -272,6 +272,22 @@ const StatisticsEBMTopic = () => {
                 Crucially, the CI shrinks as the sample grows (because SE = SD/√n), whereas the SD does not — adding patients makes you more certain about the average, not less variable as individuals.
               </p>
 
+              <div className="rounded-lg border border-border bg-muted/30 p-4 space-y-2">
+                <p className="text-sm font-semibold text-foreground">Standard error (SE) — the bridge between SD and CI</p>
+                <p className="text-sm text-muted-foreground">
+                  The <strong>standard error of the mean</strong> is the standard deviation of the <em>sampling distribution of the mean</em>: if you repeated the study many times, the sample means would themselves scatter around the true population mean, and that scatter has SD equal to the SE.
+                </p>
+                <p className="font-mono text-xs text-muted-foreground">SE = SD / √n</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                  <li><strong>SD</strong> measures variability between <em>individuals</em> — a property of the data, roughly stable as n grows.</li>
+                  <li><strong>SE</strong> measures variability of the <em>sample mean</em> — a property of the estimate, shrinks with √n.</li>
+                  <li><strong>95% CI</strong> is built directly from SE: <span className="font-mono">x̄ ± 1.96 × SE</span>. So SE is literally the "half-width unit" of the CI.</li>
+                </ul>
+                <p className="text-sm text-muted-foreground">
+                  <strong className="text-foreground">Quick example.</strong> SD = 8 s, n = 64 → SE = 8/√64 = <span className="font-mono">1.0 s</span>; 95% CI ≈ mean ± 1.96 s. Quadruple the sample to n = 256 and SE halves to 0.5 s, halving the CI width — but the SD still describes 8 s of between-patient variability.
+                </p>
+              </div>
+
               <div className="overflow-x-auto">
                 <table className="w-full text-sm border border-border rounded-md">
                   <thead className="bg-secondary/50">
