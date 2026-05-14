@@ -161,6 +161,7 @@ const PressureMeasurementTopic = () => {
               <strong>Von Recklinghausen oscillotonometer</strong> uses two cuffs (occluding and sensing) and was the precursor to
               modern automated oscillometry.
             </p>
+            <AuscultatoryNIBPDiagram />
             <NIBPOscillometricDiagram />
             <div className="mt-4 p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm mb-2">Finapres (FINger Arterial PRESsure)</p>
