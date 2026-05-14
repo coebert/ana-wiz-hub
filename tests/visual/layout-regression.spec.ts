@@ -258,7 +258,7 @@ for (const viewport of VIEWPORTS) {
         expect(
           overlaps,
           `Overlapping siblings on ${route}:\n` +
-            overlaps.map((o) => `  • ${o.a}  ⨯  ${o.b}  (area=${o.area}px²)`).join("\n")
+            overlaps.map((o) => `  • [${o.container}] ${o.a}  ⨯  ${o.b}  (area=${o.area}px²)`).join("\n")
         ).toEqual([]);
       });
     }
