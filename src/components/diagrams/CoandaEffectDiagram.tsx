@@ -7,20 +7,24 @@ const H = 320;
 /**
  * Coandă Effect Diagram
  *
- * Animated illustration of a fluid jet adhering to a nearby curved
- * surface (Coandă effect) and the clinical implications:
- *  • Bifurcation flow asymmetry (e.g. at airway / vascular branches)
- *  • Fluidic ventilator logic
- *  • Jet entrainment alongside a wall
+ * Animated illustration of a fluid jet adhering to a curved surface
+ * (Coandă effect) and the transition to detachment as the wall
+ * curvature increases beyond a critical angle.
  *
- * Toggle between "free jet" (symmetrical entrainment) and "wall jet"
- * (jet hugs the curved surface, low-pressure region pulls it in).
+ * Modes:
+ *  • "free"  — symmetrical entrainment, jet stays axial.
+ *  • "wall"  — jet near a curved wall; user-controlled curvature
+ *              (or auto-cycle) demonstrates the attached → separating →
+ *              detached transition with a visible separation point.
  */
 const CoandaEffectDiagram = () => {
   const [mode, setMode] = useState<"free" | "wall">("wall");
+  const [curvature, setCurvature] = useState(35); // 0..100
+  const [auto, setAuto] = useState(false);
   const [t, setT] = useState(0);
   const raf = useRef<number | null>(null);
 
+  // Continuous time for dash animation
   useEffect(() => {
     let last = performance.now();
     const tick = (now: number) => {
@@ -35,71 +39,178 @@ const CoandaEffectDiagram = () => {
     };
   }, []);
 
-  // Nozzle exit
+  // Auto-cycle curvature 0 → 100 → 0 to dramatise the detachment
+  useEffect(() => {
+    if (!auto || mode !== "wall") return;
+    const id = setInterval(() => {
+      setCurvature((c) => {
+        const next = c + 2;
+        return next > 100 ? 0 : next;
+      });
+    }, 60);
+    return () => clearInterval(id);
+  }, [auto, mode]);
+
+  // ---- Geometry --------------------------------------------------
   const nozzleX = 110;
   const nozzleY = H / 2;
   const nozzleH = 36;
 
-  // Curved wall (an arc curving away from the jet) — only shown in wall mode
-  // Wall starts just below the nozzle exit and curves down/away.
-  const wallPath = `M ${nozzleX + 10} ${nozzleY + nozzleH / 2}
-                    Q ${nozzleX + 180} ${nozzleY + nozzleH / 2 + 10}
-                      ${W - 40} ${nozzleY + 130}`;
+  // Critical curvature beyond which the jet separates
+  const CRIT = 60;
+  // Smooth attachment factor: 1 = fully attached, 0 = fully detached
+  const attach = clamp01(1 - (curvature - CRIT) / 25);
 
-  // Streamlines
-  // In "free" mode: 5 symmetric streams diverging mildly.
-  // In "wall" mode: streams bend downward toward the wall.
+  // Wall geometry: deeper "drop" as curvature increases.
+  // Wall ends at (W-40, nozzleY + wallDrop). Higher curvature = bigger drop.
+  const wallDrop = 40 + curvature * 1.8; // 40 .. 220 px
+  const wallEndX = W - 40;
+  const wallEndY = nozzleY + wallDrop;
+  // Quadratic control point — pulls the curve down sharply for high curvature
+  const wallCpX = nozzleX + 160;
+  const wallCpY = nozzleY + nozzleH / 2 + curvature * 1.2;
+  const wallPath = `M ${nozzleX + 10} ${nozzleY + nozzleH / 2}
+                    Q ${wallCpX} ${wallCpY}
+                      ${wallEndX} ${wallEndY}`;
+
+  // Where the jet separates from the wall (only when curvature > CRIT).
+  // Separation point slides leftward (earlier separation) as curvature grows.
+  const sepFrac = clamp01(1 - (curvature - CRIT) / 40); // 1 → 0
+  const sepX = nozzleX + 10 + sepFrac * (wallEndX - (nozzleX + 10));
+  const sepY = quadAt(nozzleX + 10, nozzleY + nozzleH / 2, wallCpX, wallCpY, wallEndX, wallEndY, sepFrac);
+
+  // ---- Streamlines ----------------------------------------------
+  // Build streamline paths. In wall mode, each streamline is a blend between
+  // "attached to wall" and "free / straight" trajectories, weighted by `attach`.
   const streams = Array.from({ length: 7 }).map((_, i) => {
     const offset = (i - 3) * 8; // -24..24 across the nozzle
     const y0 = nozzleY + offset;
+    const x0 = nozzleX + 8;
+
     if (mode === "free") {
-      // Slight symmetric spread
-      const y1 = nozzleY + offset * 1.4;
-      const y2 = nozzleY + offset * 2.0;
-      const y3 = nozzleY + offset * 2.8;
-      return `M ${nozzleX + 8} ${y0} C ${nozzleX + 150} ${y1}, ${nozzleX + 320} ${y2}, ${W - 30} ${y3}`;
+      const y3 = nozzleY + offset * 2.4;
+      return `M ${x0} ${y0} C ${nozzleX + 150} ${nozzleY + offset * 1.4}, ${nozzleX + 320} ${nozzleY + offset * 2.0}, ${W - 30} ${y3}`;
     }
-    // Wall mode: jet bends down, lower streams hug the wall most strongly
-    const bend = 70 + offset * 0.4; // lower streamlines bend more
-    const y1 = nozzleY + offset * 0.6 + 10;
-    const y2 = nozzleY + offset * 0.5 + bend * 0.6;
-    const y3 = nozzleY + offset * 0.4 + bend;
-    return `M ${nozzleX + 8} ${y0} C ${nozzleX + 140} ${y1}, ${nozzleX + 300} ${y2}, ${W - 30} ${y3 + 30}`;
+
+    // Wall mode — interpolate
+    // Attached endpoint: along the wall surface at offset above wall
+    const aEndY = wallEndY - 8 + offset * 0.3;
+    const aCp1Y = nozzleY + offset * 0.6 + 10;
+    const aCp2Y = nozzleY + offset * 0.4 + (wallDrop - 30) * 0.65;
+
+    // Detached endpoint: roughly straight (continues axial), slight downward kink
+    // because the jet was bent before separation
+    const initialBend = curvature * 0.25; // small initial deflection
+    const dEndY = nozzleY + offset + initialBend;
+    const dCp1Y = nozzleY + offset + initialBend * 0.4;
+    const dCp2Y = nozzleY + offset + initialBend * 0.8;
+
+    const cp1Y = lerp(dCp1Y, aCp1Y, attach);
+    const cp2Y = lerp(dCp2Y, aCp2Y, attach);
+    const endY = lerp(dEndY, aEndY, attach);
+
+    return `M ${x0} ${y0} C ${nozzleX + 140} ${cp1Y}, ${nozzleX + 320} ${cp2Y}, ${W - 30} ${endY}`;
   });
 
-  // Moving particle markers (dashes) along the central streamline
+  // Animated dashes along central streamline
   const dashOffset = -((t * 80) % 24);
+
+  // Status label
+  const status =
+    mode === "free"
+      ? "Free jet"
+      : curvature < CRIT - 5
+      ? "Attached"
+      : curvature < CRIT + 10
+      ? "Separating"
+      : "Detached";
+
+  const statusColor =
+    status === "Attached"
+      ? "hsl(var(--primary))"
+      : status === "Separating"
+      ? "hsl(var(--chart-4, var(--accent)))"
+      : status === "Detached"
+      ? "hsl(var(--destructive))"
+      : "hsl(var(--muted-foreground))";
+
+  // Low-pressure region opacity scales with attachment
+  const lowPOpacity = attach;
 
   return (
     <DiagramFigure
       id="coanda-effect"
       title="Coandă effect: jet attachment to a curved surface"
-      description="A fluid jet (gas or blood) tends to follow a nearby convex surface because entrained fluid between the jet and wall creates a low-pressure region that pulls the jet toward the wall. Clinically relevant in airway bifurcations, fluidic ventilator switches and jet ventilation."
+      description="A fluid jet (gas or blood) tends to follow a nearby convex surface because entrained fluid between the jet and wall creates a low-pressure region that pulls the jet toward the wall. As wall curvature increases beyond a critical angle, the jet can no longer follow and separates from the surface."
     >
-      <div className="flex items-center justify-end gap-2 mb-2">
-        <button
-          type="button"
-          onClick={() => setMode("free")}
-          className={`text-xs px-3 py-1 rounded-md border transition ${
-            mode === "free"
-              ? "bg-primary text-primary-foreground border-primary"
-              : "bg-card text-foreground/80 border-border hover:bg-secondary/50"
-          }`}
-        >
-          Free jet
-        </button>
-        <button
-          type="button"
-          onClick={() => setMode("wall")}
-          className={`text-xs px-3 py-1 rounded-md border transition ${
-            mode === "wall"
-              ? "bg-primary text-primary-foreground border-primary"
-              : "bg-card text-foreground/80 border-border hover:bg-secondary/50"
-          }`}
-        >
-          Jet near curved wall (Coandă)
-        </button>
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setMode("free")}
+            className={`text-xs px-3 py-1 rounded-md border transition ${
+              mode === "free"
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-card text-foreground/80 border-border hover:bg-secondary/50"
+            }`}
+          >
+            Free jet
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("wall")}
+            className={`text-xs px-3 py-1 rounded-md border transition ${
+              mode === "wall"
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-card text-foreground/80 border-border hover:bg-secondary/50"
+            }`}
+          >
+            Jet near curved wall (Coandă)
+          </button>
+        </div>
+        {mode === "wall" && (
+          <button
+            type="button"
+            onClick={() => setAuto((a) => !a)}
+            className={`text-xs px-3 py-1 rounded-md border transition ${
+              auto
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-card text-foreground/80 border-border hover:bg-secondary/50"
+            }`}
+            aria-pressed={auto}
+          >
+            {auto ? "■ Stop" : "▶ Auto-cycle curvature"}
+          </button>
+        )}
       </div>
+
+      {mode === "wall" && (
+        <div className="mb-3">
+          <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
+            <label htmlFor="coanda-curvature">Wall curvature</label>
+            <span style={{ color: statusColor }} className="font-semibold">
+              {status} · {curvature}°
+            </span>
+          </div>
+          <input
+            id="coanda-curvature"
+            type="range"
+            min={0}
+            max={100}
+            value={curvature}
+            onChange={(e) => {
+              setAuto(false);
+              setCurvature(parseInt(e.target.value, 10));
+            }}
+            className="w-full accent-primary"
+          />
+          <div className="flex justify-between text-[10px] text-muted-foreground mt-0.5">
+            <span>gentle</span>
+            <span className="opacity-70">↑ critical angle ~{CRIT}</span>
+            <span>sharp</span>
+          </div>
+        </div>
+      )}
 
       <svg
         role="img"
@@ -113,9 +224,19 @@ const CoandaEffectDiagram = () => {
             <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
           </linearGradient>
           <radialGradient id="coanda-lowp" cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0%" stopColor="hsl(var(--destructive))" stopOpacity="0.35" />
+            <stop offset="0%" stopColor="hsl(var(--destructive))" stopOpacity="0.4" />
             <stop offset="100%" stopColor="hsl(var(--destructive))" stopOpacity="0" />
           </radialGradient>
+          <marker
+            id="coanda-arrowhead"
+            markerWidth="8"
+            markerHeight="8"
+            refX="6"
+            refY="4"
+            orient="auto"
+          >
+            <path d="M0,0 L6,4 L0,8 Z" fill="hsl(var(--muted-foreground))" />
+          </marker>
         </defs>
 
         {/* Nozzle */}
@@ -150,45 +271,90 @@ const CoandaEffectDiagram = () => {
         {mode === "wall" && (
           <>
             <path
+              d={`${wallPath} L ${wallEndX} ${H} L ${nozzleX + 10} ${H} Z`}
+              fill="hsl(var(--muted))"
+              opacity={0.35}
+            />
+            <path
               d={wallPath}
               fill="none"
               stroke="hsl(var(--foreground))"
               strokeWidth={3}
               strokeLinecap="round"
             />
-            {/* Hatching beneath wall to show "solid" */}
-            <path
-              d={`${wallPath} L ${W - 40} ${H} L ${nozzleX + 10} ${H} Z`}
-              fill="hsl(var(--muted))"
-              opacity={0.35}
-            />
-            {/* Low-pressure region between jet and wall */}
+
+            {/* Low-pressure region between jet and wall — fades as jet detaches */}
             <ellipse
               cx={nozzleX + 170}
-              cy={nozzleY + 50}
+              cy={nozzleY + 50 + curvature * 0.3}
               rx={90}
               ry={28}
               fill="url(#coanda-lowp)"
+              opacity={lowPOpacity}
+              style={{ transition: "opacity 0.25s ease" }}
             />
-            <text
-              x={nozzleX + 170}
-              y={nozzleY + 54}
-              fontSize={11}
-              textAnchor="middle"
-              fill="hsl(var(--destructive))"
-              fontWeight={600}
-            >
-              ↓ Low pressure
-            </text>
-            <text
-              x={W - 90}
-              y={nozzleY + 145}
-              fontSize={11}
-              textAnchor="middle"
-              fill="hsl(var(--muted-foreground))"
-            >
-              Curved wall
-            </text>
+            {lowPOpacity > 0.25 && (
+              <text
+                x={nozzleX + 170}
+                y={nozzleY + 54 + curvature * 0.3}
+                fontSize={11}
+                textAnchor="middle"
+                fill="hsl(var(--destructive))"
+                fontWeight={600}
+                opacity={lowPOpacity}
+              >
+                ↓ Low pressure
+              </text>
+            )}
+
+            {/* Separation marker — appears when jet has detached */}
+            {attach < 0.95 && (
+              <g opacity={1 - attach}>
+                <circle
+                  cx={sepX}
+                  cy={sepY - 6}
+                  r={6}
+                  fill="none"
+                  stroke="hsl(var(--destructive))"
+                  strokeWidth={2}
+                />
+                <line
+                  x1={sepX}
+                  y1={sepY - 12}
+                  x2={sepX}
+                  y2={sepY - 30}
+                  stroke="hsl(var(--destructive))"
+                  strokeWidth={1.5}
+                  strokeDasharray="3 3"
+                />
+                <text
+                  x={sepX}
+                  y={sepY - 36}
+                  fontSize={11}
+                  textAnchor="middle"
+                  fill="hsl(var(--destructive))"
+                  fontWeight={600}
+                >
+                  separation
+                </text>
+                {/* Recirculation eddy under detached jet */}
+                <path
+                  d={`M ${sepX + 20} ${sepY + 20} q 30 -18 60 0 q -30 26 -60 0 z`}
+                  fill="hsl(var(--destructive))"
+                  opacity={0.12 * (1 - attach)}
+                />
+                <text
+                  x={sepX + 50}
+                  y={sepY + 28}
+                  fontSize={10}
+                  textAnchor="middle"
+                  fill="hsl(var(--muted-foreground))"
+                  opacity={1 - attach}
+                >
+                  recirculation
+                </text>
+              </g>
+            )}
           </>
         )}
 
@@ -201,6 +367,7 @@ const CoandaEffectDiagram = () => {
             stroke="url(#coanda-jet)"
             strokeWidth={i === 3 ? 2.4 : 1.6}
             opacity={i === 3 ? 1 : 0.7}
+            style={{ transition: "d 0.15s linear" }}
           />
         ))}
 
@@ -218,30 +385,34 @@ const CoandaEffectDiagram = () => {
         {/* Entrainment arrows (free jet: symmetric) */}
         {mode === "free" && (
           <>
-            <Arrow x1={nozzleX + 60} y1={nozzleY - 70} x2={nozzleX + 90} y2={nozzleY - 35} />
-            <Arrow x1={nozzleX + 60} y1={nozzleY + 70} x2={nozzleX + 90} y2={nozzleY + 35} />
-            <text
-              x={nozzleX + 75}
-              y={nozzleY - 78}
-              fontSize={10}
-              textAnchor="middle"
-              fill="hsl(var(--muted-foreground))"
-            >
+            <line
+              x1={nozzleX + 60}
+              y1={nozzleY - 70}
+              x2={nozzleX + 90}
+              y2={nozzleY - 35}
+              stroke="hsl(var(--muted-foreground))"
+              strokeWidth={1.5}
+              markerEnd="url(#coanda-arrowhead)"
+            />
+            <line
+              x1={nozzleX + 60}
+              y1={nozzleY + 70}
+              x2={nozzleX + 90}
+              y2={nozzleY + 35}
+              stroke="hsl(var(--muted-foreground))"
+              strokeWidth={1.5}
+              markerEnd="url(#coanda-arrowhead)"
+            />
+            <text x={nozzleX + 75} y={nozzleY - 78} fontSize={10} textAnchor="middle" fill="hsl(var(--muted-foreground))">
               entrainment
             </text>
-            <text
-              x={nozzleX + 75}
-              y={nozzleY + 90}
-              fontSize={10}
-              textAnchor="middle"
-              fill="hsl(var(--muted-foreground))"
-            >
+            <text x={nozzleX + 75} y={nozzleY + 90} fontSize={10} textAnchor="middle" fill="hsl(var(--muted-foreground))">
               entrainment
             </text>
           </>
         )}
 
-        {/* Mode caption */}
+        {/* Caption */}
         <text
           x={W / 2}
           y={26}
@@ -251,8 +422,12 @@ const CoandaEffectDiagram = () => {
           fill="hsl(var(--foreground))"
         >
           {mode === "free"
-            ? "Free jet — symmetrical entrainment, jet stays straight"
-            : "Wall jet — jet adheres to convex surface (Coandă effect)"}
+            ? "Free jet — symmetrical entrainment"
+            : status === "Attached"
+            ? "Jet adheres to wall (Coandă)"
+            : status === "Separating"
+            ? "Adverse pressure gradient — jet about to break away"
+            : "Curvature exceeds critical angle — jet detaches"}
         </text>
       </svg>
 
@@ -261,9 +436,10 @@ const CoandaEffectDiagram = () => {
           <p className="font-medium text-foreground">Mechanism</p>
           <p className="text-muted-foreground mt-1">
             A jet entrains surrounding fluid. Near a wall, entrainment is restricted on
-            the wall side, so pressure there falls below ambient. The pressure
-            differential deflects the jet onto the surface, where it remains attached
-            until the curvature is too sharp to follow.
+            the wall side, so pressure there falls below ambient and the jet bends onto
+            the surface. Beyond a <strong>critical curvature</strong>, the boundary layer
+            cannot supply enough momentum to follow the surface and the jet
+            <strong> separates</strong>, leaving a recirculation zone behind it.
           </p>
         </div>
         <div className="rounded-lg border border-border bg-secondary/30 p-3">
@@ -272,7 +448,7 @@ const CoandaEffectDiagram = () => {
             <li>Asymmetric gas/blood distribution at airway and vascular bifurcations</li>
             <li>Fluidic logic in older ventilators (no moving parts)</li>
             <li>Jet ventilation: jet hugs tracheal wall — affects entrainment & FiO₂</li>
-            <li>Cardiac murmurs / regurgitant jets that track along chamber walls</li>
+            <li>Eccentric regurgitant jets that track along chamber walls on echo</li>
           </ul>
         </div>
       </div>
@@ -280,30 +456,21 @@ const CoandaEffectDiagram = () => {
   );
 };
 
-const Arrow = ({ x1, y1, x2, y2 }: { x1: number; y1: number; x2: number; y2: number }) => (
-  <g>
-    <line
-      x1={x1}
-      y1={y1}
-      x2={x2}
-      y2={y2}
-      stroke="hsl(var(--muted-foreground))"
-      strokeWidth={1.5}
-      markerEnd="url(#coanda-arrowhead)"
-    />
-    <defs>
-      <marker
-        id="coanda-arrowhead"
-        markerWidth="8"
-        markerHeight="8"
-        refX="6"
-        refY="4"
-        orient="auto"
-      >
-        <path d="M0,0 L6,4 L0,8 Z" fill="hsl(var(--muted-foreground))" />
-      </marker>
-    </defs>
-  </g>
-);
+// ---- helpers --------------------------------------------------
+const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+// Quadratic Bézier y at parameter t (0..1) given P0, P1 (control), P2
+const quadAt = (
+  _x0: number,
+  y0: number,
+  _x1: number,
+  y1: number,
+  _x2: number,
+  y2: number,
+  t: number,
+) => {
+  const u = 1 - t;
+  return u * u * y0 + 2 * u * t * y1 + t * t * y2;
+};
 
 export default CoandaEffectDiagram;
