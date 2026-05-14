@@ -13,6 +13,7 @@ import { AlveolarGasEquationDiagram } from "@/components/diagrams/AlveolarGasEqu
 import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
 import { ClosingVolumeDiagram } from "@/components/diagrams/ClosingVolumeDiagram";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
+import LaplacesLawDiagram from "@/components/diagrams/LaplacesLawDiagram";
 import { AutoPEEPDiagram } from "@/components/diagrams/AutoPEEPDiagram";
 import { TranspulmonaryPressureDiagram } from "@/components/diagrams/TranspulmonaryPressureDiagram";
 import { VILIDiagram } from "@/components/diagrams/VILIDiagram";
