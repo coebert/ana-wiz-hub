@@ -63,9 +63,6 @@ function extractLabels(source: string): string[] {
 }
 
 function sourcePathFor(componentImport: string): string {
-  // The registry imports look like
-  //   import("@/components/diagrams/Foo")
-  // Resolve to the .tsx file on disk.
   const rel = componentImport.replace(/^@\//, "src/");
   const candidates = [`${rel}.tsx`, `${rel}.ts`];
   for (const c of candidates) {
@@ -75,11 +72,17 @@ function sourcePathFor(componentImport: string): string {
   throw new Error(`Cannot resolve source for ${componentImport}`);
 }
 
-// Re-derive the import path from the registry by stringifying the
-// lazy factory (since the import() spec is preserved in the source).
+// Parse the registry source to recover the import() spec for each entry,
+// keyed by the registry id literal.
+const REGISTRY_SRC = readFileSync(
+  resolve(process.cwd(), "src/lib/flowchart-a11y-registry.ts"),
+  "utf8",
+);
 function importSpecFor(entry: (typeof FLOWCHART_AUDIT_REGISTRY)[number]): string {
-  const fnSrc = entry.component.toString();
-  const m = fnSrc.match(/import\(\s*["'`]([^"'`]+)["'`]\s*\)/);
+  const idIdx = REGISTRY_SRC.indexOf(`id: "${entry.id}"`);
+  if (idIdx === -1) throw new Error(`id "${entry.id}" not found in registry source`);
+  const after = REGISTRY_SRC.slice(idIdx);
+  const m = after.match(/import\(\s*["'`]([^"'`]+)["'`]\s*\)/);
   if (!m) throw new Error(`Cannot find import() for ${entry.id}`);
   return m[1];
 }
