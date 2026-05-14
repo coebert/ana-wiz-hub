@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { statisticsEBMQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import NormalDistributionDiagram from "@/components/diagrams/NormalDistributionDiagram";
 
 const objectives = [
   "Distinguish RCT, cohort, case-control, cross-sectional and ecological designs and their measures of effect",
