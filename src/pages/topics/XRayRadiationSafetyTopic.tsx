@@ -5,6 +5,7 @@ import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
 import { CTScannerDiagram } from "@/components/diagrams/CTScannerDiagram";
+import ElectromagneticSpectrumDiagram from "@/components/diagrams/ElectromagneticSpectrumDiagram";
 import { SinogramFBPWalkthrough } from "@/components/diagrams/SinogramFBPWalkthrough";
 import { CTDoseExplorer } from "@/components/diagrams/CTDoseExplorer";
 import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
@@ -185,6 +186,7 @@ const XRayRadiationSafetyTopic = () => {
               framework, dose limits, dosimetry). The principles transfer directly to occupational health risk-assessments and to
               consenting patients for repeat or high-dose examinations.
             </p>
+            <ElectromagneticSpectrumDiagram />
           </ExamSection>
 
           <ExamSection id="production" exams={[Exam.PRIMARY, Exam.FINAL]}>
