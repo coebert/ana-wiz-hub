@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { statisticsEBMQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import NormalDistributionDiagram from "@/components/diagrams/NormalDistributionDiagram";
 
 const objectives = [
   "Distinguish RCT, cohort, case-control, cross-sectional and ecological designs and their measures of effect",
@@ -108,6 +109,23 @@ const StatisticsEBMTopic = () => {
                 (0 for differences, 1 for ratios) indicates significance at p &lt; 0.05. CIs are more informative than p-values alone — they convey both magnitude and precision.
               </p>
             </div>
+          </ExamSection>
+
+          <ExamSection id="normal-distribution" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Normal Distribution & Confidence Intervals</h2>
+            <div className="text-muted-foreground leading-relaxed space-y-3 mb-4">
+              <p>
+                The <strong>normal (Gaussian) distribution</strong> is a symmetrical, bell-shaped probability density curve defined entirely by its mean (μ) and standard deviation (σ).
+                Many biological variables — height, blood pressure, haemoglobin, sample means under the central limit theorem — approximate this shape, which is why it underpins
+                most parametric statistics.
+              </p>
+              <p>
+                The <strong>empirical 68–95–99.7 rule</strong> states that ±1σ contains ~68% of values, ±2σ ~95% and ±3σ ~99.7%. The same geometry generates <strong>confidence intervals</strong>:
+                a 95% CI is the mean ± 1.96 × standard error — the central band that would capture the true population mean in 95 of 100 repeated samples. Use the toggle to compare
+                90%, 95% and 99% intervals; wider intervals trade precision for greater confidence.
+              </p>
+            </div>
+            <NormalDistributionDiagram />
           </ExamSection>
 
           <ExamSection id="measures-effect" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
