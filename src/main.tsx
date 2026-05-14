@@ -43,7 +43,7 @@ window.addEventListener("error", (event) => {
         });
     } else if (!sessionStorage.getItem("__chunk_reload__")) {
       sessionStorage.setItem("__chunk_reload__", "1");
-      window.location.reload();
+      location.reload();
     }
   }
 });
