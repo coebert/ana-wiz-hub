@@ -6,6 +6,7 @@ import { RotameterDiagram } from "@/components/diagrams/RotameterDiagram";
 import PneumotachographDiagram from "@/components/diagrams/PneumotachographDiagram";
 import WrightRespirometerDiagram from "@/components/diagrams/WrightRespirometerDiagram";
 import BernoulliVenturiDiagram from "@/components/diagrams/BernoulliVenturiDiagram";
+import CoandaEffectDiagram from "@/components/diagrams/CoandaEffectDiagram";
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
