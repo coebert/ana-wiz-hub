@@ -170,6 +170,17 @@ const StatisticsEBMTopic = () => {
             <div className="mt-6">
               <BoxPlotDiagram />
             </div>
+
+            <div className="mt-6 p-4 rounded-lg border border-physics/30 bg-physics/5">
+              <p className="text-xs uppercase tracking-wide text-physics font-semibold mb-2">Key learning points</p>
+              <ul className="text-sm text-foreground space-y-1.5 list-disc list-inside marker:text-physics">
+                <li><strong>Mean</strong> = Σx / n. Uses every value, so it is the most efficient summary for symmetric interval/ratio data — but is dragged toward outliers and the long tail of skewed data. Pair with <strong>SD</strong> (or SEM for an estimate of the mean).</li>
+                <li><strong>Median</strong> = the middle (50th centile) value when ranked. Robust to outliers and skew because it depends on rank, not magnitude. Pair with <strong>IQR (Q1–Q3)</strong>; it is the preferred summary for skewed or ordinal data.</li>
+                <li><strong>Mode</strong> = the most frequent value (peak of the distribution). The only valid measure for nominal categorical data, and useful for spotting bimodal datasets; unstable in small samples.</li>
+                <li>In a perfectly symmetric distribution: <strong>mean = median = mode</strong>. As skew increases, the mean moves furthest, the median shifts modestly, and the mode stays at the peak — the gap between them is itself a clue to skew.</li>
+                <li>Choose the summary that matches the data type and shape, then choose the corresponding test family: parametric (t-test/ANOVA) for mean ± SD on normal data; non-parametric (Mann–Whitney/Wilcoxon) for median (IQR) on skewed data.</li>
+              </ul>
+            </div>
           </ExamSection>
 
           <ExamSection id="normal-distribution" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
