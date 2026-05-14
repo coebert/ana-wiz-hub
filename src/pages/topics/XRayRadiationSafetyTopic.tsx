@@ -594,6 +594,161 @@ const XRayRadiationSafetyTopic = () => {
                 <li><strong>Foetal effects</strong>: organogenesis (8–15/56 days post-conception) most sensitive — &gt;100 mGy raises risk of microcephaly and intellectual disability; &lt;50 mGy is generally considered low-risk.</li>
               </ul>
             </div>
+
+            {/* === Summary: deterministic vs stochastic + dose-response === */}
+            <div className="mt-6 space-y-4">
+              <h3 className="text-lg font-semibold text-foreground">Summary — deterministic vs stochastic, and how risk changes with dose</h3>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="bg-muted/40">
+                      <th className="text-left p-2 font-semibold text-foreground border border-border">Feature</th>
+                      <th className="text-left p-2 font-semibold text-foreground border border-border">Deterministic (tissue reactions)</th>
+                      <th className="text-left p-2 font-semibold text-foreground border border-border">Stochastic</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr>
+                      <td className="p-2 border border-border font-medium text-foreground">Mechanism</td>
+                      <td className="p-2 border border-border">Cell killing — once enough cells in a tissue are lost, function fails</td>
+                      <td className="p-2 border border-border">Sub-lethal DNA damage in a surviving cell → mutation → cancer or heritable effect</td>
+                    </tr>
+                    <tr>
+                      <td className="p-2 border border-border font-medium text-foreground">Threshold?</td>
+                      <td className="p-2 border border-border">Yes — clear dose threshold below which the effect does not occur</td>
+                      <td className="p-2 border border-border">No threshold (ICRP linear-no-threshold model)</td>
+                    </tr>
+                    <tr>
+                      <td className="p-2 border border-border font-medium text-foreground">What rises with dose?</td>
+                      <td className="p-2 border border-border"><em>Severity</em> of the effect (and probability above threshold approaches 100%)</td>
+                      <td className="p-2 border border-border"><em>Probability</em> of the effect — severity is all-or-nothing once it occurs</td>
+                    </tr>
+                    <tr>
+                      <td className="p-2 border border-border font-medium text-foreground">Latency</td>
+                      <td className="p-2 border border-border">Days to months (erythema, cataract, marrow suppression)</td>
+                      <td className="p-2 border border-border">Years to decades (solid tumours), months to years (leukaemia)</td>
+                    </tr>
+                    <tr>
+                      <td className="p-2 border border-border font-medium text-foreground">Examples</td>
+                      <td className="p-2 border border-border">Skin erythema (~2 Gy), cataract (0.5 Gy), marrow suppression (~0.5 Gy), foetal anomalies (~100 mGy)</td>
+                      <td className="p-2 border border-border">Solid cancers, leukaemia, heritable mutations</td>
+                    </tr>
+                    <tr>
+                      <td className="p-2 border border-border font-medium text-foreground">Dominant in clinical practice</td>
+                      <td className="p-2 border border-border">High-dose interventional fluoroscopy (TIPS, EP ablation, embolisation, EVAR)</td>
+                      <td className="p-2 border border-border">All diagnostic radiology and routine occupational exposure</td>
+                    </tr>
+                    <tr>
+                      <td className="p-2 border border-border font-medium text-foreground">Mitigated by</td>
+                      <td className="p-2 border border-border">Dose limits, procedure planning, leaded glasses, skin-dose monitoring</td>
+                      <td className="p-2 border border-border">ALARA — justification, optimisation, time/distance/shielding</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Inline dose–response diagram */}
+              <div className="rounded-xl border border-border bg-card p-3 overflow-x-auto">
+                <svg
+                  viewBox="0 0 720 280"
+                  className="w-full h-auto min-w-[420px]"
+                  role="img"
+                  aria-label="Dose-response curves showing sigmoidal threshold deterministic effect on the left and linear no-threshold stochastic effect on the right"
+                >
+                  {/* === LEFT panel: deterministic (sigmoid with threshold) === */}
+                  <g>
+                    <text x="170" y="22" textAnchor="middle" className="fill-foreground text-[12px] font-semibold">
+                      Deterministic — severity vs dose
+                    </text>
+                    {/* axes */}
+                    <line x1="50" y1="50" x2="50" y2="230" stroke="hsl(var(--border))" />
+                    <line x1="50" y1="230" x2="320" y2="230" stroke="hsl(var(--border))" />
+                    <text x="185" y="258" textAnchor="middle" className="fill-muted-foreground text-[10px]">
+                      Dose →
+                    </text>
+                    <text x="20" y="140" textAnchor="middle" transform="rotate(-90 20 140)" className="fill-muted-foreground text-[10px]">
+                      Severity / incidence
+                    </text>
+                    {/* Threshold marker */}
+                    <line x1="140" y1="50" x2="140" y2="230" stroke="hsl(var(--destructive))" strokeDasharray="3 3" opacity={0.6} />
+                    <text x="142" y="62" className="fill-destructive text-[10px] font-semibold">
+                      Threshold
+                    </text>
+                    {/* Sigmoidal curve: flat → 0 below threshold (140), then rises to plateau */}
+                    <path
+                      d="M 50 230 L 140 230 C 170 230, 200 100, 240 65 C 270 50, 300 50, 320 50"
+                      fill="none"
+                      stroke="hsl(var(--destructive))"
+                      strokeWidth={2.4}
+                    />
+                    {/* Annotations */}
+                    <text x="90" y="220" className="fill-muted-foreground text-[10px]">
+                      No effect
+                    </text>
+                    <text x="245" y="80" className="fill-destructive text-[10px] font-semibold">
+                      Effect certain &amp; severe
+                    </text>
+                  </g>
+
+                  {/* === RIGHT panel: stochastic (linear no-threshold) === */}
+                  <g transform="translate(360, 0)">
+                    <text x="170" y="22" textAnchor="middle" className="fill-foreground text-[12px] font-semibold">
+                      Stochastic — probability vs dose
+                    </text>
+                    <line x1="50" y1="50" x2="50" y2="230" stroke="hsl(var(--border))" />
+                    <line x1="50" y1="230" x2="320" y2="230" stroke="hsl(var(--border))" />
+                    <text x="185" y="258" textAnchor="middle" className="fill-muted-foreground text-[10px]">
+                      Dose →
+                    </text>
+                    <text x="20" y="140" textAnchor="middle" transform="rotate(-90 20 140)" className="fill-muted-foreground text-[10px]">
+                      Probability of effect
+                    </text>
+                    {/* Linear-no-threshold line from origin */}
+                    <line x1="50" y1="230" x2="320" y2="80" stroke="hsl(var(--primary))" strokeWidth={2.4} />
+                    {/* Hormesis / supralinear uncertainty band at low dose */}
+                    <path
+                      d="M 50 230 Q 100 220 150 195"
+                      fill="none"
+                      stroke="hsl(var(--primary))"
+                      strokeWidth={1}
+                      strokeDasharray="3 3"
+                      opacity={0.5}
+                    />
+                    <path
+                      d="M 50 230 Q 100 200 150 195"
+                      fill="none"
+                      stroke="hsl(var(--primary))"
+                      strokeWidth={1}
+                      strokeDasharray="3 3"
+                      opacity={0.5}
+                    />
+                    <text x="60" y="220" className="fill-muted-foreground text-[10px]">
+                      Low-dose extrapolation
+                    </text>
+                    <text x="60" y="232" className="fill-muted-foreground text-[9px] italic">
+                      (assumed linear)
+                    </text>
+                    <text x="225" y="105" className="fill-primary text-[10px] font-semibold">
+                      No safe threshold
+                    </text>
+                  </g>
+                </svg>
+                <p className="text-[11px] text-muted-foreground mt-2 text-center">
+                  Left: deterministic effects only appear once dose exceeds a tissue-specific threshold, then severity rises rapidly. Right: stochastic risk is assumed proportional to dose all the way to zero (linear no-threshold model) — every avoidable mGy matters.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-lg border border-physics/30 bg-physics/5">
+                <p className="text-xs uppercase tracking-wide text-physics font-semibold mb-2">Key learning points</p>
+                <ul className="text-sm text-foreground space-y-1.5 list-disc list-inside marker:text-physics">
+                  <li><strong>Deterministic = dose causes severity</strong> above a threshold; <strong>stochastic = dose changes the probability</strong> of an all-or-nothing harm with no threshold.</li>
+                  <li>Stochastic risk justifies <strong>ALARA</strong> for routine practice; deterministic thresholds drive specific protections (leaded glasses, skin-dose limits in interventional procedures).</li>
+                  <li>Dose limits (ICRP / IRR17): occupational <strong>20 mSv/yr effective dose</strong>, lens <strong>20 mSv/yr</strong>, skin/extremity <strong>500 mSv/yr</strong> — all set well below deterministic thresholds with a wide stochastic safety margin.</li>
+                  <li>The foetus is a special case — the developing CNS has an effective deterministic threshold (~100 mGy) and is also at higher stochastic risk; declared pregnant workers limit equivalent dose to the abdomen to 1 mSv for the remainder of pregnancy.</li>
+                </ul>
+              </div>
+            </div>
           </ExamSection>
 
           <ExamSection id="practical" exams={[Exam.FINAL, Exam.FFICM]}>
