@@ -164,6 +164,7 @@ const PressureMeasurementTopic = () => {
             </p>
             <AuscultatoryNIBPDiagram />
             <NIBPOscillometricDiagram />
+            <NIBPvsArterialDiagram />
             <div className="mt-4 p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm mb-2">Finapres (FINger Arterial PRESsure)</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
