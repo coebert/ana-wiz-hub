@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import MathConceptsDiagram from "@/components/diagrams/MathConceptsDiagram";
+import TimeConstantDiagram from "@/components/diagrams/TimeConstantDiagram";
 import { mathConceptsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
