@@ -224,6 +224,117 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
+          <ExamSection id="measures-of-spread" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Measures of Spread (Dispersion)</h2>
+            <div className="text-muted-foreground leading-relaxed space-y-3 mb-4">
+              <p>
+                A measure of central tendency only describes the "middle" of a dataset; it tells you nothing about how tightly or loosely values are scattered around it.
+                Two samples can share an identical mean (e.g. MAP 90 mmHg) yet behave very differently clinically — one tightly clustered between 85–95 mmHg, the other ranging from 50–130 mmHg.
+                Measures of <strong>spread (dispersion)</strong> quantify this scatter and are essential for choosing reference ranges, statistical tests and clinical thresholds.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-3">
+              <div className="rounded-lg border border-border p-4 bg-card">
+                <p className="font-semibold text-foreground">Range</p>
+                <p className="text-xs font-mono text-muted-foreground mt-1">Range = max − min</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  The simplest measure: difference between the largest and smallest values. Easy to calculate but extremely sensitive to a single outlier and ignores everything in between.
+                </p>
+                <p className="text-xs text-foreground mt-2"><strong>Use:</strong> quick descriptive summary; vital signs charts ("HR 60–110 bpm overnight").</p>
+              </div>
+
+              <div className="rounded-lg border border-border p-4 bg-card">
+                <p className="font-semibold text-foreground">Interquartile range (IQR)</p>
+                <p className="text-xs font-mono text-muted-foreground mt-1">IQR = Q3 − Q1 (middle 50% of data)</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Spread of the central half of the distribution after ranking. Robust to outliers and skew because it ignores the tails. Visualised as the "box" of a box-and-whisker plot.
+                </p>
+                <p className="text-xs text-foreground mt-2"><strong>Use:</strong> skewed or ordinal data — pair with median (e.g. ICU LOS, NRS pain).</p>
+              </div>
+
+              <div className="rounded-lg border border-border p-4 bg-card">
+                <p className="font-semibold text-foreground">Variance (s²)</p>
+                <p className="text-xs font-mono text-muted-foreground mt-1">s² = Σ(xᵢ − x̄)² / (n − 1)</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Mean of the squared deviations from the sample mean. Squaring keeps every contribution positive and weights large deviations heavily, but the units are squared (e.g. mmHg²) which makes it hard to interpret directly.
+                </p>
+                <p className="text-xs text-foreground mt-2"><strong>Use:</strong> intermediate quantity — most often reported as its square root, the SD.</p>
+              </div>
+
+              <div className="rounded-lg border border-border p-4 bg-card">
+                <p className="font-semibold text-foreground">Standard deviation (SD)</p>
+                <p className="text-xs font-mono text-muted-foreground mt-1">SD = √s²  (same units as the data)</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Average distance of each observation from the mean, in the original units. For a normal distribution: mean ± 1 SD ≈ 68% of values, ± 2 SD ≈ 95%, ± 3 SD ≈ 99.7% — the basis of biological reference ranges.
+                </p>
+                <p className="text-xs text-foreground mt-2"><strong>Use:</strong> symmetric interval/ratio data — pair with mean.</p>
+              </div>
+
+              <div className="rounded-lg border border-border p-4 bg-card">
+                <p className="font-semibold text-foreground">Standard error of the mean (SEM)</p>
+                <p className="text-xs font-mono text-muted-foreground mt-1">SEM = SD / √n</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Describes the precision of the <em>sample mean</em>, not the spread of individuals. Shrinks as the sample grows and forms the basis of the 95% CI (≈ x̄ ± 1.96 × SEM). Reporting "mean ± SEM" makes data look tighter than it is — usually inappropriate as a descriptive statistic.
+                </p>
+                <p className="text-xs text-foreground mt-2"><strong>Use:</strong> precision of an estimate; building confidence intervals.</p>
+              </div>
+
+              <div className="rounded-lg border border-border p-4 bg-card">
+                <p className="font-semibold text-foreground">Coefficient of variation (CV)</p>
+                <p className="text-xs font-mono text-muted-foreground mt-1">CV = SD / mean × 100%</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  A unitless, relative measure of spread that allows comparison of variability between datasets with different units or scales (e.g. assay precision across drugs at very different concentrations).
+                </p>
+                <p className="text-xs text-foreground mt-2"><strong>Use:</strong> comparing variability across units; lab assay quality control.</p>
+              </div>
+            </div>
+
+            <div className="mt-6 overflow-x-auto">
+              <p className="text-sm font-semibold text-foreground mb-2">Quick reference — match the spread to the centre</p>
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-muted/40">
+                    <th className="text-left p-2 font-semibold text-foreground border border-border">Data shape</th>
+                    <th className="text-left p-2 font-semibold text-foreground border border-border">Centre</th>
+                    <th className="text-left p-2 font-semibold text-foreground border border-border">Spread</th>
+                    <th className="text-left p-2 font-semibold text-foreground border border-border">Test family</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="p-2 border border-border">Symmetric / normal</td>
+                    <td className="p-2 border border-border">Mean</td>
+                    <td className="p-2 border border-border">SD (and 95% CI for the mean)</td>
+                    <td className="p-2 border border-border">Parametric (t-test, ANOVA)</td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 border border-border">Skewed / ordinal</td>
+                    <td className="p-2 border border-border">Median</td>
+                    <td className="p-2 border border-border">IQR (Q1–Q3); range</td>
+                    <td className="p-2 border border-border">Non-parametric (Mann–Whitney, Kruskal–Wallis)</td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 border border-border">Nominal / categorical</td>
+                    <td className="p-2 border border-border">Mode</td>
+                    <td className="p-2 border border-border">Frequency table, proportions</td>
+                    <td className="p-2 border border-border">χ², Fisher exact</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-6 p-4 rounded-lg border border-physics/30 bg-physics/5">
+              <p className="text-xs uppercase tracking-wide text-physics font-semibold mb-2">Key learning points</p>
+              <ul className="text-sm text-foreground space-y-1.5 list-disc list-inside marker:text-physics">
+                <li><strong>Range</strong> and <strong>IQR</strong> are <em>position-based</em> — calculated from ranked values; robust to skew.</li>
+                <li><strong>Variance</strong>, <strong>SD</strong>, <strong>SEM</strong> and <strong>CV</strong> are <em>moment-based</em> — calculated from deviations around the mean; assume meaningful arithmetic on the values.</li>
+                <li><strong>SD</strong> describes individuals; <strong>SEM</strong> describes the precision of the mean (SEM = SD/√n).</li>
+                <li>Always report a measure of spread alongside the centre — a mean or median in isolation hides clinically important variability.</li>
+              </ul>
+            </div>
+          </ExamSection>
+
           <ExamSection id="normal-distribution" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Normal Distribution & Confidence Intervals</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3 mb-4">
