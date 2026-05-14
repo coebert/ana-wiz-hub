@@ -151,7 +151,10 @@ const FlowMeasurementTopic = () => {
               effect</strong> exploits this — a jet of gas through a constriction entrains surrounding gas through side ports.
               Used in Venturi masks (fixed FiO₂), jet ventilation, and suction devices.
             </p>
-            <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+            <div className="mt-4">
+              <BernoulliVenturiDiagram />
+            </div>
+            <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
               <p className="text-sm font-medium text-foreground">Clinical Application</p>
               <p className="text-sm text-muted-foreground mt-1">
                 A 28% Venturi mask uses an entrainment ratio of ~10:1 (air:oxygen). The total flow (~40 L/min) exceeds peak
