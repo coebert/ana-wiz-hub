@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { DiagramSection } from "@/components/DiagramSection";
 import FinapresDiagram from "@/components/diagrams/FinapresDiagram";
 import NIBPOscillometricDiagram from "@/components/diagrams/NIBPOscillometricDiagram";
+import FrankStarlingDiagram from "@/components/diagrams/FrankStarlingDiagram";
 import ManometerDiagram from "@/components/diagrams/ManometerDiagram";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
