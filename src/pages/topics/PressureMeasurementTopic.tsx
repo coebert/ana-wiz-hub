@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { DiagramSection } from "@/components/DiagramSection";
 import FinapresDiagram from "@/components/diagrams/FinapresDiagram";
+import NIBPOscillometricDiagram from "@/components/diagrams/NIBPOscillometricDiagram";
 import ManometerDiagram from "@/components/diagrams/ManometerDiagram";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
