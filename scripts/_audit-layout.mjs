@@ -62,7 +62,7 @@ async function audit(page, route) {
     // Tiny SVGs (diagrams that are too small)
     const tinySvgs = [];
     document.querySelectorAll("svg[role='img']").forEach((svg) => {
-      const r = (svg as SVGElement).getBoundingClientRect();
+      const r = svg.getBoundingClientRect();
       if (r.width > 0 && r.width < 260) {
         tinySvgs.push({ aria: svg.getAttribute("aria-label"), w: Math.round(r.width), h: Math.round(r.height) });
       }
