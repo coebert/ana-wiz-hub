@@ -47,27 +47,32 @@ export const ANSDiagram = () => {
           </Button>
         </div>
   
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm border-collapse">
+        <div className="-mx-2 overflow-x-auto sm:mx-0">
+          <table className="w-full table-fixed text-xs sm:text-sm border-collapse min-w-[28rem]">
+            <colgroup>
+              <col className="w-[22%]" />
+              <col className="w-[39%]" />
+              <col className="w-[39%]" />
+            </colgroup>
             <thead>
               <tr>
-                <th className="text-left p-2 border-b border-border font-semibold text-foreground">Organ</th>
-                <th className={`text-left p-2 border-b border-border font-semibold transition-colors ${highlight === "sympathetic" ? "text-destructive" : "text-foreground"}`}>
+                <th className="text-left p-2 border-b border-border font-semibold text-foreground break-words">Organ</th>
+                <th className={`text-left p-2 border-b border-border font-semibold transition-colors break-words ${highlight === "sympathetic" ? "text-destructive" : "text-foreground"}`}>
                   Sympathetic
                 </th>
-                <th className={`text-left p-2 border-b border-border font-semibold transition-colors ${highlight === "parasympathetic" ? "text-primary" : "text-foreground"}`}>
+                <th className={`text-left p-2 border-b border-border font-semibold transition-colors break-words ${highlight === "parasympathetic" ? "text-primary" : "text-foreground"}`}>
                   Parasympathetic
                 </th>
               </tr>
             </thead>
             <tbody>
               {effects.map((e) => (
-                <tr key={e.organ} className="border-b border-border/50">
-                  <td className="p-2 font-medium text-foreground">{e.organ}</td>
-                  <td className={`p-2 transition-all ${highlight === "parasympathetic" ? "opacity-30" : "opacity-100"} ${highlight === "sympathetic" ? "text-destructive font-medium" : "text-muted-foreground"}`}>
+                <tr key={e.organ} className="border-b border-border/50 align-top">
+                  <td className="p-2 font-medium text-foreground break-words">{e.organ}</td>
+                  <td className={`p-2 transition-all break-words ${highlight === "parasympathetic" ? "opacity-30" : "opacity-100"} ${highlight === "sympathetic" ? "text-destructive font-medium" : "text-muted-foreground"}`}>
                     {e.sympathetic}
                   </td>
-                  <td className={`p-2 transition-all ${highlight === "sympathetic" ? "opacity-30" : "opacity-100"} ${highlight === "parasympathetic" ? "text-primary font-medium" : "text-muted-foreground"}`}>
+                  <td className={`p-2 transition-all break-words ${highlight === "sympathetic" ? "opacity-30" : "opacity-100"} ${highlight === "parasympathetic" ? "text-primary font-medium" : "text-muted-foreground"}`}>
                     {e.parasympathetic}
                   </td>
                 </tr>

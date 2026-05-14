@@ -142,6 +142,24 @@
   }
 }
 
+@layer base {
+  /* Diagram tables: ensure long content wraps and never forces page-level
+     horizontal scroll. Each diagram still wraps its <table> in an
+     overflow-x-auto container, so genuinely wide tables scroll INTERNALLY
+     while narrow ones reflow cleanly on mobile. */
+  figure[id] table,
+  [class*="diagram"] table {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+  figure[id] table th,
+  figure[id] table td,
+  [class*="diagram"] table th,
+  [class*="diagram"] table td {
+    min-width: 0;
+  }
+}
+
 @layer components {
   .section-card-physics {
     @apply border-l-4 transition-all duration-200;
