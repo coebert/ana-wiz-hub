@@ -186,6 +186,7 @@ const XRayRadiationSafetyTopic = () => {
               framework, dose limits, dosimetry). The principles transfer directly to occupational health risk-assessments and to
               consenting patients for repeat or high-dose examinations.
             </p>
+            <ElectromagneticSpectrumDiagram />
           </ExamSection>
 
           <ExamSection id="production" exams={[Exam.PRIMARY, Exam.FINAL]}>
