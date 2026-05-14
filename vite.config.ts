@@ -4,8 +4,19 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { VitePWA } from "vite-plugin-pwa";
 
+// Stable per-build identifier — embedded into index.html and into the JS
+// bundle so the running app can detect when the deployed HTML has moved on.
+const BUILD_ID =
+  process.env.VITE_BUILD_ID ||
+  process.env.VERCEL_GIT_COMMIT_SHA ||
+  process.env.GITHUB_SHA ||
+  String(Date.now());
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  define: {
+    __APP_VERSION__: JSON.stringify(BUILD_ID),
+  },
   server: {
     host: "::",
     port: 8080,
@@ -16,6 +27,15 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === "development" && componentTagger(),
+    {
+      name: "inject-app-version",
+      transformIndexHtml(html: string) {
+        return html.replace(
+          /<\/head>/i,
+          `    <meta name="app-version" content="${BUILD_ID}" />\n  </head>`,
+        );
+      },
+    },
     VitePWA({
       registerType: "autoUpdate",
       devOptions: {
