@@ -129,6 +129,21 @@ const StatisticsEBMTopic = () => {
             <NormalDistributionDiagram />
           </ExamSection>
 
+          <ExamSection id="skew" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Skewed Distributions</h2>
+            <div className="text-muted-foreground leading-relaxed space-y-3 mb-4">
+              <p>
+                Real biological data are often <strong>skewed</strong> rather than perfectly Gaussian. Skew is named for the direction of the long tail:
+                <strong> positive (right) skew</strong> has a tail extending toward high values (mean &gt; median &gt; mode), while <strong>negative (left) skew</strong> has a tail toward low values (mean &lt; median &lt; mode).
+              </p>
+              <p>
+                When a distribution is skewed, the mean is dragged toward the tail and becomes a poor measure of central tendency. Report the <strong>median and IQR</strong>, choose <strong>non-parametric tests</strong>,
+                or apply a transformation (commonly a log-transform for positively skewed variables) before running parametric analyses.
+              </p>
+            </div>
+            <SkewDistributionDiagram />
+          </ExamSection>
+
           <ExamSection id="measures-effect" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Measures of Effect</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
