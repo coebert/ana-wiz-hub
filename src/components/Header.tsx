@@ -82,26 +82,29 @@ export const Header = () => {
             );
           })()}
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-0.5">
+          {/* Desktop nav — icons only md..lg, full labels at xl+ to prevent overflow on 1366 laptops */}
+          <nav className="hidden md:flex items-center gap-0.5 min-w-0">
             {navItems.map((item) => {
               const isActive = location.pathname.startsWith(item.path);
               return (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                  title={item.label}
+                  aria-label={item.label}
+                  className={`flex items-center gap-1.5 px-2 xl:px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                     isActive
                       ? "bg-secondary text-foreground"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   }`}
                 >
                   <item.icon className={`h-3.5 w-3.5 ${isActive ? item.color : ""}`} />
-                  {item.label}
+                  <span className="hidden xl:inline">{item.label}</span>
                 </Link>
               );
             })}
           </nav>
+
 
           <div className="flex items-center gap-2">
             {/* Exam filter chips */}
