@@ -66,7 +66,7 @@ export const Header = () => {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-sm">
-        <div className="container mx-auto flex h-14 items-center justify-between px-4">
+        <div className="container mx-auto flex h-14 items-center justify-between gap-2 px-3 sm:px-4">
           {(() => {
             // From inside the app (any route other than the marketing landing
             // page) the logo should return users to the core disciplines hub
@@ -75,15 +75,16 @@ export const Header = () => {
             return (
               <Link to={homeTarget} className="flex items-center gap-2 shrink-0">
                 <img src={brainLogo} alt="AnaesthesiaCore" width={24} height={24} decoding="async" className="h-6 w-6" />
-                <span className="text-base font-semibold text-foreground hidden lg:inline">
+                <span className="text-base font-semibold text-foreground hidden lg:inline whitespace-nowrap">
                   AnaesthesiaCore
                 </span>
               </Link>
             );
           })()}
 
-          {/* Desktop nav — icons only md..lg, full labels at xl+ to prevent overflow on 1366 laptops */}
-          <nav className="hidden md:flex items-center gap-0.5 min-w-0">
+          {/* Desktop nav — icons only md..xl, full labels at 2xl+ to prevent overflow on 1366 laptops.
+              Labels use whitespace-nowrap so long titles like "Pharmacology" / "Perioperative" never wrap or clip. */}
+          <nav className="hidden md:flex items-center gap-0.5 min-w-0 flex-1 justify-center 2xl:justify-start">
             {navItems.map((item) => {
               const isActive = location.pathname.startsWith(item.path);
               return (
@@ -92,13 +93,13 @@ export const Header = () => {
                   to={item.path}
                   title={item.label}
                   aria-label={item.label}
-                  className={`flex items-center gap-1.5 px-2 2xl:px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                  className={`flex items-center gap-1.5 px-2 2xl:px-2.5 py-1.5 rounded-lg text-[13px] font-medium transition-colors shrink-0 whitespace-nowrap ${
                     isActive
                       ? "bg-secondary text-foreground"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   }`}
                 >
-                  <item.icon className={`h-3.5 w-3.5 ${isActive ? item.color : ""}`} />
+                  <item.icon className={`h-4 w-4 ${isActive ? item.color : ""}`} />
                   <span className="hidden 2xl:inline">{item.label}</span>
                 </Link>
               );
@@ -106,14 +107,14 @@ export const Header = () => {
           </nav>
 
 
-          <div className="flex items-center gap-2">
-            {/* Exam filter chips */}
-            <div className="hidden sm:flex items-center gap-0.5 mr-1">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            {/* Exam filter chips — slightly larger type and consistent spacing so chips never clip on laptop */}
+            <div className="hidden sm:flex items-center gap-0.5 mr-1 shrink-0">
               {examFilters.map((f) => (
                 <button
                   key={f.label}
                   onClick={() => setActiveExam(f.value)}
-                  className={`px-2 py-1 rounded text-[10px] font-medium transition-colors ${
+                  className={`px-2 py-1 rounded text-[11px] font-medium leading-none whitespace-nowrap transition-colors ${
                     activeExam === f.value
                       ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:bg-muted"
@@ -127,31 +128,33 @@ export const Header = () => {
             <a
               href="/#support"
               onClick={goToSupport}
-              className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors shrink-0 whitespace-nowrap"
               title="Support this app"
             >
               <HandHeart className="h-3.5 w-3.5" />
-              <span className="hidden md:inline">Support</span>
+              <span className="hidden xl:inline">Support</span>
             </a>
 
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-border text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-border text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors shrink-0"
+              aria-label="Search"
             >
               <Search className="h-3.5 w-3.5" />
-              <kbd className="hidden md:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-muted text-muted-foreground font-mono text-[10px]">
+              <kbd className="hidden xl:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-muted text-muted-foreground font-mono text-[10px] whitespace-nowrap">
                 ⌘K
               </kbd>
             </button>
 
-            {/* Mobile nav */}
-            <nav className="flex md:hidden items-center gap-0.5 overflow-x-auto">
+            {/* Mobile nav — horizontally scrollable so icons never clip on narrow phones */}
+            <nav className="flex md:hidden items-center gap-0.5 overflow-x-auto max-w-[55vw] -mr-1">
               {navItems.map((item) => {
                 const isActive = location.pathname.startsWith(item.path);
                 return (
                   <Link
                     key={item.path}
                     to={item.path}
+                    aria-label={item.label}
                     className={`p-1.5 rounded-lg transition-colors shrink-0 ${
                       isActive ? "bg-secondary" : "hover:bg-muted"
                     }`}
@@ -164,13 +167,13 @@ export const Header = () => {
           </div>
         </div>
 
-        {/* Mobile exam filter */}
-        <div className="flex sm:hidden items-center gap-1 px-4 pb-2 overflow-x-auto">
+        {/* Mobile exam filter — pill chips with consistent padding & whitespace-nowrap so labels never clip */}
+        <div className="flex sm:hidden items-center gap-1 px-3 pb-2 overflow-x-auto">
           {examFilters.map((f) => (
             <button
               key={f.label}
               onClick={() => setActiveExam(f.value)}
-              className={`px-2.5 py-1 rounded-full text-[10px] font-medium transition-colors whitespace-nowrap ${
+              className={`px-3 py-1 rounded-full text-[11px] font-medium leading-none transition-colors whitespace-nowrap shrink-0 ${
                 activeExam === f.value
                   ? "bg-primary text-primary-foreground"
                   : "bg-muted text-muted-foreground"
