@@ -58,8 +58,8 @@ interface RequestBody {
 
 // Shared secret that authorises bypassing the cached podcast and regenerating
 // from scratch. Owner-only — surfaced via a hidden UI control.
-// Stored in edge-function secrets as PODCAST_REGEN_SECRET.
-const REGENERATE_PASSWORD = Deno.env.get("PODCAST_REGEN_SECRET") ?? "";
+// Stored in edge-function secrets as REGENERATE_PASSWORD.
+const REGENERATE_PASSWORD = Deno.env.get("REGENERATE_PASSWORD") ?? "";
 
 // Hard cap on incoming content length to bound AI/TTS cost per request.
 const MAX_CONTENT_CHARS = 50_000;
