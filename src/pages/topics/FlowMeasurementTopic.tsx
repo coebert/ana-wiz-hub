@@ -259,6 +259,16 @@ const FlowMeasurementTopic = () => {
                 and surface-dependent.
               </p>
             </div>
+
+            <CrossReferenceCallout
+              variant="panel"
+              reason="Explore the continuity equation, pressure–velocity relationships, and entrainment in more depth."
+              links={[
+                { topicId: "pressure-measurement", label: "Pressure Measurement" },
+                { topicId: "equipment-monitoring", label: "Equipment & Monitoring" },
+                { topicId: "clinical-measurement", label: "Clinical Measurement" },
+              ]}
+            />
           </ExamSection>
 
           <ExamSection id="coanda-vignettes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
