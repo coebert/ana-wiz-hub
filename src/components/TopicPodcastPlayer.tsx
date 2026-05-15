@@ -264,9 +264,27 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       <div className="flex items-center gap-3">
         <Headphones className="h-5 w-5 text-primary shrink-0" />
         <div className="flex-1 min-w-0">
-          <h3 className="font-serif text-sm font-semibold text-foreground truncate">
-            Topic podcast
-          </h3>
+          <div className="flex items-center gap-2">
+            <h3 className="font-serif text-sm font-semibold text-foreground truncate">
+              Topic podcast
+            </h3>
+            {source === "cache" && (
+              <span
+                className="inline-flex items-center gap-1 rounded-full border border-border bg-muted/60 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground"
+                title="Playing previously generated audio from cache"
+              >
+                <Database className="h-2.5 w-2.5" /> Cached
+              </span>
+            )}
+            {source === "fresh" && (
+              <span
+                className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-1.5 py-0.5 text-[10px] font-medium text-primary"
+                title="Freshly generated this session"
+              >
+                <Sparkles className="h-2.5 w-2.5" /> Freshly generated
+              </span>
+            )}
+          </div>
           <p className="text-xs text-muted-foreground">
             Exam-focused tutorial · ~{Math.round(totalDuration / 60)} min
             {scriptWords > 0 && <> · {scriptWords.toLocaleString()} words</>}
