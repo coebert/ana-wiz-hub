@@ -201,7 +201,12 @@ const InfectiousDiseaseIcuTopic = () => {
 
           <ExamSection id="cns" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">CNS Infections</h2>
-            <div className="overflow-x-auto">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              CNS infection is a time-critical emergency: every hour of antibiotic delay in pneumococcal meningitis increases mortality. Anaesthetists and intensivists are involved early for airway, seizure control, raised ICP management and source control around lumbar puncture, neurosurgery and post-operative care.
+            </p>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Overview by syndrome</h3>
+            <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
                 <thead>
                   <tr className="border-b border-border">
@@ -211,12 +216,119 @@ const InfectiousDiseaseIcuTopic = () => {
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Bacterial meningitis</td><td><em>N. meningitidis</em>, <em>S. pneumoniae</em>, <em>Listeria</em></td><td>Ceftriaxone 2 g BD + dexamethasone 10 mg QDS. Add amoxicillin if Listeria risk.</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Viral encephalitis</td><td>HSV-1, VZV, enterovirus</td><td>IV aciclovir 10 mg/kg TDS. MRI: temporal lobe in HSV. CSF PCR.</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Brain abscess</td><td>Mixed anaerobes, Streptococci, S. aureus</td><td>Ceftriaxone + metronidazole. Aspirate if &gt;2.5 cm.</td></tr>
-                  <tr><td className="py-2 font-medium text-foreground">Fungal meningitis</td><td><em>Cryptococcus neoformans</em></td><td>Amphotericin B + flucytosine then fluconazole. ICP control.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Bacterial meningitis</td><td><em>N. meningitidis</em>, <em>S. pneumoniae</em>, <em>Listeria</em>, <em>H. influenzae</em>, GBS (neonates)</td><td>Ceftriaxone 2 g BD + dexamethasone 10 mg QDS. Add amoxicillin 2 g 4-hrly if &gt;50 y or immunocompromised (Listeria). Vancomycin if pneumococcal resistance suspected.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Viral encephalitis</td><td>HSV-1, VZV, enterovirus, arboviruses, JCV (PML)</td><td>IV aciclovir 10 mg/kg TDS empirically until HSV PCR negative. MRI: medial temporal/limbic in HSV. CSF PCR.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Brain abscess</td><td>Mixed anaerobes, viridans Streptococci, <em>S. aureus</em>, Gram-negatives (post-op/trauma)</td><td>Ceftriaxone + metronidazole (add vancomycin if MRSA/post-op). Stereotactic aspiration if &gt;2.5 cm or diagnostic uncertainty. 6–8 wk IV.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Subdural empyema / epidural abscess</td><td>Streptococci, anaerobes, <em>S. aureus</em></td><td>Surgical drainage is definitive — neurosurgical emergency. Same antibiotics as brain abscess. Watch for cord compression in spinal epidural abscess.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Fungal meningitis</td><td><em>Cryptococcus neoformans</em>, <em>Candida</em>, <em>Aspergillus</em></td><td>Liposomal amphotericin B + flucytosine ×2 wk → fluconazole. Serial LPs / EVD for ↑ICP. Treat HIV.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">TB meningitis</td><td><em>M. tuberculosis</em></td><td>RIPE × 2 mo → RI × 10 mo. Adjuvant dexamethasone (Thwaites regimen) reduces mortality. Hydrocephalus common — EVD.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Healthcare-associated (post-neurosurgical, EVD, shunt)</td><td>Coag-neg staph, <em>S. aureus</em>, Gram-negatives, <em>Cutibacterium acnes</em></td><td>Vancomycin + meropenem or ceftazidime. Remove/exchange device. Intraventricular vancomycin/gentamicin for resistant cases.</td></tr>
                 </tbody>
               </table>
+            </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Presentation</h3>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Meningitis</p>
+                <p className="text-xs text-muted-foreground mt-1">Classic triad (fever, neck stiffness, altered mental state) present in only ~45%; ≥2 of triad + headache in &gt;95%. Photophobia, Kernig/Brudzinski signs. Non-blanching petechial rash → meningococcaemia. Septic shock and DIC may dominate. In elderly/immunocompromised: confusion or fever alone.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Encephalitis</p>
+                <p className="text-xs text-muted-foreground mt-1">Altered consciousness &gt;24 h, personality/behavioural change, focal neurology, seizures (often temporal lobe in HSV), fever. Meningoencephalitis if both meningism and parenchymal signs.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Brain abscess / empyema</p>
+                <p className="text-xs text-muted-foreground mt-1">Subacute headache, focal deficit, seizures; fever in only ~50%. Source: contiguous (sinus, ear, dental), haematogenous (endocarditis, lung), or post-traumatic/operative.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Raised ICP features</p>
+                <p className="text-xs text-muted-foreground mt-1">Reducing GCS, pupillary asymmetry, Cushing reflex (hypertension + bradycardia + irregular respiration), papilloedema, posturing. Demands urgent imaging and ICP-directed care.</p>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Indications for critical care admission</h3>
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-4">
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li>GCS ≤ 12, rapidly falling GCS, or inability to protect the airway</li>
+                <li>Status epilepticus or recurrent seizures</li>
+                <li>Septic shock / haemodynamic instability requiring vasopressors</li>
+                <li>Respiratory failure (aspiration, ARDS, neuromuscular weakness)</li>
+                <li>Clinical or radiological raised ICP / impending herniation requiring osmotherapy, EVD or decompression</li>
+                <li>Need for invasive monitoring (ICP, EEG, intra-arterial BP) or neurosurgical intervention</li>
+                <li>DIC, purpura fulminans, multi-organ failure (often meningococcal)</li>
+                <li>Post-neurosurgical / shunt infection requiring device removal</li>
+              </ul>
+            </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Work-up</h3>
+            <div className="space-y-2 mb-4">
+              {[
+                { step: "Immediate (do not delay antibiotics)", detail: "Blood cultures ×2, FBC, U&E, LFT, CRP, coagulation, lactate, glucose (paired with CSF), meningococcal/pneumococcal PCR (whole blood), HIV test. Give empiric antibiotics within 1 h of suspicion — ideally after blood cultures but before LP if LP delayed." },
+                { step: "Empiric antimicrobials", detail: "Community: ceftriaxone 2 g IV BD + dexamethasone 10 mg IV QDS (start with or before first antibiotic dose — improves outcome in pneumococcal disease, GRADE 1A). Add amoxicillin 2 g 4-hrly if >50 y, pregnant, alcohol, immunocompromised (Listeria). Add aciclovir 10 mg/kg TDS if encephalitis features. Add vancomycin if recent travel/PRSP risk." },
+                { step: "Imaging before LP", detail: "CT head before LP if: GCS <13, focal neurology, new seizure, immunocompromised, papilloedema, age >60. CT does NOT exclude raised ICP — clinical judgement remains. MRI superior for HSV (medial temporal), abscess (DWI restriction with ring enhancement), TB (basal meningitis, tuberculomas)." },
+                { step: "Lumbar puncture", detail: "Opening pressure (raised >25 cmH₂O in bacterial/cryptococcal). Send: cell count + differential, protein, glucose (with paired serum), Gram stain, culture, viral PCR (HSV, VZV, enterovirus), meningococcal/pneumococcal PCR, lactate. Add cryptococcal antigen, AFB/TB PCR, India ink, cytology if relevant." },
+                { step: "CSF interpretation", detail: "Bacterial: neutrophils ↑↑ (>1000), protein ↑↑ (>1 g/L), glucose ↓↓ (<40% serum), lactate >3.5 mmol/L. Viral: lymphocytes, protein ↑, glucose normal. TB/fungal: lymphocytes, protein ↑↑, glucose ↓, opening pressure ↑↑. Traumatic tap: correct WCC by 1 per 700 RBC." },
+                { step: "Specialist tests", detail: "EEG (HSV: temporal lobe periodic discharges; non-convulsive status). Autoimmune panel (NMDAR, LGI1, GABA-B) if immunotherapy considered. HIV, syphilis serology. Echocardiogram if abscess/embolic phenomena (endocarditis source)." },
+              ].map((s) => (
+                <div key={s.step} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{s.step}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{s.detail}</p>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mb-2">ICU management bundles</h3>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Airway & ventilation</p>
+                <p className="text-xs text-muted-foreground mt-1">Intubate for GCS ≤8, status epilepticus, refractory shock or airway soiling. Neuro-protective induction: optimise haemodynamics, blunt laryngoscopy response. Avoid hypercapnia (worsens ICP); target PaCO₂ 4.5–5.0 kPa, PaO₂ &gt;13 kPa. Head-up 30°.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Haemodynamics</p>
+                <p className="text-xs text-muted-foreground mt-1">Balanced crystalloid + early noradrenaline to MAP target preserving CPP &gt;60 mmHg. Avoid hypotension absolutely. Steroids do NOT preclude vasopressor use. Treat DIC with platelets/FFP/cryoprecipitate as needed.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Raised ICP / seizures</p>
+                <p className="text-xs text-muted-foreground mt-1">Sedation, analgesia, normocapnia, normothermia, normonatraemia (avoid hyponatraemia — Na⁺ 140–145). Osmotherapy: mannitol 0.5–1 g/kg or hypertonic saline 2.7–3% bolus. EVD for hydrocephalus. Levetiracetam first-line for seizures; cEEG if persistent altered consciousness.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Source control & adjuncts</p>
+                <p className="text-xs text-muted-foreground mt-1">Neurosurgery for abscess &gt;2.5 cm, empyema, infected shunt/EVD removal. Dexamethasone for first 4 days in suspected pneumococcal meningitis (stop if not pneumococcal). Public health notification + chemoprophylaxis (ciprofloxacin/rifampicin) for meningococcal contacts. VTE prophylaxis after 24 h if no haemorrhage.</p>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Complications</h3>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">System</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Complication</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Neurological</td><td>Cerebral oedema, herniation, hydrocephalus, infarction (vasculitis), venous sinus thrombosis, seizures/status, sensorineural deafness (esp. pneumococcal — early audiology), cranial nerve palsies, cognitive impairment, abscess formation.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cardiovascular</td><td>Septic shock, myocardial dysfunction, DIC, purpura fulminans / limb ischaemia (meningococcal), Waterhouse–Friderichsen syndrome (adrenal haemorrhage).</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Respiratory</td><td>Aspiration pneumonia, ARDS, neurogenic pulmonary oedema.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Endocrine / metabolic</td><td>SIADH, cerebral salt wasting, diabetes insipidus, hyperglycaemia (steroids).</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Long-term</td><td>Epilepsy, focal deficits, cognitive/behavioural sequelae, deafness, hydrocephalus requiring shunt; psychiatric morbidity in survivors and families.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Prognosis</h3>
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-4">
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li><strong>Pneumococcal meningitis:</strong> mortality 20–30% (up to 50% with septic shock); ~30% of survivors have neurological sequelae (deafness, cognitive deficit).</li>
+                <li><strong>Meningococcal disease:</strong> overall mortality 5–10%; up to 40% with fulminant septicaemia / purpura fulminans. Survivors may have limb loss, scarring, hearing loss.</li>
+                <li><strong>Listeria meningoencephalitis:</strong> mortality 20–30%, higher in elderly/immunocompromised.</li>
+                <li><strong>HSV encephalitis:</strong> untreated mortality &gt;70%; with timely aciclovir mortality ~20%, but ~50% of survivors have long-term cognitive/behavioural sequelae.</li>
+                <li><strong>TB meningitis:</strong> mortality 20–50%; worse with HIV co-infection or stage III disease (coma, focal deficit).</li>
+                <li><strong>Brain abscess:</strong> mortality now &lt;15% with imaging + neurosurgery; epilepsy in ~30% of survivors.</li>
+                <li><strong>Cryptococcal meningitis (HIV):</strong> 10-week mortality 20–40% even with optimal therapy; raised ICP is the strongest modifiable predictor.</li>
+                <li>Key prognostic factors: time to first antibiotic dose, GCS at presentation, age, septic shock, seizures, CSF lactate, and need for mechanical ventilation.</li>
+              </ul>
             </div>
           </ExamSection>
 
