@@ -1028,6 +1028,102 @@ const NeurointensiveCareTopic = () => {
             </p>
           </div>
 
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2 mt-4">72-hour DBI pathway timeline</h3>
+          <figure className="mb-5">
+            <figcaption className="sr-only">
+              Visual timeline of the first 72 hours of devastating brain injury management,
+              highlighting when to exclude confounders and when to involve the specialist nurse
+              for organ donation (SN-OD).
+            </figcaption>
+            <div
+              className="relative rounded-lg border border-border bg-card p-4 sm:p-5"
+              role="group"
+              aria-label="DBI 72-hour management timeline"
+            >
+              {/* Track */}
+              <div className="relative">
+                <div
+                  className="absolute left-0 right-0 top-3 h-1 rounded-full bg-gradient-to-r from-icu/30 via-icu/60 to-icu"
+                  aria-hidden="true"
+                />
+                <ol className="relative grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {[
+                    {
+                      time: "0–6 h",
+                      title: "Resuscitate & image",
+                      detail: "A–E, intubate, lung-protective ventilation, empirical ICP control, urgent CT ± angio, neurosurgical referral for any reversible lesion.",
+                      flag: null as string | null,
+                    },
+                    {
+                      time: "6–24 h",
+                      title: "Stabilise & protect",
+                      detail: "TTM 36–37 °C, CPP 60–70, ICP <22, glucose 6–10, Na 140–150, correct coagulopathy. Begin documenting baseline neurology.",
+                      flag: "Start excluding confounders",
+                    },
+                    {
+                      time: "24–72 h",
+                      title: "Observe & involve",
+                      detail: "Daily MDT review, full supportive care, family discussions about uncertainty and ceilings of care. No formal prognostication yet.",
+                      flag: "Refer to SN-OD when DBI suspected",
+                    },
+                    {
+                      time: "≥72 h",
+                      title: "Prognosticate & decide",
+                      detail: "Senior, multimodal assessment off sedation. ≥2 senior clinicians decide WLST or transition to brainstem death testing / DCD pathway.",
+                      flag: "Confounders must be excluded",
+                    },
+                  ].map((step, idx) => (
+                    <li key={step.time} className="relative pt-8">
+                      <span
+                        className="absolute left-1/2 top-1 -translate-x-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-icu text-[11px] font-semibold text-primary-foreground ring-4 ring-card"
+                        aria-hidden="true"
+                      >
+                        {idx + 1}
+                      </span>
+                      <div className="text-center">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-icu">
+                          {step.time}
+                        </p>
+                        <p className="text-sm font-semibold text-foreground mt-0.5">
+                          {step.title}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                          {step.detail}
+                        </p>
+                        {step.flag && (
+                          <span className="mt-2 inline-block rounded-full border border-icu/40 bg-icu/10 px-2 py-0.5 text-[10px] font-medium text-icu">
+                            {step.flag}
+                          </span>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              {/* Key milestones */}
+              <div className="mt-5 grid sm:grid-cols-2 gap-3 text-xs">
+                <div className="rounded-md border border-border bg-secondary/40 p-3">
+                  <p className="font-semibold text-foreground mb-1">Confounder exclusion checkpoint</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Before any prognostic decision: residual sedation/NMB, temperature ≥36 °C,
+                    Na/glucose/urea normal, no hypoxia or hypotension, no NCSE, no intoxication,
+                    no severe metabolic/hepatic/renal derangement.
+                  </p>
+                </div>
+                <div className="rounded-md border border-border bg-secondary/40 p-3">
+                  <p className="font-semibold text-foreground mb-1">When to refer to SN-OD</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    As soon as a clinical trigger is met — catastrophic brain injury with planned
+                    brainstem death testing, or anticipated WLST. Refer <strong>early</strong> (within
+                    the 24–72 h window), before the family conversation about WLST. Referral does
+                    not commit to donation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </figure>
+
           <h3 className="text-lg font-serif font-bold text-foreground mb-2 mt-4">Management framework (first 72h)</h3>
           <div className="space-y-3 mb-4">
             {[
