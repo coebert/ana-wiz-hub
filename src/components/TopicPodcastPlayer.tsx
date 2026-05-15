@@ -88,6 +88,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           const polled = await fetchPodcast(topicId);
           if (polled && polled.status !== "generating") {
             setPodcast(polled);
+            if (polled.status === "ready") setSource("fresh");
             return;
           }
         }
@@ -99,6 +100,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       }
 
       setPodcast(result);
+      if (result.status === "ready") setSource("fresh");
     } catch (err) {
       setPodcast({
         status: "failed",
