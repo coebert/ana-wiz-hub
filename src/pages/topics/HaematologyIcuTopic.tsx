@@ -300,10 +300,7 @@ const HaematologyIcuTopic = () => {
               Type II HIT is a paradoxical <strong>prothrombotic</strong> immune-mediated reaction: IgG vs PF4–heparin → Fc receptor platelet activation → thrombin generation. Onset day 5–10 (or ≤1 day if heparin in last 100 days). Risk: UFH (1–5%) &gt; LMWH (~0.1%).
             </p>
             <HITPathophysiologyDiagram />
-            <div className="rounded-xl border border-border bg-card p-5 mb-4">
-              <h3 className="font-semibold text-foreground mb-2">4Ts Score</h3>
-              <p className="text-sm text-muted-foreground">Thrombocytopenia, Timing, Thrombosis/sequelae, oTher cause. Each scored 0/1/2 (max 8). 0–3 low (&lt;5%), 4–5 intermediate (~14%), 6–8 high (~64%). ≥4 → stop heparin and send PF4 ELISA. Functional assay (SRA/HIPA) confirms.</p>
-            </div>
+            <FourTsScorePanel />
             <div className="rounded-xl border border-border bg-card p-5 mb-4">
               <h3 className="font-semibold text-foreground mb-2">Management</h3>
               <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
