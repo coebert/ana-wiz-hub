@@ -57,6 +57,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       const existing = await fetchPodcast(topicId);
       if (!cancelled) {
         setPodcast(existing);
+        if (existing && existing.status === "ready") setSource("cache");
         setLoading(false);
       }
     })();
