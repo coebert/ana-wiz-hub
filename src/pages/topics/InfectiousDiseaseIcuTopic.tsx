@@ -626,6 +626,85 @@ const InfectiousDiseaseIcuTopic = () => {
               <strong>Pearl:</strong> in an immunosuppressed patient with disproportionate hypoxia, dry cough, raised LDH and β-D-glucan, and bilateral perihilar GGO on HRCT, treat empirically for PCP while awaiting BAL — do not wait for confirmation. Co-infection (CMV, bacterial, Aspergillus) is common and worsens prognosis, so screen for it in parallel.
             </p>
 
+            <h4 className="text-base font-serif font-semibold text-foreground mt-4 mb-2">Co-infection screening checklist</h4>
+            <p className="text-xs text-muted-foreground mb-2">
+              Up to 30–40% of severe PCP cases harbour a co-pathogen, and co-infection independently worsens mortality. Screen all ICU patients with confirmed/suspected PCP at presentation and again if not improving by day 5–7.
+            </p>
+            <div className="overflow-x-auto mb-3">
+              <table className="w-full text-xs border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Pathogen</th>
+                    <th className="text-left py-2 text-foreground font-semibold">When to suspect</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Tests</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Treatment trigger</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">CMV</td>
+                    <td>HSCT/SOT, advanced HIV (CD4 &lt;50), prolonged steroids/biologics, deterioration despite co-trimoxazole, atypical features (hepatitis, cytopenias, retinitis)</td>
+                    <td>Blood <strong>CMV PCR</strong> (quantitative viral load), <strong>BAL CMV PCR + cytology</strong> (owl-eye inclusions), CMV IgG/IgM if status unknown, fundoscopy</td>
+                    <td>End-organ disease (BAL PCR + compatible CT/clinical) or rising blood viral load &gt;1000 IU/mL with deterioration → <strong>IV ganciclovir 5 mg/kg BD</strong> (induction 14–21 d) or oral valganciclovir; foscarnet if myelosuppression/resistance</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Bacterial superinfection</td>
+                    <td>Fever spike after initial improvement, new consolidation, purulent secretions, ↑PCT/CRP/WCC, septic shock</td>
+                    <td>Blood &amp; sputum/<strong>BAL cultures with quantitative counts</strong>, <strong>procalcitonin</strong>, urinary pneumococcal &amp; <em>Legionella</em> antigen, MRSA screen, respiratory viral PCR, repeat CXR/CT</td>
+                    <td>PCT &gt;0.5 µg/L, &gt;10⁵ CFU/mL on BAL, or strong clinical signs → empirical cover (e.g. piperacillin-tazobactam ± vancomycin/linezolid for MRSA, atypical cover for HAP); de-escalate at 48–72 h on cultures (SSC bundle)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground"><em>Aspergillus</em> (invasive pulmonary aspergillosis)</td>
+                    <td>Haematological malignancy, neutropenia, prolonged steroids, structural lung disease, COVID/influenza co-infection (CAPA/IAPA), nodular/halo/air-crescent lesions</td>
+                    <td>Serum &amp; <strong>BAL galactomannan</strong> (BAL OD ≥1.0 positive), <strong>BAL Aspergillus PCR</strong>, β-D-glucan, sputum/BAL culture &amp; microscopy, HRCT (halo, reverse halo, cavitation)</td>
+                    <td>Probable/proven IPA (EORTC/MSGERC criteria) → <strong>voriconazole load 6 mg/kg BD ×2 then 4 mg/kg BD with TDM (1–5.5 mg/L)</strong>; isavuconazole or liposomal amphotericin B if azole resistance/intolerance</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Mycobacterium tuberculosis</td>
+                    <td>HIV (any CD4), endemic exposure, prolonged cough &amp; weight loss, upper-lobe / cavitary disease, miliary pattern, lymphadenopathy</td>
+                    <td>Sputum/BAL <strong>AFB smear, mycobacterial culture, GeneXpert MTB/RIF</strong>, IGRA (limited use in acute), HIV test, urine LAM (advanced HIV)</td>
+                    <td>Positive smear/PCR or strong clinical/radiological suspicion in immunosuppressed → start <strong>RIPE</strong> with infection control isolation; involve TB service; watch for IRIS on starting ART</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Other respiratory viruses (influenza, RSV, SARS-CoV-2, parainfluenza)</td>
+                    <td>Outbreak/seasonal exposure, coryzal prodrome, lymphopenia, multifocal GGO without cysts</td>
+                    <td><strong>Respiratory virus multiplex PCR</strong> on NPA/BAL, SARS-CoV-2 PCR, influenza PCR</td>
+                    <td>Influenza positive → <strong>oseltamivir 75 mg BD ×5 d</strong> (extend in critical illness); SARS-CoV-2 + hypoxia → dexamethasone 6 mg + remdesivir ± tocilizumab/baricitinib per local protocol</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">HSV / VZV pneumonitis</td>
+                    <td>Severe immunosuppression, mucocutaneous lesions, BAL with viral cytopathic changes</td>
+                    <td>BAL <strong>HSV/VZV PCR</strong>, surface swab PCR, skin examination</td>
+                    <td>BAL PCR positive with compatible imaging → <strong>IV aciclovir 10 mg/kg TDS</strong>; renal-adjusted, ensure hydration</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground"><em>Toxoplasma gondii</em> (CNS &gt; pulmonary)</td>
+                    <td>Advanced HIV (CD4 &lt;100), focal neurology, ring-enhancing lesions on MRI, occasional pneumonitis</td>
+                    <td><em>Toxoplasma</em> serology (IgG), CSF/BAL <strong>toxoplasma PCR</strong>, MRI brain</td>
+                    <td>Positive PCR or compatible imaging in seropositive host → <strong>sulfadiazine + pyrimethamine + folinic acid</strong> (or co-trimoxazole high dose if sulfadiazine unavailable)</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 font-medium text-foreground">Cryptococcosis / endemic mycoses (histoplasma, coccidioides)</td>
+                    <td>Advanced HIV, travel/exposure history, meningism, skin lesions, mediastinal lymphadenopathy</td>
+                    <td>Serum &amp; CSF <strong>cryptococcal antigen (CrAg)</strong>, blood cultures (fungal bottles), urinary <em>Histoplasma</em> antigen, BAL stain/culture</td>
+                    <td>CrAg positive or compatible features → <strong>liposomal amphotericin B + flucytosine</strong> induction → fluconazole; manage raised ICP with serial LP/EVD</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border text-xs text-muted-foreground mb-3">
+              <p className="font-semibold text-foreground mb-1">Triggers to escalate the screen / add adjunctive therapy</p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>No improvement (or deterioration) by <strong>day 5–7</strong> of co-trimoxazole at the correct dose.</li>
+                <li>New fever, rising inflammatory markers, or new radiological lesion (consolidation, nodule, cavity) on a treated patient.</li>
+                <li>Discordant biomarkers — e.g. rising β-D-glucan with falling LDH (think IPA), rising PCT (bacterial), rising CMV viral load (CMV pneumonitis).</li>
+                <li>Profound or worsening lymphopenia, neutropenia, or new cytopenias.</li>
+                <li>Persistent or recurrent pneumothorax / air leak — exclude TB and atypical mycobacteria as well as PCP.</li>
+                <li>Before starting / restarting biologics or stepping up steroids — repeat CMV PCR, HBV/HCV/HIV, latent TB screen.</li>
+              </ul>
+            </div>
+
             <h4 className="text-base font-serif font-semibold text-foreground mt-4 mb-2">Sources &amp; further reading</h4>
             <div className="p-3 rounded-lg bg-muted/40 border border-border text-xs text-muted-foreground space-y-3">
               <div>
