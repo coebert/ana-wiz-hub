@@ -116,6 +116,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     if (!pw) return;
     // Reset player state so the user sees the generation UI immediately.
     setPodcast(null);
+    setSource(null);
     setIsPlaying(false);
     setCurrentTime(0);
     setDuration(0);
