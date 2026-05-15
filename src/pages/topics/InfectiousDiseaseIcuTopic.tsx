@@ -738,7 +738,19 @@ const InfectiousDiseaseIcuTopic = () => {
                   <li>NICE NG139 (2019, updated 2023). <em>Pneumonia (community-acquired): antimicrobial prescribing</em> — empirical-antibiotic comparator pathways.</li>
                 </ul>
               </div>
-              <p className="italic">All citations corroborate the diagnostic cut-offs (PaO₂ &lt;8 kPa, A–a &gt;4.7 kPa), the 21-day co-trimoxazole course, the 40 mg BD → 40 mg OD → 20 mg OD prednisolone taper, and the EOLIA-derived ECMO criteria used in the flowchart above.</p>
+              <div>
+                <p className="font-semibold text-foreground mb-1">Adjuvant corticosteroids — dose regimen &amp; PaO₂ / A–a severity cut-offs</p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>The National Institutes of Health–University of California Expert Panel for Corticosteroids as Adjunctive Therapy for Pneumocystis Pneumonia.</strong> <em>Consensus statement on the use of corticosteroids as adjunctive therapy for pneumocystis pneumonia in the acquired immunodeficiency syndrome.</em> N Engl J Med 1990;323:1500–4. — <strong>defines the steroid threshold (PaO₂ &lt;70 mmHg / 9.3 kPa or A–a &gt;35 mmHg / 4.7 kPa on room air) and the prednisone taper 40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d</strong>; start with or before first dose of co-trimoxazole.</li>
+                  <li>Bozzette SA, Sattler FR, Chiu J, et al. <em>A controlled trial of early adjunctive treatment with corticosteroids for Pneumocystis carinii pneumonia in the acquired immunodeficiency syndrome.</em> N Engl J Med 1990;323:1451–7. — <strong>pivotal RCT (California Collaborative Treatment Group)</strong> using the 21-day prednisone regimen, demonstrating reduced respiratory failure and mortality when started ≤72 h of anti-PCP therapy.</li>
+                  <li>Gagnon S, Boota AM, Fischl MA, Baier H, Kirksey OW, La Voie L. <em>Corticosteroids as adjunctive therapy for severe Pneumocystis carinii pneumonia in the acquired immunodeficiency syndrome.</em> N Engl J Med 1990;323:1444–50. — companion RCT in severe disease (PaO₂ &lt;75 mmHg) showing methylprednisolone 40 mg q6h × 7 d (taper) reduced mortality and need for ventilation.</li>
+                  <li>Ewald H, Raatz H, Boscacci R, Furrer H, Bucher HC, Briel M. <em>Adjunctive corticosteroids for Pneumocystis jirovecii pneumonia in patients with HIV infection.</em> Cochrane Database Syst Rev 2015;(4):CD006150. — meta-analysis confirming mortality reduction (RR 0.59) at the same severity cut-off; NNT ≈ 9.</li>
+                  <li>Briel M, Bucher HC, Boscacci R, Furrer H. <em>Adjunctive corticosteroids for Pneumocystis jiroveci pneumonia in patients with HIV-infection.</em> Cochrane Database Syst Rev 2006;(3):CD006150 — original Cochrane review establishing the evidence base.</li>
+                  <li>British HIV Association. <em>BHIVA guidelines for the treatment of opportunistic infection in HIV-seropositive individuals 2011</em> (PCP section). — endorses the NIH–UC threshold and 21-day prednisolone taper for UK practice.</li>
+                  <li>Pareja JG, Garland R, Koziel H. <em>Use of adjunctive corticosteroids in severe adult non-HIV Pneumocystis carinii pneumonia.</em> Chest 1998;113:1215–24. — most-cited non-HIV cohort suggesting benefit; basis for extrapolation to non-HIV PCP, although later studies (Wieruszewski PM et al., Mayo Clin Proc 2018; Injean P et al., OFID 2017) show inconsistent effect.</li>
+                </ul>
+              </div>
+              <p className="italic">Severity cut-offs (PaO₂ &lt;9.3 kPa / 70 mmHg or A–a &gt;4.7 kPa / 35 mmHg on room air) and the prednisolone taper (40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d) cited in the management section and flowchart are taken directly from the NIH–UC Consensus Statement (NEJM 1990;323:1500–4), grounded in the Bozzette and Gagnon RCTs and reaffirmed by the 2015 Cochrane meta-analysis and BHIVA 2011 guidance. The 21-day co-trimoxazole course and EOLIA-derived ECMO criteria are corroborated by the guideline citations above.</p>
             </div>
           </ExamSection>
 
