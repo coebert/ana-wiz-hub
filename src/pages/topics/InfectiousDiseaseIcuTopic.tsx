@@ -621,6 +621,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </p>
           </ExamSection>
 
+          <ExamSection id="endocarditis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infective Endocarditis</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Modified Duke criteria. <em>S. aureus</em> (acute, IVDU), Streptococci (subacute), Enterococcus, HACEK group. ICU for septic shock, heart failure, embolic complications.
