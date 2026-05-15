@@ -531,6 +531,11 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "TRICC 1999", citation: "Hébert PC et al. A multicenter, randomized, controlled clinical trial of transfusion requirements in critical care (TRICC). N Engl J Med. 1999;340:409-417.", url: "https://doi.org/10.1056/NEJM199902113400601" },
     { label: "BJA Educ 2018", citation: "Retter A et al. Guidelines on the management of anaemia and red cell transfusion in adult critically ill patients. Br J Haematol. 2013;160(4):445-464.", url: "https://doi.org/10.1111/bjh.12143" },
     { label: "BJA Educ 2016", citation: "Hunt BJ. Bleeding and coagulopathies in critical care. N Engl J Med. 2014;370:847-859.", url: "https://doi.org/10.1056/NEJMra1208626" },
+    { label: "BJA Educ HIT 2008", citation: "Pollard BJ. Heparin-induced thrombocytopaenia. BJA Education. 2008;8(2):51-55.", url: "https://doi.org/10.1093/bjaceaccp/mkn005" },
+    { label: "BJA Educ HIT 2018", citation: "Salter BS, Weiner MM, Trinh MA, et al. Heparin-induced thrombocytopenia: a comprehensive clinical review. J Am Coll Cardiol. 2016;67(21):2519-2532. Reviewed in BJA Education update on perioperative thrombocytopenia.", url: "https://doi.org/10.1016/j.jacc.2016.02.073" },
+    { label: "ASH 2018 HIT", citation: "Cuker A, Arepally GM, Chong BH, et al. American Society of Hematology 2018 guidelines for management of venous thromboembolism: heparin-induced thrombocytopenia. Blood Adv. 2018;2(22):3360-3392.", url: "https://doi.org/10.1182/bloodadvances.2018024489" },
+    { label: "Lo 4Ts 2006", citation: "Lo GK, Juhl D, Warkentin TE, et al. Evaluation of pretest clinical score (4 Ts) for the diagnosis of heparin-induced thrombocytopenia. J Thromb Haemost. 2006;4(4):759-765.", url: "https://doi.org/10.1111/j.1538-7836.2006.01787.x" },
+    { label: "Greinacher NEJM 2015", citation: "Greinacher A. Heparin-induced thrombocytopenia. N Engl J Med. 2015;373(3):252-261.", url: "https://doi.org/10.1056/NEJMcp1411910" },
   ],
   "organ-donation": [
     { label: "AoMRC 2008", citation: "Academy of Medical Royal Colleges. A code of practice for the diagnosis and confirmation of death. 2008.", url: "https://www.aomrc.org.uk/reports-guidance/ukdec-reports-and-guidance/code-practice-diagnosis-confirmation-death/" },
