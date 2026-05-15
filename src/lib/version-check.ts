@@ -21,6 +21,14 @@ const CURRENT_VERSION =
 const POLL_INTERVAL_MS = 5 * 60 * 1000; // 5 min
 const RELOAD_FLAG = "__version_reload__";
 
+export type UpdateHandler = (() => void) | null;
+
+let globalHandler: UpdateHandler = null;
+
+export function setUpdateHandler(handler: UpdateHandler) {
+  globalHandler = handler;
+}
+
 async function fetchRemoteVersion(): Promise<string | null> {
   try {
     const res = await fetch(`/index.html?_v=${Date.now()}`, {
@@ -50,11 +58,7 @@ function shouldSkipReload(): boolean {
   return false;
 }
 
-async function checkOnce() {
-  const remote = await fetchRemoteVersion();
-  if (!remote || remote === CURRENT_VERSION) return;
-  if (shouldSkipReload()) return;
-  sessionStorage.setItem(RELOAD_FLAG, "1");
+export async function applyUpdate() {
   // Purge SW caches first so the reload pulls fresh HTML + chunks.
   if ("caches" in window) {
     try {
@@ -65,6 +69,21 @@ async function checkOnce() {
     }
   }
   location.reload();
+}
+
+async function checkOnce() {
+  const remote = await fetchRemoteVersion();
+  if (!remote || remote === CURRENT_VERSION) return;
+
+  if (globalHandler) {
+    globalHandler();
+    return;
+  }
+
+  // Fallback auto-reload when no React banner is mounted.
+  if (shouldSkipReload()) return;
+  sessionStorage.setItem(RELOAD_FLAG, "1");
+  await applyUpdate();
 }
 
 export function startVersionCheck() {
