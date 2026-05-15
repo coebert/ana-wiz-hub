@@ -9,6 +9,7 @@ import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNe
 import MyastheniaCrisisFlowchart from "@/components/diagrams/MyastheniaCrisisFlowchart";
 import MyasthenicVsCholinergicComparison from "@/components/diagrams/MyasthenicVsCholinergicComparison";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { SnodReferralDecider } from "@/components/SnodReferralDecider";
 import { Exam } from "@/data/curriculum";
 
 const tocItems = [
@@ -1165,6 +1166,10 @@ const NeurointensiveCareTopic = () => {
             <li><strong>DCD (donation after circulatory death)</strong>: when brainstem death will not occur but WLST is planned, controlled DCD pathway can be offered. Maastricht category III.</li>
             <li>Family approach should be collaborative between intensivist and SN-OD, ideally after the family understands the prognosis is hopeless — never combine the two conversations.</li>
           </ul>
+
+          <div className="mb-4">
+            <SnodReferralDecider />
+          </div>
 
           <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
             <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
