@@ -507,6 +507,11 @@ const InfectiousDiseaseIcuTopic = () => {
               </ul>
             </div>
 
+            <h4 className="text-base font-serif font-semibold text-foreground mt-4 mb-2">ICU management flowchart</h4>
+            <div className="mb-3">
+              <PCPManagementFlowchart />
+            </div>
+
             <div className="p-3 rounded-lg bg-secondary/30 border border-border">
               <p className="font-semibold text-foreground text-sm mb-1">Prognosis</p>
               <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
