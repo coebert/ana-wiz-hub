@@ -515,6 +515,110 @@ const InfectiousDiseaseIcuTopic = () => {
                 <li>Survivors: ~20% have persistent restrictive/diffusion defect; recurrence is common without effective prophylaxis.</li>
               </ul>
             </div>
+
+            <h4 className="text-base font-serif font-semibold text-foreground mt-4 mb-2">Distinguishing PCP from look-alikes</h4>
+            <div className="overflow-x-auto mb-3">
+              <table className="w-full text-xs border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Feature</th>
+                    <th className="text-left py-2 text-foreground font-semibold">PCP</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Bacterial pneumonia</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Viral pneumonitis (e.g. CMV, influenza, COVID)</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Other ARDS (sepsis, aspiration, TRALI)</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Host</td>
+                    <td>HIV (CD4 &lt;200), steroids ≥20 mg &gt;4 wk, biologics (rituximab), HSCT/SOT, haematological malignancy</td>
+                    <td>Any host; comorbidities (COPD, alcohol, diabetes); often community</td>
+                    <td>Immunocompromised (CMV) or community outbreak (influenza, COVID, RSV)</td>
+                    <td>Usually identifiable extrapulmonary insult: shock, trauma, pancreatitis, transfusion, gastric content</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Tempo</td>
+                    <td>Subacute days–weeks (HIV); days (non-HIV)</td>
+                    <td>Acute hours–days; rigors, productive cough</td>
+                    <td>Acute–subacute days; prodromal viral symptoms</td>
+                    <td>Acute &lt;7 days from insult (Berlin criteria)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Cough/sputum</td>
+                    <td>Dry, non-productive</td>
+                    <td>Productive, purulent</td>
+                    <td>Dry; coryzal symptoms</td>
+                    <td>Variable; depends on cause</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Examination</td>
+                    <td>Strikingly clear chest despite hypoxia; profound exertional desaturation</td>
+                    <td>Focal crackles/bronchial breathing/dullness</td>
+                    <td>Diffuse fine crackles; often clear chest</td>
+                    <td>Diffuse crackles ± features of underlying cause</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">CXR</td>
+                    <td>Often normal early; later bilateral perihilar reticular/GGO</td>
+                    <td>Lobar/segmental consolidation ± effusion</td>
+                    <td>Bilateral interstitial infiltrates</td>
+                    <td>Bilateral diffuse infiltrates not explained by cardiac failure</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">HRCT</td>
+                    <td><strong>Bilateral perihilar GGO with subpleural sparing; upper-zone thin-walled cysts; pneumothorax in ~10%</strong>; effusion/lymphadenopathy rare</td>
+                    <td>Lobar consolidation, air bronchograms, parapneumonic effusion ± cavitation</td>
+                    <td>Patchy multifocal GGO ± consolidation; tree-in-bud (CMV); peripheral GGO with crazy paving (COVID); often no cysts</td>
+                    <td>Diffuse dependent consolidation/atelectasis; gravitational gradient; no cysts</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Inflammatory markers</td>
+                    <td>CRP modestly raised; <strong>LDH ↑↑</strong> (typically &gt;500 U/L); WCC variable; lymphopenia common</td>
+                    <td>CRP/PCT markedly raised; neutrophilia</td>
+                    <td>CRP modest; PCT typically low; lymphopenia (esp. influenza, COVID)</td>
+                    <td>Reflects underlying cause; SIRS biomarkers</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Specific tests</td>
+                    <td><strong>(1,3)-β-D-glucan ↑↑</strong>, BAL/induced sputum PCR + silver/IF stain, HIV/CD4</td>
+                    <td>Blood &amp; sputum cultures, urinary pneumococcal/Legionella antigen, PCT</td>
+                    <td>Respiratory virus PCR (NPA/BAL), CMV viraemia + BAL PCR, SARS-CoV-2 PCR</td>
+                    <td>Source-directed work-up; echo (cardiogenic vs ARDS); BAL if non-resolving</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">β-D-glucan / galactomannan</td>
+                    <td>β-D-glucan very high; galactomannan negative</td>
+                    <td>Both negative</td>
+                    <td>Both negative</td>
+                    <td>Both negative (positive galactomannan suggests Aspergillus co-infection)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Pleural effusion / lymphadenopathy</td>
+                    <td>Rare — if present, reconsider diagnosis</td>
+                    <td>Common (parapneumonic)</td>
+                    <td>Uncommon</td>
+                    <td>Common (depends on cause)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Response to empirical antibiotics</td>
+                    <td>None — deteriorates without co-trimoxazole</td>
+                    <td>Improves within 48–72 h</td>
+                    <td>None — needs antiviral or supportive care</td>
+                    <td>None — needs source control / lung-protective ventilation</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 font-medium text-foreground">Key red flags</td>
+                    <td>Hypoxia disproportionate to CXR; recent steroids/biologics; bilateral GGO + cysts</td>
+                    <td>Lobar consolidation + high PCT + focal signs</td>
+                    <td>Outbreak setting, lymphopenia, multifocal GGO without cysts</td>
+                    <td>Identifiable insult, P/F &lt;300, bilateral infiltrates, not cardiac</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground mb-2">
+              <strong>Pearl:</strong> in an immunosuppressed patient with disproportionate hypoxia, dry cough, raised LDH and β-D-glucan, and bilateral perihilar GGO on HRCT, treat empirically for PCP while awaiting BAL — do not wait for confirmation. Co-infection (CMV, bacterial, Aspergillus) is common and worsens prognosis, so screen for it in parallel.
+            </p>
           </ExamSection>
 
           <ExamSection id="endocarditis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
