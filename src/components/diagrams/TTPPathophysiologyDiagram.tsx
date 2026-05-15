@@ -73,7 +73,7 @@ const TTPPathophysiologyDiagram = () => {
       showCaption
     >
       <svg
-        viewBox="0 0 820 420"
+        viewBox="0 0 820 520"
         className="w-full h-auto rounded-lg border border-border bg-card p-3 my-3"
         {...svgImgProps({ id })}
       >
