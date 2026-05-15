@@ -416,7 +416,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         </Button>
         <div className="flex items-center gap-1">
           <Button
-            onClick={handleRegenerate}
+            onClick={openRegenDialog}
             size="sm"
             variant="ghost"
             className="text-xs h-8 text-muted-foreground/70 hover:text-foreground"
