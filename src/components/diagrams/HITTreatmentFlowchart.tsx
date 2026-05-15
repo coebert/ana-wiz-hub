@@ -282,6 +282,53 @@ const HITTreatmentFlowchart = () => {
         </span>
         <span className="italic">Argatroban is first-line in UK ICU; bivalirudin is preferred on ECMO/CPB.</span>
       </div>
+
+      {/* Per-step source citations */}
+      <div className="mt-3 rounded-md border border-border bg-muted/30 p-3 text-[11px] leading-relaxed">
+        <p className="font-semibold text-foreground mb-1.5">Step sources — verify each treatment step</p>
+        <ul className="space-y-1 text-muted-foreground">
+          <li>
+            <span className="font-medium text-foreground">Trigger — 4Ts ≥ 4:</span>{" "}
+            pre-test probability score (sensitivity ≈ 99% for low-score rule-out)
+            <Cite topicId="haematology-icu" labels={["Lo 4Ts 2006", "ASH 2018 HIT"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Step 1 — STOP all heparin:</span>{" "}
+            including flushes and heparin-bonded catheters
+            <Cite topicId="haematology-icu" labels={["ASH 2018 HIT", "BJA Educ HIT 2008"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Step 2 — PF4 ELISA + functional assay:</span>{" "}
+            ELISA high sensitivity; SRA/HIPA confirms platelet activation
+            <Cite topicId="haematology-icu" labels={["ASH 2018 HIT", "Greinacher NEJM 2015"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Step 3 — Argatroban (first-line UK ICU):</span>{" "}
+            hepatic clearance — preferred in renal failure / CRRT
+            <Cite topicId="haematology-icu" labels={["ASH 2018 HIT", "BJA Educ HIT 2018"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Step 3 — Bivalirudin (ECMO / CPB):</span>{" "}
+            enzymatic metabolism, t½ ~25 min — preferred in hepatic failure and ECMO
+            <Cite topicId="haematology-icu" labels={["BJA Educ HIT 2018", "ASH 2018 HIT"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Step 3 — Fondaparinux / Danaparoid:</span>{" "}
+            stable patients without renal failure; danaparoid has ~10% in vitro cross-reactivity
+            <Cite topicId="haematology-icu" labels={["ASH 2018 HIT", "Greinacher NEJM 2015"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Step 4 — Transition to warfarin / DOAC:</span>{" "}
+            only once platelets &gt; 150 × 10⁹/L; ≥ 5 d overlap (avoid venous limb gangrene)
+            <Cite topicId="haematology-icu" labels={["ASH 2018 HIT", "BJA Educ HIT 2008"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Step 5 — Lifelong heparin avoidance:</span>{" "}
+            heparin re-exposure within 100 d risks rapid-onset HIT
+            <Cite topicId="haematology-icu" labels={["Greinacher NEJM 2015", "ASH 2018 HIT"]} />
+          </li>
+        </ul>
+      </div>
     </DiagramFigure>
   );
 };
