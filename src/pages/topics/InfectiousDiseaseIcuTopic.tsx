@@ -753,6 +753,20 @@ const InfectiousDiseaseIcuTopic = () => {
                 </ol>
               </div>
               <p className="italic">Severity cut-offs (PaO₂ &lt;9.3 kPa / 70 mmHg or A–a &gt;4.7 kPa / 35 mmHg on room air) and the prednisolone taper (40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d) cited in the management section and flowchart derive from refs 17–19, with confirmation in refs 20 and 22. The 21-day co-trimoxazole course and EOLIA-derived ECMO criteria are corroborated by refs 6–10.</p>
+
+              <div className="mt-3 p-3 rounded-lg border border-icu/40 bg-icu/5">
+                <p className="font-semibold text-foreground text-sm mb-2">Key evidence takeaways (exam-ready)</p>
+                <ul className="list-disc pl-5 space-y-1 text-xs text-muted-foreground">
+                  <li><strong>1st-line therapy:</strong> co-trimoxazole 15–20 mg/kg/day TMP IV in 3–4 divided doses; <strong>21 d</strong> in HIV, 14–21 d in non-HIV.<sup>6,7</sup></li>
+                  <li><strong>Steroid threshold (HIV-PCP):</strong> PaO₂ &lt;70 mmHg (9.3 kPa) <em>or</em> A–a &gt;35 mmHg (4.7 kPa) on room air — start within 72 h of anti-PCP therapy.<sup>17,18</sup></li>
+                  <li><strong>Steroid regimen:</strong> prednisolone <strong>40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d</strong> (NIH–UC Consensus).<sup>17</sup></li>
+                  <li><strong>Mortality benefit:</strong> RR ≈ 0.59, NNT ≈ 9 in moderate–severe HIV-PCP (Cochrane 2015).<sup>20</sup></li>
+                  <li><strong>Non-HIV PCP:</strong> evidence inconsistent — Pareja 1998 suggested benefit, Wieruszewski 2018 did not; use case-by-case.<sup>23,24</sup></li>
+                  <li><strong>ECMO referral:</strong> EOLIA criteria (PaO₂/FiO₂ &lt;50 for &gt;3 h, &lt;80 for &gt;6 h, or pH &lt;7.25 with PaCO₂ ≥60 for &gt;6 h on optimised ventilation).<sup>10</sup></li>
+                  <li><strong>BHIVA &amp; NIH/CDC/IDSA</strong> endorse the same threshold and taper for UK and US practice.<sup>6,22</sup></li>
+                  <li><strong>Watch-outs:</strong> check G6PD before high-dose co-trimoxazole; clinical worsening common in days 3–5 (steroids mitigate); start ART within 2 weeks (ACTG A5164) in HIV.</li>
+                </ul>
+              </div>
             </div>
           </ExamSection>
 
