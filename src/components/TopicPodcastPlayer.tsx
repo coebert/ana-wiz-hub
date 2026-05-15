@@ -1,7 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download, RefreshCw, Database, Sparkles } from "lucide-react";
+import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download, RefreshCw, Database, Sparkles, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   estimatePodcastTarget,
   extractTopicContent,
@@ -37,6 +47,10 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const [speed, setSpeed] = useState(1);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [estimate, setEstimate] = useState<{ minutes: number; words: number; sourceWords: number } | null>(null);
+  const [regenOpen, setRegenOpen] = useState(false);
+  const [regenPassword, setRegenPassword] = useState("");
+  const [regenError, setRegenError] = useState<string | null>(null);
+  const [regenSubmitting, setRegenSubmitting] = useState(false);
 
   // Estimate target length from page content once we know there's no cached podcast.
   useEffect(() => {
@@ -111,16 +125,87 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     }
   };
 
-  const handleRegenerate = async () => {
-    const pw = window.prompt("Enter regeneration password:");
-    if (!pw) return;
-    // Reset player state so the user sees the generation UI immediately.
-    setPodcast(null);
-    setSource(null);
-    setIsPlaying(false);
-    setCurrentTime(0);
-    setDuration(0);
-    await handleGenerate({ force: true, regeneratePassword: pw });
+  const openRegenDialog = () => {
+    setRegenPassword("");
+    setRegenError(null);
+    setRegenOpen(true);
+  };
+
+  const isInvalidPasswordError = (msg: string | undefined): boolean => {
+    if (!msg) return false;
+    return /invalid\s+regeneration\s+password/i.test(msg);
+  };
+
+  const submitRegenerate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setRegenError(null);
+
+    // Client-side validation: format/shape only. Real check is server-side.
+    const pw = regenPassword.trim();
+    if (!pw) {
+      setRegenError("Password is required.");
+      return;
+    }
+    if (pw.length < 4) {
+      setRegenError("Password is too short.");
+      return;
+    }
+
+    setRegenSubmitting(true);
+    try {
+      const content = extractTopicContent();
+      if (!content || content.length < 200) {
+        setRegenError("Could not extract topic content from the page.");
+        return;
+      }
+
+      // Probe with the password first so we can surface an invalid-password
+      // error inline in the dialog without nuking the existing player state.
+      const result = await generatePodcast(topicId, topicTitle, content, {
+        force: true,
+        regeneratePassword: pw,
+      });
+
+      if (result.status === "failed" && isInvalidPasswordError(result.error)) {
+        setRegenError("Invalid password. Please try again.");
+        return;
+      }
+
+      // Auth accepted — close dialog and swap the player into generating mode.
+      setRegenOpen(false);
+      setPodcast(null);
+      setSource(null);
+      setIsPlaying(false);
+      setCurrentTime(0);
+      setDuration(0);
+      setGenerating(true);
+      try {
+        if (result.status === "generating") {
+          for (let i = 0; i < 60; i++) {
+            await new Promise((r) => setTimeout(r, 5000));
+            const polled = await fetchPodcast(topicId);
+            if (polled && polled.status !== "generating") {
+              setPodcast(polled);
+              if (polled.status === "ready") setSource("fresh");
+              return;
+            }
+          }
+          setPodcast({
+            status: "failed",
+            error: "Podcast is still generating. Refresh the page in a minute.",
+          });
+          return;
+        }
+        setPodcast(result);
+        if (result.status === "ready") setSource("fresh");
+      } finally {
+        setGenerating(false);
+      }
+    } catch (err) {
+      setRegenError(err instanceof Error ? err.message : "Unknown error");
+    } finally {
+      setRegenSubmitting(false);
+    }
   };
 
   // Audio element wiring
@@ -331,7 +416,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         </Button>
         <div className="flex items-center gap-1">
           <Button
-            onClick={handleRegenerate}
+            onClick={openRegenDialog}
             size="sm"
             variant="ghost"
             className="text-xs h-8 text-muted-foreground/70 hover:text-foreground"
@@ -377,6 +462,72 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           {podcast.script}
         </div>
       )}
+
+      <Dialog open={regenOpen} onOpenChange={(o) => !regenSubmitting && setRegenOpen(o)}>
+        <DialogContent className="sm:max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 font-serif">
+              <Lock className="h-4 w-4 text-primary" /> Regenerate podcast
+            </DialogTitle>
+            <DialogDescription>
+              This replaces the cached audio for <span className="font-medium text-foreground">{topicTitle}</span>.
+              Owner password required.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={submitRegenerate} className="space-y-3">
+            <div className="space-y-1.5">
+              <Label htmlFor="regen-password" className="text-xs">
+                Owner password
+              </Label>
+              <Input
+                id="regen-password"
+                type="password"
+                autoFocus
+                autoComplete="current-password"
+                value={regenPassword}
+                onChange={(e) => {
+                  setRegenPassword(e.target.value);
+                  if (regenError) setRegenError(null);
+                }}
+                disabled={regenSubmitting}
+                aria-invalid={!!regenError}
+                aria-describedby={regenError ? "regen-error" : undefined}
+              />
+              {regenError && (
+                <p
+                  id="regen-error"
+                  role="alert"
+                  className="flex items-start gap-1.5 text-xs text-destructive"
+                >
+                  <AlertCircle className="h-3.5 w-3.5 mt-0.5 shrink-0" />
+                  <span>{regenError}</span>
+                </p>
+              )}
+            </div>
+            <DialogFooter className="gap-2 sm:gap-2">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={() => setRegenOpen(false)}
+                disabled={regenSubmitting}
+              >
+                Cancel
+              </Button>
+              <Button type="submit" size="sm" disabled={regenSubmitting || !regenPassword.trim()}>
+                {regenSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
+                    Verifying…
+                  </>
+                ) : (
+                  "Regenerate"
+                )}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
