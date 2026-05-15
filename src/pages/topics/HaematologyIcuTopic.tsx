@@ -346,6 +346,7 @@ const HaematologyIcuTopic = () => {
             <p className="text-muted-foreground text-sm mb-3">
               Procoagulant <em>and</em> anticoagulant factors fall in parallel. INR is misleading — patients are NOT auto-anticoagulated. Give VTE prophylaxis (LMWH/UFH) unless actively bleeding or platelets &lt;50. Use TEG/ROTEM for functional assessment. Do NOT correct INR with FFP prophylactically — volume overload, raises portal pressure, obscures prognostic value (King's College).
             </p>
+            <RebalancedHaemostasisDiagram />
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
                 <thead>
