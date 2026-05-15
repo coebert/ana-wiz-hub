@@ -462,6 +462,72 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           {podcast.script}
         </div>
       )}
+
+      <Dialog open={regenOpen} onOpenChange={(o) => !regenSubmitting && setRegenOpen(o)}>
+        <DialogContent className="sm:max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 font-serif">
+              <Lock className="h-4 w-4 text-primary" /> Regenerate podcast
+            </DialogTitle>
+            <DialogDescription>
+              This replaces the cached audio for <span className="font-medium text-foreground">{topicTitle}</span>.
+              Owner password required.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={submitRegenerate} className="space-y-3">
+            <div className="space-y-1.5">
+              <Label htmlFor="regen-password" className="text-xs">
+                Owner password
+              </Label>
+              <Input
+                id="regen-password"
+                type="password"
+                autoFocus
+                autoComplete="current-password"
+                value={regenPassword}
+                onChange={(e) => {
+                  setRegenPassword(e.target.value);
+                  if (regenError) setRegenError(null);
+                }}
+                disabled={regenSubmitting}
+                aria-invalid={!!regenError}
+                aria-describedby={regenError ? "regen-error" : undefined}
+              />
+              {regenError && (
+                <p
+                  id="regen-error"
+                  role="alert"
+                  className="flex items-start gap-1.5 text-xs text-destructive"
+                >
+                  <AlertCircle className="h-3.5 w-3.5 mt-0.5 shrink-0" />
+                  <span>{regenError}</span>
+                </p>
+              )}
+            </div>
+            <DialogFooter className="gap-2 sm:gap-2">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={() => setRegenOpen(false)}
+                disabled={regenSubmitting}
+              >
+                Cancel
+              </Button>
+              <Button type="submit" size="sm" disabled={regenSubmitting || !regenPassword.trim()}>
+                {regenSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
+                    Verifying…
+                  </>
+                ) : (
+                  "Regenerate"
+                )}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
