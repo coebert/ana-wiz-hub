@@ -298,6 +298,22 @@ const InfectiousDiseaseIcuTopic = () => {
               </div>
             </div>
 
+            <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Duration of adjunctive dexamethasone</h3>
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-4">
+              <p className="text-sm text-muted-foreground mb-2">
+                Based on the De Gans &amp; van de Beek RCT (NEJM 2002) and endorsed by ESCMID 2016, IDSA and NICE NG240 (2024):
+              </p>
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li><strong>Dose &amp; timing:</strong> dexamethasone 10 mg IV every 6 h, started <em>with or before</em> the first dose of antibiotic (within 4 h at the latest — no benefit if given after antibiotics in adults).</li>
+                <li><strong>Duration:</strong> continue for <strong>4 days total</strong> if CSF/blood culture confirms <em>S. pneumoniae</em> (or <em>H. influenzae</em> in children).</li>
+                <li><strong>Stop early</strong> if cultures/PCR identify a non-pneumococcal organism (e.g. <em>N. meningitidis</em>, <em>Listeria</em>, Gram-negatives) — no mortality benefit and possible harm in <em>Listeria</em> meningitis.</li>
+                <li><strong>Stop early</strong> if an alternative diagnosis is established or bacterial meningitis is excluded.</li>
+                <li><strong>Do not start</strong> if &gt;4 h have elapsed since the first antibiotic dose, in septic shock alone without meningitis, or in post-neurosurgical meningitis (no evidence of benefit).</li>
+                <li><strong>TB meningitis:</strong> separate, longer regimen — dexamethasone 0.3–0.4 mg/kg/day IV tapered over <strong>6–8 weeks</strong> (Thwaites NEJM 2004).</li>
+                <li><strong>Cover:</strong> add PPI for GI prophylaxis; monitor glucose; steroids may reduce CSF vancomycin penetration — use higher doses + TDM if pneumococcal resistance suspected.</li>
+              </ul>
+            </div>
+
             <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Complications</h3>
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
