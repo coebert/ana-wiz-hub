@@ -1166,6 +1166,10 @@ const NeurointensiveCareTopic = () => {
             <li>Family approach should be collaborative between intensivist and SN-OD, ideally after the family understands the prognosis is hopeless — never combine the two conversations.</li>
           </ul>
 
+          <div className="mb-4">
+            <SnodReferralDecider />
+          </div>
+
           <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
             <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
             <p className="text-sm text-muted-foreground">
