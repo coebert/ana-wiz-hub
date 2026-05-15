@@ -125,16 +125,87 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     }
   };
 
-  const handleRegenerate = async () => {
-    const pw = window.prompt("Enter regeneration password:");
-    if (!pw) return;
-    // Reset player state so the user sees the generation UI immediately.
-    setPodcast(null);
-    setSource(null);
-    setIsPlaying(false);
-    setCurrentTime(0);
-    setDuration(0);
-    await handleGenerate({ force: true, regeneratePassword: pw });
+  const openRegenDialog = () => {
+    setRegenPassword("");
+    setRegenError(null);
+    setRegenOpen(true);
+  };
+
+  const isInvalidPasswordError = (msg: string | undefined): boolean => {
+    if (!msg) return false;
+    return /invalid\s+regeneration\s+password/i.test(msg);
+  };
+
+  const submitRegenerate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setRegenError(null);
+
+    // Client-side validation: format/shape only. Real check is server-side.
+    const pw = regenPassword.trim();
+    if (!pw) {
+      setRegenError("Password is required.");
+      return;
+    }
+    if (pw.length < 4) {
+      setRegenError("Password is too short.");
+      return;
+    }
+
+    setRegenSubmitting(true);
+    try {
+      const content = extractTopicContent();
+      if (!content || content.length < 200) {
+        setRegenError("Could not extract topic content from the page.");
+        return;
+      }
+
+      // Probe with the password first so we can surface an invalid-password
+      // error inline in the dialog without nuking the existing player state.
+      const result = await generatePodcast(topicId, topicTitle, content, {
+        force: true,
+        regeneratePassword: pw,
+      });
+
+      if (result.status === "failed" && isInvalidPasswordError(result.error)) {
+        setRegenError("Invalid password. Please try again.");
+        return;
+      }
+
+      // Auth accepted — close dialog and swap the player into generating mode.
+      setRegenOpen(false);
+      setPodcast(null);
+      setSource(null);
+      setIsPlaying(false);
+      setCurrentTime(0);
+      setDuration(0);
+      setGenerating(true);
+      try {
+        if (result.status === "generating") {
+          for (let i = 0; i < 60; i++) {
+            await new Promise((r) => setTimeout(r, 5000));
+            const polled = await fetchPodcast(topicId);
+            if (polled && polled.status !== "generating") {
+              setPodcast(polled);
+              if (polled.status === "ready") setSource("fresh");
+              return;
+            }
+          }
+          setPodcast({
+            status: "failed",
+            error: "Podcast is still generating. Refresh the page in a minute.",
+          });
+          return;
+        }
+        setPodcast(result);
+        if (result.status === "ready") setSource("fresh");
+      } finally {
+        setGenerating(false);
+      }
+    } catch (err) {
+      setRegenError(err instanceof Error ? err.message : "Unknown error");
+    } finally {
+      setRegenSubmitting(false);
+    }
   };
 
   // Audio element wiring
