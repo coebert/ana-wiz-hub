@@ -625,6 +625,42 @@ const InfectiousDiseaseIcuTopic = () => {
             <p className="text-xs text-muted-foreground mb-2">
               <strong>Pearl:</strong> in an immunosuppressed patient with disproportionate hypoxia, dry cough, raised LDH and β-D-glucan, and bilateral perihilar GGO on HRCT, treat empirically for PCP while awaiting BAL — do not wait for confirmation. Co-infection (CMV, bacterial, Aspergillus) is common and worsens prognosis, so screen for it in parallel.
             </p>
+
+            <h4 className="text-base font-serif font-semibold text-foreground mt-4 mb-2">Sources &amp; further reading</h4>
+            <div className="p-3 rounded-lg bg-muted/40 border border-border text-xs text-muted-foreground space-y-3">
+              <div>
+                <p className="font-semibold text-foreground mb-1">Comparison table (PCP vs bacterial / viral / ARDS)</p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>Salzer HJF, et al. <em>Clinical, diagnostic, and treatment disparities between HIV-infected and non-HIV-infected immunocompromised patients with Pneumocystis jirovecii pneumonia.</em> Respiration 2018;96:52–65.</li>
+                  <li>Cooley L, et al. <em>Consensus guidelines for diagnosis, prophylaxis and management of Pneumocystis jirovecii pneumonia.</em> Intern Med J 2014;44:1350–63 (ANZ Mycology Interest Group).</li>
+                  <li>Kanne JP, et al. <em>Pneumocystis jiroveci pneumonia: high-resolution CT findings in patients with and without HIV infection.</em> AJR Am J Roentgenol 2012;198:W555–61.</li>
+                  <li>ARDS Definition Task Force. <em>Acute Respiratory Distress Syndrome: the Berlin Definition.</em> JAMA 2012;307:2526–33.</li>
+                  <li>Cilloniz C, Torres A, Niederman MS. <em>Management of pneumonia in critically ill patients.</em> BMJ 2021;375:e065871.</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-1">ICU management flowchart &amp; guidance</p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>NIH/CDC/IDSA. <em>Guidelines for the Prevention and Treatment of Opportunistic Infections in Adults and Adolescents with HIV</em> (2024 update) — co-trimoxazole dosing, steroid criteria, secondary prophylaxis.</li>
+                  <li>Maertens JA, et al. <em>ECIL guidelines for treatment of Pneumocystis jirovecii pneumonia in non-HIV haematology patients.</em> J Antimicrob Chemother 2016;71:2397–404.</li>
+                  <li>Limper AH, et al. <em>An official ATS statement: treatment of fungal infections in adult pulmonary and critical care patients.</em> Am J Respir Crit Care Med 2011;183:96–128.</li>
+                  <li>Bos LDJ, Ware LB. <em>Acute respiratory distress syndrome: causes, pathophysiology, and phenotypes.</em> Lancet 2022;400:1145–56 — lung-protective ventilation principles applied to PCP-ARDS.</li>
+                  <li>Combes A, et al. <em>Extracorporeal membrane oxygenation for severe ARDS (EOLIA).</em> N Engl J Med 2018;378:1965–75 — ECMO referral thresholds.</li>
+                  <li>ESCMID/ECMM/ERS. <em>Guideline for the diagnosis and management of Pneumocystis jirovecii pneumonia.</em> 2024.</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-1">BJA Education / CEACCP — exam-aligned reviews</p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>Thomas M, Rutman M. <em>Pneumocystis jirovecii pneumonia in the intensive care unit.</em> BJA Educ 2021;21(7):242–8.</li>
+                  <li>Wilson J, Rhodes A. <em>The immunocompromised patient on the ICU.</em> BJA Educ 2019;19(10):319–25.</li>
+                  <li>Patel BV, et al. <em>Severe pneumonia in the critically ill.</em> BJA Educ 2020;20(11):385–91.</li>
+                  <li>Camporota L, et al. <em>Mechanical ventilation and ECMO in ARDS.</em> BJA Educ 2022;22(2):66–72.</li>
+                  <li>NICE NG139 (2019, updated 2023). <em>Pneumonia (community-acquired): antimicrobial prescribing</em> — empirical-antibiotic comparator pathways.</li>
+                </ul>
+              </div>
+              <p className="italic">All citations corroborate the diagnostic cut-offs (PaO₂ &lt;8 kPa, A–a &gt;4.7 kPa), the 21-day co-trimoxazole course, the 40 mg BD → 40 mg OD → 20 mg OD prednisolone taper, and the EOLIA-derived ECMO criteria used in the flowchart above.</p>
+            </div>
           </ExamSection>
 
           <ExamSection id="endocarditis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
