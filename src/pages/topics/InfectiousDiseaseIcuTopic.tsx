@@ -324,13 +324,37 @@ const InfectiousDiseaseIcuTopic = () => {
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Neurological</td><td>Cerebral oedema, herniation, hydrocephalus, infarction (vasculitis), venous sinus thrombosis, seizures/status, sensorineural deafness (esp. pneumococcal — early audiology), cranial nerve palsies, cognitive impairment, abscess formation.</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cardiovascular</td><td>Septic shock, myocardial dysfunction, DIC, purpura fulminans / limb ischaemia (meningococcal), Waterhouse–Friderichsen syndrome (adrenal haemorrhage).</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Neurological</td><td>Cerebral oedema, herniation, infarction (vasculitis), venous sinus thrombosis, sensorineural deafness (esp. pneumococcal — early audiology), cranial nerve palsies, cognitive impairment, abscess formation. <em>(Seizures &amp; hydrocephalus — see below.)</em></td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cardiovascular</td><td>Septic shock, myocardial dysfunction, purpura fulminans / limb ischaemia (meningococcal), Waterhouse–Friderichsen syndrome (adrenal haemorrhage). <em>(DIC — see below.)</em></td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Respiratory</td><td>Aspiration pneumonia, ARDS, neurogenic pulmonary oedema.</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Endocrine / metabolic</td><td>SIADH, cerebral salt wasting, diabetes insipidus, hyperglycaemia (steroids).</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Endocrine / metabolic</td><td>Cerebral salt wasting, diabetes insipidus, hyperglycaemia (steroids). <em>(SIADH — see below.)</em></td></tr>
                   <tr><td className="py-2 font-medium text-foreground">Long-term</td><td>Epilepsy, focal deficits, cognitive/behavioural sequelae, deafness, hydrocephalus requiring shunt; psychiatric morbidity in survivors and families.</td></tr>
                 </tbody>
               </table>
+            </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Targeted monitoring &amp; immediate treatment for key complications</h3>
+            <div className="space-y-3 mb-4">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Seizures / status epilepticus</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Monitor:</strong> hourly GCS, pupils and limb tone; capillary glucose; Na⁺ 6-hrly; continuous EEG if persistently obtunded, paralysed, or refractory status (non-convulsive status occurs in ~25% of comatose meningitis patients); urgent CT to exclude haemorrhage/herniation.</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Immediate Tx:</strong> ABC + O₂, correct glucose/Na⁺. <em>1st</em> lorazepam 4 mg IV (or midazolam 10 mg IM/buccal) — repeat once at 5 min. <em>2nd</em> levetiracetam 60 mg/kg (max 4.5 g) <em>or</em> phenytoin 20 mg/kg <em>or</em> sodium valproate 40 mg/kg over 10 min (ESETT). <em>3rd</em> RSI with thiopentone/propofol, intubate, midazolam or propofol infusion to burst suppression on cEEG; involve neurology. Continue levetiracetam prophylaxis ≥7 days after a single seizure.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Hydrocephalus / raised ICP</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Monitor:</strong> hourly GCS &amp; pupils; watch for Cushing reflex (hypertension + bradycardia); fundoscopy / optic nerve sheath US (&gt;5 mm suggestive); urgent CT for ventricular dilatation; ICP monitor or EVD for objective measurement; CPP target &gt;60 mmHg.</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Immediate Tx:</strong> head-up 30°, neutral neck, loosen ETT ties; sedate &amp; analgese; PaCO₂ 4.5–5.0 kPa, PaO₂ &gt;13 kPa, Na⁺ 140–145, temp ≤37 °C. Osmotherapy: <strong>hypertonic saline 2.7–3% 250 mL</strong> or <strong>mannitol 0.5–1 g/kg</strong> over 15 min (check serum osmolality &lt;320). Urgent neurosurgical referral for <strong>EVD insertion</strong> in obstructive/communicating hydrocephalus; decompressive craniectomy for refractory ICP. Brief hyperventilation (PaCO₂ ≈4.0 kPa) only as a bridge to definitive treatment.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">DIC / purpura fulminans</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Monitor:</strong> 6-hrly FBC, PT/APTT, fibrinogen, D-dimer; ISTH DIC score; serial lactate; hourly limb perfusion checks (capillary refill, pulses, mottling) — photograph &amp; mark advancing purpura; arterial line; urine output.</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Immediate Tx:</strong> aggressive source control (antibiotics within 1 h) and shock resuscitation — DIC will not resolve until sepsis is controlled. Transfuse <em>only if bleeding or pre-procedure</em>: platelets to &gt;50 (×10⁹/L), FFP 15 mL/kg if PT/APTT ratio &gt;1.5, cryoprecipitate if fibrinogen &lt;1.5 g/L. Vitamin K 10 mg IV. Consider <strong>protein C concentrate</strong> in meningococcal purpura fulminans. Avoid heparin in active bleeding/purpura. Discuss limb ischaemia with vascular/plastics early; do not amputate prematurely (demarcation takes weeks). Hydrocortisone 200 mg/day if vasopressor-dependent (consider Waterhouse–Friderichsen).</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">SIADH (vs cerebral salt wasting / DI)</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Monitor:</strong> Na⁺ 6-hrly initially; paired serum &amp; urine osmolality and urinary Na⁺; hourly fluid balance &amp; urine output; daily weights; fluid status (CVP, passive leg raise). SIADH = euvolaemic hyponatraemia with urine osm &gt;100 mosm/kg, urine Na⁺ &gt;30 mmol/L, low serum urate.</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Immediate Tx:</strong> if symptomatic (seizures, GCS drop) give <strong>hypertonic saline 2.7% 150 mL over 10 min</strong>, repeat × up to 3 until Na⁺ rises 4–6 mmol/L; then stop. Asymptomatic: <strong>fluid restrict to 800–1000 mL/24 h</strong>; correct Na⁺ no faster than <strong>8–10 mmol/L per 24 h</strong> (risk of osmotic demyelination). Treat the cause. Tolvaptan only with endocrine input. <em>Distinguish from CSW</em> (hypovolaemic, high urine output, high urine Na⁺) — give isotonic saline, never restrict. <em>Distinguish from DI</em> (polyuria &gt;3 mL/kg/h, dilute urine, rising Na⁺) — give desmopressin 1–2 µg IV.</p>
+              </div>
             </div>
 
             <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Prognosis</h3>
