@@ -372,7 +372,14 @@ Deno.serve(async (req) => {
     if (forceRegenerate) {
       const submittedPassword = typeof regeneratePassword === "string" ? regeneratePassword.trim() : "";
       if (!REGENERATE_PASSWORD || submittedPassword !== REGENERATE_PASSWORD) {
-        return jsonResponse({ status: "failed", error: "Invalid regeneration password." }, 403);
+        return failureResponse(
+          {
+            status: "failed",
+            error: "Invalid regeneration password.",
+            code: "INVALID_REGENERATION_PASSWORD",
+          },
+          200,
+        );
       }
     }
 
