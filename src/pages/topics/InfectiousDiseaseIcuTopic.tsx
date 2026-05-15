@@ -470,6 +470,10 @@ const InfectiousDiseaseIcuTopic = () => {
               Opportunistic fungal pneumonia (formerly <em>P. carinii</em>). Two distinct populations: <strong>HIV with CD4 &lt;200</strong> (subacute, lower mortality but higher organism burden) and <strong>non-HIV immunosuppressed</strong> — solid-organ/HSCT recipients, high-dose steroids (≥20 mg prednisolone &gt;4 wk), biologics (rituximab, anti-TNF), haematological malignancy, congenital immunodeficiency. Non-HIV PCP is more fulminant, with higher ICU mortality (30–60%).
             </p>
 
+            <div className="mb-3">
+              <PCPHRCTDiagram />
+            </div>
+
             <div className="grid sm:grid-cols-2 gap-3 mb-3">
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Presentation</p>
