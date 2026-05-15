@@ -29,6 +29,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const [podcast, setPodcast] = useState<PodcastResult | null>(null);
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
+  const [source, setSource] = useState<"cache" | "fresh" | null>(null);
   const [showScript, setShowScript] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
