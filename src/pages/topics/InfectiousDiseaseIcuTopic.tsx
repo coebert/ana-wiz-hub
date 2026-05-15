@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { infectiousDiseaseIcuQuestions } from "@/data/quizzes";
 import InfectionSiteMapDiagram from "@/components/diagrams/InfectionSiteMapDiagram";
+import PCPHRCTDiagram from "@/components/diagrams/PCPHRCTDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 
