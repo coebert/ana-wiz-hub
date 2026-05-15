@@ -394,6 +394,38 @@ const HITPathophysiologyDiagram = () => {
           <span className="inline-block h-3 w-3 rounded-full" style={{ background: "hsl(var(--destructive) / 0.4)", border: "1px solid hsl(var(--destructive))" }} /> activated platelet
         </span>
       </div>
+
+      {/* Per-step source citations (BJA Education-style) */}
+      <div className="mt-3 rounded-md border border-border bg-muted/30 p-3 text-[11px] leading-relaxed">
+        <p className="font-semibold text-foreground mb-1.5">Step sources — verify each cascade step</p>
+        <ul className="space-y-1 text-muted-foreground">
+          <li>
+            <span className="font-medium text-foreground">Step 1 — Heparin + PF4 neoantigen:</span>{" "}
+            PF4 tetramer binds heparin polyanion, exposing cryptic epitopes
+            <Cite topicId="haematology-icu" labels={["BJA Educ HIT 2008", "Greinacher NEJM 2015"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Step 2 — IgG anti-PF4/heparin (day 5–10):</span>{" "}
+            class-switched IgG appears in 25–50% of UFH-exposed patients; only a subset clinically active
+            <Cite topicId="haematology-icu" labels={["Greinacher NEJM 2015", "ASH 2018 HIT"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Step 3 — FcγRIIa cross-linking on platelets:</span>{" "}
+            immune-complex bridging activates platelets and monocytes via Fc receptor
+            <Cite topicId="haematology-icu" labels={["BJA Educ HIT 2008", "Greinacher NEJM 2015"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Step 4 — Microparticles + thrombin burst:</span>{" "}
+            procoagulant microparticles, monocyte tissue factor → paradoxical thrombosis
+            <Cite topicId="haematology-icu" labels={["Greinacher NEJM 2015", "ASH 2018 HIT"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Outcomes — thrombocytopenia + thrombosis:</span>{" "}
+            ≥50% platelet drop; 30-day thrombotic risk ~50% if heparin continued
+            <Cite topicId="haematology-icu" labels={["BJA Educ HIT 2008", "ASH 2018 HIT"]} />
+          </li>
+        </ul>
+      </div>
     </DiagramFigure>
   );
 };
