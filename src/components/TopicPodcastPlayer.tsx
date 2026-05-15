@@ -511,7 +511,18 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       )}
 
       <Dialog open={regenOpen} onOpenChange={(o) => !regenSubmitting && setRegenOpen(o)}>
-        <DialogContent className="sm:max-w-sm">
+        <DialogContent
+          className="sm:max-w-sm"
+          onEscapeKeyDown={(e) => {
+            if (regenSubmitting) e.preventDefault();
+          }}
+          onPointerDownOutside={(e) => {
+            if (regenSubmitting) e.preventDefault();
+          }}
+          onInteractOutside={(e) => {
+            if (regenSubmitting) e.preventDefault();
+          }}
+        >
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 font-serif">
               <Lock className="h-4 w-4 text-primary" /> Regenerate podcast
@@ -521,7 +532,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
               Owner password required.
             </DialogDescription>
           </DialogHeader>
-          <form onSubmit={submitRegenerate} className="space-y-3">
+          <form onSubmit={submitRegenerate} className="space-y-3" noValidate>
             <div className="space-y-1.5">
               <Label htmlFor="regen-password" className="text-xs">
                 Owner password
@@ -539,17 +550,24 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
                 disabled={regenSubmitting}
                 aria-invalid={!!regenError}
                 aria-describedby={regenError ? "regen-error" : undefined}
+                aria-errormessage={regenError ? "regen-error" : undefined}
               />
-              {regenError && (
-                <p
-                  id="regen-error"
-                  role="alert"
-                  className="flex items-start gap-1.5 text-xs text-destructive"
-                >
-                  <AlertCircle className="h-3.5 w-3.5 mt-0.5 shrink-0" />
-                  <span>{regenError}</span>
-                </p>
-              )}
+              <div
+                aria-live="polite"
+                aria-atomic="true"
+                className="min-h-[1rem]"
+              >
+                {regenError && (
+                  <p
+                    id="regen-error"
+                    role="alert"
+                    className="flex items-start gap-1.5 text-xs text-destructive"
+                  >
+                    <AlertCircle className="h-3.5 w-3.5 mt-0.5 shrink-0" aria-hidden="true" />
+                    <span>{regenError}</span>
+                  </p>
+                )}
+              </div>
             </div>
             <DialogFooter className="gap-2 sm:gap-2">
               <Button
