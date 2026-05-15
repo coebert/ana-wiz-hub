@@ -9,6 +9,7 @@ import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNe
 import MyastheniaCrisisFlowchart from "@/components/diagrams/MyastheniaCrisisFlowchart";
 import MyasthenicVsCholinergicComparison from "@/components/diagrams/MyasthenicVsCholinergicComparison";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { SnodReferralDecider } from "@/components/SnodReferralDecider";
 import { Exam } from "@/data/curriculum";
 
 const tocItems = [
