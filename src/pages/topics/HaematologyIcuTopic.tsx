@@ -243,6 +243,7 @@ const HaematologyIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+            <DICPathophysiologyDiagram />
           </ExamSection>
 
           <ExamSection id="hus" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
