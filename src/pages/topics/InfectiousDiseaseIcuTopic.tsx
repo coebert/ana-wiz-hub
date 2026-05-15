@@ -829,7 +829,23 @@ const InfectiousDiseaseIcuTopic = () => {
                   <li>Wieruszewski PM, Barreto JN, Frazee E, Daniels CE, Tosh PK, Dierkhising RA, et al. Early corticosteroids for Pneumocystis pneumonia in adults without HIV are not associated with better outcome. Chest. 2018;154(3):636–44.</li>
                 </ol>
               </div>
-              <p className="italic">Severity cut-offs (PaO₂ &lt;9.3 kPa / 70 mmHg or A–a &gt;4.7 kPa / 35 mmHg on room air) and the prednisolone taper (40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d) cited in the management section and flowchart derive from refs 17–19, with confirmation in refs 20 and 22. The 21-day co-trimoxazole course and EOLIA-derived ECMO criteria are corroborated by refs 6–10.</p>
+              <div>
+                <p className="font-semibold text-foreground mb-1">Co-pathogen mini-pathways (CMV, IPA, TB, HAP/VAP)</p>
+                <ol className="list-decimal pl-5 space-y-1" start={25}>
+                  <li id="ref-25">Ljungman P, de la Camara R, Robin C, Crocchiolo R, Einsele H, Hill JA, et al. Guidelines for the management of cytomegalovirus infection in patients with haematological malignancies and after stem cell transplantation from the 2017 European Conference on Infections in Leukaemia (ECIL-7). Lancet Infect Dis. 2019;19(8):e260–72.</li>
+                  <li id="ref-26">Razonable RR, Humar A. Cytomegalovirus in solid organ transplant recipients — guidelines of the American Society of Transplantation Infectious Diseases Community of Practice. Clin Transplant. 2019;33(9):e13512.</li>
+                  <li id="ref-27">Patterson TF, Thompson GR III, Denning DW, Fishman JA, Hadley S, Herbrecht R, et al. Practice guidelines for the diagnosis and management of aspergillosis: 2016 update by the Infectious Diseases Society of America. Clin Infect Dis. 2016;63(4):e1–60.</li>
+                  <li id="ref-28">Ullmann AJ, Aguado JM, Arikan-Akdagli S, Denning DW, Groll AH, Lagrou K, et al. Diagnosis and management of Aspergillus diseases: executive summary of the 2017 ESCMID-ECMM-ERS guideline. Clin Microbiol Infect. 2018;24(Suppl 1):e1–38.</li>
+                  <li id="ref-29">Verweij PE, Brüggemann RJM, Azoulay E, Bassetti M, Blot S, Buil JB, et al. Taskforce report on the diagnosis and clinical management of COVID-19 associated pulmonary aspergillosis. Intensive Care Med. 2021;47(8):819–34.</li>
+                  <li id="ref-30">World Health Organization. WHO consolidated guidelines on tuberculosis. Module 4: treatment — drug-susceptible tuberculosis treatment. Geneva: WHO; 2022.</li>
+                  <li id="ref-31">Nahid P, Dorman SE, Alipanah N, Barry PM, Brozek JL, Cattamanchi A, et al. Official ATS/CDC/IDSA clinical practice guidelines: treatment of drug-susceptible tuberculosis. Clin Infect Dis. 2016;63(7):e147–95.</li>
+                  <li id="ref-32">National Institute for Health and Care Excellence. Tuberculosis. NICE guideline NG33. London: NICE; 2016, updated 2022.</li>
+                  <li id="ref-33">Kalil AC, Metersky ML, Klompas M, Muscedere J, Sweeney DA, Palmer LB, et al. Management of adults with hospital-acquired and ventilator-associated pneumonia: 2016 IDSA/ATS clinical practice guidelines. Clin Infect Dis. 2016;63(5):e61–111.</li>
+                  <li id="ref-34">Evans L, Rhodes A, Alhazzani W, Antonelli M, Coopersmith CM, French C, et al. Surviving Sepsis Campaign: international guidelines for management of sepsis and septic shock 2021. Intensive Care Med. 2021;47(11):1181–247.</li>
+                  <li id="ref-35">de Jong E, van Oers JA, Beishuizen A, Vos P, Vermeijden WJ, Haas LE, et al. Efficacy and safety of procalcitonin guidance in reducing the duration of antibiotic treatment in critically ill patients (SAPS): a randomised, controlled, open-label trial. Lancet Infect Dis. 2016;16(7):819–27.</li>
+                </ol>
+              </div>
+              <p className="italic">Severity cut-offs (PaO₂ &lt;9.3 kPa / 70 mmHg or A–a &gt;4.7 kPa / 35 mmHg on room air) and the prednisolone taper (40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d) cited in the management section and flowchart derive from refs 17–19, with confirmation in refs 20 and 22. The 21-day co-trimoxazole course and EOLIA-derived ECMO criteria are corroborated by refs 6–10. Co-pathogen mini-pathway dosing, monitoring and stopping rules are grounded in refs 25–35; evidence-confidence chips reflect the GRADE rating of the cited guideline (Strong recommendation / High–Moderate quality evidence vs Conditional / Moderate–Low quality).</p>
 
               <div className="mt-3 p-3 rounded-lg border border-icu/40 bg-icu/5">
                 <p className="font-semibold text-foreground text-sm mb-2">Key evidence takeaways (exam-ready)</p>
