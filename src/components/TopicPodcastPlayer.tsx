@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download, RefreshCw } from "lucide-react";
+import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download, RefreshCw, Database, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import {
@@ -29,6 +29,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const [podcast, setPodcast] = useState<PodcastResult | null>(null);
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
+  const [source, setSource] = useState<"cache" | "fresh" | null>(null);
   const [showScript, setShowScript] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -56,6 +57,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       const existing = await fetchPodcast(topicId);
       if (!cancelled) {
         setPodcast(existing);
+        if (existing && existing.status === "ready") setSource("cache");
         setLoading(false);
       }
     })();
@@ -86,6 +88,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           const polled = await fetchPodcast(topicId);
           if (polled && polled.status !== "generating") {
             setPodcast(polled);
+            if (polled.status === "ready") setSource("fresh");
             return;
           }
         }
@@ -97,6 +100,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       }
 
       setPodcast(result);
+      if (result.status === "ready") setSource("fresh");
     } catch (err) {
       setPodcast({
         status: "failed",
@@ -112,6 +116,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     if (!pw) return;
     // Reset player state so the user sees the generation UI immediately.
     setPodcast(null);
+    setSource(null);
     setIsPlaying(false);
     setCurrentTime(0);
     setDuration(0);
@@ -259,9 +264,27 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       <div className="flex items-center gap-3">
         <Headphones className="h-5 w-5 text-primary shrink-0" />
         <div className="flex-1 min-w-0">
-          <h3 className="font-serif text-sm font-semibold text-foreground truncate">
-            Topic podcast
-          </h3>
+          <div className="flex items-center gap-2">
+            <h3 className="font-serif text-sm font-semibold text-foreground truncate">
+              Topic podcast
+            </h3>
+            {source === "cache" && (
+              <span
+                className="inline-flex items-center gap-1 rounded-full border border-border bg-muted/60 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground"
+                title="Playing previously generated audio from cache"
+              >
+                <Database className="h-2.5 w-2.5" /> Cached
+              </span>
+            )}
+            {source === "fresh" && (
+              <span
+                className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-1.5 py-0.5 text-[10px] font-medium text-primary"
+                title="Freshly generated this session"
+              >
+                <Sparkles className="h-2.5 w-2.5" /> Freshly generated
+              </span>
+            )}
+          </div>
           <p className="text-xs text-muted-foreground">
             Exam-focused tutorial · ~{Math.round(totalDuration / 60)} min
             {scriptWords > 0 && <> · {scriptWords.toLocaleString()} words</>}
