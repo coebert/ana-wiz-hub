@@ -58,8 +58,12 @@ interface RequestBody {
 
 // Shared secret that authorises bypassing the cached podcast and regenerating
 // from scratch. Owner-only — surfaced via a hidden UI control.
-// Stored in edge-function secrets as REGENERATE_PASSWORD.
-const REGENERATE_PASSWORD = Deno.env.get("REGENERATE_PASSWORD") ?? "";
+// Accept the current secret name plus the legacy one to avoid lockouts.
+const REGENERATE_PASSWORD = (
+  Deno.env.get("REGENERATE_PASSWORD") ??
+  Deno.env.get("PODCAST_REGEN_SECRET") ??
+  ""
+).trim();
 
 // Hard cap on incoming content length to bound AI/TTS cost per request.
 const MAX_CONTENT_CHARS = 50_000;
@@ -366,7 +370,8 @@ Deno.serve(async (req) => {
     // Validate force-regenerate password before doing anything else.
     const forceRegenerate = force === true;
     if (forceRegenerate) {
-      if (!REGENERATE_PASSWORD || regeneratePassword !== REGENERATE_PASSWORD) {
+      const submittedPassword = typeof regeneratePassword === "string" ? regeneratePassword.trim() : "";
+      if (!REGENERATE_PASSWORD || submittedPassword !== REGENERATE_PASSWORD) {
         return jsonResponse({ status: "failed", error: "Invalid regeneration password." }, 403);
       }
     }
