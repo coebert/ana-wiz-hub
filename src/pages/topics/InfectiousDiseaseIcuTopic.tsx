@@ -300,6 +300,28 @@ const InfectiousDiseaseIcuTopic = () => {
               </div>
             </div>
 
+            <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Why give dexamethasone in bacterial meningitis?</h3>
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-4 text-sm text-muted-foreground space-y-2">
+              <p>
+                Most neurological injury in bacterial meningitis is driven not by the organism itself but by the <strong>host inflammatory response</strong> in the subarachnoid space. Bactericidal antibiotics rapidly lyse bacteria, releasing <strong>cell-wall components</strong> (pneumococcal lipoteichoic acid, peptidoglycan; meningococcal LPS) that activate Toll-like receptors on leukocytes, microglia and CSF macrophages.
+              </p>
+              <p>
+                The resulting cytokine surge (<strong>TNF-α, IL-1β, IL-6</strong>) and matrix metalloproteinase release produces the four mechanisms of secondary brain injury that determine outcome:
+              </p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li><strong>Blood–brain-barrier breakdown</strong> → vasogenic cerebral oedema and raised ICP.</li>
+                <li><strong>Cerebral vasculitis &amp; vasospasm</strong> → arterial / venous infarction (especially of cortical perforators and cranial nerves).</li>
+                <li><strong>Impaired CSF reabsorption</strong> at the arachnoid villi and basal exudate → communicating hydrocephalus.</li>
+                <li><strong>Cochlear inflammation</strong> via the cochlear aqueduct → sensorineural deafness (the commonest neurological sequela of pneumococcal meningitis).</li>
+              </ul>
+              <p>
+                <strong>Dexamethasone</strong> (potent, long-acting glucocorticoid with negligible mineralocorticoid effect and good CSF penetration) blunts NF-κB-driven cytokine transcription, stabilises the BBB and reduces neutrophil chemotaxis. To work, it must be present <em>before</em> antibiotic-induced bacteriolysis releases its inflammatory cargo — hence the rule to give it <strong>with or before the first antibiotic dose</strong>.
+              </p>
+              <p>
+                The pivotal European RCT (<em>de Gans &amp; van de Beek, N Engl J Med. 2002;347(20):1549–56</em>) showed adjuvant dexamethasone 10 mg IV q6h for 4 days reduced unfavourable outcome (RR 0.59) and mortality (RR 0.48) in adult bacterial meningitis, with the largest benefit in <em>S. pneumoniae</em> (mortality 14% vs 34%). The Cochrane review (<em>Brouwer MC et al., Cochrane Database Syst Rev. 2015;(9):CD004405</em>) confirms reduced hearing loss and short-term neurological sequelae in high-income settings, with no overall mortality benefit in low-income / HIV-prevalent populations — but pneumococcal subgroup benefit persists. ESCMID 2016, IDSA 2004 and NICE NG240 (2024) all endorse use, with the proviso to <strong>stop early if a non-pneumococcal organism is identified</strong>.
+              </p>
+            </div>
+
             <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Duration of adjunctive dexamethasone</h3>
             <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-4">
               <p className="text-sm text-muted-foreground mb-2">
