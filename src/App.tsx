@@ -8,8 +8,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
+import { UpdateBanner } from "@/components/UpdateBanner";
 import { VisitTrackerWrapper } from "@/components/VisitTrackerWrapper";
-
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
