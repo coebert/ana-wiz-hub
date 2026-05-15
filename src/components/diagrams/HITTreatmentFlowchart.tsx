@@ -1,4 +1,5 @@
 import { DiagramFigure, svgImgProps } from "./_shared/DiagramFigure";
+import { Cite } from "@/components/Cite";
 
 /**
  * HIT treatment flowchart — from "stop heparin" through alternative anticoagulant
