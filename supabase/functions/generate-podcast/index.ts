@@ -264,10 +264,18 @@ function chunkScript(script: string): string[] {
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
+const TTS_REQUEST_TIMEOUT_MS = 60_000;
+
 async function synthesiseChunk(text: string, attempt = 1): Promise<Uint8Array> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(
+    () => controller.abort(new Error(`TTS request timed out after ${TTS_REQUEST_TIMEOUT_MS}ms`)),
+    TTS_REQUEST_TIMEOUT_MS,
+  );
   try {
     const response = await fetch("https://api.openai.com/v1/audio/speech", {
       method: "POST",
+      signal: controller.signal,
       headers: {
         Authorization: `Bearer ${OPENAI_API_KEY}`,
         "Content-Type": "application/json",
@@ -302,16 +310,21 @@ async function synthesiseChunk(text: string, attempt = 1): Promise<Uint8Array> {
     if (bytes.length === 0) throw new Error("OpenAI TTS returned empty audio");
     return bytes;
   } catch (err) {
-    // Retry network errors too.
+    // Retry network errors and timeouts. Quota / explicit OpenAI failures bubble up.
     const message = err instanceof Error ? err.message : String(err);
-    const isNetwork = !message.includes("OpenAI TTS");
+    const isAbort = err instanceof Error && err.name === "AbortError";
+    const isNetwork = isAbort || !message.includes("OpenAI TTS");
     if (isNetwork && attempt < TTS_MAX_RETRIES) {
       const backoff = 500 * Math.pow(2, attempt - 1) + Math.random() * 250;
-      console.warn(`[tts] network error, retry ${attempt}/${TTS_MAX_RETRIES} in ${Math.round(backoff)}ms: ${message}`);
+      console.warn(
+        `[tts] ${isAbort ? "timeout" : "network error"}, retry ${attempt}/${TTS_MAX_RETRIES} in ${Math.round(backoff)}ms: ${message}`,
+      );
       await sleep(backoff);
       return synthesiseChunk(text, attempt + 1);
     }
     throw err;
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
