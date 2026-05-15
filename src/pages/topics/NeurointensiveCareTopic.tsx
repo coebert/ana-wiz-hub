@@ -275,6 +275,71 @@ const NeurointensiveCareTopic = () => {
           <div className="mt-3 p-3 rounded-lg border border-border bg-muted/30 text-xs text-muted-foreground">
             <span className="font-semibold text-foreground">Exam pearl:</span> Volume status is the key discriminator between SIADH and CSW — both have hyponatraemia with high urine Na⁺ and high urine osmolality. SIADH is euvolaemic, CSW is hypovolaemic. Getting it wrong is dangerous: fluid restriction in CSW worsens cerebral perfusion and precipitates vasospasm-related infarction in SAH.
           </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Diagnostic flowchart</h3>
+          <p className="text-xs text-muted-foreground mb-3">Sequential bedside approach: serum Na⁺ → plasma/urine osmolality → urine Na⁺ → urine output → volume status.</p>
+
+          <div className="space-y-2 text-xs">
+            <div className="p-3 rounded-lg border border-border bg-card">
+              <p className="font-semibold text-foreground">Step 1 — Serum Na⁺</p>
+              <div className="grid sm:grid-cols-2 gap-2 mt-2">
+                <div className="p-2 rounded border border-border bg-muted/30"><span className="font-semibold text-foreground">Na⁺ &lt; 135</span> → hyponatraemia pathway (Step 2)</div>
+                <div className="p-2 rounded border border-border bg-muted/30"><span className="font-semibold text-foreground">Na⁺ &gt; 145</span> + polyuria → suspect <span className="font-semibold text-foreground">DI</span> (Step 5)</div>
+              </div>
+            </div>
+
+            <div className="p-3 rounded-lg border border-border bg-card">
+              <p className="font-semibold text-foreground">Step 2 — Plasma &amp; urine osmolality</p>
+              <div className="grid sm:grid-cols-3 gap-2 mt-2">
+                <div className="p-2 rounded border border-border bg-muted/30">Plasma osm <span className="font-semibold text-foreground">&gt;275</span> → pseudo-/hypertonic (glucose, mannitol). Stop.</div>
+                <div className="p-2 rounded border border-border bg-muted/30">Plasma <span className="font-semibold text-foreground">&lt;275</span> + urine osm <span className="font-semibold text-foreground">&lt;100</span> → primary polydipsia / low solute. Stop.</div>
+                <div className="p-2 rounded border border-border bg-muted/30">Plasma <span className="font-semibold text-foreground">&lt;275</span> + urine osm <span className="font-semibold text-foreground">&gt;100</span> → ADH-driven → Step 3.</div>
+              </div>
+            </div>
+
+            <div className="p-3 rounded-lg border border-border bg-card">
+              <p className="font-semibold text-foreground">Step 3 — Urine Na⁺</p>
+              <div className="grid sm:grid-cols-2 gap-2 mt-2">
+                <div className="p-2 rounded border border-border bg-muted/30">Urine Na⁺ <span className="font-semibold text-foreground">&lt;20</span> → extra-renal loss / hypovolaemia (D&amp;V, third-spacing). Not SIADH/CSW.</div>
+                <div className="p-2 rounded border border-border bg-muted/30">Urine Na⁺ <span className="font-semibold text-foreground">&gt;40</span> → renal Na⁺ wasting → SIADH vs CSW (Step 4).</div>
+              </div>
+            </div>
+
+            <div className="p-3 rounded-lg border border-border bg-card">
+              <p className="font-semibold text-foreground">Step 4 — Urine output &amp; volume status (the decider)</p>
+              <div className="grid sm:grid-cols-2 gap-2 mt-2">
+                <div className="p-2 rounded border border-border bg-primary/10">
+                  <p className="font-semibold text-foreground">Euvolaemic + normal/low UO</p>
+                  <p className="mt-1">Normal CVP, no postural drop, neutral/positive balance, low urate, normal Hct/urea.</p>
+                  <p className="mt-1 font-semibold text-foreground">→ SIADH</p>
+                  <p className="mt-1">Rx: fluid restrict 0.8–1 L/day (avoid in SAH); hypertonic saline if symptomatic; tolvaptan if persistent.</p>
+                </div>
+                <div className="p-2 rounded border border-border bg-primary/10">
+                  <p className="font-semibold text-foreground">Hypovolaemic + polyuria (&gt;3 L/day)</p>
+                  <p className="mt-1">↓CVP, postural drop, negative balance, ↑Hct/urea, weight loss.</p>
+                  <p className="mt-1 font-semibold text-foreground">→ Cerebral salt wasting</p>
+                  <p className="mt-1">Rx: 0.9% or hypertonic saline + fludrocortisone 0.1–0.4 mg/day. Never fluid restrict.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-3 rounded-lg border border-border bg-card">
+              <p className="font-semibold text-foreground">Step 5 — Hypernatraemia + polyuria (DI pathway)</p>
+              <p className="mt-1 text-muted-foreground">UO &gt;3 mL/kg/h, urine osm &lt;300, plasma osm &gt;295, urine SG &lt;1.005.</p>
+              <div className="grid sm:grid-cols-2 gap-2 mt-2">
+                <div className="p-2 rounded border border-border bg-primary/10">
+                  <p className="font-semibold text-foreground">DDAVP trial: urine osm rises &gt;50%</p>
+                  <p className="mt-1 font-semibold text-foreground">→ Cranial DI</p>
+                  <p className="mt-1">Rx: DDAVP 1–2 µg IV/SC or 10–20 µg intranasal; replace UO with 0.45% saline / 5% dextrose.</p>
+                </div>
+                <div className="p-2 rounded border border-border bg-primary/10">
+                  <p className="font-semibold text-foreground">DDAVP trial: no response</p>
+                  <p className="mt-1 font-semibold text-foreground">→ Nephrogenic DI</p>
+                  <p className="mt-1">Rx: treat cause (lithium, hyperCa²⁺, hypoK⁺); thiazide + low-salt diet; amiloride if lithium-induced.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </ExamSection>
 
         <ExamSection id="toc-bsd" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
