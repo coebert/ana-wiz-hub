@@ -151,6 +151,12 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       return;
     }
 
+    // Snapshot prior player state so we can restore it if anything fails
+    // after we've optimistically swapped into "generating" mode.
+    const prevPodcast = podcast;
+    const prevSource = source;
+    let swappedToGenerating = false;
+
     setRegenSubmitting(true);
     try {
       const content = extractTopicContent();
@@ -161,13 +167,24 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
       // Probe with the password first so we can surface an invalid-password
       // error inline in the dialog without nuking the existing player state.
-      const result = await generatePodcast(topicId, topicTitle, content, {
-        force: true,
-        regeneratePassword: pw,
-      });
+      let result: PodcastResult;
+      try {
+        result = await generatePodcast(topicId, topicTitle, content, {
+          force: true,
+          regeneratePassword: pw,
+        });
+      } catch (err) {
+        setRegenError(err instanceof Error ? err.message : "Regeneration request failed.");
+        return;
+      }
 
       if (result.status === "failed" && isInvalidPasswordError(result.error)) {
         setRegenError("Invalid password. Please try again.");
+        return;
+      }
+
+      if (result.status === "failed") {
+        setRegenError(result.error || "Regeneration failed. Please try again.");
         return;
       }
 
@@ -179,11 +196,18 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       setCurrentTime(0);
       setDuration(0);
       setGenerating(true);
+      swappedToGenerating = true;
+
       try {
         if (result.status === "generating") {
           for (let i = 0; i < 60; i++) {
             await new Promise((r) => setTimeout(r, 5000));
-            const polled = await fetchPodcast(topicId);
+            let polled: PodcastResult | null = null;
+            try {
+              polled = await fetchPodcast(topicId);
+            } catch {
+              polled = null;
+            }
             if (polled && polled.status !== "generating") {
               setPodcast(polled);
               if (polled.status === "ready") setSource("fresh");
@@ -198,13 +222,36 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         }
         setPodcast(result);
         if (result.status === "ready") setSource("fresh");
+      } catch (err) {
+        // Polling/render failed after we cleared state — surface a failed
+        // podcast tile so the UI is never stuck in an indeterminate state.
+        setPodcast({
+          status: "failed",
+          error: err instanceof Error ? err.message : "Regeneration failed.",
+        });
       } finally {
         setGenerating(false);
       }
     } catch (err) {
-      setRegenError(err instanceof Error ? err.message : "Unknown error");
+      // Catch-all: if we never swapped into generating, restore prior state
+      // and show the error inline; otherwise mark the player as failed.
+      if (!swappedToGenerating) {
+        setRegenError(err instanceof Error ? err.message : "Unknown error");
+      } else {
+        setGenerating(false);
+        setPodcast({
+          status: "failed",
+          error: err instanceof Error ? err.message : "Regeneration failed.",
+        });
+      }
     } finally {
       setRegenSubmitting(false);
+      // Safety net: if something unexpected left us mid-flight without
+      // either a podcast or generating flag, restore the prior snapshot.
+      if (swappedToGenerating === false && regenOpen === false) {
+        if (prevPodcast !== null) setPodcast(prevPodcast);
+        if (prevSource !== null) setSource(prevSource);
+      }
     }
   };
 
