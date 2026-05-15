@@ -105,15 +105,26 @@ export const generatePodcast = async (
     },
   });
 
-  if (data?.status === "failed") {
-    return data as PodcastResult;
-  }
-
   if (error) {
+    const failedPayload = (error.context && typeof error.context === "object")
+      ? (error.context as Partial<PodcastResult>)
+      : undefined;
+
+    if (failedPayload?.status === "failed") {
+      return {
+        status: "failed",
+        error: failedPayload.error || error.message || "Podcast generation failed",
+      };
+    }
+
     return {
       status: "failed",
-      error: data?.error || error.message || "Podcast generation failed",
+      error: error.message || "Podcast generation failed",
     };
+  }
+
+  if (data?.status === "failed") {
+    return data as PodcastResult;
   }
 
   return data as PodcastResult;
