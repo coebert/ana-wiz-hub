@@ -3,6 +3,12 @@ import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import TTPPathophysiologyDiagram from "@/components/diagrams/TTPPathophysiologyDiagram";
+import HUSPathophysiologyDiagram from "@/components/diagrams/HUSPathophysiologyDiagram";
+import DICPathophysiologyDiagram from "@/components/diagrams/DICPathophysiologyDiagram";
+import HLHPathophysiologyDiagram from "@/components/diagrams/HLHPathophysiologyDiagram";
+import HITPathophysiologyDiagram from "@/components/diagrams/HITPathophysiologyDiagram";
+import RebalancedHaemostasisDiagram from "@/components/diagrams/RebalancedHaemostasisDiagram";
 
 const objectives = [
   "Differentiate the thrombotic microangiopathies (TTP, HUS, DIC) using ADAMTS13 activity, coagulation screen, and PLASMIC score.",
