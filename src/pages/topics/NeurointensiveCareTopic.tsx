@@ -232,6 +232,51 @@ const NeurointensiveCareTopic = () => {
           </div>
         </ExamSection>
 
+        <ExamSection id="toc-sodium" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sodium Disorders in Neuro-ICU: SIADH vs CSW vs DI</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Common after SAH, TBI, pituitary surgery, meningitis. Distinguishing SIADH from cerebral salt wasting (CSW) is critical because management is opposite — fluid restriction vs salt and volume replacement. Diabetes insipidus (DI) presents with hypernatraemia and polyuria.
+          </p>
+          <div className="overflow-x-auto rounded-lg border border-border">
+            <table className="w-full text-xs">
+              <thead className="bg-muted/50">
+                <tr>
+                  <th className="text-left p-2 font-semibold text-foreground">Feature</th>
+                  <th className="text-left p-2 font-semibold text-foreground">SIADH</th>
+                  <th className="text-left p-2 font-semibold text-foreground">Cerebral Salt Wasting (CSW)</th>
+                  <th className="text-left p-2 font-semibold text-foreground">Diabetes Insipidus (DI)</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                {[
+                  ["Mechanism", "Inappropriate ADH release → water retention", "Renal Na⁺ loss (BNP/ANP, sympathetic) → volume + Na⁺ depletion", "ADH deficiency (cranial) or renal resistance (nephrogenic)"],
+                  ["Typical setting", "SAH, meningitis, anti-LGI1, post-op", "SAH (esp. days 3–10), TBI", "Pituitary surgery, TBI, brain death, anoxic injury"],
+                  ["Serum Na⁺", "Low (<135 mmol/L)", "Low (<135 mmol/L)", "High (>145 mmol/L)"],
+                  ["Volume status", "Euvolaemic / mildly hypervolaemic", "Hypovolaemic (↓CVP, ↓skin turgor, ↓BP, ↑HR)", "Hypovolaemic if not replaced"],
+                  ["Urine output", "Normal or low", "High (polyuria, often >3 L/day)", "Very high (>3 mL/kg/h, often 5–20 L/day)"],
+                  ["Urine Na⁺", "High (>40 mmol/L)", "Very high (>40, often >100 mmol/L)", "Variable (low if dehydrated)"],
+                  ["Urine osmolality", "Inappropriately high (>100 mOsm/kg)", "High", "Low (<300 mOsm/kg; <200 in complete DI)"],
+                  ["Plasma osmolality", "Low (<275 mOsm/kg)", "Low or normal", "High (>295 mOsm/kg)"],
+                  ["Serum urate", "Low (<0.24 mmol/L)", "Low", "Normal or high"],
+                  ["Fluid balance", "Positive", "Negative", "Markedly negative"],
+                  ["Management", "Fluid restrict 0.8–1 L/day; consider hypertonic saline if symptomatic; tolvaptan/demeclocycline if persistent. Avoid in SAH (vasospasm risk).", "Replace volume + Na⁺ with 0.9% or hypertonic saline; fludrocortisone 0.1–0.4 mg/day; never fluid restrict.", "Cranial: desmopressin (DDAVP) 1–2 µg IV/SC or 10–20 µg intranasal; match urine output with hypotonic fluid (0.45% saline or 5% dextrose). Nephrogenic: thiazide, low-salt diet, treat cause."],
+                  ["Correction rate", "≤8–10 mmol/L per 24 h (osmotic demyelination risk)", "≤8–10 mmol/L per 24 h", "≤10–12 mmol/L per 24 h (cerebral oedema risk)"],
+                ].map(([feature, siadh, csw, di]) => (
+                  <tr key={feature} className="border-t border-border align-top">
+                    <td className="p-2 font-medium text-foreground">{feature}</td>
+                    <td className="p-2">{siadh}</td>
+                    <td className="p-2">{csw}</td>
+                    <td className="p-2">{di}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-3 p-3 rounded-lg border border-border bg-muted/30 text-xs text-muted-foreground">
+            <span className="font-semibold text-foreground">Exam pearl:</span> Volume status is the key discriminator between SIADH and CSW — both have hyponatraemia with high urine Na⁺ and high urine osmolality. SIADH is euvolaemic, CSW is hypovolaemic. Getting it wrong is dangerous: fluid restriction in CSW worsens cerebral perfusion and precipitates vasospasm-related infarction in SAH.
+          </div>
+        </ExamSection>
+
         <ExamSection id="toc-bsd" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Brain Death & Brainstem Testing</h2>
           <p className="text-muted-foreground leading-relaxed mb-2">
