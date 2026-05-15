@@ -340,6 +340,41 @@ const NeurointensiveCareTopic = () => {
               </div>
             </div>
           </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Lab interpretation guide</h3>
+          <p className="text-xs text-muted-foreground mb-3">What a high urine osmolality and high urine Na⁺ actually <em>mean</em> in each condition — the physiology behind the numbers.</p>
+
+          <div className="space-y-2 text-xs">
+            <div className="p-3 rounded-lg border border-border bg-card">
+              <p className="font-semibold text-foreground">Urine osmolality (normal 50–1200 mOsm/kg)</p>
+              <p className="mt-1 text-muted-foreground">Reflects ADH activity at the collecting duct. High = ADH is acting (water reabsorbed → concentrated urine). Low = no ADH effect (dilute urine).</p>
+              <ul className="mt-2 space-y-1">
+                <li><span className="font-semibold text-foreground">SIADH:</span> urine osm <span className="font-semibold text-foreground">&gt;100</span> (often 300–600) <em>despite</em> low plasma osm. Inappropriate — kidneys should be making maximally dilute urine (&lt;100) to dump free water. Proves ADH is being secreted when it should be off.</li>
+                <li><span className="font-semibold text-foreground">CSW:</span> urine osm also <span className="font-semibold text-foreground">high</span> — but here ADH release is <em>appropriate</em>, driven by true hypovolaemia (baroreceptor-mediated, non-osmotic ADH stimulus). Kidney is correctly conserving water; the primary lesion is renal Na⁺ loss.</li>
+                <li><span className="font-semibold text-foreground">DI:</span> urine osm <span className="font-semibold text-foreground">&lt;300</span> (complete DI &lt;200) despite plasma osm &gt;295. Kidneys cannot concentrate — either no ADH (cranial) or tubules unresponsive (nephrogenic). Patient pours out dilute urine and becomes hypernatraemic.</li>
+              </ul>
+            </div>
+
+            <div className="p-3 rounded-lg border border-border bg-card">
+              <p className="font-semibold text-foreground">Urine Na⁺ (spot sample)</p>
+              <p className="mt-1 text-muted-foreground">Reflects renal Na⁺ handling. &lt;20 mmol/L = avid Na⁺ retention (true volume depletion or oedematous states). &gt;40 mmol/L = renal Na⁺ wasting OR euvolaemic excretion matching intake.</p>
+              <ul className="mt-2 space-y-1">
+                <li><span className="font-semibold text-foreground">SIADH:</span> urine Na⁺ <span className="font-semibold text-foreground">&gt;40</span> because the patient is euvolaemic/mildly expanded — pressure natriuresis and suppressed aldosterone allow Na⁺ to escape in urine. Excretion just matches intake; there is no primary salt loss.</li>
+                <li><span className="font-semibold text-foreground">CSW:</span> urine Na⁺ <span className="font-semibold text-foreground">very high (often &gt;100)</span> — this is the <em>primary</em> abnormality. Cerebral BNP/ANP release and ↑sympathetic tone drive renal Na⁺ excretion exceeding intake → negative Na⁺ balance, volume depletion, secondary water retention.</li>
+                <li><span className="font-semibold text-foreground">DI:</span> urine Na⁺ is <span className="font-semibold text-foreground">variable and unhelpful</span> — usually low if dehydrated (intact RAAS conserving Na⁺). Diagnosis rests on osmolality and DDAVP response, not urine Na⁺.</li>
+              </ul>
+            </div>
+
+            <div className="p-3 rounded-lg border border-border bg-card">
+              <p className="font-semibold text-foreground">Putting it together — the &quot;same numbers, opposite problem&quot; trap</p>
+              <p className="mt-1 text-muted-foreground">SIADH and CSW share <span className="font-semibold text-foreground">low serum Na⁺ + high urine osm + high urine Na⁺</span>. Labs alone cannot separate them. The discriminator is <span className="font-semibold text-foreground">volume status and Na⁺ balance</span>:</p>
+              <ul className="mt-2 space-y-1">
+                <li><span className="font-semibold text-foreground">SIADH</span> = water problem (too much ADH → water retention → dilutional hyponatraemia). Total body Na⁺ normal; total body water high. Urate <span className="font-semibold text-foreground">low</span> and stays low.</li>
+                <li><span className="font-semibold text-foreground">CSW</span> = salt problem (renal Na⁺ wasting → volume depletion → secondary appropriate ADH). Total body Na⁺ low; total body water also low. Urate <span className="font-semibold text-foreground">low</span> too — but normalises after volume repletion (unlike SIADH).</li>
+                <li><span className="font-semibold text-foreground">DI</span> = ADH problem (deficiency or resistance → free water loss → hypernatraemia). Total body water low; total body Na⁺ normal but concentrated.</li>
+              </ul>
+            </div>
+          </div>
         </ExamSection>
 
         <ExamSection id="toc-bsd" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
