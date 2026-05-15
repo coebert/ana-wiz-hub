@@ -28,11 +28,14 @@ const tocItems = [
 const objectives = [
   "Apply BTF targets (ICP, CPP, PaCO₂, temperature, glucose) to prevent secondary brain injury in TBI.",
   "Escalate status epilepticus through benzodiazepine → second-line AED → general anaesthesia with EEG.",
-  "Manage SAH complications: rebleeding, vasospasm (nimodipine), hydrocephalus, cerebral salt wasting vs SIADH.",
+  "Manage SAH complications: rebleeding, vasospasm (nimodipine), hydrocephalus, and associated sodium disturbance.",
+  "Differentiate SIADH, cerebral salt wasting and diabetes insipidus using volume status, urine Na/osmolality and the diagnostic flowchart, and treat each appropriately.",
   "Perform UK brainstem death testing — confounder exclusion, two doctors, two sets, apnoea test PaCO₂ >6.65 kPa.",
-  "Manage acute SCI: MAP ≥85 mmHg, neurogenic vs spinal shock, autonomic dysreflexia, suxamethonium safety window.",
-  "Interpret ICP, EVD, PbtO₂ and microdialysis (LPR, glucose, glycerol) to guide tier-based therapy.",
-  "Recognise autoimmune encephalitis, GBS respiratory failure (20/30/40 rule), and the devastating brain injury pathway.",
+  "Manage acute SCI: MAP ≥85 mmHg, neurogenic vs spinal shock, autonomic dysreflexia, suxamethonium safety window, plus respiratory, bowel and bladder care.",
+  "Interpret ICP, EVD, PbtO₂ and microdialysis (LPR, glucose, glycerol) to guide tier-based therapy and multimodal neuromonitoring.",
+  "Recognise and manage autoimmune encephalitis (antibody classes, first- and second-line immunotherapy) and GBS respiratory failure (20/30/40 rule).",
+  "Manage myasthenic crisis: identify triggers, distinguish myasthenic from cholinergic crisis, and escalate immunotherapy and ventilatory support.",
+  "Apply the devastating brain injury pathway — 72-hour active management, exclusion of confounders before prognostication, and organ donation referral.",
 ];
 
 const workedExamples: WorkedExample[] = [
