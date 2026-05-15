@@ -489,16 +489,16 @@ const InfectiousDiseaseIcuTopic = () => {
                 <p className="text-xs text-muted-foreground mt-1">ABG (A–a gradient stratifies severity), FBC/U&amp;E/LFT/G6PD (before high-dose co-trimoxazole), HIV test + CD4 + viral load, β-D-glucan, LDH, blood cultures, CMV PCR, respiratory virus PCR, HRCT, urgent BAL if safe. Screen for co-pathogens (CMV, bacterial, TB, fungal). Document immunosuppression history.</p>
               </div>
               <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Severity grading <span className="font-normal text-muted-foreground">(NIH–UC Consensus, NEJM 1990)</span></p>
-                <p className="text-xs text-muted-foreground mt-1"><strong>Mild:</strong> PaO₂ &gt;9.3 kPa (&gt;70 mmHg) <em>and</em> A–a &lt;4.7 kPa (&lt;35 mmHg) on room air. <strong>Moderate–severe (steroid threshold):</strong> PaO₂ &lt;9.3 kPa (≤70 mmHg) <em>or</em> A–a ≥4.7 kPa (≥35 mmHg) — adjuvant corticosteroids indicated. UK practice often uses the rounded ICU cut-off PaO₂ &lt;8 kPa to flag patients needing escalation. Cut-offs derived from <em>NIH–UC Expert Panel Consensus Statement, NEJM 1990;323:1500–4</em> and <em>Bozzette SA et al., NEJM 1990;323:1451–7</em>; reinforced by BHIVA 2011 opportunistic infection guidelines.</p>
+                <p className="font-semibold text-foreground text-sm">Severity grading</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Mild:</strong> PaO₂ &gt;9.3 kPa (&gt;70 mmHg) <em>and</em> A–a &lt;4.7 kPa (&lt;35 mmHg) on room air. <strong>Moderate–severe (steroid threshold):</strong> PaO₂ &lt;9.3 kPa (≤70 mmHg) <em>or</em> A–a ≥4.7 kPa (≥35 mmHg) — adjuvant corticosteroids indicated.<sup>17,18</sup> UK ICU practice often uses the rounded cut-off PaO₂ &lt;8 kPa to flag patients needing escalation.<sup>22</sup></p>
               </div>
             </div>
 
             <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-3">
               <p className="font-semibold text-foreground text-sm mb-1">Management</p>
               <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
-                <li><strong>1st line:</strong> co-trimoxazole (TMP–SMX) <strong>15–20 mg/kg/day of TMP component IV in 3–4 divided doses</strong>, switch to oral when stable. Total course <strong>21 days</strong> (HIV) or 14–21 days (non-HIV).</li>
-                <li><strong>Adjuvant steroids</strong> (mortality benefit if PaO₂ &lt;9.3 kPa / 70 mmHg or A–a &gt;4.7 kPa / 35 mmHg on room air, especially HIV): <strong>prednisolone 40 mg PO BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d</strong> (or equivalent IV methylprednisolone at 75% dose). Start with or before the first dose of co-trimoxazole, ideally within 72 h. Regimen and indication from the <em>NIH–UC Consensus Statement (NEJM 1990;323:1500–4)</em> based on the <em>Gagnon S et al. NEJM 1990;323:1444–50</em> and <em>Bozzette SA et al. NEJM 1990;323:1451–7</em> RCTs (mortality reduction NNT ~9); benefit confirmed by <em>Ewald H et al., Cochrane Database Syst Rev 2015;(4):CD006150</em>. Benefit in non-HIV PCP less clear (<em>Pareja JG et al., Chest 1998;113:1215–24</em>; <em>Wieruszewski PM et al., Mayo Clin Proc 2018</em>) but commonly used.</li>
+                <li><strong>1st line:</strong> co-trimoxazole (TMP–SMX) <strong>15–20 mg/kg/day of TMP component IV in 3–4 divided doses</strong>, switch to oral when stable. Total course <strong>21 days</strong> (HIV) or 14–21 days (non-HIV).<sup>6,7</sup></li>
+                <li><strong>Adjuvant steroids</strong> (mortality benefit if PaO₂ &lt;9.3 kPa / 70 mmHg or A–a &gt;4.7 kPa / 35 mmHg on room air, especially HIV): <strong>prednisolone 40 mg PO BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d</strong> (or equivalent IV methylprednisolone at 75% dose). Start with or before the first dose of co-trimoxazole, ideally within 72 h.<sup>17–19</sup> Mortality reduction (RR 0.59, NNT ≈ 9) confirmed by Cochrane meta-analysis.<sup>20</sup> Benefit in non-HIV PCP less clear (refs 23, 24) but commonly used.</li>
                 <li><strong>2nd line / intolerance / sulfa allergy:</strong> IV pentamidine 4 mg/kg/day (nephrotoxic, hypoglycaemia, QT, pancreatitis); clindamycin + primaquine (check G6PD); atovaquone (mild–moderate only); dapsone + trimethoprim.</li>
                 <li><strong>Supportive ICU care:</strong> targeted O₂ (SpO₂ 92–96%), <strong>HFNO or awake proning</strong> first; lung-protective ventilation (V<sub>T</sub> 6 mL/kg PBW, P<sub>plat</sub> ≤30, driving pressure &lt;15) if intubated; high incidence of pneumothorax — low PEEP escalation, low threshold for chest drain; consider <strong>ECMO</strong> for refractory hypoxaemia in selected patients.</li>
                 <li><strong>Immune reconstitution:</strong> in HIV, start ART within 2 weeks of PCP treatment (ACTG A5164). In non-HIV, taper immunosuppression where possible in discussion with the parent team.</li>
@@ -706,51 +706,53 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
 
             <h4 className="text-base font-serif font-semibold text-foreground mt-4 mb-2">Sources &amp; further reading</h4>
+            <p className="text-[11px] text-muted-foreground/80 mb-2 italic">Citations follow ICMJE / Vancouver format: Authors. Article title. Journal Abbrev. Year;Volume(Issue):Pages.</p>
             <div className="p-3 rounded-lg bg-muted/40 border border-border text-xs text-muted-foreground space-y-3">
               <div>
                 <p className="font-semibold text-foreground mb-1">Comparison table (PCP vs bacterial / viral / ARDS)</p>
-                <ul className="list-disc pl-5 space-y-1">
-                  <li>Salzer HJF, et al. <em>Clinical, diagnostic, and treatment disparities between HIV-infected and non-HIV-infected immunocompromised patients with Pneumocystis jirovecii pneumonia.</em> Respiration 2018;96:52–65.</li>
-                  <li>Cooley L, et al. <em>Consensus guidelines for diagnosis, prophylaxis and management of Pneumocystis jirovecii pneumonia.</em> Intern Med J 2014;44:1350–63 (ANZ Mycology Interest Group).</li>
-                  <li>Kanne JP, et al. <em>Pneumocystis jiroveci pneumonia: high-resolution CT findings in patients with and without HIV infection.</em> AJR Am J Roentgenol 2012;198:W555–61.</li>
-                  <li>ARDS Definition Task Force. <em>Acute Respiratory Distress Syndrome: the Berlin Definition.</em> JAMA 2012;307:2526–33.</li>
-                  <li>Cilloniz C, Torres A, Niederman MS. <em>Management of pneumonia in critically ill patients.</em> BMJ 2021;375:e065871.</li>
-                </ul>
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Salzer HJF, Schäfer G, Hoenigl M, Günther G, Hoffmann C, Kalsdorf B, et al. Clinical, diagnostic, and treatment disparities between HIV-infected and non-HIV-infected immunocompromised patients with Pneumocystis jirovecii pneumonia. Respiration. 2018;96(1):52–65.</li>
+                  <li>Cooley L, Dendle C, Wolf J, Teh BW, Chen SC, Boutlis C, et al. Consensus guidelines for diagnosis, prophylaxis and management of Pneumocystis jirovecii pneumonia in patients with haematological and solid malignancies, 2014. Intern Med J. 2014;44(12b):1350–63.</li>
+                  <li>Kanne JP, Yandow DR, Meyer CA. Pneumocystis jiroveci pneumonia: high-resolution CT findings in patients with and without HIV infection. AJR Am J Roentgenol. 2012;198(6):W555–61.</li>
+                  <li>ARDS Definition Task Force, Ranieri VM, Rubenfeld GD, Thompson BT, Ferguson ND, Caldwell E, et al. Acute respiratory distress syndrome: the Berlin definition. JAMA. 2012;307(23):2526–33.</li>
+                  <li>Cilloniz C, Torres A, Niederman MS. Management of pneumonia in critically ill patients. BMJ. 2021;375:e065871.</li>
+                </ol>
               </div>
               <div>
                 <p className="font-semibold text-foreground mb-1">ICU management flowchart &amp; guidance</p>
-                <ul className="list-disc pl-5 space-y-1">
-                  <li>NIH/CDC/IDSA. <em>Guidelines for the Prevention and Treatment of Opportunistic Infections in Adults and Adolescents with HIV</em> (2024 update) — co-trimoxazole dosing, steroid criteria, secondary prophylaxis.</li>
-                  <li>Maertens JA, et al. <em>ECIL guidelines for treatment of Pneumocystis jirovecii pneumonia in non-HIV haematology patients.</em> J Antimicrob Chemother 2016;71:2397–404.</li>
-                  <li>Limper AH, et al. <em>An official ATS statement: treatment of fungal infections in adult pulmonary and critical care patients.</em> Am J Respir Crit Care Med 2011;183:96–128.</li>
-                  <li>Bos LDJ, Ware LB. <em>Acute respiratory distress syndrome: causes, pathophysiology, and phenotypes.</em> Lancet 2022;400:1145–56 — lung-protective ventilation principles applied to PCP-ARDS.</li>
-                  <li>Combes A, et al. <em>Extracorporeal membrane oxygenation for severe ARDS (EOLIA).</em> N Engl J Med 2018;378:1965–75 — ECMO referral thresholds.</li>
-                  <li>ESCMID/ECMM/ERS. <em>Guideline for the diagnosis and management of Pneumocystis jirovecii pneumonia.</em> 2024.</li>
-                </ul>
+                <ol className="list-decimal pl-5 space-y-1" start={6}>
+                  <li>Panel on Opportunistic Infections in Adults and Adolescents with HIV. Guidelines for the prevention and treatment of opportunistic infections in adults and adolescents with HIV. Bethesda (MD): NIH, CDC, IDSA, HIVMA; 2024. Available from: https://clinicalinfo.hiv.gov.</li>
+                  <li>Maertens J, Cesaro S, Maschmeyer G, Einsele H, Donnelly JP, Alanio A, et al. ECIL guidelines for treatment of Pneumocystis jirovecii pneumonia in non-HIV-infected haematology patients. J Antimicrob Chemother. 2016;71(9):2397–404.</li>
+                  <li>Limper AH, Knox KS, Sarosi GA, Ampel NM, Bennett JE, Catanzaro A, et al. An official American Thoracic Society statement: treatment of fungal infections in adult pulmonary and critical care patients. Am J Respir Crit Care Med. 2011;183(1):96–128.</li>
+                  <li>Bos LDJ, Ware LB. Acute respiratory distress syndrome: causes, pathophysiology, and phenotypes. Lancet. 2022;400(10358):1145–56.</li>
+                  <li>Combes A, Hajage D, Capellier G, Demoule A, Lavoué S, Guervilly C, et al. Extracorporeal membrane oxygenation for severe acute respiratory distress syndrome (EOLIA). N Engl J Med. 2018;378(21):1965–75.</li>
+                  <li>Lagrou K, Chen S, Masur H, Viscoli C, Decker CF, Pagano L, et al. Pneumocystis jirovecii disease: basis for the revised EORTC/MSGERC invasive fungal disease definitions in individuals without HIV. Clin Infect Dis. 2021;72(Suppl 2):S114–20.</li>
+                </ol>
               </div>
               <div>
                 <p className="font-semibold text-foreground mb-1">BJA Education / CEACCP — exam-aligned reviews</p>
-                <ul className="list-disc pl-5 space-y-1">
-                  <li>Thomas M, Rutman M. <em>Pneumocystis jirovecii pneumonia in the intensive care unit.</em> BJA Educ 2021;21(7):242–8.</li>
-                  <li>Wilson J, Rhodes A. <em>The immunocompromised patient on the ICU.</em> BJA Educ 2019;19(10):319–25.</li>
-                  <li>Patel BV, et al. <em>Severe pneumonia in the critically ill.</em> BJA Educ 2020;20(11):385–91.</li>
-                  <li>Camporota L, et al. <em>Mechanical ventilation and ECMO in ARDS.</em> BJA Educ 2022;22(2):66–72.</li>
-                  <li>NICE NG139 (2019, updated 2023). <em>Pneumonia (community-acquired): antimicrobial prescribing</em> — empirical-antibiotic comparator pathways.</li>
-                </ul>
+                <ol className="list-decimal pl-5 space-y-1" start={12}>
+                  <li>Thomas M, Rutman M. Pneumocystis jirovecii pneumonia in the intensive care unit. BJA Educ. 2021;21(7):242–8.</li>
+                  <li>Wilson J, Rhodes A. The immunocompromised patient on the ICU. BJA Educ. 2019;19(10):319–25.</li>
+                  <li>Patel BV, Haar S, Handslip R, Lee TM, Patel S, Harston G, et al. Severe pneumonia in the critically ill. BJA Educ. 2020;20(11):385–91.</li>
+                  <li>Camporota L, Cronin JN, Busana M, Gattinoni L, Formenti F. Mechanical ventilation and ECMO in ARDS. BJA Educ. 2022;22(2):66–72.</li>
+                  <li>National Institute for Health and Care Excellence. Pneumonia (community-acquired): antimicrobial prescribing. NICE guideline NG138. London: NICE; 2019, updated 2023.</li>
+                </ol>
               </div>
               <div>
                 <p className="font-semibold text-foreground mb-1">Adjuvant corticosteroids — dose regimen &amp; PaO₂ / A–a severity cut-offs</p>
-                <ul className="list-disc pl-5 space-y-1">
-                  <li><strong>The National Institutes of Health–University of California Expert Panel for Corticosteroids as Adjunctive Therapy for Pneumocystis Pneumonia.</strong> <em>Consensus statement on the use of corticosteroids as adjunctive therapy for pneumocystis pneumonia in the acquired immunodeficiency syndrome.</em> N Engl J Med 1990;323:1500–4. — <strong>defines the steroid threshold (PaO₂ &lt;70 mmHg / 9.3 kPa or A–a &gt;35 mmHg / 4.7 kPa on room air) and the prednisone taper 40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d</strong>; start with or before first dose of co-trimoxazole.</li>
-                  <li>Bozzette SA, Sattler FR, Chiu J, et al. <em>A controlled trial of early adjunctive treatment with corticosteroids for Pneumocystis carinii pneumonia in the acquired immunodeficiency syndrome.</em> N Engl J Med 1990;323:1451–7. — <strong>pivotal RCT (California Collaborative Treatment Group)</strong> using the 21-day prednisone regimen, demonstrating reduced respiratory failure and mortality when started ≤72 h of anti-PCP therapy.</li>
-                  <li>Gagnon S, Boota AM, Fischl MA, Baier H, Kirksey OW, La Voie L. <em>Corticosteroids as adjunctive therapy for severe Pneumocystis carinii pneumonia in the acquired immunodeficiency syndrome.</em> N Engl J Med 1990;323:1444–50. — companion RCT in severe disease (PaO₂ &lt;75 mmHg) showing methylprednisolone 40 mg q6h × 7 d (taper) reduced mortality and need for ventilation.</li>
-                  <li>Ewald H, Raatz H, Boscacci R, Furrer H, Bucher HC, Briel M. <em>Adjunctive corticosteroids for Pneumocystis jirovecii pneumonia in patients with HIV infection.</em> Cochrane Database Syst Rev 2015;(4):CD006150. — meta-analysis confirming mortality reduction (RR 0.59) at the same severity cut-off; NNT ≈ 9.</li>
-                  <li>Briel M, Bucher HC, Boscacci R, Furrer H. <em>Adjunctive corticosteroids for Pneumocystis jiroveci pneumonia in patients with HIV-infection.</em> Cochrane Database Syst Rev 2006;(3):CD006150 — original Cochrane review establishing the evidence base.</li>
-                  <li>British HIV Association. <em>BHIVA guidelines for the treatment of opportunistic infection in HIV-seropositive individuals 2011</em> (PCP section). — endorses the NIH–UC threshold and 21-day prednisolone taper for UK practice.</li>
-                  <li>Pareja JG, Garland R, Koziel H. <em>Use of adjunctive corticosteroids in severe adult non-HIV Pneumocystis carinii pneumonia.</em> Chest 1998;113:1215–24. — most-cited non-HIV cohort suggesting benefit; basis for extrapolation to non-HIV PCP, although later studies (Wieruszewski PM et al., Mayo Clin Proc 2018; Injean P et al., OFID 2017) show inconsistent effect.</li>
-                </ul>
+                <ol className="list-decimal pl-5 space-y-1" start={17}>
+                  <li>The National Institutes of Health–University of California Expert Panel for Corticosteroids as Adjunctive Therapy for Pneumocystis Pneumonia. Consensus statement on the use of corticosteroids as adjunctive therapy for Pneumocystis pneumonia in the acquired immunodeficiency syndrome. N Engl J Med. 1990;323(21):1500–4. — defines the steroid threshold (PaO₂ &lt;70 mmHg / 9.3 kPa or A–a &gt;35 mmHg / 4.7 kPa on room air) and the prednisone taper 40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d.</li>
+                  <li>Bozzette SA, Sattler FR, Chiu J, Fumagalli A, Girard PM, Schoolnik G, et al. A controlled trial of early adjunctive treatment with corticosteroids for Pneumocystis carinii pneumonia in the acquired immunodeficiency syndrome. N Engl J Med. 1990;323(21):1451–7. — pivotal RCT (California Collaborative Treatment Group) using the 21-day prednisone regimen.</li>
+                  <li>Gagnon S, Boota AM, Fischl MA, Baier H, Kirksey OW, La Voie L. Corticosteroids as adjunctive therapy for severe Pneumocystis carinii pneumonia in the acquired immunodeficiency syndrome. N Engl J Med. 1990;323(21):1444–50. — companion RCT in severe disease (PaO₂ &lt;75 mmHg) with methylprednisolone 40 mg q6h × 7 d taper.</li>
+                  <li>Ewald H, Raatz H, Boscacci R, Furrer H, Bucher HC, Briel M. Adjunctive corticosteroids for Pneumocystis jirovecii pneumonia in patients with HIV infection. Cochrane Database Syst Rev. 2015;(4):CD006150. — meta-analysis confirming mortality reduction (RR 0.59); NNT ≈ 9.</li>
+                  <li>Briel M, Bucher HC, Boscacci R, Furrer H. Adjunctive corticosteroids for Pneumocystis jiroveci pneumonia in patients with HIV-infection. Cochrane Database Syst Rev. 2006;(3):CD006150.</li>
+                  <li>British HIV Association. BHIVA guidelines for the treatment of opportunistic infection in HIV-seropositive individuals 2011. HIV Med. 2011;12(Suppl 2):1–140.</li>
+                  <li>Pareja JG, Garland R, Koziel H. Use of adjunctive corticosteroids in severe adult non-HIV Pneumocystis carinii pneumonia. Chest. 1998;113(5):1215–24. — non-HIV cohort suggesting benefit; later evidence inconsistent.</li>
+                  <li>Wieruszewski PM, Barreto JN, Frazee E, Daniels CE, Tosh PK, Dierkhising RA, et al. Early corticosteroids for Pneumocystis pneumonia in adults without HIV are not associated with better outcome. Chest. 2018;154(3):636–44.</li>
+                </ol>
               </div>
-              <p className="italic">Severity cut-offs (PaO₂ &lt;9.3 kPa / 70 mmHg or A–a &gt;4.7 kPa / 35 mmHg on room air) and the prednisolone taper (40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d) cited in the management section and flowchart are taken directly from the NIH–UC Consensus Statement (NEJM 1990;323:1500–4), grounded in the Bozzette and Gagnon RCTs and reaffirmed by the 2015 Cochrane meta-analysis and BHIVA 2011 guidance. The 21-day co-trimoxazole course and EOLIA-derived ECMO criteria are corroborated by the guideline citations above.</p>
+              <p className="italic">Severity cut-offs (PaO₂ &lt;9.3 kPa / 70 mmHg or A–a &gt;4.7 kPa / 35 mmHg on room air) and the prednisolone taper (40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d) cited in the management section and flowchart derive from refs 17–19, with confirmation in refs 20 and 22. The 21-day co-trimoxazole course and EOLIA-derived ECMO criteria are corroborated by refs 6–10.</p>
             </div>
           </ExamSection>
 
