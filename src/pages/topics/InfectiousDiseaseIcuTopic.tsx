@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { infectiousDiseaseIcuQuestions } from "@/data/quizzes";
 import InfectionSiteMapDiagram from "@/components/diagrams/InfectionSiteMapDiagram";
 import PCPHRCTDiagram from "@/components/diagrams/PCPHRCTDiagram";
+import PCPManagementFlowchart from "@/components/diagrams/PCPManagementFlowchart";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 
@@ -504,6 +505,11 @@ const InfectiousDiseaseIcuTopic = () => {
                 <li><strong>Monitor:</strong> daily FBC (myelosuppression), U&amp;E (hyperkalaemia, AKI), LFT, glucose, lactate; rising LDH suggests treatment failure or alternative diagnosis. Reassess at 5–7 days — clinical deterioration is common in the first 3–5 days even on effective therapy (steroids mitigate this).</li>
                 <li><strong>Secondary prophylaxis:</strong> co-trimoxazole 480–960 mg OD (or 960 mg three-times weekly) until CD4 &gt;200 for &gt;3 months on ART, or until immunosuppression resolved.</li>
               </ul>
+            </div>
+
+            <h4 className="text-base font-serif font-semibold text-foreground mt-4 mb-2">ICU management flowchart</h4>
+            <div className="mb-3">
+              <PCPManagementFlowchart />
             </div>
 
             <div className="p-3 rounded-lg bg-secondary/30 border border-border">
