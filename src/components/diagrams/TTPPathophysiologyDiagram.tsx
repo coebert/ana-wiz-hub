@@ -73,7 +73,7 @@ const TTPPathophysiologyDiagram = () => {
       showCaption
     >
       <svg
-        viewBox="0 0 820 420"
+        viewBox="0 0 820 520"
         className="w-full h-auto rounded-lg border border-border bg-card p-3 my-3"
         {...svgImgProps({ id })}
       >
@@ -339,6 +339,133 @@ const TTPPathophysiologyDiagram = () => {
         <text x="610" y="406" textAnchor="middle" fontSize="11" fill="hsl(var(--destructive))" fontWeight="600">
           → microthrombi · schistocytes (MAHA) · ischaemia
         </text>
+
+        {/* ──────────── ANIMATED CAUSAL FLOW CHAIN (TTP) ──────────── */}
+        <defs>
+          <marker
+            id={`${id}-flow-arrow`}
+            viewBox="0 0 10 10"
+            refX="8"
+            refY="5"
+            markerWidth="6"
+            markerHeight="6"
+            orient="auto"
+          >
+            <path d="M0,0 L10,5 L0,10 z" fill="hsl(var(--destructive))" />
+          </marker>
+        </defs>
+
+        <text
+          x="20"
+          y="440"
+          fontSize="12"
+          fontWeight="700"
+          fill="hsl(var(--foreground))"
+        >
+          Causal cascade in TTP
+        </text>
+
+        {(() => {
+          const nodes = [
+            { x: 70, label: "ULvWF", sub: "uncleaved strings" },
+            { x: 220, label: "Platelet", sub: "adhesion & aggregation" },
+            { x: 390, label: "Microthrombi", sub: "in arterioles/capillaries" },
+            { x: 560, label: "MAHA", sub: "RBC shear → schistocytes" },
+            { x: 730, label: "End-organ", sub: "ischaemia (CNS, renal, cardiac)" },
+          ];
+          const nodeY = 475;
+          return (
+            <g>
+              {/* Arrows between nodes */}
+              {nodes.slice(0, -1).map((n, i) => {
+                const next = nodes[i + 1];
+                const x1 = n.x + 52;
+                const x2 = next.x - 52;
+                const pathId = `${id}-flow-path-${i}`;
+                return (
+                  <g key={i}>
+                    <line
+                      x1={x1}
+                      y1={nodeY}
+                      x2={x2}
+                      y2={nodeY}
+                      stroke="hsl(var(--destructive))"
+                      strokeWidth="2"
+                      markerEnd={`url(#${id}-flow-arrow)`}
+                    />
+                    {/* Travelling particle */}
+                    <circle r="3.5" fill="hsl(var(--destructive))">
+                      <animate
+                        attributeName="cx"
+                        values={`${x1};${x2 - 6}`}
+                        dur="2.4s"
+                        begin={`${i * 0.5}s`}
+                        repeatCount="indefinite"
+                      />
+                      <animate
+                        attributeName="cy"
+                        values={`${nodeY};${nodeY}`}
+                        dur="2.4s"
+                        repeatCount="indefinite"
+                      />
+                      <animate
+                        attributeName="opacity"
+                        values="0;1;1;0"
+                        dur="2.4s"
+                        begin={`${i * 0.5}s`}
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                    <use href={`#${pathId}`} />
+                  </g>
+                );
+              })}
+
+              {/* Nodes */}
+              {nodes.map((n, i) => (
+                <g key={n.label}>
+                  <rect
+                    x={n.x - 52}
+                    y={nodeY - 18}
+                    width="104"
+                    height="36"
+                    rx="8"
+                    fill="hsl(var(--destructive) / 0.12)"
+                    stroke="hsl(var(--destructive))"
+                    strokeWidth="1.5"
+                  >
+                    <animate
+                      attributeName="fill"
+                      values="hsl(var(--destructive) / 0.12);hsl(var(--destructive) / 0.28);hsl(var(--destructive) / 0.12)"
+                      dur="2.4s"
+                      begin={`${i * 0.5}s`}
+                      repeatCount="indefinite"
+                    />
+                  </rect>
+                  <text
+                    x={n.x}
+                    y={nodeY - 2}
+                    textAnchor="middle"
+                    fontSize="11"
+                    fontWeight="700"
+                    fill="hsl(var(--destructive))"
+                  >
+                    {n.label}
+                  </text>
+                  <text
+                    x={n.x}
+                    y={nodeY + 11}
+                    textAnchor="middle"
+                    fontSize="9"
+                    fill="hsl(var(--foreground))"
+                  >
+                    {n.sub}
+                  </text>
+                </g>
+              ))}
+            </g>
+          );
+        })()}
       </svg>
 
       {/* Compact legend */}
