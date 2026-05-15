@@ -47,6 +47,10 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const [speed, setSpeed] = useState(1);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [estimate, setEstimate] = useState<{ minutes: number; words: number; sourceWords: number } | null>(null);
+  const [regenOpen, setRegenOpen] = useState(false);
+  const [regenPassword, setRegenPassword] = useState("");
+  const [regenError, setRegenError] = useState<string | null>(null);
+  const [regenSubmitting, setRegenSubmitting] = useState(false);
 
   // Estimate target length from page content once we know there's no cached podcast.
   useEffect(() => {
