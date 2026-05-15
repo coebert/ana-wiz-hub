@@ -463,6 +463,53 @@ const InfectiousDiseaseIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2"><em>Pneumocystis jirovecii</em> pneumonia (PJP/PCP)</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              Opportunistic fungal pneumonia (formerly <em>P. carinii</em>). Two distinct populations: <strong>HIV with CD4 &lt;200</strong> (subacute, lower mortality but higher organism burden) and <strong>non-HIV immunosuppressed</strong> — solid-organ/HSCT recipients, high-dose steroids (≥20 mg prednisolone &gt;4 wk), biologics (rituximab, anti-TNF), haematological malignancy, congenital immunodeficiency. Non-HIV PCP is more fulminant, with higher ICU mortality (30–60%).
+            </p>
+
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Presentation</p>
+                <p className="text-xs text-muted-foreground mt-1">Subacute (days–weeks in HIV; days in non-HIV) progressive dyspnoea, dry cough, low-grade fever. Profound exertional desaturation; clear chest on auscultation despite marked hypoxaemia. Type 1 respiratory failure → ARDS. Pneumothorax in ~10% (cyst rupture).</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Diagnosis</p>
+                <p className="text-xs text-muted-foreground mt-1">HRCT: bilateral perihilar ground-glass opacification ± upper-zone cysts; sparing of subpleural regions. CXR may be normal early. Confirm on <strong>induced sputum</strong> (sens ~50–90% in HIV, lower in non-HIV) or <strong>BAL</strong> (sens &gt;95%) — silver/Giemsa/immunofluorescence stain or <strong>PCR</strong> (very sensitive but can detect colonisation; interpret with β-D-glucan and clinical picture). Markedly raised serum <strong>LDH</strong> and <strong>(1,3)-β-D-glucan</strong> (sens ~95%, useful negative predictor); negative HIV test does NOT exclude PCP.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Work-up</p>
+                <p className="text-xs text-muted-foreground mt-1">ABG (A–a gradient stratifies severity), FBC/U&amp;E/LFT/G6PD (before high-dose co-trimoxazole), HIV test + CD4 + viral load, β-D-glucan, LDH, blood cultures, CMV PCR, respiratory virus PCR, HRCT, urgent BAL if safe. Screen for co-pathogens (CMV, bacterial, TB, fungal). Document immunosuppression history.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Severity grading</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Mild:</strong> PaO₂ &gt;11 kPa or A–a &lt;4.7 kPa on air. <strong>Moderate:</strong> PaO₂ 8–11 kPa or A–a 4.7–6 kPa. <strong>Severe:</strong> PaO₂ &lt;8 kPa (60 mmHg) or A–a &gt;6 kPa (35 mmHg) — adjuvant steroids indicated.</p>
+              </div>
+            </div>
+
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Management</p>
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li><strong>1st line:</strong> co-trimoxazole (TMP–SMX) <strong>15–20 mg/kg/day of TMP component IV in 3–4 divided doses</strong>, switch to oral when stable. Total course <strong>21 days</strong> (HIV) or 14–21 days (non-HIV).</li>
+                <li><strong>Adjuvant steroids</strong> (mortality benefit if PaO₂ &lt;9.3 kPa / 70 mmHg or A–a &gt;4.7 kPa, especially HIV): prednisolone 40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d (or equivalent IV methylprednisolone). Start with or before first dose of co-trimoxazole. Benefit in non-HIV PCP less clear but commonly used.</li>
+                <li><strong>2nd line / intolerance / sulfa allergy:</strong> IV pentamidine 4 mg/kg/day (nephrotoxic, hypoglycaemia, QT, pancreatitis); clindamycin + primaquine (check G6PD); atovaquone (mild–moderate only); dapsone + trimethoprim.</li>
+                <li><strong>Supportive ICU care:</strong> targeted O₂ (SpO₂ 92–96%), <strong>HFNO or awake proning</strong> first; lung-protective ventilation (V<sub>T</sub> 6 mL/kg PBW, P<sub>plat</sub> ≤30, driving pressure &lt;15) if intubated; high incidence of pneumothorax — low PEEP escalation, low threshold for chest drain; consider <strong>ECMO</strong> for refractory hypoxaemia in selected patients.</li>
+                <li><strong>Immune reconstitution:</strong> in HIV, start ART within 2 weeks of PCP treatment (ACTG A5164). In non-HIV, taper immunosuppression where possible in discussion with the parent team.</li>
+                <li><strong>Monitor:</strong> daily FBC (myelosuppression), U&amp;E (hyperkalaemia, AKI), LFT, glucose, lactate; rising LDH suggests treatment failure or alternative diagnosis. Reassess at 5–7 days — clinical deterioration is common in the first 3–5 days even on effective therapy (steroids mitigate this).</li>
+                <li><strong>Secondary prophylaxis:</strong> co-trimoxazole 480–960 mg OD (or 960 mg three-times weekly) until CD4 &gt;200 for &gt;3 months on ART, or until immunosuppression resolved.</li>
+              </ul>
+            </div>
+
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+              <p className="font-semibold text-foreground text-sm mb-1">Prognosis</p>
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li><strong>HIV-PCP:</strong> overall mortality ~10–20%; ICU/ventilated 30–50%; better since ART era.</li>
+                <li><strong>Non-HIV PCP:</strong> mortality 30–60%; worse outcomes despite lower organism burden — driven by exuberant inflammatory response and delayed diagnosis.</li>
+                <li>Adverse prognostic factors: age, need for mechanical ventilation, pneumothorax, low albumin, high LDH, delayed treatment (&gt;5 days), co-infection (CMV, bacterial), comorbid lung disease, lack of adjuvant steroids when indicated.</li>
+                <li>Survivors: ~20% have persistent restrictive/diffusion defect; recurrence is common without effective prophylaxis.</li>
+              </ul>
+            </div>
           </ExamSection>
 
           <ExamSection id="endocarditis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
