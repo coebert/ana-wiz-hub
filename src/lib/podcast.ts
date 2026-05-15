@@ -95,35 +95,54 @@ export const generatePodcast = async (
   content: string,
   options?: { force?: boolean; regeneratePassword?: string },
 ): Promise<PodcastResult> => {
-  const { data, error } = await supabase.functions.invoke("generate-podcast", {
-    body: {
-      topicId,
-      topicTitle,
-      content,
-      force: options?.force ?? false,
-      regeneratePassword: options?.regeneratePassword,
-    },
-  });
-
-  if (error) {
-    // supabase-js's FunctionsHttpError exposes the raw Response on `error.context`.
-    // Parse its body so non-2xx responses (e.g. 403 invalid password) surface as
-    // a normal failure state instead of bubbling up as a runtime error.
+  const normaliseFailedInvoke = async (err: unknown): Promise<PodcastResult> => {
     let failedPayload: Partial<PodcastResult> | undefined;
-    const ctx = (error as { context?: unknown }).context;
-    if (ctx instanceof Response) {
+    const message = err instanceof Error ? err.message : typeof err === "string" ? err : undefined;
+    const ctx = (err as { context?: unknown } | null)?.context;
+
+    const parseTextPayload = (text: string) => {
+      const trimmed = text.trim();
+      if (!trimmed) return;
+
       try {
-        const cloned = ctx.clone();
-        const text = await cloned.text();
-        if (text) {
-          const parsed = JSON.parse(text) as Partial<PodcastResult>;
-          if (parsed && typeof parsed === "object") failedPayload = parsed;
+        const parsed = JSON.parse(trimmed) as Partial<PodcastResult>;
+        if (parsed && typeof parsed === "object") {
+          failedPayload = parsed;
+          return;
         }
       } catch {
-        // fall through to generic message
+        const jsonMatch = trimmed.match(/(\{[\s\S]*\})/);
+        if (!jsonMatch) return;
+        try {
+          const parsed = JSON.parse(jsonMatch[1]) as Partial<PodcastResult>;
+          if (parsed && typeof parsed === "object") failedPayload = parsed;
+        } catch {
+          // Ignore malformed embedded JSON and fall back to the plain message.
+        }
       }
-    } else if (ctx && typeof ctx === "object") {
-      failedPayload = ctx as Partial<PodcastResult>;
+    };
+
+    if (ctx && typeof ctx === "object") {
+      const maybeResponse = ctx as {
+        clone?: () => { text?: () => Promise<string> };
+        text?: () => Promise<string>;
+      };
+
+      try {
+        const readable = maybeResponse.clone?.() ?? maybeResponse;
+        const text = await readable.text?.();
+        if (typeof text === "string") parseTextPayload(text);
+      } catch {
+        // Ignore parsing issues and keep falling back.
+      }
+
+      if (!failedPayload) {
+        failedPayload = ctx as Partial<PodcastResult>;
+      }
+    }
+
+    if (!failedPayload && message) {
+      parseTextPayload(message);
     }
 
     return {
@@ -131,14 +150,32 @@ export const generatePodcast = async (
       error:
         failedPayload?.error ||
         (failedPayload as { message?: string } | undefined)?.message ||
-        error.message ||
+        message ||
         "Podcast generation failed",
     };
-  }
+  };
 
-  if (data?.status === "failed") {
+  try {
+    const { data, error } = await supabase.functions.invoke("generate-podcast", {
+      body: {
+        topicId,
+        topicTitle,
+        content,
+        force: options?.force ?? false,
+        regeneratePassword: options?.regeneratePassword,
+      },
+    });
+
+    if (error) {
+      return normaliseFailedInvoke(error);
+    }
+
+    if (data?.status === "failed") {
+      return data as PodcastResult;
+    }
+
     return data as PodcastResult;
+  } catch (error) {
+    return normaliseFailedInvoke(error);
   }
-
-  return data as PodcastResult;
 };
