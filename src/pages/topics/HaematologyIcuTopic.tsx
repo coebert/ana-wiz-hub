@@ -3,6 +3,12 @@ import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import TTPPathophysiologyDiagram from "@/components/diagrams/TTPPathophysiologyDiagram";
+import HUSPathophysiologyDiagram from "@/components/diagrams/HUSPathophysiologyDiagram";
+import DICPathophysiologyDiagram from "@/components/diagrams/DICPathophysiologyDiagram";
+import HLHPathophysiologyDiagram from "@/components/diagrams/HLHPathophysiologyDiagram";
+import HITPathophysiologyDiagram from "@/components/diagrams/HITPathophysiologyDiagram";
+import RebalancedHaemostasisDiagram from "@/components/diagrams/RebalancedHaemostasisDiagram";
 
 const objectives = [
   "Differentiate the thrombotic microangiopathies (TTP, HUS, DIC) using ADAMTS13 activity, coagulation screen, and PLASMIC score.",
@@ -181,6 +187,7 @@ const HaematologyIcuTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-4">
               TTP is a thrombotic microangiopathy (TMA) caused by severe deficiency of ADAMTS13 — a metalloproteinase that cleaves ultra-large von Willebrand factor (vWF) multimers. Without ADAMTS13, uncleaved vWF multimers cause platelet aggregation in the microvasculature, leading to thrombocytopenia, microangiopathic haemolytic anaemia (MAHA), and organ ischaemia.
             </p>
+            <TTPPathophysiologyDiagram />
             <div className="space-y-3 mb-4">
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Pathophysiology</p>
@@ -236,6 +243,7 @@ const HaematologyIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+            <DICPathophysiologyDiagram />
           </ExamSection>
 
           <ExamSection id="hus" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
@@ -243,6 +251,7 @@ const HaematologyIcuTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-4">
               MAHA + thrombocytopenia + AKI. Two forms: <strong>Typical (STEC-HUS)</strong> from Shiga toxin–producing E. coli (O157:H7) — antibiotics contraindicated, supportive care; mortality &lt;5%. <strong>Atypical (aHUS)</strong> from complement dysregulation — requires <strong>eculizumab</strong> (anti-C5) which reduces ESRD from ~50% to &lt;10%. Vaccinate against N. meningitidis before starting (or give prophylactic antibiotics).
             </p>
+            <HUSPathophysiologyDiagram />
             <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">
               <p className="text-sm font-semibold text-destructive">⚠ Meningococcal Risk with Eculizumab</p>
               <p className="text-sm text-muted-foreground mt-1">
@@ -256,6 +265,7 @@ const HaematologyIcuTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-4">
               Pathological immune activation with cytokine storm and multi-organ failure. Mortality 50–90% untreated. Triggers: infection (EBV most common), malignancy, autoimmune (MAS in adult-onset Still's, SLE).
             </p>
+            <HLHPathophysiologyDiagram />
             <div className="rounded-xl border border-border bg-card p-5 mb-4">
               <h3 className="font-semibold text-foreground mb-2">HLH-2004 criteria (≥5 of 8)</h3>
               <p className="text-sm text-muted-foreground">Fever ≥38.5°C · splenomegaly · cytopenias (≥2 lineages) · hypertriglyceridaemia and/or hypofibrinogenaemia · haemophagocytosis on biopsy · low/absent NK activity · ferritin ≥500 µg/L (often &gt;10,000) · elevated sCD25.</p>
@@ -287,6 +297,7 @@ const HaematologyIcuTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-4">
               Type II HIT is a paradoxical <strong>prothrombotic</strong> immune-mediated reaction: IgG vs PF4–heparin → Fc receptor platelet activation → thrombin generation. Onset day 5–10 (or ≤1 day if heparin in last 100 days). Risk: UFH (1–5%) &gt; LMWH (~0.1%).
             </p>
+            <HITPathophysiologyDiagram />
             <div className="rounded-xl border border-border bg-card p-5 mb-4">
               <h3 className="font-semibold text-foreground mb-2">4Ts Score</h3>
               <p className="text-sm text-muted-foreground">Thrombocytopenia, Timing, Thrombosis/sequelae, oTher cause. Each scored 0/1/2 (max 8). 0–3 low (&lt;5%), 4–5 intermediate (~14%), 6–8 high (~64%). ≥4 → stop heparin and send PF4 ELISA. Functional assay (SRA/HIPA) confirms.</p>
@@ -335,6 +346,7 @@ const HaematologyIcuTopic = () => {
             <p className="text-muted-foreground text-sm mb-3">
               Procoagulant <em>and</em> anticoagulant factors fall in parallel. INR is misleading — patients are NOT auto-anticoagulated. Give VTE prophylaxis (LMWH/UFH) unless actively bleeding or platelets &lt;50. Use TEG/ROTEM for functional assessment. Do NOT correct INR with FFP prophylactically — volume overload, raises portal pressure, obscures prognostic value (King's College).
             </p>
+            <RebalancedHaemostasisDiagram />
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
                 <thead>
