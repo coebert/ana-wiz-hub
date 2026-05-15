@@ -106,20 +106,33 @@ export const generatePodcast = async (
   });
 
   if (error) {
-    const failedPayload = (error.context && typeof error.context === "object")
-      ? (error.context as Partial<PodcastResult>)
-      : undefined;
-
-    if (failedPayload?.status === "failed") {
-      return {
-        status: "failed",
-        error: failedPayload.error || error.message || "Podcast generation failed",
-      };
+    // supabase-js's FunctionsHttpError exposes the raw Response on `error.context`.
+    // Parse its body so non-2xx responses (e.g. 403 invalid password) surface as
+    // a normal failure state instead of bubbling up as a runtime error.
+    let failedPayload: Partial<PodcastResult> | undefined;
+    const ctx = (error as { context?: unknown }).context;
+    if (ctx instanceof Response) {
+      try {
+        const cloned = ctx.clone();
+        const text = await cloned.text();
+        if (text) {
+          const parsed = JSON.parse(text) as Partial<PodcastResult>;
+          if (parsed && typeof parsed === "object") failedPayload = parsed;
+        }
+      } catch {
+        // fall through to generic message
+      }
+    } else if (ctx && typeof ctx === "object") {
+      failedPayload = ctx as Partial<PodcastResult>;
     }
 
     return {
       status: "failed",
-      error: error.message || "Podcast generation failed",
+      error:
+        failedPayload?.error ||
+        (failedPayload as { message?: string } | undefined)?.message ||
+        error.message ||
+        "Podcast generation failed",
     };
   }
 
