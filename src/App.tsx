@@ -195,6 +195,7 @@ const App = () => (
       
       <BrowserRouter>
         <Header />
+        <UpdateBanner />
         <VisitTrackerWrapper>
         <Suspense fallback={<Loading />}>
         <Routes>
