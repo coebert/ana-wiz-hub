@@ -313,6 +313,7 @@ const HaematologyIcuTopic = () => {
                 <li>Avoid platelet transfusion unless life-threatening bleeding.</li>
               </ol>
             </div>
+            <HITTreatmentFlowchart />
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
                 <thead>
