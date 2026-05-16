@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import FourTsScorePanel, { type FourTsBand } from "@/components/FourTsScorePanel";
 import HITTreatmentFlowchart from "@/components/diagrams/HITTreatmentFlowchart";
 
 /**
  * Links the 4Ts pre-test probability score to the HIT treatment flowchart.
- * When the user completes the 4Ts, the resulting LOW / INTERMEDIATE / HIGH
- * band is forwarded to the flowchart, which highlights the steps that apply
- * (or, for LOW, displays a "HIT excluded — continue heparin" notice).
+ * The 4Ts panel is rendered first; arbitrary `children` (e.g. the Management
+ * box) appear between the score and the flowchart so existing page layout is
+ * preserved. The computed band drives the highlighted steps on the flowchart.
  */
-const HITAssessmentBlock = () => {
+const HITAssessmentBlock = ({ children }: { children?: ReactNode }) => {
   const [band, setBand] = useState<FourTsBand | null>(null);
   return (
     <>
       <FourTsScorePanel onBandChange={setBand} />
+      {children}
       <HITTreatmentFlowchart highlightBand={band} />
     </>
   );
