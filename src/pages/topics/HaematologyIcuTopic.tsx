@@ -8,8 +8,7 @@ import HUSPathophysiologyDiagram from "@/components/diagrams/HUSPathophysiologyD
 import DICPathophysiologyDiagram from "@/components/diagrams/DICPathophysiologyDiagram";
 import HLHPathophysiologyDiagram from "@/components/diagrams/HLHPathophysiologyDiagram";
 import HITPathophysiologyDiagram from "@/components/diagrams/HITPathophysiologyDiagram";
-import HITTreatmentFlowchart from "@/components/diagrams/HITTreatmentFlowchart";
-import FourTsScorePanel from "@/components/FourTsScorePanel";
+import HITAssessmentBlock from "@/components/HITAssessmentBlock";
 import RebalancedHaemostasisDiagram from "@/components/diagrams/RebalancedHaemostasisDiagram";
 
 const objectives = [
@@ -300,18 +299,18 @@ const HaematologyIcuTopic = () => {
               Type II HIT is a paradoxical <strong>prothrombotic</strong> immune-mediated reaction: IgG vs PF4–heparin → Fc receptor platelet activation → thrombin generation. Onset day 5–10 (or ≤1 day if heparin in last 100 days). Risk: UFH (1–5%) &gt; LMWH (~0.1%).
             </p>
             <HITPathophysiologyDiagram />
-            <FourTsScorePanel />
-            <div className="rounded-xl border border-border bg-card p-5 mb-4">
-              <h3 className="font-semibold text-foreground mb-2">Management</h3>
-              <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
-                <li>Stop ALL heparin — including flushes and heparin-coated lines. LMWH cross-reacts (~90%) — do not substitute.</li>
-                <li>Start non-heparin therapeutic anticoagulant — <strong>argatroban</strong> first-line in UK ICU; bivalirudin for ECMO/CPB.</li>
-                <li>Bilateral lower-limb duplex (50% subclinical DVT).</li>
-                <li>Avoid warfarin until platelets &gt;150 — protein C depletion → venous limb gangrene.</li>
-                <li>Avoid platelet transfusion unless life-threatening bleeding.</li>
-              </ol>
-            </div>
-            <HITTreatmentFlowchart />
+            <HITAssessmentBlock>
+              <div className="rounded-xl border border-border bg-card p-5 mb-4">
+                <h3 className="font-semibold text-foreground mb-2">Management</h3>
+                <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                  <li>Stop ALL heparin — including flushes and heparin-coated lines. LMWH cross-reacts (~90%) — do not substitute.</li>
+                  <li>Start non-heparin therapeutic anticoagulant — <strong>argatroban</strong> first-line in UK ICU; bivalirudin for ECMO/CPB.</li>
+                  <li>Bilateral lower-limb duplex (50% subclinical DVT).</li>
+                  <li>Avoid warfarin until platelets &gt;150 — protein C depletion → venous limb gangrene.</li>
+                  <li>Avoid platelet transfusion unless life-threatening bleeding.</li>
+                </ol>
+              </div>
+            </HITAssessmentBlock>
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
                 <thead>

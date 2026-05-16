@@ -1,29 +1,20 @@
 import { DiagramFigure, svgImgProps } from "./_shared/DiagramFigure";
 import { Cite } from "@/components/Cite";
+import type { FourTsBand } from "@/components/FourTsScorePanel";
+
+interface HITTreatmentFlowchartProps {
+  highlightBand?: FourTsBand | null;
+}
 
 /**
  * HIT treatment flowchart — from "stop heparin" through alternative anticoagulant
  * selection, organ-failure branching, transition to oral therapy, and discharge advice.
  *
- * Vertical layout:
- *   Trigger (4Ts ≥ 4 / suspected HIT)
- *     ↓
- *   STEP 1 — STOP all heparin
- *     ↓
- *   STEP 2 — Send PF4 ELISA + functional assay (SRA/HIPA); duplex legs
- *     ↓
- *   STEP 3 — Choose non-heparin anticoagulant by clinical context
- *      ├── Standard ICU         → Argatroban
- *      ├── ECMO / CPB           → Bivalirudin
- *      ├── Renal failure        → Argatroban (hepatic) — avoid fondaparinux
- *      ├── Hepatic failure      → Bivalirudin (enzymatic) — avoid argatroban
- *      └── Outpatient / mild    → Fondaparinux or DOAC (off-label)
- *     ↓
- *   STEP 4 — Transition to oral once platelets > 150
- *     ↓
- *   STEP 5 — Discharge: lifelong heparin allergy alert; avoid for 3 months min
+ * When `highlightBand` is supplied (LOW / INTERMEDIATE / HIGH from the linked 4Ts
+ * panel), a banner above the SVG indicates which numbered steps apply and the
+ * matching step rectangles are emphasised.
  */
-const HITTreatmentFlowchart = () => {
+const HITTreatmentFlowchart = ({ highlightBand = null }: HITTreatmentFlowchartProps = {}) => {
   const id = "hit-treatment";
 
   // Geometry helpers
@@ -54,6 +45,38 @@ const HITTreatmentFlowchart = () => {
     );
   };
 
+  // Map 4Ts band → set of treatment-step numbers that apply
+  const activeSteps =
+    highlightBand === "HIGH"
+      ? new Set([1, 2, 3, 4, 5])
+      : highlightBand === "INTERMEDIATE"
+        ? new Set([1, 2, 3, 4, 5])
+        : new Set<number>();
+
+  const stepRects: Record<number, { x: number; y: number; w: number; h: number }> = {
+    1: { x: 210, y: 95, w: 460, h: 70 },
+    2: { x: 160, y: 195, w: 560, h: 80 },
+    3: { x: 190, y: 305, w: 500, h: 60 },
+    4: { x: 160, y: 640, w: 560, h: 60 },
+    5: { x: 160, y: 725, w: 560, h: 32 },
+  };
+
+  const bandTone =
+    highlightBand === "HIGH"
+      ? { ring: "hsl(var(--destructive))", bg: "bg-destructive/10", border: "border-destructive/50", text: "text-destructive" }
+      : highlightBand === "INTERMEDIATE"
+        ? { ring: "hsl(38 92% 45%)", bg: "bg-amber-500/10", border: "border-amber-500/50", text: "text-amber-700 dark:text-amber-400" }
+        : { ring: "hsl(var(--icu))", bg: "bg-icu/10", border: "border-icu/40", text: "text-icu" };
+
+  const bandMessage =
+    highlightBand === "HIGH"
+      ? "4Ts HIGH (~64%) — execute every step now. Send PF4 ELISA AND functional assay (SRA/HIPA) in parallel."
+      : highlightBand === "INTERMEDIATE"
+        ? "4Ts INTERMEDIATE (~14%) — stop heparin and begin non-heparin anticoagulation; PF4 ELISA first, functional assay if ELISA positive."
+        : highlightBand === "LOW"
+          ? "4Ts LOW (<5%) — HIT effectively excluded. No step below is mandated; continue heparin if clinically indicated."
+          : null;
+
   return (
     <DiagramFigure
       id={id}
@@ -61,6 +84,21 @@ const HITTreatmentFlowchart = () => {
       description="Decision flow for suspected or confirmed HIT type II: immediate cessation of all heparin, parallel PF4 ELISA + functional assay, context-driven choice of non-heparin anticoagulant (argatroban, bivalirudin, fondaparinux, danaparoid), transition to warfarin or DOAC once platelets >150, and lifelong heparin avoidance advice."
       showCaption
     >
+      {bandMessage && (
+        <div
+          className={`mb-2 rounded-lg border-2 ${bandTone.border} ${bandTone.bg} px-3 py-2 text-xs ${bandTone.text}`}
+          role="status"
+          aria-live="polite"
+        >
+          <span className="font-semibold">From 4Ts score → </span>
+          <span className="text-foreground">{bandMessage}</span>
+          {highlightBand !== "LOW" && (
+            <span className="ml-1 text-muted-foreground">
+              Highlighted steps below: {[...activeSteps].join(", ")}.
+            </span>
+          )}
+        </div>
+      )}
       <svg
         viewBox={`0 0 ${W} ${H}`}
         className="w-full h-auto rounded-lg border border-border bg-card p-3 my-3"
@@ -267,6 +305,29 @@ const HITTreatmentFlowchart = () => {
             Document lifelong heparin allergy · avoid heparin ≥ 100 days · alert bracelet · GP letter
           </text>
         </g>
+
+        {/* ───────── 4Ts-driven highlight rings ───────── */}
+        {[...activeSteps].map((n) => {
+          const r = stepRects[n];
+          if (!r) return null;
+          return (
+            <rect
+              key={`hl-${n}`}
+              x={r.x - 4}
+              y={r.y - 4}
+              width={r.w + 8}
+              height={r.h + 8}
+              rx="12"
+              fill="none"
+              stroke={bandTone.ring}
+              strokeWidth="3"
+              strokeDasharray="6 4"
+              opacity="0.9"
+            >
+              <animate attributeName="opacity" values="0.55;1;0.55" dur="2.2s" repeatCount="indefinite" />
+            </rect>
+          );
+        })}
       </svg>
 
       {/* Compact key */}
