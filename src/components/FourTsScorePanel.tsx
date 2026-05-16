@@ -1,5 +1,11 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AlertTriangle, CheckCircle2, RotateCcw, Activity } from "lucide-react";
+
+export type FourTsBand = "LOW" | "INTERMEDIATE" | "HIGH";
+
+interface FourTsScorePanelProps {
+  onBandChange?: (band: FourTsBand | null) => void;
+}
 
 /**
  * 4Ts pre-test probability score for HIT (Lo et al. 2006).
