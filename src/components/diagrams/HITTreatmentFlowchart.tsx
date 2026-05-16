@@ -305,6 +305,29 @@ const HITTreatmentFlowchart = ({ highlightBand = null }: HITTreatmentFlowchartPr
             Document lifelong heparin allergy · avoid heparin ≥ 100 days · alert bracelet · GP letter
           </text>
         </g>
+
+        {/* ───────── 4Ts-driven highlight rings ───────── */}
+        {[...activeSteps].map((n) => {
+          const r = stepRects[n];
+          if (!r) return null;
+          return (
+            <rect
+              key={`hl-${n}`}
+              x={r.x - 4}
+              y={r.y - 4}
+              width={r.w + 8}
+              height={r.h + 8}
+              rx="12"
+              fill="none"
+              stroke={bandTone.ring}
+              strokeWidth="3"
+              strokeDasharray="6 4"
+              opacity="0.9"
+            >
+              <animate attributeName="opacity" values="0.55;1;0.55" dur="2.2s" repeatCount="indefinite" />
+            </rect>
+          );
+        })}
       </svg>
 
       {/* Compact key */}
