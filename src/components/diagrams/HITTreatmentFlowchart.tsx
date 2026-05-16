@@ -46,11 +46,16 @@ const HITTreatmentFlowchart = ({ highlightBand = null }: HITTreatmentFlowchartPr
   };
 
   // Map 4Ts band → set of treatment-step numbers that apply
+  //   LOW           → HIT excluded; no steps mandated (no ring drawn)
+  //   INTERMEDIATE  → stop heparin (1) + PF4 ELISA & duplex (2) + start non-heparin
+  //                   anticoag empirically (3). Functional assay only if ELISA+;
+  //                   oral transition (4) and lifelong allergy (5) await confirmation.
+  //   HIGH          → all five steps now, plus functional assay in parallel.
   const activeSteps =
     highlightBand === "HIGH"
       ? new Set([1, 2, 3, 4, 5])
       : highlightBand === "INTERMEDIATE"
-        ? new Set([1, 2, 3, 4, 5])
+        ? new Set([1, 2, 3])
         : new Set<number>();
 
   const stepRects: Record<number, { x: number; y: number; w: number; h: number }> = {
@@ -72,9 +77,9 @@ const HITTreatmentFlowchart = ({ highlightBand = null }: HITTreatmentFlowchartPr
     highlightBand === "HIGH"
       ? "4Ts HIGH (~64%) — execute every step now. Send PF4 ELISA AND functional assay (SRA/HIPA) in parallel."
       : highlightBand === "INTERMEDIATE"
-        ? "4Ts INTERMEDIATE (~14%) — stop heparin and begin non-heparin anticoagulation; PF4 ELISA first, functional assay if ELISA positive."
+        ? "4Ts INTERMEDIATE (~14%) — stop heparin, start empirical non-heparin anticoagulation, send PF4 ELISA + bilateral leg duplex. Add functional assay only if ELISA positive; defer oral transition and lifelong-allergy documentation until HIT is confirmed."
         : highlightBand === "LOW"
-          ? "4Ts LOW (<5%) — HIT effectively excluded. No step below is mandated; continue heparin if clinically indicated."
+          ? "4Ts LOW (<5%) — HIT effectively excluded. No step below is mandated; continue heparin if clinically indicated and consider an alternative cause for the thrombocytopenia."
           : null;
 
   return (
