@@ -8,8 +8,7 @@ import HUSPathophysiologyDiagram from "@/components/diagrams/HUSPathophysiologyD
 import DICPathophysiologyDiagram from "@/components/diagrams/DICPathophysiologyDiagram";
 import HLHPathophysiologyDiagram from "@/components/diagrams/HLHPathophysiologyDiagram";
 import HITPathophysiologyDiagram from "@/components/diagrams/HITPathophysiologyDiagram";
-import HITTreatmentFlowchart from "@/components/diagrams/HITTreatmentFlowchart";
-import FourTsScorePanel from "@/components/FourTsScorePanel";
+import HITAssessmentBlock from "@/components/HITAssessmentBlock";
 import RebalancedHaemostasisDiagram from "@/components/diagrams/RebalancedHaemostasisDiagram";
 
 const objectives = [
