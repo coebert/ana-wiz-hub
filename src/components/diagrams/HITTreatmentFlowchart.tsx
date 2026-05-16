@@ -1,29 +1,20 @@
 import { DiagramFigure, svgImgProps } from "./_shared/DiagramFigure";
 import { Cite } from "@/components/Cite";
+import type { FourTsBand } from "@/components/FourTsScorePanel";
+
+interface HITTreatmentFlowchartProps {
+  highlightBand?: FourTsBand | null;
+}
 
 /**
  * HIT treatment flowchart — from "stop heparin" through alternative anticoagulant
  * selection, organ-failure branching, transition to oral therapy, and discharge advice.
  *
- * Vertical layout:
- *   Trigger (4Ts ≥ 4 / suspected HIT)
- *     ↓
- *   STEP 1 — STOP all heparin
- *     ↓
- *   STEP 2 — Send PF4 ELISA + functional assay (SRA/HIPA); duplex legs
- *     ↓
- *   STEP 3 — Choose non-heparin anticoagulant by clinical context
- *      ├── Standard ICU         → Argatroban
- *      ├── ECMO / CPB           → Bivalirudin
- *      ├── Renal failure        → Argatroban (hepatic) — avoid fondaparinux
- *      ├── Hepatic failure      → Bivalirudin (enzymatic) — avoid argatroban
- *      └── Outpatient / mild    → Fondaparinux or DOAC (off-label)
- *     ↓
- *   STEP 4 — Transition to oral once platelets > 150
- *     ↓
- *   STEP 5 — Discharge: lifelong heparin allergy alert; avoid for 3 months min
+ * When `highlightBand` is supplied (LOW / INTERMEDIATE / HIGH from the linked 4Ts
+ * panel), a banner above the SVG indicates which numbered steps apply and the
+ * matching step rectangles are emphasised.
  */
-const HITTreatmentFlowchart = () => {
+const HITTreatmentFlowchart = ({ highlightBand = null }: HITTreatmentFlowchartProps = {}) => {
   const id = "hit-treatment";
 
   // Geometry helpers
