@@ -74,7 +74,7 @@ const domains: Domain[] = [
 
 type Answers = Record<string, 0 | 1 | 2 | undefined>;
 
-export const FourTsScorePanel = () => {
+export const FourTsScorePanel = ({ onBandChange }: FourTsScorePanelProps = {}) => {
   const [answers, setAnswers] = useState<Answers>({});
 
   const { total, complete } = useMemo(() => {
