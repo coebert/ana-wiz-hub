@@ -46,11 +46,16 @@ const HITTreatmentFlowchart = ({ highlightBand = null }: HITTreatmentFlowchartPr
   };
 
   // Map 4Ts band → set of treatment-step numbers that apply
+  //   LOW           → HIT excluded; no steps mandated (no ring drawn)
+  //   INTERMEDIATE  → stop heparin (1) + PF4 ELISA & duplex (2) + start non-heparin
+  //                   anticoag empirically (3). Functional assay only if ELISA+;
+  //                   oral transition (4) and lifelong allergy (5) await confirmation.
+  //   HIGH          → all five steps now, plus functional assay in parallel.
   const activeSteps =
     highlightBand === "HIGH"
       ? new Set([1, 2, 3, 4, 5])
       : highlightBand === "INTERMEDIATE"
-        ? new Set([1, 2, 3, 4, 5])
+        ? new Set([1, 2, 3])
         : new Set<number>();
 
   const stepRects: Record<number, { x: number; y: number; w: number; h: number }> = {
