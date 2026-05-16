@@ -113,6 +113,10 @@ export const FourTsScorePanel = ({ onBandChange }: FourTsScorePanelProps = {}) =
     };
   }, [complete, total]);
 
+  useEffect(() => {
+    onBandChange?.((interpretation?.band as FourTsBand | undefined) ?? null);
+  }, [interpretation, onBandChange]);
+
   const reset = () => setAnswers({});
 
   const toneClasses = (tone: "ok" | "warn" | "bad") =>
