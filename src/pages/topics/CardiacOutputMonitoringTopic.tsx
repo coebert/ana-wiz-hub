@@ -326,6 +326,17 @@ const CoreConcepts = () => (
         </table>
       </div>
     </div>
+
+    <ExamPitfallsCallout
+      accent="icu"
+      pitfalls={[
+        "PA catheter: gold standard but invasive — no mortality benefit (PAC-Man); reserve for complex haemodynamics.",
+        "PiCCO: transpulmonary thermodilution + pulse-contour analysis; needs central + arterial line; sensitive to arrhythmia.",
+        "Oesophageal Doppler: continuous, minimally invasive; flow time corrected (FTc) and peak velocity guide GDT in major surgery (NICE MTG3).",
+        "PPV/SVV predict fluid responsiveness only in fully ventilated, sinus-rhythm, Vt ≥8 mL/kg patients with closed chest.",
+        "Echo (TTE/TOE) is increasingly first-line — adds anatomy plus function, valves and pericardium.",
+      ]}
+    />
   </>
 );
 
