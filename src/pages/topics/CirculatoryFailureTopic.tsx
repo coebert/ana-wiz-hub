@@ -208,6 +208,7 @@ const coreConcepts = (
 
     <div>
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Assessment of Fluid Responsiveness</h2>
+      <div className="my-4"><FluidResponsivenessDiagram /></div>
       <p className="text-muted-foreground leading-relaxed mb-3">
         Static measures (CVP, PAOP) are poor predictors. Dynamic indices are more reliable:
       </p>
@@ -281,6 +282,11 @@ const coreConcepts = (
 
     <div>
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Mechanical Circulatory Support (MCS)</h2>
+      <div className="my-4 space-y-4">
+        <MechanicalCirculatorySupportDiagram />
+        <MCSPressureVolumeLoopDiagram />
+        <VAECMOCircuitDiagram />
+      </div>
       <p className="text-muted-foreground leading-relaxed mb-3">
         When pharmacological therapy fails to restore adequate perfusion in cardiogenic shock, MCS devices can directly augment cardiac output, unload the failing left ventricle, and buy time for recovery, decision, transplantation, or destination therapy. The three principal LV-support devices differ fundamentally in <em>how</em> they generate flow and <em>how much</em> they unload the ventricle.
       </p>
