@@ -119,6 +119,9 @@ const EndocrineDiseaseTopic = () => {
                 <li>Euglycaemic DKA: suspect in patients on SGLT2 inhibitors — normal glucose but raised ketones and metabolic acidosis</li>
               </ul>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <PerioperativeDiabetesDiagram />
+            </div>
           </div>
         </section>
 
@@ -154,6 +157,9 @@ const EndocrineDiseaseTopic = () => {
                 <li>Postoperative complications: recurrent laryngeal nerve palsy (hoarseness), bilateral RLN palsy (stridor → reintubation), hypocalcaemia (parathyroid damage), haematoma (surgical emergency — open wound at bedside)</li>
               </ul>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <ThyroidStormDiagram />
+            </div>
           </div>
         </section>
 
@@ -179,6 +185,9 @@ const EndocrineDiseaseTopic = () => {
                 <li>Continue perioperative steroid cover — risk of adrenal crisis with adrenalectomy</li>
               </ul>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <AddisonianCrisisDiagram />
+            </div>
           </div>
         </section>
 
@@ -200,6 +209,9 @@ const EndocrineDiseaseTopic = () => {
                 <li>Postoperative: risk of hypotension (depleted catecholamines) and hypoglycaemia (rebound insulin secretion)</li>
               </ul>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <PhaeochromocytomaDiagram />
+            </div>
           </div>
         </section>
 
@@ -217,6 +229,9 @@ const EndocrineDiseaseTopic = () => {
                 <li>Avoid histamine-releasing drugs, sympathomimetics, and suxamethonium (may trigger carcinoid crisis)</li>
                 <li>Carcinoid crisis: IV octreotide 100–500 µg bolus; avoid catecholamines (may worsen); use vasopressin for hypotension</li>
               </ul>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <CarcinoidSyndromeDiagram />
             </div>
           </div>
         </section>
