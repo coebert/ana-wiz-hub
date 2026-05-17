@@ -391,3 +391,34 @@
 /* Sheen / occlusion overlays painted by patientAnatomy primitives.    */
 [data-realism="minimal"] .anat-sheen { display: none; }
 [data-realism="rich"]    .anat-sheen { opacity: 1; }
+
+/* ── Neon splash animation ────────────────────────────────────────── */
+@keyframes neon-flicker {
+  0%   { opacity: 0; filter: invert(1) brightness(2) drop-shadow(0 0 0 hsl(var(--primary))); }
+  8%   { opacity: 0.15; }
+  10%  { opacity: 0.05; }
+  14%  { opacity: 0.35; filter: invert(1) brightness(2) drop-shadow(0 0 4px hsl(var(--primary))); }
+  18%  { opacity: 0.1; }
+  24%  { opacity: 0.55; filter: invert(1) brightness(2) drop-shadow(0 0 8px hsl(var(--primary))); }
+  28%  { opacity: 0.2; }
+  34%  { opacity: 0.7; filter: invert(1) brightness(2) drop-shadow(0 0 14px hsl(var(--primary))); }
+  40%  { opacity: 0.4; }
+  50%  { opacity: 0.9; filter: invert(1) brightness(2) drop-shadow(0 0 22px hsl(var(--primary))) drop-shadow(0 0 40px hsl(var(--primary) / 0.6)); }
+  62%  { opacity: 0.75; }
+  72%  { opacity: 1; filter: invert(1) brightness(2.2) drop-shadow(0 0 30px hsl(var(--primary))) drop-shadow(0 0 60px hsl(var(--primary) / 0.7)); }
+  100% { opacity: 1; filter: invert(1) brightness(2.2) drop-shadow(0 0 34px hsl(var(--primary))) drop-shadow(0 0 70px hsl(var(--primary) / 0.8)); }
+}
+
+@keyframes neon-halo {
+  0%   { opacity: 0; transform: scale(0.7); }
+  50%  { opacity: 0.4; transform: scale(0.9); }
+  100% { opacity: 0.85; transform: scale(1); }
+}
+
+.animate-neon-flicker { animation: neon-flicker 2.4s ease-out both; }
+.animate-neon-halo    { animation: neon-halo 2.4s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-neon-flicker,
+  .animate-neon-halo { animation: none; opacity: 1; }
+}
