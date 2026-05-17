@@ -29,25 +29,14 @@ const ENTAnaesthesiaTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL], curriculumCodes: ["EN_BK_03"] },
-        diagrams: { exams: [Exam.FINAL] },
         workedExamples: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["BJA Educ ENT 2017", "DAS 2015"],
-        diagrams: ["NTSP 2014", "BJA Educ ENT 2017"],
         workedExamples: ["DAS 2015", "BJA Educ Laser 2015", "NAP4 2011"],
         keyPoints: ["DAS 2015", "NTSP 2014", "BJA Educ Laser 2015", "BJA Educ ENT 2017", "NAP4 2011"],
       }}
-      diagrams={
-        <>
-          <LaryngectomyAirwayHandoverDiagram />
-          <LaserAirwayDiagram />
-          <JetVentilationDiagram />
-          <JetVentilationCycleAnimation />
-          <LeFortFractureDiagram />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
@@ -140,6 +129,17 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Prevention (the fire triangle)</strong>: ignition (laser) is unavoidable, so eliminate fuel and oxidiser. FiO₂ ≤ 0.30 with air/O₂ mix, <strong>never N₂O</strong> (supports combustion); saline-soaked pledgets at the glottis; saline syringe primed on the airway trolley; wet drapes around the face; surgeon and anaesthetist agree the laser-fire drill before draping.</li>
               <li><strong>If a fire occurs</strong>: call out "Airway fire" → <strong>stop ventilation, disconnect circuit, remove the tube</strong> simultaneously → flood the field with saline → surgeon turns the laser off and removes any burning material → mask-ventilate with 100% O₂ once the fire is out → re-intubate with a fresh laser-safe tube → <strong>rigid bronchoscopy</strong> to assess airway burns → ICU admission, humidified O₂, dexamethasone, low threshold for tracheostomy.</li>
             </ul>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <LaserAirwayDiagram />
+            </div>
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <JetVentilationDiagram />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <JetVentilationCycleAnimation />
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -186,6 +186,14 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Le Fort fractures</strong>: I (maxilla), II (pyramidal — maxilla + nasal bridge), III (craniofacial disjunction). Risks CSF leak and airway compromise — nasal intubation contraindicated in II/III</li>
               <li><strong>Free flap surgery</strong>: long procedures (8–12h). Avoid α-agonist boluses (flap vasospasm); use noradrenaline by infusion, MAP ≥70 mmHg, normothermia, Hb 80–100 g/L</li>
             </ul>
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <LaryngectomyAirwayHandoverDiagram />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <LeFortFractureDiagram />
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 

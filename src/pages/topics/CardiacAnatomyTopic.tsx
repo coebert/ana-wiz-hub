@@ -12,7 +12,6 @@ import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDia
 import AnteriorCardiacPlate from "@/components/diagrams/anatomy/AnteriorCardiacPlate";
 import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
 import { DiagramTabs } from "@/components/diagrams/DiagramTabs";
-import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
 
 const CardiacAnatomyTopic = () => {
@@ -33,81 +32,14 @@ const CardiacAnatomyTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["AN_BK_03"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Ellis & Feldman Ch.3", "Power & Kam Ch.3"],
-        diagrams: ["BJA Educ 2005", "Ellis & Feldman Ch.3"],
         workedExamples: ["BJA Educ 2005", "Power & Kam Ch.3"],
         keyPoints: ["Ellis & Feldman Ch.3", "BJA Educ 2005", "Power & Kam Ch.3"],
       }}
-      diagrams={
-        <>
-          <CardiacAnatomyDiagram />
-
-          <DiagramSection
-            title="Systemic circulation overview"
-            intro="Whole-body map of the major systemic arteries with the great vessels and pulmonary circulation labelled around an enlarged heart inset. Useful for orientating regional anatomy (upper limb, thoracic/abdominal aorta, pelvic, lower limb) against the central cardiac plumbing."
-          >
-            <figure className="rounded-xl border border-border bg-card overflow-hidden">
-              <img
-                src={systemicCirculationOverview}
-                alt="Annotated diagram of the systemic arterial circulation, great vessels, and an enlarged heart showing chambers and coronary arteries"
-                className="w-full h-auto"
-                loading="lazy"
-              />
-              <figcaption className="text-xs text-muted-foreground p-3 border-t border-border">
-                Major arteries of the systemic circulation with great vessels of the heart and pulmonary circulation.
-              </figcaption>
-            </figure>
-          </DiagramSection>
-
-
-          <DiagramSection
-            title="Painted plates — heart, valves & conduction"
-            intro="Hand-coded SVG plates with code-defined labels and leader lines — every label is auditable in source, not baked into pixels."
-          >
-            <AnteriorCardiacPlate />
-          </DiagramSection>
-
-          <CoronarySelectionProvider initial="anterior">
-            <DiagramTabs
-              title="Coronary territory mapping"
-              description="Pick a territory or coronary branch on any panel — the others stay in sync, so you can move between the anatomical tree, the LV bullseye and the 12-lead correlation."
-              tabs={[
-                {
-                  value: "territory",
-                  label: "Territory map",
-                  caption: "Anatomical projection of LAD, LCx and RCA territories on the heart silhouette.",
-                  content: <CoronaryTerritoryMapDiagram />,
-                },
-                {
-                  value: "tree",
-                  label: "Coronary tree",
-                  caption: "Branching diagram from the aortic root to PDA — toggle dominance and named branches.",
-                  content: <CoronaryTreeDiagram />,
-                },
-                {
-                  value: "bullseye",
-                  label: "LV bullseye",
-                  caption: "AHA 17-segment bullseye coloured by supplying coronary artery.",
-                  content: <LVBullseyeDiagram />,
-                },
-                {
-                  value: "ecg",
-                  label: "12-lead correlation",
-                  caption: "Which leads see each territory — predict the culprit vessel from ST changes.",
-                  content: <TwelveLeadEcgDiagram />,
-                },
-              ]}
-            />
-          </CoronarySelectionProvider>
-
-          <CardiacConductionDiagram />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
@@ -124,6 +56,12 @@ const CardiacAnatomyTopic = () => {
                 <p className="font-semibold text-foreground text-sm">Left Heart</p>
                 <p className="text-sm text-muted-foreground mt-1">LA: smooth-walled (except appendage). 4 pulmonary veins enter posteriorly. Mitral valve: 2 leaflets with chordae tendineae to papillary muscles. LV: thick-walled (8–15 mm). Aortic valve: 3 semilunar cusps with sinuses of Valsalva.</p>
               </div>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <CardiacAnatomyDiagram />
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <AnteriorCardiacPlate />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -144,6 +82,40 @@ const CardiacAnatomyTopic = () => {
                 </div>
               ))}
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <CoronarySelectionProvider initial="anterior">
+                <DiagramTabs
+                  title="Coronary territory mapping"
+                  description="Pick a territory or coronary branch on any panel — the others stay in sync, so you can move between the anatomical tree, the LV bullseye and the 12-lead correlation."
+                  tabs={[
+                    {
+                      value: "territory",
+                      label: "Territory map",
+                      caption: "Anatomical projection of LAD, LCx and RCA territories on the heart silhouette.",
+                      content: <CoronaryTerritoryMapDiagram />,
+                    },
+                    {
+                      value: "tree",
+                      label: "Coronary tree",
+                      caption: "Branching diagram from the aortic root to PDA — toggle dominance and named branches.",
+                      content: <CoronaryTreeDiagram />,
+                    },
+                    {
+                      value: "bullseye",
+                      label: "LV bullseye",
+                      caption: "AHA 17-segment bullseye coloured by supplying coronary artery.",
+                      content: <LVBullseyeDiagram />,
+                    },
+                    {
+                      value: "ecg",
+                      label: "12-lead correlation",
+                      caption: "Which leads see each territory — predict the culprit vessel from ST changes.",
+                      content: <TwelveLeadEcgDiagram />,
+                    },
+                  ]}
+                />
+              </CoronarySelectionProvider>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -162,6 +134,9 @@ const CardiacAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Triangle of Koch. Supplied by AV nodal artery (from RCA in 80%). Only site of normal atrio-ventricular conduction. Ablation target in AF.</p>
               </div>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <CardiacConductionDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -177,6 +152,17 @@ const CardiacAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Fibrous + serous (parietal and visceral/epicardium). Pericardial space: 15–50 ml fluid. Transverse sinus: between aorta/PA anteriorly and SVC/pulmonary veins posteriorly — surgically important for cross-clamping.</p>
               </div>
             </div>
+            <figure className="rounded-xl border border-border bg-card overflow-hidden mt-4">
+              <img
+                src={systemicCirculationOverview}
+                alt="Annotated diagram of the systemic arterial circulation, great vessels, and an enlarged heart showing chambers and coronary arteries"
+                className="w-full h-auto"
+                loading="lazy"
+              />
+              <figcaption className="text-xs text-muted-foreground p-3 border-t border-border">
+                Major arteries of the systemic circulation with great vessels of the heart and pulmonary circulation.
+              </figcaption>
+            </figure>
             </CollapsibleSubsection>
           </ExamSection>
         </>
