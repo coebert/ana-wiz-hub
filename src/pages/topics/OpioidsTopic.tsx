@@ -279,6 +279,7 @@ const OpioidsTopic = () => {
               dynorphin, TLR4-mediated neuroinflammation. Management: opioid dose reduction or rotation, NMDA antagonists
               (ketamine), α₂-agonists, gabapentinoids, magnesium, multimodal analgesia.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><OIHToleranceDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
