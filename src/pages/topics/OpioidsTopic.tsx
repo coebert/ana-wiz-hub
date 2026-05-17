@@ -265,6 +265,7 @@ const OpioidsTopic = () => {
               respiratory depression while preserving κ-analgesia. <strong>Pentazocine</strong> — κ agonist with dysphoric and
               cardiovascular-stimulating effects; rarely used. All can precipitate withdrawal in opioid-dependent patients.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><BuprenorphinePharmacologyDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
