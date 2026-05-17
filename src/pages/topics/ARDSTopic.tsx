@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { ardsQuestions } from "@/data/quizzes";
 import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
@@ -132,7 +133,7 @@ const ARDSTopic = () => {
     <>
       <section className="space-y-6">
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC2.4"]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Berlin Definition (2012)</h2>
+          <CollapsibleSubsection title="Berlin Definition (2012)" defaultOpen>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The Berlin definition replaced the 1994 AECC criteria and stratifies ARDS by oxygenation impairment (PaO₂/FiO₂ on ≥5 cmH₂O PEEP) into mild, moderate, and severe categories — each with a stepwise rise in mortality. Onset must be within 7 days of a known insult, with bilateral opacities not fully explained by cardiac failure or volume overload.
           </p>
@@ -155,10 +156,11 @@ const ARDSTopic = () => {
           <p className="text-sm text-muted-foreground mt-2">
             All with: onset within 7 days, bilateral opacities on CXR/CT, not fully explained by cardiac failure/fluid overload, PEEP ≥5 cmH₂O.
           </p>
+          </CollapsibleSubsection>
         </ExamSection>
 
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Management Strategy</h2>
+          <CollapsibleSubsection title="Management Strategy">
           <div className="space-y-3">
             {[
               { level: "Foundation", items: "Lung-protective ventilation (VT 6 ml/kg IBW, Pplat ≤30), conservative fluid strategy, treat underlying cause" },
@@ -171,13 +173,15 @@ const ARDSTopic = () => {
               </div>
             ))}
           </div>
+          </CollapsibleSubsection>
         </ExamSection>
 
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Prone Positioning</h2>
+          <CollapsibleSubsection title="Prone Positioning">
           <p className="text-muted-foreground leading-relaxed">
             PROSEVA trial (2013): prone positioning ≥16h/day in moderate-severe ARDS (P/F &lt;150) reduced 28-day mortality from 32.8% to 16.0% (NNT = 6). Mechanism: improved V/Q matching, recruitment of dorsal lung, reduced transpulmonary pressure gradient, improved drainage of secretions. Contraindications: spinal instability, open abdomen, raised ICP.
           </p>
+          </CollapsibleSubsection>
         </ExamSection>
 
         <ARDSVentModeComparisonDiagram />
@@ -191,7 +195,7 @@ const ARDSTopic = () => {
       <section className="space-y-6 mb-10">
         {/* ECMO Indications & Referral */}
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ECMO — Indications & Referral Criteria</h2>
+          <CollapsibleSubsection title="ECMO — Indications & Referral Criteria">
           <div className="space-y-3">
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
               <p className="font-semibold text-foreground text-sm">VV-ECMO — Refractory Hypoxaemia</p>
@@ -212,11 +216,12 @@ const ARDSTopic = () => {
               </p>
             </div>
           </div>
+          </CollapsibleSubsection>
         </ExamSection>
 
         {/* Key ECMO Parameters */}
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Adjustable ECMO Parameters</h2>
+          <CollapsibleSubsection title="Key Adjustable ECMO Parameters">
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -275,11 +280,12 @@ const ARDSTopic = () => {
               </p>
             </div>
           </div>
+          </CollapsibleSubsection>
         </ExamSection>
 
         {/* Anticoagulation */}
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anticoagulation on ECMO</h2>
+          <CollapsibleSubsection title="Anticoagulation on ECMO">
           <p className="text-muted-foreground leading-relaxed mb-4">
             The extracorporeal circuit activates the coagulation cascade on contact with foreign surfaces. Anticoagulation is essential to prevent circuit thrombosis but must be balanced against bleeding risk — the leading cause of morbidity on ECMO.
           </p>
@@ -341,11 +347,12 @@ const ARDSTopic = () => {
               </p>
             </div>
           </div>
+          </CollapsibleSubsection>
         </ExamSection>
 
         {/* ECMO Complications */}
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ECMO Complications</h2>
+          <CollapsibleSubsection title="ECMO Complications">
           <div className="grid sm:grid-cols-2 gap-3">
             {[
               { title: "Bleeding", detail: "Most common complication (30–50%). Surgical sites, cannulation sites, GI, intracranial. Manage: reduce anticoagulation, transfuse, surgical control, consider AVWS." },
@@ -361,11 +368,12 @@ const ARDSTopic = () => {
               </div>
             ))}
           </div>
+          </CollapsibleSubsection>
         </ExamSection>
 
         {/* Weaning */}
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ECMO Weaning & Decannulation</h2>
+          <CollapsibleSubsection title="ECMO Weaning & Decannulation">
           <div className="space-y-3">
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
               <p className="font-semibold text-foreground text-sm">VV-ECMO Weaning</p>
@@ -380,11 +388,12 @@ const ARDSTopic = () => {
               </p>
             </div>
           </div>
+          </CollapsibleSubsection>
         </ExamSection>
 
         {/* Key Evidence */}
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key ECMO Evidence</h2>
+          <CollapsibleSubsection title="Key ECMO Evidence">
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -413,11 +422,12 @@ const ARDSTopic = () => {
               </tbody>
             </table>
           </div>
+          </CollapsibleSubsection>
         </ExamSection>
 
         {/* COVID-19 Severe Respiratory Failure */}
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">COVID-19 — Severe Respiratory Failure</h2>
+          <CollapsibleSubsection title="COVID-19 — Severe Respiratory Failure">
           <p className="text-muted-foreground leading-relaxed mb-4">
             COVID-19 pneumonitis can cause ARDS but may present with atypical features. The evidence base evolved rapidly during the pandemic and continues to be refined. Key principles align with standard ARDS management but with specific pharmacological adjuncts.
           </p>
@@ -508,11 +518,12 @@ const ARDSTopic = () => {
               </div>
             ))}
           </div>
+          </CollapsibleSubsection>
         </ExamSection>
 
         {/* Key COVID Trials */}
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key COVID-19 Critical Care Trials</h2>
+          <CollapsibleSubsection title="Key COVID-19 Critical Care Trials">
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -556,11 +567,12 @@ const ARDSTopic = () => {
               </tbody>
             </table>
           </div>
+          </CollapsibleSubsection>
         </ExamSection>
 
         {/* Guideline comparison */}
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Major Guideline Comparison</h2>
+          <CollapsibleSubsection title="Major Guideline Comparison">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Side-by-side summary of the contemporary ARDS frameworks. Berlin 2012 is purely diagnostic, while
             ESICM 2023 and the ATS/ESICM/SCCM 2024 Global Definition cover both diagnosis and management — the 2024
@@ -652,12 +664,13 @@ const ARDSTopic = () => {
               </ul>
             </div>
           </div>
+          </CollapsibleSubsection>
         </ExamSection>
       </section>
 
       <section className="space-y-4 mb-10">
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Corticosteroids in Severe Pneumonia — Updated Evidence</h2>
+          <CollapsibleSubsection title="Corticosteroids in Severe Pneumonia — Updated Evidence">
           <p className="text-muted-foreground leading-relaxed mb-3">
             The role of steroids in pneumonia has been transformed since 2020. Three high-quality RCTs (RECOVERY, CAPE COD, ESCAPe) and the post-COVID guideline updates have moved corticosteroids from "controversial adjunct" to <strong>standard care in severe community-acquired pneumonia (sCAP) and COVID-19 pneumonia requiring oxygen</strong>. The picture for influenza and non-severe CAP remains more nuanced.
           </p>
@@ -772,6 +785,7 @@ const ARDSTopic = () => {
           <p className="text-muted-foreground leading-relaxed">
             Hyperglycaemia (most common, often requires insulin infusion), secondary bacterial / fungal infections (CAPA risk in COVID), GI bleeding (co-prescribe PPI), neuropsychiatric effects, ICU-acquired weakness (synergistic with NMB), and <strong>strongyloides hyperinfection</strong> in patients from endemic areas — give empirical ivermectin if recent travel/residence and unable to test promptly.
           </p>
+          </CollapsibleSubsection>
         </ExamSection>
       </section>
 

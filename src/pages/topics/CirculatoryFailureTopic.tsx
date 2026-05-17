@@ -1,3 +1,4 @@
+import { Exam } from "@/data/curriculum";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { circulatoryFailureQuestions, ecmoQuestions } from "@/data/quizzes";

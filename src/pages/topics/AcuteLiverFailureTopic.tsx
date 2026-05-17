@@ -1,3 +1,4 @@
+import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { acuteLiverFailureQuestions } from "@/data/quizzes";
