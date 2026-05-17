@@ -62,7 +62,6 @@ const VascularAccessDevicesTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
@@ -85,81 +84,6 @@ const VascularAccessDevicesTopic = () => {
           "Cochrane PIVC 2019",
         ],
       }}
-      diagrams={
-        <>
-          <DiagramSection
-            title="Devices to scale — length and tip position"
-            intro={
-              <p>
-                Catheters compared on a single length axis. Tip position
-                (forearm vein → axillary vein → SVC) is the single most
-                important property: it determines whether the device is
-                peripheral, midline or central, and therefore which drugs
-                and what flow rates are safe.
-              </p>
-            }
-          >
-            <VascularAccessDevicesDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Lumen geometry & flow"
-            intro={
-              <p>
-                End-on cross-sections drawn to scale. Flow ∝ r⁴ / length
-                (Hagen–Poiseuille) — a short, wide single-lumen RIC or
-                introducer sheath delivers an order of magnitude more than
-                the narrow distal lumen of a long triple-lumen CVC.
-              </p>
-            }
-          >
-            <VascularAccessCrossSectionDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Device archetypes — labelled anatomy & dwell times"
-            intro={
-              <p>
-                Five labelled schematics covering peripheral cannula, PICC,
-                non-tunnelled CVC, tunnelled line (Hickman / Groshong /
-                Permcath) and implanted port (Portacath). Each plate
-                annotates skin entry, intravascular course and tip
-                position, and is paired with the supporting dwell-time and
-                site evidence.
-              </p>
-            }
-          >
-            <VascularAccessTypesDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Dwell-time approach — clinically indicated vs scheduled"
-            intro={
-              <p>
-                Animated comparison of recommended dwell-time strategy
-                across peripheral, arterial, central, PICC and dialysis
-                access. Bar length is a visual proxy for the maximum
-                recommended dwell time; the coloured tag indicates whether
-                removal is clinically indicated, site-dependent or under
-                scheduled review.
-              </p>
-            }
-          >
-            <DwellTimeInfographic />
-          </DiagramSection>
-        <ExamPitfallsCallout
-            accent="clinical"
-            pitfalls={[
-              'Poiseuille: flow ∝ r⁴ / length — a short large-bore peripheral (14–16 G) or RIC delivers far higher flow than any multi-lumen CVC.',
-              'Use ultrasound for CVC insertion (NICE TA49) — reduces complications and failed attempts.',
-              'CVC tip should sit at the SVC/RA junction (carina on CXR) — too deep risks arrhythmia/perforation, too high risks thrombosis.',
-              'PICCs: high thrombosis rate; avoid in CKD stage 4–5 to preserve veins for future fistula formation.',
-              'Vascaths/dialysis catheters: never use for routine drug administration — locked with heparin/citrate; aspirate lock before use.',
-              'Air embolism risk: position head-down for internal jugular insertion and removal; remove CVC with patient supine, Valsalva, and occlusive dressing.',
-            ]}
-          />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
