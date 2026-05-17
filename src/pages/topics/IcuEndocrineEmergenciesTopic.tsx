@@ -167,31 +167,14 @@ const IcuEndocrineEmergenciesTopic = () => {
       ]}
       sectionSources={{
         objectives: ["JBDS-IP DKA 2023", "JBDS-IP HHS 2022", "Endocrine Society 2016"],
-        diagrams: ["JBDS-IP DKA 2023", "Burch-Wartofsky 1993", "Endocrine Society 2016"],
         workedExamples: ["JBDS-IP DKA 2023", "Burch-Wartofsky 1993", "Bornstein 2016", "ATA Thyroid Storm", "ES Adrenal Crisis 2016"],
         keyPoints: ["JBDS-IP", "BJA Educ", "Endocrine Society", "JBDS-IP DKA 2023", "JBDS-IP HHS 2022", "BJA Educ Endo 2014", "ATA Thyroid Storm", "ES Adrenal Crisis 2016"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
-        diagrams: { exams: [Exam.FFICM, Exam.EDIC] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
-      diagrams={
-        <>
-          <EndocrineSymptomTriage />
-          <DKAAnimation />
-          <DKAvsHHSDiagram />
-          <ThyroidStormAnimation />
-          <AdrenalCrisisAnimation />
-          <EndocrineEmergencyAlgorithms />
-          <EndocrineEmergencyDrugs />
-          <GuidelineSources
-            title="Guideline sources — diagrams & algorithms"
-            sources={[...HYPERGLYCAEMIC_SOURCES, ...THYROID_SOURCES, ...ADRENAL_PITUITARY_SOURCES]}
-          />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
@@ -205,6 +188,9 @@ const IcuEndocrineEmergenciesTopic = () => {
               precipitant: infection, missed insulin, MI, CVA, steroids, SGLT2 inhibitors
               (euglycaemic DKA — glucose may be normal).
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <EndocrineSymptomTriage />
+            </div>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Severity criteria — DKA (JBDS-IP)</p>
@@ -221,6 +207,14 @@ const IcuEndocrineEmergenciesTopic = () => {
                   &lt; 3, glucose &gt; 30. Fluid deficit 100–220 ml/kg. Aim glucose fall
                   ≤ 5 mmol/L/h, Na⁺ change ≤ 10 mmol/L/24 h. Always give VTE prophylaxis.
                 </p>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <DKAAnimation />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <DKAvsHHSDiagram />
               </div>
             </div>
             <GuidelineSources sources={HYPERGLYCAEMIC_SOURCES} />
@@ -250,6 +244,9 @@ const IcuEndocrineEmergenciesTopic = () => {
                   ventilation as needed. Endocrinology referral.
                 </p>
               </div>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <ThyroidStormAnimation />
             </div>
             <GuidelineSources sources={THYROID_SOURCES} />
             </CollapsibleSubsection>
@@ -303,6 +300,9 @@ const IcuEndocrineEmergenciesTopic = () => {
                 </p>
               </div>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <AdrenalCrisisAnimation />
+            </div>
             <GuidelineSources sources={ADRENAL_PITUITARY_SOURCES} />
             </CollapsibleSubsection>
           </ExamSection>
@@ -322,6 +322,14 @@ const IcuEndocrineEmergenciesTopic = () => {
                   <p className="text-sm text-muted-foreground mt-1">{it.detail}</p>
                 </div>
               ))}
+            </div>
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <EndocrineEmergencyAlgorithms />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <EndocrineEmergencyDrugs />
+              </div>
             </div>
             <GuidelineSources sources={PITFALLS_SOURCES} />
             </CollapsibleSubsection>
