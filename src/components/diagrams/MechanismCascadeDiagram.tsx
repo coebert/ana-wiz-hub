@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useId, useRef, useState, type KeyboardEvent, useMemo } from "react";
 import { BookOpen, ChevronLeft, ChevronRight, ExternalLink, Pause, Play, RotateCcw } from "lucide-react";
 import { DiagramFigure } from "./_shared/DiagramFigure";
 import { cascadePerf } from "./_dev/cascadePerf";
+import { useMotionPreference } from "@/contexts/MotionPreferenceContext";
 
 /**
  * Re-usable animated mechanism cascade.
