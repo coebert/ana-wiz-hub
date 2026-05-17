@@ -197,6 +197,7 @@ const App = () => (
       <BrowserRouter>
         <Header />
         <UpdateBanner />
+        <CascadePerfBadge />
         <VisitTrackerWrapper>
         <Suspense fallback={<Loading />}>
         <Routes>
