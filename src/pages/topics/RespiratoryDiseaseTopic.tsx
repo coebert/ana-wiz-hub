@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { respiratoryDiseaseQuestions } from "@/data/quizzes";
 import RespiratoryDrugSafetyDiagram from "@/components/diagrams/RespiratoryDrugSafetyDiagram";
@@ -67,6 +68,7 @@ const RespiratoryDiseaseTopic = () => {
         {/* Asthma */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Asthma</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Preoperative Assessment</h3>
@@ -97,6 +99,7 @@ const RespiratoryDiseaseTopic = () => {
         {/* COPD */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Chronic Obstructive Pulmonary Disease</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Pathophysiology & Assessment</h3>
@@ -125,6 +128,7 @@ const RespiratoryDiseaseTopic = () => {
         {/* OSA */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Obstructive Sleep Apnoea</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -142,6 +146,7 @@ const RespiratoryDiseaseTopic = () => {
         {/* Restrictive Lung Disease */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Restrictive Lung Disease</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Pulmonary Fibrosis</h3>
@@ -168,6 +173,7 @@ const RespiratoryDiseaseTopic = () => {
         {/* Respiratory Infections */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Respiratory Infections</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">

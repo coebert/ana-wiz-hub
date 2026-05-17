@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { cardiovascularDiseaseQuestions } from "@/data/quizzes";
 import ValvularHaemodynamicsDiagram from "@/components/diagrams/ValvularHaemodynamicsDiagram";
@@ -53,6 +54,7 @@ const CardiovascularDiseaseTopic = () => {
         {/* Ischaemic Heart Disease */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ischaemic Heart Disease</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Preoperative Assessment</h3>
@@ -80,6 +82,7 @@ const CardiovascularDiseaseTopic = () => {
         {/* Valvular Heart Disease */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Valvular Heart Disease</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <ValvularHaemodynamicsDiagram />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -122,6 +125,7 @@ const CardiovascularDiseaseTopic = () => {
         {/* Heart Failure */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Failure</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Classification & Assessment</h3>
@@ -149,6 +153,7 @@ const CardiovascularDiseaseTopic = () => {
         {/* Arrhythmias & Pacemakers */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Arrhythmias, Pacemakers & ICDs</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Atrial Fibrillation</h3>
@@ -175,6 +180,7 @@ const CardiovascularDiseaseTopic = () => {
         {/* Pulmonary Hypertension */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pulmonary Hypertension</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -193,6 +199,7 @@ const CardiovascularDiseaseTopic = () => {
         {/* Congenital Heart Disease in Adults */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Adult Congenital Heart Disease</h2>
+          <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">

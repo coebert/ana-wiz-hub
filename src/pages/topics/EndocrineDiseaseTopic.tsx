@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { endocrineDiseaseQuestions } from "@/data/quizzes";
 import PerioperativeDiabetesDiagram from "@/components/diagrams/PerioperativeDiabetesDiagram";
@@ -65,6 +66,7 @@ const EndocrineDiseaseTopic = () => {
         {/* Diabetes Mellitus */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Diabetes Mellitus</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Preoperative Assessment</h3>
@@ -101,6 +103,7 @@ const EndocrineDiseaseTopic = () => {
         {/* Thyroid Disease */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thyroid Disease</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Hyperthyroidism</h3>
@@ -135,6 +138,7 @@ const EndocrineDiseaseTopic = () => {
         {/* Adrenal Disorders */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Adrenal Disorders</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Adrenal Insufficiency & Steroid Supplementation</h3>
@@ -159,6 +163,7 @@ const EndocrineDiseaseTopic = () => {
         {/* Phaeochromocytoma */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Phaeochromocytoma</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -179,6 +184,7 @@ const EndocrineDiseaseTopic = () => {
         {/* Carcinoid Syndrome */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Carcinoid Syndrome</h2>
+          <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">

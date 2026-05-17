@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { enhancedRecoveryQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/DiagramSection";
@@ -47,6 +48,7 @@ const EnhancedRecoveryTopic = () => {
           <section className="space-y-6">
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ERAS Principles</h2>
+          <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_03"]} />
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Enhanced Recovery After Surgery is a multimodal, evidence-based perioperative care pathway that reduces surgical stress, maintains physiological function, and accelerates recovery.
               </p>
@@ -68,6 +70,7 @@ const EnhancedRecoveryTopic = () => {
 
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Surgical Stress Response</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PO_BK_03"]} />
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Surgery triggers neuroendocrine, metabolic, and inflammatory responses. ERAS aims to attenuate these:
               </p>
@@ -88,6 +91,7 @@ const EnhancedRecoveryTopic = () => {
 
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Prehabilitation</h2>
+          <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_03"]} />
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">Exercise</p>
@@ -102,6 +106,7 @@ const EnhancedRecoveryTopic = () => {
 
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Nausea & Vomiting (PONV)</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PO_BK_03", "PH_BK_12"]} />
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">Apfel Score (Risk Factors)</p>

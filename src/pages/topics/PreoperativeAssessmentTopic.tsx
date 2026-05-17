@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { preoperativeAssessmentQuestions } from "@/data/quizzes";
 import CPETNinePanelDiagram from "@/components/diagrams/CPETNinePanelDiagram";
@@ -49,6 +50,7 @@ const PreoperativeAssessmentTopic = () => {
         {/* 1. Broadest: overall risk stratification frameworks */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Risk Assessment</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_01"]} />
           <p className="text-muted-foreground leading-relaxed mb-3">
             Perioperative risk stratification guides shared decision-making, optimisation strategies, and level of postoperative care.
           </p>
@@ -70,6 +72,7 @@ const PreoperativeAssessmentTopic = () => {
         {/* 2. Bedside clinical assessment — airway */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Assessment</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_01", "CL_BK_01"]} />
           <div className="grid sm:grid-cols-3 gap-2">
             {[
               { test: "Mallampati", detail: "Class I–IV. Predicts view at laryngoscopy. Class III/IV associated with difficult intubation." },
@@ -90,6 +93,7 @@ const PreoperativeAssessmentTopic = () => {
         {/* 3. Common chronic medication management */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Medication Management</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_01"]} />
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -405,6 +409,7 @@ const PreoperativeAssessmentTopic = () => {
       <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">GLP-1 Receptor Agonists & Anaesthesia</h2>
+          <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_01"]} />
           <p className="text-muted-foreground leading-relaxed mb-3">
             GLP-1 receptor agonists (semaglutide, liraglutide, tirzepatide) are increasingly prevalent due to widespread use for type 2 diabetes and obesity. They significantly delay gastric emptying, raising aspiration risk even in fasted patients.
           </p>
@@ -455,6 +460,7 @@ const PreoperativeAssessmentTopic = () => {
         {/* 8. Most specialist — CPET tertiary investigation */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiopulmonary Exercise Testing (CPET)</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_01"]} />
           <p className="text-muted-foreground leading-relaxed mb-3">
             A tertiary, specialist-delivered investigation reserved for high-risk patients undergoing major abdominal, thoracic, or vascular surgery — used to objectively quantify cardiorespiratory reserve and guide HDU/ICU planning and shared decision-making.
           </p>
