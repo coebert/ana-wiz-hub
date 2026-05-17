@@ -74,6 +74,9 @@ const UrologicalAnaesthesiaTopic = () => {
                 Spinal anaesthesia for TURP allows early detection of TURP syndrome — the awake patient develops confusion, restlessness, and nausea. Under GA these signs are masked. Spinal block to T10 is sufficient.
               </p>
             </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <TURPSyndromeDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
