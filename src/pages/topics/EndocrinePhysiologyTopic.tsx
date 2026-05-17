@@ -95,7 +95,6 @@ const EndocrinePhysiologyTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["CR_BK_07"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["OA_BK_05"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
@@ -104,11 +103,6 @@ const EndocrinePhysiologyTopic = () => {
         workedExamples: ["BJA Educ 2015", "Nicholson & Hall 2011", "Power & Kam Ch.12"],
         keyPoints: ["Power & Kam Ch.12", "BJA Educ 2015", "Nicholson & Hall 2011"],
       }}
-      diagrams={
-        <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-          <HPAAxisDiagram />
-        </div>
-      }
       keyPoints={[
         { text: "Cortisol: diurnal rhythm (peak 8 am), suppressed by exogenous steroids — perioperative cover needed if HPA axis suppressed.", cites: ["Nicholson & Hall 2011"] },
         { text: "Phaeochromocytoma: α-blockade BEFORE β-blockade (phenoxybenzamine then propranolol/atenolol) and volume loading.", cites: ["BJA Educ 2015"] },
@@ -176,11 +170,14 @@ const EndocrinePhysiologyTopic = () => {
 
           <ExamSection id="hpa-axis" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <CollapsibleSubsection title="HPA Axis">
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-3">
               The hypothalamic-pituitary-adrenal axis governs cortisol secretion through a three-tier cascade with both
               short- and long-loop negative feedback. Use the interactive diagram below to see how surgical stress,
               exogenous steroids and adrenal/pituitary failure remodel the cascade.
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <HPAAxisDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
