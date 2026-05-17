@@ -290,6 +290,7 @@ const OpioidsTopic = () => {
               opioids → risk of re-narcotisation; consider infusion (4–10 µg/kg/h). Pulmonary oedema and cardiovascular collapse
               can follow excessive or rapid administration in opioid-tolerant patients.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><NaloxoneDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
