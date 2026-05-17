@@ -526,9 +526,10 @@ interface RadialSvgProps {
   active: number;
   accentVar: string;
   centerLabel: string;
+  reduceMotion?: boolean;
 }
 
-const RadialSvg = ({ steps, active, accentVar, centerLabel }: RadialSvgProps) => {
+const RadialSvg = ({ steps, active, accentVar, centerLabel, reduceMotion = false }: RadialSvgProps) => {
   const size = 320;
   const cx = size / 2;
   const cy = size / 2;
