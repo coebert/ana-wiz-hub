@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+import { Pause, Play, RotateCcw } from "lucide-react";
 import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
@@ -40,8 +42,36 @@ const Y_MAX = 22; // kPa
 const xFor = (i: number) => PAD_L + (i + 0.5) * (PLOT_W / STEPS.length);
 const yFor = (po2: number) => PAD_T + (1 - po2 / Y_MAX) * PLOT_H;
 
+const STEP_MS = 1600;        // dwell time per step
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+
 const OxygenCascadeDiagram = () => {
   const yTicks = [0, 5, 10, 15, 20];
+
+  // ── Sequential highlight animation ──────────────────────────────
+  // `active` is the index of the currently highlighted step, or -1
+  // when nothing is highlighted (initial state / reduced motion).
+  // The timer auto-advances through 0..N-1, then loops after a brief
+  // dwell on the final mitochondrial step.
+  const [active, setActive] = useState(0);
+  const [playing, setPlaying] = useState(true);
+  const reducedMotion = useRef(
+    typeof window !== "undefined" &&
+      window.matchMedia?.(REDUCED_MOTION_QUERY).matches,
+  );
+
+  useEffect(() => {
+    if (reducedMotion.current || !playing) return;
+    const id = window.setInterval(() => {
+      setActive((i) => (i + 1) % STEPS.length);
+    }, STEP_MS);
+    return () => window.clearInterval(id);
+  }, [playing]);
+
+  // If the user prefers reduced motion, show all steps at full
+  // emphasis (treat every step as "active") and skip the timer.
+  const isActive = (i: number) =>
+    reducedMotion.current ? true : i === active;
 
   return (
     <div className="space-y-4">
@@ -104,8 +134,10 @@ const OxygenCascadeDiagram = () => {
             const y = yFor(s.po2);
             const barW = (PLOT_W / STEPS.length) * 0.7;
             const next = STEPS[i + 1];
+            const on = isActive(i);
+            // Tween-friendly visual values; CSS handles the transition.
             return (
-              <g key={s.label}>
+              <g key={s.label} style={{ transition: "opacity 400ms ease-out" }}>
                 {/* Drop connector to next step */}
                 {next && (
                   <line
@@ -114,21 +146,30 @@ const OxygenCascadeDiagram = () => {
                     x2={xFor(i + 1) - barW / 2}
                     y2={yFor(next.po2)}
                     stroke="hsl(var(--physiology))"
-                    strokeWidth={2}
+                    strokeWidth={on ? 2.5 : 2}
                     strokeDasharray="4 3"
-                    opacity={0.55}
+                    opacity={on ? 0.95 : 0.4}
+                    style={{ transition: "opacity 400ms ease-out, stroke-width 400ms ease-out" }}
                   />
                 )}
-                {/* Bar */}
+                {/* Bar — fill + stroke + a glow filter brighten when active */}
                 <rect
                   x={x - barW / 2}
                   y={y}
                   width={barW}
                   height={PAD_T + PLOT_H - y}
                   rx={3}
-                  fill="hsl(var(--physiology) / 0.18)"
+                  fill={on ? "hsl(var(--physiology) / 0.55)" : "hsl(var(--physiology) / 0.14)"}
                   stroke="hsl(var(--physiology))"
-                  strokeWidth={1.5}
+                  strokeWidth={on ? 2.5 : 1.25}
+                  opacity={on ? 1 : 0.55}
+                  style={{
+                    transition:
+                      "fill 400ms ease-out, stroke-width 400ms ease-out, opacity 400ms ease-out, filter 400ms ease-out",
+                    filter: on
+                      ? "drop-shadow(0 0 6px hsl(var(--physiology) / 0.55))"
+                      : "none",
+                  }}
                 />
                 {/* Value label above bar */}
                 <text
@@ -136,19 +177,22 @@ const OxygenCascadeDiagram = () => {
                   y={y - 6}
                   textAnchor="middle"
                   className="fill-foreground"
-                  fontSize="12"
+                  fontSize={on ? 13 : 12}
                   fontWeight="700"
+                  style={{ transition: "font-size 400ms ease-out" }}
                 >
                   {s.po2.toFixed(1)}
                 </text>
-                {/* X axis label (split onto two lines if long) */}
+                {/* X axis label */}
                 <text
                   x={x}
                   y={PAD_T + PLOT_H + 18}
                   textAnchor="middle"
                   className="fill-foreground"
                   fontSize="11"
-                  fontWeight="600"
+                  fontWeight={on ? 700 : 500}
+                  opacity={on ? 1 : 0.7}
+                  style={{ transition: "opacity 400ms ease-out, font-weight 400ms ease-out" }}
                 >
                   {s.label}
                 </text>
@@ -196,20 +240,73 @@ const OxygenCascadeDiagram = () => {
         </svg>
       </DiagramFigure>
 
-      {/* Stage-by-stage explanation */}
+      {/* Playback controls — let the user pause/scrub the sequence */}
+      {!reducedMotion.current && (
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setPlaying((p) => !p)}
+            aria-label={playing ? "Pause cascade animation" : "Play cascade animation"}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-secondary/60 text-foreground hover:bg-secondary transition-colors"
+          >
+            {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+            {playing ? "Pause" : "Play"}
+          </button>
+          <button
+            type="button"
+            onClick={() => { setActive(0); setPlaying(true); }}
+            aria-label="Restart cascade animation"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-secondary/40 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+            Restart
+          </button>
+          <div className="flex gap-1 ml-1">
+            {STEPS.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => { setActive(i); setPlaying(false); }}
+                aria-label={`Jump to step ${i + 1}: ${STEPS[i].label}`}
+                className={`h-2 w-2 rounded-full transition-all ${
+                  i === active
+                    ? "bg-physiology scale-125"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Stage-by-stage explanation — the active step is highlighted to match the diagram */}
       <ol className="space-y-2 text-sm">
-        {STEPS.map((s, i) => (
-          <li key={s.label} className="flex gap-3">
-            <span className="font-mono text-xs text-muted-foreground w-6 shrink-0 mt-0.5">
-              {i + 1}.
-            </span>
-            <div>
-              <span className="font-semibold text-foreground">{s.label}</span>{" "}
-              <span className="font-mono text-physiology">{s.po2.toFixed(1)} kPa</span>
-              <span className="text-foreground/80"> — {s.note}</span>
-            </div>
-          </li>
-        ))}
+        {STEPS.map((s, i) => {
+          const on = isActive(i);
+          return (
+            <li
+              key={s.label}
+              className={`flex gap-3 rounded-md px-2 py-1 -mx-2 transition-all duration-300 ${
+                on
+                  ? "bg-physiology/10 ring-1 ring-physiology/40"
+                  : "opacity-70"
+              }`}
+            >
+              <span
+                className={`font-mono text-xs w-6 shrink-0 mt-0.5 transition-colors ${
+                  on ? "text-physiology font-bold" : "text-muted-foreground"
+                }`}
+              >
+                {i + 1}.
+              </span>
+              <div>
+                <span className="font-semibold text-foreground">{s.label}</span>{" "}
+                <span className="font-mono text-physiology">{s.po2.toFixed(1)} kPa</span>
+                <span className="text-foreground/80"> — {s.note}</span>
+              </div>
+            </li>
+          );
+        })}
       </ol>
     </div>
   );
