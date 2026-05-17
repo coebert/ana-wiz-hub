@@ -122,6 +122,18 @@ const PerioperativeFluidsTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Balanced crystalloids (Plasma-Lyte, Hartmann's) preferred over 0.9% saline — large volumes of saline cause hyperchloraemic acidosis and AKI (SMART, SALT-ED).",
+              'Avoid HES/starch colloids in critically ill and septic patients (CHEST, 6S) — increased AKI and mortality.',
+              'Maintenance: 1–2 mL/kg/h in adults; 4-2-1 rule in paediatrics with isotonic fluid (NICE CG174) — hypotonic fluids cause hyponatraemia.',
+              'Goal-directed fluid therapy using dynamic indices (SVV, PPV, stroke-volume response) outperforms CVP — CVP is a poor predictor of fluid responsiveness.',
+              'Restrictive vs liberal: RELIEF trial showed restrictive regimens increase AKI — aim for zero-balance / modestly positive intraoperatively.',
+              'Albumin 4–5% reasonable for cirrhotic SBP and large-volume paracentesis; avoid in TBI (SAFE — increased mortality).',
+            ]}
+          />
         </>
       }
       workedExamples={[
