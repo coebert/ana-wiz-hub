@@ -476,3 +476,33 @@
 }
 
 
+
+/* ============================================================
+ * Print mode — force-expand all collapsible subsections so
+ * diagrams, animations, tables and worked examples are visible
+ * on paper / PDF export. Native <details> elements would
+ * otherwise print as collapsed, hiding their children.
+ * ============================================================ */
+@media print {
+  /* Force every <details> open and remove the toggle chevron. */
+  details {
+    display: block !important;
+  }
+  details > summary {
+    list-style: none !important;
+    cursor: default !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  details > summary::-webkit-details-marker { display: none !important; }
+  /* Make sure the disclosure body is shown regardless of [open] state. */
+  details > *:not(summary) {
+    display: revert !important;
+  }
+  /* Hide the rotating chevron — printed page doesn't need it. */
+  details > summary svg { display: none !important; }
+  /* Don't break a figure/diagram across pages where avoidable. */
+  figure, svg, table { page-break-inside: avoid; break-inside: avoid; }
+  /* Headings should not be orphaned from their content. */
+  h1, h2, h3 { page-break-after: avoid; break-after: avoid; }
+}
