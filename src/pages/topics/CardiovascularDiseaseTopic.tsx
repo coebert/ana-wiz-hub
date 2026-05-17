@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { cardiovascularDiseaseQuestions } from "@/data/quizzes";
 import ValvularHaemodynamicsDiagram from "@/components/diagrams/ValvularHaemodynamicsDiagram";
 import { Exam } from "@/data/curriculum";
@@ -205,6 +206,17 @@ const CardiovascularDiseaseTopic = () => {
             </div>
           </div>
         </section>
+        <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              'Severe AS (valve area <1 cm², gradient >40 mmHg): maintain sinus rhythm, normal HR (60–80), preload and SVR — use phenylephrine/vasopressin first-line.',
+              'CPP = DBP − LVEDP — in IHD avoid tachycardia and diastolic hypotension; continue β-blockers and statins.',
+              'Pulmonary hypertension: avoid hypoxia, hypercarbia, acidosis, hypothermia and high PEEP — all increase PVR and precipitate RV failure.',
+              'Pacemaker-dependent patient + monopolar diathermy: reprogramme to asynchronous (DOO/VOO) or apply magnet; for ICDs disable tachy-therapy and have external pads on.',
+              'AF: rate control (β-blocker / diltiazem) usually preferred perioperatively; weigh CHA₂DS₂-VASc vs HAS-BLED for bridging.',
+              'Eisenmenger / right-to-left shunt: meticulous IV de-airing, maintain SVR, avoid PVR rises — extremely high perioperative mortality.',
+            ]}
+          />
         </>
       }
     />

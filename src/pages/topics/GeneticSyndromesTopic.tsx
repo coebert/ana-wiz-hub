@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { ExamSection } from "@/components/ExamSection";
 import { geneticSyndromesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
@@ -292,6 +293,17 @@ const GeneticSyndromesTopic = () => {
               ))}
             </div>
           </ExamSection>
+        <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              'MH-susceptible: avoid all volatile agents and suxamethonium; use vapour-free machine (flush ≥20 min, remove vaporisers, fresh circuit); have dantrolene 2.5 mg/kg available.',
+              'BChE (pseudocholinesterase) deficiency: prolonged suxamethonium/mivacurium paralysis — ventilate until TOF returns; send dibucaine number.',
+              'Sickle cell disease: avoid hypoxia, acidosis, hypothermia, dehydration and tourniquets — maintain SpO₂ >95%, normothermia, good hydration.',
+              'Porphyria (acute intermittent): avoid trigger drugs — thiopental, etomidate, diclofenac, erythromycin; propofol, sux, opioids, volatiles generally safe.',
+              'Down syndrome: atlanto-axial instability (careful neck positioning), subglottic stenosis (use smaller ETT), congenital cardiac disease, OSA.',
+              'Marfan: aortic root dilatation/dissection risk — strict BP control, avoid hypertensive responses to laryngoscopy; cervical spine and lens instability.',
+            ]}
+          />
         </>
       }
       workedExamples={[

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { enhancedRecoveryQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/DiagramSection";
 import { TrendingDown, TrendingUp, Award, FlaskConical } from "lucide-react";
@@ -267,6 +268,17 @@ const EnhancedRecoveryTopic = () => {
               </p>
             </div>
           </DiagramSection>
+        <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              'Three pillars: prehabilitation, intra-operative optimisation, structured postoperative recovery — outcomes depend on the whole bundle, not individual elements.',
+              'Carbohydrate drinks up to 2 h preoperatively (unless diabetic gastroparesis) — reduces insulin resistance and improves wellbeing.',
+              'Goal-directed fluid therapy with stroke-volume optimisation reduces complications in major surgery — avoid both salt/water overload and hypovolaemia.',
+              'Opioid-sparing multimodal analgesia (paracetamol + NSAID + regional + dexamethasone) is core to ERAS — long-acting opioids delay return of gut function.',
+              'Early mobilisation, removal of drains/catheters and oral intake within 24 h are key recovery milestones.',
+              'Audit compliance — ERAS benefit is dose-dependent (≥70% bundle compliance correlates with reduced LOS and morbidity).',
+            ]}
+          />
         </>
       }
     />
