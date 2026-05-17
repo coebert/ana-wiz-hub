@@ -104,7 +104,6 @@ const CardiacCycleTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_01"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_01", "OA_BK_05"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
@@ -113,37 +112,6 @@ const CardiacCycleTopic = () => {
         workedExamples: ["BJA Educ 2018", "BJA Educ 2018", "Ganong Ch.30"],
         keyPoints: ["Power & Kam Ch.4", "BJA Educ 2018", "Ganong Ch.30"],
       }}
-      diagrams={
-        <>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <h3 className="text-base font-semibold text-foreground mb-3">Wiggers Diagram</h3>
-            <WiggersDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <h3 className="text-base font-semibold text-foreground mb-3">Aortic Pressure & the Dichrotic Notch</h3>
-            <AorticDicroticNotchDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <h3 className="text-base font-semibold text-foreground mb-1">Notch Morphology Across Pathologies</h3>
-            <p className="text-xs text-muted-foreground mb-4">
-              How the dichrotic notch shifts in aortic regurgitation, aortic stenosis, sepsis, and aging arteries — versus the normal reference waveform.
-            </p>
-            <DichroticNotchComparisonPanel />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <h3 className="text-base font-semibold text-foreground mb-3">Pressure–Volume Loop</h3>
-            <PVLoopDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <h3 className="text-base font-semibold text-foreground mb-3">Frank–Starling Curve</h3>
-            <FrankStarlingDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <h3 className="text-base font-semibold text-foreground mb-3">Cardiac Action Potential</h3>
-            <CardiacActionPotentialDiagram />
-          </div>
-        </>
-      }
       keyPoints={[
         { text: "Cardiac cycle = systole (~300 ms) + diastole (~560 ms) at HR 70; diastole shortens disproportionately with tachycardia.", cites: ["BJA Educ 2018"] },
         { text: "S1 = AV valve closure (start of systole); S2 = semilunar valve closure (end of systole) with dicrotic notch; S3/S4 reflect filling pathology.", cites: ["Power & Kam Ch.4"] },
@@ -273,6 +241,16 @@ const CardiacCycleTopic = () => {
                   diastolic filling time is rate-dependent and why tachycardia reduces cardiac output in
                   patients with diastolic dysfunction.
                 </p>
+              </div>
+            </div>
+            <div className="mt-4 space-y-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <h3 className="text-base font-semibold text-foreground mb-3">Wiggers Diagram</h3>
+                <WiggersDiagram />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <h3 className="text-base font-semibold text-foreground mb-3">Cardiac Action Potential</h3>
+                <CardiacActionPotentialDiagram />
               </div>
             </div>
             </CollapsibleSubsection>
@@ -458,6 +436,19 @@ const CardiacCycleTopic = () => {
               <li><strong>PA catheter</strong> — RA → RV (square root, large pulse pressure) → PA (diastolic step-up, dicrotic notch) → PCWP (a, c, v waves like LA, slightly delayed).</li>
               <li><strong>Pulse pressure variation (PPV)</strong> — reflects preload responsiveness in ventilated patients (PPV &gt; 13% suggests fluid responsiveness).</li>
             </ul>
+            <div className="mt-4 space-y-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <h3 className="text-base font-semibold text-foreground mb-3">Aortic Pressure & the Dichrotic Notch</h3>
+                <AorticDicroticNotchDiagram />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <h3 className="text-base font-semibold text-foreground mb-1">Notch Morphology Across Pathologies</h3>
+                <p className="text-xs text-muted-foreground mb-4">
+                  How the dichrotic notch shifts in aortic regurgitation, aortic stenosis, sepsis, and aging arteries — versus the normal reference waveform.
+                </p>
+                <DichroticNotchComparisonPanel />
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
         </>
