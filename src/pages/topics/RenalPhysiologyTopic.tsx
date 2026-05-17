@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { renalPhysiologyQuiz } from "@/data/quizzes";
@@ -434,6 +435,16 @@ const RenalPhysiologyTopic = () => {
               </table>
             </SynthesisBlock>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>Creatinine lags AKI by 24–48 h</strong> — urine output and trajectory of change are earlier signals; consider novel biomarkers (NGAL, TIMP-2·IGFBP7) where available.</>,
+              <><strong>Nephrotoxins to avoid in AKI risk</strong>: NSAIDs, aminoglycosides, iodinated contrast, ACE-i/ARBs during hypovolaemia.</>,
+              <><strong>Autoregulation</strong> fails below MAP ~70 mmHg (higher in chronic hypertensives) — perioperative hypotension drives ischaemic AKI.</>,
+              <><strong>Hyponatraemia</strong>: correct slowly (&lt;10 mmol/L/24 h) to avoid osmotic demyelination — distinguish SIADH from cerebral salt wasting by volume status.</>,
+              <><strong>RAAS blockade</strong>: holding ACE-i/ARBs on the morning of major surgery reduces intra-op hypotension but evidence is mixed — discuss case-by-case.</>,
+            ]}
+          />
         </>
       }
     />

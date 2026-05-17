@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { foetalCirculationQuestions } from "@/data/quizzes";
 import FoetalCirculationDiagram from "@/components/diagrams/FoetalCirculationDiagram";
@@ -222,6 +223,16 @@ const FoetalCirculationTopic = () => {
               ))}
             </div>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>Duct-dependent lesions</strong>: keep PDA open with prostaglandin E₁ until surgical correction. Avoid high FiO₂ which closes the duct.</>,
+              <><strong>PPHN</strong>: precipitated by hypoxia, acidosis, hypothermia, sepsis. Treat with oxygen, alkalinisation, inhaled NO ± sildenafil.</>,
+              <><strong>Maternal hyperoxia</strong> in late pregnancy can constrict the foetal ductus — relevant during emergency obstetric anaesthesia.</>,
+              <><strong>Neonatal R→L shunt</strong> through PFO/PDA may reverse with crying, hypoxia or rising PVR — explains transient cyanotic episodes.</>,
+              <><strong>HbF</strong> sits left of adult Hb — facilitates placental O₂ uptake but means neonates desaturate quickly when offloading is impaired.</>,
+            ]}
+          />
         </>
       }
     />
