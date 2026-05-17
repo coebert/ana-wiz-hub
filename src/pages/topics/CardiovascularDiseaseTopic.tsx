@@ -67,17 +67,14 @@ const CardiovascularDiseaseTopic = () => {
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={cardiovascularDiseaseQuestions}
-      diagrams={<ValvularHaemodynamicsDiagram />}
-      sectionExamMapping={{
-        objectives: { exams: [Exam.FINAL, Exam.FFICM] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
-        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
-      }}
-      sectionSources={{
-        objectives: ["ESC/ESA 2022", "AHA/ACC 2014"],
-        diagrams: ["BJA Educ Valvular 2015"],
-        keyPoints: ["BJA Educ 2017", "ESC/ESA 2022", "BJA Educ Valvular 2015", "AHA/ACC 2014", "NICE CG181"],
-      }}
+       sectionExamMapping={{
+         objectives: { exams: [Exam.FINAL, Exam.FFICM] },
+         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
+       }}
+       sectionSources={{
+         objectives: ["ESC/ESA 2022", "AHA/ACC 2014"],
+         keyPoints: ["BJA Educ 2017", "ESC/ESA 2022", "BJA Educ Valvular 2015", "AHA/ACC 2014", "NICE CG181"],
+       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <p className="text-muted-foreground leading-relaxed">
