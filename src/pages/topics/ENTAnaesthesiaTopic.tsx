@@ -129,6 +129,17 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Prevention (the fire triangle)</strong>: ignition (laser) is unavoidable, so eliminate fuel and oxidiser. FiO₂ ≤ 0.30 with air/O₂ mix, <strong>never N₂O</strong> (supports combustion); saline-soaked pledgets at the glottis; saline syringe primed on the airway trolley; wet drapes around the face; surgeon and anaesthetist agree the laser-fire drill before draping.</li>
               <li><strong>If a fire occurs</strong>: call out "Airway fire" → <strong>stop ventilation, disconnect circuit, remove the tube</strong> simultaneously → flood the field with saline → surgeon turns the laser off and removes any burning material → mask-ventilate with 100% O₂ once the fire is out → re-intubate with a fresh laser-safe tube → <strong>rigid bronchoscopy</strong> to assess airway burns → ICU admission, humidified O₂, dexamethasone, low threshold for tracheostomy.</li>
             </ul>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <LaserAirwayDiagram />
+            </div>
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <JetVentilationDiagram />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <JetVentilationCycleAnimation />
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
