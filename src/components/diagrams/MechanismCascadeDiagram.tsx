@@ -61,18 +61,69 @@ export const MechanismCascadeDiagram = ({
 }: MechanismCascadeDiagramProps) => {
   const [step, setStep] = useState(0);
   const [playing, setPlaying] = useState(true);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const baseId = useId();
+  const tablistId = `${baseId}-steps`;
+  const panelId = `${baseId}-panel`;
+  const statusId = `${baseId}-status`;
+  // Respect prefers-reduced-motion: don't auto-advance for those users.
+  const prefersReducedMotion = useMemo(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
 
   useEffect(() => {
-    if (!playing) return;
+    if (!playing || prefersReducedMotion) return;
     const id = window.setInterval(
       () => setStep((s) => (s + 1) % steps.length),
       1800,
     );
     return () => window.clearInterval(id);
-  }, [playing, steps.length]);
+  }, [playing, prefersReducedMotion, steps.length]);
 
   const accentVar = `hsl(var(--${accent}))`;
   const current = steps[step];
+
+  const goTo = useCallback(
+    (i: number, { focus = false }: { focus?: boolean } = {}) => {
+      const next = ((i % steps.length) + steps.length) % steps.length;
+      setStep(next);
+      setPlaying(false);
+      if (focus) {
+        // Move focus to the corresponding tab so screen-reader users hear it.
+        requestAnimationFrame(() => tabRefs.current[next]?.focus());
+      }
+    },
+    [steps.length],
+  );
+
+  const onTablistKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    switch (e.key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        e.preventDefault();
+        goTo(step + 1, { focus: true });
+        break;
+      case "ArrowLeft":
+      case "ArrowUp":
+        e.preventDefault();
+        goTo(step - 1, { focus: true });
+        break;
+      case "Home":
+        e.preventDefault();
+        goTo(0, { focus: true });
+        break;
+      case "End":
+        e.preventDefault();
+        goTo(steps.length - 1, { focus: true });
+        break;
+      case " ":
+      case "Spacebar":
+        e.preventDefault();
+        setPlaying((p) => !p);
+        break;
+    }
+  };
 
   /**
    * Build a stable, de-duplicated bibliography across all steps.
