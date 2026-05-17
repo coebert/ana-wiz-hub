@@ -133,6 +133,14 @@ const AntimicrobialsIcuTopic = () => {
             </div>
           </ExamSection>
 
+          <DiagramSection
+            id="pkpd-killing-patterns"
+            title="Antibiotic PK/PD Killing Patterns"
+            intro="Three killing patterns drive ICU dosing decisions. Time-dependent agents (β-lactams) need prolonged or continuous infusion to maximise %fT>MIC; concentration-dependent agents (aminoglycosides) need high once-daily peaks; AUC-dependent agents (vancomycin, fluoroquinolones) need TDM-guided 24-h exposure targets."
+          >
+            <AntibioticPKPDPrimer />
+          </DiagramSection>
+
           <ExamSection
             id="key-agents"
             exams={[Exam.FFICM, Exam.EDIC]}
