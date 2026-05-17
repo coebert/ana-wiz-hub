@@ -60,7 +60,10 @@ export const MechanismCascadeDiagram = ({
   centerLabel,
 }: MechanismCascadeDiagramProps) => {
   const [step, setStep] = useState(0);
-  const [playing, setPlaying] = useState(true);
+  // Default to paused: auto-advancing changes the description-panel height every
+  // ~1.8s, which on mobile (single-column stack with several cascades on a page)
+  // shifts the layout and makes scrolling judder. Users can press Play to start.
+  const [playing, setPlaying] = useState(false);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const baseId = useId();
   const tablistId = `${baseId}-steps`;
