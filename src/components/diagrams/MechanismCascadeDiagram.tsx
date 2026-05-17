@@ -72,20 +72,22 @@ export const MechanismCascadeDiagram = ({
   const tablistId = `${baseId}-steps`;
   const panelId = `${baseId}-panel`;
   const statusId = `${baseId}-status`;
-  // Respect prefers-reduced-motion: don't auto-advance for those users.
-  const prefersReducedMotion = useMemo(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  }, []);
+  // User-facing "Reduce motion" setting (falls back to OS prefers-reduced-motion).
+  const { reduceMotion } = useMotionPreference();
+
+  // Force-pause auto-advance whenever the user enables Reduce motion.
+  useEffect(() => {
+    if (reduceMotion && playing) setPlaying(false);
+  }, [reduceMotion, playing]);
 
   useEffect(() => {
-    if (!playing || prefersReducedMotion) return;
+    if (!playing || reduceMotion) return;
     const id = window.setInterval(
       () => setStep((s) => (s + 1) % steps.length),
       1800,
     );
     return () => window.clearInterval(id);
-  }, [playing, prefersReducedMotion, steps.length]);
+  }, [playing, reduceMotion, steps.length]);
 
   // --- Dev-only perf instrumentation (no-op in production builds) ---
   useEffect(() => {
