@@ -23,13 +23,13 @@ import {
   BeachChairIllustration,
 } from "@/components/diagrams/PatientPositioningIllustrations";
 import {
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
   SittingHydrostaticAnimation,
   VAEDetectionLadderAnimation,
   ParkBenchArmTractionAnimation,
   ProneIVCFreeAbdomenAnimation,
   PeronealNerveLithotomyAnimation,
 } from "@/components/diagrams/PatientPositioningMechanisms";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe the principal surgical positions (supine, Trendelenburg, lithotomy, lateral, prone, park bench, sitting, beach chair) and their physiological consequences",
