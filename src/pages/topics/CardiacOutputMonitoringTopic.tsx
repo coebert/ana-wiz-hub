@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { Exam } from "@/data/curriculum";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { CardiacOutputMonitorDiagram } from "@/components/diagrams/CardiacOutputMonitorDiagram";
 import PiCCODiagram from "@/components/diagrams/PiCCODiagram";

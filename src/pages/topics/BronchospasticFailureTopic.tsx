@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { Exam } from "@/data/curriculum";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { bronchospasticFailureQuestions } from "@/data/quizzes";
 import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinflationDiagram";

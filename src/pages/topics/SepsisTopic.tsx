@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { Exam } from "@/data/curriculum";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { sepsisQuestions } from "@/data/quizzes";
 import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagram";

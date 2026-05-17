@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { Exam } from "@/data/curriculum";
 import { acutePancreatitisQuestions } from "@/data/quizzes";
 import GlasgowImrieScoreDiagram from "@/components/diagrams/GlasgowImrieScoreDiagram";
 import WaterfallFluidDiagram from "@/components/diagrams/WaterfallFluidDiagram";

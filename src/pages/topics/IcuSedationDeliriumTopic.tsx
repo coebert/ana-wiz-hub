@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { Exam } from "@/data/curriculum";
 import { icuSedationDeliriumQuestions } from "@/data/quizzes";
 import { ICUSedationComparisonDiagram } from "@/components/diagrams/ICUSedationComparisonDiagram";
 import { CAMICUFlowchartDiagram } from "@/components/diagrams/CAMICUFlowchartDiagram";
