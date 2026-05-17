@@ -127,6 +127,11 @@ const AcutePancreatitisTopic = () => {
           <WaterfallFluidDiagram />
         </>
       }
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={
         <section className="space-y-6">
           {/* Definition */}

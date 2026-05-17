@@ -465,6 +465,11 @@ const CardiacArrestPostResusTopic = () => {
       backLabel="Intensive Care"
       accentColor="text-icu"
       objectives={objectives}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={coreConcepts}
       diagrams={diagrams}
       workedExamples={workedExamples}

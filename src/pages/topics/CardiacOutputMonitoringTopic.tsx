@@ -369,6 +369,11 @@ const CardiacOutputMonitoringTopic = () => {
       backLabel="Intensive Care"
       accentColor="text-icu"
       objectives={objectives}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={<CoreConcepts />}
       diagrams={<Diagrams />}
       workedExamples={workedExamples}

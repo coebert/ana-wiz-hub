@@ -113,6 +113,11 @@ const MechanicalVentilationTopic = () => {
       topicId="mechanical-ventilation"
       topicTitle="Mechanical Ventilation"
       quizQuestions={mechanicalVentilationQuestions}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={
     <>
       <StickyTOC items={tocItems} />

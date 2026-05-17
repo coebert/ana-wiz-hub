@@ -119,6 +119,11 @@ const IcuSedationDeliriumTopic = () => {
         workedExamples: ["BJA Educ 2017", "DAS-Delirium"],
         keyPoints: ["BJA Educ 2019", "DAS-Delirium"],
       }}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={
         <section className="space-y-6">
           {/* RASS */}

@@ -180,6 +180,11 @@ const NeurointensiveCareTopic = () => {
       topicId="neurointensive-care"
       topicTitle="Neurointensive Care"
       quizQuestions={neurointensiveCareQuestions}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={
     <>
       <StickyTOC items={tocItems} />
