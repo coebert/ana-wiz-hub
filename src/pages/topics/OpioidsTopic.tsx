@@ -240,8 +240,8 @@ const OpioidsTopic = () => {
               lipid solubility. Smaller V<sub>d</sub>. Shorter duration. <strong>Sufentanil</strong>: 5–10× fentanyl potency,
               highest µ-receptor affinity. <strong>Codeine</strong>: prodrug, CYP2D6 → morphine (~10 % dose). Pharmacogenomic
               variation. <strong>Tramadol</strong>: weak µ + serotonin/noradrenaline reuptake inhibition. Serotonin syndrome
-              risk with SSRIs. Lowers seizure threshold.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><MethadonePharmacologyDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
