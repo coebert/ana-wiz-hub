@@ -152,6 +152,9 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Postoperative: ICU/HDU for monitoring; plan for possible prolonged ventilation; early extubation with adequate cough, swallow, and VC</li>
               </ul>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <MGNMBASensitivityDiagram />
+            </div>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Myasthenic vs Cholinergic Crisis</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">

@@ -105,6 +105,9 @@ const EmergencySurgeryTopic = () => {
                 </div>
               ))}
             </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <NCEPODClassificationDiagram />
+            </div>
           </div>
 
           <div>
@@ -178,6 +181,9 @@ const EmergencySurgeryTopic = () => {
               <li>Use gentle (peak &lt;15 cmH₂O) facemask ventilation between induction and intubation in patients at high risk of desaturation (obese, septic, ICU, paediatric).</li>
               <li>Document the rationale for any deviation from classical RSI — defensible because it reflects current best evidence (NAP4, DAS, IRIS, DEVICE, EvK).</li>
             </ul>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <EmergencyRSIDiagram />
+            </div>
           </div>
 
           <div>
@@ -206,6 +212,9 @@ const EmergencySurgeryTopic = () => {
                 <li>Epidural for postoperative analgesia (if coagulation normal and patient stable); alternatively rectus sheath block or TAP blocks</li>
                 <li>Temperature management — active warming throughout</li>
               </ul>
+            </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <EmergencyLaparotomyBundleDiagram />
             </div>
           </div>
 
