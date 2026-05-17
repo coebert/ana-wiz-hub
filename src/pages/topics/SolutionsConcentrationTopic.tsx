@@ -56,7 +56,7 @@ const SolutionsConcentrationTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["Severs 2015", "Lobo & Awad 2014"],
+        workedExamples: ["Severs 2015", "Lobo & Awad 2014", "Cross & Plunkett Ch.3"],
         keyPoints: ["NICE CG174", "Severs 2015", "Cross & Plunkett Ch.3", "Lobo & Awad 2014"],
       }}
       keyPoints={[

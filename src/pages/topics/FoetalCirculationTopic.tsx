@@ -101,8 +101,8 @@ const FoetalCirculationTopic = () => {
       sectionSources={{
         objectives: ["Power & Kam Ch.18"],
         diagrams: ["BJA Educ 2015"],
-        workedExamples: ["BJA Educ 2015"],
-        keyPoints: ["Power & Kam Ch.18", "Ganong Ch.33"],
+        workedExamples: ["BJA Educ 2015", "Power & Kam Ch.18"],
+        keyPoints: ["Power & Kam Ch.18", "Ganong Ch.33", "BJA Educ 2015"],
       }}
       diagrams={
         <div className="bg-card rounded-xl border border-border p-4 md:p-6">

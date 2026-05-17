@@ -76,7 +76,7 @@ const CardiovascularDiseaseTopic = () => {
       sectionSources={{
         objectives: ["ESC/ESA 2022", "AHA/ACC 2014"],
         diagrams: ["BJA Educ Valvular 2015"],
-        keyPoints: ["BJA Educ 2017", "ESC/ESA 2022", "BJA Educ Valvular 2015", "AHA/ACC 2014"],
+        keyPoints: ["BJA Educ 2017", "ESC/ESA 2022", "BJA Educ Valvular 2015", "AHA/ACC 2014", "NICE CG181"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">

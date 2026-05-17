@@ -56,7 +56,7 @@ const OxidationReductionTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["Wright 1999 (MetHb)", "BJA Educ 2010"],
+        workedExamples: ["Wright 1999 (MetHb)", "BJA Educ 2010", "Cross & Plunkett Ch.3"],
         keyPoints: ["Halliwell & Gutteridge", "Wright 1999 (MetHb)", "Cross & Plunkett Ch.3", "BJA Educ 2010"],
       }}
       keyPoints={[

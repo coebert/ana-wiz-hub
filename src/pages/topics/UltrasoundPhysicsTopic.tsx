@@ -57,7 +57,7 @@ const UltrasoundPhysicsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        workedExamples: ["BJA Educ 2017", "BJA Educ 2017"],
+        workedExamples: ["BJA Educ 2017", "BJA Educ 2017", "Middleton Ch.13", "Cross & Plunkett Ch.17"],
         keyPoints: ["BJA Educ 2017", "Middleton Ch.13", "Cross & Plunkett Ch.17"],
       }}
       keyPoints={[

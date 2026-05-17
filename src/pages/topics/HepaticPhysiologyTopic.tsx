@@ -106,8 +106,8 @@ const HepaticPhysiologyTopic = () => {
       sectionSources={{
         objectives: ["Peck & Hill Ch.13"],
         diagrams: ["Power & Kam Ch.10"],
-        workedExamples: ["BJA Educ 2014"],
-        keyPoints: ["Peck & Hill Ch.13", "BJA Educ 2014"],
+        workedExamples: ["BJA Educ 2014", "Power & Kam Ch.10"],
+        keyPoints: ["Peck & Hill Ch.13", "BJA Educ 2014", "Power & Kam Ch.10"],
       }}
       diagrams={
         <div className="space-y-4">

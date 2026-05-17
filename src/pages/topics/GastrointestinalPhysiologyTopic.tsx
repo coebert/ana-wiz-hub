@@ -98,8 +98,8 @@ const GastrointestinalPhysiologyTopic = () => {
       }}
       sectionSources={{
         objectives: ["Peck & Hill Ch.11"],
-        workedExamples: ["Gan et al. 2020", "BJA Educ 2018"],
-        keyPoints: ["Peck & Hill Ch.11", "BJA Educ 2018"],
+        workedExamples: ["Gan et al. 2020", "BJA Educ 2018", "Peck & Hill Ch.11"],
+        keyPoints: ["Peck & Hill Ch.11", "BJA Educ 2018", "Gan et al. 2020"],
       }}
       diagrams={
         <div className="bg-card rounded-xl border border-border p-4 md:p-6">

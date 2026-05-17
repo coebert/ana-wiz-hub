@@ -97,8 +97,8 @@ const NonTechnicalSkillsTopic = () => {
       workedExamples={NonTechnicalSkillsTopicWorkedExamples}
       quizQuestions={quiz}
       sectionSources={{
-        objectives: ["BJA Educ 2003", "RCoA ANTS", "BJA Educ 2018"],
-        keyPoints: ["BMJ 2000", "PSIRF 2022", "Marx 2001", "CHFG"],
+        objectives: ["BJA Educ 2003", "RCoA ANTS", "BJA Educ 2018", "BMJ 2000"],
+        keyPoints: ["BMJ 2000", "PSIRF 2022", "Marx 2001", "CHFG", "RCoA ANTS", "BJA Educ 2003", "BJA Educ 2018"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 5.4", "EDIC 11"] },

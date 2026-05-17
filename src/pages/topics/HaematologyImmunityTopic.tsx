@@ -127,8 +127,8 @@ const HaematologyImmunityTopic = () => {
       }}
       sectionSources={{
         objectives: ["Allman & Wilson Ch.18", "BJA Educ Adaptive 2019"],
-        workedExamples: ["AAGBI Anaphylaxis 2021", "AAGBI Anaphylaxis 2021", "BJA Educ 2017", "BJA Educ 2017"],
-        keyPoints: ["Allman & Wilson Ch.18", "BJA Educ Immune 2016"],
+        workedExamples: ["AAGBI Anaphylaxis 2021", "AAGBI Anaphylaxis 2021", "BJA Educ 2017", "BJA Educ 2017", "Stavnezer Annu Rev 2008", "Crotty Immunity 2014"],
+        keyPoints: ["Allman & Wilson Ch.18", "BJA Educ Immune 2016", "Smith-Garvin Annu Rev 2009", "Mellman Cell 2001", "Banchereau Nature 1998", "BJA Educ Adaptive 2019", "BJA Educ Innate 2018", "AAGBI Anaphylaxis 2021", "BJA Educ 2017"],
       }}
       diagrams={
         <>

@@ -58,7 +58,7 @@ const MRIPhysicsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["AAGBI 2010", "AAGBI 2010"],
+        workedExamples: ["AAGBI 2010", "AAGBI 2010", "Middleton Ch.17"],
         keyPoints: ["BJA Educ 2019", "Middleton Ch.17", "AAGBI 2010"],
       }}
       keyPoints={[

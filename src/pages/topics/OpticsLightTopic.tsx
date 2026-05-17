@@ -57,7 +57,7 @@ const OpticsLightTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["BJA Educ 2004"],
+        workedExamples: ["BJA Educ 2004", "Middleton Ch.12"],
         keyPoints: ["Cross & Plunkett Ch.18", "BJA Educ 2004", "Middleton Ch.12"],
       }}
       keyPoints={[

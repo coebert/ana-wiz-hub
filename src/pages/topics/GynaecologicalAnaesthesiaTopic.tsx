@@ -125,6 +125,9 @@ const GynaecologicalAnaesthesiaTopic = () => {
         keyPoints: [
           "BJA Educ Lap 2011",
           "ERAS Gynae 2019",
+        
+          "BSGE 2018",
+          "BJA Educ TURP 2014",
         ],
       }}
       diagrams={

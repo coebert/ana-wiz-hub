@@ -106,11 +106,19 @@ const BurnsIcuTopic = () => {
           "Pham 2008",
           "BJA Educ Burns 2017",
           "GPICS 3e",
+        
+          "Parkland Formula",
+          "ISBI 2016",
         ],
         keyPoints: [
           "Herndon TBC 5e",
           "BJA Educ Inhalation 2019",
           "NICE NG107",
+        
+          "ABA Burn 2023",
+          "BJA Educ Burns 2017",
+          "Parkland Formula",
+          "ISBI 2016",
         ],
       }}
       keyPoints={[

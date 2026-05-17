@@ -34,8 +34,8 @@ const OrganicChemistryTopic = () => {
       sectionSources={{
         objectives: ["Peck & Hill Ch.3", "Cross & Plunkett Ch.4"],
         diagrams: ["BJA Educ 2008", "Nau & Strichartz 2002"],
-        workedExamples: ["Cross & Plunkett Ch.4", "BJA Educ 2008"],
-        keyPoints: ["Peck & Hill Ch.3", "Cross & Plunkett Ch.4", "BJA Educ 2008"],
+        workedExamples: ["Cross & Plunkett Ch.4", "BJA Educ 2008", "Nau & Strichartz 2002"],
+        keyPoints: ["Peck & Hill Ch.3", "Cross & Plunkett Ch.4", "BJA Educ 2008", "Nau & Strichartz 2002"],
       }}
       diagrams={
         <>

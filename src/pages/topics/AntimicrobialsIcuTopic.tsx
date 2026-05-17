@@ -97,8 +97,8 @@ const AntimicrobialsIcuTopic = () => {
       quizQuestions={antimicrobialsIcuQuestions}
       sectionSources={{
         objectives: ["SSC 2021 Antimicrobials", "BJA Educ 2016", "NICE NG51"],
-        workedExamples: ["BJA Educ 2016"],
-        keyPoints: ["SSC 2021 Antimicrobials", "BJA Educ 2016"],
+        workedExamples: ["BJA Educ 2016", "NICE NG51"],
+        keyPoints: ["SSC 2021 Antimicrobials", "BJA Educ 2016", "NICE NG51"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.7", "EDIC 5.3"] },

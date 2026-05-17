@@ -37,7 +37,7 @@ const ENTAnaesthesiaTopic = () => {
         objectives: ["BJA Educ ENT 2017", "DAS 2015"],
         diagrams: ["NTSP 2014", "BJA Educ ENT 2017"],
         workedExamples: ["DAS 2015", "BJA Educ Laser 2015", "NAP4 2011"],
-        keyPoints: ["DAS 2015", "NTSP 2014", "BJA Educ Laser 2015", "BJA Educ ENT 2017"],
+        keyPoints: ["DAS 2015", "NTSP 2014", "BJA Educ Laser 2015", "BJA Educ ENT 2017", "NAP4 2011"],
       }}
       diagrams={
         <>

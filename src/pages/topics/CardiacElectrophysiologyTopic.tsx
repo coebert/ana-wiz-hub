@@ -109,8 +109,8 @@ const CardiacElectrophysiologyTopic = () => {
       sectionSources={{
         objectives: ["Peck & Hill Ch.4"],
         diagrams: ["BJA Educ 2015"],
-        workedExamples: ["BJA Educ 2015"],
-        keyPoints: ["Peck & Hill Ch.4", "Ganong Ch.29"],
+        workedExamples: ["BJA Educ 2015", "Ganong Ch.29"],
+        keyPoints: ["Peck & Hill Ch.4", "Ganong Ch.29", "BJA Educ 2015"],
       }}
       diagrams={
         <>

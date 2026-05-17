@@ -163,8 +163,8 @@ const PaediatricIcuTopic = () => {
       ]}
       sectionSources={{
         objectives: ["RCPCH 2019", "Resuscitation Council UK 2021", "BJA Educ 2019"],
-        workedExamples: ["Resuscitation Council UK 2021"],
-        keyPoints: ["RCPCH 2019", "FEAST 2011", "NICE NG29"],
+        workedExamples: ["Resuscitation Council UK 2021", "NICE NG29", "FEAST 2011"],
+        keyPoints: ["RCPCH 2019", "FEAST 2011", "NICE NG29", "Resuscitation Council UK 2021", "BJA Educ 2019"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.6", "EDIC 5.6"] },

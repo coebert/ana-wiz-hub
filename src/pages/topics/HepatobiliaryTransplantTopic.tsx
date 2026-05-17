@@ -33,7 +33,7 @@ const HepatobiliaryTransplantTopic = () => {
         objectives: ["BJA Educ LiverResection 2017", "AAGBI Cirrhosis 2017"],
         diagrams: ["BJA Educ LT 2010"],
         workedExamples: ["BJA Educ LT 2010", "ITLS Reperfusion"],
-        keyPoints: ["BJA Educ LiverResection 2017", "BJA Educ LT 2010", "AAGBI Cirrhosis 2017"],
+        keyPoints: ["BJA Educ LiverResection 2017", "BJA Educ LT 2010", "AAGBI Cirrhosis 2017", "ITLS Reperfusion"],
       }}
       diagrams={<LiverTransplantPhasesDiagram />}
       coreConcepts={

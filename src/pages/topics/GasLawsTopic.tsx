@@ -123,7 +123,7 @@ const GasLawsTopic = () => {
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1"],
         diagrams: ["Cross & Plunkett Ch.1", "BJA Educ 2017"],
-        workedExamples: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1"],
+        workedExamples: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017"],
         keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017"],
       }}
       diagrams={

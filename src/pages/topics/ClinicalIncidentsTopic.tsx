@@ -116,10 +116,15 @@ const ClinicalIncidentsTopic = () => {
           "AAGBI 2009",
           "AAGBI 2011",
           "AAGBI 2011",
+        
+          "NAP Reports",
         ],
         keyPoints: [
           "AAGBI 2011",
           "BJA Educ 2011",
+        
+          "NAP Reports",
+          "AAGBI 2009",
         ],
       }}
       keyPoints={[

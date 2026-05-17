@@ -129,6 +129,8 @@ const PharmacodynamicsTopic = () => {
           "Rang & Dale Ch.2",
           "Rang & Dale Ch.2",
           "Peck & Hill Ch.2",
+        
+          "BJA Educ 2016",
         ],
       }}
       keyPoints={[

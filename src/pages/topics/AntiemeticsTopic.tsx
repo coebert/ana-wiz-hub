@@ -58,7 +58,7 @@ const AntiemeticsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["Gan et al. 2020"],
+        workedExamples: ["Gan et al. 2020", "BJA Educ 2013", "Peck & Hill Ch.16"],
         keyPoints: ["Gan et al. 2020", "BJA Educ 2013", "Peck & Hill Ch.16"],
       }}
       keyPoints={[

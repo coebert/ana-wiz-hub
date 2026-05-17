@@ -177,8 +177,8 @@ const HaematologyIcuTopic = () => {
       ]}
       sectionSources={{
         objectives: ["TRICC 1999", "BJA Educ 2018", "BJA Educ 2016"],
-        workedExamples: ["BJA Educ 2016"],
-        keyPoints: ["BJA Educ 2018", "BJA Educ 2016"],
+        workedExamples: ["BJA Educ 2016", "BJA Educ HIT 2018", "BJA Educ HIT 2008"],
+        keyPoints: ["BJA Educ 2018", "BJA Educ 2016", "TRICC 1999", "Greinacher NEJM 2015", "Lo 4Ts 2006", "ASH HIT 2018", "BJA Educ HIT 2018", "BJA Educ HIT 2008"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.4", "EDIC 5.4"] },

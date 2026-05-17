@@ -96,8 +96,8 @@ const MaternalPhysiologyTopic = () => {
       }}
       sectionSources={{
         objectives: ["Power & Kam Ch.17"],
-        workedExamples: ["OAA/AAGBI 2013", "BJA Educ 2020"],
-        keyPoints: ["Power & Kam Ch.17", "BJA Educ 2015"],
+        workedExamples: ["OAA/AAGBI 2013", "BJA Educ 2020", "BJA Educ 2015"],
+        keyPoints: ["Power & Kam Ch.17", "BJA Educ 2015", "OAA/AAGBI 2013", "BJA Educ 2020"],
       }}
       keyPoints={[
         { text: "CO ↑ 30–50%, SVR ↓ 20% — left uterine displacement essential from 20 weeks.", cites: ["OAA/AAGBI 2013"] },

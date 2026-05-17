@@ -107,7 +107,7 @@ const StarlingForcesTopic = () => {
       sectionSources={{
         objectives: ["Levick & Michel 2010", "Woodcock & Woodcock 2012"],
         workedExamples: ["Levick & Michel 2010", "Woodcock & Woodcock 2012"],
-        keyPoints: ["Levick & Michel 2010"],
+        keyPoints: ["Levick & Michel 2010", "Power & Kam Ch.6", "Woodcock & Woodcock 2012"],
       }}
       diagrams={
         <>

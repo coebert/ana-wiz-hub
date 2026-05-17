@@ -152,8 +152,8 @@ const ToxicologyTopic = () => {
       sectionSources={{
         objectives: ["BJA Educ 2016", "NPIS Toxbase"],
         diagrams: ["BJA Educ 2016", "NPIS Toxbase"],
-        workedExamples: ["AAGBI Lipid Rescue", "NPIS Toxbase"],
-        keyPoints: ["BJA Educ 2016", "AAGBI Lipid Rescue"],
+        workedExamples: ["AAGBI Lipid Rescue", "NPIS Toxbase", "BJA Educ 2016"],
+        keyPoints: ["BJA Educ 2016", "AAGBI Lipid Rescue", "NPIS Toxbase"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["CC1.10", "11A04"] },
