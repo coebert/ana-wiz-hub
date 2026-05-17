@@ -27,23 +27,14 @@ const NeuroanaesthesiaTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CN_BK_03", "CC1.4"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2018", "Matta et al."],
-        diagrams: ["BJA Educ 2015"],
         workedExamples: ["BJA Educ 2018", "BJA Educ 2015"],
         keyPoints: ["BJA Educ 2018", "Matta et al.", "BJA Educ 2015"],
       }}
-      diagrams={
-        <>
-          <CBFAutoregulationDiagram />
-          <ICPVolumeCurveDiagram />
-          <RaisedICPCascadeDiagram />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CN_BK_03"]}>
