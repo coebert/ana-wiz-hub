@@ -72,24 +72,12 @@ const RespiratoryDiseaseTopic = () => {
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={respiratoryDiseaseQuestions}
-      diagrams={
-        <div className="space-y-6">
-          <AsthmaBronchospasmDiagram />
-          <CopdPathophysDiagram />
-          <OsaCycleDiagram />
-          <PulmonaryFibrosisDiagram />
-          <UrtiAirwayDiagram />
-          <RespiratoryDrugSafetyDiagram />
-        </div>
-      }
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["BTS/SIGN 2019", "NICE NG115", "Lumb Ch.27"],
-        diagrams: ["BJA Educ Asthma 2017"],
         keyPoints: ["BJA Educ Asthma 2017", "BTS/SIGN 2019", "NICE NG115", "STOP-BANG", "Lumb Ch.27"],
       }}
       coreConcepts={
