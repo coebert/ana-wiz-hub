@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { OxygenDissociationCurve } from "@/components/diagrams/OxygenDissociationCurve";
 import { oxygenHaemoglobinQuiz } from "@/data/quizzes";
@@ -207,6 +208,16 @@ const OxygenHaemoglobinTopic = () => {
               co-oximetry is required.
             </p>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>SpO₂ cannot distinguish COHb from O₂Hb</strong> — in any burn, smoke or suicide-attempt patient, use co-oximetry.</>,
+              <><strong>Methaemoglobinaemia</strong>: SpO₂ plateaus around 85% regardless of FiO₂ — treat with methylene blue 1–2 mg/kg.</>,
+              <><strong>Stored blood</strong> is 2,3-DPG depleted → left shift → impaired offloading for ~24 h after transfusion.</>,
+              <><strong>HbF</strong> sits left of adult Hb (P₅₀ ~2.5 kPa) — essential for placental O₂ uptake but means neonates desaturate quickly when offloading is compromised.</>,
+              <><strong>Pre-oxygenation</strong> works by filling the FRC, not by raising SaO₂ further — gains apnoea time on the upper plateau.</>,
+            ]}
+          />
         </>
       }
     />
