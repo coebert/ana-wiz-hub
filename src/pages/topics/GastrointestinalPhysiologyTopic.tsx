@@ -92,7 +92,7 @@ const GastrointestinalPhysiologyTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["CR_BK_06", "OA_BK_03"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["CR_BK_06", "OA_BK_03"] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["OA_BK_03"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
@@ -101,11 +101,6 @@ const GastrointestinalPhysiologyTopic = () => {
         workedExamples: ["Gan et al. 2020", "BJA Educ 2018", "Peck & Hill Ch.11"],
         keyPoints: ["Peck & Hill Ch.11", "BJA Educ 2018", "Gan et al. 2020"],
       }}
-      diagrams={
-        <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-          <VomitingControlDiagram />
-        </div>
-      }
       keyPoints={[
         { text: "Parietal cells secrete HCl via H⁺/K⁺-ATPase, stimulated by ACh (M₃), histamine (H₂), and gastrin (CCK-B).", cites: ["Gan et al. 2020"] },
         { text: "Vomiting centre receives input from CTZ (D₂, 5-HT₃, NK₁), GI tract (5-HT₃ via vagus), vestibular (H₁, M₁), and cortex.", cites: ["BJA Educ 2018"] },
@@ -212,7 +207,9 @@ const GastrointestinalPhysiologyTopic = () => {
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">{item.drugs}</p>
                 </div>
-              ))}
+            </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <VomitingControlDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
