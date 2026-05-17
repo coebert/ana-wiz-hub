@@ -25,7 +25,7 @@ const PerioperativeFluidsTopic = () => {
         "Use major trial evidence (SMART, RELIEF, BaSICS) to choose a fluid strategy.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["POM_BK_06"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PO_BK_06"] },
         diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
@@ -60,7 +60,7 @@ const PerioperativeFluidsTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["POM_BK_06"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fluid Compartments</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Total body water (TBW) = ~60% body weight. ICF 40%, ECF 20% (interstitial 15%, plasma 5%). Only 25% of crystalloid remains intravascular — the rest distributes to the interstitium.
@@ -86,7 +86,7 @@ const PerioperativeFluidsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["POM_BK_06"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Goal-Directed Fluid Therapy (GDFT)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Individualised fluid administration guided by haemodynamic monitoring to optimise stroke volume and tissue oxygen delivery. Reduces complications after major surgery.
