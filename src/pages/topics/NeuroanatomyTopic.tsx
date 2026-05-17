@@ -28,27 +28,29 @@ const NeuroanatomyTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["AN_BK_07"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Ellis & Feldman Ch.7", "Power & Kam Ch.13"],
-        diagrams: ["Ellis & Feldman Ch.7", "BJA Educ 2007"],
         workedExamples: ["BJA Educ 2007", "Power & Kam Ch.13"],
         keyPoints: ["Ellis & Feldman Ch.7", "BJA Educ 2007", "Power & Kam Ch.13"],
       }}
-      diagrams={
-        <>
-          <CorPictumFolio {...neuroFolio} suppressOverlayLabels />
-          <BrainPlatesViewer />
-          <CsfFlowDiagram />
-          <CircleOfWillisDiagram />
-          <SkullBaseDiagram />
-        </>
-      }
       coreConcepts={
         <>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_07"]}>
+            <CollapsibleSubsection title="Anatomical Atlas" defaultOpen>
+              <div className="space-y-4">
+                <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                  <CorPictumFolio {...neuroFolio} suppressOverlayLabels />
+                </div>
+                <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                  <BrainPlatesViewer />
+                </div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_07"]}>
             <CollapsibleSubsection title="Cerebral Blood Supply — Circle of Willis" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
