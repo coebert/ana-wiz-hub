@@ -8,6 +8,7 @@ import CardiacArrestPostCardiacSurgeryDiagram from "@/components/diagrams/Cardia
 import ArrestTimeWindowWidget from "@/components/diagrams/ArrestTimeWindowWidget";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const tocItems = [
   { id: "cpb-overview", label: "CPB circuit & anticoagulation", group: "Cardiac surgery" },
@@ -714,6 +715,16 @@ const CardiothoracicTopic = () => {
           </div>
         </div>
       </section>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Anticoagulation for CPB: heparin 300–400 IU/kg targeting ACT >480 s; reverse with protamine 1 mg per 100 IU heparin.",
+              "One-lung ventilation: low Vt (4–6 mL/kg), PEEP to dependent lung, CPAP to non-dependent lung, FiO₂ titrated to oxygenation.",
+              "Avoid N₂O in pneumothorax, bullae or after recent retinal/middle-ear surgery — it expands closed gas spaces.",
+              "Post-CPB vasoplegia (low SVR despite adequate filling) — vasopressin and methylene blue are useful adjuncts.",
+              "TOE basics: rule out tamponade, regional wall motion abnormality, valve dysfunction, retained air after cardiotomy.",
+            ]}
+          />
         </>
       }
     />

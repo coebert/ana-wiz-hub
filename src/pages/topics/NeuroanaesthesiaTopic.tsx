@@ -5,6 +5,7 @@ import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDia
 import ICPVolumeCurveDiagram from "@/components/diagrams/ICPVolumeCurveDiagram";
 import { RaisedICPCascadeDiagram } from "@/components/diagrams/RaisedICPCascadeDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const NeuroanaesthesiaTopic = () => {
   return (
@@ -116,6 +117,16 @@ const NeuroanaesthesiaTopic = () => {
               </div>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "CPP = MAP − ICP (or CVP if higher); maintain CPP 60–70 mmHg for adult TBI.",
+              "Volatile agents are cerebral vasodilators >1 MAC — TIVA preferred when ICP is critical or for evoked-potential monitoring.",
+              "Hyperventilation to PaCO₂ 4.0–4.5 kPa is a short-term ICP rescue only — prolonged hypocapnia worsens cerebral ischaemia.",
+              "Mannitol 0.25–1 g/kg or hypertonic saline reduces ICP; check serum osmolality (<320) and sodium (<155) limits.",
+              "Sitting craniotomy carries a high risk of venous air embolism — precordial Doppler and a right-atrial catheter for aspiration are standard.",
+            ]}
+          />
         </>
       }
       workedExamples={[

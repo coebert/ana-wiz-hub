@@ -3,6 +3,7 @@ import { bariatricAnaesthesiaQuestions } from "@/data/quizzes";
 import BariatricProceduresDiagram from "@/components/diagrams/BariatricProceduresDiagram";
 import StopBangCalculator from "@/components/diagrams/StopBangCalculator";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const BariatricAnaesthesiaTopic = () => {
   return (
@@ -246,6 +247,16 @@ const BariatricAnaesthesiaTopic = () => {
             <li><strong>VTE prophylaxis</strong>: extended duration (up to 28 days post-discharge for high-risk). Mechanical + pharmacological</li>
           </ul>
         </div>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Reduced FRC and rapid desaturation — pre-oxygenate ramped, head-up, with CPAP/NIV; consider apnoeic oxygenation.",
+              "Drug dosing: lipophilic drugs (fentanyl, midazolam) — total body weight for loading; lean body weight for maintenance; propofol induction by LBW.",
+              "Suxamethonium dose by TBW; rocuronium by IBW; sugammadex by TBW.",
+              "High OSA/OHS prevalence — screen with STOP-BANG; postoperative CPAP and HDU monitoring after opioids.",
+              "VTE risk is very high — combine mechanical and pharmacological prophylaxis and mobilise early.",
+            ]}
+          />
       </section>
       }
     />

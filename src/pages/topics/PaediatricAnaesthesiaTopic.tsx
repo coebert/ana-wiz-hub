@@ -8,6 +8,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { paediatricAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Identify key anatomical and physiological differences between neonates, infants and adults",
@@ -369,6 +370,16 @@ const PaediatricAnaesthesiaTopic = () => {
             </p>
           </div>
         </div>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Neonates are obligate nose-breathers, have a high O₂ consumption (~6 mL/kg/min), large head and short trachea — desaturate quickly.",
+              "Fluid maintenance (Holliday-Segar): 4-2-1 mL/kg/h; resuscitation bolus 10–20 mL/kg isotonic crystalloid.",
+              "Avoid hypotonic maintenance fluids in children — use 0.9% saline or balanced solution with 5% glucose where needed (NICE/APAGBI).",
+              "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5; length (oral) = age/2 + 12.",
+              "Laryngospasm: 100% O₂, CPAP, deepen anaesthesia, Larson's manoeuvre, suxamethonium 1–2 mg/kg IV (or 4 mg/kg IM) if persistent.",
+            ]}
+          />
         </section>
       }
     />

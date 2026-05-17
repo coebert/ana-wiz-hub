@@ -5,6 +5,7 @@ import { EmergencyRSIDiagram } from "@/components/diagrams/EmergencyRSIDiagram";
 import { EmergencyLaparotomyBundleDiagram } from "@/components/diagrams/EmergencyLaparotomyBundleDiagram";
 import { EmergencySurgeryGlossaryDrawer } from "@/components/EmergencySurgeryGlossaryDrawer";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply the NCEPOD classification to prioritise emergency surgery and resuscitation.",
@@ -264,6 +265,16 @@ const EmergencySurgeryTopic = () => {
               ))}
             </div>
           </div>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "NCEPOD: 1 Immediate, 2 Urgent, 3 Expedited, 4 Elective — define and document time-to-theatre standards.",
+              "NELA: emergency laparotomy bundle — consultant surgeon + anaesthetist, risk assessment, antibiotics <1 h, lactate, postoperative HDU.",
+              "RSI for full stomach: pre-oxygenate, cricoid pressure (release if difficulty), short-acting induction + rapid-onset NMB.",
+              "P-POSSUM/NELA risk score communicates risk to patient, family and team — informs level of postoperative care.",
+              "Sepsis bundle (Sepsis Six) within 1 h: O₂, cultures, antibiotics, IV fluids, lactate, urine output.",
+            ]}
+          />
         </section>
       }
     />

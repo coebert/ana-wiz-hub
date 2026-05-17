@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { resourcePoorAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe the WHO–WFSA International Standards for a Safe Practice of Anaesthesia and how they apply when capacity is constrained",
@@ -177,6 +178,16 @@ const ResourcePoorAnaesthesiaTopic = () => {
               <li><strong>Difficult airway, no fibreoptic</strong>: prioritise awake intubation under ketamine sedation + topical lidocaine; surgical airway via cricothyroidotomy must be a trained, drilled skill.</li>
             </ul>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "WHO–WFSA International Standards define minimum safe practice — pulse oximetry is mandatory worldwide.",
+              "Draw-over vaporisers (e.g. EMO, Diamedica) use ambient air ± supplemental O₂ — robust, low maintenance, no compressed gases needed.",
+              "Ketamine: maintains airway reflexes, supports BP — workhorse where monitoring and ventilation are limited.",
+              "Spinal-first practice for caesarean and lower-limb surgery reduces airway and equipment requirements.",
+              "Lifebox pulse oximetry and SAFE courses (obstetric, paediatric) build capacity and standardise safe practice.",
+            ]}
+          />
         </>
       }
     />

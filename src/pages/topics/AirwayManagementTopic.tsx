@@ -17,6 +17,7 @@ import { airwayManagementQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
 import { airwayFolio } from "@/components/diagrams/anatomyFolios";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe a structured airway assessment (LEMON, Mallampati, Wilson) and list red-flag predictors of difficulty.",
@@ -389,6 +390,16 @@ const AirwayManagementTopic = () => {
               </table>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "DAS 2015 unanticipated difficult intubation: Plan A (mask + tracheal tube), B (SAD), C (face-mask), D (front-of-neck access).",
+              "Pre-oxygenation aims for FEtO₂ ≥ 0.9 to extend safe apnoea time; obese, pregnant and septic patients desaturate fast.",
+              "Apnoeic oxygenation (THRIVE / nasal cannulae at 15 L/min) prolongs safe apnoea but does not clear CO₂.",
+              "Cricothyroidotomy: scalpel-bougie-tube (size 6.0) for adults — front-of-neck airway is the rescue of last resort, not a delayed option.",
+              "Awake fibreoptic intubation remains the gold standard for the predicted difficult airway with adequate time and consent.",
+            ]}
+          />
         </>
       }
       keyPoints={[

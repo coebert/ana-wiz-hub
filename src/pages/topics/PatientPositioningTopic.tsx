@@ -29,6 +29,7 @@ import {
   ProneIVCFreeAbdomenAnimation,
   PeronealNerveLithotomyAnimation,
 } from "@/components/diagrams/PatientPositioningMechanisms";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe the principal surgical positions (supine, Trendelenburg, lithotomy, lateral, prone, park bench, sitting, beach chair) and their physiological consequences",
@@ -312,6 +313,16 @@ const PatientPositioningTopic = () => {
             </div>
           </ExamSection>
         </div>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Pressure points are time-and-pressure dependent — check and document every 30 min, especially heels, sacrum, occiput, elbows.",
+              "Common nerve injuries: ulnar (elbow), common peroneal (lateral knee in lithotomy), brachial plexus (arm abduction >90° or shoulder braces).",
+              "Prone: eye protection (no globe pressure), abdomen free (reduce IVC compression), neutral neck, ETT secured and re-checked after turn.",
+              "Sitting craniotomy: high VAE risk — precordial Doppler, right-atrial line, end-tidal CO₂ drop and gas in heart on TOE.",
+              "Steep Trendelenburg: raised ICP/IOP, facial/airway oedema, atelectasis — limit time and use PEEP.",
+            ]}
+          />
         </RealismProvider>
       }
     />

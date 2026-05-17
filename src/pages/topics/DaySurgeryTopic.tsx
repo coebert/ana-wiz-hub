@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { daySurgeryQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply BADS-aligned criteria to select patients suitable for day-case surgery",
@@ -107,6 +108,16 @@ const DaySurgeryTopic = () => {
               ))}
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Patient selection by clinical, social and surgical criteria — not by age or BMI alone.",
+              "Use short-acting agents (propofol, desflurane/sevoflurane, remifentanil, fentanyl) and multimodal opioid-sparing analgesia.",
+              "PONV prophylaxis is essential — score risk (Apfel) and give a multimodal combination.",
+              "Discharge criteria (PADSS): vital signs, ambulation, pain control, nausea/emesis, surgical bleeding, adult escort.",
+              "Avoid long-acting opioids; ensure a responsible adult, written information and 24-h contact details before discharge.",
+            ]}
+          />
         </>
       }
     />

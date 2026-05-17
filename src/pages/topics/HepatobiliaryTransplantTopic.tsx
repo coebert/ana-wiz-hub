@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { hepatobiliaryTransplantQuestions } from "@/data/quizzes";
 import LiverTransplantPhasesDiagram from "@/components/diagrams/LiverTransplantPhasesDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const HepatobiliaryTransplantTopic = () => {
   return (
@@ -126,6 +127,16 @@ const HepatobiliaryTransplantTopic = () => {
               <li><strong>Ascites</strong>: ↑ IAP → ↓ FRC; RSI may be indicated if tense ascites</li>
             </ul>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Low CVP technique (<5 mmHg) reduces blood loss during hepatic resection — fluid restriction + reverse Trendelenburg + GTN.",
+              "Liver transplant phases: pre-anhepatic (mobilisation), anhepatic (clamping → fall in CO, citrate accumulation), reperfusion (hyperkalaemia, acidosis, hypotension).",
+              "Post-reperfusion syndrome: 30% fall in MAP within 5 min of reperfusion — pre-emptive calcium, bicarbonate, vasopressor bolus.",
+              "Cirrhotic patient: altered drug kinetics, coagulopathy that is rebalanced not 'auto-anticoagulated' — VTE risk persists.",
+              "Hepatorenal syndrome: functional renal failure, treat with terlipressin + albumin; liver transplant is definitive.",
+            ]}
+          />
         </>
       }
       workedExamples={[

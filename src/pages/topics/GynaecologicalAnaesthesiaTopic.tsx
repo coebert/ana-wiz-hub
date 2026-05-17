@@ -5,6 +5,7 @@ import { gynaecologicalAnaesthesiaQuestions } from "@/data/quizzes";
 import PneumoperitoneumTrendelenburgDiagram from "@/components/diagrams/PneumoperitoneumTrendelenburgDiagram";
 import TURPSyndromeDiagram from "@/components/diagrams/TURPSyndromeDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Predict the cardiovascular and respiratory consequences of pneumoperitoneum + steep Trendelenburg",
@@ -216,6 +217,16 @@ const GynaecologicalAnaesthesiaTopic = () => {
               Unruptured ectopic may be managed laparoscopically as an elective/urgent case. Ruptured ectopic is covered in the Emergency Surgery topic. For unruptured cases: standard laparoscopic anaesthesia, awareness of haemorrhage risk, crossmatch available, and anti-D immunoglobulin for Rh-negative patients.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Steep Trendelenburg + pneumoperitoneum (robotic prostatectomy/hysterectomy): raised airway pressures, facial oedema, raised ICP/IOP.",
+              "Hysteroscopy fluid absorption: glycine (TUR-like syndrome), sorbitol/mannitol, or saline (with bipolar) — monitor fluid deficit (≥1 L stop).",
+              "Pneumoperitoneum CO₂ insufflation → absorption hypercapnia, raised SVR, reduced venous return, vagal bradycardia on insufflation.",
+              "Major gynae-oncology: high VTE risk — combine mechanical and pharmacological prophylaxis postoperatively.",
+              "Enhanced recovery: avoid long-acting opioids, TAP/quadratus lumborum blocks, early feeding, multimodal analgesia.",
+            ]}
+          />
         </>
       }
     />

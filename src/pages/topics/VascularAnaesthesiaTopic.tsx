@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { vascularAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const VascularAnaesthesiaTopic = () => {
   return (
@@ -290,6 +291,16 @@ const VascularAnaesthesiaTopic = () => {
           <li><strong>Carotid surgery</strong>: regional (deep + superficial cervical block) or GA with arterial line; awake testing during clamp gold standard for shunt decision.</li>
         </ul>
         </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Open AAA: aortic cross-clamp increases afterload abruptly — afterload-reducing agents and reduced volatile pre-clamp, vasodilators ready for unclamping (reperfusion hypotension).",
+              "Carotid endarterectomy: keep BP within 20% of baseline; awake regional (cervical plexus) allows continuous neuro assessment.",
+              "EVAR is less haemodynamically stressful than open AAA but carries contrast nephropathy, embolic and endoleak risks.",
+              "Vascular patients have a high prevalence of IHD, CKD and COPD — optimise statins, β-blockers and antiplatelets perioperatively.",
+              "Spinal cord ischaemia after thoracic aortic surgery: CSF drainage, MAP >85 mmHg, intercostal artery reimplantation.",
+            ]}
+          />
         </>
       }
     />

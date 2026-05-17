@@ -5,6 +5,7 @@ import { CriticalTransferChecklist } from "@/components/CriticalTransferChecklis
 import { TransportVentilationDiagram } from "@/components/diagrams/TransportVentilationDiagram";
 import { transferMedicineQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply ICS / AAGBI / FICM standards to plan a safe inter-hospital transfer of the critically ill patient (decision, personnel, equipment)",
@@ -357,6 +358,16 @@ const TransferMedicineTopic = () => {
               <li><strong>Consent &amp; indemnity</strong>: best-interests documentation when patient lacks capacity; medical indemnity for transfers including air/international</li>
             </ul>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Stabilise before you move: airway, ventilation, circulation, neuro and lines secured first — death often follows rushed transfers.",
+              "Estimate oxygen need: minute ventilation × FiO₂ × duration × 2 (safety factor).",
+              "Drugs: 2× expected infusion duration of sedation, analgesia, paralysis, vasoactive infusions, plus boluses for emergencies.",
+              "Aeromedical: gas-filled spaces expand with altitude (Boyle), hypoxia worsens with cabin altitude — vent ETT cuffs with saline, increase FiO₂.",
+              "Hand-over with structured tool (SBAR/ATMIST), continuous monitoring throughout, and documented critical-incident review afterwards.",
+            ]}
+          />
         </>
       }
     />

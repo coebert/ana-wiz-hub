@@ -6,6 +6,7 @@ import PostpartumLegWeaknessDecisionTree from "@/components/diagrams/PostpartumL
 import { Cat1RSIAnimation } from "@/components/diagrams/Cat1RSIAnimation";
 import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const ObstetricAnaesthesiaTopic = () => {
   return (
@@ -784,6 +785,16 @@ const ObstetricAnaesthesiaTopic = () => {
         >
           <PostpartumLegWeaknessDecisionTree />
         </DiagramSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Aortocaval compression after 20 weeks — always 15° left lateral tilt or manual uterine displacement.",
+              "Pregnancy reduces FRC, doubles oxygen consumption and produces a difficult airway in ~1:300 — pre-oxygenate well and prepare for failed intubation.",
+              "Spinal-induced hypotension at LSCS: prophylactic phenylephrine infusion + co-load crystalloid; ephedrine causes more fetal acidosis.",
+              "Epidural test dose (lidocaine + adrenaline) detects intravascular and intrathecal placement; aspirate before every bolus.",
+              "Massive obstetric haemorrhage: activate MOH protocol, give tranexamic acid within 3 h, target fibrinogen >2 g/L.",
+            ]}
+          />
         </section>
       }
     />

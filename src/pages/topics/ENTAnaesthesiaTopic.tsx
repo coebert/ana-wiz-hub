@@ -7,6 +7,7 @@ import LaserAirwayDiagram from "@/components/diagrams/LaserAirwayDiagram";
 import JetVentilationDiagram from "@/components/diagrams/JetVentilationDiagram";
 import JetVentilationCycleAnimation from "@/components/diagrams/JetVentilationCycleAnimation";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const ENTAnaesthesiaTopic = () => {
   return (
@@ -268,6 +269,16 @@ const ENTAnaesthesiaTopic = () => {
               <li>Critical incident review and bedside emergency-box restock; ensure all post-thyroidectomy patients are nursed in an area trained and equipped to perform bedside wound decompression.</li>
             </ul>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Shared airway — communicate continuously with the surgeon; have a plan for sudden loss of airway access.",
+              "Tonsillectomy bleeding: hypovolaemic + swallowed blood + full stomach — RSI in left lateral head-down, large-bore IV, blood available.",
+              "Laser airway surgery: FiO₂ <30%, no N₂O, laser-resistant tube, saline-filled cuff, wet swabs, eye protection.",
+              "Le Fort fractures and nasal/middle-third trauma — avoid nasal intubation (risk of cribriform plate breach).",
+              "Tracheostomy emergencies (NTSP): patent vs blocked, cuff up/down — algorithm by colour-coded bedhead signs.",
+            ]}
+          />
         </>
       }
       workedExamples={[
