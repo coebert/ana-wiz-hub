@@ -158,21 +158,19 @@ const NeonSplash = () => {
         }}
       />
 
-      {/* Only render once we have a measurement to avoid a flash at the wrong size */}
-      {unit > 0 && (
-        <img
-          src={brainLogo}
-          alt=""
-          width={logoSize}
-          height={logoSize}
-          className="relative animate-neon-flicker"
-          style={{
-            width: "var(--neon-size)",
-            height: "var(--neon-size)",
-            ...smoothingStyle,
-          }}
-        />
-      )}
+      {/* Logo — seeded from viewport on first render, refined by ResizeObserver */}
+      <img
+        src={brainLogo}
+        alt=""
+        width={logoSize}
+        height={logoSize}
+        className="relative animate-neon-flicker"
+        style={{
+          width: "var(--neon-size)",
+          height: "var(--neon-size)",
+          ...smoothingStyle,
+        }}
+      />
     </div>
   );
 };
