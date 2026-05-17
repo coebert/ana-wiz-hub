@@ -110,8 +110,8 @@ const CardiacCycleTopic = () => {
       }}
       sectionSources={{
         objectives: ["Power & Kam Ch.4", "Ganong Ch.30"],
-        workedExamples: ["BJA Educ 2018", "BJA Educ 2018"],
-        keyPoints: ["Power & Kam Ch.4", "BJA Educ 2018"],
+        workedExamples: ["BJA Educ 2018", "BJA Educ 2018", "Ganong Ch.30"],
+        keyPoints: ["Power & Kam Ch.4", "BJA Educ 2018", "Ganong Ch.30"],
       }}
       diagrams={
         <>

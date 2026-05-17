@@ -112,6 +112,9 @@ const AtomicStructureBondingTopic = () => {
         ],
         keyPoints: [
           "Peck & Hill Ch.2",
+        
+          "BJA Educ 2010",
+          "Cross & Plunkett Ch.2",
         ],
       }}
       keyPoints={[

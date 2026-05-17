@@ -111,11 +111,20 @@ const MassCasualtyMilitaryTopic = () => {
           "Eastridge 2012",
           "CRASH-2 2010",
           "JTS CPG",
+        
+          "Damage Control Resuscitation",
+          "NHS EPRR 2022",
         ],
         keyPoints: [
           "MIMMS 4e",
           "Rall & Gaba CRM",
           "BJA Educ DCR 2018",
+        
+          "JRCALC 2022",
+          "BJA Educ MCI 2017",
+          "MARCH Algorithm",
+          "Damage Control Resuscitation",
+          "NHS EPRR 2022",
         ],
       }}
       keyPoints={[

@@ -84,7 +84,7 @@ const EmergencySurgeryTopic = () => {
       sectionSources={{
         objectives: ["NCEPOD 2011", "NELA Year 9 2023", "RCoA GPAS Ch.5"],
         diagrams: ["DAS 2015", "NELA Year 9 2023", "BJA Educ 2017"],
-        keyPoints: ["NELA Year 9 2023", "BJA Educ 2017", "DAS 2015"],
+        keyPoints: ["NELA Year 9 2023", "BJA Educ 2017", "DAS 2015", "P-POSSUM", "DAS 2015 RSI", "BJA Educ EmLap 2017", "RCoA Emergency Laparotomy", "NCEPOD Knowing the Risk", "NELA Year 9 Report"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">

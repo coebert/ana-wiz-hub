@@ -35,7 +35,7 @@ const UrologicalAnaesthesiaTopic = () => {
         objectives: ["BJA Educ TURP 2014", "BJA Educ Cystectomy 2017"],
         diagrams: ["BJA Educ TURP 2014"],
         workedExamples: ["BJA Educ TURP 2014", "AAGBI Lithotomy 2015"],
-        keyPoints: ["BJA Educ TURP 2014", "ERAS Cystectomy 2013", "AAGBI Lithotomy 2015"],
+        keyPoints: ["BJA Educ TURP 2014", "ERAS Cystectomy 2013", "AAGBI Lithotomy 2015", "BJA Educ Cystectomy 2017"],
       }}
       diagrams={<><TURPSyndromeDiagram /><PropofolErectionMechanismDiagram /><PropofolErectionAlgorithmDiagram /></>}
       coreConcepts={

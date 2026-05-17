@@ -57,7 +57,7 @@ const LaserFibreopticsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["BJA Educ 2004"],
+        workedExamples: ["BJA Educ 2004", "Middleton Ch.14", "Cross & Plunkett Ch.18"],
         keyPoints: ["BJA Educ 2004", "Middleton Ch.14", "Cross & Plunkett Ch.18"],
       }}
       keyPoints={[

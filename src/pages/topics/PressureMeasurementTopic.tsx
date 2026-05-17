@@ -63,7 +63,7 @@ const PressureMeasurementTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["BJA Educ 2015"],
+        workedExamples: ["BJA Educ 2015", "Cross & Plunkett Ch.7"],
         keyPoints: ["Al-Shaikh & Stacey Ch.19", "Cross & Plunkett Ch.7", "BJA Educ 2015"],
       }}
       keyPoints={[

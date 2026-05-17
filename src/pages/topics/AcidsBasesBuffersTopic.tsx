@@ -118,6 +118,8 @@ const AcidsBasesBuffersTopic = () => {
           "Peck & Hill Ch.2",
           "Stewart 1983",
           "Cross & Plunkett Ch.3",
+        
+          "BJA Educ 2009",
         ],
       }}
       keyPoints={[

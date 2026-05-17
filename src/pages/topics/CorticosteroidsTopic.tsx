@@ -114,10 +114,14 @@ const CorticosteroidsTopic = () => {
           "BJA Educ 2012",
           "BJA Educ 2012",
           "BJA Educ 2012",
+        
+          "Peck & Hill Ch.17",
         ],
         keyPoints: [
           "Peck & Hill Ch.17",
           "AAGBI Steroid Cover",
+        
+          "BJA Educ 2012",
         ],
       }}
       keyPoints={[

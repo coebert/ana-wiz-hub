@@ -63,7 +63,7 @@ const ProceduralSedationTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["DAS Awake Tracheal Intubation 2020", "BSG Endoscopy Sedation 2023"],
+        workedExamples: ["DAS Awake Tracheal Intubation 2020", "BSG Endoscopy Sedation 2023", "ASA 2019", "BJA Educ 2021"],
         keyPoints: ["AAGBI/RCoA 2021", "AoMRC 2013", "ASA 2019", "BJA Educ 2021", "DAS ATI 2020", "BSG 2023"],
       }}
       keyPoints={[

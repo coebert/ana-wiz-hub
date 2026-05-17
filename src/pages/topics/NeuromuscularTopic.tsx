@@ -114,8 +114,8 @@ const NeuromuscularTopic = () => {
       }}
       sectionSources={{
         objectives: ["BJA Educ 2005", "Power & Kam Ch.15"],
-        workedExamples: ["BJA Educ 2005", "BJA Educ 2005"],
-        keyPoints: ["BJA Educ 2005"],
+        workedExamples: ["BJA Educ 2005", "BJA Educ 2005", "Power & Kam Ch.15"],
+        keyPoints: ["BJA Educ 2005", "Ganong Ch.5", "Power & Kam Ch.15"],
       }}
       diagrams={
         <>

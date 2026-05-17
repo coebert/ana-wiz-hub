@@ -112,8 +112,8 @@ const IcuNutritionTopic = () => {
       sectionSources={{
         objectives: ["ESPEN 2019", "NICE CG32"],
         diagrams: ["NICE CG32", "ESPEN 2019"],
-        workedExamples: ["NICE CG32", "EPaNIC 2011", "NICE-SUGAR 2009"],
-        keyPoints: ["ESPEN 2019", "BJA Educ 2016", "NICE CG32"],
+        workedExamples: ["NICE CG32", "EPaNIC 2011", "NICE-SUGAR 2009", "ESPEN 2019"],
+        keyPoints: ["ESPEN 2019", "BJA Educ 2016", "NICE CG32", "EPaNIC 2011", "NICE-SUGAR 2009"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["CC1.4"] },

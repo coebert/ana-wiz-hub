@@ -115,11 +115,16 @@ const TraumaEmergencyTopic = () => {
           "BJA Educ 2016",
           "BJA Educ 2016",
           "BJA Educ 2016",
+        
+          "ATLS 10th ed",
         ],
         keyPoints: [
           "BJA Educ 2016",
           "BJA Educ 2016",
           "BJA Educ 2016",
+        
+          "CRASH-2 2010",
+          "ATLS 10th ed",
         ],
       }}
       keyPoints={[

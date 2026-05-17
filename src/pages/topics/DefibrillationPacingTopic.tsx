@@ -57,7 +57,7 @@ const DefibrillationPacingTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        workedExamples: ["Resuscitation Council UK 2021"],
+        workedExamples: ["Resuscitation Council UK 2021", "BJA Educ 2005", "Cross & Plunkett Ch.14"],
         keyPoints: ["Resuscitation Council UK 2021", "BJA Educ 2005", "Cross & Plunkett Ch.14"],
       }}
       keyPoints={[

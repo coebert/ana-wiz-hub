@@ -63,7 +63,7 @@ const OphthalmicAnaesthesiaTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["RCOphth/RCoA 2012"],
+        workedExamples: ["RCOphth/RCoA 2012", "Allman & Wilson Ch.29"],
         keyPoints: ["BJA Educ 2018", "Allman & Wilson Ch.29", "RCOphth/RCoA 2012"],
       }}
       keyPoints={[

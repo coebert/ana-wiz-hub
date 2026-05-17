@@ -103,7 +103,7 @@ const OrganDonationTopic = () => {
       quizQuestions={organDonationQuestions}
       sectionSources={{
         objectives: ["AoMRC 2008", "NICE CG135", "BJA Educ 2016"],
-        workedExamples: ["AoMRC 2008", "BJA Educ 2016"],
+        workedExamples: ["AoMRC 2008", "BJA Educ 2016", "NICE CG135"],
         keyPoints: ["AoMRC 2008", "NICE CG135", "BJA Educ 2016"],
       }}
       sectionExamMapping={{

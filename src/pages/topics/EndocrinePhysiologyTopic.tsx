@@ -101,8 +101,8 @@ const EndocrinePhysiologyTopic = () => {
       }}
       sectionSources={{
         objectives: ["Power & Kam Ch.12"],
-        workedExamples: ["BJA Educ 2015", "Nicholson & Hall 2011"],
-        keyPoints: ["Power & Kam Ch.12", "BJA Educ 2015"],
+        workedExamples: ["BJA Educ 2015", "Nicholson & Hall 2011", "Power & Kam Ch.12"],
+        keyPoints: ["Power & Kam Ch.12", "BJA Educ 2015", "Nicholson & Hall 2011"],
       }}
       diagrams={
         <div className="bg-card rounded-xl border border-border p-4 md:p-6">

@@ -56,7 +56,7 @@ const DaySurgeryTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["BADS Guidelines", "AAGBI Day Surgery 2019"],
+        workedExamples: ["BADS Guidelines", "AAGBI Day Surgery 2019", "BJA Educ 2016"],
         keyPoints: ["AAGBI Day Surgery 2019", "BJA Educ 2016", "BADS Guidelines"],
       }}
       keyPoints={[

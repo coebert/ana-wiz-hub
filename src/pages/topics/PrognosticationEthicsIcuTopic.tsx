@@ -109,8 +109,8 @@ const PrognosticationEthicsIcuTopic = () => {
       quizQuestions={prognosticationIcuQuestions}
       sectionSources={{
         objectives: ["ERC/ESICM 2021", "GMC 2022", "Mental Capacity Act 2005"],
-        workedExamples: ["ERC/ESICM 2021", "Mental Capacity Act 2005"],
-        keyPoints: ["GMC 2022", "NICE CG83", "BJA Educ PICS 2018"],
+        workedExamples: ["ERC/ESICM 2021", "Mental Capacity Act 2005", "GMC 2022"],
+        keyPoints: ["GMC 2022", "NICE CG83", "BJA Educ PICS 2018", "Mental Capacity Act 2005", "ERC/ESICM 2021"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 5.4", "EDIC 7.2"] },
