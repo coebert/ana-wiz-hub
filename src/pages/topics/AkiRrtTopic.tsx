@@ -143,7 +143,7 @@ const AkiRrtTopic = () => {
     <>
       <StickyTOC items={tocItems} />
       <div className="prose prose-slate max-w-none">
-        <ExamSection id="toc-kdigo" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-kdigo" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
           <CollapsibleSubsection title="KDIGO Definition & Staging" defaultOpen>
           <p className="text-foreground/90 leading-relaxed mb-4">
             The <strong>KDIGO 2012</strong> consensus harmonised earlier RIFLE and AKIN definitions. AKI is diagnosed by
@@ -276,7 +276,7 @@ const AkiRrtTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection id="toc-drug-dosing" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-drug-dosing" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
           <CollapsibleSubsection title="Perioperative Drug Dosing in Renal Impairment">
           <p className="text-foreground/90 leading-relaxed mb-4">
             Renal impairment alters drug pharmacokinetics in three ways: (1) reduced renal excretion of parent drug or
@@ -527,7 +527,7 @@ const AkiRrtTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection id="toc-modalities" exams={[Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-modalities" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
           <CollapsibleSubsection title="RRT Modalities Overview">
           <p className="text-muted-foreground leading-relaxed mb-4">
             Compare the major continuous and intermittent renal replacement modalities side-by-side.
@@ -536,7 +536,7 @@ const AkiRrtTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection id="toc-circuit" exams={[Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-circuit" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
           <CollapsibleSubsection title="RRT Circuit Comparison">
           <p className="text-muted-foreground leading-relaxed mb-4">
             Compare CRRT and IHD circuits with animated blood and dialysate flow.
@@ -548,7 +548,7 @@ const AkiRrtTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection id="toc-anticoagulation" exams={[Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-anticoagulation" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
           <CollapsibleSubsection title="Anticoagulation for CRRT">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -567,7 +567,7 @@ const AkiRrtTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection id="toc-trials" exams={[Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-trials" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
           <CollapsibleSubsection title="Key Trials">
           <div className="space-y-3">
             {[

@@ -132,7 +132,7 @@ const MRIPhysicsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="safety" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="safety" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="MRI Safety for Anaesthetists">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

@@ -70,7 +70,7 @@ const OxidationReductionTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Redox Chemistry in Medicine" defaultOpen>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -87,13 +87,13 @@ const OxidationReductionTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Interactive Diagram">
             <RedoxElectrochemistryDiagram />
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="methaemoglobin" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="methaemoglobin" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Methaemoglobinaemia">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -132,7 +132,7 @@ const OxidationReductionTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="free-radicals" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="free-radicals" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Free Radicals & Ischaemia–Reperfusion">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

@@ -216,7 +216,7 @@ const NeurointensiveCareTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection id="toc-status" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+        <ExamSection id="toc-status" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Status Epilepticus">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Continuous seizure ≥5 minutes or ≥2 seizures without regaining consciousness. Medical emergency — time-critical escalation.
@@ -565,7 +565,7 @@ const NeurointensiveCareTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
           <CollapsibleSubsection title="Cerebral Microdialysis">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Cerebral microdialysis (CMD) is a focal, bedside neurochemical monitor that samples the brain extracellular fluid (ECF) of a small volume of cortex (~1 cm³ around the catheter tip). It complements global monitors (ICP, CPP, PbtO₂, jugular bulb) by detecting cellular distress — disordered glucose, lactate and pyruvate metabolism, glutamate excitotoxicity and membrane breakdown — often <em>before</em> ICP rises or PbtO₂ falls. Used predominantly in poor-grade SAH and severe TBI in selected neuro-ICU centres (Cambridge, Lund, Edinburgh, Addenbrooke's-style protocols).
@@ -686,7 +686,7 @@ const NeurointensiveCareTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
           <CollapsibleSubsection title="Multimodal Neuromonitoring — Synthesis">
           <p className="text-muted-foreground leading-relaxed mb-3">
             No single monitor captures the full picture of brain physiology. Modern neuro-ICUs combine pressure, flow surrogate, oxygenation and biochemistry to triangulate cellular distress. Use the interactive overview below to compare the six core modalities — what each measures, their spatial vs temporal resolution, and where each excels or fails.
@@ -695,7 +695,7 @@ const NeurointensiveCareTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection id="toc-encephalitis" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+        <ExamSection id="toc-encephalitis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Autoimmune Encephalitis — ICU Management">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Autoimmune encephalitis (AIE) is an increasingly recognised cause of ICU admission with seizures, altered consciousness, and psychiatric features. Prompt recognition and immunotherapy are essential — outcomes are better with early treatment.
@@ -1029,7 +1029,7 @@ const NeurointensiveCareTopic = () => {
         </ExamSection>
 
         {/* Devastating Brain Injury */}
-        <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="mb-10">
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10">
           <CollapsibleSubsection title="Devastating Brain Injury (DBI)">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Devastating brain injury is defined (FICM/ICS/RCEM/NHSBT consensus 2018, reaffirmed 2023) as <strong>any neurological condition assessed at presentation as an immediate threat to life or incompatible with good functional recovery, and where early limitation or withdrawal of therapy is being considered within 72 hours of admission to ICU</strong>. Common causes: severe TBI, large intracerebral or subarachnoid haemorrhage, malignant MCA infarction, hypoxic-ischaemic injury post-cardiac arrest, devastating CNS infection.

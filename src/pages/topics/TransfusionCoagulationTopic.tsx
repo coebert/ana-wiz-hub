@@ -93,7 +93,7 @@ const TransfusionCoagulationTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="cascade" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection id="cascade" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Coagulation Cascade — Foundations" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-4">
               A working knowledge of the intrinsic, extrinsic and common pathways underpins interpretation of clotting tests, transfusion targets, and the rational use of factor concentrates and antifibrinolytics covered below.
@@ -127,7 +127,7 @@ const TransfusionCoagulationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="lifespans" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
+          <ExamSection id="lifespans" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
             <CollapsibleSubsection title="Component Lifespans & In-vivo Survival">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Each component has both a <em>shelf-life</em> (how long it can be stored before issue) and an <em>in-vivo survival</em> (how long the transfused component continues to function in the recipient). The two are not the same — a unit of red cells can be stored for 35 days but typical post-transfusion 24-h recovery is ~75% with a circulating half-life close to that of native RBCs.
@@ -183,7 +183,7 @@ const TransfusionCoagulationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="reactions" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection id="reactions" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Transfusion Reactions">
             <div className="space-y-2 mb-4">
               {[

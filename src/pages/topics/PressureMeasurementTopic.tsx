@@ -132,7 +132,7 @@ const PressureMeasurementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="arterial" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="arterial" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Invasive Arterial Monitoring">
             <p className="text-foreground/90 leading-relaxed">
               The arterial line system consists of an intra-arterial cannula, fluid-filled non-compliant tubing, a three-way tap,
@@ -142,7 +142,7 @@ const PressureMeasurementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="dynamic-response" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="dynamic-response" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Dynamic Response & Damping">
             <p className="text-foreground/90 leading-relaxed">
               The monitoring system has a <strong>natural (resonant) frequency</strong> — ideally &gt;40 Hz to exceed the
@@ -190,7 +190,7 @@ const PressureMeasurementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="frank-starling" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="frank-starling" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Starling's Law of the Heart (Frank–Starling)">
             <p className="text-foreground/90 leading-relaxed">
               <strong>Starling's law</strong> states that, within physiological limits, the <strong>force of cardiac contraction

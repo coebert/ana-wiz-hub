@@ -179,7 +179,7 @@ const MaternalPhysiologyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="haematology" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OB_BK_01"]}>
+          <ExamSection id="haematology" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
             <CollapsibleSubsection title="Haematological Changes">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li>

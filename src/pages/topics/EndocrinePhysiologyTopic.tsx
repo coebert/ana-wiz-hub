@@ -119,7 +119,7 @@ const EndocrinePhysiologyTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
+          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               The endocrine system co-ordinates whole-body homeostasis through hormonal feedback loops centred on the
@@ -174,7 +174,7 @@ const EndocrinePhysiologyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="hpa-axis" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
+          <ExamSection id="hpa-axis" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <CollapsibleSubsection title="HPA Axis">
             <p className="text-muted-foreground leading-relaxed">
               The hypothalamic-pituitary-adrenal axis governs cortisol secretion through a three-tier cascade with both
@@ -240,7 +240,7 @@ const EndocrinePhysiologyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="insulin-glucose" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
+          <ExamSection id="insulin-glucose" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <CollapsibleSubsection title="Insulin & Glucose">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>
@@ -263,7 +263,7 @@ const EndocrinePhysiologyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="stress-response" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
+          <ExamSection id="stress-response" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <CollapsibleSubsection title="Surgical Stress Response">
             <p className="text-muted-foreground leading-relaxed">
               Surgical injury activates the HPA axis and sympathetic nervous system. Key features: ↑ cortisol,
