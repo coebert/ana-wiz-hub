@@ -92,12 +92,12 @@ const PrognosticationEthicsIcuTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        { text: "Prognostic scores predict population outcomes — never use a single score to determine treatment for an individual patient", cites: ["BJA Educ 2018 PICS"] },
+        { text: "Prognostic scores predict population outcomes — never use a single score to determine treatment for an individual patient", cites: ["BJA Educ PICS 2018"] },
         { text: "Post-cardiac arrest prognostication: multimodal at ≥72 h — at least 2 concordant poor prognostic signs required (ERC/ESICM 2021)", cites: ["NICE CG83"] },
         { text: "Withholding and withdrawing treatment are ethically and legally equivalent (GMC/BMA guidance)", cites: ["Mental Capacity Act 2005"] },
         { text: "DNACPR does NOT mean withdrawal of all active treatment — it only applies to CPR", cites: ["GMC 2022"] },
         { text: "The Mental Capacity Act presumes capacity; best-interests decisions must consider the patient's values, wishes, and beliefs", cites: ["ERC/ESICM 2021"] },
-        { text: "Doctrine of double effect permits medications for comfort even if they may hasten death — this is NOT euthanasia", cites: ["BJA Educ 2018 PICS"] },
+        { text: "Doctrine of double effect permits medications for comfort even if they may hasten death — this is NOT euthanasia", cites: ["BJA Educ PICS 2018"] },
         { text: "PICS affects up to 50–80% of ICU survivors: physical (ICU-AW), cognitive (delirium-related), and psychological (PTSD, depression)", cites: ["NICE CG83"] },
         { text: "ICU-acquired weakness: CIP is axonal neuropathy, CIM is primary myopathy — often coexist. Sepsis is the strongest risk factor", cites: ["Mental Capacity Act 2005"] },
         { text: "ABCDEF bundle reduces delirium, ICU-AW, and improves long-term outcomes — early mobilisation is a key component", cites: ["GMC 2022"] },
@@ -109,7 +109,7 @@ const PrognosticationEthicsIcuTopic = () => {
       sectionSources={{
         objectives: ["ERC/ESICM 2021", "GMC 2022", "Mental Capacity Act 2005"],
         workedExamples: ["ERC/ESICM 2021", "Mental Capacity Act 2005"],
-        keyPoints: ["GMC 2022", "NICE CG83", "BJA Educ 2018 PICS"],
+        keyPoints: ["GMC 2022", "NICE CG83", "BJA Educ PICS 2018"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 5.4", "EDIC 7.2"] },

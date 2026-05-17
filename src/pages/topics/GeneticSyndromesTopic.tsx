@@ -27,9 +27,9 @@ const GeneticSyndromesTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2011 MH", "BJA Educ 2017 Muscular Dystrophy", "AAGBI 2020 Sickle Cell"],
-        workedExamples: ["EMHG 2020 Guidelines", "TAPS Trial 2013"],
-        keyPoints: ["BJA Educ 2011 MH", "BJA Educ 2017 Muscular Dystrophy", "AAGBI 2020 Sickle Cell", "British Porphyria Association Drug Database"],
+        objectives: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020"],
+        workedExamples: ["EMHG 2020 Guidelines", "TAPS 2013"],
+        keyPoints: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020", "British Porphyria Association Drug Database"],
       }}
       coreConcepts={
         <>

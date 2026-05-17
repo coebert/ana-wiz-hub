@@ -15,7 +15,7 @@ const objectives = [
 
 const keyPoints = [
   { text: "Ischaemic heart disease is the leading cause of perioperative cardiac morbidity — maintain coronary perfusion pressure (CPP = DBP − LVEDP), avoid tachycardia, and continue β-blockers and statins perioperatively", cites: ["ESC/ESA 2022", "AHA/ACC 2014"] },
-  { text: "Severe aortic stenosis (valve area <1 cm², mean gradient >40 mmHg) carries the highest risk of perioperative cardiac death — maintain sinus rhythm, avoid hypotension, and ensure adequate preload", cites: ["BJA Educ 2015 Valvular", "ESC/ESA 2022"] },
+  { text: "Severe aortic stenosis (valve area <1 cm², mean gradient >40 mmHg) carries the highest risk of perioperative cardiac death — maintain sinus rhythm, avoid hypotension, and ensure adequate preload", cites: ["BJA Educ Valvular 2015", "ESC/ESA 2022"] },
   { text: "Heart failure patients with EF <30% require careful fluid management, avoidance of myocardial depressants, and consideration of cardiac output monitoring for major surgery", cites: ["ESC/ESA 2022", "AHA/ACC 2014"] },
   { text: "Patients with permanent pacemakers/ICDs require device interrogation preoperatively; ICDs should have anti-tachycardia therapy deactivated with external defibrillation available", cites: ["BJA Educ 2017", "AHA/ACC 2014"] },
   { text: "Pulmonary hypertension (mPAP ≥25 mmHg) carries perioperative mortality of 1–7%; avoid hypoxia, hypercarbia, acidosis, and excessive PEEP which increase PVR", cites: ["ESC/ESA 2022"] },
@@ -43,8 +43,8 @@ const CardiovascularDiseaseTopic = () => {
       }}
       sectionSources={{
         objectives: ["ESC/ESA 2022", "AHA/ACC 2014"],
-        diagrams: ["BJA Educ 2015 Valvular"],
-        keyPoints: ["BJA Educ 2017", "ESC/ESA 2022", "BJA Educ 2015 Valvular", "AHA/ACC 2014"],
+        diagrams: ["BJA Educ Valvular 2015"],
+        keyPoints: ["BJA Educ 2017", "ESC/ESA 2022", "BJA Educ Valvular 2015", "AHA/ACC 2014"],
       }}
       coreConcepts={
         <>

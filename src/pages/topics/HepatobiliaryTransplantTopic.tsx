@@ -29,10 +29,10 @@ const HepatobiliaryTransplantTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2017 LiverResection", "AAGBI Cirrhosis 2017"],
-        diagrams: ["BJA Educ 2010 LT"],
-        workedExamples: ["BJA Educ 2010 LT", "ITLS Reperfusion"],
-        keyPoints: ["BJA Educ 2017 LiverResection", "BJA Educ 2010 LT", "AAGBI Cirrhosis 2017"],
+        objectives: ["BJA Educ LiverResection 2017", "AAGBI Cirrhosis 2017"],
+        diagrams: ["BJA Educ LT 2010"],
+        workedExamples: ["BJA Educ LT 2010", "ITLS Reperfusion"],
+        keyPoints: ["BJA Educ LiverResection 2017", "BJA Educ LT 2010", "AAGBI Cirrhosis 2017"],
       }}
       diagrams={<LiverTransplantPhasesDiagram />}
       coreConcepts={
@@ -165,15 +165,15 @@ const HepatobiliaryTransplantTopic = () => {
             </div>
           ),
           answer: "Calcium → insulin/dextrose + bicarbonate → vasopressor support; treat fibrinolysis with TXA if needed.",
-         cites: ["BJA Educ 2010 LT"],
+         cites: ["BJA Educ LT 2010"],
   },
       ]}
       keyPoints={[
-        { text: "Low CVP technique (<5 cmH₂O) reduces blood loss during liver resection", cites: ["BJA Educ 2010 LT"] },
+        { text: "Low CVP technique (<5 cmH₂O) reduces blood loss during liver resection", cites: ["BJA Educ LT 2010"] },
         { text: "Pringle manoeuvre: clamp hepatoduodenal ligament — limit to 15-20 min ischaemia time", cites: ["ITLS Reperfusion"] },
         { text: "Post-reperfusion syndrome: ↓ MAP >30%, hyperkalaemia, acidosis within 5 min of unclamping", cites: ["AAGBI Cirrhosis 2017"] },
-        { text: "Cirrhotic patients: hyperdynamic circulation, rebalanced haemostasis, hepatopulmonary syndrome", cites: ["BJA Educ 2017 LiverResection"] },
-        { text: "Anhepatic phase: no hepatic metabolism — citrate/drug accumulation, worsening acidosis", cites: ["BJA Educ 2010 LT"] },
+        { text: "Cirrhotic patients: hyperdynamic circulation, rebalanced haemostasis, hepatopulmonary syndrome", cites: ["BJA Educ LiverResection 2017"] },
+        { text: "Anhepatic phase: no hepatic metabolism — citrate/drug accumulation, worsening acidosis", cites: ["BJA Educ LT 2010"] },
       ]}
     />
   );

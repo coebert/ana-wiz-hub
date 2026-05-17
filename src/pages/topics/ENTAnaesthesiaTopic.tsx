@@ -33,10 +33,10 @@ const ENTAnaesthesiaTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2017 ENT", "DAS 2015"],
-        diagrams: ["NTSP 2014", "BJA Educ 2017 ENT"],
-        workedExamples: ["DAS 2015", "BJA Educ 2015 Laser", "NAP4 2011"],
-        keyPoints: ["DAS 2015", "NTSP 2014", "BJA Educ 2015 Laser", "BJA Educ 2017 ENT"],
+        objectives: ["BJA Educ ENT 2017", "DAS 2015"],
+        diagrams: ["NTSP 2014", "BJA Educ ENT 2017"],
+        workedExamples: ["DAS 2015", "BJA Educ Laser 2015", "NAP4 2011"],
+        keyPoints: ["DAS 2015", "NTSP 2014", "BJA Educ Laser 2015", "BJA Educ ENT 2017"],
       }}
       diagrams={
         <>
@@ -312,8 +312,8 @@ const ENTAnaesthesiaTopic = () => {
       ]}
       keyPoints={[
         { text: "Shared airway: communication is key. Document throat pack insertion/removal — retained pack is a never event", cites: ["DAS 2015"] },
-        { text: "Post-tonsillectomy bleed: assume full stomach + hypovolaemia. Resuscitate before RSI. Avoid codeine in children (CYP2D6 risk)", cites: ["BJA Educ 2015 Laser"] },
-        { text: "Laser airway surgery: FiO₂ ≤0.3, avoid N₂O, laser-safe tube. Airway fire protocol: stop gas, remove tube, flood with saline", cites: ["BJA Educ 2017 ENT"] },
+        { text: "Post-tonsillectomy bleed: assume full stomach + hypovolaemia. Resuscitate before RSI. Avoid codeine in children (CYP2D6 risk)", cites: ["BJA Educ Laser 2015"] },
+        { text: "Laser airway surgery: FiO₂ ≤0.3, avoid N₂O, laser-safe tube. Airway fire protocol: stop gas, remove tube, flood with saline", cites: ["BJA Educ ENT 2017"] },
         { text: "Middle ear surgery: avoid N₂O (middle ear pressure). TIVA preferred. Avoid maintenance paralysis (facial nerve monitoring)", cites: ["NTSP 2014"] },
         { text: "Stridor at rest = >50% obstruction. Inspiratory = supraglottic, biphasic = glottic. Heliox reduces turbulent flow resistance", cites: ["NAP4 2011"] },
         { text: "Laryngectomy: post-op the patient is a neck-breather — bag-mask via face will not work, ventilate via the stoma (NTSP red board)", cites: ["DAS 2015"] },

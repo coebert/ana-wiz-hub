@@ -137,7 +137,7 @@ const workedExamples: WorkedExample[] = [
         needed acutely.
       </>
     ),
-   cites: ["JBDS DKA 2023"],
+   cites: ["JBDS-IP DKA 2023"],
   },
 ];
 
@@ -155,14 +155,14 @@ const IcuEndocrineEmergenciesTopic = () => {
       quizQuestions={icuEndocrineEmergenciesQuestions}
       workedExamples={workedExamples}
       keyPoints={[
-        { text: "DKA diagnostic triad (JBDS-IP): glucose > 11 (or known DM) + ketones ≥ 3 (or 2+ on dipstick) + pH < 7.30 / HCO₃⁻ < 15", cites: ["JBDS DKA 2023"] },
-        { text: "DKA potassium paradox: serum K⁺ often normal/high at presentation despite massive total-body deficit — falls fast on insulin; replace K⁺ when 3.5–5.5, halt insulin if K⁺ < 3.5", cites: ["JBDS HHS 2022"] },
-        { text: "HHS: glucose > 30 + osmolality > 320 + minimal ketones — give fluids FIRST (insulin only after fluids running, lower rate 0.05 U/kg/h) to avoid cerebral oedema and pontine myelinolysis", cites: ["BJA Educ 2014 Endo"] },
+        { text: "DKA diagnostic triad (JBDS-IP): glucose > 11 (or known DM) + ketones ≥ 3 (or 2+ on dipstick) + pH < 7.30 / HCO₃⁻ < 15", cites: ["JBDS-IP DKA 2023"] },
+        { text: "DKA potassium paradox: serum K⁺ often normal/high at presentation despite massive total-body deficit — falls fast on insulin; replace K⁺ when 3.5–5.5, halt insulin if K⁺ < 3.5", cites: ["JBDS-IP HHS 2022"] },
+        { text: "HHS: glucose > 30 + osmolality > 320 + minimal ketones — give fluids FIRST (insulin only after fluids running, lower rate 0.05 U/kg/h) to avoid cerebral oedema and pontine myelinolysis", cites: ["BJA Educ Endo 2014"] },
         { text: "Thyroid storm (BWPS ≥ 45): treat in order — β-blocker → PTU → Lugol's iodine (≥ 1 h after PTU) → hydrocortisone → cooling. Avoid aspirin (displaces T₄ from TBG)", cites: ["ATA Thyroid Storm"] },
         { text: "Adrenal crisis: refractory shock + low Na⁺ / high K⁺ / low glucose → hydrocortisone 100 mg IV stat BEFORE tests; high-dose hydrocortisone has full mineralocorticoid effect", cites: ["ES Adrenal Crisis 2016"] },
-        { text: "Myxoedema coma: hypothermia + hyponatraemia + hypoventilation + obtundation — IV T3/T4 + IV hydrocortisone (cover concurrent adrenal insufficiency) + passive rewarming + ICU ventilation", cites: ["JBDS DKA 2023"] },
-        { text: "Phaeochromocytoma crisis: phenoxybenzamine / phentolamine / IV magnesium FIRST (α-blockade) then β-blockade — never β-blocker alone (unopposed α → hypertensive crisis, pulmonary oedema)", cites: ["JBDS HHS 2022"] },
-        { text: "Pituitary apoplexy: sudden headache + visual loss + ophthalmoplegia + hypopituitarism → hydrocortisone 100 mg IV + urgent neurosurgical referral; replace cortisol BEFORE thyroxine", cites: ["BJA Educ 2014 Endo"] },
+        { text: "Myxoedema coma: hypothermia + hyponatraemia + hypoventilation + obtundation — IV T3/T4 + IV hydrocortisone (cover concurrent adrenal insufficiency) + passive rewarming + ICU ventilation", cites: ["JBDS-IP DKA 2023"] },
+        { text: "Phaeochromocytoma crisis: phenoxybenzamine / phentolamine / IV magnesium FIRST (α-blockade) then β-blockade — never β-blocker alone (unopposed α → hypertensive crisis, pulmonary oedema)", cites: ["JBDS-IP HHS 2022"] },
+        { text: "Pituitary apoplexy: sudden headache + visual loss + ophthalmoplegia + hypopituitarism → hydrocortisone 100 mg IV + urgent neurosurgical referral; replace cortisol BEFORE thyroxine", cites: ["BJA Educ Endo 2014"] },
       ]}
       sectionSources={{
         objectives: ["JBDS-IP DKA 2023", "JBDS-IP HHS 2022", "Endocrine Society 2016"],

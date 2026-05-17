@@ -92,10 +92,10 @@ const PulmonaryHypertensionTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        { text: "Pulmonary hypertension is defined as a resting mean pulmonary artery pressure (mPAP) ≥20 mmHg (2022 ESC/ERS); pre-capillary PH additionally requires PAWP ≤15 mmHg and PVR >2 Wood units", cites: ["BJA Educ 2017 PH"] },
+        { text: "Pulmonary hypertension is defined as a resting mean pulmonary artery pressure (mPAP) ≥20 mmHg (2022 ESC/ERS); pre-capillary PH additionally requires PAWP ≤15 mmHg and PVR >2 Wood units", cites: ["BJA Educ PH 2017"] },
         { text: "The right ventricle is the limiting organ — RV failure is the leading cause of death; the priority of management is to protect coronary perfusion to the RV by maintaining systemic MAP > PAP", cites: ["ESC/ERS PH 2022"] },
         { text: "Avoid the 'PVR triad' of hypoxia, hypercapnia and acidosis; also avoid hypothermia, pain, agitation, high airway pressures and excessive PEEP, all of which acutely raise PVR", cites: ["AHA PH 2018"] },
-        { text: "Targeted pulmonary vasodilators (sildenafil, bosentan, macitentan, riociguat, inhaled iloprost, IV epoprostenol, subcutaneous treprostinil) must be continued perioperatively — abrupt withdrawal can precipitate lethal rebound PH", cites: ["BJA Educ 2017 PH"] },
+        { text: "Targeted pulmonary vasodilators (sildenafil, bosentan, macitentan, riociguat, inhaled iloprost, IV epoprostenol, subcutaneous treprostinil) must be continued perioperatively — abrupt withdrawal can precipitate lethal rebound PH", cites: ["BJA Educ PH 2017"] },
         { text: "A pulmonary hypertensive crisis is treated by 100% O₂, mild hyperventilation to pH 7.45–7.50, deepening anaesthesia, inhaled NO (10–40 ppm) or nebulised prostacyclin, noradrenaline/vasopressin to restore SVR, and inotropic RV support with dobutamine or milrinone", cites: ["ESC/ERS PH 2022"] },
       ]}
       topicId="pulmonary-hypertension"

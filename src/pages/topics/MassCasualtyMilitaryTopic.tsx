@@ -101,30 +101,30 @@ const MassCasualtyMilitaryTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "MIMMS Major Incident Medical Management & Support (4e)",
-          "NHS England EPRR Framework 2022",
-          "FICM/ICS Major Incident Guidance",
-          "Joint Service Publication 999 (UK Defence Medical Services)",
+          "MIMMS 4e",
+          "NHS EPRR 2022",
+          "FICM/ICS MI",
+          "JSP 999",
         ],
         workedExamples: [
-          "Eastridge JAMA 2012 — Death on the battlefield",
-          "CRASH-2 Lancet 2010 — TXA in trauma",
-          "Joint Trauma System Clinical Practice Guidelines",
+          "Eastridge 2012",
+          "CRASH-2 2010",
+          "JTS CPG",
         ],
         keyPoints: [
           "MIMMS 4e",
-          "Rall &amp; Gaba — Crisis Resource Management",
-          "BJA Educ — Damage Control Resuscitation 2018",
+          "Rall & Gaba CRM",
+          "BJA Educ DCR 2018",
         ],
       }}
       keyPoints={[
         { text: "Major incident = casualty load exceeds normal resources. Declared by first emergency service on scene; cascade activates hospital plan.", cites: ["JRCALC 2022"] },
-        { text: "METHANE message structures the alert: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.", cites: ["BJA Educ 2017 MCI"] },
+        { text: "METHANE message structures the alert: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.", cites: ["BJA Educ MCI 2017"] },
         { text: "Triage Sieve (walking? breathing? RR? CRT/pulse?) → categorises P1/P2/P3/P4 within 30 s per casualty. Triage Sort uses TRTS for in-hospital re-triage.", cites: ["MARCH Algorithm"] },
         { text: "Crisis Resource Management: leadership, role clarity, closed-loop communication, situational awareness, workload distribution, calling for help early.", cites: ["Damage Control Resuscitation"] },
         { text: "Damage-control resuscitation: permissive hypotension, 1:1:1 ratio (or whole blood), TXA &lt;3 h, calcium, warmth, early surgical haemostasis.", cites: ["NHS EPRR 2022"] },
         { text: "Damage-control surgery: abbreviated procedure to control haemorrhage and contamination, with planned return for definitive surgery once physiology corrected.", cites: ["JRCALC 2022"] },
-        { text: "Military Role 1 (point of wounding) → Role 2 (forward surgical) → Role 3 (deployed hospital) → Role 4 (home) — same paradigm informs civilian disaster pathways.", cites: ["BJA Educ 2017 MCI"] },
+        { text: "Military Role 1 (point of wounding) → Role 2 (forward surgical) → Role 3 (deployed hospital) → Role 4 (home) — same paradigm informs civilian disaster pathways.", cites: ["BJA Educ MCI 2017"] },
         { text: "CBRN casualties: decontaminate before treatment; PPE for staff; antidotes rehearsed (atropine/pralidoxime, hydroxocobalamin, dicobalt edetate).", cites: ["MARCH Algorithm"] },
       ]}
       coreConcepts={

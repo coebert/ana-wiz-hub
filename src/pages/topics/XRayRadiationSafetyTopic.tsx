@@ -171,12 +171,12 @@ const XRayRadiationSafetyTopic = () => {
       keyPoints={[
         { text: "Diagnostic X-rays are produced by bombarding a tungsten anode with electrons accelerated across a high-voltage (typically 50–150 kVp) tube — output is a bremsstrahlung continuum plus characteristic K-shell line emissions", cites: ["IRR 2017"] },
         { text: "kVp controls beam energy (penetration/quality); mAs controls beam quantity (number of photons) — together they determine dose and image contrast", cites: ["IR(ME)R 2017"] },
-        { text: "Four photon interactions: photoelectric (∝ Z³/E³, dominant at diagnostic energies, gives bone–soft-tissue contrast), Compton (dominant >100 keV, source of scatter), Rayleigh (minor coherent), pair production (>1.022 MeV only)", cites: ["BJA Educ 2016 Radiation"] },
+        { text: "Four photon interactions: photoelectric (∝ Z³/E³, dominant at diagnostic energies, gives bone–soft-tissue contrast), Compton (dominant >100 keV, source of scatter), Rayleigh (minor coherent), pair production (>1.022 MeV only)", cites: ["BJA Educ Radiation 2016"] },
         { text: "Units: activity = becquerel (Bq); absorbed dose = gray (Gy, J/kg); equivalent dose = sievert (Sv) = Gy × wR; effective dose = Sv × tissue weighting factors", cites: ["ICRP 103"] },
         { text: "ALARA = As Low As Reasonably Achievable. Three pillars: TIME (less exposure), DISTANCE (inverse-square law — doubling distance quarters dose), SHIELDING (0.5 mm Pb apron attenuates ~95% of scatter at 70 kVp)", cites: ["RCR Radiation 2020"] },
         { text: "IRR 2017 occupational limit: 20 mSv/year (avg over 5 years, max 50 mSv/year). Public: 1 mSv/year. Declared-pregnant worker: 1 mSv to the foetus over remainder of pregnancy", cites: ["IRR 2017"] },
         { text: "Stochastic effects (cancer, hereditary): no threshold, probability rises with dose. Deterministic effects (cataract, skin erythema, marrow suppression): have thresholds — ICRP 2011 lens threshold lowered to 0.5 Gy cumulative", cites: ["IR(ME)R 2017"] },
-        { text: "Approximate effective doses: CXR 0.02 mSv · head CT 2 mSv · CTPA 5–10 mSv · abdomen CT 10 mSv · UK background 2.7 mSv/year", cites: ["BJA Educ 2016 Radiation"] },
+        { text: "Approximate effective doses: CXR 0.02 mSv · head CT 2 mSv · CTPA 5–10 mSv · abdomen CT 10 mSv · UK background 2.7 mSv/year", cites: ["BJA Educ Radiation 2016"] },
         { text: "Anaesthetist's PPE for fluoroscopy: 0.5 mm Pb wrap-around apron, 0.5 mm thyroid shield, leaded glasses (cataract prevention), and where possible a ceiling-suspended lead screen — plus collar dosimeter outside apron", cites: ["ICRP 103"] },
       ]}
       coreConcepts={

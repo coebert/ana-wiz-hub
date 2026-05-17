@@ -24,13 +24,13 @@ const VascularAnaesthesiaTopic = () => {
       ]}
       keyPoints={[
         { text: "Aortic cross-clamping: ↑ SVR/afterload above clamp; ischaemia below. Unclamp → ↓ SVR, acidosis, ↑ K⁺ — pre-load before release", cites: ["ESVS AAA 2019"] },
-        { text: "Ruptured AAA: permissive hypotension (SBP 70–80) until aortic control. Massive transfusion protocol", cites: ["BJA Educ 2015 CEA"] },
-        { text: "CEA: GALA trial — no outcome difference GA vs regional; awake neurological exam under cervical plexus block remains the gold-standard cerebral monitor", cites: ["BJA Educ 2016 AAA"] },
+        { text: "Ruptured AAA: permissive hypotension (SBP 70–80) until aortic control. Massive transfusion protocol", cites: ["BJA Educ CEA 2015"] },
+        { text: "CEA: GALA trial — no outcome difference GA vs regional; awake neurological exam under cervical plexus block remains the gold-standard cerebral monitor", cites: ["BJA Educ AAA 2016"] },
         { text: "CEA shunting: Cochrane (2014) found no benefit of routine over selective shunting — awake testing gives the lowest shunt rate (~10–15%)", cites: ["RCRI"] },
         { text: "Cervical plexus block: intermediate (sub-SCM, ultrasound-guided) now preferred over deep — equivalent surgical conditions with far fewer phrenic/RLN/intravertebral complications", cites: ["GALA 2008"] },
         { text: "Post-CEA: tight BP control (SBP <140–160) for days to prevent cerebral hyperperfusion syndrome — peaks days 3–7", cites: ["ESVS AAA 2019"] },
-        { text: "Vascular patients have high cardiac risk — Lee's RCRI, CPET (AT <11 = high risk), continue statins/beta-blockers perioperatively", cites: ["BJA Educ 2015 CEA"] },
-        { text: "Ischaemia-reperfusion: K⁺ release, myoglobin, lactate washout can cause arrhythmias, AKI, ARDS", cites: ["BJA Educ 2016 AAA"] },
+        { text: "Vascular patients have high cardiac risk — Lee's RCRI, CPET (AT <11 = high risk), continue statins/beta-blockers perioperatively", cites: ["BJA Educ CEA 2015"] },
+        { text: "Ischaemia-reperfusion: K⁺ release, myoglobin, lactate washout can cause arrhythmias, AKI, ARDS", cites: ["BJA Educ AAA 2016"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL] },

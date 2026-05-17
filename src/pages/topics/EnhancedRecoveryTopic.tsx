@@ -23,7 +23,7 @@ const keyPoints = [
   { text: "Prehabilitation (4–6 weeks structured exercise) and IV iron for anaemia (Hb target > 130 men / > 120 women) reduce complications and transfusion", cites: ["Ljungqvist 2017", "Hughes 2014"] },
   { text: "ERAS Cardiac (2019) and arthroplasty (2020) protocols extend benefits beyond GI surgery; TXA + spinal anaesthesia + LIA are pillars in joint replacement", cites: ["ERAS Cardiac 2019", "ERAS Arthroplasty 2020"] },
   { text: "Apfel PONV score (female, non-smoker, PONV history, opioids) — multimodal prophylaxis for ≥ 2 risk factors", cites: ["ERAS Colorectal 2018"] },
-  { text: "Implementation requires MDT champion, dedicated coordinator, audit (EIAS), and order-set bundles — NHS programme saved £70–90 m/yr in bed-days", cites: ["NHS ERPP 2013", "POWER 2019"] },
+  { text: "Implementation requires MDT champion, dedicated coordinator, audit (EIAS), and order-set bundles — NHS programme saved £70–90 m/yr in bed-days", cites: ["NHS EPRR 2013", "POWER 2019"] },
 
 ];
 
@@ -270,7 +270,7 @@ const EnhancedRecoveryTopic = () => {
             </div>
             <div className="mt-3 p-3 rounded-lg border-l-4 border-perioperative bg-perioperative/5">
               <p className="text-sm text-foreground">
-                <span className="font-semibold">Health-economic impact:</span> The NHS Enhanced Recovery Partnership Programme (2009–13)<InlineRef topicId="enhanced-recovery" refLabel="NHS ERPP 2013" /> demonstrated mean LOS reduction of 1.6–2.6 days across colorectal, urological, gynaecological and orthopaedic surgery, with estimated annual savings of <strong>£70–90 million</strong> in bed-days alone, without increased readmission or mortality.
+                <span className="font-semibold">Health-economic impact:</span> The NHS Enhanced Recovery Partnership Programme (2009–13)<InlineRef topicId="enhanced-recovery" refLabel="NHS EPRR 2013" /> demonstrated mean LOS reduction of 1.6–2.6 days across colorectal, urological, gynaecological and orthopaedic surgery, with estimated annual savings of <strong>£70–90 million</strong> in bed-days alone, without increased readmission or mortality.
               </p>
             </div>
           </DiagramSection>

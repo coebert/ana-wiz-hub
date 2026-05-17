@@ -62,7 +62,7 @@ const workedExamples: WorkedExample[] = [
         accept permissive hypercapnia.
       </>
     ),
-    cites: ["BJA Educ 2017 Asthma"],
+    cites: ["BJA Educ Asthma 2017"],
   },
   {
     title: "Sedaconda for refractory bronchospasm",
@@ -94,11 +94,11 @@ const workedExamples: WorkedExample[] = [
 const keyPoints = [
   { text: "Dynamic hyperinflation and auto-PEEP cause cardiovascular collapse in ventilated bronchospasm — disconnect the ventilator if PEA arrest occurs", cites: ["BTS/SIGN Asthma 2019"] },
   { text: "Ventilation strategy: low RR, prolonged I:E ratio, high inspiratory flow, permissive hypercapnia — minimising gas trapping is the priority", cites: ["GOLD COPD 2023"] },
-  { text: "NIV is first-line for hypercapnic respiratory failure in COPD (pH 7.25–7.35) but NOT for acute asthma", cites: ["BJA Educ 2017 Asthma"] },
+  { text: "NIV is first-line for hypercapnic respiratory failure in COPD (pH 7.25–7.35) but NOT for acute asthma", cites: ["BJA Educ Asthma 2017"] },
   { text: "Normal or rising PaCO₂ in acute asthma is a life-threatening sign — the patient is tiring", cites: ["GINA 2023"] },
   { text: "Ketamine is the ideal induction agent for intubation in bronchospasm (bronchodilator + haemodynamic stability)", cites: ["BTS/SIGN Asthma 2019"] },
   { text: "Volatile agents via Sedaconda/AnaConDa provide potent bronchodilation in refractory bronchospasm — rescue therapy when conventional treatment fails", cites: ["GOLD COPD 2023"] },
-  { text: "Sedaconda uses a carbon reflector to recapture ~90% of exhaled volatile, allowing delivery via standard ICU ventilators without an anaesthetic machine", cites: ["BJA Educ 2017 Asthma"] },
+  { text: "Sedaconda uses a carbon reflector to recapture ~90% of exhaled volatile, allowing delivery via standard ICU ventilators without an anaesthetic machine", cites: ["BJA Educ Asthma 2017"] },
   { text: "Mucus plugging is the major cause of death in fatal asthma — corticosteroids and bronchoscopic lavage address this", cites: ["GINA 2023"] },
   { text: "COPD O₂ target 88–92%; asthma O₂ target 94–98% — controlled oxygen is critical in COPD to avoid worsening hypercapnia", cites: ["BTS/SIGN Asthma 2019"] },
 ];
