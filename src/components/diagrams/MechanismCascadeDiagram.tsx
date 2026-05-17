@@ -66,6 +66,7 @@ export const MechanismCascadeDiagram = ({
   // shifts the layout and makes scrolling judder. Users can press Play to start.
   const [playing, setPlaying] = useState(false);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const panelRef = useRef<HTMLDivElement | null>(null);
   const baseId = useId();
   const tablistId = `${baseId}-steps`;
   const panelId = `${baseId}-panel`;
@@ -84,6 +85,46 @@ export const MechanismCascadeDiagram = ({
     );
     return () => window.clearInterval(id);
   }, [playing, prefersReducedMotion, steps.length]);
+
+  // --- Dev-only perf instrumentation (no-op in production builds) ---
+  useEffect(() => {
+    cascadePerf.register(baseId, title);
+    return () => cascadePerf.unregister(baseId);
+  }, [baseId, title]);
+
+  useEffect(() => {
+    cascadePerf.recordStepChange(baseId);
+  }, [baseId, step]);
+
+  useEffect(() => {
+    if (!cascadePerf.enabled) return;
+    cascadePerf.setPlaying(baseId, playing);
+    if (!playing) return;
+    const start = performance.now();
+    return () => {
+      cascadePerf.addPlayingMs(baseId, performance.now() - start);
+      cascadePerf.setPlaying(baseId, false);
+    };
+  }, [baseId, playing]);
+
+  useEffect(() => {
+    if (!cascadePerf.enabled) return;
+    const el = panelRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    let lastH = el.getBoundingClientRect().height;
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const h = entry.contentRect.height;
+        const delta = h - lastH;
+        if (Math.abs(delta) > 0.5) {
+          cascadePerf.recordShift(baseId, delta);
+          lastH = h;
+        }
+      }
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [baseId]);
 
   const accentVar = `hsl(var(--${accent}))`;
   const current = steps[step];
