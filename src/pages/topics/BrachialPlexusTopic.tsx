@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
+import { Cite } from "@/components/Cite";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { brachialPlexusQuestions } from "@/data/quizzes";
 import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
