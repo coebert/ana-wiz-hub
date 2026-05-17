@@ -246,6 +246,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2014", citation: "Sahinovic MM, Struys MMRF, Absalom AR. Clinical pharmacokinetics and pharmacodynamics of propofol. Clin Pharmacokinet. 2018;57(12):1539-1558.", url: "https://doi.org/10.1007/s40262-018-0672-3" },
     { label: "Peck & Hill Ch.5", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 5: Intravenous Anaesthetic Agents." },
     { label: "Miller Ch.26", citation: "Miller RD, ed. Miller's Anesthesia. 9th ed. Elsevier; 2020. Chapter 26: Intravenous Anaesthetics." },
+    { label: "AAGBI 2018", citation: "Nimmo AF et al. Guidelines for the safe practice of total intravenous anaesthesia (TIVA). Association of Anaesthetists / SIVA. Anaesthesia. 2019;74(2):211-224.", url: "https://doi.org/10.1111/anae.14428" },
   ],
   "volatile-agents": [
     { label: "BJA Educ 2014", citation: "Khan KS, Hayes I, Buggy DJ. Pharmacology of anaesthetic agents II: inhalation anaesthetic agents. BJA Education. 2014;14(3):106-111.", url: "https://doi.org/10.1093/bjaceaccp/mkt038" },
@@ -261,6 +262,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2015", citation: "Appiah-Ankam J, Hunter JM. Pharmacology of neuromuscular blocking drugs. BJA Education. 2004;4(1):2-7.", url: "https://doi.org/10.1093/bjaceaccp/mkh002" },
     { label: "Peck & Hill Ch.7", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 7: Neuromuscular Blocking Drugs." },
     { label: "Fourth National Audit Project", citation: "Harper NJN et al. Sugammadex and rocuronium. Anaesthesia. 2009;64 Suppl 1:16-21.", url: "https://doi.org/10.1111/j.1365-2044.2008.05866.x" },
+    { label: "Peck & Hill Ch.10", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 10: Drugs Acting on the Neuromuscular Junction." },
   ],
   "local-anaesthetics": [
     { label: "BJA Educ 2015", citation: "Taylor A, McLeod G. Basic pharmacology of local anaesthetics. BJA Education. 2020;20(2):34-41.", url: "https://doi.org/10.1016/j.bjae.2019.10.002" },
@@ -281,6 +283,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2015", citation: "Keeling D et al. Peri-operative management of anticoagulation. BJA Education. 2016;16(9):307-312.", url: "https://doi.org/10.1093/bjaed/mkw003" },
     { label: "NICE NG89", citation: "NICE. Venous thromboembolism in over 16s (NG89). 2018.", url: "https://www.nice.org.uk/guidance/ng89" },
     { label: "BSH 2011", citation: "Baglin TP et al. Guidelines on oral anticoagulation (warfarin): 4th edition. Br J Haematol. 2011;154(3):311-324.", url: "https://doi.org/10.1111/j.1365-2141.2011.08753.x" },
+    { label: "AAGBI 2016", citation: "Association of Anaesthetists & Regional Anaesthesia UK. Regional anaesthesia and patients with abnormalities of coagulation. AAGBI; 2013 (updated 2016). Anaesthesia. 2013;68(9):966-972.", url: "https://doi.org/10.1111/anae.12359" },
   ],
   "antimicrobials-pharm": [
     { label: "Peck & Hill Ch.14", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 14: Antimicrobial Agents." },
