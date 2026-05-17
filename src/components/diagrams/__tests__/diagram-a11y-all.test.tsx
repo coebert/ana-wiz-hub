@@ -220,25 +220,25 @@ const PROP_REQUIRED: Record<string, string> = {
  * from this set.
  */
 const KNOWN_LUCIDE_LEAKS = new Set<string>([
-  "ADMECascadeDiagram",
-  "ALFCerebralOedemaDiagram",
+  
+  
   "AdrenalCrisisAnimation",
   "AlbuminFluidShiftDiagram",
-  "AnaphylaxisCascadeDiagram",
+  
   "AorticDicroticNotchDiagram",
   "ArrestTimeWindowWidget",
   "BPControlLoopDiagram",
   "AdrenalCrisisAnimation",
   "AlbuminFluidShiftDiagram",
-  "AnaphylaxisCascadeDiagram",
+  
   "AorticDicroticNotchDiagram",
   "ArrestTimeWindowWidget",
   "BradyarrhythmiaDiagram",
   "BurnResuscitationDiagram",
-  "BurnShockPathophysiologyDiagram",
+  
   "BurnsIcuCaseStepper",
   "CICODrillAnimation",
-  "CPPSpiralDiagram",
+  
   "CTScannerDiagram",
   "Cat1RSIAnimation",
   "CellSalvageAnimatedDiagram",
@@ -249,10 +249,10 @@ const KNOWN_LUCIDE_LEAKS = new Set<string>([
   "EmergencyLaparotomyBundleDiagram",
   "EmergencyRSIDiagram",
   "EndocrineSymptomTriage",
-  "GlycocalyxSheddingCascadeDiagram",
+  
   "GoalDirectedTherapyAnimation",
-  "HAIPathogenesisCascadeDiagram",
-  "HPAAxisSuppressionDiagram",
+  
+  
   "HeartBlockDiagram",
   "HygrometersDiagram",
   "HyponatraemiaWorkupDiagram",
@@ -266,20 +266,20 @@ const KNOWN_LUCIDE_LEAKS = new Set<string>([
   "NeuroDiseasePathophysDiagram",
   "OLVTroubleshootingDiagram",
   "OpioidSignallingCascadeAnimation",
-  "PHPathophysiologyDiagram",
-  "PancreatitisAutodigestionDiagram",
+  
+  
   "PancreatitisEvolutionTimeline",
   "ParacetamolNomogramDiagram",
   "ParklandCalculator",
   "PatientPositioningMechanisms",
   "PneumotachographDiagram",
-  "PostCardiacArrestSyndromeDiagram",
+  
   "RRTCircuitFlowDiagram",
-  "RaisedICPCascadeDiagram",
+  
   "RefeedingRiskCalculatorDiagram",
   "RefeedingSyndromeAnimation",
   "SedationDeliveryProfilesDiagram",
-  "SepsisHostResponseDiagram",
+  
   "SinogramFBPWalkthrough",
   "TachyarrhythmiaDiagram",
   "TheatreZoningDiagram",
