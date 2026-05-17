@@ -181,9 +181,11 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
                     }`}
                   >
                     <Icon className={`h-4 w-4 shrink-0 ${sectionColors[topic.section]}`} />
-                    <div className="min-w-0">
+                    <div className="min-w-0 flex-1">
                       <p className="text-sm font-medium text-foreground truncate">{topic.title}</p>
-                      <p className="text-xs text-muted-foreground truncate">{topic.description}</p>
+                      <p className="text-xs text-muted-foreground truncate">
+                        {snippets.get(topic.id) ?? topic.description}
+                      </p>
                     </div>
                     {!topic.available && (
                       <span className="ml-auto text-xs text-muted-foreground shrink-0">Soon</span>
