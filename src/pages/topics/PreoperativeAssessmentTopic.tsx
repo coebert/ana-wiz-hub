@@ -69,12 +69,10 @@ const PreoperativeAssessmentTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PO_BK_01"] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PO_BK_01"] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PO_BK_01"] },
       }}
       sectionSources={{
         objectives: ["NICE NG45", "AAGBI 2010", "BJA Educ 2019"],
-        diagrams: ["NICE NG45", "AAGBI 2010"],
         keyPoints: ["NICE NG45", "AAGBI 2010", "BJA Educ 2019"],
       }}
       coreConcepts={

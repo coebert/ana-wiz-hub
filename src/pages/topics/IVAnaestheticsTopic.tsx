@@ -76,12 +76,10 @@ const IVAnaestheticsTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
-        diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
         keyPoints: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2014", "Peck & Hill Ch.5", "Miller Ch.26"],
-        diagrams: ["BJA Educ 2014", "Peck & Hill Ch.5", "Miller Ch.26"],
         keyPoints: ["BJA Educ 2014", "Peck & Hill Ch.5", "Miller Ch.26"],
         workedExamples: ["AAGBI 2018", "Peck & Hill Ch.6"],
       }}
