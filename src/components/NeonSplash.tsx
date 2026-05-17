@@ -27,9 +27,14 @@ import brainLogo from "/brain-logo.webp";
 
 const FADE_MS = 900;
 
-// Landing logo's exact resting filter — the crossfade target.
+// Landing logo's resting filter, padded with two zero-radius transparent
+// drop-shadows so the function list length matches neon-flicker's final
+// state (invert, brightness, ds, ds, ds). Matching list lengths are
+// required for CSS to interpolate `filter` smoothly — otherwise the
+// browser falls back to discrete interpolation and the look snaps
+// instead of crossfading.
 const LANDING_FILTER =
-  "invert(1) brightness(2) drop-shadow(0 4px 12px rgba(0,0,0,0.35))";
+  "invert(1) brightness(2) drop-shadow(0 4px 12px rgba(0,0,0,0.35)) drop-shadow(0 0 0 rgba(0,0,0,0)) drop-shadow(0 0 0 rgba(0,0,0,0))";
 
 const NeonSplash = () => {
   const [mounted, setMounted] = useState(false);
