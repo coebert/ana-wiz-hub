@@ -245,6 +245,9 @@ const IcuEndocrineEmergenciesTopic = () => {
                 </p>
               </div>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <ThyroidStormAnimation />
+            </div>
             <GuidelineSources sources={THYROID_SOURCES} />
             </CollapsibleSubsection>
           </ExamSection>
@@ -297,6 +300,9 @@ const IcuEndocrineEmergenciesTopic = () => {
                 </p>
               </div>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <AdrenalCrisisAnimation />
+            </div>
             <GuidelineSources sources={ADRENAL_PITUITARY_SOURCES} />
             </CollapsibleSubsection>
           </ExamSection>
@@ -316,6 +322,14 @@ const IcuEndocrineEmergenciesTopic = () => {
                   <p className="text-sm text-muted-foreground mt-1">{it.detail}</p>
                 </div>
               ))}
+            </div>
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <EndocrineEmergencyAlgorithms />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <EndocrineEmergencyDrugs />
+              </div>
             </div>
             <GuidelineSources sources={PITFALLS_SOURCES} />
             </CollapsibleSubsection>
