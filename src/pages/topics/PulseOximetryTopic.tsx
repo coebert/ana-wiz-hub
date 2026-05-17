@@ -3,6 +3,7 @@ import { pulseOximetryQuiz } from "@/data/quizzes";
 import { AbsorptionSpectraDiagram } from "@/components/diagrams/AbsorptionSpectraDiagram";
 import { CapnographyDiagram } from "@/components/diagrams/CapnographyDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply the Beer-Lambert law to explain how pulse oximetry derives SpO₂ from red and infrared absorption.",
@@ -244,6 +245,16 @@ const PulseOximetryTopic = () => {
               <CapnographyDiagram />
             </div>
           </section>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Beer–Lambert with two wavelengths (660 nm red, 940 nm IR); ratio of pulsatile (AC) to baseline (DC) absorbances gives SpO₂.",
+              "Carboxyhaemoglobin reads as oxy-Hb → falsely high SpO₂; methaemoglobin tends to drive SpO₂ towards 85%.",
+              "Motion, low perfusion, nail polish (blue/black), bright ambient light and venous pulsation all cause errors.",
+              "Capnography: phase I (dead-space), II (mixed), III (alveolar plateau), IV (inspiration). Rising baseline = rebreathing; shark-fin slope = obstruction.",
+              "Sudden loss of ETCO₂ in a ventilated patient = circuit disconnect, oesophageal intubation, cardiac arrest or massive PE until proven otherwise.",
+            ]}
+          />
         </div>
       }
     />

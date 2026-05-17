@@ -7,6 +7,7 @@ import { AndrewsIsothermsDiagram } from "@/components/diagrams/AndrewsIsothermsD
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { gasLawsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "State Boyle's, Charles', Gay-Lussac's, Dalton's and Henry's laws and combine them as PV = nRT.",
@@ -504,6 +505,16 @@ const GasLawsTopic = () => {
               </table>
             </SynthesisBlock>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Boyle's, Charles' and Gay-Lussac's laws combine into the ideal gas equation PV = nRT.",
+              "Dalton's law underpins the alveolar gas equation and FiO₂ calculations at altitude.",
+              "Henry's law explains gas solubility (blood–gas partition coefficient) and decompression sickness.",
+              "Adiabatic compression heats a gas (cylinder filling); adiabatic expansion cools it (cryotherapy, cylinder cooling).",
+              "N₂O cylinder gauge reflects vapour pressure of the liquid phase, not contents — only an empty cylinder reads zero accurately.",
+            ]}
+          />
         </>
       }
       keyPoints={[

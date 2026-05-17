@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { temperatureMeasurementQuiz } from "@/data/quizzes";
 import TemperatureMeasurementDiagram from "@/components/diagrams/TemperatureMeasurementDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Explain the Seebeck effect and the construction of thermocouples.",
@@ -160,6 +161,16 @@ const TemperatureMeasurementTopic = () => {
             </p>
           </div>
         </div>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Thermocouples: Seebeck effect, fastest response, no battery — best for nasopharyngeal/oesophageal probes.",
+              "Thermistors: NTC semiconductor, very sensitive but non-linear — used in PA-catheter thermodilution.",
+              "Platinum resistance (Pt100): linear, accurate, slow — laboratory standard, not bedside.",
+              "Infrared tympanic uses Stefan–Boltzmann (P ∝ T⁴); cerumen and poor seal cause falsely low readings.",
+              "Core-peripheral gradient >2 °C suggests significant vasoconstriction; redistribution dominates the first hour of GA.",
+            ]}
+          />
         </>
       }
     />

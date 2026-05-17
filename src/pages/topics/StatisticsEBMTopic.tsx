@@ -7,6 +7,7 @@ import NormalDistributionDiagram from "@/components/diagrams/NormalDistributionD
 import SkewDistributionDiagram from "@/components/diagrams/SkewDistributionDiagram";
 import CentralTendencyShiftDiagram from "@/components/diagrams/CentralTendencyShiftDiagram";
 import BoxPlotDiagram from "@/components/diagrams/BoxPlotDiagram";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Distinguish RCT, cohort, case-control, cross-sectional and ecological designs and their measures of effect",
@@ -614,6 +615,16 @@ const StatisticsEBMTopic = () => {
               </p>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Parametric tests assume normal distribution and equal variance; non-parametric tests (Mann-Whitney, Wilcoxon) do not.",
+              "p<0.05 means <5% probability of the observed (or more extreme) result under the null hypothesis — it is not the probability the null is true.",
+              "Type I error (α) = false positive; Type II (β) = false negative; power = 1 − β.",
+              "Sensitivity = true positives / all disease; specificity = true negatives / all healthy. PPV/NPV depend on prevalence.",
+              "NNT = 1 / absolute risk reduction; odds ratios approximate relative risk only when outcomes are rare.",
+            ]}
+          />
         </>
       }
     />

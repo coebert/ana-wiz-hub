@@ -8,6 +8,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { depthOfAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Explain the rationale for processed EEG monitoring with reference to NAP5, NICE and AAGBI guidance.",
@@ -380,6 +381,16 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
           <li><strong>Don't replace clinical assessment</strong>: end-tidal volatile concentration, MAC, autonomic signs all complement processed EEG.</li>
         </ul>
       </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "BIS is a dimensionless 0–100 scale derived from processed EEG; 40–60 target for general anaesthesia.",
+              "Suppression ratio quantifies burst suppression; SEF₉₅ is the frequency below which 95% of EEG power lies.",
+              "Ketamine and N₂O can paradoxically raise BIS despite deep anaesthesia; EMG contamination can inflate values.",
+              "Processed-EEG monitors reduce awareness in TIVA without NM block, but evidence is weakest with volatile + ETAG monitoring.",
+              "Always interpret in clinical context — never titrate purely to a number.",
+            ]}
+          />
         </>
       }
     />

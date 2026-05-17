@@ -5,6 +5,7 @@ import MRIPhysicsDiagram from "@/components/diagrams/MRIPhysicsDiagram";
 import MRISuiteFloorPlanDiagram from "@/components/diagrams/MRISuiteFloorPlanDiagram";
 import { mriPhysicsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Explain how nuclear spin, the Larmor equation (ω₀ = γB₀) and resonance generate the MR signal",
@@ -148,6 +149,16 @@ const MRIPhysicsTopic = () => {
               </p>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "MRI uses nuclear precession of ¹H in a strong static field (1.5 T or 3 T) — there is no ionising radiation.",
+              "T1 (longitudinal) recovery — fat bright; T2 (transverse) decay — fluid bright.",
+              "Zone IV is the magnet room; never bring ferromagnetic items inside. The field is always on, even when 'scanning' is not.",
+              "Quench releases liquid helium → oxygen-displacing cold gas; activate emergency vent and evacuate.",
+              "Anaesthetic risks: projectile injury, RF burns from looped cables/ECG leads, monitor compatibility, and pacemaker/implant safety check.",
+            ]}
+          />
         </>
       }
     />

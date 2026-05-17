@@ -7,6 +7,7 @@ import { RCDDiagram } from "@/components/diagrams/RCDDiagram";
 import { MicroshockDiagram } from "@/components/diagrams/MicroshockDiagram";
 import { DiathermyDiagram } from "@/components/diagrams/DiathermyDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Define macroshock and microshock and quote the threshold currents that cause perception, let-go, respiratory arrest and VF.",
@@ -228,6 +229,16 @@ const ElectricalSafetyTopic = () => {
           <DefibrillatorCapacitorDiagram />
         </section>
           <ElectricalSafetyDiagram />
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Microshock (<100 µA) via a pacing wire can induce VF; macroshock requires mA-level currents crossing the chest.",
+              "Class I equipment relies on an earth wire; Class II uses double insulation; Class III runs on safety extra-low voltage.",
+              "Type CF equipment has the lowest leakage current and is mandatory for direct cardiac contact (e.g. PA catheter).",
+              "Diathermy: cutting uses a continuous waveform; coagulation uses pulsed/damped. Bipolar avoids return-pad burns.",
+              "Pacemaker patients: use bipolar diathermy, short bursts, return pad away from the device, and have a magnet/external pacer available.",
+            ]}
+          />
         </div>
       }
     />

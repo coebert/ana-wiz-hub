@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import DefibrillationPacingDiagram from "@/components/diagrams/DefibrillationPacingDiagram";
 import { defibrillationPacingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Compare monophasic and biphasic defibrillation waveforms in terms of energy, efficacy and myocardial injury",
@@ -170,6 +171,16 @@ const DefibrillationPacingTopic = () => {
               </p>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Biphasic waveforms deliver lower peak current at equivalent efficacy — fewer skin burns and less myocardial stunning.",
+              "Transthoracic impedance falls with paddle/pad size, conductive gel, expiration and firm contact.",
+              "Pacemaker code: chamber paced / sensed / response / rate modulation / multisite (e.g. DDDR).",
+              "EMI risk is highest with monopolar diathermy near the generator; an applied magnet typically converts to asynchronous (DOO/VOO), not 'off'.",
+              "ICD magnet usually suspends shock therapy without affecting pacing — always confirm with manufacturer's chart.",
+            ]}
+          />
         </>
       }
     />
