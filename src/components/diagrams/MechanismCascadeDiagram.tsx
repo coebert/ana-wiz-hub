@@ -60,7 +60,10 @@ export const MechanismCascadeDiagram = ({
   centerLabel,
 }: MechanismCascadeDiagramProps) => {
   const [step, setStep] = useState(0);
-  const [playing, setPlaying] = useState(true);
+  // Default to paused: auto-advancing changes the description-panel height every
+  // ~1.8s, which on mobile (single-column stack with several cascades on a page)
+  // shifts the layout and makes scrolling judder. Users can press Play to start.
+  const [playing, setPlaying] = useState(false);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const baseId = useId();
   const tablistId = `${baseId}-steps`;
@@ -273,10 +276,11 @@ export const MechanismCascadeDiagram = ({
             role="tabpanel"
             aria-labelledby={`${tablistId}-tab-${step}`}
             tabIndex={0}
-            className="rounded-lg border p-3 flex flex-col justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+            className="rounded-lg border p-3 flex flex-col justify-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 min-h-[14rem] sm:min-h-[16rem]"
             style={{
               borderColor: `hsl(var(--${accent}) / 0.35)`,
               backgroundColor: `hsl(var(--${accent}) / 0.06)`,
+              contain: "layout paint",
             }}
           >
             <p
