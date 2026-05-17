@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { burnsPlasticsQuestions } from "@/data/quizzes";
@@ -65,7 +66,7 @@ const BurnsPlasticsTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="assessment" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Burns Assessment & Classification</h2>
+            <CollapsibleSubsection title="Burns Assessment & Classification" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Total body surface area (TBSA) is estimated using the <strong className="text-foreground">Wallace Rule of Nines</strong> (adult) or the <strong className="text-foreground">Lund & Browder chart</strong> (more accurate, especially in children where head surface area is proportionally larger). The patient's palm (including fingers) ≈ 1% TBSA — useful for small or scattered burns.
             </p>
@@ -81,10 +82,11 @@ const BurnsPlasticsTopic = () => {
             <div className="mt-4">
               <BurnDepthDiagram />
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="pathophysiology" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Burns Pathophysiology</h2>
+            <CollapsibleSubsection title="Burns Pathophysiology">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Burns &gt;20% TBSA trigger a <strong className="text-foreground">systemic inflammatory response</strong> with massive capillary leak, third-spacing, and hypovolaemic shock. The response is biphasic:
             </p>
@@ -110,10 +112,11 @@ const BurnsPlasticsTopic = () => {
                 </ul>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="fluids" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Fluid Resuscitation</h2>
+            <CollapsibleSubsection title="Fluid Resuscitation">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Parkland Formula</h3>
               <p className="text-sm text-muted-foreground mb-2">
@@ -127,10 +130,11 @@ const BurnsPlasticsTopic = () => {
                 <li>Beware "fluid creep" — excessive resuscitation causes abdominal/limb compartment syndrome</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="airway" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Airway Burns & Inhalational Injury</h2>
+            <CollapsibleSubsection title="Airway Burns & Inhalational Injury">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Inhalational injury triples mortality in burn patients. Direct thermal injury is usually supraglottic (the larynx is an effective heat exchanger). Chemical injury from smoke/toxin inhalation affects the lower airways and parenchyma.
             </p>
@@ -154,10 +158,11 @@ const BurnsPlasticsTopic = () => {
                 <li><strong className="text-foreground">Cyanide poisoning</strong>: from combustion of plastics. Causes lactic acidosis despite adequate O₂. Treat with hydroxocobalamin (Cyanokit) 70 mg/kg IV</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="pharmacology" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Pharmacological Considerations</h2>
+            <CollapsibleSubsection title="Pharmacological Considerations">
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Suxamethonium & Burns</h3>
               <p className="text-sm text-muted-foreground">
@@ -173,10 +178,11 @@ const BurnsPlasticsTopic = () => {
                 <li><strong className="text-foreground">Albumin</strong>: ↓ levels increase free drug fraction of highly protein-bound drugs</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="surgery" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Anaesthesia for Burns Surgery</h2>
+            <CollapsibleSubsection title="Anaesthesia for Burns Surgery">
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Debridement & Grafting</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
@@ -193,10 +199,11 @@ const BurnsPlasticsTopic = () => {
                 Circumferential full-thickness burns cause constriction → distal ischaemia (limbs) or respiratory compromise (chest). Escharotomy is an emergency procedure that may be done at the bedside. Fasciotomy is needed if compartment pressures remain elevated.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="plastics" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Anaesthesia for Plastic & Reconstructive Surgery</h2>
+            <CollapsibleSubsection title="Anaesthesia for Plastic & Reconstructive Surgery">
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Free Flap Surgery</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
@@ -214,6 +221,7 @@ const BurnsPlasticsTopic = () => {
                 Large volumes of dilute LA (lidocaine 0.05–0.1% with adrenaline 1:1,000,000) infiltrated subcutaneously. Used for liposuction. Maximum lidocaine dose with tumescence: up to 35 mg/kg (vs standard 7 mg/kg with adrenaline) due to slow absorption from adipose tissue. Risk of delayed LAST — monitor for up to 18 h.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

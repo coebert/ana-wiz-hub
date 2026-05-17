@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { corticosteroidsQuestions } from "@/data/quizzes";
@@ -130,7 +131,7 @@ const CorticosteroidsTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="pd" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Corticosteroid Pharmacodynamics</h2>
+            <CollapsibleSubsection title="Corticosteroid Pharmacodynamics" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Corticosteroids bind the cytoplasmic glucocorticoid receptor (GR) → nuclear translocation → gene transcription modulation. Therapeutic anti-inflammatory effects are largely <strong>transrepression</strong> (↓ NF-κB, ↓ cytokines, ↓ COX-2, ↓ phospholipase A₂ via lipocortin-1); many side effects come from <strong>transactivation</strong> (gluconeogenesis, Na⁺ retention). A small subset of effects is <strong>non-genomic</strong> and acts within minutes.
             </p>
@@ -138,10 +139,11 @@ const CorticosteroidsTopic = () => {
             <div className="mt-4">
               <HPAAxisSuppressionDiagram />
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="potency" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Steroid potency &amp; duration</h2>
+            <CollapsibleSubsection title="Steroid potency & duration">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead><tr className="border-b border-border">
@@ -159,10 +161,11 @@ const CorticosteroidsTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="cover" exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Perioperative Steroid Cover (AAGBI/AOMRC 2020)</h2>
+            <CollapsibleSubsection title="Perioperative Steroid Cover (AAGBI/AOMRC 2020)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>HPA suppression</strong>: likely if prednisolone ≥ 5 mg/day for &gt; 4 weeks (or equivalent), Cushing's appearance, or recent cessation of long-term steroids</li>
               <li><strong>Minor surgery</strong>: continue usual dose only</li>
@@ -170,10 +173,11 @@ const CorticosteroidsTopic = () => {
               <li><strong>Major surgery</strong>: usual dose + hydrocortisone 100 mg IV at induction then 200 mg/24 h infusion for 24–48 h</li>
               <li><strong>Addisonian crisis</strong>: hypotension refractory to fluids/vasopressors + hypoglycaemia + hyperkalaemia + hyponatraemia → IV hydrocortisone 100 mg stat then 200 mg/24 h</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="insulin" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Insulin Preparations</h2>
+            <CollapsibleSubsection title="Insulin Preparations">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead><tr className="border-b border-border">
@@ -191,16 +195,18 @@ const CorticosteroidsTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="thyroid" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Thyroid Pharmacology</h2>
+            <CollapsibleSubsection title="Thyroid Pharmacology">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Carbimazole</strong>: prodrug of methimazole. Inhibits thyroid peroxidase (iodination/coupling). Takes 4–6 weeks for full effect. Risk: agranulocytosis</li>
               <li><strong>Propylthiouracil (PTU)</strong>: also inhibits peripheral T₄ → T₃ conversion. Used in thyroid storm and first-trimester pregnancy</li>
               <li><strong>Lugol's iodine</strong>: reduces thyroid vascularity pre-surgery (Wolff-Chaikoff effect). Given 10–14 days preoperatively</li>
               <li><strong>Levothyroxine</strong>: T₄ replacement in hypothyroidism. Long half-life (~7 days) — can omit on day of surgery</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="pharmacology"

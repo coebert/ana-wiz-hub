@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { WiggersDiagram } from "@/components/diagrams/WiggersDiagram";
@@ -158,7 +159,7 @@ const CardiacCycleTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction & Curriculum Scope</h2>
+            <CollapsibleSubsection title="Introduction & Curriculum Scope" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               The cardiac cycle encompasses all electrical and mechanical events from the beginning of one
               heartbeat to the beginning of the next. It comprises <strong>systole</strong> (isovolumetric
@@ -166,10 +167,11 @@ const CardiacCycleTopic = () => {
               a heart rate of 70 bpm, the cycle lasts ~860 ms (systole ~300 ms, diastole ~560 ms). As heart
               rate rises, diastole shortens disproportionately, compromising filling and coronary perfusion.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="reference-values" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Normal Pressure & Volume Reference</h2>
+            <CollapsibleSubsection title="Normal Pressure & Volume Reference">
             <p className="text-foreground/90 leading-relaxed mb-3">
               Approximate adult resting values you should be able to quote in the viva.
             </p>
@@ -206,10 +208,11 @@ const CardiacCycleTopic = () => {
                 <p className="text-xs text-foreground/80 mt-1">SVR 800–1200 · PVR 50–150 dyn·s·cm⁻⁵</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="phases" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Phases of the Cardiac Cycle</h2>
+            <CollapsibleSubsection title="Phases of the Cardiac Cycle">
             <div className="space-y-4">
               <div className="rounded-lg border border-border p-4">
                 <h3 className="font-semibold text-foreground">1. Atrial Systole</h3>
@@ -272,10 +275,11 @@ const CardiacCycleTopic = () => {
                 </p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="atrial-waves" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Left Atrial Pressure Waves</h2>
+            <CollapsibleSubsection title="Left Atrial Pressure Waves">
             <p className="text-foreground/90 leading-relaxed">
               The LA pressure trace shows three positive waves and two descents:
             </p>
@@ -286,10 +290,11 @@ const CardiacCycleTopic = () => {
               <li><strong>x descent</strong> — atrial relaxation and descent of the AV ring during ventricular systole</li>
               <li><strong>y descent</strong> — rapid emptying of the atrium when the AV valve opens</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="heart-sounds" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Sounds & Added Sounds</h2>
+            <CollapsibleSubsection title="Heart Sounds & Added Sounds">
             <p className="text-foreground/90 leading-relaxed">
               <strong>S1</strong> is caused by closure of the mitral and tricuspid valves at the onset of
               ventricular systole. It is best heard at the apex. <strong>S2</strong> results from closure of
@@ -302,10 +307,11 @@ const CardiacCycleTopic = () => {
               <li><strong>Wide fixed split S2</strong> — ASD. <strong>Reversed split</strong> — LBBB, severe AS.</li>
               <li><strong>Opening snap</strong> — mitral stenosis. <strong>Ejection click</strong> — bicuspid AV / AS.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="right-heart" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Right Heart Cycle & Ventricular Interdependence</h2>
+            <CollapsibleSubsection title="Right Heart Cycle & Ventricular Interdependence">
             <p className="text-foreground/90 leading-relaxed">
               The right ventricle (RV) follows the same sequence of phases but operates at much lower
               pressures. Key differences relevant to anaesthesia and intensive care:
@@ -317,10 +323,11 @@ const CardiacCycleTopic = () => {
               <li><strong>Afterload-sensitive</strong> — small rises in PVR (hypoxia, hypercapnia, acidosis, PE) markedly reduce RV stroke volume.</li>
               <li><strong>Ventricular interdependence</strong> — shared septum and pericardium mean RV dilation impairs LV filling (acute PE, RV infarct, tamponade).</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="jvp-cvp" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">JVP / CVP Waveform (FFICM)</h2>
+            <CollapsibleSubsection title="JVP / CVP Waveform (FFICM)">
             <p className="text-foreground/90 leading-relaxed">
               The CVP trace reflects right atrial pressure and shares the same a, c, v wave structure as the
               LA trace but is directly visible at the bedside as the JVP. Recognising abnormal waves is an
@@ -344,10 +351,11 @@ const CardiacCycleTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="coronary-perfusion" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_01", "OA_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coronary Perfusion & the Cycle</h2>
+            <CollapsibleSubsection title="Coronary Perfusion & the Cycle">
             <p className="text-foreground/90 leading-relaxed">
               <strong>Left coronary flow occurs predominantly in diastole</strong> because intramyocardial
               pressure during systole exceeds aortic pressure in the subendocardium. RV perfusion occurs
@@ -359,10 +367,11 @@ const CardiacCycleTopic = () => {
               <li>Aortic regurgitation and severe hypotension lower diastolic pressure and CPP.</li>
               <li>LV hypertrophy raises LVEDP and intramural pressure, predisposing to subendocardial ischaemia.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="sv-determinants" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Determinants of Stroke Volume & Cardiac Output</h2>
+            <CollapsibleSubsection title="Determinants of Stroke Volume & Cardiac Output">
             <div className="grid md:grid-cols-2 gap-4">
               <div className="rounded-lg border border-border p-4">
                 <h3 className="font-semibold text-foreground">Preload</h3>
@@ -395,10 +404,11 @@ const CardiacCycleTopic = () => {
                 </p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diastolic-function" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Diastolic Function</h2>
+            <CollapsibleSubsection title="Diastolic Function">
             <p className="text-foreground/90 leading-relaxed">
               Diastole has four sub-phases: isovolumetric relaxation, rapid filling, diastasis and atrial
               systole. Active relaxation (lusitropy) is ATP-dependent (SERCA reuptake of Ca²⁺) and is
@@ -410,10 +420,11 @@ const CardiacCycleTopic = () => {
               <li><strong>Grade III (restrictive)</strong> — E/A &gt; 2, short DT, high LA pressure.</li>
               <li>Anaesthetic implications: maintain sinus rhythm, avoid tachycardia, optimise preload, treat ischaemia, avoid abrupt afterload changes.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="applied-pathophysiology" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Applied Pathophysiology</h2>
+            <CollapsibleSubsection title="Applied Pathophysiology">
             <div className="overflow-x-auto rounded-lg border border-border">
               <table className="w-full text-sm">
                 <thead className="bg-secondary/50">
@@ -436,16 +447,18 @@ const CardiacCycleTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="invasive-waveforms" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Invasive Waveform Correlations</h2>
+            <CollapsibleSubsection title="Invasive Waveform Correlations">
             <ul className="space-y-2 text-sm text-foreground/80">
               <li><strong>Arterial line</strong> — upstroke = rapid ejection; dicrotic notch = aortic valve closure (end systole); area under systolic portion ∝ stroke volume; slope reflects contractility; downstroke reflects SVR and compliance.</li>
               <li><strong>CVP</strong> — direct visualisation of a, c, v waves and x, y descents; useful in arrhythmia (cannon a), TR (cv wave) and tamponade (blunted y).</li>
               <li><strong>PA catheter</strong> — RA → RV (square root, large pulse pressure) → PA (diastolic step-up, dicrotic notch) → PCWP (a, c, v waves like LA, slightly delayed).</li>
               <li><strong>Pulse pressure variation (PPV)</strong> — reflects preload responsiveness in ventilated patients (PPV &gt; 13% suggests fluid responsiveness).</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

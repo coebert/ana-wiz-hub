@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -110,26 +111,28 @@ const MaternalPhysiologyTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Pregnancy induces profound physiological adaptations across every organ system to meet the metabolic
               demands of the growing fetus and prepare for delivery. These changes have major implications for
               anaesthetic management, drug pharmacokinetics, and perioperative risk.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="timeline" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Physiological Change Timeline</h2>
+            <CollapsibleSubsection title="Physiological Change Timeline">
             <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
               Scrub or play through gestation to see when each adaptation appears, peaks, and resolves. Bars span the
               gestational window during which a change is clinically appreciable; ringed dots mark the typical peak.
               Filter by organ system to focus your revision.
             </p>
             <PregnancyTimelineDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="cardiovascular" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiovascular Changes</h2>
+            <CollapsibleSubsection title="Cardiovascular Changes">
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { label: "Cardiac Output", value: "↑ 30–50% by 28 weeks (peaks early 3rd trimester); further 50% in labour, peak immediately post-partum." },
@@ -149,10 +152,11 @@ const MaternalPhysiologyTopic = () => {
               <strong>Left uterine displacement</strong> (15° tilt or manual displacement) is essential from 20 weeks
               onwards during supine positioning to prevent aortocaval compression syndrome.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="respiratory" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Respiratory Changes</h2>
+            <CollapsibleSubsection title="Respiratory Changes">
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { label: "Minute Ventilation", value: "↑ 50% (↑ tidal volume, rate largely unchanged)." },
@@ -172,10 +176,11 @@ const MaternalPhysiologyTopic = () => {
               The combination of <strong>↑ O₂ consumption</strong> and <strong>↓ FRC</strong> means the parturient
               desaturates rapidly during apnoea — reinforcing the critical importance of pre-oxygenation before RSI.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="haematology" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OB_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haematological Changes</h2>
+            <CollapsibleSubsection title="Haematological Changes">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li>
                 <strong>Plasma volume</strong> ↑ 45% vs red cell mass ↑ 20% → <strong>physiological anaemia of pregnancy</strong>{" "}
@@ -194,10 +199,11 @@ const MaternalPhysiologyTopic = () => {
                 <strong>Platelet count</strong> mildly ↓ (gestational thrombocytopenia ~100–150 × 10⁹/L in ~8% of pregnancies).
               </li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="gi-airway" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gastrointestinal & Airway Changes</h2>
+            <CollapsibleSubsection title="Gastrointestinal & Airway Changes">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>↓ Lower oesophageal sphincter tone</strong> (progesterone) + ↑ intragastric pressure (gravid uterus) → ↑ aspiration risk.</li>
               <li><strong>Delayed gastric emptying</strong> in labour (opioids compound this further).</li>
@@ -205,20 +211,22 @@ const MaternalPhysiologyTopic = () => {
               <li><strong>Mallampati score worsens</strong> during pregnancy and especially during labour.</li>
               <li>Failed intubation rate in obstetrics historically ~1:250 (vs ~1:2000 in general population) — follow OAA/DAS 2015 algorithm.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="renal-hepatic" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Renal & Hepatic Changes</h2>
+            <CollapsibleSubsection title="Renal & Hepatic Changes">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Renal blood flow</strong> ↑ 50–80% → GFR ↑ 50% → ↓ creatinine (normal upper limit ~75 µmol/L in pregnancy).</li>
               <li><strong>Glycosuria</strong> common (↓ tubular reabsorption threshold).</li>
               <li><strong>Hepatic</strong>: ↓ albumin (dilutional), ↓ plasma cholinesterase activity (prolonged suxamethonium action rarely clinically significant).</li>
               <li><strong>ALP</strong> elevated (placental isoenzyme) — not a reliable marker of liver disease in pregnancy.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="pharmacology" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pharmacological Implications</h2>
+            <CollapsibleSubsection title="Pharmacological Implications">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>↑ Volume of distribution</strong>: ↑ plasma volume and total body water → larger loading doses may be needed for some drugs.</li>
               <li><strong>↓ Protein binding</strong>: ↓ albumin → ↑ free fraction of highly protein-bound drugs (thiopentone, diazepam).</li>
@@ -226,6 +234,7 @@ const MaternalPhysiologyTopic = () => {
               <li><strong>↑ Sensitivity to local anaesthetics</strong>: epidural/spinal doses reduced by ~30% (engorged epidural veins ↓ CSF volume + ↑ neural sensitivity).</li>
               <li><strong>↑ Sensitivity to neuromuscular blockers</strong>: ↓ plasma cholinesterase (clinically subtle).</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamPitfallsCallout

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -126,7 +127,7 @@ const OxygenHaemoglobinTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="normal-curve" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Normal Curve</h2>
+            <CollapsibleSubsection title="The Normal Curve" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               The oxygen-haemoglobin dissociation curve (ODC) describes the relationship between PaO₂ and the percentage
               saturation of haemoglobin (SaO₂). The sigmoid shape reflects cooperativity: binding of the first O₂
@@ -137,10 +138,11 @@ const OxygenHaemoglobinTopic = () => {
               Key points: at PaO₂ 13.3 kPa (100 mmHg), SaO₂ ≈ 97.5%. At the venous point (PaO₂ ~5.3 kPa / 40 mmHg), SaO₂
               ≈ 75%. The steep portion between 20–60 mmHg allows efficient O₂ unloading in the tissues.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="shifts" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Factors Shifting the Curve</h2>
+            <CollapsibleSubsection title="Factors Shifting the Curve">
             <p className="text-foreground/90 leading-relaxed mb-4">
               The curve can shift left (increased affinity, harder to offload O₂) or right (decreased affinity, easier
               to offload O₂).
@@ -168,10 +170,11 @@ const OxygenHaemoglobinTopic = () => {
                 </ul>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="bohr-haldane" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bohr & Haldane Effects</h2>
+            <CollapsibleSubsection title="Bohr & Haldane Effects">
             <p className="text-foreground/90 leading-relaxed">
               The <strong>Bohr effect</strong> describes the rightward shift of the ODC caused by increased CO₂ and H⁺
               concentration. In metabolically active tissues, CO₂ production lowers pH locally, promoting O₂ release
@@ -184,20 +187,22 @@ const OxygenHaemoglobinTopic = () => {
               efficiently; as Hb binds O₂ in lungs it releases CO₂ — so both gases exchange more efficiently than
               either would alone.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="oxygen-delivery" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Oxygen Delivery (DO₂)</h2>
+            <CollapsibleSubsection title="Oxygen Delivery (DO₂)">
             <p className="text-foreground/90 leading-relaxed">
               <strong>DO₂ = CO × CaO₂</strong>, where <strong>CaO₂ = (1.34 × Hb × SaO₂) + (0.0225 × PaO₂)</strong>{" "}
               (with Hb in g/dL and PaO₂ in kPa). Normal DO₂ ≈ 1000 mL/min; whole-body VO₂ ≈ 250 mL/min, giving an
               extraction ratio of ~25%. The bound fraction dominates carriage; dissolved O₂ becomes meaningful only at
               very high PaO₂ (e.g. hyperbaric therapy).
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="clinical" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clinical Significance</h2>
+            <CollapsibleSubsection title="Clinical Significance">
             <p className="text-foreground/90 leading-relaxed">
               The flat upper portion of the curve means that even moderate drops in PaO₂ from normal values cause
               minimal desaturation — a physiological safety margin. Once PaO₂ falls below ~8 kPa (60 mmHg), the steep
@@ -209,6 +214,7 @@ const OxygenHaemoglobinTopic = () => {
               methaemoglobinaemia the curve shifts left and effective Hb falls — pulse oximetry is unreliable and
               co-oximetry is required.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamPitfallsCallout

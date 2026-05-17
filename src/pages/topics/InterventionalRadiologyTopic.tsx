@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { interventionalRadiologyQuestions } from "@/data/quizzes";
@@ -68,7 +69,7 @@ const InterventionalRadiologyTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="remote-location" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Remote Location Anaesthesia</h2>
+            <CollapsibleSubsection title="Remote Location Anaesthesia" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               IR suites present unique challenges: unfamiliar environment, limited access to the patient (often within a C-arm), restricted space, and reduced staffing. The <strong className="text-foreground">AAGBI guidelines for anaesthesia outside the operating theatre</strong> mandate the same standards of monitoring, equipment, and assistance.
             </p>
@@ -82,10 +83,11 @@ const InterventionalRadiologyTopic = () => {
                 <li>MRI-conditional equipment if required (some hybrid suites)</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="contrast" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Contrast Media Reactions</h2>
+            <CollapsibleSubsection title="Contrast Media Reactions">
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Iodinated Contrast Reactions</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
@@ -105,10 +107,11 @@ const InterventionalRadiologyTopic = () => {
                 <li>N-acetylcysteine is no longer routinely recommended</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="radiation" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Radiation Safety</h2>
+            <CollapsibleSubsection title="Radiation Safety">
             <p className="text-muted-foreground leading-relaxed mb-3">
               All staff in the IR suite are exposed to ionising radiation. The <strong className="text-foreground">ALARA principle</strong> (As Low As Reasonably Achievable) guides practice.
             </p>
@@ -122,10 +125,11 @@ const InterventionalRadiologyTopic = () => {
                 <li>Annual dose limits: whole body 20 mSv; lens of eye 20 mSv; extremities 500 mSv</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="procedure-specific" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Procedure-Specific Considerations</h2>
+            <CollapsibleSubsection title="Procedure-Specific Considerations">
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">TIPSS</h3>
               <figure className="my-3">
@@ -166,10 +170,11 @@ const InterventionalRadiologyTopic = () => {
                 <li>Complications: endoleak, renal artery occlusion, limb ischaemia, contrast nephropathy</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="sedation" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Sedation for IR Procedures</h2>
+            <CollapsibleSubsection title="Sedation for IR Procedures">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                 <li>Many IR procedures performed under LA with <strong className="text-foreground">conscious sedation</strong> (midazolam ± fentanyl)</li>
@@ -179,6 +184,7 @@ const InterventionalRadiologyTopic = () => {
                 <li>Breath-hold for angiography — coordinate with radiologist; consider apnoeic oxygenation under GA</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

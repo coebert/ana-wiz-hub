@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { DiagramSection } from "@/components/DiagramSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -83,16 +84,17 @@ const OphthalmicAnaesthesiaTopic = () => {
           </ExamSection>
 
           <ExamSection id="iop" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Ocular Physiology</h2>
+            <CollapsibleSubsection title="Ocular Physiology" defaultOpen>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>IOP</strong>: normal 10–21 mmHg. Aqueous humour produced by ciliary body, drains via canal of Schlemm. IOP ↑ by: coughing, straining, prone, N₂O (if SF₆ in eye), suxamethonium, ketamine</li>
               <li><strong>IOP ↓ by</strong>: mannitol, acetazolamide, timolol, hyperventilation, non-depolarising NMBs, propofol, volatile agents</li>
               <li><strong>Oculocardiac reflex</strong>: traction on extraocular muscles (especially medial rectus) → trigeminal afferent (V₁) → vagal efferent → bradycardia, asystole. Treatment: stop surgical stimulus, atropine 20 µg/kg. More common in children (strabismus surgery)</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="regional" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Regional Techniques</h2>
+            <CollapsibleSubsection title="Regional Techniques">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -111,6 +113,7 @@ const OphthalmicAnaesthesiaTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <DiagramSection
@@ -130,17 +133,18 @@ const OphthalmicAnaesthesiaTopic = () => {
           </DiagramSection>
 
           <ExamSection id="open-globe" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Open Globe Injury</h2>
+            <CollapsibleSubsection title="Open Globe Injury">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>Avoid ↑ IOP: suxamethonium is <strong>relatively</strong> contraindicated (but may be used if RSI required for life-threatening aspiration risk — benefit vs risk)</li>
               <li>RSI with rocuronium 1.2 mg/kg preferred. Sugammadex available for reversal</li>
               <li>Smooth induction; avoid coughing/straining. Aggressive antiemetics (vomiting markedly ↑ IOP)</li>
               <li>Do <strong>NOT</strong> press on the eye (no eye-pad pressure, careful intubation)</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="strabismus" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Anaesthesia for Strabismus Surgery</h2>
+            <CollapsibleSubsection title="Anaesthesia for Strabismus Surgery">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Strabismus (squint) correction is the commonest paediatric ophthalmic procedure. It is short (20–60 min), extra-ocular,
               day-case in most children, and shared-airway with the surgeon working at the head. Three features dominate the
@@ -167,10 +171,11 @@ const OphthalmicAnaesthesiaTopic = () => {
               <li><strong className="text-foreground">Postoperative diplopia and disorientation</strong> — common after eye-muscle realignment; warn parents and nurse the child in a calm, dimly lit recovery bay</li>
               <li><strong className="text-foreground">Co-existing conditions</strong> — strabismus is over-represented in cerebral palsy, craniofacial syndromes (Crouzon, Apert), trisomy 21 and prematurity (ROP). Tailor airway plan, drug doses and post-operative apnoea monitoring (ex-prems &lt; 60 weeks PCA) accordingly</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="brainstem-anaesthesia" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Brainstem Anaesthesia</h2>
+            <CollapsibleSubsection title="Brainstem Anaesthesia">
             <p className="text-muted-foreground leading-relaxed">
               A rare but life-threatening complication of retrobulbar (and occasionally peribulbar) block: local anaesthetic tracks
               along the optic-nerve sheath into the subarachnoid space. Onset is within minutes — contralateral amaurosis, cranial-
@@ -178,6 +183,7 @@ const OphthalmicAnaesthesiaTopic = () => {
               ventilation, cardiovascular support until block resolves (1–2 h). Always perform ophthalmic regional blocks with full
               monitoring, IV access and resuscitation drugs immediately available.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

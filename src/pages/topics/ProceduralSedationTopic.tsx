@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { proceduralSedationQuestions } from "@/data/quizzes";
@@ -77,7 +78,7 @@ const ProceduralSedationTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="definitions" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Definitions & the Sedation Continuum</h2>
+            <CollapsibleSubsection title="Definitions & the Sedation Continuum" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               <strong>Sedation</strong> is a drug-induced depression of consciousness, ranging from minimal anxiolysis to general anaesthesia.
               The Academy of Medical Royal Colleges and ASA describe a <strong>continuum</strong>: depth depends on the dose, drug combination and individual patient response, not the drug name.
@@ -112,10 +113,11 @@ const ProceduralSedationTopic = () => {
               <strong>Loss of verbal contact = general anaesthesia</strong>, regardless of intent. A patient receiving propofol who becomes
               unrousable is anaesthetised, even if the procedure was booked as "sedation".
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="patient-selection" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Patient Selection & Pre-Sedation Assessment</h2>
+            <CollapsibleSubsection title="Patient Selection & Pre-Sedation Assessment">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The same standard of preassessment as for general anaesthesia applies. Document an explicit decision that sedation (vs GA vs LA alone) is appropriate.
             </p>
@@ -215,10 +217,11 @@ const ProceduralSedationTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="techniques" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Techniques: Bolus, Infusion and TCI</h2>
+            <CollapsibleSubsection title="Techniques: Bolus, Infusion and TCI">
             <SedationDeliveryProfilesDiagram />
             <div className="space-y-3">
               <div id="technique-bolus" className="p-3 rounded-lg border border-border scroll-mt-24">
@@ -270,10 +273,11 @@ const ProceduralSedationTopic = () => {
               reason="TCI models (Marsh, Schnider, Eleveld, Minto), context-sensitive half-times and the simulator that underpin TCI sedation are explored in detail in the TIVA topic."
               links={[{ topicId: "tiva" }]}
             />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="drugs" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Drugs &amp; Combinations</h2>
+            <CollapsibleSubsection title="Drugs & Combinations">
 
             <div className="mb-4 overflow-x-auto rounded-lg border border-border">
               <table className="w-full text-xs md:text-sm">
@@ -365,10 +369,11 @@ const ProceduralSedationTopic = () => {
               reason="Pharmacokinetics, pharmacodynamics and side-effect profiles of propofol, ketamine, midazolam and etomidate are covered in depth in the IV Anaesthetics topic."
               links={[{ topicId: "iv-anaesthetics" }]}
             />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="example-procedures" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Example Procedures Requiring Sedation</h2>
+            <CollapsibleSubsection title="Example Procedures Requiring Sedation">
             <SedationCaseScenarios />
             <h3 className="font-serif font-bold text-foreground text-base mt-6 mb-2">
               Quick reference — other common procedures
@@ -392,10 +397,11 @@ const ProceduralSedationTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="safe-practice" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Safe Sedation Practice (AAGBI/RCoA 2021)</h2>
+            <CollapsibleSubsection title="Safe Sedation Practice (AAGBI/RCoA 2021)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Sedation outside theatres carries higher complication rates than GA in theatre — primarily from inadequate monitoring, lack of trained assistance and inability to rescue the airway.
               The AoMRC (2013) and joint AAGBI/RCoA standards mandate the same standard of care wherever sedation is delivered.
@@ -409,18 +415,20 @@ const ProceduralSedationTopic = () => {
               <li><strong>Recovery</strong>: same standards as post-GA — recovery area with trained staff, monitoring continued until discharge criteria met (modified Aldrete or PADSS)</li>
               <li><strong>Discharge</strong>: stable observations, full orientation, oral fluids tolerated, pain controlled, responsible adult escort, written instructions</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="discharge" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Discharge Criteria</h2>
+            <CollapsibleSubsection title="Discharge Criteria">
             <p className="text-muted-foreground leading-relaxed mb-2">
               Discharge after sedation is a clinical decision, not a clock-based one. Apply a structured score (modified Aldrete to leave first-stage recovery, PADSS to leave the day-unit), check observation timing, and screen for red-flag symptoms before allowing the patient home with their escort.
             </p>
             <SedationDischargeChecklist />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="complications" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Complications &amp; Rescue</h2>
+            <CollapsibleSubsection title="Complications & Rescue">
             <SedationRescueLadder />
             <h3 className="font-serif font-bold text-foreground text-base mt-6 mb-2">
               Other complications to recognise
@@ -448,6 +456,7 @@ const ProceduralSedationTopic = () => {
               reason="For continuous sedation of intubated critically ill patients (RASS-targeted infusions, PRIS, CAM-ICU, ABCDEF bundle), see the dedicated ICU Sedation & Delirium topic — the principles, drugs and risk profile differ substantially from short-procedure sedation."
               links={[{ topicId: "icu-sedation-delirium" }]}
             />
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

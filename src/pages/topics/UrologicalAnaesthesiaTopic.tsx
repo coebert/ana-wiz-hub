@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { urologicalAnaesthesiaQuestions } from "@/data/quizzes";
 import TURPSyndromeDiagram from "@/components/diagrams/TURPSyndromeDiagram";
@@ -40,14 +41,15 @@ const UrologicalAnaesthesiaTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Urological surgery ranges from minor cystoscopy to major radical procedures. Anaesthetic considerations include lithotomy positioning, fluid absorption syndromes, laser safety, and the often elderly comorbid patient population. Neuraxial anaesthesia is frequently preferred for lower urinary tract procedures.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">TURP Syndrome</h2>
+            <CollapsibleSubsection title="TURP Syndrome">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Absorption of hypotonic glycine 1.5% irrigation fluid during transurethral resection of the prostate — a potentially life-threatening complication.
             </p>
@@ -72,17 +74,19 @@ const UrologicalAnaesthesiaTopic = () => {
                 Spinal anaesthesia for TURP allows early detection of TURP syndrome — the awake patient develops confusion, restlessness, and nausea. Under GA these signs are masked. Spinal block to T10 is sufficient.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bipolar TURP & Laser Prostatectomy</h2>
+            <CollapsibleSubsection title="Bipolar TURP & Laser Prostatectomy">
             <p className="text-muted-foreground leading-relaxed">
               Modern bipolar TURP uses isotonic saline irrigation, eliminating the risk of TURP syndrome. HoLEP (holmium laser enucleation) and GreenLight PVP (photoselective vaporisation) also use saline. However, fluid overload from excessive absorption remains possible. Bipolar/laser techniques allow longer resection times and are increasingly standard.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lithotomy Position</h2>
+            <CollapsibleSubsection title="Lithotomy Position">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Nerve injury</strong>: common peroneal nerve (lateral fibular head compression), femoral nerve (hip hyperflexion), obturator nerve</li>
               <li><strong>Compartment syndrome</strong>: prolonged elevation &gt;4 hours — calf compartment syndrome risk</li>
@@ -90,10 +94,11 @@ const UrologicalAnaesthesiaTopic = () => {
               <li><strong>Respiratory</strong>: abdominal viscera push diaphragm cephalad → ↓ FRC, ↓ compliance (similar to Trendelenburg)</li>
               <li><strong>DVT risk</strong>: avoid calf compression from supports; use intermittent pneumatic compression</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Radical Cystectomy</h2>
+            <CollapsibleSubsection title="Radical Cystectomy">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Major surgery (4–8 hours) with significant blood loss, fluid shifts, and high complication rate. Often elderly patients with smoking history and cardiovascular disease.
             </p>
@@ -104,10 +109,11 @@ const UrologicalAnaesthesiaTopic = () => {
               <li><strong>Analgesia</strong>: thoracic epidural (T8–T10) or bilateral TAP/rectus sheath blocks + PCA</li>
               <li><strong>ERAS</strong>: enhanced recovery protocols reduce LOS — early feeding, mobilisation, alvimopan for ileus</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Nephrectomy & Renal Surgery</h2>
+            <CollapsibleSubsection title="Nephrectomy & Renal Surgery">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Lateral position</strong>: dependent lung compression, V/Q mismatch; kidney bridge may compress IVC</li>
               <li><strong>Laparoscopic</strong>: pneumoperitoneum effects (↑ PaCO₂, ↓ venous return, ↑ airway pressures)</li>
@@ -115,10 +121,11 @@ const UrologicalAnaesthesiaTopic = () => {
               <li><strong>Renal function</strong>: protect remaining kidney — maintain renal perfusion, avoid nephrotoxins</li>
               <li><strong>Analgesia</strong>: paravertebral block, wound catheter, or TAP block; avoid NSAIDs if single kidney</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Propofol-Induced Penile Erection</h2>
+            <CollapsibleSubsection title="Propofol-Induced Penile Erection">
             <p className="text-muted-foreground leading-relaxed mb-3">
               An uncommon but well-recognised phenomenon: penile tumescence or full erection occurring after induction or during maintenance with propofol. Reported incidence is low (case reports and small series), but the consequences in endoscopic urology can be significant.
             </p>
@@ -149,13 +156,15 @@ const UrologicalAnaesthesiaTopic = () => {
                 Do not confuse with priapism — this is a transient anaesthesia-related event without ischaemia. However, if it persists &gt;4 hours post-op, treat as low-flow priapism (aspiration + intracavernosal phenylephrine, urology referral). Document and warn the patient pre-operatively if recurrence is anticipated.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Extracorporeal Shock Wave Lithotripsy (ESWL)</h2>
+            <CollapsibleSubsection title="Extracorporeal Shock Wave Lithotripsy (ESWL)">
             <p className="text-muted-foreground leading-relaxed">
               Focused shock waves fragment renal/ureteric calculi. Requires immobility and may be painful. Options: sedation + analgesia, spinal anaesthesia, or GA. Cardiac gating (trigger on R-wave) prevents arrhythmias. Contraindicated in pregnancy, aortic aneurysm, and uncorrected coagulopathy.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

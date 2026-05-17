@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
@@ -75,15 +76,16 @@ const FlowMeasurementTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               Flow is the volume of fluid passing a point per unit time. Understanding laminar and turbulent flow, and the
               devices used to measure gas and liquid flow, is essential for anaesthetic equipment design and clinical practice.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="laminar-turbulent" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Laminar vs Turbulent Flow</h2>
+            <CollapsibleSubsection title="Laminar vs Turbulent Flow">
             <p className="text-foreground/90 leading-relaxed mb-4">
               Use the interactive diagram below to explore the differences between laminar and turbulent flow, including the
               velocity profiles and key equations governing each.
@@ -91,10 +93,11 @@ const FlowMeasurementTopic = () => {
             <div className="bg-card rounded-xl border border-border p-6">
               <FlowDiagram />
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="hagen-poiseuille" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hagen-Poiseuille Equation</h2>
+            <CollapsibleSubsection title="Hagen-Poiseuille Equation">
             <p className="text-foreground/90 leading-relaxed">
               For laminar flow through a tube: <strong>Q = πΔPr⁴ / 8ηl</strong>, where Q = flow, ΔP = pressure gradient,
               r = radius, η = viscosity, l = length. Flow is proportional to the <em>fourth power</em> of radius — halving
@@ -108,20 +111,22 @@ const FlowMeasurementTopic = () => {
                 dramatically increases work of breathing.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="reynolds" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Reynolds Number</h2>
+            <CollapsibleSubsection title="Reynolds Number">
             <p className="text-foreground/90 leading-relaxed">
               <strong>Re = ρvd / η</strong>, where ρ = density, v = velocity, d = diameter, η = viscosity. Laminar flow occurs
               when Re &lt; 2000; turbulent flow when Re &gt; 4000. Between 2000–4000 is the transition zone. Turbulent flow
               depends on gas <em>density</em> (not viscosity), which is why heliox (low density) reduces resistance in upper
               airway obstruction.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="rotameters" exams={[Exam.PRIMARY]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Rotameters (Variable Orifice Flowmeters)</h2>
+            <CollapsibleSubsection title="Rotameters (Variable Orifice Flowmeters)">
             <p className="text-foreground/90 leading-relaxed">
               A rotameter is a tapered glass tube with a bobbin. As flow increases, the bobbin rises. At low flows, the annular
               gap is narrow (tube-like) — flow is laminar and depends on <em>viscosity</em>. At high flows, the gap is wide
@@ -133,10 +138,11 @@ const FlowMeasurementTopic = () => {
               upstream tube leaks.
             </p>
             <RotameterDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="other-flowmeters" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Other Flowmeters</h2>
+            <CollapsibleSubsection title="Other Flowmeters">
             <p className="text-foreground/90 leading-relaxed mb-4">
               <strong>Pneumotachograph</strong>: measures pressure drop across a known resistance (Fleisch — bundle of tubes;
               Lilly — fine mesh screen). Integrating flow over time gives volume — the basis of many ventilator spirometers.
@@ -147,10 +153,11 @@ const FlowMeasurementTopic = () => {
               flows. Measures expired tidal and minute volumes.
             </p>
             <WrightRespirometerDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="venturi" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Venturi Effect & Bernoulli's Principle</h2>
+            <CollapsibleSubsection title="The Venturi Effect & Bernoulli's Principle">
             <p className="text-foreground/90 leading-relaxed">
               Bernoulli's principle: as fluid velocity increases through a constriction, pressure decreases. The <strong>Venturi
               effect</strong> exploits this — a jet of gas through a constriction entrains surrounding gas through side ports.
@@ -166,10 +173,11 @@ const FlowMeasurementTopic = () => {
                 inspiratory flow, ensuring accurate FiO₂ delivery regardless of breathing pattern.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="coanda" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Coandă Effect</h2>
+            <CollapsibleSubsection title="The Coandă Effect">
             <p className="text-foreground/90 leading-relaxed">
               The <strong>Coandă effect</strong> is the tendency of a fluid jet to follow a nearby convex surface
               rather than continue in a straight line. Entrainment of surrounding fluid is restricted on the wall
@@ -192,10 +200,11 @@ const FlowMeasurementTopic = () => {
                 <li>Echocardiography: regurgitant jets (e.g. eccentric MR) tracking along an atrial wall appear smaller than they are — Coandă-related underestimation</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="coanda-vs-bernoulli" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coandă vs Bernoulli — jet attachment vs constriction flow</h2>
+            <CollapsibleSubsection title="Coandă vs Bernoulli — jet attachment vs constriction flow">
             <p className="text-foreground/90 leading-relaxed">
               Both effects share the same underlying physics — the conservation of energy expressed by
               Bernoulli's equation, in which a rise in fluid velocity is matched by a fall in static
@@ -272,10 +281,11 @@ const FlowMeasurementTopic = () => {
                 { topicId: "clinical-measurement", label: "Clinical Measurement" },
               ]}
             />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="coanda-vignettes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clinical vignettes — Coandă in practice</h2>
+            <CollapsibleSubsection title="Clinical vignettes — Coandă in practice">
             <p className="text-foreground/90 leading-relaxed">
               The Coandă effect is a favourite of FRCA Primary SAQs and Final structured orals because
               it links a single physics principle to several disparate clinical scenarios. Recognising
@@ -421,6 +431,7 @@ const FlowMeasurementTopic = () => {
                 <li><strong>Clinical consequence is what scores marks</strong> — underestimated MR severity, asymmetric ventilation, variable FiO₂ in HFJV, fluidic logic.</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

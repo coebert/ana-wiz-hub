@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import WETFLAGDiagram from "@/components/diagrams/WETFLAGDiagram";
@@ -173,7 +174,7 @@ const PaediatricIcuTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="wetflag" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">WETFLAG &amp; Age-Specific Vital Signs</h2>
+            <CollapsibleSubsection title="WETFLAG & Age-Specific Vital Signs" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               <strong>WETFLAG</strong> is the standard APLS pre-calculation performed when any unwell child arrives in resus — generating the seven weight-based numbers (<strong>W</strong>eight · <strong>E</strong>nergy · <strong>T</strong>ube · <strong>F</strong>luids · <strong>L</strong>orazepam · <strong>A</strong>drenaline · <strong>G</strong>lucose) needed to deliver immediate therapy without doing arithmetic under stress. Alongside it, the vitals table gives age-banded normal ranges for HR, RR, SBP and urine output so deviations can be recognised at a glance.
             </p>
@@ -181,10 +182,11 @@ const PaediatricIcuTopic = () => {
               <WETFLAGDiagram />
               <PaediatricVitalsTable />
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="physiology" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Age-Specific Physiology</h2>
+            <CollapsibleSubsection title="Age-Specific Physiology">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -204,10 +206,11 @@ const PaediatricIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="airway" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway &amp; Ventilation in PICU</h2>
+            <CollapsibleSubsection title="Airway & Ventilation in PICU">
             <div className="space-y-3">
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">ETT Sizing</p>
@@ -222,10 +225,11 @@ const PaediatricIcuTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">HFNC at 2 ml/kg/min — first-line for bronchiolitis. CPAP/BiPAP increasingly first-line for moderate respiratory failure.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="sepsis" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Paediatric Sepsis &amp; Shock</h2>
+            <CollapsibleSubsection title="Paediatric Sepsis & Shock">
             <p className="text-muted-foreground leading-relaxed mb-4">
               Children more commonly present with <strong>cold shock</strong> (vasoconstricted, poor perfusion) than warm vasodilated shock. Antibiotics within 1 h. Fluid in 10–20 ml/kg boluses (NOT 30 ml/kg) with reassessment after each — up to 40–60 ml/kg in first hour. Hepatomegaly = fluid overload. Vasoactive support if fluid-refractory after 40 ml/kg: peripheral adrenaline (cold) or noradrenaline (warm). Stress-dose hydrocortisone for catecholamine-resistant shock.
             </p>
@@ -235,10 +239,11 @@ const PaediatricIcuTopic = () => {
                 In resource-limited settings, fluid boluses increased 48-h mortality. Does NOT apply to UK PICU practice but is frequently examined.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="cardiac" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiac &amp; Congenital Heart Disease</h2>
+            <CollapsibleSubsection title="Cardiac & Congenital Heart Disease">
             <div className="space-y-3">
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Single Ventricle Physiology</p>
@@ -253,10 +258,11 @@ const PaediatricIcuTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Sedate/paralyse, FiO₂ 1.0, alkalosis (pH 7.45–7.50), iNO 10–20 ppm, IV sildenafil. Avoid disconnection.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="neurocrit" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Paediatric Neurocritical Care</h2>
+            <CollapsibleSubsection title="Paediatric Neurocritical Care">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -273,23 +279,26 @@ const PaediatricIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="sedation" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sedation, Analgesia &amp; Withdrawal</h2>
+            <CollapsibleSubsection title="Sedation, Analgesia & Withdrawal">
             <p className="text-muted-foreground text-sm mb-2">COMFORT-B (target 11–17), FLACC for pre-verbal pain. Morphine 10–40 mcg/kg/h, midazolam 1–4 mcg/kg/min, dexmedetomidine 0.2–1.4 mcg/kg/h. <strong>Avoid prolonged propofol infusions (&gt;48 h) — PRIS</strong>: metabolic acidosis, rhabdomyolysis, cardiac failure. Iatrogenic withdrawal after &gt;5 days opioid/benzo: WAT-1 scoring; wean by 10–20%/day with enteral conversion.</p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="fluids" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fluids, Electrolytes &amp; Nutrition</h2>
+            <CollapsibleSubsection title="Fluids, Electrolytes & Nutrition">
             <p className="text-muted-foreground text-sm mb-2">
               <strong>Holliday-Segar:</strong> 4 ml/kg/h (first 10 kg) + 2 ml/kg/h (10–20 kg) + 1 ml/kg/h (each kg &gt;20). <strong>Use isotonic fluids only</strong> (0.9% NaCl + 5% dextrose) — hypotonic fluids cause fatal hyponatraemia (NICE NG29).
               Hypoglycaemia (&lt;2.6 mmol/L): 2 ml/kg of 10% dextrose (NOT 50%). Enteral feeding within 24–48 h; PN by day 5–7 if enteral not possible. Avoid overfeeding.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="resus" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Resuscitation Key Numbers</h2>
+            <CollapsibleSubsection title="Resuscitation Key Numbers">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -312,13 +321,15 @@ const PaediatricIcuTopic = () => {
             <div className="mt-3 p-4 rounded-lg border border-destructive/30 bg-destructive/5">
               <p className="text-sm font-semibold text-destructive">⚠ Most paediatric arrests are respiratory — give 5 rescue breaths first.</p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="ethics" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Safeguarding &amp; End-of-Life</h2>
+            <CollapsibleSubsection title="Safeguarding & End-of-Life">
             <p className="text-muted-foreground text-sm">
               All PICU staff need Level 3 safeguarding. Best-interests framework — parents central to decision-making but cannot demand futile treatment. Brainstem death testing requires &gt;2 months age (NOT applicable &lt;37 weeks corrected gestational age), 2 consultants, 2 sets of tests. Family-centred care: open visiting, parental presence, play specialists, bereavement support.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <SynthesisBlock

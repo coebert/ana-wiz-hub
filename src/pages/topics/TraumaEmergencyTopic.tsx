@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { traumaEmergencyQuestions } from "@/data/quizzes";
@@ -140,7 +141,7 @@ const TraumaEmergencyTopic = () => {
           </ExamSection>
 
           <ExamSection id="rsi" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Trauma & Stabilisation"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Rapid Sequence Induction (RSI)</h2>
+            <CollapsibleSubsection title="Rapid Sequence Induction (RSI)" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               RSI is indicated when the patient is at risk of aspiration (full stomach, bowel obstruction, pregnancy, trauma).
               Key principles:
@@ -160,10 +161,11 @@ const TraumaEmergencyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="damage-control" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.5"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Damage Control Resuscitation</h2>
+            <CollapsibleSubsection title="Damage Control Resuscitation">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Targets the lethal triad of hypothermia, acidosis, and coagulopathy:
             </p>
@@ -175,15 +177,17 @@ const TraumaEmergencyTopic = () => {
               <li><strong>Warm fluids/patient</strong>: active warming to prevent hypothermia</li>
               <li><strong>Point-of-care testing</strong>: TEG/ROTEM to guide targeted blood product therapy</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="mtp" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Massive Transfusion Protocol</h2>
+            <CollapsibleSubsection title="Massive Transfusion Protocol">
             <p className="text-muted-foreground leading-relaxed">
               Activated when anticipated need for ≥10 units PRBC in 24h or &gt;4 units in 1 hour. Trigger: uncontrolled haemorrhage,
               haemodynamic instability despite fluids, or anticipated major blood loss. Emergency O-negative blood should be available
               within minutes. Monitor for complications: hyperkalaemia, hypocalcaemia (citrate toxicity), hypothermia, TRALI, TACO.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

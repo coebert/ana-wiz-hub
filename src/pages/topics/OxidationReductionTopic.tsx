@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { RedoxElectrochemistryDiagram } from "@/components/diagrams/RedoxElectrochemistryDiagram";
@@ -70,7 +71,7 @@ const OxidationReductionTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Redox Chemistry in Medicine</h2>
+            <CollapsibleSubsection title="Redox Chemistry in Medicine" defaultOpen>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Oxidation–reduction (redox) reactions involve the <strong>transfer of electrons</strong> between species. They are
@@ -83,15 +84,17 @@ const OxidationReductionTopic = () => {
                 electrons is <strong>reduced</strong> and acts as the <strong>oxidising agent</strong>.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagram</h2>
+            <CollapsibleSubsection title="Interactive Diagram">
             <RedoxElectrochemistryDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="methaemoglobin" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Methaemoglobinaemia</h2>
+            <CollapsibleSubsection title="Methaemoglobinaemia">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Methaemoglobin is haemoglobin in which iron has been <strong>oxidised from Fe²⁺ to Fe³⁺</strong>. MetHb cannot bind
@@ -105,10 +108,11 @@ const OxidationReductionTopic = () => {
                 acid or exchange transfusion instead.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="electrodes" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Clinical Measurement"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Clinical Electrodes</h2>
+            <CollapsibleSubsection title="Clinical Electrodes">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Clark electrode (PO₂)</strong>: amperometric. A polarising voltage (~0.6 V) is applied between a platinum
@@ -125,10 +129,11 @@ const OxidationReductionTopic = () => {
                 gradually consumed (oxidised); no external voltage is required. Slow response (~20 s) but no calibration drift.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="free-radicals" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Free Radicals & Ischaemia–Reperfusion</h2>
+            <CollapsibleSubsection title="Free Radicals & Ischaemia–Reperfusion">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Free radicals contain an unpaired electron and are highly reactive. Reactive oxygen species (ROS) include
@@ -142,6 +147,7 @@ const OxidationReductionTopic = () => {
                 glutathione and is used to detoxify NAPQI in paracetamol overdose.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

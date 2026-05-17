@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { icuEndocrineEmergenciesQuestions } from "@/data/quizzes";
@@ -194,7 +195,7 @@ const IcuEndocrineEmergenciesTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hyperglycaemic emergencies — DKA &amp; HHS</h2>
+            <CollapsibleSubsection title="Hyperglycaemic emergencies — DKA & HHS" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Two ends of the same spectrum: insulin deficiency drives counter-regulatory
               hormone release, hyperglycaemia, osmotic diuresis and dehydration. DKA
@@ -223,10 +224,11 @@ const IcuEndocrineEmergenciesTopic = () => {
               </div>
             </div>
             <GuidelineSources sources={HYPERGLYCAEMIC_SOURCES} />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thyroid emergencies</h2>
+            <CollapsibleSubsection title="Thyroid emergencies">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Thyroid storm (mortality 10–30 %)</p>
@@ -250,10 +252,11 @@ const IcuEndocrineEmergenciesTopic = () => {
               </div>
             </div>
             <GuidelineSources sources={THYROID_SOURCES} />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Adrenal &amp; pituitary emergencies</h2>
+            <CollapsibleSubsection title="Adrenal & pituitary emergencies">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Adrenal (Addisonian) crisis</p>
@@ -301,10 +304,11 @@ const IcuEndocrineEmergenciesTopic = () => {
               </div>
             </div>
             <GuidelineSources sources={ADRENAL_PITUITARY_SOURCES} />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthetic pitfalls</h2>
+            <CollapsibleSubsection title="Anaesthetic pitfalls">
             <div className="space-y-2">
               {[
                 { topic: "Etomidate", detail: "Single induction dose suppresses 11β-hydroxylase for 24 h — avoid in septic / adrenally compromised patients; consider hydrocortisone cover if used." },
@@ -320,6 +324,7 @@ const IcuEndocrineEmergenciesTopic = () => {
               ))}
             </div>
             <GuidelineSources sources={PITFALLS_SOURCES} />
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="icu"

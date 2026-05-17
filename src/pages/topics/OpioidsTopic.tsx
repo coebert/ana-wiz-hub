@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import OpioidReceptorDiagram from "@/components/diagrams/OpioidReceptorDiagram";
@@ -169,15 +170,16 @@ const OpioidsTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               Opioids are the cornerstone of perioperative analgesia. Understanding receptor subtypes, the clinical pharmacology
               of individual agents, and their side effect profiles is essential for FRCA examinations and safe clinical practice.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Opioid receptors and signalling</h2>
+            <CollapsibleSubsection title="Opioid receptors and signalling">
             <p className="text-foreground/90 leading-relaxed">
               Three classical receptors, all G-protein coupled (Gi/Go): <strong>µ (mu/MOP)</strong> — analgesia (supraspinal and
               spinal), respiratory depression, euphoria, physical dependence, miosis, ↓GI motility, bradycardia.
@@ -188,40 +190,44 @@ const OpioidsTopic = () => {
               <strong>Signal transduction</strong>: receptor activation → Gi protein → ↓cAMP, opens K⁺ channels (hyperpolarisation),
               closes voltage-gated Ca²⁺ channels → inhibits neurotransmitter release and neuronal firing.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Morphine</h2>
+            <CollapsibleSubsection title="Morphine">
             <p className="text-foreground/90 leading-relaxed">
               Natural phenanthrene opioid. Dose: 0.1–0.2 mg/kg IV. Oral bioavailability ~30 % (extensive first-pass). Onset 15–20 min IV
               (poor lipid solubility, slow BBB penetration). Duration 3–4 h. Hepatic glucuronidation → <strong>M6G</strong> (active,
               accumulates in renal failure) and <strong>M3G</strong> (neuroexcitatory). Histamine release → hypotension, bronchospasm,
               urticaria. Sphincter of Oddi spasm. Nausea/vomiting (CTZ).
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fentanyl</h2>
+            <CollapsibleSubsection title="Fentanyl">
             <p className="text-foreground/90 leading-relaxed">
               Synthetic phenylpiperidine. 100× potency of morphine. Dose 1–2 µg/kg IV. High lipid solubility → rapid onset
               (1–2 min) and short duration (30–45 min, redistribution). No histamine release. Minimal cardiovascular effects.
               CYP3A4 → inactive norfentanyl. Chest-wall rigidity with rapid high-dose injection. CSHT increases significantly
               with prolonged infusion.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Remifentanil</h2>
+            <CollapsibleSubsection title="Remifentanil">
             <p className="text-foreground/90 leading-relaxed">
               Ultra-short-acting synthetic opioid. Unique <strong>ester linkage</strong> → metabolised by non-specific tissue
               and plasma esterases (not plasma cholinesterase). CSHT ~3–4 min regardless of infusion duration. Ideal for TIVA.
               Must be given by infusion (0.05–0.5 µg/kg/min). Rapid offset mandates transition analgesia. May cause OIH after
               prolonged high-dose use. Dose reduction in elderly; no adjustment for renal/hepatic impairment. Bradycardia risk.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Other µ-agonists</h2>
+            <CollapsibleSubsection title="Other µ-agonists">
             <p className="text-foreground/90 leading-relaxed">
               <strong>Alfentanil</strong>: low pKa 6.5 → 90 % un-ionised at pH 7.4 → faster onset than fentanyl despite lower
               lipid solubility. Smaller V<sub>d</sub>. Shorter duration. <strong>Sufentanil</strong>: 5–10× fentanyl potency,
@@ -229,19 +235,21 @@ const OpioidsTopic = () => {
               variation. <strong>Tramadol</strong>: weak µ + serotonin/noradrenaline reuptake inhibition. Serotonin syndrome
               risk with SSRIs. Lowers seizure threshold.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Context-sensitive half-time</h2>
+            <CollapsibleSubsection title="Context-sensitive half-time">
             <p className="text-foreground/90 leading-relaxed">
               The CSHT is the time for plasma concentration to fall by 50 % after stopping an infusion of a given duration.
               Unlike elimination half-life, CSHT accounts for redistribution between compartments and is therefore <strong>dependent
               on the "context" of infusion duration</strong> — making it far more clinically useful for predicting recovery.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Partial agonists & mixed agonist–antagonists</h2>
+            <CollapsibleSubsection title="Partial agonists & mixed agonist–antagonists">
             <p className="text-foreground/90 leading-relaxed">
               <strong>Buprenorphine</strong> — partial µ agonist + κ antagonist. High µ affinity (slow dissociation, hard to
               displace with naloxone). Ceiling for respiratory depression but not for analgesia. Sublingual ~30–55 % bioavailability.
@@ -249,10 +257,11 @@ const OpioidsTopic = () => {
               respiratory depression while preserving κ-analgesia. <strong>Pentazocine</strong> — κ agonist with dysphoric and
               cardiovascular-stimulating effects; rarely used. All can precipitate withdrawal in opioid-dependent patients.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tolerance vs opioid-induced hyperalgesia</h2>
+            <CollapsibleSubsection title="Tolerance vs opioid-induced hyperalgesia">
             <p className="text-foreground/90 leading-relaxed">
               <strong>Tolerance</strong> — rightward shift of dose–response curve; pain in original distribution responds to
               dose escalation. Mediated by receptor desensitisation/internalisation (β-arrestin pathway).
@@ -261,15 +270,17 @@ const OpioidsTopic = () => {
               dynorphin, TLR4-mediated neuroinflammation. Management: opioid dose reduction or rotation, NMDA antagonists
               (ketamine), α₂-agonists, gabapentinoids, magnesium, multimodal analgesia.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Naloxone</h2>
+            <CollapsibleSubsection title="Naloxone">
             <p className="text-foreground/90 leading-relaxed">
               Competitive µ, κ, δ antagonist. IV dose 1–4 µg/kg titrated. Onset 1–2 min. Duration 30–60 min — shorter than most
               opioids → risk of re-narcotisation; consider infusion (4–10 µg/kg/h). Pulmonary oedema and cardiovascular collapse
               can follow excessive or rapid administration in opioid-tolerant patients.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>

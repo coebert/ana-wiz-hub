@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { ExamSection } from "@/components/ExamSection";
 import { perioperativeFluidsQuestions } from "@/data/quizzes";
@@ -61,7 +62,7 @@ const PerioperativeFluidsTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fluid Compartments</h2>
+            <CollapsibleSubsection title="Fluid Compartments" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Total body water (TBW) = ~60% body weight. ICF 40%, ECF 20% (interstitial 15%, plasma 5%). Only 25% of crystalloid remains intravascular — the rest distributes to the interstitium.
             </p>
@@ -84,10 +85,11 @@ const PerioperativeFluidsTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Goal-Directed Fluid Therapy (GDFT)</h2>
+            <CollapsibleSubsection title="Goal-Directed Fluid Therapy (GDFT)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Individualised fluid administration guided by haemodynamic monitoring to optimise stroke volume and tissue oxygen delivery. Reduces complications after major surgery.
             </p>
@@ -101,10 +103,11 @@ const PerioperativeFluidsTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">PPV, SVV (arterial waveform analysis). Reliable only in sinus rhythm + controlled ventilation + VT ≥8 ml/kg. PLR test for spontaneous breathing.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Glycocalyx & Revised Starling</h2>
+            <CollapsibleSubsection title="Glycocalyx & Revised Starling">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The endothelial glycocalyx is a carbohydrate-rich layer lining the vascular endothelium. It regulates vascular permeability, prevents leucocyte adhesion, and modulates coagulation.
             </p>
@@ -115,10 +118,11 @@ const PerioperativeFluidsTopic = () => {
                 <strong className="text-foreground">Clinical implication:</strong> Fluid overload, inflammation, ANP, and surgical stress damage the glycocalyx → increased permeability → oedema. Avoid hypervolaemia — it sheds the glycocalyx via ANP release.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Fluid Trials</h2>
+            <CollapsibleSubsection title="Key Fluid Trials">
             <div className="space-y-2">
               {[
                 { trial: "SAFE (2004)", result: "4% albumin vs 0.9% NaCl in ICU — no difference in 28-day mortality. Albumin harmful in TBI (SAFE-TBI subgroup)." },
@@ -133,6 +137,7 @@ const PerioperativeFluidsTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

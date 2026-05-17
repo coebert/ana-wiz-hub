@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { OrganicChemistryDiagram } from "@/components/diagrams/OrganicChemistryDiagram";
 import IsomerismDiagram from "@/components/diagrams/IsomerismDiagram";
@@ -47,7 +48,7 @@ const OrganicChemistryTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Why Organic Chemistry Matters</h2>
+            <CollapsibleSubsection title="Why Organic Chemistry Matters" defaultOpen>
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
                 Organic chemistry is the chemistry of carbon-containing compounds. Almost every drug used in anaesthesia
@@ -60,10 +61,11 @@ const OrganicChemistryTopic = () => {
                 present in anaesthetic drugs and understanding how they influence clinical behaviour.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Isomerism</h2>
+            <CollapsibleSubsection title="Isomerism">
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
                 Isomers are molecules with the <strong>same molecular formula</strong> but <strong>different structural arrangements</strong>.
@@ -80,10 +82,11 @@ const OrganicChemistryTopic = () => {
                 and explains its yellow colour in solution.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tertiary vs Quaternary Amines</h2>
+            <CollapsibleSubsection title="Tertiary vs Quaternary Amines">
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
                 Nitrogen sits at the heart of an enormous fraction of anaesthetic drugs — local anaesthetics, opioids,
@@ -100,10 +103,11 @@ const OrganicChemistryTopic = () => {
                 (don't cross placenta), and why <strong>atropine causes central anticholinergic syndrome but glycopyrrolate doesn't</strong>.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lipophilicity & Drug Delivery</h2>
+            <CollapsibleSubsection title="Lipophilicity & Drug Delivery">
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
                 A drug's <strong>partition coefficient</strong> (oil:water ratio) determines how it distributes between
@@ -116,6 +120,7 @@ const OrganicChemistryTopic = () => {
                 <li>Most effective drugs have a balance — enough lipophilicity to cross membranes, enough hydrophilicity to dissolve in plasma</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

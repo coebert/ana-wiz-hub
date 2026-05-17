@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { acidBaseQuestions } from "@/data/quizzes";
 import StewartAcidBaseDiagram from "@/components/diagrams/StewartAcidBaseDiagram";
@@ -67,7 +68,7 @@ const AcidBaseTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="systematic-abg" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Systematic ABG Interpretation</h2>
+            <CollapsibleSubsection title="Systematic ABG Interpretation" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               A structured approach to arterial blood gas analysis prevents the common pitfall of anchoring on a single derangement and missing mixed disorders. Work through oxygenation, primary acid-base disturbance, expected compensation, anion gap, and the delta ratio in that order — each step adds diagnostic information that the previous one cannot provide.
             </p>
@@ -81,10 +82,11 @@ const AcidBaseTopic = () => {
               <li>Calculate anion gap: Na⁺ − (Cl⁻ + HCO₃⁻). Normal 8-12 mEq/L</li>
               <li>If HAGMA: calculate delta ratio (ΔAG/ΔHCO₃⁻) to detect hidden disorders</li>
             </ol>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="hagma" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">High Anion Gap Metabolic Acidosis</h2>
+            <CollapsibleSubsection title="High Anion Gap Metabolic Acidosis">
             <p className="text-muted-foreground leading-relaxed mb-3">Mnemonic: <strong>MUDPILES</strong></p>
             <div className="grid sm:grid-cols-2 gap-2">
               {[
@@ -103,10 +105,11 @@ const AcidBaseTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="stewart" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4", "EDIC 5.4"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Stewart Approach</h2>
+            <CollapsibleSubsection title="Stewart Approach">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The physicochemical (Stewart) approach identifies 3 independent variables that determine pH. Unlike the Henderson-Hasselbalch approach, HCO₃⁻ is a <strong>dependent</strong> variable — it changes as a consequence of the independent variables, not as a cause.
             </p>
@@ -152,10 +155,11 @@ const AcidBaseTopic = () => {
                 </p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="comparing-frameworks" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Comparing Frameworks</h2>
+            <CollapsibleSubsection title="Comparing Frameworks">
             <div className="grid sm:grid-cols-3 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Henderson-Hasselbalch</p>
@@ -170,10 +174,11 @@ const AcidBaseTopic = () => {
                 <p className="text-xs text-muted-foreground mt-1">SIDa → SIDe → SIG → Atot. Best for complex ICU patients with hypoalbuminaemia, renal/liver failure, massive transfusion. Increasingly examined in Final/FFICM.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="lactic" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lactic Acidosis</h2>
+            <CollapsibleSubsection title="Lactic Acidosis">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Type A (hypoxic)</p>
@@ -184,6 +189,7 @@ const AcidBaseTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Metformin, liver failure, malignancy, thiamine deficiency, propofol infusion syndrome.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="icu"

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { abdominalAnatomyQuestions } from "@/data/quizzes";
 import AbdominalWallDiagram from "@/components/diagrams/AbdominalWallDiagram";
@@ -43,7 +44,7 @@ const AbdominalAnatomyTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anterior Abdominal Wall Layers</h2>
+            <CollapsibleSubsection title="Anterior Abdominal Wall Layers" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Understanding the abdominal wall layers is essential for TAP blocks, rectus sheath blocks, and laparoscopic port placement.
             </p>
@@ -61,10 +62,11 @@ const AbdominalAnatomyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Inguinal Canal</h2>
+            <CollapsibleSubsection title="Inguinal Canal">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Boundaries</p>
@@ -75,10 +77,11 @@ const AbdominalAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Ilioinguinal nerve (L1): runs between internal oblique and transversus. Iliohypogastric nerve (L1): runs between external and internal oblique. Genitofemoral nerve (L1,2): genital branch enters canal via deep ring.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Abdominal Organs — Anaesthetic Relevance</h2>
+            <CollapsibleSubsection title="Key Abdominal Organs — Anaesthetic Relevance">
             <div className="space-y-2">
               {[
                 { organ: "Liver", detail: "Right upper quadrant. Receives 25% CO (75% portal vein, 25% hepatic artery). Volatile agents reduce hepatic blood flow. Couinaud segments guide surgical resection." },
@@ -92,10 +95,11 @@ const AbdominalAnatomyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pelvic Anatomy</h2>
+            <CollapsibleSubsection title="Pelvic Anatomy">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Pelvic Autonomics</p>
@@ -106,6 +110,7 @@ const AbdominalAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Sciatic nerve (L4–S3): largest nerve in body. Exits pelvis through greater sciatic foramen below piriformis. Pudendal nerve (S2–S4): perineal sensation — pudendal nerve block for perineal surgery.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

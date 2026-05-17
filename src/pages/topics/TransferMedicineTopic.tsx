@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { CriticalTransferChecklist } from "@/components/CriticalTransferChecklist";
@@ -134,17 +135,18 @@ const TransferMedicineTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="checklist" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">End-to-End Transfer Checklist</h2>
+            <CollapsibleSubsection title="End-to-End Transfer Checklist" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               An interactive proforma covering the five sequential phases of a critically-ill transfer:
               decision &amp; team, ABCDE stabilisation, equipment / drugs / oxygen, ISBAR handover, and
               post-transfer documentation. Tick each item before departing the referring unit.
             </p>
             <CriticalTransferChecklist />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="principles" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Principles of Safe Transfer</h2>
+            <CollapsibleSubsection title="Principles of Safe Transfer">
             <p className="text-muted-foreground leading-relaxed mb-3">
               ICS/AAGBI guidelines: the standard of care during transfer should be at least as good as at the referring hospital.
               Decision to transfer must be made by a senior clinician. Benefits must outweigh risks.
@@ -154,10 +156,11 @@ const TransferMedicineTopic = () => {
               <li><strong>Decision</strong>: senior-to-senior communication. Referring and receiving teams agree on timing and clinical plan</li>
               <li><strong>Personnel</strong>: minimum doctor + assistant (nurse/ODP). Doctor experienced in transfer medicine. Both trained in equipment</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="abcde" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Preparation — ABCDE Stabilisation</h2>
+            <CollapsibleSubsection title="Preparation — ABCDE Stabilisation">
             <div className="space-y-3">
               {[
                 { area: "Airway", detail: "Secure airway before transfer if any concern. ETT preferred (secured, documented at teeth). Carry difficult airway equipment." },
@@ -172,30 +175,33 @@ const TransferMedicineTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="equipment" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Equipment & Documentation</h2>
+            <CollapsibleSubsection title="Equipment & Documentation">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Monitoring</strong>: ECG, SpO₂, ETCO₂, invasive BP, temperature — minimum standard. Battery backup essential</li>
               <li><strong>O₂ calculation</strong>: E-cylinder (680L) at 10L/min = 68 min. D-cylinder (340L). Always carry spare</li>
               <li><strong>Drugs</strong>: emergency drugs drawn up and labelled. Adrenaline, atropine, midazolam, propofol, suxamethonium, rocuronium, vasopressors</li>
               <li><strong>Documentation</strong>: transfer form with observations every 15 min, interventions, clinical events. Handover at receiving unit using SBAR/ISBAR</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="physics" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Physics of Transport</h2>
+            <CollapsibleSubsection title="Physics of Transport">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Acceleration/deceleration</strong>: affects BP measurement (transducer position relative to heart changes), ↑ ICP risk, equipment movement</li>
               <li><strong>Altitude (air transfer)</strong>: ↓ barometric pressure → gas expansion (Boyle's law). ETT cuff, pneumothorax, bowel gas all expand. ↓ PaO₂ (cabin altitude ~6,000-8,000 ft)</li>
               <li><strong>Vibration</strong>: artefact on monitoring, patient discomfort, equipment damage</li>
               <li><strong>Noise</strong>: makes auscultation impossible — rely on capnography and SpO₂. Communication difficult</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="classification" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Classification of Transfers</h2>
+            <CollapsibleSubsection title="Classification of Transfers">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Categorising the transfer informs urgency, team composition and risk acceptance.
             </p>
@@ -205,10 +211,11 @@ const TransferMedicineTopic = () => {
               <li><strong>By mode</strong>: road ambulance (default in UK; cheap, flexible), rotary-wing (helicopter; faster &gt;50 miles, weather-limited), fixed-wing (long distance &gt;150 miles, cabin altitude effects)</li>
               <li><strong>By team</strong>: parent team, regional retrieval service (e.g. neonatal/paediatric — STRS, NTS; adult ECMO retrieval), critical care transfer service (e.g. ACCTS in England)</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="packaging" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Packaging the Critically Ill Patient</h2>
+            <CollapsibleSubsection title="Packaging the Critically Ill Patient">
             <p className="text-muted-foreground leading-relaxed mb-3">
               "Package the patient" — every line, tube and monitor must be secured, labelled and accessible before the trolley moves.
               Resist the urge to leave at speed: most in-transit emergencies stem from inadequate pre-departure preparation.
@@ -221,10 +228,11 @@ const TransferMedicineTopic = () => {
               <li><strong>Patient</strong>: secured to trolley with straps; eyes taped; pressure points padded; NG tube on free drainage (gas expansion at altitude); urinary catheter; temperature probe; warming blanket</li>
               <li><strong>Notes &amp; imaging</strong>: copy of notes, drug chart, imaging on disc/PACS link, blood results, consent/best-interests documentation, next-of-kin contact</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="ventilation-sedation" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Ventilation &amp; Sedation in Transit</h2>
+            <CollapsibleSubsection title="Ventilation & Sedation in Transit">
             <TransportVentilationDiagram />
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Transport ventilator</strong>: must replicate the patient's ICU settings (PEEP, FiO₂, mode). Confirm it triggers, alarms (disconnect, high pressure, low gas) and has a self-inflating bag as backup</li>
@@ -234,10 +242,11 @@ const TransferMedicineTopic = () => {
               <li><strong>Sedation</strong>: continue propofol + opioid (or midazolam if cardiovascularly unstable). Light sedation in a noisy, vibrating ambulance risks awareness, cough, ↑ICP and accidental extubation</li>
               <li><strong>Neuromuscular blockade</strong>: routinely consider for ventilated patients during transfer to prevent dys-synchrony, coughing and line/tube displacement</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="neuroprotection" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Neuroprotective Transfer (TBI / Raised ICP)</h2>
+            <CollapsibleSubsection title="Neuroprotective Transfer (TBI / Raised ICP)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The TBI patient is the archetypal critically-ill transfer. Secondary injury from hypoxia,
               hypotension, hypercarbia or hyperthermia is preventable and dramatically worsens outcome.
@@ -249,10 +258,11 @@ const TransferMedicineTopic = () => {
               <li><strong>Osmotherapy ready</strong>: mannitol 0.5–1 g/kg or hypertonic saline (e.g. 3% 250 mL) for acute deterioration (blown pupil, Cushing response)</li>
               <li><strong>Avoid</strong>: prophylactic hyperventilation (vasoconstriction → ischaemia), hypotonic fluids, dextrose-containing solutions</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="sedation-analgesia" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Sedation &amp; Analgesia in Transit</h2>
+            <CollapsibleSubsection title="Sedation & Analgesia in Transit">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The transport environment (noise, vibration, acceleration, repeated handling, cold) is highly stimulating.
               Sedation and analgesia must be deeper and more reliable than in the ICU bed-space, but titrated to avoid
@@ -269,10 +279,11 @@ const TransferMedicineTopic = () => {
               <li><strong>Bolus / push-dose drugs ready</strong>: pre-drawn fentanyl 50 µg, propofol 20 mg, rocuronium 50 mg, plus push-dose vasopressor (e.g. metaraminol 0.5 mg/mL or adrenaline 10 µg/mL) for surges in stimulation (suctioning, road handover, lift transfers)</li>
               <li><strong>Awareness risk</strong>: paralysed + under-sedated in a noisy moving vehicle is a high-risk scenario. If unsure, deepen sedation; document depth at every set of obs</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="neuromonitoring" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Neuromonitoring Considerations</h2>
+            <CollapsibleSubsection title="Neuromonitoring Considerations">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Clinical neurological assessment is virtually impossible during transit (sedation, paralysis, vibration, noise).
               The clinician must therefore rely on surrogate physiological and device-based monitoring, and protect the brain
@@ -288,10 +299,11 @@ const TransferMedicineTopic = () => {
               <li><strong>Processed EEG / BIS</strong>: useful when paralysed to titrate sedation depth and detect non-convulsive seizures; vibration and electrical noise produce frequent artefact — interpret with caution</li>
               <li><strong>Glucose, sodium, temperature</strong>: hourly point-of-care glucose, Na (i-STAT or equivalent), continuous core temperature — all act as 'metabolic neuromonitors'</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="neuroprotection-strategies" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Neuroprotection Strategies in Transit</h2>
+            <CollapsibleSubsection title="Neuroprotection Strategies in Transit">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Neuroprotection is the active prevention of secondary brain injury. The mantra is
               <em> avoid hypoxia, hypotension, hypercarbia, hyperthermia, hyperglycaemia and hyponatraemia</em>.
@@ -318,10 +330,11 @@ const TransferMedicineTopic = () => {
             <p className="text-xs text-muted-foreground italic mt-3">
               Spinal cord injury: maintain MAP ≥85–90 mmHg for 7 days; full spinal precautions (collar, blocks, log-roll); avoid suxamethonium &gt;48 h after injury (hyperkalaemia).
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="in-transit" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">In-Transit Emergencies</h2>
+            <CollapsibleSubsection title="In-Transit Emergencies">
             <div className="space-y-3">
               {[
                 { problem: "Sudden desaturation", action: "DOPES — Displaced tube? Obstruction (suction)? Pneumothorax (re-examine, needle decompression if tension)? Equipment (disconnect, hand-ventilate with self-inflating bag on 100% O₂)? Stacking (disconnect, allow exhalation)." },
@@ -337,10 +350,11 @@ const TransferMedicineTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="specialist" exams={[Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Specialist Transfers</h2>
+            <CollapsibleSubsection title="Specialist Transfers">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>ECMO retrieval</strong>: undertaken by regional centres (e.g. UK adult severe respiratory failure service). Cannulation at the referring hospital, then transfer on VV/VA-ECMO. Risks: cannula displacement, circuit air, anticoagulation bleeding</li>
               <li><strong>IABP / mechanical circulatory support</strong>: continue counterpulsation; secure femoral cannula; trigger from ECG/arterial waveform robust to vibration; check battery life and helium reserve</li>
@@ -348,10 +362,11 @@ const TransferMedicineTopic = () => {
               <li><strong>Obstetric</strong>: left lateral tilt, anticipate delivery en route (pack delivery kit), liaise with receiving obstetric and neonatal teams</li>
               <li><strong>Paediatric</strong>: regional retrieval team (e.g. STRS, NWTS, KIDS); weight-based equipment; thermoregulation paramount</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="human-factors" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Human Factors, Safety &amp; Governance</h2>
+            <CollapsibleSubsection title="Human Factors, Safety & Governance">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Team safety</strong>: high-visibility clothing, seat belts, safe driving (no 'blue lights' for stable patients — most ambulance crashes occur on emergency response)</li>
               <li><strong>Fatigue &amp; communication</strong>: long transfers degrade vigilance; brief receiving unit before departure and en route; use closed-loop communication</li>
@@ -359,6 +374,7 @@ const TransferMedicineTopic = () => {
               <li><strong>Documentation &amp; audit</strong>: every transfer audited for adverse events (hypoxia, hypotension, equipment failure, time delays); feedback to referring and retrieval teams</li>
               <li><strong>Consent &amp; indemnity</strong>: best-interests documentation when patient lacks capacity; medical indemnity for transfers including air/international</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

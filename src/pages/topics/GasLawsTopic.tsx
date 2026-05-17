@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { GasLawsDiagram } from "@/components/diagrams/GasLawsDiagram";
@@ -141,16 +142,17 @@ const GasLawsTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               Understanding gas behaviour is fundamental to anaesthetic practice. Gases are used for patient ventilation, as
               carrier gases for volatile agents, and in various monitoring systems. The gas laws describe the relationships
               between pressure, volume, temperature, and amount of gas under defined conditions.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Boyle's Law</h2>
+            <CollapsibleSubsection title="Boyle's Law">
             <p className="text-foreground/90 leading-relaxed">
               At constant temperature, the volume of a given mass of gas is inversely proportional to its pressure
               (<strong>P₁V₁ = P₂V₂</strong>). This is clinically relevant to the function of bellows ventilators,
@@ -163,10 +165,11 @@ const GasLawsTopic = () => {
                 expand, potentially converting a simple pneumothorax to a tension pneumothorax.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Charles' Law</h2>
+            <CollapsibleSubsection title="Charles' Law">
             <p className="text-foreground/90 leading-relaxed">
               At constant pressure, the volume of a gas is directly proportional to its absolute temperature
               (<strong>V₁/T₁ = V₂/T₂</strong>). Temperature must be measured in Kelvin. This explains why gas volumes
@@ -179,10 +182,11 @@ const GasLawsTopic = () => {
                 Charles' law, as gas expands approximately 6% when warmed from 20°C to 37°C (310/293 = 1.058).
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gay-Lussac's Law</h2>
+            <CollapsibleSubsection title="Gay-Lussac's Law">
             <p className="text-foreground/90 leading-relaxed">
               At constant volume, the pressure of a fixed mass of gas is directly proportional to its absolute temperature
               (<strong>P₁/T₁ = P₂/T₂</strong>). As temperature rises, gas molecules move faster and strike the rigid
@@ -197,10 +201,11 @@ const GasLawsTopic = () => {
                 pressures and rupture.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Combined Gas Law</h2>
+            <CollapsibleSubsection title="The Combined Gas Law">
             <p className="text-foreground/90 leading-relaxed">
               Boyle's, Charles' and Gay-Lussac's laws can be unified into a single expression that relates pressure,
               volume and absolute temperature for a fixed mass of gas:
@@ -230,10 +235,11 @@ const GasLawsTopic = () => {
                 being corrected to BTPS or STPD for metabolic calculations — relies directly on the combined gas law.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dalton's Law of Partial Pressures</h2>
+            <CollapsibleSubsection title="Dalton's Law of Partial Pressures">
             <p className="text-foreground/90 leading-relaxed">
               In a mixture of gases, the total pressure equals the sum of the partial pressures of each constituent gas
               (<strong>Pₜₒₜₐₗ = P₁ + P₂ + P₃ + ...</strong>). The partial pressure of each gas is proportional to its
@@ -247,20 +253,22 @@ const GasLawsTopic = () => {
                 FiO₂ at altitude and during hyperbaric therapy.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Ideal Gas Law</h2>
+            <CollapsibleSubsection title="The Ideal Gas Law">
             <p className="text-foreground/90 leading-relaxed">
               The ideal gas equation <strong>PV = nRT</strong> combines all three laws into a single expression, where
               P = pressure, V = volume, n = number of moles, R = universal gas constant (8.314 J·mol⁻¹·K⁻¹), and
               T = absolute temperature. Real gases deviate from ideal behaviour at high pressures and low temperatures,
               described by the van der Waals equation.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Critical Temperature & Critical Pressure</h2>
+            <CollapsibleSubsection title="Critical Temperature & Critical Pressure">
             <p className="text-foreground/90 leading-relaxed">
               The <strong>critical temperature</strong> of a substance is the temperature above which it cannot be
               liquefied by the application of pressure alone, no matter how great. The <strong>critical pressure</strong>
@@ -311,10 +319,11 @@ const GasLawsTopic = () => {
                 <em> falls</em> during heavy use — frost may form on the outside of the cylinder.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Andrews' Isotherms — N₂O on a P–V Diagram</h2>
+            <CollapsibleSubsection title="Andrews' Isotherms — N₂O on a P–V Diagram">
             <p className="text-foreground/90 leading-relaxed">
               Thomas Andrews' classic 1869 experiments on CO₂ produced the first family of isotherms — curves of
               pressure against volume at constant temperature — that revealed the nature of the critical point. The same
@@ -370,10 +379,11 @@ const GasLawsTopic = () => {
                 times before clinical use.
               </li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Joule–Thomson Effect & Adiabatic Expansion</h2>
+            <CollapsibleSubsection title="Joule–Thomson Effect & Adiabatic Expansion">
             <p className="text-foreground/90 leading-relaxed">
               When a real gas expands, its temperature changes. Two distinct mechanisms operate in clinical practice:
               <strong> adiabatic expansion</strong> (work done by the gas as it pushes back its surroundings, no heat
@@ -453,10 +463,11 @@ const GasLawsTopic = () => {
                 than a self-cooling jet.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Henry's Law</h2>
+            <CollapsibleSubsection title="Henry's Law">
             <p className="text-foreground/90 leading-relaxed">
               At constant temperature, the amount of gas dissolved in a liquid is directly proportional to the partial
               pressure of that gas above the liquid. This is fundamental to understanding oxygen and carbon dioxide transport
@@ -470,6 +481,7 @@ const GasLawsTopic = () => {
                 at a given partial pressure.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>

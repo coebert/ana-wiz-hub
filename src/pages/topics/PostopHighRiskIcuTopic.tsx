@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { postopHighRiskIcuQuestions } from "@/data/quizzes";
@@ -117,7 +118,7 @@ const PostopHighRiskIcuTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Defining the High-Risk Surgical Patient</h2>
+            <CollapsibleSubsection title="Defining the High-Risk Surgical Patient" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Pearse&apos;s landmark 2006 audit demonstrated that 12.5% of inpatient surgery is &quot;high-risk&quot; yet accounts for ~80% of perioperative deaths, and that fewer than 15% of these patients were admitted to critical care. This drove the NCEPOD <em>Knowing the Risk</em> report (2011), the RCS/AAGBI&nbsp;2018 standards and the CPOC consensus 2020.
             </p>
@@ -141,10 +142,11 @@ const PostopHighRiskIcuTopic = () => {
                 </ul>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Risk Scores in Common Use</h2>
+            <CollapsibleSubsection title="Risk Scores in Common Use">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -165,10 +167,11 @@ const PostopHighRiskIcuTopic = () => {
               </table>
             </div>
             <PostopRiskCalculators />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Indications for Postoperative Level 2 / 3 Care</h2>
+            <CollapsibleSubsection title="Indications for Postoperative Level 2 / 3 Care">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The decision is taken pre-operatively, ideally at MDT, and re-confirmed at the WHO sign-out. CPOC 2020 and NELA recommend a critical-care bed for any of:
             </p>
@@ -180,10 +183,11 @@ const PostopHighRiskIcuTopic = () => {
               <li>Need for invasive haemodynamic monitoring or dense epidural / regional analgesia requiring close observation</li>
               <li>Patient with pre-existing organ failure, frailty or significant cardiopulmonary disease undergoing major surgery</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Theatre-to-ICU Handover</h2>
+            <CollapsibleSubsection title="Theatre-to-ICU Handover">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Structured handover (e.g. <strong>SBAR / RSVP</strong> + iPASS) reduces information loss by ~50%. The receiving team should be pre-warned, the patient transferred with continuous monitoring and a documented handover proforma.
             </p>
@@ -211,10 +215,11 @@ const PostopHighRiskIcuTopic = () => {
                 </ul>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Goal-Directed Therapy</h2>
+            <CollapsibleSubsection title="Postoperative Goal-Directed Therapy">
             <GoalDirectedTherapyAnimation />
             <div className="space-y-2 mt-4">
               {[
@@ -233,10 +238,11 @@ const PostopHighRiskIcuTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Recognising &amp; Pre-empting Complications</h2>
+            <CollapsibleSubsection title="Recognising & Pre-empting Complications">
             <ComplicationBundlesAnimation />
             <div className="grid sm:grid-cols-2 gap-3 mt-4">
               <div className="p-4 rounded-lg border border-border">
@@ -276,10 +282,11 @@ const PostopHighRiskIcuTopic = () => {
                 </p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Evidence Base — Trials &amp; Audits to Quote</h2>
+            <CollapsibleSubsection title="Evidence Base — Trials & Audits to Quote">
             <div className="space-y-2">
               {[
                 { trial: "Pearse 2006 (UK cohort)", result: "12.5% of surgery is high-risk yet accounts for ~80% of perioperative deaths; only 15% admitted to critical care. Foundational for UK perioperative policy." },
@@ -299,13 +306,15 @@ const PostopHighRiskIcuTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Long-term Outcomes &amp; Rehabilitation</h2>
+            <CollapsibleSubsection title="Long-term Outcomes & Rehabilitation">
             <p className="text-muted-foreground leading-relaxed">
               30-day mortality is only the start of the story. Patients surviving major surgery + critical care frequently develop <strong>post-intensive care syndrome (PICS)</strong> — physical deconditioning, cognitive impairment and psychological morbidity. Early mobilisation (TEAM trial showed no harm but no clear functional benefit), structured ICU follow-up clinics, and rehabilitation prescriptions (NICE CG83) are now embedded in CPOC pathways. Engage the patient and family in shared decisions about treatment escalation BEFORE surgery — particularly in the frail and elderly — to align critical-care interventions with what matters to the patient.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="icu"

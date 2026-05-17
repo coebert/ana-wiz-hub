@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { daySurgeryQuestions } from "@/data/quizzes";
@@ -68,7 +69,7 @@ const DaySurgeryTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="selection" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Patient Selection</h2>
+            <CollapsibleSubsection title="Patient Selection" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The British Association of Day Surgery (BADS) recommends that ~80% of elective surgery be delivered as day case.
               Patient selection is based on medical, surgical and social criteria — not on a single physiological cut-off.
@@ -80,20 +81,22 @@ const DaySurgeryTopic = () => {
               <li><strong>Social</strong>: responsible adult escort, suitable home environment, telephone access, within 1 h of hospital</li>
               <li><strong>Anticoagulants</strong>: follow local bridging protocols. DOACs often omitted on the morning of surgery</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="anaesthetic-technique" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Anaesthetic Principles</h2>
+            <CollapsibleSubsection title="Anaesthetic Principles">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Short-acting agents</strong>: propofol, remifentanil, desflurane/sevoflurane, mivacurium/sugammadex</li>
               <li><strong>PONV prevention</strong>: multimodal (dexamethasone + ondansetron). Consider TIVA for high-risk; avoid N₂O</li>
               <li><strong>Multimodal analgesia</strong>: paracetamol + NSAID + local/regional anaesthesia; take-home analgesics with clear instructions</li>
               <li><strong>Regional anaesthesia</strong>: excellent for day case — reduces opioid requirement. Single-shot peripheral nerve blocks preferred. Counsel about <strong>rebound pain</strong> as the block wears off</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="discharge" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Discharge Criteria</h2>
+            <CollapsibleSubsection title="Discharge Criteria">
             <div className="space-y-3">
               {[
                 { criterion: "Vital signs", detail: "Stable for ≥1 h. Within 20% of preoperative baseline" },
@@ -109,6 +112,7 @@ const DaySurgeryTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

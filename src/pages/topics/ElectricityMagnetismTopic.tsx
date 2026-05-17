@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import ElectricityMagnetismDiagram from "@/components/diagrams/ElectricityMagnetismDiagram";
@@ -67,7 +68,7 @@ const ElectricityMagnetismTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Electrical principles are fundamental to understanding anaesthetic and monitoring equipment. From the simple
               application of Ohm's law in understanding electrical safety, to the Wheatstone bridge in arterial pressure
@@ -75,15 +76,17 @@ const ElectricityMagnetismTopic = () => {
               physics curriculum. Capacitance and inductance govern the behaviour of AC circuits and are essential for
               understanding defibrillators, diathermy, and signal filtering in monitoring equipment.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
+            <CollapsibleSubsection title="Interactive Diagrams">
             <ElectricityMagnetismDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="ohms-law" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Ohm's Law & Circuit Fundamentals</h2>
+            <CollapsibleSubsection title="Ohm's Law & Circuit Fundamentals">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Ohm's law (V = IR)</strong> is the fundamental relationship between voltage (potential difference in volts),
@@ -100,10 +103,11 @@ const ElectricityMagnetismTopic = () => {
                 why diathermy (0.4–3 MHz) can pass through the body without stimulating nerves or muscles.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="capacitance" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Capacitance</h2>
+            <CollapsibleSubsection title="Capacitance">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 A <strong>capacitor</strong> stores energy in an electric field between two conducting plates separated by an
@@ -118,10 +122,11 @@ const ElectricityMagnetismTopic = () => {
                 safety circuits in diathermy equipment.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="inductance" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Inductance & Transformers</h2>
+            <CollapsibleSubsection title="Inductance & Transformers">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 An <strong>inductor</strong> stores energy in a magnetic field created by current flowing through a coil.
@@ -137,10 +142,11 @@ const ElectricityMagnetismTopic = () => {
                 continuously checks for earth faults.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="wheatstone" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Wheatstone Bridge</h2>
+            <CollapsibleSubsection title="Wheatstone Bridge">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The <strong>Wheatstone bridge</strong> is a circuit of four resistors arranged in a diamond configuration with a
@@ -161,6 +167,7 @@ const ElectricityMagnetismTopic = () => {
                 plethysmography</strong> for DVT diagnosis.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

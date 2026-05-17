@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { neuroanaesthesiaQuestions } from "@/data/quizzes";
 import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDiagram";
@@ -46,7 +47,7 @@ const NeuroanaesthesiaTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cerebral Physiology for Anaesthesia</h2>
+            <CollapsibleSubsection title="Cerebral Physiology for Anaesthesia" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Neuroanaesthesia is built on a small number of physiological levers — cerebral blood flow, intracranial pressure, and cerebral perfusion pressure — and how anaesthetic agents and ventilatory choices manipulate them.
             </p>
@@ -60,10 +61,11 @@ const NeuroanaesthesiaTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Normal ICP: 5–15 mmHg. CPP = MAP − ICP. Target CPP &gt;60 mmHg. Monro-Kellie doctrine: brain (80%), blood (10%), CSF (10%) — compensatory mechanisms exhaust rapidly.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthetic Effects on CBF & CMRO₂</h2>
+            <CollapsibleSubsection title="Anaesthetic Effects on CBF & CMRO₂">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -83,10 +85,11 @@ const NeuroanaesthesiaTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CC1.4"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICP Management</h2>
+            <CollapsibleSubsection title="ICP Management">
             <div className="space-y-2">
               {[
                 { step: "Head-up 30°", detail: "Improves venous drainage. Ensure head in neutral position — avoid jugular vein compression." },
@@ -102,10 +105,11 @@ const NeuroanaesthesiaTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Specific Neurosurgical Considerations</h2>
+            <CollapsibleSubsection title="Specific Neurosurgical Considerations">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Posterior Fossa Surgery</p>
@@ -116,6 +120,7 @@ const NeuroanaesthesiaTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Eloquent cortex surgery (speech, motor). Asleep-awake-asleep technique. Scalp block + dexmedetomidine/remifentanil. Cortical mapping with direct electrical stimulation.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

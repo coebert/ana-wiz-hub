@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import DefibrillationPacingDiagram from "@/components/diagrams/DefibrillationPacingDiagram";
@@ -70,7 +71,7 @@ const DefibrillationPacingTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Defibrillation delivers a controlled electrical shock to depolarise a critical mass of myocardium simultaneously,
               terminating fibrillation and allowing the sinoatrial node to resume organised pacing. Cardiac pacing provides
@@ -78,15 +79,17 @@ const DefibrillationPacingTopic = () => {
               delivery, waveform design, and electromagnetic interference is essential for the Primary FRCA and safe perioperative
               management of patients with cardiac implantable electronic devices (CIEDs).
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
+            <CollapsibleSubsection title="Interactive Diagrams">
             <DefibrillationPacingDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="waveforms" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Defibrillation Waveforms</h2>
+            <CollapsibleSubsection title="Defibrillation Waveforms">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Monophasic damped sinusoidal (MDS)</strong> waveforms deliver current in a single direction. They require
@@ -105,10 +108,11 @@ const DefibrillationPacingTopic = () => {
                 of patient characteristics.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="tti" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Transthoracic Impedance</h2>
+            <CollapsibleSubsection title="Transthoracic Impedance">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Transthoracic impedance (TTI) is the resistance to current flow across the chest, typically <strong>70–80 Ω</strong> but
@@ -127,10 +131,11 @@ const DefibrillationPacingTopic = () => {
                 preferred in certain circumstances.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="pacing-modes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Pacemaker Modes</h2>
+            <CollapsibleSubsection title="Pacemaker Modes">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Pacemakers are classified using the <strong>NASPE/BPEG Generic (NBG) code</strong>, a five-position system describing
@@ -149,10 +154,11 @@ const DefibrillationPacingTopic = () => {
                 information about battery status (rate decreases as battery depletes).
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="emi" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.5"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Electromagnetic Interference</h2>
+            <CollapsibleSubsection title="Electromagnetic Interference">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Surgical diathermy</strong> is the most significant source of EMI in the operating theatre. Monopolar diathermy
@@ -172,6 +178,7 @@ const DefibrillationPacingTopic = () => {
                 confirm settings and function.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

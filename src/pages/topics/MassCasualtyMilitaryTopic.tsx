@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { massCasualtyMilitaryQuestions } from "@/data/quizzes";
@@ -130,7 +131,7 @@ const MassCasualtyMilitaryTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="major-incident" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Defining and Declaring a Major Incident</h2>
+            <CollapsibleSubsection title="Defining and Declaring a Major Incident" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               A major incident exists when the location, number, severity or type of live casualties requires extraordinary resources.
               It can be declared by the first emergency service on scene; the receiving hospital independently declares an Internal Major Incident.
@@ -141,10 +142,11 @@ const MassCasualtyMilitaryTopic = () => {
               <li><strong>Hospital response phases</strong>: Activation → Reception &amp; triage → Definitive care → Recovery &amp; debrief</li>
               <li><strong>Command structure</strong>: Gold (strategic) – Silver (tactical) – Bronze (operational); pre-printed action cards and tabards</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="triage" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Triage Tools</h2>
+            <CollapsibleSubsection title="Triage Tools">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Triage is dynamic — every casualty is re-triaged at each stage of the chain.
             </p>
@@ -163,10 +165,11 @@ const MassCasualtyMilitaryTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="crm" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 11"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Crisis Resource Management (CRM)</h2>
+            <CollapsibleSubsection title="Crisis Resource Management (CRM)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               CRM (Gaba, Rall, Howard) translates aviation human-factors science into the operating theatre and ICU.
               In a mass-casualty event, technical skill is rarely the bottleneck — coordination, communication and cognition are.
@@ -183,10 +186,11 @@ const MassCasualtyMilitaryTopic = () => {
               <li><strong>Re-evaluate</strong> repeatedly; avoid fixation error; "Is the patient getting better?"</li>
               <li><strong>Hot &amp; cold debrief</strong>: psychological safety, learning not blaming, document for governance</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="dcr-dcs" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Damage-Control Resuscitation &amp; Surgery</h2>
+            <CollapsibleSubsection title="Damage-Control Resuscitation & Surgery">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The defining advance from military experience over the last two decades.
               The lethal triad — hypothermia, acidosis, coagulopathy — feeds itself; DCR/DCS is designed to interrupt the loop.
@@ -200,10 +204,11 @@ const MassCasualtyMilitaryTopic = () => {
               <li><strong>Damage-control surgery</strong>: stop bleeding, control contamination, abbreviate (&lt;90 min), pack and temporary closure; planned return for definitive surgery once physiology corrected</li>
               <li><strong>Adjuncts</strong>: REBOA (resuscitative endovascular balloon occlusion of aorta) Zone 1/3; thoracotomy for penetrating chest with witnessed arrest</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="military" exams={[Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Military Anaesthesia &amp; Critical Care</h2>
+            <CollapsibleSubsection title="Military Anaesthesia & Critical Care">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Defence Medical Services deliver care along a graded chain. The same Roles framework underpins NATO doctrine and informs civilian
               regional trauma networks and pre-hospital emergency medicine.
@@ -227,10 +232,11 @@ const MassCasualtyMilitaryTopic = () => {
               Key military-derived practices now standard in civilian trauma: tourniquets, TXA, 1:1:1 / whole blood, REBOA,
               forward damage-control surgery, junctional haemorrhage devices, and pre-hospital blood products.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="special-casualties" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Special Casualty Categories</h2>
+            <CollapsibleSubsection title="Special Casualty Categories">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Blast injury</strong>: primary (barotrauma — blast lung, tympanic rupture, bowel), secondary (fragments), tertiary (displacement), quaternary (burns, crush, inhalation). Always examine tympanic membranes and anticipate delayed ARDS</li>
               <li><strong>Ballistic / penetrating</strong>: damage-control surgery; consider thoracotomy for cardiac arrest with penetrating chest trauma &lt;15 min downtime</li>
@@ -239,10 +245,11 @@ const MassCasualtyMilitaryTopic = () => {
               <li><strong>Crush syndrome</strong>: aggressive crystalloid before extrication (1 L/h adult), monitor for hyperkalaemia, rhabdomyolysis, AKI; alkalinisation of urine if myoglobinuric</li>
               <li><strong>Paediatric</strong>: weight-based drug calculations (Broselow tape), psychological support, parents not always present, smaller margin for error in fluid &amp; airway management</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="welfare-debrief" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Team Welfare, Debriefing &amp; Governance</h2>
+            <CollapsibleSubsection title="Team Welfare, Debriefing & Governance">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Hot debrief</strong> immediately after the event — facts only, what went well, what to change, no blame</li>
               <li><strong>Cold debrief</strong> within 1–2 weeks with full team; consider TRiM (Trauma Risk Management) screening for staff at risk of PTSD</li>
@@ -251,6 +258,7 @@ const MassCasualtyMilitaryTopic = () => {
               <li><strong>Audit &amp; learning</strong>: M&amp;M review, regional and national reporting (TARN), update plans and run further exercises</li>
               <li><strong>Exercise regularly</strong>: live exercises, table-top, in-situ simulation — proven to improve real performance</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

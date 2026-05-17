@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { brachialPlexusQuestions } from "@/data/quizzes";
@@ -132,7 +133,7 @@ const BrachialPlexusTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="organisation" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Anatomy"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Organisation: Roots → Trunks → Divisions → Cords → Branches</h2>
+            <CollapsibleSubsection title="Organisation: Roots → Trunks → Divisions → Cords → Branches" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Formed by ventral rami of C5–T1. Mnemonic: "Robert Taylor Drinks Cold Beer" (Roots, Trunks, Divisions, Cords, Branches).
             </p>
@@ -150,6 +151,7 @@ const BrachialPlexusTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
@@ -160,7 +162,7 @@ const BrachialPlexusTopic = () => {
           </ExamSection>
 
           <ExamSection id="approaches" exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Regional Anaesthesia"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Block Approaches & Anatomy</h2>
+            <CollapsibleSubsection title="Block Approaches & Anatomy">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Interscalene (Roots/Trunks)</p>
@@ -179,6 +181,7 @@ const BrachialPlexusTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Terminal branches around 3rd part of axillary artery. Musculocutaneous already left (separate block in coracobrachialis). Safest approach — no pneumothorax risk.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="ultrasound" exams={[Exam.FINAL]}>
@@ -186,7 +189,7 @@ const BrachialPlexusTopic = () => {
           </ExamSection>
 
           <ExamSection id="terminal-nerves" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Key Terminal Nerves</h2>
+            <CollapsibleSubsection title="Key Terminal Nerves">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -206,6 +209,7 @@ const BrachialPlexusTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

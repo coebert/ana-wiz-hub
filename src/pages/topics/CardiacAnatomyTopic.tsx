@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { cardiacAnatomyQuestions } from "@/data/quizzes";
 import CardiacAnatomyDiagram from "@/components/diagrams/CardiacAnatomyDiagram";
@@ -110,7 +111,7 @@ const CardiacAnatomyTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Chambers & Valves</h2>
+            <CollapsibleSubsection title="Heart Chambers & Valves" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The heart lies in the middle mediastinum, enclosed in pericardium. Two-thirds lies to the left of the midline. The cardiac skeleton (fibrous rings) provides electrical insulation between atria and ventricles.
             </p>
@@ -124,10 +125,11 @@ const CardiacAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">LA: smooth-walled (except appendage). 4 pulmonary veins enter posteriorly. Mitral valve: 2 leaflets with chordae tendineae to papillary muscles. LV: thick-walled (8–15 mm). Aortic valve: 3 semilunar cusps with sinuses of Valsalva.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coronary Arteries</h2>
+            <CollapsibleSubsection title="Coronary Arteries">
             <div className="space-y-2">
               {[
                 { artery: "Left Main Stem (LMS)", detail: "2 cm from left coronary sinus → divides into LAD and circumflex. Short — stenosis here is 'widow-maker'." },
@@ -142,10 +144,11 @@ const CardiacAnatomyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Conducting System</h2>
+            <CollapsibleSubsection title="Conducting System">
             <p className="text-muted-foreground leading-relaxed mb-3">
               SA node (pacemaker, 60–100 bpm) → atrial conduction → AV node (inherent rate 40–60, 0.1s delay) → bundle of His → right and left bundle branches → Purkinje fibres → ventricular muscle.
             </p>
@@ -159,10 +162,11 @@ const CardiacAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Triangle of Koch. Supplied by AV nodal artery (from RCA in 80%). Only site of normal atrio-ventricular conduction. Ablation target in AF.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Great Vessels & Pericardium</h2>
+            <CollapsibleSubsection title="Great Vessels & Pericardium">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Aortic Arch</p>
@@ -173,6 +177,7 @@ const CardiacAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Fibrous + serous (parietal and visceral/epicardium). Pericardial space: 15–50 ml fluid. Transverse sinus: between aorta/PA anteriorly and SVC/pulmonary veins posteriorly — surgically important for cross-clamping.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

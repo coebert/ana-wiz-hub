@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { AirwayDevicesDiagram } from "@/components/diagrams/AirwayDevicesDiagram";
@@ -144,36 +145,39 @@ const AirwayManagementTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               Airway management is the cornerstone of safe anaesthetic and critical care practice. The Difficult Airway
               Society (DAS) algorithms standardise the approach to anticipated and unanticipated difficulty, supported by
               structured assessment tools and a hierarchy of rescue techniques culminating in front-of-neck access.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pre-operative airway assessment</h2>
+            <CollapsibleSubsection title="Pre-operative airway assessment">
             <p className="text-foreground/90 leading-relaxed">
               Systematic assessment is performed before every anaesthetic. No single test reliably predicts difficulty —
               composite scores (Wilson, El-Ganzouri) outperform single bedside tests. Document Mallampati, thyromental
               distance, mouth opening, neck movement, dentition, and previous airway records. Ultrasound of the cricothyroid
               membrane is increasingly recommended for predicted difficult anatomy or obesity.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway equipment</h2>
+            <CollapsibleSubsection title="Airway equipment">
             <p className="text-foreground/90 leading-relaxed">
               Modern practice favours <strong>2nd-generation supraglottic airways</strong> (i-gel, ProSeal LMA) with gastric
               drain ports and seal pressures of 25–35 cmH₂O. Videolaryngoscopy (Macintosh-blade or hyperangulated) is now
               recommended as default in patients with predicted difficulty, with Cochrane evidence supporting reduced failed
               intubation rates compared with direct laryngoscopy.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">DAS 2015 algorithm — four sequential plans</h2>
+            <CollapsibleSubsection title="DAS 2015 algorithm — four sequential plans">
             <div className="space-y-3">
               {[
                 { plan: "Plan A", title: "Facemask ventilation & tracheal intubation", detail: "Optimise position (ramped), pre-oxygenation, videolaryngoscopy as default/early. Maximum 3+1 intubation attempts. Maintain oxygenation throughout." },
@@ -190,20 +194,22 @@ const AirwayManagementTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Awake fibreoptic intubation</h2>
+            <CollapsibleSubsection title="Awake fibreoptic intubation">
             <p className="text-foreground/90 leading-relaxed">
               Successful AFOI requires systematic topicalisation of every sensory zone of the airway: V₁/V₂ (nasal),
               glossopharyngeal IX (oropharynx, posterior tongue), internal branch of superior laryngeal X (vallecula, base
               of tongue), and recurrent laryngeal X (below cords). Antisialogogue, light sedation (remifentanil TCI or
               dexmedetomidine) and a planned backup are mandatory.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Front-of-neck access (FONA)</h2>
+            <CollapsibleSubsection title="Front-of-neck access (FONA)">
             <p className="text-foreground/90 leading-relaxed mb-3">
               The DAS-recommended scalpel-bougie-tube technique for can't intubate, can't oxygenate (CICO):
             </p>
@@ -215,10 +221,11 @@ const AirwayManagementTopic = () => {
               <li>Railroad 6.0 mm cuffed ETT over bougie</li>
               <li>Inflate cuff, ventilate, confirm with capnography</li>
             </ol>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Partial airway obstruction — level-specific management</h2>
+            <CollapsibleSubsection title="Partial airway obstruction — level-specific management">
             <p className="text-foreground/90 leading-relaxed mb-4">
               Partial obstruction is a dynamic problem: the noise, timing in the respiratory cycle and response to
               positioning all localise the lesion before any instrumentation. Mis-localising the level is the commonest
@@ -391,6 +398,7 @@ const AirwayManagementTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

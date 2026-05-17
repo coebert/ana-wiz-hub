@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { clinicalIncidentsQuestions } from "@/data/quizzes";
@@ -132,7 +133,7 @@ const ClinicalIncidentsTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="anaphylaxis" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Anaphylaxis</h2>
+            <CollapsibleSubsection title="Anaphylaxis" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (NAP6). NMBAs are the commonest cause (~60%), followed by antibiotics (especially teicoplanin), chlorhexidine, and patent blue dye.
             </p>
@@ -152,10 +153,11 @@ const ClinicalIncidentsTopic = () => {
             <div className="mt-4">
               <AnaphylaxisCascadeDiagram />
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="mh" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Malignant Hyperthermia (MH)</h2>
+            <CollapsibleSubsection title="Malignant Hyperthermia (MH)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Autosomal dominant ryanodine receptor (RYR1) mutation. Triggered by volatile agents and suxamethonium. Incidence ~1:5,000–15,000. Mortality now &lt; 5% with dantrolene.
             </p>
@@ -174,10 +176,11 @@ const ClinicalIncidentsTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Repeat every 5–10 min up to 10 mg/kg. Discontinue triggers, hyperventilate with 100% O₂, active cooling, treat hyperkalaemia.</p>
             </div>
             <MHPathophysiologyDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="last" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Local Anaesthetic Systemic Toxicity (LAST)</h2>
+            <CollapsibleSubsection title="Local Anaesthetic Systemic Toxicity (LAST)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               CNS toxicity precedes cardiac toxicity (except with bupivacaine which can cause simultaneous cardiac arrest). Maximum doses: lidocaine 3 mg/kg (7 with adrenaline), bupivacaine 2 mg/kg.
             </p>
@@ -191,17 +194,19 @@ const ClinicalIncidentsTopic = () => {
                 <li><strong>Intralipid 20%</strong>: 1.5 mL/kg bolus, then 15 mL/kg/h infusion (max 12 mL/kg total)</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="awareness" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Accidental Awareness Under Anaesthesia</h2>
+            <CollapsibleSubsection title="Accidental Awareness Under Anaesthesia">
             <p className="text-muted-foreground leading-relaxed">
               NAP5 (2014): incidence ~1:19,000. Risk factors: TIVA without BIS, RSI, cardiac surgery, CS under GA, junior anaesthetist, failure to check equipment. Prevention: processed EEG monitoring (BIS 40–60), end-tidal agent monitoring for volatiles, avoid paralysis unless necessary. Management: immediate acknowledgement, psychological support, formal follow-up.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="death-on-table" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Death on the Table</h2>
+            <CollapsibleSubsection title="Death on the Table">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Intra-operative cardiac arrest occurs in ~5–7 per 10,000 anaesthetics; mortality of intra-operative arrest remains ~30–70% (NAP7, 2023). Most are anticipated in high-risk emergency surgery, but a minority are sudden and unexpected. Management has three parallel strands — <strong>resuscitation</strong>, <strong>communication / governance</strong>, and <strong>aftercare of staff and family</strong>.
@@ -253,6 +258,7 @@ const ClinicalIncidentsTopic = () => {
                 NAP7 (RCoA, 2023) — Peri-operative Cardiac Arrest; AAGBI Quick Reference Handbook (QRH 3-1 cardiac arrest, 3-2 anaphylaxis, 3-10 LAST); CQC Duty of Candour (Reg 20, 2014); Coroners and Justice Act 2009; NHS Patient Safety Incident Response Framework (2022); RCoA Wellbeing Resource Pack.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

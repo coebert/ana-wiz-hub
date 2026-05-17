@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -176,7 +177,7 @@ const CardiacElectrophysiologyTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               Cardiac electrophysiology underpins every beat we monitor in the anaesthetic room. The mechanical pump is
               driven by tightly co-ordinated ionic currents that generate the cardiac action potential, propagate
@@ -185,10 +186,11 @@ const CardiacElectrophysiologyTopic = () => {
               QT prolongation kills, why bradyarrhythmias dominate during high spinal block, and why baroreflex
               integrity matters at induction.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="action-potentials" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiac Action Potentials</h2>
+            <CollapsibleSubsection title="Cardiac Action Potentials">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The heart has two types of action potential: the fast-response (atrial/ventricular myocytes, Purkinje
               fibres) and the slow-response (SA and AV nodes). The interactive plots show membrane potential against
@@ -211,20 +213,22 @@ const CardiacElectrophysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="long-qt" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Long QT Syndrome & Torsades de Pointes</h2>
+            <CollapsibleSubsection title="Long QT Syndrome & Torsades de Pointes">
             <p className="text-muted-foreground leading-relaxed">
               Prolonged phase 3 repolarisation creates a window for L-type Ca²⁺ channel reactivation → early
               afterdepolarisations (EADs) → triggered polymorphic VT (torsades). Class III antiarrhythmics, IKr blockers
               (ondansetron, methadone, macrolides, fluoroquinolones), hypokalaemia and congenital LQT mutations stretch
               the action potential and collapse the repolarisation reserve.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="conduction" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Conduction System</h2>
+            <CollapsibleSubsection title="Conduction System">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Normal conduction: SA node → atrial myocardium → AV node (delay ~0.1 s) → Bundle of His → left and right
               bundle branches → Purkinje fibres → ventricular myocardium.
@@ -244,10 +248,11 @@ const CardiacElectrophysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="bp-regulation" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Blood Pressure Regulation</h2>
+            <CollapsibleSubsection title="Blood Pressure Regulation">
             <p className="text-foreground/90 leading-relaxed">
               Mean arterial pressure is the regulated variable that guarantees organ perfusion. It is the product
               of cardiac output and systemic vascular resistance (<strong>MAP = CO × SVR</strong>), so any control
@@ -283,10 +288,11 @@ const CardiacElectrophysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="vascular" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Vascular Physiology</h2>
+            <CollapsibleSubsection title="Vascular Physiology">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Arterioles</strong> are the major site of resistance — control organ blood flow via sympathetic tone and local metabolites (autoregulation).</li>
               <li><strong>Venous system</strong> contains ~65% of blood volume — capacitance vessels. Venoconstriction (α₁) increases preload.</li>
@@ -294,6 +300,7 @@ const CardiacElectrophysiologyTopic = () => {
               <li><strong>Special circulations</strong>: coronary (diastolic filling, metabolic autoregulation), cerebral (CO₂ reactivity, 50–150 mmHg autoregulation), renal (myogenic + TGF), pulmonary (HPV), hepatic (HABR).</li>
               <li><strong>Valsalva manoeuvre</strong>: Phase I (↑ MAP from ↑ intrathoracic pressure), Phase II (↓ VR → ↓ BP → baroreceptor ↑ HR), Phase III (release → transient ↓ BP), Phase IV (↑ VR → ↑ BP → reflex bradycardia/overshoot).</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamPitfallsCallout

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -119,16 +120,17 @@ const FoetalCirculationTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               The foetal circulation is uniquely designed to bypass the non-functioning lungs, directing oxygenated
               blood from the placenta to the systemic circulation via three key shunts. Understanding these pathways and
               their closure at birth is essential for managing neonatal physiology and congenital heart disease.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="shunts" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Three Foetal Shunts</h2>
+            <CollapsibleSubsection title="The Three Foetal Shunts">
             <div className="space-y-3">
               {[
                 {
@@ -150,10 +152,11 @@ const FoetalCirculationTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="flow-pathway" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Foetal Blood Flow Pathway</h2>
+            <CollapsibleSubsection title="Foetal Blood Flow Pathway">
             <div className="p-4 rounded-lg border border-border bg-secondary/20">
               <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside leading-relaxed">
                 <li>Oxygenated blood from the <strong>placenta</strong> travels via the <strong>umbilical vein</strong> (SpO₂ ~80%).</li>
@@ -165,10 +168,11 @@ const FoetalCirculationTopic = () => {
                 <li>Only ~10% of RV output passes through the lungs (high PVR).</li>
               </ol>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="oxygen-delivery" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Foetal Oxygen Delivery</h2>
+            <CollapsibleSubsection title="Foetal Oxygen Delivery">
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { label: "Umbilical Vein PaO₂", value: "~4.0 kPa (30 mmHg) — much lower than adult arterial." },
@@ -184,10 +188,11 @@ const FoetalCirculationTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="transitional" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PA_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Transitional Circulation at Birth</h2>
+            <CollapsibleSubsection title="Transitional Circulation at Birth">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>First breath</strong>: alveolar expansion → dramatic ↓ PVR (8–10×) → ↑ pulmonary blood flow.</li>
               <li><strong>Cord clamping</strong>: removes low-resistance placental circuit → ↑ SVR.</li>
@@ -196,10 +201,11 @@ const FoetalCirculationTopic = () => {
               <li><strong>Ductus venosus</strong> closes as umbilical venous flow ceases.</li>
               <li>Transition from <strong>parallel</strong> circulation (two ventricles in parallel) to <strong>series</strong> circulation (adult pattern).</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="pphn" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PA_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Persistent Pulmonary Hypertension of the Newborn (PPHN)</h2>
+            <CollapsibleSubsection title="Persistent Pulmonary Hypertension of the Newborn (PPHN)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Failure of the normal transitional changes leads to persistent pulmonary hypertension of the newborn:
             </p>
@@ -209,10 +215,11 @@ const FoetalCirculationTopic = () => {
               <li>Pre- vs post-ductal SpO₂ difference &gt;5% suggests PDA shunting.</li>
               <li>Management: optimise oxygenation and ventilation, inhaled nitric oxide (iNO 20 ppm), correct acidosis, consider ECMO.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="pharmacology" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PA_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pharmacological Manipulation of the Ductus</h2>
+            <CollapsibleSubsection title="Pharmacological Manipulation of the Ductus">
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { label: "Keep PDA Open", value: "PGE₁ (alprostadil) infusion — duct-dependent congenital heart disease (e.g. TGA, critical coarctation, pulmonary atresia)." },
@@ -224,6 +231,7 @@ const FoetalCirculationTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamPitfallsCallout

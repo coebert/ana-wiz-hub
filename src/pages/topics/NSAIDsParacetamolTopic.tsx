@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { DiagramSection } from "@/components/DiagramSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -135,7 +136,7 @@ const NSAIDsParacetamolTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="nsaid-mechanism" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">NSAIDs — Mechanism of Action</h2>
+            <CollapsibleSubsection title="NSAIDs — Mechanism of Action" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               NSAIDs inhibit cyclo-oxygenase (COX), blocking conversion of arachidonic acid to prostaglandins and thromboxanes.
               COX-1 is constitutive (GI protection, platelet TXA₂, renal PGE₂); COX-2 is inducible (inflammation, pain, fever).
@@ -156,10 +157,11 @@ const NSAIDsParacetamolTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="nsaid-adverse" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RCoA Final — Pain Medicine"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">NSAID Adverse Effects</h2>
+            <CollapsibleSubsection title="NSAID Adverse Effects">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>GI</strong>: ↓ PGE₂/PGI₂ → ↓ mucosal protection → ulceration, bleeding. Risk factors: age, H. pylori, steroids, anticoagulants. COX-2 selective drugs have lower GI risk</li>
               <li><strong>Renal</strong>: ↓ afferent arteriolar PGE₂ → ↓ GFR. Risk in hypovolaemia, CKD, ACEi/ARB use. Can cause Na⁺/H₂O retention, hyperkalaemia, papillary necrosis</li>
@@ -167,10 +169,11 @@ const NSAIDsParacetamolTopic = () => {
               <li><strong>Respiratory</strong>: aspirin-exacerbated respiratory disease (AERD) — COX inhibition shunts arachidonic acid to lipoxygenase pathway → ↑ leukotrienes → bronchospasm</li>
               <li><strong>Platelet</strong>: ↓ TXA₂ → ↓ aggregation. Aspirin effect lasts platelet lifespan (7-10 days); others reverse when drug clears</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="paracetamol" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Paracetamol (Acetaminophen)</h2>
+            <CollapsibleSubsection title="Paracetamol (Acetaminophen)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Mechanism</strong>: not fully understood. Central COX inhibition (COX-3?), serotonergic descending pathways, endocannabinoid system (AM404 metabolite), TRPV1 activation. Weak peripheral anti-inflammatory effect</li>
               <li><strong>PK</strong>: oral bioavailability ~80%, hepatic metabolism (glucuronidation 60%, sulphation 30%, CYP2E1 5% → NAPQI). IV onset ~5 min, peak effect ~1h. Adult dose 1g QDS (max 4g/day)</li>
@@ -178,6 +181,7 @@ const NSAIDsParacetamolTopic = () => {
               <li><strong>Treatment</strong>: N-acetylcysteine (NAC) — replenishes glutathione. Most effective within 8h. Staggered overdoses are higher risk than single timepoint. Use Rumack-Matthew nomogram (150 mg/kg treatment line)</li>
               <li><strong>Risk factors for toxicity</strong>: enzyme inducers (phenytoin, rifampicin, alcohol), glutathione depletion (malnutrition, HIV, anorexia), low body weight (&lt;50kg — dose reduce)</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="pharmacology"

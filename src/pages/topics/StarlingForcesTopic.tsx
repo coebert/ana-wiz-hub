@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -130,17 +131,18 @@ const StarlingForcesTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Transcapillary fluid exchange is governed by the balance of hydrostatic and oncotic pressures
               across the capillary wall. Ernest Starling's original 1896 hypothesis has been refined by the
               revised Starling–Levick model, which incorporates the glycocalyx layer as the primary barrier
               to protein filtration — fundamentally changing our understanding of fluid therapy.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="equation" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Starling Equation</h2>
+            <CollapsibleSubsection title="The Starling Equation">
             <div className="p-4 rounded-lg border border-border bg-secondary/20">
               <p className="font-mono text-sm text-foreground text-center mb-3">
                 Jv = Kf × [(Pc − Pi) − σ(πc − πi)]
@@ -155,10 +157,11 @@ const StarlingForcesTopic = () => {
                 <div><strong>πi</strong> = interstitial oncotic pressure</div>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="classic-vs-revised" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Classic vs Revised Model</h2>
+            <CollapsibleSubsection title="Classic vs Revised Model">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -192,10 +195,11 @@ const StarlingForcesTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="glycocalyx" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Endothelial Glycocalyx</h2>
+            <CollapsibleSubsection title="The Endothelial Glycocalyx">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>A 0.5–3 µm thick gel-like layer on the luminal surface of endothelial cells</li>
               <li>Composed of proteoglycans, glycosaminoglycans (heparan sulphate, hyaluronic acid), and glycoproteins</li>
@@ -205,10 +209,11 @@ const StarlingForcesTopic = () => {
               <li>Damage releases syndecan-1 and heparan sulphate into plasma (measurable biomarkers)</li>
               <li>Glycocalyx shedding → ↑ permeability → ↑ interstitial protein → oedema (explains why crystalloid boluses in sepsis are poorly retained)</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="fluid-therapy" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clinical Implications for Fluid Therapy</h2>
+            <CollapsibleSubsection title="Clinical Implications for Fluid Therapy">
             <div className="space-y-3">
               {[
                 { title: "Colloid vs Crystalloid Debate", desc: "The revised model explains why colloids don't stay intravascular as long as predicted by the classic model. With an intact glycocalyx, both crystalloid and colloid filtrate at similar rates. In glycocalyx damage (sepsis), colloid advantage is further diminished." },
@@ -222,10 +227,11 @@ const StarlingForcesTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="oedema" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Oedema Formation</h2>
+            <CollapsibleSubsection title="Oedema Formation">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Oedema occurs when the rate of capillary filtration exceeds lymphatic drainage capacity. Safety factors against oedema include:
             </p>
@@ -235,6 +241,7 @@ const StarlingForcesTopic = () => {
               <li><strong>Wash-down of interstitial protein</strong>: dilution of πi reduces oncotic pull</li>
               <li>Total safety factor ≈ 17 mmHg — Pc must rise by this amount before oedema develops</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamPitfallsCallout
