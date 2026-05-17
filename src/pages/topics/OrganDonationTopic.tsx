@@ -6,6 +6,8 @@ import { organDonationQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { DiagramSection } from "@/components/DiagramSection";
+import { BrainstemDeathCascadeDiagram } from "@/components/diagrams/BrainstemDeathCascadeDiagram";
 
 const objectives = [
   "Distinguish DBD and DCD pathways and the legal time of death for each.",
