@@ -5,6 +5,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { ophthalmicAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import {
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
   SubTenonsBlockIllustration,
   PeribulbarBlockIllustration,
   RetrobulbarBlockIllustration,
@@ -176,6 +177,16 @@ const OphthalmicAnaesthesiaTopic = () => {
               monitoring, IV access and resuscitation drugs immediately available.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "IOP is raised by coughing, suxamethonium, hypoventilation, hypoxia, light anaesthesia and external pressure (mask).",
+              "Oculocardiac reflex: traction on extraocular muscles → bradycardia/asystole — stop traction, atropine if persistent.",
+              "Peribulbar > retrobulbar (lower risk of globe perforation, optic-nerve injury, brainstem anaesthesia); sub-Tenon's is safest.",
+              "SF₆ or C₃F₈ intraocular gas: avoid N₂O until 1–3 months after vitrectomy (expansion can cause retinal infarction).",
+              "Open-globe injury: 'full stomach' RSI without sux is preferred — use rocuronium + sugammadex if reversal needed.",
+            ]}
+          />
         </>
       }
     />

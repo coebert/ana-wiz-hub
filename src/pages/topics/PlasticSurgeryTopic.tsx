@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { plasticSurgeryQuestions } from "@/data/quizzes";
 import FreeFlaPerfusionDiagram from "@/components/diagrams/FreeFlaPerfusionDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply the principles of normotension, normovolaemia and normothermia to optimise free-flap perfusion",
@@ -143,6 +144,16 @@ const PlasticSurgeryTopic = () => {
               </ul>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Free flap perfusion depends on CO, BP, viscosity and afterload — warm, well-filled, vasodilated patient; avoid vasoconstrictors where possible.",
+              "Maintain Hb 80–100 g/L (haemodilution improves microcirculation); avoid hypothermia which causes vasospasm.",
+              "Long surgery: prevent pressure sores, DVT, hypothermia, eye injury and corneal abrasion.",
+              "Avoid N₂O in microsurgery (gas-bubble expansion risk in micro-anastomoses).",
+              "Digital replantation success depends on cold ischaemia time — coordinate theatre setup before patient arrival.",
+            ]}
+          />
         </>
       }
     />

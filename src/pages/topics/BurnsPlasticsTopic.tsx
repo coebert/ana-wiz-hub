@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { burnsPlasticsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { BurnDepthDiagram } from "@/components/diagrams/BurnDepthDiagram";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Estimate burn extent and depth using Wallace's Rule of Nines and Lund & Browder",
@@ -212,6 +213,16 @@ const BurnsPlasticsTopic = () => {
               </p>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Parkland: 4 mL/kg/%TBSA Hartmann's over 24 h, half in first 8 h from time of burn — titrate to urine output 0.5 mL/kg/h.",
+              "Suspect airway burn with facial burns, singed nasal hairs, soot, stridor or hoarseness — intubate early; oedema rises rapidly.",
+              "Suxamethonium safe in first 24 h, dangerous after 24–48 h to ~12 months due to upregulated extrajunctional ACh receptors → hyperkalaemia.",
+              "Carbon monoxide poisoning: pulse oximetry reads falsely normal — use co-oximetry; treat with 100% O₂ ± hyperbaric.",
+              "Cyanide poisoning in house fires: treat with hydroxocobalamin; lactate >10 mmol/L raises suspicion.",
+            ]}
+          />
         </>
       }
     />

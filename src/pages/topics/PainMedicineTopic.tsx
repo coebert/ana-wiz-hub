@@ -8,6 +8,7 @@ import OpioidConversionCalculator from "@/components/diagrams/OpioidConversionCa
 import PcaEpiduralCalculator from "@/components/diagrams/PcaEpiduralCalculator";
 import { SpinalCordStimulatorDiagram } from "@/components/diagrams/SpinalCordStimulatorDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Distinguish nociceptive, neuropathic and nociplastic pain mechanisms and tailor pharmacotherapy accordingly",
@@ -779,6 +780,16 @@ const PainMedicineTopic = () => {
             </div>
           </div>
         </div>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "WHO analgesic ladder (paracetamol → weak opioid → strong opioid) is a starting framework — escalate, combine modalities and add adjuncts.",
+              "Neuropathic pain responds poorly to opioids — first line: gabapentinoids, TCAs (amitriptyline) or SNRIs (duloxetine).",
+              "Chronic post-surgical pain risk factors: pre-existing pain, severe acute postoperative pain, certain surgeries (thoracotomy, hernia, breast, amputation).",
+              "Multimodal analgesia: paracetamol + NSAID + regional + opioid-sparing adjuncts (ketamine, lidocaine, magnesium, dexmedetomidine).",
+              "Opioid-induced hyperalgesia and tolerance are dose-related — minimise long-term opioid use and consider opioid rotation if tolerance develops.",
+            ]}
+          />
       </section>
       }
     />

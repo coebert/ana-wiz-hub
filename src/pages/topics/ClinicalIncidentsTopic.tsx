@@ -6,6 +6,7 @@ import MHPathophysiologyDiagram from "@/components/diagrams/MHPathophysiologyDia
 import AnaphylaxisPathophysiologyDiagram from "@/components/diagrams/AnaphylaxisPathophysiologyDiagram";
 import { AnaphylaxisCascadeDiagram } from "@/components/diagrams/AnaphylaxisCascadeDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Recognise and manage perioperative anaphylaxis using the AAGBI/RCoA algorithm (adrenaline first)",
@@ -251,6 +252,16 @@ const ClinicalIncidentsTopic = () => {
               </p>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Anaphylaxis (NAP6): NMBDs, antibiotics and chlorhexidine top the list — adrenaline IM 0.5 mg first line; mast-cell tryptase at 1, 4 and 24 h.",
+              "Malignant hyperthermia: stop trigger, hyperventilate 100% O₂ high flows, dantrolene 2.5 mg/kg repeated to 10 mg/kg, cool, treat hyperkalaemia.",
+              "LAST: stop injection, ABC, manage seizures, 20% Intralipid 1.5 mL/kg bolus + 0.25 mL/kg/min infusion (AAGBI).",
+              "Accidental awareness (NAP5): risk highest with TIVA + NMB; use processed EEG; debrief and refer for psychological support.",
+              "Cannot intubate, cannot oxygenate: declare CICO, call for help, scalpel-bougie-tube cricothyroidotomy without delay.",
+            ]}
+          />
         </>
       }
     />

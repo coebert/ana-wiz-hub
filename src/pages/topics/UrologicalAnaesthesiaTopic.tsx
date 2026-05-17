@@ -5,6 +5,7 @@ import TURPSyndromeDiagram from "@/components/diagrams/TURPSyndromeDiagram";
 import PropofolErectionMechanismDiagram from "@/components/diagrams/PropofolErectionMechanismDiagram";
 import PropofolErectionAlgorithmDiagram from "@/components/diagrams/PropofolErectionAlgorithmDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const UrologicalAnaesthesiaTopic = () => {
   return (
@@ -156,6 +157,16 @@ const UrologicalAnaesthesiaTopic = () => {
               Focused shock waves fragment renal/ureteric calculi. Requires immobility and may be painful. Options: sedation + analgesia, spinal anaesthesia, or GA. Cardiac gating (trigger on R-wave) prevents arrhythmias. Contraindicated in pregnancy, aortic aneurysm, and uncorrected coagulopathy.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "TURP syndrome: glycine 1.5% irrigation absorption → hyponatraemia, hypo-osmolality, hyperammonaemia, visual disturbance — limit resection to 1 h and 60 g.",
+              "Use saline irrigation with bipolar resection to avoid TURP syndrome.",
+              "Bladder perforation under spinal: shoulder-tip pain, abdominal distension, hypotension — surgical decision.",
+              "Lithotomy: nerve injury (common peroneal, femoral), compartment syndrome with prolonged steep positioning, sudden SVR fall on leg lowering.",
+              "ESWL: shock waves cause arrhythmias — synchronise to R wave; avoid pacemakers over shock-wave path.",
+            ]}
+          />
         </>
       }
       workedExamples={[

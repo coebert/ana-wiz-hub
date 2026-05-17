@@ -4,6 +4,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { BlockAnalgesiaProfileDiagram } from "@/components/diagrams/BlockAnalgesiaProfileDiagram";
 import { LowerLimbBlocksDiagram } from "@/components/diagrams/LowerLimbBlocksDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const OrthopaedicAnaesthesiaTopic = () => {
   return (
@@ -287,6 +288,16 @@ const OrthopaedicAnaesthesiaTopic = () => {
             </ul>
           </div>
         </div>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Tourniquet pressure: upper limb SBP + 50 mmHg; lower limb SBP + 100 mmHg; document inflation time (max 90–120 min).",
+              "Bone-cement implantation syndrome: hypoxia, hypotension, arrhythmias from cement monomer and embolic load — give 100% O₂, fluids, vasopressors.",
+              "Fat embolism syndrome (24–72 h post long-bone #): petechiae, hypoxia, neurological signs — supportive treatment only.",
+              "Hip fracture: get to theatre within 36 h; spinal vs GA outcomes similar — choose based on patient and fracture pattern.",
+              "Regional techniques (adductor canal, fascia iliaca, ESPB) reduce opioid need and improve enhanced-recovery outcomes.",
+            ]}
+          />
       </section>
       }
     />

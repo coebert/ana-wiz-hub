@@ -5,6 +5,7 @@ import { massCasualtyMilitaryQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { MajorIncidentTriageDiagram } from "@/components/diagrams/MajorIncidentTriageDiagram";
 import { MilitaryRolesFlowDiagram } from "@/components/diagrams/MilitaryRolesFlowDiagram";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply the principles of major-incident command (MIMMS / NHS EPRR) to a mass-casualty event involving multiple critically injured patients",
@@ -249,6 +250,16 @@ const MassCasualtyMilitaryTopic = () => {
               <li><strong>Exercise regularly</strong>: live exercises, table-top, in-situ simulation — proven to improve real performance</li>
             </ul>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "METHANE report: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.",
+              "Triage Sieve (walking → P3; airway/breathing/circulation criteria → P1/P2/dead); Sort uses TRTS; MPTT-24 prioritises by mobility/RR/HR.",
+              "Damage-control resuscitation + surgery: minimise time to haemorrhage control, permissive hypotension, blood products only.",
+              "Military Roles 1–4: Role 1 first aid, Role 2 forward surgical, Role 3 field hospital, Role 4 home-base definitive care.",
+              "CBRN: identify hazard, don PPE before patient contact, decontaminate before treatment, specific antidotes (atropine + pralidoxime for nerve agents).",
+            ]}
+          />
         </>
       }
     />

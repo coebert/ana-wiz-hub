@@ -13,6 +13,7 @@ import NeuraxialAnticoagRiskTool from "@/components/diagrams/NeuraxialAnticoagRi
 import AnticoagRestartTimeline from "@/components/diagrams/AnticoagRestartTimeline";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const tocItems = [
   { id: "dermatomes", label: "Dermatome anatomy", group: "Foundations" },
@@ -397,6 +398,16 @@ const RegionalAnaesthesiaTopic = () => {
           <li><strong>Adjuvants</strong>: dexamethasone (perineural or IV) prolongs analgesia; clonidine and dexmedetomidine prolong block but cause sedation/hypotension.</li>
         </ul>
       </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Spinal vs epidural: spinal — small dose into CSF, rapid dense block, single shot; epidural — large dose into potential space, slow titratable block via catheter.",
+              "Always perform stop-before-you-block and check side, level, anticoagulation and consent — wrong-side blocks are a 'never event'.",
+              "Neuraxial anticoagulation timing (AAGBI): prophylactic LMWH 12 h before, treatment dose 24 h, DOACs 48–72 h depending on agent and renal function.",
+              "Total spinal: rapid ascending block with bradycardia, hypotension and apnoea — treat with airway support, vasopressors, atropine and fluids.",
+              "Use ultrasound + nerve stimulation for peripheral blocks; intraneural injection causes high pressures (>15 psi) — stop immediately.",
+            ]}
+          />
         </>
       }
     />

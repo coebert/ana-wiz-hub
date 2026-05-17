@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { elderlyAnaesthesiaQuestions } from "@/data/quizzes";
 import FrailtyAssessmentDiagram from "@/components/diagrams/FrailtyAssessmentDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const keyPoints = [
   "Physiological reserve is reduced in the elderly — decreased cardiac output, reduced FRC and closing capacity, impaired renal/hepatic drug clearance, and reduced CNS sensitivity thresholds",
@@ -176,6 +177,16 @@ const ElderlyAnaesthesiaTopic = () => {
             </div>
           </div>
         </section>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Reduced MAC, reduced clearance, reduced cardiovascular reserve — start low, go slow, titrate to effect.",
+              "Frailty (Rockwood CFS ≥5) predicts postoperative complications independently of age.",
+              "Postoperative delirium: prevention is key — orientation, sleep, hydration, pain control, avoid benzodiazepines and anticholinergics.",
+              "Hip-fracture pathway: surgery within 36 h, fascia-iliaca block on admission, multidisciplinary ortho-geriatric care.",
+              "Polypharmacy: review and stop high-risk drugs (anticoagulants, ACE inhibitors, oral hypoglycaemics) preoperatively per local guideline.",
+            ]}
+          />
         </div>
       }
     />

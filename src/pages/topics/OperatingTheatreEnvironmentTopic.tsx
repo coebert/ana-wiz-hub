@@ -5,6 +5,7 @@ import { operatingTheatreEnvironmentQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import TheatreZoningDiagram from "@/components/diagrams/TheatreZoningDiagram";
 import CssdWasteFlowSubMap from "@/components/diagrams/CssdWasteFlowSubMap";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe the zoning of a UK operating theatre complex and the rationale for the protective → clean → sterile gradient",
@@ -251,6 +252,16 @@ const OperatingTheatreEnvironmentTopic = () => {
               in both Final FRCA and FFICM.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Laminar-flow theatres deliver 300+ air changes/hour with HEPA-filtered, unidirectional flow — primarily for orthopaedic implants and immunocompromised patients.",
+              "Standard theatres: 20–25 air changes/hour, temperature 18–22 °C, humidity 50–60% to balance comfort, electrostatic risk and infection.",
+              "Scavenging removes waste anaesthetic gases — passive systems rely on patient effort; active systems use vacuum but need a reservoir to prevent suction injury.",
+              "Theatre zoning (protective, clean, aseptic, disposal) controls personnel flow and reduces wound contamination.",
+              "WHO Surgical Safety Checklist (sign-in, time-out, sign-out) is mandatory and reduces mortality and complications.",
+            ]}
+          />
         </>
       }
     />

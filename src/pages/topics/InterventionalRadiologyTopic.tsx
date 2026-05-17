@@ -5,6 +5,7 @@ import { interventionalRadiologyQuestions } from "@/data/quizzes";
 import ContrastReactionDiagram from "@/components/diagrams/ContrastReactionDiagram";
 import tipssIllustration from "@/assets/ir/tipss-procedure.jpg";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply AAGBI standards for anaesthesia in remote locations to the IR suite",
@@ -177,6 +178,16 @@ const InterventionalRadiologyTopic = () => {
               </ul>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Remote-site anaesthesia: same standards of monitoring, equipment, drug availability and trained help as theatre.",
+              "Iodinated contrast reactions: pretreat high-risk (previous reaction, asthma); treat anaphylaxis with adrenaline 0.5 mg IM.",
+              "Contrast-induced nephropathy: hydrate, minimise contrast volume, hold ACEi/ARB/NSAIDs/metformin around the procedure.",
+              "Radiation safety (ALARA): distance, lead aprons + thyroid shield, dosimeter, leave room during DSA runs where possible.",
+              "EVAR / TIPSS / embolisation: long supine cases — pressure care, temperature management, plan post-procedure HDU bed.",
+            ]}
+          />
         </>
       }
     />

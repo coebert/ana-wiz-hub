@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { traumaEmergencyQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Perform an RSI tailored to the trauma patient (haemodynamic state, c-spine, full stomach)",
@@ -182,6 +183,16 @@ const TraumaEmergencyTopic = () => {
               within minutes. Monitor for complications: hyperkalaemia, hypocalcaemia (citrate toxicity), hypothermia, TRALI, TACO.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Damage-control resuscitation: permissive hypotension (SBP ~80–90 mmHg until haemorrhage controlled, except in TBI), 1:1:1 blood products, tranexamic acid within 3 h.",
+              "ATLS A-B-C-D-E with simultaneous resuscitation; reassess after every intervention.",
+              "Massive transfusion protocol: activate early — fixed-ratio products, calcium replacement, fibrinogen >2 g/L, avoid hypothermia and acidosis.",
+              "Traumatic brain injury: avoid hypoxia, hypotension and hypercapnia; target SBP >110 mmHg, SpO₂ >94%, PaCO₂ 4.5–5.0 kPa.",
+              "Tension pneumothorax is a clinical diagnosis — decompress before imaging.",
+            ]}
+          />
         </>
       }
     />

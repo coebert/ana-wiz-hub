@@ -23,6 +23,7 @@ import {
   BeachChairIllustration,
 } from "@/components/diagrams/PatientPositioningIllustrations";
 import {
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
   SittingHydrostaticAnimation,
   VAEDetectionLadderAnimation,
   ParkBenchArmTractionAnimation,
@@ -312,6 +313,16 @@ const PatientPositioningTopic = () => {
             </div>
           </ExamSection>
         </div>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Pressure points are time-and-pressure dependent — check and document every 30 min, especially heels, sacrum, occiput, elbows.",
+              "Common nerve injuries: ulnar (elbow), common peroneal (lateral knee in lithotomy), brachial plexus (arm abduction >90° or shoulder braces).",
+              "Prone: eye protection (no globe pressure), abdomen free (reduce IVC compression), neutral neck, ETT secured and re-checked after turn.",
+              "Sitting craniotomy: high VAE risk — precordial Doppler, right-atrial line, end-tidal CO₂ drop and gas in heart on TOE.",
+              "Steep Trendelenburg: raised ICP/IOP, facial/airway oedema, atelectasis — limit time and use PEEP.",
+            ]}
+          />
         </RealismProvider>
       }
     />

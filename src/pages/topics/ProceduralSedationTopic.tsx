@@ -9,6 +9,7 @@ import { SedationRescueLadder } from "@/components/SedationRescueLadder";
 import { SedationDecisionGate } from "@/components/SedationDecisionGate";
 import { SedationDischargeChecklist } from "@/components/SedationDischargeChecklist";
 import { SedationCaseScenarios } from "@/components/SedationCaseScenarios";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Define sedation and distinguish minimal, moderate, deep sedation and general anaesthesia (ASA continuum)",
@@ -446,6 +447,16 @@ const ProceduralSedationTopic = () => {
               links={[{ topicId: "icu-sedation-delirium" }]}
             />
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Sedation is a continuum — be trained and equipped to manage one level deeper than intended.",
+              "Use a structured pre-assessment (ASA, airway, fasting, comorbidities) and continuous monitoring including capnography.",
+              "Drug combinations (opioid + benzodiazepine) cause synergistic respiratory depression — reduce each dose.",
+              "Have reversal agents (naloxone, flumazenil) immediately available — but never relied upon as a substitute for titration.",
+              "Discharge only after return to baseline conscious level, stable observations, oral intake tolerated and responsible adult escort.",
+            ]}
+          />
         </>
       }
     />
