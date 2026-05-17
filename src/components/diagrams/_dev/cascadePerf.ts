@@ -173,11 +173,7 @@ export const cascadePerf = {
   },
 
   snapshot() {
-    return {
-      entries: Array.from(entries.values()),
-      frames: { ...frameStats },
-      anyPlaying: playingCount > 0,
-    };
+    return cachedSnapshot;
   },
 
   subscribe(cb: () => void) {
