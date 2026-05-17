@@ -27,38 +27,14 @@ const PerioperativeFluidsTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PO_BK_06"] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["NICE CG174", "BJA Educ 2017"],
-        diagrams: ["BJA Educ 2017"],
         workedExamples: ["BJA Educ 2019", "NICE CG174", "SMART 2018", "RELIEF 2018", "BJA Educ GDFT 2016"],
         keyPoints: ["BJA Educ 2017", "NICE CG174", "BJA Educ 2019", "SMART 2018", "BJA Educ GDFT 2016", "RELIEF 2018"],
       }}
-      diagrams={
-        <>
-          <DiagramSection
-            title="Glycocalyx — Intact vs Shed"
-            intro={<p>Cross-section of the endothelial surface layer (ESL): proteoglycan / GAG mesh that excludes plasma proteins, and the consequences of its shedding by ANP, inflammation and crystalloid overload.</p>}
-          >
-            <GlycocalyxDiagram />
-          </DiagramSection>
-          <GlycocalyxSheddingCascadeDiagram />
-        <ExamPitfallsCallout
-            accent="clinical"
-            pitfalls={[
-              "Balanced crystalloids (Plasma-Lyte, Hartmann's) preferred over 0.9% saline — large volumes of saline cause hyperchloraemic acidosis and AKI (SMART, SALT-ED).",
-              'Avoid HES/starch colloids in critically ill and septic patients (CHEST, 6S) — increased AKI and mortality.',
-              'Maintenance: 1–2 mL/kg/h in adults; 4-2-1 rule in paediatrics with isotonic fluid (NICE CG174) — hypotonic fluids cause hyponatraemia.',
-              'Goal-directed fluid therapy using dynamic indices (SVV, PPV, stroke-volume response) outperforms CVP — CVP is a poor predictor of fluid responsiveness.',
-              'Restrictive vs liberal: RELIEF trial showed restrictive regimens increase AKI — aim for zero-balance / modestly positive intraoperatively.',
-              'Albumin 4–5% reasonable for cirrhotic SBP and large-volume paracentesis; avoid in TBI (SAFE — increased mortality).',
-            ]}
-          />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
@@ -108,7 +84,14 @@ const PerioperativeFluidsTopic = () => {
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Glycocalyx & Revised Starling">
-            <p className="text-muted-foreground leading-relaxed mb-3">
+            <DiagramSection
+              title="Glycocalyx — Intact vs Shed"
+              intro={<p>Cross-section of the endothelial surface layer (ESL): proteoglycan / GAG mesh that excludes plasma proteins, and the consequences of its shedding by ANP, inflammation and crystalloid overload.</p>}
+            >
+              <GlycocalyxDiagram />
+            </DiagramSection>
+            <GlycocalyxSheddingCascadeDiagram />
+            <p className="text-muted-foreground leading-relaxed mb-3 mt-4">
               The endothelial glycocalyx is a carbohydrate-rich layer lining the vascular endothelium. It regulates vascular permeability, prevents leucocyte adhesion, and modulates coagulation.
             </p>
             <div className="p-4 rounded-lg border border-border mb-4">
@@ -139,6 +122,18 @@ const PerioperativeFluidsTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              "Balanced crystalloids (Plasma-Lyte, Hartmann's) preferred over 0.9% saline — large volumes of saline cause hyperchloraemic acidosis and AKI (SMART, SALT-ED).",
+              'Avoid HES/starch colloids in critically ill and septic patients (CHEST, 6S) — increased AKI and mortality.',
+              'Maintenance: 1–2 mL/kg/h in adults; 4-2-1 rule in paediatrics with isotonic fluid (NICE CG174) — hypotonic fluids cause hyponatraemia.',
+              'Goal-directed fluid therapy using dynamic indices (SVV, PPV, stroke-volume response) outperforms CVP — CVP is a poor predictor of fluid responsiveness.',
+              'Restrictive vs liberal: RELIEF trial showed restrictive regimens increase AKI — aim for zero-balance / modestly positive intraoperatively.',
+              'Albumin 4–5% reasonable for cirrhotic SBP and large-volume paracentesis; avoid in TBI (SAFE — increased mortality).',
+            ]}
+          />
         </>
       }
       workedExamples={[

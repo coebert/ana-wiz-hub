@@ -111,22 +111,14 @@ const IcuNutritionTopic = () => {
       ]}
       sectionSources={{
         objectives: ["ESPEN 2019", "NICE CG32"],
-        diagrams: ["NICE CG32", "ESPEN 2019"],
         workedExamples: ["NICE CG32", "EPaNIC 2011", "NICE-SUGAR 2009", "ESPEN 2019"],
         keyPoints: ["ESPEN 2019", "BJA Educ 2016", "NICE CG32", "EPaNIC 2011", "NICE-SUGAR 2009"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["CC1.4"] },
-        diagrams: { exams: [Exam.FFICM, Exam.EDIC] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
-      diagrams={
-        <>
-          <RefeedingRiskCalculatorDiagram />
-          <EnergyProteinTargetDiagram />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]}>
@@ -175,6 +167,9 @@ const IcuNutritionTopic = () => {
 
           <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Calorie & Protein Targets (ESPEN 2019)">
+            <div className="my-4">
+              <EnergyProteinTargetDiagram />
+            </div>
             <div className="space-y-2">
               {[
                 { target: "Energy", detail: "20–25 kcal/kg/day (actual body weight in non-obese). Acute phase: ≤70% of REE; full target by day 4–7. Indirect calorimetry is gold standard. Avoid overfeeding (lipogenesis, hyperglycaemia, ↑CO₂ load)." },
@@ -193,6 +188,9 @@ const IcuNutritionTopic = () => {
 
           <ExamSection exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]}>
             <CollapsibleSubsection title="Refeeding Syndrome">
+            <div className="my-4">
+              <RefeedingRiskCalculatorDiagram />
+            </div>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Life-threatening shifts in fluids and electrolytes when nutrition is restarted after prolonged starvation. Insulin surge drives K⁺, PO₄³⁻ and Mg²⁺ intracellularly, causing arrhythmias, cardiac failure, respiratory muscle weakness and Wernicke&apos;s encephalopathy. Use the calculator above for stratification.
             </p>

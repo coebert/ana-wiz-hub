@@ -99,23 +99,14 @@ const HepaticPhysiologyTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_06"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["OA_BK_05"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Peck & Hill Ch.13"],
-        diagrams: ["Power & Kam Ch.10"],
         workedExamples: ["BJA Educ 2014", "Power & Kam Ch.10"],
         keyPoints: ["Peck & Hill Ch.13", "BJA Educ 2014", "Power & Kam Ch.10"],
       }}
-      diagrams={
-        <div className="space-y-4">
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <HepaticAcinusDiagram />
-          </div>
-        </div>
-      }
       keyPoints={[
         { text: "Dual blood supply: portal vein (~75% flow) and hepatic artery (~25% flow); each provides ~50% of O₂.", cites: ["Peck & Hill Ch.13"] },
         { text: "Hepatic arterial buffer response: ↓ portal flow → adenosine accumulates → hepatic artery dilates.", cites: ["Power & Kam Ch.10"] },
@@ -159,6 +150,9 @@ const HepaticPhysiologyTopic = () => {
 
           <ExamSection id="acinus" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
             <CollapsibleSubsection title="Functional Anatomy — The Hepatic Acinus">
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <HepaticAcinusDiagram />
+            </div>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The functional unit is the hepatic acinus (Rappaport model), divided into three zones based on proximity
               to the portal triad:

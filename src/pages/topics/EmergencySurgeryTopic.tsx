@@ -69,21 +69,12 @@ const EmergencySurgeryTopic = () => {
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={emergencySurgeryQuestions}
-      diagrams={
-        <div className="space-y-6">
-          <NCEPODClassificationDiagram />
-          <EmergencyRSIDiagram />
-          <EmergencyLaparotomyBundleDiagram />
-        </div>
-      }
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["NCEPOD 2011", "NELA Year 9 2023", "RCoA GPAS Ch.5"],
-        diagrams: ["DAS 2015", "NELA Year 9 2023", "BJA Educ 2017"],
         keyPoints: ["NELA Year 9 2023", "BJA Educ 2017", "DAS 2015", "P-POSSUM", "DAS 2015 RSI", "BJA Educ EmLap 2017", "RCoA Emergency Laparotomy", "NCEPOD Knowing the Risk", "NELA Year 9 Report"],
       }}
       coreConcepts={
