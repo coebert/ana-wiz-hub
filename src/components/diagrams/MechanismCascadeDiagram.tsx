@@ -156,21 +156,52 @@ export const MechanismCascadeDiagram = ({
       title="Mechanism cascade"
       description="Auto-generated wrapper for the Mechanism cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
     >
-          <div className="rounded-xl border border-border bg-card/40 p-4">
+          <div
+        className="rounded-xl border border-border bg-card/40 p-4"
+        role="group"
+        aria-roledescription="Animated mechanism cascade"
+        aria-label={`${title}. ${steps.length} steps. Use arrow keys to navigate, space to play or pause.`}
+      >
         <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
           <div>
             <h3 className="text-base font-semibold text-foreground">{title}</h3>
             {subtitle && <p className="text-xs text-muted-foreground">{subtitle}</p>}
           </div>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5" role="toolbar" aria-label="Cascade player controls">
+            <button
+              type="button"
+              onClick={() => goTo(step - 1)}
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:opacity-50"
+              aria-label="Previous step"
+              aria-controls={panelId}
+            >
+              <ChevronLeft className="h-3 w-3" aria-hidden="true" focusable="false" />
+              <span className="sr-only sm:not-sr-only">Prev</span>
+            </button>
             <button
               type="button"
               onClick={() => setPlaying((p) => !p)}
-              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
               aria-label={playing ? "Pause animation" : "Play animation"}
+              aria-pressed={playing}
+              aria-controls={panelId}
             >
-              {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+              {playing ? (
+                <Pause className="h-3 w-3" aria-hidden="true" focusable="false" />
+              ) : (
+                <Play className="h-3 w-3" aria-hidden="true" focusable="false" />
+              )}
               {playing ? "Pause" : "Play"}
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo(step + 1)}
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+              aria-label="Next step"
+              aria-controls={panelId}
+            >
+              <span className="sr-only sm:not-sr-only">Next</span>
+              <ChevronRight className="h-3 w-3" aria-hidden="true" focusable="false" />
             </button>
             <button
               type="button"
@@ -178,32 +209,51 @@ export const MechanismCascadeDiagram = ({
                 setStep(0);
                 setPlaying(true);
               }}
-              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
-              aria-label="Restart animation"
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+              aria-label="Restart animation from step 1"
             >
-              <RotateCcw className="h-3 w-3" /> Restart
+              <RotateCcw className="h-3 w-3" aria-hidden="true" focusable="false" /> Restart
             </button>
           </div>
         </div>
-  
-        {/* Step pills */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {steps.map((s, i) => (
-            <button
-              key={s.node}
-              type="button"
-              onClick={() => {
-                setStep(i);
-                setPlaying(false);
-              }}
-              data-active={step === i}
-              className="rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground transition-colors data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:border-primary"
-            >
-              {i + 1}. {s.node}
-            </button>
-          ))}
+
+        {/* Step pills — implemented as an ARIA tablist with roving tabindex */}
+        <div
+          className="flex flex-wrap gap-1.5 mb-4"
+          role="tablist"
+          id={tablistId}
+          aria-label="Cascade steps"
+          aria-orientation="horizontal"
+          onKeyDown={onTablistKeyDown}
+        >
+          {steps.map((s, i) => {
+            const selected = step === i;
+            return (
+              <button
+                key={s.node}
+                ref={(el) => { tabRefs.current[i] = el; }}
+                type="button"
+                role="tab"
+                id={`${tablistId}-tab-${i}`}
+                aria-selected={selected}
+                aria-controls={panelId}
+                aria-label={`Step ${i + 1} of ${steps.length}: ${s.node}`}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => goTo(i)}
+                data-active={selected}
+                className="rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground transition-colors data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+              >
+                {i + 1}. {s.node}
+              </button>
+            );
+          })}
         </div>
-  
+
+        {/* Screen-reader announcement of step changes */}
+        <p id={statusId} className="sr-only" aria-live="polite" aria-atomic="true">
+          Step {step + 1} of {steps.length}: {current.title}. {playing ? "Playing." : "Paused."}
+        </p>
+
         <div className="grid lg:grid-cols-[1fr,1fr] gap-4">
           <div className="rounded-lg border border-border bg-background p-3 flex items-center justify-center">
             {layout === "chain" ? (
