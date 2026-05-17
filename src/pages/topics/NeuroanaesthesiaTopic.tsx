@@ -61,6 +61,9 @@ const NeuroanaesthesiaTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Normal ICP: 5–15 mmHg. CPP = MAP − ICP. Target CPP &gt;60 mmHg. Monro-Kellie doctrine: brain (80%), blood (10%), CSF (10%) — compensatory mechanisms exhaust rapidly.</p>
               </div>
             </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <CBFAutoregulationDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
