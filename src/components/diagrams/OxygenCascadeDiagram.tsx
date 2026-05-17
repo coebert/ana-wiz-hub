@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+import { Pause, Play, RotateCcw } from "lucide-react";
 import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
@@ -40,8 +42,36 @@ const Y_MAX = 22; // kPa
 const xFor = (i: number) => PAD_L + (i + 0.5) * (PLOT_W / STEPS.length);
 const yFor = (po2: number) => PAD_T + (1 - po2 / Y_MAX) * PLOT_H;
 
+const STEP_MS = 1600;        // dwell time per step
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+
 const OxygenCascadeDiagram = () => {
   const yTicks = [0, 5, 10, 15, 20];
+
+  // ── Sequential highlight animation ──────────────────────────────
+  // `active` is the index of the currently highlighted step, or -1
+  // when nothing is highlighted (initial state / reduced motion).
+  // The timer auto-advances through 0..N-1, then loops after a brief
+  // dwell on the final mitochondrial step.
+  const [active, setActive] = useState(0);
+  const [playing, setPlaying] = useState(true);
+  const reducedMotion = useRef(
+    typeof window !== "undefined" &&
+      window.matchMedia?.(REDUCED_MOTION_QUERY).matches,
+  );
+
+  useEffect(() => {
+    if (reducedMotion.current || !playing) return;
+    const id = window.setInterval(() => {
+      setActive((i) => (i + 1) % STEPS.length);
+    }, STEP_MS);
+    return () => window.clearInterval(id);
+  }, [playing]);
+
+  // If the user prefers reduced motion, show all steps at full
+  // emphasis (treat every step as "active") and skip the timer.
+  const isActive = (i: number) =>
+    reducedMotion.current ? true : i === active;
 
   return (
     <div className="space-y-4">
