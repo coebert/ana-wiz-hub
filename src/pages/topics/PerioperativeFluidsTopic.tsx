@@ -160,6 +160,7 @@ const PerioperativeFluidsTopic = () => {
             </div>
           ),
           answer: "Balanced crystalloid 250 ml challenge guided by SV/PPV; switch to noradrenaline once not fluid-responsive.",
+          cites: ["SMART 2018", "RELIEF 2018", "BJA Educ GDFT 2016"],
         },
       ]}
       keyPoints={[
