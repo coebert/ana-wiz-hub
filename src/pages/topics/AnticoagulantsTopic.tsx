@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { anticoagulantsQuiz } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
 import BridgingAnticoagulationPathway from "@/components/diagrams/BridgingAnticoagulationPathway";
@@ -65,6 +66,7 @@ const AnticoagulantsTopic = () => {
         keyPoints: ["BJA Educ 2015", "NICE NG89", "BSH 2011"],
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
@@ -289,6 +291,7 @@ const AnticoagulantsTopic = () => {
             ]}
           />
         </div>
+      </ExamSection>
       }
     />
   );

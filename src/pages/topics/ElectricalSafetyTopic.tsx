@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { electricalSafetyQuiz } from "@/data/quizzes";
 import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagram";
 import { DefibrillatorCapacitorDiagram } from "@/components/diagrams/DefibrillatorCapacitorDiagram";
@@ -48,6 +49,7 @@ const ElectricalSafetyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
@@ -240,6 +242,7 @@ const ElectricalSafetyTopic = () => {
             ]}
           />
         </div>
+      </ExamSection>
       }
     />
   );

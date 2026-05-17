@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { antiarrhythmicsQuiz } from "@/data/quizzes";
 import VaughanWilliamsAPDiagram from "@/components/diagrams/VaughanWilliamsAPDiagram";
 import { Exam } from "@/data/curriculum";
@@ -58,6 +59,7 @@ const AntiarrhythmicsTopic = () => {
       }}
       diagrams={<VaughanWilliamsAPDiagram />}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
@@ -200,6 +202,7 @@ const AntiarrhythmicsTopic = () => {
             ]}
           />
         </div>
+      </ExamSection>
       }
     />
   );

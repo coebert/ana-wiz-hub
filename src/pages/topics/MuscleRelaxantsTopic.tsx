@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { muscleRelaxantsQuiz } from "@/data/quizzes";
 import MuscleRelaxantStructures from "@/components/diagrams/MuscleRelaxantStructures";
 import { NMBAMechanismDiagram } from "@/components/diagrams/NMBAMechanismDiagram";
@@ -45,6 +46,7 @@ const MuscleRelaxantsTopic = () => {
         keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.7", "Fourth National Audit Project"],
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
@@ -214,6 +216,7 @@ const MuscleRelaxantsTopic = () => {
             ]}
           />
         </div>
+      </ExamSection>
       }
     />
   );

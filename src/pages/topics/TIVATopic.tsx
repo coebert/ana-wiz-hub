@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ExamSection } from "@/components/ExamSection";
 import TCISimulatorDiagram from "@/components/diagrams/TCISimulatorDiagram";
 import CSHTDiagram from "@/components/diagrams/CSHTDiagram";
 import DecrementTimeDiagram from "@/components/diagrams/DecrementTimeDiagram";
@@ -183,7 +184,7 @@ const TIVATopic = () => {
         { text: "BIS/Entropy monitoring mandatory for TIVA (NAP5). Awareness risk 5× higher with TIVA vs volatile (1:8,000)", cites: ["Schnider 1998"] },
         { text: "PRIS: propofol >4 mg/kg/hr for >48h → mitochondrial failure, metabolic acidosis, rhabdomyolysis. Stop propofol immediately", cites: ["BJA Educ 2016"] },
       ]}
-      coreConcepts={<>
+      coreConcepts={<ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
       {/* Introduction */}
       <section className="space-y-6 mb-10">
         <div>
@@ -409,7 +410,7 @@ const TIVATopic = () => {
           "PRIS: stop propofol immediately if metabolic acidosis, rising lactate, rhabdomyolysis or new cardiac failure during prolonged high-dose infusion.",
         ]}
       />
-      </>}
+      </ExamSection>}
     />
   );
 };
