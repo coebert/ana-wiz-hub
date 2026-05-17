@@ -349,9 +349,84 @@ const LungMechanicsTopic = () => {
                 The alveolar gas equation underpins the second-to-third step (humidified inspired → alveolar)
                 and is the basis of the A–a gradient calculation used to assess gas exchange efficiency.
               </p>
-              <div className="bg-card rounded-xl border border-border p-4">
+              <div className="bg-card rounded-xl border border-border p-4 mb-4">
                 <AlveolarGasEquationDiagram />
               </div>
+
+              {/* Cause → cascade step mapping */}
+              <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">
+                Causes of hypoxaemia mapped to the cascade
+              </h3>
+              <p className="text-foreground/80 text-sm leading-relaxed mb-3">
+                Identifying <em>where</em> in the cascade a patient's PO₂ first falls below normal
+                points directly at the mechanism — and at the appropriate intervention.
+              </p>
+              <div className="overflow-x-auto rounded-xl border border-border">
+                <table className="w-full text-sm">
+                  <thead className="bg-secondary/40 text-foreground">
+                    <tr>
+                      <th className="text-left px-3 py-2 font-semibold">Cause</th>
+                      <th className="text-left px-3 py-2 font-semibold">Step primarily affected</th>
+                      <th className="text-left px-3 py-2 font-semibold">A–a gradient</th>
+                      <th className="text-left px-3 py-2 font-semibold">Response to 100 % O₂</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    <tr>
+                      <td className="px-3 py-2 font-medium">Low FiO₂ / altitude</td>
+                      <td className="px-3 py-2">1 — Atmospheric / inspired</td>
+                      <td className="px-3 py-2">Normal</td>
+                      <td className="px-3 py-2">Corrects</td>
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2 font-medium">Airway obstruction / apnoea</td>
+                      <td className="px-3 py-2">2 — Humidified inspired (no fresh gas reaches alveoli)</td>
+                      <td className="px-3 py-2">Normal</td>
+                      <td className="px-3 py-2">Corrects once airway patent</td>
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2 font-medium">Hypoventilation (opioids, NMB, COPD type II)</td>
+                      <td className="px-3 py-2">3 — Alveolar (↑ PaCO₂ ⇒ ↓ P<sub>A</sub>O₂ via gas equation)</td>
+                      <td className="px-3 py-2">Normal</td>
+                      <td className="px-3 py-2">Corrects</td>
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2 font-medium">Diffusion limitation (fibrosis, exercise at altitude)</td>
+                      <td className="px-3 py-2">3 → 4 — Alveolar to arterial</td>
+                      <td className="px-3 py-2">Widened</td>
+                      <td className="px-3 py-2">Largely corrects</td>
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2 font-medium">V/Q mismatch (asthma, PE, atelectasis)</td>
+                      <td className="px-3 py-2">4 — Arterial (regional units with low V/Q)</td>
+                      <td className="px-3 py-2">Widened</td>
+                      <td className="px-3 py-2">Corrects</td>
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2 font-medium">Shunt (ARDS, pneumonia, intracardiac)</td>
+                      <td className="px-3 py-2">4 — Arterial (deoxygenated blood bypasses alveoli)</td>
+                      <td className="px-3 py-2">Widened</td>
+                      <td className="px-3 py-2"><strong>Does not correct</strong> (hallmark)</td>
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2 font-medium">Low cardiac output / anaemia</td>
+                      <td className="px-3 py-2">5 — Capillary (↓ delivery ⇒ greater extraction ⇒ ↓ PvO₂)</td>
+                      <td className="px-3 py-2">Normal (PaO₂ preserved)</td>
+                      <td className="px-3 py-2">Only partial — fix the circulation</td>
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2 font-medium">Histotoxic (cyanide, sepsis mitochondrial dysfunction)</td>
+                      <td className="px-3 py-2">6 — Mitochondrial (O₂ delivered but not utilised)</td>
+                      <td className="px-3 py-2">Normal</td>
+                      <td className="px-3 py-2">No effect — treat the toxin</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-muted-foreground mt-2">
+                Clinical pearl: the <strong>shunt vs V/Q</strong> distinction is the most exam-relevant —
+                only shunt fails to respond to 100 % oxygen because the bypassing blood never sees the alveolus.
+              </p>
             </section>
           </ExamSection>
 
