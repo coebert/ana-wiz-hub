@@ -306,6 +306,16 @@ const coreConcepts = (
           <li>Status epilepticus (treat aggressively, then reassess)</li>
         </ul>
       </div>
+      <div className="mt-4 space-y-4">
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+          <ExpandableEcgCard content={postArrestProgContent}>
+            {() => <PostCardiacArrestProgDiagram />}
+          </ExpandableEcgCard>
+        </div>
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+          <MultimodalNeuromonitoringDiagram />
+        </div>
+      </div>
       </CollapsibleSubsection>
     </ExamSection>
 
@@ -362,6 +372,16 @@ const coreConcepts = (
           </div>
         ))}
       </div>
+      <div className="mt-4 space-y-4">
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+          <ExpandableEcgCard content={eegTraceContent}>
+            {() => <EEGTraceDiagram />}
+          </ExpandableEcgCard>
+        </div>
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+          <CerebralMicrodialysisDiagram />
+        </div>
+      </div>
       </CollapsibleSubsection>
     </ExamSection>
 
@@ -400,6 +420,11 @@ const coreConcepts = (
             <li>Severe HIE despite restored circulation (the dominant outcome driver)</li>
           </ul>
         </div>
+      </div>
+      <div className="mt-4 space-y-4">
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6"><EcprDecisionTreeDiagram /></div>
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6"><ECMOCircuitDiagram /></div>
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6"><ECMOTroubleshootingDiagram /></div>
       </div>
       </CollapsibleSubsection>
     </ExamSection>
@@ -449,21 +474,6 @@ const coreConcepts = (
   </>
 );
 
-const diagrams = (
-  <>
-    <ExpandableEcgCard content={postArrestProgContent}>
-      {() => <PostCardiacArrestProgDiagram />}
-    </ExpandableEcgCard>
-    <ExpandableEcgCard content={eegTraceContent}>
-      {() => <EEGTraceDiagram />}
-    </ExpandableEcgCard>
-    <MultimodalNeuromonitoringDiagram />
-    <CerebralMicrodialysisDiagram />
-    <EcprDecisionTreeDiagram />
-    <ECMOCircuitDiagram />
-    <ECMOTroubleshootingDiagram />
-  </>
-);
 
 const CardiacArrestPostResusTopic = () => {
   return (
@@ -503,7 +513,6 @@ const CardiacArrestPostResusTopic = () => {
         workedExamples: ["INCEPTION 2023", "Prague OHCA 2022", "ARREST 2020", "TTM 2013"],
       }}
       coreConcepts={coreConcepts}
-      diagrams={diagrams}
       workedExamples={workedExamples}
       keyPoints={keyPoints}
       topicId="cardiac-arrest-post-resus"

@@ -102,46 +102,14 @@ const AirwayManagementTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_03", "IC_BK_03"] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_03"] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_03"] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_03"] },
       }}
       sectionSources={{
         objectives: ["DAS 2015", "NAP4 2011"],
-        diagrams: ["DAS 2015", "BJA Educ 2017"],
         workedExamples: ["DAS 2015", "NAP4 2011"],
         keyPoints: ["DAS 2015", "NAP4 2011", "BJA Educ 2017"],
       }}
-      diagrams={
-        <>
-          <CorPictumFolio {...airwayFolio} suppressOverlayLabels />
-          <CICODrillAnimation />
-          <div className="bg-card rounded-xl border border-border p-6">
-            <DASAlgorithmDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <AirwayAssessmentDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <CormackLehaneDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <MallampatiDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <WilsonRiskScoreCalculator />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <AirwayDevicesDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <BreathingCircuitDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <AirwayInnervationDiagram />
-          </div>
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
@@ -151,6 +119,9 @@ const AirwayManagementTopic = () => {
               Society (DAS) algorithms standardise the approach to anticipated and unanticipated difficulty, supported by
               structured assessment tools and a hierarchy of rescue techniques culminating in front-of-neck access.
             </p>
+            <div className="mt-4">
+              <CorPictumFolio {...airwayFolio} suppressOverlayLabels />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -160,8 +131,13 @@ const AirwayManagementTopic = () => {
               Systematic assessment is performed before every anaesthetic. No single test reliably predicts difficulty —
               composite scores (Wilson, El-Ganzouri) outperform single bedside tests. Document Mallampati, thyromental
               distance, mouth opening, neck movement, dentition, and previous airway records. Ultrasound of the cricothyroid
-              membrane is increasingly recommended for predicted difficult anatomy or obesity.
             </p>
+            <div className="mt-4 space-y-4">
+              <div className="bg-card rounded-xl border border-border p-6"><AirwayAssessmentDiagram /></div>
+              <div className="bg-card rounded-xl border border-border p-6"><MallampatiDiagram /></div>
+              <div className="bg-card rounded-xl border border-border p-6"><CormackLehaneDiagram /></div>
+              <div className="bg-card rounded-xl border border-border p-6"><WilsonRiskScoreCalculator /></div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -171,8 +147,11 @@ const AirwayManagementTopic = () => {
               Modern practice favours <strong>2nd-generation supraglottic airways</strong> (i-gel, ProSeal LMA) with gastric
               drain ports and seal pressures of 25–35 cmH₂O. Videolaryngoscopy (Macintosh-blade or hyperangulated) is now
               recommended as default in patients with predicted difficulty, with Cochrane evidence supporting reduced failed
-              intubation rates compared with direct laryngoscopy.
             </p>
+            <div className="mt-4 space-y-4">
+              <div className="bg-card rounded-xl border border-border p-6"><AirwayDevicesDiagram /></div>
+              <div className="bg-card rounded-xl border border-border p-6"><BreathingCircuitDiagram /></div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -194,6 +173,9 @@ const AirwayManagementTopic = () => {
                 </div>
               ))}
             </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-6">
+              <DASAlgorithmDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -205,6 +187,9 @@ const AirwayManagementTopic = () => {
               of tongue), and recurrent laryngeal X (below cords). Antisialogogue, light sedation (remifentanil TCI or
               dexmedetomidine) and a planned backup are mandatory.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-6">
+              <AirwayInnervationDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -221,6 +206,9 @@ const AirwayManagementTopic = () => {
               <li>Railroad 6.0 mm cuffed ETT over bougie</li>
               <li>Inflate cuff, ventilate, confirm with capnography</li>
             </ol>
+            <div className="mt-4">
+              <CICODrillAnimation />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 

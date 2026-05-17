@@ -102,69 +102,14 @@ const CardiacElectrophysiologyTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_02"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["OA_BK_01"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Peck & Hill Ch.4"],
-        diagrams: ["BJA Educ 2015"],
         workedExamples: ["BJA Educ 2015", "Ganong Ch.29"],
         keyPoints: ["Peck & Hill Ch.4", "Ganong Ch.29", "BJA Educ 2015"],
       }}
-      diagrams={
-        <>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <h3 className="text-base font-semibold text-foreground mb-3">Cardiac Action Potential</h3>
-            <CardiacActionPotentialDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <h3 className="text-base font-semibold text-foreground mb-3">Ion Channel Timeline</h3>
-            <IonChannelTimelineDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <h3 className="text-base font-semibold text-foreground mb-3">Long QT & Torsades de Pointes</h3>
-            <LongQTTorsadesDiagram />
-          </div>
-
-          <DiagramTabs
-            title="Conduction disorders & pacing"
-            description="Bradyarrhythmias from conduction failure, tachyarrhythmias from re-entry or automaticity, and the device therapies that rescue them — grouped here so you can flip between mechanism and morphology."
-            tabs={[
-              {
-                value: "av-block",
-                label: "AV block",
-                caption: "First, second (Mobitz I/II) and third-degree AV block with ladder diagrams.",
-                content: <HeartBlockDiagram />,
-              },
-              {
-                value: "bbb",
-                label: "Bundle branch block",
-                caption: "RBBB vs LBBB — QRS morphology, axis and clinical implications.",
-                content: <BundleBranchBlockDiagram />,
-              },
-              {
-                value: "tachy",
-                label: "Tachyarrhythmias",
-                caption: "Narrow- vs broad-complex tachycardias, re-entry circuits and triggered activity.",
-                content: <TachyarrhythmiaDiagram />,
-              },
-              {
-                value: "brady",
-                label: "Bradyarrhythmias",
-                caption: "Sinus node disease, escape rhythms and chronotropic incompetence.",
-                content: <BradyarrhythmiaDiagram />,
-              },
-              {
-                value: "pacing",
-                label: "Pacing devices",
-                caption: "Pacemaker and ICD lead positions, NBG codes and peri-operative reprogramming.",
-                content: <PacingDevicesDiagram />,
-              },
-            ]}
-          />
-        </>
-      }
       keyPoints={[
         { text: "Fast AP (myocytes): Phase 0 = Na⁺ influx; Slow AP (nodes): Phase 0 = Ca²⁺ influx via ICa-L.", cites: ["Peck & Hill Ch.4"] },
         { text: "SA node automaticity: funny current (If) + ICa-T in Phase 4 → spontaneous depolarisation to threshold.", cites: ["Ganong Ch.29"] },
@@ -213,6 +158,16 @@ const CardiacElectrophysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            <div className="mt-4 space-y-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <h3 className="text-base font-semibold text-foreground mb-3">Cardiac Action Potential</h3>
+                <CardiacActionPotentialDiagram />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <h3 className="text-base font-semibold text-foreground mb-3">Ion Channel Timeline</h3>
+                <IonChannelTimelineDiagram />
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -222,8 +177,10 @@ const CardiacElectrophysiologyTopic = () => {
               Prolonged phase 3 repolarisation creates a window for L-type Ca²⁺ channel reactivation → early
               afterdepolarisations (EADs) → triggered polymorphic VT (torsades). Class III antiarrhythmics, IKr blockers
               (ondansetron, methadone, macrolides, fluoroquinolones), hypokalaemia and congenital LQT mutations stretch
-              the action potential and collapse the repolarisation reserve.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <LongQTTorsadesDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -247,6 +204,19 @@ const CardiacElectrophysiologyTopic = () => {
                   <p className="font-semibold text-foreground text-sm">{item.value}</p>
                 </div>
               ))}
+            </div>
+            <div className="mt-4">
+              <DiagramTabs
+                title="Conduction disorders & pacing"
+                description="Bradyarrhythmias from conduction failure, tachyarrhythmias from re-entry or automaticity, and the device therapies that rescue them — grouped here so you can flip between mechanism and morphology."
+                tabs={[
+                  { value: "av-block", label: "AV block", caption: "First, second (Mobitz I/II) and third-degree AV block with ladder diagrams.", content: <HeartBlockDiagram /> },
+                  { value: "bbb", label: "Bundle branch block", caption: "RBBB vs LBBB — QRS morphology, axis and clinical implications.", content: <BundleBranchBlockDiagram /> },
+                  { value: "tachy", label: "Tachyarrhythmias", caption: "Narrow- vs broad-complex tachycardias, re-entry circuits and triggered activity.", content: <TachyarrhythmiaDiagram /> },
+                  { value: "brady", label: "Bradyarrhythmias", caption: "Sinus node disease, escape rhythms and chronotropic incompetence.", content: <BradyarrhythmiaDiagram /> },
+                  { value: "pacing", label: "Pacing devices", caption: "Pacemaker and ICD lead positions, NBG codes and peri-operative reprogramming.", content: <PacingDevicesDiagram /> },
+                ]}
+              />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
