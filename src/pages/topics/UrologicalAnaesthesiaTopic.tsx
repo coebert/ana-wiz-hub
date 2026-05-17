@@ -132,7 +132,9 @@ const UrologicalAnaesthesiaTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               An uncommon but well-recognised phenomenon: penile tumescence or full erection occurring after induction or during maintenance with propofol. Reported incidence is low (case reports and small series), but the consequences in endoscopic urology can be significant.
             </p>
-            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <PropofolErectionMechanismDiagram />
+            </div>
               {[
                 { label: "Proposed mechanism", value: "Central disinhibition of spinal erection reflex + relaxation of cavernosal smooth muscle via NO/GABAergic effects; reduced sympathetic tone" },
                 { label: "Timing", value: "Typically within minutes of induction or after a bolus; may persist or recur during TIVA maintenance" },
