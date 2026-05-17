@@ -188,6 +188,9 @@ const IcuEndocrineEmergenciesTopic = () => {
               precipitant: infection, missed insulin, MI, CVA, steroids, SGLT2 inhibitors
               (euglycaemic DKA — glucose may be normal).
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <EndocrineSymptomTriage />
+            </div>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Severity criteria — DKA (JBDS-IP)</p>
@@ -204,6 +207,14 @@ const IcuEndocrineEmergenciesTopic = () => {
                   &lt; 3, glucose &gt; 30. Fluid deficit 100–220 ml/kg. Aim glucose fall
                   ≤ 5 mmol/L/h, Na⁺ change ≤ 10 mmol/L/24 h. Always give VTE prophylaxis.
                 </p>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <DKAAnimation />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <DKAvsHHSDiagram />
               </div>
             </div>
             <GuidelineSources sources={HYPERGLYCAEMIC_SOURCES} />
