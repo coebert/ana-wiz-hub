@@ -603,14 +603,18 @@ const RadialSvg = ({ steps, active, accentVar, centerLabel, reduceMotion = false
               <circle
                 cx={p.x}
                 cy={p.y}
-                r={nodeR + 4}
+                r={nodeR + (reduceMotion ? 6 : 4)}
                 fill="none"
                 stroke={accentVar}
-                strokeWidth="1"
-                opacity="0.5"
+                strokeWidth={reduceMotion ? 2 : 1}
+                opacity={reduceMotion ? 0.8 : 0.5}
               >
-                <animate attributeName="opacity" from="0.6" to="0" dur="1.4s" repeatCount="indefinite" />
-                <animate attributeName="r" from={String(nodeR + 2)} to={String(nodeR + 14)} dur="1.4s" repeatCount="indefinite" />
+                {!reduceMotion && (
+                  <>
+                    <animate attributeName="opacity" from="0.6" to="0" dur="1.4s" repeatCount="indefinite" />
+                    <animate attributeName="r" from={String(nodeR + 2)} to={String(nodeR + 14)} dur="1.4s" repeatCount="indefinite" />
+                  </>
+                )}
               </circle>
             )}
           </g>
