@@ -114,7 +114,6 @@ const RespiratoryDiseaseTopic = () => {
                 <li>Acute intraoperative bronchospasm: deepen anaesthesia, salbutamol MDI/nebuliser, IV salbutamol (250 µg), IV magnesium (2 g), IV hydrocortisone (200 mg)</li>
               </ul>
             </div>
-            </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
               <AsthmaBronchospasmDiagram />
             </div>
@@ -150,7 +149,6 @@ const RespiratoryDiseaseTopic = () => {
                 <li>Extubation: awake, upright, with bronchodilator nebuliser; consider NIV postoperatively in high-risk patients</li>
               </ul>
             </div>
-            </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
               <CopdPathophysDiagram />
             </div>
@@ -170,7 +168,6 @@ const RespiratoryDiseaseTopic = () => {
                 <li>Perioperative management: bring own CPAP device; avoid or minimise opioids; use multimodal analgesia (paracetamol, NSAIDs, regional blocks)</li>
                 <li>Postoperative monitoring: continuous SpO₂ for ≥72 hours; nurse semi-upright; CPAP for all sleep periods</li>
                 <li>Avoid day surgery for patients with severe OSA undergoing procedures requiring opioid analgesia</li>
-              </ul>
             </div>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -200,7 +197,6 @@ const RespiratoryDiseaseTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Myasthenia gravis, muscular dystrophies, severe kyphoscoliosis → restrictive physiology</li>
                 <li>Scoliosis: Cobb angle &gt;65° associated with significant restrictive defect and cor pulmonale</li>
-                <li>May require postoperative ventilatory support; plan ICU admission for major surgery</li>
               </ul>
             </div>
             </div>
@@ -219,7 +215,6 @@ const RespiratoryDiseaseTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Active LRTI: postpone elective surgery; increased risk of bronchospasm, hypoxaemia, and atelectasis</li>
                 <li>Recent URTI: airway hyperreactivity persists 6–8 weeks; in children, 2–4× increased risk of laryngospasm and bronchospasm</li>
-                <li>Decision to proceed depends on: severity, procedure urgency, patient age (children &lt;1 year at highest risk), and type of airway management planned</li>
                 <li>If proceeding with URTI: avoid intubation where possible (LMA preferred), use humidified gases, IV induction (avoid desflurane)</li>
               </ul>
             </div>
