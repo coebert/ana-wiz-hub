@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { haematologyImmunityQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/DiagramSection";
@@ -184,6 +185,17 @@ const HaematologyImmunityTopic = () => {
       ]}
       coreConcepts={
         <>
+          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_01"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Haematology and immunity sit at the heart of perioperative medicine — from haemostasis at the surgical
+              wound to the recognition of anaphylaxis on induction and the immune compromise of asplenic, transplant
+              and septic patients. This topic moves from coagulation (the cellular response to vessel injury) through
+              blood-group serology and transfusion, to the architecture of innate and adaptive immunity, finishing with
+              the differential response to bacterial vs viral infection and the rationale for vaccination.
+            </p>
+          </ExamSection>
+
           <ExamSection id="coagulation" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coagulation Cascade</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">Haemostasis involves primary (platelet plug) and secondary (fibrin clot) phases. The cell-based model describes initiation (TF + VIIa → Xa), amplification (thrombin activates platelets + V, VIII, XI), and propagation (burst of thrombin → fibrin).</p>
@@ -299,6 +311,16 @@ const HaematologyImmunityTopic = () => {
               </table>
             </div>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>Suspected anaphylaxis</strong>: mast cell tryptase at 1–2 h, 6–24 h and baseline; refer to specialist allergy clinic. Adrenaline IV bolus 50 µg titrated to response.</>,
+              <><strong>Asplenic patients</strong> are at lifelong risk of overwhelming infection by encapsulated organisms — confirm pneumococcal, meningococcal ACWY+B and Hib vaccination plus penicillin prophylaxis.</>,
+              <><strong>Liver disease coagulopathy</strong> is balanced — INR overestimates bleeding risk; use TEG/ROTEM and avoid empiric FFP.</>,
+              <><strong>Massive transfusion</strong>: anticipate dilutional thrombocytopenia, hypocalcaemia (citrate), hyperkalaemia and hypothermia — give in 1:1:1 ratio.</>,
+              <><strong>ABO incompatibility</strong> is almost always a clerical error — repeat ID checks at every step.</>,
+            ]}
+          />
         </>
       }
     />
