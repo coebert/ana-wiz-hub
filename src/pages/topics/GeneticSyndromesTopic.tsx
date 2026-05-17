@@ -332,6 +332,7 @@ const GeneticSyndromesTopic = () => {
             </div>
           ),
           answer: "Stop trigger, ALS for hyperK⁺ arrest (Ca²⁺, insulin–dextrose, salbutamol, NaHCO₃), TIVA, alkaline diuresis, family screening.",
+          cites: ["BJA Educ DMD 2017", "AAGBI MH 2020"],
         },
       ]}
       keyPoints={[
