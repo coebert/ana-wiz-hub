@@ -6,6 +6,7 @@ import MechanicalCirculatorySupportDiagram from "@/components/diagrams/Mechanica
 import MCSPressureVolumeLoopDiagram from "@/components/diagrams/MCSPressureVolumeLoopDiagram";
 import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
 import CPPSpiralDiagram from "@/components/diagrams/CPPSpiralDiagram";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Classify shock by mechanism (hypovolaemic, cardiogenic, distributive, obstructive) and recognise the characteristic CVP / CO / SVR pattern of each.",
