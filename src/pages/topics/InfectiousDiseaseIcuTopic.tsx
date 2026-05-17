@@ -59,6 +59,20 @@ const InfectiousDiseaseIcuTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "SSC 2021",
+          "IDSA HAP/VAP 2016",
+          "BJA Educ Sepsis 2017",
+          "NICE NG51",
+        ],
+        keyPoints: [
+          "SSC 2021",
+          "IDSA HAP/VAP 2016",
+          "BJA Educ Sepsis 2017",
+          "NICE NG51",
+        ],
+      }}
       keyPoints={[
         { text: "Pneumonia is the commonest infection requiring ICU admission — categorise CAP/HAP/VAP and tailor empirical cover to local antibiogram", cites: ["NICE NG51"] },
         { text: "Legionella: hyponatraemia + dry cough + GI symptoms + raised CK — treat with macrolide or fluoroquinolone (β-lactams ineffective)", cites: ["BJA Educ Sepsis 2017"] },

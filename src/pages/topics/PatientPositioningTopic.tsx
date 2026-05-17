@@ -98,6 +98,20 @@ const PatientPositioningTopic = () => {
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "AAGBI Positioning 2018",
+          "ASA Practice Advisory 2020",
+          "BJA Educ PION 2017",
+          "AAGBI Pressure 2015",
+        ],
+        keyPoints: [
+          "AAGBI Positioning 2018",
+          "ASA Practice Advisory 2020",
+          "BJA Educ PION 2017",
+          "AAGBI Pressure 2015",
+        ],
+      }}
       keyPoints={[
         { text: "Anaesthetist owns positioning shared with the surgical team — document position, padding, eye care and pulses checked AFTER every move.", cites: ["AAGBI Positioning 2018"] },
         { text: "Ulnar neuropathy at the elbow is the commonest peripheral nerve injury after general anaesthesia (~28% of all anaesthesia-related nerve claims). Supinate the forearm and pad the medial epicondyle.", cites: ["ASA Practice Advisory 2020"] },

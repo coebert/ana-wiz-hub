@@ -42,6 +42,18 @@ const PulseOximetryTopic = () => {
         objectives: { exams: [Exam.PRIMARY] },
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2014",
+          "BJA Educ 2003",
+          "Cross & Plunkett Ch.15",
+        ],
+        keyPoints: [
+          "BJA Educ 2014",
+          "BJA Educ 2003",
+          "Cross & Plunkett Ch.15",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">

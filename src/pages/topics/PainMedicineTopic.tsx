@@ -61,6 +61,18 @@ const PainMedicineTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2018",
+          "IASP 2020",
+          "Faculty of Pain Medicine",
+        ],
+        keyPoints: [
+          "BJA Educ 2018",
+          "IASP 2020",
+          "Faculty of Pain Medicine",
+        ],
+      }}
       keyPoints={[
         { text: "Multimodal analgesia reduces opioid consumption — paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine", cites: ["BJA Educ 2018"] },
         { text: "IV magnesium reduces 24-h opioid use ~25% (Cochrane 2013); IV lidocaine — strongest evidence in open abdominal surgery (Weibel 2018), LOLIPOP 2024 questioned benefit in laparoscopic surgery", cites: ["Faculty of Pain Medicine"] },

@@ -368,6 +368,28 @@ const CirculatoryFailureTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2019",
+          "SSC 2021 Haemodynamics",
+          "BJA Educ 2014",
+          "ELSO Guidelines 2017",
+          "BJA Educ ECMO 2018",
+          "FICM ECMO 2021",
+          "SHOCK trial",
+          "IABP-SHOCK II",
+        ],
+        keyPoints: [
+          "BJA Educ 2019",
+          "SSC 2021 Haemodynamics",
+          "BJA Educ 2014",
+          "ELSO Guidelines 2017",
+          "BJA Educ ECMO 2018",
+          "FICM ECMO 2021",
+          "SHOCK trial",
+          "IABP-SHOCK II",
+        ],
+      }}
       coreConcepts={coreConcepts}
       diagrams={diagrams}
       workedExamples={workedExamples}

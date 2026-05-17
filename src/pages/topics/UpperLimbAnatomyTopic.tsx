@@ -42,6 +42,22 @@ const UpperLimbAnatomyTopic = () => {
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2021",
+          "Ellis & Feldman Ch.8",
+          "Last's Anatomy Ch.3",
+          "BJA Educ 2005",
+          "NICE CG49",
+        ],
+        keyPoints: [
+          "BJA Educ 2021",
+          "Ellis & Feldman Ch.8",
+          "Last's Anatomy Ch.3",
+          "BJA Educ 2005",
+          "NICE CG49",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">

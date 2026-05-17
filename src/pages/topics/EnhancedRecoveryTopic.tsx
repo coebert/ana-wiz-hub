@@ -45,6 +45,42 @@ const EnhancedRecoveryTopic = () => {
         objectives: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "Ljungqvist 2017",
+          "ERAS Colorectal 2018",
+          "Hughes 2014",
+          "ERAS Compliance 2015",
+          "LAFA 2011",
+          "EnROL 2014",
+          "Cochrane 2011",
+          "Greco 2014",
+          "POWER 2019",
+          "RELIEF 2018",
+          "OPTIMISE 2014",
+          "ERAS Arthroplasty 2020",
+          "ERAS Cardiac 2019",
+          "POISE-1 2008",
+          "NHS EPRR 2013",
+        ],
+        keyPoints: [
+          "Ljungqvist 2017",
+          "ERAS Colorectal 2018",
+          "Hughes 2014",
+          "ERAS Compliance 2015",
+          "LAFA 2011",
+          "EnROL 2014",
+          "Cochrane 2011",
+          "Greco 2014",
+          "POWER 2019",
+          "RELIEF 2018",
+          "OPTIMISE 2014",
+          "ERAS Arthroplasty 2020",
+          "ERAS Cardiac 2019",
+          "POISE-1 2008",
+          "NHS EPRR 2013",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
           <section className="space-y-6">

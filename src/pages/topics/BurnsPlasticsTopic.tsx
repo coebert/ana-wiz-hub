@@ -56,6 +56,20 @@ const BurnsPlasticsTopic = () => {
         workedExamples: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "Bittner 2015",
+          "NICE NG12",
+          "BBA EMSB",
+          "BJA Educ 2019",
+        ],
+        keyPoints: [
+          "Bittner 2015",
+          "NICE NG12",
+          "BBA EMSB",
+          "BJA Educ 2019",
+        ],
+      }}
       keyPoints={[
         { text: "Burns >15% TBSA in adults (>10% in children) require formal fluid resuscitation — Parkland: 4 ml × kg × %TBSA in 24 h, half in the first 8 h from time of burn", cites: ["Bittner 2015"] },
         { text: "Suxamethonium is contraindicated from 24 h to ~2 years post-major burn (extra-junctional ACh receptor upregulation → hyperkalaemic arrest)", cites: ["BJA Educ 2019"] },

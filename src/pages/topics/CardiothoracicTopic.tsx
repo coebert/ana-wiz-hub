@@ -72,6 +72,18 @@ const CardiothoracicTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2018",
+          "Kaplan's Cardiac",
+          "BJA Educ 2015",
+        ],
+        keyPoints: [
+          "BJA Educ 2018",
+          "Kaplan's Cardiac",
+          "BJA Educ 2015",
+        ],
+      }}
       keyPoints={[
         { text: "CPB: heparin 300-400 u/kg, target ACT >480s, reverse with protamine 1mg:100u ratio", cites: ["Kaplan's Cardiac"] },
         { text: "CPB activates SIRS — complement, cytokines, coagulopathy; TXA reduces bleeding (ATACAS)", cites: ["BJA Educ 2018"] },

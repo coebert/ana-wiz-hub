@@ -35,6 +35,18 @@ const LowerLimbAnatomyTopic = () => {
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Anatomy"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "Ellis Ch.7",
+          "NYSORA Lower Limb",
+          "BJA Educ 2016",
+        ],
+        keyPoints: [
+          "Ellis Ch.7",
+          "NYSORA Lower Limb",
+          "BJA Educ 2016",
+        ],
+      }}
       keyPoints={[
         { text: "Femoral nerve (L2-L4): lateral to femoral artery under inguinal ligament. Motor: quadriceps. Sensory: anterior thigh + medial leg (saphenous)", cites: ["NYSORA Lower Limb"] },
         { text: "Sciatic nerve (L4-S3): largest nerve. Two components — tibial (plantarflexion) and common peroneal (dorsiflexion)", cites: ["Ellis Ch.7"] },

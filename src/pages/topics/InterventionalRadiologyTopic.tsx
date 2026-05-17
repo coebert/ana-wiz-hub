@@ -59,6 +59,18 @@ const InterventionalRadiologyTopic = () => {
         workedExamples: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "AAGBI Remote Sites 2023",
+          "ESUR 2011",
+          "ACR Sedation 2017",
+        ],
+        keyPoints: [
+          "AAGBI Remote Sites 2023",
+          "ESUR 2011",
+          "ACR Sedation 2017",
+        ],
+      }}
       keyPoints={[
         { text: "IR suites are remote locations — apply AAGBI standards: full equipment, monitoring, capnography and trained assistance", cites: ["ESUR 2011"] },
         { text: "Iodinated contrast can cause anaphylactoid reactions, CI-AKI and thyroid storm — pre-hydrate high-risk patients", cites: ["AAGBI Remote Sites 2023"] },

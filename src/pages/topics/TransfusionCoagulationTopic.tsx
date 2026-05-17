@@ -74,6 +74,18 @@ const TransfusionCoagulationTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2015",
+          "NICE NG24",
+          "BSH 2017",
+        ],
+        keyPoints: [
+          "BJA Educ 2015",
+          "NICE NG24",
+          "BSH 2017",
+        ],
+      }}
       keyPoints={[
         { text: "Restrictive transfusion (Hb 70 g/L trigger) is safe in most ICU patients — TRICC, TRISS", cites: ["BSH 2017"] },
         { text: "Red cells: 35-day shelf life at 2–6°C; storage lesion (↓2,3-DPG, ↑K⁺, ↓pH) reverses over 24 h in the recipient", cites: ["NICE NG24"] },

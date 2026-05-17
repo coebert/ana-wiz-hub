@@ -479,6 +479,28 @@ const CardiacArrestPostResusTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "ERC/ESICM 2021 Post-Resus",
+          "TTM2 2021",
+          "TTM 2013",
+          "ARREST 2020",
+          "Prague OHCA 2022",
+          "INCEPTION 2023",
+          "ELSO Guidelines 2020",
+          "BJA Educ Neuroprog 2018",
+        ],
+        keyPoints: [
+          "ERC/ESICM 2021 Post-Resus",
+          "TTM2 2021",
+          "TTM 2013",
+          "ARREST 2020",
+          "Prague OHCA 2022",
+          "INCEPTION 2023",
+          "ELSO Guidelines 2020",
+          "BJA Educ Neuroprog 2018",
+        ],
+      }}
       coreConcepts={coreConcepts}
       diagrams={diagrams}
       workedExamples={workedExamples}

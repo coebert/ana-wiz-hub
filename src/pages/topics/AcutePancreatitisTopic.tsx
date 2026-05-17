@@ -134,6 +134,24 @@ const AcutePancreatitisTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "IAP/APA 2013",
+          "Atlanta 2012",
+          "WATERFALL 2022",
+          "PANTER 2010",
+          "BJA Educ 2018",
+          "BSG 2024",
+        ],
+        keyPoints: [
+          "IAP/APA 2013",
+          "Atlanta 2012",
+          "WATERFALL 2022",
+          "PANTER 2010",
+          "BJA Educ 2018",
+          "BSG 2024",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
         <section className="space-y-6">

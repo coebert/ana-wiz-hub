@@ -113,6 +113,18 @@ const PulmonaryHypertensionTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "ESC/ERS PH 2022",
+          "BJA Educ PH 2017",
+          "AHA PH 2018",
+        ],
+        keyPoints: [
+          "ESC/ERS PH 2022",
+          "BJA Educ PH 2017",
+          "AHA PH 2018",
+        ],
+      }}
       coreConcepts={
         <>
           <p className="text-muted-foreground leading-relaxed">

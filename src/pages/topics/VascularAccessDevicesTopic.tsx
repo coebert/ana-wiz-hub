@@ -34,6 +34,26 @@ const VascularAccessDevicesTopic = () => {
         diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
+      sectionSources={{
+        objectives: [
+          "NICE TA49",
+          "BJA Educ 2016",
+          "KDIGO 2012",
+          "epic3 2014",
+          "Rickard 2012",
+          "3SITES 2015",
+          "Cochrane PIVC 2019",
+        ],
+        keyPoints: [
+          "NICE TA49",
+          "BJA Educ 2016",
+          "KDIGO 2012",
+          "epic3 2014",
+          "Rickard 2012",
+          "3SITES 2015",
+          "Cochrane PIVC 2019",
+        ],
+      }}
       diagrams={
         <>
           <DiagramSection

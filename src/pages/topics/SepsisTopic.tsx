@@ -130,6 +130,18 @@ const SepsisTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "Sepsis-3 2016",
+          "SSC 2021",
+          "BJA Educ 2019",
+        ],
+        keyPoints: [
+          "Sepsis-3 2016",
+          "SSC 2021",
+          "BJA Educ 2019",
+        ],
+      }}
       coreConcepts={
     <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-6">

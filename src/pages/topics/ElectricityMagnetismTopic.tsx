@@ -56,6 +56,18 @@ const ElectricityMagnetismTopic = () => {
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "Cross & Plunkett Ch.12-13",
+          "Middleton Ch.15",
+          "BJA Educ 2003",
+        ],
+        keyPoints: [
+          "Cross & Plunkett Ch.12-13",
+          "Middleton Ch.15",
+          "BJA Educ 2003",
+        ],
+      }}
       keyPoints={[
         { text: "Ohm's law: V = IR. Power: P = VI = I²R = V²/R. Series resistances add; parallel: 1/R = 1/R₁ + 1/R₂", cites: ["Cross & Plunkett Ch.12-13"] },
         { text: "Impedance (Z) is the AC equivalent of resistance: Z = √(R² + (XL − XC)²) — includes capacitive and inductive reactance", cites: ["BJA Educ 2003"] },

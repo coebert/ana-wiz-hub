@@ -75,6 +75,24 @@ const ArrhythmiasEcgIcuTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 2.4"] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "Resuscitation Council UK 2021",
+          "ERC/ESICM 2021 Post-Resus",
+          "ESC AF 2020",
+          "BJA Educ 2018",
+          "TTM2 2021",
+          "ACC/AHA/HRS 2017",
+        ],
+        keyPoints: [
+          "Resuscitation Council UK 2021",
+          "ERC/ESICM 2021 Post-Resus",
+          "ESC AF 2020",
+          "BJA Educ 2018",
+          "TTM2 2021",
+          "ACC/AHA/HRS 2017",
+        ],
+      }}
       keyPoints={[
         { text: "Apply the same 8-step ECG analysis (rate · rhythm · P · PR · QRS · ST/T · QT · compare) to every strip — speed comes from consistency, not shortcuts", cites: ["ERC/ESICM 2021 Post-Resus"] },
         { text: "Wide-complex tachycardia in an ICU patient = VT until proven otherwise", cites: ["Resuscitation Council UK 2021"] },

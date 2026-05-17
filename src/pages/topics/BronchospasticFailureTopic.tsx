@@ -125,6 +125,20 @@ const BronchospasticFailureTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "BTS/SIGN Asthma 2019",
+          "GINA 2023",
+          "BJA Educ Asthma 2017",
+          "GOLD COPD 2023",
+        ],
+        keyPoints: [
+          "BTS/SIGN Asthma 2019",
+          "GINA 2023",
+          "BJA Educ Asthma 2017",
+          "GOLD COPD 2023",
+        ],
+      }}
       coreConcepts={
     <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-8 mb-10">

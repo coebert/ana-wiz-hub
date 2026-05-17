@@ -105,6 +105,18 @@ const VentilationPerfusionTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_02", "RC_BK_03"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_02"] },
       }}
+      sectionSources={{
+        objectives: [
+          "West Ch.5",
+          "Nunn Ch.8",
+          "BJA Educ 2018",
+        ],
+        keyPoints: [
+          "West Ch.5",
+          "Nunn Ch.8",
+          "BJA Educ 2018",
+        ],
+      }}
       keyPoints={[
         { text: "Normal V̇/Q̇ ≈ 0.8. Apex has highest V/Q (~3.3, dead space-like), base has lowest (~0.6, shunt-like)", cites: ["BJA Educ 2018"] },
         { text: "West's Zones: Zone 1 (PA > Pa > Pv) — dead space; Zone 3 (Pa > Pv > PA) — continuous flow", cites: ["Nunn Ch.8"] },

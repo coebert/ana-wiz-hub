@@ -169,6 +169,34 @@ const EquipmentMonitoringTopic = () => {
         objectives: { exams: [Exam.PRIMARY] },
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
+      sectionSources={{
+        objectives: [
+          "Macintosh 1943",
+          "Miller 1941",
+          "McCoy & Mirakhur 1993",
+          "Cormack & Lehane 1984",
+          "DAS 2015",
+          "NAP4 2011",
+          "BJA Educ Videolaryngoscopy 2016",
+          "Cochrane VL 2022",
+          "BJA Educ Paeds Airway 2017",
+          "Weiss & Engelhardt 2010",
+          "AAGBI Standards 2015",
+        ],
+        keyPoints: [
+          "Macintosh 1943",
+          "Miller 1941",
+          "McCoy & Mirakhur 1993",
+          "Cormack & Lehane 1984",
+          "DAS 2015",
+          "NAP4 2011",
+          "BJA Educ Videolaryngoscopy 2016",
+          "Cochrane VL 2022",
+          "BJA Educ Paeds Airway 2017",
+          "Weiss & Engelhardt 2010",
+          "AAGBI Standards 2015",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="space-y-12">

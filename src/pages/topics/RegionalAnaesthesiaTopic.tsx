@@ -76,6 +76,18 @@ const RegionalAnaesthesiaTopic = () => {
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2018",
+          "AAGBI 2020",
+          "BJA Educ 2018b",
+        ],
+        keyPoints: [
+          "BJA Educ 2018",
+          "AAGBI 2020",
+          "BJA Educ 2018b",
+        ],
+      }}
       keyPoints={[
         { text: "Spinal: rapid dense block, single-shot; Epidural: titratable, catheter-based, differential block", cites: ["BJA Educ 2018b"] },
         { text: "Hyperbaric bupivacaine spread influenced by baricity and patient position", cites: ["AAGBI 2020"] },

@@ -119,6 +119,18 @@ const MechanicalVentilationTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2018",
+          "Lumb Ch.31",
+          "BJA Educ 2019",
+        ],
+        keyPoints: [
+          "BJA Educ 2018",
+          "Lumb Ch.31",
+          "BJA Educ 2019",
+        ],
+      }}
       coreConcepts={
     <>
       <StickyTOC items={tocItems} />

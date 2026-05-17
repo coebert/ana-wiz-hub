@@ -36,6 +36,20 @@ const ElderlyAnaesthesiaTopic = () => {
         objectives: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "NICE NG111",
+          "AAGBI Elderly 2014",
+          "Lancet Frailty 2013",
+          "Lancet Delirium 2014",
+        ],
+        keyPoints: [
+          "NICE NG111",
+          "AAGBI Elderly 2014",
+          "Lancet Frailty 2013",
+          "Lancet Delirium 2014",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="space-y-8">

@@ -117,6 +117,18 @@ const LungMechanicsTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_03"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_01"] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2015",
+          "West Ch.7",
+          "Lumb Ch.2-3",
+        ],
+        keyPoints: [
+          "BJA Educ 2015",
+          "West Ch.7",
+          "Lumb Ch.2-3",
+        ],
+      }}
       keyPoints={[
         { text: "Compliance = ΔV/ΔP. Total respiratory compliance (~100 ml/cmH₂O) = lung + chest wall in series.", cites: ["BJA Educ 2015"] },
         { text: "Static compliance uses plateau pressure; dynamic compliance uses peak pressure. Dynamic < static.", cites: ["Lumb Ch.2-3"] },

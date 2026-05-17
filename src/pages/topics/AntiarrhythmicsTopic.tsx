@@ -57,6 +57,18 @@ const AntiarrhythmicsTopic = () => {
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2015",
+          "Peck & Hill Ch.12",
+          "Vaughan Williams",
+        ],
+        keyPoints: [
+          "BJA Educ 2015",
+          "Peck & Hill Ch.12",
+          "Vaughan Williams",
+        ],
+      }}
       diagrams={<VaughanWilliamsAPDiagram />}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
