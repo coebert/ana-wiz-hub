@@ -5,21 +5,37 @@ import brainLogo from "/brain-logo.webp";
  * Full-screen splash that gradually lights up the brain logo
  * like a neon sign, then fades out to reveal the page.
  *
- * Sizing strategy: instead of relying on `vmin` (which can produce
- * awkwardly tiny logos on short-but-wide screens and oversized halos
- * on tall phones), we measure the splash container with a
+ * Sizing strategy: we measure the splash container with a
  * ResizeObserver and derive a single base unit from
  * `min(width, height)`. Logo size and every glow radius are computed
  * from that unit and exposed as CSS custom properties so the
  * keyframes can scale uniformly.
  *
+ * Smoothing & clamping (see useLayoutEffect below):
+ *  - Raw container measurements are clamped to [MIN_UNIT, MAX_UNIT]
+ *    so freak values during orientation flips (e.g. a transient 0px
+ *    height between layout passes) cannot collapse the logo.
+ *  - ResizeObserver callbacks are batched with requestAnimationFrame
+ *    so a burst of resize events (mobile rotation, browser chrome
+ *    appearing/disappearing) only triggers one React update per frame.
+ *  - The committed unit is ignored if it differs from the previous
+ *    value by less than UNIT_EPSILON, eliminating sub-pixel jitter.
+ *  - CSS variable changes are eased via a `transition` on the
+ *    container (see the style block) so the logo/halo glide rather
+ *    than snap between sizes.
+ *
  * Shows once per browser session (sessionStorage gated).
  */
+
+const MIN_UNIT = 240;   // px — protects against transient 0/tiny measurements
+const MAX_UNIT = 1400;  // px — caps the unit on very large monitors
+const UNIT_EPSILON = 4; // px — ignore changes smaller than this (anti-jitter)
+
 const NeonSplash = () => {
   const [mounted, setMounted] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [unit, setUnit] = useState(0); // px; base sizing unit
+  const [unit, setUnit] = useState(0); // px; base sizing unit (clamped)
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -36,22 +52,48 @@ const NeonSplash = () => {
     };
   }, []);
 
-  // Measure the container and derive a base unit.
+  // Measure the container, clamp + smooth, then derive a base unit.
   useLayoutEffect(() => {
     if (!mounted) return;
     const el = containerRef.current;
     if (!el) return;
 
-    const measure = () => {
+    let rafId: number | null = null;
+    let lastCommitted = 0;
+
+    const commit = () => {
+      rafId = null;
       const { width, height } = el.getBoundingClientRect();
-      const m = Math.min(width, height);
-      setUnit(m);
+      const raw = Math.min(width, height);
+      // Clamp first — protects against the 0px transient during
+      // orientation changes and against absurdly large monitors.
+      const clamped = Math.min(MAX_UNIT, Math.max(MIN_UNIT, raw));
+      // Anti-jitter: ignore tiny deltas so 1px scrollbar wobble
+      // doesn't re-trigger CSS transitions every frame.
+      if (Math.abs(clamped - lastCommitted) < UNIT_EPSILON) return;
+      lastCommitted = clamped;
+      setUnit(clamped);
     };
 
-    measure();
-    const ro = new ResizeObserver(measure);
+    const schedule = () => {
+      if (rafId !== null) return; // already scheduled this frame
+      rafId = requestAnimationFrame(commit);
+    };
+
+    // Initial synchronous measure (no debounce) so first paint is correct.
+    commit();
+
+    const ro = new ResizeObserver(schedule);
     ro.observe(el);
-    return () => ro.disconnect();
+    // Also listen for orientation change explicitly — some mobile
+    // browsers fire resize after a delay that ResizeObserver misses.
+    window.addEventListener("orientationchange", schedule);
+
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      ro.disconnect();
+      window.removeEventListener("orientationchange", schedule);
+    };
   }, [mounted]);
 
   if (!mounted) return null;
@@ -74,6 +116,13 @@ const NeonSplash = () => {
     "--neon-glow-3": `${glow3}px`,
   } as React.CSSProperties;
 
+  // Smoothing: ease width/height between measured sizes so resize/
+  // orientation events glide rather than snap. The neon glow itself
+  // continues to be driven by the keyframes; only the geometry eases.
+  const smoothingStyle: React.CSSProperties = {
+    transition: "width 220ms ease-out, height 220ms ease-out",
+  };
+
   return (
     <div
       ref={containerRef}
@@ -91,7 +140,11 @@ const NeonSplash = () => {
       {/* Ambient glow halo — sized from measured logo */}
       <div
         className="absolute rounded-full bg-primary/25 blur-3xl animate-neon-halo"
-        style={{ width: "var(--neon-halo)", height: "var(--neon-halo)" }}
+        style={{
+          width: "var(--neon-halo)",
+          height: "var(--neon-halo)",
+          ...smoothingStyle,
+        }}
       />
 
       {/* Only render once we have a measurement to avoid a flash at the wrong size */}
@@ -102,7 +155,11 @@ const NeonSplash = () => {
           width={logoSize}
           height={logoSize}
           className="relative animate-neon-flicker"
-          style={{ width: "var(--neon-size)", height: "var(--neon-size)" }}
+          style={{
+            width: "var(--neon-size)",
+            height: "var(--neon-size)",
+            ...smoothingStyle,
+          }}
         />
       )}
     </div>
@@ -110,3 +167,4 @@ const NeonSplash = () => {
 };
 
 export default NeonSplash;
+
