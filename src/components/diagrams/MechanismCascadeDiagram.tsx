@@ -318,7 +318,7 @@ export const MechanismCascadeDiagram = ({
         {bibliography.list.length > 0 && (
           <div className="mt-3 rounded-lg border border-border bg-background/60 p-3">
             <div className="flex items-center gap-1.5 mb-2">
-              <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
+              <BookOpen className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" focusable="false" />
               <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
                 Sources for this cascade
               </p>
