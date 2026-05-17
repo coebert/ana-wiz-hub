@@ -271,6 +271,9 @@ const AcutePancreatitisTopic = () => {
               Renal urea &gt;16 mmol/L · Enzymes (LDH &gt;600 / AST &gt;200) · Albumin &lt;32 g/L · Sugar (glucose) &gt;10 mmol/L
             </p>
           </div>
+          <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+            <GlasgowImrieScoreDiagram />
+          </div>
         </div>
 
         {/* Initial Management */}
