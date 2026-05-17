@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { emergencySurgeryQuestions } from "@/data/quizzes";
 import { NCEPODClassificationDiagram } from "@/components/diagrams/NCEPODClassificationDiagram";
 import { EmergencyRSIDiagram } from "@/components/diagrams/EmergencyRSIDiagram";
@@ -55,6 +56,7 @@ const EmergencySurgeryTopic = () => {
         keyPoints: ["NELA Year 9 2023", "BJA Educ 2017", "DAS 2015"],
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
           <div className="flex justify-end">
             <EmergencySurgeryGlossaryDrawer />
@@ -276,6 +278,7 @@ const EmergencySurgeryTopic = () => {
             ]}
           />
         </section>
+      </ExamSection>
       }
     />
   );

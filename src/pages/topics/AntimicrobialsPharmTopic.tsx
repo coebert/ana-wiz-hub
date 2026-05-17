@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ExamSection } from "@/components/ExamSection";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { antimicrobialsQuiz } from "@/data/quizzes";
@@ -109,6 +110,7 @@ const AntimicrobialsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <section className="space-y-8">
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
@@ -300,6 +302,7 @@ const AntimicrobialsTopic = () => {
             ]}
           />
         </section>
+      </ExamSection>
       }
     />
   );

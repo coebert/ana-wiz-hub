@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { preoperativeAssessmentQuestions } from "@/data/quizzes";
@@ -46,7 +47,7 @@ const PreoperativeAssessmentTopic = () => {
         keyPoints: ["NICE NG45", "AAGBI 2010", "BJA Educ 2019"],
       }}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6">
         {/* 1. Broadest: overall risk stratification frameworks */}
         <div>
@@ -492,7 +493,7 @@ const PreoperativeAssessmentTopic = () => {
               'Anaemia (Hb <130 g/L M, <120 g/L F) is an independent risk factor — investigate and treat with IV iron preoperatively (PBM).',
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ExamSection } from "@/components/ExamSection";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { spinalAnatomyQuestions } from "@/data/quizzes";
 import SpinalCordCrossSectionDiagram from "@/components/diagrams/SpinalCordCrossSectionDiagram";
@@ -45,6 +46,7 @@ const SpinalAnatomyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
         <CorPictumFolio {...spinalFolio} suppressOverlayLabels />
         <div id="vertebral-column" className="scroll-mt-24">
@@ -138,6 +140,7 @@ const SpinalAnatomyTopic = () => {
           <EpiduralSpaceDiagram />
         </div>
         </section>
+      </ExamSection>
       }
     />
   );

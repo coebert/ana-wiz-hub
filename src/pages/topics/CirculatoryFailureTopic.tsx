@@ -1,4 +1,5 @@
 import { Exam } from "@/data/curriculum";
+import { ExamSection } from "@/components/ExamSection";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { circulatoryFailureQuestions, ecmoQuestions } from "@/data/quizzes";
@@ -133,7 +134,7 @@ const keyPoints = [
 ];
 
 const coreConcepts = (
-  <>
+  <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
     <div>
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
       <p className="text-muted-foreground leading-relaxed">
@@ -341,7 +342,7 @@ const coreConcepts = (
         "Fluid responsiveness assessment (PLR, PPV, SVV) — only valid in fully ventilated, sinus-rhythm, Vt ≥8 mL/kg patients.",
       ]}
     />
-  </>
+  </ExamSection>
 );
 
 const diagrams = (

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { clinicalMeasurementQuiz } from "@/data/quizzes";
 import ClinicalMeasurementDiagram from "@/components/diagrams/ClinicalMeasurementDiagram";
 import { Exam } from "@/data/curriculum";
@@ -47,7 +48,7 @@ const ClinicalMeasurementTopic = () => {
         keyPoints: ["Cross & Plunkett Ch.16", "Middleton Ch.18", "BJA Educ 2005"],
       }}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
 
         <div>
           <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
@@ -172,7 +173,7 @@ const ClinicalMeasurementTopic = () => {
               "Always level the transducer to the phlebostatic axis; raising it by 10 cm under-reads pressure by ~7 mmHg.",
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );

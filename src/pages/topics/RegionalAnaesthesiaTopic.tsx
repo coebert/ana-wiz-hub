@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { regionalAnaesthesiaQuestions } from "@/data/quizzes";
@@ -87,7 +88,7 @@ const RegionalAnaesthesiaTopic = () => {
         { text: "Heavy bupivacaine 2-segment regression: 60–90 min; full motor recovery 3–4 hours", cites: ["BJA Educ 2018"] },
       ]}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
           <TopicTableOfContents items={tocItems} />
           <section id="dermatomes" className="scroll-mt-24 mb-10">
         <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dermatome Anatomy — Foundations</h2>
@@ -410,7 +411,7 @@ const RegionalAnaesthesiaTopic = () => {
               "Use ultrasound + nerve stimulation for peripheral blocks; intraneural injection causes high pressures (>15 psi) — stop immediately.",
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );

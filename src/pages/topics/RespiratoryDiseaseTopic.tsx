@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { respiratoryDiseaseQuestions } from "@/data/quizzes";
@@ -61,7 +62,7 @@ const RespiratoryDiseaseTopic = () => {
         keyPoints: ["BJA Educ Asthma 2017", "BTS/SIGN 2019", "NICE NG115", "STOP-BANG", "Lumb Ch.27"],
       }}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <p className="text-muted-foreground leading-relaxed">
           Respiratory co-existing disease is a leading driver of postoperative pulmonary complications — atelectasis, pneumonia, prolonged ventilation, and unplanned ICU admission. This topic covers the high-yield conditions: asthma and COPD, obstructive sleep apnoea, restrictive lung disease, pulmonary fibrosis, and the perioperative implications of recent respiratory infection.
         </p>
@@ -197,7 +198,7 @@ const RespiratoryDiseaseTopic = () => {
               'Recent URTI in children: defer elective surgery 2–4 weeks — increased perioperative respiratory adverse events (COLDS score).',
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { painMedicineQuestions } from "@/data/quizzes";
 import { DorsalHornSynapseDiagram } from "@/components/diagrams/DorsalHornSynapseDiagram";
@@ -75,6 +76,7 @@ const PainMedicineTopic = () => {
         { text: "Early palliative care MDT (Temel NEJM 2010) improves QoL and survival; addresses Cicely Saunders' 'total pain'", cites: ["BJA Educ 2018"] },
       ]}
       coreConcepts={
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pain Pathways & Classification</h2>
@@ -793,6 +795,7 @@ const PainMedicineTopic = () => {
             ]}
           />
       </section>
+      </ExamSection>
       }
     />
   );

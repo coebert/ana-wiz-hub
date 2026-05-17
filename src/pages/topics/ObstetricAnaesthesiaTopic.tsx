@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { obstetricAnaesthesiaQuestions } from "@/data/quizzes";
 import PlacentalDrugTransferDiagram from "@/components/diagrams/PlacentalDrugTransferDiagram";
 import PregnancyPhysiologyDiagram from "@/components/diagrams/PregnancyPhysiologyDiagram";
@@ -45,6 +46,7 @@ const ObstetricAnaesthesiaTopic = () => {
         keyPoints: ["BJA Educ 2019", "OAA/DAS 2015", "MBRRACE-UK"],
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Physiological Changes of Pregnancy</h2>
@@ -796,6 +798,7 @@ const ObstetricAnaesthesiaTopic = () => {
             ]}
           />
         </section>
+      </ExamSection>
       }
     />
   );

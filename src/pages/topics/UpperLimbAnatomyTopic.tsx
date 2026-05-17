@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { upperLimbAnatomyQuestions } from "@/data/quizzes";
 import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
 import BrachialPlexusUltrasoundDiagram from "@/components/diagrams/BrachialPlexusUltrasoundDiagram";
@@ -42,6 +43,7 @@ const UpperLimbAnatomyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
         {/* ── BRACHIAL PLEXUS ── */}
         <div id="brachial-plexus" className="scroll-mt-24">
@@ -166,6 +168,7 @@ const UpperLimbAnatomyTopic = () => {
           </div>
         </div>
         </section>
+      </ExamSection>
       }
     />
   );

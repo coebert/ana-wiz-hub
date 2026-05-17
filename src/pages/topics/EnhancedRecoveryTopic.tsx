@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { enhancedRecoveryQuestions } from "@/data/quizzes";
@@ -45,7 +46,7 @@ const EnhancedRecoveryTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
           <section className="space-y-6">
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ERAS Principles</h2>
@@ -285,7 +286,7 @@ const EnhancedRecoveryTopic = () => {
               'Audit compliance — ERAS benefit is dose-dependent (≥70% bundle compliance correlates with reduced LOS and morbidity).',
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );

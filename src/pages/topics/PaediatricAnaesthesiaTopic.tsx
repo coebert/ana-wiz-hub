@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import PaediatricSurgicalProceduresDiagram from "@/components/diagrams/PaediatricSurgicalProceduresDiagram";
 import CaudalBlockDiagram from "@/components/diagrams/CaudalBlockDiagram";
 import CaudalSurfaceAnatomyDiagram from "@/components/diagrams/CaudalSurfaceAnatomyDiagram";
@@ -70,6 +71,7 @@ const PaediatricAnaesthesiaTopic = () => {
         { text: "Caudal block: Armitage 0.5/1.0/1.25 ml/kg of 0.25% bupivacaine for sacral/lumbar/thoracic spread; always test-dose for intravascular placement", cites: ["BJA Educ 2019"] },
       ]}
       coreConcepts={
+        <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anatomical & Physiological Differences</h2>
@@ -383,6 +385,7 @@ const PaediatricAnaesthesiaTopic = () => {
             ]}
           />
         </section>
+      </ExamSection>
       }
     />
   );

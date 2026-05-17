@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { neurologicalDiseaseQuestions } from "@/data/quizzes";
@@ -67,7 +68,7 @@ const NeurologicalDiseaseTopic = () => {
         keyPoints: ["BJA Educ MG 2018", "BJA Educ PD 2014", "BJA Educ Epilepsy 2015", "AAGBI Neuromuscular", "Autonomic Dysreflexia"],
       }}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <p className="text-muted-foreground leading-relaxed">
           Neurological co-existing disease changes drug handling, raises specific intra-operative risks, and dictates choices around regional versus general anaesthesia. This topic covers the high-yield conditions — myasthenia gravis, epilepsy, MS, Parkinson's disease, motor neuron disease, muscular dystrophies, and spinal cord injury — with an emphasis on neuromuscular blocker selection, autonomic safety, and continuation of disease-modifying therapy.
         </p>
@@ -403,7 +404,7 @@ const NeurologicalDiseaseTopic = () => {
               'Spinal cord injury >24 h: avoid suxamethonium (extra-junctional ACh receptors → hyperkalaemic arrest); high lesions risk autonomic dysreflexia.',
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );
