@@ -345,15 +345,6 @@ const coreConcepts = (
   </ExamSection>
 );
 
-const diagrams = (
-  <>
-    <FluidResponsivenessDiagram />
-    <MechanicalCirculatorySupportDiagram />
-    <MCSPressureVolumeLoopDiagram />
-    <VAECMOCircuitDiagram />
-  </>
-);
-
 const CirculatoryFailureTopic = () => {
   return (
     <TopicTemplate
@@ -392,7 +383,7 @@ const CirculatoryFailureTopic = () => {
         workedExamples: ["BJA Educ 2019", "IABP-SHOCK II", "SHOCK trial", "FICM ECMO 2021"],
       }}
       coreConcepts={coreConcepts}
-      diagrams={diagrams}
+      coreConcepts={coreConcepts}
       workedExamples={workedExamples}
       keyPoints={keyPoints}
       topicId="circulatory-failure"
