@@ -116,10 +116,6 @@ const PharmacodynamicsTopic = () => {
           "Rang & Dale Ch.2",
           "Peck & Hill Ch.2",
         ],
-        diagrams: [
-          "Peck & Hill Ch.2",
-          "Rang & Dale Ch.2",
-        ],
         workedExamples: [
           "BJA Educ 2016",
           "BJA Educ 2016",
