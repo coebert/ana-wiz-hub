@@ -11,6 +11,7 @@ import EndocrineEmergencyDrugs from "@/components/diagrams/EndocrineEmergencyDru
 import EndocrineSymptomTriage from "@/components/diagrams/EndocrineSymptomTriage";
 import GuidelineSources, { type GuidelineSource } from "@/components/GuidelineSources";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 // Section-specific guideline references (BJA Education + primary guidelines)
 const HYPERGLYCAEMIC_SOURCES: GuidelineSource[] = [
@@ -317,6 +318,16 @@ const IcuEndocrineEmergenciesTopic = () => {
             </div>
             <GuidelineSources sources={PITFALLS_SOURCES} />
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "DKA: fluids first (1 L 0.9% saline over 1 h), then fixed-rate insulin 0.1 U/kg/h, replace K⁺ once <5.5, continue long-acting insulin.",
+              "HHS: slower correction than DKA; high VTE risk — prophylactic anticoagulation; watch for cerebral oedema.",
+              "Thyroid storm: propranolol, propylthiouracil, iodine (after PTU), hydrocortisone, supportive cooling — treat trigger.",
+              "Addisonian crisis: hydrocortisone 100 mg IV stat then 200 mg/24 h, fluids, glucose; do not delay for cortisol assay.",
+              "Phaeochromocytoma crisis: α-block first (phenoxybenzamine/phentolamine) before β-block — avoid β-blocker alone (unopposed α causes worsening hypertension).",
+            ]}
+          />
         </>
       }
     />

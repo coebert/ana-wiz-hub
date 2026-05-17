@@ -6,6 +6,7 @@ import { Exam } from "@/data/curriculum";
 import GoalDirectedTherapyAnimation from "@/components/diagrams/GoalDirectedTherapyAnimation";
 import ComplicationBundlesAnimation from "@/components/diagrams/ComplicationBundlesAnimation";
 import PostopRiskCalculators from "@/components/diagrams/PostopRiskCalculators";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Define the 'high-risk surgical patient' using validated risk scores (P-POSSUM, SORT, RCRI) and CPET-derived thresholds",
@@ -303,6 +304,16 @@ const PostopHighRiskIcuTopic = () => {
               30-day mortality is only the start of the story. Patients surviving major surgery + critical care frequently develop <strong>post-intensive care syndrome (PICS)</strong> — physical deconditioning, cognitive impairment and psychological morbidity. Early mobilisation (TEAM trial showed no harm but no clear functional benefit), structured ICU follow-up clinics, and rehabilitation prescriptions (NICE CG83) are now embedded in CPOC pathways. Engage the patient and family in shared decisions about treatment escalation BEFORE surgery — particularly in the frail and elderly — to align critical-care interventions with what matters to the patient.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Risk scores: P-POSSUM, SORT, NELA risk, CPET (AT <11), Clinical Frailty Scale ≥5.",
+              "Level-2/3 indications: predicted mortality >5%, intraoperative instability, complex comorbidity, major emergency surgery.",
+              "Goal-directed fluid therapy (oesophageal Doppler/PPV) reduces complications in major surgery.",
+              "MINS (myocardial injury after non-cardiac surgery): hs-troponin rise within 30 days; associated with high 30-day mortality — surveillance protocols recommended.",
+              "Structured handover (SBAR/ATMIST), early HDU/ITU step-down planning, EWS triggers and consultant-delivered review.",
+            ]}
+          />
         </>
       }
     />

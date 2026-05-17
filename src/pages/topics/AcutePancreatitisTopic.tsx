@@ -7,6 +7,7 @@ import SeverePancreatitisCTDiagram from "@/components/diagrams/SeverePancreatiti
 import PancreatitisEvolutionTimeline from "@/components/diagrams/PancreatitisEvolutionTimeline";
 import { DiagramSection } from "@/components/DiagramSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Diagnose acute pancreatitis using the Atlanta 2012 criteria and stratify severity with Glasgow (Imrie), APACHE-II and CRP at 48 h.",
@@ -458,6 +459,16 @@ const AcutePancreatitisTopic = () => {
             </div>
           </div>
         </div>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Severity: Atlanta — mild (no organ failure), moderate (transient <48 h), severe (persistent >48 h); Glasgow score ≥3 predicts severe.",
+              "Resuscitate carefully — Hartmann's, target UO 0.5 mL/kg/h; over-resuscitation worsens outcomes (WATERFALL trial).",
+              "Antibiotics not routine; reserve for infected necrosis (CT-guided FNA) or extrapancreatic infection.",
+              "Step-up approach: percutaneous drain → minimally invasive necrosectomy; delay surgery 4 weeks if possible (walled-off necrosis).",
+              "Refer to tertiary HPB centre early in severe disease; ICU support for organ failure with low threshold for renal replacement.",
+            ]}
+          />
       </section>
       }
     />

@@ -10,6 +10,7 @@ import HLHPathophysiologyDiagram from "@/components/diagrams/HLHPathophysiologyD
 import HITPathophysiologyDiagram from "@/components/diagrams/HITPathophysiologyDiagram";
 import HITAssessmentBlock from "@/components/HITAssessmentBlock";
 import RebalancedHaemostasisDiagram from "@/components/diagrams/RebalancedHaemostasisDiagram";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Differentiate the thrombotic microangiopathies (TTP, HUS, DIC) using ADAMTS13 activity, coagulation screen, and PLASMIC score.",
@@ -398,6 +399,16 @@ const HaematologyIcuTopic = () => {
               </tbody>
             </table>
           </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "TTP: pentad (MAHA, thrombocytopenia, neuro signs, fever, renal); ADAMTS13 <10% — urgent plasma exchange + steroids + caplacizumab.",
+              "HLH/MAS: fever, splenomegaly, cytopenias, hyperferritinaemia (>500, often >10000), high triglycerides, low fibrinogen — HScore guides probability.",
+              "PLASMIC score stratifies TTP vs other thrombotic microangiopathies before ADAMTS13 result.",
+              "Plasma exchange: replaces ADAMTS13, removes inhibitor — 1.5× plasma volume daily until response.",
+              "ICU immunosuppression: balance infection vs disease — steroids ± rituximab; opportunistic infection prophylaxis (PCP, fungal).",
+            ]}
+          />
         </>
       }
     />

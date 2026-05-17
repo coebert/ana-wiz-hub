@@ -8,6 +8,7 @@ import AcdCitrateChelationDiagram from "@/components/diagrams/AcdCitrateChelatio
 import CitrateWashSeparationDiagram from "@/components/diagrams/CitrateWashSeparationDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe the composition, shelf-life, donor-to-recipient survival and storage requirements of each blood component",
@@ -503,6 +504,16 @@ const TransfusionCoagulationTopic = () => {
               </p>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Massive haemorrhage protocol: 1:1:1 RBC:FFP:platelets, TXA within 3 h, fibrinogen >2 g/L (>2.5 in obstetrics), calcium replacement.",
+              "TACO (overload — hypertension, raised JVP) vs TRALI (lung injury — bilateral infiltrates, normal CVP, fever).",
+              "Cell salvage: contraindicated relative to malignancy/sepsis (but useful in obstetrics with leukocyte filter).",
+              "TEG/ROTEM: clot initiation (R/CT), kinetics (K/CFT), strength (MA/MCF), fibrinolysis (LY30) — guides goal-directed therapy.",
+              "DIC: treat underlying cause; replace if bleeding (FFP, cryo, platelets) — not by numbers alone.",
+            ]}
+          />
         </>
       }
     />

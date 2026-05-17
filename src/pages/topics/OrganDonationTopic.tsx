@@ -4,6 +4,7 @@ import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { organDonationQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Distinguish DBD and DCD pathways and the legal time of death for each.",
@@ -255,6 +256,16 @@ const OrganDonationTopic = () => {
               <li><strong>Family approach</strong>: collaborative between intensivist and SN-OD, separate from prognosis discussion.</li>
             </ul>
           </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "DBD: brain-stem death testing — two doctors, two sets ≥6 h apart, prerequisites met.",
+              "DCD: planned withdrawal in identified candidates — controlled (Maastricht III) is the commonest UK pathway.",
+              "Donor optimisation: cardiovascular stability (noradrenaline + vasopressin), lung-protective ventilation, T4/methylprednisolone, glycaemic control.",
+              "SNOD referral early — even before brain-stem death testing or withdrawal decisions.",
+              "Family approach: ideally separate from withdrawal discussion; respect documented organ-donor decisions.",
+            ]}
+          />
         </>
       }
     />

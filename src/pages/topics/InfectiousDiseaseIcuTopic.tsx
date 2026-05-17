@@ -6,6 +6,7 @@ import PCPHRCTDiagram from "@/components/diagrams/PCPHRCTDiagram";
 import PCPManagementFlowchart from "@/components/diagrams/PCPManagementFlowchart";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Differentiate the causative organisms, severity scoring and empiric therapy for CAP, HAP and VAP",
@@ -1036,6 +1037,16 @@ const InfectiousDiseaseIcuTopic = () => {
               ))}
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "VAP: new infiltrate + clinical signs after >48 h ventilation; HAP/VAP empiric cover anti-pseudomonal + MRSA depending on local resistance.",
+              "Necrotising fasciitis: pain out of proportion, systemic toxicity — surgical debridement is life-saving; broad-spectrum + clindamycin (toxin suppression).",
+              "CNS infection: dexamethasone before/with first antibiotic dose in suspected bacterial meningitis reduces neurological sequelae.",
+              "Candidaemia: remove central lines, echinocandin first line; high mortality without prompt source control.",
+              "Influenza/COVID/severe viral pneumonia: oseltamivir for influenza within 48 h; steroids reduce mortality in severe COVID requiring O₂.",
+            ]}
+          />
         </>
       }
     />

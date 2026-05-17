@@ -7,6 +7,7 @@ import BurnResuscitationDiagram from "@/components/diagrams/BurnResuscitationDia
 import InhalationInjuryFlowchart from "@/components/diagrams/InhalationInjuryFlowchart";
 import ParklandCalculator from "@/components/diagrams/ParklandCalculator";
 import BurnsIcuCaseStepper from "@/components/diagrams/BurnsIcuCaseStepper";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Recognise major-burn pathophysiology — early shock, SIRS, hypermetabolism and immune dysfunction",
@@ -224,6 +225,16 @@ const BurnsIcuTopic = () => {
               full Burns Centre referral proforma.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Parkland: 4 mL/kg/%TBSA Hartmann's over 24 h, half in first 8 h from injury — titrate to UO 0.5 mL/kg/h (1 mL/kg/h in children, electrical burns).",
+              "Airway burn signs: facial burns, singed nasal hairs, soot, stridor, hoarseness — intubate early.",
+              "Escharotomy for circumferential full-thickness burns of limbs (compartment syndrome) or chest (ventilation).",
+              "Suxamethonium safe in first 24 h; avoid 24 h–12 months due to extrajunctional ACh receptor proliferation (hyperkalaemia).",
+              "Nutrition: hypermetabolic state — early enteral feeding, high protein (1.5–2 g/kg/day), micronutrient supplementation.",
+            ]}
+          />
         </>
       }
     />

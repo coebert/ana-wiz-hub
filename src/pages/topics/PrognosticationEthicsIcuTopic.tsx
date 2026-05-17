@@ -6,6 +6,7 @@ import PostCardiacArrestProgDiagram from "@/components/diagrams/PostCardiacArres
 import APACHEIICalculator from "@/components/diagrams/APACHEIICalculator";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply multimodal post-cardiac arrest prognostication (ERC/ESICM 2021) at ≥72 h with at least two concordant indicators.",
@@ -300,6 +301,16 @@ const PrognosticationEthicsIcuTopic = () => {
               <li><strong>Communication</strong>: separate prognosis and donation conversations; clear language.</li>
             </ul>
           </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "APACHE II, SOFA and SAPS scores describe populations — never individual prognosis in isolation.",
+              "Treatment escalation plans (TEPs) / ReSPECT documents should be reviewed on every ICU admission.",
+              "Four principles: autonomy, beneficence, non-maleficence, justice — apply to escalation, withdrawal, resource allocation.",
+              "Withdrawal of life-sustaining treatment is ethically and legally equivalent to withholding; second opinion + family/MDT consensus.",
+              "PICS (post-intensive-care syndrome): physical, cognitive and psychological sequelae — affects up to 50% of survivors; offer follow-up.",
+            ]}
+          />
         </>
       }
     />

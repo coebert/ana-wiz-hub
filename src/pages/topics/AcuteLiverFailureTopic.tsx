@@ -3,6 +3,7 @@ import { acuteLiverFailureQuestions } from "@/data/quizzes";
 import CLIFCACLFDiagram from "@/components/diagrams/CLIFCACLFDiagram";
 import ALFCerebralOedemaDiagram from "@/components/diagrams/ALFCerebralOedemaDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Define and classify ALF (hyperacute/acute/subacute) and identify common UK aetiologies.",
@@ -335,6 +336,16 @@ const AcuteLiverFailureTopic = () => {
         </div>
       </section>
 
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "King's College Criteria (paracetamol): arterial pH <7.30 OR (INR >6.5 + creat >300 + grade III/IV encephalopathy) — transplant referral.",
+              "Cerebral oedema is the leading cause of death — ICP monitoring controversial; treat with osmotherapy, head-up, mild hypothermia.",
+              "Paracetamol toxicity: NAC regardless of timing or level if ALF established; treat for 'staggered' OD or unknown timing.",
+              "Avoid hypoglycaemia (10–50% glucose infusion), correct coagulopathy only for bleeding/procedures (INR is also a prognostic marker).",
+              "Hyperammonaemia >150 µmol/L correlates with intracranial hypertension — consider CVVHDF for ammonia clearance.",
+            ]}
+          />
     </>
       }
     />

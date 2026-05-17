@@ -9,6 +9,7 @@ import LactateCRTTool from "@/components/diagrams/LactateCRTTool";
 import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
 import AlbuminFluidShiftDiagram from "@/components/diagrams/AlbuminFluidShiftDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply Sepsis-3 definitions and use SOFA / qSOFA / NEWS2 to recognise sepsis and septic shock.",
@@ -529,6 +530,16 @@ const SepsisTopic = () => {
         </ul>
       </SynthesisBlock>
 
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Sepsis = life-threatening organ dysfunction from dysregulated host response; SOFA increase ≥2 defines it; qSOFA is a screen, not diagnostic.",
+              "Hour-1 bundle: lactate, blood cultures, broad-spectrum antibiotics, 30 mL/kg crystalloid for hypotension/lactate ≥4, vasopressors to MAP ≥65.",
+              "Noradrenaline is first-line vasopressor; add vasopressin 0.03 U/min then hydrocortisone 200 mg/day in catecholamine-resistant shock.",
+              "Source control within 6–12 h where feasible — undrained pus, infected lines, necrotic tissue.",
+              "Balanced crystalloids preferred over 0.9% saline (BaSICS, SMART trials); albumin if large volumes needed.",
+            ]}
+          />
     </>
       }
     />

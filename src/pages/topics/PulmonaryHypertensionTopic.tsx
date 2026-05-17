@@ -7,6 +7,7 @@ import PHRiskStratificationCalculator from "@/components/diagrams/PHRiskStratifi
 import PHPathophysiologyDiagram from "@/components/diagrams/PHPathophysiologyDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Define pulmonary hypertension using 2022 ESC/ERS haemodynamic criteria and classify by WHO group.",
@@ -407,6 +408,16 @@ const PulmonaryHypertensionTopic = () => {
               <li><strong>Refractory failure</strong>: VA-ECMO bridge; consider transfer to PH centre.</li>
             </ul>
           </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "WHO groups: 1 PAH, 2 left heart disease, 3 lung disease/hypoxia, 4 CTEPH, 5 multifactorial.",
+              "Anaesthetic principles: avoid hypoxia, hypercapnia, acidosis, hypothermia, light anaesthesia — all worsen PVR.",
+              "RV-protective strategy: maintain coronary perfusion (high diastolic BP), avoid fluid overload, low airway pressures.",
+              "Targeted vasodilators: inhaled NO/prostacyclin (selective), sildenafil, bosentan — systemic agents risk hypotension.",
+              "PH crisis: noradrenaline/vasopressin for systemic BP, inhaled pulmonary vasodilator, treat trigger — high mortality.",
+            ]}
+          />
         </>
       }
     />

@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { QuizQuestion } from "@/components/QuizSection";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Define the four ANTS categories (situation awareness, decision making, task management, team working) and their elements.",
@@ -249,6 +250,16 @@ const NonTechnicalSkillsTopic = () => {
               <li><strong>Second victim</strong> — clinicians involved in adverse events need active support; structured peer support programmes (e.g. RISE).</li>
             </ul>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "ANTS framework: situation awareness, decision making, task management, team working.",
+              "Closed-loop communication: state the task, name the person, get verbal acknowledgement on completion.",
+              "Cognitive aids (DAS, MH, anaphylaxis flowcharts) reduce omissions in crises — use them, do not rely on memory.",
+              "Debrief after critical incidents — hot debrief immediately, cold debrief days later; focus on system, not individuals.",
+              "Just culture: separate human error, at-risk behaviour and reckless conduct; reporting systems must feel safe.",
+            ]}
+          />
         </>
       }
     />
