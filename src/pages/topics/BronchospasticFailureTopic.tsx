@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { Exam } from "@/data/curriculum";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { bronchospasticFailureQuestions } from "@/data/quizzes";
 import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinflationDiagram";
@@ -117,6 +118,11 @@ const BronchospasticFailureTopic = () => {
       topicId="bronchospastic-failure"
       topicTitle="Bronchospastic Respiratory Failure"
       quizQuestions={bronchospasticFailureQuestions}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={
     <>
       <section className="space-y-8 mb-10">

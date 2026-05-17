@@ -133,6 +133,11 @@ const AkiRrtTopic = () => {
       topicId="aki-rrt"
       topicTitle="Acute Kidney Injury & RRT"
       quizQuestions={akiRrtQuestions}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={
     <>
       <StickyTOC items={tocItems} />

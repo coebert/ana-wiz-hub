@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { Exam } from "@/data/curriculum";
 import { acutePancreatitisQuestions } from "@/data/quizzes";
 import GlasgowImrieScoreDiagram from "@/components/diagrams/GlasgowImrieScoreDiagram";
 import WaterfallFluidDiagram from "@/components/diagrams/WaterfallFluidDiagram";
@@ -127,6 +128,11 @@ const AcutePancreatitisTopic = () => {
           <WaterfallFluidDiagram />
         </>
       }
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={
         <section className="space-y-6">
           {/* Definition */}

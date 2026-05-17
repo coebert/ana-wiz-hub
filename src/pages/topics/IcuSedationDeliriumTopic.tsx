@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { Exam } from "@/data/curriculum";
 import { icuSedationDeliriumQuestions } from "@/data/quizzes";
 import { ICUSedationComparisonDiagram } from "@/components/diagrams/ICUSedationComparisonDiagram";
 import { CAMICUFlowchartDiagram } from "@/components/diagrams/CAMICUFlowchartDiagram";
@@ -118,6 +119,11 @@ const IcuSedationDeliriumTopic = () => {
         objectives: ["BJA Educ 2017", "BJA Educ 2019"],
         workedExamples: ["BJA Educ 2017", "DAS-Delirium"],
         keyPoints: ["BJA Educ 2019", "DAS-Delirium"],
+      }}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
         <section className="space-y-6">

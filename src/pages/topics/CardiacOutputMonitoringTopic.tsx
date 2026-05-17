@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { Exam } from "@/data/curriculum";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { CardiacOutputMonitorDiagram } from "@/components/diagrams/CardiacOutputMonitorDiagram";
 import PiCCODiagram from "@/components/diagrams/PiCCODiagram";
@@ -369,6 +370,11 @@ const CardiacOutputMonitoringTopic = () => {
       backLabel="Intensive Care"
       accentColor="text-icu"
       objectives={objectives}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={<CoreConcepts />}
       diagrams={<Diagrams />}
       workedExamples={workedExamples}

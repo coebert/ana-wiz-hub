@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { Exam } from "@/data/curriculum";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { sepsisQuestions } from "@/data/quizzes";
 import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagram";
@@ -123,6 +124,11 @@ const SepsisTopic = () => {
       topicId="sepsis"
       topicTitle="Sepsis & Septic Shock"
       quizQuestions={sepsisQuestions}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={
     <>
       <section className="space-y-6">

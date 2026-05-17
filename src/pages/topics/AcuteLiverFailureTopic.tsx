@@ -122,6 +122,11 @@ const AcuteLiverFailureTopic = () => {
       topicId="acute-liver-failure"
       topicTitle="Acute Liver Failure"
       quizQuestions={acuteLiverFailureQuestions}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FFICM, Exam.EDIC] },
+      }}
       coreConcepts={
     <>
       <section className="space-y-6">
