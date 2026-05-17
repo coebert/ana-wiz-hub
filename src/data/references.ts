@@ -247,11 +247,14 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Peck & Hill Ch.5", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 5: Intravenous Anaesthetic Agents." },
     { label: "Miller Ch.26", citation: "Miller RD, ed. Miller's Anesthesia. 9th ed. Elsevier; 2020. Chapter 26: Intravenous Anaesthetics." },
     { label: "AAGBI 2018", citation: "Nimmo AF et al. Guidelines for the safe practice of total intravenous anaesthesia (TIVA). Association of Anaesthetists / SIVA. Anaesthesia. 2019;74(2):211-224.", url: "https://doi.org/10.1111/anae.14428" },
+    { label: "Peck & Hill Ch.6", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 6: Opioid Analgesics." },
   ],
   "volatile-agents": [
     { label: "BJA Educ 2014", citation: "Khan KS, Hayes I, Buggy DJ. Pharmacology of anaesthetic agents II: inhalation anaesthetic agents. BJA Education. 2014;14(3):106-111.", url: "https://doi.org/10.1093/bjaceaccp/mkt038" },
     { label: "Peck & Hill Ch.4", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 4: Inhalational Anaesthetic Agents." },
     { label: "Eger", citation: "Eger EI. Uptake and distribution. In: Miller RD, ed. Miller's Anesthesia. 9th ed. Chapter 24." },
+    { label: "AAGBI MH 2020", citation: "Association of Anaesthetists. Malignant hyperthermia 2020: Guidelines from the Association of Anaesthetists. Anaesthesia. 2021;76(5):655-664.", url: "https://doi.org/10.1111/anae.15317" },
+    { label: "Peck & Hill Ch.7", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 7: Neuromuscular Blocking Drugs." },
   ],
   "opioids": [
     { label: "BJA Educ 2016", citation: "Pathan H, Williams J. Basic opioid pharmacology: an update. BJA Education. 2012;12(3):142-147.", url: "https://doi.org/10.1093/bjaceaccp/mkr061" },
@@ -263,11 +266,13 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Peck & Hill Ch.7", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 7: Neuromuscular Blocking Drugs." },
     { label: "Fourth National Audit Project", citation: "Harper NJN et al. Sugammadex and rocuronium. Anaesthesia. 2009;64 Suppl 1:16-21.", url: "https://doi.org/10.1111/j.1365-2044.2008.05866.x" },
     { label: "Peck & Hill Ch.10", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 10: Drugs Acting on the Neuromuscular Junction." },
+    { label: "BJA Educ 2019", citation: "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.", url: "https://doi.org/10.1016/j.bjae.2019.04.004" },
   ],
   "local-anaesthetics": [
     { label: "BJA Educ 2015", citation: "Taylor A, McLeod G. Basic pharmacology of local anaesthetics. BJA Education. 2020;20(2):34-41.", url: "https://doi.org/10.1016/j.bjae.2019.10.002" },
     { label: "Peck & Hill Ch.8", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 8: Local Anaesthetics." },
     { label: "AAGBI 2010", citation: "Association of Anaesthetists. Management of Severe Local Anaesthetic Toxicity. AAGBI; 2010.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Management-of-severe-local-anaesthetic-toxicity" },
+    { label: "BJA Educ 2016", citation: "Garg R. Mechanical ventilators. BJA Education. 2016;16(6):186-192.", url: "https://doi.org/10.1093/bjaed/mkv066" },
   ],
   "vasoactive-agents": [
     { label: "BJA Educ 2019", citation: "Smith S, Scarth E, Sasada M. Drugs in Anaesthesia and Intensive Care. 5th ed. Oxford University Press; 2016. Vasoactive section." },
@@ -284,6 +289,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NICE NG89", citation: "NICE. Venous thromboembolism in over 16s (NG89). 2018.", url: "https://www.nice.org.uk/guidance/ng89" },
     { label: "BSH 2011", citation: "Baglin TP et al. Guidelines on oral anticoagulation (warfarin): 4th edition. Br J Haematol. 2011;154(3):311-324.", url: "https://doi.org/10.1111/j.1365-2141.2011.08753.x" },
     { label: "AAGBI 2016", citation: "Association of Anaesthetists & Regional Anaesthesia UK. Regional anaesthesia and patients with abnormalities of coagulation. AAGBI; 2013 (updated 2016). Anaesthesia. 2013;68(9):966-972.", url: "https://doi.org/10.1111/anae.12359" },
+    { label: "BJA Educ 2017", citation: "Thomas G. Gas laws and physics relevant to anaesthesia. BJA Education. 2017;17(3):73-78.", url: "https://doi.org/10.1093/bjaed/mkw052" },
   ],
   "antimicrobials-pharm": [
     { label: "Peck & Hill Ch.14", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 14: Antimicrobial Agents." },
