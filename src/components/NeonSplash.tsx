@@ -47,16 +47,47 @@ const NeonSplash = () => {
     setMounted(true);
     sessionStorage.setItem("neon-splash-shown", "1");
 
-    const readyTimer = requestAnimationFrame(() => setReady(true));
-    const leaveTimer = setTimeout(() => setLeaving(true), 3200);
-    const removeTimer = setTimeout(() => setMounted(false), 3200 + FADE_MS);
+    let cancelled = false;
+    let rafId = 0;
+    let leaveTimer = 0 as unknown as ReturnType<typeof setTimeout>;
+    let removeTimer = 0 as unknown as ReturnType<typeof setTimeout>;
+
+    // Wait for the brain logo to be fully decoded before flipping `ready`.
+    // The asset is already preloaded via <link rel="preload"> in index.html,
+    // so this usually resolves immediately from cache; the await prevents
+    // any first-load flicker when the decode hasn't finished by mount time.
+    const img = new Image();
+    img.src = brainLogo;
+    const start = () => {
+      if (cancelled) return;
+      rafId = requestAnimationFrame(() => {
+        if (cancelled) return;
+        setReady(true);
+        // Anchor the 3200ms display window to the moment the logo is
+        // actually visible, not to mount time, so a slow decode never
+        // shortens the neon ignition sequence.
+        leaveTimer = setTimeout(() => setLeaving(true), 3200);
+        removeTimer = setTimeout(() => setMounted(false), 3200 + FADE_MS);
+      });
+    };
+
+    const decodePromise =
+      typeof img.decode === "function"
+        ? img.decode().catch(() => undefined)
+        : new Promise<void>((resolve) => {
+            img.onload = () => resolve();
+            img.onerror = () => resolve();
+          });
+    decodePromise.then(start);
 
     return () => {
-      cancelAnimationFrame(readyTimer);
+      cancelled = true;
+      cancelAnimationFrame(rafId);
       clearTimeout(leaveTimer);
       clearTimeout(removeTimer);
     };
   }, []);
+
 
   if (!mounted) return null;
 
