@@ -93,6 +93,12 @@ const NeuroanaesthesiaTopic = () => {
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CC1.4"]}>
             <CollapsibleSubsection title="ICP Management">
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <ICPVolumeCurveDiagram />
+            </div>
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <RaisedICPCascadeDiagram />
+            </div>
             <div className="space-y-2">
               {[
                 { step: "Head-up 30°", detail: "Improves venous drainage. Ensure head in neutral position — avoid jugular vein compression." },
