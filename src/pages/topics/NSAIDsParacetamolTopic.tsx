@@ -201,39 +201,6 @@ const NSAIDsParacetamolTopic = () => {
           />
         </>
       }
-      diagrams={
-        <>
-          <DiagramSection
-            title="NSAID mechanism — therapeutic &amp; adverse effects"
-            intro={
-              <p>
-                Trace arachidonic acid through COX-1, COX-2 and the lipoxygenase
-                shunt. Switch between non-selective NSAID, aspirin and a coxib to
-                see which prostanoids are blocked and which therapeutic and
-                adverse effects follow. Tap any effect chip for the underlying
-                mediator.
-              </p>
-            }
-          >
-            <NSAIDMechanismDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Arachidonic-acid shunt into 5-LOX (animated)"
-            intro={
-              <p>
-                Step through how COX inhibition diverts arachidonic acid into
-                the 5-lipoxygenase pathway, producing cysteinyl leukotrienes
-                (LTC₄/D₄/E₄), CysLT₁ activation and bronchoconstriction — the
-                mechanism of aspirin-exacerbated respiratory disease (AERD).
-                Use the chips or timeline to jump between phases.
-              </p>
-            }
-          >
-            <AAShuntAnimation />
-          </DiagramSection>
-        </>
-      }
     />
   );
 };
