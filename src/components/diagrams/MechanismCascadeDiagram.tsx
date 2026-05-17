@@ -489,7 +489,7 @@ const ChainSvg = ({ steps, active, accentVar, reduceMotion = false }: ChainSvgPr
                 {s.detail}
               </text>
             )}
-            {/* Pulse ring around active node */}
+            {/* Pulse ring around active node — suppressed when motion is reduced */}
             {isActive && (
               <rect
                 x={16}
@@ -499,11 +499,15 @@ const ChainSvg = ({ steps, active, accentVar, reduceMotion = false }: ChainSvgPr
                 rx={11}
                 fill="none"
                 stroke={accentVar}
-                strokeWidth="1"
-                opacity="0.5"
+                strokeWidth={reduceMotion ? 2 : 1}
+                opacity={reduceMotion ? 0.8 : 0.5}
               >
-                <animate attributeName="opacity" from="0.6" to="0" dur="1.4s" repeatCount="indefinite" />
-                <animate attributeName="stroke-width" from="1" to="4" dur="1.4s" repeatCount="indefinite" />
+                {!reduceMotion && (
+                  <>
+                    <animate attributeName="opacity" from="0.6" to="0" dur="1.4s" repeatCount="indefinite" />
+                    <animate attributeName="stroke-width" from="1" to="4" dur="1.4s" repeatCount="indefinite" />
+                  </>
+                )}
               </rect>
             )}
           </g>
