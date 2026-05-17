@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Play, Pause, RotateCcw, BookOpen, ExternalLink } from "lucide-react";
+import { Play, Pause, RotateCcw, BookOpen, ExternalLink, ChevronRight } from "lucide-react";
 import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
