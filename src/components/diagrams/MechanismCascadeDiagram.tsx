@@ -229,10 +229,18 @@ export const MechanismCascadeDiagram = ({
             <button
               type="button"
               onClick={() => setPlaying((p) => !p)}
-              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
-              aria-label={playing ? "Pause animation" : "Play animation"}
+              disabled={reduceMotion}
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label={
+                reduceMotion
+                  ? "Auto-play disabled by Reduce motion setting"
+                  : playing
+                    ? "Pause animation"
+                    : "Play animation"
+              }
               aria-pressed={playing}
               aria-controls={panelId}
+              title={reduceMotion ? "Disabled by Reduce motion setting" : undefined}
             >
               {playing ? (
                 <Pause className="h-3 w-3" aria-hidden="true" focusable="false" />
