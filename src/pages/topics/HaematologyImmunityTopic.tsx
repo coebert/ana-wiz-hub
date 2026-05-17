@@ -188,6 +188,18 @@ const HaematologyImmunityTopic = () => {
 
           <ExamSection id="immunity-overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_03"]}>
             <CollapsibleSubsection title="Immunity & Inflammation">
+            <DiagramSection
+              title="Immune Cell Lineages — Myeloid & Lymphoid Family Tree"
+              intro="Click any cell to reveal its role, function and clinical relevance. Use the highlight chips to fade everything that isn't innate or adaptive — dendritic cells and NK cells stay lit because they bridge both arms."
+            >
+              <ImmuneCellLineageDiagram />
+            </DiagramSection>
+            <DiagramSection
+              title="Hypersensitivity Reactions — Type I to IV"
+              intro="Select a type to compare mechanism, time course, classic examples, diagnostic tests and the anaesthetic-specific correlates. The log-scale timeline strip overlays all four so you can see at a glance why Type I is a theatre emergency in minutes while Type IV contact dermatitis takes 48–72 h."
+            >
+              <HypersensitivityComparisonDiagram />
+            </DiagramSection>
             <div className="space-y-3">
               {[
                 { title: "Innate Immunity", desc: "Non-specific, immediate. Physical barriers (skin, mucosa), complement cascade (classical, alternative, lectin pathways), phagocytes (neutrophils, macrophages), NK cells. Pattern recognition receptors (TLRs) detect PAMPs/DAMPs." },
@@ -206,6 +218,12 @@ const HaematologyImmunityTopic = () => {
 
           <ExamSection id="bacterial-response" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_03"]}>
             <CollapsibleSubsection title="Response to Bacterial Infection">
+            <DiagramSection
+              title="Interactive: Immune Response Timeline"
+              intro="Toggle between bacterial vs viral pathogens and naïve vs re-exposed states. The pathogen-burden curve, swimlane phases and cellular players all redraw — re-exposure suppresses the burden curve almost entirely, illustrating why vaccination works."
+            >
+              <ImmuneResponseTimelineDiagram />
+            </DiagramSection>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Extracellular bacteria (e.g. <em>S. pneumoniae</em>, <em>E. coli</em>) are largely countered by the humoral arm; intracellular bacteria (e.g. <em>M. tuberculosis</em>, <em>Listeria</em>) require cell-mediated immunity (Th1/macrophage activation).
             </p>
@@ -255,6 +273,24 @@ const HaematologyImmunityTopic = () => {
 
           <ExamSection id="primary-vs-secondary" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["HI_BK_03"]}>
             <CollapsibleSubsection title="Naïve vs Secondary Response — at a glance">
+            <DiagramSection
+              title="Antibody Kinetics — Primary vs Secondary"
+              intro="Log-titre plot of IgM and IgG across a first exposure (day 0) and re-challenge (day 28). The secondary IgG response is faster (1–3 days), larger (100–1000× higher peak) and predominantly class-switched — the immunological basis of vaccination."
+            >
+              <AntibodyKineticsDiagram />
+            </DiagramSection>
+            <DiagramSection
+              title="Vaccine Platforms — Which Immune Arm?"
+              intro="Pick a platform (live, inactivated, subunit/conjugate, toxoid, mRNA, viral vector) to see which arms of the immune system it preferentially primes, the resulting memory profile and the perioperative implications."
+            >
+              <VaccineTypesDiagram />
+            </DiagramSection>
+            <DiagramSection
+              title="Asplenic / Hyposplenic Patient — Immunisation Flowchart"
+              intro="Select the clinical scenario (elective, emergency or established hyposplenism) to see the correct vaccination window, then click each of the four mandatory vaccine groups for agents, schedule and rationale."
+            >
+              <AsplenicVaccinationFlowchart />
+            </DiagramSection>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead><tr className="border-b border-border">
