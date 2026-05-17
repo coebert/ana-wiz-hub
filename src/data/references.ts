@@ -821,4 +821,37 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "GALA 2008", citation: "GALA Trial Collaborative Group. General anaesthesia versus local anaesthesia for carotid surgery (GALA): a multicentre, randomised controlled trial. Lancet. 2008;372(9656):2132-2142.", url: "https://doi.org/10.1016/S0140-6736(08)61699-2" },
     { label: "RCRI", citation: "Lee TH et al. Derivation and prospective validation of a simple index for prediction of cardiac risk of major noncardiac surgery. Circulation. 1999;100(10):1043-1049.", url: "https://doi.org/10.1161/01.CIR.100.10.1043" },
   ],
+  "burns-icu": [
+    { label: "ABA Burn 2023", citation: "American Burn Association. Advanced Burn Life Support Course Provider Manual. 2023.", url: "https://ameriburn.org" },
+    { label: "BJA Educ 2017 Burns", citation: "Bishop S, Maguire S. Anaesthesia and intensive care for major burns. BJA Education. 2012;12(3):118-122.", url: "https://doi.org/10.1093/bjaceaccp/mks001" },
+    { label: "Parkland Formula", citation: "Baxter CR, Shires T. Physiological response to crystalloid resuscitation of severe burns. Ann N Y Acad Sci. 1968;150(3):874-894.", url: "https://doi.org/10.1111/j.1749-6632.1968.tb14738.x" },
+    { label: "ISBI 2016", citation: "ISBI Practice Guidelines Committee. ISBI Practice Guidelines for Burn Care. Burns. 2016;42(5):953-1021.", url: "https://doi.org/10.1016/j.burns.2016.05.013" },
+  ],
+  "icu-endocrine-emergencies": [
+    { label: "JBDS DKA 2023", citation: "Joint British Diabetes Societies. The management of diabetic ketoacidosis in adults. JBDS-IP guideline; 2023.", url: "https://abcd.care/joint-british-diabetes-societies-jbds-inpatient-care-group" },
+    { label: "JBDS HHS 2022", citation: "Joint British Diabetes Societies. The management of the hyperosmolar hyperglycaemic state (HHS) in adults. JBDS-IP guideline; 2022.", url: "https://abcd.care" },
+    { label: "BJA Educ 2014 Endo", citation: "Levy N et al. Peri-operative management of the patient with diabetes requiring emergency surgery. BJA Education. 2017;17(4):129-136.", url: "https://doi.org/10.1093/bjaed/mkw056" },
+    { label: "ATA Thyroid Storm", citation: "Ross DS et al. 2016 American Thyroid Association Guidelines for Diagnosis and Management of Hyperthyroidism and Other Causes of Thyrotoxicosis. Thyroid. 2016;26(10):1343-1421.", url: "https://doi.org/10.1089/thy.2016.0229" },
+    { label: "ES Adrenal Crisis 2016", citation: "Bornstein SR et al. Diagnosis and treatment of primary adrenal insufficiency: an Endocrine Society clinical practice guideline. J Clin Endocrinol Metab. 2016;101(2):364-389.", url: "https://doi.org/10.1210/jc.2015-1710" },
+  ],
+  "mass-casualty-military": [
+    { label: "JRCALC 2022", citation: "Joint Royal Colleges Ambulance Liaison Committee. JRCALC Clinical Guidelines 2022.", url: "https://aace.org.uk/jrcalc/" },
+    { label: "BJA Educ 2017 MCI", citation: "Carley S, Mackway-Jones K. The casualty management plan: planning for a mass casualty incident. BJA Education. 2014;14(6):254-258.", url: "https://doi.org/10.1093/bjaceaccp/mkt062" },
+    { label: "MARCH Algorithm", citation: "Tactical Combat Casualty Care (TCCC) Guidelines. Committee on TCCC; 2023.", url: "https://www.deployedmedicine.com/market/11/content/40" },
+    { label: "Damage Control Resuscitation", citation: "Holcomb JB et al. Damage control resuscitation: directly addressing the early coagulopathy of trauma. J Trauma. 2007;62(2):307-310.", url: "https://doi.org/10.1097/TA.0b013e3180324124" },
+    { label: "NHS EPRR 2022", citation: "NHS England. Emergency Preparedness, Resilience and Response (EPRR) Framework. 2022.", url: "https://www.england.nhs.uk/ourwork/eprr/" },
+  ],
+  "patient-positioning": [
+    { label: "AAGBI Positioning 2018", citation: "Knight DJW, Mahajan RP. Patient positioning in anaesthesia. BJA Education. 2004;4(5):160-163.", url: "https://doi.org/10.1093/bjaceaccp/mkh044" },
+    { label: "ASA Practice Advisory 2020", citation: "American Society of Anesthesiologists. Practice advisory for the prevention of perioperative peripheral neuropathies 2018. Anesthesiology. 2018;128(1):11-26.", url: "https://doi.org/10.1097/ALN.0000000000001937" },
+    { label: "BJA Educ 2017 PION", citation: "Roth S. Perioperative visual loss: what do we know, what can we do? Br J Anaesth. 2009;103 Suppl 1:i31-i40.", url: "https://doi.org/10.1093/bja/aep295" },
+    { label: "AAGBI Pressure 2015", citation: "Association of Anaesthetists. Pressure injuries in the operating theatre. AAGBI safety guideline; 2015.", url: "https://anaesthetists.org" },
+  ],
+  "xray-radiation-safety": [
+    { label: "IRR 2017", citation: "The Ionising Radiations Regulations 2017 (SI 2017/1075). UK Statutory Instrument.", url: "https://www.legislation.gov.uk/uksi/2017/1075/contents/made" },
+    { label: "IR(ME)R 2017", citation: "The Ionising Radiation (Medical Exposure) Regulations 2017. UK Statutory Instrument.", url: "https://www.legislation.gov.uk/uksi/2017/1322/contents/made" },
+    { label: "BJA Educ 2016 Radiation", citation: "Dauer LT et al. Radiation safety in the cardiac catheterisation lab. BJA Education. 2016;16(7):220-225.", url: "https://doi.org/10.1093/bjaed/mkv055" },
+    { label: "ICRP 103", citation: "International Commission on Radiological Protection. The 2007 Recommendations of the ICRP (Publication 103). Ann ICRP. 2007;37(2-4).", url: "https://www.icrp.org/publication.asp?id=ICRP+Publication+103" },
+    { label: "RCR Radiation 2020", citation: "Royal College of Radiologists. iRefer: Making the best use of clinical radiology. 8th edition. RCR; 2017.", url: "https://www.rcr.ac.uk/our-services/all-our-publications/clinical-radiology-publications/irefer/" },
+  ],
 };
