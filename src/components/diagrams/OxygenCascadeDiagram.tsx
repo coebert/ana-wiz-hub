@@ -240,20 +240,73 @@ const OxygenCascadeDiagram = () => {
         </svg>
       </DiagramFigure>
 
-      {/* Stage-by-stage explanation */}
+      {/* Playback controls — let the user pause/scrub the sequence */}
+      {!reducedMotion.current && (
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setPlaying((p) => !p)}
+            aria-label={playing ? "Pause cascade animation" : "Play cascade animation"}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-secondary/60 text-foreground hover:bg-secondary transition-colors"
+          >
+            {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+            {playing ? "Pause" : "Play"}
+          </button>
+          <button
+            type="button"
+            onClick={() => { setActive(0); setPlaying(true); }}
+            aria-label="Restart cascade animation"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-secondary/40 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+            Restart
+          </button>
+          <div className="flex gap-1 ml-1">
+            {STEPS.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => { setActive(i); setPlaying(false); }}
+                aria-label={`Jump to step ${i + 1}: ${STEPS[i].label}`}
+                className={`h-2 w-2 rounded-full transition-all ${
+                  i === active
+                    ? "bg-physiology scale-125"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Stage-by-stage explanation — the active step is highlighted to match the diagram */}
       <ol className="space-y-2 text-sm">
-        {STEPS.map((s, i) => (
-          <li key={s.label} className="flex gap-3">
-            <span className="font-mono text-xs text-muted-foreground w-6 shrink-0 mt-0.5">
-              {i + 1}.
-            </span>
-            <div>
-              <span className="font-semibold text-foreground">{s.label}</span>{" "}
-              <span className="font-mono text-physiology">{s.po2.toFixed(1)} kPa</span>
-              <span className="text-foreground/80"> — {s.note}</span>
-            </div>
-          </li>
-        ))}
+        {STEPS.map((s, i) => {
+          const on = isActive(i);
+          return (
+            <li
+              key={s.label}
+              className={`flex gap-3 rounded-md px-2 py-1 -mx-2 transition-all duration-300 ${
+                on
+                  ? "bg-physiology/10 ring-1 ring-physiology/40"
+                  : "opacity-70"
+              }`}
+            >
+              <span
+                className={`font-mono text-xs w-6 shrink-0 mt-0.5 transition-colors ${
+                  on ? "text-physiology font-bold" : "text-muted-foreground"
+                }`}
+              >
+                {i + 1}.
+              </span>
+              <div>
+                <span className="font-semibold text-foreground">{s.label}</span>{" "}
+                <span className="font-mono text-physiology">{s.po2.toFixed(1)} kPa</span>
+                <span className="text-foreground/80"> — {s.note}</span>
+              </div>
+            </li>
+          );
+        })}
       </ol>
     </div>
   );
