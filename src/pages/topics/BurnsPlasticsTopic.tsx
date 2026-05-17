@@ -69,6 +69,7 @@ const BurnsPlasticsTopic = () => {
           "BBA EMSB",
           "BJA Educ 2019",
         ],
+        workedExamples: ["BBA EMSB", "NICE NG12"],
       }}
       keyPoints={[
         { text: "Burns >15% TBSA in adults (>10% in children) require formal fluid resuscitation — Parkland: 4 ml × kg × %TBSA in 24 h, half in the first 8 h from time of burn", cites: ["Bittner 2015"] },

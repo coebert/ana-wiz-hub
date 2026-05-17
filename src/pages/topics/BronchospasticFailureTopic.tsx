@@ -138,6 +138,7 @@ const BronchospasticFailureTopic = () => {
           "BJA Educ Asthma 2017",
           "GOLD COPD 2023",
         ],
+        workedExamples: ["GOLD COPD 2023", "BJA Educ Asthma 2017", "GINA 2023"],
       }}
       coreConcepts={
     <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">

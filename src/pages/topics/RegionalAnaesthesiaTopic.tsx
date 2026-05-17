@@ -87,6 +87,7 @@ const RegionalAnaesthesiaTopic = () => {
           "AAGBI 2020",
           "BJA Educ 2018b",
         ],
+        workedExamples: ["AAGBI 2020", "BJA Educ 2018"],
       }}
       keyPoints={[
         { text: "Spinal: rapid dense block, single-shot; Epidural: titratable, catheter-based, differential block", cites: ["BJA Educ 2018b"] },

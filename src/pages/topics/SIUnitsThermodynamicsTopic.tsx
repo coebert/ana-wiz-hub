@@ -70,6 +70,7 @@ const SIUnitsThermodynamicsTopic = () => {
           "Middleton Ch.1",
           "Middleton Ch.8",
         ],
+        workedExamples: ["Middleton Ch.8", "Middleton Ch.1"],
       }}
       keyPoints={[
         { text: "There are 7 SI base units: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), candela (cd)", cites: ["Cross & Plunkett Ch.1-2"] },

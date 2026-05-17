@@ -76,6 +76,7 @@ const VolatileAgentsTopic = () => {
         objectives: ["BJA Educ 2014", "Peck & Hill Ch.4", "Eger"],
         diagrams: ["BJA Educ 2014", "Peck & Hill Ch.4"],
         keyPoints: ["BJA Educ 2014", "Peck & Hill Ch.4", "Eger"],
+        workedExamples: ["AAGBI MH 2020", "Peck & Hill Ch.7"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">

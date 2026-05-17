@@ -69,6 +69,7 @@ const PlasticSurgeryTopic = () => {
           "BAPRAS 2020",
           "Curr Opin Anaesthesiol 2019",
         ],
+        workedExamples: ["BJA Educ 2021", "Curr Opin Anaesthesiol 2019"],
       }}
       keyPoints={[
         { text: "Free-flap surgery demands meticulous haemodynamic management — normotension, normovolaemia, normothermia to optimise flap perfusion", cites: ["BAPRAS 2020"] },

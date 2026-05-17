@@ -67,6 +67,7 @@ const ElectricityMagnetismTopic = () => {
           "Middleton Ch.15",
           "BJA Educ 2003",
         ],
+        workedExamples: ["BJA Educ 2003", "Middleton Ch.15"],
       }}
       keyPoints={[
         { text: "Ohm's law: V = IR. Power: P = VI = I²R = V²/R. Series resistances add; parallel: 1/R = 1/R₁ + 1/R₂", cites: ["Cross & Plunkett Ch.12-13"] },

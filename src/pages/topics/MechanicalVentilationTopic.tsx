@@ -130,6 +130,7 @@ const MechanicalVentilationTopic = () => {
           "Lumb Ch.31",
           "BJA Educ 2019",
         ],
+        workedExamples: ["BJA Educ 2019", "Lumb Ch.31", "BJA Educ 2018"],
       }}
       coreConcepts={
     <>

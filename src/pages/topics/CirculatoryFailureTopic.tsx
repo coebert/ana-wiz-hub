@@ -389,6 +389,7 @@ const CirculatoryFailureTopic = () => {
           "SHOCK trial",
           "IABP-SHOCK II",
         ],
+        workedExamples: ["BJA Educ 2019", "IABP-SHOCK II", "SHOCK trial", "FICM ECMO 2021"],
       }}
       coreConcepts={coreConcepts}
       diagrams={diagrams}

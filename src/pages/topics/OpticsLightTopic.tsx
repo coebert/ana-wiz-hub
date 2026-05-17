@@ -58,6 +58,7 @@ const OpticsLightTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["BJA Educ 2004"],
+        keyPoints: ["Cross & Plunkett Ch.18", "BJA Educ 2004", "Middleton Ch.12"],
       }}
       keyPoints={[
         { text: "Law of reflection: angle of incidence = angle of reflection (θᵢ = θᵣ); incident ray, reflected ray, and normal lie in the same plane", cites: ["Cross & Plunkett Ch.18"] },

@@ -58,6 +58,7 @@ const LaserFibreopticsTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["BJA Educ 2004"],
+        keyPoints: ["BJA Educ 2004", "Middleton Ch.14", "Cross & Plunkett Ch.18"],
       }}
       keyPoints={[
         { text: "LASER = Light Amplification by Stimulated Emission of Radiation — requires population inversion in a gain medium", cites: ["BJA Educ 2004"] },

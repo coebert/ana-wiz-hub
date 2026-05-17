@@ -59,6 +59,7 @@ const MRIPhysicsTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["AAGBI 2010", "AAGBI 2010"],
+        keyPoints: ["BJA Educ 2019", "Middleton Ch.17", "AAGBI 2010"],
       }}
       keyPoints={[
         { text: "MRI uses hydrogen protons (¹H) which precess at the Larmor frequency ω₀ = γB₀ (42.58 MHz/T × field strength)", cites: ["BJA Educ 2019"] },

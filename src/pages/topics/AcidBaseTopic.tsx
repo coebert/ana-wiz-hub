@@ -68,6 +68,7 @@ const AcidBaseTopic = () => {
           "Brandis",
           "Power & Kam Ch.11",
         ],
+        workedExamples: ["Brandis", "BJA Educ 2015"],
       }}
       keyPoints={[
         { text: "Systematic approach: oxygenation → primary disorder → compensation → anion gap → delta ratio", cites: ["Power & Kam Ch.11"] },

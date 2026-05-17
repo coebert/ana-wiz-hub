@@ -64,6 +64,7 @@ const OphthalmicAnaesthesiaTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["RCOphth/RCoA 2012"],
+        keyPoints: ["BJA Educ 2018", "Allman & Wilson Ch.29", "RCOphth/RCoA 2012"],
       }}
       keyPoints={[
         { text: "IOP ↑ by suxamethonium, coughing, prone, N₂O (if SF₆ present); IOP ↓ by propofol, volatiles, mannitol", cites: ["BJA Educ 2018"] },

@@ -85,6 +85,7 @@ const TransfusionCoagulationTopic = () => {
           "NICE NG24",
           "BSH 2017",
         ],
+        workedExamples: ["BSH 2017", "NICE NG24", "BJA Educ 2015"],
       }}
       keyPoints={[
         { text: "Restrictive transfusion (Hb 70 g/L trigger) is safe in most ICU patients — TRICC, TRISS", cites: ["BSH 2017"] },

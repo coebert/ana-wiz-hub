@@ -64,6 +64,8 @@ const HumidityGasSamplingTopic = () => {
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.9"],
+        workedExamples: ["BJA Educ 2007", "Cross & Plunkett Ch.9"],
+        keyPoints: ["Al-Shaikh & Stacey Ch.8", "BJA Educ 2007", "Cross & Plunkett Ch.9"],
       }}
       keyPoints={[
         { text: "Absolute humidity at the carina = 44 mg/L at 37°C (100% RH); the isothermic saturation boundary (ISB) is normally at this level", cites: ["Al-Shaikh & Stacey Ch.8"] },

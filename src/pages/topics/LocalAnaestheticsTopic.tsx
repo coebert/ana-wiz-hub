@@ -78,6 +78,7 @@ const LocalAnaestheticsTopic = () => {
         objectives: ["BJA Educ 2015", "Peck & Hill Ch.8", "AAGBI 2010"],
         diagrams: ["BJA Educ 2015", "Peck & Hill Ch.8"],
         keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.8", "AAGBI 2010"],
+        workedExamples: ["AAGBI 2010", "BJA Educ 2016"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">

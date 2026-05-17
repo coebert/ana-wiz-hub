@@ -197,6 +197,7 @@ const NeurointensiveCareTopic = () => {
           "BTF 2017",
           "BJA Educ 2014",
         ],
+        workedExamples: ["BJA Educ 2018", "BTF 2017", "BJA Educ 2014"],
       }}
       coreConcepts={
     <>

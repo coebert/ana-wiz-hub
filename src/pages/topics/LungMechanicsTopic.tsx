@@ -128,6 +128,7 @@ const LungMechanicsTopic = () => {
           "West Ch.7",
           "Lumb Ch.2-3",
         ],
+        workedExamples: ["BJA Educ 2015", "Lumb Ch.2-3", "West Ch.7"],
       }}
       keyPoints={[
         { text: "Compliance = ΔV/ΔP. Total respiratory compliance (~100 ml/cmH₂O) = lung + chest wall in series.", cites: ["BJA Educ 2015"] },

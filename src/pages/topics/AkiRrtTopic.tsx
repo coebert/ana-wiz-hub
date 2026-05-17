@@ -150,6 +150,7 @@ const AkiRrtTopic = () => {
           "BJA Educ 2018",
           "NICE CG169",
         ],
+        workedExamples: ["BJA Educ 2018", "KDIGO 2012", "NICE CG169"],
       }}
       coreConcepts={
     <>

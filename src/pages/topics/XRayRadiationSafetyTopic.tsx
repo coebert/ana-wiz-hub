@@ -184,6 +184,7 @@ const XRayRadiationSafetyTopic = () => {
           "ICRP 103",
           "RCR Radiation 2020",
         ],
+        workedExamples: ["RCR Radiation 2020", "IRR 2017", "IR(ME)R 2017"],
       }}
       keyPoints={[
         { text: "Diagnostic X-rays are produced by bombarding a tungsten anode with electrons accelerated across a high-voltage (typically 50–150 kVp) tube — output is a bremsstrahlung continuum plus characteristic K-shell line emissions", cites: ["IRR 2017"] },

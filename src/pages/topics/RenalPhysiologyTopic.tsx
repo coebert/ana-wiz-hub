@@ -111,6 +111,7 @@ const RenalPhysiologyTopic = () => {
           "Power & Kam Ch.9",
           "Ganong Ch.37-38",
         ],
+        workedExamples: ["Ganong Ch.37-38", "Power & Kam Ch.9", "BJA Educ 2018"],
       }}
       keyPoints={[
         { text: "GFR ≈ 125 ml/min. Autoregulation maintains GFR over MAP 80–180 mmHg (myogenic + TGF).", cites: ["Ganong Ch.37-38"] },
