@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { Play, Pause, RotateCcw, BookOpen, ExternalLink } from "lucide-react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from "react";
+import { BookOpen, ChevronLeft, ChevronRight, ExternalLink, Pause, Play, RotateCcw } from "lucide-react";
 import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
@@ -61,18 +61,69 @@ export const MechanismCascadeDiagram = ({
 }: MechanismCascadeDiagramProps) => {
   const [step, setStep] = useState(0);
   const [playing, setPlaying] = useState(true);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const baseId = useId();
+  const tablistId = `${baseId}-steps`;
+  const panelId = `${baseId}-panel`;
+  const statusId = `${baseId}-status`;
+  // Respect prefers-reduced-motion: don't auto-advance for those users.
+  const prefersReducedMotion = useMemo(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
 
   useEffect(() => {
-    if (!playing) return;
+    if (!playing || prefersReducedMotion) return;
     const id = window.setInterval(
       () => setStep((s) => (s + 1) % steps.length),
       1800,
     );
     return () => window.clearInterval(id);
-  }, [playing, steps.length]);
+  }, [playing, prefersReducedMotion, steps.length]);
 
   const accentVar = `hsl(var(--${accent}))`;
   const current = steps[step];
+
+  const goTo = useCallback(
+    (i: number, { focus = false }: { focus?: boolean } = {}) => {
+      const next = ((i % steps.length) + steps.length) % steps.length;
+      setStep(next);
+      setPlaying(false);
+      if (focus) {
+        // Move focus to the corresponding tab so screen-reader users hear it.
+        requestAnimationFrame(() => tabRefs.current[next]?.focus());
+      }
+    },
+    [steps.length],
+  );
+
+  const onTablistKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    switch (e.key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        e.preventDefault();
+        goTo(step + 1, { focus: true });
+        break;
+      case "ArrowLeft":
+      case "ArrowUp":
+        e.preventDefault();
+        goTo(step - 1, { focus: true });
+        break;
+      case "Home":
+        e.preventDefault();
+        goTo(0, { focus: true });
+        break;
+      case "End":
+        e.preventDefault();
+        goTo(steps.length - 1, { focus: true });
+        break;
+      case " ":
+      case "Spacebar":
+        e.preventDefault();
+        setPlaying((p) => !p);
+        break;
+    }
+  };
 
   /**
    * Build a stable, de-duplicated bibliography across all steps.
@@ -105,21 +156,52 @@ export const MechanismCascadeDiagram = ({
       title="Mechanism cascade"
       description="Auto-generated wrapper for the Mechanism cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
     >
-          <div className="rounded-xl border border-border bg-card/40 p-4">
+          <div
+        className="rounded-xl border border-border bg-card/40 p-4"
+        role="group"
+        aria-roledescription="Animated mechanism cascade"
+        aria-label={`${title}. ${steps.length} steps. Use arrow keys to navigate, space to play or pause.`}
+      >
         <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
           <div>
             <h3 className="text-base font-semibold text-foreground">{title}</h3>
             {subtitle && <p className="text-xs text-muted-foreground">{subtitle}</p>}
           </div>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5" role="toolbar" aria-label="Cascade player controls">
+            <button
+              type="button"
+              onClick={() => goTo(step - 1)}
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:opacity-50"
+              aria-label="Previous step"
+              aria-controls={panelId}
+            >
+              <ChevronLeft className="h-3 w-3" aria-hidden="true" focusable="false" />
+              <span className="sr-only sm:not-sr-only">Prev</span>
+            </button>
             <button
               type="button"
               onClick={() => setPlaying((p) => !p)}
-              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
               aria-label={playing ? "Pause animation" : "Play animation"}
+              aria-pressed={playing}
+              aria-controls={panelId}
             >
-              {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+              {playing ? (
+                <Pause className="h-3 w-3" aria-hidden="true" focusable="false" />
+              ) : (
+                <Play className="h-3 w-3" aria-hidden="true" focusable="false" />
+              )}
               {playing ? "Pause" : "Play"}
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo(step + 1)}
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+              aria-label="Next step"
+              aria-controls={panelId}
+            >
+              <span className="sr-only sm:not-sr-only">Next</span>
+              <ChevronRight className="h-3 w-3" aria-hidden="true" focusable="false" />
             </button>
             <button
               type="button"
@@ -127,32 +209,51 @@ export const MechanismCascadeDiagram = ({
                 setStep(0);
                 setPlaying(true);
               }}
-              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
-              aria-label="Restart animation"
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+              aria-label="Restart animation from step 1"
             >
-              <RotateCcw className="h-3 w-3" /> Restart
+              <RotateCcw className="h-3 w-3" aria-hidden="true" focusable="false" /> Restart
             </button>
           </div>
         </div>
-  
-        {/* Step pills */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {steps.map((s, i) => (
-            <button
-              key={s.node}
-              type="button"
-              onClick={() => {
-                setStep(i);
-                setPlaying(false);
-              }}
-              data-active={step === i}
-              className="rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground transition-colors data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:border-primary"
-            >
-              {i + 1}. {s.node}
-            </button>
-          ))}
+
+        {/* Step pills — implemented as an ARIA tablist with roving tabindex */}
+        <div
+          className="flex flex-wrap gap-1.5 mb-4"
+          role="tablist"
+          id={tablistId}
+          aria-label="Cascade steps"
+          aria-orientation="horizontal"
+          onKeyDown={onTablistKeyDown}
+        >
+          {steps.map((s, i) => {
+            const selected = step === i;
+            return (
+              <button
+                key={s.node}
+                ref={(el) => { tabRefs.current[i] = el; }}
+                type="button"
+                role="tab"
+                id={`${tablistId}-tab-${i}`}
+                aria-selected={selected}
+                aria-controls={panelId}
+                aria-label={`Step ${i + 1} of ${steps.length}: ${s.node}`}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => goTo(i)}
+                data-active={selected}
+                className="rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground transition-colors data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+              >
+                {i + 1}. {s.node}
+              </button>
+            );
+          })}
         </div>
-  
+
+        {/* Screen-reader announcement of step changes */}
+        <p id={statusId} className="sr-only" aria-live="polite" aria-atomic="true">
+          Step {step + 1} of {steps.length}: {current.title}. {playing ? "Playing." : "Paused."}
+        </p>
+
         <div className="grid lg:grid-cols-[1fr,1fr] gap-4">
           <div className="rounded-lg border border-border bg-background p-3 flex items-center justify-center">
             {layout === "chain" ? (
@@ -168,7 +269,11 @@ export const MechanismCascadeDiagram = ({
           </div>
   
           <div
-            className="rounded-lg border p-3 flex flex-col justify-center"
+            id={panelId}
+            role="tabpanel"
+            aria-labelledby={`${tablistId}-tab-${step}`}
+            tabIndex={0}
+            className="rounded-lg border p-3 flex flex-col justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
             style={{
               borderColor: `hsl(var(--${accent}) / 0.35)`,
               backgroundColor: `hsl(var(--${accent}) / 0.06)`,
@@ -213,7 +318,7 @@ export const MechanismCascadeDiagram = ({
         {bibliography.list.length > 0 && (
           <div className="mt-3 rounded-lg border border-border bg-background/60 p-3">
             <div className="flex items-center gap-1.5 mb-2">
-              <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
+              <BookOpen className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" focusable="false" />
               <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
                 Sources for this cascade
               </p>
@@ -242,6 +347,8 @@ export const MechanismCascadeDiagram = ({
                     <ExternalLink
                       className="inline h-2.5 w-2.5 ml-0.5 align-baseline"
                       style={{ color: accentVar }}
+                      aria-hidden="true"
+                      focusable="false"
                     />
                   </a>
                 </li>
@@ -271,7 +378,7 @@ const ChainSvg = ({ steps, active, accentVar }: ChainSvgProps) => {
   const height = steps.length * nodeH + (steps.length - 1) * gap + 12;
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto max-h-[420px]">
+    <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto max-h-[420px]" role="presentation" aria-hidden="true" focusable="false">
       {steps.map((s, i) => {
         const y = i * (nodeH + gap) + 6;
         const isActive = i === active;
@@ -382,7 +489,7 @@ const RadialSvg = ({ steps, active, accentVar, centerLabel }: RadialSvgProps) =>
   });
 
   return (
-        <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-auto max-h-[420px]">
+        <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-auto max-h-[420px]" role="presentation" aria-hidden="true" focusable="false">
       {/* Spokes */}
       {positions.map((p, i) => (
         <line
