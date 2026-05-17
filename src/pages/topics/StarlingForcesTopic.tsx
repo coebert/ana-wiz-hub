@@ -100,7 +100,6 @@ const StarlingForcesTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_05"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_05", "OA_BK_06"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
@@ -109,17 +108,6 @@ const StarlingForcesTopic = () => {
         workedExamples: ["Levick & Michel 2010", "Woodcock & Woodcock 2012"],
         keyPoints: ["Levick & Michel 2010", "Power & Kam Ch.6", "Woodcock & Woodcock 2012"],
       }}
-      diagrams={
-        <>
-          <StarlingForcesDiagram />
-          <DiagramSection
-            title="Glycocalyx — Structure, Function & Shedding"
-            intro={<p>Toggle between the intact endothelial surface layer (ESL) and the shed, oedema-forming state seen in sepsis, hypervolaemia and ischaemia–reperfusion.</p>}
-          >
-            <GlycocalyxDiagram />
-          </DiagramSection>
-        </>
-      }
       keyPoints={[
         { text: "Revised Starling model: glycocalyx is the barrier, not endothelial junctions — no venular reabsorption", cites: ["Power & Kam Ch.6"] },
         { text: "Fluid return depends entirely on lymphatic drainage, not reabsorption at the venular end", cites: ["Woodcock & Woodcock 2012"] },
@@ -156,6 +144,9 @@ const StarlingForcesTopic = () => {
                 <div><strong>πc</strong> = capillary oncotic pressure</div>
                 <div><strong>πi</strong> = interstitial oncotic pressure</div>
               </div>
+            </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <StarlingForcesDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -209,6 +200,9 @@ const StarlingForcesTopic = () => {
               <li>Damage releases syndecan-1 and heparan sulphate into plasma (measurable biomarkers)</li>
               <li>Glycocalyx shedding → ↑ permeability → ↑ interstitial protein → oedema (explains why crystalloid boluses in sepsis are poorly retained)</li>
             </ul>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <GlycocalyxDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 

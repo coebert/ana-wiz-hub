@@ -28,27 +28,29 @@ const NeuroanatomyTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["AN_BK_07"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Ellis & Feldman Ch.7", "Power & Kam Ch.13"],
-        diagrams: ["Ellis & Feldman Ch.7", "BJA Educ 2007"],
         workedExamples: ["BJA Educ 2007", "Power & Kam Ch.13"],
         keyPoints: ["Ellis & Feldman Ch.7", "BJA Educ 2007", "Power & Kam Ch.13"],
       }}
-      diagrams={
-        <>
-          <CorPictumFolio {...neuroFolio} suppressOverlayLabels />
-          <BrainPlatesViewer />
-          <CsfFlowDiagram />
-          <CircleOfWillisDiagram />
-          <SkullBaseDiagram />
-        </>
-      }
       coreConcepts={
         <>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_07"]}>
+            <CollapsibleSubsection title="Anatomical Atlas" defaultOpen>
+              <div className="space-y-4">
+                <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                  <CorPictumFolio {...neuroFolio} suppressOverlayLabels />
+                </div>
+                <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                  <BrainPlatesViewer />
+                </div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_07"]}>
             <CollapsibleSubsection title="Cerebral Blood Supply — Circle of Willis" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -63,6 +65,9 @@ const NeuroanatomyTopic = () => {
                 <p className="font-semibold text-foreground text-sm">Posterior Circulation</p>
                 <p className="text-sm text-muted-foreground mt-1">Vertebral arteries → basilar artery → PCAs. Supply brainstem, cerebellum, occipital lobes. Posterior communicating arteries connect PCAs to ICAs. Complete circle in only 25% of population.</p>
               </div>
+            </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <CircleOfWillisDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -82,6 +87,9 @@ const NeuroanatomyTopic = () => {
                   <p className="text-sm text-muted-foreground mt-1">{s.detail}</p>
                 </div>
               ))}
+            </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <CsfFlowDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -103,6 +111,9 @@ const NeuroanatomyTopic = () => {
                   <tr><td className="py-2 font-medium text-foreground">Posterior</td><td>Foramen magnum, jugular foramen</td><td>Brainstem/spinal cord, vertebral arteries (magnum). CN IX, X, XI, IJV (jugular foramen).</td></tr>
                 </tbody>
               </table>
+            </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <SkullBaseDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>

@@ -106,7 +106,7 @@ const PharmacodynamicsTopic = () => {
       quizQuestions={pharmacodynamicsQuestions}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Pharmacology"] },
-        diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Pharmacology"] },
+        
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
@@ -115,10 +115,6 @@ const PharmacodynamicsTopic = () => {
           "Peck & Hill Ch.2",
           "Rang & Dale Ch.2",
           "Peck & Hill Ch.2",
-        ],
-        diagrams: [
-          "Peck & Hill Ch.2",
-          "Rang & Dale Ch.2",
         ],
         workedExamples: [
           "BJA Educ 2016",
@@ -152,6 +148,9 @@ const PharmacodynamicsTopic = () => {
               <li><strong>Efficacy</strong>: maximal effect achievable (Emax). Full agonist has high efficacy; partial agonist has lower Emax regardless of dose</li>
               <li><strong>Therapeutic index</strong>: TD₅₀/ED₅₀ (or LD₅₀/ED₅₀). Narrow TI drugs: digoxin, warfarin, lithium, phenytoin, theophylline</li>
             </ul>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <DoseResponseCurveDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -170,6 +169,9 @@ const PharmacodynamicsTopic = () => {
                   <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
+            </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <AgonismSpectrumDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -191,6 +193,9 @@ const PharmacodynamicsTopic = () => {
                   <tr><td className="py-2 font-medium text-foreground">Nuclear/intracellular</td><td>Gene transcription</td><td>Hours–days</td><td>Steroid receptors, thyroid hormone, vitamin D</td></tr>
                 </tbody>
               </table>
+            </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <ReceptorTimescaleDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -215,48 +220,6 @@ const PharmacodynamicsTopic = () => {
               "Hysteresis describes a lag between plasma concentration and effect — relevant for fentanyl, NMBDs, and ketamine.",
             ]}
           />
-        </>
-      }
-      diagrams={
-        <>
-          <DiagramSection
-            title="Log dose–response curves"
-            intro={
-              <p>
-                Compare a control agonist against a partial agonist and the two
-                classic antagonist patterns. Toggle each overlay to see how the
-                EC₅₀ marker shifts and how Emax responds.
-              </p>
-            }
-          >
-            <DoseResponseCurveDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="The agonism spectrum"
-            intro={
-              <p>
-                Intrinsic activity (α) places every receptor ligand on a single
-                spectrum from full agonist (α = 1) through partial agonist and
-                antagonist (α = 0) to inverse agonist (α &lt; 0).
-              </p>
-            }
-          >
-            <AgonismSpectrumDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Receptor types &amp; signal-transduction timescales"
-            intro={
-              <p>
-                A single log-time axis (1 ms → 24 h) makes the order-of-magnitude
-                differences between ion channels, GPCRs, kinase-linked, and
-                nuclear receptors immediately visible.
-              </p>
-            }
-          >
-            <ReceptorTimescaleDiagram />
-          </DiagramSection>
         </>
       }
     />

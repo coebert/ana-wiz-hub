@@ -27,17 +27,14 @@ const UrologicalAnaesthesiaTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL], curriculumCodes: ["CU_BK_03"] },
-        diagrams: { exams: [Exam.FINAL], curriculumCodes: ["CU_BK_03"] },
         workedExamples: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["BJA Educ TURP 2014", "BJA Educ Cystectomy 2017"],
-        diagrams: ["BJA Educ TURP 2014"],
         workedExamples: ["BJA Educ TURP 2014", "AAGBI Lithotomy 2015"],
         keyPoints: ["BJA Educ TURP 2014", "ERAS Cystectomy 2013", "AAGBI Lithotomy 2015", "BJA Educ Cystectomy 2017"],
       }}
-      diagrams={<><TURPSyndromeDiagram /><PropofolErectionMechanismDiagram /><PropofolErectionAlgorithmDiagram /></>}
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
@@ -73,6 +70,9 @@ const UrologicalAnaesthesiaTopic = () => {
               <p className="text-xs text-muted-foreground">
                 Spinal anaesthesia for TURP allows early detection of TURP syndrome — the awake patient develops confusion, restlessness, and nausea. Under GA these signs are masked. Spinal block to T10 is sufficient.
               </p>
+            </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <TURPSyndromeDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -129,6 +129,9 @@ const UrologicalAnaesthesiaTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               An uncommon but well-recognised phenomenon: penile tumescence or full erection occurring after induction or during maintenance with propofol. Reported incidence is low (case reports and small series), but the consequences in endoscopic urology can be significant.
             </p>
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <PropofolErectionMechanismDiagram />
+            </div>
             <div className="grid sm:grid-cols-2 gap-3 mb-3">
               {[
                 { label: "Proposed mechanism", value: "Central disinhibition of spinal erection reflex + relaxation of cavernosal smooth muscle via NO/GABAergic effects; reduced sympathetic tone" },
@@ -150,6 +153,9 @@ const UrologicalAnaesthesiaTopic = () => {
               <li><strong>Mechanical</strong>: ice packs, manual compression — generally ineffective alone</li>
               <li><strong>Last resort</strong>: abandon procedure if detumescence fails and instrumentation unsafe</li>
             </ul>
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <PropofolErectionAlgorithmDiagram />
+            </div>
             <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
               <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
               <p className="text-xs text-muted-foreground">

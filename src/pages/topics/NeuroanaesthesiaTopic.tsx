@@ -27,23 +27,14 @@ const NeuroanaesthesiaTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CN_BK_03", "CC1.4"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2018", "Matta et al."],
-        diagrams: ["BJA Educ 2015"],
         workedExamples: ["BJA Educ 2018", "BJA Educ 2015"],
         keyPoints: ["BJA Educ 2018", "Matta et al.", "BJA Educ 2015"],
       }}
-      diagrams={
-        <>
-          <CBFAutoregulationDiagram />
-          <ICPVolumeCurveDiagram />
-          <RaisedICPCascadeDiagram />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CN_BK_03"]}>
@@ -60,6 +51,9 @@ const NeuroanaesthesiaTopic = () => {
                 <p className="font-semibold text-foreground text-sm">Intracranial Pressure</p>
                 <p className="text-sm text-muted-foreground mt-1">Normal ICP: 5–15 mmHg. CPP = MAP − ICP. Target CPP &gt;60 mmHg. Monro-Kellie doctrine: brain (80%), blood (10%), CSF (10%) — compensatory mechanisms exhaust rapidly.</p>
               </div>
+            </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <CBFAutoregulationDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -90,6 +84,12 @@ const NeuroanaesthesiaTopic = () => {
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CC1.4"]}>
             <CollapsibleSubsection title="ICP Management">
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <ICPVolumeCurveDiagram />
+            </div>
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <RaisedICPCascadeDiagram />
+            </div>
             <div className="space-y-2">
               {[
                 { step: "Head-up 30°", detail: "Improves venous drainage. Ensure head in neutral position — avoid jugular vein compression." },
