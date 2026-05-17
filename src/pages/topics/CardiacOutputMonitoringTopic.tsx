@@ -363,20 +363,6 @@ const CoreConcepts = () => (
   </>
 );
 
-const Diagrams = () => (
-  <>
-    <div className="rounded-xl border border-border bg-card p-4">
-      <CardiacOutputMonitorDiagram />
-    </div>
-    <OesophagealDopplerDiagram />
-    <PiCCODiagram />
-    <PACDiagram />
-    <EchoDiagram />
-    <MModeDiagram />
-    <MModePathologyDiagram />
-    <TOEViewsDiagram />
-  </>
-);
 
 const CardiacOutputMonitoringTopic = () => {
   return (
@@ -406,7 +392,6 @@ const CardiacOutputMonitoringTopic = () => {
         workedExamples: ["BJA Educ 2018", "BJA Educ 2014", "BJA Educ 2005"],
       }}
       coreConcepts={<ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24"><CoreConcepts /></ExamSection>}
-      diagrams={<Diagrams />}
       workedExamples={workedExamples}
       keyPoints={keyPoints}
       topicId="cardiac-output-monitoring"
