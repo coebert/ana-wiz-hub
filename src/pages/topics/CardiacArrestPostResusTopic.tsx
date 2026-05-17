@@ -370,6 +370,7 @@ const coreConcepts = (
             <p className="text-sm font-semibold text-foreground mb-1">{m.title}</p>
             <p className="text-xs text-muted-foreground leading-relaxed">{m.detail}</p>
           </div>
+        ))}
       </div>
       <div className="mt-4 space-y-4">
         <div className="bg-card rounded-xl border border-border p-4 md:p-6">
