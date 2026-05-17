@@ -1,13 +1,44 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, X, Atom, Heart, FlaskConical, Stethoscope, Activity, ClipboardList, Bone, Beaker } from "lucide-react";
 import { allTopics, Topic, Section, sectionMeta } from "@/data/curriculum";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
+import * as quizzes from "@/data/quizzes";
 
-const topicsWithPaths: (Topic & { path: string })[] = allTopics.map((t) => ({
-  ...t,
-  path: `${sectionMeta[t.section].path}/${t.id}`,
-}));
+const toCamel = (id: string) => id.replace(/-([a-z0-9])/g, (_, c) => c.toUpperCase());
+
+const quizMap = quizzes as Record<string, Array<{ question?: string; options?: string[]; explanation?: string }>>;
+
+const stripDiacritics = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+type IndexedTopic = Topic & { path: string; haystack: string; keywords: string[] };
+
+const buildHaystack = (t: Topic): { haystack: string; keywords: string[] } => {
+  const parts: string[] = [t.title, t.description, t.section];
+  const quizKey = `${toCamel(t.id)}Quiz`;
+  const quiz = quizMap[quizKey];
+  if (Array.isArray(quiz)) {
+    for (const q of quiz) {
+      if (q.question) parts.push(q.question);
+      if (q.explanation) parts.push(q.explanation);
+      if (Array.isArray(q.options)) parts.push(q.options.join(" "));
+    }
+  }
+  const joined = stripDiacritics(parts.join(" ").toLowerCase());
+  // Extract keywords (words >= 3 chars) for snippet/match hinting
+  const keywords = Array.from(new Set(joined.match(/[a-z0-9][a-z0-9-]{2,}/g) ?? []));
+  return { haystack: joined, keywords };
+};
+
+const topicsWithPaths: IndexedTopic[] = allTopics.map((t) => {
+  const { haystack, keywords } = buildHaystack(t);
+  return {
+    ...t,
+    path: `${sectionMeta[t.section].path}/${t.id}`,
+    haystack,
+    keywords,
+  };
+});
 
 const sectionIcons: Record<Section, typeof Atom> = {
   physics: Atom,
@@ -52,18 +83,53 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
     return () => window.removeEventListener("keydown", handler);
   }, [open, onClose]);
 
-  const filtered = topicsWithPaths.filter((t) => matchesFilter(t.examTags));
+  const filtered = useMemo(
+    () => topicsWithPaths.filter((t) => matchesFilter(t.examTags)),
+    [matchesFilter],
+  );
 
-  const results = query.trim().length > 0
-    ? filtered.filter((t) => {
-        const q = query.toLowerCase();
-        return (
-          t.title.toLowerCase().includes(q) ||
-          t.description.toLowerCase().includes(q) ||
-          t.section.toLowerCase().includes(q)
-        );
-      })
-    : filtered.filter((t) => t.available);
+  const { results, snippets } = useMemo(() => {
+    const trimmed = query.trim();
+    if (trimmed.length === 0) {
+      return {
+        results: filtered.filter((t) => t.available),
+        snippets: new Map<string, string>(),
+      };
+    }
+    const normQuery = stripDiacritics(trimmed.toLowerCase());
+    const tokens = normQuery.split(/\s+/).filter((t) => t.length > 0);
+    const snippetMap = new Map<string, string>();
+    const scored: { topic: IndexedTopic; score: number }[] = [];
+
+    for (const t of filtered) {
+      const title = stripDiacritics(t.title.toLowerCase());
+      const desc = stripDiacritics(t.description.toLowerCase());
+      if (!tokens.every((tok) => t.haystack.includes(tok))) continue;
+
+      let score = 0;
+      if (title.includes(normQuery)) score += 100;
+      if (title.startsWith(tokens[0])) score += 30;
+      if (desc.includes(normQuery)) score += 40;
+      for (const tok of tokens) {
+        if (title.includes(tok)) score += 10;
+        if (desc.includes(tok)) score += 5;
+      }
+      if (!t.available) score -= 5;
+
+      if (!title.includes(tokens[0]) && !desc.includes(tokens[0])) {
+        const idx = t.haystack.indexOf(tokens[0]);
+        if (idx >= 0) {
+          const start = Math.max(0, idx - 40);
+          const end = Math.min(t.haystack.length, idx + tokens[0].length + 60);
+          const raw = t.haystack.slice(start, end).replace(/\s+/g, " ").trim();
+          snippetMap.set(t.id, `${start > 0 ? "…" : ""}${raw}${end < t.haystack.length ? "…" : ""}`);
+        }
+      }
+      scored.push({ topic: t, score });
+    }
+    scored.sort((a, b) => b.score - a.score);
+    return { results: scored.map((s) => s.topic), snippets: snippetMap };
+  }, [query, filtered]);
 
   const handleSelect = (topic: typeof topicsWithPaths[0]) => {
     if (topic.available) {
@@ -86,7 +152,7 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search topics…"
+              placeholder="Search topics, keywords, drugs, concepts…"
               className="flex-1 py-3.5 bg-transparent text-foreground placeholder:text-muted-foreground outline-none text-sm"
             />
             {query && (
@@ -115,9 +181,11 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
                     }`}
                   >
                     <Icon className={`h-4 w-4 shrink-0 ${sectionColors[topic.section]}`} />
-                    <div className="min-w-0">
+                    <div className="min-w-0 flex-1">
                       <p className="text-sm font-medium text-foreground truncate">{topic.title}</p>
-                      <p className="text-xs text-muted-foreground truncate">{topic.description}</p>
+                      <p className="text-xs text-muted-foreground truncate">
+                        {snippets.get(topic.id) ?? topic.description}
+                      </p>
                     </div>
                     {!topic.available && (
                       <span className="ml-auto text-xs text-muted-foreground shrink-0">Soon</span>
