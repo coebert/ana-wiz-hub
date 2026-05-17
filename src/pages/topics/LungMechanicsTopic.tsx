@@ -10,6 +10,7 @@ import { LungVolumesDiagram } from "@/components/diagrams/LungVolumesDiagram";
 import { DeadSpaceDiagram } from "@/components/diagrams/DeadSpaceDiagram";
 import { FowlersMethodDiagram } from "@/components/diagrams/FowlersMethodDiagram";
 import { AlveolarGasEquationDiagram } from "@/components/diagrams/AlveolarGasEquationDiagram";
+import OxygenCascadeDiagram from "@/components/diagrams/OxygenCascadeDiagram";
 import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
 import { ClosingVolumeDiagram } from "@/components/diagrams/ClosingVolumeDiagram";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
@@ -331,7 +332,22 @@ const LungMechanicsTopic = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Alveolar Gas Equation & Oxygen Cascade</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
-                The alveolar gas equation calculates PAO₂ from FiO₂, atmospheric pressure, and PaCO₂. It underpins the A-a gradient and assessment of gas exchange efficiency.
+                The <strong>oxygen cascade</strong> describes the stepwise fall in PO₂ from atmospheric air to
+                the mitochondrion. Each step represents a physiological loss: humidification dilutes inspired
+                O₂ with water vapour; alveolar gas is further diluted by CO₂ excretion (alveolar gas equation);
+                a small A–a gradient is created by physiological V/Q mismatch and anatomical shunt; tissue
+                offloading drops capillary PO₂; and the mitochondrion sits just above the <em>Pasteur point</em>
+                (~0.5–3 kPa), below which oxidative phosphorylation fails and anaerobic metabolism takes over.
+                Understanding the cascade lets you predict where hypoxaemia arises — high altitude affects the
+                first step, hypoventilation the third, V/Q mismatch the fourth, and circulatory failure the
+                fifth.
+              </p>
+              <div className="bg-card rounded-xl border border-border p-4 mb-4">
+                <OxygenCascadeDiagram />
+              </div>
+              <p className="text-foreground/90 leading-relaxed mb-4">
+                The alveolar gas equation underpins the second-to-third step (humidified inspired → alveolar)
+                and is the basis of the A–a gradient calculation used to assess gas exchange efficiency.
               </p>
               <div className="bg-card rounded-xl border border-border p-4">
                 <AlveolarGasEquationDiagram />
