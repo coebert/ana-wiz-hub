@@ -73,8 +73,8 @@ for (const f of files) {
   }
   d.totalCites += allCites.length;
 
-  // Worked-example cites (inside the WorkedExamples block)
-  const workedBlock = src.match(/const \w+WorkedExamples[\s\S]*?\n\];/);
+  // Worked-example block: matches either `const workedExamples` or `const FooWorkedExamples`
+  const workedBlock = src.match(/const \w*[wW]orkedExamples\s*(?::|=)[\s\S]*?\n\];/);
   let workedCites = [];
   if (workedBlock) {
     d.topicsWithWorked++;
