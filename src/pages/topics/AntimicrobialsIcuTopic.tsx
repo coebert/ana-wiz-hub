@@ -4,6 +4,8 @@ import { antimicrobialsIcuQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { DiagramSection } from "@/components/DiagramSection";
+import { AntibioticPKPDPrimer } from "@/components/diagrams/AntibioticPKPDPrimer";
 
 const objectives = [
   "Apply PK/PD principles (time-, concentration-, AUC/MIC-dependent killing) to antimicrobial dosing in critical illness.",
