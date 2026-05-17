@@ -272,6 +272,9 @@ const GasLawsTopic = () => {
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="Critical Temperature & Critical Pressure">
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <CriticalTemperatureDiagram />
+            </div>
             <p className="text-foreground/90 leading-relaxed">
               The <strong>critical temperature</strong> of a substance is the temperature above which it cannot be
               liquefied by the application of pressure alone, no matter how great. The <strong>critical pressure</strong>
