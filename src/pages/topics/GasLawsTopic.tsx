@@ -206,6 +206,9 @@ const GasLawsTopic = () => {
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="The Combined Gas Law">
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <GasLawsDiagram />
+            </div>
             <p className="text-foreground/90 leading-relaxed">
               Boyle's, Charles' and Gay-Lussac's laws can be unified into a single expression that relates pressure,
               volume and absolute temperature for a fixed mass of gas:
