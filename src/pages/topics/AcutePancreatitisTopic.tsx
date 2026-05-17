@@ -123,12 +123,6 @@ const AcutePancreatitisTopic = () => {
       topicId="acute-pancreatitis"
       topicTitle="Acute Severe Pancreatitis"
       quizQuestions={acutePancreatitisQuestions}
-      diagrams={
-        <>
-          <GlasgowImrieScoreDiagram />
-          <WaterfallFluidDiagram />
-        </>
-      }
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
