@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -129,16 +130,14 @@ const BronchospasticFailureTopic = () => {
       <section className="space-y-8 mb-10">
 
         {/* ---- Overview ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+        <CollapsibleSubsection title="Overview" defaultOpen>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Bronchospastic respiratory failure encompasses life-threatening asthma and infective exacerbations of COPD (IECOPD) — two conditions sharing bronchoconstriction as a central mechanism but differing in pathophysiology, reversibility, and ventilatory approach. Both are common reasons for ICU admission, and management errors (particularly during mechanical ventilation) can be rapidly fatal.
           </p>
-        </div>
+        </CollapsibleSubsection>
 
         {/* ---- Life-Threatening Asthma ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Life-Threatening Asthma</h2>
+        <CollapsibleSubsection title="Life-Threatening Asthma">
           <p className="text-muted-foreground leading-relaxed mb-3">
             BTS/SIGN classification stratifies acute asthma by severity. Life-threatening and near-fatal asthma require immediate escalation and ICU involvement.
           </p>
@@ -202,11 +201,10 @@ const BronchospasticFailureTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         {/* ---- Pharmacological Management ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pharmacological Management</h2>
+        <CollapsibleSubsection title="Pharmacological Management">
 
           <h3 className="text-lg font-semibold text-foreground mt-2 mb-2">First-Line Therapies</h3>
           <div className="overflow-x-auto mb-4">
@@ -282,11 +280,10 @@ const BronchospasticFailureTopic = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         {/* ---- NIV ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Non-Invasive Ventilation (NIV)</h2>
+        <CollapsibleSubsection title="Non-Invasive Ventilation (NIV)">
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">NIV in IECOPD (Strong Evidence)</p>
@@ -312,11 +309,10 @@ const BronchospasticFailureTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         {/* ---- Invasive Ventilation Strategies ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Invasive Ventilation Strategies</h2>
+        <CollapsibleSubsection title="Invasive Ventilation Strategies">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Mechanical ventilation in bronchospasm is high-risk. The fundamental principle is to <strong>minimise gas trapping</strong> by allowing adequate expiratory time — this means tolerating hypercapnia ('permissive hypercapnia') to avoid dynamic hyperinflation and cardiovascular collapse.
           </p>
@@ -399,11 +395,10 @@ const BronchospasticFailureTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         {/* ---- IECOPD ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infective Exacerbation of COPD (IECOPD)</h2>
+        <CollapsibleSubsection title="Infective Exacerbation of COPD (IECOPD)">
           <p className="text-muted-foreground leading-relaxed mb-3">
             COPD exacerbations are characterised by increased dyspnoea, sputum volume and purulence (Anthonisen criteria). Unlike asthma, the airflow limitation is predominantly fixed with a smaller reversible component. Chronic CO₂ retention and reliance on hypoxic respiratory drive add complexity.
           </p>
@@ -428,11 +423,10 @@ const BronchospasticFailureTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         {/* ---- Comparing Asthma vs COPD ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Asthma vs COPD: Key Comparisons</h2>
+        <CollapsibleSubsection title="Asthma vs COPD: Key Comparisons">
           <div className="overflow-x-auto mb-4">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -486,11 +480,10 @@ const BronchospasticFailureTopic = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         {/* ---- Inhaled Volatile Agents / Sedaconda ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Inhaled Volatile Agents in ICU</h2>
+        <CollapsibleSubsection title="Inhaled Volatile Agents in ICU">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Volatile anaesthetic agents (isoflurane, sevoflurane) are potent bronchodilators that act by direct smooth muscle relaxation, inhibition of airway reflexes, and reduction of inflammatory mediator release. They have been used as rescue therapy in refractory bronchospasm for decades, but traditionally required an anaesthetic machine at the bedside. The development of the <strong>Anaesthetic Conserving Device (AnaConDa / Sedaconda)</strong> has made ICU delivery practical.
           </p>
@@ -549,11 +542,10 @@ const BronchospasticFailureTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         {/* ---- Rescue Therapies ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Rescue Therapies & Special Situations</h2>
+        <CollapsibleSubsection title="Rescue Therapies & Special Situations">
           <div className="space-y-2">
             {[
               { label: "ECMO for Refractory Asthma", detail: "VV-ECMO has been used successfully in near-fatal asthma when conventional ventilation fails. Allows 'lung rest' — can reduce or stop mechanical ventilation entirely while bronchospasm resolves. Young patients with reversible pathology are ideal candidates. Early referral to ECMO centre." },
@@ -568,7 +560,7 @@ const BronchospasticFailureTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </CollapsibleSubsection>
 
       </section>
 
