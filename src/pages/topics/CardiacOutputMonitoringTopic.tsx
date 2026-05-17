@@ -85,6 +85,9 @@ const CoreConcepts = () => (
           <li><span className="font-medium text-foreground">Common SBA / structured oral themes:</span> Stewart-Hamilton equation, dynamic vs static preload markers, sources of error, choosing a monitor for a clinical scenario.</li>
         </ul>
       </div>
+      <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+        <CardiacOutputMonitorDiagram />
+      </div>
     </div>
 
     {/* 2. Why measure CO */}
@@ -189,6 +192,10 @@ const CoreConcepts = () => (
       <div className="mt-3 rounded-lg border border-border bg-muted/30 p-3">
         <p className="text-xs text-muted-foreground"><span className="font-semibold text-foreground">Sources of error:</span> respiratory variation (inject at end-expiration), tricuspid regurgitation (recirculation distorts the curve), intracardiac shunts (loss of indicator), warm/incorrect injectate volume, thermistor drift, and rapid changes in patient temperature (CRRT, ECMO).</p>
       </div>
+      <div className="mt-4 space-y-4">
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6"><PACDiagram /></div>
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6"><PiCCODiagram /></div>
+      </div>
     </div>
 
     {/* 7. Pulse contour & uncalibrated devices */}
@@ -209,6 +216,9 @@ const CoreConcepts = () => (
           </div>
         ))}
       </div>
+      <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+        <OesophagealDopplerDiagram />
+      </div>
     </div>
 
     {/* 8. Echocardiography */}
@@ -226,6 +236,12 @@ const CoreConcepts = () => (
           <p className="font-semibold text-foreground text-sm">TOE — when to use</p>
           <p className="text-sm text-muted-foreground mt-1">Better windows in the ventilated, obese, or post-cardiac-surgery patient; intra-operative cardiac surgery; suspected endocarditis or aortic dissection; persistent unexplained shock when TTE windows are inadequate. Risks: oesophageal injury (~0.02%), bleeding, displacement of ETT.</p>
         </div>
+      </div>
+      <div className="mt-4 space-y-4">
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6"><EchoDiagram /></div>
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6"><TOEViewsDiagram /></div>
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6"><MModeDiagram /></div>
+        <div className="bg-card rounded-xl border border-border p-4 md:p-6"><MModePathologyDiagram /></div>
       </div>
     </div>
 
