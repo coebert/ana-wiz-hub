@@ -45,7 +45,25 @@ const frameStats: FrameStats = {
 
 const LONG_FRAME_MS = 50;
 
+// Cached snapshot — must be a stable reference between mutations so
+// useSyncExternalStore doesn't see "changes" every render (which would
+// trigger an infinite update loop).
+let cachedSnapshot: {
+  entries: CascadePerfEntry[];
+  frames: FrameStats;
+  anyPlaying: boolean;
+} = { entries: [], frames: { ...frameStats }, anyPlaying: false };
+
+const invalidate = () => {
+  cachedSnapshot = {
+    entries: Array.from(entries.values()).map((e) => ({ ...e })),
+    frames: { ...frameStats },
+    anyPlaying: playingCount > 0,
+  };
+};
+
 const emit = () => {
+  invalidate();
   subscribers.forEach((cb) => cb());
 };
 
