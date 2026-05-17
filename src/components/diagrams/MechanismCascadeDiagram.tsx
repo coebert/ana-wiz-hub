@@ -314,6 +314,7 @@ export const MechanismCascadeDiagram = ({
           </div>
   
           <div
+            ref={panelRef}
             id={panelId}
             role="tabpanel"
             aria-labelledby={`${tablistId}-tab-${step}`}
