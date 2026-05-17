@@ -67,15 +67,12 @@ const TemperatureMeasurementTopic = () => {
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={temperatureMeasurementQuiz}
-      diagrams={<TemperatureMeasurementDiagram />}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY] },
-        diagrams: { exams: [Exam.PRIMARY] },
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.11", "NICE CG65"],
-        diagrams: ["Cross & Plunkett Ch.11"],
         keyPoints: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11"],
       }}
       coreConcepts={
