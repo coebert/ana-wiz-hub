@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
+import NeonSplash from "@/components/NeonSplash";
 import { SupportSection } from "@/components/SupportSection";
 import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/DemoVivaStepper";
 
@@ -106,6 +107,7 @@ const choices: LandingChoiceExt[] = [
 const Landing = () => {
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-background flex flex-col">
+      <NeonSplash />
       <Helmet>
         <title>AnaesthesiaCore – FRCA & FFICM Revision</title>
         <meta
