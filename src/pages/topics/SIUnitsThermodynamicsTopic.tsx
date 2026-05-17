@@ -92,6 +92,9 @@ const SIUnitsThermodynamicsTopic = () => {
               physiology to anaesthetic vaporiser function. Thermodynamics governs heat transfer, phase changes, and energy
               conservation, with immediate relevance to perioperative temperature management, vaporiser physics, and cryotherapy.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <SIUnitsThermodynamicsDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
