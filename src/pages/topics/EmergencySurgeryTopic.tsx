@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { emergencySurgeryQuestions } from "@/data/quizzes";
 import { NCEPODClassificationDiagram } from "@/components/diagrams/NCEPODClassificationDiagram";
@@ -25,6 +26,35 @@ const keyPoints = [
   { text: "Risk stratification (P-POSSUM, NELA calculator) guides level of care and senior involvement", cites: ["NELA Year 9 Report"] },
 ];
 
+const EmergencySurgeryTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "NELA-aligned care of perforated diverticulitis",
+    scenario: "A 76-year-old with perforated diverticulitis and septic shock requires emergency laparotomy. Outline the NELA bundle from decision to operate to post-op disposition.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Surgeon-anaesthetist-radiologist huddle within 2 h of CT diagnosis; calculate P-POSSUM and NELA risk score</li>
+          <li>Pre-op: blood cultures + antibiotics within 1 h, IV crystalloid 30 mL/kg if hypoperfused, lactate trend, prepare blood products, mark patient</li>
+          <li>Consultant anaesthetist and surgeon present for risk ≥5%; theatre target within 6 h</li>
+          <li>Intra-op: invasive monitoring, cardiac output monitoring for fluid responsiveness, lung-protective ventilation, normothermia, vasopressor as needed</li>
+          <li>Postoperative: critical care admission for risk ≥10% or organ support; structured handover; daily multidisciplinary review</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Delaying surgery for 'optimisation' in septic shock — source control is the priority</li>
+          <li>Restrictive fluid strategy in hypovolaemic patient before sepsis is controlled</li>
+          <li>Failing to document NELA risk and consultant presence (audit requirement)</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Apply the NELA bundle: rapid source control, sepsis-6 within 1 h, consultant-delivered care, ITU disposition. Documented risk score and time-to-theatre.",
+    cites: ["NELA 2023 report","BJA Educ 2019 emergency laparotomy"],
+  },
+];
+
 const EmergencySurgeryTopic = () => {
   return (
     <TopicTemplate
@@ -35,6 +65,7 @@ const EmergencySurgeryTopic = () => {
       accentColor="text-clinical"
       topicId="emergency-surgery"
       topicTitle="Anaesthesia for Emergency Surgery"
+      workedExamples={EmergencySurgeryTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={emergencySurgeryQuestions}

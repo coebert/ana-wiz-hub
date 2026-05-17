@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { ExamSection } from "@/components/ExamSection";
 import { DiagramSection } from "@/components/DiagramSection";
@@ -11,6 +12,35 @@ import { DwellTimeInfographic } from "@/components/diagrams/DwellTimeInfographic
 import { vascularAccessDevicesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
+const VascularAccessDevicesTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Choosing vascular access for prolonged chemotherapy",
+    scenario: "A 55-year-old needs 6 months of cyclical chemotherapy with intermittent blood sampling. Compare PICC, tunnelled cuffed Hickman, and a totally implantable port — which is best?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Map the requirement: intermittent (not continuous), 6 months, vesicant drug, home discharge</li>
+          <li>PICC: easy bedside insertion, high thrombosis rate (5–10%), unsuitable for swimming/showering long-term</li>
+          <li>Tunnelled cuffed Hickman: external lumens, requires regular flushing and dressing; better for continuous infusion (TPN, induction chemo)</li>
+          <li>Totally implantable port: subcutaneous reservoir accessed by Huber needle, low infection rate (&lt;0.2 per 1000 catheter-days), allows normal activity — best for intermittent long-term therapy</li>
+          <li>Insert under ultrasound guidance, confirm tip at cavo-atrial junction by fluoroscopy or ECG (P-wave maximal then biphasic)</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Avoid subclavian approach with low platelets (non-compressible)</li>
+          <li>PICC in lymphoedema-risk arm or planned AV fistula side</li>
+          <li>Pinch-off syndrome with subclavian ports between clavicle and first rib</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Implantable port (e.g., Port-a-Cath) — lowest infection risk and best quality of life for cyclical 6-month therapy.",
+    cites: ["EPIC3 2014","BJA Educ 2016 vascular access"],
+  },
+];
+
 const VascularAccessDevicesTopic = () => {
   return (
     <TopicTemplate
@@ -21,6 +51,7 @@ const VascularAccessDevicesTopic = () => {
       accentColor="text-perioperative"
       topicId="vascular-access-devices"
       topicTitle="Vascular Access Devices"
+      workedExamples={VascularAccessDevicesTopicWorkedExamples}
       quizQuestions={vascularAccessDevicesQuestions}
       objectives={[
         "Classify vascular access devices by tip position (peripheral, midline, central) and explain why this dictates which drugs may be infused safely.",

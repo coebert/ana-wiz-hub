@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { upperLimbAnatomyQuestions } from "@/data/quizzes";
 import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
@@ -11,6 +12,35 @@ import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
 import { upperLimbFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 
+const UpperLimbAnatomyTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Choosing a brachial plexus approach for hand surgery",
+    scenario: "A 45-year-old needs an awake regional anaesthetic for trigger finger release of the 4th digit. Which brachial plexus block is most appropriate and why?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Identify the surgical territory: 4th digit innervated by median (palmar) and ulnar (dorsal) nerves — both terminal branches</li>
+          <li>Map approaches to plexus levels: interscalene → roots/trunks (misses C8–T1), supraclavicular → trunks/divisions, infraclavicular → cords, axillary → terminal branches</li>
+          <li>Interscalene spares the ulnar nerve (inferior trunk, C8–T1) — inappropriate</li>
+          <li>Choose axillary or infraclavicular: axillary block covers median, ulnar, radial directly (musculocutaneous needs separate block for forearm tourniquet)</li>
+          <li>Add ultrasound-guided musculocutaneous block in coracobrachialis if forearm tourniquet is used &gt;30 min</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Forgetting the musculocutaneous nerve leaves the lateral cord proximal to the axilla</li>
+          <li>Using interscalene for hand surgery — ulnar sparing</li>
+          <li>Intercostobrachial (T2) not covered by any brachial plexus block</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Ultrasound-guided axillary block (median, ulnar, radial) plus a separate musculocutaneous injection in coracobrachialis; add tourniquet pain plan and intercostobrachial infiltration if needed.",
+    cites: ["BJA Educ 2014","Ellis & Feldman Ch.8"],
+  },
+];
+
 const UpperLimbAnatomyTopic = () => {
   return (
     <TopicTemplate
@@ -21,6 +51,7 @@ const UpperLimbAnatomyTopic = () => {
       accentColor="text-anatomy"
       topicId="upper-limb-anatomy"
       topicTitle="Upper Limb Anatomy"
+      workedExamples={UpperLimbAnatomyTopicWorkedExamples}
       quizQuestions={upperLimbAnatomyQuestions}
       objectives={[
         "Describe the anatomy of the brachial plexus from roots to terminal branches",

@@ -6,6 +6,7 @@ import { eegTraceContent, dsaSpectrogramContent, bisTrendContent } from "@/compo
 import DSASpectrogramDiagram from "@/components/diagrams/DSASpectrogramDiagram";
 import BISTrendDiagram from "@/components/diagrams/BISTrendDiagram";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { depthOfAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
@@ -101,6 +102,35 @@ const monitors: Record<Monitor, {
   },
 };
 
+const DepthOfAnaesthesiaMonitoringTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Awareness risk in TIVA with neuromuscular blockade",
+    scenario: "Propofol/remifentanil TIVA with rocuronium for laparoscopic surgery. BIS reads 62 despite Ce propofol 4 µg/mL. How do you respond and what does NAP5 say?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Confirm BIS signal quality (SQI &gt;80, EMG &lt;40) — high frontalis EMG inflates BIS</li>
+          <li>Cross-check TCI: pump infusing, IV cannula patent, no extravasation, line connections secure (TIVA disconnects underlie many NAP5 awareness cases)</li>
+          <li>Deepen anaesthesia: bolus propofol 0.5–1 mg/kg, increase Ce target, consider adding low-dose volatile if available</li>
+          <li>Document any patient warning signs (lacrimation, sweating, hypertension, tachycardia in absence of stimulus)</li>
+          <li>NAP5: TIVA with NMB carries the highest awareness risk — use processed EEG and end-of-case debrief; avoid running BIS &gt;60 sustained</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Trusting BIS in ketamine, N₂O or dexmedetomidine anaesthesia — paradoxical readings</li>
+          <li>Ignoring electrocautery artefact that transiently inflates BIS</li>
+          <li>Failing to maintain anaesthesia during transfer/induction of paralysis</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Check TIVA delivery, deepen anaesthesia to target BIS 40–60, and document. NAP5 mandates depth-of-anaesthesia monitoring when NMB is used with TIVA.",
+    cites: ["NAP5 2014","BJA Educ 2017 depth monitoring"],
+  },
+];
+
 const DepthOfAnaesthesiaMonitoringTopic = () => {
   const [selectedMonitor, setSelectedMonitor] = useState<Monitor>("bis");
   const info = monitors[selectedMonitor];
@@ -114,6 +144,7 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
       accentColor="text-physics"
       topicId="depth-of-anaesthesia"
       topicTitle="Depth of Anaesthesia Monitoring"
+      workedExamples={DepthOfAnaesthesiaMonitoringTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={depthOfAnaesthesiaQuestions}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { patientPositioningQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
@@ -81,6 +82,35 @@ const RealismToggle = ({
   </div>
 );
 
+const PatientPositioningTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Preventing brachial plexus injury in steep Trendelenburg",
+    scenario: "A patient for robotic prostatectomy will be in 30° head-down lithotomy for 4 hours. List positioning-related injury risks and prevention strategies.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Brachial plexus: arms tucked, shoulders padded, no shoulder braces (compress plexus against clavicle); arm boards &lt;90° abduction, forearm supinated</li>
+          <li>Eye injury: tape eyelids, protect from pressure; risk of ischaemic optic neuropathy in prolonged head-down — monitor and document</li>
+          <li>Airway oedema: face/tongue swelling — assess cuff leak before extubation</li>
+          <li>Pressure injury: gel pads at heels, sacrum, knees; reposition every 2 h if surgery allows</li>
+          <li>Compartment syndrome (lithotomy): calf compartment pressure rises with steep Trendelenburg + lithotomy &gt;4 h — calf relaxation periods and post-op monitoring</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Shoulder braces causing brachial plexus stretch palsy</li>
+          <li>Hyperabduction (&gt;90°) of arm boards</li>
+          <li>Sliding cephalad in steep Trendelenburg — secure with bean-bag or shoulder support across the manubrium (not lateral)</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Tuck arms with padding, avoid shoulder braces and >90° abduction, protect eyes, periodic leg release for lithotomy, post-op assessment for compartment syndrome and airway oedema.",
+    cites: ["AAGBI Positioning 2021","BJA Educ 2018 robotic anaesthesia"],
+  },
+];
+
 const PatientPositioningTopic = () => {
   const [realism, setRealism] = useState<RealismLevel>("standard");
   return (
@@ -92,6 +122,7 @@ const PatientPositioningTopic = () => {
       accentColor="text-clinical"
       topicId="patient-positioning"
       topicTitle="Patient Positioning in Anaesthesia"
+      workedExamples={PatientPositioningTopicWorkedExamples}
       objectives={objectives}
       quizQuestions={patientPositioningQuestions}
       sectionExamMapping={{

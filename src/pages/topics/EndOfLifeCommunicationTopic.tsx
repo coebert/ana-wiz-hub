@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { QuizQuestion } from "@/components/QuizSection";
 import { Exam } from "@/data/curriculum";
@@ -41,6 +42,35 @@ const quiz: QuizQuestion[] = [
   },
 ];
 
+const EndOfLifeCommunicationTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Family conference about withdrawal of life-sustaining treatment",
+    scenario: "An 82-year-old with anoxic brain injury after cardiac arrest meets criteria for poor prognosis at 72 h. Plan a family meeting for shared decision-making about WLST.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Prepare: review prognostic markers (motor response ≤2, bilateral absent SSEP N20, EEG burst-suppression, NSE), consensus among ICU team and neurology, private room</li>
+          <li>Use SPIKES: Setting, Perception, Invitation, Knowledge, Empathy, Strategy/Summary</li>
+          <li>Frame decisions around the patient's previously expressed values and any advance care planning documents</li>
+          <li>Offer time, second opinions, and chaplaincy; document Mental Capacity Act 2005 best-interests rationale and Court of Protection escalation if dispute persists</li>
+          <li>Plan transition: palliative extubation pathway, family presence, anticipatory medication (opioid + benzodiazepine + antimuscarinic), bereavement support</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Premature prognostication &lt;72 h post-TTM (sedation, hypothermia confound exam)</li>
+          <li>Asking the family to 'decide' rather than guiding a best-interests decision</li>
+          <li>Withdrawing without symptom-management plan — distress to family and staff</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Structured SPIKES-based meeting after multimodal prognostication ≥72 h, best-interests framework under MCA 2005, with a clear palliative extubation and bereavement plan.",
+    cites: ["GMC End of Life 2010","FICM Care at End of Life 2019"],
+  },
+];
+
 const EndOfLifeCommunicationTopic = () => {
   return (
     <TopicTemplate
@@ -64,6 +94,7 @@ const EndOfLifeCommunicationTopic = () => {
       ]}
       topicId="end-of-life-communication"
       topicTitle="End-of-Life Care & Communication"
+      workedExamples={EndOfLifeCommunicationTopicWorkedExamples}
       quizQuestions={quiz}
       sectionSources={{
         objectives: ["FICM/ICS 2019", "GMC EoL", "MCA 2005"],

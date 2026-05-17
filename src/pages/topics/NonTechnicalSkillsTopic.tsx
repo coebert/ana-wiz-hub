@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { QuizQuestion } from "@/components/QuizSection";
 import { Exam } from "@/data/curriculum";
@@ -41,6 +42,35 @@ const quiz: QuizQuestion[] = [
   },
 ];
 
+const NonTechnicalSkillsTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Applying ANTS in a 'can't intubate, can't oxygenate' scenario",
+    scenario: "During induction you encounter CICO. Describe how the Anaesthetists' Non-Technical Skills (ANTS) framework supports management while the DAS algorithm is executed.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Situation awareness: declare 'CICO' aloud, recognise SpO₂ trend, time-stamp events</li>
+          <li>Decision-making: commit to DAS Plan D (FONA) rather than persistent intubation attempts — avoid task fixation</li>
+          <li>Team-working: assign explicit roles (airway lead, surgical airway, drugs, runner, scribe), use closed-loop communication, call for senior help early</li>
+          <li>Task management: prepare FONA kit, ensure adequate paralysis, monitor SpO₂/ETCO₂, plan post-event debrief</li>
+          <li>Cognitive aids: use the DAS CICO cognitive aid on the wall; rehearse with simulation</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Hierarchy preventing junior team members from speaking up — graded assertiveness (CUS, PACE)</li>
+          <li>Plan continuation bias — repeated DL attempts after failure</li>
+          <li>Failing to debrief after the event — second-victim impact and learning loss</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Use ANTS categories (situation awareness, decision-making, teamwork, task management) alongside DAS algorithms and cognitive aids to maintain coordinated CICO management and debrief afterwards.",
+    cites: ["DAS 2015","ANTS Framework Univ. Aberdeen","NAP4 2011"],
+  },
+];
+
 const NonTechnicalSkillsTopic = () => {
   return (
     <TopicTemplate
@@ -64,6 +94,7 @@ const NonTechnicalSkillsTopic = () => {
       ]}
       topicId="non-technical-skills"
       topicTitle="Non-Technical Skills & Human Factors"
+      workedExamples={NonTechnicalSkillsTopicWorkedExamples}
       quizQuestions={quiz}
       sectionSources={{
         objectives: ["BJA Educ 2003", "RCoA ANTS", "BJA Educ 2018"],

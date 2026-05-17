@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { orthopaedicAnaesthesiaQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/DiagramSection";
@@ -6,6 +7,35 @@ import { BlockAnalgesiaProfileDiagram } from "@/components/diagrams/BlockAnalges
 import { LowerLimbBlocksDiagram } from "@/components/diagrams/LowerLimbBlocksDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const OrthopaedicAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Bone-cement implantation syndrome during hip hemiarthroplasty",
+    scenario: "During cementation for a hemiarthroplasty in an 85-year-old, BP falls from 130/70 to 60/40 with desaturation. Identify the syndrome, grade it, and manage.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Recognise BCIS: hypoxia, hypotension ± loss of consciousness within minutes of cement insertion; mechanism — embolic, monomer toxicity, complement activation</li>
+          <li>Grade (AAGBI): 1 (SpO₂ &lt;94% or BP fall &gt;20%), 2 (loss of consciousness), 3 (cardiac arrest)</li>
+          <li>Pre-cement mitigation: communicate with surgeon, ensure euvolaemia, FiO₂ 1.0, vasopressor (metaraminol/noradrenaline) primed, lavage of femoral canal and retrograde cementation</li>
+          <li>Intra-event: 100% O₂, IV fluid bolus, vasopressor (noradrenaline preferred for vasoplegia), call for help, consider TOE if available</li>
+          <li>Post-event: ITU for monitoring; document and audit (RCoA/AAGBI BCIS guidelines)</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Failing to anticipate in high-risk patients (elderly, male, cardiopulmonary disease, intertrochanteric fracture, long stem)</li>
+          <li>Reversing hypotension with fluid alone — often need pressor</li>
+          <li>Mis-attributing arrest to PE without considering BCIS</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Grade-2 BCIS: 100% O₂, fluid bolus, noradrenaline, surgeon communication and post-op ITU. Pre-empt with lavage, retrograde cementation and vasopressor preparation.",
+    cites: ["AAGBI BCIS 2015","BJA Educ 2014 BCIS"],
+  },
+];
 
 const OrthopaedicAnaesthesiaTopic = () => {
   return (
@@ -17,6 +47,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
       accentColor="text-clinical"
       topicId="orthopaedic-anaesthesia"
       topicTitle="Orthopaedic Anaesthesia"
+      workedExamples={OrthopaedicAnaesthesiaTopicWorkedExamples}
       quizQuestions={orthopaedicAnaesthesiaQuestions}
       objectives={[
         "Manage anaesthesia for hip fracture according to NICE/AAGBI standards",

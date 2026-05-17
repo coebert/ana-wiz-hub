@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { clinicalMeasurementQuiz } from "@/data/quizzes";
 import ClinicalMeasurementDiagram from "@/components/diagrams/ClinicalMeasurementDiagram";
@@ -23,6 +24,35 @@ const keyPoints = [
   { text: "Non-invasive CO methods: oesophageal Doppler (VTI × CSA × HR), LiDCO, FloTrac, thoracic bioimpedance, echocardiography", cites: ["Cross & Plunkett Ch.16"] },
 ];
 
+const ClinicalMeasurementTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Interpreting a Bland–Altman plot for a new cardiac output monitor",
+    scenario: "A new pulse-contour device is compared to thermodilution in 50 patients. Bland–Altman shows bias +0.4 L/min, 95% limits of agreement ±1.8 L/min, percentage error 38%. Should it replace thermodilution?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Distinguish bias (mean difference) from precision (SD of differences) — bias is correctable, precision is not</li>
+          <li>Critchley & Critchley: a new CO method is acceptable if percentage error ≤30% versus reference</li>
+          <li>Compute: (1.96 × SD) / mean CO × 100 = percentage error — here 38% exceeds the threshold</li>
+          <li>Bland–Altman plot detects proportional bias (slope) and outliers that correlation coefficients hide</li>
+          <li>Reject as a one-to-one replacement; may still be useful for trending if concordance &gt;92%</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Using Pearson r to validate agreement — r measures association, not agreement</li>
+          <li>Ignoring the reference's own precision (~20% for bolus thermodilution)</li>
+          <li>Extrapolating beyond the studied CO range</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Percentage error 38% > 30% — fails Critchley criteria for interchangeability. May be acceptable for trend monitoring only.",
+    cites: ["Critchley & Critchley 1999","BJA Educ 2010 statistics"],
+  },
+];
+
 const ClinicalMeasurementTopic = () => {
   return (
     <TopicTemplate
@@ -33,6 +63,7 @@ const ClinicalMeasurementTopic = () => {
       accentColor="text-physics"
       topicId="clinical-measurement"
       topicTitle="Clinical Measurement"
+      workedExamples={ClinicalMeasurementTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={clinicalMeasurementQuiz}

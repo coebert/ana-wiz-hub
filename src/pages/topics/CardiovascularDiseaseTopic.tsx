@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -23,6 +24,35 @@ const keyPoints = [
 
 ];
 
+const CardiovascularDiseaseTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Perioperative β-blocker decision",
+    scenario: "A 68-year-old for elective AAA repair is not on a β-blocker. He has stable angina, LVEF 55%, no heart failure. Should you start one preoperatively?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Risk-stratify: vascular surgery is high-risk; he has known IHD (RCRI ≥2)</li>
+          <li>Recall POISE-1: peri-operative metoprolol started on the day of surgery reduced MI but increased stroke and total mortality (NNH for death 167)</li>
+          <li>Current ESC/AHA: do NOT initiate β-blockers within 24 h of non-cardiac surgery; continue chronic β-blockers; consider starting ≥7 days in advance with titration if indicated</li>
+          <li>Optimise alternative cardiac protection: statin, aspirin per surgeon, treat anaemia, plan invasive arterial monitoring and goal-directed haemodynamic care</li>
+          <li>Document discussion and shared decision-making</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Initiating high-dose β-blockade on the morning of surgery (POISE) — hypotension and stroke</li>
+          <li>Stopping chronic β-blockers perioperatively — rebound tachycardia and ischaemia</li>
+          <li>Confusing RCRI with the Revised Cardiac Risk Index — verify the calculator</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Do not start a β-blocker acutely; refer to cardiology for elective ≥7-day titration if indicated. Continue statins, ensure haemoglobin optimisation, and use goal-directed intra-operative haemodynamic monitoring.",
+    cites: ["POISE 2008","ESC/ESA 2022 non-cardiac"],
+  },
+];
+
 const CardiovascularDiseaseTopic = () => {
   return (
     <TopicTemplate
@@ -33,6 +63,7 @@ const CardiovascularDiseaseTopic = () => {
       accentColor="text-clinical"
       topicId="cardiovascular-disease"
       topicTitle="Cardiovascular Co-Existing Disease"
+      workedExamples={CardiovascularDiseaseTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={cardiovascularDiseaseQuestions}

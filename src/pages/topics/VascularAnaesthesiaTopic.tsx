@@ -1,9 +1,39 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { vascularAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const VascularAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Carotid endarterectomy: GA vs regional and neuromonitoring",
+    scenario: "A 72-year-old with 80% symptomatic carotid stenosis is for CEA. Discuss GA vs cervical plexus block and how you monitor cerebral perfusion during cross-clamping.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>GENESIS / GALA trial: no significant difference in stroke/death/MI between GA and regional — choose based on patient preference, surgeon experience, anatomical factors</li>
+          <li>Regional (superficial ± deep cervical plexus block): awake neurological monitoring is gold standard for shunt need — direct conversation, contralateral grip</li>
+          <li>If GA, monitor cerebral perfusion: stump pressure (&lt;50 mmHg = shunt), transcranial Doppler (MCA velocity &lt;50% baseline), cerebral oximetry (rSO₂ fall &gt;20%), processed EEG</li>
+          <li>Maintain MAP within 20% of baseline (or higher per surgical request during clamp), normocapnia, normothermia; treat hypotension with phenylephrine/noradrenaline rather than fluid</li>
+          <li>Post-op: HDU, monitor for hyperperfusion syndrome (headache, seizure, ICH), tight BP control</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Deep cervical block risks phrenic nerve, intrathecal/intravascular injection — avoid bilateral</li>
+          <li>Hypotension on clamp release — anticipate and correct</li>
+          <li>Missing carotid sinus bradycardia — have atropine ready</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Either GA with multimodal neuromonitoring or cervical plexus block with awake assessment is acceptable; maintain MAP within 20% baseline and admit to HDU.",
+    cites: ["GALA 2008 Lancet","BJA Educ 2014 CEA"],
+  },
+];
 
 const VascularAnaesthesiaTopic = () => {
   return (
@@ -15,6 +45,7 @@ const VascularAnaesthesiaTopic = () => {
       accentColor="text-clinical"
       topicId="vascular-anaesthesia"
       topicTitle="Vascular Anaesthesia"
+      workedExamples={VascularAnaesthesiaTopicWorkedExamples}
       quizQuestions={vascularAnaesthesiaQuestions}
       objectives={[
         "Compare anaesthetic management of open AAA, EVAR, and ruptured AAA repair",

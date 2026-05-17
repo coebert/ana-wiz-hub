@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -7,6 +8,35 @@ import CPETNinePanelDiagram from "@/components/diagrams/CPETNinePanelDiagram";
 import { DiagramSection } from "@/components/DiagramSection";
 import { CheckCircle2, AlertTriangle, XCircle, FlaskConical, Heart } from "lucide-react";
 import { Exam } from "@/data/curriculum";
+
+const PreoperativeAssessmentTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Functional capacity assessment for major non-cardiac surgery",
+    scenario: "A 70-year-old smoker for open AAA repair scores 4 METs subjectively. The METS study questions the validity of subjective MET estimation. How do you proceed?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Stratify with RCRI and consider biomarkers (NT-proBNP, hsTnT) — METS study showed these outperform clinician/patient subjective MET estimates</li>
+          <li>Order CPET if available: VO₂ peak &lt;15 mL/kg/min and AT &lt;11 mL/kg/min predict increased mortality after major surgery</li>
+          <li>Optimise modifiable risks: smoking cessation (&gt;4 weeks if possible), pre-habilitation, anaemia (IV iron if Hb &lt;130/120), statin and antiplatelet review</li>
+          <li>Multidisciplinary planning: vascular surgeon, anaesthetist, cardiology if indicated; consent including critical care plan</li>
+          <li>Document shared decision-making per Centre for Perioperative Care SDM guidance</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Relying solely on subjective METs (METS study limitation)</li>
+          <li>Stopping antiplatelet without considering coronary stent timing</li>
+          <li>Delaying surgery in symptomatic AAA pending optimisation</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Use objective risk stratification (RCRI, NT-proBNP, CPET) and shared decision-making rather than subjective METs alone; pre-habilitate and plan critical care.",
+    cites: ["METS Study 2018 Lancet","ESC/ESA 2022 non-cardiac","CPOC SDM 2018"],
+  },
+];
 
 const PreoperativeAssessmentTopic = () => {
   return (
@@ -18,6 +48,7 @@ const PreoperativeAssessmentTopic = () => {
       accentColor="text-perioperative"
       topicId="preoperative-assessment"
       topicTitle="Preoperative Assessment"
+      workedExamples={PreoperativeAssessmentTopicWorkedExamples}
       quizQuestions={preoperativeAssessmentQuestions}
       objectives={[
         "Stratify perioperative risk using ASA, RCRI, SORT, METs, and CPET thresholds",

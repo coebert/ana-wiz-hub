@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { vasoactiveAgentsQuiz } from "@/data/quizzes";
@@ -43,6 +44,35 @@ const keyPoints = [
   { text: "Methylene blue is a salvage option in refractory vasoplegia — inhibits iNOS and sGC", cites: ["BJA Educ 2019"] },
 ];
 
+const VasoactiveAgentsTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Choosing a vasopressor in septic shock",
+    scenario: "A 55-year-old with septic shock remains hypotensive (MAP 55) after 30 mL/kg crystalloid. Which vasopressor first and what is the evidence?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>SSC 2021: noradrenaline is first-line vasopressor — α₁-mediated vasoconstriction with modest β₁ inotropy, lower arrhythmia risk than dopamine (SOAP-II trial)</li>
+          <li>Add vasopressin 0.03 U/min if MAP &lt;65 despite noradrenaline 0.25–0.5 µg/kg/min — VASST trial reduces noradrenaline requirements</li>
+          <li>Consider hydrocortisone 200 mg/day if vasopressor-refractory (APROCCHSS, ADRENAL)</li>
+          <li>Reassess fluid responsiveness dynamically (pulse pressure variation, passive leg raise, cardiac output monitor) before further fluid</li>
+          <li>Inotrope (dobutamine) if cardiac output low or echo shows myocardial dysfunction</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Dopamine first-line — increases arrhythmias and mortality vs noradrenaline (SOAP-II)</li>
+          <li>Vasopressin alone in pure vasoplegia without noradrenaline cover — risk of mesenteric/digital ischaemia</li>
+          <li>Continuing fluid boluses without responsiveness check — fluid overload increases mortality</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Start noradrenaline (titrate to MAP 65), add vasopressin if refractory, consider hydrocortisone, and reassess fluid responsiveness rather than empirical boluses.",
+    cites: ["Surviving Sepsis Campaign 2021","SOAP-II 2010 NEJM","VASST 2008 NEJM"],
+  },
+];
+
 const VasoactiveAgentsTopic = () => {
   return (
     <TopicTemplate
@@ -53,6 +83,7 @@ const VasoactiveAgentsTopic = () => {
       accentColor="text-pharmacology"
       topicId="vasoactive-agents"
       topicTitle="Vasoactive & Inotropic Agents"
+      workedExamples={VasoactiveAgentsTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={vasoactiveAgentsQuiz}

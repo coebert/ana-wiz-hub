@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { abgAnalyserQuestions } from "@/data/quizzes";
@@ -24,6 +25,35 @@ const keyPoints = [
   { text: "Optodes: fibre-optic fluorescence sensors. PO\u2082 optode uses ruthenium dye fluorescence quenching (Stern\u2013Volmer); pH optode is ratiometric; PCO\u2082 optode = Severinghaus with pH optode inside. Don't consume O\u2082, MRI-compatible, used in POC cartridges, intravascular and CPB monitors.", cites: ["BJA Educ 2017"] },
 ];
 
+const ABGAnalyserTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Interpreting a discrepant ABG: SaO₂ vs SpO₂",
+    scenario: "A 60-year-old smoker rescued from a house fire has SpO₂ 99% on 15 L/min but the ABG reports SaO₂ 78%, COHb 22%, MetHb 1%. Explain the discrepancy and management.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Recognise SpO₂ measures the ratio of two wavelengths (660/940 nm) and cannot distinguish HbO₂ from COHb (both absorb similarly at 660 nm) — falsely reassuring</li>
+          <li>Co-oximetry on the ABG uses ≥4 wavelengths and reports fractional saturations (HbO₂, HHb, COHb, MetHb) — gold standard</li>
+          <li>Calculate true oxygen content: CaO₂ = (1.34 × Hb × fractional SaO₂) + (0.003 × PaO₂); CO poisoning markedly reduces CaO₂ despite normal PaO₂</li>
+          <li>Treat with 100% O₂ via tight-fitting reservoir mask (t½ of COHb falls from 320 min to 80 min)</li>
+          <li>Consider hyperbaric O₂ if COHb &gt;25%, neurological signs, pregnancy, or syncope/seizure</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Trusting SpO₂ in suspected CO or smoke inhalation</li>
+          <li>Methaemoglobinaemia drives SpO₂ towards 85% regardless of PaO₂ — give methylene blue 1–2 mg/kg</li>
+          <li>Acid–base interpretation: CO tissue hypoxia produces metabolic acidosis with raised lactate</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "SpO₂ is falsely normal because COHb absorbs at 660 nm. Co-oximetry reveals 22% COHb. Treat with 100% O₂, escalate to hyperbaric O₂ given exposure and clinical context.",
+    cites: ["BJA Educ 2014 CO","Davis & Kenny Ch.17"],
+  },
+];
+
 const ABGAnalyserTopic = () => {
   return (
     <TopicTemplate
@@ -34,6 +64,7 @@ const ABGAnalyserTopic = () => {
       accentColor="text-physics"
       topicId="abg-analyser"
       topicTitle="ABG Analyser & Gas Measurement"
+      workedExamples={ABGAnalyserTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={abgAnalyserQuestions}
