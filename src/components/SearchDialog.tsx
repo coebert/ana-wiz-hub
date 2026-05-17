@@ -83,18 +83,53 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
     return () => window.removeEventListener("keydown", handler);
   }, [open, onClose]);
 
-  const filtered = topicsWithPaths.filter((t) => matchesFilter(t.examTags));
+  const filtered = useMemo(
+    () => topicsWithPaths.filter((t) => matchesFilter(t.examTags)),
+    [matchesFilter],
+  );
 
-  const results = query.trim().length > 0
-    ? filtered.filter((t) => {
-        const q = query.toLowerCase();
-        return (
-          t.title.toLowerCase().includes(q) ||
-          t.description.toLowerCase().includes(q) ||
-          t.section.toLowerCase().includes(q)
-        );
-      })
-    : filtered.filter((t) => t.available);
+  const { results, snippets } = useMemo(() => {
+    const trimmed = query.trim();
+    if (trimmed.length === 0) {
+      return {
+        results: filtered.filter((t) => t.available),
+        snippets: new Map<string, string>(),
+      };
+    }
+    const normQuery = stripDiacritics(trimmed.toLowerCase());
+    const tokens = normQuery.split(/\s+/).filter((t) => t.length > 0);
+    const snippetMap = new Map<string, string>();
+    const scored: { topic: IndexedTopic; score: number }[] = [];
+
+    for (const t of filtered) {
+      const title = stripDiacritics(t.title.toLowerCase());
+      const desc = stripDiacritics(t.description.toLowerCase());
+      if (!tokens.every((tok) => t.haystack.includes(tok))) continue;
+
+      let score = 0;
+      if (title.includes(normQuery)) score += 100;
+      if (title.startsWith(tokens[0])) score += 30;
+      if (desc.includes(normQuery)) score += 40;
+      for (const tok of tokens) {
+        if (title.includes(tok)) score += 10;
+        if (desc.includes(tok)) score += 5;
+      }
+      if (!t.available) score -= 5;
+
+      if (!title.includes(tokens[0]) && !desc.includes(tokens[0])) {
+        const idx = t.haystack.indexOf(tokens[0]);
+        if (idx >= 0) {
+          const start = Math.max(0, idx - 40);
+          const end = Math.min(t.haystack.length, idx + tokens[0].length + 60);
+          const raw = t.haystack.slice(start, end).replace(/\s+/g, " ").trim();
+          snippetMap.set(t.id, `${start > 0 ? "…" : ""}${raw}${end < t.haystack.length ? "…" : ""}`);
+        }
+      }
+      scored.push({ topic: t, score });
+    }
+    scored.sort((a, b) => b.score - a.score);
+    return { results: scored.map((s) => s.topic), snippets: snippetMap };
+  }, [query, filtered]);
 
   const handleSelect = (topic: typeof topicsWithPaths[0]) => {
     if (topic.available) {
