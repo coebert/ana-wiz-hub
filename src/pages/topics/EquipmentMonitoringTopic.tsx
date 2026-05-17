@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import {
@@ -193,8 +194,7 @@ const EquipmentMonitoringTopic = () => {
         </section>
 
         {/* ───── 1. Anaesthetic Machine ───── */}
-        <section id="machine" className="scroll-mt-20 space-y-4">
-          <h2 className="text-2xl font-serif font-bold text-foreground">1 · The Anaesthetic Machine</h2>
+        <CollapsibleSubsection title="1 · The Anaesthetic Machine" defaultOpen>
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               The anaesthetic workstation receives medical gases from <strong>pipeline</strong> (400 kPa via NIST/Schrader) or
@@ -225,11 +225,10 @@ const EquipmentMonitoringTopic = () => {
           <div className="bg-card rounded-xl border border-border p-4">
             <AnaestheticMachineDiagram />
           </div>
-        </section>
+        </CollapsibleSubsection>
 
         {/* ───── 2. Vaporizers ───── */}
-        <section id="vaporizers" className="scroll-mt-20 space-y-4">
-          <h2 className="text-2xl font-serif font-bold text-foreground">2 · Vaporizers</h2>
+        <CollapsibleSubsection title="2 · Vaporizers">
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               Vaporizers convert liquid volatile agent into a controlled vapour concentration. <strong>Saturated vapour pressure (SVP)</strong> depends only on the agent and temperature — not atmospheric pressure. At 20 °C: sevoflurane SVP ≈ 21.3 kPa,
@@ -263,11 +262,10 @@ const EquipmentMonitoringTopic = () => {
           <div className="bg-card rounded-xl border border-border p-4">
             <VaporizerDiagram />
           </div>
-        </section>
+        </CollapsibleSubsection>
 
         {/* ───── 3. Breathing Circuits ───── */}
-        <section id="circuits" className="scroll-mt-20 space-y-4">
-          <h2 className="text-2xl font-serif font-bold text-foreground">3 · Breathing Circuits & Scavenging</h2>
+        <CollapsibleSubsection title="3 · Breathing Circuits & Scavenging">
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               Breathing systems carry FGF from the common gas outlet to the patient and clear exhaled CO₂. <strong>Mapleson
@@ -343,11 +341,10 @@ const EquipmentMonitoringTopic = () => {
           <div className="bg-card rounded-xl border border-border p-4">
             <BreathingCircuitsDiagram />
           </div>
-        </section>
+        </CollapsibleSubsection>
 
         {/* ───── 4. Ventilators ───── */}
-        <section id="ventilators" className="scroll-mt-20 space-y-4">
-          <h2 className="text-2xl font-serif font-bold text-foreground">4 · Ventilators</h2>
+        <CollapsibleSubsection title="4 · Ventilators">
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               Mechanical ventilators generate a pressure gradient to drive gas into the lungs. They range from purely pneumatic
@@ -463,11 +460,10 @@ const EquipmentMonitoringTopic = () => {
               ))}
             </div>
           </div>
-        </section>
+        </CollapsibleSubsection>
 
         {/* ───── 5. Monitoring & Safety ───── */}
-        <section id="monitoring" className="scroll-mt-20 space-y-4">
-          <h2 className="text-2xl font-serif font-bold text-foreground">5 · Monitoring & Safety Features</h2>
+        <CollapsibleSubsection title="5 · Monitoring & Safety Features">
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               Modern workstations integrate multiple layers of safety — built-in mechanical safeguards plus the AAGBI minimum
@@ -497,11 +493,10 @@ const EquipmentMonitoringTopic = () => {
               ))}
             </div>
           </div>
-        </section>
+        </CollapsibleSubsection>
 
         {/* ───── 6. Airway Equipment ───── */}
-        <section id="airway" className="scroll-mt-20 space-y-4">
-          <h2 className="text-2xl font-serif font-bold text-foreground">6 · Airway Equipment</h2>
+        <CollapsibleSubsection title="6 · Airway Equipment">
 
           <div>
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Laryngoscope blades</h3>
@@ -684,11 +679,10 @@ const EquipmentMonitoringTopic = () => {
               <NeuraxialNeedlesDiagram />
             </div>
           </div>
-        </section>
+        </CollapsibleSubsection>
 
         {/* ───── 7. Pre-Use Check ───── */}
-        <section id="checks" className="scroll-mt-20 space-y-4">
-          <h2 className="text-2xl font-serif font-bold text-foreground">7 · Standard Pre-Use Check (AAGBI 2012)</h2>
+        <CollapsibleSubsection title="7 · Standard Pre-Use Check (AAGBI 2012)">
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               A structured check is mandatory at the <strong>start of every operating list</strong>, with an abbreviated check
@@ -719,7 +713,7 @@ const EquipmentMonitoringTopic = () => {
               <em>E</em>mergency self-inflating bag.
             </p>
           </div>
-        </section>
+        </CollapsibleSubsection>
 
         <SynthesisBlock
           title="Equipment & Monitoring — Safety-Critical Headlines"
