@@ -109,10 +109,6 @@ const NSAIDsParacetamolTopic = () => {
           "Peck & Hill Ch.15",
           "BJA Educ 2018",
         ],
-        diagrams: [
-          "Peck & Hill Ch.15",
-          "BJA Educ 2018",
-        ],
         workedExamples: [
           "NICE Paracetamol OD",
           "BJA Educ 2018",
