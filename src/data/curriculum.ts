@@ -120,6 +120,7 @@ export const anatomyTopics: Topic[] = [
   { id: "abdominal-anatomy", title: "Abdominal & Pelvic Anatomy", description: "Abdominal wall layers, inguinal canal, peritoneum, major organs", section: "anatomy", examTags: ["primary", "final"], available: true },
   // Limbs
   { id: "upper-limb-anatomy", title: "Upper Limb Anatomy", description: "Brachial plexus, arterial supply, cubital fossa, venous drainage — cannulation and regional blocks", section: "anatomy", examTags: ["primary", "final"], available: true },
+  { id: "brachial-plexus", title: "Brachial Plexus", description: "Detailed brachial plexus organisation, block approaches, ultrasound anatomy, terminal nerves and complications", section: "anatomy", examTags: ["primary", "final"], available: true },
   { id: "lower-limb-anatomy", title: "Lower Limb & Lumbosacral Plexus", description: "Lumbar and sacral plexus, femoral/sciatic nerves, dermatomes, lower limb blocks", section: "anatomy", examTags: ["primary", "final"], available: true },
 ];
 
