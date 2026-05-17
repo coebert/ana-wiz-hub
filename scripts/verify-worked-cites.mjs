@@ -1,71 +1,164 @@
-// Verify worked-example cites for the 30 updated topics
+// Coverage report: cite completeness across all topics, grouped by curriculum domain.
+//
+// Per-topic checks:
+//   - has topicId
+//   - has sectionSources block
+//   - every cite label resolves to a Reference in references.ts (topic-scoped or global)
+//   - every cite label is present in that topic's sectionSources panel
+//
+// Aggregated by domain (derived from backPath="/...").
 import fs from "node:fs";
 import path from "node:path";
 
-const TOPICS = [
-  "SpinalAnatomyTopic","HeadNeckAnatomyTopic","UpperLimbAnatomyTopic","LowerLimbAnatomyTopic","ThoracicAnatomyTopic",
-  "ABGAnalyserTopic","PulseOximetryTopic","DepthOfAnaesthesiaMonitoringTopic","ElectricalSafetyTopic",
-  "TemperatureMeasurementTopic","ClinicalMeasurementTopic","EquipmentMonitoringTopic","VascularAccessDevicesTopic",
-  "AntimicrobialsPharmTopic","BariatricAnaesthesiaTopic","CardiovascularDiseaseTopic","ElderlyAnaesthesiaTopic",
-  "EmergencySurgeryTopic","EndOfLifeCommunicationTopic","EndocrineDiseaseTopic","EnhancedRecoveryTopic",
-  "NeurologicalDiseaseTopic","NonTechnicalSkillsTopic","ObstetricAnaesthesiaTopic","OrthopaedicAnaesthesiaTopic",
-  "PatientPositioningTopic","PreoperativeAssessmentTopic","RespiratoryDiseaseTopic","VascularAnaesthesiaTopic",
-  "VasoactiveAgentsTopic",
-];
-
-// Load references.ts label set per topicId
+const TOPIC_DIR = "src/pages/topics";
 const refsSrc = fs.readFileSync("src/data/references.ts", "utf8");
+
 const refMap = {};
-const blockRe = /"([\w-]+)"\s*:\s*\[([\s\S]*?)\]\s*,/g;
+const globalLabels = new Set();
+const blockRe = /"([\w-]+)"\s*:\s*\[([\s\S]*?)\n\s*\]\s*,/g;
 let m;
 while ((m = blockRe.exec(refsSrc))) {
   const labels = [...m[2].matchAll(/label:\s*"([^"]+)"/g)].map((x) => x[1]);
   refMap[m[1]] = labels;
+  labels.forEach((l) => globalLabels.add(l));
 }
 
-let pass = 0, fail = 0;
-const issues = [];
+const DOMAIN_FROM_BACKPATH = {
+  "/physics": "Physics",
+  "/chemistry": "Physics",
+  "/physiology": "Physiology",
+  "/pharmacology": "Pharmacology",
+  "/anatomy": "Clinical",
+  "/clinical": "Clinical",
+  "/intensive-care": "ICU",
+  "/perioperative": "Perioperative",
+};
 
-for (const t of TOPICS) {
-  const file = `src/pages/topics/${t}.tsx`;
-  const src = fs.readFileSync(file, "utf8");
+const files = fs.readdirSync(TOPIC_DIR).filter((f) => f.endsWith(".tsx"));
 
-  // Extract worked-example cites arrays
-  const cites = [];
+const domains = {};
+const ensure = (d) => (domains[d] ||= {
+  topics: 0,
+  topicsWithWorked: 0,
+  topicsClean: 0,
+  totalCites: 0,
+  workedCites: 0,
+  unresolved: [],
+  notInSectionSources: [],
+  missingSectionSources: [],
+  noTopicId: [],
+});
+
+for (const f of files) {
+  const src = fs.readFileSync(path.join(TOPIC_DIR, f), "utf8");
+  const backPath = src.match(/backPath="([^"]+)"/)?.[1];
+  const domain = DOMAIN_FROM_BACKPATH[backPath] || "Other";
+  const d = ensure(domain);
+  d.topics++;
+
+  const topicId = src.match(/topicId="([\w-]+)"/)?.[1];
+  if (!topicId) { d.noTopicId.push(f); continue; }
+  const topicRefs = refMap[topicId] || [];
+
+  const ssBlock = src.match(/sectionSources=\{\{([\s\S]*?)\n\s*\}\}/);
+  if (!ssBlock) { d.missingSectionSources.push(f); continue; }
+  const ssLabels = new Set([...ssBlock[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]));
+
+  // All cite labels
+  const allCites = [];
   const citeRe = /cites:\s*\[([^\]]*)\]/g;
   let c;
   while ((c = citeRe.exec(src))) {
-    [...c[1].matchAll(/"([^"]+)"/g)].forEach((x) => cites.push(x[1]));
+    [...c[1].matchAll(/"([^"]+)"/g)].forEach((x) => allCites.push(x[1]));
   }
-  // Extract topicId
-  const idMatch = src.match(/topicId="([\w-]+)"/);
-  const topicId = idMatch?.[1];
-  const refLabels = topicId ? refMap[topicId] || [] : [];
+  d.totalCites += allCites.length;
 
-  // Extract sectionSources labels
-  const sectionSourcesBlock = src.match(/sectionSources=\{\{([\s\S]*?)\}\}/);
-  const ssLabels = sectionSourcesBlock
-    ? [...sectionSourcesBlock[1].matchAll(/"([^"]+)"/g)].map((x) => x[1])
-    : [];
-
-  // Check each worked-example cite is in either sectionSources or references.ts
-  const missing = cites.filter((c) => !ssLabels.includes(c) && !refLabels.includes(c));
-
-  if (missing.length === 0 && cites.length > 0) {
-    pass++;
-  } else {
-    fail++;
-    issues.push({ t, topicId, cites, missing, ssLabels, refLabels });
+  // Worked-example cites (inside the WorkedExamples block)
+  const workedBlock = src.match(/const \w+WorkedExamples[\s\S]*?\n\];/);
+  let workedCites = [];
+  if (workedBlock) {
+    d.topicsWithWorked++;
+    const wRe = /cites:\s*\[([^\]]*)\]/g;
+    let w;
+    while ((w = wRe.exec(workedBlock[0]))) {
+      [...w[1].matchAll(/"([^"]+)"/g)].forEach((x) => workedCites.push(x[1]));
+    }
+    d.workedCites += workedCites.length;
   }
+
+  let clean = true;
+  for (const lbl of allCites) {
+    if (!topicRefs.includes(lbl) && !globalLabels.has(lbl)) {
+      d.unresolved.push({ f, label: lbl });
+      clean = false;
+    }
+    if (!ssLabels.has(lbl)) {
+      d.notInSectionSources.push({ f, label: lbl });
+      clean = false;
+    }
+  }
+  if (clean) d.topicsClean++;
 }
 
-console.log(`PASS ${pass} / ${TOPICS.length}, FAIL ${fail}`);
-if (issues.length) {
-  for (const i of issues) {
-    console.log(`\n[FAIL] ${i.t} (topicId=${i.topicId})`);
-    console.log(`  worked cites:    ${JSON.stringify(i.cites)}`);
-    console.log(`  missing:         ${JSON.stringify(i.missing)}`);
-    console.log(`  sectionSources:  ${JSON.stringify(i.ssLabels)}`);
-    console.log(`  references.ts:   ${JSON.stringify(i.refLabels)}`);
-  }
+const order = ["Physics", "Physiology", "Pharmacology", "Clinical", "ICU", "Perioperative", "Other"];
+const pad = (s, n) => String(s).padEnd(n);
+
+console.log("Citation coverage report by curriculum domain\n");
+console.log(pad("Domain", 14), pad("Topics", 7), pad("Worked", 7), pad("Clean", 7), pad("Cites", 7), pad("Worked-cites", 13), pad("Unresolved", 11), "Not-in-SS");
+console.log("-".repeat(90));
+
+let g = { topics: 0, worked: 0, clean: 0, cites: 0, wcites: 0, unr: 0, miss: 0 };
+for (const name of order) {
+  const d = domains[name];
+  if (!d) continue;
+  const unr = d.unresolved.length;
+  const miss = d.notInSectionSources.length;
+  console.log(
+    pad(name, 14),
+    pad(d.topics, 7),
+    pad(d.topicsWithWorked, 7),
+    pad(`${d.topicsClean}/${d.topics}`, 7),
+    pad(d.totalCites, 7),
+    pad(d.workedCites, 13),
+    pad(unr, 11),
+    miss,
+  );
+  g.topics += d.topics; g.worked += d.topicsWithWorked; g.clean += d.topicsClean;
+  g.cites += d.totalCites; g.wcites += d.workedCites; g.unr += unr; g.miss += miss;
 }
+console.log("-".repeat(90));
+console.log(pad("TOTAL", 14), pad(g.topics, 7), pad(g.worked, 7), pad(`${g.clean}/${g.topics}`, 7),
+  pad(g.cites, 7), pad(g.wcites, 13), pad(g.unr, 11), g.miss);
+
+const coveragePct = ((g.clean / g.topics) * 100).toFixed(1);
+const workedPct = ((g.worked / g.topics) * 100).toFixed(1);
+console.log(`\nClean-topic coverage:    ${g.clean}/${g.topics} (${coveragePct}%)`);
+console.log(`Worked-example coverage: ${g.worked}/${g.topics} (${workedPct}%)`);
+
+// Per-domain failure detail
+console.log("\n--- Detail: per-domain unresolved labels ---");
+for (const name of order) {
+  const d = domains[name];
+  if (!d || d.unresolved.length === 0) continue;
+  console.log(`\n[${name}] ${d.unresolved.length} unresolved`);
+  d.unresolved.forEach((x) => console.log(`  - ${x.f} :: "${x.label}"`));
+}
+
+console.log("\n--- Detail: per-domain cites missing from sectionSources (top 20 each) ---");
+for (const name of order) {
+  const d = domains[name];
+  if (!d || d.notInSectionSources.length === 0) continue;
+  console.log(`\n[${name}] ${d.notInSectionSources.length} gaps`);
+  const grouped = {};
+  d.notInSectionSources.forEach((x) => {
+    grouped[x.f] = grouped[x.f] || new Set();
+    grouped[x.f].add(x.label);
+  });
+  Object.entries(grouped).slice(0, 20).forEach(([f, set]) =>
+    console.log(`  - ${f}: ${[...set].map((l) => `"${l}"`).join(", ")}`)
+  );
+}
+
+const ok = g.unr === 0 && g.miss === 0 && g.clean === g.topics;
+console.log("\nRESULT:", ok ? "PASS" : "FAIL");
+process.exit(ok ? 0 : 1);
