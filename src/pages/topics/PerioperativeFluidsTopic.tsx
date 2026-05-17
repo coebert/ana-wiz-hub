@@ -163,11 +163,12 @@ const PerioperativeFluidsTopic = () => {
         },
       ]}
       keyPoints={[
-        "Only 25% of crystalloid stays intravascular — colloids have better volume expansion",
-        "0.9% NaCl causes hyperchloraemic acidosis — balanced crystalloids preferred (SMART trial)",
-        "GDFT: SV optimisation with 250ml challenges — stop when SV rise <10%",
-        "Glycocalyx damage (inflammation, hypervolaemia, ANP) increases vascular permeability",
-        "RELIEF trial: overly restrictive fluids increase AKI — aim for individualised, goal-directed approach",
+        { text: "Only 25% of crystalloid stays intravascular — colloids have better volume expansion", cites: ["BJA Educ 2017"] },
+        { text: "0.9% NaCl causes hyperchloraemic acidosis — balanced crystalloids preferred (SMART trial)", cites: ["SMART 2018", "NICE CG174"] },
+        { text: "GDFT: SV optimisation with 250ml challenges — stop when SV rise <10%", cites: ["BJA Educ GDFT 2016"] },
+        { text: "Glycocalyx damage (inflammation, hypervolaemia, ANP) increases vascular permeability", cites: ["BJA Educ 2017"] },
+        { text: "RELIEF trial: overly restrictive fluids increase AKI — aim for individualised, goal-directed approach", cites: ["RELIEF 2018"] },
+      
       ]}
     />
   );

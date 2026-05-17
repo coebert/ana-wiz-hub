@@ -18,11 +18,12 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "Diabetes mellitus: target perioperative blood glucose 6–10 mmol/L; avoid hypoglycaemia (more dangerous than moderate hyperglycaemia); use variable-rate insulin infusion (VRIII) for patients who will miss ≥1 meal",
-  "Thyroid storm (thyrotoxic crisis) has >20% mortality — treat with β-blockers, Lugol's iodine, propylthiouracil, hydrocortisone, and active cooling; never anaesthetise an uncontrolled hyperthyroid patient electively",
-  "Phaeochromocytoma requires 10–14 days of α-blockade (phenoxybenzamine) before surgery, followed by β-blockade — never give β-blockers first (risk of unopposed α-stimulation and hypertensive crisis)",
-  "Patients on long-term corticosteroids (≥5 mg prednisolone/day for ≥3 months) may have HPA axis suppression — give perioperative steroid supplementation based on surgical stress",
-  "Addisonian crisis (acute adrenal insufficiency) presents as refractory hypotension, hypoglycaemia, and hyperkalaemia — treat with IV hydrocortisone 100 mg stat, IV fluids, and glucose",
+  { text: "Diabetes mellitus: target perioperative blood glucose 6–10 mmol/L; avoid hypoglycaemia (more dangerous than moderate hyperglycaemia); use variable-rate insulin infusion (VRIII) for patients who will miss ≥1 meal", cites: ["JBDS-IP 2021", "BJA Educ 2015 DM"] },
+  { text: "Thyroid storm (thyrotoxic crisis) has >20% mortality — treat with β-blockers, Lugol's iodine, propylthiouracil, hydrocortisone, and active cooling; never anaesthetise an uncontrolled hyperthyroid patient electively", cites: ["BJA Educ 2014 Thyroid"] },
+  { text: "Phaeochromocytoma requires 10–14 days of α-blockade (phenoxybenzamine) before surgery, followed by β-blockade — never give β-blockers first (risk of unopposed α-stimulation and hypertensive crisis)", cites: ["BJA Educ 2017 Phaeochromocytoma"] },
+  { text: "Patients on long-term corticosteroids (≥5 mg prednisolone/day for ≥3 months) may have HPA axis suppression — give perioperative steroid supplementation based on surgical stress", cites: ["Addison's Guidelines"] },
+  { text: "Addisonian crisis (acute adrenal insufficiency) presents as refractory hypotension, hypoglycaemia, and hyperkalaemia — treat with IV hydrocortisone 100 mg stat, IV fluids, and glucose", cites: ["Addison's Guidelines"] },
+
 ];
 
 const EndocrineDiseaseTopic = () => {

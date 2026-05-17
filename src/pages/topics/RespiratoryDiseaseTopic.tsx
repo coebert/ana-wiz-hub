@@ -19,11 +19,12 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "Asthma: avoid histamine-releasing drugs (atracurium, morphine, thiopentone); desflurane and dry gases may trigger bronchospasm — use sevoflurane which has bronchodilator properties",
-  "COPD patients are at high risk of postoperative pulmonary complications — optimise with bronchodilators, smoking cessation (≥8 weeks), chest physiotherapy, and regional anaesthesia where possible",
-  "Obstructive sleep apnoea (OSA) increases sensitivity to opioids and sedatives; use CPAP postoperatively and monitor with continuous pulse oximetry for 72 hours",
-  "Restrictive lung disease (pulmonary fibrosis, scoliosis) causes reduced FVC and TLC with preserved FEV₁/FVC ratio; high PEEP requirements and increased risk of pneumothorax with positive pressure ventilation",
-  "Patients with a recent upper respiratory tract infection (URTI) have airway hyperreactivity for 6–8 weeks — postpone elective surgery if possible, particularly in children",
+  { text: "Asthma: avoid histamine-releasing drugs (atracurium, morphine, thiopentone); desflurane and dry gases may trigger bronchospasm — use sevoflurane which has bronchodilator properties", cites: ["BJA Educ 2017 Asthma", "BTS/SIGN 2019"] },
+  { text: "COPD patients are at high risk of postoperative pulmonary complications — optimise with bronchodilators, smoking cessation (≥8 weeks), chest physiotherapy, and regional anaesthesia where possible", cites: ["NICE NG115", "Lumb Ch.27"] },
+  { text: "Obstructive sleep apnoea (OSA) increases sensitivity to opioids and sedatives; use CPAP postoperatively and monitor with continuous pulse oximetry for 72 hours", cites: ["STOP-BANG", "Lumb Ch.27"] },
+  { text: "Restrictive lung disease (pulmonary fibrosis, scoliosis) causes reduced FVC and TLC with preserved FEV₁/FVC ratio; high PEEP requirements and increased risk of pneumothorax with positive pressure ventilation", cites: ["Lumb Ch.27"] },
+  { text: "Patients with a recent upper respiratory tract infection (URTI) have airway hyperreactivity for 6–8 weeks — postpone elective surgery if possible, particularly in children", cites: ["Lumb Ch.27", "BJA Educ 2017 Asthma"] },
+
 ];
 
 const RespiratoryDiseaseTopic = () => {

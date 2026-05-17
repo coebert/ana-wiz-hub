@@ -16,14 +16,15 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "ERAS reduces length of stay by 30–50% and complications by ~40% (Cochrane RR 0.60); compliance ≥ 70% is the dose–response threshold",
-  "Landmark evidence: ERAS Compliance Group 2015, LAFA, POWER, Cochrane 2020 — consistent across colorectal, urological, hepatobiliary, orthopaedic and now cardiac surgery",
-  "RELIEF trial: 'restrictive' fluid (≤ 6 mL/kg/h) increases AKI — current ERAS standard is goal-directed, zero-balance fluid therapy",
-  "Carbohydrate loading 2h pre-op reduces insulin resistance and improves patient well-being",
-  "Prehabilitation (4–6 weeks structured exercise) and IV iron for anaemia (Hb target > 130 men / > 120 women) reduce complications and transfusion",
-  "ERAS Cardiac (2019) and arthroplasty (2020) protocols extend benefits beyond GI surgery; TXA + spinal anaesthesia + LIA are pillars in joint replacement",
-  "Apfel PONV score (female, non-smoker, PONV history, opioids) — multimodal prophylaxis for ≥ 2 risk factors",
-  "Implementation requires MDT champion, dedicated coordinator, audit (EIAS), and order-set bundles — NHS programme saved £70–90 m/yr in bed-days",
+  { text: "ERAS reduces length of stay by 30–50% and complications by ~40% (Cochrane RR 0.60); compliance ≥ 70% is the dose–response threshold", cites: ["Cochrane 2011", "ERAS Compliance 2015"] },
+  { text: "Landmark evidence: ERAS Compliance Group 2015, LAFA, POWER, Cochrane 2020 — consistent across colorectal, urological, hepatobiliary, orthopaedic and now cardiac surgery", cites: ["ERAS Compliance 2015", "LAFA 2011", "POWER 2019", "Cochrane 2011"] },
+  { text: "RELIEF trial: 'restrictive' fluid (≤ 6 mL/kg/h) increases AKI — current ERAS standard is goal-directed, zero-balance fluid therapy", cites: ["RELIEF 2018", "OPTIMISE 2014"] },
+  { text: "Carbohydrate loading 2h pre-op reduces insulin resistance and improves patient well-being", cites: ["ERAS Colorectal 2018", "Ljungqvist 2017"] },
+  { text: "Prehabilitation (4–6 weeks structured exercise) and IV iron for anaemia (Hb target > 130 men / > 120 women) reduce complications and transfusion", cites: ["Ljungqvist 2017", "Hughes 2014"] },
+  { text: "ERAS Cardiac (2019) and arthroplasty (2020) protocols extend benefits beyond GI surgery; TXA + spinal anaesthesia + LIA are pillars in joint replacement", cites: ["ERAS Cardiac 2019", "ERAS Arthroplasty 2020"] },
+  { text: "Apfel PONV score (female, non-smoker, PONV history, opioids) — multimodal prophylaxis for ≥ 2 risk factors", cites: ["ERAS Colorectal 2018"] },
+  { text: "Implementation requires MDT champion, dedicated coordinator, audit (EIAS), and order-set bundles — NHS programme saved £70–90 m/yr in bed-days", cites: ["NHS ERPP 2013", "POWER 2019"] },
+
 ];
 
 const EnhancedRecoveryTopic = () => {
