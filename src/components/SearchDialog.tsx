@@ -152,7 +152,7 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search topics…"
+              placeholder="Search topics, keywords, drugs, concepts…"
               className="flex-1 py-3.5 bg-transparent text-foreground placeholder:text-muted-foreground outline-none text-sm"
             />
             {query && (
