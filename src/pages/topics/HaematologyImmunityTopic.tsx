@@ -121,7 +121,6 @@ const HaematologyImmunityTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["HI_BK_01"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["HI_BK_02", "OA_BK_07"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
@@ -130,51 +129,6 @@ const HaematologyImmunityTopic = () => {
         workedExamples: ["AAGBI Anaphylaxis 2021", "AAGBI Anaphylaxis 2021", "BJA Educ 2017", "BJA Educ 2017", "Stavnezer Annu Rev 2008", "Crotty Immunity 2014"],
         keyPoints: ["Allman & Wilson Ch.18", "BJA Educ Immune 2016", "Smith-Garvin Annu Rev 2009", "Mellman Cell 2001", "Banchereau Nature 1998", "BJA Educ Adaptive 2019", "BJA Educ Innate 2018", "AAGBI Anaphylaxis 2021", "BJA Educ 2017"],
       }}
-      diagrams={
-        <>
-          <DiagramSection
-            title="Immune Cell Lineages — Myeloid & Lymphoid Family Tree"
-            intro="Click any cell to reveal its role, function and clinical relevance. Use the highlight chips to fade everything that isn't innate or adaptive — dendritic cells and NK cells stay lit because they bridge both arms."
-          >
-            <ImmuneCellLineageDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Interactive: Immune Response Timeline"
-            intro="Toggle between bacterial vs viral pathogens and naïve vs re-exposed states. The pathogen-burden curve, swimlane phases and cellular players all redraw — re-exposure suppresses the burden curve almost entirely, illustrating why vaccination works."
-          >
-            <ImmuneResponseTimelineDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Antibody Kinetics — Primary vs Secondary"
-            intro="Log-titre plot of IgM and IgG across a first exposure (day 0) and re-challenge (day 28). The secondary IgG response is faster (1–3 days), larger (100–1000× higher peak) and predominantly class-switched — the immunological basis of vaccination."
-          >
-            <AntibodyKineticsDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Hypersensitivity Reactions — Type I to IV"
-            intro="Select a type to compare mechanism, time course, classic examples, diagnostic tests and the anaesthetic-specific correlates. The log-scale timeline strip overlays all four so you can see at a glance why Type I is a theatre emergency in minutes while Type IV contact dermatitis takes 48–72 h."
-          >
-            <HypersensitivityComparisonDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Vaccine Platforms — Which Immune Arm?"
-            intro="Pick a platform (live, inactivated, subunit/conjugate, toxoid, mRNA, viral vector) to see which arms of the immune system it preferentially primes, the resulting memory profile and the perioperative implications."
-          >
-            <VaccineTypesDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Asplenic / Hyposplenic Patient — Immunisation Flowchart"
-            intro="Select the clinical scenario (elective, emergency or established hyposplenism) to see the correct vaccination window, then click each of the four mandatory vaccine groups for agents, schedule and rationale."
-          >
-            <AsplenicVaccinationFlowchart />
-          </DiagramSection>
-        </>
-      }
       keyPoints={[
         { text: "Cell-based coagulation model: initiation (TF+VIIa), amplification (thrombin activates platelets), propagation (thrombin burst)", cites: ["Smith-Garvin Annu Rev 2009"] },
         { text: "PT/INR = extrinsic (VII, warfarin). APTT = intrinsic (XII, XI, IX, VIII, heparin). TT = common pathway", cites: ["Mellman Cell 2001"] },
