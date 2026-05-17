@@ -382,6 +382,16 @@ const CardiacCycleTopic = () => {
                 </p>
               </div>
             </div>
+            <div className="mt-4 space-y-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <h3 className="text-base font-semibold text-foreground mb-3">Pressure–Volume Loop</h3>
+                <PVLoopDiagram />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <h3 className="text-base font-semibold text-foreground mb-3">Frank–Starling Curve</h3>
+                <FrankStarlingDiagram />
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
