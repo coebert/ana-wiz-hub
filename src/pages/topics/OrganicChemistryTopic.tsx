@@ -27,24 +27,14 @@ const OrganicChemistryTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PH_BK_02"] },
-        diagrams: { exams: [Exam.PRIMARY] },
         workedExamples: { exams: [Exam.PRIMARY] },
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
       sectionSources={{
         objectives: ["Peck & Hill Ch.3", "Cross & Plunkett Ch.4"],
-        diagrams: ["BJA Educ 2008", "Nau & Strichartz 2002"],
         workedExamples: ["Cross & Plunkett Ch.4", "BJA Educ 2008", "Nau & Strichartz 2002"],
         keyPoints: ["Peck & Hill Ch.3", "Cross & Plunkett Ch.4", "BJA Educ 2008", "Nau & Strichartz 2002"],
       }}
-      diagrams={
-        <>
-          <OrganicChemistryDiagram />
-          <IsomerismDiagram />
-          <ChiralityAnaesthesiaDiagram />
-          <AmineComparisonDiagram />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
@@ -60,6 +50,9 @@ const OrganicChemistryTopic = () => {
                 You don't need to memorise complex synthetic pathways. What matters is recognising the key functional groups
                 present in anaesthetic drugs and understanding how they influence clinical behaviour.
               </p>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <OrganicChemistryDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -82,6 +75,12 @@ const OrganicChemistryTopic = () => {
                 and explains its yellow colour in solution.
               </p>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <IsomerismDiagram />
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <ChiralityAnaesthesiaDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -102,6 +101,9 @@ const OrganicChemistryTopic = () => {
                 (both quaternary, no central effects), why <strong>suxamethonium and rocuronium are safe for the foetus</strong>
                 (don't cross placenta), and why <strong>atropine causes central anticholinergic syndrome but glycopyrrolate doesn't</strong>.
               </p>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <AmineComparisonDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
