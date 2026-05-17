@@ -229,6 +229,7 @@ const OpioidsTopic = () => {
               Must be given by infusion (0.05–0.5 µg/kg/min). Rapid offset mandates transition analgesia. May cause OIH after
               prolonged high-dose use. Dose reduction in elderly; no adjustment for renal/hepatic impairment. Bradycardia risk.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><RemifentanilPKDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
