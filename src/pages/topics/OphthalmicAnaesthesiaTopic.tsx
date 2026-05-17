@@ -5,12 +5,12 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { ophthalmicAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import {
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
   SubTenonsBlockIllustration,
   PeribulbarBlockIllustration,
   RetrobulbarBlockIllustration,
   TopicalIntracameralIllustration,
 } from "@/components/diagrams/EyeBlockIllustrations";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Outline the determinants of intra-ocular pressure and the drugs/manoeuvres that raise or lower it",
