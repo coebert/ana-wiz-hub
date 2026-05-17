@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { Exam } from "@/data/curriculum";
+import { ExamSection } from "@/components/ExamSection";
 import { acutePancreatitisQuestions } from "@/data/quizzes";
 import GlasgowImrieScoreDiagram from "@/components/diagrams/GlasgowImrieScoreDiagram";
 import WaterfallFluidDiagram from "@/components/diagrams/WaterfallFluidDiagram";
@@ -134,6 +135,7 @@ const AcutePancreatitisTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
         <section className="space-y-6">
           {/* Definition */}
         <div>
@@ -479,6 +481,7 @@ const AcutePancreatitisTopic = () => {
             ]}
           />
       </section>
+      </ExamSection>
       }
     />
   );

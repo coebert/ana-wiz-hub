@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { Exam } from "@/data/curriculum";
+import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { bronchospasticFailureQuestions } from "@/data/quizzes";
 import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinflationDiagram";
@@ -124,7 +125,7 @@ const BronchospasticFailureTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
-    <>
+    <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-8 mb-10">
 
         {/* ---- Overview ---- */}
@@ -616,7 +617,7 @@ const BronchospasticFailureTopic = () => {
               "Sedaconda (isoflurane via AnaConDa) is a useful bronchodilator rescue in refractory status asthmaticus.",
             ]}
           />
-    </>
+    </ExamSection>
       }
     />
   );
