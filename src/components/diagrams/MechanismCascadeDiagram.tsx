@@ -373,16 +373,23 @@ export const MechanismCascadeDiagram = ({
           </div>
         </div>
   
-        {/* Consolidated bibliography */}
+        {/* Consolidated bibliography — collapsed by default */}
         {bibliography.list.length > 0 && (
-          <div className="mt-3 rounded-lg border border-border bg-background/60 p-3">
-            <div className="flex items-center gap-1.5 mb-2">
-              <BookOpen className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" focusable="false" />
-              <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
-                Sources for this cascade
-              </p>
-            </div>
-            <ol className="space-y-1.5 list-none">
+          <details className="mt-3 rounded-lg border border-border bg-background/60 group/sources">
+            <summary className="flex items-center justify-between gap-2 px-3 py-2 cursor-pointer list-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg">
+              <div className="flex items-center gap-1.5">
+                <BookOpen className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" focusable="false" />
+                <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
+                  Sources for this cascade ({bibliography.list.length})
+                </p>
+              </div>
+              <ChevronRight
+                className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open/sources:rotate-90"
+                aria-hidden="true"
+                focusable="false"
+              />
+            </summary>
+            <ol className="space-y-1.5 list-none px-3 pb-3">
               {bibliography.list.map((src, i) => (
                 <li
                   key={src.url}
@@ -413,7 +420,7 @@ export const MechanismCascadeDiagram = ({
                 </li>
               ))}
             </ol>
-          </div>
+          </details>
         )}
       </div>
     </DiagramFigure>
