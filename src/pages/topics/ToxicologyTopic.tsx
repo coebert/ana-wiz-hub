@@ -151,22 +151,14 @@ const ToxicologyTopic = () => {
       quizQuestions={toxicologyQuestions}
       sectionSources={{
         objectives: ["BJA Educ 2016", "NPIS Toxbase"],
-        diagrams: ["BJA Educ 2016", "NPIS Toxbase"],
         workedExamples: ["AAGBI Lipid Rescue", "NPIS Toxbase", "BJA Educ 2016"],
         keyPoints: ["BJA Educ 2016", "AAGBI Lipid Rescue", "NPIS Toxbase"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["CC1.10", "11A04"] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
-      diagrams={
-        <>
-          <ToxidromeComparatorDiagram />
-          <ParacetamolNomogramDiagram />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.10"]}>
@@ -180,6 +172,9 @@ const ToxicologyTopic = () => {
               <li><strong>Enhanced elimination</strong>: urinary alkalinisation (salicylates, methotrexate), haemodialysis (methanol, ethylene glycol, salicylates, lithium), haemoperfusion (rarely used)</li>
               <li><strong>Toxidromes</strong>: see the comparator below — pattern recognition narrows the differential before a tox screen returns</li>
             </ul>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <ToxidromeComparatorDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -203,6 +198,9 @@ const ToxicologyTopic = () => {
                   <tr><td className="py-2 font-medium text-foreground">Local anaesthetic toxicity</td><td>Intralipid 20%</td><td>1.5 mL/kg bolus then 15 mL/kg/h infusion. Acts as 'lipid sink' + metabolic support</td></tr>
                 </tbody>
               </table>
+            </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <ParacetamolNomogramDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>

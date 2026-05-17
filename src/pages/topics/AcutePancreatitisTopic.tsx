@@ -123,12 +123,6 @@ const AcutePancreatitisTopic = () => {
       topicId="acute-pancreatitis"
       topicTitle="Acute Severe Pancreatitis"
       quizQuestions={acutePancreatitisQuestions}
-      diagrams={
-        <>
-          <GlasgowImrieScoreDiagram />
-          <WaterfallFluidDiagram />
-        </>
-      }
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
@@ -271,6 +265,9 @@ const AcutePancreatitisTopic = () => {
               Renal urea &gt;16 mmol/L · Enzymes (LDH &gt;600 / AST &gt;200) · Albumin &lt;32 g/L · Sugar (glucose) &gt;10 mmol/L
             </p>
           </div>
+          <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+            <GlasgowImrieScoreDiagram />
+          </div>
         </div>
 
         {/* Initial Management */}
@@ -317,9 +314,10 @@ const AcutePancreatitisTopic = () => {
               </div>
             ))}
           </div>
+          <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+            <WaterfallFluidDiagram />
+          </div>
         </div>
-
-        {/* Ongoing Management */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ongoing Management (beyond 72h)</h2>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">

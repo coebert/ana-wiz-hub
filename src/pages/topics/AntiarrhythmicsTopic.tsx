@@ -101,7 +101,7 @@ const AntiarrhythmicsTopic = () => {
         ],
         workedExamples: ["Peck & Hill Ch.12", "BJA Educ 2015"],
       }}
-      diagrams={<VaughanWilliamsAPDiagram />}
+      
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
@@ -116,6 +116,9 @@ const AntiarrhythmicsTopic = () => {
 
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Vaughan-Williams Classification</h2>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <VaughanWilliamsAPDiagram />
+            </div>
             <div className="overflow-x-auto my-4">
               <table className="min-w-full text-sm border border-border rounded-lg">
                 <thead>

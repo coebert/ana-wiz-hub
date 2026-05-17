@@ -116,29 +116,14 @@ const GasLawsTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PH_BK_01"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PH_BK_01"] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PH_BK_01"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PH_BK_01"] },
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1"],
-        diagrams: ["Cross & Plunkett Ch.1", "BJA Educ 2017"],
         workedExamples: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017"],
         keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017"],
       }}
-      diagrams={
-        <>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <GasLawsDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <CriticalTemperatureDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <AndrewsIsothermsDiagram />
-          </div>
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
@@ -206,6 +191,9 @@ const GasLawsTopic = () => {
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="The Combined Gas Law">
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <GasLawsDiagram />
+            </div>
             <p className="text-foreground/90 leading-relaxed">
               Boyle's, Charles' and Gay-Lussac's laws can be unified into a single expression that relates pressure,
               volume and absolute temperature for a fixed mass of gas:
@@ -269,6 +257,9 @@ const GasLawsTopic = () => {
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="Critical Temperature & Critical Pressure">
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <CriticalTemperatureDiagram />
+            </div>
             <p className="text-foreground/90 leading-relaxed">
               The <strong>critical temperature</strong> of a substance is the temperature above which it cannot be
               liquefied by the application of pressure alone, no matter how great. The <strong>critical pressure</strong>
@@ -324,6 +315,9 @@ const GasLawsTopic = () => {
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="Andrews' Isotherms — N₂O on a P–V Diagram">
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <AndrewsIsothermsDiagram />
+            </div>
             <p className="text-foreground/90 leading-relaxed">
               Thomas Andrews' classic 1869 experiments on CO₂ produced the first family of isotherms — curves of
               pressure against volume at constant temperature — that revealed the nature of the critical point. The same
