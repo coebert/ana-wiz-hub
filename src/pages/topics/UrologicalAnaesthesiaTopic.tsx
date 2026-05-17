@@ -135,6 +135,7 @@ const UrologicalAnaesthesiaTopic = () => {
             <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
               <PropofolErectionMechanismDiagram />
             </div>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
               {[
                 { label: "Proposed mechanism", value: "Central disinhibition of spinal erection reflex + relaxation of cavernosal smooth muscle via NO/GABAergic effects; reduced sympathetic tone" },
                 { label: "Timing", value: "Typically within minutes of induction or after a bolus; may persist or recur during TIVA maintenance" },
