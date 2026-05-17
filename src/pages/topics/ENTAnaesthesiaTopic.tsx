@@ -186,6 +186,14 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Le Fort fractures</strong>: I (maxilla), II (pyramidal — maxilla + nasal bridge), III (craniofacial disjunction). Risks CSF leak and airway compromise — nasal intubation contraindicated in II/III</li>
               <li><strong>Free flap surgery</strong>: long procedures (8–12h). Avoid α-agonist boluses (flap vasospasm); use noradrenaline by infusion, MAP ≥70 mmHg, normothermia, Hb 80–100 g/L</li>
             </ul>
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <LaryngectomyAirwayHandoverDiagram />
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <LeFortFractureDiagram />
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
