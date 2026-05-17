@@ -101,7 +101,7 @@ const AntiarrhythmicsTopic = () => {
         ],
         workedExamples: ["Peck & Hill Ch.12", "BJA Educ 2015"],
       }}
-      diagrams={<VaughanWilliamsAPDiagram />}
+      
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
