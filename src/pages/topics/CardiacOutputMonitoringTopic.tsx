@@ -375,7 +375,7 @@ const CardiacOutputMonitoringTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
-      coreConcepts={<CoreConcepts />}
+      coreConcepts={<ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24"><CoreConcepts /></ExamSection>}
       diagrams={<Diagrams />}
       workedExamples={workedExamples}
       keyPoints={keyPoints}
