@@ -64,6 +64,9 @@ const NeuroanatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Vertebral arteries → basilar artery → PCAs. Supply brainstem, cerebellum, occipital lobes. Posterior communicating arteries connect PCAs to ICAs. Complete circle in only 25% of population.</p>
               </div>
             </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <CircleOfWillisDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
