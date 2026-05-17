@@ -58,6 +58,12 @@ const CardiacAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">LA: smooth-walled (except appendage). 4 pulmonary veins enter posteriorly. Mitral valve: 2 leaflets with chordae tendineae to papillary muscles. LV: thick-walled (8–15 mm). Aortic valve: 3 semilunar cusps with sinuses of Valsalva.</p>
               </div>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <CardiacAnatomyDiagram />
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <AnteriorCardiacPlate />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -76,6 +82,40 @@ const CardiacAnatomyTopic = () => {
                   <span className="text-sm text-muted-foreground">{a.detail}</span>
                 </div>
               ))}
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <CoronarySelectionProvider initial="anterior">
+                <DiagramTabs
+                  title="Coronary territory mapping"
+                  description="Pick a territory or coronary branch on any panel — the others stay in sync, so you can move between the anatomical tree, the LV bullseye and the 12-lead correlation."
+                  tabs={[
+                    {
+                      value: "territory",
+                      label: "Territory map",
+                      caption: "Anatomical projection of LAD, LCx and RCA territories on the heart silhouette.",
+                      content: <CoronaryTerritoryMapDiagram />,
+                    },
+                    {
+                      value: "tree",
+                      label: "Coronary tree",
+                      caption: "Branching diagram from the aortic root to PDA — toggle dominance and named branches.",
+                      content: <CoronaryTreeDiagram />,
+                    },
+                    {
+                      value: "bullseye",
+                      label: "LV bullseye",
+                      caption: "AHA 17-segment bullseye coloured by supplying coronary artery.",
+                      content: <LVBullseyeDiagram />,
+                    },
+                    {
+                      value: "ecg",
+                      label: "12-lead correlation",
+                      caption: "Which leads see each territory — predict the culprit vessel from ST changes.",
+                      content: <TwelveLeadEcgDiagram />,
+                    },
+                  ]}
+                />
+              </CoronarySelectionProvider>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
