@@ -71,23 +71,12 @@ const EndocrineDiseaseTopic = () => {
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={endocrineDiseaseQuestions}
-      diagrams={
-        <div className="space-y-6">
-          <PerioperativeDiabetesDiagram />
-          <ThyroidStormDiagram />
-          <PhaeochromocytomaDiagram />
-          <AddisonianCrisisDiagram />
-          <CarcinoidSyndromeDiagram />
-        </div>
-      }
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["BJA Educ DM 2015", "JBDS-IP 2021", "Addison's Guidelines"],
-        diagrams: ["JBDS-IP 2021", "BJA Educ DM 2015"],
         keyPoints: ["BJA Educ DM 2015", "JBDS-IP 2021", "BJA Educ Thyroid 2014", "BJA Educ Phaeo 2017", "Addison's Guidelines"],
       }}
       coreConcepts={
