@@ -305,13 +305,14 @@ export const MechanismCascadeDiagram = ({
         <div className="grid lg:grid-cols-[1fr,1fr] gap-4">
           <div className="rounded-lg border border-border bg-background p-3 flex items-center justify-center">
             {layout === "chain" ? (
-              <ChainSvg steps={steps} active={step} accentVar={accentVar} />
+              <ChainSvg steps={steps} active={step} accentVar={accentVar} reduceMotion={reduceMotion} />
             ) : (
               <RadialSvg
                 steps={steps}
                 active={step}
                 accentVar={accentVar}
                 centerLabel={centerLabel ?? ""}
+                reduceMotion={reduceMotion}
               />
             )}
           </div>
