@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -135,17 +136,18 @@ const NeuromuscularTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["NA_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               Neuromuscular transmission is the process by which a motor nerve impulse is converted into
               muscle contraction at the neuromuscular junction (NMJ). Understanding this process is
               essential for anaesthetists, as it underpins the pharmacology of neuromuscular blocking
               agents, their reversal, and neuromuscular monitoring.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="sequence" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["NA_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sequence of Events</h2>
+            <CollapsibleSubsection title="Sequence of Events">
             <div className="space-y-4">
               <div className="rounded-lg border border-border p-4">
                 <h3 className="font-semibold text-foreground">1. Action Potential Arrival</h3>
@@ -199,10 +201,11 @@ const NeuromuscularTopic = () => {
                 </p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="receptors" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["NA_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Receptor Subtypes at the NMJ</h2>
+            <CollapsibleSubsection title="Receptor Subtypes at the NMJ">
             <p className="text-foreground/90 leading-relaxed">There are multiple receptor types at the NMJ:</p>
             <ul className="mt-3 space-y-2 text-foreground/80">
               <li>
@@ -219,20 +222,22 @@ const NeuromuscularTopic = () => {
                 burns, and immobilisation — causing hyperkalaemia with suxamethonium.
               </li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="safety-margin" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["NA_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Safety Margin</h2>
+            <CollapsibleSubsection title="The Safety Margin">
             <p className="text-foreground/90 leading-relaxed">
               The NMJ has a large safety margin: approximately 70–80% of receptors must be blocked before
               clinical weakness becomes apparent, and {'>'}90% must be blocked for complete paralysis. This
               is exploited in neuromuscular monitoring — train-of-four fade appears when ~75% of receptors
               are occupied, and single twitch depression requires ~80% blockade.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="clinical" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clinical Relevance</h2>
+            <CollapsibleSubsection title="Clinical Relevance">
             <div className="bg-secondary/30 rounded-lg p-4 border border-border">
               <p className="text-sm font-medium text-foreground">Conditions Affecting NM Transmission</p>
               <ul className="text-sm text-muted-foreground mt-2 space-y-1">
@@ -242,6 +247,7 @@ const NeuromuscularTopic = () => {
                 <li>• <strong>Aminoglycosides</strong> — reduce pre-synaptic Ca²⁺ entry and potentiate neuromuscular block</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamPitfallsCallout

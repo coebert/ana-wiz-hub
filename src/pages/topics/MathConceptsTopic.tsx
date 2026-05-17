@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import MathConceptsDiagram from "@/components/diagrams/MathConceptsDiagram";
@@ -71,22 +72,24 @@ const MathConceptsTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Many physiological and pharmacological relationships can be understood through their underlying mathematical functions. Recognising the shape of a graph — linear, exponential, sigmoid, hyperbolic — allows you to predict how a system will behave when variables change. This topic covers the key mathematical relationships encountered in anaesthesia and intensive care, with clinical examples for each.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="graph-types" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Graph Types & Clinical Examples</h2>
+            <CollapsibleSubsection title="Graph Types & Clinical Examples">
             <p className="text-muted-foreground leading-relaxed mb-4">
               Select each graph type to explore its shape, equation, and real clinical applications.
             </p>
             <MathConceptsDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="time-constants" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Time Constants (τ)</h2>
+            <CollapsibleSubsection title="Time Constants (τ)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The time constant τ is central to understanding exponential processes. After one time constant, 63% of the change has occurred. After three time constants, 95%. After five, 99% — effectively complete.
             </p>
@@ -105,10 +108,11 @@ const MathConceptsTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="half-life-vs-tau" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Half-Life vs Time Constant</h2>
+            <CollapsibleSubsection title="Half-Life vs Time Constant">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Both describe exponential processes. The half-life (t½) is the time for 50% change; the time constant (τ) is the time for 63.2% change.
             </p>
@@ -121,10 +125,11 @@ const MathConceptsTopic = () => {
               <TimeConstantDiagram />
             </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="logarithms" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Logarithmic Scales in Medicine</h2>
+            <CollapsibleSubsection title="Logarithmic Scales in Medicine">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Logarithms compress enormous ranges into manageable numbers. Several clinical scales use logarithmic transformations:
             </p>
@@ -141,13 +146,15 @@ const MathConceptsTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="sigmoid" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Sigmoid Curve & Cooperativity</h2>
+            <CollapsibleSubsection title="The Sigmoid Curve & Cooperativity">
             <p className="text-muted-foreground leading-relaxed">
               The sigmoid (S-shaped) curve arises when binding or response is <strong>cooperative</strong> — each event makes the next more likely. The Hill coefficient (n) describes the steepness: n = 1 gives a hyperbola (no cooperativity, e.g., myoglobin), n = 2.7 gives the sigmoid ODC (haemoglobin), and n → ∞ gives a step function (all-or-nothing response). In pharmacology, log dose-response curves are sigmoid, with EC₅₀ at the midpoint. Plotting on a log scale straightens the middle portion, making comparison of potency and efficacy easier.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

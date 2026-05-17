@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
@@ -182,7 +183,7 @@ const XRayRadiationSafetyTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Anaesthetists encounter ionising radiation routinely — fluoroscopy in interventional radiology and cardiology, image
               intensifiers in trauma theatre, hybrid theatre EVAR/TAVI, CT in resus and the on-call diagnostic workflow, and pain
@@ -192,10 +193,11 @@ const XRayRadiationSafetyTopic = () => {
               consenting patients for repeat or high-dose examinations.
             </p>
             <ElectromagneticSpectrumDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="production" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">X-ray Production</h2>
+            <CollapsibleSubsection title="X-ray Production">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 A diagnostic X-ray tube is an evacuated glass envelope containing a heated tungsten <strong>cathode</strong> (electron
@@ -229,10 +231,11 @@ const XRayRadiationSafetyTopic = () => {
                 rotate and are oil-cooled.<Cite refs={[{ id: "bushberg", n: 2 }, { id: "iaea-handbook", n: 1 }]} />
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="interactions" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Photon–Tissue Interactions</h2>
+            <CollapsibleSubsection title="Photon–Tissue Interactions">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>Four interactions matter clinically; the first two account for almost all relevant medical physics:</p>
               <ul className="list-disc list-inside space-y-1 ml-2">
@@ -263,10 +266,11 @@ const XRayRadiationSafetyTopic = () => {
                 apron attenuates to roughly (½)<sup>2.5</sup> ≈ 6% (i.e. ~94% scatter reduction).
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="ct-scanner" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">How a CT Scanner Works</h2>
+            <CollapsibleSubsection title="How a CT Scanner Works">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Computed tomography takes the same X-ray tube and turns plain-film attenuation into a cross-sectional map. A high-output
@@ -399,10 +403,11 @@ const XRayRadiationSafetyTopic = () => {
                 permits.<Cite refs={[{ id: "irmer2017", n: 6 }, { id: "phe-doses", n: 7 }]} />
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="units" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Dose Units</h2>
+            <CollapsibleSubsection title="Dose Units">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>Distinguish three quantities — the exam favourites:</p>
               <ul className="list-disc list-inside space-y-1 ml-2">
@@ -432,10 +437,11 @@ const XRayRadiationSafetyTopic = () => {
               <RadiationDoseComparisonTable />
               <RadiationDoseUnitsDiagram />
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="alara" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">ALARA — Time, Distance, Shielding</h2>
+            <CollapsibleSubsection title="ALARA — Time, Distance, Shielding">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The radiation protection framework is built on three legal/ethical pillars (IR(ME)R 2017): <strong>justification</strong>
@@ -467,10 +473,11 @@ const XRayRadiationSafetyTopic = () => {
               </p>
               <RadiationSafetyChecklist />
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="dose-limits" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Dose Limits & Personal Dosimetry</h2>
+            <CollapsibleSubsection title="Dose Limits & Personal Dosimetry">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>UK Ionising Radiations Regulations 2017 (IRR 2017) set the following effective dose limits per calendar year:</p>
 
@@ -579,10 +586,11 @@ const XRayRadiationSafetyTopic = () => {
                 <strong> Pregnant workers</strong> add a second badge under the apron at waist/abdomen level for foetal dose monitoring.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="effects" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Stochastic & Deterministic Effects</h2>
+            <CollapsibleSubsection title="Stochastic & Deterministic Effects">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Stochastic effects</strong> have <em>no threshold</em>; probability of harm rises with dose, but severity does
@@ -755,10 +763,11 @@ const XRayRadiationSafetyTopic = () => {
                 </ul>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="practical" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Practical Anaesthetic Considerations</h2>
+            <CollapsibleSubsection title="Practical Anaesthetic Considerations">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The anaesthetist is often the staff member with the longest time in the room and the most fixed position (at the head
@@ -783,6 +792,7 @@ const XRayRadiationSafetyTopic = () => {
               links={[{ topicId: "interventional-radiology" }]}
               variant="inline"
             />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="references" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>

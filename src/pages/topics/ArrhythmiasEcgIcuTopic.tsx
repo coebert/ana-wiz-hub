@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { arrhythmiasEcgIcuQuestions } from "@/data/quizzes";
 import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDiagram";
@@ -87,7 +88,7 @@ const ArrhythmiasEcgIcuTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="ecg-approach" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.4"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">A Systematic ECG Approach in the ICU</h2>
+            <CollapsibleSubsection title="A Systematic ECG Approach in the ICU" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               ICU patients accumulate dozens of ECGs — most reviewed in seconds. A reproducible
               sequence catches the dangerous findings (ischaemia, electrolyte disturbance, drug
@@ -121,10 +122,11 @@ const ArrhythmiasEcgIcuTopic = () => {
                 <li><span className="font-medium text-foreground">U waves + flat T + long QU</span> — hypokalaemia → torsades risk.</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="12-lead" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.4"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">12-Lead Schematic & Coronary Territories</h2>
+            <CollapsibleSubsection title="12-Lead Schematic & Coronary Territories">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Each lead "looks at" a region of the LV supplied by a specific coronary artery. Click a
               territory or a lead to see how ST changes localise the culprit vessel — vital for ROSC,
@@ -150,10 +152,11 @@ const ArrhythmiasEcgIcuTopic = () => {
                 <p className="text-xs text-muted-foreground mt-1">Inferior STEMI: always do V4R. ST elevation = RV infarct → preload-dependent → cautious nitrates, fluid load, avoid β-blockers.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="wellens" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Wellens Syndrome</h2>
+            <CollapsibleSubsection title="Wellens Syndrome">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Wellens syndrome is a pre-infarction ECG pattern caused by a critical proximal LAD
               stenosis. The classic trap is that the patient is <span className="font-medium text-foreground">pain-free</span> at the time of the ECG, the
@@ -182,6 +185,7 @@ const ArrhythmiasEcgIcuTopic = () => {
                 </p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
@@ -189,7 +193,7 @@ const ArrhythmiasEcgIcuTopic = () => {
           </ExamSection>
 
           <ExamSection id="bradys" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bradyarrhythmias</h2>
+            <CollapsibleSubsection title="Bradyarrhythmias">
             <p className="text-muted-foreground leading-relaxed mb-3">
               In ICU, bradycardia is rarely "physiological". Look for <span className="font-medium text-foreground">drugs</span> (β-blockers,
               digoxin, dexmedetomidine, opioids, amiodarone), <span className="font-medium text-foreground">ischaemia</span> (inferior MI affects
@@ -199,10 +203,11 @@ const ArrhythmiasEcgIcuTopic = () => {
             <ExpandableEcgCard content={bradyContent}>
               {() => <BradyarrhythmiaDiagram />}
             </ExpandableEcgCard>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="heart-block" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Block</h2>
+            <CollapsibleSubsection title="Heart Block">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The site of block predicts both the escape rhythm and the device choice. Nodal blocks
               (1°, Mobitz I) usually have a junctional escape and tolerate observation. Infranodal
@@ -212,10 +217,11 @@ const ArrhythmiasEcgIcuTopic = () => {
             <ExpandableEcgCard content={heartBlockContent}>
               {() => <HeartBlockDiagram />}
             </ExpandableEcgCard>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="bbb" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bundle Branch & Fascicular Block</h2>
+            <CollapsibleSubsection title="Bundle Branch & Fascicular Block">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Recognising bundle branch block matters in ICU because it complicates STEMI diagnosis
               (Sgarbossa criteria for new LBBB), masks underlying ischaemia, and warns of progression
@@ -224,10 +230,11 @@ const ArrhythmiasEcgIcuTopic = () => {
             <ExpandableEcgCard content={bbbContent}>
               {() => <BundleBranchBlockDiagram />}
             </ExpandableEcgCard>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="tachys" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tachyarrhythmias</h2>
+            <CollapsibleSubsection title="Tachyarrhythmias">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The key bedside split: <span className="font-medium text-foreground">narrow vs wide</span>, then
               <span className="font-medium text-foreground"> regular vs irregular</span>. New-onset AF affects up to a third of ventilated
@@ -237,10 +244,11 @@ const ArrhythmiasEcgIcuTopic = () => {
             <ExpandableEcgCard content={tachyContent}>
               {() => <TachyarrhythmiaDiagram />}
             </ExpandableEcgCard>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="peri-arrest" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["RCUK 2021"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Peri-arrest Algorithms (RCUK 2021)</h2>
+            <CollapsibleSubsection title="Peri-arrest Algorithms (RCUK 2021)">
             <div className="grid md:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border bg-card">
                 <p className="font-semibold text-foreground text-sm mb-2">Tachycardia algorithm</p>
@@ -273,10 +281,11 @@ const ArrhythmiasEcgIcuTopic = () => {
                 </ul>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="electrolytes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Electrolyte &amp; Drug-Induced Arrhythmias</h2>
+            <CollapsibleSubsection title="Electrolyte & Drug-Induced Arrhythmias">
             <div className="space-y-2">
               {[
                 { label: "Hyperkalaemia (K⁺ > 6.0)", ecg: "Peaked T → loss of P → wide QRS → sine-wave → VF/asystole.", treatment: "10 mL 10 % calcium gluconate IV (membrane stabilisation), insulin–dextrose, salbutamol nebs, sodium bicarbonate (if acidotic), definitive removal (RRT)." },
@@ -294,10 +303,11 @@ const ArrhythmiasEcgIcuTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="pacing-devices" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pacing &amp; Defibrillator Devices in the ICU</h2>
+            <CollapsibleSubsection title="Pacing & Defibrillator Devices in the ICU">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Recognise device, mode, and the patient's degree of pacing dependence on every ICU
               admission. For any ICU patient with a CIED: interrogate, document the magnet response,
@@ -305,10 +315,11 @@ const ArrhythmiasEcgIcuTopic = () => {
               defibrillation.
             </p>
             <PacingDevicesDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="post-arrest" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.5"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Post-cardiac-arrest Care &amp; ECG Surveillance</h2>
+            <CollapsibleSubsection title="Post-cardiac-arrest Care & ECG Surveillance">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Immediate post-ROSC</p>
@@ -327,6 +338,7 @@ const ArrhythmiasEcgIcuTopic = () => {
                 <p className="text-xs text-muted-foreground mt-1">Survivors of VF/VT arrest without reversible cause meet secondary-prevention ICD criteria. Liaise with cardiology before discharge from ICU.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="icu"

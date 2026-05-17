@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -188,7 +189,7 @@ const HaematologyImmunityTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Haematology and immunity sit at the heart of perioperative medicine — from haemostasis at the surgical
               wound to the recognition of anaphylaxis on induction and the immune compromise of asplenic, transplant
@@ -196,10 +197,11 @@ const HaematologyImmunityTopic = () => {
               blood-group serology and transfusion, to the architecture of innate and adaptive immunity, finishing with
               the differential response to bacterial vs viral infection and the rationale for vaccination.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="coagulation" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coagulation Cascade</h2>
+            <CollapsibleSubsection title="Coagulation Cascade">
             <p className="text-muted-foreground leading-relaxed mb-3">Haemostasis involves primary (platelet plug) and secondary (fibrin clot) phases. The cell-based model describes initiation (TF + VIIa → Xa), amplification (thrombin activates platelets + V, VIII, XI), and propagation (burst of thrombin → fibrin).</p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -216,20 +218,22 @@ const HaematologyImmunityTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="blood-groups" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_02"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Blood Groups & Transfusion</h2>
+            <CollapsibleSubsection title="Blood Groups & Transfusion">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>ABO system</strong>: Group O = universal donor (no A/B antigens); Group AB = universal recipient. Naturally occurring IgM antibodies → immediate haemolytic reaction if mismatched</li>
               <li><strong>Rhesus system</strong>: D antigen most important. Rh− patients develop anti-D IgG after sensitisation → delayed reaction. Anti-D prophylaxis in Rh− mothers</li>
               <li><strong>Transfusion reactions</strong>: acute haemolytic (ABO mismatch, most dangerous), febrile non-haemolytic (WBC antibodies), allergic (IgA deficiency), TRALI (donor anti-HLA antibodies), TACO (fluid overload)</li>
               <li><strong>Massive transfusion</strong>: &gt;10 units RBC in 24h or &gt;1 blood volume. Complications: hypocalcaemia (citrate), hyperkalaemia, hypothermia, coagulopathy (dilutional). Use 1:1:1 RBC:FFP:platelets ratio</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="immunity-overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Immunity & Inflammation</h2>
+            <CollapsibleSubsection title="Immunity & Inflammation">
             <div className="space-y-3">
               {[
                 { title: "Innate Immunity", desc: "Non-specific, immediate. Physical barriers (skin, mucosa), complement cascade (classical, alternative, lectin pathways), phagocytes (neutrophils, macrophages), NK cells. Pattern recognition receptors (TLRs) detect PAMPs/DAMPs." },
@@ -243,10 +247,11 @@ const HaematologyImmunityTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="bacterial-response" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Response to Bacterial Infection</h2>
+            <CollapsibleSubsection title="Response to Bacterial Infection">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Extracellular bacteria (e.g. <em>S. pneumoniae</em>, <em>E. coli</em>) are largely countered by the humoral arm; intracellular bacteria (e.g. <em>M. tuberculosis</em>, <em>Listeria</em>) require cell-mediated immunity (Th1/macrophage activation).
             </p>
@@ -267,10 +272,11 @@ const HaematologyImmunityTopic = () => {
               <p>Pre-formed circulating IgG opsonises bacteria immediately; complement is fixed via the <em>classical</em> pathway (Ag–Ab complex → C1q). Memory Th1/Th17 cells recruit and arm macrophages and neutrophils within hours. The pathogen is usually cleared subclinically — this is the basis of vaccination.</p>
               <p><strong>Anaesthetic relevance:</strong> functional/anatomical asplenia (sickle, post-splenectomy) loses the marginal-zone B cells that mount the rapid IgM response to encapsulated organisms (<em>S. pneumoniae</em>, <em>H. influenzae</em>, <em>N. meningitidis</em>) — vaccinate and consider penicillin prophylaxis.</p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="viral-response" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Response to Viral Infection</h2>
+            <CollapsibleSubsection title="Response to Viral Infection">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Viruses replicate intracellularly, so the dominant defences are <strong>type I interferons</strong>, <strong>NK cells</strong> and <strong>CD8⁺ cytotoxic T lymphocytes</strong>. Antibodies neutralise free virions but cannot reach intracellular virus.
             </p>
@@ -290,10 +296,11 @@ const HaematologyImmunityTopic = () => {
               <p><strong>Antigenic drift</strong> (point mutations) and <strong>antigenic shift</strong> (reassortment, e.g. influenza) can escape neutralising antibody, producing recurrent epidemics despite memory. Latent viruses (e.g. VZV → shingles) reactivate when T-cell surveillance wanes (age, immunosuppression, steroids).</p>
               <p><strong>Anaesthetic relevance:</strong> surgery + GA cause transient cell-mediated immunosuppression (↓ NK activity, ↓ Th1, ↑ Th2 shift, IL-10) — opioids and volatiles contribute. Reactivation of HSV, VZV, CMV is well described post-op, particularly in the immunosuppressed.</p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="primary-vs-secondary" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["HI_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Naïve vs Secondary Response — at a glance</h2>
+            <CollapsibleSubsection title="Naïve vs Secondary Response — at a glance">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead><tr className="border-b border-border">
@@ -312,6 +319,7 @@ const HaematologyImmunityTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamPitfallsCallout

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -126,17 +127,18 @@ const HepaticPhysiologyTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               The liver is the largest solid organ, receiving ~25% of cardiac output via a dual blood supply. Its
               functions — drug metabolism, protein synthesis, bile production, glucose homeostasis, and immune defence
               — are critical for anaesthetic practice. Hepatic dysfunction profoundly alters pharmacokinetics,
               coagulation, and perioperative risk.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="blood-supply" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hepatic Blood Supply</h2>
+            <CollapsibleSubsection title="Hepatic Blood Supply">
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { label: "Total Hepatic Blood Flow", value: "~1500 mL/min (25% of CO)." },
@@ -152,10 +154,11 @@ const HepaticPhysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="acinus" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Functional Anatomy — The Hepatic Acinus</h2>
+            <CollapsibleSubsection title="Functional Anatomy — The Hepatic Acinus">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The functional unit is the hepatic acinus (Rappaport model), divided into three zones based on proximity
               to the portal triad:
@@ -172,10 +175,11 @@ const HepaticPhysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="metabolic" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Metabolic Functions</h2>
+            <CollapsibleSubsection title="Metabolic Functions">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Carbohydrate</strong>: glycogenesis, glycogenolysis, gluconeogenesis — maintains blood glucose 4–6 mmol/L.</li>
               <li><strong>Protein</strong>: synthesises albumin (3.5–5 g/dL, t½ ~20 days), clotting factors (I, II, V, VII, IX, X, XI), complement, acute-phase proteins, plasma cholinesterase.</li>
@@ -183,10 +187,11 @@ const HepaticPhysiologyTopic = () => {
               <li><strong>Bilirubin</strong>: conjugation (glucuronidation) of unconjugated bilirubin → water-soluble conjugated bilirubin → excretion in bile.</li>
               <li><strong>Ammonia</strong>: converts to urea via the urea cycle (failing in liver failure → hepatic encephalopathy).</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="drug-metabolism" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Drug Metabolism</h2>
+            <CollapsibleSubsection title="Drug Metabolism">
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
               <PortalFirstPassDiagram />
             </div>
@@ -206,10 +211,11 @@ const HepaticPhysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="coagulation" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Synthetic & Coagulation Function</h2>
+            <CollapsibleSubsection title="Synthetic & Coagulation Function">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Prothrombin time / INR</strong> is the most sensitive marker of synthetic function (Factor VII t½ = 6 h).</li>
               <li>Albumin has a long half-life (~20 days) — ↓ albumin reflects chronic liver disease, not acute failure.</li>
@@ -217,10 +223,11 @@ const HepaticPhysiologyTopic = () => {
               <li>Also synthesises <strong>antithrombin III</strong>, protein C, and protein S — liver failure is a mixed coagulopathy.</li>
               <li><strong>Thromboelastography (TEG/ROTEM)</strong> gives a global assessment of haemostasis in liver disease.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="lfts" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Liver Function Tests</h2>
+            <CollapsibleSubsection title="Liver Function Tests">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -241,10 +248,11 @@ const HepaticPhysiologyTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="anaesthetic-implications" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthetic Implications of Liver Disease</h2>
+            <CollapsibleSubsection title="Anaesthetic Implications of Liver Disease">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Pharmacokinetics</strong>: ↓ protein binding (↑ free drug), ↓ phase I metabolism, ↑ Vd (ascites/oedema).</li>
               <li><strong>Coagulopathy</strong>: ↓ clotting factors, ↓ platelets (hypersplenism), ↑ fibrinolysis — balanced against ↓ anticoagulants.</li>
@@ -253,6 +261,7 @@ const HepaticPhysiologyTopic = () => {
               <li><strong>Encephalopathy</strong>: ↑ sensitivity to sedatives and opioids — titrate or avoid.</li>
               <li><strong>Child-Pugh</strong> and <strong>MELD</strong> scores stratify perioperative risk.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamPitfallsCallout

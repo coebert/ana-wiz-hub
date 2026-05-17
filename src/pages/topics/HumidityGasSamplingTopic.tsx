@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import HumidityGasSamplingDiagram from "@/components/diagrams/HumidityGasSamplingDiagram";
@@ -79,22 +80,24 @@ const HumidityGasSamplingTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Gas analysis and humidity management are fundamental to safe anaesthesia and ventilation. Understanding the physics
               of flow measurement, gas identification, and airway humidification underpins rational use of monitoring equipment
               and ventilator circuits. This topic covers pneumotachography, mass spectrometry, Raman scattering, and the physics
               of humidity — all core Primary FRCA material.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
+            <CollapsibleSubsection title="Interactive Diagrams">
             <HumidityGasSamplingDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="humidity" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Humidity & Humidification</h2>
+            <CollapsibleSubsection title="Humidity & Humidification">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Absolute humidity</strong> is the mass of water vapour per unit volume of gas (mg/L). <strong>Relative
@@ -112,10 +115,11 @@ const HumidityGasSamplingTopic = () => {
                 but carry risks of circuit condensation, infection, and airway burns.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="hygrometers" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Measurement of Humidity — Hygrometers</h2>
+            <CollapsibleSubsection title="Measurement of Humidity — Hygrometers">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Four hygrometer types are commonly examined: the <strong>hair</strong> hygrometer (mechanical), the
               <strong> wet-and-dry bulb</strong> psychrometer (latent heat of evaporation), <strong>Regnault's dew-point</strong>
@@ -123,10 +127,11 @@ const HumidityGasSamplingTopic = () => {
               found in every contemporary anaesthetic monitor. Step through each animation to see the underlying physics.
             </p>
             <HygrometersDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="pneumotachography" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Pneumotachography</h2>
+            <CollapsibleSubsection title="Pneumotachography">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 A pneumotachograph measures gas flow by detecting the pressure difference (ΔP) across a known fixed resistance.
@@ -140,10 +145,11 @@ const HumidityGasSamplingTopic = () => {
                 which would increase resistance and cause inaccuracy. Changes in gas composition (viscosity, density) also affect readings.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="mass-spec" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Mass Spectrometry</h2>
+            <CollapsibleSubsection title="Mass Spectrometry">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The mass spectrometer is the <strong>only gas analyser that can identify all respiratory and anaesthetic gases
@@ -157,10 +163,11 @@ const HumidityGasSamplingTopic = () => {
                 vacuum pump, but can be multiplexed to serve multiple operating theatres via a rotating valve and long sampling lines.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="raman" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Raman Scattering</h2>
+            <CollapsibleSubsection title="Raman Scattering">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 When monochromatic light (argon laser) interacts with gas molecules, most photons scatter elastically
@@ -179,10 +186,11 @@ const HumidityGasSamplingTopic = () => {
                 expensive. They are not widely used in current clinical practice.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="paramagnetic" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Paramagnetic Oxygen Analysis</h2>
+            <CollapsibleSubsection title="Paramagnetic Oxygen Analysis">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Most molecules are <strong>diamagnetic</strong> (all electrons paired) and are weakly repelled by a magnetic field.
@@ -214,10 +222,11 @@ const HumidityGasSamplingTopic = () => {
               reason="The galvanic fuel cell and Clark electrode are the electrochemical alternatives for measuring O₂ partial pressure (in the breathing circuit and in arterial blood respectively)."
               links={[{ topicId: "abg-analyser" }]}
             />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="infrared" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Infrared Absorption — CO₂, N₂O and Volatile Agents</h2>
+            <CollapsibleSubsection title="Infrared Absorption — CO₂, N₂O and Volatile Agents">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Polyatomic molecules with a <strong>changing dipole moment</strong> during vibration absorb infrared radiation
@@ -264,10 +273,11 @@ const HumidityGasSamplingTopic = () => {
               reason="The capnograph waveform and its mainstream vs sidestream sampling options are the bedside application of this 4.26 µm CO₂ absorption."
               links={[{ topicId: "pulse-oximetry" }]}
             />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="sampling-site" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Mainstream (in-line) vs Sidestream Sampling</h2>
+            <CollapsibleSubsection title="Mainstream (in-line) vs Sidestream Sampling">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Once a gas analyser exists, the next engineering question is <strong>where to put the sensor relative to the
@@ -383,10 +393,11 @@ const HumidityGasSamplingTopic = () => {
               reason="Capnography phases and the α/β angles are interpreted on the waveform produced by whichever sampling design is in use."
               links={[{ topicId: "pulse-oximetry" }]}
             />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="analyser-comparison" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Comparison of Gas-Concentration Analysers</h2>
+            <CollapsibleSubsection title="Comparison of Gas-Concentration Analysers">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Each technique has a niche; modern anaesthetic monitors combine <strong>paramagnetic</strong> (O₂) with
               <strong> multi-wavelength infrared</strong> (CO₂, N₂O, volatile agent) and an <strong>electrochemical</strong> back-up
@@ -447,6 +458,7 @@ const HumidityGasSamplingTopic = () => {
               usually paramagnetic for O₂, infrared for CO₂/N₂O/volatiles, fuel cell for circuit FiO₂ and Clark electrode for
               arterial blood. Mass spectrometry and Raman appear in "which analyser identifies <em>all</em> gases?" stems.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

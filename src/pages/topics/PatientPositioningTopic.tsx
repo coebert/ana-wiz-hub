@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { patientPositioningQuestions } from "@/data/quizzes";
@@ -114,7 +115,7 @@ const PatientPositioningTopic = () => {
         <div data-realism={realism}>
         <RealismToggle level={realism} onChange={setRealism} />
           <ExamSection id="principles" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Principles of Safe Positioning</h2>
+            <CollapsibleSubsection title="Principles of Safe Positioning" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Patient positioning is a shared responsibility between the surgical and anaesthetic teams, but the
               anaesthetist owns the protection of pressure points, eyes, peripheral nerves, the airway and
@@ -131,20 +132,22 @@ const PatientPositioningTopic = () => {
               The AAGBI / Association of Anaesthetists guideline <em>Peri-operative care of the patient (positioning) 2018</em>
               and the ASA Practice Advisory on Perioperative Visual Loss are the standard references.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="supine" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Supine Position</h2>
+            <CollapsibleSubsection title="Supine Position">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The default surgical position. Despite being the “simplest”, it generates the largest absolute number of
               ulnar and brachial plexus injuries by sheer volume. Variants include arms abducted on arm-boards
               (&lt; 90°), arms tucked at the sides, and the “cross-over” / “crucifix” for cardiac surgery.
             </p>
             <SupineIllustration />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="trendelenburg" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Trendelenburg & Reverse Trendelenburg</h2>
+            <CollapsibleSubsection title="Trendelenburg & Reverse Trendelenburg">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Whole-table head-down (Trendelenburg) is used for pelvic access (laparoscopic / robotic prostatectomy,
               colorectal, gynaecology). Robotic prostatectomy may use 25–40° tilt for several hours — the major
@@ -152,10 +155,11 @@ const PatientPositioningTopic = () => {
               Reverse Trendelenburg (head-up) is used for upper-abdominal and laparoscopic gastric / bariatric work.
             </p>
             <TrendelenburgIllustration />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="lithotomy" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Lithotomy & Lloyd-Davies</h2>
+            <CollapsibleSubsection title="Lithotomy & Lloyd-Davies">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Hips and knees flexed in stirrups (Allen / Yellofin boots are the modern standard; older candy-cane
               stirrups concentrate pressure on the lateral knee). Lloyd-Davies is a less-flexed variant for combined
@@ -164,10 +168,11 @@ const PatientPositioningTopic = () => {
             </p>
             <LithotomyIllustration />
             <PeronealNerveLithotomyAnimation />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="lateral" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Lateral Decubitus</h2>
+            <CollapsibleSubsection title="Lateral Decubitus">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Patient on their side, dependent leg flexed, upper leg straight on a pillow, axillary roll under the
               chest <em>caudal</em> to the axilla (not <em>in</em> the axilla). The “kidney rest” + table break
@@ -175,10 +180,11 @@ const PatientPositioningTopic = () => {
               significant V/Q mismatch (ventilation to non-dependent compliant lung; perfusion to dependent lung).
             </p>
             <LateralIllustration />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="prone" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Prone Position & Operating Tables / Frames</h2>
+            <CollapsibleSubsection title="Prone Position & Operating Tables / Frames">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The prone patient must have a free abdomen (to keep IVC pressure and epidural venous bleeding low),
               chest and pelvis supported, neutral cervical spine, eyes free of pressure and the ETT re-checked.
@@ -206,10 +212,11 @@ const PatientPositioningTopic = () => {
                 <li><strong>Legs</strong> — pillow under shins so toes hang free, knees slightly flexed and padded, heels offloaded.</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="neuro-positioning" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Positioning for Neuroanaesthesia</h2>
+            <CollapsibleSubsection title="Positioning for Neuroanaesthesia">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Neurosurgical positioning is dictated by the lesion: <strong>supratentorial</strong> tumours are usually
               done supine with a head turn; <strong>posterior fossa, cerebellopontine angle, vestibular schwannoma,
@@ -256,10 +263,11 @@ const PatientPositioningTopic = () => {
               must be zeroed at the tragus, not at the heart, and intra-operative hypotension must be treated promptly.
             </p>
             <BeachChairIllustration />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="complications" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Position-Related Complications — Summary</h2>
+            <CollapsibleSubsection title="Position-Related Complications — Summary">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -285,10 +293,11 @@ const PatientPositioningTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="procedures-by-position" exams={[Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Common Procedures by Position</h2>
+            <CollapsibleSubsection title="Common Procedures by Position">
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { p: "Supine", s: "General / vascular / breast / urology (open), upper-limb orthopaedics, cardiac (with arms out), most ENT, ophthalmic, dental, trauma laparotomy" },
@@ -311,6 +320,7 @@ const PatientPositioningTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </div>
           <ExamPitfallsCallout

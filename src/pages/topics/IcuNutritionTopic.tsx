@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { icuNutritionQuestions } from "@/data/quizzes";
@@ -129,7 +130,7 @@ const IcuNutritionTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Metabolic Response to Critical Illness</h2>
+            <CollapsibleSubsection title="Metabolic Response to Critical Illness" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Critical illness induces a catabolic state with hyperglycaemia, protein catabolism and lipolysis. The metabolic response has two phases:
             </p>
@@ -147,10 +148,11 @@ const IcuNutritionTopic = () => {
                 </p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Enteral vs Parenteral Nutrition</h2>
+            <CollapsibleSubsection title="Enteral vs Parenteral Nutrition">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -168,10 +170,11 @@ const IcuNutritionTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Calorie &amp; Protein Targets (ESPEN 2019)</h2>
+            <CollapsibleSubsection title="Calorie & Protein Targets (ESPEN 2019)">
             <div className="space-y-2">
               {[
                 { target: "Energy", detail: "20–25 kcal/kg/day (actual body weight in non-obese). Acute phase: ≤70% of REE; full target by day 4–7. Indirect calorimetry is gold standard. Avoid overfeeding (lipogenesis, hyperglycaemia, ↑CO₂ load)." },
@@ -185,10 +188,11 @@ const IcuNutritionTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Refeeding Syndrome</h2>
+            <CollapsibleSubsection title="Refeeding Syndrome">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Life-threatening shifts in fluids and electrolytes when nutrition is restarted after prolonged starvation. Insulin surge drives K⁺, PO₄³⁻ and Mg²⁺ intracellularly, causing arrhythmias, cardiac failure, respiratory muscle weakness and Wernicke&apos;s encephalopathy. Use the calculator above for stratification.
             </p>
@@ -209,10 +213,11 @@ const IcuNutritionTopic = () => {
                 </p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Nutrition Trials</h2>
+            <CollapsibleSubsection title="Key Nutrition Trials">
             <div className="space-y-2">
               {[
                 { trial: "NICE-SUGAR (2009)", result: "Intensive glucose control (4.5–6 mmol/L) increased 90-day mortality vs conventional (6–10 mmol/L), driven by severe hypoglycaemia. Standard of care: target 6–10." },
@@ -227,6 +232,7 @@ const IcuNutritionTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="icu"

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { lowerLimbAnatomyQuestions } from "@/data/quizzes";
 import LumbosacralPlexusDiagram from "@/components/diagrams/LumbosacralPlexusDiagram";
@@ -47,7 +48,7 @@ const LowerLimbAnatomyTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="lumbar-plexus" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Lumbar Plexus (L1-L4)</h2>
+            <CollapsibleSubsection title="Lumbar Plexus (L1-L4)" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">Formed within psoas major from anterior rami of L1-L4. Main branches:</p>
             <CorPictumFolio {...lowerLimbFolio} enableReviewMode suppressOverlayLabels />
             <LowerLimbInnervationDiagram />
@@ -66,10 +67,11 @@ const LowerLimbAnatomyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="sacral-plexus" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Sacral Plexus (L4-S3)</h2>
+            <CollapsibleSubsection title="Sacral Plexus (L4-S3)">
             <div className="space-y-3">
               {[
                 { nerve: "Sciatic nerve (L4-S3)", desc: "Largest nerve in the body. Exits pelvis through greater sciatic foramen below piriformis. Two components: tibial (medial, anterior divisions) and common peroneal (lateral, posterior divisions). Divides in popliteal fossa (variable). Block: subgluteal, anterior, popliteal approaches." },
@@ -83,10 +85,11 @@ const LowerLimbAnatomyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="lower-limb-blocks" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Key Blocks for Lower Limb</h2>
+            <CollapsibleSubsection title="Key Blocks for Lower Limb">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead><tr className="border-b border-border">
@@ -103,10 +106,11 @@ const LowerLimbAnatomyTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="arterial-supply" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Arterial Supply of the Lower Limb</h2>
+            <CollapsibleSubsection title="Arterial Supply of the Lower Limb">
             <p className="text-muted-foreground leading-relaxed mb-4">
               The arterial supply follows a continuous chain: external iliac → femoral → popliteal → anterior tibial, posterior tibial, and peroneal arteries. The profunda femoris is the main supply to the thigh musculature. Peripheral pulse assessment (femoral, popliteal, posterior tibial, dorsalis pedis) is a fundamental clinical skill.
             </p>
@@ -121,10 +125,11 @@ const LowerLimbAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">The leg has 4 compartments: anterior (deep peroneal nerve, anterior tibial artery), lateral (superficial peroneal nerve), deep posterior (tibial nerve, posterior tibial and peroneal arteries), superficial posterior. Anterior compartment is most commonly affected. All 4 compartments must be released at fasciotomy. Pain out of proportion to injury + pain on passive stretch are key signs.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="venous-drainage" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Venous Drainage of the Lower Limb</h2>
+            <CollapsibleSubsection title="Venous Drainage of the Lower Limb">
             <p className="text-muted-foreground leading-relaxed mb-4">
               The lower limb has superficial and deep venous systems connected by perforating veins. The great saphenous vein (GSV) is the longest vein in the body, running along the medial limb from ankle to groin. The small saphenous vein (SSV) runs posteriorly in the calf. The deep system (tibial veins, popliteal, femoral) carries the majority of venous return, driven by the calf muscle pump. DVT prevention is a cornerstone of perioperative care.
             </p>
@@ -139,6 +144,7 @@ const LowerLimbAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Emergency venous access: 1 cm anterior and 1 cm superior to the medial malleolus. Transverse skin incision, blunt dissection to expose the vein, tie distally, venotomy, and advance cannula proximally. Landmark-based — can be performed when peripheral IV and central access fail.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

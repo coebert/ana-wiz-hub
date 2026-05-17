@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { CompartmentModelDiagram } from "@/components/diagrams/CompartmentModelDiagram";
 import { CSHTComparisonDiagram } from "@/components/diagrams/CSHTComparisonDiagram";
@@ -48,16 +49,17 @@ const PharmacokineticsTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               Pharmacokinetics describes what the body does to a drug — its absorption, distribution, metabolism, and
               elimination (ADME). Understanding these principles allows the anaesthetist to predict drug onset, duration,
               and accumulation with repeated dosing.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Compartment Models</h2>
+            <CollapsibleSubsection title="Compartment Models">
             <p className="text-foreground/90 leading-relaxed">
               Compartment models are mathematical abstractions that describe drug distribution. The body is divided into
               compartments based on the rate of drug equilibration. The central compartment (V₁) represents the
@@ -65,10 +67,11 @@ const PharmacokineticsTopic = () => {
               tissues (muscle, fat). The two-compartment model shows a bi-exponential decline: a rapid distribution
               phase (α) followed by a slower elimination phase (β).
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Volume of Distribution (Vd)</h2>
+            <CollapsibleSubsection title="Volume of Distribution (Vd)">
             <p className="text-foreground/90 leading-relaxed">
               Vd is a theoretical volume that would be required to contain the total amount of drug at the same concentration
               as in plasma: <strong>Vd = Dose / C₀</strong>. A large Vd (e.g., amiodarone ~70 L/kg) indicates extensive
@@ -81,10 +84,11 @@ const PharmacokineticsTopic = () => {
                 half-time increases with infusion duration for drugs that accumulate in peripheral compartments.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clearance</h2>
+            <CollapsibleSubsection title="Clearance">
             <p className="text-foreground/90 leading-relaxed">
               Clearance (Cl) is the volume of plasma from which drug is completely removed per unit time (mL/min or L/h).
               Total clearance is the sum of clearances by all eliminating organs:
@@ -95,25 +99,28 @@ const PharmacokineticsTopic = () => {
               with high extraction ratios (e.g., propofol, lidocaine) are flow-dependent — their clearance changes with
               hepatic blood flow. Low extraction ratio drugs (e.g., diazepam) are capacity-dependent.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Half-Life and Steady State</h2>
+            <CollapsibleSubsection title="Half-Life and Steady State">
             <p className="text-foreground/90 leading-relaxed">
               The elimination half-life (t½) is the time for plasma concentration to fall by 50%:
               <strong> t½ = 0.693 × Vd / Cl</strong>. It depends on both distribution and elimination. Steady state during
               continuous infusion is reached after approximately 4-5 half-lives, where the rate of administration equals the
               rate of elimination.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Context-Sensitive Half-Time</h2>
+            <CollapsibleSubsection title="Context-Sensitive Half-Time">
             <p className="text-foreground/90 leading-relaxed">
               Unlike terminal half-life, the context-sensitive half-time (CSHT) describes the time for plasma concentration
               to fall by 50% after stopping an infusion of a given duration. Remifentanil has a short, constant CSHT (~3-4 min)
               regardless of infusion duration, while fentanyl's CSHT increases markedly with prolonged infusions.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="pharmacology"

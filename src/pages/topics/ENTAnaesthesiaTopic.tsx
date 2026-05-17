@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { entAnaesthesiaQuestions } from "@/data/quizzes";
 import LaryngectomyAirwayHandoverDiagram from "@/components/diagrams/LaryngectomyAirwayHandoverDiagram";
@@ -50,7 +51,7 @@ const ENTAnaesthesiaTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Shared Airway</h2>
+            <CollapsibleSubsection title="Shared Airway" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               ENT and maxillofacial anaesthesia is defined by sharing the airway with the surgeon. Success depends on clear communication, deliberate tube and ventilation choices, and a pre-agreed plan for managing intra-operative airway loss — particularly during laryngeal, tonsillar, and post-tracheostomy procedures.
             </p>
@@ -60,10 +61,11 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Nasal intubation</strong>: often required for oral/dental/maxillofacial surgery. Risks: epistaxis (use vasoconstrictor preparation), adenoid damage, submucosal passage. Contraindicated in base-of-skull fracture, severe coagulopathy</li>
               <li><strong>Throat pack</strong>: prevents blood/debris entering larynx/stomach. Must be documented (insertion/removal) — retained pack is a never event</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tonsillectomy</h2>
+            <CollapsibleSubsection title="Tonsillectomy">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Population</strong>: predominantly children. Commonly associated with OSA — assess severity (sleep study, history of desaturations)</li>
               <li><strong>Anaesthetic</strong>: south-facing RAE, spontaneous or controlled ventilation. TIVA avoids volatile in OSA children (↑ sensitivity to respiratory depression)</li>
@@ -71,10 +73,11 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Post-tonsillectomy bleeding</strong>: primary (&lt;24h, 0.5–2%) or secondary (5–10 days, 2–4%). Emergency — assume full stomach + hypovolaemia. Resuscitate first, then RSI with head-down tilt and suction. Two large-bore IV access. Cross-match blood</li>
               <li><strong>RSI for bleeding tonsil</strong>: experienced surgeon scrubbed. Left lateral head-down for induction if massive bleeding. Have surgical airway equipment available</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Microlaryngoscopy & Laser Surgery</h2>
+            <CollapsibleSubsection title="Microlaryngoscopy & Laser Surgery">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Laser airway work is the highest-risk shared-airway scenario in anaesthesia: the surgeon's energy source sits millimetres from the ETT, the cuff and the patient's eyes, and the gas mixture flowing through the tube is itself a potential oxidiser. Safety relies on three parallel disciplines — a <strong>laser-resistant tube</strong> matched to the wavelength in use, an <strong>oxygen strategy</strong> that denies the fire its oxidiser, and <strong>ocular protection</strong> for both patient and theatre team.
             </p>
@@ -137,40 +140,44 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Prevention (the fire triangle)</strong>: ignition (laser) is unavoidable, so eliminate fuel and oxidiser. FiO₂ ≤ 0.30 with air/O₂ mix, <strong>never N₂O</strong> (supports combustion); saline-soaked pledgets at the glottis; saline syringe primed on the airway trolley; wet drapes around the face; surgeon and anaesthetist agree the laser-fire drill before draping.</li>
               <li><strong>If a fire occurs</strong>: call out "Airway fire" → <strong>stop ventilation, disconnect circuit, remove the tube</strong> simultaneously → flood the field with saline → surgeon turns the laser off and removes any burning material → mask-ventilate with 100% O₂ once the fire is out → re-intubate with a fresh laser-safe tube → <strong>rigid bronchoscopy</strong> to assess airway burns → ICU admission, humidified O₂, dexamethasone, low threshold for tracheostomy.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Nasal Surgery</h2>
+            <CollapsibleSubsection title="Nasal Surgery">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Septoplasty/rhinoplasty/FESS</strong>: oral RAE or reinforced tube. Topical vasoconstrictors (xylometazoline, cocaine 5–10%) + infiltration with adrenaline</li>
               <li><strong>Cocaine</strong>: max dose 1.5 mg/kg topically. Sympathomimetic — inhibits noradrenaline reuptake → ↑ HR, ↑ BP. Avoid with halothane (arrhythmias). Caution with other vasopressors</li>
               <li><strong>Controlled hypotension</strong>: may reduce surgical bleeding. 15° head-up, remifentanil, TCI propofol, beta-blockers. Target MAP 55–65 mmHg (if no contraindications)</li>
               <li><strong>PONV</strong>: high incidence after nasal surgery (blood swallowing). Multimodal prophylaxis: ondansetron + dexamethasone ± cyclizine</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Middle Ear Surgery</h2>
+            <CollapsibleSubsection title="Middle Ear Surgery">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>N₂O</strong>: avoid — diffuses into non-compliant middle ear cavity 34× faster than N₂ leaves. ↑ middle ear pressure → tympanic membrane graft displacement, disruption of ossicular reconstruction</li>
               <li><strong>TIVA preferred</strong>: avoids N₂O, provides bloodless field (remifentanil-based controlled hypotension)</li>
               <li><strong>Facial nerve monitoring</strong>: avoid or limit neuromuscular blockade (no maintenance paralysis). TOF monitoring essential. Short-acting NMBA for intubation only</li>
               <li><strong>PONV</strong>: very high incidence (vestibular stimulation). Aggressive prophylaxis: dexamethasone + ondansetron + consider TIVA (propofol is antiemetic)</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Obstruction & Stridor</h2>
+            <CollapsibleSubsection title="Airway Obstruction & Stridor">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Causes</strong>: epiglottitis, croup, foreign body, tumour (laryngeal/pharyngeal), Ludwig's angina, post-operative haematoma (thyroid/neck surgery), anaphylaxis, burns</li>
               <li><strong>Assessment</strong>: severity — stridor at rest is severe (&gt;50% obstruction). Inspiratory stridor = supraglottic; biphasic = glottic/subglottic; expiratory = intrathoracic</li>
               <li><strong>Management principles</strong>: keep patient calm and upright. Heliox (70:30 He:O₂) reduces turbulent flow resistance. Nebulised adrenaline (5 ml 1:1000) for oedema. Dexamethasone IV</li>
               <li><strong>Inhalational induction</strong>: for paediatric epiglottitis/croup — sevoflurane in 100% O₂, spontaneous ventilation, maintain until airway secured. ENT surgeon scrubbed for emergency tracheostomy. Never paralyse until airway secured</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tracheostomy & Laryngectomy</h2>
+            <CollapsibleSubsection title="Tracheostomy & Laryngectomy">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Surgical vs percutaneous</strong>: percutaneous dilatational (PDT) at bedside in ICU is most common. Surgical preferred if abnormal anatomy, paediatric, or emergency</li>
               <li><strong>Anaesthetic</strong>: GA with existing ETT. Withdraw ETT under direct vision (fibreoptic) to just above stoma site before tracheostomy insertion. FiO₂ 1.0 during procedure</li>
@@ -179,10 +186,11 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Le Fort fractures</strong>: I (maxilla), II (pyramidal — maxilla + nasal bridge), III (craniofacial disjunction). Risks CSF leak and airway compromise — nasal intubation contraindicated in II/III</li>
               <li><strong>Free flap surgery</strong>: long procedures (8–12h). Avoid α-agonist boluses (flap vasospasm); use noradrenaline by infusion, MAP ≥70 mmHg, normothermia, Hb 80–100 g/L</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intra-operative Nerve Monitoring</h2>
+            <CollapsibleSubsection title="Intra-operative Nerve Monitoring">
             <p className="text-foreground/90 leading-relaxed mb-3">
               Several head and neck procedures rely on intra-operative nerve monitoring (IONM) to identify motor nerves
               at risk and to prognosticate function. The anaesthetic technique must preserve the motor response that the
@@ -224,10 +232,11 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Plan for sugammadex availability</strong> if rocuronium is used — rapid restoration of EMG transmission allows surgery to continue without delay.</li>
               <li><strong>Document</strong> baseline and final stimulation thresholds and any loss-of-signal events; these influence the plan for staging, extubation and post-op cord/facial assessment.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Post-thyroidectomy Bleeding & Neck Swelling — Emergency Management</h2>
+            <CollapsibleSubsection title="Post-thyroidectomy Bleeding & Neck Swelling — Emergency Management">
             <p className="text-foreground/90 leading-relaxed mb-3">
               Post-thyroidectomy haemorrhage is a time-critical airway emergency occurring in 1–2% of cases, most often
               within the first 6 hours but described up to 24 hours postoperatively. The key insight is that the airway
@@ -268,6 +277,7 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Check calcium</strong> (parathyroid disturbance) and <strong>vocal cord function</strong> (RLN injury) postoperatively — both can compound airway risk after extubation.</li>
               <li>Critical incident review and bedside emergency-box restock; ensure all post-thyroidectomy patients are nursed in an area trained and equipped to perform bedside wound decompression.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

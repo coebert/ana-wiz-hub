@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -119,7 +120,7 @@ const EndocrinePhysiologyTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               The endocrine system co-ordinates whole-body homeostasis through hormonal feedback loops centred on the
               hypothalamus and pituitary. Every major perioperative emergency — adrenal crisis, thyroid storm,
@@ -127,10 +128,11 @@ const EndocrinePhysiologyTopic = () => {
               axes. The surgical stress response itself is an endocrine event, and anaesthetic technique modulates
               its magnitude.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="hp-axis" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hypothalamic-Pituitary Axis</h2>
+            <CollapsibleSubsection title="Hypothalamic-Pituitary Axis">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The hypothalamus controls the anterior pituitary via releasing/inhibiting hormones through the
               hypothalamic-hypophyseal portal system. The posterior pituitary stores and releases ADH and oxytocin
@@ -169,19 +171,21 @@ const EndocrinePhysiologyTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="hpa-axis" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">HPA Axis</h2>
+            <CollapsibleSubsection title="HPA Axis">
             <p className="text-muted-foreground leading-relaxed">
               The hypothalamic-pituitary-adrenal axis governs cortisol secretion through a three-tier cascade with both
               short- and long-loop negative feedback. Use the interactive diagram below to see how surgical stress,
               exogenous steroids and adrenal/pituitary failure remodel the cascade.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="adrenal" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Adrenal Glands</h2>
+            <CollapsibleSubsection title="Adrenal Glands">
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 {
@@ -210,10 +214,11 @@ const EndocrinePhysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="thyroid-calcium" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thyroid & Calcium Homeostasis</h2>
+            <CollapsibleSubsection title="Thyroid & Calcium Homeostasis">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>
                 <strong>Thyroid hormones</strong>: T₄ (prohormone) → T₃ (active, intracellular receptors). ↑ BMR, ↑ O₂
@@ -232,10 +237,11 @@ const EndocrinePhysiologyTopic = () => {
                 ↑ QTc, tetany, Chvostek's/Trousseau's signs.
               </li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="insulin-glucose" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Insulin & Glucose</h2>
+            <CollapsibleSubsection title="Insulin & Glucose">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>
                 <strong>Insulin</strong>: β-cells of islets of Langerhans. Anabolic: ↑ glucose uptake (GLUT4),
@@ -254,16 +260,18 @@ const EndocrinePhysiologyTopic = () => {
                 diabetic patients unable to eat. Avoid hypoglycaemia (&lt;4 mmol/L) — brain injury risk.
               </li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="stress-response" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Surgical Stress Response</h2>
+            <CollapsibleSubsection title="Surgical Stress Response">
             <p className="text-muted-foreground leading-relaxed">
               Surgical injury activates the HPA axis and sympathetic nervous system. Key features: ↑ cortisol,
               catecholamines, ADH, aldosterone, glucagon, GH, IL-6/TNF-α. Results in: hyperglycaemia, sodium/water
               retention, protein catabolism, immunosuppression. Attenuated by: regional anaesthesia (neuraxial blocks
               best), opioids, minimally invasive surgery, ERAS protocols.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamPitfallsCallout

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { prognosticationIcuQuestions } from "@/data/quizzes";
@@ -119,13 +120,14 @@ const PrognosticationEthicsIcuTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="diagrams" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Interactive Tools</h2>
+            <CollapsibleSubsection title="Interactive Tools" defaultOpen>
             <PostCardiacArrestProgDiagram />
             <APACHEIICalculator />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="scoring" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Prognostic Scoring Systems</h2>
+            <CollapsibleSubsection title="Prognostic Scoring Systems">
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -157,10 +159,11 @@ const PrognosticationEthicsIcuTopic = () => {
                 <p className="text-xs text-muted-foreground mt-1">Withdrawing on early prediction confirms it. Major ethical concern in post-arrest prognostication; blinded protocols mitigate bias.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="escalation" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Treatment Escalation Plans</h2>
+            <CollapsibleSubsection title="Treatment Escalation Plans">
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -180,10 +183,11 @@ const PrognosticationEthicsIcuTopic = () => {
               </table>
             </div>
             <p className="text-sm text-muted-foreground"><strong>ReSPECT</strong> — UK national approach: personalised recommendations, portable across care settings, advisory not legally binding. Time-limited trials are increasingly used when prognosis is uncertain.</p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="ethics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Medical Ethics &amp; UK Law</h2>
+            <CollapsibleSubsection title="Medical Ethics & UK Law">
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               {[
                 { p: "Autonomy", d: "Right of competent patient to decide, including refusal. ICU patients often lack capacity → ADRT, LPA, best interests." },
@@ -214,10 +218,11 @@ const PrognosticationEthicsIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="withdrawal" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Withdrawal &amp; End-of-Life Care</h2>
+            <CollapsibleSubsection title="Withdrawal & End-of-Life Care">
             <p className="text-muted-foreground leading-relaxed mb-3">
               ~70–80% of UK ICU deaths follow a decision to withdraw or withhold life-sustaining treatment. Withdrawal and withholding are ethically &amp; legally equivalent (GMC/BMA).
             </p>
@@ -227,10 +232,11 @@ const PrognosticationEthicsIcuTopic = () => {
               <li><strong>Symptom management</strong>: titrate opioids to comfort, not RR. Syringe driver for continuous infusion.</li>
               <li><strong>Organ donation pathway is separate</strong> from withdrawal. SN-OD involved early.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="pics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Long-Term Outcomes &amp; PICS</h2>
+            <CollapsibleSubsection title="Long-Term Outcomes & PICS">
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -248,10 +254,11 @@ const PrognosticationEthicsIcuTopic = () => {
               </table>
             </div>
             <p className="text-sm text-muted-foreground"><strong>ABCDEF bundle</strong>: Assess pain, Both SAT/SBT, Choice of analgesia/sedation, Delirium, Early mobility, Family. Reduces delirium, ICU-AW, ventilator days. NICE CG83 recommends structured rehabilitation assessment at ICU and ward discharge plus 2–3 months. ICU follow-up clinics with patient diaries reduce PTSD.</p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="triage" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Admission, Triage &amp; Outreach</h2>
+            <CollapsibleSubsection title="ICU Admission, Triage & Outreach">
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -286,6 +293,7 @@ const PrognosticationEthicsIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <SynthesisBlock

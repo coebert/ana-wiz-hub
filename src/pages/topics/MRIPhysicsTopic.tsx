@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import MRIPhysicsDiagram from "@/components/diagrams/MRIPhysicsDiagram";
@@ -71,23 +72,25 @@ const MRIPhysicsTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               MRI is increasingly used for diagnostic and interventional procedures requiring anaesthesia, particularly in
               paediatrics and neurosurgery. Understanding the fundamental physics of MRI is essential for safe anaesthetic practice
               in the MR environment. The unique hazards of strong magnetic fields make MRI anaesthesia a high-risk remote location
               requiring specific equipment, monitoring, and safety protocols.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
+            <CollapsibleSubsection title="Interactive Diagrams">
             <MRIPhysicsDiagram />
             <MRISuiteFloorPlanDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="nuclear-spin" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Nuclear Spin & Precession</h2>
+            <CollapsibleSubsection title="Nuclear Spin & Precession">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 MRI exploits the magnetic properties of <strong>hydrogen nuclei (¹H protons)</strong>, which are abundant in water
@@ -103,10 +106,11 @@ const MRIPhysicsTopic = () => {
                 to the protons (resonance), tipping M₀ away from B₀ into the transverse plane where it can be detected by receiver coils.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="relaxation" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">T1 & T2 Relaxation</h2>
+            <CollapsibleSubsection title="T1 & T2 Relaxation">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 After the RF pulse, the protons return to equilibrium through two simultaneous but independent relaxation processes.
@@ -125,10 +129,11 @@ const MRIPhysicsTopic = () => {
                 show water as bright and fat as dark — best for detecting pathology (oedema, inflammation, CSF).
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="safety" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">MRI Safety for Anaesthetists</h2>
+            <CollapsibleSubsection title="MRI Safety for Anaesthetists">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The MR environment is divided into <strong>four safety zones</strong>. Zone I (public), Zone II (screening/questionnaire),
@@ -150,6 +155,7 @@ const MRIPhysicsTopic = () => {
                 ventilation must be available.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

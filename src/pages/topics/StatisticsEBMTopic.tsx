@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { statisticsEBMQuiz } from "@/data/quizzes";
@@ -70,15 +71,16 @@ const StatisticsEBMTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Statistics and evidence-based medicine (EBM) are examined across the Primary FRCA, Final FRCA, and FFICM. Understanding study design, measures of effect,
               hypothesis testing, and diagnostic test performance is essential for interpreting the literature and for clinical decision-making.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="study-design" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Study Design</h2>
+            <CollapsibleSubsection title="Study Design">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Randomised Controlled Trials (RCTs)</strong> are the gold standard for evaluating interventions. Randomisation minimises confounding; blinding
@@ -96,10 +98,11 @@ const StatisticsEBMTopic = () => {
                 only as good as the included studies.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="hypothesis-testing" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Hypothesis Testing & p-Values</h2>
+            <CollapsibleSubsection title="Hypothesis Testing & p-Values">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The <strong>null hypothesis (H₀)</strong> states there is no difference between groups. The <strong>alternative hypothesis (H₁)</strong> states a difference
@@ -115,10 +118,11 @@ const StatisticsEBMTopic = () => {
                 (0 for differences, 1 for ratios) indicates significance at p &lt; 0.05. CIs are more informative than p-values alone — they convey both magnitude and precision.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="central-tendency" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Measures of Central Tendency & Spread</h2>
+            <CollapsibleSubsection title="Measures of Central Tendency & Spread">
             <div className="text-muted-foreground leading-relaxed space-y-3 mb-4">
               <p>
                 A measure of central tendency summarises a dataset with a single "typical" value. The choice depends on the <strong>data type</strong> (nominal, ordinal, interval/ratio)
@@ -225,10 +229,11 @@ const StatisticsEBMTopic = () => {
                 <li>Choose the summary that matches the data type and shape, then choose the corresponding test family: parametric (t-test/ANOVA) for mean ± SD on normal data; non-parametric (Mann–Whitney/Wilcoxon) for median (IQR) on skewed data.</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="measures-of-spread" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Measures of Spread (Dispersion)</h2>
+            <CollapsibleSubsection title="Measures of Spread (Dispersion)">
             <div className="text-muted-foreground leading-relaxed space-y-3 mb-4">
               <p>
                 A measure of central tendency only describes the "middle" of a dataset; it tells you nothing about how tightly or loosely values are scattered around it.
@@ -336,10 +341,11 @@ const StatisticsEBMTopic = () => {
                 <li>Always report a measure of spread alongside the centre — a mean or median in isolation hides clinically important variability.</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="normal-distribution" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Normal Distribution & Confidence Intervals</h2>
+            <CollapsibleSubsection title="Normal Distribution & Confidence Intervals">
             <div className="text-muted-foreground leading-relaxed space-y-3 mb-4">
               <p>
                 The <strong>normal (Gaussian) distribution</strong> is a symmetrical, bell-shaped probability density curve defined entirely by its mean (μ) and standard deviation (σ).
@@ -467,10 +473,11 @@ const StatisticsEBMTopic = () => {
                 </p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="skew" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Skewed Distributions</h2>
+            <CollapsibleSubsection title="Skewed Distributions">
             <div className="text-muted-foreground leading-relaxed space-y-3 mb-4">
               <p>
                 Real biological data are often <strong>skewed</strong> rather than perfectly Gaussian. Skew is named for the direction of the long tail:
@@ -482,10 +489,11 @@ const StatisticsEBMTopic = () => {
               </p>
             </div>
             <SkewDistributionDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="measures-effect" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Measures of Effect</h2>
+            <CollapsibleSubsection title="Measures of Effect">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Relative Risk (RR)</strong> = incidence in exposed / incidence in unexposed. Calculable only from cohort studies or RCTs.
@@ -503,10 +511,11 @@ const StatisticsEBMTopic = () => {
                 means a 30% reduction in event rate at any given time point.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagnostic-tests" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Diagnostic Test Performance</h2>
+            <CollapsibleSubsection title="Diagnostic Test Performance">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Sensitivity</strong> = TP / (TP + FN) — proportion of true positives correctly identified. A highly sensitive test, when negative, helps
@@ -529,10 +538,11 @@ const StatisticsEBMTopic = () => {
                 0.5 = no discrimination, 1.0 = perfect; AUC &gt;0.8 is generally considered good.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="statistical-tests" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Common Statistical Tests</h2>
+            <CollapsibleSubsection title="Common Statistical Tests">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Choosing the correct test depends on the type of data (continuous, categorical, ordinal), number of groups, paired vs unpaired design, and whether the data is normally distributed.
@@ -565,10 +575,11 @@ const StatisticsEBMTopic = () => {
                 </ul>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="bias-confounding" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Bias, Confounding & Validity</h2>
+            <CollapsibleSubsection title="Bias, Confounding & Validity">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Selection bias</strong>: systematic differences in who is enrolled (e.g., Berkson's bias). <strong>Information bias</strong>: systematic measurement
@@ -584,10 +595,11 @@ const StatisticsEBMTopic = () => {
                 Blinding, allocation concealment, and adequate follow-up are key determinants of internal validity in RCTs.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="meta-analysis" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Systematic Reviews & Meta-Analysis</h2>
+            <CollapsibleSubsection title="Systematic Reviews & Meta-Analysis">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 A <strong>systematic review</strong> uses a pre-defined protocol (PRISMA) to identify, appraise and synthesise all relevant studies. A <strong>meta-analysis</strong>
@@ -602,10 +614,11 @@ const StatisticsEBMTopic = () => {
                 <strong>Publication bias</strong> is assessed using <strong>funnel plots</strong> — asymmetry suggests bias. Egger's test provides a formal statistical assessment.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="bayesian" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Bayesian Concepts</h2>
+            <CollapsibleSubsection title="Bayesian Concepts">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Bayes' theorem</strong>: posterior odds = prior odds × likelihood ratio. The post-test probability depends not only on test performance
@@ -616,6 +629,7 @@ const StatisticsEBMTopic = () => {
                 This is the mathematical basis for: "don't order a test if the result won't change your management."
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { siUnitsThermodynamicsQuiz } from "@/data/quizzes";
@@ -70,7 +71,7 @@ const SIUnitsThermodynamicsTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               A solid understanding of SI units, gas laws, and thermodynamic principles underpins much of the physics examined
               in the Primary FRCA. The SI system provides a coherent framework for all physical measurements in medicine. The
@@ -78,10 +79,11 @@ const SIUnitsThermodynamicsTopic = () => {
               physiology to anaesthetic vaporiser function. Thermodynamics governs heat transfer, phase changes, and energy
               conservation, with immediate relevance to perioperative temperature management, vaporiser physics, and cryotherapy.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="si-units" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">SI Units</h2>
+            <CollapsibleSubsection title="SI Units">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The <strong>Système International (SI)</strong> defines seven base units from which all other units are derived.
@@ -96,10 +98,11 @@ const SIUnitsThermodynamicsTopic = () => {
                 remain in widespread clinical use.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="temperature-scales" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Temperature Scales</h2>
+            <CollapsibleSubsection title="Temperature Scales">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Three temperature scales are encountered in medicine and physics. The <strong>Celsius scale</strong> defines
@@ -130,10 +133,11 @@ const SIUnitsThermodynamicsTopic = () => {
                 </ul>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="thermometry" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Clinical Thermometry Principles</h2>
+            <CollapsibleSubsection title="Clinical Thermometry Principles">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Accurate temperature measurement relies on the <strong>zeroth law of thermodynamics</strong>: the measuring
@@ -166,10 +170,11 @@ const SIUnitsThermodynamicsTopic = () => {
                 with a target core temperature ≥36 °C.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="gas-laws" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Gas Law Derivations</h2>
+            <CollapsibleSubsection title="Gas Law Derivations">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The <strong>ideal gas equation PV = nRT</strong> (R = 8.314 J/mol/K) describes a hypothetical gas with no intermolecular forces and
@@ -187,10 +192,11 @@ const SIUnitsThermodynamicsTopic = () => {
                 accounts for intermolecular forces and molecular volume in real gases.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="heat-capacity" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Heat & Specific Heat Capacity</h2>
+            <CollapsibleSubsection title="Heat & Specific Heat Capacity">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Specific heat capacity (c)</strong> is the energy required to raise the temperature of 1 kg of a substance by 1 K. Water has an
@@ -208,10 +214,11 @@ const SIUnitsThermodynamicsTopic = () => {
               </p>
               <LatentHeatDiagram />
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="thermodynamic-laws" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Laws of Thermodynamics</h2>
+            <CollapsibleSubsection title="Laws of Thermodynamics">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The <strong>zeroth law</strong> establishes thermal equilibrium as transitive — if two systems are each in equilibrium with a third, they are
@@ -228,6 +235,7 @@ const SIUnitsThermodynamicsTopic = () => {
                 establishes absolute zero (0 K = −273.15 °C) as the point where entropy approaches zero — defining the Kelvin scale used in gas law calculations.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

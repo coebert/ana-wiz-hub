@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { neuroanatomyQuestions } from "@/data/quizzes";
 import CircleOfWillisDiagram from "@/components/diagrams/CircleOfWillisDiagram";
@@ -49,7 +50,7 @@ const NeuroanatomyTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_07"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cerebral Blood Supply — Circle of Willis</h2>
+            <CollapsibleSubsection title="Cerebral Blood Supply — Circle of Willis" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The brain receives 15% of cardiac output (~750 ml/min). Autoregulation maintains CBF between MAP 50–150 mmHg. The circle of Willis provides collateral circulation between anterior (ICA) and posterior (vertebrobasilar) circulations.
             </p>
@@ -63,10 +64,11 @@ const NeuroanatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Vertebral arteries → basilar artery → PCAs. Supply brainstem, cerebellum, occipital lobes. Posterior communicating arteries connect PCAs to ICAs. Complete circle in only 25% of population.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_07"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intracranial Pressure & Meninges</h2>
+            <CollapsibleSubsection title="Intracranial Pressure & Meninges">
             <div className="space-y-2">
               {[
                 { structure: "Dura Mater", detail: "Tough fibrous layer. Two layers — periosteal (adherent to skull) and meningeal. Meningeal layer forms dural folds: falx cerebri, tentorium cerebelli, falx cerebelli." },
@@ -81,10 +83,11 @@ const NeuroanatomyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_07"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Skull Base & Foramina</h2>
+            <CollapsibleSubsection title="Skull Base & Foramina">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -101,10 +104,11 @@ const NeuroanatomyTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_07"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Brainstem & Autonomic Centres</h2>
+            <CollapsibleSubsection title="Brainstem & Autonomic Centres">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Brainstem</p>
@@ -115,6 +119,7 @@ const NeuroanatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Tests brainstem reflexes: pupillary (II/III), corneal (V/VII), vestibulo-ocular (VIII/III,VI), gag (IX/X), cough (X), apnoea test. Requires known cause, exclusion of confounders (drugs, hypothermia, metabolic).</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

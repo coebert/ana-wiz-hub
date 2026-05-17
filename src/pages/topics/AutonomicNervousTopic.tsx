@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -125,16 +126,17 @@ const AutonomicNervousTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               The autonomic nervous system (ANS) controls involuntary functions including heart rate, blood pressure,
               bronchial tone, gut motility, and glandular secretion. Understanding sympathetic and parasympathetic
               pathways, receptors, and their pharmacological manipulation is essential for anaesthetic practice.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="sympathetic" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sympathetic Nervous System</h2>
+            <CollapsibleSubsection title="Sympathetic Nervous System">
             <p className="text-foreground/90 leading-relaxed">
               Thoracolumbar outflow (T1–L2). Short preganglionic neurones (ACh at nicotinic receptors in paravertebral
               chain or prevertebral ganglia) → long postganglionic neurones releasing <strong>noradrenaline</strong>
@@ -145,10 +147,11 @@ const AutonomicNervousTopic = () => {
               inhibition, sedation — clonidine, dexmedetomidine), β₁ (↑HR, ↑contractility, ↑renin), β₂ (bronchodilation,
               vasodilation, uterine relaxation, glycogenolysis), β₃ (lipolysis, bladder relaxation).
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="parasympathetic" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Parasympathetic Nervous System</h2>
+            <CollapsibleSubsection title="Parasympathetic Nervous System">
             <p className="text-foreground/90 leading-relaxed">
               Craniosacral outflow (CN III, VII, IX, X + S2–S4). Long preganglionic neurones → short postganglionic
               neurones. Both pre- and postganglionic neurotransmitter is <strong>acetylcholine</strong>. The vagus
@@ -160,10 +163,11 @@ const AutonomicNervousTopic = () => {
               {" "}and <strong>glycopyrrolate</strong> are non-selective muscarinic antagonists used in anaesthesia;
               glycopyrrolate is quaternary so does not cross the BBB (no central anticholinergic syndrome).
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="neurotransmitters" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Neurotransmitter Synthesis & Metabolism</h2>
+            <CollapsibleSubsection title="Neurotransmitter Synthesis & Metabolism">
             <p className="text-foreground/90 leading-relaxed">
               <strong>Noradrenaline synthesis</strong>: Tyrosine → DOPA (tyrosine hydroxylase, rate-limiting) → Dopamine
               → Noradrenaline → Adrenaline (in adrenal medulla, PNMT). Termination: reuptake (uptake-1 into nerve
@@ -174,10 +178,11 @@ const AutonomicNervousTopic = () => {
               acetylcholinesterase (true ChE, synapse) and butyrylcholinesterase (pseudocholinesterase/plasma ChE,
               hydrolyses suxamethonium and mivacurium).
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="reflexes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Autonomic Reflexes</h2>
+            <CollapsibleSubsection title="Autonomic Reflexes">
             <p className="text-foreground/90 leading-relaxed">
               <strong>Baroreceptor reflex</strong>: carotid sinus (CN IX) and aortic arch (CN X) → NTS in medulla →
               adjusts sympathetic/parasympathetic outflow to maintain BP. Reset in chronic hypertension; blunted by
@@ -193,6 +198,7 @@ const AutonomicNervousTopic = () => {
               reason="The baroreceptor arc is one limb of an integrated short-, medium- and long-term BP control system (RAAS, ADH, ANP, renal pressure-natriuresis)."
               links={[{ topicId: "cardiac-electrophysiology", anchor: "bp-regulation", label: "Blood Pressure Regulation" }]}
             />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamPitfallsCallout

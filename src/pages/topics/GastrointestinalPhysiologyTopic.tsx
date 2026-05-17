@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -116,17 +117,18 @@ const GastrointestinalPhysiologyTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Gastrointestinal physiology matters to the anaesthetist for two reasons: aspiration risk and
               postoperative ileus / PONV. Starting from gastric secretion (the target for fasting guidelines and
               acid-suppression pharmacology), we move through the vomiting reflex (mapping onto antiemetic classes),
               motility (relevant to ileus and prokinetics) and finish with the integrated anaesthetic implications.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="gastric-secretion" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gastric Secretion</h2>
+            <CollapsibleSubsection title="Gastric Secretion">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The stomach produces ~2 L of gastric juice/day. Parietal cells secrete HCl via H⁺/K⁺-ATPase (proton pump) on
               the apical membrane. Stimulated by acetylcholine (M₃), histamine (H₂), and gastrin (CCK-B receptors) — the
@@ -171,10 +173,11 @@ const GastrointestinalPhysiologyTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="nausea-vomiting" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OA_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Nausea & Vomiting</h2>
+            <CollapsibleSubsection title="Nausea & Vomiting">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The vomiting centre (nucleus tractus solitarius) receives input from multiple sites — this explains why
               different antiemetics target different pathways and why combination therapy outperforms monotherapy:
@@ -211,10 +214,11 @@ const GastrointestinalPhysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="motility" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gut Motility</h2>
+            <CollapsibleSubsection title="Gut Motility">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>
                 <strong>Lower oesophageal sphincter</strong>: tonic contraction (15–25 mmHg). Relaxed by volatile agents,
@@ -233,10 +237,11 @@ const GastrointestinalPhysiologyTopic = () => {
                 motility) plexuses — can function independently of CNS.
               </li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="anaesthetic-implications" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthetic Implications</h2>
+            <CollapsibleSubsection title="Anaesthetic Implications">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>
                 <strong>Aspiration risk</strong>: RCoA fasting guidance — 2 h clear fluids, 6 h light meal/milk, 6 h
@@ -257,6 +262,7 @@ const GastrointestinalPhysiologyTopic = () => {
                 treating as full-stomach if continued.
               </li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamPitfallsCallout

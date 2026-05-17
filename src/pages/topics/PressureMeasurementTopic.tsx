@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { DiagramSection } from "@/components/DiagramSection";
@@ -75,21 +76,23 @@ const PressureMeasurementTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               Accurate pressure measurement is fundamental to anaesthetic monitoring. Pressures encountered in clinical practice
               range from atmospheric (101.3 kPa) to intracranial (0.7–2 kPa). Understanding the physics behind transducers,
               manometers, and invasive monitoring is essential for safe practice and FRCA examinations.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="units" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Units of Pressure</h2>
+            <CollapsibleSubsection title="Units of Pressure">
             <p className="text-foreground/90 leading-relaxed">
               Pressure = Force / Area. The SI unit is the Pascal (Pa), where 1 Pa = 1 N/m². In clinical practice, pressures are
               commonly expressed in mmHg (arterial BP), cmH₂O (CVP, airway pressure), kPa (gas partial pressures), and bar (gas
               cylinders). Key conversions: 1 atm = 101.3 kPa = 760 mmHg = 1033 cmH₂O.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="manometers" exams={[Exam.PRIMARY, Exam.FINAL]}>
@@ -115,7 +118,7 @@ const PressureMeasurementTopic = () => {
           </ExamSection>
 
           <ExamSection id="transducers" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pressure Transducers</h2>
+            <CollapsibleSubsection title="Pressure Transducers">
             <p className="text-foreground/90 leading-relaxed">
               Modern invasive pressure monitoring uses a <strong>Wheatstone bridge strain gauge</strong> transducer. A diaphragm
               deflects under pressure, changing the resistance of strain gauge elements arranged in a Wheatstone bridge circuit.
@@ -126,19 +129,21 @@ const PressureMeasurementTopic = () => {
               phlebostatic axis at the right atrium) and <strong>levelled</strong>. A 13 cm height error produces approximately
               10 mmHg error.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="arterial" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Invasive Arterial Monitoring</h2>
+            <CollapsibleSubsection title="Invasive Arterial Monitoring">
             <p className="text-foreground/90 leading-relaxed">
               The arterial line system consists of an intra-arterial cannula, fluid-filled non-compliant tubing, a three-way tap,
               a flush device (300 mmHg pressure bag with heparinised saline delivering 3–4 ml/hr), and the transducer. The system
               must faithfully reproduce the arterial waveform.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="dynamic-response" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dynamic Response & Damping</h2>
+            <CollapsibleSubsection title="Dynamic Response & Damping">
             <p className="text-foreground/90 leading-relaxed">
               The monitoring system has a <strong>natural (resonant) frequency</strong> — ideally &gt;40 Hz to exceed the
               highest harmonic of the arterial waveform (~10th harmonic). The <strong>damping coefficient</strong> (ζ) describes
@@ -152,10 +157,11 @@ const PressureMeasurementTopic = () => {
                 underestimates diastolic. Mean arterial pressure is least affected by damping artefact.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="nibp" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Non-Invasive Blood Pressure (NIBP)</h2>
+            <CollapsibleSubsection title="Non-Invasive Blood Pressure (NIBP)">
             <p className="text-foreground/90 leading-relaxed">
               The <strong>oscillometric method</strong> detects oscillations in cuff pressure during deflation. Maximum oscillation
               amplitude corresponds to MAP. Systolic and diastolic are calculated algorithmically. Cuff width should be ~40% of
@@ -181,10 +187,11 @@ const PressureMeasurementTopic = () => {
               </ul>
             </div>
             <FinapresDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="frank-starling" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Starling's Law of the Heart (Frank–Starling)</h2>
+            <CollapsibleSubsection title="Starling's Law of the Heart (Frank–Starling)">
             <p className="text-foreground/90 leading-relaxed">
               <strong>Starling's law</strong> states that, within physiological limits, the <strong>force of cardiac contraction
               (and therefore stroke volume) is proportional to the end-diastolic fibre length</strong> of the ventricular muscle.
@@ -224,6 +231,7 @@ const PressureMeasurementTopic = () => {
             </div>
 
             <FrankStarlingDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

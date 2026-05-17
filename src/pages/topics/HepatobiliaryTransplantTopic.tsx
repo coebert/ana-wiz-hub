@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { hepatobiliaryTransplantQuestions } from "@/data/quizzes";
 import LiverTransplantPhasesDiagram from "@/components/diagrams/LiverTransplantPhasesDiagram";
@@ -38,14 +39,15 @@ const HepatobiliaryTransplantTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CH_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Hepatobiliary surgery ranges from laparoscopic cholecystectomy to major liver resection and transplantation. Liver transplant anaesthesia demands expertise in managing coagulopathy, massive transfusion, electrolyte derangement, and haemodynamic instability through the dissection, anhepatic, and reperfusion phases.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CH_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Laparoscopic Cholecystectomy</h2>
+            <CollapsibleSubsection title="Laparoscopic Cholecystectomy">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Most common</strong>: elective general surgical procedure — often day-case</li>
               <li><strong>Pneumoperitoneum</strong>: standard CO₂ effects (↑ PaCO₂, ↑ SVR, vagal stimulation)</li>
@@ -54,10 +56,11 @@ const HepatobiliaryTransplantTopic = () => {
               <li><strong>PONV</strong>: high-risk procedure — multimodal antiemesis (ondansetron + dexamethasone ± cyclizine)</li>
               <li><strong>Bile duct injury</strong>: rare but serious — may require conversion to open; prolonged operation</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CH_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Major Liver Resection</h2>
+            <CollapsibleSubsection title="Major Liver Resection">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Hepatectomy for primary or secondary liver tumours. The liver's dual blood supply and regenerative capacity allow resection of up to 70% of parenchyma.
             </p>
@@ -76,10 +79,11 @@ const HepatobiliaryTransplantTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CH_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Liver Transplantation — Phases</h2>
+            <CollapsibleSubsection title="Liver Transplantation — Phases">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Orthotopic liver transplantation proceeds through three distinct phases, each with unique anaesthetic challenges.
             </p>
@@ -114,10 +118,11 @@ const HepatobiliaryTransplantTopic = () => {
                 </ul>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CH_BK_03"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthesia for the Cirrhotic Patient</h2>
+            <CollapsibleSubsection title="Anaesthesia for the Cirrhotic Patient">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Cardiovascular</strong>: hyperdynamic circulation (↑ CO, ↓ SVR), cardiomyopathy of cirrhosis</li>
               <li><strong>Respiratory</strong>: hepatopulmonary syndrome (intrapulmonary shunting → hypoxia), portopulmonary hypertension</li>
@@ -126,6 +131,7 @@ const HepatobiliaryTransplantTopic = () => {
               <li><strong>Renal</strong>: hepatorenal syndrome risk — avoid nephrotoxins, maintain perfusion pressure</li>
               <li><strong>Ascites</strong>: ↑ IAP → ↓ FRC; RSI may be indicated if tense ascites</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

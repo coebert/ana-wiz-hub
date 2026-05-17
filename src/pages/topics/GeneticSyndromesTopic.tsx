@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { ExamSection } from "@/components/ExamSection";
 import { geneticSyndromesQuestions } from "@/data/quizzes";
@@ -34,14 +35,15 @@ const GeneticSyndromesTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Why genetics matter to the anaesthetist</h2>
+            <CollapsibleSubsection title="Why genetics matter to the anaesthetist" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               A handful of inherited disorders are over-represented in critical incidents because they alter the response to commonly used drugs (suxamethonium, volatiles, NMBAs, barbiturates) or because they affect the airway, the cervical spine, the heart or the lungs in ways that surprise the unprepared anaesthetist. A structured framework — <strong>airway, cardiorespiratory, neuromuscular, pharmacology, regional, transfusion</strong> — lets you assess any unfamiliar syndromic patient.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Malignant Hyperthermia (RYR1 / CACNA1S)</h2>
+            <CollapsibleSubsection title="Malignant Hyperthermia (RYR1 / CACNA1S)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Autosomal dominant; uncontrolled SR Ca²⁺ release on exposure to volatiles or suxamethonium → hypermetabolism, masseter spasm, ↑EtCO₂, hyperthermia, rhabdomyolysis, hyperkalaemia, DIC.
             </p>
@@ -60,10 +62,11 @@ const GeneticSyndromesTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Muscular dystrophies (DMD, BMD)</h2>
+            <CollapsibleSubsection title="Muscular dystrophies (DMD, BMD)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Anaesthesia-induced rhabdomyolysis (AIR)</strong>: hyperkalaemic cardiac arrest with sux ± volatiles — clinically resembles MH but is a different mechanism (membrane fragility, not RYR1).</li>
               <li><strong>Avoid</strong>: suxamethonium absolutely; volatiles relatively (use TIVA).</li>
@@ -71,10 +74,11 @@ const GeneticSyndromesTopic = () => {
               <li><strong>Respiratory</strong>: restrictive lung disease, weak cough, OSA — preop FVC, consider postop NIV.</li>
               <li><strong>Sensitivity</strong>: exaggerated response to non-depolarising NMBAs; titrate carefully with TOF; sugammadex preferred for reversal of rocuronium.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Myotonic dystrophy (DM1, DMPK CTG repeat)</h2>
+            <CollapsibleSubsection title="Myotonic dystrophy (DM1, DMPK CTG repeat)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li>Myotonia not relieved by NMBAs, regional anaesthesia, or deep volatile — it is a sarcolemmal channelopathy. Triggers: cold, shivering, sux, neostigmine, surgical/electrical stimulation.</li>
               <li>Treatment of intra-op contracture: local infiltration of LA into the muscle ± systemic procainamide/phenytoin/quinine.</li>
@@ -83,10 +87,11 @@ const GeneticSyndromesTopic = () => {
               <li>Exquisite sensitivity to opioids, benzodiazepines and propofol — use minimal doses with monitoring.</li>
               <li>Avoid sux and neostigmine; use sugammadex.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pseudocholinesterase deficiency</h2>
+            <CollapsibleSubsection title="Pseudocholinesterase deficiency">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Reduced or absent butyrylcholinesterase (BChE) → prolonged sux block (2–8 h with homozygous atypical genotype). TOF shows phase II block (fade, post-tetanic facilitation).
             </p>
@@ -95,20 +100,22 @@ const GeneticSyndromesTopic = () => {
               <li>Send dibucaine number to confirm; family screening — autosomal recessive.</li>
               <li>Acquired BChE reduction: pregnancy, liver failure, plasmapheresis, ecothiopate eye drops.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Down syndrome (trisomy 21)</h2>
+            <CollapsibleSubsection title="Down syndrome (trisomy 21)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Airway</strong>: macroglossia, midface hypoplasia, narrow nasopharynx, subglottic stenosis (use ETT 0.5–1 size smaller).</li>
               <li><strong>C-spine</strong>: atlanto-axial instability in 10–20% (symptomatic 1–2%). Routine X-rays not recommended; focused neuro exam — image only if symptomatic or before high-risk procedure.</li>
               <li><strong>Cardiac</strong>: 40–50% have CHD (AVSD, VSD, PDA, ToF). Pulmonary hypertension common.</li>
               <li><strong>Other</strong>: OSA, hypothyroidism, leukaemia risk, recurrent chest infections, behavioural issues — premedication and parental presence often valuable.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Connective tissue disorders</h2>
+            <CollapsibleSubsection title="Connective tissue disorders">
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { label: "Marfan (FBN1)", value: "Aortic root dilatation/dissection (continue β-blockers, control BP/dP/dt), MV prolapse, pneumothorax risk, lens dislocation, dural ectasia → unreliable spinal." },
@@ -122,19 +129,21 @@ const GeneticSyndromesTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemoglobinopathies</h2>
+            <CollapsibleSubsection title="Haemoglobinopathies">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Sickle cell (HbSS)</strong>: avoid the 5 H's — Hypoxia, Hypothermia, Hypotension/dehydration, Hypoperfusion (stasis), High acidity. Top-up to Hb ~100 g/L for medium-risk surgery (TAPS); exchange to HbS &lt;30% for high-risk (cardiac, neuro). Active warming, generous fluids, supplemental O₂, multimodal analgesia.</li>
               <li><strong>β-thalassaemia major</strong>: chronic transfusion → iron overload (cardiomyopathy, cirrhosis, endocrinopathies). Pre-op echo, ferritin, glucose. Consider chelation continuity.</li>
               <li><strong>G6PD deficiency</strong>: avoid oxidative stressors — sulphonamides, nitrofurantoin, methylene blue (also causes false low SpO₂), prilocaine in large doses, fava beans. Methaemoglobinaemia is treated with ascorbic acid in G6PD-deficient patients (NOT methylene blue).</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Acute intermittent porphyria (HMBS)</h2>
+            <CollapsibleSubsection title="Acute intermittent porphyria (HMBS)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Autosomal dominant defect in haem synthesis. Attacks (abdominal pain, autonomic instability, neuropathy, psychiatric features, hyponatraemia from SIADH) are precipitated by enzyme inducers, fasting, dehydration, infection and stress.
             </p>
@@ -151,10 +160,11 @@ const GeneticSyndromesTopic = () => {
             <p className="text-xs text-muted-foreground mt-3">
               <strong>Acute attack</strong>: stop trigger, IV haem arginate 3 mg/kg/day for 4 days, high-carbohydrate IV (10% glucose), analgesia, monitor sodium and respiratory function. Always cross-check drugs against an up-to-date porphyria database before prescribing.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Syndrome quick-reference grid</h2>
+            <CollapsibleSubsection title="Syndrome quick-reference grid">
             <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
               One-look matrix linking each condition to its dominant anaesthetic hazards and the agents/techniques generally regarded as safe. Use as a pre-list checklist — never as a substitute for a current porphyria/MH database lookup on the day.
             </p>
@@ -273,10 +283,11 @@ const GeneticSyndromesTopic = () => {
               <span className="inline-flex items-center gap-1.5"><span className="inline-block h-2 w-2 rounded-full bg-destructive" /> Hazard / avoid</span>
               <span className="inline-flex items-center gap-1.5"><span className="inline-block h-2 w-2 rounded-full bg-clinical" /> Generally safe / preferred</span>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Other syndromes worth knowing</h2>
+            <CollapsibleSubsection title="Other syndromes worth knowing">
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { label: "Pierre Robin / Treacher Collins", value: "Predicted difficult airway from birth — videolaryngoscope, FOI, supraglottic, paediatric DAS algorithm." },
@@ -292,6 +303,7 @@ const GeneticSyndromesTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         <ExamPitfallsCallout
             accent="clinical"

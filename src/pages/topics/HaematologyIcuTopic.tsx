@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import type { WorkedExample } from "@/components/WorkedExamples";
@@ -187,7 +188,7 @@ const HaematologyIcuTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="ttp" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thrombotic Thrombocytopenic Purpura (TTP)</h2>
+            <CollapsibleSubsection title="Thrombotic Thrombocytopenic Purpura (TTP)" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-4">
               TTP is a thrombotic microangiopathy (TMA) caused by severe deficiency of ADAMTS13 — a metalloproteinase that cleaves ultra-large von Willebrand factor (vWF) multimers. Without ADAMTS13, uncleaved vWF multimers cause platelet aggregation in the microvasculature, leading to thrombocytopenia, microangiopathic haemolytic anaemia (MAHA), and organ ischaemia.
             </p>
@@ -225,10 +226,11 @@ const HaematologyIcuTopic = () => {
                 Platelet transfusion is contraindicated — it provides substrate for microvascular thrombosis ("fuel on the fire"). Exception: life-threatening haemorrhage or essential invasive procedures.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="tma" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Differentiating TMAs (TTP / HUS / DIC)</h2>
+            <CollapsibleSubsection title="Differentiating TMAs (TTP / HUS / DIC)">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -248,10 +250,11 @@ const HaematologyIcuTopic = () => {
               </table>
             </div>
             <DICPathophysiologyDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="hus" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemolytic Uraemic Syndrome (HUS)</h2>
+            <CollapsibleSubsection title="Haemolytic Uraemic Syndrome (HUS)">
             <p className="text-muted-foreground leading-relaxed mb-4">
               MAHA + thrombocytopenia + AKI. Two forms: <strong>Typical (STEC-HUS)</strong> from Shiga toxin–producing E. coli (O157:H7) — antibiotics contraindicated, supportive care; mortality &lt;5%. <strong>Atypical (aHUS)</strong> from complement dysregulation — requires <strong>eculizumab</strong> (anti-C5) which reduces ESRD from ~50% to &lt;10%. Vaccinate against N. meningitidis before starting (or give prophylactic antibiotics).
             </p>
@@ -262,10 +265,11 @@ const HaematologyIcuTopic = () => {
                 C5 blockade prevents MAC formation → dramatically increased N. meningitidis risk. Vaccinate ACWY + B ≥2 weeks before, or cover with ciprofloxacin/penicillin V.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="hlh" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemophagocytic Lymphohistiocytosis (HLH)</h2>
+            <CollapsibleSubsection title="Haemophagocytic Lymphohistiocytosis (HLH)">
             <p className="text-muted-foreground leading-relaxed mb-4">
               Pathological immune activation with cytokine storm and multi-organ failure. Mortality 50–90% untreated. Triggers: infection (EBV most common), malignancy, autoimmune (MAS in adult-onset Still's, SLE).
             </p>
@@ -294,10 +298,11 @@ const HaematologyIcuTopic = () => {
                 ~90% sensitivity, 96% specificity for HLH. Check ferritin early in any unexplained multi-organ failure.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="hit" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heparin-Induced Thrombocytopenia (HIT)</h2>
+            <CollapsibleSubsection title="Heparin-Induced Thrombocytopenia (HIT)">
             <p className="text-muted-foreground leading-relaxed mb-4">
               Type II HIT is a paradoxical <strong>prothrombotic</strong> immune-mediated reaction: IgG vs PF4–heparin → Fc receptor platelet activation → thrombin generation. Onset day 5–10 (or ≤1 day if heparin in last 100 days). Risk: UFH (1–5%) &gt; LMWH (~0.1%).
             </p>
@@ -332,10 +337,11 @@ const HaematologyIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="anticoag" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anticoagulation in CRRT, ECMO &amp; Liver Failure</h2>
+            <CollapsibleSubsection title="Anticoagulation in CRRT, ECMO & Liver Failure">
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Regional citrate (CRRT first-line, KDIGO)</h3>
             <p className="text-muted-foreground text-sm mb-3">
               Citrate chelates ionised Ca²⁺ in the circuit; calcium re-infused post-filter. Advantages: no systemic anticoagulation, longer filter life. Risks: <strong>citrate accumulation</strong> in liver failure/shock — total:ionised Ca²⁺ ratio &gt;2.5, metabolic acidosis. Reduce citrate, replace calcium, switch to no anticoagulation if needed.
@@ -368,6 +374,7 @@ const HaematologyIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <SynthesisBlock

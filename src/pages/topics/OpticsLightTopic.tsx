@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import OpticsLightDiagram from "@/components/diagrams/OpticsLightDiagram";
@@ -70,7 +71,7 @@ const OpticsLightTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               The physics of light and optics underpins many monitoring and diagnostic technologies in anaesthesia and critical
               care. From pulse oximetry and co-oximetry (based on the Beer-Lambert law) to fibreoptic intubation (based on total
@@ -78,15 +79,17 @@ const OpticsLightTopic = () => {
               covers the fundamental laws of reflection and refraction, fibreoptic light transmission, and the spectrophotometric
               techniques used in clinical monitoring.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
+            <CollapsibleSubsection title="Interactive Diagrams">
             <OpticsLightDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="reflection" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Reflection</h2>
+            <CollapsibleSubsection title="Reflection">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The <strong>law of reflection</strong> states that the angle of incidence equals the angle of reflection (θᵢ = θᵣ),
@@ -100,10 +103,11 @@ const OpticsLightTopic = () => {
                 (forehead, oesophagus). The principles are identical to transmission oximetry, but the optical path is different.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="refraction" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Refraction & Total Internal Reflection</h2>
+            <CollapsibleSubsection title="Refraction & Total Internal Reflection">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Refraction</strong> is the bending of light as it passes between media of different optical density.
@@ -118,10 +122,11 @@ const OpticsLightTopic = () => {
                 transmission, making it highly efficient for transmitting light over long distances through flexible fibres.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="fibreoptics" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Fibreoptics</h2>
+            <CollapsibleSubsection title="Fibreoptics">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 A fibreoptic consists of a <strong>core</strong> (high refractive index glass) surrounded by <strong>cladding</strong>
@@ -135,10 +140,11 @@ const OpticsLightTopic = () => {
                 oxygen, and local anaesthetic) and angulation wires for tip control.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="beer-lambert" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Beer-Lambert Law</h2>
+            <CollapsibleSubsection title="Beer-Lambert Law">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The <strong>Beer-Lambert law</strong> states that absorbance (A) is proportional to the concentration (c) of the
@@ -151,10 +157,11 @@ const OpticsLightTopic = () => {
                 <strong>capnography</strong> (infrared CO₂ absorption), and <strong>anaesthetic agent analysis</strong>.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="spectrophotometry" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Spectrophotometry</h2>
+            <CollapsibleSubsection title="Spectrophotometry">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Pulse oximetry</strong> uses two wavelengths — 660 nm (red) and 940 nm (infrared). Oxyhaemoglobin (HbO₂)
@@ -175,6 +182,7 @@ const OpticsLightTopic = () => {
                 calibration and total Hb estimation.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { resourcePoorAnaesthesiaQuestions } from "@/data/quizzes";
@@ -118,7 +119,7 @@ const ResourcePoorAnaesthesiaTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="standards" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">WHO–WFSA International Standards</h2>
+            <CollapsibleSubsection title="WHO–WFSA International Standards" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Updated 2018, the WHO–WFSA International Standards for a Safe Practice of Anaesthesia stratify requirements as <strong>HIGHLY RECOMMENDED</strong>, <strong>RECOMMENDED</strong> and <strong>SUGGESTED</strong>. The HIGHLY RECOMMENDED level is the irreducible minimum below which anaesthesia should not proceed.
             </p>
@@ -129,10 +130,11 @@ const ResourcePoorAnaesthesiaTopic = () => {
               <li><strong>Drugs &amp; equipment</strong>: emergency drugs (adrenaline, atropine, suxamethonium, induction agent), suction, laryngoscope, range of tubes, IV access, fluids</li>
               <li><strong>Recovery</strong>: dedicated area with oxygen, suction and oximetry until patient is awake and stable</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="techniques" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Anaesthetic Techniques of Choice</h2>
+            <CollapsibleSubsection title="Anaesthetic Techniques of Choice">
             <div className="space-y-3">
               {[
                 { area: "Spinal anaesthesia", detail: "Workhorse for caesarean section, lower limb, perineal and lower abdominal surgery. Independent of oxygen and ventilators. Hyperbaric bupivacaine 0.5% is the standard agent. Always have phenylephrine/ephedrine and IV fluid running." },
@@ -147,10 +149,11 @@ const ResourcePoorAnaesthesiaTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="oxygen-power" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Oxygen, Power and Equipment Realities</h2>
+            <CollapsibleSubsection title="Oxygen, Power and Equipment Realities">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Oxygen concentrators</strong>: deliver 90–96% O₂ at up to 5–10 L/min, require electricity. Useful for enrichment of draw-over circuits and recovery. Vulnerable to dust, humidity and intermittent power.</li>
               <li><strong>Cylinder oxygen</strong>: scarce and expensive. Reserve for transport, induction, intubation and emergencies. Maintain a full E-cylinder backup in theatre at all times.</li>
@@ -158,10 +161,11 @@ const ResourcePoorAnaesthesiaTopic = () => {
               <li><strong>Power</strong>: most LMIC hospitals run intermittent grid + diesel generator + UPS only for theatres. Plan elective lists around generator hours; identify which sockets are on UPS before induction.</li>
               <li><strong>Lifebox pulse oximeter</strong>: WHO-WFSA endorsed, battery-powered, designed to survive humidity, dust and rough handling. Distributed with structured training in oximetry interpretation.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="workforce-systems" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Workforce, Training and Systems</h2>
+            <CollapsibleSubsection title="Workforce, Training and Systems">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Non-physician anaesthesia providers</strong> deliver the majority of anaesthesia in many LMICs (clinical officers, nurse anaesthetists, anaesthetic medical officers). Lancet Commission on Global Surgery (2015) target: ≥ 20 surgical/anaesthetic/obstetric specialists per 100 000 population.</li>
               <li><strong>WHO Surgical Safety Checklist</strong>: simple, no-cost intervention reducing mortality and complications by ~30–40% across all settings.</li>
@@ -169,16 +173,18 @@ const ResourcePoorAnaesthesiaTopic = () => {
               <li><strong>Mentorship and equipment</strong>: donations should match local capacity to repair/maintain — 'graveyards' of unused equipment are a common harm. Standardise to a small number of robust, repairable devices (e.g., Glostavent® anaesthetic machine).</li>
               <li><strong>Ethics</strong>: visiting teams should support local services, not substitute for them; long-term partnerships and capacity building outperform short missions.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="emergencies" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Emergencies When Resources Fail</h2>
+            <CollapsibleSubsection title="Emergencies When Resources Fail">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Concentrator/power failure mid-case</strong>: switch to cylinder O₂, hand-ventilate with self-inflating bag, complete or pause surgery as clinical priority dictates.</li>
               <li><strong>No blood available</strong>: tranexamic acid 1 g (CRASH-2 evidence within 3 h of trauma); permissive hypotension until surgical control; cell salvage where ethically/practically possible.</li>
               <li><strong>LA toxicity without lipid emulsion</strong>: airway, ventilation, anticonvulsant (benzodiazepine), prolonged CPR — most centres now stock 20% Intralipid as part of the LAST kit; advocate for this provision.</li>
               <li><strong>Difficult airway, no fibreoptic</strong>: prioritise awake intubation under ketamine sedation + topical lidocaine; surgical airway via cricothyroidotomy must be a trained, drilled skill.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

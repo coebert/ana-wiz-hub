@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import LaserFibreopticsDiagram from "@/components/diagrams/LaserFibreopticsDiagram";
@@ -70,21 +71,23 @@ const LaserFibreopticsTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Lasers and fibreoptics are fundamental to modern anaesthetic and surgical practice. Understanding laser physics is
               essential for safe airway laser surgery, while fibreoptic principles underpin the fibreoptic bronchoscope — a
               cornerstone of difficult airway management. Both topics appear regularly in the Primary FRCA physics examination.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
+            <CollapsibleSubsection title="Interactive Diagrams">
             <LaserFibreopticsDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="laser-physics" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">LASER Physics</h2>
+            <CollapsibleSubsection title="LASER Physics">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 A laser produces light through <strong>stimulated emission</strong>. An incoming photon interacts with an atom in an
@@ -105,10 +108,11 @@ const LaserFibreopticsTopic = () => {
                 Nd:YAG, absorbed by haemoglobin, used for superficial vascular lesions and vocal cord surgery.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="fibreoptics" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Fibreoptics & Total Internal Reflection</h2>
+            <CollapsibleSubsection title="Fibreoptics & Total Internal Reflection">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Total internal reflection (TIR)</strong> occurs when light travelling from a medium of higher refractive index
@@ -127,10 +131,11 @@ const LaserFibreopticsTopic = () => {
                 bundle, providing superior image quality.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="laser-safety" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Laser Safety in Anaesthesia</h2>
+            <CollapsibleSubsection title="Laser Safety in Anaesthesia">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Airway fire</strong> is the most feared complication of airway laser surgery. The CO₂ laser can ignite standard
@@ -145,6 +150,7 @@ const LaserFibreopticsTopic = () => {
                 laser safety officer.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

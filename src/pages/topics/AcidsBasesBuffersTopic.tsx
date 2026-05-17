@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { AcidsBasesDiagram } from "@/components/diagrams/AcidsBasesDiagram";
@@ -132,7 +133,7 @@ const AcidsBasesBuffersTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="foundations" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Foundations of Acid-Base Chemistry</h2>
+            <CollapsibleSubsection title="Foundations of Acid-Base Chemistry" defaultOpen>
             <div className="text-muted-foreground space-y-3 leading-relaxed">
               <p>
                 Acid-base chemistry is arguably the most important chemistry topic for anaesthetists. Every arterial blood gas you
@@ -147,15 +148,17 @@ const AcidsBasesBuffersTopic = () => {
                 commonly used clinically but explains coordination chemistry (e.g. metal ion-drug interactions).
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagram</h2>
+            <CollapsibleSubsection title="Interactive Diagram">
             <AcidsBasesDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="henderson-hasselbalch" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RCoA Primary — Pharmacology"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">The Henderson-Hasselbalch Equation in Practice</h2>
+            <CollapsibleSubsection title="The Henderson-Hasselbalch Equation in Practice">
             <div className="text-muted-foreground space-y-3 leading-relaxed">
               <p>
                 The Henderson-Hasselbalch equation is the single most important equation linking chemistry to clinical pharmacology.
@@ -175,6 +178,7 @@ const AcidsBasesBuffersTopic = () => {
                 tissue (lower pH → more ionised → less crosses the nerve membrane).
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

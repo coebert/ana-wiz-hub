@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { transfusionCoagulationQuestions } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
@@ -93,15 +94,16 @@ const TransfusionCoagulationTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="cascade" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coagulation Cascade — Foundations</h2>
+            <CollapsibleSubsection title="Coagulation Cascade — Foundations" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-4">
               A working knowledge of the intrinsic, extrinsic and common pathways underpins interpretation of clotting tests, transfusion targets, and the rational use of factor concentrates and antifibrinolytics covered below.
             </p>
             <CoagulationCascadeDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="products" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Blood Products</h2>
+            <CollapsibleSubsection title="Blood Products">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -122,10 +124,11 @@ const TransfusionCoagulationTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="lifespans" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Component Lifespans & In-vivo Survival</h2>
+            <CollapsibleSubsection title="Component Lifespans & In-vivo Survival">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Each component has both a <em>shelf-life</em> (how long it can be stored before issue) and an <em>in-vivo survival</em> (how long the transfused component continues to function in the recipient). The two are not the same — a unit of red cells can be stored for 35 days but typical post-transfusion 24-h recovery is ~75% with a circulating half-life close to that of native RBCs.
             </p>
@@ -157,10 +160,11 @@ const TransfusionCoagulationTopic = () => {
                 Progressive ↓2,3-DPG (left-shifts the OHDC for ~24 h post-transfusion until regenerated), ↑extracellular K⁺ (up to 30–40 mmol/L by day 35 — clinically relevant in massive/neonatal/cardiac transfusion), ↑lactate, ↓pH (~6.5), microaggregate formation, and accumulation of bioactive lipids implicated in TRALI. The ABLE and INFORM RCTs found no clinical benefit from preferentially using "fresh" red cells.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="cryo-vs-fib" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cryoprecipitate vs Fibrinogen Concentrate</h2>
+            <CollapsibleSubsection title="Cryoprecipitate vs Fibrinogen Concentrate">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Both replace fibrinogen in major haemorrhage but differ in preparation, safety and evidence.
             </p>
@@ -176,10 +180,11 @@ const TransfusionCoagulationTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="reactions" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Transfusion Reactions</h2>
+            <CollapsibleSubsection title="Transfusion Reactions">
             <div className="space-y-2 mb-4">
               {[
                 { reaction: "Acute Haemolytic (AHTR)", incidence: "1:40,000", features: "ABO incompatibility (IgM). Fever, loin/cannula-site pain, haemoglobinuria, DIC, AKI, hypotension. STOP transfusion, send unit + post-transfusion bloods to lab, supportive ITU care, treat DIC and AKI." },
@@ -230,10 +235,11 @@ const TransfusionCoagulationTopic = () => {
             <div className="mt-4">
               <TraliVsTacoDecisionTool />
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="mtp" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Massive Transfusion Protocol (MTP)</h2>
+            <CollapsibleSubsection title="Massive Transfusion Protocol (MTP)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Defined as one entire blood volume in 24 h (~10 units PRBC in 70 kg adult), or &gt;4 units in 1 h with ongoing bleeding. Activation enables coordinated product delivery.
             </p>
@@ -272,10 +278,11 @@ const TransfusionCoagulationTopic = () => {
                 Hypothermia + acidosis + coagulopathy form a self-perpetuating cycle. Damage control resuscitation: permissive hypotension (SBP 80–90), minimise crystalloid, early blood products, TXA &lt;3 h, correct hypothermia and Ca²⁺, expedite definitive haemorrhage control.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="cell-salvage" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intra-operative Cell Salvage (ICS)</h2>
+            <CollapsibleSubsection title="Intra-operative Cell Salvage (ICS)">
             <p className="text-muted-foreground leading-relaxed mb-4">
               ICS collects shed surgical blood, washes the red cells, and returns them to the patient — reducing or avoiding allogeneic transfusion. AAGBI/ATACCC, NICE and the Obstetric Anaesthetists' Association now recommend its use in any procedure where blood loss is expected to exceed 500–1000 mL (or 20% of estimated blood volume), and explicitly support its use in obstetrics and oncology with a leucodepletion filter.
             </p>
@@ -425,10 +432,11 @@ const TransfusionCoagulationTopic = () => {
                 Re-infusion of inadequately washed salvaged blood can cause non-cardiogenic pulmonary oedema, coagulopathy, hypotension and DIC — driven by activated leucocytes, complement, free Hb and bioactive lipids. Mitigation: always complete the wash cycle, never bypass to deliver "raw" reservoir contents, and limit a single salvaged unit to ≤4 h once in the re-infusion bag.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="rotem" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Viscoelastic Testing (ROTEM/TEG)</h2>
+            <CollapsibleSubsection title="Viscoelastic Testing (ROTEM/TEG)">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">ROTEM Parameters</p>
@@ -439,10 +447,11 @@ const TransfusionCoagulationTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">FIBTEM low → cryo. EXTEM CT prolonged → FFP. EXTEM MCF low (FIBTEM normal) → platelets. HEPTEM shorter than INTEM → protamine.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="trials" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Transfusion Trials</h2>
+            <CollapsibleSubsection title="Key Transfusion Trials">
             <div className="space-y-2">
               {[
                 { trial: "TRICC (1999)", result: "Restrictive (Hb 70) as safe as liberal (100) in most ICU patients." },
@@ -456,10 +465,11 @@ const TransfusionCoagulationTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="dic" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6", "EDIC 5.6"]}>
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Disseminated Intravascular Coagulation</h2>
+            <CollapsibleSubsection title="Disseminated Intravascular Coagulation">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Systemic activation of coagulation and fibrinolysis → microvascular thrombosis + consumptive coagulopathy. Always secondary to an underlying condition (sepsis, trauma, obstetric, malignancy).
             </p>
@@ -506,6 +516,7 @@ const TransfusionCoagulationTopic = () => {
                 Both cause MAHA + thrombocytopenia. In TTP: ADAMTS13 &lt;10%, coagulation screen typically NORMAL. Treat with plasma exchange — do NOT transfuse platelets. In DIC: PT/APTT/fibrinogen abnormal. Always check ADAMTS13 if MAHA + thrombocytopenia without clear DIC trigger.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="icu"

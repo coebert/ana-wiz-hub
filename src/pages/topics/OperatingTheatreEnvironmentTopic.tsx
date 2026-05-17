@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { operatingTheatreEnvironmentQuestions } from "@/data/quizzes";
@@ -73,7 +74,7 @@ const OperatingTheatreEnvironmentTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="layout-zoning" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Theatre Complex Layout & Zoning</h2>
+            <CollapsibleSubsection title="Theatre Complex Layout & Zoning" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               A modern UK operating-theatre complex is designed around a graded reduction in microbial bioburden as you move
               towards the operative field. HTM 03-01 describes four notional zones, each with progressively stricter dress code,
@@ -104,10 +105,11 @@ const OperatingTheatreEnvironmentTopic = () => {
             <div className="mt-4 animate-fade-in">
               <CssdWasteFlowSubMap />
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="ventilation" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Ventilation: Plenum vs. Ultra-Clean Laminar Flow</h2>
+            <CollapsibleSubsection title="Ventilation: Plenum vs. Ultra-Clean Laminar Flow">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Ventilation is the single most important environmental control. HTM 03-01 (Specialised ventilation for healthcare premises) is
               the governing UK document.
@@ -166,20 +168,22 @@ const OperatingTheatreEnvironmentTopic = () => {
               Subsequent registry and meta-analytic data (Bischoff 2017) suggest the benefit may be modest or absent outside arthroplasty, and that
               door openings and personnel movement readily destroy the unidirectional flow. The team behaviour matters as much as the engineering.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="environment" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Temperature, Humidity & Noise</h2>
+            <CollapsibleSubsection title="Temperature, Humidity & Noise">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Temperature 18–25 °C</strong> (typically 20–22 °C). Raise to <strong>23–26 °C</strong> for neonates/infants, burns, prolonged or open-cavity surgery to limit radiative and convective patient heat loss. NICE CG65 mandates perioperative core temperature ≥36.0 °C.</li>
               <li><strong>Relative humidity 40–60%.</strong> Too low → static electricity, dry mucosae and increased airborne particle dispersion; too high → bacterial proliferation, condensation and impaired wound healing.</li>
               <li><strong>Noise &lt; 40 dB(A) at baseline,</strong> rising to ~50 dB(A) during surgery; alarms and conversation are the main contributors. Noise impairs communication, increases error and disturbs the patient at induction and emergence.</li>
               <li><strong>Lighting:</strong> ambient ~1 000 lux; surgical field 40 000–160 000 lux from shadowless coaxial pendant lamps with colour temperature ~4 500 K (close to daylight) for accurate tissue colour rendering.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="scavenging" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Waste-Anaesthetic-Gas Scavenging (AGSS)</h2>
+            <CollapsibleSubsection title="Waste-Anaesthetic-Gas Scavenging (AGSS)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Chronic occupational exposure to anaesthetic gases has been associated (largely historical, observational data) with
               headache, fatigue, and theoretical reproductive risk. UK COSHH 8-hour time-weighted-average workplace exposure limits (EH40):
@@ -197,10 +201,11 @@ const OperatingTheatreEnvironmentTopic = () => {
               the building, well away from air intakes. The most important practical mitigations are <strong>minimal-flow anaesthesia</strong>,
               cuffed airways, regular AGSS servicing, and theatre ventilation ≥ 20 ACH.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="electrical-safety" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Electrical Safety in the Theatre</h2>
+            <CollapsibleSubsection title="Electrical Safety in the Theatre">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Operating theatres are wired with an <strong>isolated (IT) power system</strong>: the mains supply is separated from earth via an
               isolating transformer. A single fault to earth therefore does NOT complete a shock circuit — instead it triggers a
@@ -220,10 +225,11 @@ const OperatingTheatreEnvironmentTopic = () => {
               (return electrode) to disperse current density; bipolar avoids the plate but limits power. Diathermy can interfere with
               pacemakers and ICDs — site the plate to keep current paths away from the device, and consider bipolar or ultrasonic alternatives.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="team-checklists" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Team Workflow, Briefing & the WHO Checklist</h2>
+            <CollapsibleSubsection title="Team Workflow, Briefing & the WHO Checklist">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The theatre team typically comprises an anaesthetist (± assistant / ODP), surgeon(s), scrub practitioner, circulating nurse and
               a recovery practitioner. The day usually starts with a <strong>team brief</strong> (whole list, anticipated issues, equipment,
@@ -251,6 +257,7 @@ const OperatingTheatreEnvironmentTopic = () => {
               framework — Task management, Team working, Situation awareness, Decision making) underpins safe theatre culture and is examined
               in both Final FRCA and FFICM.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"

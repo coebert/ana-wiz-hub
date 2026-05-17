@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { SolutionsConcentrationDiagram } from "@/components/diagrams/SolutionsConcentrationDiagram";
@@ -69,21 +70,23 @@ const SolutionsConcentrationTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Solutions in Anaesthetic Practice</h2>
+            <CollapsibleSubsection title="Solutions in Anaesthetic Practice" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Every drug you administer is a solution. Understanding concentration units, osmolality, and tonicity is essential
               for safe prescribing and fluid management. Errors in concentration calculations (particularly with adrenaline and
               insulin) are a significant cause of drug errors in anaesthesia and remain a UK 'never event'.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagram</h2>
+            <CollapsibleSubsection title="Interactive Diagram">
             <SolutionsConcentrationDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="concentration-units" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Clinical Measurement"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Concentration Units</h2>
+            <CollapsibleSubsection title="Concentration Units">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Percentage (% w/v)</strong> = grams of solute per 100 mL of solution. So 1% = 10 mg/mL, 0.9% NaCl = 9 mg/mL.
@@ -96,10 +99,11 @@ const SolutionsConcentrationTopic = () => {
                 is a dilution of the 10 mg/mL ampoule (1 mL into 100 mL).
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="osmolality-tonicity" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Osmolality, Osmolarity & Tonicity</h2>
+            <CollapsibleSubsection title="Osmolality, Osmolarity & Tonicity">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Osmolality</strong> (mOsm/kg of solvent) is what an osmometer measures by freezing-point depression.
@@ -113,10 +117,11 @@ const SolutionsConcentrationTopic = () => {
                 (308 mOsm/L) but causes hyperchloraemic acidosis with large volumes.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="osmolar-gap" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Calculated Osmolarity & The Osmolar Gap</h2>
+            <CollapsibleSubsection title="Calculated Osmolarity & The Osmolar Gap">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Calculated osmolarity = 2[Na⁺] + [urea] + [glucose]</strong> (all in mmol/L). The factor of 2 accounts for
@@ -129,10 +134,11 @@ const SolutionsConcentrationTopic = () => {
                 metabolic acidosis, methanol or ethylene glycol toxicity should be suspected and treated empirically with fomepizole.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="colligative" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Colligative Properties</h2>
+            <CollapsibleSubsection title="Colligative Properties">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Colligative properties depend on the <strong>number</strong> of dissolved particles, not their identity. The four
@@ -141,10 +147,11 @@ const SolutionsConcentrationTopic = () => {
                 shifts across capillary and cellular membranes.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="hyponatraemia" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 3.4"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Hyponatraemia & Safe Correction</h2>
+            <CollapsibleSubsection title="Hyponatraemia & Safe Correction">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Acute hyponatraemia (&lt;48 h) causes cerebral oedema → headache, seizures, coma. Symptomatic acute hyponatraemia
@@ -157,6 +164,7 @@ const SolutionsConcentrationTopic = () => {
                 SIADH is the commonest perioperative cause of euvolaemic hyponatraemia.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

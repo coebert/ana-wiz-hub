@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { DiagramSection } from "@/components/DiagramSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -142,17 +143,18 @@ const PharmacodynamicsTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="dose-response" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Dose-Response Relationships</h2>
+            <CollapsibleSubsection title="Dose-Response Relationships" defaultOpen>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Dose-response curve</strong>: hyperbolic. Log(dose)-response: sigmoid. Emax is the maximal response; EC₅₀ is the concentration producing 50% Emax</li>
               <li><strong>Potency</strong>: position of curve on x-axis (EC₅₀). More potent = lower EC₅₀. Example: fentanyl is more potent than morphine</li>
               <li><strong>Efficacy</strong>: maximal effect achievable (Emax). Full agonist has high efficacy; partial agonist has lower Emax regardless of dose</li>
               <li><strong>Therapeutic index</strong>: TD₅₀/ED₅₀ (or LD₅₀/ED₅₀). Narrow TI drugs: digoxin, warfarin, lithium, phenytoin, theophylline</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="agonists-antagonists" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Pharmacology"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Agonists & Antagonists</h2>
+            <CollapsibleSubsection title="Agonists & Antagonists">
             <div className="space-y-3">
               {[
                 { type: "Full agonist", desc: "Binds receptor, produces maximal response. Intrinsic activity = 1. Examples: morphine (μ), adrenaline (α₁, β₁, β₂)." },
@@ -167,10 +169,11 @@ const PharmacodynamicsTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="receptors" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Receptor Types & Signal Transduction</h2>
+            <CollapsibleSubsection title="Receptor Types & Signal Transduction">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead><tr className="border-b border-border">
@@ -187,16 +190,18 @@ const PharmacodynamicsTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="interactions-tolerance" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Drug Interactions & Tolerance</h2>
+            <CollapsibleSubsection title="Drug Interactions & Tolerance">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Synergism</strong>: combined effect &gt; sum of individual effects (e.g., propofol + remifentanil). Shown by isobolograms</li>
               <li><strong>Tachyphylaxis</strong>: rapid tolerance after repeated doses. Mechanisms: receptor desensitisation (phosphorylation), receptor internalisation, depletion of mediator (e.g., ephedrine)</li>
               <li><strong>Enzyme induction</strong>: ↑ CYP450 activity (rifampicin, phenytoin, carbamazepine) → ↓ drug effect. Takes days-weeks</li>
               <li><strong>Enzyme inhibition</strong>: ↓ CYP450 activity (erythromycin, ciprofloxacin, grapefruit) → ↑ drug effect. Rapid onset</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="pharmacology"

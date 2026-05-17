@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { AtomicStructureDiagram } from "@/components/diagrams/AtomicStructureDiagram";
@@ -125,7 +126,7 @@ const AtomicStructureBondingTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="why" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Why Chemistry Matters for Anaesthetists</h2>
+            <CollapsibleSubsection title="Why Chemistry Matters for Anaesthetists" defaultOpen>
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
                 Understanding atomic structure and chemical bonding explains <strong>why drugs behave the way they do</strong>.
@@ -138,23 +139,26 @@ const AtomicStructureBondingTopic = () => {
                 The type of bond formed depends on the difference in electronegativity between atoms.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagram</h2>
+            <CollapsibleSubsection title="Interactive Diagram">
             <AtomicStructureDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="periodic" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Periodic Table of Anaesthetic Elements</h2>
+            <CollapsibleSubsection title="Periodic Table of Anaesthetic Elements">
             <p className="text-sm text-muted-foreground mb-4">
               The ten elements below are the most clinically important for anaesthetists. Tap each to explore its role in physiology, pharmacology, and clinical practice.
             </p>
             <PeriodicTableAnaestheticDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="electrons" exams={[Exam.PRIMARY]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Electron Configuration</h2>
+            <CollapsibleSubsection title="Electron Configuration">
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
                 Electrons orbit the nucleus in <strong>shells</strong> (energy levels). Each shell holds a maximum number of electrons:
@@ -167,10 +171,11 @@ const AtomicStructureBondingTopic = () => {
                 electron configuration is the fundamental reason atoms form bonds.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="forces" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Physics & Clinical Measurement"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Intermolecular Forces & Clinical Relevance</h2>
+            <CollapsibleSubsection title="Intermolecular Forces & Clinical Relevance">
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
                 Intermolecular forces act <strong>between</strong> molecules (unlike bonds which act <strong>within</strong> molecules).
@@ -183,6 +188,7 @@ const AtomicStructureBondingTopic = () => {
                 <li><strong>Hydrogen bonds:</strong> Strong intermolecular force (~20 kJ/mol). Requires H bonded to F, O, or N. Explains water's uniquely high boiling point, heat capacity, and surface tension.</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
         </>
       }

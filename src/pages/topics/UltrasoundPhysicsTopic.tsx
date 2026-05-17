@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import UltrasoundPhysicsDiagram from "@/components/diagrams/UltrasoundPhysicsDiagram";
@@ -70,22 +71,24 @@ const UltrasoundPhysicsTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
+            <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Ultrasound has become indispensable in anaesthesia and critical care — from vascular access and nerve blocks to
               focused echocardiography and lung assessment. Understanding the underlying physics enables optimal image acquisition,
               appropriate probe selection, and correct interpretation of artefacts. This topic is heavily examined in both
               Primary and Final FRCA.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
+            <CollapsibleSubsection title="Interactive Diagrams">
             <UltrasoundPhysicsDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="piezoelectric" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Piezoelectric Effect & Transducer Design</h2>
+            <CollapsibleSubsection title="Piezoelectric Effect & Transducer Design">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Ultrasound transducers use <strong>piezoelectric crystals</strong> (typically lead zirconate titanate — PZT) that
@@ -100,10 +103,11 @@ const UltrasoundPhysicsTopic = () => {
                 <strong> acoustic lens</strong> (focuses the beam laterally).
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="resolution" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Frequency, Resolution & Penetration</h2>
+            <CollapsibleSubsection title="Frequency, Resolution & Penetration">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The fundamental trade-off in ultrasound is between <strong>resolution and penetration</strong>. Higher frequency
@@ -122,10 +126,11 @@ const UltrasoundPhysicsTopic = () => {
                 for cardiac imaging through small acoustic windows.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="doppler" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Doppler Ultrasound</h2>
+            <CollapsibleSubsection title="Doppler Ultrasound">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 The <strong>Doppler effect</strong> describes the frequency shift when ultrasound reflects off moving red blood cells:
@@ -145,10 +150,11 @@ const UltrasoundPhysicsTopic = () => {
                 more sensitive to slow flow but gives no directional information.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="artefacts" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Ultrasound Artefacts</h2>
+            <CollapsibleSubsection title="Ultrasound Artefacts">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Acoustic shadowing</strong> occurs behind strong reflectors (bone, gallstones, calcified structures) that
@@ -169,6 +175,7 @@ const UltrasoundPhysicsTopic = () => {
                 <strong> "seashore sign"</strong>; absent sliding produces the <strong>"barcode/stratosphere sign"</strong>.
               </p>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="physics"

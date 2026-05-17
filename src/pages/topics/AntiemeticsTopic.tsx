@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { antiemeticsQuestions } from "@/data/quizzes";
@@ -69,17 +70,18 @@ const AntiemeticsTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="apfel" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">PONV Risk Factors (Apfel Score)</h2>
+            <CollapsibleSubsection title="PONV Risk Factors (Apfel Score)" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Each Apfel risk factor adds approximately 20% to the baseline PONV risk: (1) female sex, (2) non-smoker, (3) history of
               PONV or motion sickness, (4) anticipated postoperative opioids. Score 0 = 10%, 1 = 21%, 2 = 39%, 3 = 61%, 4 = 79%.
               Surgical (laparoscopic, gynaecological, ENT, strabismus) and anaesthetic (volatiles, N₂O, neostigmine) factors further
               increase risk.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="drug-classes" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Antiemetic Drug Classes</h2>
+            <CollapsibleSubsection title="Antiemetic Drug Classes">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -102,10 +104,11 @@ const AntiemeticsTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="management" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">PONV Management Strategy</h2>
+            <CollapsibleSubsection title="PONV Management Strategy">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Low risk</strong> (Apfel 0–1): no routine prophylaxis</li>
               <li><strong>Moderate risk</strong> (Apfel 2): 1–2 antiemetics from different classes</li>
@@ -116,6 +119,7 @@ const AntiemeticsTopic = () => {
               <li><strong>Rescue</strong>: use an agent from a different class to prophylaxis. Do not repeat the same drug within 6 h</li>
               <li><strong>Non-pharmacological</strong>: adequate hydration, P6 acupressure, and avoiding excessive opioids</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="pharmacology"

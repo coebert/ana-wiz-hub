@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { cardiacArrestPostResusQuestions } from "@/data/quizzes";
 import TopicTableOfContents from "@/components/TopicTableOfContents";
@@ -101,7 +102,7 @@ const coreConcepts = (
 
     {/* ─────────── Overview ─────────── */}
     <ExamSection id="overview" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-      <h2 className="text-2xl font-serif font-bold text-foreground mb-3">From ROSC to Recovery</h2>
+      <CollapsibleSubsection title="From ROSC to Recovery" defaultOpen>
       <p className="text-muted-foreground leading-relaxed mb-3">
         Survival from cardiac arrest hinges on a chain of survival, but
         outcome is determined as much by what happens <em>after</em> ROSC
@@ -127,6 +128,7 @@ const coreConcepts = (
           </div>
         ))}
       </div>
+      </CollapsibleSubsection>
     </ExamSection>
 
     <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
@@ -135,7 +137,7 @@ const coreConcepts = (
 
     {/* ─────────── Post-ROSC bundle ─────────── */}
     <ExamSection id="rosc-bundle" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-      <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Post-ROSC Bundle (ERC/ESICM 2021)</h2>
+      <CollapsibleSubsection title="The Post-ROSC Bundle (ERC/ESICM 2021)">
       <p className="text-muted-foreground leading-relaxed mb-3">
         Within the first 6 h after ROSC, deliver a structured bundle in
         parallel: airway and ventilation, haemodynamics, coronary reperfusion,
@@ -206,11 +208,12 @@ const coreConcepts = (
           </div>
         ))}
       </div>
+      </CollapsibleSubsection>
     </ExamSection>
 
     {/* ─────────── TTM ─────────── */}
     <ExamSection id="ttm" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-      <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Targeted Temperature Management</h2>
+      <CollapsibleSubsection title="Targeted Temperature Management">
       <p className="text-muted-foreground leading-relaxed mb-3">
         TTM aims to <span className="font-medium text-foreground">prevent secondary brain injury</span> from
         ischaemia–reperfusion and to <span className="font-medium text-foreground">avoid pyrexia</span>, which
@@ -242,11 +245,12 @@ const coreConcepts = (
           </ul>
         </div>
       </div>
+      </CollapsibleSubsection>
     </ExamSection>
 
     {/* ─────────── Haemodynamics ─────────── */}
     <ExamSection id="haemodynamics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-      <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemodynamic & Ventilatory Targets</h2>
+      <CollapsibleSubsection title="Haemodynamic & Ventilatory Targets">
       <div className="overflow-x-auto -mx-2 sm:mx-0">
         <table className="w-full text-xs border border-border bg-card rounded-lg">
           <thead className="bg-muted/40">
@@ -275,11 +279,12 @@ const coreConcepts = (
           </tbody>
         </table>
       </div>
+      </CollapsibleSubsection>
     </ExamSection>
 
     {/* ─────────── Neuroprognostication ─────────── */}
     <ExamSection id="neuroprog" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-      <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Multimodal Neuroprognostication</h2>
+      <CollapsibleSubsection title="Multimodal Neuroprognostication">
       <p className="text-muted-foreground leading-relaxed mb-3">
         No single test predicts poor outcome with sufficient certainty —
         ERC/ESICM mandate <span className="font-medium text-foreground">multimodal assessment</span> at
@@ -301,11 +306,12 @@ const coreConcepts = (
           <li>Status epilepticus (treat aggressively, then reassess)</li>
         </ul>
       </div>
+      </CollapsibleSubsection>
     </ExamSection>
 
     {/* ─────────── Modality deep-dive ─────────── */}
     <ExamSection id="modalities" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-      <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Modality Deep-Dive</h2>
+      <CollapsibleSubsection title="Modality Deep-Dive">
 
       <div className="space-y-3">
         {[
@@ -356,11 +362,12 @@ const coreConcepts = (
           </div>
         ))}
       </div>
+      </CollapsibleSubsection>
     </ExamSection>
 
     {/* ─────────── eCPR ─────────── */}
     <ExamSection id="ecpr" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-      <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ECMO-CPR (eCPR)</h2>
+      <CollapsibleSubsection title="ECMO-CPR (eCPR)">
       <p className="text-muted-foreground leading-relaxed mb-3">
         eCPR is VA-ECMO initiated <em>during</em> ongoing CPR for refractory
         cardiac arrest. ARREST (2020) and Prague OHCA (2022) demonstrated
@@ -394,11 +401,12 @@ const coreConcepts = (
           </ul>
         </div>
       </div>
+      </CollapsibleSubsection>
     </ExamSection>
 
     {/* ─────────── Family / WLST ─────────── */}
     <ExamSection id="ethics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-      <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Family Communication, WLST & Donation</h2>
+      <CollapsibleSubsection title="Family Communication, WLST & Donation">
       <div className="grid md:grid-cols-2 gap-3">
         <div className="p-3 rounded-lg border border-border bg-card">
           <p className="text-sm font-semibold text-foreground mb-1">Talking to families</p>
@@ -424,6 +432,7 @@ const coreConcepts = (
           </p>
         </div>
       </div>
+      </CollapsibleSubsection>
     </ExamSection>
 
     <ExamPitfallsCallout

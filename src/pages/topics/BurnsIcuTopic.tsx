@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { burnsIcuQuestions } from "@/data/quizzes";
@@ -127,7 +128,7 @@ const BurnsIcuTopic = () => {
       coreConcepts={
         <>
           <ExamSection id="pathophysiology" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Pathophysiology of the Major Burn</h2>
+            <CollapsibleSubsection title="Pathophysiology of the Major Burn" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               A burn injury is a profound systemic insult, not just a skin wound. Three concentric zones (Jackson) — coagulation,
               stasis and hyperaemia — surround every burn; preventing the zone of stasis from converting to necrosis through
@@ -140,10 +141,11 @@ const BurnsIcuTopic = () => {
               <li><strong>End-organ effects</strong>: ARDS, AKI (myoglobin, hypoperfusion), gut translocation, ileus, stress ulcers (Curling’s), cholestasis, encephalopathy.</li>
             </ul>
             <BurnShockPathophysiologyDiagram />
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="airway-inhalation" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Airway &amp; Inhalation Injury</h2>
+            <CollapsibleSubsection title="Airway & Inhalation Injury">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Three distinct injuries can co-exist: <strong>supraglottic thermal injury</strong>, <strong>chemical tracheobronchitis</strong> and <strong>systemic toxin inhalation</strong> (CO, cyanide).
             </p>
@@ -163,10 +165,11 @@ const BurnsIcuTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="tbsa-fluids" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">TBSA Estimation &amp; Fluid Resuscitation</h2>
+            <CollapsibleSubsection title="TBSA Estimation & Fluid Resuscitation">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Get the denominator right — over- or underestimating %TBSA both kill. Exclude erythema-only (superficial epidermal) burns.
             </p>
@@ -191,10 +194,11 @@ const BurnsIcuTopic = () => {
               ‘Fluid creep’ — excess crystalloid resuscitation — drives abdominal compartment syndrome, ARDS, peripheral compartment
               syndromes and ocular compartment syndrome. The formula is a starting point; the patient is the monitor.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="surgical-icu" exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.7"]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">Surgical &amp; ICU Care of the Major Burn</h2>
+            <CollapsibleSubsection title="Surgical & ICU Care of the Major Burn">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Escharotomy</strong> for circumferential limb / torso burns to relieve compartment pressures (CRT &gt; 4 s, absent doppler, ↑ peak airway pressures). Mid-axial limb incisions, transverse chest extension if respiratory restriction.</li>
               <li><strong>Early excision &amp; grafting</strong> within 5 days reduces sepsis, length of stay and mortality. Plan and book theatres early; expect ~ 3–5 % blood-volume loss per 1 % TBSA excised.</li>
@@ -207,10 +211,11 @@ const BurnsIcuTopic = () => {
               <li><strong>Temperature</strong>: ambient theatre 28–30 °C, warming blankets, fluid warmers; hypothermia worsens coagulopathy and graft survival.</li>
               <li><strong>Stress ulcer prophylaxis</strong>: Curling’s ulcer is the burn-specific equivalent — PPI from day 1.</li>
             </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="referral-mdt" exams={[Exam.FINAL, Exam.FFICM]}>
-            <h2 className="text-xl font-bold text-foreground mb-2">UK Burn Care Network &amp; Referral Criteria</h2>
+            <CollapsibleSubsection title="UK Burn Care Network & Referral Criteria">
             <p className="text-muted-foreground leading-relaxed mb-3">
               UK burn services are tiered (Burns Facility · Burns Unit · Burns Centre). Major or complex burns must be discussed
               early with a regional Burns Centre via the National Burn Care Referral Pathway.
@@ -228,6 +233,7 @@ const BurnsIcuTopic = () => {
               cover with cling-film, analgesia, fluid resuscitation per Parkland, urinary catheter, NG tube, photographs, and
               full Burns Centre referral proforma.
             </p>
+            </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="icu"
