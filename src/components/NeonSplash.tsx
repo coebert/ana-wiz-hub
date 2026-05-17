@@ -104,8 +104,10 @@ const NeonSplash = () => {
         leaving ? "opacity-0 pointer-events-none" : ready ? "opacity-100" : "opacity-0"
       }`}
     >
-      {/* Logo box — identical geometry to Landing.tsx hero logo. */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[104px] md:top-[136px] h-52 w-52 md:h-72 md:w-72 flex items-center justify-center">
+      {/* Logo box — identical geometry to Landing.tsx hero logo.
+          Vertical offset = sticky Header (h-14 = 56px + 1px border-b) +
+          hero section padding (py-12 = 48px / md:py-20 = 80px) = 105px / 137px. */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-[105px] md:top-[137px] h-52 w-52 md:h-72 md:w-72 flex items-center justify-center">
         {/* Ambient glow halo. Animation runs during entry; on leave we
             freeze its transform (scale 1) and fade opacity to 0 so it
             doesn't drift or pulse during the crossfade. */}
