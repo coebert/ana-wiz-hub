@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { infectiousDiseaseIcuQuestions } from "@/data/quizzes";
 import InfectionSiteMapDiagram from "@/components/diagrams/InfectionSiteMapDiagram";
+import HAIPathogenesisCascadeDiagram from "@/components/diagrams/HAIPathogenesisCascadeDiagram";
 import PCPHRCTDiagram from "@/components/diagrams/PCPHRCTDiagram";
 import PCPManagementFlowchart from "@/components/diagrams/PCPManagementFlowchart";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -74,6 +75,7 @@ const InfectiousDiseaseIcuTopic = () => {
               Infection is the dominant driver of organ failure on the modern ICU. The site map below previews the anatomical organisation of the topic — from respiratory and bloodstream infections through to fungal, viral, and multi-drug-resistant organisms — with an emphasis on source identification, empirical antimicrobial choice, and infection control.
             </p>
             <InfectionSiteMapDiagram />
+            <HAIPathogenesisCascadeDiagram />
           </ExamSection>
 
           <ExamSection id="respiratory" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.7"]}>

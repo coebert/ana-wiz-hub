@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { burnsIcuQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import BurnResuscitationDiagram from "@/components/diagrams/BurnResuscitationDiagram";
+import BurnShockPathophysiologyDiagram from "@/components/diagrams/BurnShockPathophysiologyDiagram";
 import InhalationInjuryFlowchart from "@/components/diagrams/InhalationInjuryFlowchart";
 import ParklandCalculator from "@/components/diagrams/ParklandCalculator";
 import BurnsIcuCaseStepper from "@/components/diagrams/BurnsIcuCaseStepper";
@@ -138,6 +139,7 @@ const BurnsIcuTopic = () => {
               <li><strong>SIRS / immune paralysis</strong>: damaged skin barrier + circulating DAMPs predispose to invasive infection within days.</li>
               <li><strong>End-organ effects</strong>: ARDS, AKI (myoglobin, hypoperfusion), gut translocation, ileus, stress ulcers (Curling’s), cholestasis, encephalopathy.</li>
             </ul>
+            <BurnShockPathophysiologyDiagram />
           </ExamSection>
 
           <ExamSection id="airway-inhalation" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
