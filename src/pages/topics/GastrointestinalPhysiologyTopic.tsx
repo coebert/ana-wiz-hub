@@ -207,6 +207,7 @@ const GastrointestinalPhysiologyTopic = () => {
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">{item.drugs}</p>
                 </div>
+              ))}
             </div>
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
               <VomitingControlDiagram />
