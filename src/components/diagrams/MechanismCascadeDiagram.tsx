@@ -420,9 +420,10 @@ interface ChainSvgProps {
   steps: CascadeStep[];
   active: number;
   accentVar: string;
+  reduceMotion?: boolean;
 }
 
-const ChainSvg = ({ steps, active, accentVar }: ChainSvgProps) => {
+const ChainSvg = ({ steps, active, accentVar, reduceMotion = false }: ChainSvgProps) => {
   const nodeH = 50;
   const gap = 28;
   const width = 240;
