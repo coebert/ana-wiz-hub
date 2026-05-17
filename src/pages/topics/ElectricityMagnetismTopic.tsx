@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import ElectricityMagnetismDiagram from "@/components/diagrams/ElectricityMagnetismDiagram";
 import { electricityMagnetismQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply Ohm's law and the power equations (P = VI = I²R = V²/R) to clinical scenarios",
@@ -159,6 +160,16 @@ const ElectricityMagnetismTopic = () => {
               </p>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Ohm's law (V = IR) applies to DC and resistive AC circuits; for AC with reactive components use impedance Z.",
+              "Capacitive reactance falls with rising frequency (Xc = 1/2πfC); inductive reactance rises (XL = 2πfL).",
+              "Transformers only work with AC; turns ratio sets voltage ratio. Isolation transformers protect from earth-leakage shock.",
+              "The Wheatstone bridge is a null-deflection circuit used by strain-gauge transducers and thermistors.",
+              "Defibrillator capacitance ≈ 32 µF; stored energy E = ½CV². Know how to derive delivered energy.",
+            ]}
+          />
         </>
       }
     />

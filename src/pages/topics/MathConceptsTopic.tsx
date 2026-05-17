@@ -5,6 +5,7 @@ import MathConceptsDiagram from "@/components/diagrams/MathConceptsDiagram";
 import TimeConstantDiagram from "@/components/diagrams/TimeConstantDiagram";
 import { mathConceptsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Recognise the canonical graph shapes (linear, exponential decay/rise, sigmoid, hyperbolic) and the equations behind them",
@@ -146,6 +147,16 @@ const MathConceptsTopic = () => {
               The sigmoid (S-shaped) curve arises when binding or response is <strong>cooperative</strong> — each event makes the next more likely. The Hill coefficient (n) describes the steepness: n = 1 gives a hyperbola (no cooperativity, e.g., myoglobin), n = 2.7 gives the sigmoid ODC (haemoglobin), and n → ∞ gives a step function (all-or-nothing response). In pharmacology, log dose-response curves are sigmoid, with EC₅₀ at the midpoint. Plotting on a log scale straightens the middle portion, making comparison of potency and efficacy easier.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "A semi-log plot turns a single exponential decay into a straight line — used to derive elimination rate constants.",
+              "Half-life (t½) = 0.693/k; time constant (τ) = 1/k. Three time constants ≈ 95% complete, five ≈ 99%.",
+              "Sigmoid (Hill) curves describe cooperative binding (O₂–Hb) and dose-response; the Hill coefficient quantifies cooperativity.",
+              "Log scales compress wide dynamic ranges (pH, decibels, drug potency) — a one-unit change is a tenfold change.",
+              "Exponential wash-in and wash-out share the same time constant for first-order processes.",
+            ]}
+          />
         </>
       }
     />

@@ -5,6 +5,7 @@ import { siUnitsThermodynamicsQuiz } from "@/data/quizzes";
 import SIUnitsThermodynamicsDiagram from "@/components/diagrams/SIUnitsThermodynamicsDiagram";
 import LatentHeatDiagram from "@/components/diagrams/LatentHeatDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "List the 7 SI base units and the most relevant derived units (Pa, J, W)",
@@ -226,6 +227,16 @@ const SIUnitsThermodynamicsTopic = () => {
               </p>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Don't confuse the seven base SI units with derived units — pressure (Pa = N/m²), energy (J = N·m) and power (W = J/s) are all derived.",
+              "Specific heat capacity (J/kg/K) is per mass; molar heat capacity is per mole — exam vivas often probe units.",
+              "Latent heat of vaporisation is why ethyl chloride feels cold and why volatile vaporiser blocks need temperature compensation.",
+              "Zeroth, first, second and third laws — know one-line statements and clinical examples (e.g. entropy and information loss in disorder).",
+              "Absolute zero is 0 K = −273.15 °C; always use Kelvin in gas-law calculations.",
+            ]}
+          />
         </>
       }
     />

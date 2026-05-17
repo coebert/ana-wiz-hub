@@ -14,6 +14,7 @@ import { RadiationDoseComparisonTable } from "@/components/RadiationDoseComparis
 import { Cite, ReferencesList, type Reference } from "@/components/References";
 import { xrayRadiationSafetyQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const REFERENCES: Reference[] = [
   {
@@ -787,6 +788,16 @@ const XRayRadiationSafetyTopic = () => {
               Numbers correspond to inline superscripts above. Standards (ICRP, IAEA) are reviewed periodically — verify against the current edition before quoting in audit or guideline work.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "X-rays produced when accelerated electrons strike a tungsten anode — bremsstrahlung plus characteristic radiation.",
+              "Photon–tissue interactions: photoelectric absorption (low energy, high Z) dominates contrast; Compton scatter (higher energy) dominates dose to staff.",
+              "Dose units: absorbed dose (Gy), equivalent dose (Sv), effective dose (Sv) — multiply by tissue and radiation weighting factors.",
+              "ALARA: time, distance (inverse-square law), shielding. Doubling distance quarters dose.",
+              "Annual occupational limit for classified workers: 20 mSv whole-body; lens 20 mSv; extremities 500 mSv.",
+            ]}
+          />
         </>
       }
     />

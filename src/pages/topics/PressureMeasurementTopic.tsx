@@ -10,6 +10,7 @@ import FrankStarlingDiagram from "@/components/diagrams/FrankStarlingDiagram";
 import ManometerDiagram from "@/components/diagrams/ManometerDiagram";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Convert fluently between mmHg, cmH₂O, kPa and bar in clinical pressure measurements",
@@ -222,6 +223,16 @@ const PressureMeasurementTopic = () => {
 
             <FrankStarlingDiagram />
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Aneroid gauges (Bourdon) for high pressures (cylinders); mercury/water manometers for static low pressures; strain-gauge transducers for invasive monitoring.",
+              "Resonance/damping: optimal damping coefficient ≈ 0.64; under-damped overshoots, over-damped slurs the waveform.",
+              "Natural frequency must exceed ~10× the fundamental of the arterial waveform — short, stiff, wide tubing with no bubbles.",
+              "Zeroing references the transducer to atmospheric; levelling to the phlebostatic axis (4th ICS, mid-axillary line) defines the hydrostatic reference.",
+              "1 mmHg ≈ 1.36 cmH₂O ≈ 133 Pa — unit conversions appear in viva and OSCE stations.",
+            ]}
+          />
         </>
       }
     />

@@ -51,6 +51,7 @@ import servoImg from "@/assets/ventilators/maquet-servo-u.jpg";
 import primaImg from "@/assets/ventilators/penlon-prima-sp.jpg";
 import aisysImg from "@/assets/ventilators/ge-aisys-cs2.jpg";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 /* ───────────────── Data tables ───────────────── */
 
@@ -734,6 +735,16 @@ const EquipmentMonitoringTopic = () => {
             <li><strong>Pre-use check (AAGBI 2012)</strong>: machine, breathing system, vaporiser, monitors, ventilator, suction, drugs, emergency equipment.</li>
           </ul>
         </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "AAGBI machine check is a pre-list and start-of-day requirement — document it in the anaesthetic chart.",
+              "Pin-Index Safety System prevents wrong cylinder mounting; NIST prevents wrong pipeline connection.",
+              "Vaporiser safety: temperature-, flow- and pressure-compensated; agent-specific filler prevents cross-filling.",
+              "Circle system economy depends on FGF, CO₂ absorber and unidirectional valves — sevoflurane + dry baralyme can produce Compound A.",
+              "Minimum monitoring (AAGBI): pulse oximetry, NIBP, ECG, capnography, FiO₂, agent and airway pressure — present from before induction until recovery.",
+            ]}
+          />
       </div>
       }
     />

@@ -3,6 +3,7 @@ import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { abgAnalyserQuestions } from "@/data/quizzes";
 import ABGAnalyserDiagram from "@/components/diagrams/ABGAnalyserDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe the construction and principle of the pH (Sanz) glass electrode.",
@@ -427,6 +428,16 @@ const ABGAnalyserTopic = () => {
           </tbody>
         </table>
       </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "pH electrode: glass membrane sensitive to H⁺, referenced to a Ag/AgCl electrode in saturated KCl.",
+              "Clark electrode measures pO₂ amperometrically — current proportional to O₂ reduced at a polarised platinum cathode.",
+              "Severinghaus electrode measures pCO₂ — a modified pH electrode behind a CO₂-permeable membrane.",
+              "Galvanic fuel cell measures FiO₂ — self-powered, depletes over months; replace when low-O₂ alarm fails calibration.",
+              "Pre-analytical errors: air bubbles (falsely high pO₂), delayed analysis (falling pO₂, rising pCO₂), heparin dilution (falsely low pCO₂).",
+            ]}
+          />
         </section>
       }
     />

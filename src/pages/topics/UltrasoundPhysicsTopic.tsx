@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import UltrasoundPhysicsDiagram from "@/components/diagrams/UltrasoundPhysicsDiagram";
 import { ultrasoundPhysicsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Explain the piezoelectric effect and the components of a clinical ultrasound transducer",
@@ -167,6 +168,16 @@ const UltrasoundPhysicsTopic = () => {
               </p>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Frequency vs resolution vs penetration: higher frequency → better axial resolution but less penetration.",
+              "Piezoelectric crystals (lead zirconate titanate) both transmit and receive — same crystal pulses then 'listens'.",
+              "Doppler shift: Δf = 2f₀ v cosθ / c — angle of insonation matters; 90° gives zero Doppler signal.",
+              "Common artefacts: acoustic shadowing (bone, calculus), enhancement (cysts), reverberation (pleura), mirror image.",
+              "Mechanical index quantifies cavitation risk; thermal index quantifies tissue heating — both should be 'as low as reasonably achievable'.",
+            ]}
+          />
         </>
       }
     />

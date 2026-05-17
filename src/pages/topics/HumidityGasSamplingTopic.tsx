@@ -7,6 +7,7 @@ import { GasSamplingSiteDiagram } from "@/components/diagrams/GasSamplingSiteDia
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { humidityGasSamplingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Define absolute and relative humidity and recall the saturated value at 37 °C (44 mg/L)",
@@ -445,6 +446,16 @@ const HumidityGasSamplingTopic = () => {
               arterial blood. Mass spectrometry and Raman appear in "which analyser identifies <em>all</em> gases?" stems.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Absolute humidity = mass of water per volume (mg/L); relative humidity = % of saturation at that temperature.",
+              "Fully saturated alveolar gas at 37 °C carries 44 mg/L of water — this is the target for HMEs and active humidifiers.",
+              "Mass spectrometry separates ions by mass:charge ratio; Raman scattering uses inelastic light scattering — both can identify multiple gases simultaneously.",
+              "Pneumotachograph (Fleisch) measures pressure drop across a laminar-flow resistance — flow ∝ ΔP only while flow stays laminar.",
+              "Side-stream capnography has a 1–2 s delay; main-stream is faster but adds bulk and dead-space at the airway.",
+            ]}
+          />
         </>
       }
     />

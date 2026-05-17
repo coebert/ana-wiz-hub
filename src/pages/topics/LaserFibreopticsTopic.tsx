@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import LaserFibreopticsDiagram from "@/components/diagrams/LaserFibreopticsDiagram";
 import { laserFibreopticsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Define LASER and explain the requirement for population inversion in a gain medium",
@@ -143,6 +144,16 @@ const LaserFibreopticsTopic = () => {
               </p>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "LASER = Light Amplification by Stimulated Emission of Radiation — needs a population inversion in an active medium.",
+              "CO₂ laser (10.6 µm) cuts and is absorbed by water; Nd:YAG (1.064 µm) penetrates deeper; KTP (532 nm) is absorbed by haemoglobin.",
+              "Airway laser safety: FiO₂ <30%, no N₂O, laser-resistant tube, saline-filled cuff, wet swabs, eye protection for all in room.",
+              "Class 4 lasers require controlled environment, warning signs, key-switch and a designated laser safety officer.",
+              "Fibreoptics rely on total internal reflection within a higher-index core; coherent bundles transmit images, non-coherent bundles transmit light only.",
+            ]}
+          />
         </>
       }
     />

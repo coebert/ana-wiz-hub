@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import OpticsLightDiagram from "@/components/diagrams/OpticsLightDiagram";
 import { opticsLightQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "State the laws of reflection and refraction (Snell's law) and apply them to clinical optics",
@@ -173,6 +174,16 @@ const OpticsLightTopic = () => {
               </p>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Beer–Lambert law (A = εcl) underpins pulse oximetry, capnography and co-oximetry — it assumes a single absorber per wavelength.",
+              "Total internal reflection requires light moving from denser to less dense medium above the critical angle — the basis of fibreoptics.",
+              "Snell's law (n₁sinθ₁ = n₂sinθ₂) governs refraction; refractive index is wavelength-dependent (dispersion).",
+              "Spectrophotometry vs co-oximetry: pulse oximeters use two wavelengths; lab co-oximeters use four or more to detect MetHb and COHb.",
+              "Polarisation and plane-polarised light are exploited in laser physics and optical activity measurement.",
+            ]}
+          />
         </>
       }
     />

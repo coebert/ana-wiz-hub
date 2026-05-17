@@ -10,6 +10,7 @@ import BernoulliVenturiDiagram from "@/components/diagrams/BernoulliVenturiDiagr
 import CoandaEffectDiagram from "@/components/diagrams/CoandaEffectDiagram";
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Differentiate laminar from turbulent flow and use Reynolds number (Re = ρvd/η) to predict the regime",
@@ -419,6 +420,16 @@ const FlowMeasurementTopic = () => {
               </ul>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Hagen–Poiseuille (laminar): flow ∝ r⁴ — small radius changes dominate resistance (cannula sizing, bronchospasm).",
+              "Reynolds number >2000 predicts turbulence; in turbulent flow, flow ∝ √(ΔP) and depends on density rather than viscosity.",
+              "Rotameter is a constant-pressure, variable-orifice flowmeter; calibrated for a specific gas at a specific temperature.",
+              "At low flows the annulus around the bobbin behaves like a tube (viscosity matters); at high flows like an orifice (density matters).",
+              "Heliox lowers density to convert turbulent to laminar flow in upper-airway obstruction.",
+            ]}
+          />
         </>
       }
     />

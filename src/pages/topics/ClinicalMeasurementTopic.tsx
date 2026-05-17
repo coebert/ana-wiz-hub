@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { clinicalMeasurementQuiz } from "@/data/quizzes";
 import ClinicalMeasurementDiagram from "@/components/diagrams/ClinicalMeasurementDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Set up an invasive arterial line correctly (zeroing, levelling, transducer choice).",
@@ -161,6 +162,16 @@ const ClinicalMeasurementTopic = () => {
             </p>
           </div>
         </div>
+          <ExamPitfallsCallout
+            accent="physics"
+            pitfalls={[
+              "Optimal damping coefficient ≈ 0.64; natural frequency should be ≥10× the fundamental of the waveform (≈40 Hz at HR 150).",
+              "Square-wave (fast-flush) test: 1–2 oscillations before return = optimal; many oscillations = under-damped; sluggish = over-damped.",
+              "CVP waveform a/c/v waves and x/y descents reflect right-heart events; cannon a waves suggest AV dissociation.",
+              "Thermodilution (Stewart–Hamilton): area under the temperature–time curve is inversely proportional to cardiac output.",
+              "Always level the transducer to the phlebostatic axis; raising it by 10 cm under-reads pressure by ~7 mmHg.",
+            ]}
+          />
         </>
       }
     />
