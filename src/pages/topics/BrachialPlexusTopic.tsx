@@ -129,12 +129,18 @@ const BrachialPlexusTopic = () => {
         ],
       }}
       keyPoints={[
-        { text: "Brachial plexus: C5-T1. 'Robert Taylor Drinks Cold Beer' — Roots, Trunks, Divisions, Cords, Branches", cites: ["Miller Ch.46"] },
-        { text: "Interscalene block targets C5-7 (shoulder surgery) — 100% ipsilateral phrenic nerve palsy", cites: ["Ellis & Feldman Ch.8"] },
-        { text: "Supraclavicular: trunks/divisions most compact ('grapes on a stalk') — best for complete arm anaesthesia below shoulder", cites: ["BJA Educ 2014"] },
-        { text: "Cords named by relation to 2nd part of axillary artery (lateral, posterior, medial)", cites: ["Miller Ch.46"] },
-        { text: "Musculocutaneous nerve leaves early — must be blocked separately with axillary approach", cites: ["Ellis & Feldman Ch.8"] },
-        { text: "Intercostobrachial nerve (T2) is NOT plexus — needs separate block if tourniquet used", cites: ["BJA Educ 2014"] },
+        { text: "Brachial plexus arises from ventral rami C5–T1: Roots → Trunks → Divisions → Cords → Branches ('Robert Taylor Drinks Cold Beer')", cites: ["Miller Ch.46", "Ellis & Feldman Ch.8"] },
+        { text: "Trunks: Superior (C5,6), Middle (C7), Inferior (C8,T1); suprascapular nerve leaves the superior trunk before the divisions form", cites: ["Ellis & Feldman Ch.8"] },
+        { text: "Cords are named by their relation to the 2nd part of the axillary artery (lateral, posterior, medial) and split into the five terminal branches", cites: ["Miller Ch.46"] },
+        { text: "Interscalene block (roots/trunks, C5–C7) — shoulder surgery; spares C8/T1 (ulnar) and causes ~100% ipsilateral phrenic nerve palsy", cites: ["BJA Educ 2014", "Ellis & Feldman Ch.8"] },
+        { text: "Supraclavicular block (trunks/divisions) — trunks most compact ('grapes on a stalk' above subclavian artery); best for complete arm anaesthesia below the shoulder, watch for pneumothorax", cites: ["BJA Educ 2014"] },
+        { text: "Infraclavicular block (cords) — deep to pectoralis around 2nd part of axillary artery; reliable single-injection block and the preferred site for catheters", cites: ["Miller Ch.46"] },
+        { text: "Axillary block (terminal branches around 3rd part of axillary artery) — safest approach (no pneumothorax, no phrenic risk); ideal for forearm/hand surgery", cites: ["Ellis & Feldman Ch.8", "Miller Ch.46"] },
+        { text: "Musculocutaneous nerve leaves the lateral cord proximal to the axilla and runs in coracobrachialis — must be blocked separately with the axillary approach", cites: ["Ellis & Feldman Ch.8"] },
+        { text: "Intercostobrachial nerve (T2) is NOT part of the brachial plexus — supplies medial upper arm and must be blocked separately when a tourniquet is used", cites: ["BJA Educ 2014"] },
+        { text: "Key complications: LAST (use lowest effective dose, aspirate, incremental injection), phrenic palsy, Horner's syndrome, recurrent laryngeal nerve palsy, pneumothorax (supraclavicular/infraclavicular)", cites: ["BJA Educ 2014", "Miller Ch.46"] },
+        { text: "Ultrasound landmarks: interscalene 'traffic-light' between scalenes at C6; supraclavicular 'grapes on a stalk' lateral to subclavian artery on 1st rib; axillary nerves clustered around the artery with musculocutaneous in coracobrachialis", cites: ["BJA Educ 2014"] },
+        { text: "Terminal branches at a glance: musculocutaneous (C5–7, lateral forearm), median (C5–T1, lateral 3½ digits palmar), ulnar (C8/T1, medial 1½ digits), radial (C5–T1, posterior arm + dorsal 3½ digits), axillary (C5,6, regimental badge)", cites: ["Ellis & Feldman Ch.8", "Miller Ch.46"] },
       ]}
       coreConcepts={
         <>
