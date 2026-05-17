@@ -880,7 +880,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "MIMMS 4e", citation: "MIMMS 4e." },
     { label: "MIMMS Major Incident Medical Management & Support (4e)", citation: "MIMMS Major Incident Medical Management & Support (4e)." },
     { label: "NHS England EPRR Framework 2022", citation: "NHS England EPRR Framework 2022." },
-    { label: "Rall & Gaba — Crisis Resource Management", citation: "Rall & Gaba — Crisis Resource Management." },
+    { label: "Rall &amp; Gaba — Crisis Resource Management", citation: "Rall & Gaba — Crisis Resource Management." },
   ],
   "patient-positioning": [
     { label: "AAGBI Positioning 2018", citation: "Knight DJW, Mahajan RP. Patient positioning in anaesthesia. BJA Education. 2004;4(5):160-163.", url: "https://doi.org/10.1093/bjaceaccp/mkh044" },
