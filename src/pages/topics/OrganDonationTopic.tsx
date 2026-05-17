@@ -183,6 +183,14 @@ const OrganDonationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <DiagramSection
+            id="bsd-cascade"
+            title="Brainstem Death Cascade & Donor Optimisation"
+            intro="After coning the donor passes through three predictable physiological phases. Recognising the current phase guides the right intervention — short-acting vasodilators during the storm, vasopressin-led support during vasoplegia, and DDAVP plus methylprednisolone once endocrine collapse develops."
+          >
+            <BrainstemDeathCascadeDiagram />
+          </DiagramSection>
+
           <ExamSection id="donor-mgmt" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Physiological Management of the Donor">
             <div className="space-y-2">
