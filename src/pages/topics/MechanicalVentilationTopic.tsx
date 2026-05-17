@@ -30,6 +30,7 @@ const workedExamples: WorkedExample[] = [
       "Vt/PBW = 550/70 = 7.9 mL/kg (above 6 mL/kg target). ΔP = Pplat − PEEP = 32 − 10 = 22 cmH₂O (above 15 cmH₂O ceiling — strongest mortality predictor, Amato 2015). Pplat 32 > 30. Resistance = (38 − 32)/Flow — acceptable. Compliance = 550/(32 − 10) = 25 mL/cmH₂O (severe ARDS).",
     answer:
       "Reduce Vt to 420 mL (6 mL/kg PBW), recheck Pplat. If ΔP still > 15, increase PEEP per FiO₂/PEEP table to recruit (lower ΔP for same Vt) and accept permissive hypercapnia (pH ≥ 7.20). If P/F < 13.3 kPa persists despite optimisation → NMB (ACURASYS), prone ≥ 16 h/day (PROSEVA), then ECMO (EOLIA/Combes).",
+    cites: ["BJA Educ 2019"],
   },
   {
     title: "Auto-PEEP in severe asthma",
@@ -39,6 +40,7 @@ const workedExamples: WorkedExample[] = [
       "Auto-PEEP = total PEEP − set PEEP = 18 − 5 = 13 cmH₂O. Long time constant (high resistance) → incomplete expiration → dynamic hyperinflation → ↓ venous return → hypotension. Risk of barotrauma.",
     answer:
       "Disconnect from ventilator briefly to allow exhalation (BP usually rises). Reduce RR to 8–10, prolong expiratory time (I:E 1:4 or 1:5), keep Vt 6 mL/kg, accept hypercapnia (pH ≥ 7.15). Bronchodilators (salbutamol, ipratropium, magnesium, ketamine), deep sedation ± NMB. Recheck total PEEP after each change.",
+    cites: ["Lumb Ch.31"],
   },
   {
     title: "Predicting extubation success",
@@ -48,6 +50,7 @@ const workedExamples: WorkedExample[] = [
       "RSBI = RR/Vt(L) = 24 / 0.38 = 63 (< 105 favours success). Cuff leak < 110 mL predicts post-extubation stridor. SBT physiologically passed. Risk-stratify high.",
     answer:
       "Pass SBT but high stridor risk — give dexamethasone 4 mg IV every 6 h for 12–24 h pre-extubation (Cochrane). Extubate to HFNO (or NIV if hypercapnic/cardiac), have reintubation kit at the bedside. Monitor ROX index (SpO₂/FiO₂)/RR — ≥ 4.88 at 2/6/12 h predicts HFNO success.",
+    cites: ["BJA Educ 2018"],
   },
   {
     title: "APRV T low titration",
@@ -57,27 +60,28 @@ const workedExamples: WorkedExample[] = [
       "Termination ratio = end-expiratory / peak = 12/60 = 20 %. Target is 50–75 % to maintain intrinsic PEEP and prevent derecruitment. T low is too long — flow has dropped too far before release ends.",
     answer:
       "Shorten T low (e.g. 0.6 → 0.4 s) and recheck — termination should fall in the 50–75 % PEFR window. Wean by 'drop and stretch': reduce P high by 2 cmH₂O and lengthen T high every 4–8 h until P high ≈ 10 → CPAP/PSV.",
+    cites: ["BJA Educ 2019"],
   },
 ];
 
 const keyPoints = [
-  "VCV guarantees volume; PCV guarantees pressure — know the trade-offs",
-  "Lung-protective ventilation: 6 ml/kg IBW, Pplat ≤30, driving pressure ≤15",
-  "Daily SBTs are the best strategy for weaning — do not delay",
-  "Driving pressure (Pplat − PEEP) is the strongest predictor of ARDS mortality",
-  "APRV uses prolonged P high for recruitment with brief releases for CO₂ clearance; titrate T low to 50–75 % PEFR",
-  "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% (NNT 6)",
-  "VAP prevention: HOB elevation, daily sedation hold, subglottic drainage, cuff pressure 20–30",
-  "Cuff leak <110 mL predicts stridor — give prophylactic steroids 12–24h pre-extubation",
-  "HFNO: dead space washout + ~1 cmH₂O PEEP per 10 L/min; ROX index ≥4.88 predicts success",
-  "VIDD begins within 18–69 hours of CMV — diaphragm loses ~6% thickness per day",
-  "TFdi >30% predicts successful extubation; TFdi <20% predicts weaning failure",
-  "ICUAW: MRC sum score <48/60 confirms diagnosis; CIP has reduced SNAPs, CIM has normal SNAPs",
-  "Early mobilisation within 48–72h improves functional independence (Schweickert: 59% vs 35%)",
-  "PICS affects 50–70% of ICU survivors across physical, cognitive, and psychological domains",
-  "Delirium duration is the strongest modifiable risk factor for cognitive PICS (BRAIN-ICU)",
-  "ABCDEF bundle: pain, SAT/SBT, sedation choice, delirium, early mobility, family engagement",
-  "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
+  { text: "VCV guarantees volume; PCV guarantees pressure — know the trade-offs", cites: ["Lumb Ch.31"] },
+  { text: "Lung-protective ventilation: 6 ml/kg IBW, Pplat ≤30, driving pressure ≤15", cites: ["BJA Educ 2018"] },
+  { text: "Daily SBTs are the best strategy for weaning — do not delay", cites: ["BJA Educ 2019"] },
+  { text: "Driving pressure (Pplat − PEEP) is the strongest predictor of ARDS mortality", cites: ["Lumb Ch.31"] },
+  { text: "APRV uses prolonged P high for recruitment with brief releases for CO₂ clearance; titrate T low to 50–75 % PEFR", cites: ["BJA Educ 2018"] },
+  { text: "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% (NNT 6)", cites: ["BJA Educ 2019"] },
+  { text: "VAP prevention: HOB elevation, daily sedation hold, subglottic drainage, cuff pressure 20–30", cites: ["Lumb Ch.31"] },
+  { text: "Cuff leak <110 mL predicts stridor — give prophylactic steroids 12–24h pre-extubation", cites: ["BJA Educ 2018"] },
+  { text: "HFNO: dead space washout + ~1 cmH₂O PEEP per 10 L/min; ROX index ≥4.88 predicts success", cites: ["BJA Educ 2019"] },
+  { text: "VIDD begins within 18–69 hours of CMV — diaphragm loses ~6% thickness per day", cites: ["Lumb Ch.31"] },
+  { text: "TFdi >30% predicts successful extubation; TFdi <20% predicts weaning failure", cites: ["BJA Educ 2018"] },
+  { text: "ICUAW: MRC sum score <48/60 confirms diagnosis; CIP has reduced SNAPs, CIM has normal SNAPs", cites: ["BJA Educ 2019"] },
+  { text: "Early mobilisation within 48–72h improves functional independence (Schweickert: 59% vs 35%)", cites: ["Lumb Ch.31"] },
+  { text: "PICS affects 50–70% of ICU survivors across physical, cognitive, and psychological domains", cites: ["BJA Educ 2018"] },
+  { text: "Delirium duration is the strongest modifiable risk factor for cognitive PICS (BRAIN-ICU)", cites: ["BJA Educ 2019"] },
+  { text: "ABCDEF bundle: pain, SAT/SBT, sedation choice, delirium, early mobility, family engagement", cites: ["Lumb Ch.31"] },
+  { text: "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO", cites: ["BJA Educ 2018"] },
 ];
 
 const tocItems = [

@@ -40,6 +40,7 @@ const workedExamples: WorkedExample[] = [
         difficult-airway equipment, and recruit experienced help.
       </>
     ),
+    cites: ["BJA Educ 2015"],
   },
   {
     title: "Spinal anaesthesia dose for caesarean section",
@@ -70,6 +71,7 @@ const workedExamples: WorkedExample[] = [
         + start phenylephrine infusion at the time of spinal; maintain SBP within 10% of baseline.
       </>
     ),
+    cites: ["BJA Educ 2020"],
   },
 ];
 
@@ -97,13 +99,13 @@ const MaternalPhysiologyTopic = () => {
         keyPoints: ["Power & Kam Ch.17", "BJA Educ 2015"],
       }}
       keyPoints={[
-        "CO ↑ 30–50%, SVR ↓ 20% — left uterine displacement essential from 20 weeks.",
-        "↓ FRC + ↑ O₂ consumption ⇒ rapid desaturation during apnoea — pre-oxygenate meticulously.",
-        "Physiological anaemia: plasma volume ↑ 45% vs RBC mass ↑ 20%; Hb nadir ~110 g/L.",
-        "Hypercoagulable state: ↑ fibrinogen, ↑ clotting factors, ↓ protein S → VTE risk ↑ 5–10×.",
-        "MAC ↓ 30–40% and intrathecal/epidural LA dose requirements ↓ ~30%.",
-        "Aspiration risk ↑: ↓ LOS tone, ↑ intragastric pressure, delayed gastric emptying in labour.",
-        "Phenylephrine infusion is preferred over ephedrine for spinal hypotension at caesarean section.",
+        { text: "CO ↑ 30–50%, SVR ↓ 20% — left uterine displacement essential from 20 weeks.", cites: ["OAA/AAGBI 2013"] },
+        { text: "↓ FRC + ↑ O₂ consumption ⇒ rapid desaturation during apnoea — pre-oxygenate meticulously.", cites: ["Power & Kam Ch.17"] },
+        { text: "Physiological anaemia: plasma volume ↑ 45% vs RBC mass ↑ 20%; Hb nadir ~110 g/L.", cites: ["BJA Educ 2015"] },
+        { text: "Hypercoagulable state: ↑ fibrinogen, ↑ clotting factors, ↓ protein S → VTE risk ↑ 5–10×.", cites: ["BJA Educ 2020"] },
+        { text: "MAC ↓ 30–40% and intrathecal/epidural LA dose requirements ↓ ~30%.", cites: ["OAA/AAGBI 2013"] },
+        { text: "Aspiration risk ↑: ↓ LOS tone, ↑ intragastric pressure, delayed gastric emptying in labour.", cites: ["Power & Kam Ch.17"] },
+        { text: "Phenylephrine infusion is preferred over ephedrine for spinal hypotension at caesarean section.", cites: ["BJA Educ 2015"] },
       ]}
       coreConcepts={
         <>

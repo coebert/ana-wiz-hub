@@ -36,6 +36,7 @@ const workedExamples: WorkedExample[] = [
         Direct postoperative <strong>level-3 admission</strong> with planned sepsis bundle, lung-protective ventilation, vasopressor support and a documented treatment-escalation plan agreed pre-operatively.
       </>
     ),
+   cites: ["Pearse 2006"],
   },
   {
     title: "First 24 h goals after major hepatectomy",
@@ -58,6 +59,7 @@ const workedExamples: WorkedExample[] = [
         SV-guided fluid optimisation, MAP within 10% of baseline, lung-protective ventilation, glucose 6–10 mmol/L, KDIGO bundle, multimodal opioid-sparing analgesia and a planned 06:00 sedation hold for assessment.
       </>
     ),
+   cites: ["NCEPOD 2011"],
   },
   {
     title: "MINS detection on day 2",
@@ -78,6 +80,7 @@ const workedExamples: WorkedExample[] = [
         This <strong>is MINS</strong> and warrants escalation: ECG, repeat troponin, echocardiography, antiplatelet + statin and cardiology review. Do not initiate β-blockade de novo (POISE harm signal).
       </>
     ),
+   cites: ["CPOC 2020"],
   },
 ];
 

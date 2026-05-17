@@ -43,6 +43,7 @@ const workedExamples: WorkedExample[] = [
         (PaO₂ ~80 kPa), dissolved climbs to ~1.8 mL/dL but bound is unchanged because Hb is already saturated.
       </>
     ),
+    cites: ["BJA Educ 2004"],
   },
   {
     title: "CO poisoning — why SpO₂ misleads",
@@ -72,6 +73,7 @@ const workedExamples: WorkedExample[] = [
         half-life to ~20 min).
       </>
     ),
+    cites: ["Power & Kam Ch.7"],
   },
 ];
 
@@ -112,14 +114,14 @@ const OxygenHaemoglobinTopic = () => {
         </>
       }
       keyPoints={[
-        "The ODC is sigmoid due to cooperative O₂ binding to haemoglobin's four haem groups (T → R conformational change).",
-        "P₅₀ is normally 26.7 mmHg (3.5 kPa) — the PaO₂ at which Hb is 50% saturated.",
-        "Right shift (↓ affinity): ↑ temp, ↑ CO₂, ↓ pH, ↑ 2,3-DPG — aids tissue O₂ delivery.",
-        "Left shift (↑ affinity): ↓ temp, ↓ CO₂, ↑ pH, HbF, COHb, methaemoglobin — impairs O₂ offloading.",
-        "Bohr effect: ↑CO₂/H⁺ in tissues → right shift → more O₂ released. Reverses in lungs.",
-        "DO₂ = CO × [(1.34 × Hb × SaO₂) + (0.0225 × PaO₂)]; normal ~1000 mL/min.",
-        "SpO₂ is a late indicator of falling PaO₂ — pre-oxygenation provides a reservoir on the flat upper part of the curve.",
-        "Standard pulse oximetry cannot detect COHb or metHb — use co-oximetry when these are suspected.",
+        { text: "The ODC is sigmoid due to cooperative O₂ binding to haemoglobin's four haem groups (T → R conformational change).", cites: ["West Ch.6"] },
+        { text: "P₅₀ is normally 26.7 mmHg (3.5 kPa) — the PaO₂ at which Hb is 50% saturated.", cites: ["BJA Educ 2004"] },
+        { text: "Right shift (↓ affinity): ↑ temp, ↑ CO₂, ↓ pH, ↑ 2,3-DPG — aids tissue O₂ delivery.", cites: ["Power & Kam Ch.7"] },
+        { text: "Left shift (↑ affinity): ↓ temp, ↓ CO₂, ↑ pH, HbF, COHb, methaemoglobin — impairs O₂ offloading.", cites: ["West Ch.6"] },
+        { text: "Bohr effect: ↑CO₂/H⁺ in tissues → right shift → more O₂ released. Reverses in lungs.", cites: ["BJA Educ 2004"] },
+        { text: "DO₂ = CO × [(1.34 × Hb × SaO₂) + (0.0225 × PaO₂)]; normal ~1000 mL/min.", cites: ["Power & Kam Ch.7"] },
+        { text: "SpO₂ is a late indicator of falling PaO₂ — pre-oxygenation provides a reservoir on the flat upper part of the curve.", cites: ["West Ch.6"] },
+        { text: "Standard pulse oximetry cannot detect COHb or metHb — use co-oximetry when these are suspected.", cites: ["BJA Educ 2004"] },
       ]}
       coreConcepts={
         <>

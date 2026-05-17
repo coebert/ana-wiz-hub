@@ -24,6 +24,7 @@ const workedExamples: WorkedExample[] = [
       "τ = Volume / Flow = 2.5 L / 8 L·min⁻¹ = 0.31 min ≈ 19 s.\nWash-in is a negative exponential rise: 1 τ → 63%, 3 τ → 95%, 5 τ → 99%.\nTime to ~95% ≈ 3 τ = 3 × 19 s ≈ 57 s.",
     answer:
       "End-tidal O₂ reaches ~95% after roughly one minute (3 time constants). This underpins the AAGBI recommendation of ≥3 minutes of tidal-volume pre-oxygenation, which provides a comfortable safety margin to ≥99% (5τ).",
+    cites: ["Peck & Hill Appendix"],
   },
   {
     title: "Half-life vs time constant in remifentanil",
@@ -33,6 +34,7 @@ const workedExamples: WorkedExample[] = [
       "t½ = 0.693 × τ → τ = t½ / 0.693 = 3 / 0.693 ≈ 4.3 min.\nAfter stopping the infusion: 1 τ (≈4.3 min) → 63% drop, 3 τ (≈13 min) → 95% drop.",
     answer:
       "The time constant of decay is ~4.3 min. Plasma concentration falls by ~95% within 13 min of stopping the infusion, explaining why patients reliably emerge within minutes regardless of infusion duration.",
+    cites: ["Middleton Appendix"],
   },
 ];
 
@@ -58,13 +60,13 @@ const MathConceptsTopic = () => {
         objectives: ["Cross & Plunkett Ch.1"],
       }}
       keyPoints={[
-        "Linear (y = kx): Ohm's law, laminar flow, Beer-Lambert — direct proportionality",
-        "Exponential decay (e⁻ᵏˣ): First-order drug elimination, nitrogen washout, capacitor discharge",
-        "Negative exponential rise (1 − e⁻ᵏˣ): Preoxygenation wash-in, volatile agent uptake, capacitor charging",
-        "Sigmoid: ODC (cooperative binding), dose-response curves — Hill coefficient determines steepness",
-        "One time constant (τ) = 63% change; t½ = 0.693 × τ",
-        "Logarithmic scales (pH, dB, pKa) compress large ranges — 1 pH unit = 10× change in [H⁺]",
-        "Bi-exponential decay: Two-compartment pharmacokinetics — rapid distribution then slow elimination",
+        { text: "Linear (y = kx): Ohm's law, laminar flow, Beer-Lambert — direct proportionality", cites: ["Cross & Plunkett Ch.1"] },
+        { text: "Exponential decay (e⁻ᵏˣ): First-order drug elimination, nitrogen washout, capacitor discharge", cites: ["Peck & Hill Appendix"] },
+        { text: "Negative exponential rise (1 − e⁻ᵏˣ): Preoxygenation wash-in, volatile agent uptake, capacitor charging", cites: ["Middleton Appendix"] },
+        { text: "Sigmoid: ODC (cooperative binding), dose-response curves — Hill coefficient determines steepness", cites: ["Cross & Plunkett Ch.1"] },
+        { text: "One time constant (τ) = 63% change; t½ = 0.693 × τ", cites: ["Peck & Hill Appendix"] },
+        { text: "Logarithmic scales (pH, dB, pKa) compress large ranges — 1 pH unit = 10× change in [H⁺]", cites: ["Middleton Appendix"] },
+        { text: "Bi-exponential decay: Two-compartment pharmacokinetics — rapid distribution then slow elimination", cites: ["Cross & Plunkett Ch.1"] },
       ]}
       coreConcepts={
         <>

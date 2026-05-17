@@ -24,11 +24,11 @@ const BariatricAnaesthesiaTopic = () => {
         "Outline postoperative care priorities including analgesia and VTE prophylaxis",
       ]}
       keyPoints={[
-        "FRC falls dramatically in obesity — may fall below closing capacity causing shunt even during tidal breathing",
-        "Ramped position + head-up tilt + apnoeic oxygenation are essential for safe airway management",
-        "Drug dosing: LBW for propofol/remifentanil/NMBAs, TBW for succinylcholine, ABW for sugammadex",
-        "STOP-BANG ≥5 = high-risk OSA. Screen for OHS (daytime hypercapnia) if BMI ≥30 + OSA",
-        "Postoperative: head-up positioning, resume CPAP, continuous SpO₂, multimodal opioid-sparing analgesia",
+        { text: "FRC falls dramatically in obesity — may fall below closing capacity causing shunt even during tidal breathing", cites: ["BJA Educ 2015 Bariatric"] },
+        { text: "Ramped position + head-up tilt + apnoeic oxygenation are essential for safe airway management", cites: ["SOBA 2022"] },
+        { text: "Drug dosing: LBW for propofol/remifentanil/NMBAs, TBW for succinylcholine, ABW for sugammadex", cites: ["STOP-BANG"] },
+        { text: "STOP-BANG ≥5 = high-risk OSA. Screen for OHS (daytime hypercapnia) if BMI ≥30 + OSA", cites: ["AAGBI Obesity 2015"] },
+        { text: "Postoperative: head-up positioning, resume CPAP, continuous SpO₂, multimodal opioid-sparing analgesia", cites: ["BJA Educ 2015 Bariatric"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL] },

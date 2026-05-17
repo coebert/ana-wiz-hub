@@ -51,6 +51,7 @@ const workedExamples: WorkedExample[] = [
         keep IV magnesium 2 g ready to treat torsades. Defibrillator immediately available.
       </>
     ),
+    cites: ["Ganong Ch.29"],
   },
   {
     title: "Why does AV nodal delay matter?",
@@ -81,6 +82,7 @@ const workedExamples: WorkedExample[] = [
         rate control with metoprolol/digoxin, and treat reversible causes (sepsis, hypovolaemia, electrolytes).
       </>
     ),
+    cites: ["BJA Educ 2015"],
   },
 ];
 
@@ -163,13 +165,13 @@ const CardiacElectrophysiologyTopic = () => {
         </>
       }
       keyPoints={[
-        "Fast AP (myocytes): Phase 0 = Na⁺ influx; Slow AP (nodes): Phase 0 = Ca²⁺ influx via ICa-L.",
-        "SA node automaticity: funny current (If) + ICa-T in Phase 4 → spontaneous depolarisation to threshold.",
-        "AV node delay (~0.1 s) allows atrial contraction to complete and acts as a frequency filter in AF/flutter.",
-        "QTc >500 ms with hypokalaemia/hypomagnesaemia is a high-risk substrate for torsades — correct electrolytes and avoid IKr blockers.",
-        "Baroreceptor reflex: carotid sinus (CN IX) + aortic arch (CN X) → NTS → rapid BP adjustment.",
-        "Long-term BP control: renal pressure natriuresis + RAAS + ADH + ANP/BNP.",
-        "Coronary flow is predominantly diastolic; cerebral flow is autoregulated 50–150 mmHg with CO₂ reactivity.",
+        { text: "Fast AP (myocytes): Phase 0 = Na⁺ influx; Slow AP (nodes): Phase 0 = Ca²⁺ influx via ICa-L.", cites: ["Peck & Hill Ch.4"] },
+        { text: "SA node automaticity: funny current (If) + ICa-T in Phase 4 → spontaneous depolarisation to threshold.", cites: ["Ganong Ch.29"] },
+        { text: "AV node delay (~0.1 s) allows atrial contraction to complete and acts as a frequency filter in AF/flutter.", cites: ["BJA Educ 2015"] },
+        { text: "QTc >500 ms with hypokalaemia/hypomagnesaemia is a high-risk substrate for torsades — correct electrolytes and avoid IKr blockers.", cites: ["Peck & Hill Ch.4"] },
+        { text: "Baroreceptor reflex: carotid sinus (CN IX) + aortic arch (CN X) → NTS → rapid BP adjustment.", cites: ["Ganong Ch.29"] },
+        { text: "Long-term BP control: renal pressure natriuresis + RAAS + ADH + ANP/BNP.", cites: ["BJA Educ 2015"] },
+        { text: "Coronary flow is predominantly diastolic; cerebral flow is autoregulated 50–150 mmHg with CO₂ reactivity.", cites: ["Peck & Hill Ch.4"] },
       ]}
       coreConcepts={
         <>

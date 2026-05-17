@@ -43,6 +43,7 @@ const workedExamples: WorkedExample[] = [
         antimuscarinic at induction with the team if multiple muscles are to be operated on.
       </>
     ),
+    cites: ["Ganong Ch.13"],
   },
   {
     title: "Cholinergic crisis vs myasthenic crisis",
@@ -74,6 +75,7 @@ const workedExamples: WorkedExample[] = [
         support, IVIg/plasma exchange, treat trigger.
       </>
     ),
+    cites: ["Power & Kam Ch.14"],
   },
 ];
 
@@ -112,13 +114,13 @@ const AutonomicNervousTopic = () => {
         </>
       }
       keyPoints={[
-        "Sympathetic: thoracolumbar T1–L2; short pre-/long postganglionic. Postganglionic NT = noradrenaline (except sweat glands = ACh).",
-        "Parasympathetic: craniosacral (III, VII, IX, X, S2–4); long pre-/short postganglionic. NT = ACh at both synapses.",
-        "Adrenoceptors: α₁ (vasoconstriction), α₂ (presynaptic inhibition, sedation), β₁ (↑HR, ↑inotropy), β₂ (bronchodilation).",
-        "Muscarinic receptors: M₁ (gastric), M₂ (cardiac — ↓HR), M₃ (smooth muscle contraction, secretions).",
-        "NA synthesis: Tyrosine → DOPA → Dopamine → NA → Adrenaline. Rate-limiting enzyme = tyrosine hydroxylase.",
-        "Baroreceptor reflex: carotid sinus (CN IX) + aortic arch (CN X) → NTS → autonomic balance. Resets in chronic hypertension.",
-        "Oculocardiac reflex: V₁ afferent → X efferent → bradycardia. Stop stimulus, ventilate, atropine if persistent.",
+        { text: "Sympathetic: thoracolumbar T1–L2; short pre-/long postganglionic. Postganglionic NT = noradrenaline (except sweat glands = ACh).", cites: ["BJA Educ 2007"] },
+        { text: "Parasympathetic: craniosacral (III, VII, IX, X, S2–4); long pre-/short postganglionic. NT = ACh at both synapses.", cites: ["Ganong Ch.13"] },
+        { text: "Adrenoceptors: α₁ (vasoconstriction), α₂ (presynaptic inhibition, sedation), β₁ (↑HR, ↑inotropy), β₂ (bronchodilation).", cites: ["Power & Kam Ch.14"] },
+        { text: "Muscarinic receptors: M₁ (gastric), M₂ (cardiac — ↓HR), M₃ (smooth muscle contraction, secretions).", cites: ["BJA Educ 2007"] },
+        { text: "NA synthesis: Tyrosine → DOPA → Dopamine → NA → Adrenaline. Rate-limiting enzyme = tyrosine hydroxylase.", cites: ["Ganong Ch.13"] },
+        { text: "Baroreceptor reflex: carotid sinus (CN IX) + aortic arch (CN X) → NTS → autonomic balance. Resets in chronic hypertension.", cites: ["Power & Kam Ch.14"] },
+        { text: "Oculocardiac reflex: V₁ afferent → X efferent → bradycardia. Stop stimulus, ventilate, atropine if persistent.", cites: ["BJA Educ 2007"] },
       ]}
       coreConcepts={
         <>

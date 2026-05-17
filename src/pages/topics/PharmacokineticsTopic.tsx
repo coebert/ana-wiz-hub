@@ -150,7 +150,8 @@ const PharmacokineticsTopic = () => {
             </div>
           ),
           answer: "t½ ≈ 7 h, steady state in 28–35 h; load with Cp_target × Vd if urgent.",
-        },
+    cites: ["Peck & Hill Ch.2"],
+  },
         {
           title: "Choosing remifentanil vs fentanyl for a long case",
           scenario: "You plan a 6-hour spinal procedure with rapid postoperative neurological assessment. Which opioid infusion would you choose and why?",
@@ -173,15 +174,16 @@ const PharmacokineticsTopic = () => {
             </div>
           ),
           answer: "Remifentanil — flat CSHT ~3–4 min ensures predictable wake-up; bridge with longer-acting analgesia.",
-        },
+    cites: ["BJA Educ 2017"],
+  },
       ]}
       keyPoints={[
-        "Pharmacokinetics is ADME: Absorption, Distribution, Metabolism, and Elimination.",
-        "Compartment models describe drug distribution kinetically. The two-compartment model shows bi-exponential decline (α distribution, β elimination).",
-        "Volume of distribution (Vd) is a theoretical concept; a large Vd indicates extensive tissue distribution.",
-        "Clearance is the volume of plasma completely cleared of drug per unit time. High extraction ratio drugs are flow-dependent.",
-        "Half-life (t½ = 0.693 × Vd / Cl) determines time to steady state (~4-5 half-lives).",
-        "Context-sensitive half-time is more clinically relevant for infusions than terminal half-life. Remifentanil has a uniquely short and constant CSHT.",
+        { text: "Pharmacokinetics is ADME: Absorption, Distribution, Metabolism, and Elimination.", cites: ["Stanski & Shafer"] },
+        { text: "Compartment models describe drug distribution kinetically. The two-compartment model shows bi-exponential decline (α distribution, β elimination).", cites: ["Peck & Hill Ch.2"] },
+        { text: "Volume of distribution (Vd) is a theoretical concept; a large Vd indicates extensive tissue distribution.", cites: ["BJA Educ 2017"] },
+        { text: "Clearance is the volume of plasma completely cleared of drug per unit time. High extraction ratio drugs are flow-dependent.", cites: ["Stanski & Shafer"] },
+        { text: "Half-life (t½ = 0.693 × Vd / Cl) determines time to steady state (~4-5 half-lives).", cites: ["Peck & Hill Ch.2"] },
+        { text: "Context-sensitive half-time is more clinically relevant for infusions than terminal half-life. Remifentanil has a uniquely short and constant CSHT.", cites: ["BJA Educ 2017"] },
       ]}
     />
   );

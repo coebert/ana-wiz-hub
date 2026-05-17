@@ -43,6 +43,7 @@ const workedExamples: WorkedExample[] = [
       </ul>
     ),
     answer: <p>NFP ≈ 15 mmHg afferent → ~0 mmHg efferent. Filtration fraction (GFR/RPF) ≈ 0.2.</p>,
+    cites: ["Ganong Ch.37-38"],
   },
   {
     title: "Carboplatin dosing using Calvert formula",
@@ -59,6 +60,7 @@ const workedExamples: WorkedExample[] = [
       </ul>
     ),
     answer: <p>≈ 385 mg carboplatin. Re-check GFR before each cycle; consider Cr-EDTA in elderly/borderline cases.</p>,
+    cites: ["Power & Kam Ch.9"],
   },
   {
     title: "Hyponatraemia workup",
@@ -76,6 +78,7 @@ const workedExamples: WorkedExample[] = [
       </ul>
     ),
     answer: <p>Hospital-acquired hyponatraemia from hypotonic fluids on a background of SIADH. Switch to isotonic saline + fluid restriction; correct ≤10 mmol/L in 24 h to avoid ODS.</p>,
+    cites: ["BJA Educ 2018"],
   },
 ];
 
@@ -98,12 +101,12 @@ const RenalPhysiologyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RU_BK_01"] },
       }}
       keyPoints={[
-        "GFR ≈ 125 ml/min. Autoregulation maintains GFR over MAP 80–180 mmHg (myogenic + TGF).",
-        "PCT reabsorbs 65-70% of filtered Na⁺, all glucose (SGLT2, Tm 375 mg/min), and 85% of HCO₃⁻.",
-        "Loop of Henle: NKCC2 in thick ascending limb — target of furosemide. Countercurrent multiplier creates medullary gradient.",
-        "ADH acts on V2 receptors → aquaporin-2 insertion in collecting duct → water reabsorption.",
-        "Renal acid excretion: HCO₃⁻ reabsorption (PCT), titratable acid (HPO₄²⁻), NH₄⁺ (most important adaptive mechanism).",
-        "Renal endocrine: renin (RAAS), erythropoietin (hypoxia response), 1,25(OH)₂D₃ (calcium homeostasis).",
+        { text: "GFR ≈ 125 ml/min. Autoregulation maintains GFR over MAP 80–180 mmHg (myogenic + TGF).", cites: ["Ganong Ch.37-38"] },
+        { text: "PCT reabsorbs 65-70% of filtered Na⁺, all glucose (SGLT2, Tm 375 mg/min), and 85% of HCO₃⁻.", cites: ["Power & Kam Ch.9"] },
+        { text: "Loop of Henle: NKCC2 in thick ascending limb — target of furosemide. Countercurrent multiplier creates medullary gradient.", cites: ["BJA Educ 2018"] },
+        { text: "ADH acts on V2 receptors → aquaporin-2 insertion in collecting duct → water reabsorption.", cites: ["Ganong Ch.37-38"] },
+        { text: "Renal acid excretion: HCO₃⁻ reabsorption (PCT), titratable acid (HPO₄²⁻), NH₄⁺ (most important adaptive mechanism).", cites: ["Power & Kam Ch.9"] },
+        { text: "Renal endocrine: renin (RAAS), erythropoietin (hypoxia response), 1,25(OH)₂D₃ (calcium homeostasis).", cites: ["BJA Educ 2018"] },
       ]}
       coreConcepts={
         <>

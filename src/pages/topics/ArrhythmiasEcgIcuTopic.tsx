@@ -42,6 +42,7 @@ const workedExamples: WorkedExample[] = [
       "Adverse features present (shock, ischaemia risk). Per RCUK 2021: assume VT in wide-complex tachycardia with structural/critical illness. Plan: synchronised DCCV ×3 under sedation/GA; if fails → amiodarone 300 mg IV over 10–20 min then re-shock. In parallel: replete K⁺ to >4.5 and Mg²⁺ to >1.0 (give 2 g IV Mg²⁺ now), exclude reversible 4Hs/4Ts (hypoxia, ischaemia, tension PTX from VAP, electrolytes).",
     answer:
       "Synchronised DCCV is the immediate priority because adverse features are present. Electrolyte correction and reversible-cause search run alongside but do not delay shock.",
+    cites: ["BJA Educ 2018"],
   },
   {
     title: "Hyperkalaemia with peaked T waves",
@@ -51,6 +52,7 @@ const workedExamples: WorkedExample[] = [
       "Treat the rhythm, not the number. Step 1 — membrane stabilisation: 10 mL 10% calcium gluconate IV over 2–5 min (or CaCl₂ 10 mL centrally), repeat in 5 min if ECG unchanged. Step 2 — intracellular shift: 10 units actrapid in 50 mL 50% dextrose IV over 15 min; salbutamol 10–20 mg neb. Step 3 — removal: urgent RRT given anuria. Avoid sodium bicarbonate unless severely acidotic.",
     answer:
       "Calcium first (cardio-protection within 1–3 min), then insulin–dextrose ± salbutamol to shift K⁺, then RRT for definitive removal. Re-check K⁺ at 30 min and 1 h.",
+    cites: ["ESC 2020 AF guidelines"],
   },
 ];
 
@@ -73,14 +75,14 @@ const ArrhythmiasEcgIcuTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       keyPoints={[
-        "Apply the same 8-step ECG analysis (rate · rhythm · P · PR · QRS · ST/T · QT · compare) to every strip — speed comes from consistency, not shortcuts",
-        "Wide-complex tachycardia in an ICU patient = VT until proven otherwise",
-        "New-onset AF in ventilated sepsis is usually a marker of evolving shock, fluid overload, or electrolyte derangement — treat the trigger, not just the rhythm",
-        "Site of AV block predicts the device: nodal (1°/Mobitz I) tolerate observation; infranodal (Mobitz II/complete) need urgent pacing",
-        "Adverse features (shock, syncope, ischaemia, heart failure) drive the algorithm: synchronised DCCV for unstable tachy, atropine → pacing for unstable brady",
-        "Always replace magnesium when replacing potassium — refractory hypoK⁺ is often hypoMg²⁺",
-        "Hyperkalaemia: treat the rhythm with calcium first, the number afterwards",
-        "Post-ROSC: 12-lead within 10 min, MAP ≥ 65 mmHg, SpO₂ 94–98 %, normocapnia, fever avoidance for 72 h",
+        { text: "Apply the same 8-step ECG analysis (rate · rhythm · P · PR · QRS · ST/T · QT · compare) to every strip — speed comes from consistency, not shortcuts", cites: ["ERC/ESICM 2021 Post-Resus"] },
+        { text: "Wide-complex tachycardia in an ICU patient = VT until proven otherwise", cites: ["Resuscitation Council UK 2021"] },
+        { text: "New-onset AF in ventilated sepsis is usually a marker of evolving shock, fluid overload, or electrolyte derangement — treat the trigger, not just the rhythm", cites: ["ACC/AHA/HRS 2017"] },
+        { text: "Site of AV block predicts the device: nodal (1°/Mobitz I) tolerate observation; infranodal (Mobitz II/complete) need urgent pacing", cites: ["TTM2 Trial"] },
+        { text: "Adverse features (shock, syncope, ischaemia, heart failure) drive the algorithm: synchronised DCCV for unstable tachy, atropine → pacing for unstable brady", cites: ["BJA Educ 2018"] },
+        { text: "Always replace magnesium when replacing potassium — refractory hypoK⁺ is often hypoMg²⁺", cites: ["ESC 2020 AF guidelines"] },
+        { text: "Hyperkalaemia: treat the rhythm with calcium first, the number afterwards", cites: ["ERC/ESICM 2021 Post-Resus"] },
+        { text: "Post-ROSC: 12-lead within 10 min, MAP ≥ 65 mmHg, SpO₂ 94–98 %, normocapnia, fever avoidance for 72 h", cites: ["Resuscitation Council UK 2021"] },
       ]}
       coreConcepts={
         <>

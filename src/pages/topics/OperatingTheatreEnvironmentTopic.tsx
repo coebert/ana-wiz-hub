@@ -68,7 +68,7 @@ const OperatingTheatreEnvironmentTopic = () => {
         { text: "Active scavenging (AGSS) keeps theatre WAG concentrations below COSHH 8-h TWA limits: N₂O 100 ppm, isoflurane 50 ppm, sevoflurane 60 ppm (informal). Minimal-flow anaesthesia is the strongest single mitigation", cites: ["COSHH WAG 2020"] },
         { text: "Electrical supply uses an isolated (IT) power system with a line isolation monitor — a single fault to earth alarms but does not produce shock current; equipment classified CF (cardiac-floating) for direct cardiac contact", cites: ["IEC 60601-1"] },
         { text: "WHO Surgical Safety Checklist (Sign In before induction → Time Out before incision → Sign Out before leaving theatre) reduces morbidity and mortality and embeds team briefing and human-factors practice", cites: ["WHO Checklist 2009"] },
-        "Isolation theatres for highly infectious cases reverse the cascade (negative pressure with airlock lobby) — must be requested explicitly and confirmed with estates",
+        { text: "Isolation theatres for highly infectious cases reverse the cascade (negative pressure with airlock lobby) — must be requested explicitly and confirmed with estates", cites: ["HTM 03-01"] },
       ]}
       coreConcepts={
         <>

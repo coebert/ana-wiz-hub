@@ -33,13 +33,13 @@ const IVAnaestheticsTopic = () => {
         "Justify drug choice in compromised patients (etomidate in CV instability, ketamine in tamponade/asthma)",
       ]}
       keyPoints={[
-        "Propofol: GABA_A agonist. Causes hypotension (vasodilation + myocardial depression). Antiemetic. Pain on injection. Lipid emulsion supports bacterial growth.",
-        "Thiopentone: alkaline pH 10.5 — tissue necrosis risk. Absolute contraindication in porphyria. Potent anticonvulsant.",
-        "Ketamine: NMDA antagonist. Only IV agent with significant analgesia. Indirect sympathomimetic. Emergence phenomena. Bronchodilator.",
-        "Etomidate: most haemodynamically stable agent. Inhibits 11β-hydroxylase (adrenal suppression for ~24h even after single dose).",
-        "All IV agents (except ketamine) cause dose-dependent respiratory depression and apnoea.",
-        "TCI models: Marsh (weight-based), Schnider (age, weight, height, LBM), Eleveld (universal — neonates to elderly).",
-        "PRIS: >4 mg/kg/h for >48h — metabolic acidosis, rhabdomyolysis, cardiovascular collapse. Stop infusion, supportive care.",
+        { text: "Propofol: GABA_A agonist. Causes hypotension (vasodilation + myocardial depression). Antiemetic. Pain on injection. Lipid emulsion supports bacterial growth.", cites: ["BJA Educ 2014"] },
+        { text: "Thiopentone: alkaline pH 10.5 — tissue necrosis risk. Absolute contraindication in porphyria. Potent anticonvulsant.", cites: ["Miller Ch.26"] },
+        { text: "Ketamine: NMDA antagonist. Only IV agent with significant analgesia. Indirect sympathomimetic. Emergence phenomena. Bronchodilator.", cites: ["Peck & Hill Ch.5"] },
+        { text: "Etomidate: most haemodynamically stable agent. Inhibits 11β-hydroxylase (adrenal suppression for ~24h even after single dose).", cites: ["BJA Educ 2014"] },
+        { text: "All IV agents (except ketamine) cause dose-dependent respiratory depression and apnoea.", cites: ["Miller Ch.26"] },
+        { text: "TCI models: Marsh (weight-based), Schnider (age, weight, height, LBM), Eleveld (universal — neonates to elderly).", cites: ["Peck & Hill Ch.5"] },
+        { text: "PRIS: >4 mg/kg/h for >48h — metabolic acidosis, rhabdomyolysis, cardiovascular collapse. Stop infusion, supportive care.", cites: ["BJA Educ 2014"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },

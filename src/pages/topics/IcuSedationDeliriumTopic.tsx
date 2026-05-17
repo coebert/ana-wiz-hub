@@ -37,6 +37,7 @@ const workedExamples: WorkedExample[] = [
         use thiopentone, ketamine or volatile via Sedaconda. Mortality of established PRIS &gt; 30 %.
       </>
     ),
+    cites: ["DAS-Delirium"],
   },
   {
     title: "CAM-ICU positive after extubation delay",
@@ -61,6 +62,7 @@ const workedExamples: WorkedExample[] = [
         sleep hygiene (cluster care, earplugs, eye mask). Reassess CAM-ICU each shift.
       </>
     ),
+    cites: ["BJA Educ 2019"],
   },
   {
     title: "Daily SAT/SBT — when to abort",
@@ -83,18 +85,19 @@ const workedExamples: WorkedExample[] = [
         cooperative arousal. Document failure mode for the next attempt.
       </>
     ),
+    cites: ["BJA Educ 2017"],
   },
 ];
 
 const keyPoints = [
-  "Target light sedation (RASS 0 to −2) with daily sedation holds — improves ventilator-free days and ICU outcomes",
-  "PRIS risk: propofol >4 mg/kg/h for >48h → metabolic acidosis, rhabdomyolysis, hyperkalaemia, cardiac failure",
-  "CAM-ICU = acute onset/fluctuating course + inattention + (altered consciousness OR disorganised thinking)",
-  "ABCDEF bundle (Assess pain, Both SAT/SBT, Choice of sedation, Delirium monitoring, Early mobility, Family) reduces delirium and mortality",
-  "Dexmedetomidine is preferred in delirious patients (SPICE III: shorter time to extubation, neutral on mortality)",
-  "Haloperidol does NOT treat or prevent ICU delirium (MIND-USA, AID-ICU)",
-  "Avoid benzodiazepines for routine sedation — independent risk factor for delirium",
-  "Non-pharmacological measures (sleep hygiene, reorientation, mobilisation, family) are first-line for delirium",
+  { text: "Target light sedation (RASS 0 to −2) with daily sedation holds — improves ventilator-free days and ICU outcomes", cites: ["DAS-Delirium"] },
+  { text: "PRIS risk: propofol >4 mg/kg/h for >48h → metabolic acidosis, rhabdomyolysis, hyperkalaemia, cardiac failure", cites: ["BJA Educ 2019"] },
+  { text: "CAM-ICU = acute onset/fluctuating course + inattention + (altered consciousness OR disorganised thinking)", cites: ["BJA Educ 2017"] },
+  { text: "ABCDEF bundle (Assess pain, Both SAT/SBT, Choice of sedation, Delirium monitoring, Early mobility, Family) reduces delirium and mortality", cites: ["DAS-Delirium"] },
+  { text: "Dexmedetomidine is preferred in delirious patients (SPICE III: shorter time to extubation, neutral on mortality)", cites: ["BJA Educ 2019"] },
+  { text: "Haloperidol does NOT treat or prevent ICU delirium (MIND-USA, AID-ICU)", cites: ["BJA Educ 2017"] },
+  { text: "Avoid benzodiazepines for routine sedation — independent risk factor for delirium", cites: ["DAS-Delirium"] },
+  { text: "Non-pharmacological measures (sleep hygiene, reorientation, mobilisation, family) are first-line for delirium", cites: ["BJA Educ 2019"] },
 ];
 
 const IcuSedationDeliriumTopic = () => {

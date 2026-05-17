@@ -41,6 +41,7 @@ const workedExamples: WorkedExample[] = [
         VA-ECMO if refractory.
       </>
     ),
+    cites: ["BJA Educ 2019"],
   },
   {
     title: "Fluid responsiveness assessment",
@@ -64,6 +65,7 @@ const workedExamples: WorkedExample[] = [
         fluid (ANDROMEDA-SHOCK / FRESH).
       </>
     ),
+    cites: ["IABP-SHOCK II"],
   },
   {
     title: "ECMO sweep & FiO₂ adjustment",
@@ -86,6 +88,7 @@ const workedExamples: WorkedExample[] = [
         ECMO flow, check cannula position (recirculation), optimise haemoglobin ≥ 90 g/L.
       </>
     ),
+    cites: ["SHOCK trial"],
   },
   {
     title: "VA-ECMO LV distension",
@@ -108,23 +111,24 @@ const workedExamples: WorkedExample[] = [
         opening. Diurese / ultrafilter for pulmonary oedema.
       </>
     ),
+    cites: ["FICM ECMO 2021"],
   },
 ];
 
 const keyPoints = [
-  "Classify shock by mechanism: hypovolaemic, cardiogenic, distributive, obstructive — each has a characteristic CVP/CO/SVR pattern",
-  "Dynamic indices (PPV, SVV, PLR) are superior to static measures (CVP) for fluid responsiveness",
-  "Passive leg raise is the gold standard — works in spontaneous breathing and arrhythmias",
-  "Cardiogenic shock: inotropes + vasopressors, avoid fluid overload, consider mechanical support (IABP, Impella, VA-ECMO)",
-  "Vasopressors restore CPP = DBP − LVEDP — subendocardial perfusion is the rate-limiting step in shock",
-  "Noradrenaline is first-line in haemodynamically unstable PE — raises systemic DBP > PA pressure to restore RV CPP",
-  "Lactate clearance (>20% in 2 h) is a useful target for resuscitation adequacy",
-  "VV-ECMO: respiratory support only. VA-ECMO: cardiac + respiratory support, but risks limb ischaemia, LV distension and Harlequin syndrome",
-  "Sweep gas controls CO₂ removal; membrane FiO₂ controls oxygenation — they are independent levers",
-  "Harlequin (differential hypoxia): cyanosed upper body + pink legs — monitor right-radial ABG/SpO₂",
-  "IABP: inflates in diastole (↑ coronary perfusion), deflates in systole (↓ afterload) — contraindicated in AR/dissection; IABP-SHOCK II showed no mortality benefit",
-  "Impella unloads the LV directly (↓ LVEDP, ↓ MVO₂); LVAD provides total LV bypass for bridge-to-transplant or destination therapy",
-  "ECMO anticoagulation: UFH targeting APTT 60–80 s — balance bleeding vs circuit thrombosis",
+  { text: "Classify shock by mechanism: hypovolaemic, cardiogenic, distributive, obstructive — each has a characteristic CVP/CO/SVR pattern", cites: ["BJA Educ 2018 (ECMO)"] },
+  { text: "Dynamic indices (PPV, SVV, PLR) are superior to static measures (CVP) for fluid responsiveness", cites: ["ELSO Guidelines 2017"] },
+  { text: "Passive leg raise is the gold standard — works in spontaneous breathing and arrhythmias", cites: ["BJA Educ 2014"] },
+  { text: "Cardiogenic shock: inotropes + vasopressors, avoid fluid overload, consider mechanical support (IABP, Impella, VA-ECMO)", cites: ["SSC 2021 Haemodynamics"] },
+  { text: "Vasopressors restore CPP = DBP − LVEDP — subendocardial perfusion is the rate-limiting step in shock", cites: ["BJA Educ 2019"] },
+  { text: "Noradrenaline is first-line in haemodynamically unstable PE — raises systemic DBP > PA pressure to restore RV CPP", cites: ["IABP-SHOCK II"] },
+  { text: "Lactate clearance (>20% in 2 h) is a useful target for resuscitation adequacy", cites: ["SHOCK trial"] },
+  { text: "VV-ECMO: respiratory support only. VA-ECMO: cardiac + respiratory support, but risks limb ischaemia, LV distension and Harlequin syndrome", cites: ["FICM ECMO 2021"] },
+  { text: "Sweep gas controls CO₂ removal; membrane FiO₂ controls oxygenation — they are independent levers", cites: ["BJA Educ 2018 (ECMO)"] },
+  { text: "Harlequin (differential hypoxia): cyanosed upper body + pink legs — monitor right-radial ABG/SpO₂", cites: ["ELSO Guidelines 2017"] },
+  { text: "IABP: inflates in diastole (↑ coronary perfusion), deflates in systole (↓ afterload) — contraindicated in AR/dissection; IABP-SHOCK II showed no mortality benefit", cites: ["BJA Educ 2014"] },
+  { text: "Impella unloads the LV directly (↓ LVEDP, ↓ MVO₂); LVAD provides total LV bypass for bridge-to-transplant or destination therapy", cites: ["SSC 2021 Haemodynamics"] },
+  { text: "ECMO anticoagulation: UFH targeting APTT 60–80 s — balance bleeding vs circuit thrombosis", cites: ["BJA Educ 2019"] },
 ];
 
 const coreConcepts = (

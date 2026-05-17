@@ -142,16 +142,17 @@ const OrganicChemistryTopic = () => {
             </div>
           ),
           answer: "Glycopyrrolate (quaternary, no central effects, matched onset) with neostigmine.",
-        },
+    cites: ["Nau & Strichartz 2002"],
+  },
       ]}
       keyPoints={[
-        "Ester bonds (—COO—) are rapidly hydrolysed by plasma esterases → short-acting drugs (remifentanil, mivacurium, ester LAs)",
-        "Amide bonds (—CONH—) require hepatic metabolism → longer acting. Amide LAs have 2 i's before '-caine'",
-        "Quaternary amines (R₄N⁺) carry permanent charge → cannot cross BBB or placenta (glycopyrrolate, neostigmine)",
-        "Chirality: enantiomers can have very different potency and toxicity (levobupivacaine vs racemic bupivacaine)",
-        "Benzene rings increase lipophilicity → better CNS penetration (propofol, thiopentone, midazolam)",
-        "Halogenation (adding F, Cl, Br) increases molecular stability and alters volatility of anaesthetic agents",
-        "Hydrogen bonding capability determines water solubility and protein binding characteristics",
+        { text: "Ester bonds (—COO—) are rapidly hydrolysed by plasma esterases → short-acting drugs (remifentanil, mivacurium, ester LAs)", cites: ["BJA Educ 2008"] },
+        { text: "Amide bonds (—CONH—) require hepatic metabolism → longer acting. Amide LAs have 2 i's before '-caine'", cites: ["Cross & Plunkett Ch.4"] },
+        { text: "Quaternary amines (R₄N⁺) carry permanent charge → cannot cross BBB or placenta (glycopyrrolate, neostigmine)", cites: ["Peck & Hill Ch.3"] },
+        { text: "Chirality: enantiomers can have very different potency and toxicity (levobupivacaine vs racemic bupivacaine)", cites: ["Nau & Strichartz 2002"] },
+        { text: "Benzene rings increase lipophilicity → better CNS penetration (propofol, thiopentone, midazolam)", cites: ["BJA Educ 2008"] },
+        { text: "Halogenation (adding F, Cl, Br) increases molecular stability and alters volatility of anaesthetic agents", cites: ["Cross & Plunkett Ch.4"] },
+        { text: "Hydrogen bonding capability determines water solubility and protein binding characteristics", cites: ["Peck & Hill Ch.3"] },
       ]}
     />
   );

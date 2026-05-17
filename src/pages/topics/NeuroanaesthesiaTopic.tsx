@@ -153,14 +153,15 @@ const NeuroanaesthesiaTopic = () => {
             </div>
           ),
           answer: "CPP 46 mmHg → simultaneously lower ICP and raise MAP to achieve CPP 60–70 mmHg.",
-        },
+    cites: ["BJA Educ 2015"],
+  },
       ]}
       keyPoints={[
-        "PaCO₂ is the most potent regulator of CBF — each 1 kPa changes CBF by ~30%",
-        "CPP = MAP − ICP; target CPP >60 mmHg in traumatic brain injury",
-        "Propofol/thiopentone reduce CBF, CMRO₂, and ICP; volatiles increase CBF dose-dependently",
-        "Avoid N₂O in neurosurgery — increases CBF, CMRO₂, and ICP; expands pneumocephalus",
-        "RESCUEicp: decompressive craniectomy reduces mortality but increases severe disability",
+        { text: "PaCO₂ is the most potent regulator of CBF — each 1 kPa changes CBF by ~30%", cites: ["Matta et al."] },
+        { text: "CPP = MAP − ICP; target CPP >60 mmHg in traumatic brain injury", cites: ["BJA Educ 2018"] },
+        { text: "Propofol/thiopentone reduce CBF, CMRO₂, and ICP; volatiles increase CBF dose-dependently", cites: ["BJA Educ 2015"] },
+        { text: "Avoid N₂O in neurosurgery — increases CBF, CMRO₂, and ICP; expands pneumocephalus", cites: ["Matta et al."] },
+        { text: "RESCUEicp: decompressive craniectomy reduces mortality but increases severe disability", cites: ["BJA Educ 2018"] },
       ]}
     />
   );

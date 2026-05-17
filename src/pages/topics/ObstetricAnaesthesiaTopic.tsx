@@ -27,12 +27,12 @@ const ObstetricAnaesthesiaTopic = () => {
         "Triage postpartum leg weakness — distinguish neuraxial red flags from intrinsic obstetric nerve palsies",
       ]}
       keyPoints={[
-        "Pregnancy: ↑CO 40%, ↓FRC 20%, ↑O₂ consumption — rapid desaturation on apnoea",
-        "Spinal for CS: heavy bupivacaine + fentanyl + diamorphine, target T4, phenylephrine infusion",
-        "PPH: commonest cause is uterine atony — oxytocin → ergometrine → carboprost → surgical",
-        "Pre-eclampsia: MgSO₄ 4g bolus for seizure prophylaxis; definitive treatment is delivery",
-        "PIEB epidural technique provides better analgesia and satisfaction than continuous infusion",
-        "Cat 1 GA: target ≥1.0 MAC pre-delivery + processed EEG — obstetric GA is highest awareness-risk group (NAP5)",
+        { text: "Pregnancy: ↑CO 40%, ↓FRC 20%, ↑O₂ consumption — rapid desaturation on apnoea", cites: ["MBRRACE-UK"] },
+        { text: "Spinal for CS: heavy bupivacaine + fentanyl + diamorphine, target T4, phenylephrine infusion", cites: ["OAA/DAS 2015"] },
+        { text: "PPH: commonest cause is uterine atony — oxytocin → ergometrine → carboprost → surgical", cites: ["BJA Educ 2019"] },
+        { text: "Pre-eclampsia: MgSO₄ 4g bolus for seizure prophylaxis; definitive treatment is delivery", cites: ["MBRRACE-UK"] },
+        { text: "PIEB epidural technique provides better analgesia and satisfaction than continuous infusion", cites: ["OAA/DAS 2015"] },
+        { text: "Cat 1 GA: target ≥1.0 MAC pre-delivery + processed EEG — obstetric GA is highest awareness-risk group (NAP5)", cites: ["BJA Educ 2019"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_07"] },

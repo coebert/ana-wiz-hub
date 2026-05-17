@@ -40,6 +40,7 @@ const workedExamples: WorkedExample[] = [
         not for pneumonia — surfactant inactivation).
       </>
     ),
+    cites: ["NICE NG51"],
   },
   {
     title: "ESBL E. coli bacteraemia — MERINO decision",
@@ -66,6 +67,7 @@ const workedExamples: WorkedExample[] = [
         complete the course where appropriate.
       </>
     ),
+    cites: ["BJA Educ 2016"],
   },
 ];
 
@@ -80,13 +82,13 @@ const AntimicrobialsIcuTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        "β-lactams are time-dependent — prolonged or continuous infusions improve fT>MIC in critical illness",
-        "Vancomycin: AUC24/MIC 400–600 (ASHP/IDSA 2020) and a loading dose of 25–30 mg/kg are essential in ICU",
-        "MERINO trial: pip-taz inferior to meropenem for ESBL E. coli/Klebsiella bacteraemia even when in vitro sensitive",
-        "Start Smart Then Focus: empiric broad-spectrum within 1 h of sepsis recognition → de-escalate at 48–72 h on cultures",
-        "Procalcitonin-guided de-escalation safely reduces antibiotic exposure (PRORATA, SAPS) without increased mortality",
-        "Source control is non-negotiable — no antibiotic regimen can compensate for a missed abscess or infected line",
-        "Augmented renal clearance (CrCl >130 mL/min) is common in young trauma/sepsis patients and causes under-dosing of hydrophilic antibiotics",
+        { text: "β-lactams are time-dependent — prolonged or continuous infusions improve fT>MIC in critical illness", cites: ["SSC 2021 Antimicrobials"] },
+        { text: "Vancomycin: AUC24/MIC 400–600 (ASHP/IDSA 2020) and a loading dose of 25–30 mg/kg are essential in ICU", cites: ["NICE NG51"] },
+        { text: "MERINO trial: pip-taz inferior to meropenem for ESBL E. coli/Klebsiella bacteraemia even when in vitro sensitive", cites: ["BJA Educ 2016"] },
+        { text: "Start Smart Then Focus: empiric broad-spectrum within 1 h of sepsis recognition → de-escalate at 48–72 h on cultures", cites: ["SSC 2021 Antimicrobials"] },
+        { text: "Procalcitonin-guided de-escalation safely reduces antibiotic exposure (PRORATA, SAPS) without increased mortality", cites: ["NICE NG51"] },
+        { text: "Source control is non-negotiable — no antibiotic regimen can compensate for a missed abscess or infected line", cites: ["BJA Educ 2016"] },
+        { text: "Augmented renal clearance (CrCl >130 mL/min) is common in young trauma/sepsis patients and causes under-dosing of hydrophilic antibiotics", cites: ["SSC 2021 Antimicrobials"] },
       ]}
       topicId="antimicrobials-icu"
       topicTitle="Antimicrobials in ICU"

@@ -126,6 +126,7 @@ const workedExamples: WorkedExample[] = [
       "Dose-rate ∝ 1/d².\nAt 1.5 m: factor = (0.75/1.5)² = 0.25 → 120 × 0.25 = 30 µSv/h.\nAt 2.25 m: factor = (0.75/2.25)² = 1/9 ≈ 0.11 → 120 × 0.11 ≈ 13 µSv/h.",
     answer:
       "Doubling the distance cuts dose-rate to ~30 µSv/h (a 4× drop); tripling it to ~13 µSv/h (a 9× drop). Distance is the most powerful single ALARA lever. Combine with a ceiling-suspended lead screen and a 0.5 mm Pb apron and you typically push residual whole-body dose well below 1 µSv/h.",
+   cites: ["RCR Radiation 2020"],
   },
   {
     title: "Justifying a CT pulmonary angiogram in a young patient",
@@ -135,6 +136,7 @@ const workedExamples: WorkedExample[] = [
       "Effective dose comparison:\n  • CXR: ~0.02 mSv\n  • V/Q scan (perfusion only): ~1–2 mSv\n  • CTPA: ~5–10 mSv (≈ 2 years background; ≈ 250 CXRs)\n  • Maternal breast tissue receives a relatively high local dose with CTPA → small lifetime breast-cancer risk increment.\nAlternatives:\n  • V/Q scan reduces breast dose substantially in young women with normal CXR.\n  • Bedside echo + leg ultrasound may avoid imaging if positive.\nJustification + optimisation (IRR 2017): every exposure must be justified, optimised (lowest dose for the diagnostic question), and authorised by an IR(ME)R practitioner.",
     answer:
       "Justify against the clinical question (a missed PE is high-cost), but in a young woman with a normal CXR and clinically suspected PE, V/Q is often the optimised first-line test. If CTPA is required, use low-dose protocols, dose modulation and lead breast shielding where local protocols allow. Document the discussion in the consent.",
+   cites: ["IRR 2017"],
   },
   {
     title: "Pregnant anaesthetist on the IR list",
@@ -144,6 +146,7 @@ const workedExamples: WorkedExample[] = [
       "Foetal dose limit (IRR 2017): 1 mSv to the conceptus over the declared remainder of pregnancy.\nMonitoring:\n  • Standard collar dosimeter outside apron (lens/thyroid surrogate).\n  • Additional dosimeter UNDER the apron at waist level for foetal dose estimation, read monthly.\nProtective measures:\n  • 0.5 mm Pb wrap-around apron + 0.5 mm thyroid shield + leaded glasses (lens threshold for cataract under ICRP 2011: 0.5 Gy cumulative).\n  • Stand behind the ceiling-suspended lead screen during acquisitions.\n  • Maximise distance from patient during cine runs; step back during DSA.\n  • Ensure pulsed fluoroscopy is used and irradiated field collimated tightly.",
     answer:
       "Continued IR work is usually safe with the additional under-apron dosimeter, full PPE and screen use. Risk-assess monthly; remove from the rota only if doses approach the foetal limit or if procedures place her routinely close to the primary beam (e.g. pain procedures with hand exposure).",
+   cites: ["IR(ME)R 2017"],
   },
 ];
 
@@ -166,15 +169,15 @@ const XRayRadiationSafetyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
-        "Diagnostic X-rays are produced by bombarding a tungsten anode with electrons accelerated across a high-voltage (typically 50–150 kVp) tube — output is a bremsstrahlung continuum plus characteristic K-shell line emissions",
-        "kVp controls beam energy (penetration/quality); mAs controls beam quantity (number of photons) — together they determine dose and image contrast",
-        "Four photon interactions: photoelectric (∝ Z³/E³, dominant at diagnostic energies, gives bone–soft-tissue contrast), Compton (dominant >100 keV, source of scatter), Rayleigh (minor coherent), pair production (>1.022 MeV only)",
-        "Units: activity = becquerel (Bq); absorbed dose = gray (Gy, J/kg); equivalent dose = sievert (Sv) = Gy × wR; effective dose = Sv × tissue weighting factors",
-        "ALARA = As Low As Reasonably Achievable. Three pillars: TIME (less exposure), DISTANCE (inverse-square law — doubling distance quarters dose), SHIELDING (0.5 mm Pb apron attenuates ~95% of scatter at 70 kVp)",
-        "IRR 2017 occupational limit: 20 mSv/year (avg over 5 years, max 50 mSv/year). Public: 1 mSv/year. Declared-pregnant worker: 1 mSv to the foetus over remainder of pregnancy",
-        "Stochastic effects (cancer, hereditary): no threshold, probability rises with dose. Deterministic effects (cataract, skin erythema, marrow suppression): have thresholds — ICRP 2011 lens threshold lowered to 0.5 Gy cumulative",
-        "Approximate effective doses: CXR 0.02 mSv · head CT 2 mSv · CTPA 5–10 mSv · abdomen CT 10 mSv · UK background 2.7 mSv/year",
-        "Anaesthetist's PPE for fluoroscopy: 0.5 mm Pb wrap-around apron, 0.5 mm thyroid shield, leaded glasses (cataract prevention), and where possible a ceiling-suspended lead screen — plus collar dosimeter outside apron",
+        { text: "Diagnostic X-rays are produced by bombarding a tungsten anode with electrons accelerated across a high-voltage (typically 50–150 kVp) tube — output is a bremsstrahlung continuum plus characteristic K-shell line emissions", cites: ["IRR 2017"] },
+        { text: "kVp controls beam energy (penetration/quality); mAs controls beam quantity (number of photons) — together they determine dose and image contrast", cites: ["IR(ME)R 2017"] },
+        { text: "Four photon interactions: photoelectric (∝ Z³/E³, dominant at diagnostic energies, gives bone–soft-tissue contrast), Compton (dominant >100 keV, source of scatter), Rayleigh (minor coherent), pair production (>1.022 MeV only)", cites: ["BJA Educ 2016 Radiation"] },
+        { text: "Units: activity = becquerel (Bq); absorbed dose = gray (Gy, J/kg); equivalent dose = sievert (Sv) = Gy × wR; effective dose = Sv × tissue weighting factors", cites: ["ICRP 103"] },
+        { text: "ALARA = As Low As Reasonably Achievable. Three pillars: TIME (less exposure), DISTANCE (inverse-square law — doubling distance quarters dose), SHIELDING (0.5 mm Pb apron attenuates ~95% of scatter at 70 kVp)", cites: ["RCR Radiation 2020"] },
+        { text: "IRR 2017 occupational limit: 20 mSv/year (avg over 5 years, max 50 mSv/year). Public: 1 mSv/year. Declared-pregnant worker: 1 mSv to the foetus over remainder of pregnancy", cites: ["IRR 2017"] },
+        { text: "Stochastic effects (cancer, hereditary): no threshold, probability rises with dose. Deterministic effects (cataract, skin erythema, marrow suppression): have thresholds — ICRP 2011 lens threshold lowered to 0.5 Gy cumulative", cites: ["IR(ME)R 2017"] },
+        { text: "Approximate effective doses: CXR 0.02 mSv · head CT 2 mSv · CTPA 5–10 mSv · abdomen CT 10 mSv · UK background 2.7 mSv/year", cites: ["BJA Educ 2016 Radiation"] },
+        { text: "Anaesthetist's PPE for fluoroscopy: 0.5 mm Pb wrap-around apron, 0.5 mm thyroid shield, leaded glasses (cataract prevention), and where possible a ceiling-suspended lead screen — plus collar dosimeter outside apron", cites: ["ICRP 103"] },
       ]}
       coreConcepts={
         <>

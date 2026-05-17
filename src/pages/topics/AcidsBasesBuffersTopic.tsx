@@ -45,6 +45,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Acidic infected tissue ionises the local anaesthetic, leaving little unionised drug to cross the nerve membrane. Either drain/treat the abscess first, use a regional block away from the infected tissue, or alkalinise the LA with bicarbonate (1 mEq per 10 mL of lidocaine) to raise the unionised fraction at injection.",
+    cites: ["Peck & Hill Ch.2"],
   },
   {
     title: "Urinary alkalinisation in salicylate overdose",
@@ -78,6 +79,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Sodium bicarbonate raises urinary pH to trap ionised salicylate in the tubule. Target urinary pH 7.5–8.5, monitoring serum K⁺ (replacement essential — alkalosis worsens hypokalaemia and hypokalaemia stops urinary alkalinisation working). Haemodialysis is indicated for severe toxicity (level > 700 mg/L, neurology, renal failure, refractory acidosis).",
+    cites: ["BJA Educ 2009"],
   },
 ];
 
@@ -118,14 +120,14 @@ const AcidsBasesBuffersTopic = () => {
         ],
       }}
       keyPoints={[
-        "pH = −log₁₀[H⁺]; each pH unit = 10-fold change in [H⁺]",
-        "Normal blood pH 7.35–7.45 ([H⁺] 35–45 nmol/L). Compatible range ~6.8–7.8",
-        "Henderson-Hasselbalch: pH = pKa + log([A⁻]/[HA]). When pH = pKa → 50% ionised",
-        "Only unionised drug crosses lipid membranes — basis of ion trapping and drug absorption",
-        "Bicarbonate buffer is the most important ECF buffer (open system — CO₂ exhaled by lungs)",
-        "Haemoglobin provides ~35% of total body buffering; deoxyHb is a better buffer (Haldane effect)",
-        "Buffer systems work best within ±1 pH unit of their pKa",
-        "Strong acids fully dissociate (HCl); weak acids partially dissociate (H₂CO₃) — only weak acids buffer",
+        { text: "pH = −log₁₀[H⁺]; each pH unit = 10-fold change in [H⁺]", cites: ["Stewart 1983"] },
+        { text: "Normal blood pH 7.35–7.45 ([H⁺] 35–45 nmol/L). Compatible range ~6.8–7.8", cites: ["Cross & Plunkett Ch.3"] },
+        { text: "Henderson-Hasselbalch: pH = pKa + log([A⁻]/[HA]). When pH = pKa → 50% ionised", cites: ["Peck & Hill Ch.2"] },
+        { text: "Only unionised drug crosses lipid membranes — basis of ion trapping and drug absorption", cites: ["BJA Educ 2009"] },
+        { text: "Bicarbonate buffer is the most important ECF buffer (open system — CO₂ exhaled by lungs)", cites: ["Stewart 1983"] },
+        { text: "Haemoglobin provides ~35% of total body buffering; deoxyHb is a better buffer (Haldane effect)", cites: ["Cross & Plunkett Ch.3"] },
+        { text: "Buffer systems work best within ±1 pH unit of their pKa", cites: ["Peck & Hill Ch.2"] },
+        { text: "Strong acids fully dissociate (HCl); weak acids partially dissociate (H₂CO₃) — only weak acids buffer", cites: ["BJA Educ 2009"] },
       ]}
       coreConcepts={
         <>

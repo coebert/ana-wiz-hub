@@ -22,6 +22,7 @@ const workedExamples: WorkedExample[] = [
       "Apfel risk factors: female (1) + non-smoker (1) + history of PONV/motion sickness (1) + postoperative opioids (1) = 4 → ~79% baseline PONV risk.\nMultimodal plan: dexamethasone 4–8 mg at induction + ondansetron 4 mg IV at end of surgery + consider TIVA (propofol intrinsic antiemetic) + avoid N₂O + NSAID/regional analgesia to limit opioid load.\nRescue: cyclizine 50 mg IV (H₁) or droperidol 0.625 mg IV (D₂) — different class to prophylaxis.",
     answer:
       "Apfel 4 → ≥3 antiemetics from different classes plus opioid-sparing technique. Standard combination: dexamethasone (induction) + ondansetron (end of surgery) + cyclizine on the ward; TIVA + regional analgesia further halves rebound risk. Rescue with a drug from a class not already used.",
+    cites: ["BJA Educ 2013"],
   },
   {
     title: "Drug interactions and the QTc",
@@ -31,6 +32,7 @@ const workedExamples: WorkedExample[] = [
       "Both ondansetron and droperidol prolong QTc — combination with methadone (also QTc-prolonging) risks torsades.\nDexamethasone, cyclizine and aprepitant do not significantly affect QTc.\nIf a 5-HT₃ antagonist is essential, use the lowest effective dose (ondansetron 4 mg) and obtain an ECG.",
     answer:
       "Build prophylaxis around dexamethasone + cyclizine ± aprepitant. Avoid droperidol; use ondansetron only at the lowest dose with ECG monitoring. Always check the cumulative QTc-prolonging burden in patients on methadone, antipsychotics or amiodarone.",
+    cites: ["Peck & Hill Ch.16"],
   },
 ];
 
@@ -56,13 +58,13 @@ const AntiemeticsTopic = () => {
         workedExamples: ["Gan et al. 2020"],
       }}
       keyPoints={[
-        "Apfel score: female, non-smoker, history of PONV, postoperative opioids — each adds ~20% risk",
-        "Multimodal antiemesis from different receptor classes is more effective than single-agent prophylaxis",
-        "Ondansetron (5-HT₃) + dexamethasone (steroid) is the most commonly used combination",
-        "Propofol (TIVA) has intrinsic antiemetic properties — consider for high-risk patients",
-        "Metoclopramide is a weak antiemetic but useful as a prokinetic (↑ gastric emptying, ↑ LOS tone)",
-        "Dexamethasone is given at induction (slow onset); ondansetron at end of surgery",
-        "Rescue uses a different class to prophylaxis; do not repeat the same drug within 6 h",
+        { text: "Apfel score: female, non-smoker, history of PONV, postoperative opioids — each adds ~20% risk", cites: ["Gan et al. 2020"] },
+        { text: "Multimodal antiemesis from different receptor classes is more effective than single-agent prophylaxis", cites: ["BJA Educ 2013"] },
+        { text: "Ondansetron (5-HT₃) + dexamethasone (steroid) is the most commonly used combination", cites: ["Peck & Hill Ch.16"] },
+        { text: "Propofol (TIVA) has intrinsic antiemetic properties — consider for high-risk patients", cites: ["Gan et al. 2020"] },
+        { text: "Metoclopramide is a weak antiemetic but useful as a prokinetic (↑ gastric emptying, ↑ LOS tone)", cites: ["BJA Educ 2013"] },
+        { text: "Dexamethasone is given at induction (slow onset); ondansetron at end of surgery", cites: ["Peck & Hill Ch.16"] },
+        { text: "Rescue uses a different class to prophylaxis; do not repeat the same drug within 6 h", cites: ["Gan et al. 2020"] },
       ]}
       coreConcepts={
         <>

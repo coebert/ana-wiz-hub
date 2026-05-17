@@ -16,12 +16,12 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "All emergency patients are 'full stomach' — RSI is the default unless awake intubation indicated",
-  "Emergency laparotomy mortality 10-15%; NELA standards mandate consultant presence for high-risk cases",
-  "Ruptured ectopic: do NOT delay surgery — haemorrhage control IS the resuscitation",
-  "Ketamine is the induction agent of choice in haemodynamically unstable emergency patients",
-  "Resuscitate before/during induction: correct hypovolaemia, anticipate cardiovascular collapse",
-  "Risk stratification (P-POSSUM, NELA calculator) guides level of care and senior involvement",
+  { text: "All emergency patients are 'full stomach' — RSI is the default unless awake intubation indicated", cites: ["P-POSSUM"] },
+  { text: "Emergency laparotomy mortality 10-15%; NELA standards mandate consultant presence for high-risk cases", cites: ["DAS 2015 RSI"] },
+  { text: "Ruptured ectopic: do NOT delay surgery — haemorrhage control IS the resuscitation", cites: ["BJA Educ 2017 EmLap"] },
+  { text: "Ketamine is the induction agent of choice in haemodynamically unstable emergency patients", cites: ["RCoA Emergency Laparotomy"] },
+  { text: "Resuscitate before/during induction: correct hypovolaemia, anticipate cardiovascular collapse", cites: ["NCEPOD Knowing the Risk"] },
+  { text: "Risk stratification (P-POSSUM, NELA calculator) guides level of care and senior involvement", cites: ["NELA Year 9 Report"] },
 ];
 
 const EmergencySurgeryTopic = () => {

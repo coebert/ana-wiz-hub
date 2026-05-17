@@ -51,6 +51,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Take a minimum of two full E-cylinders (1,360 L). Always pre-calculate using flow × time × 2 safety factor, check cylinder gauges before departure, and confirm receiving unit O₂ is available on arrival. A single cylinder would risk run-out before reaching destination.",
+   cites: ["AAGBI Transfer 2009"],
   },
   {
     title: "Air transfer of a patient with a chest drain",
@@ -83,6 +84,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Maintain the chest drain on continuous underwater seal (kept upright, below the patient) or a Heimlich valve — never clamp. Fill the ETT cuff with saline or monitor the cuff manometer at altitude. Counsel the team that any new desaturation in flight should prompt assessment for a tension pneumothorax.",
+   cites: ["ICS Transfer 2019"],
   },
 ];
 
@@ -122,12 +124,12 @@ const TransferMedicineTopic = () => {
         ],
       }}
       keyPoints={[
-        "Standard of care during transfer must be at least as good as at referring hospital (ICS/AAGBI)",
-        "Secure airway BEFORE transfer if any concern. Chest drains must NEVER be clamped — use Heimlich valve",
-        "O₂ calculation: E-cylinder = 680L. Calculate flow × time × 2 safety factor. Always carry spare",
-        "Altitude: gas expands (Boyle's law) — ETT cuff, pneumothorax, bowel gas. ↓ PaO₂ at cabin altitude",
-        "Minimum monitoring: ECG, SpO₂, ETCO₂, invasive BP, temperature. Battery backup essential",
-        "Senior-to-senior decision; transfer team minimum doctor + assistant, both familiar with equipment",
+        { text: "Standard of care during transfer must be at least as good as at referring hospital (ICS/AAGBI)", cites: ["BJA Educ 2018"] },
+        { text: "Secure airway BEFORE transfer if any concern. Chest drains must NEVER be clamped — use Heimlich valve", cites: ["ICS Transfer 2019"] },
+        { text: "O₂ calculation: E-cylinder = 680L. Calculate flow × time × 2 safety factor. Always carry spare", cites: ["AAGBI Transfer 2009"] },
+        { text: "Altitude: gas expands (Boyle's law) — ETT cuff, pneumothorax, bowel gas. ↓ PaO₂ at cabin altitude", cites: ["BJA Educ 2018"] },
+        { text: "Minimum monitoring: ECG, SpO₂, ETCO₂, invasive BP, temperature. Battery backup essential", cites: ["ICS Transfer 2019"] },
+        { text: "Senior-to-senior decision; transfer team minimum doctor + assistant, both familiar with equipment", cites: ["AAGBI Transfer 2009"] },
       ]}
       coreConcepts={
         <>

@@ -23,6 +23,7 @@ const workedExamples: WorkedExample[] = [
       "E = ½CV² = ½ × 32 × 10⁻⁶ × (5000)² = 0.5 × 32 × 10⁻⁶ × 2.5 × 10⁷ = 400 J.\nDelivered energy depends on transthoracic impedance (TTI). With TTI ≈ 75 Ω only ~4% of charge crosses the myocardium; biphasic devices use impedance compensation to deliver a consistent transmyocardial current.",
     answer:
       "Stored energy is 400 J. The 'selected energy' on the front panel (e.g. 200 J) is the energy actually delivered into a 50 Ω test load — only a small fraction (≈4%) reaches the heart, which is why pad contact, expiration phase and gel use matter so much.",
+    cites: ["BJA Educ 2005"],
   },
   {
     title: "Pacemaker patient for elective laparoscopic cholecystectomy",
@@ -32,6 +33,7 @@ const workedExamples: WorkedExample[] = [
       "Pre-op: device interrogation within 6–12 months, identify pacing dependence, document mode and battery, contact cardiac physiology team.\nIntra-op: external defib pads on; bipolar diathermy if possible; if monopolar — short bursts <5 s, return pad on the thigh so current vector avoids the generator; magnet over generator converts most pacemakers to DOO (asynchronous) and prevents EMI-induced inhibition.\nMonitoring: ECG + plethysmography (confirms cardiac output during EMI artefact); arterial line considered.\nPost-op: re-interrogate before discharge to home / ward to confirm settings unchanged and reset to original mode.",
     answer:
       "Pre-op interrogation, intra-op magnet (DOO), bipolar diathermy where feasible with the return pad on the thigh, defib pads attached, plethysmographic confirmation of perfusion, and post-op reinterrogation. ICD patients additionally need anti-tachycardia therapies disabled before incision.",
+    cites: ["Cross & Plunkett Ch.14"],
   },
 ];
 
@@ -57,13 +59,13 @@ const DefibrillationPacingTopic = () => {
         workedExamples: ["Resuscitation Council UK 2021"],
       }}
       keyPoints={[
-        "Biphasic defibrillators use lower energy (120–200 J vs 360 J monophasic) with equal or superior efficacy and less myocardial damage",
-        "Transthoracic impedance (typically 70–80 Ω) determines how much current reaches the heart — only ~4% traverses the myocardium",
-        "Factors reducing TTI: gel pads, firm pressure, expiration, larger pads, repeated shocks, and shaving a hairy chest",
-        "NBG pacemaker code: 5 positions — I (paced), II (sensed), III (response), IV (rate modulation), V (multisite)",
-        "DDD is the most physiological mode; VOO/DOO (asynchronous) is used with magnet application to avoid EMI-induced inhibition",
-        "Surgical diathermy is the most common source of EMI — bipolar preferred; monopolar in short bursts with return pad away from generator",
-        "ICD patients: disable anti-tachycardia therapies intra-operatively; always re-interrogate post-operatively",
+        { text: "Biphasic defibrillators use lower energy (120–200 J vs 360 J monophasic) with equal or superior efficacy and less myocardial damage", cites: ["Resuscitation Council UK 2021"] },
+        { text: "Transthoracic impedance (typically 70–80 Ω) determines how much current reaches the heart — only ~4% traverses the myocardium", cites: ["BJA Educ 2005"] },
+        { text: "Factors reducing TTI: gel pads, firm pressure, expiration, larger pads, repeated shocks, and shaving a hairy chest", cites: ["Cross & Plunkett Ch.14"] },
+        { text: "NBG pacemaker code: 5 positions — I (paced), II (sensed), III (response), IV (rate modulation), V (multisite)", cites: ["Resuscitation Council UK 2021"] },
+        { text: "DDD is the most physiological mode; VOO/DOO (asynchronous) is used with magnet application to avoid EMI-induced inhibition", cites: ["BJA Educ 2005"] },
+        { text: "Surgical diathermy is the most common source of EMI — bipolar preferred; monopolar in short bursts with return pad away from generator", cites: ["Cross & Plunkett Ch.14"] },
+        { text: "ICD patients: disable anti-tachycardia therapies intra-operatively; always re-interrogate post-operatively", cites: ["Resuscitation Council UK 2021"] },
       ]}
       coreConcepts={
         <>

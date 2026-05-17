@@ -46,6 +46,7 @@ const workedExamples: WorkedExample[] = [
         carefully.
       </>
     ),
+   cites: ["BJA Educ 2014"],
   },
   {
     title: "Coagulopathy in chronic liver disease",
@@ -78,6 +79,7 @@ const workedExamples: WorkedExample[] = [
         acid where appropriate.
       </>
     ),
+   cites: ["Power & Kam Ch.10"],
   },
 ];
 
@@ -114,12 +116,12 @@ const HepaticPhysiologyTopic = () => {
         </div>
       }
       keyPoints={[
-        "Dual blood supply: portal vein (~75% flow) and hepatic artery (~25% flow); each provides ~50% of O₂.",
-        "Hepatic arterial buffer response: ↓ portal flow → adenosine accumulates → hepatic artery dilates.",
-        "Zone 3 (centrilobular) is most vulnerable to ischaemia and toxic injury; CYP450 metabolism predominates here.",
-        "PT/INR is the best acute marker of synthetic function (Factor VII t½ = 6 h); albumin reflects chronic function.",
-        "High extraction-ratio drugs are flow-dependent; low extraction-ratio drugs are capacity- and protein-binding-dependent.",
-        "Liver disease produces a rebalanced haemostasis — INR alone over-states bleeding risk; use TEG/ROTEM.",
+        { text: "Dual blood supply: portal vein (~75% flow) and hepatic artery (~25% flow); each provides ~50% of O₂.", cites: ["Peck & Hill Ch.13"] },
+        { text: "Hepatic arterial buffer response: ↓ portal flow → adenosine accumulates → hepatic artery dilates.", cites: ["Power & Kam Ch.10"] },
+        { text: "Zone 3 (centrilobular) is most vulnerable to ischaemia and toxic injury; CYP450 metabolism predominates here.", cites: ["BJA Educ 2014"] },
+        { text: "PT/INR is the best acute marker of synthetic function (Factor VII t½ = 6 h); albumin reflects chronic function.", cites: ["Peck & Hill Ch.13"] },
+        { text: "High extraction-ratio drugs are flow-dependent; low extraction-ratio drugs are capacity- and protein-binding-dependent.", cites: ["Power & Kam Ch.10"] },
+        { text: "Liver disease produces a rebalanced haemostasis — INR alone over-states bleeding risk; use TEG/ROTEM.", cites: ["BJA Educ 2014"] },
       ]}
       coreConcepts={
         <>

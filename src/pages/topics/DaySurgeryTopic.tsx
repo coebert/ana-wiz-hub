@@ -22,6 +22,7 @@ const workedExamples: WorkedExample[] = [
       "STOP-BANG ≥5 indicates high OSA risk. With good CPAP compliance and a short, predominantly regional/local anaesthetic technique (femoral block ± light sedation), day-case surgery is feasible.\nKey precautions: avoid long-acting opioids and benzodiazepines; multimodal analgesia (paracetamol + NSAID + local infiltration); patient brings own CPAP; assess ≥4 h postoperatively; clear instructions for resuming CPAP at home.",
     answer:
       "Yes, with caveats. Use a regional-led technique to avoid airway manipulation and systemic opioids, ensure CPAP availability at home, and apply extended postoperative monitoring (≥4 h) to detect respiratory depression before discharge. Document an explicit unplanned-admission threshold.",
+    cites: ["BJA Educ 2016"],
   },
   {
     title: "Failed discharge after spinal anaesthesia",
@@ -31,6 +32,7 @@ const workedExamples: WorkedExample[] = [
       "Voiding is a discharge requirement after spinal/epidural anaesthesia, perianal surgery and inguinal hernia repair due to risk of post-op urinary retention.\nBladder ultrasound to quantify volume; if >600 mL or unable to void, single in-out catheterisation and arrange community follow-up.",
     answer:
       "No — voiding is mandatory in this patient group. Confirm with bladder scan, catheterise (in-out) if >600 mL, and arrange follow-up before discharge. Failure to void is one of the commonest reasons for unplanned overnight admission in day-surgery units.",
+    cites: ["BADS Guidelines"],
   },
 ];
 
@@ -56,12 +58,12 @@ const DaySurgeryTopic = () => {
         workedExamples: ["BADS Guidelines", "AAGBI Day Surgery 2019"],
       }}
       keyPoints={[
-        "BADS target: ~80% of elective surgery as day case. ASA I–III with stable comorbidities suitable",
-        "Short-acting agents preferred: propofol, remifentanil, desflurane. Avoid long-acting opioids",
-        "Multimodal PONV prophylaxis: dexamethasone at induction + ondansetron at end. TIVA for high-risk",
-        "Multimodal analgesia: paracetamol + NSAID + regional block. Opioid-sparing approach",
-        "Discharge criteria: stable vitals, pain controlled orally, minimal PONV, mobile, responsible adult escort",
-        "Voiding only mandatory after spinal/epidural, perianal surgery, or inguinal hernia repair",
+        { text: "BADS target: ~80% of elective surgery as day case. ASA I–III with stable comorbidities suitable", cites: ["AAGBI Day Surgery 2019"] },
+        { text: "Short-acting agents preferred: propofol, remifentanil, desflurane. Avoid long-acting opioids", cites: ["BJA Educ 2016"] },
+        { text: "Multimodal PONV prophylaxis: dexamethasone at induction + ondansetron at end. TIVA for high-risk", cites: ["BADS Guidelines"] },
+        { text: "Multimodal analgesia: paracetamol + NSAID + regional block. Opioid-sparing approach", cites: ["AAGBI Day Surgery 2019"] },
+        { text: "Discharge criteria: stable vitals, pain controlled orally, minimal PONV, mobile, responsible adult escort", cites: ["BJA Educ 2016"] },
+        { text: "Voiding only mandatory after spinal/epidural, perianal surgery, or inguinal hernia repair", cites: ["BADS Guidelines"] },
       ]}
       coreConcepts={
         <>

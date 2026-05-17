@@ -25,6 +25,7 @@ const workedExamples: WorkedExample[] = [
       "Hyponatraemia + dry cough + diarrhoea + raised CK + LFT derangement + recent hotel stay → suspect Legionella pneumophila. Send urinary antigen (rapid; ~80% sensitivity for serogroup 1) and respiratory PCR. β-lactams alone are ineffective — Legionella is intracellular. Empiric severe CAP: co-amoxiclav + macrolide; in suspected Legionella escalate macrolide-based or fluoroquinolone-based therapy (azithromycin or levofloxacin). Notifiable disease — inform Public Health.",
     answer:
       "Severe Legionella pneumonia. Treat with IV levofloxacin or high-dose azithromycin (± combination if critically ill); add empiric β-lactam for atypical-CAP cover until Legionella confirmed; supportive ICU care, RRT if AKI; notify Public Health.",
+    cites: ["IDSA HAP/VAP 2016"],
   },
   {
     title: "Necrotising fasciitis with toxic shock",
@@ -34,6 +35,7 @@ const workedExamples: WorkedExample[] = [
       "LRINEC ≥6 strongly suggests necrotising soft-tissue infection. Most likely Type II monomicrobial (Group A Streptococcus) given previously well patient and rapid course. Streptococcal toxic shock often coexists. Surgical debridement is the single most important intervention — must not be delayed for imaging. Antibiotics: piperacillin-tazobactam OR meropenem (broad cover) + clindamycin (toxin suppression — Eagle effect; β-lactams alone less effective at high inoculum) + vancomycin if MRSA risk. Consider IVIG for streptococcal TSS (INSTINCT-style data).",
     answer:
       "Emergency theatre for radical debridement (anticipate relooks at 24–48 h); antibiotics = pip-tazo/meropenem + clindamycin + vancomycin; IVIG if streptococcal TSS confirmed; ICU for vasopressors, AKI/RRT, anticipate ARDS and DIC.",
+    cites: ["SSC 2021"],
   },
 ];
 
@@ -56,14 +58,14 @@ const InfectiousDiseaseIcuTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       keyPoints={[
-        "Pneumonia is the commonest infection requiring ICU admission — categorise CAP/HAP/VAP and tailor empirical cover to local antibiogram",
-        "Legionella: hyponatraemia + dry cough + GI symptoms + raised CK — treat with macrolide or fluoroquinolone (β-lactams ineffective)",
-        "PVL-positive S. aureus necrotising pneumonia: leucopenia + haemoptysis in young patient → linezolid + clindamycin + IVIG, consider VV-ECMO",
-        "Source control (drainage/debridement) is paramount in intra-abdominal sepsis and necrotising fasciitis — antibiotics alone are insufficient",
-        "S. aureus bacteraemia always requires echocardiography, repeat cultures at 48–72 h, and minimum 2 weeks IV therapy",
-        "ESBL bacteraemia: meropenem first-line — MERINO showed pip-tazo inferior",
-        "C. difficile: oral vancomycin first-line; fidaxomicin for recurrence; FMT for refractory disease",
-        "Antimicrobial stewardship: start smart, then focus — de-escalate at 48–72 h; procalcitonin can shorten duration",
+        { text: "Pneumonia is the commonest infection requiring ICU admission — categorise CAP/HAP/VAP and tailor empirical cover to local antibiogram", cites: ["NICE NG51"] },
+        { text: "Legionella: hyponatraemia + dry cough + GI symptoms + raised CK — treat with macrolide or fluoroquinolone (β-lactams ineffective)", cites: ["BJA Educ 2017 Sepsis"] },
+        { text: "PVL-positive S. aureus necrotising pneumonia: leucopenia + haemoptysis in young patient → linezolid + clindamycin + IVIG, consider VV-ECMO", cites: ["IDSA HAP/VAP 2016"] },
+        { text: "Source control (drainage/debridement) is paramount in intra-abdominal sepsis and necrotising fasciitis — antibiotics alone are insufficient", cites: ["SSC 2021"] },
+        { text: "S. aureus bacteraemia always requires echocardiography, repeat cultures at 48–72 h, and minimum 2 weeks IV therapy", cites: ["NICE NG51"] },
+        { text: "ESBL bacteraemia: meropenem first-line — MERINO showed pip-tazo inferior", cites: ["BJA Educ 2017 Sepsis"] },
+        { text: "C. difficile: oral vancomycin first-line; fidaxomicin for recurrence; FMT for refractory disease", cites: ["IDSA HAP/VAP 2016"] },
+        { text: "Antimicrobial stewardship: start smart, then focus — de-escalate at 48–72 h; procalcitonin can shorten duration", cites: ["SSC 2021"] },
       ]}
       coreConcepts={
         <>

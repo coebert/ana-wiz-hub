@@ -43,6 +43,7 @@ const workedExamples: WorkedExample[] = [
         Three-agent prophylaxis halves PONV in Apfel-3/4 patients (Gan et al., 4th Consensus, 2020).
       </>
     ),
+   cites: ["Peck & Hill Ch.11"],
   },
   {
     title: "Aspiration risk and barrier pressure",
@@ -71,6 +72,7 @@ const workedExamples: WorkedExample[] = [
         avoid bag-mask ventilation pre-intubation, and extubate awake in the lateral position.
       </>
     ),
+   cites: ["BJA Educ 2018"],
   },
 ];
 
@@ -104,12 +106,12 @@ const GastrointestinalPhysiologyTopic = () => {
         </div>
       }
       keyPoints={[
-        "Parietal cells secrete HCl via H⁺/K⁺-ATPase, stimulated by ACh (M₃), histamine (H₂), and gastrin (CCK-B).",
-        "Vomiting centre receives input from CTZ (D₂, 5-HT₃, NK₁), GI tract (5-HT₃ via vagus), vestibular (H₁, M₁), and cortex.",
-        "LOS barrier pressure = LOS pressure − intragastric pressure — reduced by volatiles, opioids, pregnancy.",
-        "Multimodal antiemesis (different receptor classes) outperforms single high-dose strategies in high-risk PONV.",
-        "Post-surgical ileus: small bowel recovers ~24 h, stomach ~48 h, colon ~72 h.",
-        "Enteric nervous system (Auerbach's + Meissner's) can function independently of the CNS.",
+        { text: "Parietal cells secrete HCl via H⁺/K⁺-ATPase, stimulated by ACh (M₃), histamine (H₂), and gastrin (CCK-B).", cites: ["Gan et al. 2020"] },
+        { text: "Vomiting centre receives input from CTZ (D₂, 5-HT₃, NK₁), GI tract (5-HT₃ via vagus), vestibular (H₁, M₁), and cortex.", cites: ["BJA Educ 2018"] },
+        { text: "LOS barrier pressure = LOS pressure − intragastric pressure — reduced by volatiles, opioids, pregnancy.", cites: ["Peck & Hill Ch.11"] },
+        { text: "Multimodal antiemesis (different receptor classes) outperforms single high-dose strategies in high-risk PONV.", cites: ["Gan et al. 2020"] },
+        { text: "Post-surgical ileus: small bowel recovers ~24 h, stomach ~48 h, colon ~72 h.", cites: ["BJA Educ 2018"] },
+        { text: "Enteric nervous system (Auerbach's + Meissner's) can function independently of the CNS.", cites: ["Peck & Hill Ch.11"] },
       ]}
       coreConcepts={
         <>

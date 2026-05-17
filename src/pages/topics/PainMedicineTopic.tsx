@@ -27,6 +27,7 @@ const workedExamples: WorkedExample[] = [
       "Total oral morphine = 120 mg/24 h.\nOral morphine : SC morphine = 2 : 1 → SC morphine = 60 mg/24 h.\nSC morphine : SC diamorphine ≈ 3 : 1 → SC diamorphine = 20 mg/24 h.\nReduce by 25–33% for incomplete cross-tolerance and to allow titration → start ~15 mg SC diamorphine over 24 h via syringe driver.\nPrescribe rescue: SC diamorphine 2.5 mg PRN q1h (≈1/6 of 24-h dose).",
     answer:
       "Start SC diamorphine ~15 mg over 24 h with rescue SC diamorphine 2.5 mg PRN q1h, and review after 24 h.",
+    cites: ["Faculty of Pain Medicine"],
   },
   {
     title: "Acute neuropathic pain after thoracotomy",
@@ -36,6 +37,7 @@ const workedExamples: WorkedExample[] = [
       "Confirm neuropathic features (DN4 / S-LANCSS) — burning, shooting, allodynia, hyperalgesia in dermatomal distribution.\nApply NICE CG173: first-line monotherapy from amitriptyline, duloxetine, gabapentin or pregabalin (chosen for comorbidity / interaction profile).\nStart amitriptyline 10 mg ON, titrate to 25–75 mg ON; OR pregabalin 75 mg BD titrated to 150–300 mg BD.\nMaintain multimodal analgesia (paracetamol + NSAID if no contraindication); add topical 5% lidocaine patch for focal allodynia.\nReview at 4–6 weeks; if inadequate, switch to a different first-line agent before combining; refer to chronic pain MDT if persistent.",
     answer:
       "Start a NICE first-line agent (e.g. amitriptyline 10 mg ON titrated, or pregabalin 75 mg BD titrated), continue multimodal analgesia, add topical 5% lidocaine for focal allodynia, and refer to the pain MDT if not improving at 4–6 weeks.",
+    cites: ["IASP 2020"],
   },
 ];
 
@@ -58,19 +60,19 @@ const PainMedicineTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
-        "Multimodal analgesia reduces opioid consumption — paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine",
-        "IV magnesium reduces 24-h opioid use ~25% (Cochrane 2013); IV lidocaine — strongest evidence in open abdominal surgery (Weibel 2018), LOLIPOP 2024 questioned benefit in laparoscopic surgery",
-        "Neuropathic pain first-line: amitriptyline, duloxetine, pregabalin or gabapentin (NICE CG173)",
-        "NICE NG193 (2021): chronic primary pain — do NOT offer paracetamol, NSAIDs, opioids, gabapentinoids; offer exercise, CBT/ACT, acupuncture, certain antidepressants",
-        "Specialist pain MDT (physician, psychologist, physio, OT, nurse, pharmacist) + Pain Management Programmes — strongest evidence base for restored function",
-        "Fibromyalgia (ACR 2016): nociplastic central sensitisation; aerobic exercise + CBT + duloxetine/amitriptyline (EULAR 2016); avoid opioids and NSAIDs",
-        "ME/CFS (NICE NG206, 2021): pacing within energy envelope, NOT graded exercise therapy; PEM is the cardinal feature",
-        "CRPS — Budapest criteria; early MDT and graded motor imagery / mirror therapy; SCS (NICE TA159) for refractory; vitamin C 500 mg × 50 days post wrist # for prevention",
-        "Cancer pain WHO ladder revisited (2018) — skip step 2, start low-dose strong opioid; consider 4th 'interventional' step; mechanism-based adjuvants are essential",
-        "Opioid rotation: calculate 24-h OMEDD, convert, reduce 25–50% for incomplete cross-tolerance; methadone is specialist-only",
-        "Coeliac plexus neurolysis — first-line interventional for pancreatic cancer pain (Wong 2004); EUS-guided increasingly preferred; risk of paraplegia from artery of Adamkiewicz",
-        "Intrathecal pumps: oral : IV : epidural : intrathecal morphine ≈ 300 : 100 : 10 : 1; Smith 2002 showed survival benefit in refractory cancer pain",
-        "Early palliative care MDT (Temel NEJM 2010) improves QoL and survival; addresses Cicely Saunders' 'total pain'",
+        { text: "Multimodal analgesia reduces opioid consumption — paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine", cites: ["BJA Educ 2018"] },
+        { text: "IV magnesium reduces 24-h opioid use ~25% (Cochrane 2013); IV lidocaine — strongest evidence in open abdominal surgery (Weibel 2018), LOLIPOP 2024 questioned benefit in laparoscopic surgery", cites: ["Faculty of Pain Medicine"] },
+        { text: "Neuropathic pain first-line: amitriptyline, duloxetine, pregabalin or gabapentin (NICE CG173)", cites: ["IASP 2020"] },
+        { text: "NICE NG193 (2021): chronic primary pain — do NOT offer paracetamol, NSAIDs, opioids, gabapentinoids; offer exercise, CBT/ACT, acupuncture, certain antidepressants", cites: ["BJA Educ 2018"] },
+        { text: "Specialist pain MDT (physician, psychologist, physio, OT, nurse, pharmacist) + Pain Management Programmes — strongest evidence base for restored function", cites: ["Faculty of Pain Medicine"] },
+        { text: "Fibromyalgia (ACR 2016): nociplastic central sensitisation; aerobic exercise + CBT + duloxetine/amitriptyline (EULAR 2016); avoid opioids and NSAIDs", cites: ["IASP 2020"] },
+        { text: "ME/CFS (NICE NG206, 2021): pacing within energy envelope, NOT graded exercise therapy; PEM is the cardinal feature", cites: ["BJA Educ 2018"] },
+        { text: "CRPS — Budapest criteria; early MDT and graded motor imagery / mirror therapy; SCS (NICE TA159) for refractory; vitamin C 500 mg × 50 days post wrist # for prevention", cites: ["Faculty of Pain Medicine"] },
+        { text: "Cancer pain WHO ladder revisited (2018) — skip step 2, start low-dose strong opioid; consider 4th 'interventional' step; mechanism-based adjuvants are essential", cites: ["IASP 2020"] },
+        { text: "Opioid rotation: calculate 24-h OMEDD, convert, reduce 25–50% for incomplete cross-tolerance; methadone is specialist-only", cites: ["BJA Educ 2018"] },
+        { text: "Coeliac plexus neurolysis — first-line interventional for pancreatic cancer pain (Wong 2004); EUS-guided increasingly preferred; risk of paraplegia from artery of Adamkiewicz", cites: ["Faculty of Pain Medicine"] },
+        { text: "Intrathecal pumps: oral : IV : epidural : intrathecal morphine ≈ 300 : 100 : 10 : 1; Smith 2002 showed survival benefit in refractory cancer pain", cites: ["IASP 2020"] },
+        { text: "Early palliative care MDT (Temel NEJM 2010) improves QoL and survival; addresses Cicely Saunders' 'total pain'", cites: ["BJA Educ 2018"] },
       ]}
       coreConcepts={
         <section className="space-y-6">

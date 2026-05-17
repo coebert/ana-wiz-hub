@@ -48,6 +48,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Continue her usual prednisolone, give hydrocortisone 100 mg IV at induction and 200 mg/24 h for 24 h, then wean back to her baseline dose over 48–72 h. Monitor BP and glucose closely; treat any refractory hypotension as an Addisonian crisis with a 100 mg bolus.",
+    cites: ["BJA Educ 2012"],
   },
   {
     title: "Managing a patient with type 1 diabetes for elective surgery",
@@ -81,6 +82,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Reduce Lantus to 80% the night before, omit morning Novorapid, place him first on the list, and check CBG hourly with a target 6–10 mmol/L. No VRIII needed for one missed meal. Treat hypoglycaemia with 20% dextrose; restart usual insulin with the first post-op meal.",
+    cites: ["Peck & Hill Ch.17"],
   },
 ];
 
@@ -118,12 +120,12 @@ const CorticosteroidsTopic = () => {
         ],
       }}
       keyPoints={[
-        "Dexamethasone: 25× glucocorticoid potency of hydrocortisone, ZERO mineralocorticoid effect, long duration (36–72 h)",
-        "HPA suppression likely if ≥ 5 mg prednisolone/day for &gt; 4 weeks — perioperative steroid cover needed (AAGBI/AOMRC 2020)",
-        "Addisonian crisis: refractory hypotension + hypoglycaemia + hyperkalaemia + hyponatraemia. IV hydrocortisone 100 mg",
-        "Type 1 diabetes: NEVER stop basal insulin (DKA risk). Continue Lantus at 80% the night before surgery",
-        "Carbimazole inhibits thyroid peroxidase; takes 4–6 weeks. PTU also blocks peripheral T₄→T₃. Risk: agranulocytosis",
-        "SGLT2 inhibitors → euglycaemic DKA. Stop 3 days before elective surgery (CPOC 2021)",
+        { text: "Dexamethasone: 25× glucocorticoid potency of hydrocortisone, ZERO mineralocorticoid effect, long duration (36–72 h)", cites: ["AAGBI Steroid Cover"] },
+        { text: "HPA suppression likely if ≥ 5 mg prednisolone/day for &gt; 4 weeks — perioperative steroid cover needed (AAGBI/AOMRC 2020)", cites: ["BJA Educ 2012"] },
+        { text: "Addisonian crisis: refractory hypotension + hypoglycaemia + hyperkalaemia + hyponatraemia. IV hydrocortisone 100 mg", cites: ["Peck & Hill Ch.17"] },
+        { text: "Type 1 diabetes: NEVER stop basal insulin (DKA risk). Continue Lantus at 80% the night before surgery", cites: ["AAGBI Steroid Cover"] },
+        { text: "Carbimazole inhibits thyroid peroxidase; takes 4–6 weeks. PTU also blocks peripheral T₄→T₃. Risk: agranulocytosis", cites: ["BJA Educ 2012"] },
+        { text: "SGLT2 inhibitors → euglycaemic DKA. Stop 3 days before elective surgery (CPOC 2021)", cites: ["Peck & Hill Ch.17"] },
       ]}
       coreConcepts={
         <>

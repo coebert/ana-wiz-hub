@@ -54,6 +54,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Declare CICO at the failure of Plan C (or earlier if oxygenation is critical), and perform scalpel-bougie-tube cricothyroidotomy before SpO₂ < 80 %. Do not delay for further attempts at SAD or facemask ventilation.",
+   cites: ["DAS 2015"],
   },
   {
     title: "Awake fibreoptic intubation in a known difficult airway",
@@ -82,6 +83,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Block V₁/V₂ (nasal), IX (oropharynx), internal SLN (vallecula), and recurrent laryngeal (trachea) using stepwise topicalisation — co-phenylcaine, 4 % lidocaine spray, atomised vallecular lidocaine, and spray-as-you-go below the cords. Sedate lightly with remifentanil/dexmedetomidine and pre-treat with glycopyrrolate.",
+   cites: ["NAP4 2011"],
   },
 ];
 
@@ -403,16 +405,16 @@ const AirwayManagementTopic = () => {
         </>
       }
       keyPoints={[
-        "DAS 2015 — 4 sequential plans: intubation → SAD → facemask → FONA. Maximum 3+1 intubation attempts.",
-        "Localise partial obstruction by noise: stertor = supraglottic, inspiratory stridor = glottic/extrathoracic, expiratory stridor = intrathoracic, biphasic = fixed.",
-        "Maintain spontaneous ventilation and avoid muscle relaxants in dynamic obstruction until the airway is secured beyond the lesion.",
-        "Extrathoracic lesions collapse on inspiration and are splinted by PPV/CPAP; intrathoracic lesions collapse on expiration and are catastrophically worsened by IPPV in the supine position.",
-        "FONA does not rescue an intrathoracic obstruction — plan rigid bronchoscopy, stenting or femoro-femoral bypass before induction in high-risk mediastinal masses.",
-        "2nd-generation SADs have gastric drain ports and seal pressures 25–35 cmH₂O.",
-        "Videolaryngoscopy reduces failed intubation rates (Cochrane 2022) and is now the recommended default in predicted difficulty.",
-        "AFOI: block V₁/V₂, IX, internal SLN and recurrent laryngeal — sensory map drives the topicalisation plan.",
-        "CICO requires early declaration and immediate scalpel-bougie-tube cricothyroidotomy before SpO₂ < 80 %.",
-        "NAP4 lessons: failure to plan, failure to plan for failure, and persistence with failing techniques are the dominant themes.",
+        { text: "DAS 2015 — 4 sequential plans: intubation → SAD → facemask → FONA. Maximum 3+1 intubation attempts.", cites: ["DAS 2015"] },
+        { text: "Localise partial obstruction by noise: stertor = supraglottic, inspiratory stridor = glottic/extrathoracic, expiratory stridor = intrathoracic, biphasic = fixed.", cites: ["BJA Educ 2017"] },
+        { text: "Maintain spontaneous ventilation and avoid muscle relaxants in dynamic obstruction until the airway is secured beyond the lesion.", cites: ["NAP4 2011"] },
+        { text: "Extrathoracic lesions collapse on inspiration and are splinted by PPV/CPAP; intrathoracic lesions collapse on expiration and are catastrophically worsened by IPPV in the supine position.", cites: ["DAS 2015"] },
+        { text: "FONA does not rescue an intrathoracic obstruction — plan rigid bronchoscopy, stenting or femoro-femoral bypass before induction in high-risk mediastinal masses.", cites: ["BJA Educ 2017"] },
+        { text: "2nd-generation SADs have gastric drain ports and seal pressures 25–35 cmH₂O.", cites: ["NAP4 2011"] },
+        { text: "Videolaryngoscopy reduces failed intubation rates (Cochrane 2022) and is now the recommended default in predicted difficulty.", cites: ["DAS 2015"] },
+        { text: "AFOI: block V₁/V₂, IX, internal SLN and recurrent laryngeal — sensory map drives the topicalisation plan.", cites: ["BJA Educ 2017"] },
+        { text: "CICO requires early declaration and immediate scalpel-bougie-tube cricothyroidotomy before SpO₂ < 80 %.", cites: ["NAP4 2011"] },
+        { text: "NAP4 lessons: failure to plan, failure to plan for failure, and persistence with failing techniques are the dominant themes.", cites: ["DAS 2015"] },
       ]}
     />
   );

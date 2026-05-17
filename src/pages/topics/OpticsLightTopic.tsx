@@ -23,6 +23,7 @@ const workedExamples: WorkedExample[] = [
       "Pulse oximetry uses 660 nm (red) + 940 nm (IR). It calculates functional saturation = HbO₂ / (HbO₂ + Hb).\nCOHb absorbs almost identically to HbO₂ at 660 nm → the oximeter sees COHb as oxygenated haemoglobin.\nFractional SaO₂ = HbO₂ / (HbO₂ + Hb + COHb + MetHb) = 78% — the true tissue oxygen-carrying capacity.\nCo-oximetry uses ≥4 wavelengths (typically including 535, 585, 660, 940 nm) to resolve all four species.",
     answer:
       "SpO₂ is falsely reassuring because COHb and HbO₂ are optically indistinguishable at 660 nm. Treat with high-flow 100% O₂ (reduces COHb half-life from 320 min in air to ~80 min on FiO₂ 1.0) regardless of SpO₂; consider hyperbaric O₂ if COHb >25% or neurological signs.",
+    cites: ["BJA Educ 2004"],
   },
   {
     title: "Critical angle in a fibreoptic bronchoscope",
@@ -32,6 +33,7 @@ const workedExamples: WorkedExample[] = [
       "sin θc = n₂ / n₁ = 1.48 / 1.62 = 0.9136.\nθc = arcsin(0.9136) = 65.9°.",
     answer:
       "Critical angle ≈ 66°. Light striking the interface at angles greater than this (measured from the normal) undergoes total internal reflection and propagates losslessly along the fibre — the optical principle that allows a flexible scope to bend through the airway without leaking light.",
+    cites: ["Middleton Ch.12"],
   },
 ];
 
@@ -57,13 +59,13 @@ const OpticsLightTopic = () => {
         workedExamples: ["BJA Educ 2004"],
       }}
       keyPoints={[
-        "Law of reflection: angle of incidence = angle of reflection (θᵢ = θᵣ); incident ray, reflected ray, and normal lie in the same plane",
-        "Snell's law: n₁ sin θ₁ = n₂ sin θ₂; light bends toward the normal when entering a denser medium (higher refractive index)",
-        "Total internal reflection (TIR) occurs when light exceeds the critical angle (sin θc = n₂/n₁) travelling from dense → less dense medium",
-        "Fibreoptic scopes use TIR: coherent bundles (image) preserve spatial arrangement; incoherent bundles (light) transmit illumination only",
-        "Beer-Lambert law: A = ε × c × l — absorbance proportional to concentration × path length; basis of pulse oximetry and co-oximetry",
-        "Pulse oximetry uses 660 nm (red) and 940 nm (IR); R ratio calibrated empirically; cannot detect COHb or MetHb (needs co-oximetry)",
-        "Isobestic point (~800 nm): HbO₂ and Hb absorb equally — used for calibration and total haemoglobin estimation",
+        { text: "Law of reflection: angle of incidence = angle of reflection (θᵢ = θᵣ); incident ray, reflected ray, and normal lie in the same plane", cites: ["Cross & Plunkett Ch.18"] },
+        { text: "Snell's law: n₁ sin θ₁ = n₂ sin θ₂; light bends toward the normal when entering a denser medium (higher refractive index)", cites: ["BJA Educ 2004"] },
+        { text: "Total internal reflection (TIR) occurs when light exceeds the critical angle (sin θc = n₂/n₁) travelling from dense → less dense medium", cites: ["Middleton Ch.12"] },
+        { text: "Fibreoptic scopes use TIR: coherent bundles (image) preserve spatial arrangement; incoherent bundles (light) transmit illumination only", cites: ["Cross & Plunkett Ch.18"] },
+        { text: "Beer-Lambert law: A = ε × c × l — absorbance proportional to concentration × path length; basis of pulse oximetry and co-oximetry", cites: ["BJA Educ 2004"] },
+        { text: "Pulse oximetry uses 660 nm (red) and 940 nm (IR); R ratio calibrated empirically; cannot detect COHb or MetHb (needs co-oximetry)", cites: ["Middleton Ch.12"] },
+        { text: "Isobestic point (~800 nm): HbO₂ and Hb absorb equally — used for calibration and total haemoglobin estimation", cites: ["Cross & Plunkett Ch.18"] },
       ]}
       coreConcepts={
         <>

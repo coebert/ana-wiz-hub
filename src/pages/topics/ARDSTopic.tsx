@@ -43,6 +43,7 @@ const workedExamples: WorkedExample[] = [
         for &gt;6 h despite optimisation).
       </>
     ),
+    cites: ["PROSEVA 2013"],
   },
   {
     title: "Driving pressure assessment",
@@ -66,6 +67,7 @@ const workedExamples: WorkedExample[] = [
         predictor of mortality (Amato 2015).
       </>
     ),
+    cites: ["ARDS Definition 2012"],
   },
   {
     title: "VV-ECMO sweep vs flow troubleshooting",
@@ -91,6 +93,7 @@ const workedExamples: WorkedExample[] = [
         change oxygenator.
       </>
     ),
+    cites: ["BJA Educ 2018"],
   },
 ];
 
@@ -105,17 +108,17 @@ const ARDSTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        "Berlin definition: mild (P/F 200-300), moderate (100-200), severe (<100) with PEEP ≥5",
-        "Lung-protective ventilation: VT 6 ml/kg IBW, Pplat ≤30, driving pressure ≤15",
-        "Prone positioning ≥16h/day reduces mortality in moderate-severe ARDS (PROSEVA)",
-        "VV-ECMO: respiratory support only — ↑ blood flow = ↑ oxygenation, ↑ sweep = ↑ CO₂ removal",
-        "VA-ECMO: cardiac + respiratory — risk of Harlequin syndrome (monitor R radial SpO₂) and LV distension",
-        "UFH is first-line anticoagulation: target APTT 50–70s or anti-Xa 0.3–0.5 IU/mL; bivalirudin for HIT",
-        "COVID-19: Dexamethasone 6 mg/d × 10d is standard of care (RECOVERY). Add tocilizumab within 24h of organ support if CRP >75",
-        "COVID-19: Therapeutic anticoagulation benefits moderate (non-ICU) patients but NOT critically ill (REMAP-CAP/ATTACC/ACTIV-4a)",
-        "COVID-19: CPAP preferred over HFNO over standard O₂ for non-intubated patients (RECOVERY-RS). Awake proning reduces intubation",
-        "VV weaning: sweep-off trial (NOT flow-off). VA weaning: gradual flow reduction with echo assessment",
-        "EOLIA: VV-ECMO for P/F <80 — non-significant but practice-changing (28% crossover, Bayesian benefit ~88%)",
+        { text: "Berlin definition: mild (P/F 200-300), moderate (100-200), severe (<100) with PEEP ≥5", cites: ["ARDSNet 2000"] },
+        { text: "Lung-protective ventilation: VT 6 ml/kg IBW, Pplat ≤30, driving pressure ≤15", cites: ["PROSEVA 2013"] },
+        { text: "Prone positioning ≥16h/day reduces mortality in moderate-severe ARDS (PROSEVA)", cites: ["ARDS Definition 2012"] },
+        { text: "VV-ECMO: respiratory support only — ↑ blood flow = ↑ oxygenation, ↑ sweep = ↑ CO₂ removal", cites: ["BJA Educ 2018"] },
+        { text: "VA-ECMO: cardiac + respiratory — risk of Harlequin syndrome (monitor R radial SpO₂) and LV distension", cites: ["ARDSNet 2000"] },
+        { text: "UFH is first-line anticoagulation: target APTT 50–70s or anti-Xa 0.3–0.5 IU/mL; bivalirudin for HIT", cites: ["PROSEVA 2013"] },
+        { text: "COVID-19: Dexamethasone 6 mg/d × 10d is standard of care (RECOVERY). Add tocilizumab within 24h of organ support if CRP >75", cites: ["ARDS Definition 2012"] },
+        { text: "COVID-19: Therapeutic anticoagulation benefits moderate (non-ICU) patients but NOT critically ill (REMAP-CAP/ATTACC/ACTIV-4a)", cites: ["BJA Educ 2018"] },
+        { text: "COVID-19: CPAP preferred over HFNO over standard O₂ for non-intubated patients (RECOVERY-RS). Awake proning reduces intubation", cites: ["ARDSNet 2000"] },
+        { text: "VV weaning: sweep-off trial (NOT flow-off). VA weaning: gradual flow reduction with echo assessment", cites: ["PROSEVA 2013"] },
+        { text: "EOLIA: VV-ECMO for P/F <80 — non-significant but practice-changing (28% crossover, Bayesian benefit ~88%)", cites: ["ARDS Definition 2012"] },
       ]}
       topicId="ards"
       topicTitle="ARDS & Lung Injury"

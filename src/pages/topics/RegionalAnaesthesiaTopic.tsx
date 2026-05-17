@@ -43,6 +43,7 @@ const workedExamples: WorkedExample[] = [
       "Adequate block for CS: bilateral loss of cold sensation (Aδ-fibre block) to T4 (nipple line) and loss of light touch to T5.\nUse ethyl chloride spray; calibrate on the forearm, then start at the abdomen and move cranially until the patient reports cold returning. Document the highest dermatome with bilateral loss.\nAlso check motor (Bromage 3 expected) and sympathetic block (warm dry feet, hypotension).\nIf level <T4: consider topping up via uplift positioning, IV ketamine/midazolam supplementation, conversion to GA — never rush to start surgery on an inadequate block.",
     answer:
       "Need bilateral cold loss to T4 (nipple). Test with ethyl chloride spray, calibrating on the forearm and moving cranially from the abdomen.",
+    cites: ["AAGBI 2020"],
   },
   {
     title: "Epidural top-up timing on a patient on rivaroxaban",
@@ -52,6 +53,7 @@ const workedExamples: WorkedExample[] = [
       "AAGBI 2013 / ESAIC 2022: rivaroxaban (treatment dose) requires a 48 h gap before neuraxial intervention (insertion or catheter removal) due to bleeding/haematoma risk.\nFor prophylactic dose rivaroxaban (10 mg OD), the gap is 18 h.\nNo neuraxial intervention should occur within these windows. Wait the appropriate interval, then remove the catheter and monitor for 6 h with regular neurological observations.\nNext rivaroxaban dose: 6 h after catheter removal.",
     answer:
       "Wait 48 h after the rivaroxaban dose (treatment dose) before removing the catheter, then perform regular neurological observations for 6 h. Next dose 6 h after removal.",
+    cites: ["BJA Educ 2018"],
   },
 ];
 
@@ -74,15 +76,15 @@ const RegionalAnaesthesiaTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
-        "Spinal: rapid dense block, single-shot; Epidural: titratable, catheter-based, differential block",
-        "Hyperbaric bupivacaine spread influenced by baricity and patient position",
-        "Interscalene block causes ipsilateral phrenic nerve palsy in ~100% of cases",
-        "PDPH: worse sitting/standing, treat with epidural blood patch if conservative measures fail",
-        "Follow AAGBI/ESRA anticoagulation guidelines — timing of neuraxial relative to anticoagulants is critical",
-        "Test block height with cold spray: start from blocked area, move cranially until cold sensation returns",
-        "Differential block order: sympathetic (+2 above) > sensory (cold/pinprick) > motor (−2 below sensory level)",
-        "Bromage 0 = full motor; Bromage 3 = complete block. Bromage 0 required before mobilisation/discharge",
-        "Heavy bupivacaine 2-segment regression: 60–90 min; full motor recovery 3–4 hours",
+        { text: "Spinal: rapid dense block, single-shot; Epidural: titratable, catheter-based, differential block", cites: ["BJA Educ 2018b"] },
+        { text: "Hyperbaric bupivacaine spread influenced by baricity and patient position", cites: ["AAGBI 2020"] },
+        { text: "Interscalene block causes ipsilateral phrenic nerve palsy in ~100% of cases", cites: ["BJA Educ 2018"] },
+        { text: "PDPH: worse sitting/standing, treat with epidural blood patch if conservative measures fail", cites: ["BJA Educ 2018b"] },
+        { text: "Follow AAGBI/ESRA anticoagulation guidelines — timing of neuraxial relative to anticoagulants is critical", cites: ["AAGBI 2020"] },
+        { text: "Test block height with cold spray: start from blocked area, move cranially until cold sensation returns", cites: ["BJA Educ 2018"] },
+        { text: "Differential block order: sympathetic (+2 above) > sensory (cold/pinprick) > motor (−2 below sensory level)", cites: ["BJA Educ 2018b"] },
+        { text: "Bromage 0 = full motor; Bromage 3 = complete block. Bromage 0 required before mobilisation/discharge", cites: ["AAGBI 2020"] },
+        { text: "Heavy bupivacaine 2-segment regression: 60–90 min; full motor recovery 3–4 hours", cites: ["BJA Educ 2018"] },
       ]}
       coreConcepts={
         <>

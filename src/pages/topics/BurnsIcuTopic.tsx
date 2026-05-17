@@ -49,6 +49,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Secure the airway early, give 100 % O₂ for CO, treat cyanide on suspicion, calculate %TBSA (Lund–Browder) excluding superficial burns, start Parkland (4 mL × kg × %TBSA, half in 8 h) titrated to UO 0.5 mL/kg/h, perform escharotomies for circumferential limb / chest burns, keep warm, give multimodal analgesia and refer to a Burns Centre.",
+   cites: ["Parkland Formula"],
   },
   {
     title: "Day-7 ICU complications in a 35 % TBSA burn",
@@ -70,6 +71,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Treat as burn-wound sepsis until proven otherwise: cultures (including wound biopsy), broad-spectrum antibiotics covering Pseudomonas/MRSA, source control with early excision and grafting. Decompress an established abdominal compartment syndrome, switch to colloid-sparing resuscitation, feed enterally with high protein, and apply lung-protective ventilation. The hypermetabolic state is treated, not waited out — propranolol, glycaemic control and aggressive nutrition.",
+   cites: ["ISBI 2016"],
   },
 ];
 
@@ -110,16 +112,16 @@ const BurnsIcuTopic = () => {
         ],
       }}
       keyPoints={[
-        "Burn ‘shock’ is biphasic: 0–24 h fluid loss into the burn wound (low CO, high SVR), then a hyperdynamic hypermetabolic phase from 24–48 h lasting weeks.",
-        "Suspect inhalation injury with: facial/neck burns, soot in nares/mouth, hoarseness, stridor, carbonaceous sputum, enclosed-space fire, ↓GCS, COHb >10 %.",
-        "Wallace’s rule of nines is a rapid pre-hospital estimate; Lund–Browder chart is more accurate, particularly in children. Exclude superficial (erythema only) burns from TBSA.",
-        "Parkland formula: 4 mL × kg × %TBSA Hartmann’s in 24 h (half in first 8 h from burn). Modified Brooke: 2 mL × kg × %TBSA. Titrate to urine output, not the formula.",
-        "CO competes with O₂ for haemoglobin (240× affinity); SpO₂ over-reads. Treat with 100 % O₂; consider HBO if COHb >25 %, neurology, pregnancy or persistent symptoms.",
-        "Cyanide — suspect with persistent metabolic acidosis + lactate >10 mmol/L after enclosed-space fire. Treat empirically with hydroxocobalamin 5 g IV.",
-        "Suxamethonium is safe within 24 h of injury but contra-indicated from day 5 to ~12–24 months due to extra-junctional ACh receptors and lethal hyperkalaemia.",
-        "Burn-wound sepsis is the leading cause of late mortality. Pseudomonas, MRSA and fungi predominate; quantitative wound biopsy >10⁵ org/g defines invasive infection.",
-        "Hypermetabolism: rest energy expenditure 150–200 % predicted. Treat with early enteral nutrition, tight glycaemic control, propranolol and (in selected) oxandrolone.",
-        "UK Burns Centre referral: ≥20 % TBSA adult / ≥10 % child, any face/hand/perineum/major joint, full-thickness, electrical, chemical, inhalation, or burn with comorbidity.",
+        { text: "Burn ‘shock’ is biphasic: 0–24 h fluid loss into the burn wound (low CO, high SVR), then a hyperdynamic hypermetabolic phase from 24–48 h lasting weeks.", cites: ["ABA Burn 2023"] },
+        { text: "Suspect inhalation injury with: facial/neck burns, soot in nares/mouth, hoarseness, stridor, carbonaceous sputum, enclosed-space fire, ↓GCS, COHb >10 %.", cites: ["BJA Educ 2017 Burns"] },
+        { text: "Wallace’s rule of nines is a rapid pre-hospital estimate; Lund–Browder chart is more accurate, particularly in children. Exclude superficial (erythema only) burns from TBSA.", cites: ["Parkland Formula"] },
+        { text: "Parkland formula: 4 mL × kg × %TBSA Hartmann’s in 24 h (half in first 8 h from burn). Modified Brooke: 2 mL × kg × %TBSA. Titrate to urine output, not the formula.", cites: ["ISBI 2016"] },
+        { text: "CO competes with O₂ for haemoglobin (240× affinity); SpO₂ over-reads. Treat with 100 % O₂; consider HBO if COHb >25 %, neurology, pregnancy or persistent symptoms.", cites: ["ABA Burn 2023"] },
+        { text: "Cyanide — suspect with persistent metabolic acidosis + lactate >10 mmol/L after enclosed-space fire. Treat empirically with hydroxocobalamin 5 g IV.", cites: ["BJA Educ 2017 Burns"] },
+        { text: "Suxamethonium is safe within 24 h of injury but contra-indicated from day 5 to ~12–24 months due to extra-junctional ACh receptors and lethal hyperkalaemia.", cites: ["Parkland Formula"] },
+        { text: "Burn-wound sepsis is the leading cause of late mortality. Pseudomonas, MRSA and fungi predominate; quantitative wound biopsy >10⁵ org/g defines invasive infection.", cites: ["ISBI 2016"] },
+        { text: "Hypermetabolism: rest energy expenditure 150–200 % predicted. Treat with early enteral nutrition, tight glycaemic control, propranolol and (in selected) oxandrolone.", cites: ["ABA Burn 2023"] },
+        { text: "UK Burns Centre referral: ≥20 % TBSA adult / ≥10 % child, any face/hand/perineum/major joint, full-thickness, electrical, chemical, inhalation, or burn with comorbidity.", cites: ["BJA Educ 2017 Burns"] },
       ]}
       coreConcepts={
         <>

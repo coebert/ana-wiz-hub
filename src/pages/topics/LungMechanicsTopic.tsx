@@ -54,6 +54,7 @@ const workedExamples: WorkedExample[] = [
         and a recruitment-PEEP strategy; aim ΔP ≤ 14 cmH₂O.
       </p>
     ),
+    cites: ["BJA Educ 2015"],
   },
   {
     title: "Time constants in severe asthma",
@@ -76,6 +77,7 @@ const workedExamples: WorkedExample[] = [
         hypercapnia, and treat bronchospasm aggressively.
       </p>
     ),
+    cites: ["Lumb Ch.2-3"],
   },
   {
     title: "Bohr equation in pulmonary embolism",
@@ -93,6 +95,7 @@ const workedExamples: WorkedExample[] = [
       </ul>
     ),
     answer: <p>High VD/VT supports PE — escalate to CTPA, anticoagulate if no contraindication.</p>,
+    cites: ["West Ch.7"],
   },
 ];
 
@@ -115,13 +118,13 @@ const LungMechanicsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_01"] },
       }}
       keyPoints={[
-        "Compliance = ΔV/ΔP. Total respiratory compliance (~100 ml/cmH₂O) = lung + chest wall in series.",
-        "Static compliance uses plateau pressure; dynamic compliance uses peak pressure. Dynamic < static.",
-        "Surfactant (DPPC from Type II pneumocytes) reduces surface tension and stabilises alveoli via Laplace's law (P = 2T/r).",
-        "Major site of airway resistance: medium bronchi (generations 4-8), not small airways.",
-        "Time constant τ = R × C. 3τ required for 95% equilibration. Heterogeneous τ causes V/Q mismatch.",
-        "Normal WOB = 0.3-0.6 J/L, consuming 2-3% of VO₂. Can exceed 30% in respiratory failure.",
-        "Driving pressure (Pplat − PEEP) > 15 cmH₂O independently predicts ARDS mortality (Amato 2015).",
+        { text: "Compliance = ΔV/ΔP. Total respiratory compliance (~100 ml/cmH₂O) = lung + chest wall in series.", cites: ["BJA Educ 2015"] },
+        { text: "Static compliance uses plateau pressure; dynamic compliance uses peak pressure. Dynamic < static.", cites: ["Lumb Ch.2-3"] },
+        { text: "Surfactant (DPPC from Type II pneumocytes) reduces surface tension and stabilises alveoli via Laplace's law (P = 2T/r).", cites: ["West Ch.7"] },
+        { text: "Major site of airway resistance: medium bronchi (generations 4-8), not small airways.", cites: ["BJA Educ 2015"] },
+        { text: "Time constant τ = R × C. 3τ required for 95% equilibration. Heterogeneous τ causes V/Q mismatch.", cites: ["Lumb Ch.2-3"] },
+        { text: "Normal WOB = 0.3-0.6 J/L, consuming 2-3% of VO₂. Can exceed 30% in respiratory failure.", cites: ["West Ch.7"] },
+        { text: "Driving pressure (Pplat − PEEP) > 15 cmH₂O independently predicts ARDS mortality (Amato 2015).", cites: ["BJA Educ 2015"] },
       ]}
       coreConcepts={
         <>

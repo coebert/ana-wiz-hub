@@ -14,14 +14,14 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "Pulse oximetry uses red (660 nm) and infrared (940 nm) light; isobestic point ~805 nm.",
-  "Functional SpO₂ = HbO₂ / (HbO₂ + HHb); ignores dyshaemoglobins and is misleading in CO/MetHb.",
-  "COHb absorbs like HbO₂ at 660 nm → SpO₂ falsely ~100%; diagnose with co-oximetry; treat with 100% O₂ ± HBO.",
-  "MetHb drives SpO₂ towards 85% irrespective of true SaO₂; treat with methylene blue 1–2 mg/kg (avoid in G6PD).",
-  "Co-oximetry uses ≥4 wavelengths on haemolysed blood and quantifies each Hb species — the reference standard.",
-  "Capnography uses IR absorption at 4.26 µm; only polyatomic gases with a changing dipole absorb (not O₂, N₂, Ar).",
-  "Mainstream capnography is fast and tubeless; sidestream is lighter but has a 2–3 s delay and needs scavenging.",
-  "Capnograph phases: I baseline, II rapid rise, III alveolar plateau, IV inspiration; α/β angles reflect V/Q.",
+  { text: "Pulse oximetry uses red (660 nm) and infrared (940 nm) light; isobestic point ~805 nm.", cites: ["BJA Educ 2003"] },
+  { text: "Functional SpO₂ = HbO₂ / (HbO₂ + HHb); ignores dyshaemoglobins and is misleading in CO/MetHb.", cites: ["BJA Educ 2014"] },
+  { text: "COHb absorbs like HbO₂ at 660 nm → SpO₂ falsely ~100%; diagnose with co-oximetry; treat with 100% O₂ ± HBO.", cites: ["Cross & Plunkett Ch.15"] },
+  { text: "MetHb drives SpO₂ towards 85% irrespective of true SaO₂; treat with methylene blue 1–2 mg/kg (avoid in G6PD).", cites: ["BJA Educ 2003"] },
+  { text: "Co-oximetry uses ≥4 wavelengths on haemolysed blood and quantifies each Hb species — the reference standard.", cites: ["BJA Educ 2014"] },
+  { text: "Capnography uses IR absorption at 4.26 µm; only polyatomic gases with a changing dipole absorb (not O₂, N₂, Ar).", cites: ["Cross & Plunkett Ch.15"] },
+  { text: "Mainstream capnography is fast and tubeless; sidestream is lighter but has a 2–3 s delay and needs scavenging.", cites: ["BJA Educ 2003"] },
+  { text: "Capnograph phases: I baseline, II rapid rise, III alveolar plateau, IV inspiration; α/β angles reflect V/Q.", cites: ["BJA Educ 2014"] },
 ];
 
 const PulseOximetryTopic = () => {

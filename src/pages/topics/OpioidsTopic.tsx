@@ -51,6 +51,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Remifentanil's CSHT is essentially constant (~4 min) due to ester metabolism, making it ideal for long cases and rapid wake-up. Bridge analgesia with morphine and multimodal adjuncts before stopping the infusion, and consider ketamine cover to mitigate OIH.",
+   cites: ["BJA Educ 2016"],
   },
   {
     title: "Morphine in renal failure",
@@ -78,6 +79,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "M6G accumulates in renal failure causing delayed respiratory depression. Stop morphine, titrate naloxone (likely as infusion), and switch to fentanyl, alfentanil or buprenorphine which lack active renally cleared metabolites.",
+   cites: ["Peck & Hill Ch.6"],
   },
   {
     title: "Distinguishing tolerance from OIH",
@@ -104,6 +106,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "OIH is suggested by diffuse new-distribution pain that worsens with dose escalation. Reduce or rotate the opioid (consider methadone or buprenorphine), add ketamine and multimodal adjuncts, and re-evaluate. Tolerance and OIH frequently coexist.",
+   cites: ["Miller Ch.28"],
   },
 ];
 
@@ -316,13 +319,13 @@ const OpioidsTopic = () => {
         </>
       }
       keyPoints={[
-        "Three opioid receptors (µ, κ, δ) — all Gi-coupled. µ mediates analgesia, respiratory depression and dependence.",
-        "Morphine: M6G (active, accumulates in renal failure), M3G (neuroexcitatory). Histamine release.",
-        "Fentanyl: 100× morphine potency, rapid onset due to lipid solubility. CSHT increases with infusion duration.",
-        "Remifentanil: ester metabolism by tissue esterases. Constant CSHT ~4 min. Requires transition analgesia on cessation.",
-        "Alfentanil: pKa 6.5 → 90 % un-ionised → fastest onset despite lower lipid solubility than fentanyl.",
-        "Naloxone: competitive antagonist, duration 30–60 min. Risk of re-narcotisation — titrate carefully and consider infusion.",
-        "OIH: diffuse new-distribution pain that worsens with dose escalation. Manage with dose reduction, opioid rotation, ketamine and multimodal analgesia.",
+        { text: "Three opioid receptors (µ, κ, δ) — all Gi-coupled. µ mediates analgesia, respiratory depression and dependence.", cites: ["BJA Educ 2016"] },
+        { text: "Morphine: M6G (active, accumulates in renal failure), M3G (neuroexcitatory). Histamine release.", cites: ["Miller Ch.28"] },
+        { text: "Fentanyl: 100× morphine potency, rapid onset due to lipid solubility. CSHT increases with infusion duration.", cites: ["Peck & Hill Ch.6"] },
+        { text: "Remifentanil: ester metabolism by tissue esterases. Constant CSHT ~4 min. Requires transition analgesia on cessation.", cites: ["BJA Educ 2016"] },
+        { text: "Alfentanil: pKa 6.5 → 90 % un-ionised → fastest onset despite lower lipid solubility than fentanyl.", cites: ["Miller Ch.28"] },
+        { text: "Naloxone: competitive antagonist, duration 30–60 min. Risk of re-narcotisation — titrate carefully and consider infusion.", cites: ["Peck & Hill Ch.6"] },
+        { text: "OIH: diffuse new-distribution pain that worsens with dose escalation. Manage with dose reduction, opioid rotation, ketamine and multimodal analgesia.", cites: ["BJA Educ 2016"] },
       ]}
     />
   );

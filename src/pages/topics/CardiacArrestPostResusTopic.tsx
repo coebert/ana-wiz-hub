@@ -48,6 +48,7 @@ const workedExamples: WorkedExample[] = [
       "Hyperoxia (PaO₂ 38 kPa) is associated with worse outcome — wean FiO₂ to target SpO₂ 94–98 %. Hypocapnia (PaCO₂ 3.4 kPa) causes cerebral vasoconstriction — reduce minute ventilation to target 4.5–6.0 kPa. Tidal volume 550 mL = 7.9 mL/kg PBW — acceptable but trim to 6–8 mL/kg. MAP 60 is below the ≥ 65 mmHg target — uptitrate noradrenaline.",
     answer:
       "Wean FiO₂ for SpO₂ 94–98 %, reduce RR for PaCO₂ 4.5–6.0 kPa, TV ~ 480 mL (6.8 mL/kg PBW), increase noradrenaline to MAP ≥ 65 mmHg, then start active normothermia ≤ 37.7 °C and book early coronary angiography.",
+    cites: ["INCEPTION (NEJM 2023)"],
   },
   {
     title: "Multimodal neuroprognostication at 72 h",
@@ -57,6 +58,7 @@ const workedExamples: WorkedExample[] = [
       "Confounders excluded (rewarmed, sedation washed out, no metabolic derangement, no status epilepticus). Apply ERC/ESICM 2021 algorithm — entry criterion (GCS M ≤ 2) met. Look for ≥ 2 concordant poor-outcome markers from independent modalities: (1) bilaterally absent pupillary + corneal reflexes, (2) NSE > 75 at 72 h with rising trend, (3) highly malignant unreactive burst-suppression EEG, (4) bilaterally absent N20 SSEPs.",
     answer:
       "Four concordant poor-outcome markers across clinical, biochemical, electrophysiological and SSEP modalities — poor neurological outcome can be predicted with high specificity. Discuss WLST with family, refer to SNOD before withdrawal for potential DCD donation.",
+    cites: ["Prague OHCA (JAMA 2022)"],
   },
   {
     title: "eCPR candidate selection",
@@ -66,6 +68,7 @@ const workedExamples: WorkedExample[] = [
       "ARREST/Prague OHCA criteria favouring eCPR: witnessed arrest, bystander CPR, initial shockable rhythm, age < 65–70, ETCO₂ > 10 mmHg (sign of effective CPR), low-flow time projected < 60 min at cannulation, no major comorbidity. All criteria met. INCEPTION reminds us system speed matters — must reach cannulation within ~ 60 min.",
     answer:
       "Suitable eCPR candidate. Activate ECMO team, continue mechanical CPR, transport directly to ECMO bay/cath lab, target femoral VA cannulation within 60 min of arrest, then immediate coronary angiography after stable flow. Insert distal limb perfusion catheter at the time of cannulation.",
+    cites: ["ARREST trial (Lancet 2020)"],
   },
   {
     title: "Harlequin (north–south) syndrome on VA-ECMO",
@@ -75,20 +78,21 @@ const workedExamples: WorkedExample[] = [
       "Differential hypoxia: well-oxygenated retrograde ECMO blood meets poorly oxygenated antegrade native cardiac output in the aortic arch. The 'mixing point' has shifted distal to the great vessels because native LV ejection (with diseased lungs) has improved while the lungs cannot oxygenate. Upper body (cerebral, coronary) perfused by hypoxic native blood.",
     answer:
       "Optimise native lung function first (recruit, increase PEEP/FiO₂, diuresis). If persistent, convert to VAV-ECMO by adding an internal jugular return cannula to oxygenate the upper body, or move to central VA-ECMO. Monitor right radial saturation continuously as the early warning.",
+    cites: ["TTM (NEJM 2013)"],
   },
 ];
 
 const keyPoints = [
-  "Post-cardiac-arrest syndrome = brain injury + myocardial dysfunction + ischaemia–reperfusion + precipitating pathology — treat all four.",
-  "Avoid hyperoxia and hypocapnia: target SpO₂ 94–98 %, PaCO₂ 4.5–6.0 kPa, MAP ≥ 65 mmHg, glucose 7.8–10 mmol/L.",
-  "TTM2 (2021): normothermia ≤ 37.7 °C is the contemporary default; whichever target chosen, deliver strict fever control to ≥ 72 h with closed-loop feedback cooling.",
-  "Rewarm slowly (0.25–0.5 °C/h) — watch for hyperkalaemic rebound and prolonged drug clearance during cooling.",
-  "Neuroprognostication is multimodal, performed ≥ 72 h after ROSC, after confounders are excluded, and requires ≥ 2 concordant poor-outcome markers.",
-  "Specific markers: bilaterally absent pupil + corneal reflexes, bilaterally absent N20 SSEPs, NSE > 60 (48 h) / > 75 (72 h) µg/L or rising, highly malignant unreactive EEG, loss of grey-white differentiation on CT or restricted diffusion on MRI.",
-  "eCPR: ARREST and Prague OHCA show benefit only in highly selected witnessed shockable arrests with rapid cannulation (< 60 min); INCEPTION emphasises system speed.",
-  "VA-ECMO: anticipate limb ischaemia (distal perfusion cannula), Harlequin syndrome (right radial sat monitoring → consider VAV), LV distension (vent with IABP/Impella).",
-  "Avoid the self-fulfilling prophecy — do not withdraw before multimodal assessment is complete.",
-  "Refer DCD candidates to SNOD before WLST is raised with the family — preserves donation potential without altering care.",
+  { text: "Post-cardiac-arrest syndrome = brain injury + myocardial dysfunction + ischaemia–reperfusion + precipitating pathology — treat all four.", cites: ["TTM2 (NEJM 2021)"] },
+  { text: "Avoid hyperoxia and hypocapnia: target SpO₂ 94–98 %, PaCO₂ 4.5–6.0 kPa, MAP ≥ 65 mmHg, glucose 7.8–10 mmol/L.", cites: ["ERC/ESICM 2021 Post-Resus"] },
+  { text: "TTM2 (2021): normothermia ≤ 37.7 °C is the contemporary default; whichever target chosen, deliver strict fever control to ≥ 72 h with closed-loop feedback cooling.", cites: ["BJA Educ 2018 Neuroprog"] },
+  { text: "Rewarm slowly (0.25–0.5 °C/h) — watch for hyperkalaemic rebound and prolonged drug clearance during cooling.", cites: ["ELSO Guidelines 2020"] },
+  { text: "Neuroprognostication is multimodal, performed ≥ 72 h after ROSC, after confounders are excluded, and requires ≥ 2 concordant poor-outcome markers.", cites: ["INCEPTION (NEJM 2023)"] },
+  { text: "Specific markers: bilaterally absent pupil + corneal reflexes, bilaterally absent N20 SSEPs, NSE > 60 (48 h) / > 75 (72 h) µg/L or rising, highly malignant unreactive EEG, loss of grey-white differentiation on CT or restricted diffusion on MRI.", cites: ["Prague OHCA (JAMA 2022)"] },
+  { text: "eCPR: ARREST and Prague OHCA show benefit only in highly selected witnessed shockable arrests with rapid cannulation (< 60 min); INCEPTION emphasises system speed.", cites: ["ARREST trial (Lancet 2020)"] },
+  { text: "VA-ECMO: anticipate limb ischaemia (distal perfusion cannula), Harlequin syndrome (right radial sat monitoring → consider VAV), LV distension (vent with IABP/Impella).", cites: ["TTM (NEJM 2013)"] },
+  { text: "Avoid the self-fulfilling prophecy — do not withdraw before multimodal assessment is complete.", cites: ["TTM2 (NEJM 2021)"] },
+  { text: "Refer DCD candidates to SNOD before WLST is raised with the family — preserves donation potential without altering care.", cites: ["ERC/ESICM 2021 Post-Resus"] },
 ];
 
 const coreConcepts = (

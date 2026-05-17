@@ -19,15 +19,15 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "Macroshock VF threshold ~100 mA via skin; microshock VF threshold ~150 µA via intracardiac catheter.",
-  "Type CF equipment (leakage <10 µA) required for intracardiac connections.",
-  "Surgical diathermy uses high-frequency AC (0.4-3 MHz) which does not stimulate muscle/nerve.",
-  "Monopolar diathermy requires a return plate; bipolar does not. Bipolar is safer near pacemakers.",
-  "Equipment classes: I (earthed), II (double insulated), III (low voltage <24V AC).",
-  "Theatre humidity 50–60% prevents static charge accumulation by providing a conductive surface film of water.",
-  "Antistatic theatre footwear has sole resistance 75 kΩ–10 MΩ — drains static slowly while limiting macroshock current to <3 mA.",
-  "Defibrillator capacitor stores energy E = ½CV²; charged slowly (~3 s) and discharged in ~10 ms (biphasic).",
-  "Biphasic defibrillators deliver equivalent efficacy at lower energy than monophasic.",
+  { text: "Macroshock VF threshold ~100 mA via skin; microshock VF threshold ~150 µA via intracardiac catheter.", cites: ["Middleton Ch.16"] },
+  { text: "Type CF equipment (leakage <10 µA) required for intracardiac connections.", cites: ["Cross & Plunkett Ch.14"] },
+  { text: "Surgical diathermy uses high-frequency AC (0.4-3 MHz) which does not stimulate muscle/nerve.", cites: ["BJA Educ 2012"] },
+  { text: "Monopolar diathermy requires a return plate; bipolar does not. Bipolar is safer near pacemakers.", cites: ["Middleton Ch.16"] },
+  { text: "Equipment classes: I (earthed), II (double insulated), III (low voltage <24V AC).", cites: ["Cross & Plunkett Ch.14"] },
+  { text: "Theatre humidity 50–60% prevents static charge accumulation by providing a conductive surface film of water.", cites: ["BJA Educ 2012"] },
+  { text: "Antistatic theatre footwear has sole resistance 75 kΩ–10 MΩ — drains static slowly while limiting macroshock current to <3 mA.", cites: ["Middleton Ch.16"] },
+  { text: "Defibrillator capacitor stores energy E = ½CV²; charged slowly (~3 s) and discharged in ~10 ms (biphasic).", cites: ["Cross & Plunkett Ch.14"] },
+  { text: "Biphasic defibrillators deliver equivalent efficacy at lower energy than monophasic.", cites: ["BJA Educ 2012"] },
 ];
 
 const ElectricalSafetyTopic = () => {

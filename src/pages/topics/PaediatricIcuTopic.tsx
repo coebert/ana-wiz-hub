@@ -40,6 +40,7 @@ const workedExamples: WorkedExample[] = [
         (Broselow/PAWPER) once a tape is to hand.
       </>
     ),
+    cites: ["NICE NG29"],
   },
   {
     title: "Single-ventricle saturations",
@@ -65,6 +66,7 @@ const workedExamples: WorkedExample[] = [
         catheterisation or shunt revision.
       </>
     ),
+    cites: ["FEAST 2011"],
   },
 ];
 
@@ -79,14 +81,14 @@ const PaediatricIcuTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        "Children have HR-dependent cardiac output — bradycardia is a pre-arrest sign; treat with atropine 20 mcg/kg",
-        "Paediatric septic shock: 10–20 ml/kg boluses with reassessment; adrenaline for cold shock, noradrenaline for warm shock",
-        "Single ventricle physiology: target SpO₂ 75–85%; excessive O₂ causes pulmonary overcirculation and systemic steal",
-        "PRIS (propofol infusion syndrome) — avoid prolonged propofol infusions (>48h) in children",
-        "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children",
-        "Paediatric cardiac arrest is usually respiratory in origin — 5 rescue breaths first, defibrillation 4 J/kg",
-        "Brainstem death testing in children: >2 months, NOT applicable <37 weeks corrected gestational age",
-        "FEAST trial: fluid boluses increased mortality in resource-limited settings — does NOT change UK practice",
+        { text: "Children have HR-dependent cardiac output — bradycardia is a pre-arrest sign; treat with atropine 20 mcg/kg", cites: ["Resuscitation Council UK 2021"] },
+        { text: "Paediatric septic shock: 10–20 ml/kg boluses with reassessment; adrenaline for cold shock, noradrenaline for warm shock", cites: ["BJA Educ 2019"] },
+        { text: "Single ventricle physiology: target SpO₂ 75–85%; excessive O₂ causes pulmonary overcirculation and systemic steal", cites: ["RCPCH 2019"] },
+        { text: "PRIS (propofol infusion syndrome) — avoid prolonged propofol infusions (>48h) in children", cites: ["NICE NG29"] },
+        { text: "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children", cites: ["FEAST 2011"] },
+        { text: "Paediatric cardiac arrest is usually respiratory in origin — 5 rescue breaths first, defibrillation 4 J/kg", cites: ["Resuscitation Council UK 2021"] },
+        { text: "Brainstem death testing in children: >2 months, NOT applicable <37 weeks corrected gestational age", cites: ["BJA Educ 2019"] },
+        { text: "FEAST trial: fluid boluses increased mortality in resource-limited settings — does NOT change UK practice", cites: ["RCPCH 2019"] },
       ]}
       topicId="paediatric-icu"
       topicTitle="Paediatric Intensive Care"

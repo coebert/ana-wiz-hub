@@ -47,6 +47,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "IM adrenaline 0.5 mg (or IV 50 µg titrated) is the immediate priority, followed by oxygen, fluids, and second-line agents. Send tryptase at presentation, 1–2 h, and ≥ 24 h, refer to allergy clinic, and document the suspected trigger on the patient's records.",
+   cites: ["AAGBI 2009"],
   },
   {
     title: "Rising EtCO₂ in a young patient on volatile",
@@ -82,6 +83,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Treat as MH: stop volatile, hyperventilate with 100% O₂, give dantrolene 2.5 mg/kg IV repeated to effect (max 10 mg/kg), cool actively, and treat hyperkalaemia. ICU admission for ≥ 24 h with referral for IVCT and family counselling.",
+   cites: ["NAP Reports"],
   },
 ];
 
@@ -120,12 +122,12 @@ const ClinicalIncidentsTopic = () => {
         ],
       }}
       keyPoints={[
-        "Anaphylaxis: IM adrenaline 0.5 mg (or IV 50 µg titrated) is FIRST-line — antihistamine and steroid are adjuncts only",
-        "Tryptase: take at presentation, 1–2 h, and a baseline at ≥ 24 h — labelled with exact times",
-        "MH: rising EtCO₂ + tachycardia is the earliest sign. Dantrolene 2.5 mg/kg IV, repeat to 10 mg/kg",
-        "LAST: Intralipid 20% bolus 1.5 mL/kg, infusion 15 mL/kg/h. AVOID propofol, lidocaine, and amiodarone in arrest",
-        "Awareness: NAP5 incidence ~1:19,000. BIS 40-60 reduces risk in TIVA; document, acknowledge, and refer for psychological follow-up",
-        "NMBAs cause ~60% of perioperative anaphylaxis (NAP6). Chlorhexidine and antibiotics are next commonest",
+        { text: "Anaphylaxis: IM adrenaline 0.5 mg (or IV 50 µg titrated) is FIRST-line — antihistamine and steroid are adjuncts only", cites: ["NAP Reports"] },
+        { text: "Tryptase: take at presentation, 1–2 h, and a baseline at ≥ 24 h — labelled with exact times", cites: ["AAGBI 2009"] },
+        { text: "MH: rising EtCO₂ + tachycardia is the earliest sign. Dantrolene 2.5 mg/kg IV, repeat to 10 mg/kg", cites: ["AAGBI 2011"] },
+        { text: "LAST: Intralipid 20% bolus 1.5 mL/kg, infusion 15 mL/kg/h. AVOID propofol, lidocaine, and amiodarone in arrest", cites: ["BJA Educ 2011"] },
+        { text: "Awareness: NAP5 incidence ~1:19,000. BIS 40-60 reduces risk in TIVA; document, acknowledge, and refer for psychological follow-up", cites: ["NAP Reports"] },
+        { text: "NMBAs cause ~60% of perioperative anaphylaxis (NAP6). Chlorhexidine and antibiotics are next commonest", cites: ["AAGBI 2009"] },
       ]}
       coreConcepts={
         <>
