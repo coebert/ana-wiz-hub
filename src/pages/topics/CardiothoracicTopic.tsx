@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { cardiothoracicQuestions } from "@/data/quizzes";
@@ -87,8 +88,7 @@ const CardiothoracicTopic = () => {
 
           <section className="space-y-6 mb-10">
         {/* ───────── Cardiac surgery ───────── */}
-        <div id="cpb-overview" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiopulmonary Bypass (CPB)</h2>
+        <CollapsibleSubsection title="Cardiopulmonary Bypass (CPB)" defaultOpen>
           <p className="text-muted-foreground leading-relaxed mb-3">
             CPB allows the heart and lungs to be bypassed during cardiac surgery. Understanding the circuit and physiological derangements is essential.
           </p>
@@ -103,10 +103,9 @@ const CardiothoracicTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Heparin 300–400 units/kg before cannulation. Target ACT &gt;480 seconds. Reverse with protamine 1 mg per 100 units heparin. Protamine reactions: hypotension, bronchospasm, pulmonary hypertension.</p>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div id="cpb-physiology" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Physiological Effects of CPB</h2>
+        <CollapsibleSubsection title="Physiological Effects of CPB">
           <div className="space-y-2">
             {[
               { effect: "SIRS", detail: "Blood contact with circuit surfaces activates complement, cytokines, and coagulation cascades — systemic inflammatory response." },
@@ -121,10 +120,9 @@ const CardiothoracicTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div id="cardiac-considerations" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Cardiac Surgery Considerations</h2>
+        <CollapsibleSubsection title="Key Cardiac Surgery Considerations">
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Aortic Valve Replacement</p>
@@ -135,10 +133,9 @@ const CardiothoracicTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">On-pump vs off-pump (OPCAB). Maintain haemodynamic stability during grafting. TOE to assess wall motion abnormalities. ATACAS trial: TXA reduces bleeding without increasing thrombotic events.</p>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div id="opcab" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">On-Pump vs Off-Pump Cardiac Surgery (OPCAB)</h2>
+        <CollapsibleSubsection title="On-Pump vs Off-Pump Cardiac Surgery (OPCAB)">
           <p className="text-muted-foreground leading-relaxed mb-4">
             Coronary artery bypass grafting (CABG) can be performed with cardiopulmonary bypass (on-pump) or on the beating heart (off-pump / OPCAB). Each approach has distinct anaesthetic challenges.
           </p>
@@ -242,11 +239,10 @@ const CardiothoracicTopic = () => {
               <p><strong className="text-foreground">Current consensus:</strong> On-pump remains the standard for most patients. OPCAB may benefit select high-risk patients (heavily calcified aorta, CKD, previous stroke). Surgeon expertise is a major determinant of outcomes.</p>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         {/* Deep hypothermic circulatory arrest */}
-        <div id="dhca" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Deep Hypothermic Circulatory Arrest (DHCA)</h2>
+        <CollapsibleSubsection title="Deep Hypothermic Circulatory Arrest (DHCA)">
           <p className="text-muted-foreground leading-relaxed mb-4">
             DHCA is a controlled period of complete circulatory arrest performed under profound hypothermia (classically 14–20 °C nasopharyngeal). Cooling slows cerebral metabolism (~6–7% per °C, Q₁₀ ≈ 2–3) and provides a finite "safe" window of organ ischaemia in which the surgeon can operate on a bloodless, cannula-free aortic arch or great vessels. It is an inherently high-risk technique reserved for cases where conventional CPB cannot provide adequate exposure or distal perfusion.
           </p>
@@ -529,11 +525,10 @@ const CardiothoracicTopic = () => {
               </p>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         {/* Cardiac arrest after cardiac surgery */}
-        <div id="cals" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiac Arrest Following Cardiac Surgery</h2>
+        <CollapsibleSubsection title="Cardiac Arrest Following Cardiac Surgery">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Cardiac arrest in the first 24–72 hours after cardiac surgery is a uniquely manageable emergency: the patient is monitored, the team is on site, mechanical support and re-operation are immediately available, and the cause is usually one of a small list of surgically reversible problems (tamponade, bleeding, graft occlusion, severe arrhythmia, electrolyte derangement, pacing failure). Standard ALS — designed for the unwitnessed community arrest — is therefore <strong>modified</strong> by the EACTS/EACTA 2009 guideline (updated 2017), now adopted by the Resuscitation Council UK as the basis for cardiac advanced life support (CALS) in CICU.
           </p>
@@ -568,11 +563,10 @@ const CardiothoracicTopic = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         {/* ───────── Thoracic surgery ───────── */}
-        <div id="olv" className="scroll-mt-24 pt-4 border-t border-border">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">One-Lung Ventilation (OLV)</h2>
+        <CollapsibleSubsection title="One-Lung Ventilation (OLV)">
           <p className="text-muted-foreground leading-relaxed mb-4">
             One-lung ventilation underpins almost all thoracic surgery — lobectomy, pneumonectomy, oesophagectomy, thymectomy, lung volume reduction, and most VATS procedures. The aims are to deflate the operative lung for surgical access while maintaining adequate gas exchange through the dependent lung. Successful OLV requires the right device, confirmed correct position, and a clear plan for hypoxia.
           </p>
@@ -601,11 +595,10 @@ const CardiothoracicTopic = () => {
           <div className="mt-4">
             <OLVTroubleshootingDiagram />
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         {/* ───────── Post-operative analgesia ───────── */}
-        <div id="analgesia" className="scroll-mt-24 pt-4 border-t border-border">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Post-Operative Analgesia</h2>
+        <CollapsibleSubsection title="Post-Operative Analgesia">
           <p className="text-muted-foreground leading-relaxed mb-4">
             Pain after cardiothoracic surgery is severe, somatic and visceral, and powerfully affects respiratory mechanics, sputum clearance, ambulation, and the development of chronic post-surgical pain (CPSP — up to 50% after thoracotomy, 30% after sternotomy). A <strong>multimodal, opioid-sparing</strong> approach is now standard, with regional techniques tailored to the procedure. ERAS-Cardiac (2019) and ERAS-Thoracic (2019) both place regional analgesia at the heart of recovery.
           </p>
@@ -716,7 +709,7 @@ const CardiothoracicTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Multimodal opioid-sparing analgesia, early extubation (&lt;6 h), early mobilisation (POD 0–1), early oral intake, removal of catheters/drains as soon as possible, structured opioid weaning at discharge. Pain scores are a primary quality outcome.</p>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
       </section>
           <ExamPitfallsCallout
             accent="clinical"
