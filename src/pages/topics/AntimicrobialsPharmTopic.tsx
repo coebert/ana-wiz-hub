@@ -134,6 +134,7 @@ const AntimicrobialsTopic = () => {
       accentColor="text-pharmacology"
       topicId="antimicrobials-pharm"
       topicTitle="Antimicrobials"
+      workedExamples={antimicrobialsWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={antimicrobialsQuiz}
