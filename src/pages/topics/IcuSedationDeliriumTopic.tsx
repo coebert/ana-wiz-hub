@@ -3,6 +3,7 @@ import { icuSedationDeliriumQuestions } from "@/data/quizzes";
 import { ICUSedationComparisonDiagram } from "@/components/diagrams/ICUSedationComparisonDiagram";
 import { CAMICUFlowchartDiagram } from "@/components/diagrams/CAMICUFlowchartDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Score sedation depth using RASS and target light sedation (0 to −2) unless a specific indication for deep sedation exists.",
@@ -237,6 +238,16 @@ const IcuSedationDeliriumTopic = () => {
               </div>
             </div>
           </div>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Target light sedation (RASS 0 to −2) — over-sedation prolongs ventilation and worsens delirium.",
+              "Daily sedation hold + spontaneous breathing trial (ABC bundle) reduces ventilator days.",
+              "CAM-ICU screens for delirium; treat with non-pharmacological measures first (orientation, sleep, mobility, family).",
+              "Dexmedetomidine reduces delirium vs benzodiazepines; avoid benzodiazepines for routine sedation (MENDS, SEDCOM).",
+              "ABCDEF bundle: Assess pain, Both SAT/SBT, Choice of sedation, Delirium monitoring, Early mobility, Family engagement.",
+            ]}
+          />
         </section>
       }
     />

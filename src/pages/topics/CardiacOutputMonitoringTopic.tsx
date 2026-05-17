@@ -11,6 +11,7 @@ import OesophagealDopplerDiagram from "@/components/diagrams/OesophagealDopplerD
 import ThermodilutionDiagram from "@/components/diagrams/ThermodilutionDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import COPitfallsChecklist from "@/components/diagrams/COPitfallsChecklist";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe the Fick principle, Stewart-Hamilton equation, Doppler equation and pulse contour analysis as the four physiological bases of bedside CO measurement.",
@@ -326,6 +327,17 @@ const CoreConcepts = () => (
         </table>
       </div>
     </div>
+
+    <ExamPitfallsCallout
+      accent="icu"
+      pitfalls={[
+        "PA catheter: gold standard but invasive — no mortality benefit (PAC-Man); reserve for complex haemodynamics.",
+        "PiCCO: transpulmonary thermodilution + pulse-contour analysis; needs central + arterial line; sensitive to arrhythmia.",
+        "Oesophageal Doppler: continuous, minimally invasive; flow time corrected (FTc) and peak velocity guide GDT in major surgery (NICE MTG3).",
+        "PPV/SVV predict fluid responsiveness only in fully ventilated, sinus-rhythm, Vt ≥8 mL/kg patients with closed chest.",
+        "Echo (TTE/TOE) is increasingly first-line — adds anatomy plus function, valves and pericardium.",
+      ]}
+    />
   </>
 );
 

@@ -10,6 +10,7 @@ import { MehranScoreCalculator } from "@/components/diagrams/MehranScoreCalculat
 import { akiRrtQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const tocItems = [
   { id: "toc-kdigo", label: "KDIGO Staging" },
@@ -601,6 +602,16 @@ const AkiRrtTopic = () => {
 
       </div>
 
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "KDIGO AKI: stage 1 creat ×1.5 or UO <0.5 mL/kg/h for 6 h; stage 3 ×3 / >353 µmol/L / dialysis.",
+              "Indications for RRT (AEIOU): Acidosis, Electrolytes (K⁺ >6.5), Intoxications, Overload, Uraemic complications.",
+              "CRRT preferred over IHD in haemodynamic instability; STARRT-AKI showed no benefit to early initiation.",
+              "Citrate regional anticoagulation reduces bleeding risk but watch for citrate accumulation (high tCa/iCa ratio) in liver failure.",
+              "Avoid nephrotoxins (NSAIDs, aminoglycosides, contrast where possible); adjust drug doses by current eGFR/CRRT dose.",
+            ]}
+          />
     </>
       }
     />

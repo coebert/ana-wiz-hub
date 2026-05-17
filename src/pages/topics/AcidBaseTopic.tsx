@@ -5,6 +5,7 @@ import StewartAcidBaseDiagram from "@/components/diagrams/StewartAcidBaseDiagram
 import AcidBaseInterpretationDiagram from "@/components/diagrams/AcidBaseInterpretationDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply a five-step systematic ABG interpretation (oxygenation → primary disorder → compensation → anion gap → delta ratio)",
@@ -182,6 +183,16 @@ const AcidBaseTopic = () => {
               </div>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Henderson–Hasselbalch: pH = 6.1 + log([HCO₃⁻] / 0.03 × PaCO₂).",
+              "Anion gap = Na⁺ − (Cl⁻ + HCO₃⁻); normal 8–12; raised = MUDPILES (methanol, uraemia, DKA, paraldehyde, INH, lactate, ethylene glycol, salicylate).",
+              "Delta ratio (Δ AG / Δ HCO₃⁻): <1 mixed NAGMA + HAGMA; >2 metabolic alkalosis coexists.",
+              "Stewart approach: SID, weak acids (Atot), pCO₂ — useful for hyperchloraemic acidosis after saline resuscitation.",
+              "Expected compensation rules: metabolic acidosis ΔPaCO₂ = 1.2 × Δ HCO₃⁻; respiratory acute ΔHCO₃⁻ = 1 per 10 ΔPaCO₂.",
+            ]}
+          />
         </>
       }
     />

@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { QuizQuestion } from "@/components/QuizSection";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe the legal and ethical framework for end-of-life decision-making in UK ICU practice (MCA 2005, GMC, FICM/ICS).",
@@ -242,6 +243,16 @@ const EndOfLifeCommunicationTopic = () => {
               <li><strong>Mortality & morbidity review</strong> — learning, not blame.</li>
             </ul>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Use SPIKES or similar framework for breaking bad news: Setting, Perception, Invitation, Knowledge, Empathy, Strategy.",
+              "Distinguish withholding vs withdrawing — ethically equivalent; communicate as continuation of care, not 'giving up'.",
+              "Symptom control: opioid + benzodiazepine + anticholinergic (e.g. glycopyrronium for secretions); titrate to comfort, not life-shortening.",
+              "Cultural and spiritual factors: ask, do not assume; chaplaincy and family liaison are part of the team.",
+              "Document discussions, plan and parties present; offer follow-up bereavement contact and team debrief.",
+            ]}
+          />
         </>
       }
     />

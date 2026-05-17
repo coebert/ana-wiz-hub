@@ -9,6 +9,7 @@ import APRVExpiratoryFlowDiagram from "@/components/diagrams/APRVExpiratoryFlowD
 import { mechanicalVentilationQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Recognise the four indications for invasive ventilation and pick an initial mode based on the dominant pathology.",
@@ -1421,6 +1422,16 @@ const MechanicalVentilationTopic = () => {
         </table>
       </SynthesisBlock>
 
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Lung-protective ventilation: Vt 6 mL/kg IBW, Pplat ≤30 cmH₂O, driving pressure ≤15 cmH₂O, PEEP titrated to oxygenation.",
+              "Permissive hypercapnia is acceptable (pH >7.20) to limit barotrauma; contraindicated in raised ICP.",
+              "Auto-PEEP / breath stacking: prolong expiratory time, reduce RR, treat bronchospasm — disconnect from circuit if haemodynamic collapse.",
+              "Spontaneous breathing trial (PSV 5–7 cmH₂O / T-piece 30–120 min) is the gateway to extubation; RSBI <105 predicts success.",
+              "ARDS net protocol reduces mortality; high PEEP + low Vt is the default in moderate–severe ARDS.",
+            ]}
+          />
     </>
       }
     />

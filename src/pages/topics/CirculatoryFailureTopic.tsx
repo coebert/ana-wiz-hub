@@ -6,6 +6,7 @@ import MechanicalCirculatorySupportDiagram from "@/components/diagrams/Mechanica
 import MCSPressureVolumeLoopDiagram from "@/components/diagrams/MCSPressureVolumeLoopDiagram";
 import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
 import CPPSpiralDiagram from "@/components/diagrams/CPPSpiralDiagram";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Classify shock by mechanism (hypovolaemic, cardiogenic, distributive, obstructive) and recognise the characteristic CVP / CO / SVR pattern of each.",
@@ -324,6 +325,17 @@ const coreConcepts = (
         <li><strong className="text-foreground">Contraindications:</strong> irreversible underlying disease, futility, uncontrolled bleeding, advanced directive against. Severe AR contraindicates VA-ECMO (worsens LV distension).</li>
       </ul>
     </div>
+
+    <ExamPitfallsCallout
+      accent="icu"
+      pitfalls={[
+        "Shock classification: hypovolaemic (low preload), cardiogenic (pump failure), distributive (low SVR), obstructive (PE/tamponade/tension PTX).",
+        "Noradrenaline first line in septic shock; add vasopressin then hydrocortisone in catecholamine-resistant shock.",
+        "IABP-SHOCK II: no mortality benefit from routine IABP in cardiogenic shock post-MI — reserve for selected cases.",
+        "VA-ECMO contraindicated in severe AR (worsens LV distension); watch for north–south syndrome with peripheral cannulation.",
+        "Fluid responsiveness assessment (PLR, PPV, SVV) — only valid in fully ventilated, sinus-rhythm, Vt ≥8 mL/kg patients.",
+      ]}
+    />
   </>
 );
 

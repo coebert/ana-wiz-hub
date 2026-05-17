@@ -5,6 +5,7 @@ import ParacetamolNomogramDiagram from "@/components/diagrams/ParacetamolNomogra
 import ToxidromeComparatorDiagram from "@/components/diagrams/ToxidromeComparatorDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply the ABCDE approach to acute poisoning and identify when to escalate to NPIS/TOXBASE.",
@@ -370,6 +371,16 @@ const ToxicologyTopic = () => {
               counter-terrorism event — preserve scene, documentation and clinical samples for the chain of evidence.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "ABC first, then specific antidote; consult TOXBASE.",
+              "Paracetamol — NAC by nomogram (140 mg/kg load); opioid — naloxone titrated (start 100–400 µg IV); β-blocker/CCB — glucagon, high-dose insulin euglycaemia.",
+              "TCA overdose: wide QRS + hypotension → sodium bicarbonate 1–2 mmol/kg; treat seizures and arrhythmias.",
+              "LAST: 20% Intralipid 1.5 mL/kg bolus + 0.25 mL/kg/min infusion (max 12 mL/kg).",
+              "Toxidromes: cholinergic (DUMBELS — atropine + pralidoxime), anticholinergic (hot/dry/mad), sympathomimetic, opioid, sedative.",
+            ]}
+          />
         </>
       }
     />

@@ -15,6 +15,7 @@ import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodia
 import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
 import { eegTraceContent, postArrestProgContent } from "@/components/diagrams/ecgExpandedContent";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const tocItems = [
   { id: "overview", label: "Overview & chain of survival", group: "Background" },
@@ -420,6 +421,18 @@ const coreConcepts = (
         </div>
       </div>
     </ExamSection>
+
+    <ExamPitfallsCallout
+      accent="icu"
+      pitfalls={[
+        "Post-ROSC bundle: PaCO₂ 4.5–6.0 kPa, SpO₂ 94–98%, MAP ≥65, 12-lead ECG, urgent PCI if STEMI.",
+        "TTM2: targeted normothermia (≤37.5 °C) non-inferior to 33 °C — prevent fever for 72 h.",
+        "Neuroprognostication is multimodal — clinical (≥72 h), bilateral absent N20 SSEP, suppressed/burst EEG, NSE >60, MRI changes.",
+        "eCPR: witnessed arrest, shockable rhythm, low-flow <60 min, no irreversible cause — only in selected centres.",
+        "Avoid premature withdrawal in the first 72 h; sedation, hypothermia and metabolic confounders cloud neuro exam.",
+        "SNOD referral early — even before brain-stem death testing or withdrawal decisions.",
+      ]}
+    />
   </>
 );
 

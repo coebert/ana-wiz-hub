@@ -10,6 +10,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply the Berlin definition to stratify ARDS severity and prognosis.",
@@ -800,6 +801,16 @@ const ARDSTopic = () => {
         </p>
       </SynthesisBlock>
 
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Berlin definition: acute (<7 days), bilateral infiltrates, not explained by cardiac failure, PaO₂/FiO₂ ≤300 on PEEP ≥5.",
+              "Mild 200–300, moderate 100–200, severe ≤100 (mmHg) — mortality rises stepwise.",
+              "Prone for ≥16 h/day in severe ARDS (PaO₂/FiO₂ <150) — PROSEVA showed mortality benefit.",
+              "Neuromuscular blockade for 48 h in severe ARDS reduces barotrauma but ROSE trial showed no mortality benefit.",
+              "Refractory hypoxaemia: consider ECMO referral (Murray score ≥3, PaO₂/FiO₂ <80) — EOLIA trial.",
+            ]}
+          />
     </>
       }
     />

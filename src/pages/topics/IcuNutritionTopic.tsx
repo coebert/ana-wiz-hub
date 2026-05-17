@@ -6,6 +6,7 @@ import RefeedingRiskCalculatorDiagram from "@/components/diagrams/RefeedingRiskC
 import RefeedingSyndromeAnimation from "@/components/diagrams/RefeedingSyndromeAnimation";
 import EnergyProteinTargetDiagram from "@/components/diagrams/EnergyProteinTargetDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe the metabolic response to critical illness and its implications for feeding strategy",
@@ -224,6 +225,16 @@ const IcuNutritionTopic = () => {
               ))}
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Enteral feeding preferred — start within 24–48 h if haemodynamically stable; reduces infection vs parenteral.",
+              "Target 25–30 kcal/kg/day, protein 1.2–2.0 g/kg/day; trophic feeding in early acute phase is acceptable.",
+              "Refeeding syndrome: drop in PO₄³⁻/K⁺/Mg²⁺ when feeding restarts after starvation — start at 5–10 kcal/kg/day, replace electrolytes.",
+              "Parenteral nutrition: reserve for those who cannot tolerate enteral after 7 days; central access, daily LFTs/triglycerides.",
+              "Stress hyperglycaemia: target glucose 6–10 mmol/L (NICE-SUGAR) — tight control increases mortality.",
+            ]}
+          />
         </>
       }
     />

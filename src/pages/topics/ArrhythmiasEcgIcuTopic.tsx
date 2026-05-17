@@ -22,6 +22,7 @@ import {
 } from "@/components/diagrams/ecgExpandedContent";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply a reproducible 8-step ECG analysis (rate, rhythm, P, PR, QRS, ST/T, QT, compare) to any ICU strip or 12-lead",
@@ -325,6 +326,16 @@ const ArrhythmiasEcgIcuTopic = () => {
               </div>
             </div>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Systematic ECG: rate, rhythm, axis, P-QRS-T morphology, intervals (PR <200, QRS <120, QTc <440 M / 460 F).",
+              "Narrow-complex tachy: vagal manoeuvres, adenosine 6→12→12 mg; AF/flutter — rate vs rhythm control + anticoagulation.",
+              "Broad-complex tachy: assume VT until proven otherwise; if unstable → synchronised DC shock.",
+              "Bradyarrhythmia + adverse signs: atropine 500 µg, escalating to transcutaneous pacing, isoprenaline or adrenaline infusion.",
+              "Long QT predisposes to torsades — withdraw culprits, correct K⁺/Mg²⁺/Ca²⁺, IV magnesium 2 g, overdrive pacing if persistent.",
+            ]}
+          />
         </>
       }
     />

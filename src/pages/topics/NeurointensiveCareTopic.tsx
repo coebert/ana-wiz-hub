@@ -12,6 +12,7 @@ import type { WorkedExample } from "@/components/WorkedExamples";
 import { SnodReferralDecider } from "@/components/SnodReferralDecider";
 import { DbiTimeline } from "@/components/DbiTimeline";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const tocItems = [
   { id: "toc-tbi", label: "TBI" },
@@ -1123,6 +1124,16 @@ const NeurointensiveCareTopic = () => {
         </table>
       </SynthesisBlock>
 
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "TBI: maintain CPP 60–70, ICP <22, PaCO₂ 4.5–5.0, SpO₂ >94%, normoglycaemia, normothermia; head-up 30°.",
+              "Tier 1 ICP control: sedation/analgesia, CSF drainage, osmotherapy (mannitol/hypertonic saline). Tier 3: barbiturate coma, decompressive craniectomy.",
+              "SAH: nimodipine 60 mg 4-hourly for 21 days reduces vasospasm-related ischaemia.",
+              "Status epilepticus: benzodiazepine → phenytoin/levetiracetam → propofol/midazolam infusion ± thiopentone.",
+              "Brain-stem death testing: prerequisites (cause known, no reversible factors), absent brain-stem reflexes, apnoea test; two doctors, two sets.",
+            ]}
+          />
     </>
       }
     />

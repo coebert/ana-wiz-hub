@@ -5,6 +5,7 @@ import WETFLAGDiagram from "@/components/diagrams/WETFLAGDiagram";
 import PaediatricVitalsTable from "@/components/diagrams/PaediatricVitalsTable";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply WETFLAG and APLS age-banded vitals to deliver immediate weight-based therapy in a critically unwell child.",
@@ -332,6 +333,16 @@ const PaediatricIcuTopic = () => {
               <li><strong>Family-centred care</strong>: structured updates, consider parental presence at procedures.</li>
             </ul>
           </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Paediatric sepsis: PALS algorithm — 10–20 mL/kg fluid boluses (reassess after each), early antibiotics, early inotropes (peripheral if needed).",
+              "ETT/drug doses: WET FLAG (weight, energy 4 J/kg, tube size, fluid 10 mL/kg, lorazepam, adrenaline 10 µg/kg, glucose 2 mL/kg 10%).",
+              "Congenital cyanotic heart disease: maintain SpO₂ at usual baseline (often 75–85%), avoid hypoxia/hypocapnia changes that affect PVR/SVR balance.",
+              "Paediatric TBI: target CPP age-appropriate (40–60 mmHg), avoid hyponatraemia, head-up, normothermia.",
+              "Sedation: morphine/midazolam infusions, dexmedetomidine adjunct; chloral hydrate avoided due to safety concerns.",
+            ]}
+          />
         </>
       }
     />

@@ -4,6 +4,7 @@ import { bronchospasticFailureQuestions } from "@/data/quizzes";
 import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinflationDiagram";
 import SedacondaDiagram from "@/components/diagrams/SedacondaDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply BTS/SIGN criteria to recognise life-threatening and near-fatal asthma and escalate appropriately.",
@@ -596,6 +597,16 @@ const BronchospasticFailureTopic = () => {
         </table>
       </SynthesisBlock>
 
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Life-threatening asthma: PEF <33%, SpO₂ <92%, silent chest, exhaustion, altered consciousness, normal/raised PaCO₂.",
+              "Treatment: O₂, nebulised salbutamol + ipratropium, IV hydrocortisone, IV magnesium 2 g, consider IV salbutamol/aminophylline.",
+              "Intubation criteria: exhaustion, rising CO₂, altered consciousness — ketamine + suxamethonium induction; expect dynamic hyperinflation.",
+              "Ventilator settings: low RR (6–10), long expiratory time (I:E 1:4–1:5), small Vt, permissive hypercapnia, minimal PEEP.",
+              "Sedaconda (isoflurane via AnaConDa) is a useful bronchodilator rescue in refractory status asthmaticus.",
+            ]}
+          />
     </>
       }
     />
