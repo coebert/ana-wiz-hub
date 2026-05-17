@@ -98,16 +98,16 @@ const PatientPositioningTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       keyPoints={[
-        "Anaesthetist owns positioning shared with the surgical team — document position, padding, eye care and pulses checked AFTER every move.",
-        "Ulnar neuropathy at the elbow is the commonest peripheral nerve injury after general anaesthesia (~28% of all anaesthesia-related nerve claims). Supinate the forearm and pad the medial epicondyle.",
-        "Brachial plexus injury — abduct arms <90°, externally rotate, avoid shoulder braces on the AC joint in steep Trendelenburg.",
-        "Common peroneal nerve at the fibular head is the commonest stirrup-related injury (lithotomy / lateral) → foot drop.",
-        "Well-leg compartment syndrome risk rises sharply after 4 h in stirrups — consider lowering legs every 2 h on long Lloyd-Davies cases.",
-        "Prone position must keep the abdomen FREE — abdominal compression ↑ IAP → ↓ venous return, ↑ epidural venous engorgement and ↑ surgical bleeding.",
-        "Post-operative visual loss (POVL) is associated with prone spine surgery (>6 h, large blood loss) and steep Trendelenburg robotic surgery — keep head neutral or above heart, avoid direct globe pressure, maintain MAP.",
-        "Sitting and beach-chair positions: ZERO the arterial transducer at the EXTERNAL AUDITORY MEATUS (Circle of Willis) — MAP measured at the heart overestimates cerebral pressure by 12–20 mmHg.",
-        "Sitting position has a 25–45% incidence of venous air embolism — screen for PFO pre-op, use precordial Doppler/TOE, EtCO₂/EtN₂, multi-orifice CVC at SVC-RA junction.",
-        "ETT migrates ~2 cm caudally on prone repositioning — re-confirm position and bilateral air entry after every turn; use a reinforced (armoured) tube.",
+        { text: "Anaesthetist owns positioning shared with the surgical team — document position, padding, eye care and pulses checked AFTER every move.", cites: ["AAGBI Positioning 2018"] },
+        { text: "Ulnar neuropathy at the elbow is the commonest peripheral nerve injury after general anaesthesia (~28% of all anaesthesia-related nerve claims). Supinate the forearm and pad the medial epicondyle.", cites: ["ASA Practice Advisory 2020"] },
+        { text: "Brachial plexus injury — abduct arms <90°, externally rotate, avoid shoulder braces on the AC joint in steep Trendelenburg.", cites: ["BJA Educ 2017 PION"] },
+        { text: "Common peroneal nerve at the fibular head is the commonest stirrup-related injury (lithotomy / lateral) → foot drop.", cites: ["AAGBI Pressure 2015"] },
+        { text: "Well-leg compartment syndrome risk rises sharply after 4 h in stirrups — consider lowering legs every 2 h on long Lloyd-Davies cases.", cites: ["AAGBI Positioning 2018"] },
+        { text: "Prone position must keep the abdomen FREE — abdominal compression ↑ IAP → ↓ venous return, ↑ epidural venous engorgement and ↑ surgical bleeding.", cites: ["ASA Practice Advisory 2020"] },
+        { text: "Post-operative visual loss (POVL) is associated with prone spine surgery (>6 h, large blood loss) and steep Trendelenburg robotic surgery — keep head neutral or above heart, avoid direct globe pressure, maintain MAP.", cites: ["BJA Educ 2017 PION"] },
+        { text: "Sitting and beach-chair positions: ZERO the arterial transducer at the EXTERNAL AUDITORY MEATUS (Circle of Willis) — MAP measured at the heart overestimates cerebral pressure by 12–20 mmHg.", cites: ["AAGBI Pressure 2015"] },
+        { text: "Sitting position has a 25–45% incidence of venous air embolism — screen for PFO pre-op, use precordial Doppler/TOE, EtCO₂/EtN₂, multi-orifice CVC at SVC-RA junction.", cites: ["AAGBI Positioning 2018"] },
+        { text: "ETT migrates ~2 cm caudally on prone repositioning — re-confirm position and bilateral air entry after every turn; use a reinforced (armoured) tube.", cites: ["ASA Practice Advisory 2020"] },
       ]}
       coreConcepts={
         <RealismProvider level={realism}>

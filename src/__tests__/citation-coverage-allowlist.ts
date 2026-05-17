@@ -10,30 +10,5 @@ export interface AllowlistEntry {
 }
 
 export const CITATION_ALLOWLIST: AllowlistEntry[] = [
-  { file: "src/pages/topics/AcuteLiverFailureTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 3 },
-  { file: "src/pages/topics/AcutePancreatitisTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 3 },
-  { file: "src/pages/topics/AirwayManagementTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/BrachialPlexusTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/BurnsIcuTopic.tsx", uncitedKeyPoints: 10, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/CardiacCycleTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/ClinicalIncidentsTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/GasLawsTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 3 },
-  { file: "src/pages/topics/GastrointestinalPhysiologyTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/GynaecologicalAnaesthesiaTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/HepaticPhysiologyTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/HepatobiliaryTransplantTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 1 },
-  { file: "src/pages/topics/IcuEndocrineEmergenciesTopic.tsx", uncitedKeyPoints: 8, uncitedWorkedExamples: 3 },
-  { file: "src/pages/topics/MassCasualtyMilitaryTopic.tsx", uncitedKeyPoints: 8, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/NeurointensiveCareTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 4 },
-  { file: "src/pages/topics/NSAIDsParacetamolTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/OperatingTheatreEnvironmentTopic.tsx", uncitedKeyPoints: 1, uncitedWorkedExamples: 0 },
-  { file: "src/pages/topics/OpioidsTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 3 },
-  { file: "src/pages/topics/PatientPositioningTopic.tsx", uncitedKeyPoints: 10, uncitedWorkedExamples: 0 },
-  { file: "src/pages/topics/PostopHighRiskIcuTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 3 },
-  { file: "src/pages/topics/ProceduralSedationTopic.tsx", uncitedKeyPoints: 8, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/ResourcePoorAnaesthesiaTopic.tsx", uncitedKeyPoints: 7, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/SepsisTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 1 },
-  { file: "src/pages/topics/TransferMedicineTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 2 },
-  { file: "src/pages/topics/UrologicalAnaesthesiaTopic.tsx", uncitedKeyPoints: 0, uncitedWorkedExamples: 1 },
-  { file: "src/pages/topics/XRayRadiationSafetyTopic.tsx", uncitedKeyPoints: 9, uncitedWorkedExamples: 3 },
+
 ];

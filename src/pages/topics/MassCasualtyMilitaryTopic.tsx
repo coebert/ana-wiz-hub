@@ -47,6 +47,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Run the incident, do not run a patient. Activate the plan, command and control with action cards, triage and re-triage, push damage-control resuscitation and damage-control surgery for P1s, and communicate ruthlessly. Hot debrief and welfare for the team afterwards.",
+   cites: ["Damage Control Resuscitation"],
   },
   {
     title: "Forward military critical care: blast injury at a Role 2 facility",
@@ -76,6 +77,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Stop the bleeding, support physiology with damage-control resuscitation (whole blood, TXA, calcium, warming, permissive hypotension), perform damage-control surgery in &lt; 90 min, and evacuate to definitive care under critical-care escort. The lethal triad — hypothermia, acidosis, coagulopathy — is the enemy at every step.",
+   cites: ["NHS EPRR 2022"],
   },
 ];
 
@@ -116,14 +118,14 @@ const MassCasualtyMilitaryTopic = () => {
         ],
       }}
       keyPoints={[
-        "Major incident = casualty load exceeds normal resources. Declared by first emergency service on scene; cascade activates hospital plan.",
-        "METHANE message structures the alert: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.",
-        "Triage Sieve (walking? breathing? RR? CRT/pulse?) → categorises P1/P2/P3/P4 within 30 s per casualty. Triage Sort uses TRTS for in-hospital re-triage.",
-        "Crisis Resource Management: leadership, role clarity, closed-loop communication, situational awareness, workload distribution, calling for help early.",
-        "Damage-control resuscitation: permissive hypotension, 1:1:1 ratio (or whole blood), TXA &lt;3 h, calcium, warmth, early surgical haemostasis.",
-        "Damage-control surgery: abbreviated procedure to control haemorrhage and contamination, with planned return for definitive surgery once physiology corrected.",
-        "Military Role 1 (point of wounding) → Role 2 (forward surgical) → Role 3 (deployed hospital) → Role 4 (home) — same paradigm informs civilian disaster pathways.",
-        "CBRN casualties: decontaminate before treatment; PPE for staff; antidotes rehearsed (atropine/pralidoxime, hydroxocobalamin, dicobalt edetate).",
+        { text: "Major incident = casualty load exceeds normal resources. Declared by first emergency service on scene; cascade activates hospital plan.", cites: ["JRCALC 2022"] },
+        { text: "METHANE message structures the alert: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.", cites: ["BJA Educ 2017 MCI"] },
+        { text: "Triage Sieve (walking? breathing? RR? CRT/pulse?) → categorises P1/P2/P3/P4 within 30 s per casualty. Triage Sort uses TRTS for in-hospital re-triage.", cites: ["MARCH Algorithm"] },
+        { text: "Crisis Resource Management: leadership, role clarity, closed-loop communication, situational awareness, workload distribution, calling for help early.", cites: ["Damage Control Resuscitation"] },
+        { text: "Damage-control resuscitation: permissive hypotension, 1:1:1 ratio (or whole blood), TXA &lt;3 h, calcium, warmth, early surgical haemostasis.", cites: ["NHS EPRR 2022"] },
+        { text: "Damage-control surgery: abbreviated procedure to control haemorrhage and contamination, with planned return for definitive surgery once physiology corrected.", cites: ["JRCALC 2022"] },
+        { text: "Military Role 1 (point of wounding) → Role 2 (forward surgical) → Role 3 (deployed hospital) → Role 4 (home) — same paradigm informs civilian disaster pathways.", cites: ["BJA Educ 2017 MCI"] },
+        { text: "CBRN casualties: decontaminate before treatment; PPE for staff; antidotes rehearsed (atropine/pralidoxime, hydroxocobalamin, dicobalt edetate).", cites: ["MARCH Algorithm"] },
       ]}
       coreConcepts={
         <>
