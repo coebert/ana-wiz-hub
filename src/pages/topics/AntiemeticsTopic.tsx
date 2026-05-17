@@ -5,6 +5,8 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { antiemeticsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { DiagramSection } from "@/components/DiagramSection";
+import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
 
 const objectives = [
   "Apply the Apfel score to estimate baseline PONV risk and stratify prophylaxis",
@@ -106,6 +108,14 @@ const AntiemeticsTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <DiagramSection
+            id="vomiting-reflex"
+            title="Vomiting Reflex & Antiemetic Receptor Targets"
+            intro="The vomiting centre (NTS) integrates inputs from the CTZ, vestibular nuclei, vagal afferents and higher centres. Each antiemetic class blocks a specific input — multimodal therapy works by hitting different receptors along these pathways."
+          >
+            <VomitingControlDiagram />
+          </DiagramSection>
 
           <ExamSection id="management" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="PONV Management Strategy">

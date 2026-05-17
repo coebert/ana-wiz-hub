@@ -4,6 +4,8 @@ import { antimicrobialsIcuQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { DiagramSection } from "@/components/DiagramSection";
+import AntibioticPKPDPrimer from "@/components/diagrams/AntibioticPKPDPrimer";
 
 const objectives = [
   "Apply PK/PD principles (time-, concentration-, AUC/MIC-dependent killing) to antimicrobial dosing in critical illness.",
@@ -130,6 +132,14 @@ const AntimicrobialsIcuTopic = () => {
               </div>
             </div>
           </ExamSection>
+
+          <DiagramSection
+            id="pkpd-killing-patterns"
+            title="Antibiotic PK/PD Killing Patterns"
+            intro="Three killing patterns drive ICU dosing decisions. Time-dependent agents (β-lactams) need prolonged or continuous infusion to maximise %fT>MIC; concentration-dependent agents (aminoglycosides) need high once-daily peaks; AUC-dependent agents (vancomycin, fluoroquinolones) need TDM-guided 24-h exposure targets."
+          >
+            <AntibioticPKPDPrimer />
+          </DiagramSection>
 
           <ExamSection
             id="key-agents"

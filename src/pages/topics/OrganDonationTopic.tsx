@@ -6,6 +6,8 @@ import { organDonationQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { DiagramSection } from "@/components/DiagramSection";
+import { BrainstemDeathCascadeDiagram } from "@/components/diagrams/BrainstemDeathCascadeDiagram";
 
 const objectives = [
   "Distinguish DBD and DCD pathways and the legal time of death for each.",
@@ -180,6 +182,14 @@ const OrganDonationTopic = () => {
             <p className="text-muted-foreground text-sm mb-3">Confounders that may render testing unreliable: residual sedation (esp. thiopentone, opioids in renal/hepatic failure), residual paralysis, hypothermia (&lt;34°C), severe metabolic derangement, high cervical injury, GBS / locked-in, cranial nerve injury, pre-existing pupil abnormalities, isolated posterior fossa pathology, neonates &lt;2 months. Use ancillary tests when clinical assessment cannot be completed: <strong>CT angiography</strong> (4-point scoring; increasingly used in UK), <strong>4-vessel angiography</strong> (gold standard internationally), EEG (limited), TCD (operator-dependent).</p>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <DiagramSection
+            id="bsd-cascade"
+            title="Brainstem Death Cascade & Donor Optimisation"
+            intro="After coning the donor passes through three predictable physiological phases. Recognising the current phase guides the right intervention — short-acting vasodilators during the storm, vasopressin-led support during vasoplegia, and DDAVP plus methylprednisolone once endocrine collapse develops."
+          >
+            <BrainstemDeathCascadeDiagram />
+          </DiagramSection>
 
           <ExamSection id="donor-mgmt" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Physiological Management of the Donor">
