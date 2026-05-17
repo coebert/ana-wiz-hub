@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { Exam } from "@/data/curriculum";
+import { ExamSection } from "@/components/ExamSection";
 import { icuSedationDeliriumQuestions } from "@/data/quizzes";
 import { ICUSedationComparisonDiagram } from "@/components/diagrams/ICUSedationComparisonDiagram";
 import { CAMICUFlowchartDiagram } from "@/components/diagrams/CAMICUFlowchartDiagram";
@@ -126,6 +127,7 @@ const IcuSedationDeliriumTopic = () => {
         keyPoints: { exams: [Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
         <section className="space-y-6">
           {/* RASS */}
           <div>
@@ -258,6 +260,7 @@ const IcuSedationDeliriumTopic = () => {
             ]}
           />
         </section>
+      </ExamSection>
       }
     />
   );
