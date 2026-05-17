@@ -51,7 +51,7 @@ const EmergencySurgeryTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Apply the NELA bundle: rapid source control, sepsis-6 within 1 h, consultant-delivered care, ITU disposition. Documented risk score and time-to-theatre.",
-    cites: ["NELA 2023 report","BJA Educ 2019 emergency laparotomy"],
+    cites: ["NELA Year 9 Report", "NCEPOD Knowing the Risk", "RCoA Emergency Laparotomy"],
   },
 ];
 

@@ -45,7 +45,7 @@ const LowerLimbAnatomyTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Adductor canal block + IPACK + surgical periarticular infiltration — motor-sparing multimodal regional plan compatible with enhanced recovery.",
-    cites: ["BJA Educ 2018","Ellis & Feldman Ch.8"],
+    cites: ["Ellis Ch.7", "NYSORA Lower Limb", "BJA Educ 2016"],
   },
 ];
 

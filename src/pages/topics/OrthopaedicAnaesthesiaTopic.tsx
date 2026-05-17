@@ -33,7 +33,7 @@ const OrthopaedicAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Grade-2 BCIS: 100% O₂, fluid bolus, noradrenaline, surgeon communication and post-op ITU. Pre-empt with lavage, retrograde cementation and vasopressor preparation.",
-    cites: ["AAGBI BCIS 2015","BJA Educ 2014 BCIS"],
+    cites: ["Allman & Wilson Ch.27", "BJA Educ 2014", "AAGBI Tourniquet"],
   },
 ];
 

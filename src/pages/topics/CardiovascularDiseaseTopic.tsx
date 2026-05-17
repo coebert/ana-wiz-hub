@@ -49,7 +49,7 @@ const CardiovascularDiseaseTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Do not start a β-blocker acutely; refer to cardiology for elective ≥7-day titration if indicated. Continue statins, ensure haemoglobin optimisation, and use goal-directed intra-operative haemodynamic monitoring.",
-    cites: ["POISE 2008","ESC/ESA 2022 non-cardiac"],
+    cites: ["BJA Educ 2017", "ESC/ESA 2022", "NICE CG181"],
   },
 ];
 

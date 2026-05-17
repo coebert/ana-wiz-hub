@@ -54,7 +54,7 @@ const RespiratoryDiseaseTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Comprehensive risk assessment with ppoFEV1, multidisciplinary fitness review, lung-protective OLV (Vt 4–6 mL/kg IBW, PEEP, permissive hypercapnia), regional analgesia and HDU recovery.",
-    cites: ["BTS 2010 lung resection","BJA Educ 2017 OLV"],
+    cites: ["BJA Educ Asthma 2017", "BTS/SIGN 2019", "NICE NG115"],
   },
 ];
 

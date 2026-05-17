@@ -37,7 +37,7 @@ const VascularAccessDevicesTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Implantable port (e.g., Port-a-Cath) — lowest infection risk and best quality of life for cyclical 6-month therapy.",
-    cites: ["EPIC3 2014","BJA Educ 2016 vascular access"],
+    cites: ["NICE TA49", "BJA Educ 2016", "KDIGO 2012"],
   },
 ];
 

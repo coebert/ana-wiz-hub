@@ -69,7 +69,7 @@ const NeurologicalDiseaseTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "TIVA, minimise non-depolarising NMB with TOF monitoring, sugammadex reversal, elective post-op HDU/ICU and continuation of immunosuppression.",
-    cites: ["BJA Educ 2011 myasthenia","Stoelting Co-existing Disease Ch.30"],
+    cites: ["BJA Educ MG 2018", "BJA Educ PD 2014", "BJA Educ Epilepsy 2015"],
   },
 ];
 

@@ -37,7 +37,7 @@ const UpperLimbAnatomyTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Ultrasound-guided axillary block (median, ulnar, radial) plus a separate musculocutaneous injection in coracobrachialis; add tourniquet pain plan and intercostobrachial infiltration if needed.",
-    cites: ["BJA Educ 2014","Ellis & Feldman Ch.8"],
+    cites: ["BJA Educ 2021", "Ellis & Feldman Ch.8", "Last's Anatomy Ch.3"],
   },
 ];
 

@@ -34,7 +34,7 @@ const PreoperativeAssessmentTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Use objective risk stratification (RCRI, NT-proBNP, CPET) and shared decision-making rather than subjective METs alone; pre-habilitate and plan critical care.",
-    cites: ["METS Study 2018 Lancet","ESC/ESA 2022 non-cardiac","CPOC SDM 2018"],
+    cites: ["NICE NG45", "AAGBI 2010", "BJA Educ 2019"],
   },
 ];
 

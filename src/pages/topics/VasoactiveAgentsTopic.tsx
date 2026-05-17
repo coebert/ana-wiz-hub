@@ -69,7 +69,7 @@ const VasoactiveAgentsTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Start noradrenaline (titrate to MAP 65), add vasopressin if refractory, consider hydrocortisone, and reassess fluid responsiveness rather than empirical boluses.",
-    cites: ["Surviving Sepsis Campaign 2021","SOAP-II 2010 NEJM","VASST 2008 NEJM"],
+    cites: ["BJA Educ 2019", "Peck & Hill Ch.11", "BJA Educ 2004"],
   },
 ];
 

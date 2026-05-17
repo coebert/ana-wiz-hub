@@ -118,7 +118,7 @@ const antimicrobialsWorkedExamples: WorkedExample[] = [
     ),
     answer:
       "1 g loading then 1 g 8-hourly by extended infusion on CVVHDF, with TDM if available. Do not reduce dose for AKI on full-dose CVVHDF.",
-    cites: ["SCCM/IDSA Sepsis 2021", "BJA Educ 2019 antimicrobials"],
+    cites: ["Peck & Hill Ch.14", "BNF", "BJA Educ 2017"],
   },
 ];
 

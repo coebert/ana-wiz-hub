@@ -35,7 +35,7 @@ const ThoracicAnatomyTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Ultrasound-guided paravertebral catheter at T6 (or ESP at T5 if coagulopathic) plus multimodal analgesia.",
-    cites: ["BJA Educ 2020 ESP","BJA Educ 2010 paravertebral"],
+    cites: ["Ellis & Feldman Ch.2", "BJA Educ 2007", "Power & Kam Ch.5"],
   },
 ];
 

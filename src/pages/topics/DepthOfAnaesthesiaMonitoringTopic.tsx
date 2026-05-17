@@ -127,7 +127,7 @@ const DepthOfAnaesthesiaMonitoringTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Check TIVA delivery, deepen anaesthesia to target BIS 40–60, and document. NAP5 mandates depth-of-anaesthesia monitoring when NMB is used with TIVA.",
-    cites: ["NAP5 2014","BJA Educ 2017 depth monitoring"],
+    cites: ["NAP5 2014", "NICE DG6", "BJA Educ 2014"],
   },
 ];
 

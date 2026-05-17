@@ -49,7 +49,7 @@ const ClinicalMeasurementTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Percentage error 38% > 30% — fails Critchley criteria for interchangeability. May be acceptable for trend monitoring only.",
-    cites: ["Critchley & Critchley 1999","BJA Educ 2010 statistics"],
+    cites: ["Cross & Plunkett Ch.16", "Middleton Ch.18", "BJA Educ 2005"],
   },
 ];
 

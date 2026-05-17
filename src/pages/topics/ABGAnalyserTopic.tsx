@@ -50,7 +50,7 @@ const ABGAnalyserTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "SpO₂ is falsely normal because COHb absorbs at 660 nm. Co-oximetry reveals 22% COHb. Treat with 100% O₂, escalate to hyperbaric O₂ given exposure and clinical context.",
-    cites: ["BJA Educ 2014 CO","Davis & Kenny Ch.17"],
+    cites: ["BJA Educ 2017", "Cross & Plunkett Ch.15-16", "Middleton Ch.18"],
   },
 ];
 
