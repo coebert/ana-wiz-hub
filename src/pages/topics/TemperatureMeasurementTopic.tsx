@@ -49,7 +49,7 @@ const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Use a distal oesophageal probe with continuous display, target core 36.5–37.5 °C, pre-warm and forced-air warm intra-operatively per NICE CG65.",
-    cites: ["NICE CG65","BJA Educ 2014 temperature"],
+    cites: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11"],
   },
 ];
 

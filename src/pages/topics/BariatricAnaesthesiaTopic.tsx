@@ -32,7 +32,7 @@ const BariatricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Propofol/LBW (~150 mg), fentanyl/LBW, rocuronium/IBW (~60 mg), suxamethonium/TBW (~220 mg). Position ramped, pre-oxygenate with CPAP/PEEP.",
-    cites: ["AAGBI Obesity 2015","BJA Educ 2014 bariatric"],
+    cites: ["BJA Educ Bariatric 2015", "AAGBI Obesity 2015", "STOP-BANG"],
   },
 ];
 

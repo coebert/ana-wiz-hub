@@ -54,7 +54,7 @@ const EnhancedRecoveryTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Apply the ERAS bundle: carb loading, opioid-sparing analgesia, goal-directed fluids, normothermia, early feeding and mobilisation.",
-    cites: ["ERAS Society Colorectal 2018","BJA Educ 2017 ERAS"],
+    cites: ["Ljungqvist 2017", "ERAS Colorectal 2018", "Hughes 2014"],
   },
 ];
 

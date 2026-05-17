@@ -37,7 +37,7 @@ const SpinalAnatomyTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Use L3/4 or L4/5 with Tuffier's line as a starting estimate; in this BMI-38 parturient, confirm with ultrasound and count from the sacrum to stay caudal to the conus (L1/2).",
-    cites: ["BJA Educ 2006","Ellis & Feldman Ch.6"],
+    cites: ["BJA Educ 2006", "Ellis & Feldman Ch.6"],
   },
 ];
 

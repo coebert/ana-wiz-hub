@@ -53,7 +53,7 @@ const EndocrineDiseaseTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Continue basal insulin, omit prandial, start VRII with glucose/saline/KCl, hourly glucose monitoring, restart SC regimen with overlap when eating.",
-    cites: ["JBDS Perioperative Diabetes 2022","BJA Educ 2017 diabetes"],
+    cites: ["BJA Educ DM 2015", "JBDS-IP 2021", "BJA Educ Thyroid 2014"],
   },
 ];
 

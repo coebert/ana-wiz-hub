@@ -31,7 +31,7 @@ const VascularAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Either GA with multimodal neuromonitoring or cervical plexus block with awake assessment is acceptable; maintain MAP within 20% baseline and admit to HDU.",
-    cites: ["GALA 2008 Lancet","BJA Educ 2014 CEA"],
+    cites: ["BJA Educ AAA 2016", "BJA Educ CEA 2015", "ESVS AAA 2019"],
   },
 ];
 

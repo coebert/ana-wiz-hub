@@ -178,7 +178,7 @@ const EquipmentMonitoringTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Sudden ETCO₂ drop with laparoscopy → high suspicion of CO₂ embolism. Stop insufflation, desufflate, head-down left lateral, 100% O₂, supportive ALS.",
-    cites: ["BJA Educ 2017 capnography","AAGBI Monitoring 2015"],
+    cites: ["Macintosh 1943", "Miller 1941", "McCoy & Mirakhur 1993"],
   },
 ];
 

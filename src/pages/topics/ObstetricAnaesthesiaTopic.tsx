@@ -36,7 +36,7 @@ const ObstetricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Rapid sequence GA with tilt, pre-oxygenation, RSI, videolaryngoscopy, MAC-targeted volatile, careful oxytocin and awareness mitigation per NAP5/OAA.",
-    cites: ["OAA/DAS Obstetric Airway 2015","NAP5 2014","MBRRACE 2023"],
+    cites: ["BJA Educ 2019", "OAA/DAS 2015", "MBRRACE-UK"],
   },
 ];
 

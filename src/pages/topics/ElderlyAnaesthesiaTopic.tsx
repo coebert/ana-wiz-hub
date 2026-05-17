@@ -39,7 +39,7 @@ const ElderlyAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Multimodal bundle: fascia-iliaca block, neuraxial where suitable, depth-monitored light GA if needed, avoid deliriogenic drugs, HELP bundle and 4AT screening post-op.",
-    cites: ["NICE CG103 delirium","ENGAGES 2019","BJA Educ 2018 delirium"],
+    cites: ["NICE NG111", "AAGBI Elderly 2014", "Lancet Frailty 2013"],
   },
 ];
 

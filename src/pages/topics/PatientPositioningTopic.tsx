@@ -107,7 +107,7 @@ const PatientPositioningTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Tuck arms with padding, avoid shoulder braces and >90° abduction, protect eyes, periodic leg release for lithotomy, post-op assessment for compartment syndrome and airway oedema.",
-    cites: ["AAGBI Positioning 2021","BJA Educ 2018 robotic anaesthesia"],
+    cites: ["AAGBI Positioning 2018", "ASA Practice Advisory 2020", "BJA Educ PION 2017"],
   },
 ];
 

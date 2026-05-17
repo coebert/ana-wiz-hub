@@ -67,7 +67,7 @@ const NonTechnicalSkillsTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Use ANTS categories (situation awareness, decision-making, teamwork, task management) alongside DAS algorithms and cognitive aids to maintain coordinated CICO management and debrief afterwards.",
-    cites: ["DAS 2015","ANTS Framework Univ. Aberdeen","NAP4 2011"],
+    cites: ["BJA Educ 2003", "RCoA ANTS", "BMJ 2000"],
   },
 ];
 

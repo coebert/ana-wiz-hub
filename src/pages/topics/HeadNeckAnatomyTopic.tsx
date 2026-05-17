@@ -41,7 +41,7 @@ const HeadNeckAnatomyTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "DAS scalpel-bougie-tube via the cricothyroid membrane: transverse stab, caudal rotation, bougie railroad, 6.0 cuffed tube, capnography confirmation.",
-    cites: ["DAS 2015 Guidelines","BJA Educ 2016"],
+    cites: ["Ellis & Feldman Ch.5", "Ellis & Feldman Ch.1", "BJA Educ 2005"],
   },
 ];
 

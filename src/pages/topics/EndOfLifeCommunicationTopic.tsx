@@ -67,7 +67,7 @@ const EndOfLifeCommunicationTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Structured SPIKES-based meeting after multimodal prognostication ≥72 h, best-interests framework under MCA 2005, with a clear palliative extubation and bereavement plan.",
-    cites: ["GMC End of Life 2010","FICM Care at End of Life 2019"],
+    cites: ["FICM/ICS 2019", "GMC EoL", "NEJM 2007"],
   },
 ];
 

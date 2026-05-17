@@ -51,7 +51,7 @@ const PulseOximetryTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Apply a structured probe-→circuit-→lung-→haemoglobin algorithm. Address the most likely cause (endobronchial intubation, atelectasis) first; escalate FiO₂, recruit, recheck tube depth, exclude pneumothorax.",
-    cites: ["AAGBI Monitoring 2015","BJA Educ 2012 pulse oximetry"],
+    cites: ["BJA Educ 2014", "BJA Educ 2003", "Cross & Plunkett Ch.15"],
   },
 ];
 
