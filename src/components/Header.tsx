@@ -136,6 +136,8 @@ export const Header = () => {
               <span className="hidden xl:inline">Support</span>
             </a>
 
+            <ReduceMotionToggle />
+
             <button
               onClick={() => setSearchOpen(true)}
               className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-border text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors shrink-0"
