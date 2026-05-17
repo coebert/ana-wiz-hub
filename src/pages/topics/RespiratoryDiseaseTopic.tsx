@@ -114,6 +114,13 @@ const RespiratoryDiseaseTopic = () => {
                 <li>Acute intraoperative bronchospasm: deepen anaesthesia, salbutamol MDI/nebuliser, IV salbutamol (250 µg), IV magnesium (2 g), IV hydrocortisone (200 mg)</li>
               </ul>
             </div>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <AsthmaBronchospasmDiagram />
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <RespiratoryDrugSafetyDiagram />
+            </div>
           </div>
         </section>
 
@@ -143,6 +150,10 @@ const RespiratoryDiseaseTopic = () => {
                 <li>Extubation: awake, upright, with bronchodilator nebuliser; consider NIV postoperatively in high-risk patients</li>
               </ul>
             </div>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <CopdPathophysDiagram />
+            </div>
           </div>
         </section>
 
@@ -160,6 +171,10 @@ const RespiratoryDiseaseTopic = () => {
                 <li>Postoperative monitoring: continuous SpO₂ for ≥72 hours; nurse semi-upright; CPAP for all sleep periods</li>
                 <li>Avoid day surgery for patients with severe OSA undergoing procedures requiring opioid analgesia</li>
               </ul>
+            </div>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <OsaCycleDiagram />
             </div>
           </div>
         </section>
@@ -188,6 +203,10 @@ const RespiratoryDiseaseTopic = () => {
                 <li>May require postoperative ventilatory support; plan ICU admission for major surgery</li>
               </ul>
             </div>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <PulmonaryFibrosisDiagram />
+            </div>
           </div>
         </section>
 
@@ -203,6 +222,10 @@ const RespiratoryDiseaseTopic = () => {
                 <li>Decision to proceed depends on: severity, procedure urgency, patient age (children &lt;1 year at highest risk), and type of airway management planned</li>
                 <li>If proceeding with URTI: avoid intubation where possible (LMA preferred), use humidified gases, IV induction (avoid desflurane)</li>
               </ul>
+            </div>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <UrtiAirwayDiagram />
             </div>
           </div>
         </section>
