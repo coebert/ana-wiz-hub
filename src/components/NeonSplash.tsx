@@ -156,8 +156,8 @@ const NeonSplash = () => {
         setTimeout(() => setMounted(false), 700);
       }}
       style={cssVars}
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#05060a] cursor-pointer transition-opacity duration-700 ${
-        leaving ? "opacity-0 pointer-events-none" : "opacity-100"
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#05060a] cursor-pointer transition-opacity duration-700 ease-out ${
+        leaving ? "opacity-0 pointer-events-none" : ready ? "opacity-100" : "opacity-0"
       }`}
     >
       {/* Ambient glow halo — sized from measured logo */}
