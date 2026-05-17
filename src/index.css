@@ -393,32 +393,83 @@
 [data-realism="rich"]    .anat-sheen { opacity: 1; }
 
 /* ── Neon splash animation ────────────────────────────────────────── */
+/*
+ * Glow radii are expressed in vmin so the halo and bloom scale smoothly
+ * with the viewport — a phone gets a tighter, proportionate glow while a
+ * desktop monitor gets a full neon-sign bloom. Brightness is held
+ * constant at invert(1) brightness(1.9) and only the drop-shadow grows,
+ * which avoids the harsh white "blowout" the earlier brightness ramp
+ * caused on small screens.
+ */
 @keyframes neon-flicker {
-  0%   { opacity: 0; filter: invert(1) brightness(2) drop-shadow(0 0 0 hsl(var(--primary))); }
-  8%   { opacity: 0.15; }
-  10%  { opacity: 0.05; }
-  14%  { opacity: 0.35; filter: invert(1) brightness(2) drop-shadow(0 0 4px hsl(var(--primary))); }
-  18%  { opacity: 0.1; }
-  24%  { opacity: 0.55; filter: invert(1) brightness(2) drop-shadow(0 0 8px hsl(var(--primary))); }
-  28%  { opacity: 0.2; }
-  34%  { opacity: 0.7; filter: invert(1) brightness(2) drop-shadow(0 0 14px hsl(var(--primary))); }
-  40%  { opacity: 0.4; }
-  50%  { opacity: 0.9; filter: invert(1) brightness(2) drop-shadow(0 0 22px hsl(var(--primary))) drop-shadow(0 0 40px hsl(var(--primary) / 0.6)); }
-  62%  { opacity: 0.75; }
-  72%  { opacity: 1; filter: invert(1) brightness(2.2) drop-shadow(0 0 30px hsl(var(--primary))) drop-shadow(0 0 60px hsl(var(--primary) / 0.7)); }
-  100% { opacity: 1; filter: invert(1) brightness(2.2) drop-shadow(0 0 34px hsl(var(--primary))) drop-shadow(0 0 70px hsl(var(--primary) / 0.8)); }
+  /* Cold tube: completely dark */
+  0%   { opacity: 0;
+         filter: invert(1) brightness(1.9) drop-shadow(0 0 0 hsl(var(--primary))); }
+
+  /* Ignition: three quick stutters as the gas catches */
+  6%   { opacity: 0.55; }
+  9%   { opacity: 0.05; }
+  13%  { opacity: 0.7; }
+  17%  { opacity: 0.15; }
+  22%  { opacity: 0.85;
+         filter: invert(1) brightness(1.9)
+                 drop-shadow(0 0 0.4vmin hsl(var(--primary)))
+                 drop-shadow(0 0 1.5vmin hsl(var(--primary) / 0.5)); }
+  26%  { opacity: 0.35; }
+
+  /* Warm-up: glow ramps in continuously */
+  45%  { opacity: 0.95;
+         filter: invert(1) brightness(1.9)
+                 drop-shadow(0 0 1vmin hsl(var(--primary)))
+                 drop-shadow(0 0 4vmin hsl(var(--primary) / 0.65)); }
+
+  /* Tiny lived-in flutter once lit */
+  58%  { opacity: 0.82; }
+  62%  { opacity: 1; }
+
+  /* Settled neon glow */
+  100% { opacity: 1;
+         filter: invert(1) brightness(2)
+                 drop-shadow(0 0 1.6vmin hsl(var(--primary)))
+                 drop-shadow(0 0 6vmin hsl(var(--primary) / 0.75))
+                 drop-shadow(0 0 12vmin hsl(var(--primary) / 0.35)); }
 }
 
 @keyframes neon-halo {
-  0%   { opacity: 0; transform: scale(0.7); }
-  50%  { opacity: 0.4; transform: scale(0.9); }
-  100% { opacity: 0.85; transform: scale(1); }
+  0%   { opacity: 0;    transform: scale(0.6); }
+  22%  { opacity: 0.15; transform: scale(0.75); }
+  45%  { opacity: 0.55; transform: scale(0.92); }
+  100% { opacity: 0.9;  transform: scale(1); }
 }
 
-.animate-neon-flicker { animation: neon-flicker 2.4s ease-out both; }
-.animate-neon-halo    { animation: neon-halo 2.4s ease-out both; }
+@keyframes neon-breathe {
+  0%, 100% { filter: invert(1) brightness(2)
+                     drop-shadow(0 0 1.6vmin hsl(var(--primary)))
+                     drop-shadow(0 0 6vmin hsl(var(--primary) / 0.75))
+                     drop-shadow(0 0 12vmin hsl(var(--primary) / 0.35)); }
+  50%      { filter: invert(1) brightness(2.05)
+                     drop-shadow(0 0 1.9vmin hsl(var(--primary)))
+                     drop-shadow(0 0 7vmin hsl(var(--primary) / 0.8))
+                     drop-shadow(0 0 14vmin hsl(var(--primary) / 0.4)); }
+}
+
+/* Sequence: flicker-in (3s, cubic-bezier for smooth ramp),
+   then gentle breathing loop kicks in afterwards. */
+.animate-neon-flicker {
+  animation:
+    neon-flicker 3s cubic-bezier(0.22, 0.61, 0.36, 1) both,
+    neon-breathe 3.2s ease-in-out 3s infinite;
+}
+.animate-neon-halo { animation: neon-halo 3s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-neon-flicker,
-  .animate-neon-halo { animation: none; opacity: 1; }
+  .animate-neon-halo {
+    animation: none;
+    opacity: 1;
+    filter: invert(1) brightness(2)
+            drop-shadow(0 0 1.6vmin hsl(var(--primary)))
+            drop-shadow(0 0 6vmin hsl(var(--primary) / 0.6));
+  }
 }
+
