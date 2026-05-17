@@ -34,6 +34,11 @@ const UNIT_EPSILON = 4; // px — ignore changes smaller than this (anti-jitter)
 const NeonSplash = () => {
   const [mounted, setMounted] = useState(false);
   const [leaving, setLeaving] = useState(false);
+  // `ready` flips on the next frame after mount so the container can
+  // transition from opacity-0 → opacity-100. Without this two-step
+  // commit the splash would pop in instantly because the element is
+  // appended already at its final opacity.
+  const [ready, setReady] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Seed the base unit synchronously on first render using the
@@ -62,6 +67,13 @@ const NeonSplash = () => {
       clearTimeout(removeTimer);
     };
   }, []);
+
+  // Flip `ready` on the frame after mount so the opacity transition runs.
+  useLayoutEffect(() => {
+    if (!mounted) return;
+    const raf = requestAnimationFrame(() => setReady(true));
+    return () => cancelAnimationFrame(raf);
+  }, [mounted]);
 
   // Measure the container, clamp + smooth, then derive a base unit.
   useLayoutEffect(() => {
@@ -144,8 +156,8 @@ const NeonSplash = () => {
         setTimeout(() => setMounted(false), 700);
       }}
       style={cssVars}
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#05060a] cursor-pointer transition-opacity duration-700 ${
-        leaving ? "opacity-0 pointer-events-none" : "opacity-100"
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#05060a] cursor-pointer transition-opacity duration-700 ease-out ${
+        leaving ? "opacity-0 pointer-events-none" : ready ? "opacity-100" : "opacity-0"
       }`}
     >
       {/* Ambient glow halo — sized from measured logo */}
