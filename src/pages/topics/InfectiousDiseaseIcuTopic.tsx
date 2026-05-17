@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { infectiousDiseaseIcuQuestions } from "@/data/quizzes";
 import InfectionSiteMapDiagram from "@/components/diagrams/InfectionSiteMapDiagram";
+import HAIPathogenesisCascadeDiagram from "@/components/diagrams/HAIPathogenesisCascadeDiagram";
 import PCPHRCTDiagram from "@/components/diagrams/PCPHRCTDiagram";
 import PCPManagementFlowchart from "@/components/diagrams/PCPManagementFlowchart";
 import { WorkedExample } from "@/components/WorkedExamples";

@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { burnsIcuQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import BurnResuscitationDiagram from "@/components/diagrams/BurnResuscitationDiagram";
+import BurnShockPathophysiologyDiagram from "@/components/diagrams/BurnShockPathophysiologyDiagram";
 import InhalationInjuryFlowchart from "@/components/diagrams/InhalationInjuryFlowchart";
 import ParklandCalculator from "@/components/diagrams/ParklandCalculator";
 import BurnsIcuCaseStepper from "@/components/diagrams/BurnsIcuCaseStepper";
