@@ -171,6 +171,7 @@ const AirwayManagementTopic = () => {
                   </div>
                   <p className="text-sm text-muted-foreground">{p.detail}</p>
                 </div>
+              ))}
             </div>
             <div className="mt-4 bg-card rounded-xl border border-border p-6">
               <DASAlgorithmDiagram />
@@ -184,6 +185,7 @@ const AirwayManagementTopic = () => {
               Successful AFOI requires systematic topicalisation of every sensory zone of the airway: V₁/V₂ (nasal),
               glossopharyngeal IX (oropharynx, posterior tongue), internal branch of superior laryngeal X (vallecula, base
               of tongue), and recurrent laryngeal X (below cords). Antisialogogue, light sedation (remifentanil TCI or
+              dexmedetomidine) and a planned backup are mandatory.
             </p>
             <div className="mt-4 bg-card rounded-xl border border-border p-6">
               <AirwayInnervationDiagram />
@@ -204,6 +206,9 @@ const AirwayManagementTopic = () => {
               <li>Railroad 6.0 mm cuffed ETT over bougie</li>
               <li>Inflate cuff, ventilate, confirm with capnography</li>
             </ol>
+            <div className="mt-4">
+              <CICODrillAnimation />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
