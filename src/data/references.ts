@@ -408,6 +408,9 @@ export const topicReferences: Record<string, Reference[]> = {
   "perioperative-fluids": [
     { label: "BJA Educ 2017", citation: "Woodcock TE, Woodcock TM. Revised Starling equation and the glycocalyx model of transvascular fluid exchange. BJA Education. 2012;108(3):384-394.", url: "https://doi.org/10.1093/bja/aer515" },
     { label: "NICE CG174", citation: "NICE. Intravenous fluid therapy in adults in hospital (CG174). 2013 (updated 2017).", url: "https://www.nice.org.uk/guidance/cg174" },
+    { label: "SMART 2018", citation: "Semler MW et al. Balanced crystalloids versus saline in critically ill adults (SMART). N Engl J Med. 2018;378(9):829-839.", url: "https://doi.org/10.1056/NEJMoa1711584" },
+    { label: "RELIEF 2018", citation: "Myles PS et al. Restrictive versus liberal fluid therapy for major abdominal surgery (RELIEF). N Engl J Med. 2018;378(24):2263-2274.", url: "https://doi.org/10.1056/NEJMoa1801601" },
+    { label: "BJA Educ GDFT 2016", citation: "Cecconi M, De Backer D, Antonelli M et al. Goal-directed haemodynamic therapy. BJA Education. 2016;16(11):362-368.", url: "https://doi.org/10.1093/bjaed/mkw019" },
     { label: "BJA Educ 2019", citation: "Myles PS et al. Restrictive vs liberal fluid therapy for major abdominal surgery. N Engl J Med. 2018;378(24):2263-2274.", url: "https://doi.org/10.1056/NEJMoa1801601" },
   ],
   "depth-of-anaesthesia": [
