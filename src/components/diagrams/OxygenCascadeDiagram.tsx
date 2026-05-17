@@ -134,8 +134,10 @@ const OxygenCascadeDiagram = () => {
             const y = yFor(s.po2);
             const barW = (PLOT_W / STEPS.length) * 0.7;
             const next = STEPS[i + 1];
+            const on = isActive(i);
+            // Tween-friendly visual values; CSS handles the transition.
             return (
-              <g key={s.label}>
+              <g key={s.label} style={{ transition: "opacity 400ms ease-out" }}>
                 {/* Drop connector to next step */}
                 {next && (
                   <line
@@ -144,21 +146,30 @@ const OxygenCascadeDiagram = () => {
                     x2={xFor(i + 1) - barW / 2}
                     y2={yFor(next.po2)}
                     stroke="hsl(var(--physiology))"
-                    strokeWidth={2}
+                    strokeWidth={on ? 2.5 : 2}
                     strokeDasharray="4 3"
-                    opacity={0.55}
+                    opacity={on ? 0.95 : 0.4}
+                    style={{ transition: "opacity 400ms ease-out, stroke-width 400ms ease-out" }}
                   />
                 )}
-                {/* Bar */}
+                {/* Bar — fill + stroke + a glow filter brighten when active */}
                 <rect
                   x={x - barW / 2}
                   y={y}
                   width={barW}
                   height={PAD_T + PLOT_H - y}
                   rx={3}
-                  fill="hsl(var(--physiology) / 0.18)"
+                  fill={on ? "hsl(var(--physiology) / 0.55)" : "hsl(var(--physiology) / 0.14)"}
                   stroke="hsl(var(--physiology))"
-                  strokeWidth={1.5}
+                  strokeWidth={on ? 2.5 : 1.25}
+                  opacity={on ? 1 : 0.55}
+                  style={{
+                    transition:
+                      "fill 400ms ease-out, stroke-width 400ms ease-out, opacity 400ms ease-out, filter 400ms ease-out",
+                    filter: on
+                      ? "drop-shadow(0 0 6px hsl(var(--physiology) / 0.55))"
+                      : "none",
+                  }}
                 />
                 {/* Value label above bar */}
                 <text
@@ -166,19 +177,22 @@ const OxygenCascadeDiagram = () => {
                   y={y - 6}
                   textAnchor="middle"
                   className="fill-foreground"
-                  fontSize="12"
+                  fontSize={on ? 13 : 12}
                   fontWeight="700"
+                  style={{ transition: "font-size 400ms ease-out" }}
                 >
                   {s.po2.toFixed(1)}
                 </text>
-                {/* X axis label (split onto two lines if long) */}
+                {/* X axis label */}
                 <text
                   x={x}
                   y={PAD_T + PLOT_H + 18}
                   textAnchor="middle"
                   className="fill-foreground"
                   fontSize="11"
-                  fontWeight="600"
+                  fontWeight={on ? 700 : 500}
+                  opacity={on ? 1 : 0.7}
+                  style={{ transition: "opacity 400ms ease-out, font-weight 400ms ease-out" }}
                 >
                   {s.label}
                 </text>
