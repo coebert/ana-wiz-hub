@@ -135,6 +135,9 @@ const CardiacAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Triangle of Koch. Supplied by AV nodal artery (from RCA in 80%). Only site of normal atrio-ventricular conduction. Ablation target in AF.</p>
               </div>
             </div>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <CardiacConductionDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -150,6 +153,17 @@ const CardiacAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Fibrous + serous (parietal and visceral/epicardium). Pericardial space: 15–50 ml fluid. Transverse sinus: between aorta/PA anteriorly and SVC/pulmonary veins posteriorly — surgically important for cross-clamping.</p>
               </div>
             </div>
+            <figure className="rounded-xl border border-border bg-card overflow-hidden mt-4">
+              <img
+                src={systemicCirculationOverview}
+                alt="Annotated diagram of the systemic arterial circulation, great vessels, and an enlarged heart showing chambers and coronary arteries"
+                className="w-full h-auto"
+                loading="lazy"
+              />
+              <figcaption className="text-xs text-muted-foreground p-3 border-t border-border">
+                Major arteries of the systemic circulation with great vessels of the heart and pulmonary circulation.
+              </figcaption>
+            </figure>
             </CollapsibleSubsection>
           </ExamSection>
         </>
