@@ -264,6 +264,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Fourth National Audit Project", citation: "Harper NJN et al. Sugammadex and rocuronium. Anaesthesia. 2009;64 Suppl 1:16-21.", url: "https://doi.org/10.1111/j.1365-2044.2008.05866.x" },
     { label: "Peck & Hill Ch.10", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 10: Drugs Acting on the Neuromuscular Junction." },
   ],
+  "local-anaesthetics": [
     { label: "BJA Educ 2015", citation: "Taylor A, McLeod G. Basic pharmacology of local anaesthetics. BJA Education. 2020;20(2):34-41.", url: "https://doi.org/10.1016/j.bjae.2019.10.002" },
     { label: "Peck & Hill Ch.8", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 8: Local Anaesthetics." },
     { label: "AAGBI 2010", citation: "Association of Anaesthetists. Management of Severe Local Anaesthetic Toxicity. AAGBI; 2010.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Management-of-severe-local-anaesthetic-toxicity" },
