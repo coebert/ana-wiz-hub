@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { antiarrhythmicsQuiz } from "@/data/quizzes";
 import VaughanWilliamsAPDiagram from "@/components/diagrams/VaughanWilliamsAPDiagram";
@@ -21,6 +22,35 @@ const otherAgents = [
   { drug: "Magnesium", mechanism: "Stabilises membrane potential, blocks Ca²⁺ influx, suppresses EADs", use: "Torsades de pointes, digoxin toxicity, eclampsia. 2 g IV (8 mmol).", caution: "Monitor for hypotension, respiratory depression, loss of reflexes." },
 ];
 
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Choosing an antiarrhythmic for new AF with structural heart disease",
+    scenario:
+      "A 68-year-old with previous anterior MI (LVEF 35%) presents with new-onset fast AF (HR 140, BP 105/65, asymptomatic). The team asks whether flecainide is appropriate to restore sinus rhythm. What is your reasoning and what would you give?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Classify the patient: structural heart disease (ischaemic cardiomyopathy, reduced LVEF) — not a 'normal heart' AF case.</li>
+          <li>Recall the CAST trial: class Ic agents (flecainide, encainide) increase mortality post-MI through pro-arrhythmia. Flecainide is contraindicated here.</li>
+          <li>Filter the safe options: amiodarone (class III with all-class activity, safe in structural heart disease) or digoxin (rate control, useful in HFrEF).</li>
+          <li>Pick the goal: rhythm control with amiodarone IV (300 mg over 1 h, then 900 mg over 23 h via central line); rate control with digoxin if rhythm strategy fails or is inappropriate.</li>
+          <li>Plan monitoring: continuous ECG (QT and rhythm), electrolytes (K⁺ &gt;4.0, Mg²⁺ &gt;1.0), thyroid/LFT baseline before amiodarone, and document long-term thyroid/lung/liver surveillance.</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Using flecainide because 'AF without WPW' — forgetting the structural-heart-disease exclusion.</li>
+            <li>Loading amiodarone peripherally beyond brief use — thrombophlebitis.</li>
+            <li>Forgetting that amiodarone potentiates warfarin and digoxin.</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Avoid flecainide (class Ic, contraindicated post-MI per CAST). Use IV amiodarone via a central line (300 mg over 1 h then 900 mg over 23 h) for rhythm control, with electrolyte correction and continuous ECG monitoring. Digoxin is a reasonable rate-control alternative given the reduced LVEF.",
+    cites: ["Peck & Hill Ch.12","BJA Educ 2015"],
+  },
+];
 const objectives = [
   "Classify antiarrhythmics by Vaughan-Williams class and explain each mechanism on the cardiac action potential",
   "Distinguish Class I subtypes (Ia/Ib/Ic) by Na⁺ channel kinetics and APD effect",
@@ -52,6 +82,7 @@ const AntiarrhythmicsTopic = () => {
       topicTitle="Antiarrhythmic Drugs"
       objectives={objectives}
       keyPoints={keyPoints}
+      workedExamples={workedExamples}
       quizQuestions={antiarrhythmicsQuiz}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
