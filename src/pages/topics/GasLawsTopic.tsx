@@ -116,29 +116,14 @@ const GasLawsTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PH_BK_01"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PH_BK_01"] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PH_BK_01"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PH_BK_01"] },
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1"],
-        diagrams: ["Cross & Plunkett Ch.1", "BJA Educ 2017"],
         workedExamples: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017"],
         keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017"],
       }}
-      diagrams={
-        <>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <GasLawsDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <CriticalTemperatureDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <AndrewsIsothermsDiagram />
-          </div>
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
