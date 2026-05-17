@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { neurologicalDiseaseQuestions } from "@/data/quizzes";
 import MGNMBASensitivityDiagram from "@/components/diagrams/MGNMBASensitivityDiagram";
 import {
@@ -382,6 +383,17 @@ const NeurologicalDiseaseTopic = () => {
             </div>
           </div>
         </section>
+        <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              'Myasthenia gravis: sensitive to non-depolarising NMBs — reduce dose by 50–75%, titrate with TOF; resistant to suxamethonium. Sugammadex preferred for reversal.',
+              'Dystrophinopathies (DMD/BMD): avoid suxamethonium and volatile agents (rhabdomyolysis, hyperkalaemic arrest) — TIVA only.',
+              'Myotonic dystrophy: extreme sensitivity to anaesthetics, opioids and NMBs; avoid suxamethonium (myotonic contraction); plan for postoperative respiratory support.',
+              "Parkinson's: never stop l-dopa (risk of neuroleptic malignant–like syndrome); avoid metoclopramide, prochlorperazine, droperidol (D2-antagonists).",
+              'Epilepsy: continue AEDs; avoid pro-convulsants (tramadol, pethidine, high-dose propofol with rapid bolus, enflurane).',
+              'Spinal cord injury >24 h: avoid suxamethonium (extra-junctional ACh receptors → hyperkalaemic arrest); high lesions risk autonomic dysreflexia.',
+            ]}
+          />
         </>
       }
     />

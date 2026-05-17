@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { preoperativeAssessmentQuestions } from "@/data/quizzes";
 import CPETNinePanelDiagram from "@/components/diagrams/CPETNinePanelDiagram";
 import { DiagramSection } from "@/components/DiagramSection";
@@ -473,6 +474,17 @@ const PreoperativeAssessmentTopic = () => {
         </div>
       </section>
 
+        <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              'Functional capacity <4 METs (cannot climb one flight) predicts increased perioperative cardiac risk — escalate investigation (CPET, stress imaging).',
+              'RCRI / Lee index: 6 predictors; ≥2 → high risk. Use alongside surgical risk and biomarkers (NT-proBNP, hs-troponin) per ESC/ESA 2022.',
+              'Do NOT start β-blockers de novo in the 24 h before surgery (POISE) — continue chronic β-blockade and statins.',
+              'Stop times: clopidogrel 7 days, ticagrelor 5 days, warfarin 5 days; DOACs 24–48 h (longer if CrCl reduced or high-bleed surgery).',
+              'Delay elective non-cardiac surgery: ≥60 days after MI, ≥6 weeks after BMS, ≥6 months (ideally 12) after DES.',
+              'Anaemia (Hb <130 g/L M, <120 g/L F) is an independent risk factor — investigate and treat with IV iron preoperatively (PBM).',
+            ]}
+          />
         </>
       }
     />

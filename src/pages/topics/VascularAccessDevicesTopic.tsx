@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { ExamSection } from "@/components/ExamSection";
 import { DiagramSection } from "@/components/DiagramSection";
 import {
@@ -95,6 +96,17 @@ const VascularAccessDevicesTopic = () => {
           >
             <DwellTimeInfographic />
           </DiagramSection>
+        <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              'Poiseuille: flow ∝ r⁴ / length — a short large-bore peripheral (14–16 G) or RIC delivers far higher flow than any multi-lumen CVC.',
+              'Use ultrasound for CVC insertion (NICE TA49) — reduces complications and failed attempts.',
+              'CVC tip should sit at the SVC/RA junction (carina on CXR) — too deep risks arrhythmia/perforation, too high risks thrombosis.',
+              'PICCs: high thrombosis rate; avoid in CKD stage 4–5 to preserve veins for future fistula formation.',
+              'Vascaths/dialysis catheters: never use for routine drug administration — locked with heparin/citrate; aspirate lock before use.',
+              'Air embolism risk: position head-down for internal jugular insertion and removal; remove CVC with patient supine, Valsalva, and occlusive dressing.',
+            ]}
+          />
         </>
       }
       coreConcepts={

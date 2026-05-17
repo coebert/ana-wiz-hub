@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { endocrineDiseaseQuestions } from "@/data/quizzes";
 import PerioperativeDiabetesDiagram from "@/components/diagrams/PerioperativeDiabetesDiagram";
 import ThyroidStormDiagram from "@/components/diagrams/ThyroidStormDiagram";
@@ -191,6 +192,17 @@ const EndocrineDiseaseTopic = () => {
             </div>
           </div>
         </section>
+        <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              'Diabetes: aim CBG 6–10 mmol/L (acceptable 4–12). Variable rate insulin infusion (VRIII) for prolonged starvation or poor control; continue long-acting basal at 80%.',
+              'Omit SGLT-2 inhibitors ≥3 days preoperatively — risk of euglycaemic DKA (MHRA 2020).',
+              'Steroid cover: continue usual dose + perioperative hydrocortisone (25 mg minor, 50 mg + 25 mg q8h moderate, 100 mg + 50 mg q8h major) for chronic steroid users.',
+              'Thyrotoxic patient: defer elective surgery until euthyroid; in emergency use β-blocker, propylthiouracil, iodine, steroids — avoid ketamine, ephedrine.',
+              'Phaeochromocytoma: α-block (phenoxybenzamine/doxazosin) first, then β-block 3–14 days preoperatively — never β-block first (unopposed α → hypertensive crisis).',
+              'Carcinoid crisis: treat with IV octreotide 50–100 µg bolus; avoid histamine-releasing drugs (morphine, atracurium), and catecholamines (worsen mediator release).',
+            ]}
+          />
         </>
       }
     />

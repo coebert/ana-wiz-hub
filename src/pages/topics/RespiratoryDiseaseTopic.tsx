@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { respiratoryDiseaseQuestions } from "@/data/quizzes";
 import RespiratoryDrugSafetyDiagram from "@/components/diagrams/RespiratoryDrugSafetyDiagram";
 import AsthmaBronchospasmDiagram from "@/components/diagrams/AsthmaBronchospasmDiagram";
@@ -178,6 +179,17 @@ const RespiratoryDiseaseTopic = () => {
             </div>
           </div>
         </section>
+        <ExamPitfallsCallout
+            accent="clinical"
+            pitfalls={[
+              'Asthma: continue inhalers; nebulised salbutamol pre-induction if recent exacerbation; avoid desflurane (airway irritant) — sevoflurane is bronchodilatory.',
+              'COPD: optimise with inhalers/steroids; minimise ventilation pressures; allow permissive hypercapnia and longer expiratory time to avoid auto-PEEP.',
+              'OSA: STOP-BANG ≥5 → high risk. CPAP perioperatively, opioid-sparing analgesia, extended PACU monitoring; avoid benzodiazepines and long-acting opioids.',
+              'Smoking cessation: ≥8 weeks ideally; even 24 h reduces COHb and improves O₂ delivery.',
+              'Pulmonary fibrosis / restrictive disease: use lung-protective ventilation (VT 6 mL/kg IBW, plateau <30 cmH₂O); avoid high FiO₂ where possible (free-radical injury).',
+              'Recent URTI in children: defer elective surgery 2–4 weeks — increased perioperative respiratory adverse events (COLDS score).',
+            ]}
+          />
         </>
       }
     />
