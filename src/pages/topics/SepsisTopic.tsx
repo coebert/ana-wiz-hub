@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { Exam } from "@/data/curriculum";
+import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { sepsisQuestions } from "@/data/quizzes";
 import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagram";
@@ -130,7 +131,7 @@ const SepsisTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
-    <>
+    <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
@@ -549,7 +550,7 @@ const SepsisTopic = () => {
               "Balanced crystalloids preferred over 0.9% saline (BaSICS, SMART trials); albumin if large volumes needed.",
             ]}
           />
-    </>
+    </ExamSection>
       }
     />
   );

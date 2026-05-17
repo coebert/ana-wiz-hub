@@ -1,3 +1,4 @@
+import { ExamSection } from "@/components/ExamSection";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { acuteLiverFailureQuestions } from "@/data/quizzes";
 import CLIFCACLFDiagram from "@/components/diagrams/CLIFCACLFDiagram";
@@ -128,7 +129,7 @@ const AcuteLiverFailureTopic = () => {
         keyPoints: { exams: [Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
-    <>
+    <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Definition & Aetiology</h2>
@@ -354,7 +355,7 @@ const AcuteLiverFailureTopic = () => {
               "Hyperammonaemia >150 µmol/L correlates with intracranial hypertension — consider CVVHDF for ammonia clearance.",
             ]}
           />
-    </>
+    </ExamSection>
       }
     />
   );
