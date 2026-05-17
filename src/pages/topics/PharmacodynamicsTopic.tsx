@@ -7,6 +7,7 @@ import { Exam } from "@/data/curriculum";
 import { DoseResponseCurveDiagram } from "@/components/diagrams/DoseResponseCurveDiagram";
 import { AgonismSpectrumDiagram } from "@/components/diagrams/AgonismSpectrumDiagram";
 import { ReceptorTimescaleDiagram } from "@/components/diagrams/ReceptorTimescaleDiagram";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Distinguish potency (EC₅₀) from efficacy (Emax) and read sigmoid log dose-response curves",
@@ -195,6 +196,16 @@ const PharmacodynamicsTopic = () => {
               <li><strong>Enzyme inhibition</strong>: ↓ CYP450 activity (erythromycin, ciprofloxacin, grapefruit) → ↑ drug effect. Rapid onset</li>
             </ul>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "Potency (ED50) and efficacy (Emax) are independent — a more potent drug is not necessarily more effective.",
+              "Competitive antagonists shift the dose-response curve right with no change in Emax; non-competitive antagonists reduce Emax.",
+              "Partial agonists can act as antagonists in the presence of a full agonist (e.g. buprenorphine vs morphine).",
+              "Tachyphylaxis = rapid loss of effect (e.g. ephedrine); tolerance is slower receptor down-regulation.",
+              "Hysteresis describes a lag between plasma concentration and effect — relevant for fentanyl, NMBDs, and ketamine.",
+            ]}
+          />
         </>
       }
       diagrams={

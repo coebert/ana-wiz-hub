@@ -14,6 +14,7 @@ import OpioidStructures from "@/components/diagrams/OpioidStructures";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { opioidsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe µ, κ and δ receptor signalling (Gi/Go → ↓cAMP, K⁺ efflux, Ca²⁺ closure) and the clinical effects mediated by each.",
@@ -302,6 +303,16 @@ const OpioidsTopic = () => {
               </table>
             </SynthesisBlock>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "μ-receptor agonism mediates analgesia, respiratory depression, miosis, euphoria and constipation — all dose-related and reversed by naloxone.",
+              "Remifentanil: ester-linked, metabolised by non-specific esterases; context-sensitive half-time ~4 min independent of infusion duration.",
+              "Morphine-6-glucuronide is an active metabolite — accumulates in renal failure → prolonged respiratory depression.",
+              "Pethidine metabolite norpethidine is pro-convulsant; avoid in renal failure and with MAOIs (serotonin syndrome risk).",
+              "Tramadol acts via μ-receptor and serotonin/noradrenaline reuptake inhibition; lowers seizure threshold and interacts with SSRIs.",
+            ]}
+          />
         </>
       }
       keyPoints={[

@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { antiarrhythmicsQuiz } from "@/data/quizzes";
 import VaughanWilliamsAPDiagram from "@/components/diagrams/VaughanWilliamsAPDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const drugData = [
   { cls: "Ia", action: "Na⁺ block (intermediate dissociation) + ↑ APD", drugs: "Quinidine, Procainamide, Disopyramide", ecg: "↑ QT, widened QRS", notes: "Use-dependent block. Procainamide for VT & WPW. Risk of torsades." },
@@ -188,6 +189,16 @@ const AntiarrhythmicsTopic = () => {
               <li><strong>Risk factors:</strong> ↓K⁺, ↓Mg²⁺, ↑QTc, structural heart disease, renal impairment, drug interactions</li>
             </ul>
           </section>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "Vaughan-Williams: Class I Na⁺ blockers (Ia/Ib/Ic), Class II β-blockers, Class III K⁺ blockers (amiodarone), Class IV Ca²⁺ blockers.",
+              "Amiodarone: prolongs APD and QT — risks include pulmonary fibrosis, hepatitis, thyroid dysfunction, corneal deposits and skin photosensitivity.",
+              "Adenosine: very short t½ (~10 s); transient AV block — useful diagnostically and to terminate SVT; contraindicated in asthma and 2nd/3rd-degree block.",
+              "Pro-arrhythmia is a class effect — Class Ic (flecainide) post-MI worsens mortality (CAST trial).",
+              "Digoxin has narrow therapeutic index; toxicity worsened by hypokalaemia, hypomagnesaemia, hypercalcaemia and renal impairment.",
+            ]}
+          />
         </div>
       }
     />
