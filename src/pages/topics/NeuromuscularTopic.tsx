@@ -227,6 +227,9 @@ const NeuromuscularTopic = () => {
               is exploited in neuromuscular monitoring — train-of-four fade appears when ~75% of receptors
               are occupied, and single twitch depression requires ~80% blockade.
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <NeuromuscularMonitoringDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 

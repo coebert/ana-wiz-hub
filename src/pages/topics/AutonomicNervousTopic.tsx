@@ -170,6 +170,9 @@ const AutonomicNervousTopic = () => {
               acetylcholinesterase (true ChE, synapse) and butyrylcholinesterase (pseudocholinesterase/plasma ChE,
               hydrolyses suxamethonium and mivacurium).
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <ANSPathwayDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
