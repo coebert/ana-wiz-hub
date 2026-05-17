@@ -1,13 +1,44 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, X, Atom, Heart, FlaskConical, Stethoscope, Activity, ClipboardList, Bone, Beaker } from "lucide-react";
 import { allTopics, Topic, Section, sectionMeta } from "@/data/curriculum";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
+import * as quizzes from "@/data/quizzes";
 
-const topicsWithPaths: (Topic & { path: string })[] = allTopics.map((t) => ({
-  ...t,
-  path: `${sectionMeta[t.section].path}/${t.id}`,
-}));
+const toCamel = (id: string) => id.replace(/-([a-z0-9])/g, (_, c) => c.toUpperCase());
+
+const quizMap = quizzes as Record<string, Array<{ question?: string; options?: string[]; explanation?: string }>>;
+
+const stripDiacritics = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+type IndexedTopic = Topic & { path: string; haystack: string; keywords: string[] };
+
+const buildHaystack = (t: Topic): { haystack: string; keywords: string[] } => {
+  const parts: string[] = [t.title, t.description, t.section];
+  const quizKey = `${toCamel(t.id)}Quiz`;
+  const quiz = quizMap[quizKey];
+  if (Array.isArray(quiz)) {
+    for (const q of quiz) {
+      if (q.question) parts.push(q.question);
+      if (q.explanation) parts.push(q.explanation);
+      if (Array.isArray(q.options)) parts.push(q.options.join(" "));
+    }
+  }
+  const joined = stripDiacritics(parts.join(" ").toLowerCase());
+  // Extract keywords (words >= 3 chars) for snippet/match hinting
+  const keywords = Array.from(new Set(joined.match(/[a-z0-9][a-z0-9-]{2,}/g) ?? []));
+  return { haystack: joined, keywords };
+};
+
+const topicsWithPaths: IndexedTopic[] = allTopics.map((t) => {
+  const { haystack, keywords } = buildHaystack(t);
+  return {
+    ...t,
+    path: `${sectionMeta[t.section].path}/${t.id}`,
+    haystack,
+    keywords,
+  };
+});
 
 const sectionIcons: Record<Section, typeof Atom> = {
   physics: Atom,
