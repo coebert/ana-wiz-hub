@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
+import { Cite } from "@/components/Cite";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { brachialPlexusQuestions } from "@/data/quizzes";
 import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
@@ -112,14 +113,19 @@ const BrachialPlexusTopic = () => {
           "Miller Ch.46",
           "BJA Educ 2014",
         ],
+        diagrams: [
+          "Ellis & Feldman Ch.8",
+          "BJA Educ 2014",
+          "Miller Ch.46",
+        ],
         workedExamples: [
           "BJA Educ 2014",
-          "BJA Educ 2014",
-          "BJA Educ 2014",
+          "Ellis & Feldman Ch.8",
         ],
         keyPoints: [
           "Miller Ch.46",
           "BJA Educ 2014",
+          "Ellis & Feldman Ch.8",
         ],
       }}
       keyPoints={[
@@ -135,7 +141,7 @@ const BrachialPlexusTopic = () => {
           <ExamSection id="organisation" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Anatomy"]}>
             <CollapsibleSubsection title="Organisation: Roots → Trunks → Divisions → Cords → Branches" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Formed by ventral rami of C5–T1. Mnemonic: "Robert Taylor Drinks Cold Beer" (Roots, Trunks, Divisions, Cords, Branches).
+              Formed by ventral rami of C5–T1. Mnemonic: "Robert Taylor Drinks Cold Beer" (Roots, Trunks, Divisions, Cords, Branches).<Cite topicId="brachial-plexus" labels={["Ellis & Feldman Ch.8", "Miller Ch.46"]} />
             </p>
             <div className="space-y-2">
               {[
@@ -156,8 +162,14 @@ const BrachialPlexusTopic = () => {
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CorPictumFolio {...brachialFolio} suppressOverlayLabels />
+            <p className="text-xs text-muted-foreground italic mt-2">
+              Plexus organisation adapted from standard anatomical descriptions.<Cite topicId="brachial-plexus" labels={["Ellis & Feldman Ch.8", "Miller Ch.46"]} />
+            </p>
             <div className="mt-6">
               <BrachialPlexusDiagram />
+              <p className="text-xs text-muted-foreground italic mt-2">
+                Schematic of roots → trunks → divisions → cords → branches and the four block approach levels.<Cite topicId="brachial-plexus" labels={["BJA Educ 2014", "Miller Ch.46"]} />
+              </p>
             </div>
           </ExamSection>
 
@@ -166,19 +178,19 @@ const BrachialPlexusTopic = () => {
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Interscalene (Roots/Trunks)</p>
-                <p className="text-sm text-muted-foreground mt-1">Between anterior and middle scalene at C6 level. Targets C5–C7 (superior/middle trunks). Misses C8/T1 (ulnar sparing). Phrenic nerve palsy 100%. Contralateral hand ventilation check essential.</p>
+                <p className="text-sm text-muted-foreground mt-1">Between anterior and middle scalene at C6 level. Targets C5–C7 (superior/middle trunks). Misses C8/T1 (ulnar sparing). Phrenic nerve palsy 100%. Contralateral hand ventilation check essential.<Cite topicId="brachial-plexus" labels={["BJA Educ 2014", "Miller Ch.46"]} /></p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Supraclavicular (Trunks/Divisions)</p>
-                <p className="text-sm text-muted-foreground mt-1">Trunks and divisions most compact here ("3 grapes on a stalk" appearance on US above subclavian artery). Complete arm block. Pneumothorax risk (minimal with US).</p>
+                <p className="text-sm text-muted-foreground mt-1">Trunks and divisions most compact here ("3 grapes on a stalk" appearance on US above subclavian artery). Complete arm block. Pneumothorax risk (minimal with US).<Cite topicId="brachial-plexus" labels={["BJA Educ 2014"]} /></p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Infraclavicular (Cords)</p>
-                <p className="text-sm text-muted-foreground mt-1">Cords surround 2nd part of axillary artery beneath pectoralis muscles. Good for catheter placement — skin puncture away from neck. Targets all cords.</p>
+                <p className="text-sm text-muted-foreground mt-1">Cords surround 2nd part of axillary artery beneath pectoralis muscles. Good for catheter placement — skin puncture away from neck. Targets all cords.<Cite topicId="brachial-plexus" labels={["Miller Ch.46"]} /></p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Axillary (Branches)</p>
-                <p className="text-sm text-muted-foreground mt-1">Terminal branches around 3rd part of axillary artery. Musculocutaneous already left (separate block in coracobrachialis). Safest approach — no pneumothorax risk.</p>
+                <p className="text-sm text-muted-foreground mt-1">Terminal branches around 3rd part of axillary artery. Musculocutaneous already left (separate block in coracobrachialis). Safest approach — no pneumothorax risk.<Cite topicId="brachial-plexus" labels={["Ellis & Feldman Ch.8", "Miller Ch.46"]} /></p>
               </div>
             </div>
             </CollapsibleSubsection>
@@ -186,6 +198,9 @@ const BrachialPlexusTopic = () => {
 
           <ExamSection id="ultrasound" exams={[Exam.FINAL]}>
             <BrachialPlexusUltrasoundDiagram />
+            <p className="text-xs text-muted-foreground italic mt-2">
+              Sonographic landmarks (interscalene "traffic-light", supraclavicular "grapes on a stalk", axillary perivascular nerves) follow standard ultrasound anatomy references.<Cite topicId="brachial-plexus" labels={["BJA Educ 2014"]} />
+            </p>
           </ExamSection>
 
           <ExamSection id="terminal-nerves" exams={[Exam.PRIMARY, Exam.FINAL]}>
@@ -208,6 +223,9 @@ const BrachialPlexusTopic = () => {
                   <tr><td className="py-2 font-medium text-foreground">Axillary</td><td>C5,6</td><td>Deltoid, teres minor</td><td>Regimental badge area</td></tr>
                 </tbody>
               </table>
+              <p className="text-xs text-muted-foreground italic mt-3">
+                Motor/sensory distributions per standard anatomy and regional anaesthesia references.<Cite topicId="brachial-plexus" labels={["Ellis & Feldman Ch.8", "Miller Ch.46"]} />
+              </p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
