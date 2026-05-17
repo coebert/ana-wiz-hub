@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
 import { UpdateBanner } from "@/components/UpdateBanner";
+import { CascadePerfBadge } from "@/components/diagrams/_dev/CascadePerfBadge";
 import { VisitTrackerWrapper } from "@/components/VisitTrackerWrapper";
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
@@ -196,6 +197,7 @@ const App = () => (
       <BrowserRouter>
         <Header />
         <UpdateBanner />
+        <CascadePerfBadge />
         <VisitTrackerWrapper>
         <Suspense fallback={<Loading />}>
         <Routes>
