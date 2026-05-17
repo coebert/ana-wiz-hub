@@ -222,48 +222,6 @@ const PharmacodynamicsTopic = () => {
           />
         </>
       }
-      diagrams={
-        <>
-          <DiagramSection
-            title="Log dose–response curves"
-            intro={
-              <p>
-                Compare a control agonist against a partial agonist and the two
-                classic antagonist patterns. Toggle each overlay to see how the
-                EC₅₀ marker shifts and how Emax responds.
-              </p>
-            }
-          >
-            <DoseResponseCurveDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="The agonism spectrum"
-            intro={
-              <p>
-                Intrinsic activity (α) places every receptor ligand on a single
-                spectrum from full agonist (α = 1) through partial agonist and
-                antagonist (α = 0) to inverse agonist (α &lt; 0).
-              </p>
-            }
-          >
-            <AgonismSpectrumDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Receptor types &amp; signal-transduction timescales"
-            intro={
-              <p>
-                A single log-time axis (1 ms → 24 h) makes the order-of-magnitude
-                differences between ion channels, GPCRs, kinase-linked, and
-                nuclear receptors immediately visible.
-              </p>
-            }
-          >
-            <ReceptorTimescaleDiagram />
-          </DiagramSection>
-        </>
-      }
     />
   );
 };
