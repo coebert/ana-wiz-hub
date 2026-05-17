@@ -93,7 +93,7 @@ const OxygenHaemoglobinTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_03"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["OA_BK_02"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
@@ -102,18 +102,6 @@ const OxygenHaemoglobinTopic = () => {
         workedExamples: ["BJA Educ 2004", "Power & Kam Ch.7"],
         keyPoints: ["West Ch.6", "BJA Educ 2004", "Power & Kam Ch.7"],
       }}
-      diagrams={
-        <>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <h3 className="text-base font-semibold text-foreground mb-3">Normal Curve</h3>
-            <OxygenDissociationCurve showShifts={false} />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <h3 className="text-base font-semibold text-foreground mb-3">Left and Right Shifts</h3>
-            <OxygenDissociationCurve showShifts={true} />
-          </div>
-        </>
-      }
       keyPoints={[
         { text: "The ODC is sigmoid due to cooperative O₂ binding to haemoglobin's four haem groups (T → R conformational change).", cites: ["West Ch.6"] },
         { text: "P₅₀ is normally 26.7 mmHg (3.5 kPa) — the PaO₂ at which Hb is 50% saturated.", cites: ["BJA Educ 2004"] },
@@ -138,6 +126,9 @@ const OxygenHaemoglobinTopic = () => {
               Key points: at PaO₂ 13.3 kPa (100 mmHg), SaO₂ ≈ 97.5%. At the venous point (PaO₂ ~5.3 kPa / 40 mmHg), SaO₂
               ≈ 75%. The steep portion between 20–60 mmHg allows efficient O₂ unloading in the tissues.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <OxygenDissociationCurve showShifts={false} />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -170,8 +161,12 @@ const OxygenHaemoglobinTopic = () => {
                 </ul>
               </div>
             </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <OxygenDissociationCurve showShifts={true} />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
+
 
           <ExamSection id="bohr-haldane" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_03"]}>
             <CollapsibleSubsection title="Bohr & Haldane Effects">
