@@ -68,6 +68,13 @@ const NeonSplash = () => {
     };
   }, []);
 
+  // Flip `ready` on the frame after mount so the opacity transition runs.
+  useLayoutEffect(() => {
+    if (!mounted) return;
+    const raf = requestAnimationFrame(() => setReady(true));
+    return () => cancelAnimationFrame(raf);
+  }, [mounted]);
+
   // Measure the container, clamp + smooth, then derive a base unit.
   useLayoutEffect(() => {
     if (!mounted) return;
