@@ -113,14 +113,19 @@ const BrachialPlexusTopic = () => {
           "Miller Ch.46",
           "BJA Educ 2014",
         ],
+        diagrams: [
+          "Ellis & Feldman Ch.8",
+          "BJA Educ 2014",
+          "Miller Ch.46",
+        ],
         workedExamples: [
           "BJA Educ 2014",
-          "BJA Educ 2014",
-          "BJA Educ 2014",
+          "Ellis & Feldman Ch.8",
         ],
         keyPoints: [
           "Miller Ch.46",
           "BJA Educ 2014",
+          "Ellis & Feldman Ch.8",
         ],
       }}
       keyPoints={[
