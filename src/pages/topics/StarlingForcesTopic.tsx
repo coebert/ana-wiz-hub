@@ -157,6 +157,9 @@ const StarlingForcesTopic = () => {
                 <div><strong>πi</strong> = interstitial oncotic pressure</div>
               </div>
             </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <StarlingForcesDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
