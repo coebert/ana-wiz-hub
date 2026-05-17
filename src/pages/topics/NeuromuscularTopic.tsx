@@ -108,7 +108,6 @@ const NeuromuscularTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["NA_BK_03"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["NA_BK_03", "OA_BK_03"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
@@ -117,14 +116,6 @@ const NeuromuscularTopic = () => {
         workedExamples: ["BJA Educ 2005", "BJA Educ 2005", "Power & Kam Ch.15"],
         keyPoints: ["BJA Educ 2005", "Ganong Ch.5", "Power & Kam Ch.15"],
       }}
-      diagrams={
-        <>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <NMJDiagram />
-          </div>
-          <NeuromuscularMonitoringDiagram />
-        </>
-      }
       keyPoints={[
         { text: "Adult nAChR subunit composition is α₂βδε; fetal/extrajunctional receptors contain γ instead of ε.", cites: ["Ganong Ch.5"] },
         { text: "Two ACh molecules must bind (one per α subunit) to open the nAChR channel.", cites: ["Power & Kam Ch.15"] },
@@ -148,6 +139,9 @@ const NeuromuscularTopic = () => {
 
           <ExamSection id="sequence" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["NA_BK_03"]}>
             <CollapsibleSubsection title="Sequence of Events">
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <NMJDiagram />
+            </div>
             <div className="space-y-4">
               <div className="rounded-lg border border-border p-4">
                 <h3 className="font-semibold text-foreground">1. Action Potential Arrival</h3>

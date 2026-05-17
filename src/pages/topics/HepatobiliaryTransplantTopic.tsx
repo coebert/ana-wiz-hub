@@ -25,17 +25,14 @@ const HepatobiliaryTransplantTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL], curriculumCodes: ["CH_BK_03"] },
-        diagrams: { exams: [Exam.FINAL], curriculumCodes: ["CH_BK_03"] },
         workedExamples: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["BJA Educ LiverResection 2017", "AAGBI Cirrhosis 2017"],
-        diagrams: ["BJA Educ LT 2010"],
         workedExamples: ["BJA Educ LT 2010", "ITLS Reperfusion"],
         keyPoints: ["BJA Educ LiverResection 2017", "BJA Educ LT 2010", "AAGBI Cirrhosis 2017", "ITLS Reperfusion"],
       }}
-      diagrams={<LiverTransplantPhasesDiagram />}
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CH_BK_03"]}>
@@ -87,6 +84,9 @@ const HepatobiliaryTransplantTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Orthotopic liver transplantation proceeds through three distinct phases, each with unique anaesthetic challenges.
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <LiverTransplantPhasesDiagram />
+            </div>
             <div className="space-y-4">
               <div className="p-4 rounded-lg border border-border bg-secondary/10">
                 <h3 className="font-semibold text-foreground text-sm mb-2">Phase 1: Dissection (Pre-anhepatic)</h3>

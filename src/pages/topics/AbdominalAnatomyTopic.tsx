@@ -25,22 +25,14 @@ const AbdominalAnatomyTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["AN_BK_03"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Ellis & Feldman Ch.4", "Miller Ch.47"],
-        diagrams: ["BJA Educ 2015", "Ellis & Feldman Ch.4"],
         workedExamples: ["BJA Educ 2015", "Miller Ch.47"],
         keyPoints: ["Ellis & Feldman Ch.4", "BJA Educ 2015", "Miller Ch.47"],
       }}
-      diagrams={
-        <>
-          <CorPictumFolio {...abdominalFolio} suppressOverlayLabels />
-          <AbdominalWallDiagram />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
@@ -48,6 +40,9 @@ const AbdominalAnatomyTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Understanding the abdominal wall layers is essential for TAP blocks, rectus sheath blocks, and laparoscopic port placement.
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <AbdominalWallDiagram />
+            </div>
             <div className="space-y-1.5 mt-2">
               {[
                 "Skin → Camper's fascia (fatty) → Scarpa's fascia (membranous)",
@@ -82,6 +77,9 @@ const AbdominalAnatomyTopic = () => {
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
             <CollapsibleSubsection title="Key Abdominal Organs — Anaesthetic Relevance">
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <CorPictumFolio {...abdominalFolio} suppressOverlayLabels />
+            </div>
             <div className="space-y-2">
               {[
                 { organ: "Liver", detail: "Right upper quadrant. Receives 25% CO (75% portal vein, 25% hepatic artery). Volatile agents reduce hepatic blood flow. Couinaud segments guide surgical resection." },

@@ -95,7 +95,6 @@ const AutonomicNervousTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["CR_BK_05"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["OA_BK_06"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
@@ -104,16 +103,6 @@ const AutonomicNervousTopic = () => {
         workedExamples: ["BJA Educ 2007", "Ganong Ch.13", "Power & Kam Ch.14"],
         keyPoints: ["Power & Kam Ch.14", "Ganong Ch.13", "BJA Educ 2007"],
       }}
-      diagrams={
-        <>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <ANSDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <ANSPathwayDiagram />
-          </div>
-        </>
-      }
       keyPoints={[
         { text: "Sympathetic: thoracolumbar T1–L2; short pre-/long postganglionic. Postganglionic NT = noradrenaline (except sweat glands = ACh).", cites: ["BJA Educ 2007"] },
         { text: "Parasympathetic: craniosacral (III, VII, IX, X, S2–4); long pre-/short postganglionic. NT = ACh at both synapses.", cites: ["Ganong Ch.13"] },
@@ -132,6 +121,9 @@ const AutonomicNervousTopic = () => {
               bronchial tone, gut motility, and glandular secretion. Understanding sympathetic and parasympathetic
               pathways, receptors, and their pharmacological manipulation is essential for anaesthetic practice.
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <ANSDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
