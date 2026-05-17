@@ -50,12 +50,10 @@ const SIUnitsThermodynamicsTopic = () => {
       topicId="si-units-thermodynamics"
       topicTitle="SI Units & Thermodynamics"
       objectives={objectives}
-      diagrams={<SIUnitsThermodynamicsDiagram />}
       workedExamples={workedExamples}
       quizQuestions={siUnitsThermodynamicsQuiz}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Physics"] },
-        diagrams: { exams: [Exam.PRIMARY] },
         workedExamples: { exams: [Exam.PRIMARY] },
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
