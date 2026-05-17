@@ -252,6 +252,7 @@ const OpioidsTopic = () => {
               Unlike elimination half-life, CSHT accounts for redistribution between compartments and is therefore <strong>dependent
               on the "context" of infusion duration</strong> — making it far more clinically useful for predicting recovery.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><CSHTDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
