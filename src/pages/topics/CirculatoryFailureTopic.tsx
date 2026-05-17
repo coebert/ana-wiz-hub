@@ -383,7 +383,6 @@ const CirculatoryFailureTopic = () => {
         workedExamples: ["BJA Educ 2019", "IABP-SHOCK II", "SHOCK trial", "FICM ECMO 2021"],
       }}
       coreConcepts={coreConcepts}
-      coreConcepts={coreConcepts}
       workedExamples={workedExamples}
       keyPoints={keyPoints}
       topicId="circulatory-failure"
