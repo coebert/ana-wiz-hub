@@ -92,7 +92,6 @@ const GastrointestinalPhysiologyTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["CR_BK_06", "OA_BK_03"] },
-        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["CR_BK_06", "OA_BK_03"] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["OA_BK_03"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
