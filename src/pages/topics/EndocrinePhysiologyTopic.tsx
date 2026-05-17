@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { endocrinePhysiologyQuestions } from "@/data/quizzes";
 import HPAAxisDiagram from "@/components/diagrams/HPAAxisDiagram";
@@ -115,6 +116,17 @@ const EndocrinePhysiologyTopic = () => {
       ]}
       coreConcepts={
         <>
+          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              The endocrine system co-ordinates whole-body homeostasis through hormonal feedback loops centred on the
+              hypothalamus and pituitary. Every major perioperative emergency — adrenal crisis, thyroid storm,
+              diabetic ketoacidosis, phaeochromocytoma haemodynamic instability — sits on a defect in one of these
+              axes. The surgical stress response itself is an endocrine event, and anaesthetic technique modulates
+              its magnitude.
+            </p>
+          </ExamSection>
+
           <ExamSection id="hp-axis" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hypothalamic-Pituitary Axis</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -251,6 +263,16 @@ const EndocrinePhysiologyTopic = () => {
               best), opioids, minimally invasive surgery, ERAS protocols.
             </p>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>Steroid cover</strong>: any patient on ≥5 mg prednisolone for ≥3 weeks within the last year is at risk of adrenal suppression — give hydrocortisone supplementation matched to surgical severity.</>,
+              <><strong>Phaeochromocytoma</strong>: α-block first (phenoxybenzamine/doxazosin) THEN β-block — reverse sequence precipitates hypertensive crisis.</>,
+              <><strong>Thyroid storm</strong>: postoperative tachycardia + fever + agitation. Treat with β-blockade, propylthiouracil, iodine (≥1 h after PTU), steroids, cooling.</>,
+              <><strong>Diabetic patient</strong>: variable-rate insulin infusion only if &gt;1 missed meal; otherwise omit short-acting + half long-acting on day of surgery and check CBG hourly.</>,
+              <><strong>SIADH vs cerebral salt wasting</strong>: both hyponatraemic but volume status differs (euvolaemic vs hypovolaemic) — gets the fluid plan right.</>,
+            ]}
+          />
         </>
       }
     />
