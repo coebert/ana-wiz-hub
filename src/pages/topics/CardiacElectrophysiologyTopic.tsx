@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { cardiacElectrophysiologyQuestions } from "@/data/quizzes";
 import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
@@ -172,6 +173,18 @@ const CardiacElectrophysiologyTopic = () => {
       ]}
       coreConcepts={
         <>
+          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_02"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              Cardiac electrophysiology underpins every beat we monitor in the anaesthetic room. The mechanical pump is
+              driven by tightly co-ordinated ionic currents that generate the cardiac action potential, propagate
+              through specialised conduction tissue, and are modulated minute-to-minute by autonomic tone, electrolytes
+              and anaesthetic drugs. Understanding the sequence — from ion channel to bedside arrhythmia — explains why
+              QT prolongation kills, why bradyarrhythmias dominate during high spinal block, and why baroreflex
+              integrity matters at induction.
+            </p>
+          </ExamSection>
+
           <ExamSection id="action-potentials" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiac Action Potentials</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -280,6 +293,16 @@ const CardiacElectrophysiologyTopic = () => {
               <li><strong>Valsalva manoeuvre</strong>: Phase I (↑ MAP from ↑ intrathoracic pressure), Phase II (↓ VR → ↓ BP → baroreceptor ↑ HR), Phase III (release → transient ↓ BP), Phase IV (↑ VR → ↑ BP → reflex bradycardia/overshoot).</li>
             </ul>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>QTc &gt; 500 ms</strong> is the danger zone — stop offending drugs, correct K⁺ ≥4.5 and Mg²⁺ ≥1.0, avoid ondansetron, keep IV magnesium ready.</>,
+              <><strong>Pacemaker patients</strong>: identify mode, magnet response and dependence. Reprogram to asynchronous mode if diathermy used near the generator.</>,
+              <><strong>Bradycardia at induction</strong> is often vagally-mediated (laryngoscopy, peritoneal traction, oculocardiac reflex) — treat the cause and have glycopyrrolate/atropine ready.</>,
+              <><strong>Baroreflex</strong> is blunted by volatiles, opioids and the elderly — anticipate exaggerated BP swings.</>,
+              <><strong>Phase 4 spontaneous depolarisation</strong> only occurs in pacemaker cells (SA/AV/Purkinje). Suppression by β-blockers ↓ HR; ischaemia of SA node may unmask latent pacemakers.</>,
+            ]}
+          />
         </>
       }
     />
