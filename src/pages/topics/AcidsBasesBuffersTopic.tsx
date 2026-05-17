@@ -132,7 +132,7 @@ const AcidsBasesBuffersTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="foundations" exams={[Exam.PRIMARY]}>
+          <ExamSection id="foundations" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Foundations of Acid-Base Chemistry" defaultOpen>
             <div className="text-muted-foreground space-y-3 leading-relaxed">
               <p>
@@ -151,13 +151,13 @@ const AcidsBasesBuffersTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={[Exam.PRIMARY]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Interactive Diagram">
             <AcidsBasesDiagram />
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="henderson-hasselbalch" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RCoA Primary — Pharmacology"]}>
+          <ExamSection id="henderson-hasselbalch" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Primary — Pharmacology"]}>
             <CollapsibleSubsection title="The Henderson-Hasselbalch Equation in Practice">
             <div className="text-muted-foreground space-y-3 leading-relaxed">
               <p>

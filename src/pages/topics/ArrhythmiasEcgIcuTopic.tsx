@@ -188,7 +188,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CardiacConductionDiagram />
           </ExamSection>
 
@@ -284,7 +284,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="electrolytes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection id="electrolytes" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Electrolyte & Drug-Induced Arrhythmias">
             <div className="space-y-2">
               {[

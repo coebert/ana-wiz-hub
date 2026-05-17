@@ -85,7 +85,7 @@ const SolutionsConcentrationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="concentration-units" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Clinical Measurement"]}>
+          <ExamSection id="concentration-units" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RCoA Primary — Clinical Measurement"]}>
             <CollapsibleSubsection title="Concentration Units">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -120,7 +120,7 @@ const SolutionsConcentrationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="osmolar-gap" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="osmolar-gap" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Calculated Osmolarity & The Osmolar Gap">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -137,7 +137,7 @@ const SolutionsConcentrationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="colligative" exams={[Exam.PRIMARY]}>
+          <ExamSection id="colligative" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Colligative Properties">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -150,7 +150,7 @@ const SolutionsConcentrationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="hyponatraemia" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 3.4"]}>
+          <ExamSection id="hyponatraemia" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["FFICM 3.4"]}>
             <CollapsibleSubsection title="Hyponatraemia & Safe Correction">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

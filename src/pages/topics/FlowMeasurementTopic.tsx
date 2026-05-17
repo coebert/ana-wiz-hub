@@ -75,7 +75,7 @@ const FlowMeasurementTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               Flow is the volume of fluid passing a point per unit time. Understanding laminar and turbulent flow, and the
@@ -84,7 +84,7 @@ const FlowMeasurementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="laminar-turbulent" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="laminar-turbulent" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Laminar vs Turbulent Flow">
             <p className="text-foreground/90 leading-relaxed mb-4">
               Use the interactive diagram below to explore the differences between laminar and turbulent flow, including the
@@ -96,7 +96,7 @@ const FlowMeasurementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="hagen-poiseuille" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="hagen-poiseuille" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Hagen-Poiseuille Equation">
             <p className="text-foreground/90 leading-relaxed">
               For laminar flow through a tube: <strong>Q = πΔPr⁴ / 8ηl</strong>, where Q = flow, ΔP = pressure gradient,
@@ -114,7 +114,7 @@ const FlowMeasurementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="reynolds" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="reynolds" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Reynolds Number">
             <p className="text-foreground/90 leading-relaxed">
               <strong>Re = ρvd / η</strong>, where ρ = density, v = velocity, d = diameter, η = viscosity. Laminar flow occurs
@@ -141,7 +141,7 @@ const FlowMeasurementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="other-flowmeters" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="other-flowmeters" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Other Flowmeters">
             <p className="text-foreground/90 leading-relaxed mb-4">
               <strong>Pneumotachograph</strong>: measures pressure drop across a known resistance (Fleisch — bundle of tubes;
@@ -156,7 +156,7 @@ const FlowMeasurementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="venturi" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="venturi" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="The Venturi Effect & Bernoulli's Principle">
             <p className="text-foreground/90 leading-relaxed">
               Bernoulli's principle: as fluid velocity increases through a constriction, pressure decreases. The <strong>Venturi
@@ -176,7 +176,7 @@ const FlowMeasurementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="coanda" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="coanda" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="The Coandă Effect">
             <p className="text-foreground/90 leading-relaxed">
               The <strong>Coandă effect</strong> is the tendency of a fluid jet to follow a nearby convex surface
@@ -203,7 +203,7 @@ const FlowMeasurementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="coanda-vs-bernoulli" exams={[Exam.PRIMARY, Exam.FINAL]}>
+          <ExamSection id="coanda-vs-bernoulli" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Coandă vs Bernoulli — jet attachment vs constriction flow">
             <p className="text-foreground/90 leading-relaxed">
               Both effects share the same underlying physics — the conservation of energy expressed by
@@ -284,7 +284,7 @@ const FlowMeasurementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="coanda-vignettes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="coanda-vignettes" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Clinical vignettes — Coandă in practice">
             <p className="text-foreground/90 leading-relaxed">
               The Coandă effect is a favourite of FRCA Primary SAQs and Final structured orals because

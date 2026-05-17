@@ -46,7 +46,7 @@ const NeuroanaesthesiaTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CN_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CN_BK_03"]}>
             <CollapsibleSubsection title="Cerebral Physiology for Anaesthesia" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Neuroanaesthesia is built on a small number of physiological levers — cerebral blood flow, intracranial pressure, and cerebral perfusion pressure — and how anaesthetic agents and ventilatory choices manipulate them.
@@ -64,7 +64,7 @@ const NeuroanaesthesiaTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CN_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CN_BK_03"]}>
             <CollapsibleSubsection title="Anaesthetic Effects on CBF & CMRO₂">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -88,7 +88,7 @@ const NeuroanaesthesiaTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CC1.4"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CC1.4"]}>
             <CollapsibleSubsection title="ICP Management">
             <div className="space-y-2">
               {[
@@ -108,7 +108,7 @@ const NeuroanaesthesiaTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Specific Neurosurgical Considerations">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">

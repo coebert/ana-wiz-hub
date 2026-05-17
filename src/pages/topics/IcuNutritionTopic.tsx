@@ -129,7 +129,7 @@ const IcuNutritionTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]}>
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]}>
             <CollapsibleSubsection title="Metabolic Response to Critical Illness" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Critical illness induces a catabolic state with hyperglycaemia, protein catabolism and lipolysis. The metabolic response has two phases:
@@ -151,7 +151,7 @@ const IcuNutritionTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Enteral vs Parenteral Nutrition">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -173,7 +173,7 @@ const IcuNutritionTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Calorie & Protein Targets (ESPEN 2019)">
             <div className="space-y-2">
               {[
@@ -191,7 +191,7 @@ const IcuNutritionTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]}>
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]}>
             <CollapsibleSubsection title="Refeeding Syndrome">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Life-threatening shifts in fluids and electrolytes when nutrition is restarted after prolonged starvation. Insulin surge drives K⁺, PO₄³⁻ and Mg²⁺ intracellularly, causing arrhythmias, cardiac failure, respiratory muscle weakness and Wernicke&apos;s encephalopathy. Use the calculator above for stratification.
@@ -216,7 +216,7 @@ const IcuNutritionTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Key Nutrition Trials">
             <div className="space-y-2">
               {[

@@ -224,7 +224,7 @@ const AirwayManagementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
             <CollapsibleSubsection title="Partial airway obstruction — level-specific management">
             <p className="text-foreground/90 leading-relaxed mb-4">
               Partial obstruction is a dynamic problem: the noise, timing in the respiratory cycle and response to

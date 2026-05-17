@@ -61,7 +61,7 @@ const PerioperativeFluidsTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
             <CollapsibleSubsection title="Fluid Compartments" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Total body water (TBW) = ~60% body weight. ICF 40%, ECF 20% (interstitial 15%, plasma 5%). Only 25% of crystalloid remains intravascular — the rest distributes to the interstitium.

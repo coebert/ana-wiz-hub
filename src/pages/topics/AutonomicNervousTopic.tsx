@@ -181,7 +181,7 @@ const AutonomicNervousTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="reflexes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_06"]}>
+          <ExamSection id="reflexes" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OA_BK_06"]}>
             <CollapsibleSubsection title="Autonomic Reflexes">
             <p className="text-foreground/90 leading-relaxed">
               <strong>Baroreceptor reflex</strong>: carotid sinus (CN IX) and aortic arch (CN X) → NTS in medulla →

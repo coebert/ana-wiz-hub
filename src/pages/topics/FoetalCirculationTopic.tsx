@@ -191,7 +191,7 @@ const FoetalCirculationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="transitional" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PA_BK_02"]}>
+          <ExamSection id="transitional" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_02"]}>
             <CollapsibleSubsection title="Transitional Circulation at Birth">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>First breath</strong>: alveolar expansion → dramatic ↓ PVR (8–10×) → ↑ pulmonary blood flow.</li>
@@ -204,7 +204,7 @@ const FoetalCirculationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="pphn" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PA_BK_02"]}>
+          <ExamSection id="pphn" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_02"]}>
             <CollapsibleSubsection title="Persistent Pulmonary Hypertension of the Newborn (PPHN)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Failure of the normal transitional changes leads to persistent pulmonary hypertension of the newborn:
@@ -218,7 +218,7 @@ const FoetalCirculationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="pharmacology" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PA_BK_02"]}>
+          <ExamSection id="pharmacology" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_02"]}>
             <CollapsibleSubsection title="Pharmacological Manipulation of the Ductus">
             <div className="grid sm:grid-cols-2 gap-3">
               {[

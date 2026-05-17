@@ -116,7 +116,7 @@ const GastrointestinalPhysiologyTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
+          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
             <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Gastrointestinal physiology matters to the anaesthetist for two reasons: aspiration risk and
@@ -240,7 +240,7 @@ const GastrointestinalPhysiologyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="anaesthetic-implications" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_03"]}>
+          <ExamSection id="anaesthetic-implications" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OA_BK_03"]}>
             <CollapsibleSubsection title="Anaesthetic Implications">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>

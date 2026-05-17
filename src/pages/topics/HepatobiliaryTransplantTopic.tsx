@@ -38,7 +38,7 @@ const HepatobiliaryTransplantTopic = () => {
       diagrams={<LiverTransplantPhasesDiagram />}
       coreConcepts={
         <>
-          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CH_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CH_BK_03"]}>
             <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               Hepatobiliary surgery ranges from laparoscopic cholecystectomy to major liver resection and transplantation. Liver transplant anaesthesia demands expertise in managing coagulopathy, massive transfusion, electrolyte derangement, and haemodynamic instability through the dissection, anhepatic, and reperfusion phases.
@@ -46,7 +46,7 @@ const HepatobiliaryTransplantTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CH_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CH_BK_03"]}>
             <CollapsibleSubsection title="Laparoscopic Cholecystectomy">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Most common</strong>: elective general surgical procedure — often day-case</li>
@@ -59,7 +59,7 @@ const HepatobiliaryTransplantTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CH_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CH_BK_03"]}>
             <CollapsibleSubsection title="Major Liver Resection">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Hepatectomy for primary or secondary liver tumours. The liver's dual blood supply and regenerative capacity allow resection of up to 70% of parenchyma.
@@ -82,7 +82,7 @@ const HepatobiliaryTransplantTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CH_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CH_BK_03"]}>
             <CollapsibleSubsection title="Liver Transplantation — Phases">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Orthotopic liver transplantation proceeds through three distinct phases, each with unique anaesthetic challenges.
@@ -121,7 +121,7 @@ const HepatobiliaryTransplantTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CH_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CH_BK_03"]}>
             <CollapsibleSubsection title="Anaesthesia for the Cirrhotic Patient">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Cardiovascular</strong>: hyperdynamic circulation (↑ CO, ↓ SVR), cardiomyopathy of cirrhosis</li>

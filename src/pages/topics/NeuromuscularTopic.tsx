@@ -236,7 +236,7 @@ const NeuromuscularTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="clinical" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_03"]}>
+          <ExamSection id="clinical" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OA_BK_03"]}>
             <CollapsibleSubsection title="Clinical Relevance">
             <div className="bg-secondary/30 rounded-lg p-4 border border-border">
               <p className="text-sm font-medium text-foreground">Conditions Affecting NM Transmission</p>
