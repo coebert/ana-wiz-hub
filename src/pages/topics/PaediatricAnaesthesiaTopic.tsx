@@ -60,6 +60,18 @@ const PaediatricAnaesthesiaTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2019",
+          "Sury et al.",
+          "APAGBI 2020",
+        ],
+        keyPoints: [
+          "BJA Educ 2019",
+          "Sury et al.",
+          "APAGBI 2020",
+        ],
+      }}
       keyPoints={[
         { text: "Neonatal cardiac output is rate-dependent — bradycardia is a haemodynamic emergency", cites: ["Sury et al."] },
         { text: "High O₂ consumption + low FRC = rapid desaturation; pre-oxygenation essential", cites: ["BJA Educ 2019"] },

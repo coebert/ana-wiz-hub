@@ -38,6 +38,18 @@ const OrthopaedicAnaesthesiaTopic = () => {
         objectives: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "Allman & Wilson Ch.27",
+          "BJA Educ 2014",
+          "AAGBI Tourniquet",
+        ],
+        keyPoints: [
+          "Allman & Wilson Ch.27",
+          "BJA Educ 2014",
+          "AAGBI Tourniquet",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">

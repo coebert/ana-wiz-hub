@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { MACDiagram } from "@/components/diagrams/MACDiagram";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -8,6 +9,36 @@ import SecondGasEffectDiagram from "@/components/diagrams/SecondGasEffectDiagram
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Suspected malignant hyperthermia during sevoflurane anaesthesia",
+    scenario:
+      "A 22-year-old having elective knee arthroscopy under sevoflurane–remifentanil develops unexpected tachycardia (HR 130), rising ETCO₂ (8.5 kPa despite increased minute ventilation), masseter spasm and a temperature rising 0.5 °C every 5 min. Outline your immediate management.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Call for help and the MH trolley. Declare an MH crisis to theatre and ICU.</li>
+          <li>Stop all volatile agents immediately. Switch to TIVA (propofol ± remifentanil). Use a clean (vapour-free) anaesthetic machine if available; otherwise remove the vaporiser, flush with high-flow O₂ ≥10 L/min for ≥20 min, and change the soda lime and circuit.</li>
+          <li>Hyperventilate with 100% O₂ at high fresh-gas flows to wash out CO₂ and minimise rebreathing of any volatile.</li>
+          <li>Give dantrolene 2.5 mg/kg IV bolus, repeated every 5–10 min up to 10 mg/kg until ETCO₂, HR and temperature fall. Active cooling: cold IV saline, surface cooling, stop only when core temp &lt;38.5 °C.</li>
+          <li>Treat hyperkalaemia (calcium chloride, insulin/glucose, salbutamol; avoid suxamethonium); treat acidosis; manage arrhythmias (avoid calcium-channel blockers with dantrolene → risk of hyperkalaemia and cardiovascular collapse).</li>
+          <li>After stabilisation transfer to ICU for ≥24 h: monitor for recrudescence, rhabdomyolysis (CK, urine myoglobin, fluids/forced diuresis to prevent AKI). Refer the patient and first-degree relatives for MH unit testing.</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Using verapamil/diltiazem with dantrolene — life-threatening hyperkalaemia.</li>
+            <li>Giving suxamethonium to treat 'masseter spasm' — worsens the crisis.</li>
+            <li>Not reconstituting enough dantrolene early — total dose may exceed 10 mg/kg and each 20 mg vial needs 60 mL of sterile water.</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Stop volatile, switch to TIVA on a flushed/vapour-free machine, hyperventilate with 100% O₂, give dantrolene 2.5 mg/kg boluses up to 10 mg/kg, treat hyperkalaemia and acidosis, actively cool to <38.5 °C, avoid calcium-channel blockers, and admit to ICU for ≥24 h with CK and renal-function monitoring. Refer the patient and family for formal MH testing.",
+    cites: ["AAGBI MH 2020","Peck & Hill Ch.7"],
+  },
+];
 const VolatileAgentsTopic = () => {
   return (
     <TopicTemplate
@@ -35,6 +66,7 @@ const VolatileAgentsTopic = () => {
         { text: "Sevoflurane: non-pungent, ideal for inhalational induction. Desflurane: fastest recovery but pungent, needs heated vaporizer. Isoflurane: slower, good muscle relaxation.", cites: ["Peck & Hill Ch.4"] },
         { text: "Modern targets include GABAA receptors, glycine receptors, two-pore K⁺ channels (TREK/TASK), and NMDA receptors.", cites: ["BJA Educ 2014"] },
       ]}
+      workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
         diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },

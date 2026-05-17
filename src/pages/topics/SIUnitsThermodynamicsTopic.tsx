@@ -59,6 +59,18 @@ const SIUnitsThermodynamicsTopic = () => {
         workedExamples: { exams: [Exam.PRIMARY] },
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
+      sectionSources={{
+        objectives: [
+          "Cross & Plunkett Ch.1-2",
+          "Middleton Ch.1",
+          "Middleton Ch.8",
+        ],
+        keyPoints: [
+          "Cross & Plunkett Ch.1-2",
+          "Middleton Ch.1",
+          "Middleton Ch.8",
+        ],
+      }}
       keyPoints={[
         { text: "There are 7 SI base units: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), candela (cd)", cites: ["Cross & Plunkett Ch.1-2"] },
         { text: "Key derived units: Pascal (N/m²), Joule (N·m), Watt (J/s). Pressure conversions: 1 atm = 101.3 kPa = 760 mmHg", cites: ["Middleton Ch.8"] },

@@ -37,6 +37,22 @@ const VascularAnaesthesiaTopic = () => {
         objectives: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ AAA 2016",
+          "BJA Educ CEA 2015",
+          "ESVS AAA 2019",
+          "GALA 2008",
+          "RCRI",
+        ],
+        keyPoints: [
+          "BJA Educ AAA 2016",
+          "BJA Educ CEA 2015",
+          "ESVS AAA 2019",
+          "GALA 2008",
+          "RCRI",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">

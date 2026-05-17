@@ -376,6 +376,18 @@ const CardiacOutputMonitoringTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2014",
+          "BJA Educ 2018",
+          "BJA Educ 2005",
+        ],
+        keyPoints: [
+          "BJA Educ 2014",
+          "BJA Educ 2018",
+          "BJA Educ 2005",
+        ],
+      }}
       coreConcepts={<ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24"><CoreConcepts /></ExamSection>}
       diagrams={<Diagrams />}
       workedExamples={workedExamples}

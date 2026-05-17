@@ -129,6 +129,20 @@ const ARDSTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "ARDS Definition 2012",
+          "PROSEVA 2013",
+          "ARDSNet 2000",
+          "BJA Educ 2018",
+        ],
+        keyPoints: [
+          "ARDS Definition 2012",
+          "PROSEVA 2013",
+          "ARDSNet 2000",
+          "BJA Educ 2018",
+        ],
+      }}
       coreConcepts={
     <>
       <section className="space-y-6">

@@ -174,6 +174,20 @@ const TIVATopic = () => {
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2016",
+          "Schnider 1998",
+          "Marsh 1991",
+          "AAGBI TIVA",
+        ],
+        keyPoints: [
+          "BJA Educ 2016",
+          "Schnider 1998",
+          "Marsh 1991",
+          "AAGBI TIVA",
+        ],
+      }}
       keyPoints={[
         { text: "TCI pumps use 3-compartment models to predict Cp and Ce — V1 determines bolus size, clearance determines maintenance rate", cites: ["AAGBI TIVA"] },
         { text: "Marsh: weight-only, V1 scales with TBW, ke0 0.26 min⁻¹ — risk of overdose in obese, slower Ce equilibration", cites: ["Marsh 1991"] },

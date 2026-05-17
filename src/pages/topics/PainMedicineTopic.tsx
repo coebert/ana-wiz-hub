@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { painMedicineQuestions } from "@/data/quizzes";
@@ -60,6 +61,18 @@ const PainMedicineTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2018",
+          "IASP 2020",
+          "Faculty of Pain Medicine",
+        ],
+        keyPoints: [
+          "BJA Educ 2018",
+          "IASP 2020",
+          "Faculty of Pain Medicine",
+        ],
+      }}
       keyPoints={[
         { text: "Multimodal analgesia reduces opioid consumption — paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine", cites: ["BJA Educ 2018"] },
         { text: "IV magnesium reduces 24-h opioid use ~25% (Cochrane 2013); IV lidocaine — strongest evidence in open abdominal surgery (Weibel 2018), LOLIPOP 2024 questioned benefit in laparoscopic surgery", cites: ["Faculty of Pain Medicine"] },
@@ -78,8 +91,7 @@ const PainMedicineTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <section className="space-y-6">
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pain Pathways & Classification</h2>
+        <CollapsibleSubsection title="Pain Pathways & Classification" defaultOpen>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Pain is classified as nociceptive (somatic/visceral), neuropathic (nerve damage), or nociplastic (central sensitisation without tissue/nerve damage).
           </p>
@@ -93,12 +105,11 @@ const PainMedicineTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Periaqueductal grey (PAG) → rostral ventromedial medulla (RVM) → dorsal horn. Serotonergic and noradrenergic inhibition. Gate control theory (Melzack & Wall).</p>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         <DorsalHornSynapseDiagram />
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Multimodal Analgesia (WHO Ladder & Beyond)</h2>
+        <CollapsibleSubsection title="Multimodal Analgesia (WHO Ladder & Beyond)">
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -119,10 +130,9 @@ const PainMedicineTopic = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">IV Magnesium as an Analgesic</h2>
+        <CollapsibleSubsection title="IV Magnesium as an Analgesic">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Magnesium is a physiological NMDA receptor antagonist and calcium channel blocker with established analgesic properties when used perioperatively.
           </p>
@@ -155,10 +165,9 @@ const PainMedicineTopic = () => {
               <li>Most consistent benefit in orthopaedic, abdominal, and cardiac surgery. Limited evidence for ambulatory surgery.</li>
             </ul>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">IV Lidocaine (Lignocaine) as an Analgesic</h2>
+        <CollapsibleSubsection title="IV Lidocaine (Lignocaine) as an Analgesic">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Systemic IV lidocaine infusion has emerged as a key component of multimodal, opioid-sparing analgesia, particularly in abdominal surgery where regional anaesthesia is not possible.
           </p>
@@ -193,10 +202,9 @@ const PainMedicineTopic = () => {
               <li><strong className="text-foreground">Consensus:</strong> Strongest evidence in open abdominal surgery. Less convincing for laparoscopic, orthopaedic, or breast surgery. ERAS protocols include IV lidocaine as an option when epidural not feasible.</li>
             </ul>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Neuropathic Pain Management</h2>
+        <CollapsibleSubsection title="Neuropathic Pain Management">
           <div className="space-y-2">
             {[
               { line: "First-line", agents: "Amitriptyline 10–75 mg ON, duloxetine 60 mg OD, pregabalin 75–300 mg BD, gabapentin 300–1200 mg TDS" },
@@ -210,10 +218,9 @@ const PainMedicineTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Chronic Pain — General Principles</h2>
+        <CollapsibleSubsection title="Chronic Pain — General Principles">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Chronic pain is defined (IASP / ICD-11, 2019) as pain that persists or recurs for &gt;3 months. It is now formally recognised as a <strong>disease in its own right</strong> when it cannot be better explained by another condition (chronic primary pain) — encompassing fibromyalgia, chronic primary low back pain, primary headaches and CRPS. The dominant biological substrate is <strong>central sensitisation / nociplastic pain</strong>: amplified central nervous system processing without ongoing tissue or nerve damage. Genetic predisposition, adverse childhood experiences, sleep disruption, mood disorder and autonomic dysregulation all contribute.
           </p>
@@ -226,7 +233,7 @@ const PainMedicineTopic = () => {
               Pain experience = biological inputs (peripheral &amp; central nociception, inflammation, autonomic) × psychological factors (catastrophising, fear-avoidance, depression, PTSD) × social context (work, relationships, deprivation, healthcare access). Treating any single domain in isolation typically fails — hence the central role of multidisciplinary teams.
             </p>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         <DiagramSection
           title="Nociceptive vs Neuropathic vs Nociplastic — Mechanism Comparison"
@@ -239,8 +246,7 @@ const PainMedicineTopic = () => {
           <PainMechanismsDiagram />
         </DiagramSection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Specialised Multidisciplinary Pain Teams</h2>
+        <CollapsibleSubsection title="Specialised Multidisciplinary Pain Teams">
           <p className="text-muted-foreground leading-relaxed mb-3">
             UK chronic-pain services are organised in tiers per the <strong>British Pain Society / FPM Core Standards (2021)</strong> and the <strong>NHS Long Term Plan</strong>. Specialised pain MDTs offer the best functional outcomes for complex, refractory or high-impact chronic pain.
           </p>
@@ -288,10 +294,9 @@ const PainMedicineTopic = () => {
               The <strong>FPM "Opioids Aware"</strong> resource and the <strong>Royal College "Painkillers Don't Exist"</strong> campaign emphasise that long-term opioids are rarely effective for chronic non-cancer pain and carry harms (hyperalgesia, hormonal suppression, falls, dependence). Specialist MDTs increasingly run dedicated opioid-tapering clinics; doses &gt;120 mg oral morphine equivalents per day rarely confer additional benefit and should prompt review.
             </p>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fibromyalgia</h2>
+        <CollapsibleSubsection title="Fibromyalgia">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Prevalence ~2–4%, F:M ~3:1. Now diagnosed using the <strong>2016 revised ACR criteria</strong>: Widespread Pain Index (WPI) ≥7 + Symptom Severity Score (SSS) ≥5 (or WPI 4–6 + SSS ≥9) for ≥3 months, with no condition that better explains the pain. The original 1990 tender-point criteria are obsolete.
           </p>
@@ -317,10 +322,9 @@ const PainMedicineTopic = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Myalgic Encephalomyelitis / Chronic Fatigue Syndrome (ME/CFS)</h2>
+        <CollapsibleSubsection title="Myalgic Encephalomyelitis / Chronic Fatigue Syndrome (ME/CFS)">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Diagnosed clinically (<strong>NICE NG206, 2021</strong>; IOM 2015 criteria) by ≥3 months of <strong>debilitating fatigue + post-exertional malaise (PEM) + unrefreshing sleep + cognitive dysfunction or orthostatic intolerance</strong>, after exclusion of alternative diagnoses. Often follows a viral illness; long-COVID overlaps clinically and may share mechanisms.
           </p>
@@ -347,10 +351,9 @@ const PainMedicineTopic = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Complex Regional Pain Syndrome (CRPS)</h2>
+        <CollapsibleSubsection title="Complex Regional Pain Syndrome (CRPS)">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Disabling regional pain syndrome typically following a (often minor) limb injury or surgery. <strong>CRPS-I</strong> = no identifiable nerve lesion (~90%); <strong>CRPS-II</strong> = following identifiable peripheral nerve injury. Female:male ~3–4:1, peak 40–60 yr. Diagnosed clinically using the <strong>Budapest criteria (Harden 2010, IASP-endorsed)</strong>:
           </p>
@@ -387,10 +390,9 @@ const PainMedicineTopic = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cancer Pain Management</h2>
+        <CollapsibleSubsection title="Cancer Pain Management">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Pain affects ~55% of patients during cancer treatment and ~66% of those with advanced disease (van den Beuken-van Everdingen, 2016). Despite decades of guidance it remains <strong>under-treated in around one-third</strong> of patients (the "pain treatment gap"). Modern cancer pain care is mechanism-based, multimodal, integrated with oncology and palliative care, and increasingly involves interventional techniques alongside opioids.
           </p>
@@ -576,10 +578,9 @@ const PainMedicineTopic = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord Stimulation (SCS) — Neuromodulation</h2>
+        <CollapsibleSubsection title="Spinal Cord Stimulation (SCS) — Neuromodulation">
           <p className="text-muted-foreground leading-relaxed mb-3">
             SCS delivers low-voltage electrical pulses to the dorsal columns via an epidural electrode array, modulating the gate (Melzack &amp; Wall) and supraspinal pain networks. NICE TA159 (2008, reaffirmed) recommends SCS for chronic neuropathic pain &gt; 6 months despite conventional therapy after a successful percutaneous trial. Strongest evidence: <strong>failed back surgery syndrome (FBSS)</strong> with predominant radicular leg pain (PROCESS trial, Kumar 2007), <strong>complex regional pain syndrome (CRPS)</strong>, refractory angina, and painful diabetic neuropathy (SENZA-PDN, Petersen 2021). Newer waveforms — 10 kHz high-frequency (SENZA-RCT, Kapural 2015), burst (DeRidder), and closed-loop ECAP-controlled (Mekhail 2020) — provide sub-perception analgesia without paraesthesia.
           </p>
@@ -672,10 +673,9 @@ const PainMedicineTopic = () => {
               <li>Document device make, model, serial number, programming parameters in the anaesthetic record</li>
             </ul>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Nerve Root Injections (Selective Nerve Root Block &amp; Transforaminal Epidural Steroid Injection)</h2>
+        <CollapsibleSubsection title="Nerve Root Injections (Selective Nerve Root Block &amp; Transforaminal Epidural Steroid Injection)">
           <p className="text-muted-foreground leading-relaxed mb-3">
             A nerve root injection deposits local anaesthetic ± corticosteroid around a specific spinal nerve as it traverses the intervertebral foramen. It is used <strong>diagnostically</strong> (to confirm a single radicular pain generator before surgery or radiofrequency) and <strong>therapeutically</strong> (to relieve radicular pain from disc prolapse, foraminal stenosis, or post-surgical scarring). Evidence is strongest for short- to medium-term relief of acute lumbosacral radiculopathy (NICE NG59 — consider for severe sciatica when surgery is being weighed); chronic and axial low back pain respond less reliably (FDA black-box on particulate steroids in cervical injections, 2014).
           </p>
@@ -783,7 +783,7 @@ const PainMedicineTopic = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[

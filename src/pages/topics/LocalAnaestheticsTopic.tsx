@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { PKaDiagram } from "@/components/diagrams/PKaDiagram";
 import { HendersonHasselbalchDiagram } from "@/components/diagrams/HendersonHasselbalchDiagram";
@@ -9,6 +10,36 @@ import PropofolLidocaineMechanismDiagram from "@/components/diagrams/PropofolLid
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Managing severe local anaesthetic systemic toxicity (LAST)",
+    scenario:
+      "After an ultrasound-guided axillary block with 30 mL of 0.5% bupivacaine, the patient develops perioral tingling, agitation, then a generalised seizure followed by VT and cardiovascular collapse. Walk through your management.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Call for help and the LAST trolley. Stop injecting LA immediately. Manage airway and ventilate with 100% O₂ — hypoxia and acidosis worsen toxicity.</li>
+          <li>Terminate the seizure: small-dose benzodiazepine (midazolam 1–2 mg) preferred. Avoid propofol if cardiovascularly unstable.</li>
+          <li>Start ALS if pulseless. CPR may need to be prolonged (&gt;60 min) because bupivacaine binds avidly to sodium channels.</li>
+          <li>Give 20% lipid emulsion (Intralipid): 1.5 mL/kg bolus over 1 min then 15 mL/kg/h infusion. Repeat bolus every 5 min up to 3 times if circulation not restored; double the infusion rate if BP remains low. Max cumulative dose 12 mL/kg.</li>
+          <li>Modify ALS drugs: reduce adrenaline to ≤1 µg/kg boluses; avoid vasopressin, calcium channel blockers, β-blockers, and lidocaine.</li>
+          <li>Once stable, transfer to ICU for ≥12 h monitoring (delayed cardiotoxicity), serum amylase/lipase if propofol used, and report to NAP/LAST registry.</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Treating the patient with lidocaine — adds to toxicity.</li>
+            <li>Stopping CPR too early — recovery has been reported after &gt;60 min.</li>
+            <li>Using full-dose adrenaline — worsens arrhythmia in the bupivacaine-poisoned myocardium.</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Stop LA, secure airway with 100% O₂, suppress seizures with midazolam, start ALS (with reduced adrenaline ≤1 µg/kg, no lidocaine/vasopressin/calcium blockers), and give 20% lipid emulsion 1.5 mL/kg bolus then 15 mL/kg/h infusion. Continue CPR for ≥60 min if needed and admit to ICU for ≥12 h after ROSC.",
+    cites: ["AAGBI 2010","BJA Educ 2016"],
+  },
+];
 const LocalAnaestheticsTopic = () => {
   return (
     <TopicTemplate
@@ -37,6 +68,7 @@ const LocalAnaestheticsTopic = () => {
         { text: "LAST presents as CNS excitation then cardiovascular collapse. Treat with Intralipid 20% (1.5 mL/kg bolus then 15 mL/kg/h infusion).", cites: ["Peck & Hill Ch.8"] },
         { text: "Bupivacaine is most cardiotoxic due to slow dissociation from cardiac Na⁺ channels; ropivacaine is the safer S-enantiomer alternative.", cites: ["BJA Educ 2015"] },
       ]}
+      workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
         diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },

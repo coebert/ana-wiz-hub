@@ -57,6 +57,18 @@ const AcidBaseTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2015",
+          "Brandis",
+          "Power & Kam Ch.11",
+        ],
+        keyPoints: [
+          "BJA Educ 2015",
+          "Brandis",
+          "Power & Kam Ch.11",
+        ],
+      }}
       keyPoints={[
         { text: "Systematic approach: oxygenation → primary disorder → compensation → anion gap → delta ratio", cites: ["Power & Kam Ch.11"] },
         { text: "HAGMA: MUDPILES. Normal AG acidosis: renal tubular acidosis, diarrhoea, saline excess", cites: ["Brandis"] },

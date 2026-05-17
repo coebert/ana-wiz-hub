@@ -40,6 +40,18 @@ const ThoracicAnatomyTopic = () => {
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "Ellis & Feldman Ch.2",
+          "BJA Educ 2007",
+          "Power & Kam Ch.5",
+        ],
+        keyPoints: [
+          "Ellis & Feldman Ch.2",
+          "BJA Educ 2007",
+          "Power & Kam Ch.5",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">

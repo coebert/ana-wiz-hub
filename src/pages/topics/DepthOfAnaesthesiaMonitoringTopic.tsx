@@ -121,6 +121,20 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
+      sectionSources={{
+        objectives: [
+          "NAP5 2014",
+          "NICE DG6",
+          "BJA Educ 2014",
+          "Purdon et al. 2015",
+        ],
+        keyPoints: [
+          "NAP5 2014",
+          "NICE DG6",
+          "BJA Educ 2014",
+          "Purdon et al. 2015",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
       {/* Introduction */}

@@ -115,6 +115,36 @@ const PostopHighRiskIcuTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "Pearse 2006",
+          "NCEPOD 2011",
+          "CPOC 2020",
+          "NELA 2023",
+          "OPTIMISE 2014",
+          "INPRESS 2017",
+          "VISION 2017",
+          "EPOCH 2019",
+          "IMPROVE 2013",
+          "PrevAKI 2017",
+          "ABCDEF 2019",
+          "SORT",
+        ],
+        keyPoints: [
+          "Pearse 2006",
+          "NCEPOD 2011",
+          "CPOC 2020",
+          "NELA 2023",
+          "OPTIMISE 2014",
+          "INPRESS 2017",
+          "VISION 2017",
+          "EPOCH 2019",
+          "IMPROVE 2013",
+          "PrevAKI 2017",
+          "ABCDEF 2019",
+          "SORT",
+        ],
+      }}
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>

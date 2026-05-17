@@ -109,6 +109,18 @@ const AntimicrobialsTopic = () => {
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
+      sectionSources={{
+        objectives: [
+          "Peck & Hill Ch.14",
+          "BNF",
+          "BJA Educ 2017",
+        ],
+        keyPoints: [
+          "Peck & Hill Ch.14",
+          "BNF",
+          "BJA Educ 2017",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <section className="space-y-8">

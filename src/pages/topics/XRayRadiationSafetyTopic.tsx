@@ -169,6 +169,22 @@ const XRayRadiationSafetyTopic = () => {
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
+      sectionSources={{
+        objectives: [
+          "IRR 2017",
+          "IR(ME)R 2017",
+          "BJA Educ Radiation 2016",
+          "ICRP 103",
+          "RCR Radiation 2020",
+        ],
+        keyPoints: [
+          "IRR 2017",
+          "IR(ME)R 2017",
+          "BJA Educ Radiation 2016",
+          "ICRP 103",
+          "RCR Radiation 2020",
+        ],
+      }}
       keyPoints={[
         { text: "Diagnostic X-rays are produced by bombarding a tungsten anode with electrons accelerated across a high-voltage (typically 50–150 kVp) tube — output is a bremsstrahlung continuum plus characteristic K-shell line emissions", cites: ["IRR 2017"] },
         { text: "kVp controls beam energy (penetration/quality); mAs controls beam quantity (number of photons) — together they determine dose and image contrast", cites: ["IR(ME)R 2017"] },

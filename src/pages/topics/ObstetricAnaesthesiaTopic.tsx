@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { obstetricAnaesthesiaQuestions } from "@/data/quizzes";
 import PlacentalDrugTransferDiagram from "@/components/diagrams/PlacentalDrugTransferDiagram";
@@ -48,8 +49,7 @@ const ObstetricAnaesthesiaTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6">
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Physiological Changes of Pregnancy</h2>
+        <CollapsibleSubsection title="Physiological Changes of Pregnancy" defaultOpen>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Pregnancy alters virtually every organ system, and the resulting changes shape every aspect of obstetric anaesthetic practice — from rapid desaturation on apnoea to exaggerated hypotension after neuraxial blockade and reduced local anaesthetic dose requirements. The table below summarises the changes by system alongside their anaesthetic implications.
           </p>
@@ -74,7 +74,7 @@ const ObstetricAnaesthesiaTopic = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
         <DiagramSection
           title="Pregnancy Physiology — Interactive Summary"
@@ -83,8 +83,7 @@ const ObstetricAnaesthesiaTopic = () => {
           <PregnancyPhysiologyDiagram />
         </DiagramSection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthesia for Caesarean Section</h2>
+        <CollapsibleSubsection title="Anaesthesia for Caesarean Section">
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Spinal (Gold Standard)</p>
@@ -95,10 +94,9 @@ const ObstetricAnaesthesiaTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Reserved for failed/contraindicated neuraxial, time-critical Cat 1, or maternal refusal. RSI with cricoid pressure. Significant airway and aspiration risk — failed intubation ~1:300, awareness 1:670 (NAP5).</p>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">GA for Category 1 LSCS — Step-by-Step Conduct</h2>
+        <CollapsibleSubsection title="GA for Category 1 LSCS — Step-by-Step Conduct">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Category 1 caesarean = immediate threat to maternal/fetal life; decision-to-delivery interval (DDI) target &lt;30 min, with most units aiming for &lt;15 min. GA is chosen when there is no functioning epidural and there is insufficient time for spinal, when neuraxial is contraindicated (coagulopathy, sepsis at site, severe maternal cardiac disease, refusal), or when neuraxial has failed. The OAA/AAGBI 2020 guideline and MBRRACE reports emphasise team-based preparation and meticulous airway management.
           </p>
@@ -162,10 +160,9 @@ const ObstetricAnaesthesiaTopic = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Target MAC at Different Phases</h2>
+        <CollapsibleSubsection title="Target MAC at Different Phases">
           <p className="text-muted-foreground leading-relaxed mb-3">
             MAC requirement falls by ~25–40% in pregnancy (progesterone, β-endorphins). However, awareness risk is greatest in the brief pre-delivery period when opioids are usually withheld. The compromise is to run <strong>≥1.0 age-adjusted MAC of volatile from induction until delivery</strong>, accepting some uterine relaxation, then deepen further once the baby is out.
           </p>
@@ -187,10 +184,9 @@ const ObstetricAnaesthesiaTopic = () => {
             </table>
           </div>
           <p className="text-xs text-muted-foreground mt-2">MAC values quoted are age-adjusted; reduce further for elderly, frail, severe pre-eclampsia, magnesium therapy, or shock.</p>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Propofol vs Thiopentone — Evidence</h2>
+        <CollapsibleSubsection title="Propofol vs Thiopentone — Evidence">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Thiopentone was the historical default but global supply issues and familiarity have driven a shift to propofol in many UK units. The OAA/AAGBI 2020 guideline accepts <strong>either agent</strong>, provided the anaesthetist is experienced with the dose used.
           </p>
@@ -216,10 +212,9 @@ const ObstetricAnaesthesiaTopic = () => {
           <p className="text-sm text-muted-foreground mt-3">
             <strong>Bottom line:</strong> No outcome difference for mother or baby in head-to-head RCTs (Lucas 2013; Houthoff Khemlani 2018; Cochrane 2020). Choose the drug you can dose confidently. If using propofol, use ≥2 mg/kg (lean body weight, not actual) — under-dosing is the dominant awareness mechanism.
           </p>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">TIVA for Emergency LSCS</h2>
+        <CollapsibleSubsection title="TIVA for Emergency LSCS">
           <p className="text-muted-foreground leading-relaxed mb-3">
             TIVA (propofol + remifentanil TCI) is increasingly used for obstetric GA when volatile is undesirable — major PPH (uterine atony exacerbated by volatile), malignant hyperthermia susceptibility, severe asthma/bronchospasm, transfer/MRI environments, or anaesthetist preference.
           </p>
@@ -252,10 +247,9 @@ const ObstetricAnaesthesiaTopic = () => {
               <li>Always run <strong>BIS or Entropy</strong>; consider isolated forearm technique if very high awareness risk.</li>
             </ul>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Opioids on Induction — Pros &amp; Cons</h2>
+        <CollapsibleSubsection title="Opioids on Induction — Pros &amp; Cons">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Traditional UK practice has been to <em>withhold</em> opioids until after delivery to avoid neonatal respiratory depression. However, omission causes exaggerated hypertensive response to laryngoscopy — particularly dangerous in pre-eclampsia, cardiac disease, or raised ICP.
           </p>
@@ -282,10 +276,9 @@ const ObstetricAnaesthesiaTopic = () => {
           <p className="text-sm text-muted-foreground mt-3">
             <strong>Practical doses:</strong> alfentanil 10 µg/kg, fentanyl 1–2 µg/kg, or remifentanil 0.5–1 µg/kg over 30 s pre-induction. Always <em>warn the neonatal team</em>. Increasingly endorsed by OAA/AAGBI 2020 for high-risk groups.
           </p>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Rapid Sequence Spinal (RSS)</h2>
+        <CollapsibleSubsection title="Rapid Sequence Spinal (RSS)">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Described by <strong>Kinsella (2010)</strong> and now incorporated into OAA guidance, RSS is a streamlined spinal technique for Cat 1 LSCS where neuraxial is feasible but every minute matters. The aim is to avoid GA without significantly extending DDI.
           </p>
@@ -303,10 +296,9 @@ const ObstetricAnaesthesiaTopic = () => {
           <p className="text-sm text-muted-foreground mt-3">
             <strong>Evidence:</strong> Kinsella's case series (n=25) and subsequent UK audits show RSS achieves anaesthesia in 5–7 min with high success and no documented intra-operative pain when applied to selected patients. <strong>Kathirgamanathan 2013</strong> and the <strong>RSS Delphi consensus (Mushambi/Kinsella 2017)</strong> support its use as a recognised technique. No RCT vs GA exists; choice should be patient- and team-specific.
           </p>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Suggested Neuraxial Doses by Indication</h2>
+        <CollapsibleSubsection title="Suggested Neuraxial Doses by Indication">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Doses below are typical UK practice for an average-sized parturient; titrate down for short stature, severe pre-eclampsia, or cardiac disease. Always check local protocols.
           </p>
@@ -341,10 +333,9 @@ const ObstetricAnaesthesiaTopic = () => {
           <p className="text-xs text-muted-foreground mt-2">
             Always: aspirate before injection, give as fractionated dose, monitor BP/HR continuously, have vasopressor and induction drugs immediately available, and confirm block height with cold/pinprick to T4 (or appropriate target) before incision. For epidural top-up the "<strong>20:20</strong> rule" — 20 ml lidocaine mix taking ~20 min — is a useful aide-mémoire; use 2% lidocaine + adrenaline + bicarbonate for fastest onset.
           </p>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Obstetric Emergencies</h2>
+        <CollapsibleSubsection title="Obstetric Emergencies">
           <div className="space-y-3">
             {[
               { emergency: "Major Obstetric Haemorrhage", key: "Antepartum (placenta praevia, abruption) or postpartum (uterine atony — commonest cause). Massive transfusion protocol. Uterotonic escalation: oxytocin → ergometrine → carboprost → misoprostol. Surgical: B-Lynch suture, balloon tamponade, hysterectomy." },
@@ -358,10 +349,9 @@ const ObstetricAnaesthesiaTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Obstetric Medicine &amp; Labour Management for the Anaesthetist</h2>
+        <CollapsibleSubsection title="Obstetric Medicine &amp; Labour Management for the Anaesthetist">
           <p className="text-muted-foreground leading-relaxed mb-3">
             A working knowledge of antenatal medicine and the obstetric conduct of labour underpins safe anaesthetic decision-making — it dictates timing of neuraxial blockade, choice of induction agent, vasopressor strategy, transfusion thresholds and post-partum disposition. The summary below is curated from MBRRACE-UK reports, NICE NG121/NG133/NG3, RCOG Green-top guidelines and the OAA/AAGBI guidance.
           </p>
@@ -428,10 +418,9 @@ const ObstetricAnaesthesiaTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Auto-transfusion ↑CO ~60–80% in first 10 min — risk of pulmonary oedema in cardiac/PET. Continue MgSO₄ 24 h post-delivery in severe PET. Restart LMWH 6–12 h post-delivery (later after PPH or epidural removal). Early mobilisation; analgesia ladder paracetamol + NSAID (avoid in severe PET / renal impairment) + opioid PRN.</p>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Labour Analgesia</h2>
+        <CollapsibleSubsection title="Labour Analgesia">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Epidural analgesia is the gold standard for labour pain. Low-dose combined spinal-epidural (CSE) provides rapid onset with minimal motor block. Remifentanil PCA is the principal IV alternative when neuraxial analgesia is contraindicated, declined or has failed.
           </p>
@@ -445,10 +434,9 @@ const ObstetricAnaesthesiaTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Bolus 30–40 µg, lockout 2 min, no background infusion. Requires 1:1 midwifery, continuous SpO₂ + capnography (or apnoea alarm), supplemental O₂ available, and naloxone at the bedside.</p>
             </div>
           </div>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Remifentanil PCA for Labour Analgesia</h2>
+        <CollapsibleSubsection title="Remifentanil PCA for Labour Analgesia">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Remifentanil is an ultra-short-acting μ-opioid agonist metabolised by non-specific plasma and tissue esterases (context-sensitive half-time ~3–4 min, independent of duration). Its rapid onset (≈30–60 s) and offset match the temporal profile of a uterine contraction better than any other systemic opioid, making it the preferred IV labour analgesic when an epidural is not possible. The RemiPCA SAFE Network registry and the UK <em>RESPITE</em> RCT (Wilson 2018) have defined contemporary practice.
           </p>
@@ -552,10 +540,9 @@ const ObstetricAnaesthesiaTopic = () => {
             </table>
           </div>
           <p className="text-xs text-muted-foreground mt-2">Evidence: <em>RESPITE</em> (Wilson, Lancet 2018) — remifentanil PCA halved epidural conversion vs pethidine but did not match epidural for pain relief; RemiPCA SAFE Network reports rare but real maternal apnoea events, all preventable with strict monitoring (Stocki 2014; Van de Velde 2016).</p>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Labour &amp; Delivery After Intra-Uterine Fetal Death</h2>
+        <CollapsibleSubsection title="Labour &amp; Delivery After Intra-Uterine Fetal Death">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Intra-uterine fetal death (IUFD) is defined as fetal death in utero from ≥24 weeks' gestation (UK; WHO ≥28 weeks). It complicates ~1 in 200 UK pregnancies (MBRRACE). Vaginal delivery — usually after mifepristone priming and misoprostol induction — is preferred wherever maternally safe; caesarean is reserved for maternal indications (placenta praevia, prior classical CS, severe pre-eclampsia, sepsis with failed induction). The anaesthetist's priorities are <strong>compassionate analgesia</strong>, screening for the maternal complications that an in-utero death may herald (sepsis, DIC, pre-eclampsia, abruption), and safe neuraxial decision-making despite a possibly evolving coagulopathy.
           </p>
@@ -648,18 +635,16 @@ const ObstetricAnaesthesiaTopic = () => {
             <li>Anaesthetic debrief and a clear plan for any subsequent pregnancy (high-risk clinic referral)</li>
           </ul>
           <p className="text-xs text-muted-foreground mt-3">Sources: RCOG Green-top Guideline 55 (Late Intrauterine Fetal Death and Stillbirth); MBRRACE-UK Saving Lives, Improving Mothers' Care; OAA guidance on anaesthesia for the obstetric patient with coagulopathy.</p>
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Placental Drug Transfer</h2>
+        <CollapsibleSubsection title="Placental Drug Transfer">
           <p className="text-muted-foreground leading-relaxed mb-3">
             The placenta is a lipid bilayer; drugs cross by passive diffusion governed by Fick's law. Four physicochemical properties determine transfer — molecular weight, lipid solubility, protein binding and degree of ionisation. The interactive plot below shows where common anaesthetic drugs sit.
           </p>
           <PlacentalDrugTransferDiagram />
-        </div>
+        </CollapsibleSubsection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postpartum Bladder, Bowel & Lower-Limb Neurological Symptoms After Neuraxial Block</h2>
+        <CollapsibleSubsection title="Postpartum Bladder, Bowel & Lower-Limb Neurological Symptoms After Neuraxial Block">
           <p className="text-muted-foreground leading-relaxed mb-3">
             New neurological symptoms after labour are common (transient deficits ~1 in 100–200 deliveries) but persistent neuraxial injury is rare (~1 in 24,000–50,000 per NAP3). Most postpartum nerve injuries are <strong>obstetric</strong> (compression/stretch from the fetal head, instrumental delivery, or lithotomy positioning) rather than caused by the epidural or spinal itself. The anaesthetist's role is structured assessment, exclusion of time-critical neuraxial pathology, and onward neurology/obstetric referral.
           </p>
@@ -779,7 +764,7 @@ const ObstetricAnaesthesiaTopic = () => {
           <p className="text-muted-foreground leading-relaxed text-sm italic">
             Reference: OAA/RCoA <em>Management of postpartum nerve injuries</em> (2023); NAP3 (RCoA, 2009); Wong et al., <em>Anesthesiology</em> 2003 — incidence of postpartum nerve injury 0.92%.
           </p>
-        </div>
+        </CollapsibleSubsection>
 
         <DiagramSection
           title="Interactive: Postpartum Leg Weakness Decision Tree"

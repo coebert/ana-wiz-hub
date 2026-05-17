@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { anticoagulantsQuiz } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
@@ -27,6 +28,36 @@ const doacData = [
   { drug: "Edoxaban", target: "Direct Factor Xa inhibitor", bioavail: "62%", halfLife: "10–14 h", renal: "50%", reversal: "Andexanet alfa / PCC", notes: "Once daily. Dose reduce if CrCl 15–50 mL/min or body weight ≤60 kg." },
 ];
 
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Peri-operative bridging for a patient on warfarin with a mechanical mitral valve",
+    scenario:
+      "A 62-year-old with a mechanical mitral valve (target INR 3.0) requires elective laparotomy for colorectal resection. He is on warfarin only. How do you plan peri-operative anticoagulation?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Stratify thrombotic risk: mechanical mitral valve = HIGH risk (annual thromboembolism without anticoagulation ~22%). Bridging is indicated.</li>
+          <li>Stop warfarin 5 days pre-op; check INR daily from day −3.</li>
+          <li>Start therapeutic LMWH (e.g. enoxaparin 1 mg/kg BD or 1.5 mg/kg OD) when INR falls below the target range — typically from day −3.</li>
+          <li>Give the last LMWH dose 24 h pre-op (BD regimen: omit evening dose 24 h before; OD regimen: give half-dose 24 h before).</li>
+          <li>On the day of surgery confirm INR &lt;1.5 (or &lt;1.3 for neuraxial). If INR still high, give IV vitamin K 1–2 mg or 4-factor PCC if urgent.</li>
+          <li>Restart LMWH 24 h post-op (48–72 h for high bleeding risk) and warfarin on the evening of surgery; continue LMWH until INR is therapeutic on two consecutive days.</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Bridging low-risk AF patients — modern guidance (BRIDGE trial) shows bridging causes more bleeding without thrombotic benefit.</li>
+            <li>Forgetting that mechanical valves cannot use DOACs as a substitute.</li>
+            <li>Resuming full-dose LMWH too early after major abdominal surgery — risk of bleeding.</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "This is a high-risk indication that requires bridging. Stop warfarin 5 days pre-op, start therapeutic LMWH when INR drops below the target range, omit LMWH 24 h pre-op, confirm INR <1.5 on the day, and resume LMWH 24 h post-op alongside warfarin until INR is back in range on two consecutive days.",
+    cites: ["AAGBI 2016","BJA Educ 2017"],
+  },
+];
 const AnticoagulantsTopic = () => {
   return (
     <TopicTemplate
@@ -55,6 +86,7 @@ const AnticoagulantsTopic = () => {
         { text: "Warfarin is teratogenic (warfarin embryopathy in T1). Heparin does not cross the placenta.", cites: ["NICE NG89"] },
         { text: "Neuraxial timing: LMWH prophylactic 12 h / therapeutic 24 h; DOACs 48–72 h; warfarin INR ≤1.4.", cites: ["BJA Educ 2015"] },
       ]}
+      workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
         diagrams: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },

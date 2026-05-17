@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { muscleRelaxantsQuiz } from "@/data/quizzes";
 import MuscleRelaxantStructures from "@/components/diagrams/MuscleRelaxantStructures";
@@ -9,6 +10,35 @@ import SugammadexDiagram from "@/components/diagrams/SugammadexDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Reversal choice after deep rocuronium block in a difficult airway",
+    scenario:
+      "After a CICO scenario, you successfully intubate but want to wake the patient. Rocuronium 1.2 mg/kg was given 4 minutes ago and TOF count is 0 (post-tetanic count 1). How will you reverse the block and why is sugammadex preferred over neostigmine here?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Assess depth: PTC 1 indicates intense (deep) neuromuscular block — neostigmine cannot reverse this depth (requires TOF count ≥2, ideally ≥4).</li>
+          <li>Choose sugammadex: a modified γ-cyclodextrin that encapsulates rocuronium (and vecuronium) 1:1, removing it from the neuromuscular junction within ~2–3 min regardless of depth.</li>
+          <li>Dose by depth: PTC 1–2 with no TOF = 16 mg/kg for immediate reversal; TOF count 1–2 = 4 mg/kg; routine reversal at reappearance of T2 = 2 mg/kg.</li>
+          <li>Confirm reversal objectively: TOF ratio ≥0.9 at the adductor pollicis before extubation. Clinical signs (head-lift, grip) are insufficient.</li>
+          <li>Counsel and document: sugammadex inactivates hormonal contraceptives for 7 days; rare anaphylaxis (~1:2500); avoid in severe renal impairment (eGFR &lt;30) where data are limited.</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Giving neostigmine at a deep block — ineffective and risks recurarisation.</li>
+            <li>Forgetting that re-paralysis after sugammadex needs a non-aminosteroid relaxant (e.g. cisatracurium) for 24 h or a much larger rocuronium dose.</li>
+            <li>Skipping objective TOF monitoring — clinical assessment misses residual paralysis.</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Use sugammadex 16 mg/kg — the only agent that reliably reverses deep rocuronium block (PTC 1). Confirm TOF ratio ≥0.9 before extubation. Counsel the patient about contraceptive failure for 7 days and choose cisatracurium if re-paralysis is needed within 24 h.",
+    cites: ["Peck & Hill Ch.10","BJA Educ 2019"],
+  },
+];
 const MuscleRelaxantsTopic = () => {
   return (
     <TopicTemplate
@@ -35,6 +65,7 @@ const MuscleRelaxantsTopic = () => {
         { text: "Sugammadex: encapsulates rocuronium/vecuronium. Can reverse profound block. 16 mg/kg for emergency reversal.", cites: ["Peck & Hill Ch.7"] },
         { text: "TOF ratio <0.9 = residual blockade. Quantitative neuromuscular monitoring is the standard of care.", cites: ["BJA Educ 2015"] },
       ]}
+      workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
         diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },

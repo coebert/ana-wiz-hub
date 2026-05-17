@@ -59,6 +59,18 @@ const StatisticsEBMTopic = () => {
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2016",
+          "Petrie & Sabin",
+          "BJA Educ 2015",
+        ],
+        keyPoints: [
+          "BJA Educ 2016",
+          "Petrie & Sabin",
+          "BJA Educ 2015",
+        ],
+      }}
       keyPoints={[
         { text: "A p-value is the probability of observing a result at least as extreme as the data, assuming the null hypothesis is true — NOT the probability the null is true", cites: ["BJA Educ 2016"] },
         { text: "Type I error (α): rejecting a true null (false positive). Type II error (β): failing to reject a false null. Power = 1 − β", cites: ["BJA Educ 2015"] },

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { vasoactiveAgentsQuiz } from "@/data/quizzes";
 import VasoactiveReceptorDiagram from "@/components/diagrams/VasoactiveReceptorDiagram";
@@ -187,13 +188,12 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         {/* Molecular structures support the receptor section */}
-        <div className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Molecular Structures of Catecholamines</h2>
+        <CollapsibleSubsection title="Molecular Structures of Catecholamines" defaultOpen>
           <p className="text-foreground/90 leading-relaxed mb-4">
             Subtle structural differences on the catechol ring and amine side-chain determine receptor selectivity, metabolism by COMT/MAO, and lipid solubility.
           </p>
           <VasoactiveStructures />
-        </div>
+        </CollapsibleSubsection>
 
         {/* ================= 4. INOTROPE MECHANISMS ================= */}
         <section className="mb-10">
@@ -248,19 +248,17 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         {/* Signalling diagram supports the mechanism table */}
-        <div className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Inotrope Signalling Pathways</h2>
+        <CollapsibleSubsection title="Inotrope Signalling Pathways">
           <InotropeSignallingDiagram />
-        </div>
+        </CollapsibleSubsection>
 
         {/* Interactive receptor diagram bridges receptors → individual agents */}
-        <div className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Interactive Receptor Selectivity</h2>
+        <CollapsibleSubsection title="Interactive Receptor Selectivity">
           <p className="text-foreground/90 leading-relaxed mb-4">
             Use this tool to visualise how receptor activity changes with dose for each agent — a useful bridge between receptor theory and the agent-by-agent profiles below.
           </p>
           <VasoactiveReceptorDiagram />
-        </div>
+        </CollapsibleSubsection>
 
         {/* ================= 5. INDIVIDUAL AGENTS — VASOPRESSORS ================= */}
         <section id="toc-vasopressors" className="mb-6 scroll-mt-24">

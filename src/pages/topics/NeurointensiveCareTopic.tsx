@@ -186,6 +186,18 @@ const NeurointensiveCareTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2018",
+          "BTF 2017",
+          "BJA Educ 2014",
+        ],
+        keyPoints: [
+          "BJA Educ 2018",
+          "BTF 2017",
+          "BJA Educ 2014",
+        ],
+      }}
       coreConcepts={
     <>
       <StickyTOC items={tocItems} />

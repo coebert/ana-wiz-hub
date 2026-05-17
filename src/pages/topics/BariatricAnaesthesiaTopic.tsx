@@ -35,6 +35,20 @@ const BariatricAnaesthesiaTopic = () => {
         objectives: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ Bariatric 2015",
+          "AAGBI Obesity 2015",
+          "STOP-BANG",
+          "SOBA 2022",
+        ],
+        keyPoints: [
+          "BJA Educ Bariatric 2015",
+          "AAGBI Obesity 2015",
+          "STOP-BANG",
+          "SOBA 2022",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">

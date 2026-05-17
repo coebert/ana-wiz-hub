@@ -48,6 +48,18 @@ const ElectricalSafetyTopic = () => {
         objectives: { exams: [Exam.PRIMARY] },
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2012",
+          "Cross & Plunkett Ch.14",
+          "Middleton Ch.16",
+        ],
+        keyPoints: [
+          "BJA Educ 2012",
+          "Cross & Plunkett Ch.14",
+          "Middleton Ch.16",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">

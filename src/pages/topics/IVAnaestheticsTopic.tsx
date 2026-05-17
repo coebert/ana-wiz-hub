@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { ivAnaestheticsQuiz } from "@/data/quizzes";
@@ -15,6 +16,36 @@ import { FlumazenilDiagram } from "@/components/diagrams/FlumazenilDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Designing a TIVA technique for a long spine case in a young patient",
+    scenario:
+      "A 28-year-old, 70 kg patient is having a 6-hour posterior spinal fusion with intraoperative neuromonitoring (motor and somatosensory evoked potentials). Plan a TIVA technique and outline the monitoring and risks.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Choose TIVA because volatile agents at &gt;0.5 MAC abolish motor evoked potentials. TIVA with propofol + remifentanil preserves SSEP/MEP signals.</li>
+          <li>Use TCI propofol (Schnider or Marsh; effect-site target 3–4 µg/mL) and TCI remifentanil (Minto; effect-site 3–6 ng/mL). Titrate to processed EEG (BIS 40–60).</li>
+          <li>Insert a dedicated, well-secured IV with anti-reflux/anti-siphon valves; pump alarms set; pump line visible throughout.</li>
+          <li>Avoid PRIS: keep propofol infusion &lt;4 mg/kg/h for &gt;48 h, ensure adequate carbohydrate and oxygen delivery, monitor lactate, CK, pH and triglycerides for long cases.</li>
+          <li>Plan emergence: stop remifentanil last to provide a smooth wake-up; pre-emptive long-acting analgesia (morphine, paracetamol, dexamethasone, regional/wound infiltration) given before remifentanil is stopped to prevent acute opioid-induced hyperalgesia.</li>
+          <li>Document: cumulative propofol dose, depth-of-anaesthesia trace, awareness check on emergence (AAGBI Safe TIVA standards).</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Running &gt;4 mg/kg/h propofol for prolonged surgery → PRIS.</li>
+            <li>Failing to bolus long-acting opioid before remi is stopped → severe acute pain and hyperalgesia.</li>
+            <li>Omitting depth-of-anaesthesia monitoring with TIVA — explicit recommendation in AAGBI safe-practice guideline.</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "TIVA with TCI propofol (Schnider, 3–4 µg/mL) + TCI remifentanil (Minto, 3–6 ng/mL), titrated to BIS 40–60, with secure dedicated IV access and processed EEG. Keep propofol <4 mg/kg/h, monitor for PRIS biochemistry on long cases, and load long-acting analgesia before stopping remifentanil. This preserves intraoperative MEP/SSEP signals where volatiles would not.",
+    cites: ["AAGBI 2018","Peck & Hill Ch.6"],
+  },
+];
 const IVAnaestheticsTopic = () => {
   return (
     <TopicTemplate
@@ -42,6 +73,7 @@ const IVAnaestheticsTopic = () => {
         { text: "TCI models: Marsh (weight-based), Schnider (age, weight, height, LBM), Eleveld (universal — neonates to elderly).", cites: ["Peck & Hill Ch.5"] },
         { text: "PRIS: >4 mg/kg/h for >48h — metabolic acidosis, rhabdomyolysis, cardiovascular collapse. Stop infusion, supportive care.", cites: ["BJA Educ 2014"] },
       ]}
+      workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
         diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },

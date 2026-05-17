@@ -139,6 +139,18 @@ const AkiRrtTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
+      sectionSources={{
+        objectives: [
+          "KDIGO 2012",
+          "BJA Educ 2018",
+          "NICE CG169",
+        ],
+        keyPoints: [
+          "KDIGO 2012",
+          "BJA Educ 2018",
+          "NICE CG169",
+        ],
+      }}
       coreConcepts={
     <>
       <StickyTOC items={tocItems} />

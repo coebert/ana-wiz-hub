@@ -58,6 +58,18 @@ const PlasticSurgeryTopic = () => {
         workedExamples: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2021",
+          "BAPRAS 2020",
+          "Curr Opin Anaesthesiol 2019",
+        ],
+        keyPoints: [
+          "BJA Educ 2021",
+          "BAPRAS 2020",
+          "Curr Opin Anaesthesiol 2019",
+        ],
+      }}
       keyPoints={[
         { text: "Free-flap surgery demands meticulous haemodynamic management — normotension, normovolaemia, normothermia to optimise flap perfusion", cites: ["BAPRAS 2020"] },
         { text: "Avoid vasopressors where possible; if needed, low-dose noradrenaline preferred over metaraminol/phenylephrine", cites: ["BJA Educ 2021"] },

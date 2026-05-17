@@ -48,6 +48,22 @@ const HeadNeckAnatomyTopic = () => {
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
+      sectionSources={{
+        objectives: [
+          "Ellis & Feldman Ch.5",
+          "Ellis & Feldman Ch.1",
+          "BJA Educ 2005",
+          "BJA Educ 2019",
+          "Power & Kam Ch.12",
+        ],
+        keyPoints: [
+          "Ellis & Feldman Ch.5",
+          "Ellis & Feldman Ch.1",
+          "BJA Educ 2005",
+          "BJA Educ 2019",
+          "Power & Kam Ch.12",
+        ],
+      }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-10 mb-10 [&>div]:scroll-mt-24">

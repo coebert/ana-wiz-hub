@@ -100,6 +100,18 @@ const RenalPhysiologyTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["RU_BK_02"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RU_BK_01"] },
       }}
+      sectionSources={{
+        objectives: [
+          "BJA Educ 2018",
+          "Power & Kam Ch.9",
+          "Ganong Ch.37-38",
+        ],
+        keyPoints: [
+          "BJA Educ 2018",
+          "Power & Kam Ch.9",
+          "Ganong Ch.37-38",
+        ],
+      }}
       keyPoints={[
         { text: "GFR ≈ 125 ml/min. Autoregulation maintains GFR over MAP 80–180 mmHg (myogenic + TGF).", cites: ["Ganong Ch.37-38"] },
         { text: "PCT reabsorbs 65-70% of filtered Na⁺, all glucose (SGLT2, Tm 375 mg/min), and 85% of HCO₃⁻.", cites: ["Power & Kam Ch.9"] },
