@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useId, useRef, useState, type KeyboardEvent, useMemo } from "react";
 import { BookOpen, ChevronLeft, ChevronRight, ExternalLink, Pause, Play, RotateCcw } from "lucide-react";
 import { DiagramFigure } from "./_shared/DiagramFigure";
 import { cascadePerf } from "./_dev/cascadePerf";
+import { useMotionPreference } from "@/contexts/MotionPreferenceContext";
 
 /**
  * Re-usable animated mechanism cascade.
@@ -71,20 +72,22 @@ export const MechanismCascadeDiagram = ({
   const tablistId = `${baseId}-steps`;
   const panelId = `${baseId}-panel`;
   const statusId = `${baseId}-status`;
-  // Respect prefers-reduced-motion: don't auto-advance for those users.
-  const prefersReducedMotion = useMemo(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  }, []);
+  // User-facing "Reduce motion" setting (falls back to OS prefers-reduced-motion).
+  const { reduceMotion } = useMotionPreference();
+
+  // Force-pause auto-advance whenever the user enables Reduce motion.
+  useEffect(() => {
+    if (reduceMotion && playing) setPlaying(false);
+  }, [reduceMotion, playing]);
 
   useEffect(() => {
-    if (!playing || prefersReducedMotion) return;
+    if (!playing || reduceMotion) return;
     const id = window.setInterval(
       () => setStep((s) => (s + 1) % steps.length),
       1800,
     );
     return () => window.clearInterval(id);
-  }, [playing, prefersReducedMotion, steps.length]);
+  }, [playing, reduceMotion, steps.length]);
 
   // --- Dev-only perf instrumentation (no-op in production builds) ---
   useEffect(() => {
@@ -226,10 +229,18 @@ export const MechanismCascadeDiagram = ({
             <button
               type="button"
               onClick={() => setPlaying((p) => !p)}
-              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
-              aria-label={playing ? "Pause animation" : "Play animation"}
+              disabled={reduceMotion}
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label={
+                reduceMotion
+                  ? "Auto-play disabled by Reduce motion setting"
+                  : playing
+                    ? "Pause animation"
+                    : "Play animation"
+              }
               aria-pressed={playing}
               aria-controls={panelId}
+              title={reduceMotion ? "Disabled by Reduce motion setting" : undefined}
             >
               {playing ? (
                 <Pause className="h-3 w-3" aria-hidden="true" focusable="false" />
@@ -302,13 +313,14 @@ export const MechanismCascadeDiagram = ({
         <div className="grid lg:grid-cols-[1fr,1fr] gap-4">
           <div className="rounded-lg border border-border bg-background p-3 flex items-center justify-center">
             {layout === "chain" ? (
-              <ChainSvg steps={steps} active={step} accentVar={accentVar} />
+              <ChainSvg steps={steps} active={step} accentVar={accentVar} reduceMotion={reduceMotion} />
             ) : (
               <RadialSvg
                 steps={steps}
                 active={step}
                 accentVar={accentVar}
                 centerLabel={centerLabel ?? ""}
+                reduceMotion={reduceMotion}
               />
             )}
           </div>
@@ -416,9 +428,10 @@ interface ChainSvgProps {
   steps: CascadeStep[];
   active: number;
   accentVar: string;
+  reduceMotion?: boolean;
 }
 
-const ChainSvg = ({ steps, active, accentVar }: ChainSvgProps) => {
+const ChainSvg = ({ steps, active, accentVar, reduceMotion = false }: ChainSvgProps) => {
   const nodeH = 50;
   const gap = 28;
   const width = 240;
@@ -484,7 +497,7 @@ const ChainSvg = ({ steps, active, accentVar }: ChainSvgProps) => {
                 {s.detail}
               </text>
             )}
-            {/* Pulse ring around active node */}
+            {/* Pulse ring around active node — suppressed when motion is reduced */}
             {isActive && (
               <rect
                 x={16}
@@ -494,11 +507,15 @@ const ChainSvg = ({ steps, active, accentVar }: ChainSvgProps) => {
                 rx={11}
                 fill="none"
                 stroke={accentVar}
-                strokeWidth="1"
-                opacity="0.5"
+                strokeWidth={reduceMotion ? 2 : 1}
+                opacity={reduceMotion ? 0.8 : 0.5}
               >
-                <animate attributeName="opacity" from="0.6" to="0" dur="1.4s" repeatCount="indefinite" />
-                <animate attributeName="stroke-width" from="1" to="4" dur="1.4s" repeatCount="indefinite" />
+                {!reduceMotion && (
+                  <>
+                    <animate attributeName="opacity" from="0.6" to="0" dur="1.4s" repeatCount="indefinite" />
+                    <animate attributeName="stroke-width" from="1" to="4" dur="1.4s" repeatCount="indefinite" />
+                  </>
+                )}
               </rect>
             )}
           </g>
@@ -517,9 +534,10 @@ interface RadialSvgProps {
   active: number;
   accentVar: string;
   centerLabel: string;
+  reduceMotion?: boolean;
 }
 
-const RadialSvg = ({ steps, active, accentVar, centerLabel }: RadialSvgProps) => {
+const RadialSvg = ({ steps, active, accentVar, centerLabel, reduceMotion = false }: RadialSvgProps) => {
   const size = 320;
   const cx = size / 2;
   const cy = size / 2;
@@ -593,14 +611,18 @@ const RadialSvg = ({ steps, active, accentVar, centerLabel }: RadialSvgProps) =>
               <circle
                 cx={p.x}
                 cy={p.y}
-                r={nodeR + 4}
+                r={nodeR + (reduceMotion ? 6 : 4)}
                 fill="none"
                 stroke={accentVar}
-                strokeWidth="1"
-                opacity="0.5"
+                strokeWidth={reduceMotion ? 2 : 1}
+                opacity={reduceMotion ? 0.8 : 0.5}
               >
-                <animate attributeName="opacity" from="0.6" to="0" dur="1.4s" repeatCount="indefinite" />
-                <animate attributeName="r" from={String(nodeR + 2)} to={String(nodeR + 14)} dur="1.4s" repeatCount="indefinite" />
+                {!reduceMotion && (
+                  <>
+                    <animate attributeName="opacity" from="0.6" to="0" dur="1.4s" repeatCount="indefinite" />
+                    <animate attributeName="r" from={String(nodeR + 2)} to={String(nodeR + 14)} dur="1.4s" repeatCount="indefinite" />
+                  </>
+                )}
               </circle>
             )}
           </g>

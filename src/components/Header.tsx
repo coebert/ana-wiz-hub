@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic, Pill } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
 import { SearchDialog } from "@/components/SearchDialog";
+import { ReduceMotionToggle } from "@/components/ReduceMotionToggle";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { Exam, ExamTag } from "@/data/curriculum";
 
@@ -134,6 +135,8 @@ export const Header = () => {
               <HandHeart className="h-3.5 w-3.5" />
               <span className="hidden xl:inline">Support</span>
             </a>
+
+            <ReduceMotionToggle />
 
             <button
               onClick={() => setSearchOpen(true)}
