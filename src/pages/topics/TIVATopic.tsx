@@ -187,6 +187,7 @@ const TIVATopic = () => {
           "Marsh 1991",
           "AAGBI TIVA",
         ],
+        workedExamples: ["Schnider 1998", "BJA Educ 2016"],
       }}
       keyPoints={[
         { text: "TCI pumps use 3-compartment models to predict Cp and Ce — V1 determines bolus size, clearance determines maintenance rate", cites: ["AAGBI TIVA"] },

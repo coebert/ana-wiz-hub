@@ -83,6 +83,7 @@ const IVAnaestheticsTopic = () => {
         objectives: ["BJA Educ 2014", "Peck & Hill Ch.5", "Miller Ch.26"],
         diagrams: ["BJA Educ 2014", "Peck & Hill Ch.5", "Miller Ch.26"],
         keyPoints: ["BJA Educ 2014", "Peck & Hill Ch.5", "Miller Ch.26"],
+        workedExamples: ["AAGBI 2018", "Peck & Hill Ch.6"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">

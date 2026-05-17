@@ -83,6 +83,7 @@ const CardiothoracicTopic = () => {
           "Kaplan's Cardiac",
           "BJA Educ 2015",
         ],
+        workedExamples: ["BJA Educ 2018", "BJA Educ 2015"],
       }}
       keyPoints={[
         { text: "CPB: heparin 300-400 u/kg, target ACT >480s, reverse with protamine 1mg:100u ratio", cites: ["Kaplan's Cardiac"] },

@@ -99,6 +99,7 @@ const AntiarrhythmicsTopic = () => {
           "Peck & Hill Ch.12",
           "Vaughan Williams",
         ],
+        workedExamples: ["Peck & Hill Ch.12", "BJA Educ 2015"],
       }}
       diagrams={<VaughanWilliamsAPDiagram />}
       coreConcepts={

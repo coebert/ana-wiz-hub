@@ -71,6 +71,7 @@ const PaediatricAnaesthesiaTopic = () => {
           "Sury et al.",
           "APAGBI 2020",
         ],
+        workedExamples: ["BJA Educ 2019", "APAGBI 2020"],
       }}
       keyPoints={[
         { text: "Neonatal cardiac output is rate-dependent — bradycardia is a haemodynamic emergency", cites: ["Sury et al."] },

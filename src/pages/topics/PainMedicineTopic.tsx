@@ -72,6 +72,7 @@ const PainMedicineTopic = () => {
           "IASP 2020",
           "Faculty of Pain Medicine",
         ],
+        workedExamples: ["Faculty of Pain Medicine", "IASP 2020"],
       }}
       keyPoints={[
         { text: "Multimodal analgesia reduces opioid consumption — paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine", cites: ["BJA Educ 2018"] },

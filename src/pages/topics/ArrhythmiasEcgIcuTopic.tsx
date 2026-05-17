@@ -92,6 +92,7 @@ const ArrhythmiasEcgIcuTopic = () => {
           "TTM2 2021",
           "ACC/AHA/HRS 2017",
         ],
+        workedExamples: ["BJA Educ 2018", "ESC AF 2020"],
       }}
       keyPoints={[
         { text: "Apply the same 8-step ECG analysis (rate · rhythm · P · PR · QRS · ST/T · QT · compare) to every strip — speed comes from consistency, not shortcuts", cites: ["ERC/ESICM 2021 Post-Resus"] },

@@ -142,6 +142,7 @@ const ARDSTopic = () => {
           "ARDSNet 2000",
           "BJA Educ 2018",
         ],
+        workedExamples: ["PROSEVA 2013", "ARDS Definition 2012", "BJA Educ 2018"],
       }}
       coreConcepts={
     <>

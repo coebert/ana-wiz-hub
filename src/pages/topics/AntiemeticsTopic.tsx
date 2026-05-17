@@ -59,6 +59,7 @@ const AntiemeticsTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["Gan et al. 2020"],
+        keyPoints: ["Gan et al. 2020", "BJA Educ 2013", "Peck & Hill Ch.16"],
       }}
       keyPoints={[
         { text: "Apfel score: female, non-smoker, history of PONV, postoperative opioids — each adds ~20% risk", cites: ["Gan et al. 2020"] },

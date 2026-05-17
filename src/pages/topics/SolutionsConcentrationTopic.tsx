@@ -57,6 +57,7 @@ const SolutionsConcentrationTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["Severs 2015", "Lobo & Awad 2014"],
+        keyPoints: ["NICE CG174", "Severs 2015", "Cross & Plunkett Ch.3", "Lobo & Awad 2014"],
       }}
       keyPoints={[
         { text: "1% solution = 10 mg/mL. Adrenaline 1:1,000 = 1 mg/mL; 1:10,000 = 100 µg/mL", cites: ["NICE CG174"] },

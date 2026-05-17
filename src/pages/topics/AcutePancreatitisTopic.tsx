@@ -151,6 +151,7 @@ const AcutePancreatitisTopic = () => {
           "BJA Educ 2018",
           "BSG 2024",
         ],
+        workedExamples: ["IAP/APA 2013", "Atlanta 2012", "WATERFALL 2022"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">

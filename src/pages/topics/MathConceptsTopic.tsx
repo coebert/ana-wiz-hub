@@ -59,6 +59,8 @@ const MathConceptsTopic = () => {
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.1"],
+        workedExamples: ["Peck & Hill Appendix", "Middleton Appendix"],
+        keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Appendix", "Middleton Appendix"],
       }}
       keyPoints={[
         { text: "Linear (y = kx): Ohm's law, laminar flow, Beer-Lambert — direct proportionality", cites: ["Cross & Plunkett Ch.1"] },

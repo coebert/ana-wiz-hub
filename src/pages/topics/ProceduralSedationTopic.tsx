@@ -64,6 +64,7 @@ const ProceduralSedationTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["DAS Awake Tracheal Intubation 2020", "BSG Endoscopy Sedation 2023"],
+        keyPoints: ["AAGBI/RCoA 2021", "AoMRC 2013", "ASA 2019", "BJA Educ 2021", "DAS ATI 2020", "BSG 2023"],
       }}
       keyPoints={[
         { text: "ASA continuum: minimal (anxiolysis) → moderate (conscious) → deep → general anaesthesia. The depth achieved — not the drug used — defines the level", cites: ["AAGBI/RCoA 2021"] },

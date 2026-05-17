@@ -96,6 +96,7 @@ const AnticoagulantsTopic = () => {
         objectives: ["BJA Educ 2015", "NICE NG89", "BSH 2011"],
         diagrams: ["BJA Educ 2015", "NICE NG89"],
         keyPoints: ["BJA Educ 2015", "NICE NG89", "BSH 2011"],
+        workedExamples: ["AAGBI 2016", "BJA Educ 2017"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">

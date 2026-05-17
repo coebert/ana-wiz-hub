@@ -141,6 +141,7 @@ const SepsisTopic = () => {
           "SSC 2021",
           "BJA Educ 2019",
         ],
+        workedExamples: ["Sepsis-3 2016", "SSC 2021"],
       }}
       coreConcepts={
     <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">

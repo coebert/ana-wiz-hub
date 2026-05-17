@@ -70,6 +70,7 @@ const InterventionalRadiologyTopic = () => {
           "ESUR 2011",
           "ACR Sedation 2017",
         ],
+        workedExamples: ["AAGBI Remote Sites 2023", "ACR Sedation 2017"],
       }}
       keyPoints={[
         { text: "IR suites are remote locations — apply AAGBI standards: full equipment, monitoring, capnography and trained assistance", cites: ["ESUR 2011"] },

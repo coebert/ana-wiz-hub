@@ -387,6 +387,7 @@ const CardiacOutputMonitoringTopic = () => {
           "BJA Educ 2018",
           "BJA Educ 2005",
         ],
+        workedExamples: ["BJA Educ 2018", "BJA Educ 2014", "BJA Educ 2005"],
       }}
       coreConcepts={<ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24"><CoreConcepts /></ExamSection>}
       diagrams={<Diagrams />}

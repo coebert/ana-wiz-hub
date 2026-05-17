@@ -57,6 +57,7 @@ const OxidationReductionTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["Wright 1999 (MetHb)", "BJA Educ 2010"],
+        keyPoints: ["Halliwell & Gutteridge", "Wright 1999 (MetHb)", "Cross & Plunkett Ch.3", "BJA Educ 2010"],
       }}
       keyPoints={[
         { text: "OIL RIG: Oxidation Is Loss, Reduction Is Gain (of electrons). Always occur together", cites: ["Halliwell & Gutteridge"] },

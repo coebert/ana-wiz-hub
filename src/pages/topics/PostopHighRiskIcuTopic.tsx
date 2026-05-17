@@ -144,6 +144,7 @@ const PostopHighRiskIcuTopic = () => {
           "ABCDEF 2019",
           "SORT",
         ],
+        workedExamples: ["Pearse 2006", "NCEPOD 2011", "CPOC 2020"],
       }}
       coreConcepts={
         <>

@@ -64,6 +64,7 @@ const PressureMeasurementTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["BJA Educ 2015"],
+        keyPoints: ["Al-Shaikh & Stacey Ch.19", "Cross & Plunkett Ch.7", "BJA Educ 2015"],
       }}
       keyPoints={[
         { text: "Pressure = Force/Area. SI unit is Pascal. Clinical units: mmHg, cmH₂O, kPa, bar.", cites: ["Al-Shaikh & Stacey Ch.19"] },

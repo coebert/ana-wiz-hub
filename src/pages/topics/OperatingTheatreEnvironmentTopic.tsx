@@ -60,6 +60,8 @@ const OperatingTheatreEnvironmentTopic = () => {
       }}
       sectionSources={{
         objectives: ["HTM 03-01", "AAGBI Theatre Safety 2008", "WHO Checklist 2009"],
+        workedExamples: ["HTM 03-01", "Lidwell 1982", "COSHH WAG 2020"],
+        keyPoints: ["HTM 03-01", "Lidwell 1982", "COSHH WAG 2020", "IEC 60601-1", "WHO Checklist 2009"],
       }}
       keyPoints={[
         { text: "Theatre complex is zoned protective → clean → aseptic/sterile, with a positive-pressure cascade (theatre +25 Pa → corridor 0 Pa) to drive airflow OUTWARDS", cites: ["HTM 03-01"] },

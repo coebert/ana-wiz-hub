@@ -500,6 +500,7 @@ const CardiacArrestPostResusTopic = () => {
           "ELSO Guidelines 2020",
           "BJA Educ Neuroprog 2018",
         ],
+        workedExamples: ["INCEPTION 2023", "Prague OHCA 2022", "ARREST 2020", "TTM 2013"],
       }}
       coreConcepts={coreConcepts}
       diagrams={diagrams}

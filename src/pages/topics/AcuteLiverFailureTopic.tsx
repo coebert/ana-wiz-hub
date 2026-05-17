@@ -140,6 +140,7 @@ const AcuteLiverFailureTopic = () => {
           "King's Criteria",
           "BJA Educ 2019",
         ],
+        workedExamples: ["BJA Educ 2017", "King's Criteria", "BJA Educ 2019"],
       }}
       coreConcepts={
     <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">

@@ -75,6 +75,7 @@ const MuscleRelaxantsTopic = () => {
         objectives: ["BJA Educ 2015", "Peck & Hill Ch.7", "Fourth National Audit Project"],
         diagrams: ["BJA Educ 2015", "Peck & Hill Ch.7"],
         keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.7", "Fourth National Audit Project"],
+        workedExamples: ["Peck & Hill Ch.10", "BJA Educ 2019"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">

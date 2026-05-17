@@ -124,6 +124,7 @@ const PulmonaryHypertensionTopic = () => {
           "BJA Educ PH 2017",
           "AHA PH 2018",
         ],
+        workedExamples: ["ESC/ERS PH 2022", "AHA PH 2018"],
       }}
       coreConcepts={
         <>
