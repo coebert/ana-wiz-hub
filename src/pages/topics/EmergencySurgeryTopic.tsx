@@ -105,6 +105,9 @@ const EmergencySurgeryTopic = () => {
                 </div>
               ))}
             </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <NCEPODClassificationDiagram />
+            </div>
           </div>
 
           <div>
