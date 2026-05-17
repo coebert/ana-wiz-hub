@@ -15,6 +15,7 @@ import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodia
 import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
 import { eegTraceContent, postArrestProgContent } from "@/components/diagrams/ecgExpandedContent";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const tocItems = [
   { id: "overview", label: "Overview & chain of survival", group: "Background" },
