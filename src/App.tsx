@@ -380,6 +380,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
     </AuthProvider>
+    </MotionPreferenceProvider>
     </ExamFilterProvider>
     </ProgressProvider>
   </QueryClientProvider>
