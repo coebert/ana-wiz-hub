@@ -141,7 +141,7 @@ const BrachialPlexusTopic = () => {
           <ExamSection id="organisation" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Anatomy"]}>
             <CollapsibleSubsection title="Organisation: Roots → Trunks → Divisions → Cords → Branches" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Formed by ventral rami of C5–T1. Mnemonic: "Robert Taylor Drinks Cold Beer" (Roots, Trunks, Divisions, Cords, Branches).
+              Formed by ventral rami of C5–T1. Mnemonic: "Robert Taylor Drinks Cold Beer" (Roots, Trunks, Divisions, Cords, Branches).<Cite topicId="brachial-plexus" labels={["Ellis & Feldman Ch.8", "Miller Ch.46"]} />
             </p>
             <div className="space-y-2">
               {[
