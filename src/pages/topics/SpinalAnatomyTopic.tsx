@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ExamSection } from "@/components/ExamSection";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { spinalAnatomyQuestions } from "@/data/quizzes";
 import SpinalCordCrossSectionDiagram from "@/components/diagrams/SpinalCordCrossSectionDiagram";
 import SpinalCordAxialDiagram from "@/components/diagrams/SpinalCordAxialDiagram";
@@ -11,6 +12,34 @@ import EpiduralSpaceDiagram from "@/components/diagrams/EpiduralSpaceDiagram";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
 import { spinalFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
+
+const SpinalAnatomyTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Identifying a safe interspace for spinal anaesthesia",
+    scenario: "A 32-year-old G2P1 at 39 weeks requests a CSE for elective caesarean section. She is BMI 38 and palpation is difficult. How do you choose a safe interspace and confirm midline?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Position upright or lateral with maximal lumbar flexion to widen interspinous gaps</li>
+          <li>Identify Tuffier's line (intercristal): in adults this crosses L4 spinous process or the L3/4 interspace</li>
+          <li>In obese pregnancy the line may overlie L3 — go one space caudal (L3/4 or L4/5) to stay well below the L1/2 conus</li>
+          <li>If landmarks are unreliable use ultrasound paramedian sagittal oblique to identify laminae and count from the sacrum upward</li>
+          <li>Confirm midline by symmetrical paraspinous resistance and CSF flow free of paraesthesia</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Choosing a higher interspace because Tuffier's line is displaced cephalad in pregnancy and obesity — risk of conus injury</li>
+          <li>Mistaking the lower border of T12 for L1 on ultrasound count</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Use L3/4 or L4/5 with Tuffier's line as a starting estimate; in this BMI-38 parturient, confirm with ultrasound and count from the sacrum to stay caudal to the conus (L1/2).",
+    cites: ["BJA Educ 2006","Ellis & Feldman Ch.6"],
+  },
+];
 
 const SpinalAnatomyTopic = () => {
   // Synced selection between InteractiveDermatomeMap and DermatomeMyotomeDiagram —
@@ -26,6 +55,7 @@ const SpinalAnatomyTopic = () => {
       accentColor="text-anatomy"
       topicId="spinal-anatomy"
       topicTitle="Vertebral Column & Spinal Cord"
+      workedExamples={SpinalAnatomyTopicWorkedExamples}
       quizQuestions={spinalAnatomyQuestions}
       objectives={[
         "Describe the vertebral column and identify safe landmarks for neuraxial techniques",

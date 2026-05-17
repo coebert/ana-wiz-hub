@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -43,6 +44,35 @@ const keyPoints = [
 
 ];
 
+const NeurologicalDiseaseTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Anaesthesia for a patient with myasthenia gravis",
+    scenario: "A 45-year-old with generalised MG on pyridostigmine and prednisolone is for thymectomy. Plan induction, neuromuscular management and post-op disposition.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Pre-op: optimise MG (plasma exchange or IVIG if bulbar/respiratory weakness), continue pyridostigmine (omit morning dose to reduce secretions and unpredictable NMJ response), steroid cover</li>
+          <li>Predict difficult ventilation post-op: vital capacity &lt;2.9 L, disease &gt;6 y, pyridostigmine &gt;750 mg/day, COPD (Leventhal score)</li>
+          <li>Induction with TIVA (propofol + remifentanil) — avoids volatile-potentiated weakness</li>
+          <li>Avoid or markedly reduce non-depolarising NMB (sensitive — give 10–20% of normal dose, monitor TOF); suxamethonium is resistant (use 1.5–2 mg/kg) but recovery normal</li>
+          <li>Sugammadex preferred for reversal of rocuronium; plan elective post-op critical care for ventilatory observation</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Neostigmine reversal can precipitate cholinergic crisis in pyridostigmine-treated patients</li>
+          <li>Aminoglycosides, magnesium and high-dose steroids worsen weakness</li>
+          <li>Mistaking myasthenic crisis (weakness improved by edrophonium) for cholinergic crisis (weakness worsened)</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "TIVA, minimise non-depolarising NMB with TOF monitoring, sugammadex reversal, elective post-op HDU/ICU and continuation of immunosuppression.",
+    cites: ["BJA Educ 2011 myasthenia","Stoelting Co-existing Disease Ch.30"],
+  },
+];
+
 const NeurologicalDiseaseTopic = () => {
   return (
     <TopicTemplate
@@ -53,6 +83,7 @@ const NeurologicalDiseaseTopic = () => {
       accentColor="text-clinical"
       topicId="neurological-disease"
       topicTitle="Neurological Co-Existing Disease"
+      workedExamples={NeurologicalDiseaseTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={neurologicalDiseaseQuestions}

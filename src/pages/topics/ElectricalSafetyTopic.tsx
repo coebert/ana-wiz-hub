@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { electricalSafetyQuiz } from "@/data/quizzes";
 import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagram";
@@ -31,6 +32,35 @@ const keyPoints = [
   { text: "Biphasic defibrillators deliver equivalent efficacy at lower energy than monophasic.", cites: ["BJA Educ 2012"] },
 ];
 
+const ElectricalSafetyTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Microshock risk during central line insertion",
+    scenario: "A patient with a temporary pacing wire develops VF when a poorly-earthed infusion pump is connected. Explain the mechanism and the safety standards that should have prevented it.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Recognise microshock: very small currents (&gt;100 µA) reaching the myocardium directly via a conductive pathway can trigger VF — far below the macroshock threshold (100 mA)</li>
+          <li>The pacing wire bypasses the skin's high resistance, eliminating the safety margin of macroshock</li>
+          <li>Class CF (Cardiac Floating) equipment limits leakage to &lt;10 µA single fault, &lt;50 µA in fault conditions — mandatory for direct cardiac contact</li>
+          <li>Theatre supply uses an isolated (IT) system with line isolation monitor — single-fault tolerance, no large current return path</li>
+          <li>Equipotential earthing and regular electrical safety testing prevent leakage currents from summing across devices</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Class B / BF equipment is not safe for direct cardiac contact</li>
+          <li>RCDs protect against macroshock (mA range) but not microshock</li>
+          <li>Daisy-chained extension leads defeat isolated supply protection</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Microshock via the pacing wire. Use only CF-rated equipment for cardiac connections, maintain isolated theatre supply with line-isolation monitoring, and ensure regular electrical safety testing.",
+    cites: ["BJA Educ 2010 electrical safety","Davis & Kenny Ch.21"],
+  },
+];
+
 const ElectricalSafetyTopic = () => {
   return (
     <TopicTemplate
@@ -41,6 +71,7 @@ const ElectricalSafetyTopic = () => {
       accentColor="text-physics"
       topicId="electrical-safety"
       topicTitle="Electrical Safety"
+      workedExamples={ElectricalSafetyTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={electricalSafetyQuiz}

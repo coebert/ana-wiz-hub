@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -28,6 +29,35 @@ const keyPoints = [
 
 ];
 
+const RespiratoryDiseaseTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Anaesthesia for severe COPD undergoing thoracic surgery",
+    scenario: "A 68-year-old with FEV1 35% predicted and pCO₂ 6.8 kPa needs a right upper lobectomy. Plan pre-op assessment and intra-op ventilation strategy.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Pre-op: PFTs (FEV1, DLCO), V/Q split function, exercise testing (6MWT or CPET; VO₂ peak &lt;15 mL/kg/min = high risk), optimise bronchodilators, treat infection, smoking cessation</li>
+          <li>Calculate predicted post-op FEV1 (ppoFEV1) and ppoDLCO; &lt;40% predicts increased respiratory failure risk</li>
+          <li>Intra-op: thoracic epidural or paravertebral for analgesia, double-lumen tube with bronchoscopic position check, lung-protective OLV (Vt 4–6 mL/kg ideal body weight, PEEP 5, plateau &lt;25 cmH₂O, permissive hypercapnia)</li>
+          <li>Manage hypoxia on OLV stepwise: FiO₂, recruit dependent lung, CPAP to non-dependent, intermittent re-inflation, surgical pause if persistent</li>
+          <li>Post-op: HDU, regional analgesia, early mobilisation, chest physiotherapy, NIV if hypercapnic respiratory failure develops</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Excessive tidal volumes on OLV → acute lung injury (ARDS 4–8% post-pneumonectomy)</li>
+          <li>Volume overload — restrictive fluid strategy (1–2 mL/kg/h crystalloid)</li>
+          <li>Failing to plan analgesia for chest drain pain (intercostal block + opioids)</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Comprehensive risk assessment with ppoFEV1, multidisciplinary fitness review, lung-protective OLV (Vt 4–6 mL/kg IBW, PEEP, permissive hypercapnia), regional analgesia and HDU recovery.",
+    cites: ["BTS 2010 lung resection","BJA Educ 2017 OLV"],
+  },
+];
+
 const RespiratoryDiseaseTopic = () => {
   return (
     <TopicTemplate
@@ -38,6 +68,7 @@ const RespiratoryDiseaseTopic = () => {
       accentColor="text-clinical"
       topicId="respiratory-disease"
       topicTitle="Respiratory Co-Existing Disease"
+      workedExamples={RespiratoryDiseaseTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={respiratoryDiseaseQuestions}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ExamSection } from "@/components/ExamSection";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { antimicrobialsQuiz } from "@/data/quizzes";
 import AntibioticTargetsDiagram from "@/components/diagrams/AntibioticTargetsDiagram";
@@ -90,6 +91,37 @@ const keyPoints = [
   { text: "MRSA resistance: PBP2a (mecA gene); VRE resistance: D-Ala-D-Lac modification of vancomycin target", cites: ["Peck & Hill Ch.14"] },
 ];
 
+const antimicrobialsWorkedExamples: WorkedExample[] = [
+  {
+    title: "Dosing meropenem in septic AKI on CVVHDF",
+    scenario:
+      "A septic patient with AKI is on CVVHDF (effluent 25 mL/kg/h). The team asks how to dose meropenem to balance efficacy (T>MIC) and toxicity.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Meropenem is a time-dependent β-lactam — efficacy correlates with fT&gt;MIC (&gt;40–70% of dosing interval)</li>
+          <li>CVVHDF removes drug substantially (sieving coefficient ~1, low protein binding) — under-dosing risk</li>
+          <li>Give 1 g IV loading dose regardless of renal function to reach Cmax early</li>
+          <li>Maintenance 1 g 8-hourly as extended (3 h) or continuous infusion to maximise T&gt;MIC at higher-MIC organisms (Pseudomonas)</li>
+          <li>Use therapeutic drug monitoring if available; aim trough 2–4× MIC; reassess as renal function recovers</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Renal-dose adjustment based on creatinine clearance in AKI — overestimates clearance</li>
+            <li>Bolus dosing in resistant gram-negative sepsis — inadequate fT&gt;MIC</li>
+            <li>Forgetting nephrotoxic interactions (vancomycin + aminoglycosides) potentiated in AKI</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer:
+      "1 g loading then 1 g 8-hourly by extended infusion on CVVHDF, with TDM if available. Do not reduce dose for AKI on full-dose CVVHDF.",
+    cites: ["SCCM/IDSA Sepsis 2021", "BJA Educ 2019 antimicrobials"],
+  },
+];
+
 const AntimicrobialsTopic = () => {
   const [tab, setTab] = useState<Tab>("antibiotics");
 
@@ -102,6 +134,7 @@ const AntimicrobialsTopic = () => {
       accentColor="text-pharmacology"
       topicId="antimicrobials-pharm"
       topicTitle="Antimicrobials"
+      workedExamples={antimicrobialsWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={antimicrobialsQuiz}

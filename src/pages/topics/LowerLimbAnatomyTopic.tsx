@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { lowerLimbAnatomyQuestions } from "@/data/quizzes";
@@ -19,6 +20,35 @@ const objectives = [
   "Explain compartment syndrome anatomy and DVT prevention principles",
 ];
 
+const LowerLimbAnatomyTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Regional plan for total knee replacement",
+    scenario: "A 72-year-old for elective TKR wants opioid-sparing analgesia with early mobilisation. Design a regional plan covering the relevant nerves while preserving quadriceps power.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Map the surgical innervation: anterior knee — femoral nerve branches (vastus, saphenous); posterior knee — sciatic (tibial + common peroneal) and obturator articular branches</li>
+          <li>For motor-sparing analgesia choose adductor canal block (saphenous + nerve to vastus medialis) instead of femoral — preserves quadriceps for early mobilisation</li>
+          <li>Cover the posterior capsule with IPACK (Infiltration between Popliteal Artery and Capsule of Knee) — analgesia without foot drop</li>
+          <li>Add periarticular surgical infiltration with LA + ketorolac to bridge the obturator contribution</li>
+          <li>Avoid sciatic block — produces foot drop and impairs early mobilisation/falls assessment</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Femoral block causing quad weakness and falls in day-case TKR</li>
+          <li>Missing posterior capsule pain when relying on adductor canal alone</li>
+          <li>Local anaesthetic systemic toxicity from combined regional + periarticular doses — calculate maximum mg/kg</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Adductor canal block + IPACK + surgical periarticular infiltration — motor-sparing multimodal regional plan compatible with enhanced recovery.",
+    cites: ["BJA Educ 2018","Ellis & Feldman Ch.8"],
+  },
+];
+
 const LowerLimbAnatomyTopic = () => {
   return (
     <TopicTemplate
@@ -29,6 +59,7 @@ const LowerLimbAnatomyTopic = () => {
       accentColor="text-clinical"
       topicId="lower-limb-anatomy"
       topicTitle="Lower Limb & Lumbosacral Plexus"
+      workedExamples={LowerLimbAnatomyTopicWorkedExamples}
       objectives={objectives}
       quizQuestions={lowerLimbAnatomyQuestions}
       sectionExamMapping={{

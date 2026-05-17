@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { temperatureMeasurementQuiz } from "@/data/quizzes";
 import TemperatureMeasurementDiagram from "@/components/diagrams/TemperatureMeasurementDiagram";
@@ -23,6 +24,35 @@ const keyPoints = [
   { text: "PA catheter thermistor is the gold standard for core temperature; nasopharyngeal thermocouple best reflects brain temperature", cites: ["BJA Educ 2014"] },
 ];
 
+const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Choosing a core temperature site for major surgery",
+    scenario: "A patient for 4-hour open hemicolectomy needs reliable core temperature monitoring per NICE CG65. Compare nasopharyngeal, oesophageal, tympanic and bladder probes.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>NICE CG65 requires continuous core temperature monitoring for any procedure &gt;30 min under GA</li>
+          <li>Distal oesophageal probe (lower third) tracks cardiac/aortic blood temperature accurately — first choice in intubated abdominal surgery</li>
+          <li>Nasopharyngeal probe approximates brain temperature; risk of epistaxis with coagulopathy</li>
+          <li>Tympanic infrared is intermittent and operator-dependent — unsuitable for continuous monitoring</li>
+          <li>Bladder temperature lags during rapid changes (e.g., CPB rewarming) and is unreliable with low urine flow</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Oesophageal probe in the upper third reads cooler due to airway gas — must be in the distal third</li>
+          <li>Skin temperature is not core — useful only for gradient monitoring</li>
+          <li>Forced-air warmer set to default 38 °C without monitoring risks hyperthermia</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Use a distal oesophageal probe with continuous display, target core 36.5–37.5 °C, pre-warm and forced-air warm intra-operatively per NICE CG65.",
+    cites: ["NICE CG65","BJA Educ 2014 temperature"],
+  },
+];
+
 const TemperatureMeasurementTopic = () => {
   return (
     <TopicTemplate
@@ -33,6 +63,7 @@ const TemperatureMeasurementTopic = () => {
       accentColor="text-physics"
       topicId="temperature-measurement"
       topicTitle="Temperature Measurement"
+      workedExamples={TemperatureMeasurementTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={temperatureMeasurementQuiz}

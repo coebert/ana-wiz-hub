@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { pulseOximetryQuiz } from "@/data/quizzes";
 import { AbsorptionSpectraDiagram } from "@/components/diagrams/AbsorptionSpectraDiagram";
@@ -25,6 +26,35 @@ const keyPoints = [
   { text: "Capnograph phases: I baseline, II rapid rise, III alveolar plateau, IV inspiration; α/β angles reflect V/Q.", cites: ["BJA Educ 2014"] },
 ];
 
+const PulseOximetryTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Troubleshooting a low SpO₂ in theatre",
+    scenario: "Mid-procedure, the SpO₂ falls from 99% to 86% on FiO₂ 0.5. Capnography trace is normal. List the systematic causes from probe to patient and the next steps.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Probe and signal: check pulsatile waveform, perfusion index, sensor position, nail varnish, motion artefact, ambient light, methylene blue</li>
+          <li>Patient delivery: confirm FiO₂ delivered (analyser), circuit integrity, endobronchial intubation (auscultate, recheck tube depth), bronchospasm, pneumothorax</li>
+          <li>Ventilation/perfusion mismatch: atelectasis (recruitment manoeuvre), one-lung position, mucus plug (suction)</li>
+          <li>Diffusion / shunt: pulmonary oedema, embolism, intracardiac shunt</li>
+          <li>Dyshaemoglobinaemia: send co-oximetry if COHb/MetHb suspected (SpO₂ ceiling at 85% in metHb)</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Treating low SpO₂ before checking the waveform — non-pulsatile reading is unreliable</li>
+          <li>Forgetting that SpO₂ lags 20–30 s behind a desaturating event (probe site dependent)</li>
+          <li>Beer–Lambert assumes only two absorbers — dyes (methylene blue, indocyanine green) cause transient dips</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Apply a structured probe-→circuit-→lung-→haemoglobin algorithm. Address the most likely cause (endobronchial intubation, atelectasis) first; escalate FiO₂, recruit, recheck tube depth, exclude pneumothorax.",
+    cites: ["AAGBI Monitoring 2015","BJA Educ 2012 pulse oximetry"],
+  },
+];
+
 const PulseOximetryTopic = () => {
   return (
     <TopicTemplate
@@ -35,6 +65,7 @@ const PulseOximetryTopic = () => {
       accentColor="text-physics"
       topicId="pulse-oximetry"
       topicTitle="Pulse Oximetry & Capnography"
+      workedExamples={PulseOximetryTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={pulseOximetryQuiz}

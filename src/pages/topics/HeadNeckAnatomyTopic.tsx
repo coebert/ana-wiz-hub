@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { headNeckAnatomyQuestions } from "@/data/quizzes";
 import NeckTrianglesDiagram from "@/components/diagrams/NeckTrianglesDiagram";
@@ -15,6 +16,35 @@ import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
 import { headNeckFolio, airwayFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 
+const HeadNeckAnatomyTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Front-of-neck access (FONA) in a CICO scenario",
+    scenario: "After failed intubation and ventilation in a 70 kg adult, you proceed to emergency front-of-neck access. Describe the landmark-guided scalpel-bougie-tube technique and key anatomy.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Extend the neck and palpate the cricothyroid membrane between the thyroid (above) and cricoid (below) cartilages</li>
+          <li>If membrane is impalpable, make an 8–10 cm vertical midline skin incision then re-palpate (DAS 'laryngeal handshake')</li>
+          <li>Stabilise the larynx with the non-dominant hand; make a transverse stab through the cricothyroid membrane, rotate the blade caudally</li>
+          <li>Railroad a bougie caudally into the trachea (feel tracheal clicks), then advance a 6.0 cuffed ETT over the bougie</li>
+          <li>Inflate cuff, ventilate, confirm with capnography, and call for ENT/surgical airway support</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Cricothyroid artery runs across the upper third of the membrane — stay low</li>
+          <li>Mistaking the thyrohyoid membrane for the cricothyroid in slim necks</li>
+          <li>Advancing the bougie cephalad into the larynx</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "DAS scalpel-bougie-tube via the cricothyroid membrane: transverse stab, caudal rotation, bougie railroad, 6.0 cuffed tube, capnography confirmation.",
+    cites: ["DAS 2015 Guidelines","BJA Educ 2016"],
+  },
+];
+
 const HeadNeckAnatomyTopic = () => {
   return (
     <TopicTemplate
@@ -25,6 +55,7 @@ const HeadNeckAnatomyTopic = () => {
       accentColor="text-anatomy"
       topicId="head-neck-anatomy"
       topicTitle="Head, Neck & Airway Anatomy"
+      workedExamples={HeadNeckAnatomyTopicWorkedExamples}
       quizQuestions={headNeckAnatomyQuestions}
       objectives={[
         "Identify the cranial nerves of anaesthetic relevance and their clinical applications",

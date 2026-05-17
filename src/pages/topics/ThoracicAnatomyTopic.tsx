@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { thoracicAnatomyQuestions } from "@/data/quizzes";
 import IntercostalAnatomyDiagram from "@/components/diagrams/IntercostalAnatomyDiagram";
@@ -8,6 +9,35 @@ import DiaphragmDiagram from "@/components/diagrams/DiaphragmDiagram";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
 import { thoracicFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
+
+const ThoracicAnatomyTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Regional analgesia for a unilateral thoracotomy",
+    scenario: "A patient for right open thoracotomy (T5–T9 incision) refuses thoracic epidural. Which fascial plane block best matches the dermatomal coverage and what are the trade-offs?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Identify the dermatomes: T5–T9 anterior chest wall via intercostal nerves (ventral rami) plus posterior coverage via dorsal rami</li>
+          <li>Compare options: paravertebral (covers ventral and dorsal rami, similar efficacy to epidural, lower hypotension); erector spinae plane (ESP) at T5 (covers dorsal and partial ventral rami); serratus anterior (lateral T2–T9, misses posterior incision)</li>
+          <li>Choose paravertebral catheter at T6 — closest single-shot efficacy to epidural with unilateral sympathetic block only</li>
+          <li>If anticoagulation precludes paravertebral, choose ESP catheter at T5 — superficial, compressible, similar dermatomal spread</li>
+          <li>Add multimodal: paracetamol, NSAID (if renal function allows), intercostal cryoanalgesia if surgeon-led</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Serratus block alone misses posterior thoracotomy pain</li>
+          <li>Pneumothorax with paravertebral — pre-procedure ultrasound and confirmation of pleural sliding</li>
+          <li>Bilateral sympathetic block from epidural causing hypotension in single-lung ventilation</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Ultrasound-guided paravertebral catheter at T6 (or ESP at T5 if coagulopathic) plus multimodal analgesia.",
+    cites: ["BJA Educ 2020 ESP","BJA Educ 2010 paravertebral"],
+  },
+];
 
 const ThoracicAnatomyTopic = () => {
   return (
@@ -19,6 +49,7 @@ const ThoracicAnatomyTopic = () => {
       accentColor="text-anatomy"
       topicId="thoracic-anatomy"
       topicTitle="Thoracic Anatomy"
+      workedExamples={ThoracicAnatomyTopicWorkedExamples}
       quizQuestions={thoracicAnatomyQuestions}
       objectives={[
         "Describe the layers of the intercostal space and safe technique for chest drain insertion",

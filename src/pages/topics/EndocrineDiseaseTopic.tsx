@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -27,6 +28,35 @@ const keyPoints = [
 
 ];
 
+const EndocrineDiseaseTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Perioperative management of an insulin-dependent diabetic for major surgery",
+    scenario: "A 60-year-old with T1DM on basal-bolus insulin is first on the list for a 4-h Whipple procedure. Plan his peri-operative glycaemic strategy.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Pre-op: HbA1c if not within 3 months (target &lt;69 mmol/mol), continue long-acting basal at 80% night before, omit short-acting on the morning</li>
+          <li>Schedule first on list, start variable-rate insulin infusion (VRII) with 0.45% saline + 5% glucose + 0.15% KCl when missed &gt;1 meal</li>
+          <li>Intra-op: capillary or arterial glucose hourly, target 6–10 mmol/L (acceptable up to 12), adjust VRII per NHS England/JBDS algorithm</li>
+          <li>Maintain basal insulin alongside VRII (overlap to prevent DKA in T1DM — never stop basal completely)</li>
+          <li>Post-op: restart subcutaneous regimen once eating and drinking with 30-min overlap before stopping VRII</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Stopping all insulin in T1DM perioperatively → DKA within hours</li>
+          <li>Sliding-scale insulin without dextrose → hypoglycaemia</li>
+          <li>Treating stress hyperglycaemia with aggressive insulin → hypoglycaemia + variability</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Continue basal insulin, omit prandial, start VRII with glucose/saline/KCl, hourly glucose monitoring, restart SC regimen with overlap when eating.",
+    cites: ["JBDS Perioperative Diabetes 2022","BJA Educ 2017 diabetes"],
+  },
+];
+
 const EndocrineDiseaseTopic = () => {
   return (
     <TopicTemplate
@@ -37,6 +67,7 @@ const EndocrineDiseaseTopic = () => {
       accentColor="text-clinical"
       topicId="endocrine-disease"
       topicTitle="Endocrine Co-Existing Disease"
+      workedExamples={EndocrineDiseaseTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={endocrineDiseaseQuestions}

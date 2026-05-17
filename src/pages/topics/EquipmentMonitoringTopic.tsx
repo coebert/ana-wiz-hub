@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -152,6 +153,35 @@ const monitoringStandards = [
 
 /* ───────────────── Component ───────────────── */
 
+const EquipmentMonitoringTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Capnography trace diagnosis in theatre",
+    scenario: "During laparoscopic cholecystectomy the capnogram shows a sudden drop in ETCO₂ from 38 to 12 mmHg with stable SpO₂. Walk through the differential and management.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Recognise the pattern: sudden ETCO₂ drop = reduced delivery of CO₂ to alveoli — circulation or circuit problem</li>
+          <li>Circuit: disconnection, sampling line leak, oesophageal intubation (usually no trace at all), kinked tube — inspect connections and waveform</li>
+          <li>Circulation: cardiac arrest, massive PE (including CO₂ embolism during laparoscopy), severe hypotension</li>
+          <li>Suspect CO₂ embolism: stop insufflation, release pneumoperitoneum, place left lateral head-down (Durant), 100% O₂, aspirate via CVC</li>
+          <li>If cardiac arrest, start ALS; rising ETCO₂ during CPR (&gt;10 mmHg) indicates adequate compressions and possible ROSC</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Confusing a leak (gradual decline) with embolism (abrupt fall)</li>
+          <li>Falsely reassuring SpO₂ that lags 20–30 s behind the event</li>
+          <li>Failing to recognise the diagnostic waveform shapes (curare cleft, obstructive 'shark fin', cardiogenic oscillations)</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Sudden ETCO₂ drop with laparoscopy → high suspicion of CO₂ embolism. Stop insufflation, desufflate, head-down left lateral, 100% O₂, supportive ALS.",
+    cites: ["BJA Educ 2017 capnography","AAGBI Monitoring 2015"],
+  },
+];
+
 const EquipmentMonitoringTopic = () => {
   return (
     <TopicTemplate
@@ -162,6 +192,7 @@ const EquipmentMonitoringTopic = () => {
       accentColor="text-physics"
       topicId="equipment-monitoring"
       topicTitle="Anaesthetic Equipment & Monitoring"
+      workedExamples={EquipmentMonitoringTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={[...anaestheticMachineQuiz, ...vaporizersQuiz, ...breathingCircuitsQuiz, ...ventilatorsQuiz]}

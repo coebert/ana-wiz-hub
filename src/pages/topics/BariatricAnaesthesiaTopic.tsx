@@ -1,10 +1,40 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { bariatricAnaesthesiaQuestions } from "@/data/quizzes";
 import BariatricProceduresDiagram from "@/components/diagrams/BariatricProceduresDiagram";
 import StopBangCalculator from "@/components/diagrams/StopBangCalculator";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const BariatricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Drug dosing in the morbidly obese patient",
+    scenario: "A 145 kg (BMI 48) woman for laparoscopic sleeve gastrectomy. Calculate induction doses for propofol, fentanyl, rocuronium and suxamethonium, and explain the scalar used for each.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Compute weights: TBW 145, IBW ≈ 60 kg (female), LBW ≈ 75 kg (Janmahasatian), ABW = IBW + 0.4(TBW−IBW) ≈ 94 kg</li>
+          <li>Propofol induction by LBW (reduces overdose); maintenance by ABW</li>
+          <li>Fentanyl by LBW (lipophilic but distribution well predicted by LBW)</li>
+          <li>Rocuronium by IBW (hydrophilic, distributes to lean mass) — TBW dosing prolongs duration</li>
+          <li>Suxamethonium by TBW (increased pseudocholinesterase and ECF in obesity) — full 1.5 mg/kg of TBW</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Using TBW for rocuronium → markedly prolonged paralysis</li>
+          <li>Under-dosing suxamethonium → inadequate intubating conditions</li>
+          <li>Ramped position not used → failed mask ventilation and intubation</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Propofol/LBW (~150 mg), fentanyl/LBW, rocuronium/IBW (~60 mg), suxamethonium/TBW (~220 mg). Position ramped, pre-oxygenate with CPAP/PEEP.",
+    cites: ["AAGBI Obesity 2015","BJA Educ 2014 bariatric"],
+  },
+];
 
 const BariatricAnaesthesiaTopic = () => {
   return (
@@ -16,6 +46,7 @@ const BariatricAnaesthesiaTopic = () => {
       accentColor="text-clinical"
       topicId="bariatric-anaesthesia"
       topicTitle="Bariatric Anaesthesia"
+      workedExamples={BariatricAnaesthesiaTopicWorkedExamples}
       quizQuestions={bariatricAnaesthesiaQuestions}
       objectives={[
         "Describe the physiological changes of obesity relevant to anaesthesia",

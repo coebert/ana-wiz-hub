@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { elderlyAnaesthesiaQuestions } from "@/data/quizzes";
 import FrailtyAssessmentDiagram from "@/components/diagrams/FrailtyAssessmentDiagram";
@@ -13,6 +14,35 @@ const keyPoints = [
   { text: "Regional anaesthesia may reduce postoperative pulmonary complications and delirium in hip fracture patients — fascia iliaca block should be performed on admission (NICE NG111)", cites: ["NICE NG111"] },
 ];
 
+const ElderlyAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Preventing postoperative delirium in an 85-year-old",
+    scenario: "An 85-year-old with mild cognitive impairment is for fractured-NOF repair. Build an evidence-based perioperative bundle to reduce postoperative delirium.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Preoperative: orientation aids (glasses, hearing aids), AMTS baseline, hydration, screen and treat anaemia, review benzodiazepines/anticholinergics</li>
+          <li>Anaesthetic technique: regional (spinal or fascia-iliaca) where feasible; if GA, use depth monitoring to avoid burst suppression (BIS 40–60) — ENGAGES showed depth-targeted GA did not reduce delirium but very deep anaesthesia increases risk</li>
+          <li>Avoid deliriogenic drugs: benzodiazepines, pethidine, anticholinergics (atropine over glycopyrrolate); favour paracetamol-based multimodal analgesia</li>
+          <li>Postoperative: HELP bundle (Hospital Elder Life Program) — re-orientation, early mobilisation, sleep hygiene, daily delirium screen with 4AT</li>
+          <li>Treat reversible causes promptly: pain, hypoxia, sepsis, urinary retention, constipation, electrolyte disturbance</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Equating sedation with anaesthesia — over-sedation worsens delirium</li>
+          <li>Withholding analgesia for fear of delirium — under-treated pain is itself a strong precipitant</li>
+          <li>Using haloperidol routinely for prevention (not evidence-based)</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Multimodal bundle: fascia-iliaca block, neuraxial where suitable, depth-monitored light GA if needed, avoid deliriogenic drugs, HELP bundle and 4AT screening post-op.",
+    cites: ["NICE CG103 delirium","ENGAGES 2019","BJA Educ 2018 delirium"],
+  },
+];
+
 const ElderlyAnaesthesiaTopic = () => {
   return (
     <TopicTemplate
@@ -23,6 +53,7 @@ const ElderlyAnaesthesiaTopic = () => {
       accentColor="text-clinical"
       topicId="elderly-anaesthesia"
       topicTitle="Anaesthesia for the Elderly Patient"
+      workedExamples={ElderlyAnaesthesiaTopicWorkedExamples}
       quizQuestions={elderlyAnaesthesiaQuestions}
       objectives={[
         "Describe age-related physiological changes affecting anaesthetic management",

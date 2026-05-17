@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { obstetricAnaesthesiaQuestions } from "@/data/quizzes";
@@ -10,6 +11,35 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
+const ObstetricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "Category-1 caesarean section under GA",
+    scenario: "A G2P1 at 38 weeks with cord prolapse and fetal bradycardia needs immediate delivery. Plan a rapid-sequence GA with awareness mitigation.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Pre-induction in &lt;10 min: 30° left tilt or manual displacement, pre-oxygenate to FeO₂ &gt;0.9 (3 min or 8 vital capacity breaths), aspiration prophylaxis (Na citrate 0.3 M 30 mL ± ranitidine/metoclopramide if time)</li>
+          <li>RSI with thiopentone 5–7 mg/kg or propofol 2 mg/kg + suxamethonium 1.5 mg/kg (TBW); cricoid pressure (per local policy)</li>
+          <li>Use videolaryngoscopy first if available (OAA/DAS); have plan B (2nd-generation SAD) and plan C (FONA) ready</li>
+          <li>Maintain with sevoflurane 1 MAC + 50% N₂O until delivery, then deepen and add opioid; uterotonics: oxytocin 5 IU slow bolus then 30 IU/500 mL infusion (RCOG/MBRRACE)</li>
+          <li>Awareness mitigation: avoid muscle relaxant overdose without depth monitoring; document ABCDE and post-op visit; NAP5 highlights obstetric GA awareness risk</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Hypotension from aortocaval compression — left tilt mandatory</li>
+          <li>High-pressure oxytocin bolus causing hypotension/ischaemia — give slowly</li>
+          <li>Failing to plan extubation: awake, head-up, suction, anti-emetics</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Rapid sequence GA with tilt, pre-oxygenation, RSI, videolaryngoscopy, MAC-targeted volatile, careful oxytocin and awareness mitigation per NAP5/OAA.",
+    cites: ["OAA/DAS Obstetric Airway 2015","NAP5 2014","MBRRACE 2023"],
+  },
+];
+
 const ObstetricAnaesthesiaTopic = () => {
   return (
     <TopicTemplate
@@ -20,6 +50,7 @@ const ObstetricAnaesthesiaTopic = () => {
       accentColor="text-clinical"
       topicId="obstetric-anaesthesia"
       topicTitle="Obstetric Anaesthesia"
+      workedExamples={ObstetricAnaesthesiaTopicWorkedExamples}
       quizQuestions={obstetricAnaesthesiaQuestions}
       objectives={[
         "Describe the major physiological changes of pregnancy and their anaesthetic implications",

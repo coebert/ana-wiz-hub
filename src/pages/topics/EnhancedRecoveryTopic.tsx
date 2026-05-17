@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -28,6 +29,35 @@ const keyPoints = [
 
 ];
 
+const EnhancedRecoveryTopicWorkedExamples: WorkedExample[] = [
+  {
+    title: "ERAS pathway for elective colorectal resection",
+    scenario: "A 65-year-old for elective laparoscopic right hemicolectomy. Outline the key ERAS elements from pre-admission to discharge that you control as anaesthetist.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Pre-op: pre-habilitation, treat anaemia (IV iron), carbohydrate drink up to 2 h pre-op, avoid mechanical bowel prep, no premed sedation</li>
+          <li>Intra-op: short-acting agents, opioid-sparing (TAP block or epidural for open, IV lidocaine infusion for laparoscopic), goal-directed fluids (avoid &gt;2 L crystalloid), normothermia, PONV prophylaxis (≥2 agents)</li>
+          <li>Avoid routine drains and NG tubes; remove urinary catheter early</li>
+          <li>Post-op: multimodal analgesia (paracetamol + NSAID + LA infiltration), early oral intake, mobilise day 0</li>
+          <li>Audit: discharge by day 3–4; readmission monitored</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+          <li>Liberal fluid administration causing bowel oedema and ileus</li>
+          <li>Opioid-heavy analgesia delaying gut function</li>
+          <li>Hypothermia (&lt;36 °C) tripling wound infection risk</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Apply the ERAS bundle: carb loading, opioid-sparing analgesia, goal-directed fluids, normothermia, early feeding and mobilisation.",
+    cites: ["ERAS Society Colorectal 2018","BJA Educ 2017 ERAS"],
+  },
+];
+
 const EnhancedRecoveryTopic = () => {
   return (
     <TopicTemplate
@@ -38,6 +68,7 @@ const EnhancedRecoveryTopic = () => {
       accentColor="text-perioperative"
       topicId="enhanced-recovery"
       topicTitle="Enhanced Recovery (ERAS)"
+      workedExamples={EnhancedRecoveryTopicWorkedExamples}
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={enhancedRecoveryQuestions}
