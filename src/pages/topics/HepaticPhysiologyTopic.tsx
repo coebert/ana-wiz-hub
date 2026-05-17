@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { hepaticPhysiologyQuestions } from "@/data/quizzes";
 import HepaticAcinusDiagram from "@/components/diagrams/HepaticAcinusDiagram";
@@ -110,9 +111,6 @@ const HepaticPhysiologyTopic = () => {
           <div className="bg-card rounded-xl border border-border p-4 md:p-6">
             <HepaticAcinusDiagram />
           </div>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <PortalFirstPassDiagram />
-          </div>
         </div>
       }
       keyPoints={[
@@ -187,6 +185,9 @@ const HepaticPhysiologyTopic = () => {
 
           <ExamSection id="drug-metabolism" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Drug Metabolism</h2>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <PortalFirstPassDiagram />
+            </div>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The liver is the primary site of drug metabolism, occurring in two phases:
             </p>
@@ -251,6 +252,16 @@ const HepaticPhysiologyTopic = () => {
               <li><strong>Child-Pugh</strong> and <strong>MELD</strong> scores stratify perioperative risk.</li>
             </ul>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>Halothane &amp; hepatotoxicity</strong>: rare immune-mediated fulminant hepatitis — avoid repeat exposure within 3 months. Modern volatiles (sevoflurane, desflurane) have much lower risk.</>,
+              <><strong>Paracetamol overdose</strong>: NAPQI accumulates in zone 3 once glutathione depletes — N-acetylcysteine within 8 h is gold standard.</>,
+              <><strong>Child-Pugh C / MELD &gt;15</strong>: high perioperative mortality — defer elective surgery, optimise where possible.</>,
+              <><strong>INR is unreliable</strong> in chronic liver disease — rebalanced haemostasis means TEG/ROTEM-guided product replacement is preferred.</>,
+              <><strong>Hepatorenal syndrome</strong>: avoid nephrotoxins (NSAIDs, aminoglycosides, contrast) and treat with terlipressin + albumin.</>,
+            ]}
+          />
         </>
       }
     />
