@@ -791,4 +791,34 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2014 TURP", citation: "Hahn RG. Fluid absorption in endoscopic surgery. Br J Anaesth. 2006;96(1):8-20 — TURP/glycine syndrome (also referenced under urological anaesthesia).", url: "https://doi.org/10.1093/bja/aei279" },
     { label: "ERAS Gynae 2019", citation: "Nelson G et al. Guidelines for perioperative care in gynecologic/oncology surgery: ERAS Society recommendations — 2019 update. Int J Gynecol Cancer. 2019;29(4):651-668.", url: "https://doi.org/10.1136/ijgc-2019-000356" },
   ],
+  "bariatric-anaesthesia": [
+    { label: "BJA Educ 2015 Bariatric", citation: "Lotia S, Bellamy MC. Anaesthesia and morbid obesity. BJA Education. 2008;8(5):151-156.", url: "https://doi.org/10.1093/bjaceaccp/mkn030" },
+    { label: "AAGBI Obesity 2015", citation: "Members of the Working Party (AAGBI/SOBA). Peri-operative management of the obese surgical patient 2015. Anaesthesia. 2015;70(7):859-876.", url: "https://doi.org/10.1111/anae.13101" },
+    { label: "STOP-BANG", citation: "Chung F et al. STOP-BANG questionnaire: a practical approach to screen for obstructive sleep apnea. Chest. 2016;149(3):631-638.", url: "https://doi.org/10.1378/chest.15-0903" },
+    { label: "SOBA 2022", citation: "Society for Obesity and Bariatric Anaesthesia. Single-sheet guideline on bariatric anaesthesia. SOBA UK; 2022.", url: "https://www.sobauk.co.uk" },
+  ],
+  "bronchospastic-failure": [
+    { label: "BTS/SIGN Asthma 2019", citation: "British Thoracic Society/SIGN. British guideline on the management of asthma (SIGN 158). 2019.", url: "https://www.brit-thoracic.org.uk/quality-improvement/guidelines/asthma/" },
+    { label: "GINA 2023", citation: "Global Initiative for Asthma. Global Strategy for Asthma Management and Prevention. 2023.", url: "https://ginasthma.org" },
+    { label: "BJA Educ 2017 Asthma", citation: "Dewachter P et al. Anaesthesia in the patient with severe asthma. BJA Education. 2017;17(2):65-72.", url: "https://doi.org/10.1093/bjaed/mkw044" },
+    { label: "GOLD COPD 2023", citation: "Global Initiative for Chronic Obstructive Lung Disease. GOLD Report 2023.", url: "https://goldcopd.org" },
+  ],
+  "infectious-disease-icu": [
+    { label: "SSC 2021", citation: "Evans L et al. Surviving Sepsis Campaign: international guidelines for management of sepsis and septic shock 2021. Crit Care Med. 2021;49(11):e1063-e1143.", url: "https://doi.org/10.1097/CCM.0000000000005337" },
+    { label: "IDSA HAP/VAP 2016", citation: "Kalil AC et al. Management of adults with hospital-acquired and ventilator-associated pneumonia: 2016 IDSA/ATS guidelines. Clin Infect Dis. 2016;63(5):e61-e111.", url: "https://doi.org/10.1093/cid/ciw353" },
+    { label: "BJA Educ 2017 Sepsis", citation: "Gyawali B, Ramakrishna K, Dhamoon AS. Sepsis: The evolution in definition, pathophysiology, and management. SAGE Open Med. 2019;7:2050312119835043.", url: "https://doi.org/10.1177/2050312119835043" },
+    { label: "NICE NG51", citation: "NICE. Sepsis: recognition, diagnosis and early management (NG51). 2016 (updated 2017).", url: "https://www.nice.org.uk/guidance/ng51" },
+  ],
+  "pulmonary-hypertension": [
+    { label: "ESC/ERS PH 2022", citation: "Humbert M et al. 2022 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension. Eur Heart J. 2022;43(38):3618-3731.", url: "https://doi.org/10.1093/eurheartj/ehac237" },
+    { label: "BJA Educ 2017 PH", citation: "Pilkington SA et al. Pulmonary hypertension and its management in patients undergoing non-cardiac surgery. Anaesthesia. 2015;70(1):56-70.", url: "https://doi.org/10.1111/anae.12831" },
+    { label: "AHA PH 2018", citation: "Klinger JR et al. Therapy for pulmonary arterial hypertension in adults: update of the CHEST guideline and expert panel report. Chest. 2019;155(3):565-586.", url: "https://doi.org/10.1016/j.chest.2018.11.030" },
+  ],
+  "vascular-anaesthesia": [
+    { label: "BJA Educ 2016 AAA", citation: "Spence S, Doyle J. Anaesthesia for elective open and endovascular abdominal aortic aneurysm repair. BJA Education. 2016;16(11):373-378.", url: "https://doi.org/10.1093/bjaed/mkw014" },
+    { label: "BJA Educ 2015 CEA", citation: "Howell SJ. Carotid endarterectomy. Br J Anaesth. 2007;99(1):119-131.", url: "https://doi.org/10.1093/bja/aem137" },
+    { label: "ESVS AAA 2019", citation: "Wanhainen A et al. Editor's choice — European Society for Vascular Surgery (ESVS) 2019 clinical practice guidelines on the management of abdominal aorto-iliac artery aneurysms. Eur J Vasc Endovasc Surg. 2019;57(1):8-93.", url: "https://doi.org/10.1016/j.ejvs.2018.09.020" },
+    { label: "GALA 2008", citation: "GALA Trial Collaborative Group. General anaesthesia versus local anaesthesia for carotid surgery (GALA): a multicentre, randomised controlled trial. Lancet. 2008;372(9656):2132-2142.", url: "https://doi.org/10.1016/S0140-6736(08)61699-2" },
+    { label: "RCRI", citation: "Lee TH et al. Derivation and prospective validation of a simple index for prediction of cardiac risk of major noncardiac surgery. Circulation. 1999;100(10):1043-1049.", url: "https://doi.org/10.1161/01.CIR.100.10.1043" },
+  ],
 };
