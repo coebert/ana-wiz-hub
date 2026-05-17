@@ -117,6 +117,64 @@ const IVAnaestheticsTopic = () => {
             </p>
             <SchniderEleveldDiagram />
           </div>
+
+          <div className="mt-8">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-3">Why patients move more often on TIVA than volatile anaesthesia</h3>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Intra-operative movement is consistently reported more frequently with propofol TIVA than with an equivalent
+              MAC-guided volatile technique. The difference is not because propofol is a "weaker" hypnotic — it is because of
+              <strong> where each class of agent acts to produce immobility</strong> and <strong>how reliably we can measure
+              an adequate dose</strong> at the bedside.
+            </p>
+            <ul className="space-y-2 text-foreground/90 leading-relaxed list-disc list-inside">
+              <li>
+                <strong>Site of immobility.</strong> Volatile agents produce immobility largely at the <em>spinal cord</em>
+                (glycine and GABA_A receptors, and inhibition of dorsal-horn transmission). Propofol's anti-nociceptive and
+                immobilising effect is predominantly <em>supraspinal</em>; at hypnotic concentrations the spinal motor
+                response to noxious stimulus is comparatively preserved.
+              </li>
+              <li>
+                <strong>No agreed "MAC" for propofol.</strong> With volatiles, end-tidal monitoring lets you titrate to a
+                known ED₅₀ (and run 1.2–1.3 MAC for surgical stimulation). With TIVA you target a modelled plasma or
+                effect-site concentration — population PK models (Marsh, Schnider, Eleveld) carry a typical bias of
+                20–30%, so the actual Ce can be well below the value displayed.
+              </li>
+              <li>
+                <strong>Pharmacokinetic variability.</strong> Volume of distribution, clearance, body composition,
+                cardiac output and drug interactions all shift the true Ce. An obese, high-cardiac-output or
+                enzyme-induced patient may sit substantially below the target Ce — and therefore move — without any change
+                on the pump display.
+              </li>
+              <li>
+                <strong>Hysteresis and effect-site lag.</strong> After a step-up in target, equilibration between plasma
+                and effect site takes minutes. If surgical stimulus increases before Ce catches up (skin incision,
+                laryngoscopy, peritoneal traction), the patient can move despite an "adequate" target.
+              </li>
+              <li>
+                <strong>Loss of opioid synergy.</strong> Propofol provides little intrinsic analgesia, so adequate
+                immobility on TIVA is highly dependent on a co-administered opioid (typically remifentanil). Under-dosing
+                or pump occlusion of the opioid line is a classic cause of intra-operative movement on TIVA.
+              </li>
+              <li>
+                <strong>Equipment failure modes.</strong> Volatile delivery failures are visible on the vaporiser dial
+                and end-tidal trace. TIVA failures (line disconnection, extravasation, three-way tap left off, IV
+                cannula tissued) deliver drug into the dressings instead of the patient — the pump runs normally but Ce
+                falls rapidly.
+              </li>
+              <li>
+                <strong>No real-time depth marker.</strong> End-tidal volatile concentration is a continuous, validated
+                surrogate for brain partial pressure. There is no equivalent for propofol — processed-EEG monitors
+                (BIS/Entropy) are the recommended substitute, and the AAGBI advises their routine use whenever TIVA is
+                combined with neuromuscular blockade.
+              </li>
+            </ul>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              <strong>Practical implication:</strong> when running TIVA, pair propofol with a remifentanil infusion (or
+              adequate intermittent opioid), use processed-EEG monitoring (especially with NMB), inspect the IV site and
+              giving set frequently, and anticipate stimulating moments by raising the effect-site target several minutes
+              in advance.
+            </p>
+          </div>
         </section>
 
         <section className="mb-10">
