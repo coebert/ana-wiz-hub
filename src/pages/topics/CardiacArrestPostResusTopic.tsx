@@ -418,6 +418,7 @@ const coreConcepts = (
             <li>Bleeding (cannulation, GI, intracranial), thrombosis, oxygenator failure</li>
             <li>Severe HIE despite restored circulation (the dominant outcome driver)</li>
           </ul>
+        </div>
       </div>
       <div className="mt-4 space-y-4">
         <div className="bg-card rounded-xl border border-border p-4 md:p-6"><EcprDecisionTreeDiagram /></div>
@@ -425,6 +426,9 @@ const coreConcepts = (
         <div className="bg-card rounded-xl border border-border p-4 md:p-6"><ECMOTroubleshootingDiagram /></div>
       </div>
       </CollapsibleSubsection>
+    </ExamSection>
+
+    {/* ─────────── Family / WLST ─────────── */}
     <ExamSection id="ethics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <CollapsibleSubsection title="Family Communication, WLST & Donation">
       <div className="grid md:grid-cols-2 gap-3">
