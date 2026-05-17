@@ -5,6 +5,7 @@ import { corticosteroidsQuestions } from "@/data/quizzes";
 import { CorticosteroidPharmacodynamicsDiagram } from "@/components/diagrams/CorticosteroidPharmacodynamicsDiagram";
 import { HPAAxisSuppressionDiagram } from "@/components/diagrams/HPAAxisSuppressionDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe glucocorticoid receptor signalling and distinguish transrepression from transactivation",
@@ -199,6 +200,16 @@ const CorticosteroidsTopic = () => {
               <li><strong>Levothyroxine</strong>: T₄ replacement in hypothyroidism. Long half-life (~7 days) — can omit on day of surgery</li>
             </ul>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "Glucocorticoid potency: hydrocortisone 1, prednisolone 4, methylprednisolone 5, dexamethasone 25–30 — no mineralocorticoid effect with dex.",
+              "HPA suppression likely after >5 mg prednisolone/day for >3 weeks; taper slowly to avoid adrenal crisis.",
+              "Perioperative steroid cover (AAGBI): supplement if on ≥5 mg prednisolone equivalent; dose tailored to surgical stress.",
+              "Side effects of chronic use: hyperglycaemia, osteoporosis, immunosuppression, peptic ulceration, proximal myopathy, mood changes.",
+              "Dexamethasone is both a potent antiemetic and reduces airway oedema after prolonged intubation or croup.",
+            ]}
+          />
         </>
       }
     />

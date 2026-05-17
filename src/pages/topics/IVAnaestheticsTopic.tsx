@@ -12,6 +12,7 @@ import { MidazolamPharmacologyDiagram } from "@/components/diagrams/MidazolamPha
 import { BenzodiazepineComparisonDiagram } from "@/components/diagrams/BenzodiazepineComparisonDiagram";
 import { FlumazenilDiagram } from "@/components/diagrams/FlumazenilDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const IVAnaestheticsTopic = () => {
   return (
@@ -311,6 +312,16 @@ const IVAnaestheticsTopic = () => {
         <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
         <IVAnaestheticStructures />
       </div>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "Propofol: rapid recovery via redistribution, not metabolism; causes hypotension via vasodilation and mild myocardial depression.",
+              "Thiopentone: pKa 7.6, highly alkaline (pH 10.5) — intra-arterial injection causes severe vasospasm; treat with papaverine/heparin/local block.",
+              "Ketamine: NMDA antagonist, dissociative; preserves airway reflexes but raises ICP, IOP and sympathetic tone — avoid in severe IHD/raised ICP.",
+              "Etomidate: cardiostable but suppresses 11β-hydroxylase → adrenal suppression even after single dose; avoid as ICU sedation.",
+              "Propofol infusion syndrome: lactic acidosis, rhabdomyolysis, cardiac failure with prolonged high-dose (>4 mg/kg/h >48 h) infusion.",
+            ]}
+          />
       </div>
       }
     />

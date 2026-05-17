@@ -5,6 +5,7 @@ import { volatileAgentsQuiz } from "@/data/quizzes";
 import VolatileAgentStructures from "@/components/diagrams/VolatileAgentStructures";
 import SecondGasEffectDiagram from "@/components/diagrams/SecondGasEffectDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const VolatileAgentsTopic = () => {
   return (
@@ -364,6 +365,16 @@ const VolatileAgentsTopic = () => {
               </tbody>
             </table>
           </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "MAC = alveolar concentration preventing movement in 50% — additive between agents; reduced by age, opioids, N₂O, hypothermia, pregnancy.",
+              "Low blood:gas partition coefficient (desflurane 0.42, sevoflurane 0.69) = fast onset/offset; high (halothane 2.4) = slow.",
+              "Sevoflurane + dry baralyme/soda-lime → Compound A (nephrotoxic in rats); avoid low fresh-gas flows with desiccated absorber.",
+              "Desflurane has high vapour pressure (88.5 kPa) — needs a heated, pressurised vaporiser; pungent so unsuitable for gas induction.",
+              "All halogenated volatiles trigger malignant hyperthermia in susceptible patients; xenon and N₂O do not.",
+            ]}
+          />
         </div>
       }
     />

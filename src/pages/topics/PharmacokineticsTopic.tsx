@@ -5,6 +5,7 @@ import { CSHTComparisonDiagram } from "@/components/diagrams/CSHTComparisonDiagr
 import { ADMECascadeDiagram } from "@/components/diagrams/ADMECascadeDiagram";
 import { pharmacokineticsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const PharmacokineticsTopic = () => {
   return (
@@ -114,6 +115,16 @@ const PharmacokineticsTopic = () => {
               regardless of infusion duration, while fentanyl's CSHT increases markedly with prolonged infusions.
             </p>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "Volume of distribution is a virtual volume — high Vd reflects extensive tissue binding, not actual fluid volume.",
+              "Clearance, not half-life, drives steady-state concentration on an infusion (Css = rate / clearance).",
+              "Context-sensitive half-time (not elimination half-life) predicts offset after prolonged infusions — remifentanil stays ~4 min regardless of duration.",
+              "Five half-lives ≈ 97% steady state or elimination; loading dose = Vd × target concentration.",
+              "Hepatic extraction ratio: high-ER drugs (propofol, lidocaine, morphine) are flow-limited; low-ER drugs (warfarin, diazepam) are capacity-limited.",
+            ]}
+          />
         </>
       }
       workedExamples={[

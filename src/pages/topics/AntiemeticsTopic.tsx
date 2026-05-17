@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { antiemeticsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Apply the Apfel score to estimate baseline PONV risk and stratify prophylaxis",
@@ -114,6 +115,16 @@ const AntiemeticsTopic = () => {
               <li><strong>Non-pharmacological</strong>: adequate hydration, P6 acupressure, and avoiding excessive opioids</li>
             </ul>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "PONV risk (Apfel): female, non-smoker, history of PONV/motion sickness, postoperative opioids — give 1 prophylactic agent per risk factor.",
+              "Ondansetron (5-HT3 antagonist): prolongs QT; most effective given at end of surgery.",
+              "Dexamethasone 4–8 mg IV at induction — onset over hours; safe single dose even in diabetics (transient glucose rise).",
+              "Droperidol/haloperidol: D2 antagonists — extrapyramidal effects and QT prolongation; black-box warning historically limits use.",
+              "Cyclizine (H1) is useful but anticholinergic — tachycardia, sedation; avoid in severe heart failure and elderly.",
+            ]}
+          />
         </>
       }
     />

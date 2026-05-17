@@ -11,6 +11,7 @@ import BetaLactamaseClassificationTable from "@/components/diagrams/BetaLactamas
 import AntibioticPKPDPrimer from "@/components/diagrams/AntibioticPKPDPrimer";
 import EmpiricalSepsisChooser from "@/components/diagrams/EmpiricalSepsisChooser";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 type Tab = "antibiotics" | "antifungals" | "antivirals";
 
@@ -288,6 +289,16 @@ const AntimicrobialsTopic = () => {
               </tbody>
             </table>
           </SynthesisBlock>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "β-lactams: time-dependent killing — efficacy depends on T>MIC; consider extended/continuous infusion in severe sepsis.",
+              "Aminoglycosides and fluoroquinolones: concentration-dependent killing — high peak: MIC ratio; once-daily dosing reduces nephro-/ototoxicity.",
+              "Vancomycin: trough levels 15–20 mg/L for serious infection; red-man syndrome is histamine-mediated, not allergic — slow the infusion.",
+              "Antibiotic prophylaxis: give within 60 min of incision (120 min for vancomycin/fluoroquinolones); redose for long cases or major blood loss.",
+              "Beware drug interactions: rifampicin induces CYP; macrolides and azoles inhibit CYP3A4 — prolong QT and elevate calcineurin-inhibitor levels.",
+            ]}
+          />
         </section>
       }
     />

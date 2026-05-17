@@ -6,6 +6,7 @@ import { TOFPatternDiagram } from "@/components/diagrams/TOFPatternDiagram";
 import { NMBATimelineDiagram } from "@/components/diagrams/NMBATimelineDiagram";
 import SugammadexDiagram from "@/components/diagrams/SugammadexDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const MuscleRelaxantsTopic = () => {
   return (
@@ -202,6 +203,16 @@ const MuscleRelaxantsTopic = () => {
             <h2 className="text-2xl font-serif font-bold text-foreground">Molecular Structures</h2>
             <MuscleRelaxantStructures />
           </section>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "Suxamethonium: rapid onset, fasciculations, myalgia; risks include hyperkalaemia (burns, denervation, prolonged immobility), bradycardia (2nd dose), MH trigger.",
+              "Suxamethonium apnoea: plasma cholinesterase deficiency — dibucaine number low; ventilate until spontaneous reversal.",
+              "Train-of-four ratio >0.9 needed for safe extubation; clinical signs (head lift, grip) are insensitive to residual block.",
+              "Sugammadex reverses rocuronium and vecuronium by encapsulation; ineffective for benzylisoquinolinium agents (atracurium, mivacurium).",
+              "Atracurium undergoes Hofmann elimination — useful in renal/hepatic failure; metabolite laudanosine accumulates with prolonged infusion (theoretical seizure risk).",
+            ]}
+          />
         </div>
       }
     />

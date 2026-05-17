@@ -6,6 +6,7 @@ import { localAnaestheticsQuiz } from "@/data/quizzes";
 import LocalAnaestheticStructures from "@/components/diagrams/LocalAnaestheticStructures";
 import PropofolLidocaineMechanismDiagram from "@/components/diagrams/PropofolLidocaineMechanismDiagram";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const LocalAnaestheticsTopic = () => {
   return (
@@ -322,6 +323,16 @@ const LocalAnaestheticsTopic = () => {
             <h2 className="text-2xl font-serif font-bold text-foreground">Molecular Structures</h2>
             <LocalAnaestheticStructures />
           </section>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "Onset depends on pKa (closer to 7.4 = faster); duration depends on protein binding (higher = longer); potency depends on lipid solubility.",
+              "Maximum safe doses: lidocaine 3 mg/kg (7 with adrenaline); bupivacaine 2 mg/kg; ropivacaine 3 mg/kg — body-weight ideal, not actual.",
+              "LAST (local anaesthetic systemic toxicity): CNS first (perioral tingling, seizures), then cardiovascular collapse — bupivacaine is most cardiotoxic.",
+              "Treat LAST: stop injection, ABC, control seizures, then 20% Intralipid 1.5 mL/kg bolus + 0.25 mL/kg/min infusion (AAGBI guideline).",
+              "Adrenaline-containing solutions prolong duration and reduce systemic absorption; avoid in end-arteries (digits, penis, nose).",
+            ]}
+          />
         </div>
       }
     />

@@ -6,6 +6,7 @@ import { nsaidsParacetamolQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { NSAIDMechanismDiagram } from "@/components/diagrams/NSAIDMechanismDiagram";
 import { AAShuntAnimation } from "@/components/diagrams/AAShuntAnimation";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Compare COX-1 vs COX-2 selectivity and predict the GI / CV / renal trade-offs of common NSAIDs",
@@ -176,6 +177,16 @@ const NSAIDsParacetamolTopic = () => {
               <li><strong>Risk factors for toxicity</strong>: enzyme inducers (phenytoin, rifampicin, alcohol), glutathione depletion (malnutrition, HIV, anorexia), low body weight (&lt;50kg — dose reduce)</li>
             </ul>
           </ExamSection>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "Non-selective NSAIDs inhibit COX-1 (GI mucosa, platelets, renal) and COX-2 (inflammation) — hence gastric, bleeding and renal side effects.",
+              "Selective COX-2 inhibitors spare platelets but increase cardiovascular/thrombotic risk; rofecoxib was withdrawn.",
+              "Aspirin irreversibly acetylates COX — antiplatelet effect lasts the platelet lifespan (~10 days).",
+              "Paracetamol mechanism is incompletely understood — central COX inhibition, TRPV1 and cannabinoid pathways; minimal anti-inflammatory effect.",
+              "Paracetamol toxicity: NAPQI overwhelms glutathione → hepatic necrosis; treat with N-acetylcysteine guided by nomogram (140 mg/kg load).",
+            ]}
+          />
         </>
       }
       diagrams={

@@ -4,6 +4,7 @@ import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeD
 import BridgingAnticoagulationPathway from "@/components/diagrams/BridgingAnticoagulationPathway";
 import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const heparinComparison = [
   { property: "Source", ufh: "Porcine intestinal mucosa", lmwh: "Depolymerised UFH" },
@@ -277,6 +278,16 @@ const AnticoagulantsTopic = () => {
           >
             <BridgingAnticoagulationPathway />
           </DiagramSection>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "UFH: monitored by APTT; reversed by protamine 1 mg per 100 IU; risk of HIT (type II, immune-mediated).",
+              "LMWH: predictable PK, monitored by anti-Xa if needed (renal failure, pregnancy, extremes of weight); partially reversed by protamine.",
+              "Warfarin: inhibits vitamin K epoxide reductase; INR target depends on indication; reverse with PCC + IV vitamin K for major bleeding.",
+              "DOACs: dabigatran (anti-IIa, reversed by idarucizumab); apixaban/rivaroxaban (anti-Xa, reversed by andexanet alfa or PCC).",
+              "Neuraxial timing (AAGBI): LMWH prophylactic 12 h before, treatment 24 h before; DOACs 48–72 h depending on agent and renal function.",
+            ]}
+          />
         </div>
       }
     />

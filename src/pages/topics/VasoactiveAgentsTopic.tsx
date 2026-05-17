@@ -6,6 +6,7 @@ import InotropeSignallingDiagram from "@/components/diagrams/InotropeSignallingD
 import { StickyTOC } from "@/components/StickyTOC";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { Exam } from "@/data/curriculum";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const tocItems = [
   { id: "toc-foundations", label: "Foundations" },
@@ -678,6 +679,16 @@ const VasoactiveAgentsTopic = () => {
         </div>
 
           </div>
+          <ExamPitfallsCallout
+            accent="pharmacology"
+            pitfalls={[
+              "Adrenaline: α1, β1 and β2 agonist — low doses β-effects predominate (inotropy, vasodilation); high doses α-vasoconstriction predominates.",
+              "Noradrenaline: predominantly α with modest β1 — drug of choice in septic shock; minimal direct chronotropy.",
+              "Dobutamine: β1>β2>α — inotrope with mild vasodilation; tachyphylaxis after 48 h via receptor down-regulation.",
+              "Phenylephrine: pure α1 — reflex bradycardia, useful in obstetric/sympathetic-block hypotension.",
+              "Vasopressin acts on V1 receptors — useful in catecholamine-resistant shock; risk of digital and mesenteric ischaemia.",
+            ]}
+          />
         </>
       }
     />
