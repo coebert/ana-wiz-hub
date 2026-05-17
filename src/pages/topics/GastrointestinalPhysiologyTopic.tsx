@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { giPhysiologyQuestions } from "@/data/quizzes";
 import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
@@ -112,6 +113,16 @@ const GastrointestinalPhysiologyTopic = () => {
       ]}
       coreConcepts={
         <>
+          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Gastrointestinal physiology matters to the anaesthetist for two reasons: aspiration risk and
+              postoperative ileus / PONV. Starting from gastric secretion (the target for fasting guidelines and
+              acid-suppression pharmacology), we move through the vomiting reflex (mapping onto antiemetic classes),
+              motility (relevant to ileus and prokinetics) and finish with the integrated anaesthetic implications.
+            </p>
+          </ExamSection>
+
           <ExamSection id="gastric-secretion" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gastric Secretion</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -245,6 +256,16 @@ const GastrointestinalPhysiologyTopic = () => {
               </li>
             </ul>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>GLP-1 agonists</strong> (semaglutide, tirzepatide): treat as full-stomach unless held per ASA/AAGBI 2024 guidance — gastric residual volume can be high even after prolonged fasting.</>,
+              <><strong>RSI indications</strong>: hiatus hernia + symptoms, bowel obstruction, pregnancy &gt;20 weeks, recent trauma, emergency surgery, gastroparesis.</>,
+              <><strong>Multimodal PONV prophylaxis</strong> beats single-agent every time — combine 5-HT₃ + dexamethasone ± droperidol or cyclizine.</>,
+              <><strong>Ileus prevention</strong>: opioid-sparing analgesia, early enteral nutrition, gum chewing, alvimopan in selected ERAS pathways.</>,
+              <><strong>"Empty stomach"</strong> ≠ low risk: pyloric stenosis, achalasia and DKA may retain large volumes despite fasting.</>,
+            ]}
+          />
         </>
       }
     />
