@@ -34,11 +34,12 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "Myasthenia gravis: increased sensitivity to non-depolarising NMBAs (use 10–50% of normal dose); resistance to suxamethonium (ED₉₅ 2.6× normal); always use neuromuscular monitoring",
-  "Epilepsy: avoid drugs that lower seizure threshold (enflurane, tramadol, high-dose remifentanil); propofol and sevoflurane are generally safe; ensure therapeutic anticonvulsant levels preoperatively",
-  "Multiple sclerosis: neuraxial anaesthesia may be associated with postoperative relapse (controversial); spinal anaesthesia carries higher risk than epidural; document existing deficits preoperatively",
-  "Parkinson's disease: continue levodopa until immediately before surgery and restart ASAP postoperatively — abrupt withdrawal can cause neuroleptic malignant-like syndrome; avoid all dopamine antagonists (metoclopramide, droperidol, prochlorperazine)",
-  "Autonomic dysreflexia in spinal cord injury (lesion ≥T6): massive sympathetic discharge below lesion triggered by bladder/bowel distension — treat with removal of stimulus, GTN, and nifedipine; can cause life-threatening hypertension and bradycardia",
+  { text: "Myasthenia gravis: increased sensitivity to non-depolarising NMBAs (use 10–50% of normal dose); resistance to suxamethonium (ED₉₅ 2.6× normal); always use neuromuscular monitoring", cites: ["BJA Educ 2018 MG", "AAGBI Neuromuscular"] },
+  { text: "Epilepsy: avoid drugs that lower seizure threshold (enflurane, tramadol, high-dose remifentanil); propofol and sevoflurane are generally safe; ensure therapeutic anticonvulsant levels preoperatively", cites: ["BJA Educ 2015 Epilepsy"] },
+  { text: "Multiple sclerosis: neuraxial anaesthesia may be associated with postoperative relapse (controversial); spinal anaesthesia carries higher risk than epidural; document existing deficits preoperatively", cites: ["AAGBI Neuromuscular"] },
+  { text: "Parkinson's disease: continue levodopa until immediately before surgery and restart ASAP postoperatively — abrupt withdrawal can cause neuroleptic malignant-like syndrome; avoid all dopamine antagonists (metoclopramide, droperidol, prochlorperazine)", cites: ["BJA Educ 2014 PD"] },
+  { text: "Autonomic dysreflexia in spinal cord injury (lesion ≥T6): massive sympathetic discharge below lesion triggered by bladder/bowel distension — treat with removal of stimulus, GTN, and nifedipine; can cause life-threatening hypertension and bradycardia", cites: ["Autonomic Dysreflexia"] },
+
 ];
 
 const NeurologicalDiseaseTopic = () => {

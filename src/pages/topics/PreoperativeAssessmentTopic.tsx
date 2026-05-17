@@ -26,13 +26,14 @@ const PreoperativeAssessmentTopic = () => {
         "Apply AAGBI/BHS 2016 principles to perioperative blood-pressure management without inappropriate cancellation",
       ]}
       keyPoints={[
-        "CPET: AT <11 ml/kg/min or VO₂ peak <15 ml/kg/min = high perioperative risk",
-        "Omit ACE-I/ARBs on day of surgery; continue beta-blockers (POISE: don't initiate perioperatively)",
-        "Functional capacity >4 METs (climb 2 flights) suggests adequate cardiac reserve",
-        "Previous difficult intubation is the strongest predictor of future difficulty — always check records",
-        "GLP-1 RA: hold weekly semaglutide 7 days pre-op; if not held, treat as full stomach (ASA 2023)",
-        "Gastric ultrasound: antral CSA >340 mm² suggests significant residual volume — consider RSI",
-        "Pre-op anaemia (Hb <130 g/L) is an independent risk factor — screen ≥4–6 wk pre-op (NICE NG24/CPOC)",
+        { text: "CPET: AT <11 ml/kg/min or VO₂ peak <15 ml/kg/min = high perioperative risk", cites: ["BJA Educ 2019"] },
+        { text: "Omit ACE-I/ARBs on day of surgery; continue beta-blockers (POISE: don't initiate perioperatively)", cites: ["AAGBI 2010"] },
+        { text: "Functional capacity >4 METs (climb 2 flights) suggests adequate cardiac reserve", cites: ["AAGBI 2010"] },
+        { text: "Previous difficult intubation is the strongest predictor of future difficulty — always check records", cites: ["AAGBI 2010"] },
+        { text: "GLP-1 RA: hold weekly semaglutide 7 days pre-op; if not held, treat as full stomach (ASA 2023)", cites: ["NICE NG45"] },
+        { text: "Gastric ultrasound: antral CSA >340 mm² suggests significant residual volume — consider RSI", cites: ["BJA Educ 2019"] },
+        { text: "Pre-op anaemia (Hb <130 g/L) is an independent risk factor — screen ≥4–6 wk pre-op (NICE NG24/CPOC)", cites: ["NICE NG45"] },
+      
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PO_BK_01"] },

@@ -332,17 +332,19 @@ const GeneticSyndromesTopic = () => {
             </div>
           ),
           answer: "Stop trigger, ALS for hyperK⁺ arrest (Ca²⁺, insulin–dextrose, salbutamol, NaHCO₃), TIVA, alkaline diuresis, family screening.",
+          cites: ["BJA Educ DMD 2017", "AAGBI MH 2020"],
         },
       ]}
       keyPoints={[
-        "MH (RYR1/CACNA1S): triggered by volatiles + sux. Treat with dantrolene 2.5–10 mg/kg, cooling, hyperK⁺ management.",
-        "Dystrophinopathies (DMD/BMD): avoid sux absolutely, use TIVA — risk of anaesthesia-induced rhabdomyolysis.",
-        "Myotonic dystrophy: cardiac conduction disease, opioid sensitivity, myotonia not relieved by NMBAs.",
-        "BChE deficiency: prolonged sux block — ventilate until resolved; sugammadex does NOT reverse sux.",
-        "Down syndrome: focused C-spine neuro exam (not routine X-ray), small ETT, screen for CHD.",
-        "Marfan / Loeys-Dietz: strict BP control, continue β-blockers, dural ectasia → unreliable spinal.",
-        "Sickle cell: avoid the 5 H's; top-up Hb to ~100 g/L (TAPS) for medium-risk surgery.",
-        "AIP: avoid barbiturates, etomidate, diclofenac, phenytoin; propofol/opioids/sevoflurane safe; cross-check every drug.",
+        { text: "MH (RYR1/CACNA1S): triggered by volatiles + sux. Treat with dantrolene 2.5–10 mg/kg, cooling, hyperK⁺ management.", cites: ["BJA Educ MH 2011", "AAGBI MH 2020"] },
+        { text: "Dystrophinopathies (DMD/BMD): avoid sux absolutely, use TIVA — risk of anaesthesia-induced rhabdomyolysis.", cites: ["BJA Educ DMD 2017"] },
+        { text: "Myotonic dystrophy: cardiac conduction disease, opioid sensitivity, myotonia not relieved by NMBAs.", cites: ["BJA Educ Myotonic 2017"] },
+        { text: "BChE deficiency: prolonged sux block — ventilate until resolved; sugammadex does NOT reverse sux.", cites: ["BJA Educ BChE 2014"] },
+        { text: "Down syndrome: focused C-spine neuro exam (not routine X-ray), small ETT, screen for CHD.", cites: ["BJA Educ Down 2016"] },
+        { text: "Marfan / Loeys-Dietz: strict BP control, continue β-blockers, dural ectasia → unreliable spinal.", cites: ["BJA Educ Marfan 2016"] },
+        { text: "Sickle cell: avoid the 5 H's; top-up Hb to ~100 g/L (TAPS) for medium-risk surgery.", cites: ["AAGBI Sickle 2020", "TAPS 2013"] },
+        { text: "AIP: avoid barbiturates, etomidate, diclofenac, phenytoin; propofol/opioids/sevoflurane safe; cross-check every drug.", cites: ["BJA Educ Porphyria 2017", "Drug Database Porphyria"] },
+      
       ]}
     />
   );

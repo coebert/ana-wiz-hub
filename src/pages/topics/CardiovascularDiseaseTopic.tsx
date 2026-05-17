@@ -14,11 +14,12 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "Ischaemic heart disease is the leading cause of perioperative cardiac morbidity — maintain coronary perfusion pressure (CPP = DBP − LVEDP), avoid tachycardia, and continue β-blockers and statins perioperatively",
-  "Severe aortic stenosis (valve area <1 cm², mean gradient >40 mmHg) carries the highest risk of perioperative cardiac death — maintain sinus rhythm, avoid hypotension, and ensure adequate preload",
-  "Heart failure patients with EF <30% require careful fluid management, avoidance of myocardial depressants, and consideration of cardiac output monitoring for major surgery",
-  "Patients with permanent pacemakers/ICDs require device interrogation preoperatively; ICDs should have anti-tachycardia therapy deactivated with external defibrillation available",
-  "Pulmonary hypertension (mPAP ≥25 mmHg) carries perioperative mortality of 1–7%; avoid hypoxia, hypercarbia, acidosis, and excessive PEEP which increase PVR",
+  { text: "Ischaemic heart disease is the leading cause of perioperative cardiac morbidity — maintain coronary perfusion pressure (CPP = DBP − LVEDP), avoid tachycardia, and continue β-blockers and statins perioperatively", cites: ["ESC/ESA 2022", "AHA/ACC 2014"] },
+  { text: "Severe aortic stenosis (valve area <1 cm², mean gradient >40 mmHg) carries the highest risk of perioperative cardiac death — maintain sinus rhythm, avoid hypotension, and ensure adequate preload", cites: ["BJA Educ 2015 Valvular", "ESC/ESA 2022"] },
+  { text: "Heart failure patients with EF <30% require careful fluid management, avoidance of myocardial depressants, and consideration of cardiac output monitoring for major surgery", cites: ["ESC/ESA 2022", "AHA/ACC 2014"] },
+  { text: "Patients with permanent pacemakers/ICDs require device interrogation preoperatively; ICDs should have anti-tachycardia therapy deactivated with external defibrillation available", cites: ["BJA Educ 2017", "AHA/ACC 2014"] },
+  { text: "Pulmonary hypertension (mPAP ≥25 mmHg) carries perioperative mortality of 1–7%; avoid hypoxia, hypercarbia, acidosis, and excessive PEEP which increase PVR", cites: ["ESC/ESA 2022"] },
+
 ];
 
 const CardiovascularDiseaseTopic = () => {

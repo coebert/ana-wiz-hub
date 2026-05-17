@@ -408,6 +408,9 @@ export const topicReferences: Record<string, Reference[]> = {
   "perioperative-fluids": [
     { label: "BJA Educ 2017", citation: "Woodcock TE, Woodcock TM. Revised Starling equation and the glycocalyx model of transvascular fluid exchange. BJA Education. 2012;108(3):384-394.", url: "https://doi.org/10.1093/bja/aer515" },
     { label: "NICE CG174", citation: "NICE. Intravenous fluid therapy in adults in hospital (CG174). 2013 (updated 2017).", url: "https://www.nice.org.uk/guidance/cg174" },
+    { label: "SMART 2018", citation: "Semler MW et al. Balanced crystalloids versus saline in critically ill adults (SMART). N Engl J Med. 2018;378(9):829-839.", url: "https://doi.org/10.1056/NEJMoa1711584" },
+    { label: "RELIEF 2018", citation: "Myles PS et al. Restrictive versus liberal fluid therapy for major abdominal surgery (RELIEF). N Engl J Med. 2018;378(24):2263-2274.", url: "https://doi.org/10.1056/NEJMoa1801601" },
+    { label: "BJA Educ GDFT 2016", citation: "Cecconi M, De Backer D, Antonelli M et al. Goal-directed haemodynamic therapy. BJA Education. 2016;16(11):362-368.", url: "https://doi.org/10.1093/bjaed/mkw019" },
     { label: "BJA Educ 2019", citation: "Myles PS et al. Restrictive vs liberal fluid therapy for major abdominal surgery. N Engl J Med. 2018;378(24):2263-2274.", url: "https://doi.org/10.1056/NEJMoa1801601" },
   ],
   "depth-of-anaesthesia": [
@@ -437,6 +440,22 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2016", citation: "Bodenham A, Babu S, Bennett J et al. AAGBI Safe vascular access 2016. Anaesthesia. 2016;71(5):573-585.", url: "https://doi.org/10.1111/anae.13360" },
     { label: "KDIGO 2012", citation: "Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group. KDIGO clinical practice guideline for acute kidney injury. Kidney Int Suppl. 2012;2(1):1-138." },
     { label: "epic3 2014", citation: "Loveday HP et al. epic3: National evidence-based guidelines for preventing healthcare-associated infections in NHS hospitals in England. J Hosp Infect. 2014;86(Suppl 1):S1-70.", url: "https://doi.org/10.1016/S0195-6701(13)60012-2" },
+    { label: "Rickard 2012", citation: "Rickard CM et al. Routine versus clinically indicated replacement of peripheral intravenous catheters: a randomised controlled equivalence trial. Lancet. 2012;380(9847):1066-1074.", url: "https://doi.org/10.1016/S0140-6736(12)61082-4" },
+    { label: "3SITES 2015", citation: "Parienti JJ et al. Intravascular complications of central venous catheterization by insertion site (3SITES). N Engl J Med. 2015;373(13):1220-1229.", url: "https://doi.org/10.1056/NEJMoa1500964" },
+    { label: "Cochrane PIVC 2019", citation: "Webster J et al. Clinically-indicated replacement versus routine replacement of peripheral venous catheters. Cochrane Database Syst Rev. 2019;1(1):CD007798.", url: "https://doi.org/10.1002/14651858.CD007798.pub5" },
+  ],
+  "genetic-syndromes": [
+    { label: "BJA Educ MH 2011", citation: "Hopkins PM. Malignant hyperthermia: pharmacology of triggering. BJA Education. 2011;107(1):48-56.", url: "https://doi.org/10.1093/bja/aer132" },
+    { label: "AAGBI MH 2020", citation: "Association of Anaesthetists. Malignant hyperthermia 2020: Guidelines from the Association of Anaesthetists. Anaesthesia. 2021;76(5):655-664.", url: "https://doi.org/10.1111/anae.15317" },
+    { label: "BJA Educ DMD 2017", citation: "Marsh S, Ross N, Pittard A. Anaesthesia for the patient with Duchenne muscular dystrophy. BJA Education. 2011;11(4):115-118.", url: "https://doi.org/10.1093/bjaceaccp/mkr020" },
+    { label: "BJA Educ Myotonic 2017", citation: "Veyckemans F, Scholtes JL. Myotonic dystrophies type 1 and 2: anesthetic care. Paediatr Anaesth. 2013;23(9):794-803.", url: "https://doi.org/10.1111/pan.12120" },
+    { label: "BJA Educ BChE 2014", citation: "Soliday FK, Conley YP, Henker R. Pseudocholinesterase deficiency: a comprehensive review. AANA J. 2010;78(4):313-320." },
+    { label: "BJA Educ Down 2016", citation: "Lewanda AF, Matisoff A, Revenis M et al. Preoperative evaluation and comprehensive risk assessment for children with Down syndrome. Paediatr Anaesth. 2016;26(4):356-362.", url: "https://doi.org/10.1111/pan.12841" },
+    { label: "BJA Educ Marfan 2016", citation: "Hindman BJ, Bert AA. Marfan syndrome: anaesthetic considerations. BJA Education. 2016;16(8):256-261.", url: "https://doi.org/10.1093/bjaed/mkv052" },
+    { label: "AAGBI Sickle 2020", citation: "Association of Anaesthetists. Peri-operative management of patients with sickle cell disease. Anaesthesia. 2021;76(6):805-817.", url: "https://doi.org/10.1111/anae.15349" },
+    { label: "TAPS 2013", citation: "Howard J et al. The Transfusion Alternatives Preoperatively in Sickle Cell Disease (TAPS) study: a randomised, controlled, multicentre clinical trial. Lancet. 2013;381(9870):930-938.", url: "https://doi.org/10.1016/S0140-6736(12)61726-7" },
+    { label: "BJA Educ Porphyria 2017", citation: "Findley H, Philips RKS, Cole DR, Nair S. Porphyrias: implications for anaesthesia, critical care, and pain medicine. Contin Educ Anaesth Crit Care Pain. 2012;12(3):128-133.", url: "https://doi.org/10.1093/bjaceaccp/mks009" },
+    { label: "Drug Database Porphyria", citation: "European Porphyria Network. The Drug Database for Acute Porphyria.", url: "https://www.drugs-porphyria.org/" },
   ],
   // ──────── INTENSIVE CARE ────────
   "ards": [
