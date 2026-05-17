@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { neurologicalDiseaseQuestions } from "@/data/quizzes";
 import MGNMBASensitivityDiagram from "@/components/diagrams/MGNMBASensitivityDiagram";
@@ -73,6 +74,7 @@ const NeurologicalDiseaseTopic = () => {
         {/* Myasthenia Gravis */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Myasthenia Gravis</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09", "NA_BK_01"]} />
           <MGPathophysDiagram />
           <PathophysDrugMapper
             title="Pathophysiology → anaesthetic drug effects"
@@ -134,6 +136,7 @@ const NeurologicalDiseaseTopic = () => {
         {/* Epilepsy */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Epilepsy</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <EpilepsyPathophysDiagram />
           <PathophysDrugMapper
             title="Pathophysiology → anaesthetic drug effects"
@@ -177,6 +180,7 @@ const NeurologicalDiseaseTopic = () => {
         {/* Multiple Sclerosis */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Multiple Sclerosis</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <MSPathophysDiagram />
           <PathophysDrugMapper
             title="Pathophysiology → anaesthetic drug effects"
@@ -219,6 +223,7 @@ const NeurologicalDiseaseTopic = () => {
         {/* Parkinson's Disease */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Parkinson's Disease</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <PDPathophysDiagram />
           <PathophysDrugMapper
             title="Pathophysiology → anaesthetic drug effects"
@@ -262,6 +267,7 @@ const NeurologicalDiseaseTopic = () => {
         {/* Motor Neuron Disease */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Motor Neuron Disease</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <MNDPathophysDiagram />
           <PathophysDrugMapper
             title="Pathophysiology → anaesthetic drug effects"
@@ -303,6 +309,7 @@ const NeurologicalDiseaseTopic = () => {
         {/* Muscular Dystrophies */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Muscular Dystrophies</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <MDPathophysDiagram />
           <PathophysDrugMapper
             title="Pathophysiology → anaesthetic drug effects"
@@ -345,6 +352,7 @@ const NeurologicalDiseaseTopic = () => {
         {/* Spinal Cord Injury */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord Injury</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <SCIPathophysDiagram />
           <PathophysDrugMapper
             title="Pathophysiology → anaesthetic drug effects"
