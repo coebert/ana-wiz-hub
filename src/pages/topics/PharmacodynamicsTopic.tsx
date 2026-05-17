@@ -106,7 +106,7 @@ const PharmacodynamicsTopic = () => {
       quizQuestions={pharmacodynamicsQuestions}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Pharmacology"] },
-        diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Pharmacology"] },
+        
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
