@@ -27,25 +27,14 @@ const PharmacokineticsTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PH_BK_01"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Peck & Hill Ch.2", "BJA Educ 2017"],
-        diagrams: ["BJA Educ 2017", "Stanski & Shafer"],
         workedExamples: ["Peck & Hill Ch.2", "Stanski & Shafer", "BJA Educ 2017"],
         keyPoints: ["Peck & Hill Ch.2", "BJA Educ 2017", "Stanski & Shafer"],
       }}
-      diagrams={
-        <>
-          <ADMECascadeDiagram />
-          <div className="bg-card rounded-xl border border-border p-6">
-            <CompartmentModelDiagram />
-          </div>
-          <CSHTComparisonDiagram />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
@@ -55,6 +44,9 @@ const PharmacokineticsTopic = () => {
               elimination (ADME). Understanding these principles allows the anaesthetist to predict drug onset, duration,
               and accumulation with repeated dosing.
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <ADMECascadeDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -67,6 +59,9 @@ const PharmacokineticsTopic = () => {
               tissues (muscle, fat). The two-compartment model shows a bi-exponential decline: a rapid distribution
               phase (α) followed by a slower elimination phase (β).
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <CompartmentModelDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -120,6 +115,9 @@ const PharmacokineticsTopic = () => {
               to fall by 50% after stopping an infusion of a given duration. Remifentanil has a short, constant CSHT (~3-4 min)
               regardless of infusion duration, while fentanyl's CSHT increases markedly with prolonged infusions.
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
+              <CSHTComparisonDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
