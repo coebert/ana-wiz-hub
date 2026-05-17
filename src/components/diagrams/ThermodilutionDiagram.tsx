@@ -541,15 +541,18 @@ export const ThermodilutionDiagram = () => {
           </p>
         </div>
   
-        {/* Bibliography */}
-        <div className="mt-3 rounded-lg border border-border bg-background/60 p-3">
-          <div className="flex items-center gap-1.5 mb-2">
-            <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
-            <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
-              Sources
-            </p>
-          </div>
-          <ol className="space-y-1.5 list-none">
+        {/* Bibliography — collapsed by default */}
+        <details className="mt-3 rounded-lg border border-border bg-background/60 group/sources">
+          <summary className="flex items-center justify-between gap-2 px-3 py-2 cursor-pointer list-none rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            <div className="flex items-center gap-1.5">
+              <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
+              <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
+                Sources ({SOURCES.length})
+              </p>
+            </div>
+            <ChevronRight className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open/sources:rotate-90" />
+          </summary>
+          <ol className="space-y-1.5 list-none px-3 pb-3">
             {SOURCES.map((s, i) => (
               <li
                 key={s.url}
@@ -570,7 +573,7 @@ export const ThermodilutionDiagram = () => {
               </li>
             ))}
           </ol>
-        </div>
+        </details>
       </div>
     </DiagramFigure>
   );
