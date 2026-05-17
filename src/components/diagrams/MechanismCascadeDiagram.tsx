@@ -347,6 +347,8 @@ export const MechanismCascadeDiagram = ({
                     <ExternalLink
                       className="inline h-2.5 w-2.5 ml-0.5 align-baseline"
                       style={{ color: accentVar }}
+                      aria-hidden="true"
+                      focusable="false"
                     />
                   </a>
                 </li>
@@ -376,7 +378,7 @@ const ChainSvg = ({ steps, active, accentVar }: ChainSvgProps) => {
   const height = steps.length * nodeH + (steps.length - 1) * gap + 12;
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto max-h-[420px]">
+    <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto max-h-[420px]" role="presentation" aria-hidden="true" focusable="false">
       {steps.map((s, i) => {
         const y = i * (nodeH + gap) + 6;
         const isActive = i === active;
@@ -487,7 +489,7 @@ const RadialSvg = ({ steps, active, accentVar, centerLabel }: RadialSvgProps) =>
   });
 
   return (
-        <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-auto max-h-[420px]">
+        <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-auto max-h-[420px]" role="presentation" aria-hidden="true" focusable="false">
       {/* Spokes */}
       {positions.map((p, i) => (
         <line
