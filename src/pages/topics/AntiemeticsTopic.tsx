@@ -5,6 +5,8 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { antiemeticsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { DiagramSection } from "@/components/DiagramSection";
+import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
 
 const objectives = [
   "Apply the Apfel score to estimate baseline PONV risk and stratify prophylaxis",
