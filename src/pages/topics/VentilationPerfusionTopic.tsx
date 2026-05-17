@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ventilationPerfusionQuestions } from "@/data/quizzes";
@@ -304,6 +305,16 @@ const VentilationPerfusionTopic = () => {
               </ul>
             </SynthesisBlock>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>Shunt vs V/Q mismatch</strong>: shunt fails to correct with 100% O₂; V/Q mismatch does — single most tested point.</>,
+              <><strong>Volatile agents abolish HPV</strong> at high doses — TIVA preferred for one-lung ventilation when oxygenation marginal.</>,
+              <><strong>PEEP overshoot</strong>: too much PEEP creates West zone 1, increasing dead space and dropping cardiac output.</>,
+              <><strong>EtCO₂–PaCO₂ gradient widens</strong> with dead space — useful bedside marker of PE, low CO or air trapping.</>,
+              <><strong>Supine + GA</strong>: FRC falls below closing capacity in the elderly and obese — atelectasis-driven hypoxaemia, mitigated by PEEP and recruitment.</>,
+            ]}
+          />
         </section>
       }
     />

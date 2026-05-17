@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { NMJDiagram } from "@/components/diagrams/NMJDiagram";
 import NeuromuscularMonitoringDiagram from "@/components/diagrams/NeuromuscularMonitoringDiagram";
@@ -240,6 +241,16 @@ const NeuromuscularTopic = () => {
               </ul>
             </div>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>Suxamethonium hyperkalaemia</strong>: avoid in burns &gt;24 h, denervation, prolonged immobility, muscular dystrophy — extrajunctional receptor upregulation.</>,
+              <><strong>Myasthenia gravis</strong>: sensitive to non-depolarisers, resistant to sux — titrate to TOF.</>,
+              <><strong>Always reverse to TOF ratio ≥0.9</strong>: residual block at 0.7–0.9 is invisible clinically but doubles postoperative pulmonary complications.</>,
+              <><strong>Sugammadex</strong> chelates rocuronium/vecuronium in any depth of block — does not work for benzylisoquinoliniums; rebleed risk after 24 h with hormonal contraception.</>,
+              <><strong>Pseudocholinesterase deficiency</strong>: prolonged sux block — sedate and ventilate until block reverses; check dibucaine number postoperatively.</>,
+            ]}
+          />
         </>
       }
     />

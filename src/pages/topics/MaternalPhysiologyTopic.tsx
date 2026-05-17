@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { maternalPhysiologyQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
@@ -224,6 +225,16 @@ const MaternalPhysiologyTopic = () => {
               <li><strong>↑ Sensitivity to neuromuscular blockers</strong>: ↓ plasma cholinesterase (clinically subtle).</li>
             </ul>
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>From 20 weeks</strong>: full-stomach precautions and 15° left lateral tilt to avoid aortocaval compression.</>,
+              <><strong>Difficult airway</strong>: capillary engorgement, weight gain, breast enlargement and full dentition combine — pre-oxygenate well; desaturate fast due to ↓ FRC + ↑ VO₂.</>,
+              <><strong>Reduced LA dose</strong>: epidural/spinal doses ~30% lower than non-pregnant. Total spinal risk if subdural/intrathecal placement missed.</>,
+              <><strong>Hypotension after spinal</strong>: phenylephrine preferred over ephedrine (less foetal acidaemia).</>,
+              <><strong>Massive obstetric haemorrhage</strong>: pregnant patients tolerate large blood loss before becoming overtly shocked — act on heart rate and trend, not single BP.</>,
+            ]}
+          />
         </>
       }
     />

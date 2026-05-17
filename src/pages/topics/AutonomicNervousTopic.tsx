@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { autonomicNervousQuiz } from "@/data/quizzes";
 import { ANSDiagram } from "@/components/diagrams/ANSDiagram";
@@ -191,6 +192,16 @@ const AutonomicNervousTopic = () => {
               links={[{ topicId: "cardiac-electrophysiology", anchor: "bp-regulation", label: "Blood Pressure Regulation" }]}
             />
           </ExamSection>
+
+          <ExamPitfallsCallout
+            pitfalls={[
+              <><strong>Oculocardiac reflex</strong> (V→X bradycardia) on traction of extraocular muscles — warn surgeon, treat with cessation, atropine if persistent.</>,
+              <><strong>Autonomic dysreflexia</strong> in spinal injury &gt;T6 — noxious stimulus below the lesion triggers severe hypertension and reflex bradycardia. Treat trigger, head-up, vasodilator.</>,
+              <><strong>Diabetic autonomic neuropathy</strong>: gastroparesis (aspiration risk), silent ischaemia, exaggerated BP swings on induction.</>,
+              <><strong>Phaeochromocytoma</strong>: α-block before β-block; intra-op surges treated with short-acting agents (phentolamine, magnesium, esmolol).</>,
+              <><strong>Anticholinergic syndrome</strong>: "hot as a hare, dry as a bone, mad as a hatter" — physostigmine reverses central effects but cardiac risk limits use.</>,
+            ]}
+          />
         </>
       }
     />
