@@ -320,9 +320,10 @@ const AcutePancreatitisTopic = () => {
               </div>
             ))}
           </div>
+          <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+            <WaterfallFluidDiagram />
+          </div>
         </div>
-
-        {/* Ongoing Management */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ongoing Management (beyond 72h)</h2>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
