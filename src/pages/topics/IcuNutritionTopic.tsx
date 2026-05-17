@@ -170,6 +170,7 @@ const IcuNutritionTopic = () => {
             <div className="my-4">
               <EnergyProteinTargetDiagram />
             </div>
+            <div className="space-y-2">
               {[
                 { target: "Energy", detail: "20–25 kcal/kg/day (actual body weight in non-obese). Acute phase: ≤70% of REE; full target by day 4–7. Indirect calorimetry is gold standard. Avoid overfeeding (lipogenesis, hyperglycaemia, ↑CO₂ load)." },
                 { target: "Protein", detail: "1.2–2.0 g/kg/day (higher in burns / trauma / CRRT). Protein delivery is the single most outcome-relevant macronutrient target — often under-delivered when calories alone are tracked." },
