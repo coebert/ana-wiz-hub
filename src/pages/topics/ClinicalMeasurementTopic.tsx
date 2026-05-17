@@ -67,15 +67,12 @@ const ClinicalMeasurementTopic = () => {
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={clinicalMeasurementQuiz}
-      diagrams={<ClinicalMeasurementDiagram />}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.16", "Middleton Ch.18"],
-        diagrams: ["BJA Educ 2005"],
         keyPoints: ["Cross & Plunkett Ch.16", "Middleton Ch.18", "BJA Educ 2005"],
       }}
       coreConcepts={
