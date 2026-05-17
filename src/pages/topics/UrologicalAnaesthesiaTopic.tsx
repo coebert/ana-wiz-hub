@@ -156,6 +156,9 @@ const UrologicalAnaesthesiaTopic = () => {
               <li><strong>Mechanical</strong>: ice packs, manual compression — generally ineffective alone</li>
               <li><strong>Last resort</strong>: abandon procedure if detumescence fails and instrumentation unsafe</li>
             </ul>
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <PropofolErectionAlgorithmDiagram />
+            </div>
             <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
               <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
               <p className="text-xs text-muted-foreground">
