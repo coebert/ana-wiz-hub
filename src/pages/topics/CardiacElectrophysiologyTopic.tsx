@@ -205,6 +205,19 @@ const CardiacElectrophysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            <div className="mt-4">
+              <DiagramTabs
+                title="Conduction disorders & pacing"
+                description="Bradyarrhythmias from conduction failure, tachyarrhythmias from re-entry or automaticity, and the device therapies that rescue them — grouped here so you can flip between mechanism and morphology."
+                tabs={[
+                  { value: "av-block", label: "AV block", caption: "First, second (Mobitz I/II) and third-degree AV block with ladder diagrams.", content: <HeartBlockDiagram /> },
+                  { value: "bbb", label: "Bundle branch block", caption: "RBBB vs LBBB — QRS morphology, axis and clinical implications.", content: <BundleBranchBlockDiagram /> },
+                  { value: "tachy", label: "Tachyarrhythmias", caption: "Narrow- vs broad-complex tachycardias, re-entry circuits and triggered activity.", content: <TachyarrhythmiaDiagram /> },
+                  { value: "brady", label: "Bradyarrhythmias", caption: "Sinus node disease, escape rhythms and chronotropic incompetence.", content: <BradyarrhythmiaDiagram /> },
+                  { value: "pacing", label: "Pacing devices", caption: "Pacemaker and ICD lead positions, NBG codes and peri-operative reprogramming.", content: <PacingDevicesDiagram /> },
+                ]}
+              />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
