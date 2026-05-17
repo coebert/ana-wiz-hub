@@ -49,12 +49,10 @@ const PlasticSurgeryTopic = () => {
       topicId="plastic-surgery"
       topicTitle="Plastic Surgery & Microsurgery Anaesthesia"
       objectives={objectives}
-      diagrams={<FreeFlaPerfusionDiagram />}
       workedExamples={workedExamples}
       quizQuestions={plasticSurgeryQuestions}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
-        diagrams: { exams: [Exam.FINAL] },
         workedExamples: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
@@ -85,6 +83,9 @@ const PlasticSurgeryTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Free tissue transfer involves harvesting a composite tissue flap (skin, muscle, bone) with its vascular pedicle and anastomosing it to recipient vessels at the defect site. Flap survival depends on <strong className="text-foreground">microvascular patency</strong>, influenced by haemodynamics, temperature, coagulation, and vasoactive drugs.
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <FreeFlaPerfusionDiagram />
+            </div>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Optimising Flap Perfusion</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
