@@ -101,15 +101,8 @@ const PulmonaryHypertensionTopic = () => {
       topicId="pulmonary-hypertension"
       topicTitle="Pulmonary Hypertension Management"
       quizQuestions={pulmonaryHypertensionQuestions}
-      diagrams={
-        <div className="space-y-4">
-          <PHPathophysiologyDiagram />
-          <RVFailureSpiralDiagram />
-        </div>
-      }
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FRCA Final CV", "FFICM 4.5", "EDIC 3"] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
