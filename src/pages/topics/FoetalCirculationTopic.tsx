@@ -94,21 +94,14 @@ const FoetalCirculationTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PA_BK_01"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PA_BK_02"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Power & Kam Ch.18"],
-        diagrams: ["BJA Educ 2015"],
         workedExamples: ["BJA Educ 2015", "Power & Kam Ch.18"],
         keyPoints: ["Power & Kam Ch.18", "Ganong Ch.33", "BJA Educ 2015"],
       }}
-      diagrams={
-        <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-          <FoetalCirculationDiagram />
-        </div>
-      }
       keyPoints={[
         { text: "Three foetal shunts: ductus venosus, foramen ovale, ductus arteriosus — all bypass the lungs.", cites: ["Ganong Ch.33"] },
         { text: "HbF has higher O₂ affinity (P₅₀ 2.7 kPa) — left-shifted ODC aids placental O₂ uptake.", cites: ["Power & Kam Ch.18"] },
@@ -157,6 +150,9 @@ const FoetalCirculationTopic = () => {
 
           <ExamSection id="flow-pathway" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
             <CollapsibleSubsection title="Foetal Blood Flow Pathway">
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <FoetalCirculationDiagram />
+            </div>
             <div className="p-4 rounded-lg border border-border bg-secondary/20">
               <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside leading-relaxed">
                 <li>Oxygenated blood from the <strong>placenta</strong> travels via the <strong>umbilical vein</strong> (SpO₂ ~80%).</li>
