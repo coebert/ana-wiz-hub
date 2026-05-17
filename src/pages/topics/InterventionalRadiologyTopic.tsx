@@ -50,12 +50,10 @@ const InterventionalRadiologyTopic = () => {
       topicId="interventional-radiology"
       topicTitle="Anaesthesia for Interventional Radiology"
       objectives={objectives}
-      diagrams={<ContrastReactionDiagram />}
       workedExamples={workedExamples}
       quizQuestions={interventionalRadiologyQuestions}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
-        diagrams: { exams: [Exam.FINAL] },
         workedExamples: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
@@ -101,6 +99,9 @@ const InterventionalRadiologyTopic = () => {
 
           <ExamSection id="contrast" exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Contrast Media Reactions">
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <ContrastReactionDiagram />
+            </div>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Iodinated Contrast Reactions</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">

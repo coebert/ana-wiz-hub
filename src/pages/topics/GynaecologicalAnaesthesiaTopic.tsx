@@ -103,7 +103,6 @@ const GynaecologicalAnaesthesiaTopic = () => {
       quizQuestions={gynaecologicalAnaesthesiaQuestions}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL], curriculumCodes: ["RCoA Final — Clinical Anaesthesia (specialty)"] },
-        diagrams: { exams: [Exam.FINAL], curriculumCodes: ["RCoA Final — Clinical Anaesthesia (specialty)"] },
         workedExamples: { exams: [Exam.FINAL] },
         keyPoints: { exams: [Exam.FINAL] },
       }}
@@ -118,10 +117,6 @@ const GynaecologicalAnaesthesiaTopic = () => {
           "BSGE 2018",
           "BJA Educ TURP 2014",
         ],
-        diagrams: [
-          "BJA Educ Lap 2011",
-          "BSGE 2018",
-        ],
         keyPoints: [
           "BJA Educ Lap 2011",
           "ERAS Gynae 2019",
@@ -130,12 +125,6 @@ const GynaecologicalAnaesthesiaTopic = () => {
           "BJA Educ TURP 2014",
         ],
       }}
-      diagrams={
-        <>
-          <PneumoperitoneumTrendelenburgDiagram />
-          <TURPSyndromeDiagram />
-        </>
-      }
       keyPoints={[
         { text: "Pneumoperitoneum + steep Trendelenburg: ↑ PaCO₂, ↓ FRC, ↑ IOP/ICP, facial and laryngeal oedema", cites: ["BSGE 2018"] },
         { text: "Robotic surgery: prolonged position → airway oedema; plan for difficult extubation; limited patient access during dock", cites: ["BJA Educ Lap 2011"] },
@@ -159,6 +148,9 @@ const GynaecologicalAnaesthesiaTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Most gynaecological procedures are now laparoscopic or robotic. The combination of pneumoperitoneum and steep Trendelenburg creates unique physiological challenges.
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <PneumoperitoneumTrendelenburgDiagram />
+            </div>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { label: "Pneumoperitoneum", value: "CO₂ insufflation to 12–15 mmHg — ↑ PaCO₂ (absorption), ↑ SVR, ↓ venous return, ↓ renal blood flow" },
@@ -197,6 +189,9 @@ const GynaecologicalAnaesthesiaTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Diagnostic hysteroscopy is often performed under local anaesthesia or sedation. Operative hysteroscopy (resection of fibroids, endometrial ablation) requires GA or spinal.
             </p>
+            <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+              <TURPSyndromeDiagram />
+            </div>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Fluid absorption</strong>: similar risk to TURP syndrome with glycine distension media — monitor fluid deficit (&lt; 1,000 mL with glycine, &lt; 2,500 mL with saline) — BSGE 2018</li>
               <li><strong>Uterine perforation</strong>: may cause intraperitoneal haemorrhage; requires laparoscopy/laparotomy</li>
