@@ -394,15 +394,19 @@
 
 /* ── Neon splash animation ────────────────────────────────────────── */
 /*
- * Glow radii are expressed in vmin so the halo and bloom scale smoothly
- * with the viewport — a phone gets a tighter, proportionate glow while a
- * desktop monitor gets a full neon-sign bloom. Brightness is held
- * constant at invert(1) brightness(1.9) and only the drop-shadow grows,
- * which avoids the harsh white "blowout" the earlier brightness ramp
- * caused on small screens.
+ * Glow radii are driven by CSS custom properties set from JS after the
+ * splash container has been measured (see NeonSplash.tsx). This keeps
+ * the logo, halo, and bloom proportionate on every screen — short-wide
+ * monitors, tall phones, and everything in between — because they all
+ * derive from the same measured base unit instead of `vmin`, which
+ * over- or under-shoots on extreme aspect ratios.
+ *
+ * Variables (with safe fallbacks):
+ *   --neon-glow-1  sharp inner halo
+ *   --neon-glow-2  mid bloom
+ *   --neon-glow-3  outer wash
  */
 @keyframes neon-flicker {
-  /* Cold tube: completely dark */
   0%   { opacity: 0;
          filter: invert(1) brightness(1.9) drop-shadow(0 0 0 hsl(var(--primary))); }
 
@@ -413,15 +417,15 @@
   17%  { opacity: 0.15; }
   22%  { opacity: 0.85;
          filter: invert(1) brightness(1.9)
-                 drop-shadow(0 0 0.4vmin hsl(var(--primary)))
-                 drop-shadow(0 0 1.5vmin hsl(var(--primary) / 0.5)); }
+                 drop-shadow(0 0 calc(var(--neon-glow-1, 4px) * 0.4) hsl(var(--primary)))
+                 drop-shadow(0 0 calc(var(--neon-glow-2, 16px) * 0.4) hsl(var(--primary) / 0.5)); }
   26%  { opacity: 0.35; }
 
   /* Warm-up: glow ramps in continuously */
   45%  { opacity: 0.95;
          filter: invert(1) brightness(1.9)
-                 drop-shadow(0 0 1vmin hsl(var(--primary)))
-                 drop-shadow(0 0 4vmin hsl(var(--primary) / 0.65)); }
+                 drop-shadow(0 0 calc(var(--neon-glow-1, 4px) * 0.75) hsl(var(--primary)))
+                 drop-shadow(0 0 calc(var(--neon-glow-2, 16px) * 0.75) hsl(var(--primary) / 0.65)); }
 
   /* Tiny lived-in flutter once lit */
   58%  { opacity: 0.82; }
@@ -430,9 +434,9 @@
   /* Settled neon glow */
   100% { opacity: 1;
          filter: invert(1) brightness(2)
-                 drop-shadow(0 0 1.6vmin hsl(var(--primary)))
-                 drop-shadow(0 0 6vmin hsl(var(--primary) / 0.75))
-                 drop-shadow(0 0 12vmin hsl(var(--primary) / 0.35)); }
+                 drop-shadow(0 0 var(--neon-glow-1, 6px)  hsl(var(--primary)))
+                 drop-shadow(0 0 var(--neon-glow-2, 24px) hsl(var(--primary) / 0.75))
+                 drop-shadow(0 0 var(--neon-glow-3, 48px) hsl(var(--primary) / 0.35)); }
 }
 
 @keyframes neon-halo {
@@ -444,17 +448,15 @@
 
 @keyframes neon-breathe {
   0%, 100% { filter: invert(1) brightness(2)
-                     drop-shadow(0 0 1.6vmin hsl(var(--primary)))
-                     drop-shadow(0 0 6vmin hsl(var(--primary) / 0.75))
-                     drop-shadow(0 0 12vmin hsl(var(--primary) / 0.35)); }
+                     drop-shadow(0 0 var(--neon-glow-1, 6px)  hsl(var(--primary)))
+                     drop-shadow(0 0 var(--neon-glow-2, 24px) hsl(var(--primary) / 0.75))
+                     drop-shadow(0 0 var(--neon-glow-3, 48px) hsl(var(--primary) / 0.35)); }
   50%      { filter: invert(1) brightness(2.05)
-                     drop-shadow(0 0 1.9vmin hsl(var(--primary)))
-                     drop-shadow(0 0 7vmin hsl(var(--primary) / 0.8))
-                     drop-shadow(0 0 14vmin hsl(var(--primary) / 0.4)); }
+                     drop-shadow(0 0 calc(var(--neon-glow-1, 6px)  * 1.18) hsl(var(--primary)))
+                     drop-shadow(0 0 calc(var(--neon-glow-2, 24px) * 1.18) hsl(var(--primary) / 0.8))
+                     drop-shadow(0 0 calc(var(--neon-glow-3, 48px) * 1.18) hsl(var(--primary) / 0.4)); }
 }
 
-/* Sequence: flicker-in (3s, cubic-bezier for smooth ramp),
-   then gentle breathing loop kicks in afterwards. */
 .animate-neon-flicker {
   animation:
     neon-flicker 3s cubic-bezier(0.22, 0.61, 0.36, 1) both,
@@ -468,8 +470,9 @@
     animation: none;
     opacity: 1;
     filter: invert(1) brightness(2)
-            drop-shadow(0 0 1.6vmin hsl(var(--primary)))
-            drop-shadow(0 0 6vmin hsl(var(--primary) / 0.6));
+            drop-shadow(0 0 var(--neon-glow-1, 6px)  hsl(var(--primary)))
+            drop-shadow(0 0 var(--neon-glow-2, 24px) hsl(var(--primary) / 0.6));
   }
 }
+
 
