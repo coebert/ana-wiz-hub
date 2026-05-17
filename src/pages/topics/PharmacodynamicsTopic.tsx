@@ -152,6 +152,9 @@ const PharmacodynamicsTopic = () => {
               <li><strong>Efficacy</strong>: maximal effect achievable (Emax). Full agonist has high efficacy; partial agonist has lower Emax regardless of dose</li>
               <li><strong>Therapeutic index</strong>: TD₅₀/ED₅₀ (or LD₅₀/ED₅₀). Narrow TI drugs: digoxin, warfarin, lithium, phenytoin, theophylline</li>
             </ul>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <DoseResponseCurveDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
