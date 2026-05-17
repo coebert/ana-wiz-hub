@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ExamSection } from "@/components/ExamSection";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { antimicrobialsQuiz } from "@/data/quizzes";
 import AntibioticTargetsDiagram from "@/components/diagrams/AntibioticTargetsDiagram";
