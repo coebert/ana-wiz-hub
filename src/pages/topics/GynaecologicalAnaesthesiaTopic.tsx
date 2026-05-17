@@ -47,7 +47,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Treat as CO₂ gas embolism: stop insufflation, head-down + left lateral (Durant), 100% O₂, fluids and vasopressors, stop N₂O, and aspirate via CVC if possible. The diagnostic clues are sudden EtCO₂ fall, mill-wheel murmur, and cardiovascular collapse — distinguish from tension pneumothorax and vasovagal causes.",
-   cites: ["BJA Educ 2011 Lap"],
+   cites: ["BJA Educ Lap 2011"],
   },
   {
     title: "Hysteroscopy fluid deficit at 1,500 mL with glycine",
@@ -108,21 +108,21 @@ const GynaecologicalAnaesthesiaTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "BJA Educ 2011 Lap",
-          "BJA Educ 2011 Lap",
+          "BJA Educ Lap 2011",
+          "BJA Educ Lap 2011",
           "ERAS Gynae 2019",
         ],
         workedExamples: [
-          "BJA Educ 2011 Lap",
+          "BJA Educ Lap 2011",
           "BSGE 2018",
-          "BJA Educ 2014 TURP",
+          "BJA Educ TURP 2014",
         ],
         diagrams: [
-          "BJA Educ 2011 Lap",
+          "BJA Educ Lap 2011",
           "BSGE 2018",
         ],
         keyPoints: [
-          "BJA Educ 2011 Lap",
+          "BJA Educ Lap 2011",
           "ERAS Gynae 2019",
         ],
       }}
@@ -134,11 +134,11 @@ const GynaecologicalAnaesthesiaTopic = () => {
       }
       keyPoints={[
         { text: "Pneumoperitoneum + steep Trendelenburg: ↑ PaCO₂, ↓ FRC, ↑ IOP/ICP, facial and laryngeal oedema", cites: ["BSGE 2018"] },
-        { text: "Robotic surgery: prolonged position → airway oedema; plan for difficult extubation; limited patient access during dock", cites: ["BJA Educ 2011 Lap"] },
+        { text: "Robotic surgery: prolonged position → airway oedema; plan for difficult extubation; limited patient access during dock", cites: ["BJA Educ Lap 2011"] },
         { text: "Hysteroscopy fluid absorption: STOP at deficit 1,000 mL glycine / 2,500 mL saline (BSGE 2018)", cites: ["ERAS Gynae 2019"] },
-        { text: "CO₂ gas embolism: sudden ↓ EtCO₂ + mill-wheel murmur — head-down left lateral (Durant) + CVC aspiration", cites: ["BJA Educ 2014 TURP"] },
+        { text: "CO₂ gas embolism: sudden ↓ EtCO₂ + mill-wheel murmur — head-down left lateral (Durant) + CVC aspiration", cites: ["BJA Educ TURP 2014"] },
         { text: "Glycine syndrome: dilutional hyponatraemia, transient blindness, hyperammonaemia. Correct Na⁺ ≤ 8–10 mmol/L per 24 h", cites: ["BSGE 2018"] },
-        { text: "ERAS gynae-oncology: thoracic epidural / TAP block, opioid sparing, early mobilisation, LMWH + mechanical VTE prophylaxis", cites: ["BJA Educ 2011 Lap"] },
+        { text: "ERAS gynae-oncology: thoracic epidural / TAP block, opioid sparing, early mobilisation, LMWH + mechanical VTE prophylaxis", cites: ["BJA Educ Lap 2011"] },
       ]}
       coreConcepts={
         <>

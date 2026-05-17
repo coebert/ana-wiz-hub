@@ -31,10 +31,10 @@ const UrologicalAnaesthesiaTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2014 TURP", "BJA Educ 2017 Cystectomy"],
-        diagrams: ["BJA Educ 2014 TURP"],
-        workedExamples: ["BJA Educ 2014 TURP", "AAGBI Lithotomy 2015"],
-        keyPoints: ["BJA Educ 2014 TURP", "ERAS Cystectomy 2013", "AAGBI Lithotomy 2015"],
+        objectives: ["BJA Educ TURP 2014", "BJA Educ Cystectomy 2017"],
+        diagrams: ["BJA Educ TURP 2014"],
+        workedExamples: ["BJA Educ TURP 2014", "AAGBI Lithotomy 2015"],
+        keyPoints: ["BJA Educ TURP 2014", "ERAS Cystectomy 2013", "AAGBI Lithotomy 2015"],
       }}
       diagrams={<><TURPSyndromeDiagram /><PropofolErectionMechanismDiagram /><PropofolErectionAlgorithmDiagram /></>}
       coreConcepts={
@@ -195,15 +195,15 @@ const UrologicalAnaesthesiaTopic = () => {
             </div>
           ),
           answer: "Stop surgery, 3% NaCl 1–2 mL/kg, furosemide, controlled Na⁺ rise ≤10 mmol/L/24h.",
-         cites: ["BJA Educ 2014 TURP"],
+         cites: ["BJA Educ TURP 2014"],
   },
       ]}
       keyPoints={[
-        { text: "TURP syndrome: hyponatraemia from glycine absorption — confusion, visual disturbance, seizures", cites: ["BJA Educ 2014 TURP"] },
+        { text: "TURP syndrome: hyponatraemia from glycine absorption — confusion, visual disturbance, seizures", cites: ["BJA Educ TURP 2014"] },
         { text: "Spinal anaesthesia for TURP allows early detection of absorption symptoms in awake patients", cites: ["ERAS Cystectomy 2013"] },
-        { text: "Bipolar TURP and laser techniques use saline — no TURP syndrome risk but fluid overload still possible", cites: ["BJA Educ 2017 Cystectomy"] },
+        { text: "Bipolar TURP and laser techniques use saline — no TURP syndrome risk but fluid overload still possible", cites: ["BJA Educ Cystectomy 2017"] },
         { text: "Lithotomy position risks: common peroneal nerve injury, compartment syndrome, haemodynamic shifts", cites: ["AAGBI Lithotomy 2015"] },
-        { text: "Radical cystectomy: major blood loss, elderly patients, thoracic epidural/TAP blocks, ERAS protocols", cites: ["BJA Educ 2014 TURP"] },
+        { text: "Radical cystectomy: major blood loss, elderly patients, thoracic epidural/TAP blocks, ERAS protocols", cites: ["BJA Educ TURP 2014"] },
       ]}
     />
   );

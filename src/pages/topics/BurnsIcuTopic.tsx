@@ -95,33 +95,33 @@ const BurnsIcuTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "British Burn Association — National Burn Care Referral Pathway 2012 (rev 2020)",
-          "ISBI Practice Guidelines for Burn Care 2016 / 2018",
-          "EBA European Practice Guidelines for Burn Care 2017",
-          "ABA Advanced Burn Life Support Provider Manual",
+          "BBA Referral 2020",
+          "ISBI 2016",
+          "EBA Burn 2017",
+          "ABA ABLS",
         ],
         workedExamples: [
-          "Pham TN — JBCR 2008 Fluid resuscitation in burns",
-          "BJA Education — Burns: classification, pathophysiology and intensive care 2017",
-          "FICM/ICS Guidelines for the Provision of Intensive Care Services (GPICS) 3e",
+          "Pham 2008",
+          "BJA Educ Burns 2017",
+          "GPICS 3e",
         ],
         keyPoints: [
-          "Herndon — Total Burn Care 5e",
-          "BJA Educ — Inhalation injury and CO/CN poisoning 2019",
-          "NICE NG107 — Trauma and complex injuries (referral)",
+          "Herndon TBC 5e",
+          "BJA Educ Inhalation 2019",
+          "NICE NG107",
         ],
       }}
       keyPoints={[
         { text: "Burn ‘shock’ is biphasic: 0–24 h fluid loss into the burn wound (low CO, high SVR), then a hyperdynamic hypermetabolic phase from 24–48 h lasting weeks.", cites: ["ABA Burn 2023"] },
-        { text: "Suspect inhalation injury with: facial/neck burns, soot in nares/mouth, hoarseness, stridor, carbonaceous sputum, enclosed-space fire, ↓GCS, COHb >10 %.", cites: ["BJA Educ 2017 Burns"] },
+        { text: "Suspect inhalation injury with: facial/neck burns, soot in nares/mouth, hoarseness, stridor, carbonaceous sputum, enclosed-space fire, ↓GCS, COHb >10 %.", cites: ["BJA Educ Burns 2017"] },
         { text: "Wallace’s rule of nines is a rapid pre-hospital estimate; Lund–Browder chart is more accurate, particularly in children. Exclude superficial (erythema only) burns from TBSA.", cites: ["Parkland Formula"] },
         { text: "Parkland formula: 4 mL × kg × %TBSA Hartmann’s in 24 h (half in first 8 h from burn). Modified Brooke: 2 mL × kg × %TBSA. Titrate to urine output, not the formula.", cites: ["ISBI 2016"] },
         { text: "CO competes with O₂ for haemoglobin (240× affinity); SpO₂ over-reads. Treat with 100 % O₂; consider HBO if COHb >25 %, neurology, pregnancy or persistent symptoms.", cites: ["ABA Burn 2023"] },
-        { text: "Cyanide — suspect with persistent metabolic acidosis + lactate >10 mmol/L after enclosed-space fire. Treat empirically with hydroxocobalamin 5 g IV.", cites: ["BJA Educ 2017 Burns"] },
+        { text: "Cyanide — suspect with persistent metabolic acidosis + lactate >10 mmol/L after enclosed-space fire. Treat empirically with hydroxocobalamin 5 g IV.", cites: ["BJA Educ Burns 2017"] },
         { text: "Suxamethonium is safe within 24 h of injury but contra-indicated from day 5 to ~12–24 months due to extra-junctional ACh receptors and lethal hyperkalaemia.", cites: ["Parkland Formula"] },
         { text: "Burn-wound sepsis is the leading cause of late mortality. Pseudomonas, MRSA and fungi predominate; quantitative wound biopsy >10⁵ org/g defines invasive infection.", cites: ["ISBI 2016"] },
         { text: "Hypermetabolism: rest energy expenditure 150–200 % predicted. Treat with early enteral nutrition, tight glycaemic control, propranolol and (in selected) oxandrolone.", cites: ["ABA Burn 2023"] },
-        { text: "UK Burns Centre referral: ≥20 % TBSA adult / ≥10 % child, any face/hand/perineum/major joint, full-thickness, electrical, chemical, inhalation, or burn with comorbidity.", cites: ["BJA Educ 2017 Burns"] },
+        { text: "UK Burns Centre referral: ≥20 % TBSA adult / ≥10 % child, any face/hand/perineum/major joint, full-thickness, electrical, chemical, inhalation, or burn with comorbidity.", cites: ["BJA Educ Burns 2017"] },
       ]}
       coreConcepts={
         <>

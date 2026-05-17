@@ -97,7 +97,7 @@ const HaematologyIcuTopic = () => {
         { text: "HIT: prothrombotic thrombocytopenia — 4Ts score, stop ALL heparin, argatroban first-line (UK)", cites: ["TRICC 1999"] },
         { text: "Warfarin contraindicated in acute HIT — protein C depletion → venous limb gangrene", cites: ["Greinacher NEJM 2015"] },
         { text: "Regional citrate is first-line for CRRT anticoagulation (KDIGO) — contraindicated in liver failure (accumulation risk)", cites: ["Lo 4Ts 2006"] },
-        { text: "Citrate toxicity: rising total Ca²⁺ with falling ionised Ca²⁺ (ratio >2.5), metabolic acidosis", cites: ["ASH 2018 HIT"] },
+        { text: "Citrate toxicity: rising total Ca²⁺ with falling ionised Ca²⁺ (ratio >2.5), metabolic acidosis", cites: ["ASH HIT 2018"] },
         { text: "ECMO anticoagulation: UFH standard, anti-Xa most reliable monitor (target 0.3–0.7 IU/mL)", cites: ["BJA Educ HIT 2018"] },
         { text: "ECMO + HIT: bivalirudin first-line (enzymatic metabolism, very short half-life)", cites: ["BJA Educ HIT 2008"] },
         { text: "Liver failure: elevated INR ≠ auto-anticoagulation — rebalanced haemostasis; still needs VTE prophylaxis", cites: ["BJA Educ 2016"] },
