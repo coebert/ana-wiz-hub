@@ -100,7 +100,6 @@ const StarlingForcesTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_05"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_05", "OA_BK_06"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
@@ -109,17 +108,6 @@ const StarlingForcesTopic = () => {
         workedExamples: ["Levick & Michel 2010", "Woodcock & Woodcock 2012"],
         keyPoints: ["Levick & Michel 2010", "Power & Kam Ch.6", "Woodcock & Woodcock 2012"],
       }}
-      diagrams={
-        <>
-          <StarlingForcesDiagram />
-          <DiagramSection
-            title="Glycocalyx — Structure, Function & Shedding"
-            intro={<p>Toggle between the intact endothelial surface layer (ESL) and the shed, oedema-forming state seen in sepsis, hypervolaemia and ischaemia–reperfusion.</p>}
-          >
-            <GlycocalyxDiagram />
-          </DiagramSection>
-        </>
-      }
       keyPoints={[
         { text: "Revised Starling model: glycocalyx is the barrier, not endothelial junctions — no venular reabsorption", cites: ["Power & Kam Ch.6"] },
         { text: "Fluid return depends entirely on lymphatic drainage, not reabsorption at the venular end", cites: ["Woodcock & Woodcock 2012"] },
