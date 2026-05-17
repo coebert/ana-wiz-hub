@@ -55,6 +55,7 @@ const workedExamples: WorkedExample[] = [
         AEIOU criteria develop or oliguria progresses to stage 3.
       </>
     ),
+    cites: ["BJA Educ 2018"],
   },
   {
     title: "CI-AKI prophylaxis dose calculation",
@@ -80,6 +81,7 @@ const workedExamples: WorkedExample[] = [
         <strong>Do NOT give NAC or prophylactic RRT</strong> (PRESERVE — no benefit).
       </>
     ),
+    cites: ["KDIGO 2012"],
   },
   {
     title: "Citrate CRRT — metabolic alarm",
@@ -104,6 +106,7 @@ const workedExamples: WorkedExample[] = [
         hypocalcaemia (arrhythmia, seizures).
       </>
     ),
+    cites: ["NICE CG169"],
   },
 ];
 
@@ -118,14 +121,14 @@ const AkiRrtTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        "KDIGO stages AKI by creatinine rise (1.5×, 2×, 3× baseline) and urine output (<0.5 ml/kg/hr).",
-        "CI-AKI: prevent with iso/low-osmolar contrast, IV isotonic crystalloid (1 ml/kg/hr pre/post), withhold nephrotoxins. NAC and prophylactic RRT not recommended.",
-        "Mehran score stratifies CI-AKI risk using 8 weighted factors; high score patients need maximal prophylaxis.",
-        "Renal-friendly perioperative drugs: fentanyl/alfentanil/remifentanil, cisatracurium, UFH, apixaban. Avoid morphine, pethidine, NSAIDs, gentamicin where possible.",
-        "CRRT preferred in haemodynamically unstable ICU patients; IHD for stable / urgent K⁺.",
-        "AEIOU: Acidosis, Electrolytes, Intoxication, Overload, Uraemia — indications for RRT.",
-        "Regional citrate anticoagulation is preferred for CRRT — avoids systemic bleeding; total/ionised Ca ratio >2.5 = citrate accumulation.",
-        "STARRT-AKI / AKIKI: no benefit from early RRT initiation — wait for conventional indications.",
+        { text: "KDIGO stages AKI by creatinine rise (1.5×, 2×, 3× baseline) and urine output (<0.5 ml/kg/hr).", cites: ["BJA Educ 2018"] },
+        { text: "CI-AKI: prevent with iso/low-osmolar contrast, IV isotonic crystalloid (1 ml/kg/hr pre/post), withhold nephrotoxins. NAC and prophylactic RRT not recommended.", cites: ["KDIGO 2012"] },
+        { text: "Mehran score stratifies CI-AKI risk using 8 weighted factors; high score patients need maximal prophylaxis.", cites: ["NICE CG169"] },
+        { text: "Renal-friendly perioperative drugs: fentanyl/alfentanil/remifentanil, cisatracurium, UFH, apixaban. Avoid morphine, pethidine, NSAIDs, gentamicin where possible.", cites: ["BJA Educ 2018"] },
+        { text: "CRRT preferred in haemodynamically unstable ICU patients; IHD for stable / urgent K⁺.", cites: ["KDIGO 2012"] },
+        { text: "AEIOU: Acidosis, Electrolytes, Intoxication, Overload, Uraemia — indications for RRT.", cites: ["NICE CG169"] },
+        { text: "Regional citrate anticoagulation is preferred for CRRT — avoids systemic bleeding; total/ionised Ca ratio >2.5 = citrate accumulation.", cites: ["BJA Educ 2018"] },
+        { text: "STARRT-AKI / AKIKI: no benefit from early RRT initiation — wait for conventional indications.", cites: ["KDIGO 2012"] },
       ]}
       topicId="aki-rrt"
       topicTitle="Acute Kidney Injury & RRT"

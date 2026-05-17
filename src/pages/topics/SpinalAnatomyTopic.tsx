@@ -34,11 +34,11 @@ const SpinalAnatomyTopic = () => {
         "Describe the epidural space and how pregnancy alters local anaesthetic spread",
       ]}
       keyPoints={[
-        "Conus medullaris ends L1/2 in adults, L3 in neonates — neuraxial techniques below this level",
-        "Ligamentum flavum: dense elastic tissue providing 'loss of resistance' for epidural identification",
-        "Artery of Adamkiewicz (T9-T12, usually left) — damage causes anterior spinal artery syndrome",
-        "Batson's plexus is valveless — engorges in pregnancy, reducing epidural space volume",
-        "Tuffier's line (intercristal) identifies L4 spinous process or L3/4 interspace",
+        { text: "Conus medullaris ends L1/2 in adults, L3 in neonates — neuraxial techniques below this level", cites: ["Ellis & Feldman Ch.6"] },
+        { text: "Ligamentum flavum: dense elastic tissue providing 'loss of resistance' for epidural identification", cites: ["BJA Educ 2006"] },
+        { text: "Artery of Adamkiewicz (T9-T12, usually left) — damage causes anterior spinal artery syndrome", cites: ["BJA Educ 2018"] },
+        { text: "Batson's plexus is valveless — engorges in pregnancy, reducing epidural space volume", cites: ["Ellis & Feldman Ch.6"] },
+        { text: "Tuffier's line (intercristal) identifies L4 spinous process or L3/4 interspace", cites: ["BJA Educ 2006"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },

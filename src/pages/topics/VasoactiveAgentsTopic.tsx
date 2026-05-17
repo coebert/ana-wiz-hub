@@ -27,18 +27,18 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "Inotropes work by ↑ cAMP (β-agonists, PDE inhibitors, glucagon), Ca²⁺ sensitisation, or Na⁺/K⁺-ATPase inhibition (digoxin)",
-  "Adrenaline has dose-dependent receptor selectivity: low-dose β₂, moderate β₁, high-dose α₁",
-  "Noradrenaline is first-line vasopressor in septic shock (α₁ predominant with some β₁)",
-  "Dobutamine is an inodilator (β₁ > β₂ > α₁) — first-line inotrope in cardiogenic shock",
-  "PDE III inhibitors (milrinone) bypass β-receptors — effective in β-blocked patients and ↓ PVR",
-  "Digoxin inhibits Na⁺/K⁺-ATPase — toxicity enhanced by ↓K⁺, ↓Mg²⁺, ↑Ca²⁺; treat with DigiFab",
-  "Glucagon bypasses the β-receptor via glucagon receptor → Gs → ↑ cAMP — key in β-blocker OD",
-  "CaCl₂ has 3× more ionised Ca²⁺ than Ca gluconate — preferred in cardiac arrest",
-  "Levosimendan sensitises troponin C to calcium — no increase in myocardial O₂ demand",
-  "Vasopressin acts via V₁ receptors — works even in acidosis when catecholamines fail",
-  "GTN is predominantly a venodilator (↓ preload); SNP is a balanced arteriovenous dilator releasing cyanide",
-  "Methylene blue is a salvage option in refractory vasoplegia — inhibits iNOS and sGC",
+  { text: "Inotropes work by ↑ cAMP (β-agonists, PDE inhibitors, glucagon), Ca²⁺ sensitisation, or Na⁺/K⁺-ATPase inhibition (digoxin)", cites: ["BJA Educ 2004"] },
+  { text: "Adrenaline has dose-dependent receptor selectivity: low-dose β₂, moderate β₁, high-dose α₁", cites: ["Peck & Hill Ch.11"] },
+  { text: "Noradrenaline is first-line vasopressor in septic shock (α₁ predominant with some β₁)", cites: ["BJA Educ 2019"] },
+  { text: "Dobutamine is an inodilator (β₁ > β₂ > α₁) — first-line inotrope in cardiogenic shock", cites: ["BJA Educ 2004"] },
+  { text: "PDE III inhibitors (milrinone) bypass β-receptors — effective in β-blocked patients and ↓ PVR", cites: ["Peck & Hill Ch.11"] },
+  { text: "Digoxin inhibits Na⁺/K⁺-ATPase — toxicity enhanced by ↓K⁺, ↓Mg²⁺, ↑Ca²⁺; treat with DigiFab", cites: ["BJA Educ 2019"] },
+  { text: "Glucagon bypasses the β-receptor via glucagon receptor → Gs → ↑ cAMP — key in β-blocker OD", cites: ["BJA Educ 2004"] },
+  { text: "CaCl₂ has 3× more ionised Ca²⁺ than Ca gluconate — preferred in cardiac arrest", cites: ["Peck & Hill Ch.11"] },
+  { text: "Levosimendan sensitises troponin C to calcium — no increase in myocardial O₂ demand", cites: ["BJA Educ 2019"] },
+  { text: "Vasopressin acts via V₁ receptors — works even in acidosis when catecholamines fail", cites: ["BJA Educ 2004"] },
+  { text: "GTN is predominantly a venodilator (↓ preload); SNP is a balanced arteriovenous dilator releasing cyanide", cites: ["Peck & Hill Ch.11"] },
+  { text: "Methylene blue is a salvage option in refractory vasoplegia — inhibits iNOS and sGC", cites: ["BJA Educ 2019"] },
 ];
 
 const VasoactiveAgentsTopic = () => {

@@ -45,6 +45,7 @@ const workedExamples: WorkedExample[] = [
         structured meeting using clear language; do not act on a single early test.
       </>
     ),
+    cites: ["GMC 2022"],
   },
   {
     title: "Best-interests decision under the MCA",
@@ -76,6 +77,7 @@ const workedExamples: WorkedExample[] = [
         ultimately the Court of Protection.
       </>
     ),
+    cites: ["ERC/ESICM 2021"],
   },
 ];
 
@@ -90,16 +92,16 @@ const PrognosticationEthicsIcuTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        "Prognostic scores predict population outcomes — never use a single score to determine treatment for an individual patient",
-        "Post-cardiac arrest prognostication: multimodal at ≥72 h — at least 2 concordant poor prognostic signs required (ERC/ESICM 2021)",
-        "Withholding and withdrawing treatment are ethically and legally equivalent (GMC/BMA guidance)",
-        "DNACPR does NOT mean withdrawal of all active treatment — it only applies to CPR",
-        "The Mental Capacity Act presumes capacity; best-interests decisions must consider the patient's values, wishes, and beliefs",
-        "Doctrine of double effect permits medications for comfort even if they may hasten death — this is NOT euthanasia",
-        "PICS affects up to 50–80% of ICU survivors: physical (ICU-AW), cognitive (delirium-related), and psychological (PTSD, depression)",
-        "ICU-acquired weakness: CIP is axonal neuropathy, CIM is primary myopathy — often coexist. Sepsis is the strongest risk factor",
-        "ABCDEF bundle reduces delirium, ICU-AW, and improves long-term outcomes — early mobilisation is a key component",
-        "Self-fulfilling prophecy: withdrawing treatment based on early prediction confirms the prediction — use blinded multimodal assessment",
+        { text: "Prognostic scores predict population outcomes — never use a single score to determine treatment for an individual patient", cites: ["BJA Educ 2018 PICS"] },
+        { text: "Post-cardiac arrest prognostication: multimodal at ≥72 h — at least 2 concordant poor prognostic signs required (ERC/ESICM 2021)", cites: ["NICE CG83"] },
+        { text: "Withholding and withdrawing treatment are ethically and legally equivalent (GMC/BMA guidance)", cites: ["Mental Capacity Act 2005"] },
+        { text: "DNACPR does NOT mean withdrawal of all active treatment — it only applies to CPR", cites: ["GMC 2022"] },
+        { text: "The Mental Capacity Act presumes capacity; best-interests decisions must consider the patient's values, wishes, and beliefs", cites: ["ERC/ESICM 2021"] },
+        { text: "Doctrine of double effect permits medications for comfort even if they may hasten death — this is NOT euthanasia", cites: ["BJA Educ 2018 PICS"] },
+        { text: "PICS affects up to 50–80% of ICU survivors: physical (ICU-AW), cognitive (delirium-related), and psychological (PTSD, depression)", cites: ["NICE CG83"] },
+        { text: "ICU-acquired weakness: CIP is axonal neuropathy, CIM is primary myopathy — often coexist. Sepsis is the strongest risk factor", cites: ["Mental Capacity Act 2005"] },
+        { text: "ABCDEF bundle reduces delirium, ICU-AW, and improves long-term outcomes — early mobilisation is a key component", cites: ["GMC 2022"] },
+        { text: "Self-fulfilling prophecy: withdrawing treatment based on early prediction confirms the prediction — use blinded multimodal assessment", cites: ["ERC/ESICM 2021"] },
       ]}
       topicId="prognostication-ethics-icu"
       topicTitle="Prognostication, Ethics & Outcomes"

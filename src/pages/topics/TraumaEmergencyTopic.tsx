@@ -47,6 +47,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Ketamine + rocuronium RSI with manual in-line stabilisation, videolaryngoscope, and vasopressor on the syringe. Run damage-control resuscitation in parallel: 1:1:1 products, TXA within 3 h, permissive hypotension (SBP target 80–90 mmHg, except in TBI where MAP ≥ 80). Anticipate haemodynamic collapse on induction.",
+    cites: ["CRASH-2"],
   },
   {
     title: "Citrate toxicity during massive transfusion",
@@ -80,6 +81,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Treat citrate toxicity: 10% calcium chloride 10 mL IV (or calcium gluconate 30 mL). Continue active warming, ROTEM/TEG-guided product replacement, and treat the hyperkalaemia. Send repeat iCa²⁺ every 30 min during ongoing transfusion — citrate is the silent killer in MHP scenarios.",
+    cites: ["ATLS 10th ed"],
   },
 ];
 
@@ -120,12 +122,12 @@ const TraumaEmergencyTopic = () => {
         ],
       }}
       keyPoints={[
-        "RSI: pre-oxygenation, rapid induction, no ventilation (unless desaturation), rapid intubation",
-        "Damage control: permissive hypotension (except TBI), 1:1:1 ratio, TXA within 3 hours",
-        "The lethal triad: hypothermia, acidosis, coagulopathy — prevent all three",
-        "Ketamine is the induction agent of choice in haemodynamically unstable patients",
-        "TEG/ROTEM enables goal-directed transfusion and reduces blood product use",
-        "Citrate toxicity (↓ iCa²⁺) and hyperkalaemia are the commonest metabolic complications of MHP",
+        { text: "RSI: pre-oxygenation, rapid induction, no ventilation (unless desaturation), rapid intubation", cites: ["BJA Educ 2016"] },
+        { text: "Damage control: permissive hypotension (except TBI), 1:1:1 ratio, TXA within 3 hours", cites: ["CRASH-2"] },
+        { text: "The lethal triad: hypothermia, acidosis, coagulopathy — prevent all three", cites: ["ATLS 10th ed"] },
+        { text: "Ketamine is the induction agent of choice in haemodynamically unstable patients", cites: ["BJA Educ 2016"] },
+        { text: "TEG/ROTEM enables goal-directed transfusion and reduces blood product use", cites: ["CRASH-2"] },
+        { text: "Citrate toxicity (↓ iCa²⁺) and hyperkalaemia are the commonest metabolic complications of MHP", cites: ["ATLS 10th ed"] },
       ]}
       coreConcepts={
         <>

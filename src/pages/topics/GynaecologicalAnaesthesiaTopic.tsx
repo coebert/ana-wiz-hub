@@ -131,12 +131,12 @@ const GynaecologicalAnaesthesiaTopic = () => {
         </>
       }
       keyPoints={[
-        "Pneumoperitoneum + steep Trendelenburg: ↑ PaCO₂, ↓ FRC, ↑ IOP/ICP, facial and laryngeal oedema",
-        "Robotic surgery: prolonged position → airway oedema; plan for difficult extubation; limited patient access during dock",
-        "Hysteroscopy fluid absorption: STOP at deficit 1,000 mL glycine / 2,500 mL saline (BSGE 2018)",
-        "CO₂ gas embolism: sudden ↓ EtCO₂ + mill-wheel murmur — head-down left lateral (Durant) + CVC aspiration",
-        "Glycine syndrome: dilutional hyponatraemia, transient blindness, hyperammonaemia. Correct Na⁺ ≤ 8–10 mmol/L per 24 h",
-        "ERAS gynae-oncology: thoracic epidural / TAP block, opioid sparing, early mobilisation, LMWH + mechanical VTE prophylaxis",
+        { text: "Pneumoperitoneum + steep Trendelenburg: ↑ PaCO₂, ↓ FRC, ↑ IOP/ICP, facial and laryngeal oedema", cites: ["BSGE 2018"] },
+        { text: "Robotic surgery: prolonged position → airway oedema; plan for difficult extubation; limited patient access during dock", cites: ["BJA Educ 2011 Lap"] },
+        { text: "Hysteroscopy fluid absorption: STOP at deficit 1,000 mL glycine / 2,500 mL saline (BSGE 2018)", cites: ["ERAS Gynae 2019"] },
+        { text: "CO₂ gas embolism: sudden ↓ EtCO₂ + mill-wheel murmur — head-down left lateral (Durant) + CVC aspiration", cites: ["BJA Educ 2014 TURP"] },
+        { text: "Glycine syndrome: dilutional hyponatraemia, transient blindness, hyperammonaemia. Correct Na⁺ ≤ 8–10 mmol/L per 24 h", cites: ["BSGE 2018"] },
+        { text: "ERAS gynae-oncology: thoracic epidural / TAP block, opioid sparing, early mobilisation, LMWH + mechanical VTE prophylaxis", cites: ["BJA Educ 2011 Lap"] },
       ]}
       coreConcepts={
         <>

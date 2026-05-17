@@ -46,6 +46,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Halothane's heavy, polarisable Br and Cl atoms generate strong van der Waals forces, raising its boiling point. Desflurane has only small fluorine atoms with weak van der Waals attraction, so it boils near room temperature — and therefore needs the heated, pressurised Tec 6 vaporiser.",
+    cites: ["BJA Educ 2010"],
   },
   {
     title: "Why is sodium chloride soluble in water?",
@@ -77,6 +78,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "NaCl is held in a high-energy ionic lattice. Water's strong dipoles can hydrate Na⁺ and Cl⁻ enough to overcome the lattice energy. Non-polar lipids cannot, so ionic compounds are insoluble in lipid — explaining why electrolyte fluids must be aqueous and why lipid-vehicle drugs (propofol) carry only non-ionic agents.",
+    cites: ["Cross & Plunkett Ch.2"],
   },
 ];
 
@@ -112,13 +114,13 @@ const AtomicStructureBondingTopic = () => {
         ],
       }}
       keyPoints={[
-        "Atoms bond by transferring (ionic) or sharing (covalent) electrons to achieve stable outer shells",
-        "Electronegativity difference determines bond type: large ΔEN → ionic, small → covalent",
-        "Ionic compounds (e.g. NaCl) dissolve in water to form electrolytes — basis of IV fluid physiology",
-        "Covalent bonds form most drug molecules; their structure determines receptor interactions",
-        "Hydrogen bonds give water its high boiling point, specific heat capacity, and protein folding",
-        "Van der Waals forces explain boiling point trends in volatile anaesthetic agents (halothane vs desflurane)",
-        "Metallic bonding explains conductivity of monitoring electrodes and diathermy equipment",
+        { text: "Atoms bond by transferring (ionic) or sharing (covalent) electrons to achieve stable outer shells", cites: ["Peck & Hill Ch.2"] },
+        { text: "Electronegativity difference determines bond type: large ΔEN → ionic, small → covalent", cites: ["BJA Educ 2010"] },
+        { text: "Ionic compounds (e.g. NaCl) dissolve in water to form electrolytes — basis of IV fluid physiology", cites: ["Cross & Plunkett Ch.2"] },
+        { text: "Covalent bonds form most drug molecules; their structure determines receptor interactions", cites: ["Peck & Hill Ch.2"] },
+        { text: "Hydrogen bonds give water its high boiling point, specific heat capacity, and protein folding", cites: ["BJA Educ 2010"] },
+        { text: "Van der Waals forces explain boiling point trends in volatile anaesthetic agents (halothane vs desflurane)", cites: ["Cross & Plunkett Ch.2"] },
+        { text: "Metallic bonding explains conductivity of monitoring electrodes and diathermy equipment", cites: ["Peck & Hill Ch.2"] },
       ]}
       coreConcepts={
         <>

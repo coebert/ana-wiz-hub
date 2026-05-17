@@ -26,6 +26,7 @@ const workedExamples: WorkedExample[] = [
       "Control event rate (CER) = 6% = 0.06\nExperimental event rate (EER) = 4% = 0.04\nARR = CER − EER = 0.06 − 0.04 = 0.02 (2%)\nRRR = ARR / CER = 0.02 / 0.06 = 0.33 (33%)\nNNT = 1 / ARR = 1 / 0.02 = 50",
     answer:
       "ARR 2%, RRR 33%, NNT 50 — i.e. 50 patients must receive perioperative beta-blockade to prevent one additional 30-day death.",
+    cites: ["BJA Educ 2015"],
   },
   {
     title: "Post-test probability with likelihood ratios",
@@ -35,6 +36,7 @@ const workedExamples: WorkedExample[] = [
       "LR+ = sensitivity / (1 − specificity) = 0.90 / 0.20 = 4.5\nPre-test odds = 0.30 / 0.70 = 0.43\nPost-test odds = pre-test odds × LR+ = 0.43 × 4.5 = 1.93\nPost-test probability = 1.93 / (1 + 1.93) = 0.66 (66%)",
     answer:
       "≈66%. The positive test raises the probability of PE from 30% to 66% — illustrating why pre-test probability matters as much as the test characteristics.",
+    cites: ["Petrie & Sabin"],
   },
 ];
 
@@ -57,13 +59,13 @@ const StatisticsEBMTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
-        "A p-value is the probability of observing a result at least as extreme as the data, assuming the null hypothesis is true — NOT the probability the null is true",
-        "Type I error (α): rejecting a true null (false positive). Type II error (β): failing to reject a false null. Power = 1 − β",
-        "OR compares odds of exposure in cases vs controls; RR compares incidence — RR is only valid in cohort/RCT designs",
-        "Number needed to treat (NNT) = 1 / absolute risk reduction (ARR). Contextualises clinical significance",
-        "Parametric tests (t-test, ANOVA) assume normally distributed data; non-parametric tests (Mann-Whitney, Wilcoxon, Kruskal-Wallis) do not",
-        "Sensitivity = TP/(TP+FN) — rules OUT disease (SnNOut); Specificity = TN/(TN+FP) — rules IN (SpPIn)",
-        "Hierarchy of evidence: systematic reviews/meta-analyses > RCTs > cohort > case-control > case series > expert opinion",
+        { text: "A p-value is the probability of observing a result at least as extreme as the data, assuming the null hypothesis is true — NOT the probability the null is true", cites: ["BJA Educ 2016"] },
+        { text: "Type I error (α): rejecting a true null (false positive). Type II error (β): failing to reject a false null. Power = 1 − β", cites: ["BJA Educ 2015"] },
+        { text: "OR compares odds of exposure in cases vs controls; RR compares incidence — RR is only valid in cohort/RCT designs", cites: ["Petrie & Sabin"] },
+        { text: "Number needed to treat (NNT) = 1 / absolute risk reduction (ARR). Contextualises clinical significance", cites: ["BJA Educ 2016"] },
+        { text: "Parametric tests (t-test, ANOVA) assume normally distributed data; non-parametric tests (Mann-Whitney, Wilcoxon, Kruskal-Wallis) do not", cites: ["BJA Educ 2015"] },
+        { text: "Sensitivity = TP/(TP+FN) — rules OUT disease (SnNOut); Specificity = TN/(TN+FP) — rules IN (SpPIn)", cites: ["Petrie & Sabin"] },
+        { text: "Hierarchy of evidence: systematic reviews/meta-analyses > RCTs > cohort > case-control > case series > expert opinion", cites: ["BJA Educ 2016"] },
       ]}
       coreConcepts={
         <>

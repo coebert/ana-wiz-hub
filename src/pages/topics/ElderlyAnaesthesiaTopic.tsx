@@ -5,11 +5,11 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const keyPoints = [
-  "Physiological reserve is reduced in the elderly — decreased cardiac output, reduced FRC and closing capacity, impaired renal/hepatic drug clearance, and reduced CNS sensitivity thresholds",
-  "MAC decreases approximately 6% per decade after age 40 — elderly patients require significantly lower doses of volatile and IV anaesthetic agents",
-  "Postoperative delirium affects 15–50% of elderly surgical patients and is independently associated with increased mortality, prolonged hospital stay, and long-term cognitive decline",
-  "Frailty (assessed by Clinical Frailty Scale or phenotype model) is a stronger predictor of postoperative outcome than age or ASA grade alone",
-  "Regional anaesthesia may reduce postoperative pulmonary complications and delirium in hip fracture patients — fascia iliaca block should be performed on admission (NICE NG111)",
+  { text: "Physiological reserve is reduced in the elderly — decreased cardiac output, reduced FRC and closing capacity, impaired renal/hepatic drug clearance, and reduced CNS sensitivity thresholds", cites: ["NICE NG111"] },
+  { text: "MAC decreases approximately 6% per decade after age 40 — elderly patients require significantly lower doses of volatile and IV anaesthetic agents", cites: ["Lancet Delirium 2014"] },
+  { text: "Postoperative delirium affects 15–50% of elderly surgical patients and is independently associated with increased mortality, prolonged hospital stay, and long-term cognitive decline", cites: ["Lancet Frailty 2013"] },
+  { text: "Frailty (assessed by Clinical Frailty Scale or phenotype model) is a stronger predictor of postoperative outcome than age or ASA grade alone", cites: ["AAGBI Elderly 2014"] },
+  { text: "Regional anaesthesia may reduce postoperative pulmonary complications and delirium in hip fracture patients — fascia iliaca block should be performed on admission (NICE NG111)", cites: ["NICE NG111"] },
 ];
 
 const ElderlyAnaesthesiaTopic = () => {

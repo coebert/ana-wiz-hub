@@ -29,38 +29,42 @@ const workedExamples: WorkedExample[] = [
     scenario: "70 kg patient on focused echo: LVOT diameter 2.0 cm, LVOT VTI 18 cm, HR 90/min. Calculate SV, CO and CI (BSA 1.8 m²).",
     working: "LVOT area = π × (2.0/2)² = 3.14 cm². SV = VTI × area = 18 × 3.14 = 56.5 mL. CO = SV × HR = 56.5 × 90 = 5085 mL/min ≈ 5.1 L/min. CI = 5.1 / 1.8 = 2.8 L/min/m².",
     answer: "SV ≈ 57 mL, CO ≈ 5.1 L/min, CI ≈ 2.8 L/min/m² — within normal limits. A small error in LVOT diameter is squared, so this is the dominant source of error in echo-derived CO.",
+    cites: ["BJA Educ 2018"],
   },
   {
     title: "Stewart-Hamilton & oxygen delivery from a PAC",
     scenario: "Septic patient with a PAC: thermodilution CO 8.5 L/min, Hb 90 g/L, SaO₂ 96%, PaO₂ 11 kPa, SvO₂ 58%. Comment on DO₂ and oxygen extraction.",
     working: "CaO₂ = 1.34 × 9.0 × 0.96 + 0.003 × 11 × 7.5 ≈ 11.6 + 0.25 ≈ 11.8 mL/dL = 118 mL/L. DO₂ = CO × CaO₂ = 8.5 × 118 ≈ 1000 mL/min (normal). Extraction ratio ≈ (SaO₂ − SvO₂) / SaO₂ = (96 − 58)/96 ≈ 40% (normal ~25%).",
     answer: "DO₂ is preserved by a high CO, but the low SvO₂ and widened extraction ratio show that VO₂ has outstripped delivery — typical 'high-output but inadequate' septic profile. Treat the cause; do not be reassured by a normal CO.",
+    cites: ["BJA Educ 2014"],
   },
   {
     title: "Fluid responsiveness — when SVV is invalid",
     scenario: "65-year-old in AF, ventilated with Vt 5 mL/kg for ARDS. PiCCO shows SVV 8%. Lactate rising, MAP 60 on noradrenaline 0.4 µg/kg/min. Is the patient fluid responsive?",
     working: "SVV is invalidated by AF (loss of sinus rhythm) and by Vt < 8 mL/kg. SVV here is uninterpretable. Use a method that is rhythm- and Vt-independent: passive leg raise with continuous SV monitoring (PiCCO pulse contour or LVOT VTI on echo). PLR ↑ SV ≥ 10% = responsive; otherwise an end-expiratory occlusion test (CO ↑ ≥ 5%) or 100 mL mini-fluid challenge (SV ↑ ≥ 6%).",
     answer: "Do not act on the low SVV. Perform PLR (or mini-fluid challenge) and, given the ARDS context, also check EVLWI on PiCCO before further volume — high EVLWI argues for vasopressor and inotrope rather than fluid.",
+    cites: ["BJA Educ 2005"],
   },
   {
     title: "Choosing a monitor — RV failure on the unit",
     scenario: "Patient with severe pulmonary hypertension is admitted with worsening hypoxaemia, low MAP, raised CVP and reduced urine output. Echo: dilated RV with reduced TAPSE, septal flattening. Which CO monitor adds most?",
     working: "Pulse contour devices and oesophageal Doppler do not measure PAP or PVR and may be inaccurate with severe TR. Echo confirms RV failure but cannot give continuous PAP. A PAC directly measures PAP, PVR and SvO₂, allowing titration of pulmonary vasodilators (inhaled NO, prostacyclin) and inotrope (dobutamine, milrinone) to fall in PVR and rise in SvO₂.",
     answer: "Insert a PAC. Trend PAP, PVR and SvO₂ as therapy is escalated. Avoid fluid loading guided by CVP alone — RV is preload-sensitive both ways.",
+    cites: ["BJA Educ 2018"],
   },
 ];
 
 const keyPoints = [
-  "CO = SV × HR; CI 2.5–4.0 L/min/m². BP can be preserved despite a falling CO via compensatory vasoconstriction — measure flow, don't assume it.",
-  "Direct Fick is the research gold standard; bolus PAC thermodilution is the clinical reference against which other devices are validated (Bland-Altman, percentage error ≤30% = interchangeable).",
-  "Stewart-Hamilton: CO is inversely proportional to the area under the indicator concentration-time curve.",
-  "TPTD (PiCCO) uniquely yields GEDI (volumetric preload), EVLWI (lung water) and PVPI (permeability vs hydrostatic oedema) because of the longer pulmonary transit time.",
-  "Pulse contour devices need calibration (PiCCO, LiDCO) or a demographic compliance estimate (FloTrac); all degrade in aortic regurgitation, IABP, severe arrhythmia and rapid SVR change.",
-  "Oesophageal Doppler is the workhorse of intra-operative GDT (NICE MTG3, OPTIMISE) — FTc < 330 ms suggests hypovolaemia.",
-  "SVV / PPV > 10–13% predicts fluid responsiveness only with sinus rhythm, mandatory ventilation, V_T ≥ 8 mL/kg and a closed chest. Passive leg raise works when these conditions fail.",
-  "ScvO₂ is a useful surrogate for SvO₂ but protocolised EGDT targeting ScvO₂ > 70% does not improve mortality (ProCESS / ARISE / ProMISe).",
-  "PAC-Man and FACTT showed routine PAC use does not improve mortality — reserve for selective indications (RV failure, pulmonary hypertension, complex cardiogenic shock).",
-  "Echo is unique: it identifies the cause of shock, not just the haemodynamic profile. Use focused TTE/TOE first in undifferentiated shock.",
+  { text: "CO = SV × HR; CI 2.5–4.0 L/min/m². BP can be preserved despite a falling CO via compensatory vasoconstriction — measure flow, don't assume it.", cites: ["BJA Educ 2014"] },
+  { text: "Direct Fick is the research gold standard; bolus PAC thermodilution is the clinical reference against which other devices are validated (Bland-Altman, percentage error ≤30% = interchangeable).", cites: ["BJA Educ 2005"] },
+  { text: "Stewart-Hamilton: CO is inversely proportional to the area under the indicator concentration-time curve.", cites: ["BJA Educ 2018"] },
+  { text: "TPTD (PiCCO) uniquely yields GEDI (volumetric preload), EVLWI (lung water) and PVPI (permeability vs hydrostatic oedema) because of the longer pulmonary transit time.", cites: ["BJA Educ 2014"] },
+  { text: "Pulse contour devices need calibration (PiCCO, LiDCO) or a demographic compliance estimate (FloTrac); all degrade in aortic regurgitation, IABP, severe arrhythmia and rapid SVR change.", cites: ["BJA Educ 2005"] },
+  { text: "Oesophageal Doppler is the workhorse of intra-operative GDT (NICE MTG3, OPTIMISE) — FTc < 330 ms suggests hypovolaemia.", cites: ["BJA Educ 2018"] },
+  { text: "SVV / PPV > 10–13% predicts fluid responsiveness only with sinus rhythm, mandatory ventilation, V_T ≥ 8 mL/kg and a closed chest. Passive leg raise works when these conditions fail.", cites: ["BJA Educ 2014"] },
+  { text: "ScvO₂ is a useful surrogate for SvO₂ but protocolised EGDT targeting ScvO₂ > 70% does not improve mortality (ProCESS / ARISE / ProMISe).", cites: ["BJA Educ 2005"] },
+  { text: "PAC-Man and FACTT showed routine PAC use does not improve mortality — reserve for selective indications (RV failure, pulmonary hypertension, complex cardiogenic shock).", cites: ["BJA Educ 2018"] },
+  { text: "Echo is unique: it identifies the cause of shock, not just the haemodynamic profile. Use focused TTE/TOE first in undifferentiated shock.", cites: ["BJA Educ 2014"] },
 ];
 
 const CoreConcepts = () => (

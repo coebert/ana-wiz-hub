@@ -23,6 +23,7 @@ const workedExamples: WorkedExample[] = [
       "Parkland: 4 ml × 80 kg × 30% = 9,600 ml Hartmann's in 24 h from time of burn.\nFirst half (4,800 ml) over 8 h from 10:00 — i.e. by 18:00. Two hours have already elapsed, so 4,800 ml must run over the remaining 6 h = 800 ml/h.\nSecond half (4,800 ml) over 16 h (18:00 → 10:00 next day) = 300 ml/h.\nTitrate to urine output 0.5–1 ml/kg/h (40–80 ml/h) and watch for fluid creep / compartment syndrome.",
     answer:
       "9.6 L Hartmann's over the first 24 h from time of burn. From 12:00, run at 800 ml/h until 18:00, then 300 ml/h until 10:00 the next day, titrating to urine output.",
+    cites: ["BBA EMSB"],
   },
   {
     title: "Suxamethonium safety after a major burn",
@@ -32,6 +33,7 @@ const workedExamples: WorkedExample[] = [
       "Burn injury upregulates extra-junctional (immature) nicotinic acetylcholine receptors throughout the body, peaking from ~24 h post-burn and persisting until full re-epithelialisation (often up to 2 years). Depolarisation by suxamethonium causes massive K⁺ efflux → hyperkalaemic cardiac arrest.\nUse rocuronium (often at increased dose due to NMBA resistance) with sugammadex available; if a rapid sequence is essential, modified RSI with rocuronium 1.2 mg/kg.",
     answer:
       "No. Suxamethonium is contraindicated from 24 h to ~2 years post-major burn. Use high-dose rocuronium for RSI and reverse with sugammadex.",
+    cites: ["NICE NG12"],
   },
 ];
 
@@ -54,11 +56,11 @@ const BurnsPlasticsTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       keyPoints={[
-        "Burns >15% TBSA in adults (>10% in children) require formal fluid resuscitation — Parkland: 4 ml × kg × %TBSA in 24 h, half in the first 8 h from time of burn",
-        "Suxamethonium is contraindicated from 24 h to ~2 years post-major burn (extra-junctional ACh receptor upregulation → hyperkalaemic arrest)",
-        "Carbon monoxide poisoning gives a falsely normal SpO₂ — co-oximetry mandatory; treat with 100% O₂ (COHb half-life 250 → 40 min)",
-        "Intubate early in airway burns — oedema peaks at 12–24 h; use an uncut ETT to allow for facial swelling",
-        "Major burns produce a biphasic response: initial hypovolaemic shock then a hypermetabolic / hyperdynamic phase with ↑CO, ↑VO₂ and catabolism",
+        { text: "Burns >15% TBSA in adults (>10% in children) require formal fluid resuscitation — Parkland: 4 ml × kg × %TBSA in 24 h, half in the first 8 h from time of burn", cites: ["Bittner 2015"] },
+        { text: "Suxamethonium is contraindicated from 24 h to ~2 years post-major burn (extra-junctional ACh receptor upregulation → hyperkalaemic arrest)", cites: ["BJA Educ 2019"] },
+        { text: "Carbon monoxide poisoning gives a falsely normal SpO₂ — co-oximetry mandatory; treat with 100% O₂ (COHb half-life 250 → 40 min)", cites: ["BBA EMSB"] },
+        { text: "Intubate early in airway burns — oedema peaks at 12–24 h; use an uncut ETT to allow for facial swelling", cites: ["NICE NG12"] },
+        { text: "Major burns produce a biphasic response: initial hypovolaemic shock then a hypermetabolic / hyperdynamic phase with ↑CO, ↑VO₂ and catabolism", cites: ["Bittner 2015"] },
       ]}
       coreConcepts={
         <>

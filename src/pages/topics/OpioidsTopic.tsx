@@ -316,13 +316,13 @@ const OpioidsTopic = () => {
         </>
       }
       keyPoints={[
-        "Three opioid receptors (µ, κ, δ) — all Gi-coupled. µ mediates analgesia, respiratory depression and dependence.",
-        "Morphine: M6G (active, accumulates in renal failure), M3G (neuroexcitatory). Histamine release.",
-        "Fentanyl: 100× morphine potency, rapid onset due to lipid solubility. CSHT increases with infusion duration.",
-        "Remifentanil: ester metabolism by tissue esterases. Constant CSHT ~4 min. Requires transition analgesia on cessation.",
-        "Alfentanil: pKa 6.5 → 90 % un-ionised → fastest onset despite lower lipid solubility than fentanyl.",
-        "Naloxone: competitive antagonist, duration 30–60 min. Risk of re-narcotisation — titrate carefully and consider infusion.",
-        "OIH: diffuse new-distribution pain that worsens with dose escalation. Manage with dose reduction, opioid rotation, ketamine and multimodal analgesia.",
+        { text: "Three opioid receptors (µ, κ, δ) — all Gi-coupled. µ mediates analgesia, respiratory depression and dependence.", cites: ["BJA Educ 2016"] },
+        { text: "Morphine: M6G (active, accumulates in renal failure), M3G (neuroexcitatory). Histamine release.", cites: ["Miller Ch.28"] },
+        { text: "Fentanyl: 100× morphine potency, rapid onset due to lipid solubility. CSHT increases with infusion duration.", cites: ["Peck & Hill Ch.6"] },
+        { text: "Remifentanil: ester metabolism by tissue esterases. Constant CSHT ~4 min. Requires transition analgesia on cessation.", cites: ["BJA Educ 2016"] },
+        { text: "Alfentanil: pKa 6.5 → 90 % un-ionised → fastest onset despite lower lipid solubility than fentanyl.", cites: ["Miller Ch.28"] },
+        { text: "Naloxone: competitive antagonist, duration 30–60 min. Risk of re-narcotisation — titrate carefully and consider infusion.", cites: ["Peck & Hill Ch.6"] },
+        { text: "OIH: diffuse new-distribution pain that worsens with dose escalation. Manage with dose reduction, opioid rotation, ketamine and multimodal analgesia.", cites: ["BJA Educ 2016"] },
       ]}
     />
   );

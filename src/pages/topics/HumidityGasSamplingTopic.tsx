@@ -29,6 +29,7 @@ const workedExamples: WorkedExample[] = [
       "Target conditioning at the carina = 44 mg/L (37 °C, 100% RH).\nDeficit per litre of inspired gas ≈ 44 mg.\nPer minute = 44 × 6 = 264 mg/min ≈ 16 g/h ≈ 380 mL/day of insensible water loss + corresponding heat loss (latent heat of vaporisation 2.26 kJ/g → ~14 W of heat loss).",
     answer:
       "About 264 mg/min of water (and ~14 W of heat) is lost from the lower airway. Over hours this dries secretions, impairs ciliary function and contributes to hypothermia — mandating an HME (≈25–30 mg/L) or active heated humidifier (44 mg/L) in any prolonged anaesthetic.",
+    cites: ["BJA Educ 2007"],
   },
   {
     title: "Distinguishing N₂O from CO₂ on a gas analyser",
@@ -38,6 +39,7 @@ const workedExamples: WorkedExample[] = [
       "Mass spec separates by m/z. N₂O and CO₂ both have molecular m/z = 44 → primary peak overlaps.\nFragmentation patterns differ (CO₂ → m/z 28, 16; N₂O → m/z 30, 14) so high-resolution mass spec can still distinguish them, but the primary peak alone is not specific.\nInfrared absorption can resolve them (different absorption bands).\nRaman scattering is unambiguous: each molecule has a unique vibrational shift, including for homonuclear gases like N₂ that are invisible to IR.",
     answer:
       "Rely on either the fragmentation pattern (m/z 28 vs 30), an IR analyser tuned to CO₂'s 4.26 µm band, or Raman spectroscopy. In modern theatres the dual IR/paramagnetic analyser is the standard solution.",
+    cites: ["Cross & Plunkett Ch.9"],
   },
 ];
 
@@ -63,16 +65,16 @@ const HumidityGasSamplingTopic = () => {
         objectives: ["Cross & Plunkett Ch.9"],
       }}
       keyPoints={[
-        "Absolute humidity at the carina = 44 mg/L at 37°C (100% RH); the isothermic saturation boundary (ISB) is normally at this level",
-        "Pneumotachographs (Fleisch/Lilly) measure flow via ΔP across a known resistance — valid only for laminar flow (Hagen-Poiseuille)",
-        "Mass spectrometry ionises gas molecules and separates by m/z ratio in a magnetic field (r = mv/qB) — the only analyser to identify all gases simultaneously",
-        "N₂O and CO₂ share m/z = 44 — mass spec distinguishes them by fragmentation patterns; Raman distinguishes by unique vibrational shifts",
-        "Raman scattering is inelastic — frequency shift (Δν) unique to each molecule; can detect N₂ (unlike infrared absorption)",
-        "Paramagnetic O₂ analyser exploits O₂'s two unpaired electrons (only O₂ and NO are paramagnetic among medical gases) — fast, accurate, no consumable",
-        "Infrared absorption measures CO₂ (4.26 µm), N₂O (4.5 µm) and all modern volatiles (8–13 µm fingerprint region) — only molecules with a changing dipole moment absorb IR (so O₂, N₂, Ar are invisible)",
-        "Collision broadening: N₂O broadens CO₂'s IR absorption peak → falsely high CO₂ reading unless the analyser compensates",
-        "Mainstream (in-line) sampling = airway cuvette, real-time, no dilution, but heavy and CO₂-only; sidestream = remote analyser, multi-gas, ~2–3 s delay, risks dilution at low tidal volumes and needs scavenging",
-        "HME filters provide 25–30 mg/L humidity passively but add dead space; heated humidifiers achieve 44 mg/L but risk condensation",
+        { text: "Absolute humidity at the carina = 44 mg/L at 37°C (100% RH); the isothermic saturation boundary (ISB) is normally at this level", cites: ["Al-Shaikh & Stacey Ch.8"] },
+        { text: "Pneumotachographs (Fleisch/Lilly) measure flow via ΔP across a known resistance — valid only for laminar flow (Hagen-Poiseuille)", cites: ["BJA Educ 2007"] },
+        { text: "Mass spectrometry ionises gas molecules and separates by m/z ratio in a magnetic field (r = mv/qB) — the only analyser to identify all gases simultaneously", cites: ["Cross & Plunkett Ch.9"] },
+        { text: "N₂O and CO₂ share m/z = 44 — mass spec distinguishes them by fragmentation patterns; Raman distinguishes by unique vibrational shifts", cites: ["Al-Shaikh & Stacey Ch.8"] },
+        { text: "Raman scattering is inelastic — frequency shift (Δν) unique to each molecule; can detect N₂ (unlike infrared absorption)", cites: ["BJA Educ 2007"] },
+        { text: "Paramagnetic O₂ analyser exploits O₂'s two unpaired electrons (only O₂ and NO are paramagnetic among medical gases) — fast, accurate, no consumable", cites: ["Cross & Plunkett Ch.9"] },
+        { text: "Infrared absorption measures CO₂ (4.26 µm), N₂O (4.5 µm) and all modern volatiles (8–13 µm fingerprint region) — only molecules with a changing dipole moment absorb IR (so O₂, N₂, Ar are invisible)", cites: ["Al-Shaikh & Stacey Ch.8"] },
+        { text: "Collision broadening: N₂O broadens CO₂'s IR absorption peak → falsely high CO₂ reading unless the analyser compensates", cites: ["BJA Educ 2007"] },
+        { text: "Mainstream (in-line) sampling = airway cuvette, real-time, no dilution, but heavy and CO₂-only; sidestream = remote analyser, multi-gas, ~2–3 s delay, risks dilution at low tidal volumes and needs scavenging", cites: ["Cross & Plunkett Ch.9"] },
+        { text: "HME filters provide 25–30 mg/L humidity passively but add dead space; heated humidifiers achieve 44 mg/L but risk condensation", cites: ["Al-Shaikh & Stacey Ch.8"] },
       ]}
       coreConcepts={
         <>

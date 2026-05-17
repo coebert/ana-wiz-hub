@@ -22,6 +22,7 @@ const workedExamples: WorkedExample[] = [
       "1:1,000 = 1 g in 1,000 mL = 1 mg/mL.\n1:10,000 = 1 g in 10,000 mL = 100 µg/mL.\nIM dose for an adult = 500 µg = 0.5 mg → 0.5 mL of 1:1,000.\nIV dose during cardiac arrest = 1 mg = 10 mL of 1:10,000.",
     answer:
       "Use 1:1,000 (1 mg/mL) for the IM anaphylaxis dose (0.5 mL = 500 µg). Use 1:10,000 (100 µg/mL) for IV cardiac-arrest doses. Mixing the two up is a classic 'never event' — always re-check the ampoule before administration.",
+    cites: ["Cross & Plunkett Ch.3"],
   },
   {
     title: "Calculated osmolarity and the osmolar gap",
@@ -31,6 +32,7 @@ const workedExamples: WorkedExample[] = [
       "Calculated osmolarity = 2[Na⁺] + [urea] + [glucose] = 2×140 + 6 + 5 = 291 mOsm/L.\nOsmolar gap = measured − calculated = 320 − 291 = 29 mOsm/kg (normal <10).",
     answer:
       "Yes — an osmolar gap of 29 mOsm/kg is markedly raised. Suspect an unmeasured osmole: methanol, ethylene glycol, ethanol, mannitol or propylene glycol. Combined with the metabolic acidosis (high anion gap) this raises ethylene glycol or methanol toxicity; treat with fomepizole (or ethanol) and urgent toxicology input.",
+    cites: ["Lobo & Awad 2014"],
   },
 ];
 
@@ -56,13 +58,13 @@ const SolutionsConcentrationTopic = () => {
         workedExamples: ["Severs 2015", "Lobo & Awad 2014"],
       }}
       keyPoints={[
-        "1% solution = 10 mg/mL. Adrenaline 1:1,000 = 1 mg/mL; 1:10,000 = 100 µg/mL",
-        "Osmolality (mOsm/kg) is measured; osmolarity (mOsm/L) is calculated. Clinically near-equivalent",
-        "Normal plasma osmolality 280–295 mOsm/kg. Calculated = 2[Na⁺] + [urea] + [glucose]",
-        "Tonicity considers only non-membrane-permeable solutes. 5% dextrose is hypotonic in vivo",
-        "Osmolar gap >10 → suspect methanol, ethylene glycol, ethanol or mannitol",
-        "Colligative properties (BP elevation, FP depression, osmotic pressure, VP lowering) depend on particle number, not type",
-        "Hyponatraemia → cellular oedema. Correct slowly (<10 mmol/24h) to avoid osmotic demyelination syndrome",
+        { text: "1% solution = 10 mg/mL. Adrenaline 1:1,000 = 1 mg/mL; 1:10,000 = 100 µg/mL", cites: ["NICE CG174"] },
+        { text: "Osmolality (mOsm/kg) is measured; osmolarity (mOsm/L) is calculated. Clinically near-equivalent", cites: ["Severs 2015"] },
+        { text: "Normal plasma osmolality 280–295 mOsm/kg. Calculated = 2[Na⁺] + [urea] + [glucose]", cites: ["Cross & Plunkett Ch.3"] },
+        { text: "Tonicity considers only non-membrane-permeable solutes. 5% dextrose is hypotonic in vivo", cites: ["Lobo & Awad 2014"] },
+        { text: "Osmolar gap >10 → suspect methanol, ethylene glycol, ethanol or mannitol", cites: ["NICE CG174"] },
+        { text: "Colligative properties (BP elevation, FP depression, osmotic pressure, VP lowering) depend on particle number, not type", cites: ["Severs 2015"] },
+        { text: "Hyponatraemia → cellular oedema. Correct slowly (<10 mmol/24h) to avoid osmotic demyelination syndrome", cites: ["Cross & Plunkett Ch.3"] },
       ]}
       coreConcepts={
         <>

@@ -27,12 +27,12 @@ const MuscleRelaxantsTopic = () => {
         "Recognise and manage suxamethonium-related complications (hyperkalaemia, MH, anaphylaxis, plasma cholinesterase deficiency)",
       ]}
       keyPoints={[
-        "Suxamethonium: only depolarising agent. Fastest onset. Metabolised by plasma ChE. Risk of hyperkalaemia, MH trigger.",
-        "Non-depolarising agents: competitive antagonists at nAChR α subunits. Aminosteroids vs benzylisoquinoliniums.",
-        "Cisatracurium: organ-independent Hofmann elimination. Ideal for renal/hepatic impairment. No histamine release.",
-        "Neostigmine: anticholinesterase reversal. Requires antimuscarinic co-administration. Cannot reverse deep block.",
-        "Sugammadex: encapsulates rocuronium/vecuronium. Can reverse profound block. 16 mg/kg for emergency reversal.",
-        "TOF ratio <0.9 = residual blockade. Quantitative neuromuscular monitoring is the standard of care.",
+        { text: "Suxamethonium: only depolarising agent. Fastest onset. Metabolised by plasma ChE. Risk of hyperkalaemia, MH trigger.", cites: ["Fourth National Audit Project"] },
+        { text: "Non-depolarising agents: competitive antagonists at nAChR α subunits. Aminosteroids vs benzylisoquinoliniums.", cites: ["Peck & Hill Ch.7"] },
+        { text: "Cisatracurium: organ-independent Hofmann elimination. Ideal for renal/hepatic impairment. No histamine release.", cites: ["BJA Educ 2015"] },
+        { text: "Neostigmine: anticholinesterase reversal. Requires antimuscarinic co-administration. Cannot reverse deep block.", cites: ["Fourth National Audit Project"] },
+        { text: "Sugammadex: encapsulates rocuronium/vecuronium. Can reverse profound block. 16 mg/kg for emergency reversal.", cites: ["Peck & Hill Ch.7"] },
+        { text: "TOF ratio <0.9 = residual blockade. Quantitative neuromuscular monitoring is the standard of care.", cites: ["BJA Educ 2015"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },

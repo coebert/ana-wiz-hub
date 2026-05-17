@@ -41,6 +41,7 @@ const workedExamples: WorkedExample[] = [
         reflexes can persist after BSD and do not invalidate the diagnosis.
       </>
     ),
+    cites: ["BJA Educ 2016"],
   },
   {
     title: "DCD III — withdrawal-to-retrieval timing",
@@ -68,6 +69,7 @@ const workedExamples: WorkedExample[] = [
         restoring oxygenated perfusion in situ.
       </>
     ),
+    cites: ["NICE CG135"],
   },
 ];
 
@@ -82,16 +84,16 @@ const OrganDonationTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        "DCD now accounts for ~60% of deceased organ donations in the UK — Category III (controlled) is most common",
-        "Maastricht classification: 5 categories — only Category III (awaiting cardiac arrest after WLST) is routinely used in UK",
-        "5-minute mandatory standoff after circulatory arrest before death can be confirmed",
-        "Functional warm ischaemia time starts when SBP < 50 mmHg — target < 30 min for kidneys, < 20 min for liver",
-        "Abdominal NRP: femoral cannulation + ECMO circuit with arch vessel exclusion — no cerebral reperfusion",
-        "TA-NRP enables DCD heart transplantation — outcomes approaching DBD levels at 1 year",
-        "NRP reduces DCD liver discard and ischaemic cholangiopathy; reduces kidney DGF from ~50% to ~20%",
-        "Ethical framework: permanence vs irreversibility, dead donor rule, cerebral exclusion as safeguard",
-        "AoMRC (2021) endorses NRP as ethically acceptable provided arch vessels are excluded before perfusion",
-        "Legal time of death: BSD = completion of first set of tests; DCD = end of 5-minute standoff — NRP does not reverse death",
+        { text: "DCD now accounts for ~60% of deceased organ donations in the UK — Category III (controlled) is most common", cites: ["AoMRC 2008"] },
+        { text: "Maastricht classification: 5 categories — only Category III (awaiting cardiac arrest after WLST) is routinely used in UK", cites: ["BJA Educ 2016"] },
+        { text: "5-minute mandatory standoff after circulatory arrest before death can be confirmed", cites: ["NICE CG135"] },
+        { text: "Functional warm ischaemia time starts when SBP < 50 mmHg — target < 30 min for kidneys, < 20 min for liver", cites: ["AoMRC 2008"] },
+        { text: "Abdominal NRP: femoral cannulation + ECMO circuit with arch vessel exclusion — no cerebral reperfusion", cites: ["BJA Educ 2016"] },
+        { text: "TA-NRP enables DCD heart transplantation — outcomes approaching DBD levels at 1 year", cites: ["NICE CG135"] },
+        { text: "NRP reduces DCD liver discard and ischaemic cholangiopathy; reduces kidney DGF from ~50% to ~20%", cites: ["AoMRC 2008"] },
+        { text: "Ethical framework: permanence vs irreversibility, dead donor rule, cerebral exclusion as safeguard", cites: ["BJA Educ 2016"] },
+        { text: "AoMRC (2021) endorses NRP as ethically acceptable provided arch vessels are excluded before perfusion", cites: ["NICE CG135"] },
+        { text: "Legal time of death: BSD = completion of first set of tests; DCD = end of 5-minute standoff — NRP does not reverse death", cites: ["AoMRC 2008"] },
       ]}
       topicId="organ-donation"
       topicTitle="Organ Donation"

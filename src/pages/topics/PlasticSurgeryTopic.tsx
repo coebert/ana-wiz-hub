@@ -23,6 +23,7 @@ const workedExamples: WorkedExample[] = [
       "Aim is to restore MAP ≥65 mmHg without vasospasm at the anastomosis.\nAssess preload (stroke-volume variation, passive leg raise) — if fluid-responsive, give a 250 ml crystalloid bolus.\nIf adequately filled, start low-dose noradrenaline (0.02–0.05 µg/kg/min) — preferred over phenylephrine/metaraminol which cause greater microvascular vasoconstriction.\nMaintain Hct 30–35%, core temp >36 °C; lighten anaesthesia if depth is contributing.\nInform surgeons; avoid cold IV fluids, warm room, recheck haemoglobin.",
     answer:
       "Restore preload with a guided fluid bolus, then add low-dose noradrenaline to MAP ≥65 mmHg. Avoid phenylephrine/metaraminol, maintain Hct 30–35% and normothermia, and communicate with the surgical team.",
+    cites: ["BJA Educ 2021"],
   },
   {
     title: "Suspected venous flap congestion at 4 hours post-op",
@@ -32,6 +33,7 @@ const workedExamples: WorkedExample[] = [
       "Picture suggests venous congestion (dusky, brisk refill) — the most common early flap failure mode.\nTime-critical: salvage rates fall sharply after 4–6 h of congestion.\nCall surgeon immediately, prepare theatre for re-exploration; cross-match blood, continue anticoagulation per unit protocol (heparin/aspirin).\nAvoid head-down tilt or tight dressings; loosen sutures at the bedside if instructed.",
     answer:
       "Activate immediate return to theatre for re-exploration of the venous anastomosis. Re-exploration within 1–2 h dramatically improves flap salvage.",
+    cites: ["Curr Opin Anaesthesiol 2019"],
   },
 ];
 
@@ -56,11 +58,11 @@ const PlasticSurgeryTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       keyPoints={[
-        "Free-flap surgery demands meticulous haemodynamic management — normotension, normovolaemia, normothermia to optimise flap perfusion",
-        "Avoid vasopressors where possible; if needed, low-dose noradrenaline preferred over metaraminol/phenylephrine",
-        "Microsurgery is prolonged (6–12 h+) — anticipate hypothermia, pressure injuries, DVT risk; arterial line and urinary catheter mandatory",
-        "Regional techniques (perforator, pectoralis, TAP) provide analgesia and may improve flap perfusion via sympathetic blockade",
-        "Haemodilution to Hct 30–35% reduces blood viscosity and improves microcirculatory flow through anastomosed vessels",
+        { text: "Free-flap surgery demands meticulous haemodynamic management — normotension, normovolaemia, normothermia to optimise flap perfusion", cites: ["BAPRAS 2020"] },
+        { text: "Avoid vasopressors where possible; if needed, low-dose noradrenaline preferred over metaraminol/phenylephrine", cites: ["BJA Educ 2021"] },
+        { text: "Microsurgery is prolonged (6–12 h+) — anticipate hypothermia, pressure injuries, DVT risk; arterial line and urinary catheter mandatory", cites: ["Curr Opin Anaesthesiol 2019"] },
+        { text: "Regional techniques (perforator, pectoralis, TAP) provide analgesia and may improve flap perfusion via sympathetic blockade", cites: ["BAPRAS 2020"] },
+        { text: "Haemodilution to Hct 30–35% reduces blood viscosity and improves microcirculatory flow through anastomosed vessels", cites: ["BJA Educ 2021"] },
       ]}
       coreConcepts={
         <>

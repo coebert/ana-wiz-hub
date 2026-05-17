@@ -24,6 +24,7 @@ const workedExamples: WorkedExample[] = [
       "SIDa = (140+4.5+1.1+0.9) − (115+3.5) = 28 mEq/L (low; normal 38–42).\nAlbumin charge = 18 × (0.123×7.28 − 0.631) = 4.8 mEq/L.\nPhosphate charge = 1.2 × (0.309×7.28 − 0.469) = 2.2 mEq/L.\nSIDe = 16 + 4.8 + 2.2 = 23 mEq/L.\nSIG = 28 − 23 = 5 mEq/L (raised; normal 0–2).\nAtot reduced by hypoalbuminaemia → masking effect.\nTraditional AG = 140 − (115+16) = 9 (falsely normal); albumin-corrected AG ≈ 14.5.",
     answer:
       "Triple disorder: (1) hyperchloraemic acidosis from saline-induced ↓SID; (2) unmeasured-anion acidosis (↑SIG) from sepsis ± ketoacids; (3) hypoalbuminaemic alkalosis (↓Atot) partially masking severity. Stewart separates all three quantitatively whereas Henderson-Hasselbalch misses the unmeasured anions.",
+    cites: ["Brandis"],
   },
   {
     title: "Winter's compensation in DKA",
@@ -33,6 +34,7 @@ const workedExamples: WorkedExample[] = [
       "Expected PaCO₂ (Winter's) = 1.5 × 6 + 8 ± 2 = 17 ± 2 mmHg → measured 15 mmHg = within range → appropriate respiratory compensation, no superimposed respiratory disorder.\nAG = 134 − (96 + 6) = 32 (raised, ketoacids).\nΔAG = 32 − 12 = 20; ΔHCO₃⁻ = 24 − 6 = 18 → delta ratio = 20/18 ≈ 1.1 → pure HAGMA without superimposed normal-AG acidosis or metabolic alkalosis.",
     answer:
       "Pure HAGMA from ketoacidosis with appropriate respiratory compensation. Treat with fluids + fixed-rate insulin + K⁺ replacement; bicarbonate not indicated.",
+    cites: ["BJA Educ 2015"],
   },
 ];
 
@@ -55,12 +57,12 @@ const AcidBaseTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       keyPoints={[
-        "Systematic approach: oxygenation → primary disorder → compensation → anion gap → delta ratio",
-        "HAGMA: MUDPILES. Normal AG acidosis: renal tubular acidosis, diarrhoea, saline excess",
-        "Stewart: pH determined by SID, PaCO₂, and Atot (albumin). ↓SID = acidosis",
-        "0.9% NaCl causes hyperchloraemic acidosis by reducing SID (SPLIT/SMART evidence)",
-        "Type A lactate = tissue hypoxia; Type B = metabolic (metformin, liver failure, PRIS)",
-        "Always albumin-correct the anion gap in ICU patients — uncorrected AG misses unmeasured anions in hypoalbuminaemia",
+        { text: "Systematic approach: oxygenation → primary disorder → compensation → anion gap → delta ratio", cites: ["Power & Kam Ch.11"] },
+        { text: "HAGMA: MUDPILES. Normal AG acidosis: renal tubular acidosis, diarrhoea, saline excess", cites: ["Brandis"] },
+        { text: "Stewart: pH determined by SID, PaCO₂, and Atot (albumin). ↓SID = acidosis", cites: ["BJA Educ 2015"] },
+        { text: "0.9% NaCl causes hyperchloraemic acidosis by reducing SID (SPLIT/SMART evidence)", cites: ["Power & Kam Ch.11"] },
+        { text: "Type A lactate = tissue hypoxia; Type B = metabolic (metformin, liver failure, PRIS)", cites: ["Brandis"] },
+        { text: "Always albumin-correct the anion gap in ICU patients — uncorrected AG misses unmeasured anions in hypoalbuminaemia", cites: ["BJA Educ 2015"] },
       ]}
       coreConcepts={
         <>

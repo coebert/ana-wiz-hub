@@ -144,14 +144,15 @@ const NeuroanatomyTopic = () => {
             </div>
           ),
           answer: "Apnoea test positive when PaCO₂ rises ≥0.5 kPa to ≥6.5 kPa with no respiratory effort and pH <7.40.",
-        },
+    cites: ["BJA Educ 2007"],
+  },
       ]}
       keyPoints={[
-        "Circle of Willis complete in only 25% — anterior communicating artery is the commonest aneurysm site",
-        "MCA supplies lateral cortex (motor/sensory strip) — most commonly affected in ischaemic stroke",
-        "Monro-Kellie doctrine: brain 80%, blood 10%, CSF 10% — skull is a fixed-volume box",
-        "Middle meningeal artery enters via foramen spinosum — rupture causes extradural haematoma",
-        "CSF produced at 500 ml/day by choroid plexus; total volume ~150 ml; absorbed by arachnoid granulations",
+        { text: "Circle of Willis complete in only 25% — anterior communicating artery is the commonest aneurysm site", cites: ["Power & Kam Ch.13"] },
+        { text: "MCA supplies lateral cortex (motor/sensory strip) — most commonly affected in ischaemic stroke", cites: ["Ellis & Feldman Ch.7"] },
+        { text: "Monro-Kellie doctrine: brain 80%, blood 10%, CSF 10% — skull is a fixed-volume box", cites: ["BJA Educ 2007"] },
+        { text: "Middle meningeal artery enters via foramen spinosum — rupture causes extradural haematoma", cites: ["Power & Kam Ch.13"] },
+        { text: "CSF produced at 500 ml/day by choroid plexus; total volume ~150 ml; absorbed by arachnoid granulations", cites: ["Ellis & Feldman Ch.7"] },
       ]}
     />
   );

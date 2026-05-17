@@ -24,6 +24,7 @@ const workedExamples: WorkedExample[] = [
       "Q = m × c × ΔT\nm = 1 kg, c = 4.18 kJ/kg/K, ΔT = 17 K\nQ = 1 × 4.18 × 17 = 71.1 kJ\nThis is the basis for fluid warmers — significant energy is needed, hence the need for high-power countercurrent or dry-heat warming devices to keep up at infusion rates >500 ml/min.",
     answer:
       "Approximately 71 kJ. Each litre of 20 °C fluid effectively cools the patient by transferring this much heat away from them if not warmed.",
+    cites: ["Middleton Ch.8"],
   },
   {
     title: "Spirometry temperature correction (BTPS)",
@@ -33,6 +34,7 @@ const workedExamples: WorkedExample[] = [
       "Charles' law: V₁/T₁ = V₂/T₂ (T in Kelvin)\nT₁ = 293 K, T₂ = 310 K\nV₂ = V₁ × (T₂/T₁) = 4.00 × (310/293) = 4.23 L\nThis ~5.8% expansion is why pulmonary function values must be reported BTPS (body temperature, ambient pressure, saturated).",
     answer:
       "≈4.23 L (an increase of ~5.8%), illustrating why temperatures in gas law calculations must always be converted to Kelvin.",
+    cites: ["Middleton Ch.1"],
   },
 ];
 
@@ -57,13 +59,13 @@ const SIUnitsThermodynamicsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
       keyPoints={[
-        "There are 7 SI base units: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), candela (cd)",
-        "Key derived units: Pascal (N/m²), Joule (N·m), Watt (J/s). Pressure conversions: 1 atm = 101.3 kPa = 760 mmHg",
-        "All individual gas laws (Boyle's, Charles', Gay-Lussac's, Avogadro's) derive from the ideal gas equation PV = nRT",
-        "Specific heat capacity (c): energy to raise 1 kg by 1 K; water's high c (4.18 kJ/kg/K) provides thermal stability",
-        "Latent heat of vaporisation (2260 kJ/kg for water): energy for phase change without temperature change — drives evaporative heat loss",
-        "First law: energy conservation (ΔU = Q − W); adiabatic gas expansion causes cooling (pressure regulators, cryotherapy)",
-        "Second law: heat flows hot → cold spontaneously; entropy always increases — explains perioperative hypothermia mechanisms",
+        { text: "There are 7 SI base units: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), candela (cd)", cites: ["Cross & Plunkett Ch.1-2"] },
+        { text: "Key derived units: Pascal (N/m²), Joule (N·m), Watt (J/s). Pressure conversions: 1 atm = 101.3 kPa = 760 mmHg", cites: ["Middleton Ch.8"] },
+        { text: "All individual gas laws (Boyle's, Charles', Gay-Lussac's, Avogadro's) derive from the ideal gas equation PV = nRT", cites: ["Middleton Ch.1"] },
+        { text: "Specific heat capacity (c): energy to raise 1 kg by 1 K; water's high c (4.18 kJ/kg/K) provides thermal stability", cites: ["Cross & Plunkett Ch.1-2"] },
+        { text: "Latent heat of vaporisation (2260 kJ/kg for water): energy for phase change without temperature change — drives evaporative heat loss", cites: ["Middleton Ch.8"] },
+        { text: "First law: energy conservation (ΔU = Q − W); adiabatic gas expansion causes cooling (pressure regulators, cryotherapy)", cites: ["Middleton Ch.1"] },
+        { text: "Second law: heat flows hot → cold spontaneously; entropy always increases — explains perioperative hypothermia mechanisms", cites: ["Cross & Plunkett Ch.1-2"] },
       ]}
       coreConcepts={
         <>

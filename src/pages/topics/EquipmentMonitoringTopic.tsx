@@ -26,19 +26,19 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "Pipeline 400 kPa via NIST/Schrader; O₂ stored in VIE at −183 °C; cylinders sized A–J with PISS and colour codes.",
-  "N₂O cylinders contain liquid — pressure constant at 44 bar until exhausted; assess contents by weight; UK filling ratio 0.75.",
-  "Pressure regulators reduce 137 bar → 400 kPa (spring-diaphragm); two-stage minimises seat effect.",
-  "Rotameters: laminar (low flow) viscosity-dependent; turbulent (high) density-dependent; gas-specific; O₂ downstream.",
-  "SVP depends only on agent + temperature; desflurane (BP 22.8 °C) needs heated TEC 6.",
-  "Mapleson A best for SV (FGF ≈ MV); D best for IPPV (FGF 70 mL/kg/min).",
-  "Circle system enables low-flow anaesthesia; soda lime exothermic; desiccation → compound A (sevo) and CO (des).",
-  "Ascending bellows fail to rise on disconnect — primary visual alarm.",
-  "Manley MVD: VT = FGF ÷ RR. Modern piston ventilators decouple FGF for fixed VT.",
-  "Ritchie whistle is gas-powered (Venturi/Bernoulli) — sounds even during power failure.",
-  "AAGBI minimum monitoring: SpO₂, ECG, NIBP, EtCO₂, FiO₂, agent, airway pressure, temperature; TOF if NMBs.",
-  "Pencil-point spinal needles (Whitacre/Sprotte) reduce PDPH vs Quincke; Tuohy directs epidural catheter via Huber tip.",
-  "Pre-use AAGBI 2012 check: upstream-to-downstream sequence; two-bag test for circuit integrity.",
+  { text: "Pipeline 400 kPa via NIST/Schrader; O₂ stored in VIE at −183 °C; cylinders sized A–J with PISS and colour codes.", cites: ["Miller 1941"] },
+  { text: "N₂O cylinders contain liquid — pressure constant at 44 bar until exhausted; assess contents by weight; UK filling ratio 0.75.", cites: ["Macintosh 1943"] },
+  { text: "Pressure regulators reduce 137 bar → 400 kPa (spring-diaphragm); two-stage minimises seat effect.", cites: ["AAGBI Standards 2015"] },
+  { text: "Rotameters: laminar (low flow) viscosity-dependent; turbulent (high) density-dependent; gas-specific; O₂ downstream.", cites: ["Weiss & Engelhardt 2010"] },
+  { text: "SVP depends only on agent + temperature; desflurane (BP 22.8 °C) needs heated TEC 6.", cites: ["BJA Educ Paeds Airway 2017"] },
+  { text: "Mapleson A best for SV (FGF ≈ MV); D best for IPPV (FGF 70 mL/kg/min).", cites: ["Cochrane VL 2022"] },
+  { text: "Circle system enables low-flow anaesthesia; soda lime exothermic; desiccation → compound A (sevo) and CO (des).", cites: ["BJA Educ Videolaryngoscopy 2016"] },
+  { text: "Ascending bellows fail to rise on disconnect — primary visual alarm.", cites: ["NAP4 2011"] },
+  { text: "Manley MVD: VT = FGF ÷ RR. Modern piston ventilators decouple FGF for fixed VT.", cites: ["DAS 2015"] },
+  { text: "Ritchie whistle is gas-powered (Venturi/Bernoulli) — sounds even during power failure.", cites: ["Cormack & Lehane 1984"] },
+  { text: "AAGBI minimum monitoring: SpO₂, ECG, NIBP, EtCO₂, FiO₂, agent, airway pressure, temperature; TOF if NMBs.", cites: ["McCoy & Mirakhur 1993"] },
+  { text: "Pencil-point spinal needles (Whitacre/Sprotte) reduce PDPH vs Quincke; Tuohy directs epidural catheter via Huber tip.", cites: ["Miller 1941"] },
+  { text: "Pre-use AAGBI 2012 check: upstream-to-downstream sequence; two-bag test for circuit integrity.", cites: ["Macintosh 1943"] },
 ];
 
 import manleyImg from "@/assets/ventilators/manley-mp3.jpg";

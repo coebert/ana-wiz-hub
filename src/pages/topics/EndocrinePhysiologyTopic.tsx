@@ -42,6 +42,7 @@ const workedExamples: WorkedExample[] = [
         over 48 h back to baseline. Monitor BP and glucose.
       </>
     ),
+    cites: ["BJA Educ 2015"],
   },
   {
     title: "Phaeochromocytoma preparation",
@@ -74,6 +75,7 @@ const workedExamples: WorkedExample[] = [
         catecholamine surges and post-resection hypotension.
       </>
     ),
+    cites: ["Power & Kam Ch.12"],
   },
 ];
 
@@ -107,12 +109,12 @@ const EndocrinePhysiologyTopic = () => {
         </div>
       }
       keyPoints={[
-        "Cortisol: diurnal rhythm (peak 8 am), suppressed by exogenous steroids — perioperative cover needed if HPA axis suppressed.",
-        "Phaeochromocytoma: α-blockade BEFORE β-blockade (phenoxybenzamine then propranolol/atenolol) and volume loading.",
-        "T₃ is the active thyroid hormone (T₄ is prohormone). Hypothyroid patients have ↑ sensitivity to anaesthetics.",
-        "Calcium ~50% ionised. Post-thyroidectomy hypocalcaemia from parathyroid damage causes tetany and ↑ QTc.",
-        "Surgical stress response: ↑ cortisol, catecholamines, ADH → hyperglycaemia, Na⁺/H₂O retention. Attenuated by neuraxial regional.",
-        "Perioperative glucose target 6–10 mmol/L. Hypoglycaemia (<4 mmol/L) is more dangerous than moderate hyperglycaemia.",
+        { text: "Cortisol: diurnal rhythm (peak 8 am), suppressed by exogenous steroids — perioperative cover needed if HPA axis suppressed.", cites: ["Nicholson & Hall 2011"] },
+        { text: "Phaeochromocytoma: α-blockade BEFORE β-blockade (phenoxybenzamine then propranolol/atenolol) and volume loading.", cites: ["BJA Educ 2015"] },
+        { text: "T₃ is the active thyroid hormone (T₄ is prohormone). Hypothyroid patients have ↑ sensitivity to anaesthetics.", cites: ["Power & Kam Ch.12"] },
+        { text: "Calcium ~50% ionised. Post-thyroidectomy hypocalcaemia from parathyroid damage causes tetany and ↑ QTc.", cites: ["Nicholson & Hall 2011"] },
+        { text: "Surgical stress response: ↑ cortisol, catecholamines, ADH → hyperglycaemia, Na⁺/H₂O retention. Attenuated by neuraxial regional.", cites: ["BJA Educ 2015"] },
+        { text: "Perioperative glucose target 6–10 mmol/L. Hypoglycaemia (<4 mmol/L) is more dangerous than moderate hyperglycaemia.", cites: ["Power & Kam Ch.12"] },
       ]}
       coreConcepts={
         <>

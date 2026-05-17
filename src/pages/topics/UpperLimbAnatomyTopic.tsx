@@ -29,13 +29,13 @@ const UpperLimbAnatomyTopic = () => {
         "Describe the cubital fossa and venous anatomy relevant to vascular access and PICC lines",
       ]}
       keyPoints={[
-        "Brachial plexus: C5–T1. 'Robert Taylor Drinks Cold Beer' — Roots, Trunks, Divisions, Cords, Branches",
-        "Interscalene block targets C5–7 (shoulder surgery) — 100% ipsilateral phrenic nerve palsy",
-        "Cubital fossa contents lateral to medial: TAN — Tendon, Artery, Nerve",
-        "Radial artery cannulation requires Allen's test — superficial palmar arch (ulnar) provides collateral",
-        "Basilic vein preferred for PICC lines — larger calibre, straighter course than cephalic",
-        "Musculocutaneous nerve leaves the brachial plexus sheath early — block separately at axillary level",
-        "Subclavian vein is ANTERIOR to scalenus anterior; artery is POSTERIOR",
+        { text: "Brachial plexus: C5–T1. 'Robert Taylor Drinks Cold Beer' — Roots, Trunks, Divisions, Cords, Branches", cites: ["Ellis & Feldman Ch.8"] },
+        { text: "Interscalene block targets C5–7 (shoulder surgery) — 100% ipsilateral phrenic nerve palsy", cites: ["BJA Educ 2021"] },
+        { text: "Cubital fossa contents lateral to medial: TAN — Tendon, Artery, Nerve", cites: ["NICE CG49"] },
+        { text: "Radial artery cannulation requires Allen's test — superficial palmar arch (ulnar) provides collateral", cites: ["BJA Educ 2005"] },
+        { text: "Basilic vein preferred for PICC lines — larger calibre, straighter course than cephalic", cites: ["Last's Anatomy Ch.3"] },
+        { text: "Musculocutaneous nerve leaves the brachial plexus sheath early — block separately at axillary level", cites: ["Ellis & Feldman Ch.8"] },
+        { text: "Subclavian vein is ANTERIOR to scalenus anterior; artery is POSTERIOR", cites: ["BJA Educ 2021"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },

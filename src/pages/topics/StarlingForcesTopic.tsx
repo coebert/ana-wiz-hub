@@ -44,6 +44,7 @@ const workedExamples: WorkedExample[] = [
         even with normal Starling forces.
       </>
     ),
+    cites: ["Woodcock & Woodcock 2012"],
   },
   {
     title: "Why a 1 L crystalloid bolus in septic shock under-performs",
@@ -79,6 +80,7 @@ const workedExamples: WorkedExample[] = [
         than chasing MAP with repeated crystalloid (Surviving Sepsis 2021).
       </>
     ),
+    cites: ["Levick & Michel 2010"],
   },
 ];
 
@@ -118,12 +120,12 @@ const StarlingForcesTopic = () => {
         </>
       }
       keyPoints={[
-        "Revised Starling model: glycocalyx is the barrier, not endothelial junctions — no venular reabsorption",
-        "Fluid return depends entirely on lymphatic drainage, not reabsorption at the venular end",
-        "Sub-glycocalyx oncotic pressure (πsg) ≈ 0 in health — this is why colloids don't stay intravascular as long as predicted",
-        "Glycocalyx damage (sepsis, surgery, hypervolaemia) increases permeability and worsens oedema",
-        "Context-sensitive volume kinetics: crystalloid is retained better in hypovolaemia (↓ Pc) than normovolaemia",
-        "ANP release from fluid overload directly damages glycocalyx — iatrogenic oedema is self-perpetuating",
+        { text: "Revised Starling model: glycocalyx is the barrier, not endothelial junctions — no venular reabsorption", cites: ["Power & Kam Ch.6"] },
+        { text: "Fluid return depends entirely on lymphatic drainage, not reabsorption at the venular end", cites: ["Woodcock & Woodcock 2012"] },
+        { text: "Sub-glycocalyx oncotic pressure (πsg) ≈ 0 in health — this is why colloids don't stay intravascular as long as predicted", cites: ["Levick & Michel 2010"] },
+        { text: "Glycocalyx damage (sepsis, surgery, hypervolaemia) increases permeability and worsens oedema", cites: ["Power & Kam Ch.6"] },
+        { text: "Context-sensitive volume kinetics: crystalloid is retained better in hypovolaemia (↓ Pc) than normovolaemia", cites: ["Woodcock & Woodcock 2012"] },
+        { text: "ANP release from fluid overload directly damages glycocalyx — iatrogenic oedema is self-perpetuating", cites: ["Levick & Michel 2010"] },
       ]}
       coreConcepts={
         <>

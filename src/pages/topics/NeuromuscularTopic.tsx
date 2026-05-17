@@ -52,6 +52,7 @@ const workedExamples: WorkedExample[] = [
         injury, prolonged ICU stay (&gt;1 week), and Guillain–Barré.
       </>
     ),
+    cites: ["Power & Kam Ch.15"],
   },
   {
     title: "Interpreting train-of-four fade",
@@ -87,6 +88,7 @@ const workedExamples: WorkedExample[] = [
         complications, hypoxaemia, and aspiration risk.
       </>
     ),
+    cites: ["BJA Educ 2005"],
   },
 ];
 
@@ -123,12 +125,12 @@ const NeuromuscularTopic = () => {
         </>
       }
       keyPoints={[
-        "Adult nAChR subunit composition is α₂βδε; fetal/extrajunctional receptors contain γ instead of ε.",
-        "Two ACh molecules must bind (one per α subunit) to open the nAChR channel.",
-        "AChE rapidly hydrolyses ACh to choline + acetate; choline is recycled via active reuptake.",
-        "The safety margin means ~75% receptor occupancy before fade appears, ~80% before single twitch depression, >90% for complete block.",
-        "Pre-junctional nAChRs (α₃β₂) mediate positive feedback — their block by non-depolarising agents explains train-of-four fade.",
-        "Extrajunctional receptor upregulation (burns, denervation, ICU immobility) causes suxamethonium-induced hyperkalaemia.",
+        { text: "Adult nAChR subunit composition is α₂βδε; fetal/extrajunctional receptors contain γ instead of ε.", cites: ["Ganong Ch.5"] },
+        { text: "Two ACh molecules must bind (one per α subunit) to open the nAChR channel.", cites: ["Power & Kam Ch.15"] },
+        { text: "AChE rapidly hydrolyses ACh to choline + acetate; choline is recycled via active reuptake.", cites: ["BJA Educ 2005"] },
+        { text: "The safety margin means ~75% receptor occupancy before fade appears, ~80% before single twitch depression, >90% for complete block.", cites: ["Ganong Ch.5"] },
+        { text: "Pre-junctional nAChRs (α₃β₂) mediate positive feedback — their block by non-depolarising agents explains train-of-four fade.", cites: ["Power & Kam Ch.15"] },
+        { text: "Extrajunctional receptor upregulation (burns, denervation, ICU immobility) causes suxamethonium-induced hyperkalaemia.", cites: ["BJA Educ 2005"] },
       ]}
       coreConcepts={
         <>

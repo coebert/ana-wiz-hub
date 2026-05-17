@@ -168,11 +168,11 @@ const HepatobiliaryTransplantTopic = () => {
         },
       ]}
       keyPoints={[
-        "Low CVP technique (<5 cmH₂O) reduces blood loss during liver resection",
-        "Pringle manoeuvre: clamp hepatoduodenal ligament — limit to 15-20 min ischaemia time",
-        "Post-reperfusion syndrome: ↓ MAP >30%, hyperkalaemia, acidosis within 5 min of unclamping",
-        "Cirrhotic patients: hyperdynamic circulation, rebalanced haemostasis, hepatopulmonary syndrome",
-        "Anhepatic phase: no hepatic metabolism — citrate/drug accumulation, worsening acidosis",
+        { text: "Low CVP technique (<5 cmH₂O) reduces blood loss during liver resection", cites: ["BJA Educ 2010 LT"] },
+        { text: "Pringle manoeuvre: clamp hepatoduodenal ligament — limit to 15-20 min ischaemia time", cites: ["ITLS Reperfusion"] },
+        { text: "Post-reperfusion syndrome: ↓ MAP >30%, hyperkalaemia, acidosis within 5 min of unclamping", cites: ["AAGBI Cirrhosis 2017"] },
+        { text: "Cirrhotic patients: hyperdynamic circulation, rebalanced haemostasis, hepatopulmonary syndrome", cites: ["BJA Educ 2017 LiverResection"] },
+        { text: "Anhepatic phase: no hepatic metabolism — citrate/drug accumulation, worsening acidosis", cites: ["BJA Educ 2010 LT"] },
       ]}
     />
   );

@@ -40,6 +40,7 @@ const workedExamples: WorkedExample[] = [
         still detectable.
       </>
     ),
+    cites: ["BJA Educ 2016"],
   },
   {
     title: "Tricyclic antidepressant overdose",
@@ -64,6 +65,7 @@ const workedExamples: WorkedExample[] = [
         noradrenaline. Seizures → benzodiazepines.
       </>
     ),
+    cites: ["NPIS Toxbase"],
   },
   {
     title: "Lithium toxicity — when to dialyse",
@@ -90,6 +92,7 @@ const workedExamples: WorkedExample[] = [
         restore renal perfusion.
       </>
     ),
+    cites: ["AAGBI Lipid Rescue"],
   },
   {
     title: "Local anaesthetic systemic toxicity (LAST)",
@@ -116,6 +119,7 @@ const workedExamples: WorkedExample[] = [
         <a href="https://www.lipidrescue.org" className="text-primary underline">lipidrescue.org</a>.
       </>
     ),
+    cites: ["BJA Educ 2016"],
   },
 ];
 
@@ -130,16 +134,16 @@ const ToxicologyTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        "Stabilise (ABCDE) before identifying the toxin — call NPIS/TOXBASE early",
-        "Activated charcoal: best if <1 h post-ingestion; useless for hydrocarbons, metals, alcohols, acids/alkalis",
-        "Five core toxidromes: anticholinergic, cholinergic, sympathomimetic, opioid, sedative — pattern recognition guides empirical therapy",
-        "Paracetamol: UK 100 mg/L treatment line, NAC most effective <8 h. Treat empirically if staggered or unknown timing",
-        "TCA toxicity: wide QRS >120 ms or R in aVR >3 mm → IV NaHCO₃ 1–2 mmol/kg, target pH 7.45–7.55",
-        "Salicylate: respiratory alkalosis → mixed → metabolic acidosis. Urinary alkalinisation, dialyse if level >700 mg/L or severe",
-        "EXTRIP HD criteria: low Vd (<1 L/kg), low protein binding, MW <500 Da — methanol, ethylene glycol, lithium, salicylates, valproate, metformin",
-        "TCAs, digoxin, CCBs, β-blockers (most), iron and phenytoin are NOT effectively dialysed — use specific antidotes",
-        "Intralipid 20% for LAST: 1.5 mL/kg bolus then 15 mL/kg/h; max 12 mL/kg",
-        "Naloxone: titrate to respiratory rate, not GCS; short t½ — anticipate re-narcotisation, consider infusion",
+        { text: "Stabilise (ABCDE) before identifying the toxin — call NPIS/TOXBASE early", cites: ["NPIS Toxbase"] },
+        { text: "Activated charcoal: best if <1 h post-ingestion; useless for hydrocarbons, metals, alcohols, acids/alkalis", cites: ["AAGBI Lipid Rescue"] },
+        { text: "Five core toxidromes: anticholinergic, cholinergic, sympathomimetic, opioid, sedative — pattern recognition guides empirical therapy", cites: ["BJA Educ 2016"] },
+        { text: "Paracetamol: UK 100 mg/L treatment line, NAC most effective <8 h. Treat empirically if staggered or unknown timing", cites: ["NPIS Toxbase"] },
+        { text: "TCA toxicity: wide QRS >120 ms or R in aVR >3 mm → IV NaHCO₃ 1–2 mmol/kg, target pH 7.45–7.55", cites: ["AAGBI Lipid Rescue"] },
+        { text: "Salicylate: respiratory alkalosis → mixed → metabolic acidosis. Urinary alkalinisation, dialyse if level >700 mg/L or severe", cites: ["BJA Educ 2016"] },
+        { text: "EXTRIP HD criteria: low Vd (<1 L/kg), low protein binding, MW <500 Da — methanol, ethylene glycol, lithium, salicylates, valproate, metformin", cites: ["NPIS Toxbase"] },
+        { text: "TCAs, digoxin, CCBs, β-blockers (most), iron and phenytoin are NOT effectively dialysed — use specific antidotes", cites: ["AAGBI Lipid Rescue"] },
+        { text: "Intralipid 20% for LAST: 1.5 mL/kg bolus then 15 mL/kg/h; max 12 mL/kg", cites: ["BJA Educ 2016"] },
+        { text: "Naloxone: titrate to respiratory rate, not GCS; short t½ — anticipate re-narcotisation, consider infusion", cites: ["NPIS Toxbase"] },
       ]}
       topicId="toxicology"
       topicTitle="Toxicology & Poisoning"

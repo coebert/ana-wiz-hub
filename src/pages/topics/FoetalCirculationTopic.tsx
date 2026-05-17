@@ -44,6 +44,7 @@ const workedExamples: WorkedExample[] = [
         avoid unnecessary hyperoxia, and transfer to a specialist paediatric cardiac centre.
       </>
     ),
+    cites: ["Power & Kam Ch.18"],
   },
   {
     title: "Pre- vs post-ductal SpO₂ difference",
@@ -73,6 +74,7 @@ const workedExamples: WorkedExample[] = [
         ECMO if oxygenation index does not improve.
       </>
     ),
+    cites: ["BJA Educ 2015"],
   },
 ];
 
@@ -107,12 +109,12 @@ const FoetalCirculationTopic = () => {
         </div>
       }
       keyPoints={[
-        "Three foetal shunts: ductus venosus, foramen ovale, ductus arteriosus — all bypass the lungs.",
-        "HbF has higher O₂ affinity (P₅₀ 2.7 kPa) — left-shifted ODC aids placental O₂ uptake.",
-        "Double Bohr effect: maternal curve shifts right while foetal curve shifts left simultaneously, enhancing transfer.",
-        "First breath ↓ PVR dramatically; cord clamping ↑ SVR → parallel becomes series circulation.",
-        "Ductus arteriosus closes with ↑ PaO₂ and ↓ PGE₂; PGE₁ keeps it open in duct-dependent lesions.",
-        "Pre- minus post-ductal SpO₂ gradient >5% suggests persistent right-to-left ductal shunting (PPHN).",
+        { text: "Three foetal shunts: ductus venosus, foramen ovale, ductus arteriosus — all bypass the lungs.", cites: ["Ganong Ch.33"] },
+        { text: "HbF has higher O₂ affinity (P₅₀ 2.7 kPa) — left-shifted ODC aids placental O₂ uptake.", cites: ["Power & Kam Ch.18"] },
+        { text: "Double Bohr effect: maternal curve shifts right while foetal curve shifts left simultaneously, enhancing transfer.", cites: ["BJA Educ 2015"] },
+        { text: "First breath ↓ PVR dramatically; cord clamping ↑ SVR → parallel becomes series circulation.", cites: ["Ganong Ch.33"] },
+        { text: "Ductus arteriosus closes with ↑ PaO₂ and ↓ PGE₂; PGE₁ keeps it open in duct-dependent lesions.", cites: ["Power & Kam Ch.18"] },
+        { text: "Pre- minus post-ductal SpO₂ gradient >5% suggests persistent right-to-left ductal shunting (PPHN).", cites: ["BJA Educ 2015"] },
       ]}
       coreConcepts={
         <>

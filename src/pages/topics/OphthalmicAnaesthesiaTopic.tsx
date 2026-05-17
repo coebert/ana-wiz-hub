@@ -29,6 +29,7 @@ const workedExamples: WorkedExample[] = [
       "Oculocardiac reflex: stretch on extraocular muscles → trigeminal V₁ afferent → vagal efferent → bradycardia, occasionally asystole. Most pronounced in children and with medial rectus traction.\nImmediate steps: ask surgeon to stop traction; ensure adequate ventilation and depth of anaesthesia; if persistent, give atropine 20 µg/kg IV.\nProphylactic atropine is not routine in adults but may be considered in repeated episodes or in children.",
     answer:
       "Stop the surgical stimulus first. The reflex usually fatigues; if the bradycardia persists or is profound, give atropine 20 µg/kg IV and ensure depth of anaesthesia. Document the event so the surgeon and recovery team are aware on subsequent eyes.",
+    cites: ["Allman & Wilson Ch.29"],
   },
   {
     title: "Open-globe injury with a full stomach",
@@ -38,6 +39,7 @@ const workedExamples: WorkedExample[] = [
       "Risk of vitreous extrusion if IOP rises during induction.\nOptimal RSI: rocuronium 1.2 mg/kg (rapid onset, no IOP rise); sugammadex available for reversal.\nAlternatives if rocuronium unavailable: pre-treat with non-depolariser then suxamethonium (controversial — IOP rise is small and transient compared with vomiting/coughing risks).\nMaintain smooth anaesthesia: avoid coughing/straining, use lidocaine before extubation, treat PONV aggressively (vomiting markedly raises IOP).",
     answer:
       "RSI with rocuronium 1.2 mg/kg is the preferred technique. If only suxamethonium is available, the literature supports it when aspiration risk is the dominant concern — coughing and vomiting cause much larger IOP rises than suxamethonium itself. Plan a smooth, deep extubation with prophylactic antiemetics.",
+    cites: ["RCOphth/RCoA 2012"],
   },
 ];
 
@@ -63,11 +65,11 @@ const OphthalmicAnaesthesiaTopic = () => {
         workedExamples: ["RCOphth/RCoA 2012"],
       }}
       keyPoints={[
-        "IOP ↑ by suxamethonium, coughing, prone, N₂O (if SF₆ present); IOP ↓ by propofol, volatiles, mannitol",
-        "Oculocardiac reflex: medial rectus traction → V₁ afferent → vagal bradycardia. Treat: stop stimulus + atropine",
-        "Sub-Tenon's block: safest needle technique, good akinesia. Peribulbar: outside muscle cone (safer than retrobulbar)",
-        "Open globe: avoid suxamethonium if possible. RSI with rocuronium 1.2 mg/kg preferred",
-        "Brainstem anaesthesia (retrobulbar complication): contralateral amaurosis, respiratory depression, apnoea, ↓ consciousness",
+        { text: "IOP ↑ by suxamethonium, coughing, prone, N₂O (if SF₆ present); IOP ↓ by propofol, volatiles, mannitol", cites: ["BJA Educ 2018"] },
+        { text: "Oculocardiac reflex: medial rectus traction → V₁ afferent → vagal bradycardia. Treat: stop stimulus + atropine", cites: ["Allman & Wilson Ch.29"] },
+        { text: "Sub-Tenon's block: safest needle technique, good akinesia. Peribulbar: outside muscle cone (safer than retrobulbar)", cites: ["RCOphth/RCoA 2012"] },
+        { text: "Open globe: avoid suxamethonium if possible. RSI with rocuronium 1.2 mg/kg preferred", cites: ["BJA Educ 2018"] },
+        { text: "Brainstem anaesthesia (retrobulbar complication): contralateral amaurosis, respiratory depression, apnoea, ↓ consciousness", cites: ["Allman & Wilson Ch.29"] },
       ]}
       coreConcepts={
         <>

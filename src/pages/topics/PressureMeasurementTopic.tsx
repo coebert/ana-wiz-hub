@@ -29,6 +29,7 @@ const workedExamples: WorkedExample[] = [
       "Hydrostatic pressure of a fluid column: ΔP (cmH₂O) = height (cm).\nConvert cmH₂O → mmHg: 1 mmHg = 1.36 cmH₂O.\n26 cmH₂O / 1.36 ≈ 19 mmHg.\nTransducer above the heart under-reads by this amount.",
     answer:
       "True MAP ≈ 52 + 19 ≈ 71 mmHg. The displayed hypotension was an artefact of levelling. Always zero AND level to the phlebostatic axis (4th ICS, mid-axillary line) — every 13 cm of height error gives ~10 mmHg.",
+    cites: ["Cross & Plunkett Ch.7"],
   },
   {
     title: "Damping diagnosis from a fast-flush test",
@@ -38,6 +39,7 @@ const workedExamples: WorkedExample[] = [
       "Single oscillation pattern → damping coefficient ζ ≈ 0.6–0.7 (optimal range, ζ_opt = 0.64).\nCompare to: no oscillation (over-damped, ζ > 1, sluggish); 2–3 decreasing oscillations (under-damped, ζ < 0.4, resonance distortion).\nNatural frequency from cycle length on the trace: fn = 1/T (target >40 Hz to exceed the 10th harmonic of arterial waveform).",
     answer:
       "Optimal damping (ζ ≈ 0.64). The trace is reliable: SBP, DBP and MAP can all be trusted. Over-damping under-reads SBP and over-reads DBP; under-damping does the opposite. MAP is least affected by damping artefact in either direction.",
+    cites: ["BJA Educ 2015"],
   },
 ];
 
@@ -63,12 +65,12 @@ const PressureMeasurementTopic = () => {
         workedExamples: ["BJA Educ 2015"],
       }}
       keyPoints={[
-        "Pressure = Force/Area. SI unit is Pascal. Clinical units: mmHg, cmH₂O, kPa, bar.",
-        "Wheatstone bridge strain gauge transducers convert diaphragm deflection to voltage via resistance change.",
-        "Transducers must be zeroed to atmosphere and levelled to the phlebostatic axis. 13 cm error ≈ 10 mmHg.",
-        "Natural frequency should exceed 40 Hz. Optimal damping coefficient ζ = 0.64.",
-        "Over-damping underestimates systolic; under-damping overestimates systolic. MAP is least affected.",
-        "NIBP oscillometric method: maximum oscillation amplitude = MAP; systolic and diastolic are derived algorithmically.",
+        { text: "Pressure = Force/Area. SI unit is Pascal. Clinical units: mmHg, cmH₂O, kPa, bar.", cites: ["Al-Shaikh & Stacey Ch.19"] },
+        { text: "Wheatstone bridge strain gauge transducers convert diaphragm deflection to voltage via resistance change.", cites: ["Cross & Plunkett Ch.7"] },
+        { text: "Transducers must be zeroed to atmosphere and levelled to the phlebostatic axis. 13 cm error ≈ 10 mmHg.", cites: ["BJA Educ 2015"] },
+        { text: "Natural frequency should exceed 40 Hz. Optimal damping coefficient ζ = 0.64.", cites: ["Al-Shaikh & Stacey Ch.19"] },
+        { text: "Over-damping underestimates systolic; under-damping overestimates systolic. MAP is least affected.", cites: ["Cross & Plunkett Ch.7"] },
+        { text: "NIBP oscillometric method: maximum oscillation amplitude = MAP; systolic and diastolic are derived algorithmically.", cites: ["BJA Educ 2015"] },
       ]}
       coreConcepts={
         <>

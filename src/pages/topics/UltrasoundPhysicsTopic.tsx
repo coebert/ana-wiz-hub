@@ -23,6 +23,7 @@ const workedExamples: WorkedExample[] = [
       "Target depth at the supraclavicular fossa ≈ 1–3 cm.\nAttenuation ≈ 0.5 dB/cm/MHz × 2 ways → at 12 MHz over 3 cm round trip = 36 dB attenuation (acceptable, image still bright).\nAxial resolution at 12 MHz ≈ wavelength × ½ × cycles ≈ 0.13 mm × 1 ≈ 0.13 mm — easily resolves individual hypoechoic nerve fascicles.\nAt 3.5 MHz axial resolution ≈ 0.4 mm — fascicles less distinct but probe penetrates 15–20 cm.",
     answer:
       "Use the high-frequency linear probe. The plexus is shallow, so penetration is not limiting and axial resolution at 12 MHz allows fine needle-tip and fascicular discrimination. Reserve curvilinear/phased array probes for deeper structures (FAST, abdominal, cardiac).",
+    cites: ["Middleton Ch.13"],
   },
   {
     title: "Aliasing on PW Doppler at the LVOT",
@@ -32,6 +33,7 @@ const workedExamples: WorkedExample[] = [
       "Aliasing occurs when Doppler shift > Nyquist limit = PRF/2.\nNyquist = 0.8 m/s → true velocity exceeds this and is mis-displayed in the opposite direction.\nOptions: (1) increase PRF (raises Nyquist); (2) shift baseline to use full negative scale; (3) reduce sample depth (deeper sample → lower max PRF); (4) switch to CW Doppler — no aliasing, but loses depth specificity.",
     answer:
       "True velocity is greater than the Nyquist limit. Use CW Doppler aligned through the LVOT to obtain an unaliased peak velocity (often 4–6 m/s in HOCM). Apply the simplified Bernoulli (ΔP = 4v²) to estimate the dynamic LVOT gradient.",
+    cites: ["Cross & Plunkett Ch.17"],
   },
 ];
 
@@ -57,13 +59,13 @@ const UltrasoundPhysicsTopic = () => {
         workedExamples: ["BJA Educ 2017", "BJA Educ 2017"],
       }}
       keyPoints={[
-        "Piezoelectric crystals (PZT) convert electrical to mechanical energy (transmit) and vice versa (receive) — the basis of all ultrasound transducers",
-        "Higher frequency → better axial resolution but less penetration; axial resolution = SPL/2",
-        "Speed of sound in soft tissue is assumed to be 1,540 m/s for depth calculations",
-        "Doppler equation: Δf = 2f₀v cos θ / c — angle of insonation must be <60° for accurate velocity measurement",
-        "CW Doppler has no aliasing but no depth discrimination; PW Doppler is depth-specific but aliases above Nyquist limit (PRF/2)",
-        "A-lines (reverberation) = normal aerated lung; B-lines (comet tail) = interstitial oedema; absent lung sliding → pneumothorax",
-        "Acoustic shadowing occurs behind bone/calculi; posterior enhancement occurs behind fluid-filled structures",
+        { text: "Piezoelectric crystals (PZT) convert electrical to mechanical energy (transmit) and vice versa (receive) — the basis of all ultrasound transducers", cites: ["BJA Educ 2017"] },
+        { text: "Higher frequency → better axial resolution but less penetration; axial resolution = SPL/2", cites: ["Middleton Ch.13"] },
+        { text: "Speed of sound in soft tissue is assumed to be 1,540 m/s for depth calculations", cites: ["Cross & Plunkett Ch.17"] },
+        { text: "Doppler equation: Δf = 2f₀v cos θ / c — angle of insonation must be <60° for accurate velocity measurement", cites: ["BJA Educ 2017"] },
+        { text: "CW Doppler has no aliasing but no depth discrimination; PW Doppler is depth-specific but aliases above Nyquist limit (PRF/2)", cites: ["Middleton Ch.13"] },
+        { text: "A-lines (reverberation) = normal aerated lung; B-lines (comet tail) = interstitial oedema; absent lung sliding → pneumothorax", cites: ["Cross & Plunkett Ch.17"] },
+        { text: "Acoustic shadowing occurs behind bone/calculi; posterior enhancement occurs behind fluid-filled structures", cites: ["BJA Educ 2017"] },
       ]}
       coreConcepts={
         <>

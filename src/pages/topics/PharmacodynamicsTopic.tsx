@@ -49,6 +49,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Buprenorphine displaced morphine from the μ-receptor; its lower intrinsic activity provided a smaller signal → precipitated withdrawal. Always wait for objective withdrawal (COWS ≥ 12) before initiating buprenorphine in opioid-dependent patients (the 'micro-induction' or Bernese protocol minimises this risk).",
+    cites: ["Rang & Dale Ch.2"],
   },
   {
     title: "Reading a parallel right-shift on a dose-response curve",
@@ -85,6 +86,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "A competitive (surmountable) antagonist such as phentolamine. A non-competitive antagonist (e.g. phenoxybenzamine) would lower Emax. Recognising shift vs depression is a high-yield FRCA Primary visual question.",
+    cites: ["BJA Educ 2016"],
   },
 ];
 
@@ -129,13 +131,13 @@ const PharmacodynamicsTopic = () => {
         ],
       }}
       keyPoints={[
-        "Potency = EC₅₀ (position on x-axis); Efficacy = Emax (maximal response achievable)",
-        "Competitive antagonist: shifts curve RIGHT, Emax preserved. Non-competitive: ↓ Emax, insurmountable",
-        "Partial agonist can antagonise a full agonist when both are present (e.g., buprenorphine vs morphine)",
-        "4 receptor types: ion channel (ms), GPCR (seconds), kinase-linked (min-hours), nuclear (hours-days)",
-        "Gαs → ↑cAMP (β₁), Gαi → ↓cAMP (M₂, μ-opioid), Gαq → IP₃/DAG (α₁, M₁)",
-        "Tachyphylaxis: receptor desensitisation, internalisation, or mediator depletion (ephedrine)",
-        "Therapeutic index = TD₅₀/ED₅₀. Narrow TI: digoxin, warfarin, lithium, phenytoin, theophylline",
+        { text: "Potency = EC₅₀ (position on x-axis); Efficacy = Emax (maximal response achievable)", cites: ["Peck & Hill Ch.2"] },
+        { text: "Competitive antagonist: shifts curve RIGHT, Emax preserved. Non-competitive: ↓ Emax, insurmountable", cites: ["Rang & Dale Ch.2"] },
+        { text: "Partial agonist can antagonise a full agonist when both are present (e.g., buprenorphine vs morphine)", cites: ["BJA Educ 2016"] },
+        { text: "4 receptor types: ion channel (ms), GPCR (seconds), kinase-linked (min-hours), nuclear (hours-days)", cites: ["Peck & Hill Ch.2"] },
+        { text: "Gαs → ↑cAMP (β₁), Gαi → ↓cAMP (M₂, μ-opioid), Gαq → IP₃/DAG (α₁, M₁)", cites: ["Rang & Dale Ch.2"] },
+        { text: "Tachyphylaxis: receptor desensitisation, internalisation, or mediator depletion (ephedrine)", cites: ["BJA Educ 2016"] },
+        { text: "Therapeutic index = TD₅₀/ED₅₀. Narrow TI: digoxin, warfarin, lithium, phenytoin, theophylline", cites: ["Peck & Hill Ch.2"] },
       ]}
       coreConcepts={
         <>

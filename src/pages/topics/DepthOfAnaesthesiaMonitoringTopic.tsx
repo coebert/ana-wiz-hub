@@ -19,14 +19,14 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "BIS target 40–60 for GA. BIS >60 with NMB = awareness risk. BIS <40 sustained = excessive depth",
-  "Suppression Ratio: % of time EEG is isoelectric — any SR >0% indicates burst suppression, reduce anaesthetic",
-  "SEF95: frequency below which 95% of EEG power lies. Awake ~25 Hz, anaesthetised ~10–15 Hz, deep <8 Hz",
-  "Entropy: RE−SE gap >5–10 suggests EMG activation (pain/light anaesthesia) — unique nociception indicator",
-  "Narcotrend: stages A–F with NI 0–100. Target D0–D2 (NI 37–65). Pattern recognition rather than spectral analysis",
-  "EMG contamination falsely ELEVATES BIS. NMB may artefactually DROP BIS by removing EMG — not deeper anaesthesia",
-  "Ketamine causes high BIS despite adequate anaesthesia (beta EEG activation) — processed EEG unreliable",
-  "NAP5: awareness 1:19,600 overall, 1:8,000 with TIVA. Recommends processed EEG for all TIVA cases",
+  { text: "BIS target 40–60 for GA. BIS >60 with NMB = awareness risk. BIS <40 sustained = excessive depth", cites: ["Purdon et al. 2015"] },
+  { text: "Suppression Ratio: % of time EEG is isoelectric — any SR >0% indicates burst suppression, reduce anaesthetic", cites: ["BJA Educ 2014"] },
+  { text: "SEF95: frequency below which 95% of EEG power lies. Awake ~25 Hz, anaesthetised ~10–15 Hz, deep <8 Hz", cites: ["NICE DG6"] },
+  { text: "Entropy: RE−SE gap >5–10 suggests EMG activation (pain/light anaesthesia) — unique nociception indicator", cites: ["NAP5 2014"] },
+  { text: "Narcotrend: stages A–F with NI 0–100. Target D0–D2 (NI 37–65). Pattern recognition rather than spectral analysis", cites: ["Purdon et al. 2015"] },
+  { text: "EMG contamination falsely ELEVATES BIS. NMB may artefactually DROP BIS by removing EMG — not deeper anaesthesia", cites: ["BJA Educ 2014"] },
+  { text: "Ketamine causes high BIS despite adequate anaesthesia (beta EEG activation) — processed EEG unreliable", cites: ["NICE DG6"] },
+  { text: "NAP5: awareness 1:19,600 overall, 1:8,000 with TIVA. Recommends processed EEG for all TIVA cases", cites: ["NAP5 2014"] },
 ];
 
 type Monitor = "bis" | "entropy" | "narcotrend";

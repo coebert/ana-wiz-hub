@@ -45,14 +45,14 @@ const AnticoagulantsTopic = () => {
         "Recognise and treat heparin-induced thrombocytopenia (HIT) including alternative anticoagulation",
       ]}
       keyPoints={[
-        "UFH potentiates antithrombin III → inhibits thrombin (IIa) + Xa equally. LMWH predominantly inhibits Xa (shorter chains).",
-        "HIT Type II is immune-mediated (anti-PF4/heparin IgG) → paradoxical thrombosis. Stop ALL heparin. Use argatroban or bivalirudin.",
-        "Warfarin inhibits vitamin K epoxide reductase (VKORC1) → ↓ factors II, VII, IX, X. Delayed onset (2–7 days). Reversed by vitamin K + PCC.",
-        "DOACs directly inhibit thrombin (dabigatran) or Xa (rivaroxaban, apixaban, edoxaban). Predictable kinetics, no routine monitoring.",
-        "Idarucizumab specifically reverses dabigatran. Andexanet alfa reverses Xa inhibitors. PCC is used when specific agents are unavailable.",
-        "Protamine fully reverses UFH (1 mg per 100 IU) but only ~60% reverses LMWH. Side effects: hypotension, anaphylaxis, pulmonary HTN.",
-        "Warfarin is teratogenic (warfarin embryopathy in T1). Heparin does not cross the placenta.",
-        "Neuraxial timing: LMWH prophylactic 12 h / therapeutic 24 h; DOACs 48–72 h; warfarin INR ≤1.4.",
+        { text: "UFH potentiates antithrombin III → inhibits thrombin (IIa) + Xa equally. LMWH predominantly inhibits Xa (shorter chains).", cites: ["NICE NG89"] },
+        { text: "HIT Type II is immune-mediated (anti-PF4/heparin IgG) → paradoxical thrombosis. Stop ALL heparin. Use argatroban or bivalirudin.", cites: ["BJA Educ 2015"] },
+        { text: "Warfarin inhibits vitamin K epoxide reductase (VKORC1) → ↓ factors II, VII, IX, X. Delayed onset (2–7 days). Reversed by vitamin K + PCC.", cites: ["BSH 2011"] },
+        { text: "DOACs directly inhibit thrombin (dabigatran) or Xa (rivaroxaban, apixaban, edoxaban). Predictable kinetics, no routine monitoring.", cites: ["NICE NG89"] },
+        { text: "Idarucizumab specifically reverses dabigatran. Andexanet alfa reverses Xa inhibitors. PCC is used when specific agents are unavailable.", cites: ["BJA Educ 2015"] },
+        { text: "Protamine fully reverses UFH (1 mg per 100 IU) but only ~60% reverses LMWH. Side effects: hypotension, anaphylaxis, pulmonary HTN.", cites: ["BSH 2011"] },
+        { text: "Warfarin is teratogenic (warfarin embryopathy in T1). Heparin does not cross the placenta.", cites: ["NICE NG89"] },
+        { text: "Neuraxial timing: LMWH prophylactic 12 h / therapeutic 24 h; DOACs 48–72 h; warfarin INR ≤1.4.", cites: ["BJA Educ 2015"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },

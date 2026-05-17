@@ -26,6 +26,7 @@ const workedExamples: WorkedExample[] = [
       "Marsh is weight-only and would scale V1 with TBW (V1 = 0.228 × 60 = 13.7 L) — same effective dose as a young 60 kg adult, ignoring her reduced clearance.\nSchnider uses age, weight, height and LBM, with V1 fixed at 4.27 L → smaller induction overshoot in Ce mode and clearance reduced for age. Safer haemodynamics in the elderly.\nStart Schnider Ce 2.5–3 µg/ml propofol + Minto Ce 2–3 ng/ml remifentanil, titrate to BIS 40–60 and MAP. Reduce by ~30% vs young adult.",
     answer:
       "Use Schnider Ce-targeted propofol at Ce 2.5–3 µg/ml + Minto Ce 2–3 ng/ml remifentanil, titrated to BIS 40–60 — Schnider accounts for age and avoids the V1 over-dosing seen with Marsh in the elderly.",
+    cites: ["Schnider 1998"],
   },
   {
     title: "Predicting wake-up after a long propofol infusion",
@@ -35,6 +36,7 @@ const workedExamples: WorkedExample[] = [
       "Remifentanil CSHT ≈ 3–4 min regardless of duration (ester hydrolysis) — Ce halves within minutes; not rate-limiting.\nPropofol CSHT rises with infusion duration — ~10 min at 1 h, ~25–30 min at 4 h, ~40 min at 8 h (V3 saturation).\nWake-up therefore depends on propofol decrement time from maintenance Ce (~3 µg/ml) to wake threshold (~1.0–1.2 µg/ml) — typically 15–25 min after 8 h.\nGive transitional analgesia (paracetamol, regional, long-acting opioid) BEFORE stopping remifentanil to avoid hyperalgesic emergence.",
     answer:
       "Wake within ~15–25 min, rate-limited by propofol decrement (CSHT ~40 min at 8 h). Always give a transitional analgesic before stopping remifentanil.",
+    cites: ["BJA Educ 2016"],
   },
 ];
 
@@ -172,14 +174,14 @@ const TIVATopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
-        "TCI pumps use 3-compartment models to predict Cp and Ce — V1 determines bolus size, clearance determines maintenance rate",
-        "Marsh: weight-only, V1 scales with TBW, ke0 0.26 min⁻¹ — risk of overdose in obese, slower Ce equilibration",
-        "Schnider: age/sex/LBM covariates, fixed V1 (4.27 L), ke0 0.456 min⁻¹ — UK preferred for Ce targeting, safer in elderly",
-        "Eleveld: universal model (neonates to elderly), allometric scaling, accounts for opioid interaction — most modern",
-        "Minto: standard remifentanil model. CSHT ~3–4 min regardless of duration. Ce targets: analgesia 2–4, surgery 4–8 ng/mL",
-        "Effect-site targeting: pump overshoots Cp to fill effect site faster. Lower ke0 (Marsh) → larger overshoot → more haemodynamic instability",
-        "BIS/Entropy monitoring mandatory for TIVA (NAP5). Awareness risk 5× higher with TIVA vs volatile (1:8,000)",
-        "PRIS: propofol >4 mg/kg/hr for >48h → mitochondrial failure, metabolic acidosis, rhabdomyolysis. Stop propofol immediately",
+        { text: "TCI pumps use 3-compartment models to predict Cp and Ce — V1 determines bolus size, clearance determines maintenance rate", cites: ["AAGBI TIVA"] },
+        { text: "Marsh: weight-only, V1 scales with TBW, ke0 0.26 min⁻¹ — risk of overdose in obese, slower Ce equilibration", cites: ["Marsh 1991"] },
+        { text: "Schnider: age/sex/LBM covariates, fixed V1 (4.27 L), ke0 0.456 min⁻¹ — UK preferred for Ce targeting, safer in elderly", cites: ["Schnider 1998"] },
+        { text: "Eleveld: universal model (neonates to elderly), allometric scaling, accounts for opioid interaction — most modern", cites: ["BJA Educ 2016"] },
+        { text: "Minto: standard remifentanil model. CSHT ~3–4 min regardless of duration. Ce targets: analgesia 2–4, surgery 4–8 ng/mL", cites: ["AAGBI TIVA"] },
+        { text: "Effect-site targeting: pump overshoots Cp to fill effect site faster. Lower ke0 (Marsh) → larger overshoot → more haemodynamic instability", cites: ["Marsh 1991"] },
+        { text: "BIS/Entropy monitoring mandatory for TIVA (NAP5). Awareness risk 5× higher with TIVA vs volatile (1:8,000)", cites: ["Schnider 1998"] },
+        { text: "PRIS: propofol >4 mg/kg/hr for >48h → mitochondrial failure, metabolic acidosis, rhabdomyolysis. Stop propofol immediately", cites: ["BJA Educ 2016"] },
       ]}
       coreConcepts={<>
       {/* Introduction */}

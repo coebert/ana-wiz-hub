@@ -201,14 +201,15 @@ const CardiacAnatomyTopic = () => {
             </div>
           ),
           answer: "Inferior STEMI from RCA occlusion; check V4R for RV involvement and avoid nitrates if present.",
-        },
+    cites: ["BJA Educ 2005"],
+  },
       ]}
       keyPoints={[
-        "SA node at SVC-RA junction; AV node in triangle of Koch — both supplied primarily by RCA",
-        "Right coronary dominant in 85% — RCA gives PDA and supplies AV node",
-        "LAD supplies anterior LV and anterior septum — most commonly occluded in MI",
-        "Transverse sinus lies between aorta/PA and SVC — key for aortic cross-clamping in cardiac surgery",
-        "Triangle of Koch landmarks: tendon of Todaro, coronary sinus ostium, tricuspid annulus",
+        { text: "SA node at SVC-RA junction; AV node in triangle of Koch — both supplied primarily by RCA", cites: ["Power & Kam Ch.3"] },
+        { text: "Right coronary dominant in 85% — RCA gives PDA and supplies AV node", cites: ["Ellis & Feldman Ch.3"] },
+        { text: "LAD supplies anterior LV and anterior septum — most commonly occluded in MI", cites: ["BJA Educ 2005"] },
+        { text: "Transverse sinus lies between aorta/PA and SVC — key for aortic cross-clamping in cardiac surgery", cites: ["Power & Kam Ch.3"] },
+        { text: "Triangle of Koch landmarks: tendon of Todaro, coronary sinus ostium, tricuspid annulus", cites: ["Ellis & Feldman Ch.3"] },
       ]}
     />
   );

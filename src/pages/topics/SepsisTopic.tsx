@@ -69,6 +69,7 @@ const workedExamples: WorkedExample[] = [
         vasopressors and consider albumin if &gt;60–80 mL/kg given.
       </>
     ),
+    cites: ["SSC 2021"],
   },
   {
     title: "PCT-guided antibiotic stewardship",
@@ -93,6 +94,7 @@ const workedExamples: WorkedExample[] = [
         source control, resistant organism, or alternative diagnosis.
       </>
     ),
+    cites: ["Sepsis-3 2016"],
   },
 ];
 
@@ -107,15 +109,15 @@ const SepsisTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2",
-        "Hour-1 bundle: lactate, cultures, antibiotics, fluids (30 ml/kg), vasopressors",
-        "Noradrenaline is the first-line vasopressor; vasopressin is second-line",
-        "Each hour delay in antibiotics increases mortality by approximately 7%",
-        "Source control is critical — drain, debride, or remove infected sources early",
-        "PCT-guided de-escalation reduces antibiotic duration by 2–3 days without increasing mortality",
-        "Lactate >4 mmol/L carries 30–40% mortality; serial clearance guides resuscitation adequacy",
-        "No single biomarker diagnoses sepsis — trends are more informative than single values",
-        "IDSA 2024 challenges rigid 1h antibiotic + 30 mL/kg fluid targets in undifferentiated sepsis",
+        { text: "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2", cites: ["BJA Educ 2019"] },
+        { text: "Hour-1 bundle: lactate, cultures, antibiotics, fluids (30 ml/kg), vasopressors", cites: ["SSC 2021"] },
+        { text: "Noradrenaline is the first-line vasopressor; vasopressin is second-line", cites: ["Sepsis-3 2016"] },
+        { text: "Each hour delay in antibiotics increases mortality by approximately 7%", cites: ["BJA Educ 2019"] },
+        { text: "Source control is critical — drain, debride, or remove infected sources early", cites: ["SSC 2021"] },
+        { text: "PCT-guided de-escalation reduces antibiotic duration by 2–3 days without increasing mortality", cites: ["Sepsis-3 2016"] },
+        { text: "Lactate >4 mmol/L carries 30–40% mortality; serial clearance guides resuscitation adequacy", cites: ["BJA Educ 2019"] },
+        { text: "No single biomarker diagnoses sepsis — trends are more informative than single values", cites: ["SSC 2021"] },
+        { text: "IDSA 2024 challenges rigid 1h antibiotic + 30 mL/kg fluid targets in undifferentiated sepsis", cites: ["Sepsis-3 2016"] },
       ]}
       topicId="sepsis"
       topicTitle="Sepsis & Septic Shock"

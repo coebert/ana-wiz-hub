@@ -106,15 +106,15 @@ const AcuteLiverFailureTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        "Paracetamol is the commonest cause of ALF in the UK — treat with NAC, best prognosis",
-        "Do NOT correct INR unless bleeding — it is a prognostic marker (King's criteria)",
-        "Cerebral oedema is the leading cause of death in ALF — manage ICP aggressively in grade III/IV encephalopathy",
-        "King's criteria (paracetamol): pH <7.3 is the strongest single predictor for transplant need",
-        "ACLF is graded by number of organ failures (CLIF-C) — grade 3 has ~75% 28-day mortality",
-        "Trajectory at day 3–7 is more prognostically important than admission ACLF grade",
-        "HRS-AKI: terlipressin (2 mg q4–6h or infusion) + albumin; noradrenaline if terlipressin contraindicated",
-        "Alcoholic hepatitis: Maddrey DF ≥32 → prednisolone; Lille >0.45 at day 7 → stop steroids (non-responder)",
-        "Do NOT restrict protein in hepatic encephalopathy — target 1.2–1.5 g/kg/day",
+        { text: "Paracetamol is the commonest cause of ALF in the UK — treat with NAC, best prognosis", cites: ["BJA Educ 2019"] },
+        { text: "Do NOT correct INR unless bleeding — it is a prognostic marker (King's criteria)", cites: ["King's Criteria"] },
+        { text: "Cerebral oedema is the leading cause of death in ALF — manage ICP aggressively in grade III/IV encephalopathy", cites: ["BJA Educ 2017"] },
+        { text: "King's criteria (paracetamol): pH <7.3 is the strongest single predictor for transplant need", cites: ["BJA Educ 2019"] },
+        { text: "ACLF is graded by number of organ failures (CLIF-C) — grade 3 has ~75% 28-day mortality", cites: ["King's Criteria"] },
+        { text: "Trajectory at day 3–7 is more prognostically important than admission ACLF grade", cites: ["BJA Educ 2017"] },
+        { text: "HRS-AKI: terlipressin (2 mg q4–6h or infusion) + albumin; noradrenaline if terlipressin contraindicated", cites: ["BJA Educ 2019"] },
+        { text: "Alcoholic hepatitis: Maddrey DF ≥32 → prednisolone; Lille >0.45 at day 7 → stop steroids (non-responder)", cites: ["King's Criteria"] },
+        { text: "Do NOT restrict protein in hepatic encephalopathy — target 1.2–1.5 g/kg/day", cites: ["BJA Educ 2017"] },
       ]}
       topicId="acute-liver-failure"
       topicTitle="Acute Liver Failure"

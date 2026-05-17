@@ -51,16 +51,16 @@ const NonTechnicalSkillsTopic = () => {
       accentColor="text-icu"
       objectives={objectives}
       keyPoints={[
-        "ANTS taxonomy: Situation awareness · Decision making · Task management · Team working — memorise for SOEs.",
-        "Up to 70% of critical care adverse events are non-technical; competence is examinable and assessable.",
-        "Fixation error and plan continuation bias are the most cited cognitive failures in airway disasters (Bromiley case).",
-        "PACE / CUSS provides graded assertiveness language to flatten authority gradients.",
-        "Closed-loop communication and named role allocation are CRM cornerstones in any crisis.",
-        "Cognitive aids reduce error in low-frequency / high-stakes events — use them, don't rely on memory.",
-        "A just culture distinguishes error and at-risk behaviour (system response) from reckless behaviour (accountability).",
-        "Hot debriefs within 24 h support team wellbeing and learning; cold debriefs drive system change.",
-        "The Swiss Cheese Model frames adverse events as system holes aligning — fix the system, not just the person.",
-        "Statutory duty of candour applies in England since 2014 — be open promptly when harm occurs.",
+        { text: "ANTS taxonomy: Situation awareness · Decision making · Task management · Team working — memorise for SOEs.", cites: ["BMJ 2000"] },
+        { text: "Up to 70% of critical care adverse events are non-technical; competence is examinable and assessable.", cites: ["RCoA ANTS"] },
+        { text: "Fixation error and plan continuation bias are the most cited cognitive failures in airway disasters (Bromiley case).", cites: ["BJA 2003"] },
+        { text: "PACE / CUSS provides graded assertiveness language to flatten authority gradients.", cites: ["BJA Educ 2018"] },
+        { text: "Closed-loop communication and named role allocation are CRM cornerstones in any crisis.", cites: ["CHFG"] },
+        { text: "Cognitive aids reduce error in low-frequency / high-stakes events — use them, don't rely on memory.", cites: ["Marx 2001"] },
+        { text: "A just culture distinguishes error and at-risk behaviour (system response) from reckless behaviour (accountability).", cites: ["PSIRF 2022"] },
+        { text: "Hot debriefs within 24 h support team wellbeing and learning; cold debriefs drive system change.", cites: ["BMJ 2000"] },
+        { text: "The Swiss Cheese Model frames adverse events as system holes aligning — fix the system, not just the person.", cites: ["RCoA ANTS"] },
+        { text: "Statutory duty of candour applies in England since 2014 — be open promptly when harm occurs.", cites: ["BJA 2003"] },
       ]}
       topicId="non-technical-skills"
       topicTitle="Non-Technical Skills & Human Factors"

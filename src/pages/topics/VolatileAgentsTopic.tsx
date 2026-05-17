@@ -26,13 +26,13 @@ const VolatileAgentsTopic = () => {
         "Identify hazards specific to individual agents (Compound A, halothane hepatitis, desflurane sympathetic surge, N₂O & B12)",
       ]}
       keyPoints={[
-        "MAC is the ED₅₀ for immobility; lower MAC = more potent. MAC values are additive between agents.",
-        "Blood:gas partition coefficient determines speed of onset — low BGPC (desflurane 0.42) = fast onset; high BGPC (halothane 2.54) = slow onset.",
-        "Meyer-Overton: anaesthetic potency correlates with lipid solubility (oil:gas partition coefficient). MAC × oil:gas ≈ constant.",
-        "FA/FI rise is faster with: low BGPC, high FI, high minute ventilation, low cardiac output, second gas effect.",
-        "MAC decreases with: age >40, hypothermia, opioids, pregnancy, acute alcohol. MAC increases with: youth, hyperthermia, chronic alcohol, CNS stimulants.",
-        "Sevoflurane: non-pungent, ideal for inhalational induction. Desflurane: fastest recovery but pungent, needs heated vaporizer. Isoflurane: slower, good muscle relaxation.",
-        "Modern targets include GABAA receptors, glycine receptors, two-pore K⁺ channels (TREK/TASK), and NMDA receptors.",
+        { text: "MAC is the ED₅₀ for immobility; lower MAC = more potent. MAC values are additive between agents.", cites: ["BJA Educ 2014"] },
+        { text: "Blood:gas partition coefficient determines speed of onset — low BGPC (desflurane 0.42) = fast onset; high BGPC (halothane 2.54) = slow onset.", cites: ["Eger"] },
+        { text: "Meyer-Overton: anaesthetic potency correlates with lipid solubility (oil:gas partition coefficient). MAC × oil:gas ≈ constant.", cites: ["Peck & Hill Ch.4"] },
+        { text: "FA/FI rise is faster with: low BGPC, high FI, high minute ventilation, low cardiac output, second gas effect.", cites: ["BJA Educ 2014"] },
+        { text: "MAC decreases with: age >40, hypothermia, opioids, pregnancy, acute alcohol. MAC increases with: youth, hyperthermia, chronic alcohol, CNS stimulants.", cites: ["Eger"] },
+        { text: "Sevoflurane: non-pungent, ideal for inhalational induction. Desflurane: fastest recovery but pungent, needs heated vaporizer. Isoflurane: slower, good muscle relaxation.", cites: ["Peck & Hill Ch.4"] },
+        { text: "Modern targets include GABAA receptors, glycine receptors, two-pore K⁺ channels (TREK/TASK), and NMDA receptors.", cites: ["BJA Educ 2014"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },

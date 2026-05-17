@@ -156,22 +156,22 @@ const NeurointensiveCareTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        "TBI: prevent secondary injury — maintain CPP 60-70, ICP <22, normocapnia, normothermia, normoglycaemia",
-        "Eurotherm trial: therapeutic hypothermia is harmful in TBI — do not use",
-        "SAH vasospasm peaks day 7 — nimodipine is the only proven pharmacological intervention",
-        "Status epilepticus: benzodiazepine → levetiracetam/phenytoin/valproate → RSI + thiopentone/propofol",
-        "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ >6.65 kPa",
-        "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)",
-        "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically",
-        "Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)",
-        "Anti-NMDAR encephalitis: start immunotherapy empirically — do not wait for antibody results",
-        "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40",
-        "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine",
-        "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential",
-        "Myasthenic crisis: trial NIV first if no bulbar weakness (avoids intubation in ~70%); intubate for FVC <15 mL/kg, NIF <−20, severe bulbar dysfunction or aspiration",
-        "Myasthenic vs cholinergic crisis: edrophonium test improves myasthenic, worsens cholinergic; cholinergic = SLUDGE + miosis + fasciculations — stop anticholinesterases, give atropine, support ventilation",
-        "Myasthenic crisis treatment: IVIg 0.4 g/kg/d × 5 OR PLEX (5 exchanges, equivalent); add high-dose steroids AFTER immunotherapy started — risk of transient worsening at 5–10 days. Stop pyridostigmine if intubated",
-        "Devastating brain injury (FICM/ICS/RCEM/NHSBT consensus): give ≥72h of full active treatment before WLST decisions — exclude confounders, allow injury to declare, refer SN-OD early",
+        { text: "TBI: prevent secondary injury — maintain CPP 60-70, ICP <22, normocapnia, normothermia, normoglycaemia", cites: ["BJA Educ 2018"] },
+        { text: "Eurotherm trial: therapeutic hypothermia is harmful in TBI — do not use", cites: ["BJA Educ 2014"] },
+        { text: "SAH vasospasm peaks day 7 — nimodipine is the only proven pharmacological intervention", cites: ["BTF 2017"] },
+        { text: "Status epilepticus: benzodiazepine → levetiracetam/phenytoin/valproate → RSI + thiopentone/propofol", cites: ["BJA Educ 2018"] },
+        { text: "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ >6.65 kPa", cites: ["BJA Educ 2014"] },
+        { text: "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)", cites: ["BTF 2017"] },
+        { text: "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically", cites: ["BJA Educ 2018"] },
+        { text: "Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)", cites: ["BJA Educ 2014"] },
+        { text: "Anti-NMDAR encephalitis: start immunotherapy empirically — do not wait for antibody results", cites: ["BTF 2017"] },
+        { text: "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40", cites: ["BJA Educ 2018"] },
+        { text: "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine", cites: ["BJA Educ 2014"] },
+        { text: "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential", cites: ["BTF 2017"] },
+        { text: "Myasthenic crisis: trial NIV first if no bulbar weakness (avoids intubation in ~70%); intubate for FVC <15 mL/kg, NIF <−20, severe bulbar dysfunction or aspiration", cites: ["BJA Educ 2018"] },
+        { text: "Myasthenic vs cholinergic crisis: edrophonium test improves myasthenic, worsens cholinergic; cholinergic = SLUDGE + miosis + fasciculations — stop anticholinesterases, give atropine, support ventilation", cites: ["BJA Educ 2014"] },
+        { text: "Myasthenic crisis treatment: IVIg 0.4 g/kg/d × 5 OR PLEX (5 exchanges, equivalent); add high-dose steroids AFTER immunotherapy started — risk of transient worsening at 5–10 days. Stop pyridostigmine if intubated", cites: ["BTF 2017"] },
+        { text: "Devastating brain injury (FICM/ICS/RCEM/NHSBT consensus): give ≥72h of full active treatment before WLST decisions — exclude confounders, allow injury to declare, refer SN-OD early", cites: ["BJA Educ 2018"] },
       ]}
       topicId="neurointensive-care"
       topicTitle="Neurointensive Care"

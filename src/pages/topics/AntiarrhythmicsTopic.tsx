@@ -29,14 +29,14 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "Vaughan-Williams classifies antiarrhythmics into 4 classes: I (Na⁺ block), II (β-block), III (K⁺ block), IV (Ca²⁺ block)",
-  "Class I subdivides by Na⁺ channel dissociation kinetics: Ia (intermediate, ↑ APD), Ib (fast, ↓ APD), Ic (slow, no change APD)",
-  "Amiodarone has properties of all 4 classes — t½ ~40 days — toxicity: pulmonary fibrosis, thyroid, liver, cornea",
-  "Class Ic drugs (flecainide) are contraindicated post-MI — CAST trial showed ↑ mortality in structural heart disease",
-  "Adenosine (t½ 8–10 s) is first-line for SVT — acts via A₁ receptor → IKAdo → AV node block",
-  "Sotalol has both class II (β-block) and class III (K⁺ block) activity — prolongs QT",
-  "All antiarrhythmics carry pro-arrhythmic risk — especially with hypokalaemia and hypomagnesaemia",
-  "Magnesium is first-line for torsades de pointes — stabilises membrane and suppresses early afterdepolarisations",
+  { text: "Vaughan-Williams classifies antiarrhythmics into 4 classes: I (Na⁺ block), II (β-block), III (K⁺ block), IV (Ca²⁺ block)", cites: ["Peck & Hill Ch.12"] },
+  { text: "Class I subdivides by Na⁺ channel dissociation kinetics: Ia (intermediate, ↑ APD), Ib (fast, ↓ APD), Ic (slow, no change APD)", cites: ["BJA Educ 2015"] },
+  { text: "Amiodarone has properties of all 4 classes — t½ ~40 days — toxicity: pulmonary fibrosis, thyroid, liver, cornea", cites: ["Vaughan Williams"] },
+  { text: "Class Ic drugs (flecainide) are contraindicated post-MI — CAST trial showed ↑ mortality in structural heart disease", cites: ["Peck & Hill Ch.12"] },
+  { text: "Adenosine (t½ 8–10 s) is first-line for SVT — acts via A₁ receptor → IKAdo → AV node block", cites: ["BJA Educ 2015"] },
+  { text: "Sotalol has both class II (β-block) and class III (K⁺ block) activity — prolongs QT", cites: ["Vaughan Williams"] },
+  { text: "All antiarrhythmics carry pro-arrhythmic risk — especially with hypokalaemia and hypomagnesaemia", cites: ["Peck & Hill Ch.12"] },
+  { text: "Magnesium is first-line for torsades de pointes — stabilises membrane and suppresses early afterdepolarisations", cites: ["BJA Educ 2015"] },
 ];
 
 const AntiarrhythmicsTopic = () => {

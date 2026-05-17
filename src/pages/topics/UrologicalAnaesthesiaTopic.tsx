@@ -198,11 +198,11 @@ const UrologicalAnaesthesiaTopic = () => {
         },
       ]}
       keyPoints={[
-        "TURP syndrome: hyponatraemia from glycine absorption — confusion, visual disturbance, seizures",
-        "Spinal anaesthesia for TURP allows early detection of absorption symptoms in awake patients",
-        "Bipolar TURP and laser techniques use saline — no TURP syndrome risk but fluid overload still possible",
-        "Lithotomy position risks: common peroneal nerve injury, compartment syndrome, haemodynamic shifts",
-        "Radical cystectomy: major blood loss, elderly patients, thoracic epidural/TAP blocks, ERAS protocols",
+        { text: "TURP syndrome: hyponatraemia from glycine absorption — confusion, visual disturbance, seizures", cites: ["BJA Educ 2014 TURP"] },
+        { text: "Spinal anaesthesia for TURP allows early detection of absorption symptoms in awake patients", cites: ["ERAS Cystectomy 2013"] },
+        { text: "Bipolar TURP and laser techniques use saline — no TURP syndrome risk but fluid overload still possible", cites: ["BJA Educ 2017 Cystectomy"] },
+        { text: "Lithotomy position risks: common peroneal nerve injury, compartment syndrome, haemodynamic shifts", cites: ["AAGBI Lithotomy 2015"] },
+        { text: "Radical cystectomy: major blood loss, elderly patients, thoracic epidural/TAP blocks, ERAS protocols", cites: ["BJA Educ 2014 TURP"] },
       ]}
     />
   );

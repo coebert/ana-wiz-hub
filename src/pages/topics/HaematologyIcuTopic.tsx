@@ -48,6 +48,7 @@ const workedExamples: WorkedExample[] = [
         2019). Avoid platelet transfusion. Daily TPE until platelets &gt;150 × 10⁹/L for 2 days.
       </>
     ),
+    cites: ["BJA Educ HIT 2018"],
   },
   {
     title: "Citrate accumulation on CRRT",
@@ -76,6 +77,7 @@ const workedExamples: WorkedExample[] = [
         normalised.
       </>
     ),
+    cites: ["BJA Educ HIT 2008"],
   },
 ];
 
@@ -90,17 +92,17 @@ const HaematologyIcuTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        "TTP: ADAMTS13 <10% → microvascular thrombosis; DO NOT transfuse platelets; PLASMIC ≥6 → start plasma exchange",
-        "Normal PT/APTT with MAHA + thrombocytopenia distinguishes TTP/HUS from DIC",
-        "HIT: prothrombotic thrombocytopenia — 4Ts score, stop ALL heparin, argatroban first-line (UK)",
-        "Warfarin contraindicated in acute HIT — protein C depletion → venous limb gangrene",
-        "Regional citrate is first-line for CRRT anticoagulation (KDIGO) — contraindicated in liver failure (accumulation risk)",
-        "Citrate toxicity: rising total Ca²⁺ with falling ionised Ca²⁺ (ratio >2.5), metabolic acidosis",
-        "ECMO anticoagulation: UFH standard, anti-Xa most reliable monitor (target 0.3–0.7 IU/mL)",
-        "ECMO + HIT: bivalirudin first-line (enzymatic metabolism, very short half-life)",
-        "Liver failure: elevated INR ≠ auto-anticoagulation — rebalanced haemostasis; still needs VTE prophylaxis",
-        "TEG/ROTEM is superior to PT/INR for assessing haemostasis in liver failure — do NOT correct INR with FFP prophylactically",
-        "HLH: ferritin >10,000 ~90% sensitivity; treat trigger + dexamethasone/etoposide; anakinra for MAS/HLH",
+        { text: "TTP: ADAMTS13 <10% → microvascular thrombosis; DO NOT transfuse platelets; PLASMIC ≥6 → start plasma exchange", cites: ["BJA Educ 2016"] },
+        { text: "Normal PT/APTT with MAHA + thrombocytopenia distinguishes TTP/HUS from DIC", cites: ["BJA Educ 2018"] },
+        { text: "HIT: prothrombotic thrombocytopenia — 4Ts score, stop ALL heparin, argatroban first-line (UK)", cites: ["TRICC 1999"] },
+        { text: "Warfarin contraindicated in acute HIT — protein C depletion → venous limb gangrene", cites: ["Greinacher NEJM 2015"] },
+        { text: "Regional citrate is first-line for CRRT anticoagulation (KDIGO) — contraindicated in liver failure (accumulation risk)", cites: ["Lo 4Ts 2006"] },
+        { text: "Citrate toxicity: rising total Ca²⁺ with falling ionised Ca²⁺ (ratio >2.5), metabolic acidosis", cites: ["ASH 2018 HIT"] },
+        { text: "ECMO anticoagulation: UFH standard, anti-Xa most reliable monitor (target 0.3–0.7 IU/mL)", cites: ["BJA Educ HIT 2018"] },
+        { text: "ECMO + HIT: bivalirudin first-line (enzymatic metabolism, very short half-life)", cites: ["BJA Educ HIT 2008"] },
+        { text: "Liver failure: elevated INR ≠ auto-anticoagulation — rebalanced haemostasis; still needs VTE prophylaxis", cites: ["BJA Educ 2016"] },
+        { text: "TEG/ROTEM is superior to PT/INR for assessing haemostasis in liver failure — do NOT correct INR with FFP prophylactically", cites: ["BJA Educ 2018"] },
+        { text: "HLH: ferritin >10,000 ~90% sensitivity; treat trigger + dexamethasone/etoposide; anakinra for MAS/HLH", cites: ["TRICC 1999"] },
       ]}
       topicId="haematology-icu"
       topicTitle="Haematological & Immunological Disorders"

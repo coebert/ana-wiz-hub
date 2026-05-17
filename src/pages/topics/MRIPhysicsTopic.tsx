@@ -24,6 +24,7 @@ const workedExamples: WorkedExample[] = [
       "ω₀ = γ × B₀.\nAt 1.5 T → 42.58 × 1.5 = 63.87 MHz.\nAt 3 T → 42.58 × 3 = 127.74 MHz.\nSAR (W/kg) ∝ B₀² for a given pulse sequence, so doubling field strength quadruples SAR → greater RF heating.",
     answer:
       "The RF system must transmit at 64 MHz (1.5 T) or 128 MHz (3 T). The ~4× higher SAR at 3 T means tighter limits on duty cycle, longer scans for SAR-heavy sequences, and a higher index of suspicion for thermal injury — particularly around looped wires, ECG leads and tattoos.",
+    cites: ["Middleton Ch.17"],
   },
   {
     title: "Anaesthesia for paediatric brain MRI",
@@ -33,6 +34,7 @@ const workedExamples: WorkedExample[] = [
       "Pre-screen: implants, prior surgery, foreign bodies, eGFR (gadolinium → NSF if eGFR < 30).\nEquipment: MR-conditional anaesthetic machine and monitor; non-ferrous laryngoscope and trolley; aluminium gas cylinders; long sampling line for capnography; long IV extensions; fibreoptic ECG cables to avoid burns.\nPersonnel: MR-trained anaesthetic team; checklist before each entry; remove all loose ferromagnetic items.\nMonitoring: SpO₂, EtCO₂, ECG (low-amplitude in field), NIBP; auditory alarms supplemented by visual alarms (acoustic noise inside bore).\nQuench plan: emergency O₂ source and route to remove patient if cryogen vents into room.",
     answer:
       "Use an MR-conditional anaesthetic machine with long circuits, non-ferromagnetic trolley/laryngoscope, fibreoptic monitoring, and check eGFR before gadolinium. Maintain access throughout the scan, brief the team on the quench drill, and use ear protection for the patient (≥99 dB acoustic noise during scanning).",
+    cites: ["AAGBI 2010"],
   },
 ];
 
@@ -58,13 +60,13 @@ const MRIPhysicsTopic = () => {
         workedExamples: ["AAGBI 2010", "AAGBI 2010"],
       }}
       keyPoints={[
-        "MRI uses hydrogen protons (¹H) which precess at the Larmor frequency ω₀ = γB₀ (42.58 MHz/T × field strength)",
-        "An RF pulse at the Larmor frequency tips net magnetisation into the transverse plane (resonance condition)",
-        "T1 (spin-lattice) = longitudinal recovery; T2 (spin-spin) = transverse decay; T2* includes field inhomogeneity",
-        "T1-weighted: fat bright, water dark (short TR/TE); T2-weighted: water bright, fat dark (long TR/TE) — 'WW2' mnemonic",
-        "Gadolinium shortens T1 → bright on T1W; risk of nephrogenic systemic fibrosis in renal failure (eGFR <30)",
-        "Three MRI hazards: missile effect (ferromagnetic projectiles), thermal burns (RF heating/SAR), device malfunction",
-        "Equipment labels: MR Safe (green), MR Conditional (yellow), MR Unsafe (red) — all anaesthetic equipment must be checked",
+        { text: "MRI uses hydrogen protons (¹H) which precess at the Larmor frequency ω₀ = γB₀ (42.58 MHz/T × field strength)", cites: ["BJA Educ 2019"] },
+        { text: "An RF pulse at the Larmor frequency tips net magnetisation into the transverse plane (resonance condition)", cites: ["Middleton Ch.17"] },
+        { text: "T1 (spin-lattice) = longitudinal recovery; T2 (spin-spin) = transverse decay; T2* includes field inhomogeneity", cites: ["AAGBI 2010"] },
+        { text: "T1-weighted: fat bright, water dark (short TR/TE); T2-weighted: water bright, fat dark (long TR/TE) — 'WW2' mnemonic", cites: ["BJA Educ 2019"] },
+        { text: "Gadolinium shortens T1 → bright on T1W; risk of nephrogenic systemic fibrosis in renal failure (eGFR <30)", cites: ["Middleton Ch.17"] },
+        { text: "Three MRI hazards: missile effect (ferromagnetic projectiles), thermal burns (RF heating/SAR), device malfunction", cites: ["AAGBI 2010"] },
+        { text: "Equipment labels: MR Safe (green), MR Conditional (yellow), MR Unsafe (red) — all anaesthetic equipment must be checked", cites: ["BJA Educ 2019"] },
       ]}
       coreConcepts={
         <>

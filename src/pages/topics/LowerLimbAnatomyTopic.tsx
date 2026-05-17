@@ -35,14 +35,14 @@ const LowerLimbAnatomyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       keyPoints={[
-        "Femoral nerve (L2-L4): lateral to femoral artery under inguinal ligament. Motor: quadriceps. Sensory: anterior thigh + medial leg (saphenous)",
-        "Sciatic nerve (L4-S3): largest nerve. Two components — tibial (plantarflexion) and common peroneal (dorsiflexion)",
-        "Common peroneal nerve wraps around fibular neck — vulnerable to compression → foot drop",
-        "Femoral artery palpated at the mid-inguinal point; profunda femoris is the main supply to thigh musculature",
-        "Displaced intracapsular #NOF disrupts the MCFA → AVN of femoral head → hemiarthroplasty required",
-        "Great saphenous vein: medial limb, drains at SFJ in groin. Cutdown landmark: 1 cm anterior + superior to medial malleolus",
-        "May-Thurner syndrome: left CIV compression → higher incidence of left-sided DVT",
-        "Adductor canal block: motor-sparing alternative to femoral nerve block for knee surgery",
+        { text: "Femoral nerve (L2-L4): lateral to femoral artery under inguinal ligament. Motor: quadriceps. Sensory: anterior thigh + medial leg (saphenous)", cites: ["NYSORA Lower Limb"] },
+        { text: "Sciatic nerve (L4-S3): largest nerve. Two components — tibial (plantarflexion) and common peroneal (dorsiflexion)", cites: ["Ellis Ch.7"] },
+        { text: "Common peroneal nerve wraps around fibular neck — vulnerable to compression → foot drop", cites: ["BJA Educ 2016"] },
+        { text: "Femoral artery palpated at the mid-inguinal point; profunda femoris is the main supply to thigh musculature", cites: ["NYSORA Lower Limb"] },
+        { text: "Displaced intracapsular #NOF disrupts the MCFA → AVN of femoral head → hemiarthroplasty required", cites: ["Ellis Ch.7"] },
+        { text: "Great saphenous vein: medial limb, drains at SFJ in groin. Cutdown landmark: 1 cm anterior + superior to medial malleolus", cites: ["BJA Educ 2016"] },
+        { text: "May-Thurner syndrome: left CIV compression → higher incidence of left-sided DVT", cites: ["NYSORA Lower Limb"] },
+        { text: "Adductor canal block: motor-sparing alternative to femoral nerve block for knee surgery", cites: ["Ellis Ch.7"] },
       ]}
       coreConcepts={
         <>

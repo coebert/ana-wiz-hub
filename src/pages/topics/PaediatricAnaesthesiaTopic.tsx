@@ -27,6 +27,7 @@ const workedExamples: WorkedExample[] = [
       "Classic hypochloraemic, hypokalaemic metabolic alkalosis from prolonged vomiting of gastric HCl.\nThis is a MEDICAL emergency, not a surgical one — uncorrected alkalosis causes post-op apnoea (compensatory hypoventilation perpetuated under anaesthesia).\nResuscitate: 0.9% saline 10–20 ml/kg bolus to restore intravascular volume, then 0.45% saline + 5% dextrose with KCl 20 mmol/L at 1.5 × maintenance.\nTargets before theatre: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ ≤26, normal urine output.\nThen RSI (modified — full stomach), maintain normothermia and glucose monitoring.",
     answer:
       "Not yet. Correct the alkalosis and electrolyte deficit (Cl ≥100, HCO₃ ≤26, K ≥3.5) over 24–48 h before theatre, then proceed with modified RSI.",
+    cites: ["BJA Educ 2019"],
   },
   {
     title: "ETT and emergency drug doses for a 4-year-old",
@@ -36,6 +37,7 @@ const workedExamples: WorkedExample[] = [
       "Weight (APLS): (age + 4) × 2 = 16 kg.\nUncuffed ETT: age/4 + 4 = 5.0 mm; cuffed: age/4 + 3.5 = 4.5 mm.\nETT length (oral): age/2 + 12 = 14 cm at the lips.\nAdrenaline (cardiac arrest): 10 µg/kg = 160 µg = 1.6 ml of 1:10,000.\nDefibrillation: 4 J/kg = 64 J (round to 70 J on biphasic).\nFluid bolus (trauma/shock): 10 ml/kg = 160 ml of warmed crystalloid.",
     answer:
       "Weight 16 kg; uncuffed ETT 5.0 mm at 14 cm; adrenaline 160 µg (1.6 ml 1:10,000); defibrillate at ~70 J; fluid bolus 160 ml.",
+    cites: ["APAGBI 2020"],
   },
 ];
 
@@ -58,14 +60,14 @@ const PaediatricAnaesthesiaTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
-        "Neonatal cardiac output is rate-dependent — bradycardia is a haemodynamic emergency",
-        "High O₂ consumption + low FRC = rapid desaturation; pre-oxygenation essential",
-        "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5",
-        "Pyloric stenosis: correct the alkalosis first — it is a medical, not surgical, emergency",
-        "Use isotonic balanced crystalloids for maintenance — never hypotonic solutions in children",
-        "'Remi-prop' TIVA is ideal for shared-airway, MRI and MH-susceptible children — keep propofol <4 mg/kg/hr to avoid PRIS",
-        "PCA from ~5 yr; below that use NCA. Never codeine <12 yr; never tramadol post-tonsillectomy for OSA",
-        "Caudal block: Armitage 0.5/1.0/1.25 ml/kg of 0.25% bupivacaine for sacral/lumbar/thoracic spread; always test-dose for intravascular placement",
+        { text: "Neonatal cardiac output is rate-dependent — bradycardia is a haemodynamic emergency", cites: ["Sury et al."] },
+        { text: "High O₂ consumption + low FRC = rapid desaturation; pre-oxygenation essential", cites: ["BJA Educ 2019"] },
+        { text: "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5", cites: ["APAGBI 2020"] },
+        { text: "Pyloric stenosis: correct the alkalosis first — it is a medical, not surgical, emergency", cites: ["Sury et al."] },
+        { text: "Use isotonic balanced crystalloids for maintenance — never hypotonic solutions in children", cites: ["BJA Educ 2019"] },
+        { text: "'Remi-prop' TIVA is ideal for shared-airway, MRI and MH-susceptible children — keep propofol <4 mg/kg/hr to avoid PRIS", cites: ["APAGBI 2020"] },
+        { text: "PCA from ~5 yr; below that use NCA. Never codeine <12 yr; never tramadol post-tonsillectomy for OSA", cites: ["Sury et al."] },
+        { text: "Caudal block: Armitage 0.5/1.0/1.25 ml/kg of 0.25% bupivacaine for sacral/lumbar/thoracic spread; always test-dose for intravascular placement", cites: ["BJA Educ 2019"] },
       ]}
       coreConcepts={
         <section className="space-y-6">

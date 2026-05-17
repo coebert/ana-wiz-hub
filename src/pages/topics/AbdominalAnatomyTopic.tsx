@@ -134,14 +134,15 @@ const AbdominalAnatomyTopic = () => {
             </div>
           ),
           answer: "Bilateral subcostal + lateral TAP with 20 ml 0.25% levobupivacaine per side; combine with multimodal analgesia.",
-        },
+    cites: ["Miller Ch.47"],
+  },
       ]}
       keyPoints={[
-        "TAP block plane lies between internal oblique and transversus abdominis — targets T6–L1 intercostal nerves",
-        "Ilioinguinal and iliohypogastric nerves (L1) — key targets for inguinal hernia repair blocks",
-        "Pelvic splanchnic nerves (S2-S4) provide parasympathetic supply — damage → bladder dysfunction",
-        "Liver receives 25% of CO — 75% portal vein, 25% hepatic artery",
-        "Sciatic nerve exits pelvis below piriformis through greater sciatic foramen",
+        { text: "TAP block plane lies between internal oblique and transversus abdominis — targets T6–L1 intercostal nerves", cites: ["BJA Educ 2015"] },
+        { text: "Ilioinguinal and iliohypogastric nerves (L1) — key targets for inguinal hernia repair blocks", cites: ["Ellis & Feldman Ch.4"] },
+        { text: "Pelvic splanchnic nerves (S2-S4) provide parasympathetic supply — damage → bladder dysfunction", cites: ["Miller Ch.47"] },
+        { text: "Liver receives 25% of CO — 75% portal vein, 25% hepatic artery", cites: ["BJA Educ 2015"] },
+        { text: "Sciatic nerve exits pelvis below piriformis through greater sciatic foramen", cites: ["Ellis & Feldman Ch.4"] },
       ]}
     />
   );

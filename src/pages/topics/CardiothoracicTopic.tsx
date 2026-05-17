@@ -38,6 +38,7 @@ const workedExamples: WorkedExample[] = [
       "1. Increase FiO₂ to 1.0; check breath sounds and capnography trace.\n2. Confirm DLT position with fibreoptic bronchoscopy — most common cause is tube migration (left bronchial cuff herniated or main carina lost).\n3. Suction both lumens to clear secretions/blood.\n4. Apply 5 cmH₂O CPAP to the non-ventilated (operative) lung; or 5 cmH₂O PEEP to the dependent lung.\n5. If still hypoxic: intermittent re-inflation of the operative lung between surgical steps; consider lobar blocker for selective lobar ventilation.\n6. Ultimate rescue: ask surgeon to clamp the operative pulmonary artery (eliminates shunt) or revert to two-lung ventilation.",
     answer:
       "FiO₂ 1.0 → confirm DLT position fibreoptically → suction → CPAP to operative lung + PEEP to dependent lung → intermittent re-inflation → PA clamp or revert to two-lung ventilation as rescue.",
+    cites: ["BJA Educ 2018"],
   },
   {
     title: "Cardiac arrest 4 hours after CABG — apply CALS",
@@ -47,6 +48,7 @@ const workedExamples: WorkedExample[] = [
       "Modified CALS (EACTS/STS):\n• Up to 3 stacked DC shocks (200 J biphasic) BEFORE chest compressions for VF/pVT — most arrests in this window are shockable and stacked shocks have higher first-shock success.\n• Withhold adrenaline initially (risk of severe rebound hypertension on ROSC) — pace if asystole/PEA with wires in situ.\n• Chest compressions only if shocks fail.\n• Prepare for emergency RE-STERNOTOMY within 5 minutes (10-minute window from arrest) if no ROSC — internal cardiac massage is more effective and excludes tamponade/graft occlusion.\n• Call cardiothoracic surgeon; activate ECPR if available.",
     answer:
       "Up to 3 stacked DC shocks first, withhold adrenaline, pace if shockable rhythm absent, and prepare for emergency re-sternotomy within 5 minutes if not in ROSC.",
+    cites: ["BJA Educ 2015"],
   },
 ];
 
@@ -69,11 +71,11 @@ const CardiothoracicTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
-        "CPB: heparin 300-400 u/kg, target ACT >480s, reverse with protamine 1mg:100u ratio",
-        "CPB activates SIRS — complement, cytokines, coagulopathy; TXA reduces bleeding (ATACAS)",
-        "Left-sided DLT preferred for OLV; always confirm position with fibreoptic bronchoscopy",
-        "HPV reduces shunt during OLV — inhibited by volatiles >1 MAC, vasodilators, and hypothermia",
-        "Aortic stenosis: maintain SVR and sinus rhythm, avoid tachycardia and hypotension",
+        { text: "CPB: heparin 300-400 u/kg, target ACT >480s, reverse with protamine 1mg:100u ratio", cites: ["Kaplan's Cardiac"] },
+        { text: "CPB activates SIRS — complement, cytokines, coagulopathy; TXA reduces bleeding (ATACAS)", cites: ["BJA Educ 2018"] },
+        { text: "Left-sided DLT preferred for OLV; always confirm position with fibreoptic bronchoscopy", cites: ["BJA Educ 2015"] },
+        { text: "HPV reduces shunt during OLV — inhibited by volatiles >1 MAC, vasodilators, and hypothermia", cites: ["Kaplan's Cardiac"] },
+        { text: "Aortic stenosis: maintain SVR and sinus rhythm, avoid tachycardia and hypotension", cites: ["BJA Educ 2018"] },
       ]}
       coreConcepts={
         <>

@@ -518,14 +518,14 @@ const GasLawsTopic = () => {
         </>
       }
       keyPoints={[
-        "Boyle's law (P₁V₁ = P₂V₂): at constant temperature, pressure and volume are inversely proportional. Relevant to pneumothorax expansion and gas cylinder contents.",
-        "Charles' law (V₁/T₁ = V₂/T₂): at constant pressure, volume is proportional to absolute temperature. Explains ATPS to BTPS correction.",
-        "Dalton's law: total pressure equals the sum of partial pressures. Fundamental to the alveolar gas equation and FiO₂ calculations.",
-        "The ideal gas equation (PV = nRT) combines all individual gas laws. Real gases deviate at high pressure and low temperature.",
-        "Henry's law: gas dissolved in liquid is proportional to its partial pressure. Governs O₂/CO₂ transport and volatile agent uptake.",
-        "Adiabatic expansion (PVγ = constant) cools a gas as it does work — explains rapid O₂ cylinder cooling and reversible adiabatic processes.",
-        "Joule–Thomson effect: isenthalpic throttling cools real gases below their inversion temperature (N₂O, CO₂, O₂, N₂ at room T) and warms H₂ and He.",
-        "N₂O cylinder pressure stays constant at the saturated vapour pressure until the last liquid evaporates — gauge cannot estimate contents; weigh instead.",
+        { text: "Boyle's law (P₁V₁ = P₂V₂): at constant temperature, pressure and volume are inversely proportional. Relevant to pneumothorax expansion and gas cylinder contents.", cites: ["Cross & Plunkett Ch.1"] },
+        { text: "Charles' law (V₁/T₁ = V₂/T₂): at constant pressure, volume is proportional to absolute temperature. Explains ATPS to BTPS correction.", cites: ["Peck & Hill Ch.1"] },
+        { text: "Dalton's law: total pressure equals the sum of partial pressures. Fundamental to the alveolar gas equation and FiO₂ calculations.", cites: ["BJA Educ 2017"] },
+        { text: "The ideal gas equation (PV = nRT) combines all individual gas laws. Real gases deviate at high pressure and low temperature.", cites: ["Cross & Plunkett Ch.1"] },
+        { text: "Henry's law: gas dissolved in liquid is proportional to its partial pressure. Governs O₂/CO₂ transport and volatile agent uptake.", cites: ["Peck & Hill Ch.1"] },
+        { text: "Adiabatic expansion (PVγ = constant) cools a gas as it does work — explains rapid O₂ cylinder cooling and reversible adiabatic processes.", cites: ["BJA Educ 2017"] },
+        { text: "Joule–Thomson effect: isenthalpic throttling cools real gases below their inversion temperature (N₂O, CO₂, O₂, N₂ at room T) and warms H₂ and He.", cites: ["Cross & Plunkett Ch.1"] },
+        { text: "N₂O cylinder pressure stays constant at the saturated vapour pressure until the last liquid evaporates — gauge cannot estimate contents; weigh instead.", cites: ["Peck & Hill Ch.1"] },
       ]}
     />
   );

@@ -14,13 +14,13 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "ABG directly measures pH (glass electrode), PO\u2082 (Clark), PCO\u2082 (Severinghaus). HCO\u2083\u207B and BE are calculated.",
-  "Clark electrode: amperometric, \u22120.6V polarizing voltage, Pt cathode reduces O\u2082 (O\u2082+2H\u2082O+4e\u207B\u21924OH\u207B), Ag anode oxidised (4Ag+4Cl\u207B\u21924AgCl+4e\u207B). Current \u221D PO\u2082.",
-  "pH glass electrode: H\u207A exchanges with Li\u207A/Na\u207A in hydrated gel layers \u2014 boundary potential follows Nernst equation (61.5 mV/pH unit at 37\u00B0C).",
-  "Severinghaus: CO\u2082 crosses Teflon membrane \u2192 CO\u2082+H\u2082O\u2192H\u207A+HCO\u2083\u207B \u2192 pH change measured by inner glass electrode. Slowest response (~60\u2013120s).",
-  "Galvanic fuel cell: self-generating EMF, gold cathode/lead anode (consumed), same cathode reaction as Clark. Measures FiO\u2082 in breathing circuit.",
-  "\u03B1-stat vs pH-stat: \u03B1-stat (uncorrected at 37\u00B0C) preferred in adults; pH-stat (corrected to patient temp) in paediatric cardiac surgery.",
-  "Optodes: fibre-optic fluorescence sensors. PO\u2082 optode uses ruthenium dye fluorescence quenching (Stern\u2013Volmer); pH optode is ratiometric; PCO\u2082 optode = Severinghaus with pH optode inside. Don't consume O\u2082, MRI-compatible, used in POC cartridges, intravascular and CPB monitors.",
+  { text: "ABG directly measures pH (glass electrode), PO\u2082 (Clark), PCO\u2082 (Severinghaus). HCO\u2083\u207B and BE are calculated.", cites: ["BJA Educ 2017"] },
+  { text: "Clark electrode: amperometric, \u22120.6V polarizing voltage, Pt cathode reduces O\u2082 (O\u2082+2H\u2082O+4e\u207B\u21924OH\u207B), Ag anode oxidised (4Ag+4Cl\u207B\u21924AgCl+4e\u207B). Current \u221D PO\u2082.", cites: ["Middleton Ch.18"] },
+  { text: "pH glass electrode: H\u207A exchanges with Li\u207A/Na\u207A in hydrated gel layers \u2014 boundary potential follows Nernst equation (61.5 mV/pH unit at 37\u00B0C).", cites: ["Cross & Plunkett Ch.15-16"] },
+  { text: "Severinghaus: CO\u2082 crosses Teflon membrane \u2192 CO\u2082+H\u2082O\u2192H\u207A+HCO\u2083\u207B \u2192 pH change measured by inner glass electrode. Slowest response (~60\u2013120s).", cites: ["BJA Educ 2017"] },
+  { text: "Galvanic fuel cell: self-generating EMF, gold cathode/lead anode (consumed), same cathode reaction as Clark. Measures FiO\u2082 in breathing circuit.", cites: ["Middleton Ch.18"] },
+  { text: "\u03B1-stat vs pH-stat: \u03B1-stat (uncorrected at 37\u00B0C) preferred in adults; pH-stat (corrected to patient temp) in paediatric cardiac surgery.", cites: ["Cross & Plunkett Ch.15-16"] },
+  { text: "Optodes: fibre-optic fluorescence sensors. PO\u2082 optode uses ruthenium dye fluorescence quenching (Stern\u2013Volmer); pH optode is ratiometric; PCO\u2082 optode = Severinghaus with pH optode inside. Don't consume O\u2082, MRI-compatible, used in POC cartridges, intravascular and CPB monitors.", cites: ["BJA Educ 2017"] },
 ];
 
 const ABGAnalyserTopic = () => {

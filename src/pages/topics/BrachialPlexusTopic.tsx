@@ -120,12 +120,12 @@ const BrachialPlexusTopic = () => {
         ],
       }}
       keyPoints={[
-        "Brachial plexus: C5-T1. 'Robert Taylor Drinks Cold Beer' — Roots, Trunks, Divisions, Cords, Branches",
-        "Interscalene block targets C5-7 (shoulder surgery) — 100% ipsilateral phrenic nerve palsy",
-        "Supraclavicular: trunks/divisions most compact ('grapes on a stalk') — best for complete arm anaesthesia below shoulder",
-        "Cords named by relation to 2nd part of axillary artery (lateral, posterior, medial)",
-        "Musculocutaneous nerve leaves early — must be blocked separately with axillary approach",
-        "Intercostobrachial nerve (T2) is NOT plexus — needs separate block if tourniquet used",
+        { text: "Brachial plexus: C5-T1. 'Robert Taylor Drinks Cold Beer' — Roots, Trunks, Divisions, Cords, Branches", cites: ["Miller Ch.46"] },
+        { text: "Interscalene block targets C5-7 (shoulder surgery) — 100% ipsilateral phrenic nerve palsy", cites: ["Ellis & Feldman Ch.8"] },
+        { text: "Supraclavicular: trunks/divisions most compact ('grapes on a stalk') — best for complete arm anaesthesia below shoulder", cites: ["BJA Educ 2014"] },
+        { text: "Cords named by relation to 2nd part of axillary artery (lateral, posterior, medial)", cites: ["Miller Ch.46"] },
+        { text: "Musculocutaneous nerve leaves early — must be blocked separately with axillary approach", cites: ["Ellis & Feldman Ch.8"] },
+        { text: "Intercostobrachial nerve (T2) is NOT plexus — needs separate block if tourniquet used", cites: ["BJA Educ 2014"] },
       ]}
       coreConcepts={
         <>

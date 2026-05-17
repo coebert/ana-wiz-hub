@@ -13,13 +13,13 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "Arterial transducers use a Wheatstone bridge strain gauge; zero to atmosphere and level to the phlebostatic axis (mid-axillary, 4th ICS)",
-  "Natural frequency must be >10× the fundamental frequency of the arterial waveform (ideally >200 Hz) to avoid resonance artefact",
-  "Optimal damping coefficient = 0.64 — flat frequency response with no overshoot; assessed by the fast flush (square wave) test",
-  "Underdamped: >2 oscillations after flush → overestimates SBP; Overdamped: no oscillations → underestimates SBP; MAP preserved in both",
-  "CVP waveform: a (atrial contraction), c (tricuspid closure), x (atrial relaxation), v (passive filling), y (rapid emptying)",
-  "PAC thermodilution is the clinical gold standard for CO measurement; Stewart-Hamilton equation: CO inversely proportional to area under curve",
-  "Non-invasive CO methods: oesophageal Doppler (VTI × CSA × HR), LiDCO, FloTrac, thoracic bioimpedance, echocardiography",
+  { text: "Arterial transducers use a Wheatstone bridge strain gauge; zero to atmosphere and level to the phlebostatic axis (mid-axillary, 4th ICS)", cites: ["Cross & Plunkett Ch.16"] },
+  { text: "Natural frequency must be >10× the fundamental frequency of the arterial waveform (ideally >200 Hz) to avoid resonance artefact", cites: ["BJA Educ 2005"] },
+  { text: "Optimal damping coefficient = 0.64 — flat frequency response with no overshoot; assessed by the fast flush (square wave) test", cites: ["Middleton Ch.18"] },
+  { text: "Underdamped: >2 oscillations after flush → overestimates SBP; Overdamped: no oscillations → underestimates SBP; MAP preserved in both", cites: ["Cross & Plunkett Ch.16"] },
+  { text: "CVP waveform: a (atrial contraction), c (tricuspid closure), x (atrial relaxation), v (passive filling), y (rapid emptying)", cites: ["BJA Educ 2005"] },
+  { text: "PAC thermodilution is the clinical gold standard for CO measurement; Stewart-Hamilton equation: CO inversely proportional to area under curve", cites: ["Middleton Ch.18"] },
+  { text: "Non-invasive CO methods: oesophageal Doppler (VTI × CSA × HR), LiDCO, FloTrac, thoracic bioimpedance, echocardiography", cites: ["Cross & Plunkett Ch.16"] },
 ];
 
 const ClinicalMeasurementTopic = () => {

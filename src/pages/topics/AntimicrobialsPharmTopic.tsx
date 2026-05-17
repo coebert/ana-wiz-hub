@@ -79,14 +79,14 @@ const objectives = [
 ];
 
 const keyPoints = [
-  "β-Lactams (penicillins, cephalosporins, carbapenems) are bactericidal, time-dependent — optimise with extended or continuous infusion",
-  "Aminoglycosides are bactericidal, concentration-dependent with PAE — optimise with once-daily dosing and trough monitoring",
-  "Vancomycin targets D-Ala-D-Ala in peptidoglycan; monitor troughs (15–20 mg/L); red man syndrome is histamine-mediated, not allergy",
-  "Amphotericin B binds ergosterol (fungicidal, broadest spectrum); liposomal form reduces nephrotoxicity",
-  "Echinocandins inhibit β-(1,3)-D-glucan synthase — first-line for invasive candidiasis; IV only",
-  "Aciclovir is selectively activated by viral thymidine kinase — excellent safety profile due to selective toxicity",
-  "Rifampicin is a potent CYP inducer — reduces levels of warfarin, OCP, midazolam, ciclosporin",
-  "MRSA resistance: PBP2a (mecA gene); VRE resistance: D-Ala-D-Lac modification of vancomycin target",
+  { text: "β-Lactams (penicillins, cephalosporins, carbapenems) are bactericidal, time-dependent — optimise with extended or continuous infusion", cites: ["BNF"] },
+  { text: "Aminoglycosides are bactericidal, concentration-dependent with PAE — optimise with once-daily dosing and trough monitoring", cites: ["Peck & Hill Ch.14"] },
+  { text: "Vancomycin targets D-Ala-D-Ala in peptidoglycan; monitor troughs (15–20 mg/L); red man syndrome is histamine-mediated, not allergy", cites: ["BJA Educ 2017"] },
+  { text: "Amphotericin B binds ergosterol (fungicidal, broadest spectrum); liposomal form reduces nephrotoxicity", cites: ["BNF"] },
+  { text: "Echinocandins inhibit β-(1,3)-D-glucan synthase — first-line for invasive candidiasis; IV only", cites: ["Peck & Hill Ch.14"] },
+  { text: "Aciclovir is selectively activated by viral thymidine kinase — excellent safety profile due to selective toxicity", cites: ["BJA Educ 2017"] },
+  { text: "Rifampicin is a potent CYP inducer — reduces levels of warfarin, OCP, midazolam, ciclosporin", cites: ["BNF"] },
+  { text: "MRSA resistance: PBP2a (mecA gene); VRE resistance: D-Ala-D-Lac modification of vancomycin target", cites: ["Peck & Hill Ch.14"] },
 ];
 
 const AntimicrobialsTopic = () => {

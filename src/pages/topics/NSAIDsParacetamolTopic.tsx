@@ -122,13 +122,13 @@ const NSAIDsParacetamolTopic = () => {
         ],
       }}
       keyPoints={[
-        "COX-1 = constitutive (GI protection, platelets, renal). COX-2 = inducible (inflammation, pain, fever)",
-        "Aspirin irreversibly inhibits COX — platelet effect lasts 7-10 days. All other NSAIDs are reversible",
-        "NSAID renal toxicity: ↓ afferent arteriolar PGE₂ → ↓ GFR. High risk with hypovolaemia + ACEi/ARB ('triple whammy')",
-        "Paracetamol toxicity: NAPQI → glutathione depletion → Zone 3 (centrilobular) hepatic necrosis",
-        "NAC (N-acetylcysteine) replenishes glutathione — most effective within 8h of paracetamol overdose",
-        "COX-2 selective drugs have ↓ GI risk but ↑ CV risk (prothrombotic: ↓PGI₂ without ↓TXA₂)",
-        "Rumack-Matthew nomogram is invalid for staggered overdoses — treat empirically based on dose/risk factors",
+        { text: "COX-1 = constitutive (GI protection, platelets, renal). COX-2 = inducible (inflammation, pain, fever)", cites: ["Peck & Hill Ch.15"] },
+        { text: "Aspirin irreversibly inhibits COX — platelet effect lasts 7-10 days. All other NSAIDs are reversible", cites: ["NICE Paracetamol OD"] },
+        { text: "NSAID renal toxicity: ↓ afferent arteriolar PGE₂ → ↓ GFR. High risk with hypovolaemia + ACEi/ARB ('triple whammy')", cites: ["BJA Educ 2018"] },
+        { text: "Paracetamol toxicity: NAPQI → glutathione depletion → Zone 3 (centrilobular) hepatic necrosis", cites: ["Peck & Hill Ch.15"] },
+        { text: "NAC (N-acetylcysteine) replenishes glutathione — most effective within 8h of paracetamol overdose", cites: ["NICE Paracetamol OD"] },
+        { text: "COX-2 selective drugs have ↓ GI risk but ↑ CV risk (prothrombotic: ↓PGI₂ without ↓TXA₂)", cites: ["BJA Educ 2018"] },
+        { text: "Rumack-Matthew nomogram is invalid for staggered overdoses — treat empirically based on dose/risk factors", cites: ["Peck & Hill Ch.15"] },
       ]}
       coreConcepts={
         <>

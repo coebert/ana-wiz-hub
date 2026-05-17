@@ -51,16 +51,16 @@ const EndOfLifeCommunicationTopic = () => {
       accentColor="text-icu"
       objectives={objectives}
       keyPoints={[
-        "Decisions to limit treatment are medical, made in best interests; the family informs the team about the patient's wishes.",
-        "Avoid the phrase 'withdrawal of care' — it is a change in the goals of care to comfort.",
-        "SPIKES structures bad news; VALUE structures family meetings (NEJM 2007 RCT — reduced bereavement PTSD).",
-        "A valid Advance Decision to Refuse Treatment (ADRT) is legally binding under the Mental Capacity Act 2005.",
-        "Doctrine of double effect: drugs given to relieve symptoms are lawful even if they may shorten life — NMBAs must NOT be used to mask distress.",
-        "Two-consultant agreement and clear documentation are required (GMC).",
-        "Time-limited trials and clinical ethics referral resolve most conflict; the Court of Protection is a last resort.",
-        "Approximately 20% of UK ICU admissions die — most after withdrawal; competence in this is core, not optional.",
-        "Offer organ donation referral (SNOD contact) before withdrawal in every potentially eligible patient.",
-        "Hot debrief within 24 h reduces moral distress and supports team wellbeing.",
+        { text: "Decisions to limit treatment are medical, made in best interests; the family informs the team about the patient's wishes.", cites: ["Oncologist 2000"] },
+        { text: "Avoid the phrase 'withdrawal of care' — it is a change in the goals of care to comfort.", cites: ["NEJM 2007"] },
+        { text: "SPIKES structures bad news; VALUE structures family meetings (NEJM 2007 RCT — reduced bereavement PTSD).", cites: ["GMC EoL"] },
+        { text: "A valid Advance Decision to Refuse Treatment (ADRT) is legally binding under the Mental Capacity Act 2005.", cites: ["FICM/ICS 2019"] },
+        { text: "Doctrine of double effect: drugs given to relieve symptoms are lawful even if they may shorten life — NMBAs must NOT be used to mask distress.", cites: ["BJA Educ 2017"] },
+        { text: "Two-consultant agreement and clear documentation are required (GMC).", cites: ["MCA 2005"] },
+        { text: "Time-limited trials and clinical ethics referral resolve most conflict; the Court of Protection is a last resort.", cites: ["Oncologist 2000"] },
+        { text: "Approximately 20% of UK ICU admissions die — most after withdrawal; competence in this is core, not optional.", cites: ["NEJM 2007"] },
+        { text: "Offer organ donation referral (SNOD contact) before withdrawal in every potentially eligible patient.", cites: ["GMC EoL"] },
+        { text: "Hot debrief within 24 h reduces moral distress and supports team wellbeing.", cites: ["FICM/ICS 2019"] },
       ]}
       topicId="end-of-life-communication"
       topicTitle="End-of-Life Care & Communication"

@@ -22,6 +22,7 @@ const workedExamples: WorkedExample[] = [
       "Prilocaine (and benzocaine, dapsone, GTN) oxidises Fe²⁺ in haem to Fe³⁺ → methaemoglobin, which cannot bind O₂.\nPulse oximetry reads SpO₂ ≈ 85% as MetHb absorbs at both 660 nm and 940 nm — the reading is unreliable above ~30% MetHb.\nMethylene blue 1–2 mg/kg IV reduces Fe³⁺ → Fe²⁺ via NADPH-methaemoglobin reductase (avoid in G6PD deficiency: risk of haemolysis).",
     answer:
       "Stop the offending drug, give 100% O₂, and treat with methylene blue 1–2 mg/kg IV. Co-oximetry (≥4 wavelengths) is required to quantify MetHb — a standard pulse oximeter cannot. Avoid methylene blue in G6PD deficiency; use ascorbic acid or exchange transfusion instead.",
+    cites: ["Cross & Plunkett Ch.3"],
   },
   {
     title: "Why a Clark electrode underestimates PaO₂ if calibrated wrongly",
@@ -31,6 +32,7 @@ const workedExamples: WorkedExample[] = [
       "The Clark electrode is amperometric: O₂ is reduced at a platinum cathode under a polarising voltage (~0.6 V) and the resulting current is proportional to PO₂.\nIn a plastic syringe at room temperature, leucocytes continue to consume O₂ (~7%/h). Plastic also allows slow O₂ diffusion — both lower the measured PaO₂.",
     answer:
       "The PaO₂ has fallen because of ongoing leucocyte O₂ consumption and diffusion through the plastic syringe wall. ABGs should be analysed within 10 minutes; samples for delayed analysis must be stored on ice in a glass syringe.",
+    cites: ["BJA Educ 2010"],
   },
 ];
 
@@ -56,14 +58,14 @@ const OxidationReductionTopic = () => {
         workedExamples: ["Wright 1999 (MetHb)", "BJA Educ 2010"],
       }}
       keyPoints={[
-        "OIL RIG: Oxidation Is Loss, Reduction Is Gain (of electrons). Always occur together",
-        "Methaemoglobin: Fe²⁺ oxidised to Fe³⁺ → cannot carry O₂. Caused by prilocaine, dapsone, GTN. Treat with methylene blue (avoid in G6PD)",
-        "Clark electrode (PO₂): amperometric — O₂ reduced at a platinum cathode; current ∝ PO₂",
-        "Severinghaus electrode (PCO₂): CO₂ diffuses through Teflon into NaHCO₃ → pH change measured",
-        "Galvanic fuel cell: self-generating O₂ sensor (no external voltage); lead anode consumed over time",
-        "Free radicals have unpaired electrons — superoxide, hydroxyl radical, peroxynitrite",
-        "Ischaemia–reperfusion generates ROS via xanthine oxidase — major cause of post-ROSC organ damage",
-        "N-acetylcysteine replenishes glutathione — treats paracetamol toxicity by neutralising NAPQI",
+        { text: "OIL RIG: Oxidation Is Loss, Reduction Is Gain (of electrons). Always occur together", cites: ["Halliwell & Gutteridge"] },
+        { text: "Methaemoglobin: Fe²⁺ oxidised to Fe³⁺ → cannot carry O₂. Caused by prilocaine, dapsone, GTN. Treat with methylene blue (avoid in G6PD)", cites: ["Wright 1999 (MetHb)"] },
+        { text: "Clark electrode (PO₂): amperometric — O₂ reduced at a platinum cathode; current ∝ PO₂", cites: ["Cross & Plunkett Ch.3"] },
+        { text: "Severinghaus electrode (PCO₂): CO₂ diffuses through Teflon into NaHCO₃ → pH change measured", cites: ["BJA Educ 2010"] },
+        { text: "Galvanic fuel cell: self-generating O₂ sensor (no external voltage); lead anode consumed over time", cites: ["Halliwell & Gutteridge"] },
+        { text: "Free radicals have unpaired electrons — superoxide, hydroxyl radical, peroxynitrite", cites: ["Wright 1999 (MetHb)"] },
+        { text: "Ischaemia–reperfusion generates ROS via xanthine oxidase — major cause of post-ROSC organ damage", cites: ["Cross & Plunkett Ch.3"] },
+        { text: "N-acetylcysteine replenishes glutathione — treats paracetamol toxicity by neutralising NAPQI", cites: ["BJA Educ 2010"] },
       ]}
       coreConcepts={
         <>

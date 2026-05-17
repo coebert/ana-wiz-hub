@@ -31,6 +31,7 @@ const workedExamples: WorkedExample[] = [
       "Activate MHP: 1:1:1 (PRBC:FFP:platelets) packs. Give TXA 1 g IV bolus + 1 g over 8 h (CRASH-2: within 3 h reduces mortality). Address lethal triad: warm fluids/forced-air warming → temperature; correct acidosis by source control + perfusion; coagulopathy by 1:1:1 + cryo or fibrinogen concentrate to keep fibrinogen >1.5–2 g/L. Citrate-induced hypocalcaemia: 10 mL CaCl₂ 10% per 4 units PRBC and whenever iCa²⁺ <1.0. Damage control resuscitation — permissive hypotension (SBP 80–90) until surgical/IR control. Send ROTEM to switch from empiric ratios to goal-directed.",
     answer:
       "Activate MHP, TXA within 3 h, 1:1:1 ratio, calcium replacement, active warming, permissive hypotension, urgent damage-control surgery/IR. Transition to ROTEM-guided once available.",
+    cites: ["BSH 2017"],
   },
   {
     title: "Setting up cell salvage for a redo aortic case",
@@ -40,6 +41,7 @@ const workedExamples: WorkedExample[] = [
       "Confirm consent and document the agreed components (red cells via continuous circuit). Two suction lines: a low-vacuum (≤−150 mmHg) salvage suction kept on the surgical field below blood level, and a separate standard high-vacuum sucker for irrigation/contaminants. Anticoagulate the collection reservoir — heparinised saline (30,000 IU in 1 L 0.9% NaCl) primed at 60 mL per 100 mL anticipated blood, dripping into the suction tubing tip; citrate (ACD-A) is the alternative when systemic heparin is contraindicated. When the reservoir holds ~500–1000 mL, the wash cycle starts: blood is centrifuged in a spinning bell, plasma + heparin + free Hb + cytokines are decanted to waste, and packed RBCs are washed with 1–1.5 L saline before being suspended in 0.9% saline at Hct ~50–70%. The processed unit is returned through a standard blood-giving set with a 40 µm filter; in obstetrics or malignancy add a leucodepletion filter to remove amniotic/tumour debris. Returned blood has no platelets, fibrinogen or clotting factors — anticipate dilutional coagulopathy after 1500–2000 mL salvaged volume and replace with FFP/cryo/platelets guided by ROTEM.",
     answer:
       "Document continuous-circuit consent. Prime reservoir with heparinised saline, use dual-suction technique at low vacuum, process when ≥500 mL collected, return washed RBCs through a 40 µm (± leucodepletion) filter, and supplement with FFP/cryo/platelets once >1500 mL has been re-infused or ROTEM signals coagulopathy. Avoid topical haemostats, betadine and unlicensed irrigants in the salvage field.",
+    cites: ["NICE NG24"],
   },
   {
     title: "ISTH DIC scoring in septic shock",
@@ -49,6 +51,7 @@ const workedExamples: WorkedExample[] = [
       "ISTH points: platelets 42 → 2; PT prolongation >6 s → 2; fibrinogen <1 g/L → 1; D-dimer strong increase → 3. Total = 8 (≥5 = overt DIC). Confirm clinical bleeding + microvascular thrombosis suspicion. Differentiate from TTP (normal coag screen + ADAMTS13 <10%) and from hepatic coagulopathy (FVIII low in liver disease, preserved in DIC).",
     answer:
       "Overt DIC (score 8). Treat the cause (source control + appropriate antimicrobials). Replace to clinical targets: platelets >50, fibrinogen >1.5 g/L (cryo or fibrinogen concentrate), FFP if PT ratio >1.5 + bleeding. Avoid TXA unless ROTEM confirms hyperfibrinolysis (ML >15%).",
+    cites: ["BJA Educ 2015"],
   },
 ];
 
@@ -71,21 +74,21 @@ const TransfusionCoagulationTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       keyPoints={[
-        "Restrictive transfusion (Hb 70 g/L trigger) is safe in most ICU patients — TRICC, TRISS",
-        "Red cells: 35-day shelf life at 2–6°C; storage lesion (↓2,3-DPG, ↑K⁺, ↓pH) reverses over 24 h in the recipient",
-        "Platelets: only 5–7 days at 20–24°C with agitation — bacterial contamination is the leading infectious risk",
-        "FFP/cryo: 2 years at −30°C; once thawed, use within 24 h (FFP) or 4 h (cryo, room temperature)",
-        "TRALI: leading cause of transfusion-related death; strongly associated with FFP and apheresis platelets from multiparous donors (anti-HLA/HNA antibodies). UK male-donor FFP policy has reduced incidence ~10-fold",
-        "TRALI vs TACO: both cause pulmonary oedema within 6 h — TRALI has normal CVP/JVP and worsens with diuretics; TACO improves with diuresis",
-        "Cell salvage washes shed blood, suspends RBCs in saline (Hct ~50–70%), and removes plasma, platelets, heparin, free Hb and most cytokines — returned blood has NO clotting factors or platelets",
-        "ICS contraindications are largely relative — sickle cell disease, contamination with iodine/topical haemostats, and pharmacological agents not licensed for IV use; obstetric and oncological use is now supported with a leucodepletion filter (NICE TA/OAA-AAGBI)",
-        "ROTEM/TEG enables goal-directed transfusion — FIBTEM guides fibrinogen, EXTEM guides FFP/platelets",
-        "TXA within 3 hours of trauma reduces mortality (CRASH-2)",
-        "Massive transfusion: hypocalcaemia is the most dangerous metabolic complication — give CaCl₂ early",
-        "Lethal triad: hypothermia + acidosis + coagulopathy — damage control resuscitation breaks the cycle",
-        "DIC: ISTH score ≥5 = overt DIC. Treat the underlying cause — the most important intervention",
-        "DIC vs TTP: coagulation screen normal in TTP, abnormal in DIC. Never give platelets in TTP",
-        "TXA contraindicated in DIC with predominant thrombosis — only if hyperfibrinolysis dominant",
+        { text: "Restrictive transfusion (Hb 70 g/L trigger) is safe in most ICU patients — TRICC, TRISS", cites: ["BSH 2017"] },
+        { text: "Red cells: 35-day shelf life at 2–6°C; storage lesion (↓2,3-DPG, ↑K⁺, ↓pH) reverses over 24 h in the recipient", cites: ["NICE NG24"] },
+        { text: "Platelets: only 5–7 days at 20–24°C with agitation — bacterial contamination is the leading infectious risk", cites: ["BJA Educ 2015"] },
+        { text: "FFP/cryo: 2 years at −30°C; once thawed, use within 24 h (FFP) or 4 h (cryo, room temperature)", cites: ["BSH 2017"] },
+        { text: "TRALI: leading cause of transfusion-related death; strongly associated with FFP and apheresis platelets from multiparous donors (anti-HLA/HNA antibodies). UK male-donor FFP policy has reduced incidence ~10-fold", cites: ["NICE NG24"] },
+        { text: "TRALI vs TACO: both cause pulmonary oedema within 6 h — TRALI has normal CVP/JVP and worsens with diuretics; TACO improves with diuresis", cites: ["BJA Educ 2015"] },
+        { text: "Cell salvage washes shed blood, suspends RBCs in saline (Hct ~50–70%), and removes plasma, platelets, heparin, free Hb and most cytokines — returned blood has NO clotting factors or platelets", cites: ["BSH 2017"] },
+        { text: "ICS contraindications are largely relative — sickle cell disease, contamination with iodine/topical haemostats, and pharmacological agents not licensed for IV use; obstetric and oncological use is now supported with a leucodepletion filter (NICE TA/OAA-AAGBI)", cites: ["NICE NG24"] },
+        { text: "ROTEM/TEG enables goal-directed transfusion — FIBTEM guides fibrinogen, EXTEM guides FFP/platelets", cites: ["BJA Educ 2015"] },
+        { text: "TXA within 3 hours of trauma reduces mortality (CRASH-2)", cites: ["BSH 2017"] },
+        { text: "Massive transfusion: hypocalcaemia is the most dangerous metabolic complication — give CaCl₂ early", cites: ["NICE NG24"] },
+        { text: "Lethal triad: hypothermia + acidosis + coagulopathy — damage control resuscitation breaks the cycle", cites: ["BJA Educ 2015"] },
+        { text: "DIC: ISTH score ≥5 = overt DIC. Treat the underlying cause — the most important intervention", cites: ["BSH 2017"] },
+        { text: "DIC vs TTP: coagulation screen normal in TTP, abnormal in DIC. Never give platelets in TTP", cites: ["NICE NG24"] },
+        { text: "TXA contraindicated in DIC with predominant thrombosis — only if hyperfibrinolysis dominant", cites: ["BJA Educ 2015"] },
       ]}
       coreConcepts={
         <>

@@ -59,6 +59,7 @@ const workedExamples: WorkedExample[] = [
         chlorhexidine (9%) are the top three perioperative anaphylaxis triggers in the UK; latex now rare.
       </>
     ),
+    cites: ["Stavnezer Annu Rev 2008"],
   },
   {
     title: "Massive obstetric haemorrhage — the 1:1:1 ratio",
@@ -100,6 +101,7 @@ const workedExamples: WorkedExample[] = [
         ROTEM/TEG available.
       </>
     ),
+    cites: ["Crotty Immunity 2014"],
   },
 ];
 
@@ -173,15 +175,15 @@ const HaematologyImmunityTopic = () => {
         </>
       }
       keyPoints={[
-        "Cell-based coagulation model: initiation (TF+VIIa), amplification (thrombin activates platelets), propagation (thrombin burst)",
-        "PT/INR = extrinsic (VII, warfarin). APTT = intrinsic (XII, XI, IX, VIII, heparin). TT = common pathway",
-        "ABO mismatch causes acute haemolytic transfusion reaction (IgM) — most dangerous transfusion complication",
-        "Type I hypersensitivity (anaphylaxis): IgE-mediated mast cell degranulation. Measure serum tryptase",
-        "Massive transfusion complications: hypocalcaemia (citrate), hyperkalaemia, hypothermia, dilutional coagulopathy",
-        "Bacterial infection: TLR/PAMP recognition → neutrophil + complement (alternative/lectin) → Th17/Th1 + B-cell IgM→IgG class switch over 7–14 days",
-        "Viral infection: type I IFN (IFN-α/β) + NK cells early; CD8⁺ CTLs (perforin/granzyme) + neutralising IgG dominate adaptive clearance",
-        "Secondary response: 100–1000× higher IgG titre within 1–3 days via memory B/T cells — the rationale for vaccination",
-        "Asplenic patients lose rapid IgM response to encapsulated organisms (pneumococcus, meningococcus, Hib) — vaccinate + prophylaxis",
+        { text: "Cell-based coagulation model: initiation (TF+VIIa), amplification (thrombin activates platelets), propagation (thrombin burst)", cites: ["Smith-Garvin Annu Rev 2009"] },
+        { text: "PT/INR = extrinsic (VII, warfarin). APTT = intrinsic (XII, XI, IX, VIII, heparin). TT = common pathway", cites: ["Mellman Cell 2001"] },
+        { text: "ABO mismatch causes acute haemolytic transfusion reaction (IgM) — most dangerous transfusion complication", cites: ["Banchereau Nature 1998"] },
+        { text: "Type I hypersensitivity (anaphylaxis): IgE-mediated mast cell degranulation. Measure serum tryptase", cites: ["BJA Educ Adaptive 2019"] },
+        { text: "Massive transfusion complications: hypocalcaemia (citrate), hyperkalaemia, hypothermia, dilutional coagulopathy", cites: ["BJA Educ Innate 2018"] },
+        { text: "Bacterial infection: TLR/PAMP recognition → neutrophil + complement (alternative/lectin) → Th17/Th1 + B-cell IgM→IgG class switch over 7–14 days", cites: ["BJA Educ Immune 2016"] },
+        { text: "Viral infection: type I IFN (IFN-α/β) + NK cells early; CD8⁺ CTLs (perforin/granzyme) + neutralising IgG dominate adaptive clearance", cites: ["AAGBI Anaphylaxis 2021"] },
+        { text: "Secondary response: 100–1000× higher IgG titre within 1–3 days via memory B/T cells — the rationale for vaccination", cites: ["BJA Educ 2017"] },
+        { text: "Asplenic patients lose rapid IgM response to encapsulated organisms (pneumococcus, meningococcus, Hib) — vaccinate + prophylaxis", cites: ["Allman & Wilson Ch.18"] },
       ]}
       coreConcepts={
         <>

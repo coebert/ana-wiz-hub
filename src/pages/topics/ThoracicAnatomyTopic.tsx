@@ -27,13 +27,13 @@ const ThoracicAnatomyTopic = () => {
         "Describe the first rib and its relevance to supraclavicular block and subclavian access",
       ]}
       keyPoints={[
-        "Intercostal neurovascular bundle (VAN) runs below the rib — insert drains above the rib below",
-        "Cervical pleura extends above clavicle — risk during subclavian vein cannulation",
-        "Diaphragm: phrenic nerve C3,4,5. Openings at T8 (IVC), T10 (oesophagus), T12 (aorta)",
-        "Right upper lobe bronchus is eparterial — reason left DLT preferred for one-lung ventilation",
-        "Paravertebral space: unilateral somatic + sympathetic block; bounded by TP, SCTL, parietal pleura",
-        "First rib: scalene tubercle divides subclavian vein (anterior) from artery + brachial plexus (posterior)",
-        "Supraclavicular block at the first rib — 'spinal anaesthesia of the arm' with highest success for upper limb",
+        { text: "Intercostal neurovascular bundle (VAN) runs below the rib — insert drains above the rib below", cites: ["Ellis & Feldman Ch.2"] },
+        { text: "Cervical pleura extends above clavicle — risk during subclavian vein cannulation", cites: ["Power & Kam Ch.5"] },
+        { text: "Diaphragm: phrenic nerve C3,4,5. Openings at T8 (IVC), T10 (oesophagus), T12 (aorta)", cites: ["BJA Educ 2007"] },
+        { text: "Right upper lobe bronchus is eparterial — reason left DLT preferred for one-lung ventilation", cites: ["Ellis & Feldman Ch.2"] },
+        { text: "Paravertebral space: unilateral somatic + sympathetic block; bounded by TP, SCTL, parietal pleura", cites: ["Power & Kam Ch.5"] },
+        { text: "First rib: scalene tubercle divides subclavian vein (anterior) from artery + brachial plexus (posterior)", cites: ["BJA Educ 2007"] },
+        { text: "Supraclavicular block at the first rib — 'spinal anaesthesia of the arm' with highest success for upper limb", cites: ["Ellis & Feldman Ch.2"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },

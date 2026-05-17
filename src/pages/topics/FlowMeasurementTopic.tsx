@@ -29,6 +29,7 @@ const workedExamples: WorkedExample[] = [
       "Hagen-Poiseuille: Q ∝ r⁴.\nRatio = (4/8)⁴ = (½)⁴ = 1/16.\nFlow through the 4.0 mm tube is 1/16 of an 8.0 mm tube at the same ΔP.",
     answer:
       "Laminar flow falls 16-fold. Resistance and work of breathing rise dramatically — explaining why even small subglottic oedema in paediatric patients precipitates stridor and respiratory failure, and why suboptimal tube selection is a major contributor to ventilator dyssynchrony.",
+    cites: ["Cross & Plunkett Ch.8"],
   },
   {
     title: "Heliox in upper airway obstruction",
@@ -38,6 +39,7 @@ const workedExamples: WorkedExample[] = [
       "In turbulent flow Q ∝ √(ΔP/ρ) — flow depends on density (ρ), not viscosity.\nDensity (g/L): O₂ ≈ 1.43, N₂ ≈ 1.25, He ≈ 0.18.\n70:30 He:O₂ density ≈ 0.7 × 0.18 + 0.3 × 1.43 ≈ 0.55 g/L vs air ≈ 1.29 g/L → ~1/2.3 the density.\n√(2.3) ≈ 1.5 → ~50% increase in turbulent flow at the same driving pressure.",
     answer:
       "Heliox reduces gas density and therefore flow resistance under turbulent conditions, raising achievable minute ventilation by ~50% and buying time while definitive airway management is arranged.",
+    cites: ["BJA Educ 2004"],
   },
 ];
 
@@ -63,12 +65,12 @@ const FlowMeasurementTopic = () => {
         objectives: ["Cross & Plunkett Ch.8"],
       }}
       keyPoints={[
-        "Hagen-Poiseuille: Q = πΔPr⁴/8ηl. Flow ∝ r⁴ — halving radius reduces flow 16-fold.",
-        "Reynolds number (Re = ρvd/η): <2000 laminar, >4000 turbulent. Turbulence depends on density, not viscosity.",
-        "Heliox reduces resistance in turbulent flow conditions because helium has low density.",
-        "Rotameters: laminar (low flow) depends on viscosity; turbulent (high flow) depends on density. Gas-specific calibration.",
-        "Pneumotachograph measures flow via pressure drop across a resistance; integration gives volume.",
-        "Venturi effect entrains gas through a constriction — used in fixed FiO₂ masks and jet ventilation.",
+        { text: "Hagen-Poiseuille: Q = πΔPr⁴/8ηl. Flow ∝ r⁴ — halving radius reduces flow 16-fold.", cites: ["Middleton Ch.6"] },
+        { text: "Reynolds number (Re = ρvd/η): <2000 laminar, >4000 turbulent. Turbulence depends on density, not viscosity.", cites: ["Cross & Plunkett Ch.8"] },
+        { text: "Heliox reduces resistance in turbulent flow conditions because helium has low density.", cites: ["BJA Educ 2004"] },
+        { text: "Rotameters: laminar (low flow) depends on viscosity; turbulent (high flow) depends on density. Gas-specific calibration.", cites: ["Middleton Ch.6"] },
+        { text: "Pneumotachograph measures flow via pressure drop across a resistance; integration gives volume.", cites: ["Cross & Plunkett Ch.8"] },
+        { text: "Venturi effect entrains gas through a constriction — used in fixed FiO₂ masks and jet ventilation.", cites: ["BJA Educ 2004"] },
       ]}
       coreConcepts={
         <>

@@ -41,6 +41,7 @@ const workedExamples: WorkedExample[] = [
         consider neuromuscular blockade and ECMO referral.
       </p>
     ),
+    cites: ["BJA Educ 2018"],
   },
   {
     title: "Bohr dead space in suspected PE",
@@ -58,6 +59,7 @@ const workedExamples: WorkedExample[] = [
       </ul>
     ),
     answer: <p>Markedly raised dead-space fraction with widened gap → urgent CTPA for PE.</p>,
+    cites: ["Nunn Ch.8"],
   },
   {
     title: "One-lung ventilation — preserving HPV",
@@ -81,6 +83,7 @@ const workedExamples: WorkedExample[] = [
         2–5 cmH₂O CPAP to the operative lung if surgery permits.
       </p>
     ),
+    cites: ["West Ch.5"],
   },
 ];
 
@@ -103,12 +106,12 @@ const VentilationPerfusionTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_02"] },
       }}
       keyPoints={[
-        "Normal V̇/Q̇ ≈ 0.8. Apex has highest V/Q (~3.3, dead space-like), base has lowest (~0.6, shunt-like)",
-        "West's Zones: Zone 1 (PA > Pa > Pv) — dead space; Zone 3 (Pa > Pv > PA) — continuous flow",
-        "Dead space measured by Bohr equation: VD/VT = (PaCO₂ − PĒCO₂)/PaCO₂. Normal ~30%",
-        "True shunt does NOT respond to supplemental O₂. At >30% shunt, ↑ FiO₂ has minimal effect on PaO₂",
-        "HPV diverts blood from hypoxic alveoli — inhibited by volatiles, vasodilators, sepsis",
-        "Central chemoreceptors (CO₂ via H⁺) are the main ventilatory drive; peripheral chemoreceptors detect hypoxia",
+        { text: "Normal V̇/Q̇ ≈ 0.8. Apex has highest V/Q (~3.3, dead space-like), base has lowest (~0.6, shunt-like)", cites: ["BJA Educ 2018"] },
+        { text: "West's Zones: Zone 1 (PA > Pa > Pv) — dead space; Zone 3 (Pa > Pv > PA) — continuous flow", cites: ["Nunn Ch.8"] },
+        { text: "Dead space measured by Bohr equation: VD/VT = (PaCO₂ − PĒCO₂)/PaCO₂. Normal ~30%", cites: ["West Ch.5"] },
+        { text: "True shunt does NOT respond to supplemental O₂. At >30% shunt, ↑ FiO₂ has minimal effect on PaO₂", cites: ["BJA Educ 2018"] },
+        { text: "HPV diverts blood from hypoxic alveoli — inhibited by volatiles, vasodilators, sepsis", cites: ["Nunn Ch.8"] },
+        { text: "Central chemoreceptors (CO₂ via H⁺) are the main ventilatory drive; peripheral chemoreceptors detect hypoxia", cites: ["West Ch.5"] },
       ]}
       coreConcepts={
         <section className="space-y-6">

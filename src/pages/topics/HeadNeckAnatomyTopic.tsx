@@ -33,15 +33,15 @@ const HeadNeckAnatomyTopic = () => {
         "Apply tracheobronchial anatomy to DLT placement and emergency front-of-neck access",
       ]}
       keyPoints={[
-        "Glossopharyngeal nerve (IX) provides oropharyngeal sensation — block for awake fibreoptic intubation",
-        "SLN internal branch: sensory above cords; external branch: motor to cricothyroid (tensor)",
-        "RLN: motor to ALL intrinsic muscles except cricothyroid; left loops under aortic arch",
-        "Bilateral RLN palsy → cords paramedian → stridor → emergency airway required",
-        "Right main bronchus wider, shorter, more vertical — foreign bodies preferentially enter right side",
-        "Cricothyroid membrane: avascular midline landmark for emergency front-of-neck access",
-        "Right IJV preferred for CVC: straighter path to SVC, avoids thoracic duct (left side)",
-        "Accessory nerve (XI) is superficial in posterior triangle — vulnerable to surgical injury",
-        "Deep cervical plexus block risks phrenic nerve paralysis — avoid bilaterally",
+        { text: "Glossopharyngeal nerve (IX) provides oropharyngeal sensation — block for awake fibreoptic intubation", cites: ["BJA Educ 2019"] },
+        { text: "SLN internal branch: sensory above cords; external branch: motor to cricothyroid (tensor)", cites: ["BJA Educ 2005"] },
+        { text: "RLN: motor to ALL intrinsic muscles except cricothyroid; left loops under aortic arch", cites: ["Ellis & Feldman Ch.1"] },
+        { text: "Bilateral RLN palsy → cords paramedian → stridor → emergency airway required", cites: ["Ellis & Feldman Ch.5"] },
+        { text: "Right main bronchus wider, shorter, more vertical — foreign bodies preferentially enter right side", cites: ["Power & Kam Ch.12"] },
+        { text: "Cricothyroid membrane: avascular midline landmark for emergency front-of-neck access", cites: ["BJA Educ 2019"] },
+        { text: "Right IJV preferred for CVC: straighter path to SVC, avoids thoracic duct (left side)", cites: ["BJA Educ 2005"] },
+        { text: "Accessory nerve (XI) is superficial in posterior triangle — vulnerable to surgical injury", cites: ["Ellis & Feldman Ch.1"] },
+        { text: "Deep cervical plexus block risks phrenic nerve paralysis — avoid bilaterally", cites: ["Ellis & Feldman Ch.5"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
