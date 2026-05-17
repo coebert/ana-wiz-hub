@@ -43,6 +43,7 @@ const workedExamples: WorkedExample[] = [
         Three-agent prophylaxis halves PONV in Apfel-3/4 patients (Gan et al., 4th Consensus, 2020).
       </>
     ),
+   cites: ["Peck & Hill Ch.11"],
   },
   {
     title: "Aspiration risk and barrier pressure",
@@ -71,6 +72,7 @@ const workedExamples: WorkedExample[] = [
         avoid bag-mask ventilation pre-intubation, and extubate awake in the lateral position.
       </>
     ),
+   cites: ["BJA Educ 2018"],
   },
 ];
 

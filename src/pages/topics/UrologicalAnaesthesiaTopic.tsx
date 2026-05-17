@@ -195,7 +195,8 @@ const UrologicalAnaesthesiaTopic = () => {
             </div>
           ),
           answer: "Stop surgery, 3% NaCl 1–2 mL/kg, furosemide, controlled Na⁺ rise ≤10 mmol/L/24h.",
-        },
+         cites: ["BJA Educ 2014 TURP"],
+  },
       ]}
       keyPoints={[
         { text: "TURP syndrome: hyponatraemia from glycine absorption — confusion, visual disturbance, seizures", cites: ["BJA Educ 2014 TURP"] },

@@ -51,6 +51,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Remifentanil's CSHT is essentially constant (~4 min) due to ester metabolism, making it ideal for long cases and rapid wake-up. Bridge analgesia with morphine and multimodal adjuncts before stopping the infusion, and consider ketamine cover to mitigate OIH.",
+   cites: ["BJA Educ 2016"],
   },
   {
     title: "Morphine in renal failure",
@@ -78,6 +79,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "M6G accumulates in renal failure causing delayed respiratory depression. Stop morphine, titrate naloxone (likely as infusion), and switch to fentanyl, alfentanil or buprenorphine which lack active renally cleared metabolites.",
+   cites: ["Peck & Hill Ch.6"],
   },
   {
     title: "Distinguishing tolerance from OIH",
@@ -104,6 +106,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "OIH is suggested by diffuse new-distribution pain that worsens with dose escalation. Reduce or rotate the opioid (consider methadone or buprenorphine), add ketamine and multimodal adjuncts, and re-evaluate. Tolerance and OIH frequently coexist.",
+   cites: ["Miller Ch.28"],
   },
 ];
 

@@ -68,6 +68,7 @@ const workedExamples: WorkedExample[] = [
         hypothermia (Eurotherm: harmful).
       </>
     ),
+   cites: ["BJA Educ 2018"],
   },
   {
     title: "Brainstem death apnoea test",
@@ -93,6 +94,7 @@ const workedExamples: WorkedExample[] = [
         SN-OD before any limitation of treatment is communicated.
       </>
     ),
+   cites: ["BTF 2017"],
   },
   {
     title: "Suxamethonium in spinal cord injury",
@@ -116,6 +118,7 @@ const workedExamples: WorkedExample[] = [
         prolonged immobility, and denervation injuries.
       </>
     ),
+   cites: ["BJA Educ 2014"],
   },
   {
     title: "Cerebral microdialysis interpretation",
@@ -142,6 +145,7 @@ const workedExamples: WorkedExample[] = [
         seizures).
       </>
     ),
+   cites: ["BJA Educ 2018"],
   },
 ];
 

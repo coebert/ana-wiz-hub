@@ -51,6 +51,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Take a minimum of two full E-cylinders (1,360 L). Always pre-calculate using flow × time × 2 safety factor, check cylinder gauges before departure, and confirm receiving unit O₂ is available on arrival. A single cylinder would risk run-out before reaching destination.",
+   cites: ["AAGBI Transfer 2009"],
   },
   {
     title: "Air transfer of a patient with a chest drain",
@@ -83,6 +84,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Maintain the chest drain on continuous underwater seal (kept upright, below the patient) or a Heimlich valve — never clamp. Fill the ETT cuff with saline or monitor the cuff manometer at altitude. Counsel the team that any new desaturation in flight should prompt assessment for a tension pneumothorax.",
+   cites: ["ICS Transfer 2019"],
   },
 ];
 

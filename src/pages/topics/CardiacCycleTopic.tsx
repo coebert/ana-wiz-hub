@@ -51,6 +51,7 @@ const workedExamples: WorkedExample[] = [
         tight". Avoid spinal anaesthesia or sudden vasodilation.
       </>
     ),
+   cites: ["BJA Educ 2018"],
   },
   {
     title: "Reading a CVP trace — cannon a waves",
@@ -83,6 +84,7 @@ const workedExamples: WorkedExample[] = [
         stable. The CVP waveform is a powerful bedside diagnostic tool when capture isn't on monitor printout.
       </>
     ),
+   cites: ["Ganong Ch.30"],
   },
 ];
 

@@ -40,6 +40,7 @@ const workedExamples: WorkedExample[] = [
         controls ammonia and avoids ICP swings of IHD).
       </>
     ),
+   cites: ["BJA Educ 2017"],
   },
   {
     title: "HRS-AKI diagnosis and treatment",
@@ -65,6 +66,7 @@ const workedExamples: WorkedExample[] = [
         by day 4 → CRRT bridge to transplant assessment.
       </>
     ),
+   cites: ["King's Criteria"],
   },
   {
     title: "Maddrey DF and the Lille decision",
@@ -92,6 +94,7 @@ const workedExamples: WorkedExample[] = [
         mortality ~75%).
       </>
     ),
+   cites: ["BJA Educ 2019"],
   },
 ];
 

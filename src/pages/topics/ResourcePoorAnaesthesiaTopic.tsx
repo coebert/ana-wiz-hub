@@ -46,6 +46,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Single-shot spinal with hyperbaric bupivacaine, phenylephrine/ephedrine support and Lifebox oximetry is the safest default. Reserve ketamine RSI with draw-over volatile in O₂-enriched air for failed/contraindicated spinal. Plan uterotonics around the available cold chain.",
+   cites: ["WFSA Update Anaesth"],
   },
   {
     title: "Open tibial fracture in a rural hospital with intermittent power",
@@ -78,6 +79,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Spinal anaesthesia is the default. Backup is landmark femoral + sciatic block; if both unsuitable, ketamine sedation with draw-over halothane in O₂-enriched air. Plan around the generator, keep a self-inflating bag and cylinder oxygen ready, and give tetanus prophylaxis and broad-spectrum antibiotics.",
+   cites: ["Lifebox"],
   },
 ];
 
@@ -105,13 +107,13 @@ const ResourcePoorAnaesthesiaTopic = () => {
         keyPoints: ["WHO-WFSA Standards 2018", "Lifebox", "AAGBI Global 2009"],
       }}
       keyPoints={[
-        "WHO–WFSA International Standards (2018) define HIGHLY RECOMMENDED minimums: trained anaesthesia provider, pulse oximeter, oxygen, suction, self-inflating bag, emergency drugs",
-        "Pulse oximetry is the single highest-impact monitor — Lifebox provides robust, battery-powered oximeters specifically for low-resource theatres",
-        "Default to regional/spinal anaesthesia when surgical access allows — independence from oxygen, electricity and ventilators",
-        "Ketamine is the workhorse induction/maintenance agent: preserves airway reflexes, supports BP, runs without infusion pumps; combine with benzodiazepine to attenuate emergence phenomena",
-        "Draw-over vaporisers (EMO, Diamedica DPA) deliver volatile in air ± O₂ enrichment from a concentrator — independent of compressed gas",
-        "Always have a self-inflating bag (Ambu/Laerdal), Magill forceps and a working laryngoscope — these are non-negotiable even in austere settings",
-        "WHO Surgical Safety Checklist reduces mortality by ~40% — adopt regardless of resource level; SAFE Obstetrics & Paediatrics courses build local capacity",
+        { text: "WHO–WFSA International Standards (2018) define HIGHLY RECOMMENDED minimums: trained anaesthesia provider, pulse oximeter, oxygen, suction, self-inflating bag, emergency drugs", cites: ["WHO-WFSA Standards 2018"] },
+        { text: "Pulse oximetry is the single highest-impact monitor — Lifebox provides robust, battery-powered oximeters specifically for low-resource theatres", cites: ["WFSA Update Anaesth"] },
+        { text: "Default to regional/spinal anaesthesia when surgical access allows — independence from oxygen, electricity and ventilators", cites: ["Lifebox"] },
+        { text: "Ketamine is the workhorse induction/maintenance agent: preserves airway reflexes, supports BP, runs without infusion pumps; combine with benzodiazepine to attenuate emergence phenomena", cites: ["AAGBI Global 2009"] },
+        { text: "Draw-over vaporisers (EMO, Diamedica DPA) deliver volatile in air ± O₂ enrichment from a concentrator — independent of compressed gas", cites: ["Lancet Commission GS 2015"] },
+        { text: "Always have a self-inflating bag (Ambu/Laerdal), Magill forceps and a working laryngoscope — these are non-negotiable even in austere settings", cites: ["WHO Checklist 2009"] },
+        { text: "WHO Surgical Safety Checklist reduces mortality by ~40% — adopt regardless of resource level; SAFE Obstetrics & Paediatrics courses build local capacity", cites: ["WHO-WFSA Standards 2018"] },
       ]}
       coreConcepts={
         <>

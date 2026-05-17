@@ -46,6 +46,7 @@ const workedExamples: WorkedExample[] = [
         carefully.
       </>
     ),
+   cites: ["BJA Educ 2014"],
   },
   {
     title: "Coagulopathy in chronic liver disease",
@@ -78,6 +79,7 @@ const workedExamples: WorkedExample[] = [
         acid where appropriate.
       </>
     ),
+   cites: ["Power & Kam Ch.10"],
   },
 ];
 

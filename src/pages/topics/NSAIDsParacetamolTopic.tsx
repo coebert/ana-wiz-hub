@@ -47,6 +47,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Avoid routine NSAIDs in this patient. Use paracetamol, regional analgesia (adductor canal / LIA), and short-course low-dose opioids. Reserve NSAIDs for younger, well-hydrated patients with normal renal function and no anticoagulant — and document a clear stop date.",
+   cites: ["Peck & Hill Ch.15"],
   },
   {
     title: "Staggered paracetamol overdose",
@@ -79,6 +80,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Treat with N-acetylcysteine immediately — do not rely on the nomogram for staggered overdoses or high-risk patients. Use the standard 21-h IV NAC regimen (or the simplified SNAP protocol) and monitor LFTs, INR, creatinine, lactate and pH at 24 h to guide continuation.",
+   cites: ["BJA Educ 2018"],
   },
 ];
 

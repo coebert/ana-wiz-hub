@@ -43,6 +43,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "The reversible-adiabatic prediction is ~78 K (−195 °C). In practice heat conduction limits surface cooling to ~30–50 °C, but it explains the frost on a rapidly discharged O₂ cylinder.",
+   cites: ["Peck & Hill Ch.1"],
   },
   {
     title: "Frost line on an N₂O cylinder during heavy use",
@@ -69,6 +70,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Latent heat of vaporisation cools the cylinder where evaporation occurs (the liquid–vapour interface), and J–T cooling at the regulator adds ~12 °C drop. The frost line marks the level of remaining liquid — the only reliable visual gauge of N₂O contents.",
+   cites: ["Cross & Plunkett Ch.1"],
   },
   {
     title: "Alveolar oxygen tension at altitude",
@@ -95,6 +97,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "PAO₂ ≈ 37 mmHg, well below the safe lower limit. Supplemental oxygen, hyperventilation, or descent are required.",
+   cites: ["BJA Educ 2017"],
   },
 ];
 

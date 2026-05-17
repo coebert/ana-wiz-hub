@@ -47,6 +47,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Treat as CO₂ gas embolism: stop insufflation, head-down + left lateral (Durant), 100% O₂, fluids and vasopressors, stop N₂O, and aspirate via CVC if possible. The diagnostic clues are sudden EtCO₂ fall, mill-wheel murmur, and cardiovascular collapse — distinguish from tension pneumothorax and vasovagal causes.",
+   cites: ["BJA Educ 2011 Lap"],
   },
   {
     title: "Hysteroscopy fluid deficit at 1,500 mL with glycine",
@@ -82,6 +83,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Stop the procedure, send urgent Na⁺/osmolality, give 3% saline 150 mL over 10 min if symptomatic, restrict fluids, add furosemide, and admit to HDU/ICU. Correct Na⁺ no faster than 8–10 mmol/L per 24 h to prevent central pontine myelinolysis. Set deficit alarms (1,000 mL glycine, 2,500 mL saline) for the next case.",
+   cites: ["BSGE 2018"],
   },
 ];
 

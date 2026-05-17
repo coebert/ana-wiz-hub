@@ -29,6 +29,7 @@ const workedExamples: WorkedExample[] = [
       "Awake fibreoptic intubation requires conscious sedation — the patient must remain rousable, cooperative and maintain airway protective reflexes. Remifentanil TCI (Minto model, effect-site target 1–3 ng/mL) is the technique of choice: rapid onset and offset, context-insensitive half-time independent of duration, antitussive at low doses. Adjunct: small dexmedetomidine load (0.5–1 µg/kg over 10 min) provides anxiolysis and an arousable plane without respiratory depression. Avoid propofol boluses — risk of apnoea and loss of airway in a patient predicted to be difficult to ventilate.",
     answer:
       "Remifentanil TCI (Minto, Ce 1–2 ng/mL, titrate up to 3) ± dexmedetomidine 0.5 µg/kg load then 0.4 µg/kg/h. Topicalise the airway thoroughly (10% lidocaine spray, 4% nebulised, superior laryngeal nerve blocks if needed). Continuous SpO₂, ETCO₂ via nasal cannula, NIBP, ECG, and a trained assistant. Difficult-airway trolley and front-of-neck access ready. Aim for a calm, cooperative, spontaneously breathing patient (Ramsay 2–3, MOAA/S 4–5).",
+   cites: ["ASA 2019"],
   },
   {
     title: "Sedation for colonoscopy in an elderly frail patient",
@@ -38,6 +39,7 @@ const workedExamples: WorkedExample[] = [
       "Frail elderly patients are exquisitely sensitive to sedatives — reduced cardiac output prolongs arm-brain time, reduced lean mass alters volume of distribution, reduced hepatic/renal clearance prolongs duration. Deep sedation in this group carries airway, aspiration and cardiovascular risk. Discuss with the endoscopist: moderate sedation is usually adequate. Use small incremental boluses, allow time for peak effect (~90 s after IV propofol), avoid synergistic combinations at full dose. Midazolam 0.5 mg + fentanyl 25 µg as a starting point, titrated. Propofol if available with appropriately trained sedationist — 10–20 mg increments, never exceeding the lowest effective dose. Avoid the propofol + midazolam + opioid 'triple cocktail' which is highly synergistic.",
     answer:
       "Reframe to moderate sedation. Pre-oxygenate; left lateral position; supplemental O₂ 2 L/min via cannula with ETCO₂; full monitoring; IV access. Midazolam 0.5–1 mg + fentanyl 25 µg titrated, with low-dose propofol top-ups (10 mg) if needed. Reversal drugs (flumazenil, naloxone) immediately available. Extended recovery period and clear discharge criteria (modified Aldrete or PADSS) before going home with a responsible adult. Apixaban: omit morning dose per BSG guidance for low-risk endoscopy.",
+   cites: ["BJA Educ 2021"],
   },
 ];
 
@@ -63,14 +65,14 @@ const ProceduralSedationTopic = () => {
         workedExamples: ["DAS Awake Tracheal Intubation 2020", "BSG Endoscopy Sedation 2023"],
       }}
       keyPoints={[
-        "ASA continuum: minimal (anxiolysis) → moderate (conscious) → deep → general anaesthesia. The depth achieved — not the drug used — defines the level",
-        "Sedation depth is a continuum; practitioners must be able to rescue from one level deeper than intended (i.e. deep sedationist must be GA-competent)",
-        "Conscious (moderate) sedation: purposeful response to verbal/light tactile stimulus; airway and ventilation maintained; CV function unaffected",
-        "Minimum monitoring (AAGBI 2021): SpO₂, ETCO₂ (always for moderate/deep), NIBP, ECG, level-of-consciousness scoring (MOAA/S, Ramsay or OAA/S)",
-        "TCI sedation (propofol Marsh/Schnider, remifentanil Minto) gives stable plasma/effect-site concentrations and rapid titration vs intermittent boluses",
-        "Synergy: propofol + midazolam + opioid causes profound respiratory depression — use the lowest effective single agent or carefully titrated pairs",
-        "Ketamine sedation preserves airway tone, ventilation and CV stability — first-line in paediatrics, trauma, low-resource and prehospital settings",
-        "Dexmedetomidine produces 'arousable' sedation without respiratory depression — useful for AFOI, MRI, paediatric procedures and ICU bridging",
+        { text: "ASA continuum: minimal (anxiolysis) → moderate (conscious) → deep → general anaesthesia. The depth achieved — not the drug used — defines the level", cites: ["AAGBI/RCoA 2021"] },
+        { text: "Sedation depth is a continuum; practitioners must be able to rescue from one level deeper than intended (i.e. deep sedationist must be GA-competent)", cites: ["AoMRC 2013"] },
+        { text: "Conscious (moderate) sedation: purposeful response to verbal/light tactile stimulus; airway and ventilation maintained; CV function unaffected", cites: ["ASA 2019"] },
+        { text: "Minimum monitoring (AAGBI 2021): SpO₂, ETCO₂ (always for moderate/deep), NIBP, ECG, level-of-consciousness scoring (MOAA/S, Ramsay or OAA/S)", cites: ["BJA Educ 2021"] },
+        { text: "TCI sedation (propofol Marsh/Schnider, remifentanil Minto) gives stable plasma/effect-site concentrations and rapid titration vs intermittent boluses", cites: ["DAS ATI 2020"] },
+        { text: "Synergy: propofol + midazolam + opioid causes profound respiratory depression — use the lowest effective single agent or carefully titrated pairs", cites: ["BSG 2023"] },
+        { text: "Ketamine sedation preserves airway tone, ventilation and CV stability — first-line in paediatrics, trauma, low-resource and prehospital settings", cites: ["AAGBI/RCoA 2021"] },
+        { text: "Dexmedetomidine produces 'arousable' sedation without respiratory depression — useful for AFOI, MRI, paediatric procedures and ICU bridging", cites: ["AoMRC 2013"] },
       ]}
       coreConcepts={
         <>

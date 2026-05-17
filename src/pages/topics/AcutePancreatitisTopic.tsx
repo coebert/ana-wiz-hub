@@ -40,6 +40,7 @@ const workedExamples: WorkedExample[] = [
         ARDS develops.
       </>
     ),
+   cites: ["IAP/APA 2013"],
   },
   {
     title: "WATERFALL fluid prescription",
@@ -63,6 +64,7 @@ const workedExamples: WorkedExample[] = [
         once euvolaemic — do not chase MAP with more fluid.
       </>
     ),
+   cites: ["Atlanta 2012"],
   },
   {
     title: "Suspected infected necrosis at day 12",
@@ -89,6 +91,7 @@ const workedExamples: WorkedExample[] = [
         allow demarcation.
       </>
     ),
+   cites: ["WATERFALL 2022"],
   },
 ];
 

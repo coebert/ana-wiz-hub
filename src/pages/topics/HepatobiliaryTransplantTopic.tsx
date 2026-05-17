@@ -165,7 +165,8 @@ const HepatobiliaryTransplantTopic = () => {
             </div>
           ),
           answer: "Calcium → insulin/dextrose + bicarbonate → vasopressor support; treat fibrinolysis with TXA if needed.",
-        },
+         cites: ["BJA Educ 2010 LT"],
+  },
       ]}
       keyPoints={[
         { text: "Low CVP technique (<5 cmH₂O) reduces blood loss during liver resection", cites: ["BJA Educ 2010 LT"] },

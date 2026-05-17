@@ -54,6 +54,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Declare CICO at the failure of Plan C (or earlier if oxygenation is critical), and perform scalpel-bougie-tube cricothyroidotomy before SpO₂ < 80 %. Do not delay for further attempts at SAD or facemask ventilation.",
+   cites: ["DAS 2015"],
   },
   {
     title: "Awake fibreoptic intubation in a known difficult airway",
@@ -82,6 +83,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Block V₁/V₂ (nasal), IX (oropharynx), internal SLN (vallecula), and recurrent laryngeal (trachea) using stepwise topicalisation — co-phenylcaine, 4 % lidocaine spray, atomised vallecular lidocaine, and spray-as-you-go below the cords. Sedate lightly with remifentanil/dexmedetomidine and pre-treat with glycopyrrolate.",
+   cites: ["NAP4 2011"],
   },
 ];
 

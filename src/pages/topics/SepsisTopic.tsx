@@ -45,6 +45,7 @@ const workedExamples: WorkedExample[] = [
         source control (CT KUB ± nephrostomy).
       </>
     ),
+   cites: ["Sepsis-3 2016"],
   },
   {
     title: "Fluid resuscitation calculation",

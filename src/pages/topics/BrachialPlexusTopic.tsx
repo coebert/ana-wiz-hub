@@ -50,6 +50,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Avoid a standard interscalene block in this severe COPD patient. Use a combined suprascapular + axillary nerve block (phrenic-sparing) for analgesia, with GA and multimodal cover. Document the discussion of risks (phrenic palsy, Horner's, recurrent laryngeal nerve).",
+   cites: ["BJA Educ 2014"],
   },
   {
     title: "Patchy axillary block — which nerve is missed?",
@@ -82,6 +83,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "The musculocutaneous nerve has been missed because it leaves the lateral cord proximal to the axillary sheath. Rescue with an ultrasound-guided 5–8 mL injection between coracobrachialis and biceps. Add an intercostobrachial block separately if a tourniquet is in use.",
+   cites: ["Ellis & Feldman Ch.8"],
   },
 ];
 
