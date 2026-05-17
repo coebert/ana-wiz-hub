@@ -394,6 +394,18 @@ const TIVATopic = () => {
           <li><strong>PRIS</strong>: high-dose (&gt;4 mg/kg/hr) prolonged (&gt;48 h) propofol → metabolic acidosis, rhabdomyolysis, cardiac failure. Stop infusion immediately if suspected.</li>
         </ul>
       </SynthesisBlock>
+
+      <ExamPitfallsCallout
+        accent="clinical"
+        pitfalls={[
+          "Marsh (weight only) overestimates Ce in elderly; Schnider adds age/LBM; Eleveld covers neonates → obese adults in one model.",
+          "Effect-site (Ce) targeting accounts for plasma–brain hysteresis — set Ce above plasma for faster induction.",
+          "AAGBI: use processed EEG whenever TIVA is combined with NMB to reduce awareness (NAP5 highest-risk group).",
+          "Keep IV line and pump visible; use anti-syphon/anti-reflux valves; check cannula site frequently — tissued lines are the classic cause of awareness.",
+          "Pair propofol with remifentanil for fast, titratable anaesthesia; give transition analgesia before stopping the remi.",
+          "PRIS: stop propofol immediately if metabolic acidosis, rising lactate, rhabdomyolysis or new cardiac failure during prolonged high-dose infusion.",
+        ]}
+      />
       </>}
     />
   );
