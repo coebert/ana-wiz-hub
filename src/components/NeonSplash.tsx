@@ -34,6 +34,11 @@ const UNIT_EPSILON = 4; // px — ignore changes smaller than this (anti-jitter)
 const NeonSplash = () => {
   const [mounted, setMounted] = useState(false);
   const [leaving, setLeaving] = useState(false);
+  // `ready` flips on the next frame after mount so the container can
+  // transition from opacity-0 → opacity-100. Without this two-step
+  // commit the splash would pop in instantly because the element is
+  // appended already at its final opacity.
+  const [ready, setReady] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Seed the base unit synchronously on first render using the
