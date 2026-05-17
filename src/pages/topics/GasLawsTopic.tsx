@@ -330,6 +330,9 @@ const GasLawsTopic = () => {
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="Andrews' Isotherms — N₂O on a P–V Diagram">
+            <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <AndrewsIsothermsDiagram />
+            </div>
             <p className="text-foreground/90 leading-relaxed">
               Thomas Andrews' classic 1869 experiments on CO₂ produced the first family of isotherms — curves of
               pressure against volume at constant temperature — that revealed the nature of the critical point. The same
