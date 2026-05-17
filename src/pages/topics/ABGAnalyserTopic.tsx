@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { abgAnalyserQuestions } from "@/data/quizzes";
 import ABGAnalyserDiagram from "@/components/diagrams/ABGAnalyserDiagram";
@@ -45,6 +46,7 @@ const ABGAnalyserTopic = () => {
         keyPoints: ["BJA Educ 2017", "Cross & Plunkett Ch.15-16", "Middleton Ch.18"],
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ABG Analyser Overview</h2>
@@ -439,6 +441,7 @@ const ABGAnalyserTopic = () => {
             ]}
           />
         </section>
+      </ExamSection>
       }
     />
   );

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import {
   anaestheticMachineQuiz,
@@ -168,6 +169,7 @@ const EquipmentMonitoringTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="space-y-12">
 
         {/* ───── Orientation ───── */}
@@ -746,6 +748,7 @@ const EquipmentMonitoringTopic = () => {
             ]}
           />
       </div>
+      </ExamSection>
       }
     />
   );

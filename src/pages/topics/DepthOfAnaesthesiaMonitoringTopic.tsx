@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ExamSection } from "@/components/ExamSection";
 import EEGTraceDiagram from "@/components/diagrams/EEGTraceDiagram";
 import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
 import { eegTraceContent, dsaSpectrogramContent, bisTrendContent } from "@/components/diagrams/ecgExpandedContent";
@@ -121,7 +122,7 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
       {/* Introduction */}
       <section className="space-y-6 mb-10">
         <div>
@@ -391,7 +392,7 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
               "Always interpret in clinical context — never titrate purely to a number.",
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );

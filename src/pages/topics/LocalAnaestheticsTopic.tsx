@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { PKaDiagram } from "@/components/diagrams/PKaDiagram";
 import { HendersonHasselbalchDiagram } from "@/components/diagrams/HendersonHasselbalchDiagram";
 import IonTrappingDiagram from "@/components/diagrams/IonTrappingDiagram";
@@ -47,6 +48,7 @@ const LocalAnaestheticsTopic = () => {
         keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.8", "AAGBI 2010"],
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
@@ -334,6 +336,7 @@ const LocalAnaestheticsTopic = () => {
             ]}
           />
         </div>
+      </ExamSection>
       }
     />
   );

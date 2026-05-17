@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { cardiothoracicQuestions } from "@/data/quizzes";
 import CPBCircuitDiagram from "@/components/diagrams/CPBCircuitDiagram";
@@ -78,7 +79,7 @@ const CardiothoracicTopic = () => {
         { text: "Aortic stenosis: maintain SVR and sinus rhythm, avoid tachycardia and hypotension", cites: ["BJA Educ 2018"] },
       ]}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
           <TopicTableOfContents items={tocItems} />
           <p className="text-muted-foreground leading-relaxed mb-6">
             Cardiothoracic anaesthesia is built around two distinct domains. <strong>Cardiac surgery</strong> centres on cardiopulmonary bypass — its circuit, its physiological consequences, and the specific demands of valve, coronary, and aortic-arch procedures. <strong>Thoracic surgery</strong> centres on lung isolation and the management of one-lung ventilation. The topic below follows that order: cardiac fundamentals first, then thoracic.
@@ -727,7 +728,7 @@ const CardiothoracicTopic = () => {
               "TOE basics: rule out tamponade, regional wall motion abnormality, valve dysfunction, retained air after cardiotomy.",
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );

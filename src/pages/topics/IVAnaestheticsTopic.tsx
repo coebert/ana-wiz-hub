@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { ivAnaestheticsQuiz } from "@/data/quizzes";
 import IVAnaestheticStructures from "@/components/diagrams/IVAnaestheticStructures";
@@ -52,6 +53,7 @@ const IVAnaestheticsTopic = () => {
         keyPoints: ["BJA Educ 2014", "Peck & Hill Ch.5", "Miller Ch.26"],
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
@@ -381,6 +383,7 @@ const IVAnaestheticsTopic = () => {
             ]}
           />
       </div>
+      </ExamSection>
       }
     />
   );

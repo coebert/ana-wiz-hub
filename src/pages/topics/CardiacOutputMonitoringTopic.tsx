@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { Exam } from "@/data/curriculum";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { CardiacOutputMonitorDiagram } from "@/components/diagrams/CardiacOutputMonitorDiagram";
@@ -375,7 +376,7 @@ const CardiacOutputMonitoringTopic = () => {
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
-      coreConcepts={<CoreConcepts />}
+      coreConcepts={<ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24"><CoreConcepts /></ExamSection>}
       diagrams={<Diagrams />}
       workedExamples={workedExamples}
       keyPoints={keyPoints}

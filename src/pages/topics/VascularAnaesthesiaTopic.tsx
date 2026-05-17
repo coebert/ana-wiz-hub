@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { vascularAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
@@ -37,7 +38,7 @@ const VascularAnaesthesiaTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Abdominal Aortic Aneurysm (AAA)</h2>
@@ -301,7 +302,7 @@ const VascularAnaesthesiaTopic = () => {
               "Spinal cord ischaemia after thoracic aortic surgery: CSF drainage, MAP >85 mmHg, intercostal artery reimplantation.",
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );

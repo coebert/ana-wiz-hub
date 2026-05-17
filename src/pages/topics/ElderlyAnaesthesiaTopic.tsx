@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { elderlyAnaesthesiaQuestions } from "@/data/quizzes";
 import FrailtyAssessmentDiagram from "@/components/diagrams/FrailtyAssessmentDiagram";
 import { Exam } from "@/data/curriculum";
@@ -36,6 +37,7 @@ const ElderlyAnaesthesiaTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="space-y-8">
           <p className="text-muted-foreground leading-relaxed">
             Elderly patients now form the majority of the surgical workload in many UK hospitals. Reduced physiological reserve, altered pharmacokinetics, frailty, and a high background prevalence of comorbidity all combine to elevate perioperative risk. This topic outlines the age-related changes that matter at induction, maintenance, and emergence, and the practical strategies — including frailty assessment and delirium prevention — that improve outcomes.
@@ -188,6 +190,7 @@ const ElderlyAnaesthesiaTopic = () => {
             ]}
           />
         </div>
+      </ExamSection>
       }
     />
   );

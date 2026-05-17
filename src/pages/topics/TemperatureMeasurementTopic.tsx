@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { temperatureMeasurementQuiz } from "@/data/quizzes";
 import TemperatureMeasurementDiagram from "@/components/diagrams/TemperatureMeasurementDiagram";
 import { Exam } from "@/data/curriculum";
@@ -47,7 +48,7 @@ const TemperatureMeasurementTopic = () => {
         keyPoints: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11"],
       }}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
 
         <div>
           <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
@@ -171,7 +172,7 @@ const TemperatureMeasurementTopic = () => {
               "Core-peripheral gradient >2 °C suggests significant vasoconstriction; redistribution dominates the first hour of GA.",
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );

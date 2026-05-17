@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { orthopaedicAnaesthesiaQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/DiagramSection";
 import { BlockAnalgesiaProfileDiagram } from "@/components/diagrams/BlockAnalgesiaProfileDiagram";
@@ -38,6 +39,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hip Fracture (#NOF)</h2>
@@ -299,6 +301,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
             ]}
           />
       </section>
+      </ExamSection>
       }
     />
   );

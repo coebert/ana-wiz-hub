@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { pulseOximetryQuiz } from "@/data/quizzes";
 import { AbsorptionSpectraDiagram } from "@/components/diagrams/AbsorptionSpectraDiagram";
 import { CapnographyDiagram } from "@/components/diagrams/CapnographyDiagram";
@@ -42,6 +43,7 @@ const PulseOximetryTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
@@ -256,6 +258,7 @@ const PulseOximetryTopic = () => {
             ]}
           />
         </div>
+      </ExamSection>
       }
     />
   );

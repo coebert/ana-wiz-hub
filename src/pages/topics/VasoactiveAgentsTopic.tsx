@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { vasoactiveAgentsQuiz } from "@/data/quizzes";
 import VasoactiveReceptorDiagram from "@/components/diagrams/VasoactiveReceptorDiagram";
 import VasoactiveStructures from "@/components/diagrams/VasoactiveStructures";
@@ -63,7 +64,7 @@ const VasoactiveAgentsTopic = () => {
         keyPoints: ["BJA Educ 2019", "Peck & Hill Ch.11", "BJA Educ 2004"],
       }}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <StickyTOC items={tocItems} />
           <div className="prose prose-slate max-w-none">
         {/* ================= 1. ORIENTATION ================= */}
@@ -689,7 +690,7 @@ const VasoactiveAgentsTopic = () => {
               "Vasopressin acts on V1 receptors — useful in catecholamine-resistant shock; risk of digital and mesenteric ischaemia.",
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { headNeckAnatomyQuestions } from "@/data/quizzes";
 import NeckTrianglesDiagram from "@/components/diagrams/NeckTrianglesDiagram";
 import CervicalPlexusDiagram from "@/components/diagrams/CervicalPlexusDiagram";
@@ -48,6 +49,7 @@ const HeadNeckAnatomyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-10 mb-10 [&>div]:scroll-mt-24">
           <CorPictumFolio {...headNeckFolio} suppressOverlayLabels />
           <p className="text-muted-foreground leading-relaxed mb-2 text-sm italic">
@@ -308,6 +310,7 @@ const HeadNeckAnatomyTopic = () => {
             <BronchoscopicViewDiagram />
           </div>
         </section>
+      </ExamSection>
       }
     />
   );

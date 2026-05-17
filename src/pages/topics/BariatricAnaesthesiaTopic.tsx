@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { bariatricAnaesthesiaQuestions } from "@/data/quizzes";
 import BariatricProceduresDiagram from "@/components/diagrams/BariatricProceduresDiagram";
 import StopBangCalculator from "@/components/diagrams/StopBangCalculator";
@@ -35,6 +36,7 @@ const BariatricAnaesthesiaTopic = () => {
         keyPoints: { exams: [Exam.FINAL] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Obesity: Definitions & Epidemiology</h2>
@@ -258,6 +260,7 @@ const BariatricAnaesthesiaTopic = () => {
             ]}
           />
       </section>
+      </ExamSection>
       }
     />
   );

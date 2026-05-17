@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { endocrineDiseaseQuestions } from "@/data/quizzes";
@@ -59,7 +60,7 @@ const EndocrineDiseaseTopic = () => {
         keyPoints: ["BJA Educ DM 2015", "JBDS-IP 2021", "BJA Educ Thyroid 2014", "BJA Educ Phaeo 2017", "Addison's Guidelines"],
       }}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <p className="text-muted-foreground leading-relaxed">
           Endocrine disease alters perioperative physiology in ways that demand specific planning: glucose targets and insulin handling in diabetes, the catastrophic risk of unrecognised thyroid storm or phaeochromocytoma, and the need for steroid supplementation in patients with HPA-axis suppression. This topic covers the high-yield endocrine conditions encountered in adult anaesthetic practice and the principles that prevent decompensation.
         </p>
@@ -210,7 +211,7 @@ const EndocrineDiseaseTopic = () => {
               'Carcinoid crisis: treat with IV octreotide 50–100 µg bolus; avoid histamine-releasing drugs (morphine, atracurium), and catecholamines (worsen mediator release).',
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );

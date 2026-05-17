@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { thoracicAnatomyQuestions } from "@/data/quizzes";
 import IntercostalAnatomyDiagram from "@/components/diagrams/IntercostalAnatomyDiagram";
 import ParavertebralSpaceDiagram from "@/components/diagrams/ParavertebralSpaceDiagram";
@@ -40,6 +41,7 @@ const ThoracicAnatomyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       coreConcepts={
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
         <CorPictumFolio {...thoracicFolio} suppressOverlayLabels />
         <div id="thoracic-wall" className="scroll-mt-24">
@@ -167,6 +169,7 @@ const ThoracicAnatomyTopic = () => {
           </div>
         </div>
         </section>
+      </ExamSection>
       }
     />
   );

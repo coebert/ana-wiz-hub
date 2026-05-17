@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { cardiovascularDiseaseQuestions } from "@/data/quizzes";
@@ -47,7 +48,7 @@ const CardiovascularDiseaseTopic = () => {
         keyPoints: ["BJA Educ 2017", "ESC/ESA 2022", "BJA Educ Valvular 2015", "AHA/ACC 2014"],
       }}
       coreConcepts={
-        <>
+        <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <p className="text-muted-foreground leading-relaxed">
           Cardiovascular disease is the leading driver of perioperative morbidity and mortality. This topic covers the conditions most likely to influence anaesthetic planning — ischaemic heart disease, valvular pathology, heart failure, arrhythmias and devices, pulmonary hypertension, and adult congenital heart disease — with a focus on risk stratification, optimisation, and intra-operative goals.
         </p>
@@ -225,7 +226,7 @@ const CardiovascularDiseaseTopic = () => {
               'Eisenmenger / right-to-left shunt: meticulous IV de-airing, maintain SVR, avoid PVR rises — extremely high perioperative mortality.',
             ]}
           />
-        </>
+        </ExamSection>
       }
     />
   );
