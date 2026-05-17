@@ -35,7 +35,18 @@ const NeonSplash = () => {
   const [mounted, setMounted] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [unit, setUnit] = useState(0); // px; base sizing unit (clamped)
+
+  // Seed the base unit synchronously on first render using the
+  // viewport's short edge. This guarantees the very first paint has
+  // a sensible logo/halo size — no zero-sized flash, and no jump from
+  // a default to the measured value once the ResizeObserver fires.
+  // The ResizeObserver in useLayoutEffect then takes over with the
+  // exact container measurement (and keeps it in sync on resize).
+  const [unit, setUnit] = useState<number>(() => {
+    if (typeof window === "undefined") return MIN_UNIT;
+    const raw = Math.min(window.innerWidth, window.innerHeight);
+    return Math.min(MAX_UNIT, Math.max(MIN_UNIT, raw));
+  });
 
   useEffect(() => {
     if (typeof window === "undefined") return;
