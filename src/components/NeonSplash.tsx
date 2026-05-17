@@ -17,9 +17,9 @@ const NeonSplash = () => {
     setMounted(true);
     sessionStorage.setItem("neon-splash-shown", "1");
 
-    // Total: ~2.6s neon sequence, then fade out 600ms
-    const leaveTimer = setTimeout(() => setLeaving(true), 2600);
-    const removeTimer = setTimeout(() => setMounted(false), 3300);
+    // Total: ~3.2s neon sequence, then fade out 700ms
+    const leaveTimer = setTimeout(() => setLeaving(true), 3200);
+    const removeTimer = setTimeout(() => setMounted(false), 3900);
 
     return () => {
       clearTimeout(leaveTimer);
@@ -35,21 +35,21 @@ const NeonSplash = () => {
       aria-hidden="true"
       onClick={() => {
         setLeaving(true);
-        setTimeout(() => setMounted(false), 600);
+        setTimeout(() => setMounted(false), 700);
       }}
       className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#05060a] cursor-pointer transition-opacity duration-700 ${
         leaving ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
-      {/* Ambient glow halo */}
-      <div className="absolute h-[60vmin] w-[60vmin] rounded-full bg-primary/20 blur-3xl animate-neon-halo" />
+      {/* Ambient glow halo — sized in vmin so it scales smoothly */}
+      <div className="absolute h-[55vmin] w-[55vmin] max-h-[520px] max-w-[520px] rounded-full bg-primary/25 blur-3xl animate-neon-halo" />
 
       <img
         src={brainLogo}
         alt=""
         width={320}
         height={320}
-        className="relative h-56 w-56 md:h-80 md:w-80 invert brightness-200 animate-neon-flicker [filter:invert(1)_brightness(2)]"
+        className="relative h-[42vmin] w-[42vmin] max-h-[340px] max-w-[340px] min-h-[180px] min-w-[180px] animate-neon-flicker"
       />
     </div>
   );
