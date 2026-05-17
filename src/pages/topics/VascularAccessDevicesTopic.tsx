@@ -87,6 +87,20 @@ const VascularAccessDevicesTopic = () => {
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <DiagramSection title="Devices to scale — length and tip position" intro={<p>Catheters compared on a single length axis. Tip position (forearm vein → axillary vein → SVC) determines whether the device is peripheral, midline or central, and therefore which drugs and what flow rates are safe.</p>}>
+              <VascularAccessDevicesDiagram />
+            </DiagramSection>
+            <DiagramSection title="Lumen geometry & flow" intro={<p>End-on cross-sections drawn to scale. Flow ∝ r⁴ / length (Hagen–Poiseuille).</p>}>
+              <VascularAccessCrossSectionDiagram />
+            </DiagramSection>
+            <DiagramSection title="Device archetypes — labelled anatomy & dwell times" intro={<p>Labelled schematics covering peripheral cannula, PICC, non-tunnelled CVC, tunnelled line and implanted port.</p>}>
+              <VascularAccessTypesDiagram />
+            </DiagramSection>
+            <DiagramSection title="Dwell-time approach — clinically indicated vs scheduled" intro={<p>Recommended dwell-time strategy across peripheral, arterial, central, PICC and dialysis access.</p>}>
+              <DwellTimeInfographic />
+            </DiagramSection>
+          </ExamSection>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               How to classify vascular access
             </h2>

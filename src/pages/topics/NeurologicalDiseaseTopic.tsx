@@ -87,15 +87,12 @@ const NeurologicalDiseaseTopic = () => {
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={neurologicalDiseaseQuestions}
-      diagrams={<MGNMBASensitivityDiagram />}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["BJA Educ MG 2018", "BJA Educ PD 2014", "BJA Educ Epilepsy 2015"],
-        diagrams: ["BJA Educ MG 2018", "AAGBI Neuromuscular"],
         keyPoints: ["BJA Educ MG 2018", "BJA Educ PD 2014", "BJA Educ Epilepsy 2015", "AAGBI Neuromuscular", "Autonomic Dysreflexia"],
       }}
       coreConcepts={
