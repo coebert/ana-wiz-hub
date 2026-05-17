@@ -125,48 +125,14 @@ const OpioidsTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2016", "Peck & Hill Ch.6"],
-        diagrams: ["Peck & Hill Ch.6", "Miller Ch.28"],
         workedExamples: ["BJA Educ 2016", "Peck & Hill Ch.6", "Miller Ch.28"],
         keyPoints: ["BJA Educ 2016", "Peck & Hill Ch.6", "Miller Ch.28"],
       }}
-      diagrams={
-        <>
-          <OpioidSignallingCascadeAnimation />
-          <div className="bg-card rounded-xl border border-border p-6">
-            <OpioidReceptorDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <OpioidReceptorSignalingDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <OpioidStructures />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <CSHTDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <RemifentanilPKDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <BuprenorphinePharmacologyDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <MethadonePharmacologyDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <OIHToleranceDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <NaloxoneDiagram />
-          </div>
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PR_BK_05"]}>
