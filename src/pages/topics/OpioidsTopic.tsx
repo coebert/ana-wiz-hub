@@ -190,6 +190,12 @@ const OpioidsTopic = () => {
               <strong>Signal transduction</strong>: receptor activation → Gi protein → ↓cAMP, opens K⁺ channels (hyperpolarisation),
               closes voltage-gated Ca²⁺ channels → inhibits neurotransmitter release and neuronal firing.
             </p>
+            <div className="mt-4 space-y-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6"><OpioidStructures /></div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6"><OpioidReceptorDiagram /></div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6"><OpioidReceptorSignalingDiagram /></div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6"><OpioidSignallingCascadeAnimation /></div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
