@@ -212,6 +212,9 @@ const StarlingForcesTopic = () => {
               <li>Damage releases syndecan-1 and heparan sulphate into plasma (measurable biomarkers)</li>
               <li>Glycocalyx shedding → ↑ permeability → ↑ interstitial protein → oedema (explains why crystalloid boluses in sepsis are poorly retained)</li>
             </ul>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <GlycocalyxDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
