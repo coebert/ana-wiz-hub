@@ -167,31 +167,14 @@ const IcuEndocrineEmergenciesTopic = () => {
       ]}
       sectionSources={{
         objectives: ["JBDS-IP DKA 2023", "JBDS-IP HHS 2022", "Endocrine Society 2016"],
-        diagrams: ["JBDS-IP DKA 2023", "Burch-Wartofsky 1993", "Endocrine Society 2016"],
         workedExamples: ["JBDS-IP DKA 2023", "Burch-Wartofsky 1993", "Bornstein 2016", "ATA Thyroid Storm", "ES Adrenal Crisis 2016"],
         keyPoints: ["JBDS-IP", "BJA Educ", "Endocrine Society", "JBDS-IP DKA 2023", "JBDS-IP HHS 2022", "BJA Educ Endo 2014", "ATA Thyroid Storm", "ES Adrenal Crisis 2016"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
-        diagrams: { exams: [Exam.FFICM, Exam.EDIC] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
-      diagrams={
-        <>
-          <EndocrineSymptomTriage />
-          <DKAAnimation />
-          <DKAvsHHSDiagram />
-          <ThyroidStormAnimation />
-          <AdrenalCrisisAnimation />
-          <EndocrineEmergencyAlgorithms />
-          <EndocrineEmergencyDrugs />
-          <GuidelineSources
-            title="Guideline sources — diagrams & algorithms"
-            sources={[...HYPERGLYCAEMIC_SOURCES, ...THYROID_SOURCES, ...ADRENAL_PITUITARY_SOURCES]}
-          />
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
