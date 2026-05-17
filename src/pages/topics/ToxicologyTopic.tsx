@@ -180,6 +180,9 @@ const ToxicologyTopic = () => {
               <li><strong>Enhanced elimination</strong>: urinary alkalinisation (salicylates, methotrexate), haemodialysis (methanol, ethylene glycol, salicylates, lithium), haemoperfusion (rarely used)</li>
               <li><strong>Toxidromes</strong>: see the comparator below — pattern recognition narrows the differential before a tox screen returns</li>
             </ul>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <ToxidromeComparatorDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
