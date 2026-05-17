@@ -125,48 +125,14 @@ const OpioidsTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2016", "Peck & Hill Ch.6"],
-        diagrams: ["Peck & Hill Ch.6", "Miller Ch.28"],
         workedExamples: ["BJA Educ 2016", "Peck & Hill Ch.6", "Miller Ch.28"],
         keyPoints: ["BJA Educ 2016", "Peck & Hill Ch.6", "Miller Ch.28"],
       }}
-      diagrams={
-        <>
-          <OpioidSignallingCascadeAnimation />
-          <div className="bg-card rounded-xl border border-border p-6">
-            <OpioidReceptorDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <OpioidReceptorSignalingDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <OpioidStructures />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <CSHTDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <RemifentanilPKDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <BuprenorphinePharmacologyDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <MethadonePharmacologyDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <OIHToleranceDiagram />
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6">
-            <NaloxoneDiagram />
-          </div>
-        </>
-      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PR_BK_05"]}>
@@ -190,6 +156,12 @@ const OpioidsTopic = () => {
               <strong>Signal transduction</strong>: receptor activation → Gi protein → ↓cAMP, opens K⁺ channels (hyperpolarisation),
               closes voltage-gated Ca²⁺ channels → inhibits neurotransmitter release and neuronal firing.
             </p>
+            <div className="mt-4 space-y-4">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6"><OpioidStructures /></div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6"><OpioidReceptorDiagram /></div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6"><OpioidReceptorSignalingDiagram /></div>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6"><OpioidSignallingCascadeAnimation /></div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -223,6 +195,7 @@ const OpioidsTopic = () => {
               Must be given by infusion (0.05–0.5 µg/kg/min). Rapid offset mandates transition analgesia. May cause OIH after
               prolonged high-dose use. Dose reduction in elderly; no adjustment for renal/hepatic impairment. Bradycardia risk.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><RemifentanilPKDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -233,8 +206,8 @@ const OpioidsTopic = () => {
               lipid solubility. Smaller V<sub>d</sub>. Shorter duration. <strong>Sufentanil</strong>: 5–10× fentanyl potency,
               highest µ-receptor affinity. <strong>Codeine</strong>: prodrug, CYP2D6 → morphine (~10 % dose). Pharmacogenomic
               variation. <strong>Tramadol</strong>: weak µ + serotonin/noradrenaline reuptake inhibition. Serotonin syndrome
-              risk with SSRIs. Lowers seizure threshold.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><MethadonePharmacologyDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -245,6 +218,7 @@ const OpioidsTopic = () => {
               Unlike elimination half-life, CSHT accounts for redistribution between compartments and is therefore <strong>dependent
               on the "context" of infusion duration</strong> — making it far more clinically useful for predicting recovery.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><CSHTDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -257,6 +231,7 @@ const OpioidsTopic = () => {
               respiratory depression while preserving κ-analgesia. <strong>Pentazocine</strong> — κ agonist with dysphoric and
               cardiovascular-stimulating effects; rarely used. All can precipitate withdrawal in opioid-dependent patients.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><BuprenorphinePharmacologyDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -270,6 +245,7 @@ const OpioidsTopic = () => {
               dynorphin, TLR4-mediated neuroinflammation. Management: opioid dose reduction or rotation, NMDA antagonists
               (ketamine), α₂-agonists, gabapentinoids, magnesium, multimodal analgesia.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><OIHToleranceDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -280,6 +256,7 @@ const OpioidsTopic = () => {
               opioids → risk of re-narcotisation; consider infusion (4–10 µg/kg/h). Pulmonary oedema and cardiovascular collapse
               can follow excessive or rapid administration in opioid-tolerant patients.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><NaloxoneDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
 

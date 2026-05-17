@@ -68,12 +68,10 @@ const MuscleRelaxantsTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
-        diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
         keyPoints: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2015", "Peck & Hill Ch.7", "Fourth National Audit Project"],
-        diagrams: ["BJA Educ 2015", "Peck & Hill Ch.7"],
         keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.7", "Fourth National Audit Project"],
         workedExamples: ["Peck & Hill Ch.10", "BJA Educ 2019"],
       }}

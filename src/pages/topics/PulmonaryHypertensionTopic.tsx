@@ -101,15 +101,8 @@ const PulmonaryHypertensionTopic = () => {
       topicId="pulmonary-hypertension"
       topicTitle="Pulmonary Hypertension Management"
       quizQuestions={pulmonaryHypertensionQuestions}
-      diagrams={
-        <div className="space-y-4">
-          <PHPathophysiologyDiagram />
-          <RVFailureSpiralDiagram />
-        </div>
-      }
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FRCA Final CV", "FFICM 4.5", "EDIC 3"] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
@@ -181,6 +174,9 @@ const PulmonaryHypertensionTopic = () => {
           >
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pathophysiology — From Endothelial Injury to RV Failure</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed mt-2">
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <PHPathophysiologyDiagram />
+              </div>
               <div className="bg-card border border-border rounded-lg p-4">
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>The thin-walled RV is designed for a low-impedance circulation; it tolerates volume but not pressure overload</li>
@@ -190,7 +186,9 @@ const PulmonaryHypertensionTopic = () => {
                   <li>The result is a "spiral of death": ↑PVR → RV failure → ↓LV filling → ↓MAP → ↓RV coronary perfusion → worsening RV failure</li>
                 </ul>
               </div>
-              <p className="text-xs italic">Animated cascades for endothelial dysfunction → remodelling and the RV death spiral are rendered in the Diagrams &amp; Visualisations block above.</p>
+              <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+                <RVFailureSpiralDiagram />
+              </div>
             </div>
           </ExamSection>
 

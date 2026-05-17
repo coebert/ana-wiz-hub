@@ -100,16 +100,12 @@ const NSAIDsParacetamolTopic = () => {
       quizQuestions={nsaidsParacetamolQuestions}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Pharmacology", "RCoA Final — Pain Medicine"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Pharmacology"] },
+        
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: [
-          "Peck & Hill Ch.15",
-          "BJA Educ 2018",
-        ],
-        diagrams: [
           "Peck & Hill Ch.15",
           "BJA Educ 2018",
         ],
@@ -157,6 +153,9 @@ const NSAIDsParacetamolTopic = () => {
                 </tbody>
               </table>
             </div>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <NSAIDMechanismDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -169,6 +168,9 @@ const NSAIDsParacetamolTopic = () => {
               <li><strong>Respiratory</strong>: aspirin-exacerbated respiratory disease (AERD) — COX inhibition shunts arachidonic acid to lipoxygenase pathway → ↑ leukotrienes → bronchospasm</li>
               <li><strong>Platelet</strong>: ↓ TXA₂ → ↓ aggregation. Aspirin effect lasts platelet lifespan (7-10 days); others reverse when drug clears</li>
             </ul>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <AAShuntAnimation />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -193,39 +195,6 @@ const NSAIDsParacetamolTopic = () => {
               "Paracetamol toxicity: NAPQI overwhelms glutathione → hepatic necrosis; treat with N-acetylcysteine guided by nomogram (140 mg/kg load).",
             ]}
           />
-        </>
-      }
-      diagrams={
-        <>
-          <DiagramSection
-            title="NSAID mechanism — therapeutic &amp; adverse effects"
-            intro={
-              <p>
-                Trace arachidonic acid through COX-1, COX-2 and the lipoxygenase
-                shunt. Switch between non-selective NSAID, aspirin and a coxib to
-                see which prostanoids are blocked and which therapeutic and
-                adverse effects follow. Tap any effect chip for the underlying
-                mediator.
-              </p>
-            }
-          >
-            <NSAIDMechanismDiagram />
-          </DiagramSection>
-
-          <DiagramSection
-            title="Arachidonic-acid shunt into 5-LOX (animated)"
-            intro={
-              <p>
-                Step through how COX inhibition diverts arachidonic acid into
-                the 5-lipoxygenase pathway, producing cysteinyl leukotrienes
-                (LTC₄/D₄/E₄), CysLT₁ activation and bronchoconstriction — the
-                mechanism of aspirin-exacerbated respiratory disease (AERD).
-                Use the chips or timeline to jump between phases.
-              </p>
-            }
-          >
-            <AAShuntAnimation />
-          </DiagramSection>
         </>
       }
     />

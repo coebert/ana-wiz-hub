@@ -69,12 +69,10 @@ const ObstetricAnaesthesiaTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_07"] },
-        diagrams: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_07"] },
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_07"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2019", "OAA/DAS 2015", "MBRRACE-UK"],
-        diagrams: ["BJA Educ 2019", "OAA/DAS 2015"],
         keyPoints: ["BJA Educ 2019", "OAA/DAS 2015", "MBRRACE-UK"],
       }}
       coreConcepts={

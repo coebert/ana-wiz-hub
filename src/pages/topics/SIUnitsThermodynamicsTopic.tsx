@@ -50,12 +50,10 @@ const SIUnitsThermodynamicsTopic = () => {
       topicId="si-units-thermodynamics"
       topicTitle="SI Units & Thermodynamics"
       objectives={objectives}
-      diagrams={<SIUnitsThermodynamicsDiagram />}
       workedExamples={workedExamples}
       quizQuestions={siUnitsThermodynamicsQuiz}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Physics"] },
-        diagrams: { exams: [Exam.PRIMARY] },
         workedExamples: { exams: [Exam.PRIMARY] },
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
@@ -92,6 +90,9 @@ const SIUnitsThermodynamicsTopic = () => {
               physiology to anaesthetic vaporiser function. Thermodynamics governs heat transfer, phase changes, and energy
               conservation, with immediate relevance to perioperative temperature management, vaporiser physics, and cryotherapy.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <SIUnitsThermodynamicsDiagram />
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 

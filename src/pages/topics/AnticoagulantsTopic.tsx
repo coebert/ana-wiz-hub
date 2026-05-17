@@ -89,12 +89,10 @@ const AnticoagulantsTopic = () => {
       workedExamples={workedExamples}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
-        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2015", "NICE NG89", "BSH 2011"],
-        diagrams: ["BJA Educ 2015", "NICE NG89"],
         keyPoints: ["BJA Educ 2015", "NICE NG89", "BSH 2011"],
         workedExamples: ["AAGBI 2016", "BJA Educ 2017"],
       }}
