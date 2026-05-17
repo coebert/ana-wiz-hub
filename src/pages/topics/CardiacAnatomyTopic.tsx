@@ -12,7 +12,6 @@ import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDia
 import AnteriorCardiacPlate from "@/components/diagrams/anatomy/AnteriorCardiacPlate";
 import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
 import { DiagramTabs } from "@/components/diagrams/DiagramTabs";
-import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
 
 const CardiacAnatomyTopic = () => {
