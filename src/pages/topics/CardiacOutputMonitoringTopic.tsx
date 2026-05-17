@@ -11,6 +11,7 @@ import OesophagealDopplerDiagram from "@/components/diagrams/OesophagealDopplerD
 import ThermodilutionDiagram from "@/components/diagrams/ThermodilutionDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import COPitfallsChecklist from "@/components/diagrams/COPitfallsChecklist";
+import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Describe the Fick principle, Stewart-Hamilton equation, Doppler equation and pulse contour analysis as the four physiological bases of bedside CO measurement.",
