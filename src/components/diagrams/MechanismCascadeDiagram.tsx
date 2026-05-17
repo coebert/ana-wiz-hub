@@ -269,7 +269,11 @@ export const MechanismCascadeDiagram = ({
           </div>
   
           <div
-            className="rounded-lg border p-3 flex flex-col justify-center"
+            id={panelId}
+            role="tabpanel"
+            aria-labelledby={`${tablistId}-tab-${step}`}
+            tabIndex={0}
+            className="rounded-lg border p-3 flex flex-col justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
             style={{
               borderColor: `hsl(var(--${accent}) / 0.35)`,
               backgroundColor: `hsl(var(--${accent}) / 0.06)`,
