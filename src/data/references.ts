@@ -283,6 +283,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2015", citation: "Keeling D et al. Peri-operative management of anticoagulation. BJA Education. 2016;16(9):307-312.", url: "https://doi.org/10.1093/bjaed/mkw003" },
     { label: "NICE NG89", citation: "NICE. Venous thromboembolism in over 16s (NG89). 2018.", url: "https://www.nice.org.uk/guidance/ng89" },
     { label: "BSH 2011", citation: "Baglin TP et al. Guidelines on oral anticoagulation (warfarin): 4th edition. Br J Haematol. 2011;154(3):311-324.", url: "https://doi.org/10.1111/j.1365-2141.2011.08753.x" },
+    { label: "AAGBI 2016", citation: "Association of Anaesthetists & Regional Anaesthesia UK. Regional anaesthesia and patients with abnormalities of coagulation. AAGBI; 2013 (updated 2016). Anaesthesia. 2013;68(9):966-972.", url: "https://doi.org/10.1111/anae.12359" },
   ],
   "antimicrobials-pharm": [
     { label: "Peck & Hill Ch.14", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 14: Antimicrobial Agents." },
