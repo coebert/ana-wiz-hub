@@ -43,9 +43,10 @@ const NeonSplash = () => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem("neon-splash-shown")) return;
+    const force = new URLSearchParams(window.location.search).has("splash");
+    if (!force && sessionStorage.getItem("neon-splash-shown")) return;
     setMounted(true);
-    sessionStorage.setItem("neon-splash-shown", "1");
+    if (!force) sessionStorage.setItem("neon-splash-shown", "1");
 
     let cancelled = false;
     let rafId = 0;
