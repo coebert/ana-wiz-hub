@@ -107,15 +107,16 @@ const NeonSplash = () => {
       {/* Logo box — identical geometry to Landing.tsx hero logo.
           Vertical offset = sticky Header (h-14 = 56px + 1px border-b) +
           hero section padding (py-12 = 48px / md:py-20 = 80px) = 105px / 137px. */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[105px] md:top-[137px] h-52 w-52 md:h-72 md:w-72 flex items-center justify-center">
-        {/* Ambient glow halo. Animation runs during entry; on leave we
-            freeze its transform (scale 1) and fade opacity to 0 so it
-            doesn't drift or pulse during the crossfade. */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-[105px] md:top-[137px] h-52 w-52 md:h-72 md:w-72">
+        {/* Ambient glow halo. Centered behind the brain via inset-based
+            sizing so it doesn't depend on flex centering. */}
         <div
           className={`absolute rounded-full bg-primary/25 blur-3xl ${
             leaving ? "" : "animate-neon-halo"
           }`}
           style={{
+            top: "-17.5%",
+            left: "-17.5%",
             width: "135%",
             height: "135%",
             transition: `opacity ${Math.round(FADE_MS * 0.6)}ms ease-out`,
@@ -125,15 +126,15 @@ const NeonSplash = () => {
           }}
         />
 
-        {/* Logo — same src/size as Landing. On leave, freeze the neon
-            animations and transition `filter` to Landing's exact resting
-            filter so the two images converge pixel-for-pixel. */}
+        {/* Logo — size classes applied directly (mirrors Landing.tsx exactly,
+            no flex wrapper) so the rendered box is guaranteed to be the same
+            208/288 px square as the landing hero logo. */}
         <img
           src={brainLogo}
           alt=""
           width={288}
           height={288}
-          className={`relative h-full w-full ${leaving ? "" : "animate-neon-flicker"}`}
+          className={`relative h-52 w-52 md:h-72 md:w-72 ${leaving ? "" : "animate-neon-flicker"}`}
           style={{
             transition: `filter ${FADE_MS}ms ease-in-out`,
             ...(leaving
