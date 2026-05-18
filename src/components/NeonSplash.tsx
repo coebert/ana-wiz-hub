@@ -105,9 +105,12 @@ const NeonSplash = () => {
       }`}
     >
       {/* Logo box — identical geometry to Landing.tsx hero logo.
-          Vertical offset = sticky Header (h-14 = 56px + 1px border-b) +
-          hero section padding (py-12 = 48px / md:py-20 = 80px) = 105px / 137px. */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[105px] md:top-[137px] h-52 w-52 md:h-72 md:w-72">
+          Vertical offset = sticky Header + hero section padding.
+            • mobile (<sm): h-14 (56) + mobile exam-chip row (27) + border (1) + py-12 (48) = 132
+            • sm..md:     h-14 (56) + border (1) + py-12 (48) = 105
+            • md+:        h-14 (56) + border (1) + py-20 (80) = 137
+          The chip row is `flex sm:hidden` in Header.tsx so it disappears at sm+. */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-[132px] sm:top-[105px] md:top-[137px] h-52 w-52 md:h-72 md:w-72">
         {/* Ambient glow halo. Centered behind the brain via inset-based
             sizing so it doesn't depend on flex centering. */}
         <div
