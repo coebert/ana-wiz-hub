@@ -8,6 +8,7 @@ import FrankStarlingDiagram from "@/components/diagrams/FrankStarlingDiagram";
 import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
 import AorticDicroticNotchDiagram from "@/components/diagrams/AorticDicroticNotchDiagram";
 import DichroticNotchComparisonPanel from "@/components/diagrams/DichroticNotchComparisonPanel";
+import JVPWaveformDiagram from "@/components/diagrams/JVPWaveformDiagram";
 import { cardiacCycleQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
