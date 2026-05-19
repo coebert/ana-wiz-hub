@@ -347,14 +347,14 @@ function PHResponseCurve({ pH, setPH }: { pH: number; setPH: (v: number) => void
   return (
     <div className="space-y-4">
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
-        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.06} />
+        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.12} />
         <line x1={PL} y1={PT + plotH} x2={PL + plotW} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
         <line x1={PL} y1={PT} x2={PL} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
-        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[9px] fill-muted-foreground">Arterial pH</text>
-        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[9px] fill-muted-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>VE (L/min)</text>
+        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[11px] fill-foreground">Arterial pH</text>
+        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[11px] fill-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>VE (L/min)</text>
 
         {[7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6].map(p => (
-          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[7px] fill-muted-foreground">{p.toFixed(1)}</text>
+          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[9px] fill-foreground">{p.toFixed(1)}</text>
         ))}
 
         {/* Curve */}
@@ -366,7 +366,7 @@ function PHResponseCurve({ pH, setPH }: { pH: number; setPH: (v: number) => void
 
         {/* Normal pH zone */}
         <rect x={toX(7.35)} y={PT} width={toX(7.45) - toX(7.35)} height={plotH}
-          fill="hsl(142, 60%, 45%)" opacity={0.06} />
+          fill="hsl(142, 60%, 45%)" opacity={0.1} />
 
         <circle cx={toX(pH)} cy={toY(currentVE)} r="5" fill="hsl(35, 80%, 50%)" stroke="hsl(var(--background))" strokeWidth="1.5" />
       </svg>
