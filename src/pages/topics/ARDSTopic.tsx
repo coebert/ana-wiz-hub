@@ -7,6 +7,7 @@ import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootin
 import ARDSVentModeComparisonDiagram from "@/components/diagrams/ARDSVentModeComparisonDiagram";
 import EOLIAMurrayCalculator from "@/components/diagrams/EOLIAMurrayCalculator";
 import PneumoniaSteroidDecisionTree from "@/components/diagrams/PneumoniaSteroidDecisionTree";
+import ARDSPathophysiologyCascadeDiagram from "@/components/diagrams/ARDSPathophysiologyCascadeDiagram";
 import { DiagramSection } from "@/components/DiagramSection";
 import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
@@ -147,6 +148,25 @@ const ARDSTopic = () => {
       coreConcepts={
     <>
       <section className="space-y-6">
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC2.4"]}>
+          <CollapsibleSubsection title="Pathophysiology of ARDS" defaultOpen>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              ARDS is the clinical expression of <strong>diffuse alveolar damage (DAD)</strong> — a stereotyped inflammatory injury to the alveolar–capillary unit triggered by a wide variety of pulmonary (direct) or extra-pulmonary (indirect) insults. The pathological course is conventionally divided into three overlapping phases: an early <strong>exudative</strong> phase (0–7 days) of barrier breakdown and protein-rich oedema, a <strong>proliferative</strong> phase (7–21 days) of epithelial repair, and, in a minority, a late <strong>fibrotic</strong> phase (&gt;3 weeks) of collagen deposition and persistent functional impairment.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Neutrophil and macrophage activation releases proteases, reactive oxygen species and cytokines (TNF-α, IL-1β, IL-6, IL-8) that disrupt tight junctions and shed the endothelial glycocalyx. Type I pneumocyte injury floods the alveolus with proteinaceous fluid and hyaline membranes; surfactant produced by type II pneumocytes is diluted and inactivated, raising surface tension and collapsing dependent alveoli. The result is the Gattinoni <strong>“baby lung”</strong>: a small aerated compartment surrounded by flooded and atelectatic units.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Gas-exchange failure has two components: <strong>true intrapulmonary shunt</strong> (perfused but unventilated alveoli) producing refractory hypoxaemia, and <strong>increased dead space</strong> from microthrombosis and hypoxic pulmonary vasoconstriction, raising pulmonary vascular resistance and risking acute cor pulmonale. Because oxygenation depends on opening these collapsed units, hypoxaemia responds far better to PEEP and prone positioning than to raising FiO₂ alone.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Mechanical ventilation can itself amplify injury — <strong>volutrauma</strong> (overdistension), <strong>atelectrauma</strong> (cyclic recruitment/derecruitment), <strong>barotrauma</strong> and <strong>biotrauma</strong> (cytokine release with systemic spill-over driving multi-organ failure). This pathophysiology underpins the lung-protective strategy proven to reduce mortality: low tidal volume (6 mL/kg IBW), plateau pressure ≤30 cmH₂O, driving pressure ≤15 cmH₂O, individualised PEEP, and early prone positioning in moderate–severe disease.
+            </p>
+          </CollapsibleSubsection>
+        </ExamSection>
+
+        <ARDSPathophysiologyCascadeDiagram />
+
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC2.4"]}>
           <CollapsibleSubsection title="Berlin Definition (2012)" defaultOpen>
           <p className="text-muted-foreground leading-relaxed mb-3">
