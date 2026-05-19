@@ -311,6 +311,90 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="osmolar-gap" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="The Osmolar Gap">
+            <div className="text-muted-foreground leading-relaxed space-y-4">
+              <div>
+                <p className="font-semibold text-foreground mb-1">Definition</p>
+                <p>
+                  The osmolar gap is the difference between the <strong>measured</strong> serum osmolality (by freezing-point depression osmometer)
+                  and the <strong>calculated</strong> osmolarity from the major osmotically active solutes:
+                </p>
+                <div className="my-2 p-3 rounded-md border border-border bg-secondary/30 font-mono text-sm text-foreground">
+                  Osmolar gap = Osm<sub>measured</sub> − Osm<sub>calculated</sub><br/>
+                  Osm<sub>calculated</sub> = 2 × [Na⁺] + [urea] + [glucose] &nbsp;(all in mmol/L)
+                </div>
+                <p className="text-sm">
+                  Some formulae add ethanol/1.15 (mmol/L) when measured. The factor of 2 for sodium accounts for its accompanying anions (mostly Cl⁻ and HCO₃⁻).
+                  <strong> Normal &lt; 10 mOsm/kg.</strong> A widened gap means unmeasured, osmotically active particles are present in plasma.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-foreground mb-1">Why osmolality vs osmolarity matters</p>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>Osmolality</strong> (mOsm/kg water) is measured directly — temperature-independent, unaffected by lipids/proteins displacing plasma water.</li>
+                  <li><strong>Osmolarity</strong> (mOsm/L solution) is calculated — falsely low in pseudohyponatraemia (hyperlipidaemia, hyperproteinaemia) because the measured Na⁺ is diluted by the non-aqueous fraction.</li>
+                  <li>Always pair the gap with the AG and clinical picture — a raised osmolar gap in isolation is non-specific.</li>
+                </ul>
+              </div>
+
+              <div>
+                <p className="font-semibold text-foreground mb-1">Causes of a raised osmolar gap</p>
+                <div className="grid sm:grid-cols-2 gap-2">
+                  {[
+                    { group: "Toxic alcohols", detail: "Methanol, ethylene glycol, diethylene glycol, isopropanol — the headline diagnoses, all low molecular weight and freely permeable" },
+                    { group: "Therapeutic alcohols/sugars", detail: "Ethanol, mannitol, glycerol, sorbitol, propylene glycol (lorazepam/diazepam/phenobarbital infusion vehicle)" },
+                    { group: "Endogenous", detail: "Ketones (acetone), severe lactic acidosis, uraemia (modest contribution), DKA, alcoholic ketoacidosis" },
+                    { group: "Artefactual", detail: "Pseudohyponatraemia from hyperlipidaemia / hyperproteinaemia (paraprotein, IVIG)" },
+                    { group: "Shock states", detail: "Septic and haemorrhagic shock can give modest gaps (10–20) from unidentified small solutes" },
+                    { group: "Iatrogenic", detail: "Recent IV contrast, large-volume mannitol for cerebral oedema, glycine/sorbitol absorption during TURP" },
+                  ].map((item) => (
+                    <div key={item.group} className="p-2 rounded border border-border">
+                      <p className="text-sm font-semibold text-foreground">{item.group}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{item.detail}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-md border border-primary/30 bg-primary/5 p-3">
+                <p className="font-semibold text-foreground mb-1">Combining the osmolar gap with the anion gap — toxic alcohol time course</p>
+                <p className="text-sm">
+                  Methanol and ethylene glycol are themselves osmotically active but chemically inert. They become toxic only after alcohol-dehydrogenase metabolism to organic acids (formate; glycolate/glyoxylate/oxalate). This produces a characteristic evolution:
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-sm mt-2">
+                  <li><strong>Early (0–6 h):</strong> ↑↑ osmolar gap, AG normal — parent alcohol present, metabolism not yet started.</li>
+                  <li><strong>Intermediate:</strong> osmolar gap falling, AG rising — alcohol being converted to toxic anions.</li>
+                  <li><strong>Late (&gt; 24 h):</strong> osmolar gap may normalise, AG markedly raised, severe HAGMA, end-organ injury (blindness/putaminal necrosis with methanol; AKI + oxalate crystalluria with ethylene glycol).</li>
+                </ul>
+                <p className="text-sm mt-2">
+                  A "normal" osmolar gap therefore does <em>not</em> exclude toxic alcohol ingestion if presentation is late. Conversely, a raised gap with normal AG warrants urgent measurement of alcohol levels and pre-emptive ADH blockade (fomepizole, or ethanol infusion if unavailable) before metabolism produces irreversible injury.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-foreground mb-1">Quantitative pearls</p>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>To convert a serum concentration (mg/dL) to mOsm/kg, divide by molecular weight (g/mol) and multiply by 10. e.g. methanol MW 32: a level of 32 mg/dL adds ~10 mOsm/kg to the gap.</li>
+                  <li>Rule of thumb thresholds: ethanol 100 mg/dL ≈ 22 mOsm/kg; methanol 25 mg/dL ≈ 8; ethylene glycol 25 mg/dL ≈ 4 (MW 62 → smaller osmolar footprint per mg).</li>
+                  <li>Because ethylene glycol has a high MW, the osmolar gap can be deceptively modest even at toxic levels — never anchor purely on the gap.</li>
+                </ul>
+              </div>
+
+              <div>
+                <p className="font-semibold text-foreground mb-1">Pitfalls</p>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Different formulae give different "normal" ranges (e.g. 1.86 × Na⁺ rather than 2 × Na⁺) — use your lab's convention.</li>
+                  <li>The osmometer must use <strong>freezing-point depression</strong>; vapour-pressure osmometers miss volatile solutes (alcohols) and falsely normalise the gap.</li>
+                  <li>Always send blood <em>before</em> giving ethanol/fomepizole — once treatment starts, parent alcohol levels fall rapidly.</li>
+                  <li>A "negative" osmolar gap (calculated &gt; measured) is usually a lab error or hyperviscosity artefact.</li>
+                </ul>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="stewart" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4", "EDIC 5.4"]}>
             <CollapsibleSubsection title="Strong Ion Difference (Stewart) Approach">
             <p className="text-muted-foreground leading-relaxed mb-3">
