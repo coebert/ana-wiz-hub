@@ -38,7 +38,7 @@ export async function fetchTopicReferences(
     .eq("topic_id", topicId)
     .maybeSingle();
   if (error) throw error;
-  return (data as TopicReferenceRow | null) ?? null;
+  return (data as unknown as TopicReferenceRow | null) ?? null;
 }
 
 /** Fetch reference counts for a set of topic ids in one query. */
