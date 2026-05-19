@@ -87,13 +87,16 @@ export const fetchPodcast = async (
 ): Promise<PodcastResult | null> => {
   const { data, error } = await supabase
     .from("podcasts")
-    .select("status, audio_path, script, duration_seconds")
+    .select("status, audio_path, script, duration_seconds, updated_at")
     .eq("topic_id", topicId)
     .maybeSingle();
 
   if (error || !data) return null;
   if (data.status !== "ready" || !data.audio_path) {
-    return { status: data.status as PodcastResult["status"] };
+    return {
+      status: data.status as PodcastResult["status"],
+      updated_at: data.updated_at ?? undefined,
+    };
   }
 
   const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(data.audio_path);
@@ -103,6 +106,7 @@ export const fetchPodcast = async (
     script: data.script ?? undefined,
     duration_seconds: data.duration_seconds ?? undefined,
     cached: true,
+    updated_at: data.updated_at ?? undefined,
   };
 };
 
