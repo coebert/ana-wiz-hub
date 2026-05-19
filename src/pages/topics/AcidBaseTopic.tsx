@@ -5,6 +5,8 @@ import { acidBaseQuestions } from "@/data/quizzes";
 import StewartAcidBaseDiagram from "@/components/diagrams/StewartAcidBaseDiagram";
 import HendersonHasselbalchDiagram from "@/components/diagrams/HendersonHasselbalchDiagram";
 import AcidBaseInterpretationDiagram from "@/components/diagrams/AcidBaseInterpretationDiagram";
+import HAGMAPathophysiologyDiagram from "@/components/diagrams/HAGMAPathophysiologyDiagram";
+import DeltaRatioDiagram from "@/components/diagrams/DeltaRatioDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
