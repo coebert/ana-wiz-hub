@@ -59,80 +59,84 @@ function OverviewDiagram() {
   return (
     <div className="space-y-4">
       <svg viewBox="0 0 400 280" className="w-full">
+        {/* Subtle SVG background to lift diagram off the card surface */}
+        <rect x="0" y="0" width="400" height="280" rx="12"
+          fill="hsl(var(--background))" opacity={0.5} stroke="hsl(var(--border))" strokeWidth="1" />
+
         {/* Brain stem */}
         <rect x="130" y="10" width="140" height="90" rx="10"
-          fill="hsl(210, 70%, 55%)" opacity={0.1} stroke="hsl(210, 70%, 55%)" strokeWidth="1.5" />
-        <text x="200" y="28" textAnchor="middle" className="text-[9px] fill-foreground font-semibold">Brainstem</text>
+          fill="hsl(210, 70%, 55%)" opacity={0.15} stroke="hsl(210, 70%, 55%)" strokeWidth="1.5" />
+        <text x="200" y="28" textAnchor="middle" className="text-[11px] fill-foreground font-semibold">Brainstem</text>
 
         {/* Pontine */}
         <rect x="140" y="33" width="55" height="25" rx="4"
-          fill={selected === "Pontine Centres" ? "hsl(142, 60%, 45%, 0.2)" : "hsl(var(--muted))"}
+          fill={selected === "Pontine Centres" ? "hsl(142, 60%, 45%, 0.25)" : "hsl(var(--muted) / 0.6)"}
           stroke="hsl(142, 60%, 45%)" strokeWidth={selected === "Pontine Centres" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Pontine Centres" ? null : "Pontine Centres")} />
-        <text x="167" y="49" textAnchor="middle" className="text-[7px] fill-foreground cursor-pointer"
+        <text x="167" y="49" textAnchor="middle" className="text-[9px] fill-foreground cursor-pointer"
           onClick={() => setSelected(selected === "Pontine Centres" ? null : "Pontine Centres")}>Pons</text>
 
         {/* Medullary */}
         <rect x="205" y="33" width="55" height="25" rx="4"
-          fill={selected === "Medullary Centre" ? "hsl(210, 70%, 55%, 0.2)" : "hsl(var(--muted))"}
+          fill={selected === "Medullary Centre" ? "hsl(210, 70%, 55%, 0.25)" : "hsl(var(--muted) / 0.6)"}
           stroke="hsl(210, 70%, 55%)" strokeWidth={selected === "Medullary Centre" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Medullary Centre" ? null : "Medullary Centre")} />
-        <text x="232" y="49" textAnchor="middle" className="text-[7px] fill-foreground cursor-pointer"
+        <text x="232" y="49" textAnchor="middle" className="text-[9px] fill-foreground cursor-pointer"
           onClick={() => setSelected(selected === "Medullary Centre" ? null : "Medullary Centre")}>Medulla</text>
 
         {/* Central chemoreceptors */}
         <rect x="140" y="65" width="120" height="25" rx="4"
-          fill={selected === "Central Chemoreceptors" ? "hsl(35, 80%, 50%, 0.2)" : "hsl(var(--muted))"}
+          fill={selected === "Central Chemoreceptors" ? "hsl(35, 80%, 50%, 0.25)" : "hsl(var(--muted) / 0.6)"}
           stroke="hsl(35, 80%, 50%)" strokeWidth={selected === "Central Chemoreceptors" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Central Chemoreceptors" ? null : "Central Chemoreceptors")} />
-        <text x="200" y="81" textAnchor="middle" className="text-[7px] fill-foreground cursor-pointer"
+        <text x="200" y="81" textAnchor="middle" className="text-[9px] fill-foreground cursor-pointer"
           onClick={() => setSelected(selected === "Central Chemoreceptors" ? null : "Central Chemoreceptors")}>Central Chemoreceptors</text>
 
         {/* Higher centres */}
         <rect x="20" y="15" width="95" height="30" rx="6"
-          fill={selected === "Higher Centres" ? "hsl(270, 50%, 55%, 0.15)" : "hsl(var(--muted))"}
+          fill={selected === "Higher Centres" ? "hsl(270, 50%, 55%, 0.2)" : "hsl(var(--muted) / 0.6)"}
           stroke="hsl(270, 50%, 55%)" strokeWidth={selected === "Higher Centres" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Higher Centres" ? null : "Higher Centres")} />
-        <text x="67" y="34" textAnchor="middle" className="text-[8px] fill-foreground cursor-pointer"
+        <text x="67" y="34" textAnchor="middle" className="text-[10px] fill-foreground cursor-pointer"
           onClick={() => setSelected(selected === "Higher Centres" ? null : "Higher Centres")}>Higher Centres</text>
         <line x1="115" y1="30" x2="130" y2="45" stroke="hsl(var(--border))" strokeWidth="1" markerEnd="url(#cobArr)" />
 
         {/* Peripheral chemoreceptors */}
         <ellipse cx="80" cy="140" rx="60" ry="22"
-          fill={selected === "Peripheral Chemoreceptors" ? "hsl(0, 70%, 55%, 0.15)" : "hsl(var(--muted), 0.3)"}
+          fill={selected === "Peripheral Chemoreceptors" ? "hsl(0, 70%, 55%, 0.2)" : "hsl(var(--muted) / 0.5)"}
           stroke="hsl(0, 70%, 55%)" strokeWidth={selected === "Peripheral Chemoreceptors" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Peripheral Chemoreceptors" ? null : "Peripheral Chemoreceptors")} />
-        <text x="80" y="137" textAnchor="middle" className="text-[7px] fill-foreground font-medium cursor-pointer"
+        <text x="80" y="137" textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer"
           onClick={() => setSelected(selected === "Peripheral Chemoreceptors" ? null : "Peripheral Chemoreceptors")}>Peripheral Chemo</text>
-        <text x="80" y="148" textAnchor="middle" className="text-[6px] fill-muted-foreground">(Carotid + Aortic bodies)</text>
+        <text x="80" y="148" textAnchor="middle" className="text-[8px] fill-foreground">(Carotid + Aortic bodies)</text>
         {/* CN IX/X to medulla */}
         <line x1="120" y1="125" x2="180" y2="90" stroke="hsl(0, 70%, 55%)" strokeWidth="1.5" markerEnd="url(#cobArr)" />
-        <text x="140" y="102" className="text-[6px] fill-muted-foreground">CN IX/X</text>
+        <text x="140" y="102" className="text-[8px] fill-foreground">CN IX/X</text>
 
         {/* Lung receptors */}
         <ellipse cx="320" cy="160" rx="60" ry="30"
-          fill={selected === "Lung Receptors" ? "hsl(210, 70%, 55%, 0.15)" : "hsl(var(--muted), 0.3)"}
+          fill={selected === "Lung Receptors" ? "hsl(210, 70%, 55%, 0.2)" : "hsl(var(--muted) / 0.5)"}
           stroke="hsl(210, 70%, 55%)" strokeWidth={selected === "Lung Receptors" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Lung Receptors" ? null : "Lung Receptors")} />
-        <text x="320" y="155" textAnchor="middle" className="text-[7px] fill-foreground font-medium cursor-pointer"
+        <text x="320" y="155" textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer"
           onClick={() => setSelected(selected === "Lung Receptors" ? null : "Lung Receptors")}>Lung Receptors</text>
-        <text x="320" y="166" textAnchor="middle" className="text-[6px] fill-muted-foreground">SAR / RAR / J</text>
+        <text x="320" y="166" textAnchor="middle" className="text-[8px] fill-foreground">SAR / RAR / J</text>
         {/* Vagus to medulla */}
         <line x1="280" y1="138" x2="240" y2="90" stroke="hsl(210, 70%, 55%)" strokeWidth="1.5" markerEnd="url(#cobArr)" />
-        <text x="268" y="108" className="text-[6px] fill-muted-foreground">CN X</text>
+        <text x="268" y="108" className="text-[8px] fill-foreground">CN X</text>
 
         {/* Effectors */}
         <rect x="140" y="210" width="120" height="30" rx="6"
-          fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="1" />
-        <text x="200" y="228" textAnchor="middle" className="text-[8px] fill-foreground font-medium">Respiratory Muscles</text>
-        <text x="200" y="238" textAnchor="middle" className="text-[6px] fill-muted-foreground">Diaphragm (C3-5) + Intercostals</text>
+          fill="hsl(var(--muted) / 0.6)" stroke="hsl(var(--border))" strokeWidth="1" />
+        <text x="200" y="228" textAnchor="middle" className="text-[10px] fill-foreground font-medium">Respiratory Muscles</text>
+        <text x="200" y="238" textAnchor="middle" className="text-[8px] fill-foreground">Diaphragm (C3-5) + Intercostals</text>
         {/* Motor output */}
         <line x1="200" y1="100" x2="200" y2="210" stroke="hsl(var(--border))" strokeWidth="1.5" markerEnd="url(#cobArr)" />
-        <text x="208" y="160" className="text-[6px] fill-muted-foreground">Phrenic</text>
-        <text x="208" y="170" className="text-[6px] fill-muted-foreground">C3,4,5</text>
+        <text x="208" y="160" className="text-[8px] fill-foreground">Phrenic</text>
+        <text x="208" y="170" className="text-[8px] fill-foreground">C3,4,5</text>
 
         {/* Stimuli */}
-        <text x="80" y="185" textAnchor="middle" className="text-[7px] fill-muted-foreground">↓PaO₂  ↑PaCO₂  ↓pH</text>
+        <text x="80" y="185" textAnchor="middle" className="text-[9px] fill-foreground">↓PaO₂  ↑PaCO₂  ↓pH</text>
 
         <defs>
           <marker id="cobArr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
@@ -171,18 +175,18 @@ function CO2ResponseCurve({ paCO2, setPaCO2, paO2 }: { paCO2: number; setPaCO2: 
   return (
     <div className="space-y-4">
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
-        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.06} />
+        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.12} />
         <line x1={PL} y1={PT + plotH} x2={PL + plotW} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
         <line x1={PL} y1={PT} x2={PL} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
-        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[9px] fill-muted-foreground">PaCO₂ (kPa)</text>
-        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[9px] fill-muted-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>Minute Ventilation (L/min)</text>
+        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[11px] fill-foreground">PaCO₂ (kPa)</text>
+        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[11px] fill-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>Minute Ventilation (L/min)</text>
 
         {/* Ticks */}
         {[3, 4, 5, 6, 7, 8, 9, 10].map(p => (
-          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[7px] fill-muted-foreground">{p}</text>
+          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[9px] fill-foreground">{p}</text>
         ))}
         {[0, 10, 20, 30, 40, 50].map(v => (
-          <text key={v} x={PL - 4} y={toY(v) + 3} textAnchor="end" className="text-[7px] fill-muted-foreground">{v}</text>
+          <text key={v} x={PL - 4} y={toY(v) + 3} textAnchor="end" className="text-[9px] fill-foreground">{v}</text>
         ))}
 
         {/* Normal curve */}
@@ -207,8 +211,8 @@ function CO2ResponseCurve({ paCO2, setPaCO2, paO2 }: { paCO2: number; setPaCO2: 
         {/* Apnoeic threshold */}
         <line x1={toX(threshold)} y1={PT} x2={toX(threshold)} y2={PT + plotH}
           stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4,3" />
-        <text x={toX(threshold) + 3} y={PT + 10} className="text-[7px] fill-muted-foreground">Apnoeic</text>
-        <text x={toX(threshold) + 3} y={PT + 19} className="text-[7px] fill-muted-foreground">threshold</text>
+        <text x={toX(threshold) + 3} y={PT + 10} className="text-[9px] fill-foreground">Apnoeic</text>
+        <text x={toX(threshold) + 3} y={PT + 19} className="text-[9px] fill-foreground">threshold</text>
 
         {/* Current point */}
         <circle cx={toX(paCO2)} cy={toY(Math.min(currentVE, veMax))} r="5"
@@ -216,11 +220,11 @@ function CO2ResponseCurve({ paCO2, setPaCO2, paO2 }: { paCO2: number; setPaCO2: 
 
         {/* Legend */}
         <line x1={PL + 5} y1={PT + 8} x2={PL + 25} y2={PT + 8} stroke="hsl(210, 70%, 55%)" strokeWidth="2" />
-        <text x={PL + 28} y={PT + 11} className="text-[7px] fill-muted-foreground">Normal</text>
+        <text x={PL + 28} y={PT + 11} className="text-[9px] fill-foreground">Normal</text>
         <line x1={PL + 5} y1={PT + 18} x2={PL + 25} y2={PT + 18} stroke="hsl(0, 70%, 55%)" strokeWidth="2" strokeDasharray="4,2" />
-        <text x={PL + 28} y={PT + 21} className="text-[7px] fill-muted-foreground">+ Hypoxia</text>
+        <text x={PL + 28} y={PT + 21} className="text-[9px] fill-foreground">+ Hypoxia</text>
         <line x1={PL + 5} y1={PT + 28} x2={PL + 25} y2={PT + 28} stroke="hsl(142, 60%, 45%)" strokeWidth="2" strokeDasharray="3,3" />
-        <text x={PL + 28} y={PT + 31} className="text-[7px] fill-muted-foreground">+ Opioids/Anaesthesia</text>
+        <text x={PL + 28} y={PT + 31} className="text-[9px] fill-foreground">+ Opioids/Anaesthesia</text>
       </svg>
 
       <Slider label="PaCO₂" value={paCO2} min={2.7} max={10.7} unit="kPa" onChange={setPaCO2} />
@@ -265,17 +269,17 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
   return (
     <div className="space-y-4">
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
-        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.06} />
+        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.12} />
         <line x1={PL} y1={PT + plotH} x2={PL + plotW} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
         <line x1={PL} y1={PT} x2={PL} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
-        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[9px] fill-muted-foreground">PaO₂ (kPa)</text>
-        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[9px] fill-muted-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>Minute Ventilation (L/min)</text>
+        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[11px] fill-foreground">PaO₂ (kPa)</text>
+        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[11px] fill-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>Minute Ventilation (L/min)</text>
 
         {[3, 5, 8, 10, 13, 16].map(p => (
-          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[7px] fill-muted-foreground">{p}</text>
+          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[9px] fill-foreground">{p}</text>
         ))}
         {[0, 10, 20, 30, 40].map(v => (
-          <text key={v} x={PL - 4} y={toY(v) + 3} textAnchor="end" className="text-[7px] fill-muted-foreground">{v}</text>
+          <text key={v} x={PL - 4} y={toY(v) + 3} textAnchor="end" className="text-[9px] fill-foreground">{v}</text>
         ))}
 
         {/* Normal CO2 curve */}
@@ -291,9 +295,9 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
         }).join(" ")} fill="none" stroke="hsl(0, 70%, 55%)" strokeWidth="2" strokeDasharray="6,3" />
 
         {/* Danger zone */}
-        <rect x={PL} y={PT} width={toX(8) - PL} height={plotH} fill="hsl(0, 70%, 55%)" opacity={0.04} />
+        <rect x={PL} y={PT} width={toX(8) - PL} height={plotH} fill="hsl(0, 70%, 55%)" opacity={0.08} />
         <line x1={toX(8)} y1={PT} x2={toX(8)} y2={PT + plotH} stroke="hsl(0, 70%, 55%)" strokeWidth="1" strokeDasharray="4,3" />
-        <text x={toX(8) + 3} y={PT + 10} className="text-[7px] fill-destructive">PaO₂ 8 kPa</text>
+        <text x={toX(8) + 3} y={PT + 10} className="text-[9px] fill-destructive">PaO₂ 8 kPa</text>
 
         {/* Current point */}
         <circle cx={toX(paO2)} cy={toY(Math.min(currentVE, veMax))} r="5"
@@ -301,15 +305,15 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
 
         {/* Legend */}
         <line x1={W - 120} y1={PT + 8} x2={W - 100} y2={PT + 8} stroke="hsl(210, 70%, 55%)" strokeWidth="2" />
-        <text x={W - 97} y={PT + 11} className="text-[7px] fill-muted-foreground">PaCO₂ 5.3</text>
+        <text x={W - 97} y={PT + 11} className="text-[9px] fill-foreground">PaCO₂ 5.3</text>
         <line x1={W - 120} y1={PT + 18} x2={W - 100} y2={PT + 18} stroke="hsl(0, 70%, 55%)" strokeWidth="2" strokeDasharray="4,2" />
-        <text x={W - 97} y={PT + 21} className="text-[7px] fill-muted-foreground">PaCO₂ 6.7</text>
+        <text x={W - 97} y={PT + 21} className="text-[9px] fill-foreground">PaCO₂ 6.7</text>
       </svg>
 
       <Slider label="PaO₂" value={paO2} min={2.7} max={16} unit="kPa" onChange={setPaO2} />
 
-      <div className={`rounded-lg p-3 border ${paO2 < 8 ? "bg-destructive/5 border-destructive/30" : "bg-green-500/5 border-green-500/30"}`}>
-        <p className={`text-xs font-semibold ${paO2 < 8 ? "text-destructive" : "text-green-600"}`}>
+      <div className={`rounded-lg p-3 border ${paO2 < 8 ? "bg-destructive/5 border-destructive/30" : "bg-emerald-500/5 border-emerald-500/30"}`}>
+        <p className={`text-xs font-semibold ${paO2 < 8 ? "text-destructive" : "text-emerald-400"}`}>
           {paO2 < 8 ? `PaO₂ ${paO2.toFixed(1)} kPa — hypoxic drive active. Steep part of curve (like ODC).` :
            `PaO₂ ${paO2.toFixed(1)} kPa — minimal hypoxic drive. O₂ response is flat above 8 kPa.`}
         </p>
@@ -343,14 +347,14 @@ function PHResponseCurve({ pH, setPH }: { pH: number; setPH: (v: number) => void
   return (
     <div className="space-y-4">
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
-        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.06} />
+        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.12} />
         <line x1={PL} y1={PT + plotH} x2={PL + plotW} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
         <line x1={PL} y1={PT} x2={PL} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
-        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[9px] fill-muted-foreground">Arterial pH</text>
-        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[9px] fill-muted-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>VE (L/min)</text>
+        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[11px] fill-foreground">Arterial pH</text>
+        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[11px] fill-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>VE (L/min)</text>
 
         {[7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6].map(p => (
-          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[7px] fill-muted-foreground">{p.toFixed(1)}</text>
+          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[9px] fill-foreground">{p.toFixed(1)}</text>
         ))}
 
         {/* Curve */}
@@ -362,7 +366,7 @@ function PHResponseCurve({ pH, setPH }: { pH: number; setPH: (v: number) => void
 
         {/* Normal pH zone */}
         <rect x={toX(7.35)} y={PT} width={toX(7.45) - toX(7.35)} height={plotH}
-          fill="hsl(142, 60%, 45%)" opacity={0.06} />
+          fill="hsl(142, 60%, 45%)" opacity={0.1} />
 
         <circle cx={toX(pH)} cy={toY(currentVE)} r="5" fill="hsl(35, 80%, 50%)" stroke="hsl(var(--background))" strokeWidth="1.5" />
       </svg>
