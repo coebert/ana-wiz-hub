@@ -189,6 +189,7 @@ export const intensiveCareTopics: Topic[] = [
   // Hepatic & Toxicology
   { id: "acute-liver-failure", title: "Acute Liver Failure", description: "Paracetamol toxicity, King's College criteria, liver transplantation", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   { id: "acute-pancreatitis", title: "Acute Severe Pancreatitis", description: "Atlanta classification, Glasgow score, fluid resuscitation, step-up necrosectomy, tertiary referral", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
+  { id: "abdominal-compartment-syndrome", title: "Abdominal Compartment Syndrome", description: "WSACS definitions and grading, intravesical IAP measurement, APP target, primary vs secondary ACS, medical bundle, decompressive laparotomy and open abdomen", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "toxicology", title: "Toxicology & Poisoning", description: "Paracetamol, opioid, TCA overdose, LAST, antidotes, toxidromes, lipid emulsion", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   // Haematology
   { id: "transfusion-coagulation", title: "Transfusion & Coagulation", description: "Massive haemorrhage protocols, blood components & lifespans, transfusion reactions (TRALI/TACO), cell salvage, DIC, TEG/ROTEM", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
