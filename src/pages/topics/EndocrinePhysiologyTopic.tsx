@@ -126,7 +126,7 @@ const EndocrinePhysiologyTopic = () => {
           </ExamSection>
 
           <ExamSection id="hp-axis" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
-            <CollapsibleSubsection title="Hypothalamic-Pituitary Axis">
+            <CollapsibleSubsection title="Hypothalamic-Pituitary & HPA Axes">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The hypothalamus controls the anterior pituitary via releasing/inhibiting hormones through the
               hypothalamic-hypophyseal portal system. The posterior pituitary stores and releases ADH and oxytocin
@@ -165,11 +165,7 @@ const EndocrinePhysiologyTopic = () => {
                 </tbody>
               </table>
             </div>
-            </CollapsibleSubsection>
-          </ExamSection>
-
-          <ExamSection id="hpa-axis" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
-            <CollapsibleSubsection title="HPA Axis">
+            <h4 className="text-base font-semibold text-foreground mt-6 mb-2">HPA Axis</h4>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The hypothalamic-pituitary-adrenal axis governs cortisol secretion through a three-tier cascade with both
               short- and long-loop negative feedback. Use the interactive diagram below to see how surgical stress,
@@ -180,6 +176,7 @@ const EndocrinePhysiologyTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+
 
           <ExamSection id="adrenal" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <CollapsibleSubsection title="Adrenal Glands">
