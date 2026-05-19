@@ -139,7 +139,13 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
             setSource("fresh");
             return;
           }
-          const polled = await pollPodcastUntilDone(topicId);
+          const polled = await pollPodcastUntilDone(topicId, {
+            onTick: (r) =>
+              setProgress((p) => ({
+                elapsedSec: p?.elapsedSec ?? 0,
+                lastStatus: (r?.status as "generating" | "pending" | undefined) ?? "unknown",
+              })),
+          });
           setPodcast(polled);
           if (polled.status === "ready") setSource("fresh");
           return;
