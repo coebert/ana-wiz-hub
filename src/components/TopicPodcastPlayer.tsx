@@ -52,6 +52,35 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const [regenPassword, setRegenPassword] = useState("");
   const [regenError, setRegenError] = useState<string | null>(null);
   const [regenSubmitting, setRegenSubmitting] = useState(false);
+  // Live progress while polling the background job. `elapsedSec` ticks every
+  // second; `lastStatus` updates each poll tick (every ~5s) so the UI can
+  // show the current row state without waiting for a terminal result.
+  const [progress, setProgress] = useState<{
+    elapsedSec: number;
+    lastStatus: "generating" | "pending" | "unknown";
+  } | null>(null);
+  const generationStartedAt = useRef<number | null>(null);
+
+  // Tick the elapsed-seconds counter every second while generating.
+  useEffect(() => {
+    if (!generating) {
+      generationStartedAt.current = null;
+      setProgress(null);
+      return;
+    }
+    if (generationStartedAt.current == null) {
+      generationStartedAt.current = Date.now();
+    }
+    setProgress((p) => p ?? { elapsedSec: 0, lastStatus: "generating" });
+    const id = window.setInterval(() => {
+      setProgress((p) => {
+        const startedAt = generationStartedAt.current ?? Date.now();
+        const elapsedSec = Math.floor((Date.now() - startedAt) / 1000);
+        return { elapsedSec, lastStatus: p?.lastStatus ?? "generating" };
+      });
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [generating]);
 
   // Estimate target length from page content once we know there's no cached podcast.
   useEffect(() => {
