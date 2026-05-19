@@ -26,19 +26,7 @@ const AnatomySection = () => {
           <p className="text-xs text-muted-foreground">Anatomy topics</p>
         </div>
       </div>
-      <div className="space-y-3">
-        {visibleTopics.map((topic) => (
-          <TopicCard
-            key={topic.id}
-            title={topic.title}
-            description={topic.description}
-            path={`/anatomy/${topic.id}`}
-            section="anatomy"
-            topicId={topic.id}
-            examTags={topic.examTags}
-          />
-        ))}
-      </div>
+      <SectionTopicsList section="anatomy" topics={visibleTopics} />
     </SectionLayout>
   );
 };
