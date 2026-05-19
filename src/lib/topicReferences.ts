@@ -9,7 +9,27 @@ export interface TopicReference {
   issue?: string;
   pages?: string;
   doi?: string;
+  pmid?: string;
   url?: string;
+}
+
+/**
+ * Resolve the best external link for a reference.
+ * Priority: PMID (PubMed) → DOI (doi.org) → raw URL.
+ */
+export function referenceHref(r: TopicReference): string | undefined {
+  if (r.pmid && /^\d+$/.test(r.pmid.trim())) {
+    return `https://pubmed.ncbi.nlm.nih.gov/${r.pmid.trim()}/`;
+  }
+  if (r.doi) return `https://doi.org/${r.doi.replace(/^https?:\/\/doi\.org\//, "")}`;
+  return r.url;
+}
+
+export function referenceLinkLabel(r: TopicReference): string {
+  if (r.pmid && /^\d+$/.test(r.pmid.trim())) return "PubMed";
+  if (r.doi) return "DOI";
+  if (r.url) return "Link";
+  return "";
 }
 
 export type TopicReferenceStatus =
