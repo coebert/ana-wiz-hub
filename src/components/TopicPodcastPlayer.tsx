@@ -105,11 +105,26 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       setLoading(true);
       const existing = await fetchPodcast(topicId);
       if (cancelled) return;
+      // Stale recovery: if the row is stuck in `generating` but hasn't been
+      // updated in several minutes, the background job is dead. Surface it
+      // as a failed result so the user gets a clear retry path instead of
+      // an indefinite spinner. The server-side reclaim guard (3 min) will
+      // accept the next non-force invocation.
+      if (existing && isStaleGenerating(existing)) {
+        setPodcast({
+          status: "failed",
+          error:
+            "Previous podcast generation appears stalled. Click retry to start a new one.",
+        });
+        setLoading(false);
+        return;
+      }
+
       setPodcast(existing);
       if (existing && existing.status === "ready") setSource("cache");
       setLoading(false);
 
-      // Attach to an in-flight generation started elsewhere.
+      // Attach to an in-flight (still-fresh) generation started elsewhere.
       if (existing && existing.status === "generating") {
         setGenerating(true);
         setProgress({ elapsedSec: 0, lastStatus: "generating" });
