@@ -175,18 +175,18 @@ function CO2ResponseCurve({ paCO2, setPaCO2, paO2 }: { paCO2: number; setPaCO2: 
   return (
     <div className="space-y-4">
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
-        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.06} />
+        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.12} />
         <line x1={PL} y1={PT + plotH} x2={PL + plotW} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
         <line x1={PL} y1={PT} x2={PL} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
-        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[9px] fill-muted-foreground">PaCO₂ (kPa)</text>
-        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[9px] fill-muted-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>Minute Ventilation (L/min)</text>
+        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[11px] fill-foreground">PaCO₂ (kPa)</text>
+        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[11px] fill-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>Minute Ventilation (L/min)</text>
 
         {/* Ticks */}
         {[3, 4, 5, 6, 7, 8, 9, 10].map(p => (
-          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[7px] fill-muted-foreground">{p}</text>
+          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[9px] fill-foreground">{p}</text>
         ))}
         {[0, 10, 20, 30, 40, 50].map(v => (
-          <text key={v} x={PL - 4} y={toY(v) + 3} textAnchor="end" className="text-[7px] fill-muted-foreground">{v}</text>
+          <text key={v} x={PL - 4} y={toY(v) + 3} textAnchor="end" className="text-[9px] fill-foreground">{v}</text>
         ))}
 
         {/* Normal curve */}
@@ -211,8 +211,8 @@ function CO2ResponseCurve({ paCO2, setPaCO2, paO2 }: { paCO2: number; setPaCO2: 
         {/* Apnoeic threshold */}
         <line x1={toX(threshold)} y1={PT} x2={toX(threshold)} y2={PT + plotH}
           stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4,3" />
-        <text x={toX(threshold) + 3} y={PT + 10} className="text-[7px] fill-muted-foreground">Apnoeic</text>
-        <text x={toX(threshold) + 3} y={PT + 19} className="text-[7px] fill-muted-foreground">threshold</text>
+        <text x={toX(threshold) + 3} y={PT + 10} className="text-[9px] fill-foreground">Apnoeic</text>
+        <text x={toX(threshold) + 3} y={PT + 19} className="text-[9px] fill-foreground">threshold</text>
 
         {/* Current point */}
         <circle cx={toX(paCO2)} cy={toY(Math.min(currentVE, veMax))} r="5"
@@ -220,11 +220,11 @@ function CO2ResponseCurve({ paCO2, setPaCO2, paO2 }: { paCO2: number; setPaCO2: 
 
         {/* Legend */}
         <line x1={PL + 5} y1={PT + 8} x2={PL + 25} y2={PT + 8} stroke="hsl(210, 70%, 55%)" strokeWidth="2" />
-        <text x={PL + 28} y={PT + 11} className="text-[7px] fill-muted-foreground">Normal</text>
+        <text x={PL + 28} y={PT + 11} className="text-[9px] fill-foreground">Normal</text>
         <line x1={PL + 5} y1={PT + 18} x2={PL + 25} y2={PT + 18} stroke="hsl(0, 70%, 55%)" strokeWidth="2" strokeDasharray="4,2" />
-        <text x={PL + 28} y={PT + 21} className="text-[7px] fill-muted-foreground">+ Hypoxia</text>
+        <text x={PL + 28} y={PT + 21} className="text-[9px] fill-foreground">+ Hypoxia</text>
         <line x1={PL + 5} y1={PT + 28} x2={PL + 25} y2={PT + 28} stroke="hsl(142, 60%, 45%)" strokeWidth="2" strokeDasharray="3,3" />
-        <text x={PL + 28} y={PT + 31} className="text-[7px] fill-muted-foreground">+ Opioids/Anaesthesia</text>
+        <text x={PL + 28} y={PT + 31} className="text-[9px] fill-foreground">+ Opioids/Anaesthesia</text>
       </svg>
 
       <Slider label="PaCO₂" value={paCO2} min={2.7} max={10.7} unit="kPa" onChange={setPaCO2} />
