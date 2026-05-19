@@ -530,9 +530,9 @@ const NeurointensiveCareTopic = () => {
                   <div className="p-3 rounded-lg border border-border bg-background">
                     <h4 className="text-sm font-semibold text-foreground mb-1">Mimics to exclude</h4>
                     <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                      <li><strong>Locked-in syndrome</strong> (ventral pontine lesion): fully aware, quadriplegic, only vertical eye movements/blinking preserved.</li>
-                      <li><strong>Akinetic mutism</strong> (frontal/mesencephalic): wakeful, immobile, mute but tracks.</li>
-                      <li>Sedation, non-convulsive status epilepticus, severe aphasia, profound neuromuscular weakness.</li>
+                      <li><strong>Locked-in syndrome</strong> (ventral pontine lesion): fully aware, quadriplegic, only vertical eye movements/blinking preserved.<Cite ids={["giacino", "rcp2020"]} /></li>
+                      <li><strong>Akinetic mutism</strong> (frontal/mesencephalic): wakeful, immobile, mute but tracks.<Cite ids={["giacino"]} /></li>
+                      <li>Sedation, non-convulsive status epilepticus, severe aphasia, profound neuromuscular weakness.<Cite ids={["rcp2020", "giacino"]} /></li>
                     </ul>
                   </div>
                 </div>
