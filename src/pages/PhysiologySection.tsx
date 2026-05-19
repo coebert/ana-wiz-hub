@@ -43,6 +43,10 @@ const PhysiologySection = () => {
           </div>
         ))}
       </div>
+      <SectionReferencesPanel
+        section="physiology"
+        topics={physiologyTopics.filter((t) => t.available)}
+      />
     </SectionLayout>
   );
 };
