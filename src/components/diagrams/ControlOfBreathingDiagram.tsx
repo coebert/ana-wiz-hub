@@ -59,80 +59,84 @@ function OverviewDiagram() {
   return (
     <div className="space-y-4">
       <svg viewBox="0 0 400 280" className="w-full">
+        {/* Subtle SVG background to lift diagram off the card surface */}
+        <rect x="0" y="0" width="400" height="280" rx="12"
+          fill="hsl(var(--background))" opacity={0.5} stroke="hsl(var(--border))" strokeWidth="1" />
+
         {/* Brain stem */}
         <rect x="130" y="10" width="140" height="90" rx="10"
-          fill="hsl(210, 70%, 55%)" opacity={0.1} stroke="hsl(210, 70%, 55%)" strokeWidth="1.5" />
-        <text x="200" y="28" textAnchor="middle" className="text-[9px] fill-foreground font-semibold">Brainstem</text>
+          fill="hsl(210, 70%, 55%)" opacity={0.15} stroke="hsl(210, 70%, 55%)" strokeWidth="1.5" />
+        <text x="200" y="28" textAnchor="middle" className="text-[11px] fill-foreground font-semibold">Brainstem</text>
 
         {/* Pontine */}
         <rect x="140" y="33" width="55" height="25" rx="4"
-          fill={selected === "Pontine Centres" ? "hsl(142, 60%, 45%, 0.2)" : "hsl(var(--muted))"}
+          fill={selected === "Pontine Centres" ? "hsl(142, 60%, 45%, 0.25)" : "hsl(var(--muted) / 0.6)"}
           stroke="hsl(142, 60%, 45%)" strokeWidth={selected === "Pontine Centres" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Pontine Centres" ? null : "Pontine Centres")} />
-        <text x="167" y="49" textAnchor="middle" className="text-[7px] fill-foreground cursor-pointer"
+        <text x="167" y="49" textAnchor="middle" className="text-[9px] fill-foreground cursor-pointer"
           onClick={() => setSelected(selected === "Pontine Centres" ? null : "Pontine Centres")}>Pons</text>
 
         {/* Medullary */}
         <rect x="205" y="33" width="55" height="25" rx="4"
-          fill={selected === "Medullary Centre" ? "hsl(210, 70%, 55%, 0.2)" : "hsl(var(--muted))"}
+          fill={selected === "Medullary Centre" ? "hsl(210, 70%, 55%, 0.25)" : "hsl(var(--muted) / 0.6)"}
           stroke="hsl(210, 70%, 55%)" strokeWidth={selected === "Medullary Centre" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Medullary Centre" ? null : "Medullary Centre")} />
-        <text x="232" y="49" textAnchor="middle" className="text-[7px] fill-foreground cursor-pointer"
+        <text x="232" y="49" textAnchor="middle" className="text-[9px] fill-foreground cursor-pointer"
           onClick={() => setSelected(selected === "Medullary Centre" ? null : "Medullary Centre")}>Medulla</text>
 
         {/* Central chemoreceptors */}
         <rect x="140" y="65" width="120" height="25" rx="4"
-          fill={selected === "Central Chemoreceptors" ? "hsl(35, 80%, 50%, 0.2)" : "hsl(var(--muted))"}
+          fill={selected === "Central Chemoreceptors" ? "hsl(35, 80%, 50%, 0.25)" : "hsl(var(--muted) / 0.6)"}
           stroke="hsl(35, 80%, 50%)" strokeWidth={selected === "Central Chemoreceptors" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Central Chemoreceptors" ? null : "Central Chemoreceptors")} />
-        <text x="200" y="81" textAnchor="middle" className="text-[7px] fill-foreground cursor-pointer"
+        <text x="200" y="81" textAnchor="middle" className="text-[9px] fill-foreground cursor-pointer"
           onClick={() => setSelected(selected === "Central Chemoreceptors" ? null : "Central Chemoreceptors")}>Central Chemoreceptors</text>
 
         {/* Higher centres */}
         <rect x="20" y="15" width="95" height="30" rx="6"
-          fill={selected === "Higher Centres" ? "hsl(270, 50%, 55%, 0.15)" : "hsl(var(--muted))"}
+          fill={selected === "Higher Centres" ? "hsl(270, 50%, 55%, 0.2)" : "hsl(var(--muted) / 0.6)"}
           stroke="hsl(270, 50%, 55%)" strokeWidth={selected === "Higher Centres" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Higher Centres" ? null : "Higher Centres")} />
-        <text x="67" y="34" textAnchor="middle" className="text-[8px] fill-foreground cursor-pointer"
+        <text x="67" y="34" textAnchor="middle" className="text-[10px] fill-foreground cursor-pointer"
           onClick={() => setSelected(selected === "Higher Centres" ? null : "Higher Centres")}>Higher Centres</text>
         <line x1="115" y1="30" x2="130" y2="45" stroke="hsl(var(--border))" strokeWidth="1" markerEnd="url(#cobArr)" />
 
         {/* Peripheral chemoreceptors */}
         <ellipse cx="80" cy="140" rx="60" ry="22"
-          fill={selected === "Peripheral Chemoreceptors" ? "hsl(0, 70%, 55%, 0.15)" : "hsl(var(--muted), 0.3)"}
+          fill={selected === "Peripheral Chemoreceptors" ? "hsl(0, 70%, 55%, 0.2)" : "hsl(var(--muted) / 0.5)"}
           stroke="hsl(0, 70%, 55%)" strokeWidth={selected === "Peripheral Chemoreceptors" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Peripheral Chemoreceptors" ? null : "Peripheral Chemoreceptors")} />
-        <text x="80" y="137" textAnchor="middle" className="text-[7px] fill-foreground font-medium cursor-pointer"
+        <text x="80" y="137" textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer"
           onClick={() => setSelected(selected === "Peripheral Chemoreceptors" ? null : "Peripheral Chemoreceptors")}>Peripheral Chemo</text>
-        <text x="80" y="148" textAnchor="middle" className="text-[6px] fill-muted-foreground">(Carotid + Aortic bodies)</text>
+        <text x="80" y="148" textAnchor="middle" className="text-[8px] fill-foreground">(Carotid + Aortic bodies)</text>
         {/* CN IX/X to medulla */}
         <line x1="120" y1="125" x2="180" y2="90" stroke="hsl(0, 70%, 55%)" strokeWidth="1.5" markerEnd="url(#cobArr)" />
-        <text x="140" y="102" className="text-[6px] fill-muted-foreground">CN IX/X</text>
+        <text x="140" y="102" className="text-[8px] fill-foreground">CN IX/X</text>
 
         {/* Lung receptors */}
         <ellipse cx="320" cy="160" rx="60" ry="30"
-          fill={selected === "Lung Receptors" ? "hsl(210, 70%, 55%, 0.15)" : "hsl(var(--muted), 0.3)"}
+          fill={selected === "Lung Receptors" ? "hsl(210, 70%, 55%, 0.2)" : "hsl(var(--muted) / 0.5)"}
           stroke="hsl(210, 70%, 55%)" strokeWidth={selected === "Lung Receptors" ? 2 : 1}
           className="cursor-pointer" onClick={() => setSelected(selected === "Lung Receptors" ? null : "Lung Receptors")} />
-        <text x="320" y="155" textAnchor="middle" className="text-[7px] fill-foreground font-medium cursor-pointer"
+        <text x="320" y="155" textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer"
           onClick={() => setSelected(selected === "Lung Receptors" ? null : "Lung Receptors")}>Lung Receptors</text>
-        <text x="320" y="166" textAnchor="middle" className="text-[6px] fill-muted-foreground">SAR / RAR / J</text>
+        <text x="320" y="166" textAnchor="middle" className="text-[8px] fill-foreground">SAR / RAR / J</text>
         {/* Vagus to medulla */}
         <line x1="280" y1="138" x2="240" y2="90" stroke="hsl(210, 70%, 55%)" strokeWidth="1.5" markerEnd="url(#cobArr)" />
-        <text x="268" y="108" className="text-[6px] fill-muted-foreground">CN X</text>
+        <text x="268" y="108" className="text-[8px] fill-foreground">CN X</text>
 
         {/* Effectors */}
         <rect x="140" y="210" width="120" height="30" rx="6"
-          fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="1" />
-        <text x="200" y="228" textAnchor="middle" className="text-[8px] fill-foreground font-medium">Respiratory Muscles</text>
-        <text x="200" y="238" textAnchor="middle" className="text-[6px] fill-muted-foreground">Diaphragm (C3-5) + Intercostals</text>
+          fill="hsl(var(--muted) / 0.6)" stroke="hsl(var(--border))" strokeWidth="1" />
+        <text x="200" y="228" textAnchor="middle" className="text-[10px] fill-foreground font-medium">Respiratory Muscles</text>
+        <text x="200" y="238" textAnchor="middle" className="text-[8px] fill-foreground">Diaphragm (C3-5) + Intercostals</text>
         {/* Motor output */}
         <line x1="200" y1="100" x2="200" y2="210" stroke="hsl(var(--border))" strokeWidth="1.5" markerEnd="url(#cobArr)" />
-        <text x="208" y="160" className="text-[6px] fill-muted-foreground">Phrenic</text>
-        <text x="208" y="170" className="text-[6px] fill-muted-foreground">C3,4,5</text>
+        <text x="208" y="160" className="text-[8px] fill-foreground">Phrenic</text>
+        <text x="208" y="170" className="text-[8px] fill-foreground">C3,4,5</text>
 
         {/* Stimuli */}
-        <text x="80" y="185" textAnchor="middle" className="text-[7px] fill-muted-foreground">↓PaO₂  ↑PaCO₂  ↓pH</text>
+        <text x="80" y="185" textAnchor="middle" className="text-[9px] fill-foreground">↓PaO₂  ↑PaCO₂  ↓pH</text>
 
         <defs>
           <marker id="cobArr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
