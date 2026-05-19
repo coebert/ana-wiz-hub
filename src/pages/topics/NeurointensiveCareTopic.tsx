@@ -511,6 +511,74 @@ const NeurointensiveCareTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
+        <ExamSection id="toc-doc-medicolegal" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+          <CollapsibleSubsection title="VS vs MCS: Prognostication & Medico-Legal Implications">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Distinguishing VS from MCS materially changes prognosis, pain management, capacity assessment, and the lawful pathway for withdrawing clinically-assisted nutrition and hydration (CANH). Diagnoses should be made by a clinician experienced in prolonged disorders of consciousness (PDoC) using serial Coma Recovery Scale–Revised (CRS-R) assessments, not a single bedside exam.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-3 mb-3">
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <h4 className="text-sm font-semibold text-foreground mb-1">Prognostication</h4>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li><strong>Aetiology</strong> dominates: traumatic brain injury recovers better than anoxic/hypoxic-ischaemic injury.</li>
+                <li><strong>Time</strong>: meaningful recovery becomes progressively unlikely beyond 6 months (non-traumatic) and 12 months (traumatic) for VS; longer windows for MCS.</li>
+                <li><strong>MCS &gt; VS</strong> for likelihood of further functional recovery; MCS+ (language) better than MCS−.</li>
+                <li><strong>Adjuncts</strong>: SSEP (bilateral absent N20 = poor in anoxic injury), NSE, MRI (DAI burden, brainstem integrity), fMRI/EEG paradigms for covert awareness (&quot;cognitive-motor dissociation&quot;, ~15% of behavioural VS).</li>
+                <li>Avoid early (&lt;72 h) prognostic statements after cardiac arrest — follow ERC/ESICM multimodal algorithm.</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <h4 className="text-sm font-semibold text-foreground mb-1">Pain, sedation & symptom control</h4>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li>MCS patients can plausibly experience pain and distress — assume nociception, use validated tools (NCS-R).</li>
+                <li>Document analgesia/sedation rationale; balance against suppression of behavioural responses needed for diagnosis.</li>
+                <li>Treat reversible contributors (spasticity, constipation, urinary retention, infection) before attributing behavioural change to underlying state.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-lg border border-border bg-background mb-3">
+            <h4 className="text-sm font-semibold text-foreground mb-2">Medico-legal framework (UK)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+              <li><strong>Mental Capacity Act 2005</strong>: patients lack capacity — decisions made in <em>best interests</em> (s.4), consulting family/those interested in welfare, and any advance decision to refuse treatment (ADRT) or Lasting Power of Attorney (health &amp; welfare).</li>
+              <li><strong>CANH withdrawal</strong>: following <em>An NHS Trust v Y [2018] UKSC 46</em>, court application is no longer mandatory where there is clinical and family consensus and the RCP/BMA/GMC best-interest process has been followed. Refer to the Court of Protection when there is dispute, uncertainty, or finely-balanced decisions.</li>
+              <li>Independent <strong>second opinion</strong> from a clinician external to the treating team is required before CANH withdrawal in PDoC.</li>
+              <li><strong>IMCA</strong> appointment if no appropriate family/friend to consult on serious medical treatment.</li>
+              <li>Brain death (DNC) is a separate legal/clinical entity — VS and MCS patients are <em>alive</em>; organ donation pathways differ (DCD only, if treatment withdrawn).</li>
+              <li>Clear, contemporaneous documentation of diagnosis, prognosis, decision-making process and family meetings is essential.</li>
+            </ul>
+          </div>
+
+          <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 mb-3">
+            <h4 className="text-sm font-semibold text-foreground mb-2">Key learning points</h4>
+            <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+              <li>Diagnosis of PDoC is clinical, serial, and uses CRS-R — single assessments misdiagnose ~40%.</li>
+              <li>VS = wakefulness without awareness; MCS = minimal but reproducible awareness; both have preserved brainstem function and are <strong>not</strong> brain death.</li>
+              <li>Aetiology and time since injury are the strongest prognostic factors; MCS prognosis exceeds VS.</li>
+              <li>Treat MCS patients as capable of pain perception until proven otherwise.</li>
+              <li>CANH withdrawal in PDoC is lawful via the MCA best-interest process with second opinion; court only where dispute or uncertainty exists.</li>
+              <li>Always exclude mimics: locked-in syndrome, NCSE, severe sedation, neuromuscular weakness.</li>
+            </ul>
+          </div>
+
+          <div className="p-3 rounded-lg border border-border bg-secondary/20">
+            <h4 className="text-sm font-semibold text-foreground mb-2">Cited guidance</h4>
+            <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+              <li>Royal College of Physicians. <em>Prolonged Disorders of Consciousness following sudden onset brain injury: national clinical guidelines.</em> RCP, 2020.</li>
+              <li>British Medical Association &amp; Royal College of Physicians. <em>Clinically-assisted nutrition and hydration (CANH) and adults who lack the capacity to consent.</em> BMA/RCP/GMC, 2018 (updated 2024).</li>
+              <li>General Medical Council. <em>Treatment and care towards the end of life: good practice in decision-making.</em> GMC, 2022.</li>
+              <li><em>An NHS Trust and others v Y</em> [2018] UKSC 46.</li>
+              <li>Mental Capacity Act 2005 and Code of Practice.</li>
+              <li>Giacino JT et al. Practice guideline update: disorders of consciousness. <em>Neurology</em> 2018;91:450–460 (AAN/ACRM/NIDILRR).</li>
+              <li>Sandroni C et al. ERC-ESICM guidelines on prognostication after cardiac arrest. <em>Intensive Care Med</em> 2021;47:1393–1414.</li>
+            </ul>
+          </div>
+          </CollapsibleSubsection>
+        </ExamSection>
+
+
+
 
 
         <ExamSection id="toc-sci" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
