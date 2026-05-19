@@ -224,13 +224,41 @@ const AcidBaseTopic = () => {
           </ExamSection>
 
           <ExamSection id="stewart" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4", "EDIC 5.4"]}>
-            <CollapsibleSubsection title="Stewart Approach">
+            <CollapsibleSubsection title="Strong Ion Difference (Stewart) Approach">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              The physicochemical (Stewart) approach identifies 3 independent variables that determine pH. Unlike the Henderson-Hasselbalch approach, HCO₃⁻ is a <strong>dependent</strong> variable — it changes as a consequence of the independent variables, not as a cause.
+              Peter Stewart (1981) reformulated acid-base chemistry from first principles. He argued that in any aqueous biological solution, three constraints must hold simultaneously: <strong>electroneutrality</strong> (the sum of all charges = 0), <strong>conservation of mass</strong> for all weak acids, and the <strong>dissociation equilibrium</strong> of water itself. Solving these equations shows that [H⁺] (and therefore pH) and [HCO₃⁻] are <em>dependent</em> variables — fully determined by three <em>independent</em> variables that the body can manipulate.
             </p>
+
+            <div className="grid sm:grid-cols-3 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">1. PaCO₂</p>
+                <p className="text-xs text-muted-foreground mt-1">The volatile / respiratory variable. Set by alveolar ventilation. Identical role to the H–H framework.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">2. Strong Ion Difference (SID)</p>
+                <p className="text-xs text-muted-foreground mt-1">The metabolic / renal variable. Driven mainly by the difference between Na⁺ and Cl⁻ in plasma. Manipulated by the kidney (Cl⁻ handling) and by IV fluids.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">3. Total weak acids (A<sub>tot</sub>)</p>
+                <p className="text-xs text-muted-foreground mt-1">Albumin (~80%) + inorganic phosphate (~20%). Set by the liver, GI tract and kidney. Falls in ICU patients → "occult alkalosis".</p>
+              </div>
+            </div>
+
             <div className="mb-4">
               <StewartAcidBaseDiagram />
             </div>
+
+            <div className="p-4 rounded-lg border-2 border-primary/20 bg-primary/5 mb-4">
+              <p className="text-sm font-semibold text-foreground mb-1">The logic, step by step</p>
+              <ol className="text-sm text-muted-foreground list-decimal pl-5 space-y-1">
+                <li><strong>Plasma must be electrically neutral.</strong> The dominant cations (Na⁺, K⁺, Ca²⁺, Mg²⁺ — all <em>strong</em>, fully dissociated) outweigh the dominant strong anions (Cl⁻, lactate⁻) by ≈ 40 mEq/L. This positive charge difference is the SID.</li>
+                <li><strong>That 40 mEq/L "charge gap" must be balanced</strong> by something — and the only things available are HCO₃⁻, dissociated albumin (Alb⁻) and dissociated phosphate (HPO₄²⁻). Together they comprise SID<sub>e</sub> (effective SID).</li>
+                <li><strong>Water dissociates to maintain that balance.</strong> If SID falls (e.g. plasma Cl⁻ rises after 0.9% saline), HCO₃⁻ must fall to preserve electroneutrality — H⁺ rises and pH falls. Conversely, raising SID (loop diuretics, vomiting) forces HCO₃⁻ up → alkalosis.</li>
+                <li><strong>PaCO₂ and A<sub>tot</sub> act in parallel</strong> on the same equations — they shift the equilibrium independently of SID.</li>
+              </ol>
+            </div>
+
+
             <div className="space-y-3">
               {[
                 { var: "PaCO₂", detail: "Respiratory component. Regulated by ventilation. Acts as an independent variable that directly influences water dissociation and thus [H⁺]." },
