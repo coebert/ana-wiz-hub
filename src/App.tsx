@@ -129,6 +129,7 @@ const CirculatoryFailureTopic = lazy(() => import("./pages/topics/CirculatoryFai
 const AkiRrtTopic = lazy(() => import("./pages/topics/AkiRrtTopic"));
 const AcuteLiverFailureTopic = lazy(() => import("./pages/topics/AcuteLiverFailureTopic"));
 const AcutePancreatitisTopic = lazy(() => import("./pages/topics/AcutePancreatitisTopic"));
+const AbdominalCompartmentSyndromeTopic = lazy(() => import("./pages/topics/AbdominalCompartmentSyndromeTopic"));
 const NeurointensiveCareTopic = lazy(() => import("./pages/topics/NeurointensiveCareTopic"));
 const CardiacOutputMonitoringTopic = lazy(() => import("./pages/topics/CardiacOutputMonitoringTopic"));
 const AcidBaseTopic = lazy(() => import("./pages/topics/AcidBaseTopic"));
@@ -323,6 +324,7 @@ const App = () => (
           <Route path="/intensive-care/aki-rrt" element={<AkiRrtTopic />} />
           <Route path="/intensive-care/acute-liver-failure" element={<AcuteLiverFailureTopic />} />
           <Route path="/intensive-care/acute-pancreatitis" element={<AcutePancreatitisTopic />} />
+          <Route path="/intensive-care/abdominal-compartment-syndrome" element={<AbdominalCompartmentSyndromeTopic />} />
           <Route path="/intensive-care/neurointensive-care" element={<NeurointensiveCareTopic />} />
           <Route path="/intensive-care/cardiac-output-monitoring" element={<CardiacOutputMonitoringTopic />} />
           <Route path="/intensive-care/acid-base" element={<AcidBaseTopic />} />
