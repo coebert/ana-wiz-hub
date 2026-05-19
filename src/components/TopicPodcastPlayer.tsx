@@ -17,6 +17,7 @@ import {
   extractTopicContent,
   fetchPodcast,
   generatePodcast,
+  pollPodcastUntilDone,
   type PodcastResult,
 } from "@/lib/podcast";
 import { cn } from "@/lib/utils";
@@ -91,26 +92,29 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         });
         return;
       }
-      const result = await generatePodcast(topicId, topicTitle, content, opts);
+      let result = await generatePodcast(topicId, topicTitle, content, opts);
 
-      // If the backend says another generation is already in flight (likely
-      // started in another tab or just before this click), poll the cached
-      // row instead of showing nothing — surfaces the result as soon as it lands.
-      if (result.status === "generating") {
-        for (let i = 0; i < 60; i++) {
-          await new Promise((r) => setTimeout(r, 5000));
-          const polled = await fetchPodcast(topicId);
-          if (polled && polled.status !== "generating") {
-            setPodcast(polled);
-            if (polled.status === "ready") setSource("fresh");
+      // The edge function runs the heavy work in the background via
+      // EdgeRuntime.waitUntil, so the HTTP request may time out / fail at
+      // the proxy layer even though generation is still running. If the
+      // initial call returned `failed` or `generating`, fall back to polling
+      // the podcasts row until it reaches a terminal state.
+      if (result.status === "failed" || result.status === "generating") {
+        // Check the row right now: if it exists and is generating/ready,
+        // the background job is alive — keep polling regardless of the
+        // failed HTTP response.
+        const current = await fetchPodcast(topicId);
+        if (current && (current.status === "generating" || current.status === "ready")) {
+          if (current.status === "ready") {
+            setPodcast(current);
+            setSource("fresh");
             return;
           }
+          const polled = await pollPodcastUntilDone(topicId);
+          setPodcast(polled);
+          if (polled.status === "ready") setSource("fresh");
+          return;
         }
-        setPodcast({
-          status: "failed",
-          error: "Podcast is still generating. Refresh the page in a minute.",
-        });
-        return;
       }
 
       setPodcast(result);
@@ -183,9 +187,18 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         return;
       }
 
+      // The invoke may have timed out at the HTTP layer (the edge function
+      // keeps running in the background). If so, check whether the row has
+      // already flipped to `generating` — that indicates the password was
+      // accepted and the background job is alive.
       if (result.status === "failed") {
-        setRegenError(result.error || "Regeneration failed. Please try again.");
-        return;
+        const current = await fetchPodcast(topicId);
+        if (!current || current.status === "failed") {
+          setRegenError(result.error || "Regeneration failed. Please try again.");
+          return;
+        }
+        // Treat as in-flight; fall through to the swap + poll path.
+        result = current;
       }
 
       // Auth accepted — close dialog and swap the player into generating mode.
@@ -200,24 +213,9 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
       try {
         if (result.status === "generating") {
-          for (let i = 0; i < 60; i++) {
-            await new Promise((r) => setTimeout(r, 5000));
-            let polled: PodcastResult | null = null;
-            try {
-              polled = await fetchPodcast(topicId);
-            } catch {
-              polled = null;
-            }
-            if (polled && polled.status !== "generating") {
-              setPodcast(polled);
-              if (polled.status === "ready") setSource("fresh");
-              return;
-            }
-          }
-          setPodcast({
-            status: "failed",
-            error: "Podcast is still generating. Refresh the page in a minute.",
-          });
+          const polled = await pollPodcastUntilDone(topicId);
+          setPodcast(polled);
+          if (polled.status === "ready") setSource("fresh");
           return;
         }
         setPodcast(result);

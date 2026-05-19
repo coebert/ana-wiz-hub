@@ -89,6 +89,48 @@ export const fetchPodcast = async (
   };
 };
 
+/**
+ * Poll the cached podcasts row until it reaches a terminal state (`ready` or
+ * `failed`), or until the timeout elapses. Used as a fallback when the initial
+ * `generate-podcast` invocation times out at the HTTP layer but the edge
+ * function keeps running in the background via `EdgeRuntime.waitUntil`.
+ */
+export const pollPodcastUntilDone = async (
+  topicId: string,
+  opts: {
+    intervalMs?: number;
+    timeoutMs?: number;
+    onTick?: (result: PodcastResult | null) => void;
+    signal?: { cancelled: boolean };
+  } = {},
+): Promise<PodcastResult> => {
+  const intervalMs = opts.intervalMs ?? 5000;
+  const timeoutMs = opts.timeoutMs ?? 10 * 60 * 1000; // 10 minutes
+  const start = Date.now();
+
+  while (Date.now() - start < timeoutMs) {
+    if (opts.signal?.cancelled) {
+      return { status: "failed", error: "Polling cancelled." };
+    }
+    await new Promise((r) => setTimeout(r, intervalMs));
+    let polled: PodcastResult | null = null;
+    try {
+      polled = await fetchPodcast(topicId);
+    } catch {
+      polled = null;
+    }
+    opts.onTick?.(polled);
+    if (polled && (polled.status === "ready" || polled.status === "failed")) {
+      return polled;
+    }
+  }
+
+  return {
+    status: "failed",
+    error: "Podcast generation timed out. Refresh the page in a minute.",
+  };
+};
+
 export const generatePodcast = async (
   topicId: string,
   topicTitle: string,
