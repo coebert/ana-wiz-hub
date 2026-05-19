@@ -269,17 +269,17 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
   return (
     <div className="space-y-4">
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
-        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.06} />
+        <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.12} />
         <line x1={PL} y1={PT + plotH} x2={PL + plotW} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
         <line x1={PL} y1={PT} x2={PL} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
-        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[9px] fill-muted-foreground">PaO₂ (kPa)</text>
-        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[9px] fill-muted-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>Minute Ventilation (L/min)</text>
+        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[11px] fill-foreground">PaO₂ (kPa)</text>
+        <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[11px] fill-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>Minute Ventilation (L/min)</text>
 
         {[3, 5, 8, 10, 13, 16].map(p => (
-          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[7px] fill-muted-foreground">{p}</text>
+          <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[9px] fill-foreground">{p}</text>
         ))}
         {[0, 10, 20, 30, 40].map(v => (
-          <text key={v} x={PL - 4} y={toY(v) + 3} textAnchor="end" className="text-[7px] fill-muted-foreground">{v}</text>
+          <text key={v} x={PL - 4} y={toY(v) + 3} textAnchor="end" className="text-[9px] fill-foreground">{v}</text>
         ))}
 
         {/* Normal CO2 curve */}
@@ -295,9 +295,9 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
         }).join(" ")} fill="none" stroke="hsl(0, 70%, 55%)" strokeWidth="2" strokeDasharray="6,3" />
 
         {/* Danger zone */}
-        <rect x={PL} y={PT} width={toX(8) - PL} height={plotH} fill="hsl(0, 70%, 55%)" opacity={0.04} />
+        <rect x={PL} y={PT} width={toX(8) - PL} height={plotH} fill="hsl(0, 70%, 55%)" opacity={0.08} />
         <line x1={toX(8)} y1={PT} x2={toX(8)} y2={PT + plotH} stroke="hsl(0, 70%, 55%)" strokeWidth="1" strokeDasharray="4,3" />
-        <text x={toX(8) + 3} y={PT + 10} className="text-[7px] fill-destructive">PaO₂ 8 kPa</text>
+        <text x={toX(8) + 3} y={PT + 10} className="text-[9px] fill-destructive">PaO₂ 8 kPa</text>
 
         {/* Current point */}
         <circle cx={toX(paO2)} cy={toY(Math.min(currentVE, veMax))} r="5"
@@ -305,15 +305,15 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
 
         {/* Legend */}
         <line x1={W - 120} y1={PT + 8} x2={W - 100} y2={PT + 8} stroke="hsl(210, 70%, 55%)" strokeWidth="2" />
-        <text x={W - 97} y={PT + 11} className="text-[7px] fill-muted-foreground">PaCO₂ 5.3</text>
+        <text x={W - 97} y={PT + 11} className="text-[9px] fill-foreground">PaCO₂ 5.3</text>
         <line x1={W - 120} y1={PT + 18} x2={W - 100} y2={PT + 18} stroke="hsl(0, 70%, 55%)" strokeWidth="2" strokeDasharray="4,2" />
-        <text x={W - 97} y={PT + 21} className="text-[7px] fill-muted-foreground">PaCO₂ 6.7</text>
+        <text x={W - 97} y={PT + 21} className="text-[9px] fill-foreground">PaCO₂ 6.7</text>
       </svg>
 
       <Slider label="PaO₂" value={paO2} min={2.7} max={16} unit="kPa" onChange={setPaO2} />
 
-      <div className={`rounded-lg p-3 border ${paO2 < 8 ? "bg-destructive/5 border-destructive/30" : "bg-green-500/5 border-green-500/30"}`}>
-        <p className={`text-xs font-semibold ${paO2 < 8 ? "text-destructive" : "text-green-600"}`}>
+      <div className={`rounded-lg p-3 border ${paO2 < 8 ? "bg-destructive/5 border-destructive/30" : "bg-emerald-500/5 border-emerald-500/30"}`}>
+        <p className={`text-xs font-semibold ${paO2 < 8 ? "text-destructive" : "text-emerald-400"}`}>
           {paO2 < 8 ? `PaO₂ ${paO2.toFixed(1)} kPa — hypoxic drive active. Steep part of curve (like ODC).` :
            `PaO₂ ${paO2.toFixed(1)} kPa — minimal hypoxic drive. O₂ response is flat above 8 kPa.`}
         </p>
