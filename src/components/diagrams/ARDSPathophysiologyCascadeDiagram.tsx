@@ -99,6 +99,8 @@ export const ARDSPathophysiologyCascadeDiagram = () => (
       subtitle="From insult to fibrosis: the cellular events behind hypoxaemia and why lung-protective ventilation matters."
       accent="icu"
       steps={steps}
+      autoPlayOnVisible
+      stepDurationMs={3500}
     />
   </DiagramFigure>
 );
