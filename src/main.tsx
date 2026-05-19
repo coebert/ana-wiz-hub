@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
+import { ThemeProvider } from "next-themes";
 import App from "./App.tsx";
 import "./index.css";
 import { startVersionCheck } from "./lib/version-check";
@@ -53,6 +54,8 @@ startVersionCheck();
 
 createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
-    <App />
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <App />
+    </ThemeProvider>
   </HelmetProvider>,
 );
