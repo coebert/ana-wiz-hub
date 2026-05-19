@@ -200,6 +200,14 @@ Deno.serve(async (req) => {
       throw new Error("AI returned no references");
     }
 
+    // Validate PMIDs against PubMed — the model frequently hallucinates valid-
+    // looking PMIDs that point to unrelated articles. We:
+    //   1. esummary-batch all claimed PMIDs and compare normalised titles.
+    //   2. For mismatches (and refs with no PMID), esearch by title to try to
+    //      find the real PMID.
+    //   3. If nothing matches, drop the pmid so the link falls back to DOI/URL.
+    await validateAndEnrichPmids(refs);
+
     await supabase.from("topic_references").upsert(
       {
         topic_id: topicId,
@@ -231,3 +239,92 @@ Deno.serve(async (req) => {
     return fail(500, message);
   }
 });
+
+// ---------- PubMed validation ----------
+
+const PUBMED_BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils";
+
+const normaliseTitle = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim();
+
+/** Word-overlap similarity (Jaccard on tokens ≥4 chars). */
+const titleSimilarity = (a: string, b: string): number => {
+  const ta = new Set(normaliseTitle(a).split(" ").filter((w) => w.length >= 4));
+  const tb = new Set(normaliseTitle(b).split(" ").filter((w) => w.length >= 4));
+  if (ta.size === 0 || tb.size === 0) return 0;
+  let inter = 0;
+  for (const w of ta) if (tb.has(w)) inter++;
+  return inter / Math.min(ta.size, tb.size);
+};
+
+const TITLE_THRESHOLD = 0.55;
+
+async function pubmedSummary(pmids: string[]): Promise<Record<string, string>> {
+  if (pmids.length === 0) return {};
+  const url = `${PUBMED_BASE}/esummary.fcgi?db=pubmed&retmode=json&id=${pmids.join(",")}`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      await res.text();
+      return {};
+    }
+    const json = await res.json();
+    const result = json?.result ?? {};
+    const out: Record<string, string> = {};
+    for (const id of result.uids ?? []) {
+      const t = result[id]?.title;
+      if (typeof t === "string") out[id] = t;
+    }
+    return out;
+  } catch {
+    return {};
+  }
+}
+
+async function pubmedSearchByTitle(ref: Reference): Promise<string | null> {
+  const term = `${ref.title} ${ref.journal} ${ref.year}`.slice(0, 300);
+  const url = `${PUBMED_BASE}/esearch.fcgi?db=pubmed&retmode=json&retmax=3&term=${
+    encodeURIComponent(term)
+  }`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      await res.text();
+      return null;
+    }
+    const json = await res.json();
+    const ids: string[] = json?.esearchresult?.idlist ?? [];
+    if (ids.length === 0) return null;
+    const titles = await pubmedSummary(ids);
+    for (const id of ids) {
+      const t = titles[id];
+      if (t && titleSimilarity(t, ref.title) >= TITLE_THRESHOLD) return id;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+async function validateAndEnrichPmids(refs: Reference[]): Promise<void> {
+  // 1. Batch verify any claimed PMIDs.
+  const claimed = refs
+    .map((r, i) => ({ i, pmid: (r.pmid ?? "").trim() }))
+    .filter((x) => /^\d+$/.test(x.pmid));
+  const summary = await pubmedSummary(claimed.map((c) => c.pmid));
+  for (const { i, pmid } of claimed) {
+    const t = summary[pmid];
+    if (!t || titleSimilarity(t, refs[i].title) < TITLE_THRESHOLD) {
+      delete refs[i].pmid; // hallucinated — drop so UI falls back to DOI/URL
+    }
+  }
+
+  // 2. For refs still without a PMID, try title-based esearch (sequentially to
+  //    respect PubMed's ~3 req/s limit without an API key).
+  for (const r of refs) {
+    if (r.pmid) continue;
+    const found = await pubmedSearchByTitle(r);
+    if (found) r.pmid = found;
+    await new Promise((res) => setTimeout(res, 350));
+  }
+}
