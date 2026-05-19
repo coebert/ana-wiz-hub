@@ -5,6 +5,8 @@ import { acidBaseQuestions } from "@/data/quizzes";
 import StewartAcidBaseDiagram from "@/components/diagrams/StewartAcidBaseDiagram";
 import HendersonHasselbalchDiagram from "@/components/diagrams/HendersonHasselbalchDiagram";
 import AcidBaseInterpretationDiagram from "@/components/diagrams/AcidBaseInterpretationDiagram";
+import HAGMAPathophysiologyDiagram from "@/components/diagrams/HAGMAPathophysiologyDiagram";
+import DeltaRatioDiagram from "@/components/diagrams/DeltaRatioDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -216,6 +218,8 @@ const AcidBaseTopic = () => {
                 </p>
               </div>
 
+              <HAGMAPathophysiologyDiagram />
+
               <div className="rounded-md border border-border bg-secondary/30 p-3">
                 <p className="font-semibold text-foreground mb-1">Albumin correction is non-negotiable in ICU</p>
                 <p className="text-sm">
@@ -290,6 +294,8 @@ const AcidBaseTopic = () => {
                 </ul>
                 <p className="text-xs italic mt-2">Pure lactic acidosis classically gives a ratio ≈ 1.6 (lactate clears partly via tissues other than HCO₃⁻ regeneration); pure DKA ≈ 1.0. A ratio outside expectation always prompts a hunt for a second disorder.</p>
               </div>
+
+              <DeltaRatioDiagram />
 
               <div>
                 <p className="font-semibold text-foreground mb-1">Stewart re-framing</p>
