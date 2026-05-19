@@ -315,6 +315,8 @@ const AcidBaseTopic = () => {
                   <li><strong>Avoid harm:</strong> aggressive 0.9% saline resuscitation adds a hyperchloraemic NAGMA on top of HAGMA — prefer balanced crystalloids (Hartmann's, Plasma-Lyte) unless contraindicated.</li>
                 </ul>
               </div>
+
+              <ToxicAlcoholSalicylateCalculator />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
