@@ -352,6 +352,8 @@ const AcidBaseTopic = () => {
 
               <OsmolarGapCalculator />
 
+              <ToxicAlcoholTimelineDiagram />
+
               <div>
                 <p className="font-semibold text-foreground mb-1">Why osmolality vs osmolarity matters</p>
                 <ul className="list-disc list-inside space-y-1 text-sm">
