@@ -115,9 +115,12 @@ const NeonSplash = () => {
       }}
       style={{ transitionDuration: `${FADE_MS}ms` }}
       className={`fixed inset-0 z-[100] bg-[#05060a] cursor-pointer transition-opacity ease-in-out ${
-        leaving ? "opacity-0 pointer-events-none" : ready ? "opacity-100" : "opacity-0"
+        leaving ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
+      <div
+        style={{ transition: `opacity 200ms ease-out` }}
+        className={ready ? "opacity-100" : "opacity-0"}
       {/* Logo box — identical geometry to Landing.tsx hero logo.
           Vertical offset = sticky Header + hero section padding.
             • mobile (<sm): h-14 (56) + mobile exam-chip row (27) + border (1) + py-12 (48) = 132
