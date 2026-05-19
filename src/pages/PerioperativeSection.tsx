@@ -26,19 +26,7 @@ const PerioperativeSection = () => {
           <p className="text-xs text-muted-foreground">Perioperative medicine topics</p>
         </div>
       </div>
-      <div className="space-y-3">
-        {visibleTopics.map((topic) => (
-          <TopicCard
-            key={topic.id}
-            title={topic.title}
-            description={topic.description}
-            path={`/perioperative/${topic.id}`}
-            section="perioperative"
-            topicId={topic.id}
-            examTags={topic.examTags}
-          />
-        ))}
-      </div>
+      <SectionTopicsList section="perioperative" topics={visibleTopics} />
     </SectionLayout>
   );
 };
