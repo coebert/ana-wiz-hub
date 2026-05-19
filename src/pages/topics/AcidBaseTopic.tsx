@@ -7,6 +7,8 @@ import HendersonHasselbalchDiagram from "@/components/diagrams/HendersonHasselba
 import AcidBaseInterpretationDiagram from "@/components/diagrams/AcidBaseInterpretationDiagram";
 import HAGMAPathophysiologyDiagram from "@/components/diagrams/HAGMAPathophysiologyDiagram";
 import DeltaRatioDiagram from "@/components/diagrams/DeltaRatioDiagram";
+import OsmolarGapCalculator from "@/components/diagrams/OsmolarGapCalculator";
+import ToxicAlcoholSalicylateCalculator from "@/components/diagrams/ToxicAlcoholSalicylateCalculator";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -313,6 +315,8 @@ const AcidBaseTopic = () => {
                   <li><strong>Avoid harm:</strong> aggressive 0.9% saline resuscitation adds a hyperchloraemic NAGMA on top of HAGMA — prefer balanced crystalloids (Hartmann's, Plasma-Lyte) unless contraindicated.</li>
                 </ul>
               </div>
+
+              <ToxicAlcoholSalicylateCalculator />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -335,6 +339,8 @@ const AcidBaseTopic = () => {
                   <strong> Normal &lt; 10 mOsm/kg.</strong> A widened gap means unmeasured, osmotically active particles are present in plasma.
                 </p>
               </div>
+
+              <OsmolarGapCalculator />
 
               <div>
                 <p className="font-semibold text-foreground mb-1">Why osmolality vs osmolarity matters</p>
