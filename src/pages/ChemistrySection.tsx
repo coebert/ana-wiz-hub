@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { SectionTopicsList } from "@/components/SectionTopicsList";
+import { SectionSummary } from "@/components/SectionSummary";
 import { chemistryTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
@@ -35,6 +36,7 @@ const ChemistrySection = () => {
         </div>
       </div>
       <SectionTopicsList section="chemistry" topics={visibleTopics} />
+      <SectionSummary section="chemistry" />
     </SectionLayout>
   );
 };

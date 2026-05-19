@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { SectionTopicsList } from "@/components/SectionTopicsList";
+import { SectionSummary } from "@/components/SectionSummary";
 import { perioperativeTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
@@ -27,6 +28,7 @@ const PerioperativeSection = () => {
         </div>
       </div>
       <SectionTopicsList section="perioperative" topics={visibleTopics} />
+      <SectionSummary section="perioperative" />
     </SectionLayout>
   );
 };
