@@ -442,69 +442,85 @@ Deno.serve(async (req) => {
       { onConflict: "topic_id" },
     );
 
-    try {
-      console.log(`[${topicId}] Generating script...`);
-      const script = await generateScript(topicTitle, content);
-      console.log(`[${topicId}] Script length: ${script.length} chars`);
+    // Generation can take 2–5 minutes (LLM + multi-chunk TTS + upload), which
+    // exceeds the supabase.functions.invoke HTTP timeout (~150s) and causes
+    // the client to see a "connection closed before message completed" error
+    // even though the server is still working.
+    //
+    // Run the heavy work in the background with EdgeRuntime.waitUntil and
+    // return 202 immediately. The client already polls the `podcasts` row
+    // every 5s, so the UI will flip to "ready" once the row is updated.
+    const work = (async () => {
+      try {
+        console.log(`[${topicId}] Generating script...`);
+        const script = await generateScript(topicTitle, content);
+        console.log(`[${topicId}] Script length: ${script.length} chars`);
 
-      const chunks = chunkScript(script);
-      const oversize = chunks.filter((c) => c.length > HARD_TTS_LIMIT).length;
-      if (oversize > 0) {
-        throw new Error(`Internal error: ${oversize} chunk(s) exceed TTS limit after splitting`);
+        const chunks = chunkScript(script);
+        const oversize = chunks.filter((c) => c.length > HARD_TTS_LIMIT).length;
+        if (oversize > 0) {
+          throw new Error(`Internal error: ${oversize} chunk(s) exceed TTS limit after splitting`);
+        }
+        console.log(
+          `[${topicId}] Synthesising ${chunks.length} chunk(s) at concurrency ${Math.min(TTS_CONCURRENCY, chunks.length)}...`,
+        );
+        const tStart = Date.now();
+        const audioParts = await synthesiseChunksParallel(chunks, topicId);
+        console.log(`[${topicId}] TTS complete in ${((Date.now() - tStart) / 1000).toFixed(1)}s`);
+
+        const fullAudio = concatMp3(audioParts);
+        const audioPath = `${topicId}.mp3`;
+        console.log(`[${topicId}] Uploading ${fullAudio.length} bytes to ${audioPath}`);
+
+        const { error: uploadErr } = await supabase.storage
+          .from("podcasts")
+          .upload(audioPath, fullAudio, {
+            contentType: "audio/mpeg",
+            upsert: true,
+          });
+        if (uploadErr) throw new Error(`Storage upload failed: ${uploadErr.message}`);
+
+        const wordCount = script.split(/\s+/).length;
+        const durationSeconds = Math.round(wordCount / 2.5);
+
+        await supabase
+          .from("podcasts")
+          .update({
+            script,
+            audio_path: audioPath,
+            duration_seconds: durationSeconds,
+            voice: TTS_VOICE,
+            status: "ready",
+            error_message: null,
+          })
+          .eq("topic_id", topicId);
+
+        console.log(`[${topicId}] Generation complete — row marked ready.`);
+      } catch (genErr) {
+        const message = genErr instanceof Error ? genErr.message : String(genErr);
+        const failure = normaliseProviderError(message);
+        console.error(`[${topicId}] Generation failed:`, message);
+        await supabase
+          .from("podcasts")
+          .update({ status: "failed", error_message: failure.error })
+          .eq("topic_id", topicId);
       }
-      console.log(
-        `[${topicId}] Synthesising ${chunks.length} chunk(s) at concurrency ${Math.min(TTS_CONCURRENCY, chunks.length)}...`,
-      );
-      const tStart = Date.now();
-      const audioParts = await synthesiseChunksParallel(chunks, topicId);
-      console.log(`[${topicId}] TTS complete in ${((Date.now() - tStart) / 1000).toFixed(1)}s`);
+    })();
 
-      const fullAudio = concatMp3(audioParts);
-      const audioPath = `${topicId}.mp3`;
-      console.log(`[${topicId}] Uploading ${fullAudio.length} bytes to ${audioPath}`);
-
-      const { error: uploadErr } = await supabase.storage
-        .from("podcasts")
-        .upload(audioPath, fullAudio, {
-          contentType: "audio/mpeg",
-          upsert: true,
-        });
-      if (uploadErr) throw new Error(`Storage upload failed: ${uploadErr.message}`);
-
-      const wordCount = script.split(/\s+/).length;
-      const durationSeconds = Math.round(wordCount / 2.5);
-
-      await supabase
-        .from("podcasts")
-        .update({
-          script,
-          audio_path: audioPath,
-          duration_seconds: durationSeconds,
-          voice: TTS_VOICE,
-          status: "ready",
-          error_message: null,
-        })
-        .eq("topic_id", topicId);
-
-      const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(audioPath);
-
-      return jsonResponse({
-        status: "ready",
-        audio_url: pub.publicUrl,
-        script,
-        duration_seconds: durationSeconds,
-        cached: false,
-      });
-    } catch (genErr) {
-      const message = genErr instanceof Error ? genErr.message : String(genErr);
-      const failure = normaliseProviderError(message);
-      console.error(`[${topicId}] Generation failed:`, message);
-      await supabase
-        .from("podcasts")
-        .update({ status: "failed", error_message: failure.error })
-        .eq("topic_id", topicId);
-      return failureResponse(failure);
+    // @ts-expect-error — EdgeRuntime is a Supabase Edge Runtime global, not in Deno types.
+    if (typeof EdgeRuntime !== "undefined" && EdgeRuntime?.waitUntil) {
+      // @ts-expect-error — see above.
+      EdgeRuntime.waitUntil(work);
+    } else {
+      // Local/dev fallback: fire-and-forget. Errors are swallowed inside `work`.
+      void work;
     }
+
+    return jsonResponse(
+      { status: "generating", message: "Generation started — poll the podcasts row for completion." },
+      202,
+    );
+
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     console.error("Request failed:", message);
