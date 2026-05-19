@@ -72,6 +72,7 @@ const ClinicalSection = () => {
           </Link>
         </div>
       </div>
+      <SectionSummary section="clinical" />
       <SectionReferencesPanel section="clinical" topics={clinicalTopics} />
     </SectionLayout>
   );

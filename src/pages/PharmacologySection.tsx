@@ -44,6 +44,7 @@ const PharmacologySection = () => {
           </div>
         ))}
       </div>
+      <SectionSummary section="pharmacology" />
       <SectionReferencesPanel
         section="pharmacology"
         topics={pharmacologyTopics.filter((t) => t.available)}

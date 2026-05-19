@@ -44,6 +44,7 @@ const PhysiologySection = () => {
           </div>
         ))}
       </div>
+      <SectionSummary section="physiology" />
       <SectionReferencesPanel
         section="physiology"
         topics={physiologyTopics.filter((t) => t.available)}
