@@ -208,6 +208,7 @@ const App = () => (
           <Route path="/" element={<Landing />} />
           <Route path="/revise" element={<Index />} />
           <Route path="/map" element={<TopicMap />} />
+          <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/progress" element={<ProgressTracker />} />
           <Route path="/podcasts" element={<PodcastsLibrary />} />
           <Route path="/glossary-audit" element={<GlossaryAudit />} />
