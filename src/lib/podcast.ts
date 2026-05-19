@@ -144,6 +144,19 @@ export const pollPodcastUntilDone = async (
     if (polled && (polled.status === "ready" || polled.status === "failed")) {
       return polled;
     }
+    // Stale detection: the row is still `generating` but its `updated_at`
+    // hasn't moved in longer than the stale threshold — the background job
+    // has almost certainly died (edge crash, OOM, deploy mid-run, etc.).
+    // Surface this as a failed result so the UI can offer a clean retry
+    // (which the server will reclaim, since it has its own stale guard).
+    if (polled && isStaleGenerating(polled)) {
+      return {
+        ...polled,
+        status: "failed",
+        error:
+          "Previous generation appears stalled (no progress for several minutes). Click retry to start a new one.",
+      };
+    }
   }
 
   return {
