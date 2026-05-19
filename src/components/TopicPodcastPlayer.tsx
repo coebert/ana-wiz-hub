@@ -173,7 +173,10 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           setSource("cache");
           return;
         }
-        if (current?.status === "generating") {
+        // Only attach to a healthy in-flight generation. A stale one falls
+        // through to the normal invoke path, which the edge function's
+        // reclaim logic will turn into a fresh run.
+        if (current?.status === "generating" && !isStaleGenerating(current)) {
           setProgress({ elapsedSec: 0, lastStatus: "generating" });
           const polled = await pollPodcastUntilDone(topicId, {
             onTick: (r) =>
