@@ -312,6 +312,9 @@ const CardiacCycleTopic = () => {
               LA trace but is directly visible at the bedside as the JVP. Recognising abnormal waves is an
               FFICM exam staple.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <JVPWaveformDiagram />
+            </div>
             <div className="overflow-x-auto rounded-lg border border-border mt-3">
               <table className="w-full text-sm">
                 <thead className="bg-secondary/50">
