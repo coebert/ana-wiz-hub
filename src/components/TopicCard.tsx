@@ -28,7 +28,7 @@ const examTagColors: Record<ExamTag, string> = {
   edic: "bg-sky-500/10 text-sky-700 border-sky-500/20",
 };
 
-export const TopicCard = ({ title, description, path, section, topicId, examTags }: TopicCardProps) => {
+export const TopicCard = ({ title, description, path, section, topicId, examTags, referenceCount }: TopicCardProps) => {
   const { isCompleted } = useProgress();
   const completed = topicId ? isCompleted(topicId) : false;
 
