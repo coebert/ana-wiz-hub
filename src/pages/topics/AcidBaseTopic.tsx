@@ -218,6 +218,8 @@ const AcidBaseTopic = () => {
                 </p>
               </div>
 
+              <HAGMAPathophysiologyDiagram />
+
               <div className="rounded-md border border-border bg-secondary/30 p-3">
                 <p className="font-semibold text-foreground mb-1">Albumin correction is non-negotiable in ICU</p>
                 <p className="text-sm">
