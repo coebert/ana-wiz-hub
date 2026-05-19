@@ -10,6 +10,7 @@ import DeltaRatioDiagram from "@/components/diagrams/DeltaRatioDiagram";
 import OsmolarGapCalculator from "@/components/diagrams/OsmolarGapCalculator";
 import OsmolarityBreakdownDiagram from "@/components/diagrams/OsmolarityBreakdownDiagram";
 import ToxicAlcoholSalicylateCalculator from "@/components/diagrams/ToxicAlcoholSalicylateCalculator";
+import ToxicAlcoholTimelineDiagram from "@/components/diagrams/ToxicAlcoholTimelineDiagram";
 import HAGMAManagementAlgorithm from "@/components/diagrams/HAGMAManagementAlgorithm";
 import HAGMAWorkupFlowchart from "@/components/diagrams/HAGMAWorkupFlowchart";
 import { WorkedExample } from "@/components/WorkedExamples";
