@@ -445,8 +445,8 @@ const NeurointensiveCareTopic = () => {
           {(() => {
             const refs = [
               { id: "rcp2020", label: "RCP 2020 PDoC national clinical guidelines", url: "https://www.rcp.ac.uk/projects/outputs/prolonged-disorders-consciousness-following-sudden-onset-brain-injury-national" },
-              { id: "giacino", label: "Giacino et al. Neurology 2018 — AAN/ACRM/NIDILRR practice guideline", url: "https://www.neurology.org/doi/10.1212/WNL.0000000000005926" },
-              { id: "monti", label: "Monti et al. NEJM 2010 — wilful modulation of brain activity in DoC", url: "https://www.nejm.org/doi/full/10.1056/NEJMoa0905370" },
+              { id: "giacino", label: "Giacino et al. Neurology 2018 — AAN/ACRM/NIDILRR practice guideline (PubMed)", url: "https://pubmed.ncbi.nlm.nih.gov/30089618/" },
+              { id: "monti", label: "Monti et al. NEJM 2010 — wilful modulation of brain activity in DoC (PubMed)", url: "https://pubmed.ncbi.nlm.nih.gov/20130250/" },
               { id: "bmacanh", label: "BMA/RCP/GMC CANH guidance 2018 (updated 2024)", url: "https://www.bma.org.uk/advice-and-support/ethics/adults-who-lack-capacity/clinically-assisted-nutrition-and-hydration" },
               { id: "ntvy", label: "An NHS Trust and others v Y [2018] UKSC 46", url: "https://www.supremecourt.uk/cases/uksc-2017-0202.html" },
             ] as const;
