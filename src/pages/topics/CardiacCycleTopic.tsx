@@ -8,6 +8,7 @@ import FrankStarlingDiagram from "@/components/diagrams/FrankStarlingDiagram";
 import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
 import AorticDicroticNotchDiagram from "@/components/diagrams/AorticDicroticNotchDiagram";
 import DichroticNotchComparisonPanel from "@/components/diagrams/DichroticNotchComparisonPanel";
+import JVPWaveformDiagram from "@/components/diagrams/JVPWaveformDiagram";
 import { cardiacCycleQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -311,6 +312,9 @@ const CardiacCycleTopic = () => {
               LA trace but is directly visible at the bedside as the JVP. Recognising abnormal waves is an
               FFICM exam staple.
             </p>
+            <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+              <JVPWaveformDiagram />
+            </div>
             <div className="overflow-x-auto rounded-lg border border-border mt-3">
               <table className="w-full text-sm">
                 <thead className="bg-secondary/50">
