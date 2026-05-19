@@ -1,5 +1,5 @@
 import { SectionLayout } from "@/components/SectionLayout";
-import { TopicCard } from "@/components/TopicCard";
+import { SectionTopicsList } from "@/components/SectionTopicsList";
 import { anatomyTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
