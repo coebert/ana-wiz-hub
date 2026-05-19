@@ -4,7 +4,6 @@ import { BookOpen, ChevronDown } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Section, Topic } from "@/data/curriculum";
 import { TopicReferencesButton } from "@/components/TopicReferencesButton";
-import { Button } from "@/components/ui/button";
 
 interface Props {
   section: Section;
