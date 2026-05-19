@@ -59,13 +59,14 @@ interface Finding {
 
 /* ---------- Pattern detectors ---------- */
 
-// Dark SVG fills that would be invisible on a dark page surface.
-const DARK_SVG_FILL = new RegExp(
-  [
-    String.raw`\bfill\s*=\s*"(?:#0{3}|#0{6}|#1[0-9a-f]{2}|#2[0-9a-f]{2}|black)"`,
-    String.raw`\bfill\s*=\s*"rgb\(\s*[0-3]?\d\s*,\s*[0-3]?\d\s*,\s*[0-3]?\d\s*\)"`,
-    String.raw`\bfill\s*=\s*"hsl\(\s*\d+(?:\.\d+)?\s*,?\s*\d+(?:\.\d+)?%?\s*,?\s*(?:[0-9]|1[0-9])%\s*\)"`,
-  ].join("|"),
+// Dark fills that would be invisible on a dark page surface. We only want
+// matches that sit INSIDE a <text>/<tspan> open tag, so the regex anchors
+// on the element name and walks its attributes.
+const DARK_TEXT_TAG = new RegExp(
+  String.raw`<(?:text|tspan)\b[^>]*\bfill\s*=\s*"(?:` +
+    String.raw`#0{3}|#0{6}|#1[0-9a-f]{2}|#2[0-9a-f]{2}|black|` +
+    String.raw`rgb\(\s*[0-3]?\d\s*,\s*[0-3]?\d\s*,\s*[0-3]?\d\s*\)|` +
+    String.raw`hsl\([^)]*?\b(?:[0-9]|1[0-9])%\s*\))"`,
   "i",
 );
 
