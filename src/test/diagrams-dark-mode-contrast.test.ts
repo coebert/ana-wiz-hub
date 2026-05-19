@@ -126,7 +126,7 @@ describe("Diagrams: dark-mode contrast guard", () => {
           `  • Tailwind: use text-foreground / text-muted-foreground (or add a dark: variant).\n` +
           `  • Canvas: read the foreground colour at draw time, e.g.\n` +
           `      const fg = getComputedStyle(document.documentElement).getPropertyValue('--foreground');\n` +
-          `      ctx.fillStyle = \`hsl(${fg})\`;\n` +
+          `      ctx.fillStyle = \`hsl(\${fg})\`;\n` +
           `  • If the dark surface is intentional (ultrasound, ECG, CT), add the basename to\n` +
           `    INTENTIONAL_DARK_SURFACE in src/test/diagrams-dark-mode-contrast.test.ts.\n`,
       );
