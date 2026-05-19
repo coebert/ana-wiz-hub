@@ -259,346 +259,358 @@ const SeverePancreatitisCTDiagram = () => {
               className="w-full h-auto block rounded-lg border border-border bg-[hsl(var(--background))]"
             >
               <defs>
-                <radialGradient id="spct-bg" cx="50%" cy="50%" r="60%">
-                  <stop offset="0%" stopColor="hsl(220 14% 14%)" />
-                  <stop offset="100%" stopColor="hsl(220 18% 6%)" />
+                {/* CT soft-tissue window grayscale background */}
+                <radialGradient id="spct-bg" cx="50%" cy="50%" r="70%">
+                  <stop offset="0%" stopColor="hsl(0 0% 3%)" />
+                  <stop offset="100%" stopColor="hsl(0 0% 0%)" />
                 </radialGradient>
-                <pattern id="spct-fat" width="2" height="2" patternUnits="userSpaceOnUse">
-                  <rect width="2" height="2" fill="hsl(220 12% 22%)" />
-                  <circle cx="1" cy="1" r="0.18" fill="hsl(220 8% 12%)" opacity="0.6" />
+                {/* Subcutaneous fat (HU ≈ −100) — dark gray with faint reticulation */}
+                <pattern id="spct-fat" width="2.2" height="2.2" patternUnits="userSpaceOnUse">
+                  <rect width="2.2" height="2.2" fill="hsl(0 0% 20%)" />
+                  <path d="M0 1.1 L2.2 1.1 M1.1 0 L1.1 2.2" stroke="hsl(0 0% 14%)" strokeWidth="0.12" opacity="0.5" />
                 </pattern>
+                {/* Mesenteric / intra-abdominal fat (slightly brighter than subcut) */}
+                <pattern id="spct-mesfat" width="2.4" height="2.4" patternUnits="userSpaceOnUse">
+                  <rect width="2.4" height="2.4" fill="hsl(0 0% 22%)" />
+                  <circle cx="1.2" cy="1.2" r="0.18" fill="hsl(0 0% 15%)" opacity="0.5" />
+                </pattern>
+                {/* Inflammatory stranding — reticular, brighter strands through fat */}
                 <pattern id="spct-stranding" width="3" height="3" patternUnits="userSpaceOnUse">
-                  <rect width="3" height="3" fill="hsl(220 14% 28%)" />
-                  <path d="M0 0 L3 3 M0 3 L3 0" stroke="hsl(220 8% 14%)" strokeWidth="0.5" />
+                  <rect width="3" height="3" fill="hsl(0 0% 30%)" />
+                  <path d="M0 0 L3 3 M0 3 L3 0 M0 1.5 L3 1.5 M1.5 0 L1.5 3"
+                        stroke="hsl(0 0% 46%)" strokeWidth="0.22" opacity="0.85" />
                 </pattern>
-                <filter id="spct-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="0.4" />
+                {/* Liver parenchyma — homogeneous mid-gray with faint vascular flecks */}
+                <pattern id="spct-liver" width="6" height="6" patternUnits="userSpaceOnUse">
+                  <rect width="6" height="6" fill="hsl(0 0% 52%)" />
+                  <circle cx="1.5" cy="2" r="0.35" fill="hsl(0 0% 38%)" opacity="0.7" />
+                  <circle cx="4.5" cy="4.2" r="0.5" fill="hsl(0 0% 36%)" opacity="0.75" />
+                  <circle cx="3" cy="5" r="0.25" fill="hsl(0 0% 40%)" opacity="0.6" />
+                </pattern>
+                {/* Spleen parenchyma — slightly heterogeneous arterial-phase */}
+                <pattern id="spct-spleen" width="5" height="5" patternUnits="userSpaceOnUse">
+                  <rect width="5" height="5" fill="hsl(0 0% 48%)" />
+                  <path d="M0 1 Q2.5 0 5 1 M0 3.5 Q2.5 2.5 5 3.5"
+                        stroke="hsl(0 0% 58%)" strokeWidth="0.25" fill="none" opacity="0.7" />
+                </pattern>
+                {/* Bone (cortex bright, marrow slightly darker) */}
+                <radialGradient id="spct-bone" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stopColor="hsl(0 0% 70%)" />
+                  <stop offset="80%" stopColor="hsl(0 0% 92%)" />
+                  <stop offset="100%" stopColor="hsl(0 0% 98%)" />
+                </radialGradient>
+                {/* Renal cortex / medulla differentiation (corticomedullary phase) */}
+                <radialGradient id="spct-kidney" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stopColor="hsl(0 0% 38%)" />
+                  <stop offset="55%" stopColor="hsl(0 0% 44%)" />
+                  <stop offset="100%" stopColor="hsl(0 0% 62%)" />
+                </radialGradient>
+                {/* Film grain — quantum mottle */}
+                <filter id="spct-grain" x="0" y="0" width="100%" height="100%">
+                  <feTurbulence type="fractalNoise" baseFrequency="2.6" numOctaves="2" seed="7" />
+                  <feColorMatrix values="0 0 0 0 1
+                                          0 0 0 0 1
+                                          0 0 0 0 1
+                                          0 0 0 0.12 0" />
+                  <feComposite in2="SourceGraphic" operator="in" />
                 </filter>
+                <filter id="spct-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="0.25" />
+                </filter>
+                {/* Clip everything to the body outline so background stays jet-black */}
+                <clipPath id="spct-body-clip">
+                  <ellipse cx="50" cy="52" rx="45" ry="38" />
+                </clipPath>
               </defs>
-  
-              {/* CT background (body cross-section) */}
+
+              {/* Jet-black gantry background */}
               <rect x="0" y="0" width="100" height="100" fill="url(#spct-bg)" />
-  
-              {/* Body wall ellipse (skin / subcut fat) */}
-              <ellipse
-                cx="50"
-                cy="52"
-                rx="45"
-                ry="38"
-                fill="url(#spct-fat)"
-                stroke="hsl(220 8% 8%)"
-                strokeWidth="0.5"
-              />
-              {/* Inner peritoneal cavity */}
-              <ellipse
-                cx="50"
-                cy="52"
-                rx="40"
-                ry="34"
-                fill="hsl(220 14% 32%)"
-                stroke="hsl(220 8% 10%)"
-                strokeWidth="0.5"
-              />
-  
-              {/* Left pleural effusion (top right corner — patient's left) */}
+
+              {/* Left pleural effusion outside the body clip (sits above diaphragm) */}
               {showFindings && (
                 <g
                   onClick={() => setSelected("effusion")}
                   style={{ cursor: "pointer" }}
-                  opacity={selected === "effusion" ? 1 : 0.85}
                 >
+                  {/* Lung base (aerated — black) */}
+                  <path d="M62 2 Q78 2 90 10 L90 2 Z" fill="hsl(0 0% 4%)" />
+                  {/* Effusion crescent — water density */}
                   <path
-                    d="M70 4 Q85 4 92 18 L92 4 Z"
-                    fill="hsl(210 50% 35%)"
-                    stroke="hsl(210 60% 50%)"
-                    strokeWidth={selected === "effusion" ? 0.7 : 0.35}
+                    d="M68 4 Q82 6 92 16 Q92 20 86 22 Q76 22 70 14 Q68 10 68 4 Z"
+                    fill="hsl(0 0% 30%)"
+                    stroke={selected === "effusion" ? "hsl(45 90% 65%)" : "hsl(0 0% 18%)"}
+                    strokeWidth={selected === "effusion" ? 0.7 : 0.25}
                   />
                 </g>
               )}
-  
-              {/* Liver (right side of patient = viewer's left) */}
-              <path
-                d="M8 24 Q12 16 28 18 Q40 20 42 36 Q40 48 28 50 Q14 48 8 38 Z"
-                fill="hsl(20 28% 38%)"
-                stroke="hsl(20 30% 22%)"
-                strokeWidth="0.5"
-                filter="url(#spct-shadow)"
-              />
-  
-              {/* Gallbladder */}
-              <ellipse
-                cx="22"
-                cy="40"
-                rx="4"
-                ry="5"
-                fill="hsl(50 55% 45%)"
-                stroke="hsl(45 40% 25%)"
-                strokeWidth="0.5"
-              />
-              {/* Gallstone */}
-              {showFindings && (
-                <g
-                  onClick={() => setSelected("gallstone")}
-                  style={{ cursor: "pointer" }}
-                >
-                  <circle
-                    cx="24"
-                    cy="38"
-                    r={selected === "gallstone" ? 1.4 : 1.1}
-                    fill="hsl(45 75% 78%)"
-                    stroke="hsl(30 40% 20%)"
-                    strokeWidth="0.5"
-                  />
+
+              {/* ─── BODY CROSS-SECTION ─── */}
+              <g clipPath="url(#spct-body-clip)">
+
+                {/* Subcutaneous fat layer */}
+                <ellipse cx="50" cy="52" rx="45" ry="38" fill="url(#spct-fat)" />
+
+                {/* Anterior abdominal wall musculature */}
+                <path d="M30 16 Q50 12 70 16 L72 22 Q50 19 28 22 Z" fill="hsl(0 0% 40%)" opacity="0.85" />
+                <rect x="44" y="14" width="5" height="8" rx="1.2" fill="hsl(0 0% 44%)" />
+                <rect x="51" y="14" width="5" height="8" rx="1.2" fill="hsl(0 0% 44%)" />
+                <line x1="50" y1="14" x2="50" y2="22" stroke="hsl(0 0% 22%)" strokeWidth="0.35" />
+                <path d="M6 40 Q5 56 10 78 Q14 82 18 80 Q14 60 16 42 Z" fill="hsl(0 0% 38%)" opacity="0.8" />
+                <path d="M94 40 Q95 56 90 78 Q86 82 82 80 Q86 60 84 42 Z" fill="hsl(0 0% 38%)" opacity="0.8" />
+
+                {/* Peritoneal cavity background (mesenteric fat) */}
+                <ellipse cx="50" cy="54" rx="38" ry="32" fill="url(#spct-mesfat)" />
+
+                {/* Ribs — lateral cortical arcs */}
+                <g fill="url(#spct-bone)" stroke="hsl(0 0% 30%)" strokeWidth="0.25">
+                  <path d="M8 40 Q5 50 9 62 Q11 62 13 60 Q10 50 12 42 Z" />
+                  <path d="M6 52 Q4 62 8 74 Q10 74 12 72 Q9 62 10 54 Z" />
+                  <path d="M92 40 Q95 50 91 62 Q89 62 87 60 Q90 50 88 42 Z" />
+                  <path d="M94 52 Q96 62 92 74 Q90 74 88 72 Q91 62 90 54 Z" />
                 </g>
-              )}
-  
-              {/* Spleen (patient's left = viewer's right) */}
-              <path
-                d="M92 30 Q86 22 76 28 Q72 36 78 44 Q86 46 92 38 Z"
-                fill="hsl(0 35% 38%)"
-                stroke="hsl(0 40% 22%)"
-                strokeWidth="0.5"
-                filter="url(#spct-shadow)"
-              />
-  
-              {/* Stomach (anterior, midline-left) */}
-              <ellipse
-                cx="42"
-                cy="32"
-                rx="10"
-                ry="5"
-                fill="hsl(220 18% 22%)"
-                stroke="hsl(220 12% 10%)"
-                strokeWidth="0.5"
-              />
-  
-              {/* Vertebral body (midline posterior) */}
-              <ellipse
-                cx="50"
-                cy="72"
-                rx="7"
-                ry="5"
-                fill="hsl(40 18% 78%)"
-                stroke="hsl(220 8% 14%)"
-                strokeWidth="0.5"
-              />
-              {/* Spinal canal */}
-              <ellipse cx="50" cy="73" rx="2.5" ry="2" fill="hsl(220 14% 28%)" />
-              {/* Transverse processes */}
-              <path
-                d="M43 72 L36 70 L36 74 Z M57 72 L64 70 L64 74 Z"
-                fill="hsl(40 18% 78%)"
-                stroke="hsl(220 8% 14%)"
-                strokeWidth="0.5"
-              />
-  
-              {/* Aorta */}
-              <circle
-                cx="54"
-                cy="66"
-                r="3"
-                fill="hsl(0 75% 50%)"
-                stroke="hsl(0 60% 25%)"
-                strokeWidth="0.5"
-              />
-              {/* IVC */}
-              <ellipse
-                cx="46"
-                cy="66"
-                rx="3.2"
-                ry="2.4"
-                fill="hsl(220 70% 45%)"
-                stroke="hsl(220 60% 22%)"
-                strokeWidth="0.5"
-              />
-  
-              {/* Kidneys (paired, posterior lateral) */}
-              <ellipse
-                cx="22"
-                cy="62"
-                rx="4.5"
-                ry="6"
-                fill="hsl(20 35% 42%)"
-                stroke="hsl(20 30% 22%)"
-                strokeWidth="0.5"
-              />
-              <ellipse
-                cx="78"
-                cy="62"
-                rx="4.5"
-                ry="6"
-                fill="hsl(20 35% 42%)"
-                stroke="hsl(20 30% 22%)"
-                strokeWidth="0.5"
-              />
-  
-              {/* Perinephric stranding (right kidney) */}
-              {showFindings && (
-                <g
-                  onClick={() => setSelected("kidney")}
-                  style={{ cursor: "pointer" }}
-                  opacity={selected === "kidney" ? 1 : 0.85}
-                >
-                  <ellipse
-                    cx="78"
-                    cy="62"
-                    rx="7.5"
-                    ry="9"
-                    fill="none"
-                    stroke="hsl(45 80% 60%)"
-                    strokeWidth={selected === "kidney" ? 0.7 : 0.45}
-                    strokeDasharray="0.6 0.8"
-                  />
-                </g>
-              )}
-  
-              {/* Pancreas — head, body, tail (curving across midline anterior to vertebra) */}
-              {/* Body (necrotic — central non-enhancing region) */}
-              {showFindings && (
-                <g
-                  onClick={() => setSelected("necrosis")}
-                  style={{ cursor: "pointer" }}
-                >
-                  <path
-                    d="M30 56 Q42 46 54 50 Q66 54 74 50 Q70 60 56 58 Q42 60 30 60 Z"
-                    fill="hsl(20 30% 30%)"
-                    stroke={selected === "necrosis" ? "hsl(45 90% 65%)" : "hsl(20 30% 18%)"}
-                    strokeWidth={selected === "necrosis" ? 0.9 : 0.45}
-                  />
-                  {/* Necrotic non-enhancing core */}
-                  <path
-                    d="M40 52 Q50 48 58 52 Q56 58 48 58 Q42 58 40 54 Z"
-                    fill="hsl(220 18% 20%)"
-                    stroke="hsl(220 8% 8%)"
-                    strokeWidth="0.5"
-                  />
-                  {/* Gas bubbles within necrotic collection */}
-                  <g onClick={(e) => { e.stopPropagation(); setSelected("gas"); }}>
-                    <circle cx="54" cy="54" r={selected === "gas" ? 1.3 : 1} fill="hsl(220 10% 6%)" stroke={selected === "gas" ? "hsl(45 90% 65%)" : "hsl(220 6% 4%)"} strokeWidth={selected === "gas" ? 0.5 : 0.25} />
-                    <circle cx="56.5" cy="56" r={selected === "gas" ? 0.9 : 0.7} fill="hsl(220 10% 6%)" stroke={selected === "gas" ? "hsl(45 90% 65%)" : "hsl(220 6% 4%)"} strokeWidth={selected === "gas" ? 0.5 : 0.25} />
-                    <circle cx="52" cy="56.5" r={selected === "gas" ? 0.7 : 0.55} fill="hsl(220 10% 6%)" stroke={selected === "gas" ? "hsl(45 90% 65%)" : "hsl(220 6% 4%)"} strokeWidth={selected === "gas" ? 0.5 : 0.25} />
+                {/* Costal cartilage (less dense) */}
+                <path d="M28 18 Q24 26 22 36 L25 36 Q27 26 30 19 Z" fill="hsl(0 0% 60%)" opacity="0.7" />
+                <path d="M72 18 Q76 26 78 36 L75 36 Q73 26 70 19 Z" fill="hsl(0 0% 60%)" opacity="0.7" />
+
+                {/* Vertebral body */}
+                <ellipse cx="50" cy="72" rx="7" ry="5" fill="url(#spct-bone)" stroke="hsl(0 0% 30%)" strokeWidth="0.35" />
+                <ellipse cx="50" cy="73.5" rx="2.4" ry="1.9" fill="hsl(0 0% 28%)" stroke="hsl(0 0% 60%)" strokeWidth="0.2" />
+                <ellipse cx="50" cy="73.5" rx="1.1" ry="1" fill="hsl(0 0% 42%)" />
+                <path d="M43 72 L34 69 L34 73 Q40 73 43 73 Z M57 72 L66 69 L66 73 Q60 73 57 73 Z"
+                      fill="url(#spct-bone)" stroke="hsl(0 0% 30%)" strokeWidth="0.25" />
+                <path d="M48 76 L52 76 L51 82 L49 82 Z" fill="url(#spct-bone)" stroke="hsl(0 0% 30%)" strokeWidth="0.25" />
+
+                {/* Paraspinal + psoas + quadratus lumborum */}
+                <ellipse cx="40" cy="76" rx="5" ry="4" fill="hsl(0 0% 42%)" />
+                <ellipse cx="60" cy="76" rx="5" ry="4" fill="hsl(0 0% 42%)" />
+                <ellipse cx="42" cy="70" rx="3.2" ry="3.6" fill="hsl(0 0% 44%)" />
+                <ellipse cx="58" cy="70" rx="3.2" ry="3.6" fill="hsl(0 0% 44%)" />
+                <path d="M34 66 Q32 72 36 78 Q40 76 38 70 Z" fill="hsl(0 0% 40%)" opacity="0.85" />
+                <path d="M66 66 Q68 72 64 78 Q60 76 62 70 Z" fill="hsl(0 0% 40%)" opacity="0.85" />
+
+                {/* ─── LIVER ─── */}
+                <path
+                  d="M6 24 Q10 14 28 16 Q44 20 46 36 Q44 50 30 52 Q14 50 6 38 Z"
+                  fill="url(#spct-liver)"
+                  stroke="hsl(0 0% 28%)"
+                  strokeWidth="0.4"
+                  filter="url(#spct-shadow)"
+                />
+                <path d="M22 28 Q28 30 32 36 M18 36 Q24 38 28 42 M26 22 Q30 26 30 32"
+                      fill="none" stroke="hsl(0 0% 36%)" strokeWidth="0.7" strokeLinecap="round" opacity="0.85" />
+                <path d="M30 24 Q36 32 42 46" fill="none" stroke="hsl(0 0% 62%)" strokeWidth="0.55" opacity="0.7" />
+                <ellipse cx="40" cy="42" rx="1.4" ry="1.1" fill="hsl(0 0% 70%)" />
+
+                {/* Gallbladder */}
+                <ellipse cx="22" cy="40" rx="4" ry="5" fill="hsl(0 0% 26%)" stroke="hsl(0 0% 40%)" strokeWidth="0.35" />
+                {showFindings && (
+                  <g onClick={() => setSelected("gallstone")} style={{ cursor: "pointer" }}>
+                    <circle
+                      cx="24" cy="38"
+                      r={selected === "gallstone" ? 1.5 : 1.2}
+                      fill="hsl(0 0% 94%)"
+                      stroke={selected === "gallstone" ? "hsl(45 90% 65%)" : "hsl(0 0% 60%)"}
+                      strokeWidth="0.4"
+                    />
+                    <circle cx="24" cy="38" r="1.3" fill="none" stroke="hsl(0 0% 100%)" strokeWidth="0.18" opacity="0.6" />
                   </g>
+                )}
+
+                {/* ─── SPLEEN ─── */}
+                <path
+                  d="M94 28 Q86 20 74 28 Q70 38 78 46 Q88 48 94 38 Z"
+                  fill="url(#spct-spleen)"
+                  stroke="hsl(0 0% 28%)"
+                  strokeWidth="0.4"
+                  filter="url(#spct-shadow)"
+                />
+
+                {/* ─── STOMACH (gas + fluid level + rugae) ─── */}
+                <ellipse cx="42" cy="32" rx="10" ry="5.2" fill="hsl(0 0% 36%)" stroke="hsl(0 0% 22%)" strokeWidth="0.4" />
+                <path d="M33 30 Q42 28 51 30 L51 32.5 Q42 31.5 33 32.5 Z" fill="hsl(0 0% 5%)" />
+                <line x1="33" y1="32.5" x2="51" y2="32.5" stroke="hsl(0 0% 70%)" strokeWidth="0.18" />
+                <path d="M36 34 Q42 36 48 34 M38 36 Q42 37 46 36"
+                      fill="none" stroke="hsl(0 0% 24%)" strokeWidth="0.25" opacity="0.7" />
+
+                {/* Duodenal C-loop */}
+                <path d="M22 50 Q20 56 24 62 Q30 64 32 58"
+                      fill="none" stroke="hsl(0 0% 42%)" strokeWidth="2.2" strokeLinecap="round" />
+                <circle cx="23" cy="58" r="0.6" fill="hsl(0 0% 6%)" />
+
+                {/* Aorta, IVC, SMA, SMV, portal confluence */}
+                <circle cx="54" cy="66" r="3" fill="hsl(0 0% 88%)" stroke="hsl(0 0% 40%)" strokeWidth="0.35" />
+                <ellipse cx="46" cy="66" rx="3.2" ry="2.4" fill="hsl(0 0% 70%)" stroke="hsl(0 0% 40%)" strokeWidth="0.35" />
+                <circle cx="50" cy="60" r="0.9" fill="hsl(0 0% 92%)" stroke="hsl(0 0% 40%)" strokeWidth="0.2" />
+                <circle cx="46.5" cy="58.5" r="1.1" fill="hsl(0 0% 70%)" stroke="hsl(0 0% 40%)" strokeWidth="0.2" />
+                <ellipse cx="44" cy="52" rx="2" ry="1.3" fill="hsl(0 0% 68%)" stroke="hsl(0 0% 38%)" strokeWidth="0.25" />
+
+                {/* Kidneys with cortex/medulla + collecting system */}
+                <g>
+                  <ellipse cx="22" cy="62" rx="4.8" ry="6.2" fill="url(#spct-kidney)" stroke="hsl(0 0% 28%)" strokeWidth="0.4" />
+                  <ellipse cx="24" cy="62" rx="1.8" ry="2.6" fill="hsl(0 0% 22%)" opacity="0.6" />
+                  <ellipse cx="24" cy="62" rx="1" ry="1.6" fill="hsl(0 0% 30%)" />
                 </g>
-              )}
+                <g>
+                  <ellipse cx="78" cy="62" rx="4.8" ry="6.2" fill="url(#spct-kidney)" stroke="hsl(0 0% 28%)" strokeWidth="0.4" />
+                  <ellipse cx="76" cy="62" rx="1.8" ry="2.6" fill="hsl(0 0% 22%)" opacity="0.6" />
+                  <ellipse cx="76" cy="62" rx="1" ry="1.6" fill="hsl(0 0% 30%)" />
+                </g>
+
+                {/* Perinephric stranding */}
+                {showFindings && (
+                  <g
+                    onClick={() => setSelected("kidney")}
+                    style={{ cursor: "pointer" }}
+                    opacity={selected === "kidney" ? 1 : 0.9}
+                  >
+                    <ellipse
+                      cx="78" cy="62" rx="7.8" ry="9.4"
+                      fill="none"
+                      stroke={selected === "kidney" ? "hsl(45 90% 65%)" : "hsl(0 0% 78%)"}
+                      strokeWidth={selected === "kidney" ? 0.55 : 0.35}
+                      strokeDasharray="0.7 0.9"
+                    />
+                    <path d="M70 58 Q74 60 78 58 M82 58 Q86 60 88 58 M82 68 Q86 66 88 68"
+                          stroke="hsl(0 0% 70%)" strokeWidth="0.25" fill="none" opacity="0.85" />
+                  </g>
+                )}
+
+                {/* ─── PANCREAS — head / body / tail with necrotic core + gas ─── */}
+                {showFindings && (
+                  <g onClick={() => setSelected("necrosis")} style={{ cursor: "pointer" }}>
+                    <path
+                      d="M28 56 Q32 50 38 50 Q48 46 56 50 Q66 54 74 50 Q78 52 76 56 Q70 60 56 58 Q42 60 32 60 Q28 60 28 56 Z"
+                      fill="hsl(0 0% 48%)"
+                      stroke={selected === "necrosis" ? "hsl(45 90% 65%)" : "hsl(0 0% 24%)"}
+                      strokeWidth={selected === "necrosis" ? 0.85 : 0.4}
+                    />
+                    <path
+                      d="M40 52 Q50 48 58 52 Q56 58 48 58 Q42 58 40 54 Z"
+                      fill="hsl(0 0% 24%)"
+                      stroke="hsl(0 0% 14%)"
+                      strokeWidth="0.4"
+                    />
+                    <circle cx="46" cy="54" r="0.8" fill="hsl(0 0% 32%)" opacity="0.7" />
+                    <circle cx="50" cy="56" r="0.6" fill="hsl(0 0% 18%)" opacity="0.8" />
+                    <g onClick={(e) => { e.stopPropagation(); setSelected("gas"); }}>
+                      <circle cx="54" cy="54" r={selected === "gas" ? 1.3 : 1} fill="hsl(0 0% 4%)"
+                              stroke={selected === "gas" ? "hsl(45 90% 65%)" : "hsl(0 0% 60%)"} strokeWidth={selected === "gas" ? 0.5 : 0.22} />
+                      <circle cx="56.5" cy="56" r={selected === "gas" ? 0.9 : 0.7} fill="hsl(0 0% 4%)"
+                              stroke={selected === "gas" ? "hsl(45 90% 65%)" : "hsl(0 0% 60%)"} strokeWidth={selected === "gas" ? 0.5 : 0.22} />
+                      <circle cx="52" cy="56.5" r={selected === "gas" ? 0.7 : 0.55} fill="hsl(0 0% 4%)"
+                              stroke={selected === "gas" ? "hsl(45 90% 65%)" : "hsl(0 0% 60%)"} strokeWidth={selected === "gas" ? 0.5 : 0.22} />
+                    </g>
+                  </g>
+                )}
+
+                {/* Peripancreatic fat stranding */}
+                {showFindings && (
+                  <g
+                    onClick={() => setSelected("stranding")}
+                    style={{ cursor: "pointer" }}
+                    opacity={selected === "stranding" ? 1 : 0.85}
+                  >
+                    <path
+                      d="M24 50 Q42 38 56 44 Q72 46 80 42 Q82 56 70 64 Q54 68 36 66 Q24 64 22 56 Z"
+                      fill="url(#spct-stranding)"
+                      stroke={selected === "stranding" ? "hsl(45 90% 65%)" : "hsl(0 0% 32%)"}
+                      strokeWidth={selected === "stranding" ? 0.7 : 0.25}
+                      opacity="0.55"
+                    />
+                  </g>
+                )}
+
+                {/* Acute peripancreatic fluid collection */}
+                {showFindings && (
+                  <g onClick={() => setSelected("collection")} style={{ cursor: "pointer" }}>
+                    <path
+                      d="M12 54 Q22 50 30 58 Q32 66 24 70 Q12 68 10 60 Z"
+                      fill="hsl(0 0% 32%)"
+                      stroke={selected === "collection" ? "hsl(45 90% 65%)" : "hsl(0 0% 50%)"}
+                      strokeWidth={selected === "collection" ? 0.7 : 0.35}
+                    />
+                  </g>
+                )}
+
+                {/* Lesser sac collection */}
+                {showFindings && (
+                  <g onClick={() => setSelected("lesser")} style={{ cursor: "pointer" }}>
+                    <path
+                      d="M34 38 Q48 36 60 40 Q58 46 46 46 Q36 46 34 42 Z"
+                      fill="hsl(0 0% 32%)"
+                      stroke={selected === "lesser" ? "hsl(45 90% 65%)" : "hsl(0 0% 50%)"}
+                      strokeWidth={selected === "lesser" ? 0.7 : 0.35}
+                    />
+                  </g>
+                )}
+
+                {/* Splenic vein with thrombus filling defect */}
+                {showFindings && (
+                  <g onClick={() => setSelected("splenic")} style={{ cursor: "pointer" }}>
+                    <path
+                      d="M50 50 Q58 50 66 50 Q72 50 76 48"
+                      fill="none"
+                      stroke="hsl(0 0% 66%)"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <ellipse
+                      cx="64" cy="50" rx="2.4" ry="1.1"
+                      fill="hsl(0 0% 26%)"
+                      stroke={selected === "splenic" ? "hsl(45 90% 65%)" : "hsl(0 0% 40%)"}
+                      strokeWidth={selected === "splenic" ? 0.6 : 0.3}
+                    />
+                  </g>
+                )}
+
+                {/* Ascites — bilateral paracolic gutters */}
+                {showFindings && (
+                  <g
+                    onClick={() => setSelected("ascites")}
+                    style={{ cursor: "pointer" }}
+                    opacity={selected === "ascites" ? 1 : 0.85}
+                  >
+                    <path
+                      d="M8 68 Q14 76 22 80 Q14 86 6 80 Z"
+                      fill="hsl(0 0% 30%)"
+                      stroke={selected === "ascites" ? "hsl(45 90% 65%)" : "hsl(0 0% 48%)"}
+                      strokeWidth={selected === "ascites" ? 0.6 : 0.3}
+                    />
+                    <path
+                      d="M88 70 Q94 78 92 86 Q84 84 80 76 Z"
+                      fill="hsl(0 0% 30%)"
+                      stroke={selected === "ascites" ? "hsl(45 90% 65%)" : "hsl(0 0% 48%)"}
+                      strokeWidth={selected === "ascites" ? 0.6 : 0.3}
+                    />
+                  </g>
+                )}
+
+                {/* Transverse colon — oedematous wall, gas lumen, haustra */}
+                {showFindings && (
+                  <g onClick={() => setSelected("bowel")} style={{ cursor: "pointer" }}>
+                    <path
+                      d="M28 80 Q50 73 72 80"
+                      fill="none"
+                      stroke={selected === "bowel" ? "hsl(45 90% 65%)" : "hsl(0 0% 50%)"}
+                      strokeWidth={selected === "bowel" ? 3.5 : 2.8}
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M28 80 Q50 74.5 72 80"
+                      fill="none"
+                      stroke="hsl(0 0% 6%)"
+                      strokeWidth="1.1"
+                      strokeLinecap="round"
+                    />
+                    <path d="M38 78 L38 79.5 M50 75 L50 77 M62 78 L62 79.5"
+                          stroke="hsl(0 0% 50%)" strokeWidth="0.3" />
+                  </g>
+                )}
+
+              </g>
+              {/* Quantum-mottle grain overlay */}
+              <rect x="0" y="0" width="100" height="100" filter="url(#spct-grain)" opacity="0.55" pointerEvents="none" />
   
-              {/* Peripancreatic fat stranding (around the pancreas) */}
-              {showFindings && (
-                <g
-                  onClick={() => setSelected("stranding")}
-                  style={{ cursor: "pointer" }}
-                  opacity={selected === "stranding" ? 1 : 0.85}
-                >
-                  <path
-                    d="M26 50 Q42 40 56 46 Q72 48 78 44 Q80 56 70 62 Q54 66 38 64 Q26 62 24 56 Z"
-                    fill="url(#spct-stranding)"
-                    stroke={selected === "stranding" ? "hsl(45 90% 65%)" : "hsl(220 8% 14%)"}
-                    strokeWidth={selected === "stranding" ? 0.7 : 0.3}
-                    opacity="0.55"
-                  />
-                </g>
-              )}
-  
-              {/* Acute peripancreatic fluid collection (left anterior pararenal) */}
-              {showFindings && (
-                <g
-                  onClick={() => setSelected("collection")}
-                  style={{ cursor: "pointer" }}
-                >
-                  <path
-                    d="M14 56 Q22 52 30 58 Q32 66 24 68 Q14 66 12 60 Z"
-                    fill="hsl(210 55% 38%)"
-                    stroke={selected === "collection" ? "hsl(45 90% 65%)" : "hsl(210 50% 22%)"}
-                    strokeWidth={selected === "collection" ? 0.8 : 0.4}
-                  />
-                </g>
-              )}
-  
-              {/* Lesser sac collection (between stomach and pancreas) */}
-              {showFindings && (
-                <g
-                  onClick={() => setSelected("lesser")}
-                  style={{ cursor: "pointer" }}
-                >
-                  <path
-                    d="M36 38 Q48 36 58 40 Q56 46 46 46 Q38 46 36 42 Z"
-                    fill="hsl(210 55% 38%)"
-                    stroke={selected === "lesser" ? "hsl(45 90% 65%)" : "hsl(210 50% 22%)"}
-                    strokeWidth={selected === "lesser" ? 0.8 : 0.4}
-                  />
-                </g>
-              )}
-  
-              {/* Splenic vein thrombus (posterior to body of pancreas, leading to spleen) */}
-              {showFindings && (
-                <g
-                  onClick={() => setSelected("splenic")}
-                  style={{ cursor: "pointer" }}
-                >
-                  <path
-                    d="M54 50 Q60 50 66 50 Q72 50 76 48"
-                    fill="none"
-                    stroke="hsl(220 60% 32%)"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  {/* Filling defect (thrombus) */}
-                  <ellipse
-                    cx="64"
-                    cy="50"
-                    rx="2.4"
-                    ry="1.2"
-                    fill="hsl(0 0% 12%)"
-                    stroke={selected === "splenic" ? "hsl(45 90% 65%)" : "hsl(220 30% 18%)"}
-                    strokeWidth={selected === "splenic" ? 0.7 : 0.35}
-                  />
-                </g>
-              )}
-  
-              {/* Free ascites (dependent / paracolic gutters) */}
-              {showFindings && (
-                <g
-                  onClick={() => setSelected("ascites")}
-                  style={{ cursor: "pointer" }}
-                  opacity={selected === "ascites" ? 1 : 0.85}
-                >
-                  <path
-                    d="M10 70 Q16 76 22 78 Q14 84 8 80 Z"
-                    fill="hsl(210 55% 38%)"
-                    stroke={selected === "ascites" ? "hsl(45 90% 65%)" : "hsl(210 50% 22%)"}
-                    strokeWidth={selected === "ascites" ? 0.7 : 0.35}
-                  />
-                  <path
-                    d="M86 72 Q92 78 90 84 Q82 82 80 76 Z"
-                    fill="hsl(210 55% 38%)"
-                    stroke={selected === "ascites" ? "hsl(45 90% 65%)" : "hsl(210 50% 22%)"}
-                    strokeWidth={selected === "ascites" ? 0.7 : 0.35}
-                  />
-                </g>
-              )}
-  
-              {/* Transverse colon (oedematous) */}
-              {showFindings && (
-                <g
-                  onClick={() => setSelected("bowel")}
-                  style={{ cursor: "pointer" }}
-                >
-                  <path
-                    d="M28 78 Q50 72 72 78"
-                    fill="none"
-                    stroke={selected === "bowel" ? "hsl(45 90% 65%)" : "hsl(30 35% 50%)"}
-                    strokeWidth={selected === "bowel" ? 3.5 : 2.8}
-                    strokeLinecap="round"
-                    opacity="0.9"
-                  />
-                  <path
-                    d="M28 78 Q50 73.5 72 78"
-                    fill="none"
-                    stroke="hsl(220 14% 32%)"
-                    strokeWidth="1"
-                    strokeLinecap="round"
-                  />
-                </g>
-              )}
   
               {/* Compass labels — orientation */}
               <text x="50" y="2.5" fontSize="2" textAnchor="middle" fill="hsl(var(--muted-foreground))" style={{ fontFamily: "JetBrains Mono, monospace" }}>A</text>
