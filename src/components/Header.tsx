@@ -138,6 +138,8 @@ export const Header = () => {
             </a>
 
             <ReduceMotionToggle />
+            <ThemeToggle />
+
 
             <button
               onClick={() => setSearchOpen(true)}
