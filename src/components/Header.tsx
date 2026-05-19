@@ -4,6 +4,7 @@ import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList
 import brainLogo from "/brain-logo.webp";
 import { SearchDialog } from "@/components/SearchDialog";
 import { ReduceMotionToggle } from "@/components/ReduceMotionToggle";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { Exam, ExamTag } from "@/data/curriculum";
 
