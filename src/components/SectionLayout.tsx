@@ -195,15 +195,34 @@ export const SectionLayout = ({
           <script type="application/ld+json">{JSON.stringify(courseJsonLd)}</script>
         )}
       </Helmet>
-      {backPath && (
-        <Link
-          to={backPath}
-          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          {backLabel || "Back"}
-        </Link>
-      )}
+      <nav aria-label="Breadcrumb" className="mb-6">
+        <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
+          <li>
+            <Link to="/" className="hover:text-foreground transition-colors">
+              Home
+            </Link>
+          </li>
+          <li aria-hidden className="text-muted-foreground/60">/</li>
+          <li>
+            <Link to="/revise" className="hover:text-foreground transition-colors">
+              Core Disciplines
+            </Link>
+          </li>
+          <li aria-hidden className="text-muted-foreground/60">/</li>
+          <li aria-current="page" className="font-medium text-foreground truncate max-w-[16rem]">
+            {title}
+          </li>
+        </ol>
+        {backPath && backPath !== "/revise" && backPath !== "/" && (
+          <Link
+            to={backPath}
+            className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors mt-2"
+          >
+            <ChevronLeft className="h-3.5 w-3.5" />
+            {backLabel || "Back"}
+          </Link>
+        )}
+      </nav>
       <div className="mb-6 sm:mb-8">
         <h1 className={`text-2xl sm:text-3xl md:text-4xl font-serif font-bold break-words ${accentColor || "text-foreground"}`}>
           {title}
