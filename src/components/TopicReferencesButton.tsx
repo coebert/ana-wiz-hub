@@ -15,6 +15,8 @@ import {
   fetchTopicReferences,
   generateTopicReferences,
   formatReference,
+  referenceHref,
+  referenceLinkLabel,
   TopicReference,
 } from "@/lib/topicReferences";
 
@@ -163,8 +165,8 @@ export const TopicReferencesButton = ({
 
 const ReferenceItem = ({ ref_ }: { ref_: TopicReference }) => {
   const text = formatReference(ref_);
-  const href =
-    ref_.url || (ref_.doi ? `https://doi.org/${ref_.doi}` : undefined);
+  const href = referenceHref(ref_);
+  const label = referenceLinkLabel(ref_);
   return (
     <li className="leading-relaxed">
       <span>{text}</span>
@@ -173,10 +175,11 @@ const ReferenceItem = ({ ref_ }: { ref_: TopicReference }) => {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-1 inline-flex items-center gap-0.5 text-primary hover:underline"
+          className="ml-1.5 inline-flex items-center gap-0.5 align-baseline text-primary hover:underline text-xs font-medium"
+          aria-label={`Open citation on ${label}`}
         >
           <ExternalLink className="h-3 w-3" />
-          <span className="sr-only">Open citation</span>
+          {label}
         </a>
       )}
     </li>

@@ -28,6 +28,7 @@ interface Reference {
   issue?: string;
   pages?: string;
   doi?: string;
+  pmid?: string;
   url?: string;
 }
 
@@ -39,7 +40,8 @@ Produce 5 references in the style of "BJA Education" (Continuing Education in An
   3. Landmark primary research (NEJM, Lancet, BJA, Anaesthesia, Crit Care Med, ICM).
 
 Rules:
-  - Citations must be plausible and accurate to the best of your knowledge. If you are unsure of an exact volume/page/DOI, omit that field rather than fabricating it.
+  - Citations must be plausible and accurate to the best of your knowledge. If you are unsure of an exact volume/page/DOI/PMID, omit that field rather than fabricating it.
+  - Include the PubMed ID (pmid) as a digits-only string whenever you are confident of it — this is the preferred link target. Include doi when known. Only include a url for guidelines/web resources that have no PMID or DOI.
   - Use Vancouver-style author lists (up to 3 authors then "et al.").
   - Year must be a 4-digit integer between 1995 and the current year.
   - Output ONLY the JSON object described by the tool schema. No prose.`;
@@ -73,6 +75,7 @@ const REF_TOOL = {
               issue: { type: "string" },
               pages: { type: "string" },
               doi: { type: "string" },
+              pmid: { type: "string", description: "PubMed ID, digits only" },
               url: { type: "string" },
             },
             required: ["authors", "title", "journal", "year"],
