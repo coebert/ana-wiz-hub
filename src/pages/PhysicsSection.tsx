@@ -15,8 +15,8 @@ const PhysicsSection = () => {
     <SectionLayout
       title="Physics"
       subtitle="Physical principles applied to anaesthetic equipment and monitoring"
-      backPath="/"
-      backLabel="Home"
+      backPath="/revise"
+      backLabel="Core Disciplines"
       accentColor="text-physics"
     >
       <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">

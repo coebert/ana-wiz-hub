@@ -17,8 +17,8 @@ const ClinicalSection = () => {
     <SectionLayout
       title="Clinical Anaesthesia"
       subtitle="Subspecialty anaesthesia and clinical management"
-      backPath="/"
-      backLabel="Home"
+      backPath="/revise"
+      backLabel="Core Disciplines"
       accentColor="text-clinical"
     >
       <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">

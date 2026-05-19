@@ -13,8 +13,8 @@ const PharmacologySection = () => {
     <SectionLayout
       title="Pharmacology"
       subtitle="Drug action, kinetics and dynamics relevant to anaesthesia"
-      backPath="/"
-      backLabel="Home"
+      backPath="/revise"
+      backLabel="Core Disciplines"
       accentColor="text-pharmacology"
     >
       <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">

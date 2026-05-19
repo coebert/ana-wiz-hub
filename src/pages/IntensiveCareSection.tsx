@@ -15,8 +15,8 @@ const IntensiveCareSection = () => {
     <SectionLayout
       title="Intensive Care Medicine"
       subtitle="Critical care physiology, organ support, and disease management"
-      backPath="/"
-      backLabel="Home"
+      backPath="/revise"
+      backLabel="Core Disciplines"
       accentColor="text-icu"
     >
       <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">
