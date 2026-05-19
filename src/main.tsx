@@ -54,6 +54,8 @@ startVersionCheck();
 
 createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
-    <App />
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <App />
+    </ThemeProvider>
   </HelmetProvider>,
 );
