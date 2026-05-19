@@ -94,13 +94,25 @@ describe("Diagrams: dark-mode contrast guard", () => {
       // Pre-compute whether this file uses a canvas (only then is fillStyle relevant for text).
       const usesCanvasText = /\bgetContext\(['"]2d['"]\)/.test(src) && /\bfillText\(/.test(src);
 
+      // ----- SVG <text>/<tspan> with a dark literal fill -----
+      // Whole-source scan so we catch multi-line tags. Re-create the regex
+      // per file because it carries the /g flag and stateful lastIndex.
+      const svgRe = new RegExp(DARK_TEXT_TAG.source, "gi");
+      let m: RegExpExecArray | null;
+      while ((m = svgRe.exec(src))) {
+        const lineNo = src.slice(0, m.index).split("\n").length;
+        findings.push({
+          file,
+          line: lineNo,
+          rule: "dark-svg-text-fill",
+          snippet: m[0].replace(/\s+/g, " ").slice(0, 160),
+        });
+      }
+
+      // ----- Per-line checks for Tailwind utilities and canvas text -----
       for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
         const lineNo = i + 1;
-
-        if (DARK_SVG_FILL.test(line) && /<text|<tspan/i.test(src.slice(Math.max(0, src.indexOf(line) - 200), src.indexOf(line) + line.length + 20))) {
-          findings.push({ file, line: lineNo, rule: "dark-svg-text-fill", snippet: line.trim().slice(0, 160) });
-        }
 
         if (DARK_TEXT_UTILITY.test(line) && !HAS_DARK_OVERRIDE.test(line)) {
           findings.push({ file, line: lineNo, rule: "dark-tailwind-text", snippet: line.trim().slice(0, 160) });
