@@ -8,6 +8,7 @@ import AcidBaseInterpretationDiagram from "@/components/diagrams/AcidBaseInterpr
 import HAGMAPathophysiologyDiagram from "@/components/diagrams/HAGMAPathophysiologyDiagram";
 import DeltaRatioDiagram from "@/components/diagrams/DeltaRatioDiagram";
 import OsmolarGapCalculator from "@/components/diagrams/OsmolarGapCalculator";
+import OsmolarityBreakdownDiagram from "@/components/diagrams/OsmolarityBreakdownDiagram";
 import ToxicAlcoholSalicylateCalculator from "@/components/diagrams/ToxicAlcoholSalicylateCalculator";
 import HAGMAManagementAlgorithm from "@/components/diagrams/HAGMAManagementAlgorithm";
 import HAGMAWorkupFlowchart from "@/components/diagrams/HAGMAWorkupFlowchart";
