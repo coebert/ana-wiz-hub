@@ -317,6 +317,8 @@ const AcidBaseTopic = () => {
                 </ul>
               </div>
 
+              <HAGMAManagementAlgorithm />
+
               <ToxicAlcoholSalicylateCalculator />
             </div>
             </CollapsibleSubsection>
