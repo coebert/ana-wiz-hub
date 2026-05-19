@@ -240,11 +240,32 @@ export const SectionLayout = ({
           </Link>
         )}
       </nav>
-      <div className="mb-6 sm:mb-8">
-        <h1 className={`text-2xl sm:text-3xl md:text-4xl font-serif font-bold break-words ${accentColor || "text-foreground"}`}>
-          {title}
-        </h1>
-        <p className="text-muted-foreground mt-2 text-base sm:text-lg break-words">{subtitle}</p>
+      <div className="mb-6 sm:mb-8 flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <h1 className={`text-2xl sm:text-3xl md:text-4xl font-serif font-bold break-words ${accentColor || "text-foreground"}`}>
+            {title}
+          </h1>
+          <p className="text-muted-foreground mt-2 text-base sm:text-lg break-words">{subtitle}</p>
+        </div>
+        {(() => {
+          // Auto-render the References button on topic pages
+          // (/{section}/{topic-id}). Section landings (segments.length === 1)
+          // and other routes don't show it.
+          if (segments.length !== 2) return null;
+          const sec = segments[0] as Section;
+          if (!(sec in topicsBySection)) return null;
+          const topic = topicsBySection[sec].find((t) => t.id === segments[1]);
+          if (!topic) return null;
+          return (
+            <div className="shrink-0">
+              <TopicReferencesButton
+                topicId={topic.id}
+                topicTitle={topic.title}
+                section={sec}
+              />
+            </div>
+          );
+        })()}
       </div>
       {autoItems.length > 0 && <StickyTOC items={autoItems} />}
       <div ref={contentRef}>{children}</div>
