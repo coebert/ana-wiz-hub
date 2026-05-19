@@ -305,6 +305,28 @@ const ARDSTopic = () => {
                 <strong>Absolute:</strong> Irreversible condition with no plan (bridge to nowhere), advanced directives refusing. <strong>Relative:</strong> Prolonged MV &gt;10 days, severe immunosuppression, uncontrolled bleeding, severe aortic regurgitation (VA-ECMO), aortic dissection.
               </p>
             </div>
+            <div className="p-4 rounded-lg border border-primary/30 bg-primary/5">
+              <p className="text-sm font-semibold text-foreground">Optimal timing of SARF / ECMO centre discussion</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                In England, severe respiratory failure is managed through the commissioned <strong>Severe Acute Respiratory Failure (SARF) service</strong> at five adult centres (Glenfield/Leicester, Royal Papworth, Guy's &amp; St Thomas', Aberdeen Royal Infirmary, Wythenshawe), accessed via a single 24/7 referral pathway. The principle is <strong>"refer early, transfer if needed"</strong> — discussion is not a commitment to cannulation.
+              </p>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li><strong>Discuss with SARF as soon as the patient is failing optimal conventional therapy</strong>, not when they are <em>in extremis</em>. Trigger thresholds for a phone call:
+                  <ul className="mt-1 list-[circle] pl-5 space-y-0.5">
+                    <li>PaO₂/FiO₂ &lt;150 mmHg with FiO₂ ≥0.6 and PEEP ≥10 despite lung-protective ventilation, OR</li>
+                    <li>Murray score ≥2.5, OR</li>
+                    <li>Uncompensated hypercapnia (pH &lt;7.25) with Pplat &gt;30 cmH₂O, OR</li>
+                    <li>Anticipated escalation: failing on HFNO/NIV with rising oxygen requirement, or pre-intubation in fulminant viral pneumonitis / status asthmaticus.</li>
+                  </ul>
+                </li>
+                <li><strong>Do not wait for EOLIA criteria</strong> (P/F &lt;80 for 6 h, P/F &lt;50 for 3 h, or pH &lt;7.25 + PaCO₂ ≥60 for 6 h) before <em>phoning</em> — these are cannulation criteria. By the time they are met, retrieval logistics (4–8 h door-to-door in the UK) may make transfer hazardous.</li>
+                <li><strong>Refer within the first 7 days of mechanical ventilation.</strong> Mechanical ventilation &gt;7 days is a relative contraindication (ELSO/EOLIA); &gt;10 days approaches absolute. Outcomes deteriorate sharply once fibroproliferative change is established.</li>
+                <li><strong>Initiate proning and NMB before or in parallel with the referral call</strong> — do not delay either. SARF teams expect the referring unit to have optimised PEEP, attempted ≥1 prone session where feasible, and corrected fluid balance/sepsis source before retrieval.</li>
+                <li><strong>What to have ready for the call</strong> (UK SARF proforma): demographics &amp; weight, premorbid functional status &amp; comorbidities, aetiology &amp; day of illness, current ventilator settings + last ABG (with FiO₂/PEEP), Murray score components (P/F, PEEP, compliance, CXR quadrants), vasopressor dose, recent imaging, COVID/PCR status, and bleeding/anticoagulation status.</li>
+                <li><strong>Special groups warranting earlier discussion</strong>: pregnant or peripartum patients, young patients (&lt;65) with single-organ respiratory failure, suspected reversible aetiology (viral pneumonitis, asthma, eosinophilic pneumonia, AAV/anti-GBM, smoke inhalation), and any patient where awake/pre-intubation VV-ECMO is being considered.</li>
+                <li><strong>Mobile ECMO retrieval</strong>: if the patient is too unstable to transfer conventionally, SARF centres can deploy a mobile cannulation team — this option only exists if you have referred early enough for the team to mobilise.</li>
+              </ul>
+            </div>
           </div>
           </CollapsibleSubsection>
         </ExamSection>
