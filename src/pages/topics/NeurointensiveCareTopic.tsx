@@ -563,11 +563,11 @@ const NeurointensiveCareTopic = () => {
             const refs = [
               { id: "rcp2020", label: "RCP 2020 PDoC national clinical guidelines", url: "https://www.rcp.ac.uk/projects/outputs/prolonged-disorders-consciousness-following-sudden-onset-brain-injury-national" },
               { id: "bmacanh", label: "BMA/RCP/GMC CANH guidance 2018 (updated 2024)", url: "https://www.bma.org.uk/advice-and-support/ethics/adults-who-lack-capacity/clinically-assisted-nutrition-and-hydration" },
-              { id: "gmceol", label: "GMC Treatment and care towards the end of life 2022", url: "https://www.gmc-uk.org/professional-standards/professional-standards-for-doctors/treatment-and-care-towards-the-end-of-life" },
+              { id: "gmceol", label: "GMC Treatment and care towards the end of life 2022", url: "https://www.gmc-uk.org/professional-standards/the-professional-standards/treatment-and-care-towards-the-end-of-life" },
               { id: "ntvy", label: "An NHS Trust and others v Y [2018] UKSC 46", url: "https://www.supremecourt.uk/cases/uksc-2017-0202.html" },
               { id: "mca", label: "Mental Capacity Act 2005 and Code of Practice", url: "https://www.legislation.gov.uk/ukpga/2005/9/contents" },
-              { id: "giacino", label: "Giacino et al. Neurology 2018 — AAN/ACRM/NIDILRR practice guideline", url: "https://www.neurology.org/doi/10.1212/WNL.0000000000005926" },
-              { id: "sandroni", label: "Sandroni et al. ERC-ESICM guidelines on prognostication after cardiac arrest 2021", url: "https://link.springer.com/article/10.1007/s00134-021-06548-2" },
+              { id: "giacino", label: "Giacino et al. Neurology 2018 — AAN/ACRM/NIDILRR practice guideline (PubMed)", url: "https://pubmed.ncbi.nlm.nih.gov/30089618/" },
+              { id: "sandroni", label: "Sandroni et al. ERC-ESICM guidelines on prognostication after cardiac arrest 2021 (PubMed)", url: "https://pubmed.ncbi.nlm.nih.gov/34772278/" },
               { id: "imca", label: "MCA 2005 s.37 — Independent Mental Capacity Advocates", url: "https://www.legislation.gov.uk/ukpga/2005/9/section/37" },
             ] as const;
             const refIndex = Object.fromEntries(refs.map((r, i) => [r.id, i + 1])) as Record<string, number>;
