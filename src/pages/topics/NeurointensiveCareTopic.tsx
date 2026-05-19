@@ -479,8 +479,8 @@ const NeurointensiveCareTopic = () => {
                       Wakefulness without awareness. Eyes open with preserved sleep–wake cycles, but no reproducible, purposeful, or voluntary behavioural response to visual, auditory, tactile, or noxious stimuli. No evidence of language comprehension or expression.<Cite ids={["rcp2020"]} />
                     </p>
                     <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                      <li>Brainstem and autonomic function preserved (breathing, BP, cardiac).</li>
-                      <li>Reflexive responses only (grimace, withdrawal, roving eye movements).</li>
+                      <li>Brainstem and autonomic function preserved (breathing, BP, cardiac).<Cite ids={["rcp2020"]} /></li>
+                      <li>Reflexive responses only (grimace, withdrawal, roving eye movements).<Cite ids={["rcp2020", "giacino"]} /></li>
                       <li>Term &quot;persistent&quot; (&gt;1 month); &quot;permanent&quot; (&gt;3 months non-traumatic; &gt;12 months traumatic) — RCP 2020 deprecates &quot;permanent&quot; in favour of prognostic statements.<Cite ids={["rcp2020"]} /></li>
                     </ul>
                   </div>
