@@ -7,7 +7,24 @@ export interface PodcastResult {
   duration_seconds?: number;
   cached?: boolean;
   error?: string;
+  // ISO timestamp of the row's last update. Used to detect stale
+  // `generating` rows where the background job has died without flipping
+  // status to `failed` (edge crash, process kill, etc.).
+  updated_at?: string;
 }
+
+/**
+ * Rows stuck in `generating` for longer than this are treated as abandoned.
+ * The server-side reclaim threshold is 3 min; we use a slightly larger value
+ * client-side so the next retry safely lands inside the reclaim window.
+ */
+export const STALE_GENERATING_MS = 4 * 60 * 1000;
+
+export const isStaleGenerating = (result: PodcastResult | null): boolean => {
+  if (!result || result.status !== "generating" || !result.updated_at) return false;
+  const ageMs = Date.now() - new Date(result.updated_at).getTime();
+  return Number.isFinite(ageMs) && ageMs > STALE_GENERATING_MS;
+};
 
 /**
  * Estimate the target podcast length from source content. Mirrors the logic
