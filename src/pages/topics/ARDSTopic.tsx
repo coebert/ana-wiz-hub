@@ -274,6 +274,82 @@ const ARDSTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <CollapsibleSubsection title="Therapies of Historical / Uncertain Benefit">
+          <div className="space-y-3">
+            <p className="text-muted-foreground leading-relaxed">
+              Several once-routine ARDS adjuncts have either been abandoned after high-quality trials showed no benefit (or harm), or persist only as <strong>rescue</strong> options without a survival signal. Knowing the evidence is examinable: it explains why current bundles are deliberately short (lung-protective ventilation, PEEP titration, prone, NMB in selected patients, ECMO referral) and why these other strategies are <em>not</em> first-line.
+            </p>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">High-Frequency Oscillatory Ventilation (HFOV)</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Theoretical appeal: ultra-low tidal volumes (1–4 mL/kg) at 3–15 Hz with a high constant mean airway pressure — the "open lung" taken to its logical extreme. Two 2013 RCTs ended its routine use:
+              </p>
+              <ul className="mt-1 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li><strong>OSCILLATE</strong> (Ferguson, NEJM 2013): stopped early for <em>harm</em> — in-hospital mortality 47% vs 35% (RR 1.33), with more vasopressor and sedation use.</li>
+                <li><strong>OSCAR</strong> (Young, NEJM 2013): no mortality difference (41.7% vs 41.1%); no benefit.</li>
+                <li>Subsequent meta-analyses (Sud 2016) confirm no overall benefit and possible harm in moderate–severe ARDS.</li>
+              </ul>
+              <p className="text-sm text-muted-foreground mt-2">
+                <strong>Current role:</strong> not recommended as a routine strategy (ATS/ESICM/SCCM 2023). Occasionally considered as rescue in highly selected centres, but ECMO referral is generally preferred.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Inhaled Nitric Oxide (iNO) and inhaled prostacyclin (epoprostenol / iloprost)</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Selective pulmonary vasodilation of ventilated alveoli improves V/Q matching and lowers PVR. iNO reliably raises PaO₂/FiO₂ by ~15–20% in the first 24 h.
+              </p>
+              <ul className="mt-1 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li><strong>Cochrane (Gebistorf 2016, 14 RCTs, n=1303):</strong> no mortality benefit; transient oxygenation improvement only; <em>increased risk of AKI</em> (RR 1.59).</li>
+                <li>Oxygenation response is not durable beyond 24–48 h (tachyphylaxis); rebound pulmonary hypertension on abrupt withdrawal.</li>
+                <li>Cost: £2,000–£5,000 per patient per day.</li>
+              </ul>
+              <p className="text-sm text-muted-foreground mt-2">
+                <strong>Current role:</strong> <em>rescue</em> bridge in refractory hypoxaemia (e.g. while organising ECMO retrieval), or where acute cor pulmonale / RV failure dominates the picture. Not recommended as routine therapy.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Recruitment manoeuvres &amp; high-PEEP "open-lung" strategy</p>
+              <ul className="mt-1 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li>Earlier trials (ALVEOLI, LOVS, EXPRESS) showed at best a trend toward benefit in severe disease only.</li>
+                <li><strong>ART trial</strong> (Cavalcanti, JAMA 2017): aggressive stepwise recruitment + decremental PEEP titration <em>increased</em> 28-day mortality (55.3% vs 49.3%) and barotrauma vs conventional PEEP.</li>
+                <li>Current guidance (ATS/ESICM/SCCM 2023): avoid prolonged/high-pressure recruitment manoeuvres. Use higher (vs lower) PEEP only in moderate–severe ARDS, titrated to compliance / oesophageal pressure rather than fixed tables.</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Continuous neuromuscular blockade (cisatracurium infusion)</p>
+              <ul className="mt-1 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li><strong>ACURASYS</strong> (Papazian, NEJM 2010): 48 h cisatracurium in P/F &lt;150 reduced adjusted 90-day mortality (HR 0.68) without increased ICU-acquired weakness.</li>
+                <li><strong>ROSE</strong> (NHLBI PETAL, NEJM 2019): in patients managed with higher PEEP and lighter sedation, 48 h cisatracurium showed <em>no mortality benefit</em> (42.5% vs 42.8%) and more cardiovascular adverse events.</li>
+                <li><strong>Current role:</strong> reserve for patients with refractory ventilator dyssynchrony, very high driving pressure, or severe hypoxaemia despite deep sedation — not as routine for all moderate–severe ARDS.</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Other strategies with negative or no evidence</p>
+              <ul className="mt-1 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li><strong>Exogenous surfactant</strong> — adult RCTs (Spragg 2004, 2011) negative; no role outside neonatal/paediatric practice.</li>
+                <li><strong>Activated protein C (drotrecogin alfa)</strong> — withdrawn 2011 after PROWESS-SHOCK showed no benefit and bleeding harm.</li>
+                <li><strong>Statins</strong> — HARP-2 and SAILS trials negative; not indicated for ARDS itself.</li>
+                <li><strong>β₂-agonists (salbutamol)</strong> — BALTI-2 (Lancet 2012) <em>stopped early for harm</em> (more tachyarrhythmia, trend to mortality); ALTA also negative. Do not use to "dry the lung".</li>
+                <li><strong>Routine high-dose corticosteroids in <em>all</em> ARDS</strong> — heterogeneous evidence; DEXA-ARDS (Villar 2020) showed benefit but is balanced against negative older trials. Current practice is targeted (COVID-19, severe CAP, vasculitis), not blanket.</li>
+                <li><strong>Conservative vs liberal fluid strategy</strong> — FACTT (NHLBI 2006) improved ventilator-free days but <em>not</em> mortality; conservative balance after resuscitation remains reasonable but is not a survival intervention.</li>
+                <li><strong>Permissive hypercapnia as a target</strong> — tolerated as a consequence of low-Vt ventilation, but not pursued for its own sake; very high PaCO₂ worsens RV function and ICP.</li>
+                <li><strong>Prophylactic antibiotics, immunonutrition, omega-3 / antioxidants (OMEGA, EDEN)</strong> — neutral or harmful; not recommended.</li>
+              </ul>
+            </div>
+
+            <p className="text-xs text-muted-foreground italic">
+              Exam framing: when asked about "adjuncts in ARDS", structure answers as (1) proven mortality benefit — lung-protective ventilation, prone ≥16 h/day, ECMO in carefully selected patients; (2) rescue options without mortality benefit — iNO, recruitment manoeuvres, HFOV (largely abandoned); (3) abandoned/harmful — β₂-agonists, routine HFOV, aggressive recruitment, exogenous surfactant.
+            </p>
+          </div>
+          </CollapsibleSubsection>
+        </ExamSection>
+
         <ARDSVentModeComparisonDiagram />
       </section>
 
