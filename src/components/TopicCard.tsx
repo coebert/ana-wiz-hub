@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronRight, CheckCircle2 } from "lucide-react";
+import { ChevronRight, CheckCircle2, BookOpen } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
 import { ExamTag, Section } from "@/data/curriculum";
 
@@ -10,6 +10,8 @@ interface TopicCardProps {
   section: Section;
   topicId?: string;
   examTags?: ExamTag[];
+  /** When set, shows a "N refs" badge linking the user to the topic's references drawer. */
+  referenceCount?: number;
 }
 
 const examTagLabels: Record<ExamTag, string> = {
@@ -26,7 +28,7 @@ const examTagColors: Record<ExamTag, string> = {
   edic: "bg-sky-500/10 text-sky-700 border-sky-500/20",
 };
 
-export const TopicCard = ({ title, description, path, section, topicId, examTags }: TopicCardProps) => {
+export const TopicCard = ({ title, description, path, section, topicId, examTags, referenceCount }: TopicCardProps) => {
   const { isCompleted } = useProgress();
   const completed = topicId ? isCompleted(topicId) : false;
 
@@ -48,13 +50,22 @@ export const TopicCard = ({ title, description, path, section, topicId, examTags
               {title}
             </h3>
             <p className="text-sm text-muted-foreground mt-1 break-words">{description}</p>
-            {examTags && examTags.length > 0 && (
+            {((examTags && examTags.length > 0) || (referenceCount && referenceCount > 0)) && (
               <div className="flex flex-wrap gap-1 mt-1.5">
-                {examTags.map((tag) => (
+                {examTags?.map((tag) => (
                   <span key={tag} className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium border ${examTagColors[tag]}`}>
                     {examTagLabels[tag]}
                   </span>
                 ))}
+                {referenceCount && referenceCount > 0 ? (
+                  <span
+                    className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-medium border bg-muted/50 text-muted-foreground border-border"
+                    title={`${referenceCount} BJA-style references available`}
+                  >
+                    <BookOpen className="h-2.5 w-2.5" />
+                    {referenceCount} ref{referenceCount === 1 ? "" : "s"}
+                  </span>
+                ) : null}
               </div>
             )}
           </div>

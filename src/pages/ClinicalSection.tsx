@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ChevronRight, ExternalLink } from "lucide-react";
 import { SectionLayout } from "@/components/SectionLayout";
 import { TopicCard } from "@/components/TopicCard";
+import { SectionReferencesPanel } from "@/components/SectionReferencesPanel";
 import { clinicalTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
@@ -70,6 +71,7 @@ const ClinicalSection = () => {
           </Link>
         </div>
       </div>
+      <SectionReferencesPanel section="clinical" topics={clinicalTopics} />
     </SectionLayout>
   );
 };

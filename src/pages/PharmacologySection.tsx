@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { TopicCard } from "@/components/TopicCard";
+import { SectionReferencesPanel } from "@/components/SectionReferencesPanel";
 import { pharmacologyTopics } from "@/data/curriculum";
 import { Badge } from "@/components/ui/badge";
 import { ProgressRing } from "@/components/ProgressRing";
@@ -42,6 +43,10 @@ const PharmacologySection = () => {
           </div>
         ))}
       </div>
+      <SectionReferencesPanel
+        section="pharmacology"
+        topics={pharmacologyTopics.filter((t) => t.available)}
+      />
     </SectionLayout>
   );
 };

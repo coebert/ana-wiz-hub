@@ -1,5 +1,5 @@
 import { SectionLayout } from "@/components/SectionLayout";
-import { TopicCard } from "@/components/TopicCard";
+import { SectionTopicsList } from "@/components/SectionTopicsList";
 import { physicsTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
@@ -26,19 +26,7 @@ const PhysicsSection = () => {
           <p className="text-xs text-muted-foreground">Physics topics</p>
         </div>
       </div>
-      <div className="space-y-3">
-        {visibleTopics.map((topic) => (
-          <TopicCard
-            key={topic.id}
-            title={topic.title}
-            description={topic.description}
-            path={`/physics/${topic.id}`}
-            section="physics"
-            topicId={topic.id}
-            examTags={topic.examTags}
-          />
-        ))}
-      </div>
+      <SectionTopicsList section="physics" topics={visibleTopics} />
     </SectionLayout>
   );
 };

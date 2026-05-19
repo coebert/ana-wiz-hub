@@ -334,6 +334,42 @@ export type Database = {
         }
         Relationships: []
       }
+      topic_references: {
+        Row: {
+          created_at: string
+          error_message: string | null
+          id: string
+          refs: Json
+          section: string
+          status: string
+          topic_id: string
+          topic_title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          refs?: Json
+          section: string
+          status?: string
+          topic_id: string
+          topic_title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          refs?: Json
+          section?: string
+          status?: string
+          topic_id?: string
+          topic_title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
