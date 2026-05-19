@@ -439,6 +439,80 @@ const NeurointensiveCareTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
+        <ExamSection id="toc-doc" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+          <CollapsibleSubsection title="Disorders of Consciousness: Vegetative State & Minimally Conscious State">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            After severe brain injury, patients emerging from coma may pass through distinct disorders of consciousness (DoC). Accurate distinction has prognostic, ethical, and medico-legal weight (withdrawal of life-sustaining treatment, capacity, rehabilitation pathway). Diagnosis is clinical and repeated — misdiagnosis rates approach 40% when based on a single bedside exam; validated tools (Coma Recovery Scale–Revised, CRS-R) improve accuracy.
+          </p>
+          <div className="grid md:grid-cols-2 gap-3 mb-3">
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <h4 className="text-sm font-semibold text-foreground mb-1">Vegetative State (VS) / Unresponsive Wakefulness Syndrome (UWS)</h4>
+              <p className="text-xs text-muted-foreground mb-2">
+                Wakefulness without awareness. Eyes open with preserved sleep–wake cycles, but no reproducible, purposeful, or voluntary behavioural response to visual, auditory, tactile, or noxious stimuli. No evidence of language comprehension or expression.
+              </p>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Brainstem and autonomic function preserved (breathing, BP, cardiac).</li>
+                <li>Reflexive responses only (grimace, withdrawal, roving eye movements).</li>
+                <li>Term &quot;persistent&quot; (&gt;1 month); &quot;permanent&quot; (&gt;3 months non-traumatic; &gt;12 months traumatic) — RCP 2020 deprecates &quot;permanent&quot; in favour of prognostic statements.</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <h4 className="text-sm font-semibold text-foreground mb-1">Minimally Conscious State (MCS)</h4>
+              <p className="text-xs text-muted-foreground mb-2">
+                Severely altered consciousness with <em>minimal but definite</em> behavioural evidence of self- or environmental awareness, reproducible on examination.
+              </p>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li><strong>MCS−</strong>: low-level responses (visual pursuit, localisation to noxious stimuli, contingent emotional response).</li>
+                <li><strong>MCS+</strong>: command following, intelligible verbalisation, or intentional communication (yes/no, gesture) — not necessarily accurate.</li>
+                <li>Emergence from MCS: reliable functional communication <em>or</em> functional object use.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="overflow-x-auto mb-3">
+            <table className="w-full text-xs border border-border rounded-lg">
+              <thead className="bg-secondary/40">
+                <tr>
+                  <th className="text-left p-2 font-semibold text-foreground">Feature</th>
+                  <th className="text-left p-2 font-semibold text-foreground">Coma</th>
+                  <th className="text-left p-2 font-semibold text-foreground">VS / UWS</th>
+                  <th className="text-left p-2 font-semibold text-foreground">MCS</th>
+                  <th className="text-left p-2 font-semibold text-foreground">Locked-in</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-t border-border"><td className="p-2">Eye opening</td><td className="p-2">Absent</td><td className="p-2">Spontaneous</td><td className="p-2">Spontaneous</td><td className="p-2">Spontaneous</td></tr>
+                <tr className="border-t border-border"><td className="p-2">Sleep–wake cycles</td><td className="p-2">Absent</td><td className="p-2">Present</td><td className="p-2">Present</td><td className="p-2">Present</td></tr>
+                <tr className="border-t border-border"><td className="p-2">Awareness of self/environment</td><td className="p-2">None</td><td className="p-2">None</td><td className="p-2">Partial, inconsistent</td><td className="p-2">Full</td></tr>
+                <tr className="border-t border-border"><td className="p-2">Purposeful motor response</td><td className="p-2">None</td><td className="p-2">None (reflex only)</td><td className="p-2">Reproducible</td><td className="p-2">Vertical eye/eyelid only</td></tr>
+                <tr className="border-t border-border"><td className="p-2">Language comprehension</td><td className="p-2">None</td><td className="p-2">None</td><td className="p-2">Inconsistent</td><td className="p-2">Preserved</td></tr>
+                <tr className="border-t border-border"><td className="p-2">Respiratory drive</td><td className="p-2">Variable</td><td className="p-2">Preserved</td><td className="p-2">Preserved</td><td className="p-2">Preserved</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="grid md:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border bg-background">
+              <h4 className="text-sm font-semibold text-foreground mb-1">Why the distinction matters</h4>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li>MCS carries better prognosis for further functional recovery than VS.</li>
+                <li>MCS patients may experience pain — analgesia and sedation planning differ.</li>
+                <li>Decisions on clinically-assisted nutrition/hydration (CANH) withdrawal: in UK no longer require Court of Protection if consensus + best-interest process (RCP 2020 guidance, post Y v NHS Trust).</li>
+                <li>Functional MRI / EEG paradigms (covert command following) identify &quot;cognitive-motor dissociation&quot; in ~15% of behaviourally VS patients.</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-background">
+              <h4 className="text-sm font-semibold text-foreground mb-1">Mimics to exclude</h4>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li><strong>Locked-in syndrome</strong> (ventral pontine lesion): fully aware, quadriplegic, only vertical eye movements/blinking preserved.</li>
+                <li><strong>Akinetic mutism</strong> (frontal/mesencephalic): wakeful, immobile, mute but tracks.</li>
+                <li>Sedation, non-convulsive status epilepticus, severe aphasia, profound neuromuscular weakness.</li>
+              </ul>
+            </div>
+          </div>
+          </CollapsibleSubsection>
+        </ExamSection>
+
+
+
         <ExamSection id="toc-sci" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Spinal Cord Injury (SCI) — ICU Management">
           <p className="text-muted-foreground leading-relaxed mb-4">
