@@ -36,16 +36,30 @@ const FADE_MS = 900;
 const LANDING_FILTER =
   "invert(1) brightness(2) drop-shadow(0 4px 12px rgba(0,0,0,0.35)) drop-shadow(0 0 0 rgba(0,0,0,0)) drop-shadow(0 0 0 rgba(0,0,0,0))";
 
+const shouldShowSplash = () => {
+  if (typeof window === "undefined") return false;
+  try {
+    return !sessionStorage.getItem("neon-splash-shown");
+  } catch {
+    return false;
+  }
+};
+
 const NeonSplash = () => {
-  const [mounted, setMounted] = useState(false);
+  // Initialise synchronously so the splash paints on the very first frame,
+  // before the landing hero has a chance to flash behind it.
+  const [mounted, setMounted] = useState(shouldShowSplash);
   const [leaving, setLeaving] = useState(false);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem("neon-splash-shown")) return;
-    setMounted(true);
-    sessionStorage.setItem("neon-splash-shown", "1");
+    if (!mounted) return;
+    try {
+      sessionStorage.setItem("neon-splash-shown", "1");
+    } catch {
+      /* ignore */
+    }
 
     let cancelled = false;
     let rafId = 0;
