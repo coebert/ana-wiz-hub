@@ -761,6 +761,9 @@ const NeurointensiveCareTopic = () => {
           </ul>
 
           <h4 className="text-sm font-semibold text-foreground mb-2">Complications &amp; later issues</h4>
+          <div className="mb-4">
+            <DecompressiveCraniectomyTimelineDiagram />
+          </div>
           <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-4">
             <li>Early: haemorrhage at craniectomy edge, expansion of contralateral haematoma (loss of tamponade), CSF leak, infection, seizures, herniation through the defect.</li>
             <li>Late: <em>syndrome of the trephined</em> (orthostatic neurological deterioration), hydrocephalus, subdural hygroma, bone flap resorption after cranioplasty.</li>
