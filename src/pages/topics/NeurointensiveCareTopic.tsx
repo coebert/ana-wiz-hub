@@ -9,6 +9,7 @@ import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodia
 import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
 import MyastheniaCrisisFlowchart from "@/components/diagrams/MyastheniaCrisisFlowchart";
 import MyasthenicVsCholinergicComparison from "@/components/diagrams/MyasthenicVsCholinergicComparison";
+import DecompressiveCraniectomyDecisionDiagram from "@/components/diagrams/DecompressiveCraniectomyDecisionDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { SnodReferralDecider } from "@/components/SnodReferralDecider";
 import { DbiTimeline } from "@/components/DbiTimeline";
