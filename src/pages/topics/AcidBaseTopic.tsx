@@ -7,6 +7,8 @@ import HendersonHasselbalchDiagram from "@/components/diagrams/HendersonHasselba
 import AcidBaseInterpretationDiagram from "@/components/diagrams/AcidBaseInterpretationDiagram";
 import HAGMAPathophysiologyDiagram from "@/components/diagrams/HAGMAPathophysiologyDiagram";
 import DeltaRatioDiagram from "@/components/diagrams/DeltaRatioDiagram";
+import OsmolarGapCalculator from "@/components/diagrams/OsmolarGapCalculator";
+import ToxicAlcoholSalicylateCalculator from "@/components/diagrams/ToxicAlcoholSalicylateCalculator";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
