@@ -158,7 +158,23 @@
   [class*="diagram"] table td {
     min-width: 0;
   }
+
+  /* Dark-mode safety net for SVG diagrams.
+     SVG <text> defaults to fill:black regardless of CSS color, so any
+     diagram label that omits an explicit fill becomes invisible on a
+     dark surface. Force unfilled text (and untyped strokes) to track
+     the current text colour so they read correctly in both themes.
+     Diagrams that intentionally use a hex/HSL fill are unaffected. */
+  svg text:not([fill]),
+  svg tspan:not([fill]) {
+    fill: currentColor;
+  }
+  /* Some anatomy/M-mode diagrams intentionally render on a dark
+     <rect> background — keep their labels light by setting fill on
+     those <text> elements explicitly in the component. This rule
+     only catches the un-styled ones. */
 }
+
 
 @layer components {
   .section-card-physics {
