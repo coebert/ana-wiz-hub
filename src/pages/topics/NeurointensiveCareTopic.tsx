@@ -441,139 +441,210 @@ const NeurointensiveCareTopic = () => {
 
         <ExamSection id="toc-doc" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Disorders of Consciousness: Vegetative State & Minimally Conscious State">
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            After severe brain injury, patients emerging from coma may pass through distinct disorders of consciousness (DoC). Accurate distinction has prognostic, ethical, and medico-legal weight (withdrawal of life-sustaining treatment, capacity, rehabilitation pathway). Diagnosis is clinical and repeated — misdiagnosis rates approach 40% when based on a single bedside exam; validated tools (Coma Recovery Scale–Revised, CRS-R) improve accuracy.
-          </p>
-          <div className="grid md:grid-cols-2 gap-3 mb-3">
-            <div className="p-3 rounded-lg border border-border bg-secondary/20">
-              <h4 className="text-sm font-semibold text-foreground mb-1">Vegetative State (VS) / Unresponsive Wakefulness Syndrome (UWS)</h4>
-              <p className="text-xs text-muted-foreground mb-2">
-                Wakefulness without awareness. Eyes open with preserved sleep–wake cycles, but no reproducible, purposeful, or voluntary behavioural response to visual, auditory, tactile, or noxious stimuli. No evidence of language comprehension or expression.
-              </p>
-              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                <li>Brainstem and autonomic function preserved (breathing, BP, cardiac).</li>
-                <li>Reflexive responses only (grimace, withdrawal, roving eye movements).</li>
-                <li>Term &quot;persistent&quot; (&gt;1 month); &quot;permanent&quot; (&gt;3 months non-traumatic; &gt;12 months traumatic) — RCP 2020 deprecates &quot;permanent&quot; in favour of prognostic statements.</li>
-              </ul>
-            </div>
-            <div className="p-3 rounded-lg border border-border bg-secondary/20">
-              <h4 className="text-sm font-semibold text-foreground mb-1">Minimally Conscious State (MCS)</h4>
-              <p className="text-xs text-muted-foreground mb-2">
-                Severely altered consciousness with <em>minimal but definite</em> behavioural evidence of self- or environmental awareness, reproducible on examination.
-              </p>
-              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                <li><strong>MCS−</strong>: low-level responses (visual pursuit, localisation to noxious stimuli, contingent emotional response).</li>
-                <li><strong>MCS+</strong>: command following, intelligible verbalisation, or intentional communication (yes/no, gesture) — not necessarily accurate.</li>
-                <li>Emergence from MCS: reliable functional communication <em>or</em> functional object use.</li>
-              </ul>
-            </div>
-          </div>
-          <div className="overflow-x-auto mb-3">
-            <table className="w-full text-xs border border-border rounded-lg">
-              <thead className="bg-secondary/40">
-                <tr>
-                  <th className="text-left p-2 font-semibold text-foreground">Feature</th>
-                  <th className="text-left p-2 font-semibold text-foreground">Coma</th>
-                  <th className="text-left p-2 font-semibold text-foreground">VS / UWS</th>
-                  <th className="text-left p-2 font-semibold text-foreground">MCS</th>
-                  <th className="text-left p-2 font-semibold text-foreground">Locked-in</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-t border-border"><td className="p-2">Eye opening</td><td className="p-2">Absent</td><td className="p-2">Spontaneous</td><td className="p-2">Spontaneous</td><td className="p-2">Spontaneous</td></tr>
-                <tr className="border-t border-border"><td className="p-2">Sleep–wake cycles</td><td className="p-2">Absent</td><td className="p-2">Present</td><td className="p-2">Present</td><td className="p-2">Present</td></tr>
-                <tr className="border-t border-border"><td className="p-2">Awareness of self/environment</td><td className="p-2">None</td><td className="p-2">None</td><td className="p-2">Partial, inconsistent</td><td className="p-2">Full</td></tr>
-                <tr className="border-t border-border"><td className="p-2">Purposeful motor response</td><td className="p-2">None</td><td className="p-2">None (reflex only)</td><td className="p-2">Reproducible</td><td className="p-2">Vertical eye/eyelid only</td></tr>
-                <tr className="border-t border-border"><td className="p-2">Language comprehension</td><td className="p-2">None</td><td className="p-2">None</td><td className="p-2">Inconsistent</td><td className="p-2">Preserved</td></tr>
-                <tr className="border-t border-border"><td className="p-2">Respiratory drive</td><td className="p-2">Variable</td><td className="p-2">Preserved</td><td className="p-2">Preserved</td><td className="p-2">Preserved</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="grid md:grid-cols-2 gap-3">
-            <div className="p-3 rounded-lg border border-border bg-background">
-              <h4 className="text-sm font-semibold text-foreground mb-1">Why the distinction matters</h4>
-              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                <li>MCS carries better prognosis for further functional recovery than VS.</li>
-                <li>MCS patients may experience pain — analgesia and sedation planning differ.</li>
-                <li>Decisions on clinically-assisted nutrition/hydration (CANH) withdrawal: in UK no longer require Court of Protection if consensus + best-interest process (RCP 2020 guidance, post Y v NHS Trust).</li>
-                <li>Functional MRI / EEG paradigms (covert command following) identify &quot;cognitive-motor dissociation&quot; in ~15% of behaviourally VS patients.</li>
-              </ul>
-            </div>
-            <div className="p-3 rounded-lg border border-border bg-background">
-              <h4 className="text-sm font-semibold text-foreground mb-1">Mimics to exclude</h4>
-              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                <li><strong>Locked-in syndrome</strong> (ventral pontine lesion): fully aware, quadriplegic, only vertical eye movements/blinking preserved.</li>
-                <li><strong>Akinetic mutism</strong> (frontal/mesencephalic): wakeful, immobile, mute but tracks.</li>
-                <li>Sedation, non-convulsive status epilepticus, severe aphasia, profound neuromuscular weakness.</li>
-              </ul>
-            </div>
-          </div>
+          {(() => {
+            const refs = [
+              { id: "rcp2020", label: "RCP 2020 PDoC national clinical guidelines", url: "https://www.rcp.ac.uk/projects/outputs/prolonged-disorders-consciousness-following-sudden-onset-brain-injury-national" },
+              { id: "giacino", label: "Giacino et al. Neurology 2018 — AAN/ACRM/NIDILRR practice guideline", url: "https://www.neurology.org/doi/10.1212/WNL.0000000000005926" },
+              { id: "monti", label: "Monti et al. NEJM 2010 — wilful modulation of brain activity in DoC", url: "https://www.nejm.org/doi/full/10.1056/NEJMoa0905370" },
+              { id: "bmacanh", label: "BMA/RCP/GMC CANH guidance 2018 (updated 2024)", url: "https://www.bma.org.uk/advice-and-support/ethics/adults-who-lack-capacity/clinically-assisted-nutrition-and-hydration" },
+              { id: "ntvy", label: "An NHS Trust and others v Y [2018] UKSC 46", url: "https://www.supremecourt.uk/cases/uksc-2017-0202.html" },
+            ] as const;
+            const refIndex = Object.fromEntries(refs.map((r, i) => [r.id, i + 1])) as Record<string, number>;
+            const Cite = ({ ids }: { ids: ReadonlyArray<keyof typeof refIndex> }) => (
+              <sup className="ml-0.5">
+                {ids.map((id, i) => {
+                  const r = refs.find((x) => x.id === id)!;
+                  return (
+                    <span key={id}>
+                      {i > 0 && <span className="text-muted-foreground">,</span>}
+                      <a href={r.url} target="_blank" rel="noopener noreferrer" title={r.label}
+                        className="text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5">
+                        {refIndex[id]}
+                      </a>
+                    </span>
+                  );
+                })}
+              </sup>
+            );
+            return (
+              <>
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  After severe brain injury, patients emerging from coma may pass through distinct disorders of consciousness (DoC). Accurate distinction has prognostic, ethical, and medico-legal weight (withdrawal of life-sustaining treatment, capacity, rehabilitation pathway).<Cite ids={["rcp2020", "giacino"]} /> Diagnosis is clinical and repeated — misdiagnosis rates approach 40% when based on a single bedside exam; validated tools (Coma Recovery Scale–Revised, CRS-R) improve accuracy.<Cite ids={["giacino", "rcp2020"]} />
+                </p>
+                <div className="grid md:grid-cols-2 gap-3 mb-3">
+                  <div className="p-3 rounded-lg border border-border bg-secondary/20">
+                    <h4 className="text-sm font-semibold text-foreground mb-1">Vegetative State (VS) / Unresponsive Wakefulness Syndrome (UWS)</h4>
+                    <p className="text-xs text-muted-foreground mb-2">
+                      Wakefulness without awareness. Eyes open with preserved sleep–wake cycles, but no reproducible, purposeful, or voluntary behavioural response to visual, auditory, tactile, or noxious stimuli. No evidence of language comprehension or expression.<Cite ids={["rcp2020"]} />
+                    </p>
+                    <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                      <li>Brainstem and autonomic function preserved (breathing, BP, cardiac).</li>
+                      <li>Reflexive responses only (grimace, withdrawal, roving eye movements).</li>
+                      <li>Term &quot;persistent&quot; (&gt;1 month); &quot;permanent&quot; (&gt;3 months non-traumatic; &gt;12 months traumatic) — RCP 2020 deprecates &quot;permanent&quot; in favour of prognostic statements.<Cite ids={["rcp2020"]} /></li>
+                    </ul>
+                  </div>
+                  <div className="p-3 rounded-lg border border-border bg-secondary/20">
+                    <h4 className="text-sm font-semibold text-foreground mb-1">Minimally Conscious State (MCS)</h4>
+                    <p className="text-xs text-muted-foreground mb-2">
+                      Severely altered consciousness with <em>minimal but definite</em> behavioural evidence of self- or environmental awareness, reproducible on examination.<Cite ids={["giacino", "rcp2020"]} />
+                    </p>
+                    <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                      <li><strong>MCS−</strong>: low-level responses (visual pursuit, localisation to noxious stimuli, contingent emotional response).<Cite ids={["giacino"]} /></li>
+                      <li><strong>MCS+</strong>: command following, intelligible verbalisation, or intentional communication (yes/no, gesture) — not necessarily accurate.<Cite ids={["giacino"]} /></li>
+                      <li>Emergence from MCS: reliable functional communication <em>or</em> functional object use.<Cite ids={["giacino"]} /></li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="overflow-x-auto mb-3">
+                  <table className="w-full text-xs border border-border rounded-lg">
+                    <thead className="bg-secondary/40">
+                      <tr>
+                        <th className="text-left p-2 font-semibold text-foreground">Feature</th>
+                        <th className="text-left p-2 font-semibold text-foreground">Coma</th>
+                        <th className="text-left p-2 font-semibold text-foreground">VS / UWS</th>
+                        <th className="text-left p-2 font-semibold text-foreground">MCS</th>
+                        <th className="text-left p-2 font-semibold text-foreground">Locked-in</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-muted-foreground">
+                      <tr className="border-t border-border"><td className="p-2">Eye opening</td><td className="p-2">Absent</td><td className="p-2">Spontaneous</td><td className="p-2">Spontaneous</td><td className="p-2">Spontaneous</td></tr>
+                      <tr className="border-t border-border"><td className="p-2">Sleep–wake cycles</td><td className="p-2">Absent</td><td className="p-2">Present</td><td className="p-2">Present</td><td className="p-2">Present</td></tr>
+                      <tr className="border-t border-border"><td className="p-2">Awareness of self/environment</td><td className="p-2">None</td><td className="p-2">None</td><td className="p-2">Partial, inconsistent</td><td className="p-2">Full</td></tr>
+                      <tr className="border-t border-border"><td className="p-2">Purposeful motor response</td><td className="p-2">None</td><td className="p-2">None (reflex only)</td><td className="p-2">Reproducible</td><td className="p-2">Vertical eye/eyelid only</td></tr>
+                      <tr className="border-t border-border"><td className="p-2">Language comprehension</td><td className="p-2">None</td><td className="p-2">None</td><td className="p-2">Inconsistent</td><td className="p-2">Preserved</td></tr>
+                      <tr className="border-t border-border"><td className="p-2">Respiratory drive</td><td className="p-2">Variable</td><td className="p-2">Preserved</td><td className="p-2">Preserved</td><td className="p-2">Preserved</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="grid md:grid-cols-2 gap-3 mb-3">
+                  <div className="p-3 rounded-lg border border-border bg-background">
+                    <h4 className="text-sm font-semibold text-foreground mb-1">Why the distinction matters</h4>
+                    <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                      <li>MCS carries better prognosis for further functional recovery than VS.<Cite ids={["giacino", "rcp2020"]} /></li>
+                      <li>MCS patients may experience pain — analgesia and sedation planning differ.<Cite ids={["rcp2020"]} /></li>
+                      <li>Decisions on CANH withdrawal: in UK no longer require Court of Protection if consensus + best-interest process is followed.<Cite ids={["ntvy", "bmacanh"]} /></li>
+                      <li>Functional MRI / EEG paradigms (covert command following) identify &quot;cognitive-motor dissociation&quot; in ~15% of behaviourally VS patients.<Cite ids={["monti", "giacino"]} /></li>
+                    </ul>
+                  </div>
+                  <div className="p-3 rounded-lg border border-border bg-background">
+                    <h4 className="text-sm font-semibold text-foreground mb-1">Mimics to exclude</h4>
+                    <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                      <li><strong>Locked-in syndrome</strong> (ventral pontine lesion): fully aware, quadriplegic, only vertical eye movements/blinking preserved.</li>
+                      <li><strong>Akinetic mutism</strong> (frontal/mesencephalic): wakeful, immobile, mute but tracks.</li>
+                      <li>Sedation, non-convulsive status epilepticus, severe aphasia, profound neuromuscular weakness.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="p-3 rounded-lg border border-border bg-secondary/20">
+                  <h4 className="text-sm font-semibold text-foreground mb-2">References (click for source)</h4>
+                  <ol className="text-xs text-muted-foreground space-y-1 list-decimal list-inside">
+                    {refs.map((r) => (
+                      <li key={r.id}>
+                        <a href={r.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{r.label}</a>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </>
+            );
+          })()}
           </CollapsibleSubsection>
         </ExamSection>
 
         <ExamSection id="toc-doc-medicolegal" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="VS vs MCS: Prognostication & Medico-Legal Implications">
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Distinguishing VS from MCS materially changes prognosis, pain management, capacity assessment, and the lawful pathway for withdrawing clinically-assisted nutrition and hydration (CANH). Diagnoses should be made by a clinician experienced in prolonged disorders of consciousness (PDoC) using serial Coma Recovery Scale–Revised (CRS-R) assessments, not a single bedside exam.
-          </p>
+          {(() => {
+            const refs = [
+              { id: "rcp2020", label: "RCP 2020 PDoC national clinical guidelines", url: "https://www.rcp.ac.uk/projects/outputs/prolonged-disorders-consciousness-following-sudden-onset-brain-injury-national" },
+              { id: "bmacanh", label: "BMA/RCP/GMC CANH guidance 2018 (updated 2024)", url: "https://www.bma.org.uk/advice-and-support/ethics/adults-who-lack-capacity/clinically-assisted-nutrition-and-hydration" },
+              { id: "gmceol", label: "GMC Treatment and care towards the end of life 2022", url: "https://www.gmc-uk.org/professional-standards/professional-standards-for-doctors/treatment-and-care-towards-the-end-of-life" },
+              { id: "ntvy", label: "An NHS Trust and others v Y [2018] UKSC 46", url: "https://www.supremecourt.uk/cases/uksc-2017-0202.html" },
+              { id: "mca", label: "Mental Capacity Act 2005 and Code of Practice", url: "https://www.legislation.gov.uk/ukpga/2005/9/contents" },
+              { id: "giacino", label: "Giacino et al. Neurology 2018 — AAN/ACRM/NIDILRR practice guideline", url: "https://www.neurology.org/doi/10.1212/WNL.0000000000005926" },
+              { id: "sandroni", label: "Sandroni et al. ERC-ESICM guidelines on prognostication after cardiac arrest 2021", url: "https://link.springer.com/article/10.1007/s00134-021-06548-2" },
+              { id: "imca", label: "MCA 2005 s.37 — Independent Mental Capacity Advocates", url: "https://www.legislation.gov.uk/ukpga/2005/9/section/37" },
+            ] as const;
+            const refIndex = Object.fromEntries(refs.map((r, i) => [r.id, i + 1])) as Record<string, number>;
+            const Cite = ({ ids }: { ids: ReadonlyArray<keyof typeof refIndex> }) => (
+              <sup className="ml-0.5">
+                {ids.map((id, i) => {
+                  const r = refs.find((x) => x.id === id)!;
+                  return (
+                    <span key={id}>
+                      {i > 0 && <span className="text-muted-foreground">,</span>}
+                      <a href={r.url} target="_blank" rel="noopener noreferrer" title={r.label}
+                        className="text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5">
+                        {refIndex[id]}
+                      </a>
+                    </span>
+                  );
+                })}
+              </sup>
+            );
+            return (
+              <>
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Distinguishing VS from MCS materially changes prognosis, pain management, capacity assessment, and the lawful pathway for withdrawing clinically-assisted nutrition and hydration (CANH).<Cite ids={["rcp2020", "bmacanh"]} /> Diagnoses should be made by a clinician experienced in prolonged disorders of consciousness (PDoC) using serial Coma Recovery Scale–Revised (CRS-R) assessments, not a single bedside exam.<Cite ids={["rcp2020", "giacino"]} />
+                </p>
 
-          <div className="grid md:grid-cols-2 gap-3 mb-3">
-            <div className="p-3 rounded-lg border border-border bg-secondary/20">
-              <h4 className="text-sm font-semibold text-foreground mb-1">Prognostication</h4>
-              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                <li><strong>Aetiology</strong> dominates: traumatic brain injury recovers better than anoxic/hypoxic-ischaemic injury.</li>
-                <li><strong>Time</strong>: meaningful recovery becomes progressively unlikely beyond 6 months (non-traumatic) and 12 months (traumatic) for VS; longer windows for MCS.</li>
-                <li><strong>MCS &gt; VS</strong> for likelihood of further functional recovery; MCS+ (language) better than MCS−.</li>
-                <li><strong>Adjuncts</strong>: SSEP (bilateral absent N20 = poor in anoxic injury), NSE, MRI (DAI burden, brainstem integrity), fMRI/EEG paradigms for covert awareness (&quot;cognitive-motor dissociation&quot;, ~15% of behavioural VS).</li>
-                <li>Avoid early (&lt;72 h) prognostic statements after cardiac arrest — follow ERC/ESICM multimodal algorithm.</li>
-              </ul>
-            </div>
-            <div className="p-3 rounded-lg border border-border bg-secondary/20">
-              <h4 className="text-sm font-semibold text-foreground mb-1">Pain, sedation & symptom control</h4>
-              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                <li>MCS patients can plausibly experience pain and distress — assume nociception, use validated tools (NCS-R).</li>
-                <li>Document analgesia/sedation rationale; balance against suppression of behavioural responses needed for diagnosis.</li>
-                <li>Treat reversible contributors (spasticity, constipation, urinary retention, infection) before attributing behavioural change to underlying state.</li>
-              </ul>
-            </div>
-          </div>
+                <div className="grid md:grid-cols-2 gap-3 mb-3">
+                  <div className="p-3 rounded-lg border border-border bg-secondary/20">
+                    <h4 className="text-sm font-semibold text-foreground mb-1">Prognostication</h4>
+                    <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                      <li><strong>Aetiology</strong> dominates: TBI recovers better than anoxic/hypoxic-ischaemic injury.<Cite ids={["giacino", "rcp2020"]} /></li>
+                      <li><strong>Time</strong>: meaningful recovery becomes progressively unlikely beyond 6 months (non-traumatic) and 12 months (traumatic) for VS; longer windows for MCS.<Cite ids={["rcp2020", "giacino"]} /></li>
+                      <li><strong>MCS &gt; VS</strong> for further functional recovery; MCS+ (language) better than MCS−.<Cite ids={["giacino"]} /></li>
+                      <li><strong>Adjuncts</strong>: SSEP (bilateral absent N20 = poor in anoxic injury), NSE, MRI, fMRI/EEG paradigms for covert awareness.<Cite ids={["sandroni", "giacino"]} /></li>
+                      <li>Avoid early (&lt;72 h) prognostic statements after cardiac arrest — follow ERC/ESICM multimodal algorithm.<Cite ids={["sandroni"]} /></li>
+                    </ul>
+                  </div>
+                  <div className="p-3 rounded-lg border border-border bg-secondary/20">
+                    <h4 className="text-sm font-semibold text-foreground mb-1">Pain, sedation & symptom control</h4>
+                    <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                      <li>MCS patients can plausibly experience pain — assume nociception, use validated tools (NCS-R).<Cite ids={["rcp2020"]} /></li>
+                      <li>Document analgesia/sedation rationale; balance against suppression of behavioural responses needed for diagnosis.<Cite ids={["rcp2020"]} /></li>
+                      <li>Treat reversible contributors (spasticity, constipation, urinary retention, infection) before attributing behavioural change to underlying state.<Cite ids={["rcp2020"]} /></li>
+                    </ul>
+                  </div>
+                </div>
 
-          <div className="p-3 rounded-lg border border-border bg-background mb-3">
-            <h4 className="text-sm font-semibold text-foreground mb-2">Medico-legal framework (UK)</h4>
-            <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-              <li><strong>Mental Capacity Act 2005</strong>: patients lack capacity — decisions made in <em>best interests</em> (s.4), consulting family/those interested in welfare, and any advance decision to refuse treatment (ADRT) or Lasting Power of Attorney (health &amp; welfare).</li>
-              <li><strong>CANH withdrawal</strong>: following <em>An NHS Trust v Y [2018] UKSC 46</em>, court application is no longer mandatory where there is clinical and family consensus and the RCP/BMA/GMC best-interest process has been followed. Refer to the Court of Protection when there is dispute, uncertainty, or finely-balanced decisions.</li>
-              <li>Independent <strong>second opinion</strong> from a clinician external to the treating team is required before CANH withdrawal in PDoC.</li>
-              <li><strong>IMCA</strong> appointment if no appropriate family/friend to consult on serious medical treatment.</li>
-              <li>Brain death (DNC) is a separate legal/clinical entity — VS and MCS patients are <em>alive</em>; organ donation pathways differ (DCD only, if treatment withdrawn).</li>
-              <li>Clear, contemporaneous documentation of diagnosis, prognosis, decision-making process and family meetings is essential.</li>
-            </ul>
-          </div>
+                <div className="p-3 rounded-lg border border-border bg-background mb-3">
+                  <h4 className="text-sm font-semibold text-foreground mb-2">Medico-legal framework (UK)</h4>
+                  <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                    <li><strong>Mental Capacity Act 2005</strong>: patients lack capacity — decisions made in <em>best interests</em> (s.4), consulting family/those interested in welfare, and any ADRT or LPA (health &amp; welfare).<Cite ids={["mca"]} /></li>
+                    <li><strong>CANH withdrawal</strong>: following <em>An NHS Trust v Y</em>, court application is no longer mandatory where there is clinical and family consensus and the RCP/BMA/GMC best-interest process has been followed. Refer to the Court of Protection where dispute, uncertainty, or finely-balanced decisions arise.<Cite ids={["ntvy", "bmacanh", "rcp2020"]} /></li>
+                    <li>Independent <strong>second opinion</strong> from a clinician external to the treating team is required before CANH withdrawal in PDoC.<Cite ids={["bmacanh", "rcp2020"]} /></li>
+                    <li><strong>IMCA</strong> appointment if no appropriate family/friend to consult on serious medical treatment.<Cite ids={["imca", "mca"]} /></li>
+                    <li>Brain death (DNC) is a separate legal/clinical entity — VS and MCS patients are <em>alive</em>; organ donation pathways differ (DCD only, if treatment withdrawn).<Cite ids={["gmceol"]} /></li>
+                    <li>Clear, contemporaneous documentation of diagnosis, prognosis, decision-making and family meetings is essential.<Cite ids={["gmceol", "rcp2020"]} /></li>
+                  </ul>
+                </div>
 
-          <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 mb-3">
-            <h4 className="text-sm font-semibold text-foreground mb-2">Key learning points</h4>
-            <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-              <li>Diagnosis of PDoC is clinical, serial, and uses CRS-R — single assessments misdiagnose ~40%.</li>
-              <li>VS = wakefulness without awareness; MCS = minimal but reproducible awareness; both have preserved brainstem function and are <strong>not</strong> brain death.</li>
-              <li>Aetiology and time since injury are the strongest prognostic factors; MCS prognosis exceeds VS.</li>
-              <li>Treat MCS patients as capable of pain perception until proven otherwise.</li>
-              <li>CANH withdrawal in PDoC is lawful via the MCA best-interest process with second opinion; court only where dispute or uncertainty exists.</li>
-              <li>Always exclude mimics: locked-in syndrome, NCSE, severe sedation, neuromuscular weakness.</li>
-            </ul>
-          </div>
+                <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 mb-3">
+                  <h4 className="text-sm font-semibold text-foreground mb-2">Key learning points</h4>
+                  <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                    <li>Diagnosis of PDoC is clinical, serial, and uses CRS-R — single assessments misdiagnose ~40%.<Cite ids={["giacino", "rcp2020"]} /></li>
+                    <li>VS = wakefulness without awareness; MCS = minimal but reproducible awareness; both have preserved brainstem function and are <strong>not</strong> brain death.<Cite ids={["rcp2020"]} /></li>
+                    <li>Aetiology and time since injury are the strongest prognostic factors; MCS prognosis exceeds VS.<Cite ids={["giacino", "rcp2020"]} /></li>
+                    <li>Treat MCS patients as capable of pain perception until proven otherwise.<Cite ids={["rcp2020"]} /></li>
+                    <li>CANH withdrawal in PDoC is lawful via the MCA best-interest process with second opinion; court only where dispute or uncertainty exists.<Cite ids={["ntvy", "bmacanh"]} /></li>
+                    <li>Always exclude mimics: locked-in syndrome, NCSE, severe sedation, neuromuscular weakness.<Cite ids={["rcp2020"]} /></li>
+                  </ul>
+                </div>
 
-          <div className="p-3 rounded-lg border border-border bg-secondary/20">
-            <h4 className="text-sm font-semibold text-foreground mb-2">Cited guidance</h4>
-            <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-              <li>Royal College of Physicians. <em>Prolonged Disorders of Consciousness following sudden onset brain injury: national clinical guidelines.</em> RCP, 2020.</li>
-              <li>British Medical Association &amp; Royal College of Physicians. <em>Clinically-assisted nutrition and hydration (CANH) and adults who lack the capacity to consent.</em> BMA/RCP/GMC, 2018 (updated 2024).</li>
-              <li>General Medical Council. <em>Treatment and care towards the end of life: good practice in decision-making.</em> GMC, 2022.</li>
-              <li><em>An NHS Trust and others v Y</em> [2018] UKSC 46.</li>
-              <li>Mental Capacity Act 2005 and Code of Practice.</li>
-              <li>Giacino JT et al. Practice guideline update: disorders of consciousness. <em>Neurology</em> 2018;91:450–460 (AAN/ACRM/NIDILRR).</li>
-              <li>Sandroni C et al. ERC-ESICM guidelines on prognostication after cardiac arrest. <em>Intensive Care Med</em> 2021;47:1393–1414.</li>
-            </ul>
-          </div>
+                <div className="p-3 rounded-lg border border-border bg-secondary/20">
+                  <h4 className="text-sm font-semibold text-foreground mb-2">Cited guidance (click to open)</h4>
+                  <ol className="text-xs text-muted-foreground space-y-1 list-decimal list-inside">
+                    {refs.map((r) => (
+                      <li key={r.id}>
+                        <a href={r.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{r.label}</a>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </>
+            );
+          })()}
           </CollapsibleSubsection>
         </ExamSection>
 
