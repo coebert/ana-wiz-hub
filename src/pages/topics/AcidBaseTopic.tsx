@@ -3,6 +3,7 @@ import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { acidBaseQuestions } from "@/data/quizzes";
 import StewartAcidBaseDiagram from "@/components/diagrams/StewartAcidBaseDiagram";
+import HendersonHasselbalchDiagram from "@/components/diagrams/HendersonHasselbalchDiagram";
 import AcidBaseInterpretationDiagram from "@/components/diagrams/AcidBaseInterpretationDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
@@ -98,6 +99,107 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="henderson-hasselbalch" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["RCoA Primary — Physiology", "FFICM 4.4"]}>
+            <CollapsibleSubsection title="Henderson–Hasselbalch Approach" defaultOpen>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                The Henderson–Hasselbalch approach treats the body as a single dominant buffer pair — bicarbonate and dissolved CO₂ — and asks: <em>given today's CO₂ tension and bicarbonate concentration, what is the pH?</em> It is the framework taught at medical school, used in every ABG machine's report, and remains the fastest bedside tool for classifying a disturbance as respiratory or metabolic and judging compensation.
+              </p>
+
+              <div className="mb-4">
+                <HendersonHasselbalchDiagram />
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                  <p className="font-semibold text-foreground text-sm">1. Start with the dissociation of carbonic acid</p>
+                  <p className="text-xs text-muted-foreground mt-1 font-mono">CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻</p>
+                  <p className="text-xs text-muted-foreground mt-1">Carbonic anhydrase makes this equilibrium effectively instantaneous in red cells. CO₂ behaves as a volatile acid (excreted by the lung); HCO₃⁻ is the conjugate base, regulated by the kidney.</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                  <p className="font-semibold text-foreground text-sm">2. Apply the law of mass action</p>
+                  <p className="text-xs text-muted-foreground mt-1 font-mono">[H⁺] = K × [CO₂] / [HCO₃⁻]</p>
+                  <p className="text-xs text-muted-foreground mt-1">Take the negative log of both sides — the pK<sub>a</sub> of this system at 37 °C is 6.1 and [CO₂] = 0.03 × PaCO₂ (kPa: × 0.23). This gives the clinical equation.</p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-lg border-2 border-primary/20 bg-primary/5 mb-4">
+                <p className="text-sm font-semibold text-foreground mb-1">The Henderson–Hasselbalch equation</p>
+                <p className="text-base text-foreground font-mono">pH = 6.1 + log<sub>10</sub> ([HCO₃⁻] / (0.03 × PaCO₂))</p>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Three logical consequences fall out immediately:
+                </p>
+                <ul className="text-xs text-muted-foreground list-disc pl-5 mt-1 space-y-0.5">
+                  <li><strong>It is the <em>ratio</em>, not the absolute concentrations, that fixes pH.</strong> A patient with HCO₃⁻ 36 and PaCO₂ 8 kPa has the same pH as one with HCO₃⁻ 18 and PaCO₂ 4 kPa — both ratios = 75.</li>
+                  <li><strong>Compensation is the body restoring the 20:1 ratio of HCO₃⁻ to dissolved CO₂.</strong> The lung adjusts CO₂ in minutes; the kidney adjusts HCO₃⁻ over 2–5 days.</li>
+                  <li><strong>The lung and kidney act as the two arms of one feedback loop.</strong> A primary fall in one variable provokes a predictable secondary change in the other — quantified by Winter's formula and the acute/chronic respiratory compensation rules below.</li>
+                </ul>
+              </div>
+
+              <div className="overflow-x-auto mb-4">
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-2 text-foreground font-semibold">Primary disorder</th>
+                      <th className="text-left py-2 text-foreground font-semibold">Expected compensation</th>
+                      <th className="text-left py-2 text-foreground font-semibold">Time course</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border">
+                      <td className="py-2 font-medium text-foreground">Metabolic acidosis</td>
+                      <td className="py-2 font-mono">PaCO₂ = 1.5 × [HCO₃⁻] + 8 ± 2 (mmHg) (Winter)</td>
+                      <td className="py-2">Minutes–hours</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-2 font-medium text-foreground">Metabolic alkalosis</td>
+                      <td className="py-2 font-mono">ΔPaCO₂ ≈ 0.7 × Δ[HCO₃⁻] (mmHg)</td>
+                      <td className="py-2">Minutes–hours (limited — hypoxia)</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-2 font-medium text-foreground">Acute respiratory acidosis</td>
+                      <td className="py-2 font-mono">Δ[HCO₃⁻] = 1 per 10 mmHg Δ PaCO₂</td>
+                      <td className="py-2">Minutes (cell buffering)</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-2 font-medium text-foreground">Chronic respiratory acidosis</td>
+                      <td className="py-2 font-mono">Δ[HCO₃⁻] = 4 per 10 mmHg Δ PaCO₂</td>
+                      <td className="py-2">2–5 days (renal)</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-2 font-medium text-foreground">Acute respiratory alkalosis</td>
+                      <td className="py-2 font-mono">Δ[HCO₃⁻] = −2 per 10 mmHg Δ PaCO₂</td>
+                      <td className="py-2">Minutes</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 font-medium text-foreground">Chronic respiratory alkalosis</td>
+                      <td className="py-2 font-mono">Δ[HCO₃⁻] = −5 per 10 mmHg Δ PaCO₂</td>
+                      <td className="py-2">2–5 days (renal)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="p-4 rounded-lg border border-border bg-secondary/30 mb-4">
+                <p className="text-sm font-semibold text-foreground mb-1">Extending the framework — anion gap &amp; delta ratio</p>
+                <p className="text-sm text-muted-foreground">
+                  Henderson–Hasselbalch tells you <em>that</em> a metabolic acidosis exists, but not <em>why</em>. The anion gap (AG = Na⁺ − [Cl⁻ + HCO₃⁻], normal 8–12) detects unmeasured anions (lactate, ketones, toxins, urate, sulphate). Hypoalbuminaemia masks a raised AG — correct by adding 2.5 × (40 − measured albumin g/L). The delta ratio (Δ AG / Δ HCO₃⁻) detects mixed disorders: &lt;0.4 = pure NAGMA, 0.4–1 = mixed HAGMA + NAGMA, 1–2 = pure HAGMA, &gt;2 = HAGMA with concurrent metabolic alkalosis or chronic respiratory acidosis.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-lg border border-amber-500/20 bg-amber-500/5">
+                <p className="text-sm font-semibold text-amber-400 mb-1">⚠ Where the descriptive approach breaks down</p>
+                <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-0.5">
+                  <li><strong>HCO₃⁻ is treated as causal.</strong> But [HCO₃⁻] cannot be regulated in isolation from water dissociation, strong ions or weak acids — it is a <em>dependent</em> variable. This causes circular reasoning ("acidosis happened because HCO₃⁻ fell; HCO₃⁻ fell because of the acidosis").</li>
+                  <li><strong>Hyperchloraemic acidosis after large-volume 0.9% NaCl looks "unexplained"</strong> on a Henderson–Hasselbalch analysis — there is no extra acid generated and no buffer consumption. The Stewart approach (below) explains it directly through a fall in SID.</li>
+                  <li><strong>Hypoalbuminaemia hides acidosis.</strong> Each 10 g/L fall in albumin generates a metabolic alkalosis of ~2.5 mEq/L base excess, which can mask a coexisting lactic or ketoacidosis on a casual ABG read.</li>
+                  <li><strong>Compensation rules are empirical regressions</strong>, not derivations from the equation — they fit the average patient and become unreliable in extreme or rapidly changing physiology.</li>
+                </ul>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+
+
           <ExamSection id="hagma" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="High Anion Gap Metabolic Acidosis">
             <p className="text-muted-foreground leading-relaxed mb-3">Mnemonic: <strong>MUDPILES</strong></p>
@@ -122,13 +224,41 @@ const AcidBaseTopic = () => {
           </ExamSection>
 
           <ExamSection id="stewart" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4", "EDIC 5.4"]}>
-            <CollapsibleSubsection title="Stewart Approach">
+            <CollapsibleSubsection title="Strong Ion Difference (Stewart) Approach">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              The physicochemical (Stewart) approach identifies 3 independent variables that determine pH. Unlike the Henderson-Hasselbalch approach, HCO₃⁻ is a <strong>dependent</strong> variable — it changes as a consequence of the independent variables, not as a cause.
+              Peter Stewart (1981) reformulated acid-base chemistry from first principles. He argued that in any aqueous biological solution, three constraints must hold simultaneously: <strong>electroneutrality</strong> (the sum of all charges = 0), <strong>conservation of mass</strong> for all weak acids, and the <strong>dissociation equilibrium</strong> of water itself. Solving these equations shows that [H⁺] (and therefore pH) and [HCO₃⁻] are <em>dependent</em> variables — fully determined by three <em>independent</em> variables that the body can manipulate.
             </p>
+
+            <div className="grid sm:grid-cols-3 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">1. PaCO₂</p>
+                <p className="text-xs text-muted-foreground mt-1">The volatile / respiratory variable. Set by alveolar ventilation. Identical role to the H–H framework.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">2. Strong Ion Difference (SID)</p>
+                <p className="text-xs text-muted-foreground mt-1">The metabolic / renal variable. Driven mainly by the difference between Na⁺ and Cl⁻ in plasma. Manipulated by the kidney (Cl⁻ handling) and by IV fluids.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">3. Total weak acids (A<sub>tot</sub>)</p>
+                <p className="text-xs text-muted-foreground mt-1">Albumin (~80%) + inorganic phosphate (~20%). Set by the liver, GI tract and kidney. Falls in ICU patients → "occult alkalosis".</p>
+              </div>
+            </div>
+
             <div className="mb-4">
               <StewartAcidBaseDiagram />
             </div>
+
+            <div className="p-4 rounded-lg border-2 border-primary/20 bg-primary/5 mb-4">
+              <p className="text-sm font-semibold text-foreground mb-1">The logic, step by step</p>
+              <ol className="text-sm text-muted-foreground list-decimal pl-5 space-y-1">
+                <li><strong>Plasma must be electrically neutral.</strong> The dominant cations (Na⁺, K⁺, Ca²⁺, Mg²⁺ — all <em>strong</em>, fully dissociated) outweigh the dominant strong anions (Cl⁻, lactate⁻) by ≈ 40 mEq/L. This positive charge difference is the SID.</li>
+                <li><strong>That 40 mEq/L "charge gap" must be balanced</strong> by something — and the only things available are HCO₃⁻, dissociated albumin (Alb⁻) and dissociated phosphate (HPO₄²⁻). Together they comprise SID<sub>e</sub> (effective SID).</li>
+                <li><strong>Water dissociates to maintain that balance.</strong> If SID falls (e.g. plasma Cl⁻ rises after 0.9% saline), HCO₃⁻ must fall to preserve electroneutrality — H⁺ rises and pH falls. Conversely, raising SID (loop diuretics, vomiting) forces HCO₃⁻ up → alkalosis.</li>
+                <li><strong>PaCO₂ and A<sub>tot</sub> act in parallel</strong> on the same equations — they shift the equilibrium independently of SID.</li>
+              </ol>
+            </div>
+
+
             <div className="space-y-3">
               {[
                 { var: "PaCO₂", detail: "Respiratory component. Regulated by ventilation. Acts as an independent variable that directly influences water dissociation and thus [H⁺]." },
