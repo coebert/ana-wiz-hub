@@ -419,6 +419,50 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
                 </>
               )}
             </Button>
+            {generating && progress && (
+              <div
+                className="mt-3 rounded-md border border-border bg-muted/40 p-2.5 text-xs text-muted-foreground"
+                role="status"
+                aria-live="polite"
+              >
+                <div className="flex items-center gap-2">
+                  <Loader2 className="h-3.5 w-3.5 animate-spin text-primary" />
+                  <span className="font-medium text-foreground">
+                    Generating podcast…
+                  </span>
+                  <span className="tabular-nums">
+                    {formatTime(progress.elapsedSec)} elapsed
+                  </span>
+                </div>
+                <div className="mt-1.5 pl-5.5">
+                  Status:{" "}
+                  <span className="font-medium text-foreground">
+                    {progress.lastStatus === "generating"
+                      ? "Synthesising audio on the server"
+                      : progress.lastStatus === "pending"
+                      ? "Queued"
+                      : "Waiting for first update…"}
+                  </span>
+                  {estimate && (
+                    <>
+                      {" · target ~"}
+                      {estimate.minutes} min
+                    </>
+                  )}
+                </div>
+                <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-muted">
+                  <div
+                    className="h-full rounded-full bg-primary/60 transition-all"
+                    style={{
+                      // Soft indeterminate-ish bar: ramps up against an
+                      // expected ~4-minute generation, capped at 95% until
+                      // the row reports terminal.
+                      width: `${Math.min(95, Math.round((progress.elapsedSec / 240) * 100))}%`,
+                    }}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
