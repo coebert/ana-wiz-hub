@@ -203,33 +203,72 @@ export const HPAAxisDiagram = () => {
               </g>
   
               {/* === Negative feedback loops === */}
-              {/* Cortisol → pituitary feedback */}
-              <g opacity={data.cortisol === "low" ? 0.25 : data.cortisol === "very-high" ? 1 : 0.7}>
-                <path
-                  d="M 100 388 Q 30 320 30 230 Q 30 195 100 195"
-                  fill="none"
-                  stroke="hsl(220 60% 55%)"
-                  strokeWidth="1.5"
-                  strokeDasharray="5 3"
-                  markerEnd="url(#arrow-inhib)"
-                />
-                <text x="38" y="265" fontSize="8" fill="hsl(220 60% 55%)" fontWeight="600">−ve feedback</text>
-                <text x="38" y="276" fontSize="7" fill="hsl(220 60% 55%)">(short loop)</text>
-              </g>
-              {/* Cortisol → hypothalamus feedback (long loop) */}
-              <g opacity={data.cortisol === "low" ? 0.2 : data.cortisol === "very-high" ? 1 : 0.6}>
-                <path
-                  d="M 260 388 Q 340 320 340 130 Q 340 70 285 60"
-                  fill="none"
-                  stroke="hsl(220 60% 55%)"
-                  strokeWidth="1.5"
-                  strokeDasharray="5 3"
-                  markerEnd="url(#arrow-inhib)"
-                />
-                <text x="305" y="245" fontSize="8" fill="hsl(220 60% 55%)" fontWeight="600" textAnchor="middle">−ve feedback</text>
-                <text x="305" y="256" fontSize="7" fill="hsl(220 60% 55%)" textAnchor="middle">(long loop)</text>
-              </g>
-  
+              {(() => {
+                const loopStrength = (lvl: string) =>
+                  lvl === "suppressed" ? 0.18
+                  : lvl === "low" ? 0.3
+                  : lvl === "normal" ? 0.7
+                  : lvl === "high" ? 0.95
+                  : 1;
+                const longOp = loopStrength(data.cortisol);
+                const shortOp = loopStrength(data.acth);
+                const longColor = data.cortisol === "very-high" ? "hsl(220 75% 48%)" : "hsl(220 60% 55%)";
+                const shortColor = data.acth === "very-high" ? "hsl(260 70% 52%)" : "hsl(260 55% 60%)";
+                const longW = data.cortisol === "very-high" ? 2.2 : 1.6;
+                const shortW = data.acth === "very-high" ? 2 : 1.4;
+                return (
+                  <>
+                    {/* LONG LOOP A — cortisol ⊣ ACTH (left arc) */}
+                    <g opacity={longOp}>
+                      <path
+                        d="M 100 388 Q 30 320 30 230 Q 30 195 100 195"
+                        fill="none"
+                        stroke={longColor}
+                        strokeWidth={longW}
+                        strokeDasharray="6 4"
+                        markerEnd="url(#arrow-inhib)"
+                      >
+                        <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="5s" repeatCount="indefinite" />
+                      </path>
+                      <text x="36" y="262" fontSize="8" fill={longColor} fontWeight="700">long loop</text>
+                      <text x="36" y="272" fontSize="7" fill={longColor}>cortisol ⊣ ACTH</text>
+                    </g>
+
+                    {/* LONG LOOP B — cortisol ⊣ CRH (right arc) */}
+                    <g opacity={longOp}>
+                      <path
+                        d="M 260 388 Q 340 320 340 130 Q 340 70 285 60"
+                        fill="none"
+                        stroke={longColor}
+                        strokeWidth={longW}
+                        strokeDasharray="6 4"
+                        markerEnd="url(#arrow-inhib)"
+                      >
+                        <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="5s" repeatCount="indefinite" />
+                      </path>
+                      <text x="305" y="245" fontSize="8" fill={longColor} fontWeight="700" textAnchor="middle">long loop</text>
+                      <text x="305" y="255" fontSize="7" fill={longColor} textAnchor="middle">cortisol ⊣ CRH</text>
+                    </g>
+
+                    {/* SHORT LOOP — ACTH ⊣ CRH (tight inner arc) */}
+                    <g opacity={shortOp}>
+                      <path
+                        d="M 130 200 Q 78 175 78 130 Q 78 90 130 78"
+                        fill="none"
+                        stroke={shortColor}
+                        strokeWidth={shortW}
+                        strokeDasharray="4 2"
+                        markerEnd="url(#arrow-inhib)"
+                      >
+                        <animate attributeName="stroke-dashoffset" from="0" to="-24" dur="2s" repeatCount="indefinite" />
+                      </path>
+                      <text x="50" y="142" fontSize="8" fill={shortColor} fontWeight="700">short loop</text>
+                      <text x="50" y="152" fontSize="7" fill={shortColor}>ACTH ⊣ CRH</text>
+                    </g>
+                  </>
+                );
+              })()}
+
               {/* Stress inputs */}
               {scenario === "stress" && (
                 <g className="animate-pulse">
@@ -237,13 +276,15 @@ export const HPAAxisDiagram = () => {
                   <text x="40" y="38" fontSize="8" fill="hsl(0 75% 55%)" fontWeight="700">surgery, IL-6, TNF-α, sympathetic</text>
                 </g>
               )}
-  
+
               {/* Legend */}
               <g transform="translate(8, 448)">
                 <line x1="0" y1="6" x2="22" y2="6" stroke="hsl(25 85% 55%)" strokeWidth="2" markerEnd="url(#arrow-stim)" />
                 <text x="28" y="9" fontSize="8" fill="hsl(var(--muted-foreground))">stimulation</text>
-                <line x1="100" y1="6" x2="122" y2="6" stroke="hsl(220 60% 55%)" strokeWidth="1.5" strokeDasharray="4 2" markerEnd="url(#arrow-inhib)" />
-                <text x="128" y="9" fontSize="8" fill="hsl(var(--muted-foreground))">negative feedback</text>
+                <line x1="92" y1="6" x2="114" y2="6" stroke="hsl(220 60% 55%)" strokeWidth="1.6" strokeDasharray="6 4" markerEnd="url(#arrow-inhib)" />
+                <text x="120" y="9" fontSize="8" fill="hsl(var(--muted-foreground))">long (slow)</text>
+                <line x1="188" y1="6" x2="210" y2="6" stroke="hsl(260 55% 60%)" strokeWidth="1.4" strokeDasharray="4 2" markerEnd="url(#arrow-inhib)" />
+                <text x="216" y="9" fontSize="8" fill="hsl(var(--muted-foreground))">short (fast)</text>
               </g>
             </svg>
           </div>
