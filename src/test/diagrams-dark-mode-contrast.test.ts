@@ -149,10 +149,13 @@ describe("Diagrams: dark-mode contrast guard", () => {
   });
 
   it("catches the patterns it claims to catch (self-test)", () => {
-    expect(DARK_SVG_FILL.test('<text fill="#000">x</text>')).toBe(true);
-    expect(DARK_SVG_FILL.test('<text fill="black">x</text>')).toBe(true);
-    expect(DARK_SVG_FILL.test('<text fill="currentColor">x</text>')).toBe(false);
-    expect(DARK_SVG_FILL.test('<text fill="hsl(var(--foreground))">x</text>')).toBe(false);
+    expect(DARK_TEXT_TAG.test('<text fill="#000">x</text>')).toBe(true);
+    expect(DARK_TEXT_TAG.test('<text fill="black">x</text>')).toBe(true);
+    expect(DARK_TEXT_TAG.test('<text fill="currentColor">x</text>')).toBe(false);
+    expect(DARK_TEXT_TAG.test('<text fill="hsl(var(--foreground))">x</text>')).toBe(false);
+    // Shape fills must NOT trigger:
+    expect(DARK_TEXT_TAG.test('<ellipse cx="42" cy="48" rx="9" ry="6" fill="hsl(0 0% 8%)" />')).toBe(false);
+    expect(DARK_TEXT_TAG.test('<rect fill="#000" />')).toBe(false);
 
     expect(DARK_TEXT_UTILITY.test('className="text-gray-800"')).toBe(true);
     expect(DARK_TEXT_UTILITY.test('className="text-black"')).toBe(true);
