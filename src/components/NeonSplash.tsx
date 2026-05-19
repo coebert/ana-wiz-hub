@@ -163,6 +163,7 @@ const NeonSplash = () => {
               : {}),
           }}
         />
+        </div>
       </div>
     </div>
   );
