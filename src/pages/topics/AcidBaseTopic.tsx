@@ -295,6 +295,8 @@ const AcidBaseTopic = () => {
                 <p className="text-xs italic mt-2">Pure lactic acidosis classically gives a ratio ≈ 1.6 (lactate clears partly via tissues other than HCO₃⁻ regeneration); pure DKA ≈ 1.0. A ratio outside expectation always prompts a hunt for a second disorder.</p>
               </div>
 
+              <DeltaRatioDiagram />
+
               <div>
                 <p className="font-semibold text-foreground mb-1">Stewart re-framing</p>
                 <p className="text-sm">
