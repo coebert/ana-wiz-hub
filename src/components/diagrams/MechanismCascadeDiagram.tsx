@@ -238,6 +238,7 @@ export const MechanismCascadeDiagram = ({
       description="Auto-generated wrapper for the Mechanism cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
     >
           <div
+        ref={rootRef}
         className="rounded-xl border border-border bg-card/40 p-4"
         role="group"
         aria-roledescription="Animated mechanism cascade"
