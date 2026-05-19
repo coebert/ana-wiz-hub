@@ -15,8 +15,8 @@ const AnatomySection = () => {
     <SectionLayout
       title="Anatomy"
       subtitle="Applied anatomy for anaesthesia, regional techniques, and intensive care"
-      backPath="/"
-      backLabel="Home"
+      backPath="/revise"
+      backLabel="Core Disciplines"
       accentColor="text-anatomy"
     >
       <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">

@@ -13,8 +13,8 @@ const PhysiologySection = () => {
     <SectionLayout
       title="Physiology"
       subtitle="Applied physiology for the anaesthetist"
-      backPath="/"
-      backLabel="Home"
+      backPath="/revise"
+      backLabel="Core Disciplines"
       accentColor="text-physiology"
     >
       <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">

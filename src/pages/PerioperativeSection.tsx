@@ -15,8 +15,8 @@ const PerioperativeSection = () => {
     <SectionLayout
       title="Perioperative Medicine"
       subtitle="Preoperative assessment, risk stratification, and enhanced recovery"
-      backPath="/"
-      backLabel="Home"
+      backPath="/revise"
+      backLabel="Core Disciplines"
       accentColor="text-perioperative"
     >
       <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">

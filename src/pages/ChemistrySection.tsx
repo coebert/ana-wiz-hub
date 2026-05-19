@@ -15,8 +15,8 @@ const ChemistrySection = () => {
     <SectionLayout
       title="Chemistry Foundations"
       subtitle="Essential chemistry principles for anaesthetists — no prior A-level chemistry required"
-      backPath="/"
-      backLabel="Home"
+      backPath="/revise"
+      backLabel="Core Disciplines"
       accentColor="text-chemistry"
     >
       <div className="bg-secondary/30 rounded-xl p-4 border border-border mb-6">
