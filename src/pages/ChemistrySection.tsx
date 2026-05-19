@@ -34,19 +34,7 @@ const ChemistrySection = () => {
           <p className="text-xs text-muted-foreground">Chemistry Foundations topics</p>
         </div>
       </div>
-      <div className="space-y-3">
-        {visibleTopics.map((topic) => (
-          <TopicCard
-            key={topic.id}
-            title={topic.title}
-            description={topic.description}
-            path={`/chemistry/${topic.id}`}
-            section="chemistry"
-            topicId={topic.id}
-            examTags={topic.examTags}
-          />
-        ))}
-      </div>
+      <SectionTopicsList section="chemistry" topics={visibleTopics} />
     </SectionLayout>
   );
 };
