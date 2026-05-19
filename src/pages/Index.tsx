@@ -132,6 +132,14 @@ const Index = () => {
           style={{ background: "var(--gradient-hero)" }}
         />
         <div className="relative container mx-auto px-4 py-16 md:py-24 text-center">
+          <Link
+            to="/"
+            className="absolute left-4 top-4 md:left-6 md:top-6 inline-flex items-center gap-2 text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+            aria-label="Back to home"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            <span>Home</span>
+          </Link>
           <div className="relative flex flex-col items-center justify-center mb-4">
             <img
               src={brainLogo}
