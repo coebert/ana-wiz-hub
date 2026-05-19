@@ -1,0 +1,1 @@
+UPDATE public.topic_references SET status = 'pending', refs = '[]'::jsonb WHERE status = 'ready';
