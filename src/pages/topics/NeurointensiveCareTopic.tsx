@@ -708,6 +708,70 @@ const NeurointensiveCareTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <CollapsibleSubsection title="Decompressive Craniectomy for Refractory Raised ICP — Evidence">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Decompressive craniectomy (DC) removes a large bone flap (≥12 cm fronto-temporo-parietal, or bifrontal) and opens the dura to allow swollen brain to expand outside the rigid cranial vault, lowering ICP and restoring CPP. It is a <strong>tier 3 / last-line</strong> intervention for ICP refractory to medical therapy. Three landmark RCTs define current practice.
+          </p>
+
+          <div className="space-y-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground">DECRA (NEJM 2011, Cooper et al.)</p>
+              <p className="text-xs text-muted-foreground mb-2">Bifrontotemporoparietal DC for <em>early</em> refractory ICP in diffuse TBI.</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li>155 adults &lt;60 y, diffuse TBI, ICP &gt;20 mmHg for &gt;15 min within any 1 h despite tier-1/2 therapy.</li>
+                <li>DC lowered ICP and ICU/ventilator days but produced <strong>worse 6-month neurological outcome</strong> (extended GOS) than medical management. No mortality difference.</li>
+                <li>Criticised for an early ICP trigger (&gt;20 mmHg for just 15 min) and post-randomisation pupil-reactivity imbalance.</li>
+                <li><strong>Bottom line:</strong> DC should <em>not</em> be used for early/modestly refractory ICP — escalate medical therapy first.</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground">RESCUEicp (NEJM 2016, Hutchinson et al.)</p>
+              <p className="text-xs text-muted-foreground mb-2">DC as a <em>last-tier</em> intervention for sustained refractory ICP.</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li>408 patients 10–65 y; ICP &gt;25 mmHg for 1–12 h despite tier-1 and tier-2 therapy (sedation, osmotherapy, hyperventilation, CSF drainage). Barbiturates allowed in the medical arm.</li>
+                <li>At 6 months: mortality 26.9% (DC) vs 48.9% (medical), <strong>absolute reduction ~22%</strong> (NNT ≈ 5). However, survivors had higher rates of vegetative state and severe disability; rates of upper-severe disability and good recovery were similar.</li>
+                <li>12- and 24-month follow-up: survival benefit persists, with a small increase in favourable outcomes over time as some patients improve.</li>
+                <li><strong>Bottom line:</strong> DC saves lives in truly refractory ICP, but at the cost of survival with severe disability — frame the trade-off explicitly with family before consent.</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground">Hemicraniectomy for malignant MCA infarction</p>
+              <p className="text-xs text-muted-foreground mb-2">DESTINY, DECIMAL, HAMLET (pooled analysis, Lancet Neurol 2007) and DESTINY II (NEJM 2014).</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li>Pooled analysis (age ≤60, DC within 48 h): mortality 22% vs 71%; mRS ≤3 at 12 months 43% vs 21%. NNT ≈ 2 for survival, ≈ 4 for mRS ≤4.</li>
+                <li>DESTINY II (age &gt;60): survival improved (57% vs 24%), but most survivors had mRS 4–5; no patient achieved mRS ≤2.</li>
+                <li><strong>Bottom line:</strong> hemicraniectomy &lt;48 h is standard of care in malignant MCA infarction &lt;60 y; in &gt;60 y, individualised discussion about acceptable disability.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h4 className="text-sm font-semibold text-foreground mb-2">Guideline position</h4>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-4">
+            <li><strong>BTF 4th edition (2017):</strong> bifrontal DC <em>not</em> recommended to improve outcomes in diffuse TBI with early refractory ICP (DECRA), but recommended to reduce ICP and ICU days. Large fronto-temporo-parietal DC recommended over small DC for better outcomes.</li>
+            <li><strong>Seattle International Consensus (SIBICC, 2019/2020):</strong> DC sits at <em>tier 3</em>, alongside barbiturate coma and hypothermia, reserved for ICP refractory to optimised tier 1 and 2 management.</li>
+            <li><strong>NICE NG232 (TBI, 2023):</strong> consider DC after multidisciplinary discussion when medical management has failed, with explicit counselling on survival-with-disability trade-off.</li>
+          </ul>
+
+          <h4 className="text-sm font-semibold text-foreground mb-2">Complications &amp; later issues</h4>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-4">
+            <li>Early: haemorrhage at craniectomy edge, expansion of contralateral haematoma (loss of tamponade), CSF leak, infection, seizures, herniation through the defect.</li>
+            <li>Late: <em>syndrome of the trephined</em> (orthostatic neurological deterioration), hydrocephalus, subdural hygroma, bone flap resorption after cranioplasty.</li>
+            <li>Cranioplasty timing: typically 6–12 weeks once swelling resolves; earlier replacement may improve neurological recovery but increases infection risk.</li>
+          </ul>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam framing</p>
+            <p className="text-sm text-muted-foreground">
+              A common FFICM viva: <em>"Would you offer this patient a decompressive craniectomy?"</em> Structure your answer around (1) is ICP truly refractory to optimised tier-1/2 therapy? (2) RESCUEicp shows mortality benefit but increased severe disability — survivors trade death for dependency; (3) DECRA warns against premature DC; (4) decision is MDT with neurosurgery and family, framed around acceptable outcome states, not just survival.
+            </p>
+          </div>
+          </CollapsibleSubsection>
+        </ExamSection>
+
+
         <ExamSection id="toc-encephalitis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Autoimmune Encephalitis — ICU Management">
           <p className="text-muted-foreground leading-relaxed mb-3">
