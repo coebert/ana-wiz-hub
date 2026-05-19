@@ -93,16 +93,40 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     return () => clearTimeout(t);
   }, [loading, podcast, topicId]);
 
-  // Initial fetch — see if a cached podcast already exists.
+  // Initial fetch — see if a cached podcast already exists. If a generation
+  // is already in flight (e.g. kicked off in another tab, or still running in
+  // the background after a previous tab closed), attach to it by polling the
+  // shared `podcasts` row instead of offering the user a fresh "Generate"
+  // button (which would re-trigger work and potentially race).
   useEffect(() => {
     let cancelled = false;
     (async () => {
       setLoading(true);
       const existing = await fetchPodcast(topicId);
-      if (!cancelled) {
-        setPodcast(existing);
-        if (existing && existing.status === "ready") setSource("cache");
-        setLoading(false);
+      if (cancelled) return;
+      setPodcast(existing);
+      if (existing && existing.status === "ready") setSource("cache");
+      setLoading(false);
+
+      // Attach to an in-flight generation started elsewhere.
+      if (existing && existing.status === "generating") {
+        setGenerating(true);
+        setProgress({ elapsedSec: 0, lastStatus: "generating" });
+        const polled = await pollPodcastUntilDone(topicId, {
+          onTick: (r) =>
+            setProgress((p) => ({
+              elapsedSec: p?.elapsedSec ?? 0,
+              lastStatus: (r?.status as "generating" | "pending" | undefined) ?? "unknown",
+            })),
+          signal: { get cancelled() { return cancelled; } } as { cancelled: boolean },
+        });
+        if (cancelled) return;
+        setPodcast(polled);
+        // Don't claim "fresh" — we didn't kick this generation off in this
+        // tab. If it landed as ready, surface it as cached so the UI doesn't
+        // mislead the user about provenance.
+        if (polled.status === "ready") setSource("cache");
+        setGenerating(false);
       }
     })();
     return () => {
