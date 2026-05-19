@@ -120,5 +120,3 @@ export const SectionReferencesPanel = ({ section, topics }: Props) => {
   );
 };
 
-// Avoid unused-import warning when Button isn't used directly elsewhere
-void Button;
