@@ -26,19 +26,7 @@ const IntensiveCareSection = () => {
           <p className="text-xs text-muted-foreground">Intensive care topics</p>
         </div>
       </div>
-      <div className="space-y-3">
-        {visibleTopics.map((topic) => (
-          <TopicCard
-            key={topic.id}
-            title={topic.title}
-            description={topic.description}
-            path={`/intensive-care/${topic.id}`}
-            section="intensive-care"
-            topicId={topic.id}
-            examTags={topic.examTags}
-          />
-        ))}
-      </div>
+      <SectionTopicsList section="intensive-care" topics={visibleTopics} />
     </SectionLayout>
   );
 };
