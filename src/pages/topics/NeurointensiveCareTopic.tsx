@@ -15,6 +15,7 @@ import { SnodReferralDecider } from "@/components/SnodReferralDecider";
 import { DbiTimeline } from "@/components/DbiTimeline";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ChevronRight } from "lucide-react";
 
 const DecompressiveCraniectomyDecisionDiagram = lazy(
   () => import("@/components/diagrams/DecompressiveCraniectomyDecisionDiagram")
@@ -535,16 +536,21 @@ const NeurointensiveCareTopic = () => {
                     </ul>
                   </div>
                 </div>
-                <div className="p-3 rounded-lg border border-border bg-secondary/20">
-                  <h4 className="text-sm font-semibold text-foreground mb-2">References (click for source)</h4>
-                  <ol className="text-xs text-muted-foreground space-y-1 list-decimal list-inside">
+                <details className="p-3 rounded-lg border border-border bg-secondary/20 group/refs">
+                  <summary className="flex items-center gap-2 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+                    <ChevronRight className="h-4 w-4 text-muted-foreground transition-transform group-open/refs:rotate-90 shrink-0" aria-hidden="true" />
+                    <h4 className="text-sm font-semibold text-foreground m-0">References (click for source)</h4>
+                    <span className="text-xs text-muted-foreground ml-1">({refs.length})</span>
+                  </summary>
+                  <ol className="text-xs text-muted-foreground space-y-1 list-decimal list-inside mt-3">
                     {refs.map((r) => (
                       <li key={r.id}>
                         <a href={r.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{r.label}</a>
                       </li>
                     ))}
                   </ol>
-                </div>
+                </details>
+
               </>
             );
           })()}
@@ -632,16 +638,21 @@ const NeurointensiveCareTopic = () => {
                   </ul>
                 </div>
 
-                <div className="p-3 rounded-lg border border-border bg-secondary/20">
-                  <h4 className="text-sm font-semibold text-foreground mb-2">Cited guidance (click to open)</h4>
-                  <ol className="text-xs text-muted-foreground space-y-1 list-decimal list-inside">
+                <details className="p-3 rounded-lg border border-border bg-secondary/20 group/refs">
+                  <summary className="flex items-center gap-2 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+                    <ChevronRight className="h-4 w-4 text-muted-foreground transition-transform group-open/refs:rotate-90 shrink-0" aria-hidden="true" />
+                    <h4 className="text-sm font-semibold text-foreground m-0">Cited guidance (click to open)</h4>
+                    <span className="text-xs text-muted-foreground ml-1">({refs.length})</span>
+                  </summary>
+                  <ol className="text-xs text-muted-foreground space-y-1 list-decimal list-inside mt-3">
                     {refs.map((r) => (
                       <li key={r.id}>
                         <a href={r.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{r.label}</a>
                       </li>
                     ))}
                   </ol>
-                </div>
+                </details>
+
               </>
             );
           })()}
