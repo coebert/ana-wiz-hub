@@ -714,6 +714,10 @@ const NeurointensiveCareTopic = () => {
             Decompressive craniectomy (DC) removes a large bone flap (≥12 cm fronto-temporo-parietal, or bifrontal) and opens the dura to allow swollen brain to expand outside the rigid cranial vault, lowering ICP and restoring CPP. It is a <strong>tier 3 / last-line</strong> intervention for ICP refractory to medical therapy. Three landmark RCTs define current practice.
           </p>
 
+          <div className="mb-4">
+            <DecompressiveCraniectomyDecisionDiagram />
+          </div>
+
           <div className="space-y-3 mb-4">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground">DECRA (NEJM 2011, Cooper et al.)</p>
