@@ -7,6 +7,7 @@ import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootin
 import ARDSVentModeComparisonDiagram from "@/components/diagrams/ARDSVentModeComparisonDiagram";
 import EOLIAMurrayCalculator from "@/components/diagrams/EOLIAMurrayCalculator";
 import PneumoniaSteroidDecisionTree from "@/components/diagrams/PneumoniaSteroidDecisionTree";
+import ARDSPathophysiologyCascadeDiagram from "@/components/diagrams/ARDSPathophysiologyCascadeDiagram";
 import { DiagramSection } from "@/components/DiagramSection";
 import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
