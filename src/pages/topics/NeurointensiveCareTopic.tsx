@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
@@ -9,13 +10,18 @@ import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodia
 import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
 import MyastheniaCrisisFlowchart from "@/components/diagrams/MyastheniaCrisisFlowchart";
 import MyasthenicVsCholinergicComparison from "@/components/diagrams/MyasthenicVsCholinergicComparison";
-import DecompressiveCraniectomyDecisionDiagram from "@/components/diagrams/DecompressiveCraniectomyDecisionDiagram";
-import DecompressiveCraniectomyTimelineDiagram from "@/components/diagrams/DecompressiveCraniectomyTimelineDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { SnodReferralDecider } from "@/components/SnodReferralDecider";
 import { DbiTimeline } from "@/components/DbiTimeline";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const DecompressiveCraniectomyDecisionDiagram = lazy(
+  () => import("@/components/diagrams/DecompressiveCraniectomyDecisionDiagram")
+);
+const DecompressiveCraniectomyTimelineDiagram = lazy(
+  () => import("@/components/diagrams/DecompressiveCraniectomyTimelineDiagram")
+);
 
 const tocItems = [
   { id: "toc-tbi", label: "TBI" },
@@ -716,9 +722,11 @@ const NeurointensiveCareTopic = () => {
             Decompressive craniectomy (DC) removes a large bone flap (≥12 cm fronto-temporo-parietal, or bifrontal) and opens the dura to allow swollen brain to expand outside the rigid cranial vault, lowering ICP and restoring CPP. It is a <strong>tier 3 / last-line</strong> intervention for ICP refractory to medical therapy. Three landmark RCTs define current practice.
           </p>
 
-          <div className="mb-4">
-            <DecompressiveCraniectomyDecisionDiagram />
-          </div>
+          <Suspense fallback={<div className="mb-4 h-24 rounded-lg border border-border bg-secondary/30" aria-hidden />}>
+            <div className="mb-4">
+              <DecompressiveCraniectomyDecisionDiagram />
+            </div>
+          </Suspense>
 
           <div className="space-y-3 mb-4">
             <div className="p-4 rounded-lg border border-border">
@@ -762,9 +770,11 @@ const NeurointensiveCareTopic = () => {
           </ul>
 
           <h4 className="text-sm font-semibold text-foreground mb-2">Complications &amp; later issues</h4>
-          <div className="mb-4">
-            <DecompressiveCraniectomyTimelineDiagram />
-          </div>
+          <Suspense fallback={<div className="mb-4 h-24 rounded-lg border border-border bg-secondary/30" aria-hidden />}>
+            <div className="mb-4">
+              <DecompressiveCraniectomyTimelineDiagram />
+            </div>
+          </Suspense>
           <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-4">
             <li>Early: haemorrhage at craniectomy edge, expansion of contralateral haematoma (loss of tamponade), CSF leak, infection, seizures, herniation through the defect.</li>
             <li>Late: <em>syndrome of the trephined</em> (orthostatic neurological deterioration), hydrocephalus, subdural hygroma, bone flap resorption after cranioplasty.</li>
