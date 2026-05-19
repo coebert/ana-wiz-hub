@@ -201,24 +201,112 @@ const AcidBaseTopic = () => {
 
 
           <ExamSection id="hagma" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
-            <CollapsibleSubsection title="High Anion Gap Metabolic Acidosis">
-            <p className="text-muted-foreground leading-relaxed mb-3">Mnemonic: <strong>MUDPILES</strong></p>
-            <div className="grid sm:grid-cols-2 gap-2">
-              {[
-                { letter: "M", cause: "Methanol" },
-                { letter: "U", cause: "Uraemia" },
-                { letter: "D", cause: "Diabetic ketoacidosis" },
-                { letter: "P", cause: "Propylene glycol / Paracetamol" },
-                { letter: "I", cause: "Isoniazid / Iron" },
-                { letter: "L", cause: "Lactic acidosis" },
-                { letter: "E", cause: "Ethylene glycol" },
-                { letter: "S", cause: "Salicylates" },
-              ].map((item) => (
-                <div key={item.letter} className="flex items-center gap-2 p-2 rounded border border-border">
-                  <span className="font-bold text-primary text-sm">{item.letter}</span>
-                  <span className="text-sm text-muted-foreground">{item.cause}</span>
+            <CollapsibleSubsection title="High Anion Gap Metabolic Acidosis (HAGMA)">
+            <div className="text-muted-foreground leading-relaxed space-y-4">
+              <div>
+                <p className="font-semibold text-foreground mb-1">Definition &amp; underlying physiology</p>
+                <p>
+                  HAGMA is a metabolic acidosis (low HCO₃⁻, low pH) accompanied by an <strong>elevated anion gap</strong>:
+                  AG = [Na⁺] − ([Cl⁻] + [HCO₃⁻]); normal 8–12 mEq/L (some labs 3–11 if K⁺ excluded). The gap reflects
+                  <em> unmeasured anions</em> — predominantly albumin (negatively charged at physiological pH), phosphate and sulphate,
+                  plus pathological additions of lactate, ketoacids, or exogenous toxin anions. When a strong acid HA is added,
+                  H⁺ is buffered by HCO₃⁻ (consumed) while A⁻ accumulates: HCO₃⁻ falls, Cl⁻ does <em>not</em> rise, so the gap widens.
+                  This distinguishes HAGMA from <strong>NAGMA</strong> (hyperchloraemic acidosis), where HCO₃⁻ loss is matched 1:1 by
+                  Cl⁻ gain (GI/renal HCO₃⁻ loss, RTA, large-volume 0.9% saline).
+                </p>
+              </div>
+
+              <div className="rounded-md border border-border bg-secondary/30 p-3">
+                <p className="font-semibold text-foreground mb-1">Albumin correction is non-negotiable in ICU</p>
+                <p className="text-sm">
+                  Each 10 g/L fall in albumin lowers the apparent AG by ~2.5 mEq/L. <strong>Corrected AG = measured AG + 2.5 × (40 − albumin g/L)</strong>.
+                  An ICU patient with albumin 20 g/L and "normal" AG of 12 actually has a corrected AG of 17 — a HAGMA hiding in plain sight.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-foreground mb-1">Causes — <em>GOLD MARK</em> (modern, preferred to MUDPILES)</p>
+                <p className="text-sm mb-2">
+                  MUDPILES is the traditional mnemonic but includes obsolete agents (paraldehyde) and omits common ICU causes (pyroglutamic acid, D-lactate).
+                  <strong> GOLD MARK</strong> (Mehta, Lancet 2008) captures the realistic differential:
+                </p>
+                <div className="grid sm:grid-cols-2 gap-2">
+                  {[
+                    { letter: "G", cause: "Glycols", detail: "Ethylene glycol, propylene glycol (lorazepam/diazepam infusions, IV phenobarbital)" },
+                    { letter: "O", cause: "Oxoproline", detail: "Pyroglutamic acid — chronic paracetamol + malnutrition/sepsis (γ-glutamyl cycle)" },
+                    { letter: "L", cause: "L-lactate", detail: "Type A (hypoperfusion/hypoxia) or Type B (metformin, linezolid, propofol, thiamine deficiency, malignancy)" },
+                    { letter: "D", cause: "D-lactate", detail: "Short bowel syndrome — bacterial fermentation; not detected by standard lactate assay" },
+                    { letter: "M", cause: "Methanol", detail: "Formate accumulation → optic nerve injury, putaminal necrosis" },
+                    { letter: "A", cause: "Aspirin (salicylates)", detail: "Mixed picture: respiratory alkalosis (medullary stimulation) + HAGMA (uncoupled OXPHOS, lactate, ketones)" },
+                    { letter: "R", cause: "Renal failure", detail: "Retained sulphate, phosphate, urate, hippurate; usually AG 16–20" },
+                    { letter: "K", cause: "Ketoacidosis", detail: "Diabetic (β-hydroxybutyrate, acetoacetate), alcoholic (β-OHB predominant — dipstick may be negative), starvation" },
+                  ].map((item) => (
+                    <div key={item.letter} className="flex gap-2 p-2 rounded border border-border">
+                      <span className="font-bold text-primary text-sm shrink-0">{item.letter}</span>
+                      <div>
+                        <span className="text-sm font-semibold text-foreground">{item.cause}</span>
+                        <p className="text-xs text-muted-foreground mt-0.5">{item.detail}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div>
+                <p className="font-semibold text-foreground mb-1">Narrowing the differential — the osmolar gap</p>
+                <p className="text-sm">
+                  In suspected toxic alcohol ingestion, calculate the <strong>osmolar gap</strong>:
+                  measured osmolality − calculated (2×Na⁺ + urea + glucose, all mmol/L); normal &lt; 10 mOsm/kg.
+                  A <strong>raised osmolar gap + raised AG</strong> strongly suggests methanol or ethylene glycol (their parent alcohols are osmotically active before metabolism).
+                  Early on the AG may be near-normal (alcohol unmetabolised → high osmolar gap, low AG); late, after ADH metabolism, the osmolar gap closes and AG climbs as formate/glycolate accumulate.
+                  Urinary oxalate crystals (ethylene glycol) and Wood's-lamp fluorescence (fluorescein in antifreeze) support the diagnosis.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-foreground mb-1">Lactic acidosis — type A vs type B</p>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>Type A (hypoxic):</strong> shock of any aetiology, severe hypoxaemia, regional ischaemia (mesenteric, limb), seizures, severe exercise. Lactate generation exceeds hepatic/renal clearance.</li>
+                  <li><strong>Type B (non-hypoxic):</strong>
+                    <em> B1</em> — underlying disease (liver failure → ↓clearance; malignancy, sepsis-associated metabolic reprogramming, thiamine deficiency, DKA);
+                    <em> B2</em> — drugs/toxins (metformin, linezolid, NRTIs, propofol infusion syndrome, β₂-agonists, cyanide, paracetamol);
+                    <em> B3</em> — inborn errors of metabolism.
+                  </li>
+                  <li><strong>D-lactic acidosis:</strong> short bowel/blind loop → carbohydrate fermentation by Gram-positives → D-lactate; presents with encephalopathy and HAGMA but <em>normal</em> L-lactate (standard assay is L-specific).</li>
+                  <li>Lactate &gt; 4 mmol/L in sepsis triggers Sepsis-6/SSC bundles; trend with serial measurement is more useful than a single value.</li>
+                </ul>
+              </div>
+
+              <div>
+                <p className="font-semibold text-foreground mb-1">Delta ratio (ΔAG / ΔHCO₃⁻) — detecting mixed disorders</p>
+                <p className="text-sm">
+                  Once HAGMA is identified, the delta ratio reveals coexisting disturbances:
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-sm mt-1">
+                  <li>&lt; 0.4: pure NAGMA (the AG hasn't really risen).</li>
+                  <li>0.4–1.0: <strong>mixed HAGMA + NAGMA</strong> (e.g. DKA + saline resuscitation, or diarrhoea + lactic acidosis).</li>
+                  <li>1.0–2.0: <strong>pure HAGMA</strong> (1:1 stoichiometric exchange of HCO₃⁻ for unmeasured anion).</li>
+                  <li>&gt; 2.0: HAGMA with <strong>concurrent metabolic alkalosis or chronic respiratory acidosis</strong> (HCO₃⁻ has been preserved or augmented — e.g. DKA in a vomiting patient, or COPD with superimposed sepsis).</li>
+                </ul>
+                <p className="text-xs italic mt-2">Pure lactic acidosis classically gives a ratio ≈ 1.6 (lactate clears partly via tissues other than HCO₃⁻ regeneration); pure DKA ≈ 1.0. A ratio outside expectation always prompts a hunt for a second disorder.</p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-foreground mb-1">Stewart re-framing</p>
+                <p className="text-sm">
+                  In Stewart terms, HAGMA = a fall in <strong>SID</strong> driven by accumulation of unmeasured strong anions (lactate⁻, ketoanions, formate, glycolate, oxalate, sulphate). The <strong>strong ion gap (SIG = SID<sub>a</sub> − SID<sub>e</sub>)</strong> quantifies these directly and, unlike the AG, is automatically corrected for albumin and phosphate — particularly useful in critical illness with hypoalbuminaemia and mixed disorders.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-foreground mb-1">Management principles</p>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>Treat the cause</strong> — fluids/insulin/K⁺ for DKA, antidote (fomepizole ± dialysis) for toxic alcohols, urinary alkalinisation ± dialysis for salicylates, source control + perfusion for septic lactic acidosis, withdraw offending drug for type B.</li>
+                  <li><strong>Bicarbonate</strong> is <em>not</em> routinely indicated. BICAR-ICU (Lancet 2018) showed no 28-day mortality benefit for sodium bicarbonate in severe metabolic acidaemia overall, but a signal for renal-replacement-free days and reduced mortality in the AKI (KDIGO 2–3) subgroup when pH &lt; 7.20. Reasonable to consider in life-threatening acidaemia (pH &lt; 7.1) with AKI, or to facilitate vasopressor responsiveness.</li>
+                  <li><strong>Renal replacement therapy</strong> for toxic alcohols (high clearance, removes parent + toxic metabolites), severe salicylate toxicity (level &gt; 700 mg/L, CNS features, refractory acidosis), metformin-associated lactic acidosis with AKI, refractory uraemic acidosis.</li>
+                  <li><strong>Avoid harm:</strong> aggressive 0.9% saline resuscitation adds a hyperchloraemic NAGMA on top of HAGMA — prefer balanced crystalloids (Hartmann's, Plasma-Lyte) unless contraindicated.</li>
+                </ul>
+              </div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
