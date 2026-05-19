@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronRight, CheckCircle2 } from "lucide-react";
+import { ChevronRight, CheckCircle2, BookOpen } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
 import { ExamTag, Section } from "@/data/curriculum";
 
@@ -10,6 +10,8 @@ interface TopicCardProps {
   section: Section;
   topicId?: string;
   examTags?: ExamTag[];
+  /** When set, shows a "N refs" badge linking the user to the topic's references drawer. */
+  referenceCount?: number;
 }
 
 const examTagLabels: Record<ExamTag, string> = {
