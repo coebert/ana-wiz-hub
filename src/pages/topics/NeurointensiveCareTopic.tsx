@@ -15,6 +15,7 @@ import { SnodReferralDecider } from "@/components/SnodReferralDecider";
 import { DbiTimeline } from "@/components/DbiTimeline";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ChevronRight } from "lucide-react";
 
 const DecompressiveCraniectomyDecisionDiagram = lazy(
   () => import("@/components/diagrams/DecompressiveCraniectomyDecisionDiagram")
