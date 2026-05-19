@@ -347,6 +347,8 @@ const AcidBaseTopic = () => {
                 </p>
               </div>
 
+              <OsmolarityBreakdownDiagram />
+
               <OsmolarGapCalculator />
 
               <div>
