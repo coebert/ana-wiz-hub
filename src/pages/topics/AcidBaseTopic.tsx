@@ -9,6 +9,7 @@ import HAGMAPathophysiologyDiagram from "@/components/diagrams/HAGMAPathophysiol
 import DeltaRatioDiagram from "@/components/diagrams/DeltaRatioDiagram";
 import OsmolarGapCalculator from "@/components/diagrams/OsmolarGapCalculator";
 import ToxicAlcoholSalicylateCalculator from "@/components/diagrams/ToxicAlcoholSalicylateCalculator";
+import HAGMAManagementAlgorithm from "@/components/diagrams/HAGMAManagementAlgorithm";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
