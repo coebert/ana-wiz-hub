@@ -10,6 +10,7 @@ import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNe
 import MyastheniaCrisisFlowchart from "@/components/diagrams/MyastheniaCrisisFlowchart";
 import MyasthenicVsCholinergicComparison from "@/components/diagrams/MyasthenicVsCholinergicComparison";
 import DecompressiveCraniectomyDecisionDiagram from "@/components/diagrams/DecompressiveCraniectomyDecisionDiagram";
+import DecompressiveCraniectomyTimelineDiagram from "@/components/diagrams/DecompressiveCraniectomyTimelineDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { SnodReferralDecider } from "@/components/SnodReferralDecider";
 import { DbiTimeline } from "@/components/DbiTimeline";
