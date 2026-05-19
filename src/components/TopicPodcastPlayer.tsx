@@ -52,6 +52,35 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const [regenPassword, setRegenPassword] = useState("");
   const [regenError, setRegenError] = useState<string | null>(null);
   const [regenSubmitting, setRegenSubmitting] = useState(false);
+  // Live progress while polling the background job. `elapsedSec` ticks every
+  // second; `lastStatus` updates each poll tick (every ~5s) so the UI can
+  // show the current row state without waiting for a terminal result.
+  const [progress, setProgress] = useState<{
+    elapsedSec: number;
+    lastStatus: "generating" | "pending" | "unknown";
+  } | null>(null);
+  const generationStartedAt = useRef<number | null>(null);
+
+  // Tick the elapsed-seconds counter every second while generating.
+  useEffect(() => {
+    if (!generating) {
+      generationStartedAt.current = null;
+      setProgress(null);
+      return;
+    }
+    if (generationStartedAt.current == null) {
+      generationStartedAt.current = Date.now();
+    }
+    setProgress((p) => p ?? { elapsedSec: 0, lastStatus: "generating" });
+    const id = window.setInterval(() => {
+      setProgress((p) => {
+        const startedAt = generationStartedAt.current ?? Date.now();
+        const elapsedSec = Math.floor((Date.now() - startedAt) / 1000);
+        return { elapsedSec, lastStatus: p?.lastStatus ?? "generating" };
+      });
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [generating]);
 
   // Estimate target length from page content once we know there's no cached podcast.
   useEffect(() => {
@@ -110,7 +139,13 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
             setSource("fresh");
             return;
           }
-          const polled = await pollPodcastUntilDone(topicId);
+          const polled = await pollPodcastUntilDone(topicId, {
+            onTick: (r) =>
+              setProgress((p) => ({
+                elapsedSec: p?.elapsedSec ?? 0,
+                lastStatus: (r?.status as "generating" | "pending" | undefined) ?? "unknown",
+              })),
+          });
           setPodcast(polled);
           if (polled.status === "ready") setSource("fresh");
           return;
@@ -213,7 +248,13 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
       try {
         if (result.status === "generating") {
-          const polled = await pollPodcastUntilDone(topicId);
+          const polled = await pollPodcastUntilDone(topicId, {
+            onTick: (r) =>
+              setProgress((p) => ({
+                elapsedSec: p?.elapsedSec ?? 0,
+                lastStatus: (r?.status as "generating" | "pending" | undefined) ?? "unknown",
+              })),
+          });
           setPodcast(polled);
           if (polled.status === "ready") setSource("fresh");
           return;
@@ -378,6 +419,50 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
                 </>
               )}
             </Button>
+            {generating && progress && (
+              <div
+                className="mt-3 rounded-md border border-border bg-muted/40 p-2.5 text-xs text-muted-foreground"
+                role="status"
+                aria-live="polite"
+              >
+                <div className="flex items-center gap-2">
+                  <Loader2 className="h-3.5 w-3.5 animate-spin text-primary" />
+                  <span className="font-medium text-foreground">
+                    Generating podcast…
+                  </span>
+                  <span className="tabular-nums">
+                    {formatTime(progress.elapsedSec)} elapsed
+                  </span>
+                </div>
+                <div className="mt-1.5 pl-5.5">
+                  Status:{" "}
+                  <span className="font-medium text-foreground">
+                    {progress.lastStatus === "generating"
+                      ? "Synthesising audio on the server"
+                      : progress.lastStatus === "pending"
+                      ? "Queued"
+                      : "Waiting for first update…"}
+                  </span>
+                  {estimate && (
+                    <>
+                      {" · target ~"}
+                      {estimate.minutes} min
+                    </>
+                  )}
+                </div>
+                <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-muted">
+                  <div
+                    className="h-full rounded-full bg-primary/60 transition-all"
+                    style={{
+                      // Soft indeterminate-ish bar: ramps up against an
+                      // expected ~4-minute generation, capped at 95% until
+                      // the row reports terminal.
+                      width: `${Math.min(95, Math.round((progress.elapsedSec / 240) * 100))}%`,
+                    }}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
