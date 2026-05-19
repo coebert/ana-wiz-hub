@@ -50,13 +50,22 @@ export const TopicCard = ({ title, description, path, section, topicId, examTags
               {title}
             </h3>
             <p className="text-sm text-muted-foreground mt-1 break-words">{description}</p>
-            {examTags && examTags.length > 0 && (
+            {((examTags && examTags.length > 0) || (referenceCount && referenceCount > 0)) && (
               <div className="flex flex-wrap gap-1 mt-1.5">
-                {examTags.map((tag) => (
+                {examTags?.map((tag) => (
                   <span key={tag} className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium border ${examTagColors[tag]}`}>
                     {examTagLabels[tag]}
                   </span>
                 ))}
+                {referenceCount && referenceCount > 0 ? (
+                  <span
+                    className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-medium border bg-muted/50 text-muted-foreground border-border"
+                    title={`${referenceCount} BJA-style references available`}
+                  >
+                    <BookOpen className="h-2.5 w-2.5" />
+                    {referenceCount} ref{referenceCount === 1 ? "" : "s"}
+                  </span>
+                ) : null}
               </div>
             )}
           </div>
