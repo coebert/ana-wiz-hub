@@ -127,53 +127,45 @@ const EndocrinePhysiologyTopic = () => {
 
           <ExamSection id="hp-axis" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <CollapsibleSubsection title="Hypothalamic-Pituitary & HPA Axes">
-            <p className="text-muted-foreground leading-relaxed mb-3">
-              The hypothalamus controls the anterior pituitary via releasing/inhibiting hormones through the
-              hypothalamic-hypophyseal portal system. The posterior pituitary stores and releases ADH and oxytocin
-              (synthesised in supraoptic and paraventricular hypothalamic nuclei).
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-2 text-foreground font-semibold">Hormone</th>
-                    <th className="text-left py-2 text-foreground font-semibold">Source</th>
-                    <th className="text-left py-2 text-foreground font-semibold">Anaesthetic Relevance</th>
-                  </tr>
-                </thead>
-                <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border">
-                    <td className="py-2 font-medium text-foreground">ACTH</td>
-                    <td>Anterior pituitary</td>
-                    <td>Stimulates cortisol. ↑ in stress response. Suppressed by exogenous steroids.</td>
-                  </tr>
-                  <tr className="border-b border-border">
-                    <td className="py-2 font-medium text-foreground">ADH (vasopressin)</td>
-                    <td>Posterior pituitary</td>
-                    <td>V₁ (vasoconstriction), V₂ (aquaporin-2, water reabsorption). Used in septic shock, DI.</td>
-                  </tr>
-                  <tr className="border-b border-border">
-                    <td className="py-2 font-medium text-foreground">TSH</td>
-                    <td>Anterior pituitary</td>
-                    <td>Stimulates T₃/T₄. Thyroid storm is a perioperative emergency.</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 font-medium text-foreground">GH</td>
-                    <td>Anterior pituitary</td>
-                    <td>Acromegaly: difficult airway, OSA, ↑ cardiac disease.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <h4 className="text-base font-semibold text-foreground mt-6 mb-2">HPA Axis</h4>
-            <p className="text-muted-foreground leading-relaxed mb-3">
-              The hypothalamic-pituitary-adrenal axis governs cortisol secretion through a three-tier cascade with both
-              short- and long-loop negative feedback. Use the interactive diagram below to see how surgical stress,
-              exogenous steroids and adrenal/pituitary failure remodel the cascade.
-            </p>
-            <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                The hypothalamus controls the anterior pituitary via releasing/inhibiting hormones through the
+                hypothalamic-hypophyseal portal system. The posterior pituitary stores and releases ADH and oxytocin
+                (synthesised in supraoptic and paraventricular hypothalamic nuclei).
+              </p>
+              <div className="overflow-x-auto mb-6">
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-2 text-foreground font-semibold">Hormone</th>
+                      <th className="text-left py-2 text-foreground font-semibold">Source</th>
+                      <th className="text-left py-2 text-foreground font-semibold">Anaesthetic Relevance</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border">
+                      <td className="py-2 font-medium text-foreground">ACTH</td>
+                      <td>Anterior pituitary</td>
+                      <td>Stimulates cortisol. ↑ in stress response. Suppressed by exogenous steroids.</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-2 font-medium text-foreground">ADH (vasopressin)</td>
+                      <td>Posterior pituitary</td>
+                      <td>V₁ (vasoconstriction), V₂ (aquaporin-2, water reabsorption). Used in septic shock, DI.</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-2 font-medium text-foreground">TSH</td>
+                      <td>Anterior pituitary</td>
+                      <td>Stimulates T₃/T₄. Thyroid storm is a perioperative emergency.</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 font-medium text-foreground">GH</td>
+                      <td>Anterior pituitary</td>
+                      <td>Acromegaly: difficult airway, OSA, ↑ cardiac disease.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <HPAAxisDiagram />
-            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
