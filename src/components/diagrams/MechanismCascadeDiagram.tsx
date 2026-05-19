@@ -51,6 +51,13 @@ interface MechanismCascadeDiagramProps {
   layout?: "chain" | "radial";
   /** Centre label for radial layout. */
   centerLabel?: string;
+  /**
+   * Start auto-advancing once when the diagram scrolls into view. Respects
+   * the user's Reduce-motion preference. Defaults to false.
+   */
+  autoPlayOnVisible?: boolean;
+  /** Milliseconds spent on each step while auto-playing. Defaults to 1800. */
+  stepDurationMs?: number;
 }
 
 export const MechanismCascadeDiagram = ({
@@ -60,14 +67,18 @@ export const MechanismCascadeDiagram = ({
   steps,
   layout = "chain",
   centerLabel,
+  autoPlayOnVisible = false,
+  stepDurationMs = 1800,
 }: MechanismCascadeDiagramProps) => {
   const [step, setStep] = useState(0);
   // Default to paused: auto-advancing changes the description-panel height every
   // ~1.8s, which on mobile (single-column stack with several cascades on a page)
   // shifts the layout and makes scrolling judder. Users can press Play to start.
   const [playing, setPlaying] = useState(false);
+  const [hasAutoStarted, setHasAutoStarted] = useState(false);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const panelRef = useRef<HTMLDivElement | null>(null);
+  const rootRef = useRef<HTMLDivElement | null>(null);
   const baseId = useId();
   const tablistId = `${baseId}-steps`;
   const panelId = `${baseId}-panel`;
@@ -80,14 +91,36 @@ export const MechanismCascadeDiagram = ({
     if (reduceMotion && playing) setPlaying(false);
   }, [reduceMotion, playing]);
 
+  // Auto-start playback once when the cascade scrolls into view (opt-in).
+  useEffect(() => {
+    if (!autoPlayOnVisible || hasAutoStarted || reduceMotion) return;
+    const el = rootRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting && e.intersectionRatio >= 0.35) {
+            setPlaying(true);
+            setHasAutoStarted(true);
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: [0, 0.35, 0.6] },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [autoPlayOnVisible, hasAutoStarted, reduceMotion]);
+
   useEffect(() => {
     if (!playing || reduceMotion) return;
     const id = window.setInterval(
       () => setStep((s) => (s + 1) % steps.length),
-      1800,
+      stepDurationMs,
     );
     return () => window.clearInterval(id);
-  }, [playing, reduceMotion, steps.length]);
+  }, [playing, reduceMotion, steps.length, stepDurationMs]);
 
   // --- Dev-only perf instrumentation (no-op in production builds) ---
   useEffect(() => {
