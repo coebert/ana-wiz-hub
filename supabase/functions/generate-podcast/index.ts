@@ -189,7 +189,41 @@ async function generateScript(topicTitle: string, content: string): Promise<stri
   }
 
   const data = await response.json();
-  const script = data?.choices?.[0]?.message?.content?.trim();
+  const rawContent = data?.choices?.[0]?.message?.content;
+  const script = (() => {
+    if (typeof rawContent === "string") return rawContent.trim();
+    if (Array.isArray(rawContent)) {
+      return rawContent
+        .map((part) => {
+          if (typeof part === "string") return part;
+          if (part && typeof part === "object") {
+            if (typeof (part as { text?: unknown }).text === "string") {
+              return (part as { text: string }).text;
+            }
+            const nestedText = (part as { content?: { text?: string } }).content?.text;
+            if (typeof nestedText === "string") return nestedText;
+          }
+          return "";
+        })
+        .join("\n")
+        .trim();
+    }
+    if (rawContent && typeof rawContent === "object") {
+      if (typeof (rawContent as { text?: unknown }).text === "string") {
+        return (rawContent as { text: string }).text.trim();
+      }
+      const nestedText = (rawContent as { content?: { text?: string } }).content?.text;
+      if (typeof nestedText === "string") return nestedText.trim();
+    }
+    return "";
+  })();
+  if (!script) {
+    const message = data?.choices?.[0]?.message;
+    console.warn("[script] AI response did not contain parsable text content", {
+      messageKeys: message && typeof message === "object" ? Object.keys(message) : [],
+      rawContentType: Array.isArray(rawContent) ? "array" : typeof rawContent,
+    });
+  }
   if (!script) throw new Error("Script generation returned empty content");
   return script;
 }
