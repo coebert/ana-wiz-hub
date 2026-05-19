@@ -145,6 +145,34 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         });
         return;
       }
+
+      // Pre-flight: if another tab (or a still-running background job from a
+      // closed tab) has already kicked off generation, attach to that row
+      // instead of starting a competing invocation. We only short-circuit
+      // when the caller hasn't explicitly forced regeneration.
+      if (!opts?.force) {
+        const current = await fetchPodcast(topicId);
+        if (current?.status === "ready") {
+          setPodcast(current);
+          setSource("cache");
+          return;
+        }
+        if (current?.status === "generating") {
+          setProgress({ elapsedSec: 0, lastStatus: "generating" });
+          const polled = await pollPodcastUntilDone(topicId, {
+            onTick: (r) =>
+              setProgress((p) => ({
+                elapsedSec: p?.elapsedSec ?? 0,
+                lastStatus: (r?.status as "generating" | "pending" | undefined) ?? "unknown",
+              })),
+          });
+          setPodcast(polled);
+          // Attached to someone else's generation — surface as cached, not fresh.
+          if (polled.status === "ready") setSource("cache");
+          return;
+        }
+      }
+
       let result = await generatePodcast(topicId, topicTitle, content, opts);
 
       // The edge function runs the heavy work in the background via
