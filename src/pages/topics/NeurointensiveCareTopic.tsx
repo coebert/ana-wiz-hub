@@ -9,6 +9,7 @@ import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodia
 import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
 import MyastheniaCrisisFlowchart from "@/components/diagrams/MyastheniaCrisisFlowchart";
 import MyasthenicVsCholinergicComparison from "@/components/diagrams/MyasthenicVsCholinergicComparison";
+import DecompressiveCraniectomyDecisionDiagram from "@/components/diagrams/DecompressiveCraniectomyDecisionDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { SnodReferralDecider } from "@/components/SnodReferralDecider";
 import { DbiTimeline } from "@/components/DbiTimeline";
@@ -713,6 +714,10 @@ const NeurointensiveCareTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             Decompressive craniectomy (DC) removes a large bone flap (≥12 cm fronto-temporo-parietal, or bifrontal) and opens the dura to allow swollen brain to expand outside the rigid cranial vault, lowering ICP and restoring CPP. It is a <strong>tier 3 / last-line</strong> intervention for ICP refractory to medical therapy. Three landmark RCTs define current practice.
           </p>
+
+          <div className="mb-4">
+            <DecompressiveCraniectomyDecisionDiagram />
+          </div>
 
           <div className="space-y-3 mb-4">
             <div className="p-4 rounded-lg border border-border">
