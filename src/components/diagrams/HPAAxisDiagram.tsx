@@ -20,7 +20,7 @@ const scenarios: Record<Highlight, Scenario> = {
     crh: "normal",
     acth: "normal",
     cortisol: "normal",
-    feedback: "Cortisol exerts negative feedback at both the hypothalamus (↓ CRH) and anterior pituitary (↓ ACTH). Diurnal rhythm peaks ~08:00, trough ~midnight.",
+    feedback: "Long loop: cortisol inhibits CRH (hypothalamus) and ACTH (pituitary). Short loop: ACTH inhibits CRH. Diurnal rhythm peaks ~08:00, trough ~midnight.",
     description: "Basal pulsatile secretion. Plasma cortisol ≈ 200–700 nmol/L (am).",
   },
   stress: {
@@ -29,7 +29,7 @@ const scenarios: Record<Highlight, Scenario> = {
     crh: "high",
     acth: "high",
     cortisol: "very-high",
-    feedback: "Negative feedback overridden by afferent sympathetic, IL-1, IL-6 and TNF-α signalling to the hypothalamus. Diurnal rhythm abolished.",
+    feedback: "Both long and short loops are overridden by afferent sympathetic input, IL-1, IL-6 and TNF-α to the hypothalamus. Diurnal rhythm abolished.",
     description: "Major surgery: cortisol may rise to ~1000–1500 nmol/L within hours, peaks at 4–6 h, sustained for 24–72 h.",
   },
   exogenousSteroid: {
@@ -38,7 +38,7 @@ const scenarios: Record<Highlight, Scenario> = {
     crh: "suppressed",
     acth: "suppressed",
     cortisol: "low",
-    feedback: "Synthetic glucocorticoid suppresses CRH + ACTH → adrenal atrophy. Endogenous cortisol output falls. Risk of Addisonian crisis if abruptly withdrawn or under stress.",
+    feedback: "Synthetic glucocorticoid drives the long loop maximally → CRH + ACTH suppressed → adrenal atrophy. Risk of Addisonian crisis if abruptly withdrawn or under stress.",
     description: ">5 mg prednisolone for >3 weeks (or equivalent) → assume HPA suppression — give perioperative steroid cover.",
   },
   primaryAddison: {
@@ -47,7 +47,7 @@ const scenarios: Record<Highlight, Scenario> = {
     crh: "high",
     acth: "very-high",
     cortisol: "low",
-    feedback: "Adrenal cortex destroyed (autoimmune, TB, haemorrhage). Loss of cortisol → no negative feedback → CRH and ACTH rise dramatically. ACTH-derived MSH → hyperpigmentation.",
+    feedback: "Adrenal cortex destroyed. Long loop collapses (no cortisol) → CRH and ACTH rise dramatically; short loop (ACTH → CRH) cannot compensate. ACTH-derived MSH → hyperpigmentation.",
     description: "Addison's disease. Aldosterone also low → hyponatraemia, hyperkalaemia, hypovolaemia.",
   },
   secondary: {
@@ -56,7 +56,7 @@ const scenarios: Record<Highlight, Scenario> = {
     crh: "high",
     acth: "low",
     cortisol: "low",
-    feedback: "Pituitary cannot produce ACTH (Sheehan's, tumour, surgery, irradiation). Hypothalamus ↑ CRH but no response. Aldosterone preserved (RAAS-driven) — no hyperkalaemia.",
+    feedback: "Pituitary cannot make ACTH. Long loop drives CRH up but no response; short loop is absent. Aldosterone preserved (RAAS-driven) — no hyperkalaemia.",
     description: "No hyperpigmentation (low ACTH/MSH). Other anterior pituitary axes often also affected.",
   },
 };
