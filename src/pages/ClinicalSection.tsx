@@ -3,6 +3,7 @@ import { ChevronRight, ExternalLink } from "lucide-react";
 import { SectionLayout } from "@/components/SectionLayout";
 import { TopicCard } from "@/components/TopicCard";
 import { SectionReferencesPanel } from "@/components/SectionReferencesPanel";
+import { SectionSummary } from "@/components/SectionSummary";
 import { clinicalTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
@@ -71,6 +72,7 @@ const ClinicalSection = () => {
           </Link>
         </div>
       </div>
+      <SectionSummary section="clinical" />
       <SectionReferencesPanel section="clinical" topics={clinicalTopics} />
     </SectionLayout>
   );

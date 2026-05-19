@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { TopicCard } from "@/components/TopicCard";
 import { SectionReferencesPanel } from "@/components/SectionReferencesPanel";
+import { SectionSummary } from "@/components/SectionSummary";
 import { physiologyTopics } from "@/data/curriculum";
 import { Badge } from "@/components/ui/badge";
 import { ProgressRing } from "@/components/ProgressRing";
@@ -43,6 +44,7 @@ const PhysiologySection = () => {
           </div>
         ))}
       </div>
+      <SectionSummary section="physiology" />
       <SectionReferencesPanel
         section="physiology"
         topics={physiologyTopics.filter((t) => t.available)}
