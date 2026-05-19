@@ -222,6 +222,8 @@ const AcidBaseTopic = () => {
                 </p>
               </div>
 
+              <HAGMAWorkupFlowchart />
+
               <HAGMAPathophysiologyDiagram />
 
               <div className="rounded-md border border-border bg-secondary/30 p-3">
