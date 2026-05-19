@@ -213,9 +213,64 @@ const ARDSTopic = () => {
 
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
           <CollapsibleSubsection title="Prone Positioning">
-          <p className="text-muted-foreground leading-relaxed">
-            PROSEVA trial (2013): prone positioning ≥16h/day in moderate-severe ARDS (P/F &lt;150) reduced 28-day mortality from 32.8% to 16.0% (NNT = 6). Mechanism: improved V/Q matching, recruitment of dorsal lung, reduced transpulmonary pressure gradient, improved drainage of secretions. Contraindications: spinal instability, open abdomen, raised ICP.
-          </p>
+          <div className="space-y-4">
+            <p className="text-muted-foreground leading-relaxed">
+              Prone positioning is one of only a handful of interventions proven to reduce mortality in ARDS. Physiological benefits: more homogeneous distribution of transpulmonary pressure (dorsal recruitment without ventral over-distension), improved V/Q matching, reduced shunt, reduced right-ventricular afterload, and better drainage of secretions. The mortality signal depends critically on <strong>patient selection, timing of initiation, daily duration, and the number of sessions delivered</strong>.
+            </p>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Patient selection — who benefits</p>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li><strong>Moderate–severe ARDS</strong>: PaO₂/FiO₂ &lt;150 mmHg on FiO₂ ≥0.6 and PEEP ≥5 cmH₂O (PROSEVA entry criteria).</li>
+                <li>Earlier trials (Gattinoni 2001, Guérin 2004, Taccone 2009 "Prone-Supine II", Mancebo 2006) enrolled milder disease or used shorter sessions and showed <em>no</em> mortality benefit — meta-analyses (Sud 2014, Beitler 2014, Munshi 2017) confirm benefit is restricted to P/F &lt;150 and ≥12–16 h/session.</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Timing of initiation — "early and after stabilisation"</p>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li><strong>PROSEVA</strong> (Guérin, NEJM 2013): proned <strong>within 12–24 h</strong> of meeting moderate–severe criteria, after a <strong>12–24 h stabilisation period</strong> on lung-protective ventilation (Vt 6 mL/kg, plateau ≤30, FiO₂ ≥0.6, PEEP ≥5). 28-day mortality 16.0% vs 32.8% (HR 0.39); 90-day mortality 23.6% vs 41.0%.</li>
+                <li>The stabilisation window matters: ~15% of patients improve sufficiently with lung-protective ventilation alone and no longer meet criteria — these patients do not benefit from proning and incur its risk profile.</li>
+                <li>ESICM 2023 and ATS/ESICM/SCCM 2024 guidelines: initiate proning <strong>within the first 36 hours</strong> of meeting criteria; do not delay for trials of recruitment or NMB alone.</li>
+                <li>Late proning (after &gt;48–72 h of mechanical ventilation) is associated with attenuated benefit — fibroproliferative changes reduce recruitability ("baby lung" becomes fixed).</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Duration per session — the 16-hour rule</p>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li><strong>≥16 h/day</strong> is the evidence-based dose (PROSEVA mean 17 h/session). Shorter sessions (8 h in Gattinoni 2001, ~8 h in Taccone 2009) did not improve survival.</li>
+                <li>Mechanistic rationale: oxygenation improves within 1–2 h, but alveolar recruitment and resolution of dorsal atelectasis continue over 12–16 h. Premature supination causes derecruitment and a "yo-yo" effect.</li>
+                <li>Practical UK delivery: turn in the morning (e.g. 09:00) and return supine the next morning, giving ~16–18 h prone with a 6–8 h supine window for line/skin care, bronchoscopy, and re-assessment.</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Number of sessions — when to stop</p>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li>PROSEVA delivered a <strong>median of 4 sessions</strong> (IQR 2–8) per patient; benefit was seen across this range.</li>
+                <li><strong>Continue proning</strong> while the patient remains in moderate–severe ARDS (P/F &lt;150 on FiO₂ ≥0.6, PEEP ≥10) — each session offers incremental benefit.</li>
+                <li><strong>Stop criteria</strong> (PROSEVA, widely adopted): in the supine position for ≥4 h after a prone session, PaO₂/FiO₂ ≥150 with PEEP ≤10 and FiO₂ ≤0.6. Other reasons to stop: life-threatening complication (unplanned extubation, displaced lines, haemodynamic collapse, severe pressure injury), or transition to palliation/ECMO.</li>
+                <li>There is <strong>no fixed maximum</strong>: case series and COVID-19 cohorts report 5–10+ sessions in responders; durability of oxygenation response (rather than first-session response alone) predicts survival.</li>
+                <li>"Non-responders" (no improvement in P/F or compliance after 2–3 sessions) should prompt re-evaluation: consider ECMO referral (EOLIA criteria), reassess for unaddressed causes (fluid overload, ventilator dyssynchrony, undrained pleural collection, secondary infection).</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Awake proning (non-intubated, predominantly COVID-era evidence)</p>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li>Meta-trial (Ehrmann, Lancet Respir Med 2021): in COVID-19 hypoxaemic respiratory failure on HFNO, awake proning reduced intubation (HR 0.75) but not mortality. Effect size proportional to time prone — target ≥8 h/day (often split into 2–4 h blocks).</li>
+                <li>Outside COVID-19 the evidence is weaker; awake proning is reasonable in cooperative patients on HFNO/NIV but should not delay intubation in clinical deterioration.</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">
+              <p className="text-sm font-semibold text-destructive">⚠ Contraindications &amp; key complications</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Absolute:</strong> unstable spinal/pelvic fracture, open abdomen, raised ICP unmonitored, severe haemodynamic instability, recent sternotomy/anterior tracheostomy (relative — needs head-out frame). <strong>Complications:</strong> facial &amp; chest-wall pressure injury (highest with multiple sessions — daily skin review), endotracheal tube displacement/obstruction, line/drain dislodgement, brachial-plexus injury, vomiting/aspiration, transient haemodynamic dip on turning, ischaemic optic neuropathy. A trained turning team (≥5 staff) and a written checklist (eyes taped, NG decompressed, lines cleared, FiO₂ 1.0 for the turn) materially reduce adverse events.
+              </p>
+            </div>
+          </div>
           </CollapsibleSubsection>
         </ExamSection>
 
