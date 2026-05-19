@@ -7,7 +7,24 @@ export interface PodcastResult {
   duration_seconds?: number;
   cached?: boolean;
   error?: string;
+  // ISO timestamp of the row's last update. Used to detect stale
+  // `generating` rows where the background job has died without flipping
+  // status to `failed` (edge crash, process kill, etc.).
+  updated_at?: string;
 }
+
+/**
+ * Rows stuck in `generating` for longer than this are treated as abandoned.
+ * The server-side reclaim threshold is 3 min; we use a slightly larger value
+ * client-side so the next retry safely lands inside the reclaim window.
+ */
+export const STALE_GENERATING_MS = 4 * 60 * 1000;
+
+export const isStaleGenerating = (result: PodcastResult | null): boolean => {
+  if (!result || result.status !== "generating" || !result.updated_at) return false;
+  const ageMs = Date.now() - new Date(result.updated_at).getTime();
+  return Number.isFinite(ageMs) && ageMs > STALE_GENERATING_MS;
+};
 
 /**
  * Estimate the target podcast length from source content. Mirrors the logic
@@ -70,13 +87,16 @@ export const fetchPodcast = async (
 ): Promise<PodcastResult | null> => {
   const { data, error } = await supabase
     .from("podcasts")
-    .select("status, audio_path, script, duration_seconds")
+    .select("status, audio_path, script, duration_seconds, updated_at")
     .eq("topic_id", topicId)
     .maybeSingle();
 
   if (error || !data) return null;
   if (data.status !== "ready" || !data.audio_path) {
-    return { status: data.status as PodcastResult["status"] };
+    return {
+      status: data.status as PodcastResult["status"],
+      updated_at: data.updated_at ?? undefined,
+    };
   }
 
   const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(data.audio_path);
@@ -86,6 +106,7 @@ export const fetchPodcast = async (
     script: data.script ?? undefined,
     duration_seconds: data.duration_seconds ?? undefined,
     cached: true,
+    updated_at: data.updated_at ?? undefined,
   };
 };
 
@@ -122,6 +143,19 @@ export const pollPodcastUntilDone = async (
     opts.onTick?.(polled);
     if (polled && (polled.status === "ready" || polled.status === "failed")) {
       return polled;
+    }
+    // Stale detection: the row is still `generating` but its `updated_at`
+    // hasn't moved in longer than the stale threshold — the background job
+    // has almost certainly died (edge crash, OOM, deploy mid-run, etc.).
+    // Surface this as a failed result so the UI can offer a clean retry
+    // (which the server will reclaim, since it has its own stale guard).
+    if (polled && isStaleGenerating(polled)) {
+      return {
+        ...polled,
+        status: "failed",
+        error:
+          "Previous generation appears stalled (no progress for several minutes). Click retry to start a new one.",
+      };
     }
   }
 
