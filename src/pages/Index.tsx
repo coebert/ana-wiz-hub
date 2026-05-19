@@ -134,10 +134,14 @@ const Index = () => {
         <div className="relative container mx-auto px-4 py-16 md:py-24 text-center">
           <Link
             to="/"
-            className="absolute left-4 top-4 md:left-6 md:top-6 inline-flex items-center gap-2 text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-            aria-label="Back to home"
+            aria-label="Back to home page"
+            className="absolute left-2 top-2 md:left-4 md:top-4 inline-flex items-center gap-2 min-h-11 min-w-11 px-3 rounded-md text-sm text-primary-foreground/85 hover:text-primary-foreground hover:bg-primary-foreground/10 active:bg-primary-foreground/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/60 transition-colors"
+            style={{
+              top: "max(0.5rem, env(safe-area-inset-top))",
+              left: "max(0.5rem, env(safe-area-inset-left))",
+            }}
           >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-5 w-5" aria-hidden />
             <span>Home</span>
           </Link>
           <div className="relative flex flex-col items-center justify-center mb-4">
