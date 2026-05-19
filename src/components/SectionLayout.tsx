@@ -195,30 +195,46 @@ export const SectionLayout = ({
           <script type="application/ld+json">{JSON.stringify(courseJsonLd)}</script>
         )}
       </Helmet>
-      <nav aria-label="Breadcrumb" className="mb-6">
-        <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
+      <nav
+        aria-label="Breadcrumb"
+        className="mb-6"
+        style={{ paddingTop: "env(safe-area-inset-top)" }}
+      >
+        <ol className="flex flex-wrap items-center gap-x-1 gap-y-1 text-sm text-muted-foreground -mx-2">
           <li>
-            <Link to="/" className="hover:text-foreground transition-colors">
+            <Link
+              to="/"
+              aria-label="Go to home page"
+              className="inline-flex items-center min-h-11 px-2 rounded-md hover:text-foreground hover:bg-muted/40 active:bg-muted/60 transition-colors"
+            >
               Home
             </Link>
           </li>
-          <li aria-hidden className="text-muted-foreground/60">/</li>
+          <li aria-hidden className="text-muted-foreground/60 select-none">/</li>
           <li>
-            <Link to="/revise" className="hover:text-foreground transition-colors">
+            <Link
+              to="/revise"
+              aria-label="Go to Core Disciplines"
+              className="inline-flex items-center min-h-11 px-2 rounded-md hover:text-foreground hover:bg-muted/40 active:bg-muted/60 transition-colors"
+            >
               Core Disciplines
             </Link>
           </li>
-          <li aria-hidden className="text-muted-foreground/60">/</li>
-          <li aria-current="page" className="font-medium text-foreground truncate max-w-[16rem]">
+          <li aria-hidden className="text-muted-foreground/60 select-none">/</li>
+          <li
+            aria-current="page"
+            className="inline-flex items-center min-h-11 px-2 font-medium text-foreground truncate max-w-[16rem]"
+          >
             {title}
           </li>
         </ol>
         {backPath && backPath !== "/revise" && backPath !== "/" && (
           <Link
             to={backPath}
-            className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors mt-2"
+            aria-label={`Back to ${backLabel || "previous page"}`}
+            className="inline-flex items-center gap-1.5 min-h-11 px-2 -ml-2 mt-1 text-sm text-muted-foreground rounded-md hover:text-foreground hover:bg-muted/40 active:bg-muted/60 transition-colors"
           >
-            <ChevronLeft className="h-3.5 w-3.5" />
+            <ChevronLeft className="h-4 w-4" aria-hidden />
             {backLabel || "Back"}
           </Link>
         )}
