@@ -236,7 +236,7 @@ const FirstRibDiagram = () => {
               <text x="55" y="257" fontSize="5" fill={structures["stellate-ganglion"].color} textAnchor="middle">Ganglion</text>
             </g>
 
-            {/* First rib - the bone */}
+            {/* First rib - the bone (drawn solidly so over-crossing structures are unambiguous) */}
             <g className="cursor-pointer" onClick={() => setSelected("rib")}>
               {/* Main rib body with bone texture */}
               <path d="M60,230 Q70,180 100,130 Q140,70 220,55 Q300,48 340,65 Q365,78 375,110"
@@ -244,27 +244,28 @@ const FirstRibDiagram = () => {
                 stroke={structures.rib.color}
                 strokeWidth={isActive("rib") ? 14 : 11}
                 strokeLinecap="round"
-                opacity={isActive("rib") ? 0.5 : 0.25} />
+                opacity={isActive("rib") ? 0.75 : 0.55} />
               {/* Bone texture lines */}
               {[0.2, 0.35, 0.5, 0.65, 0.8].map((t, i) => {
                 const x = 60 + t * 315;
                 const y = 230 - t * 170 + Math.sin(t * 6) * 20;
-                return <circle key={i} cx={x} cy={y} r="1" fill={structures.rib.color} opacity="0.15" />;
+                return <circle key={i} cx={x} cy={y} r="1" fill={structures.rib.color} opacity="0.25" />;
               })}
               {/* Head (medial) with facet */}
               <ellipse cx="58" cy="232" rx="8" ry="10"
-                fill={structures.rib.color} fillOpacity={isActive("rib") ? 0.4 : 0.2}
+                fill={structures.rib.color} fillOpacity={isActive("rib") ? 0.55 : 0.35}
                 stroke={structures.rib.color} strokeWidth="1.5" />
-              <circle cx="58" cy="230" r="3" fill={structures.rib.color} fillOpacity="0.3" />
+              <circle cx="58" cy="230" r="3" fill={structures.rib.color} fillOpacity="0.45" />
               <text x="35" y="240" fontSize="5.5" fill={structures.rib.color} fontWeight="bold">Head</text>
               <text x="35" y="247" fontSize="4.5" fill={structures.rib.color} opacity="0.7">(→T1 facet)</text>
               {/* Neck */}
               <text x="72" y="210" fontSize="4.5" fill={structures.rib.color} opacity="0.6">Neck</text>
               {/* Tubercle */}
-              <circle cx="95" cy="145" r="4" fill={structures.rib.color} fillOpacity="0.3"
+              <circle cx="95" cy="145" r="4" fill={structures.rib.color} fillOpacity="0.45"
                 stroke={structures.rib.color} strokeWidth="0.75" />
               <text x="80" y="150" fontSize="4.5" fill={structures.rib.color} opacity="0.6" textAnchor="end">Tubercle</text>
             </g>
+
 
             {/* First costal cartilage */}
             <g className="cursor-pointer" onClick={() => setSelected("costal-cartilage")}>
@@ -342,67 +343,92 @@ const FirstRibDiagram = () => {
             <path d="M202,90 Q200,110 198,128" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.4" />
             <text x="188" y="100" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.5" textAnchor="end" transform="rotate(-80,188,100)">interscalene groove</text>
 
-            {/* Subclavian vein - anterior to scalene tubercle */}
+            {/* Subclavian vein - crosses OVER the rib in the anterior groove (anterior to scalene tubercle).
+                A halo-stroke is drawn first so the vessel reads as sitting on top of the bone. */}
             <g className="cursor-pointer" onClick={() => setSelected("subclavian-vein")}>
-              <path d="M310,48 Q280,42 260,48 Q250,52 260,55"
+              <path d="M315,46 Q285,40 258,46 Q244,50 232,52"
+                fill="none"
+                stroke="hsl(var(--background))"
+                strokeWidth={isActive("subclavian-vein") ? 11 : 9}
+                strokeLinecap="round"
+                opacity="0.9" />
+              <path d="M315,46 Q285,40 258,46 Q244,50 232,52"
                 fill="none"
                 stroke={structures["subclavian-vein"].color}
                 strokeWidth={isActive("subclavian-vein") ? 7 : 5}
                 strokeLinecap="round"
-                opacity={isActive("subclavian-vein") ? 0.6 : 0.3} />
+                opacity={isActive("subclavian-vein") ? 0.85 : 0.55} />
               {/* Flow direction arrow */}
-              <polygon points="308,44 315,48 308,52" fill={structures["subclavian-vein"].color} opacity="0.4" />
-              <text x="290" y="38" fontSize="6" textAnchor="middle" fill={structures["subclavian-vein"].color} fontWeight="bold">Subclavian V.</text>
-              <text x="290" y="30" fontSize="4.5" textAnchor="middle" fill={structures["subclavian-vein"].color} opacity="0.6">(anterior to tubercle)</text>
+              <polygon points="313,42 320,46 313,50" fill={structures["subclavian-vein"].color} opacity="0.55" />
+              <text x="290" y="34" fontSize="6" textAnchor="middle" fill={structures["subclavian-vein"].color} fontWeight="bold">Subclavian V.</text>
+              <text x="290" y="26" fontSize="4.5" textAnchor="middle" fill={structures["subclavian-vein"].color} opacity="0.65">(anterior to tubercle)</text>
             </g>
 
-            {/* Subclavian artery - posterior to scalene tubercle */}
+            {/* Subclavian artery - crosses OVER the rib in the posterior groove (posterior to scalene tubercle).
+                End-point sits on the superior surface of the rib, not at its inferior edge. */}
             <g className="cursor-pointer" onClick={() => setSelected("subclavian-artery")}>
-              <path d="M120,120 Q160,80 200,68 Q215,62 225,60"
+              <path d="M120,118 Q160,82 200,66 Q215,60 228,58"
+                fill="none"
+                stroke="hsl(var(--background))"
+                strokeWidth={isActive("subclavian-artery") ? 9 : 7}
+                strokeLinecap="round"
+                opacity="0.9" />
+              <path d="M120,118 Q160,82 200,66 Q215,60 228,58"
                 fill="none"
                 stroke={structures["subclavian-artery"].color}
                 strokeWidth={isActive("subclavian-artery") ? 5 : 3.5}
                 strokeLinecap="round"
-                opacity={isActive("subclavian-artery") ? 0.65 : 0.3} />
+                opacity={isActive("subclavian-artery") ? 0.9 : 0.7} />
               {/* Pulsation markers */}
               {isActive("subclavian-artery") && [170, 190, 210].map(x => (
                 <circle key={x} cx={x} cy={75 - (x - 170) * 0.3} r="2" fill="none"
                   stroke={structures["subclavian-artery"].color} strokeWidth="0.5" opacity="0.4" />
               ))}
               <text x="140" y="112" fontSize="6" fill={structures["subclavian-artery"].color} fontWeight="bold">Subclavian A.</text>
-              <text x="140" y="104" fontSize="4.5" fill={structures["subclavian-artery"].color} opacity="0.6">(posterior to tubercle)</text>
+              <text x="140" y="104" fontSize="4.5" fill={structures["subclavian-artery"].color} opacity="0.65">(posterior to tubercle)</text>
             </g>
 
-            {/* Brachial plexus trunks */}
+            {/* Brachial plexus trunks - sit ON the superior surface of the rib, posterolateral to the artery
+                in the posterior groove. Previously drawn below the rib's inferior edge (looked like they
+                passed under the bone) — repositioned to sit on top, with a halo for clear layering. */}
             <g className="cursor-pointer" onClick={() => setSelected("brachial-plexus")}>
-              {/* Three trunks as distinct bundles */}
-              <circle cx="185" cy="72" r="4" fill={structures["brachial-plexus"].color}
-                fillOpacity={isActive("brachial-plexus") ? 0.7 : 0.25}
-                stroke={structures["brachial-plexus"].color} strokeWidth={isActive("brachial-plexus") ? 1.5 : 0.8} />
-              <circle cx="178" cy="80" r="4" fill={structures["brachial-plexus"].color}
-                fillOpacity={isActive("brachial-plexus") ? 0.7 : 0.25}
-                stroke={structures["brachial-plexus"].color} strokeWidth={isActive("brachial-plexus") ? 1.5 : 0.8} />
-              <circle cx="172" cy="88" r="4" fill={structures["brachial-plexus"].color}
-                fillOpacity={isActive("brachial-plexus") ? 0.7 : 0.25}
-                stroke={structures["brachial-plexus"].color} strokeWidth={isActive("brachial-plexus") ? 1.5 : 0.8} />
-              {/* Labels for individual trunks */}
-              <text x="193" y="70" fontSize="4" fill={structures["brachial-plexus"].color} opacity="0.7">Sup (C5,6)</text>
-              <text x="186" y="80" fontSize="4" fill={structures["brachial-plexus"].color} opacity="0.7">Mid (C7)</text>
-              <text x="180" y="92" fontSize="4" fill={structures["brachial-plexus"].color} opacity="0.7">Inf (C8,T1)</text>
+              {[
+                { cx: 198, cy: 60, label: "Sup (C5,6)",   lx: 206, ly: 58 },
+                { cx: 205, cy: 64, label: "Mid (C7)",      lx: 213, ly: 66 },
+                { cx: 212, cy: 68, label: "Inf (C8,T1)",   lx: 220, ly: 74 },
+              ].map((t) => (
+                <g key={t.label}>
+                  <circle cx={t.cx} cy={t.cy} r={isActive("brachial-plexus") ? 5 : 4.2}
+                    fill="hsl(var(--background))" opacity="0.9" />
+                  <circle cx={t.cx} cy={t.cy} r="4"
+                    fill={structures["brachial-plexus"].color}
+                    fillOpacity={isActive("brachial-plexus") ? 0.85 : 0.5}
+                    stroke={structures["brachial-plexus"].color}
+                    strokeWidth={isActive("brachial-plexus") ? 1.5 : 0.8} />
+                  <text x={t.lx} y={t.ly} fontSize="4" fill={structures["brachial-plexus"].color} opacity="0.75">{t.label}</text>
+                </g>
+              ))}
             </g>
 
-            {/* Phrenic nerve on anterior surface of scalenus anterior */}
+            {/* Phrenic nerve - descends on the ANTERIOR surface of scalenus anterior, crossing the rib
+                between vein (anterior) and artery (posterior), medial to the scalene tubercle. */}
             <g className="cursor-pointer" onClick={() => setSelected("phrenic-nerve")}>
-              <path d="M248,70 Q255,90 260,115 Q262,130 258,145"
+              <path d="M248,70 Q252,82 252,95 Q252,115 248,140"
+                fill="none"
+                stroke="hsl(var(--background))"
+                strokeWidth={isActive("phrenic-nerve") ? 5 : 4}
+                opacity="0.85" />
+              <path d="M248,70 Q252,82 252,95 Q252,115 248,140"
                 fill="none"
                 stroke={structures["phrenic-nerve"].color}
                 strokeWidth={isActive("phrenic-nerve") ? 2.5 : 1.5}
-                opacity={isActive("phrenic-nerve") ? 0.8 : 0.35} />
-              <circle cx="248" cy="70" r="2" fill={structures["phrenic-nerve"].color} fillOpacity="0.5" />
-              <text x="266" y="100" fontSize="5" fill={structures["phrenic-nerve"].color} fontWeight="bold">Phrenic N.</text>
-              <text x="266" y="108" fontSize="4" fill={structures["phrenic-nerve"].color} opacity="0.6">(C3,4,5)</text>
-              <text x="266" y="116" fontSize="4" fill={structures["phrenic-nerve"].color} opacity="0.5" fontStyle="italic">on ant. surface</text>
+                opacity={isActive("phrenic-nerve") ? 0.85 : 0.55} />
+              <circle cx="248" cy="70" r="2" fill={structures["phrenic-nerve"].color} fillOpacity="0.6" />
+              <text x="262" y="100" fontSize="5" fill={structures["phrenic-nerve"].color} fontWeight="bold">Phrenic N.</text>
+              <text x="262" y="108" fontSize="4" fill={structures["phrenic-nerve"].color} opacity="0.6">(C3,4,5)</text>
+              <text x="262" y="116" fontSize="4" fill={structures["phrenic-nerve"].color} opacity="0.55" fontStyle="italic">on ant. surface</text>
             </g>
+
 
             {/* Long thoracic nerve - posterior to scalenus medius */}
             <g className="cursor-pointer" onClick={() => setSelected("long-thoracic-nerve")}>
