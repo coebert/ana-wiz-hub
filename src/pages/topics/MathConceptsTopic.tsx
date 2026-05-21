@@ -58,18 +58,18 @@ const MathConceptsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["Cross & Plunkett Ch.1"],
-        workedExamples: ["Peck & Hill Appendix", "Middleton Appendix", "Ultiva SmPC", "Assoc Anaesth 2021"],
-        keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Appendix", "Middleton Appendix"],
+        objectives: ["Cross & Plunkett Ch.1", "BJA Educ 2004 (PK)"],
+        workedExamples: ["Peck & Hill Appendix", "Middleton Appendix", "Ultiva SmPC", "Assoc Anaesth 2021", "BJA Educ 2004 (PK)"],
+        keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Appendix", "Middleton Appendix", "BJA Educ 2007 (Stats)", "BJA Educ 2004 (PK)"],
       }}
       keyPoints={[
         { text: "Linear (y = kx): Ohm's law, laminar flow, Beer-Lambert — direct proportionality", cites: ["Cross & Plunkett Ch.1"] },
-        { text: "Exponential decay (e⁻ᵏˣ): First-order drug elimination, nitrogen washout, capacitor discharge", cites: ["Peck & Hill Appendix"] },
+        { text: "Exponential decay (e⁻ᵏˣ): First-order drug elimination, nitrogen washout, capacitor discharge", cites: ["Peck & Hill Appendix", "BJA Educ 2004 (PK)"] },
         { text: "Negative exponential rise (1 − e⁻ᵏˣ): Preoxygenation wash-in, volatile agent uptake, capacitor charging", cites: ["Middleton Appendix"] },
-        { text: "Sigmoid: ODC (cooperative binding), dose-response curves — Hill coefficient determines steepness", cites: ["Cross & Plunkett Ch.1"] },
-        { text: "One time constant (τ) = 63% change; t½ = 0.693 × τ", cites: ["Peck & Hill Appendix"] },
+        { text: "Sigmoid: ODC (cooperative binding), dose-response curves — Hill coefficient determines steepness; central portion linearised by probit/logit transformation", cites: ["Cross & Plunkett Ch.1", "BJA Educ 2007 (Stats)"] },
+        { text: "One time constant (τ) = 63% change; t½ = 0.693 × τ; after 5τ ≈ 99.3% complete", cites: ["Peck & Hill Appendix"] },
         { text: "Logarithmic scales (pH, dB, pKa) compress large ranges — 1 pH unit = 10× change in [H⁺]", cites: ["Middleton Appendix"] },
-        { text: "Bi-exponential decay: Two-compartment pharmacokinetics — rapid distribution then slow elimination", cites: ["Cross & Plunkett Ch.1"] },
+        { text: "Multi-compartment PK is multi-exponential — a single τ or t½ is inadequate, hence context-sensitive half-time (e.g. remifentanil)", cites: ["BJA Educ 2004 (PK)", "Ultiva SmPC"] },
       ]}
       coreConcepts={
         <>
