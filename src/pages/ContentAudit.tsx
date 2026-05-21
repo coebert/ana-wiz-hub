@@ -462,6 +462,16 @@ const ContentAudit = () => {
       `);`,
       "```",
       ``,
+      `> **Citation guard:** a database trigger rejects \`status = 'fixed'\` unless the finding has at least one entry in \`sources\` *or* an \`unverifiable_reason\` is set. For each ID you fixed by adding/keeping a real citation, the existing \`sources\` array satisfies the trigger automatically. For IDs that cannot be cited (e.g. transient Firecrawl scrape failure, auditor false-positive), instead run:`,
+      ``,
+      "```sql",
+      `UPDATE public.topic_audit_findings`,
+      `SET status = 'fixed', resolved_at = now(), unverifiable_reason = '<one-line reason>'`,
+      `WHERE id = '<id>';`,
+      "```",
+      ``,
+      `After the UPDATE(s), run \`npm run check:audit-fixes\` to confirm every newly-fixed finding has a matching \`InlineRef\` / \`sectionSources\` citation in the topic file. The script exits non-zero on any failure; fix the citation (or set \`unverifiable_reason\`) before reporting back.`,
+      ``,
       `Then tell me how many findings you marked fixed and list any IDs you intentionally left open with a one-line reason.`,
     );
     return lines.join("\n");
