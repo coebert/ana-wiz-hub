@@ -15,6 +15,9 @@ import { VisitTrackerWrapper } from "@/components/VisitTrackerWrapper";
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import ContentAudit from "./pages/ContentAudit";
 const TopicMap = lazy(() => import("./pages/TopicMap"));
 const ProgressTracker = lazy(() => import("./pages/ProgressTracker"));
 const PodcastsLibrary = lazy(() => import("./pages/PodcastsLibrary"));
@@ -176,9 +179,6 @@ const AcidsBasesBuffersTopic = lazy(() => import("./pages/topics/AcidsBasesBuffe
 const OrganicChemistryTopic = lazy(() => import("./pages/topics/OrganicChemistryTopic"));
 const SolutionsConcentrationTopic = lazy(() => import("./pages/topics/SolutionsConcentrationTopic"));
 const OxidationReductionTopic = lazy(() => import("./pages/topics/OxidationReductionTopic"));
-const AdminLogin = lazy(() => import("./pages/AdminLogin"));
-const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
-const ContentAudit = lazy(() => import("./pages/ContentAudit"));
 import { RequireAdmin } from "@/components/RequireAdmin";
 
 const queryClient = new QueryClient();
