@@ -254,8 +254,8 @@ const StarlingForcesDiagram = () => {
                     </tr>
                     <tr>
                       <td className="py-1 text-foreground">Venular end</td>
-                      <td className="text-center text-foreground">≈ +1 mmHg</td>
-                      <td className="py-1 text-muted-foreground">Small net filtration along the whole capillary (revised model)</td>
+                      <td className="text-center text-foreground">≈ 0 mmHg</td>
+                      <td className="py-1 text-muted-foreground">Filtration equilibrium; no net reabsorption (revised model)</td>
                     </tr>
                   </tbody>
                 </table>
