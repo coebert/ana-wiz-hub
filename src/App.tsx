@@ -178,6 +178,7 @@ const SolutionsConcentrationTopic = lazy(() => import("./pages/topics/SolutionsC
 const OxidationReductionTopic = lazy(() => import("./pages/topics/OxidationReductionTopic"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const ContentAudit = lazy(() => import("./pages/ContentAudit"));
 import { RequireAdmin } from "@/components/RequireAdmin";
 
 const queryClient = new QueryClient();
@@ -377,6 +378,7 @@ const App = () => (
           {/* Admin */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<RequireAdmin><AdminDashboard /></RequireAdmin>} />
+          <Route path="/admin/audit" element={<RequireAdmin><ContentAudit /></RequireAdmin>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </Suspense>

@@ -334,6 +334,125 @@ export type Database = {
         }
         Relationships: []
       }
+      topic_audit_findings: {
+        Row: {
+          category: string
+          created_at: string
+          details: string | null
+          diagram_ref: string | null
+          id: string
+          job_id: string
+          resolved_at: string | null
+          resolved_by: string | null
+          section: string
+          severity: string
+          sources: Json
+          status: string
+          suggested_fix: string | null
+          summary: string
+          topic_id: string
+          topic_title: string
+          topic_url: string | null
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          details?: string | null
+          diagram_ref?: string | null
+          id?: string
+          job_id: string
+          resolved_at?: string | null
+          resolved_by?: string | null
+          section: string
+          severity?: string
+          sources?: Json
+          status?: string
+          suggested_fix?: string | null
+          summary: string
+          topic_id: string
+          topic_title: string
+          topic_url?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          details?: string | null
+          diagram_ref?: string | null
+          id?: string
+          job_id?: string
+          resolved_at?: string | null
+          resolved_by?: string | null
+          section?: string
+          severity?: string
+          sources?: Json
+          status?: string
+          suggested_fix?: string | null
+          summary?: string
+          topic_id?: string
+          topic_title?: string
+          topic_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "topic_audit_findings_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "topic_audit_jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      topic_audit_jobs: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          current_topic: string | null
+          failed: number
+          findings_count: number
+          id: string
+          last_error: string | null
+          options: Json
+          processed: number
+          status: string
+          succeeded: number
+          total: number
+          trigger: string
+          triggered_by: string | null
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          current_topic?: string | null
+          failed?: number
+          findings_count?: number
+          id?: string
+          last_error?: string | null
+          options?: Json
+          processed?: number
+          status?: string
+          succeeded?: number
+          total?: number
+          trigger?: string
+          triggered_by?: string | null
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          current_topic?: string | null
+          failed?: number
+          findings_count?: number
+          id?: string
+          last_error?: string | null
+          options?: Json
+          processed?: number
+          status?: string
+          succeeded?: number
+          total?: number
+          trigger?: string
+          triggered_by?: string | null
+        }
+        Relationships: []
+      }
       topic_references: {
         Row: {
           created_at: string
