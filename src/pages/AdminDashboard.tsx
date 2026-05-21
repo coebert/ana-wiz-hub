@@ -143,13 +143,17 @@ const AdminDashboard = () => {
     const now = new Date();
     const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
 
-    const { data: allVisits } = await supabase.from("app_visits").select("visitor_id, visited_at, page_path");
+    const { data: allVisits } = await supabase
+      .from("app_visits")
+      .select("visitor_id, visited_at, page_path")
+      .limit(100000);
     const uniqueVisitors = new Set(allVisits?.map(v => v.visitor_id) || []);
 
     const { data: todayData } = await supabase
       .from("app_visits")
       .select("visitor_id")
-      .gte("visited_at", todayStart);
+      .gte("visited_at", todayStart)
+      .limit(100000);
     const todayUnique = new Set(todayData?.map(v => v.visitor_id) || []);
 
     // Last 7 days
