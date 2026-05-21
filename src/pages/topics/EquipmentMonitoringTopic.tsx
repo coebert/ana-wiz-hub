@@ -259,15 +259,21 @@ const EquipmentMonitoringTopic = () => {
               The anaesthetic workstation receives medical gases from <strong>pipeline</strong> (400 kPa via NIST/Schrader) or
               <strong> reserve cylinders</strong>, regulates pressure, controls flow through calibrated flowmeters, adds volatile
               agent via a vaporizer, and delivers gas through a breathing system to the patient. Oxygen is held centrally as
-              liquid in a <strong>Vacuum Insulated Evaporator (VIE)</strong> at −183 °C and 10–12 bar.
+              liquid in a <strong>Vacuum Insulated Evaporator (VIE)</strong> at approximately <strong>−160 °C and 10 bar</strong>.
+              The often-quoted figure of −183 °C is the boiling point of O₂ at <em>1 atm</em>; at the VIE's storage pressure of
+              ~10 bar the boiling point rises to around −160 °C.
+              <InlineRef topicId="equipment-monitoring" refLabel="BJA Educ 2017 (Medical gases)" contextTitle="Medical gases — VIE storage" keyPoints={["Liquid O₂ stored in a VIE at approximately −160 °C and 10–12 bar.", "−183 °C is the boiling point of O₂ at 1 atmosphere only.", "Contents assessed by differential weighing of the VIE."]} accentColor="hsl(210, 65%, 50%)" />
             </p>
             <p>
               <strong>Cylinders</strong> are size E on the machine and colour-coded by contents. O₂ cylinders contain compressed
               gas at 137 bar — the gauge reliably indicates contents. <strong>N₂O cylinders</strong> contain liquid + vapour at
-              44 bar; pressure stays constant until liquid is exhausted, so contents must be assessed by <em>weight</em>. Filling
-              ratio 0.75 (UK) prevents hydraulic rupture from thermal expansion. The <strong>Pin Index System (PISS)</strong>
-              prevents wrong-cylinder attachment.
+              44 bar; pressure stays constant until liquid is exhausted, so contents must be assessed by <em>weight</em>. A UK
+              <strong> filling ratio of 0.75</strong> (mass of N₂O ÷ mass of water that would fill the cylinder) prevents
+              hydraulic rupture from thermal expansion in a temperate climate; tropical climates use 0.67.
+              <InlineRef topicId="equipment-monitoring" refLabel="BJA Educ 2017 (Medical gases)" contextTitle="N₂O cylinders & filling ratio" keyPoints={["UK filling ratio 0.75; tropical 0.67.", "Prevents hydraulic rupture if cylinder warms.", "Contents assessed by weight, not pressure."]} accentColor="hsl(210, 65%, 50%)" />
+              The <strong>Pin Index System (PISS)</strong> prevents wrong-cylinder attachment.
             </p>
+
             <p>
               <strong>Pressure regulators</strong> reduce ~137 bar cylinder pressure to ~400 kPa using a spring-diaphragm
               mechanism. Two-stage designs minimise the "seat effect". Adiabatic cooling from rapid expansion can freeze
