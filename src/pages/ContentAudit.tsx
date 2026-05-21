@@ -63,6 +63,32 @@ type Finding = {
   status: "open" | "acknowledged" | "fixed" | "dismissed";
   created_at: string;
 };
+type TopicLog = {
+  id: string;
+  job_id: string;
+  topic_id: string;
+  topic_title: string;
+  section: string;
+  topic_url: string | null;
+  status: "pending" | "running" | "succeeded" | "failed" | "skipped";
+  started_at: string | null;
+  completed_at: string | null;
+  duration_ms: number | null;
+  error_message: string | null;
+  stages: Record<string, unknown>;
+  findings_count: number;
+  updated_at: string;
+};
+
+const logStatusColors: Record<string, string> = {
+  pending: "bg-muted text-muted-foreground",
+  running: "bg-blue-100 text-blue-900 dark:bg-blue-900/30 dark:text-blue-200",
+  succeeded:
+    "bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200",
+  failed: "bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-200",
+  skipped: "bg-muted text-muted-foreground",
+};
+
 
 const severityColors: Record<string, string> = {
   info: "bg-muted text-muted-foreground",
