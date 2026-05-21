@@ -702,7 +702,15 @@ export const topicReferences: Record<string, Reference[]> = {
   "orthopaedic-anaesthesia": [
     { label: "Allman & Wilson Ch.27", citation: "Allman K, Wilson I, O'Donnell A. Oxford Handbook of Anaesthesia. 4th ed. OUP; 2016. Chapter 27: Orthopaedic Surgery." },
     { label: "BJA Educ 2014", citation: "Patel V, et al. Anaesthesia for hip fracture. BJA Education. 2014;14(4):166-172.", url: "https://doi.org/10.1093/bjaceaccp/mkt040" },
-    { label: "AAGBI Tourniquet", citation: "Association of Anaesthetists. Tourniquet practice. Anaesthesia. 2021.", url: "https://doi.org/10.1111/anae.15345" },
+    { label: "AAGBI Tourniquet", citation: "Association of Anaesthetists. Recommendations for the safe use of tourniquets in limb surgery. Anaesthesia. 2021;76(11):1531-1539.", url: "https://doi.org/10.1111/anae.15345" },
+    { label: "NICE CG124", citation: "NICE. Hip fracture: management (CG124). 2011 (updated 2023).", url: "https://www.nice.org.uk/guidance/cg124" },
+    { label: "AAGBI BCIS 2015", citation: "Griffiths R, White SM, Moppett IK, et al. Safety guideline: reducing the risk from cemented hemiarthroplasty for hip fracture. Anaesthesia. 2015;70(5):623-626.", url: "https://doi.org/10.1111/anae.13036" },
+    { label: "Jaeger 2013", citation: "Jaeger P, Nielsen ZJK, Henningsen MH, Hilsted KL, Mathiesen O, Dahl JB. Adductor canal block versus femoral nerve block and quadriceps strength: a randomized, double-blind, placebo-controlled, crossover study in healthy volunteers. Anesthesiology. 2013;118(2):409-415.", url: "https://doi.org/10.1097/ALN.0b013e318279fa0b" },
+    { label: "Girón-Arango 2018", citation: "Girón-Arango L, Peng PWH, Chin KJ, Brull R, Perlas A. Pericapsular nerve group (PENG) block for hip fracture. Reg Anesth Pain Med. 2018;43(8):859-863.", url: "https://doi.org/10.1097/AAP.0000000000000847" },
+    { label: "Aliste 2021", citation: "Aliste J, Layera S, Bravo D, et al. Randomized comparison between pericapsular nerve group (PENG) block and suprainguinal fascia iliaca block for total hip arthroplasty. Reg Anesth Pain Med. 2021;46(10):874-878.", url: "https://doi.org/10.1136/rapm-2021-102997" },
+    { label: "PROSPECT TKA 2022", citation: "Lavand'homme PM, Kehlet H, Rawal N, Joshi GP; PROSPECT Working Group. Pain management after total knee arthroplasty: PROcedure SPEcific postoperative pain managemenT recommendations. Eur J Anaesthesiol. 2022;39(9):743-757.", url: "https://doi.org/10.1097/EJA.0000000000001691" },
+    { label: "ASRA Compartment 2021", citation: "Tran AA, Lee D, Fassolas A, Sadhasivam S, Ye J. A joint statement by ASRA, ESRA and AAGBI on regional anaesthesia in patients at risk of acute compartment syndrome. Reg Anesth Pain Med. 2021;46(12):1083-1099.", url: "https://doi.org/10.1136/rapm-2021-102897" },
+    { label: "Memtsoudis 2019", citation: "Memtsoudis SG, Cozowicz C, Bekeris J, et al. Anaesthetic care of patients undergoing primary hip and knee arthroplasty: consensus recommendations from the International Consensus on Anaesthesia-Related Outcomes after Surgery group (ICAROS). Br J Anaesth. 2019;123(3):269-287.", url: "https://doi.org/10.1016/j.bja.2019.05.042" },
   ],
   "ophthalmic-anaesthesia": [
     { label: "Allman & Wilson Ch.29", citation: "Allman K, Wilson I, O'Donnell A. Oxford Handbook of Anaesthesia. 4th ed. OUP; 2016. Chapter 29: Ophthalmic Surgery." },
