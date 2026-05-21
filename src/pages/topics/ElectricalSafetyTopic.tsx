@@ -157,9 +157,10 @@ const ElectricalSafetyTopic = () => {
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
             A <strong>Line Isolation Monitor (LIM)</strong> continuously measures the impedance from each line to earth. A
-            single insulation fault is detected and alarmed (typically when leakage current would exceed ~2 mA), but the supply
-            is deliberately <em>not</em> automatically interrupted — abrupt loss of power to a ventilator or bypass pump may be
-            more dangerous than the fault itself. Two simultaneous faults are required for a hazardous shock.
+            single insulation fault is detected and alarmed (typically when a prospective fault current would exceed
+            ~5 mA, with thresholds in practice ranging from 2–5 mA depending on the standard), but the supply is deliberately
+            <em> not</em> automatically interrupted — abrupt loss of power to a ventilator or bypass pump may be more
+            dangerous than the fault itself. Two simultaneous faults are required for a hazardous shock.
           </p>
           <div className="mt-4">
             <IsolationTransformerDiagram />
