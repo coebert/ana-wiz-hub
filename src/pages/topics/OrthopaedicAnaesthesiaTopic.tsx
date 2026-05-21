@@ -96,7 +96,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hip Fracture (#NOF)</h2>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-            <li><strong>Epidemiology</strong>: ~80,000/year in UK. 30-day mortality ~7%. NICE CG124 + NHFD standards</li>
+            <li><strong>Epidemiology</strong>: ~80,000/year in UK. 30-day mortality ~7%. NICE CG124 + NHFD standards<Cite topicId="orthopaedic-anaesthesia" labels={["NICE CG124"]} /></li>
             <li><strong>Timing</strong>: surgery within 36h unless medically unfit. Delay increases mortality, pressure sores, VTE</li>
             <li><strong>Anaesthetic</strong>: spinal anaesthesia recommended (NICE) — ↓ mortality, ↓ DVT vs GA. Avoid hypotension (MAP &gt;65 or ≥75% baseline). Low-dose spinal (e.g., 1.5-2ml 0.5% heavy bupivacaine)</li>
             <li><strong>Analgesia</strong>: fascia iliaca block (pre/intraoperative), paracetamol, avoid NSAIDs in elderly/renal impairment. Opioid-sparing approach</li>
