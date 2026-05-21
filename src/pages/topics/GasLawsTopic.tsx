@@ -237,8 +237,9 @@ const GasLawsTopic = () => {
               <p className="text-sm font-medium text-foreground">Clinical Application</p>
               <p className="text-sm text-muted-foreground mt-1">
                 Calculating alveolar oxygen tension using the alveolar gas equation depends on Dalton's law. At sea level,
-                PaO₂ ≈ FiO₂ × (Patm − PH₂O) − PaCO₂/R. Understanding partial pressures is essential for calculating safe
-                FiO₂ at altitude and during hyperbaric therapy.
+                PAO₂ ≈ FiO₂ × (Patm − PH₂O) − PaCO₂/R, where PAO₂ is the <em>alveolar</em> oxygen partial pressure (not
+                the arterial PaO₂). Understanding partial pressures is essential for calculating safe FiO₂ at altitude
+                and during hyperbaric therapy.
               </p>
             </div>
             </CollapsibleSubsection>
