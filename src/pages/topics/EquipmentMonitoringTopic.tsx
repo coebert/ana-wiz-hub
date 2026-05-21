@@ -29,7 +29,7 @@ const objectives = [
 ];
 
 const keyPoints = [
-  { text: "Pipeline 400 kPa via NIST/Schrader; O₂ stored in VIE at −183 °C; cylinders sized A–J with PISS and colour codes.", cites: ["Miller 1941"] },
+  { text: "Pipeline 400 kPa via NIST/Schrader; O₂ stored in VIE as liquid at ~−160 °C and ~10 bar (boiling point rises with pressure above the 1 atm value of −183 °C); cylinders sized A–J with PISS and colour codes.", cites: ["BJA Educ 2017 (Medical gases)"] },
   { text: "N₂O cylinders contain liquid — pressure constant at 44 bar until exhausted; assess contents by weight; UK filling ratio 0.75.", cites: ["Macintosh 1943"] },
   { text: "Pressure regulators reduce 137 bar → 400 kPa (spring-diaphragm); two-stage minimises seat effect.", cites: ["AAGBI Standards 2015"] },
   { text: "Rotameters: laminar (low flow) viscosity-dependent; turbulent (high) density-dependent; gas-specific; O₂ downstream.", cites: ["Weiss & Engelhardt 2010"] },
