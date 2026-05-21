@@ -99,7 +99,7 @@ const ContentAudit = () => {
       .limit(500);
     if (jobId) q = q.eq("job_id", jobId);
     const { data } = await q;
-    setFindings((data as Finding[]) ?? []);
+    setFindings(((data as unknown) as Finding[]) ?? []);
   };
 
   useEffect(() => {
