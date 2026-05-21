@@ -175,7 +175,7 @@ const SIUnitsThermodynamicsTopic = () => {
                   <li><strong>Thermocouple:</strong> Seebeck effect — voltage at junction of two dissimilar metals (copper–constantan). Fast, used in PA catheters</li>
                   <li><strong>Thermistor:</strong> Semiconductor whose resistance falls exponentially with temperature (NTC). Sensitive, used in oesophageal/rectal probes</li>
                   <li><strong>RTD (platinum):</strong> Resistance increases linearly with temperature. Very accurate laboratory standard — slower than thermistors</li>
-                  <li><strong>Infrared tympanic:</strong> Detects IR radiation (Wien's law — peak λ ∝ 1/T). Non-contact, &lt;2 s, but accuracy affected by cerumen/positioning</li>
+                  <li><strong>Infrared tympanic:</strong> Detects IR radiation whose intensity is proportional to the fourth power of absolute temperature (Stefan–Boltzmann law: j* = σT⁴); peak wavelength shifts with T per Wien's displacement law. Non-contact, &lt;2 s, but accuracy affected by cerumen/positioning</li>
                   <li><strong>Liquid crystal:</strong> Cholesteric crystals change colour with T. Forehead strips — convenient but inaccurate (±1–2 °C)</li>
                 </ul>
               </div>
