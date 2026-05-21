@@ -198,8 +198,8 @@ const IVAnaestheticsTopic = () => {
               <li>
                 <strong>No real-time depth marker.</strong> End-tidal volatile concentration is a continuous, validated
                 surrogate for brain partial pressure. There is no equivalent for propofol — processed-EEG monitors
-                (BIS/Entropy) are the recommended substitute, and the AAGBI advises their routine use whenever TIVA is
-                combined with neuromuscular blockade.
+                (BIS/Entropy) are the recommended substitute, and the Association of Anaesthetists advises their routine use whenever TIVA is
+                combined with neuromuscular blockade<InlineRef topicId="iv-anaesthetics" refLabel="AAGBI 2018" />.
               </li>
             </ul>
             <p className="text-foreground/90 leading-relaxed mt-3">
