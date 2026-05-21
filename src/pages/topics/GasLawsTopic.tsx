@@ -248,7 +248,8 @@ const GasLawsTopic = () => {
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="The Ideal Gas Law">
             <p className="text-foreground/90 leading-relaxed">
-              The ideal gas equation <strong>PV = nRT</strong> combines all three laws into a single expression, where
+              The ideal gas equation <strong>PV = nRT</strong> unifies Boyle's, Charles', Gay-Lussac's <em>and</em>
+              Avogadro's laws (V ∝ n at constant T and P, which supplies the molar term n) into a single expression, where
               P = pressure, V = volume, n = number of moles, R = universal gas constant (8.314 J·mol⁻¹·K⁻¹), and
               T = absolute temperature. Real gases deviate from ideal behaviour at high pressures and low temperatures,
               described by the van der Waals equation.
