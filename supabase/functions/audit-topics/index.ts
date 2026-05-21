@@ -22,6 +22,22 @@ const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
 const SITE_BASE = "https://anaesthesiacore.app";
 
+function normalizeTopicUrl(section: string, id: string, rawUrl?: string | null) {
+  const cleanSection = String(section).replace(/^\/+|\/+$/g, "");
+  const cleanId = String(id).replace(/^\/+|\/+$/g, "");
+
+  if (!rawUrl) return `${SITE_BASE}/${cleanSection}/${cleanId}`;
+
+  try {
+    const parsed = new URL(rawUrl);
+    parsed.pathname = parsed.pathname.replace(/\/+/g, "/");
+    parsed.pathname = parsed.pathname.replace(/\/$/, "");
+    return parsed.toString();
+  } catch {
+    return `${SITE_BASE}/${cleanSection}/${cleanId}`;
+  }
+}
+
 // Reputable UK / international anaesthetic & critical-care references
 const SOURCE_DOMAINS = [
   "bjaeducation.org",
@@ -866,10 +882,7 @@ Deno.serve(async (req) => {
         title: String(t.title),
         description: String(t.description ?? ""),
         section: String(t.section),
-        url:
-          t.url && /^https?:\/\//.test(t.url)
-            ? t.url
-            : `${SITE_BASE}/${t.section}/${t.id}`,
+        url: normalizeTopicUrl(String(t.section), String(t.id), t.url),
       }));
 
 
