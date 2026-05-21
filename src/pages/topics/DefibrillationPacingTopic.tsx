@@ -112,6 +112,76 @@ const DefibrillationPacingTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="dccv-energies" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Synchronised DC Cardioversion — Energy Selection">
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                In synchronised cardioversion the shock is timed to the R wave to avoid the relative refractory
+                period (T wave) and the risk of inducing VF. Energies below are for <strong>biphasic</strong> devices
+                — manufacturer guidance always takes precedence. For monophasic devices, use 200 J for AF and
+                consider 360 J early; double the listed biphasic dose as a rough guide for other rhythms.
+              </p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-2 pr-3 font-medium text-foreground">Rhythm</th>
+                      <th className="text-left py-2 pr-3 font-medium text-foreground">First shock (biphasic)</th>
+                      <th className="text-left py-2 font-medium text-foreground">Escalation</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    <tr>
+                      <td className="py-2 pr-3"><strong>Atrial fibrillation</strong></td>
+                      <td className="py-2 pr-3">120–150 J synchronised</td>
+                      <td className="py-2">Escalate to maximum (typically 200 J), then consider AP pad position</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-3"><strong>Atrial flutter / SVT</strong></td>
+                      <td className="py-2 pr-3">70–120 J synchronised</td>
+                      <td className="py-2">Lower thresholds — many flutters cardiovert at 50–100 J</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-3"><strong>Stable VT with pulse</strong></td>
+                      <td className="py-2 pr-3">120–150 J synchronised</td>
+                      <td className="py-2">Escalate stepwise to maximum biphasic output</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-3"><strong>Polymorphic VT (pulse) / unsynchronised</strong></td>
+                      <td className="py-2 pr-3">Treat as VF — defibrillate <em>unsynchronised</em></td>
+                      <td className="py-2">120–200 J first shock, then 150–360 J per device guidance</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-3"><strong>VF / pulseless VT</strong></td>
+                      <td className="py-2 pr-3">120–150 J unsynchronised</td>
+                      <td className="py-2">Subsequent shocks 150–200 J (or up to 360 J biphasic per manufacturer)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-3"><strong>Paediatric (synch or defib)</strong></td>
+                      <td className="py-2 pr-3">1 J/kg synch; 4 J/kg defib</td>
+                      <td className="py-2">Synchronised cardioversion may be escalated to 2 J/kg</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p>
+                <strong>Practical points:</strong> sedate or anaesthetise the conscious patient (propofol ± fentanyl,
+                or short-acting induction with airway support). Confirm the <em>sync</em> marker is on the R wave —
+                re-enable sync after every shock (most devices revert to unsynchronised mode automatically). For
+                refractory AF, consider <strong>anteroposterior pad position</strong>, ensure full expiration, firm pad
+                pressure (~8 kg), and exclude reversible factors (electrolytes, hypoxia, thyroid). Anticoagulation
+                status must be confirmed for AF &gt;48 h or unknown duration before elective DCCV.
+              </p>
+              <p className="text-xs italic">
+                Sources: Resuscitation Council UK Adult Advanced Life Support (2021); ERC Guidelines 2021; ESC
+                Guidelines for AF (2024) and Ventricular Arrhythmias (2022); APLS / RCUK Paediatric ALS 2021.
+              </p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="tti" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Transthoracic Impedance">
             <div className="text-muted-foreground leading-relaxed space-y-3">
