@@ -510,10 +510,9 @@ async function auditTopic(
 
 // ---------- Sweep runner (batched + self-chaining) ----------
 // One topic per invocation keeps total wall-clock comfortably under the edge
-// runtime's ~150s limit. We also fire the next chain BEFORE awaiting the
-// topic, so if this runtime is killed mid-await (e.g. AI gateway hang), the
-// successor invocation is already queued and will pick up the NEXT topic
-// (cursor is advanced before work starts).
+// runtime's ~150s limit. Invocations must run strictly one-at-a-time for a
+// given job; scheduling the successor before the current topic completed led
+// to overlapping workers, false "failed" states, and racing job counters.
 const BATCH_SIZE = 1;
 // Hard cap per topic. Stage budgets sum to ~70s in the happy path
 // (scrape 30 + search 10 + AI text 25 + diagram 0–15); the extra headroom
@@ -521,6 +520,7 @@ const BATCH_SIZE = 1;
 // without firing the topic-level guard. Still well under the edge runtime's
 // ~150s wall-clock so the timeout + finally + chainOnce all run.
 const PER_TOPIC_TIMEOUT_MS = 130_000;
+const STALE_RUNNING_LOG_MS = 5 * 60_000;
 
 async function reinvokeContinue(jobId: string) {
   try {
@@ -593,8 +593,8 @@ async function runBatch(jobId: string) {
     return;
   }
 
-  // Heal any "running" log row from a prior killed runtime so the UI doesn't
-  // see ghosts.
+  // Heal genuinely stale "running" rows from a prior killed runtime, but do
+  // not touch fresh rows because active invocations update them.
   await supa
     .from("topic_audit_topic_logs")
     .update({
@@ -604,7 +604,8 @@ async function runBatch(jobId: string) {
       updated_at: new Date().toISOString(),
     })
     .eq("job_id", jobId)
-    .eq("status", "running");
+    .eq("status", "running")
+    .lt("updated_at", new Date(Date.now() - STALE_RUNNING_LOG_MS).toISOString());
 
   await supa.from("topic_audit_jobs").update({
     status: "running",
@@ -617,16 +618,6 @@ async function runBatch(jobId: string) {
   let findingsCount = job.findings_count ?? 0;
 
   const end = Math.min(cursor + BATCH_SIZE, queue.length);
-  let chained = false;
-  // Schedule the next batch exactly once, no matter how this invocation exits.
-  const chainOnce = async () => {
-    if (chained) return;
-    chained = true;
-    if (cursor < queue.length) {
-      await reinvokeContinue(jobId);
-    }
-  };
-
   let jobLastError: string | null = null;
 
   try {
