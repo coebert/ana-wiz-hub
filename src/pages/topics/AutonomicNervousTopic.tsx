@@ -104,7 +104,7 @@ const AutonomicNervousTopic = () => {
       }}
       sectionSources={{
         objectives: ["Power & Kam Ch.14"],
-        workedExamples: ["BJA Educ 2007", "Ganong Ch.13", "Power & Kam Ch.14"],
+        workedExamples: ["BJA Educ 2007", "Ganong Ch.13", "Power & Kam Ch.14", "Resus Council UK 2021"],
         keyPoints: ["Power & Kam Ch.14", "Ganong Ch.13", "BJA Educ 2007"],
       }}
       keyPoints={[
