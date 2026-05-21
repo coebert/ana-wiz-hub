@@ -104,8 +104,8 @@ const Index = () => {
     ? "Revise FRCA & FFICM — AnaesthesiaCore"
     : "AnaesthesiaCore – FRCA & FFICM Revision";
   const pageDescription = isRevise
-    ? "Pick a section and revise FRCA Primary, Final or FFICM topics with structured notes, diagrams, quizzes and viva practice mapped to the official curriculum."
-    : "Study companion for FRCA Primary, Final and FFICM trainees: structured notes, interactive diagrams, quizzes, AI-generated podcasts and an AI viva examiner.";
+    ? "Revise FRCA Primary, Final and FFICM topics with notes, diagrams, quizzes and viva practice mapped to the curriculum."
+    : "FRCA Primary, Final and FFICM revision: structured notes, diagrams, quizzes, AI podcasts and an AI viva examiner.";
 
   const visibleSections = sections.filter((s) => {
     const topics = topicsBySection[s.sectionKey] || [];
