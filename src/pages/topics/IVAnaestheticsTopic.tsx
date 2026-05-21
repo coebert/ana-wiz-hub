@@ -136,7 +136,7 @@ const IVAnaestheticsTopic = () => {
               A rare but often fatal complication of prolonged, high-dose propofol infusion. Propofol inhibits the mitochondrial
               electron transport chain and fatty-acid β-oxidation, producing metabolic acidosis, rhabdomyolysis, and
               cardiovascular collapse. Classic thresholds are <strong>&gt; 4 mg/kg/h for &gt; 48 h</strong>, but it can occur with
-              shorter exposures in susceptible patients.
+              shorter exposures in susceptible patients<InlineRef topicId="iv-anaesthetics" refLabel="BJA Educ 2014" />.
             </p>
             <PRISDiagram />
           </div>
