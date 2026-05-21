@@ -23,6 +23,8 @@ import {
   RefreshCw,
   Square,
   ShieldCheck,
+  Wifi,
+  WifiOff,
 } from "lucide-react";
 import { toast } from "sonner";
 
