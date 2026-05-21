@@ -229,13 +229,14 @@ const StarlingForcesTopic = () => {
           <ExamSection id="oedema" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
             <CollapsibleSubsection title="Oedema Formation">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Oedema occurs when the rate of capillary filtration exceeds lymphatic drainage capacity. Safety factors against oedema include:
+              Oedema occurs when the rate of capillary filtration exceeds lymphatic drainage capacity. Under the revised
+              Starling–Levick model, the principal safety factors against oedema are:
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-              <li><strong>↑ Interstitial pressure</strong>: as fluid accumulates, Pi rises, reducing the filtration gradient</li>
-              <li><strong>↑ Lymphatic flow</strong>: can increase 10-50× before overwhelmed</li>
-              <li><strong>Wash-down of interstitial protein</strong>: dilution of πi reduces oncotic pull</li>
-              <li>Total safety factor ≈ 17 mmHg — Pc must rise by this amount before oedema develops</li>
+              <li><strong>Rising interstitial hydrostatic pressure</strong>: as fluid accumulates, Pi rises and reduces the outward filtration gradient (Pc − Pi)</li>
+              <li><strong>Substantial lymphatic reserve</strong>: lymph flow can increase ~10–50× before being overwhelmed</li>
+              <li><strong>Preserved sub-glycocalyx oncotic gradient</strong>: an intact glycocalyx keeps πsg low, sustaining the effective oncotic pull σ(πc − πsg)</li>
+              <li>Estimated total safety factor ≈ 17 mmHg — Pc must rise by approximately this amount before clinical oedema develops</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
