@@ -546,9 +546,34 @@ const ContentAudit = () => {
   }, [running]);
 
   const elapsedMs = job ? Date.now() - new Date(job.created_at).getTime() : 0;
+
+  // Average per-topic duration from completed topic logs for this job.
+  // Falls back to overall elapsed/processed when no log durations are available yet.
+  const { avgTopicMs, avgSource } = useMemo(() => {
+    if (!job) return { avgTopicMs: 0, avgSource: "none" as const };
+    const completed = topicLogs.filter(
+      (l) =>
+        l.job_id === job.id &&
+        (l.status === "succeeded" || l.status === "failed") &&
+        typeof l.duration_ms === "number" &&
+        l.duration_ms! > 0,
+    );
+    if (completed.length > 0) {
+      const sum = completed.reduce((s, l) => s + (l.duration_ms || 0), 0);
+      return { avgTopicMs: sum / completed.length, avgSource: "logs" as const };
+    }
+    if (job.processed > 0) {
+      return {
+        avgTopicMs: elapsedMs / job.processed,
+        avgSource: "elapsed" as const,
+      };
+    }
+    return { avgTopicMs: 0, avgSource: "none" as const };
+  }, [topicLogs, job?.id, job?.processed, elapsedMs]);
+
   const etaMs =
-    running && job && job.processed > 0 && job.total > job.processed
-      ? (elapsedMs / job.processed) * (job.total - job.processed)
+    running && job && avgTopicMs > 0 && job.total > job.processed
+      ? avgTopicMs * (job.total - job.processed)
       : 0;
 
   const recentFindings = useMemo(
