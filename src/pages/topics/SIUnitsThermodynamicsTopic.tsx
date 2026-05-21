@@ -181,8 +181,9 @@ const SIUnitsThermodynamicsTopic = () => {
               </div>
               <p>
                 <strong>Perioperative temperature management:</strong> Hypothermia (&lt;36 °C) prolongs neuromuscular blockade, reduces MAC, impairs platelet
-                function, increases wound infection rates, and triggers shivering (↑VO₂ 200–400%). NICE recommends active warming for all procedures &gt;30 min
-                with a target core temperature ≥36 °C.
+                function, increases wound infection rates, and triggers shivering (↑VO₂ 200–400%). NICE guideline CG65
+                (Hypothermia: prevention and management in adults having surgery) recommends active warming for all
+                procedures &gt;30 minutes, with a target core temperature ≥36 °C from induction to discharge from recovery.
               </p>
             </div>
             </CollapsibleSubsection>
