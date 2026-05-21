@@ -12,11 +12,11 @@ const StarlingForcesDiagram = () => {
     {
       id: "Pc",
       label: "Capillary Hydrostatic Pressure (Pc)",
-      artValue: "35 mmHg",
-      venValue: "15 mmHg",
+      artValue: "32 mmHg",
+      venValue: "20 mmHg",
       direction: "out",
       color: "hsl(0, 65%, 55%)",
-      desc: "The blood pressure inside the capillary pushing fluid OUT through the vessel wall into the interstitium. Higher at the arteriolar end (~35 mmHg) and lower at the venular end (~15 mmHg). Increased in heart failure, venous obstruction, and fluid overload.",
+      desc: "The blood pressure inside the capillary pushing fluid OUT through the vessel wall into the interstitium. Higher at the arteriolar end (~32 mmHg) and lower at the venular end (~20 mmHg) — values used in the revised Starling–Levick model in which net filtration persists along the entire capillary length. Increased in heart failure, venous obstruction, and fluid overload.",
     },
     {
       id: "Pi",
