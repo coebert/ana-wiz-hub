@@ -533,11 +533,12 @@ const GasLawsTopic = () => {
         { text: "Boyle's law (P₁V₁ = P₂V₂): at constant temperature, pressure and volume are inversely proportional. Relevant to pneumothorax expansion and gas cylinder contents.", cites: ["Cross & Plunkett Ch.1"] },
         { text: "Charles' law (V₁/T₁ = V₂/T₂): at constant pressure, volume is proportional to absolute temperature. Explains ATPS to BTPS correction.", cites: ["Peck & Hill Ch.1"] },
         { text: "Dalton's law: total pressure equals the sum of partial pressures. Fundamental to the alveolar gas equation and FiO₂ calculations.", cites: ["BJA Educ 2017"] },
-        { text: "The ideal gas equation (PV = nRT) combines all individual gas laws. Real gases deviate at high pressure and low temperature.", cites: ["Cross & Plunkett Ch.1"] },
+        { text: "The ideal gas equation (PV = nRT) combines Boyle's, Charles', Gay-Lussac's and Avogadro's laws (Avogadro's contributing the n term). Real gases deviate at high pressure and low temperature.", cites: ["Cross & Plunkett Ch.1", "BJA Educ 2007 (Gas laws)"] },
         { text: "Henry's law: gas dissolved in liquid is proportional to its partial pressure. Governs O₂/CO₂ transport and volatile agent uptake.", cites: ["Peck & Hill Ch.1"] },
         { text: "Adiabatic expansion (PVγ = constant) cools a gas as it does work — explains rapid O₂ cylinder cooling and reversible adiabatic processes.", cites: ["BJA Educ 2017"] },
         { text: "Joule–Thomson effect: isenthalpic throttling cools real gases below their inversion temperature (N₂O, CO₂, O₂, N₂ at room T) and warms H₂ and He.", cites: ["Cross & Plunkett Ch.1"] },
-        { text: "N₂O cylinder pressure stays constant at the saturated vapour pressure until the last liquid evaporates — gauge cannot estimate contents; weigh instead.", cites: ["Peck & Hill Ch.1"] },
+        { text: "Key critical constants: O₂ Tc −118 °C / Pc 50 bar; N₂O Tc 36.5 °C / Pc 72 bar; CO₂ Tc 31 °C / Pc 74 bar; N₂O SVP ≈ 52 bar at 20 °C; Entonox pseudo-critical T −5.5 °C at 137 bar; UK temperate filling ratio 0.75.", cites: ["BJA Educ 2017 (Medical gases)"] },
+        { text: "N₂O cylinder pressure stays constant at the saturated vapour pressure until the last liquid evaporates — gauge cannot estimate contents; weigh instead.", cites: ["Peck & Hill Ch.1", "BJA Educ 2017 (Medical gases)"] },
       ]}
     />
   );
