@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
+import { Cite } from "@/components/Cite";
 import { orthopaedicAnaesthesiaQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/DiagramSection";
 import { BlockAnalgesiaProfileDiagram } from "@/components/diagrams/BlockAnalgesiaProfileDiagram";
@@ -33,7 +34,7 @@ const OrthopaedicAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Grade-2 BCIS: 100% O₂, fluid bolus, noradrenaline, surgeon communication and post-op ITU. Pre-empt with lavage, retrograde cementation and vasopressor preparation.",
-    cites: ["Allman & Wilson Ch.27", "BJA Educ 2014", "AAGBI Tourniquet"],
+    cites: ["Allman & Wilson Ch.27", "BJA Educ 2014", "AAGBI BCIS 2015"],
   },
 ];
 
@@ -57,13 +58,13 @@ const OrthopaedicAnaesthesiaTopic = () => {
         "Identify high-risk patients for compartment syndrome and modify regional technique accordingly",
       ]}
       keyPoints={[
-        { text: "#NOF: surgery within 36h. Spinal anaesthesia recommended (NICE). Fascia iliaca / PENG block for analgesia", cites: ["Allman & Wilson Ch.27"] },
+        { text: "#NOF: surgery within 36h. Spinal anaesthesia recommended (NICE). Fascia iliaca / PENG block for analgesia", cites: ["NICE CG124", "Allman & Wilson Ch.27", "Girón-Arango 2018"] },
         { text: "Tourniquet: upper limb 50-100 mmHg above SBP. Safe limit ~2h. Deflation → ↓ pH, ↑ K⁺, ↑ CO₂, ↑ lactate", cites: ["AAGBI Tourniquet"] },
-        { text: "BCIS: fat/marrow embolism during cement insertion → hypoxia, hypotension, ↓ consciousness. Warn before cementing", cites: ["BJA Educ 2014"] },
-        { text: "Day-case TKA recipe: low-dose spinal + adductor canal + IPACK + LIA + multimodal oral analgesia (motor-sparing)", cites: ["Allman & Wilson Ch.27"] },
-        { text: "Counsel patients about the 'block wear-off cliff' — start regular paracetamol/NSAID before pain returns; provide written plan", cites: ["AAGBI Tourniquet"] },
+        { text: "BCIS: fat/marrow embolism during cement insertion → hypoxia, hypotension, ↓ consciousness. Warn before cementing", cites: ["AAGBI BCIS 2015", "BJA Educ 2014"] },
+        { text: "Day-case TKA recipe: low-dose spinal + adductor canal + IPACK + LIA + multimodal oral analgesia (motor-sparing)", cites: ["PROSPECT TKA 2022", "Jaeger 2013", "Memtsoudis 2019"] },
+        { text: "Counsel patients about the 'block wear-off cliff' — start regular paracetamol/NSAID before pain returns; provide written plan", cites: ["PROSPECT TKA 2022"] },
         { text: "Home perineural catheters (Ilfeld evidence) extend analgesia 48–72h but require 24/7 APS support and red-flag teaching", cites: ["BJA Educ 2014"] },
-        { text: "Compartment syndrome in high-risk limbs: discuss with surgeon, use dilute LA (0.2% ropivacaine), avoid long adjuncts, treat escalating top-up demand as a red flag", cites: ["Allman & Wilson Ch.27"] },
+        { text: "Compartment syndrome in high-risk limbs: discuss with surgeon, use dilute LA (0.2% ropivacaine), avoid long adjuncts, treat escalating top-up demand as a red flag", cites: ["ASRA Compartment 2021", "Allman & Wilson Ch.27"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL] },
@@ -71,14 +72,22 @@ const OrthopaedicAnaesthesiaTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "Allman & Wilson Ch.27",
-          "BJA Educ 2014",
+          "NICE CG124",
           "AAGBI Tourniquet",
+          "AAGBI BCIS 2015",
+          "PROSPECT TKA 2022",
+          "ASRA Compartment 2021",
         ],
         keyPoints: [
-          "Allman & Wilson Ch.27",
-          "BJA Educ 2014",
+          "NICE CG124",
           "AAGBI Tourniquet",
+          "AAGBI BCIS 2015",
+          "Jaeger 2013",
+          "Girón-Arango 2018",
+          "Aliste 2021",
+          "PROSPECT TKA 2022",
+          "ASRA Compartment 2021",
+          "Memtsoudis 2019",
         ],
       }}
       coreConcepts={
@@ -87,7 +96,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hip Fracture (#NOF)</h2>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-            <li><strong>Epidemiology</strong>: ~80,000/year in UK. 30-day mortality ~7%. NICE CG124 + NHFD standards</li>
+            <li><strong>Epidemiology</strong>: ~80,000/year in UK. 30-day mortality ~7%. NICE CG124 + NHFD standards<Cite topicId="orthopaedic-anaesthesia" labels={["NICE CG124"]} /></li>
             <li><strong>Timing</strong>: surgery within 36h unless medically unfit. Delay increases mortality, pressure sores, VTE</li>
             <li><strong>Anaesthetic</strong>: spinal anaesthesia recommended (NICE) — ↓ mortality, ↓ DVT vs GA. Avoid hypotension (MAP &gt;65 or ≥75% baseline). Low-dose spinal (e.g., 1.5-2ml 0.5% heavy bupivacaine)</li>
             <li><strong>Analgesia</strong>: fascia iliaca block (pre/intraoperative), paracetamol, avoid NSAIDs in elderly/renal impairment. Opioid-sparing approach</li>
@@ -135,8 +144,8 @@ const OrthopaedicAnaesthesiaTopic = () => {
                 </tr>
               </thead>
               <tbody className="text-muted-foreground">
-                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Total knee replacement (TKA)</td><td>Adductor canal block (ACB) ± IPACK (Interspace between Popliteal Artery &amp; Capsule of Knee) + LIA (local infiltration analgesia)</td><td>ACB provides equivalent analgesia to femoral block but <strong>preserves quadriceps strength</strong> (Jaeger 2013, Memtsoudis 2019). IPACK adds posterior capsule cover. Femoral nerve block now largely abandoned for day-case TKA due to fall risk.</td></tr>
-                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Total hip replacement (THA)</td><td>PENG (pericapsular nerve group) block ± LIA; spinal anaesthesia</td><td>PENG (Girón-Arango 2018) targets articular branches of femoral, obturator and accessory obturator — motor-sparing alternative to fascia iliaca. RCT evidence (Aliste 2021) shows non-inferior analgesia with better quadriceps preservation vs supra-inguinal FICB.</td></tr>
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Total knee replacement (TKA)</td><td>Adductor canal block (ACB) ± IPACK (Interspace between Popliteal Artery &amp; Capsule of Knee) + LIA (local infiltration analgesia)</td><td>ACB provides equivalent analgesia to femoral block but <strong>preserves quadriceps strength</strong> (Jaeger 2013<Cite topicId="orthopaedic-anaesthesia" labels={["Jaeger 2013"]} />, Memtsoudis 2019<Cite topicId="orthopaedic-anaesthesia" labels={["Memtsoudis 2019"]} />). IPACK adds posterior capsule cover. Femoral nerve block now largely abandoned for day-case TKA due to fall risk.</td></tr>
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Total hip replacement (THA)</td><td>PENG (pericapsular nerve group) block ± LIA; spinal anaesthesia</td><td>PENG (Girón-Arango 2018<Cite topicId="orthopaedic-anaesthesia" labels={["Girón-Arango 2018"]} />) targets articular branches of femoral, obturator and accessory obturator — motor-sparing alternative to fascia iliaca. RCT evidence (Aliste 2021<Cite topicId="orthopaedic-anaesthesia" labels={["Aliste 2021"]} />) shows non-inferior analgesia with better quadriceps preservation vs supra-inguinal FICB.</td></tr>
                 <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Hip fracture (#NOF)</td><td>Fascia iliaca compartment block (FICB) — pre-op &amp; intra-op; PENG emerging</td><td>NICE/AAGBI recommend pre-op FICB. Reduces opioid requirement, delirium and time to mobilise. PENG vs FICB trials (Lin 2021, Mosaffa 2022) suggest equivalent analgesia with less motor block.</td></tr>
                 <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Shoulder arthroscopy / arthroplasty</td><td>Interscalene brachial plexus block (single-shot or catheter)</td><td>Gold standard — superior analgesia vs IV opioid (Hughes 2013 meta-analysis). Counsel re: ipsilateral phrenic palsy (~100% with traditional volumes; ~30–50% with low-volume 5–10 ml). Avoid in significant respiratory disease.</td></tr>
                 <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Forearm / hand</td><td>Supraclavicular, infraclavicular, axillary brachial plexus block</td><td>Reliable, opioid-free anaesthesia &amp; long-duration analgesia. WALANT (wide-awake local anaesthesia no tourniquet) increasingly used for hand surgery — avoids systemic anaesthesia altogether.</td></tr>
@@ -147,7 +156,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
           <div className="p-4 rounded-lg bg-secondary/30 border border-border">
             <p className="font-semibold text-foreground text-sm">Adjuncts that prolong single-shot blocks</p>
             <p className="text-sm text-muted-foreground mt-1">
-              <strong className="text-foreground">Perineural dexamethasone</strong> 4–8 mg (extends duration ~50%; IV dexamethasone 8 mg has similar effect — preferred to avoid neurotoxicity concerns), <strong className="text-foreground">dexmedetomidine</strong> 0.5–1 µg/kg, <strong className="text-foreground">clonidine</strong> 1 µg/kg. <strong className="text-foreground">Liposomal bupivacaine</strong> (Exparel) — RCT evidence is mixed; PROSPECT (2022) does <em>not</em> recommend routinely over plain bupivacaine for TKA.
+              <strong className="text-foreground">Perineural dexamethasone</strong> 4–8 mg (extends duration ~50%; IV dexamethasone 8 mg has similar effect — preferred to avoid neurotoxicity concerns), <strong className="text-foreground">dexmedetomidine</strong> 0.5–1 µg/kg, <strong className="text-foreground">clonidine</strong> 1 µg/kg. <strong className="text-foreground">Liposomal bupivacaine</strong> (Exparel) — RCT evidence is mixed; PROSPECT (2022) does <em>not</em> recommend routinely over plain bupivacaine for TKA.<Cite topicId="orthopaedic-anaesthesia" labels={["PROSPECT TKA 2022"]} />
             </p>
           </div>
         </div>
@@ -300,7 +309,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
             </p>
           </div>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            <strong>Does regional analgesia mask compartment syndrome?</strong> This has been debated for decades. Current expert consensus (<strong>ASRA / ESRA / AAGBI 2021 joint statement</strong>; <strong>Mar 2009</strong> review; <strong>Tran 2020</strong>) is that <em>well-conducted, low-concentration regional analgesia does <strong>not</strong> meaningfully delay diagnosis</em> — but specific cautions apply:
+            <strong>Does regional analgesia mask compartment syndrome?</strong> This has been debated for decades. Current expert consensus (<strong>ASRA / ESRA / AAGBI 2021 joint statement</strong><Cite topicId="orthopaedic-anaesthesia" labels={["ASRA Compartment 2021"]} />; <strong>Mar 2009</strong> review; <strong>Tran 2020</strong>) is that <em>well-conducted, low-concentration regional analgesia does <strong>not</strong> meaningfully delay diagnosis</em> — but specific cautions apply:
           </p>
           <div className="grid sm:grid-cols-2 gap-3 mb-3">
             <div className="p-4 rounded-lg border border-border">
