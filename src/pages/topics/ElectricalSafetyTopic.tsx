@@ -13,7 +13,7 @@ import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
   "Define macroshock and microshock and quote the threshold currents that cause perception, let-go, respiratory arrest and VF.",
-  "Explain why intracardiac catheters reduce the VF threshold to ~150 µA and the rationale for Type CF equipment.",
+  "Explain why intracardiac catheters reduce the VF threshold to ~100 µA and the rationale for Type CF equipment.",
   "Describe the isolated power supply with line isolation monitor and contrast with RCD/RCCB protection.",
   "Compare monopolar and bipolar diathermy, listing the principal hazards and how they are mitigated.",
   "Explain the role of theatre humidity (50–60%) and antistatic footwear (75 kΩ–10 MΩ) in electrical safety.",
@@ -21,15 +21,15 @@ const objectives = [
 ];
 
 const keyPoints = [
-  { text: "Macroshock VF threshold ~100 mA via skin; microshock VF threshold ~150 µA via intracardiac catheter.", cites: ["Middleton Ch.16"] },
-  { text: "Type CF equipment (leakage <10 µA) required for intracardiac connections.", cites: ["Cross & Plunkett Ch.14"] },
-  { text: "Surgical diathermy uses high-frequency AC (0.4-3 MHz) which does not stimulate muscle/nerve.", cites: ["BJA Educ 2012"] },
+  { text: "Macroshock VF threshold ~100 mA via skin; microshock VF threshold ~100 µA (0.1 mA) via intracardiac catheter at 50 Hz.", cites: ["BJA Educ 2017"] },
+  { text: "Type CF equipment (leakage <10 µA) required for intracardiac connections — a 10× safety margin below the microshock VF threshold.", cites: ["Cross & Plunkett Ch.14"] },
+  { text: "Surgical diathermy uses high-frequency AC (0.4-3 MHz) which does not stimulate muscle/nerve.", cites: ["BJA Educ 2017"] },
   { text: "Monopolar diathermy requires a return plate; bipolar does not. Bipolar is safer near pacemakers.", cites: ["Middleton Ch.16"] },
-  { text: "Equipment classes: I (earthed), II (double insulated), III (low voltage <24V AC).", cites: ["Cross & Plunkett Ch.14"] },
-  { text: "Theatre humidity 50–60% prevents static charge accumulation by providing a conductive surface film of water.", cites: ["BJA Educ 2012"] },
+  { text: "Equipment classes: I (earthed), II (double insulated), III (low voltage <24V AC). IEC 60601-1 defines the safety standard.", cites: ["IEC 60601-1"] },
+  { text: "Theatre humidity 50–60% prevents static charge accumulation by providing a conductive surface film of water.", cites: ["BJA Educ 2017"] },
   { text: "Antistatic theatre footwear has sole resistance 75 kΩ–10 MΩ — drains static slowly while limiting macroshock current to <3 mA.", cites: ["Middleton Ch.16"] },
   { text: "Defibrillator capacitor stores energy E = ½CV²; charged slowly (~3 s) and discharged in ~10 ms (biphasic).", cites: ["Cross & Plunkett Ch.14"] },
-  { text: "Biphasic defibrillators deliver equivalent efficacy at lower energy than monophasic.", cites: ["BJA Educ 2012"] },
+  { text: "Biphasic defibrillators deliver equivalent efficacy at lower energy than monophasic.", cites: ["BJA Educ 2017"] },
 ];
 
 const ElectricalSafetyTopicWorkedExamples: WorkedExample[] = [
