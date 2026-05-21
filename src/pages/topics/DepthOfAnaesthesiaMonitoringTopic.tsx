@@ -185,7 +185,7 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
               <p className="text-xs text-muted-foreground mt-1">Recommends considering EEG-based depth monitoring in patients receiving TIVA, at higher risk of awareness (e.g., emergency CS, cardiac surgery, trauma), or where clinical signs are unreliable.</p>
             </div>
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
-              <p className="font-semibold text-foreground text-sm">AAGA Guidelines (2017)</p>
+              <p className="font-semibold text-foreground text-sm">Association of Anaesthetists Guidelines (2017)</p>
               <p className="text-xs text-muted-foreground mt-1">Association of Anaesthetists: processed EEG should be used for all TIVA, considered when NMB used, and in high-risk cases. Monitor does NOT replace clinical vigilance — it is an adjunct.</p>
             </div>
           </div>
