@@ -120,7 +120,7 @@ async function firecrawlScrape(
     requestTimeoutMs: number,
     actions?: unknown[],
   ) => {
-    const r = await fetchWithTimeout(
+    const r = await fetchJsonWithTimeout(
       "https://api.firecrawl.dev/v2/scrape",
       {
         method: "POST",
@@ -141,7 +141,7 @@ async function firecrawlScrape(
       requestTimeoutMs,
     );
     if (!r.ok) return null;
-    const data = await r.json();
+    const data = r.json as any;
     return data?.data ?? data;
   };
 
@@ -167,7 +167,7 @@ async function firecrawlScrape(
 
 async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
   try {
-    const r = await fetchWithTimeout(
+    const r = await fetchJsonWithTimeout(
       "https://api.firecrawl.dev/v2/search",
       {
         method: "POST",
@@ -184,7 +184,7 @@ async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
       timeoutMs,
     );
     if (!r.ok) return [];
-    const data = await r.json();
+    const data = r.json as any;
     const results = data?.data ?? data?.web ?? [];
     return Array.isArray(results) ? results : [];
   } catch (_e) {
