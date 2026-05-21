@@ -256,7 +256,7 @@ const RenalPhysiologyTopic = () => {
                 Step through the countercurrent multiplication process to understand how the loop of Henle generates
                 the corticomedullary osmotic gradient (300→1200 mOsm/kg). Press Play or use the step buttons.
               </p>
-              <div className="rounded-lg border border-border bg-secondary/20 p-4 mb-4 text-sm text-foreground/90 leading-relaxed">
+              <p className="rounded-lg border border-border bg-secondary/20 p-4 mb-4 text-sm text-foreground/90 leading-relaxed">
                 The countercurrent mechanism has three integrated components: <strong>(1) the loop of Henle
                 multiplier</strong> — active NaCl reabsorption from the water-impermeable thick ascending limb,
                 amplified by the hairpin geometry, generates the medullary osmotic gradient; <strong>(2) the vasa
