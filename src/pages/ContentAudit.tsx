@@ -110,13 +110,52 @@ const ContentAudit = () => {
     })();
   }, []);
 
-  // Poll while running
+  // Realtime: live job progress + streaming findings while audit runs
+  useEffect(() => {
+    if (!job?.id) return;
+    const jobId = job.id;
+    const channel = supabase
+      .channel(`audit-job-${jobId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "topic_audit_jobs",
+          filter: `id=eq.${jobId}`,
+        },
+        (payload) => {
+          setJob((prev) => ({ ...(prev as Job), ...(payload.new as Job) }));
+        },
+      )
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "topic_audit_findings",
+          filter: `job_id=eq.${jobId}`,
+        },
+        (payload) => {
+          const f = payload.new as Finding;
+          setFindings((prev) =>
+            prev.some((x) => x.id === f.id) ? prev : [f, ...prev],
+          );
+        },
+      )
+      .subscribe();
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [job?.id]);
+
+  // Fallback poll while running (in case realtime drops)
   useEffect(() => {
     if (job?.status !== "running" && job?.status !== "pending") return;
     const t = setInterval(async () => {
       const j = await fetchLatestJob();
       if (j) await fetchFindings(j.id);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(t);
   }, [job?.status]);
 
@@ -287,6 +326,37 @@ const ContentAudit = () => {
   const progress =
     job && job.total > 0 ? Math.round((job.processed / job.total) * 100) : 0;
 
+  // tick every second so elapsed/ETA refresh smoothly while running
+  const [, setTick] = useState(0);
+  useEffect(() => {
+    if (!running) return;
+    const t = setInterval(() => setTick((n) => n + 1), 1000);
+    return () => clearInterval(t);
+  }, [running]);
+
+  const fmtDuration = (ms: number) => {
+    if (!Number.isFinite(ms) || ms < 0) return "—";
+    const s = Math.floor(ms / 1000);
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    if (m >= 60) {
+      const h = Math.floor(m / 60);
+      return `${h}h ${m % 60}m`;
+    }
+    return m > 0 ? `${m}m ${sec}s` : `${sec}s`;
+  };
+
+  const elapsedMs = job ? Date.now() - new Date(job.created_at).getTime() : 0;
+  const etaMs =
+    running && job && job.processed > 0 && job.total > job.processed
+      ? (elapsedMs / job.processed) * (job.total - job.processed)
+      : 0;
+
+  const recentFindings = useMemo(
+    () => (job ? findings.filter((f) => f.job_id === job.id).slice(0, 5) : []),
+    [findings, job?.id],
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
@@ -401,18 +471,50 @@ const ContentAudit = () => {
                     style={{ width: `${progress}%` }}
                   />
                 </div>
-                <div className="flex flex-wrap gap-4 text-xs text-muted-foreground">
+                <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
                   <span>Succeeded: {job.succeeded}</span>
                   <span>Failed: {job.failed}</span>
                   <span>Findings: {job.findings_count}</span>
+                  <span>Elapsed: {fmtDuration(elapsedMs)}</span>
+                  {running && etaMs > 0 && (
+                    <span>ETA: ~{fmtDuration(etaMs)}</span>
+                  )}
                   {job.current_topic && (
-                    <span>Now: {job.current_topic}</span>
+                    <span className="text-foreground">
+                      Now auditing:{" "}
+                      <span className="font-medium">{job.current_topic}</span>
+                    </span>
                   )}
                 </div>
                 {job.last_error && (
                   <p className="text-xs text-red-600">
                     Last error: {job.last_error}
                   </p>
+                )}
+                {running && recentFindings.length > 0 && (
+                  <div className="pt-2 border-t border-border space-y-1">
+                    <p className="text-xs font-medium text-muted-foreground">
+                      Live activity
+                    </p>
+                    {recentFindings.map((f) => (
+                      <div
+                        key={f.id}
+                        className="flex items-center gap-2 text-xs"
+                      >
+                        <Badge
+                          className={`${severityColors[f.severity]} border-0 capitalize text-[10px] py-0`}
+                        >
+                          {f.severity}
+                        </Badge>
+                        <span className="truncate text-foreground">
+                          {f.topic_title}
+                        </span>
+                        <span className="truncate text-muted-foreground">
+                          — {f.summary}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
             )}
