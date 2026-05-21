@@ -418,6 +418,7 @@ export type Database = {
           total: number
           trigger: string
           triggered_by: string | null
+          updated_at: string
         }
         Insert: {
           completed_at?: string | null
@@ -434,6 +435,7 @@ export type Database = {
           total?: number
           trigger?: string
           triggered_by?: string | null
+          updated_at?: string
         }
         Update: {
           completed_at?: string | null
@@ -450,6 +452,7 @@ export type Database = {
           total?: number
           trigger?: string
           triggered_by?: string | null
+          updated_at?: string
         }
         Relationships: []
       }
