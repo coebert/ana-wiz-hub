@@ -291,7 +291,7 @@ export const RenalBloodFlowDiagram = () => {
           <div className="rounded-lg border border-border bg-secondary/20 p-3">
             <p className="text-xs font-semibold text-foreground mb-1">Clinical translation</p>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Sepsis, hypovolaemia, contrast, NSAIDs, ACEi/ARBs all target this fragile balance — explaining why ATN almost always begins in the outer medullary TAL.
+              Sepsis, hypovolaemia, contrast, NSAIDs, ACEi/ARBs all target this fragile balance — explaining why ATN almost always begins in the outer medullary TAL (BJA Education 2016;16:307-313).
             </p>
           </div>
         </div>
