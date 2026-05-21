@@ -156,7 +156,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
           <div className="p-4 rounded-lg bg-secondary/30 border border-border">
             <p className="font-semibold text-foreground text-sm">Adjuncts that prolong single-shot blocks</p>
             <p className="text-sm text-muted-foreground mt-1">
-              <strong className="text-foreground">Perineural dexamethasone</strong> 4–8 mg (extends duration ~50%; IV dexamethasone 8 mg has similar effect — preferred to avoid neurotoxicity concerns), <strong className="text-foreground">dexmedetomidine</strong> 0.5–1 µg/kg, <strong className="text-foreground">clonidine</strong> 1 µg/kg. <strong className="text-foreground">Liposomal bupivacaine</strong> (Exparel) — RCT evidence is mixed; PROSPECT (2022) does <em>not</em> recommend routinely over plain bupivacaine for TKA.
+              <strong className="text-foreground">Perineural dexamethasone</strong> 4–8 mg (extends duration ~50%; IV dexamethasone 8 mg has similar effect — preferred to avoid neurotoxicity concerns), <strong className="text-foreground">dexmedetomidine</strong> 0.5–1 µg/kg, <strong className="text-foreground">clonidine</strong> 1 µg/kg. <strong className="text-foreground">Liposomal bupivacaine</strong> (Exparel) — RCT evidence is mixed; PROSPECT (2022) does <em>not</em> recommend routinely over plain bupivacaine for TKA.<Cite topicId="orthopaedic-anaesthesia" labels={["PROSPECT TKA 2022"]} />
             </p>
           </div>
         </div>
