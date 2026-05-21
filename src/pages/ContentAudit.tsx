@@ -318,13 +318,17 @@ const ContentAudit = () => {
         : allTopics
       )
         .filter((t) => t.available)
-        .map((t) => ({
-          id: t.id,
-          title: t.title,
-          section: t.section,
-          description: t.description,
-          url: `https://anaesthesiacore.app/${sectionMeta[t.section].path}/${t.id}`,
-        }));
+        .map((t) => {
+          const sectionPath = sectionMeta[t.section].path.replace(/^\/+|\/+$/g, "");
+
+          return {
+            id: t.id,
+            title: t.title,
+            section: t.section,
+            description: t.description,
+            url: `https://anaesthesiacore.app/${sectionPath}/${t.id}`,
+          };
+        });
 
       const { data, error } = await supabase.functions.invoke("audit-topics", {
         body: {
