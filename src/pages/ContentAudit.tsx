@@ -326,6 +326,37 @@ const ContentAudit = () => {
   const progress =
     job && job.total > 0 ? Math.round((job.processed / job.total) * 100) : 0;
 
+  // tick every second so elapsed/ETA refresh smoothly while running
+  const [, setTick] = useState(0);
+  useEffect(() => {
+    if (!running) return;
+    const t = setInterval(() => setTick((n) => n + 1), 1000);
+    return () => clearInterval(t);
+  }, [running]);
+
+  const fmtDuration = (ms: number) => {
+    if (!Number.isFinite(ms) || ms < 0) return "—";
+    const s = Math.floor(ms / 1000);
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    if (m >= 60) {
+      const h = Math.floor(m / 60);
+      return `${h}h ${m % 60}m`;
+    }
+    return m > 0 ? `${m}m ${sec}s` : `${sec}s`;
+  };
+
+  const elapsedMs = job ? Date.now() - new Date(job.created_at).getTime() : 0;
+  const etaMs =
+    running && job && job.processed > 0 && job.total > job.processed
+      ? (elapsedMs / job.processed) * (job.total - job.processed)
+      : 0;
+
+  const recentFindings = useMemo(
+    () => (job ? findings.filter((f) => f.job_id === job.id).slice(0, 5) : []),
+    [findings, job?.id],
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
