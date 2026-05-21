@@ -709,9 +709,10 @@ const ContentAudit = () => {
                     bulkBusy ||
                     filtered.filter((f) => f.status === "open").length === 0
                   }
+                  title="Build a Lovable chat prompt that applies every suggested fix to the topic source files. Copies to clipboard + downloads .md."
                 >
                   {bulkBusy
-                    ? "Correcting…"
+                    ? "Building prompt…"
                     : `Correct all (${filtered.filter((f) => f.status === "open").length})`}
                 </Button>
               </div>
