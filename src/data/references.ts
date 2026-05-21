@@ -17,6 +17,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Peck & Hill Ch.1", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 1: Basic Principles." },
     { label: "Cross & Plunkett Ch.1", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 1: Mathematical Concepts." },
     { label: "BJA Educ 2017", citation: "Thomas G. Gas laws and physics relevant to anaesthesia. BJA Education. 2017;17(3):73-78.", url: "https://doi.org/10.1093/bjaed/mkw052" },
+    { label: "BJA Educ 2017 (Medical gases)", citation: "Das S, Chattopadhyay S, Bose P. Medical gases: production, applications and storage. BJA Education. 2017;17(8):253-258. (Authoritative UK reference for critical temperatures/pressures, filling ratios, Entonox pseudo-critical temperature and N₂O SVP.)", url: "https://doi.org/10.1093/bjaed/mkx004" },
+    { label: "BJA Educ 2007 (Gas laws)", citation: "Davis PD, Kenny GNC. The gas laws. BJA Education. 2007;7(5):169-172. Explicitly derives PV = nRT from Boyle's, Charles', Gay-Lussac's and Avogadro's laws.", url: "https://doi.org/10.1093/bjaceaccp/mkm029" },
   ],
   "pressure-measurement": [
     { label: "BJA Educ 2015", citation: "Magee P, Tooley M. The physics of arterial pressure measurement. BJA Education. 2005;5(4):132-135.", url: "https://doi.org/10.1093/bjaceaccp/mki036" },
