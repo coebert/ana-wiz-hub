@@ -309,7 +309,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
             </p>
           </div>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            <strong>Does regional analgesia mask compartment syndrome?</strong> This has been debated for decades. Current expert consensus (<strong>ASRA / ESRA / AAGBI 2021 joint statement</strong>; <strong>Mar 2009</strong> review; <strong>Tran 2020</strong>) is that <em>well-conducted, low-concentration regional analgesia does <strong>not</strong> meaningfully delay diagnosis</em> — but specific cautions apply:
+            <strong>Does regional analgesia mask compartment syndrome?</strong> This has been debated for decades. Current expert consensus (<strong>ASRA / ESRA / AAGBI 2021 joint statement</strong><Cite topicId="orthopaedic-anaesthesia" labels={["ASRA Compartment 2021"]} />; <strong>Mar 2009</strong> review; <strong>Tran 2020</strong>) is that <em>well-conducted, low-concentration regional analgesia does <strong>not</strong> meaningfully delay diagnosis</em> — but specific cautions apply:
           </p>
           <div className="grid sm:grid-cols-2 gap-3 mb-3">
             <div className="p-4 rounded-lg border border-border">
