@@ -120,9 +120,9 @@ const GasLawsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PH_BK_01"] },
       }}
       sectionSources={{
-        objectives: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1"],
-        workedExamples: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017"],
-        keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017"],
+        objectives: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2007 (Gas laws)", "BJA Educ 2017 (Medical gases)"],
+        workedExamples: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017", "BJA Educ 2017 (Medical gases)"],
+        keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017", "BJA Educ 2007 (Gas laws)", "BJA Educ 2017 (Medical gases)"],
       }}
       coreConcepts={
         <>
@@ -364,8 +364,9 @@ const GasLawsTopic = () => {
             <ul className="text-foreground/90 leading-relaxed mt-2 list-disc pl-6 space-y-2">
               <li>
                 <strong>Air (≈79 % N₂, 21 % O₂):</strong> pseudo-critical temperature −141 °C — the temperature below
-                which air, if compressed, can separate into liquid O₂ and gaseous N₂. Industrially exploited in
-                fractional distillation of liquid air to produce medical O₂.
+                which air, if compressed, can be liquefied as a single mixed fluid. This is exploited industrially in
+                the fractional distillation of liquid air to separate its components such as oxygen and nitrogen for
+                medical use.
               </li>
               <li>
                 <strong>Entonox (50 % N₂O / 50 % O₂):</strong> pseudo-critical temperature{" "}
@@ -466,16 +467,21 @@ const GasLawsTopic = () => {
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="Henry's Law">
             <p className="text-foreground/90 leading-relaxed">
-              At constant temperature, the amount of gas dissolved in a liquid is directly proportional to the partial
-              pressure of that gas above the liquid. This is fundamental to understanding oxygen and carbon dioxide transport
-              in blood, and the uptake of volatile anaesthetic agents.
+              <strong>Henry's law</strong> states that, at constant temperature, the amount of a given gas that
+              dissolves in a given type and volume of liquid is directly proportional to the partial pressure of that
+              gas in equilibrium with the liquid (C = k·P, where k is the gas- and solvent-specific solubility
+              coefficient). It underpins oxygen and carbon dioxide transport in blood, alveolar uptake of volatile
+              anaesthetic agents, and the behaviour of dissolved gases under altered ambient pressure.
             </p>
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
               <p className="text-sm font-medium text-foreground">Clinical Application</p>
               <p className="text-sm text-muted-foreground mt-1">
-                Nitrogen narcosis during deep diving occurs because increased PN₂ at depth drives more nitrogen into solution
-                in neural tissue. Similarly, the solubility coefficient determines how much volatile agent dissolves in blood
-                at a given partial pressure.
+                Raising the partial pressure of an inhaled gas raises the amount dissolved in plasma and tissues.
+                Examples: alveolar uptake of volatile agents is proportional to their alveolar partial pressure;
+                <strong> nitrogen narcosis</strong> during deep diving reflects increased PN₂ driving more nitrogen
+                into neural tissue; <strong>pulmonary oxygen toxicity</strong> at prolonged high FiO₂ or under
+                hyperbaric conditions reflects the elevated dissolved O₂ load; and decompression illness occurs when
+                dissolved N₂ comes out of solution as bubbles when ambient pressure falls too rapidly.
               </p>
             </div>
             </CollapsibleSubsection>
