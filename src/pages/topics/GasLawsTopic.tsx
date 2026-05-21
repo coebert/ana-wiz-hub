@@ -120,9 +120,9 @@ const GasLawsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PH_BK_01"] },
       }}
       sectionSources={{
-        objectives: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1"],
-        workedExamples: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017"],
-        keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017"],
+        objectives: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2007 (Gas laws)", "BJA Educ 2017 (Medical gases)"],
+        workedExamples: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017", "BJA Educ 2017 (Medical gases)"],
+        keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1", "BJA Educ 2017", "BJA Educ 2007 (Gas laws)", "BJA Educ 2017 (Medical gases)"],
       }}
       coreConcepts={
         <>
