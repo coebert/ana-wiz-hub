@@ -189,6 +189,80 @@ const ContentAudit = () => {
     );
   };
 
+  const correctAll = async () => {
+    const targets = filtered.filter((f) => f.status === "open");
+    if (targets.length === 0) return;
+    const ok = window.confirm(
+      `Mark ${targets.length} open finding${targets.length === 1 ? "" : "s"} as fixed?\n\nThis bulk-resolves the currently filtered findings. Suggested fixes still need to be applied to topic source files — use "Download fix report" first if you want a checklist.`,
+    );
+    if (!ok) return;
+    setBulkBusy(true);
+    try {
+      const ids = targets.map((t) => t.id);
+      const patch = {
+        status: "fixed" as const,
+        resolved_by: user?.id ?? null,
+        resolved_at: new Date().toISOString(),
+      };
+      const { error } = await supabase
+        .from("topic_audit_findings")
+        .update(patch)
+        .in("id", ids);
+      if (error) throw error;
+      setFindings((prev) =>
+        prev.map((f) => (ids.includes(f.id) ? { ...f, ...patch } : f)),
+      );
+      toast.success(`Marked ${targets.length} finding${targets.length === 1 ? "" : "s"} as fixed`);
+    } catch (e: any) {
+      toast.error(e?.message ?? "Bulk correction failed");
+    } finally {
+      setBulkBusy(false);
+    }
+  };
+
+  const downloadFixReport = () => {
+    const targets = filtered.filter((f) => f.status === "open");
+    if (targets.length === 0) return;
+    const byTopic = new Map<string, Finding[]>();
+    for (const f of targets) {
+      const key = `${f.section}/${f.topic_id}`;
+      if (!byTopic.has(key)) byTopic.set(key, []);
+      byTopic.get(key)!.push(f);
+    }
+    const lines: string[] = [
+      `# Content Audit – Fix Report`,
+      `Generated ${new Date().toISOString()}`,
+      `${targets.length} open finding${targets.length === 1 ? "" : "s"} across ${byTopic.size} topic${byTopic.size === 1 ? "" : "s"}`,
+      "",
+    ];
+    for (const [key, items] of byTopic) {
+      const t = items[0];
+      lines.push(`## ${t.topic_title} (${key})`);
+      if (t.topic_url) lines.push(`<${t.topic_url}>`);
+      lines.push("");
+      for (const f of items) {
+        lines.push(`### [${f.severity.toUpperCase()}] ${f.category} — ${f.summary}`);
+        if (f.details) lines.push(f.details);
+        if (f.suggested_fix) lines.push(`\n**Suggested fix:** ${f.suggested_fix}`);
+        if (f.sources?.length) {
+          lines.push("");
+          lines.push("Sources:");
+          f.sources.forEach((s) => lines.push(`- [${s.title}](${s.url})`));
+        }
+        lines.push("");
+      }
+    }
+    const blob = new Blob([lines.join("\n")], { type: "text/markdown" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `audit-fix-report-${new Date().toISOString().slice(0, 10)}.md`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  };
+
   const filtered = useMemo(() => {
     return findings.filter((f) => {
       if (severityFilter !== "all" && f.severity !== severityFilter)
