@@ -57,17 +57,18 @@ const OpticsLightTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["BJA Educ 2004", "Middleton Ch.12"],
-        keyPoints: ["Cross & Plunkett Ch.18", "BJA Educ 2004", "Middleton Ch.12"],
+        workedExamples: ["BJA Educ 2004 (Spectrophotometry)", "BJA Educ 2017 (Pulse oximetry)", "Middleton Ch.12"],
+        keyPoints: ["Cross & Plunkett Ch.18", "BJA Educ 2004 (Spectrophotometry)", "BJA Educ 2017 (Pulse oximetry)", "Middleton Ch.12"],
       }}
       keyPoints={[
         { text: "Law of reflection: angle of incidence = angle of reflection (θᵢ = θᵣ); incident ray, reflected ray, and normal lie in the same plane", cites: ["Cross & Plunkett Ch.18"] },
         { text: "Snell's law: n₁ sin θ₁ = n₂ sin θ₂; light bends toward the normal when entering a denser medium (higher refractive index)", cites: ["BJA Educ 2004"] },
         { text: "Total internal reflection (TIR) occurs when light exceeds the critical angle (sin θc = n₂/n₁) travelling from dense → less dense medium", cites: ["Middleton Ch.12"] },
         { text: "Fibreoptic scopes use TIR: coherent bundles (image) preserve spatial arrangement; incoherent bundles (light) transmit illumination only", cites: ["Cross & Plunkett Ch.18"] },
-        { text: "Beer-Lambert law: A = ε × c × l — absorbance proportional to concentration × path length; basis of pulse oximetry and co-oximetry", cites: ["BJA Educ 2004"] },
-        { text: "Pulse oximetry uses 660 nm (red) and 940 nm (IR); R ratio calibrated empirically; cannot detect COHb or MetHb (needs co-oximetry)", cites: ["Middleton Ch.12"] },
-        { text: "Isobestic point (~800 nm): HbO₂ and Hb absorb equally — used for calibration and total haemoglobin estimation", cites: ["Cross & Plunkett Ch.18"] },
+        { text: "Beer-Lambert law: A = ε × c × l — absorbance proportional to concentration × path length; basis of pulse oximetry and co-oximetry", cites: ["BJA Educ 2004 (Spectrophotometry)"] },
+        { text: "Pulse oximetry isolates arterial blood by analysing the pulsatile (AC) component of absorption against the static (DC) baseline at 660 nm and 940 nm; cannot detect COHb or MetHb (needs co-oximetry)", cites: ["BJA Educ 2017 (Pulse oximetry)"] },
+        { text: "Isobestic point (805 nm): HbO₂ and Hb absorb equally — used for calibration and total haemoglobin estimation", cites: ["BJA Educ 2004 (Spectrophotometry)"] },
+        { text: "MetHb absorbs roughly equally at 660 nm and 940 nm, driving the ratio of ratios toward 1 — SpO₂ trends to ~85% regardless of true SaO₂", cites: ["BJA Educ 2017 (Pulse oximetry)"] },
       ]}
       coreConcepts={
         <>
