@@ -32,8 +32,8 @@ export const IsolationTransformerDiagram = () => {
   return (
     <DiagramFigure
       id="isolation-transformer-diagram"
-      title="Isolation transformer"
-      description="Auto-generated wrapper for the Isolation transformer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      title="Isolated power supply with line isolation monitor"
+      description="Toggle between an earthed mains supply (single fault → hazardous current to earth via patient) and a theatre isolated power system with line isolation monitor. The 1:1 transformer removes the earth reference so a single conductor-to-earth fault produces no current path through staff or patient — the LIM alarms but the supply is not interrupted, preserving life-critical equipment until the fault is rectified."
     >
                   <div className="w-full max-w-3xl mx-auto space-y-4">
         {/* Mode tabs */}
