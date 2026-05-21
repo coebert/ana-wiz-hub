@@ -58,13 +58,13 @@ const OrthopaedicAnaesthesiaTopic = () => {
         "Identify high-risk patients for compartment syndrome and modify regional technique accordingly",
       ]}
       keyPoints={[
-        { text: "#NOF: surgery within 36h. Spinal anaesthesia recommended (NICE). Fascia iliaca / PENG block for analgesia", cites: ["Allman & Wilson Ch.27"] },
+        { text: "#NOF: surgery within 36h. Spinal anaesthesia recommended (NICE). Fascia iliaca / PENG block for analgesia", cites: ["NICE CG124", "Allman & Wilson Ch.27", "Girón-Arango 2018"] },
         { text: "Tourniquet: upper limb 50-100 mmHg above SBP. Safe limit ~2h. Deflation → ↓ pH, ↑ K⁺, ↑ CO₂, ↑ lactate", cites: ["AAGBI Tourniquet"] },
-        { text: "BCIS: fat/marrow embolism during cement insertion → hypoxia, hypotension, ↓ consciousness. Warn before cementing", cites: ["BJA Educ 2014"] },
-        { text: "Day-case TKA recipe: low-dose spinal + adductor canal + IPACK + LIA + multimodal oral analgesia (motor-sparing)", cites: ["Allman & Wilson Ch.27"] },
-        { text: "Counsel patients about the 'block wear-off cliff' — start regular paracetamol/NSAID before pain returns; provide written plan", cites: ["AAGBI Tourniquet"] },
+        { text: "BCIS: fat/marrow embolism during cement insertion → hypoxia, hypotension, ↓ consciousness. Warn before cementing", cites: ["AAGBI BCIS 2015", "BJA Educ 2014"] },
+        { text: "Day-case TKA recipe: low-dose spinal + adductor canal + IPACK + LIA + multimodal oral analgesia (motor-sparing)", cites: ["PROSPECT TKA 2022", "Jaeger 2013", "Memtsoudis 2019"] },
+        { text: "Counsel patients about the 'block wear-off cliff' — start regular paracetamol/NSAID before pain returns; provide written plan", cites: ["PROSPECT TKA 2022"] },
         { text: "Home perineural catheters (Ilfeld evidence) extend analgesia 48–72h but require 24/7 APS support and red-flag teaching", cites: ["BJA Educ 2014"] },
-        { text: "Compartment syndrome in high-risk limbs: discuss with surgeon, use dilute LA (0.2% ropivacaine), avoid long adjuncts, treat escalating top-up demand as a red flag", cites: ["Allman & Wilson Ch.27"] },
+        { text: "Compartment syndrome in high-risk limbs: discuss with surgeon, use dilute LA (0.2% ropivacaine), avoid long adjuncts, treat escalating top-up demand as a red flag", cites: ["ASRA Compartment 2021", "Allman & Wilson Ch.27"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL] },
