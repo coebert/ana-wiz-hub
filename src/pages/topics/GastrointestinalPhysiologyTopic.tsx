@@ -97,9 +97,9 @@ const GastrointestinalPhysiologyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["Peck & Hill Ch.11"],
+        objectives: ["Peck & Hill Ch.11", "RCoA Fasting 2019"],
         workedExamples: ["Gan et al. 2020", "BJA Educ 2018", "Peck & Hill Ch.11"],
-        keyPoints: ["Peck & Hill Ch.11", "BJA Educ 2018", "Gan et al. 2020"],
+        keyPoints: ["Peck & Hill Ch.11", "BJA Educ 2018", "Gan et al. 2020", "RCoA Fasting 2019", "Assoc Anaesth GLP-1 2024"],
       }}
       keyPoints={[
         { text: "Parietal cells secrete HCl via H⁺/K⁺-ATPase, stimulated by ACh (M₃), histamine (H₂), and gastrin (CCK-B).", cites: ["Gan et al. 2020"] },
