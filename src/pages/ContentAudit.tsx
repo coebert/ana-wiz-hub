@@ -98,6 +98,18 @@ const severityColors: Record<string, string> = {
   critical: "bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-200",
 };
 
+const fmtDuration = (ms: number) => {
+  if (!Number.isFinite(ms) || ms < 0) return "—";
+  const s = Math.floor(ms / 1000);
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  if (m >= 60) {
+    const h = Math.floor(m / 60);
+    return `${h}h ${m % 60}m`;
+  }
+  return m > 0 ? `${m}m ${sec}s` : `${sec}s`;
+};
+
 const ContentAudit = () => {
   const { user, isAdmin, loading: authLoading } = useAuth();
   const navigate = useNavigate();
