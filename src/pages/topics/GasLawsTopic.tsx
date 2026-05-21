@@ -467,16 +467,21 @@ const GasLawsTopic = () => {
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="Henry's Law">
             <p className="text-foreground/90 leading-relaxed">
-              At constant temperature, the amount of gas dissolved in a liquid is directly proportional to the partial
-              pressure of that gas above the liquid. This is fundamental to understanding oxygen and carbon dioxide transport
-              in blood, and the uptake of volatile anaesthetic agents.
+              <strong>Henry's law</strong> states that, at constant temperature, the amount of a given gas that
+              dissolves in a given type and volume of liquid is directly proportional to the partial pressure of that
+              gas in equilibrium with the liquid (C = k·P, where k is the gas- and solvent-specific solubility
+              coefficient). It underpins oxygen and carbon dioxide transport in blood, alveolar uptake of volatile
+              anaesthetic agents, and the behaviour of dissolved gases under altered ambient pressure.
             </p>
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
               <p className="text-sm font-medium text-foreground">Clinical Application</p>
               <p className="text-sm text-muted-foreground mt-1">
-                Nitrogen narcosis during deep diving occurs because increased PN₂ at depth drives more nitrogen into solution
-                in neural tissue. Similarly, the solubility coefficient determines how much volatile agent dissolves in blood
-                at a given partial pressure.
+                Raising the partial pressure of an inhaled gas raises the amount dissolved in plasma and tissues.
+                Examples: alveolar uptake of volatile agents is proportional to their alveolar partial pressure;
+                <strong> nitrogen narcosis</strong> during deep diving reflects increased PN₂ driving more nitrogen
+                into neural tissue; <strong>pulmonary oxygen toxicity</strong> at prolonged high FiO₂ or under
+                hyperbaric conditions reflects the elevated dissolved O₂ load; and decompression illness occurs when
+                dissolved N₂ comes out of solution as bubbles when ambient pressure falls too rapidly.
               </p>
             </div>
             </CollapsibleSubsection>
