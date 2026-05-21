@@ -167,10 +167,15 @@ const OpticsLightTopic = () => {
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Pulse oximetry</strong> uses two wavelengths — 660 nm (red) and 940 nm (infrared). Oxyhaemoglobin (HbO₂)
-                absorbs more infrared light, while deoxyhaemoglobin (Hb) absorbs more red light. The ratio R = (AC₆₆₀/DC₆₆₀) /
-                (AC₉₄₀/DC₉₄₀) is calibrated against direct arterial blood gas measurements in healthy volunteers. At R = 1,
-                SpO₂ ≈ 85%. Pulse oximetry measures <strong>functional saturation</strong>: HbO₂/(HbO₂ + Hb), and cannot detect
-                COHb or MetHb with only two wavelengths.
+                absorbs more infrared light, while deoxyhaemoglobin (Hb) absorbs more red light. Crucially, the probe measures
+                absorbance throughout the cardiac cycle: a small <strong>pulsatile (AC)</strong> component arises from the
+                arterial blood added with each systolic pulse, superimposed on a much larger <strong>non-pulsatile (DC)</strong>
+                baseline from skin, soft tissue, venous blood and the static arterial blood. By computing the ratio of the AC
+                to DC signal at each wavelength, and then the ratio of these two ratios
+                R = (AC₆₆₀/DC₆₆₀) / (AC₉₄₀/DC₉₄₀), the device isolates the absorbance characteristics of the freshly
+                arriving arterial blood and rejects everything else. R is calibrated empirically against arterial blood gas
+                measurements in healthy volunteers; at R = 1, SpO₂ ≈ 85%. Pulse oximetry reports <strong>functional
+                saturation</strong>: HbO₂/(HbO₂ + Hb), and with only two wavelengths cannot resolve COHb or MetHb.
               </p>
               <p>
                 <strong>Co-oximetry</strong> uses 4 or more wavelengths to measure <strong>fractional saturation</strong>: HbO₂/
@@ -179,9 +184,15 @@ const OpticsLightTopic = () => {
                 saturation (rSO₂), providing a mixed arterial-venous signal (approximately 75% venous, 25% arterial).
               </p>
               <p>
-                The <strong>isobestic point</strong> (~800 nm) is where HbO₂ and Hb have equal absorption. At this wavelength,
-                absorption depends only on total haemoglobin concentration, independent of oxygenation — it is used for
-                calibration and total Hb estimation.
+                The <strong>isobestic point</strong> (805 nm) is the wavelength at which HbO₂ and Hb absorb equally. At this
+                wavelength, absorption depends only on total haemoglobin concentration, independent of oxygenation — it is used
+                for calibration and total Hb estimation.
+              </p>
+              <p>
+                <strong>Methaemoglobin (MetHb)</strong> has approximately equal absorbance at 660 nm and 940 nm. This drives the
+                ratio of ratios toward R ≈ 1, which corresponds to an SpO₂ of approximately <strong>85%</strong>, irrespective
+                of the true arterial saturation. Clinically this produces a falsely low SpO₂ in well-oxygenated patients and a
+                falsely high SpO₂ in those who are profoundly hypoxic — co-oximetry is required to quantify MetHb.
               </p>
             </div>
             </CollapsibleSubsection>
