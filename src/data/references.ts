@@ -95,7 +95,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 18: Optics and Light." },
     { label: "Middleton Ch.12", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 12: Light and Optics." },
     { label: "BJA Educ 2004", citation: "Dorsch JA. Fibreoptics and light transmission. BJA Education. 2004;4(4):128-131.", url: "https://doi.org/10.1093/bjaceaccp/mkh035" },
+    { label: "BJA Educ 2004 (Spectrophotometry)", citation: "Moyle JTB. Spectrophotometry. BJA Education. 2004;4(4):135-138.", url: "https://doi.org/10.1093/bjaceaccp/mkh037" },
+    { label: "BJA Educ 2017 (Pulse oximetry)", citation: "Nitzan M, Romem A, Koppel R. Pulse oximetry: fundamentals and technology update. BJA Education. 2017;17(1):1-5. (AC/DC pulsatile-vs-static principle, CO and MetHb behaviour.)", url: "https://doi.org/10.2147/MDER.S47319" },
   ],
+
   "mri-physics": [
     { label: "BJA Educ 2019", citation: "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.", url: "https://doi.org/10.1016/j.bjae.2019.04.004" },
     { label: "Assoc Anaesth 2021 (MRI)", citation: "Association of Anaesthetists. Safety in magnetic resonance imaging. Anaesthesia. 2021;76(11):1533-1545. (Supersedes the 2010 AAGBI guideline on Provision of Anaesthetic Services in MR Units.)", url: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.15517" },
