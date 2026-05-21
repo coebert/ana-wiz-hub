@@ -399,9 +399,18 @@ const EquipmentMonitoringTopic = () => {
             <p>
               <strong>Scavenging (AGSS)</strong>: 4 components — collecting (30 mm connector, deliberately incompatible with
               breathing-circuit fittings), transfer, receiving (with safety valves limiting pressure to ±0.5 cmH₂O), and
-              disposal (active 75 L/min or passive). <strong>COSHH limits</strong>: N₂O &lt;100 ppm, halogenated agents &lt;50 ppm
-              (8-hr TWA).
+              disposal (active 75 L/min or passive). Specifications follow <strong>ISO 80601-2-13</strong> and AAGBI/BJA
+              Education guidance on theatre pollution.
+              <InlineRef topicId="equipment-monitoring" refLabel="AAGBI Standards 2015" contextTitle="Scavenging (AGSS) specifications" keyPoints={["30 mm collector connector (incompatible with breathing-system 22/15 mm fittings).", "Receiving system safety valves limit pressure to ±0.5 cmH₂O.", "Active disposal flow typically 75 L/min.", "Standard: ISO 80601-2-13 / BJA Educ 2018 (Pollution in anaesthesia)."]} accentColor="hsl(140, 55%, 42%)" />
             </p>
+            <p>
+              <strong>UK Workplace Exposure Limits (WELs, HSE EH40, 8-hour TWA)</strong>: nitrous oxide <strong>100 ppm</strong>;
+              halothane <strong>10 ppm</strong>; isoflurane / enflurane <strong>50 ppm</strong>. No specific WEL exists for
+              sevoflurane or desflurane — a precautionary limit (often ~20 ppm for sevoflurane) is applied locally, with
+              scavenging and low-flow technique to minimise exposure.
+              <InlineRef topicId="equipment-monitoring" refLabel="AAGBI Standards 2015" contextTitle="COSHH / HSE WELs for anaesthetic gases" keyPoints={["N₂O 100 ppm (8-hr TWA).", "Halothane 10 ppm; isoflurane / enflurane 50 ppm.", "No formal WEL for sevoflurane or desflurane — apply precautionary local limits.", "Source: HSE EH40/2005 Workplace exposure limits."]} accentColor="hsl(0, 65%, 55%)" />
+            </p>
+
           </div>
           <div className="bg-card rounded-xl border border-border p-4">
             <BreathingCircuitsDiagram />
