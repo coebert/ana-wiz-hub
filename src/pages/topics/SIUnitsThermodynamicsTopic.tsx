@@ -107,10 +107,10 @@ const SIUnitsThermodynamicsTopic = () => {
                 always be in <strong>Kelvin</strong> (K = °C + 273.15).
               </p>
               <p>
-                Pressure unit conversions are frequently tested: <strong>1 atmosphere = 101.3 kPa = 760 mmHg = 1013 cmH₂O =
-                14.7 psi = 1.013 bar</strong>. Understanding these conversions is essential for interpreting arterial blood gases,
-                ventilator settings, and gas cylinder pressures. The SI unit of pressure is the Pascal, though mmHg and cmH₂O
-                remain in widespread clinical use.
+                Pressure unit conversions are frequently tested: <strong>1 atmosphere = 101.3 kPa = 760 mmHg ≈ 1033 cmH₂O =
+                14.7 psi = 1.013 bar</strong>. (The cmH₂O equivalence comes from P = ρgh with ρ = 1000 kg/m³ and g = 9.81 m/s².)
+                Understanding these conversions is essential for interpreting arterial blood gases, ventilator settings, and
+                gas cylinder pressures. The SI unit of pressure is the Pascal, though mmHg and cmH₂O remain in widespread clinical use.
               </p>
             </div>
             </CollapsibleSubsection>
