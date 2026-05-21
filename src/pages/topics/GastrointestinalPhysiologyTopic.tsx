@@ -243,7 +243,7 @@ const GastrointestinalPhysiologyTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>
                 <strong>Aspiration risk</strong>: RCoA fasting guidance — 2 h clear fluids, 6 h light meal/milk, 6 h
-                expressed breast milk in infants. RSI for full-stomach scenarios; cricoid pressure (controversial but UK
+                expressed breast milk in infants<InlineRef topicId="gi-physiology" refLabel="RCoA Fasting 2019" />. RSI for full-stomach scenarios; cricoid pressure (controversial but UK
                 standard).
               </li>
               <li>
@@ -255,9 +255,9 @@ const GastrointestinalPhysiologyTopic = () => {
                 return, ↓ renal perfusion, ↑ airway pressures. Decompressive laparotomy if refractory.
               </li>
               <li>
-                <strong>GLP-1 receptor agonists</strong> (semaglutide): markedly delayed gastric emptying — 2024 ASA/AAGBI
+                <strong>GLP-1 receptor agonists</strong> (semaglutide): markedly delayed gastric emptying — 2024 CPOC/Association of Anaesthetists
                 guidance recommends withholding ≥1 week (weekly) or the day before (daily) where clinically safe, and
-                treating as full-stomach if continued.
+                treating as full-stomach if continued<InlineRef topicId="gi-physiology" refLabel="Assoc Anaesth GLP-1 2024" />.
               </li>
             </ul>
             </CollapsibleSubsection>
