@@ -99,7 +99,7 @@ const OxygenHaemoglobinTopic = () => {
       }}
       sectionSources={{
         objectives: ["West Ch.6"],
-        workedExamples: ["BJA Educ 2004", "Power & Kam Ch.7"],
+        workedExamples: ["BJA Educ 2004", "Power & Kam Ch.7", "BJA Educ 2018 (CO)", "BNF Methylthioninium"],
         keyPoints: ["West Ch.6", "BJA Educ 2004", "Power & Kam Ch.7"],
       }}
       keyPoints={[
