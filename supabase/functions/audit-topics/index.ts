@@ -90,11 +90,19 @@ function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
   };
 }
 
-async function firecrawlScrape(url: string, withScreenshot: boolean) {
+async function firecrawlScrape(
+  url: string,
+  withScreenshot: boolean,
+  timeoutMs = 35_000,
+) {
   const formats: any[] = ["markdown"];
   if (withScreenshot) formats.push("screenshot");
 
-  const scrape = async (targetUrl: string, actions?: unknown[]) => {
+  const scrape = async (
+    targetUrl: string,
+    requestTimeoutMs: number,
+    actions?: unknown[],
+  ) => {
     const r = await fetchWithTimeout(
       "https://api.firecrawl.dev/v2/scrape",
       {
@@ -108,12 +116,12 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
           formats,
           onlyMainContent: true,
           waitFor: actions ? 1200 : 8000,
-          timeout: 60000,
+          timeout: Math.max(8_000, requestTimeoutMs - 3_000),
           actions,
           storeInCache: false,
         }),
       },
-      75_000,
+      requestTimeoutMs,
     );
     if (!r.ok) return null;
     const data = await r.json();
@@ -121,12 +129,18 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
   };
 
   try {
-    const direct = await scrape(url);
+    const startedAt = Date.now();
+    const directBudget = Math.max(12_000, Math.floor(timeoutMs * 0.55));
+    const direct = await scrape(url, directBudget);
     const directMarkdown = String(direct?.markdown ?? "");
     if (directMarkdown.length >= 200) return direct;
 
     const { sectionUrl, actions } = buildTopicScrapeActions(url, withScreenshot);
-    const viaSection = await scrape(sectionUrl, actions);
+    const elapsed = Date.now() - startedAt;
+    const remaining = timeoutMs - elapsed;
+    if (remaining < 10_000) return direct;
+
+    const viaSection = await scrape(sectionUrl, remaining, actions);
     const sectionMarkdown = String(viaSection?.markdown ?? "");
     return sectionMarkdown.length >= 200 ? viaSection : direct;
   } catch (_e) {
@@ -134,7 +148,7 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
   }
 }
 
-async function firecrawlSearch(query: string, limit = 3) {
+async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
   try {
     const r = await fetchWithTimeout(
       "https://api.firecrawl.dev/v2/search",
@@ -150,7 +164,7 @@ async function firecrawlSearch(query: string, limit = 3) {
           scrapeOptions: { formats: ["markdown"] },
         }),
       },
-      45_000,
+      timeoutMs,
     );
     if (!r.ok) return [];
     const data = await r.json();
@@ -260,6 +274,7 @@ async function callAI(args: {
   userText: string;
   imageUrl?: string;
   model?: string;
+  timeoutMs?: number;
 }): Promise<any[]> {
   const userContent: any = args.imageUrl
     ? [
@@ -289,7 +304,7 @@ async function callAI(args: {
         },
       }),
     },
-    args.imageUrl ? 90_000 : 60_000,
+    args.timeoutMs ?? (args.imageUrl ? 25_000 : 30_000),
   );
   if (!res.ok) {
     const body = await res.text();
