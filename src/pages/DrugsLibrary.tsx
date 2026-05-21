@@ -114,7 +114,7 @@ export default function DrugsLibrary() {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Drug Formulary — anaesthesia & critical care | AnaesthesiaCore</title>
+        <title>Drug Formulary — Anaesthesia & ICU | AnaesthesiaCore</title>
         <meta
           name="description"
           content="Searchable formulary of anaesthesia and critical care drugs — presentation, mechanism, pharmacokinetics, dosing and monitoring."
