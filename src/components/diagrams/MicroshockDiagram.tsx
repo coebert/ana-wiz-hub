@@ -34,8 +34,8 @@ export const MicroshockDiagram = () => {
   return (
     <DiagramFigure
       id="microshock-diagram"
-      title="Microshock"
-      description="Auto-generated wrapper for the Microshock anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      title="Microshock and the Type CF safety margin"
+      description="Three scenarios contrasting macroshock via intact skin (mA threshold) with microshock via an intracardiac conductor (µA threshold). Demonstrates why bypassing skin resistance with a pacing wire or saline-filled CVP collapses the safety margin and why Type CF equipment (<10 µA leakage) is mandatory for any direct cardiac connection."
     >
                   <div className="w-full max-w-3xl mx-auto space-y-4">
         <div className="flex flex-wrap gap-2 justify-center">
