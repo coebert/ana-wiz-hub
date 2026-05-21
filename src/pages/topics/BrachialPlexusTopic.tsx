@@ -116,11 +116,16 @@ const BrachialPlexusTopic = () => {
         workedExamples: [
           "BJA Educ 2014",
           "Ellis & Feldman Ch.8",
+          "Urmey 1991",
+          "Riazi 2008",
+          "Renes 2009",
         ],
         keyPoints: [
           "Miller Ch.46",
           "BJA Educ 2014",
           "Ellis & Feldman Ch.8",
+          "Urmey 1991",
+          "Riazi 2008",
         ],
       }}
       keyPoints={[
