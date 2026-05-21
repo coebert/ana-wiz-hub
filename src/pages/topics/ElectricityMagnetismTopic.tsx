@@ -191,7 +191,7 @@ const ElectricityMagnetismTopic = () => {
               "Capacitive reactance falls with rising frequency (Xc = 1/2πfC); inductive reactance rises (XL = 2πfL).",
               "Transformers only work with AC; turns ratio sets voltage ratio. Isolation transformers protect from earth-leakage shock.",
               "The Wheatstone bridge is a null-deflection circuit used by strain-gauge transducers and thermistors.",
-              "Defibrillator capacitance ≈ 32 µF; stored energy E = ½CV². Know how to derive delivered energy.",
+              "Modern biphasic defibrillators typically use capacitors of ≈ 32 µF (older monophasic devices used larger values, e.g. ≈ 64 µF); stored energy E = ½CV². Know how to derive delivered energy.",
             ]}
           />
         </>
