@@ -624,7 +624,9 @@ export const topicReferences: Record<string, Reference[]> = {
   "gi-physiology": [
     { label: "Peck & Hill Ch.11", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 11: Gastrointestinal Tract." },
     { label: "BJA Educ 2018", citation: "Smith I, Kranke P, Murat I, et al. Perioperative fasting in adults and children: guidelines from the European Society of Anaesthesiology. BJA Education. 2011;11(6):357-361.", url: "https://doi.org/10.1093/bjaceaccp/mkr049" },
-    { label: "Gan et al. 2020", citation: "Gan TJ, Belani KG, Bergese S, et al. Fourth Consensus Guidelines for the Management of Postoperative Nausea and Vomiting. Anesth Analg. 2020;131(2):411-448.", url: "https://doi.org/10.1213/ANE.0000000000004833" },
+    { label: "Gan et al. 2020", citation: "Gan TJ, Belani KG, Bergese S, et al. Fourth Consensus Guidelines for the Management of Postoperative Nausea and Vomiting. Anesth Analg. 2020;131(2):411-448. Recommends multimodal prophylaxis combining 5-HT3 antagonists (ondansetron 4 mg IV), dexamethasone 4-8 mg, and droperidol 0.625 mg IV.", url: "https://doi.org/10.1213/ANE.0000000000004833" },
+    { label: "RCoA Fasting 2019", citation: "Royal College of Anaesthetists. Guidelines for the Provision of Anaesthetic Services (GPAS): Pre-operative fasting. Updated 2019. 2 h clear fluids, 6 h light meal/formula/non-human milk, 4 h breast milk in infants.", url: "https://rcoa.ac.uk/gpas/chapter-2" },
+    { label: "Assoc Anaesth GLP-1 2024", citation: "Centre for Perioperative Care / Association of Anaesthetists. Position statement on perioperative management of patients on GLP-1 receptor agonists. 2024. Withhold weekly preparations ≥1 week and daily preparations on the day of surgery; otherwise treat as full-stomach.", url: "https://cpoc.org.uk/guidelines-resources-guidelines/glp-1-receptor-agonists" },
   ],
   "cardiac-electrophysiology": [
     { label: "Peck & Hill Ch.4", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 4: Cardiac Electrophysiology." },

@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { giPhysiologyQuestions } from "@/data/quizzes";
 import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
@@ -29,9 +30,9 @@ const workedExamples: WorkedExample[] = [
         Apfel risk factors target distinct pathways. Best evidence is for combining drugs that act at <em>different</em>{" "}
         receptors rather than escalating dose at one. Choose one agent per pathway:
         <ul className="list-disc list-inside mt-2 space-y-1">
-          <li><strong>5-HT₃</strong> (vagal/CTZ): ondansetron 4 mg IV at end of surgery.</li>
-          <li><strong>Glucocorticoid</strong> (CTZ + anti-inflammatory): dexamethasone 4–8 mg IV at induction.</li>
-          <li><strong>D₂</strong> (CTZ): droperidol 0.625 mg IV or metoclopramide 10 mg IV.</li>
+          <li><strong>5-HT₃</strong> (vagal/CTZ): ondansetron 4 mg IV at end of surgery<InlineRef topicId="gi-physiology" refLabel="Gan et al. 2020" />.</li>
+          <li><strong>Glucocorticoid</strong> (CTZ + anti-inflammatory): dexamethasone 4–8 mg IV at induction<InlineRef topicId="gi-physiology" refLabel="Gan et al. 2020" />.</li>
+          <li><strong>D₂</strong> (CTZ): droperidol 0.625 mg IV or metoclopramide 10 mg IV<InlineRef topicId="gi-physiology" refLabel="Gan et al. 2020" />.</li>
           <li><strong>NK₁</strong> (CTZ, long acting): aprepitant 40 mg PO pre-op for very high-risk patients.</li>
         </ul>
         Also reduce baseline risk: TIVA with propofol, opioid-sparing analgesia (regional, paracetamol, NSAID),
@@ -96,9 +97,9 @@ const GastrointestinalPhysiologyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["Peck & Hill Ch.11"],
+        objectives: ["Peck & Hill Ch.11", "RCoA Fasting 2019"],
         workedExamples: ["Gan et al. 2020", "BJA Educ 2018", "Peck & Hill Ch.11"],
-        keyPoints: ["Peck & Hill Ch.11", "BJA Educ 2018", "Gan et al. 2020"],
+        keyPoints: ["Peck & Hill Ch.11", "BJA Educ 2018", "Gan et al. 2020", "RCoA Fasting 2019", "Assoc Anaesth GLP-1 2024"],
       }}
       keyPoints={[
         { text: "Parietal cells secrete HCl via H⁺/K⁺-ATPase, stimulated by ACh (M₃), histamine (H₂), and gastrin (CCK-B).", cites: ["Gan et al. 2020"] },
@@ -242,7 +243,7 @@ const GastrointestinalPhysiologyTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>
                 <strong>Aspiration risk</strong>: RCoA fasting guidance — 2 h clear fluids, 6 h light meal/milk, 6 h
-                expressed breast milk in infants. RSI for full-stomach scenarios; cricoid pressure (controversial but UK
+                expressed breast milk in infants<InlineRef topicId="gi-physiology" refLabel="RCoA Fasting 2019" />. RSI for full-stomach scenarios; cricoid pressure (controversial but UK
                 standard).
               </li>
               <li>
@@ -254,9 +255,9 @@ const GastrointestinalPhysiologyTopic = () => {
                 return, ↓ renal perfusion, ↑ airway pressures. Decompressive laparotomy if refractory.
               </li>
               <li>
-                <strong>GLP-1 receptor agonists</strong> (semaglutide): markedly delayed gastric emptying — 2024 ASA/AAGBI
+                <strong>GLP-1 receptor agonists</strong> (semaglutide): markedly delayed gastric emptying — 2024 CPOC/Association of Anaesthetists
                 guidance recommends withholding ≥1 week (weekly) or the day before (daily) where clinically safe, and
-                treating as full-stomach if continued.
+                treating as full-stomach if continued<InlineRef topicId="gi-physiology" refLabel="Assoc Anaesth GLP-1 2024" />.
               </li>
             </ul>
             </CollapsibleSubsection>

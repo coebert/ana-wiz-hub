@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { InlineRef } from "@/components/InlineRef";
 import { ivAnaestheticsQuiz } from "@/data/quizzes";
 import IVAnaestheticStructures from "@/components/diagrams/IVAnaestheticStructures";
 import { PropofolTCISimulatorDiagram } from "@/components/diagrams/PropofolTCISimulatorDiagram";
@@ -99,11 +100,11 @@ const IVAnaestheticsTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground">Propofol</h2>
           <p className="text-foreground/90 leading-relaxed">
             <strong>2,6-diisopropylphenol</strong> in a lipid emulsion (soybean oil, egg lecithin, glycerol). Induction dose
-            1.5–2.5 mg/kg. Onset 30–40 s (one arm-brain circulation time). Duration ~5–10 min (redistribution). pKa 11 —
+            1.5–2.5 mg/kg<InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />. Onset 30–40 s (one arm-brain circulation time). Duration ~5–10 min (redistribution). pKa 11 —
             almost entirely un-ionised at physiological pH.
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
-            <strong>Mechanism</strong>: enhances GABA_A receptor activity. <strong>CVS</strong>: dose-dependent hypotension
+            <strong>Mechanism</strong>: enhances GABA_A receptor activity<InlineRef topicId="iv-anaesthetics" refLabel="BJA Educ 2014" />. <strong>CVS</strong>: dose-dependent hypotension
             (vasodilation + myocardial depression), reduced baroreflex sensitivity. <strong>RS</strong>: apnoea, respiratory
             depression. <strong>CNS</strong>: anticonvulsant, antiemetic, reduces CMRO₂ and ICP. <strong>Other</strong>: pain
             on injection (attenuated by lidocaine), supports bacterial growth — discard after 6 hours.
@@ -135,7 +136,7 @@ const IVAnaestheticsTopic = () => {
               A rare but often fatal complication of prolonged, high-dose propofol infusion. Propofol inhibits the mitochondrial
               electron transport chain and fatty-acid β-oxidation, producing metabolic acidosis, rhabdomyolysis, and
               cardiovascular collapse. Classic thresholds are <strong>&gt; 4 mg/kg/h for &gt; 48 h</strong>, but it can occur with
-              shorter exposures in susceptible patients.
+              shorter exposures in susceptible patients<InlineRef topicId="iv-anaesthetics" refLabel="BJA Educ 2014" />.
             </p>
             <PRISDiagram />
           </div>
@@ -197,8 +198,8 @@ const IVAnaestheticsTopic = () => {
               <li>
                 <strong>No real-time depth marker.</strong> End-tidal volatile concentration is a continuous, validated
                 surrogate for brain partial pressure. There is no equivalent for propofol — processed-EEG monitors
-                (BIS/Entropy) are the recommended substitute, and the AAGBI advises their routine use whenever TIVA is
-                combined with neuromuscular blockade.
+                (BIS/Entropy) are the recommended substitute, and the Association of Anaesthetists advises their routine use whenever TIVA is
+                combined with neuromuscular blockade<InlineRef topicId="iv-anaesthetics" refLabel="AAGBI 2018" />.
               </li>
             </ul>
             <p className="text-foreground/90 leading-relaxed mt-3">
@@ -213,7 +214,7 @@ const IVAnaestheticsTopic = () => {
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Thiopentone</h2>
           <p className="text-foreground/90 leading-relaxed">
-            Thiobarbiturate. Induction dose 3–5 mg/kg. Highly lipid-soluble, rapid onset. Prepared as 2.5% solution (pH 10.5
+            Thiobarbiturate. Induction dose 3–5 mg/kg<InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />. Highly lipid-soluble, rapid onset. Prepared as 2.5% solution (pH 10.5
             — highly alkaline, tissue necrosis if extravasation). Precipitates if mixed with acidic drugs (e.g., suxamethonium,
             atracurium, opioids).
           </p>
@@ -228,7 +229,7 @@ const IVAnaestheticsTopic = () => {
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Ketamine</h2>
           <p className="text-foreground/90 leading-relaxed">
-            Phencyclidine derivative. <strong>NMDA receptor antagonist</strong>. Dose: 1–2 mg/kg IV, 5–10 mg/kg IM. The
+            Phencyclidine derivative. <strong>NMDA receptor antagonist</strong>. Dose: 1–2 mg/kg IV, 5–10 mg/kg IM<InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />. The
             S(+)-enantiomer is 2× more potent. Produces "dissociative anaesthesia" — catalepsy, analgesia, amnesia with eyes
             open and maintained airway reflexes (relatively).
           </p>
