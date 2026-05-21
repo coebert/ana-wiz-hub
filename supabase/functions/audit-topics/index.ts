@@ -448,14 +448,15 @@ async function auditTopic(
 
 
 // ---------- Sweep runner (batched + self-chaining) ----------
-// Each invocation processes at most BATCH_SIZE topics, then re-invokes
-// this function with action="continue" so we never hit edge wall-clock limits.
-const BATCH_SIZE = 3;
-// Hard cap per topic — if a single topic's audit (scrape + searches + AI)
-// takes longer than this, we abandon it as failed and move on so the job
-// never deadlocks on a single page (e.g. Pressure Measurement timing out
-// inside the AI call).
-const PER_TOPIC_TIMEOUT_MS = 180_000;
+// One topic per invocation keeps total wall-clock comfortably under the edge
+// runtime's ~150s limit. We also fire the next chain BEFORE awaiting the
+// topic, so if this runtime is killed mid-await (e.g. AI gateway hang), the
+// successor invocation is already queued and will pick up the NEXT topic
+// (cursor is advanced before work starts).
+const BATCH_SIZE = 1;
+// Hard cap per topic — kept well below the edge wall-clock so the timeout
+// reliably fires and the catch/finally runs BEFORE the runtime is killed.
+const PER_TOPIC_TIMEOUT_MS = 110_000;
 
 async function reinvokeContinue(jobId: string) {
   try {
