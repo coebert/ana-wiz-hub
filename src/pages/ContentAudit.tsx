@@ -107,6 +107,10 @@ const ContentAudit = () => {
   const [statusFilter, setStatusFilter] = useState<string>("open");
   const [sectionFilter, setSectionFilter] = useState<string>("all");
   const [bulkBusy, setBulkBusy] = useState(false);
+  const [topicLogs, setTopicLogs] = useState<TopicLog[]>([]);
+  const [expandedLogs, setExpandedLogs] = useState<Set<string>>(new Set());
+  const [logsCollapsed, setLogsCollapsed] = useState(false);
+
 
   useEffect(() => {
     if (!authLoading && (!user || !isAdmin)) navigate("/admin/login");
