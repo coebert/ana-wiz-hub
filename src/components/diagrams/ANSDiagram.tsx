@@ -15,7 +15,7 @@ const effects: OrganEffect[] = [
   { organ: "Bronchi", sympathetic: "Bronchodilation (β₂)", parasympathetic: "Bronchoconstriction (M₃)" },
   { organ: "Blood Vessels", sympathetic: "Constriction (α₁), Dilation (β₂ skeletal)", parasympathetic: "Minimal direct effect" },
   { organ: "Pupil", sympathetic: "Mydriasis (α₁)", parasympathetic: "Miosis (M₃)" },
-  { organ: "GI Tract", sympathetic: "↓ Motility (α₂, β₂), Sphincter contraction (α₁)", parasympathetic: "↑ Motility (M₃), Sphincter relaxation" },
+  { organ: "GI Tract", sympathetic: "↓ Motility (α₂, β₂), Sphincter contraction (α₁)", parasympathetic: "↑ Motility (M₃), variable effect on sphincters" },
   { organ: "Bladder", sympathetic: "Detrusor relaxation (β₃), Sphincter contraction (α₁)", parasympathetic: "Detrusor contraction (M₃), Sphincter relaxation" },
   { organ: "Salivary Glands", sympathetic: "Thick, viscous secretion (α₁)", parasympathetic: "Watery secretion (M₃)" },
 ];

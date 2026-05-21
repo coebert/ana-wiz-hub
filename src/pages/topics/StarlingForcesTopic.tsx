@@ -76,12 +76,14 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        In sepsis only ~5% of the bolus may remain intravascular at 1 h; the rest is interstitial oedema.
-        Use small (3–4 mL/kg) titrated boluses with dynamic monitoring, and start vasopressors early rather
-        than chasing MAP with repeated crystalloid (Surviving Sepsis 2021).
+        In sepsis only a small fraction of the bolus (often cited as ~5%) may remain intravascular at 1 h; the rest
+        becomes interstitial oedema. Use small (≤4 mL/kg) titrated boluses with dynamic monitoring, and start
+        vasopressors early rather than chasing MAP with repeated crystalloid — consistent with the Surviving Sepsis
+        Campaign 2021 recommendation to give an initial 30 mL/kg crystalloid over 3 h and then guide further fluids
+        with dynamic measures.
       </>
     ),
-    cites: ["Levick & Michel 2010"],
+    cites: ["Levick & Michel 2010", "Surviving Sepsis 2021", "Woodcock & Woodcock 2012"],
   },
 ];
 
@@ -105,7 +107,7 @@ const StarlingForcesTopic = () => {
       }}
       sectionSources={{
         objectives: ["Levick & Michel 2010", "Woodcock & Woodcock 2012"],
-        workedExamples: ["Levick & Michel 2010", "Woodcock & Woodcock 2012"],
+        workedExamples: ["Levick & Michel 2010", "Woodcock & Woodcock 2012", "Surviving Sepsis 2021"],
         keyPoints: ["Levick & Michel 2010", "Power & Kam Ch.6", "Woodcock & Woodcock 2012"],
       }}
       keyPoints={[
@@ -192,7 +194,7 @@ const StarlingForcesTopic = () => {
           <ExamSection id="glycocalyx" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_06"]}>
             <CollapsibleSubsection title="The Endothelial Glycocalyx">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li>A 0.5–3 µm thick gel-like layer on the luminal surface of endothelial cells</li>
+              <li>A gel-like layer on the luminal surface of endothelial cells: ~0.5–1 µm thick in capillaries, up to ~4 µm in larger arteries</li>
               <li>Composed of proteoglycans, glycosaminoglycans (heparan sulphate, hyaluronic acid), and glycoproteins</li>
               <li>Acts as a <strong>molecular sieve</strong> — excludes plasma proteins, creating a protein-free sub-glycocalyx space</li>
               <li>Functions: vascular permeability barrier, mechanotransduction (shear stress), anti-inflammatory, anticoagulant</li>
@@ -227,13 +229,14 @@ const StarlingForcesTopic = () => {
           <ExamSection id="oedema" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
             <CollapsibleSubsection title="Oedema Formation">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Oedema occurs when the rate of capillary filtration exceeds lymphatic drainage capacity. Safety factors against oedema include:
+              Oedema occurs when the rate of capillary filtration exceeds lymphatic drainage capacity. Under the revised
+              Starling–Levick model, the principal safety factors against oedema are:
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-              <li><strong>↑ Interstitial pressure</strong>: as fluid accumulates, Pi rises, reducing the filtration gradient</li>
-              <li><strong>↑ Lymphatic flow</strong>: can increase 10-50× before overwhelmed</li>
-              <li><strong>Wash-down of interstitial protein</strong>: dilution of πi reduces oncotic pull</li>
-              <li>Total safety factor ≈ 17 mmHg — Pc must rise by this amount before oedema develops</li>
+              <li><strong>Rising interstitial hydrostatic pressure</strong>: as fluid accumulates, Pi rises and reduces the outward filtration gradient (Pc − Pi)</li>
+              <li><strong>Substantial lymphatic reserve</strong>: lymph flow can increase ~10–50× before being overwhelmed</li>
+              <li><strong>Preserved sub-glycocalyx oncotic gradient</strong>: an intact glycocalyx keeps πsg low, sustaining the effective oncotic pull σ(πc − πsg)</li>
+              <li>Estimated total safety factor ≈ 17 mmHg — Pc must rise by approximately this amount before clinical oedema develops</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>

@@ -84,6 +84,13 @@ const UltrasoundPhysicsTopic = () => {
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Interactive Diagrams">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Explore the core ultrasound physics concepts interactively: the piezoelectric transmit/receive cycle,
+              the frequency–penetration trade-off across linear, curvilinear and phased-array probes, the Doppler
+              equation and aliasing on PW Doppler, and the common B-mode artefacts (acoustic shadowing, posterior
+              enhancement, A-lines, B-lines and lung sliding). Use these alongside the text to consolidate probe
+              selection and image interpretation for the FRCA Primary and Final.
+            </p>
             <UltrasoundPhysicsDiagram />
             </CollapsibleSubsection>
           </ExamSection>

@@ -89,7 +89,7 @@ const workedExamples: WorkedExample[] = [
         complications, hypoxaemia, and aspiration risk.
       </>
     ),
-    cites: ["BJA Educ 2005"],
+    cites: ["Assoc Anaesth 2023 (NMB)", "BJA Educ 2018 (NMJ)"],
   },
 ];
 
@@ -112,17 +112,18 @@ const NeuromuscularTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2005", "Power & Kam Ch.15"],
-        workedExamples: ["BJA Educ 2005", "BJA Educ 2005", "Power & Kam Ch.15"],
-        keyPoints: ["BJA Educ 2005", "Ganong Ch.5", "Power & Kam Ch.15"],
+        objectives: ["BJA Educ 2018 (NMJ)", "Power & Kam Ch.15"],
+        workedExamples: ["BJA Educ 2018 (NMJ)", "Assoc Anaesth 2023 (NMB)", "Power & Kam Ch.15"],
+        keyPoints: ["BJA Educ 2018 (NMJ)", "Ganong Ch.5", "Power & Kam Ch.15"],
       }}
       keyPoints={[
         { text: "Adult nAChR subunit composition is α₂βδε; fetal/extrajunctional receptors contain γ instead of ε.", cites: ["Ganong Ch.5"] },
         { text: "Two ACh molecules must bind (one per α subunit) to open the nAChR channel.", cites: ["Power & Kam Ch.15"] },
-        { text: "AChE rapidly hydrolyses ACh to choline + acetate; choline is recycled via active reuptake.", cites: ["BJA Educ 2005"] },
+        { text: "AChE rapidly hydrolyses ACh to choline + acetate; choline is recycled via active reuptake.", cites: ["BJA Educ 2018 (NMJ)"] },
         { text: "The safety margin means ~75% receptor occupancy before fade appears, ~80% before single twitch depression, >90% for complete block.", cites: ["Ganong Ch.5"] },
-        { text: "Pre-junctional nAChRs (α₃β₂) mediate positive feedback — their block by non-depolarising agents explains train-of-four fade.", cites: ["Power & Kam Ch.15"] },
-        { text: "Extrajunctional receptor upregulation (burns, denervation, ICU immobility) causes suxamethonium-induced hyperkalaemia.", cites: ["BJA Educ 2005"] },
+        { text: "Pre-junctional nAChRs (predominantly α₃β₂) mediate positive feedback — their block by non-depolarising agents explains train-of-four fade.", cites: ["BJA Educ 2018 (NMJ)"] },
+        { text: "Extrajunctional receptor upregulation (burns, denervation, ICU immobility) causes suxamethonium-induced hyperkalaemia.", cites: ["BJA Educ 2018 (NMJ)"] },
+        { text: "Sugammadex dosing: 2 mg/kg if TOFR ≥0.2, 4 mg/kg for deep block, 16 mg/kg for immediate rescue after rocuronium 1.2 mg/kg (Assoc Anaesth 2023; BNF).", cites: ["Assoc Anaesth 2023 (NMB)"] },
       ]}
       coreConcepts={
         <>
@@ -207,8 +208,9 @@ const NeuromuscularTopic = () => {
                 agents. Non-depolarising agents compete with ACh at the α subunits.
               </li>
               <li>
-                <strong>Pre-junctional nAChR (α₃β₂)</strong> — facilitate positive feedback, mobilising more
-                ACh vesicles during sustained activity (explains fade with non-depolarising block).
+                <strong>Pre-junctional nAChR (predominantly α₃β₂)</strong> — facilitate positive feedback, mobilising more
+                ACh vesicles during sustained activity (explains fade with non-depolarising block). Other nicotinic and
+                muscarinic subtypes also contribute to modulating ACh release.
               </li>
               <li>
                 <strong>Fetal/extrajunctional nAChR (α₂βδγ)</strong> — contain the γ subunit instead of ε.

@@ -70,11 +70,11 @@ const workedExamples: WorkedExample[] = [
     answer: (
       <>
         Use co-oximetry, not SpO₂. Treat with high-FiO₂ (reduces CO half-life from ~5 h on air to ~80 min on FiO₂ 1.0).
-        Consider hyperbaric O₂ for COHb &gt;25%, neurological signs, pregnancy, or persistent symptoms (further reduces
-        half-life to ~20 min).
+        Per the BJA Education review on CO poisoning, consider hyperbaric O₂ for COHb &gt;25%, loss of consciousness or
+        neurological signs, pregnancy, or persistent symptoms (further reduces half-life to ~20 min).
       </>
     ),
-    cites: ["Power & Kam Ch.7"],
+    cites: ["Power & Kam Ch.7", "BJA Educ 2018 (CO)"],
   },
 ];
 
@@ -99,7 +99,7 @@ const OxygenHaemoglobinTopic = () => {
       }}
       sectionSources={{
         objectives: ["West Ch.6"],
-        workedExamples: ["BJA Educ 2004", "Power & Kam Ch.7"],
+        workedExamples: ["BJA Educ 2004", "Power & Kam Ch.7", "BJA Educ 2018 (CO)", "BNF Methylthioninium"],
         keyPoints: ["West Ch.6", "BJA Educ 2004", "Power & Kam Ch.7"],
       }}
       keyPoints={[
@@ -215,7 +215,7 @@ const OxygenHaemoglobinTopic = () => {
           <ExamPitfallsCallout
             pitfalls={[
               <><strong>SpO₂ cannot distinguish COHb from O₂Hb</strong> — in any burn, smoke or suicide-attempt patient, use co-oximetry.</>,
-              <><strong>Methaemoglobinaemia</strong>: SpO₂ plateaus around 85% regardless of FiO₂ — treat with methylene blue 1–2 mg/kg.</>,
+              <><strong>Methaemoglobinaemia</strong>: SpO₂ plateaus around 85% regardless of FiO₂ — treat with methylthioninium chloride (methylene blue) 1–2 mg/kg IV over 5 min, repeated after 30–60 min if required (BNF; max 7 mg/kg total).</>,
               <><strong>Stored blood</strong> is 2,3-DPG depleted → left shift → impaired offloading for ~24 h after transfusion.</>,
               <><strong>HbF</strong> sits left of adult Hb (P₅₀ ~2.5 kPa) — essential for placental O₂ uptake but means neonates desaturate quickly when offloading is compromised.</>,
               <><strong>Pre-oxygenation</strong> works by filling the FRC, not by raising SaO₂ further — gains apnoea time on the upper plateau.</>,

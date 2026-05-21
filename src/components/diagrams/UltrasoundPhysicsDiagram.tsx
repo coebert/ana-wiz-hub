@@ -365,7 +365,7 @@ const UltrasoundPhysicsDiagram = () => {
     <DiagramFigure
       id="ultrasound-physics-diagram"
       title="Ultrasound physics"
-      description="Auto-generated wrapper for the Ultrasound physics anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive ultrasound physics: piezoelectric transmit/receive cycle, the frequency–penetration trade-off across linear, curvilinear and phased-array probes, Doppler velocity measurement and PW aliasing at the Nyquist limit, and the common B-mode artefacts (acoustic shadowing, posterior enhancement, A-lines, B-lines and lung sliding) used in vascular access, regional anaesthesia and FUSIC/FoCUS imaging."
     >
                   <div className="space-y-4">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
