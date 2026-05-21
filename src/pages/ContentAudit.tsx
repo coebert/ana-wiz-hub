@@ -202,14 +202,43 @@ const ContentAudit = () => {
           );
         },
       )
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "topic_audit_topic_logs",
+          filter: `job_id=eq.${jobId}`,
+        },
+        (payload) => {
+          const row = (payload.new ?? payload.old) as TopicLog | undefined;
+          if (!row) return;
+          setTopicLogs((prev) => {
+            const idx = prev.findIndex((x) => x.id === row.id);
+            if (payload.eventType === "DELETE") {
+              return idx >= 0 ? prev.filter((x) => x.id !== row.id) : prev;
+            }
+            const next = payload.new as TopicLog;
+            if (idx >= 0) {
+              const copy = prev.slice();
+              copy[idx] = { ...prev[idx], ...next };
+              return copy;
+            }
+            return [next, ...prev];
+          });
+        },
+      )
       .subscribe((status) => {
         if (status === "SUBSCRIBED") {
           setRtStatus("live");
           // resync after any (re)connect so we don't miss events
           (async () => {
             const j = await fetchLatestJob();
-            if (j) await fetchFindings(j.id);
+            if (j) {
+              await Promise.all([fetchFindings(j.id), fetchTopicLogs(j.id)]);
+            }
           })();
+
         } else if (
           status === "CHANNEL_ERROR" ||
           status === "TIMED_OUT" ||
