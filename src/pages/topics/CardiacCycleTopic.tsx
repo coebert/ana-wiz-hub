@@ -263,7 +263,7 @@ const CardiacCycleTopic = () => {
               The LA pressure trace shows three positive waves and two descents:
             </p>
             <ul className="mt-3 space-y-2 text-foreground/80">
-              <li><strong>a wave</strong> — atrial contraction (absent in AF; giant in tricuspid stenosis)</li>
+              <li><strong>a wave</strong> — atrial contraction (absent in AF; giant in <strong>mitral stenosis</strong>)</li>
               <li><strong>c wave</strong> — bulging of the AV valve into the atrium during isovolumetric contraction</li>
               <li><strong>v wave</strong> — passive atrial filling while the AV valve is closed (giant in MR)</li>
               <li><strong>x descent</strong> — atrial relaxation and descent of the AV ring during ventricular systole</li>
