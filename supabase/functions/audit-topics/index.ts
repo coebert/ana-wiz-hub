@@ -52,6 +52,21 @@ const supa = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
   auth: { persistSession: false },
 });
 
+// ---------- Fetch helpers ----------
+async function fetchWithTimeout(
+  url: string,
+  init: RequestInit,
+  timeoutMs: number,
+): Promise<Response> {
+  const ac = new AbortController();
+  const t = setTimeout(() => ac.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...init, signal: ac.signal });
+  } finally {
+    clearTimeout(t);
+  }
+}
+
 // ---------- Firecrawl helpers ----------
 function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
   const parsed = new URL(url);
@@ -80,22 +95,26 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
   if (withScreenshot) formats.push("screenshot");
 
   const scrape = async (targetUrl: string, actions?: unknown[]) => {
-    const r = await fetch("https://api.firecrawl.dev/v2/scrape", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
-        "Content-Type": "application/json",
+    const r = await fetchWithTimeout(
+      "https://api.firecrawl.dev/v2/scrape",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url: targetUrl,
+          formats,
+          onlyMainContent: true,
+          waitFor: actions ? 1200 : 8000,
+          timeout: 60000,
+          actions,
+          storeInCache: false,
+        }),
       },
-      body: JSON.stringify({
-        url: targetUrl,
-        formats,
-        onlyMainContent: true,
-        waitFor: actions ? 1200 : 8000,
-        timeout: 90000,
-        actions,
-        storeInCache: false,
-      }),
-    });
+      75_000,
+    );
     if (!r.ok) return null;
     const data = await r.json();
     return data?.data ?? data;
@@ -117,18 +136,22 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
 
 async function firecrawlSearch(query: string, limit = 3) {
   try {
-    const r = await fetch("https://api.firecrawl.dev/v2/search", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
-        "Content-Type": "application/json",
+    const r = await fetchWithTimeout(
+      "https://api.firecrawl.dev/v2/search",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query,
+          limit,
+          scrapeOptions: { formats: ["markdown"] },
+        }),
       },
-      body: JSON.stringify({
-        query,
-        limit,
-        scrapeOptions: { formats: ["markdown"] },
-      }),
-    });
+      45_000,
+    );
     if (!r.ok) return [];
     const data = await r.json();
     const results = data?.data ?? data?.web ?? [];
@@ -137,6 +160,7 @@ async function firecrawlSearch(query: string, limit = 3) {
     return [];
   }
 }
+
 
 // ---------- AI helpers ----------
 const FINDING_TOOL = {
