@@ -53,10 +53,33 @@ const supa = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
 });
 
 // ---------- Firecrawl helpers ----------
+function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
+  const parsed = new URL(url);
+  const pathParts = parsed.pathname.split("/").filter(Boolean);
+  const [section, topicId] = pathParts;
+  const sectionUrl = `${parsed.origin}/${section}`;
+
+  return {
+    sectionUrl,
+    actions: [
+      {
+        type: "click",
+        selector: `a[href="/${section}/${topicId}"]`,
+      },
+      {
+        type: "wait",
+        milliseconds: 2500,
+      },
+      ...(withScreenshot ? [{ type: "screenshot", full_page: true }] : []),
+    ],
+  };
+}
+
 async function firecrawlScrape(url: string, withScreenshot: boolean) {
   const formats: any[] = ["markdown"];
   if (withScreenshot) formats.push("screenshot");
-  try {
+
+  const scrape = async (targetUrl: string, actions?: unknown[]) => {
     const r = await fetch("https://api.firecrawl.dev/v2/scrape", {
       method: "POST",
       headers: {
@@ -64,15 +87,29 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        url,
+        url: targetUrl,
         formats,
         onlyMainContent: true,
-        waitFor: 8000,
+        waitFor: actions ? 1200 : 8000,
+        timeout: 90000,
+        actions,
+        storeInCache: false,
       }),
     });
     if (!r.ok) return null;
     const data = await r.json();
     return data?.data ?? data;
+  };
+
+  try {
+    const direct = await scrape(url);
+    const directMarkdown = String(direct?.markdown ?? "");
+    if (directMarkdown.length >= 200) return direct;
+
+    const { sectionUrl, actions } = buildTopicScrapeActions(url, withScreenshot);
+    const viaSection = await scrape(sectionUrl, actions);
+    const sectionMarkdown = String(viaSection?.markdown ?? "");
+    return sectionMarkdown.length >= 200 ? viaSection : direct;
   } catch (_e) {
     return null;
   }
