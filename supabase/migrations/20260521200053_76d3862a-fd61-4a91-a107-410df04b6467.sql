@@ -1,0 +1,1 @@
+UPDATE public.topic_audit_findings SET status='fixed', resolved_at=now() WHERE id IN ('97d8878f-9498-4172-b198-c86ef2d113be','4411ecf4-b44e-4ed6-bae5-c6b470c50bb3');
