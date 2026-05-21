@@ -364,8 +364,9 @@ const GasLawsTopic = () => {
             <ul className="text-foreground/90 leading-relaxed mt-2 list-disc pl-6 space-y-2">
               <li>
                 <strong>Air (≈79 % N₂, 21 % O₂):</strong> pseudo-critical temperature −141 °C — the temperature below
-                which air, if compressed, can separate into liquid O₂ and gaseous N₂. Industrially exploited in
-                fractional distillation of liquid air to produce medical O₂.
+                which air, if compressed, can be liquefied as a single mixed fluid. This is exploited industrially in
+                the fractional distillation of liquid air to separate its components such as oxygen and nitrogen for
+                medical use.
               </li>
               <li>
                 <strong>Entonox (50 % N₂O / 50 % O₂):</strong> pseudo-critical temperature{" "}
