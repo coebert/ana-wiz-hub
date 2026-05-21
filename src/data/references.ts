@@ -80,9 +80,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Middleton Ch.13", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 13: Ultrasound." },
   ],
   "lasers-fibreoptics": [
+    { label: "BJA Educ 2017", citation: "English J, Rana S. Management of the shared airway. BJA Education. 2017;17(8):265-270.", url: "https://doi.org/10.1093/bjaed/mkx009" },
+    { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 18: Optics, Lasers, and Fibreoptics." },
+    { label: "Middleton Ch.14", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 14: Lasers." },
     { label: "BJA Educ 2004", citation: "Dorsch JA. Lasers and fibreoptics in anaesthesia. BJA Education. 2004;4(4):128-131.", url: "https://doi.org/10.1093/bjaceaccp/mkh035" },
-    { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 18: Optics, Lasers, and Fibreoptics." },
-    { label: "Middleton Ch.14", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 14: Lasers." },
   ],
   "optics-light": [
     { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 18: Optics and Light." },
