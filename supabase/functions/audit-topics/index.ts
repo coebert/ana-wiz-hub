@@ -268,7 +268,7 @@ async function callAI(args: {
       ]
     : args.userText;
 
-  const res = await fetch(
+  const res = await fetchWithTimeout(
     "https://ai.gateway.lovable.dev/v1/chat/completions",
     {
       method: "POST",
@@ -289,6 +289,7 @@ async function callAI(args: {
         },
       }),
     },
+    args.imageUrl ? 90_000 : 60_000,
   );
   if (!res.ok) {
     const body = await res.text();
