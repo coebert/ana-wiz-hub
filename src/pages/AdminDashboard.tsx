@@ -283,6 +283,15 @@ const AdminDashboard = () => {
             <Button
               variant="outline"
               size="sm"
+              onClick={() => navigate("/admin/audit")}
+              aria-label="Open content accuracy audit"
+            >
+              <CheckCircle2 className="w-4 h-4 mr-1" aria-hidden="true" />
+              Content Audit
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
               onClick={() => { signOut(); navigate("/"); }}
               aria-label="Sign out of admin dashboard"
             >
