@@ -59,7 +59,7 @@ const MathConceptsTopic = () => {
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.1"],
-        workedExamples: ["Peck & Hill Appendix", "Middleton Appendix"],
+        workedExamples: ["Peck & Hill Appendix", "Middleton Appendix", "Ultiva SmPC", "Assoc Anaesth 2021"],
         keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Appendix", "Middleton Appendix"],
       }}
       keyPoints={[
