@@ -292,7 +292,7 @@ const ContentAudit = () => {
     const interval = rtStatus === "live" ? 8000 : 3000;
     const t = setInterval(async () => {
       const j = await fetchLatestJob();
-      if (j) await fetchFindings(j.id);
+      if (j) await Promise.all([fetchFindings(j.id), fetchTopicLogs(j.id)]);
     }, interval);
     return () => clearInterval(t);
   }, [job?.status, rtStatus]);
@@ -326,7 +326,7 @@ const ContentAudit = () => {
       // brief wait then refresh
       setTimeout(async () => {
         const j = await fetchLatestJob();
-        if (j) await fetchFindings(j.id);
+        if (j) await Promise.all([fetchFindings(j.id), fetchTopicLogs(j.id)]);
       }, 600);
     } catch (e: any) {
       toast.error(e?.message ?? "Failed to start audit");
@@ -591,7 +591,7 @@ const ContentAudit = () => {
               size="sm"
               onClick={async () => {
                 const j = await fetchLatestJob();
-                await fetchFindings(j?.id);
+                await Promise.all([fetchFindings(j?.id), fetchTopicLogs(j?.id)]);
               }}
             >
               <RefreshCw className="w-4 h-4 mr-1" />
