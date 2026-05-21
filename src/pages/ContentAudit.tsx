@@ -138,12 +138,29 @@ const ContentAudit = () => {
     setFindings(((data as unknown) as Finding[]) ?? []);
   };
 
+  const fetchTopicLogs = async (jobId?: string) => {
+    if (!jobId) {
+      setTopicLogs([]);
+      return;
+    }
+    const { data } = await supabase
+      .from("topic_audit_topic_logs")
+      .select("*")
+      .eq("job_id", jobId)
+      .order("started_at", { ascending: false, nullsFirst: false })
+      .order("updated_at", { ascending: false })
+      .limit(1000);
+    setTopicLogs(((data as unknown) as TopicLog[]) ?? []);
+  };
+
   useEffect(() => {
     (async () => {
       const j = await fetchLatestJob();
-      await fetchFindings(j?.id);
+      await Promise.all([fetchFindings(j?.id), fetchTopicLogs(j?.id)]);
     })();
   }, []);
+
+
 
   // Realtime connection state + auto-reconnect
   type RTStatus = "connecting" | "live" | "offline" | "reconnecting";
