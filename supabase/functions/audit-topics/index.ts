@@ -52,6 +52,21 @@ const supa = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
   auth: { persistSession: false },
 });
 
+// ---------- Fetch helpers ----------
+async function fetchWithTimeout(
+  url: string,
+  init: RequestInit,
+  timeoutMs: number,
+): Promise<Response> {
+  const ac = new AbortController();
+  const t = setTimeout(() => ac.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...init, signal: ac.signal });
+  } finally {
+    clearTimeout(t);
+  }
+}
+
 // ---------- Firecrawl helpers ----------
 function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
   const parsed = new URL(url);
@@ -80,22 +95,26 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
   if (withScreenshot) formats.push("screenshot");
 
   const scrape = async (targetUrl: string, actions?: unknown[]) => {
-    const r = await fetch("https://api.firecrawl.dev/v2/scrape", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
-        "Content-Type": "application/json",
+    const r = await fetchWithTimeout(
+      "https://api.firecrawl.dev/v2/scrape",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url: targetUrl,
+          formats,
+          onlyMainContent: true,
+          waitFor: actions ? 1200 : 8000,
+          timeout: 60000,
+          actions,
+          storeInCache: false,
+        }),
       },
-      body: JSON.stringify({
-        url: targetUrl,
-        formats,
-        onlyMainContent: true,
-        waitFor: actions ? 1200 : 8000,
-        timeout: 90000,
-        actions,
-        storeInCache: false,
-      }),
-    });
+      75_000,
+    );
     if (!r.ok) return null;
     const data = await r.json();
     return data?.data ?? data;
@@ -117,18 +136,22 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
 
 async function firecrawlSearch(query: string, limit = 3) {
   try {
-    const r = await fetch("https://api.firecrawl.dev/v2/search", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
-        "Content-Type": "application/json",
+    const r = await fetchWithTimeout(
+      "https://api.firecrawl.dev/v2/search",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query,
+          limit,
+          scrapeOptions: { formats: ["markdown"] },
+        }),
       },
-      body: JSON.stringify({
-        query,
-        limit,
-        scrapeOptions: { formats: ["markdown"] },
-      }),
-    });
+      45_000,
+    );
     if (!r.ok) return [];
     const data = await r.json();
     const results = data?.data ?? data?.web ?? [];
@@ -137,6 +160,7 @@ async function firecrawlSearch(query: string, limit = 3) {
     return [];
   }
 }
+
 
 // ---------- AI helpers ----------
 const FINDING_TOOL = {
@@ -244,7 +268,7 @@ async function callAI(args: {
       ]
     : args.userText;
 
-  const res = await fetch(
+  const res = await fetchWithTimeout(
     "https://ai.gateway.lovable.dev/v1/chat/completions",
     {
       method: "POST",
@@ -265,6 +289,7 @@ async function callAI(args: {
         },
       }),
     },
+    args.imageUrl ? 90_000 : 60_000,
   );
   if (!res.ok) {
     const body = await res.text();
@@ -425,22 +450,50 @@ async function auditTopic(
 // ---------- Sweep runner (batched + self-chaining) ----------
 // Each invocation processes at most BATCH_SIZE topics, then re-invokes
 // this function with action="continue" so we never hit edge wall-clock limits.
-const BATCH_SIZE = 5;
+const BATCH_SIZE = 3;
+// Hard cap per topic — if a single topic's audit (scrape + searches + AI)
+// takes longer than this, we abandon it as failed and move on so the job
+// never deadlocks on a single page (e.g. Pressure Measurement timing out
+// inside the AI call).
+const PER_TOPIC_TIMEOUT_MS = 180_000;
 
 async function reinvokeContinue(jobId: string) {
   try {
-    await fetch(`${SUPABASE_URL}/functions/v1/audit-topics`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
-        "Content-Type": "application/json",
-        apikey: SUPABASE_SERVICE_ROLE_KEY,
+    await fetchWithTimeout(
+      `${SUPABASE_URL}/functions/v1/audit-topics`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+          "Content-Type": "application/json",
+          apikey: SUPABASE_SERVICE_ROLE_KEY,
+        },
+        body: JSON.stringify({ action: "continue", job_id: jobId }),
       },
-      body: JSON.stringify({ action: "continue", job_id: jobId }),
-    });
+      10_000,
+    );
   } catch (e) {
     console.error(`failed to re-invoke for job ${jobId}`, e);
   }
+}
+
+function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const t = setTimeout(
+      () => reject(new Error(`${label} exceeded ${ms}ms`)),
+      ms,
+    );
+    p.then(
+      (v) => {
+        clearTimeout(t);
+        resolve(v);
+      },
+      (e) => {
+        clearTimeout(t);
+        reject(e);
+      },
+    );
+  });
 }
 
 async function runBatch(jobId: string) {
@@ -469,6 +522,19 @@ async function runBatch(jobId: string) {
     return;
   }
 
+  // Heal any "running" log row from a prior killed runtime so the UI doesn't
+  // see ghosts.
+  await supa
+    .from("topic_audit_topic_logs")
+    .update({
+      status: "failed",
+      error_message: "Runtime terminated before topic completed; auto-marked failed on resume.",
+      completed_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    })
+    .eq("job_id", jobId)
+    .eq("status", "running");
+
   await supa.from("topic_audit_jobs").update({
     status: "running",
     updated_at: new Date().toISOString(),
@@ -480,131 +546,146 @@ async function runBatch(jobId: string) {
   let findingsCount = job.findings_count ?? 0;
 
   const end = Math.min(cursor + BATCH_SIZE, queue.length);
-
-  for (let i = cursor; i < end; i++) {
-    const { data: state } = await supa
-      .from("topic_audit_jobs")
-      .select("status")
-      .eq("id", jobId)
-      .maybeSingle();
-    if (state?.status === "cancelled") {
-      console.log(`job ${jobId} cancelled — stopping`);
-      return;
+  let chained = false;
+  // Schedule the next batch exactly once, no matter how this invocation exits.
+  const chainOnce = async () => {
+    if (chained) return;
+    chained = true;
+    if (cursor < queue.length) {
+      await reinvokeContinue(jobId);
     }
+  };
 
-    const topic = queue[i];
-    const startedAt = new Date();
+  try {
+    for (let i = cursor; i < end; i++) {
+      const { data: state } = await supa
+        .from("topic_audit_jobs")
+        .select("status")
+        .eq("id", jobId)
+        .maybeSingle();
+      if (state?.status === "cancelled") {
+        console.log(`job ${jobId} cancelled — stopping`);
+        return;
+      }
 
-    await supa
-      .from("topic_audit_jobs")
-      .update({ current_topic: topic.title, updated_at: startedAt.toISOString() })
-      .eq("id", jobId);
+      const topic = queue[i];
+      const startedAt = new Date();
 
-    // Upsert a running log row up-front so the UI shows what's in-flight.
-    await supa.from("topic_audit_topic_logs").upsert(
-      {
-        job_id: jobId,
-        topic_id: topic.id,
-        topic_title: topic.title,
-        section: topic.section,
-        topic_url: topic.url,
-        status: "running",
-        started_at: startedAt.toISOString(),
-        completed_at: null,
-        duration_ms: null,
-        error_message: null,
-        stages: {},
-        findings_count: 0,
+      // Advance the persisted cursor BEFORE running the topic so that if the
+      // edge runtime is killed mid-topic, the next chain skips past it
+      // instead of restarting the same hung topic forever.
+      cursor = i + 1;
+      await supa.from("topic_audit_jobs").update({
+        current_topic: topic.title,
+        options: { ...opts, cursor },
         updated_at: startedAt.toISOString(),
-      },
-      { onConflict: "job_id,section,topic_id" },
-    );
+      }).eq("id", jobId);
 
-    let logStatus: "succeeded" | "failed" = "succeeded";
-    let logError: string | null = null;
-    let logStages: Record<string, unknown> = {};
-    let topicFindingsCount = 0;
-
-    try {
-      const { findings, stages } = await auditTopic(jobId, topic);
-      logStages = stages as unknown as Record<string, unknown>;
-      if (findings.length > 0) {
-        const rows = findings.map((f) => ({
+      await supa.from("topic_audit_topic_logs").upsert(
+        {
           job_id: jobId,
           topic_id: topic.id,
           topic_title: topic.title,
           section: topic.section,
           topic_url: topic.url,
-          severity: f.severity ?? "minor",
-          category: f.category ?? "factual",
-          summary: String(f.summary ?? "").slice(0, 500),
-          details: f.details ?? "",
-          suggested_fix: f.suggested_fix ?? null,
-          sources: f.sources ?? [],
-          diagram_ref: f.diagram_ref ?? null,
-        }));
-        const { error } = await supa
-          .from("topic_audit_findings")
-          .insert(rows);
-        if (error) throw error;
-        findingsCount += rows.length;
-        topicFindingsCount = rows.length;
+          status: "running",
+          started_at: startedAt.toISOString(),
+          completed_at: null,
+          duration_ms: null,
+          error_message: null,
+          stages: {},
+          findings_count: 0,
+          updated_at: startedAt.toISOString(),
+        },
+        { onConflict: "job_id,section,topic_id" },
+      );
+
+      let logStatus: "succeeded" | "failed" = "succeeded";
+      let logError: string | null = null;
+      let logStages: Record<string, unknown> = {};
+      let topicFindingsCount = 0;
+
+      try {
+        const { findings, stages } = await withTimeout(
+          auditTopic(jobId, topic),
+          PER_TOPIC_TIMEOUT_MS,
+          `auditTopic(${topic.id})`,
+        );
+        logStages = stages as unknown as Record<string, unknown>;
+        if (findings.length > 0) {
+          const rows = findings.map((f) => ({
+            job_id: jobId,
+            topic_id: topic.id,
+            topic_title: topic.title,
+            section: topic.section,
+            topic_url: topic.url,
+            severity: f.severity ?? "minor",
+            category: f.category ?? "factual",
+            summary: String(f.summary ?? "").slice(0, 500),
+            details: f.details ?? "",
+            suggested_fix: f.suggested_fix ?? null,
+            sources: f.sources ?? [],
+            diagram_ref: f.diagram_ref ?? null,
+          }));
+          const { error } = await supa
+            .from("topic_audit_findings")
+            .insert(rows);
+          if (error) throw error;
+          findingsCount += rows.length;
+          topicFindingsCount = rows.length;
+        }
+        succeeded++;
+      } catch (e) {
+        failed++;
+        logStatus = "failed";
+        logError = (e as Error).message;
+        console.error(`audit failed for ${topic.id}`, e);
+        await supa.from("topic_audit_jobs").update({
+          last_error: `${topic.id}: ${(e as Error).message}`.slice(0, 500),
+          updated_at: new Date().toISOString(),
+        }).eq("id", jobId);
       }
-      succeeded++;
-    } catch (e) {
-      failed++;
-      logStatus = "failed";
-      logError = (e as Error).message;
-      console.error(`audit failed for ${topic.id}`, e);
+
+      const completedAt = new Date();
+      await supa
+        .from("topic_audit_topic_logs")
+        .update({
+          status: logStatus,
+          completed_at: completedAt.toISOString(),
+          duration_ms: completedAt.getTime() - startedAt.getTime(),
+          error_message: logError,
+          stages: logStages,
+          findings_count: topicFindingsCount,
+          updated_at: completedAt.toISOString(),
+        })
+        .eq("job_id", jobId)
+        .eq("section", topic.section)
+        .eq("topic_id", topic.id);
+
+      processed++;
       await supa.from("topic_audit_jobs").update({
-        last_error: `${topic.id}: ${(e as Error).message}`.slice(0, 500),
+        processed,
+        succeeded,
+        failed,
+        findings_count: findingsCount,
         updated_at: new Date().toISOString(),
       }).eq("id", jobId);
+
+      await new Promise((r) => setTimeout(r, 300));
     }
 
-    const completedAt = new Date();
-    await supa
-      .from("topic_audit_topic_logs")
-      .update({
-        status: logStatus,
-        completed_at: completedAt.toISOString(),
-        duration_ms: completedAt.getTime() - startedAt.getTime(),
-        error_message: logError,
-        stages: logStages,
-        findings_count: topicFindingsCount,
-        updated_at: completedAt.toISOString(),
-      })
-      .eq("job_id", jobId)
-      .eq("section", topic.section)
-      .eq("topic_id", topic.id);
-
-
-    processed++;
-    cursor = i + 1;
-    await supa.from("topic_audit_jobs").update({
-      processed,
-      succeeded,
-      failed,
-      findings_count: findingsCount,
-      options: { ...opts, cursor },
-      updated_at: new Date().toISOString(),
-    }).eq("id", jobId);
-
-    await new Promise((r) => setTimeout(r, 300));
+    if (cursor >= queue.length) {
+      await supa.from("topic_audit_jobs").update({
+        status: "completed",
+        current_topic: null,
+        completed_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      }).eq("id", jobId);
+      return;
+    }
+  } finally {
+    await chainOnce();
   }
-
-  if (cursor >= queue.length) {
-    await supa.from("topic_audit_jobs").update({
-      status: "completed",
-      current_topic: null,
-      completed_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    }).eq("id", jobId);
-    return;
-  }
-
-  // More topics remain — re-invoke ourselves for the next batch.
-  await reinvokeContinue(jobId);
 }
 
 // ---------- Sitemap discovery ----------
