@@ -700,7 +700,13 @@ const ContentAudit = () => {
                 </div>
 
                 {/* Timeline UI */}
-                <AuditTimeline job={job} topicLogs={topicLogs} />
+                <AuditTimeline
+                  job={job}
+                  topicLogs={topicLogs}
+                  etaMs={etaMs}
+                  avgTopicMs={avgTopicMs}
+                  avgSource={avgSource}
+                />
 
                 {job.last_error && (
                   <p className="text-xs text-red-600">
