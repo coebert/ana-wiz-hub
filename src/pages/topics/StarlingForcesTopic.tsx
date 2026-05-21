@@ -76,12 +76,14 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        In sepsis only ~5% of the bolus may remain intravascular at 1 h; the rest is interstitial oedema.
-        Use small (3–4 mL/kg) titrated boluses with dynamic monitoring, and start vasopressors early rather
-        than chasing MAP with repeated crystalloid (Surviving Sepsis 2021).
+        In sepsis only a small fraction of the bolus (often cited as ~5%) may remain intravascular at 1 h; the rest
+        becomes interstitial oedema. Use small (≤4 mL/kg) titrated boluses with dynamic monitoring, and start
+        vasopressors early rather than chasing MAP with repeated crystalloid — consistent with the Surviving Sepsis
+        Campaign 2021 recommendation to give an initial 30 mL/kg crystalloid over 3 h and then guide further fluids
+        with dynamic measures.
       </>
     ),
-    cites: ["Levick & Michel 2010"],
+    cites: ["Levick & Michel 2010", "Surviving Sepsis 2021", "Woodcock & Woodcock 2012"],
   },
 ];
 
