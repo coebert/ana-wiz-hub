@@ -1204,6 +1204,7 @@ const AuditTimeline = ({
   if (!job) return null;
 
   const running = job.status === "running" || job.status === "pending";
+  const finished = job.status === "completed" || job.status === "completed_with_errors";
 
   // Sort logs by when they started (oldest first) so the timeline reads left→right
   const sorted = useMemo(
@@ -1247,6 +1248,12 @@ const AuditTimeline = ({
           {job.processed} / {job.total} processed
         </span>
         <span className="text-muted-foreground">·</span>
+        {finished && (
+          <>
+            <span className="text-xs text-emerald-600 font-medium">job finished</span>
+            <span className="text-muted-foreground">·</span>
+          </>
+        )}
         <span className="text-xs text-emerald-600 font-medium">
           {counts.succeeded} succeeded
         </span>
