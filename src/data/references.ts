@@ -350,6 +350,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2014", citation: "Jagannathan R, Nair VP. Brachial plexus anatomy and ultrasound-guided blocks. BJA Education. 2021;21(7):259-264.", url: "https://doi.org/10.1016/j.bjae.2021.02.005" },
     { label: "Ellis & Feldman Ch.8", citation: "Ellis H, Feldman S, Harrop-Griffiths W. Anatomy for Anaesthetists. 9th ed. Chapter 8: The Brachial Plexus." },
     { label: "Miller Ch.46", citation: "Miller RD, ed. Miller's Anesthesia. 9th ed. Chapter 46: Nerve Blocks of the Upper Extremity." },
+    { label: "Urmey 1991", citation: "Urmey WF, Talts KH, Sharrock NE. One hundred percent incidence of hemidiaphragmatic paresis associated with interscalene brachial plexus anesthesia as diagnosed by ultrasonography. Anesth Analg. 1991;72(4):498-503.", url: "https://doi.org/10.1213/00000539-199104000-00014" },
+    { label: "Riazi 2008", citation: "Riazi S, Carmichael N, Awad I, Holtby RM, McCartney CJL. Effect of local anaesthetic volume (20 vs 5 mL) on the efficacy and respiratory consequences of ultrasound-guided interscalene brachial plexus block. Br J Anaesth. 2008;101(4):549-556.", url: "https://doi.org/10.1093/bja/aen229" },
+    { label: "Renes 2009", citation: "Renes SH, Rettig HC, Gielen MJ, Wilder-Smith OH, van Geffen GJ. Ultrasound-guided low-dose interscalene brachial plexus block reduces the incidence of hemidiaphragmatic paresis. Reg Anesth Pain Med. 2009;34(5):498-502.", url: "https://doi.org/10.1097/AAP.0b013e3181b49256" },
   ],
   "thoracic-anatomy": [
     { label: "Ellis & Feldman Ch.2", citation: "Ellis H, Feldman S, Harrop-Griffiths W. Anatomy for Anaesthetists. 9th ed. Chapter 2: The Thorax." },
