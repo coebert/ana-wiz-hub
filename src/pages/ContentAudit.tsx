@@ -1116,9 +1116,15 @@ const ContentAudit = () => {
 const AuditTimeline = ({
   job,
   topicLogs,
+  etaMs = 0,
+  avgTopicMs = 0,
+  avgSource = "none",
 }: {
   job: Job;
   topicLogs: TopicLog[];
+  etaMs?: number;
+  avgTopicMs?: number;
+  avgSource?: "logs" | "elapsed" | "none";
 }) => {
   if (!job) return null;
 
