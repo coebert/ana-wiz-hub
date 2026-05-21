@@ -546,9 +546,34 @@ const ContentAudit = () => {
   }, [running]);
 
   const elapsedMs = job ? Date.now() - new Date(job.created_at).getTime() : 0;
+
+  // Average per-topic duration from completed topic logs for this job.
+  // Falls back to overall elapsed/processed when no log durations are available yet.
+  const { avgTopicMs, avgSource } = useMemo(() => {
+    if (!job) return { avgTopicMs: 0, avgSource: "none" as const };
+    const completed = topicLogs.filter(
+      (l) =>
+        l.job_id === job.id &&
+        (l.status === "succeeded" || l.status === "failed") &&
+        typeof l.duration_ms === "number" &&
+        l.duration_ms! > 0,
+    );
+    if (completed.length > 0) {
+      const sum = completed.reduce((s, l) => s + (l.duration_ms || 0), 0);
+      return { avgTopicMs: sum / completed.length, avgSource: "logs" as const };
+    }
+    if (job.processed > 0) {
+      return {
+        avgTopicMs: elapsedMs / job.processed,
+        avgSource: "elapsed" as const,
+      };
+    }
+    return { avgTopicMs: 0, avgSource: "none" as const };
+  }, [topicLogs, job?.id, job?.processed, elapsedMs]);
+
   const etaMs =
-    running && job && job.processed > 0 && job.total > job.processed
-      ? (elapsedMs / job.processed) * (job.total - job.processed)
+    running && job && avgTopicMs > 0 && job.total > job.processed
+      ? avgTopicMs * (job.total - job.processed)
       : 0;
 
   const recentFindings = useMemo(
@@ -675,7 +700,13 @@ const ContentAudit = () => {
                 </div>
 
                 {/* Timeline UI */}
-                <AuditTimeline job={job} topicLogs={topicLogs} />
+                <AuditTimeline
+                  job={job}
+                  topicLogs={topicLogs}
+                  etaMs={etaMs}
+                  avgTopicMs={avgTopicMs}
+                  avgSource={avgSource}
+                />
 
                 {job.last_error && (
                   <p className="text-xs text-red-600">
@@ -1085,9 +1116,15 @@ const ContentAudit = () => {
 const AuditTimeline = ({
   job,
   topicLogs,
+  etaMs = 0,
+  avgTopicMs = 0,
+  avgSource = "none",
 }: {
   job: Job;
   topicLogs: TopicLog[];
+  etaMs?: number;
+  avgTopicMs?: number;
+  avgSource?: "logs" | "elapsed" | "none";
 }) => {
   if (!job) return null;
 
@@ -1152,6 +1189,32 @@ const AuditTimeline = ({
             <span className="text-xs text-muted-foreground">
               Elapsed: {fmtDuration(Date.now() - new Date(job.created_at).getTime())}
             </span>
+            {etaMs > 0 && (
+              <>
+                <span className="text-muted-foreground">·</span>
+                <span
+                  className="text-xs text-muted-foreground"
+                  title={
+                    avgSource === "logs"
+                      ? "ETA based on average duration of completed topics in this job"
+                      : "ETA based on overall elapsed time (no completed topic durations yet)"
+                  }
+                >
+                  ETA: ~{fmtDuration(etaMs)}
+                </span>
+              </>
+            )}
+            {avgTopicMs > 0 && (
+              <>
+                <span className="text-muted-foreground">·</span>
+                <span className="text-xs text-muted-foreground">
+                  Avg/topic: {(avgTopicMs / 1000).toFixed(1)}s
+                  {avgSource === "elapsed" && (
+                    <span className="opacity-60"> (est.)</span>
+                  )}
+                </span>
+              </>
+            )}
           </>
         )}
       </div>
