@@ -37,8 +37,9 @@ const where =
     : `WHERE status = 'fixed'`;
 
 function psql(sql) {
-  const out = execSync(`psql -At -F $'\\t' -c ${JSON.stringify(sql)}`, {
+  const out = execSync(`psql -At -F $'\\t' -v ON_ERROR_STOP=1`, {
     encoding: "utf8",
+    input: sql,
   });
   return out
     .trim()
