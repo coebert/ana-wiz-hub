@@ -379,15 +379,40 @@ const ContentAudit = () => {
     );
   };
 
-  const buildFixPrompt = (targets: Finding[]) => {
+  // Max characters per generated prompt. Lovable chat enforces a per-message
+  // character cap; keep well under it so the pasted prompt always fits.
+  const MAX_PROMPT_CHARS = 45000;
+
+  const renderFindingLines = (f: Finding): string[] => {
+    const lines: string[] = [];
+    lines.push(`- **[${f.severity.toUpperCase()} · ${f.category}]** ${f.summary}`);
+    if (f.section) lines.push(`  - Section: ${f.section}`);
+    if (f.diagram_ref) lines.push(`  - Diagram: \`${f.diagram_ref}\``);
+    if (f.details) lines.push(`  - Details: ${f.details}`);
+    if (f.suggested_fix) lines.push(`  - **Suggested fix:** ${f.suggested_fix}`);
+    if (f.sources?.length) {
+      lines.push(`  - Sources:`);
+      f.sources.forEach((s) => lines.push(`    - [${s.title}](${s.url})`));
+    }
+    lines.push(`  - Finding id: \`${f.id}\``);
+    return lines;
+  };
+
+  const buildPromptForBatch = (
+    batch: Finding[],
+    batchIndex: number,
+    batchCount: number,
+  ) => {
     const byTopic = new Map<string, Finding[]>();
-    for (const f of targets) {
+    for (const f of batch) {
       const key = `${f.section}/${f.topic_id}`;
       if (!byTopic.has(key)) byTopic.set(key, []);
       byTopic.get(key)!.push(f);
     }
+    const batchLabel =
+      batchCount > 1 ? ` (batch ${batchIndex + 1} of ${batchCount})` : "";
     const lines: string[] = [
-      `Please apply the following content-audit fixes to the topic source files.`,
+      `Please apply the following content-audit fixes to the topic source files${batchLabel}.`,
       ``,
       `For each finding below: open the referenced topic file under \`src/pages/topics/\` (the topic id matches the route segment), locate the named section, and edit the JSX/data so it matches the **Suggested fix**. Keep voice/style consistent with the rest of the topic. Cite the listed sources via the existing \`InlineRef\` / \`sectionSources\` / \`references.ts\` pattern where appropriate. Do not silently delete affected content unless the suggested fix explicitly says to.`,
       ``,
@@ -395,36 +420,33 @@ const ContentAudit = () => {
       ``,
       `**IMPORTANT — auto-mark fixed:** For every finding you actually actioned (i.e. the source file now matches the suggested fix, OR the finding was already addressed in a previous turn and you have verified this in the current code), you MUST mark it as fixed in the database by running the SQL block at the end of this prompt via \`psql\` (managed Supabase DB access is enabled in this project). Remove from that SQL any IDs you could not safely fix and report them back to me explicitly. Do not skip this step — the user relies on it to keep the Content Audit list in sync.`,
       ``,
+    ];
+    if (batchCount > 1) {
+      lines.push(
+        `> This is **batch ${batchIndex + 1} of ${batchCount}**. The full fix list was split to stay under the Lovable per-message character limit. Each batch is self-contained — apply only the findings listed here and run the SQL block at the bottom of *this* batch. Subsequent batches will be sent as separate messages.`,
+        ``,
+      );
+    }
+    lines.push(
       `---`,
       ``,
-      `## ${targets.length} finding${targets.length === 1 ? "" : "s"} across ${byTopic.size} topic${byTopic.size === 1 ? "" : "s"}`,
+      `## ${batch.length} finding${batch.length === 1 ? "" : "s"} across ${byTopic.size} topic${byTopic.size === 1 ? "" : "s"}${batchLabel}`,
       ``,
-    ];
+    );
     for (const [key, items] of byTopic) {
       const t = items[0];
       lines.push(`### ${t.topic_title}  \`(${key})\``);
       if (t.topic_url) lines.push(`URL: ${t.topic_url}`);
       lines.push("");
-      for (const f of items) {
-        lines.push(`- **[${f.severity.toUpperCase()} · ${f.category}]** ${f.summary}`);
-        if (f.section) lines.push(`  - Section: ${f.section}`);
-        if (f.diagram_ref) lines.push(`  - Diagram: \`${f.diagram_ref}\``);
-        if (f.details) lines.push(`  - Details: ${f.details}`);
-        if (f.suggested_fix) lines.push(`  - **Suggested fix:** ${f.suggested_fix}`);
-        if (f.sources?.length) {
-          lines.push(`  - Sources:`);
-          f.sources.forEach((s) => lines.push(`    - [${s.title}](${s.url})`));
-        }
-        lines.push(`  - Finding id: \`${f.id}\``);
-      }
+      for (const f of items) lines.push(...renderFindingLines(f));
       lines.push("");
     }
-    const idList = targets.map((f) => `  '${f.id}'`).join(",\n");
+    const idList = batch.map((f) => `  '${f.id}'`).join(",\n");
     lines.push(
       ``,
       `---`,
       ``,
-      `## Mark actioned findings as fixed`,
+      `## Mark actioned findings as fixed${batchLabel}`,
       ``,
       `After applying the fixes above (and only for the IDs you actually actioned — delete the rest from the list), run this exactly once via \`psql\`:`,
       ``,
@@ -441,6 +463,27 @@ const ContentAudit = () => {
     return lines.join("\n");
   };
 
+  // Greedy bin-packing: keep adding findings to the current batch while the
+  // rendered prompt stays under MAX_PROMPT_CHARS. A single finding that on its
+  // own would exceed the cap still goes in its own batch.
+  const buildFixPromptBatches = (targets: Finding[]): string[] => {
+    if (targets.length === 0) return [];
+    const batches: Finding[][] = [];
+    let current: Finding[] = [];
+    for (const f of targets) {
+      const trial = [...current, f];
+      const size = buildPromptForBatch(trial, 0, 1).length;
+      if (size > MAX_PROMPT_CHARS && current.length > 0) {
+        batches.push(current);
+        current = [f];
+      } else {
+        current = trial;
+      }
+    }
+    if (current.length > 0) batches.push(current);
+    return batches.map((b, i) => buildPromptForBatch(b, i, batches.length));
+  };
+
 
   const correctAll = async (
     targetStatus: Finding["status"] = "open",
@@ -449,36 +492,48 @@ const ContentAudit = () => {
     if (targets.length === 0) return;
     const verb = targetStatus === "fixed" ? "re-apply" : "apply";
     const label = targetStatus === "fixed" ? "previously-fixed" : "open";
+    const prompts = buildFixPromptBatches(targets);
+    const batchCount = prompts.length;
+    const batchNote =
+      batchCount > 1
+        ? `\n\nThe list is too large for a single Lovable message, so it has been split into ${batchCount} batches. Each batch will be downloaded as its own .md file; the first batch is copied to your clipboard. Paste batches one at a time into Lovable chat.`
+        : `\n\nThe prompt will be copied to your clipboard and downloaded as a .md file. Paste it into Lovable chat and the AI will ${verb} each suggested fix in the topic source files.`;
     const ok = window.confirm(
-      `Generate a Lovable chat prompt for ${targets.length} ${label} finding${targets.length === 1 ? "" : "s"}?\n\nThe prompt will be copied to your clipboard and downloaded as a .md file. Paste it into Lovable chat and the AI will ${verb} each suggested fix in the topic source files.`,
+      `Generate a Lovable chat prompt for ${targets.length} ${label} finding${targets.length === 1 ? "" : "s"}?${batchNote}`,
     );
     if (!ok) return;
     setBulkBusy(true);
     try {
-      const prompt = buildFixPrompt(targets);
-
-      const blob = new Blob([prompt], { type: "text/markdown" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `audit-${targetStatus}-prompt-${new Date().toISOString().slice(0, 10)}.md`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
+      const dateStr = new Date().toISOString().slice(0, 10);
+      prompts.forEach((prompt, i) => {
+        const suffix =
+          batchCount > 1 ? `-batch-${i + 1}-of-${batchCount}` : "";
+        const blob = new Blob([prompt], { type: "text/markdown" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `audit-${targetStatus}-prompt-${dateStr}${suffix}.md`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      });
 
       let copied = false;
       try {
-        await navigator.clipboard.writeText(prompt);
+        await navigator.clipboard.writeText(prompts[0]);
         copied = true;
       } catch {
         copied = false;
       }
 
+      const base = `${targets.length} ${label} finding${targets.length === 1 ? "" : "s"}`;
       toast.success(
-        copied
-          ? `Prompt for ${targets.length} ${label} finding${targets.length === 1 ? "" : "s"} copied to clipboard and downloaded.`
-          : `Prompt downloaded (${targets.length} ${label} finding${targets.length === 1 ? "" : "s"}). Open the .md and paste into Lovable chat.`,
+        batchCount > 1
+          ? `${base} split into ${batchCount} batches (each <${MAX_PROMPT_CHARS.toLocaleString()} chars). ${copied ? "Batch 1 copied to clipboard; all batches downloaded." : "All batches downloaded — open them in order."}`
+          : copied
+            ? `Prompt for ${base} copied to clipboard and downloaded.`
+            : `Prompt downloaded (${base}). Open the .md and paste into Lovable chat.`,
         { duration: 9000 },
       );
     } catch (e: any) {
