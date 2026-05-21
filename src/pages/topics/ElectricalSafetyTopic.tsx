@@ -57,7 +57,7 @@ const ElectricalSafetyTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Microshock via the pacing wire. Use only CF-rated equipment for cardiac connections, maintain isolated theatre supply with line-isolation monitoring, and ensure regular electrical safety testing.",
-    cites: ["BJA Educ 2012", "Cross & Plunkett Ch.14", "Middleton Ch.16"],
+    cites: ["BJA Educ 2017", "Cross & Plunkett Ch.14", "Middleton Ch.16"],
   },
 ];
 
