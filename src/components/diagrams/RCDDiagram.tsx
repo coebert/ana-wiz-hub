@@ -297,7 +297,7 @@ export const RCDDiagram = () => {
                 </tr>
                 <tr>
                   <td className="py-1.5 px-2 font-medium text-foreground">Where used</td>
-                  <td className="py-1.5 px-2">Domestic, ward areas, ICU bedspaces (often)</td>
+                  <td className="py-1.5 px-2">General clinical areas (wards, domestic, outpatients) — HTM 06-01 Group 0/1</td>
                   <td className="py-1.5 px-2">Theatres, cath labs, IR suites</td>
                 </tr>
               </tbody>
