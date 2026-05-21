@@ -140,7 +140,7 @@ const MathConceptsTopic = () => {
                 { scale: "pH", detail: "pH = −log₁₀[H⁺]. A change of 1 pH unit = 10-fold change in [H⁺]. pH 7.4 → [H⁺] = 40 nmol/L; pH 7.1 → [H⁺] = 80 nmol/L." },
                 { scale: "Decibels (dB)", detail: "dB = 10 log₁₀(I/I₀). A 10 dB increase = 10× intensity. Used in ultrasound attenuation and noise measurement." },
                 { scale: "pKa", detail: "pKa = −log₁₀(Ka). Describes acid strength. At pH = pKa, 50% of drug is ionised." },
-                { scale: "MAC", detail: "MAC values are often plotted on log scales when comparing agents. Log dose-response curves straighten the sigmoid." },
+                { scale: "MAC", detail: "MAC values are often plotted on log scales when comparing agents. Plotting dose on a log axis gives a dose-response curve its familiar sigmoid shape; the central portion can then be linearised with a probit or logit transformation for analysis." },
               ].map((item) => (
                 <div key={item.scale} className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">{item.scale}</p>
