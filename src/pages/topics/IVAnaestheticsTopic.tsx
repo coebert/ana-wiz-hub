@@ -100,11 +100,11 @@ const IVAnaestheticsTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground">Propofol</h2>
           <p className="text-foreground/90 leading-relaxed">
             <strong>2,6-diisopropylphenol</strong> in a lipid emulsion (soybean oil, egg lecithin, glycerol). Induction dose
-            1.5–2.5 mg/kg. Onset 30–40 s (one arm-brain circulation time). Duration ~5–10 min (redistribution). pKa 11 —
+            1.5–2.5 mg/kg<InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />. Onset 30–40 s (one arm-brain circulation time). Duration ~5–10 min (redistribution). pKa 11 —
             almost entirely un-ionised at physiological pH.
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
-            <strong>Mechanism</strong>: enhances GABA_A receptor activity. <strong>CVS</strong>: dose-dependent hypotension
+            <strong>Mechanism</strong>: enhances GABA_A receptor activity<InlineRef topicId="iv-anaesthetics" refLabel="BJA Educ 2014" />. <strong>CVS</strong>: dose-dependent hypotension
             (vasodilation + myocardial depression), reduced baroreflex sensitivity. <strong>RS</strong>: apnoea, respiratory
             depression. <strong>CNS</strong>: anticonvulsant, antiemetic, reduces CMRO₂ and ICP. <strong>Other</strong>: pain
             on injection (attenuated by lidocaine), supports bacterial growth — discard after 6 hours.
