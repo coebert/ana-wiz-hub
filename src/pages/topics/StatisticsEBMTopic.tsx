@@ -127,8 +127,8 @@ const StatisticsEBMTopic = () => {
                 a false null — false negative. <strong>Power (1 − β)</strong>: probability of detecting a true effect; aim for ≥0.8 (80%).
               </p>
               <p>
-                <strong>Confidence intervals (CIs)</strong> provide a range within which the true population parameter likely lies. A 95% CI that does not cross the null value
-                (0 for differences, 1 for ratios) indicates significance at p &lt; 0.05. CIs are more informative than p-values alone — they convey both magnitude and precision.
+                <strong>Confidence intervals (CIs)</strong> express the precision of a sample estimate. Strictly: if the study were repeated many times, 95% of the resulting 95% CIs would contain the true population parameter — a single interval either does or does not, so CIs are not a direct probability statement about that interval. A 95% CI that does not cross the null value
+                (0 for differences, 1 for ratios) corresponds to p &lt; 0.05. CIs are more informative than p-values alone — they convey both magnitude and precision.
               </p>
             </div>
             </CollapsibleSubsection>
