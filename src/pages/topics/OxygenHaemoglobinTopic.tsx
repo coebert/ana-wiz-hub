@@ -70,11 +70,11 @@ const workedExamples: WorkedExample[] = [
     answer: (
       <>
         Use co-oximetry, not SpO₂. Treat with high-FiO₂ (reduces CO half-life from ~5 h on air to ~80 min on FiO₂ 1.0).
-        Consider hyperbaric O₂ for COHb &gt;25%, neurological signs, pregnancy, or persistent symptoms (further reduces
-        half-life to ~20 min).
+        Per the BJA Education review on CO poisoning, consider hyperbaric O₂ for COHb &gt;25%, loss of consciousness or
+        neurological signs, pregnancy, or persistent symptoms (further reduces half-life to ~20 min).
       </>
     ),
-    cites: ["Power & Kam Ch.7"],
+    cites: ["Power & Kam Ch.7", "BJA Educ 2018 (CO)"],
   },
 ];
 
