@@ -350,10 +350,18 @@ async function auditTopic(
     diagram_findings: 0,
   };
 
+  const topicStartedAt = Date.now();
+  const remainingBudget = () => PER_TOPIC_TIMEOUT_MS - (Date.now() - topicStartedAt);
+  const hasBudget = (ms: number) => remainingBudget() > ms;
+
   // 1. Scrape current topic page (markdown + screenshot)
   let page: any = null;
   try {
-    page = await firecrawlScrape(topic.url, true);
+    page = await firecrawlScrape(
+      topic.url,
+      true,
+      Math.min(35_000, Math.max(12_000, remainingBudget() - 25_000)),
+    );
   } catch (e) {
     stages.scrape_error = (e as Error).message;
   }
@@ -382,10 +390,12 @@ async function auditTopic(
       .join(" OR ")
   }`;
 
-  const [bjaResults, generalResults] = await Promise.all([
-    firecrawlSearch(queryBJA, 2),
-    firecrawlSearch(queryGeneral, 2),
-  ]);
+  const [bjaResults, generalResults] = hasBudget(35_000)
+    ? await Promise.all([
+        firecrawlSearch(queryBJA, 2, 12_000),
+        firecrawlSearch(queryGeneral, 2, 12_000),
+      ])
+    : [[], []];
 
   const refs = [...bjaResults, ...generalResults]
     .filter((r) => r?.url && r?.markdown)
@@ -422,6 +432,7 @@ async function auditTopic(
     const textFindings = await callAI({
       system: TEXT_SYSTEM,
       userText,
+      timeoutMs: Math.min(28_000, Math.max(12_000, remainingBudget() - 12_000)),
     });
     stages.text_findings = textFindings.length;
     all.push(...textFindings);
@@ -431,13 +442,14 @@ async function auditTopic(
   }
 
   // 4. Diagram audit (vision) if a screenshot is available
-  if (screenshot) {
+  if (screenshot && hasBudget(20_000)) {
     try {
       const diagramFindings = await callAI({
         system: DIAGRAM_SYSTEM,
         userText: `Topic: ${topic.title}\nSection: ${topic.section}\nURL: ${topic.url}\n\nInspect all visible diagrams.`,
         imageUrl: screenshot,
         model: "google/gemini-2.5-pro",
+        timeoutMs: Math.min(18_000, Math.max(10_000, remainingBudget() - 4_000)),
       });
       stages.diagram_findings = diagramFindings.length;
       for (const f of diagramFindings) {
@@ -449,6 +461,8 @@ async function auditTopic(
       stages.diagram_error = (e as Error).message;
       console.error(`diagram audit error for ${topic.id}`, e);
     }
+  } else if (screenshot) {
+    stages.diagram_error = "Skipped to preserve runtime budget for job continuity";
   }
 
   // attach screenshot reference on any diagram finding missing it
