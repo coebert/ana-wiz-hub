@@ -184,7 +184,7 @@ const RenalPhysiologyTopic = () => {
               </p>
               <p className="text-foreground/90 leading-relaxed mt-3">
                 GFR is maintained by <strong>autoregulation</strong> (myogenic response + tubuloglomerular feedback via
-                macula densa) over MAP 80–180 mmHg. Below MAP 80, GFR falls linearly. Autoregulation is impaired by NSAIDs
+                macula densa) over MAP ~75–160 mmHg. Below this range, GFR falls linearly. Autoregulation is impaired by NSAIDs
                 (block afferent arteriolar prostaglandin-mediated vasodilation) and ACE inhibitors (block efferent constriction).
               </p>
             </section>
