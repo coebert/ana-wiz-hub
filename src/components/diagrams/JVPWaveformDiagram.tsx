@@ -38,7 +38,7 @@ const SCENARIOS: Record<ScenarioId, Scenario> = {
   normal: {
     id: "normal",
     label: "Normal",
-    blurb: "Resting RA pressure 0–8 mmHg. a > v > c. x and y descents both visible.",
+    blurb: "Resting RA pressure 0–8 mmHg. The a wave (atrial contraction) is usually the most prominent and slightly larger than the v wave (atrial filling); the c wave is small and often barely discernible. Both x and y descents are visible.",
     a: 1, c: 0.5, v: 0.85, x: 1, y: 1,
   },
   af: {
