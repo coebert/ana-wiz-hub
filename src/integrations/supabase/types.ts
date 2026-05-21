@@ -456,6 +456,60 @@ export type Database = {
         }
         Relationships: []
       }
+      topic_audit_topic_logs: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          duration_ms: number | null
+          error_message: string | null
+          findings_count: number
+          id: string
+          job_id: string
+          section: string
+          stages: Json
+          started_at: string | null
+          status: string
+          topic_id: string
+          topic_title: string
+          topic_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          duration_ms?: number | null
+          error_message?: string | null
+          findings_count?: number
+          id?: string
+          job_id: string
+          section: string
+          stages?: Json
+          started_at?: string | null
+          status?: string
+          topic_id: string
+          topic_title: string
+          topic_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          duration_ms?: number | null
+          error_message?: string | null
+          findings_count?: number
+          id?: string
+          job_id?: string
+          section?: string
+          stages?: Json
+          started_at?: string | null
+          status?: string
+          topic_id?: string
+          topic_title?: string
+          topic_url?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       topic_references: {
         Row: {
           created_at: string
