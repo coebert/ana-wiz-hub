@@ -154,7 +154,7 @@ const MathConceptsTopic = () => {
           <ExamSection id="sigmoid" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="The Sigmoid Curve & Cooperativity">
             <p className="text-muted-foreground leading-relaxed">
-              The sigmoid (S-shaped) curve arises when binding or response is <strong>cooperative</strong> — each event makes the next more likely. The Hill coefficient (n) describes the steepness: n = 1 gives a hyperbola (no cooperativity, e.g., myoglobin), n = 2.7 gives the sigmoid ODC (haemoglobin), and n → ∞ gives a step function (all-or-nothing response). In pharmacology, log dose-response curves are sigmoid, with EC₅₀ at the midpoint. Plotting on a log scale straightens the middle portion, making comparison of potency and efficacy easier.
+              The sigmoid (S-shaped) curve arises when binding or response is <strong>cooperative</strong> — each event makes the next more likely. The Hill coefficient (n) describes the steepness: n = 1 gives a hyperbola (no cooperativity, e.g., myoglobin), n = 2.7 gives the sigmoid ODC (haemoglobin), and n → ∞ gives a step function (all-or-nothing response). In pharmacology, plotting <strong>dose on a logarithmic axis</strong> converts the hyperbolic dose-response into its familiar sigmoid shape, with EC₅₀ at the midpoint. The central portion of this sigmoid can be linearised using a <strong>probit or logit transformation</strong>, which makes comparison of potency and efficacy between drugs much easier.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
