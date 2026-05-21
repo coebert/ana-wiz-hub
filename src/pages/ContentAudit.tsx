@@ -112,12 +112,19 @@ const ContentAudit = () => {
     })();
   }, []);
 
+  // Realtime connection state + auto-reconnect
+  type RTStatus = "connecting" | "live" | "offline" | "reconnecting";
+  const [rtStatus, setRtStatus] = useState<RTStatus>("connecting");
+  const [reconnectNonce, setReconnectNonce] = useState(0);
+
   // Realtime: live job progress + streaming findings while audit runs
   useEffect(() => {
     if (!job?.id) return;
     const jobId = job.id;
+    setRtStatus((s) => (s === "live" ? s : "connecting"));
+
     const channel = supabase
-      .channel(`audit-job-${jobId}`)
+      .channel(`audit-job-${jobId}-${reconnectNonce}`)
       .on(
         "postgres_changes",
         {
@@ -145,21 +152,71 @@ const ContentAudit = () => {
           );
         },
       )
-      .subscribe();
+      .subscribe((status) => {
+        if (status === "SUBSCRIBED") {
+          setRtStatus("live");
+          // resync after any (re)connect so we don't miss events
+          (async () => {
+            const j = await fetchLatestJob();
+            if (j) await fetchFindings(j.id);
+          })();
+        } else if (
+          status === "CHANNEL_ERROR" ||
+          status === "TIMED_OUT" ||
+          status === "CLOSED"
+        ) {
+          setRtStatus("reconnecting");
+        }
+      });
+
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [job?.id]);
+  }, [job?.id, reconnectNonce]);
 
-  // Fallback poll while running (in case realtime drops)
+  // Browser online/offline → drive status + trigger channel rebuild
+  useEffect(() => {
+    const goOffline = () => setRtStatus("offline");
+    const goOnline = () => {
+      setRtStatus("reconnecting");
+      setReconnectNonce((n) => n + 1);
+    };
+    window.addEventListener("offline", goOffline);
+    window.addEventListener("online", goOnline);
+    if (typeof navigator !== "undefined" && navigator.onLine === false) {
+      setRtStatus("offline");
+    }
+    return () => {
+      window.removeEventListener("offline", goOffline);
+      window.removeEventListener("online", goOnline);
+    };
+  }, []);
+
+  // Auto-retry while in reconnecting state (exponential-ish, capped)
+  useEffect(() => {
+    if (rtStatus !== "reconnecting") return;
+    const t = setTimeout(() => {
+      setReconnectNonce((n) => n + 1);
+    }, 5000);
+    return () => clearTimeout(t);
+  }, [rtStatus, reconnectNonce]);
+
+  const reconnectNow = () => {
+    setRtStatus("reconnecting");
+    setReconnectNonce((n) => n + 1);
+  };
+
+  // Fallback poll while running (in case realtime drops). Polls faster
+  // when realtime isn't live so the UI stays accurate.
   useEffect(() => {
     if (job?.status !== "running" && job?.status !== "pending") return;
+    const interval = rtStatus === "live" ? 8000 : 3000;
     const t = setInterval(async () => {
       const j = await fetchLatestJob();
       if (j) await fetchFindings(j.id);
-    }, 8000);
+    }, interval);
     return () => clearInterval(t);
-  }, [job?.status]);
+  }, [job?.status, rtStatus]);
 
   const startAudit = async (scope: "all" | "section", section?: string) => {
     setStarting(true);
