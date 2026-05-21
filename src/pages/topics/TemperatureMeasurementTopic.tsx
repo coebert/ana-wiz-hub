@@ -17,22 +17,22 @@ const objectives = [
 const keyPoints = [
   { text: "Thermocouples use the Seebeck effect — EMF generated at junction of two dissimilar metals proportional to temperature difference", cites: ["BJA Educ 2014"] },
   { text: "Thermistors are NTC semiconductors — resistance falls exponentially with rising temperature; very sensitive but non-linear", cites: ["Cross & Plunkett Ch.11"] },
-  { text: "Platinum resistance thermometers (RTD/Pt100) have a linear PTC response — most accurate but slowest; laboratory standard", cites: ["NICE CG65"] },
+  { text: "Platinum resistance thermometers (RTD/Pt100) have a linear PTC response — most accurate but slowest; laboratory standard", cites: ["NICE NG125"] },
   { text: "Infrared tympanic thermometry uses the Stefan-Boltzmann law (P ∝ T⁴) with a thermopile sensor to detect IR radiation from the tympanic membrane", cites: ["BJA Educ 2014"] },
-  { text: "The tympanic membrane shares its blood supply (internal carotid) with the hypothalamus, reflecting core temperature", cites: ["Cross & Plunkett Ch.11"] },
-  { text: "Thermocouples are self-generating (no battery needed); thermistors and RTDs require external power via a Wheatstone bridge", cites: ["NICE CG65"] },
+  { text: "The tympanic membrane lies close to the internal carotid artery; its emitted IR radiation is therefore a surrogate for the temperature of blood supplying the hypothalamus, reflecting core temperature", cites: ["Cross & Plunkett Ch.11"] },
+  { text: "Thermocouples are self-generating (no battery needed); thermistors and RTDs require external power via a Wheatstone bridge", cites: ["NICE NG125"] },
   { text: "PA catheter thermistor is the gold standard for core temperature; nasopharyngeal thermocouple best reflects brain temperature", cites: ["BJA Educ 2014"] },
 ];
 
 const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
   {
     title: "Choosing a core temperature site for major surgery",
-    scenario: "A patient for 4-hour open hemicolectomy needs reliable core temperature monitoring per NICE CG65. Compare nasopharyngeal, oesophageal, tympanic and bladder probes.",
+    scenario: "A patient for 4-hour open hemicolectomy needs reliable core temperature monitoring per NICE NG125. Compare nasopharyngeal, oesophageal, tympanic and bladder probes.",
     working: (
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li>NICE CG65 requires continuous core temperature monitoring for any procedure &gt;30 min under GA</li>
+          <li>NICE NG125 (Perioperative care in adults, 2020 — successor to CG65) requires continuous core temperature monitoring for any procedure &gt;30 min under GA, with a target of at least 36.5 °C</li>
           <li>Distal oesophageal probe (lower third) tracks cardiac/aortic blood temperature accurately — first choice in intubated abdominal surgery</li>
           <li>Nasopharyngeal probe approximates brain temperature; risk of epistaxis with coagulopathy</li>
           <li>Tympanic infrared is intermittent and operator-dependent — unsuitable for continuous monitoring</li>
@@ -48,8 +48,8 @@ const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
         </div>
       </div>
     ),
-    answer: "Use a distal oesophageal probe with continuous display, target core 36.5–37.5 °C, pre-warm and forced-air warm intra-operatively per NICE CG65.",
-    cites: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11"],
+    answer: "Use a distal oesophageal probe with continuous display, target core ≥36.5 °C, pre-warm and forced-air warm intra-operatively per NICE NG125.",
+    cites: ["BJA Educ 2014", "NICE NG125", "Cross & Plunkett Ch.11"],
   },
 ];
 
@@ -72,8 +72,8 @@ const TemperatureMeasurementTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
       sectionSources={{
-        objectives: ["Cross & Plunkett Ch.11", "NICE CG65"],
-        keyPoints: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11"],
+        objectives: ["Cross & Plunkett Ch.11", "NICE NG125"],
+        keyPoints: ["BJA Educ 2014", "NICE NG125", "Cross & Plunkett Ch.11"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
@@ -161,8 +161,10 @@ const TemperatureMeasurementTopic = () => {
               <strong> thermopile</strong> (multiple thermocouples in series) to detect the IR radiation emitted by the tympanic membrane.
             </p>
             <p>
-              The tympanic membrane is an excellent site because it shares its blood supply with the <strong>hypothalamus</strong>
-              via the internal carotid artery, making it a reliable surrogate for core temperature.
+              Although the tympanic membrane is itself supplied predominantly by branches of the <em>external</em> carotid
+              artery, its close anatomical proximity to the <strong>internal carotid artery</strong> means its emitted
+              infrared radiation acts as a surrogate for the temperature of blood supplying the <strong>hypothalamus</strong>,
+              making it a reliable reflection of core temperature.
             </p>
             <p>
               <strong>Sources of error:</strong> Cerumen (ear wax) absorbs IR radiation → falsely low readings. Otitis media

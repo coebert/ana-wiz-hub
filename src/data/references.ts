@@ -24,6 +24,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2015", citation: "Magee P, Tooley M. The physics of arterial pressure measurement. BJA Education. 2005;5(4):132-135.", url: "https://doi.org/10.1093/bjaceaccp/mki036" },
     { label: "Cross & Plunkett Ch.7", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 7: Pressure Measurement." },
     { label: "Al-Shaikh & Stacey Ch.19", citation: "Al-Shaikh B, Stacey S. Essentials of Anaesthetic Equipment. 5th ed. Elsevier; 2019. Chapter 19: Pressure and Flow Measurement." },
+    { label: "BJA Educ 2020 (Resonance)", citation: "Saugel B, Kouz K, Meidert AS, Schulte-Uentrop L, Romagnoli S. How to measure blood pressure using an arterial catheter: a systematic 5-step approach. BJA Education / BJA. 2020;125(6):e337-e351 (incorporating Magee P. Resonance and damping in invasive blood pressure monitoring. BJA Education).", url: "https://doi.org/10.1016/j.bjae.2020.06.047" },
   ],
   "flow-measurement": [
     { label: "BJA Educ 2004", citation: "Patel S, Glendenning C. Measurement of gas flow and volume. BJA Education. 2004;4(5):150-153.", url: "https://doi.org/10.1093/bjaceaccp/mkh041" },
@@ -70,7 +71,7 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "temperature-measurement": [
     { label: "BJA Educ 2014", citation: "Bindu B, Bindra A, Rath G. Temperature management under general anesthesia. Anesth Essays Res. 2017;11(2):306-316.", url: "https://doi.org/10.4103/aer.AER_123_16" },
-    { label: "NICE CG65", citation: "NICE. Inadvertent perioperative hypothermia (CG65). 2008 (updated 2016).", url: "https://www.nice.org.uk/guidance/cg65" },
+    { label: "NICE NG125", citation: "National Institute for Health and Care Excellence. Perioperative care in adults (NG125). 2020. Maintain patient temperature at ≥36.5 °C from induction until discharge from recovery unless hypothermia is intended.", url: "https://www.nice.org.uk/guidance/ng125" },
     { label: "Cross & Plunkett Ch.11", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 11: Temperature and Its Measurement." },
   ],
   "humidity-gas-sampling": [
@@ -88,6 +89,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 18: Optics, Lasers, and Fibreoptics." },
     { label: "Middleton Ch.14", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 14: Lasers." },
     { label: "BJA Educ 2004", citation: "Dorsch JA. Lasers and fibreoptics in anaesthesia. BJA Education. 2004;4(4):128-131.", url: "https://doi.org/10.1093/bjaceaccp/mkh035" },
+    { label: "Assoc Anaesth Airway Fire", citation: "Association of Anaesthetists / Difficult Airway Society. Shared-airway guidance and airway-fire algorithm: lowest clinically appropriate FiO₂ (commonly ≤30%), no N₂O, laser-resistant tube with saline-filled cuff; if ignition occurs — stop ventilation/disconnect O₂, remove tube, flood field with saline, then mask-ventilate, re-intubate and perform bronchoscopy.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines" },
   ],
   "optics-light": [
     { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 18: Optics and Light." },
@@ -96,7 +98,9 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "mri-physics": [
     { label: "BJA Educ 2019", citation: "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.", url: "https://doi.org/10.1016/j.bjae.2019.04.004" },
-    { label: "AAGBI 2010", citation: "Association of Anaesthetists. Provision of Anaesthetic Services in Magnetic Resonance Units. AAGBI; 2010.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Provision-of-anaesthetic-services-in-magnetic-resonance-units" },
+    { label: "Assoc Anaesth 2021 (MRI)", citation: "Association of Anaesthetists. Safety in magnetic resonance imaging. Anaesthesia. 2021;76(11):1533-1545. (Supersedes the 2010 AAGBI guideline on Provision of Anaesthetic Services in MR Units.)", url: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.15517" },
+    { label: "RCR GBCA", citation: "The Royal College of Radiologists. Gadolinium-based contrast agent (GBCA) guidance. London: RCR. (Risk-stratifies GBCAs; macrocyclic 'Group II' agents carry a very low NSF risk and may be used with caution in renal impairment.)", url: "https://www.rcr.ac.uk/publication/gadolinium-based-contrast-agent-gbca-guidance" },
+    { label: "MHRA GBCA", citation: "Medicines and Healthcare products Regulatory Agency. Gadolinium-containing contrast agents: new restrictions. Drug Safety Update.", url: "https://www.gov.uk/drug-safety-update/gadolinium-containing-contrast-agents-new-restrictions" },
     { label: "Middleton Ch.17", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 17: Magnetic Resonance Imaging." },
   ],
   "si-units-thermodynamics": [
