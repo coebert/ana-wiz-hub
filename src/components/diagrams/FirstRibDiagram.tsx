@@ -236,32 +236,37 @@ const FirstRibDiagram = () => {
               <text x="55" y="257" fontSize="5" fill={structures["stellate-ganglion"].color} textAnchor="middle">Ganglion</text>
             </g>
 
-            {/* First rib - the bone (drawn solidly so over-crossing structures are unambiguous) */}
+            {/* First rib - drawn as a filled BAND (anterior edge + posterior edge) so that
+                structures crossing the superior surface visibly cross BOTH borders of the bone,
+                making "over" vs "through" unambiguous. */}
             <g className="cursor-pointer" onClick={() => setSelected("rib")}>
-              {/* Main rib body with bone texture */}
-              <path d="M60,230 Q70,180 100,130 Q140,70 220,55 Q300,48 340,65 Q365,78 375,110"
-                fill="none"
+              {/* Filled bone band: forward along anterior edge, back along posterior edge */}
+              <path
+                d="M60,223 Q70,173 100,123 Q140,63 220,48 Q300,41 340,58 Q365,71 375,103
+                   L375,117 Q365,85 340,72 Q300,55 220,62 Q140,77 100,137 Q70,187 60,237 Z"
+                fill={structures.rib.color}
+                fillOpacity={isActive("rib") ? 0.55 : 0.38}
                 stroke={structures.rib.color}
-                strokeWidth={isActive("rib") ? 14 : 11}
-                strokeLinecap="round"
-                opacity={isActive("rib") ? 0.75 : 0.55} />
-              {/* Bone texture lines */}
+                strokeWidth={isActive("rib") ? 1.8 : 1.2}
+                strokeLinejoin="round"
+                filter="url(#fr-shadow)" />
+              {/* Subtle bone-texture speckle on the band */}
               {[0.2, 0.35, 0.5, 0.65, 0.8].map((t, i) => {
                 const x = 60 + t * 315;
                 const y = 230 - t * 170 + Math.sin(t * 6) * 20;
-                return <circle key={i} cx={x} cy={y} r="1" fill={structures.rib.color} opacity="0.25" />;
+                return <circle key={i} cx={x} cy={y} r="1" fill={structures.rib.color} opacity="0.3" />;
               })}
               {/* Head (medial) with facet */}
               <ellipse cx="58" cy="232" rx="8" ry="10"
-                fill={structures.rib.color} fillOpacity={isActive("rib") ? 0.55 : 0.35}
+                fill={structures.rib.color} fillOpacity={isActive("rib") ? 0.6 : 0.4}
                 stroke={structures.rib.color} strokeWidth="1.5" />
-              <circle cx="58" cy="230" r="3" fill={structures.rib.color} fillOpacity="0.45" />
+              <circle cx="58" cy="230" r="3" fill={structures.rib.color} fillOpacity="0.5" />
               <text x="35" y="240" fontSize="5.5" fill={structures.rib.color} fontWeight="bold">Head</text>
               <text x="35" y="247" fontSize="4.5" fill={structures.rib.color} opacity="0.7">(→T1 facet)</text>
               {/* Neck */}
               <text x="72" y="210" fontSize="4.5" fill={structures.rib.color} opacity="0.6">Neck</text>
               {/* Tubercle */}
-              <circle cx="95" cy="145" r="4" fill={structures.rib.color} fillOpacity="0.45"
+              <circle cx="95" cy="145" r="4" fill={structures.rib.color} fillOpacity="0.5"
                 stroke={structures.rib.color} strokeWidth="0.75" />
               <text x="80" y="150" fontSize="4.5" fill={structures.rib.color} opacity="0.6" textAnchor="end">Tubercle</text>
             </g>
