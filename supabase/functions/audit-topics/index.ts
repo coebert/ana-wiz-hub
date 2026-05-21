@@ -53,19 +53,36 @@ const supa = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
 });
 
 // ---------- Fetch helpers ----------
-async function fetchWithTimeout(
+// NOTE: the previous version of this helper called clearTimeout as soon as
+// fetch() resolved its headers, which left subsequent `await res.json()` /
+// `res.text()` body reads with NO timeout. A slow/stalled response body
+// (common with Firecrawl scrape and AI gateway hangs) would then run until
+// the outer per-topic guard fired at 90s, causing every topic to time out.
+//
+// We now expose a helper that runs the *full* fetch+parse inside the abort
+// window, so a hung body stream is aborted just like a hung connection.
+async function fetchJsonWithTimeout<T = any>(
   url: string,
   init: RequestInit,
   timeoutMs: number,
-): Promise<Response> {
+): Promise<{ ok: boolean; status: number; json: T | null; text: string }> {
   const ac = new AbortController();
   const t = setTimeout(() => ac.abort(), timeoutMs);
   try {
-    return await fetch(url, { ...init, signal: ac.signal });
+    const r = await fetch(url, { ...init, signal: ac.signal });
+    const text = await r.text();
+    let json: T | null = null;
+    try {
+      json = text ? (JSON.parse(text) as T) : null;
+    } catch {
+      json = null;
+    }
+    return { ok: r.ok, status: r.status, json, text };
   } finally {
     clearTimeout(t);
   }
 }
+
 
 // ---------- Firecrawl helpers ----------
 function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
