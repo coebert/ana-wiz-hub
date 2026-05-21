@@ -74,12 +74,13 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        SLUDGE features ⇒ cholinergic crisis: stop pyridostigmine, support ventilation, atropine 0.5–1 mg IV for
-        muscarinic features. Pure weakness without cholinergic features ⇒ myasthenic crisis: ITU admission, ventilatory
-        support, IVIg/plasma exchange, treat trigger.
+        SLUDGE features ⇒ cholinergic crisis: stop pyridostigmine, support ventilation, atropine titrated to muscarinic
+        symptoms (Resuscitation Council UK adult bradycardia guidance: 500 µg IV, repeated to a maximum of 3 mg). Pure
+        weakness without cholinergic features ⇒ myasthenic crisis: ITU admission, ventilatory support, IVIg/plasma
+        exchange, treat trigger.
       </>
     ),
-    cites: ["Power & Kam Ch.14"],
+    cites: ["Power & Kam Ch.14", "Resus Council UK 2021"],
   },
 ];
 
