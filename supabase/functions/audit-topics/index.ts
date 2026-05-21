@@ -90,11 +90,19 @@ function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
   };
 }
 
-async function firecrawlScrape(url: string, withScreenshot: boolean) {
+async function firecrawlScrape(
+  url: string,
+  withScreenshot: boolean,
+  timeoutMs = 35_000,
+) {
   const formats: any[] = ["markdown"];
   if (withScreenshot) formats.push("screenshot");
 
-  const scrape = async (targetUrl: string, actions?: unknown[]) => {
+  const scrape = async (
+    targetUrl: string,
+    requestTimeoutMs: number,
+    actions?: unknown[],
+  ) => {
     const r = await fetchWithTimeout(
       "https://api.firecrawl.dev/v2/scrape",
       {
@@ -108,12 +116,12 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
           formats,
           onlyMainContent: true,
           waitFor: actions ? 1200 : 8000,
-          timeout: 60000,
+          timeout: Math.max(8_000, requestTimeoutMs - 3_000),
           actions,
           storeInCache: false,
         }),
       },
-      75_000,
+      requestTimeoutMs,
     );
     if (!r.ok) return null;
     const data = await r.json();
@@ -121,12 +129,18 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
   };
 
   try {
-    const direct = await scrape(url);
+    const startedAt = Date.now();
+    const directBudget = Math.max(12_000, Math.floor(timeoutMs * 0.55));
+    const direct = await scrape(url, directBudget);
     const directMarkdown = String(direct?.markdown ?? "");
     if (directMarkdown.length >= 200) return direct;
 
     const { sectionUrl, actions } = buildTopicScrapeActions(url, withScreenshot);
-    const viaSection = await scrape(sectionUrl, actions);
+    const elapsed = Date.now() - startedAt;
+    const remaining = timeoutMs - elapsed;
+    if (remaining < 10_000) return direct;
+
+    const viaSection = await scrape(sectionUrl, remaining, actions);
     const sectionMarkdown = String(viaSection?.markdown ?? "");
     return sectionMarkdown.length >= 200 ? viaSection : direct;
   } catch (_e) {
@@ -134,7 +148,7 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
   }
 }
 
-async function firecrawlSearch(query: string, limit = 3) {
+async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
   try {
     const r = await fetchWithTimeout(
       "https://api.firecrawl.dev/v2/search",
@@ -150,7 +164,7 @@ async function firecrawlSearch(query: string, limit = 3) {
           scrapeOptions: { formats: ["markdown"] },
         }),
       },
-      45_000,
+      timeoutMs,
     );
     if (!r.ok) return [];
     const data = await r.json();
@@ -260,6 +274,7 @@ async function callAI(args: {
   userText: string;
   imageUrl?: string;
   model?: string;
+  timeoutMs?: number;
 }): Promise<any[]> {
   const userContent: any = args.imageUrl
     ? [
@@ -289,7 +304,7 @@ async function callAI(args: {
         },
       }),
     },
-    args.imageUrl ? 90_000 : 60_000,
+    args.timeoutMs ?? (args.imageUrl ? 25_000 : 30_000),
   );
   if (!res.ok) {
     const body = await res.text();
@@ -335,10 +350,18 @@ async function auditTopic(
     diagram_findings: 0,
   };
 
+  const topicStartedAt = Date.now();
+  const remainingBudget = () => PER_TOPIC_TIMEOUT_MS - (Date.now() - topicStartedAt);
+  const hasBudget = (ms: number) => remainingBudget() > ms;
+
   // 1. Scrape current topic page (markdown + screenshot)
   let page: any = null;
   try {
-    page = await firecrawlScrape(topic.url, true);
+    page = await firecrawlScrape(
+      topic.url,
+      true,
+      Math.min(35_000, Math.max(12_000, remainingBudget() - 25_000)),
+    );
   } catch (e) {
     stages.scrape_error = (e as Error).message;
   }
@@ -367,10 +390,12 @@ async function auditTopic(
       .join(" OR ")
   }`;
 
-  const [bjaResults, generalResults] = await Promise.all([
-    firecrawlSearch(queryBJA, 2),
-    firecrawlSearch(queryGeneral, 2),
-  ]);
+  const [bjaResults, generalResults] = hasBudget(35_000)
+    ? await Promise.all([
+        firecrawlSearch(queryBJA, 2, 12_000),
+        firecrawlSearch(queryGeneral, 2, 12_000),
+      ])
+    : [[], []];
 
   const refs = [...bjaResults, ...generalResults]
     .filter((r) => r?.url && r?.markdown)
@@ -407,6 +432,7 @@ async function auditTopic(
     const textFindings = await callAI({
       system: TEXT_SYSTEM,
       userText,
+      timeoutMs: Math.min(28_000, Math.max(12_000, remainingBudget() - 12_000)),
     });
     stages.text_findings = textFindings.length;
     all.push(...textFindings);
@@ -416,13 +442,14 @@ async function auditTopic(
   }
 
   // 4. Diagram audit (vision) if a screenshot is available
-  if (screenshot) {
+  if (screenshot && hasBudget(20_000)) {
     try {
       const diagramFindings = await callAI({
         system: DIAGRAM_SYSTEM,
         userText: `Topic: ${topic.title}\nSection: ${topic.section}\nURL: ${topic.url}\n\nInspect all visible diagrams.`,
         imageUrl: screenshot,
         model: "google/gemini-2.5-pro",
+        timeoutMs: Math.min(18_000, Math.max(10_000, remainingBudget() - 4_000)),
       });
       stages.diagram_findings = diagramFindings.length;
       for (const f of diagramFindings) {
@@ -434,6 +461,8 @@ async function auditTopic(
       stages.diagram_error = (e as Error).message;
       console.error(`diagram audit error for ${topic.id}`, e);
     }
+  } else if (screenshot) {
+    stages.diagram_error = "Skipped to preserve runtime budget for job continuity";
   }
 
   // attach screenshot reference on any diagram finding missing it
@@ -456,7 +485,7 @@ async function auditTopic(
 const BATCH_SIZE = 1;
 // Hard cap per topic — kept well below the edge wall-clock so the timeout
 // reliably fires and the catch/finally runs BEFORE the runtime is killed.
-const PER_TOPIC_TIMEOUT_MS = 110_000;
+const PER_TOPIC_TIMEOUT_MS = 90_000;
 
 async function reinvokeContinue(jobId: string) {
   try {
@@ -505,7 +534,12 @@ async function runBatch(jobId: string) {
     .maybeSingle();
 
   if (!job) return;
-  if (job.status === "cancelled" || job.status === "completed" || job.status === "failed") {
+  if (
+    job.status === "cancelled" ||
+    job.status === "completed" ||
+    job.status === "completed_with_errors" ||
+    job.status === "failed"
+  ) {
     return;
   }
 
@@ -556,6 +590,8 @@ async function runBatch(jobId: string) {
       await reinvokeContinue(jobId);
     }
   };
+
+  let jobLastError: string | null = null;
 
   try {
     for (let i = cursor; i < end; i++) {
@@ -649,9 +685,10 @@ async function runBatch(jobId: string) {
         failed++;
         logStatus = "failed";
         logError = (e as Error).message;
+        jobLastError = `${topic.id}: ${(e as Error).message}`.slice(0, 500);
         console.error(`audit failed for ${topic.id}`, e);
         await supa.from("topic_audit_jobs").update({
-          last_error: `${topic.id}: ${(e as Error).message}`.slice(0, 500),
+          last_error: jobLastError,
           updated_at: new Date().toISOString(),
         }).eq("id", jobId);
       }
@@ -686,8 +723,9 @@ async function runBatch(jobId: string) {
 
     if (cursor >= queue.length) {
       await supa.from("topic_audit_jobs").update({
-        status: "completed",
+        status: failed > 0 ? "completed_with_errors" : "completed",
         current_topic: null,
+        last_error: jobLastError,
         completed_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       }).eq("id", jobId);

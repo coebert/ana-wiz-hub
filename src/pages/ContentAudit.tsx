@@ -608,6 +608,7 @@ const ContentAudit = () => {
   }, [findings]);
 
   const running = job?.status === "running" || job?.status === "pending";
+  const jobFinished = job?.status === "completed" || job?.status === "completed_with_errors";
   const progress =
     job && job.total > 0 ? Math.round((job.processed / job.total) * 100) : 0;
 
@@ -743,7 +744,7 @@ const ContentAudit = () => {
               <div className="rounded-md border border-border p-3 space-y-2 text-sm">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    {job.status === "completed" ? (
+                    {jobFinished ? (
                       <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                     ) : job.status === "failed" ? (
                       <AlertCircle className="w-4 h-4 text-red-600" />
@@ -1203,6 +1204,7 @@ const AuditTimeline = ({
   if (!job) return null;
 
   const running = job.status === "running" || job.status === "pending";
+  const finished = job.status === "completed" || job.status === "completed_with_errors";
 
   // Sort logs by when they started (oldest first) so the timeline reads left→right
   const sorted = useMemo(
@@ -1246,6 +1248,12 @@ const AuditTimeline = ({
           {job.processed} / {job.total} processed
         </span>
         <span className="text-muted-foreground">·</span>
+        {finished && (
+          <>
+            <span className="text-xs text-emerald-600 font-medium">job finished</span>
+            <span className="text-muted-foreground">·</span>
+          </>
+        )}
         <span className="text-xs text-emerald-600 font-medium">
           {counts.succeeded} succeeded
         </span>
