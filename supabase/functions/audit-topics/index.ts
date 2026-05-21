@@ -620,8 +620,7 @@ async function runBatch(jobId: string) {
   const end = Math.min(cursor + BATCH_SIZE, queue.length);
   let jobLastError: string | null = null;
 
-  try {
-    for (let i = cursor; i < end; i++) {
+  for (let i = cursor; i < end; i++) {
       const { data: state } = await supa
         .from("topic_audit_jobs")
         .select("status")
@@ -737,16 +736,17 @@ async function runBatch(jobId: string) {
       await new Promise((r) => setTimeout(r, 300));
     }
 
-    if (cursor >= queue.length) {
-      await supa.from("topic_audit_jobs").update({
-        status: failed > 0 ? "completed_with_errors" : "completed",
-        current_topic: null,
-        last_error: jobLastError,
-        completed_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-      }).eq("id", jobId);
-      return;
-    }
+  }
+
+  if (cursor >= queue.length) {
+    await supa.from("topic_audit_jobs").update({
+      status: failed > 0 ? "completed_with_errors" : "completed",
+      current_topic: null,
+      last_error: jobLastError,
+      completed_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    }).eq("id", jobId);
+    return;
   }
 
   if (cursor < queue.length) {
