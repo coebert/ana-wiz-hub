@@ -21,10 +21,10 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "A 30-year-old rescued from a house fire has a pulse oximeter reading of 99%. ABG co-oximetry: SaO₂ 78%, COHb 22%, MetHb 1%. Why is the SpO₂ misleading?",
     working:
-      "Pulse oximetry uses 660 nm (red) + 940 nm (IR). It calculates functional saturation = HbO₂ / (HbO₂ + Hb).\nCOHb absorbs almost identically to HbO₂ at 660 nm → the oximeter sees COHb as oxygenated haemoglobin.\nFractional SaO₂ = HbO₂ / (HbO₂ + Hb + COHb + MetHb) = 78% — the true tissue oxygen-carrying capacity.\nCo-oximetry uses ≥4 wavelengths (typically including 535, 585, 660, 940 nm) to resolve all four species.",
+      "Pulse oximetry uses 660 nm (red) + 940 nm (IR). It calculates functional saturation = HbO₂ / (HbO₂ + Hb).\nThe device computes a ratio of ratios R = (AC₆₆₀/DC₆₆₀)/(AC₉₄₀/DC₉₄₀). COHb has an absorbance at 660 nm very close to that of HbO₂ but a very low absorbance at 940 nm — the resulting R value is virtually indistinguishable from that produced by HbO₂, so the algorithm classifies COHb as oxygenated haemoglobin and returns a falsely reassuring SpO₂.\nFractional SaO₂ = HbO₂ / (HbO₂ + Hb + COHb + MetHb) = 78% — the true tissue oxygen-carrying capacity.\nCo-oximetry uses ≥4 wavelengths (typically including 535, 585, 660, 940 nm) to resolve all four species.",
     answer:
-      "SpO₂ is falsely reassuring because COHb and HbO₂ are optically indistinguishable at 660 nm. Treat with high-flow 100% O₂ (reduces COHb half-life from 320 min in air to ~80 min on FiO₂ 1.0) regardless of SpO₂; consider hyperbaric O₂ if COHb >25% or neurological signs.",
-    cites: ["BJA Educ 2004"],
+      "SpO₂ is falsely reassuring because the ratio of COHb absorbances at 660 nm and 940 nm mimics that of HbO₂, so the two-wavelength algorithm reports COHb as oxyhaemoglobin. Treat with high-flow 100% O₂ (reduces COHb half-life from ~320 min in air to ~80 min on FiO₂ 1.0) regardless of SpO₂; consider hyperbaric O₂ if COHb >25% or neurological signs.",
+    cites: ["BJA Educ 2004 (Spectrophotometry)", "BJA Educ 2017 (Pulse oximetry)"],
   },
   {
     title: "Critical angle in a fibreoptic bronchoscope",
