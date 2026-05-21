@@ -534,7 +534,12 @@ async function runBatch(jobId: string) {
     .maybeSingle();
 
   if (!job) return;
-  if (job.status === "cancelled" || job.status === "completed" || job.status === "failed") {
+  if (
+    job.status === "cancelled" ||
+    job.status === "completed" ||
+    job.status === "completed_with_errors" ||
+    job.status === "failed"
+  ) {
     return;
   }
 
