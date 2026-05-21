@@ -174,7 +174,7 @@ const CardiacCycleTopic = () => {
               </div>
               <div className="rounded-lg border border-border p-3">
                 <p className="text-xs font-semibold text-foreground">Resistance</p>
-                <p className="text-xs text-foreground/80 mt-1">SVR 800–1200 · PVR 50–150 dyn·s·cm⁻⁵</p>
+                <p className="text-xs text-foreground/80 mt-1">SVR 800–1500 · PVR 50–150 dyn·s·cm⁻⁵</p>
               </div>
             </div>
             </CollapsibleSubsection>
