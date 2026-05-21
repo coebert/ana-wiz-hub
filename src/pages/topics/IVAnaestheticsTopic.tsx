@@ -214,7 +214,7 @@ const IVAnaestheticsTopic = () => {
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Thiopentone</h2>
           <p className="text-foreground/90 leading-relaxed">
-            Thiobarbiturate. Induction dose 3–5 mg/kg. Highly lipid-soluble, rapid onset. Prepared as 2.5% solution (pH 10.5
+            Thiobarbiturate. Induction dose 3–5 mg/kg<InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />. Highly lipid-soluble, rapid onset. Prepared as 2.5% solution (pH 10.5
             — highly alkaline, tissue necrosis if extravasation). Precipitates if mixed with acidic drugs (e.g., suxamethonium,
             atracurium, opioids).
           </p>
