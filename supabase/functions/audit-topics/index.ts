@@ -426,6 +426,54 @@ async function runSweep(jobId: string, topics: TopicRef[]) {
   }).eq("id", jobId);
 }
 
+// ---------- Sitemap discovery ----------
+const SECTION_SLUGS = [
+  "physics",
+  "physiology",
+  "pharmacology",
+  "anatomy",
+  "clinical",
+  "intensive-care",
+  "perioperative",
+  "chemistry",
+];
+
+async function discoverTopicsFromSitemaps(): Promise<TopicRef[]> {
+  const out: TopicRef[] = [];
+  for (const section of SECTION_SLUGS) {
+    try {
+      const r = await fetch(`${SITE_BASE}/sitemaps/${section}.xml`);
+      if (!r.ok) continue;
+      const xml = await r.text();
+      const locs = Array.from(
+        xml.matchAll(/<loc>([^<]+)<\/loc>/g),
+      ).map((m) => m[1]);
+      for (const url of locs) {
+        const m = url.match(
+          new RegExp(`/${section}/([a-z0-9-]+)$`),
+        );
+        if (!m) continue;
+        const id = m[1];
+        const title = id
+          .split("-")
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(" ");
+        out.push({ id, title, section, description: "", url });
+      }
+    } catch (_e) {
+      // skip
+    }
+  }
+  // dedupe by id+section
+  const seen = new Set<string>();
+  return out.filter((t) => {
+    const k = `${t.section}/${t.id}`;
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+}
+
 // ---------- HTTP handler ----------
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
