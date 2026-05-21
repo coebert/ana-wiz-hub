@@ -11,7 +11,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
-  "State Boyle's, Charles', Gay-Lussac's, Dalton's and Henry's laws and combine them as PV = nRT.",
+  "State Boyle's, Charles', Gay-Lussac's, Avogadro's, Dalton's and Henry's laws and describe how they combine into the ideal gas equation PV = nRT (Avogadro's law contributing the n term).",
   "Define critical temperature, critical pressure and pseudo-critical temperature with values for O₂, N₂O and Entonox.",
   "Explain N₂O cylinder behaviour using saturated vapour pressure and the two-phase dome.",
   "Distinguish adiabatic expansion from the Joule–Thomson (isenthalpic) effect and apply each to clinical cooling phenomena.",
