@@ -353,6 +353,7 @@ export type Database = {
           topic_id: string
           topic_title: string
           topic_url: string | null
+          unverifiable_reason: string | null
         }
         Insert: {
           category?: string
@@ -372,6 +373,7 @@ export type Database = {
           topic_id: string
           topic_title: string
           topic_url?: string | null
+          unverifiable_reason?: string | null
         }
         Update: {
           category?: string
@@ -391,6 +393,7 @@ export type Database = {
           topic_id?: string
           topic_title?: string
           topic_url?: string | null
+          unverifiable_reason?: string | null
         }
         Relationships: [
           {

@@ -22,6 +22,7 @@
     "check:exam-tags": "node scripts/check-exam-tags.mjs",
     "check:exam-tags:fix": "node scripts/check-exam-tags.mjs --fix",
     "gen:citation-allowlist": "WRITE_CITATION_ALLOWLIST=1 vitest run src/__tests__/citation-coverage.test.ts",
+    "check:audit-fixes": "node scripts/verify-audit-fixes.mjs",
     "check:all": "npm run check:diagrams && npm run check:sources && npm run check:exam-tags",
     "prepublish": "npm run check:all && npm run lint && npm run format:check && npm run test",
     "test": "vitest run",
