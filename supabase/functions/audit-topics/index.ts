@@ -383,20 +383,66 @@ async function auditTopic(jobId: string, topic: TopicRef) {
   return all;
 }
 
-// ---------- Sweep runner ----------
-async function runSweep(jobId: string, topics: TopicRef[]) {
+// ---------- Sweep runner (batched + self-chaining) ----------
+// Each invocation processes at most BATCH_SIZE topics, then re-invokes
+// this function with action="continue" so we never hit edge wall-clock limits.
+const BATCH_SIZE = 5;
+
+async function reinvokeContinue(jobId: string) {
+  try {
+    await fetch(`${SUPABASE_URL}/functions/v1/audit-topics`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+        "Content-Type": "application/json",
+        apikey: SUPABASE_SERVICE_ROLE_KEY,
+      },
+      body: JSON.stringify({ action: "continue", job_id: jobId }),
+    });
+  } catch (e) {
+    console.error(`failed to re-invoke for job ${jobId}`, e);
+  }
+}
+
+async function runBatch(jobId: string) {
+  const { data: job } = await supa
+    .from("topic_audit_jobs")
+    .select("id, status, processed, succeeded, failed, findings_count, options")
+    .eq("id", jobId)
+    .maybeSingle();
+
+  if (!job) return;
+  if (job.status === "cancelled" || job.status === "completed" || job.status === "failed") {
+    return;
+  }
+
+  const opts = (job.options ?? {}) as { topics?: TopicRef[]; cursor?: number };
+  const queue: TopicRef[] = Array.isArray(opts.topics) ? opts.topics : [];
+  let cursor: number = typeof opts.cursor === "number" ? opts.cursor : 0;
+
+  if (queue.length === 0) {
+    await supa.from("topic_audit_jobs").update({
+      status: "failed",
+      last_error: "Job options missing topics queue",
+      completed_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    }).eq("id", jobId);
+    return;
+  }
+
   await supa.from("topic_audit_jobs").update({
     status: "running",
-    total: topics.length,
+    updated_at: new Date().toISOString(),
   }).eq("id", jobId);
 
-  let processed = 0,
-    succeeded = 0,
-    failed = 0,
-    findingsCount = 0;
+  let processed = job.processed ?? 0;
+  let succeeded = job.succeeded ?? 0;
+  let failed = job.failed ?? 0;
+  let findingsCount = job.findings_count ?? 0;
 
-  for (const topic of topics) {
-    // bail out if job was cancelled
+  const end = Math.min(cursor + BATCH_SIZE, queue.length);
+
+  for (let i = cursor; i < end; i++) {
     const { data: state } = await supa
       .from("topic_audit_jobs")
       .select("status")
@@ -407,9 +453,11 @@ async function runSweep(jobId: string, topics: TopicRef[]) {
       return;
     }
 
+    const topic = queue[i];
+
     await supa
       .from("topic_audit_jobs")
-      .update({ current_topic: topic.title })
+      .update({ current_topic: topic.title, updated_at: new Date().toISOString() })
       .eq("id", jobId);
 
     try {
@@ -441,26 +489,36 @@ async function runSweep(jobId: string, topics: TopicRef[]) {
       console.error(`audit failed for ${topic.id}`, e);
       await supa.from("topic_audit_jobs").update({
         last_error: `${topic.id}: ${(e as Error).message}`.slice(0, 500),
+        updated_at: new Date().toISOString(),
       }).eq("id", jobId);
     }
 
     processed++;
+    cursor = i + 1;
     await supa.from("topic_audit_jobs").update({
       processed,
       succeeded,
       failed,
       findings_count: findingsCount,
+      options: { ...opts, cursor },
+      updated_at: new Date().toISOString(),
     }).eq("id", jobId);
 
-    // small delay to be polite to Firecrawl
-    await new Promise((r) => setTimeout(r, 500));
+    await new Promise((r) => setTimeout(r, 300));
   }
 
-  await supa.from("topic_audit_jobs").update({
-    status: "completed",
-    current_topic: null,
-    completed_at: new Date().toISOString(),
-  }).eq("id", jobId);
+  if (cursor >= queue.length) {
+    await supa.from("topic_audit_jobs").update({
+      status: "completed",
+      current_topic: null,
+      completed_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    }).eq("id", jobId);
+    return;
+  }
+
+  // More topics remain — re-invoke ourselves for the next batch.
+  await reinvokeContinue(jobId);
 }
 
 // ---------- Sitemap discovery ----------
@@ -531,6 +589,15 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Continue an existing job (self-chain): skip topic discovery entirely.
+    if (action === "continue" && body.job_id) {
+      // @ts-ignore EdgeRuntime global
+      EdgeRuntime.waitUntil(runBatch(body.job_id));
+      return new Response(JSON.stringify({ ok: true, continued: body.job_id }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     // start a new sweep
     let topics: TopicRef[] | undefined = body.topics;
 
@@ -570,6 +637,7 @@ Deno.serve(async (req) => {
             : `${SITE_BASE}/${t.section}/${t.id}`,
       }));
 
+
     const { data: job, error } = await supa
       .from("topic_audit_jobs")
       .insert({
@@ -577,15 +645,14 @@ Deno.serve(async (req) => {
         trigger: body.trigger ?? "manual",
         triggered_by: body.user_id ?? null,
         total: norm.length,
-        options: body.options ?? {},
+        options: { ...(body.options ?? {}), topics: norm, cursor: 0 },
       })
       .select()
       .single();
     if (error) throw error;
 
-    // background
     // @ts-ignore EdgeRuntime is global in Supabase Functions
-    EdgeRuntime.waitUntil(runSweep(job.id, norm));
+    EdgeRuntime.waitUntil(runBatch(job.id));
 
     return new Response(JSON.stringify({ ok: true, job_id: job.id }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
