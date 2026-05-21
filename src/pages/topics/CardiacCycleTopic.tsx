@@ -298,7 +298,7 @@ const CardiacCycleTopic = () => {
             <ul className="mt-3 space-y-2 text-sm text-foreground/80">
               <li><strong>Lower pressure system</strong> — RV peak ~25 mmHg vs LV ~120 mmHg; thinner, crescentic geometry.</li>
               <li><strong>Earlier opening, later closure</strong> — pulmonary valve opens before aortic and closes after, producing physiological splitting of S2.</li>
-              <li><strong>Continuous ejection profile</strong> — low PVR allows ejection throughout most of systole with minimal isovolumetric phase.</li>
+              <li><strong>Continuous ejection profile</strong> — low PVR allows ejection throughout most of systole, with <strong>shorter isovolumetric phases</strong> than the LV.</li>
               <li><strong>Afterload-sensitive</strong> — small rises in PVR (hypoxia, hypercapnia, acidosis, PE) markedly reduce RV stroke volume.</li>
               <li><strong>Ventricular interdependence</strong> — shared septum and pericardium mean RV dilation impairs LV filling (acute PE, RV infarct, tamponade).</li>
             </ul>
