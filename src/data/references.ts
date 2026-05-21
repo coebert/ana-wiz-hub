@@ -55,6 +55,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cross & Plunkett Ch.12-13", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapters 12-13: Electricity and Magnetism." },
     { label: "Middleton Ch.15", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 15: Electricity." },
     { label: "BJA Educ 2017", citation: "Pollard BJ. Electrical safety in the operating theatre. BJA Education. 2017;17(10):339-344.", url: "https://doi.org/10.1093/bjaed/mkx035" },
+    { label: "BJA Educ 2013 (Basic physics)", citation: "Davis PD, Kenny GNC. Basic physics for the anaesthetist. BJA Education. 2013;13(4):115-119. Covers Ohm's law, capacitance, inductance (E = ½LI²) and the macroshock current ranges (50–100 mA → VF).", url: "https://doi.org/10.1093/bjaceaccp/mks065" },
+    { label: "BJA Educ 2008 (Electricity)", citation: "Boumphrey S, Marshall N. Electricity and safety. BJA Education. 2008;8(4):133-137.", url: "https://doi.org/10.1093/bjaceaccp/mkn029" },
   ],
   "pulse-oximetry": [
     { label: "BJA Educ 2014", citation: "Jubran A. Pulse oximetry. Critical Care. 2015;19:272.", url: "https://doi.org/10.1186/s13054-015-0984-8" },
