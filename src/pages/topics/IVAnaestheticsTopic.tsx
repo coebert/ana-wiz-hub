@@ -229,7 +229,7 @@ const IVAnaestheticsTopic = () => {
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Ketamine</h2>
           <p className="text-foreground/90 leading-relaxed">
-            Phencyclidine derivative. <strong>NMDA receptor antagonist</strong>. Dose: 1–2 mg/kg IV, 5–10 mg/kg IM. The
+            Phencyclidine derivative. <strong>NMDA receptor antagonist</strong>. Dose: 1–2 mg/kg IV, 5–10 mg/kg IM<InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />. The
             S(+)-enantiomer is 2× more potent. Produces "dissociative anaesthesia" — catalepsy, analgesia, amnesia with eyes
             open and maintained airway reflexes (relatively).
           </p>
