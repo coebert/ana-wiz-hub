@@ -35,16 +35,19 @@ const workedExamples: WorkedExample[] = [
         <br />
         Ask the surgeon to stop traction immediately. The reflex usually fatigues with repeated stimulation. Ensure
         ventilation, depth and oxygenation are adequate — hypoxia/hypercapnia exacerbate vagal tone. If persistent or
-        haemodynamically significant, give atropine 10–20 µg/kg IV (or glycopyrrolate 4–8 µg/kg IV).
+        haemodynamically significant, give an antimuscarinic per Resuscitation Council UK adult bradycardia guidance
+        (atropine 500 µg IV, repeated up to 3 mg) — paediatric weight-based dosing (atropine 10–20 µg/kg IV; glycopyrrolate
+        4–8 µg/kg IV) is widely quoted in the Association of Anaesthetists literature.
       </>
     ),
     answer: (
       <>
-        Stop surgical stimulus → check ventilation/depth → atropine 10–20 µg/kg IV if persistent. Discuss prophylactic
-        antimuscarinic at induction with the team if multiple muscles are to be operated on.
+        Stop surgical stimulus → check ventilation/depth → antimuscarinic if persistent (Resus Council UK adult
+        bradycardia algorithm; weight-based paediatric atropine 10–20 µg/kg IV). Discuss prophylactic antimuscarinic
+        at induction with the team if multiple muscles are to be operated on.
       </>
     ),
-    cites: ["Ganong Ch.13"],
+    cites: ["Ganong Ch.13", "Resus Council UK 2021"],
   },
   {
     title: "Cholinergic crisis vs myasthenic crisis",
