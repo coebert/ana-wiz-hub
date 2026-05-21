@@ -471,18 +471,50 @@ const ContentAudit = () => {
                     style={{ width: `${progress}%` }}
                   />
                 </div>
-                <div className="flex flex-wrap gap-4 text-xs text-muted-foreground">
+                <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
                   <span>Succeeded: {job.succeeded}</span>
                   <span>Failed: {job.failed}</span>
                   <span>Findings: {job.findings_count}</span>
+                  <span>Elapsed: {fmtDuration(elapsedMs)}</span>
+                  {running && etaMs > 0 && (
+                    <span>ETA: ~{fmtDuration(etaMs)}</span>
+                  )}
                   {job.current_topic && (
-                    <span>Now: {job.current_topic}</span>
+                    <span className="text-foreground">
+                      Now auditing:{" "}
+                      <span className="font-medium">{job.current_topic}</span>
+                    </span>
                   )}
                 </div>
                 {job.last_error && (
                   <p className="text-xs text-red-600">
                     Last error: {job.last_error}
                   </p>
+                )}
+                {running && recentFindings.length > 0 && (
+                  <div className="pt-2 border-t border-border space-y-1">
+                    <p className="text-xs font-medium text-muted-foreground">
+                      Live activity
+                    </p>
+                    {recentFindings.map((f) => (
+                      <div
+                        key={f.id}
+                        className="flex items-center gap-2 text-xs"
+                      >
+                        <Badge
+                          className={`${severityColors[f.severity]} border-0 capitalize text-[10px] py-0`}
+                        >
+                          {f.severity}
+                        </Badge>
+                        <span className="truncate text-foreground">
+                          {f.topic_title}
+                        </span>
+                        <span className="truncate text-muted-foreground">
+                          — {f.summary}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
             )}
