@@ -247,7 +247,9 @@ const SIUnitsThermodynamicsTopic = () => {
               </p>
               <p>
                 The <strong>second law</strong> states heat flows spontaneously hot → cold and entropy of an isolated system always increases. This explains
-                perioperative heat loss to the cold theatre via radiation (40%), convection (30%), evaporation (25%), and conduction (5%). The <strong>third law</strong>
+                perioperative heat loss to the cold theatre. Typical proportions cited (in awake adults at rest) are radiation ≈ 40%, convection ≈ 30%,
+                evaporation ≈ 25% and conduction ≈ 5%, but these vary considerably with exposed surface area, ambient airflow, surgical irrigation and
+                whether the patient is awake or anaesthetised (Sessler, Anesthesiology 2008). The <strong>third law</strong>
                 establishes absolute zero (0 K = −273.15 °C) as the point where entropy approaches zero — defining the Kelvin scale used in gas law calculations.
               </p>
             </div>
