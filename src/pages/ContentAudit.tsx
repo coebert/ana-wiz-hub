@@ -532,18 +532,6 @@ const ContentAudit = () => {
     return () => clearInterval(t);
   }, [running]);
 
-  const fmtDuration = (ms: number) => {
-    if (!Number.isFinite(ms) || ms < 0) return "—";
-    const s = Math.floor(ms / 1000);
-    const m = Math.floor(s / 60);
-    const sec = s % 60;
-    if (m >= 60) {
-      const h = Math.floor(m / 60);
-      return `${h}h ${m % 60}m`;
-    }
-    return m > 0 ? `${m}m ${sec}s` : `${sec}s`;
-  };
-
   const elapsedMs = job ? Date.now() - new Date(job.created_at).getTime() : 0;
   const etaMs =
     running && job && job.processed > 0 && job.total > job.processed
