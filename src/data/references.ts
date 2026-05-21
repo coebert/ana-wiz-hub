@@ -44,14 +44,15 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Davey & Diba Ch.5", citation: "Davey AJ, Diba A. Ward's Anaesthetic Equipment. 6th ed. Chapter 5: Breathing Systems and Their Components." },
   ],
   "electrical-safety": [
-    { label: "BJA Educ 2012", citation: "Boumphrey S, Langton JA. Electrical safety in the operating theatre. BJA Education. 2003;3(1):10-14.", url: "https://doi.org/10.1093/bjaceaccp/mkg010" },
-    { label: "Cross & Plunkett Ch.14", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 14: Electrical Safety." },
-    { label: "Middleton Ch.16", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 16: Electrical Safety." },
+    { label: "BJA Educ 2017", citation: "Pollard BJ. Electrical safety in the operating theatre. BJA Education. 2017;17(10):339-344.", url: "https://doi.org/10.1093/bjaed/mkx035" },
+    { label: "Cross & Plunkett Ch.14", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 14: Electrical Safety." },
+    { label: "Middleton Ch.16", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 16: Electrical Safety." },
+    { label: "IEC 60601-1", citation: "International Electrotechnical Commission. IEC 60601-1:2005+AMD1:2012+AMD2:2020 — Medical electrical equipment: General requirements for basic safety and essential performance." },
   ],
   "electricity-magnetism": [
-    { label: "Cross & Plunkett Ch.12-13", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapters 12-13: Electricity and Magnetism." },
+    { label: "Cross & Plunkett Ch.12-13", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapters 12-13: Electricity and Magnetism." },
     { label: "Middleton Ch.15", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 15: Electricity." },
-    { label: "BJA Educ 2003", citation: "Boumphrey S, Langton JA. Electrical principles. BJA Education. 2003;3(1):10-14.", url: "https://doi.org/10.1093/bjaceaccp/mkg010" },
+    { label: "BJA Educ 2017", citation: "Pollard BJ. Electrical safety in the operating theatre. BJA Education. 2017;17(10):339-344.", url: "https://doi.org/10.1093/bjaed/mkx035" },
   ],
   "pulse-oximetry": [
     { label: "BJA Educ 2014", citation: "Jubran A. Pulse oximetry. Critical Care. 2015;19:272.", url: "https://doi.org/10.1186/s13054-015-0984-8" },
@@ -79,9 +80,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Middleton Ch.13", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 13: Ultrasound." },
   ],
   "lasers-fibreoptics": [
+    { label: "BJA Educ 2017", citation: "English J, Rana S. Management of the shared airway. BJA Education. 2017;17(8):265-270.", url: "https://doi.org/10.1093/bjaed/mkx009" },
+    { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 18: Optics, Lasers, and Fibreoptics." },
+    { label: "Middleton Ch.14", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 14: Lasers." },
     { label: "BJA Educ 2004", citation: "Dorsch JA. Lasers and fibreoptics in anaesthesia. BJA Education. 2004;4(4):128-131.", url: "https://doi.org/10.1093/bjaceaccp/mkh035" },
-    { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 18: Optics, Lasers, and Fibreoptics." },
-    { label: "Middleton Ch.14", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 14: Lasers." },
   ],
   "optics-light": [
     { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 18: Optics and Light." },
@@ -94,14 +96,18 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Middleton Ch.17", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 17: Magnetic Resonance Imaging." },
   ],
   "si-units-thermodynamics": [
-    { label: "Cross & Plunkett Ch.1-2", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapters 1-2: SI Units, Heat, and Thermodynamics." },
-    { label: "Middleton Ch.1", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 1: SI Units and Simple Mechanics." },
-    { label: "Middleton Ch.8", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 8: Heat and Thermodynamics." },
+    { label: "Cross & Plunkett Ch.1-2", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapters 1-2: SI Units, Heat, and Thermodynamics." },
+    { label: "Middleton Ch.1", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 1: SI Units and Simple Mechanics." },
+    { label: "Middleton Ch.8", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 8: Heat and Thermodynamics." },
+    { label: "BJA Educ 2008", citation: "Sessler DI. Temperature monitoring and perioperative thermoregulation. Anesthesiology. 2008;109(2):318-338. (Quantifies relative contributions of radiation, convection, evaporation and conduction to perioperative heat loss.)", url: "https://doi.org/10.1097/ALN.0b013e31817f6d76" },
+    { label: "NICE CG65", citation: "National Institute for Health and Care Excellence. Hypothermia: prevention and management in adults having surgery (CG65). 2008 (updated 2016).", url: "https://www.nice.org.uk/guidance/cg65" },
   ],
   "math-concepts": [
-    { label: "Cross & Plunkett Ch.1", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 1: Mathematical Concepts." },
-    { label: "Middleton Appendix", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Mathematical Appendix." },
-    { label: "Peck & Hill Appendix", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Appendix: Mathematical and Pharmacokinetic Principles." },
+    { label: "Cross & Plunkett Ch.1", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 1: Mathematical Concepts." },
+    { label: "Middleton Appendix", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Mathematical Appendix." },
+    { label: "Peck & Hill Appendix", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Appendix: Mathematical and Pharmacokinetic Principles." },
+    { label: "Ultiva SmPC", citation: "Aspen. Ultiva 1 mg / 2 mg / 5 mg powder for concentrate for solution for injection or infusion — Summary of Product Characteristics. electronic Medicines Compendium.", url: "https://www.medicines.org.uk/emc/product/12294/smpc" },
+    { label: "Assoc Anaesth 2021", citation: "Klein AA, Meek T, Allcock E, et al. Recommendations for standards of monitoring during anaesthesia and recovery 2021. Anaesthesia. 2021;76(9):1212-1223.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Monitoring-during-anaesthesia-recovery" },
   ],
   "defibrillation-pacing": [
     { label: "Resuscitation Council UK 2021", citation: "Resuscitation Council UK. Advanced Life Support Guidelines. 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines" },

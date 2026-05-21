@@ -67,12 +67,13 @@ const SIUnitsThermodynamicsTopic = () => {
           "Cross & Plunkett Ch.1-2",
           "Middleton Ch.1",
           "Middleton Ch.8",
+          "NICE CG65",
         ],
         workedExamples: ["Middleton Ch.8", "Middleton Ch.1"],
       }}
       keyPoints={[
         { text: "There are 7 SI base units: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), candela (cd)", cites: ["Cross & Plunkett Ch.1-2"] },
-        { text: "Key derived units: Pascal (N/m²), Joule (N·m), Watt (J/s). Pressure conversions: 1 atm = 101.3 kPa = 760 mmHg", cites: ["Middleton Ch.8"] },
+        { text: "Key derived units: Pascal (N/m²), Joule (N·m), Watt (J/s). Pressure conversions: 1 atm = 101.3 kPa = 760 mmHg ≈ 1033 cmH₂O", cites: ["Middleton Ch.8"] },
         { text: "All individual gas laws (Boyle's, Charles', Gay-Lussac's, Avogadro's) derive from the ideal gas equation PV = nRT", cites: ["Middleton Ch.1"] },
         { text: "Specific heat capacity (c): energy to raise 1 kg by 1 K; water's high c (4.18 kJ/kg/K) provides thermal stability", cites: ["Cross & Plunkett Ch.1-2"] },
         { text: "Latent heat of vaporisation (2260 kJ/kg for water): energy for phase change without temperature change — drives evaporative heat loss", cites: ["Middleton Ch.8"] },
@@ -106,10 +107,10 @@ const SIUnitsThermodynamicsTopic = () => {
                 always be in <strong>Kelvin</strong> (K = °C + 273.15).
               </p>
               <p>
-                Pressure unit conversions are frequently tested: <strong>1 atmosphere = 101.3 kPa = 760 mmHg = 1013 cmH₂O =
-                14.7 psi = 1.013 bar</strong>. Understanding these conversions is essential for interpreting arterial blood gases,
-                ventilator settings, and gas cylinder pressures. The SI unit of pressure is the Pascal, though mmHg and cmH₂O
-                remain in widespread clinical use.
+                Pressure unit conversions are frequently tested: <strong>1 atmosphere = 101.3 kPa = 760 mmHg ≈ 1033 cmH₂O =
+                14.7 psi = 1.013 bar</strong>. (The cmH₂O equivalence comes from P = ρgh with ρ = 1000 kg/m³ and g = 9.81 m/s².)
+                Understanding these conversions is essential for interpreting arterial blood gases, ventilator settings, and
+                gas cylinder pressures. The SI unit of pressure is the Pascal, though mmHg and cmH₂O remain in widespread clinical use.
               </p>
             </div>
             </CollapsibleSubsection>
@@ -174,14 +175,15 @@ const SIUnitsThermodynamicsTopic = () => {
                   <li><strong>Thermocouple:</strong> Seebeck effect — voltage at junction of two dissimilar metals (copper–constantan). Fast, used in PA catheters</li>
                   <li><strong>Thermistor:</strong> Semiconductor whose resistance falls exponentially with temperature (NTC). Sensitive, used in oesophageal/rectal probes</li>
                   <li><strong>RTD (platinum):</strong> Resistance increases linearly with temperature. Very accurate laboratory standard — slower than thermistors</li>
-                  <li><strong>Infrared tympanic:</strong> Detects IR radiation (Wien's law — peak λ ∝ 1/T). Non-contact, &lt;2 s, but accuracy affected by cerumen/positioning</li>
+                  <li><strong>Infrared tympanic:</strong> Detects IR radiation whose intensity is proportional to the fourth power of absolute temperature (Stefan–Boltzmann law: j* = σT⁴); peak wavelength shifts with T per Wien's displacement law. Non-contact, &lt;2 s, but accuracy affected by cerumen/positioning</li>
                   <li><strong>Liquid crystal:</strong> Cholesteric crystals change colour with T. Forehead strips — convenient but inaccurate (±1–2 °C)</li>
                 </ul>
               </div>
               <p>
                 <strong>Perioperative temperature management:</strong> Hypothermia (&lt;36 °C) prolongs neuromuscular blockade, reduces MAC, impairs platelet
-                function, increases wound infection rates, and triggers shivering (↑VO₂ 200–400%). NICE recommends active warming for all procedures &gt;30 min
-                with a target core temperature ≥36 °C.
+                function, increases wound infection rates, and triggers shivering (↑VO₂ 200–400%). NICE guideline CG65
+                (Hypothermia: prevention and management in adults having surgery) recommends active warming for all
+                procedures &gt;30 minutes, with a target core temperature ≥36 °C from induction to discharge from recovery.
               </p>
             </div>
             </CollapsibleSubsection>
@@ -245,7 +247,9 @@ const SIUnitsThermodynamicsTopic = () => {
               </p>
               <p>
                 The <strong>second law</strong> states heat flows spontaneously hot → cold and entropy of an isolated system always increases. This explains
-                perioperative heat loss to the cold theatre via radiation (40%), convection (30%), evaporation (25%), and conduction (5%). The <strong>third law</strong>
+                perioperative heat loss to the cold theatre. Typical proportions cited (in awake adults at rest) are radiation ≈ 40%, convection ≈ 30%,
+                evaporation ≈ 25% and conduction ≈ 5%, but these vary considerably with exposed surface area, ambient airflow, surgical irrigation and
+                whether the patient is awake or anaesthetised (Sessler, Anesthesiology 2008). The <strong>third law</strong>
                 establishes absolute zero (0 K = −273.15 °C) as the point where entropy approaches zero — defining the Kelvin scale used in gas law calculations.
               </p>
             </div>

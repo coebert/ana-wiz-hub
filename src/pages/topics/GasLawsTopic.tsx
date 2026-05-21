@@ -237,8 +237,9 @@ const GasLawsTopic = () => {
               <p className="text-sm font-medium text-foreground">Clinical Application</p>
               <p className="text-sm text-muted-foreground mt-1">
                 Calculating alveolar oxygen tension using the alveolar gas equation depends on Dalton's law. At sea level,
-                PaO₂ ≈ FiO₂ × (Patm − PH₂O) − PaCO₂/R. Understanding partial pressures is essential for calculating safe
-                FiO₂ at altitude and during hyperbaric therapy.
+                PAO₂ ≈ FiO₂ × (Patm − PH₂O) − PaCO₂/R, where PAO₂ is the <em>alveolar</em> oxygen partial pressure (not
+                the arterial PaO₂). Understanding partial pressures is essential for calculating safe FiO₂ at altitude
+                and during hyperbaric therapy.
               </p>
             </div>
             </CollapsibleSubsection>
@@ -247,7 +248,8 @@ const GasLawsTopic = () => {
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="The Ideal Gas Law">
             <p className="text-foreground/90 leading-relaxed">
-              The ideal gas equation <strong>PV = nRT</strong> combines all three laws into a single expression, where
+              The ideal gas equation <strong>PV = nRT</strong> unifies Boyle's, Charles', Gay-Lussac's <em>and</em>
+              Avogadro's laws (V ∝ n at constant T and P, which supplies the molar term n) into a single expression, where
               P = pressure, V = volume, n = number of moles, R = universal gas constant (8.314 J·mol⁻¹·K⁻¹), and
               T = absolute temperature. Real gases deviate from ideal behaviour at high pressures and low temperatures,
               described by the van der Waals equation.

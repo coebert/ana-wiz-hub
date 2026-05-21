@@ -57,8 +57,8 @@ const LaserFibreopticsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["BJA Educ 2004", "Middleton Ch.14", "Cross & Plunkett Ch.18"],
-        keyPoints: ["BJA Educ 2004", "Middleton Ch.14", "Cross & Plunkett Ch.18"],
+        workedExamples: ["BJA Educ 2017", "Middleton Ch.14", "Cross & Plunkett Ch.18"],
+        keyPoints: ["BJA Educ 2017", "Middleton Ch.14", "Cross & Plunkett Ch.18", "BJA Educ 2004"],
       }}
       keyPoints={[
         { text: "LASER = Light Amplification by Stimulated Emission of Radiation — requires population inversion in a gain medium", cites: ["BJA Educ 2004"] },
@@ -67,7 +67,7 @@ const LaserFibreopticsTopic = () => {
         { text: "Total internal reflection occurs when light travels from high to low refractive index at angle > critical angle (sin θc = n₂/n₁)", cites: ["BJA Educ 2004"] },
         { text: "Coherent fibre bundles transmit images (fibres maintain spatial position); incoherent bundles transmit light only", cites: ["Middleton Ch.14"] },
         { text: "Numerical aperture NA = √(n₁² − n₂²) defines the acceptance cone angle of the fibre", cites: ["Cross & Plunkett Ch.18"] },
-        { text: "Reduce FiO₂ to ≤30% during airway laser surgery; avoid N₂O as it supports combustion", cites: ["BJA Educ 2004"] },
+        { text: "Reduce FiO₂ to ≤30% during airway laser surgery and avoid N₂O (supports combustion) — reaffirmed in current shared-airway guidance", cites: ["BJA Educ 2017"] },
       ]}
       coreConcepts={
         <>

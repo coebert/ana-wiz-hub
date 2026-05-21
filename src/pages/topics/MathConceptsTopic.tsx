@@ -24,18 +24,18 @@ const workedExamples: WorkedExample[] = [
     working:
       "τ = Volume / Flow = 2.5 L / 8 L·min⁻¹ = 0.31 min ≈ 19 s.\nWash-in is a negative exponential rise: 1 τ → 63%, 3 τ → 95%, 5 τ → 99%.\nTime to ~95% ≈ 3 τ = 3 × 19 s ≈ 57 s.",
     answer:
-      "End-tidal O₂ reaches ~95% after roughly one minute (3 time constants). This underpins the AAGBI recommendation of ≥3 minutes of tidal-volume pre-oxygenation, which provides a comfortable safety margin to ≥99% (5τ).",
-    cites: ["Peck & Hill Appendix"],
+      "End-tidal O₂ reaches ~95% after roughly one minute (3 time constants). This underpins the Association of Anaesthetists' recommendation (Recommendations for standards of monitoring during anaesthesia and recovery 2021) for ≥3 minutes of tidal-volume pre-oxygenation, which provides a comfortable safety margin to ≥99% (5τ).",
+    cites: ["Assoc Anaesth 2021", "Peck & Hill Appendix"],
   },
   {
     title: "Half-life vs time constant in remifentanil",
     scenario:
-      "Remifentanil has a context-sensitive half-time of about 3 minutes after a 4-hour infusion. Estimate the corresponding time constant.",
+      "Remifentanil has a context-sensitive half-time of about 3 minutes after a 4-hour infusion (Ultiva SmPC: 3–4 min). Estimate the corresponding time constant.",
     working:
       "t½ = 0.693 × τ → τ = t½ / 0.693 = 3 / 0.693 ≈ 4.3 min.\nAfter stopping the infusion: 1 τ (≈4.3 min) → 63% drop, 3 τ (≈13 min) → 95% drop.",
     answer:
       "The time constant of decay is ~4.3 min. Plasma concentration falls by ~95% within 13 min of stopping the infusion, explaining why patients reliably emerge within minutes regardless of infusion duration.",
-    cites: ["Middleton Appendix"],
+    cites: ["Ultiva SmPC", "Middleton Appendix"],
   },
 ];
 
@@ -59,7 +59,7 @@ const MathConceptsTopic = () => {
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.1"],
-        workedExamples: ["Peck & Hill Appendix", "Middleton Appendix"],
+        workedExamples: ["Peck & Hill Appendix", "Middleton Appendix", "Ultiva SmPC", "Assoc Anaesth 2021"],
         keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Appendix", "Middleton Appendix"],
       }}
       keyPoints={[
