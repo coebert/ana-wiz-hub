@@ -1,3 +1,4 @@
+
 import { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
@@ -95,6 +96,18 @@ const severityColors: Record<string, string> = {
   minor: "bg-amber-100 text-amber-900 dark:bg-amber-900/30 dark:text-amber-200",
   major: "bg-orange-100 text-orange-900 dark:bg-orange-900/30 dark:text-orange-200",
   critical: "bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-200",
+};
+
+const fmtDuration = (ms: number) => {
+  if (!Number.isFinite(ms) || ms < 0) return "—";
+  const s = Math.floor(ms / 1000);
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  if (m >= 60) {
+    const h = Math.floor(m / 60);
+    return `${h}h ${m % 60}m`;
+  }
+  return m > 0 ? `${m}m ${sec}s` : `${sec}s`;
 };
 
 const ContentAudit = () => {
@@ -532,18 +545,6 @@ const ContentAudit = () => {
     return () => clearInterval(t);
   }, [running]);
 
-  const fmtDuration = (ms: number) => {
-    if (!Number.isFinite(ms) || ms < 0) return "—";
-    const s = Math.floor(ms / 1000);
-    const m = Math.floor(s / 60);
-    const sec = s % 60;
-    if (m >= 60) {
-      const h = Math.floor(m / 60);
-      return `${h}h ${m % 60}m`;
-    }
-    return m > 0 ? `${m}m ${sec}s` : `${sec}s`;
-  };
-
   const elapsedMs = job ? Date.now() - new Date(job.created_at).getTime() : 0;
   const etaMs =
     running && job && job.processed > 0 && job.total > job.processed
@@ -672,21 +673,10 @@ const ContentAudit = () => {
                     style={{ width: `${progress}%` }}
                   />
                 </div>
-                <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-                  <span>Succeeded: {job.succeeded}</span>
-                  <span>Failed: {job.failed}</span>
-                  <span>Findings: {job.findings_count}</span>
-                  <span>Elapsed: {fmtDuration(elapsedMs)}</span>
-                  {running && etaMs > 0 && (
-                    <span>ETA: ~{fmtDuration(etaMs)}</span>
-                  )}
-                  {job.current_topic && (
-                    <span className="text-foreground">
-                      Now auditing:{" "}
-                      <span className="font-medium">{job.current_topic}</span>
-                    </span>
-                  )}
-                </div>
+
+                {/* Timeline UI */}
+                <AuditTimeline job={job} topicLogs={topicLogs} />
+
                 {job.last_error && (
                   <p className="text-xs text-red-600">
                     Last error: {job.last_error}
@@ -1085,6 +1075,128 @@ const ContentAudit = () => {
           </CardContent>
         </Card>
       </main>
+    </div>
+  );
+};
+
+/* ------------------------------------------------------------------
+   Audit Timeline — per-job visual progress strip
+   ------------------------------------------------------------------ */
+const AuditTimeline = ({
+  job,
+  topicLogs,
+}: {
+  job: Job;
+  topicLogs: TopicLog[];
+}) => {
+  if (!job) return null;
+
+  const running = job.status === "running" || job.status === "pending";
+
+  // Sort logs by when they started (oldest first) so the timeline reads left→right
+  const sorted = useMemo(
+    () =>
+      [...topicLogs].sort((a, b) => {
+        const ta = a.started_at ? new Date(a.started_at).getTime() : Infinity;
+        const tb = b.started_at ? new Date(b.started_at).getTime() : Infinity;
+        return ta - tb;
+      }),
+    [topicLogs],
+  );
+
+  const counts = useMemo(() => {
+    const c = { pending: 0, running: 0, succeeded: 0, failed: 0, skipped: 0 };
+    for (const l of sorted) {
+      if (l.status in c) c[l.status as keyof typeof c]++;
+    }
+    return c;
+  }, [sorted]);
+
+  const dotCls = (status: TopicLog["status"]) => {
+    switch (status) {
+      case "succeeded":
+        return "bg-emerald-500";
+      case "failed":
+        return "bg-red-500";
+      case "running":
+        return "bg-blue-500 animate-pulse";
+      case "skipped":
+        return "bg-muted";
+      default:
+        return "bg-muted/40 border border-muted";
+    }
+  };
+
+  return (
+    <div className="space-y-3">
+      {/* Metric pills */}
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-xs text-muted-foreground">
+          {job.processed} / {job.total} processed
+        </span>
+        <span className="text-muted-foreground">·</span>
+        <span className="text-xs text-emerald-600 font-medium">
+          {counts.succeeded} succeeded
+        </span>
+        <span className="text-muted-foreground">·</span>
+        <span className="text-xs text-red-600 font-medium">
+          {counts.failed} failed
+        </span>
+        <span className="text-muted-foreground">·</span>
+        <span className="text-xs text-muted-foreground">
+          {counts.running} running
+        </span>
+        {running && (
+          <>
+            <span className="text-muted-foreground">·</span>
+            <span className="text-xs text-muted-foreground">
+              Elapsed: {fmtDuration(Date.now() - new Date(job.created_at).getTime())}
+            </span>
+          </>
+        )}
+      </div>
+
+      {/* Visual dot strip */}
+      {sorted.length > 0 && (
+        <div className="space-y-1">
+          <div className="flex flex-wrap gap-[2px]">
+            {sorted.map((log) => (
+              <div
+                key={log.id}
+                className={`w-3 h-5 rounded-sm ${dotCls(log.status)}`}
+                title={`${log.topic_title} — ${log.status}${log.duration_ms ? ` — ${(log.duration_ms / 1000).toFixed(1)}s` : ""}`}
+              />
+            ))}
+            {/* Fill remaining pending slots so the bar grows to full width */}
+            {Array.from({ length: Math.max(0, job.total - sorted.length) }).map(
+              (_, i) => (
+                <div
+                  key={`pending-${i}`}
+                  className="w-3 h-5 rounded-sm bg-muted/40 border border-muted"
+                  title="Pending"
+                />
+              ),
+            )}
+          </div>
+          <div className="flex justify-between text-[10px] text-muted-foreground tabular-nums">
+            <span>0</span>
+            <span>{Math.round(job.total / 2)}</span>
+            <span>{job.total}</span>
+          </div>
+        </div>
+      )}
+
+      {/* Current topic */}
+      {job.current_topic && (
+        <div className="flex items-center gap-2 text-sm">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary" />
+          </span>
+          <span className="text-muted-foreground">Now auditing:</span>
+          <span className="font-medium text-foreground">{job.current_topic}</span>
+        </div>
+      )}
     </div>
   );
 };
