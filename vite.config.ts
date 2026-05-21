@@ -14,7 +14,7 @@ const BUILD_ID =
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "./",
+  base: "/",
   define: {
     __APP_VERSION__: JSON.stringify(BUILD_ID),
   },

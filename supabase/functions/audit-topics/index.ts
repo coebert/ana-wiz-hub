@@ -67,7 +67,7 @@ async function firecrawlScrape(url: string, withScreenshot: boolean) {
         url,
         formats,
         onlyMainContent: true,
-        waitFor: 1500,
+        waitFor: 8000,
       }),
     });
     if (!r.ok) return null;
