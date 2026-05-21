@@ -445,17 +445,20 @@ const ContentAudit = () => {
               </p>
             </div>
           </div>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={async () => {
-              const j = await fetchLatestJob();
-              await fetchFindings(j?.id);
-            }}
-          >
-            <RefreshCw className="w-4 h-4 mr-1" />
-            Refresh
-          </Button>
+          <div className="flex items-center gap-2">
+            <RealtimeStatusPill status={rtStatus} onReconnect={reconnectNow} />
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={async () => {
+                const j = await fetchLatestJob();
+                await fetchFindings(j?.id);
+              }}
+            >
+              <RefreshCw className="w-4 h-4 mr-1" />
+              Refresh
+            </Button>
+          </div>
         </div>
       </header>
 
