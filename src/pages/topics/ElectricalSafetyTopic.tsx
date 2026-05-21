@@ -133,14 +133,15 @@ const ElectricalSafetyTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground">Microshock</h2>
           <p className="text-foreground/90 leading-relaxed">
             Microshock occurs when current is delivered directly to the myocardium (e.g., via a pacing wire, central line,
-            or intracardiac catheter). As little as <strong>150 µA (0.15 mA)</strong> applied directly to the heart can
-            cause ventricular fibrillation — 1000 times less than the macroshock threshold.
+            or intracardiac catheter). As little as <strong>100 µA (0.1 mA) at 50 Hz</strong> applied directly to the heart can
+            cause ventricular fibrillation — approximately 1000 times less than the macroshock threshold.
           </p>
           <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
             <p className="text-sm font-medium text-foreground">Clinical Implication</p>
             <p className="text-sm text-muted-foreground mt-1">
               Patients with intracardiac catheters are "electrically susceptible." All equipment contacting the patient must
-              have leakage current &lt;10 µA (Type CF equipment). Saline-filled CVP lines can act as conductors.
+              have leakage current &lt;10 µA (Type CF equipment) — a 10× safety margin below the 100 µA VF threshold.
+              Saline-filled CVP lines can act as conductors.
             </p>
           </div>
         </section>
