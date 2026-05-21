@@ -628,6 +628,14 @@ Deno.serve(async (req) => {
             : `${SITE_BASE}/${t.section}/${t.id}`,
       }));
 
+    if (action === "continue" && body.job_id) {
+      // @ts-ignore EdgeRuntime global
+      EdgeRuntime.waitUntil(runBatch(body.job_id));
+      return new Response(JSON.stringify({ ok: true, continued: body.job_id }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const { data: job, error } = await supa
       .from("topic_audit_jobs")
       .insert({
@@ -635,15 +643,14 @@ Deno.serve(async (req) => {
         trigger: body.trigger ?? "manual",
         triggered_by: body.user_id ?? null,
         total: norm.length,
-        options: body.options ?? {},
+        options: { ...(body.options ?? {}), topics: norm, cursor: 0 },
       })
       .select()
       .single();
     if (error) throw error;
 
-    // background
     // @ts-ignore EdgeRuntime is global in Supabase Functions
-    EdgeRuntime.waitUntil(runSweep(job.id, norm));
+    EdgeRuntime.waitUntil(runBatch(job.id));
 
     return new Response(JSON.stringify({ ok: true, job_id: job.id }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
