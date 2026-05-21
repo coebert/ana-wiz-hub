@@ -287,32 +287,87 @@ const ContentAudit = () => {
     );
   };
 
+  const buildFixPrompt = (targets: Finding[]) => {
+    const byTopic = new Map<string, Finding[]>();
+    for (const f of targets) {
+      const key = `${f.section}/${f.topic_id}`;
+      if (!byTopic.has(key)) byTopic.set(key, []);
+      byTopic.get(key)!.push(f);
+    }
+    const lines: string[] = [
+      `Please apply the following content-audit fixes to the topic source files.`,
+      ``,
+      `For each finding below: open the referenced topic file under \`src/pages/topics/\` (the topic id matches the route segment), locate the named section, and edit the JSX/data so it matches the **Suggested fix**. Keep voice/style consistent with the rest of the topic. Cite the listed sources via the existing \`InlineRef\` / \`sectionSources\` / \`references.ts\` pattern where appropriate. Do not silently delete affected content unless the suggested fix explicitly says to.`,
+      ``,
+      `After all edits, run typecheck and tell me any findings you could not safely fix.`,
+      ``,
+      `---`,
+      ``,
+      `## ${targets.length} finding${targets.length === 1 ? "" : "s"} across ${byTopic.size} topic${byTopic.size === 1 ? "" : "s"}`,
+      ``,
+    ];
+    for (const [key, items] of byTopic) {
+      const t = items[0];
+      lines.push(`### ${t.topic_title}  \`(${key})\``);
+      if (t.topic_url) lines.push(`URL: ${t.topic_url}`);
+      lines.push("");
+      for (const f of items) {
+        lines.push(`- **[${f.severity.toUpperCase()} · ${f.category}]** ${f.summary}`);
+        if (f.section) lines.push(`  - Section: ${f.section}`);
+        if (f.diagram_ref) lines.push(`  - Diagram: \`${f.diagram_ref}\``);
+        if (f.details) lines.push(`  - Details: ${f.details}`);
+        if (f.suggested_fix) lines.push(`  - **Suggested fix:** ${f.suggested_fix}`);
+        if (f.sources?.length) {
+          lines.push(`  - Sources:`);
+          f.sources.forEach((s) => lines.push(`    - [${s.title}](${s.url})`));
+        }
+        lines.push(`  - Finding id: \`${f.id}\``);
+      }
+      lines.push("");
+    }
+    lines.push(
+      `When done, I will mark these finding ids as fixed in the Content Audit page.`,
+    );
+    return lines.join("\n");
+  };
+
   const correctAll = async () => {
     const targets = filtered.filter((f) => f.status === "open");
     if (targets.length === 0) return;
     const ok = window.confirm(
-      `Mark ${targets.length} open finding${targets.length === 1 ? "" : "s"} as fixed?\n\nThis bulk-resolves the currently filtered findings. Suggested fixes still need to be applied to topic source files — use "Download fix report" first if you want a checklist.`,
+      `Generate a Lovable chat prompt for ${targets.length} open finding${targets.length === 1 ? "" : "s"}?\n\nThe prompt will be copied to your clipboard and downloaded as a .md file. Paste it into Lovable chat and the AI will edit the topic source files to apply each suggested fix. Findings stay 'open' until you mark them fixed after reviewing the edits.`,
     );
     if (!ok) return;
     setBulkBusy(true);
     try {
-      const ids = targets.map((t) => t.id);
-      const patch = {
-        status: "fixed" as const,
-        resolved_by: user?.id ?? null,
-        resolved_at: new Date().toISOString(),
-      };
-      const { error } = await supabase
-        .from("topic_audit_findings")
-        .update(patch)
-        .in("id", ids);
-      if (error) throw error;
-      setFindings((prev) =>
-        prev.map((f) => (ids.includes(f.id) ? { ...f, ...patch } : f)),
+      const prompt = buildFixPrompt(targets);
+
+      const blob = new Blob([prompt], { type: "text/markdown" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `audit-fix-prompt-${new Date().toISOString().slice(0, 10)}.md`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(prompt);
+        copied = true;
+      } catch {
+        copied = false;
+      }
+
+      toast.success(
+        copied
+          ? `Fix prompt for ${targets.length} finding${targets.length === 1 ? "" : "s"} copied to clipboard and downloaded. Paste it into Lovable chat to apply the edits.`
+          : `Fix prompt downloaded (${targets.length} finding${targets.length === 1 ? "" : "s"}). Open the .md file and paste it into Lovable chat to apply the edits.`,
+        { duration: 9000 },
       );
-      toast.success(`Marked ${targets.length} finding${targets.length === 1 ? "" : "s"} as fixed`);
     } catch (e: any) {
-      toast.error(e?.message ?? "Bulk correction failed");
+      toast.error(e?.message ?? "Failed to build fix prompt");
     } finally {
       setBulkBusy(false);
     }
@@ -654,9 +709,10 @@ const ContentAudit = () => {
                     bulkBusy ||
                     filtered.filter((f) => f.status === "open").length === 0
                   }
+                  title="Build a Lovable chat prompt that applies every suggested fix to the topic source files. Copies to clipboard + downloads .md."
                 >
                   {bulkBusy
-                    ? "Correcting…"
+                    ? "Building prompt…"
                     : `Correct all (${filtered.filter((f) => f.status === "open").length})`}
                 </Button>
               </div>
