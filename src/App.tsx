@@ -178,6 +178,7 @@ const SolutionsConcentrationTopic = lazy(() => import("./pages/topics/SolutionsC
 const OxidationReductionTopic = lazy(() => import("./pages/topics/OxidationReductionTopic"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const ContentAudit = lazy(() => import("./pages/ContentAudit"));
 import { RequireAdmin } from "@/components/RequireAdmin";
 
 const queryClient = new QueryClient();
