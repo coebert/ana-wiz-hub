@@ -396,8 +396,30 @@ const ContentAudit = () => {
                   ))}
                 </SelectContent>
               </Select>
-              <div className="ml-auto text-xs text-muted-foreground self-center">
-                {filtered.length} shown
+              <div className="ml-auto flex items-center gap-2">
+                <span className="text-xs text-muted-foreground">
+                  {filtered.length} shown
+                </span>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={downloadFixReport}
+                  disabled={filtered.filter((f) => f.status === "open").length === 0}
+                >
+                  Download fix report
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={correctAll}
+                  disabled={
+                    bulkBusy ||
+                    filtered.filter((f) => f.status === "open").length === 0
+                  }
+                >
+                  {bulkBusy
+                    ? "Correcting…"
+                    : `Correct all (${filtered.filter((f) => f.status === "open").length})`}
+                </Button>
               </div>
             </div>
 
