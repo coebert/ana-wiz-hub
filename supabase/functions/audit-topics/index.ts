@@ -300,7 +300,7 @@ async function callAI(args: {
       ]
     : args.userText;
 
-  const res = await fetchWithTimeout(
+  const res = await fetchJsonWithTimeout(
     "https://ai.gateway.lovable.dev/v1/chat/completions",
     {
       method: "POST",
@@ -324,10 +324,9 @@ async function callAI(args: {
     args.timeoutMs ?? (args.imageUrl ? 25_000 : 30_000),
   );
   if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`AI gateway ${res.status}: ${body.slice(0, 300)}`);
+    throw new Error(`AI gateway ${res.status}: ${res.text.slice(0, 300)}`);
   }
-  const data = await res.json();
+  const data = res.json as any;
   const call = data?.choices?.[0]?.message?.tool_calls?.[0];
   if (!call) return [];
   try {
