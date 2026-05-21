@@ -207,8 +207,9 @@ const NeuromuscularTopic = () => {
                 agents. Non-depolarising agents compete with ACh at the α subunits.
               </li>
               <li>
-                <strong>Pre-junctional nAChR (α₃β₂)</strong> — facilitate positive feedback, mobilising more
-                ACh vesicles during sustained activity (explains fade with non-depolarising block).
+                <strong>Pre-junctional nAChR (predominantly α₃β₂)</strong> — facilitate positive feedback, mobilising more
+                ACh vesicles during sustained activity (explains fade with non-depolarising block). Other nicotinic and
+                muscarinic subtypes also contribute to modulating ACh release.
               </li>
               <li>
                 <strong>Fetal/extrajunctional nAChR (α₂βδγ)</strong> — contain the γ subunit instead of ε.
