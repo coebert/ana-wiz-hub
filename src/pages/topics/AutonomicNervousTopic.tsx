@@ -150,7 +150,7 @@ const AutonomicNervousTopic = () => {
               nerve (CN X) provides ~75% of parasympathetic outflow.
             </p>
             <p className="text-foreground/90 leading-relaxed mt-3">
-              <strong>Muscarinic receptors</strong>: M₁ (gastric acid secretion — pirenzepine), M₂ (heart — ↓HR,
+              <strong>Muscarinic receptors</strong>: M₁ (CNS, gastric parietal cells — modulate acid secretion), M₂ (heart — ↓HR,
               ↓conduction), M₃ (smooth muscle contraction, glandular secretion, bronchoconstriction). <strong>Atropine</strong>
               {" "}and <strong>glycopyrrolate</strong> are non-selective muscarinic antagonists used in anaesthesia;
               glycopyrrolate is quaternary so does not cross the BBB (no central anticholinergic syndrome).
