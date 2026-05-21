@@ -81,14 +81,16 @@ const ElectricalSafetyTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "BJA Educ 2012",
+          "BJA Educ 2017",
           "Cross & Plunkett Ch.14",
           "Middleton Ch.16",
+          "IEC 60601-1",
         ],
         keyPoints: [
-          "BJA Educ 2012",
+          "BJA Educ 2017",
           "Cross & Plunkett Ch.14",
           "Middleton Ch.16",
+          "IEC 60601-1",
         ],
       }}
       coreConcepts={
