@@ -285,7 +285,8 @@ const GasLawsTopic = () => {
               it is compressed into a cylinder it partially liquefies, so the cylinder contains a two-phase system: a
               pool of liquid N₂O at the bottom in equilibrium with N₂O vapour above it. The pressure of the vapour
               phase is the <strong>saturated vapour pressure</strong> (SVP) of N₂O, which depends only on temperature —
-              approximately 52 bar at 20 °C.
+              taken as <strong>~52 bar at 20 °C</strong> in UK anaesthetic teaching (equation-of-state models give
+              52–53 bar, which is what the interactive isotherm below displays).
             </p>
             <p className="text-foreground/90 leading-relaxed mt-2">
               As gas is drawn off, more liquid evaporates to replace it and the vapour pressure stays constant. The
