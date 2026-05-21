@@ -18,6 +18,8 @@ import {
   AlertCircle,
   ArrowLeft,
   CheckCircle2,
+  ChevronDown,
+  ChevronRight,
   ExternalLink,
   Play,
   RefreshCw,
@@ -26,6 +28,7 @@ import {
   Wifi,
   WifiOff,
 } from "lucide-react";
+
 import { toast } from "sonner";
 
 type Job = {
@@ -60,6 +63,32 @@ type Finding = {
   status: "open" | "acknowledged" | "fixed" | "dismissed";
   created_at: string;
 };
+type TopicLog = {
+  id: string;
+  job_id: string;
+  topic_id: string;
+  topic_title: string;
+  section: string;
+  topic_url: string | null;
+  status: "pending" | "running" | "succeeded" | "failed" | "skipped";
+  started_at: string | null;
+  completed_at: string | null;
+  duration_ms: number | null;
+  error_message: string | null;
+  stages: Record<string, unknown>;
+  findings_count: number;
+  updated_at: string;
+};
+
+const logStatusColors: Record<string, string> = {
+  pending: "bg-muted text-muted-foreground",
+  running: "bg-blue-100 text-blue-900 dark:bg-blue-900/30 dark:text-blue-200",
+  succeeded:
+    "bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200",
+  failed: "bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-200",
+  skipped: "bg-muted text-muted-foreground",
+};
+
 
 const severityColors: Record<string, string> = {
   info: "bg-muted text-muted-foreground",
@@ -78,6 +107,10 @@ const ContentAudit = () => {
   const [statusFilter, setStatusFilter] = useState<string>("open");
   const [sectionFilter, setSectionFilter] = useState<string>("all");
   const [bulkBusy, setBulkBusy] = useState(false);
+  const [topicLogs, setTopicLogs] = useState<TopicLog[]>([]);
+  const [expandedLogs, setExpandedLogs] = useState<Set<string>>(new Set());
+  const [logsCollapsed, setLogsCollapsed] = useState(false);
+
 
   useEffect(() => {
     if (!authLoading && (!user || !isAdmin)) navigate("/admin/login");
@@ -105,12 +138,29 @@ const ContentAudit = () => {
     setFindings(((data as unknown) as Finding[]) ?? []);
   };
 
+  const fetchTopicLogs = async (jobId?: string) => {
+    if (!jobId) {
+      setTopicLogs([]);
+      return;
+    }
+    const { data } = await supabase
+      .from("topic_audit_topic_logs")
+      .select("*")
+      .eq("job_id", jobId)
+      .order("started_at", { ascending: false, nullsFirst: false })
+      .order("updated_at", { ascending: false })
+      .limit(1000);
+    setTopicLogs(((data as unknown) as TopicLog[]) ?? []);
+  };
+
   useEffect(() => {
     (async () => {
       const j = await fetchLatestJob();
-      await fetchFindings(j?.id);
+      await Promise.all([fetchFindings(j?.id), fetchTopicLogs(j?.id)]);
     })();
   }, []);
+
+
 
   // Realtime connection state + auto-reconnect
   type RTStatus = "connecting" | "live" | "offline" | "reconnecting";
@@ -152,14 +202,43 @@ const ContentAudit = () => {
           );
         },
       )
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "topic_audit_topic_logs",
+          filter: `job_id=eq.${jobId}`,
+        },
+        (payload) => {
+          const row = (payload.new ?? payload.old) as TopicLog | undefined;
+          if (!row) return;
+          setTopicLogs((prev) => {
+            const idx = prev.findIndex((x) => x.id === row.id);
+            if (payload.eventType === "DELETE") {
+              return idx >= 0 ? prev.filter((x) => x.id !== row.id) : prev;
+            }
+            const next = payload.new as TopicLog;
+            if (idx >= 0) {
+              const copy = prev.slice();
+              copy[idx] = { ...prev[idx], ...next };
+              return copy;
+            }
+            return [next, ...prev];
+          });
+        },
+      )
       .subscribe((status) => {
         if (status === "SUBSCRIBED") {
           setRtStatus("live");
           // resync after any (re)connect so we don't miss events
           (async () => {
             const j = await fetchLatestJob();
-            if (j) await fetchFindings(j.id);
+            if (j) {
+              await Promise.all([fetchFindings(j.id), fetchTopicLogs(j.id)]);
+            }
           })();
+
         } else if (
           status === "CHANNEL_ERROR" ||
           status === "TIMED_OUT" ||
@@ -213,7 +292,7 @@ const ContentAudit = () => {
     const interval = rtStatus === "live" ? 8000 : 3000;
     const t = setInterval(async () => {
       const j = await fetchLatestJob();
-      if (j) await fetchFindings(j.id);
+      if (j) await Promise.all([fetchFindings(j.id), fetchTopicLogs(j.id)]);
     }, interval);
     return () => clearInterval(t);
   }, [job?.status, rtStatus]);
@@ -247,7 +326,7 @@ const ContentAudit = () => {
       // brief wait then refresh
       setTimeout(async () => {
         const j = await fetchLatestJob();
-        if (j) await fetchFindings(j.id);
+        if (j) await Promise.all([fetchFindings(j.id), fetchTopicLogs(j.id)]);
       }, 600);
     } catch (e: any) {
       toast.error(e?.message ?? "Failed to start audit");
@@ -512,7 +591,7 @@ const ContentAudit = () => {
               size="sm"
               onClick={async () => {
                 const j = await fetchLatestJob();
-                await fetchFindings(j?.id);
+                await Promise.all([fetchFindings(j?.id), fetchTopicLogs(j?.id)]);
               }}
             >
               <RefreshCw className="w-4 h-4 mr-1" />
@@ -650,6 +729,149 @@ const ContentAudit = () => {
           <StatTile label="Major" value={stats.major} tone="major" />
           <StatTile label="Diagram issues" value={stats.diagrams} />
         </div>
+
+        {/* Per-topic logs */}
+        <Card>
+          <CardHeader className="pb-3">
+            <div className="flex items-center justify-between gap-2">
+              <CardTitle className="text-base flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setLogsCollapsed((v) => !v)}
+                  className="inline-flex items-center gap-1 hover:text-primary"
+                  aria-expanded={!logsCollapsed}
+                >
+                  {logsCollapsed ? (
+                    <ChevronRight className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                  Topic logs
+                </button>
+                <span className="text-xs font-normal text-muted-foreground">
+                  ({topicLogs.length})
+                </span>
+              </CardTitle>
+              {topicLogs.some((l) => l.status === "failed") && (
+                <Badge className={`${logStatusColors.failed} border-0`}>
+                  {topicLogs.filter((l) => l.status === "failed").length} failed
+                </Badge>
+              )}
+            </div>
+          </CardHeader>
+          {!logsCollapsed && (
+            <CardContent className="space-y-2">
+              {topicLogs.length === 0 ? (
+                <p className="text-sm text-muted-foreground py-4 text-center">
+                  No per-topic logs yet. Start an audit to see live progress here.
+                </p>
+              ) : (
+                <div className="divide-y divide-border rounded-md border border-border overflow-hidden">
+                  {topicLogs.map((log) => {
+                    const expanded = expandedLogs.has(log.id);
+                    const toggle = () => {
+                      setExpandedLogs((prev) => {
+                        const next = new Set(prev);
+                        if (next.has(log.id)) next.delete(log.id);
+                        else next.add(log.id);
+                        return next;
+                      });
+                    };
+                    return (
+                      <div key={log.id} className="bg-card">
+                        <button
+                          type="button"
+                          onClick={toggle}
+                          className="w-full flex items-center gap-3 px-3 py-2 text-left hover:bg-muted/40"
+                          aria-expanded={expanded}
+                        >
+                          {expanded ? (
+                            <ChevronDown className="w-4 h-4 text-muted-foreground shrink-0" />
+                          ) : (
+                            <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0" />
+                          )}
+                          <Badge
+                            className={`${logStatusColors[log.status] ?? ""} border-0 capitalize text-[10px] py-0`}
+                          >
+                            {log.status}
+                          </Badge>
+                          <span className="text-sm text-foreground truncate flex-1">
+                            {log.topic_title}
+                          </span>
+                          <span className="text-xs text-muted-foreground hidden sm:inline truncate">
+                            {log.section}
+                          </span>
+                          <span className="text-xs text-muted-foreground tabular-nums">
+                            {log.duration_ms != null
+                              ? `${(log.duration_ms / 1000).toFixed(1)}s`
+                              : log.status === "running"
+                                ? "…"
+                                : "—"}
+                          </span>
+                          <span className="text-xs text-muted-foreground tabular-nums w-12 text-right">
+                            {log.findings_count} f
+                          </span>
+                        </button>
+                        {expanded && (
+                          <div className="px-3 pb-3 pt-1 space-y-2 text-xs">
+                            <div className="flex flex-wrap gap-x-4 gap-y-1 text-muted-foreground">
+                              {log.topic_url && (
+                                <a
+                                  href={log.topic_url}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="inline-flex items-center gap-1 text-primary hover:underline"
+                                >
+                                  <ExternalLink className="w-3 h-3" />
+                                  {log.topic_url}
+                                </a>
+                              )}
+                              {log.started_at && (
+                                <span>
+                                  Started:{" "}
+                                  {new Date(log.started_at).toLocaleTimeString()}
+                                </span>
+                              )}
+                              {log.completed_at && (
+                                <span>
+                                  Ended:{" "}
+                                  {new Date(log.completed_at).toLocaleTimeString()}
+                                </span>
+                              )}
+                            </div>
+                            {log.error_message && (
+                              <div className="rounded border border-destructive/40 bg-destructive/10 p-2 text-destructive">
+                                <div className="font-medium mb-1 flex items-center gap-1">
+                                  <AlertCircle className="w-3 h-3" />
+                                  Error
+                                </div>
+                                <pre className="whitespace-pre-wrap break-words text-[11px] leading-snug">
+                                  {log.error_message}
+                                </pre>
+                              </div>
+                            )}
+                            {log.stages && Object.keys(log.stages).length > 0 && (
+                              <div className="rounded border border-border bg-muted/30 p-2">
+                                <div className="font-medium mb-1 text-muted-foreground">
+                                  Stages
+                                </div>
+                                <pre className="whitespace-pre-wrap break-words text-[11px] leading-snug text-foreground">
+                                  {JSON.stringify(log.stages, null, 2)}
+                                </pre>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </CardContent>
+          )}
+        </Card>
+
+
 
         {/* Filters */}
         <Card>
