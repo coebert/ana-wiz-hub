@@ -635,13 +635,8 @@ async function runBatch(jobId: string) {
       const topic = queue[i];
       const startedAt = new Date();
 
-      // Advance the persisted cursor BEFORE running the topic so that if the
-      // edge runtime is killed mid-topic, the next chain skips past it
-      // instead of restarting the same hung topic forever.
-      cursor = i + 1;
       await supa.from("topic_audit_jobs").update({
         current_topic: topic.title,
-        options: { ...opts, cursor },
         updated_at: startedAt.toISOString(),
       }).eq("id", jobId);
 
@@ -663,15 +658,6 @@ async function runBatch(jobId: string) {
         },
         { onConflict: "job_id,section,topic_id" },
       );
-
-      // Fire the successor chain BEFORE awaiting the topic. If this runtime
-      // is killed mid-await (edge wall-clock / AI gateway hang), the next
-      // invocation is already in flight and — because cursor was advanced
-      // above — will pick up the NEXT topic, not retry the stuck one.
-      // chainOnce is idempotent, so the finally block becomes a no-op when
-      // this succeeds normally.
-      await chainOnce();
-
 
       let logStatus: "succeeded" | "failed" = "succeeded";
       let logError: string | null = null;
@@ -737,11 +723,14 @@ async function runBatch(jobId: string) {
         .eq("topic_id", topic.id);
 
       processed++;
+      cursor = i + 1;
       await supa.from("topic_audit_jobs").update({
         processed,
         succeeded,
         failed,
         findings_count: findingsCount,
+        current_topic: cursor < queue.length ? queue[cursor]?.title ?? null : null,
+        options: { ...opts, cursor },
         updated_at: new Date().toISOString(),
       }).eq("id", jobId);
 
@@ -758,8 +747,10 @@ async function runBatch(jobId: string) {
       }).eq("id", jobId);
       return;
     }
-  } finally {
-    await chainOnce();
+  }
+
+  if (cursor < queue.length) {
+    await reinvokeContinue(jobId);
   }
 }
 
