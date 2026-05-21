@@ -331,11 +331,15 @@ const ContentAudit = () => {
     return lines.join("\n");
   };
 
-  const correctAll = async () => {
-    const targets = filtered.filter((f) => f.status === "open");
+  const correctAll = async (
+    targetStatus: Finding["status"] = "open",
+  ) => {
+    const targets = filtered.filter((f) => f.status === targetStatus);
     if (targets.length === 0) return;
+    const verb = targetStatus === "fixed" ? "re-apply" : "apply";
+    const label = targetStatus === "fixed" ? "previously-fixed" : "open";
     const ok = window.confirm(
-      `Generate a Lovable chat prompt for ${targets.length} open finding${targets.length === 1 ? "" : "s"}?\n\nThe prompt will be copied to your clipboard and downloaded as a .md file. Paste it into Lovable chat and the AI will edit the topic source files to apply each suggested fix. Findings stay 'open' until you mark them fixed after reviewing the edits.`,
+      `Generate a Lovable chat prompt for ${targets.length} ${label} finding${targets.length === 1 ? "" : "s"}?\n\nThe prompt will be copied to your clipboard and downloaded as a .md file. Paste it into Lovable chat and the AI will ${verb} each suggested fix in the topic source files.`,
     );
     if (!ok) return;
     setBulkBusy(true);
@@ -346,7 +350,7 @@ const ContentAudit = () => {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `audit-fix-prompt-${new Date().toISOString().slice(0, 10)}.md`;
+      a.download = `audit-${targetStatus}-prompt-${new Date().toISOString().slice(0, 10)}.md`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -362,8 +366,8 @@ const ContentAudit = () => {
 
       toast.success(
         copied
-          ? `Fix prompt for ${targets.length} finding${targets.length === 1 ? "" : "s"} copied to clipboard and downloaded. Paste it into Lovable chat to apply the edits.`
-          : `Fix prompt downloaded (${targets.length} finding${targets.length === 1 ? "" : "s"}). Open the .md file and paste it into Lovable chat to apply the edits.`,
+          ? `Prompt for ${targets.length} ${label} finding${targets.length === 1 ? "" : "s"} copied to clipboard and downloaded.`
+          : `Prompt downloaded (${targets.length} ${label} finding${targets.length === 1 ? "" : "s"}). Open the .md and paste into Lovable chat.`,
         { duration: 9000 },
       );
     } catch (e: any) {
@@ -372,6 +376,7 @@ const ContentAudit = () => {
       setBulkBusy(false);
     }
   };
+
 
   const downloadFixReport = () => {
     const targets = filtered.filter((f) => f.status === "open");
@@ -704,7 +709,19 @@ const ContentAudit = () => {
                 </Button>
                 <Button
                   size="sm"
-                  onClick={correctAll}
+                  variant="secondary"
+                  onClick={() => correctAll("fixed")}
+                  disabled={
+                    bulkBusy ||
+                    filtered.filter((f) => f.status === "fixed").length === 0
+                  }
+                  title="Re-build a Lovable chat prompt from findings already marked fixed (useful if edits were lost or need re-applying)."
+                >
+                  {`Re-apply fixed (${filtered.filter((f) => f.status === "fixed").length})`}
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() => correctAll("open")}
                   disabled={
                     bulkBusy ||
                     filtered.filter((f) => f.status === "open").length === 0
@@ -715,6 +732,7 @@ const ContentAudit = () => {
                     ? "Building prompt…"
                     : `Correct all (${filtered.filter((f) => f.status === "open").length})`}
                 </Button>
+
               </div>
             </div>
 
