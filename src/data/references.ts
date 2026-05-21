@@ -44,14 +44,15 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Davey & Diba Ch.5", citation: "Davey AJ, Diba A. Ward's Anaesthetic Equipment. 6th ed. Chapter 5: Breathing Systems and Their Components." },
   ],
   "electrical-safety": [
-    { label: "BJA Educ 2012", citation: "Boumphrey S, Langton JA. Electrical safety in the operating theatre. BJA Education. 2003;3(1):10-14.", url: "https://doi.org/10.1093/bjaceaccp/mkg010" },
-    { label: "Cross & Plunkett Ch.14", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 14: Electrical Safety." },
-    { label: "Middleton Ch.16", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 16: Electrical Safety." },
+    { label: "BJA Educ 2017", citation: "Pollard BJ. Electrical safety in the operating theatre. BJA Education. 2017;17(10):339-344.", url: "https://doi.org/10.1093/bjaed/mkx035" },
+    { label: "Cross & Plunkett Ch.14", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 14: Electrical Safety." },
+    { label: "Middleton Ch.16", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 16: Electrical Safety." },
+    { label: "IEC 60601-1", citation: "International Electrotechnical Commission. IEC 60601-1:2005+AMD1:2012+AMD2:2020 — Medical electrical equipment: General requirements for basic safety and essential performance." },
   ],
   "electricity-magnetism": [
-    { label: "Cross & Plunkett Ch.12-13", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapters 12-13: Electricity and Magnetism." },
+    { label: "Cross & Plunkett Ch.12-13", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapters 12-13: Electricity and Magnetism." },
     { label: "Middleton Ch.15", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 15: Electricity." },
-    { label: "BJA Educ 2003", citation: "Boumphrey S, Langton JA. Electrical principles. BJA Education. 2003;3(1):10-14.", url: "https://doi.org/10.1093/bjaceaccp/mkg010" },
+    { label: "BJA Educ 2017", citation: "Pollard BJ. Electrical safety in the operating theatre. BJA Education. 2017;17(10):339-344.", url: "https://doi.org/10.1093/bjaed/mkx035" },
   ],
   "pulse-oximetry": [
     { label: "BJA Educ 2014", citation: "Jubran A. Pulse oximetry. Critical Care. 2015;19:272.", url: "https://doi.org/10.1186/s13054-015-0984-8" },
