@@ -11,7 +11,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
-  "State Boyle's, Charles', Gay-Lussac's, Dalton's and Henry's laws and combine them as PV = nRT.",
+  "State Boyle's, Charles', Gay-Lussac's, Avogadro's, Dalton's and Henry's laws and describe how they combine into the ideal gas equation PV = nRT (Avogadro's law contributing the n term).",
   "Define critical temperature, critical pressure and pseudo-critical temperature with values for O₂, N₂O and Entonox.",
   "Explain N₂O cylinder behaviour using saturated vapour pressure and the two-phase dome.",
   "Distinguish adiabatic expansion from the Joule–Thomson (isenthalpic) effect and apply each to clinical cooling phenomena.",
@@ -285,7 +285,8 @@ const GasLawsTopic = () => {
               it is compressed into a cylinder it partially liquefies, so the cylinder contains a two-phase system: a
               pool of liquid N₂O at the bottom in equilibrium with N₂O vapour above it. The pressure of the vapour
               phase is the <strong>saturated vapour pressure</strong> (SVP) of N₂O, which depends only on temperature —
-              approximately 52 bar at 20 °C.
+              taken as <strong>~52 bar at 20 °C</strong> in UK anaesthetic teaching (equation-of-state models give
+              52–53 bar, which is what the interactive isotherm below displays).
             </p>
             <p className="text-foreground/90 leading-relaxed mt-2">
               As gas is drawn off, more liquid evaporates to replace it and the vapour pressure stays constant. The
@@ -532,11 +533,12 @@ const GasLawsTopic = () => {
         { text: "Boyle's law (P₁V₁ = P₂V₂): at constant temperature, pressure and volume are inversely proportional. Relevant to pneumothorax expansion and gas cylinder contents.", cites: ["Cross & Plunkett Ch.1"] },
         { text: "Charles' law (V₁/T₁ = V₂/T₂): at constant pressure, volume is proportional to absolute temperature. Explains ATPS to BTPS correction.", cites: ["Peck & Hill Ch.1"] },
         { text: "Dalton's law: total pressure equals the sum of partial pressures. Fundamental to the alveolar gas equation and FiO₂ calculations.", cites: ["BJA Educ 2017"] },
-        { text: "The ideal gas equation (PV = nRT) combines all individual gas laws. Real gases deviate at high pressure and low temperature.", cites: ["Cross & Plunkett Ch.1"] },
+        { text: "The ideal gas equation (PV = nRT) combines Boyle's, Charles', Gay-Lussac's and Avogadro's laws (Avogadro's contributing the n term). Real gases deviate at high pressure and low temperature.", cites: ["Cross & Plunkett Ch.1", "BJA Educ 2007 (Gas laws)"] },
         { text: "Henry's law: gas dissolved in liquid is proportional to its partial pressure. Governs O₂/CO₂ transport and volatile agent uptake.", cites: ["Peck & Hill Ch.1"] },
         { text: "Adiabatic expansion (PVγ = constant) cools a gas as it does work — explains rapid O₂ cylinder cooling and reversible adiabatic processes.", cites: ["BJA Educ 2017"] },
         { text: "Joule–Thomson effect: isenthalpic throttling cools real gases below their inversion temperature (N₂O, CO₂, O₂, N₂ at room T) and warms H₂ and He.", cites: ["Cross & Plunkett Ch.1"] },
-        { text: "N₂O cylinder pressure stays constant at the saturated vapour pressure until the last liquid evaporates — gauge cannot estimate contents; weigh instead.", cites: ["Peck & Hill Ch.1"] },
+        { text: "Key critical constants: O₂ Tc −118 °C / Pc 50 bar; N₂O Tc 36.5 °C / Pc 72 bar; CO₂ Tc 31 °C / Pc 74 bar; N₂O SVP ≈ 52 bar at 20 °C; Entonox pseudo-critical T −5.5 °C at 137 bar; UK temperate filling ratio 0.75.", cites: ["BJA Educ 2017 (Medical gases)"] },
+        { text: "N₂O cylinder pressure stays constant at the saturated vapour pressure until the last liquid evaporates — gauge cannot estimate contents; weigh instead.", cites: ["Peck & Hill Ch.1", "BJA Educ 2017 (Medical gases)"] },
       ]}
     />
   );
