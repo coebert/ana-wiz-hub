@@ -793,6 +793,62 @@ const ContentAudit = () => {
   );
 };
 
+const RealtimeStatusPill = ({
+  status,
+  onReconnect,
+}: {
+  status: "connecting" | "live" | "offline" | "reconnecting";
+  onReconnect: () => void;
+}) => {
+  const cfg = {
+    live: {
+      label: "Live",
+      icon: Wifi,
+      cls: "bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200",
+      dot: "bg-emerald-500 animate-pulse",
+    },
+    connecting: {
+      label: "Connecting…",
+      icon: Wifi,
+      cls: "bg-muted text-muted-foreground",
+      dot: "bg-muted-foreground animate-pulse",
+    },
+    reconnecting: {
+      label: "Reconnecting…",
+      icon: RefreshCw,
+      cls: "bg-amber-100 text-amber-900 dark:bg-amber-900/30 dark:text-amber-200",
+      dot: "bg-amber-500 animate-pulse",
+    },
+    offline: {
+      label: "Offline",
+      icon: WifiOff,
+      cls: "bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-200",
+      dot: "bg-red-500",
+    },
+  }[status];
+  const Icon = cfg.icon;
+  const clickable = status === "offline" || status === "reconnecting";
+  return (
+    <button
+      type="button"
+      onClick={clickable ? onReconnect : undefined}
+      disabled={!clickable}
+      title={
+        clickable
+          ? "Click to reconnect now"
+          : "Realtime connection to the audit feed"
+      }
+      className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium ${cfg.cls} ${clickable ? "hover:opacity-80 cursor-pointer" : "cursor-default"}`}
+    >
+      <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
+      <Icon
+        className={`w-3 h-3 ${status === "reconnecting" ? "animate-spin" : ""}`}
+      />
+      {cfg.label}
+    </button>
+  );
+};
+
 const StatTile = ({
   label,
   value,
