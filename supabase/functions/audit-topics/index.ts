@@ -53,19 +53,36 @@ const supa = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
 });
 
 // ---------- Fetch helpers ----------
-async function fetchWithTimeout(
+// NOTE: the previous version of this helper called clearTimeout as soon as
+// fetch() resolved its headers, which left subsequent `await res.json()` /
+// `res.text()` body reads with NO timeout. A slow/stalled response body
+// (common with Firecrawl scrape and AI gateway hangs) would then run until
+// the outer per-topic guard fired at 90s, causing every topic to time out.
+//
+// We now expose a helper that runs the *full* fetch+parse inside the abort
+// window, so a hung body stream is aborted just like a hung connection.
+async function fetchJsonWithTimeout<T = any>(
   url: string,
   init: RequestInit,
   timeoutMs: number,
-): Promise<Response> {
+): Promise<{ ok: boolean; status: number; json: T | null; text: string }> {
   const ac = new AbortController();
   const t = setTimeout(() => ac.abort(), timeoutMs);
   try {
-    return await fetch(url, { ...init, signal: ac.signal });
+    const r = await fetch(url, { ...init, signal: ac.signal });
+    const text = await r.text();
+    let json: T | null = null;
+    try {
+      json = text ? (JSON.parse(text) as T) : null;
+    } catch {
+      json = null;
+    }
+    return { ok: r.ok, status: r.status, json, text };
   } finally {
     clearTimeout(t);
   }
 }
+
 
 // ---------- Firecrawl helpers ----------
 function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
@@ -103,7 +120,7 @@ async function firecrawlScrape(
     requestTimeoutMs: number,
     actions?: unknown[],
   ) => {
-    const r = await fetchWithTimeout(
+    const r = await fetchJsonWithTimeout(
       "https://api.firecrawl.dev/v2/scrape",
       {
         method: "POST",
@@ -124,7 +141,7 @@ async function firecrawlScrape(
       requestTimeoutMs,
     );
     if (!r.ok) return null;
-    const data = await r.json();
+    const data = r.json as any;
     return data?.data ?? data;
   };
 
@@ -150,7 +167,7 @@ async function firecrawlScrape(
 
 async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
   try {
-    const r = await fetchWithTimeout(
+    const r = await fetchJsonWithTimeout(
       "https://api.firecrawl.dev/v2/search",
       {
         method: "POST",
@@ -167,7 +184,7 @@ async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
       timeoutMs,
     );
     if (!r.ok) return [];
-    const data = await r.json();
+    const data = r.json as any;
     const results = data?.data ?? data?.web ?? [];
     return Array.isArray(results) ? results : [];
   } catch (_e) {
@@ -283,7 +300,7 @@ async function callAI(args: {
       ]
     : args.userText;
 
-  const res = await fetchWithTimeout(
+  const res = await fetchJsonWithTimeout(
     "https://ai.gateway.lovable.dev/v1/chat/completions",
     {
       method: "POST",
@@ -307,10 +324,9 @@ async function callAI(args: {
     args.timeoutMs ?? (args.imageUrl ? 25_000 : 30_000),
   );
   if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`AI gateway ${res.status}: ${body.slice(0, 300)}`);
+    throw new Error(`AI gateway ${res.status}: ${res.text.slice(0, 300)}`);
   }
-  const data = await res.json();
+  const data = res.json as any;
   const call = data?.choices?.[0]?.message?.tool_calls?.[0];
   if (!call) return [];
   try {
@@ -483,13 +499,16 @@ async function auditTopic(
 // successor invocation is already queued and will pick up the NEXT topic
 // (cursor is advanced before work starts).
 const BATCH_SIZE = 1;
-// Hard cap per topic — kept well below the edge wall-clock so the timeout
-// reliably fires and the catch/finally runs BEFORE the runtime is killed.
-const PER_TOPIC_TIMEOUT_MS = 90_000;
+// Hard cap per topic. Stage budgets sum to ~70s in the happy path
+// (scrape 30 + search 10 + AI text 25 + diagram 0–15); the extra headroom
+// here absorbs occasional latency spikes from Firecrawl or the AI gateway
+// without firing the topic-level guard. Still well under the edge runtime's
+// ~150s wall-clock so the timeout + finally + chainOnce all run.
+const PER_TOPIC_TIMEOUT_MS = 130_000;
 
 async function reinvokeContinue(jobId: string) {
   try {
-    await fetchWithTimeout(
+    await fetchJsonWithTimeout(
       `${SUPABASE_URL}/functions/v1/audit-topics`,
       {
         method: "POST",
@@ -506,6 +525,7 @@ async function reinvokeContinue(jobId: string) {
     console.error(`failed to re-invoke for job ${jobId}`, e);
   }
 }
+
 
 function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
   return new Promise<T>((resolve, reject) => {
