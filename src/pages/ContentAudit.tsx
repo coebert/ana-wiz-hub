@@ -672,21 +672,10 @@ const ContentAudit = () => {
                     style={{ width: `${progress}%` }}
                   />
                 </div>
-                <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-                  <span>Succeeded: {job.succeeded}</span>
-                  <span>Failed: {job.failed}</span>
-                  <span>Findings: {job.findings_count}</span>
-                  <span>Elapsed: {fmtDuration(elapsedMs)}</span>
-                  {running && etaMs > 0 && (
-                    <span>ETA: ~{fmtDuration(etaMs)}</span>
-                  )}
-                  {job.current_topic && (
-                    <span className="text-foreground">
-                      Now auditing:{" "}
-                      <span className="font-medium">{job.current_topic}</span>
-                    </span>
-                  )}
-                </div>
+
+                {/* Timeline UI */}
+                <AuditTimeline job={job} topicLogs={topicLogs} />
+
                 {job.last_error && (
                   <p className="text-xs text-red-600">
                     Last error: {job.last_error}
