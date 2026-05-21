@@ -72,14 +72,22 @@ const OrthopaedicAnaesthesiaTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "Allman & Wilson Ch.27",
-          "BJA Educ 2014",
+          "NICE CG124",
           "AAGBI Tourniquet",
+          "AAGBI BCIS 2015",
+          "PROSPECT TKA 2022",
+          "ASRA Compartment 2021",
         ],
         keyPoints: [
-          "Allman & Wilson Ch.27",
-          "BJA Educ 2014",
+          "NICE CG124",
           "AAGBI Tourniquet",
+          "AAGBI BCIS 2015",
+          "Jaeger 2013",
+          "Girón-Arango 2018",
+          "Aliste 2021",
+          "PROSPECT TKA 2022",
+          "ASRA Compartment 2021",
+          "Memtsoudis 2019",
         ],
       }}
       coreConcepts={
