@@ -95,6 +95,88 @@
 
   <body>
     <div id="root"></div>
+    <script>
+      (() => {
+        const RELOAD_KEY = "__boot_chunk_reload_at__";
+        const MIN_RELOAD_INTERVAL_MS = 5000;
+
+        const isPreviewHost =
+          window.location.hostname.includes("id-preview--") ||
+          window.location.hostname.includes("lovableproject.com");
+
+        const isInIframe = (() => {
+          try {
+            return window.self !== window.top;
+          } catch (_error) {
+            return true;
+          }
+        })();
+
+        const isStaleChunkMessage = (message) =>
+          typeof message === "string" &&
+          (
+            message.includes("Importing a module script failed") ||
+            message.includes("Failed to fetch dynamically imported module") ||
+            message.includes("error loading dynamically imported module")
+          );
+
+        const clearClientCaches = async () => {
+          const tasks = [];
+
+          if ((isPreviewHost || isInIframe) && navigator.serviceWorker?.getRegistrations) {
+            tasks.push(
+              navigator.serviceWorker
+                .getRegistrations()
+                .then((registrations) => Promise.all(registrations.map((registration) => registration.unregister()))),
+            );
+          }
+
+          if ("caches" in window) {
+            tasks.push(caches.keys().then((keys) => Promise.all(keys.map((key) => caches.delete(key)))));
+          }
+
+          await Promise.allSettled(tasks);
+        };
+
+        const recoverFromFailedModule = async () => {
+          const lastReloadAt = Number(sessionStorage.getItem(RELOAD_KEY) || "0");
+          if (Date.now() - lastReloadAt < MIN_RELOAD_INTERVAL_MS) return;
+
+          sessionStorage.setItem(RELOAD_KEY, String(Date.now()));
+          await clearClientCaches();
+
+          const url = new URL(window.location.href);
+          url.searchParams.set("_v", String(Date.now()));
+          window.location.replace(url.toString());
+        };
+
+        window.addEventListener(
+          "error",
+          (event) => {
+            const target = event.target;
+
+            if (target instanceof HTMLScriptElement && target.type === "module") {
+              void recoverFromFailedModule();
+              return;
+            }
+
+            if (isStaleChunkMessage(event.message)) {
+              void recoverFromFailedModule();
+            }
+          },
+          true,
+        );
+
+        window.addEventListener("unhandledrejection", (event) => {
+          const reason = event.reason;
+          const message = typeof reason === "string" ? reason : reason?.message;
+
+          if (isStaleChunkMessage(message)) {
+            void recoverFromFailedModule();
+          }
+        });
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
