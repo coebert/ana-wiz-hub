@@ -730,6 +730,149 @@ const ContentAudit = () => {
           <StatTile label="Diagram issues" value={stats.diagrams} />
         </div>
 
+        {/* Per-topic logs */}
+        <Card>
+          <CardHeader className="pb-3">
+            <div className="flex items-center justify-between gap-2">
+              <CardTitle className="text-base flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setLogsCollapsed((v) => !v)}
+                  className="inline-flex items-center gap-1 hover:text-primary"
+                  aria-expanded={!logsCollapsed}
+                >
+                  {logsCollapsed ? (
+                    <ChevronRight className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                  Topic logs
+                </button>
+                <span className="text-xs font-normal text-muted-foreground">
+                  ({topicLogs.length})
+                </span>
+              </CardTitle>
+              {topicLogs.some((l) => l.status === "failed") && (
+                <Badge className={`${logStatusColors.failed} border-0`}>
+                  {topicLogs.filter((l) => l.status === "failed").length} failed
+                </Badge>
+              )}
+            </div>
+          </CardHeader>
+          {!logsCollapsed && (
+            <CardContent className="space-y-2">
+              {topicLogs.length === 0 ? (
+                <p className="text-sm text-muted-foreground py-4 text-center">
+                  No per-topic logs yet. Start an audit to see live progress here.
+                </p>
+              ) : (
+                <div className="divide-y divide-border rounded-md border border-border overflow-hidden">
+                  {topicLogs.map((log) => {
+                    const expanded = expandedLogs.has(log.id);
+                    const toggle = () => {
+                      setExpandedLogs((prev) => {
+                        const next = new Set(prev);
+                        if (next.has(log.id)) next.delete(log.id);
+                        else next.add(log.id);
+                        return next;
+                      });
+                    };
+                    return (
+                      <div key={log.id} className="bg-card">
+                        <button
+                          type="button"
+                          onClick={toggle}
+                          className="w-full flex items-center gap-3 px-3 py-2 text-left hover:bg-muted/40"
+                          aria-expanded={expanded}
+                        >
+                          {expanded ? (
+                            <ChevronDown className="w-4 h-4 text-muted-foreground shrink-0" />
+                          ) : (
+                            <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0" />
+                          )}
+                          <Badge
+                            className={`${logStatusColors[log.status] ?? ""} border-0 capitalize text-[10px] py-0`}
+                          >
+                            {log.status}
+                          </Badge>
+                          <span className="text-sm text-foreground truncate flex-1">
+                            {log.topic_title}
+                          </span>
+                          <span className="text-xs text-muted-foreground hidden sm:inline truncate">
+                            {log.section}
+                          </span>
+                          <span className="text-xs text-muted-foreground tabular-nums">
+                            {log.duration_ms != null
+                              ? `${(log.duration_ms / 1000).toFixed(1)}s`
+                              : log.status === "running"
+                                ? "…"
+                                : "—"}
+                          </span>
+                          <span className="text-xs text-muted-foreground tabular-nums w-12 text-right">
+                            {log.findings_count} f
+                          </span>
+                        </button>
+                        {expanded && (
+                          <div className="px-3 pb-3 pt-1 space-y-2 text-xs">
+                            <div className="flex flex-wrap gap-x-4 gap-y-1 text-muted-foreground">
+                              {log.topic_url && (
+                                <a
+                                  href={log.topic_url}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="inline-flex items-center gap-1 text-primary hover:underline"
+                                >
+                                  <ExternalLink className="w-3 h-3" />
+                                  {log.topic_url}
+                                </a>
+                              )}
+                              {log.started_at && (
+                                <span>
+                                  Started:{" "}
+                                  {new Date(log.started_at).toLocaleTimeString()}
+                                </span>
+                              )}
+                              {log.completed_at && (
+                                <span>
+                                  Ended:{" "}
+                                  {new Date(log.completed_at).toLocaleTimeString()}
+                                </span>
+                              )}
+                            </div>
+                            {log.error_message && (
+                              <div className="rounded border border-destructive/40 bg-destructive/10 p-2 text-destructive">
+                                <div className="font-medium mb-1 flex items-center gap-1">
+                                  <AlertCircle className="w-3 h-3" />
+                                  Error
+                                </div>
+                                <pre className="whitespace-pre-wrap break-words text-[11px] leading-snug">
+                                  {log.error_message}
+                                </pre>
+                              </div>
+                            )}
+                            {log.stages && Object.keys(log.stages).length > 0 && (
+                              <div className="rounded border border-border bg-muted/30 p-2">
+                                <div className="font-medium mb-1 text-muted-foreground">
+                                  Stages
+                                </div>
+                                <pre className="whitespace-pre-wrap break-words text-[11px] leading-snug text-foreground">
+                                  {JSON.stringify(log.stages, null, 2)}
+                                </pre>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </CardContent>
+          )}
+        </Card>
+
+
+
         {/* Filters */}
         <Card>
           <CardHeader className="pb-3">
