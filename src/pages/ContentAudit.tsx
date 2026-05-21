@@ -391,7 +391,9 @@ const ContentAudit = () => {
       ``,
       `For each finding below: open the referenced topic file under \`src/pages/topics/\` (the topic id matches the route segment), locate the named section, and edit the JSX/data so it matches the **Suggested fix**. Keep voice/style consistent with the rest of the topic. Cite the listed sources via the existing \`InlineRef\` / \`sectionSources\` / \`references.ts\` pattern where appropriate. Do not silently delete affected content unless the suggested fix explicitly says to.`,
       ``,
-      `After all edits, run typecheck and tell me any findings you could not safely fix.`,
+      `After all edits, run typecheck.`,
+      ``,
+      `**IMPORTANT — auto-mark fixed:** For every finding you actually actioned (i.e. the source file now matches the suggested fix, OR the finding was already addressed in a previous turn and you have verified this in the current code), you MUST mark it as fixed in the database by running the SQL block at the end of this prompt via \`psql\` (managed Supabase DB access is enabled in this project). Remove from that SQL any IDs you could not safely fix and report them back to me explicitly. Do not skip this step — the user relies on it to keep the Content Audit list in sync.`,
       ``,
       `---`,
       ``,
@@ -417,11 +419,28 @@ const ContentAudit = () => {
       }
       lines.push("");
     }
+    const idList = targets.map((f) => `  '${f.id}'`).join(",\n");
     lines.push(
-      `When done, I will mark these finding ids as fixed in the Content Audit page.`,
+      ``,
+      `---`,
+      ``,
+      `## Mark actioned findings as fixed`,
+      ``,
+      `After applying the fixes above (and only for the IDs you actually actioned — delete the rest from the list), run this exactly once via \`psql\`:`,
+      ``,
+      "```sql",
+      `UPDATE public.topic_audit_findings`,
+      `SET status = 'fixed', resolved_at = now()`,
+      `WHERE id IN (`,
+      idList,
+      `);`,
+      "```",
+      ``,
+      `Then tell me how many findings you marked fixed and list any IDs you intentionally left open with a one-line reason.`,
     );
     return lines.join("\n");
   };
+
 
   const correctAll = async (
     targetStatus: Finding["status"] = "open",
