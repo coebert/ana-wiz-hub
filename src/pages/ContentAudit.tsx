@@ -75,6 +75,7 @@ const ContentAudit = () => {
   const [severityFilter, setSeverityFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("open");
   const [sectionFilter, setSectionFilter] = useState<string>("all");
+  const [bulkBusy, setBulkBusy] = useState(false);
 
   useEffect(() => {
     if (!authLoading && (!user || !isAdmin)) navigate("/admin/login");
