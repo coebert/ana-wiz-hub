@@ -194,7 +194,7 @@ const StarlingForcesTopic = () => {
           <ExamSection id="glycocalyx" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_06"]}>
             <CollapsibleSubsection title="The Endothelial Glycocalyx">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li>A 0.5–3 µm thick gel-like layer on the luminal surface of endothelial cells</li>
+              <li>A gel-like layer on the luminal surface of endothelial cells: ~0.5–1 µm thick in capillaries, up to ~4 µm in larger arteries</li>
               <li>Composed of proteoglycans, glycosaminoglycans (heparan sulphate, hyaluronic acid), and glycoproteins</li>
               <li>Acts as a <strong>molecular sieve</strong> — excludes plasma proteins, creating a protein-free sub-glycocalyx space</li>
               <li>Functions: vascular permeability barrier, mechanotransduction (shear stress), anti-inflammatory, anticoagulant</li>
