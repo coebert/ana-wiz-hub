@@ -67,6 +67,7 @@ const SIUnitsThermodynamicsTopic = () => {
           "Cross & Plunkett Ch.1-2",
           "Middleton Ch.1",
           "Middleton Ch.8",
+          "NICE CG65",
         ],
         workedExamples: ["Middleton Ch.8", "Middleton Ch.1"],
       }}
