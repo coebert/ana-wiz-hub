@@ -24,7 +24,7 @@ const workedExamples: WorkedExample[] = [
       "Tissue impedance falls with frequency due to capacitive coupling: Xc = 1/(2πfC).\nAt 50 Hz capacitive reactance is large → current is restricted to nerve/muscle pathways and stimulates depolarisation (microshock at >100 µA via intracardiac catheter; macroshock VF threshold ~100 mA).\nAt 1 MHz, Xc collapses → current passes through tissue without exciting nerves/muscle (above the critical frequency for membrane depolarisation, ~10 kHz).\nLocal heating at the active tip remains intense because of high current density (P = I²R) over a small area.",
     answer:
       "High-frequency current bypasses excitable tissue (no neuromuscular stimulation) yet still produces local Joule heating. This is why a 100 W diathermy at 1 MHz cuts tissue without triggering VF, whereas a few hundred mA at 50 Hz can be lethal.",
-    cites: ["BJA Educ 2003"],
+    cites: ["BJA Educ 2017"],
   },
   {
     title: "Defibrillator capacitor sizing",
@@ -60,21 +60,21 @@ const ElectricityMagnetismTopic = () => {
         objectives: [
           "Cross & Plunkett Ch.12-13",
           "Middleton Ch.15",
-          "BJA Educ 2003",
+          "BJA Educ 2017",
         ],
         keyPoints: [
           "Cross & Plunkett Ch.12-13",
           "Middleton Ch.15",
-          "BJA Educ 2003",
+          "BJA Educ 2017",
         ],
-        workedExamples: ["BJA Educ 2003", "Middleton Ch.15"],
+        workedExamples: ["BJA Educ 2017", "Middleton Ch.15"],
       }}
       keyPoints={[
         { text: "Ohm's law: V = IR. Power: P = VI = I²R = V²/R. Series resistances add; parallel: 1/R = 1/R₁ + 1/R₂", cites: ["Cross & Plunkett Ch.12-13"] },
-        { text: "Impedance (Z) is the AC equivalent of resistance: Z = √(R² + (XL − XC)²) — includes capacitive and inductive reactance", cites: ["BJA Educ 2003"] },
+        { text: "Impedance (Z) is the AC equivalent of resistance: Z = √(R² + (XL − XC)²) — includes capacitive and inductive reactance", cites: ["BJA Educ 2017"] },
         { text: "Capacitors store energy in electric fields (E = ½CV²); Xc = 1/(2πfC) — pass AC, block DC. Time constant τ = RC", cites: ["Middleton Ch.15"] },
         { text: "Inductors store energy in magnetic fields (E = ½LI²); XL = 2πfL — pass DC, block AC. Basis of transformers", cites: ["Cross & Plunkett Ch.12-13"] },
-        { text: "Transformer equation: V₁/V₂ = N₁/N₂ = I₂/I₁. Only works with AC. Isolation transformers eliminate earth reference", cites: ["BJA Educ 2003"] },
+        { text: "Transformer equation: V₁/V₂ = N₁/N₂ = I₂/I₁. Only works with AC. Isolation transformers eliminate earth reference", cites: ["BJA Educ 2017"] },
         { text: "Wheatstone bridge: balanced when R₁/R₃ = R₂/R₄. Used in arterial transducers (strain gauge) and thermistor circuits", cites: ["Middleton Ch.15"] },
         { text: "Defibrillators use capacitors: charge to high voltage → rapid discharge. E = ½CV² determines energy delivered", cites: ["Cross & Plunkett Ch.12-13"] },
       ]}
