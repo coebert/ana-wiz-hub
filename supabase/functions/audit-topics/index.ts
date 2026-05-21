@@ -499,13 +499,16 @@ async function auditTopic(
 // successor invocation is already queued and will pick up the NEXT topic
 // (cursor is advanced before work starts).
 const BATCH_SIZE = 1;
-// Hard cap per topic — kept well below the edge wall-clock so the timeout
-// reliably fires and the catch/finally runs BEFORE the runtime is killed.
-const PER_TOPIC_TIMEOUT_MS = 90_000;
+// Hard cap per topic. Stage budgets sum to ~70s in the happy path
+// (scrape 30 + search 10 + AI text 25 + diagram 0–15); the extra headroom
+// here absorbs occasional latency spikes from Firecrawl or the AI gateway
+// without firing the topic-level guard. Still well under the edge runtime's
+// ~150s wall-clock so the timeout + finally + chainOnce all run.
+const PER_TOPIC_TIMEOUT_MS = 130_000;
 
 async function reinvokeContinue(jobId: string) {
   try {
-    await fetchWithTimeout(
+    await fetchJsonWithTimeout(
       `${SUPABASE_URL}/functions/v1/audit-topics`,
       {
         method: "POST",
@@ -522,6 +525,7 @@ async function reinvokeContinue(jobId: string) {
     console.error(`failed to re-invoke for job ${jobId}`, e);
   }
 }
+
 
 function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
   return new Promise<T>((resolve, reject) => {
