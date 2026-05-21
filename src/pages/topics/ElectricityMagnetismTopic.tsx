@@ -143,8 +143,10 @@ const ElectricityMagnetismTopic = () => {
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 An <strong>inductor</strong> stores energy in a magnetic field created by current flowing through a coil.
-                The induced EMF opposes changes in current (<strong>Lenz's law</strong>): V = L × dI/dt. <strong>Inductive
-                reactance XL = 2πfL</strong> increases with frequency — inductors pass DC and block AC, the opposite of capacitors.
+                The induced EMF opposes changes in current (<strong>Lenz's law</strong>): V = L × dI/dt. The energy stored
+                in an inductor is <strong>E = ½LI²</strong> (joules, with L in henries and I in amperes), analogous to
+                E = ½CV² for a capacitor. <strong>Inductive reactance XL = 2πfL</strong> increases with frequency —
+                inductors pass DC and block AC, the opposite of capacitors.
               </p>
               <p>
                 <strong>Transformers</strong> exploit mutual inductance between two coils sharing a magnetic core. The voltage
