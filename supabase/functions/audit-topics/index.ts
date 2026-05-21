@@ -734,8 +734,6 @@ async function runBatch(jobId: string) {
       }).eq("id", jobId);
 
       await new Promise((r) => setTimeout(r, 300));
-    }
-
   }
 
   if (cursor >= queue.length) {
