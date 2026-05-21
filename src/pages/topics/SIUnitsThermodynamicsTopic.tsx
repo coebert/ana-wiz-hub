@@ -73,7 +73,7 @@ const SIUnitsThermodynamicsTopic = () => {
       }}
       keyPoints={[
         { text: "There are 7 SI base units: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), candela (cd)", cites: ["Cross & Plunkett Ch.1-2"] },
-        { text: "Key derived units: Pascal (N/m²), Joule (N·m), Watt (J/s). Pressure conversions: 1 atm = 101.3 kPa = 760 mmHg", cites: ["Middleton Ch.8"] },
+        { text: "Key derived units: Pascal (N/m²), Joule (N·m), Watt (J/s). Pressure conversions: 1 atm = 101.3 kPa = 760 mmHg ≈ 1033 cmH₂O", cites: ["Middleton Ch.8"] },
         { text: "All individual gas laws (Boyle's, Charles', Gay-Lussac's, Avogadro's) derive from the ideal gas equation PV = nRT", cites: ["Middleton Ch.1"] },
         { text: "Specific heat capacity (c): energy to raise 1 kg by 1 K; water's high c (4.18 kJ/kg/K) provides thermal stability", cites: ["Cross & Plunkett Ch.1-2"] },
         { text: "Latent heat of vaporisation (2260 kJ/kg for water): energy for phase change without temperature change — drives evaporative heat loss", cites: ["Middleton Ch.8"] },
