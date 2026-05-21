@@ -485,7 +485,7 @@ async function auditTopic(
 const BATCH_SIZE = 1;
 // Hard cap per topic — kept well below the edge wall-clock so the timeout
 // reliably fires and the catch/finally runs BEFORE the runtime is killed.
-const PER_TOPIC_TIMEOUT_MS = 110_000;
+const PER_TOPIC_TIMEOUT_MS = 90_000;
 
 async function reinvokeContinue(jobId: string) {
   try {
@@ -586,6 +586,8 @@ async function runBatch(jobId: string) {
     }
   };
 
+  let jobLastError: string | null = null;
+
   try {
     for (let i = cursor; i < end; i++) {
       const { data: state } = await supa
@@ -678,9 +680,10 @@ async function runBatch(jobId: string) {
         failed++;
         logStatus = "failed";
         logError = (e as Error).message;
+        jobLastError = `${topic.id}: ${(e as Error).message}`.slice(0, 500);
         console.error(`audit failed for ${topic.id}`, e);
         await supa.from("topic_audit_jobs").update({
-          last_error: `${topic.id}: ${(e as Error).message}`.slice(0, 500),
+          last_error: jobLastError,
           updated_at: new Date().toISOString(),
         }).eq("id", jobId);
       }
@@ -715,8 +718,9 @@ async function runBatch(jobId: string) {
 
     if (cursor >= queue.length) {
       await supa.from("topic_audit_jobs").update({
-        status: "completed",
+        status: failed > 0 ? "completed_with_errors" : "completed",
         current_topic: null,
+        last_error: jobLastError,
         completed_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       }).eq("id", jobId);
