@@ -89,7 +89,7 @@ const workedExamples: WorkedExample[] = [
         complications, hypoxaemia, and aspiration risk.
       </>
     ),
-    cites: ["BJA Educ 2005"],
+    cites: ["Assoc Anaesth 2023 (NMB)", "BJA Educ 2018 (NMJ)"],
   },
 ];
 
