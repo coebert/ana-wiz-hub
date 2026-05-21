@@ -282,24 +282,56 @@ async function callAI(args: {
 }
 
 // ---------- Per-topic audit ----------
-async function auditTopic(jobId: string, topic: TopicRef) {
+type Stages = {
+  scrape_ok: boolean;
+  page_chars: number;
+  screenshot: boolean;
+  refs_count: number;
+  ref_titles: string[];
+  text_findings: number;
+  diagram_findings: number;
+  text_error?: string;
+  diagram_error?: string;
+  scrape_error?: string;
+};
+
+async function auditTopic(
+  jobId: string,
+  topic: TopicRef,
+): Promise<{ findings: any[]; stages: Stages }> {
   const all: any[] = [];
+  const stages: Stages = {
+    scrape_ok: false,
+    page_chars: 0,
+    screenshot: false,
+    refs_count: 0,
+    ref_titles: [],
+    text_findings: 0,
+    diagram_findings: 0,
+  };
 
   // 1. Scrape current topic page (markdown + screenshot)
-  const page = await firecrawlScrape(topic.url, true);
+  let page: any = null;
+  try {
+    page = await firecrawlScrape(topic.url, true);
+  } catch (e) {
+    stages.scrape_error = (e as Error).message;
+  }
   const pageMarkdown: string = page?.markdown ?? "";
   const screenshot: string | undefined = page?.screenshot;
+  stages.page_chars = pageMarkdown.length;
+  stages.screenshot = Boolean(screenshot);
+  stages.scrape_ok = pageMarkdown.length >= 200;
 
   if (!pageMarkdown || pageMarkdown.length < 200) {
-    return [
-      {
-        severity: "major",
-        category: "missing",
-        summary: "Topic page could not be retrieved for audit",
-        details: `Firecrawl returned no usable content for ${topic.url}`,
-        sources: [{ title: "Topic URL", url: topic.url }],
-      },
-    ];
+    const f = {
+      severity: "major",
+      category: "missing",
+      summary: "Topic page could not be retrieved for audit",
+      details: `Firecrawl returned no usable content for ${topic.url}`,
+      sources: [{ title: "Topic URL", url: topic.url }],
+    };
+    return { findings: [f], stages };
   }
 
   // 2. Search reputable sources (BJA Education first)
@@ -323,6 +355,8 @@ async function auditTopic(jobId: string, topic: TopicRef) {
       url: r.url,
       excerpt: String(r.markdown).slice(0, 2500),
     }));
+  stages.refs_count = refs.length;
+  stages.ref_titles = refs.map((r) => String(r.title).slice(0, 120));
 
   // 3. Text audit
   const userText = [
@@ -349,8 +383,10 @@ async function auditTopic(jobId: string, topic: TopicRef) {
       system: TEXT_SYSTEM,
       userText,
     });
+    stages.text_findings = textFindings.length;
     all.push(...textFindings);
   } catch (e) {
+    stages.text_error = (e as Error).message;
     console.error(`text audit error for ${topic.id}`, e);
   }
 
@@ -363,12 +399,14 @@ async function auditTopic(jobId: string, topic: TopicRef) {
         imageUrl: screenshot,
         model: "google/gemini-2.5-pro",
       });
+      stages.diagram_findings = diagramFindings.length;
       for (const f of diagramFindings) {
         f.category = "diagram";
         f.diagram_ref = screenshot;
       }
       all.push(...diagramFindings);
     } catch (e) {
+      stages.diagram_error = (e as Error).message;
       console.error(`diagram audit error for ${topic.id}`, e);
     }
   }
@@ -380,8 +418,9 @@ async function auditTopic(jobId: string, topic: TopicRef) {
     }
   }
 
-  return all;
+  return { findings: all, stages };
 }
+
 
 // ---------- Sweep runner (batched + self-chaining) ----------
 // Each invocation processes at most BATCH_SIZE topics, then re-invokes
