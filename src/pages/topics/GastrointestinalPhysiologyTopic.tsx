@@ -30,9 +30,9 @@ const workedExamples: WorkedExample[] = [
         Apfel risk factors target distinct pathways. Best evidence is for combining drugs that act at <em>different</em>{" "}
         receptors rather than escalating dose at one. Choose one agent per pathway:
         <ul className="list-disc list-inside mt-2 space-y-1">
-          <li><strong>5-HT₃</strong> (vagal/CTZ): ondansetron 4 mg IV at end of surgery.</li>
-          <li><strong>Glucocorticoid</strong> (CTZ + anti-inflammatory): dexamethasone 4–8 mg IV at induction.</li>
-          <li><strong>D₂</strong> (CTZ): droperidol 0.625 mg IV or metoclopramide 10 mg IV.</li>
+          <li><strong>5-HT₃</strong> (vagal/CTZ): ondansetron 4 mg IV at end of surgery<InlineRef topicId="gi-physiology" refLabel="Gan et al. 2020" />.</li>
+          <li><strong>Glucocorticoid</strong> (CTZ + anti-inflammatory): dexamethasone 4–8 mg IV at induction<InlineRef topicId="gi-physiology" refLabel="Gan et al. 2020" />.</li>
+          <li><strong>D₂</strong> (CTZ): droperidol 0.625 mg IV or metoclopramide 10 mg IV<InlineRef topicId="gi-physiology" refLabel="Gan et al. 2020" />.</li>
           <li><strong>NK₁</strong> (CTZ, long acting): aprepitant 40 mg PO pre-op for very high-risk patients.</li>
         </ul>
         Also reduce baseline risk: TIVA with propofol, opioid-sparing analgesia (regional, paracetamol, NSAID),
