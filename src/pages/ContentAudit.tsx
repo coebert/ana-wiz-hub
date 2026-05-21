@@ -709,7 +709,19 @@ const ContentAudit = () => {
                 </Button>
                 <Button
                   size="sm"
-                  onClick={correctAll}
+                  variant="secondary"
+                  onClick={() => correctAll("fixed")}
+                  disabled={
+                    bulkBusy ||
+                    filtered.filter((f) => f.status === "fixed").length === 0
+                  }
+                  title="Re-build a Lovable chat prompt from findings already marked fixed (useful if edits were lost or need re-applying)."
+                >
+                  {`Re-apply fixed (${filtered.filter((f) => f.status === "fixed").length})`}
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() => correctAll("open")}
                   disabled={
                     bulkBusy ||
                     filtered.filter((f) => f.status === "open").length === 0
@@ -720,6 +732,7 @@ const ContentAudit = () => {
                     ? "Building prompt…"
                     : `Correct all (${filtered.filter((f) => f.status === "open").length})`}
                 </Button>
+
               </div>
             </div>
 
