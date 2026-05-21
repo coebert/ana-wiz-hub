@@ -447,18 +447,28 @@ Deno.serve(async (req) => {
     }
 
     // start a new sweep
-    const topics: TopicRef[] | undefined = body.topics;
+    let topics: TopicRef[] | undefined = body.topics;
+
+    // Scheduled / no-payload path: discover topics from the live sitemaps
     if (!topics || topics.length === 0) {
-      return new Response(
-        JSON.stringify({
-          error:
-            "No topics supplied. Client must POST {action:'start', topics:[{id,title,section,description,url}]}",
-        }),
-        {
-          status: 400,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        },
-      );
+      topics = await discoverTopicsFromSitemaps();
+      if (topics.length === 0) {
+        return new Response(
+          JSON.stringify({
+            error:
+              "No topics supplied and sitemap discovery returned nothing.",
+          }),
+          {
+            status: 400,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          },
+        );
+      }
+    }
+
+    // Optional limit
+    if (typeof body.limit === "number" && body.limit > 0) {
+      topics = topics.slice(0, body.limit);
     }
 
     // Normalise / clamp
