@@ -107,14 +107,17 @@ const HumidityGasSamplingTopic = () => {
                 At 37°C, the saturated vapour pressure of water is 6.3 kPa, giving an absolute humidity of 44 mg/L at 100% RH.
               </p>
               <p>
-                The nose warms, humidifies, and filters inspired gas. At the <strong>isothermic saturation boundary (ISB)</strong>,
-                normally at the carina, gas is fully conditioned to 37°C and 44 mg/L. Endotracheal intubation bypasses the nose,
-                shifting the ISB distally and risking mucociliary damage, secretion thickening, and heat loss.
+                The nose warms, humidifies, and filters inspired gas. The point at which gas is fully conditioned to 37 °C and
+                100% RH (44 mg/L) is the <strong>isothermic saturation boundary (ISB)</strong>. In a healthy, resting adult this
+                lies in the large bronchi (around the 4th–5th generation; often approximated to the level of the carina for
+                teaching). Endotracheal intubation bypasses the nose, shifting the ISB distally and risking mucociliary damage,
+                secretion thickening, and heat loss.
               </p>
               <p>
-                <strong>HME filters</strong> passively trap heat and moisture from exhaled gas, returning 25–30 mg/L on inspiration.
-                They add mechanical dead space (30–90 mL). <strong>Heated water bath humidifiers</strong> actively achieve 44 mg/L
-                but carry risks of circuit condensation, infection, and airway burns.
+                Modern <strong>heat and moisture exchange filters (HMEFs)</strong> passively trap heat and moisture from
+                exhaled gas, typically returning <strong>30–38 mg/L</strong> on inspiration depending on the device and
+                ventilation parameters. They add mechanical dead space (30–90 mL). <strong>Heated water bath humidifiers</strong>
+                actively achieve 44 mg/L but carry risks of circuit condensation, infection, and airway burns.
               </p>
             </div>
             </CollapsibleSubsection>
@@ -154,10 +157,10 @@ const HumidityGasSamplingTopic = () => {
             <CollapsibleSubsection title="Mass Spectrometry">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
-                The mass spectrometer is the <strong>only gas analyser that can identify all respiratory and anaesthetic gases
-                simultaneously</strong>. Gas molecules are ionised by electron bombardment in a high vacuum, then accelerated
-                through a voltage gradient and deflected by a magnetic field. The radius of curvature depends on mass-to-charge
-                ratio: <strong>r = mv/qB</strong>. Lighter ions curve more tightly.
+                The mass spectrometer is <strong>one of two clinical methods (the other being Raman scattering) capable of
+                identifying all respiratory and anaesthetic gases simultaneously</strong>. Gas molecules are ionised by electron
+                bombardment in a high vacuum, then accelerated through a voltage gradient and deflected by a magnetic field. The
+                radius of curvature depends on mass-to-charge ratio: <strong>r = mv/qB</strong>. Lighter ions curve more tightly.
               </p>
               <p>
                 A key exam point: <strong>N₂O and CO₂ both have m/z = 44</strong>. The mass spectrometer distinguishes them by
@@ -180,7 +183,7 @@ const HumidityGasSamplingTopic = () => {
                 The <strong>Stokes shift</strong> (lower frequency) is most commonly measured. Each molecule has a unique Raman
                 shift acting as a fingerprint. Unlike infrared absorption (which requires a changing dipole moment), Raman can
                 detect <strong>homonuclear diatomic molecules</strong> like N₂ and O₂. It can also distinguish N₂O from CO₂
-                by their different vibrational modes — something IR absorption and mass spectrometry find challenging.
+                by their different vibrational modes — something IR absorption finds challenging.
               </p>
               <p>
                 <strong>Clinical Raman analysers</strong> (e.g., Rascal™) are fast, measure all gases, and don't require a vacuum.
@@ -266,9 +269,11 @@ const HumidityGasSamplingTopic = () => {
                   150–200 mL/min) must be matched to tidal volume in neonates to avoid dilution.</li>
               </ul>
               <p>
-                <strong>Hardware variants:</strong> dispersive IR (rotating filter wheel selects wavelength), non-dispersive
-                IR (NDIR — uses a dual-chamber detector, the original Luft cell), and photoacoustic spectroscopy (pulsed IR
-                heats the gas → pressure pulse detected by a microphone — used in the Brüel & Kjær multi-gas analyser).
+                <strong>Hardware variants:</strong> dispersive IR (rotating filter wheel selects wavelength); non-dispersive
+                IR (NDIR — uses specific optical filters and detectors for each target gas, the original implementation being
+                the dual-chamber Luft cell; NDIR is the dominant design in modern clinical monitors); and photoacoustic
+                spectroscopy (pulsed IR heats the gas → pressure pulse detected by a microphone — used in the Brüel & Kjær
+                multi-gas analyser).
               </p>
             </div>
             <CrossReferenceCallout

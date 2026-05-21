@@ -114,8 +114,11 @@ const ElectricityMagnetismTopic = () => {
                 UK mains supply is <strong>230V AC at 50 Hz</strong>. The distinction between <strong>DC</strong> (constant direction,
                 e.g., batteries) and <strong>AC</strong> (sinusoidal oscillation) is critical. <strong>Impedance (Z)</strong> is the AC
                 equivalent of resistance, incorporating capacitive reactance (Xc) and inductive reactance (XL):
-                Z = √(R² + (XL − XC)²). At high frequencies, tissue impedance decreases due to capacitive coupling, which is
-                why diathermy (0.4–3 MHz) can pass through the body without stimulating nerves or muscles.
+                Z = √(R² + (XL − XC)²). At high frequencies, tissue impedance falls due to capacitive coupling, allowing
+                current to pass through tissue <em>without</em> stimulating excitable membranes — this is exactly why diathermy
+                operates at 0.4–3 MHz and does not cause neuromuscular contraction or VF. By contrast, the risk of microshock
+                and macroshock is greatest around <strong>mains frequency (50–60 Hz)</strong>, where excitable tissues
+                (myocardium, motor nerves) are maximally responsive.
               </p>
             </div>
             </CollapsibleSubsection>

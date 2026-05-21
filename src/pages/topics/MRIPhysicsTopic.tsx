@@ -32,10 +32,10 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "A 4-year-old needs GA for a 60-minute brain MRI with gadolinium. List the equipment and safety steps required before crossing into Zone IV.",
     working:
-      "Pre-screen: implants, prior surgery, foreign bodies, eGFR (gadolinium → NSF if eGFR < 30).\nEquipment: MR-conditional anaesthetic machine and monitor; non-ferrous laryngoscope and trolley; aluminium gas cylinders; long sampling line for capnography; long IV extensions; fibreoptic ECG cables to avoid burns.\nPersonnel: MR-trained anaesthetic team; checklist before each entry; remove all loose ferromagnetic items.\nMonitoring: SpO₂, EtCO₂, ECG (low-amplitude in field), NIBP; auditory alarms supplemented by visual alarms (acoustic noise inside bore).\nQuench plan: emergency O₂ source and route to remove patient if cryogen vents into room.",
+      "Pre-screen: implants, prior surgery, foreign bodies, eGFR. Gadolinium-based contrast agents (GBCAs) are stratified by risk: older high-risk linear GBCAs are contraindicated if eGFR <30 ml/min/1.73m², whereas the macrocyclic 'Group II' agents in current UK use carry a very low NSF risk and may be used with caution per MHRA/RCR guidance.\nEquipment: MR-conditional anaesthetic machine and monitor; non-ferrous laryngoscope and trolley; aluminium gas cylinders; long sampling line for capnography; long IV extensions; fibreoptic ECG cables to avoid burns.\nPersonnel: MR-trained anaesthetic team per the Association of Anaesthetists 2021 MRI safety guideline; checklist before each entry; remove all loose ferromagnetic items.\nMonitoring: SpO₂, EtCO₂, ECG (low-amplitude in field), NIBP; auditory alarms supplemented by visual alarms (acoustic noise inside bore).\nQuench plan: emergency O₂ source and route to remove patient if cryogen vents into room.",
     answer:
-      "Use an MR-conditional anaesthetic machine with long circuits, non-ferromagnetic trolley/laryngoscope, fibreoptic monitoring, and check eGFR before gadolinium. Maintain access throughout the scan, brief the team on the quench drill, and use ear protection for the patient (≥99 dB acoustic noise during scanning).",
-    cites: ["AAGBI 2010"],
+      "Use an MR-conditional anaesthetic machine with long circuits, non-ferromagnetic trolley/laryngoscope, fibreoptic monitoring, and check eGFR before gadolinium (selecting a macrocyclic Group II GBCA where renal function is impaired). Maintain access throughout the scan, brief the team on the quench drill per the Association of Anaesthetists 2021 MRI safety guideline, and use ear protection for the patient (≥99 dB acoustic noise during scanning).",
+    cites: ["Assoc Anaesth 2021 (MRI)", "RCR GBCA", "MHRA GBCA"],
   },
 ];
 
@@ -58,16 +58,16 @@ const MRIPhysicsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["AAGBI 2010", "AAGBI 2010", "Middleton Ch.17"],
-        keyPoints: ["BJA Educ 2019", "Middleton Ch.17", "AAGBI 2010"],
+        workedExamples: ["Assoc Anaesth 2021 (MRI)", "RCR GBCA", "MHRA GBCA", "Middleton Ch.17"],
+        keyPoints: ["BJA Educ 2019", "Middleton Ch.17", "Assoc Anaesth 2021 (MRI)", "RCR GBCA"],
       }}
       keyPoints={[
         { text: "MRI uses hydrogen protons (¹H) which precess at the Larmor frequency ω₀ = γB₀ (42.58 MHz/T × field strength)", cites: ["BJA Educ 2019"] },
         { text: "An RF pulse at the Larmor frequency tips net magnetisation into the transverse plane (resonance condition)", cites: ["Middleton Ch.17"] },
-        { text: "T1 (spin-lattice) = longitudinal recovery; T2 (spin-spin) = transverse decay; T2* includes field inhomogeneity", cites: ["AAGBI 2010"] },
+        { text: "T1 (spin-lattice) = longitudinal recovery; T2 (spin-spin) = transverse decay; T2* includes field inhomogeneity", cites: ["Assoc Anaesth 2021 (MRI)"] },
         { text: "T1-weighted: fat bright, water dark (short TR/TE); T2-weighted: water bright, fat dark (long TR/TE) — 'WW2' mnemonic", cites: ["BJA Educ 2019"] },
-        { text: "Gadolinium shortens T1 → bright on T1W; risk of nephrogenic systemic fibrosis in renal failure (eGFR <30)", cites: ["Middleton Ch.17"] },
-        { text: "Three MRI hazards: missile effect (ferromagnetic projectiles), thermal burns (RF heating/SAR), device malfunction", cites: ["AAGBI 2010"] },
+        { text: "Gadolinium-based contrast: NSF risk is highest with older linear GBCAs at eGFR <30 ml/min/1.73m² and very low with modern macrocyclic Group II agents (RCR/MHRA)", cites: ["RCR GBCA", "MHRA GBCA"] },
+        { text: "Three MRI hazards: missile effect (ferromagnetic projectiles), thermal burns (RF heating/SAR), device malfunction", cites: ["Assoc Anaesth 2021 (MRI)"] },
         { text: "Equipment labels: MR Safe (green), MR Conditional (yellow), MR Unsafe (red) — all anaesthetic equipment must be checked", cites: ["BJA Educ 2019"] },
       ]}
       coreConcepts={
