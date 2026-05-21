@@ -28,14 +28,14 @@ const workedExamples: WorkedExample[] = [
     cites: ["Assoc Anaesth 2021", "Peck & Hill Appendix"],
   },
   {
-    title: "Half-life vs time constant in remifentanil",
+    title: "Why a single time constant fails for remifentanil",
     scenario:
-      "Remifentanil has a context-sensitive half-time of about 3 minutes after a 4-hour infusion (Ultiva SmPC: 3–4 min). Estimate the corresponding time constant.",
+      "A trainee tries to model remifentanil's offset by taking its context-sensitive half-time (CSHT) of ~3 min after a 4-hour infusion (Ultiva SmPC) and converting it to a single time constant. Critique this approach and contrast it with a true single-compartment example.",
     working:
-      "t½ = 0.693 × τ → τ = t½ / 0.693 = 3 / 0.693 ≈ 4.3 min.\nAfter stopping the infusion: 1 τ (≈4.3 min) → 63% drop, 3 τ (≈13 min) → 95% drop.",
+      "Naïve calculation: τ = t½ / 0.693 = 3 / 0.693 ≈ 4.3 min, predicting ~95% decline at 3τ ≈ 13 min.\nWhy this is wrong: remifentanil is described by a 3-compartment PK model. Plasma concentration after stopping an infusion is a sum of exponentials (rapid, slow and terminal phases), not a single first-order decay. CSHT was defined precisely because no single half-life or τ adequately describes a multi-compartment drug — it is the time for plasma concentration to fall by 50% after a continuous infusion of a given duration, and it varies with infusion length.\nA true single-compartment exponential — and therefore a setting where one τ is appropriate — is nitrogen wash-out during pre-oxygenation (τ = FRC / alveolar ventilation), or the discharge of a defibrillator capacitor (τ = RC).",
     answer:
-      "The time constant of decay is ~4.3 min. Plasma concentration falls by ~95% within 13 min of stopping the infusion, explaining why patients reliably emerge within minutes regardless of infusion duration.",
-    cites: ["Ultiva SmPC", "Middleton Appendix"],
+      "Equating CSHT to a first-order t½ is a fundamental pharmacokinetic error: remifentanil's offset is multi-exponential and its CSHT (~3–4 min) stays short only because rapid metabolism by non-specific esterases dominates redistribution. Use single-τ models only for genuine single-compartment processes such as nitrogen wash-out or capacitor discharge.",
+    cites: ["Ultiva SmPC", "BJA Educ 2004 (PK)", "Peck & Hill Appendix"],
   },
 ];
 
@@ -58,18 +58,18 @@ const MathConceptsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["Cross & Plunkett Ch.1"],
-        workedExamples: ["Peck & Hill Appendix", "Middleton Appendix", "Ultiva SmPC", "Assoc Anaesth 2021"],
-        keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Appendix", "Middleton Appendix"],
+        objectives: ["Cross & Plunkett Ch.1", "BJA Educ 2004 (PK)"],
+        workedExamples: ["Peck & Hill Appendix", "Middleton Appendix", "Ultiva SmPC", "Assoc Anaesth 2021", "BJA Educ 2004 (PK)"],
+        keyPoints: ["Cross & Plunkett Ch.1", "Peck & Hill Appendix", "Middleton Appendix", "BJA Educ 2007 (Stats)", "BJA Educ 2004 (PK)"],
       }}
       keyPoints={[
         { text: "Linear (y = kx): Ohm's law, laminar flow, Beer-Lambert — direct proportionality", cites: ["Cross & Plunkett Ch.1"] },
-        { text: "Exponential decay (e⁻ᵏˣ): First-order drug elimination, nitrogen washout, capacitor discharge", cites: ["Peck & Hill Appendix"] },
+        { text: "Exponential decay (e⁻ᵏˣ): First-order drug elimination, nitrogen washout, capacitor discharge", cites: ["Peck & Hill Appendix", "BJA Educ 2004 (PK)"] },
         { text: "Negative exponential rise (1 − e⁻ᵏˣ): Preoxygenation wash-in, volatile agent uptake, capacitor charging", cites: ["Middleton Appendix"] },
-        { text: "Sigmoid: ODC (cooperative binding), dose-response curves — Hill coefficient determines steepness", cites: ["Cross & Plunkett Ch.1"] },
-        { text: "One time constant (τ) = 63% change; t½ = 0.693 × τ", cites: ["Peck & Hill Appendix"] },
+        { text: "Sigmoid: ODC (cooperative binding), dose-response curves — Hill coefficient determines steepness; central portion linearised by probit/logit transformation", cites: ["Cross & Plunkett Ch.1", "BJA Educ 2007 (Stats)"] },
+        { text: "One time constant (τ) = 63% change; t½ = 0.693 × τ; after 5τ ≈ 99.3% complete", cites: ["Peck & Hill Appendix"] },
         { text: "Logarithmic scales (pH, dB, pKa) compress large ranges — 1 pH unit = 10× change in [H⁺]", cites: ["Middleton Appendix"] },
-        { text: "Bi-exponential decay: Two-compartment pharmacokinetics — rapid distribution then slow elimination", cites: ["Cross & Plunkett Ch.1"] },
+        { text: "Multi-compartment PK is multi-exponential — a single τ or t½ is inadequate, hence context-sensitive half-time (e.g. remifentanil)", cites: ["BJA Educ 2004 (PK)", "Ultiva SmPC"] },
       ]}
       coreConcepts={
         <>
@@ -93,7 +93,7 @@ const MathConceptsTopic = () => {
           <ExamSection id="time-constants" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Time Constants (τ)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              The time constant τ is central to understanding exponential processes. After one time constant, 63% of the change has occurred. After three time constants, 95%. After five, 99% — effectively complete.
+              The time constant τ is central to understanding exponential processes. After one time constant, 63% of the change has occurred. After three time constants, 95%. After five, 99.3% — effectively complete.
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
@@ -140,7 +140,7 @@ const MathConceptsTopic = () => {
                 { scale: "pH", detail: "pH = −log₁₀[H⁺]. A change of 1 pH unit = 10-fold change in [H⁺]. pH 7.4 → [H⁺] = 40 nmol/L; pH 7.1 → [H⁺] = 80 nmol/L." },
                 { scale: "Decibels (dB)", detail: "dB = 10 log₁₀(I/I₀). A 10 dB increase = 10× intensity. Used in ultrasound attenuation and noise measurement." },
                 { scale: "pKa", detail: "pKa = −log₁₀(Ka). Describes acid strength. At pH = pKa, 50% of drug is ionised." },
-                { scale: "MAC", detail: "MAC values are often plotted on log scales when comparing agents. Log dose-response curves straighten the sigmoid." },
+                { scale: "MAC", detail: "MAC values are often plotted on log scales when comparing agents. Plotting dose on a log axis gives a dose-response curve its familiar sigmoid shape; the central portion can then be linearised with a probit or logit transformation for analysis." },
               ].map((item) => (
                 <div key={item.scale} className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">{item.scale}</p>
@@ -154,7 +154,7 @@ const MathConceptsTopic = () => {
           <ExamSection id="sigmoid" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="The Sigmoid Curve & Cooperativity">
             <p className="text-muted-foreground leading-relaxed">
-              The sigmoid (S-shaped) curve arises when binding or response is <strong>cooperative</strong> — each event makes the next more likely. The Hill coefficient (n) describes the steepness: n = 1 gives a hyperbola (no cooperativity, e.g., myoglobin), n = 2.7 gives the sigmoid ODC (haemoglobin), and n → ∞ gives a step function (all-or-nothing response). In pharmacology, log dose-response curves are sigmoid, with EC₅₀ at the midpoint. Plotting on a log scale straightens the middle portion, making comparison of potency and efficacy easier.
+              The sigmoid (S-shaped) curve arises when binding or response is <strong>cooperative</strong> — each event makes the next more likely. The Hill coefficient (n) describes the steepness: n = 1 gives a hyperbola (no cooperativity, e.g., myoglobin), n = 2.7 gives the sigmoid ODC (haemoglobin), and n → ∞ gives a step function (all-or-nothing response). In pharmacology, plotting <strong>dose on a logarithmic axis</strong> converts the hyperbolic dose-response into its familiar sigmoid shape, with EC₅₀ at the midpoint. The central portion of this sigmoid can be linearised using a <strong>probit or logit transformation</strong>, which makes comparison of potency and efficacy between drugs much easier.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
@@ -162,7 +162,7 @@ const MathConceptsTopic = () => {
             accent="physics"
             pitfalls={[
               "A semi-log plot turns a single exponential decay into a straight line — used to derive elimination rate constants.",
-              "Half-life (t½) = 0.693/k; time constant (τ) = 1/k. Three time constants ≈ 95% complete, five ≈ 99%.",
+              "Half-life (t½) = 0.693/k; time constant (τ) = 1/k. Three time constants ≈ 95% complete, five ≈ 99.3%.",
               "Sigmoid (Hill) curves describe cooperative binding (O₂–Hb) and dose-response; the Hill coefficient quantifies cooperativity.",
               "Log scales compress wide dynamic ranges (pH, decibels, drug potency) — a one-unit change is a tenfold change.",
               "Exponential wash-in and wash-out share the same time constant for first-order processes.",

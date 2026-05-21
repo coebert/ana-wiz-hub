@@ -68,12 +68,15 @@ const SIUnitsThermodynamicsTopic = () => {
           "Middleton Ch.1",
           "Middleton Ch.8",
           "NICE CG65",
+          "NICE NG125",
+          "BJA Educ 2017 (Pressure)",
+          "BJA Educ 2008",
         ],
         workedExamples: ["Middleton Ch.8", "Middleton Ch.1"],
       }}
       keyPoints={[
         { text: "There are 7 SI base units: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), candela (cd)", cites: ["Cross & Plunkett Ch.1-2"] },
-        { text: "Key derived units: Pascal (N/m²), Joule (N·m), Watt (J/s). Pressure conversions: 1 atm = 101.3 kPa = 760 mmHg ≈ 1033 cmH₂O", cites: ["Middleton Ch.8"] },
+        { text: "Key derived units: Pascal (N/m²), Joule (N·m), Watt (J/s). Pressure conversions: 1 atm = 101.3 kPa = 760 mmHg ≈ 1033 cmH₂O", cites: ["Middleton Ch.8", "BJA Educ 2017 (Pressure)"] },
         { text: "All individual gas laws (Boyle's, Charles', Gay-Lussac's, Avogadro's) derive from the ideal gas equation PV = nRT", cites: ["Middleton Ch.1"] },
         { text: "Specific heat capacity (c): energy to raise 1 kg by 1 K; water's high c (4.18 kJ/kg/K) provides thermal stability", cites: ["Cross & Plunkett Ch.1-2"] },
         { text: "Latent heat of vaporisation (2260 kJ/kg for water): energy for phase change without temperature change — drives evaporative heat loss", cites: ["Middleton Ch.8"] },
@@ -181,9 +184,11 @@ const SIUnitsThermodynamicsTopic = () => {
               </div>
               <p>
                 <strong>Perioperative temperature management:</strong> Hypothermia (&lt;36 °C) prolongs neuromuscular blockade, reduces MAC, impairs platelet
-                function, increases wound infection rates, and triggers shivering (↑VO₂ 200–400%). NICE guideline CG65
-                (Hypothermia: prevention and management in adults having surgery) recommends active warming for all
-                procedures &gt;30 minutes, with a target core temperature ≥36 °C from induction to discharge from recovery.
+                function, increases wound infection rates, and triggers shivering (↑VO₂ 200–400%). NICE guideline
+                <strong> NG125</strong> (Perioperative care in adults, 2020) recommends active warming for all procedures &gt;30 minutes,
+                aiming for a target core temperature of <strong>at least 36.5 °C</strong> from induction until discharge from recovery
+                (unless therapeutic hypothermia is intended). The earlier <strong>CG65</strong> (2008, updated 2016) defines
+                inadvertent perioperative hypothermia as a core temperature &lt;36.0 °C.
               </p>
             </div>
             </CollapsibleSubsection>
