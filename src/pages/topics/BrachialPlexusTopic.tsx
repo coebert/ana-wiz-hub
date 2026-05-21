@@ -184,7 +184,7 @@ const BrachialPlexusTopic = () => {
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Interscalene (Roots/Trunks)</p>
-                <p className="text-sm text-muted-foreground mt-1">Between anterior and middle scalene at C6 level. Targets C5–C7 (superior/middle trunks). Misses C8/T1 (ulnar sparing). Phrenic nerve palsy 100%. Contralateral hand ventilation check essential.<Cite topicId="brachial-plexus" labels={["BJA Educ 2014", "Miller Ch.46"]} /></p>
+                <p className="text-sm text-muted-foreground mt-1">Between anterior and middle scalene at C6 level. Targets C5–C7 (superior/middle trunks). Misses C8/T1 (ulnar sparing). Phrenic nerve palsy 100%<Cite topicId="brachial-plexus" labels={["Urmey 1991"]} />. Contralateral hand ventilation check essential.<Cite topicId="brachial-plexus" labels={["BJA Educ 2014", "Miller Ch.46"]} /></p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Supraclavicular (Trunks/Divisions)</p>
