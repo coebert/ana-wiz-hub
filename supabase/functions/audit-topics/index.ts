@@ -493,14 +493,41 @@ async function runBatch(jobId: string) {
     }
 
     const topic = queue[i];
+    const startedAt = new Date();
 
     await supa
       .from("topic_audit_jobs")
-      .update({ current_topic: topic.title, updated_at: new Date().toISOString() })
+      .update({ current_topic: topic.title, updated_at: startedAt.toISOString() })
       .eq("id", jobId);
 
+    // Upsert a running log row up-front so the UI shows what's in-flight.
+    await supa.from("topic_audit_topic_logs").upsert(
+      {
+        job_id: jobId,
+        topic_id: topic.id,
+        topic_title: topic.title,
+        section: topic.section,
+        topic_url: topic.url,
+        status: "running",
+        started_at: startedAt.toISOString(),
+        completed_at: null,
+        duration_ms: null,
+        error_message: null,
+        stages: {},
+        findings_count: 0,
+        updated_at: startedAt.toISOString(),
+      },
+      { onConflict: "job_id,section,topic_id" },
+    );
+
+    let logStatus: "succeeded" | "failed" = "succeeded";
+    let logError: string | null = null;
+    let logStages: Record<string, unknown> = {};
+    let topicFindingsCount = 0;
+
     try {
-      const findings = await auditTopic(jobId, topic);
+      const { findings, stages } = await auditTopic(jobId, topic);
+      logStages = stages as unknown as Record<string, unknown>;
       if (findings.length > 0) {
         const rows = findings.map((f) => ({
           job_id: jobId,
@@ -521,16 +548,36 @@ async function runBatch(jobId: string) {
           .insert(rows);
         if (error) throw error;
         findingsCount += rows.length;
+        topicFindingsCount = rows.length;
       }
       succeeded++;
     } catch (e) {
       failed++;
+      logStatus = "failed";
+      logError = (e as Error).message;
       console.error(`audit failed for ${topic.id}`, e);
       await supa.from("topic_audit_jobs").update({
         last_error: `${topic.id}: ${(e as Error).message}`.slice(0, 500),
         updated_at: new Date().toISOString(),
       }).eq("id", jobId);
     }
+
+    const completedAt = new Date();
+    await supa
+      .from("topic_audit_topic_logs")
+      .update({
+        status: logStatus,
+        completed_at: completedAt.toISOString(),
+        duration_ms: completedAt.getTime() - startedAt.getTime(),
+        error_message: logError,
+        stages: logStages,
+        findings_count: topicFindingsCount,
+        updated_at: completedAt.toISOString(),
+      })
+      .eq("job_id", jobId)
+      .eq("section", topic.section)
+      .eq("topic_id", topic.id);
+
 
     processed++;
     cursor = i + 1;
