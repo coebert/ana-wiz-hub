@@ -601,6 +601,15 @@ async function runBatch(jobId: string) {
         { onConflict: "job_id,section,topic_id" },
       );
 
+      // Fire the successor chain BEFORE awaiting the topic. If this runtime
+      // is killed mid-await (edge wall-clock / AI gateway hang), the next
+      // invocation is already in flight and — because cursor was advanced
+      // above — will pick up the NEXT topic, not retry the stuck one.
+      // chainOnce is idempotent, so the finally block becomes a no-op when
+      // this succeeds normally.
+      await chainOnce();
+
+
       let logStatus: "succeeded" | "failed" = "succeeded";
       let logError: string | null = null;
       let logStages: Record<string, unknown> = {};
