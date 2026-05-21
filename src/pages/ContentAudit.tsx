@@ -110,13 +110,52 @@ const ContentAudit = () => {
     })();
   }, []);
 
-  // Poll while running
+  // Realtime: live job progress + streaming findings while audit runs
+  useEffect(() => {
+    if (!job?.id) return;
+    const jobId = job.id;
+    const channel = supabase
+      .channel(`audit-job-${jobId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "topic_audit_jobs",
+          filter: `id=eq.${jobId}`,
+        },
+        (payload) => {
+          setJob((prev) => ({ ...(prev as Job), ...(payload.new as Job) }));
+        },
+      )
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "topic_audit_findings",
+          filter: `job_id=eq.${jobId}`,
+        },
+        (payload) => {
+          const f = payload.new as Finding;
+          setFindings((prev) =>
+            prev.some((x) => x.id === f.id) ? prev : [f, ...prev],
+          );
+        },
+      )
+      .subscribe();
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [job?.id]);
+
+  // Fallback poll while running (in case realtime drops)
   useEffect(() => {
     if (job?.status !== "running" && job?.status !== "pending") return;
     const t = setInterval(async () => {
       const j = await fetchLatestJob();
       if (j) await fetchFindings(j.id);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(t);
   }, [job?.status]);
 
