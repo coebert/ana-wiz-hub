@@ -256,6 +256,15 @@ const RenalPhysiologyTopic = () => {
                 Step through the countercurrent multiplication process to understand how the loop of Henle generates
                 the corticomedullary osmotic gradient (300→1200 mOsm/kg). Press Play or use the step buttons.
               </p>
+              <div className="rounded-lg border border-border bg-secondary/20 p-4 mb-4 text-sm text-foreground/90 leading-relaxed">
+                The countercurrent mechanism has three integrated components: <strong>(1) the loop of Henle
+                multiplier</strong> — active NaCl reabsorption from the water-impermeable thick ascending limb,
+                amplified by the hairpin geometry, generates the medullary osmotic gradient; <strong>(2) the vasa
+                recta exchanger</strong> — slow, hairpin medullary blood flow allows passive countercurrent exchange
+                of solute and water and so preserves rather than washes out the gradient; <strong>(3) the collecting
+                duct</strong> — under the control of ADH (V2 receptor → aquaporin-2 insertion), tubular water
+                equilibrates with the hypertonic medulla, concentrating urine to a maximum of ~1200–1400 mOsm/kg.
+              </p>
               <div className="bg-card rounded-xl border border-border p-6">
                 <CountercurrentMultiplierDiagram />
               </div>
