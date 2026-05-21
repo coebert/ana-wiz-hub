@@ -114,7 +114,7 @@ const RenalPhysiologyTopic = () => {
         workedExamples: ["Ganong Ch.37-38", "Power & Kam Ch.9", "BJA Educ 2018"],
       }}
       keyPoints={[
-        { text: "GFR ≈ 125 ml/min. Autoregulation maintains GFR over MAP 80–180 mmHg (myogenic + TGF).", cites: ["Ganong Ch.37-38"] },
+        { text: "GFR ≈ 125 ml/min. Autoregulation maintains RBF and GFR over MAP ~75–160 mmHg (myogenic + TGF).", cites: ["BJA Educ 2015 (Renal)"] },
         { text: "PCT reabsorbs 65-70% of filtered Na⁺, all glucose (SGLT2, Tm 375 mg/min), and 85% of HCO₃⁻.", cites: ["Power & Kam Ch.9"] },
         { text: "Loop of Henle: NKCC2 in thick ascending limb — target of furosemide. Countercurrent multiplier creates medullary gradient.", cites: ["BJA Educ 2018"] },
         { text: "ADH acts on V2 receptors → aquaporin-2 insertion in collecting duct → water reabsorption.", cites: ["Ganong Ch.37-38"] },
