@@ -18,6 +18,8 @@ import {
   AlertCircle,
   ArrowLeft,
   CheckCircle2,
+  ChevronDown,
+  ChevronRight,
   ExternalLink,
   Play,
   RefreshCw,
@@ -26,6 +28,7 @@ import {
   Wifi,
   WifiOff,
 } from "lucide-react";
+
 import { toast } from "sonner";
 
 type Job = {
