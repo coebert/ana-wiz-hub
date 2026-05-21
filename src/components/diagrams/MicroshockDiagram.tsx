@@ -34,8 +34,8 @@ export const MicroshockDiagram = () => {
   return (
     <DiagramFigure
       id="microshock-diagram"
-      title="Microshock"
-      description="Auto-generated wrapper for the Microshock anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      title="Microshock and the Type CF safety margin"
+      description="Three scenarios contrasting macroshock via intact skin (mA threshold) with microshock via an intracardiac conductor (µA threshold). Demonstrates why bypassing skin resistance with a pacing wire or saline-filled CVP collapses the safety margin and why Type CF equipment (<10 µA leakage) is mandatory for any direct cardiac connection."
     >
                   <div className="w-full max-w-3xl mx-auto space-y-4">
         <div className="flex flex-wrap gap-2 justify-center">
@@ -259,9 +259,7 @@ export const MicroshockDiagram = () => {
   
         <div className="bg-secondary/30 rounded-lg border border-border p-3">
           <p className="text-xs text-muted-foreground">
-            <strong className="text-foreground">Sources of microshock in theatre/ICU:</strong> faulty monitor with elevated leakage,
-            static discharge to a pacing wire, simultaneous touching of two earthed devices by staff (one hand on equipment, one on
-            the catheter hub), wet pacing wire connections. <strong className="text-foreground">Mitigation:</strong> Type CF equipment
+            <strong className="text-foreground">Sources of microshock in theatre/ICU:</strong> faulty equipment with elevated chassis leakage current contacting the patient's intracardiac connection (pacing wire, CVP/PA catheter hub, saline-filled transducer line), static discharge to a pacing wire, or wet pacing-wire terminals — a potential difference is always required, so two intact, equipotentially bonded devices alone do not cause microshock. <strong className="text-foreground">Mitigation:</strong> Type CF equipment
             throughout, isolated power supply (LIM), insulated pacing-wire terminals, equipotential bonding, never handle exposed
             conductors with bare hands.
           </p>

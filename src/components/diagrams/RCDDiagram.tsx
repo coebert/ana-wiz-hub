@@ -44,8 +44,8 @@ export const RCDDiagram = () => {
   return (
     <DiagramFigure
       id="rcd-diagram"
-      title="RCD"
-      description="Auto-generated wrapper for the RCD anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      title="Residual current device (RCD) vs isolated supply"
+      description="Interactive comparison of an earthed mains supply protected by a 30 mA RCD with the isolated power system + line isolation monitor used in UK operating theatres. Shows why an automatic-disconnect device that is safe on a domestic circuit is deliberately replaced by a single-fault-tolerant LIM in theatre, and why neither protects against microshock — Type CF equipment is still required."
     >
                   <div className="w-full max-w-3xl mx-auto space-y-4">
         <div className="flex flex-wrap gap-2 justify-center">
@@ -297,7 +297,7 @@ export const RCDDiagram = () => {
                 </tr>
                 <tr>
                   <td className="py-1.5 px-2 font-medium text-foreground">Where used</td>
-                  <td className="py-1.5 px-2">Domestic, ward areas, ICU bedspaces (often)</td>
+                  <td className="py-1.5 px-2">General clinical areas (wards, domestic, outpatients) — HTM 06-01 Group 0/1</td>
                   <td className="py-1.5 px-2">Theatres, cath labs, IR suites</td>
                 </tr>
               </tbody>

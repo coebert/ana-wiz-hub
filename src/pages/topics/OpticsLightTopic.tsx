@@ -21,10 +21,10 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "A 30-year-old rescued from a house fire has a pulse oximeter reading of 99%. ABG co-oximetry: SaO₂ 78%, COHb 22%, MetHb 1%. Why is the SpO₂ misleading?",
     working:
-      "Pulse oximetry uses 660 nm (red) + 940 nm (IR). It calculates functional saturation = HbO₂ / (HbO₂ + Hb).\nCOHb absorbs almost identically to HbO₂ at 660 nm → the oximeter sees COHb as oxygenated haemoglobin.\nFractional SaO₂ = HbO₂ / (HbO₂ + Hb + COHb + MetHb) = 78% — the true tissue oxygen-carrying capacity.\nCo-oximetry uses ≥4 wavelengths (typically including 535, 585, 660, 940 nm) to resolve all four species.",
+      "Pulse oximetry uses 660 nm (red) + 940 nm (IR). It calculates functional saturation = HbO₂ / (HbO₂ + Hb).\nThe device computes a ratio of ratios R = (AC₆₆₀/DC₆₆₀)/(AC₉₄₀/DC₉₄₀). COHb has an absorbance at 660 nm very close to that of HbO₂ but a very low absorbance at 940 nm — the resulting R value is virtually indistinguishable from that produced by HbO₂, so the algorithm classifies COHb as oxygenated haemoglobin and returns a falsely reassuring SpO₂.\nFractional SaO₂ = HbO₂ / (HbO₂ + Hb + COHb + MetHb) = 78% — the true tissue oxygen-carrying capacity.\nCo-oximetry uses ≥4 wavelengths (typically including 535, 585, 660, 940 nm) to resolve all four species.",
     answer:
-      "SpO₂ is falsely reassuring because COHb and HbO₂ are optically indistinguishable at 660 nm. Treat with high-flow 100% O₂ (reduces COHb half-life from 320 min in air to ~80 min on FiO₂ 1.0) regardless of SpO₂; consider hyperbaric O₂ if COHb >25% or neurological signs.",
-    cites: ["BJA Educ 2004"],
+      "SpO₂ is falsely reassuring because the ratio of COHb absorbances at 660 nm and 940 nm mimics that of HbO₂, so the two-wavelength algorithm reports COHb as oxyhaemoglobin. Treat with high-flow 100% O₂ (reduces COHb half-life from ~320 min in air to ~80 min on FiO₂ 1.0) regardless of SpO₂; consider hyperbaric O₂ if COHb >25% or neurological signs.",
+    cites: ["BJA Educ 2004 (Spectrophotometry)", "BJA Educ 2017 (Pulse oximetry)"],
   },
   {
     title: "Critical angle in a fibreoptic bronchoscope",
@@ -57,17 +57,18 @@ const OpticsLightTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["BJA Educ 2004", "Middleton Ch.12"],
-        keyPoints: ["Cross & Plunkett Ch.18", "BJA Educ 2004", "Middleton Ch.12"],
+        workedExamples: ["BJA Educ 2004 (Spectrophotometry)", "BJA Educ 2017 (Pulse oximetry)", "Middleton Ch.12"],
+        keyPoints: ["Cross & Plunkett Ch.18", "BJA Educ 2004 (Spectrophotometry)", "BJA Educ 2017 (Pulse oximetry)", "Middleton Ch.12"],
       }}
       keyPoints={[
         { text: "Law of reflection: angle of incidence = angle of reflection (θᵢ = θᵣ); incident ray, reflected ray, and normal lie in the same plane", cites: ["Cross & Plunkett Ch.18"] },
         { text: "Snell's law: n₁ sin θ₁ = n₂ sin θ₂; light bends toward the normal when entering a denser medium (higher refractive index)", cites: ["BJA Educ 2004"] },
         { text: "Total internal reflection (TIR) occurs when light exceeds the critical angle (sin θc = n₂/n₁) travelling from dense → less dense medium", cites: ["Middleton Ch.12"] },
         { text: "Fibreoptic scopes use TIR: coherent bundles (image) preserve spatial arrangement; incoherent bundles (light) transmit illumination only", cites: ["Cross & Plunkett Ch.18"] },
-        { text: "Beer-Lambert law: A = ε × c × l — absorbance proportional to concentration × path length; basis of pulse oximetry and co-oximetry", cites: ["BJA Educ 2004"] },
-        { text: "Pulse oximetry uses 660 nm (red) and 940 nm (IR); R ratio calibrated empirically; cannot detect COHb or MetHb (needs co-oximetry)", cites: ["Middleton Ch.12"] },
-        { text: "Isobestic point (~800 nm): HbO₂ and Hb absorb equally — used for calibration and total haemoglobin estimation", cites: ["Cross & Plunkett Ch.18"] },
+        { text: "Beer-Lambert law: A = ε × c × l — absorbance proportional to concentration × path length; basis of pulse oximetry and co-oximetry", cites: ["BJA Educ 2004 (Spectrophotometry)"] },
+        { text: "Pulse oximetry isolates arterial blood by analysing the pulsatile (AC) component of absorption against the static (DC) baseline at 660 nm and 940 nm; cannot detect COHb or MetHb (needs co-oximetry)", cites: ["BJA Educ 2017 (Pulse oximetry)"] },
+        { text: "Isobestic point (805 nm): HbO₂ and Hb absorb equally — used for calibration and total haemoglobin estimation", cites: ["BJA Educ 2004 (Spectrophotometry)"] },
+        { text: "MetHb absorbs roughly equally at 660 nm and 940 nm, driving the ratio of ratios toward 1 — SpO₂ trends to ~85% regardless of true SaO₂", cites: ["BJA Educ 2017 (Pulse oximetry)"] },
       ]}
       coreConcepts={
         <>
@@ -166,10 +167,15 @@ const OpticsLightTopic = () => {
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Pulse oximetry</strong> uses two wavelengths — 660 nm (red) and 940 nm (infrared). Oxyhaemoglobin (HbO₂)
-                absorbs more infrared light, while deoxyhaemoglobin (Hb) absorbs more red light. The ratio R = (AC₆₆₀/DC₆₆₀) /
-                (AC₉₄₀/DC₉₄₀) is calibrated against direct arterial blood gas measurements in healthy volunteers. At R = 1,
-                SpO₂ ≈ 85%. Pulse oximetry measures <strong>functional saturation</strong>: HbO₂/(HbO₂ + Hb), and cannot detect
-                COHb or MetHb with only two wavelengths.
+                absorbs more infrared light, while deoxyhaemoglobin (Hb) absorbs more red light. Crucially, the probe measures
+                absorbance throughout the cardiac cycle: a small <strong>pulsatile (AC)</strong> component arises from the
+                arterial blood added with each systolic pulse, superimposed on a much larger <strong>non-pulsatile (DC)</strong>
+                baseline from skin, soft tissue, venous blood and the static arterial blood. By computing the ratio of the AC
+                to DC signal at each wavelength, and then the ratio of these two ratios
+                R = (AC₆₆₀/DC₆₆₀) / (AC₉₄₀/DC₉₄₀), the device isolates the absorbance characteristics of the freshly
+                arriving arterial blood and rejects everything else. R is calibrated empirically against arterial blood gas
+                measurements in healthy volunteers; at R = 1, SpO₂ ≈ 85%. Pulse oximetry reports <strong>functional
+                saturation</strong>: HbO₂/(HbO₂ + Hb), and with only two wavelengths cannot resolve COHb or MetHb.
               </p>
               <p>
                 <strong>Co-oximetry</strong> uses 4 or more wavelengths to measure <strong>fractional saturation</strong>: HbO₂/
@@ -178,9 +184,15 @@ const OpticsLightTopic = () => {
                 saturation (rSO₂), providing a mixed arterial-venous signal (approximately 75% venous, 25% arterial).
               </p>
               <p>
-                The <strong>isobestic point</strong> (~800 nm) is where HbO₂ and Hb have equal absorption. At this wavelength,
-                absorption depends only on total haemoglobin concentration, independent of oxygenation — it is used for
-                calibration and total Hb estimation.
+                The <strong>isobestic point</strong> (805 nm) is the wavelength at which HbO₂ and Hb absorb equally. At this
+                wavelength, absorption depends only on total haemoglobin concentration, independent of oxygenation — it is used
+                for calibration and total Hb estimation.
+              </p>
+              <p>
+                <strong>Methaemoglobin (MetHb)</strong> has approximately equal absorbance at 660 nm and 940 nm. This drives the
+                ratio of ratios toward R ≈ 1, which corresponds to an SpO₂ of approximately <strong>85%</strong>, irrespective
+                of the true arterial saturation. Clinically this produces a falsely low SpO₂ in well-oxygenated patients and a
+                falsely high SpO₂ in those who are profoundly hypoxic — co-oximetry is required to quantify MetHb.
               </p>
             </div>
             </CollapsibleSubsection>

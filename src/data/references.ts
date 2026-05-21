@@ -95,7 +95,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 18: Optics and Light." },
     { label: "Middleton Ch.12", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 12: Light and Optics." },
     { label: "BJA Educ 2004", citation: "Dorsch JA. Fibreoptics and light transmission. BJA Education. 2004;4(4):128-131.", url: "https://doi.org/10.1093/bjaceaccp/mkh035" },
+    { label: "BJA Educ 2004 (Spectrophotometry)", citation: "Moyle JTB. Spectrophotometry. BJA Education. 2004;4(4):135-138.", url: "https://doi.org/10.1093/bjaceaccp/mkh037" },
+    { label: "BJA Educ 2017 (Pulse oximetry)", citation: "Nitzan M, Romem A, Koppel R. Pulse oximetry: fundamentals and technology update. BJA Education. 2017;17(1):1-5. (AC/DC pulsatile-vs-static principle, CO and MetHb behaviour.)", url: "https://doi.org/10.2147/MDER.S47319" },
   ],
+
   "mri-physics": [
     { label: "BJA Educ 2019", citation: "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.", url: "https://doi.org/10.1016/j.bjae.2019.04.004" },
     { label: "Assoc Anaesth 2021 (MRI)", citation: "Association of Anaesthetists. Safety in magnetic resonance imaging. Anaesthesia. 2021;76(11):1533-1545. (Supersedes the 2010 AAGBI guideline on Provision of Anaesthetic Services in MR Units.)", url: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.15517" },
@@ -108,7 +111,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Middleton Ch.1", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 1: SI Units and Simple Mechanics." },
     { label: "Middleton Ch.8", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 8: Heat and Thermodynamics." },
     { label: "BJA Educ 2008", citation: "Sessler DI. Temperature monitoring and perioperative thermoregulation. Anesthesiology. 2008;109(2):318-338. (Quantifies relative contributions of radiation, convection, evaporation and conduction to perioperative heat loss.)", url: "https://doi.org/10.1097/ALN.0b013e31817f6d76" },
-    { label: "NICE CG65", citation: "National Institute for Health and Care Excellence. Hypothermia: prevention and management in adults having surgery (CG65). 2008 (updated 2016).", url: "https://www.nice.org.uk/guidance/cg65" },
+    { label: "BJA Educ 2016 (Thermo)", citation: "Sessler DI; adapted in Torossian A et al. Peri-operative thermoregulation and temperature monitoring. BJA Education. 2016;16(9):304-308. (UK-focused review: heat loss ≈40–60% radiation, ~30% convection, up to 20% evaporation.)", url: "https://doi.org/10.1093/bjaed/mkw013" },
+    { label: "NICE CG65", citation: "National Institute for Health and Care Excellence. Hypothermia: prevention and management in adults having surgery (CG65). 2008 (updated 2016). Defines inadvertent perioperative hypothermia as core temperature <36.0 °C.", url: "https://www.nice.org.uk/guidance/cg65" },
     { label: "NICE NG125", citation: "National Institute for Health and Care Excellence. Perioperative care in adults (NG125). 2020. Recommendation: maintain patient temperature at ≥36.5 °C from induction until discharge from recovery unless hypothermia is intended.", url: "https://www.nice.org.uk/guidance/ng125/chapter/Recommendations#maintaining-normothermia" },
     { label: "BJA Educ 2017 (Pressure)", citation: "Hutchinson J, Whittaker M. Pressure measurement. BJA Education. 2017;17(9):316-21. (1 atm ≈ 1033 cmH₂O.)", url: "https://doi.org/10.1093/bjaed/mkx019" },
   ],
