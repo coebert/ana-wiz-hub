@@ -66,6 +66,8 @@ const ElectricityMagnetismTopic = () => {
           "Cross & Plunkett Ch.12-13",
           "Middleton Ch.15",
           "BJA Educ 2017",
+          "BJA Educ 2013 (Basic physics)",
+          "BJA Educ 2008 (Electricity)",
         ],
         workedExamples: ["BJA Educ 2017", "Middleton Ch.15"],
       }}
@@ -73,7 +75,7 @@ const ElectricityMagnetismTopic = () => {
         { text: "Ohm's law: V = IR. Power: P = VI = I²R = V²/R. Series resistances add; parallel: 1/R = 1/R₁ + 1/R₂", cites: ["Cross & Plunkett Ch.12-13"] },
         { text: "Impedance (Z) is the AC equivalent of resistance: Z = √(R² + (XL − XC)²) — includes capacitive and inductive reactance", cites: ["BJA Educ 2017"] },
         { text: "Capacitors store energy in electric fields (E = ½CV²); Xc = 1/(2πfC) — pass AC, block DC. Time constant τ = RC", cites: ["Middleton Ch.15"] },
-        { text: "Inductors store energy in magnetic fields (E = ½LI²); XL = 2πfL — pass DC, block AC. Basis of transformers", cites: ["Cross & Plunkett Ch.12-13"] },
+        { text: "Inductors store energy in magnetic fields (E = ½LI²); XL = 2πfL — pass DC, block AC. Basis of transformers", cites: ["Cross & Plunkett Ch.12-13", "BJA Educ 2013 (Basic physics)"] },
         { text: "Transformer equation: V₁/V₂ = N₁/N₂ = I₂/I₁. Only works with AC. Isolation transformers eliminate earth reference", cites: ["BJA Educ 2017"] },
         { text: "Wheatstone bridge: balanced when R₁/R₃ = R₂/R₄. Used in arterial transducers (strain gauge) and thermistor circuits", cites: ["Middleton Ch.15"] },
         { text: "Defibrillators use capacitors: charge to high voltage → rapid discharge. E = ½CV² determines energy delivered", cites: ["Cross & Plunkett Ch.12-13"] },
