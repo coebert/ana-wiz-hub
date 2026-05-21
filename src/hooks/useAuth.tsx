@@ -28,29 +28,38 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
+    let cancelled = false;
+
+    const applySession = async (session: Session | null) => {
+      if (cancelled) return;
+      setSession(session);
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        // Resolve admin role BEFORE flipping loading to false so
+        // RequireAdmin never sees the (user, isAdmin=false) tuple
+        // during the role-check round-trip.
+        await checkAdmin(session.user.id);
+      } else {
+        setIsAdmin(false);
+      }
+      if (!cancelled) setLoading(false);
+    };
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null);
-        if (session?.user) {
-          setTimeout(() => checkAdmin(session.user.id), 0);
-        } else {
-          setIsAdmin(false);
-        }
-        setLoading(false);
+      (_event, session) => {
+        // Defer to avoid deadlocks inside the auth callback.
+        setTimeout(() => applySession(session), 0);
       }
     );
 
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      if (session?.user) {
-        checkAdmin(session.user.id);
-      }
-      setLoading(false);
+      applySession(session);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      cancelled = true;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signIn = async (email: string, password: string) => {
