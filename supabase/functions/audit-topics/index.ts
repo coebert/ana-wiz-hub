@@ -589,6 +589,15 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Continue an existing job (self-chain): skip topic discovery entirely.
+    if (action === "continue" && body.job_id) {
+      // @ts-ignore EdgeRuntime global
+      EdgeRuntime.waitUntil(runBatch(body.job_id));
+      return new Response(JSON.stringify({ ok: true, continued: body.job_id }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     // start a new sweep
     let topics: TopicRef[] | undefined = body.topics;
 
@@ -628,13 +637,6 @@ Deno.serve(async (req) => {
             : `${SITE_BASE}/${t.section}/${t.id}`,
       }));
 
-    if (action === "continue" && body.job_id) {
-      // @ts-ignore EdgeRuntime global
-      EdgeRuntime.waitUntil(runBatch(body.job_id));
-      return new Response(JSON.stringify({ ok: true, continued: body.job_id }), {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
 
     const { data: job, error } = await supa
       .from("topic_audit_jobs")
