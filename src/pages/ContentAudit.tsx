@@ -1189,6 +1189,32 @@ const AuditTimeline = ({
             <span className="text-xs text-muted-foreground">
               Elapsed: {fmtDuration(Date.now() - new Date(job.created_at).getTime())}
             </span>
+            {etaMs > 0 && (
+              <>
+                <span className="text-muted-foreground">·</span>
+                <span
+                  className="text-xs text-muted-foreground"
+                  title={
+                    avgSource === "logs"
+                      ? "ETA based on average duration of completed topics in this job"
+                      : "ETA based on overall elapsed time (no completed topic durations yet)"
+                  }
+                >
+                  ETA: ~{fmtDuration(etaMs)}
+                </span>
+              </>
+            )}
+            {avgTopicMs > 0 && (
+              <>
+                <span className="text-muted-foreground">·</span>
+                <span className="text-xs text-muted-foreground">
+                  Avg/topic: {(avgTopicMs / 1000).toFixed(1)}s
+                  {avgSource === "elapsed" && (
+                    <span className="opacity-60"> (est.)</span>
+                  )}
+                </span>
+              </>
+            )}
           </>
         )}
       </div>
