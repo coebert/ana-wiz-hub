@@ -44,7 +44,7 @@ const ShockThresholdsDiagram = () => (
         <text x="440" y="65" textAnchor="middle" className="fill-destructive text-[12px] font-bold">MICROSHOCK (intracardiac)</text>
 
         <rect x="310" y="95" width="260" height="100" rx="8" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive)/0.3)" strokeWidth="1" />
-        <text x="440" y="120" textAnchor="middle" className="fill-foreground text-[13px] font-bold">150 µA (0.15 mA)</text>
+        <text x="440" y="120" textAnchor="middle" className="fill-foreground text-[13px] font-bold">~100 µA (0.1 mA) at 50 Hz</text>
         <text x="440" y="140" textAnchor="middle" className="fill-destructive text-[11px] font-medium">→ Ventricular Fibrillation</text>
         <text x="440" y="162" textAnchor="middle" className="fill-muted-foreground text-[10px]">~1000× less than macroshock VF threshold</text>
 
