@@ -23,6 +23,8 @@ import {
   RefreshCw,
   Square,
   ShieldCheck,
+  Wifi,
+  WifiOff,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -110,12 +112,19 @@ const ContentAudit = () => {
     })();
   }, []);
 
+  // Realtime connection state + auto-reconnect
+  type RTStatus = "connecting" | "live" | "offline" | "reconnecting";
+  const [rtStatus, setRtStatus] = useState<RTStatus>("connecting");
+  const [reconnectNonce, setReconnectNonce] = useState(0);
+
   // Realtime: live job progress + streaming findings while audit runs
   useEffect(() => {
     if (!job?.id) return;
     const jobId = job.id;
+    setRtStatus((s) => (s === "live" ? s : "connecting"));
+
     const channel = supabase
-      .channel(`audit-job-${jobId}`)
+      .channel(`audit-job-${jobId}-${reconnectNonce}`)
       .on(
         "postgres_changes",
         {
@@ -143,21 +152,71 @@ const ContentAudit = () => {
           );
         },
       )
-      .subscribe();
+      .subscribe((status) => {
+        if (status === "SUBSCRIBED") {
+          setRtStatus("live");
+          // resync after any (re)connect so we don't miss events
+          (async () => {
+            const j = await fetchLatestJob();
+            if (j) await fetchFindings(j.id);
+          })();
+        } else if (
+          status === "CHANNEL_ERROR" ||
+          status === "TIMED_OUT" ||
+          status === "CLOSED"
+        ) {
+          setRtStatus("reconnecting");
+        }
+      });
+
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [job?.id]);
+  }, [job?.id, reconnectNonce]);
 
-  // Fallback poll while running (in case realtime drops)
+  // Browser online/offline → drive status + trigger channel rebuild
+  useEffect(() => {
+    const goOffline = () => setRtStatus("offline");
+    const goOnline = () => {
+      setRtStatus("reconnecting");
+      setReconnectNonce((n) => n + 1);
+    };
+    window.addEventListener("offline", goOffline);
+    window.addEventListener("online", goOnline);
+    if (typeof navigator !== "undefined" && navigator.onLine === false) {
+      setRtStatus("offline");
+    }
+    return () => {
+      window.removeEventListener("offline", goOffline);
+      window.removeEventListener("online", goOnline);
+    };
+  }, []);
+
+  // Auto-retry while in reconnecting state (exponential-ish, capped)
+  useEffect(() => {
+    if (rtStatus !== "reconnecting") return;
+    const t = setTimeout(() => {
+      setReconnectNonce((n) => n + 1);
+    }, 5000);
+    return () => clearTimeout(t);
+  }, [rtStatus, reconnectNonce]);
+
+  const reconnectNow = () => {
+    setRtStatus("reconnecting");
+    setReconnectNonce((n) => n + 1);
+  };
+
+  // Fallback poll while running (in case realtime drops). Polls faster
+  // when realtime isn't live so the UI stays accurate.
   useEffect(() => {
     if (job?.status !== "running" && job?.status !== "pending") return;
+    const interval = rtStatus === "live" ? 8000 : 3000;
     const t = setInterval(async () => {
       const j = await fetchLatestJob();
       if (j) await fetchFindings(j.id);
-    }, 8000);
+    }, interval);
     return () => clearInterval(t);
-  }, [job?.status]);
+  }, [job?.status, rtStatus]);
 
   const startAudit = async (scope: "all" | "section", section?: string) => {
     setStarting(true);
@@ -386,17 +445,20 @@ const ContentAudit = () => {
               </p>
             </div>
           </div>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={async () => {
-              const j = await fetchLatestJob();
-              await fetchFindings(j?.id);
-            }}
-          >
-            <RefreshCw className="w-4 h-4 mr-1" />
-            Refresh
-          </Button>
+          <div className="flex items-center gap-2">
+            <RealtimeStatusPill status={rtStatus} onReconnect={reconnectNow} />
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={async () => {
+                const j = await fetchLatestJob();
+                await fetchFindings(j?.id);
+              }}
+            >
+              <RefreshCw className="w-4 h-4 mr-1" />
+              Refresh
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -728,6 +790,62 @@ const ContentAudit = () => {
         </Card>
       </main>
     </div>
+  );
+};
+
+const RealtimeStatusPill = ({
+  status,
+  onReconnect,
+}: {
+  status: "connecting" | "live" | "offline" | "reconnecting";
+  onReconnect: () => void;
+}) => {
+  const cfg = {
+    live: {
+      label: "Live",
+      icon: Wifi,
+      cls: "bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200",
+      dot: "bg-emerald-500 animate-pulse",
+    },
+    connecting: {
+      label: "Connecting…",
+      icon: Wifi,
+      cls: "bg-muted text-muted-foreground",
+      dot: "bg-muted-foreground animate-pulse",
+    },
+    reconnecting: {
+      label: "Reconnecting…",
+      icon: RefreshCw,
+      cls: "bg-amber-100 text-amber-900 dark:bg-amber-900/30 dark:text-amber-200",
+      dot: "bg-amber-500 animate-pulse",
+    },
+    offline: {
+      label: "Offline",
+      icon: WifiOff,
+      cls: "bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-200",
+      dot: "bg-red-500",
+    },
+  }[status];
+  const Icon = cfg.icon;
+  const clickable = status === "offline" || status === "reconnecting";
+  return (
+    <button
+      type="button"
+      onClick={clickable ? onReconnect : undefined}
+      disabled={!clickable}
+      title={
+        clickable
+          ? "Click to reconnect now"
+          : "Realtime connection to the audit feed"
+      }
+      className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium ${cfg.cls} ${clickable ? "hover:opacity-80 cursor-pointer" : "cursor-default"}`}
+    >
+      <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
+      <Icon
+        className={`w-3 h-3 ${status === "reconnecting" ? "animate-spin" : ""}`}
+      />
+      {cfg.label}
+    </button>
   );
 };
 
