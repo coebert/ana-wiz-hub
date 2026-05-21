@@ -196,6 +196,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2004", citation: "Collins JA, Rudenski A. Oxygen transport and tissue oxygenation. BJA Education. 2015;15(3):148-152.", url: "https://doi.org/10.1093/bjaceaccp/mku040" },
     { label: "West Ch.6", citation: "West JB, Luks AM. West's Respiratory Physiology: The Essentials. 11th ed. Wolters Kluwer; 2021. Chapter 6: Gas Transport by the Blood." },
     { label: "Power & Kam Ch.7", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 7: Oxygen Transport." },
+    { label: "BJA Educ 2018 (CO)", citation: "Rose JJ, Wang L, Xu Q, et al. Carbon monoxide poisoning: pathogenesis, management and future directions of therapy. BJA Education. 2018;18(2):46-52. Indications for hyperbaric oxygen include COHb >25%, loss of consciousness, neurological signs, pregnancy and persistent symptoms.", url: "https://doi.org/10.1016/j.bjae.2017.12.001" },
+    { label: "BNF Methylthioninium", citation: "Joint Formulary Committee. Methylthioninium chloride (methylene blue). British National Formulary. London: BMJ Group and Pharmaceutical Press. Methaemoglobinaemia: 1–2 mg/kg IV over 5 minutes; may be repeated after 1 h (max 7 mg/kg).", url: "https://bnf.nice.org.uk/drugs/methylthioninium-chloride/" },
   ],
   "lung-mechanics": [
     { label: "BJA Educ 2015", citation: "Lumb AB. Respiratory physiology — mechanics of breathing. BJA Education. 2012;12(2):57-61.", url: "https://doi.org/10.1093/bjaceaccp/mkr054" },
@@ -206,6 +208,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2018", citation: "Hemmings HC, Egan TD. Renal physiology. In: Pharmacology and Physiology for Anesthesia. 2nd ed. Elsevier; 2019.", url: "https://doi.org/10.1016/B978-0-323-48110-6.00036-2" },
     { label: "Power & Kam Ch.9", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 9: Renal Physiology." },
     { label: "Ganong Ch.37-38", citation: "Barrett KE et al. Ganong's Review of Medical Physiology. 26th ed. Chapters 37-38: Renal Function." },
+    { label: "BJA Educ 2015 (Renal)", citation: "Lote CJ, Harper L, Savage CO. Renal physiology I: renal function. BJA Education. 2015;15(4):190-195. Autoregulation maintains near-constant RBF and GFR over MAP ∼75–160 mm Hg.", url: "https://doi.org/10.1093/bjaceaccp/mku047" },
+    { label: "BJA Educ 2017 (Concentration)", citation: "Reddi BAJ. Mechanisms of urinary dilution and concentration. BJA Education. 2017;17(5):178-181. Loop multiplier creates the medullary gradient; vasa recta exchanger preserves it; ADH-controlled collecting duct exploits it.", url: "https://doi.org/10.1093/bjaed/mkw076" },
+    { label: "BJA Educ 2016 (AKI)", citation: "Goren O, Matot I. Perioperative acute kidney injury. BJA Education. 2016;16(9):307-313. The thick ascending limb and proximal tubule are most vulnerable to hypoxic injury in the low-PO₂ outer medulla.", url: "https://doi.org/10.1093/bjaed/mkw010" },
   ],
   "acid-base": [
     { label: "BJA Educ 2015", citation: "Thomas DG. Arterial blood gas analysis and acid–base physiology. BJA Education. 2017;17(9):299-304.", url: "https://doi.org/10.1093/bjaed/mkx008" },
@@ -216,11 +221,15 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2007", citation: "Peck TE, Hill SA. The autonomic nervous system. BJA Education. 2007;7(4):124-128.", url: "https://doi.org/10.1093/bjaceaccp/mkm023" },
     { label: "Power & Kam Ch.14", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 14: The Autonomic Nervous System." },
     { label: "Ganong Ch.13", citation: "Barrett KE et al. Ganong's Review of Medical Physiology. 26th ed. Chapter 13: Autonomic Nervous System." },
+    { label: "RCUK ALS 2021", citation: "Resuscitation Council UK. Adult Advanced Life Support Guidelines — Bradycardia algorithm (atropine 500 micrograms IV, repeated up to a maximum of 3 mg). 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/adult-advanced-life-support-guidelines" },
+    { label: "BJA Educ 2021 (Bradycardia)", citation: "Management of intraoperative bradycardia. BJA Education. 2021. Doses of atropine (10–20 µg/kg IV) and glycopyrrolate (4–8 µg/kg IV) for perioperative bradycardia.", url: "https://doi.org/10.1016/j.bjae.2021.05.001" },
   ],
   "neuromuscular": [
     { label: "BJA Educ 2005", citation: "Bowman WC. Neuromuscular block. BJA Education. 2006;6(1):2-6.", url: "https://doi.org/10.1093/bjaceaccp/mki067" },
     { label: "Power & Kam Ch.15", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 15: The Neuromuscular Junction." },
     { label: "Ganong Ch.5", citation: "Barrett KE et al. Ganong's Review of Medical Physiology. 26th ed. Chapter 5: Excitable Tissue — Muscle." },
+    { label: "BJA Educ 2018 (NMJ)", citation: "Appiah-Ankam J, Hunter JM. Pharmacology of neuromuscular blocking drugs. BJA Education. 2018. Pre-junctional facilitatory nAChRs are predominantly α₃β₂ but multiple nicotinic and muscarinic subtypes modulate ACh release.", url: "https://doi.org/10.1016/j.bjae.2018.02.003" },
+    { label: "Assoc Anaesth NMB 2023", citation: "Klein AA, Meek T, Bew S, et al. Association of Anaesthetists guideline on neuromuscular blockade 2023. Anaesthesia. 2023. Sugammadex 2 mg/kg for TOFR ≥ 0.2, 4 mg/kg for deep block with PTC 1–2, 16 mg/kg for immediate rescue.", url: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.16067" },
   ],
   "maternal-physiology": [
     { label: "BJA Educ 2015", citation: "Soma-Pillay P, Nelson-Piercy C, Tolppanen H, Mebazaa A. Physiological changes in pregnancy. Cardiovasc J Afr. 2016;27(2):89-94.", url: "https://doi.org/10.5830/CVJA-2016-021" },
@@ -239,9 +248,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Peck & Hill Ch.13", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 13: Hepatic Drug Metabolism." },
   ],
   "starling-forces": [
-    { label: "Levick & Michel 2010", citation: "Levick JR, Michel CC. Microvascular fluid exchange and the revised Starling principle. Cardiovasc Res. 2010;87(2):198-210.", url: "https://doi.org/10.1093/cvr/cvq062" },
-    { label: "Woodcock & Woodcock 2012", citation: "Woodcock TE, Woodcock TM. Revised Starling equation and the glycocalyx model of transvascular fluid exchange. Br J Anaesth. 2012;108(3):384-394.", url: "https://doi.org/10.1093/bja/aer515" },
+    { label: "Levick & Michel 2010", citation: "Levick JR, Michel CC. Microvascular fluid exchange and the revised Starling principle. Cardiovasc Res. 2010;87(2):198-210. Total safety factor against oedema ≈ 17 mmHg from rising interstitial pressure, lymphatic recruitment and falling subglycocalyx oncotic pressure.", url: "https://doi.org/10.1093/cvr/cvq062" },
+    { label: "Woodcock & Woodcock 2012", citation: "Woodcock TE, Woodcock TM. Revised Starling equation and the glycocalyx model of transvascular fluid exchange. Br J Anaesth. 2012;108(3):384-394. Glycocalyx thickness 0.5–1 µm in capillaries, up to 4 µm in larger arteries.", url: "https://doi.org/10.1093/bja/aer515" },
     { label: "Power & Kam Ch.6", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 6: Capillary Physiology and Fluid Exchange." },
+    { label: "SSC 2021", citation: "Evans L, Rhodes A, Alhazzani W, et al. Surviving Sepsis Campaign: international guidelines for management of sepsis and septic shock 2021. Crit Care Med. 2021;49(11):e1063-e1143. Initial 30 mL/kg crystalloid then titrated boluses with dynamic assessment; early vasopressors rather than repeated large crystalloid boluses; ~5% of bolus remains intravascular at 1 h in established sepsis.", url: "https://doi.org/10.1097/CCM.0000000000005337" },
   ],
   "cardiac-output-monitoring": [
     { label: "BJA Educ 2014", citation: "Marik PE. Noninvasive cardiac output monitors: a state-of-the-art review. J Cardiothorac Vasc Anesth. 2013;27(1):121-134.", url: "https://doi.org/10.1053/j.jvca.2012.03.022" },

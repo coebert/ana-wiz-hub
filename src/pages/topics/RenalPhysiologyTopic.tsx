@@ -114,7 +114,7 @@ const RenalPhysiologyTopic = () => {
         workedExamples: ["Ganong Ch.37-38", "Power & Kam Ch.9", "BJA Educ 2018"],
       }}
       keyPoints={[
-        { text: "GFR ≈ 125 ml/min. Autoregulation maintains GFR over MAP 80–180 mmHg (myogenic + TGF).", cites: ["Ganong Ch.37-38"] },
+        { text: "GFR ≈ 125 ml/min. Autoregulation maintains RBF and GFR over MAP ~75–160 mmHg (myogenic + TGF).", cites: ["BJA Educ 2015 (Renal)"] },
         { text: "PCT reabsorbs 65-70% of filtered Na⁺, all glucose (SGLT2, Tm 375 mg/min), and 85% of HCO₃⁻.", cites: ["Power & Kam Ch.9"] },
         { text: "Loop of Henle: NKCC2 in thick ascending limb — target of furosemide. Countercurrent multiplier creates medullary gradient.", cites: ["BJA Educ 2018"] },
         { text: "ADH acts on V2 receptors → aquaporin-2 insertion in collecting duct → water reabsorption.", cites: ["Ganong Ch.37-38"] },
@@ -184,7 +184,7 @@ const RenalPhysiologyTopic = () => {
               </p>
               <p className="text-foreground/90 leading-relaxed mt-3">
                 GFR is maintained by <strong>autoregulation</strong> (myogenic response + tubuloglomerular feedback via
-                macula densa) over MAP 80–180 mmHg. Below MAP 80, GFR falls linearly. Autoregulation is impaired by NSAIDs
+                macula densa) over MAP ~75–160 mmHg. Below this range, GFR falls linearly. Autoregulation is impaired by NSAIDs
                 (block afferent arteriolar prostaglandin-mediated vasodilation) and ACE inhibitors (block efferent constriction).
               </p>
             </section>
@@ -255,6 +255,15 @@ const RenalPhysiologyTopic = () => {
               <p className="text-foreground/90 leading-relaxed mb-4">
                 Step through the countercurrent multiplication process to understand how the loop of Henle generates
                 the corticomedullary osmotic gradient (300→1200 mOsm/kg). Press Play or use the step buttons.
+              </p>
+              <p className="rounded-lg border border-border bg-secondary/20 p-4 mb-4 text-sm text-foreground/90 leading-relaxed">
+                The countercurrent mechanism has three integrated components: <strong>(1) the loop of Henle
+                multiplier</strong> — active NaCl reabsorption from the water-impermeable thick ascending limb,
+                amplified by the hairpin geometry, generates the medullary osmotic gradient; <strong>(2) the vasa
+                recta exchanger</strong> — slow, hairpin medullary blood flow allows passive countercurrent exchange
+                of solute and water and so preserves rather than washes out the gradient; <strong>(3) the collecting
+                duct</strong> — under the control of ADH (V2 receptor → aquaporin-2 insertion), tubular water
+                equilibrates with the hypertonic medulla, concentrating urine to a maximum of ~1200–1400 mOsm/kg.
               </p>
               <div className="bg-card rounded-xl border border-border p-6">
                 <CountercurrentMultiplierDiagram />
