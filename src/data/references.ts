@@ -5,7 +5,24 @@ export interface Reference {
   citation: string;
   /** URL if available (BJA Education, PubMed, guideline) */
   url?: string;
+  /**
+   * Verbatim guideline / paper excerpt that supports the dose, threshold,
+   * value, or recommendation this reference is being cited for. Shown
+   * inside the InlineRef popover and the SectionReferences list so the
+   * reader can see exactly which sentence in the source backs the claim,
+   * without leaving the page.
+   *
+   * Authoring rules:
+   *   - Quote the source verbatim — no paraphrasing.
+   *   - Keep to ≤ ~600 characters (one or two sentences is usually enough).
+   *   - Include units / numeric values exactly as the source presents them.
+   *   - If a single Reference is reused for multiple claims in different
+   *     topics, prefer a duplicate Reference entry with a more specific
+   *     `label` (e.g. "BNF Methylthioninium") and a focused excerpt.
+   */
+  excerpt?: string;
 }
+
 
 /**
  * Peer-reviewed references for each topic, keyed by topic ID.
@@ -71,7 +88,7 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "temperature-measurement": [
     { label: "BJA Educ 2014", citation: "Bindu B, Bindra A, Rath G. Temperature management under general anesthesia. Anesth Essays Res. 2017;11(2):306-316.", url: "https://doi.org/10.4103/aer.AER_123_16" },
-    { label: "NICE NG125", citation: "National Institute for Health and Care Excellence. Perioperative care in adults (NG125). 2020. Maintain patient temperature at ≥36.5 °C from induction until discharge from recovery unless hypothermia is intended.", url: "https://www.nice.org.uk/guidance/ng125" },
+    { label: "NICE NG125", citation: "National Institute for Health and Care Excellence. Perioperative care in adults (NG125). 2020.", url: "https://www.nice.org.uk/guidance/ng125", excerpt: "Maintain the patient's temperature at 36.5°C or above from induction of anaesthesia until discharge from the recovery room, unless actively cooling the patient is part of the procedure (e.g. cardiac surgery)." },
     { label: "Cross & Plunkett Ch.11", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 11: Temperature and Its Measurement." },
   ],
   "humidity-gas-sampling": [
@@ -89,7 +106,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 18: Optics, Lasers, and Fibreoptics." },
     { label: "Middleton Ch.14", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 14: Lasers." },
     { label: "BJA Educ 2004", citation: "Dorsch JA. Lasers and fibreoptics in anaesthesia. BJA Education. 2004;4(4):128-131.", url: "https://doi.org/10.1093/bjaceaccp/mkh035" },
-    { label: "Assoc Anaesth Airway Fire", citation: "Athanassoglou V, Patel A, McGuire B, et al. Management of complications of airway management: Guidelines from the Association of Anaesthetists. Anaesthesia. 2023;78(12):1517-1534. Airway-fire drill: (1) stop airway gases and remove the burning tracheal tube simultaneously, (2) extinguish the fire with saline, (3) re-establish ventilation with air (then lowest FiO₂ that maintains SpO₂; avoid N₂O), (4) inspect the airway with bronchoscopy and treat thermal/inhalational injury. Prevention: use the lowest clinically appropriate FiO₂ (typically ≤0.3 if tolerated), avoid N₂O, use a laser-resistant tube with a saline-filled cuff (± dye), and protect the cuff with saline-soaked pledgets.", url: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/full/10.1111/anae.15939" },
+    { label: "Assoc Anaesth Airway Fire", citation: "Athanassoglou V, Patel A, McGuire B, et al. Management of complications of airway management: Guidelines from the Association of Anaesthetists. Anaesthesia. 2023;78(12):1517-1534.", url: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/full/10.1111/anae.15939", excerpt: "If an airway fire occurs, immediately and simultaneously: stop the flow of all airway gases and remove the tracheal tube. Extinguish any burning material with saline. Re-establish ventilation using air, avoiding nitrous oxide and supplemental oxygen until certain the fire is out. Inspect the airway by bronchoscopy and treat thermal/inhalational injury. Prevention includes a laser-resistant tube, lowest clinically acceptable FiO₂ (typically ≤0.30), avoidance of N₂O, and a saline-filled cuff (± methylene blue) protected by saline-soaked pledgets." },
   ],
   "optics-light": [
     { label: "Cross & Plunkett Ch.18", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 18: Optics and Light." },

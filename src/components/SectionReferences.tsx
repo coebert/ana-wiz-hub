@@ -96,6 +96,11 @@ export const SectionReferences = ({
                       {ref.citation}
                     </>
                   )}
+                  {ref.excerpt && (
+                    <blockquote className="mt-1 border-l-2 border-primary/40 bg-background/60 pl-2 pr-1.5 py-1 italic text-foreground/75 rounded-r text-[11px] leading-snug">
+                      “{ref.excerpt}”
+                    </blockquote>
+                  )}
                 </div>
                 {targetId && (
                   <a
