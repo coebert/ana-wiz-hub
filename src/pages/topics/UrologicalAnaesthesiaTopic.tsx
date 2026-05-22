@@ -7,6 +7,7 @@ import PropofolErectionMechanismDiagram from "@/components/diagrams/PropofolErec
 import PropofolErectionAlgorithmDiagram from "@/components/diagrams/PropofolErectionAlgorithmDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const UrologicalAnaesthesiaTopic = () => {
   return (
