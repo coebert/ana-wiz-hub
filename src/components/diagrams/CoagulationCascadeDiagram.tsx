@@ -152,8 +152,8 @@ const CoagulationCascadeDiagram = () => {
         {/* IIa → XI */}
         <path d="M175,235 C140,220 135,80 110,68" stroke="hsl(45 80% 50%)" strokeWidth="0.5" fill="none" strokeDasharray="2 2" markerEnd="url(#arrow-fb)" />
         {/* IIa → platelets */}
-        <text x="268" y="163" fontSize="5" fill="hsl(45 80% 50%)" opacity="0.7" fontWeight="600">Thrombin</text>
-        <text x="268" y="170" fontSize="4.5" fill="hsl(45 80% 50%)" opacity="0.5">feedback</text>
+        <text x="268" y="163" fontSize="5" fill="hsl(45 80% 50%)" opacity="0.7" fontWeight="600">Thrombin feedback</text>
+        <text x="268" y="170" fontSize="4.5" fill="hsl(45 80% 50%)" opacity="0.5">activates V, VIII, XI (not IX)</text>
       </g>
 
       {/* Regulatory pathways */}
