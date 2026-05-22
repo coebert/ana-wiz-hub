@@ -226,7 +226,7 @@ export const CSHTComparisonDiagram = () => {
             textAnchor="middle" fontSize="10" fontWeight="700"
             className="fill-foreground"
           >
-            {duration < 60 ? `${duration} min` : `${(duration / 60).toFixed(1)} h`}
+            {`${duration} min`}
           </text>
 
           {/* dots at intersection */}
