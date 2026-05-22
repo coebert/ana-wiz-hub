@@ -34,6 +34,17 @@ interface Analytics {
   topEntryPaths: { path: string; count: number }[];
   topTopics: TopicStat[];
   sectionBreakdown: { section: string; views: number }[];
+  retentionCohorts: {
+    cohortStart: string;
+    cohortLabel: string;
+    size: number;
+    d1: number | null;
+    d7: number | null;
+    d30: number | null;
+    d1Pct: number | null;
+    d7Pct: number | null;
+    d30Pct: number | null;
+  }[];
 }
 
 const sectionLabels: Record<string, string> = {
@@ -309,6 +320,65 @@ const AdminDashboard = () => {
       views: sectionViewMap.get(key) || 0,
     })).sort((a, b) => b.views - a.views);
 
+    // Weekly retention cohorts (last 8 weeks of first-seen users)
+    // For each cohort, compute % returning on day 1, day 7, day 30 after first visit.
+    const dayKey = (iso: string) => iso.slice(0, 10);
+    const userActiveDays = new Map<string, Set<string>>();
+    visits.forEach(v => {
+      if (!userActiveDays.has(v.visitor_id)) userActiveDays.set(v.visitor_id, new Set());
+      userActiveDays.get(v.visitor_id)!.add(dayKey(v.visited_at));
+    });
+    const msDay = 86_400_000;
+    const todayDayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    // Week start = Monday
+    const weekStartOf = (d: Date) => {
+      const day = (d.getDay() + 6) % 7; // 0 = Monday
+      const ws = new Date(d.getFullYear(), d.getMonth(), d.getDate() - day);
+      return ws;
+    };
+    const cohorts = new Map<string, string[]>(); // cohortStartISO(date-only) -> visitor_ids
+    firstSeen.forEach((ts, uid) => {
+      const ws = weekStartOf(new Date(ts));
+      const key = ws.toISOString().slice(0, 10);
+      if (!cohorts.has(key)) cohorts.set(key, []);
+      cohorts.get(key)!.push(uid);
+    });
+    const sortedCohortKeys = Array.from(cohorts.keys()).sort().slice(-8);
+    const retentionCohorts = sortedCohortKeys.map(key => {
+      const uids = cohorts.get(key)!;
+      const cohortStartMs = new Date(key + "T00:00:00").getTime();
+      // For each user, age = how many full days between cohort start and today
+      // Use cohort midpoint (start) for window eligibility.
+      const ageDays = Math.floor((todayDayStart - cohortStartMs) / msDay);
+      const computeDay = (offset: number): { count: number; pct: number } | null => {
+        // Only compute if cohort has had time to be observed at this offset (need at least offset+1 days since cohort start)
+        if (ageDays < offset) return null;
+        let count = 0;
+        uids.forEach(uid => {
+          const firstTs = firstSeen.get(uid)!;
+          const firstDayMs = new Date(dayKey(firstTs) + "T00:00:00").getTime();
+          const targetKey = new Date(firstDayMs + offset * msDay).toISOString().slice(0, 10);
+          if (userActiveDays.get(uid)?.has(targetKey)) count++;
+        });
+        return { count, pct: uids.length > 0 ? Math.round((count / uids.length) * 100) : 0 };
+      };
+      const d1 = computeDay(1);
+      const d7 = computeDay(7);
+      const d30 = computeDay(30);
+      const startDate = new Date(key + "T00:00:00");
+      return {
+        cohortStart: key,
+        cohortLabel: `Wk of ${startDate.toLocaleDateString("en-GB", { day: "numeric", month: "short" })}`,
+        size: uids.length,
+        d1: d1?.count ?? null,
+        d7: d7?.count ?? null,
+        d30: d30?.count ?? null,
+        d1Pct: d1?.pct ?? null,
+        d7Pct: d7?.pct ?? null,
+        d30Pct: d30?.pct ?? null,
+      };
+    });
+
     setAnalytics({
       totalUniqueUsers: uniqueVisitors.size,
       dailyUsers: todayUnique.size,
@@ -329,6 +399,7 @@ const AdminDashboard = () => {
       topEntryPaths,
       topTopics,
       sectionBreakdown,
+      retentionCohorts,
     });
     setLoading(false);
   };
@@ -611,6 +682,61 @@ const AdminDashboard = () => {
                     );
                   })}
                 </ul>
+              )}
+            </div>
+
+            {/* Cohort retention */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Layers className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Cohort Retention</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                Weekly cohorts grouped by first visit. D1 / D7 / D30 = % of cohort users who returned on day 1, 7, or 30 after first seen.
+              </p>
+              {analytics.retentionCohorts.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No cohort data yet.</p>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="text-left text-muted-foreground border-b border-border">
+                        <th className="py-2 pr-3 font-medium">Cohort</th>
+                        <th className="py-2 pr-3 font-medium text-right">Size</th>
+                        <th className="py-2 pr-3 font-medium text-right">D1</th>
+                        <th className="py-2 pr-3 font-medium text-right">D7</th>
+                        <th className="py-2 pr-3 font-medium text-right">D30</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {analytics.retentionCohorts.map(c => {
+                        const cell = (pct: number | null, count: number | null) => {
+                          if (pct === null) return <span className="text-muted-foreground/50">—</span>;
+                          // Heatmap: 0 → muted, 100 → primary
+                          const alpha = Math.max(0.08, Math.min(0.85, pct / 100));
+                          return (
+                            <span
+                              className="inline-block px-2 py-0.5 rounded font-mono tabular-nums"
+                              style={{ backgroundColor: `hsl(var(--primary) / ${alpha})`, color: pct > 40 ? "hsl(var(--primary-foreground))" : "hsl(var(--foreground))" }}
+                              title={`${count} of ${c.size} returning`}
+                            >
+                              {pct}%
+                            </span>
+                          );
+                        };
+                        return (
+                          <tr key={c.cohortStart} className="border-b border-border/50">
+                            <td className="py-2 pr-3 text-foreground font-medium">{c.cohortLabel}</td>
+                            <td className="py-2 pr-3 text-right tabular-nums text-foreground">{c.size}</td>
+                            <td className="py-2 pr-3 text-right">{cell(c.d1Pct, c.d1)}</td>
+                            <td className="py-2 pr-3 text-right">{cell(c.d7Pct, c.d7)}</td>
+                            <td className="py-2 pr-3 text-right">{cell(c.d30Pct, c.d30)}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               )}
             </div>
 
