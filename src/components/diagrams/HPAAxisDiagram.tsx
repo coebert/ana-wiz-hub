@@ -64,7 +64,7 @@ const scenarios: Record<Highlight, Scenario> = {
 const levelStyles = {
   low: { color: "hsl(220 60% 55%)", label: "↓ low", bg: "bg-blue-500/10 border-blue-500/30 text-blue-500" },
   suppressed: { color: "hsl(220 70% 45%)", label: "↓↓ suppressed", bg: "bg-blue-600/15 border-blue-600/40 text-blue-600" },
-  normal: { color: "hsl(var(--muted-foreground))", label: "→ normal", bg: "bg-secondary/40 border-border text-muted-foreground" },
+  normal: { color: "hsl(var(--muted-foreground))", label: "= normal", bg: "bg-secondary/40 border-border text-muted-foreground" },
   high: { color: "hsl(25 85% 55%)", label: "↑ high", bg: "bg-amber-500/10 border-amber-500/30 text-amber-500" },
   "very-high": { color: "hsl(0 70% 55%)", label: "↑↑ very high", bg: "bg-red-500/10 border-red-500/30 text-red-500" },
 };
@@ -218,7 +218,7 @@ export const HPAAxisDiagram = () => {
                 const shortW = data.acth === "very-high" ? 2 : 1.4;
                 return (
                   <>
-                    {/* LONG LOOP A — cortisol ⊣ ACTH (left arc) */}
+                    {/* LONG LOOP A — cortisol − ACTH (left arc) */}
                     <g opacity={longOp}>
                       <path
                         d="M 100 388 Q 30 320 30 230 Q 30 195 100 195"
@@ -231,10 +231,10 @@ export const HPAAxisDiagram = () => {
                         <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="5s" repeatCount="indefinite" />
                       </path>
                       <text x="36" y="262" fontSize="8" fill={longColor} fontWeight="700">long loop</text>
-                      <text x="36" y="272" fontSize="7" fill={longColor}>cortisol ⊣ ACTH</text>
+                      <text x="36" y="272" fontSize="7" fill={longColor}>cortisol − ACTH</text>
                     </g>
 
-                    {/* LONG LOOP B — cortisol ⊣ CRH (right arc) */}
+                    {/* LONG LOOP B — cortisol − CRH (right arc) */}
                     <g opacity={longOp}>
                       <path
                         d="M 260 388 Q 340 320 340 130 Q 340 70 285 60"
@@ -247,10 +247,10 @@ export const HPAAxisDiagram = () => {
                         <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="5s" repeatCount="indefinite" />
                       </path>
                       <text x="305" y="245" fontSize="8" fill={longColor} fontWeight="700" textAnchor="middle">long loop</text>
-                      <text x="305" y="255" fontSize="7" fill={longColor} textAnchor="middle">cortisol ⊣ CRH</text>
+                      <text x="305" y="255" fontSize="7" fill={longColor} textAnchor="middle">cortisol − CRH</text>
                     </g>
 
-                    {/* SHORT LOOP — ACTH ⊣ CRH (tight inner arc) */}
+                    {/* SHORT LOOP — ACTH − CRH (tight inner arc) */}
                     <g opacity={shortOp}>
                       <path
                         d="M 130 200 Q 78 175 78 130 Q 78 90 130 78"
@@ -263,7 +263,7 @@ export const HPAAxisDiagram = () => {
                         <animate attributeName="stroke-dashoffset" from="0" to="-24" dur="2s" repeatCount="indefinite" />
                       </path>
                       <text x="50" y="142" fontSize="8" fill={shortColor} fontWeight="700">short loop</text>
-                      <text x="50" y="152" fontSize="7" fill={shortColor}>ACTH ⊣ CRH</text>
+                      <text x="50" y="152" fontSize="7" fill={shortColor}>ACTH − CRH</text>
                     </g>
                   </>
                 );

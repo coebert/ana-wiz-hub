@@ -106,7 +106,7 @@ const VomitingControlDiagram = () => {
             {/* === Efferent Output — Right === */}
             <rect x="550" y="250" width="170" height="75" rx="8" fill="hsl(var(--muted) / 0.5)" stroke="hsl(var(--muted-foreground) / 0.3)" strokeWidth="1.5" />
             <text x="635" y="272" textAnchor="middle" className="fill-foreground" fontWeight="600" fontSize="11">Efferent Output</text>
-            <text x="635" y="288" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Vagus → ↑ gastric motility</text>
+            <text x="635" y="288" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Vagus → retroperistalsis &amp; gastric relaxation</text>
             <text x="635" y="301" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Phrenic/intercostal → retch</text>
             <text x="635" y="314" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Somatic → abdominal wall</text>
   
