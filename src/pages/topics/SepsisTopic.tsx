@@ -114,7 +114,7 @@ const SepsisTopic = () => {
       keyPoints={[
         { text: "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2", cites: ["BJA Educ 2019"] },
         { text: "Hour-1 bundle: lactate, cultures, antibiotics, fluids (30 ml/kg), vasopressors", cites: ["SSC 2021"] },
-        { text: "Noradrenaline is the first-line vasopressor; vasopressin is second-line", cites: ["Sepsis-3 2016"] },
+        { text: "Noradrenaline is the first-line vasopressor; vasopressin is second-line", cites: ["SSC 2021", "ESICM Shock 2014"] },
         { text: "Each hour delay in antibiotics increases mortality by approximately 7%", cites: ["BJA Educ 2019"] },
         { text: "Source control is critical — drain, debride, or remove infected sources early", cites: ["SSC 2021"] },
         { text: "PCT-guided de-escalation reduces antibiotic duration by 2–3 days without increasing mortality", cites: ["Sepsis-3 2016"] },
