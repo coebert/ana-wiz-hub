@@ -878,6 +878,12 @@ const ContentAudit = () => {
           <StatTile label="Diagram issues" value={stats.diagrams} />
         </div>
 
+        {/* Companion checks: formulary verification + ESICM dose validator */}
+        <FormularyVerificationPanel />
+        <EsicmValidatorPanel />
+
+
+
         {/* Per-topic logs */}
         <Card>
           <CardHeader className="pb-3">
