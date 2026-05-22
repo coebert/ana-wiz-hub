@@ -184,17 +184,28 @@ const AdminDashboard = () => {
     }
   }, [user, isAdmin, authLoading, navigate]);
 
-  const fetchAnalytics = async () => {
+  const [dateFrom, setDateFrom] = useState<Date | undefined>(undefined);
+  const [dateTo, setDateTo] = useState<Date | undefined>(undefined);
+
+  const fetchAnalytics = async (rangeFrom?: Date, rangeTo?: Date) => {
     setLoading(true);
-    const now = new Date();
+    const from = rangeFrom ?? dateFrom;
+    const to = rangeTo ?? dateTo;
+    // `now` is treated as the end of the analysis window (range end, or actual now)
+    const now = to ? new Date(to.getFullYear(), to.getMonth(), to.getDate(), 23, 59, 59, 999) : new Date();
     const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
     const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
     const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    const rangeStartIso = from ? new Date(from.getFullYear(), from.getMonth(), from.getDate()).toISOString() : null;
+    const rangeEndIso = to ? now.toISOString() : null;
 
-    const { data: allVisits } = await supabase
+    let q = supabase
       .from("app_visits")
       .select("visitor_id, visited_at, page_path, country, country_name")
       .limit(100000);
+    if (rangeStartIso) q = q.gte("visited_at", rangeStartIso);
+    if (rangeEndIso) q = q.lte("visited_at", rangeEndIso);
+    const { data: allVisits } = await q;
     const visits = allVisits ?? [];
     const uniqueVisitors = new Set(visits.map(v => v.visitor_id));
 
@@ -202,8 +213,10 @@ const AdminDashboard = () => {
       .from("app_visits")
       .select("visitor_id")
       .gte("visited_at", todayStart)
+      .lte("visited_at", now.toISOString())
       .limit(100000);
     const todayUnique = new Set(todayData?.map(v => v.visitor_id) || []);
+
 
     // First-seen timestamp per visitor → used for new-vs-returning split
     const firstSeen = new Map<string, string>();
