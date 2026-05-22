@@ -17,9 +17,21 @@ interface TopicStat {
 interface Analytics {
   totalUniqueUsers: number;
   dailyUsers: number;
+  weeklyUsers: number;
+  monthlyUsers: number;
+  newUsersToday: number;
+  returningUsers: number;
+  returningPct: number;
+  avgPagesPerUser: number;
+  avgVisitsPerActiveDay: number;
+  peakHourLabel: string;
+  peakHourCount: number;
   totalVisits: number;
   todayVisits: number;
   last7Days: { date: string; count: number }[];
+  last30Days: { date: string; count: number }[];
+  hourlyToday: { hour: number; count: number }[];
+  topEntryPaths: { path: string; count: number }[];
   topTopics: TopicStat[];
   sectionBreakdown: { section: string; views: number }[];
 }
