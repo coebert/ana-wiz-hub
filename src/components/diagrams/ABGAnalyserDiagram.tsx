@@ -43,7 +43,7 @@ const PHElectrodeDiagram = () => {
 
         {/* KCl solution */}
         <rect x="100" y="140" width="120" height="120" rx="5" fill="hsl(var(--primary)/0.12)" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray="4,2" />
-        <text x="160" y="175" textAnchor="middle" className="fill-primary text-[9px] font-semibold">Saturated KCl</text>
+        <text x="160" y="175" textAnchor="middle" className="fill-primary text-[9px] font-semibold">KCl reference</text>
         <text x="160" y="188" textAnchor="middle" className="fill-primary text-[8px]">(3.5 mol/L)</text>
 
         {/* KCl ions */}
