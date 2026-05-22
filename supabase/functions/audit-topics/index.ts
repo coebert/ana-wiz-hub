@@ -244,6 +244,11 @@ const FINDING_TOOL = {
               summary: { type: "string" },
               details: { type: "string" },
               suggested_fix: { type: "string" },
+              in_topic_section: {
+                type: "string",
+                description:
+                  "Verbatim heading of the in-page section / CollapsibleSubsection the finding refers to (e.g. 'Inguinal Canal', 'Pharmacokinetics'). Use the closest visible <h2>/<h3> heading above the offending passage. Empty string only if no section heading applies.",
+              },
               sources: {
                 type: "array",
                 items: {
