@@ -128,7 +128,9 @@ async function firecrawlScrape(
   withScreenshot: boolean,
   timeoutMs = 35_000,
 ) {
-  const formats: any[] = ["markdown"];
+  // Always request html as well — we use it to extract SVG label text for the
+  // per-diagram audit pass. Markdown alone strips <svg><text> nodes.
+  const formats: any[] = ["markdown", "html"];
   if (withScreenshot) formats.push("screenshot");
 
   const scrape = async (
@@ -288,19 +290,35 @@ Rules:
 - If the topic is accurate, return an empty findings array.
 - Return ONLY the tool call. No prose.`;
 
-const DIAGRAM_SYSTEM = `You are an anatomy and physiology illustration reviewer for UK anaesthetic teaching.
+const DIAGRAM_SYSTEM = `You are an anatomy / physiology / pharmacology illustration reviewer for UK anaesthetic teaching (FRCA / FFICM).
 
-You will be shown a screenshot of one topic page that contains diagrams or illustrations, plus the topic title.
+You will be shown a full-page screenshot of one topic page that contains one or more diagrams (anatomy plates, waveforms, pressure-volume loops, capnography traces, drug-receptor schematics, ventilator loops, flow-charts, dose-response curves, cardiac cycle / Wiggers, ECGs, anatomical cross-sections, etc.) plus the topic title and section.
 
-Inspect the visible diagrams (anatomical plates, waveforms, flow charts, structure-function illustrations) for clear inaccuracies:
-- anatomical structures in wrong positions, missing, or labelled incorrectly
-- waveforms or graphs whose shape contradicts standard physiology
-- flow charts with wrong directionality or missing critical steps
-- labelling typos or non-standard UK terminology
+Audit EVERY visible diagram against the standard UK references (BJA Education, Gray's Anatomy 42e, Hadzic Regional Anesthesia 2e, West's Respiratory Physiology, Pappano Cardiovascular Physiology, RCoA / FICM curriculum, BNF). Look hard for:
+- anatomical structures in wrong positions, missing, mislabelled, or on the wrong side (remember the convention: patient-RIGHT = viewer-LEFT in anterior views)
+- spinal nerve-root contributions that do not match canon (e.g. femoral L2–L4, sciatic L4–S3, phrenic C3–C5, brachial plexus C5–T1)
+- vessels on the wrong side of midline (descending aorta should be patient-LEFT; SVC/IVC right)
+- waveforms / loops whose shape, axis, or annotated value contradicts standard physiology (e.g. capnography α/β/γ angles, ICP waveform P1>P2>P3 normally, oxyhaemoglobin curve P50≈3.5 kPa)
+- flow-charts / algorithms with wrong directionality, missing step, or step in wrong order vs the cited guideline
+- labelling typos, abbreviations not used in UK practice, mis-spelled drug names, wrong units (kPa vs mmHg confusion, mg vs mcg)
+- units/value mismatches between graph axis and quoted text
 
-Use BJA Education, Gray's Anatomy and standard FRCA reference textbooks as the gold standard.
+DO NOT be conservative. If you have any reasonable suspicion supported by the topic title + visible content, raise a finding at appropriate severity. It is better to surface a false positive that the reviewer dismisses than to silently pass over a real diagram error. Empty findings is reserved for the case where there are genuinely zero diagrams on the page.
 
-For each clear inaccuracy emit a finding with category="diagram". If diagrams look correct or none are visible, return an empty findings array. Be conservative — only flag clear visual errors, not stylistic preference. Return ONLY the tool call.`;
+For each issue emit a finding with category="diagram", quote the specific label/region in "details", and cite the relevant authoritative source URL when known (BJA Educ, Gray's, Hadzic, NICE, BNF, RCoA, etc.). Return ONLY the tool call.`;
+
+// Text-only per-diagram audit: feeds extracted <text> labels from each SVG
+// directly to the model, so the audit no longer depends on screenshot quality.
+const DIAGRAM_LABELS_SYSTEM = `You are auditing the label text extracted from ONE SVG diagram on a UK FRCA / FFICM revision page. You will be given the diagram's contextual heading, the topic title, and the verbatim list of every <text> label inside the SVG.
+
+Cross-check the labels against canonical anatomy / physiology / pharmacology for that topic:
+- Are the named structures plausibly present in this kind of diagram?
+- For nerves: do listed spinal roots match canon (femoral L2–L4, sciatic L4–S3, obturator L2–L4, phrenic C3–C5, lumbar plexus L1–L4, brachial plexus C5–T1, pudendal S2–S4)?
+- For vessels / chambers / valves: is the named side / position correct?
+- For physiology / pharmacology: are quoted values, axis units, or pathway directions correct?
+- Are there UK-style typos, mis-spelled drug names, deprecated terminology (e.g. "peroneal" vs "fibular"), or wrong abbreviations?
+
+Raise any genuine mismatch as category="diagram". You do NOT need a screenshot to comment on labels — work from the text list alone. Empty findings means the labels look correct and complete. Return ONLY the tool call.`;
 
 async function callAI(args: {
   system: string;
@@ -353,6 +371,58 @@ async function callAI(args: {
   }
 }
 
+// ---------- SVG label extraction ----------
+// Pulls every <svg> from a scraped HTML page along with its enclosing
+// section heading (if any) and the verbatim list of <text> labels. We feed
+// this to the diagram-labels AI pass so the auditor can comment on each
+// diagram by its actual labels rather than relying on a screenshot.
+interface ExtractedSvg {
+  heading: string;
+  labels: string[];
+  charCount: number;
+}
+
+function extractSvgsFromHtml(html: string): ExtractedSvg[] {
+  if (!html) return [];
+  const out: ExtractedSvg[] = [];
+  // Find each <svg ...>...</svg> (non-greedy, with nested-tag tolerance via
+  // non-backtracking pattern). SVGs are not allowed to nest in valid HTML.
+  const svgRx = /<svg\b[^>]*>([\s\S]*?)<\/svg>/gi;
+  let m: RegExpExecArray | null;
+  while ((m = svgRx.exec(html)) !== null) {
+    const inner = m[1];
+    // Pull <text>...</text> contents, stripping nested <tspan> wrappers.
+    const labels: string[] = [];
+    const textRx = /<text\b[^>]*>([\s\S]*?)<\/text>/gi;
+    let t: RegExpExecArray | null;
+    while ((t = textRx.exec(inner)) !== null) {
+      const raw = t[1]
+        .replace(/<tspan\b[^>]*>/gi, "")
+        .replace(/<\/tspan>/gi, " ")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&nbsp;/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+      if (raw && raw.length <= 200) labels.push(raw);
+    }
+    if (labels.length < 2) continue; // skip ornamental SVGs / icons
+
+    // Find the nearest preceding <h2>/<h3> as heading context.
+    const before = html.slice(0, m.index);
+    const hMatch = before.match(/<h[23][^>]*>([\s\S]*?)<\/h[23]>(?![\s\S]*<h[23])/i);
+    const heading = hMatch
+      ? hMatch[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()
+      : "";
+
+    out.push({ heading, labels, charCount: inner.length });
+    if (out.length >= 12) break; // cap to keep AI budget reasonable
+  }
+  return out;
+}
+
 // ---------- Per-topic audit ----------
 type Stages = {
   scrape_ok: boolean;
@@ -362,8 +432,11 @@ type Stages = {
   ref_titles: string[];
   text_findings: number;
   diagram_findings: number;
+  diagram_label_findings: number;
+  svg_count: number;
   text_error?: string;
   diagram_error?: string;
+  diagram_label_error?: string;
   scrape_error?: string;
 };
 
@@ -380,13 +453,15 @@ async function auditTopic(
     ref_titles: [],
     text_findings: 0,
     diagram_findings: 0,
+    diagram_label_findings: 0,
+    svg_count: 0,
   };
 
   const topicStartedAt = Date.now();
   const remainingBudget = () => PER_TOPIC_TIMEOUT_MS - (Date.now() - topicStartedAt);
   const hasBudget = (ms: number) => remainingBudget() > ms;
 
-  // 1. Scrape current topic page (markdown + screenshot)
+  // 1. Scrape current topic page (markdown + html + screenshot)
   let page: any = null;
   try {
     page = await firecrawlScrape(
@@ -398,6 +473,7 @@ async function auditTopic(
     stages.scrape_error = (e as Error).message;
   }
   const pageMarkdown: string = page?.markdown ?? "";
+  const pageHtml: string = page?.html ?? page?.rawHtml ?? "";
   const screenshot: string | undefined = page?.screenshot;
   stages.page_chars = pageMarkdown.length;
   stages.screenshot = Boolean(screenshot);
@@ -464,7 +540,8 @@ async function auditTopic(
     const textFindings = await callAI({
       system: TEXT_SYSTEM,
       userText,
-      timeoutMs: Math.min(28_000, Math.max(12_000, remainingBudget() - 12_000)),
+      // Tightened to leave room for the diagram passes below.
+      timeoutMs: Math.min(24_000, Math.max(10_000, remainingBudget() - 30_000)),
     });
     stages.text_findings = textFindings.length;
     all.push(...textFindings);
@@ -473,29 +550,99 @@ async function auditTopic(
     console.error(`text audit error for ${topic.id}`, e);
   }
 
-  // 4. Diagram audit (vision) if a screenshot is available
-  if (screenshot && hasBudget(20_000)) {
+  // 4a. Per-diagram label audit (text-only, from extracted SVG labels).
+  // This runs even when the screenshot pass fails — it depends only on the
+  // scraped HTML, so anatomy labels, axis units, nerve roots etc. are
+  // always inspected for every SVG on the page.
+  const svgs = extractSvgsFromHtml(pageHtml);
+  stages.svg_count = svgs.length;
+  if (svgs.length > 0 && hasBudget(12_000)) {
+    const diagramSummaryForRef = svgs
+      .slice(0, 12)
+      .map(
+        (s, i) =>
+          `--- Diagram ${i + 1} (heading: ${s.heading || "—"})\nLabels: ${s.labels
+            .slice(0, 80)
+            .map((l) => `"${l}"`)
+            .join(", ")}`,
+      )
+      .join("\n\n");
+
     try {
-      const diagramFindings = await callAI({
-        system: DIAGRAM_SYSTEM,
-        userText: `Topic: ${topic.title}\nSection: ${topic.section}\nURL: ${topic.url}\n\nInspect all visible diagrams.`,
-        imageUrl: screenshot,
-        model: "google/gemini-2.5-pro",
-        timeoutMs: Math.min(18_000, Math.max(10_000, remainingBudget() - 4_000)),
+      const labelFindings = await callAI({
+        system: DIAGRAM_LABELS_SYSTEM,
+        userText: [
+          `Topic: ${topic.title}`,
+          `Section: ${topic.section}`,
+          `URL: ${topic.url}`,
+          "",
+          "=== EXTRACTED SVG LABELS ===",
+          diagramSummaryForRef,
+          "",
+          "=== AUTHORITATIVE REFERENCE EXCERPTS (for cross-check) ===",
+          refs.length === 0
+            ? "(none available — rely on canonical anatomy/physiology)"
+            : refs
+                .map(
+                  (r, i) =>
+                    `--- Reference ${i + 1}: ${r.title}\n${r.url}\n${r.excerpt.slice(0, 1500)}`,
+                )
+                .join("\n\n"),
+        ].join("\n"),
+        timeoutMs: Math.min(20_000, Math.max(10_000, remainingBudget() - 18_000)),
       });
-      stages.diagram_findings = diagramFindings.length;
-      for (const f of diagramFindings) {
+      stages.diagram_label_findings = labelFindings.length;
+      for (const f of labelFindings) {
         f.category = "diagram";
-        f.diagram_ref = screenshot;
       }
-      all.push(...diagramFindings);
+      all.push(...labelFindings);
     } catch (e) {
-      stages.diagram_error = (e as Error).message;
-      console.error(`diagram audit error for ${topic.id}`, e);
+      stages.diagram_label_error = (e as Error).message;
+      console.error(`diagram-label audit error for ${topic.id}`, e);
     }
-  } else if (screenshot) {
-    stages.diagram_error = "Skipped to preserve runtime budget for job continuity";
   }
+
+  // 4b. Diagram vision audit. ALWAYS run when a screenshot was returned —
+  // previously this was gated behind a ~20s budget check and routinely
+  // skipped, which is why the audit never surfaced diagram findings. The
+  // dedicated budget here is the real cap so it cannot starve job chaining.
+  if (screenshot) {
+    if (hasBudget(8_000)) {
+      try {
+        const diagramFindings = await callAI({
+          system: DIAGRAM_SYSTEM,
+          userText: [
+            `Topic: ${topic.title}`,
+            `Section: ${topic.section}`,
+            `URL: ${topic.url}`,
+            "",
+            svgs.length > 0
+              ? `This page contains ${svgs.length} SVG diagram(s). Diagram headings:\n${svgs
+                  .map((s, i) => `  ${i + 1}. ${s.heading || "(no heading)"}`)
+                  .join("\n")}`
+              : "Inspect all visible diagrams.",
+            "",
+            "Audit every diagram for visual / anatomical / physiological accuracy.",
+          ].join("\n"),
+          imageUrl: screenshot,
+          model: "google/gemini-2.5-pro",
+          timeoutMs: Math.min(22_000, Math.max(10_000, remainingBudget() - 4_000)),
+        });
+        stages.diagram_findings = diagramFindings.length;
+        for (const f of diagramFindings) {
+          f.category = "diagram";
+          f.diagram_ref = screenshot;
+        }
+        all.push(...diagramFindings);
+      } catch (e) {
+        stages.diagram_error = (e as Error).message;
+        console.error(`diagram audit error for ${topic.id}`, e);
+      }
+    } else {
+      stages.diagram_error = "Skipped vision pass (insufficient budget)";
+    }
+  }
+
 
   // attach screenshot reference on any diagram finding missing it
   for (const f of all) {
