@@ -197,7 +197,7 @@ export const ANSPathwayDiagram = () => {
         )}
 
         {/* ==================== ADRENAL MEDULLA ==================== */}
-        {view === "adrenal" && (
+        {(view === "adrenal" || view === "sympathetic" || view === "overview") && (
           <g {...svgNodeProps("Pathway 3/4: Adrenal medulla — T5–T9 splanchnic → chromaffin cells; 80% adrenaline, 20% noradrenaline")}>
             {/* Preganglionic direct to adrenal */}
             <text x={370} y={60} textAnchor="middle" fontSize="9" fill="hsl(30 60% 50%)" fontWeight="700">ADRENAL MEDULLA</text>
