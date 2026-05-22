@@ -61,6 +61,7 @@ type Finding = {
   suggested_fix: string | null;
   sources: { title: string; url: string }[];
   diagram_ref: string | null;
+  in_topic_section: string | null;
   status: "open" | "acknowledged" | "fixed" | "dismissed";
   created_at: string;
 };
