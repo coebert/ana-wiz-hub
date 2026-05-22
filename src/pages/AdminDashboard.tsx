@@ -8,7 +8,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, Pill, Play, Square, CheckCircle2, AlertCircle, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon } from "lucide-react";
 
 interface TopicStat {
   id: string;
@@ -78,105 +78,12 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"overview" | "topics" | "formulary">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "topics">("overview");
 
-  // Formulary verification state
-  interface VerificationJob {
-    id: string;
-    status: string;
-    total: number;
-    processed: number;
-    succeeded: number;
-    failed: number;
-    current_drug: string | null;
-    last_error: string | null;
-    created_at: string;
-    updated_at: string;
-    completed_at: string | null;
-  }
-  interface VerificationLog {
-    id: string;
-    drug_name: string;
-    drug_slug: string;
-    status: string;
-    fields_changed: string[];
-    error: string | null;
-    created_at: string;
-  }
-  const [job, setJob] = useState<VerificationJob | null>(null);
-  const [logs, setLogs] = useState<VerificationLog[]>([]);
-  const [starting, setStarting] = useState(false);
+  // Formulary verification + ESICM dose validator have moved to the unified
+  // Content Audit page at /admin/audit so that all topic-accuracy checks are
+  // started, monitored, and reviewed from one place.
 
-  const fetchJob = async () => {
-    const { data: jobs } = await supabase
-      .from("drug_verification_jobs")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(1);
-    const j = (jobs?.[0] as VerificationJob | undefined) ?? null;
-    setJob(j);
-    if (j) {
-      const { data: logRows } = await supabase
-        .from("drug_verification_log")
-        .select("*")
-        .eq("job_id", j.id)
-        .order("created_at", { ascending: false })
-        .limit(50);
-      setLogs((logRows ?? []) as VerificationLog[]);
-    }
-  };
-
-  useEffect(() => {
-    if (activeTab !== "formulary") return;
-    fetchJob();
-    const interval = setInterval(fetchJob, 3000);
-    return () => clearInterval(interval);
-  }, [activeTab]);
-
-  const startVerification = async () => {
-    setStarting(true);
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      const { data, error } = await supabase.functions.invoke("verify-drugs", {
-        body: { action: "start" },
-        headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
-      });
-      if (error) throw error;
-      if (data?.error) throw new Error(data.error);
-      await fetchJob();
-    } catch (e) {
-      alert(`Could not start: ${e instanceof Error ? e.message : "Unknown error"}`);
-    } finally {
-      setStarting(false);
-    }
-  };
-
-  const cancelVerification = async () => {
-    if (!job) return;
-    if (!confirm("Cancel the running verification job?")) return;
-    const { data: { session } } = await supabase.auth.getSession();
-    await supabase.functions.invoke("verify-drugs", {
-      body: { action: "cancel", jobId: job.id },
-      headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
-    });
-    await fetchJob();
-  };
-
-  const resumeVerification = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    const { data, error } = await supabase.functions.invoke("verify-drugs", {
-      body: { action: "resume" },
-      headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
-    });
-    if (error || data?.error) {
-      alert(`Could not resume: ${error?.message ?? data?.error ?? "Unknown"}`);
-    }
-    await fetchJob();
-  };
-
-  const isStalled = !!job
-    && ["pending", "running"].includes(job.status)
-    && Date.now() - new Date(job.updated_at).getTime() > 90_000;
 
   useEffect(() => {
     if (!authLoading && (!user || !isAdmin)) {
@@ -512,8 +419,8 @@ const AdminDashboard = () => {
   const tabs = [
     { key: "overview" as const, label: "Overview", icon: BarChart3, hint: "Headline usage stats and weekly activity" },
     { key: "topics" as const, label: "Topic Analytics", icon: BookOpen, hint: "Most and least visited topics" },
-    { key: "formulary" as const, label: "Formulary Verify", icon: Pill, hint: "Re-check drug monographs against reference sources" },
   ];
+
 
   const handleTabKey = (e: React.KeyboardEvent<HTMLButtonElement>, idx: number) => {
     if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "Home" && e.key !== "End") return;
@@ -559,20 +466,12 @@ const AdminDashboard = () => {
               variant="outline"
               size="sm"
               onClick={() => navigate("/admin/audit")}
-              aria-label="Open content accuracy audit"
+              aria-label="Open content accuracy audit (includes formulary verification and ESICM dose validator)"
             >
               <CheckCircle2 className="w-4 h-4 mr-1" aria-hidden="true" />
               Content Audit
             </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => navigate("/admin/esicm-validator")}
-              aria-label="Open ESICM dose validator"
-            >
-              <CheckCircle2 className="w-4 h-4 mr-1" aria-hidden="true" />
-              ESICM Validator
-            </Button>
+
             <Button
               variant="outline"
               size="sm"
@@ -1138,115 +1037,8 @@ const AdminDashboard = () => {
           </section>
         )}
 
-        {activeTab === "formulary" && (
-          <section
-            id="admin-panel-formulary"
-            role="tabpanel"
-            aria-labelledby="admin-tab-formulary"
-            className="space-y-4"
-          >
-            <div className="p-5 rounded-xl border border-border bg-card">
-              <div className="flex items-start justify-between gap-3 flex-wrap">
-                <div>
-                  <h2 className="text-base font-semibold text-foreground">Verify formulary against reference sources</h2>
-                  <p className="text-xs text-muted-foreground mt-1 max-w-xl">
-                    Re-checks every drug monograph for consistency with the eMC SPCs (medicines.org.uk),
-                    NICE BNF public pages, and AAGBI / ICS / RCoA guidelines. Updates are written
-                    directly to the formulary. Runs in the background — you can leave this page.
-                  </p>
-                </div>
-                <div className="flex gap-2">
-                  {(!job || ["completed", "failed", "cancelled"].includes(job.status)) && (
-                    <Button onClick={startVerification} disabled={starting} size="sm">
-                      <Play className="w-4 h-4 mr-1" />
-                      {starting ? "Starting…" : "Verify all drugs"}
-                    </Button>
-                  )}
-                  {job && ["pending", "running"].includes(job.status) && (
-                    <>
-                      {isStalled && (
-                        <Button onClick={resumeVerification} size="sm" variant="secondary">
-                          <Play className="w-4 h-4 mr-1" /> Resume
-                        </Button>
-                      )}
-                      <Button onClick={cancelVerification} variant="destructive" size="sm">
-                        <Square className="w-4 h-4 mr-1" /> Cancel
-                      </Button>
-                    </>
-                  )}
-                </div>
-              </div>
+        {/* Formulary verification panel has moved to /admin/audit (Content Audit). */}
 
-
-              {job && (
-                <div className="mt-4 space-y-3">
-                  <div className="flex items-center gap-3 flex-wrap text-xs">
-                    <span className={`px-2 py-1 rounded-full font-medium ${
-                      job.status === "running" ? "bg-blue-500/15 text-blue-600 dark:text-blue-400" :
-                      job.status === "completed" ? "bg-green-500/15 text-green-600 dark:text-green-400" :
-                      job.status === "failed" ? "bg-red-500/15 text-red-600 dark:text-red-400" :
-                      job.status === "cancelled" ? "bg-amber-500/15 text-amber-600 dark:text-amber-400" :
-                      "bg-secondary text-muted-foreground"
-                    }`}>{job.status.toUpperCase()}</span>
-                    <span className="text-muted-foreground">
-                      {job.processed} / {job.total} processed
-                    </span>
-                    <span className="text-green-600 dark:text-green-400">{job.succeeded} ok</span>
-                    {job.failed > 0 && (
-                      <span className="text-red-600 dark:text-red-400">{job.failed} failed</span>
-                    )}
-                    {job.current_drug && (
-                      <span className="text-muted-foreground">→ {job.current_drug}</span>
-                    )}
-                  </div>
-
-                  <div className="h-2 rounded-full bg-secondary overflow-hidden">
-                    <div
-                      className="h-full bg-primary transition-all duration-500"
-                      style={{ width: `${job.total ? (job.processed / job.total) * 100 : 0}%` }}
-                    />
-                  </div>
-
-                  {job.last_error && (
-                    <p className="text-xs text-red-600 dark:text-red-400 break-words">
-                      Last error: {job.last_error}
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
-
-            {logs.length > 0 && (
-              <div className="p-4 rounded-xl border border-border bg-card">
-                <h3 className="text-sm font-semibold text-foreground mb-3">Recent activity (latest 50)</h3>
-                <div className="space-y-1.5 max-h-[480px] overflow-y-auto">
-                  {logs.map(l => (
-                    <div key={l.id} className="flex items-start gap-2 text-xs">
-                      {l.status === "updated" ? (
-                        <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
-                      ) : l.status === "unchanged" ? (
-                        <CheckCircle2 className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
-                      ) : (
-                        <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 shrink-0" />
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <span className="font-medium text-foreground">{l.drug_name}</span>
-                        <span className="text-muted-foreground ml-2">
-                          {l.status === "updated" ? `updated · ${l.fields_changed.join(", ")}` :
-                           l.status === "unchanged" ? "no changes needed" :
-                           `failed: ${l.error ?? "unknown"}`}
-                        </span>
-                      </div>
-                      <span className="text-muted-foreground shrink-0">
-                        {new Date(l.created_at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </section>
-        )}
         </main>
       </div>
     </div>
