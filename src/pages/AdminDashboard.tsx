@@ -86,6 +86,7 @@ const AdminDashboard = () => {
     current_drug: string | null;
     last_error: string | null;
     created_at: string;
+    updated_at: string;
     completed_at: string | null;
   }
   interface VerificationLog {
@@ -155,6 +156,22 @@ const AdminDashboard = () => {
     });
     await fetchJob();
   };
+
+  const resumeVerification = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    const { data, error } = await supabase.functions.invoke("verify-drugs", {
+      body: { action: "resume" },
+      headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
+    });
+    if (error || data?.error) {
+      alert(`Could not resume: ${error?.message ?? data?.error ?? "Unknown"}`);
+    }
+    await fetchJob();
+  };
+
+  const isStalled = !!job
+    && ["pending", "running"].includes(job.status)
+    && Date.now() - new Date(job.updated_at).getTime() > 90_000;
 
   useEffect(() => {
     if (!authLoading && (!user || !isAdmin)) {
@@ -926,12 +943,20 @@ const AdminDashboard = () => {
                     </Button>
                   )}
                   {job && ["pending", "running"].includes(job.status) && (
-                    <Button onClick={cancelVerification} variant="destructive" size="sm">
-                      <Square className="w-4 h-4 mr-1" /> Cancel
-                    </Button>
+                    <>
+                      {isStalled && (
+                        <Button onClick={resumeVerification} size="sm" variant="secondary">
+                          <Play className="w-4 h-4 mr-1" /> Resume
+                        </Button>
+                      )}
+                      <Button onClick={cancelVerification} variant="destructive" size="sm">
+                        <Square className="w-4 h-4 mr-1" /> Cancel
+                      </Button>
+                    </>
                   )}
                 </div>
               </div>
+
 
               {job && (
                 <div className="mt-4 space-y-3">
