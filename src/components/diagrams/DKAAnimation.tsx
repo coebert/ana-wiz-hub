@@ -140,14 +140,14 @@ const DKAScene = ({ active }: { active: number }) => {
 
         {/* Right panel — biochemistry snapshot */}
         <g transform="translate(250, 12)">
-          <text x="0" y="10" className="text-[10px] font-semibold" fill="hsl(var(--foreground))">DKA biochemistry</text>
+          <text x="0" y="10" className="text-[10px] font-semibold" fill="hsl(var(--foreground))">DKA biochemistry (JBDS-IP example)</text>
           {[
-            { label: "Glucose", val: active >= 1 ? "22 mmol/L" : "12", lit: active >= 1, token: "clinical" },
-            { label: "Ketones", val: active >= 2 ? "5.2 mmol/L" : "0.4", lit: active >= 2, token: "pharmacology" },
-            { label: "pH", val: active >= 3 ? "7.12" : "7.38", lit: active >= 3, token: "physiology" },
-            { label: "HCO₃⁻", val: active >= 3 ? "8 mmol/L" : "24", lit: active >= 3, token: "physiology" },
-            { label: "K⁺ (serum)", val: active >= 5 ? "5.8 → 3.4" : active >= 4 ? "5.8" : "4.1", lit: active >= 4, token: "destructive" },
-            { label: "Anion gap", val: active >= 3 ? "26" : "10", lit: active >= 3, token: "physiology" },
+            { label: "Glucose", val: active >= 1 ? "28 mmol/L" : "22", lit: active >= 1, token: "clinical" },
+            { label: "Ketones", val: active >= 2 ? "5.8 mmol/L" : "3.2", lit: active >= 2, token: "pharmacology" },
+            { label: "pH", val: active >= 3 ? "7.08" : "7.22", lit: active >= 3, token: "physiology" },
+            { label: "HCO₃⁻", val: active >= 3 ? "6 mmol/L" : "12", lit: active >= 3, token: "physiology" },
+            { label: "K⁺ (serum)", val: active >= 5 ? "5.8 → 3.4" : active >= 4 ? "5.8" : "5.2", lit: active >= 4, token: "destructive" },
+            { label: "Anion gap", val: active >= 3 ? "28" : "22", lit: active >= 3, token: "physiology" },
           ].map((it, i) => (
             <g key={it.label} transform={`translate(0, ${22 + i * 30})`} opacity={it.lit ? 1 : 0.35} className="transition-opacity duration-500">
               <rect width="118" height="24" rx="3"

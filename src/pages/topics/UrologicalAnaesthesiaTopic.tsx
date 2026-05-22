@@ -7,6 +7,7 @@ import PropofolErectionMechanismDiagram from "@/components/diagrams/PropofolErec
 import PropofolErectionAlgorithmDiagram from "@/components/diagrams/PropofolErectionAlgorithmDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const UrologicalAnaesthesiaTopic = () => {
   return (
@@ -55,9 +56,9 @@ const UrologicalAnaesthesiaTopic = () => {
                 { label: "Mechanism", value: "Absorption of hypotonic irrigant via open prostatic venous sinuses" },
                 { label: "Volume risk", value: "Absorption of >1–2 L glycine; risk ↑ with resection time >60 min" },
                 { label: "Features", value: "Hyponatraemia, confusion, visual disturbance, seizures, pulmonary oedema, cardiovascular collapse" },
-                { label: "Hyponatraemia", value: "Dilutional — Na⁺ may fall to <120 mmol/L; rapid fall is most dangerous" },
+                { label: "Hyponatraemia", value: <>Dilutional — Na⁺ may fall to &lt;120 mmol/L; rapid fall is most dangerous<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP 2014" /></> },
                 { label: "Visual symptoms", value: "Glycine is an inhibitory neurotransmitter in the retina — causes transient blindness" },
-                { label: "Management", value: "Stop surgery, IV furosemide, hypertonic saline (1.8–3%) if Na⁺ <120 with symptoms, supportive care" },
+                { label: "Management", value: <>Stop surgery, IV furosemide, hypertonic saline (1.8–3%) if Na⁺ &lt;120 with symptoms, supportive care<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP 2014" /></> },
               ].map((item) => (
                 <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                   <p className="text-xs text-muted-foreground">{item.label}</p>
@@ -149,7 +150,7 @@ const UrologicalAnaesthesiaTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
               <li><strong>Deepen anaesthesia</strong>: additional propofol bolus paradoxically resolves it in many cases; add opioid (fentanyl/alfentanil)</li>
               <li><strong>Switch technique</strong>: convert TIVA to volatile maintenance, or add ketamine</li>
-              <li><strong>Pharmacological detumescence</strong>: intracavernosal phenylephrine 100–200 µg (α-agonist — needs BP/ECG monitoring), or ephedrine IV; terbutaline 0.25–0.5 mg SC has been reported</li>
+              <li><strong>Pharmacological detumescence</strong>: intracavernosal phenylephrine 100–200 µg (α-agonist — needs BP/ECG monitoring), or ephedrine IV; terbutaline 0.25–0.5 mg SC has been reported<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP 2014" /></li>
               <li><strong>Mechanical</strong>: ice packs, manual compression — generally ineffective alone</li>
               <li><strong>Last resort</strong>: abandon procedure if detumescence fails and instrumentation unsafe</li>
             </ul>

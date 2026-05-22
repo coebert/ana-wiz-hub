@@ -1,0 +1,1 @@
+UPDATE public.topic_audit_findings SET unverifiable_reason='Added InlineRef citations (BJA Educ TURP 2014) to TURP hyponatraemia thresholds, management, and intracavernosal phenylephrine dose in UrologicalAnaesthesiaTopic.tsx. The recorded source URL is the topic page itself, not an external reference.' WHERE id='736e81e9-dcb4-4f3f-bd91-c6def84f4783';

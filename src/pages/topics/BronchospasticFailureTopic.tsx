@@ -8,6 +8,7 @@ import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinfl
 import SedacondaDiagram from "@/components/diagrams/SedacondaDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Apply BTS/SIGN criteria to recognise life-threatening and near-fatal asthma and escalate appropriately.",
@@ -157,7 +158,7 @@ const BronchospasticFailureTopic = () => {
             BTS/SIGN classification stratifies acute asthma by severity. Life-threatening and near-fatal asthma require immediate escalation and ICU involvement.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Severity Classification (BTS/SIGN)</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Severity Classification (BTS/SIGN<InlineRef topicId="bronchospastic-failure" refLabel="BTS/SIGN Asthma 2019" />)</h3>
           <div className="overflow-x-auto mb-4">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -244,7 +245,7 @@ const BronchospasticFailureTopic = () => {
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">Corticosteroids</td>
-                  <td>Prednisolone 40–50 mg PO or hydrocortisone 100 mg IV QDS. Onset 4–6 h.</td>
+                  <td>Prednisolone 40–50 mg PO or hydrocortisone 100 mg IV QDS<InlineRef topicId="bronchospastic-failure" refLabel="BTS/SIGN Asthma 2019" />. Onset 4–6 h.</td>
                   <td>Reduce eosinophilic inflammation and mucus production. Continue for at least 5 days or until recovery. No evidence for &gt;7 days in most exacerbations.</td>
                 </tr>
                 <tr>
@@ -279,7 +280,7 @@ const BronchospasticFailureTopic = () => {
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">IV aminophylline</td>
-                  <td>Phosphodiesterase inhibitor. Loading 5 mg/kg over 20 min (omit if on theophylline), then 0.5 mg/kg/h infusion. Narrow therapeutic index.</td>
+                  <td>Phosphodiesterase inhibitor. Loading 5 mg/kg over 20 min (omit if on theophylline), then 0.5 mg/kg/h infusion<InlineRef topicId="bronchospastic-failure" refLabel="BTS/SIGN Asthma 2019" />. Narrow therapeutic index.</td>
                   <td>Weak bronchodilator, improves diaphragm contractility. Toxicity: arrhythmias, seizures, vomiting. Measure theophylline levels (10–20 mg/L). Drug interactions (CYP1A2): erythromycin, ciprofloxacin increase levels.</td>
                 </tr>
                 <tr className="border-b border-border">
@@ -399,7 +400,7 @@ const BronchospasticFailureTopic = () => {
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Monitoring for Hyperinflation</h3>
           <div className="space-y-2 mb-4">
             {[
-              { label: "Plateau Pressure (Pplat)", detail: "Aim <30 cmH₂O. Reflects alveolar pressure at end-inspiration. High Pplat suggests hyperinflation or lung injury risk." },
+              { label: "Plateau Pressure (Pplat)", detail: <>Aim &lt;30 cmH₂O<InlineRef topicId="bronchospastic-failure" refLabel="BJA Educ Asthma 2017" />. Reflects alveolar pressure at end-inspiration. High Pplat suggests hyperinflation or lung injury risk.</> },
               { label: "Auto-PEEP (Intrinsic PEEP)", detail: "Measured by end-expiratory hold. If >10–15 cmH₂O, gas trapping is significant — reduce RR, increase expiratory time, or disconnect briefly." },
               { label: "Expiratory Flow Waveform", detail: "If flow does not return to zero before the next inspiration, gas trapping is occurring. The most immediate bedside indicator." },
               { label: "VEI (End-Inspiratory Volume)", detail: "Total volume above FRC — measured by collecting all exhaled gas during apnoea. Target <20 ml/kg to avoid haemodynamic compromise." },
