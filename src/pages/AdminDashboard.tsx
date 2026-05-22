@@ -545,6 +545,15 @@ const AdminDashboard = () => {
             <Button
               variant="outline"
               size="sm"
+              onClick={() => navigate("/admin/esicm-validator")}
+              aria-label="Open ESICM dose validator"
+            >
+              <CheckCircle2 className="w-4 h-4 mr-1" aria-hidden="true" />
+              ESICM Validator
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
               onClick={() => { signOut(); navigate("/"); }}
               aria-label="Sign out of admin dashboard"
             >
