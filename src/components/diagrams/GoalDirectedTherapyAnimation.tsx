@@ -151,7 +151,7 @@ const Scene = ({ active }: { active: number }) => {
 
         {/* Bedside vitals panel */}
         <g transform="translate(250, 12)">
-          <text x="0" y="10" className="text-[10px] font-semibold" fill="hsl(var(--foreground))">Bedside targets</text>
+          <text x="0" y="10" className="text-[10px] font-semibold" fill="hsl(var(--foreground))">Example initial values</text>
           {vitals.map((v, i) => {
             const ok = onTarget(v.label);
             const token = ok ? "physiology" : "destructive";
