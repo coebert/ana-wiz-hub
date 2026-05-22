@@ -34,6 +34,17 @@ interface Analytics {
   topEntryPaths: { path: string; count: number }[];
   topTopics: TopicStat[];
   sectionBreakdown: { section: string; views: number }[];
+  retentionCohorts: {
+    cohortStart: string;
+    cohortLabel: string;
+    size: number;
+    d1: number | null;
+    d7: number | null;
+    d30: number | null;
+    d1Pct: number | null;
+    d7Pct: number | null;
+    d30Pct: number | null;
+  }[];
 }
 
 const sectionLabels: Record<string, string> = {
