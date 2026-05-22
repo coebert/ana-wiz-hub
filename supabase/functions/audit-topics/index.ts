@@ -836,6 +836,10 @@ async function runBatch(jobId: string) {
             suggested_fix: f.suggested_fix ?? null,
             sources: f.sources ?? [],
             diagram_ref: f.diagram_ref ?? null,
+            in_topic_section:
+              typeof f.in_topic_section === "string" && f.in_topic_section.trim()
+                ? f.in_topic_section.trim().slice(0, 200)
+                : null,
           }));
           const { error } = await supa
             .from("topic_audit_findings")
