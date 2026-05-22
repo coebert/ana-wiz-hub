@@ -526,7 +526,7 @@ const AdminDashboard = () => {
             <Button
               variant="outline"
               size="sm"
-              onClick={fetchAnalytics}
+              onClick={() => fetchAnalytics()}
               disabled={loading}
               aria-label={loading ? "Refreshing analytics" : "Refresh analytics"}
             >
