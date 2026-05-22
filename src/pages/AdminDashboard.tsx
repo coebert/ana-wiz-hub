@@ -685,6 +685,61 @@ const AdminDashboard = () => {
               )}
             </div>
 
+            {/* Cohort retention */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Layers className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Cohort Retention</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                Weekly cohorts grouped by first visit. D1 / D7 / D30 = % of cohort users who returned on day 1, 7, or 30 after first seen.
+              </p>
+              {analytics.retentionCohorts.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No cohort data yet.</p>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="text-left text-muted-foreground border-b border-border">
+                        <th className="py-2 pr-3 font-medium">Cohort</th>
+                        <th className="py-2 pr-3 font-medium text-right">Size</th>
+                        <th className="py-2 pr-3 font-medium text-right">D1</th>
+                        <th className="py-2 pr-3 font-medium text-right">D7</th>
+                        <th className="py-2 pr-3 font-medium text-right">D30</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {analytics.retentionCohorts.map(c => {
+                        const cell = (pct: number | null, count: number | null) => {
+                          if (pct === null) return <span className="text-muted-foreground/50">—</span>;
+                          // Heatmap: 0 → muted, 100 → primary
+                          const alpha = Math.max(0.08, Math.min(0.85, pct / 100));
+                          return (
+                            <span
+                              className="inline-block px-2 py-0.5 rounded font-mono tabular-nums"
+                              style={{ backgroundColor: `hsl(var(--primary) / ${alpha})`, color: pct > 40 ? "hsl(var(--primary-foreground))" : "hsl(var(--foreground))" }}
+                              title={`${count} of ${c.size} returning`}
+                            >
+                              {pct}%
+                            </span>
+                          );
+                        };
+                        return (
+                          <tr key={c.cohortStart} className="border-b border-border/50">
+                            <td className="py-2 pr-3 text-foreground font-medium">{c.cohortLabel}</td>
+                            <td className="py-2 pr-3 text-right tabular-nums text-foreground">{c.size}</td>
+                            <td className="py-2 pr-3 text-right">{cell(c.d1Pct, c.d1)}</td>
+                            <td className="py-2 pr-3 text-right">{cell(c.d7Pct, c.d7)}</td>
+                            <td className="py-2 pr-3 text-right">{cell(c.d30Pct, c.d30)}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+
 
             {/* Section breakdown */}
             <div className="p-4 rounded-xl border border-border bg-card">
