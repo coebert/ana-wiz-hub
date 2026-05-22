@@ -67,7 +67,7 @@ const workedExamples: WorkedExample[] = [
 
 const keyPoints = [
   { text: "VCV guarantees volume; PCV guarantees pressure — know the trade-offs", cites: ["Lumb Ch.31"] },
-  { text: "Lung-protective ventilation: 6 ml/kg IBW, Pplat ≤30, driving pressure ≤15", cites: ["BJA Educ 2018"] },
+  { text: "Lung-protective ventilation: 6 ml/kg IBW, Pplat ≤30, driving pressure ≤15", cites: ["BJA Educ 2018", "ESICM ARDS 2023"] },
   { text: "Daily SBTs are the best strategy for weaning — do not delay", cites: ["BJA Educ 2019"] },
   { text: "Driving pressure (Pplat − PEEP) is the strongest predictor of ARDS mortality", cites: ["Lumb Ch.31"] },
   { text: "APRV uses prolonged P high for recruitment with brief releases for CO₂ clearance; titrate T low to 50–75 % PEFR", cites: ["BJA Educ 2018"] },

@@ -92,7 +92,7 @@ const workedExamples: WorkedExample[] = [
 ];
 
 const keyPoints = [
-  { text: "Target light sedation (RASS 0 to −2) with daily sedation holds — improves ventilator-free days and ICU outcomes", cites: ["DAS-Delirium"] },
+  { text: "Target light sedation (RASS 0 to −2) with daily sedation holds — improves ventilator-free days and ICU outcomes", cites: ["DAS-Delirium", "ESICM Analgosedation 2020"] },
   { text: "PRIS risk: propofol >4 mg/kg/h for >48h → metabolic acidosis, rhabdomyolysis, hyperkalaemia, cardiac failure", cites: ["BJA Educ 2019"] },
   { text: "CAM-ICU = acute onset/fluctuating course + inattention + (altered consciousness OR disorganised thinking)", cites: ["BJA Educ 2017"] },
   { text: "ABCDEF bundle (Assess pain, Both SAT/SBT, Choice of sedation, Delirium monitoring, Early mobility, Family) reduces delirium and mortality", cites: ["DAS-Delirium"] },

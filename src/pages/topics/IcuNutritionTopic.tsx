@@ -100,7 +100,7 @@ const IcuNutritionTopic = () => {
       quizQuestions={icuNutritionQuestions}
       workedExamples={workedExamples}
       keyPoints={[
-        { text: "Start enteral nutrition within 48 h of ICU admission — maintains gut integrity, reduces translocation", cites: ["NICE CG32"] },
+        { text: "Start enteral nutrition within 48 h of ICU admission — maintains gut integrity, reduces translocation", cites: ["NICE CG32", "ESICM Early EN 2017"] },
         { text: "ESPEN target 20–25 kcal/kg/day; in the first 48 h give ≤70% of REE (avoid early overfeeding)", cites: ["BJA Educ 2016"] },
         { text: "Protein 1.2–2.0 g/kg/day is the most important macronutrient target; protein delivery often lags calories", cites: ["ESPEN 2019"] },
         { text: "NICE-SUGAR: target glucose 6–10 mmol/L — tight control (4.5–6) increases mortality via hypoglycaemia", cites: ["EPaNIC 2011"] },
