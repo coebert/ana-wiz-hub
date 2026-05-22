@@ -1,17 +1,49 @@
-import { useMemo, useState } from "react";
-import { AlertTriangle, CheckCircle2, ChevronDown, ChevronRight, FileWarning, ShieldCheck } from "lucide-react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  AlertTriangle,
+  CheckCircle2,
+  ChevronDown,
+  ChevronRight,
+  Clipboard,
+  FileWarning,
+  RefreshCw,
+  ShieldCheck,
+} from "lucide-react";
+import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { validateEsicmReferences, type Issue } from "@/lib/esicmValidator";
+import { Button } from "@/components/ui/button";
+import { topicReferences } from "@/data/references";
+import { validateEsicmReferences, type Issue, type ValidationReport } from "@/lib/esicmValidator";
 
 /**
  * Embeddable ESICM dose-statement validator panel.
- * Used inside the unified Content Audit page so admins can run topic
- * audits, formulary verification and ESICM dose validation from one place.
+ *
+ * Re-validates against the live `topicReferences` module on every render +
+ * whenever the user clicks "Re-scan", so once an admin fixes an excerpt via
+ * Lovable chat (HMR re-imports references.ts) the resolved issue disappears
+ * from the list automatically.
  */
 const EsicmValidatorPanel = () => {
   const [collapsed, setCollapsed] = useState(true);
-  const report = useMemo(() => validateEsicmReferences(), []);
+  const [scanTick, setScanTick] = useState(0);
+
+  const report: ValidationReport = useMemo(
+    () => validateEsicmReferences(topicReferences),
+    // Re-run when references module reloads (HMR replaces the binding) and on
+    // explicit user re-scan.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [topicReferences, scanTick],
+  );
+
+  // Re-scan automatically when the admin returns to the tab — covers the
+  // common "switch to Lovable, paste prompt, come back" workflow.
+  useEffect(() => {
+    const onFocus = () => setScanTick((t) => t + 1);
+    window.addEventListener("focus", onFocus);
+    return () => window.removeEventListener("focus", onFocus);
+  }, []);
+
   const byTopic = useMemo(() => {
     const map = new Map<string, Issue[]>();
     for (const i of report.issues) {
@@ -23,6 +55,85 @@ const EsicmValidatorPanel = () => {
   }, [report]);
 
   const allClear = report.issues.length === 0;
+
+  const buildPrompt = useCallback((): string => {
+    const lines: string[] = [
+      `Please resolve the following ESICM dose-statement validator issues in \`src/data/references.ts\`.`,
+      ``,
+      `For each issue: locate the matching reference entry (by topic key + ref label / index) and either:`,
+      `- **missing-excerpt** — add an \`excerpt: "..."\` field containing a verbatim quote from the source that supports the dose/threshold mentioned in the citation. Excerpts must be ≤600 characters and copied verbatim — never paraphrase.`,
+      `- **dose-mismatch** — either (a) update the \`excerpt\` so the exact value + unit appears verbatim, or (b) correct the dose in the \`citation\`/\`label\` if the excerpt is right and the citation was wrong.`,
+      ``,
+      `After all edits, run \`npm run check:source-excerpts\` to confirm coverage. Do not silently drop or shorten existing excerpts.`,
+      ``,
+      `The list below is regenerated live from the validator. Once an entry is fixed in the source file it will automatically disappear from the admin panel on the next HMR reload, so there is no separate "mark fixed" step.`,
+      ``,
+      `---`,
+      ``,
+      `## ${report.issues.length} issue${report.issues.length === 1 ? "" : "s"} across ${byTopic.length} topic${byTopic.length === 1 ? "" : "s"}`,
+      ``,
+      `- ESICM references scanned: **${report.totalEsicmRefs}**`,
+      `- Missing excerpt: **${report.refsMissingExcerpt}**`,
+      `- Dose mismatches: **${report.doseMismatches}**`,
+      ``,
+    ];
+
+    for (const [topicId, issues] of byTopic) {
+      lines.push(`### \`${topicId}\`  (${issues.length} issue${issues.length === 1 ? "" : "s"})`);
+      lines.push("");
+      for (const i of issues) {
+        lines.push(`- **[${i.kind.toUpperCase()}]** ${i.refLabel}`);
+        lines.push(`  - Ref index in \`topicReferences["${topicId}"]\`: \`${i.refIndex}\``);
+        lines.push(`  - Detail: ${i.detail}`);
+        if (i.dose) {
+          lines.push(
+            `  - Dose token: raw=\`${i.dose.raw}\` · value=\`${i.dose.value}\` · unit=\`${i.dose.unit}\``,
+          );
+        }
+        if (i.kind === "missing-excerpt") {
+          lines.push(
+            `  - **Suggested fix:** open the source URL on the reference entry, copy the sentence containing the dose verbatim, and add it as \`excerpt: "..."\`.`,
+          );
+        } else {
+          lines.push(
+            `  - **Suggested fix:** verify the dose against the cited guideline. If the guideline is right, expand the \`excerpt\` to include the value+unit verbatim. If the citation drifted, correct the \`citation\`/\`label\` to match the excerpt.`,
+          );
+        }
+      }
+      lines.push("");
+    }
+
+    lines.push(
+      `---`,
+      ``,
+      `When done, briefly tell me how many issues you resolved and list any you intentionally skipped with a one-line reason.`,
+    );
+    return lines.join("\n");
+  }, [byTopic, report]);
+
+  const copyPrompt = useCallback(async () => {
+    if (allClear) return;
+    const prompt = buildPrompt();
+    try {
+      await navigator.clipboard.writeText(prompt);
+      toast.success(
+        `Copied ${report.issues.length} ESICM issue${report.issues.length === 1 ? "" : "s"} as a Lovable chat prompt. Paste into chat to apply fixes.`,
+        { duration: 7000 },
+      );
+    } catch {
+      // Fallback: download as .md so the admin can still get the prompt out.
+      const blob = new Blob([prompt], { type: "text/markdown" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `esicm-validator-prompt-${new Date().toISOString().slice(0, 10)}.md`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      toast.message("Clipboard blocked — prompt downloaded as .md instead.");
+    }
+  }, [allClear, buildPrompt, report.issues.length]);
 
   return (
     <Card>
@@ -47,19 +158,41 @@ const EsicmValidatorPanel = () => {
               ({report.totalEsicmRefs} refs)
             </span>
           </CardTitle>
-          {allClear ? (
-            <Badge variant="secondary" className="text-emerald-700 dark:text-emerald-300">
-              All clear
-            </Badge>
-          ) : (
-            <Badge variant="destructive">
-              {report.issues.length} issue{report.issues.length === 1 ? "" : "s"}
-            </Badge>
-          )}
+          <div className="flex items-center gap-2 flex-wrap">
+            {allClear ? (
+              <Badge variant="secondary" className="text-emerald-700 dark:text-emerald-300">
+                All clear
+              </Badge>
+            ) : (
+              <Badge variant="destructive">
+                {report.issues.length} issue{report.issues.length === 1 ? "" : "s"}
+              </Badge>
+            )}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setScanTick((t) => t + 1)}
+              title="Re-run validator against the current references.ts"
+            >
+              <RefreshCw className="w-3.5 h-3.5 mr-1.5" />
+              Re-scan
+            </Button>
+            <Button
+              variant="default"
+              size="sm"
+              onClick={copyPrompt}
+              disabled={allClear}
+              title="Copy a Lovable chat prompt that resolves every listed ESICM issue"
+            >
+              <Clipboard className="w-3.5 h-3.5 mr-1.5" />
+              Copy fix prompt
+            </Button>
+          </div>
         </div>
         <p className="text-xs text-muted-foreground mt-1">
           Client-side check — flags ESICM-backed references (ESICM, SSC, ERC/ESICM, SCCM/ESICM)
           whose citation mentions a dose or threshold without a matching verbatim excerpt.
+          Fixed issues disappear automatically on reload.
         </p>
       </CardHeader>
       {!collapsed && (
