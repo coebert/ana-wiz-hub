@@ -95,6 +95,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Al-Shaikh & Stacey Ch.8", citation: "Al-Shaikh B, Stacey S. Essentials of Anaesthetic Equipment. 5th ed. Chapter 8: Humidification." },
     { label: "Cross & Plunkett Ch.9", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 9: Humidity and Gas Sampling." },
     { label: "BJA Educ 2007", citation: "Wilkes AR. Humidification: its importance and delivery. BJA Education. 2006;6(6):259-262.", url: "https://doi.org/10.1093/bjaceaccp/mkl053" },
+    { label: "BJA Educ Humidification 2018", citation: "Al Ashry HS, Modrykamien AM. Humidification during mechanical ventilation in the adult patient. BJA Education / BJA Ed-style review of HMEF performance. Modern HMEFs typically deliver 30–38 mg H₂O / L of inspired gas at body temperature.", url: "https://www.bjaed.org/article/S2058-5349(17)30099-3/fulltext", excerpt: "Modern heat and moisture exchanging filters typically return between 30 and 38 mg H₂O per litre of inspired gas, depending on device design and minute ventilation; this is below the 44 mg/L delivered by an active heated humidifier targeting full saturation at 37 °C." },
   ],
   "ultrasound-physics": [
     { label: "BJA Educ 2017", citation: "Defined A, Sites BD. Ultrasound physics for the anaesthetist. BJA Education. 2006;6(1):21-25.", url: "https://doi.org/10.1093/bjaceaccp/mki064" },
