@@ -187,14 +187,28 @@ const AdminDashboard = () => {
     const firstSeen = new Map<string, string>();
     const visitsPerUser = new Map<string, number>();
     const activeDaysPerUser = new Map<string, Set<string>>();
+    const lastSeen = new Map<string, string>();
     visits.forEach(v => {
       const prev = firstSeen.get(v.visitor_id);
       if (!prev || v.visited_at < prev) firstSeen.set(v.visitor_id, v.visited_at);
+      const prevLast = lastSeen.get(v.visitor_id);
+      if (!prevLast || v.visited_at > prevLast) lastSeen.set(v.visitor_id, v.visited_at);
       visitsPerUser.set(v.visitor_id, (visitsPerUser.get(v.visitor_id) || 0) + 1);
       const day = v.visited_at.slice(0, 10);
       if (!activeDaysPerUser.has(v.visitor_id)) activeDaysPerUser.set(v.visitor_id, new Set());
       activeDaysPerUser.get(v.visitor_id)!.add(day);
     });
+
+    const topUsers = Array.from(visitsPerUser.entries())
+      .map(([visitorId, visits]) => ({
+        visitorId,
+        visits,
+        activeDays: activeDaysPerUser.get(visitorId)?.size ?? 0,
+        firstSeen: firstSeen.get(visitorId) ?? "",
+        lastSeen: lastSeen.get(visitorId) ?? "",
+      }))
+      .sort((a, b) => b.visits - a.visits)
+      .slice(0, 15);
 
     const newUsersToday = Array.from(firstSeen.entries()).filter(
       ([, ts]) => ts >= todayStart,
