@@ -5,6 +5,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import HumidityGasSamplingDiagram from "@/components/diagrams/HumidityGasSamplingDiagram";
 import HygrometersDiagram from "@/components/diagrams/HygrometersDiagram";
 import { GasSamplingSiteDiagram } from "@/components/diagrams/GasSamplingSiteDiagram";
+import ParamagneticO2Diagram from "@/components/diagrams/ParamagneticO2Diagram";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { humidityGasSamplingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
@@ -227,6 +228,9 @@ const HumidityGasSamplingTopic = () => {
                 (only suitable for FiO₂ trending).
               </p>
             </div>
+
+            <ParamagneticO2Diagram />
+
             <CrossReferenceCallout
               reason="The galvanic fuel cell and Clark electrode are the electrochemical alternatives for measuring O₂ partial pressure (in the breathing circuit and in arterial blood respectively)."
               links={[{ topicId: "abg-analyser" }]}
