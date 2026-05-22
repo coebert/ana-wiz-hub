@@ -692,7 +692,7 @@ const AdminDashboard = () => {
                     onClick={() => {
                       setDateFrom(undefined);
                       setDateTo(undefined);
-                      fetchAnalytics(undefined, undefined);
+                      fetchAnalytics(null, null);
                     }}
                   >
                     Reset
