@@ -32,6 +32,7 @@ const DrugDetail = lazy(() => import("./pages/DrugDetail"));
 const SeoIndexing = lazy(() => import("./pages/SeoIndexing"));
 const A11yAudit = lazy(() => import("./pages/A11yAudit"));
 const Curriculum = lazy(() => import("./pages/Curriculum"));
+const DiagramSnapshot = lazy(() => import("./pages/DiagramSnapshot"));
 
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
@@ -221,6 +222,8 @@ const App = () => (
           <Route path="/dev/coverage-bars" element={<CoverageBarsResponsiveTest />} />
           <Route path="/dev/seo-indexing" element={<RequireAdmin><SeoIndexing /></RequireAdmin>} />
           <Route path="/dev/a11y-audit" element={<A11yAudit />} />
+          <Route path="/dev/diagram-snapshot" element={<DiagramSnapshot />} />
+          <Route path="/dev/diagram-snapshot/:name" element={<DiagramSnapshot />} />
           <Route path="/drugs" element={<DrugsLibrary />} />
           <Route path="/drugs/:slug" element={<DrugDetail />} />
           <Route path="/physics" element={<PhysicsSection />} />
