@@ -226,8 +226,9 @@ const HumidityGasSamplingTopic = () => {
                 Strengths: highly accurate, linear, no consumable element, fast. Weaknesses: sensitive to water vapour
                 (sample line must be dried), affected by sample-gas pressure changes, and the static Pauling type is slow
                 (only suitable for FiO₂ trending).
-              </p>
             </div>
+            <ParamagneticO2Diagram />
+
             <CrossReferenceCallout
               reason="The galvanic fuel cell and Clark electrode are the electrochemical alternatives for measuring O₂ partial pressure (in the breathing circuit and in arterial blood respectively)."
               links={[{ topicId: "abg-analyser" }]}
