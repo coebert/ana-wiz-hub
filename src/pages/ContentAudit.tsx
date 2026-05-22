@@ -29,6 +29,7 @@ import {
   Wifi,
   WifiOff,
 } from "lucide-react";
+import { sectionAnchorId } from "@/lib/sectionAnchor";
 
 import { toast } from "sonner";
 
