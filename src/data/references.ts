@@ -85,6 +85,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cross & Plunkett Ch.16", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 16: Clinical Measurement." },
     { label: "Middleton Ch.18", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 18: Clinical Measurement." },
     { label: "BJA Educ 2005", citation: "Magee P. Arterial waveform analysis. BJA Education. 2005;5(4):132-135.", url: "https://doi.org/10.1093/bjaceaccp/mki036" },
+    { label: "LITFL Arterial Waveform", citation: "Nickson C. Arterial Line Waveform. Life in the Fast Lane (LITFL) CCC review.", url: "https://litfl.com/arterial-line-waveform/", excerpt: "The anacrotic notch is a small inflection on the ascending limb of the arterial pressure waveform, marking the opening of the aortic valve; it precedes the peak systolic pressure. The dicrotic notch on the descending limb corresponds to aortic valve closure." },
+    { label: "Deranged Physiology Arterial Line", citation: "Yartsev A. The Arterial Line Waveform. Deranged Physiology, CICM Primary Required Reading.", url: "https://derangedphysiology.com/main/cicm-primary-exam/required-reading/cardiovascular-system/Chapter%20018/arterial-line-waveform" },
   ],
   "temperature-measurement": [
     { label: "BJA Educ 2014", citation: "Bindu B, Bindra A, Rath G. Temperature management under general anesthesia. Anesth Essays Res. 2017;11(2):306-316.", url: "https://doi.org/10.4103/aer.AER_123_16" },
