@@ -64,12 +64,12 @@ const SITES: Site[] = [
   },
   {
     key: "dna",
-    label: "DNA gyrase / topoisomerase IV",
-    target: "Prevent DNA supercoiling and replication",
+    label: "Bacterial DNA",
+    target: "Inhibit DNA replication — two distinct mechanisms",
     color: "hsl(160 70% 40%)",
     classes: [
-      { name: "Fluoroquinolones", examples: "Ciprofloxacin, levofloxacin, moxifloxacin — bactericidal" },
-      { name: "Nitroimidazoles", examples: "Metronidazole, tinidazole — DNA strand breaks (anaerobes only)" },
+      { name: "Fluoroquinolones (DNA gyrase / topoisomerase IV)", examples: "Ciprofloxacin, levofloxacin, moxifloxacin — prevent DNA supercoiling/replication; bactericidal" },
+      { name: "Nitroimidazoles (DNA strand breaks via cytotoxic radicals)", examples: "Metronidazole, tinidazole — reduced under anaerobic conditions to nitro-radical intermediates that fragment DNA; NOT a gyrase inhibitor" },
     ],
   },
   {
