@@ -612,6 +612,9 @@ type Stages = {
   diagram_error?: string;
   diagram_label_error?: string;
   scrape_error?: string;
+  scrape_diagnostics?: ScrapeDiagnostics;
+  scrape_last_status?: number;
+  scrape_retry_count?: number;
 };
 
 async function auditTopic(
@@ -637,12 +640,15 @@ async function auditTopic(
 
   // 1. Scrape current topic page (markdown + html + screenshot)
   let page: any = null;
+  let scrapeDiagnostics: ScrapeDiagnostics | undefined;
   try {
-    page = await firecrawlScrape(
+    const result = await firecrawlScrape(
       topic.url,
       true,
       Math.min(35_000, Math.max(12_000, remainingBudget() - 25_000)),
     );
+    page = result.data;
+    scrapeDiagnostics = result.diagnostics;
   } catch (e) {
     stages.scrape_error = (e as Error).message;
   }
@@ -652,17 +658,56 @@ async function auditTopic(
   stages.page_chars = pageMarkdown.length;
   stages.screenshot = Boolean(screenshot);
   stages.scrape_ok = pageMarkdown.length >= 200;
+  if (scrapeDiagnostics) {
+    stages.scrape_diagnostics = scrapeDiagnostics;
+    stages.scrape_last_status = scrapeDiagnostics.last_status;
+    stages.scrape_retry_count = scrapeDiagnostics.retry_count;
+    if (!stages.scrape_ok && !stages.scrape_error) {
+      stages.scrape_error = scrapeDiagnostics.last_error
+        ?? `last_status=${scrapeDiagnostics.last_status}`;
+    }
+    // Always log a one-line summary so failures are visible in edge logs even
+    // when the job row diagnostics are not surfaced in the UI yet.
+    console.log(
+      `[audit-topics] scrape ${topic.id} url=${scrapeDiagnostics.primary_url} ` +
+      `ok=${stages.scrape_ok} chars=${pageMarkdown.length} ` +
+      `attempts=${scrapeDiagnostics.attempts.length} ` +
+      `retries=${scrapeDiagnostics.retry_count} ` +
+      `last_status=${scrapeDiagnostics.last_status} ` +
+      `duration=${scrapeDiagnostics.total_duration_ms}ms` +
+      (scrapeDiagnostics.last_error ? ` last_error="${scrapeDiagnostics.last_error}"` : ""),
+    );
+  }
 
   if (!pageMarkdown || pageMarkdown.length < 200) {
+    const diagLines = scrapeDiagnostics
+      ? [
+          `Primary URL: ${scrapeDiagnostics.primary_url}`,
+          scrapeDiagnostics.final_url && scrapeDiagnostics.final_url !== scrapeDiagnostics.primary_url
+            ? `Final URL tried: ${scrapeDiagnostics.final_url}`
+            : null,
+          `Last HTTP status: ${scrapeDiagnostics.last_status}`,
+          `Attempts: ${scrapeDiagnostics.attempts.length} (retries: ${scrapeDiagnostics.retry_count})`,
+          `Total duration: ${scrapeDiagnostics.total_duration_ms}ms`,
+          scrapeDiagnostics.last_error ? `Last error: ${scrapeDiagnostics.last_error}` : null,
+          "Per-attempt breakdown:",
+          ...scrapeDiagnostics.attempts.map((a) =>
+            `  • attempt ${a.attempt}${a.url ? ` ${a.url}` : ""} → status=${a.status} ${a.ok ? "ok" : "fail"} (${a.duration_ms}ms)` +
+            (a.error ? ` — ${a.error}` : ""),
+          ),
+        ].filter(Boolean).join("\n")
+      : `No diagnostics available. Error: ${stages.scrape_error ?? "unknown"}`;
+
     const f = {
       severity: "major",
       category: "missing",
       summary: "Topic page could not be retrieved for audit",
-      details: `Firecrawl returned no usable content for ${topic.url}`,
+      details: `Firecrawl returned no usable content for ${topic.url}.\n\n${diagLines}`,
       sources: [{ title: "Topic URL", url: topic.url }],
     };
     return { findings: [f], stages };
   }
+
 
   // 2. Search reputable sources (BJA Education first)
   const queryBJA = `site:bjaeducation.org ${topic.title}`;
