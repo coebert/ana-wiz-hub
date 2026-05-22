@@ -157,6 +157,22 @@ const AdminDashboard = () => {
     await fetchJob();
   };
 
+  const resumeVerification = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    const { data, error } = await supabase.functions.invoke("verify-drugs", {
+      body: { action: "resume" },
+      headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
+    });
+    if (error || data?.error) {
+      alert(`Could not resume: ${error?.message ?? data?.error ?? "Unknown"}`);
+    }
+    await fetchJob();
+  };
+
+  const isStalled = !!job
+    && ["pending", "running"].includes(job.status)
+    && Date.now() - new Date(job.updated_at).getTime() > 90_000;
+
   useEffect(() => {
     if (!authLoading && (!user || !isAdmin)) {
       navigate("/admin/login");
