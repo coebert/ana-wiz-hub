@@ -190,7 +190,10 @@ const GynaecologicalAnaesthesiaTopic = () => {
               Diagnostic hysteroscopy is often performed under local anaesthesia or sedation. Operative hysteroscopy (resection of fibroids, endometrial ablation) requires GA or spinal.
             </p>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
-              <TURPSyndromeDiagram />
+              <TURPSyndromeDiagram context="hysteroscopy" />
+              <p className="text-[11px] text-muted-foreground mt-2 italic">
+                Hysteroscopy fluid absorption shares the TURP-syndrome physiology, but the open vascular bed is the uterine venous sinuses (not prostatic) — see <InlineRef id="bja-educ-hysteroscopy-2017" />.
+              </p>
             </div>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Fluid absorption</strong>: similar risk to TURP syndrome with glycine distension media — monitor fluid deficit (&lt; 1,000 mL with glycine, &lt; 2,500 mL with saline) — BSGE 2018</li>
