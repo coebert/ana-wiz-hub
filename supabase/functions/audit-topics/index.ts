@@ -453,13 +453,15 @@ async function auditTopic(
     ref_titles: [],
     text_findings: 0,
     diagram_findings: 0,
+    diagram_label_findings: 0,
+    svg_count: 0,
   };
 
   const topicStartedAt = Date.now();
   const remainingBudget = () => PER_TOPIC_TIMEOUT_MS - (Date.now() - topicStartedAt);
   const hasBudget = (ms: number) => remainingBudget() > ms;
 
-  // 1. Scrape current topic page (markdown + screenshot)
+  // 1. Scrape current topic page (markdown + html + screenshot)
   let page: any = null;
   try {
     page = await firecrawlScrape(
@@ -471,6 +473,7 @@ async function auditTopic(
     stages.scrape_error = (e as Error).message;
   }
   const pageMarkdown: string = page?.markdown ?? "";
+  const pageHtml: string = page?.html ?? page?.rawHtml ?? "";
   const screenshot: string | undefined = page?.screenshot;
   stages.page_chars = pageMarkdown.length;
   stages.screenshot = Boolean(screenshot);
@@ -537,7 +540,8 @@ async function auditTopic(
     const textFindings = await callAI({
       system: TEXT_SYSTEM,
       userText,
-      timeoutMs: Math.min(28_000, Math.max(12_000, remainingBudget() - 12_000)),
+      // Tightened to leave room for the diagram passes below.
+      timeoutMs: Math.min(24_000, Math.max(10_000, remainingBudget() - 30_000)),
     });
     stages.text_findings = textFindings.length;
     all.push(...textFindings);
@@ -546,29 +550,99 @@ async function auditTopic(
     console.error(`text audit error for ${topic.id}`, e);
   }
 
-  // 4. Diagram audit (vision) if a screenshot is available
-  if (screenshot && hasBudget(20_000)) {
+  // 4a. Per-diagram label audit (text-only, from extracted SVG labels).
+  // This runs even when the screenshot pass fails — it depends only on the
+  // scraped HTML, so anatomy labels, axis units, nerve roots etc. are
+  // always inspected for every SVG on the page.
+  const svgs = extractSvgsFromHtml(pageHtml);
+  stages.svg_count = svgs.length;
+  if (svgs.length > 0 && hasBudget(12_000)) {
+    const diagramSummaryForRef = svgs
+      .slice(0, 12)
+      .map(
+        (s, i) =>
+          `--- Diagram ${i + 1} (heading: ${s.heading || "—"})\nLabels: ${s.labels
+            .slice(0, 80)
+            .map((l) => `"${l}"`)
+            .join(", ")}`,
+      )
+      .join("\n\n");
+
     try {
-      const diagramFindings = await callAI({
-        system: DIAGRAM_SYSTEM,
-        userText: `Topic: ${topic.title}\nSection: ${topic.section}\nURL: ${topic.url}\n\nInspect all visible diagrams.`,
-        imageUrl: screenshot,
-        model: "google/gemini-2.5-pro",
-        timeoutMs: Math.min(18_000, Math.max(10_000, remainingBudget() - 4_000)),
+      const labelFindings = await callAI({
+        system: DIAGRAM_LABELS_SYSTEM,
+        userText: [
+          `Topic: ${topic.title}`,
+          `Section: ${topic.section}`,
+          `URL: ${topic.url}`,
+          "",
+          "=== EXTRACTED SVG LABELS ===",
+          diagramSummaryForRef,
+          "",
+          "=== AUTHORITATIVE REFERENCE EXCERPTS (for cross-check) ===",
+          refs.length === 0
+            ? "(none available — rely on canonical anatomy/physiology)"
+            : refs
+                .map(
+                  (r, i) =>
+                    `--- Reference ${i + 1}: ${r.title}\n${r.url}\n${r.excerpt.slice(0, 1500)}`,
+                )
+                .join("\n\n"),
+        ].join("\n"),
+        timeoutMs: Math.min(20_000, Math.max(10_000, remainingBudget() - 18_000)),
       });
-      stages.diagram_findings = diagramFindings.length;
-      for (const f of diagramFindings) {
+      stages.diagram_label_findings = labelFindings.length;
+      for (const f of labelFindings) {
         f.category = "diagram";
-        f.diagram_ref = screenshot;
       }
-      all.push(...diagramFindings);
+      all.push(...labelFindings);
     } catch (e) {
-      stages.diagram_error = (e as Error).message;
-      console.error(`diagram audit error for ${topic.id}`, e);
+      stages.diagram_label_error = (e as Error).message;
+      console.error(`diagram-label audit error for ${topic.id}`, e);
     }
-  } else if (screenshot) {
-    stages.diagram_error = "Skipped to preserve runtime budget for job continuity";
   }
+
+  // 4b. Diagram vision audit. ALWAYS run when a screenshot was returned —
+  // previously this was gated behind a ~20s budget check and routinely
+  // skipped, which is why the audit never surfaced diagram findings. The
+  // dedicated budget here is the real cap so it cannot starve job chaining.
+  if (screenshot) {
+    if (hasBudget(8_000)) {
+      try {
+        const diagramFindings = await callAI({
+          system: DIAGRAM_SYSTEM,
+          userText: [
+            `Topic: ${topic.title}`,
+            `Section: ${topic.section}`,
+            `URL: ${topic.url}`,
+            "",
+            svgs.length > 0
+              ? `This page contains ${svgs.length} SVG diagram(s). Diagram headings:\n${svgs
+                  .map((s, i) => `  ${i + 1}. ${s.heading || "(no heading)"}`)
+                  .join("\n")}`
+              : "Inspect all visible diagrams.",
+            "",
+            "Audit every diagram for visual / anatomical / physiological accuracy.",
+          ].join("\n"),
+          imageUrl: screenshot,
+          model: "google/gemini-2.5-pro",
+          timeoutMs: Math.min(22_000, Math.max(10_000, remainingBudget() - 4_000)),
+        });
+        stages.diagram_findings = diagramFindings.length;
+        for (const f of diagramFindings) {
+          f.category = "diagram";
+          f.diagram_ref = screenshot;
+        }
+        all.push(...diagramFindings);
+      } catch (e) {
+        stages.diagram_error = (e as Error).message;
+        console.error(`diagram audit error for ${topic.id}`, e);
+      }
+    } else {
+      stages.diagram_error = "Skipped vision pass (insufficient budget)";
+    }
+  }
+
 
   // attach screenshot reference on any diagram finding missing it
   for (const f of all) {
