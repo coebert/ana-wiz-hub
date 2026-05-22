@@ -187,10 +187,10 @@ const AdminDashboard = () => {
   const [dateFrom, setDateFrom] = useState<Date | undefined>(undefined);
   const [dateTo, setDateTo] = useState<Date | undefined>(undefined);
 
-  const fetchAnalytics = async (rangeFrom?: Date, rangeTo?: Date) => {
+  const fetchAnalytics = async (rangeFrom?: Date | null, rangeTo?: Date | null) => {
     setLoading(true);
-    const from = rangeFrom ?? dateFrom;
-    const to = rangeTo ?? dateTo;
+    const from = rangeFrom === null ? undefined : (rangeFrom ?? dateFrom);
+    const to = rangeTo === null ? undefined : (rangeTo ?? dateTo);
     // `now` is treated as the end of the analysis window (range end, or actual now)
     const now = to ? new Date(to.getFullYear(), to.getMonth(), to.getDate(), 23, 59, 59, 999) : new Date();
     const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
