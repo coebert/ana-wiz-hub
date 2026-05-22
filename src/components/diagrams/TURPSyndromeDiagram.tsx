@@ -175,7 +175,7 @@ export const TURPSyndromeDiagram = ({ context = "turp" }: TURPSyndromeDiagramPro
             {(Object.keys(nodes) as StageKey[]).map((key) => {
               const n = nodes[key];
               const isSel = selected === key;
-              const stage = stages.find((s) => s.key === key)!;
+              const stage = contextStages.find((s) => s.key === key)!;
               return (
                     <g key={key} onClick={() => setSelected(key)} style={{ cursor: "pointer" }}>
                   <rect
