@@ -26,7 +26,7 @@ export interface Reference {
 
 /**
  * Peer-reviewed references for each topic, keyed by topic ID.
- * Sources: BJA Education (Oxford Academic), key textbooks, NICE/AAGBI/DAS/SSC guidelines.
+ * Sources: BJA Education (Oxford Academic), key textbooks, NICE/AAGBI/DAS/SSC/ESICM guidelines.
  */
 export const topicReferences: Record<string, Reference[]> = {
   // ──────── PHYSICS ────────
