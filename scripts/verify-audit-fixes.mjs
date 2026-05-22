@@ -106,6 +106,13 @@ let checked = 0;
 
 for (const [id, topicId, section, summary, unverifiable, urlsJoined] of rows) {
   checked++;
+  // If unverifiable_reason is set, treat as warning regardless of sources.
+  if (unverifiable) {
+    warnings.push(
+      `~ ${id} [${topicId}/${section}] unverifiable_reason="${unverifiable.slice(0, 80)}"`,
+    );
+    continue;
+  }
   const urls = urlsJoined ? urlsJoined.split("|").filter(Boolean) : [];
   if (urls.length === 0) {
     if (unverifiable) {
