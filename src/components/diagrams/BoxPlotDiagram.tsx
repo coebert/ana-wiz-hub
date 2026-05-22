@@ -234,7 +234,7 @@ export const BoxPlotDiagram = () => {
             fill="hsl(var(--physics))"
             className="font-semibold"
           >
-            IQR = {stats.iqr.toFixed(2)}
+            IQR = {stats.iqr.toFixed(1)}
           </text>
 
           {/* x-axis */}
