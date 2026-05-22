@@ -16,18 +16,24 @@ export type Database = {
     Tables: {
       app_visits: {
         Row: {
+          country: string | null
+          country_name: string | null
           id: string
           page_path: string | null
           visited_at: string
           visitor_id: string
         }
         Insert: {
+          country?: string | null
+          country_name?: string | null
           id?: string
           page_path?: string | null
           visited_at?: string
           visitor_id: string
         }
         Update: {
+          country?: string | null
+          country_name?: string | null
           id?: string
           page_path?: string | null
           visited_at?: string
