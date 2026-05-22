@@ -4,6 +4,7 @@ import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown } from "lucide-react
 import brainLogo from "/brain-logo.webp";
 import NeonSplash from "@/components/NeonSplash";
 import { SupportSection } from "@/components/SupportSection";
+import { CommentWall } from "@/components/CommentWall";
 import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/DemoVivaStepper";
 
 const DEMO_QUESTIONS: DemoVivaQuestion[] = [
