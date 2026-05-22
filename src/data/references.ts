@@ -5,7 +5,24 @@ export interface Reference {
   citation: string;
   /** URL if available (BJA Education, PubMed, guideline) */
   url?: string;
+  /**
+   * Verbatim guideline / paper excerpt that supports the dose, threshold,
+   * value, or recommendation this reference is being cited for. Shown
+   * inside the InlineRef popover and the SectionReferences list so the
+   * reader can see exactly which sentence in the source backs the claim,
+   * without leaving the page.
+   *
+   * Authoring rules:
+   *   - Quote the source verbatim — no paraphrasing.
+   *   - Keep to ≤ ~600 characters (one or two sentences is usually enough).
+   *   - Include units / numeric values exactly as the source presents them.
+   *   - If a single Reference is reused for multiple claims in different
+   *     topics, prefer a duplicate Reference entry with a more specific
+   *     `label` (e.g. "BNF Methylthioninium") and a focused excerpt.
+   */
+  excerpt?: string;
 }
+
 
 /**
  * Peer-reviewed references for each topic, keyed by topic ID.
