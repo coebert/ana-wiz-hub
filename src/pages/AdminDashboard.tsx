@@ -484,8 +484,34 @@ const AdminDashboard = () => {
               ))}
             </div>
 
-            <div className="p-4 rounded-xl border border-border bg-card">
-              <h2 className="text-sm font-semibold text-foreground mb-1">Unique Users — Last 7 Days</h2>
+            {/* User insight tiles */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="User engagement statistics">
+              {[
+                { label: "Weekly Active", value: analytics.weeklyUsers, fmt: (v: number) => v.toLocaleString(), icon: Activity, color: "text-sky-500", help: "Distinct visitors in the last 7 days" },
+                { label: "Monthly Active", value: analytics.monthlyUsers, fmt: (v: number) => v.toLocaleString(), icon: CalendarDays, color: "text-indigo-500", help: "Distinct visitors in the last 30 days" },
+                { label: "New Today", value: analytics.newUsersToday, fmt: (v: number) => v.toLocaleString(), icon: UserPlus, color: "text-emerald-500", help: "Visitors whose first ever visit is today" },
+                { label: "Returning Users", value: analytics.returningUsers, fmt: (v: number) => `${v.toLocaleString()} (${analytics.returningPct}%)`, icon: Repeat, color: "text-amber-500", help: "Visitors with two or more visits" },
+                { label: "Avg Pages / User", value: analytics.avgPagesPerUser, fmt: (v: number) => v.toFixed(1), icon: Layers, color: "text-rose-500", help: "Total page views ÷ unique visitors" },
+                { label: "Avg Visits / Active Day", value: analytics.avgVisitsPerActiveDay, fmt: (v: number) => v.toFixed(1), icon: BarChart3, color: "text-fuchsia-500", help: "Per-user visit intensity on days they engaged" },
+                { label: "Peak Hour Today", value: analytics.peakHourCount, fmt: () => `${analytics.peakHourLabel}${analytics.peakHourCount ? ` · ${analytics.peakHourCount}` : ""}`, icon: Clock, color: "text-cyan-500", help: "Hour-of-day with the most page views today" },
+                { label: "Engagement Rate", value: analytics.totalUniqueUsers > 0 ? Math.round((analytics.weeklyUsers / analytics.totalUniqueUsers) * 100) : 0, fmt: (v: number) => `${v}%`, icon: TrendingUp, color: "text-teal-500", help: "Share of all-time users active in the last 7 days" },
+              ].map(stat => (
+                <div
+                  key={stat.label}
+                  role="listitem"
+                  className="p-4 rounded-xl border border-border bg-card"
+                  aria-label={`${stat.label}: ${stat.fmt(stat.value)}. ${stat.help}`}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <stat.icon className={`w-5 h-5 ${stat.color}`} aria-hidden="true" />
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</span>
+                  </div>
+                  <p className="text-2xl font-bold text-foreground tabular-nums" aria-hidden="true">{stat.fmt(stat.value)}</p>
+                  <p className="text-[11px] text-muted-foreground mt-1">{stat.help}</p>
+                </div>
+              ))}
+            </div>
+
               <p className="text-xs text-muted-foreground mb-4">Distinct visitors per day</p>
               <div className="flex items-end gap-2 h-40" role="img" aria-label={`Bar chart of unique users per day for the last 7 days. ${analytics.last7Days.map(d => `${d.date}: ${d.count}`).join(", ")}.`}>
                 {analytics.last7Days.map(day => {
