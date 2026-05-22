@@ -181,15 +181,48 @@ export const BurnDepthDiagram = () => {
               strokeDasharray="4 3"
             />
 
-            {/* Depth scale on the left */}
+            {/* Depth scale on the left — all four burn depths permanently labelled */}
             <g {...svgDecorativeProps}>
               <line x1={12} y1={20} x2={12} y2={225} stroke="hsl(var(--muted-foreground))" strokeWidth={0.6} />
-              {[20, 80, 140, 195].map((y) => (
-                <line key={y} x1={9} y1={y} x2={15} y2={y} stroke="hsl(var(--muted-foreground))" strokeWidth={0.6} />
-              ))}
+              {(Object.keys(DEPTHS) as Depth[]).map((d) => {
+                const y = DEPTHS[d].frontY;
+                const isActive = d === active;
+                return (
+                  <g key={d}>
+                    <line
+                      x1={9}
+                      y1={y}
+                      x2={15}
+                      y2={y}
+                      stroke={isActive ? "hsl(0 80% 30%)" : "hsl(var(--muted-foreground))"}
+                      strokeWidth={isActive ? 1.2 : 0.6}
+                    />
+                  </g>
+                );
+              })}
               <text x={4} y={18} fontSize={7} fill="hsl(var(--muted-foreground))">0 mm</text>
               <text x={4} y={228} fontSize={7} fill="hsl(var(--muted-foreground))">~5 mm</text>
             </g>
+
+            {/* Permanent depth-class labels inside the skin column so all four are visible at once */}
+            {(Object.keys(DEPTHS) as Depth[]).map((d) => {
+              const y = DEPTHS[d].frontY;
+              const isActive = d === active;
+              return (
+                <text
+                  key={`lbl-${d}`}
+                  x={26}
+                  y={y - 2}
+                  fontSize={7.5}
+                  fontWeight={isActive ? 700 : 500}
+                  fill={isActive ? "hsl(0 80% 25%)" : "hsl(var(--foreground))"}
+                  opacity={isActive ? 1 : 0.75}
+                  fontFamily="ui-sans-serif, system-ui"
+                >
+                  {DEPTHS[d].short}
+                </text>
+              );
+            })}
 
             {/* Active depth callout */}
             <g>
