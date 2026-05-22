@@ -24,7 +24,7 @@ const lineConcentration = (hours: number) => 100 * Math.pow(2, (4 - hours) / 4);
 
 const ParacetamolNomogramDiagram = () => {
   const [hours, setHours] = useState(8);
-  const [level, setLevel] = useState(120); // mg/L
+  const [level, setLevel] = useState(50); // mg/L — UK treatment line at 8 h sits at 50 mg/L (Rumack–Matthew, 100 mg/L @ 4 h, t½ 4 h)
 
   // Build the treatment line points (semilog y axis 5–250 mg/L).
   const yMin = 5;
