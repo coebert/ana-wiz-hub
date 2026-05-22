@@ -29,7 +29,7 @@ const workedExamples: WorkedExample[] = [
     working:
       "Target conditioning at the carina = 44 mg/L (37 °C, 100% RH).\nDeficit per litre of inspired gas ≈ 44 mg.\nPer minute = 44 × 6 = 264 mg/min ≈ 16 g/h ≈ 380 mL/day of insensible water loss + corresponding heat loss (latent heat of vaporisation 2.26 kJ/g → ~14 W of heat loss).",
     answer:
-      "About 264 mg/min of water (and ~14 W of heat) is lost from the lower airway. Over hours this dries secretions, impairs ciliary function and contributes to hypothermia — mandating an HME (≈25–30 mg/L) or active heated humidifier (44 mg/L) in any prolonged anaesthetic.",
+      "About 264 mg/min of water (and ~14 W of heat) is lost from the lower airway. Over hours this dries secretions, impairs ciliary function and contributes to hypothermia — mandating an HMEF (≈30–38 mg/L) or active heated humidifier (44 mg/L) in any prolonged anaesthetic.",
     cites: ["BJA Educ 2007"],
   },
   {
@@ -77,7 +77,7 @@ const HumidityGasSamplingTopic = () => {
         { text: "Infrared absorption measures CO₂ (4.26 µm), N₂O (4.5 µm) and all modern volatiles (8–13 µm fingerprint region) — only molecules with a changing dipole moment absorb IR (so O₂, N₂, Ar are invisible)", cites: ["Al-Shaikh & Stacey Ch.8"] },
         { text: "Collision broadening: N₂O broadens CO₂'s IR absorption peak → falsely high CO₂ reading unless the analyser compensates", cites: ["BJA Educ 2007"] },
         { text: "Mainstream (in-line) sampling = airway cuvette, real-time, no dilution, but heavy and CO₂-only; sidestream = remote analyser, multi-gas, ~2–3 s delay, risks dilution at low tidal volumes and needs scavenging", cites: ["Cross & Plunkett Ch.9"] },
-        { text: "HME filters provide 25–30 mg/L humidity passively but add dead space; heated humidifiers achieve 44 mg/L but risk condensation", cites: ["Al-Shaikh & Stacey Ch.8"] },
+        { text: "Modern HMEFs typically return 30–38 mg/L humidity on inspiration (passive, depending on device and minute ventilation) but add dead space; heated humidifiers can achieve the 44 mg/L alveolar target at the cost of condensation, circuit complexity and infection risk", cites: ["BJA Educ Humidification 2018", "Al-Shaikh & Stacey Ch.8"] },
       ]}
       coreConcepts={
         <>

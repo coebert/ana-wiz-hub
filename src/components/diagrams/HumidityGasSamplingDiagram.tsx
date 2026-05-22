@@ -52,7 +52,7 @@ const HumidityTab = () => (
       {/* HME vs heated humidifier */}
       <rect x="30" y="225" width="160" height="45" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
       <text x="110" y="242" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">HME Filter</text>
-      <text x="110" y="255" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">25-30 mg/L • Passive</text>
+      <text x="110" y="255" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">30-38 mg/L • Passive</text>
       <text x="110" y="265" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">Adds dead space (30-90 mL)</text>
       
       <rect x="210" y="225" width="160" height="45" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />

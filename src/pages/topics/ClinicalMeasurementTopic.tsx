@@ -5,6 +5,7 @@ import { clinicalMeasurementQuiz } from "@/data/quizzes";
 import ClinicalMeasurementDiagram from "@/components/diagrams/ClinicalMeasurementDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Set up an invasive arterial line correctly (zeroing, levelling, transducer choice).",
@@ -113,7 +114,11 @@ const ClinicalMeasurementTopic = () => {
             <p>
               The arterial waveform shows <strong>systolic amplification</strong> in distal arteries — systolic pressure increases and
               diastolic pressure decreases as the waveform moves peripherally, due to wave reflection and decreased arterial compliance.
-              Crucially, <strong>MAP is preserved</strong> and is the most reliable parameter for clinical decisions.
+              Crucially, <strong>MAP is preserved</strong> and is the most reliable parameter for clinical decisions. The <strong>anacrotic
+              notch</strong> is a small inflection on the <em>ascending</em> limb that marks aortic valve opening (before peak systolic
+              pressure); the <strong>dicrotic notch</strong> on the descending limb corresponds to aortic valve closure
+              <InlineRef topicId="clinical-measurement" refLabel="LITFL Arterial Waveform" />
+              <InlineRef topicId="clinical-measurement" refLabel="Deranged Physiology Arterial Line" />.
             </p>
           </div>
         </div>

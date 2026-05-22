@@ -14,7 +14,7 @@ const views: ViewInfo[] = [
   { id: "overview", label: "Side-by-Side Comparison", color: "hsl(var(--foreground))",
     description: "Sympathetic pathways have short preganglionic and long postganglionic neurones. Parasympathetic pathways have long preganglionic and short postganglionic neurones. All preganglionic neurones release ACh acting on nicotinic receptors (nAChR) at the ganglion." },
   { id: "sympathetic", label: "Sympathetic Detail", color: "hsl(0 55% 50%)",
-    description: "Thoracolumbar outflow T1–L2. Preganglionic cell bodies in the intermediolateral horn (IML). Short myelinated preganglionic fibres (white rami communicantes) → paravertebral sympathetic chain or prevertebral ganglia (coeliac, superior/inferior mesenteric). Long unmyelinated postganglionic fibres release noradrenaline (NA) acting on adrenoceptors (α₁, α₂, β₁, β₂, β₃). Exception: sweat glands receive sympathetic cholinergic (ACh → muscarinic) innervation." },
+    description: "Thoracolumbar outflow T1–L2. Preganglionic cell bodies in the intermediolateral horn (IML). Short myelinated preganglionic fibres (white rami communicantes) → paravertebral sympathetic chain or prevertebral ganglia (coeliac, superior/inferior mesenteric). Long unmyelinated postganglionic fibres release noradrenaline (NA) acting on adrenoceptors (α₁, α₂, β₁, β₂, β₃). Two key exceptions to the noradrenergic postganglionic rule: (1) sweat glands receive sympathetic cholinergic (ACh → muscarinic) innervation; (2) the adrenal medulla — preganglionic fibres synapse directly on chromaffin cells (no postganglionic neurone), which release adrenaline (~80%) and noradrenaline (~20%) directly into the bloodstream (see 'Adrenal Medulla' view)." },
   { id: "parasympathetic", label: "Parasympathetic Detail", color: "hsl(210 60% 50%)",
     description: "Craniosacral outflow: CN III (Edinger-Westphal → ciliary ganglion → pupil constriction), CN VII (superior salivatory nucleus → pterygopalatine/submandibular ganglia → lacrimation/salivation), CN IX (inferior salivatory → otic ganglion → parotid), CN X (dorsal motor nucleus + nucleus ambiguus → ganglia near/within target organs → heart, lungs, GI to splenic flexure), S2–S4 (pelvic splanchnic nerves → descending colon, rectum, bladder, genitalia). Postganglionic NT = ACh → muscarinic receptors (M₁, M₂, M₃)." },
   { id: "adrenal", label: "Adrenal Medulla", color: "hsl(30 60% 50%)",
@@ -197,7 +197,7 @@ export const ANSPathwayDiagram = () => {
         )}
 
         {/* ==================== ADRENAL MEDULLA ==================== */}
-        {view === "adrenal" && (
+        {(view === "adrenal" || view === "sympathetic") && (
           <g {...svgNodeProps("Pathway 3/4: Adrenal medulla — T5–T9 splanchnic → chromaffin cells; 80% adrenaline, 20% noradrenaline")}>
             {/* Preganglionic direct to adrenal */}
             <text x={370} y={60} textAnchor="middle" fontSize="9" fill="hsl(30 60% 50%)" fontWeight="700">ADRENAL MEDULLA</text>
