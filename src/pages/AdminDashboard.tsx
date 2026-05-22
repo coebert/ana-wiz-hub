@@ -701,6 +701,58 @@ const AdminDashboard = () => {
               )}
             </div>
 
+            {/* Top users */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Users className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Top Users</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">Most active anonymous visitor IDs by total page views.</p>
+              {analytics.topUsers.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No visitor data yet.</p>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="text-left text-muted-foreground border-b border-border">
+                        <th className="py-2 pr-3 font-medium">Visitor ID</th>
+                        <th className="py-2 pr-3 font-medium text-right">Visits</th>
+                        <th className="py-2 pr-3 font-medium text-right">Active days</th>
+                        <th className="py-2 pr-3 font-medium text-right">First seen</th>
+                        <th className="py-2 pr-3 font-medium text-right">Last seen</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {analytics.topUsers.map(u => {
+                        const last = new Date(u.lastSeen);
+                        const first = new Date(u.firstSeen);
+                        const ageMin = Math.max(0, Math.floor((Date.now() - last.getTime()) / 60000));
+                        const lastLabel =
+                          ageMin < 60 ? `${ageMin}m ago` :
+                          ageMin < 1440 ? `${Math.floor(ageMin / 60)}h ago` :
+                          `${Math.floor(ageMin / 1440)}d ago`;
+                        return (
+                          <tr key={u.visitorId} className="border-b border-border/50">
+                            <td className="py-2 pr-3 font-mono text-foreground truncate max-w-[180px]" title={u.visitorId}>
+                              {u.visitorId.length > 20 ? u.visitorId.slice(0, 18) + "…" : u.visitorId}
+                            </td>
+                            <td className="py-2 pr-3 text-right tabular-nums font-medium text-foreground">{u.visits.toLocaleString()}</td>
+                            <td className="py-2 pr-3 text-right tabular-nums text-muted-foreground">{u.activeDays}</td>
+                            <td className="py-2 pr-3 text-right tabular-nums text-muted-foreground" title={first.toISOString()}>
+                              {first.toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
+                            </td>
+                            <td className="py-2 pr-3 text-right tabular-nums text-muted-foreground" title={last.toISOString()}>
+                              {lastLabel}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+
             {/* Cohort retention */}
             <div className="p-4 rounded-xl border border-border bg-card">
               <div className="flex items-center gap-2 mb-1">
