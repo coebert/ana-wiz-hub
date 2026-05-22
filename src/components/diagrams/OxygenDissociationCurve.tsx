@@ -364,18 +364,18 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           </g>
         ))}
 
-        {/* mmHg secondary axis */}
-        {[0, 150, 300, 450, 600, 750].map(mmhg => {
-          const kpa = mmhg / 7.5;
-          if (kpa > 100) return null;
+        {/* kPa secondary axis: 1 kPa ≈ 7.5 mmHg */}
+        {[0, 2.7, 5.3, 8, 10.7, 13.3].map(kpa => {
+          const mmhg = kpa * 7.5;
+          if (mmhg > 100) return null;
           return (
-            <text key={`mmhg-${mmhg}`} x={toX(kpa)} y={svgH - padB + 24} textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.5">
-              {mmhg}
+            <text key={`kpa-${kpa}`} x={toX(mmhg)} y={svgH - padB + 24} textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.6">
+              {kpa === 0 ? 0 : kpa.toFixed(1)}
             </text>
           );
         })}
-        <text x={(padL + svgW - padR) / 2} y={svgH - 2} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.5">PaO₂ (mmHg)</text>
-        <text x={(padL + svgW - padR) / 2} y={svgH - padB + 14} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (kPa)</text>
+        <text x={(padL + svgW - padR) / 2} y={svgH - padB + 14} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (mmHg)</text>
+        <text x={(padL + svgW - padR) / 2} y={svgH - 2} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.6">PaO₂ (kPa)</text>
         <text x={12} y={padT + plotH / 2} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600"
           transform={`rotate(-90, 12, ${padT + plotH / 2})`}>
           {viewMode === "content" ? "O₂ Content (ml/dL)" : "SaO₂ (%)"}
