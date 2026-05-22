@@ -222,22 +222,41 @@ function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
   };
 }
 
+export type ScrapeDiagnostics = {
+  primary_url: string;
+  final_url?: string;
+  attempts: AttemptRecord[];
+  last_status: number;
+  last_error?: string;
+  retry_count: number;
+  total_duration_ms: number;
+};
+
+export type ScrapeResult = {
+  data: any | null;
+  diagnostics: ScrapeDiagnostics;
+};
+
 async function firecrawlScrape(
   url: string,
   withScreenshot: boolean,
   timeoutMs = 35_000,
-) {
+): Promise<ScrapeResult> {
   // Always request html as well — we use it to extract SVG label text for the
   // per-diagram audit pass. Markdown alone strips <svg><text> nodes.
   const formats: any[] = ["markdown", "html"];
   if (withScreenshot) formats.push("screenshot");
+
+  const startedAtTotal = Date.now();
+  const allAttempts: AttemptRecord[] = [];
+  let finalUrl: string | undefined;
 
   const scrape = async (
     targetUrl: string,
     budgetMs: number,
     actions?: unknown[],
   ) => {
-    return await retryWithBackoff<any>(
+    const { value, attempts } = await retryWithBackoff<any>(
       `scrape ${targetUrl}`,
       budgetMs,
       3,
@@ -264,18 +283,35 @@ async function firecrawlScrape(
         );
         const data = r.json as any;
         const value = data?.data ?? data;
-        // Treat "no usable content" as a transient failure so we get another
-        // shot before giving up on the topic entirely.
         const markdownLen = String(value?.markdown ?? "").length;
         const usable = r.ok && markdownLen >= 200;
         return {
           ok: usable,
           status: r.ok && !usable ? 502 : r.status,
           value,
-          error: r.ok ? (usable ? undefined : "empty markdown") : r.text?.slice(0, 200),
+          url: targetUrl,
+          error: r.ok
+            ? (usable ? undefined : `empty markdown (got ${markdownLen} chars)`)
+            : r.text?.slice(0, 200),
         };
       },
     );
+    allAttempts.push(...attempts);
+    finalUrl = targetUrl;
+    return value;
+  };
+
+  const buildDiagnostics = (): ScrapeDiagnostics => {
+    const last = allAttempts[allAttempts.length - 1];
+    return {
+      primary_url: url,
+      final_url: finalUrl,
+      attempts: allAttempts,
+      last_status: last?.status ?? 0,
+      last_error: last?.error,
+      retry_count: Math.max(0, allAttempts.length - 1),
+      total_duration_ms: Date.now() - startedAtTotal,
+    };
   };
 
   try {
@@ -283,23 +319,35 @@ async function firecrawlScrape(
     const directBudget = Math.max(12_000, Math.floor(timeoutMs * 0.55));
     const direct = await scrape(url, directBudget);
     const directMarkdown = String(direct?.markdown ?? "");
-    if (directMarkdown.length >= 200) return direct;
+    if (directMarkdown.length >= 200) {
+      return { data: direct, diagnostics: buildDiagnostics() };
+    }
 
     const { sectionUrl, actions } = buildTopicScrapeActions(url, withScreenshot);
     const elapsed = Date.now() - startedAt;
     const remaining = timeoutMs - elapsed;
-    if (remaining < 10_000) return direct;
+    if (remaining < 10_000) {
+      return { data: direct, diagnostics: buildDiagnostics() };
+    }
 
     const viaSection = await scrape(sectionUrl, remaining, actions);
     const sectionMarkdown = String(viaSection?.markdown ?? "");
-    return sectionMarkdown.length >= 200 ? viaSection : direct;
-  } catch (_e) {
-    return null;
+    const data = sectionMarkdown.length >= 200 ? viaSection : direct;
+    return { data, diagnostics: buildDiagnostics() };
+  } catch (e) {
+    allAttempts.push({
+      attempt: allAttempts.length + 1,
+      status: 0,
+      duration_ms: 0,
+      ok: false,
+      error: `unexpected: ${(e as Error).message}`,
+    });
+    return { data: null, diagnostics: buildDiagnostics() };
   }
 }
 
 async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
-  const results = await retryWithBackoff<any[]>(
+  const { value } = await retryWithBackoff<any[]>(
     `search "${query.slice(0, 60)}"`,
     timeoutMs,
     2,
@@ -326,7 +374,7 @@ async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
       return { ok: r.ok, status: r.status, value, error: r.ok ? undefined : r.text?.slice(0, 200) };
     },
   );
-  return results ?? [];
+  return value ?? [];
 }
 
 
