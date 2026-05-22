@@ -141,7 +141,7 @@ const AbdominalAnatomyTopic = () => {
   },
       ]}
       keyPoints={[
-        { text: "TAP block plane lies between internal oblique and transversus abdominis — targets T6–L1 intercostal nerves", cites: ["BJA Educ 2015"] },
+        { text: "TAP block plane lies between internal oblique and transversus abdominis — targets thoracoabdominal nerves (T7–T11), subcostal (T12) and L1 branches (iliohypogastric, ilioinguinal)", cites: ["BJA Educ 2015"] },
         { text: "Ilioinguinal and iliohypogastric nerves (L1) — key targets for inguinal hernia repair blocks", cites: ["Ellis & Feldman Ch.4"] },
         { text: "Pelvic splanchnic nerves (S2-S4) provide parasympathetic supply — damage → bladder dysfunction", cites: ["Miller Ch.47"] },
         { text: "Liver receives 25% of CO — 75% portal vein, 25% hepatic artery", cites: ["BJA Educ 2015"] },
