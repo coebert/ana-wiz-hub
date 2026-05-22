@@ -228,10 +228,10 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
             {viewMode === "content" ? "O₂ Content (ml/dL)" : "SaO₂ (%)"}
           </text>
 
-          {/* Steep zone shading (20-60 mmHg → ~2.7-8 kPa) */}
-          <rect x={toX(2.7)} y={padT} width={toX(8) - toX(2.7)} height={plotH}
+          {/* Steep zone shading (20-60 mmHg ≈ 2.7-8 kPa) */}
+          <rect x={toX(20)} y={padT} width={toX(60) - toX(20)} height={plotH}
             fill="hsl(35 80% 50%)" opacity="0.04" />
-          <text x={toX(5.3)} y={padT + 12} fontSize="6.5" fill="hsl(35 80% 50%)" textAnchor="middle" opacity="0.6">
+          <text x={toX(40)} y={padT + 12} fontSize="6.5" fill="hsl(35 80% 50%)" textAnchor="middle" opacity="0.6">
             Steep zone — rapid desaturation
           </text>
 
