@@ -111,8 +111,8 @@ const NERVES: Record<NerveKey, NerveData> = {
     injury: "Tarsal tunnel syndrome (medial malleolus). Loss of plantarflexion / inversion. Loss of ankle jerk.",
   },
   commonperoneal: {
-    label: "Common peroneal",
-    short: "Common peroneal",
+    label: "Common fibular (peroneal)",
+    short: "Common fibular",
     roots: "L4–S2 (lateral division of sciatic)",
     pathAnt: "M112,200 C118,225 124,250 130,275 C134,295 138,315 140,335",
     pathPost: "M100,210 C108,235 116,260 124,285 C130,305 134,325 136,345",
@@ -120,8 +120,8 @@ const NERVES: Record<NerveKey, NerveData> = {
     patchPost: "M120,300 Q126,340 138,358 L154,358 Q146,330 138,300 Z",
     labelAnt: [144, 250, "start"],
     labelPost: [142, 270, "start"],
-    motor: "Tibialis anterior, EHL, EDL, peronei (dorsiflexion, eversion). Splits into deep + superficial peroneal.",
-    sensory: "Lateral leg + dorsum of foot (deep peroneal: 1st web space; superficial peroneal: rest of dorsum)",
+    motor: "Tibialis anterior, EHL, EDL, fibularis (peronei) — dorsiflexion, eversion. Splits into deep + superficial fibular (peroneal) nerves.",
+    sensory: "Lateral leg + dorsum of foot (deep fibular: 1st web space; superficial fibular: rest of dorsum)",
     injury: "Wraps around fibular neck — vulnerable to lithotomy / leg cross / plaster casts. → FOOT DROP + sensory loss dorsum.",
   },
   sural: {
