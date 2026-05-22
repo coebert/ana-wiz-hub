@@ -601,6 +601,107 @@ const AdminDashboard = () => {
             aria-labelledby="admin-tab-overview"
             className="space-y-6"
           >
+            {/* Date range picker */}
+            <div className="p-4 rounded-xl border border-border bg-card flex flex-wrap items-end gap-3">
+              <div className="flex-1 min-w-[180px]">
+                <h2 className="text-sm font-semibold text-foreground mb-1">Date range</h2>
+                <p className="text-xs text-muted-foreground">
+                  {dateFrom || dateTo
+                    ? `Recalculating metrics for ${dateFrom ? format(dateFrom, "d MMM yyyy") : "the beginning"} → ${dateTo ? format(dateTo, "d MMM yyyy") : "now"}.`
+                    : "All-time metrics. Pick a start and/or end date to scope every metric on this tab."}
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className={cn("justify-start text-left font-normal min-w-[140px]", !dateFrom && "text-muted-foreground")}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {dateFrom ? format(dateFrom, "d MMM yyyy") : "From"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={dateFrom}
+                      onSelect={setDateFrom}
+                      disabled={(d) => (dateTo ? d > dateTo : false) || d > new Date()}
+                      initialFocus
+                      className={cn("p-3 pointer-events-auto")}
+                    />
+                  </PopoverContent>
+                </Popover>
+                <span className="text-muted-foreground text-sm">→</span>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className={cn("justify-start text-left font-normal min-w-[140px]", !dateTo && "text-muted-foreground")}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {dateTo ? format(dateTo, "d MMM yyyy") : "To"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={dateTo}
+                      onSelect={setDateTo}
+                      disabled={(d) => (dateFrom ? d < dateFrom : false) || d > new Date()}
+                      initialFocus
+                      className={cn("p-3 pointer-events-auto")}
+                    />
+                  </PopoverContent>
+                </Popover>
+                {[
+                  { label: "7d", days: 7 },
+                  { label: "30d", days: 30 },
+                  { label: "90d", days: 90 },
+                ].map(p => (
+                  <Button
+                    key={p.label}
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      const end = new Date();
+                      const start = new Date();
+                      start.setDate(end.getDate() - (p.days - 1));
+                      setDateFrom(start);
+                      setDateTo(end);
+                      fetchAnalytics(start, end);
+                    }}
+                  >
+                    {p.label}
+                  </Button>
+                ))}
+                <Button
+                  size="sm"
+                  onClick={() => fetchAnalytics()}
+                  disabled={loading}
+                >
+                  Apply
+                </Button>
+                {(dateFrom || dateTo) && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setDateFrom(undefined);
+                      setDateTo(undefined);
+                      fetchAnalytics(undefined, undefined);
+                    }}
+                  >
+                    Reset
+                  </Button>
+                )}
+              </div>
+            </div>
+
+
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="Headline statistics">
               {[
                 { label: "Total Unique Users", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500", help: "Distinct visitors ever recorded" },
