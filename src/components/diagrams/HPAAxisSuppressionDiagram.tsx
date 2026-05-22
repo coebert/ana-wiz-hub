@@ -65,10 +65,10 @@ const steps: CascadeStep[] = [
   },
   {
     node: "Adrenal crisis risk",
-    detail: "Hypotension + hypoNa",
+    detail: "Hypotension / shock",
     title: "Stress without cover → cardiovascular collapse",
     body:
-      "If the patient cannot mount a cortisol surge for surgery/sepsis: hypotension unresponsive to fluids, hyponatraemia, hypoglycaemia, hyperkalaemia, abdominal pain. Treatment: hydrocortisone 100 mg IV stat then 200 mg/24 h infusion, fluids, glucose, treat the underlying stressor. Prevent with stress-dose cover guided by surgical severity (AAGBI 2020 algorithm).",
+      "Secondary adrenal insufficiency from chronic exogenous steroids preserves mineralocorticoid (aldosterone) output, so the dominant feature is hypotension/shock unresponsive to fluids ± hypoglycaemia; significant hyponatraemia and hyperkalaemia are typically only seen in primary adrenal failure. Treatment: hydrocortisone 100 mg IV stat then 200 mg/24 h infusion, fluids, glucose, treat the underlying stressor. Prevent with stress-dose cover guided by surgical severity (AAGBI 2020 algorithm).",
     sources: [AAGBI, BJA12],
   },
 ];
