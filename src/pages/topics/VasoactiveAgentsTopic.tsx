@@ -307,9 +307,9 @@ const VasoactiveAgentsTopic = () => {
             some β₁ activity but minimal β₂ effect.
           </p>
           <ul className="text-foreground/90 space-y-1">
-            <li><strong>Dose range:</strong> 0.01–1.0 µg/kg/min (typically 0.05–0.3 µg/kg/min)</li>
+            <li><strong>Dose range:</strong> 0.01–1.0 µg/kg/min (typically 0.05–0.3 µg/kg/min)<InlineRef topicId="vasoactive-agents" refLabel="BJA Educ 2019" /></li>
             <li><strong>Haemodynamic effect:</strong> ↑ SVR, ↑ MAP, ↑ diastolic BP. Reflex bradycardia may occur</li>
-            <li><strong>First-line vasopressor</strong> in septic shock (Surviving Sepsis Campaign 2021)</li>
+            <li><strong>First-line vasopressor</strong> in septic shock (Surviving Sepsis Campaign 2021)<InlineRef topicId="vasoactive-agents" refLabel="SSC 2021" /></li>
             <li><strong>Must be given via central venous access</strong> — extravasation causes tissue necrosis</li>
           </ul>
           <p className="text-foreground/90 leading-relaxed mt-2">
