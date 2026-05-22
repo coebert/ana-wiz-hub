@@ -228,6 +228,23 @@ const AdminDashboard = () => {
       .sort((a, b) => b.visits - a.visits)
       .slice(0, 15);
 
+    // Top countries (by unique visitors, then total visits)
+    const countryVisits = new Map<string, { name: string; users: Set<string>; visits: number }>();
+    visits.forEach((v: { visitor_id: string; country?: string | null; country_name?: string | null }) => {
+      const c = (v.country ?? "").toUpperCase();
+      if (!c || c.length !== 2) return;
+      if (!countryVisits.has(c)) {
+        countryVisits.set(c, { name: v.country_name ?? c, users: new Set(), visits: 0 });
+      }
+      const entry = countryVisits.get(c)!;
+      entry.users.add(v.visitor_id);
+      entry.visits += 1;
+    });
+    const topCountries = Array.from(countryVisits.entries())
+      .map(([country, e]) => ({ country, countryName: e.name, users: e.users.size, visits: e.visits }))
+      .sort((a, b) => b.users - a.users || b.visits - a.visits)
+      .slice(0, 15);
+
     const newUsersToday = Array.from(firstSeen.entries()).filter(
       ([, ts]) => ts >= todayStart,
     ).length;
