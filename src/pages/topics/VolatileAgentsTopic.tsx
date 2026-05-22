@@ -92,7 +92,7 @@ const VolatileAgentsTopic = () => {
           <section className="mb-10">
             <h2 className="text-xl font-serif font-bold text-foreground mb-4">Molecular Structures</h2>
             <p className="text-foreground/90 leading-relaxed mb-3">
-              All modern volatile agents are halogenated ethers (sevoflurane, isoflurane, desflurane, enflurane) or alkanes (halothane). Halogenation with fluorine increases stability and reduces flammability; the size and shape of the molecule influence potency and partition coefficients.
+              All modern volatile agents are halogenated ethers (sevoflurane, isoflurane, desflurane, enflurane) or alkanes (halothane). Halogenation with fluorine increases stability and reduces flammability; the size and shape of the molecule influence potency and partition coefficients. Sevoflurane's structure is (CF₃)₂CH–O–CH₂F (fluoromethyl, not difluoromethyl, on the ether oxygen)<InlineRef topicId="volatile-agents" refLabel="PubChem Sevoflurane" />.
             </p>
             <VolatileAgentStructures />
           </section>
