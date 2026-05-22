@@ -512,6 +512,8 @@ const AdminDashboard = () => {
               ))}
             </div>
 
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Unique Users — Last 7 Days</h2>
               <p className="text-xs text-muted-foreground mb-4">Distinct visitors per day</p>
               <div className="flex items-end gap-2 h-40" role="img" aria-label={`Bar chart of unique users per day for the last 7 days. ${analytics.last7Days.map(d => `${d.date}: ${d.count}`).join(", ")}.`}>
                 {analytics.last7Days.map(day => {
@@ -531,6 +533,87 @@ const AdminDashboard = () => {
                 })}
               </div>
             </div>
+
+            {/* 30-day sparkline */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Unique Users — Last 30 Days</h2>
+              <p className="text-xs text-muted-foreground mb-3">
+                Daily distinct visitors · {analytics.monthlyUsers.toLocaleString()} unique over the period
+              </p>
+              <div className="flex items-end gap-[2px] h-24" role="img" aria-label="Bar chart of unique users per day for the last 30 days">
+                {analytics.last30Days.map(day => {
+                  const max = Math.max(...analytics.last30Days.map(d => d.count), 1);
+                  const height = (day.count / max) * 100;
+                  return (
+                    <div
+                      key={day.date}
+                      className="flex-1 bg-primary/60 rounded-t min-h-[2px] hover:bg-primary transition-colors"
+                      style={{ height: `${Math.max(height, 2)}%` }}
+                      title={`${day.date}: ${day.count} unique users`}
+                      aria-hidden="true"
+                    />
+                  );
+                })}
+              </div>
+              <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
+                <span>{analytics.last30Days[0]?.date}</span>
+                <span>{analytics.last30Days[analytics.last30Days.length - 1]?.date}</span>
+              </div>
+            </div>
+
+            {/* Hour of day */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Activity by Hour — Today</h2>
+              <p className="text-xs text-muted-foreground mb-3">
+                Page views by hour of day · peak {analytics.peakHourLabel}
+                {analytics.peakHourCount > 0 ? ` (${analytics.peakHourCount} views)` : ""}
+              </p>
+              <div className="flex items-end gap-[2px] h-24" role="img" aria-label="Bar chart of page views by hour of day for today">
+                {analytics.hourlyToday.map(h => {
+                  const max = Math.max(...analytics.hourlyToday.map(x => x.count), 1);
+                  const height = (h.count / max) * 100;
+                  const isPeak = h.count === max && h.count > 0;
+                  return (
+                    <div
+                      key={h.hour}
+                      className={`flex-1 rounded-t min-h-[2px] transition-colors ${isPeak ? "bg-primary" : "bg-primary/50"}`}
+                      style={{ height: `${Math.max(height, 2)}%` }}
+                      title={`${h.hour.toString().padStart(2, "0")}:00 — ${h.count} views`}
+                      aria-hidden="true"
+                    />
+                  );
+                })}
+              </div>
+              <div className="flex justify-between text-[10px] text-muted-foreground mt-1 tabular-nums">
+                <span>00</span><span>06</span><span>12</span><span>18</span><span>23</span>
+              </div>
+            </div>
+
+            {/* Top entry paths */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Top Pages</h2>
+              <p className="text-xs text-muted-foreground mb-3">Most visited URLs across all users</p>
+              {analytics.topEntryPaths.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No page visits recorded yet.</p>
+              ) : (
+                <ul className="space-y-2">
+                  {analytics.topEntryPaths.map(p => {
+                    const max = Math.max(...analytics.topEntryPaths.map(x => x.count), 1);
+                    const pct = (p.count / max) * 100;
+                    return (
+                      <li key={p.path} className="flex items-center gap-3" aria-label={`${p.path}: ${p.count} views`}>
+                        <span className="text-xs text-foreground flex-1 truncate font-mono">{p.path}</span>
+                        <div className="w-32 h-2 rounded bg-secondary/50 overflow-hidden" aria-hidden="true">
+                          <div className="h-full rounded bg-primary/60" style={{ width: `${Math.max(pct, 2)}%` }} />
+                        </div>
+                        <span className="text-xs font-medium text-foreground w-12 text-right tabular-nums">{p.count.toLocaleString()}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+
 
             {/* Section breakdown */}
             <div className="p-4 rounded-xl border border-border bg-card">
