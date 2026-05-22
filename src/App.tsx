@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ProgressProvider } from "@/contexts/ProgressContext";
 import { ExamFilterProvider } from "@/contexts/ExamFilterContext";
 import { MotionPreferenceProvider } from "@/contexts/MotionPreferenceContext";
+import { UnitPreferenceProvider } from "@/contexts/UnitPreferenceContext";
 import { AuthProvider } from "@/hooks/useAuth";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -194,6 +195,7 @@ const App = () => (
     <ProgressProvider>
     <ExamFilterProvider>
     <MotionPreferenceProvider>
+    <UnitPreferenceProvider>
     <AuthProvider>
     <TooltipProvider>
       <Toaster />
@@ -386,6 +388,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
     </AuthProvider>
+    </UnitPreferenceProvider>
     </MotionPreferenceProvider>
     </ExamFilterProvider>
     </ProgressProvider>
