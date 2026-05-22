@@ -679,6 +679,17 @@ const AdminDashboard = () => {
                   </Button>
                 ))}
                 <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    setDateFrom(undefined);
+                    setDateTo(undefined);
+                    fetchAnalytics(null, null);
+                  }}
+                >
+                  All time
+                </Button>
+                <Button
                   size="sm"
                   onClick={() => fetchAnalytics()}
                   disabled={loading}
