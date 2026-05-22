@@ -56,9 +56,9 @@ const UrologicalAnaesthesiaTopic = () => {
                 { label: "Mechanism", value: "Absorption of hypotonic irrigant via open prostatic venous sinuses" },
                 { label: "Volume risk", value: "Absorption of >1–2 L glycine; risk ↑ with resection time >60 min" },
                 { label: "Features", value: "Hyponatraemia, confusion, visual disturbance, seizures, pulmonary oedema, cardiovascular collapse" },
-                { label: "Hyponatraemia", value: "Dilutional — Na⁺ may fall to <120 mmol/L; rapid fall is most dangerous" },
+                { label: "Hyponatraemia", value: <>Dilutional — Na⁺ may fall to &lt;120 mmol/L; rapid fall is most dangerous<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP 2014" /></> },
                 { label: "Visual symptoms", value: "Glycine is an inhibitory neurotransmitter in the retina — causes transient blindness" },
-                { label: "Management", value: "Stop surgery, IV furosemide, hypertonic saline (1.8–3%) if Na⁺ <120 with symptoms, supportive care" },
+                { label: "Management", value: <>Stop surgery, IV furosemide, hypertonic saline (1.8–3%) if Na⁺ &lt;120 with symptoms, supportive care<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP 2014" /></> },
               ].map((item) => (
                 <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                   <p className="text-xs text-muted-foreground">{item.label}</p>
