@@ -29,7 +29,7 @@ const workedExamples: WorkedExample[] = [
     working:
       "Target conditioning at the carina = 44 mg/L (37 °C, 100% RH).\nDeficit per litre of inspired gas ≈ 44 mg.\nPer minute = 44 × 6 = 264 mg/min ≈ 16 g/h ≈ 380 mL/day of insensible water loss + corresponding heat loss (latent heat of vaporisation 2.26 kJ/g → ~14 W of heat loss).",
     answer:
-      "About 264 mg/min of water (and ~14 W of heat) is lost from the lower airway. Over hours this dries secretions, impairs ciliary function and contributes to hypothermia — mandating an HME (≈25–30 mg/L) or active heated humidifier (44 mg/L) in any prolonged anaesthetic.",
+      "About 264 mg/min of water (and ~14 W of heat) is lost from the lower airway. Over hours this dries secretions, impairs ciliary function and contributes to hypothermia — mandating an HMEF (≈30–38 mg/L) or active heated humidifier (44 mg/L) in any prolonged anaesthetic.",
     cites: ["BJA Educ 2007"],
   },
   {
