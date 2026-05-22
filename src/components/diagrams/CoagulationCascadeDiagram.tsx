@@ -129,7 +129,7 @@ const CoagulationCascadeDiagram = () => {
         <path d="M330,70 C330,115 260,165 245,165" stroke={pathwayMeta.extrinsic.color} strokeWidth="1" fill="none" strokeDasharray="3 2" markerEnd="url(#arrow-e)" />
         {/* TF-VIIa also activates IX */}
         <path d="M280,58 L130,100" stroke={pathwayMeta.extrinsic.color} strokeWidth="0.75" fill="none" strokeDasharray="2 2" opacity="0.4" markerEnd="url(#arrow-e)" />
-        <text x="190" y="72" fontSize="5" fill={pathwayMeta.extrinsic.color} opacity="0.5">also activates IX</text>
+        <text x="190" y="72" fontSize="5" fill={pathwayMeta.extrinsic.color} opacity="0.5">TF·VIIa also activates IX</text>
       </g>
 
       {/* Common arrows */}
