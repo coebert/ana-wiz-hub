@@ -592,6 +592,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NICE CG32", citation: "NICE. Nutrition support for adults: oral nutrition support, enteral tube feeding and parenteral nutrition (CG32). 2006 (updated 2017).", url: "https://www.nice.org.uk/guidance/cg32" },
     { label: "NICE-SUGAR 2009", citation: "NICE-SUGAR Investigators. Intensive versus conventional glucose control in critically ill patients. N Engl J Med. 2009;360:1283-1297.", url: "https://doi.org/10.1056/NEJMoa0810625" },
     { label: "EPaNIC 2011", citation: "Casaer MP et al. Early versus late parenteral nutrition in critically ill adults. N Engl J Med. 2011;365:506-517.", url: "https://doi.org/10.1056/NEJMoa1102662" },
+    { label: "ESICM Early EN 2017", citation: "Reintam Blaser A et al. Early enteral nutrition in critically ill patients: ESICM clinical practice guidelines. Intensive Care Med. 2017;43(3):380-398.", url: "https://doi.org/10.1007/s00134-016-4665-0" },
   ],
   "postop-high-risk-icu": [
     { label: "Pearse 2006", citation: "Pearse RM et al. Identification and characterisation of the high-risk surgical population in the United Kingdom. Crit Care. 2006;10(3):R81.", url: "https://doi.org/10.1186/cc4928" },
@@ -611,6 +612,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2019", citation: "Barr J et al. Clinical practice guidelines for the management of pain, agitation, and delirium (PAD) in adult patients in the ICU. Crit Care Med. 2013;41(1):263-306.", url: "https://doi.org/10.1097/CCM.0b013e3182783b72" },
     { label: "DAS-Delirium", citation: "Ely EW. Delirium in mechanically ventilated patients: ICU-CAM. JAMA. 2001;286(21):2703-2710.", url: "https://doi.org/10.1001/jama.286.21.2703" },
     { label: "BJA Educ 2017", citation: "Reade MC, Finfer S. Sedation and delirium in the intensive care unit. N Engl J Med. 2014;370:444-454.", url: "https://doi.org/10.1056/NEJMra1208705" },
+    { label: "ESICM Analgosedation 2020", citation: "Chanques G et al. Analgesia and sedation in patients with ARDS. Intensive Care Med. 2020;46(12):2342-2356.", url: "https://doi.org/10.1007/s00134-020-06307-9" },
   ],
   "procedural-sedation": [
     { label: "AAGBI/RCoA 2021", citation: "Association of Anaesthetists & Royal College of Anaesthetists. Safe Sedation Practice for Healthcare Procedures: Standards and Guidance. 2021.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Safe-sedation-practice" },
