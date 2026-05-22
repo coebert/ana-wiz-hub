@@ -75,10 +75,12 @@ const AntiemeticsTopic = () => {
           <ExamSection id="apfel" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="PONV Risk Factors (Apfel Score)" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
-              Each Apfel risk factor adds approximately 20% to the baseline PONV risk: (1) female sex, (2) non-smoker, (3) history of
-              PONV or motion sickness, (4) anticipated postoperative opioids. Score 0 = 10%, 1 = 21%, 2 = 39%, 3 = 61%, 4 = 79%.
-              Surgical (laparoscopic, gynaecological, ENT, strabismus) and anaesthetic (volatiles, N₂O, neostigmine) factors further
-              increase risk.
+              The Apfel score consists of <strong>four patient-specific factors</strong>, each adding ~20% to baseline PONV risk:
+              (1) female sex, (2) non-smoker, (3) history of PONV or motion sickness, (4) anticipated postoperative opioids.
+              Score 0 = 10%, 1 = 21%, 2 = 39%, 3 = 61%, 4 = 79%<InlineRef topicId="antiemetics" refLabel="Gan et al. 2020" />.
+              Surgical (laparoscopic, gynaecological, ENT, strabismus) and anaesthetic (volatiles, N₂O, neostigmine) factors are
+              <em> independent predictors</em> of PONV but are not components of the 4-point Apfel score
+              <InlineRef topicId="antiemetics" refLabel="BJA Educ 2013" />.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
