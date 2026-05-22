@@ -320,6 +320,65 @@ const AdminDashboard = () => {
       views: sectionViewMap.get(key) || 0,
     })).sort((a, b) => b.views - a.views);
 
+    // Weekly retention cohorts (last 8 weeks of first-seen users)
+    // For each cohort, compute % returning on day 1, day 7, day 30 after first visit.
+    const dayKey = (iso: string) => iso.slice(0, 10);
+    const userActiveDays = new Map<string, Set<string>>();
+    visits.forEach(v => {
+      if (!userActiveDays.has(v.visitor_id)) userActiveDays.set(v.visitor_id, new Set());
+      userActiveDays.get(v.visitor_id)!.add(dayKey(v.visited_at));
+    });
+    const msDay = 86_400_000;
+    const todayDayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    // Week start = Monday
+    const weekStartOf = (d: Date) => {
+      const day = (d.getDay() + 6) % 7; // 0 = Monday
+      const ws = new Date(d.getFullYear(), d.getMonth(), d.getDate() - day);
+      return ws;
+    };
+    const cohorts = new Map<string, string[]>(); // cohortStartISO(date-only) -> visitor_ids
+    firstSeen.forEach((ts, uid) => {
+      const ws = weekStartOf(new Date(ts));
+      const key = ws.toISOString().slice(0, 10);
+      if (!cohorts.has(key)) cohorts.set(key, []);
+      cohorts.get(key)!.push(uid);
+    });
+    const sortedCohortKeys = Array.from(cohorts.keys()).sort().slice(-8);
+    const retentionCohorts = sortedCohortKeys.map(key => {
+      const uids = cohorts.get(key)!;
+      const cohortStartMs = new Date(key + "T00:00:00").getTime();
+      // For each user, age = how many full days between cohort start and today
+      // Use cohort midpoint (start) for window eligibility.
+      const ageDays = Math.floor((todayDayStart - cohortStartMs) / msDay);
+      const computeDay = (offset: number): { count: number; pct: number } | null => {
+        // Only compute if cohort has had time to be observed at this offset (need at least offset+1 days since cohort start)
+        if (ageDays < offset) return null;
+        let count = 0;
+        uids.forEach(uid => {
+          const firstTs = firstSeen.get(uid)!;
+          const firstDayMs = new Date(dayKey(firstTs) + "T00:00:00").getTime();
+          const targetKey = new Date(firstDayMs + offset * msDay).toISOString().slice(0, 10);
+          if (userActiveDays.get(uid)?.has(targetKey)) count++;
+        });
+        return { count, pct: uids.length > 0 ? Math.round((count / uids.length) * 100) : 0 };
+      };
+      const d1 = computeDay(1);
+      const d7 = computeDay(7);
+      const d30 = computeDay(30);
+      const startDate = new Date(key + "T00:00:00");
+      return {
+        cohortStart: key,
+        cohortLabel: `Wk of ${startDate.toLocaleDateString("en-GB", { day: "numeric", month: "short" })}`,
+        size: uids.length,
+        d1: d1?.count ?? null,
+        d7: d7?.count ?? null,
+        d30: d30?.count ?? null,
+        d1Pct: d1?.pct ?? null,
+        d7Pct: d7?.pct ?? null,
+        d30Pct: d30?.pct ?? null,
+      };
+    });
+
     setAnalytics({
       totalUniqueUsers: uniqueVisitors.size,
       dailyUsers: todayUnique.size,
