@@ -4,7 +4,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics } from "@/data/curriculum";
 import { Button } from "@/components/ui/button";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, Pill, Play, Square, CheckCircle2, AlertCircle } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, Pill, Play, Square, CheckCircle2, AlertCircle, UserPlus, Repeat, Clock, Activity, Layers } from "lucide-react";
 
 interface TopicStat {
   id: string;
