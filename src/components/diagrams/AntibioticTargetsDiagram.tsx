@@ -64,12 +64,12 @@ const SITES: Site[] = [
   },
   {
     key: "dna",
-    label: "DNA gyrase / topoisomerase IV",
-    target: "Prevent DNA supercoiling and replication",
+    label: "Bacterial DNA",
+    target: "Inhibit DNA replication — two distinct mechanisms",
     color: "hsl(160 70% 40%)",
     classes: [
-      { name: "Fluoroquinolones", examples: "Ciprofloxacin, levofloxacin, moxifloxacin — bactericidal" },
-      { name: "Nitroimidazoles", examples: "Metronidazole, tinidazole — DNA strand breaks (anaerobes only)" },
+      { name: "Fluoroquinolones (DNA gyrase / topoisomerase IV)", examples: "Ciprofloxacin, levofloxacin, moxifloxacin — prevent DNA supercoiling/replication; bactericidal" },
+      { name: "Nitroimidazoles (DNA strand breaks via cytotoxic radicals)", examples: "Metronidazole, tinidazole — reduced under anaerobic conditions to nitro-radical intermediates that fragment DNA; NOT a gyrase inhibitor" },
     ],
   },
   {
@@ -233,7 +233,7 @@ const AntibioticTargetsDiagram = () => {
               <Annotation x1={10}  y1={110} x2={185} y2={170} label="Cell membrane" sub="Polymyxins, daptomycin" color="hsl(280 70% 55%)" active={active === "membrane"} onClick={() => setActive("membrane")} anchor="start" tx={5} ty={102} />
               <Annotation x1={750} y1={210} x2={460} y2={205} label="50S ribosome" sub="Macrolides, clindamycin, linezolid" color="hsl(210 75% 50%)" active={active === "50s"} onClick={() => setActive("50s")} anchor="end" tx={755} ty={202} />
               <Annotation x1={750} y1={310} x2={475} y2={345} label="30S ribosome" sub="Aminoglycosides, tetracyclines" color="hsl(195 80% 50%)" active={active === "30s"} onClick={() => setActive("30s")} anchor="end" tx={755} ty={302} />
-              <Annotation x1={10}  y1={210} x2={300} y2={265} label="DNA gyrase / topo IV" sub="Fluoroquinolones, metronidazole" color="hsl(160 70% 40%)" active={active === "dna"} onClick={() => setActive("dna")} anchor="start" tx={5} ty={202} />
+              <Annotation x1={10}  y1={210} x2={300} y2={265} label="Bacterial DNA" sub="Fluoroquinolones (gyrase/topo IV) · metronidazole (radical-mediated breaks — distinct)" color="hsl(160 70% 40%)" active={active === "dna"} onClick={() => setActive("dna")} anchor="start" tx={5} ty={202} />
               <Annotation x1={10}  y1={300} x2={250} y2={355} label="Folate synthesis" sub="Sulfonamides, trimethoprim" color="hsl(330 70% 55%)" active={active === "folate"} onClick={() => setActive("folate")} anchor="start" tx={5} ty={292} />
               <Annotation x1={10}  y1={400} x2={365} y2={205} label="RNA polymerase" sub="Rifampicin" color="hsl(45 90% 50%)" active={active === "rna"} onClick={() => setActive("rna")} anchor="start" tx={5} ty={392} />
   
