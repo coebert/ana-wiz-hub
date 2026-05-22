@@ -162,10 +162,11 @@ export const ANSPathwayDiagram = () => {
 
             {/* POSTGANGLIONIC — SHORT, unmyelinated */}
             <line x1={440} y1={305} x2={440} y2={340} stroke="hsl(210 60% 50%)" strokeWidth="2" strokeDasharray="4 2" markerEnd="url(#ansArrBlue)" />
-            <rect x={467} y={310} width={55} height={30} rx={4}
+            <rect x={467} y={310} width={55} height={40} rx={4}
               fill="hsl(210 60% 50%/0.06)" stroke="hsl(210 60% 50%)" strokeWidth="0.5" strokeDasharray="3 2" />
             <text x={494} y={323} textAnchor="middle" fontSize="6" fill="hsl(210 60% 50%)" fontWeight="600">SHORT</text>
             <text x={494} y={333} textAnchor="middle" fontSize="5" fill="hsl(210 45% 50%)">Unmyelinated</text>
+            <text x={494} y={343} textAnchor="middle" fontSize="5" fill="hsl(210 45% 50%)">(C fibres)</text>
 
             {/* NT: ACh → mAChR */}
             <rect x={370} y={320} width={60} height={28} rx={4}
