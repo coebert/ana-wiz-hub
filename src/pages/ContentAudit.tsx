@@ -1106,6 +1106,18 @@ const ContentAudit = () => {
                               <ExternalLink className="w-3 h-3" />
                             </a>
                           )}
+                          {f.topic_url && f.in_topic_section && (
+                            <a
+                              href={`${f.topic_url}#${sectionAnchorId(f.in_topic_section)}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary hover:bg-primary/20 inline-flex items-center gap-1"
+                              title={`Open topic and scroll to "${f.in_topic_section}"`}
+                            >
+                              Jump to: {f.in_topic_section}
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
                           <span className="text-xs text-muted-foreground">
                             {sectionMeta[f.section as keyof typeof sectionMeta]
                               ?.label ?? f.section}
