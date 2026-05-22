@@ -254,10 +254,18 @@ async function firecrawlScrape(
   const scrape = async (
     targetUrl: string,
     budgetMs: number,
-    actions?: unknown[],
+    opts: {
+      actions?: unknown[];
+      onlyMainContent?: boolean;
+      waitFor?: number;
+      strategy?: string;
+    } = {},
   ) => {
+    const onlyMainContent = opts.onlyMainContent ?? true;
+    const waitFor = opts.waitFor ?? (opts.actions ? 1200 : 8000);
+    const strategy = opts.strategy ?? "default";
     const { value, attempts } = await retryWithBackoff<any>(
-      `scrape ${targetUrl}`,
+      `scrape[${strategy}] ${targetUrl}`,
       budgetMs,
       3,
       async (attemptTimeoutMs) => {
@@ -272,11 +280,12 @@ async function firecrawlScrape(
             body: JSON.stringify({
               url: targetUrl,
               formats,
-              onlyMainContent: true,
-              waitFor: actions ? 1200 : 8000,
+              onlyMainContent,
+              waitFor,
               timeout: Math.max(8_000, attemptTimeoutMs - 3_000),
-              actions,
+              actions: opts.actions,
               storeInCache: false,
+              blockAds: true,
             }),
           },
           attemptTimeoutMs,
@@ -291,8 +300,8 @@ async function firecrawlScrape(
           value,
           url: targetUrl,
           error: r.ok
-            ? (usable ? undefined : `empty markdown (got ${markdownLen} chars)`)
-            : r.text?.slice(0, 200),
+            ? (usable ? undefined : `[${strategy}] empty markdown (got ${markdownLen} chars)`)
+            : `[${strategy}] ${r.text?.slice(0, 200) ?? ""}`,
         };
       },
     );
@@ -314,26 +323,65 @@ async function firecrawlScrape(
     };
   };
 
+  // Track best result across all strategies — never throw away a partial page
+  // just because a later attempt also failed. (Some topics return e.g. 150
+  // chars of header markdown; not enough to audit but better than `null`.)
+  let bestData: any = null;
+  let bestLen = 0;
+  const remember = (d: any) => {
+    const len = String(d?.markdown ?? "").length;
+    if (len > bestLen) {
+      bestData = d;
+      bestLen = len;
+    }
+  };
+
   try {
+    // Strategy A — direct URL, main-content extraction, generous client-side
+    // hydration wait. Covers most topics.
     const startedAt = Date.now();
-    const directBudget = Math.max(12_000, Math.floor(timeoutMs * 0.55));
-    const direct = await scrape(url, directBudget);
-    const directMarkdown = String(direct?.markdown ?? "");
-    if (directMarkdown.length >= 200) {
-      return { data: direct, diagnostics: buildDiagnostics() };
+    const directBudget = Math.max(10_000, Math.floor(timeoutMs * 0.40));
+    const direct = await scrape(url, directBudget, { strategy: "direct" });
+    remember(direct);
+    if (bestLen >= 200) {
+      return { data: bestData, diagnostics: buildDiagnostics() };
     }
 
-    const { sectionUrl, actions } = buildTopicScrapeActions(url, withScreenshot);
-    const elapsed = Date.now() - startedAt;
-    const remaining = timeoutMs - elapsed;
+    // Strategy B — same URL but relaxed: `onlyMainContent: false` and a
+    // longer wait. Pages where the main-content heuristic strips the SPA
+    // body (the dominant failure mode for organ-donation,
+    // prognostication-ethics-icu, perioperative-fluids) succeed here.
+    let elapsed = Date.now() - startedAt;
+    let remaining = timeoutMs - elapsed;
+    if (remaining >= 12_000) {
+      const relaxedBudget = Math.max(10_000, Math.floor(remaining * 0.55));
+      const relaxed = await scrape(url, relaxedBudget, {
+        strategy: "relaxed",
+        onlyMainContent: false,
+        waitFor: 10_000,
+      });
+      remember(relaxed);
+      if (bestLen >= 200) {
+        return { data: bestData, diagnostics: buildDiagnostics() };
+      }
+    }
+
+    // Strategy C — last resort: navigate to the section index and click
+    // through to the topic. Slow but bypasses CDN/edge oddities tied to the
+    // deep-link URL.
+    elapsed = Date.now() - startedAt;
+    remaining = timeoutMs - elapsed;
     if (remaining < 10_000) {
-      return { data: direct, diagnostics: buildDiagnostics() };
+      return { data: bestData, diagnostics: buildDiagnostics() };
     }
-
-    const viaSection = await scrape(sectionUrl, remaining, actions);
-    const sectionMarkdown = String(viaSection?.markdown ?? "");
-    const data = sectionMarkdown.length >= 200 ? viaSection : direct;
-    return { data, diagnostics: buildDiagnostics() };
+    const { sectionUrl, actions } = buildTopicScrapeActions(url, withScreenshot);
+    const viaSection = await scrape(sectionUrl, remaining, {
+      strategy: "section-click",
+      actions,
+      onlyMainContent: false,
+    });
+    remember(viaSection);
+    return { data: bestData, diagnostics: buildDiagnostics() };
   } catch (e) {
     allAttempts.push({
       attempt: allAttempts.length + 1,
@@ -342,9 +390,10 @@ async function firecrawlScrape(
       ok: false,
       error: `unexpected: ${(e as Error).message}`,
     });
-    return { data: null, diagnostics: buildDiagnostics() };
+    return { data: bestData, diagnostics: buildDiagnostics() };
   }
 }
+
 
 async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
   const { value } = await retryWithBackoff<any[]>(
