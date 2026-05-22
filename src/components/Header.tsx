@@ -5,6 +5,7 @@ import brainLogo from "/brain-logo.webp";
 import { SearchDialog } from "@/components/SearchDialog";
 import { ReduceMotionToggle } from "@/components/ReduceMotionToggle";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { UnitPreferenceMenu } from "@/components/UnitPreferenceMenu";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { Exam, ExamTag } from "@/data/curriculum";
 
@@ -138,6 +139,7 @@ export const Header = () => {
               <span className="hidden xl:inline">Support</span>
             </a>
 
+            <UnitPreferenceMenu />
             <ReduceMotionToggle />
             <ThemeToggle />
 
