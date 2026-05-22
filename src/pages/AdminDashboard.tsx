@@ -4,7 +4,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics } from "@/data/curriculum";
 import { Button } from "@/components/ui/button";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, Pill, Play, Square, CheckCircle2, AlertCircle, UserPlus, Repeat, Clock, Activity, Layers } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, Pill, Play, Square, CheckCircle2, AlertCircle, UserPlus, Repeat, Clock, Activity, Layers, Globe } from "lucide-react";
 
 interface TopicStat {
   id: string;
@@ -33,6 +33,7 @@ interface Analytics {
   hourlyToday: { hour: number; count: number }[];
   topEntryPaths: { path: string; count: number }[];
   topUsers: { visitorId: string; visits: number; activeDays: number; firstSeen: string; lastSeen: string }[];
+  topCountries: { country: string; countryName: string; users: number; visits: number }[];
   topTopics: TopicStat[];
   sectionBreakdown: { section: string; views: number }[];
   retentionCohorts: {
@@ -188,7 +189,7 @@ const AdminDashboard = () => {
 
     const { data: allVisits } = await supabase
       .from("app_visits")
-      .select("visitor_id, visited_at, page_path")
+      .select("visitor_id, visited_at, page_path, country, country_name")
       .limit(100000);
     const visits = allVisits ?? [];
     const uniqueVisitors = new Set(visits.map(v => v.visitor_id));
@@ -225,6 +226,23 @@ const AdminDashboard = () => {
         lastSeen: lastSeen.get(visitorId) ?? "",
       }))
       .sort((a, b) => b.visits - a.visits)
+      .slice(0, 15);
+
+    // Top countries (by unique visitors, then total visits)
+    const countryVisits = new Map<string, { name: string; users: Set<string>; visits: number }>();
+    visits.forEach((v: { visitor_id: string; country?: string | null; country_name?: string | null }) => {
+      const c = (v.country ?? "").toUpperCase();
+      if (!c || c.length !== 2) return;
+      if (!countryVisits.has(c)) {
+        countryVisits.set(c, { name: v.country_name ?? c, users: new Set(), visits: 0 });
+      }
+      const entry = countryVisits.get(c)!;
+      entry.users.add(v.visitor_id);
+      entry.visits += 1;
+    });
+    const topCountries = Array.from(countryVisits.entries())
+      .map(([country, e]) => ({ country, countryName: e.name, users: e.users.size, visits: e.visits }))
+      .sort((a, b) => b.users - a.users || b.visits - a.visits)
       .slice(0, 15);
 
     const newUsersToday = Array.from(firstSeen.entries()).filter(
@@ -433,6 +451,7 @@ const AdminDashboard = () => {
       sectionBreakdown,
       retentionCohorts,
       topUsers,
+      topCountries,
     });
     setLoading(false);
   };
@@ -770,7 +789,48 @@ const AdminDashboard = () => {
               )}
             </div>
 
+            {/* Top countries */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Globe className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Top Countries</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                Distinct visitors and page views grouped by country (resolved at visit time).
+              </p>
+              {analytics.topCountries.length === 0 ? (
+                <p className="text-sm text-muted-foreground">
+                  No country data yet — countries are recorded from new visits onwards.
+                </p>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="text-left text-muted-foreground border-b border-border">
+                        <th className="py-2 pr-3 font-medium">Country</th>
+                        <th className="py-2 pr-3 font-medium text-right">Users</th>
+                        <th className="py-2 pr-3 font-medium text-right">Visits</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {analytics.topCountries.map(c => (
+                        <tr key={c.country} className="border-b border-border/50">
+                          <td className="py-2 pr-3 text-foreground">
+                            <span className="font-mono text-muted-foreground mr-2">{c.country}</span>
+                            {c.countryName}
+                          </td>
+                          <td className="py-2 pr-3 text-right tabular-nums font-medium text-foreground">{c.users.toLocaleString()}</td>
+                          <td className="py-2 pr-3 text-right tabular-nums text-muted-foreground">{c.visits.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+
             {/* Cohort retention */}
+
             <div className="p-4 rounded-xl border border-border bg-card">
               <div className="flex items-center gap-2 mb-1">
                 <Layers className="w-4 h-4 text-primary" />

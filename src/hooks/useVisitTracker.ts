@@ -19,12 +19,14 @@ export const useVisitTracker = () => {
     if (location.pathname.startsWith("/admin")) return;
 
     const visitorId = getVisitorId();
-    // Must await/then — PostgrestBuilder only fires the request when consumed.
-    supabase
-      .from("app_visits")
-      .insert({ visitor_id: visitorId, page_path: location.pathname })
+    // Route through the log-visit edge function so the server can stamp the
+    // visit with the caller's country (cf-ipcountry / ipapi fallback).
+    supabase.functions
+      .invoke("log-visit", {
+        body: { visitor_id: visitorId, page_path: location.pathname },
+      })
       .then(({ error }) => {
-        if (error) console.warn("[visit-tracker] insert failed", error.message);
+        if (error) console.warn("[visit-tracker] log-visit failed", error.message);
       });
   }, [location.pathname]);
 };
