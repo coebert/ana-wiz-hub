@@ -81,9 +81,11 @@ for (let i = 0; i < positions.length; i++) {
   const block = refsSrc.slice(start, end);
   const labelToUrl = new Map();
   for (const r of block.matchAll(
-    /\{\s*label:\s*"([^"]+)"[^}]*?(?:url:\s*"([^"]+)")?[^}]*\}/g,
+    /\{\s*label:\s*"([^"]+)"[\s\S]*?\}/g,
   )) {
-    labelToUrl.set(r[1], r[2] ?? null);
+    const obj = r[0];
+    const urlMatch = obj.match(/url:\s*"([^"]+)"/);
+    labelToUrl.set(r[1], urlMatch ? urlMatch[1] : null);
   }
   refsByTopic.set(topic, labelToUrl);
 }
