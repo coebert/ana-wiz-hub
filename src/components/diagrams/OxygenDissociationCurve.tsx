@@ -381,8 +381,8 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           {viewMode === "content" ? "O₂ Content (ml/dL)" : "SaO₂ (%)"}
         </text>
 
-        {/* Steep zone */}
-        <rect x={toX(2.7)} y={padT} width={toX(8) - toX(2.7)} height={plotH}
+        {/* Steep zone (20-60 mmHg ≈ 2.7-8 kPa) */}
+        <rect x={toX(20)} y={padT} width={toX(60) - toX(20)} height={plotH}
           fill="hsl(35 80% 50%)" opacity="0.04" />
 
         {/* Normal curve (reference) */}
