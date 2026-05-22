@@ -306,6 +306,8 @@ export type Database = {
           author_name: string
           comment: string
           created_at: string
+          deleted_at: string | null
+          deleted_reason: string | null
           id: string
           rating: number
           status: string
@@ -314,6 +316,8 @@ export type Database = {
           author_name: string
           comment: string
           created_at?: string
+          deleted_at?: string | null
+          deleted_reason?: string | null
           id?: string
           rating: number
           status?: string
@@ -322,6 +326,8 @@ export type Database = {
           author_name?: string
           comment?: string
           created_at?: string
+          deleted_at?: string | null
+          deleted_reason?: string | null
           id?: string
           rating?: number
           status?: string
