@@ -78,7 +78,7 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"overview" | "topics" | "formulary">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "topics">("overview");
 
   // Formulary verification state
   interface VerificationJob {
