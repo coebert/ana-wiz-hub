@@ -371,6 +371,58 @@ async function callAI(args: {
   }
 }
 
+// ---------- SVG label extraction ----------
+// Pulls every <svg> from a scraped HTML page along with its enclosing
+// section heading (if any) and the verbatim list of <text> labels. We feed
+// this to the diagram-labels AI pass so the auditor can comment on each
+// diagram by its actual labels rather than relying on a screenshot.
+interface ExtractedSvg {
+  heading: string;
+  labels: string[];
+  charCount: number;
+}
+
+function extractSvgsFromHtml(html: string): ExtractedSvg[] {
+  if (!html) return [];
+  const out: ExtractedSvg[] = [];
+  // Find each <svg ...>...</svg> (non-greedy, with nested-tag tolerance via
+  // non-backtracking pattern). SVGs are not allowed to nest in valid HTML.
+  const svgRx = /<svg\b[^>]*>([\s\S]*?)<\/svg>/gi;
+  let m: RegExpExecArray | null;
+  while ((m = svgRx.exec(html)) !== null) {
+    const inner = m[1];
+    // Pull <text>...</text> contents, stripping nested <tspan> wrappers.
+    const labels: string[] = [];
+    const textRx = /<text\b[^>]*>([\s\S]*?)<\/text>/gi;
+    let t: RegExpExecArray | null;
+    while ((t = textRx.exec(inner)) !== null) {
+      const raw = t[1]
+        .replace(/<tspan\b[^>]*>/gi, "")
+        .replace(/<\/tspan>/gi, " ")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&nbsp;/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+      if (raw && raw.length <= 200) labels.push(raw);
+    }
+    if (labels.length < 2) continue; // skip ornamental SVGs / icons
+
+    // Find the nearest preceding <h2>/<h3> as heading context.
+    const before = html.slice(0, m.index);
+    const hMatch = before.match(/<h[23][^>]*>([\s\S]*?)<\/h[23]>(?![\s\S]*<h[23])/i);
+    const heading = hMatch
+      ? hMatch[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()
+      : "";
+
+    out.push({ heading, labels, charCount: inner.length });
+    if (out.length >= 12) break; // cap to keep AI budget reasonable
+  }
+  return out;
+}
+
 // ---------- Per-topic audit ----------
 type Stages = {
   scrape_ok: boolean;
@@ -380,8 +432,11 @@ type Stages = {
   ref_titles: string[];
   text_findings: number;
   diagram_findings: number;
+  diagram_label_findings: number;
+  svg_count: number;
   text_error?: string;
   diagram_error?: string;
+  diagram_label_error?: string;
   scrape_error?: string;
 };
 
