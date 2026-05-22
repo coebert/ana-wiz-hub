@@ -943,11 +943,17 @@ const AdminDashboard = () => {
                     </Button>
                   )}
                   {job && ["pending", "running"].includes(job.status) && (
-                    <Button onClick={cancelVerification} variant="destructive" size="sm">
-                      <Square className="w-4 h-4 mr-1" /> Cancel
-                    </Button>
+                    <>
+                      {isStalled && (
+                        <Button onClick={resumeVerification} size="sm" variant="secondary">
+                          <Play className="w-4 h-4 mr-1" /> Resume
+                        </Button>
+                      )}
+                      <Button onClick={cancelVerification} variant="destructive" size="sm">
+                        <Square className="w-4 h-4 mr-1" /> Cancel
+                      </Button>
+                    </>
                   )}
-                </div>
               </div>
 
               {job && (
