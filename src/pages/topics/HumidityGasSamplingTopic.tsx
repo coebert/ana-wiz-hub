@@ -150,6 +150,10 @@ const HumidityGasSamplingTopic = () => {
                 which would increase resistance and cause inaccuracy. Changes in gas composition (viscosity, density) also affect readings.
               </p>
             </div>
+            <CrossReferenceCallout
+              reason="Detailed discussion of the Fleisch and Lilly pneumotachographs, sources of error, and clinical use."
+              links={[{ topicId: "flow-measurement" }]}
+            />
             </CollapsibleSubsection>
           </ExamSection>
 
