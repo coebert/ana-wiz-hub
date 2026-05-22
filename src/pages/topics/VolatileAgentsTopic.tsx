@@ -8,6 +8,7 @@ import VolatileAgentStructures from "@/components/diagrams/VolatileAgentStructur
 import SecondGasEffectDiagram from "@/components/diagrams/SecondGasEffectDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const workedExamples: WorkedExample[] = [
   {
