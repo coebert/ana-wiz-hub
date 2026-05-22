@@ -542,18 +542,21 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "sepsis": [
     { label: "Sepsis-3 2016", citation: "Singer M et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801-810.", url: "https://doi.org/10.1001/jama.2016.0287" },
-    { label: "SSC 2021", citation: "Evans L et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med. 2021;49(11):e1063-e1143.", url: "https://doi.org/10.1097/CCM.0000000000005337" },
+    { label: "SSC 2021", citation: "Evans L et al. Surviving Sepsis Campaign (SCCM/ESICM): International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med. 2021;49(11):e1063-e1143.", url: "https://doi.org/10.1097/CCM.0000000000005337" },
     { label: "BJA Educ 2019", citation: "Gyawali B, Ramakrishna K, Dhamoon AS. Sepsis: the evolution in definition, pathophysiology, and management. SAGE Open Med. 2019;7:1-13.", url: "https://doi.org/10.1177/2050312119835043" },
+    { label: "ESICM Shock 2014", citation: "Cecconi M et al. Consensus on circulatory shock and hemodynamic monitoring. Task force of the European Society of Intensive Care Medicine. Intensive Care Med. 2014;40(12):1795-1815.", url: "https://doi.org/10.1007/s00134-014-3525-z" },
   ],
   "mechanical-ventilation": [
     { label: "BJA Educ 2018", citation: "Ball L, Dameri M, Pelosi P. Modes of mechanical ventilation for the operating room. Best Pract Res Clin Anaesthesiol. 2015;29(3):285-299.", url: "https://doi.org/10.1016/j.bpa.2015.08.003" },
     { label: "Lumb Ch.31", citation: "Lumb AB. Nunn's Applied Respiratory Physiology. 9th ed. Chapter 31: Artificial Ventilation." },
     { label: "BJA Educ 2019", citation: "Boles JM et al. Weaning from mechanical ventilation. Eur Respir J. 2007;29(5):1033-1056.", url: "https://doi.org/10.1183/09031936.00010206" },
+    { label: "ESICM ARDS 2023", citation: "Grasselli G et al. ESICM guidelines on acute respiratory distress syndrome: definition, phenotyping and respiratory support strategies. Intensive Care Med. 2023;49(7):727-759.", url: "https://doi.org/10.1007/s00134-023-07050-7" },
   ],
   "aki-rrt": [
     { label: "KDIGO 2012", citation: "KDIGO. Clinical Practice Guideline for Acute Kidney Injury. Kidney Int Suppl. 2012;2:1-138.", url: "https://kdigo.org/guidelines/acute-kidney-injury/" },
     { label: "BJA Educ 2018", citation: "Ostermann M, Liu K. Acute kidney injury in the intensive care unit. BJA Education. 2017;17(7):241-248.", url: "https://doi.org/10.1093/bjaed/mkx003" },
     { label: "NICE CG169", citation: "NICE. Acute kidney injury: prevention, detection and management (CG169). 2013 (updated 2019).", url: "https://www.nice.org.uk/guidance/ng148" },
+    { label: "ESICM AKI 2017", citation: "Joannidis M et al. Prevention of acute kidney injury and protection of renal function in the intensive care unit: update 2017. Expert opinion of the Working Group on Prevention, AKI section, ESICM. Intensive Care Med. 2017;43(6):730-749.", url: "https://doi.org/10.1007/s00134-017-4832-y" },
   ],
   "circulatory-failure": [
     { label: "BJA Educ 2019", citation: "Vincent JL, De Backer D. Circulatory shock. N Engl J Med. 2013;369:1726-1734.", url: "https://doi.org/10.1056/NEJMra1208943" },
