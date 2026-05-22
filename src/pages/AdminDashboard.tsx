@@ -199,23 +199,45 @@ const AdminDashboard = () => {
     const rangeStartIso = from ? new Date(from.getFullYear(), from.getMonth(), from.getDate()).toISOString() : null;
     const rangeEndIso = to ? now.toISOString() : null;
 
-    let q = supabase
-      .from("app_visits")
-      .select("visitor_id, visited_at, page_path, country, country_name")
-      .limit(100000);
-    if (rangeStartIso) q = q.gte("visited_at", rangeStartIso);
-    if (rangeEndIso) q = q.lte("visited_at", rangeEndIso);
-    const { data: allVisits } = await q;
-    const visits = allVisits ?? [];
+    // Paginate around the PostgREST max-rows cap (default 1000) so counters
+    // don't silently stall once the visits table grows past that.
+    const PAGE = 1000;
+    const fetchAllVisits = async <T,>(
+      columns: string,
+      applyFilters: (q: any) => any,
+    ): Promise<T[]> => {
+      const out: T[] = [];
+      for (let offset = 0; ; offset += PAGE) {
+        let q: any = supabase.from("app_visits").select(columns);
+        q = applyFilters(q).order("visited_at", { ascending: true }).range(offset, offset + PAGE - 1);
+        const { data, error } = await q;
+        if (error) { console.warn("[admin] fetch visits failed", error.message); break; }
+        const rows = (data ?? []) as T[];
+        out.push(...rows);
+        if (rows.length < PAGE) break;
+      }
+      return out;
+    };
+
+    const visits = await fetchAllVisits<{
+      visitor_id: string;
+      visited_at: string;
+      page_path: string | null;
+      country: string | null;
+      country_name: string | null;
+    }>("visitor_id, visited_at, page_path, country, country_name", (q) => {
+      let qq = q;
+      if (rangeStartIso) qq = qq.gte("visited_at", rangeStartIso);
+      if (rangeEndIso) qq = qq.lte("visited_at", rangeEndIso);
+      return qq;
+    });
     const uniqueVisitors = new Set(visits.map(v => v.visitor_id));
 
-    const { data: todayData } = await supabase
-      .from("app_visits")
-      .select("visitor_id")
-      .gte("visited_at", todayStart)
-      .lte("visited_at", now.toISOString())
-      .limit(100000);
-    const todayUnique = new Set(todayData?.map(v => v.visitor_id) || []);
+    const todayData = await fetchAllVisits<{ visitor_id: string; visited_at: string }>(
+      "visitor_id, visited_at",
+      (q) => q.gte("visited_at", todayStart).lte("visited_at", now.toISOString()),
+    );
+    const todayUnique = new Set(todayData.map(v => v.visitor_id));
 
 
     // First-seen timestamp per visitor → used for new-vs-returning split
