@@ -207,6 +207,8 @@ const Landing = () => {
         </section>
       </section>
 
+      <CommentWall />
+
       <SupportSection />
 
       <footer className="container mx-auto px-4 pb-8 text-center space-y-2">
