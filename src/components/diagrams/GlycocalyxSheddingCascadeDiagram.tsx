@@ -63,14 +63,6 @@ const steps: CascadeStep[] = [
       "Pulmonary oedema, gut-wall oedema (ileus, anastomotic dehiscence), conjunctival chemosis, peripheral oedema. Lung gas exchange falls; bowel function returns slowly; wound healing is impaired. Excess crystalloid in major surgery is associated with longer hospital stay and more complications.",
     sources: [BJA17, CHAP14],
   },
-  {
-    node: "Outcome impact",
-    detail: "Restrictive / balanced fluids",
-    title: "Protect the glycocalyx, improve outcomes",
-    body:
-      "Strategies that limit shedding: avoid excessive crystalloid (goal-directed therapy, RELIEF trial), prefer balanced solutions, treat sepsis source quickly, normoglycaemia, hydrocortisone in refractory shock. Albumin and plasma may help reconstitute the layer in severe loss. Adopt 'zero-balance' or 'restrictive' regimens for major abdominal surgery rather than empirical liberal volumes.",
-    sources: [BJA17, REVISED],
-  },
 ];
 
 export const GlycocalyxSheddingCascadeDiagram = () => (
