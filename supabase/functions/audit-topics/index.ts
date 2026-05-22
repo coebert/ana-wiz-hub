@@ -290,19 +290,35 @@ Rules:
 - If the topic is accurate, return an empty findings array.
 - Return ONLY the tool call. No prose.`;
 
-const DIAGRAM_SYSTEM = `You are an anatomy and physiology illustration reviewer for UK anaesthetic teaching.
+const DIAGRAM_SYSTEM = `You are an anatomy / physiology / pharmacology illustration reviewer for UK anaesthetic teaching (FRCA / FFICM).
 
-You will be shown a screenshot of one topic page that contains diagrams or illustrations, plus the topic title.
+You will be shown a full-page screenshot of one topic page that contains one or more diagrams (anatomy plates, waveforms, pressure-volume loops, capnography traces, drug-receptor schematics, ventilator loops, flow-charts, dose-response curves, cardiac cycle / Wiggers, ECGs, anatomical cross-sections, etc.) plus the topic title and section.
 
-Inspect the visible diagrams (anatomical plates, waveforms, flow charts, structure-function illustrations) for clear inaccuracies:
-- anatomical structures in wrong positions, missing, or labelled incorrectly
-- waveforms or graphs whose shape contradicts standard physiology
-- flow charts with wrong directionality or missing critical steps
-- labelling typos or non-standard UK terminology
+Audit EVERY visible diagram against the standard UK references (BJA Education, Gray's Anatomy 42e, Hadzic Regional Anesthesia 2e, West's Respiratory Physiology, Pappano Cardiovascular Physiology, RCoA / FICM curriculum, BNF). Look hard for:
+- anatomical structures in wrong positions, missing, mislabelled, or on the wrong side (remember the convention: patient-RIGHT = viewer-LEFT in anterior views)
+- spinal nerve-root contributions that do not match canon (e.g. femoral L2–L4, sciatic L4–S3, phrenic C3–C5, brachial plexus C5–T1)
+- vessels on the wrong side of midline (descending aorta should be patient-LEFT; SVC/IVC right)
+- waveforms / loops whose shape, axis, or annotated value contradicts standard physiology (e.g. capnography α/β/γ angles, ICP waveform P1>P2>P3 normally, oxyhaemoglobin curve P50≈3.5 kPa)
+- flow-charts / algorithms with wrong directionality, missing step, or step in wrong order vs the cited guideline
+- labelling typos, abbreviations not used in UK practice, mis-spelled drug names, wrong units (kPa vs mmHg confusion, mg vs mcg)
+- units/value mismatches between graph axis and quoted text
 
-Use BJA Education, Gray's Anatomy and standard FRCA reference textbooks as the gold standard.
+DO NOT be conservative. If you have any reasonable suspicion supported by the topic title + visible content, raise a finding at appropriate severity. It is better to surface a false positive that the reviewer dismisses than to silently pass over a real diagram error. Empty findings is reserved for the case where there are genuinely zero diagrams on the page.
 
-For each clear inaccuracy emit a finding with category="diagram". If diagrams look correct or none are visible, return an empty findings array. Be conservative — only flag clear visual errors, not stylistic preference. Return ONLY the tool call.`;
+For each issue emit a finding with category="diagram", quote the specific label/region in "details", and cite the relevant authoritative source URL when known (BJA Educ, Gray's, Hadzic, NICE, BNF, RCoA, etc.). Return ONLY the tool call.`;
+
+// Text-only per-diagram audit: feeds extracted <text> labels from each SVG
+// directly to the model, so the audit no longer depends on screenshot quality.
+const DIAGRAM_LABELS_SYSTEM = `You are auditing the label text extracted from ONE SVG diagram on a UK FRCA / FFICM revision page. You will be given the diagram's contextual heading, the topic title, and the verbatim list of every <text> label inside the SVG.
+
+Cross-check the labels against canonical anatomy / physiology / pharmacology for that topic:
+- Are the named structures plausibly present in this kind of diagram?
+- For nerves: do listed spinal roots match canon (femoral L2–L4, sciatic L4–S3, obturator L2–L4, phrenic C3–C5, lumbar plexus L1–L4, brachial plexus C5–T1, pudendal S2–S4)?
+- For vessels / chambers / valves: is the named side / position correct?
+- For physiology / pharmacology: are quoted values, axis units, or pathway directions correct?
+- Are there UK-style typos, mis-spelled drug names, deprecated terminology (e.g. "peroneal" vs "fibular"), or wrong abbreviations?
+
+Raise any genuine mismatch as category="diagram". You do NOT need a screenshot to comment on labels — work from the text list alone. Empty findings means the labels look correct and complete. Return ONLY the tool call.`;
 
 async function callAI(args: {
   system: string;
