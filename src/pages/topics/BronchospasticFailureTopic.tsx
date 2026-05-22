@@ -280,7 +280,7 @@ const BronchospasticFailureTopic = () => {
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">IV aminophylline</td>
-                  <td>Phosphodiesterase inhibitor. Loading 5 mg/kg over 20 min (omit if on theophylline), then 0.5 mg/kg/h infusion. Narrow therapeutic index.</td>
+                  <td>Phosphodiesterase inhibitor. Loading 5 mg/kg over 20 min (omit if on theophylline), then 0.5 mg/kg/h infusion<InlineRef topicId="bronchospastic-failure" refLabel="BTS/SIGN Asthma 2019" />. Narrow therapeutic index.</td>
                   <td>Weak bronchodilator, improves diaphragm contractility. Toxicity: arrhythmias, seizures, vomiting. Measure theophylline levels (10–20 mg/L). Drug interactions (CYP1A2): erythromycin, ciprofloxacin increase levels.</td>
                 </tr>
                 <tr className="border-b border-border">
