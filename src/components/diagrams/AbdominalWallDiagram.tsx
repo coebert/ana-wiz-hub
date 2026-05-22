@@ -17,7 +17,7 @@ const layers: Record<LayerKey, Layer> = {
   scarpa: { label: "Scarpa's Fascia (membranous)", color: "hsl(40, 45%, 58%)", detail: "Deep membranous layer. Attaches to fascia lata below inguinal ligament. Can contain fluid collections.", clinicalNote: "Urine extravasation tracks along Scarpa's into anterior wall and scrotum but NOT thigh." },
   "ext-oblique": { label: "External Oblique", color: "hsl(0, 55%, 55%)", detail: "Largest, most superficial flat muscle. Fibres downward and medially ('hands in pockets'). Aponeurosis forms anterior rectus sheath and inguinal ligament.", clinicalNote: "Aponeurosis forms anterior inguinal canal wall and superficial ring. Split in McBurney's incision." },
   "int-oblique": { label: "Internal Oblique", color: "hsl(210, 55%, 52%)", detail: "Middle layer. Fibres upward and medially (perpendicular to external). Contributes to both anterior and posterior rectus sheath above arcuate line.", clinicalNote: "Ilioinguinal nerve (L1) runs between internal oblique and transversus. Forms conjoint tendon with transversus." },
-  "tap-plane": { label: "★ TAP BLOCK PLANE ★", color: "hsl(45, 90%, 50%)", detail: "Fascial plane between internal oblique and transversus abdominis. T6–L1 thoracolumbar nerves run here.", clinicalNote: "US-guided TAP block: 20 ml LA per side. Somatic wall analgesia. Does NOT block visceral pain — supplement systemically." },
+  "tap-plane": { label: "★ TAP BLOCK PLANE ★", color: "hsl(45, 90%, 50%)", detail: "Fascial plane between internal oblique and transversus abdominis. Thoracoabdominal nerves (T7–T11), subcostal (T12) and L1 branches (iliohypogastric, ilioinguinal) run here.", clinicalNote: "US-guided TAP block: 20 ml LA per side. Somatic wall analgesia. Does NOT block visceral pain — supplement systemically." },
   transversus: { label: "Transversus Abdominis", color: "hsl(160, 50%, 48%)", detail: "Deepest flat muscle. Fibres transverse. Below arcuate line, all aponeuroses pass anterior to rectus.", clinicalNote: "Rectus sheath block relevant below arcuate line (midway umbilicus–pubis). No posterior sheath there." },
   transversalis: { label: "Transversalis Fascia", color: "hsl(200, 40%, 50%)", detail: "Continuous fascial lining. Forms posterior inguinal canal wall laterally. Deep inguinal ring is an opening here.", clinicalNote: "Layer traversed during laparoscopic port insertion after muscle layers." },
   extraperitoneal: { label: "Extraperitoneal Fat", color: "hsl(50, 50%, 65%)", detail: "Variable fat between transversalis fascia and peritoneum. Contains inferior epigastric vessels.", clinicalNote: "Inferior epigastric artery here — avoid during lateral laparoscopic ports. Runs medial to deep inguinal ring." },
@@ -252,7 +252,7 @@ const AbdominalWallDiagram = () => {
                             <circle cx={xOff + nx} cy={g.y + g.h / 2} r="0.8" fill="hsl(0, 0%, 30%)" opacity="0.5" />
                           </g>
                         ))}
-                        <text x={xOff + layerW / 2} y={g.y - 2} fontSize="4.5" textAnchor="middle" fill="hsl(45, 90%, 50%)" fontWeight="bold" opacity={isActive ? 1 : 0.6}>T6–L1 intercostal nerves</text>
+                        <text x={xOff + layerW / 2} y={g.y - 2} fontSize="4.5" textAnchor="middle" fill="hsl(45, 90%, 50%)" fontWeight="bold" opacity={isActive ? 1 : 0.6}>T7–L1 nerve branches</text>
                       </g>
                     )}
   
