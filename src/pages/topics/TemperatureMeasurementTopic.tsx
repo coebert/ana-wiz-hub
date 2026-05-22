@@ -17,10 +17,10 @@ const objectives = [
 const keyPoints = [
   { text: "Thermocouples use the Seebeck effect — EMF generated at junction of two dissimilar metals proportional to temperature difference", cites: ["BJA Educ 2014"] },
   { text: "Thermistors are NTC semiconductors — resistance falls exponentially with rising temperature; very sensitive but non-linear", cites: ["Cross & Plunkett Ch.11"] },
-  { text: "Platinum resistance thermometers (RTD/Pt100) have a linear PTC response — most accurate but slowest; laboratory standard", cites: ["NICE NG125"] },
+  { text: "Platinum resistance thermometers (RTD/Pt100) have a linear PTC response — most accurate but slowest; laboratory standard", cites: ["Cross & Plunkett Ch.11"] },
   { text: "Infrared tympanic thermometry uses the Stefan-Boltzmann law (P ∝ T⁴) with a thermopile sensor to detect IR radiation from the tympanic membrane", cites: ["BJA Educ 2014"] },
   { text: "The tympanic membrane lies close to the internal carotid artery; its emitted IR radiation is therefore a surrogate for the temperature of blood supplying the hypothalamus, reflecting core temperature", cites: ["Cross & Plunkett Ch.11"] },
-  { text: "Thermocouples are self-generating (no battery needed); thermistors and RTDs require external power via a Wheatstone bridge", cites: ["NICE NG125"] },
+  { text: "Thermocouples are self-generating (no battery needed); thermistors and RTDs require external power via a Wheatstone bridge", cites: ["Cross & Plunkett Ch.11"] },
   { text: "PA catheter thermistor is the gold standard for core temperature; nasopharyngeal thermocouple best reflects brain temperature", cites: ["BJA Educ 2014"] },
 ];
 
