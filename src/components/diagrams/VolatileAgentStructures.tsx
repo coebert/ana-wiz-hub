@@ -83,7 +83,7 @@ const SevofluraneSVG = () => (
     <text x="180" y="90" textAnchor="middle" className="fill-destructive text-[14px] font-bold">O</text>
     {/* Left side: CHF2 */}
     <line x1="165" y1="85" x2="130" y2="85" stroke="hsl(var(--foreground))" strokeWidth="2" />
-    <text x="110" y="90" textAnchor="middle" className="fill-foreground text-[11px] font-medium">CHF₂</text>
+    <text x="110" y="90" textAnchor="middle" className="fill-foreground text-[11px] font-medium">CH₂F</text>
     {/* Right side: C(CF3)2H */}
     <line x1="195" y1="85" x2="230" y2="85" stroke="hsl(var(--foreground))" strokeWidth="2" />
     <text x="240" y="90" textAnchor="middle" className="fill-foreground text-[11px] font-medium">CH</text>

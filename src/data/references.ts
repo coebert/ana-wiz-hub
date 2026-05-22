@@ -305,6 +305,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Eger", citation: "Eger EI. Uptake and distribution. In: Miller RD, ed. Miller's Anesthesia. 9th ed. Chapter 24." },
     { label: "AAGBI MH 2020", citation: "Association of Anaesthetists. Malignant hyperthermia 2020: Guidelines from the Association of Anaesthetists. Anaesthesia. 2021;76(5):655-664.", url: "https://doi.org/10.1111/anae.15317" },
     { label: "Peck & Hill Ch.7", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 7: Neuromuscular Blocking Drugs." },
+    { label: "PubChem Sevoflurane", citation: "National Center for Biotechnology Information. PubChem Compound Summary for CID 5206, Sevoflurane. Structure: (CF₃)₂CH–O–CH₂F.", url: "https://pubchem.ncbi.nlm.nih.gov/compound/Sevoflurane" },
   ],
   "opioids": [
     { label: "BJA Educ 2016", citation: "Pathan H, Williams J. Basic opioid pharmacology: an update. BJA Education. 2012;12(3):142-147.", url: "https://doi.org/10.1093/bjaceaccp/mkr061" },
