@@ -451,6 +451,7 @@ const AdminDashboard = () => {
       sectionBreakdown,
       retentionCohorts,
       topUsers,
+      topCountries,
     });
     setLoading(false);
   };
