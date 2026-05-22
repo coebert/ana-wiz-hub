@@ -116,44 +116,64 @@ function backoffDelayMs(attempt: number) {
 }
 
 /**
+ * Per-attempt diagnostic record. Surfaced via stages.scrape_diagnostics so
+ * operators can see exactly why a topic failed to retrieve (URL tried, HTTP
+ * status, retry count, error snippet, wall-clock duration).
+ */
+export type AttemptRecord = {
+  url?: string;
+  attempt: number;
+  status: number;
+  duration_ms: number;
+  ok: boolean;
+  error?: string;
+};
+
+/**
  * Run `op` up to `maxAttempts` times, retrying on transient failures.
- * Each attempt is bounded by the remaining budget; if the budget would be
- * exhausted before the next attempt could meaningfully run, we stop early.
- *
- * `op` receives the per-attempt timeout it should pass to fetch.
- * It should return { ok, status, value } — `ok=false` with a retryable
- * status triggers a retry; otherwise the last value is returned.
+ * Returns `{ value, attempts }` so the caller can record diagnostics
+ * (URL, status, retries, error snippet, duration) for observability.
  */
 async function retryWithBackoff<T>(
   label: string,
   totalBudgetMs: number,
   maxAttempts: number,
-  op: (attemptTimeoutMs: number, attempt: number) => Promise<{ ok: boolean; status: number; value: T | null; error?: string }>,
-): Promise<T | null> {
+  op: (attemptTimeoutMs: number, attempt: number) => Promise<{ ok: boolean; status: number; value: T | null; error?: string; url?: string }>,
+): Promise<{ value: T | null; attempts: AttemptRecord[] }> {
   const startedAt = Date.now();
   let lastValue: T | null = null;
+  const attempts: AttemptRecord[] = [];
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     const elapsed = Date.now() - startedAt;
     const remaining = totalBudgetMs - elapsed;
     if (remaining < 4_000) {
       console.warn(`[audit-topics] ${label} retry aborted: budget exhausted (remaining=${remaining}ms)`);
+      attempts.push({ attempt: attempt + 1, status: 0, duration_ms: 0, ok: false, error: `budget exhausted (remaining=${remaining}ms)` });
       break;
     }
-    // Reserve some headroom for a possible follow-up attempt + backoff sleep.
     const attemptsLeft = maxAttempts - attempt;
     const attemptTimeout = attemptsLeft > 1
       ? Math.max(6_000, Math.floor(remaining / attemptsLeft))
       : remaining;
 
-    let result: { ok: boolean; status: number; value: T | null; error?: string };
+    const attemptStart = Date.now();
+    let result: { ok: boolean; status: number; value: T | null; error?: string; url?: string };
     try {
       result = await op(attemptTimeout, attempt);
     } catch (e) {
-      // Network/abort errors come through as exceptions — treat as retryable.
       result = { ok: false, status: 0, value: null, error: (e as Error).message };
     }
+    const duration = Date.now() - attemptStart;
+    attempts.push({
+      url: result.url,
+      attempt: attempt + 1,
+      status: result.status,
+      duration_ms: duration,
+      ok: result.ok,
+      error: result.error,
+    });
     lastValue = result.value ?? lastValue;
-    if (result.ok) return result.value;
+    if (result.ok) return { value: result.value, attempts };
 
     if (!isRetryableStatus(result.status) || attempt === maxAttempts - 1) {
       if (!result.ok) {
@@ -177,7 +197,7 @@ async function retryWithBackoff<T>(
     );
     await new Promise((resolve) => setTimeout(resolve, delay));
   }
-  return lastValue;
+  return { value: lastValue, attempts };
 }
 
 function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
