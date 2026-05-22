@@ -192,7 +192,7 @@ const GynaecologicalAnaesthesiaTopic = () => {
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
               <TURPSyndromeDiagram context="hysteroscopy" />
               <p className="text-[11px] text-muted-foreground mt-2 italic">
-                Hysteroscopy fluid absorption shares the TURP-syndrome physiology, but the open vascular bed is the uterine venous sinuses (not prostatic) — see <InlineRef id="bja-educ-hysteroscopy-2017" />.
+                Hysteroscopy fluid absorption shares the TURP-syndrome physiology, but the open vascular bed is the uterine venous sinuses (not prostatic) — BJA Educ Hysteroscopy 2017; BSGE 2018.
               </p>
             </div>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
