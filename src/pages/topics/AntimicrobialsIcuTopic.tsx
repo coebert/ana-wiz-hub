@@ -225,7 +225,7 @@ const AntimicrobialsIcuTopic = () => {
               "Empiric therapy guided by local antibiogram, suspected source and patient risk factors — narrow once cultures back.",
               "β-lactams are time-dependent — consider extended/continuous infusion in severe sepsis.",
               "Aminoglycosides and fluoroquinolones are concentration-dependent — once-daily dosing maximises peak:MIC.",
-              "Therapeutic drug monitoring for vancomycin (trough 15–20), aminoglycosides, voriconazole and β-lactams in critical illness.",
+              "Therapeutic drug monitoring for vancomycin (target AUC24/MIC 400–600 mg·h/L; ASHP/IDSA 2020), aminoglycosides, voriconazole and β-lactams in critical illness.",
               "Stewardship: stop date on prescription, de-escalation, procalcitonin-guided cessation, antifungal/antiviral input.",
             ]}
           />
