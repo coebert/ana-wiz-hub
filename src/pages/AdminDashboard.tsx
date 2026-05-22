@@ -33,6 +33,7 @@ interface Analytics {
   hourlyToday: { hour: number; count: number }[];
   topEntryPaths: { path: string; count: number }[];
   topUsers: { visitorId: string; visits: number; activeDays: number; firstSeen: string; lastSeen: string }[];
+  topCountries: { country: string; countryName: string; users: number; visits: number }[];
   topTopics: TopicStat[];
   sectionBreakdown: { section: string; views: number }[];
   retentionCohorts: {
