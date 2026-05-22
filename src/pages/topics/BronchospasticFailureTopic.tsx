@@ -245,7 +245,7 @@ const BronchospasticFailureTopic = () => {
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">Corticosteroids</td>
-                  <td>Prednisolone 40–50 mg PO or hydrocortisone 100 mg IV QDS. Onset 4–6 h.</td>
+                  <td>Prednisolone 40–50 mg PO or hydrocortisone 100 mg IV QDS<InlineRef topicId="bronchospastic-failure" refLabel="BTS/SIGN Asthma 2019" />. Onset 4–6 h.</td>
                   <td>Reduce eosinophilic inflammation and mucus production. Continue for at least 5 days or until recovery. No evidence for &gt;7 days in most exacerbations.</td>
                 </tr>
                 <tr>
