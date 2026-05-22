@@ -161,6 +161,7 @@ const PressureMeasurementTopic = () => {
                 underestimates diastolic. Mean arterial pressure is least affected by damping artefact.
               </p>
             </div>
+            <DampingCurvesDiagram />
             </CollapsibleSubsection>
           </ExamSection>
 
