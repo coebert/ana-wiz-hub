@@ -33,7 +33,7 @@ const PerioperativeFluidsTopic = () => {
       sectionSources={{
         objectives: ["NICE CG174", "BJA Educ 2017"],
         workedExamples: ["BJA Educ 2019", "NICE CG174", "SMART 2018", "RELIEF 2018", "BJA Educ GDFT 2016"],
-        keyPoints: ["BJA Educ 2017", "NICE CG174", "BJA Educ 2019", "SMART 2018", "BJA Educ GDFT 2016", "RELIEF 2018"],
+        keyPoints: ["BJA Educ 2017", "NICE CG174", "BJA Educ 2019", "SMART 2018", "BJA Educ GDFT 2016", "RELIEF 2018", "Chappell 2019 (Glycocalyx)"],
       }}
       coreConcepts={
         <>
