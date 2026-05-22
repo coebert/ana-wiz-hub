@@ -128,7 +128,9 @@ async function firecrawlScrape(
   withScreenshot: boolean,
   timeoutMs = 35_000,
 ) {
-  const formats: any[] = ["markdown"];
+  // Always request html as well — we use it to extract SVG label text for the
+  // per-diagram audit pass. Markdown alone strips <svg><text> nodes.
+  const formats: any[] = ["markdown", "html"];
   if (withScreenshot) formats.push("screenshot");
 
   const scrape = async (
