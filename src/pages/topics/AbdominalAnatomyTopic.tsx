@@ -69,7 +69,7 @@ const AbdominalAnatomyTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Nerve Blocks for Hernia Repair</p>
-                <p className="text-sm text-muted-foreground mt-1">Ilioinguinal nerve (L1): runs between internal oblique and transversus. Iliohypogastric nerve (L1): runs between external and internal oblique. Genitofemoral nerve (L1,2): genital branch enters canal via deep ring.</p>
+                <p className="text-sm text-muted-foreground mt-1">Ilioinguinal nerve (L1) &amp; Iliohypogastric nerve (L1): both run in the TAP plane between internal oblique and transversus abdominis — the target plane for inguinal-region blocks. The iliohypogastric nerve subsequently pierces the internal oblique to become more superficial near the anterior superior iliac spine. Genitofemoral nerve (L1,2): genital branch enters canal via deep ring.</p>
               </div>
             </div>
             </CollapsibleSubsection>
