@@ -32,6 +32,7 @@ interface Analytics {
   last30Days: { date: string; count: number }[];
   hourlyToday: { hour: number; count: number }[];
   topEntryPaths: { path: string; count: number }[];
+  topUsers: { visitorId: string; visits: number; activeDays: number; firstSeen: string; lastSeen: string }[];
   topTopics: TopicStat[];
   sectionBreakdown: { section: string; views: number }[];
   retentionCohorts: {
@@ -186,14 +187,28 @@ const AdminDashboard = () => {
     const firstSeen = new Map<string, string>();
     const visitsPerUser = new Map<string, number>();
     const activeDaysPerUser = new Map<string, Set<string>>();
+    const lastSeen = new Map<string, string>();
     visits.forEach(v => {
       const prev = firstSeen.get(v.visitor_id);
       if (!prev || v.visited_at < prev) firstSeen.set(v.visitor_id, v.visited_at);
+      const prevLast = lastSeen.get(v.visitor_id);
+      if (!prevLast || v.visited_at > prevLast) lastSeen.set(v.visitor_id, v.visited_at);
       visitsPerUser.set(v.visitor_id, (visitsPerUser.get(v.visitor_id) || 0) + 1);
       const day = v.visited_at.slice(0, 10);
       if (!activeDaysPerUser.has(v.visitor_id)) activeDaysPerUser.set(v.visitor_id, new Set());
       activeDaysPerUser.get(v.visitor_id)!.add(day);
     });
+
+    const topUsers = Array.from(visitsPerUser.entries())
+      .map(([visitorId, visits]) => ({
+        visitorId,
+        visits,
+        activeDays: activeDaysPerUser.get(visitorId)?.size ?? 0,
+        firstSeen: firstSeen.get(visitorId) ?? "",
+        lastSeen: lastSeen.get(visitorId) ?? "",
+      }))
+      .sort((a, b) => b.visits - a.visits)
+      .slice(0, 15);
 
     const newUsersToday = Array.from(firstSeen.entries()).filter(
       ([, ts]) => ts >= todayStart,
@@ -400,6 +415,7 @@ const AdminDashboard = () => {
       topTopics,
       sectionBreakdown,
       retentionCohorts,
+      topUsers,
     });
     setLoading(false);
   };
@@ -682,6 +698,58 @@ const AdminDashboard = () => {
                     );
                   })}
                 </ul>
+              )}
+            </div>
+
+            {/* Top users */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Users className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Top Users</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">Most active anonymous visitor IDs by total page views.</p>
+              {analytics.topUsers.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No visitor data yet.</p>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="text-left text-muted-foreground border-b border-border">
+                        <th className="py-2 pr-3 font-medium">Visitor ID</th>
+                        <th className="py-2 pr-3 font-medium text-right">Visits</th>
+                        <th className="py-2 pr-3 font-medium text-right">Active days</th>
+                        <th className="py-2 pr-3 font-medium text-right">First seen</th>
+                        <th className="py-2 pr-3 font-medium text-right">Last seen</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {analytics.topUsers.map(u => {
+                        const last = new Date(u.lastSeen);
+                        const first = new Date(u.firstSeen);
+                        const ageMin = Math.max(0, Math.floor((Date.now() - last.getTime()) / 60000));
+                        const lastLabel =
+                          ageMin < 60 ? `${ageMin}m ago` :
+                          ageMin < 1440 ? `${Math.floor(ageMin / 60)}h ago` :
+                          `${Math.floor(ageMin / 1440)}d ago`;
+                        return (
+                          <tr key={u.visitorId} className="border-b border-border/50">
+                            <td className="py-2 pr-3 font-mono text-foreground truncate max-w-[180px]" title={u.visitorId}>
+                              {u.visitorId.length > 20 ? u.visitorId.slice(0, 18) + "…" : u.visitorId}
+                            </td>
+                            <td className="py-2 pr-3 text-right tabular-nums font-medium text-foreground">{u.visits.toLocaleString()}</td>
+                            <td className="py-2 pr-3 text-right tabular-nums text-muted-foreground">{u.activeDays}</td>
+                            <td className="py-2 pr-3 text-right tabular-nums text-muted-foreground" title={first.toISOString()}>
+                              {first.toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
+                            </td>
+                            <td className="py-2 pr-3 text-right tabular-nums text-muted-foreground" title={last.toISOString()}>
+                              {lastLabel}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               )}
             </div>
 
