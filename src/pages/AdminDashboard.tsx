@@ -154,12 +154,15 @@ const AdminDashboard = () => {
     setLoading(true);
     const now = new Date();
     const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
 
     const { data: allVisits } = await supabase
       .from("app_visits")
       .select("visitor_id, visited_at, page_path")
       .limit(100000);
-    const uniqueVisitors = new Set(allVisits?.map(v => v.visitor_id) || []);
+    const visits = allVisits ?? [];
+    const uniqueVisitors = new Set(visits.map(v => v.visitor_id));
 
     const { data: todayData } = await supabase
       .from("app_visits")
@@ -168,13 +171,53 @@ const AdminDashboard = () => {
       .limit(100000);
     const todayUnique = new Set(todayData?.map(v => v.visitor_id) || []);
 
+    // First-seen timestamp per visitor → used for new-vs-returning split
+    const firstSeen = new Map<string, string>();
+    const visitsPerUser = new Map<string, number>();
+    const activeDaysPerUser = new Map<string, Set<string>>();
+    visits.forEach(v => {
+      const prev = firstSeen.get(v.visitor_id);
+      if (!prev || v.visited_at < prev) firstSeen.set(v.visitor_id, v.visited_at);
+      visitsPerUser.set(v.visitor_id, (visitsPerUser.get(v.visitor_id) || 0) + 1);
+      const day = v.visited_at.slice(0, 10);
+      if (!activeDaysPerUser.has(v.visitor_id)) activeDaysPerUser.set(v.visitor_id, new Set());
+      activeDaysPerUser.get(v.visitor_id)!.add(day);
+    });
+
+    const newUsersToday = Array.from(firstSeen.entries()).filter(
+      ([, ts]) => ts >= todayStart,
+    ).length;
+    const returningUsers = Array.from(visitsPerUser.values()).filter(n => n >= 2).length;
+    const returningPct = uniqueVisitors.size > 0
+      ? Math.round((returningUsers / uniqueVisitors.size) * 100)
+      : 0;
+    const avgPagesPerUser = uniqueVisitors.size > 0
+      ? visits.length / uniqueVisitors.size
+      : 0;
+    const visitsPerActiveDay: number[] = [];
+    visitsPerUser.forEach((count, uid) => {
+      const days = activeDaysPerUser.get(uid)?.size || 1;
+      visitsPerActiveDay.push(count / days);
+    });
+    const avgVisitsPerActiveDay = visitsPerActiveDay.length > 0
+      ? visitsPerActiveDay.reduce((a, b) => a + b, 0) / visitsPerActiveDay.length
+      : 0;
+
+    // 7d / 30d rolling unique
+    const weeklyUsers = new Set(
+      visits.filter(v => v.visited_at >= sevenDaysAgo).map(v => v.visitor_id),
+    ).size;
+    const monthlyUsers = new Set(
+      visits.filter(v => v.visited_at >= thirtyDaysAgo).map(v => v.visitor_id),
+    ).size;
+
     // Last 7 days
     const last7Days: { date: string; count: number }[] = [];
     for (let i = 6; i >= 0; i--) {
       const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
       const dayStart = new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString();
       const dayEnd = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1).toISOString();
-      const dayVisits = allVisits?.filter(v => v.visited_at >= dayStart && v.visited_at < dayEnd) || [];
+      const dayVisits = visits.filter(v => v.visited_at >= dayStart && v.visited_at < dayEnd);
       const dayUnique = new Set(dayVisits.map(v => v.visitor_id));
       last7Days.push({
         date: d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" }),
@@ -182,13 +225,56 @@ const AdminDashboard = () => {
       });
     }
 
+    // Last 30 days (unique users per day)
+    const last30Days: { date: string; count: number }[] = [];
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+      const dayStart = new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString();
+      const dayEnd = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1).toISOString();
+      const dayUnique = new Set(
+        visits.filter(v => v.visited_at >= dayStart && v.visited_at < dayEnd).map(v => v.visitor_id),
+      );
+      last30Days.push({
+        date: d.toLocaleDateString("en-GB", { day: "numeric", month: "short" }),
+        count: dayUnique.size,
+      });
+    }
+
+    // Hour-of-day distribution today
+    const hourlyToday: { hour: number; count: number }[] = Array.from(
+      { length: 24 },
+      (_, h) => ({ hour: h, count: 0 }),
+    );
+    visits.forEach(v => {
+      if (v.visited_at < todayStart) return;
+      const h = new Date(v.visited_at).getHours();
+      hourlyToday[h].count++;
+    });
+    const peak = hourlyToday.reduce(
+      (best, cur) => (cur.count > best.count ? cur : best),
+      { hour: 0, count: 0 },
+    );
+    const peakHourLabel = peak.count > 0
+      ? `${peak.hour.toString().padStart(2, "0")}:00`
+      : "—";
+
+    // Top entry / landing paths (non-topic, e.g. /, /curriculum, /viva)
+    const pathCounts = new Map<string, number>();
+    visits.forEach(v => {
+      if (!v.page_path) return;
+      pathCounts.set(v.page_path, (pathCounts.get(v.page_path) || 0) + 1);
+    });
+    const topEntryPaths = Array.from(pathCounts.entries())
+      .map(([path, count]) => ({ path, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 10);
+
     // Topic-level analytics
     const topicVisitMap = new Map<string, { views: number; visitors: Set<string> }>();
     const sectionViewMap = new Map<string, number>();
 
-    allVisits?.forEach(v => {
+    visits.forEach(v => {
       if (!v.page_path) return;
-      // Match topic paths like /physiology/cardiac-cycle
       const segments = v.page_path.split("/").filter(Boolean);
       if (segments.length === 2) {
         const [section, topicId] = segments;
@@ -200,7 +286,6 @@ const AdminDashboard = () => {
           const entry = topicVisitMap.get(topicId)!;
           entry.views++;
           entry.visitors.add(v.visitor_id);
-
           sectionViewMap.set(section, (sectionViewMap.get(section) || 0) + 1);
         }
       }
@@ -227,9 +312,21 @@ const AdminDashboard = () => {
     setAnalytics({
       totalUniqueUsers: uniqueVisitors.size,
       dailyUsers: todayUnique.size,
-      totalVisits: allVisits?.length || 0,
+      weeklyUsers,
+      monthlyUsers,
+      newUsersToday,
+      returningUsers,
+      returningPct,
+      avgPagesPerUser,
+      avgVisitsPerActiveDay,
+      peakHourLabel,
+      peakHourCount: peak.count,
+      totalVisits: visits.length,
       todayVisits: todayData?.length || 0,
       last7Days,
+      last30Days,
+      hourlyToday,
+      topEntryPaths,
       topTopics,
       sectionBreakdown,
     });
