@@ -8,6 +8,7 @@ import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinfl
 import SedacondaDiagram from "@/components/diagrams/SedacondaDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Apply BTS/SIGN criteria to recognise life-threatening and near-fatal asthma and escalate appropriately.",
