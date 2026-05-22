@@ -175,7 +175,10 @@ const GastrointestinalPhysiologyTopic = () => {
             <CollapsibleSubsection title="Nausea & Vomiting">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The vomiting centre (nucleus tractus solitarius) receives input from multiple sites — this explains why
-              different antiemetics target different pathways and why combination therapy outperforms monotherapy:
+              different antiemetics target different pathways and why combination therapy outperforms monotherapy.
+              Vagal efferent output during the emetic reflex drives <strong>retroperistalsis with relaxation of the
+              proximal stomach and lower oesophageal sphincter</strong> (not an increase in pro-grade gastric
+              motility), followed by forceful abdominal and respiratory muscle contraction<InlineRef topicId="gi-physiology" refLabel="Ganong Ch.27" />:
             </p>
             <div className="space-y-3">
               {[
