@@ -127,7 +127,7 @@ const STEPS: AnimatedMechanismStep[] = [
  */
 const RefeedingScene = ({ active }: { active: number }) => {
   const rows = [
-    { label: "Starvation", sub: "Catabolism · ↓insulin · depleted K⁺/PO₄/Mg²⁺", token: "muted-foreground" },
+    { label: "Starvation", sub: "Catabolism · ↓insulin · depleted K⁺/PO₄³⁻/Mg²⁺", token: "muted-foreground" },
     { label: "Carbohydrate load", sub: "Feed / dextrose introduced", token: "clinical" },
     { label: "Insulin surge", sub: "K⁺ · PO₄³⁻ · Mg²⁺ → intracellular", token: "pharmacology" },
     { label: "Thiamine consumed", sub: "PDH cofactor exhausted → lactate", token: "physiology" },
