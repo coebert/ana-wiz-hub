@@ -135,7 +135,7 @@ const Index = () => {
           <Link
             to="/"
             aria-label="Back to home page"
-            className="absolute left-2 top-2 md:left-4 md:top-4 inline-flex items-center gap-2 min-h-11 min-w-11 px-3 rounded-md text-sm text-primary-foreground/85 hover:text-primary-foreground hover:bg-primary-foreground/10 active:bg-primary-foreground/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/60 transition-colors"
+            className="absolute z-20 left-2 top-2 md:left-4 md:top-4 inline-flex items-center gap-2 min-h-11 min-w-11 px-3 rounded-md text-sm text-primary-foreground/90 hover:text-primary-foreground bg-black/15 hover:bg-black/25 active:bg-black/30 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/60 transition-colors"
             style={{
               top: "max(0.5rem, env(safe-area-inset-top))",
               left: "max(0.5rem, env(safe-area-inset-left))",
@@ -144,7 +144,7 @@ const Index = () => {
             <ArrowLeft className="h-5 w-5" aria-hidden />
             <span>Home</span>
           </Link>
-          <div className="relative flex flex-col items-center justify-center mb-4">
+          <div className="relative z-0 flex flex-col items-center justify-center mb-4">
             <img
               src={brainLogo}
               alt=""
