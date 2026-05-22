@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useRef, useState, ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import type { User, Session } from "@supabase/supabase-js";
 
@@ -18,42 +18,59 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
+  // Track the user id whose admin status we last resolved so we don't
+  // re-issue the RPC on every TOKEN_REFRESHED (which fires on tab focus
+  // and periodic refresh). A transient RPC failure there would otherwise
+  // flip isAdmin → false and lock the user out mid-session.
+  const resolvedAdminForUserRef = useRef<string | null>(null);
 
   const checkAdmin = async (userId: string) => {
-    const { data } = await supabase.rpc("has_role", {
+    const { data, error } = await supabase.rpc("has_role", {
       _user_id: userId,
       _role: "admin",
     });
+    if (error) {
+      // Network / transient error — DO NOT demote an already-admin user.
+      // Leave previous isAdmin value untouched; we'll retry on next sign-in.
+      return;
+    }
     setIsAdmin(!!data);
+    resolvedAdminForUserRef.current = userId;
   };
 
   useEffect(() => {
     let cancelled = false;
 
-    const applySession = async (session: Session | null) => {
+    const applySession = async (nextSession: Session | null) => {
       if (cancelled) return;
-      setSession(session);
-      setUser(session?.user ?? null);
-      if (session?.user) {
-        // Resolve admin role BEFORE flipping loading to false so
-        // RequireAdmin never sees the (user, isAdmin=false) tuple
-        // during the role-check round-trip.
-        await checkAdmin(session.user.id);
-      } else {
+      setSession(nextSession);
+      setUser(nextSession?.user ?? null);
+
+      if (!nextSession?.user) {
         setIsAdmin(false);
+        resolvedAdminForUserRef.current = null;
+        if (!cancelled) setLoading(false);
+        return;
+      }
+
+      // Only resolve admin role when the signed-in user actually changes.
+      // TOKEN_REFRESHED / periodic refresh events should NOT re-check
+      // (avoids flipping isAdmin to false on a transient RPC blip).
+      if (resolvedAdminForUserRef.current !== nextSession.user.id) {
+        await checkAdmin(nextSession.user.id);
       }
       if (!cancelled) setLoading(false);
     };
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      (_event, nextSession) => {
         // Defer to avoid deadlocks inside the auth callback.
-        setTimeout(() => applySession(session), 0);
+        setTimeout(() => applySession(nextSession), 0);
       }
     );
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      applySession(session);
+    supabase.auth.getSession().then(({ data: { session: initialSession } }) => {
+      applySession(initialSession);
     });
 
     return () => {
@@ -70,6 +87,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const signOut = async () => {
     await supabase.auth.signOut();
     setIsAdmin(false);
+    resolvedAdminForUserRef.current = null;
   };
 
   return (
