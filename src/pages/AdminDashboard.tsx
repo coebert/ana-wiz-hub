@@ -789,7 +789,48 @@ const AdminDashboard = () => {
               )}
             </div>
 
+            {/* Top countries */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Globe className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Top Countries</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                Distinct visitors and page views grouped by country (resolved at visit time).
+              </p>
+              {analytics.topCountries.length === 0 ? (
+                <p className="text-sm text-muted-foreground">
+                  No country data yet — countries are recorded from new visits onwards.
+                </p>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="text-left text-muted-foreground border-b border-border">
+                        <th className="py-2 pr-3 font-medium">Country</th>
+                        <th className="py-2 pr-3 font-medium text-right">Users</th>
+                        <th className="py-2 pr-3 font-medium text-right">Visits</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {analytics.topCountries.map(c => (
+                        <tr key={c.country} className="border-b border-border/50">
+                          <td className="py-2 pr-3 text-foreground">
+                            <span className="font-mono text-muted-foreground mr-2">{c.country}</span>
+                            {c.countryName}
+                          </td>
+                          <td className="py-2 pr-3 text-right tabular-nums font-medium text-foreground">{c.users.toLocaleString()}</td>
+                          <td className="py-2 pr-3 text-right tabular-nums text-muted-foreground">{c.visits.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+
             {/* Cohort retention */}
+
             <div className="p-4 rounded-xl border border-border bg-card">
               <div className="flex items-center gap-2 mb-1">
                 <Layers className="w-4 h-4 text-primary" />
