@@ -1,0 +1,2 @@
+UPDATE public.topic_audit_findings SET status='fixed', resolved_at=now() WHERE id='1d5f31aa-be99-430b-9a23-d5de998a9256';
+UPDATE public.topic_audit_findings SET status='fixed', resolved_at=now(), unverifiable_reason='Auditor false-positive: topic already uses InlineRef citations linked to topicReferences[iv-anaesthetics] entries (Peck & Hill Ch.5, BJA Educ 2014, AAGBI 2018) rendered via ReferencesList.' WHERE id='57a889ba-5485-49d8-813e-acc8bfd63181';
