@@ -150,7 +150,7 @@ const UrologicalAnaesthesiaTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
               <li><strong>Deepen anaesthesia</strong>: additional propofol bolus paradoxically resolves it in many cases; add opioid (fentanyl/alfentanil)</li>
               <li><strong>Switch technique</strong>: convert TIVA to volatile maintenance, or add ketamine</li>
-              <li><strong>Pharmacological detumescence</strong>: intracavernosal phenylephrine 100–200 µg (α-agonist — needs BP/ECG monitoring), or ephedrine IV; terbutaline 0.25–0.5 mg SC has been reported</li>
+              <li><strong>Pharmacological detumescence</strong>: intracavernosal phenylephrine 100–200 µg (α-agonist — needs BP/ECG monitoring), or ephedrine IV; terbutaline 0.25–0.5 mg SC has been reported<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP 2014" /></li>
               <li><strong>Mechanical</strong>: ice packs, manual compression — generally ineffective alone</li>
               <li><strong>Last resort</strong>: abandon procedure if detumescence fails and instrumentation unsafe</li>
             </ul>
