@@ -54,14 +54,14 @@ export const UnitPreferenceMenu = ({ className = "" }: { className?: string }) =
           title="Units preferences"
           className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-colors shrink-0 whitespace-nowrap border ${
             active
-              ? "border-amber-500/60 bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 dark:text-amber-400"
+              ? "border-clinical/60 bg-clinical/10 text-clinical hover:bg-clinical/20"
               : "border-border text-muted-foreground hover:text-foreground hover:bg-muted"
           } ${className}`}
         >
           <Ruler className="h-3.5 w-3.5" aria-hidden="true" />
           <span className="hidden xl:inline">Units</span>
           {active && (
-            <span className="ml-0.5 inline-flex h-2 w-2 rounded-full bg-amber-500" />
+            <span className="ml-0.5 inline-flex h-2 w-2 rounded-full bg-clinical" />
           )}
         </button>
       </DropdownMenuTrigger>
