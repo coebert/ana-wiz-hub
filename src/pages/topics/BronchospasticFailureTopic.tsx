@@ -158,7 +158,7 @@ const BronchospasticFailureTopic = () => {
             BTS/SIGN classification stratifies acute asthma by severity. Life-threatening and near-fatal asthma require immediate escalation and ICU involvement.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Severity Classification (BTS/SIGN)</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Severity Classification (BTS/SIGN<InlineRef topicId="bronchospastic-failure" refLabel="BTS/SIGN Asthma 2019" />)</h3>
           <div className="overflow-x-auto mb-4">
             <table className="w-full text-sm border-collapse">
               <thead>
