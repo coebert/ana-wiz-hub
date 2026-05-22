@@ -252,7 +252,7 @@ const AbdominalWallDiagram = () => {
                             <circle cx={xOff + nx} cy={g.y + g.h / 2} r="0.8" fill="hsl(0, 0%, 30%)" opacity="0.5" />
                           </g>
                         ))}
-                        <text x={xOff + layerW / 2} y={g.y - 2} fontSize="4.5" textAnchor="middle" fill="hsl(45, 90%, 50%)" fontWeight="bold" opacity={isActive ? 1 : 0.6}>T6–L1 intercostal nerves</text>
+                        <text x={xOff + layerW / 2} y={g.y - 2} fontSize="4.5" textAnchor="middle" fill="hsl(45, 90%, 50%)" fontWeight="bold" opacity={isActive ? 1 : 0.6}>T7–L1 nerve branches</text>
                       </g>
                     )}
   
