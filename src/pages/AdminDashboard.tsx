@@ -4,7 +4,11 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics } from "@/data/curriculum";
 import { Button } from "@/components/ui/button";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, Pill, Play, Square, CheckCircle2, AlertCircle, UserPlus, Repeat, Clock, Activity, Layers, Globe } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, Pill, Play, Square, CheckCircle2, AlertCircle, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon } from "lucide-react";
 
 interface TopicStat {
   id: string;
@@ -180,17 +184,28 @@ const AdminDashboard = () => {
     }
   }, [user, isAdmin, authLoading, navigate]);
 
-  const fetchAnalytics = async () => {
+  const [dateFrom, setDateFrom] = useState<Date | undefined>(undefined);
+  const [dateTo, setDateTo] = useState<Date | undefined>(undefined);
+
+  const fetchAnalytics = async (rangeFrom?: Date | null, rangeTo?: Date | null) => {
     setLoading(true);
-    const now = new Date();
+    const from = rangeFrom === null ? undefined : (rangeFrom ?? dateFrom);
+    const to = rangeTo === null ? undefined : (rangeTo ?? dateTo);
+    // `now` is treated as the end of the analysis window (range end, or actual now)
+    const now = to ? new Date(to.getFullYear(), to.getMonth(), to.getDate(), 23, 59, 59, 999) : new Date();
     const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
     const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
     const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    const rangeStartIso = from ? new Date(from.getFullYear(), from.getMonth(), from.getDate()).toISOString() : null;
+    const rangeEndIso = to ? now.toISOString() : null;
 
-    const { data: allVisits } = await supabase
+    let q = supabase
       .from("app_visits")
       .select("visitor_id, visited_at, page_path, country, country_name")
       .limit(100000);
+    if (rangeStartIso) q = q.gte("visited_at", rangeStartIso);
+    if (rangeEndIso) q = q.lte("visited_at", rangeEndIso);
+    const { data: allVisits } = await q;
     const visits = allVisits ?? [];
     const uniqueVisitors = new Set(visits.map(v => v.visitor_id));
 
@@ -198,8 +213,10 @@ const AdminDashboard = () => {
       .from("app_visits")
       .select("visitor_id")
       .gte("visited_at", todayStart)
+      .lte("visited_at", now.toISOString())
       .limit(100000);
     const todayUnique = new Set(todayData?.map(v => v.visitor_id) || []);
+
 
     // First-seen timestamp per visitor → used for new-vs-returning split
     const firstSeen = new Map<string, string>();
@@ -509,7 +526,7 @@ const AdminDashboard = () => {
             <Button
               variant="outline"
               size="sm"
-              onClick={fetchAnalytics}
+              onClick={() => fetchAnalytics()}
               disabled={loading}
               aria-label={loading ? "Refreshing analytics" : "Refresh analytics"}
             >
@@ -584,6 +601,107 @@ const AdminDashboard = () => {
             aria-labelledby="admin-tab-overview"
             className="space-y-6"
           >
+            {/* Date range picker */}
+            <div className="p-4 rounded-xl border border-border bg-card flex flex-wrap items-end gap-3">
+              <div className="flex-1 min-w-[180px]">
+                <h2 className="text-sm font-semibold text-foreground mb-1">Date range</h2>
+                <p className="text-xs text-muted-foreground">
+                  {dateFrom || dateTo
+                    ? `Recalculating metrics for ${dateFrom ? format(dateFrom, "d MMM yyyy") : "the beginning"} → ${dateTo ? format(dateTo, "d MMM yyyy") : "now"}.`
+                    : "All-time metrics. Pick a start and/or end date to scope every metric on this tab."}
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className={cn("justify-start text-left font-normal min-w-[140px]", !dateFrom && "text-muted-foreground")}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {dateFrom ? format(dateFrom, "d MMM yyyy") : "From"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={dateFrom}
+                      onSelect={setDateFrom}
+                      disabled={(d) => (dateTo ? d > dateTo : false) || d > new Date()}
+                      initialFocus
+                      className={cn("p-3 pointer-events-auto")}
+                    />
+                  </PopoverContent>
+                </Popover>
+                <span className="text-muted-foreground text-sm">→</span>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className={cn("justify-start text-left font-normal min-w-[140px]", !dateTo && "text-muted-foreground")}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {dateTo ? format(dateTo, "d MMM yyyy") : "To"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={dateTo}
+                      onSelect={setDateTo}
+                      disabled={(d) => (dateFrom ? d < dateFrom : false) || d > new Date()}
+                      initialFocus
+                      className={cn("p-3 pointer-events-auto")}
+                    />
+                  </PopoverContent>
+                </Popover>
+                {[
+                  { label: "7d", days: 7 },
+                  { label: "30d", days: 30 },
+                  { label: "90d", days: 90 },
+                ].map(p => (
+                  <Button
+                    key={p.label}
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      const end = new Date();
+                      const start = new Date();
+                      start.setDate(end.getDate() - (p.days - 1));
+                      setDateFrom(start);
+                      setDateTo(end);
+                      fetchAnalytics(start, end);
+                    }}
+                  >
+                    {p.label}
+                  </Button>
+                ))}
+                <Button
+                  size="sm"
+                  onClick={() => fetchAnalytics()}
+                  disabled={loading}
+                >
+                  Apply
+                </Button>
+                {(dateFrom || dateTo) && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setDateFrom(undefined);
+                      setDateTo(undefined);
+                      fetchAnalytics(null, null);
+                    }}
+                  >
+                    Reset
+                  </Button>
+                )}
+              </div>
+            </div>
+
+
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="Headline statistics">
               {[
                 { label: "Total Unique Users", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500", help: "Distinct visitors ever recorded" },
