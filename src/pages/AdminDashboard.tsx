@@ -86,6 +86,7 @@ const AdminDashboard = () => {
     current_drug: string | null;
     last_error: string | null;
     created_at: string;
+    updated_at: string;
     completed_at: string | null;
   }
   interface VerificationLog {
