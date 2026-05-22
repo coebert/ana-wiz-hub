@@ -66,7 +66,7 @@ const ArterialLineDiagram = () => (
         {/* Waveform */}
         <text x="20" y="295" className="fill-foreground text-[12px] font-bold">Arterial Waveform Components</text>
         {[
-          "Systolic upstroke → peak systolic pressure → anacrotic notch (aortic valve opening artefact)",
+          "Systolic upstroke → anacrotic notch (small shoulder on the ascending limb, marking aortic valve opening) → peak systolic pressure",
           "Systolic decline → dicrotic notch (aortic valve closure) → diastolic runoff",
           "Distal arteries: systolic amplification (↑SBP, ↓DBP, preserved MAP) — due to wave reflection & resonance",
           "MAP = DBP + ⅓(SBP − DBP) — most reliable parameter, least affected by damping/site",
