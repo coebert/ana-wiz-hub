@@ -4,7 +4,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics } from "@/data/curriculum";
 import { Button } from "@/components/ui/button";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, Pill, Play, Square, CheckCircle2, AlertCircle } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, Pill, Play, Square, CheckCircle2, AlertCircle, UserPlus, Repeat, Clock, Activity, Layers } from "lucide-react";
 
 interface TopicStat {
   id: string;
@@ -17,9 +17,21 @@ interface TopicStat {
 interface Analytics {
   totalUniqueUsers: number;
   dailyUsers: number;
+  weeklyUsers: number;
+  monthlyUsers: number;
+  newUsersToday: number;
+  returningUsers: number;
+  returningPct: number;
+  avgPagesPerUser: number;
+  avgVisitsPerActiveDay: number;
+  peakHourLabel: string;
+  peakHourCount: number;
   totalVisits: number;
   todayVisits: number;
   last7Days: { date: string; count: number }[];
+  last30Days: { date: string; count: number }[];
+  hourlyToday: { hour: number; count: number }[];
+  topEntryPaths: { path: string; count: number }[];
   topTopics: TopicStat[];
   sectionBreakdown: { section: string; views: number }[];
 }
@@ -142,12 +154,15 @@ const AdminDashboard = () => {
     setLoading(true);
     const now = new Date();
     const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
 
     const { data: allVisits } = await supabase
       .from("app_visits")
       .select("visitor_id, visited_at, page_path")
       .limit(100000);
-    const uniqueVisitors = new Set(allVisits?.map(v => v.visitor_id) || []);
+    const visits = allVisits ?? [];
+    const uniqueVisitors = new Set(visits.map(v => v.visitor_id));
 
     const { data: todayData } = await supabase
       .from("app_visits")
@@ -156,13 +171,53 @@ const AdminDashboard = () => {
       .limit(100000);
     const todayUnique = new Set(todayData?.map(v => v.visitor_id) || []);
 
+    // First-seen timestamp per visitor → used for new-vs-returning split
+    const firstSeen = new Map<string, string>();
+    const visitsPerUser = new Map<string, number>();
+    const activeDaysPerUser = new Map<string, Set<string>>();
+    visits.forEach(v => {
+      const prev = firstSeen.get(v.visitor_id);
+      if (!prev || v.visited_at < prev) firstSeen.set(v.visitor_id, v.visited_at);
+      visitsPerUser.set(v.visitor_id, (visitsPerUser.get(v.visitor_id) || 0) + 1);
+      const day = v.visited_at.slice(0, 10);
+      if (!activeDaysPerUser.has(v.visitor_id)) activeDaysPerUser.set(v.visitor_id, new Set());
+      activeDaysPerUser.get(v.visitor_id)!.add(day);
+    });
+
+    const newUsersToday = Array.from(firstSeen.entries()).filter(
+      ([, ts]) => ts >= todayStart,
+    ).length;
+    const returningUsers = Array.from(visitsPerUser.values()).filter(n => n >= 2).length;
+    const returningPct = uniqueVisitors.size > 0
+      ? Math.round((returningUsers / uniqueVisitors.size) * 100)
+      : 0;
+    const avgPagesPerUser = uniqueVisitors.size > 0
+      ? visits.length / uniqueVisitors.size
+      : 0;
+    const visitsPerActiveDay: number[] = [];
+    visitsPerUser.forEach((count, uid) => {
+      const days = activeDaysPerUser.get(uid)?.size || 1;
+      visitsPerActiveDay.push(count / days);
+    });
+    const avgVisitsPerActiveDay = visitsPerActiveDay.length > 0
+      ? visitsPerActiveDay.reduce((a, b) => a + b, 0) / visitsPerActiveDay.length
+      : 0;
+
+    // 7d / 30d rolling unique
+    const weeklyUsers = new Set(
+      visits.filter(v => v.visited_at >= sevenDaysAgo).map(v => v.visitor_id),
+    ).size;
+    const monthlyUsers = new Set(
+      visits.filter(v => v.visited_at >= thirtyDaysAgo).map(v => v.visitor_id),
+    ).size;
+
     // Last 7 days
     const last7Days: { date: string; count: number }[] = [];
     for (let i = 6; i >= 0; i--) {
       const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
       const dayStart = new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString();
       const dayEnd = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1).toISOString();
-      const dayVisits = allVisits?.filter(v => v.visited_at >= dayStart && v.visited_at < dayEnd) || [];
+      const dayVisits = visits.filter(v => v.visited_at >= dayStart && v.visited_at < dayEnd);
       const dayUnique = new Set(dayVisits.map(v => v.visitor_id));
       last7Days.push({
         date: d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" }),
@@ -170,13 +225,56 @@ const AdminDashboard = () => {
       });
     }
 
+    // Last 30 days (unique users per day)
+    const last30Days: { date: string; count: number }[] = [];
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+      const dayStart = new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString();
+      const dayEnd = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1).toISOString();
+      const dayUnique = new Set(
+        visits.filter(v => v.visited_at >= dayStart && v.visited_at < dayEnd).map(v => v.visitor_id),
+      );
+      last30Days.push({
+        date: d.toLocaleDateString("en-GB", { day: "numeric", month: "short" }),
+        count: dayUnique.size,
+      });
+    }
+
+    // Hour-of-day distribution today
+    const hourlyToday: { hour: number; count: number }[] = Array.from(
+      { length: 24 },
+      (_, h) => ({ hour: h, count: 0 }),
+    );
+    visits.forEach(v => {
+      if (v.visited_at < todayStart) return;
+      const h = new Date(v.visited_at).getHours();
+      hourlyToday[h].count++;
+    });
+    const peak = hourlyToday.reduce(
+      (best, cur) => (cur.count > best.count ? cur : best),
+      { hour: 0, count: 0 },
+    );
+    const peakHourLabel = peak.count > 0
+      ? `${peak.hour.toString().padStart(2, "0")}:00`
+      : "—";
+
+    // Top entry / landing paths (non-topic, e.g. /, /curriculum, /viva)
+    const pathCounts = new Map<string, number>();
+    visits.forEach(v => {
+      if (!v.page_path) return;
+      pathCounts.set(v.page_path, (pathCounts.get(v.page_path) || 0) + 1);
+    });
+    const topEntryPaths = Array.from(pathCounts.entries())
+      .map(([path, count]) => ({ path, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 10);
+
     // Topic-level analytics
     const topicVisitMap = new Map<string, { views: number; visitors: Set<string> }>();
     const sectionViewMap = new Map<string, number>();
 
-    allVisits?.forEach(v => {
+    visits.forEach(v => {
       if (!v.page_path) return;
-      // Match topic paths like /physiology/cardiac-cycle
       const segments = v.page_path.split("/").filter(Boolean);
       if (segments.length === 2) {
         const [section, topicId] = segments;
@@ -188,7 +286,6 @@ const AdminDashboard = () => {
           const entry = topicVisitMap.get(topicId)!;
           entry.views++;
           entry.visitors.add(v.visitor_id);
-
           sectionViewMap.set(section, (sectionViewMap.get(section) || 0) + 1);
         }
       }
@@ -215,9 +312,21 @@ const AdminDashboard = () => {
     setAnalytics({
       totalUniqueUsers: uniqueVisitors.size,
       dailyUsers: todayUnique.size,
-      totalVisits: allVisits?.length || 0,
+      weeklyUsers,
+      monthlyUsers,
+      newUsersToday,
+      returningUsers,
+      returningPct,
+      avgPagesPerUser,
+      avgVisitsPerActiveDay,
+      peakHourLabel,
+      peakHourCount: peak.count,
+      totalVisits: visits.length,
       todayVisits: todayData?.length || 0,
       last7Days,
+      last30Days,
+      hourlyToday,
+      topEntryPaths,
       topTopics,
       sectionBreakdown,
     });
@@ -375,6 +484,34 @@ const AdminDashboard = () => {
               ))}
             </div>
 
+            {/* User insight tiles */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="User engagement statistics">
+              {[
+                { label: "Weekly Active", value: analytics.weeklyUsers, fmt: (v: number) => v.toLocaleString(), icon: Activity, color: "text-sky-500", help: "Distinct visitors in the last 7 days" },
+                { label: "Monthly Active", value: analytics.monthlyUsers, fmt: (v: number) => v.toLocaleString(), icon: CalendarDays, color: "text-indigo-500", help: "Distinct visitors in the last 30 days" },
+                { label: "New Today", value: analytics.newUsersToday, fmt: (v: number) => v.toLocaleString(), icon: UserPlus, color: "text-emerald-500", help: "Visitors whose first ever visit is today" },
+                { label: "Returning Users", value: analytics.returningUsers, fmt: (v: number) => `${v.toLocaleString()} (${analytics.returningPct}%)`, icon: Repeat, color: "text-amber-500", help: "Visitors with two or more visits" },
+                { label: "Avg Pages / User", value: analytics.avgPagesPerUser, fmt: (v: number) => v.toFixed(1), icon: Layers, color: "text-rose-500", help: "Total page views ÷ unique visitors" },
+                { label: "Avg Visits / Active Day", value: analytics.avgVisitsPerActiveDay, fmt: (v: number) => v.toFixed(1), icon: BarChart3, color: "text-fuchsia-500", help: "Per-user visit intensity on days they engaged" },
+                { label: "Peak Hour Today", value: analytics.peakHourCount, fmt: () => `${analytics.peakHourLabel}${analytics.peakHourCount ? ` · ${analytics.peakHourCount}` : ""}`, icon: Clock, color: "text-cyan-500", help: "Hour-of-day with the most page views today" },
+                { label: "Engagement Rate", value: analytics.totalUniqueUsers > 0 ? Math.round((analytics.weeklyUsers / analytics.totalUniqueUsers) * 100) : 0, fmt: (v: number) => `${v}%`, icon: TrendingUp, color: "text-teal-500", help: "Share of all-time users active in the last 7 days" },
+              ].map(stat => (
+                <div
+                  key={stat.label}
+                  role="listitem"
+                  className="p-4 rounded-xl border border-border bg-card"
+                  aria-label={`${stat.label}: ${stat.fmt(stat.value)}. ${stat.help}`}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <stat.icon className={`w-5 h-5 ${stat.color}`} aria-hidden="true" />
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</span>
+                  </div>
+                  <p className="text-2xl font-bold text-foreground tabular-nums" aria-hidden="true">{stat.fmt(stat.value)}</p>
+                  <p className="text-[11px] text-muted-foreground mt-1">{stat.help}</p>
+                </div>
+              ))}
+            </div>
+
             <div className="p-4 rounded-xl border border-border bg-card">
               <h2 className="text-sm font-semibold text-foreground mb-1">Unique Users — Last 7 Days</h2>
               <p className="text-xs text-muted-foreground mb-4">Distinct visitors per day</p>
@@ -396,6 +533,87 @@ const AdminDashboard = () => {
                 })}
               </div>
             </div>
+
+            {/* 30-day sparkline */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Unique Users — Last 30 Days</h2>
+              <p className="text-xs text-muted-foreground mb-3">
+                Daily distinct visitors · {analytics.monthlyUsers.toLocaleString()} unique over the period
+              </p>
+              <div className="flex items-end gap-[2px] h-24" role="img" aria-label="Bar chart of unique users per day for the last 30 days">
+                {analytics.last30Days.map(day => {
+                  const max = Math.max(...analytics.last30Days.map(d => d.count), 1);
+                  const height = (day.count / max) * 100;
+                  return (
+                    <div
+                      key={day.date}
+                      className="flex-1 bg-primary/60 rounded-t min-h-[2px] hover:bg-primary transition-colors"
+                      style={{ height: `${Math.max(height, 2)}%` }}
+                      title={`${day.date}: ${day.count} unique users`}
+                      aria-hidden="true"
+                    />
+                  );
+                })}
+              </div>
+              <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
+                <span>{analytics.last30Days[0]?.date}</span>
+                <span>{analytics.last30Days[analytics.last30Days.length - 1]?.date}</span>
+              </div>
+            </div>
+
+            {/* Hour of day */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Activity by Hour — Today</h2>
+              <p className="text-xs text-muted-foreground mb-3">
+                Page views by hour of day · peak {analytics.peakHourLabel}
+                {analytics.peakHourCount > 0 ? ` (${analytics.peakHourCount} views)` : ""}
+              </p>
+              <div className="flex items-end gap-[2px] h-24" role="img" aria-label="Bar chart of page views by hour of day for today">
+                {analytics.hourlyToday.map(h => {
+                  const max = Math.max(...analytics.hourlyToday.map(x => x.count), 1);
+                  const height = (h.count / max) * 100;
+                  const isPeak = h.count === max && h.count > 0;
+                  return (
+                    <div
+                      key={h.hour}
+                      className={`flex-1 rounded-t min-h-[2px] transition-colors ${isPeak ? "bg-primary" : "bg-primary/50"}`}
+                      style={{ height: `${Math.max(height, 2)}%` }}
+                      title={`${h.hour.toString().padStart(2, "0")}:00 — ${h.count} views`}
+                      aria-hidden="true"
+                    />
+                  );
+                })}
+              </div>
+              <div className="flex justify-between text-[10px] text-muted-foreground mt-1 tabular-nums">
+                <span>00</span><span>06</span><span>12</span><span>18</span><span>23</span>
+              </div>
+            </div>
+
+            {/* Top entry paths */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Top Pages</h2>
+              <p className="text-xs text-muted-foreground mb-3">Most visited URLs across all users</p>
+              {analytics.topEntryPaths.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No page visits recorded yet.</p>
+              ) : (
+                <ul className="space-y-2">
+                  {analytics.topEntryPaths.map(p => {
+                    const max = Math.max(...analytics.topEntryPaths.map(x => x.count), 1);
+                    const pct = (p.count / max) * 100;
+                    return (
+                      <li key={p.path} className="flex items-center gap-3" aria-label={`${p.path}: ${p.count} views`}>
+                        <span className="text-xs text-foreground flex-1 truncate font-mono">{p.path}</span>
+                        <div className="w-32 h-2 rounded bg-secondary/50 overflow-hidden" aria-hidden="true">
+                          <div className="h-full rounded bg-primary/60" style={{ width: `${Math.max(pct, 2)}%` }} />
+                        </div>
+                        <span className="text-xs font-medium text-foreground w-12 text-right tabular-nums">{p.count.toLocaleString()}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+
 
             {/* Section breakdown */}
             <div className="p-4 rounded-xl border border-border bg-card">
