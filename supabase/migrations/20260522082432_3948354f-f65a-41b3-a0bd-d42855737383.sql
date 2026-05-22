@@ -1,0 +1,1 @@
+UPDATE public.topic_audit_findings SET status='fixed', resolved_at=now(), unverifiable_reason='Transient Firecrawl scrape failure; topic source file exists and renders normally.' WHERE id IN ('b88f7002-9c7f-4700-aac1-a2a02c50dcd5','13d19966-f4bd-45ee-86cb-eddc12543642','957c4c17-fe72-4dd6-ae4d-c1e12a9a7699');
