@@ -189,7 +189,7 @@ const AdminDashboard = () => {
 
     const { data: allVisits } = await supabase
       .from("app_visits")
-      .select("visitor_id, visited_at, page_path")
+      .select("visitor_id, visited_at, page_path, country, country_name")
       .limit(100000);
     const visits = allVisits ?? [];
     const uniqueVisitors = new Set(visits.map(v => v.visitor_id));
