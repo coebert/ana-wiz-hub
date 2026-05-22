@@ -386,7 +386,7 @@ const App = () => (
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<RequireAdmin><AdminDashboard /></RequireAdmin>} />
           <Route path="/admin/audit" element={<RequireAdmin><ContentAudit /></RequireAdmin>} />
-          <Route path="/admin/esicm-validator" element={<RequireAdmin><EsicmValidator /></RequireAdmin>} />
+          <Route path="/admin/esicm-validator" element={<Navigate to="/admin/audit" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </Suspense>
