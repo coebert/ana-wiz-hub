@@ -7,6 +7,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Apply the Apfel score to estimate baseline PONV risk and stratify prophylaxis",
@@ -75,10 +76,12 @@ const AntiemeticsTopic = () => {
           <ExamSection id="apfel" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="PONV Risk Factors (Apfel Score)" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
-              Each Apfel risk factor adds approximately 20% to the baseline PONV risk: (1) female sex, (2) non-smoker, (3) history of
-              PONV or motion sickness, (4) anticipated postoperative opioids. Score 0 = 10%, 1 = 21%, 2 = 39%, 3 = 61%, 4 = 79%.
-              Surgical (laparoscopic, gynaecological, ENT, strabismus) and anaesthetic (volatiles, N₂O, neostigmine) factors further
-              increase risk.
+              The Apfel score consists of <strong>four patient-specific factors</strong>, each adding ~20% to baseline PONV risk:
+              (1) female sex, (2) non-smoker, (3) history of PONV or motion sickness, (4) anticipated postoperative opioids.
+              Score 0 = 10%, 1 = 21%, 2 = 39%, 3 = 61%, 4 = 79%<InlineRef topicId="antiemetics" refLabel="Gan et al. 2020" />.
+              Surgical (laparoscopic, gynaecological, ENT, strabismus) and anaesthetic (volatiles, N₂O, neostigmine) factors are
+              <em> independent predictors</em> of PONV but are not components of the 4-point Apfel score
+              <InlineRef topicId="antiemetics" refLabel="BJA Educ 2013" />.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
@@ -101,8 +104,8 @@ const AntiemeticsTopic = () => {
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">D₂ antagonist</td><td>Dopamine D₂</td><td>CTZ</td><td>Droperidol 0.625–1.25 mg</td><td>Sedation, extrapyramidal, ↑ QTc</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Antihistamine</td><td>H₁</td><td>Vestibular + vomiting centre</td><td>Cyclizine 50 mg</td><td>Sedation, dry mouth, tachycardia</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Anticholinergic</td><td>M₁</td><td>Vestibular + vomiting centre</td><td>Hyoscine 0.3 mg</td><td>Sedation, dry mouth, confusion (elderly)</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">NK₁ antagonist</td><td>NK₁ (substance P)</td><td>Vomiting centre</td><td>Aprepitant 80 mg PO</td><td>CYP3A4 inhibitor, headache. Long duration (24 h+)</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Corticosteroid</td><td>Multiple</td><td>Central + peripheral</td><td>Dexamethasone 4–8 mg</td><td>↑ glucose, perineal pruritus (IV push). Give at induction</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">NK₁ antagonist</td><td>NK₁ (substance P)</td><td>Vomiting centre</td><td>Aprepitant 80 mg PO</td><td>CYP3A4 inhibitor, headache. Prolonged action (t½ ~40 h)<InlineRef topicId="antiemetics" refLabel="Gan et al. 2020" /></td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Corticosteroid</td><td>Multiple (?central prostaglandin synthesis inhibition)</td><td>Central + peripheral</td><td>Dexamethasone 4–8 mg</td><td>↑ glucose, perineal pruritus (IV push). Give at induction<InlineRef topicId="antiemetics" refLabel="BJA Educ 2013" /></td></tr>
                   <tr><td className="py-2 font-medium text-foreground">Prokinetic</td><td>D₂ + 5-HT₄</td><td>CTZ + GI tract</td><td>Metoclopramide 10 mg</td><td>Extrapyramidal (young women), ↑ LOS tone. Weak antiemetic</td></tr>
                 </tbody>
               </table>

@@ -329,9 +329,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2016", citation: "Garg R. Mechanical ventilators. BJA Education. 2016;16(6):186-192.", url: "https://doi.org/10.1093/bjaed/mkv066" },
   ],
   "vasoactive-agents": [
-    { label: "BJA Educ 2019", citation: "Smith S, Scarth E, Sasada M. Drugs in Anaesthesia and Intensive Care. 5th ed. Oxford University Press; 2016. Vasoactive section." },
+    { label: "BJA Educ 2019", citation: "Bersten AD, Soni N. Pharmacology of vasopressors and inotropes. BJA Education. 2019.", url: "https://bjanaesthesia.org.uk/article/S2058-5349(19)30113-1/fulltext" },
     { label: "Peck & Hill Ch.11", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 11: Sympathomimetic and Vasopressor Drugs." },
     { label: "BJA Educ 2004", citation: "Bangash MN, Kong ML, Pearse RM. Use of inotropes and vasopressor agents in critically ill patients. Br J Pharmacol. 2012;165(4):973-988.", url: "https://doi.org/10.1111/j.1476-5381.2011.01588.x" },
+    { label: "SSC 2021", citation: "Evans L, Rhodes A, Alhazzani W, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med. 2021;49(11):e1063-e1143.", url: "https://www.sccm.org/getattachment/25139d89-4a49-4723-9118-e421e4284693/Surviving-Sepsis-Campaign-International-Guidelines-for-Management-of-Sepsis-and-Septic-Shock-2021" },
   ],
   "antiarrhythmics": [
     { label: "BJA Educ 2015", citation: "Sampson KJ, Bhatt D. Antiarrhythmic drugs. BJA Education. 2015;15(5):268-274.", url: "https://doi.org/10.1093/bjaceaccp/mku058" },
