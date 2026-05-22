@@ -140,13 +140,15 @@ const LaserFibreopticsTopic = () => {
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 <strong>Airway fire</strong> is the most feared complication of airway laser surgery. The CO₂ laser can ignite
-                standard PVC or rubber endotracheal tubes. Prevention — as set out in the Association of Anaesthetists / DAS
-                shared-airway guidance and the published airway-fire algorithm — requires: laser-safe tubes (metal shaft, e.g.,
-                Laser-Flex); delivery of the <strong>lowest clinically appropriate FiO₂</strong> to maintain adequate oxygenation
-                (in practice usually ≤30%); avoiding N₂O (supports combustion); filling the cuff with saline (± methylene blue
-                dye as a leak indicator); and protecting the cuff with wet pledgets. Should ignition occur, follow the published
-                drill: stop ventilation and disconnect O₂, remove the burning tube, flood the field with saline, then mask-
-                ventilate, re-intubate and perform bronchoscopy to assess thermal injury.
+                standard PVC or rubber endotracheal tubes. Prevention — as set out in the Association of Anaesthetists 2023
+                guideline <em>Management of complications of airway management</em> — requires: laser-resistant tubes (metal
+                shaft, e.g. Laser-Flex); the <strong>lowest clinically appropriate FiO₂</strong>, titrated to SpO₂ (commonly
+                ≤ 0.30 when tolerated); avoidance of N₂O (acts as an oxidiser at laser temperatures); a saline-filled cuff
+                (± methylene blue as a leak indicator); and saline-soaked pledgets around the cuff. If ignition occurs, the
+                guideline drill is: <strong>(1)</strong> simultaneously stop the airway gases and remove the burning tracheal
+                tube; <strong>(2)</strong> extinguish the fire with saline; <strong>(3)</strong> re-establish ventilation with
+                air, titrating FiO₂ upward only as needed; <strong>(4)</strong> re-intubate and perform bronchoscopy to assess
+                thermal and inhalational injury.
               </p>
               <p>
                 <strong>Eye protection</strong> is mandatory for all theatre personnel. The goggles must be specific to the laser
