@@ -399,6 +399,7 @@ const AdminDashboard = () => {
       topEntryPaths,
       topTopics,
       sectionBreakdown,
+      retentionCohorts,
     });
     setLoading(false);
   };
