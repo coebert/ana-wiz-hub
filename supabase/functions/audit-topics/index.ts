@@ -116,44 +116,64 @@ function backoffDelayMs(attempt: number) {
 }
 
 /**
+ * Per-attempt diagnostic record. Surfaced via stages.scrape_diagnostics so
+ * operators can see exactly why a topic failed to retrieve (URL tried, HTTP
+ * status, retry count, error snippet, wall-clock duration).
+ */
+export type AttemptRecord = {
+  url?: string;
+  attempt: number;
+  status: number;
+  duration_ms: number;
+  ok: boolean;
+  error?: string;
+};
+
+/**
  * Run `op` up to `maxAttempts` times, retrying on transient failures.
- * Each attempt is bounded by the remaining budget; if the budget would be
- * exhausted before the next attempt could meaningfully run, we stop early.
- *
- * `op` receives the per-attempt timeout it should pass to fetch.
- * It should return { ok, status, value } — `ok=false` with a retryable
- * status triggers a retry; otherwise the last value is returned.
+ * Returns `{ value, attempts }` so the caller can record diagnostics
+ * (URL, status, retries, error snippet, duration) for observability.
  */
 async function retryWithBackoff<T>(
   label: string,
   totalBudgetMs: number,
   maxAttempts: number,
-  op: (attemptTimeoutMs: number, attempt: number) => Promise<{ ok: boolean; status: number; value: T | null; error?: string }>,
-): Promise<T | null> {
+  op: (attemptTimeoutMs: number, attempt: number) => Promise<{ ok: boolean; status: number; value: T | null; error?: string; url?: string }>,
+): Promise<{ value: T | null; attempts: AttemptRecord[] }> {
   const startedAt = Date.now();
   let lastValue: T | null = null;
+  const attempts: AttemptRecord[] = [];
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     const elapsed = Date.now() - startedAt;
     const remaining = totalBudgetMs - elapsed;
     if (remaining < 4_000) {
       console.warn(`[audit-topics] ${label} retry aborted: budget exhausted (remaining=${remaining}ms)`);
+      attempts.push({ attempt: attempt + 1, status: 0, duration_ms: 0, ok: false, error: `budget exhausted (remaining=${remaining}ms)` });
       break;
     }
-    // Reserve some headroom for a possible follow-up attempt + backoff sleep.
     const attemptsLeft = maxAttempts - attempt;
     const attemptTimeout = attemptsLeft > 1
       ? Math.max(6_000, Math.floor(remaining / attemptsLeft))
       : remaining;
 
-    let result: { ok: boolean; status: number; value: T | null; error?: string };
+    const attemptStart = Date.now();
+    let result: { ok: boolean; status: number; value: T | null; error?: string; url?: string };
     try {
       result = await op(attemptTimeout, attempt);
     } catch (e) {
-      // Network/abort errors come through as exceptions — treat as retryable.
       result = { ok: false, status: 0, value: null, error: (e as Error).message };
     }
+    const duration = Date.now() - attemptStart;
+    attempts.push({
+      url: result.url,
+      attempt: attempt + 1,
+      status: result.status,
+      duration_ms: duration,
+      ok: result.ok,
+      error: result.error,
+    });
     lastValue = result.value ?? lastValue;
-    if (result.ok) return result.value;
+    if (result.ok) return { value: result.value, attempts };
 
     if (!isRetryableStatus(result.status) || attempt === maxAttempts - 1) {
       if (!result.ok) {
@@ -177,7 +197,7 @@ async function retryWithBackoff<T>(
     );
     await new Promise((resolve) => setTimeout(resolve, delay));
   }
-  return lastValue;
+  return { value: lastValue, attempts };
 }
 
 function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
@@ -202,22 +222,41 @@ function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
   };
 }
 
+export type ScrapeDiagnostics = {
+  primary_url: string;
+  final_url?: string;
+  attempts: AttemptRecord[];
+  last_status: number;
+  last_error?: string;
+  retry_count: number;
+  total_duration_ms: number;
+};
+
+export type ScrapeResult = {
+  data: any | null;
+  diagnostics: ScrapeDiagnostics;
+};
+
 async function firecrawlScrape(
   url: string,
   withScreenshot: boolean,
   timeoutMs = 35_000,
-) {
+): Promise<ScrapeResult> {
   // Always request html as well — we use it to extract SVG label text for the
   // per-diagram audit pass. Markdown alone strips <svg><text> nodes.
   const formats: any[] = ["markdown", "html"];
   if (withScreenshot) formats.push("screenshot");
+
+  const startedAtTotal = Date.now();
+  const allAttempts: AttemptRecord[] = [];
+  let finalUrl: string | undefined;
 
   const scrape = async (
     targetUrl: string,
     budgetMs: number,
     actions?: unknown[],
   ) => {
-    return await retryWithBackoff<any>(
+    const { value, attempts } = await retryWithBackoff<any>(
       `scrape ${targetUrl}`,
       budgetMs,
       3,
@@ -244,18 +283,35 @@ async function firecrawlScrape(
         );
         const data = r.json as any;
         const value = data?.data ?? data;
-        // Treat "no usable content" as a transient failure so we get another
-        // shot before giving up on the topic entirely.
         const markdownLen = String(value?.markdown ?? "").length;
         const usable = r.ok && markdownLen >= 200;
         return {
           ok: usable,
           status: r.ok && !usable ? 502 : r.status,
           value,
-          error: r.ok ? (usable ? undefined : "empty markdown") : r.text?.slice(0, 200),
+          url: targetUrl,
+          error: r.ok
+            ? (usable ? undefined : `empty markdown (got ${markdownLen} chars)`)
+            : r.text?.slice(0, 200),
         };
       },
     );
+    allAttempts.push(...attempts);
+    finalUrl = targetUrl;
+    return value;
+  };
+
+  const buildDiagnostics = (): ScrapeDiagnostics => {
+    const last = allAttempts[allAttempts.length - 1];
+    return {
+      primary_url: url,
+      final_url: finalUrl,
+      attempts: allAttempts,
+      last_status: last?.status ?? 0,
+      last_error: last?.error,
+      retry_count: Math.max(0, allAttempts.length - 1),
+      total_duration_ms: Date.now() - startedAtTotal,
+    };
   };
 
   try {
@@ -263,23 +319,35 @@ async function firecrawlScrape(
     const directBudget = Math.max(12_000, Math.floor(timeoutMs * 0.55));
     const direct = await scrape(url, directBudget);
     const directMarkdown = String(direct?.markdown ?? "");
-    if (directMarkdown.length >= 200) return direct;
+    if (directMarkdown.length >= 200) {
+      return { data: direct, diagnostics: buildDiagnostics() };
+    }
 
     const { sectionUrl, actions } = buildTopicScrapeActions(url, withScreenshot);
     const elapsed = Date.now() - startedAt;
     const remaining = timeoutMs - elapsed;
-    if (remaining < 10_000) return direct;
+    if (remaining < 10_000) {
+      return { data: direct, diagnostics: buildDiagnostics() };
+    }
 
     const viaSection = await scrape(sectionUrl, remaining, actions);
     const sectionMarkdown = String(viaSection?.markdown ?? "");
-    return sectionMarkdown.length >= 200 ? viaSection : direct;
-  } catch (_e) {
-    return null;
+    const data = sectionMarkdown.length >= 200 ? viaSection : direct;
+    return { data, diagnostics: buildDiagnostics() };
+  } catch (e) {
+    allAttempts.push({
+      attempt: allAttempts.length + 1,
+      status: 0,
+      duration_ms: 0,
+      ok: false,
+      error: `unexpected: ${(e as Error).message}`,
+    });
+    return { data: null, diagnostics: buildDiagnostics() };
   }
 }
 
 async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
-  const results = await retryWithBackoff<any[]>(
+  const { value } = await retryWithBackoff<any[]>(
     `search "${query.slice(0, 60)}"`,
     timeoutMs,
     2,
@@ -306,7 +374,7 @@ async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
       return { ok: r.ok, status: r.status, value, error: r.ok ? undefined : r.text?.slice(0, 200) };
     },
   );
-  return results ?? [];
+  return value ?? [];
 }
 
 
@@ -544,6 +612,9 @@ type Stages = {
   diagram_error?: string;
   diagram_label_error?: string;
   scrape_error?: string;
+  scrape_diagnostics?: ScrapeDiagnostics;
+  scrape_last_status?: number;
+  scrape_retry_count?: number;
 };
 
 async function auditTopic(
@@ -569,12 +640,15 @@ async function auditTopic(
 
   // 1. Scrape current topic page (markdown + html + screenshot)
   let page: any = null;
+  let scrapeDiagnostics: ScrapeDiagnostics | undefined;
   try {
-    page = await firecrawlScrape(
+    const result = await firecrawlScrape(
       topic.url,
       true,
       Math.min(35_000, Math.max(12_000, remainingBudget() - 25_000)),
     );
+    page = result.data;
+    scrapeDiagnostics = result.diagnostics;
   } catch (e) {
     stages.scrape_error = (e as Error).message;
   }
@@ -584,17 +658,56 @@ async function auditTopic(
   stages.page_chars = pageMarkdown.length;
   stages.screenshot = Boolean(screenshot);
   stages.scrape_ok = pageMarkdown.length >= 200;
+  if (scrapeDiagnostics) {
+    stages.scrape_diagnostics = scrapeDiagnostics;
+    stages.scrape_last_status = scrapeDiagnostics.last_status;
+    stages.scrape_retry_count = scrapeDiagnostics.retry_count;
+    if (!stages.scrape_ok && !stages.scrape_error) {
+      stages.scrape_error = scrapeDiagnostics.last_error
+        ?? `last_status=${scrapeDiagnostics.last_status}`;
+    }
+    // Always log a one-line summary so failures are visible in edge logs even
+    // when the job row diagnostics are not surfaced in the UI yet.
+    console.log(
+      `[audit-topics] scrape ${topic.id} url=${scrapeDiagnostics.primary_url} ` +
+      `ok=${stages.scrape_ok} chars=${pageMarkdown.length} ` +
+      `attempts=${scrapeDiagnostics.attempts.length} ` +
+      `retries=${scrapeDiagnostics.retry_count} ` +
+      `last_status=${scrapeDiagnostics.last_status} ` +
+      `duration=${scrapeDiagnostics.total_duration_ms}ms` +
+      (scrapeDiagnostics.last_error ? ` last_error="${scrapeDiagnostics.last_error}"` : ""),
+    );
+  }
 
   if (!pageMarkdown || pageMarkdown.length < 200) {
+    const diagLines = scrapeDiagnostics
+      ? [
+          `Primary URL: ${scrapeDiagnostics.primary_url}`,
+          scrapeDiagnostics.final_url && scrapeDiagnostics.final_url !== scrapeDiagnostics.primary_url
+            ? `Final URL tried: ${scrapeDiagnostics.final_url}`
+            : null,
+          `Last HTTP status: ${scrapeDiagnostics.last_status}`,
+          `Attempts: ${scrapeDiagnostics.attempts.length} (retries: ${scrapeDiagnostics.retry_count})`,
+          `Total duration: ${scrapeDiagnostics.total_duration_ms}ms`,
+          scrapeDiagnostics.last_error ? `Last error: ${scrapeDiagnostics.last_error}` : null,
+          "Per-attempt breakdown:",
+          ...scrapeDiagnostics.attempts.map((a) =>
+            `  • attempt ${a.attempt}${a.url ? ` ${a.url}` : ""} → status=${a.status} ${a.ok ? "ok" : "fail"} (${a.duration_ms}ms)` +
+            (a.error ? ` — ${a.error}` : ""),
+          ),
+        ].filter(Boolean).join("\n")
+      : `No diagnostics available. Error: ${stages.scrape_error ?? "unknown"}`;
+
     const f = {
       severity: "major",
       category: "missing",
       summary: "Topic page could not be retrieved for audit",
-      details: `Firecrawl returned no usable content for ${topic.url}`,
+      details: `Firecrawl returned no usable content for ${topic.url}.\n\n${diagLines}`,
       sources: [{ title: "Topic URL", url: topic.url }],
     };
     return { findings: [f], stages };
   }
+
 
   // 2. Search reputable sources (BJA Education first)
   const queryBJA = `site:bjaeducation.org ${topic.title}`;
