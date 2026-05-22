@@ -29,6 +29,7 @@ import {
   Wifi,
   WifiOff,
 } from "lucide-react";
+import { sectionAnchorId } from "@/lib/sectionAnchor";
 
 import { toast } from "sonner";
 
@@ -61,6 +62,7 @@ type Finding = {
   suggested_fix: string | null;
   sources: { title: string; url: string }[];
   diagram_ref: string | null;
+  in_topic_section: string | null;
   status: "open" | "acknowledged" | "fixed" | "dismissed";
   created_at: string;
 };
@@ -391,6 +393,8 @@ const ContentAudit = () => {
     const lines: string[] = [];
     lines.push(`- **[${f.severity.toUpperCase()} · ${f.category}]** ${f.summary}`);
     if (f.section) lines.push(`  - Section: ${f.section}`);
+    if (f.in_topic_section)
+      lines.push(`  - In-page section: ${f.in_topic_section}`);
     if (f.diagram_ref) lines.push(`  - Diagram: \`${f.diagram_ref}\``);
     if (f.details) lines.push(`  - Details: ${f.details}`);
     if (f.suggested_fix) lines.push(`  - **Suggested fix:** ${f.suggested_fix}`);
@@ -1101,6 +1105,18 @@ const ContentAudit = () => {
                               className="text-xs text-primary hover:underline inline-flex items-center gap-1"
                             >
                               {f.topic_title}
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                          {f.topic_url && f.in_topic_section && (
+                            <a
+                              href={`${f.topic_url}#${sectionAnchorId(f.in_topic_section)}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary hover:bg-primary/20 inline-flex items-center gap-1"
+                              title={`Open topic and scroll to "${f.in_topic_section}"`}
+                            >
+                              Jump to: {f.in_topic_section}
                               <ExternalLink className="w-3 h-3" />
                             </a>
                           )}

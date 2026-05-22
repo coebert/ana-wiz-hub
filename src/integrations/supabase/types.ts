@@ -341,6 +341,7 @@ export type Database = {
           details: string | null
           diagram_ref: string | null
           id: string
+          in_topic_section: string | null
           job_id: string
           resolved_at: string | null
           resolved_by: string | null
@@ -361,6 +362,7 @@ export type Database = {
           details?: string | null
           diagram_ref?: string | null
           id?: string
+          in_topic_section?: string | null
           job_id: string
           resolved_at?: string | null
           resolved_by?: string | null
@@ -381,6 +383,7 @@ export type Database = {
           details?: string | null
           diagram_ref?: string | null
           id?: string
+          in_topic_section?: string | null
           job_id?: string
           resolved_at?: string | null
           resolved_by?: string | null

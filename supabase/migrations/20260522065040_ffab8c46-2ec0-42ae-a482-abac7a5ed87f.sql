@@ -1,0 +1,1 @@
+ALTER TABLE public.topic_audit_findings ADD COLUMN IF NOT EXISTS in_topic_section text;

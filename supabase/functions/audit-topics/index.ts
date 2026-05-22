@@ -244,6 +244,11 @@ const FINDING_TOOL = {
               summary: { type: "string" },
               details: { type: "string" },
               suggested_fix: { type: "string" },
+              in_topic_section: {
+                type: "string",
+                description:
+                  "Verbatim heading of the in-page section / CollapsibleSubsection the finding refers to (e.g. 'Inguinal Canal', 'Pharmacokinetics'). Use the closest visible <h2>/<h3> heading above the offending passage. Empty string only if no section heading applies.",
+              },
               sources: {
                 type: "array",
                 items: {
@@ -831,6 +836,10 @@ async function runBatch(jobId: string) {
             suggested_fix: f.suggested_fix ?? null,
             sources: f.sources ?? [],
             diagram_ref: f.diagram_ref ?? null,
+            in_topic_section:
+              typeof f.in_topic_section === "string" && f.in_topic_section.trim()
+                ? f.in_topic_section.trim().slice(0, 200)
+                : null,
           }));
           const { error } = await supa
             .from("topic_audit_findings")
