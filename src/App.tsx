@@ -21,7 +21,6 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ContentAudit from "./pages/ContentAudit";
 // Standalone ESICM validator + formulary tab are now unified into Content Audit
 // at /admin/audit. The legacy route below redirects there for back-compat.
-import { Navigate } from "react-router-dom";
 const TopicMap = lazy(() => import("./pages/TopicMap"));
 const ProgressTracker = lazy(() => import("./pages/ProgressTracker"));
 const PodcastsLibrary = lazy(() => import("./pages/PodcastsLibrary"));
