@@ -245,7 +245,7 @@ const PortalFirstPassDiagram = () => {
               className="fill-foreground font-semibold">Hepatic portal v.</text>
             <text x={295} y={310} fontSize="8"
               transform="rotate(-38, 295, 310)"
-              className="fill-muted-foreground italic">~75% liver inflow · deoxygenated, nutrient-rich</text>
+              className="fill-muted-foreground italic">~75% liver inflow · partially deoxygenated, nutrient-rich</text>
   
             {/* ===== Hepatic artery (proper) — companion to portal triad ===== */}
             <path d="M 470 130 Q 430 170 360 220"
