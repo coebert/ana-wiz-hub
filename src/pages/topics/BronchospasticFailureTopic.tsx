@@ -400,7 +400,7 @@ const BronchospasticFailureTopic = () => {
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Monitoring for Hyperinflation</h3>
           <div className="space-y-2 mb-4">
             {[
-              { label: "Plateau Pressure (Pplat)", detail: "Aim <30 cmH₂O. Reflects alveolar pressure at end-inspiration. High Pplat suggests hyperinflation or lung injury risk." },
+              { label: "Plateau Pressure (Pplat)", detail: <>Aim &lt;30 cmH₂O<InlineRef topicId="bronchospastic-failure" refLabel="BJA Educ Asthma 2017" />. Reflects alveolar pressure at end-inspiration. High Pplat suggests hyperinflation or lung injury risk.</> },
               { label: "Auto-PEEP (Intrinsic PEEP)", detail: "Measured by end-expiratory hold. If >10–15 cmH₂O, gas trapping is significant — reduce RR, increase expiratory time, or disconnect briefly." },
               { label: "Expiratory Flow Waveform", detail: "If flow does not return to zero before the next inspiration, gas trapping is occurring. The most immediate bedside indicator." },
               { label: "VEI (End-Inspiratory Volume)", detail: "Total volume above FRC — measured by collecting all exhaled gas during apnoea. Target <20 ml/kg to avoid haemodynamic compromise." },
