@@ -52,7 +52,7 @@ const SIUnitsDiagram = () => (
             <text x="430" y={226 + i * 26} textAnchor="middle" className="fill-muted-foreground text-[9.5px]">{d.use}</text>
           </g>
         ))}
-        <text x="300" y="410" textAnchor="middle" className="fill-foreground text-[10px] font-semibold">1 atm = 101.3 kPa = 760 mmHg = 1013 cmH₂O = 14.7 psi</text>
+        <text x="300" y="410" textAnchor="middle" className="fill-foreground text-[10px] font-semibold">1 atm = 101.3 kPa = 760 mmHg ≈ 1033 cmH₂O = 14.7 psi</text>
       </svg>
     </div>
   </div>
