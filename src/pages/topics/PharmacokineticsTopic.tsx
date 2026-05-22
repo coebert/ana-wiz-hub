@@ -165,7 +165,7 @@ const PharmacokineticsTopic = () => {
               <p className="font-semibold text-foreground">Step-by-step reasoning</p>
               <ol className="list-decimal list-inside space-y-1">
                 <li>Target offset: minutes after infusion stop, regardless of duration.</li>
-                <li>Fentanyl CSHT after 6 h ≈ 200 min; remifentanil CSHT ~3–4 min (constant).</li>
+                <li>Fentanyl CSHT after 6 h ≈ 250 min (rising to ~280 min by 8 h); remifentanil CSHT ~3–4 min (constant).</li>
                 <li>Choose <strong>remifentanil</strong> for predictable rapid offset enabled by ester hydrolysis (independent of organ function).</li>
                 <li>Plan multimodal analgesia (paracetamol, regional, long-acting opioid bridge before stopping) to avoid acute hyperalgesia.</li>
               </ol>
