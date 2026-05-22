@@ -8,6 +8,7 @@ import NIBPOscillometricDiagram from "@/components/diagrams/NIBPOscillometricDia
 import AuscultatoryNIBPDiagram from "@/components/diagrams/AuscultatoryNIBPDiagram";
 import NIBPvsArterialDiagram from "@/components/diagrams/NIBPvsArterialDiagram";
 import ManometerDiagram from "@/components/diagrams/ManometerDiagram";
+import DampingCurvesDiagram from "@/components/diagrams/DampingCurvesDiagram";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -160,6 +161,7 @@ const PressureMeasurementTopic = () => {
                 underestimates diastolic. Mean arterial pressure is least affected by damping artefact.
               </p>
             </div>
+            <DampingCurvesDiagram />
             </CollapsibleSubsection>
           </ExamSection>
 
