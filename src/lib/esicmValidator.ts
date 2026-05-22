@@ -84,7 +84,9 @@ const CMP = "(?:[≥≤><~]\\s*)?";
 
 const buildDoseRegex = (): RegExp => {
   const units = UNIT_ALTERNATIVES.map((u) => u.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
-  return new RegExp(`${CMP}${NUM}\\s*(${units})`, "gi");
+  // Unit must NOT be followed by another letter (so "h" in "Haemodynamics"
+  // is not treated as the hour unit).
+  return new RegExp(`${CMP}${NUM}\\s*(${units})(?![a-z])`, "gi");
 };
 
 const DOSE_RX = buildDoseRegex();
