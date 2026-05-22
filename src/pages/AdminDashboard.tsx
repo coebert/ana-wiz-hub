@@ -559,20 +559,12 @@ const AdminDashboard = () => {
               variant="outline"
               size="sm"
               onClick={() => navigate("/admin/audit")}
-              aria-label="Open content accuracy audit"
+              aria-label="Open content accuracy audit (includes formulary verification and ESICM dose validator)"
             >
               <CheckCircle2 className="w-4 h-4 mr-1" aria-hidden="true" />
               Content Audit
             </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => navigate("/admin/esicm-validator")}
-              aria-label="Open ESICM dose validator"
-            >
-              <CheckCircle2 className="w-4 h-4 mr-1" aria-hidden="true" />
-              ESICM Validator
-            </Button>
+
             <Button
               variant="outline"
               size="sm"
