@@ -84,14 +84,38 @@ const stages: Stage[] = [
   },
 ];
 
-export const TURPSyndromeDiagram = () => {
+export interface TURPSyndromeDiagramProps {
+  /** Switch anatomical labels for the gynaecological / hysteroscopy context (uterine vasculature instead of prostatic sinuses). */
+  context?: "turp" | "hysteroscopy";
+}
+
+export const TURPSyndromeDiagram = ({ context = "turp" }: TURPSyndromeDiagramProps = {}) => {
   const [selected, setSelected] = useState<StageKey>("absorption");
-  const current = stages.find((s) => s.key === selected)!;
+  const isHyst = context === "hysteroscopy";
+  const contextStages: Stage[] = isHyst
+    ? stages.map((s) =>
+        s.key === "absorption"
+          ? {
+              ...s,
+              title: "Open uterine venous sinuses",
+              detail:
+                "Operative hysteroscopy (resection of fibroids, endometrial ablation) exposes uterine venous sinuses → systemic absorption of distension fluid. Risk rises with intrauterine pressure >100 mmHg, resection time, uterine perforation, and large vascular fibroids.",
+            }
+          : s
+      )
+    : stages;
+  const current = contextStages.find((s) => s.key === selected)!;
 
   // Node positions in viewBox 600x340
   const nodes: Record<StageKey, { x: number; y: number; w: number; h: number; label: string }> = {
     irrigant: { x: 30, y: 30, w: 170, h: 56, label: "Glycine 1.5%\n(hypotonic)" },
-    absorption: { x: 220, y: 30, w: 170, h: 56, label: "Prostatic venous\nsinuses" },
+    absorption: {
+      x: 220,
+      y: 30,
+      w: 170,
+      h: 56,
+      label: isHyst ? "Uterine venous\nsinuses" : "Prostatic venous\nsinuses",
+    },
     dilution: { x: 410, y: 30, w: 170, h: 56, label: "↓ Na⁺ + volume\noverload" },
     cns: { x: 30, y: 140, w: 170, h: 56, label: "CNS — confusion,\nseizures, coma" },
     cv: { x: 220, y: 140, w: 170, h: 56, label: "CV — HTN → collapse,\npulmonary oedema" },
