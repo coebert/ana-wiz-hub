@@ -954,7 +954,9 @@ const AdminDashboard = () => {
                       </Button>
                     </>
                   )}
+                </div>
               </div>
+
 
               {job && (
                 <div className="mt-4 space-y-3">
