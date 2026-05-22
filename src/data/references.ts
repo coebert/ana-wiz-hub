@@ -88,7 +88,7 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "temperature-measurement": [
     { label: "BJA Educ 2014", citation: "Bindu B, Bindra A, Rath G. Temperature management under general anesthesia. Anesth Essays Res. 2017;11(2):306-316.", url: "https://doi.org/10.4103/aer.AER_123_16" },
-    { label: "NICE NG125", citation: "National Institute for Health and Care Excellence. Perioperative care in adults (NG125). 2020.", url: "https://www.nice.org.uk/guidance/ng125", excerpt: "Maintain the patient's temperature at 36.5°C or above from induction of anaesthesia until discharge from the recovery room, unless actively cooling the patient is part of the procedure (e.g. cardiac surgery)." },
+    { label: "NICE NG125", citation: "National Institute for Health and Care Excellence. Perioperative care in adults (NG125). 2020.", url: "https://www.nice.org.uk/guidance/ng125", excerpt: "Measure and document the patient's temperature before induction of anaesthesia and then every 30 minutes until the end of surgery. Maintain the patient's temperature at 36.5°C or above from induction of anaesthesia until discharge from the recovery room, unless actively cooling the patient is part of the procedure (e.g. cardiac surgery). Continuous temperature monitoring should be used intraoperatively whenever general or regional anaesthesia is given for procedures expected to last longer than 30 minutes." },
     { label: "Cross & Plunkett Ch.11", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 11: Temperature and Its Measurement." },
   ],
   "humidity-gas-sampling": [
