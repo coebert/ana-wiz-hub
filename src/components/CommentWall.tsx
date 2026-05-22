@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Star, Loader2, MessageCircle, Send } from "lucide-react";
+import { Star, Loader2, MessageCircle, Send, Trash2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useAuth } from "@/hooks/useAuth";
 
 type Review = {
   id: string;
@@ -9,6 +10,9 @@ type Review = {
   rating: number;
   comment: string;
   created_at: string;
+  status: string;
+  deleted_reason: string | null;
+  deleted_at: string | null;
 };
 
 const Stars = ({
@@ -29,9 +33,7 @@ const Stars = ({
           <Star
             style={{ width: size, height: size }}
             className={
-              filled
-                ? "fill-primary text-primary"
-                : "text-muted-foreground/40"
+              filled ? "fill-primary text-primary" : "text-muted-foreground/40"
             }
           />
         );
@@ -54,6 +56,7 @@ const Stars = ({
 };
 
 export const CommentWall = () => {
+  const { isAdmin } = useAuth();
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
@@ -61,13 +64,16 @@ export const CommentWall = () => {
   const [rating, setRating] = useState(0);
   const [website, setWebsite] = useState(""); // honeypot
   const [sending, setSending] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const load = async () => {
     setLoading(true);
     const { data, error } = await supabase
       .from("reviews")
-      .select("id, author_name, rating, comment, created_at")
-      .eq("status", "approved")
+      .select(
+        "id, author_name, rating, comment, created_at, status, deleted_reason, deleted_at",
+      )
+      .in("status", ["approved", "deleted"])
       .order("created_at", { ascending: false })
       .limit(50);
     if (!error && data) setReviews(data as Review[]);
@@ -78,9 +84,11 @@ export const CommentWall = () => {
     load();
   }, []);
 
+  const approvedReviews = reviews.filter((r) => r.status === "approved");
   const avg =
-    reviews.length > 0
-      ? reviews.reduce((s, r) => s + r.rating, 0) / reviews.length
+    approvedReviews.length > 0
+      ? approvedReviews.reduce((s, r) => s + r.rating, 0) /
+        approvedReviews.length
       : 0;
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -103,10 +111,7 @@ export const CommentWall = () => {
       setComment("");
       setRating(0);
       setWebsite("");
-      // Optimistically prepend
-      const newReview = (data as any)?.review as Review | undefined;
-      if (newReview) setReviews((prev) => [newReview, ...prev]);
-      else load();
+      load();
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Could not post review.";
       toast.error(msg);
@@ -115,11 +120,51 @@ export const CommentWall = () => {
     }
   };
 
+  const handleDelete = async (review: Review) => {
+    const reason = window.prompt(
+      `Reason for deleting this review by ${review.author_name}?\n\nThis will be shown publicly in place of the original review.`,
+      "Offensive content",
+    );
+    if (reason === null) return; // cancelled
+    const trimmed = reason.trim();
+    if (trimmed.length < 3) {
+      toast.error("Please provide a deletion reason (3+ characters).");
+      return;
+    }
+    setDeletingId(review.id);
+    try {
+      const { error } = await supabase
+        .from("reviews")
+        .update({
+          status: "deleted",
+          deleted_reason: trimmed.slice(0, 300),
+          deleted_at: new Date().toISOString(),
+        })
+        .eq("id", review.id);
+      if (error) throw error;
+      toast.success("Review removed.");
+      setReviews((prev) =>
+        prev.map((r) =>
+          r.id === review.id
+            ? {
+                ...r,
+                status: "deleted",
+                deleted_reason: trimmed.slice(0, 300),
+                deleted_at: new Date().toISOString(),
+              }
+            : r,
+        ),
+      );
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Could not delete.";
+      toast.error(msg);
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
   return (
-    <section
-      id="reviews"
-      className="container mx-auto px-4 pb-12 scroll-mt-20"
-    >
+    <section id="reviews" className="container mx-auto px-4 pb-12 scroll-mt-20">
       <div className="max-w-5xl mx-auto rounded-xl border border-border bg-card p-6 md:p-8">
         <div className="flex items-start gap-3 mb-5">
           <MessageCircle className="h-5 w-5 text-primary shrink-0 mt-0.5" />
@@ -132,12 +177,12 @@ export const CommentWall = () => {
               positive or negative — is welcome. Offensive content is
               automatically blocked.
             </p>
-            {reviews.length > 0 && (
+            {approvedReviews.length > 0 && (
               <div className="flex items-center gap-2 mt-3">
                 <Stars value={Math.round(avg)} size={16} />
                 <span className="text-xs text-muted-foreground">
-                  {avg.toFixed(1)} / 5 · {reviews.length} review
-                  {reviews.length === 1 ? "" : "s"}
+                  {avg.toFixed(1)} / 5 · {approvedReviews.length} review
+                  {approvedReviews.length === 1 ? "" : "s"}
                 </span>
               </div>
             )}
@@ -240,34 +285,80 @@ export const CommentWall = () => {
           </p>
         ) : (
           <ul className="space-y-4">
-            {reviews.map((r) => (
-              <li
-                key={r.id}
-                className="rounded-lg border border-border bg-background/50 p-4"
-              >
-                <div className="flex items-center justify-between gap-3 mb-2">
-                  <div className="flex items-center gap-2 min-w-0">
-                    <span className="font-medium text-sm text-foreground truncate">
-                      {r.author_name}
-                    </span>
-                    <Stars value={r.rating} size={14} />
+            {reviews.map((r) => {
+              const isDeleted = r.status === "deleted";
+              return (
+                <li
+                  key={r.id}
+                  className={`rounded-lg border p-4 ${
+                    isDeleted
+                      ? "border-dashed border-border bg-muted/40"
+                      : "border-border bg-background/50"
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-3 mb-2">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span
+                        className={`font-medium text-sm truncate ${
+                          isDeleted
+                            ? "text-muted-foreground italic"
+                            : "text-foreground"
+                        }`}
+                      >
+                        {r.author_name}
+                      </span>
+                      {!isDeleted && <Stars value={r.rating} size={14} />}
+                    </div>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <time
+                        className="text-[11px] text-muted-foreground"
+                        dateTime={r.created_at}
+                      >
+                        {new Date(r.created_at).toLocaleDateString(undefined, {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </time>
+                      {isAdmin && !isDeleted && (
+                        <button
+                          type="button"
+                          onClick={() => handleDelete(r)}
+                          disabled={deletingId === r.id}
+                          className="p-1 rounded text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors disabled:opacity-50"
+                          aria-label="Delete review"
+                          title="Delete review (admin)"
+                        >
+                          {deletingId === r.id ? (
+                            <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                          ) : (
+                            <Trash2 className="h-3.5 w-3.5" />
+                          )}
+                        </button>
+                      )}
+                    </div>
                   </div>
-                  <time
-                    className="text-[11px] text-muted-foreground shrink-0"
-                    dateTime={r.created_at}
-                  >
-                    {new Date(r.created_at).toLocaleDateString(undefined, {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </time>
-                </div>
-                <p className="text-sm text-foreground/90 whitespace-pre-wrap leading-relaxed">
-                  {r.comment}
-                </p>
-              </li>
-            ))}
+
+                  {isDeleted ? (
+                    <p className="text-sm text-muted-foreground italic leading-relaxed">
+                      <span className="font-medium not-italic text-foreground/70">
+                        Review removed by admin
+                      </span>
+                      {r.deleted_reason ? (
+                        <>
+                          {" — "}
+                          <span>{r.deleted_reason}</span>
+                        </>
+                      ) : null}
+                    </p>
+                  ) : (
+                    <p className="text-sm text-foreground/90 whitespace-pre-wrap leading-relaxed">
+                      {r.comment}
+                    </p>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>
