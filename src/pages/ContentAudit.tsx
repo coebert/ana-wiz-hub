@@ -699,7 +699,7 @@ const ContentAudit = () => {
               </h1>
               <p className="text-xs text-muted-foreground">
                 Cross-checks topics against BJA Education, RCoA, FICM, ICS,
-                NICE, BNF and Resuscitation Council UK. Runs weekly.
+                NICE, BNF, ESICM and Resuscitation Council UK. Runs weekly.
               </p>
             </div>
           </div>
