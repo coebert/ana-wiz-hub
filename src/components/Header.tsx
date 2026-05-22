@@ -139,10 +139,13 @@ export const Header = () => {
               <span className="hidden xl:inline">Support</span>
             </a>
 
-            <UnitPreferenceMenu />
-            <ReduceMotionToggle />
+            <div className="hidden sm:block">
+              <UnitPreferenceMenu />
+            </div>
+            <div className="hidden sm:block">
+              <ReduceMotionToggle />
+            </div>
             <ThemeToggle />
-
 
             <button
               onClick={() => setSearchOpen(true)}
@@ -154,27 +157,27 @@ export const Header = () => {
                 ⌘K
               </kbd>
             </button>
-
-            {/* Mobile nav — horizontally scrollable so icons never clip on narrow phones */}
-            <nav className="flex md:hidden items-center gap-0.5 overflow-x-auto max-w-[55vw] -mr-1">
-              {navItems.map((item) => {
-                const isActive = location.pathname.startsWith(item.path);
-                return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    aria-label={item.label}
-                    className={`p-1.5 rounded-lg transition-colors shrink-0 ${
-                      isActive ? "bg-secondary" : "hover:bg-muted"
-                    }`}
-                  >
-                    <item.icon className={`h-4 w-4 ${isActive ? item.color : "text-muted-foreground"}`} />
-                  </Link>
-                );
-              })}
-            </nav>
           </div>
         </div>
+
+        {/* Mobile nav — full-width horizontally scrollable row below the main header bar */}
+        <nav className="flex md:hidden items-center gap-0.5 overflow-x-auto px-3 pb-2">
+          {navItems.map((item) => {
+            const isActive = location.pathname.startsWith(item.path);
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                aria-label={item.label}
+                className={`p-1.5 rounded-lg transition-colors shrink-0 ${
+                  isActive ? "bg-secondary" : "hover:bg-muted"
+                }`}
+              >
+                <item.icon className={`h-4 w-4 ${isActive ? item.color : "text-muted-foreground"}`} />
+              </Link>
+            );
+          })}
+        </nav>
 
         {/* Mobile exam filter — pill chips with consistent padding & whitespace-nowrap so labels never clip */}
         <div className="flex sm:hidden items-center gap-1 px-3 pb-2 overflow-x-auto">
