@@ -1,21 +1,23 @@
 // Auto-verify drug monographs against open reference sources using Lovable AI.
-// Sources prioritised: eMC SPCs (medicines.org.uk), NICE BNF public pages
-// (bnf.nice.org.uk), AAGBI/ICS/RCoA guidelines.
 //
-// Triggered by an admin from the AdminDashboard. Runs in background via
-// EdgeRuntime.waitUntil so the HTTP response returns immediately.
+// Runs in chunks so the worker never hits the edge-function wall-time limit:
+// each invocation processes up to CHUNK_SIZE drugs (skipping those already
+// logged for this job), then re-invokes itself for the next chunk until done.
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+    "authorization, x-client-info, apikey, content-type, x-internal-token",
 };
 
 const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+const CHUNK_SIZE = 15;             // drugs processed per invocation
+const STALL_MS = 3 * 60 * 1000;    // a "running" job idle this long is stalled
 
 const FIELDS = [
   "indication_oneliner",
@@ -97,33 +99,42 @@ async function callAI(drug: DrugRow): Promise<Partial<Record<Field, string>>> {
     current_fields: Object.fromEntries(FIELDS.map((f) => [f, drug[f]])),
   };
 
-  const res = await fetch(
-    "https://ai.gateway.lovable.dev/v1/chat/completions",
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          {
-            role: "user",
-            content:
-              "Verify and correct this monograph against eMC SPC, NICE BNF, and AAGBI/ICS/RCoA guidelines. Return ONLY the tool call.\n\n" +
-              JSON.stringify(userPayload, null, 2),
-          },
-        ],
-        tools: [tool],
-        tool_choice: {
-          type: "function",
-          function: { name: "emit_corrected_monograph" },
+  // Per-request timeout so a hung upstream doesn't burn the whole chunk budget.
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 45_000);
+  let res: Response;
+  try {
+    res = await fetch(
+      "https://ai.gateway.lovable.dev/v1/chat/completions",
+      {
+        method: "POST",
+        signal: ctrl.signal,
+        headers: {
+          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          "Content-Type": "application/json",
         },
-      }),
-    },
-  );
+        body: JSON.stringify({
+          model: "google/gemini-2.5-flash",
+          messages: [
+            { role: "system", content: SYSTEM_PROMPT },
+            {
+              role: "user",
+              content:
+                "Verify and correct this monograph against eMC SPC, NICE BNF, and AAGBI/ICS/RCoA guidelines. Return ONLY the tool call.\n\n" +
+                JSON.stringify(userPayload, null, 2),
+            },
+          ],
+          tools: [tool],
+          tool_choice: {
+            type: "function",
+            function: { name: "emit_corrected_monograph" },
+          },
+        }),
+      },
+    );
+  } finally {
+    clearTimeout(t);
+  }
 
   if (!res.ok) {
     const body = await res.text();
@@ -137,37 +148,93 @@ async function callAI(drug: DrugRow): Promise<Partial<Record<Field, string>>> {
   return JSON.parse(call.function.arguments);
 }
 
-async function processJob(jobId: string) {
+async function scheduleContinuation(jobId: string) {
+  // Fire-and-forget self-invocation. Bypasses user auth via internal token.
+  const url = `${SUPABASE_URL}/functions/v1/verify-drugs`;
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+        apikey: SUPABASE_SERVICE_ROLE_KEY,
+        "x-internal-token": SUPABASE_SERVICE_ROLE_KEY,
+      },
+      body: JSON.stringify({ action: "continue", jobId }),
+    });
+  } catch (e) {
+    console.error("Failed to schedule continuation:", e);
+  }
+}
+
+async function processChunk(jobId: string) {
   const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
+  // Make sure the job is marked running and reflects total once.
   const { data: drugs, error: drugsErr } = await admin
     .from("drugs")
-    .select(
-      "slug,name,drug_class,synonyms," + FIELDS.join(","),
-    )
+    .select("slug,name,drug_class,synonyms," + FIELDS.join(","))
     .order("name");
   if (drugsErr) throw drugsErr;
 
+  const total = drugs!.length;
+
+  // Which drugs already have a log entry for this job?
+  const { data: logged } = await admin
+    .from("drug_verification_log")
+    .select("drug_slug")
+    .eq("job_id", jobId);
+  const doneSlugs = new Set((logged ?? []).map((r) => r.drug_slug as string));
+
+  // Refresh job state, bail if cancelled.
+  const { data: jobRow } = await admin
+    .from("drug_verification_jobs")
+    .select("status,succeeded,failed")
+    .eq("id", jobId)
+    .single();
+  if (!jobRow) return;
+  if (jobRow.status === "cancelled" || jobRow.status === "completed") return;
+
+  let succeeded = jobRow.succeeded ?? 0;
+  let failed = jobRow.failed ?? 0;
+
   await admin
     .from("drug_verification_jobs")
-    .update({ status: "running", total: drugs!.length, updated_at: new Date().toISOString() })
+    .update({
+      status: "running",
+      total,
+      processed: doneSlugs.size,
+      updated_at: new Date().toISOString(),
+    })
     .eq("id", jobId);
 
-  let processed = 0;
-  let succeeded = 0;
-  let failed = 0;
+  const remaining = (drugs as DrugRow[]).filter((d) => !doneSlugs.has(d.slug));
 
-  for (const drug of drugs as DrugRow[]) {
-    // Check for cancellation
-    const { data: jobRow } = await admin
+  if (remaining.length === 0) {
+    await admin
+      .from("drug_verification_jobs")
+      .update({
+        status: "completed",
+        processed: total,
+        current_drug: null,
+        completed_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", jobId);
+    return;
+  }
+
+  const chunk = remaining.slice(0, CHUNK_SIZE);
+  let processed = doneSlugs.size;
+
+  for (const drug of chunk) {
+    // Periodic cancellation check.
+    const { data: jr } = await admin
       .from("drug_verification_jobs")
       .select("status")
       .eq("id", jobId)
       .single();
-    if (jobRow?.status === "cancelled") {
-      console.log("Job cancelled by user");
-      return;
-    }
+    if (jr?.status === "cancelled") return;
 
     await admin
       .from("drug_verification_jobs")
@@ -226,30 +293,55 @@ async function processJob(jobId: string) {
         .update({ last_error: `${drug.name}: ${msg.slice(0, 200)}` })
         .eq("id", jobId);
       failed++;
-
-      // Back off on rate limits
       if (msg.includes("429")) {
-        await new Promise((r) => setTimeout(r, 15000));
+        await new Promise((r) => setTimeout(r, 8000));
       }
     }
 
     processed++;
-    // small spacing between requests to ease rate limits
-    await new Promise((r) => setTimeout(r, 800));
+    await new Promise((r) => setTimeout(r, 400));
   }
 
+  // Persist counters before continuation.
   await admin
     .from("drug_verification_jobs")
     .update({
-      status: "completed",
       processed,
       succeeded,
       failed,
-      current_drug: null,
-      completed_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     })
     .eq("id", jobId);
+
+  if (processed >= total) {
+    await admin
+      .from("drug_verification_jobs")
+      .update({
+        status: "completed",
+        current_drug: null,
+        completed_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", jobId);
+    return;
+  }
+
+  // Hand off to the next chunk.
+  await scheduleContinuation(jobId);
+}
+
+async function clearStalledJobs(admin: ReturnType<typeof createClient>) {
+  const cutoff = new Date(Date.now() - STALL_MS).toISOString();
+  await admin
+    .from("drug_verification_jobs")
+    .update({
+      status: "failed",
+      last_error: "Stalled (no heartbeat) — auto-cleared",
+      completed_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    })
+    .in("status", ["pending", "running"])
+    .lt("updated_at", cutoff);
 }
 
 Deno.serve(async (req) => {
@@ -258,6 +350,29 @@ Deno.serve(async (req) => {
   }
 
   try {
+    const body = await req.json().catch(() => ({}));
+    const action = body.action ?? "start";
+    const internalToken = req.headers.get("x-internal-token");
+    const isInternal = !!internalToken && internalToken === SUPABASE_SERVICE_ROLE_KEY;
+    const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+
+    // Internal continuation: run a chunk in the background and return immediately.
+    if (action === "continue" && isInternal) {
+      const { jobId } = body;
+      if (!jobId) {
+        return new Response(JSON.stringify({ error: "Missing jobId" }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      // @ts-ignore EdgeRuntime provided by Supabase
+      EdgeRuntime.waitUntil(processChunk(jobId).catch((e) => console.error("chunk err", e)));
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // All user-facing actions need an admin auth token.
     const authHeader = req.headers.get("Authorization");
     if (!authHeader) {
       return new Response(JSON.stringify({ error: "Missing auth" }), {
@@ -265,7 +380,6 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
-
     const userClient = createClient(SUPABASE_URL, Deno.env.get("SUPABASE_ANON_KEY")!, {
       global: { headers: { Authorization: authHeader } },
     });
@@ -276,8 +390,6 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
-
-    const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
     const { data: roleRow } = await admin
       .from("user_roles")
       .select("role")
@@ -291,21 +403,49 @@ Deno.serve(async (req) => {
       });
     }
 
-    const body = await req.json().catch(() => ({}));
-    const action = body.action ?? "start";
-
     if (action === "cancel") {
       const { jobId } = body;
       await admin
         .from("drug_verification_jobs")
-        .update({ status: "cancelled", updated_at: new Date().toISOString() })
+        .update({
+          status: "cancelled",
+          completed_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        })
         .eq("id", jobId);
       return new Response(JSON.stringify({ ok: true }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    // Refuse to start a new one if another is running
+    if (action === "resume") {
+      // Find the most recent non-terminal job; if it's stalled, re-kick it.
+      const { data: jobs } = await admin
+        .from("drug_verification_jobs")
+        .select("id,status,updated_at")
+        .in("status", ["pending", "running"])
+        .order("created_at", { ascending: false })
+        .limit(1);
+      const j = jobs?.[0];
+      if (!j) {
+        return new Response(JSON.stringify({ error: "No resumable job" }), {
+          status: 404,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      await admin
+        .from("drug_verification_jobs")
+        .update({ updated_at: new Date().toISOString(), last_error: null })
+        .eq("id", j.id);
+      await scheduleContinuation(j.id);
+      return new Response(JSON.stringify({ jobId: j.id, resumed: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // action === "start"
+    await clearStalledJobs(admin);
+
     const { data: running } = await admin
       .from("drug_verification_jobs")
       .select("id")
@@ -324,8 +464,7 @@ Deno.serve(async (req) => {
       .single();
     if (jobErr) throw jobErr;
 
-    // @ts-ignore EdgeRuntime is provided by Supabase
-    EdgeRuntime.waitUntil(processJob(job.id));
+    await scheduleContinuation(job.id);
 
     return new Response(JSON.stringify({ jobId: job.id }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
