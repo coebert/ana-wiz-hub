@@ -5,6 +5,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import HumidityGasSamplingDiagram from "@/components/diagrams/HumidityGasSamplingDiagram";
 import HygrometersDiagram from "@/components/diagrams/HygrometersDiagram";
 import { GasSamplingSiteDiagram } from "@/components/diagrams/GasSamplingSiteDiagram";
+import ParamagneticO2Diagram from "@/components/diagrams/ParamagneticO2Diagram";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { humidityGasSamplingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
