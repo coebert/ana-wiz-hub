@@ -80,103 +80,10 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"overview" | "topics">("overview");
 
-  // Formulary verification state
-  interface VerificationJob {
-    id: string;
-    status: string;
-    total: number;
-    processed: number;
-    succeeded: number;
-    failed: number;
-    current_drug: string | null;
-    last_error: string | null;
-    created_at: string;
-    updated_at: string;
-    completed_at: string | null;
-  }
-  interface VerificationLog {
-    id: string;
-    drug_name: string;
-    drug_slug: string;
-    status: string;
-    fields_changed: string[];
-    error: string | null;
-    created_at: string;
-  }
-  const [job, setJob] = useState<VerificationJob | null>(null);
-  const [logs, setLogs] = useState<VerificationLog[]>([]);
-  const [starting, setStarting] = useState(false);
+  // Formulary verification + ESICM dose validator have moved to the unified
+  // Content Audit page at /admin/audit so that all topic-accuracy checks are
+  // started, monitored, and reviewed from one place.
 
-  const fetchJob = async () => {
-    const { data: jobs } = await supabase
-      .from("drug_verification_jobs")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(1);
-    const j = (jobs?.[0] as VerificationJob | undefined) ?? null;
-    setJob(j);
-    if (j) {
-      const { data: logRows } = await supabase
-        .from("drug_verification_log")
-        .select("*")
-        .eq("job_id", j.id)
-        .order("created_at", { ascending: false })
-        .limit(50);
-      setLogs((logRows ?? []) as VerificationLog[]);
-    }
-  };
-
-  useEffect(() => {
-    if (activeTab !== "formulary") return;
-    fetchJob();
-    const interval = setInterval(fetchJob, 3000);
-    return () => clearInterval(interval);
-  }, [activeTab]);
-
-  const startVerification = async () => {
-    setStarting(true);
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      const { data, error } = await supabase.functions.invoke("verify-drugs", {
-        body: { action: "start" },
-        headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
-      });
-      if (error) throw error;
-      if (data?.error) throw new Error(data.error);
-      await fetchJob();
-    } catch (e) {
-      alert(`Could not start: ${e instanceof Error ? e.message : "Unknown error"}`);
-    } finally {
-      setStarting(false);
-    }
-  };
-
-  const cancelVerification = async () => {
-    if (!job) return;
-    if (!confirm("Cancel the running verification job?")) return;
-    const { data: { session } } = await supabase.auth.getSession();
-    await supabase.functions.invoke("verify-drugs", {
-      body: { action: "cancel", jobId: job.id },
-      headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
-    });
-    await fetchJob();
-  };
-
-  const resumeVerification = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    const { data, error } = await supabase.functions.invoke("verify-drugs", {
-      body: { action: "resume" },
-      headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
-    });
-    if (error || data?.error) {
-      alert(`Could not resume: ${error?.message ?? data?.error ?? "Unknown"}`);
-    }
-    await fetchJob();
-  };
-
-  const isStalled = !!job
-    && ["pending", "running"].includes(job.status)
-    && Date.now() - new Date(job.updated_at).getTime() > 90_000;
 
   useEffect(() => {
     if (!authLoading && (!user || !isAdmin)) {
