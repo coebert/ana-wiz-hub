@@ -101,6 +101,85 @@ async function fetchJsonWithTimeout<T = any>(
 
 
 // ---------- Firecrawl helpers ----------
+// Transient HTTP statuses that warrant a retry. Everything else (4xx auth/
+// validation errors) is treated as terminal so we don't burn the budget.
+const RETRYABLE_STATUSES = new Set([408, 425, 429, 500, 502, 503, 504]);
+
+function isRetryableStatus(status: number) {
+  return status === 0 || RETRYABLE_STATUSES.has(status);
+}
+
+// Exponential backoff with jitter: 600ms, 1500ms, 3000ms (capped).
+function backoffDelayMs(attempt: number) {
+  const base = Math.min(3000, 600 * Math.pow(2, attempt));
+  return Math.round(base * (0.7 + Math.random() * 0.6));
+}
+
+/**
+ * Run `op` up to `maxAttempts` times, retrying on transient failures.
+ * Each attempt is bounded by the remaining budget; if the budget would be
+ * exhausted before the next attempt could meaningfully run, we stop early.
+ *
+ * `op` receives the per-attempt timeout it should pass to fetch.
+ * It should return { ok, status, value } — `ok=false` with a retryable
+ * status triggers a retry; otherwise the last value is returned.
+ */
+async function retryWithBackoff<T>(
+  label: string,
+  totalBudgetMs: number,
+  maxAttempts: number,
+  op: (attemptTimeoutMs: number, attempt: number) => Promise<{ ok: boolean; status: number; value: T | null; error?: string }>,
+): Promise<T | null> {
+  const startedAt = Date.now();
+  let lastValue: T | null = null;
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    const elapsed = Date.now() - startedAt;
+    const remaining = totalBudgetMs - elapsed;
+    if (remaining < 4_000) {
+      console.warn(`[audit-topics] ${label} retry aborted: budget exhausted (remaining=${remaining}ms)`);
+      break;
+    }
+    // Reserve some headroom for a possible follow-up attempt + backoff sleep.
+    const attemptsLeft = maxAttempts - attempt;
+    const attemptTimeout = attemptsLeft > 1
+      ? Math.max(6_000, Math.floor(remaining / attemptsLeft))
+      : remaining;
+
+    let result: { ok: boolean; status: number; value: T | null; error?: string };
+    try {
+      result = await op(attemptTimeout, attempt);
+    } catch (e) {
+      // Network/abort errors come through as exceptions — treat as retryable.
+      result = { ok: false, status: 0, value: null, error: (e as Error).message };
+    }
+    lastValue = result.value ?? lastValue;
+    if (result.ok) return result.value;
+
+    if (!isRetryableStatus(result.status) || attempt === maxAttempts - 1) {
+      if (!result.ok) {
+        console.warn(
+          `[audit-topics] ${label} failed attempt ${attempt + 1}/${maxAttempts} ` +
+          `status=${result.status} ${result.error ?? ""} (no more retries)`,
+        );
+      }
+      break;
+    }
+
+    const delay = backoffDelayMs(attempt);
+    const remainingAfter = totalBudgetMs - (Date.now() - startedAt);
+    if (remainingAfter - delay < 6_000) {
+      console.warn(`[audit-topics] ${label} skipping retry: not enough budget after backoff`);
+      break;
+    }
+    console.warn(
+      `[audit-topics] ${label} transient failure status=${result.status} ` +
+      `attempt=${attempt + 1}/${maxAttempts} — retrying in ${delay}ms`,
+    );
+    await new Promise((resolve) => setTimeout(resolve, delay));
+  }
+  return lastValue;
+}
+
 function buildTopicScrapeActions(url: string, withScreenshot: boolean) {
   const parsed = new URL(url);
   const pathParts = parsed.pathname.split("/").filter(Boolean);
@@ -135,32 +214,48 @@ async function firecrawlScrape(
 
   const scrape = async (
     targetUrl: string,
-    requestTimeoutMs: number,
+    budgetMs: number,
     actions?: unknown[],
   ) => {
-    const r = await fetchJsonWithTimeout(
-      "https://api.firecrawl.dev/v2/scrape",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          url: targetUrl,
-          formats,
-          onlyMainContent: true,
-          waitFor: actions ? 1200 : 8000,
-          timeout: Math.max(8_000, requestTimeoutMs - 3_000),
-          actions,
-          storeInCache: false,
-        }),
+    return await retryWithBackoff<any>(
+      `scrape ${targetUrl}`,
+      budgetMs,
+      3,
+      async (attemptTimeoutMs) => {
+        const r = await fetchJsonWithTimeout(
+          "https://api.firecrawl.dev/v2/scrape",
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              url: targetUrl,
+              formats,
+              onlyMainContent: true,
+              waitFor: actions ? 1200 : 8000,
+              timeout: Math.max(8_000, attemptTimeoutMs - 3_000),
+              actions,
+              storeInCache: false,
+            }),
+          },
+          attemptTimeoutMs,
+        );
+        const data = r.json as any;
+        const value = data?.data ?? data;
+        // Treat "no usable content" as a transient failure so we get another
+        // shot before giving up on the topic entirely.
+        const markdownLen = String(value?.markdown ?? "").length;
+        const usable = r.ok && markdownLen >= 200;
+        return {
+          ok: usable,
+          status: r.ok && !usable ? 502 : r.status,
+          value,
+          error: r.ok ? (usable ? undefined : "empty markdown") : r.text?.slice(0, 200),
+        };
       },
-      requestTimeoutMs,
     );
-    if (!r.ok) return null;
-    const data = r.json as any;
-    return data?.data ?? data;
   };
 
   try {
@@ -184,31 +279,37 @@ async function firecrawlScrape(
 }
 
 async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
-  try {
-    const r = await fetchJsonWithTimeout(
-      "https://api.firecrawl.dev/v2/search",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
-          "Content-Type": "application/json",
+  const results = await retryWithBackoff<any[]>(
+    `search "${query.slice(0, 60)}"`,
+    timeoutMs,
+    2,
+    async (attemptTimeoutMs) => {
+      const r = await fetchJsonWithTimeout(
+        "https://api.firecrawl.dev/v2/search",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query,
+            limit,
+            scrapeOptions: { formats: ["markdown"] },
+          }),
         },
-        body: JSON.stringify({
-          query,
-          limit,
-          scrapeOptions: { formats: ["markdown"] },
-        }),
-      },
-      timeoutMs,
-    );
-    if (!r.ok) return [];
-    const data = r.json as any;
-    const results = data?.data ?? data?.web ?? [];
-    return Array.isArray(results) ? results : [];
-  } catch (_e) {
-    return [];
-  }
+        attemptTimeoutMs,
+      );
+      const data = r.json as any;
+      const list = data?.data ?? data?.web ?? [];
+      const value = Array.isArray(list) ? list : [];
+      return { ok: r.ok, status: r.status, value, error: r.ok ? undefined : r.text?.slice(0, 200) };
+    },
+  );
+  return results ?? [];
 }
+
+
 
 
 // ---------- AI helpers ----------
