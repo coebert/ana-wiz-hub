@@ -64,7 +64,7 @@ const scenarios: Record<Highlight, Scenario> = {
 const levelStyles = {
   low: { color: "hsl(220 60% 55%)", label: "↓ low", bg: "bg-blue-500/10 border-blue-500/30 text-blue-500" },
   suppressed: { color: "hsl(220 70% 45%)", label: "↓↓ suppressed", bg: "bg-blue-600/15 border-blue-600/40 text-blue-600" },
-  normal: { color: "hsl(var(--muted-foreground))", label: "→ normal", bg: "bg-secondary/40 border-border text-muted-foreground" },
+  normal: { color: "hsl(var(--muted-foreground))", label: "= normal", bg: "bg-secondary/40 border-border text-muted-foreground" },
   high: { color: "hsl(25 85% 55%)", label: "↑ high", bg: "bg-amber-500/10 border-amber-500/30 text-amber-500" },
   "very-high": { color: "hsl(0 70% 55%)", label: "↑↑ very high", bg: "bg-red-500/10 border-red-500/30 text-red-500" },
 };
