@@ -393,6 +393,8 @@ const ContentAudit = () => {
     const lines: string[] = [];
     lines.push(`- **[${f.severity.toUpperCase()} · ${f.category}]** ${f.summary}`);
     if (f.section) lines.push(`  - Section: ${f.section}`);
+    if (f.in_topic_section)
+      lines.push(`  - In-page section: ${f.in_topic_section}`);
     if (f.diagram_ref) lines.push(`  - Diagram: \`${f.diagram_ref}\``);
     if (f.details) lines.push(`  - Details: ${f.details}`);
     if (f.suggested_fix) lines.push(`  - **Suggested fix:** ${f.suggested_fix}`);
