@@ -626,7 +626,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "DAS Awake Tracheal Intubation 2020", citation: "DAS Awake Tracheal Intubation 2020." },
   ],
   "antimicrobials-icu": [
-    { label: "SSC 2021 Antimicrobials", citation: "Evans L et al. Surviving Sepsis Campaign 2021. Section: Antimicrobial Therapy.", url: "https://doi.org/10.1097/CCM.0000000000005337" },
+    { label: "SSC 2021 Antimicrobials", citation: "Evans L et al. Surviving Sepsis Campaign 2021. Section: Antimicrobial Therapy.", url: "https://doi.org/10.1097/CCM.0000000000005337", excerpt: "For adults with possible septic shock or a high likelihood for sepsis, we recommend administering antimicrobials immediately, ideally within 1 h of recognition. For adults with possible sepsis without shock, if concern for infection persists, we recommend administering antimicrobials within 3 h. We recommend empirical broad-spectrum therapy with one or more agents to cover all likely pathogens. We recommend daily assessment for de-escalation." },
     { label: "BJA Educ 2016", citation: "Rawson TM et al. Antimicrobials in the ICU. BJA Education. 2016;16(12):417-421.", url: "https://doi.org/10.1093/bjaed/mkw024" },
     { label: "NICE NG51", citation: "NICE. Sepsis: recognition, diagnosis and early management (NG51). 2016 (updated 2017).", url: "https://www.nice.org.uk/guidance/ng51" },
   ],
