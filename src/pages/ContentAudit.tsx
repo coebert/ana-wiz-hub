@@ -732,11 +732,37 @@ const ContentAudit = () => {
           <CardContent className="space-y-3">
             <div className="flex flex-wrap gap-2">
               <Button
+                onClick={async () => {
+                  await startAudit("all");
+                  try {
+                    const { data: { session } } = await supabase.auth.getSession();
+                    const { data, error } = await supabase.functions.invoke("verify-drugs", {
+                      body: { action: "start" },
+                      headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
+                    });
+                    if (error) throw error;
+                    if ((data as any)?.error) throw new Error((data as any).error);
+                    toast.success("Formulary verification started in background");
+                  } catch (e: any) {
+                    // Audit was already started; just surface the verify-drugs problem.
+                    toast.error(
+                      `Topic audit started, but formulary verification failed to start: ${e?.message ?? "Unknown error"}`,
+                    );
+                  }
+                }}
+                disabled={starting || running}
+                variant="default"
+              >
+                <Sparkles className="w-4 h-4 mr-1" />
+                Run all checks
+              </Button>
+              <Button
                 onClick={() => startAudit("all")}
                 disabled={starting || running}
+                variant="outline"
               >
                 <Play className="w-4 h-4 mr-1" />
-                Audit all topics ({allTopics.filter((t) => t.available).length})
+                Audit topics only ({allTopics.filter((t) => t.available).length})
               </Button>
               <Select
                 onValueChange={(v) => startAudit("section", v)}
@@ -756,10 +782,15 @@ const ContentAudit = () => {
               {running && (
                 <Button variant="destructive" onClick={cancelAudit}>
                   <Square className="w-4 h-4 mr-1" />
-                  Cancel
+                  Cancel topic audit
                 </Button>
               )}
             </div>
+            <p className="text-xs text-muted-foreground">
+              <strong>Run all checks</strong> kicks off the topic audit, the formulary verification,
+              and re-runs the ESICM dose validator below — one click to verify everything.
+            </p>
+
 
             {job && (
               <div className="rounded-md border border-border p-3 space-y-2 text-sm">
