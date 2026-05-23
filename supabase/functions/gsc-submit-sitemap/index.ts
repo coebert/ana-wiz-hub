@@ -108,7 +108,7 @@ Deno.serve(async (req) => {
     const message = error instanceof Error ? error.message : 'Unknown error'
     console.error('gsc-submit-sitemap error:', message)
     return new Response(
-      JSON.stringify({ ok: false, site: SITE_URL, sitemapUrl: SITEMAP_URL, error: message }),
+      JSON.stringify({ ok: false, site: SITE_URL, sitemapUrl: SITEMAP_URL, error: 'Sitemap submission failed' }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 },
     )
   }
