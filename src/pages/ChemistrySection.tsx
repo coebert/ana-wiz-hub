@@ -14,20 +14,23 @@ const ChemistrySection = () => {
 
   return (
     <SectionLayout
-      title="Chemistry Foundations"
-      subtitle="Essential chemistry principles for anaesthetists — no prior A-level chemistry required"
+      title="Anaesthesia Chemistry Explained"
+      subtitle="Anaesthesia chemistry explained — foundational chemistry for FRCA trainees with no A-level chemistry required."
+      metaDescription="Anaesthesia chemistry explained for FRCA trainees: atoms, bonding, acids and bases, equilibria, gases and organic chemistry — foundational concepts that underpin anaesthetic pharmacology, physiology and physics, with no A-level chemistry required."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-chemistry"
     >
-      <div className="bg-secondary/30 rounded-xl p-4 border border-border mb-6">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          This section covers the foundational chemistry concepts that underpin anaesthetic pharmacology, 
-          physiology, and physics. It is designed for trainees who may not have studied chemistry at A-level, 
-          providing a clear and accessible introduction to the key principles you'll encounter throughout 
-          the FRCA curriculum.
+      <section className="mb-6 p-5 rounded-lg border border-border bg-card/50">
+        <p className="text-sm text-foreground leading-relaxed">
+          <strong>Anaesthesia chemistry explained.</strong> Foundational
+          chemistry concepts that underpin anaesthetic pharmacology, physiology
+          and physics — atoms and bonding, acids and bases, equilibria, gases
+          and basic organic chemistry. Designed for FRCA trainees without
+          A-level chemistry, with clear notes, diagrams and worked examples so
+          downstream pharmacology and physics topics make sense.
         </p>
-      </div>
+      </section>
       <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">
         <ProgressRing completed={progress.completed} total={progress.total} size={48} />
         <div>
