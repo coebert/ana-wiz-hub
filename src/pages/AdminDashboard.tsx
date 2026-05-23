@@ -920,6 +920,7 @@ const AdminDashboard = () => {
                       {analytics.topCountries.map(c => (
                         <tr key={c.country} className="border-b border-border/50">
                           <td className="py-2 pr-3 text-foreground">
+                            <span aria-hidden className="text-base leading-none mr-2">{countryFlag(c.country)}</span>
                             <span className="font-mono text-muted-foreground mr-2">{c.country}</span>
                             {c.countryName}
                           </td>
