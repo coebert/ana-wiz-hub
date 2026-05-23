@@ -53,6 +53,11 @@ interface Analytics {
   last7Days: { date: string; count: number }[];
   last30Days: { date: string; count: number }[];
   hourlyToday: { hour: number; count: number }[];
+  // All visit timestamps in the current dashboard range — used to recompute
+  // the hour-of-day chart for any sub-window the user picks.
+  visitTimestamps: string[];
+  rangeStart: string | null;
+  rangeEnd: string | null;
   topEntryPaths: { path: string; count: number }[];
   topUsers: { visitorId: string; visits: number; activeDays: number; firstSeen: string; lastSeen: string; country: string | null; countryName: string | null; trafficSource: TrafficSource | null }[];
   topCountries: { country: string; countryName: string; users: number; visits: number }[];
@@ -507,6 +512,9 @@ const AdminDashboard = () => {
       last7Days,
       last30Days,
       hourlyToday,
+      visitTimestamps: visits.map(v => v.visited_at),
+      rangeStart: rangeStartIso,
+      rangeEnd: rangeEndIso,
       topEntryPaths,
       topTopics,
       sectionBreakdown,
@@ -860,33 +868,9 @@ const AdminDashboard = () => {
               </div>
             </div>
 
-            {/* Hour of day */}
-            <div className="p-4 rounded-xl border border-border bg-card">
-              <h2 className="text-sm font-semibold text-foreground mb-1">Activity by Hour — Today</h2>
-              <p className="text-xs text-muted-foreground mb-3">
-                Page views by hour of day · peak {analytics.peakHourLabel}
-                {analytics.peakHourCount > 0 ? ` (${analytics.peakHourCount} views)` : ""}
-              </p>
-              <div className="flex items-end gap-[2px] h-24" role="img" aria-label="Bar chart of page views by hour of day for today">
-                {analytics.hourlyToday.map(h => {
-                  const max = Math.max(...analytics.hourlyToday.map(x => x.count), 1);
-                  const height = (h.count / max) * 100;
-                  const isPeak = h.count === max && h.count > 0;
-                  return (
-                    <div
-                      key={h.hour}
-                      className={`flex-1 rounded-t min-h-[2px] transition-colors ${isPeak ? "bg-primary" : "bg-primary/50"}`}
-                      style={{ height: `${Math.max(height, 2)}%` }}
-                      title={`${h.hour.toString().padStart(2, "0")}:00 — ${h.count} views`}
-                      aria-hidden="true"
-                    />
-                  );
-                })}
-              </div>
-              <div className="flex justify-between text-[10px] text-muted-foreground mt-1 tabular-nums">
-                <span>00</span><span>06</span><span>12</span><span>18</span><span>23</span>
-              </div>
-            </div>
+            {/* Hour of day — configurable window */}
+            <HourActivityCard analytics={analytics} />
+
 
             {/* Top entry paths */}
             <div className="p-4 rounded-xl border border-border bg-card">
@@ -1262,6 +1246,175 @@ const AdminDashboard = () => {
 
         </main>
       </div>
+    </div>
+  );
+};
+
+type HourRangeMode = "today" | "yesterday" | "last7" | "last30" | "all" | "specific";
+
+const HOUR_RANGE_PRESETS: { mode: HourRangeMode; label: string; help: string }[] = [
+  { mode: "today",     label: "Today",       help: "Page views by hour for today only." },
+  { mode: "yesterday", label: "Yesterday",   help: "Page views by hour for yesterday." },
+  { mode: "last7",     label: "Last 7 days", help: "Hour-of-day distribution over the past 7 days." },
+  { mode: "last30",    label: "Last 30 days",help: "Hour-of-day distribution over the past 30 days." },
+  { mode: "all",       label: "All loaded",  help: "All visits within the dashboard date range above." },
+  { mode: "specific",  label: "Specific day",help: "Pick a single day to inspect." },
+];
+
+const HourActivityCard = ({ analytics }: { analytics: Analytics }) => {
+  const [mode, setMode] = useState<HourRangeMode>("today");
+  const [specificDate, setSpecificDate] = useState<Date | undefined>(undefined);
+
+  // Determine the [start, end) window in ms for the selected mode.
+  // For "all", we use the dashboard's loaded range (or -Infinity/+Infinity if all-time).
+  const { startMs, endMs, label, note } = (() => {
+    const now = new Date();
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    const dayMs = 86_400_000;
+    if (mode === "today") {
+      return { startMs: todayStart, endMs: todayStart + dayMs, label: "Today", note: "Page views by hour for today." };
+    }
+    if (mode === "yesterday") {
+      return { startMs: todayStart - dayMs, endMs: todayStart, label: "Yesterday", note: "Page views by hour for yesterday." };
+    }
+    if (mode === "last7") {
+      return { startMs: todayStart - 6 * dayMs, endMs: todayStart + dayMs, label: "Last 7 days", note: "Aggregated hour-of-day distribution across the past 7 days." };
+    }
+    if (mode === "last30") {
+      return { startMs: todayStart - 29 * dayMs, endMs: todayStart + dayMs, label: "Last 30 days", note: "Aggregated hour-of-day distribution across the past 30 days." };
+    }
+    if (mode === "specific" && specificDate) {
+      const s = new Date(specificDate.getFullYear(), specificDate.getMonth(), specificDate.getDate()).getTime();
+      return {
+        startMs: s,
+        endMs: s + dayMs,
+        label: format(specificDate, "EEE d MMM yyyy"),
+        note: `Page views by hour for ${format(specificDate, "EEEE d MMMM yyyy")}.`,
+      };
+    }
+    // "all" — fall through. Use dashboard range if set, else everything in the loaded set.
+    const startMs = analytics.rangeStart ? new Date(analytics.rangeStart).getTime() : -Infinity;
+    const endMs = analytics.rangeEnd ? new Date(analytics.rangeEnd).getTime() : Infinity;
+    const labelBits: string[] = [];
+    if (analytics.rangeStart) labelBits.push(format(new Date(analytics.rangeStart), "d MMM yyyy"));
+    else labelBits.push("All time");
+    if (analytics.rangeEnd) labelBits.push(format(new Date(analytics.rangeEnd), "d MMM yyyy"));
+    return {
+      startMs,
+      endMs,
+      label: labelBits.join(" → "),
+      note: analytics.rangeStart || analytics.rangeEnd
+        ? "Aggregated hour-of-day distribution across the dashboard date range above."
+        : "Aggregated hour-of-day distribution across all loaded visits. Use the date range above to restrict.",
+    };
+  })();
+
+  const hourly = Array.from({ length: 24 }, (_, h) => ({ hour: h, count: 0 }));
+  let totalInWindow = 0;
+  for (const iso of analytics.visitTimestamps) {
+    const t = new Date(iso).getTime();
+    if (t < startMs || t >= endMs) continue;
+    hourly[new Date(iso).getHours()].count += 1;
+    totalInWindow += 1;
+  }
+  const max = Math.max(...hourly.map(h => h.count), 1);
+  const peak = hourly.reduce((b, c) => (c.count > b.count ? c : b), { hour: 0, count: 0 });
+  const peakLabel = peak.count > 0 ? `${peak.hour.toString().padStart(2, "0")}:00` : "—";
+
+  const showSpecificPicker = mode === "specific";
+  const needsDate = mode === "specific" && !specificDate;
+
+  return (
+    <div className="p-4 rounded-xl border border-border bg-card">
+      <div className="flex flex-wrap items-start justify-between gap-3 mb-1">
+        <div>
+          <h2 className="text-sm font-semibold text-foreground">Activity by Hour — {label}</h2>
+          <p className="text-xs text-muted-foreground mt-1">
+            {note}
+            {totalInWindow > 0 && (
+              <> Peak {peakLabel} ({peak.count.toLocaleString()} views) · {totalInWindow.toLocaleString()} total.</>
+            )}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-1.5 mb-3" role="group" aria-label="Hour-of-day time period">
+        {HOUR_RANGE_PRESETS.map(p => {
+          const selected = mode === p.mode;
+          return (
+            <Button
+              key={p.mode}
+              size="sm"
+              variant={selected ? "default" : "outline"}
+              onClick={() => setMode(p.mode)}
+              title={p.help}
+              aria-pressed={selected}
+              className="h-7 px-2.5 text-xs"
+            >
+              {p.label}
+            </Button>
+          );
+        })}
+        {showSpecificPicker && (
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                size="sm"
+                variant="outline"
+                className={cn("h-7 px-2.5 text-xs justify-start font-normal", !specificDate && "text-muted-foreground")}
+              >
+                <CalendarIcon className="mr-1.5 h-3.5 w-3.5" />
+                {specificDate ? format(specificDate, "d MMM yyyy") : "Pick a day"}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Calendar
+                mode="single"
+                selected={specificDate}
+                onSelect={setSpecificDate}
+                disabled={(d) => d > new Date()}
+                initialFocus
+                className={cn("p-3 pointer-events-auto")}
+              />
+            </PopoverContent>
+          </Popover>
+        )}
+      </div>
+
+      {needsDate ? (
+        <p className="text-xs text-muted-foreground py-6 text-center">Pick a day to view its hourly breakdown.</p>
+      ) : totalInWindow === 0 ? (
+        <p className="text-xs text-muted-foreground py-6 text-center">
+          No visits recorded in this window.
+          {mode === "all" && !analytics.rangeStart && !analytics.rangeEnd && (
+            <> The loaded data set may be empty.</>
+          )}
+          {(mode !== "all" && (analytics.rangeStart || analytics.rangeEnd)) && (
+            <> Note: the chart can only show data within the dashboard date range above — widen it to see older hours.</>
+          )}
+        </p>
+      ) : (
+        <>
+          <div className="flex items-end gap-[2px] h-32" role="img" aria-label={`Bar chart of page views by hour of day for ${label}. Peak hour ${peakLabel} with ${peak.count} views.`}>
+            {hourly.map(h => {
+              const height = (h.count / max) * 100;
+              const isPeak = h.count === peak.count && h.count > 0;
+              return (
+                <div
+                  key={h.hour}
+                  className={`flex-1 rounded-t min-h-[2px] transition-colors ${isPeak ? "bg-primary" : "bg-primary/50"}`}
+                  style={{ height: `${Math.max(height, 2)}%` }}
+                  title={`${h.hour.toString().padStart(2, "0")}:00 — ${h.count} views`}
+                  aria-hidden="true"
+                />
+              );
+            })}
+          </div>
+          <div className="flex justify-between text-[10px] text-muted-foreground mt-1 tabular-nums">
+            <span>00</span><span>06</span><span>12</span><span>18</span><span>23</span>
+          </div>
+        </>
+      )}
     </div>
   );
 };
