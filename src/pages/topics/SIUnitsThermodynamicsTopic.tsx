@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
+import { InlineRef } from "@/components/InlineRef";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { siUnitsThermodynamicsQuiz } from "@/data/quizzes";
@@ -68,7 +69,7 @@ const SIUnitsThermodynamicsTopic = () => {
           "Middleton Ch.1",
           "Middleton Ch.8",
           "NICE CG65",
-          "NICE NG125",
+          "NICE NG180",
           "BJA Educ 2017 (Pressure)",
           "NIST SI Guide App B.8",
           "BJA Educ 2008",
@@ -186,10 +187,12 @@ const SIUnitsThermodynamicsTopic = () => {
               <p>
                 <strong>Perioperative temperature management:</strong> Hypothermia (&lt;36 °C) prolongs neuromuscular blockade, reduces MAC, impairs platelet
                 function, increases wound infection rates, and triggers shivering (↑VO₂ 200–400%). NICE guideline
-                <strong> NG125</strong> (Perioperative care in adults, 2020) recommends active warming for all procedures &gt;30 minutes,
-                aiming for a target core temperature of <strong>at least 36.5 °C</strong> from induction until discharge from recovery
-                (unless therapeutic hypothermia is intended). The earlier <strong>CG65</strong> (2008, updated 2016) defines
-                inadvertent perioperative hypothermia as a core temperature &lt;36.0 °C.
+                <strong> CG65</strong> (Hypothermia: prevention and management in adults having surgery, 2008, last updated December 2016)
+                defines inadvertent perioperative hypothermia as a core temperature &lt;36.0 °C, requires induction not to begin unless the patient
+                is ≥36.0 °C, and instructs that forced-air warming devices be set to maintain a patient temperature of
+                <strong> at least 36.5 °C</strong><InlineRef topicId="si-units-thermodynamics" refLabel="NICE CG65" />. CG65 remains the
+                active hypothermia-specific NICE guideline; the broader <strong>NG180</strong> (Perioperative care in adults, 2020)
+                cross-refers to CG65 rather than superseding it<InlineRef topicId="si-units-thermodynamics" refLabel="NICE NG180" />.
               </p>
             </div>
             </CollapsibleSubsection>
