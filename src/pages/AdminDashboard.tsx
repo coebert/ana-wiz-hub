@@ -53,6 +53,11 @@ interface Analytics {
   last7Days: { date: string; count: number }[];
   last30Days: { date: string; count: number }[];
   hourlyToday: { hour: number; count: number }[];
+  // All visit timestamps in the current dashboard range — used to recompute
+  // the hour-of-day chart for any sub-window the user picks.
+  visitTimestamps: string[];
+  rangeStart: string | null;
+  rangeEnd: string | null;
   topEntryPaths: { path: string; count: number }[];
   topUsers: { visitorId: string; visits: number; activeDays: number; firstSeen: string; lastSeen: string; country: string | null; countryName: string | null; trafficSource: TrafficSource | null }[];
   topCountries: { country: string; countryName: string; users: number; visits: number }[];
@@ -507,6 +512,9 @@ const AdminDashboard = () => {
       last7Days,
       last30Days,
       hourlyToday,
+      visitTimestamps: visits.map(v => v.visited_at),
+      rangeStart: rangeStartIso,
+      rangeEnd: rangeEndIso,
       topEntryPaths,
       topTopics,
       sectionBreakdown,
