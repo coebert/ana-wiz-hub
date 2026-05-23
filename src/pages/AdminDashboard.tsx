@@ -970,23 +970,32 @@ const AdminDashboard = () => {
             <div className="p-4 rounded-xl border border-border bg-card">
               <h2 className="text-sm font-semibold text-foreground mb-1">Unique Users — Last 7 Days</h2>
               <p className="text-xs text-muted-foreground mb-4">Distinct visitors per day</p>
-              <div className="flex items-end gap-2 h-40" role="img" aria-label={`Bar chart of unique users per day for the last 7 days. ${analytics.last7Days.map(d => `${d.date}: ${d.count}`).join(", ")}.`}>
-                {analytics.last7Days.map(day => {
-                  const max = Math.max(...analytics.last7Days.map(d => d.count), 1);
-                  const height = (day.count / max) * 100;
-                  return (
-                    <div key={day.date} className="flex-1 flex flex-col items-center gap-1" title={`${day.date}: ${day.count} unique users`}>
-                      <span className="text-xs font-medium text-foreground tabular-nums">{day.count}</span>
-                      <div
-                        className="w-full rounded-t bg-primary/70 transition-all duration-300 min-h-[4px]"
-                        style={{ height: `${Math.max(height, 3)}%` }}
-                        aria-hidden="true"
-                      />
-                      <span className="text-[10px] text-muted-foreground leading-tight text-center">{day.date}</span>
-                    </div>
-                  );
-                })}
+              <div className="flex gap-2">
+                <ChartYAxis max={niceMax(Math.max(...analytics.last7Days.map(d => d.count), 1))} heightClass="h-40" />
+                <div
+                  className="flex-1 flex items-end gap-2 h-40"
+                  role="img"
+                  aria-label={`Bar chart of unique users per day for the last 7 days. ${analytics.last7Days.map(d => `${d.date}: ${d.count}`).join(", ")}.`}
+                  style={chartGridStyle}
+                >
+                  {analytics.last7Days.map(day => {
+                    const max = niceMax(Math.max(...analytics.last7Days.map(d => d.count), 1));
+                    const height = (day.count / max) * 100;
+                    return (
+                      <div key={day.date} className="flex-1 flex flex-col items-center gap-1 h-full justify-end" title={`${day.date}: ${day.count} unique users`}>
+                        <span className="text-xs font-medium text-foreground tabular-nums">{day.count}</span>
+                        <div
+                          className="w-full rounded-t bg-primary/70 transition-all duration-300 min-h-[4px]"
+                          style={{ height: `${Math.max(height, 3)}%` }}
+                          aria-hidden="true"
+                        />
+                        <span className="text-[10px] text-muted-foreground leading-tight text-center">{day.date}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
+
             </div>
 
             {/* 30-day sparkline */}
