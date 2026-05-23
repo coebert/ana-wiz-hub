@@ -20,6 +20,38 @@ function formatDuration(totalSeconds: number): string {
   return m > 0 ? `${m}m ${s}s` : `${s}s`;
 }
 
+/** Round a number up to a "nice" axis maximum (1, 2, 5 × 10^n). */
+function niceMax(n: number): number {
+  if (!n || n <= 0) return 1;
+  const exp = Math.pow(10, Math.floor(Math.log10(n)));
+  const f = n / exp;
+  const nice = f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10;
+  return nice * exp;
+}
+
+/** Vertical Y-axis labels (5 evenly-spaced ticks from max down to 0). */
+function ChartYAxis({ max, heightClass }: { max: number; heightClass: string }) {
+  const ticks = [1, 0.75, 0.5, 0.25, 0].map(f => Math.round(max * f));
+  return (
+    <div
+      className={`flex flex-col justify-between ${heightClass} text-[10px] text-muted-foreground tabular-nums pr-1 text-right shrink-0 min-w-[1.75rem]`}
+      aria-hidden="true"
+    >
+      {ticks.map((t, i) => <span key={i} className="leading-none">{t}</span>)}
+    </div>
+  );
+}
+
+/** Horizontal gridlines behind a chart's bar area (4 lines at 25/50/75/100%). */
+const chartGridStyle: React.CSSProperties = {
+  backgroundImage:
+    "linear-gradient(to top, hsl(var(--border)) 1px, transparent 1px)",
+  backgroundSize: "100% 25%",
+  backgroundPosition: "0 100%",
+  backgroundRepeat: "repeat-y",
+};
+
+
 /** Convert an ISO 3166-1 alpha-2 country code (e.g. "GB") to its flag emoji. */
 function countryFlag(code: string | null | undefined): string {
   if (!code || code.length !== 2) return "";
@@ -938,23 +970,32 @@ const AdminDashboard = () => {
             <div className="p-4 rounded-xl border border-border bg-card">
               <h2 className="text-sm font-semibold text-foreground mb-1">Unique Users — Last 7 Days</h2>
               <p className="text-xs text-muted-foreground mb-4">Distinct visitors per day</p>
-              <div className="flex items-end gap-2 h-40" role="img" aria-label={`Bar chart of unique users per day for the last 7 days. ${analytics.last7Days.map(d => `${d.date}: ${d.count}`).join(", ")}.`}>
-                {analytics.last7Days.map(day => {
-                  const max = Math.max(...analytics.last7Days.map(d => d.count), 1);
-                  const height = (day.count / max) * 100;
-                  return (
-                    <div key={day.date} className="flex-1 flex flex-col items-center gap-1" title={`${day.date}: ${day.count} unique users`}>
-                      <span className="text-xs font-medium text-foreground tabular-nums">{day.count}</span>
-                      <div
-                        className="w-full rounded-t bg-primary/70 transition-all duration-300 min-h-[4px]"
-                        style={{ height: `${Math.max(height, 3)}%` }}
-                        aria-hidden="true"
-                      />
-                      <span className="text-[10px] text-muted-foreground leading-tight text-center">{day.date}</span>
-                    </div>
-                  );
-                })}
+              <div className="flex gap-2">
+                <ChartYAxis max={niceMax(Math.max(...analytics.last7Days.map(d => d.count), 1))} heightClass="h-40" />
+                <div
+                  className="flex-1 flex items-end gap-2 h-40"
+                  role="img"
+                  aria-label={`Bar chart of unique users per day for the last 7 days. ${analytics.last7Days.map(d => `${d.date}: ${d.count}`).join(", ")}.`}
+                  style={chartGridStyle}
+                >
+                  {analytics.last7Days.map(day => {
+                    const max = niceMax(Math.max(...analytics.last7Days.map(d => d.count), 1));
+                    const height = (day.count / max) * 100;
+                    return (
+                      <div key={day.date} className="flex-1 flex flex-col items-center gap-1 h-full justify-end" title={`${day.date}: ${day.count} unique users`}>
+                        <span className="text-xs font-medium text-foreground tabular-nums">{day.count}</span>
+                        <div
+                          className="w-full rounded-t bg-primary/70 transition-all duration-300 min-h-[4px]"
+                          style={{ height: `${Math.max(height, 3)}%` }}
+                          aria-hidden="true"
+                        />
+                        <span className="text-[10px] text-muted-foreground leading-tight text-center">{day.date}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
+
             </div>
 
             {/* 30-day sparkline */}
@@ -963,25 +1004,36 @@ const AdminDashboard = () => {
               <p className="text-xs text-muted-foreground mb-3">
                 Daily distinct visitors · {analytics.monthlyUsers.toLocaleString()} unique over the period
               </p>
-              <div className="flex items-end gap-[2px] h-24" role="img" aria-label="Bar chart of unique users per day for the last 30 days">
-                {analytics.last30Days.map(day => {
-                  const max = Math.max(...analytics.last30Days.map(d => d.count), 1);
-                  const height = (day.count / max) * 100;
-                  return (
-                    <div
-                      key={day.date}
-                      className="flex-1 bg-primary/60 rounded-t min-h-[2px] hover:bg-primary transition-colors"
-                      style={{ height: `${Math.max(height, 2)}%` }}
-                      title={`${day.date}: ${day.count} unique users`}
-                      aria-hidden="true"
-                    />
-                  );
-                })}
+              <div className="flex gap-2">
+                <ChartYAxis max={niceMax(Math.max(...analytics.last30Days.map(d => d.count), 1))} heightClass="h-24" />
+                <div className="flex-1">
+                  <div
+                    className="flex items-end gap-[2px] h-24"
+                    role="img"
+                    aria-label="Bar chart of unique users per day for the last 30 days"
+                    style={chartGridStyle}
+                  >
+                    {analytics.last30Days.map(day => {
+                      const max = niceMax(Math.max(...analytics.last30Days.map(d => d.count), 1));
+                      const height = (day.count / max) * 100;
+                      return (
+                        <div
+                          key={day.date}
+                          className="flex-1 bg-primary/60 rounded-t min-h-[2px] hover:bg-primary transition-colors"
+                          style={{ height: `${Math.max(height, 2)}%` }}
+                          title={`${day.date}: ${day.count} unique users`}
+                          aria-hidden="true"
+                        />
+                      );
+                    })}
+                  </div>
+                  <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
+                    <span>{analytics.last30Days[0]?.date}</span>
+                    <span>{analytics.last30Days[analytics.last30Days.length - 1]?.date}</span>
+                  </div>
+                </div>
               </div>
-              <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
-                <span>{analytics.last30Days[0]?.date}</span>
-                <span>{analytics.last30Days[analytics.last30Days.length - 1]?.date}</span>
-              </div>
+
             </div>
 
             {/* Hour of day — configurable window */}
@@ -1585,7 +1637,7 @@ function HourActivityCard({ analytics }: { analytics: Analytics }) {
     hourly[new Date(iso).getHours()].count += 1;
     totalInWindow += 1;
   }
-  const max = Math.max(...hourly.map(h => h.count), 1);
+  const max = niceMax(Math.max(...hourly.map(h => h.count), 1));
   const peak = hourly.reduce((b, c) => (c.count > b.count ? c : b), { hour: 0, count: 0 });
   const peakLabel = peak.count > 0 ? `${peak.hour.toString().padStart(2, "0")}:00` : "—";
 
@@ -1663,25 +1715,36 @@ function HourActivityCard({ analytics }: { analytics: Analytics }) {
         </p>
       ) : (
         <>
-          <div className="flex items-end gap-[2px] h-32" role="img" aria-label={`Bar chart of page views by hour of day for ${label}. Peak hour ${peakLabel} with ${peak.count} views.`}>
-            {hourly.map(h => {
-              const height = (h.count / max) * 100;
-              const isPeak = h.count === peak.count && h.count > 0;
-              return (
-                <div
-                  key={h.hour}
-                  className={`flex-1 rounded-t min-h-[2px] transition-colors ${isPeak ? "bg-primary" : "bg-primary/50"}`}
-                  style={{ height: `${Math.max(height, 2)}%` }}
-                  title={`${h.hour.toString().padStart(2, "0")}:00 — ${h.count} views`}
-                  aria-hidden="true"
-                />
-              );
-            })}
-          </div>
-          <div className="flex justify-between text-[10px] text-muted-foreground mt-1 tabular-nums">
-            <span>00</span><span>06</span><span>12</span><span>18</span><span>23</span>
+          <div className="flex gap-2">
+            <ChartYAxis max={max} heightClass="h-32" />
+            <div className="flex-1">
+              <div
+                className="flex items-end gap-[2px] h-32"
+                role="img"
+                aria-label={`Bar chart of page views by hour of day for ${label}. Peak hour ${peakLabel} with ${peak.count} views.`}
+                style={chartGridStyle}
+              >
+                {hourly.map(h => {
+                  const height = (h.count / max) * 100;
+                  const isPeak = h.count === peak.count && h.count > 0;
+                  return (
+                    <div
+                      key={h.hour}
+                      className={`flex-1 rounded-t min-h-[2px] transition-colors ${isPeak ? "bg-primary" : "bg-primary/50"}`}
+                      style={{ height: `${Math.max(height, 2)}%` }}
+                      title={`${h.hour.toString().padStart(2, "0")}:00 — ${h.count} views`}
+                      aria-hidden="true"
+                    />
+                  );
+                })}
+              </div>
+              <div className="flex justify-between text-[10px] text-muted-foreground mt-1 tabular-nums">
+                <span>00</span><span>06</span><span>12</span><span>18</span><span>23</span>
+              </div>
+            </div>
           </div>
         </>
+
       )}
     </div>
   );
