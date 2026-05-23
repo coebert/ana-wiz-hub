@@ -14,8 +14,9 @@ const PerioperativeSection = () => {
 
   return (
     <SectionLayout
-      title="Perioperative Medicine"
-      subtitle="Preoperative assessment, risk stratification, and enhanced recovery"
+      title="Perioperative Medicine Explained"
+      subtitle="Perioperative medicine explained — preoperative assessment, risk stratification, enhanced recovery and postoperative care for FRCA and FFICM."
+      metaDescription="Perioperative medicine explained for FRCA and FFICM exams: preoperative assessment, cardiac and respiratory risk stratification, enhanced recovery (ERAS), postoperative care and frailty — concise notes, MCQs and viva practice."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-perioperative"
@@ -27,6 +28,15 @@ const PerioperativeSection = () => {
           <p className="text-xs text-muted-foreground">Perioperative medicine topics</p>
         </div>
       </div>
+      <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
+        <p className="text-sm text-foreground leading-relaxed">
+          <strong>Perioperative medicine explained.</strong> Preoperative
+          assessment, cardiac and respiratory risk stratification, CPET, frailty
+          scoring, enhanced recovery (ERAS) and postoperative care for FRCA
+          Final and FFICM trainees. Each topic pairs concise notes with
+          diagrams, MCQs and structured viva answers.
+        </p>
+      </section>
       <SectionTopicsList section="perioperative" topics={visibleTopics} />
       <SectionSummary section="perioperative" />
     </SectionLayout>

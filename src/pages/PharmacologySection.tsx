@@ -13,8 +13,9 @@ const PharmacologySection = () => {
 
   return (
     <SectionLayout
-      title="Pharmacology"
-      subtitle="Drug action, kinetics and dynamics relevant to anaesthesia"
+      title="Anaesthesia Pharmacology Explained"
+      subtitle="Anaesthetic drugs explained — pharmacokinetics, pharmacodynamics, induction agents, opioids, neuromuscular blockers and inhalational agents for FRCA and FFICM."
+      metaDescription="Anaesthesia pharmacology explained for FRCA and FFICM exams: pharmacokinetics, pharmacodynamics, induction agents, opioids, neuromuscular blockers, local anaesthetics and inhalational agents — concise notes, diagrams, MCQs and viva practice."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-pharmacology"
@@ -26,6 +27,16 @@ const PharmacologySection = () => {
           <p className="text-xs text-muted-foreground">Available pharmacology topics</p>
         </div>
       </div>
+      <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
+        <p className="text-sm text-foreground leading-relaxed">
+          <strong>Anaesthesia pharmacology explained.</strong> Drug action,
+          kinetics and dynamics for the FRCA Primary, Final and FFICM exams —
+          induction agents, opioids, neuromuscular blockers, local anaesthetics,
+          inhalational agents, vasoactives and antiemetics. Each drug topic pairs
+          mechanism, dose and side-effect notes with diagrams, MCQs and
+          structured viva answers.
+        </p>
+      </section>
       <div className="space-y-3">
         {pharmacologyTopics.map((topic) => (
           <div key={topic.id} className="relative">
