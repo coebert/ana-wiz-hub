@@ -147,12 +147,13 @@ const HumidityGasSamplingTopic = () => {
                 A pneumotachograph measures gas flow by detecting the pressure difference (ΔP) across a known fixed resistance.
                 The <strong>Fleisch</strong> type uses parallel capillary tubes to ensure laminar flow; the <strong>Lilly</strong>
                 type uses a fine wire mesh screen. In both, ΔP is proportional to flow (Hagen-Poiseuille equation), but only
-                while flow remains laminar.
+                while flow remains laminar <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
               <p>
                 The flow signal is <strong>integrated electronically</strong> to derive volume (tidal volume, minute ventilation).
                 Both types must be <strong>heated to body temperature</strong> to prevent condensation on the resistance element,
-                which would increase resistance and cause inaccuracy. Changes in gas composition (viscosity, density) also affect readings.
+                which would increase resistance and cause inaccuracy. Changes in gas composition (viscosity, density) also affect readings
+                <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
             </div>
             <CrossReferenceCallout
