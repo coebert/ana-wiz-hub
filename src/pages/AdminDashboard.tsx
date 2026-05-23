@@ -152,6 +152,8 @@ const AdminDashboard = () => {
     const visitsPerUser = new Map<string, number>();
     const activeDaysPerUser = new Map<string, Set<string>>();
     const lastSeen = new Map<string, string>();
+    // Per-visitor country tallies → pick the most-frequent country as their "origin"
+    const userCountryCounts = new Map<string, Map<string, { name: string; count: number }>>();
     visits.forEach(v => {
       const prev = firstSeen.get(v.visitor_id);
       if (!prev || v.visited_at < prev) firstSeen.set(v.visitor_id, v.visited_at);
@@ -161,16 +163,37 @@ const AdminDashboard = () => {
       const day = v.visited_at.slice(0, 10);
       if (!activeDaysPerUser.has(v.visitor_id)) activeDaysPerUser.set(v.visitor_id, new Set());
       activeDaysPerUser.get(v.visitor_id)!.add(day);
+      const cc = (v.country ?? "").toUpperCase();
+      if (cc && cc.length === 2) {
+        if (!userCountryCounts.has(v.visitor_id)) userCountryCounts.set(v.visitor_id, new Map());
+        const m = userCountryCounts.get(v.visitor_id)!;
+        const entry = m.get(cc) ?? { name: v.country_name ?? cc, count: 0 };
+        entry.count += 1;
+        if (v.country_name) entry.name = v.country_name;
+        m.set(cc, entry);
+      }
     });
 
     const topUsers = Array.from(visitsPerUser.entries())
-      .map(([visitorId, visits]) => ({
-        visitorId,
-        visits,
-        activeDays: activeDaysPerUser.get(visitorId)?.size ?? 0,
-        firstSeen: firstSeen.get(visitorId) ?? "",
-        lastSeen: lastSeen.get(visitorId) ?? "",
-      }))
+      .map(([visitorId, visits]) => {
+        let country: string | null = null;
+        let countryName: string | null = null;
+        const m = userCountryCounts.get(visitorId);
+        if (m && m.size > 0) {
+          const [cc, info] = Array.from(m.entries()).sort((a, b) => b[1].count - a[1].count)[0];
+          country = cc;
+          countryName = info.name;
+        }
+        return {
+          visitorId,
+          visits,
+          activeDays: activeDaysPerUser.get(visitorId)?.size ?? 0,
+          firstSeen: firstSeen.get(visitorId) ?? "",
+          lastSeen: lastSeen.get(visitorId) ?? "",
+          country,
+          countryName,
+        };
+      })
       .sort((a, b) => b.visits - a.visits)
       .slice(0, 15);
 
