@@ -51,6 +51,33 @@ const NeonSplash = () => {
   const [mounted, setMounted] = useState(shouldShowSplash);
   const [leaving, setLeaving] = useState(false);
   const [ready, setReady] = useState(false);
+  // Measured rect of the real landing brain logo so the splash brain
+  // lands on the exact same pixel box regardless of header height,
+  // breakpoint, or future layout changes. Null = use Tailwind fallback.
+  const [rect, setRect] = useState<{ top: number; left: number; size: number } | null>(null);
+
+  useLayoutEffect(() => {
+    if (typeof window === "undefined" || !mounted) return;
+    const measure = () => {
+      const el = document.querySelector(
+        'img[alt="AnaesthesiaCore logo"]',
+      ) as HTMLImageElement | null;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0) {
+        setRect({ top: r.top, left: r.left, size: r.width });
+      }
+    };
+    measure();
+    // Re-measure once styles/images have settled and on resize.
+    const raf = requestAnimationFrame(measure);
+    window.addEventListener("resize", measure);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", measure);
+    };
+  }, [mounted]);
+
 
   useEffect(() => {
     if (typeof window === "undefined") return;
