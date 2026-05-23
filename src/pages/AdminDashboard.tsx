@@ -516,6 +516,89 @@ const AdminDashboard = () => {
       };
     });
 
+    // ── Podcast usage ──────────────────────────────────────────────────────
+    // Engagement signals come from two places: the `podcasts` table (what's
+    // been generated + listenable) and `app_visits` page paths matching the
+    // podcast routes (proxy for "listens" since plays aren't logged).
+    const podcastVisits = visits.filter(v =>
+      v.page_path === "/podcasts" || (v.page_path?.startsWith("/podcasts/") ?? false),
+    );
+    const podcastTopicViews = new Map<string, { title: string; views: number }>();
+    podcastVisits.forEach(v => {
+      const m = v.page_path?.match(/^\/podcasts\/([^/]+)/);
+      if (!m) return;
+      const topicId = m[1];
+      const topic = allTopics.find(t => t.id === topicId);
+      const title = topic?.title ?? topicId;
+      const e = podcastTopicViews.get(topicId) ?? { title, views: 0 };
+      e.views += 1;
+      podcastTopicViews.set(topicId, e);
+    });
+    const podcastTopByViews = Array.from(podcastTopicViews.entries())
+      .map(([topicId, e]) => ({ topicId, topicTitle: e.title, views: e.views }))
+      .sort((a, b) => b.views - a.views)
+      .slice(0, 8);
+
+    const { data: podcastRows } = await supabase
+      .from("podcasts")
+      .select("topic_id, topic_title, status, duration_seconds, created_at")
+      .order("created_at", { ascending: false });
+    const pRows = podcastRows ?? [];
+    const podcastsSummary = {
+      total: pRows.length,
+      ready: pRows.filter(p => p.status === "ready").length,
+      pending: pRows.filter(p => p.status === "pending" || p.status === "generating").length,
+      failed: pRows.filter(p => p.status === "failed").length,
+      totalSeconds: pRows.reduce((s, p) => s + (p.duration_seconds ?? 0), 0),
+      pageViews: podcastVisits.length,
+      uniqueListeners: new Set(podcastVisits.map(v => v.visitor_id)).size,
+      inRangeGenerated: pRows.filter(p => {
+        if (rangeStartIso && p.created_at < rangeStartIso) return false;
+        if (rangeEndIso && p.created_at > rangeEndIso) return false;
+        return true;
+      }).length,
+      recent: pRows.slice(0, 5).map(p => ({
+        topicId: p.topic_id,
+        topicTitle: p.topic_title,
+        status: p.status,
+        durationSeconds: p.duration_seconds ?? null,
+        createdAt: p.created_at,
+      })),
+      topByViews: podcastTopByViews,
+    };
+
+    // ── Viva usage ────────────────────────────────────────────────────────
+    // `/viva` and `/viva/*` visits are the proxy for sessions started.
+    // `viva_model_answers` rows are unique cached responses ever generated.
+    const vivaVisits = visits.filter(v => v.page_path === "/viva" || (v.page_path?.startsWith("/viva/") ?? false));
+    const { data: vivaRows } = await supabase
+      .from("viva_model_answers")
+      .select("exam, topic_title, created_at")
+      .order("created_at", { ascending: false });
+    const vRows = vivaRows ?? [];
+    const vivaByExamMap = new Map<string, number>();
+    vRows.forEach(r => vivaByExamMap.set(r.exam, (vivaByExamMap.get(r.exam) ?? 0) + 1));
+    const vivaSummary = {
+      totalCachedAnswers: vRows.length,
+      uniqueTopics: new Set(vRows.map(r => r.topic_title)).size,
+      byExam: Array.from(vivaByExamMap.entries())
+        .map(([exam, count]) => ({ exam, count }))
+        .sort((a, b) => b.count - a.count),
+      pageViews: vivaVisits.length,
+      uniqueUsers: new Set(vivaVisits.map(v => v.visitor_id)).size,
+      inRangeGenerated: vRows.filter(r => {
+        if (rangeStartIso && r.created_at < rangeStartIso) return false;
+        if (rangeEndIso && r.created_at > rangeEndIso) return false;
+        return true;
+      }).length,
+      recent: vRows.slice(0, 5).map(r => ({
+        topicTitle: r.topic_title,
+        exam: r.exam,
+        createdAt: r.created_at,
+      })),
+    };
+
+
     setAnalytics({
       totalUniqueUsers: uniqueVisitors.size,
       dailyUsers: todayUnique.size,
