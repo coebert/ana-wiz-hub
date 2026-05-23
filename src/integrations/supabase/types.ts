@@ -20,6 +20,8 @@ export type Database = {
           country_name: string | null
           id: string
           page_path: string | null
+          referrer: string | null
+          traffic_source: string | null
           visited_at: string
           visitor_id: string
         }
@@ -28,6 +30,8 @@ export type Database = {
           country_name?: string | null
           id?: string
           page_path?: string | null
+          referrer?: string | null
+          traffic_source?: string | null
           visited_at?: string
           visitor_id: string
         }
@@ -36,6 +40,8 @@ export type Database = {
           country_name?: string | null
           id?: string
           page_path?: string | null
+          referrer?: string | null
+          traffic_source?: string | null
           visited_at?: string
           visitor_id?: string
         }

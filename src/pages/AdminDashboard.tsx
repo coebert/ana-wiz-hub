@@ -8,7 +8,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick } from "lucide-react";
 
 /** Convert an ISO 3166-1 alpha-2 country code (e.g. "GB") to its flag emoji. */
 function countryFlag(code: string | null | undefined): string {
@@ -19,6 +19,14 @@ function countryFlag(code: string | null | undefined): string {
   return String.fromCodePoint(A + cc.charCodeAt(0) - 65, A + cc.charCodeAt(1) - 65);
 }
 
+type TrafficSource = "direct" | "search" | "social" | "referral";
+
+const TRAFFIC_SOURCE_META: Record<TrafficSource, { label: string; help: string; icon: typeof Search; color: string }> = {
+  search:   { label: "Search engines", help: "Visitors who arrived via Google, Bing, DuckDuckGo, etc.", icon: Search,             color: "text-blue-500" },
+  direct:   { label: "Direct",         help: "Bookmarks, typed URL, or app links — no referrer header.",  icon: MousePointerClick, color: "text-emerald-500" },
+  social:   { label: "Social",         help: "Visitors arriving from a social network or messenger.",     icon: Share2,            color: "text-pink-500" },
+  referral: { label: "Other sites",    help: "Visitors who clicked a link on another website.",           icon: Link2,             color: "text-amber-500" },
+};
 
 interface TopicStat {
   id: string;
@@ -46,8 +54,10 @@ interface Analytics {
   last30Days: { date: string; count: number }[];
   hourlyToday: { hour: number; count: number }[];
   topEntryPaths: { path: string; count: number }[];
-  topUsers: { visitorId: string; visits: number; activeDays: number; firstSeen: string; lastSeen: string; country: string | null; countryName: string | null }[];
+  topUsers: { visitorId: string; visits: number; activeDays: number; firstSeen: string; lastSeen: string; country: string | null; countryName: string | null; trafficSource: TrafficSource | null }[];
   topCountries: { country: string; countryName: string; users: number; visits: number }[];
+  trafficSources: { source: TrafficSource; users: number; visits: number; usersPct: number }[];
+  topReferrers: { host: string; users: number; visits: number; source: TrafficSource }[];
   topTopics: TopicStat[];
   sectionBreakdown: { section: string; views: number }[];
   retentionCohorts: {
@@ -142,7 +152,9 @@ const AdminDashboard = () => {
       page_path: string | null;
       country: string | null;
       country_name: string | null;
-    }>("visitor_id, visited_at, page_path, country, country_name", (q) => {
+      referrer: string | null;
+      traffic_source: string | null;
+    }>("visitor_id, visited_at, page_path, country, country_name, referrer, traffic_source", (q) => {
       let qq = q;
       if (rangeStartIso) qq = qq.gte("visited_at", rangeStartIso);
       if (rangeEndIso) qq = qq.lte("visited_at", rangeEndIso);
@@ -157,6 +169,13 @@ const AdminDashboard = () => {
     const todayUnique = new Set(todayData.map(v => v.visitor_id));
 
 
+    const normaliseSource = (s: string | null | undefined): TrafficSource | null => {
+      if (!s) return null;
+      const v = s.toLowerCase();
+      if (v === "search" || v === "direct" || v === "social" || v === "referral") return v;
+      return null;
+    };
+
     // First-seen timestamp per visitor → used for new-vs-returning split
     const firstSeen = new Map<string, string>();
     const visitsPerUser = new Map<string, number>();
@@ -164,6 +183,8 @@ const AdminDashboard = () => {
     const lastSeen = new Map<string, string>();
     // Per-visitor country tallies → pick the most-frequent country as their "origin"
     const userCountryCounts = new Map<string, Map<string, { name: string; count: number }>>();
+    // Per-visitor traffic-source tallies → pick the most-frequent as their "acquisition channel"
+    const userSourceCounts = new Map<string, Map<TrafficSource, number>>();
     visits.forEach(v => {
       const prev = firstSeen.get(v.visitor_id);
       if (!prev || v.visited_at < prev) firstSeen.set(v.visitor_id, v.visited_at);
@@ -182,6 +203,12 @@ const AdminDashboard = () => {
         if (v.country_name) entry.name = v.country_name;
         m.set(cc, entry);
       }
+      const src = normaliseSource(v.traffic_source);
+      if (src) {
+        if (!userSourceCounts.has(v.visitor_id)) userSourceCounts.set(v.visitor_id, new Map());
+        const sm = userSourceCounts.get(v.visitor_id)!;
+        sm.set(src, (sm.get(src) ?? 0) + 1);
+      }
     });
 
     const topUsers = Array.from(visitsPerUser.entries())
@@ -194,6 +221,11 @@ const AdminDashboard = () => {
           country = cc;
           countryName = info.name;
         }
+        let trafficSource: TrafficSource | null = null;
+        const sm = userSourceCounts.get(visitorId);
+        if (sm && sm.size > 0) {
+          trafficSource = Array.from(sm.entries()).sort((a, b) => b[1] - a[1])[0][0];
+        }
         return {
           visitorId,
           visits,
@@ -202,10 +234,60 @@ const AdminDashboard = () => {
           lastSeen: lastSeen.get(visitorId) ?? "",
           country,
           countryName,
+          trafficSource,
         };
       })
       .sort((a, b) => b.visits - a.visits)
       .slice(0, 15);
+
+    // Traffic-source breakdown across the selected window.
+    // "Users" = visitors whose *primary* (most-frequent) source matches the bucket,
+    // so the counts add up to the number of classified users (no double-counting).
+    const sourceVisitCounts: Record<TrafficSource, number> = { search: 0, direct: 0, social: 0, referral: 0 };
+    visits.forEach(v => {
+      const s = normaliseSource(v.traffic_source);
+      if (s) sourceVisitCounts[s] += 1;
+    });
+    const sourceUserCounts: Record<TrafficSource, number> = { search: 0, direct: 0, social: 0, referral: 0 };
+    let totalClassifiedUsers = 0;
+    userSourceCounts.forEach(sm => {
+      if (sm.size === 0) return;
+      const top = Array.from(sm.entries()).sort((a, b) => b[1] - a[1])[0][0];
+      sourceUserCounts[top] += 1;
+      totalClassifiedUsers += 1;
+    });
+    const trafficSources = (Object.keys(sourceVisitCounts) as TrafficSource[])
+      .map(source => ({
+        source,
+        users: sourceUserCounts[source],
+        visits: sourceVisitCounts[source],
+        usersPct: totalClassifiedUsers > 0
+          ? Math.round((sourceUserCounts[source] / totalClassifiedUsers) * 100)
+          : 0,
+      }))
+      .sort((a, b) => b.users - a.users || b.visits - a.visits);
+
+    // Top external referring hosts (search engines + other sites)
+    const referrerStats = new Map<string, { users: Set<string>; visits: number; source: TrafficSource }>();
+    visits.forEach(v => {
+      if (!v.referrer) return;
+      let host = "";
+      try { host = new URL(v.referrer).hostname.toLowerCase().replace(/^www\./, ""); } catch { return; }
+      if (!host) return;
+      const src = normaliseSource(v.traffic_source) ?? "referral";
+      if (!referrerStats.has(host)) {
+        referrerStats.set(host, { users: new Set(), visits: 0, source: src });
+      }
+      const e = referrerStats.get(host)!;
+      e.users.add(v.visitor_id);
+      e.visits += 1;
+    });
+    const topReferrers = Array.from(referrerStats.entries())
+      .map(([host, e]) => ({ host, users: e.users.size, visits: e.visits, source: e.source }))
+      .sort((a, b) => b.visits - a.visits)
+      .slice(0, 10);
+
+
 
     // Top countries (by unique visitors, then total visits)
     const countryVisits = new Map<string, { name: string; users: Set<string>; visits: number }>();
@@ -431,6 +513,8 @@ const AdminDashboard = () => {
       retentionCohorts,
       topUsers,
       topCountries,
+      trafficSources,
+      topReferrers,
     });
     setLoading(false);
   };
@@ -829,6 +913,82 @@ const AdminDashboard = () => {
               )}
             </div>
 
+            {/* Traffic sources — how visitors arrived (direct vs search vs other) */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Share2 className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Traffic Sources</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                How visitors reached the app. Each user is assigned to their most-frequent source so percentages add up to 100%.
+                {analytics.trafficSources.every(s => s.users === 0 && s.visits === 0) && (
+                  <> No source data yet — traffic source is recorded from new visits onwards.</>
+                )}
+              </p>
+              {analytics.trafficSources.some(s => s.users > 0 || s.visits > 0) && (
+                <ul className="space-y-2" aria-label="Traffic source breakdown">
+                  {analytics.trafficSources.map(s => {
+                    const meta = TRAFFIC_SOURCE_META[s.source];
+                    const Icon = meta.icon;
+                    return (
+                      <li
+                        key={s.source}
+                        className="flex items-center gap-3"
+                        aria-label={`${meta.label}: ${s.users} users (${s.usersPct}%), ${s.visits} visits. ${meta.help}`}
+                      >
+                        <span className="flex items-center gap-1.5 w-36 shrink-0">
+                          <Icon className={`w-4 h-4 ${meta.color}`} aria-hidden="true" />
+                          <span className="text-xs font-medium text-foreground">{meta.label}</span>
+                        </span>
+                        <div className="flex-1 h-2 rounded bg-secondary/50 overflow-hidden" aria-hidden="true">
+                          <div
+                            className="h-full rounded bg-primary/60 transition-all duration-300"
+                            style={{ width: `${Math.max(s.usersPct, 2)}%` }}
+                          />
+                        </div>
+                        <span className="text-xs font-medium text-foreground w-12 text-right tabular-nums">{s.usersPct}%</span>
+                        <span className="text-[11px] text-muted-foreground w-28 text-right tabular-nums">
+                          {s.users.toLocaleString()} user{s.users === 1 ? "" : "s"} · {s.visits.toLocaleString()} visit{s.visits === 1 ? "" : "s"}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+
+            {/* Top referring hosts (search engines + external sites) */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Link2 className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Top Referrers</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">External domains that sent traffic to the app.</p>
+              {analytics.topReferrers.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No external referrers recorded yet.</p>
+              ) : (
+                <ul className="space-y-2">
+                  {analytics.topReferrers.map(r => {
+                    const meta = TRAFFIC_SOURCE_META[r.source];
+                    const Icon = meta.icon;
+                    return (
+                      <li
+                        key={r.host}
+                        className="flex items-center gap-3"
+                        aria-label={`${r.host} (${meta.label}): ${r.users} users, ${r.visits} visits`}
+                      >
+                        <Icon className={`w-3.5 h-3.5 ${meta.color}`} aria-hidden="true" />
+                        <span className="text-xs text-foreground flex-1 truncate font-mono">{r.host}</span>
+                        <span className="text-[10px] uppercase tracking-wide text-muted-foreground w-20 text-right">{meta.label}</span>
+                        <span className="text-xs font-medium text-foreground w-12 text-right tabular-nums">{r.visits.toLocaleString()}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+
+
             {/* Top users */}
             <div className="p-4 rounded-xl border border-border bg-card">
               <div className="flex items-center gap-2 mb-1">
@@ -845,6 +1005,7 @@ const AdminDashboard = () => {
                       <tr className="text-left text-muted-foreground border-b border-border">
                         <th className="py-2 pr-3 font-medium">Visitor ID</th>
                         <th className="py-2 pr-3 font-medium">Country</th>
+                        <th className="py-2 pr-3 font-medium">Source</th>
                         <th className="py-2 pr-3 font-medium text-right">Visits</th>
                         <th className="py-2 pr-3 font-medium text-right">Active days</th>
                         <th className="py-2 pr-3 font-medium text-right">First seen</th>
@@ -873,6 +1034,20 @@ const AdminDashboard = () => {
                                   <span>{u.countryName ?? u.country}</span>
                                 </span>
                               ) : (
+                                <span className="text-muted-foreground">—</span>
+                              )}
+                            </td>
+                            <td className="py-2 pr-3 text-foreground whitespace-nowrap">
+                              {u.trafficSource ? (() => {
+                                const meta = TRAFFIC_SOURCE_META[u.trafficSource];
+                                const Icon = meta.icon;
+                                return (
+                                  <span className="inline-flex items-center gap-1.5" title={meta.help}>
+                                    <Icon className={`w-3.5 h-3.5 ${meta.color}`} aria-hidden="true" />
+                                    <span>{meta.label}</span>
+                                  </span>
+                                );
+                              })() : (
                                 <span className="text-muted-foreground">—</span>
                               )}
                             </td>
