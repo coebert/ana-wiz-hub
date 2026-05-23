@@ -215,26 +215,27 @@ const HumidityGasSamplingTopic = () => {
                 Most molecules are <strong>diamagnetic</strong> (all electrons paired) and are weakly repelled by a magnetic field.
                 <strong> Oxygen is unusual</strong>: its molecular orbital structure leaves <strong>two unpaired electrons</strong>,
                 making it strongly <strong>paramagnetic</strong> — attracted into a magnetic field. Among medical gases only O₂
-                and nitric oxide (NO) show this property, so the measurement is essentially specific for O₂.
+                and nitric oxide (NO) show this property, so the measurement is essentially specific for O₂
+                <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
               <p>
                 The classic <strong>Pauling analyser</strong> suspends two nitrogen-filled glass spheres ("dumb-bell") in a
                 non-uniform magnetic field. Sample gas containing O₂ enters the chamber; the O₂ is drawn into the strongest
                 part of the field, displacing the spheres and rotating the dumb-bell. A mirror on the suspension reflects a
                 light beam onto a photocell; a feedback current is applied to hold the dumb-bell stationary, and that current
-                is proportional to the partial pressure of O₂.
+                is proportional to the partial pressure of O₂ <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
               <p>
                 Modern monitors use a <strong>differential pressure (fast-response) paramagnetic cell</strong>: sample gas and
                 a reference gas are alternately pulled into a chamber containing a switched electromagnet. The pressure
                 difference oscillating across a sensitive transducer is proportional to the difference in O₂ concentration
                 — giving a <strong>response time fast enough for breath-by-breath inspired/expired O₂ measurement</strong>
-                (used to track oxygen uptake and during low-flow anaesthesia).
+                (used to track oxygen uptake and during low-flow anaesthesia) <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
               <p>
                 Strengths: highly accurate, linear, no consumable element, fast. Weaknesses: sensitive to water vapour
                 (sample line must be dried), affected by sample-gas pressure changes, and the static Pauling type is slow
-                (only suitable for FiO₂ trending).
+                (only suitable for FiO₂ trending) <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
             </div>
 
@@ -255,7 +256,7 @@ const HumidityGasSamplingTopic = () => {
                 at characteristic wavelengths. A broad-spectrum IR source illuminates the sample chamber; the gas absorbs
                 specific wavelengths and the residual transmitted intensity is measured by a detector. The fractional
                 absorption follows the <strong>Beer-Lambert law</strong> (A = εcl), so the signal is proportional to the
-                partial pressure of the target gas.
+                partial pressure of the target gas <InlineRef topicId="humidity-gas-sampling" refLabel="Al-Shaikh & Stacey Ch.8" />.
               </p>
               <p>
                 <strong>Characteristic absorption bands:</strong>
@@ -266,7 +267,7 @@ const HumidityGasSamplingTopic = () => {
                 <li><strong>Volatile agents (sevoflurane, isoflurane, desflurane, halothane, enflurane)</strong> — broad
                   absorption in the <strong>8–13 µm "fingerprint" region</strong>. Each agent has a slightly different
                   spectrum, so a multi-wavelength analyser (or a tunable filter / Fourier-transform IR) can both
-                  <strong> identify</strong> the agent and <strong>quantify</strong> its concentration.</li>
+                  <strong> identify</strong> the agent and <strong>quantify</strong> its concentration <InlineRef topicId="humidity-gas-sampling" refLabel="Al-Shaikh & Stacey Ch.8" />.</li>
                 <li><strong>O₂, N₂, Ar, He</strong> — homonuclear or monoatomic → no changing dipole → <strong>not detected</strong>
                   by IR. O₂ requires paramagnetic, electrochemical or Raman analysis.</li>
               </ul>
@@ -276,21 +277,21 @@ const HumidityGasSamplingTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li><strong>Collision (pressure) broadening:</strong> N₂O molecules collide with CO₂ and broaden its
                   4.26 µm absorption peak, causing the analyser to <em>overestimate</em> CO₂. Modern analysers measure N₂O
-                  simultaneously and apply software correction.</li>
+                  simultaneously and apply software correction <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ 2007" />.</li>
                 <li><strong>Agent cross-sensitivity:</strong> volatile spectra overlap. A single-wavelength agent monitor
                   will give a wrong reading if the wrong agent is selected; modern multi-wavelength analysers identify the
-                  agent automatically and warn if a mixture is present (e.g. residual desflurane during a sevoflurane case).</li>
+                  agent automatically and warn if a mixture is present (e.g. residual desflurane during a sevoflurane case) <InlineRef topicId="humidity-gas-sampling" refLabel="Al-Shaikh & Stacey Ch.8" />.</li>
                 <li><strong>Water vapour and condensation</strong> in the sampling line shift readings — sample lines use
-                  Nafion™ tubing that selectively allows water vapour to equilibrate with room air.</li>
+                  Nafion™ tubing that selectively allows water vapour to equilibrate with room air <InlineRef topicId="humidity-gas-sampling" refLabel="Al-Shaikh & Stacey Ch.8" />.</li>
                 <li><strong>Sidestream sampling delay</strong> (≈2–3 s) and <strong>aspiration rate</strong> (typically
-                  150–200 mL/min) must be matched to tidal volume in neonates to avoid dilution.</li>
+                  150–200 mL/min) must be matched to tidal volume in neonates to avoid dilution <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.</li>
               </ul>
               <p>
                 <strong>Hardware variants:</strong> dispersive IR (rotating filter wheel selects wavelength); non-dispersive
                 IR (NDIR — uses specific optical filters and detectors for each target gas, the original implementation being
                 the dual-chamber Luft cell; NDIR is the dominant design in modern clinical monitors); and photoacoustic
                 spectroscopy (pulsed IR heats the gas → pressure pulse detected by a microphone — used in the Brüel & Kjær
-                multi-gas analyser).
+                multi-gas analyser) <InlineRef topicId="humidity-gas-sampling" refLabel="Al-Shaikh & Stacey Ch.8" />.
               </p>
             </div>
             <CrossReferenceCallout
