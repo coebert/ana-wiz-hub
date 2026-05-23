@@ -27,12 +27,12 @@ const keyPoints = [
 const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
   {
     title: "Choosing a core temperature site for major surgery",
-    scenario: "A patient for 4-hour open hemicolectomy needs reliable core temperature monitoring per NICE NG125. Compare nasopharyngeal, oesophageal, tympanic and bladder probes.",
+    scenario: "A patient for 4-hour open hemicolectomy needs reliable core temperature monitoring per NICE CG65. Compare nasopharyngeal, oesophageal, tympanic and bladder probes.",
     working: (
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li>NICE NG125 (Perioperative care in adults, 2020 — successor to CG65) requires continuous core temperature monitoring for any procedure &gt;30 min under GA, with a target of at least 36.5 °C</li>
+          <li>NICE CG65 (Hypothermia: prevention and management in adults having surgery, 2008, last updated December 2016) requires temperature measurement before induction and every 30 minutes intra-operatively, with forced-air warming set to maintain at least 36.5 °C. NG180 (Perioperative care in adults, 2020) cross-refers to CG65 rather than replacing it</li>
           <li>Distal oesophageal probe (lower third) tracks cardiac/aortic blood temperature accurately — first choice in intubated abdominal surgery</li>
           <li>Nasopharyngeal probe approximates brain temperature; risk of epistaxis with coagulopathy</li>
           <li>Tympanic infrared is intermittent and operator-dependent — unsuitable for continuous monitoring</li>
@@ -48,8 +48,8 @@ const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
         </div>
       </div>
     ),
-    answer: "Use a distal oesophageal probe with continuous display, target core ≥36.5 °C, pre-warm and forced-air warm intra-operatively per NICE NG125.",
-    cites: ["BJA Educ 2014", "NICE NG125", "Cross & Plunkett Ch.11"],
+    answer: "Use a distal oesophageal probe with continuous display, target core ≥36.5 °C, pre-warm and forced-air warm intra-operatively per NICE CG65.",
+    cites: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11"],
   },
 ];
 
