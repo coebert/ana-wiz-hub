@@ -119,11 +119,43 @@ Deno.serve(async (req) => {
   const topicId = (body.topicId ?? "").trim();
   const topicTitle = (body.topicTitle ?? "").trim();
   const section = (body.section ?? "").trim();
-  const force = !!body.force;
+  let force = !!body.force;
 
   if (!topicId || !topicTitle || !section) {
     return fail(400, "topicId, topicTitle and section are required");
   }
+
+  // `force` bypasses cache and triggers a fresh AI call — gate it behind an
+  // admin JWT to prevent anonymous credit abuse. Non-admin callers silently
+  // downgrade to the cached path (Refresh buttons still return the latest
+  // ready row instead of regenerating).
+  if (force) {
+    const authHeader = req.headers.get("Authorization");
+    let isAdmin = false;
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      try {
+        const userClient = createClient(
+          SUPABASE_URL,
+          Deno.env.get("SUPABASE_ANON_KEY")!,
+          { global: { headers: { Authorization: authHeader } } },
+        );
+        const { data: userData } = await userClient.auth.getUser();
+        if (userData?.user) {
+          const { data: roleRow } = await supabase
+            .from("user_roles")
+            .select("role")
+            .eq("user_id", userData.user.id)
+            .eq("role", "admin")
+            .maybeSingle();
+          isAdmin = !!roleRow;
+        }
+      } catch (_e) {
+        isAdmin = false;
+      }
+    }
+    if (!isAdmin) force = false;
+  }
+
 
   // Return cached row unless force=true
   if (!force) {
