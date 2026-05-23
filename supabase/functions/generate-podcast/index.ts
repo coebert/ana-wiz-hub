@@ -48,6 +48,43 @@ console.log(`[config] TTS_CONCURRENCY effective value: ${TTS_CONCURRENCY}`);
 // Per-chunk retry budget (network blips, transient 5xx, brief 429s).
 const TTS_MAX_RETRIES = 3;
 
+// --- Per-IP rate limiting & global concurrency cap ----------------------------
+// Best-effort, in-memory (per edge instance, resets on cold start). Guards
+// against AI-credit abuse by capping how often any single IP can kick off a
+// *fresh* podcast generation, plus a global ceiling on simultaneous generations
+// per instance. Cached hits are NOT rate-limited.
+const RL_MAX_PER_IP = 3;                  // generations per window per IP
+const RL_WINDOW_MS = 60 * 60 * 1000;      // 1 hour rolling window
+const MAX_CONCURRENT_GENERATIONS = 3;     // per edge instance
+const ipHits = new Map<string, number[]>();
+let activeGenerations = 0;
+
+function getClientIp(req: Request): string {
+  const fwd = req.headers.get("x-forwarded-for");
+  if (fwd) return fwd.split(",")[0].trim();
+  return req.headers.get("cf-connecting-ip") ?? "unknown";
+}
+
+function isIpRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const cutoff = now - RL_WINDOW_MS;
+  const recent = (ipHits.get(ip) ?? []).filter((t) => t > cutoff);
+  if (recent.length >= RL_MAX_PER_IP) {
+    ipHits.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  ipHits.set(ip, recent);
+  if (ipHits.size > 5000) {
+    for (const [k, v] of ipHits) {
+      const kept = v.filter((t) => t > cutoff);
+      if (kept.length === 0) ipHits.delete(k);
+      else ipHits.set(k, kept);
+    }
+  }
+  return false;
+}
+
 interface RequestBody {
   topicId: string;
   topicTitle: string;
@@ -466,6 +503,44 @@ Deno.serve(async (req) => {
       console.log(`[${topicId}] Force-regenerate authorised — bypassing cache.`);
     }
 
+    // Rate-limit & concurrency gates — only on the generation path (cache
+    // hits above return early). Best-effort, in-memory, per edge instance.
+    const ip = getClientIp(req);
+    if (isIpRateLimited(ip)) {
+      console.warn(`[${topicId}] IP ${ip} rate-limited`);
+      return new Response(
+        JSON.stringify({
+          status: "failed",
+          error: "Too many podcast generations from your network. Please try again in an hour.",
+          code: "RATE_LIMITED",
+        }),
+        {
+          status: 429,
+          headers: {
+            ...corsHeaders,
+            "Content-Type": "application/json",
+            "Retry-After": String(Math.ceil(RL_WINDOW_MS / 1000)),
+          },
+        },
+      );
+    }
+
+    if (activeGenerations >= MAX_CONCURRENT_GENERATIONS) {
+      console.warn(`[${topicId}] Concurrency cap hit (${activeGenerations}/${MAX_CONCURRENT_GENERATIONS})`);
+      return new Response(
+        JSON.stringify({
+          status: "failed",
+          error: "Server is busy generating other podcasts. Please try again in a minute.",
+          code: "BUSY",
+        }),
+        {
+          status: 503,
+          headers: { ...corsHeaders, "Content-Type": "application/json", "Retry-After": "60" },
+        },
+      );
+    }
+    activeGenerations++;
+
     await supabase.from("podcasts").upsert(
       {
         topic_id: topicId,
@@ -538,6 +613,8 @@ Deno.serve(async (req) => {
           .from("podcasts")
           .update({ status: "failed", error_message: failure.error })
           .eq("topic_id", topicId);
+      } finally {
+        activeGenerations = Math.max(0, activeGenerations - 1);
       }
     })();
 
