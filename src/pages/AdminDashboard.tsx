@@ -20,6 +20,38 @@ function formatDuration(totalSeconds: number): string {
   return m > 0 ? `${m}m ${s}s` : `${s}s`;
 }
 
+/** Round a number up to a "nice" axis maximum (1, 2, 5 × 10^n). */
+function niceMax(n: number): number {
+  if (!n || n <= 0) return 1;
+  const exp = Math.pow(10, Math.floor(Math.log10(n)));
+  const f = n / exp;
+  const nice = f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10;
+  return nice * exp;
+}
+
+/** Vertical Y-axis labels (5 evenly-spaced ticks from max down to 0). */
+function ChartYAxis({ max, heightClass }: { max: number; heightClass: string }) {
+  const ticks = [1, 0.75, 0.5, 0.25, 0].map(f => Math.round(max * f));
+  return (
+    <div
+      className={`flex flex-col justify-between ${heightClass} text-[10px] text-muted-foreground tabular-nums pr-1 text-right shrink-0 min-w-[1.75rem]`}
+      aria-hidden="true"
+    >
+      {ticks.map((t, i) => <span key={i} className="leading-none">{t}</span>)}
+    </div>
+  );
+}
+
+/** Horizontal gridlines behind a chart's bar area (4 lines at 25/50/75/100%). */
+const chartGridStyle: React.CSSProperties = {
+  backgroundImage:
+    "linear-gradient(to top, hsl(var(--border)) 1px, transparent 1px)",
+  backgroundSize: "100% 25%",
+  backgroundPosition: "0 100%",
+  backgroundRepeat: "repeat-y",
+};
+
+
 /** Convert an ISO 3166-1 alpha-2 country code (e.g. "GB") to its flag emoji. */
 function countryFlag(code: string | null | undefined): string {
   if (!code || code.length !== 2) return "";
