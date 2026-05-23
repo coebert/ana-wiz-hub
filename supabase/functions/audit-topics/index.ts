@@ -947,6 +947,7 @@ async function reinvokeContinue(jobId: string) {
           Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
           "Content-Type": "application/json",
           apikey: SUPABASE_SERVICE_ROLE_KEY,
+          "x-internal-token": SUPABASE_SERVICE_ROLE_KEY,
         },
         body: JSON.stringify({ action: "continue", job_id: jobId }),
       },
