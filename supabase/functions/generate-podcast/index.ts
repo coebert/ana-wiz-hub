@@ -613,6 +613,8 @@ Deno.serve(async (req) => {
           .from("podcasts")
           .update({ status: "failed", error_message: failure.error })
           .eq("topic_id", topicId);
+      } finally {
+        activeGenerations = Math.max(0, activeGenerations - 1);
       }
     })();
 
