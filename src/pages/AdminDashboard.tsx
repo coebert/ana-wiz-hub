@@ -1637,7 +1637,7 @@ function HourActivityCard({ analytics }: { analytics: Analytics }) {
     hourly[new Date(iso).getHours()].count += 1;
     totalInWindow += 1;
   }
-  const max = Math.max(...hourly.map(h => h.count), 1);
+  const max = niceMax(Math.max(...hourly.map(h => h.count), 1));
   const peak = hourly.reduce((b, c) => (c.count > b.count ? c : b), { hour: 0, count: 0 });
   const peakLabel = peak.count > 0 ? `${peak.hour.toString().padStart(2, "0")}:00` : "—";
 
