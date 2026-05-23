@@ -1715,25 +1715,36 @@ function HourActivityCard({ analytics }: { analytics: Analytics }) {
         </p>
       ) : (
         <>
-          <div className="flex items-end gap-[2px] h-32" role="img" aria-label={`Bar chart of page views by hour of day for ${label}. Peak hour ${peakLabel} with ${peak.count} views.`}>
-            {hourly.map(h => {
-              const height = (h.count / max) * 100;
-              const isPeak = h.count === peak.count && h.count > 0;
-              return (
-                <div
-                  key={h.hour}
-                  className={`flex-1 rounded-t min-h-[2px] transition-colors ${isPeak ? "bg-primary" : "bg-primary/50"}`}
-                  style={{ height: `${Math.max(height, 2)}%` }}
-                  title={`${h.hour.toString().padStart(2, "0")}:00 — ${h.count} views`}
-                  aria-hidden="true"
-                />
-              );
-            })}
-          </div>
-          <div className="flex justify-between text-[10px] text-muted-foreground mt-1 tabular-nums">
-            <span>00</span><span>06</span><span>12</span><span>18</span><span>23</span>
+          <div className="flex gap-2">
+            <ChartYAxis max={max} heightClass="h-32" />
+            <div className="flex-1">
+              <div
+                className="flex items-end gap-[2px] h-32"
+                role="img"
+                aria-label={`Bar chart of page views by hour of day for ${label}. Peak hour ${peakLabel} with ${peak.count} views.`}
+                style={chartGridStyle}
+              >
+                {hourly.map(h => {
+                  const height = (h.count / max) * 100;
+                  const isPeak = h.count === peak.count && h.count > 0;
+                  return (
+                    <div
+                      key={h.hour}
+                      className={`flex-1 rounded-t min-h-[2px] transition-colors ${isPeak ? "bg-primary" : "bg-primary/50"}`}
+                      style={{ height: `${Math.max(height, 2)}%` }}
+                      title={`${h.hour.toString().padStart(2, "0")}:00 — ${h.count} views`}
+                      aria-hidden="true"
+                    />
+                  );
+                })}
+              </div>
+              <div className="flex justify-between text-[10px] text-muted-foreground mt-1 tabular-nums">
+                <span>00</span><span>06</span><span>12</span><span>18</span><span>23</span>
+              </div>
+            </div>
           </div>
         </>
+
       )}
     </div>
   );
