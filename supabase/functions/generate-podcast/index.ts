@@ -48,6 +48,43 @@ console.log(`[config] TTS_CONCURRENCY effective value: ${TTS_CONCURRENCY}`);
 // Per-chunk retry budget (network blips, transient 5xx, brief 429s).
 const TTS_MAX_RETRIES = 3;
 
+// --- Per-IP rate limiting & global concurrency cap ----------------------------
+// Best-effort, in-memory (per edge instance, resets on cold start). Guards
+// against AI-credit abuse by capping how often any single IP can kick off a
+// *fresh* podcast generation, plus a global ceiling on simultaneous generations
+// per instance. Cached hits are NOT rate-limited.
+const RL_MAX_PER_IP = 3;                  // generations per window per IP
+const RL_WINDOW_MS = 60 * 60 * 1000;      // 1 hour rolling window
+const MAX_CONCURRENT_GENERATIONS = 3;     // per edge instance
+const ipHits = new Map<string, number[]>();
+let activeGenerations = 0;
+
+function getClientIp(req: Request): string {
+  const fwd = req.headers.get("x-forwarded-for");
+  if (fwd) return fwd.split(",")[0].trim();
+  return req.headers.get("cf-connecting-ip") ?? "unknown";
+}
+
+function isIpRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const cutoff = now - RL_WINDOW_MS;
+  const recent = (ipHits.get(ip) ?? []).filter((t) => t > cutoff);
+  if (recent.length >= RL_MAX_PER_IP) {
+    ipHits.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  ipHits.set(ip, recent);
+  if (ipHits.size > 5000) {
+    for (const [k, v] of ipHits) {
+      const kept = v.filter((t) => t > cutoff);
+      if (kept.length === 0) ipHits.delete(k);
+      else ipHits.set(k, kept);
+    }
+  }
+  return false;
+}
+
 interface RequestBody {
   topicId: string;
   topicTitle: string;
