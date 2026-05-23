@@ -12,7 +12,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+    "authorization, x-client-info, apikey, content-type, x-internal-token",
 };
 
 const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY")!;
@@ -947,6 +947,7 @@ async function reinvokeContinue(jobId: string) {
           Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
           "Content-Type": "application/json",
           apikey: SUPABASE_SERVICE_ROLE_KEY,
+          "x-internal-token": SUPABASE_SERVICE_ROLE_KEY,
         },
         body: JSON.stringify({ action: "continue", job_id: jobId }),
       },
@@ -1228,6 +1229,46 @@ Deno.serve(async (req) => {
   try {
     const body = await req.json().catch(() => ({}));
     const action = body.action ?? "start";
+
+    // Authorise: either an internal token (self-chain / cron) or an admin JWT.
+    const internalToken = req.headers.get("x-internal-token");
+    const isInternal =
+      !!internalToken && internalToken === SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!isInternal) {
+      const authHeader = req.headers.get("Authorization");
+      if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        return new Response(
+          JSON.stringify({ error: "Unauthorized" }),
+          { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+      const userClient = createClient(
+        SUPABASE_URL,
+        Deno.env.get("SUPABASE_ANON_KEY")!,
+        { global: { headers: { Authorization: authHeader } } },
+      );
+      const { data: userData, error: userErr } = await userClient.auth.getUser();
+      if (userErr || !userData.user) {
+        return new Response(
+          JSON.stringify({ error: "Invalid token" }),
+          { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+      const { data: roleRow } = await supa
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userData.user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+      if (!roleRow) {
+        return new Response(
+          JSON.stringify({ error: "Admin only" }),
+          { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+    }
+
 
     if (action === "cancel" && body.job_id) {
       await supa.from("topic_audit_jobs").update({
