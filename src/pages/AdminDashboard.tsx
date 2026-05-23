@@ -152,7 +152,9 @@ const AdminDashboard = () => {
       page_path: string | null;
       country: string | null;
       country_name: string | null;
-    }>("visitor_id, visited_at, page_path, country, country_name", (q) => {
+      referrer: string | null;
+      traffic_source: string | null;
+    }>("visitor_id, visited_at, page_path, country, country_name, referrer, traffic_source", (q) => {
       let qq = q;
       if (rangeStartIso) qq = qq.gte("visited_at", rangeStartIso);
       if (rangeEndIso) qq = qq.lte("visited_at", rangeEndIso);
@@ -167,6 +169,13 @@ const AdminDashboard = () => {
     const todayUnique = new Set(todayData.map(v => v.visitor_id));
 
 
+    const normaliseSource = (s: string | null | undefined): TrafficSource | null => {
+      if (!s) return null;
+      const v = s.toLowerCase();
+      if (v === "search" || v === "direct" || v === "social" || v === "referral") return v;
+      return null;
+    };
+
     // First-seen timestamp per visitor → used for new-vs-returning split
     const firstSeen = new Map<string, string>();
     const visitsPerUser = new Map<string, number>();
@@ -174,6 +183,8 @@ const AdminDashboard = () => {
     const lastSeen = new Map<string, string>();
     // Per-visitor country tallies → pick the most-frequent country as their "origin"
     const userCountryCounts = new Map<string, Map<string, { name: string; count: number }>>();
+    // Per-visitor traffic-source tallies → pick the most-frequent as their "acquisition channel"
+    const userSourceCounts = new Map<string, Map<TrafficSource, number>>();
     visits.forEach(v => {
       const prev = firstSeen.get(v.visitor_id);
       if (!prev || v.visited_at < prev) firstSeen.set(v.visitor_id, v.visited_at);
@@ -192,6 +203,12 @@ const AdminDashboard = () => {
         if (v.country_name) entry.name = v.country_name;
         m.set(cc, entry);
       }
+      const src = normaliseSource(v.traffic_source);
+      if (src) {
+        if (!userSourceCounts.has(v.visitor_id)) userSourceCounts.set(v.visitor_id, new Map());
+        const sm = userSourceCounts.get(v.visitor_id)!;
+        sm.set(src, (sm.get(src) ?? 0) + 1);
+      }
     });
 
     const topUsers = Array.from(visitsPerUser.entries())
@@ -204,6 +221,11 @@ const AdminDashboard = () => {
           country = cc;
           countryName = info.name;
         }
+        let trafficSource: TrafficSource | null = null;
+        const sm = userSourceCounts.get(visitorId);
+        if (sm && sm.size > 0) {
+          trafficSource = Array.from(sm.entries()).sort((a, b) => b[1] - a[1])[0][0];
+        }
         return {
           visitorId,
           visits,
@@ -212,10 +234,60 @@ const AdminDashboard = () => {
           lastSeen: lastSeen.get(visitorId) ?? "",
           country,
           countryName,
+          trafficSource,
         };
       })
       .sort((a, b) => b.visits - a.visits)
       .slice(0, 15);
+
+    // Traffic-source breakdown across the selected window.
+    // "Users" = visitors whose *primary* (most-frequent) source matches the bucket,
+    // so the counts add up to the number of classified users (no double-counting).
+    const sourceVisitCounts: Record<TrafficSource, number> = { search: 0, direct: 0, social: 0, referral: 0 };
+    visits.forEach(v => {
+      const s = normaliseSource(v.traffic_source);
+      if (s) sourceVisitCounts[s] += 1;
+    });
+    const sourceUserCounts: Record<TrafficSource, number> = { search: 0, direct: 0, social: 0, referral: 0 };
+    let totalClassifiedUsers = 0;
+    userSourceCounts.forEach(sm => {
+      if (sm.size === 0) return;
+      const top = Array.from(sm.entries()).sort((a, b) => b[1] - a[1])[0][0];
+      sourceUserCounts[top] += 1;
+      totalClassifiedUsers += 1;
+    });
+    const trafficSources = (Object.keys(sourceVisitCounts) as TrafficSource[])
+      .map(source => ({
+        source,
+        users: sourceUserCounts[source],
+        visits: sourceVisitCounts[source],
+        usersPct: totalClassifiedUsers > 0
+          ? Math.round((sourceUserCounts[source] / totalClassifiedUsers) * 100)
+          : 0,
+      }))
+      .sort((a, b) => b.users - a.users || b.visits - a.visits);
+
+    // Top external referring hosts (search engines + other sites)
+    const referrerStats = new Map<string, { users: Set<string>; visits: number; source: TrafficSource }>();
+    visits.forEach(v => {
+      if (!v.referrer) return;
+      let host = "";
+      try { host = new URL(v.referrer).hostname.toLowerCase().replace(/^www\./, ""); } catch { return; }
+      if (!host) return;
+      const src = normaliseSource(v.traffic_source) ?? "referral";
+      if (!referrerStats.has(host)) {
+        referrerStats.set(host, { users: new Set(), visits: 0, source: src });
+      }
+      const e = referrerStats.get(host)!;
+      e.users.add(v.visitor_id);
+      e.visits += 1;
+    });
+    const topReferrers = Array.from(referrerStats.entries())
+      .map(([host, e]) => ({ host, users: e.users.size, visits: e.visits, source: e.source }))
+      .sort((a, b) => b.visits - a.visits)
+      .slice(0, 10);
+
+
 
     // Top countries (by unique visitors, then total visits)
     const countryVisits = new Map<string, { name: string; users: Set<string>; visits: number }>();
