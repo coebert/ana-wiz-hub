@@ -844,6 +844,7 @@ const AdminDashboard = () => {
                     <thead>
                       <tr className="text-left text-muted-foreground border-b border-border">
                         <th className="py-2 pr-3 font-medium">Visitor ID</th>
+                        <th className="py-2 pr-3 font-medium">Country</th>
                         <th className="py-2 pr-3 font-medium text-right">Visits</th>
                         <th className="py-2 pr-3 font-medium text-right">Active days</th>
                         <th className="py-2 pr-3 font-medium text-right">First seen</th>
@@ -859,10 +860,21 @@ const AdminDashboard = () => {
                           ageMin < 60 ? `${ageMin}m ago` :
                           ageMin < 1440 ? `${Math.floor(ageMin / 60)}h ago` :
                           `${Math.floor(ageMin / 1440)}d ago`;
+                        const flag = countryFlag(u.country);
                         return (
                           <tr key={u.visitorId} className="border-b border-border/50">
                             <td className="py-2 pr-3 font-mono text-foreground truncate max-w-[180px]" title={u.visitorId}>
                               {u.visitorId.length > 20 ? u.visitorId.slice(0, 18) + "…" : u.visitorId}
+                            </td>
+                            <td className="py-2 pr-3 text-foreground whitespace-nowrap">
+                              {u.country ? (
+                                <span className="inline-flex items-center gap-1.5">
+                                  <span aria-hidden className="text-base leading-none">{flag}</span>
+                                  <span>{u.countryName ?? u.country}</span>
+                                </span>
+                              ) : (
+                                <span className="text-muted-foreground">—</span>
+                              )}
                             </td>
                             <td className="py-2 pr-3 text-right tabular-nums font-medium text-foreground">{u.visits.toLocaleString()}</td>
                             <td className="py-2 pr-3 text-right tabular-nums text-muted-foreground">{u.activeDays}</td>
