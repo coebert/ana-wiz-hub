@@ -170,12 +170,14 @@ const HumidityGasSamplingTopic = () => {
                 The mass spectrometer is <strong>one of two clinical methods (the other being Raman scattering) capable of
                 identifying all respiratory and anaesthetic gases simultaneously</strong>. Gas molecules are ionised by electron
                 bombardment in a high vacuum, then accelerated through a voltage gradient and deflected by a magnetic field. The
-                radius of curvature depends on mass-to-charge ratio: <strong>r = mv/qB</strong>. Lighter ions curve more tightly.
+                radius of curvature depends on mass-to-charge ratio: <strong>r = mv/qB</strong>. Lighter ions curve more tightly
+                <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
               <p>
                 A key exam point: <strong>N₂O and CO₂ both have m/z = 44</strong>. The mass spectrometer distinguishes them by
                 their different fragmentation patterns (daughter ions). The instrument is expensive, large, and requires a high
-                vacuum pump, but can be multiplexed to serve multiple operating theatres via a rotating valve and long sampling lines.
+                vacuum pump, but can be multiplexed to serve multiple operating theatres via a rotating valve and long sampling lines
+                <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
             </div>
             </CollapsibleSubsection>
