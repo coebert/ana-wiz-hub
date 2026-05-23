@@ -272,6 +272,7 @@ export const diagramSnapshotRegistry: Record<string, LazyExoticComponent<Compone
   "PaediatricVitalsTable": lazy(() => import("./PaediatricVitalsTable")),
   "PainMechanismsDiagram": lazy(() => import("./PainMechanismsDiagram")),
   "ParacetamolNomogramDiagram": lazy(() => import("./ParacetamolNomogramDiagram")),
+  "ParamagneticO2Diagram": lazy(() => import("./ParamagneticO2Diagram")),
   "ParavertebralSpaceDiagram": lazy(() => import("./ParavertebralSpaceDiagram")),
   "ParklandCalculator": lazy(() => import("./ParklandCalculator")),
   "PartialAirwayObstructionDiagram": lazy(() => import("./PartialAirwayObstructionDiagram")),

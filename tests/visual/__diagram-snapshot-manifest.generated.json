@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-22T21:05:47.436Z",
-  "count": 371,
+  "generatedAt": "2026-05-23T05:33:13.322Z",
+  "count": 372,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -1057,6 +1057,10 @@
     {
       "name": "ParacetamolNomogramDiagram",
       "route": "/dev/diagram-snapshot/ParacetamolNomogramDiagram"
+    },
+    {
+      "name": "ParamagneticO2Diagram",
+      "route": "/dev/diagram-snapshot/ParamagneticO2Diagram"
     },
     {
       "name": "ParavertebralSpaceDiagram",
