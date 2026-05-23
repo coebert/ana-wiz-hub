@@ -452,6 +452,15 @@ Deno.serve(async (req) => {
       return jsonResponse({ error: `content must be a string under ${MAX_CONTENT_CHARS} characters` }, 400);
     }
 
+    // Reject any topicId that isn't a known curriculum slug. The allowlist is
+    // generated from src/data/curriculum.ts via
+    // scripts/generate-topic-id-allowlist.mjs. This blocks attackers from
+    // burning AI credits on arbitrary made-up topic ids.
+    if (typeof topicId !== "string" || !/^[a-z0-9-]{1,80}$/.test(topicId) || !TOPIC_ID_ALLOWLIST.has(topicId)) {
+      console.warn(`[generate-podcast] Rejected unknown topicId: ${String(topicId).slice(0, 100)}`);
+      return jsonResponse({ error: "Unknown topicId — not a recognised curriculum topic." }, 400);
+    }
+
     // Validate force-regenerate password before doing anything else.
     const forceRegenerate = force === true;
     if (forceRegenerate) {
