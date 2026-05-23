@@ -503,6 +503,44 @@ Deno.serve(async (req) => {
       console.log(`[${topicId}] Force-regenerate authorised — bypassing cache.`);
     }
 
+    // Rate-limit & concurrency gates — only on the generation path (cache
+    // hits above return early). Best-effort, in-memory, per edge instance.
+    const ip = getClientIp(req);
+    if (isIpRateLimited(ip)) {
+      console.warn(`[${topicId}] IP ${ip} rate-limited`);
+      return new Response(
+        JSON.stringify({
+          status: "failed",
+          error: "Too many podcast generations from your network. Please try again in an hour.",
+          code: "RATE_LIMITED",
+        }),
+        {
+          status: 429,
+          headers: {
+            ...corsHeaders,
+            "Content-Type": "application/json",
+            "Retry-After": String(Math.ceil(RL_WINDOW_MS / 1000)),
+          },
+        },
+      );
+    }
+
+    if (activeGenerations >= MAX_CONCURRENT_GENERATIONS) {
+      console.warn(`[${topicId}] Concurrency cap hit (${activeGenerations}/${MAX_CONCURRENT_GENERATIONS})`);
+      return new Response(
+        JSON.stringify({
+          status: "failed",
+          error: "Server is busy generating other podcasts. Please try again in a minute.",
+          code: "BUSY",
+        }),
+        {
+          status: 503,
+          headers: { ...corsHeaders, "Content-Type": "application/json", "Retry-After": "60" },
+        },
+      );
+    }
+    activeGenerations++;
+
     await supabase.from("podcasts").upsert(
       {
         topic_id: topicId,
