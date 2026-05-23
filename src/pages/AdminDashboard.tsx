@@ -10,6 +10,16 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon } from "lucide-react";
 
+/** Convert an ISO 3166-1 alpha-2 country code (e.g. "GB") to its flag emoji. */
+function countryFlag(code: string | null | undefined): string {
+  if (!code || code.length !== 2) return "";
+  const cc = code.toUpperCase();
+  if (!/^[A-Z]{2}$/.test(cc)) return "";
+  const A = 0x1f1e6;
+  return String.fromCodePoint(A + cc.charCodeAt(0) - 65, A + cc.charCodeAt(1) - 65);
+}
+
+
 interface TopicStat {
   id: string;
   title: string;
