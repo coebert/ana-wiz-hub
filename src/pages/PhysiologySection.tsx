@@ -13,8 +13,9 @@ const PhysiologySection = () => {
 
   return (
     <SectionLayout
-      title="Physiology"
-      subtitle="Applied physiology for the anaesthetist"
+      title="Anaesthesia Physiology Explained"
+      subtitle="Applied physiology for anaesthesia and intensive care — cardiovascular, respiratory, renal, neuro and endocrine systems for FRCA and FFICM."
+      metaDescription="Anaesthesia physiology explained for FRCA and FFICM: cardiovascular, respiratory, renal, neurological and endocrine systems applied to anaesthesia and intensive care — concise notes, diagrams, MCQs and viva practice."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-physiology"
@@ -26,6 +27,16 @@ const PhysiologySection = () => {
           <p className="text-xs text-muted-foreground">Available physiology topics</p>
         </div>
       </div>
+      <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
+        <p className="text-sm text-foreground leading-relaxed">
+          <strong>Anaesthesia physiology explained.</strong> Applied physiology
+          for FRCA Primary, Final and FFICM trainees — cardiovascular, respiratory,
+          renal, neurological, endocrine and metabolic systems, framed around how
+          anaesthetic drugs, mechanical ventilation and critical illness perturb
+          normal function. Each topic pairs concise revision notes with diagrams,
+          MCQs and structured viva answers so the physiology is exam-ready.
+        </p>
+      </section>
       <div className="space-y-3">
         {physiologyTopics.map((topic) => (
           <div key={topic.id} className="relative">
