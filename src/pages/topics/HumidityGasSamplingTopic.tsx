@@ -106,20 +106,23 @@ const HumidityGasSamplingTopic = () => {
               <p>
                 <strong>Absolute humidity</strong> is the mass of water vapour per unit volume of gas (mg/L). <strong>Relative
                 humidity</strong> is the ratio of actual water vapour content to the maximum possible at that temperature (%).
-                At 37°C, the saturated vapour pressure of water is 6.3 kPa, giving an absolute humidity of 44 mg/L at 100% RH.
+                At 37°C, the saturated vapour pressure of water is 6.3 kPa, giving an absolute humidity of 44 mg/L at 100% RH
+                <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ 2007" />.
               </p>
               <p>
                 The nose warms, humidifies, and filters inspired gas. The point at which gas is fully conditioned to 37 °C and
                 100% RH (44 mg/L) is the <strong>isothermic saturation boundary (ISB)</strong>. In a healthy, resting adult this
                 lies in the large bronchi (around the 4th–5th generation; often approximated to the level of the carina for
                 teaching). Endotracheal intubation bypasses the nose, shifting the ISB distally and risking mucociliary damage,
-                secretion thickening, and heat loss.
+                secretion thickening, and heat loss <InlineRef topicId="humidity-gas-sampling" refLabel="Al-Shaikh & Stacey Ch.8" />.
               </p>
               <p>
                 Modern <strong>heat and moisture exchange filters (HMEFs)</strong> passively trap heat and moisture from
                 exhaled gas, typically returning <strong>30–38 mg/L</strong> on inspiration depending on the device and
-                ventilation parameters. They add mechanical dead space (30–90 mL). <strong>Heated water bath humidifiers</strong>
-                actively achieve 44 mg/L but carry risks of circuit condensation, infection, and airway burns.
+                ventilation parameters <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ Humidification 2018" />.
+                They add mechanical dead space (30–90 mL). <strong>Heated water bath humidifiers</strong>
+                actively achieve 44 mg/L but carry risks of circuit condensation, infection, and airway burns
+                <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ 2007" />.
               </p>
             </div>
             </CollapsibleSubsection>
