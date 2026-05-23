@@ -69,7 +69,7 @@ const SIUnitsThermodynamicsTopic = () => {
           "Middleton Ch.1",
           "Middleton Ch.8",
           "NICE CG65",
-          "NICE NG125",
+          "NICE NG180",
           "BJA Educ 2017 (Pressure)",
           "NIST SI Guide App B.8",
           "BJA Educ 2008",
