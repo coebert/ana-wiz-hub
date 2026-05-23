@@ -72,8 +72,8 @@ const TemperatureMeasurementTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY] },
       }}
       sectionSources={{
-        objectives: ["Cross & Plunkett Ch.11", "NICE NG125"],
-        keyPoints: ["BJA Educ 2014", "NICE NG125", "Cross & Plunkett Ch.11"],
+        objectives: ["Cross & Plunkett Ch.11", "NICE CG65"],
+        keyPoints: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
