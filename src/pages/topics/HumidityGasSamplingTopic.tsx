@@ -89,7 +89,7 @@ const HumidityGasSamplingTopic = () => {
               Gas analysis and humidity management are fundamental to safe anaesthesia and ventilation. Understanding the physics
               of flow measurement, gas identification, and airway humidification underpins rational use of monitoring equipment
               and ventilator circuits. This topic covers pneumotachography, mass spectrometry, Raman scattering, and the physics
-              of humidity — all core Primary FRCA material.
+              of humidity — all core Primary FRCA material <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Education" />.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
