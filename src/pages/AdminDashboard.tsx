@@ -1685,6 +1685,6 @@ function HourActivityCard({ analytics }: { analytics: Analytics }) {
       )}
     </div>
   );
-};
+}
 
 export default AdminDashboard;
