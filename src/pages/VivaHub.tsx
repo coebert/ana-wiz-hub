@@ -111,7 +111,7 @@ const VivaHub = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Viva voce practice — AI FRCA & FFICM examiner | AnaesthesiaCore</title>
+        <title>AI Viva Practice — FRCA & FFICM | AnaesthesiaCore</title>
         <meta
           name="description"
           content="Rehearse FRCA Primary, Final and FFICM viva questions out loud. An AI examiner asks spoken questions, listens to your answer, and gives rubric-based feedback."
