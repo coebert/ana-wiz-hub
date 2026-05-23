@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import brainLogo from "/brain-logo.webp";
 
 /**
@@ -51,6 +51,33 @@ const NeonSplash = () => {
   const [mounted, setMounted] = useState(shouldShowSplash);
   const [leaving, setLeaving] = useState(false);
   const [ready, setReady] = useState(false);
+  // Measured rect of the real landing brain logo so the splash brain
+  // lands on the exact same pixel box regardless of header height,
+  // breakpoint, or future layout changes. Null = use Tailwind fallback.
+  const [rect, setRect] = useState<{ top: number; left: number; size: number } | null>(null);
+
+  useLayoutEffect(() => {
+    if (typeof window === "undefined" || !mounted) return;
+    const measure = () => {
+      const el = document.querySelector(
+        'img[alt="AnaesthesiaCore logo"]',
+      ) as HTMLImageElement | null;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0) {
+        setRect({ top: r.top, left: r.left, size: r.width });
+      }
+    };
+    measure();
+    // Re-measure once styles/images have settled and on resize.
+    const raf = requestAnimationFrame(measure);
+    window.addEventListener("resize", measure);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", measure);
+    };
+  }, [mounted]);
+
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -122,13 +149,28 @@ const NeonSplash = () => {
         style={{ transition: `opacity 200ms ease-out` }}
         className={ready ? "opacity-100" : "opacity-0"}
       >
-      {/* Logo box — identical geometry to Landing.tsx hero logo.
-          Vertical offset = sticky Header + hero section padding.
-            • mobile (<sm): h-14 (56) + mobile exam-chip row (27) + border (1) + py-12 (48) = 132
-            • sm..md:     h-14 (56) + border (1) + py-12 (48) = 105
-            • md+:        h-14 (56) + border (1) + py-20 (80) = 137
-          The chip row is `flex sm:hidden` in Header.tsx so it disappears at sm+. */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[132px] sm:top-[105px] md:top-[137px] h-52 w-52 md:h-72 md:w-72">
+      {/* Logo box — geometry measured directly from the real Landing brain
+          logo at runtime (see useLayoutEffect above). This makes the splash
+          immune to header-height changes, breakpoint drift, or future hero
+          padding tweaks. Falls back to the previous hard-coded offsets only
+          if the measurement hasn't completed yet (first paint). */}
+      <div
+        className={
+          rect
+            ? "absolute"
+            : "absolute left-1/2 -translate-x-1/2 top-[132px] sm:top-[105px] md:top-[137px] h-52 w-52 md:h-72 md:w-72"
+        }
+        style={
+          rect
+            ? {
+                top: `${rect.top}px`,
+                left: `${rect.left}px`,
+                width: `${rect.size}px`,
+                height: `${rect.size}px`,
+              }
+            : undefined
+        }
+      >
         {/* Ambient glow halo. Centered behind the brain via inset-based
             sizing so it doesn't depend on flex centering. */}
         <div
@@ -147,15 +189,14 @@ const NeonSplash = () => {
           }}
         />
 
-        {/* Logo — size classes applied directly (mirrors Landing.tsx exactly,
-            no flex wrapper) so the rendered box is guaranteed to be the same
-            208/288 px square as the landing hero logo. */}
+        {/* Logo — sized to fill the measured box so it exactly overlays the
+            real landing brain. */}
         <img
           src={brainLogo}
           alt=""
           width={288}
           height={288}
-          className={`relative h-52 w-52 md:h-72 md:w-72 ${leaving ? "" : "animate-neon-flicker"}`}
+          className={`relative ${rect ? "w-full h-full" : "h-52 w-52 md:h-72 md:w-72"} ${leaving ? "" : "animate-neon-flicker"}`}
           style={{
             transition: `filter ${FADE_MS}ms ease-in-out`,
             ...(leaving
