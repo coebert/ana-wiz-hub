@@ -231,7 +231,7 @@ export const AAShuntAnimation = () => {
           {/* ── Products row ── */}
           {/* COX products (collapse with pgFlow) */}
           <ProductBox x={cox1X} y={productY} color="hsl(210 70% 50%)" title="TXA₂ · PGE₂ · PGI₂" sub="(platelet · gastric · renal)" intensity={pgFlow} />
-          <ProductBox x={cox2X} y={productY} color="hsl(280 55% 55%)" title="PGE₂ · PGI₂" sub="(inflammation · pain · fever)" intensity={pgFlow} />
+          <ProductBox x={cox2X} y={productY} color="hsl(280 55% 55%)" title="PGE₂ · PGI₂" sub="(inflammation · pain · fever · endothelium · macula densa)" intensity={pgFlow} />
           {/* 5-LOX products (grow with ltProduced) */}
           <ProductBox x={loxX} y={productY} color="hsl(0 65% 50%)" title="LTC₄ · D₄ · E₄" sub="(cysteinyl leukotrienes)" intensity={0.25 + ltProduced * 0.75} highlighted={ltProduced > 0.3} />
   
