@@ -627,6 +627,8 @@ const AdminDashboard = () => {
       topCountries,
       trafficSources,
       topReferrers,
+      podcasts: podcastsSummary,
+      viva: vivaSummary,
     });
     setLoading(false);
   };
