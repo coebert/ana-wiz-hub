@@ -17,8 +17,9 @@ const ClinicalSection = () => {
 
   return (
     <SectionLayout
-      title="Clinical Anaesthesia"
-      subtitle="Subspecialty anaesthesia and clinical management"
+      title="Clinical Anaesthesia Explained"
+      subtitle="Subspecialty anaesthesia explained — obstetric, paediatric, neuro, cardiac, regional and trauma anaesthesia for FRCA and FFICM."
+      metaDescription="Clinical anaesthesia explained for FRCA and FFICM exams: obstetric, paediatric, neuro, cardiac, regional, day-case and trauma anaesthesia — concise revision notes, diagrams, MCQs and structured viva answers."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-clinical"
@@ -30,6 +31,16 @@ const ClinicalSection = () => {
           <p className="text-xs text-muted-foreground">Clinical anaesthesia topics</p>
         </div>
       </div>
+      <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
+        <p className="text-sm text-foreground leading-relaxed">
+          <strong>Clinical anaesthesia explained.</strong> Subspecialty
+          anaesthesia for FRCA Final and FFICM trainees — obstetric, paediatric,
+          neuro, cardiothoracic, vascular, regional, day-case and trauma
+          anaesthesia, plus airway management and resuscitation. Each topic pairs
+          concise clinical notes with diagrams, MCQs and structured viva
+          answers.
+        </p>
+      </section>
       <div className="space-y-3">
         {visibleTopics.map((topic) => (
           <TopicCard
