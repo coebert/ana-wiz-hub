@@ -8,7 +8,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick } from "lucide-react";
 
 /** Convert an ISO 3166-1 alpha-2 country code (e.g. "GB") to its flag emoji. */
 function countryFlag(code: string | null | undefined): string {
@@ -46,8 +46,10 @@ interface Analytics {
   last30Days: { date: string; count: number }[];
   hourlyToday: { hour: number; count: number }[];
   topEntryPaths: { path: string; count: number }[];
-  topUsers: { visitorId: string; visits: number; activeDays: number; firstSeen: string; lastSeen: string; country: string | null; countryName: string | null }[];
+  topUsers: { visitorId: string; visits: number; activeDays: number; firstSeen: string; lastSeen: string; country: string | null; countryName: string | null; trafficSource: TrafficSource | null }[];
   topCountries: { country: string; countryName: string; users: number; visits: number }[];
+  trafficSources: { source: TrafficSource; users: number; visits: number; usersPct: number }[];
+  topReferrers: { host: string; users: number; visits: number; source: TrafficSource }[];
   topTopics: TopicStat[];
   sectionBreakdown: { section: string; views: number }[];
   retentionCohorts: {
