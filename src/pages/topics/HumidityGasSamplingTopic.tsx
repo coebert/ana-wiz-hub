@@ -306,7 +306,7 @@ const HumidityGasSamplingTopic = () => {
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Once a gas analyser exists, the next engineering question is <strong>where to put the sensor relative to the
-                breathing circuit</strong>. Two designs dominate clinical practice:
+                breathing circuit</strong>. Two designs dominate clinical practice <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />:
               </p>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li><strong>Mainstream (in-line)</strong> — the IR sensor sits in a cuvette inserted directly between the
