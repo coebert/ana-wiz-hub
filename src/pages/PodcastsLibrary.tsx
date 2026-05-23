@@ -286,6 +286,41 @@ const PodcastsLibrary = () => {
     setCollapsed((prev) => ({ ...prev, [key]: !open }));
   };
 
+  const collectionJsonLd = useMemo(() => {
+    if (!podcasts || podcasts.length === 0) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Podcast Library — AnaesthesiaCore",
+      url: "https://anaesthesiacore.app/podcasts",
+      description:
+        "AI-generated FRCA & FFICM revision podcasts for every AnaesthesiaCore topic.",
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: podcasts.length,
+        itemListElement: podcasts.slice(0, 100).map((p, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "PodcastEpisode",
+            name: p.topic_title,
+            url: p.topicPath
+              ? `https://anaesthesiacore.app${p.topicPath}`
+              : "https://anaesthesiacore.app/podcasts",
+            associatedMedia: {
+              "@type": "AudioObject",
+              contentUrl: p.audio_url,
+              encodingFormat: "audio/mpeg",
+              ...(p.duration_seconds
+                ? { duration: `PT${Math.round(p.duration_seconds)}S` }
+                : {}),
+            },
+          },
+        })),
+      },
+    };
+  }, [podcasts]);
+
   return (
     <SectionLayout
       title="Podcast Library"
@@ -295,6 +330,11 @@ const PodcastsLibrary = () => {
       backLabel="Home"
       disableAutoTOC
     >
+      {collectionJsonLd && (
+        <Helmet>
+          <script type="application/ld+json">{JSON.stringify(collectionJsonLd)}</script>
+        </Helmet>
+      )}
       <Link
         to="/viva/library"
         className="group mb-6 flex items-center justify-between gap-3 rounded-lg border border-clinical/30 bg-clinical/5 p-3 sm:p-4 transition-colors hover:border-clinical/60 hover:bg-clinical/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
