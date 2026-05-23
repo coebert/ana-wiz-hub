@@ -10,6 +10,16 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon } from "lucide-react";
 
+/** Convert an ISO 3166-1 alpha-2 country code (e.g. "GB") to its flag emoji. */
+function countryFlag(code: string | null | undefined): string {
+  if (!code || code.length !== 2) return "";
+  const cc = code.toUpperCase();
+  if (!/^[A-Z]{2}$/.test(cc)) return "";
+  const A = 0x1f1e6;
+  return String.fromCodePoint(A + cc.charCodeAt(0) - 65, A + cc.charCodeAt(1) - 65);
+}
+
+
 interface TopicStat {
   id: string;
   title: string;
@@ -36,7 +46,7 @@ interface Analytics {
   last30Days: { date: string; count: number }[];
   hourlyToday: { hour: number; count: number }[];
   topEntryPaths: { path: string; count: number }[];
-  topUsers: { visitorId: string; visits: number; activeDays: number; firstSeen: string; lastSeen: string }[];
+  topUsers: { visitorId: string; visits: number; activeDays: number; firstSeen: string; lastSeen: string; country: string | null; countryName: string | null }[];
   topCountries: { country: string; countryName: string; users: number; visits: number }[];
   topTopics: TopicStat[];
   sectionBreakdown: { section: string; views: number }[];
@@ -152,6 +162,8 @@ const AdminDashboard = () => {
     const visitsPerUser = new Map<string, number>();
     const activeDaysPerUser = new Map<string, Set<string>>();
     const lastSeen = new Map<string, string>();
+    // Per-visitor country tallies → pick the most-frequent country as their "origin"
+    const userCountryCounts = new Map<string, Map<string, { name: string; count: number }>>();
     visits.forEach(v => {
       const prev = firstSeen.get(v.visitor_id);
       if (!prev || v.visited_at < prev) firstSeen.set(v.visitor_id, v.visited_at);
@@ -161,16 +173,37 @@ const AdminDashboard = () => {
       const day = v.visited_at.slice(0, 10);
       if (!activeDaysPerUser.has(v.visitor_id)) activeDaysPerUser.set(v.visitor_id, new Set());
       activeDaysPerUser.get(v.visitor_id)!.add(day);
+      const cc = (v.country ?? "").toUpperCase();
+      if (cc && cc.length === 2) {
+        if (!userCountryCounts.has(v.visitor_id)) userCountryCounts.set(v.visitor_id, new Map());
+        const m = userCountryCounts.get(v.visitor_id)!;
+        const entry = m.get(cc) ?? { name: v.country_name ?? cc, count: 0 };
+        entry.count += 1;
+        if (v.country_name) entry.name = v.country_name;
+        m.set(cc, entry);
+      }
     });
 
     const topUsers = Array.from(visitsPerUser.entries())
-      .map(([visitorId, visits]) => ({
-        visitorId,
-        visits,
-        activeDays: activeDaysPerUser.get(visitorId)?.size ?? 0,
-        firstSeen: firstSeen.get(visitorId) ?? "",
-        lastSeen: lastSeen.get(visitorId) ?? "",
-      }))
+      .map(([visitorId, visits]) => {
+        let country: string | null = null;
+        let countryName: string | null = null;
+        const m = userCountryCounts.get(visitorId);
+        if (m && m.size > 0) {
+          const [cc, info] = Array.from(m.entries()).sort((a, b) => b[1].count - a[1].count)[0];
+          country = cc;
+          countryName = info.name;
+        }
+        return {
+          visitorId,
+          visits,
+          activeDays: activeDaysPerUser.get(visitorId)?.size ?? 0,
+          firstSeen: firstSeen.get(visitorId) ?? "",
+          lastSeen: lastSeen.get(visitorId) ?? "",
+          country,
+          countryName,
+        };
+      })
       .sort((a, b) => b.visits - a.visits)
       .slice(0, 15);
 
@@ -811,6 +844,7 @@ const AdminDashboard = () => {
                     <thead>
                       <tr className="text-left text-muted-foreground border-b border-border">
                         <th className="py-2 pr-3 font-medium">Visitor ID</th>
+                        <th className="py-2 pr-3 font-medium">Country</th>
                         <th className="py-2 pr-3 font-medium text-right">Visits</th>
                         <th className="py-2 pr-3 font-medium text-right">Active days</th>
                         <th className="py-2 pr-3 font-medium text-right">First seen</th>
@@ -826,10 +860,21 @@ const AdminDashboard = () => {
                           ageMin < 60 ? `${ageMin}m ago` :
                           ageMin < 1440 ? `${Math.floor(ageMin / 60)}h ago` :
                           `${Math.floor(ageMin / 1440)}d ago`;
+                        const flag = countryFlag(u.country);
                         return (
                           <tr key={u.visitorId} className="border-b border-border/50">
                             <td className="py-2 pr-3 font-mono text-foreground truncate max-w-[180px]" title={u.visitorId}>
                               {u.visitorId.length > 20 ? u.visitorId.slice(0, 18) + "…" : u.visitorId}
+                            </td>
+                            <td className="py-2 pr-3 text-foreground whitespace-nowrap">
+                              {u.country ? (
+                                <span className="inline-flex items-center gap-1.5">
+                                  <span aria-hidden className="text-base leading-none">{flag}</span>
+                                  <span>{u.countryName ?? u.country}</span>
+                                </span>
+                              ) : (
+                                <span className="text-muted-foreground">—</span>
+                              )}
                             </td>
                             <td className="py-2 pr-3 text-right tabular-nums font-medium text-foreground">{u.visits.toLocaleString()}</td>
                             <td className="py-2 pr-3 text-right tabular-nums text-muted-foreground">{u.activeDays}</td>
@@ -875,6 +920,7 @@ const AdminDashboard = () => {
                       {analytics.topCountries.map(c => (
                         <tr key={c.country} className="border-b border-border/50">
                           <td className="py-2 pr-3 text-foreground">
+                            <span aria-hidden className="text-base leading-none mr-2">{countryFlag(c.country)}</span>
                             <span className="font-mono text-muted-foreground mr-2">{c.country}</span>
                             {c.countryName}
                           </td>
