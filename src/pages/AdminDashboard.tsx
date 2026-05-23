@@ -1004,25 +1004,36 @@ const AdminDashboard = () => {
               <p className="text-xs text-muted-foreground mb-3">
                 Daily distinct visitors · {analytics.monthlyUsers.toLocaleString()} unique over the period
               </p>
-              <div className="flex items-end gap-[2px] h-24" role="img" aria-label="Bar chart of unique users per day for the last 30 days">
-                {analytics.last30Days.map(day => {
-                  const max = Math.max(...analytics.last30Days.map(d => d.count), 1);
-                  const height = (day.count / max) * 100;
-                  return (
-                    <div
-                      key={day.date}
-                      className="flex-1 bg-primary/60 rounded-t min-h-[2px] hover:bg-primary transition-colors"
-                      style={{ height: `${Math.max(height, 2)}%` }}
-                      title={`${day.date}: ${day.count} unique users`}
-                      aria-hidden="true"
-                    />
-                  );
-                })}
+              <div className="flex gap-2">
+                <ChartYAxis max={niceMax(Math.max(...analytics.last30Days.map(d => d.count), 1))} heightClass="h-24" />
+                <div className="flex-1">
+                  <div
+                    className="flex items-end gap-[2px] h-24"
+                    role="img"
+                    aria-label="Bar chart of unique users per day for the last 30 days"
+                    style={chartGridStyle}
+                  >
+                    {analytics.last30Days.map(day => {
+                      const max = niceMax(Math.max(...analytics.last30Days.map(d => d.count), 1));
+                      const height = (day.count / max) * 100;
+                      return (
+                        <div
+                          key={day.date}
+                          className="flex-1 bg-primary/60 rounded-t min-h-[2px] hover:bg-primary transition-colors"
+                          style={{ height: `${Math.max(height, 2)}%` }}
+                          title={`${day.date}: ${day.count} unique users`}
+                          aria-hidden="true"
+                        />
+                      );
+                    })}
+                  </div>
+                  <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
+                    <span>{analytics.last30Days[0]?.date}</span>
+                    <span>{analytics.last30Days[analytics.last30Days.length - 1]?.date}</span>
+                  </div>
+                </div>
               </div>
-              <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
-                <span>{analytics.last30Days[0]?.date}</span>
-                <span>{analytics.last30Days[analytics.last30Days.length - 1]?.date}</span>
-              </div>
+
             </div>
 
             {/* Hour of day — configurable window */}
