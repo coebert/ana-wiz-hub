@@ -14,8 +14,9 @@ const IntensiveCareSection = () => {
 
   return (
     <SectionLayout
-      title="Intensive Care Medicine"
-      subtitle="Critical care physiology, organ support, and disease management"
+      title="Intensive Care Medicine Explained"
+      subtitle="Intensive care medicine explained — organ support, sepsis, ARDS, shock and neurocritical care for FFICM and FRCA trainees."
+      metaDescription="Intensive care medicine explained for FFICM and FRCA trainees: mechanical ventilation, sepsis, ARDS, shock, AKI, neurocritical care and organ support — concise notes, diagrams, MCQs and structured viva answers."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-icu"
@@ -27,6 +28,15 @@ const IntensiveCareSection = () => {
           <p className="text-xs text-muted-foreground">Intensive care topics</p>
         </div>
       </div>
+      <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
+        <p className="text-sm text-foreground leading-relaxed">
+          <strong>Intensive care medicine explained.</strong> Critical care for
+          FFICM and FRCA Final trainees — mechanical ventilation and ARDS,
+          sepsis and shock, AKI and renal replacement, neurocritical care,
+          nutrition, sedation and end-of-life decisions. Each topic pairs
+          concise notes with diagrams, MCQs and structured viva answers.
+        </p>
+      </section>
       <SectionTopicsList section="intensive-care" topics={visibleTopics} />
       <SectionSummary section="intensive-care" />
     </SectionLayout>
