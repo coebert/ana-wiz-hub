@@ -929,6 +929,7 @@ const AdminDashboard = () => {
                       <tr className="text-left text-muted-foreground border-b border-border">
                         <th className="py-2 pr-3 font-medium">Visitor ID</th>
                         <th className="py-2 pr-3 font-medium">Country</th>
+                        <th className="py-2 pr-3 font-medium">Source</th>
                         <th className="py-2 pr-3 font-medium text-right">Visits</th>
                         <th className="py-2 pr-3 font-medium text-right">Active days</th>
                         <th className="py-2 pr-3 font-medium text-right">First seen</th>
@@ -957,6 +958,20 @@ const AdminDashboard = () => {
                                   <span>{u.countryName ?? u.country}</span>
                                 </span>
                               ) : (
+                                <span className="text-muted-foreground">—</span>
+                              )}
+                            </td>
+                            <td className="py-2 pr-3 text-foreground whitespace-nowrap">
+                              {u.trafficSource ? (() => {
+                                const meta = TRAFFIC_SOURCE_META[u.trafficSource];
+                                const Icon = meta.icon;
+                                return (
+                                  <span className="inline-flex items-center gap-1.5" title={meta.help}>
+                                    <Icon className={`w-3.5 h-3.5 ${meta.color}`} aria-hidden="true" />
+                                    <span>{meta.label}</span>
+                                  </span>
+                                );
+                              })() : (
                                 <span className="text-muted-foreground">—</span>
                               )}
                             </td>
