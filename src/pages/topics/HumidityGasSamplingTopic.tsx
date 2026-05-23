@@ -189,18 +189,20 @@ const HumidityGasSamplingTopic = () => {
               <p>
                 When monochromatic light (argon laser) interacts with gas molecules, most photons scatter elastically
                 (<strong>Rayleigh scattering</strong> — same frequency). A tiny fraction (~1 in 10⁷) scatter inelastically
-                with a frequency shift corresponding to the molecule's vibrational energy — this is <strong>Raman scattering</strong>.
+                with a frequency shift corresponding to the molecule's vibrational energy — this is <strong>Raman scattering</strong>
+                <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
               <p>
                 The <strong>Stokes shift</strong> (lower frequency) is most commonly measured. Each molecule has a unique Raman
                 shift acting as a fingerprint. Unlike infrared absorption (which requires a changing dipole moment), Raman can
                 detect <strong>homonuclear diatomic molecules</strong> like N₂ and O₂. It can also distinguish N₂O from CO₂
-                by their different vibrational modes — something IR absorption finds challenging.
+                by their different vibrational modes — something IR absorption finds challenging
+                <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
               <p>
                 <strong>Clinical Raman analysers</strong> (e.g., Rascal™) are fast, measure all gases, and don't require a vacuum.
                 However, the signal is extremely weak, requiring sensitive photodetectors and powerful lasers, making the equipment
-                expensive. They are not widely used in current clinical practice.
+                expensive. They are not widely used in current clinical practice <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
             </div>
             </CollapsibleSubsection>
