@@ -19,6 +19,14 @@ function countryFlag(code: string | null | undefined): string {
   return String.fromCodePoint(A + cc.charCodeAt(0) - 65, A + cc.charCodeAt(1) - 65);
 }
 
+type TrafficSource = "direct" | "search" | "social" | "referral";
+
+const TRAFFIC_SOURCE_META: Record<TrafficSource, { label: string; help: string; icon: typeof Search; color: string }> = {
+  search:   { label: "Search engines", help: "Visitors who arrived via Google, Bing, DuckDuckGo, etc.", icon: Search,             color: "text-blue-500" },
+  direct:   { label: "Direct",         help: "Bookmarks, typed URL, or app links — no referrer header.",  icon: MousePointerClick, color: "text-emerald-500" },
+  social:   { label: "Social",         help: "Visitors arriving from a social network or messenger.",     icon: Share2,            color: "text-pink-500" },
+  referral: { label: "Other sites",    help: "Visitors who clicked a link on another website.",           icon: Link2,             color: "text-amber-500" },
+};
 
 interface TopicStat {
   id: string;
