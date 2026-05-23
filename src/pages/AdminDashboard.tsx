@@ -913,6 +913,82 @@ const AdminDashboard = () => {
               )}
             </div>
 
+            {/* Traffic sources — how visitors arrived (direct vs search vs other) */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Share2 className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Traffic Sources</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                How visitors reached the app. Each user is assigned to their most-frequent source so percentages add up to 100%.
+                {analytics.trafficSources.every(s => s.users === 0 && s.visits === 0) && (
+                  <> No source data yet — traffic source is recorded from new visits onwards.</>
+                )}
+              </p>
+              {analytics.trafficSources.some(s => s.users > 0 || s.visits > 0) && (
+                <ul className="space-y-2" aria-label="Traffic source breakdown">
+                  {analytics.trafficSources.map(s => {
+                    const meta = TRAFFIC_SOURCE_META[s.source];
+                    const Icon = meta.icon;
+                    return (
+                      <li
+                        key={s.source}
+                        className="flex items-center gap-3"
+                        aria-label={`${meta.label}: ${s.users} users (${s.usersPct}%), ${s.visits} visits. ${meta.help}`}
+                      >
+                        <span className="flex items-center gap-1.5 w-36 shrink-0">
+                          <Icon className={`w-4 h-4 ${meta.color}`} aria-hidden="true" />
+                          <span className="text-xs font-medium text-foreground">{meta.label}</span>
+                        </span>
+                        <div className="flex-1 h-2 rounded bg-secondary/50 overflow-hidden" aria-hidden="true">
+                          <div
+                            className="h-full rounded bg-primary/60 transition-all duration-300"
+                            style={{ width: `${Math.max(s.usersPct, 2)}%` }}
+                          />
+                        </div>
+                        <span className="text-xs font-medium text-foreground w-12 text-right tabular-nums">{s.usersPct}%</span>
+                        <span className="text-[11px] text-muted-foreground w-28 text-right tabular-nums">
+                          {s.users.toLocaleString()} user{s.users === 1 ? "" : "s"} · {s.visits.toLocaleString()} visit{s.visits === 1 ? "" : "s"}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+
+            {/* Top referring hosts (search engines + external sites) */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Link2 className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Top Referrers</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">External domains that sent traffic to the app.</p>
+              {analytics.topReferrers.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No external referrers recorded yet.</p>
+              ) : (
+                <ul className="space-y-2">
+                  {analytics.topReferrers.map(r => {
+                    const meta = TRAFFIC_SOURCE_META[r.source];
+                    const Icon = meta.icon;
+                    return (
+                      <li
+                        key={r.host}
+                        className="flex items-center gap-3"
+                        aria-label={`${r.host} (${meta.label}): ${r.users} users, ${r.visits} visits`}
+                      >
+                        <Icon className={`w-3.5 h-3.5 ${meta.color}`} aria-hidden="true" />
+                        <span className="text-xs text-foreground flex-1 truncate font-mono">{r.host}</span>
+                        <span className="text-[10px] uppercase tracking-wide text-muted-foreground w-20 text-right">{meta.label}</span>
+                        <span className="text-xs font-medium text-foreground w-12 text-right tabular-nums">{r.visits.toLocaleString()}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+
+
             {/* Top users */}
             <div className="p-4 rounded-xl border border-border bg-card">
               <div className="flex items-center gap-2 mb-1">
