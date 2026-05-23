@@ -8,7 +8,17 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick, Headphones, Mic2 } from "lucide-react";
+
+/** Format a number of seconds as "Hh Mm" or "Mm Ss" for compact display. */
+function formatDuration(totalSeconds: number): string {
+  if (!totalSeconds || totalSeconds <= 0) return "0m";
+  const h = Math.floor(totalSeconds / 3600);
+  const m = Math.floor((totalSeconds % 3600) / 60);
+  if (h > 0) return `${h}h ${m}m`;
+  const s = Math.floor(totalSeconds % 60);
+  return m > 0 ? `${m}m ${s}s` : `${s}s`;
+}
 
 /** Convert an ISO 3166-1 alpha-2 country code (e.g. "GB") to its flag emoji. */
 function countryFlag(code: string | null | undefined): string {
@@ -76,6 +86,27 @@ interface Analytics {
     d7Pct: number | null;
     d30Pct: number | null;
   }[];
+  podcasts: {
+    total: number;
+    ready: number;
+    pending: number;
+    failed: number;
+    totalSeconds: number;
+    pageViews: number;
+    uniqueListeners: number;
+    inRangeGenerated: number;
+    recent: { topicTitle: string; topicId: string; status: string; durationSeconds: number | null; createdAt: string }[];
+    topByViews: { topicTitle: string; topicId: string; views: number }[];
+  };
+  viva: {
+    totalCachedAnswers: number;
+    uniqueTopics: number;
+    byExam: { exam: string; count: number }[];
+    pageViews: number;
+    uniqueUsers: number;
+    inRangeGenerated: number;
+    recent: { topicTitle: string; exam: string; createdAt: string }[];
+  };
 }
 
 const sectionLabels: Record<string, string> = {
@@ -495,6 +526,89 @@ const AdminDashboard = () => {
       };
     });
 
+    // ── Podcast usage ──────────────────────────────────────────────────────
+    // Engagement signals come from two places: the `podcasts` table (what's
+    // been generated + listenable) and `app_visits` page paths matching the
+    // podcast routes (proxy for "listens" since plays aren't logged).
+    const podcastVisits = visits.filter(v =>
+      v.page_path === "/podcasts" || (v.page_path?.startsWith("/podcasts/") ?? false),
+    );
+    const podcastTopicViews = new Map<string, { title: string; views: number }>();
+    podcastVisits.forEach(v => {
+      const m = v.page_path?.match(/^\/podcasts\/([^/]+)/);
+      if (!m) return;
+      const topicId = m[1];
+      const topic = allTopics.find(t => t.id === topicId);
+      const title = topic?.title ?? topicId;
+      const e = podcastTopicViews.get(topicId) ?? { title, views: 0 };
+      e.views += 1;
+      podcastTopicViews.set(topicId, e);
+    });
+    const podcastTopByViews = Array.from(podcastTopicViews.entries())
+      .map(([topicId, e]) => ({ topicId, topicTitle: e.title, views: e.views }))
+      .sort((a, b) => b.views - a.views)
+      .slice(0, 8);
+
+    const { data: podcastRows } = await supabase
+      .from("podcasts")
+      .select("topic_id, topic_title, status, duration_seconds, created_at")
+      .order("created_at", { ascending: false });
+    const pRows = podcastRows ?? [];
+    const podcastsSummary = {
+      total: pRows.length,
+      ready: pRows.filter(p => p.status === "ready").length,
+      pending: pRows.filter(p => p.status === "pending" || p.status === "generating").length,
+      failed: pRows.filter(p => p.status === "failed").length,
+      totalSeconds: pRows.reduce((s, p) => s + (p.duration_seconds ?? 0), 0),
+      pageViews: podcastVisits.length,
+      uniqueListeners: new Set(podcastVisits.map(v => v.visitor_id)).size,
+      inRangeGenerated: pRows.filter(p => {
+        if (rangeStartIso && p.created_at < rangeStartIso) return false;
+        if (rangeEndIso && p.created_at > rangeEndIso) return false;
+        return true;
+      }).length,
+      recent: pRows.slice(0, 5).map(p => ({
+        topicId: p.topic_id,
+        topicTitle: p.topic_title,
+        status: p.status,
+        durationSeconds: p.duration_seconds ?? null,
+        createdAt: p.created_at,
+      })),
+      topByViews: podcastTopByViews,
+    };
+
+    // ── Viva usage ────────────────────────────────────────────────────────
+    // `/viva` and `/viva/*` visits are the proxy for sessions started.
+    // `viva_model_answers` rows are unique cached responses ever generated.
+    const vivaVisits = visits.filter(v => v.page_path === "/viva" || (v.page_path?.startsWith("/viva/") ?? false));
+    const { data: vivaRows } = await supabase
+      .from("viva_model_answers")
+      .select("exam, topic_title, created_at")
+      .order("created_at", { ascending: false });
+    const vRows = vivaRows ?? [];
+    const vivaByExamMap = new Map<string, number>();
+    vRows.forEach(r => vivaByExamMap.set(r.exam, (vivaByExamMap.get(r.exam) ?? 0) + 1));
+    const vivaSummary = {
+      totalCachedAnswers: vRows.length,
+      uniqueTopics: new Set(vRows.map(r => r.topic_title)).size,
+      byExam: Array.from(vivaByExamMap.entries())
+        .map(([exam, count]) => ({ exam, count }))
+        .sort((a, b) => b.count - a.count),
+      pageViews: vivaVisits.length,
+      uniqueUsers: new Set(vivaVisits.map(v => v.visitor_id)).size,
+      inRangeGenerated: vRows.filter(r => {
+        if (rangeStartIso && r.created_at < rangeStartIso) return false;
+        if (rangeEndIso && r.created_at > rangeEndIso) return false;
+        return true;
+      }).length,
+      recent: vRows.slice(0, 5).map(r => ({
+        topicTitle: r.topic_title,
+        exam: r.exam,
+        createdAt: r.created_at,
+      })),
+    };
+
+
     setAnalytics({
       totalUniqueUsers: uniqueVisitors.size,
       dailyUsers: todayUnique.size,
@@ -523,6 +637,8 @@ const AdminDashboard = () => {
       topCountries,
       trafficSources,
       topReferrers,
+      podcasts: podcastsSummary,
+      viva: vivaSummary,
     });
     setLoading(false);
   };
@@ -972,6 +1088,158 @@ const AdminDashboard = () => {
               )}
             </div>
 
+
+            {/* Podcast usage */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Headphones className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Podcast Usage</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                Generated topic podcasts (all-time) and listener page views (within the selected date range).
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                {[
+                  { label: "Total podcasts", value: analytics.podcasts.total.toLocaleString(), help: "Podcast rows ever generated" },
+                  { label: "Ready", value: analytics.podcasts.ready.toLocaleString(), help: `${analytics.podcasts.pending} pending · ${analytics.podcasts.failed} failed` },
+                  { label: "Total runtime", value: formatDuration(analytics.podcasts.totalSeconds), help: "Sum of audio length across ready podcasts" },
+                  { label: "Page views", value: `${analytics.podcasts.pageViews.toLocaleString()}`, help: `${analytics.podcasts.uniqueListeners.toLocaleString()} unique listeners in range` },
+                ].map(s => (
+                  <div key={s.label} className="rounded-lg border border-border/60 bg-background/40 p-3">
+                    <p className="text-[10px] uppercase tracking-wide text-muted-foreground">{s.label}</p>
+                    <p className="text-lg font-bold text-foreground tabular-nums mt-0.5">{s.value}</p>
+                    <p className="text-[10px] text-muted-foreground mt-0.5">{s.help}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div>
+                  <h3 className="text-xs font-semibold text-foreground mb-2">Most listened (by page views)</h3>
+                  {analytics.podcasts.topByViews.length === 0 ? (
+                    <p className="text-xs text-muted-foreground">No podcast page views yet in this range.</p>
+                  ) : (
+                    <ul className="space-y-1.5">
+                      {analytics.podcasts.topByViews.map(t => {
+                        const max = Math.max(...analytics.podcasts.topByViews.map(x => x.views), 1);
+                        const pct = (t.views / max) * 100;
+                        return (
+                          <li key={t.topicId} className="flex items-center gap-2" aria-label={`${t.topicTitle}: ${t.views} views`}>
+                            <span className="text-xs text-foreground flex-1 truncate" title={t.topicTitle}>{t.topicTitle}</span>
+                            <div className="w-20 h-1.5 rounded bg-secondary/50 overflow-hidden" aria-hidden="true">
+                              <div className="h-full rounded bg-primary/60" style={{ width: `${Math.max(pct, 4)}%` }} />
+                            </div>
+                            <span className="text-xs font-medium text-foreground w-8 text-right tabular-nums">{t.views}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
+                <div>
+                  <h3 className="text-xs font-semibold text-foreground mb-2">Recently generated</h3>
+                  {analytics.podcasts.recent.length === 0 ? (
+                    <p className="text-xs text-muted-foreground">No podcasts generated yet.</p>
+                  ) : (
+                    <ul className="space-y-1.5">
+                      {analytics.podcasts.recent.map(r => {
+                        const when = new Date(r.createdAt);
+                        const ageMin = Math.max(0, Math.floor((Date.now() - when.getTime()) / 60000));
+                        const ago =
+                          ageMin < 60 ? `${ageMin}m ago` :
+                          ageMin < 1440 ? `${Math.floor(ageMin / 60)}h ago` :
+                          `${Math.floor(ageMin / 1440)}d ago`;
+                        return (
+                          <li key={r.topicId + r.createdAt} className="flex items-center gap-2">
+                            <span className={`inline-block w-1.5 h-1.5 rounded-full ${r.status === "ready" ? "bg-emerald-500" : r.status === "failed" ? "bg-rose-500" : "bg-amber-500"}`} aria-hidden="true" />
+                            <span className="text-xs text-foreground flex-1 truncate" title={r.topicTitle}>{r.topicTitle}</span>
+                            <span className="text-[10px] text-muted-foreground tabular-nums whitespace-nowrap">
+                              {r.durationSeconds ? `${Math.round(r.durationSeconds / 60)}m · ` : ""}{ago}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Viva usage */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <Mic2 className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Viva Usage</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                Cached AI model answers represent unique viva questions ever requested. Page views and unique users are within the selected date range.
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                {[
+                  { label: "Cached answers", value: analytics.viva.totalCachedAnswers.toLocaleString(), help: "Unique viva responses generated all-time" },
+                  { label: "Topics covered", value: analytics.viva.uniqueTopics.toLocaleString(), help: "Distinct topic titles with at least one viva question" },
+                  { label: "Page views", value: analytics.viva.pageViews.toLocaleString(), help: `${analytics.viva.uniqueUsers.toLocaleString()} unique users in range` },
+                  { label: "Generated in range", value: analytics.viva.inRangeGenerated.toLocaleString(), help: "New cached answers created within the date range" },
+                ].map(s => (
+                  <div key={s.label} className="rounded-lg border border-border/60 bg-background/40 p-3">
+                    <p className="text-[10px] uppercase tracking-wide text-muted-foreground">{s.label}</p>
+                    <p className="text-lg font-bold text-foreground tabular-nums mt-0.5">{s.value}</p>
+                    <p className="text-[10px] text-muted-foreground mt-0.5">{s.help}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div>
+                  <h3 className="text-xs font-semibold text-foreground mb-2">By exam</h3>
+                  {analytics.viva.byExam.length === 0 ? (
+                    <p className="text-xs text-muted-foreground">No viva answers cached yet.</p>
+                  ) : (
+                    <ul className="space-y-1.5">
+                      {analytics.viva.byExam.map(e => {
+                        const total = analytics.viva.totalCachedAnswers || 1;
+                        const pct = Math.round((e.count / total) * 100);
+                        const examLabel = e.exam === "primary" ? "FRCA Primary" : e.exam === "final" ? "FRCA Final" : e.exam === "fficm" ? "FFICM" : e.exam;
+                        return (
+                          <li key={e.exam} className="flex items-center gap-2" aria-label={`${examLabel}: ${e.count} answers (${pct}%)`}>
+                            <span className="text-xs text-foreground w-28 shrink-0">{examLabel}</span>
+                            <div className="flex-1 h-1.5 rounded bg-secondary/50 overflow-hidden" aria-hidden="true">
+                              <div className="h-full rounded bg-primary/60" style={{ width: `${Math.max(pct, 2)}%` }} />
+                            </div>
+                            <span className="text-xs font-medium text-foreground w-16 text-right tabular-nums">{e.count.toLocaleString()} · {pct}%</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
+                <div>
+                  <h3 className="text-xs font-semibold text-foreground mb-2">Recent questions</h3>
+                  {analytics.viva.recent.length === 0 ? (
+                    <p className="text-xs text-muted-foreground">No viva answers cached yet.</p>
+                  ) : (
+                    <ul className="space-y-1.5">
+                      {analytics.viva.recent.map(r => {
+                        const when = new Date(r.createdAt);
+                        const ageMin = Math.max(0, Math.floor((Date.now() - when.getTime()) / 60000));
+                        const ago =
+                          ageMin < 60 ? `${ageMin}m ago` :
+                          ageMin < 1440 ? `${Math.floor(ageMin / 60)}h ago` :
+                          `${Math.floor(ageMin / 1440)}d ago`;
+                        const examLabel = r.exam === "primary" ? "Primary" : r.exam === "final" ? "Final" : r.exam === "fficm" ? "FFICM" : r.exam;
+                        return (
+                          <li key={r.topicTitle + r.createdAt} className="flex items-center gap-2">
+                            <span className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded bg-secondary/60 text-muted-foreground shrink-0">{examLabel}</span>
+                            <span className="text-xs text-foreground flex-1 truncate" title={r.topicTitle}>{r.topicTitle}</span>
+                            <span className="text-[10px] text-muted-foreground tabular-nums whitespace-nowrap">{ago}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            </div>
 
             {/* Top users */}
             <div className="p-4 rounded-xl border border-border bg-card">
