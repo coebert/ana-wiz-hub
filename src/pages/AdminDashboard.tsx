@@ -513,6 +513,8 @@ const AdminDashboard = () => {
       retentionCohorts,
       topUsers,
       topCountries,
+      trafficSources,
+      topReferrers,
     });
     setLoading(false);
   };
