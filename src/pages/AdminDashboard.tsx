@@ -76,6 +76,27 @@ interface Analytics {
     d7Pct: number | null;
     d30Pct: number | null;
   }[];
+  podcasts: {
+    total: number;
+    ready: number;
+    pending: number;
+    failed: number;
+    totalSeconds: number;
+    pageViews: number;
+    uniqueListeners: number;
+    inRangeGenerated: number;
+    recent: { topicTitle: string; topicId: string; status: string; durationSeconds: number | null; createdAt: string }[];
+    topByViews: { topicTitle: string; topicId: string; views: number }[];
+  };
+  viva: {
+    totalCachedAnswers: number;
+    uniqueTopics: number;
+    byExam: { exam: string; count: number }[];
+    pageViews: number;
+    uniqueUsers: number;
+    inRangeGenerated: number;
+    recent: { topicTitle: string; exam: string; createdAt: string }[];
+  };
 }
 
 const sectionLabels: Record<string, string> = {
