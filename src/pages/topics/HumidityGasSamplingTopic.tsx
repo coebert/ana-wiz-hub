@@ -7,6 +7,7 @@ import HygrometersDiagram from "@/components/diagrams/HygrometersDiagram";
 import { GasSamplingSiteDiagram } from "@/components/diagrams/GasSamplingSiteDiagram";
 import ParamagneticO2Diagram from "@/components/diagrams/ParamagneticO2Diagram";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
+import { InlineRef } from "@/components/InlineRef";
 import { humidityGasSamplingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
