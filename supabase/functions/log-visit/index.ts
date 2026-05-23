@@ -46,6 +46,34 @@ async function lookupCountryByIp(ip: string): Promise<string | null> {
   }
 }
 
+// Classify a referrer URL into a coarse traffic source bucket.
+// Returns one of: "search" | "social" | "direct" | "referral".
+function classifyReferrer(referrer: string | null): string {
+  if (!referrer) return "direct";
+  let host = "";
+  try {
+    host = new URL(referrer).hostname.toLowerCase();
+  } catch {
+    return "direct";
+  }
+  if (!host) return "direct";
+  const SEARCH = [
+    "google.", "bing.com", "duckduckgo.com", "yahoo.", "yandex.",
+    "baidu.com", "ecosia.org", "search.brave.com", "qwant.com",
+    "startpage.com", "kagi.com", "search.yahoo.",
+  ];
+  const SOCIAL = [
+    "facebook.com", "fb.com", "l.facebook.com", "instagram.com",
+    "x.com", "twitter.com", "t.co", "linkedin.com", "lnkd.in",
+    "reddit.com", "youtube.com", "youtu.be", "tiktok.com",
+    "whatsapp.com", "wa.me", "t.me", "telegram.org", "threads.net",
+    "pinterest.", "discord.com", "discord.gg",
+  ];
+  if (SEARCH.some((s) => host.includes(s))) return "search";
+  if (SOCIAL.some((s) => host === s || host.endsWith("." + s) || host.includes(s))) return "social";
+  return "referral";
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -55,6 +83,8 @@ Deno.serve(async (req) => {
     const body = await req.json().catch(() => ({}));
     const visitor_id = typeof body.visitor_id === "string" ? body.visitor_id : "";
     const page_path = typeof body.page_path === "string" ? body.page_path : null;
+    let referrer = typeof body.referrer === "string" ? body.referrer : null;
+    if (referrer && referrer.length > 1024) referrer = referrer.slice(0, 1024);
 
     if (!visitor_id || visitor_id.length < 1 || visitor_id.length > 128) {
       return new Response(JSON.stringify({ error: "Invalid visitor_id" }), {
@@ -68,6 +98,8 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
+
+    const traffic_source = classifyReferrer(referrer);
 
     // Prefer the Cloudflare-provided country header (Supabase fronts edge
     // functions on Cloudflare). Fall back to ipapi.co on the client IP.
@@ -90,10 +122,12 @@ Deno.serve(async (req) => {
       page_path,
       country: country || null,
       country_name,
+      referrer,
+      traffic_source,
     });
     if (error) throw error;
 
-    return new Response(JSON.stringify({ ok: true, country: country || null }), {
+    return new Response(JSON.stringify({ ok: true, country: country || null, traffic_source }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {
@@ -104,3 +138,4 @@ Deno.serve(async (req) => {
     );
   }
 });
+
