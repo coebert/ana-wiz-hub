@@ -14,8 +14,9 @@ const AnatomySection = () => {
 
   return (
     <SectionLayout
-      title="Anatomy"
-      subtitle="Applied anatomy for anaesthesia, regional techniques, and intensive care"
+      title="Anaesthesia Anatomy Explained"
+      subtitle="Applied anatomy for anaesthesia explained — airway, spine, brachial plexus, abdominal wall and lower limb anatomy for FRCA and FFICM."
+      metaDescription="Anaesthesia anatomy explained for FRCA and FFICM exams: airway, vertebral column, brachial plexus, abdominal wall, lower limb and thoracic anatomy applied to regional anaesthesia and intensive care — concise notes, diagrams, MCQs and viva practice."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-anatomy"
@@ -27,6 +28,16 @@ const AnatomySection = () => {
           <p className="text-xs text-muted-foreground">Anatomy topics</p>
         </div>
       </div>
+      <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
+        <p className="text-sm text-foreground leading-relaxed">
+          <strong>Anaesthesia anatomy explained.</strong> Applied anatomy for
+          FRCA Primary, Final and FFICM trainees — airway, vertebral column and
+          spinal cord, brachial plexus, abdominal wall, lower limb and thoracic
+          anatomy framed around regional anaesthesia, line insertion and
+          critical care procedures. Each topic pairs diagrams with MCQs and
+          structured viva answers.
+        </p>
+      </section>
       <SectionTopicsList section="anatomy" topics={visibleTopics} />
       <SectionSummary section="anatomy" />
     </SectionLayout>
