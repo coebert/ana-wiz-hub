@@ -1529,7 +1529,7 @@ const HOUR_RANGE_PRESETS: { mode: HourRangeMode; label: string; help: string }[]
   { mode: "specific",  label: "Specific day",help: "Pick a single day to inspect." },
 ];
 
-const HourActivityCard = ({ analytics }: { analytics: Analytics }) => {
+function HourActivityCard({ analytics }: { analytics: Analytics }) {
   const [mode, setMode] = useState<HourRangeMode>("today");
   const [specificDate, setSpecificDate] = useState<Date | undefined>(undefined);
 
@@ -1685,6 +1685,6 @@ const HourActivityCard = ({ analytics }: { analytics: Analytics }) => {
       )}
     </div>
   );
-};
+}
 
 export default AdminDashboard;
