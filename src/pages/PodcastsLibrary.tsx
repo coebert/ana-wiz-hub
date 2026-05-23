@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Headphones, Download, ExternalLink, Loader2, Search, X, ChevronDown, PlayCircle, SkipBack, SkipForward, ListOrdered, ArrowUp, ArrowDown, RotateCcw, Mic, ArrowRight } from "lucide-react";
 import { SectionLayout } from "@/components/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
