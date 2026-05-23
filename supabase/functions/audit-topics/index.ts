@@ -1230,6 +1230,46 @@ Deno.serve(async (req) => {
     const body = await req.json().catch(() => ({}));
     const action = body.action ?? "start";
 
+    // Authorise: either an internal token (self-chain / cron) or an admin JWT.
+    const internalToken = req.headers.get("x-internal-token");
+    const isInternal =
+      !!internalToken && internalToken === SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!isInternal) {
+      const authHeader = req.headers.get("Authorization");
+      if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        return new Response(
+          JSON.stringify({ error: "Unauthorized" }),
+          { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+      const userClient = createClient(
+        SUPABASE_URL,
+        Deno.env.get("SUPABASE_ANON_KEY")!,
+        { global: { headers: { Authorization: authHeader } } },
+      );
+      const { data: userData, error: userErr } = await userClient.auth.getUser();
+      if (userErr || !userData.user) {
+        return new Response(
+          JSON.stringify({ error: "Invalid token" }),
+          { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+      const { data: roleRow } = await supa
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userData.user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+      if (!roleRow) {
+        return new Response(
+          JSON.stringify({ error: "Admin only" }),
+          { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+    }
+
+
     if (action === "cancel" && body.job_id) {
       await supa.from("topic_audit_jobs").update({
         status: "cancelled",
