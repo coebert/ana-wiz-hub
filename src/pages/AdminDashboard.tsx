@@ -868,33 +868,9 @@ const AdminDashboard = () => {
               </div>
             </div>
 
-            {/* Hour of day */}
-            <div className="p-4 rounded-xl border border-border bg-card">
-              <h2 className="text-sm font-semibold text-foreground mb-1">Activity by Hour — Today</h2>
-              <p className="text-xs text-muted-foreground mb-3">
-                Page views by hour of day · peak {analytics.peakHourLabel}
-                {analytics.peakHourCount > 0 ? ` (${analytics.peakHourCount} views)` : ""}
-              </p>
-              <div className="flex items-end gap-[2px] h-24" role="img" aria-label="Bar chart of page views by hour of day for today">
-                {analytics.hourlyToday.map(h => {
-                  const max = Math.max(...analytics.hourlyToday.map(x => x.count), 1);
-                  const height = (h.count / max) * 100;
-                  const isPeak = h.count === max && h.count > 0;
-                  return (
-                    <div
-                      key={h.hour}
-                      className={`flex-1 rounded-t min-h-[2px] transition-colors ${isPeak ? "bg-primary" : "bg-primary/50"}`}
-                      style={{ height: `${Math.max(height, 2)}%` }}
-                      title={`${h.hour.toString().padStart(2, "0")}:00 — ${h.count} views`}
-                      aria-hidden="true"
-                    />
-                  );
-                })}
-              </div>
-              <div className="flex justify-between text-[10px] text-muted-foreground mt-1 tabular-nums">
-                <span>00</span><span>06</span><span>12</span><span>18</span><span>23</span>
-              </div>
-            </div>
+            {/* Hour of day — configurable window */}
+            <HourActivityCard analytics={analytics} />
+
 
             {/* Top entry paths */}
             <div className="p-4 rounded-xl border border-border bg-card">
