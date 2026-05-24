@@ -304,14 +304,16 @@ const NerveDermatomeOverlayDiagram = () => {
               </g>
 
   
-              {/* Selected region marker */}
+              {/* Selected region marker (transformed to match overlay alignment) */}
               {(() => {
                 const r = sel;
-                // Compute approximate centroid by sampling — use first M coords
                 const m = r.path.match(/M\s*(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)/);
                 if (!m) return null;
-                const cx = parseFloat(m[1]) + 25;
-                const cy = parseFloat(m[2]) + 20;
+                // Region path-local centroid (approx, first M point) + small offset, then map through overlay transform
+                const localCx = parseFloat(m[1]) + 25;
+                const localCy = parseFloat(m[2]) + 20;
+                const cx = 27 + localCx;
+                const cy = 8 + localCy * 0.95;
                 return (
                       <circle cx={cx} cy={cy} r="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
                     <animate attributeName="r" values="8;16;8" dur="1.6s" repeatCount="indefinite" />
@@ -319,6 +321,7 @@ const NerveDermatomeOverlayDiagram = () => {
                   </circle>
     );
               })()}
+
   
               {/* Legend */}
               <g transform="translate(20 680)">
