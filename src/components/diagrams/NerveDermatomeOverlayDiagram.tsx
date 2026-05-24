@@ -202,15 +202,8 @@ const REGIONS: Region[] = [
   },
 ];
 
-const ANTERIOR_BODY = "M 155 30 Q 130 30, 128 70 Q 127 100, 145 115 L 75 130 Q 50 140, 50 175 L 50 280 Q 50 320, 90 325 L 100 360 L 100 395 Q 100 410, 115 410 L 90 415 L 85 460 L 95 580 L 100 660 L 130 670 L 165 660 L 165 580 L 175 460 L 170 415 L 145 410 Q 160 410, 160 395 L 160 360 L 170 325 Q 210 320, 210 280 L 210 175 Q 210 140, 185 130 L 115 115 Q 133 100, 132 70 Q 130 30, 155 30 Z";
-const POSTERIOR_BODY = "M 435 30 Q 410 30, 408 70 Q 407 100, 425 115 L 355 130 Q 330 140, 330 175 L 330 280 Q 330 320, 370 325 L 380 360 L 380 395 Q 380 410, 395 410 L 370 415 L 365 460 L 375 580 L 380 660 L 410 670 L 445 660 L 445 580 L 455 460 L 450 415 L 425 410 Q 440 410, 440 395 L 440 360 L 450 325 Q 490 320, 490 280 L 490 175 Q 490 140, 465 130 L 395 115 Q 413 100, 412 70 Q 410 30, 435 30 Z";
+// (Body silhouettes replaced by anatomically accurate line-art image; see <image href={bodyLineArt} /> below)
 
-// Mirror anterior region paths to posterior coordinate space (offset +280) for posterior versions of trunk dermatomes
-const _mirrorToPost = (d: string) => d.replace(/(\d+(?:\.\d+)?)/g, (m, _g, _offset, _full) => {
-  // crude: alternate numbers x,y,x,y... shift x by +280
-  // Use regex with index parity within each command — simpler: process tokens
-  return m;
-});
 
 const NerveDermatomeOverlayDiagram = () => {
   const [mode, setMode] = useState<"dermatome" | "nerve" | "both">("both");
