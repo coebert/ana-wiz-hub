@@ -34,7 +34,9 @@ if (isPreviewHost || isInIframe) {
 // serves a stale HTML. Reload includes a cache-busting query param and
 // clears any active service worker registrations as well as caches.
 const CHUNK_RELOAD_KEY = "__chunk_reload_at__";
-const CHUNK_RELOAD_MIN_INTERVAL_MS = 5000;
+const CHUNK_RELOAD_COUNT_KEY = "__chunk_reload_count__";
+const CHUNK_RELOAD_MIN_INTERVAL_MS = 15000;
+const CHUNK_RELOAD_MAX_ATTEMPTS = 3;
 
 function recoverFromStaleChunk() {
   const last = Number(sessionStorage.getItem(CHUNK_RELOAD_KEY) || "0");
