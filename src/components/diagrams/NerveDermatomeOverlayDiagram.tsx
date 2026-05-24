@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramFigure } from "./_shared/DiagramFigure";
+import bodyLineArt from "@/assets/dermatome-body-lineart.png";
 
 type Region = {
   id: string;
@@ -201,15 +202,8 @@ const REGIONS: Region[] = [
   },
 ];
 
-const ANTERIOR_BODY = "M 155 30 Q 130 30, 128 70 Q 127 100, 145 115 L 75 130 Q 50 140, 50 175 L 50 280 Q 50 320, 90 325 L 100 360 L 100 395 Q 100 410, 115 410 L 90 415 L 85 460 L 95 580 L 100 660 L 130 670 L 165 660 L 165 580 L 175 460 L 170 415 L 145 410 Q 160 410, 160 395 L 160 360 L 170 325 Q 210 320, 210 280 L 210 175 Q 210 140, 185 130 L 115 115 Q 133 100, 132 70 Q 130 30, 155 30 Z";
-const POSTERIOR_BODY = "M 435 30 Q 410 30, 408 70 Q 407 100, 425 115 L 355 130 Q 330 140, 330 175 L 330 280 Q 330 320, 370 325 L 380 360 L 380 395 Q 380 410, 395 410 L 370 415 L 365 460 L 375 580 L 380 660 L 410 670 L 445 660 L 445 580 L 455 460 L 450 415 L 425 410 Q 440 410, 440 395 L 440 360 L 450 325 Q 490 320, 490 280 L 490 175 Q 490 140, 465 130 L 395 115 Q 413 100, 412 70 Q 410 30, 435 30 Z";
+// (Body silhouettes replaced by anatomically accurate line-art image; see <image href={bodyLineArt} /> below)
 
-// Mirror anterior region paths to posterior coordinate space (offset +280) for posterior versions of trunk dermatomes
-const _mirrorToPost = (d: string) => d.replace(/(\d+(?:\.\d+)?)/g, (m, _g, _offset, _full) => {
-  // crude: alternate numbers x,y,x,y... shift x by +280
-  // Use regex with index parity within each command — simpler: process tokens
-  return m;
-});
 
 const NerveDermatomeOverlayDiagram = () => {
   const [mode, setMode] = useState<"dermatome" | "nerve" | "both">("both");
@@ -255,17 +249,27 @@ const NerveDermatomeOverlayDiagram = () => {
           {/* SVG figure */}
           <div>
             <svg viewBox="0 0 600 700" className="w-full h-auto max-w-[560px] mx-auto" role="img" aria-label="Anterior and posterior body with dermatomes and peripheral nerve territories">
-              {/* Body silhouettes */}
-              <path d={ANTERIOR_BODY} fill="hsl(var(--muted))" opacity="0.3" stroke="hsl(var(--foreground))" strokeWidth="1" />
-              <path d={POSTERIOR_BODY} fill="hsl(var(--muted))" opacity="0.3" stroke="hsl(var(--foreground))" strokeWidth="1" />
-  
+              {/* Anatomically accurate adult male line drawing — anterior (left) + posterior (right) */}
+              <image
+                href={bodyLineArt}
+                x="0"
+                y="20"
+                width="600"
+                height="640"
+                preserveAspectRatio="xMidYMid meet"
+                opacity="0.85"
+                style={{ filter: "var(--lineart-filter, none)" }}
+              />
+
               {/* Labels for views */}
-              <text x="130" y="20" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">ANTERIOR</text>
-              <text x="410" y="20" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">POSTERIOR</text>
-  
+              <text x="155" y="14" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">ANTERIOR</text>
+              <text x="440" y="14" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">POSTERIOR</text>
+
               {/* Midline */}
               <line x1="300" y1="10" x2="300" y2="690" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 4" />
-  
+
+              {/* Overlays aligned to the new anatomical figures (legacy coords were tuned to a simple silhouette) */}
+              <g transform="translate(27 8) scale(1 0.95)">
               {/* Region overlays (translucent + dotted boundary) */}
               {REGIONS.map((r) => {
                 const isSel = r.id === selectedId;
@@ -290,69 +294,19 @@ const NerveDermatomeOverlayDiagram = () => {
                   </g>
                 );
               })}
-  
-              {/* Surface anatomy overlay — bony landmarks rendered ON TOP so anatomy stays visible through territories */}
-              <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.55" strokeLinecap="round">
-                {/* ── ANTERIOR (centered ~x=130) ── */}
-                {/* Clavicles */}
-                <path d="M 78 135 Q 105 128 130 138" />
-                <path d="M 130 138 Q 155 128 182 135" />
-                {/* Sternum (manubrium → body → xiphoid) */}
-                <path d="M 130 140 L 130 215" />
-                <line x1="123" y1="155" x2="137" y2="155" />
-                {/* Costal margins */}
-                <path d="M 130 215 Q 100 230 80 255" />
-                <path d="M 130 215 Q 160 230 180 255" />
-                {/* Nipples (T4) */}
-                <circle cx="105" cy="185" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-                <circle cx="155" cy="185" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-                {/* Umbilicus (T10) */}
-                <circle cx="130" cy="258" r="2.4" fill="none" />
-                <circle cx="130" cy="258" r="0.8" fill="hsl(var(--foreground))" opacity="0.6" />
-                {/* ASIS + inguinal ligament hint */}
-                <circle cx="98" cy="305" r="1.8" fill="hsl(var(--foreground))" opacity="0.6" />
-                <circle cx="162" cy="305" r="1.8" fill="hsl(var(--foreground))" opacity="0.6" />
-                <path d="M 98 305 Q 115 318 130 318 Q 145 318 162 305" strokeDasharray="2 2" />
-                {/* Patellae */}
-                <ellipse cx="115" cy="500" rx="9" ry="11" />
-                <ellipse cx="145" cy="500" rx="9" ry="11" />
-                {/* Medial malleoli */}
-                <circle cx="118" cy="650" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-                <circle cx="142" cy="650" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-  
-                {/* ── POSTERIOR (centered ~x=410) ── */}
-                {/* C7 vertebra prominens */}
-                <circle cx="410" cy="125" r="2" fill="hsl(var(--foreground))" opacity="0.7" />
-                {/* Spine midline */}
-                <line x1="410" y1="125" x2="410" y2="320" strokeDasharray="2 2" />
-                {/* Scapulae (spine + inferior angle T7) */}
-                <path d="M 365 150 Q 385 158 405 162" />
-                <path d="M 415 162 Q 435 158 455 150" />
-                <path d="M 365 150 L 380 215" />
-                <path d="M 455 150 L 440 215" />
-                <circle cx="380" cy="215" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-                <circle cx="440" cy="215" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-                {/* Iliac crests (L4 plane) + PSIS dimples */}
-                <path d="M 370 320 Q 410 312 450 320" />
-                <circle cx="395" cy="328" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-                <circle cx="425" cy="328" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-                {/* Gluteal fold */}
-                <path d="M 378 410 Q 410 422 442 410" strokeDasharray="2 2" />
-                {/* Popliteal crease */}
-                <path d="M 388 545 Q 410 552 432 545" strokeDasharray="2 2" />
-                {/* Achilles / heel hint */}
-                <path d="M 398 660 L 405 670" />
-                <path d="M 422 660 L 415 670" />
               </g>
+
   
-              {/* Selected region marker */}
+              {/* Selected region marker (transformed to match overlay alignment) */}
               {(() => {
                 const r = sel;
-                // Compute approximate centroid by sampling — use first M coords
                 const m = r.path.match(/M\s*(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)/);
                 if (!m) return null;
-                const cx = parseFloat(m[1]) + 25;
-                const cy = parseFloat(m[2]) + 20;
+                // Region path-local centroid (approx, first M point) + small offset, then map through overlay transform
+                const localCx = parseFloat(m[1]) + 25;
+                const localCy = parseFloat(m[2]) + 20;
+                const cx = 27 + localCx;
+                const cy = 8 + localCy * 0.95;
                 return (
                       <circle cx={cx} cy={cy} r="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
                     <animate attributeName="r" values="8;16;8" dur="1.6s" repeatCount="indefinite" />
@@ -360,6 +314,7 @@ const NerveDermatomeOverlayDiagram = () => {
                   </circle>
     );
               })()}
+
   
               {/* Legend */}
               <g transform="translate(20 680)">
