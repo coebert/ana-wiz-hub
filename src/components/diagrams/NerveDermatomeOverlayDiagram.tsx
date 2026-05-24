@@ -256,17 +256,27 @@ const NerveDermatomeOverlayDiagram = () => {
           {/* SVG figure */}
           <div>
             <svg viewBox="0 0 600 700" className="w-full h-auto max-w-[560px] mx-auto" role="img" aria-label="Anterior and posterior body with dermatomes and peripheral nerve territories">
-              {/* Body silhouettes */}
-              <path d={ANTERIOR_BODY} fill="hsl(var(--muted))" opacity="0.3" stroke="hsl(var(--foreground))" strokeWidth="1" />
-              <path d={POSTERIOR_BODY} fill="hsl(var(--muted))" opacity="0.3" stroke="hsl(var(--foreground))" strokeWidth="1" />
-  
+              {/* Anatomically accurate adult male line drawing — anterior (left) + posterior (right) */}
+              <image
+                href={bodyLineArt}
+                x="0"
+                y="20"
+                width="600"
+                height="640"
+                preserveAspectRatio="xMidYMid meet"
+                opacity="0.85"
+                style={{ filter: "var(--lineart-filter, none)" }}
+              />
+
               {/* Labels for views */}
-              <text x="130" y="20" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">ANTERIOR</text>
-              <text x="410" y="20" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">POSTERIOR</text>
-  
+              <text x="155" y="14" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">ANTERIOR</text>
+              <text x="440" y="14" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">POSTERIOR</text>
+
               {/* Midline */}
               <line x1="300" y1="10" x2="300" y2="690" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 4" />
-  
+
+              {/* Overlays aligned to the new anatomical figures (legacy coords were tuned to a simple silhouette) */}
+              <g transform="translate(27 8) scale(1 0.95)">
               {/* Region overlays (translucent + dotted boundary) */}
               {REGIONS.map((r) => {
                 const isSel = r.id === selectedId;
@@ -291,60 +301,8 @@ const NerveDermatomeOverlayDiagram = () => {
                   </g>
                 );
               })}
-  
-              {/* Surface anatomy overlay — bony landmarks rendered ON TOP so anatomy stays visible through territories */}
-              <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.55" strokeLinecap="round">
-                {/* ── ANTERIOR (centered ~x=130) ── */}
-                {/* Clavicles */}
-                <path d="M 78 135 Q 105 128 130 138" />
-                <path d="M 130 138 Q 155 128 182 135" />
-                {/* Sternum (manubrium → body → xiphoid) */}
-                <path d="M 130 140 L 130 215" />
-                <line x1="123" y1="155" x2="137" y2="155" />
-                {/* Costal margins */}
-                <path d="M 130 215 Q 100 230 80 255" />
-                <path d="M 130 215 Q 160 230 180 255" />
-                {/* Nipples (T4) */}
-                <circle cx="105" cy="185" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-                <circle cx="155" cy="185" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-                {/* Umbilicus (T10) */}
-                <circle cx="130" cy="258" r="2.4" fill="none" />
-                <circle cx="130" cy="258" r="0.8" fill="hsl(var(--foreground))" opacity="0.6" />
-                {/* ASIS + inguinal ligament hint */}
-                <circle cx="98" cy="305" r="1.8" fill="hsl(var(--foreground))" opacity="0.6" />
-                <circle cx="162" cy="305" r="1.8" fill="hsl(var(--foreground))" opacity="0.6" />
-                <path d="M 98 305 Q 115 318 130 318 Q 145 318 162 305" strokeDasharray="2 2" />
-                {/* Patellae */}
-                <ellipse cx="115" cy="500" rx="9" ry="11" />
-                <ellipse cx="145" cy="500" rx="9" ry="11" />
-                {/* Medial malleoli */}
-                <circle cx="118" cy="650" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-                <circle cx="142" cy="650" r="2" fill="hsl(var(--foreground))" opacity="0.6" />
-  
-                {/* ── POSTERIOR (centered ~x=410) ── */}
-                {/* C7 vertebra prominens */}
-                <circle cx="410" cy="125" r="2" fill="hsl(var(--foreground))" opacity="0.7" />
-                {/* Spine midline */}
-                <line x1="410" y1="125" x2="410" y2="320" strokeDasharray="2 2" />
-                {/* Scapulae (spine + inferior angle T7) */}
-                <path d="M 365 150 Q 385 158 405 162" />
-                <path d="M 415 162 Q 435 158 455 150" />
-                <path d="M 365 150 L 380 215" />
-                <path d="M 455 150 L 440 215" />
-                <circle cx="380" cy="215" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-                <circle cx="440" cy="215" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-                {/* Iliac crests (L4 plane) + PSIS dimples */}
-                <path d="M 370 320 Q 410 312 450 320" />
-                <circle cx="395" cy="328" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-                <circle cx="425" cy="328" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
-                {/* Gluteal fold */}
-                <path d="M 378 410 Q 410 422 442 410" strokeDasharray="2 2" />
-                {/* Popliteal crease */}
-                <path d="M 388 545 Q 410 552 432 545" strokeDasharray="2 2" />
-                {/* Achilles / heel hint */}
-                <path d="M 398 660 L 405 670" />
-                <path d="M 422 660 L 415 670" />
               </g>
+
   
               {/* Selected region marker */}
               {(() => {
