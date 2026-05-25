@@ -102,7 +102,7 @@ const keyPoints = [
   { text: "Normal or rising PaCO₂ in acute asthma is a life-threatening sign — the patient is tiring", cites: ["GINA 2023"] },
   { text: "Ketamine is the ideal induction agent for intubation in bronchospasm (bronchodilator + haemodynamic stability)", cites: ["BTS/SIGN Asthma 2019"] },
   { text: "Volatile agents via Sedaconda/AnaConDa provide potent bronchodilation in refractory bronchospasm — rescue therapy when conventional treatment fails", cites: ["GOLD COPD 2023"] },
-  { text: "Sedaconda uses a carbon reflector to recapture ~90% of exhaled volatile, allowing delivery via standard ICU ventilators without an anaesthetic machine", cites: ["BJA Educ Asthma 2017"] },
+  { text: "Sedaconda uses a carbon reflector to recapture ~90% of exhaled volatile, allowing delivery via standard ICU ventilators without an anaesthetic machine — typical adult infusion ~5–12 mL/h titrated to end-tidal agent", cites: ["BJA Educ Asthma 2017", "Sedaconda SPC"] },
   { text: "Mucus plugging is the major cause of death in fatal asthma — corticosteroids and bronchoscopic lavage address this", cites: ["GINA 2023"] },
   { text: "COPD O₂ target 88–92%; asthma O₂ target 94–98% — controlled oxygen is critical in COPD to avoid worsening hypercapnia", cites: ["BTS/SIGN Asthma 2019"] },
 ];
@@ -138,6 +138,7 @@ const BronchospasticFailureTopic = () => {
           "GINA 2023",
           "BJA Educ Asthma 2017",
           "GOLD COPD 2023",
+          "Sedaconda SPC",
         ],
         workedExamples: ["GOLD COPD 2023", "BJA Educ Asthma 2017", "GINA 2023"],
       }}
@@ -523,7 +524,7 @@ const BronchospasticFailureTopic = () => {
             {[
               { label: "Device Design", detail: "A modified HME (heat-moisture exchanger) containing an activated carbon fibre reflector. Inserted between the Y-piece and ETT. Liquid volatile agent (isoflurane or sevoflurane) is infused via syringe pump through the device, evaporates within the reflector, and is delivered to the patient. On expiration, ~90% of exhaled volatile is adsorbed by the reflector and re-delivered on the next inspiration — minimising waste and environmental contamination." },
               { label: "Sedaconda-S (Small)", detail: "50 ml dead space device designed for sedation (lower agent concentrations). Suitable for most ICU patients. Isoflurane is the most commonly used agent (lower cost, less compound A concern than sevoflurane)." },
-              { label: "Agent Delivery & Monitoring", detail: "Liquid isoflurane/sevoflurane infused at 0.5–5 ml/h via standard syringe pump. End-tidal agent concentration monitored by an inline anaesthetic gas monitor (essential for safe use). Target Fe'Iso 0.3–0.8% for sedation; higher for bronchodilation (0.5–1.5 MAC equivalent). Requires gas scavenging on ventilator exhaust port." },
+              { label: "Agent Delivery & Monitoring", detail: "Liquid isoflurane/sevoflurane infused via standard syringe pump — typical adult sedation rates ~3–7 mL/h with AnaConDa-S and ~5–12 mL/h with the larger AnaConDa, titrated to end-tidal agent concentration (Sedaconda SPC). End-tidal agent monitored by an inline anaesthetic gas monitor (essential for safe use). Target Fe'Iso 0.3–0.8% for sedation; higher for bronchodilation (0.5–1.5 MAC equivalent). Requires gas scavenging on ventilator exhaust port." },
               { label: "Practical Setup", detail: "Compatible with standard ICU ventilators (no anaesthetic machine needed). Adds 50–100 ml dead space — may need to increase tidal volume slightly. Change AnaConDa device every 24 h. Ensure gas analyser is calibrated for the specific agent. Active charcoal filter on expiratory limb for scavenging." },
               { label: "Advantages over IV Sedation", detail: "Rapid onset and offset (wake-up times 15–20 min vs hours with propofol/midazolam). No accumulation in renal/hepatic failure. Organ-protective properties (cardiac preconditioning). Reduced delirium incidence (some evidence). Direct bronchodilation — dual benefit in bronchospasm." },
             ].map((item) => (

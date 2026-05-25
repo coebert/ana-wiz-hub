@@ -49,10 +49,10 @@ const steps: CascadeStep[] = [
   },
   {
     node: "Negative feedback",
-    detail: "Cortisol → −CRH/ACTH",
-    title: "Cortisol shuts down its own release",
+    detail: "Exogenous steroid → −CRH/ACTH",
+    title: "Exogenous steroid enhances negative feedback",
     body:
-      "Cortisol acts on hypothalamic and pituitary glucocorticoid receptors to suppress CRH and ACTH. Exogenous glucocorticoids exploit this loop — useful therapeutically but dangerous when withdrawn abruptly because the suppressed axis cannot restart on demand.",
+      "In chronic exogenous steroid use the pathological negative feedback is driven by the drug itself (e.g. prednisolone), not endogenous cortisol — which is already suppressed. Exogenous glucocorticoids act on hypothalamic and pituitary glucocorticoid receptors to suppress CRH and ACTH; the loop is useful therapeutically but dangerous on abrupt withdrawal because the suppressed axis cannot restart on demand.",
     sources: [PECK17],
   },
   {
