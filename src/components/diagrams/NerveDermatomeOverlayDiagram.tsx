@@ -18,12 +18,17 @@ type Region = {
 };
 
 // Coordinates designed for viewBox 0 0 600 700 (two body figures: anterior 30-280, posterior 320-570)
+// Paths are hand-tuned curved outlines following anatomical contours of the
+// underlying line-art figure (anterior centred ~x=155, posterior ~x=435).
+// Regions are sized to sit INSIDE the body outline and to tile against their
+// neighbours without overlapping.
 const REGIONS: Region[] = [
-  // ---------- HEAD / NECK ----------
+  // ---------- HEAD / NECK (anterior) ----------
   {
     id: "v1",
     view: "anterior",
-    path: "M 130 65 Q 155 45, 180 65 L 180 95 L 130 95 Z",
+    // Forehead band, curved to the cranial vault
+    path: "M 132 58 Q 155 44 178 58 Q 182 76 180 92 Q 155 96 130 92 Q 128 76 132 58 Z",
     dermatome: "V1 (ophthalmic, trigeminal — not a true dermatome but tested as one)",
     dermatomeColor: "hsl(0 70% 60%)",
     nerve: "Ophthalmic n. (V1)",
@@ -34,7 +39,8 @@ const REGIONS: Region[] = [
   {
     id: "c2c3",
     view: "anterior",
-    path: "M 130 95 L 180 95 L 180 130 L 130 130 Z",
+    // Jaw / upper neck collar
+    path: "M 132 96 Q 155 100 178 96 Q 184 114 178 130 Q 155 134 132 130 Q 126 114 132 96 Z",
     dermatome: "C2–C3",
     dermatomeColor: "hsl(15 75% 55%)",
     nerve: "Greater auricular & transverse cervical nn. (cervical plexus)",
@@ -42,11 +48,12 @@ const REGIONS: Region[] = [
     nerveOrigin: "Cervical plexus (C2–C3 ventral rami)",
     clinicalPearl: "Targets of superficial cervical plexus block for carotid endarterectomy.",
   },
-  // ---------- UPPER LIMB ANTERIOR ----------
+  // ---------- UPPER LIMB ANTERIOR (viewer-left arm = patient's right) ----------
   {
     id: "c5",
     view: "anterior",
-    path: "M 75 175 Q 65 200, 70 230 L 95 235 L 100 200 L 95 175 Z",
+    // Lateral deltoid "regimental badge" — curved around the shoulder cap
+    path: "M 82 168 Q 68 192 74 226 Q 86 232 100 228 Q 104 200 100 174 Q 90 166 82 168 Z",
     dermatome: "C5 (lateral arm — 'regimental badge')",
     dermatomeColor: "hsl(40 80% 55%)",
     nerve: "Axillary n. (upper lateral cutaneous n. of arm)",
@@ -57,7 +64,8 @@ const REGIONS: Region[] = [
   {
     id: "c6",
     view: "anterior",
-    path: "M 70 230 L 95 235 L 90 280 L 60 280 Z M 50 280 L 90 280 L 80 320 L 35 315 Z",
+    // Lateral upper arm tapering down lateral forearm to thumb side
+    path: "M 74 228 Q 60 262 52 304 Q 70 308 86 304 Q 96 270 100 230 Q 86 234 74 228 Z",
     dermatome: "C6 (lateral forearm + thumb)",
     dermatomeColor: "hsl(60 75% 50%)",
     nerve: "Lateral cutaneous n. of forearm (= musculocutaneous terminal branch) + median n. (thumb)",
@@ -68,7 +76,8 @@ const REGIONS: Region[] = [
   {
     id: "c7",
     view: "anterior",
-    path: "M 35 315 L 80 320 L 75 360 L 30 355 Z",
+    // Distal forearm / palmar surface tapering toward middle finger
+    path: "M 52 306 Q 44 328 42 354 Q 58 360 76 356 Q 84 332 86 306 Q 68 310 52 306 Z",
     dermatome: "C7 (middle finger)",
     dermatomeColor: "hsl(120 50% 45%)",
     nerve: "Median n. (radial 3.5 fingers, palmar)",
@@ -79,7 +88,8 @@ const REGIONS: Region[] = [
   {
     id: "c8",
     view: "anterior",
-    path: "M 30 355 L 75 360 L 80 395 L 35 395 Z",
+    // Medial hand / little-finger side — small rounded territory
+    path: "M 42 356 Q 38 376 42 398 Q 58 404 76 400 Q 80 378 76 356 Q 58 360 42 356 Z",
     dermatome: "C8 (little finger + medial hand)",
     dermatomeColor: "hsl(180 60% 45%)",
     nerve: "Ulnar n. (medial 1.5 fingers + medial hand)",
@@ -90,7 +100,8 @@ const REGIONS: Region[] = [
   {
     id: "t1",
     view: "anterior",
-    path: "M 90 280 L 130 280 L 130 320 L 90 320 Z M 80 320 L 130 320 L 130 360 L 75 360 Z",
+    // Medial upper arm strip (between c5 lateral arm and the trunk)
+    path: "M 102 232 Q 96 260 100 310 Q 112 320 118 308 Q 120 270 118 234 Q 110 230 102 232 Z",
     dermatome: "T1 (medial forearm + medial arm)",
     dermatomeColor: "hsl(195 70% 50%)",
     nerve: "Medial cutaneous n. of forearm (T1) + medial cutaneous n. of arm (T1, via intercostobrachial)",
@@ -98,11 +109,12 @@ const REGIONS: Region[] = [
     nerveOrigin: "Medial cord; intercostobrachial = T2 lateral cutaneous branch",
     clinicalPearl: "INTERCOSTOBRACHIAL N. (T2) supplies medial upper arm — NOT blocked by interscalene/supraclavicular approaches. Must be blocked separately for tourniquet pain.",
   },
-  // ---------- THORAX & ABDOMEN ----------
+  // ---------- THORAX & ABDOMEN (anterior trunk bands) ----------
   {
     id: "t4",
     view: "anterior",
-    path: "M 130 175 L 200 175 L 200 200 L 130 200 Z",
+    // Nipple-line band — slight chest curve
+    path: "M 122 170 Q 155 164 192 170 Q 196 188 192 206 Q 155 210 122 206 Q 118 188 122 170 Z",
     dermatome: "T4 (nipple line)",
     dermatomeColor: "hsl(220 65% 55%)",
     nerve: "Anterior + lateral cutaneous branches of T4 intercostal n.",
@@ -113,7 +125,8 @@ const REGIONS: Region[] = [
   {
     id: "t10",
     view: "anterior",
-    path: "M 130 230 L 200 230 L 200 255 L 130 255 Z",
+    // Umbilical band — waist curves inward
+    path: "M 124 228 Q 155 224 188 228 Q 192 244 188 264 Q 155 268 124 264 Q 120 244 124 228 Z",
     dermatome: "T10 (umbilicus)",
     dermatomeColor: "hsl(245 60% 55%)",
     nerve: "Anterior + lateral cutaneous branches of T10 intercostal n.",
@@ -124,7 +137,8 @@ const REGIONS: Region[] = [
   {
     id: "l1",
     view: "anterior",
-    path: "M 130 285 L 200 285 L 200 305 L 130 305 Z",
+    // Inguinal crease band — widens slightly for pelvis
+    path: "M 122 282 Q 155 278 190 282 Q 194 296 190 312 Q 155 316 122 312 Q 118 296 122 282 Z",
     dermatome: "L1 (inguinal crease)",
     dermatomeColor: "hsl(280 60% 55%)",
     nerve: "Iliohypogastric + ilioinguinal nn.",
@@ -136,7 +150,8 @@ const REGIONS: Region[] = [
   {
     id: "l2l3-lcnt",
     view: "anterior",
-    path: "M 95 360 L 145 360 L 140 440 L 90 440 Z",
+    // Anterolateral thigh — lateral half of patient's right thigh (viewer left)
+    path: "M 100 360 Q 92 400 98 442 Q 118 446 138 442 Q 142 400 138 360 Q 118 356 100 360 Z",
     dermatome: "L2–L3 (anterolateral thigh)",
     dermatomeColor: "hsl(310 60% 55%)",
     nerve: "Lateral cutaneous n. of thigh (LCNT)",
@@ -147,7 +162,8 @@ const REGIONS: Region[] = [
   {
     id: "l3l4-saph",
     view: "anterior",
-    path: "M 145 440 L 200 440 L 200 580 L 165 580 Z",
+    // Anteromedial thigh + medial knee + medial leg — long contoured strip
+    path: "M 140 360 Q 146 400 150 444 Q 154 510 158 576 Q 178 580 192 576 Q 196 510 192 444 Q 188 400 188 360 Q 164 356 140 360 Z",
     dermatome: "L3–L4 (anteromedial thigh, knee, medial leg)",
     dermatomeColor: "hsl(340 65% 55%)",
     nerve: "Femoral n. (anterior cutaneous branches) → SAPHENOUS n. (medial leg below knee)",
@@ -158,7 +174,8 @@ const REGIONS: Region[] = [
   {
     id: "l4l5-deep",
     view: "anterior",
-    path: "M 165 580 L 200 580 L 200 660 L 170 660 Z",
+    // Anterior leg below knee + dorsum of foot — narrows toward ankle
+    path: "M 138 578 Q 142 620 152 658 Q 172 662 188 658 Q 196 620 194 578 Q 166 574 138 578 Z",
     dermatome: "L4–L5 (anterior leg, dorsum of foot)",
     dermatomeColor: "hsl(0 65% 55%)",
     nerve: "Deep + superficial peroneal nn. (common peroneal branches)",
@@ -170,7 +187,8 @@ const REGIONS: Region[] = [
   {
     id: "c2-occ",
     view: "posterior",
-    path: "M 410 50 Q 435 30, 460 50 L 460 90 L 410 90 Z",
+    // Occipital cap
+    path: "M 412 46 Q 435 32 458 46 Q 464 70 460 90 Q 435 94 410 90 Q 406 70 412 46 Z",
     dermatome: "C2 (occiput)",
     dermatomeColor: "hsl(15 75% 55%)",
     nerve: "Greater occipital n.",
@@ -179,26 +197,28 @@ const REGIONS: Region[] = [
     clinicalPearl: "Greater occipital n. block is used for occipital neuralgia. Targets the dorsal ramus, not ventral.",
   },
   {
-    id: "s1-pos",
-    view: "posterior",
-    path: "M 395 540 L 470 540 L 460 650 L 410 650 Z",
-    dermatome: "S1 (posterior leg, lateral foot, sole)",
-    dermatomeColor: "hsl(195 70% 50%)",
-    nerve: "Tibial n. (medial + lateral plantar nn., sural laterally)",
-    nerveColor: "hsl(195 70% 50%)",
-    nerveOrigin: "Tibial division of sciatic (L4–S3)",
-    clinicalPearl: "S1 dermatome ≈ sole + lateral foot. Tibial n. supplies the sole (posterior tibial block at ankle for forefoot surgery).",
-  },
-  {
     id: "s2-pos",
     view: "posterior",
-    path: "M 410 460 L 460 460 L 470 540 L 395 540 Z",
+    // Posterior thigh — gluteal fold down to popliteal
+    path: "M 402 460 Q 396 500 406 540 Q 435 544 464 540 Q 474 500 468 460 Q 435 456 402 460 Z",
     dermatome: "S2–S3 (posterior thigh)",
     dermatomeColor: "hsl(245 60% 55%)",
     nerve: "Posterior cutaneous n. of thigh",
     nerveColor: "hsl(245 60% 55%)",
     nerveOrigin: "Sacral plexus (S1–S3)",
     clinicalPearl: "Posterior cutaneous n. of thigh is a separate branch of the sacral plexus — easily missed by a femoral block, often spared by sciatic block done distally.",
+  },
+  {
+    id: "s1-pos",
+    view: "posterior",
+    // Posterior calf — narrows toward heel
+    path: "M 406 542 Q 398 590 408 650 Q 435 656 462 650 Q 472 590 464 542 Q 435 540 406 542 Z",
+    dermatome: "S1 (posterior leg, lateral foot, sole)",
+    dermatomeColor: "hsl(195 70% 50%)",
+    nerve: "Tibial n. (medial + lateral plantar nn., sural laterally)",
+    nerveColor: "hsl(195 70% 50%)",
+    nerveOrigin: "Tibial division of sciatic (L4–S3)",
+    clinicalPearl: "S1 dermatome ≈ sole + lateral foot. Tibial n. supplies the sole (posterior tibial block at ankle for forefoot surgery).",
   },
 ];
 
