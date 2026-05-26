@@ -54,11 +54,12 @@ const SAFETY_PATTERNS = [
       "g",
     ),
   },
-  // Infusion rates: 5 mL/h, 0.05 mcg/kg/min, 2 mg/min, 4 units/h
+  // Infusion rates: 5 mL/h, 0.05 mcg/kg/min, 2 mg/min, 4 units/h.
+  // Bare "L/min" is a flow rate, not a drug rate — excluded.
   {
     name: "infusion-rate",
     re: new RegExp(
-      String.raw`\b${RANGE}\s*(?:mg|mcg|µg|μg|ng|units?|mL|L)\s*\/\s*(?:h|hr|min|s|kg\s*\/\s*min|kg\s*\/\s*h)\b`,
+      String.raw`\b${RANGE}\s*(?:mg|mcg|µg|μg|ng|units?|mL)\s*\/\s*(?:h|hr|min|s|kg\s*\/\s*min|kg\s*\/\s*h)\b`,
       "g",
     ),
   },
