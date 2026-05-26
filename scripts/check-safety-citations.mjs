@@ -150,12 +150,14 @@ function scanFile(file) {
     if (!line.trim()) continue;
     if (SKIP_LINE.some((re) => re.test(line))) continue;
 
+    // Collect candidates, then dedupe overlapping spans (prefer earlier =
+    // more specific pattern in SAFETY_PATTERNS order).
+    const candidates = [];
     for (const pat of SAFETY_PATTERNS) {
       pat.re.lastIndex = 0;
       let m;
       while ((m = pat.re.exec(line)) !== null) {
         if (pat.requireContextWord && !pat.requireContextWord.test(line)) {
-          // Also accept context word on adjacent line (±2)
           const ctxLo = Math.max(0, i - 2);
           const ctxHi = Math.min(lines.length - 1, i + 2);
           let ctxOk = false;
@@ -167,17 +169,34 @@ function scanFile(file) {
           }
           if (!ctxOk) continue;
         }
-
-        if (isCovered(lines, i)) continue;
-
-        hits.push({
-          line: i + 1,
-          col: m.index + 1,
+        candidates.push({
+          start: m.index,
+          end: m.index + m[0].length,
           match: m[0],
           pattern: pat.name,
-          snippet: line.trim().slice(0, 140),
         });
       }
+    }
+
+    // Dedupe overlaps: keep first (most specific) when spans intersect.
+    candidates.sort((a, b) => a.start - b.start || a.end - b.end);
+    const kept = [];
+    for (const c of candidates) {
+      if (kept.some((k) => c.start < k.end && c.end > k.start)) continue;
+      kept.push(c);
+    }
+
+    if (kept.length === 0) continue;
+    if (isCovered(lines, i)) continue;
+
+    for (const k of kept) {
+      hits.push({
+        line: i + 1,
+        col: k.start + 1,
+        match: k.match,
+        pattern: k.pattern,
+        snippet: line.trim().slice(0, 140),
+      });
     }
   }
   return hits;
