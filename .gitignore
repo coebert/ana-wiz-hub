@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# LLM claim-verification report (regenerated nightly)
+scripts/claim-verification-report.json
