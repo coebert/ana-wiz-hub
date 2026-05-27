@@ -45,3 +45,17 @@ jobs:
         # Fails the build if any tracked file differs from .prettierrc.json.
         # Run `npm run format` locally to fix.
         run: bunx prettier --check .
+
+  safety-citations:
+    name: Safety-critical citation check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run safety-citation check
+        # Fails the build if any topic file contains new uncited safety-critical
+        # numeric claims (doses, rates, thresholds, energies) beyond the baseline
+        # recorded in scripts/safety-citations-allowlist.json.
+        # Fix by adding an <InlineRef />, <Cite />, or cites: [...] within ±6 lines
+        # of the flagged number, then update the allowlist if the drop is genuine.
+        run: node scripts/check-safety-citations.mjs
