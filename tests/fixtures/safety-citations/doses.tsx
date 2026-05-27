@@ -1,4 +1,4 @@
-// Fixture: drug doses (weight-based, infusion, absolute). Raw text.
+// Fixture: drug doses (weight-based, rate, absolute). Raw text.
 <div>
   <p>Rocuronium 1 mg/kg IV.</p>
 </div>
