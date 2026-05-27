@@ -203,8 +203,7 @@ function isCovered(lines, idx) {
   return false;
 }
 
-function scanFile(file) {
-  const src = readFileSync(file, "utf8");
+export function scanText(src) {
   const lines = src.split("\n");
   const hits = [];
 
@@ -265,6 +264,50 @@ function scanFile(file) {
   }
   return hits;
 }
+
+function scanFile(file) {
+  return scanText(readFileSync(file, "utf8"));
+}
+
+export function compareAgainstAllowlist(perFile, allow) {
+  const errors = [];
+  const improvements = [];
+  const liveFiles = new Set([...perFile.keys()]);
+
+  for (const [rel, hits] of perFile.entries()) {
+    const baseline = allow[rel] ?? 0;
+    const actual = hits.length;
+    if (actual > baseline) {
+      errors.push({ rel, actual, baseline, hits });
+    } else if (actual < baseline) {
+      improvements.push({ rel, actual, baseline, reason: "decreased" });
+    }
+  }
+
+  for (const rel of Object.keys(allow)) {
+    if (!liveFiles.has(rel) && allow[rel] > 0) {
+      improvements.push({ rel, actual: 0, baseline: allow[rel], reason: "stale" });
+    }
+  }
+
+  return { errors, improvements };
+}
+
+export { SAFETY_PATTERNS, CITE_INDICATORS, isCovered };
+
+// ---------------------------------------------------------------------------
+// CLI entrypoint — only runs when invoked directly.
+// ---------------------------------------------------------------------------
+const isMain =
+  import.meta.url === `file://${process.argv[1]}` ||
+  process.argv[1]?.endsWith("check-safety-citations.mjs");
+if (!isMain) {
+  // exported for tests
+} else {
+  runCli();
+}
+
+function runCli() {
 
 // ---------------------------------------------------------------------------
 // Main
