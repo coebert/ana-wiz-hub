@@ -28,6 +28,8 @@
     "check:safety-citations:report": "node scripts/check-safety-citations.mjs --report",
     "check:drug-doses": "node scripts/check-drug-dose-ranges.mjs",
     "check:drug-doses:report": "node scripts/check-drug-dose-ranges.mjs --report",
+    "verify:claims": "node scripts/verify-claims.mjs",
+    "verify:claims:extract": "node scripts/verify-claims.mjs --extract-only",
     "check:all": "npm run check:diagrams && npm run check:sources && npm run check:exam-tags && npm run check:safety-citations && npm run check:drug-doses",
     "prepublish": "npm run check:all && npm run lint && npm run format:check && npm run test",
     "test": "vitest run",
