@@ -20,10 +20,9 @@ import {
   compareAgainstAllowlist,
   SAFETY_PATTERNS,
   isCovered,
-  // @ts-expect-error — .mjs has no .d.ts
 } from "../../scripts/check-safety-citations.mjs";
 
-const FIXTURES_DIR = resolve(__dirname, "fixtures/safety-citations");
+const FIXTURES_DIR = resolve(__dirname, "../../tests/fixtures/safety-citations");
 const fx = (name: string) => readFileSync(join(FIXTURES_DIR, name), "utf8");
 
 // -------- helpers ----------------------------------------------------------
