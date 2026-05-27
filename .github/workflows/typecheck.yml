@@ -59,3 +59,15 @@ jobs:
         # Fix by adding an <InlineRef />, <Cite />, or cites: [...] within ±6 lines
         # of the flagged number, then update the allowlist if the drop is genuine.
         run: node scripts/check-safety-citations.mjs
+
+  drug-doses:
+    name: Drug-dose-range check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run drug-dose-range check
+        # Fails when a topic file introduces a drug dose outside the plausible
+        # range declared in src/data/drug-dose-ranges.mjs (catches decimal-point
+        # errors, mg↔mcg confusion, route mix-ups). Baseline in
+        # scripts/drug-dose-ranges-allowlist.json.
+        run: node scripts/check-drug-dose-ranges.mjs
