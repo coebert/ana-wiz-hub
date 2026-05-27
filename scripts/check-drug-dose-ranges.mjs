@@ -20,46 +20,15 @@
  */
 import { readFileSync, readdirSync, writeFileSync, existsSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
-import { pathToFileURL } from "node:url";
-import { register } from "node:module";
+import { DRUG_DOSE_RANGES as RANGES } from "../src/data/drug-dose-ranges.mjs";
 
 const ROOT = process.cwd();
 const TOPICS_DIR = resolve(ROOT, "src/pages/topics");
 const ALLOWLIST_PATH = resolve(ROOT, "scripts/drug-dose-ranges-allowlist.json");
-const RANGES_PATH = resolve(ROOT, "src/data/drug-dose-ranges.ts");
 
 const MODE_REPORT = process.argv.includes("--report");
 const MODE_WRITE = process.argv.includes("--write-allowlist");
 
-// ---------------------------------------------------------------------------
-// Load DRUG_DOSE_RANGES from the .ts source without spinning up tsx —
-// the file is plain data with no runtime types, so a tiny regex extractor
-// is enough and keeps the script dependency-free.
-// ---------------------------------------------------------------------------
-function loadRanges() {
-  const src = readFileSync(RANGES_PATH, "utf8");
-  const arrMatch = src.match(
-    /export const DRUG_DOSE_RANGES[\s\S]*?=\s*\[([\s\S]*?)\];\s*$/m,
-  );
-  if (!arrMatch) throw new Error("Could not locate DRUG_DOSE_RANGES array.");
-  // Drop TS-only `as DrugDoseRange[]` if present, strip trailing commas.
-  const body = "[" + arrMatch[1] + "]";
-  // Strip line comments inside the array (// ...) so JSON-ish eval works.
-  const cleaned = body.replace(/\/\/[^\n]*/g, "");
-  // Wrap field names in quotes (drug:, route:, …). Match identifiers at line starts.
-  const quoted = cleaned.replace(/([{,]\s*)([a-zA-Z_]\w*)\s*:/g, '$1"$2":');
-  // Replace single quotes with double quotes.
-  const json = quoted.replace(/'([^'\\]*)'/g, '"$1"');
-  // Remove trailing commas.
-  const noTrail = json.replace(/,(\s*[\\]}])/g, "$1");
-  try {
-    return JSON.parse(noTrail);
-  } catch (e) {
-    throw new Error(`Failed to parse DRUG_DOSE_RANGES: ${e.message}`);
-  }
-}
-
-const RANGES = loadRanges();
 
 // Build a regex that matches any drug name or synonym, longest-first to
 // avoid "ketamine" swallowing a hypothetical shorter sub-name.
