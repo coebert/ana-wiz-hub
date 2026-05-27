@@ -203,8 +203,7 @@ function isCovered(lines, idx) {
   return false;
 }
 
-function scanFile(file) {
-  const src = readFileSync(file, "utf8");
+export function scanText(src) {
   const lines = src.split("\n");
   const hits = [];
 
@@ -266,6 +265,50 @@ function scanFile(file) {
   return hits;
 }
 
+function scanFile(file) {
+  return scanText(readFileSync(file, "utf8"));
+}
+
+export function compareAgainstAllowlist(perFile, allow) {
+  const errors = [];
+  const improvements = [];
+  const liveFiles = new Set([...perFile.keys()]);
+
+  for (const [rel, hits] of perFile.entries()) {
+    const baseline = allow[rel] ?? 0;
+    const actual = hits.length;
+    if (actual > baseline) {
+      errors.push({ rel, actual, baseline, hits });
+    } else if (actual < baseline) {
+      improvements.push({ rel, actual, baseline, reason: "decreased" });
+    }
+  }
+
+  for (const rel of Object.keys(allow)) {
+    if (!liveFiles.has(rel) && allow[rel] > 0) {
+      improvements.push({ rel, actual: 0, baseline: allow[rel], reason: "stale" });
+    }
+  }
+
+  return { errors, improvements };
+}
+
+export { SAFETY_PATTERNS, CITE_INDICATORS, isCovered };
+
+// ---------------------------------------------------------------------------
+// CLI entrypoint — only runs when invoked directly.
+// ---------------------------------------------------------------------------
+const isMain =
+  import.meta.url === `file://${process.argv[1]}` ||
+  process.argv[1]?.endsWith("check-safety-citations.mjs");
+if (!isMain) {
+  // exported for tests
+} else {
+  runCli();
+}
+
+function runCli() {
+
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
@@ -309,40 +352,36 @@ if (existsSync(ALLOWLIST_PATH)) {
   allow = JSON.parse(readFileSync(ALLOWLIST_PATH, "utf8"));
 }
 
+const { errors: errObjs, improvements: impObjs } = compareAgainstAllowlist(
+  perFile,
+  allow,
+);
+
 const errors = [];
 const improvements = [];
-const liveFiles = new Set([...perFile.keys()]);
-
-for (const [rel, hits] of perFile.entries()) {
-  const baseline = allow[rel] ?? 0;
-  const actual = hits.length;
-  if (actual > baseline) {
-    const newCount = actual - baseline;
-    errors.push(
-      `${rel}: ${actual} uncited safety-critical numerics (baseline ${baseline}). ` +
-        `${newCount} new uncited claim(s) added — every safety-critical number ` +
-        `must sit next to an <InlineRef />, <Cite />, or a \`cites: [...]\` ` +
-        `field within ±6 lines.`,
-    );
-    // Show worst offenders for the new file
-    for (const h of hits.slice(0, 6)) {
-      errors.push(`    L${h.line}  [${h.pattern}]  ${h.match}  —  ${h.snippet}`);
-    }
-  } else if (actual < baseline) {
-    improvements.push(
-      `${rel}: ${actual} uncited (baseline ${baseline}). Lower the number in ` +
-        `scripts/safety-citations-allowlist.json (or rerun ` +
-        `\`node scripts/check-safety-citations.mjs --write-allowlist\`).`,
-    );
+for (const e of errObjs) {
+  const newCount = e.actual - e.baseline;
+  errors.push(
+    `${e.rel}: ${e.actual} uncited safety-critical numerics (baseline ${e.baseline}). ` +
+      `${newCount} new uncited claim(s) added — every safety-critical number ` +
+      `must sit next to an <InlineRef />, <Cite />, or a \`cites: [...]\` ` +
+      `field within ±6 lines.`,
+  );
+  for (const h of e.hits.slice(0, 6)) {
+    errors.push(`    L${h.line}  [${h.pattern}]  ${h.match}  —  ${h.snippet}`);
   }
 }
-
-// Detect stale allowlist entries
-for (const rel of Object.keys(allow)) {
-  if (!liveFiles.has(rel) && allow[rel] > 0) {
+for (const i of impObjs) {
+  if (i.reason === "stale") {
     improvements.push(
-      `${rel}: file no longer has any uncited safety numerics (or was removed). ` +
+      `${i.rel}: file no longer has any uncited safety numerics (or was removed). ` +
         `Remove from scripts/safety-citations-allowlist.json.`,
+    );
+  } else {
+    improvements.push(
+      `${i.rel}: ${i.actual} uncited (baseline ${i.baseline}). Lower the number in ` +
+        `scripts/safety-citations-allowlist.json (or rerun ` +
+        `\`node scripts/check-safety-citations.mjs --write-allowlist\`).`,
     );
   }
 }
@@ -375,3 +414,4 @@ console.log(
     `${files.length} topics scanned, ${total} uncited numerics within baseline.`,
 );
 process.exit(0);
+} // end runCli
