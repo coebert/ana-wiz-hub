@@ -1,0 +1,13 @@
+{
+  "src/pages/topics/AirwayManagementTopic.tsx": 1,
+  "src/pages/topics/BronchospasticFailureTopic.tsx": 2,
+  "src/pages/topics/BurnsPlasticsTopic.tsx": 2,
+  "src/pages/topics/ClinicalIncidentsTopic.tsx": 1,
+  "src/pages/topics/GeneticSyndromesTopic.tsx": 1,
+  "src/pages/topics/IVAnaestheticsTopic.tsx": 1,
+  "src/pages/topics/MuscleRelaxantsTopic.tsx": 4,
+  "src/pages/topics/OrthopaedicAnaesthesiaTopic.tsx": 1,
+  "src/pages/topics/PaediatricAnaesthesiaTopic.tsx": 1,
+  "src/pages/topics/ProceduralSedationTopic.tsx": 1,
+  "src/pages/topics/TIVATopic.tsx": 1
+}
