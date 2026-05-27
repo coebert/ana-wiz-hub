@@ -191,7 +191,9 @@ describe("overlapping-span dedupe", () => {
 
     it("collapses `0.05 mcg/kg/min,` (trailing comma) to a single hit", () => {
       // Line: "Noradrenaline infusion at 0.05 mcg/kg/min, titrated to MAP."
-      const lineHits = hits.filter((h) => /0\.05/.test(h.match));
+      // Scope to the mcg variant — the fixture's insulin line also contains
+      // "0.05 units/kg/h" which is a separate legitimate hit.
+      const lineHits = hits.filter((h) => /0\.05\s*mcg/.test(h.match));
       expect(lineHits).toHaveLength(1);
     });
 
