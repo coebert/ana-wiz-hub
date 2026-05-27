@@ -157,15 +157,16 @@ const SAFETY_PATTERNS = [
     requireContextWord: /\b(PEEP|Pplat|plateau|peak|driving|airway|CPAP|PIP)\b/i,
   },
   // Heart-rate / respiratory-rate peri-arrest thresholds:
-  // HR < 60, RR > 30, only when context word present.
+  // Only fire when a strong clinical context word is on the line — bare "HR"
+  // or "RR" overlap too readily with "hr" (hours) and other tokens.
   {
     name: "vital-threshold",
     re: new RegExp(
       String.raw`(?:[<>≤≥]=?)\s*${NUM}\b`,
       "g",
     ),
-    requireContextWord: /\b(bradycardi|tachycardi|bradypn|tachypn|heart\s+rate|HR|respiratory\s+rate|RR)\b/i,
-    requireLineWord: /\b(bradycardi|tachycardi|bradypn|tachypn|heart\s+rate|HR\b|respiratory\s+rate|\bRR\b)\b/i,
+    requireContextWord: /\b(bradycardi|tachycardi|bradypn|tachypn|peri[-\s]?arrest)/i,
+    requireLineWord: /\b(bradycardi|tachycardi|bradypn|tachypn|peri[-\s]?arrest)/i,
   },
 ];
 
