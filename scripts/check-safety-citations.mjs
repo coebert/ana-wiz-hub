@@ -105,6 +105,69 @@ const SAFETY_PATTERNS = [
     re: new RegExp(String.raw`\b${RANGE}\s*J\b`, "g"),
     requireContextWord: /\b(defib|shock|cardiovert|biphasic|monophasic|joule)\b/i,
   },
+  // Oxygen saturation thresholds / targets: SpO2 < 94%, target 88–92%, SaO2 ≥ 90%
+  // Context-gated so generic "%" numbers (e.g. mortality, sensitivity) don't trigger.
+  {
+    name: "oxygen-saturation",
+    re: new RegExp(
+      String.raw`(?:[<>≤≥]=?\s*)?${RANGE}\s*%`,
+      "g",
+    ),
+    requireContextWord: /\b(SpO2|SaO2|SpO₂|SaO₂|oxygen\s+sat|saturation|hypoxaem?ia|target\s+sat)\b/i,
+  },
+  // Inspired oxygen fraction: FiO2 > 0.6, FiO2 ≥ 60%
+  {
+    name: "fio2-threshold",
+    re: new RegExp(
+      String.raw`(?:[<>≤≥]=?\s*)?${RANGE}\s*%?`,
+      "g",
+    ),
+    requireContextWord: /\bFiO2|FiO₂\b/i,
+    requireLineWord: /\bFiO2|FiO₂\b/i,
+  },
+  // Anticoagulation targets: INR 2–3, INR > 1.5, APTT ratio 1.5–2.5,
+  // anti-Xa 0.5–1.0, anti-Xa > 0.3
+  {
+    name: "anticoag-target",
+    re: new RegExp(
+      String.raw`\b(?:INR|APTT(?:\s*ratio)?|aPTT(?:\s*ratio)?|anti[-\s]?Xa|ACT)\s*(?:of|target|level)?\s*(?:[<>≤≥]=?\s*)?${RANGE}\b`,
+      "gi",
+    ),
+  },
+  // Transfusion / haematology thresholds: Hb < 70 g/L, platelets < 50 ×10⁹/L,
+  // fibrinogen < 1.5 g/L. The g/L unit is not in lab-threshold (which uses g/dL).
+  {
+    name: "haem-threshold",
+    re: new RegExp(
+      String.raw`(?:[<>≤≥]=?|>=|<=)\s*${NUM}\s*(?:g\/L|×?\s*10\^?9\s*\/\s*L|x\s*10\^?9\s*\/\s*L)\b`,
+      "g",
+    ),
+  },
+  // Glucose thresholds: BSL < 4 mmol/L, glucose > 10 mmol/L are caught by
+  // lab-threshold above. Add specific peri-arrest paediatric "10% dextrose
+  // 2 mL/kg" — already caught by weight-dose. No new pattern needed.
+
+  // Lung-protective ventilation: Vt 6 mL/kg, PEEP 5 cmH2O, Pplat < 30 cmH2O
+  {
+    name: "airway-pressure",
+    re: new RegExp(
+      String.raw`(?:[<>≤≥]=?\s*)?${RANGE}\s*cm\s*H2O\b`,
+      "gi",
+    ),
+    requireContextWord: /\b(PEEP|Pplat|plateau|peak|driving|airway|CPAP|PIP)\b/i,
+  },
+  // Heart-rate / respiratory-rate peri-arrest thresholds:
+  // Only fire when a strong clinical context word is on the line — bare "HR"
+  // or "RR" overlap too readily with "hr" (hours) and other tokens.
+  {
+    name: "vital-threshold",
+    re: new RegExp(
+      String.raw`(?:[<>≤≥]=?)\s*${NUM}\b`,
+      "g",
+    ),
+    requireContextWord: /\b(bradycardi|tachycardi|bradypn|tachypn|peri[-\s]?arrest)/i,
+    requireLineWord: /\b(bradycardi|tachycardi|bradypn|tachypn|peri[-\s]?arrest)/i,
+  },
 ];
 
 // Citation indicators considered "covers this line"
@@ -154,6 +217,7 @@ function scanFile(file) {
     // more specific pattern in SAFETY_PATTERNS order).
     const candidates = [];
     for (const pat of SAFETY_PATTERNS) {
+      if (pat.requireLineWord && !pat.requireLineWord.test(line)) continue;
       pat.re.lastIndex = 0;
       let m;
       while ((m = pat.re.exec(line)) !== null) {
