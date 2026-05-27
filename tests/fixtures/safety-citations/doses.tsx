@@ -1,5 +1,6 @@
 // Fixture: drug doses (weight-based, infusion, absolute). Raw text.
 <div>
+  <p>Rocuronium 1 mg/kg IV.</p>
   <p>Suxamethonium 1 mg/kg IV for RSI.</p>
   <p>Noradrenaline infusion 0.05 mcg/kg/min titrated to MAP.</p>
   <p>Sedaconda infusion runs at 5 mL/h post-induction.</p>
