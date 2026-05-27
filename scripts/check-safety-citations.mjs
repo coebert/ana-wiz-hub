@@ -216,6 +216,7 @@ function scanFile(file) {
     // more specific pattern in SAFETY_PATTERNS order).
     const candidates = [];
     for (const pat of SAFETY_PATTERNS) {
+      if (pat.requireLineWord && !pat.requireLineWord.test(line)) continue;
       pat.re.lastIndex = 0;
       let m;
       while ((m = pat.re.exec(line)) !== null) {
