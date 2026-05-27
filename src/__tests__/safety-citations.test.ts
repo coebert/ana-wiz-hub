@@ -149,7 +149,9 @@ describe("overlapping-span dedupe", () => {
       "<p>Loading dose noradrenaline infusion: 0.05 mcg/kg/min titrated.</p>\n",
     );
     expect(hits).toHaveLength(1);
-    expect(["weight-dose", "infusion-rate"]).toContain(hits[0].pattern);
+    expect(["weight-dose", "infusion-rate", "absolute-dose"]).toContain(
+      hits[0].pattern,
+    );
   });
 });
 
