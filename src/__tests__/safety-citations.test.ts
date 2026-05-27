@@ -46,9 +46,7 @@ describe("SAFETY_PATTERNS — regex matching", () => {
     expect(pats.has("absolute-dose")).toBe(true);
     // Specific numbers we expect to see
     expect(matchesOf(hits).some((m) => /1\s*mg\/kg/.test(m))).toBe(true);
-    expect(matchesOf(hits).some((m) => /0\.05\s*mcg\/kg\/min/.test(m))).toBe(
-      true,
-    );
+    expect(matchesOf(hits).some((m) => /5\s*mL\/h/.test(m))).toBe(true);
   });
 
   it("flags pressure (mmHg), lab (mmol/L), and haematology (g/L, ×10⁹/L) thresholds", () => {

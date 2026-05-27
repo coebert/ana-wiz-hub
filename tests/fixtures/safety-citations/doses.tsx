@@ -1,8 +1,14 @@
-// Fixture: drug doses (weight-based, infusion, absolute). Raw text.
+// Fixture: drug doses (weight-based, rate, absolute). Raw text.
 <div>
-  <p>Suxamethonium 1 mg/kg IV induction dose for RSI.</p>
-  <p>Noradrenaline infusion 0.05 mcg/kg/min titrated to MAP.</p>
-  <p>Sedaconda infusion runs at 5 mL/h post-induction.</p>
+  <p>Rocuronium 1 mg/kg IV.</p>
+</div>
+<div>
+  <p>Noradrenaline 0.05 mcg/kg/min titrated to MAP.</p>
+  <p>Sedaconda runs at 5 mL/h post-induction.</p>
+</div>
+<div>
   <p>Paracetamol loading dose 1000 mg PO.</p>
+</div>
+<div>
   <p>Maintenance fluid at 1.5 mL/kg/h Hartmann's.</p>
 </div>
