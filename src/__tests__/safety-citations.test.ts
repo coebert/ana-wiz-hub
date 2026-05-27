@@ -151,6 +151,69 @@ describe("overlapping-span dedupe", () => {
       hits[0].pattern,
     );
   });
+
+  // Regression guard: boundary cases where weight-dose and infusion-rate
+  // spans collide at punctuation, extra unit suffix (`/h`, `/min`), or share
+  // a line with adjacent doses. Each numeric region must produce EXACTLY
+  // one hit — never the same number twice under two pattern names.
+  describe("boundary overlap fixture (overlap.tsx)", () => {
+    const hits: Hit[] = scanText(fx("overlap.tsx"));
+
+    it("never emits two hits at the same (line, col)", () => {
+      const seen = new Set<string>();
+      for (const h of hits) {
+        const key = `${h.line}:${h.col}`;
+        expect(seen.has(key), `duplicate hit at ${key} (${h.pattern} ${h.match})`).toBe(false);
+        seen.add(key);
+      }
+    });
+
+    it("emits non-overlapping spans within a single line", () => {
+      const byLine = new Map<number, Hit[]>();
+      for (const h of hits) {
+        const list = byLine.get(h.line) ?? [];
+        list.push(h);
+        byLine.set(h.line, list);
+      }
+      for (const [line, lineHits] of byLine) {
+        const sorted = [...lineHits].sort((a, b) => a.col - b.col);
+        for (let i = 1; i < sorted.length; i++) {
+          const prevEnd = sorted[i - 1].col + sorted[i - 1].match.length;
+          expect(
+            sorted[i].col >= prevEnd,
+            `overlapping spans on line ${line}: ` +
+              `${sorted[i - 1].pattern}(${sorted[i - 1].match}) ` +
+              `vs ${sorted[i].pattern}(${sorted[i].match})`,
+          ).toBe(true);
+        }
+      }
+    });
+
+    it("collapses `0.05 mcg/kg/min,` (trailing comma) to a single hit", () => {
+      // Line: "Noradrenaline infusion at 0.05 mcg/kg/min, titrated to MAP."
+      // Scope to the mcg variant — the fixture's insulin line also contains
+      // "0.05 units/kg/h" which is a separate legitimate hit.
+      const lineHits = hits.filter((h) => /0\.05\s*mcg/.test(h.match));
+      expect(lineHits).toHaveLength(1);
+    });
+
+    it("collapses `5 mg/kg/h` (extra `/h` suffix) to a single hit", () => {
+      // Line: "Propofol bolus 2 mg/kg, infusion 5 mg/kg/h."
+      // The `5 mg/kg/h` span overlaps weight-dose (`5 mg/kg`), infusion-rate
+      // (`5 mg/kg/h`), and absolute-dose (`5 mg`) — exactly one must win.
+      const fiveHits = hits.filter((h) => /^5\s*(mg|mcg)/.test(h.match));
+      expect(fiveHits).toHaveLength(1);
+    });
+
+    it("keeps adjacent independent doses on the same line as separate hits", () => {
+      // Line: "Propofol bolus 2 mg/kg, infusion 5 mg/kg/h." → two distinct
+      // regions (`2 mg/kg` and `5 mg/kg/h`) must both survive dedupe.
+      const propofolLine = hits.filter((h) =>
+        /^(2|5)\s*(mg|mcg)/.test(h.match),
+      );
+      expect(propofolLine.length).toBeGreaterThanOrEqual(2);
+    });
+  });
 });
 
 // -------- 4. isCovered citation window ------------------------------------
@@ -258,6 +321,7 @@ describe("fixture corpus", () => {
         "thresholds.tsx",
         "anticoag.tsx",
         "covered.tsx",
+        "overlap.tsx",
       ]),
     );
   });
