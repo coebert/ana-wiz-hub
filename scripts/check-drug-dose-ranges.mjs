@@ -74,11 +74,12 @@ const ROUTE_WORDS = {
 function normaliseUnit(u) {
   return u
     .toLowerCase()
-    .replace(/µ|μ/g, "mcg".charAt(0))
     .replace(/\s+/g, "")
-    .replace(/units?/, "units")
-    .replace(/hr$/, "h");
+    .replace(/µg|μg/g, "mcg")
+    .replace(/units?/g, "units")
+    .replace(/hr/g, "h");
 }
+
 
 function detectRoutes(line) {
   const found = [];
