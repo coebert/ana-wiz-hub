@@ -319,6 +319,7 @@ describe("fixture corpus", () => {
         "thresholds.tsx",
         "anticoag.tsx",
         "covered.tsx",
+        "overlap.tsx",
       ]),
     );
   });
