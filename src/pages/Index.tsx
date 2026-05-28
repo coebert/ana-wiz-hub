@@ -155,7 +155,7 @@ const Index = () => {
               className="absolute h-40 w-40 md:h-56 md:w-56 invert brightness-200 opacity-15 pointer-events-none"
             />
             <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground">
-              AnaesthesiaCore
+              AnaesthesiaCore — FRCA &amp; FFICM Revision
             </h1>
           </div>
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-6">
