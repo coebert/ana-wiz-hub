@@ -105,7 +105,7 @@ const ResourcePoorAnaesthesiaTopic = () => {
       sectionSources={{
         objectives: ["WHO-WFSA Standards 2018", "WFSA Update Anaesth", "Lifebox"],
         workedExamples: ["WHO-WFSA Standards 2018", "WFSA Update Anaesth", "AAGBI Global 2009", "Lifebox"],
-        keyPoints: ["WHO-WFSA Standards 2018", "Lifebox", "AAGBI Global 2009", "WFSA Update Anaesth", "Lancet Commission GS 2015", "WHO Checklist 2009"],
+        keyPoints: ["WHO-WFSA Standards 2018", "WHO-WFSA Standards (WFSA portal)", "Lifebox", "AAGBI Global 2009", "WFSA Update Anaesth", "Lancet Commission GS 2015", "Lancet Commission Global Surgery (portal)", "WHO Checklist 2009"],
       }}
       keyPoints={[
         { text: "WHO–WFSA International Standards (2018) define HIGHLY RECOMMENDED minimums: trained anaesthesia provider, pulse oximeter, oxygen, suction, self-inflating bag, emergency drugs", cites: ["WHO-WFSA Standards 2018"] },
