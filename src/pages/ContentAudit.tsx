@@ -882,6 +882,7 @@ const ContentAudit = () => {
         {/* Companion checks: formulary verification + ESICM dose validator */}
         <FormularyVerificationPanel />
         <EsicmValidatorPanel />
+        <InaccuracyReportsPanel />
 
 
 
