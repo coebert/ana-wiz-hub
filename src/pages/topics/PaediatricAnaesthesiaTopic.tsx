@@ -10,6 +10,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { paediatricAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Identify key anatomical and physiological differences between neonates, infants and adults",
