@@ -132,7 +132,7 @@ const PaediatricEquipmentSizer = () => {
       item: "LMA classic",
       value: lma,
       formula: "Weight-banded",
-      note: "Avoid in full stomach, poor compliance, prone surgery. Cuff to seal pressure 60 cmH₂O.",
+      note: "Avoid in full stomach, poor compliance, prone surgery. Inflate cuff to just achieve a seal — keep cuff pressure ≤40 cmH₂O (lower volumes than the maximum on the device) to limit pharyngeal mucosal injury.",
       color: "hsl(220 70% 50%)",
     },
     {
