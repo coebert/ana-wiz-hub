@@ -59,7 +59,7 @@ export const TransportVentilationDiagram = () => {
     <DiagramFigure
       id="transport-ventilation-diagram"
       title="Transport ventilation"
-      description="Auto-generated wrapper for the Transport ventilation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Three timed phases of transport ventilation: (1) brief bag-valve hand-ventilation while moving between machines, (2) switch to a turbine-driven transport ventilator that replicates ICU settings (mode, TV, PEEP, FiO₂) — observe ≥15 min before departure with continuous ETCO₂, and (3) O₂ cylinder/FiO₂ planning plus disconnection prevention. Highlights how transport ventilators differ from ICU ventilators (limited modes, fixed gas supply, sensitivity to changes in patient position, acceleration and altitude), and why capnography is the earliest warning of disconnection or circuit failure."
     >
                   <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
         <figcaption className="mb-3 flex items-start justify-between gap-3">
