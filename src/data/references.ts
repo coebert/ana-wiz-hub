@@ -436,6 +436,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2019", citation: "Engelhardt T. Paediatric anaesthesia. BJA Education. 2019;19(2):47-53.", url: "https://doi.org/10.1016/j.bjae.2018.11.004" },
     { label: "Sury et al.", citation: "Sury M, Bullock I, Rabar S, DeMott K. Sedation for diagnostic and therapeutic procedures in children and young people (NICE CG112). Br J Anaesth. 2010;104(6):1-2.", url: "https://www.nice.org.uk/guidance/cg112" },
     { label: "APAGBI 2020", citation: "Association of Paediatric Anaesthetists. Good Practice in Paediatric Anaesthesia. APA; 2020.", url: "https://www.apagbi.org.uk/publications" },
+    { label: "APLS 2021", citation: "Advanced Life Support Group. Advanced Paediatric Life Support (APLS): A Practical Approach to Emergencies. 7th ed. Wiley-Blackwell; 2023 (UK course materials updated 2021). Weight = (age + 4) × 2 kg; fluid bolus 10 mL/kg (5 mL/kg in DKA/trauma); adrenaline 10 µg/kg IV/IO; atropine 20 µg/kg (min 100 µg, max 600 µg); defibrillation 4 J/kg.", url: "https://www.resus.org.uk/provider-courses/advanced-life-support/apls-advanced-paediatric-life-support" },
+    { label: "BNFc", citation: "British National Formulary for Children. Joint Formulary Committee. BMJ Group and Pharmaceutical Press; updated continuously.", url: "https://bnfc.nice.org.uk/" },
   ],
   "neuroanaesthesia": [
     { label: "BJA Educ 2018", citation: "Dinsmore J. Anaesthesia for elective neurosurgery. BJA Education. 2007;7(3):89-94.", url: "https://doi.org/10.1093/bjaceaccp/mkm016" },
