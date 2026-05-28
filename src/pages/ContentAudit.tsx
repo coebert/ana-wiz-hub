@@ -34,6 +34,7 @@ import { sectionAnchorId } from "@/lib/sectionAnchor";
 import { toast } from "sonner";
 import EsicmValidatorPanel from "@/components/admin/EsicmValidatorPanel";
 import FormularyVerificationPanel from "@/components/admin/FormularyVerificationPanel";
+import InaccuracyReportsPanel from "@/components/admin/InaccuracyReportsPanel";
 import { Sparkles } from "lucide-react";
 
 type Job = {
