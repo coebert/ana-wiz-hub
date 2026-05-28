@@ -459,7 +459,7 @@ Deno.serve(async (req) => {
 
     const { data: job, error: jobErr } = await admin
       .from("drug_verification_jobs")
-      .insert({ status: "pending", created_by: userData.user.id })
+      .insert({ status: "pending", created_by: userId })
       .select("id")
       .single();
     if (jobErr) throw jobErr;
