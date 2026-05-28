@@ -265,6 +265,87 @@ const HepaticDiseaseTopic = () => {
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Perioperative Decompensation</h2>
               <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  Decompensation — new or worsening ascites, encephalopathy, jaundice, variceal bleeding, infection, or acute kidney injury — is the dominant cause of perioperative mortality in chronic liver disease. The 30-day risk of decompensation or death rises sharply with both patient-specific severity of disease and procedure-specific physiological insult; the two combine multiplicatively in validated models such as VOCAL-Penn, which outperforms MELD-Na and the Mayo postoperative score for 30-/90-/180-day mortality<InlineRef topicId="hepatic-disease" refLabel="Mahmud VOCAL-Penn 2021" />.
+                </p>
+
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Patient-Associated Risk Factors</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Severity of liver disease</strong> — Child-Pugh class and MELD/MELD-Na are the strongest single predictors; 30-day mortality rises from ~10% (CP-A / MELD &lt; 10) to &gt; 70% (CP-C / MELD &gt; 20) for major abdominal surgery<InlineRef topicId="hepatic-disease" refLabel="Teh 2007" />.</li>
+                    <li><strong>Clinically significant portal hypertension</strong> — HVPG &gt; 10 mmHg, varices, splenomegaly, ascites; independently doubles perioperative mortality even at lower MELD scores<InlineRef topicId="hepatic-disease" refLabel="Bhangui 2012" />.</li>
+                    <li><strong>Active decompensation in the preceding 3 months</strong> — recent variceal bleed, SBP, HRS-AKI or grade III–IV encephalopathy markedly increases risk of recurrence under surgical stress<InlineRef topicId="hepatic-disease" refLabel="EASL 2018 Decompensated" />.</li>
+                    <li><strong>Hyponatraemia (Na &lt; 130 mmol/L)</strong> — captured in MELD-Na; reflects advanced splanchnic vasodilatation and predicts AKI, encephalopathy and death.</li>
+                    <li><strong>Sarcopenia and frailty</strong> — independent predictors of postoperative mortality beyond MELD; assessed by L3 psoas index, hand-grip strength or Liver Frailty Index<InlineRef topicId="hepatic-disease" refLabel="NICE NG50" />.</li>
+                    <li><strong>Concurrent infection</strong> — SBP, UTI or cellulitis at the time of surgery is one of the most consistent precipitants of acute-on-chronic liver failure (ACLF).</li>
+                    <li><strong>Cardiopulmonary comorbidity</strong> — cirrhotic cardiomyopathy, hepatopulmonary syndrome and portopulmonary hypertension (mPAP &gt; 35 mmHg) substantially increase intraoperative haemodynamic instability and postoperative organ failure.</li>
+                    <li><strong>Renal dysfunction</strong> — baseline creatinine &gt; 133 µmol/L or recent HRS doubles 30-day mortality (captured by both MELD and VOCAL-Penn).</li>
+                    <li><strong>Aetiology</strong> — active alcohol use, untreated hepatitis B/C, and NASH with metabolic syndrome are each associated with higher decompensation rates; abstinence and antiviral therapy before elective surgery measurably reduce risk<InlineRef topicId="hepatic-disease" refLabel="BJA Educ Cirrhosis 2017" />.</li>
+                    <li><strong>Age &gt; 70, ASA ≥ III, BMI extremes</strong> — non-hepatic factors that are integrated into the VOCAL-Penn calculator alongside liver-specific variables<InlineRef topicId="hepatic-disease" refLabel="Mahmud VOCAL-Penn 2021" />.</li>
+                  </ul>
+                </div>
+
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Procedure-Associated Risk Factors</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Urgency</strong> — emergency surgery carries a 2–4-fold increase in perioperative mortality compared with the same operation performed electively, at every MELD/Child-Pugh stratum<InlineRef topicId="hepatic-disease" refLabel="Friedman 2010" />.</li>
+                    <li><strong>Site and type of surgery</strong> — highest risk: open abdominal (especially hepatic resection, colectomy, ulcer surgery), cardiac and trauma surgery; intermediate risk: orthopaedic, vascular, upper GI; lowest risk: superficial, ophthalmic and short laparoscopic procedures<InlineRef topicId="hepatic-disease" refLabel="Bhangui 2012" />.</li>
+                    <li><strong>Open vs laparoscopic</strong> — laparoscopic cholecystectomy and hernia repair have lower decompensation rates than open equivalents in compensated cirrhosis, provided pneumoperitoneum is kept ≤ 12 mmHg to preserve hepatic venous outflow.</li>
+                    <li><strong>Duration and blood loss</strong> — operations &gt; 4 h and intraoperative transfusion &gt; 2 units RBC are independent predictors of postoperative ACLF.</li>
+                    <li><strong>Hepatic resection or vascular inflow occlusion</strong> — Pringle manoeuvre and major hepatectomy further reduce functional liver mass; safe future liver remnant ≥ 40% in cirrhosis (vs ≥ 25% in normal liver).</li>
+                    <li><strong>Cardiopulmonary bypass</strong> — non-pulsatile flow, hypothermia, transfusion and systemic inflammation produce a particularly high rate of postoperative liver failure in cirrhosis; off-pump techniques preferred where feasible.</li>
+                    <li><strong>Intra-abdominal surgery in the presence of ascites</strong> — wound dehiscence, infection and incisional hernia rates are substantially higher; consider preoperative paracentesis or TIPSS in selected patients.</li>
+                    <li><strong>Anaesthetic insults</strong> — sustained hypotension (MAP &lt; 65 mmHg for &gt; 10 min), high PEEP, high intra-abdominal pressure and hepatotoxic drug exposure (halothane, paracetamol overdose, NSAIDs) precipitate ischaemic hepatic injury.</li>
+                  </ul>
+                </div>
+
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Risk Stratification Tools</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Child-Pugh</strong> — historic standard; still useful for bedside triage but limited by subjective components and absence of renal function<InlineRef topicId="hepatic-disease" refLabel="Teh 2007" />.</li>
+                    <li><strong>MELD / MELD-Na</strong> — better continuous predictor; MELD &gt; 15 should trigger formal multidisciplinary review before elective non-transplant surgery.</li>
+                    <li><strong>Mayo Postoperative Mortality Risk Score</strong> — integrates age, MELD, ASA and aetiology to give 7-/30-/90-day mortality estimates (Mayo Clinic online calculator)<InlineRef topicId="hepatic-disease" refLabel="Teh 2007" />.</li>
+                    <li><strong>VOCAL-Penn</strong> — preferred contemporary score in the US/EU; outperforms MELD-Na and Mayo, particularly in compensated patients and laparoscopic procedures<InlineRef topicId="hepatic-disease" refLabel="Mahmud VOCAL-Penn 2021" />.</li>
+                    <li><strong>CLIF-C ACLF / CLIF-SOFA</strong> — used postoperatively to grade severity and prognosis if decompensation develops<InlineRef topicId="hepatic-disease" refLabel="EASL 2018 Decompensated" />.</li>
+                  </ul>
+                </div>
+
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Strategies to Mitigate Decompensation Risk</h3>
+                  <p className="text-sm mb-2"><em>Preoperative</em></p>
+                  <ul className="list-disc list-inside space-y-1 text-sm mb-3">
+                    <li>Defer non-essential elective surgery if MELD &gt; 15 or Child-Pugh C; transfer high-risk cases to a transplant centre where surgery and post-op liver support are co-located<InlineRef topicId="hepatic-disease" refLabel="Friedman 2010" />.</li>
+                    <li>Treat ongoing precipitants before theatre: alcohol abstinence (≥ 6 weeks where possible), antiviral therapy for HBV/HCV, weight loss in NASH, optimisation of diabetes.</li>
+                    <li>Optimise ascites (low-sodium diet, diuretics, large-volume paracentesis with 8 g albumin per litre drained); consider preoperative TIPSS in refractory ascites or recurrent variceal bleeding before elective abdominal surgery.</li>
+                    <li>Screen for and band-ligate high-risk varices; continue non-selective β-blocker (carvedilol or propranolol) up to surgery, holding only if MAP cannot be maintained.</li>
+                    <li>Treat hepatic encephalopathy with lactulose ± rifaximin to West Haven 0 before elective surgery<InlineRef topicId="hepatic-disease" refLabel="EASL 2022 HRS" />.</li>
+                    <li>Correct hyponatraemia slowly (≤ 8 mmol/L per 24 h) to avoid osmotic demyelination.</li>
+                    <li>Nutritional pre-habilitation: 1.2–1.5 g/kg/day protein, late-evening snack, branched-chain amino acid supplementation in sarcopenic patients.</li>
+                    <li>Document baseline coagulation with fibrinogen and viscoelastic testing (TEG/ROTEM); avoid prophylactic FFP and platelets — correct only if active bleeding or planned neuraxial<InlineRef topicId="hepatic-disease" refLabel="Northup AASLD 2021" />.</li>
+                    <li>Vaccinate (pneumococcal, influenza, HBV) and treat any active infection — including SBP — before elective surgery.</li>
+                    <li>Multidisciplinary preoperative review (hepatology, anaesthesia, surgery, ITU) with explicit ceiling-of-care discussion documented.</li>
+                  </ul>
+                  <p className="text-sm mb-2"><em>Intraoperative</em></p>
+                  <ul className="list-disc list-inside space-y-1 text-sm mb-3">
+                    <li>Prefer regional or hybrid techniques where coagulation permits to limit GA and opioid exposure.</li>
+                    <li>Maintain MAP within 20% of baseline (≥ 65–70 mmHg, ≥ 80 mmHg if HRS) with noradrenaline first-line; vasopressin/terlipressin for refractory splanchnic vasodilatation<InlineRef topicId="hepatic-disease" refLabel="EASL 2018 Decompensated" />.</li>
+                    <li>Lung-protective ventilation with the lowest effective PEEP to preserve hepatic venous outflow; keep intra-abdominal pressure ≤ 12 mmHg for laparoscopy.</li>
+                    <li>Balanced crystalloid and 20% albumin for volume replacement; restrict 0.9% saline and avoid starches.</li>
+                    <li>Viscoelastic-guided product use; tranexamic acid for hyperfibrinolysis; fibrinogen concentrate if FIBTEM A10 &lt; 8 mm; platelets only if &lt; 50 × 10⁹/L with active bleeding<InlineRef topicId="hepatic-disease" refLabel="Northup AASLD 2021" />.</li>
+                    <li>Hepatic-friendly pharmacology: propofol (reduced dose), sevoflurane/desflurane, fentanyl or remifentanil, cisatracurium, paracetamol ≤ 2–3 g/24 h, no NSAIDs.</li>
+                    <li>Active warming and glucose monitoring (hypoglycaemia from impaired gluconeogenesis).</li>
+                    <li>Surgical mitigation: minimise blood loss, avoid Pringle manoeuvre &gt; 30 min in cirrhosis, consider intraoperative cell salvage where appropriate.</li>
+                  </ul>
+                  <p className="text-sm mb-2"><em>Postoperative</em></p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>HDU or ICU disposition for any MELD &gt; 10 or major surgery; daily review for ascites, encephalopathy, AKI and infection.</li>
+                    <li>Early enteral nutrition; continue lactulose/rifaximin; avoid sedatives and benzodiazepines.</li>
+                    <li>Early VTE prophylaxis (mechanical immediately, pharmacological once haemostasis confirmed) — cirrhosis does <em>not</em> protect against VTE<InlineRef topicId="hepatic-disease" refLabel="Northup AASLD 2021" />.</li>
+                    <li>Vigilance for postoperative sepsis and SBP — low threshold for diagnostic paracentesis and empirical antibiotics with 20% albumin (1.5 g/kg day 1, 1 g/kg day 3)<InlineRef topicId="hepatic-disease" refLabel="EASL 2018 Decompensated" />.</li>
+                    <li>Early identification of ACLF using CLIF-SOFA; escalate to transplant centre if grade ≥ 2 with extrahepatic organ failure.</li>
+                  </ul>
+                </div>
+
                 <div className="bg-card border border-border rounded-lg p-4">
                   <h3 className="font-semibold text-foreground mb-2">Acute-on-Chronic Liver Failure (ACLF)</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm">
