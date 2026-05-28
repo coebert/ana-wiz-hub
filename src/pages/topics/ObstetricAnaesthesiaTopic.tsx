@@ -10,6 +10,7 @@ import { Cat1RSIAnimation } from "@/components/diagrams/Cat1RSIAnimation";
 import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const ObstetricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
   {
