@@ -129,7 +129,7 @@ const Landing = () => {
           <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
             <img
               src={brainLogo}
-              alt="AnaesthesiaCore logo"
+              alt="AnaesthesiaCore brain and pulse logo"
               width={288}
               height={288}
               fetchPriority="high"
@@ -137,7 +137,7 @@ const Landing = () => {
               className="h-52 w-52 md:h-72 md:w-72 mb-6 invert brightness-200 [filter:invert(1)_brightness(2)_drop-shadow(0_4px_12px_rgba(0,0,0,0.35))]"
             />
             <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-3 tracking-tight [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
-              AnaesthesiaCore
+              AnaesthesiaCore — FRCA &amp; FFICM Revision
             </h1>
             <p className="text-base md:text-lg text-white/90 mb-4 max-w-2xl [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
               AnaesthesiaCore is a study companion for FRCA Primary, Final and FFICM trainees — built around the official curriculum to help you revise efficiently, learn on the move, and rehearse out loud before exam day.
