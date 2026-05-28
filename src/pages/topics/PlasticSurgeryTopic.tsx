@@ -6,6 +6,7 @@ import { plasticSurgeryQuestions } from "@/data/quizzes";
 import FreeFlaPerfusionDiagram from "@/components/diagrams/FreeFlaPerfusionDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Apply the principles of normotension, normovolaemia and normothermia to optimise free-flap perfusion",
@@ -81,7 +82,7 @@ const PlasticSurgeryTopic = () => {
           <ExamSection id="principles" exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Free Flap Surgery — Anaesthetic Principles" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Free tissue transfer involves harvesting a composite tissue flap (skin, muscle, bone) with its vascular pedicle and anastomosing it to recipient vessels at the defect site. Flap survival depends on <strong className="text-foreground">microvascular patency</strong>, influenced by haemodynamics, temperature, coagulation, and vasoactive drugs.
+              Free tissue transfer involves harvesting a composite tissue flap (skin, muscle, bone) with its vascular pedicle and anastomosing it to recipient vessels at the defect site. Flap survival depends on <strong className="text-foreground">microvascular patency</strong>, influenced by haemodynamics, temperature, coagulation, and vasoactive drugs<InlineRef topicId="plastic-surgery" refLabel="BJA Educ 2021" />.
             </p>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
               <FreeFlaPerfusionDiagram />
