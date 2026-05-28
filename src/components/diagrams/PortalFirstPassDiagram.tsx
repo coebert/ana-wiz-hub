@@ -228,7 +228,7 @@ const PortalFirstPassDiagram = () => {
               <path key={i} d={`M ${x} 370 Q ${x + 10} 340 ${230 + i * 5} 320`}
                 stroke="url(#pf-portal)" strokeWidth="2" fill="none" opacity={0.85} strokeLinecap="round" />
             ))}
-            <text x={170} y={335} fontSize="8" className="fill-muted-foreground italic">SMV tributaries</text>
+            <text x={170} y={335} fontSize="8" className="fill-muted-foreground italic">Superior mesenteric v.</text>
   
             {/* Splenic vein joining */}
             <path d="M 90 350 Q 150 330 230 320"
