@@ -34,6 +34,7 @@ const SeoIndexing = lazy(() => import("./pages/SeoIndexing"));
 const A11yAudit = lazy(() => import("./pages/A11yAudit"));
 const Curriculum = lazy(() => import("./pages/Curriculum"));
 const DiagramSnapshot = lazy(() => import("./pages/DiagramSnapshot"));
+const Errata = lazy(() => import("./pages/Errata"));
 
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
@@ -216,6 +217,7 @@ const App = () => (
           <Route path="/map" element={<TopicMap />} />
           <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/progress" element={<ProgressTracker />} />
+          <Route path="/errata" element={<Errata />} />
           <Route path="/podcasts" element={<PodcastsLibrary />} />
           <Route path="/glossary-audit" element={<GlossaryAudit />} />
           <Route path="/viva" element={<VivaHub />} />

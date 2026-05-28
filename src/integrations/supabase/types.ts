@@ -208,6 +208,60 @@ export type Database = {
         }
         Relationships: []
       }
+      inaccuracy_reports: {
+        Row: {
+          contact_email: string | null
+          created_at: string
+          id: string
+          message: string
+          public_note: string | null
+          quoted_text: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+          suggested_correction: string | null
+          topic_id: string
+          topic_title: string
+          topic_url: string | null
+          updated_at: string
+          user_agent: string | null
+        }
+        Insert: {
+          contact_email?: string | null
+          created_at?: string
+          id?: string
+          message: string
+          public_note?: string | null
+          quoted_text?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          suggested_correction?: string | null
+          topic_id: string
+          topic_title: string
+          topic_url?: string | null
+          updated_at?: string
+          user_agent?: string | null
+        }
+        Update: {
+          contact_email?: string | null
+          created_at?: string
+          id?: string
+          message?: string
+          public_note?: string | null
+          quoted_text?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          suggested_correction?: string | null
+          topic_id?: string
+          topic_title?: string
+          topic_url?: string | null
+          updated_at?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       lighthouse_runs: {
         Row: {
           branch: string | null

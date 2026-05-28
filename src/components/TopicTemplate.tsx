@@ -10,6 +10,7 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SectionReferences } from "@/components/SectionReferences";
 import { SeeAlso } from "@/components/SeeAlso";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { ReportInaccuracyDialog } from "@/components/ReportInaccuracyDialog";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { TopicExamFilterBar } from "@/components/TopicExamFilterBar";
 import { LazyDiagrams } from "@/components/LazyDiagrams";
@@ -333,6 +334,9 @@ export const TopicTemplate = ({
         <ReferencesList topicId={topicId} />
         <SeeAlso topicId={topicId} />
         <TopicCompletionToggle topicId={topicId} topicTitle={topicTitle ?? title} />
+        <div className="flex justify-end pt-2 -mt-2">
+          <ReportInaccuracyDialog topicId={topicId} topicTitle={topicTitle ?? title} />
+        </div>
       </div>
     </SectionLayout>
   );
