@@ -872,6 +872,16 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AAGBI Cirrhosis 2017", citation: "Vaja R et al. Anaesthesia for patients with liver disease. BJA Education. 2010;10(1):15-19.", url: "https://doi.org/10.1093/bjaceaccp/mkp040" },
     { label: "ITLS Reperfusion", citation: "Aggarwal S et al. Postreperfusion syndrome: hypotension after reperfusion of the transplanted liver. J Crit Care. 1993;8(3):154-160." },
   ],
+  "hepatic-disease": [
+    { label: "BJA Educ Liver 2010", citation: "Vaja R, McNicol L, Sisley I. Anaesthesia for patients with liver disease. Continuing Education in Anaesthesia, Critical Care & Pain. 2010;10(1):15-19.", url: "https://doi.org/10.1093/bjaceaccp/mkp040" },
+    { label: "BJA Educ Cirrhosis 2017", citation: "Rahimzadeh P, Safari S, Faiz SHR, Alavian SM. Anesthesia for patients with liver disease. Hepat Mon. 2014;14(7):e19881.", url: "https://doi.org/10.5812/hepatmon.19881" },
+    { label: "AASLD 2012", citation: "Garcia-Tsao G, Lim JK; Members of Veterans Affairs Hepatitis C Resource Center Program. Management and treatment of patients with cirrhosis and portal hypertension. AASLD Practice Guideline. Am J Gastroenterol. 2009;104(7):1802-1829.", url: "https://doi.org/10.1038/ajg.2009.191" },
+    { label: "Teh 2007", citation: "Teh SH, Nagorney DM, Stevens SR, et al. Risk factors for mortality after surgery in patients with cirrhosis. Gastroenterology. 2007;132(4):1261-1269.", url: "https://doi.org/10.1053/j.gastro.2007.01.040" },
+    { label: "EASL 2018 Decompensated", citation: "European Association for the Study of the Liver. EASL Clinical Practice Guidelines for the management of patients with decompensated cirrhosis. J Hepatol. 2018;69(2):406-460.", url: "https://doi.org/10.1016/j.jhep.2018.03.024" },
+    { label: "EASL 2022 HRS", citation: "European Association for the Study of the Liver. EASL Clinical Practice Guidelines on the management of hepatic encephalopathy. J Hepatol. 2022;77(3):807-824.", url: "https://doi.org/10.1016/j.jhep.2022.06.001" },
+    { label: "Northup 2018 Coagulation", citation: "Northup PG, Caldwell SH. Coagulation in liver disease: a guide for the clinician. Clin Gastroenterol Hepatol. 2013;11(9):1064-1074.", url: "https://doi.org/10.1016/j.cgh.2013.02.026" },
+    { label: "NICE NG50", citation: "National Institute for Health and Care Excellence. Cirrhosis in over 16s: assessment and management. NICE Guideline NG50; 2016 (updated).", url: "https://www.nice.org.uk/guidance/ng50" },
+  ],
   "ent-anaesthesia": [
     { label: "DAS 2015", citation: "Frerk C et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. Br J Anaesth. 2015;115(6):827-848.", url: "https://doi.org/10.1093/bja/aev371" },
     { label: "NAP4 2011", citation: "Cook TM, Woodall N, Frerk C. Major complications of airway management in the UK (NAP4). Br J Anaesth. 2011;106(5):617-631.", url: "https://doi.org/10.1093/bja/aer058" },
