@@ -130,7 +130,7 @@ const MassCasualtyMilitaryTopic = () => {
       keyPoints={[
         { text: "Major incident = casualty load exceeds normal resources. Declared by first emergency service on scene; cascade activates hospital plan.", cites: ["JRCALC 2022"] },
         { text: "METHANE message structures the alert: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.", cites: ["BJA Educ MCI 2017"] },
-        { text: "Triage Sieve (walking? breathing? RR? CRT/pulse?) → categorises P1/P2/P3/P4 within 30 s per casualty. Triage Sort uses TRTS for in-hospital re-triage.", cites: ["MARCH Algorithm"] },
+        { text: "Triage Sieve (walking? breathing? RR? CRT/pulse?) → categorises P1/P2/P3/P4 within 30 s per casualty. RR <10 or >29 = P1. Triage Sort uses TRTS for in-hospital re-triage.", cites: ["MIMMS 4e", "JRCALC 2019 NASMeD", "BJA Educ Major Incident 2017"] },
         { text: "Crisis Resource Management: leadership, role clarity, closed-loop communication, situational awareness, workload distribution, calling for help early.", cites: ["Damage Control Resuscitation"] },
         { text: "Damage-control resuscitation: permissive hypotension, 1:1:1 ratio (or whole blood), TXA &lt;3 h, calcium, warmth, early surgical haemostasis.", cites: ["NHS EPRR 2022"] },
         { text: "Damage-control surgery: abbreviated procedure to control haemorrhage and contamination, with planned return for definitive surgery once physiology corrected.", cites: ["JRCALC 2022"] },
