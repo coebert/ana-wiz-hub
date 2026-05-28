@@ -354,8 +354,10 @@ const ContentAudit = () => {
         const j = await fetchLatestJob();
         if (j) await Promise.all([fetchFindings(j.id), fetchTopicLogs(j.id)]);
       }, 600);
+      return true;
     } catch (e: any) {
       toast.error(e?.message ?? "Failed to start audit");
+      return false;
     } finally {
       setStarting(false);
     }
@@ -739,7 +741,8 @@ const ContentAudit = () => {
             <div className="flex flex-wrap gap-2">
               <Button
                 onClick={async () => {
-                  await startAudit("all");
+                  const auditStarted = await startAudit("all");
+                  if (!auditStarted) return;
                   try {
                     const headers = await getAdminFunctionHeaders();
                     const { data, error } = await supabase.functions.invoke("verify-drugs", {
