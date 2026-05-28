@@ -7,7 +7,7 @@
 //
 // Runs in the background via EdgeRuntime.waitUntil so the HTTP response returns immediately.
 
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.74.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -1243,22 +1243,20 @@ Deno.serve(async (req) => {
           { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
         );
       }
-      const userClient = createClient(
-        SUPABASE_URL,
-        Deno.env.get("SUPABASE_ANON_KEY")!,
-        { global: { headers: { Authorization: authHeader } } },
-      );
-      const { data: userData, error: userErr } = await userClient.auth.getUser();
-      if (userErr || !userData.user) {
+      const userClient = createClient(SUPABASE_URL, Deno.env.get("SUPABASE_ANON_KEY")!);
+      const token = authHeader.replace(/^Bearer\s+/i, "");
+      const { data: claimsData, error: userErr } = await userClient.auth.getClaims(token);
+      if (userErr || !claimsData?.claims?.sub) {
         return new Response(
           JSON.stringify({ error: "Invalid token" }),
           { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
         );
       }
+      const userId = claimsData.claims.sub as string;
       const { data: roleRow } = await supa
         .from("user_roles")
         .select("role")
-        .eq("user_id", userData.user.id)
+        .eq("user_id", userId)
         .eq("role", "admin")
         .maybeSingle();
       if (!roleRow) {
