@@ -6,6 +6,7 @@ import { plasticSurgeryQuestions } from "@/data/quizzes";
 import FreeFlaPerfusionDiagram from "@/components/diagrams/FreeFlaPerfusionDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Apply the principles of normotension, normovolaemia and normothermia to optimise free-flap perfusion",
