@@ -162,7 +162,7 @@ const MassCasualtyMilitaryTopic = () => {
             <MajorIncidentTriageDiagram />
             <div className="space-y-3">
               {[
-                { tool: "Triage Sieve", detail: "Pre-hospital, &lt;30 s. Walking → P3 (delayed). Not breathing despite airway opening → Dead. Then RR &lt;10 or &gt;30 → P1; CRT &gt;2 s or HR &gt;120 → P1; otherwise P2." },
+                { tool: "Triage Sieve", detail: "Pre-hospital, &lt;30 s. Walking → P3 (delayed). Not breathing despite airway opening → Dead. Then RR &lt;10 or &gt;29 → P1; CRT &gt;2 s or HR &gt;120 → P1; otherwise P2." },
                 { tool: "Triage Sort (TRTS)", detail: "In hospital. Scores RR, SBP, GCS to give Triage Revised Trauma Score 0–12. ≤10 = P1, 11 = P2, 12 = P3." },
                 { tool: "MPTT-24 (military)", detail: "Modified Physiological Triage Tool — RR &lt;10 or &gt;22, HR &gt;100, GCS motor &lt;6 = P1. Better discrimination for needs-immediate-intervention than civilian sieve." },
                 { tool: "Reverse / expectant triage", detail: "When demand vastly exceeds capacity (austere or wartime), the most resource-intensive may be designated expectant (P4) to maximise survivors. Ethically reviewed by senior team and documented." },
