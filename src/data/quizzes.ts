@@ -1609,3 +1609,64 @@ export const vascularAccessDevicesQuestions: QuizQuestion[] = [
     explanation: "The introducer (sometimes called the 'Swan sheath') is an 8.5–9 Fr percutaneous central sheath with a haemostatic valve through which a 7.5 Fr PAC, pacing wire or other device may be passed. The integrated side-port allows rapid fluid administration concurrently. Because the lumen is wide and short, the sheath itself doubles as an excellent resus line.",
   },
 ];
+
+export const hepaticDiseaseQuestions: QuizQuestion[] = [
+  {
+    question: "Which of the following is NOT a component of the Child-Pugh score?",
+    options: ["Serum bilirubin", "Serum albumin", "INR / prothrombin time", "Serum creatinine"],
+    correctIndex: 3,
+    explanation:
+      "Child-Pugh uses bilirubin, albumin, INR (or PT prolongation), ascites and encephalopathy. Creatinine is part of MELD (bilirubin, INR, creatinine ± Na), not Child-Pugh. MELD is the better predictor of perioperative mortality for non-transplant surgery in cirrhosis.",
+  },
+  {
+    question:
+      "A patient with Child-Pugh C cirrhosis is listed for elective inguinal hernia repair. The estimated 30-day mortality based on a MELD of 18 is closest to:",
+    options: ["~1%", "~10%", "~25%", ">50%"],
+    correctIndex: 2,
+    explanation:
+      "The Mayo postoperative mortality risk score (Teh et al. 2007) shows MELD 16–20 carries a 30-day mortality around 20–30% for major non-transplant surgery, rising above 50% for MELD >20 or Child-Pugh C. Elective surgery is generally avoided when MELD >15 or Child-Pugh C without compelling indication.",
+  },
+  {
+    question:
+      "Which neuromuscular blocking agent has the most predictable duration of action in a patient with advanced cirrhosis?",
+    options: ["Rocuronium", "Vecuronium", "Cisatracurium", "Suxamethonium"],
+    correctIndex: 2,
+    explanation:
+      "Cisatracurium is eliminated by organ-independent Hofmann degradation, so its duration is unaffected by hepatic or renal failure. Rocuronium and vecuronium have prolonged effect (reduced biliary clearance). Suxamethonium duration is variably prolonged because plasma cholinesterase (synthesised by the liver) is reduced.",
+  },
+  {
+    question:
+      "Hepatorenal syndrome type 1 is best managed initially with:",
+    options: [
+      "Loop diuretics and fluid restriction",
+      "Terlipressin plus 20% human albumin",
+      "Early continuous renal replacement therapy",
+      "Dopamine infusion at renal dose",
+    ],
+    correctIndex: 1,
+    explanation:
+      "HRS-AKI is functional renal failure from splanchnic vasodilatation. First-line treatment is a vasoconstrictor (terlipressin 1–2 mg 4–6 hourly, or noradrenaline in ICU) plus 20% human albumin (1 g/kg day 1, then 20–40 g/day). Diuretics worsen perfusion; 'renal-dose' dopamine has no benefit; RRT is a bridge to transplant, not primary therapy.",
+  },
+  {
+    question:
+      "Coagulation in compensated cirrhosis is best described as:",
+    options: [
+      "Universally hypocoagulable — INR predicts bleeding risk",
+      "Rebalanced — INR poorly predicts bleeding and VTE risk persists",
+      "Universally hypercoagulable — anticoagulation always indicated",
+      "Identical to disseminated intravascular coagulation",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Cirrhosis causes a parallel reduction in pro- and anticoagulant factors with reduced platelet count but elevated von Willebrand factor — coagulation is 'rebalanced'. INR (a measure of procoagulant factor activity only) does not predict bleeding and should not trigger prophylactic FFP. Viscoelastic tests (TEG/ROTEM) better reflect global haemostasis. VTE risk is preserved or increased.",
+  },
+  {
+    question:
+      "Which volatile agent is most appropriate for maintenance in a patient with established hepatic dysfunction?",
+    options: ["Halothane", "Enflurane", "Sevoflurane", "Methoxyflurane"],
+    correctIndex: 2,
+    explanation:
+      "Sevoflurane has the lowest hepatic metabolism (~3%) of currently available agents and preserves hepatic blood flow better than halothane. Halothane carries a small but well-recognised risk of immune-mediated halothane hepatitis (~20% metabolised; trifluoroacetyl-protein adducts). Desflurane (<0.02% metabolised) is also acceptable but more pungent.",
+  },
+];
+

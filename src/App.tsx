@@ -132,6 +132,7 @@ const CardiovascularDiseaseTopic = lazy(() => import("./pages/topics/Cardiovascu
 const RespiratoryDiseaseTopic = lazy(() => import("./pages/topics/RespiratoryDiseaseTopic"));
 const EndocrineDiseaseTopic = lazy(() => import("./pages/topics/EndocrineDiseaseTopic"));
 const NeurologicalDiseaseTopic = lazy(() => import("./pages/topics/NeurologicalDiseaseTopic"));
+const HepaticDiseaseTopic = lazy(() => import("./pages/topics/HepaticDiseaseTopic"));
 const SepsisTopic = lazy(() => import("./pages/topics/SepsisTopic"));
 const MechanicalVentilationTopic = lazy(() => import("./pages/topics/MechanicalVentilationTopic"));
 const CirculatoryFailureTopic = lazy(() => import("./pages/topics/CirculatoryFailureTopic"));
@@ -329,6 +330,7 @@ const App = () => (
           <Route path="/perioperative/respiratory-disease" element={<RespiratoryDiseaseTopic />} />
           <Route path="/perioperative/endocrine-disease" element={<EndocrineDiseaseTopic />} />
           <Route path="/perioperative/neurological-disease" element={<NeurologicalDiseaseTopic />} />
+          <Route path="/perioperative/hepatic-disease" element={<HepaticDiseaseTopic />} />
           {/* Intensive Care */}
           <Route path="/intensive-care/sepsis" element={<SepsisTopic />} />
           <Route path="/intensive-care/mechanical-ventilation" element={<MechanicalVentilationTopic />} />
