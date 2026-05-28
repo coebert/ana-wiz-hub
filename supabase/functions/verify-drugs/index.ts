@@ -4,7 +4,7 @@
 // each invocation processes up to CHUNK_SIZE drugs (skipping those already
 // logged for this job), then re-invokes itself for the next chunk until done.
 
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.74.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
