@@ -13,6 +13,7 @@ import {
   Square,
 } from "lucide-react";
 import { toast } from "sonner";
+import { getAdminFunctionHeaders } from "@/lib/admin-function-auth";
 
 interface VerificationJob {
   id: string;
@@ -96,10 +97,10 @@ const FormularyVerificationPanel = ({ initiallyOpen = false, onStarted }: Props)
   const startVerification = async () => {
     setStarting(true);
     try {
-      const { data: { session } } = await supabase.auth.getSession();
+      const headers = await getAdminFunctionHeaders();
       const { data, error } = await supabase.functions.invoke("verify-drugs", {
         body: { action: "start" },
-        headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
+        headers,
       });
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
@@ -119,19 +120,19 @@ const FormularyVerificationPanel = ({ initiallyOpen = false, onStarted }: Props)
   const cancelVerification = async () => {
     if (!job) return;
     if (!confirm("Cancel the running formulary verification job?")) return;
-    const { data: { session } } = await supabase.auth.getSession();
+    const headers = await getAdminFunctionHeaders();
     await supabase.functions.invoke("verify-drugs", {
       body: { action: "cancel", jobId: job.id },
-      headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
+      headers,
     });
     await fetchJob();
   };
 
   const resumeVerification = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
+    const headers = await getAdminFunctionHeaders();
     const { data, error } = await supabase.functions.invoke("verify-drugs", {
       body: { action: "resume" },
-      headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
+      headers,
     });
     if (error || (data as any)?.error) {
       toast.error(
