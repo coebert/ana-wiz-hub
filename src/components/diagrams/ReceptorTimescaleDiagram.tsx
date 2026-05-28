@@ -423,7 +423,7 @@ const ReceptorIcon = ({ id, active, color, x, y }: IconProps) => {
               <animate attributeName="opacity" values="0;1;0" dur="1s" begin={`${i * 0.5}s`} repeatCount="indefinite" />
             </circle>
           ))}
-          <text x={64} y={28} fontSize="8" fill={fg}>P–MAPK / PI3K</text>
+          <text x={64} y={28} fontSize="8" fill={fg}>MAPK / PI3K pathways</text>
         </g>
       );
     case "nuclear":
