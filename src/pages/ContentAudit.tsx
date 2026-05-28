@@ -30,6 +30,7 @@ import {
   WifiOff,
 } from "lucide-react";
 import { sectionAnchorId } from "@/lib/sectionAnchor";
+import { getAdminFunctionHeaders } from "@/lib/admin-function-auth";
 
 import { toast } from "sonner";
 import EsicmValidatorPanel from "@/components/admin/EsicmValidatorPanel";
@@ -319,6 +320,7 @@ const ContentAudit = () => {
   const startAudit = async (scope: "all" | "section", section?: string) => {
     setStarting(true);
     try {
+      const headers = await getAdminFunctionHeaders();
       const topics = (scope === "section" && section
         ? allTopics.filter((t) => t.section === section)
         : allTopics
@@ -343,6 +345,7 @@ const ContentAudit = () => {
           user_id: user?.id,
           topics,
         },
+        headers,
       });
       if (error) throw error;
       toast.success(`Audit started for ${topics.length} topics`);
@@ -351,8 +354,10 @@ const ContentAudit = () => {
         const j = await fetchLatestJob();
         if (j) await Promise.all([fetchFindings(j.id), fetchTopicLogs(j.id)]);
       }, 600);
+      return true;
     } catch (e: any) {
       toast.error(e?.message ?? "Failed to start audit");
+      return false;
     } finally {
       setStarting(false);
     }
@@ -360,8 +365,10 @@ const ContentAudit = () => {
 
   const cancelAudit = async () => {
     if (!job) return;
+    const headers = await getAdminFunctionHeaders();
     await supabase.functions.invoke("audit-topics", {
       body: { action: "cancel", job_id: job.id },
+      headers,
     });
     toast.message("Cancellation requested");
     setTimeout(fetchLatestJob, 1000);
@@ -734,12 +741,13 @@ const ContentAudit = () => {
             <div className="flex flex-wrap gap-2">
               <Button
                 onClick={async () => {
-                  await startAudit("all");
+                  const auditStarted = await startAudit("all");
+                  if (!auditStarted) return;
                   try {
-                    const { data: { session } } = await supabase.auth.getSession();
+                    const headers = await getAdminFunctionHeaders();
                     const { data, error } = await supabase.functions.invoke("verify-drugs", {
                       body: { action: "start" },
-                      headers: session ? { Authorization: `Bearer ${session.access_token}` } : undefined,
+                      headers,
                     });
                     if (error) throw error;
                     if ((data as any)?.error) throw new Error((data as any).error);
