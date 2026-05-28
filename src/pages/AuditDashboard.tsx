@@ -213,7 +213,7 @@ export default function AuditDashboard() {
             <SelectItem value="all">All sections</SelectItem>
             {sections.map((s) => (
               <SelectItem key={s} value={s}>
-                {sectionMeta[s as keyof typeof sectionMeta]?.title ?? s}
+                {sectionMeta[s as keyof typeof sectionMeta]?.label ?? s}
               </SelectItem>
             ))}
           </SelectContent>
@@ -261,7 +261,7 @@ export default function AuditDashboard() {
                         {group.title}
                       </Link>
                       <Badge variant="outline" className="text-xs font-normal">
-                        {sectionMeta[group.section as keyof typeof sectionMeta]?.title ?? group.section}
+                        {sectionMeta[group.section as keyof typeof sectionMeta]?.label ?? group.section}
                       </Badge>
                     </CardTitle>
                   </div>
