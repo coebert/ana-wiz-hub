@@ -130,7 +130,7 @@ const MassCasualtyMilitaryTopic = () => {
       keyPoints={[
         { text: "Major incident = casualty load exceeds normal resources. Declared by first emergency service on scene; cascade activates hospital plan.", cites: ["JRCALC 2022"] },
         { text: "METHANE message structures the alert: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.", cites: ["BJA Educ MCI 2017"] },
-        { text: "Triage Sieve (walking? breathing? RR? CRT/pulse?) → categorises P1/P2/P3/P4 within 30 s per casualty. Triage Sort uses TRTS for in-hospital re-triage.", cites: ["MARCH Algorithm"] },
+        { text: "Triage Sieve (walking? breathing? RR? CRT/pulse?) → categorises P1/P2/P3/P4 within 30 s per casualty. RR <10 or >29 = P1. Triage Sort uses TRTS for in-hospital re-triage.", cites: ["MIMMS 4e", "JRCALC 2019 NASMeD", "BJA Educ Major Incident 2017"] },
         { text: "Crisis Resource Management: leadership, role clarity, closed-loop communication, situational awareness, workload distribution, calling for help early.", cites: ["Damage Control Resuscitation"] },
         { text: "Damage-control resuscitation: permissive hypotension, 1:1:1 ratio (or whole blood), TXA &lt;3 h, calcium, warmth, early surgical haemostasis.", cites: ["NHS EPRR 2022"] },
         { text: "Damage-control surgery: abbreviated procedure to control haemorrhage and contamination, with planned return for definitive surgery once physiology corrected.", cites: ["JRCALC 2022"] },
@@ -162,7 +162,7 @@ const MassCasualtyMilitaryTopic = () => {
             <MajorIncidentTriageDiagram />
             <div className="space-y-3">
               {[
-                { tool: "Triage Sieve", detail: "Pre-hospital, &lt;30 s. Walking → P3 (delayed). Not breathing despite airway opening → Dead. Then RR &lt;10 or &gt;30 → P1; CRT &gt;2 s or HR &gt;120 → P1; otherwise P2." },
+                { tool: "Triage Sieve", detail: "Pre-hospital, &lt;30 s. Walking → P3 (delayed). Not breathing despite airway opening → Dead. Then RR &lt;10 or &gt;29 → P1; CRT &gt;2 s or HR &gt;120 → P1; otherwise P2." },
                 { tool: "Triage Sort (TRTS)", detail: "In hospital. Scores RR, SBP, GCS to give Triage Revised Trauma Score 0–12. ≤10 = P1, 11 = P2, 12 = P3." },
                 { tool: "MPTT-24 (military)", detail: "Modified Physiological Triage Tool — RR &lt;10 or &gt;22, HR &gt;100, GCS motor &lt;6 = P1. Better discrimination for needs-immediate-intervention than civilian sieve." },
                 { tool: "Reverse / expectant triage", detail: "When demand vastly exceeds capacity (austere or wartime), the most resource-intensive may be designated expectant (P4) to maximise survivors. Ethically reviewed by senior team and documented." },
