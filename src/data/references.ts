@@ -987,6 +987,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "JTS CPG", citation: "Joint Trauma System Clinical Practice Guidelines." },
     { label: "MIMMS 4e", citation: "MIMMS 4e." },
     { label: "Rall & Gaba CRM", citation: "Rall & Gaba — Crisis Resource Management." },
+    { label: "BJA Educ Major Incident 2017", citation: "Carley S, Mackway-Jones K. Major incidents in practice. BJA Education. 2017;17(1):1-9. Triage Sieve P1 criterion: RR < 10 or > 29 (or RR cannot be assessed) — consistent with MIMMS.", url: "https://bjanaesthesia.org.uk/article/S2058-5349(17)30174-8/fulltext" },
+    { label: "JRCALC 2019 NASMeD", citation: "Association of Ambulance Chief Executives / National Ambulance Service Medical Directors. UK Ambulance Services Clinical Practice Guidelines 2019 (JRCALC). Triage Sieve algorithm: RR < 10 or > 29 → Priority 1 (Immediate).", url: "https://aace.org.uk/wp-content/uploads/2019/06/JRCALC-Clinical-Practice-Guidelines-2019-AACE.pdf" },
   ],
   "patient-positioning": [
     { label: "AAGBI Positioning 2018", citation: "Knight DJW, Mahajan RP. Patient positioning in anaesthesia. BJA Education. 2004;4(5):160-163.", url: "https://doi.org/10.1093/bjaceaccp/mkh044" },
