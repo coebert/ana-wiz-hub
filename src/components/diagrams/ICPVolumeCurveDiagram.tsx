@@ -127,7 +127,7 @@ const ICPVolumeCurveDiagram = () => {
   
           {/* Elbow annotation */}
           <circle cx="210" cy="168" r="12" fill="none" stroke="hsl(45,80%,50%)" strokeWidth="1.5" strokeDasharray="3,2" />
-          <text x="210" y="156" textAnchor="middle" fontSize="7" fill="hsl(45,80%,50%)" fontWeight="600">"Elbow"</text>
+          <text x="210" y="156" textAnchor="middle" fontSize="7" fill="hsl(45,80%,50%)" fontWeight="600">Elbow</text>
   
           {/* Steep rise annotation */}
           <text x="350" y="70" textAnchor="middle" fontSize="7" fill="hsl(0,70%,50%)" fontWeight="600">Exponential</text>

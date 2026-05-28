@@ -10,6 +10,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { paediatricAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Identify key anatomical and physiological differences between neonates, infants and adults",
@@ -128,7 +129,10 @@ const PaediatricAnaesthesiaTopic = () => {
             <p>
               An interactive WETFLAG-extended tool: enter age <em>or</em> measured weight and get every airway tube, supraglottic
               device, drainage catheter, vascular access size, defibrillator setting and emergency drug dose recalculated live.
-              Use it to brief the team before paediatric induction or at the start of any resus.
+              Use it to brief the team before paediatric induction or at the start of any resus. Weight estimates, fluid boluses
+              (10 mL/kg post-FEAST), defibrillation energies and arrest drug doses follow <InlineRef topicId="paediatric-anaesthesia" refLabel="APLS 2021" />;
+              drug doses cross-checked against <InlineRef topicId="paediatric-anaesthesia" refLabel="BNFc" />; equipment sizing aligned with{" "}
+              <InlineRef topicId="paediatric-anaesthesia" refLabel="APAGBI 2020" />.
             </p>
           }
         >

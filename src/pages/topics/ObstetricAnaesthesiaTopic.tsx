@@ -10,6 +10,7 @@ import { Cat1RSIAnimation } from "@/components/diagrams/Cat1RSIAnimation";
 import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const ObstetricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
   {
@@ -80,7 +81,7 @@ const ObstetricAnaesthesiaTopic = () => {
         <section className="space-y-6">
         <CollapsibleSubsection title="Physiological Changes of Pregnancy" defaultOpen>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Pregnancy alters virtually every organ system, and the resulting changes shape every aspect of obstetric anaesthetic practice — from rapid desaturation on apnoea to exaggerated hypotension after neuraxial blockade and reduced local anaesthetic dose requirements. The table below summarises the changes by system alongside their anaesthetic implications.
+            Pregnancy alters virtually every organ system, and the resulting changes shape every aspect of obstetric anaesthetic practice — from rapid desaturation on apnoea to exaggerated hypotension after neuraxial blockade and reduced local anaesthetic dose requirements. Quantitative values below are drawn from <InlineRef topicId="obstetric-anaesthesia" refLabel="BJA Educ 2019" /> and the <InlineRef topicId="obstetric-anaesthesia" refLabel="OAA/DAS 2015" /> obstetric general anaesthesia guideline; airway / failed-intubation incidence and maternal mortality data from <InlineRef topicId="obstetric-anaesthesia" refLabel="MBRRACE-UK" />.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -95,7 +96,7 @@ const ObstetricAnaesthesiaTopic = () => {
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">CVS</td><td>CO ↑40% (↑SV &amp; HR), SVR ↓, aortocaval compression from ~20 wk</td><td>Left lateral tilt 15°; rapid hypotension with neuraxial; supine hypotensive syndrome</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Resp</td><td>FRC ↓20% (diaphragmatic splinting), O₂ consumption ↑20%, MV ↑50% (driven by ↑V<sub>T</sub>, RR ~unchanged)</td><td>Rapid desaturation on apnoea; <strong>compensated respiratory alkalosis</strong> — PaCO₂ ~4.0 kPa, HCO₃⁻ ~20 mmol/L, pH ~7.44 (target normocapnia for pregnant baseline, not 5.3 kPa)</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Airway</td><td>Mucosal oedema, capillary engorgement, full dentition, breast enlargement</td><td>Higher Mallampati grade, smaller ETT (6.0–7.0), short-handle laryngoscope; failed intubation ~1:300</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">GI</td><td>Reduced LOS tone (progesterone), gastric emptying preserved in pregnancy but <strong>delayed in labour/with opioids</strong>, ↑gastric acid</td><td>Full-stomach precautions for any pregnant woman ≥16–18 wk; aspiration prophylaxis &amp; RSI for GA caesarean</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">GI</td><td>Reduced LOS tone (progesterone), gastric emptying preserved in pregnancy but <strong>delayed in labour/with opioids</strong>, ↑gastric acid</td><td>Treat any pregnant woman ≥16–18 wk as <strong>at risk of aspiration</strong>: aspiration prophylaxis (sodium citrate 0.3 M 30 mL ± H₂-blocker / metoclopramide) and RSI for GA caesarean</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Haem</td><td>Plasma vol ↑45% &gt; RBC ↑20% → dilutional anaemia. Hypercoagulable: ↑fibrinogen, ↑factors VII/VIII/X, ↓protein S, ↓fibrinolysis. Physiological leucocytosis.</td><td>VTE prophylaxis throughout pregnancy and 6 wk post-partum; raised WCC alone does not imply infection</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Renal / Hepatic</td><td>GFR ↑50% (↓urea, ↓creatinine — "normal" Cr in pregnancy &lt;75 µmol/L). ↓Albumin → ↑free fraction of bound drugs. ALP ↑ (placental).</td><td>Renally cleared drugs (e.g. magnesium, low-MW heparins) cleared faster; "normal" adult Cr may signal AKI in pregnancy</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Pharmacology</td><td><strong>Plasma cholinesterase activity ↓25–30%</strong> but Vd ↑ → suxamethonium duration <strong>clinically unchanged</strong>. ↓MAC ~30%. ↑Sensitivity to LA (~30%).</td><td>Standard sux dose (1.5 mg/kg) remains effective; reduce LA neuraxial doses; risk of awareness if MAC mis-targeted</td></tr>
