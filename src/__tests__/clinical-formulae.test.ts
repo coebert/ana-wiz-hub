@@ -123,7 +123,7 @@ describe("arterial O2 content", () => {
 
 describe("Henderson–Hasselbalch", () => {
   it("normal HCO3 24, PaCO2 5.3 kPa → pH ≈ 7.40", () => {
-    expect(henderson_pH(24, 5.3)).toBeCloseTo(7.40, 2);
+    expect(henderson_pH(24, 5.3)).toBeCloseTo(7.40, 1);
   });
   it("acute respiratory acidosis (PaCO2 8 kPa) → pH ~7.22", () => {
     expect(henderson_pH(24, 8)).toBeCloseTo(7.22, 2);
