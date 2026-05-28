@@ -107,7 +107,7 @@ const HepaticDiseaseTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ Liver 2010", "BJA Educ Cirrhosis 2017", "Teh 2007", "EASL 2018 Decompensated", "NICE NG50"],
+        objectives: ["BJA Educ Liver 2010", "BJA Educ Cirrhosis 2017", "Teh 2007", "EASL 2018 Decompensated", "NICE NG50", "Mahmud VOCAL-Penn 2021", "Northup AASLD 2021", "Bhangui 2012", "Friedman 2010"],
         workedExamples: ["BJA Educ Liver 2010", "Teh 2007", "Northup 2018 Coagulation"],
         keyPoints: [
           "BJA Educ Liver 2010",
