@@ -60,7 +60,7 @@ const NeonSplash = () => {
     if (typeof window === "undefined" || !mounted) return;
     const measure = () => {
       const el = document.querySelector(
-        'img[alt="AnaesthesiaCore logo"]',
+        'img[alt^="AnaesthesiaCore"]',
       ) as HTMLImageElement | null;
       if (!el) return;
       const r = el.getBoundingClientRect();
