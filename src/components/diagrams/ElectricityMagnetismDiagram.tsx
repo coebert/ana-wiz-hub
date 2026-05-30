@@ -71,7 +71,7 @@ const OhmsLawDiagram = () => (
           "DC (direct current): constant direction of electron flow. Batteries, defibrillators",
           "AC (alternating current): sinusoidal oscillation (50 Hz UK mains). Diathermy uses high-frequency AC (0.4–3 MHz)",
           "Impedance (Z): AC equivalent of resistance. Z = √(R² + (XL − XC)²) where XL = inductive, XC = capacitive reactance",
-          "At high frequencies the body's impedance falls (capacitive reactance ↓) → a smaller voltage can drive a current exceeding the (fixed) microshock VF threshold across the myocardium, increasing risk",
+          "Body impedance falls at high frequencies (capacitive reactance ↓), but the current required to induce VF also rises sharply above ~100 Hz — VF risk is maximal at mains frequency (50–60 Hz), which is why diathermy (>300 kHz) can safely use large currents without inducing fibrillation",
         ].map((t, i) => (
           <text key={i} x="30" y={350 + i * 18} className="fill-muted-foreground text-[9.5px]">• {t}</text>
         ))}
