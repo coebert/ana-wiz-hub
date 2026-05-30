@@ -228,12 +228,6 @@ const AbdominalWallDiagram = () => {
                     {key === "int-oblique" && (
                       <g>
                         <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#ioFibre)" opacity={isActive ? 1 : 0.5} />
-                        {/* Nerve running between IO and TA */}
-                        <g opacity={isActive ? 0.45 : 0.12}>
-                          <path d={`M${xOff + 10},${g.y + g.h - 3} C${xOff + 50},${g.y + g.h - 5} ${xOff + 100},${g.y + g.h - 2} ${xOff + 150},${g.y + g.h - 4}`}
-                            stroke="hsl(50, 70%, 55%)" strokeWidth="1" fill="none" />
-                          <text x={xOff + 80} y={g.y + g.h - 7} fontSize="3.5" fill="hsl(50, 70%, 55%)" textAnchor="middle">Ilioinguinal n. (L1)</text>
-                        </g>
                         {/* Fibre direction */}
                         <g opacity={isActive ? 0.35 : 0.1}>
                           <text x={xOff + 55} y={g.y + g.h / 2 - 2} fontSize="4" fill="hsl(210, 55%, 52%)" transform={`rotate(30, ${xOff + 55}, ${g.y + g.h / 2 - 2})`}>fibres ↗</text>
