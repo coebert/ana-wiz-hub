@@ -147,8 +147,8 @@ const PrognosticationEthicsIcuTopic = () => {
                 </tbody>
               </table>
             </div>
-            <h3 className="text-lg font-semibold text-foreground mb-2">Post-Cardiac Arrest (ERC/ESICM 2021)</h3>
-            <p className="text-sm text-muted-foreground mb-2">Multimodal at ≥72 h after ROSC (or rewarming if TTM). At least 2 concordant indicators: bilateral absent pupil + corneal reflexes; bilateral absent N20 SSEP; highly malignant EEG (suppression, burst-suppression); NSE &gt;60 µg/L; diffuse anoxic injury on MRI; absent brainstem reflexes.</p>
+            <h3 className="text-lg font-semibold text-foreground mb-2">Post-Cardiac Arrest (ERC/ESICM 2021; updated by ILCOR 2022 / TTM2)</h3>
+            <p className="text-sm text-muted-foreground mb-2">Temperature control now targets <strong>active fever prevention (core ≤37.7 °C)</strong> for ≥72 h post-ROSC<InlineRef topicId="prognostication-ethics-icu" refLabel="TTM2 2021" /><InlineRef topicId="prognostication-ethics-icu" refLabel="ILCOR CoSTR 2022" /> — routine cooling to 32–34 °C is no longer mandated. Multimodal prognostication at ≥72 h after ROSC (or rewarming if hypothermia used). At least 2 concordant indicators: bilateral absent pupil + corneal reflexes; bilateral absent N20 SSEP; highly malignant EEG (suppression, burst-suppression); NSE &gt;60 µg/L; diffuse anoxic injury on MRI; absent brainstem reflexes.</p>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Population vs Individual</p>
