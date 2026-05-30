@@ -131,7 +131,7 @@ const RefeedingScene = ({ active }: { active: number }) => {
     { label: "Carbohydrate load", sub: "Feed / dextrose introduced", token: "clinical" },
     { label: "Insulin surge", sub: "K⁺ · PO₄³⁻ · Mg²⁺ → intracellular", token: "pharmacology" },
     { label: "Thiamine consumed", sub: "PDH cofactor exhausted → lactate", token: "physiology" },
-    { label: "Sequelae", sub: "Arrhythmia · Wernicke · resp failure", token: "destructive" },
+    { label: "Sequelae", sub: "Arrhythmia · Wernicke · respiratory failure", token: "destructive" },
   ];
 
   const [showThiamineTip, setShowThiamineTip] = useState(false);
