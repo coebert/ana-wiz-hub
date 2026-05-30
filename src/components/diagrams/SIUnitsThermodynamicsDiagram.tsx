@@ -43,7 +43,7 @@ const SIUnitsDiagram = () => (
           { unit: "Newton (N)", def: "kg·m·s⁻²", use: "Force" },
           { unit: "Hertz (Hz)", def: "s⁻¹", use: "Frequency" },
           { unit: "Volt (V)", def: "W/A", use: "Electrical potential" },
-          { unit: "Ohm", def: "V/A", use: "Electrical resistance" },
+          { unit: "Ohm (Ω)", def: "V/A", use: "Electrical resistance" },
         ].map((d, i) => (
           <g key={d.unit}>
             <rect x="30" y={210 + i * 26} width="540" height="24" rx="4" fill={i % 2 === 0 ? "hsl(var(--secondary)/0.2)" : "transparent"} />

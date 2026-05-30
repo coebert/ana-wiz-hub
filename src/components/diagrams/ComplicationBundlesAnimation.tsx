@@ -218,7 +218,7 @@ const Scene = ({ active }: { active: number }) => {
                   {b.key === "AKI" && "KDIGO bundle"}
                   {b.key === "Delirium" && "ABCDEF bundle"}
                   {b.key === "VTE" && "IPC + LMWH"}
-                  {b.key === "Infection" && "Sepsis-6 + stewardship"}
+                  {b.key === "Infection" && "Care bundles + stewardship"}
                 </text>
               </g>
   );
