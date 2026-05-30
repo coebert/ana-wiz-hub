@@ -8,6 +8,7 @@ import APACHEIICalculator from "@/components/diagrams/APACHEIICalculator";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Apply multimodal post-cardiac arrest prognostication (ERC/ESICM 2021) at ≥72 h with at least two concordant indicators.",
