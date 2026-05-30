@@ -320,7 +320,7 @@ const RefeedingScene = ({ active }: { active: number }) => {
           <g transform="translate(0, 102)" opacity={active >= 1 ? 1 : 0.2} className="transition-opacity duration-500">
             <rect width="110" height="22" rx="3" fill="hsl(var(--clinical) / 0.18)" stroke="hsl(var(--clinical))" />
             <text x="55" y="15" textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(var(--foreground))">
-              insulin {active >= 2 ? "↑↑↑" : active >= 1 ? "↑" : "—"}
+              insulin {active >= 2 ? "↑↑↑" : active >= 1 ? "↑" : "↓"}
             </text>
           </g>
 
