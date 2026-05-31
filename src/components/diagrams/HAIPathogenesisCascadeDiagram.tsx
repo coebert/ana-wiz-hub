@@ -3,17 +3,17 @@ import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // ---------- Sources ----------
 const EPIC3: CascadeSource = {
-  label: "epic3 2014",
+  label: "epic4 2023",
   citation:
-    "Loveday HP et al. epic3: national evidence-based guidelines for preventing healthcare-associated infections in NHS hospitals in England. J Hosp Infect. 2014;86 Suppl 1:S1–70.",
-  url: "https://doi.org/10.1016/S0195-6701(13)60012-2",
+    "Loveday HP, Wilson JA, Pratt RJ et al. epic4: updated national evidence-based guidelines for preventing healthcare-associated infections in NHS hospitals in England. J Hosp Infect. 2023;141:Suppl.",
+  url: "https://www.journalofhospitalinfection.com/article/S0195-6701(23)00277-3/fulltext",
 };
 
 const IDSA_VAP: CascadeSource = {
-  label: "IDSA HAP/VAP 2016",
+  label: "NICE NG191",
   citation:
-    "Kalil AC et al. Management of adults with hospital-acquired and ventilator-associated pneumonia: 2016 IDSA/ATS guidelines. Clin Infect Dis. 2016;63(5):e61–e111.",
-  url: "https://doi.org/10.1093/cid/ciw353",
+    "NICE. Hospital-acquired pneumonia (non-ventilator-associated) in adults: diagnosis and management. NICE guideline NG191. London: NICE; 2022.",
+  url: "https://www.nice.org.uk/guidance/ng191",
 };
 
 const COSTERTON_BIOFILM: CascadeSource = {
