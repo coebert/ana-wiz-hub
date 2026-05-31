@@ -41,7 +41,7 @@ const DEPTHS: Record<Depth, DepthInfo> = {
     healing: "Heals in ~14 days, minimal scarring",
   },
   deepPartial: {
-    label: "Deep partial thickness",
+    label: "Deep partial",
     short: "Deep",
     frontY: 130,
     accent: "bg-rose-500 text-white border-rose-700",

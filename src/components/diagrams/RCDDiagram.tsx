@@ -83,7 +83,7 @@ export const RCDDiagram = () => {
             {/* Toroidal current transformer (central element) */}
             <ellipse cx={210} cy={165} rx={45} ry={30} fill="none" stroke="hsl(215 25% 35%)" strokeWidth="1.5" />
             <ellipse cx={210} cy={165} rx={35} ry={22} fill="none" stroke="hsl(215 25% 50%)" strokeWidth="1" strokeDasharray="2 3" />
-            <text x={210} y={138} textAnchor="middle" fontSize="9" className="fill-muted-foreground">torroid</text>
+            <text x={210} y={138} textAnchor="middle" fontSize="9" className="fill-muted-foreground">toroid</text>
   
             {/* Switch contacts (open when tripped) */}
             <g>
