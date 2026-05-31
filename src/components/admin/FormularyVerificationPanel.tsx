@@ -173,12 +173,61 @@ const FormularyVerificationPanel = ({ initiallyOpen = false, onStarted }: Props)
     await fetchJob();
   };
 
-  const isStalled = !!job
-    && ["pending", "running"].includes(job.status)
-    && Date.now() - new Date(job.updated_at).getTime() > 90_000;
+  const stalledMs = job && ["pending", "running"].includes(job.status)
+    ? Date.now() - new Date(job.updated_at).getTime()
+    : 0;
+  const isStalled = stalledMs > 90_000;
+  const isStuck = stalledMs > STUCK_THRESHOLD_MS;
 
   const isActive = !!job && ["pending", "running"].includes(job.status);
   const pct = job && job.total ? (job.processed / job.total) * 100 : 0;
+
+  // Cancel + restart helper (no confirm — used by the "stuck job" prompt).
+  const cancelAndRestart = useCallback(async () => {
+    if (!job) return;
+    try {
+      const headers = await getAdminFunctionHeaders();
+      await supabase.functions.invoke("verify-drugs", {
+        body: { action: "cancel", jobId: job.id },
+        headers,
+      });
+      await fetchJob();
+      await startVerification();
+    } catch (e) {
+      toast.error(
+        `Could not restart: ${e instanceof Error ? e.message : "Unknown error"}`,
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [job, fetchJob]);
+
+  // Fire a one-time toast prompt per stuck job so the admin notices even if
+  // the panel is collapsed or the tab is in the background.
+  const promptedJobIdRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!job || !isStuck) return;
+    if (promptedJobIdRef.current === job.id) return;
+    promptedJobIdRef.current = job.id;
+    const mins = Math.floor(stalledMs / 60_000);
+    toast.warning(
+      `Formulary verification appears stuck (no progress for ${mins} min).`,
+      {
+        duration: Infinity,
+        action: {
+          label: "Cancel & restart",
+          onClick: () => {
+            void cancelAndRestart();
+          },
+        },
+      },
+    );
+  }, [job?.id, isStuck, stalledMs, cancelAndRestart]);
+
+  // Reset the prompt guard when the job leaves an active state so a future
+  // stuck job will re-prompt.
+  useEffect(() => {
+    if (!isActive) promptedJobIdRef.current = null;
+  }, [isActive]);
 
   return (
     <Card>
