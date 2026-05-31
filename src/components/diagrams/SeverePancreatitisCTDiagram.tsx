@@ -166,7 +166,7 @@ const findings: Finding[] = [
   },
   {
     id: "kidney",
-    text: "Perinephric\nstranding (AKI)",
+    text: "Perinephric\nstranding",
     dot: { x: 80, y: 60 },
     side: "right",
     labelY: 56,

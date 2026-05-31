@@ -738,7 +738,7 @@ const Branch = ({
             fill="hsl(var(--background))"
             opacity={inhibition}
           >
-            ↓ {Math.round(inhibition * 100)}%
+            inhibited
           </text>
         </g>
       )}
