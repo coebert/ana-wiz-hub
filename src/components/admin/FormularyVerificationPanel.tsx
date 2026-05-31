@@ -290,6 +290,23 @@ const FormularyVerificationPanel = ({ initiallyOpen = false, onStarted }: Props)
       </CardHeader>
       {!collapsed && (
         <CardContent className="space-y-3">
+          {isStuck && job && (
+            <div className="flex items-start gap-2 rounded-md border border-amber-500/40 bg-amber-50 dark:bg-amber-950/30 p-3 text-xs">
+              <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
+              <div className="flex-1 min-w-0">
+                <p className="font-medium text-amber-900 dark:text-amber-200">
+                  No progress for {Math.floor(stalledMs / 60_000)} min — job may be stuck.
+                </p>
+                <p className="text-amber-800/80 dark:text-amber-200/70 mt-0.5">
+                  Last update at {new Date(job.updated_at).toLocaleTimeString("en-GB")}.
+                  Cancel and restart to recover.
+                </p>
+              </div>
+              <Button onClick={cancelAndRestart} size="sm" variant="secondary">
+                <RotateCw className="w-4 h-4 mr-1" /> Cancel & restart
+              </Button>
+            </div>
+          )}
           {job && (
             <div className="space-y-2">
               <div className="flex items-center gap-3 flex-wrap text-xs">
