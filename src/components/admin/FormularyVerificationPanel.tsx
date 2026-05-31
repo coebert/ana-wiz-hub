@@ -1,19 +1,26 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   AlertCircle,
+  AlertTriangle,
   CheckCircle2,
   ChevronDown,
   ChevronRight,
   Pill,
   Play,
+  RotateCw,
   Square,
 } from "lucide-react";
 import { toast } from "sonner";
 import { getAdminFunctionHeaders } from "@/lib/admin-function-auth";
+
+// A job is considered "stuck" if its updated_at hasn't moved for this long
+// while still in pending/running. 3 min comfortably exceeds normal per-drug
+// processing time (~20s) and any transient network hiccup.
+const STUCK_THRESHOLD_MS = 3 * 60_000;
 
 interface VerificationJob {
   id: string;
