@@ -1,19 +1,26 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   AlertCircle,
+  AlertTriangle,
   CheckCircle2,
   ChevronDown,
   ChevronRight,
   Pill,
   Play,
+  RotateCw,
   Square,
 } from "lucide-react";
 import { toast } from "sonner";
 import { getAdminFunctionHeaders } from "@/lib/admin-function-auth";
+
+// A job is considered "stuck" if its updated_at hasn't moved for this long
+// while still in pending/running. 3 min comfortably exceeds normal per-drug
+// processing time (~20s) and any transient network hiccup.
+const STUCK_THRESHOLD_MS = 3 * 60_000;
 
 interface VerificationJob {
   id: string;
@@ -166,12 +173,61 @@ const FormularyVerificationPanel = ({ initiallyOpen = false, onStarted }: Props)
     await fetchJob();
   };
 
-  const isStalled = !!job
-    && ["pending", "running"].includes(job.status)
-    && Date.now() - new Date(job.updated_at).getTime() > 90_000;
+  const stalledMs = job && ["pending", "running"].includes(job.status)
+    ? Date.now() - new Date(job.updated_at).getTime()
+    : 0;
+  const isStalled = stalledMs > 90_000;
+  const isStuck = stalledMs > STUCK_THRESHOLD_MS;
 
   const isActive = !!job && ["pending", "running"].includes(job.status);
   const pct = job && job.total ? (job.processed / job.total) * 100 : 0;
+
+  // Cancel + restart helper (no confirm — used by the "stuck job" prompt).
+  const cancelAndRestart = useCallback(async () => {
+    if (!job) return;
+    try {
+      const headers = await getAdminFunctionHeaders();
+      await supabase.functions.invoke("verify-drugs", {
+        body: { action: "cancel", jobId: job.id },
+        headers,
+      });
+      await fetchJob();
+      await startVerification();
+    } catch (e) {
+      toast.error(
+        `Could not restart: ${e instanceof Error ? e.message : "Unknown error"}`,
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [job, fetchJob]);
+
+  // Fire a one-time toast prompt per stuck job so the admin notices even if
+  // the panel is collapsed or the tab is in the background.
+  const promptedJobIdRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!job || !isStuck) return;
+    if (promptedJobIdRef.current === job.id) return;
+    promptedJobIdRef.current = job.id;
+    const mins = Math.floor(stalledMs / 60_000);
+    toast.warning(
+      `Formulary verification appears stuck (no progress for ${mins} min).`,
+      {
+        duration: Infinity,
+        action: {
+          label: "Cancel & restart",
+          onClick: () => {
+            void cancelAndRestart();
+          },
+        },
+      },
+    );
+  }, [job?.id, isStuck, stalledMs, cancelAndRestart]);
+
+  // Reset the prompt guard when the job leaves an active state so a future
+  // stuck job will re-prompt.
+  useEffect(() => {
+    if (!isActive) promptedJobIdRef.current = null;
+  }, [isActive]);
 
   return (
     <Card>
@@ -234,6 +290,23 @@ const FormularyVerificationPanel = ({ initiallyOpen = false, onStarted }: Props)
       </CardHeader>
       {!collapsed && (
         <CardContent className="space-y-3">
+          {isStuck && job && (
+            <div className="flex items-start gap-2 rounded-md border border-amber-500/40 bg-amber-50 dark:bg-amber-950/30 p-3 text-xs">
+              <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
+              <div className="flex-1 min-w-0">
+                <p className="font-medium text-amber-900 dark:text-amber-200">
+                  No progress for {Math.floor(stalledMs / 60_000)} min — job may be stuck.
+                </p>
+                <p className="text-amber-800/80 dark:text-amber-200/70 mt-0.5">
+                  Last update at {new Date(job.updated_at).toLocaleTimeString("en-GB")}.
+                  Cancel and restart to recover.
+                </p>
+              </div>
+              <Button onClick={cancelAndRestart} size="sm" variant="secondary">
+                <RotateCw className="w-4 h-4 mr-1" /> Cancel & restart
+              </Button>
+            </div>
+          )}
           {job && (
             <div className="space-y-2">
               <div className="flex items-center gap-3 flex-wrap text-xs">
