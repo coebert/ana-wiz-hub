@@ -96,18 +96,42 @@ const FormularyVerificationPanel = ({ initiallyOpen = false, onStarted }: Props)
 
   const startVerification = async () => {
     setStarting(true);
+    // Retry on 409 ("already running") with exponential backoff:
+    // 2s → 4s → 8s → 16s → 32s (5 attempts, ~62s total).
+    const MAX_ATTEMPTS = 5;
+    const BASE_DELAY_MS = 2000;
     try {
       const headers = await getAdminFunctionHeaders();
-      const { data, error } = await supabase.functions.invoke("verify-drugs", {
-        body: { action: "start" },
-        headers,
-      });
-      if (error) throw error;
-      if ((data as any)?.error) throw new Error((data as any).error);
-      toast.success("Formulary verification started");
-      setCollapsed(false);
-      onStarted?.();
-      await fetchJob();
+      let lastError: unknown = null;
+      for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+        const { data, error } = await supabase.functions.invoke("verify-drugs", {
+          body: { action: "start" },
+          headers,
+        });
+        const payloadError = (data as any)?.error as string | undefined;
+        const errMsg = error?.message ?? payloadError ?? "";
+        const is409 =
+          /\b409\b/.test(errMsg) ||
+          /already running/i.test(errMsg) ||
+          (data as any)?.jobId; // server returns existing jobId on 409
+        if (!error && !payloadError) {
+          toast.success("Formulary verification started");
+          setCollapsed(false);
+          onStarted?.();
+          await fetchJob();
+          return;
+        }
+        lastError = error ?? new Error(payloadError ?? "Unknown error");
+        if (!is409 || attempt === MAX_ATTEMPTS - 1) break;
+        const delay = BASE_DELAY_MS * 2 ** attempt;
+        toast.info(
+          `A verification job is already running — retrying in ${delay / 1000}s (attempt ${attempt + 2}/${MAX_ATTEMPTS})`,
+        );
+        setCollapsed(false);
+        await fetchJob();
+        await new Promise((r) => setTimeout(r, delay));
+      }
+      throw lastError ?? new Error("Unknown error");
     } catch (e) {
       toast.error(
         `Could not start formulary verification: ${e instanceof Error ? e.message : "Unknown error"}`,
