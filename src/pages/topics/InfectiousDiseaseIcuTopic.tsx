@@ -62,17 +62,21 @@ const InfectiousDiseaseIcuTopic = () => {
       sectionSources={{
         objectives: [
           "SSC 2021",
+          "NICE NG191",
+          "epic4 2023",
           "IDSA HAP/VAP 2016",
           "BJA Educ Sepsis 2017",
           "NICE NG51",
         ],
         keyPoints: [
           "SSC 2021",
+          "NICE NG191",
+          "epic4 2023",
           "IDSA HAP/VAP 2016",
           "BJA Educ Sepsis 2017",
           "NICE NG51",
         ],
-        workedExamples: ["IDSA HAP/VAP 2016", "SSC 2021"],
+        workedExamples: ["IDSA HAP/VAP 2016", "NICE NG191", "SSC 2021"],
       }}
       keyPoints={[
         { text: "Pneumonia is the commonest infection requiring ICU admission — categorise CAP/HAP/VAP and tailor empirical cover to local antibiogram", cites: ["NICE NG51"] },
