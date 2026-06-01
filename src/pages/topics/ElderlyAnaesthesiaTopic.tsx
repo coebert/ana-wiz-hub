@@ -194,15 +194,48 @@ const ElderlyAnaesthesiaTopic = () => {
             </div>
             <div className="bg-card border border-border rounded-lg p-4 mt-3">
               <h3 className="font-semibold text-foreground mb-2">Postoperative Cognitive Dysfunction (POCD)</h3>
+              <p className="text-sm mb-2">
+                POCD is a subtle, objectively measurable decline in cognitive domains (memory, executive function, processing speed, attention) persisting <strong className="text-foreground">weeks to months</strong> after surgery, diagnosed only by neuropsychological testing pre- and postoperatively (≥1 SD drop on ≥2 tests). The 2018 international nomenclature group recommends aligning post-surgical cognitive change with the DSM-5 framework — <em>delayed neurocognitive recovery</em> (≤30 days) and <em>postoperative neurocognitive disorder</em> (mild or major, 30 days–12 months). POCD is distinct from delirium (acute, fluctuating, attention-based) but the two are linked: delirium is the strongest single predictor of subsequent POCD.
+              </p>
+
+              <h4 className="font-semibold text-foreground mt-3 mb-1 text-sm">Epidemiology</h4>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Subtle decline in cognitive function lasting weeks to months after surgery — distinct from delirium</li>
-                <li>Difficult to diagnose: requires neurocognitive testing pre- and postoperatively</li>
-                <li>No proven causative link with specific anaesthetic agents or general vs regional anaesthesia</li>
-                <li>BIS-guided anaesthesia to avoid excessive anaesthetic depth may reduce incidence (STS-2 trial)</li>
+                <li>ISPOCD1 (cardiac-free major non-cardiac surgery, &gt;60 y): ~25% at 1 week, ~10% at 3 months</li>
+                <li>Higher after cardiac surgery (30–50% at discharge, 10–30% at 3 months) and major orthopaedic/vascular surgery</li>
+                <li>Independently associated with loss of independence, premature retirement, and increased 1-year mortality</li>
+              </ul>
+
+              <h4 className="font-semibold text-foreground mt-3 mb-1 text-sm">Risk factors</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong className="text-foreground">Patient</strong>: age &gt;65, pre-existing mild cognitive impairment or dementia, lower educational attainment, frailty, depression, cerebrovascular disease, APOE-ε4 genotype (signal, not proven), alcohol misuse, polypharmacy (especially anticholinergics and long-acting benzodiazepines)</li>
+                <li><strong className="text-foreground">Surgical</strong>: cardiac &gt; major vascular &gt; major non-cardiac &gt; minor surgery; duration &gt;2 h; intraoperative hypotension; massive transfusion; second hit (re-operation, post-op sepsis)</li>
+                <li><strong className="text-foreground">Anaesthetic</strong>: deep anaesthesia / EEG burst-suppression (signal), prolonged exposure (uncertain); choice of GA vs neuraxial has <em>not</em> been shown to alter long-term POCD incidence in RCTs</li>
+                <li><strong className="text-foreground">Postoperative</strong>: delirium, uncontrolled pain, sleep disruption, hypoxia, sepsis, ICU length of stay</li>
+              </ul>
+
+              <h4 className="font-semibold text-foreground mt-3 mb-1 text-sm">Proposed pathophysiology</h4>
+              <p className="text-sm mb-1">Multifactorial; no single mechanism explains all cases. Current models converge on <strong className="text-foreground">surgery-triggered neuroinflammation</strong> in a vulnerable brain:</p>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong className="text-foreground">Systemic inflammation</strong>: surgical trauma releases DAMPs (HMGB1, S100) and cytokines (IL-1β, IL-6, TNF-α) that signal across the blood–brain barrier</li>
+                <li><strong className="text-foreground">BBB disruption</strong>: cytokine- and complement-mediated tight-junction breakdown allows peripheral monocytes and inflammatory mediators into the CNS</li>
+                <li><strong className="text-foreground">Microglial priming and activation</strong>: an exaggerated, sustained neuroinflammatory response, especially in hippocampus and prefrontal cortex, impairs synaptic plasticity and LTP</li>
+                <li><strong className="text-foreground">Cholinergic deficit</strong>: reduced acetylcholine availability and anticholinergic drug burden contribute to attentional/memory failure</li>
+                <li><strong className="text-foreground">Amyloid-β and tau</strong>: animal data show volatile anaesthetics may accelerate Aβ oligomerisation and tau hyperphosphorylation; human evidence is associative, not causal</li>
+                <li><strong className="text-foreground">Cerebral hypoperfusion / micro-emboli</strong>: relevant in cardiac and major vascular surgery (CPB, aortic clamping, atheroembolism)</li>
+                <li><strong className="text-foreground">Oxidative stress and mitochondrial dysfunction</strong> compound the above in aged neurons with reduced reserve</li>
+              </ul>
+
+              <h4 className="font-semibold text-foreground mt-3 mb-1 text-sm">Mitigation — perioperative bundle</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong className="text-foreground">Preoperative</strong>: baseline cognitive screen (MoCA / Mini-Cog) and document; Comprehensive Geriatric Assessment for ≥65 y major surgery; prehabilitation (aerobic + resistance exercise, nutrition, smoking/alcohol cessation); treat anaemia and optimise diabetes; rationalise polypharmacy (STOPP/START) — stop long-acting benzodiazepines, anticholinergics, and unnecessary opioids; counsel patient and family about POD/POCD risk</li>
+                <li><strong className="text-foreground">Intraoperative</strong>: processed-EEG depth monitoring to avoid burst-suppression and excessive depth (ASA Brain Health Initiative); maintain MAP within 10–20% of baseline (avoid MAP &lt;65 mmHg); normoxia, normocapnia, normothermia, normoglycaemia; cerebral oximetry in cardiac/major vascular surgery; regional or neuraxial where feasible to reduce opioid load; avoid deliriogenic drugs (benzodiazepines, pethidine, atropine — prefer glycopyrrolate); use short-acting agents (propofol TCI, remifentanil, desflurane/sevoflurane)</li>
+                <li><strong className="text-foreground">Postoperative</strong>: HELP-style multicomponent bundle — re-orientation, glasses/hearing aids, early mobilisation, day–night sleep hygiene, hydration, early nutrition, bowel/bladder care; multimodal opioid-sparing analgesia (paracetamol + NSAID where safe + regional); daily 4AT/CAM screening; prompt treatment of pain, hypoxia, sepsis, electrolyte disturbance, urinary retention and constipation; orthogeriatric/perioperative-medicine review</li>
+                <li><strong className="text-foreground">Caveats</strong>: ENGAGES (2019) did <em>not</em> show that EEG-guided light anaesthesia reduced delirium, but very deep anaesthesia remains a modifiable risk; routine pharmacological prophylaxis (haloperidol, dexmedetomidine, ketamine, statins) is <em>not</em> recommended for POD/POCD prevention outside specific ICU contexts</li>
               </ul>
             </div>
           </div>
         </section>
+
 
         {/* Hip Fracture */}
         <section>
