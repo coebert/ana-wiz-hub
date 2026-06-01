@@ -810,6 +810,11 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AAGBI Elderly 2014", citation: "Griffiths R et al. AAGBI Guidelines: Peri-operative care of the elderly. Anaesthesia. 2014;69(s1):81-98." },
     { label: "Lancet Frailty 2013", citation: "Clegg A et al. Frailty in elderly people. Lancet. 2013;381:752-762.", url: "https://doi.org/10.1016/S0140-6736(12)62167-9" },
     { label: "Lancet Delirium 2014", citation: "Inouye SK et al. Delirium in elderly people. Lancet. 2014;383:911-922.", url: "https://doi.org/10.1016/S0140-6736(13)60688-1" },
+    { label: "Evered Nomenclature 2018", citation: "Evered L et al. Recommendations for the nomenclature of cognitive change associated with anaesthesia and surgery — 2018. Br J Anaesth. 2018;121(5):1005-1012.", url: "https://doi.org/10.1016/j.bja.2017.11.087" },
+    { label: "ISPOCD1 1998", citation: "Moller JT et al. Long-term postoperative cognitive dysfunction in the elderly: ISPOCD1 study. Lancet. 1998;351:857-861.", url: "https://doi.org/10.1016/S0140-6736(97)07382-0" },
+    { label: "ASA Brain Health 2018", citation: "Berger M et al. Best practices for postoperative brain health: ASA Brain Health Initiative Summit. Anesth Analg. 2018;127(6):1406-1413.", url: "https://doi.org/10.1213/ANE.0000000000003841" },
+    { label: "ENGAGES 2019", citation: "Wildes TS et al. Effect of EEG-guided anesthetic administration on postoperative delirium: ENGAGES randomized clinical trial. JAMA. 2019;321(5):473-483.", url: "https://doi.org/10.1001/jama.2018.22005" },
+    { label: "ESAIC POD 2017", citation: "Aldecoa C et al. European Society of Anaesthesiology evidence-based and consensus-based guideline on postoperative delirium. Eur J Anaesthesiol. 2017;34(4):192-214.", url: "https://doi.org/10.1097/EJA.0000000000000594" },
   ],
   // ──────── CO-EXISTING DISEASE ────────
   "cardiovascular-disease": [
