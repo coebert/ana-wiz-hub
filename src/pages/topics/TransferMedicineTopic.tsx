@@ -9,7 +9,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
 const objectives = [
-  "Apply ICS / AAGBI / FICM standards to plan a safe inter-hospital transfer of the critically ill patient (decision, personnel, equipment)",
+  "Apply current UK standards — primarily the Intensive Care Society (ICS) Guidance on the Transfer of the Critically Ill Adult (2019), supplemented by FICM/RCoA recommendations — to plan a safe inter-hospital transfer of the critically ill patient (decision, personnel, equipment)",
   "Stabilise a critically ill patient using an ABCDE-led pre-departure checklist and a 'package the patient' approach",
   "Calculate oxygen reserve required for transfer and identify when supplies are inadequate",
   "Set up a portable ventilator and infusion pumps for safe transfer, anticipating ventilation, sedation and haemodynamic challenges in transit",
