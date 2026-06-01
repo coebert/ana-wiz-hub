@@ -58,8 +58,7 @@ export const ANSPathwayDiagram = () => {
         <rect x={240} y={10} width={80} height={60} rx={8}
           fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1.5" />
         <text x={280} y={32} textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="700">CNS</text>
-        <text x={280} y={44} textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Brainstem &amp;</text>
-        <text x={280} y={53} textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Spinal Cord</text>
+        <text x={280} y={48} textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Brainstem &amp; Spinal Cord</text>
 
         {/* ==================== SYMPATHETIC (LEFT) ==================== */}
         {(view === "overview" || view === "sympathetic" || view === "adrenal") && (
