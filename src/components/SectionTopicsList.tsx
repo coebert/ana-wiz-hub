@@ -23,6 +23,9 @@ export const SectionTopicsList = ({ section, topics, trailing }: Props) => {
 
   return (
     <>
+      <h2 className="text-lg font-serif font-semibold text-foreground mb-3">
+        Curriculum Topics
+      </h2>
       <div className="space-y-3">
         {topics.map((topic) => (
           <TopicCard
