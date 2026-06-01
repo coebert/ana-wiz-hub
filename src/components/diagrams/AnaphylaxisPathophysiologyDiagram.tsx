@@ -122,7 +122,7 @@ const AnaphylaxisPathophysiologyDiagram = () => {
           {/* Tryptase annotation */}
           <rect x="50" y="460" width="155" height="40" rx="6" fill="hsl(var(--clinical) / 0.06)" stroke="hsl(var(--clinical) / 0.25)" strokeWidth="1" />
           <text x="127" y="476" textAnchor="middle" className="fill-foreground" style={{ fontSize: '9px', fontWeight: 600 }}>Mast Cell Tryptase</text>
-          <text x="127" y="488" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '8px' }}>Sample at 1h, 6h, &gt;24h (baseline)</text>
+          <text x="127" y="488" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '8px' }}>Sample ASAP, 1–2h, baseline ≥24h</text>
           <text x="127" y="498" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '8px' }}>Confirms mast cell degranulation</text>
         </svg>
       </div>

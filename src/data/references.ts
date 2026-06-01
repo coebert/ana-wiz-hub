@@ -273,6 +273,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2014", citation: "Lautt WW. Hepatic circulation: physiology and pathophysiology. In: Comprehensive Physiology. Wiley; 2011.", url: "https://doi.org/10.1002/cphy.cp060141" },
     { label: "Power & Kam Ch.10", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 10: Hepatic Physiology." },
     { label: "Peck & Hill Ch.13", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 13: Hepatic Drug Metabolism." },
+    { label: "BJA Educ Liver Anat 2018", citation: "Kalra A, Yetiskul E, Wehrle CJ, Tuma F. Anatomy, Abdomen and Pelvis: Liver — and 'Liver anatomy and physiology'. BJA Education. 2018;18(1):16-22.", url: "https://bjanaesthesia.org/article/S2058-5349(17)30282-1/fulltext" },
+    { label: "Gray's Anatomy 42e Ch.70", citation: "Standring S, editor. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020. Ch. 70 — Liver." },
   ],
   "starling-forces": [
     { label: "Levick & Michel 2010", citation: "Levick JR, Michel CC. Microvascular fluid exchange and the revised Starling principle. Cardiovasc Res. 2010;87(2):198-210. Total safety factor against oedema ≈ 17 mmHg from rising interstitial pressure, lymphatic recruitment and falling subglycocalyx oncotic pressure.", url: "https://doi.org/10.1093/cvr/cvq062" },
@@ -771,7 +773,7 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "transfer-medicine": [
     { label: "AAGBI Transfer 2009", citation: "Association of Anaesthetists. AAGBI Safety Guideline: Interhospital Transfer. 2009.", url: "https://www.aagbi.org/sites/default/files/interhospital09.pdf" },
-    { label: "ICS Transfer 2019", citation: "Intensive Care Society. Guidelines for the Transport of the Critically Ill Adult. 4th ed. 2019.", url: "https://www.ics.ac.uk/Society/Policy_and_Guidelines" },
+    { label: "ICS Transfer 2019", citation: "Intensive Care Society. Guidance on the Transfer of the Critically Ill Adult. 4th ed. 2019.", url: "https://www.ics.ac.uk/ICS/guidelines.aspx" },
     { label: "BJA Educ 2018", citation: "Droogh JM, et al. Inter-hospital transport of critically ill patients. Crit Care. 2015;19(1):143.", url: "https://doi.org/10.1186/s13054-015-0879-1" },
   ],
   "resource-poor-anaesthesia": [

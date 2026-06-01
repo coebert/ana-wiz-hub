@@ -3,6 +3,7 @@ import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
+import { InlineRef } from "@/components/InlineRef";
 import { hepaticPhysiologyQuestions } from "@/data/quizzes";
 import HepaticAcinusDiagram from "@/components/diagrams/HepaticAcinusDiagram";
 import PortalFirstPassDiagram from "@/components/diagrams/PortalFirstPassDiagram";
@@ -154,10 +155,10 @@ const HepaticPhysiologyTopic = () => {
               <HepaticAcinusDiagram />
             </div>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              The functional unit is the hepatic acinus (Rappaport model), divided into three zones based on proximity
-              to the portal triad:
+              The functional unit is the hepatic acinus<InlineRef topicId="hepatic-physiology" refLabel="BJA Educ Liver Anat 2018" /> (Rappaport model<InlineRef topicId="hepatic-physiology" refLabel="Gray's Anatomy 42e Ch.70" />), a diamond-shaped territory whose long (portal) axis runs between two adjacent terminal portal vessels and whose short-axis apices abut adjacent terminal hepatic venules (central veins). It is divided into three zones by distance from the portal axis:
             </p>
             <div className="space-y-3">
+
               {[
                 { zone: "Zone 1 (Periportal)", desc: "Closest to portal triad. Highest O₂ supply. Most active in oxidative metabolism, gluconeogenesis, bile salt excretion, urea synthesis. Most resistant to ischaemia. First affected by viral hepatitis." },
                 { zone: "Zone 2 (Intermediate)", desc: "Transitional zone with intermediate metabolic activity." },
