@@ -203,6 +203,21 @@ const ElderlyAnaesthesiaTopic = () => {
                 <POCDPathophysiologyCascadeDiagram />
               </div>
 
+              <div className="bg-muted/40 border border-border rounded-lg p-3 mt-2">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">Step-by-step cascade</p>
+                <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                  <li><strong className="text-foreground">Surgical trauma</strong> releases DAMPs (HMGB1, S100, mtDNA) and triggers a systemic inflammatory response with IL-1β, IL-6 and TNF-α.</li>
+                  <li><strong className="text-foreground">BBB disruption</strong>: cytokines and complement degrade tight junctions, allowing peripheral inflammatory mediators and monocytes into the CNS.</li>
+                  <li><strong className="text-foreground">Microglial priming</strong>: an exaggerated, sustained neuroinflammatory response occurs in the hippocampus and prefrontal cortex, impairing LTP and synaptic plasticity.</li>
+                  <li><strong className="text-foreground">Cholinergic deficit</strong>: reduced acetylcholine and anticholinergic drug burden worsen attention and memory.</li>
+                  <li><strong className="text-foreground">Synaptic dysfunction</strong>: Aβ/tau aggregation (animal data), oxidative stress, mitochondrial injury and cerebral hypoperfusion compound neuronal damage.</li>
+                  <li><strong className="text-foreground">Cognitive decline</strong>: delirium in the early postoperative period is the strongest predictor of subsequent POCD / delayed neurocognitive recovery.</li>
+                </ol>
+                <p className="text-xs text-muted-foreground mt-2 italic">
+                  Mitigation bundle: pre-op MoCA + CGA, processed-EEG to avoid deep anaesthesia, MAP 10–20% above baseline, opioid-sparing analgesia, and a HELP-style postoperative multicomponent intervention with daily 4AT/CAM screening.
+                </p>
+              </div>
+
 
 
               <h4 className="font-semibold text-foreground mt-3 mb-1 text-sm">Epidemiology</h4>
