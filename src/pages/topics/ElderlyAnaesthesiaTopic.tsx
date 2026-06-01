@@ -3,6 +3,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { elderlyAnaesthesiaQuestions } from "@/data/quizzes";
 import FrailtyAssessmentDiagram from "@/components/diagrams/FrailtyAssessmentDiagram";
+import POCDPathophysiologyCascadeDiagram from "@/components/diagrams/POCDPathophysiologyCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
@@ -197,6 +198,12 @@ const ElderlyAnaesthesiaTopic = () => {
               <p className="text-sm mb-2">
                 POCD is a subtle, objectively measurable decline in cognitive domains (memory, executive function, processing speed, attention) persisting <strong className="text-foreground">weeks to months</strong> after surgery, diagnosed only by neuropsychological testing pre- and postoperatively (≥1 SD drop on ≥2 tests). The 2018 international nomenclature group recommends aligning post-surgical cognitive change with the DSM-5 framework — <em>delayed neurocognitive recovery</em> (≤30 days) and <em>postoperative neurocognitive disorder</em> (mild or major, 30 days–12 months). POCD is distinct from delirium (acute, fluctuating, attention-based) but the two are linked: delirium is the strongest single predictor of subsequent POCD.
               </p>
+
+              <div className="my-4">
+                <POCDPathophysiologyCascadeDiagram />
+              </div>
+
+
 
               <h4 className="font-semibold text-foreground mt-3 mb-1 text-sm">Epidemiology</h4>
               <ul className="list-disc list-inside space-y-1 text-sm">
