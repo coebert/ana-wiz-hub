@@ -80,14 +80,6 @@ const ElderlyAnaesthesiaTopic = () => {
           "Lancet Frailty 2013",
           "Lancet Delirium 2014",
         ],
-        pocd: [
-          "Evered Nomenclature 2018",
-          "ISPOCD1 1998",
-          "ASA Brain Health 2018",
-          "ENGAGES 2019",
-          "ESAIC POD 2017",
-          "Lancet Delirium 2014",
-        ],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
