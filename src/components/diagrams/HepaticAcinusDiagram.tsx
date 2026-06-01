@@ -88,77 +88,10 @@ const HepaticAcinusDiagram = () => {
         <div className="flex flex-col lg:flex-row gap-6 items-start">
           {/* SVG Diagram */}
           <div className="w-full lg:w-1/2 flex justify-center">
-            <svg viewBox="0 0 400 400" className="w-full max-w-[360px]" role="img" aria-label="Hepatic acinus diagram showing zones 1, 2 and 3">
-              {/* Background hexagonal lobule shape */}
-              <polygon
-                points="200,30 350,110 350,290 200,370 50,290 50,110"
-                fill="none"
-                stroke="hsl(var(--border))"
-                strokeWidth="1.5"
-                strokeDasharray="6,3"
-                opacity={0.5}
-              />
-  
-              {/* Zone 3 — outermost ring (centrilobular) */}
-              <circle
-                cx={cx} cy={cy} r={140}
-                fill={activeZone === 3 ? zones[2].color : zones[2].colorLight}
-                stroke={zones[2].color}
-                strokeWidth={activeZone === 3 ? 3 : 1.5}
-                className="cursor-pointer transition-all duration-300"
-                onClick={() => setActiveZone(activeZone === 3 ? null : 3)}
-                opacity={activeZone !== null && activeZone !== 3 ? 0.4 : 0.85}
-              />
-              {/* Zone 2 — middle ring */}
-              <circle
-                cx={cx} cy={cy} r={95}
-                fill={activeZone === 2 ? zones[1].color : zones[1].colorLight}
-                stroke={zones[1].color}
-                strokeWidth={activeZone === 2 ? 3 : 1.5}
-                className="cursor-pointer transition-all duration-300"
-                onClick={() => setActiveZone(activeZone === 2 ? null : 2)}
-                opacity={activeZone !== null && activeZone !== 2 ? 0.4 : 0.85}
-              />
-              {/* Zone 1 — innermost ring (periportal) */}
-              <circle
-                cx={cx} cy={cy} r={52}
-                fill={activeZone === 1 ? zones[0].color : zones[0].colorLight}
-                stroke={zones[0].color}
-                strokeWidth={activeZone === 1 ? 3 : 1.5}
-                className="cursor-pointer transition-all duration-300"
-                onClick={() => setActiveZone(activeZone === 1 ? null : 1)}
-                opacity={activeZone !== null && activeZone !== 1 ? 0.4 : 0.85}
-              />
-  
-              {/* Central vein */}
-              <circle cx={cx} cy={cy} r={14} fill="hsl(220, 70%, 45%)" stroke="hsl(220, 80%, 35%)" strokeWidth="2" />
-              <text x={cx} y={cy - 20} textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(220, 70%, 35%)">Central</text>
-              <text x={cx} y={cy - 11} textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(220, 70%, 35%)">Vein</text>
-              <text x={cx} y={cy + 4} textAnchor="middle" className="text-[8px]" fill="hsl(var(--background))">CV</text>
-  
-              {/* Portal triads at vertices */}
-              {[
-                { x: 200, y: 48 },
-                { x: 330, y: 125 },
-                { x: 330, y: 275 },
-                { x: 200, y: 352 },
-                { x: 70, y: 275 },
-                { x: 70, y: 125 },
-              ].map((pt, i) => (
-                <g key={i}>
-                  <circle cx={pt.x} cy={pt.y} r={10} fill="hsl(0, 65%, 50%)" stroke="hsl(0, 70%, 40%)" strokeWidth="1.5" opacity={0.8} />
-                  <text x={pt.x} y={pt.y + 3.5} textAnchor="middle" className="text-[7px] font-bold" fill="hsl(var(--background))">PT</text>
-                </g>
-              ))}
-  
-              {/* Zone labels */}
-              <text x={cx} y={cy + 40} textAnchor="middle" className="text-[11px] font-bold" fill={zones[0].color}>Zone 1</text>
-              <text x={cx + 72} y={cy - 55} textAnchor="middle" className="text-[11px] font-bold" fill={zones[1].color}>Zone 2</text>
-              <text x={cx - 80} y={cy + 110} textAnchor="middle" className="text-[11px] font-bold" fill={zones[2].color}>Zone 3</text>
-  
-              {/* O₂ gradient arrow */}
+            <svg viewBox="0 0 400 400" className="w-full max-w-[360px]" role="img" aria-label="Rappaport hepatic acinus diagram — diamond functional unit with portal triads on the long axis and central veins at the short-axis apices, divided into zones 1, 2 and 3">
+              {/* Acinus boundary — diamond (Rappaport model). Long (portal) axis horizontal between two terminal portal vessels; short axis runs to two adjacent terminal hepatic venules (central veins). */}
               <defs>
-                <linearGradient id="o2grad" x1="0" y1="0" x2="1" y2="0">
+                <linearGradient id="o2grad" x1="0.5" y1="0.5" x2="0.5" y2="1">
                   <stop offset="0%" stopColor="hsl(0, 75%, 55%)" />
                   <stop offset="50%" stopColor="hsl(35, 80%, 55%)" />
                   <stop offset="100%" stopColor="hsl(220, 70%, 55%)" />
@@ -167,29 +100,95 @@ const HepaticAcinusDiagram = () => {
                   <polygon points="0 0, 8 3, 0 6" fill="hsl(var(--muted-foreground))" />
                 </marker>
               </defs>
-              <rect x={100} y={378} width={200} height={6} rx={3} fill="url(#o2grad)" opacity={0.7} />
-              <text x={100} y={396} className="text-[8px]" fill="hsl(var(--muted-foreground))">High O₂ (Portal Triad)</text>
-              <text x={300} y={396} textAnchor="end" className="text-[8px]" fill="hsl(var(--muted-foreground))">Low O₂ (Central Vein)</text>
-  
-              {/* Blood flow arrows (portal triad → central vein) */}
-              {[0, 60, 120, 180, 240, 300].map((angle) => {
-                const rad = (angle * Math.PI) / 180;
-                const x1 = cx + Math.sin(rad) * 130;
-                const y1 = cy - Math.cos(rad) * 130;
-                const x2 = cx + Math.sin(rad) * 25;
-                const y2 = cy - Math.cos(rad) * 25;
-                return (
-                      <line
-                    key={angle}
-                    x1={x1} y1={y1} x2={x2} y2={y2}
-                    stroke="hsl(var(--muted-foreground))"
-                    strokeWidth="1"
-                    strokeDasharray="4,3"
-                    opacity={0.3}
-                    markerEnd="url(#arrowhead)"
-                  />
-    );
-              })}
+
+              <polygon
+                points="200,40 360,200 200,360 40,200"
+                fill="none"
+                stroke="hsl(var(--border))"
+                strokeWidth="1.5"
+                strokeDasharray="6,3"
+                opacity={0.6}
+              />
+
+              {/* Zone 3 — outermost band, closest to central veins (top & bottom apices of diamond) */}
+              <ellipse
+                cx={cx} cy={cy} rx={155} ry={150}
+                fill={activeZone === 3 ? zones[2].color : zones[2].colorLight}
+                stroke={zones[2].color}
+                strokeWidth={activeZone === 3 ? 3 : 1.5}
+                className="cursor-pointer transition-all duration-300"
+                onClick={() => setActiveZone(activeZone === 3 ? null : 3)}
+                opacity={activeZone !== null && activeZone !== 3 ? 0.4 : 0.85}
+              />
+              {/* Zone 2 — middle band */}
+              <ellipse
+                cx={cx} cy={cy} rx={130} ry={95}
+                fill={activeZone === 2 ? zones[1].color : zones[1].colorLight}
+                stroke={zones[1].color}
+                strokeWidth={activeZone === 2 ? 3 : 1.5}
+                className="cursor-pointer transition-all duration-300"
+                onClick={() => setActiveZone(activeZone === 2 ? null : 2)}
+                opacity={activeZone !== null && activeZone !== 2 ? 0.4 : 0.85}
+              />
+              {/* Zone 1 — innermost band, straddling the portal axis (between the two terminal portal vessels) */}
+              <ellipse
+                cx={cx} cy={cy} rx={100} ry={42}
+                fill={activeZone === 1 ? zones[0].color : zones[0].colorLight}
+                stroke={zones[0].color}
+                strokeWidth={activeZone === 1 ? 3 : 1.5}
+                className="cursor-pointer transition-all duration-300"
+                onClick={() => setActiveZone(activeZone === 1 ? null : 1)}
+                opacity={activeZone !== null && activeZone !== 1 ? 0.4 : 0.85}
+              />
+
+              {/* Portal axis (dotted line connecting the two terminal portal vessels) */}
+              <line x1={50} y1={cy} x2={350} y2={cy} stroke="hsl(0, 65%, 50%)" strokeWidth="1" strokeDasharray="4,3" opacity={0.5} />
+
+              {/* Two terminal portal vessels (PTs) at lateral ends of the long axis */}
+              {[{ x: 40, y: 200 }, { x: 360, y: 200 }].map((pt, i) => (
+                <g key={`pt${i}`}>
+                  <circle cx={pt.x} cy={pt.y} r={14} fill="hsl(0, 65%, 50%)" stroke="hsl(0, 70%, 40%)" strokeWidth="1.5" opacity={0.9} />
+                  <text x={pt.x} y={pt.y + 4} textAnchor="middle" className="text-[8px] font-bold" fill="hsl(var(--background))">PT</text>
+                </g>
+              ))}
+
+              {/* Two terminal hepatic venules (central veins) at top and bottom apices */}
+              {[{ x: 200, y: 40 }, { x: 200, y: 360 }].map((cv, i) => (
+                <g key={`cv${i}`}>
+                  <circle cx={cv.x} cy={cv.y} r={12} fill="hsl(220, 70%, 45%)" stroke="hsl(220, 80%, 35%)" strokeWidth="1.5" />
+                  <text x={cv.x} y={cv.y + 4} textAnchor="middle" className="text-[8px]" fill="hsl(var(--background))">CV</text>
+                </g>
+              ))}
+
+              {/* Zone labels */}
+              <text x={cx} y={cy + 4} textAnchor="middle" className="text-[11px] font-bold" fill={zones[0].color}>Zone 1</text>
+              <text x={cx} y={cy - 70} textAnchor="middle" className="text-[11px] font-bold" fill={zones[1].color}>Zone 2</text>
+              <text x={cx} y={cy - 120} textAnchor="middle" className="text-[11px] font-bold" fill={zones[2].color}>Zone 3</text>
+
+              {/* O₂ gradient bar (PT axis → CV apex) */}
+              <rect x={cx - 4} y={60} width={8} height={130} rx={3} fill="url(#o2grad)" opacity={0.6} transform={`rotate(180 ${cx} 125)`} />
+              <text x={cx + 12} y={50} className="text-[8px]" fill="hsl(var(--muted-foreground))">Low O₂ (CV)</text>
+              <text x={cx + 12} y={cy - 2} className="text-[8px]" fill="hsl(var(--muted-foreground))">High O₂ (PT axis)</text>
+
+              {/* Blood flow arrows — radiating from portal axis outward to the central veins */}
+              {[
+                { x1: cx, y1: cy - 8, x2: cx, y2: 60 },
+                { x1: cx, y1: cy + 8, x2: cx, y2: 340 },
+                { x1: cx - 40, y1: cy - 4, x2: 120, y2: 90 },
+                { x1: cx + 40, y1: cy - 4, x2: 280, y2: 90 },
+                { x1: cx - 40, y1: cy + 4, x2: 120, y2: 310 },
+                { x1: cx + 40, y1: cy + 4, x2: 280, y2: 310 },
+              ].map((ln, i) => (
+                <line
+                  key={i}
+                  x1={ln.x1} y1={ln.y1} x2={ln.x2} y2={ln.y2}
+                  stroke="hsl(var(--muted-foreground))"
+                  strokeWidth="1"
+                  strokeDasharray="4,3"
+                  opacity={0.35}
+                  markerEnd="url(#arrowhead)"
+                />
+              ))}
             </svg>
           </div>
   
