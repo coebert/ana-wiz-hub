@@ -950,6 +950,7 @@ export const topicReferences: Record<string, Reference[]> = {
   "pulmonary-hypertension": [
     { label: "ESC/ERS PH 2022", citation: "Humbert M et al. 2022 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension. Eur Heart J. 2022;43(38):3618-3731.", url: "https://doi.org/10.1093/eurheartj/ehac237" },
     { label: "BJA Educ PH 2017", citation: "Pilkington SA et al. Pulmonary hypertension and its management in patients undergoing non-cardiac surgery. Anaesthesia. 2015;70(1):56-70.", url: "https://doi.org/10.1111/anae.12831" },
+    { label: "Thunberg BJA Educ 2017", citation: "Thunberg CA, Morozowich ST, Ramakrishna H. Perioperative management of pulmonary hypertension: a practical approach. BJA Education. 2017;17(7):239-244.", url: "https://doi.org/10.1093/bjaed/mkw084" },
     { label: "AHA PH 2018", citation: "Klinger JR et al. Therapy for pulmonary arterial hypertension in adults: update of the CHEST guideline and expert panel report. Chest. 2019;155(3):565-586.", url: "https://doi.org/10.1016/j.chest.2018.11.030" },
   ],
   "vascular-anaesthesia": [
