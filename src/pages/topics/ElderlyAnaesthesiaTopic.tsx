@@ -262,6 +262,8 @@ const ElderlyAnaesthesiaTopic = () => {
                   </p>
                 </div>
               </div>
+
+              <h4 className="font-semibold text-foreground mt-3 mb-1 text-sm">Epidemiology</h4>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>ISPOCD1 (cardiac-free major non-cardiac surgery, &gt;60 y): ~25% at 1 week, ~10% at 3 months</li>
                 <li>Higher after cardiac surgery (30–50% at discharge, 10–30% at 3 months) and major orthopaedic/vascular surgery</li>
