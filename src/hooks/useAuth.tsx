@@ -57,6 +57,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       // TOKEN_REFRESHED / periodic refresh events should NOT re-check
       // (avoids flipping isAdmin to false on a transient RPC blip).
       if (resolvedAdminForUserRef.current !== nextSession.user.id) {
+        // Mark loading so RequireAdmin shows "Checking access…" instead of
+        // briefly rendering "Access denied" with stale isAdmin=false while
+        // the has_role RPC resolves after a fresh sign-in.
+        if (!cancelled) setLoading(true);
         await checkAdmin(nextSession.user.id);
       }
       if (!cancelled) setLoading(false);
