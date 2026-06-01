@@ -218,9 +218,50 @@ const ElderlyAnaesthesiaTopic = () => {
                 </p>
               </div>
 
-
-
-              <h4 className="font-semibold text-foreground mt-3 mb-1 text-sm">Epidemiology</h4>
+              <div className="bg-card border border-border rounded-lg p-4 mt-4">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">POCD mitigation checklist — quick revision</p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="space-y-1">
+                    <p className="text-sm font-semibold text-foreground">Pre-op</p>
+                    <ul className="list-disc list-inside space-y-0.5 text-xs text-muted-foreground">
+                      <li>Cognitive screen (MoCA / Mini-Cog) — document baseline</li>
+                      <li>Comprehensive Geriatric Assessment (≥65 y, major surgery)</li>
+                      <li>Prehab: aerobic + resistance exercise, nutrition, smoking/alcohol cessation</li>
+                      <li>Treat anaemia, optimise diabetes, review polypharmacy (STOPP/START)</li>
+                      <li>Stop anticholinergics and long-acting benzodiazepines</li>
+                      <li>Counsel patient and family on POD/POCD risk</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-sm font-semibold text-foreground">Intra-op</p>
+                    <ul className="list-disc list-inside space-y-0.5 text-xs text-muted-foreground">
+                      <li>Processed-EEG (BIS / entropy) — avoid burst suppression & deep anaesthesia</li>
+                      <li>MAP within 10–20% of baseline; avoid MAP &lt;65 mmHg</li>
+                      <li>Normoxia, normocapnia, normothermia, normoglycaemia</li>
+                      <li>Cerebral oximetry in cardiac / major vascular surgery</li>
+                      <li>Regional / neuraxial where feasible — reduce opioid load</li>
+                      <li>Avoid deliriogenic drugs: benzodiazepines, pethidine, atropine</li>
+                      <li>Short-acting agents: propofol TCI, remifentanil, desflurane / sevoflurane</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-sm font-semibold text-foreground">Post-op</p>
+                    <ul className="list-disc list-inside space-y-0.5 text-xs text-muted-foreground">
+                      <li>HELP-style bundle: re-orientation, glasses / hearing aids, early mobilisation</li>
+                      <li>Sleep hygiene, hydration, early nutrition, bowel / bladder care</li>
+                      <li>Multimodal opioid-sparing analgesia (paracetamol + NSAID + regional)</li>
+                      <li>Daily delirium screen with 4AT or CAM</li>
+                      <li>Promptly treat pain, hypoxia, sepsis, electrolyte disturbance, retention, constipation</li>
+                      <li>Orthogeriatric / perioperative-medicine review</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-3 pt-2 border-t border-border">
+                  <p className="text-xs text-muted-foreground italic">
+                    Caveats: ENGAGES (2019) — EEG-guided light anaesthesia did not reduce delirium; routine pharmacoprophylaxis (haloperidol, dexmedetomidine, ketamine, statins) is not recommended outside specific ICU contexts.
+                  </p>
+                </div>
+              </div>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>ISPOCD1 (cardiac-free major non-cardiac surgery, &gt;60 y): ~25% at 1 week, ~10% at 3 months</li>
                 <li>Higher after cardiac surgery (30–50% at discharge, 10–30% at 3 months) and major orthopaedic/vascular surgery</li>
