@@ -78,7 +78,7 @@ export const Header = () => {
             const homeTarget = location.pathname === "/" ? "/" : "/revise";
             return (
               <Link to={homeTarget} className="flex items-center gap-2 shrink-0">
-                <img src={brainLogo} alt="AnaesthesiaCore" width={24} height={24} decoding="async" className="h-6 w-6" />
+                <img src={brainLogo} alt="AnaesthesiaCore logo" width={24} height={24} decoding="async" className="h-6 w-6" />
                 <span className="text-base font-semibold text-foreground hidden lg:inline whitespace-nowrap">
                   AnaesthesiaCore
                 </span>
