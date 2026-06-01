@@ -172,7 +172,7 @@ const PlasticSurgeryTopic = () => {
               "Free flap perfusion depends on CO, BP, viscosity and afterload — warm, well-filled, vasodilated patient; avoid vasoconstrictors where possible.",
               "Maintain Hb 80–100 g/L (haemodilution improves microcirculation); avoid hypothermia which causes vasospasm.",
               "Long surgery: prevent pressure sores, DVT, hypothermia, eye injury and corneal abrasion.",
-              "Avoid N₂O in microsurgery (gas-bubble expansion risk in micro-anastomoses).",
+              
               "Digital replantation success depends on cold ischaemia time — coordinate theatre setup before patient arrival.",
             ]}
           />
