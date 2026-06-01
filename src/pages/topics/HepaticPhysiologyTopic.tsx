@@ -3,6 +3,7 @@ import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
+import { InlineRef } from "@/components/InlineRef";
 import { hepaticPhysiologyQuestions } from "@/data/quizzes";
 import HepaticAcinusDiagram from "@/components/diagrams/HepaticAcinusDiagram";
 import PortalFirstPassDiagram from "@/components/diagrams/PortalFirstPassDiagram";
