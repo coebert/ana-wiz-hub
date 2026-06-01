@@ -385,6 +385,12 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
         <rect x={toX(20)} y={padT} width={toX(60) - toX(20)} height={plotH}
           fill="hsl(35 80% 50%)" opacity="0.04" />
 
+        {/* Static reference: left- and right-shift curves (always visible to illustrate concept) */}
+        <path d={generateSatPath(20)} fill="none" stroke="hsl(210 70% 55%)" strokeWidth="1" strokeDasharray="3 2" opacity="0.45" />
+        <path d={generateSatPath(35)} fill="none" stroke="hsl(0 65% 50%)" strokeWidth="1" strokeDasharray="3 2" opacity="0.45" />
+        <text x={toX(18)} y={toY(85)} fontSize="7" fill="hsl(210 70% 55%)" fontWeight="600">← Left shift</text>
+        <text x={toX(55)} y={toY(60)} fontSize="7" fill="hsl(0 65% 50%)" fontWeight="600">Right shift →</text>
+
         {/* Normal curve (reference) */}
         <path d={normalPath} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.35" />
 
