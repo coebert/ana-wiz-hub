@@ -771,7 +771,7 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "transfer-medicine": [
     { label: "AAGBI Transfer 2009", citation: "Association of Anaesthetists. AAGBI Safety Guideline: Interhospital Transfer. 2009.", url: "https://www.aagbi.org/sites/default/files/interhospital09.pdf" },
-    { label: "ICS Transfer 2019", citation: "Intensive Care Society. Guidelines for the Transport of the Critically Ill Adult. 4th ed. 2019.", url: "https://www.ics.ac.uk/Society/Policy_and_Guidelines" },
+    { label: "ICS Transfer 2019", citation: "Intensive Care Society. Guidance on the Transfer of the Critically Ill Adult. 4th ed. 2019.", url: "https://www.ics.ac.uk/ICS/guidelines.aspx" },
     { label: "BJA Educ 2018", citation: "Droogh JM, et al. Inter-hospital transport of critically ill patients. Crit Care. 2015;19(1):143.", url: "https://doi.org/10.1186/s13054-015-0879-1" },
   ],
   "resource-poor-anaesthesia": [
