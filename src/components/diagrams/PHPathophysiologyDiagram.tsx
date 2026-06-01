@@ -12,8 +12,8 @@ const ESC_ERS_2022: CascadeSource = {
 const BJA_PH: CascadeSource = {
   label: "BJA Educ 2017",
   citation:
-    "Thunberg CA, Morozowich ST, Ramakrishna H. Inhaled therapy for the management of perioperative pulmonary hypertension. Ann Card Anaesth. 2015. (See also: Pulmonary hypertension and anaesthesia. BJA Education 2017;17:208–13.)",
-  url: "https://doi.org/10.1093/bjaed/mkw069",
+    "Thunberg CA, Morozowich ST, Ramakrishna H. Perioperative management of pulmonary hypertension: a practical approach. BJA Education. 2017;17(7):239–244.",
+  url: "https://doi.org/10.1093/bjaed/mkw084",
 };
 
 const TUDER_REMODEL: CascadeSource = {

@@ -115,6 +115,7 @@ const PulmonaryHypertensionTopic = () => {
         keyPoints: [
           "ESC/ERS PH 2022",
           "BJA Educ PH 2017",
+          "Thunberg BJA Educ 2017",
           "AHA PH 2018",
         ],
         workedExamples: ["ESC/ERS PH 2022", "AHA PH 2018"],
