@@ -133,9 +133,13 @@ const JetVentilationDiagram = () => {
               {/* Vocal cords */}
               <line x1="165" y1="148" x2="180" y2="155" stroke="hsl(0 0% 30%)" strokeWidth="1.5" />
               <line x1="195" y1="148" x2="180" y2="155" stroke="hsl(0 0% 30%)" strokeWidth="1.5" />
-              {/* Cricothyroid membrane marker */}
-              <line x1="165" y1="170" x2="195" y2="170" stroke="hsl(280 40% 50%)" strokeWidth="1" strokeDasharray="2 2" />
-              <text x="200" y="173" fontSize="8" fill="hsl(280 40% 45%)">cricothyroid m.</text>
+              {/* Cricothyroid membrane marker — only shown when transtracheal jet is selected */}
+              {mode === "transtracheal" && (
+                <>
+                  <line x1="165" y1="170" x2="195" y2="170" stroke="hsl(280 40% 50%)" strokeWidth="1" strokeDasharray="2 2" />
+                  <text x="200" y="173" fontSize="8" fill="hsl(280 40% 45%)">cricothyroid m.</text>
+                </>
+              )}
               {/* Carina */}
               <line x1="180" y1="245" x2="155" y2="280" stroke="hsl(0 0% 30%)" strokeWidth="1" />
               <line x1="180" y1="245" x2="205" y2="280" stroke="hsl(0 0% 30%)" strokeWidth="1" />

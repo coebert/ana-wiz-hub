@@ -41,8 +41,8 @@ const DEPTHS: Record<Depth, DepthInfo> = {
     healing: "Heals in ~14 days, minimal scarring",
   },
   deepPartial: {
-    label: "Deep partial",
-    short: "Deep",
+    label: "Deep partial thickness",
+    short: "Deep partial",
     frontY: 130,
     accent: "bg-rose-500 text-white border-rose-700",
     features: "Mottled red/white, reduced sensation, sluggish capillary refill.",
@@ -50,7 +50,7 @@ const DEPTHS: Record<Depth, DepthInfo> = {
   },
   fullThickness: {
     label: "Full thickness",
-    short: "Full",
+    short: "Full thickness",
     frontY: 195,
     accent: "bg-stone-800 text-stone-100 border-stone-900",
     features: "Waxy, leathery or charred. Painless (nerves destroyed). No blanching.",

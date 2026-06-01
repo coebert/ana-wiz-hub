@@ -333,8 +333,8 @@ const CellSalvageScene = ({ active }: { active: number }) => {
           {lit(3) && <animate attributeName="y" values="161;123;161" dur="2.4s" repeatCount="indefinite" />}
         </rect>
         <text x="570" y="105" textAnchor="middle" fontSize="10" fill={FG} fontWeight={lit(3) ? 600 : 400}>Waste</text>
-        <text x="570" y="190" textAnchor="middle" fontSize="8" fill={MUTED}>plasma · heparin</text>
-        <text x="570" y="200" textAnchor="middle" fontSize="8" fill={MUTED}>free Hb · cytokines</text>
+        <text x="570" y="190" textAnchor="middle" fontSize="8" fill={MUTED}>Waste: plasma,</text>
+        <text x="570" y="200" textAnchor="middle" fontSize="8" fill={MUTED}>anticoagulant, free Hb, cytokines</text>
         {/* Travelling plasma drops bowl → waste */}
         {lit(3) && (
           <>
