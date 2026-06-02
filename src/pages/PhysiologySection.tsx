@@ -28,6 +28,7 @@ const PhysiologySection = () => {
         </div>
       </div>
       <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
+        <h2 className="sr-only">Introduction</h2>
         <p className="text-sm text-foreground leading-relaxed">
           <strong>Anaesthesia physiology explained.</strong> Applied physiology
           for FRCA Primary, Final and FFICM trainees — cardiovascular, respiratory,

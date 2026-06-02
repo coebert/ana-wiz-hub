@@ -29,6 +29,7 @@ const AnatomySection = () => {
         </div>
       </div>
       <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
+        <h2 className="sr-only">Introduction</h2>
         <p className="text-sm text-foreground leading-relaxed">
           <strong>Anaesthesia anatomy explained.</strong> Applied anatomy for
           FRCA Primary, Final and FFICM trainees — airway, vertebral column and

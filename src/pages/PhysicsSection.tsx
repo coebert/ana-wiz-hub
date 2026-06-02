@@ -30,6 +30,7 @@ const PhysicsSection = () => {
       </div>
 
       <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
+        <h2 className="sr-only">Introduction</h2>
         <p className="text-sm text-foreground leading-relaxed">
           <strong>Anaesthesia physics explained.</strong> This section covers the
           physical principles every anaesthetist needs for the FRCA Primary,
