@@ -29,6 +29,7 @@ const IntensiveCareSection = () => {
         </div>
       </div>
       <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
+        <h2 className="sr-only">Introduction</h2>
         <p className="text-sm text-foreground leading-relaxed">
           <strong>Intensive care medicine explained.</strong> Critical care for
           FFICM and FRCA Final trainees — mechanical ventilation and ARDS,

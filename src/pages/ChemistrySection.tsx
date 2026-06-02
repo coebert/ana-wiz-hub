@@ -22,6 +22,7 @@ const ChemistrySection = () => {
       accentColor="text-chemistry"
     >
       <section className="mb-6 p-5 rounded-lg border border-border bg-card/50">
+        <h2 className="sr-only">Introduction</h2>
         <p className="text-sm text-foreground leading-relaxed">
           <strong>Anaesthesia chemistry explained.</strong> Foundational
           chemistry concepts that underpin anaesthetic pharmacology, physiology
