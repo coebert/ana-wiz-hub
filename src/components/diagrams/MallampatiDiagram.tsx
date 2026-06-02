@@ -43,7 +43,7 @@ const MouthView = ({ grade, size = 120 }: { grade: MallampatiClass; size?: numbe
   const tY = tongueY(grade);
 
   return (
-    <svg viewBox={`0 0 ${s} ${s}`} width={s} height={s}>
+    <svg viewBox={`0 0 ${s} ${s}`} width={s} height={s} role="img" aria-label={`Mallampati class ${grade} oropharyngeal view showing soft palate, uvula, fauces and tongue position`}>
       {/* Oral cavity (dark background) */}
       <ellipse cx={cx} cy={cy} rx={lipRx} ry={lipRy} fill="hsl(0, 10%, 12%)" />
 

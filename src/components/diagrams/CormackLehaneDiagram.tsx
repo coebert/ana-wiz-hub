@@ -74,7 +74,7 @@ const GlottisView = ({ grade, size = 140 }: { grade: Grade; size?: number }) => 
   const _half = size / 2;
   // All views are a circular laryngoscopic "port" view
   return (
-    <svg viewBox="0 0 140 140" width={size} height={size}>
+    <svg viewBox="0 0 140 140" width={size} height={size} role="img" aria-label={`Cormack–Lehane grade ${grade} laryngoscopic view of the glottis, epiglottis and vocal cords`}>
       {/* Laryngoscope view circle */}
       <circle cx="70" cy="70" r="66" fill="hsl(0, 15%, 18%)" stroke="hsl(0, 10%, 28%)" strokeWidth="3" />
       {/* Pharyngeal mucosal shading */}
