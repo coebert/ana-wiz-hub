@@ -134,8 +134,9 @@ export const Header = () => {
               onClick={goToSupport}
               className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors shrink-0 whitespace-nowrap"
               title="Support this app"
+              aria-label="Support this app"
             >
-              <HandHeart className="h-3.5 w-3.5" />
+              <HandHeart className="h-3.5 w-3.5" aria-hidden="true" />
               <span className="hidden xl:inline">Support</span>
             </a>
 
