@@ -26,7 +26,7 @@ const devices: Record<DeviceCategory, DeviceInfo> = {
       "Subglottic suction port (ICU tubes) — reduces VAP",
     ],
     crossSection: (
-      <svg viewBox="0 0 200 160" className="w-full">
+      <svg viewBox="0 0 200 160" className="w-full" role="img" aria-label="Cross-section of an endotracheal tube within the trachea, showing lumen, inflatable cuff and Murphy eye">
         {/* Trachea outline */}
         <ellipse cx="100" cy="80" rx="55" ry="60" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="2" strokeDasharray="4 2" />
         <text x="100" y="148" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle">Trachea</text>
@@ -59,7 +59,7 @@ const devices: Record<DeviceCategory, DeviceInfo> = {
       "Higher aspiration risk than 2nd gen",
     ],
     crossSection: (
-      <svg viewBox="0 0 200 160" className="w-full">
+      <svg viewBox="0 0 200 160" className="w-full" role="img" aria-label="Sagittal view of a first-generation supraglottic airway seated at the laryngeal inlet, with single airway lumen and aperture bars">
         {/* Pharynx */}
         <path d="M 40 20 Q 40 80 60 130 Q 80 155 100 155 Q 120 155 140 130 Q 160 80 160 20" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 2" />
         <text x="100" y="15" fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Sagittal View</text>
@@ -91,7 +91,7 @@ const devices: Record<DeviceCategory, DeviceInfo> = {
       "DAS Plan B recommended device",
     ],
     crossSection: (
-      <svg viewBox="0 0 200 160" className="w-full">
+      <svg viewBox="0 0 200 160" className="w-full" role="img" aria-label="Sagittal view of a second-generation supraglottic airway with enhanced seal cuff, airway lumen and separate gastric drain channel">
         {/* Pharynx */}
         <path d="M 40 20 Q 40 80 60 130 Q 80 155 100 155 Q 120 155 140 130 Q 160 80 160 20" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 2" />
         <text x="100" y="15" fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Sagittal View</text>
@@ -124,7 +124,7 @@ const devices: Record<DeviceCategory, DeviceInfo> = {
       "Higher first-pass success in novice users",
     ],
     crossSection: (
-      <svg viewBox="0 0 200 160" className="w-full">
+      <svg viewBox="0 0 200 160" className="w-full" role="img" aria-label="Side view of a channelled videolaryngoscope blade with integrated tube channel guiding an endotracheal tube to the glottis and a tip camera">
         <text x="100" y="15" fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Channelled VL — Side View</text>
         {/* Blade body */}
         <path d="M 30 40 L 30 130 Q 30 145 45 150 L 120 155 Q 140 155 145 140 L 148 50 Q 148 35 135 32 L 45 32 Q 30 32 30 40 Z" fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--primary))" strokeWidth="2" />
@@ -155,7 +155,7 @@ const devices: Record<DeviceCategory, DeviceInfo> = {
       "Versatile — works for routine and difficult airways",
     ],
     crossSection: (
-      <svg viewBox="0 0 200 160" className="w-full">
+      <svg viewBox="0 0 200 160" className="w-full" role="img" aria-label="Side view of a standard non-channelled videolaryngoscope with curved blade, tip camera, integrated screen and a separately introduced styletted endotracheal tube">
         <text x="100" y="15" fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Standard VL — Side View</text>
         {/* Blade */}
         <path d="M 30 50 Q 30 60 35 65 L 35 130 Q 35 145 50 150 L 140 155 Q 155 155 155 140 L 155 65 Q 155 50 140 45 L 45 42 Q 30 42 30 50 Z" fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--primary))" strokeWidth="2" />
