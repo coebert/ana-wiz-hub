@@ -232,9 +232,9 @@ const PostCardiacArrestProgDiagram = () => {
                 const x1 = 80;
                 const x2 = 80 + (48 / 120) * 500;
                 return (
-                  <g {...svgNodeProps("Phase 1/6: Temperature control (prevent fever, target ≤37.7°C), 0–72 h")}>
+                  <g {...svgNodeProps("Phase 1/6: Temperature control (prevent T > 37.7°C), 0–72 h")}>
                     <rect x={x1} y={y} width={x2 - x1} height="14" rx="3" fill="hsl(210, 75%, 55%)" opacity="0.15" stroke="hsl(210, 75%, 55%)" strokeWidth="0.5" />
-                    <text x={x1 + 4} y={y + 10} className="text-[7px] font-semibold" fill="hsl(210, 75%, 55%)">Temperature control (prevent fever ≤37.7°C)</text>
+                    <text x={x1 + 4} y={y + 10} className="text-[7px] font-semibold" fill="hsl(210, 75%, 55%)">Temperature control (prevent T &gt; 37.7°C)</text>
                     <text x={5} y={y + 10} className="text-[8px] font-medium fill-muted-foreground">Temp</text>
                   </g>
                 );
