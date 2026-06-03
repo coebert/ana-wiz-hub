@@ -42,7 +42,7 @@ const DEPTHS: Record<Depth, DepthInfo> = {
   },
   deepPartial: {
     label: "Deep partial thickness",
-    short: "Deep partial",
+    short: "Deep",
     frontY: 130,
     accent: "bg-rose-500 text-white border-rose-700",
     features: "Mottled red/white, reduced sensation, sluggish capillary refill.",
