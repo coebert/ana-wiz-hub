@@ -216,30 +216,54 @@ const LegView = ({
           <path d={view === "anterior" ? ANTERIOR_LEG_PATH : POSTERIOR_LEG_PATH} fill={`url(#${id}-skin)`} stroke="hsl(var(--border))" strokeWidth="1.5" />
         </g>
 
+        {/* Anatomical region labels (always shown for orientation) */}
+        <text x="148" y="150" fontSize="8" fill="hsl(var(--muted-foreground))">hip</text>
+        <text x="148" y="260" fontSize="8" fill="hsl(var(--muted-foreground))">thigh</text>
         {/* Knee crease */}
         <line x1="70" y1="380" x2="140" y2="380" stroke="hsl(var(--border))" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6" />
         <text x="148" y="384" fontSize="8" fill="hsl(var(--muted-foreground))">knee</text>
+        <text x="148" y="450" fontSize="8" fill="hsl(var(--muted-foreground))">leg</text>
         {/* Ankle crease */}
         <line x1="78" y1="510" x2="122" y2="510" stroke="hsl(var(--border))" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6" />
         <text x="128" y="514" fontSize="8" fill="hsl(var(--muted-foreground))">ankle</text>
+        <text x="148" y="535" fontSize="8" fill="hsl(var(--muted-foreground))">foot</text>
 
-        {/* Optional simplified nerve tracks */}
+        {/* Optional simplified nerve tracks with labels */}
         {showNerves && view === "anterior" && (
-          <g stroke="hsl(var(--muted-foreground))" strokeWidth="1" fill="none" opacity="0.5" strokeDasharray="3 2">
-            {/* Femoral → saphenous */}
-            <path d="M 95 165 L 95 350 L 90 510" />
-            {/* LFC */}
-            <path d="M 80 165 L 70 250" />
+          <g opacity="0.75">
+            <g stroke="hsl(var(--muted-foreground))" strokeWidth="1" fill="none" strokeDasharray="3 2">
+              {/* Femoral → saphenous */}
+              <path d="M 95 165 L 95 350 L 90 510" />
+              {/* LFC */}
+              <path d="M 80 165 L 70 250" />
+              {/* Obturator (medial thigh) */}
+              <path d="M 110 165 L 120 240 L 122 320" />
+            </g>
+            <text x="38" y="170" fontSize="7" fill="hsl(var(--muted-foreground))">LFC</text>
+            <text x="32" y="260" fontSize="7" fill="hsl(var(--muted-foreground))">femoral</text>
+            <text x="150" y="240" fontSize="7" fill="hsl(var(--muted-foreground))">obturator</text>
+            <text x="30" y="470" fontSize="7" fill="hsl(var(--muted-foreground))">saphenous</text>
           </g>
         )}
         {showNerves && view === "posterior" && (
-          <g stroke="hsl(var(--muted-foreground))" strokeWidth="1" fill="none" opacity="0.5" strokeDasharray="3 2">
-            {/* Sciatic */}
-            <path d="M 100 165 L 100 380" />
-            {/* Tibial */}
-            <path d="M 100 380 L 100 510" />
-            {/* Common peroneal */}
-            <path d="M 100 380 L 130 440" />
+          <g opacity="0.75">
+            <g stroke="hsl(var(--muted-foreground))" strokeWidth="1" fill="none" strokeDasharray="3 2">
+              {/* Sciatic */}
+              <path d="M 100 165 L 100 380" />
+              {/* Tibial */}
+              <path d="M 100 380 L 100 510" />
+              {/* Common peroneal */}
+              <path d="M 100 380 L 130 440" />
+              {/* Posterior cutaneous of thigh */}
+              <path d="M 110 175 L 115 320" />
+              {/* Sural */}
+              <path d="M 105 440 L 112 510" />
+            </g>
+            <text x="38" y="270" fontSize="7" fill="hsl(var(--muted-foreground))">sciatic</text>
+            <text x="38" y="460" fontSize="7" fill="hsl(var(--muted-foreground))">tibial</text>
+            <text x="135" y="442" fontSize="7" fill="hsl(var(--muted-foreground))">common peroneal</text>
+            <text x="125" y="320" fontSize="7" fill="hsl(var(--muted-foreground))">post. cut.</text>
+            <text x="125" y="500" fontSize="7" fill="hsl(var(--muted-foreground))">sural</text>
           </g>
         )}
 
