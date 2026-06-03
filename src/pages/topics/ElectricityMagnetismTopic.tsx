@@ -72,7 +72,7 @@ const ElectricityMagnetismTopic = () => {
         workedExamples: ["BJA Educ 2017", "Middleton Ch.15"],
       }}
       keyPoints={[
-        { text: "Ohm's law: V = IR. Power: P = VI = I²R = V²/R. Series resistances add; parallel: 1/R = 1/R₁ + 1/R₂", cites: ["Cross & Plunkett Ch.12-13"] },
+        { text: "Ohm's law: V = IR. Power: P = VI = I²R = V²/R. Series resistances add; parallel: 1/R_total = 1/R₁ + 1/R₂", cites: ["Cross & Plunkett Ch.12-13"] },
         { text: "Impedance (Z) is the AC equivalent of resistance: Z = √(R² + (XL − XC)²) — includes capacitive and inductive reactance", cites: ["BJA Educ 2017"] },
         { text: "Capacitors store energy in electric fields (E = ½CV²); Xc = 1/(2πfC) — pass AC, block DC. Time constant τ = RC", cites: ["Middleton Ch.15"] },
         { text: "Inductors store energy in magnetic fields (E = ½LI²); XL = 2πfL — pass DC, block AC. Basis of transformers", cites: ["Cross & Plunkett Ch.12-13", "BJA Educ 2013 (Basic physics)"] },
@@ -108,7 +108,7 @@ const ElectricityMagnetismTopic = () => {
                 current (charge flow in amperes), and resistance (opposition to flow in ohms). Power dissipation is described by
                 <strong>P = VI = I²R = V²/R</strong>, measured in watts. In <strong>series circuits</strong>, resistances add directly
                 and the same current flows through all components. In <strong>parallel circuits</strong>, voltages are equal across each
-                branch and currents divide — total resistance is found from 1/R = 1/R₁ + 1/R₂ + ...
+                branch and currents divide — total resistance is found from 1/R_total = 1/R₁ + 1/R₂ + ...
               </p>
               <p>
                 UK mains supply is <strong>230V AC at 50 Hz</strong>. The distinction between <strong>DC</strong> (constant direction,

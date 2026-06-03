@@ -115,9 +115,8 @@ const LeFortFractureDiagram = () => {
             {/* Frontal bone shading */}
             <path d="M 80 90 Q 180 50 280 90 L 280 130 Q 180 110 80 130 Z" fill="hsl(40 25% 86%)" opacity="0.5" />
 
-            {/* Skull base reference (purple) */}
-            <line x1="60" y1="125" x2="300" y2="125" stroke={skullBase} strokeWidth="0.75" strokeDasharray="3 3" opacity="0.55" />
-            <text x="305" y="128" fontSize="8" fill={skullBase}>skull base</text>
+            {/* Skull base reference removed — Le Fort I/II/III fractures do not involve the
+                cranial base, so the label was misleading at the maxillary level. */}
 
             {/* Orbits */}
             <ellipse cx="125" cy="155" rx="32" ry="24" fill={cavity} />
