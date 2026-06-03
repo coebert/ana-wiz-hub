@@ -108,7 +108,7 @@ const ElectricityMagnetismTopic = () => {
                 current (charge flow in amperes), and resistance (opposition to flow in ohms). Power dissipation is described by
                 <strong>P = VI = I²R = V²/R</strong>, measured in watts. In <strong>series circuits</strong>, resistances add directly
                 and the same current flows through all components. In <strong>parallel circuits</strong>, voltages are equal across each
-                branch and currents divide — total resistance is found from 1/R = 1/R₁ + 1/R₂ + ...
+                branch and currents divide — total resistance is found from 1/R_total = 1/R₁ + 1/R₂ + ...
               </p>
               <p>
                 UK mains supply is <strong>230V AC at 50 Hz</strong>. The distinction between <strong>DC</strong> (constant direction,
