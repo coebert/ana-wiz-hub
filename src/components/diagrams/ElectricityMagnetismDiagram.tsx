@@ -62,7 +62,7 @@ const OhmsLawDiagram = () => (
         <rect x="385" y="265" width="35" height="12" rx="2" fill="hsl(var(--muted))" stroke="hsl(var(--foreground))" strokeWidth="1" />
         <line x1="420" y1="230" x2="420" y2="270" stroke="hsl(var(--foreground))" strokeWidth="1" />
         <line x1="420" y1="250" x2="450" y2="250" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-        <text x="445" y="288" textAnchor="middle" className="fill-foreground text-[10px] font-medium">1/R = 1/R₁ + 1/R₂ + 1/R₃</text>
+        <text x="445" y="288" textAnchor="middle" className="fill-foreground text-[10px] font-medium">1/R_total = 1/R₁ + 1/R₂ + 1/R₃</text>
         <text x="445" y="300" textAnchor="middle" className="fill-muted-foreground text-[9px]">Same voltage; current divides</text>
 
         {/* DC vs AC */}
