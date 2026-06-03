@@ -547,9 +547,9 @@ const FoetalCirculationDiagram = () => {
               <text x="442" y="64" fontSize="7.5" fill={C.sub}>~55%</text>
               <text x="517" y="64" fontSize="7.5" fill={C.sub} textAnchor="middle">~67%</text>
               <text x="592" y="64" fontSize="7.5" fill={C.sub} textAnchor="end">~80%</text>
-              <text x="442" y="78" fontSize="7.5" fill={C.deoxy}>● deoxy (SVC, PA)</text>
-              <text x="442" y="92" fontSize="7.5" fill={C.mixed}>● mixed (IVC, desc. aorta)</text>
-              <text x="442" y="106" fontSize="7.5" fill={C.oxy}>● oxy (umb. v., asc. aorta)</text>
+              <text x="442" y="78" fontSize="7.5" fill={C.deoxy}>● deoxy (SVC, PA, umb. a.)</text>
+              <text x="442" y="92" fontSize="7.5" fill={C.mixed}>● mixed (IVC, desc. aorta, asc. aorta)</text>
+              <text x="442" y="106" fontSize="7.5" fill={C.oxy}>● highest O₂ (umb. v., DV)</text>
             </g>
   
             {/* CO label */}
