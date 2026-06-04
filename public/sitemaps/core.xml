@@ -2,9 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://anaesthesiacore.app/</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/login</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/review</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/revise</loc>
@@ -44,7 +56,7 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/viva</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -52,6 +64,12 @@
     <loc>https://anaesthesiacore.app/viva/library</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/viva/voice</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
@@ -64,30 +82,30 @@
     <loc>https://anaesthesiacore.app/tools/mac-for-age</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/tools/paediatric-emergency-doses</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/tools/maintenance-fluid</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/tools/max-local-anaesthetic-dose</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/tools/abg-interpreter</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>
