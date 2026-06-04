@@ -5,6 +5,7 @@
 // Response: { status, refs, error? }
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+import { TOPIC_ID_ALLOWLIST } from "../generate-podcast/_topic-ids.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -124,6 +125,12 @@ Deno.serve(async (req) => {
 
   if (!topicId || !topicTitle || !section) {
     return fail(400, "topicId, topicTitle and section are required");
+  }
+
+  // Reject topic IDs that aren't part of the curriculum to prevent unbounded
+  // AI credit burn from attackers rotating arbitrary slugs.
+  if (!TOPIC_ID_ALLOWLIST.has(topicId)) {
+    return fail(400, "Unknown topicId");
   }
 
   // `force` bypasses cache and triggers a fresh AI call — gate it behind an
