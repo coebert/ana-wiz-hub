@@ -68,6 +68,15 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Al-Shaikh & Stacey Ch.6-7", citation: "Al-Shaikh B, Stacey S. Essentials of Anaesthetic Equipment. 5th ed. Chapters 6-7: Breathing Systems." },
     { label: "Davey & Diba Ch.5", citation: "Davey AJ, Diba A. Ward's Anaesthetic Equipment. 6th ed. Chapter 5: Breathing Systems and Their Components." },
   ],
+  "ventilator-modes": [
+    { label: "DerangedPhys CC2.3", citation: "Yartsev A. Modes of Mechanical Ventilation. Deranged Physiology, CICM Required Reading.", url: "https://derangedphysiology.com/main/cicm-primary-exam/required-reading/respiratory-system/Chapter%20532/modes-mechanical-ventilation", excerpt: "Every breath delivered by a mechanical ventilator can be described by four phase variables: the trigger (what starts the breath), the limit (the maximum value that cannot be exceeded during inspiration), the cycle (what ends the breath), and the baseline (PEEP). Pressure support is a patient-triggered, pressure-limited, flow-cycled mode; pressure-controlled AC is time- or patient-triggered, pressure-limited and time-cycled; pressure-regulated volume control adjusts the inspiratory pressure breath-to-breath in order to deliver a set tidal volume." },
+    { label: "Tobin 3rd ed Ch.9", citation: "Tobin MJ. Principles and Practice of Mechanical Ventilation. 3rd ed. McGraw-Hill; 2013. Chapter 9: Patient–Ventilator Interaction." },
+    { label: "Hess & Kacmarek Ch.5", citation: "Hess DR, Kacmarek RM. Essentials of Mechanical Ventilation. 4th ed. McGraw-Hill; 2019. Chapter 5: Modes of Ventilation." },
+    { label: "Brochard 1994", citation: "Brochard L, Rauss A, Benito S, et al. Comparison of three methods of gradual withdrawal from ventilatory support during weaning from mechanical ventilation. Am J Respir Crit Care Med. 1994;150(4):896-903.", url: "https://doi.org/10.1164/ajrccm.150.4.7921460" },
+    { label: "Esteban 1995", citation: "Esteban A, Frutos F, Tobin MJ, et al. A comparison of four methods of weaning patients from mechanical ventilation. N Engl J Med. 1995;332(6):345-350.", url: "https://doi.org/10.1056/NEJM199502093320601" },
+    { label: "ARDSnet 2000", citation: "The Acute Respiratory Distress Syndrome Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and ARDS. N Engl J Med. 2000;342(18):1301-1308.", url: "https://doi.org/10.1056/NEJM200005043421801" },
+    { label: "Yang & Tobin 1991", citation: "Yang KL, Tobin MJ. A prospective study of indexes predicting the outcome of trials of weaning from mechanical ventilation. N Engl J Med. 1991;324(21):1445-1450.", url: "https://doi.org/10.1056/NEJM199105233242101" },
+  ],
   "electrical-safety": [
     { label: "BJA Educ 2017", citation: "Pollard BJ. Electrical safety in the operating theatre. BJA Education. 2017;17(10):339-344.", url: "https://doi.org/10.1093/bjaed/mkx035" },
     { label: "Cross & Plunkett Ch.14", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 14: Electrical Safety." },
