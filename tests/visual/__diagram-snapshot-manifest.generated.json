@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-04T19:56:13.455Z",
-  "count": 372,
+  "generatedAt": "2026-06-04T22:00:20.299Z",
+  "count": 376,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -237,6 +237,10 @@
     {
       "name": "CapnographyDiagram",
       "route": "/dev/diagram-snapshot/CapnographyDiagram"
+    },
+    {
+      "name": "CapnographyWaveformDiagram",
+      "route": "/dev/diagram-snapshot/CapnographyWaveformDiagram"
     },
     {
       "name": "CardiacActionPotentialDiagram",
@@ -839,6 +843,10 @@
       "route": "/dev/diagram-snapshot/ManometerDiagram"
     },
     {
+      "name": "MaplesonEfficiencyDiagram",
+      "route": "/dev/diagram-snapshot/MaplesonEfficiencyDiagram"
+    },
+    {
       "name": "MathConceptsDiagram",
       "route": "/dev/diagram-snapshot/MathConceptsDiagram"
     },
@@ -1427,6 +1435,10 @@
       "route": "/dev/diagram-snapshot/ValvularHaemodynamicsDiagram"
     },
     {
+      "name": "VaporiserSplittingRatioDiagram",
+      "route": "/dev/diagram-snapshot/VaporiserSplittingRatioDiagram"
+    },
+    {
       "name": "VaporizerDiagram",
       "route": "/dev/diagram-snapshot/VaporizerDiagram"
     },
@@ -1449,6 +1461,10 @@
     {
       "name": "VaughanWilliamsAPDiagram",
       "route": "/dev/diagram-snapshot/VaughanWilliamsAPDiagram"
+    },
+    {
+      "name": "VentilatorModesDiagram",
+      "route": "/dev/diagram-snapshot/VentilatorModesDiagram"
     },
     {
       "name": "VentilatorWaveformsGuideDiagram",
