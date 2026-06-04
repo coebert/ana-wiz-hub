@@ -367,8 +367,8 @@ export const VAECMOCircuitDiagram = () => {
             </g>
             {showLabels && (
               <>
-                <text x="0" y="50" textAnchor="middle" fontSize="9" className="fill-foreground font-semibold">Centrifugal pump</text>
-                <text x="0" y="60" textAnchor="middle" fontSize="7" className="fill-muted-foreground">mag-levitated · 2–4k rpm</text>
+                <text x="0" y="52" textAnchor="middle" fontSize="11" className="fill-foreground font-bold">Centrifugal pump</text>
+                <text x="0" y="64" textAnchor="middle" fontSize="9" className="fill-muted-foreground">mag-levitated · 2–4k rpm</text>
               </>
             )}
           </g>
