@@ -168,6 +168,7 @@ const AdminDashboard = () => {
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"overview" | "topics">("overview");
+  const [mapMetric, setMapMetric] = useState<"users" | "visits">("users");
 
   // Formulary verification + ESICM dose validator have moved to the unified
   // Content Audit page at /admin/audit so that all topic-accuracy checks are
