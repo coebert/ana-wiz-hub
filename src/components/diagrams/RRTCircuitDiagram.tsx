@@ -21,7 +21,7 @@ const modes: Record<RRTMode, {
       { label: "Effluent dose", value: "25-30 ml/kg/hr (KDIGO)" },
       { label: "Duration", value: "Continuous (24h/day)" },
       { label: "Anticoagulation", value: "Regional citrate (preferred) or heparin" },
-      { label: "Access", value: "Vascath (large-bore dual-lumen CVC)" },
+      { label: "Access", value: "Dialysis catheter (large-bore dual-lumen CVC)" },
     ],
     pros: [
       "Haemodynamically stable — gradual solute/fluid removal",
@@ -47,7 +47,7 @@ const modes: Record<RRTMode, {
       { label: "Dialysate flow", value: "500-800 ml/min" },
       { label: "Duration", value: "3-4 hours, 3-4×/week" },
       { label: "Anticoagulation", value: "Systemic heparin (usually)" },
-      { label: "Access", value: "Vascath or AV fistula" },
+      { label: "Access", value: "Dialysis catheter or AV fistula" },
     ],
     pros: [
       "Rapid correction of hyperkalaemia/toxins",
@@ -128,7 +128,7 @@ export const RRTCircuitDiagram = () => {
           {/* ─── Patient ─── */}
           <rect x="10" y="120" width="60" height="70" rx="8" fill="hsl(var(--primary)/0.05)" stroke="hsl(var(--border))" strokeWidth="1.5" />
           <text x="40" y="150" fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Patient</text>
-          <text x="40" y="164" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">Vascath</text>
+          <text x="40" y="164" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">Dialysis catheter</text>
 
           {/* ─── Blood out: patient → pump → filter top-left ─── */}
           <path d="M 70 135 L 95 135 L 95 75 L 140 75" fill="none" stroke="hsl(0 70% 50%)" strokeWidth="3" markerEnd="url(#arrowRed)" />

@@ -224,7 +224,8 @@ export const BurnDepthDiagram = () => {
               );
             })}
 
-            {/* Active depth callout */}
+            {/* Active depth callout — use short form to avoid duplicating the chip label
+                (e.g. "Deep partial" chip + "Deep partial thickness" callout was confusing). */}
             <g>
               <text
                 x={140}
@@ -234,7 +235,7 @@ export const BurnDepthDiagram = () => {
                 fontWeight={600}
                 fill="hsl(var(--foreground))"
               >
-                {DEPTHS[active].label}
+                {DEPTHS[active].short}
               </text>
             </g>
           </svg>

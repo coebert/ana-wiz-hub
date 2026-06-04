@@ -33,8 +33,8 @@ export const RRTCircuitFlowDiagram = () => {
   const stepCopy = [
     {
       title: "1 · Vascular access",
-      crrt: "Dual-lumen vascath (typically R IJ, 13.5 Fr). Lower flows tolerated → easier on the line.",
-      ihd: "Same dual-lumen vascath OR tunnelled line / AV fistula in chronic patients. Needs to deliver ≥250 ml/min.",
+      crrt: "Dual-lumen dialysis catheter (typically R IJ, 13.5 Fr). Lower flows tolerated → easier on the line.",
+      ihd: "Same dual-lumen dialysis catheter OR tunnelled line / AV fistula in chronic patients. Needs to deliver ≥250 ml/min.",
     },
     {
       title: "2 · Blood pump (Qb)",
@@ -192,7 +192,7 @@ const CircuitSvg = ({ variant, step }: CircuitSvgProps) => {
             Patient
           </text>
           <text x="29" y="138" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">
-            vascath
+            dialysis catheter
           </text>
         </g>
 
