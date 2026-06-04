@@ -38,9 +38,10 @@ Deno.serve(async (req) => {
 
   try {
     if (!OPENAI_API_KEY) {
+      console.error("[tts-demo] OPENAI_API_KEY not configured");
       return new Response(
-        JSON.stringify({ error: "OPENAI_API_KEY not configured" }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        JSON.stringify({ error: "Service unavailable" }),
+        { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
 
