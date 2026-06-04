@@ -193,6 +193,7 @@ const NeuroanatomyTopic = lazy(() => import("./pages/topics/NeuroanatomyTopic"))
 const LowerLimbAnatomyTopic = lazy(() => import("./pages/topics/LowerLimbAnatomyTopic"));
 const EquipmentMonitoringTopic = lazy(() => import("./pages/topics/EquipmentMonitoringTopic"));
 const VaporisersTopic = lazy(() => import("./pages/topics/VaporisersTopic"));
+const BreathingCircuitsTopic = lazy(() => import("./pages/topics/BreathingCircuitsTopic"));
 const AtomicStructureBondingTopic = lazy(() => import("./pages/topics/AtomicStructureBondingTopic"));
 const AcidsBasesBuffersTopic = lazy(() => import("./pages/topics/AcidsBasesBuffersTopic"));
 const OrganicChemistryTopic = lazy(() => import("./pages/topics/OrganicChemistryTopic"));
@@ -287,6 +288,7 @@ const App = () => (
           <Route path="/clinical/depth-of-anaesthesia" element={<Navigate to="/physics/depth-of-anaesthesia" replace />} />
           <Route path="/physics/equipment-monitoring" element={<EquipmentMonitoringTopic />} />
           <Route path="/physics/vaporisers" element={<VaporisersTopic />} />
+          <Route path="/physics/breathing-circuits" element={<BreathingCircuitsTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
