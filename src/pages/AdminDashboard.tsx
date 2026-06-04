@@ -168,6 +168,7 @@ const AdminDashboard = () => {
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"overview" | "topics">("overview");
+  const [mapMetric, setMapMetric] = useState<"users" | "visits">("users");
 
   // Formulary verification + ESICM dose validator have moved to the unified
   // Content Audit page at /admin/audit so that all topic-accuracy checks are
@@ -1375,19 +1376,45 @@ const AdminDashboard = () => {
 
             {/* World map of visitors */}
             <div className="p-4 rounded-xl border border-border bg-card">
-              <div className="flex items-center gap-2 mb-1">
-                <MapIcon className="w-4 h-4 text-primary" />
-                <h2 className="text-sm font-semibold text-foreground">Visitors by Country</h2>
+              <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <MapIcon className="w-4 h-4 text-primary" />
+                  <h2 className="text-sm font-semibold text-foreground">Visitors by Country</h2>
+                </div>
+                <div className="flex items-center gap-1 text-xs">
+                  <button
+                    type="button"
+                    onClick={() => setMapMetric("users")}
+                    className={`px-2 py-1 rounded border transition-colors ${
+                      mapMetric === "users"
+                        ? "border-primary bg-primary/10 text-foreground"
+                        : "border-border text-muted-foreground hover:bg-muted/50"
+                    }`}
+                  >
+                    Unique visitors
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMapMetric("visits")}
+                    className={`px-2 py-1 rounded border transition-colors ${
+                      mapMetric === "visits"
+                        ? "border-primary bg-primary/10 text-foreground"
+                        : "border-border text-muted-foreground hover:bg-muted/50"
+                    }`}
+                  >
+                    Total visits
+                  </button>
+                </div>
               </div>
               <p className="text-xs text-muted-foreground mb-3">
-                Choropleth of unique visitors per country. Hover a country for details; scroll or pinch to zoom.
+                Choropleth of {mapMetric === "users" ? "unique visitors" : "total visits"} per country. Hover a country for details; scroll or pinch to zoom.
               </p>
               {analytics.topCountries.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
                   No country data yet — countries are recorded from new visits onwards.
                 </p>
               ) : (
-                <VisitorsWorldMap data={analytics.topCountries} metric="users" />
+                <VisitorsWorldMap data={analytics.topCountries} metric={mapMetric} />
               )}
             </div>
 
