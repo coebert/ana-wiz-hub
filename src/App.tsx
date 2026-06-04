@@ -38,6 +38,12 @@ const DiagramSnapshot = lazy(() => import("./pages/DiagramSnapshot"));
 const Errata = lazy(() => import("./pages/Errata"));
 const Login = lazy(() => import("./pages/Login"));
 const Review = lazy(() => import("./pages/Review"));
+const ToolsHub = lazy(() => import("./pages/ToolsHub"));
+const MACForAgeTool = lazy(() => import("./pages/tools/MACForAgeTool"));
+const PaedDoseTool = lazy(() => import("./pages/tools/PaedDoseTool"));
+const MaintenanceFluidTool = lazy(() => import("./pages/tools/MaintenanceFluidTool"));
+const MaxLADoseTool = lazy(() => import("./pages/tools/MaxLADoseTool"));
+const ABGInterpreterTool = lazy(() => import("./pages/tools/ABGInterpreterTool"));
 
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
@@ -235,6 +241,12 @@ const App = () => (
           <Route path="/dev/diagram-snapshot/:name" element={<DiagramSnapshot />} />
           <Route path="/drugs" element={<DrugsLibrary />} />
           <Route path="/drugs/:slug" element={<DrugDetail />} />
+          <Route path="/tools" element={<ToolsHub />} />
+          <Route path="/tools/mac-for-age" element={<MACForAgeTool />} />
+          <Route path="/tools/paediatric-emergency-doses" element={<PaedDoseTool />} />
+          <Route path="/tools/maintenance-fluid" element={<MaintenanceFluidTool />} />
+          <Route path="/tools/max-local-anaesthetic-dose" element={<MaxLADoseTool />} />
+          <Route path="/tools/abg-interpreter" element={<ABGInterpreterTool />} />
           <Route path="/physics" element={<PhysicsSection />} />
           <Route path="/physiology" element={<PhysiologySection />} />
           <Route path="/pharmacology" element={<PharmacologySection />} />
