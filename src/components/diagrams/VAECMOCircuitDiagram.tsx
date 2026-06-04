@@ -460,8 +460,8 @@ export const VAECMOCircuitDiagram = () => {
           {/* Right radial monitoring marker (clinical relevance for Harlequin) */}
           {showHarlequin && (
             <>
-              <circle cx="130" cy="105" r="4" fill="none" stroke="hsl(45 95% 50%)" strokeWidth="2" />
-              <text x="100" y="125" fontSize="7" className="fill-[hsl(45_95%_45%)] font-semibold">monitor SpO₂ R hand</text>
+              <circle cx="130" cy="105" r="5" fill="none" stroke="hsl(45 95% 50%)" strokeWidth="2.5" />
+              <text x="98" y="128" fontSize="9" fontWeight="700" className="fill-[hsl(38_95%_38%)]">monitor SpO₂ R hand</text>
             </>
           )}
 
