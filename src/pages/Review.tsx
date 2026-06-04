@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
-import { Brain, CheckCircle2, XCircle, ChevronRight, ExternalLink } from "lucide-react";
+import { Brain, CheckCircle2, XCircle, ChevronRight, ExternalLink, SlidersHorizontal, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { applyGrade, GRADE_LABELS, GRADES, type Grade } from "@/lib/srs";
 import { toast } from "@/hooks/use-toast";
+import { allTopics, topicsBySection, sectionMeta, type Section } from "@/data/curriculum";
 
 interface ReviewRow {
   id: string;
@@ -38,12 +39,31 @@ export default function Review() {
   const [grading, setGrading] = useState(false);
   const [stats, setStats] = useState({ total: 0, due: 0, scheduled: 0 });
 
-  // Filter the loaded due queue by the current exam chip.
+  // Local review queue filters
+  const [selectedSection, setSelectedSection] = useState<Section | "all">("all");
+  const [selectedTopic, setSelectedTopic] = useState<string>("all");
+
+  // Available topics for the selected section
+  const availableTopics = useMemo(() => {
+    if (selectedSection === "all") return allTopics;
+    return topicsBySection[selectedSection] ?? [];
+  }, [selectedSection]);
+
+  // Filter the loaded due queue by exam, section and topic.
   const queue = useMemo(() => {
     if (!rows) return [];
-    if (!activeExam) return rows;
-    return rows.filter((r) => r.exam_tags.includes(activeExam));
-  }, [rows, activeExam]);
+    let filtered = rows;
+    if (activeExam) {
+      filtered = filtered.filter((r) => r.exam_tags.includes(activeExam));
+    }
+    if (selectedSection !== "all") {
+      filtered = filtered.filter((r) => r.topic_section === selectedSection);
+    }
+    if (selectedTopic !== "all") {
+      filtered = filtered.filter((r) => r.topic_id === selectedTopic);
+    }
+    return filtered;
+  }, [rows, activeExam, selectedSection, selectedTopic]);
 
   const current = queue[0];
 
@@ -160,6 +180,73 @@ export default function Review() {
           </div>
         </div>
 
+        {/* Curriculum & topic filters */}
+        <div className="rounded-xl border border-border bg-card p-4 mb-6">
+          <div className="flex items-center gap-2 mb-3">
+            <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
+            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Focus your study</span>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex-1 min-w-0">
+              <label htmlFor="section-filter" className="block text-xs font-medium text-muted-foreground mb-1.5">Curriculum section</label>
+              <select
+                id="section-filter"
+                value={selectedSection}
+                onChange={(e) => {
+                  const val = e.target.value as Section | "all";
+                  setSelectedSection(val);
+                  setSelectedTopic("all");
+                }}
+                className="w-full appearance-none rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+              >
+                <option value="all">All sections</option>
+                {(Object.keys(sectionMeta) as Section[]).map((s) => (
+                  <option key={s} value={s}>{sectionMeta[s].label}</option>
+                ))}
+              </select>
+            </div>
+            <div className="flex-1 min-w-0">
+              <label htmlFor="topic-filter" className="block text-xs font-medium text-muted-foreground mb-1.5">Topic</label>
+              <select
+                id="topic-filter"
+                value={selectedTopic}
+                onChange={(e) => setSelectedTopic(e.target.value)}
+                disabled={selectedSection === "all"}
+                className="w-full appearance-none rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <option value="all">All topics{selectedSection !== "all" ? ` in ${sectionMeta[selectedSection].label}` : ""}</option>
+                {availableTopics.map((t) => (
+                  <option key={t.id} value={t.id}>{t.title}</option>
+                ))}
+              </select>
+            </div>
+            <div className="flex items-end">
+              <button
+                onClick={() => { setSelectedSection("all"); setSelectedTopic("all"); }}
+                disabled={selectedSection === "all" && selectedTopic === "all"}
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium border border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                <X className="h-3.5 w-3.5" />
+                Clear
+              </button>
+            </div>
+          </div>
+          {(selectedSection !== "all" || selectedTopic !== "all") && (
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {selectedSection !== "all" && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-secondary text-secondary-foreground text-xs font-medium">
+                  {sectionMeta[selectedSection].label}
+                </span>
+              )}
+              {selectedTopic !== "all" && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary text-xs font-medium">
+                  {allTopics.find((t) => t.id === selectedTopic)?.title ?? selectedTopic}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+
         <div className="grid grid-cols-3 gap-3 mb-8">
           <Stat label="Due now" value={queue.length} accent="text-primary" />
           <Stat label="Scheduled" value={stats.scheduled} />
@@ -175,9 +262,16 @@ export default function Review() {
             <p className="text-sm text-muted-foreground mb-4">
               {stats.total === 0
                 ? "Open any topic, take the quiz, and grade your recall to start building a personalised review schedule."
-                : activeExam
-                  ? `No cards due for the ${activeExam.toUpperCase()} filter. Clear the exam chip to see other due cards.`
-                  : "Come back when more cards are due — or take a fresh quiz to add new ones."}
+                : (() => {
+                    const filters: string[] = [];
+                    if (activeExam) filters.push(activeExam.toUpperCase());
+                    if (selectedSection !== "all") filters.push(sectionMeta[selectedSection].label);
+                    if (selectedTopic !== "all") filters.push(allTopics.find((t) => t.id === selectedTopic)?.title ?? "this topic");
+                    if (filters.length > 0) {
+                      return `No cards due for ${filters.join(" + ")}. Clear filters to see other due cards.`;
+                    }
+                    return "Come back when more cards are due — or take a fresh quiz to add new ones.";
+                  })()}
             </p>
             <Link
               to="/curriculum"
