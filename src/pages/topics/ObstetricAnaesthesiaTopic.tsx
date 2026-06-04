@@ -57,7 +57,7 @@ const ObstetricAnaesthesiaTopic = () => {
         "Describe the major physiological changes of pregnancy and their anaesthetic implications",
         "Plan a safe spinal, epidural top-up, or RSI GA for caesarean section using appropriate doses and targets",
         "Recognise and manage major obstetric emergencies (PPH, severe pre-eclampsia, AFE, failed intubation)",
-        "Apply OAA/AAGBI 2020 principles to GA for Cat 1 LSCS (pre-ox, RSI, MAC, awareness prevention)",
+        "Apply current UK obstetric GA standards (OAA/DAS 2015 failed intubation algorithm; RCoA GPAS Ch 9 2024) to Cat 1 LSCS — pre-ox, RSI, MAC, awareness prevention",
         "Triage postpartum leg weakness — distinguish neuraxial red flags from intrinsic obstetric nerve palsies",
       ]}
       keyPoints={[
@@ -73,8 +73,8 @@ const ObstetricAnaesthesiaTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_07"] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2019", "OAA/DAS 2015", "MBRRACE-UK"],
-        keyPoints: ["BJA Educ 2019", "OAA/DAS 2015", "MBRRACE-UK"],
+        objectives: ["BJA Educ 2019", "OAA/DAS 2015", "MBRRACE-UK", "RCoA GPAS Ch 9 2024", "NAP5"],
+        keyPoints: ["BJA Educ 2019", "OAA/DAS 2015", "MBRRACE-UK", "RCoA GPAS Ch 9 2024", "NAP5"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
@@ -128,7 +128,7 @@ const ObstetricAnaesthesiaTopic = () => {
 
         <CollapsibleSubsection title="GA for Category 1 LSCS — Step-by-Step Conduct">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Category 1 caesarean = immediate threat to maternal/fetal life; decision-to-delivery interval (DDI) target &lt;30 min, with most units aiming for &lt;15 min. GA is chosen when there is no functioning epidural and there is insufficient time for spinal, when neuraxial is contraindicated (coagulopathy, sepsis at site, severe maternal cardiac disease, refusal), or when neuraxial has failed. The OAA/AAGBI 2020 guideline and MBRRACE reports emphasise team-based preparation and meticulous airway management.
+            Category 1 caesarean = immediate threat to maternal/fetal life; decision-to-delivery interval (DDI) target &lt;30 min (<InlineRef topicId="obstetric-anaesthesia" refLabel="RCoA GPAS Ch 9 2024" />), with most units aiming for &lt;15 min. GA is chosen when there is no functioning epidural and there is insufficient time for spinal, when neuraxial is contraindicated (coagulopathy, sepsis at site, severe maternal cardiac disease, refusal), or when neuraxial has failed. The <InlineRef topicId="obstetric-anaesthesia" refLabel="OAA/DAS 2015" /> failed-intubation algorithm and <InlineRef topicId="obstetric-anaesthesia" refLabel="MBRRACE-UK" /> reports emphasise team-based preparation and meticulous airway management.
           </p>
 
           <div className="mb-4">
@@ -218,7 +218,7 @@ const ObstetricAnaesthesiaTopic = () => {
 
         <CollapsibleSubsection title="Propofol vs Thiopentone — Evidence">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Thiopentone was the historical default but global supply issues and familiarity have driven a shift to propofol in many UK units. The OAA/AAGBI 2020 guideline accepts <strong>either agent</strong>, provided the anaesthetist is experienced with the dose used.
+            Thiopentone was the historical default but global supply issues and familiarity have driven a shift to propofol in many UK units. Current UK consensus (<InlineRef topicId="obstetric-anaesthesia" refLabel="OAA/DAS 2015" />; <InlineRef topicId="obstetric-anaesthesia" refLabel="BJA Educ 2019" />; <InlineRef topicId="obstetric-anaesthesia" refLabel="NAP5" />) accepts <strong>either agent</strong>, provided the anaesthetist is experienced with the dose used and uses adequate volatile/processed-EEG to prevent awareness.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -304,7 +304,7 @@ const ObstetricAnaesthesiaTopic = () => {
             </div>
           </div>
           <p className="text-sm text-muted-foreground mt-3">
-            <strong>Practical doses:</strong> alfentanil 10 µg/kg, fentanyl 1–2 µg/kg, or remifentanil 0.5–1 µg/kg over 30 s pre-induction. Always <em>warn the neonatal team</em>. Increasingly endorsed by OAA/AAGBI 2020 for high-risk groups.
+            <strong>Practical doses:</strong> alfentanil 10 µg/kg, fentanyl 1–2 µg/kg, or remifentanil 0.5–1 µg/kg over 30 s pre-induction. Always <em>warn the neonatal team</em>. Increasingly endorsed for high-risk groups (severe pre-eclampsia, cardiac disease) by current UK obstetric anaesthesia practice (<InlineRef topicId="obstetric-anaesthesia" refLabel="BJA Educ 2019" />; <InlineRef topicId="obstetric-anaesthesia" refLabel="RCoA GPAS Ch 9 2024" />).
           </p>
         </CollapsibleSubsection>
 
@@ -383,7 +383,7 @@ const ObstetricAnaesthesiaTopic = () => {
 
         <CollapsibleSubsection title="Obstetric Medicine &amp; Labour Management for the Anaesthetist">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            A working knowledge of antenatal medicine and the obstetric conduct of labour underpins safe anaesthetic decision-making — it dictates timing of neuraxial blockade, choice of induction agent, vasopressor strategy, transfusion thresholds and post-partum disposition. The summary below is curated from MBRRACE-UK reports, NICE NG121/NG133/NG3, RCOG Green-top guidelines and the OAA/AAGBI guidance.
+            A working knowledge of antenatal medicine and the obstetric conduct of labour underpins safe anaesthetic decision-making — it dictates timing of neuraxial blockade, choice of induction agent, vasopressor strategy, transfusion thresholds and post-partum disposition. The summary below is curated from <InlineRef topicId="obstetric-anaesthesia" refLabel="MBRRACE-UK" /> reports, NICE NG121/NG133/NG3, RCOG Green-top guidelines and <InlineRef topicId="obstetric-anaesthesia" refLabel="RCoA GPAS Ch 9 2024" />.
           </p>
 
           <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Antenatal conditions with anaesthetic implications</h3>

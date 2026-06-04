@@ -1,0 +1,1 @@
+UPDATE public.topic_audit_findings SET status='fixed', resolved_at=now(), sources='["BJA Educ 2019","OAA/DAS 2015","MBRRACE-UK","RCoA GPAS Ch 9 2024","OAA PDPH 2023","OAA Nerve Injury 2023","NAP5"]'::jsonb WHERE id='f4a31e7d-9182-447f-b921-e5db93dfde81';
