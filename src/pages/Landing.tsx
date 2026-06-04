@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown } from "lucide-react";
+import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown, BookMarked } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
 import NeonSplash from "@/components/NeonSplash";
 import { SupportSection } from "@/components/SupportSection";
 import { CommentWall } from "@/components/CommentWall";
 import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/DemoVivaStepper";
+import { citationStats } from "@/lib/citationStats";
+
+const nf = new Intl.NumberFormat("en-GB");
+// Round down to the nearest 10 so the headline number reads cleanly while
+// staying honest as references are added.
+const roundDown = (n: number, step = 10) => Math.max(step, Math.floor(n / step) * step);
+const CITATION_COUNT = roundDown(citationStats.totalCitations);
+const SOURCE_COUNT = roundDown(citationStats.uniqueSources);
+const TOPIC_COUNT = citationStats.topicsWithRefs;
 
 const DEMO_QUESTIONS: DemoVivaQuestion[] = [
   {
@@ -179,6 +188,46 @@ const Landing = () => {
             </Link>
           ))}
         </div>
+
+        <section
+          aria-label="Evidence base"
+          className="mt-10 md:mt-14 max-w-5xl mx-auto rounded-2xl border border-border bg-card/60 backdrop-blur px-5 py-6 md:px-8 md:py-7 shadow-sm"
+        >
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+            <div className="flex items-start gap-3">
+              <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <BookMarked className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
+                  Evidence base
+                </p>
+                <p className="font-display text-xl md:text-2xl font-semibold text-foreground leading-snug">
+                  <span className="text-primary">{nf.format(CITATION_COUNT)}+</span> inline citations across{" "}
+                  <span className="text-primary">{nf.format(SOURCE_COUNT)}+</span> peer-reviewed sources
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  BJA Education, NICE, AAGBI, DAS, SSC and the standard FRCA textbooks — every dose, threshold and recommendation links back to a named source.
+                </p>
+              </div>
+            </div>
+            <dl className="grid grid-cols-3 gap-4 md:gap-6 text-center md:text-left md:border-l md:border-border md:pl-6 shrink-0">
+              <div>
+                <dt className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Citations</dt>
+                <dd className="font-display text-2xl font-bold text-foreground">{nf.format(CITATION_COUNT)}+</dd>
+              </div>
+              <div>
+                <dt className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Sources</dt>
+                <dd className="font-display text-2xl font-bold text-foreground">{nf.format(SOURCE_COUNT)}+</dd>
+              </div>
+              <div>
+                <dt className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Topics</dt>
+                <dd className="font-display text-2xl font-bold text-foreground">{nf.format(TOPIC_COUNT)}</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+
         <section className="mt-12 md:mt-16 max-w-5xl mx-auto">
           <details
             className="group relative overflow-hidden rounded-2xl border border-primary/20 shadow-sm"
