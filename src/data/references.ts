@@ -64,7 +64,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cross & Plunkett Ch.10", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 10: The Anaesthetic Machine." },
   ],
   "breathing-circuits": [
-    { label: "BJA Educ 2005", citation: "Waters DJ, Mapleson WW. Breathing systems for use in anaesthesia. BJA Education. 2005;5(1):2-7.", url: "https://doi.org/10.1093/bjaceaccp/mki002" },
+    { label: "BJA Educ 2005", citation: "Waters DJ, Mapleson WW. Breathing systems for use in anaesthesia. BJA Education. 2005;5(1):2-7.", url: "https://doi.org/10.1093/bjaceaccp/mki002", excerpt: "Mapleson A is the most efficient system for spontaneous ventilation, requiring a fresh gas flow equal to the patient's alveolar minute ventilation (approximately 70 mL/kg/min). For controlled ventilation, the Mapleson D system (and its coaxial form, the Bain) is most efficient, requiring a fresh gas flow of about 70–100 mL/kg/min to maintain normocapnia. The Ayre's T-piece (Mapleson E) and the Jackson-Rees modification (Mapleson F) are valveless and have low resistance, making them suitable for paediatric anaesthesia." },
     { label: "Al-Shaikh & Stacey Ch.6-7", citation: "Al-Shaikh B, Stacey S. Essentials of Anaesthetic Equipment. 5th ed. Chapters 6-7: Breathing Systems." },
     { label: "Davey & Diba Ch.5", citation: "Davey AJ, Diba A. Ward's Anaesthetic Equipment. 6th ed. Chapter 5: Breathing Systems and Their Components." },
   ],
