@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown } from "lucide-react";
+import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown, BookMarked } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
 import NeonSplash from "@/components/NeonSplash";
 import { SupportSection } from "@/components/SupportSection";
 import { CommentWall } from "@/components/CommentWall";
 import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/DemoVivaStepper";
+import { citationStats } from "@/lib/citationStats";
+
+const nf = new Intl.NumberFormat("en-GB");
+// Round down to the nearest 10 so the headline number reads cleanly while
+// staying honest as references are added.
+const roundDown = (n: number, step = 10) => Math.max(step, Math.floor(n / step) * step);
+const CITATION_COUNT = roundDown(citationStats.totalCitations);
+const SOURCE_COUNT = roundDown(citationStats.uniqueSources);
+const TOPIC_COUNT = citationStats.topicsWithRefs;
 
 const DEMO_QUESTIONS: DemoVivaQuestion[] = [
   {
