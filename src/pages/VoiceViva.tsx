@@ -279,11 +279,10 @@ export default function VoiceViva() {
         audioEl.srcObject = e.streams[0];
       };
 
-      // Microphone.
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const track = stream.getAudioTracks()[0];
+      // Microphone (already permission-granted above).
+      const track = micStream.getAudioTracks()[0];
       micTrackRef.current = track;
-      pc.addTrack(track, stream);
+      pc.addTrack(track, micStream);
 
       // Data channel for events.
       const dc = pc.createDataChannel("oai-events");
