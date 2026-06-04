@@ -1,12 +1,121 @@
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useSearchParams } from "react-router-dom";
-import { ArrowLeft, Mic, MicOff, Loader2, AlertCircle } from "lucide-react";
+import { ArrowLeft, Mic, MicOff, Loader2, AlertCircle, ShieldAlert, RefreshCw, HelpCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { allTopics, type ExamTag } from "@/data/curriculum";
 
 type Exam = Extract<ExamTag, "primary" | "final" | "fficm">;
+
+type MicPermission = "unknown" | "prompt" | "granted" | "denied";
+
+interface FriendlyError {
+  title: string;
+  message: string;
+  hint?: string;
+  recoverable: boolean;
+  kind: "permission" | "device" | "insecure" | "unsupported" | "network" | "server" | "unknown";
+}
+
+function detectBrowser(): "chrome" | "safari" | "firefox" | "edge" | "other" {
+  if (typeof navigator === "undefined") return "other";
+  const ua = navigator.userAgent;
+  if (/Edg\//.test(ua)) return "edge";
+  if (/Firefox\//.test(ua)) return "firefox";
+  if (/Chrome\//.test(ua)) return "chrome";
+  if (/Safari\//.test(ua)) return "safari";
+  return "other";
+}
+
+function permissionHint(): string {
+  switch (detectBrowser()) {
+    case "chrome":
+    case "edge":
+      return "Click the 🔒 padlock in the address bar → Site settings → set Microphone to Allow, then reload.";
+    case "safari":
+      return "Safari → Settings → Websites → Microphone → set this site to Allow, then reload.";
+    case "firefox":
+      return "Click the padlock in the address bar → Connection secure → More information → Permissions → clear the Microphone block, then reload.";
+    default:
+      return "Open your browser site settings and allow microphone access for this site, then reload.";
+  }
+}
+
+function toFriendly(err: unknown): FriendlyError {
+  if (typeof window !== "undefined" && !window.isSecureContext) {
+    return {
+      title: "Microphone needs a secure connection",
+      message: "Browsers only allow microphone access over HTTPS or on localhost.",
+      hint: "Open this page via the https:// URL and try again.",
+      recoverable: false,
+      kind: "insecure",
+    };
+  }
+  if (typeof navigator !== "undefined" && !navigator.mediaDevices?.getUserMedia) {
+    return {
+      title: "Voice not supported in this browser",
+      message: "Your browser does not expose microphone APIs.",
+      hint: "Try the latest Chrome, Edge, Safari or Firefox on a desktop or mobile device.",
+      recoverable: false,
+      kind: "unsupported",
+    };
+  }
+  const e = err as { name?: string; message?: string } | undefined;
+  const name = e?.name ?? "";
+  const msg = e?.message ?? String(err ?? "");
+  if (name === "NotAllowedError" || name === "SecurityError" || /denied|permission/i.test(msg)) {
+    return {
+      title: "Microphone access blocked",
+      message: "Your browser is blocking microphone access for this site.",
+      hint: permissionHint(),
+      recoverable: true,
+      kind: "permission",
+    };
+  }
+  if (name === "NotFoundError" || name === "OverconstrainedError" || /no.*device|not found/i.test(msg)) {
+    return {
+      title: "No microphone detected",
+      message: "We couldn't find an input device to capture audio.",
+      hint: "Plug in a microphone or headset, check it's selected in your system settings, then retry.",
+      recoverable: true,
+      kind: "device",
+    };
+  }
+  if (name === "NotReadableError" || name === "AbortError" || /in use|busy|hardware/i.test(msg)) {
+    return {
+      title: "Microphone is busy",
+      message: "Another app or browser tab is currently using your microphone.",
+      hint: "Close other calls (Zoom, Teams, Meet, other tabs) and retry.",
+      recoverable: true,
+      kind: "device",
+    };
+  }
+  if (/Realtime SDP|sdp exchange|fetch|network|failed to fetch/i.test(msg)) {
+    return {
+      title: "Couldn't reach the voice service",
+      message: "The connection to the realtime voice service failed.",
+      hint: "Check your internet connection and try again. Corporate networks sometimes block WebRTC — try a different network if it persists.",
+      recoverable: true,
+      kind: "network",
+    };
+  }
+  if (/ephemeral key|token|session/i.test(msg)) {
+    return {
+      title: "Couldn't start a voice session",
+      message: msg || "The session service didn't return a token.",
+      hint: "Please retry. If this keeps happening let us know.",
+      recoverable: true,
+      kind: "server",
+    };
+  }
+  return {
+    title: "Something went wrong",
+    message: msg || "Unexpected error starting the voice viva.",
+    recoverable: true,
+    kind: "unknown",
+  };
+}
 
 interface RealtimeEvent {
   type: string;
@@ -36,9 +145,49 @@ export default function VoiceViva() {
   const topic = allTopics.find((t) => t.id === topicId) ?? null;
 
   const [phase, setPhase] = useState<Phase>("idle");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<FriendlyError | null>(null);
   const [transcript, setTranscript] = useState<TranscriptLine[]>([]);
   const [muted, setMuted] = useState(false);
+  const [micPermission, setMicPermission] = useState<MicPermission>("unknown");
+  const [requestingMic, setRequestingMic] = useState(false);
+
+  // Probe permission status (Permissions API where available).
+  useEffect(() => {
+    let cancelled = false;
+    async function probe() {
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const perms = (navigator as any).permissions;
+        if (!perms?.query) return;
+        const status: PermissionStatus = await perms.query({ name: "microphone" as PermissionName });
+        if (cancelled) return;
+        setMicPermission(status.state as MicPermission);
+        status.onchange = () => setMicPermission(status.state as MicPermission);
+      } catch {
+        // Permissions API may not support "microphone" (Firefox/Safari) — leave unknown.
+      }
+    }
+    probe();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  async function requestMicPermission(): Promise<MediaStream | null> {
+    setRequestingMic(true);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      setMicPermission("granted");
+      setError(null);
+      return stream;
+    } catch (e) {
+      setError(toFriendly(e));
+      setMicPermission((p) => (p === "granted" ? p : "denied"));
+      return null;
+    } finally {
+      setRequestingMic(false);
+    }
+  }
 
   const pcRef = useRef<RTCPeerConnection | null>(null);
   const audioElRef = useRef<HTMLAudioElement | null>(null);
@@ -78,16 +227,34 @@ export default function VoiceViva() {
         }
         break;
       case "error":
-        setError(ev.error?.message ?? "Realtime error");
+        setError(toFriendly(new Error(ev.error?.message ?? "Realtime error")));
         break;
     }
   }
 
   async function start() {
     setError(null);
-    setPhase("connecting");
     setTranscript([]);
     partialRef.current.clear();
+
+    if (typeof window !== "undefined" && !window.isSecureContext) {
+      setError(toFriendly(new Error("insecure context")));
+      setPhase("error");
+      return;
+    }
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setError(toFriendly(new Error("unsupported")));
+      setPhase("error");
+      return;
+    }
+
+    const micStream = await requestMicPermission();
+    if (!micStream) {
+      setPhase("error");
+      return;
+    }
+
+    setPhase("connecting");
 
     try {
       const { data, error: fnErr } = await supabase.functions.invoke("viva-voice-token", {
@@ -112,11 +279,10 @@ export default function VoiceViva() {
         audioEl.srcObject = e.streams[0];
       };
 
-      // Microphone.
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const track = stream.getAudioTracks()[0];
+      // Microphone (already permission-granted above).
+      const track = micStream.getAudioTracks()[0];
       micTrackRef.current = track;
-      pc.addTrack(track, stream);
+      pc.addTrack(track, micStream);
 
       // Data channel for events.
       const dc = pc.createDataChannel("oai-events");
@@ -150,7 +316,7 @@ export default function VoiceViva() {
       };
       await pc.setRemoteDescription(answer);
     } catch (e) {
-      setError((e as Error).message);
+      setError(toFriendly(e));
       setPhase("error");
       stop(false);
     }
@@ -258,16 +424,56 @@ export default function VoiceViva() {
               </div>
             </div>
 
+            {(phase === "idle" || phase === "ended") && micPermission !== "granted" && !error && (
+              <div className="mb-4 flex items-start gap-2 rounded-lg border border-border bg-muted/40 p-3 text-xs text-muted-foreground">
+                <HelpCircle className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+                <div>
+                  <p className="font-medium text-foreground">Your browser will ask for microphone access.</p>
+                  <p className="mt-0.5">
+                    {micPermission === "denied"
+                      ? "Access is currently blocked. Use the padlock in the address bar to allow it, then retry."
+                      : "Choose ‘Allow’ when prompted so the examiner can hear you. Audio is streamed to OpenAI for speech only — nothing is stored on our servers."}
+                  </p>
+                </div>
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center gap-2">
               {phase === "idle" || phase === "ended" || phase === "error" ? (
-                <button
-                  type="button"
-                  onClick={start}
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-90"
-                >
-                  <Mic className="h-4 w-4" />
-                  {phase === "ended" ? "Start another" : "Start voice viva"}
-                </button>
+                <>
+                  <button
+                    type="button"
+                    onClick={start}
+                    disabled={requestingMic}
+                    className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-90 disabled:opacity-60"
+                  >
+                    {requestingMic ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : phase === "error" ? (
+                      <RefreshCw className="h-4 w-4" />
+                    ) : (
+                      <Mic className="h-4 w-4" />
+                    )}
+                    {requestingMic
+                      ? "Waiting for microphone…"
+                      : phase === "error"
+                        ? "Try again"
+                        : phase === "ended"
+                          ? "Start another"
+                          : micPermission === "granted"
+                            ? "Start voice viva"
+                            : "Allow mic & start"}
+                  </button>
+                  {phase === "error" && error?.kind === "permission" && (
+                    <button
+                      type="button"
+                      onClick={() => requestMicPermission()}
+                      className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm text-foreground hover:bg-secondary"
+                    >
+                      <Mic className="h-4 w-4" /> Re-request permission
+                    </button>
+                  )}
+                </>
               ) : (
                 <>
                   <button
@@ -296,9 +502,21 @@ export default function VoiceViva() {
             </div>
 
             {error && (
-              <div className="mt-4 flex items-start gap-2 rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">
-                <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" />
-                <span>{error}</span>
+              <div className="mt-4 flex items-start gap-3 rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">
+                {error.kind === "permission" ? (
+                  <ShieldAlert className="h-5 w-5 mt-0.5 shrink-0" />
+                ) : (
+                  <AlertCircle className="h-5 w-5 mt-0.5 shrink-0" />
+                )}
+                <div className="space-y-1">
+                  <p className="font-semibold">{error.title}</p>
+                  <p className="text-destructive/90">{error.message}</p>
+                  {error.hint && (
+                    <p className="text-xs text-destructive/80">
+                      <span className="font-medium">How to fix:</span> {error.hint}
+                    </p>
+                  )}
+                </div>
               </div>
             )}
 
