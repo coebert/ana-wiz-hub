@@ -145,9 +145,49 @@ export default function VoiceViva() {
   const topic = allTopics.find((t) => t.id === topicId) ?? null;
 
   const [phase, setPhase] = useState<Phase>("idle");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<FriendlyError | null>(null);
   const [transcript, setTranscript] = useState<TranscriptLine[]>([]);
   const [muted, setMuted] = useState(false);
+  const [micPermission, setMicPermission] = useState<MicPermission>("unknown");
+  const [requestingMic, setRequestingMic] = useState(false);
+
+  // Probe permission status (Permissions API where available).
+  useEffect(() => {
+    let cancelled = false;
+    async function probe() {
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const perms = (navigator as any).permissions;
+        if (!perms?.query) return;
+        const status: PermissionStatus = await perms.query({ name: "microphone" as PermissionName });
+        if (cancelled) return;
+        setMicPermission(status.state as MicPermission);
+        status.onchange = () => setMicPermission(status.state as MicPermission);
+      } catch {
+        // Permissions API may not support "microphone" (Firefox/Safari) — leave unknown.
+      }
+    }
+    probe();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  async function requestMicPermission(): Promise<MediaStream | null> {
+    setRequestingMic(true);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      setMicPermission("granted");
+      setError(null);
+      return stream;
+    } catch (e) {
+      setError(toFriendly(e));
+      setMicPermission((p) => (p === "granted" ? p : "denied"));
+      return null;
+    } finally {
+      setRequestingMic(false);
+    }
+  }
 
   const pcRef = useRef<RTCPeerConnection | null>(null);
   const audioElRef = useRef<HTMLAudioElement | null>(null);
