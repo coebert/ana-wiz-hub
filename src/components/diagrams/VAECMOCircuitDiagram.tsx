@@ -455,7 +455,7 @@ export const VAECMOCircuitDiagram = () => {
           {/* Distal limb perfusion catheter (small antegrade sheath off return cannula) */}
           <path d="M 245 435 Q 240 460, 235 490" stroke="hsl(0 75% 50%)" strokeWidth="2" fill="none" strokeDasharray="3 2" />
           <circle cx="235" cy="490" r="2.5" fill="hsl(0 70% 38%)" />
-          {showLabels && <text x="240" y="500" fontSize="7" className="fill-muted-foreground">distal perfusion 6 Fr (anti-ischaemia)</text>}
+          {showLabels && <text x="240" y="503" fontSize="9" fontWeight="600" className="fill-muted-foreground">distal perfusion 6 Fr (anti-ischaemia)</text>}
 
           {/* Right radial monitoring marker (clinical relevance for Harlequin) */}
           {showHarlequin && (
