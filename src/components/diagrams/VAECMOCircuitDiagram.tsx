@@ -325,7 +325,7 @@ export const VAECMOCircuitDiagram = () => {
                 const pt = pointAt(nativeEjectSegs, p);
                 return <circle key={`ne${i}`} cx={pt.x} cy={pt.y} r="2.5" fill="hsl(220 70% 45%)" opacity={0.6 + 0.4 * Math.sin(p * Math.PI)} />;
               })}
-              <text x="175" y="175" fontSize="8" className="fill-[hsl(220_70%_45%)] font-semibold">native (deox)</text>
+              <text x="170" y="172" fontSize="10" fontWeight="700" className="fill-[hsl(220_70%_38%)]">native (deox)</text>
             </>
           )}
 
