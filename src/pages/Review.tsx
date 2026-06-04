@@ -262,9 +262,16 @@ export default function Review() {
             <p className="text-sm text-muted-foreground mb-4">
               {stats.total === 0
                 ? "Open any topic, take the quiz, and grade your recall to start building a personalised review schedule."
-                : activeExam
-                  ? `No cards due for the ${activeExam.toUpperCase()} filter. Clear the exam chip to see other due cards.`
-                  : "Come back when more cards are due — or take a fresh quiz to add new ones."}
+                : (() => {
+                    const filters: string[] = [];
+                    if (activeExam) filters.push(activeExam.toUpperCase());
+                    if (selectedSection !== "all") filters.push(sectionMeta[selectedSection].label);
+                    if (selectedTopic !== "all") filters.push(allTopics.find((t) => t.id === selectedTopic)?.title ?? "this topic");
+                    if (filters.length > 0) {
+                      return `No cards due for ${filters.join(" + ")}. Clear filters to see other due cards.`;
+                    }
+                    return "Come back when more cards are due — or take a fresh quiz to add new ones.";
+                  })()}
             </p>
             <Link
               to="/curriculum"
