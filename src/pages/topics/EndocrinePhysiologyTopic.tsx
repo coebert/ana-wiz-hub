@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
+import { InlineRef } from "@/components/InlineRef";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { endocrinePhysiologyQuestions } from "@/data/quizzes";
