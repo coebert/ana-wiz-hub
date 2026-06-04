@@ -269,7 +269,8 @@ Deno.serve(async (req) => {
       },
       { onConflict: "topic_id" },
     );
-    return fail(500, message);
+    console.error("generate-topic-references error:", message);
+    return fail(500, "Internal server error");
   }
 });
 
