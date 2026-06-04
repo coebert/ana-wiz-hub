@@ -473,7 +473,7 @@ const LabsPanel = ({ active }: { active: number }) => {
   const labs = LAB_SERIES[Math.min(active, LAB_SERIES.length - 1)];
   const items: Array<{ key: LabKey; label: string; value: number }> = [
     { key: "K", label: "K⁺", value: labs.K },
-    { key: "PO4", label: "PO₄³⁻", value: labs.PO4 },
+    { key: "PO4", label: "PO₄", value: labs.PO4 },
     { key: "Mg", label: "Mg²⁺", value: labs.Mg },
     { key: "Glu", label: "Glucose", value: labs.Glu },
   ];
