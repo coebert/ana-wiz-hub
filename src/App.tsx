@@ -38,6 +38,7 @@ const DiagramSnapshot = lazy(() => import("./pages/DiagramSnapshot"));
 const Errata = lazy(() => import("./pages/Errata"));
 const Login = lazy(() => import("./pages/Login"));
 const Review = lazy(() => import("./pages/Review"));
+const VoiceViva = lazy(() => import("./pages/VoiceViva"));
 const ToolsHub = lazy(() => import("./pages/ToolsHub"));
 const MACForAgeTool = lazy(() => import("./pages/tools/MACForAgeTool"));
 const PaedDoseTool = lazy(() => import("./pages/tools/PaedDoseTool"));
@@ -234,6 +235,7 @@ const App = () => (
           <Route path="/glossary-audit" element={<GlossaryAudit />} />
           <Route path="/viva" element={<VivaHub />} />
           <Route path="/viva/library" element={<VivaQuestionLibrary />} />
+          <Route path="/viva/voice" element={<VoiceViva />} />
           <Route path="/dev/coverage-bars" element={<CoverageBarsResponsiveTest />} />
           <Route path="/dev/seo-indexing" element={<RequireAdmin><SeoIndexing /></RequireAdmin>} />
           <Route path="/dev/a11y-audit" element={<A11yAudit />} />
