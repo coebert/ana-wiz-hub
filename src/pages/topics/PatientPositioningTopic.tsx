@@ -3,6 +3,7 @@ import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
+import { InlineRef } from "@/components/InlineRef";
 import { patientPositioningQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { RealismProvider, type RealismLevel } from "@/components/diagrams/patientAnatomy";
