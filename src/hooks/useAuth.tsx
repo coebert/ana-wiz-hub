@@ -13,6 +13,41 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Cache the admin flag per-user in localStorage so reloads are instant
+// and resilient to transient RPC failures. The cache is keyed by user id,
+// so it is invalidated automatically if a different user signs in.
+const ADMIN_CACHE_KEY = "ac.adminFor";
+
+const readAdminCache = (): { userId: string; isAdmin: boolean } | null => {
+  try {
+    const raw = localStorage.getItem(ADMIN_CACHE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (parsed && typeof parsed.userId === "string" && typeof parsed.isAdmin === "boolean") {
+      return parsed;
+    }
+  } catch {
+    /* ignore */
+  }
+  return null;
+};
+
+const writeAdminCache = (userId: string, isAdmin: boolean) => {
+  try {
+    localStorage.setItem(ADMIN_CACHE_KEY, JSON.stringify({ userId, isAdmin }));
+  } catch {
+    /* ignore */
+  }
+};
+
+const clearAdminCache = () => {
+  try {
+    localStorage.removeItem(ADMIN_CACHE_KEY);
+  } catch {
+    /* ignore */
+  }
+};
+
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
@@ -36,6 +71,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
     setIsAdmin(!!data);
     resolvedAdminForUserRef.current = userId;
+    writeAdminCache(userId, !!data);
   };
 
   useEffect(() => {
@@ -48,12 +84,24 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const needsAdminResolve =
         !!nextUser && resolvedAdminForUserRef.current !== nextUser.id;
 
+      // Hydrate isAdmin from per-user cache before the RPC resolves so a
+      // returning admin sees no "Checking access…" flash and no "Access
+      // denied" flicker on reload or tab focus.
+      if (nextUser && resolvedAdminForUserRef.current !== nextUser.id) {
+        const cached = readAdminCache();
+        if (cached && cached.userId === nextUser.id) {
+          setIsAdmin(cached.isAdmin);
+          resolvedAdminForUserRef.current = nextUser.id;
+        }
+      }
+
+      const stillNeedsResolve =
+        !!nextUser && resolvedAdminForUserRef.current !== nextUser.id;
+
       // CRITICAL: set loading=true BEFORE committing the new user, so
       // RequireAdmin never observes a (user, !isAdmin, !loading) tuple
       // between the user-state render and the has_role RPC resolving.
-      // Without this, React renders the user change first and flashes
-      // "Access denied" for one frame after sign-in.
-      if (needsAdminResolve && !cancelled) setLoading(true);
+      if (stillNeedsResolve && !cancelled) setLoading(true);
 
       setSession(nextSession);
       setUser(nextUser);
@@ -61,10 +109,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (!nextUser) {
         setIsAdmin(false);
         resolvedAdminForUserRef.current = null;
+        clearAdminCache();
         if (!cancelled) setLoading(false);
         return;
       }
 
+      // Always re-verify in the background so a revoked admin is eventually
+      // demoted — but don't gate the UI on it when we already have a cache hit.
       if (needsAdminResolve) {
         await checkAdmin(nextUser.id);
       }
@@ -97,6 +148,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     await supabase.auth.signOut();
     setIsAdmin(false);
     resolvedAdminForUserRef.current = null;
+    clearAdminCache();
   };
 
   return (
