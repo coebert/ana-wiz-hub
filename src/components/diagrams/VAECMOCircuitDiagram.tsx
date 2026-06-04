@@ -312,8 +312,8 @@ export const VAECMOCircuitDiagram = () => {
           {/* Watershed marker on aortic arch */}
           {showHarlequin && (
             <>
-              <circle cx={watershedX} cy={watershedY} r="7" fill="none" stroke="hsl(45 95% 50%)" strokeWidth="2" strokeDasharray="2 2" />
-              <text x={watershedX - 50} y={watershedY - 8} fontSize="9" className="fill-[hsl(45_95%_45%)] font-semibold">watershed</text>
+              <circle cx={watershedX} cy={watershedY} r="8" fill="none" stroke="hsl(45 95% 50%)" strokeWidth="2.5" strokeDasharray="2 2" />
+              <text x={watershedX - 55} y={watershedY - 10} fontSize="11" fontWeight="700" className="fill-[hsl(38_95%_38%)]">watershed</text>
             </>
           )}
 
