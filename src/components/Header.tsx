@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic, Pill, GraduationCap, Calculator } from "lucide-react";
+import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic, Pill, GraduationCap, Calculator, Brain } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
 import { SearchDialog } from "@/components/SearchDialog";
 import { ReduceMotionToggle } from "@/components/ReduceMotionToggle";
@@ -21,6 +21,7 @@ const navItems = [
   { label: "Map", path: "/map", icon: Network, color: "text-primary" },
   { label: "Curriculum", path: "/curriculum", icon: GraduationCap, color: "text-primary" },
   { label: "Progress", path: "/progress", icon: BarChart3, color: "text-accent" },
+  { label: "Review", path: "/review", icon: Brain, color: "text-primary" },
   { label: "Podcasts", path: "/podcasts", icon: Headphones, color: "text-primary" },
   { label: "Viva", path: "/viva", icon: Mic, color: "text-accent" },
 ];
