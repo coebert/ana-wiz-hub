@@ -4,6 +4,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { QuizQuestion } from "@/components/QuizSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Describe the legal and ethical framework for end-of-life decision-making in UK ICU practice (MCA 2005, GMC, FICM/ICS).",
