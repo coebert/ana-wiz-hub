@@ -8,7 +8,8 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick, Headphones, Mic2 } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick, Headphones, Mic2, Map as MapIcon } from "lucide-react";
+import VisitorsWorldMap from "@/components/admin/VisitorsWorldMap";
 
 /** Format a number of seconds as "Hh Mm" or "Mm Ss" for compact display. */
 function formatDuration(totalSeconds: number): string {
@@ -1369,6 +1370,24 @@ const AdminDashboard = () => {
                     </tbody>
                   </table>
                 </div>
+              )}
+            </div>
+
+            {/* World map of visitors */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <MapIcon className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Visitors by Country</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                Choropleth of unique visitors per country. Hover a country for details; scroll or pinch to zoom.
+              </p>
+              {analytics.topCountries.length === 0 ? (
+                <p className="text-sm text-muted-foreground">
+                  No country data yet — countries are recorded from new visits onwards.
+                </p>
+              ) : (
+                <VisitorsWorldMap data={analytics.topCountries} metric="users" />
               )}
             </div>
 
