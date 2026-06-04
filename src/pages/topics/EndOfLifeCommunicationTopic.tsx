@@ -99,7 +99,6 @@ const EndOfLifeCommunicationTopic = () => {
       sectionSources={{
         objectives: ["FICM/ICS 2019", "GMC EoL", "MCA 2005", "NEJM 2007"],
         keyPoints: ["FICM/ICS 2019", "GMC EoL", "NEJM 2007", "BJA Educ 2017", "Oncologist 2000", "MCA 2005"],
-        symptoms: ["FICM/ICS 2019", "GMC EoL", "BJA Educ 2017"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 5.5", "EDIC 12"] },
