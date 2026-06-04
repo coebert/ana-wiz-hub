@@ -373,7 +373,7 @@ const App = () => (
           <Route path="/intensive-care/paediatric-icu" element={<PaediatricIcuTopic />} />
           <Route path="/intensive-care/burns-icu" element={<BurnsIcuTopic />} />
           <Route path="/intensive-care/haematology-icu" element={<HaematologyIcuTopic />} />
-          <Route path="/intensive-care/ecmo" element={<Navigate to="/intensive-care/circulatory-failure" replace />} />
+          <Route path="/intensive-care/ecmo" element={<EcmoTopic />} />
           <Route path="/intensive-care/toxicology" element={<ToxicologyTopic />} />
           <Route path="/intensive-care/infectious-disease-icu" element={<InfectiousDiseaseIcuTopic />} />
           <Route path="/intensive-care/bronchospastic-failure" element={<BronchospasticFailureTopic />} />
@@ -382,6 +382,7 @@ const App = () => (
           <Route path="/intensive-care/arrhythmias-ecg-icu" element={<ArrhythmiasEcgIcuTopic />} />
           <Route path="/intensive-care/cardiac-arrest-post-resus" element={<CardiacArrestPostResusTopic />} />
           <Route path="/intensive-care/neuroprognostication" element={<NeuroprognosticationTopic />} />
+          {/* ECMO standalone — replaces previous redirect to /circulatory-failure */}
           <Route path="/intensive-care/end-of-life-communication" element={<EndOfLifeCommunicationTopic />} />
           <Route path="/intensive-care/non-technical-skills" element={<NonTechnicalSkillsTopic />} />
           {/* Perioperative */}
