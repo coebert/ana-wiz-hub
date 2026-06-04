@@ -127,6 +127,12 @@ Deno.serve(async (req) => {
     return fail(400, "topicId, topicTitle and section are required");
   }
 
+  // Reject topic IDs that aren't part of the curriculum to prevent unbounded
+  // AI credit burn from attackers rotating arbitrary slugs.
+  if (!TOPIC_ID_ALLOWLIST.has(topicId)) {
+    return fail(400, "Unknown topicId");
+  }
+
   // `force` bypasses cache and triggers a fresh AI call — gate it behind an
   // admin JWT to prevent anonymous credit abuse. Non-admin callers silently
   // downgrade to the cached path (Refresh buttons still return the latest
