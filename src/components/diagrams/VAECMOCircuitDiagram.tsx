@@ -208,8 +208,8 @@ export const VAECMOCircuitDiagram = () => {
             fill="hsl(var(--icu))" opacity="0.10" stroke="hsl(var(--icu))" strokeWidth="0.75" />
           <path d="M 265 140 Q 280 170, 275 230 Q 265 265, 245 270 Q 232 250, 235 195 Q 237 155, 245 140 Z"
             fill="hsl(var(--icu))" opacity="0.10" stroke="hsl(var(--icu))" strokeWidth="0.75" />
-          {showLabels && <text x="120" y="195" fontSize="8" className="fill-muted-foreground">R lung</text>}
-          {showLabels && <text x="252" y="195" fontSize="8" className="fill-muted-foreground">L lung</text>}
+          {showLabels && <text x="120" y="195" fontSize="10" fontWeight="600" className="fill-muted-foreground">R lung</text>}
+          {showLabels && <text x="252" y="195" fontSize="10" fontWeight="600" className="fill-muted-foreground">L lung</text>}
 
           {/* ===== GREAT VESSELS ===== */}
           {/* SVC — descends from R brachiocephalic vein into RA */}
