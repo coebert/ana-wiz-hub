@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
-import { Brain, CheckCircle2, XCircle, ChevronRight, ExternalLink } from "lucide-react";
+import { Brain, CheckCircle2, XCircle, ChevronRight, ExternalLink, SlidersHorizontal, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { applyGrade, GRADE_LABELS, GRADES, type Grade } from "@/lib/srs";
 import { toast } from "@/hooks/use-toast";
+import { allTopics, topicsBySection, sectionMeta, type Section } from "@/data/curriculum";
 
 interface ReviewRow {
   id: string;
