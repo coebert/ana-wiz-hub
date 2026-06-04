@@ -761,7 +761,7 @@ const EquipmentMonitoringTopic = () => {
             <p>
               A structured check is mandatory at the <strong>start of every operating list</strong>, with an abbreviated check
               between cases (Association of Anaesthetists, <em>Checking Anaesthetic Equipment 2023</em>
-              <InlineRef topicId="equipment-monitoring" labels={["AAGBI Check 2023"]} /> — supersedes the AAGBI 2012 guideline).
+              <InlineRef topicId="equipment-monitoring" refLabel="AAGBI Check 2023" /> — supersedes the AAGBI 2012 guideline).
               Follow a logical "<strong>upstream-to-downstream</strong>" sequence — from gas supply, through the
               machine, to the breathing system and patient. A <strong>self-inflating bag</strong> must be immediately available
               and is itself checked. Document and attach a "Machine Checked" label.
