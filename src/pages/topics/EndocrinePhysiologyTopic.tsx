@@ -130,7 +130,10 @@ const EndocrinePhysiologyTopic = () => {
               <p className="text-muted-foreground leading-relaxed mb-4">
                 The hypothalamus controls the anterior pituitary via releasing/inhibiting hormones through the
                 hypothalamic-hypophyseal portal system. The posterior pituitary stores and releases ADH and oxytocin
-                (synthesised in supraoptic and paraventricular hypothalamic nuclei).
+                (synthesised in supraoptic and paraventricular hypothalamic nuclei). ACTH drives cortisol release from the
+                zona fasciculata and androgens from the zona reticularis; aldosterone from the zona glomerulosa is
+                regulated primarily by the renin–angiotensin system and plasma K⁺, with only a minor permissive
+                contribution from ACTH (<InlineRef topicId="endocrine-physiology" refLabel="Ganong Ch.20 Adrenal" />).
               </p>
               <div className="overflow-x-auto mb-6">
                 <table className="w-full text-sm border-collapse">
