@@ -316,7 +316,7 @@ export default function VoiceViva() {
       };
       await pc.setRemoteDescription(answer);
     } catch (e) {
-      setError((e as Error).message);
+      setError(toFriendly(e));
       setPhase("error");
       stop(false);
     }
