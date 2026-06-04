@@ -402,11 +402,11 @@ export const VAECMOCircuitDiagram = () => {
             {/* Sweep gas inlet (top) */}
             <line x1="645" y1="95" x2="645" y2="110" stroke="hsl(195 70% 50%)" strokeWidth="2" />
             <polygon points="642,108 648,108 645,113" fill="hsl(195 70% 50%)" />
-            {showLabels && <text x="645" y="88" textAnchor="middle" fontSize="7.5" className="fill-[hsl(195_70%_45%)] font-semibold">sweep gas (FiO₂ 21–100%)</text>}
+            {showLabels && <text x="645" y="86" textAnchor="middle" fontSize="9.5" className="fill-[hsl(195_70%_38%)] font-bold">sweep gas (FiO₂ 21–100%)</text>}
             {/* Sweep gas outlet (bottom) */}
             <line x1="645" y1="245" x2="645" y2="258" stroke="hsl(0 60% 50%)" strokeWidth="2" />
             <polygon points="642,255 648,255 645,260" fill="hsl(0 60% 50%)" />
-            {showLabels && <text x="645" y="270" textAnchor="middle" fontSize="7.5" className="fill-muted-foreground">CO₂ + H₂O exhaust</text>}
+            {showLabels && <text x="645" y="272" textAnchor="middle" fontSize="9.5" fontWeight="600" className="fill-muted-foreground">CO₂ + H₂O exhaust</text>}
 
             {/* Animated O2 bubbles down through fibres */}
             {[0, 1, 2, 3, 4].map((i) => {
