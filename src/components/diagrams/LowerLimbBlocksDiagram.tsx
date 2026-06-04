@@ -261,7 +261,7 @@ const LegView = ({
             </g>
             <text x="38" y="270" fontSize="7" fill="hsl(var(--muted-foreground))">sciatic</text>
             <text x="38" y="460" fontSize="7" fill="hsl(var(--muted-foreground))">tibial</text>
-            <text x="135" y="442" fontSize="7" fill="hsl(var(--muted-foreground))">common peroneal</text>
+            <text x="135" y="442" fontSize="7" fill="hsl(var(--muted-foreground))">common fibular</text>
             <text x="125" y="320" fontSize="7" fill="hsl(var(--muted-foreground))">post. cut.</text>
             <text x="125" y="500" fontSize="7" fill="hsl(var(--muted-foreground))">sural</text>
           </g>
