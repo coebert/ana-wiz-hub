@@ -34,7 +34,7 @@ const DEPTHS: Record<Depth, DepthInfo> = {
   },
   superficialPartial: {
     label: "Superficial partial thickness",
-    short: "Sup. partial",
+    short: "Superficial partial",
     frontY: 78,
     accent: "bg-rose-300 text-rose-900 border-rose-500",
     features: "Blisters, moist pink base, very painful. Brisk capillary refill.",
@@ -42,7 +42,7 @@ const DEPTHS: Record<Depth, DepthInfo> = {
   },
   deepPartial: {
     label: "Deep partial thickness",
-    short: "Deep",
+    short: "Deep partial",
     frontY: 130,
     accent: "bg-rose-500 text-white border-rose-700",
     features: "Mottled red/white, reduced sensation, sluggish capillary refill.",

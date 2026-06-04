@@ -109,7 +109,7 @@ export const BurnResuscitationDiagram = () => {
   };
 
   return (
-    <DiagramFigure id="burn-resuscitation" title="Burn fluid resuscitation: Parkland formula timeline" description="Animated Parkland-formula resuscitation showing crystalloid delivery rate, urine output target and reassessment points across the first 24 hours.">
+    <DiagramFigure id="burn-resuscitation" title="Burn fluid resuscitation timeline" description="Animated burn-shock resuscitation showing Parkland crystalloid delivery in the first 24 h, urine-output target, reassessment points, and the 12–24 h colloid switch (modified protocols).">
     <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
       <figcaption className="mb-3 flex flex-wrap items-start justify-between gap-3">
         <div>
