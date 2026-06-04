@@ -105,6 +105,8 @@ export const AtomicStructureDiagram = () => {
                 })}
                 {/* Shell 3: 7e (needs 1 more) */}
                 <circle cx={300} cy={120} r={70} fill="none" stroke="hsl(340 60% 50%)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.6" />
+                <text x={300} y={85} textAnchor="middle" fontSize="8" className="fill-muted-foreground">n=1 (2e⁻)</text>
+                <text x={300} y={63} textAnchor="middle" fontSize="8" className="fill-muted-foreground">n=2 (8e⁻)</text>
                 <text x={300} y={44} textAnchor="middle" fontSize="8" className="fill-muted-foreground">n=3 (7e⁻)</text>
                 {Array.from({ length: 7 }).map((_, i) => {
                   const angle = (i / 7) * Math.PI * 2 + t * Math.PI * 0.8;

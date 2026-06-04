@@ -31,7 +31,7 @@ const AnaphylaxisPathophysiologyDiagram = () => {
           {/* ── ANTIGEN EXPOSURE ── */}
           <rect x="220" y="40" width="260" height="44" rx="8" fill="url(#ana-trigger-grad)" stroke="hsl(0 72% 51% / 0.4)" strokeWidth="1.5" />
           <text x="350" y="58" textAnchor="middle" className="fill-foreground text-xs font-semibold">Antigen Re-exposure</text>
-          <text x="350" y="73" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '9px' }}>NMBAs (60%) · Antibiotics · Chlorhexidine · Latex</text>
+          <text x="350" y="73" textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: '9px' }}>NMBAs (~38%, NAP6) · Antibiotics · Chlorhexidine · Latex</text>
   
           {/* Arrow → IgE */}
           <line x1="350" y1="84" x2="350" y2="110" stroke="hsl(0 72% 51%)" strokeWidth="1.5" markerEnd="url(#ana-arrow-red)" />

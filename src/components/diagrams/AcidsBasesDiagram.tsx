@@ -77,7 +77,7 @@ export const AcidsBasesDiagram = () => {
               {/* Clinical markers */}
               {[
                 { ph: 1, label: "Gastric acid", y: 110 },
-                { ph: 4.6, label: "LA pKa ~7.9\n(tissue pH)", y: 145 },
+                { ph: 7.9, label: "LA pKa ~7.9", y: 145 },
                 { ph: 6.1, label: "pKa CO₂/HCO₃⁻", y: 125 },
                 { ph: 7.35, label: "Acidaemia", y: 110 },
                 { ph: 7.4, label: "Blood pH", y: 135 },

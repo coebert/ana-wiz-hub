@@ -208,13 +208,12 @@ const BrachialPlexusDiagram = () => {
                 </pattern>
               </defs>
   
-              {/* ===== VERTEBRAL BODIES (C4–T2 hint) ===== */}
+              {/* ===== VERTEBRAL BODIES (C5–T1 — plexus roots) ===== */}
               <g opacity="0.08" fill="url(#boneGrad)" stroke="hsl(40, 25%, 50%)" strokeWidth="0.75">
-                {[0, 28, 56, 84, 112, 140].map((dy, i) => (
+                {[28, 56, 84, 112, 140].map((dy, i) => (
                   <rect key={i} x="410" y={-2 + dy} width="22" height="22" rx="3" />
                 ))}
                 <g fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.5">
-                  <text x="421" y="12" textAnchor="middle">C4</text>
                   <text x="421" y="40" textAnchor="middle">C5</text>
                   <text x="421" y="68" textAnchor="middle">C6</text>
                   <text x="421" y="96" textAnchor="middle">C7</text>
