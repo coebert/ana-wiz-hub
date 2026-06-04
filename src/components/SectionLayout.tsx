@@ -51,7 +51,12 @@ export const SectionLayout = ({
   const [autoItems, setAutoItems] = useState<TOCItem[]>([]);
   const location = useLocation();
   const canonicalUrl = `${SITE_URL}${location.pathname}`;
-  const pageTitle = `${title} – ${SITE_NAME}`;
+  // Keep <title> ≤ 60 chars: drop the " – AnaesthesiaCore" suffix when the
+  // topic title alone would push past the limit. Long curriculum topic names
+  // (e.g. "Postoperative acute kidney injury — recognition and management")
+  // stay intact and stop tripping the SEO meta-title length audit.
+  const suffix = ` – ${SITE_NAME}`;
+  const pageTitle = title.length + suffix.length > 60 ? title : `${title}${suffix}`;
   const rawDescription = (metaDescription && metaDescription.trim().length >= 50)
     ? metaDescription.trim()
     : `${title} — ${subtitle} — exam-focused revision notes, diagrams and viva practice on AnaesthesiaCore for FRCA and FFICM trainees.`;
