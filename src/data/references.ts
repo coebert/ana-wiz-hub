@@ -277,6 +277,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Ganong Ch.13", citation: "Barrett KE et al. Ganong's Review of Medical Physiology. 26th ed. Chapter 13: Autonomic Nervous System." },
     { label: "RCUK ALS 2021", citation: "Resuscitation Council UK. Adult Advanced Life Support Guidelines — Bradycardia algorithm (atropine 500 micrograms IV, repeated up to a maximum of 3 mg). 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/adult-advanced-life-support-guidelines" },
     { label: "BJA Educ 2021 (Bradycardia)", citation: "Management of intraoperative bradycardia. BJA Education. 2021. Doses of atropine (10–20 µg/kg IV) and glycopyrrolate (4–8 µg/kg IV) for perioperative bradycardia.", url: "https://doi.org/10.1016/j.bjae.2021.05.001" },
+    { label: "BNFc Atropine", citation: "British National Formulary for Children (BNFc). Atropine sulfate — bradycardia (paediatric): 20 micrograms/kg IV (max per dose 600 micrograms), repeated if needed. Joint Formulary Committee, BMJ Group and Pharmaceutical Press; updated continuously.", url: "https://bnfc.nice.org.uk/drugs/atropine-sulfate/", excerpt: "Bradycardia (by intravenous injection): Child 1 month–11 years, 20 micrograms/kg (max. per dose 600 micrograms), to be repeated if necessary; Child 12–17 years, 300–600 micrograms, to be repeated if necessary." },
   ],
   "neuromuscular": [
     { label: "BJA Educ 2005", citation: "Bowman WC. Neuromuscular block. BJA Education. 2006;6(1):2-6.", url: "https://doi.org/10.1093/bjaceaccp/mki067" },
@@ -443,6 +444,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ Paeds Airway 2017", citation: "Harless J, Ramaiah R, Bhananker SM. Pediatric airway management. Int J Crit Illn Inj Sci. 2014;4(1):65-70.", url: "https://doi.org/10.4103/2229-5151.128015" },
     { label: "Weiss & Engelhardt 2010", citation: "Weiss M, Engelhardt T. Proposal for the management of the unexpected difficult pediatric airway. Paediatr Anaesth. 2010;20(5):454-464.", url: "https://doi.org/10.1111/j.1460-9592.2010.03284.x" },
     { label: "AAGBI Standards 2015", citation: "Checketts MR et al. Recommendations for standards of monitoring during anaesthesia and recovery 2015. Anaesthesia. 2016;71(1):85-93.", url: "https://doi.org/10.1111/anae.13316" },
+    { label: "AAGBI Check 2023", citation: "Association of Anaesthetists. Checking Anaesthetic Equipment 2023. Anaesthesia. 2023 (supersedes the 2012 guideline). Structured pre-use machine check, two-bag test, monitor and self-inflating bag verification at the start of every list, with abbreviated checks between cases.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Checking-Anaesthetic-Equipment-2023", excerpt: "The Association of Anaesthetists recommends that a check of the anaesthetic equipment is performed before every operating list, and an abbreviated check between cases. The check should follow an upstream-to-downstream sequence and include a two-bag test of the breathing system. A self-inflating bag must always be immediately available." },
   ],
 
   // ──────── CLINICAL ────────

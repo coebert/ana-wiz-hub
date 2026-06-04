@@ -209,15 +209,15 @@ const LatentHeatDiagram = () => {
           {/* Slope (sensible-heat) annotations */}
           <text x={x(20)} y={y(-10)} fontSize="9" fill="hsl(var(--muted-foreground))">
             c<tspan dy="2" fontSize="7">ice</tspan>
-            <tspan dy="-2"> 2.10 kJ/kg/K</tspan>
+            <tspan dy="-2"> 2.10 kJ/kg/°C</tspan>
           </text>
           <text x={x(42 + 334 + 50)} y={y(50)} fontSize="9" fill="hsl(var(--muted-foreground))">
             c<tspan dy="2" fontSize="7">water</tspan>
-            <tspan dy="-2"> 4.18 kJ/kg/K</tspan>
+            <tspan dy="-2"> 4.18 kJ/kg/°C</tspan>
           </text>
           <text x={x(total - 240)} y={y(118)} fontSize="9" fill="hsl(var(--muted-foreground))">
             c<tspan dy="2" fontSize="7">steam</tspan>
-            <tspan dy="-2"> 2.01 kJ/kg/K</tspan>
+            <tspan dy="-2"> 2.01 kJ/kg/°C</tspan>
           </text>
         </svg>
   

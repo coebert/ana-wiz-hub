@@ -6,6 +6,7 @@ import LaserFibreopticsDiagram from "@/components/diagrams/LaserFibreopticsDiagr
 import { laserFibreopticsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import InlineRef from "@/components/InlineRef";
 
 const objectives = [
   "Define LASER and explain the requirement for population inversion in a gain medium",
@@ -141,7 +142,8 @@ const LaserFibreopticsTopic = () => {
               <p>
                 <strong>Airway fire</strong> is the most feared complication of airway laser surgery. The CO₂ laser can ignite
                 standard PVC or rubber endotracheal tubes. Prevention — as set out in the Association of Anaesthetists 2023
-                guideline <em>Management of complications of airway management</em> — requires: laser-resistant tubes (metal
+                guideline <em>Management of complications of airway management</em>
+                <InlineRef topicId="lasers-fibreoptics" refLabel="Assoc Anaesth Airway Fire" /> — requires: laser-resistant tubes (metal
                 shaft, e.g. Laser-Flex); the <strong>lowest clinically appropriate FiO₂</strong>, titrated to SpO₂ (commonly
                 ≤ 0.30 when tolerated); avoidance of N₂O (acts as an oxidiser at laser temperatures); a saline-filled cuff
                 (± methylene blue as a leak indicator); and saline-soaked pledgets around the cuff. If ignition occurs, the

@@ -24,7 +24,7 @@ const objectives = [
   "Compare plenum vs draw-over and TEC 5/7 vs TEC 6 vaporizers, including the splitting ratio calculation.",
   "Classify Mapleson circuits and identify the most efficient system for spontaneous and controlled ventilation.",
   "Classify ventilators by power source, mechanism and cycling, citing representative theatre, ICU and transport machines.",
-  "List AAGBI minimum monitoring standards and outline the AAGBI 2012 pre-use machine check.",
+  "List Association of Anaesthetists minimum monitoring standards and outline the Association of Anaesthetists 2023 pre-use machine check (which superseded the AAGBI 2012 guideline).",
   "Describe key airway equipment (laryngoscope blades, neuraxial needles) and the rationale for their design.",
 ];
 
@@ -41,7 +41,7 @@ const keyPoints = [
   { text: "Ritchie whistle is gas-powered (Venturi/Bernoulli) — sounds even during power failure.", cites: ["Cormack & Lehane 1984"] },
   { text: "AAGBI minimum monitoring: SpO₂, ECG, NIBP, EtCO₂, FiO₂, agent, airway pressure, temperature; TOF if NMBs.", cites: ["McCoy & Mirakhur 1993"] },
   { text: "Pencil-point spinal needles (Whitacre/Sprotte) reduce PDPH vs Quincke; Tuohy directs epidural catheter via Huber tip.", cites: ["Miller 1941"] },
-  { text: "Pre-use AAGBI 2012 check: upstream-to-downstream sequence; two-bag test for circuit integrity.", cites: ["Macintosh 1943"] },
+  { text: "Pre-use Association of Anaesthetists 2023 check (supersedes AAGBI 2012): upstream-to-downstream sequence; two-bag test for circuit integrity; self-inflating bag immediately available.", cites: ["AAGBI Check 2023"] },
 ];
 
 import manleyImg from "@/assets/ventilators/manley-mp3.jpg";
@@ -756,12 +756,15 @@ const EquipmentMonitoringTopic = () => {
         </CollapsibleSubsection>
 
         {/* ───── 7. Pre-Use Check ───── */}
-        <CollapsibleSubsection title="7 · Standard Pre-Use Check (AAGBI 2012)">
+        <CollapsibleSubsection title="7 · Standard Pre-Use Check (Association of Anaesthetists 2023)">
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               A structured check is mandatory at the <strong>start of every operating list</strong>, with an abbreviated check
-              between cases. Follow a logical "<strong>upstream-to-downstream</strong>" sequence — from gas supply, through the
-              machine, to the breathing system and patient. Document and attach a "Machine Checked" label.
+              between cases (Association of Anaesthetists, <em>Checking Anaesthetic Equipment 2023</em>
+              <InlineRef topicId="equipment-monitoring" refLabel="AAGBI Check 2023" /> — supersedes the AAGBI 2012 guideline).
+              Follow a logical "<strong>upstream-to-downstream</strong>" sequence — from gas supply, through the
+              machine, to the breathing system and patient. A <strong>self-inflating bag</strong> must be immediately available
+              and is itself checked. Document and attach a "Machine Checked" label.
             </p>
             <ol className="list-decimal list-inside space-y-2 pl-2">
               <li><strong>Self-test & power.</strong> Mains plugged in, battery back-up ≥30 min, electronic self-test completes uninterrupted.</li>
@@ -802,13 +805,13 @@ const EquipmentMonitoringTopic = () => {
             <li><strong>Ascending bellows</strong> + low-VT/disconnect alarms = primary disconnect protection.</li>
             <li><strong>Scavenging</strong>: active (preferred) or passive; safety valves limit pressure to ±0.5 cmH₂O.</li>
             <li><strong>Capnography</strong>: gold standard for tube confirmation, ventilation and disconnect — mandatory for transfer.</li>
-            <li><strong>Pre-use check (AAGBI 2012)</strong>: machine, breathing system, vaporiser, monitors, ventilator, suction, drugs, emergency equipment.</li>
+            <li><strong>Pre-use check (Association of Anaesthetists 2023)</strong>: machine, breathing system, vaporiser, monitors, ventilator, suction, drugs, emergency equipment, self-inflating bag.</li>
           </ul>
         </SynthesisBlock>
           <ExamPitfallsCallout
             accent="physics"
             pitfalls={[
-              "AAGBI machine check is a pre-list and start-of-day requirement — document it in the anaesthetic chart.",
+              "Association of Anaesthetists 2023 machine check is a pre-list and start-of-day requirement — document it in the anaesthetic chart.",
               "Pin-Index Safety System prevents wrong cylinder mounting; NIST prevents wrong pipeline connection.",
               "Vaporiser safety: temperature-, flow- and pressure-compensated; agent-specific filler prevents cross-filling.",
               "Circle system economy depends on FGF, CO₂ absorber and unidirectional valves — sevoflurane + dry baralyme can produce Compound A.",
