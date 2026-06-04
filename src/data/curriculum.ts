@@ -53,6 +53,7 @@ export const physicsTopics: Topic[] = [
   { id: "xray-radiation-safety", title: "X-rays & Radiation Safety", description: "X-ray production, photon–tissue interactions, dose units, ALARA, shielding and dosimetry for anaesthetists", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   // Anaesthetic equipment & monitoring (consolidated)
   { id: "equipment-monitoring", title: "Anaesthetic Equipment & Monitoring", description: "Unified workstation tour: machine, vaporizers, circuits, ventilators, monitoring, airway equipment and AAGBI safety checks", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "vaporisers", title: "Anaesthetic Vaporisers", description: "SVP physics, plenum (Tec 5/7) splitting-ratio derivation, temperature compensation, Tec 6 heated/pressurised desflurane vaporiser, draw-over designs and altitude effects", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   // Patient monitoring
   { id: "clinical-measurement", title: "Clinical Measurement", description: "Invasive arterial monitoring, natural frequency and damping, CVP, and cardiac output techniques", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "pulse-oximetry", title: "Pulse Oximetry & Capnography", description: "Beer-Lambert law, absorption spectroscopy, infrared analysis", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
