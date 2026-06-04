@@ -47,7 +47,7 @@ const modes: Record<RRTMode, {
       { label: "Dialysate flow", value: "500-800 ml/min" },
       { label: "Duration", value: "3-4 hours, 3-4×/week" },
       { label: "Anticoagulation", value: "Systemic heparin (usually)" },
-      { label: "Access", value: "Vascath or AV fistula" },
+      { label: "Access", value: "Dialysis catheter or AV fistula" },
     ],
     pros: [
       "Rapid correction of hyperkalaemia/toxins",
