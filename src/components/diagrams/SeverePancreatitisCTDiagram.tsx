@@ -101,7 +101,7 @@ const findings: Finding[] = [
   },
   {
     id: "gallstone",
-    text: "Gallstone in\nneck of GB",
+    text: "Gallstone in\nneck of Gallbladder",
     dot: { x: 26, y: 38 },
     side: "left",
     labelY: 12,

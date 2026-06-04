@@ -127,9 +127,9 @@ const STEPS: AnimatedMechanismStep[] = [
  */
 const RefeedingScene = ({ active }: { active: number }) => {
   const rows = [
-    { label: "Starvation", sub: "Catabolism · ↓insulin · depleted K⁺/PO₄³⁻/Mg²⁺", token: "muted-foreground" },
+    { label: "Starvation", sub: "Catabolism · ↓insulin · depleted K⁺/PO₄/Mg²⁺", token: "muted-foreground" },
     { label: "Carbohydrate load", sub: "Feed / dextrose introduced", token: "clinical" },
-    { label: "Insulin surge", sub: "K⁺ · PO₄³⁻ · Mg²⁺ → intracellular", token: "pharmacology" },
+    { label: "Insulin surge", sub: "K⁺ · PO₄ · Mg²⁺ → intracellular", token: "pharmacology" },
     { label: "Thiamine consumed", sub: "PDH cofactor exhausted → lactate", token: "physiology" },
     { label: "Sequelae", sub: "Arrhythmia · Wernicke · respiratory failure", token: "destructive" },
   ];
@@ -268,7 +268,7 @@ const RefeedingScene = ({ active }: { active: number }) => {
             className="text-[10px] font-semibold"
             fill="hsl(var(--foreground))"
           >
-            K⁺ · PO₄³⁻ · Mg²⁺
+            K⁺ · PO₄ · Mg²⁺
           </text>
 
           {/* Extracellular (serum) */}
@@ -473,7 +473,7 @@ const LabsPanel = ({ active }: { active: number }) => {
   const labs = LAB_SERIES[Math.min(active, LAB_SERIES.length - 1)];
   const items: Array<{ key: LabKey; label: string; value: number }> = [
     { key: "K", label: "K⁺", value: labs.K },
-    { key: "PO4", label: "PO₄³⁻", value: labs.PO4 },
+    { key: "PO4", label: "PO₄", value: labs.PO4 },
     { key: "Mg", label: "Mg²⁺", value: labs.Mg },
     { key: "Glu", label: "Glucose", value: labs.Glu },
   ];
