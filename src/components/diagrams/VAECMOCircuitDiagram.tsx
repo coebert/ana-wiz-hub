@@ -295,18 +295,18 @@ export const VAECMOCircuitDiagram = () => {
 
           {showLabels && (
             <>
-              <text x="190" y="198" textAnchor="middle" fontSize="7.5" className="fill-foreground font-semibold">RA</text>
-              <text x="170" y="252" textAnchor="middle" fontSize="7.5" className="fill-foreground font-semibold">RV</text>
-              <text x="230" y="198" textAnchor="middle" fontSize="7.5" className="fill-foreground font-semibold">LA</text>
-              <text x="225" y="258" textAnchor="middle" fontSize="7.5" className="fill-foreground font-semibold">LV</text>
-              <text x="245" y="160" fontSize="7" className="fill-muted-foreground">Ao</text>
-              <text x="160" y="118" fontSize="7" className="fill-muted-foreground">SVC</text>
-              <text x="208" y="350" fontSize="7" className="fill-muted-foreground">IVC</text>
-              <text x="245" y="135" fontSize="6.5" className="fill-muted-foreground">arch</text>
+              <text x="190" y="199" textAnchor="middle" fontSize="9" className="fill-foreground font-bold">RA</text>
+              <text x="170" y="253" textAnchor="middle" fontSize="9" className="fill-foreground font-bold">RV</text>
+              <text x="230" y="199" textAnchor="middle" fontSize="9" className="fill-foreground font-bold">LA</text>
+              <text x="225" y="259" textAnchor="middle" fontSize="9" className="fill-foreground font-bold">LV</text>
+              <text x="245" y="160" fontSize="9" fontWeight="600" className="fill-muted-foreground">Ao</text>
+              <text x="158" y="118" fontSize="9" fontWeight="600" className="fill-muted-foreground">SVC</text>
+              <text x="208" y="350" fontSize="9" fontWeight="600" className="fill-muted-foreground">IVC</text>
+              <text x="245" y="135" fontSize="8" fontWeight="600" className="fill-muted-foreground">arch</text>
             </>
           )}
           {showLVDistension && (
-            <text x="225" y="310" textAnchor="middle" fontSize="9" className="fill-[hsl(0_75%_45%)] font-semibold">LV DISTENDED</text>
+            <text x="225" y="310" textAnchor="middle" fontSize="11" className="fill-[hsl(0_75%_45%)] font-bold">LV DISTENDED</text>
           )}
 
           {/* Watershed marker on aortic arch */}
