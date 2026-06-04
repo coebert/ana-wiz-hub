@@ -174,8 +174,7 @@ const PatientPositioningTopic = () => {
             </ol>
             <p className="text-muted-foreground leading-relaxed mt-3 text-sm">
               Document position, padding, monitoring re-check and pulses in the anaesthetic record after every position change.
-              The AAGBI / Association of Anaesthetists guideline <em>Peri-operative care of the patient (positioning) 2018</em>
-              and the ASA Practice Advisory on Perioperative Visual Loss are the standard references.
+              The current Association of Anaesthetists guideline <em>Anaesthesia and patient positioning for adults</em> (<InlineRef topicId="patient-positioning" refLabel="AAGBI Positioning 2018" />, published Anaesthesia 2020;75:1212-1223) and the <InlineRef topicId="patient-positioning" refLabel="ASA Practice Advisory 2020" /> on perioperative peripheral neuropathies are the standard references.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
