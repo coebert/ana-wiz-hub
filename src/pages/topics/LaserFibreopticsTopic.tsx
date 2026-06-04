@@ -6,6 +6,7 @@ import LaserFibreopticsDiagram from "@/components/diagrams/LaserFibreopticsDiagr
 import { laserFibreopticsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import InlineRef from "@/components/InlineRef";
 
 const objectives = [
   "Define LASER and explain the requirement for population inversion in a gain medium",
