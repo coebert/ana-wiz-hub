@@ -252,7 +252,7 @@ const LegView = ({
               <path d="M 100 165 L 100 380" />
               {/* Tibial */}
               <path d="M 100 380 L 100 510" />
-              {/* Common peroneal */}
+              {/* Common fibular (formerly common peroneal) */}
               <path d="M 100 380 L 130 440" />
               {/* Posterior cutaneous of thigh */}
               <path d="M 110 175 L 115 320" />
