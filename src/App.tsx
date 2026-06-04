@@ -151,6 +151,7 @@ const AcuteLiverFailureTopic = lazy(() => import("./pages/topics/AcuteLiverFailu
 const AcutePancreatitisTopic = lazy(() => import("./pages/topics/AcutePancreatitisTopic"));
 const AbdominalCompartmentSyndromeTopic = lazy(() => import("./pages/topics/AbdominalCompartmentSyndromeTopic"));
 const NeurointensiveCareTopic = lazy(() => import("./pages/topics/NeurointensiveCareTopic"));
+const NeuroprognosticationTopic = lazy(() => import("./pages/topics/NeuroprognosticationTopic"));
 const CardiacOutputMonitoringTopic = lazy(() => import("./pages/topics/CardiacOutputMonitoringTopic"));
 const AcidBaseTopic = lazy(() => import("./pages/topics/AcidBaseTopic"));
 const ARDSTopic = lazy(() => import("./pages/topics/ARDSTopic"));
