@@ -217,7 +217,7 @@ const LatentHeatDiagram = () => {
           </text>
           <text x={x(total - 240)} y={y(118)} fontSize="9" fill="hsl(var(--muted-foreground))">
             c<tspan dy="2" fontSize="7">steam</tspan>
-            <tspan dy="-2"> 2.01 kJ/kg/K</tspan>
+            <tspan dy="-2"> 2.01 kJ/kg/°C</tspan>
           </text>
         </svg>
   
