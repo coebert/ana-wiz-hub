@@ -811,7 +811,7 @@ const EquipmentMonitoringTopic = () => {
           <ExamPitfallsCallout
             accent="physics"
             pitfalls={[
-              "AAGBI machine check is a pre-list and start-of-day requirement — document it in the anaesthetic chart.",
+              "Association of Anaesthetists 2023 machine check is a pre-list and start-of-day requirement — document it in the anaesthetic chart.",
               "Pin-Index Safety System prevents wrong cylinder mounting; NIST prevents wrong pipeline connection.",
               "Vaporiser safety: temperature-, flow- and pressure-compensated; agent-specific filler prevents cross-filling.",
               "Circle system economy depends on FGF, CO₂ absorber and unidirectional valves — sevoflurane + dry baralyme can produce Compound A.",
