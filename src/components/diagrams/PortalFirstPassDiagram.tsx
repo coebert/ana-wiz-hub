@@ -251,7 +251,7 @@ const PortalFirstPassDiagram = () => {
             <path d="M 470 130 Q 430 170 360 220"
               stroke="url(#pf-artery)" strokeWidth="3" fill="none" strokeLinecap="round" opacity={0.85} />
             <text x={420} y={188} fontSize="8" className="fill-muted-foreground italic"
-              transform="rotate(-30, 420, 188)">Hepatic a. (~25%, oxygen)</text>
+              transform="rotate(-30, 420, 188)">Hepatic artery (~25%, oxygenated)</text>
   
             {/* ===== Liver lobes ===== */}
             {/* Right lobe */}
