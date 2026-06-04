@@ -1,12 +1,121 @@
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useSearchParams } from "react-router-dom";
-import { ArrowLeft, Mic, MicOff, Loader2, AlertCircle } from "lucide-react";
+import { ArrowLeft, Mic, MicOff, Loader2, AlertCircle, ShieldAlert, RefreshCw, HelpCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { allTopics, type ExamTag } from "@/data/curriculum";
 
 type Exam = Extract<ExamTag, "primary" | "final" | "fficm">;
+
+type MicPermission = "unknown" | "prompt" | "granted" | "denied";
+
+interface FriendlyError {
+  title: string;
+  message: string;
+  hint?: string;
+  recoverable: boolean;
+  kind: "permission" | "device" | "insecure" | "unsupported" | "network" | "server" | "unknown";
+}
+
+function detectBrowser(): "chrome" | "safari" | "firefox" | "edge" | "other" {
+  if (typeof navigator === "undefined") return "other";
+  const ua = navigator.userAgent;
+  if (/Edg\//.test(ua)) return "edge";
+  if (/Firefox\//.test(ua)) return "firefox";
+  if (/Chrome\//.test(ua)) return "chrome";
+  if (/Safari\//.test(ua)) return "safari";
+  return "other";
+}
+
+function permissionHint(): string {
+  switch (detectBrowser()) {
+    case "chrome":
+    case "edge":
+      return "Click the 🔒 padlock in the address bar → Site settings → set Microphone to Allow, then reload.";
+    case "safari":
+      return "Safari → Settings → Websites → Microphone → set this site to Allow, then reload.";
+    case "firefox":
+      return "Click the padlock in the address bar → Connection secure → More information → Permissions → clear the Microphone block, then reload.";
+    default:
+      return "Open your browser site settings and allow microphone access for this site, then reload.";
+  }
+}
+
+function toFriendly(err: unknown): FriendlyError {
+  if (typeof window !== "undefined" && !window.isSecureContext) {
+    return {
+      title: "Microphone needs a secure connection",
+      message: "Browsers only allow microphone access over HTTPS or on localhost.",
+      hint: "Open this page via the https:// URL and try again.",
+      recoverable: false,
+      kind: "insecure",
+    };
+  }
+  if (typeof navigator !== "undefined" && !navigator.mediaDevices?.getUserMedia) {
+    return {
+      title: "Voice not supported in this browser",
+      message: "Your browser does not expose microphone APIs.",
+      hint: "Try the latest Chrome, Edge, Safari or Firefox on a desktop or mobile device.",
+      recoverable: false,
+      kind: "unsupported",
+    };
+  }
+  const e = err as { name?: string; message?: string } | undefined;
+  const name = e?.name ?? "";
+  const msg = e?.message ?? String(err ?? "");
+  if (name === "NotAllowedError" || name === "SecurityError" || /denied|permission/i.test(msg)) {
+    return {
+      title: "Microphone access blocked",
+      message: "Your browser is blocking microphone access for this site.",
+      hint: permissionHint(),
+      recoverable: true,
+      kind: "permission",
+    };
+  }
+  if (name === "NotFoundError" || name === "OverconstrainedError" || /no.*device|not found/i.test(msg)) {
+    return {
+      title: "No microphone detected",
+      message: "We couldn't find an input device to capture audio.",
+      hint: "Plug in a microphone or headset, check it's selected in your system settings, then retry.",
+      recoverable: true,
+      kind: "device",
+    };
+  }
+  if (name === "NotReadableError" || name === "AbortError" || /in use|busy|hardware/i.test(msg)) {
+    return {
+      title: "Microphone is busy",
+      message: "Another app or browser tab is currently using your microphone.",
+      hint: "Close other calls (Zoom, Teams, Meet, other tabs) and retry.",
+      recoverable: true,
+      kind: "device",
+    };
+  }
+  if (/Realtime SDP|sdp exchange|fetch|network|failed to fetch/i.test(msg)) {
+    return {
+      title: "Couldn't reach the voice service",
+      message: "The connection to the realtime voice service failed.",
+      hint: "Check your internet connection and try again. Corporate networks sometimes block WebRTC — try a different network if it persists.",
+      recoverable: true,
+      kind: "network",
+    };
+  }
+  if (/ephemeral key|token|session/i.test(msg)) {
+    return {
+      title: "Couldn't start a voice session",
+      message: msg || "The session service didn't return a token.",
+      hint: "Please retry. If this keeps happening let us know.",
+      recoverable: true,
+      kind: "server",
+    };
+  }
+  return {
+    title: "Something went wrong",
+    message: msg || "Unexpected error starting the voice viva.",
+    recoverable: true,
+    kind: "unknown",
+  };
+}
 
 interface RealtimeEvent {
   type: string;
