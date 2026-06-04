@@ -128,7 +128,7 @@ export const RRTCircuitDiagram = () => {
           {/* ─── Patient ─── */}
           <rect x="10" y="120" width="60" height="70" rx="8" fill="hsl(var(--primary)/0.05)" stroke="hsl(var(--border))" strokeWidth="1.5" />
           <text x="40" y="150" fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Patient</text>
-          <text x="40" y="164" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">Vascath</text>
+          <text x="40" y="164" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">Dialysis catheter</text>
 
           {/* ─── Blood out: patient → pump → filter top-left ─── */}
           <path d="M 70 135 L 95 135 L 95 75 L 140 75" fill="none" stroke="hsl(0 70% 50%)" strokeWidth="3" markerEnd="url(#arrowRed)" />
