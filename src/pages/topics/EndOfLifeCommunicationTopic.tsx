@@ -4,6 +4,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { QuizQuestion } from "@/components/QuizSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Describe the legal and ethical framework for end-of-life decision-making in UK ICU practice (MCA 2005, GMC, FICM/ICS).",
@@ -237,7 +238,15 @@ const EndOfLifeCommunicationTopic = () => {
             curriculumCodes={["FFICM 5.5"]}
             className="scroll-mt-24"
           >
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Symptom Control at End of Life</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Symptom Control at End of Life
+              <InlineRef topicId="end-of-life-communication" refLabel="FICM/ICS 2019" />
+              <InlineRef topicId="end-of-life-communication" refLabel="GMC EoL" />
+              <InlineRef topicId="end-of-life-communication" refLabel="BJA Educ 2017" />
+            </h2>
+            <p className="text-xs text-muted-foreground mb-3 italic">
+              Symptom thresholds and drug doses adapted from FICM/ICS <em>Care at the End of Life</em> (2019), GMC end-of-life guidance, and BJA Education 2017 review on withdrawal of life-sustaining therapy.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>

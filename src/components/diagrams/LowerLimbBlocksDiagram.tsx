@@ -119,7 +119,7 @@ const BLOCKS: Record<BlockKey, BlockInfo> = {
     label: "Popliteal sciatic nerve block",
     shortLabel: "Popliteal sciatic",
     color: "hsl(220, 70%, 55%)",
-    target: "Sciatic nerve in the popliteal fossa (proximal to its bifurcation into tibial and common peroneal)",
+    target: "Sciatic nerve in the popliteal fossa (proximal to its bifurcation into tibial and common fibular)",
     needleSite: "5–8 cm proximal to popliteal crease, lateral to popliteal artery (in-plane US, posterior or lateral approach)",
     sensory: "Foot and lower leg below the knee, EXCEPT a medial strip supplied by the saphenous nerve",
     motor: "Foot and ankle (plantarflexion, dorsiflexion, inversion, eversion) — motor block expected",
@@ -252,7 +252,7 @@ const LegView = ({
               <path d="M 100 165 L 100 380" />
               {/* Tibial */}
               <path d="M 100 380 L 100 510" />
-              {/* Common peroneal */}
+              {/* Common fibular (formerly common peroneal) */}
               <path d="M 100 380 L 130 440" />
               {/* Posterior cutaneous of thigh */}
               <path d="M 110 175 L 115 320" />
@@ -261,7 +261,7 @@ const LegView = ({
             </g>
             <text x="38" y="270" fontSize="7" fill="hsl(var(--muted-foreground))">sciatic</text>
             <text x="38" y="460" fontSize="7" fill="hsl(var(--muted-foreground))">tibial</text>
-            <text x="135" y="442" fontSize="7" fill="hsl(var(--muted-foreground))">common peroneal</text>
+            <text x="135" y="442" fontSize="7" fill="hsl(var(--muted-foreground))">common fibular</text>
             <text x="125" y="320" fontSize="7" fill="hsl(var(--muted-foreground))">post. cut.</text>
             <text x="125" y="500" fontSize="7" fill="hsl(var(--muted-foreground))">sural</text>
           </g>

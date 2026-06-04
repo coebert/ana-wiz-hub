@@ -174,9 +174,9 @@ export const HPAAxisDiagram = () => {
                 <text x="180" y="308" fontSize="11" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">Adrenal Cortex</text>
                 {/* zones */}
                 <g fontSize="8" fill="hsl(var(--muted-foreground))">
-                  <rect x="110" y="316" width="140" height="14" fill="hsl(45 50% 55%)" opacity="0.18" />
-                  <text x="116" y="326" textAnchor="start" fontWeight="600">Zona glomerulosa</text>
-                  <text x="244" y="326" textAnchor="end" fontStyle="italic">aldosterone</text>
+                  <rect x="110" y="316" width="140" height="14" fill="hsl(45 50% 55%)" opacity="0.10" />
+                  <text x="116" y="326" textAnchor="start" fontWeight="500" opacity="0.7">Zona glomerulosa</text>
+                  <text x="244" y="326" textAnchor="end" fontStyle="italic" opacity="0.7">aldosterone · RAAS-driven</text>
   
                   <rect x="110" y="332" width="140" height="14" fill="hsl(25 70% 55%)" opacity="0.25" />
                   <text x="116" y="342" textAnchor="start" fontWeight="700" fill={levelStyles[data.cortisol].color}>Zona fasciculata</text>

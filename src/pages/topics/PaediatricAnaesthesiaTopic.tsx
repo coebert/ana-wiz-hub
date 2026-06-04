@@ -88,9 +88,13 @@ const PaediatricAnaesthesiaTopic = () => {
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6">
         <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anatomical & Physiological Differences</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+            Anatomical & Physiological Differences
+            <InlineRef topicId="paediatric-anaesthesia" refLabel="BJA Educ 2019" />
+            <InlineRef topicId="paediatric-anaesthesia" refLabel="APAGBI 2020" />
+          </h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Children are not small adults: differences in airway anatomy, respiratory mechanics, rate-dependent cardiac output, thermoregulation, and drug handling all translate into distinct anaesthetic priorities. The table below summarises the system-by-system contrasts that drive equipment choice, monitoring, and emergency response in paediatric practice.
+            Children are not small adults: differences in airway anatomy, respiratory mechanics, rate-dependent cardiac output, thermoregulation, and drug handling all translate into distinct anaesthetic priorities. The table below summarises the system-by-system contrasts that drive equipment choice, monitoring, and emergency response in paediatric practice. Quantitative values (O₂ consumption, larynx level, FRC, BSA:weight ratio) are textbook paediatric physiology data summarised in Engelhardt's BJA Education review and APAGBI good-practice guidance.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">

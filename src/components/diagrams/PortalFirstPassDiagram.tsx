@@ -251,7 +251,7 @@ const PortalFirstPassDiagram = () => {
             <path d="M 470 130 Q 430 170 360 220"
               stroke="url(#pf-artery)" strokeWidth="3" fill="none" strokeLinecap="round" opacity={0.85} />
             <text x={420} y={188} fontSize="8" className="fill-muted-foreground italic"
-              transform="rotate(-30, 420, 188)">Hepatic a. (~25%, oxygen)</text>
+              transform="rotate(-30, 420, 188)">Hepatic artery (~25%, oxygenated)</text>
   
             {/* ===== Liver lobes ===== */}
             {/* Right lobe */}
@@ -331,7 +331,7 @@ const PortalFirstPassDiagram = () => {
               stroke="url(#pf-vein)" strokeWidth="3" fill="none" strokeLinecap="round" />
             <path d="M 555 230 Q 540 180 525 145"
               stroke="hsl(215, 65%, 75%)" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity={0.4} />
-            <text x={566} y={185} fontSize="9" className="fill-muted-foreground">Hepatic v. → IVC</text>
+            <text x={566} y={185} fontSize="9" className="fill-muted-foreground">Hepatic vein → IVC</text>
   
             {/* Direction arrows */}
             <line x1={260} y1={300} x2={285} y2={272}
