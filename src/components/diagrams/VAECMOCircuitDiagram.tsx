@@ -337,7 +337,7 @@ export const VAECMOCircuitDiagram = () => {
           {[0, 1, 2, 3].map((i) => (
             <circle key={`sh${i}`} cx={200} cy={230 + i * 12} r="1" fill="hsl(220 60% 30%)" />
           ))}
-          {showLabels && <text x="295" y="448" fontSize="8" className="fill-muted-foreground">multi-stage venous drainage cannula 23–25 Fr</text>}
+          {showLabels && <text x="295" y="448" fontSize="10" fontWeight="600" className="fill-muted-foreground">multi-stage venous drainage 23–25 Fr</text>}
           {particles(0).map((p, i) => {
             const pt = pointAt(drainSegs, 1 - p); // flow from RA → pump
             return <circle key={`d${i}`} cx={pt.x} cy={pt.y} r="2.8" fill="hsl(220 80% 55%)" opacity={0.85} />;
