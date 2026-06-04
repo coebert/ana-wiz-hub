@@ -203,25 +203,33 @@ const VivaHub = () => {
         <ul className="space-y-2">
           {filtered.map((t) => (
             <li key={t.id}>
-              <button
-                type="button"
-                onClick={() => setActive(t)}
-                className="w-full text-left rounded-lg border border-border bg-card p-3 hover:border-primary hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-              >
+              <div className="rounded-lg border border-border bg-card p-3 hover:border-primary transition-colors">
                 <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
+                  <button
+                    type="button"
+                    onClick={() => setActive(t)}
+                    className="text-left min-w-0 flex-1 focus:outline-none"
+                  >
                     <p className="font-serif font-semibold text-foreground leading-tight">
                       {t.title}
                     </p>
                     <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">
                       {t.description}
                     </p>
+                  </button>
+                  <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                    <Badge variant="outline" className="text-[10px]">
+                      {sectionMeta[t.section].label}
+                    </Badge>
+                    <Link
+                      to={`/viva/voice?topic=${encodeURIComponent(t.id)}&exam=${exam}`}
+                      className="inline-flex items-center gap-1 rounded-full bg-accent px-2 py-0.5 text-[10px] font-semibold text-accent-foreground hover:opacity-90"
+                    >
+                      <Mic className="h-3 w-3" /> Live voice
+                    </Link>
                   </div>
-                  <Badge variant="outline" className="text-[10px] flex-shrink-0">
-                    {sectionMeta[t.section].label}
-                  </Badge>
                 </div>
-              </button>
+              </div>
             </li>
           ))}
           {filtered.length === 0 && (
