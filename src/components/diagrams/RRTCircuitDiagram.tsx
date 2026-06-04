@@ -21,7 +21,7 @@ const modes: Record<RRTMode, {
       { label: "Effluent dose", value: "25-30 ml/kg/hr (KDIGO)" },
       { label: "Duration", value: "Continuous (24h/day)" },
       { label: "Anticoagulation", value: "Regional citrate (preferred) or heparin" },
-      { label: "Access", value: "Vascath (large-bore dual-lumen CVC)" },
+      { label: "Access", value: "Dialysis catheter (large-bore dual-lumen CVC)" },
     ],
     pros: [
       "Haemodynamically stable — gradual solute/fluid removal",
