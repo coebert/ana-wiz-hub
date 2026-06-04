@@ -39,12 +39,31 @@ export default function Review() {
   const [grading, setGrading] = useState(false);
   const [stats, setStats] = useState({ total: 0, due: 0, scheduled: 0 });
 
-  // Filter the loaded due queue by the current exam chip.
+  // Local review queue filters
+  const [selectedSection, setSelectedSection] = useState<Section | "all">("all");
+  const [selectedTopic, setSelectedTopic] = useState<string>("all");
+
+  // Available topics for the selected section
+  const availableTopics = useMemo(() => {
+    if (selectedSection === "all") return allTopics;
+    return topicsBySection[selectedSection] ?? [];
+  }, [selectedSection]);
+
+  // Filter the loaded due queue by exam, section and topic.
   const queue = useMemo(() => {
     if (!rows) return [];
-    if (!activeExam) return rows;
-    return rows.filter((r) => r.exam_tags.includes(activeExam));
-  }, [rows, activeExam]);
+    let filtered = rows;
+    if (activeExam) {
+      filtered = filtered.filter((r) => r.exam_tags.includes(activeExam));
+    }
+    if (selectedSection !== "all") {
+      filtered = filtered.filter((r) => r.topic_section === selectedSection);
+    }
+    if (selectedTopic !== "all") {
+      filtered = filtered.filter((r) => r.topic_id === selectedTopic);
+    }
+    return filtered;
+  }, [rows, activeExam, selectedSection, selectedTopic]);
 
   const current = queue[0];
 
