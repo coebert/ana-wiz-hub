@@ -102,7 +102,7 @@ export const airwayFolio: CorPictumFolioData = {
         { latin: "", english: "True vocal cord", note: "Pearl-white; defines the glottis — narrowest adult airway point." },
         { latin: "", english: "Glottis", note: "Cord level; narrowest adult airway. Adult subglottis is widest, paediatric subglottis (cricoid) is narrowest." },
         { latin: "", english: "Subglottis", note: "Below cords to lower border of cricoid; narrowest part in children — fixed-diameter cricoid ring." },
-        { latin: "", english: "Thyroid cartilage", note: "Largest laryngeal cartilage; surface landmark for cricothyroid puncture." },
+        { latin: "", english: "Thyroid cartilage", note: "Largest laryngeal cartilage; key palpable landmark — the cricothyroid membrane just below is the actual puncture target." },
         { latin: "", english: "Cricothyroid membrane", note: "Front-of-neck access (FONA) site — emergency surgical airway." },
         { latin: "", english: "Cricoid cartilage", note: "Only complete ring; site for cricoid pressure (Sellick's manoeuvre) and paediatric airway sizing." },
         { latin: "", english: "First tracheal ring", note: "Below cricoid; level of standard surgical tracheostomy entry between 2nd–3rd rings." },
