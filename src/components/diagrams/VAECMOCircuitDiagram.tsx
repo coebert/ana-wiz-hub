@@ -431,7 +431,7 @@ export const VAECMOCircuitDiagram = () => {
 
           {/* Heat exchanger label (integral) */}
           <rect x="615" y="248" width="60" height="14" rx="3" fill="hsl(45 50% 50%)" opacity="0.3" stroke="hsl(45 50% 40%)" strokeWidth="0.75" />
-          <text x="645" y="258" textAnchor="middle" fontSize="7.5" className="fill-foreground">Heater 36–37 °C</text>
+          <text x="645" y="259" textAnchor="middle" fontSize="9" fontWeight="700" className="fill-foreground">Heater 36–37 °C</text>
 
           {/* Oxygenator outlet → arterial return */}
           <path d={svgPath(oxyToArt.segs)} stroke="hsl(0 75% 48%)" strokeWidth="3" fill="none" strokeLinecap="round" />
