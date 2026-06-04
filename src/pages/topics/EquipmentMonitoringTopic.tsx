@@ -24,7 +24,7 @@ const objectives = [
   "Compare plenum vs draw-over and TEC 5/7 vs TEC 6 vaporizers, including the splitting ratio calculation.",
   "Classify Mapleson circuits and identify the most efficient system for spontaneous and controlled ventilation.",
   "Classify ventilators by power source, mechanism and cycling, citing representative theatre, ICU and transport machines.",
-  "List AAGBI minimum monitoring standards and outline the AAGBI 2012 pre-use machine check.",
+  "List Association of Anaesthetists minimum monitoring standards and outline the Association of Anaesthetists 2023 pre-use machine check (which superseded the AAGBI 2012 guideline).",
   "Describe key airway equipment (laryngoscope blades, neuraxial needles) and the rationale for their design.",
 ];
 
