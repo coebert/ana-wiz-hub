@@ -3,6 +3,9 @@ import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { ecmoQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
+import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
+import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
 
 /**
  * Dedicated FFICM / EDIC standalone topic page for Extracorporeal Membrane
@@ -226,6 +229,11 @@ const EcmoTopic = () => {
               </div>
             </div>
 
+            {/* Interactive VV circuit animation */}
+            <div className="not-prose">
+              <ECMOCircuitDiagram />
+            </div>
+
             {/* Physics of gas exchange */}
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Controlling oxygenation and CO₂ clearance</h2>
@@ -273,6 +281,11 @@ const EcmoTopic = () => {
               </ul>
             </div>
 
+            {/* Interactive VA circuit animation — shows retrograde aortic flow + Harlequin watershed */}
+            <div className="not-prose">
+              <VAECMOCircuitDiagram />
+            </div>
+
             {/* Complications */}
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Major complications</h2>
@@ -293,6 +306,11 @@ const EcmoTopic = () => {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Interactive troubleshooting decision diagram */}
+            <div className="not-prose">
+              <ECMOTroubleshootingDiagram />
             </div>
 
             {/* ECPR */}
