@@ -43,25 +43,30 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const applySession = async (nextSession: Session | null) => {
       if (cancelled) return;
-      setSession(nextSession);
-      setUser(nextSession?.user ?? null);
 
-      if (!nextSession?.user) {
+      const nextUser = nextSession?.user ?? null;
+      const needsAdminResolve =
+        !!nextUser && resolvedAdminForUserRef.current !== nextUser.id;
+
+      // CRITICAL: set loading=true BEFORE committing the new user, so
+      // RequireAdmin never observes a (user, !isAdmin, !loading) tuple
+      // between the user-state render and the has_role RPC resolving.
+      // Without this, React renders the user change first and flashes
+      // "Access denied" for one frame after sign-in.
+      if (needsAdminResolve && !cancelled) setLoading(true);
+
+      setSession(nextSession);
+      setUser(nextUser);
+
+      if (!nextUser) {
         setIsAdmin(false);
         resolvedAdminForUserRef.current = null;
         if (!cancelled) setLoading(false);
         return;
       }
 
-      // Only resolve admin role when the signed-in user actually changes.
-      // TOKEN_REFRESHED / periodic refresh events should NOT re-check
-      // (avoids flipping isAdmin to false on a transient RPC blip).
-      if (resolvedAdminForUserRef.current !== nextSession.user.id) {
-        // Mark loading so RequireAdmin shows "Checking access…" instead of
-        // briefly rendering "Access denied" with stale isAdmin=false while
-        // the has_role RPC resolves after a fresh sign-in.
-        if (!cancelled) setLoading(true);
-        await checkAdmin(nextSession.user.id);
+      if (needsAdminResolve) {
+        await checkAdmin(nextUser.id);
       }
       if (!cancelled) setLoading(false);
     };
