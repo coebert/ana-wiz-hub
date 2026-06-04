@@ -780,6 +780,43 @@ export default function DrugDetail() {
     description: metaDescription,
   };
 
+  // FAQPage JSON-LD — auto-built from monograph fields. Each Q is only included
+  // if the corresponding source field has non-trivial content. Answers are
+  // clipped to 900 chars to stay snippet-friendly. Requires ≥1 mainEntity.
+  const clip = (s: string, n = 900) =>
+    s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s;
+  const faqCandidates: Array<{ q: string; a: string | undefined }> = [
+    { q: `What is ${drug.name} used for?`, a: drug.indication_oneliner },
+    { q: `How does ${drug.name} work?`, a: drug.mechanism_of_action },
+    {
+      q: `What is the adult dose of ${drug.name}?`,
+      a: [drug.adult_bolus_dose && `Bolus: ${drug.adult_bolus_dose}`,
+          drug.infusion_range && `Infusion: ${drug.infusion_range}`,
+          drug.dosing].filter(Boolean).join("\n") || undefined,
+    },
+    { q: `What are the contraindications to ${drug.name}?`, a: drug.contraindications },
+    { q: `What are the key cautions or warnings for ${drug.name}?`, a: drug.key_warning },
+    { q: `What are the side effects of ${drug.name}?`, a: drug.side_effects },
+    { q: `What are the important drug interactions of ${drug.name}?`, a: drug.interactions },
+    { q: `How is ${drug.name} monitored?`, a: drug.monitoring },
+    { q: `What are the pharmacokinetics of ${drug.name}?`, a: drug.pharmacokinetics },
+  ];
+  const faqEntities = faqCandidates
+    .filter((c): c is { q: string; a: string } => !!c.a && c.a.trim().length > 10)
+    .map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: clip(a.trim()) },
+    }));
+  const faqJsonLd = faqEntities.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        url: canonicalUrl,
+        mainEntity: faqEntities,
+      }
+    : null;
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
@@ -794,7 +831,11 @@ export default function DrugDetail() {
         <meta name="twitter:description" content={metaDescription} />
         <script type="application/ld+json">{JSON.stringify(drugJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(medicalPageJsonLd)}</script>
+        {faqJsonLd && (
+          <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+        )}
       </Helmet>
+
 
       <main className="container mx-auto px-4 py-6 max-w-4xl">
         <Breadcrumbs items={[{ label: "Drug Formulary", to: "/drugs" }, { label: drug.name }]} />
