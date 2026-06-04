@@ -119,7 +119,7 @@ const BLOCKS: Record<BlockKey, BlockInfo> = {
     label: "Popliteal sciatic nerve block",
     shortLabel: "Popliteal sciatic",
     color: "hsl(220, 70%, 55%)",
-    target: "Sciatic nerve in the popliteal fossa (proximal to its bifurcation into tibial and common peroneal)",
+    target: "Sciatic nerve in the popliteal fossa (proximal to its bifurcation into tibial and common fibular)",
     needleSite: "5–8 cm proximal to popliteal crease, lateral to popliteal artery (in-plane US, posterior or lateral approach)",
     sensory: "Foot and lower leg below the knee, EXCEPT a medial strip supplied by the saphenous nerve",
     motor: "Foot and ankle (plantarflexion, dorsiflexion, inversion, eversion) — motor block expected",
