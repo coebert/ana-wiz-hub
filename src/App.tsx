@@ -36,6 +36,8 @@ const A11yAudit = lazy(() => import("./pages/A11yAudit"));
 const Curriculum = lazy(() => import("./pages/Curriculum"));
 const DiagramSnapshot = lazy(() => import("./pages/DiagramSnapshot"));
 const Errata = lazy(() => import("./pages/Errata"));
+const Login = lazy(() => import("./pages/Login"));
+const Review = lazy(() => import("./pages/Review"));
 
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
@@ -215,6 +217,8 @@ const App = () => (
         <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/review" element={<Review />} />
           <Route path="/revise" element={<Index />} />
           <Route path="/map" element={<TopicMap />} />
           <Route path="/curriculum" element={<Curriculum />} />
