@@ -436,7 +436,7 @@ export const VAECMOCircuitDiagram = () => {
           {/* Oxygenator outlet → arterial return */}
           <path d={svgPath(oxyToArt.segs)} stroke="hsl(0 75% 48%)" strokeWidth="3" fill="none" strokeLinecap="round" />
           <path d={svgPath(oxyToArt.segs)} stroke="hsl(0 50% 80%)" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.5" />
-          {showLabels && <text x="295" y="490" fontSize="8" className="fill-muted-foreground">arterial return cannula 15–19 Fr · retrograde flow ↑</text>}
+          {showLabels && <text x="295" y="492" fontSize="10" fontWeight="600" className="fill-muted-foreground">arterial return 15–19 Fr · retrograde ↑</text>}
           {oxyParticles.map((p, i) => {
             const pt = pointAt(oxyToArt, p);
             return <circle key={`a${i}`} cx={pt.x} cy={pt.y} r="2.8" fill="hsl(0 80% 55%)" opacity={0.85} />;
