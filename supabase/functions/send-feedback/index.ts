@@ -130,7 +130,7 @@ Deno.serve(async (req) => {
     if (!resp.ok) {
       console.error('Resend error', resp.status, data)
       return new Response(
-        JSON.stringify({ error: 'Failed to send', details: data }),
+        JSON.stringify({ error: 'Failed to send. Please try again later.' }),
         { status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
       )
     }
