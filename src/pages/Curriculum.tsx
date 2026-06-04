@@ -169,12 +169,14 @@ const Curriculum = () => {
                 key={section}
                 className="rounded-xl border border-border bg-card p-4"
               >
-                <Link
-                  to={sectionMeta[section].path}
-                  className={`font-display text-lg font-semibold hover:underline ${SECTION_ACCENT[section]}`}
-                >
-                  {sectionMeta[section].label}
-                </Link>
+                <h2 className="m-0">
+                  <Link
+                    to={sectionMeta[section].path}
+                    className={`font-display text-lg font-semibold hover:underline ${SECTION_ACCENT[section]}`}
+                  >
+                    {sectionMeta[section].label}
+                  </Link>
+                </h2>
                 <div className="mt-3 grid grid-cols-2 gap-3">
                   {EXAMS.map((exam) => {
                     const matches = topics.filter((t) =>
