@@ -47,7 +47,7 @@ const workedExamples: WorkedExample[] = [
         at induction with the team if multiple muscles are to be operated on.
       </>
     ),
-    cites: ["Ganong Ch.13", "Resus Council UK 2021"],
+    cites: ["RCUK ALS 2021", "BNFc Atropine"],
   },
   {
     title: "Cholinergic crisis vs myasthenic crisis",
