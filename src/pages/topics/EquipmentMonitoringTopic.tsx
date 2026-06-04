@@ -805,7 +805,7 @@ const EquipmentMonitoringTopic = () => {
             <li><strong>Ascending bellows</strong> + low-VT/disconnect alarms = primary disconnect protection.</li>
             <li><strong>Scavenging</strong>: active (preferred) or passive; safety valves limit pressure to ±0.5 cmH₂O.</li>
             <li><strong>Capnography</strong>: gold standard for tube confirmation, ventilation and disconnect — mandatory for transfer.</li>
-            <li><strong>Pre-use check (AAGBI 2012)</strong>: machine, breathing system, vaporiser, monitors, ventilator, suction, drugs, emergency equipment.</li>
+            <li><strong>Pre-use check (Association of Anaesthetists 2023)</strong>: machine, breathing system, vaporiser, monitors, ventilator, suction, drugs, emergency equipment, self-inflating bag.</li>
           </ul>
         </SynthesisBlock>
           <ExamPitfallsCallout
