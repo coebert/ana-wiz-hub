@@ -43,7 +43,7 @@ const RRTModalitiesDiagram = () => {
       {/* Patient */}
       <rect x="10" y="85" width="50" height="50" rx="8" fill="hsl(0,70%,55%)" opacity="0.15" stroke="hsl(0,70%,55%)" strokeWidth="1.5" />
       <text x="35" y="107" textAnchor="middle" fill="hsl(0,70%,55%)" fontSize="8" fontWeight="600">Patient</text>
-      <text x="35" y="118" textAnchor="middle" fill="hsl(0,70%,55%)" fontSize="7">Vascath</text>
+      <text x="35" y="118" textAnchor="middle" fill="hsl(0,70%,55%)" fontSize="7">Dialysis catheter</text>
 
       {/* Blood pump */}
       <circle cx="115" cy="110" r="18" fill="hsl(var(--primary))" opacity="0.15" stroke="hsl(var(--primary))" strokeWidth="1.5" />
