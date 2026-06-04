@@ -433,6 +433,78 @@ export type Database = {
         }
         Relationships: []
       }
+      srs_reviews: {
+        Row: {
+          card_id: string
+          correct_index: number
+          created_at: string
+          due_at: string
+          ease: number
+          exam_tags: string[]
+          explanation: string
+          id: string
+          interval_days: number
+          lapses: number
+          last_grade: number | null
+          last_reviewed_at: string | null
+          options: Json
+          question: string
+          repetitions: number
+          topic_id: string
+          topic_path: string
+          topic_section: string
+          topic_title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          card_id: string
+          correct_index: number
+          created_at?: string
+          due_at?: string
+          ease?: number
+          exam_tags?: string[]
+          explanation?: string
+          id?: string
+          interval_days?: number
+          lapses?: number
+          last_grade?: number | null
+          last_reviewed_at?: string | null
+          options?: Json
+          question: string
+          repetitions?: number
+          topic_id: string
+          topic_path: string
+          topic_section: string
+          topic_title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          card_id?: string
+          correct_index?: number
+          created_at?: string
+          due_at?: string
+          ease?: number
+          exam_tags?: string[]
+          explanation?: string
+          id?: string
+          interval_days?: number
+          lapses?: number
+          last_grade?: number | null
+          last_reviewed_at?: string | null
+          options?: Json
+          question?: string
+          repetitions?: number
+          topic_id?: string
+          topic_path?: string
+          topic_section?: string
+          topic_title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       topic_audit_findings: {
         Row: {
           category: string
