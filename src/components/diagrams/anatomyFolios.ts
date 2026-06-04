@@ -58,7 +58,7 @@ export const airwayFolio: CorPictumFolioData = {
         { latin: "vallecula", english: "Vallecula", note: "Macintosh blade tip target — indirectly lifts the epiglottis." },
         { latin: "epiglottis", english: "Epiglottis", note: "Lifted directly by Miller (straight) blade." },
         { latin: "plica vocalis", english: "Vocal cord", note: "True cords define the glottis — narrowest adult airway point." },
-        { latin: "cartilago thyroidea", english: "Thyroid cartilage", note: "Surface landmark for cricothyroid puncture." },
+        { latin: "cartilago thyroidea", english: "Thyroid cartilage", note: "Key palpable surface landmark; the cricothyroid membrane immediately below it is the actual puncture target for FONA." },
         { latin: "trachea", english: "Trachea", note: "C-shaped cartilage rings, ~10–12 cm long in adults." },
       ],
       curriculumLinks: [
