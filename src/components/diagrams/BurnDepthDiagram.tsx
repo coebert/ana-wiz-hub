@@ -224,20 +224,9 @@ export const BurnDepthDiagram = () => {
               );
             })}
 
-            {/* Active depth callout — use short form to avoid duplicating the chip label
-                (e.g. "Deep partial" chip + "Deep partial thickness" callout was confusing). */}
-            <g>
-              <text
-                x={140}
-                y={15}
-                textAnchor="middle"
-                fontSize={11}
-                fontWeight={600}
-                fill="hsl(var(--foreground))"
-              >
-                {DEPTHS[active].short}
-              </text>
-            </g>
+            {/* Active depth callout removed — the permanent depth-class labels
+                inside the skin column already show the active depth, so an extra
+                callout duplicated the same text (e.g. "Deep partial" twice). */}
           </svg>
         </div>
 
