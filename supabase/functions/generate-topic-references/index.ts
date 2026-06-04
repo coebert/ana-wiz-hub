@@ -5,6 +5,7 @@
 // Response: { status, refs, error? }
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+import { TOPIC_ID_ALLOWLIST } from "../generate-podcast/_topic-ids.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
