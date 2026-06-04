@@ -42,8 +42,8 @@ const workedExamples: WorkedExample[] = [
 const MuscleRelaxantsTopic = () => {
   return (
     <TopicTemplate
-      title="Neuromuscular Blocking Agents"
-      subtitle="FRCA Primary — Pharmacology"
+      title="Muscle Relaxants & Neuromuscular Blocking Agents"
+      subtitle="FRCA Primary Pharmacology — Suxamethonium, Rocuronium, Sugammadex"
       backPath="/pharmacology"
       backLabel="Pharmacology"
       accentColor="text-pharmacology"
@@ -81,22 +81,83 @@ const MuscleRelaxantsTopic = () => {
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
             <p className="text-foreground/90 leading-relaxed">
-              Neuromuscular blocking agents (NMBAs) produce skeletal muscle relaxation for tracheal intubation and surgical access.
-              Understanding the distinction between depolarising and non-depolarising agents, their pharmacology, monitoring, and
-              reversal is fundamental to safe anaesthetic practice.
+              Muscle relaxants — also called neuromuscular blocking agents (NMBAs), neuromuscular blocking drugs,
+              NMJ blockers or NMBAs — produce skeletal muscle relaxation for tracheal intubation, mechanical ventilation
+              and surgical access. They fall into two overarching groups: <strong>depolarising</strong> (suxamethonium /
+              succinylcholine) and <strong>non-depolarising</strong> (US: non-depolarizing) muscle relaxants. A confident
+              grasp of mechanism, pharmacokinetics, monitoring and reversal is core Primary FRCA pharmacology.
             </p>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">NMJ Mechanism & Drug Action</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground">Properties of the Ideal Muscle Relaxant</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              A classic viva opener. Frame your answer in physical, pharmacokinetic and clinical buckets:
+            </p>
+            <div className="grid sm:grid-cols-3 gap-3">
+              <div className="rounded-lg border border-border bg-card p-3">
+                <p className="text-sm font-semibold text-foreground mb-1">Physical</p>
+                <ul className="text-sm text-muted-foreground list-disc list-inside space-y-0.5">
+                  <li>Stable, long shelf-life</li>
+                  <li>Room-temperature storage</li>
+                  <li>Painless on injection</li>
+                  <li>Cheap, widely available</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-3">
+                <p className="text-sm font-semibold text-foreground mb-1">Pharmacokinetic</p>
+                <ul className="text-sm text-muted-foreground list-disc list-inside space-y-0.5">
+                  <li>Rapid, predictable onset</li>
+                  <li>Predictable, controllable offset</li>
+                  <li>Organ-independent elimination</li>
+                  <li>Inactive, non-toxic metabolites</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-3">
+                <p className="text-sm font-semibold text-foreground mb-1">Clinical</p>
+                <ul className="text-sm text-muted-foreground list-disc list-inside space-y-0.5">
+                  <li>Fully reversible</li>
+                  <li>No CVS effects</li>
+                  <li>No histamine release / anaphylaxis</li>
+                  <li>Safe in pregnancy and paediatrics</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-foreground/90 leading-relaxed mt-3 text-sm italic">
+              No current agent meets every criterion — the comparison drives most viva discussion.
+            </p>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">NMJ Anatomy, nAChR Subunits & Drug Action</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              The adult nicotinic acetylcholine receptor (nAChR) at the motor end plate is a <strong>pentameric</strong>
+              ligand-gated cation channel comprising <strong>2 α, 1 β, 1 δ and 1 ε</strong> subunits. The foetal subtype
+              substitutes a <strong>γ</strong> subunit for ε. Binding of <strong>two</strong> acetylcholine molecules to
+              the α subunits opens a central pore, allowing Na⁺ influx and end-plate depolarisation.
+            </p>
             <p className="text-foreground/90 leading-relaxed mb-4">
-              Explore how different neuromuscular blocking agents interact with the nicotinic acetylcholine receptor
-              at the motor end plate. Switch between scenarios to see normal transmission, non-depolarising block,
-              depolarising block (suxamethonium), and neostigmine reversal.
+              <strong>Extrajunctional foetal-type receptor upregulation</strong> occurs in burns (&gt;24 h), denervation
+              injury, prolonged immobilisation and critical illness — these proliferate, depolarise more readily, and
+              underpin life-threatening hyperkalaemia after suxamethonium in these patients.
             </p>
             <div className="bg-card rounded-xl border border-border p-6">
               <NMBAMechanismDiagram />
             </div>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Pharmacokinetic Principles</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              All clinically used muscle relaxants are <strong>bulky, highly charged (quaternary ammonium) molecules</strong>.
+              This single fact explains most of their pharmacokinetic behaviour:
+            </p>
+            <ul className="list-disc list-inside text-foreground/90 leading-relaxed mt-2 space-y-1">
+              <li><strong>Small volume of distribution</strong> (≈ extracellular fluid, ~0.2–0.4 L/kg).</li>
+              <li><strong>Do not cross the blood–brain barrier</strong> → no sedative or analgesic effect.</li>
+              <li><strong>Do not cross the placenta</strong> in clinically significant amounts → safe in obstetric anaesthesia.</li>
+              <li><strong>Not absorbed orally</strong> — must be given IV (or IM for suxamethonium in paediatric emergencies).</li>
+            </ul>
           </section>
 
           <section className="mb-10">
@@ -107,8 +168,8 @@ const MuscleRelaxantsTopic = () => {
             </p>
             <p className="text-foreground/90 leading-relaxed mt-3">
               <strong>Phase I block</strong> (depolarising): initial fasciculations, sustained depolarisation → desensitisation.
-              No fade on TOF, no post-tetanic potentiation. <strong>Phase II block</strong>: with repeated/prolonged dosing,
-              characteristics resemble non-depolarising block (fade, PTP).
+              No fade on TOF, no post-tetanic potentiation. <strong>Phase II block</strong>: with repeated/prolonged dosing
+              (cumulative dose &gt;3–5 mg/kg) characteristics resemble non-depolarising block (fade, PTP).
             </p>
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
               <p className="text-sm font-medium text-foreground">Side Effects & Contraindications</p>
@@ -117,25 +178,109 @@ const MuscleRelaxantsTopic = () => {
                 muscular dystrophies, prolonged immobilisation). <strong>Bradycardia</strong> (muscarinic — especially with repeat
                 doses). <strong>Raised IOP, ICP, intragastric pressure</strong>. <strong>Malignant hyperthermia trigger</strong>.
                 <strong> Anaphylaxis</strong> (most common NMBA trigger). Masseter spasm. Myalgia.
+                <strong> Suxamethonium apnoea</strong> in plasma cholinesterase deficiency (dibucaine number &lt;30) — ventilate
+                until spontaneous reversal.
               </p>
             </div>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Non-Depolarising Agents</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground">Non-Depolarising Muscle Relaxants</h2>
             <p className="text-foreground/90 leading-relaxed">
-              Competitive antagonists at postjunctional nAChR α subunits. Two structural classes:
+              Competitive antagonists at postjunctional nAChR α subunits. Sub-classified by chemical structure into
+              <strong> aminosteroids</strong> and <strong>benzylisoquinoliniums</strong>; structure dictates histamine
+              release, elimination pathway and whether sugammadex can reverse the block.
             </p>
-            <p className="text-foreground/90 leading-relaxed mt-3">
-              <strong>Aminosteroids</strong> (pancuronium, vecuronium, rocuronium): hepatic metabolism/biliary excretion. Rocuronium
-              onset 60–90 s at 0.6 mg/kg, or 45 s at 1.2 mg/kg (modified RSI dose). Pancuronium: vagolytic (tachycardia), long
-              duration 60–90 min. Vecuronium: intermediate duration, minimal CVS effects.
+
+            <h3 className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Aminosteroids</h3>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Amine-substituted steroid nucleus. <strong>Less histamine release</strong> than benzylisoquinoliniums. The
+              steroid ring is the target for <strong>sugammadex</strong>, so block is rapidly reversible at any depth.
+              Primarily hepatic metabolism with biliary (and partial renal) excretion — duration prolonged in hepatic
+              or renal failure.
             </p>
-            <p className="text-foreground/90 leading-relaxed mt-3">
-              <strong>Benzylisoquinoliniums</strong> (atracurium, cisatracurium, mivacurium): Hofmann degradation (atracurium,
-              cisatracurium — organ-independent), ester hydrolysis (mivacurium — plasma cholinesterase). Atracurium: histamine
-              release at high doses. Cisatracurium: ~4–5× potency of atracurium (ED₉₅ 0.05 vs 0.25 mg/kg), no histamine release, purely Hofmann elimination.
+            <div className="grid sm:grid-cols-3 gap-3">
+              <div className="rounded-lg border border-border bg-card p-3">
+                <p className="text-sm font-semibold text-foreground">Rocuronium</p>
+                <ul className="text-xs text-muted-foreground list-disc list-inside mt-1 space-y-0.5">
+                  <li>Dose: 0.6 mg/kg (intubation); 1.2 mg/kg (RSI)</li>
+                  <li>Onset 60–90 s; duration ~30–45 min</li>
+                  <li>Excretion: bile 60% / urine 40%</li>
+                  <li>Reversible by sugammadex (incl. profound block)</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-3">
+                <p className="text-sm font-semibold text-foreground">Vecuronium</p>
+                <ul className="text-xs text-muted-foreground list-disc list-inside mt-1 space-y-0.5">
+                  <li>Dose: 0.1 mg/kg; duration ~25–45 min</li>
+                  <li>Excretion: bile 70% / urine 30%</li>
+                  <li>Minimal CVS effect; cardiac-stable choice</li>
+                  <li>Reversible by sugammadex</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-3">
+                <p className="text-sm font-semibold text-foreground">Pancuronium</p>
+                <ul className="text-xs text-muted-foreground list-disc list-inside mt-1 space-y-0.5">
+                  <li>Bisquaternary; long duration ~60–90 min</li>
+                  <li>Vagolytic → tachycardia, ↑BP</li>
+                  <li>Excretion: urine ~80% / bile ~20%</li>
+                  <li>Sugammadex: licensed off-label only</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Benzylisoquinoliniums</h3>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Based on a benzylisoquinoline backbone. <strong>More histamine release</strong> (caution in brittle asthma,
+              haemodynamic instability). Eliminated by <strong>Hofmann degradation</strong> (spontaneous, pH- and
+              temperature-dependent breakdown — slowed by acidosis and hypothermia) and/or <strong>ester hydrolysis</strong>
+              by non-specific plasma esterases. <strong>Sugammadex does not reverse these agents.</strong>
             </p>
+            <div className="grid sm:grid-cols-3 gap-3">
+              <div className="rounded-lg border border-border bg-card p-3">
+                <p className="text-sm font-semibold text-foreground">Atracurium</p>
+                <ul className="text-xs text-muted-foreground list-disc list-inside mt-1 space-y-0.5">
+                  <li>Dose: 0.5 mg/kg; duration ~25–35 min</li>
+                  <li>Hofmann (~40%) + ester hydrolysis (~60%)</li>
+                  <li>Histamine release at higher doses</li>
+                  <li>Metabolite laudanosine — theoretical seizure risk on prolonged infusion</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-3">
+                <p className="text-sm font-semibold text-foreground">Cisatracurium</p>
+                <ul className="text-xs text-muted-foreground list-disc list-inside mt-1 space-y-0.5">
+                  <li>R-cis, R'-cis stereoisomer of atracurium</li>
+                  <li>Dose: 0.15 mg/kg; ~4–5× more potent</li>
+                  <li>Pure Hofmann elimination — organ-independent</li>
+                  <li>Negligible histamine release; ICU agent of choice</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-3">
+                <p className="text-sm font-semibold text-foreground">Mivacurium</p>
+                <ul className="text-xs text-muted-foreground list-disc list-inside mt-1 space-y-0.5">
+                  <li>Dose: 0.2 mg/kg; short-acting 12–20 min</li>
+                  <li>Plasma cholinesterase metabolism</li>
+                  <li>Prolonged in suxamethonium apnoea</li>
+                  <li>Declining use due to onset/offset variability</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-lg border border-primary/30 bg-primary/5 p-4">
+              <h3 className="text-lg font-serif font-semibold text-foreground mb-1">
+                Why is rocuronium the non-depolarising RSI agent? The potency argument
+              </h3>
+              <p className="text-foreground/90 leading-relaxed text-sm">
+                Counter-intuitively, rocuronium's <strong>low potency</strong> is what gives it a fast onset. Potency
+                is the dose required for a given effect — a less potent drug must be given in a larger absolute dose
+                (rocuronium ED₉₅ ~0.3 mg/kg vs vecuronium 0.05 mg/kg). A larger dose creates a steeper
+                <strong> plasma–effect-site concentration gradient</strong>, driving more rapid diffusion across the
+                NMJ and faster receptor occupancy. At 1.2 mg/kg (2 × ED₉₅), rocuronium achieves intubating conditions
+                in ~45–60 s — comparable to suxamethonium and the only non-depolarising agent suitable for true RSI.
+                Combined with the availability of sugammadex 16 mg/kg for emergency reversal, roc–sug has largely
+                displaced suxamethonium in many UK departments.
+              </p>
+            </div>
           </section>
 
           <section className="mb-10">
