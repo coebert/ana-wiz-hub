@@ -234,9 +234,27 @@ export default function VoiceViva() {
 
   async function start() {
     setError(null);
-    setPhase("connecting");
     setTranscript([]);
     partialRef.current.clear();
+
+    if (typeof window !== "undefined" && !window.isSecureContext) {
+      setError(toFriendly(new Error("insecure context")));
+      setPhase("error");
+      return;
+    }
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setError(toFriendly(new Error("unsupported")));
+      setPhase("error");
+      return;
+    }
+
+    const micStream = await requestMicPermission();
+    if (!micStream) {
+      setPhase("error");
+      return;
+    }
+
+    setPhase("connecting");
 
     try {
       const { data, error: fnErr } = await supabase.functions.invoke("viva-voice-token", {
