@@ -41,7 +41,7 @@ const keyPoints = [
   { text: "Ritchie whistle is gas-powered (Venturi/Bernoulli) — sounds even during power failure.", cites: ["Cormack & Lehane 1984"] },
   { text: "AAGBI minimum monitoring: SpO₂, ECG, NIBP, EtCO₂, FiO₂, agent, airway pressure, temperature; TOF if NMBs.", cites: ["McCoy & Mirakhur 1993"] },
   { text: "Pencil-point spinal needles (Whitacre/Sprotte) reduce PDPH vs Quincke; Tuohy directs epidural catheter via Huber tip.", cites: ["Miller 1941"] },
-  { text: "Pre-use AAGBI 2012 check: upstream-to-downstream sequence; two-bag test for circuit integrity.", cites: ["Macintosh 1943"] },
+  { text: "Pre-use Association of Anaesthetists 2023 check (supersedes AAGBI 2012): upstream-to-downstream sequence; two-bag test for circuit integrity; self-inflating bag immediately available.", cites: ["AAGBI Check 2023"] },
 ];
 
 import manleyImg from "@/assets/ventilators/manley-mp3.jpg";
