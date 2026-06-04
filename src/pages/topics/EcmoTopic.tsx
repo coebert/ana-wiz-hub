@@ -3,6 +3,9 @@ import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { ecmoQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
+import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
+import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
 
 /**
  * Dedicated FFICM / EDIC standalone topic page for Extracorporeal Membrane
