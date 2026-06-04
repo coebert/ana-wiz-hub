@@ -208,8 +208,8 @@ export const VAECMOCircuitDiagram = () => {
             fill="hsl(var(--icu))" opacity="0.10" stroke="hsl(var(--icu))" strokeWidth="0.75" />
           <path d="M 265 140 Q 280 170, 275 230 Q 265 265, 245 270 Q 232 250, 235 195 Q 237 155, 245 140 Z"
             fill="hsl(var(--icu))" opacity="0.10" stroke="hsl(var(--icu))" strokeWidth="0.75" />
-          {showLabels && <text x="120" y="195" fontSize="8" className="fill-muted-foreground">R lung</text>}
-          {showLabels && <text x="252" y="195" fontSize="8" className="fill-muted-foreground">L lung</text>}
+          {showLabels && <text x="120" y="195" fontSize="10" fontWeight="600" className="fill-muted-foreground">R lung</text>}
+          {showLabels && <text x="252" y="195" fontSize="10" fontWeight="600" className="fill-muted-foreground">L lung</text>}
 
           {/* ===== GREAT VESSELS ===== */}
           {/* SVC — descends from R brachiocephalic vein into RA */}
@@ -295,25 +295,25 @@ export const VAECMOCircuitDiagram = () => {
 
           {showLabels && (
             <>
-              <text x="190" y="198" textAnchor="middle" fontSize="7.5" className="fill-foreground font-semibold">RA</text>
-              <text x="170" y="252" textAnchor="middle" fontSize="7.5" className="fill-foreground font-semibold">RV</text>
-              <text x="230" y="198" textAnchor="middle" fontSize="7.5" className="fill-foreground font-semibold">LA</text>
-              <text x="225" y="258" textAnchor="middle" fontSize="7.5" className="fill-foreground font-semibold">LV</text>
-              <text x="245" y="160" fontSize="7" className="fill-muted-foreground">Ao</text>
-              <text x="160" y="118" fontSize="7" className="fill-muted-foreground">SVC</text>
-              <text x="208" y="350" fontSize="7" className="fill-muted-foreground">IVC</text>
-              <text x="245" y="135" fontSize="6.5" className="fill-muted-foreground">arch</text>
+              <text x="190" y="199" textAnchor="middle" fontSize="9" className="fill-foreground font-bold">RA</text>
+              <text x="170" y="253" textAnchor="middle" fontSize="9" className="fill-foreground font-bold">RV</text>
+              <text x="230" y="199" textAnchor="middle" fontSize="9" className="fill-foreground font-bold">LA</text>
+              <text x="225" y="259" textAnchor="middle" fontSize="9" className="fill-foreground font-bold">LV</text>
+              <text x="245" y="160" fontSize="9" fontWeight="600" className="fill-muted-foreground">Ao</text>
+              <text x="158" y="118" fontSize="9" fontWeight="600" className="fill-muted-foreground">SVC</text>
+              <text x="208" y="350" fontSize="9" fontWeight="600" className="fill-muted-foreground">IVC</text>
+              <text x="245" y="135" fontSize="8" fontWeight="600" className="fill-muted-foreground">arch</text>
             </>
           )}
           {showLVDistension && (
-            <text x="225" y="310" textAnchor="middle" fontSize="9" className="fill-[hsl(0_75%_45%)] font-semibold">LV DISTENDED</text>
+            <text x="225" y="310" textAnchor="middle" fontSize="11" className="fill-[hsl(0_75%_45%)] font-bold">LV DISTENDED</text>
           )}
 
           {/* Watershed marker on aortic arch */}
           {showHarlequin && (
             <>
-              <circle cx={watershedX} cy={watershedY} r="7" fill="none" stroke="hsl(45 95% 50%)" strokeWidth="2" strokeDasharray="2 2" />
-              <text x={watershedX - 50} y={watershedY - 8} fontSize="9" className="fill-[hsl(45_95%_45%)] font-semibold">watershed</text>
+              <circle cx={watershedX} cy={watershedY} r="8" fill="none" stroke="hsl(45 95% 50%)" strokeWidth="2.5" strokeDasharray="2 2" />
+              <text x={watershedX - 55} y={watershedY - 10} fontSize="11" fontWeight="700" className="fill-[hsl(38_95%_38%)]">watershed</text>
             </>
           )}
 
@@ -325,7 +325,7 @@ export const VAECMOCircuitDiagram = () => {
                 const pt = pointAt(nativeEjectSegs, p);
                 return <circle key={`ne${i}`} cx={pt.x} cy={pt.y} r="2.5" fill="hsl(220 70% 45%)" opacity={0.6 + 0.4 * Math.sin(p * Math.PI)} />;
               })}
-              <text x="175" y="175" fontSize="8" className="fill-[hsl(220_70%_45%)] font-semibold">native (deox)</text>
+              <text x="170" y="172" fontSize="10" fontWeight="700" className="fill-[hsl(220_70%_38%)]">native (deox)</text>
             </>
           )}
 
@@ -337,7 +337,7 @@ export const VAECMOCircuitDiagram = () => {
           {[0, 1, 2, 3].map((i) => (
             <circle key={`sh${i}`} cx={200} cy={230 + i * 12} r="1" fill="hsl(220 60% 30%)" />
           ))}
-          {showLabels && <text x="295" y="448" fontSize="8" className="fill-muted-foreground">multi-stage venous drainage cannula 23–25 Fr</text>}
+          {showLabels && <text x="295" y="448" fontSize="10" fontWeight="600" className="fill-muted-foreground">multi-stage venous drainage 23–25 Fr</text>}
           {particles(0).map((p, i) => {
             const pt = pointAt(drainSegs, 1 - p); // flow from RA → pump
             return <circle key={`d${i}`} cx={pt.x} cy={pt.y} r="2.8" fill="hsl(220 80% 55%)" opacity={0.85} />;
@@ -367,8 +367,8 @@ export const VAECMOCircuitDiagram = () => {
             </g>
             {showLabels && (
               <>
-                <text x="0" y="50" textAnchor="middle" fontSize="9" className="fill-foreground font-semibold">Centrifugal pump</text>
-                <text x="0" y="60" textAnchor="middle" fontSize="7" className="fill-muted-foreground">mag-levitated · 2–4k rpm</text>
+                <text x="0" y="52" textAnchor="middle" fontSize="11" className="fill-foreground font-bold">Centrifugal pump</text>
+                <text x="0" y="64" textAnchor="middle" fontSize="9" className="fill-muted-foreground">mag-levitated · 2–4k rpm</text>
               </>
             )}
           </g>
@@ -402,11 +402,11 @@ export const VAECMOCircuitDiagram = () => {
             {/* Sweep gas inlet (top) */}
             <line x1="645" y1="95" x2="645" y2="110" stroke="hsl(195 70% 50%)" strokeWidth="2" />
             <polygon points="642,108 648,108 645,113" fill="hsl(195 70% 50%)" />
-            {showLabels && <text x="645" y="88" textAnchor="middle" fontSize="7.5" className="fill-[hsl(195_70%_45%)] font-semibold">sweep gas (FiO₂ 21–100%)</text>}
+            {showLabels && <text x="645" y="86" textAnchor="middle" fontSize="9.5" className="fill-[hsl(195_70%_38%)] font-bold">sweep gas (FiO₂ 21–100%)</text>}
             {/* Sweep gas outlet (bottom) */}
             <line x1="645" y1="245" x2="645" y2="258" stroke="hsl(0 60% 50%)" strokeWidth="2" />
             <polygon points="642,255 648,255 645,260" fill="hsl(0 60% 50%)" />
-            {showLabels && <text x="645" y="270" textAnchor="middle" fontSize="7.5" className="fill-muted-foreground">CO₂ + H₂O exhaust</text>}
+            {showLabels && <text x="645" y="272" textAnchor="middle" fontSize="9.5" fontWeight="600" className="fill-muted-foreground">CO₂ + H₂O exhaust</text>}
 
             {/* Animated O2 bubbles down through fibres */}
             {[0, 1, 2, 3, 4].map((i) => {
@@ -420,23 +420,23 @@ export const VAECMOCircuitDiagram = () => {
             {/* Oxygenator labels */}
             {showLabels && (
               <>
-                <text x="685" y="130" fontSize="8" className="fill-foreground font-semibold">PMP</text>
-                <text x="685" y="140" fontSize="8" className="fill-foreground font-semibold">membrane</text>
-                <text x="685" y="150" fontSize="8" className="fill-foreground font-semibold">oxygenator</text>
-                <text x="685" y="172" fontSize="7" className="fill-[hsl(0_70%_45%)]">↑ oxy out</text>
-                <text x="685" y="225" fontSize="7" className="fill-[hsl(220_70%_45%)]">↓ deox in</text>
+                <text x="685" y="132" fontSize="10" className="fill-foreground font-bold">PMP</text>
+                <text x="685" y="144" fontSize="10" className="fill-foreground font-bold">membrane</text>
+                <text x="685" y="156" fontSize="10" className="fill-foreground font-bold">oxygenator</text>
+                <text x="685" y="178" fontSize="9" fontWeight="600" className="fill-[hsl(0_70%_42%)]">↑ oxy out</text>
+                <text x="685" y="228" fontSize="9" fontWeight="600" className="fill-[hsl(220_70%_42%)]">↓ deox in</text>
               </>
             )}
           </g>
 
           {/* Heat exchanger label (integral) */}
           <rect x="615" y="248" width="60" height="14" rx="3" fill="hsl(45 50% 50%)" opacity="0.3" stroke="hsl(45 50% 40%)" strokeWidth="0.75" />
-          <text x="645" y="258" textAnchor="middle" fontSize="7.5" className="fill-foreground">Heater 36–37 °C</text>
+          <text x="645" y="259" textAnchor="middle" fontSize="9" fontWeight="700" className="fill-foreground">Heater 36–37 °C</text>
 
           {/* Oxygenator outlet → arterial return */}
           <path d={svgPath(oxyToArt.segs)} stroke="hsl(0 75% 48%)" strokeWidth="3" fill="none" strokeLinecap="round" />
           <path d={svgPath(oxyToArt.segs)} stroke="hsl(0 50% 80%)" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.5" />
-          {showLabels && <text x="295" y="490" fontSize="8" className="fill-muted-foreground">arterial return cannula 15–19 Fr · retrograde flow ↑</text>}
+          {showLabels && <text x="295" y="492" fontSize="10" fontWeight="600" className="fill-muted-foreground">arterial return 15–19 Fr · retrograde ↑</text>}
           {oxyParticles.map((p, i) => {
             const pt = pointAt(oxyToArt, p);
             return <circle key={`a${i}`} cx={pt.x} cy={pt.y} r="2.8" fill="hsl(0 80% 55%)" opacity={0.85} />;
@@ -446,31 +446,31 @@ export const VAECMOCircuitDiagram = () => {
           <g>
             {/* venous (R groin) */}
             <circle cx="215" cy="425" r="4.5" fill="hsl(220 70% 30%)" stroke="hsl(var(--background))" strokeWidth="1" />
-            {showLabels && <text x="178" y="418" fontSize="7" className="fill-muted-foreground">R fem v.</text>}
+            {showLabels && <text x="172" y="418" fontSize="9" fontWeight="700" className="fill-[hsl(220_70%_38%)]">R fem v.</text>}
             {/* arterial (L groin) */}
             <circle cx="245" cy="435" r="4.5" fill="hsl(0 70% 38%)" stroke="hsl(var(--background))" strokeWidth="1" />
-            {showLabels && <text x="252" y="430" fontSize="7" className="fill-muted-foreground">L fem a.</text>}
+            {showLabels && <text x="252" y="430" fontSize="9" fontWeight="700" className="fill-[hsl(0_70%_42%)]">L fem a.</text>}
           </g>
 
           {/* Distal limb perfusion catheter (small antegrade sheath off return cannula) */}
           <path d="M 245 435 Q 240 460, 235 490" stroke="hsl(0 75% 50%)" strokeWidth="2" fill="none" strokeDasharray="3 2" />
           <circle cx="235" cy="490" r="2.5" fill="hsl(0 70% 38%)" />
-          {showLabels && <text x="240" y="500" fontSize="7" className="fill-muted-foreground">distal perfusion 6 Fr (anti-ischaemia)</text>}
+          {showLabels && <text x="240" y="503" fontSize="9" fontWeight="600" className="fill-muted-foreground">distal perfusion 6 Fr (anti-ischaemia)</text>}
 
           {/* Right radial monitoring marker (clinical relevance for Harlequin) */}
           {showHarlequin && (
             <>
-              <circle cx="130" cy="105" r="4" fill="none" stroke="hsl(45 95% 50%)" strokeWidth="2" />
-              <text x="100" y="125" fontSize="7" className="fill-[hsl(45_95%_45%)] font-semibold">monitor SpO₂ R hand</text>
+              <circle cx="130" cy="105" r="5" fill="none" stroke="hsl(45 95% 50%)" strokeWidth="2.5" />
+              <text x="98" y="128" fontSize="9" fontWeight="700" className="fill-[hsl(38_95%_38%)]">monitor SpO₂ R hand</text>
             </>
           )}
 
           {/* Compass / orientation */}
           <g transform="translate(40 40)" opacity="0.5">
-            <text x="0" y="-2" fontSize="7" textAnchor="middle" className="fill-muted-foreground">cranial</text>
+            <text x="0" y="-2" fontSize="9" fontWeight="600" textAnchor="middle" className="fill-muted-foreground">cranial</text>
             <line x1="0" y1="0" x2="0" y2="20" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" />
             <polygon points="-3,3 3,3 0,-2" fill="hsl(var(--muted-foreground))" />
-            <text x="0" y="32" fontSize="7" textAnchor="middle" className="fill-muted-foreground">caudal</text>
+            <text x="0" y="33" fontSize="9" fontWeight="600" textAnchor="middle" className="fill-muted-foreground">caudal</text>
           </g>
         </svg>
       </div>

@@ -3,367 +3,341 @@ import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ECMOMode = "vv" | "va";
 
-/* ─── Shared SVG sub-components ─── */
+/* ─── Layout zones ─────────────────────────────────────────────
+   viewBox: 520 × 440
+   Patient zone:  x =   0 … 200  (left)
+   Circuit zone:  x = 220 … 520  (right)
+   Connector cannulae bridge the two zones.
+   ────────────────────────────────────────────────────────────── */
 
-const PatientBody = ({ mode }: { mode: ECMOMode }) => (
+const Patient = ({ mode }: { mode: ECMOMode }) => (
   <g>
     {/* Torso silhouette */}
-    <path d="M140,28 Q190,18 240,28 L255,140 Q190,155 125,140 Z"
-      fill="hsl(var(--muted-foreground))" fillOpacity="0.04"
-      stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.3" />
-    <text x="190" y="42" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.5" fontWeight="600" letterSpacing="1">PATIENT</text>
-
-    {/* Heart — anatomical shape */}
-    <path d="M174,58 C174,50 180,46 186,46 C192,46 196,50 196,56 C196,50 200,46 206,46 C212,46 218,50 218,58 C218,72 196,88 196,88 C196,88 174,72 174,58Z"
-      fill="hsl(0, 45%, 38%)" fillOpacity="0.35" stroke="hsl(0, 40%, 45%)" strokeWidth="1" />
-    {/* Aortic arch */}
-    <path d="M196,52 Q196,36 215,36 Q234,36 234,52 L234,90"
-      fill="none" stroke="hsl(0, 50%, 50%)" strokeWidth="2" opacity="0.3" />
-    {/* SVC */}
-    <path d="M220,28 L220,52" fill="none" stroke="hsl(220, 45%, 45%)" strokeWidth="2" opacity="0.25" />
-    {/* IVC */}
-    <path d="M180,88 L180,140" fill="none" stroke="hsl(220, 45%, 45%)" strokeWidth="2" opacity="0.25" />
-    <text x="196" y="74" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground))" opacity="0.5">Heart</text>
+    <path
+      d="M55,40 Q100,28 145,40 L160,260 Q100,275 40,260 Z"
+      fill="hsl(var(--muted-foreground))"
+      fillOpacity="0.05"
+      stroke="hsl(var(--muted-foreground))"
+      strokeWidth="1.2"
+      opacity="0.6"
+    />
+    <text
+      x="100"
+      y="56"
+      textAnchor="middle"
+      fontSize="9"
+      fontWeight="700"
+      letterSpacing="1.5"
+      fill="hsl(var(--muted-foreground))"
+      opacity="0.7"
+    >
+      PATIENT
+    </text>
 
     {/* Lungs */}
-    <path d="M142,48 C130,44 124,54 126,66 C128,78 136,86 146,82 L146,52Z"
-      fill="hsl(200, 25%, 50%)" fillOpacity="0.08" stroke="hsl(200, 30%, 45%)" strokeWidth="0.75" opacity="0.4" />
-    <path d="M250,48 C262,44 268,54 266,66 C264,78 256,86 246,82 L246,52Z"
-      fill="hsl(200, 25%, 50%)" fillOpacity="0.08" stroke="hsl(200, 30%, 45%)" strokeWidth="0.75" opacity="0.4" />
-    <text x="136" y="67" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.35" textAnchor="middle">L</text>
-    <text x="256" y="67" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.35" textAnchor="middle">R</text>
+    <path
+      d="M55,80 C42,76 36,92 40,112 C44,132 56,142 68,138 L68,86 Z"
+      fill="hsl(200, 35%, 55%)" fillOpacity="0.12"
+      stroke="hsl(200, 40%, 45%)" strokeWidth="0.75" opacity="0.6"
+    />
+    <path
+      d="M145,80 C158,76 164,92 160,112 C156,132 144,142 132,138 L132,86 Z"
+      fill="hsl(200, 35%, 55%)" fillOpacity="0.12"
+      stroke="hsl(200, 40%, 45%)" strokeWidth="0.75" opacity="0.6"
+    />
 
-    {/* Femoral vessels at bottom */}
-    <line x1="175" y1="140" x2="175" y2="158" stroke="hsl(220, 45%, 45%)" strokeWidth="2" opacity="0.25" />
-    {mode === "va" && <line x1="205" y1="140" x2="205" y2="158" stroke="hsl(0, 50%, 50%)" strokeWidth="2" opacity="0.25" />}
-    <text x="175" y="166" textAnchor="middle" fontSize="5" fill="hsl(220, 50%, 55%)" opacity="0.5">Fem V</text>
-    {mode === "va" && <text x="205" y="166" textAnchor="middle" fontSize="5" fill="hsl(0, 55%, 55%)" opacity="0.5">Fem A</text>}
-  </g>
-);
+    {/* Heart */}
+    <path
+      d="M82,100 C82,90 90,84 98,84 C104,84 109,88 109,94 C109,88 114,84 120,84 C128,84 136,90 136,100 C136,118 109,140 109,140 C109,140 82,118 82,100 Z"
+      fill="hsl(0, 55%, 48%)" fillOpacity="0.18"
+      stroke="hsl(0, 50%, 45%)" strokeWidth="1" opacity="0.85"
+    />
+    <text x="109" y="115" textAnchor="middle" fontSize="9" fontWeight="600" fill="hsl(var(--foreground))" opacity="0.7">Heart</text>
 
-const PumpUnit = () => (
-  <g>
-    {/* Housing */}
-    <circle cx="60" cy="260" r="22" fill="hsl(var(--muted-foreground))" fillOpacity="0.06"
-      stroke="hsl(var(--muted-foreground))" strokeWidth="2" opacity="0.5" />
-    {/* Impeller blades */}
-    {[0, 60, 120, 180, 240, 300].map(angle => (
-      <line key={angle}
-        x1={60 + 8 * Math.cos(angle * Math.PI / 180)} y1={260 + 8 * Math.sin(angle * Math.PI / 180)}
-        x2={60 + 16 * Math.cos(angle * Math.PI / 180)} y2={260 + 16 * Math.sin(angle * Math.PI / 180)}
-        stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" opacity="0.25" strokeLinecap="round" />
-    ))}
-    <text x="60" y="258" textAnchor="middle" fontSize="6.5" fill="hsl(var(--foreground))" fontWeight="700" opacity="0.7">PUMP</text>
-    <text x="60" y="267" textAnchor="middle" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.5">Centrifugal</text>
-    {/* RPM indicator */}
-    <text x="60" y="287" textAnchor="middle" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">2000–5000 RPM</text>
-    {/* Rotation arrow */}
-    <path d="M44,250 C40,258 44,268 52,272" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.4">
-      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" repeatCount="indefinite" />
-    </path>
-    <polygon points="52,272 48,268 54,268" fill="hsl(var(--muted-foreground))" opacity="0.4" />
-  </g>
-);
+    {/* SVC (right side, blue) */}
+    <path d="M120,40 L120,84" stroke="hsl(220, 60%, 50%)" strokeWidth="3" fill="none" opacity="0.55" strokeLinecap="round" />
+    <text x="126" y="52" fontSize="8" fill="hsl(220, 55%, 50%)" opacity="0.75">SVC</text>
 
-const Oxygenator = () => (
-  <g>
-    {/* Main housing */}
-    <rect x="120" y="240" width="100" height="50" rx="10"
-      fill="hsl(var(--muted-foreground))" fillOpacity="0.05"
-      stroke="hsl(var(--muted-foreground))" strokeWidth="2" opacity="0.5" />
-    {/* Hollow fibre membranes */}
-    {Array.from({ length: 12 }, (_, i) => (
-      <line key={i} x1={130 + i * 7.5} y1="248" x2={130 + i * 7.5} y2="282"
-        stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.15" />
-    ))}
-    {/* Blood path arrows (horizontal through fibres) */}
-    <path d="M125,258 L215,258" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.15" strokeDasharray="2 3" />
-    <path d="M125,272 L215,272" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.15" strokeDasharray="2 3" />
-    <text x="170" y="260" textAnchor="middle" fontSize="6.5" fill="hsl(var(--foreground))" fontWeight="700" opacity="0.7">OXYGENATOR</text>
-    <text x="170" y="269" textAnchor="middle" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.5">Polymethylpentene</text>
-    <text x="170" y="277" textAnchor="middle" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">hollow fibre membrane</text>
+    {/* IVC (left of heart, blue, down to femoral) */}
+    <path d="M95,140 L95,265" stroke="hsl(220, 60%, 50%)" strokeWidth="3" fill="none" opacity="0.55" strokeLinecap="round" />
+    <text x="78" y="200" fontSize="8" fill="hsl(220, 55%, 50%)" opacity="0.75">IVC</text>
 
-    {/* Gas exchange labels */}
-    <path d="M170,290 L170,310" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="2 2" opacity="0.3" />
-    <text x="170" y="320" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.45">Sweep gas (O₂ + air)</text>
-    <text x="170" y="329" textAnchor="middle" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.35">↑ FGF = ↑ CO₂ removal</text>
-    <text x="170" y="337" textAnchor="middle" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.35">↑ FiO₂ = ↑ oxygenation</text>
-  </g>
-);
+    {/* Aorta (right of heart, red, down) */}
+    <path d="M125,108 Q140,108 140,128 L140,265" stroke="hsl(0, 65%, 50%)" strokeWidth="3" fill="none" opacity="0.55" strokeLinecap="round" />
+    <text x="146" y="200" fontSize="8" fill="hsl(0, 60%, 50%)" opacity="0.75">Aorta</text>
 
-const HeatExchanger = () => (
-  <g>
-    <rect x="228" y="244" width="36" height="20" rx="4"
-      fill="hsl(25, 55%, 50%)" fillOpacity="0.1"
-      stroke="hsl(25, 55%, 50%)" strokeWidth="0.75" opacity="0.5" />
-    {/* Water circuit symbol */}
-    <path d="M234,250 C238,246 242,254 246,250 C250,246 254,254 258,250"
-      fill="none" stroke="hsl(25, 55%, 50%)" strokeWidth="0.75" opacity="0.4" />
-    <text x="246" y="260" textAnchor="middle" fontSize="4.5" fill="hsl(25, 55%, 50%)" opacity="0.6">Heat</text>
-    <text x="246" y="268" textAnchor="middle" fontSize="3.5" fill="hsl(25, 55%, 50%)" opacity="0.4">exchanger</text>
-  </g>
-);
-
-const MonitoringPoints = ({ mode }: { mode: ECMOMode }) => (
-  <g>
-    {/* Pre-oxygenator pressure */}
-    <circle cx="105" y="265" r="3" fill="hsl(45, 70%, 55%)" fillOpacity="0.2" stroke="hsl(45, 70%, 55%)" strokeWidth="0.75" opacity="0.6" />
-    <text x="105" y="258" textAnchor="middle" fontSize="3.5" fill="hsl(45, 70%, 55%)" opacity="0.5">P₁</text>
-
-    {/* Post-oxygenator pressure */}
-    <circle cx="235" y="265" r="3" fill="hsl(45, 70%, 55%)" fillOpacity="0.2" stroke="hsl(45, 70%, 55%)" strokeWidth="0.75" opacity="0.6" />
-    <text x="235" y="258" textAnchor="middle" fontSize="3.5" fill="hsl(45, 70%, 55%)" opacity="0.5">P₂</text>
-
-    {/* ΔP across oxygenator */}
-    <path d="M110,265 L230,265" fill="none" stroke="hsl(45, 70%, 55%)" strokeWidth="0.5" strokeDasharray="1 2" opacity="0.3" />
-
-    {/* Pre-membrane SvO₂ */}
-    <text x="90" y="245" fontSize="4" fill="hsl(220, 50%, 55%)" opacity="0.5" textAnchor="end">Pre-membrane</text>
-    <text x="90" y="251" fontSize="3.5" fill="hsl(220, 50%, 55%)" opacity="0.4" textAnchor="end">SvO₂ monitor</text>
-
-    {/* Post-membrane */}
-    <text x="280" y="245" fontSize="4" fill="hsl(0, 55%, 55%)" opacity="0.5">Post-membrane</text>
-    <text x="280" y="251" fontSize="3.5" fill="hsl(0, 55%, 55%)" opacity="0.4">PaO₂ &gt; 40 kPa</text>
-
-    {/* Flow sensor */}
-    <rect x="84" y="256" width="8" height="8" rx="1" fill="hsl(150, 50%, 45%)" fillOpacity="0.15" stroke="hsl(150, 50%, 45%)" strokeWidth="0.5" opacity="0.5" />
-    <text x="88" y="262" textAnchor="middle" fontSize="3" fill="hsl(150, 50%, 45%)" opacity="0.5">F</text>
-
+    {/* Femoral vein stub */}
+    <text x="95" y="280" textAnchor="middle" fontSize="8" fontWeight="600" fill="hsl(220, 55%, 50%)" opacity="0.85">Fem V</text>
     {mode === "va" && (
-      <g>
-        <text x="350" y="100" textAnchor="end" fontSize="4" fill="hsl(35, 60%, 50%)" opacity="0.6">R radial SpO₂</text>
-        <text x="350" y="106" textAnchor="end" fontSize="3.5" fill="hsl(35, 60%, 50%)" opacity="0.45">monitor mixing zone</text>
-      </g>
+      <text x="140" y="280" textAnchor="middle" fontSize="8" fontWeight="600" fill="hsl(0, 60%, 50%)" opacity="0.85">Fem A</text>
+    )}
+    {mode === "vv" && (
+      <text x="120" y="32" textAnchor="middle" fontSize="8" fontWeight="600" fill="hsl(0, 60%, 50%)" opacity="0.85">R IJV</text>
     )}
   </g>
 );
 
-const FlowAnimation = ({ path, color, delay = "0s" }: { path: string; color: string; delay?: string }) => (
-  <circle r="3" fill={color} opacity="0.6">
-    <animateMotion dur="3s" repeatCount="indefinite" begin={delay}>
-      <mpath href={`#${path}`} />
-    </animateMotion>
-    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite" begin={delay} />
-  </circle>
+const Pump = ({ x, y }: { x: number; y: number }) => (
+  <g transform={`translate(${x},${y})`}>
+    <circle r="28" fill="hsl(var(--card))" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" opacity="0.9" />
+    <circle r="22" fill="hsl(var(--muted))" fillOpacity="0.4" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.6" />
+    {/* Impeller blades — rotating */}
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1.2s" repeatCount="indefinite" />
+      {[0, 60, 120, 180, 240, 300].map((angle) => (
+        <path
+          key={angle}
+          d="M0,0 Q8,-3 16,-1 L14,3 Q6,1 0,4 Z"
+          fill="hsl(45, 80%, 55%)"
+          stroke="hsl(45, 80%, 40%)"
+          strokeWidth="0.5"
+          transform={`rotate(${angle})`}
+        />
+      ))}
+      <circle r="4" fill="hsl(45, 90%, 70%)" />
+    </g>
+    <text y="46" textAnchor="middle" fontSize="10" fontWeight="700" fill="hsl(var(--foreground))">Pump</text>
+    <text y="58" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">centrifugal · 2–4k rpm</text>
+  </g>
+);
+
+const Oxygenator = ({ x, y }: { x: number; y: number }) => (
+  <g transform={`translate(${x},${y})`}>
+    <rect x="-45" y="-30" width="90" height="60" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" opacity="0.95" />
+    {/* Membrane fibres */}
+    {Array.from({ length: 10 }, (_, i) => (
+      <line key={i} x1={-40 + i * 9} y1="-25" x2={-40 + i * 9} y2="25" stroke="hsl(215, 30%, 60%)" strokeWidth="0.6" opacity="0.5" />
+    ))}
+    {/* Gas-exchange gradient overlay */}
+    <rect x="-45" y="-30" width="90" height="60" rx="8" fill="url(#oxy-gradient)" opacity="0.4" />
+    <text y="-5" textAnchor="middle" fontSize="10" fontWeight="700" fill="hsl(var(--foreground))">Oxygenator</text>
+    <text y="7" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">PMP membrane</text>
+
+    {/* Sweep gas in/out */}
+    <line x1="0" y1="-30" x2="0" y2="-42" stroke="hsl(195, 70%, 50%)" strokeWidth="2" />
+    <polygon points="-3,-34 3,-34 0,-29" fill="hsl(195, 70%, 50%)" />
+    <text x="0" y="-48" textAnchor="middle" fontSize="9" fontWeight="600" fill="hsl(195, 70%, 45%)">Sweep gas (O₂)</text>
+
+    <line x1="0" y1="30" x2="0" y2="42" stroke="hsl(0, 55%, 50%)" strokeWidth="2" />
+    <polygon points="-3,38 3,38 0,43" fill="hsl(0, 55%, 50%)" />
+    <text x="0" y="56" textAnchor="middle" fontSize="9" fontWeight="600" fill="hsl(0, 55%, 50%)">CO₂ exhaust</text>
+  </g>
+);
+
+/* Animated flow particle along an arbitrary path id */
+const Flow = ({ pathId, color, delay = "0s", count = 4 }: { pathId: string; color: string; delay?: string; count?: number }) => (
+  <>
+    {Array.from({ length: count }, (_, i) => (
+      <circle key={i} r="3.5" fill={color} opacity="0.95">
+        <animateMotion
+          dur="2.8s"
+          repeatCount="indefinite"
+          begin={`${parseFloat(delay) + (i * 2.8) / count}s`}
+        >
+          <mpath href={`#${pathId}`} />
+        </animateMotion>
+      </circle>
+    ))}
+  </>
 );
 
 const ECMOCircuitDiagram = () => {
   const [mode, setMode] = useState<ECMOMode>("vv");
 
+  // Bridge points between patient and circuit
+  // Drainage exits Fem V (95,265) → out to pump
+  // Return enters either R IJV (120,40) for VV or Fem A (140,265) for VA
+
+  // Pump @ (300, 320). Oxygenator @ (430, 200).
+  const drainPath = "M 95 265 Q 95 320 200 340 L 272 320";
+  const pumpToOxy = "M 328 320 Q 380 320 380 280 L 430 230";
+  const returnPathVV = "M 430 170 Q 430 80 350 50 L 120 40";
+  const returnPathVA = "M 430 170 Q 430 100 360 100 Q 250 100 200 220 Q 175 280 140 265";
+
   return (
-    <DiagramFigure id="ecmo-circuit" title="ECMO circuit: veno-venous and veno-arterial configurations" description="Animated extracorporeal membrane oxygenation circuit toggling between VV and VA configurations, with cannulation sites, pump, oxygenator and heat exchanger.">
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">ECMO Circuit — VV vs VA</h3>
-      <p className="text-xs text-muted-foreground mb-3">Interactive diagram showing circuit components, flow paths, and monitoring points</p>
+    <DiagramFigure
+      id="ecmo-circuit"
+      title="ECMO circuit: VV vs VA configuration"
+      description="Animated extracorporeal membrane oxygenation circuit toggling between veno-venous (respiratory support) and veno-arterial (cardiopulmonary support) configurations."
+    >
+      <div className="border border-border rounded-lg p-4 mb-6">
+        <h3 className="text-lg font-serif font-bold text-foreground mb-1">ECMO Circuit — VV vs VA</h3>
+        <p className="text-xs text-muted-foreground mb-3">
+          Toggle the mode to see how the return cannula site changes the support type
+        </p>
 
-      <div className="flex gap-2 mb-4">
-        <button onClick={() => setMode("vv")}
-          className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all ${mode === "vv" ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:text-foreground"}`}>
-          VV-ECMO
-        </button>
-        <button onClick={() => setMode("va")}
-          className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all ${mode === "va" ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:text-foreground"}`}>
-          VA-ECMO
-        </button>
-      </div>
+        {/* Mode toggle */}
+        <div role="tablist" aria-label="ECMO mode" className="inline-flex rounded-lg border border-border p-1 bg-secondary/40 mb-4">
+          {(["vv", "va"] as ECMOMode[]).map((m) => (
+            <button
+              key={m}
+              role="tab"
+              aria-selected={mode === m}
+              onClick={() => setMode(m)}
+              className={`px-4 py-1.5 rounded-md text-sm font-semibold transition-all ${
+                mode === m
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {m === "vv" ? "VV-ECMO" : "VA-ECMO"}
+            </button>
+          ))}
+        </div>
 
-      <div className="flex flex-col md:flex-row gap-5 items-start">
-        <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="0 0 400 360" width="390" height="350" className="border border-border rounded bg-gradient-to-b from-background to-secondary/10">
-            <defs>
-              <linearGradient id="ecmo-deoxy" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="hsl(225, 55%, 38%)" />
-                <stop offset="100%" stopColor="hsl(225, 50%, 32%)" />
-              </linearGradient>
-              <linearGradient id="ecmo-oxy" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="hsl(0, 60%, 48%)" />
-                <stop offset="100%" stopColor="hsl(0, 55%, 42%)" />
-              </linearGradient>
-              <filter id="ecmo-glow">
-                <feGaussianBlur stdDeviation="2" result="blur" />
-                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-              </filter>
-            </defs>
+        <div className="flex flex-col lg:flex-row gap-5 items-start">
+          {/* SVG */}
+          <div className="flex-shrink-0 w-full lg:w-[560px]">
+            <svg viewBox="0 0 520 440" className="w-full h-auto border border-border rounded-lg bg-gradient-to-br from-background to-secondary/10">
+              <defs>
+                <linearGradient id="oxy-gradient" x1="0" y1="1" x2="0" y2="0">
+                  <stop offset="0%" stopColor="hsl(220, 70%, 45%)" stopOpacity="0.5" />
+                  <stop offset="50%" stopColor="hsl(280, 30%, 45%)" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="hsl(0, 70%, 50%)" stopOpacity="0.5" />
+                </linearGradient>
 
-            <PatientBody mode={mode} />
+                {/* Invisible motion paths */}
+                <path id="ecmo-drain" d={drainPath} fill="none" />
+                <path id="ecmo-pump-oxy" d={pumpToOxy} fill="none" />
+                <path id="ecmo-return-vv" d={returnPathVV} fill="none" />
+                <path id="ecmo-return-va" d={returnPathVA} fill="none" />
+              </defs>
 
+              {/* Zone divider (subtle) */}
+              <line x1="200" y1="20" x2="200" y2="380" stroke="hsl(var(--border))" strokeDasharray="3 4" opacity="0.4" />
+              <text x="100" y="18" textAnchor="middle" fontSize="9" fontWeight="700" letterSpacing="1.5" fill="hsl(var(--muted-foreground))" opacity="0.6">PATIENT</text>
+              <text x="360" y="18" textAnchor="middle" fontSize="9" fontWeight="700" letterSpacing="1.5" fill="hsl(var(--muted-foreground))" opacity="0.6">EXTRACORPOREAL CIRCUIT</text>
+
+              <Patient mode={mode} />
+
+              {/* Drainage tubing (deoxygenated, blue) — always present */}
+              <path d={drainPath} stroke="hsl(220, 70%, 45%)" strokeWidth="6" fill="none" strokeLinecap="round" opacity="0.85" />
+              <path d={drainPath} stroke="hsl(220, 60%, 75%)" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.6" />
+              <text x="170" y="370" fontSize="9" fontWeight="600" fill="hsl(220, 55%, 45%)">
+                Drainage 23–25 Fr
+              </text>
+
+              {/* Pump → oxygenator (still deoxygenated) */}
+              <path d={pumpToOxy} stroke="hsl(220, 70%, 45%)" strokeWidth="6" fill="none" strokeLinecap="round" opacity="0.85" />
+
+              {/* Return tubing (oxygenated, red) — depends on mode */}
+              {mode === "vv" ? (
+                <>
+                  <path d={returnPathVV} stroke="hsl(0, 70%, 48%)" strokeWidth="6" fill="none" strokeLinecap="round" opacity="0.85" />
+                  <path d={returnPathVV} stroke="hsl(0, 60%, 80%)" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.6" />
+                  <text x="270" y="32" textAnchor="middle" fontSize="9" fontWeight="600" fill="hsl(0, 65%, 45%)">
+                    Return 19–21 Fr → R IJV (RA)
+                  </text>
+                </>
+              ) : (
+                <>
+                  <path d={returnPathVA} stroke="hsl(0, 70%, 48%)" strokeWidth="6" fill="none" strokeLinecap="round" opacity="0.85" />
+                  <path d={returnPathVA} stroke="hsl(0, 60%, 80%)" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.6" />
+                  <text x="270" y="92" textAnchor="middle" fontSize="9" fontWeight="600" fill="hsl(0, 65%, 45%)">
+                    Return 15–19 Fr → Fem artery (retrograde)
+                  </text>
+                </>
+              )}
+
+              {/* Components rendered last so they sit on top of tubing */}
+              <Pump x={300} y={320} />
+              <Oxygenator x={430} y={200} />
+
+              {/* Animated flow particles */}
+              <Flow pathId="ecmo-drain" color="hsl(220, 85%, 55%)" />
+              <Flow pathId="ecmo-pump-oxy" color="hsl(220, 85%, 55%)" />
+              <Flow pathId={mode === "vv" ? "ecmo-return-vv" : "ecmo-return-va"} color="hsl(0, 80%, 55%)" />
+
+              {/* Mode-specific call-outs */}
+              {mode === "va" && (
+                <g>
+                  {/* Mixing / watershed zone */}
+                  <ellipse cx="120" cy="78" rx="32" ry="14" fill="hsl(45, 90%, 55%)" fillOpacity="0.18" stroke="hsl(45, 90%, 50%)" strokeWidth="1.2" strokeDasharray="3 2" />
+                  <text x="120" y="80" textAnchor="middle" fontSize="8" fontWeight="700" fill="hsl(38, 90%, 35%)">Watershed</text>
+                  <text x="120" y="92" textAnchor="middle" fontSize="7" fill="hsl(38, 80%, 40%)">(Harlequin)</text>
+                </g>
+              )}
+
+              {/* Legend */}
+              <g transform="translate(220, 400)">
+                <rect x="-4" y="-12" width="290" height="32" rx="4" fill="hsl(var(--secondary))" fillOpacity="0.5" stroke="hsl(var(--border))" strokeWidth="0.5" />
+                <line x1="6" y1="-2" x2="26" y2="-2" stroke="hsl(220, 70%, 45%)" strokeWidth="4" strokeLinecap="round" />
+                <text x="30" y="1" fontSize="9" fill="hsl(var(--foreground))">Deoxygenated</text>
+                <line x1="110" y1="-2" x2="130" y2="-2" stroke="hsl(0, 70%, 48%)" strokeWidth="4" strokeLinecap="round" />
+                <text x="134" y="1" fontSize="9" fill="hsl(var(--foreground))">Oxygenated</text>
+                <circle cx="16" cy="13" r="3" fill="hsl(45, 90%, 55%)" />
+                <text x="24" y="16" fontSize="9" fill="hsl(var(--foreground))">Centrifugal pump (spinning)</text>
+              </g>
+            </svg>
+          </div>
+
+          {/* Info panel */}
+          <div className="flex-1 min-w-0 space-y-3 animate-fade-in" key={mode}>
             {mode === "vv" ? (
-              <g>
-                {/* ── VV-ECMO Flow Paths ── */}
-                {/* Drainage: femoral vein → pump */}
-                <path id="vv-drain" d="M175,158 L175,195 Q175,210 155,210 L80,210 Q60,210 60,230 L60,238"
-                  fill="none" stroke="url(#ecmo-deoxy)" strokeWidth="3" strokeLinecap="round" />
-                <text x="130" y="205" fontSize="5" fill="hsl(220, 50%, 55%)" opacity="0.5">Drainage cannula</text>
-                <text x="130" y="212" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">23–25 Fr multistage</text>
-
-                {/* Pump → oxygenator */}
-                <path d="M82,260 L120,260"
-                  fill="none" stroke="url(#ecmo-deoxy)" strokeWidth="3" strokeLinecap="round" />
-
-                {/* Oxygenator → return */}
-                <path id="vv-return" d="M220,260 L310,260 Q335,260 335,240 L335,195 Q335,175 315,170 L220,140"
-                  fill="none" stroke="url(#ecmo-oxy)" strokeWidth="3" strokeLinecap="round" />
-                <text x="280" y="180" fontSize="5" fill="hsl(0, 55%, 55%)" opacity="0.5">Return cannula</text>
-                <text x="280" y="187" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">19–21 Fr (R IJV)</text>
-
-                {/* Return label at patient */}
-                <text x="222" y="136" fontSize="5.5" fill="hsl(0, 55%, 55%)" opacity="0.7">→ RA (via IJV)</text>
-
-                {/* Cannula tip in RA */}
-                <circle cx="210" cy="72" r="2.5" fill="hsl(0, 55%, 50%)" opacity="0.35" filter="url(#ecmo-glow)" />
-                <text x="226" y="75" fontSize="4" fill="hsl(0, 50%, 50%)" opacity="0.4">Return tip in RA</text>
-
-                {/* Flow particles */}
-                <FlowAnimation path="vv-drain" color="hsl(225, 55%, 45%)" delay="0s" />
-                <FlowAnimation path="vv-drain" color="hsl(225, 55%, 45%)" delay="1.5s" />
-                <FlowAnimation path="vv-return" color="hsl(0, 55%, 50%)" delay="0s" />
-                <FlowAnimation path="vv-return" color="hsl(0, 55%, 50%)" delay="1.5s" />
-
-                {/* Dual-lumen note */}
-                <text x="190" y="152" textAnchor="middle" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.3" fontStyle="italic">or bicaval dual-lumen (Avalon) via R IJV</text>
-
-                {/* Key box */}
-                <rect x="250" y="305" width="140" height="40" rx="6" fill="hsl(var(--muted-foreground))" fillOpacity="0.04" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.4" />
-                <text x="320" y="320" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground))" opacity="0.6" fontWeight="700">VV: Respiratory support only</text>
-                <text x="320" y="329" textAnchor="middle" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.4">Native CO drives circulation</text>
-                <text x="320" y="338" textAnchor="middle" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">Recirculation fraction &lt;30%</text>
-              </g>
+              <>
+                <div className="p-3 rounded-lg border border-border bg-card">
+                  <p className="font-semibold text-foreground text-sm mb-1">VV-ECMO — Respiratory Support</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Drains from RA (fem vein), oxygenates, returns to RA (R IJV).
+                    Blood still passes through native heart & lungs — <strong>requires intact cardiac output</strong>.
+                    No effect on MAP.
+                  </p>
+                </div>
+                <div className="p-3 rounded-lg border border-border bg-card">
+                  <p className="font-semibold text-foreground text-sm mb-1">Key Settings</p>
+                  <ul className="text-xs text-muted-foreground space-y-0.5 list-disc pl-4">
+                    <li>Flow 3–7 L/min (60–80 mL/kg/min)</li>
+                    <li>FiO₂ on sweep → controls oxygenation</li>
+                    <li>Sweep gas flow → controls CO₂ removal</li>
+                    <li>Pre-membrane SvO₂; post-membrane PaO₂ &gt; 40 kPa</li>
+                  </ul>
+                </div>
+                <div className="p-3 rounded-lg border border-border bg-card">
+                  <p className="font-semibold text-foreground text-sm mb-1">Recirculation</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Oxygenated return re-entering drainage limb. Target &lt; 30%. Reduced by
+                    separating cannula tips or using a bicaval dual-lumen (Avalon) via R IJV.
+                  </p>
+                </div>
+              </>
             ) : (
-              <g>
-                {/* ── VA-ECMO Flow Paths ── */}
-                {/* Drainage: femoral vein → pump */}
-                <path id="va-drain" d="M175,158 L175,195 Q175,210 155,210 L80,210 Q60,210 60,230 L60,238"
-                  fill="none" stroke="url(#ecmo-deoxy)" strokeWidth="3" strokeLinecap="round" />
-                <text x="130" y="205" fontSize="5" fill="hsl(220, 50%, 55%)" opacity="0.5">Drainage cannula</text>
-                <text x="130" y="212" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">21–25 Fr (fem vein → RA)</text>
-
-                {/* Pump → oxygenator */}
-                <path d="M82,260 L120,260"
-                  fill="none" stroke="url(#ecmo-deoxy)" strokeWidth="3" strokeLinecap="round" />
-
-                {/* Oxygenator → return (femoral artery) */}
-                <path id="va-return" d="M220,260 L310,260 Q335,260 335,240 L335,195 Q335,175 315,170 L205,158"
-                  fill="none" stroke="url(#ecmo-oxy)" strokeWidth="3" strokeLinecap="round" />
-                <text x="280" y="180" fontSize="5" fill="hsl(0, 55%, 55%)" opacity="0.5">Return cannula</text>
-                <text x="280" y="187" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">15–19 Fr (fem artery)</text>
-
-                {/* Return label */}
-                <text x="215" y="170" fontSize="5.5" fill="hsl(0, 55%, 55%)" opacity="0.7">→ Femoral artery</text>
-                <text x="215" y="177" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.4">(retrograde aortic flow)</text>
-
-                {/* Flow particles */}
-                <FlowAnimation path="va-drain" color="hsl(225, 55%, 45%)" delay="0s" />
-                <FlowAnimation path="va-drain" color="hsl(225, 55%, 45%)" delay="1.5s" />
-                <FlowAnimation path="va-return" color="hsl(0, 55%, 50%)" delay="0s" />
-                <FlowAnimation path="va-return" color="hsl(0, 55%, 50%)" delay="1.5s" />
-
-                {/* Distal perfusion cannula */}
-                <path d="M205,158 L215,148 L225,155" fill="none" stroke="hsl(0, 45%, 50%)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5" />
-                <text x="230" y="148" fontSize="4.5" fill="hsl(0, 45%, 50%)" opacity="0.55">Distal perfusion</text>
-                <text x="230" y="154" fontSize="4" fill="hsl(0, 45%, 50%)" opacity="0.4">cannula (6–8 Fr)</text>
-
-                {/* Mixing / Harlequin zone in aorta */}
-                <rect x="145" y="88" width="105" height="24" rx="5"
-                  fill="hsl(35, 65%, 50%)" fillOpacity="0.08"
-                  stroke="hsl(35, 65%, 50%)" strokeWidth="1" strokeDasharray="3 2" opacity="0.55" />
-                <text x="197" y="100" textAnchor="middle" fontSize="5" fill="hsl(35, 65%, 50%)" opacity="0.7" fontWeight="700">Mixing zone (watershed)</text>
-                <text x="197" y="108" textAnchor="middle" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.4">Harlequin syndrome — monitor R radial SpO₂</text>
-
-                {/* Native antegrade flow arrow */}
-                <path d="M215,52 L230,52 L230,90" fill="none" stroke="hsl(220, 40%, 50%)" strokeWidth="1.5" opacity="0.3" strokeDasharray="2 2" />
-                <text x="240" y="72" fontSize="3.5" fill="hsl(220, 40%, 50%)" opacity="0.4">Native</text>
-                <text x="240" y="77" fontSize="3.5" fill="hsl(220, 40%, 50%)" opacity="0.4">antegrade</text>
-
-                {/* ECMO retrograde arrow */}
-                <path d="M205,130 L205,112" fill="none" stroke="hsl(0, 50%, 50%)" strokeWidth="1.5" opacity="0.3" strokeDasharray="2 2" />
-                <text x="155" y="125" fontSize="3.5" fill="hsl(0, 50%, 50%)" opacity="0.4">ECMO retrograde</text>
-
-                {/* Key box */}
-                <rect x="250" y="305" width="140" height="40" rx="6" fill="hsl(var(--muted-foreground))" fillOpacity="0.04" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.4" />
-                <text x="320" y="320" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground))" opacity="0.6" fontWeight="700">VA: Cardiac + respiratory</text>
-                <text x="320" y="329" textAnchor="middle" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.4">↑ Afterload → risk LV distension</text>
-                <text x="320" y="338" textAnchor="middle" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">May need IABP / Impella to vent LV</text>
-              </g>
+              <>
+                <div className="p-3 rounded-lg border border-border bg-card">
+                  <p className="font-semibold text-foreground text-sm mb-1">VA-ECMO — Cardiac + Respiratory</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Drains from RA, oxygenates, returns to <strong>femoral artery</strong>
+                    (retrograde aortic flow). Bypasses both heart and lungs — provides full
+                    gas exchange <em>and</em> circulatory support.
+                  </p>
+                </div>
+                <div className="p-3 rounded-lg border border-destructive/30 bg-destructive/5">
+                  <p className="font-semibold text-foreground text-sm mb-1">⚠ Harlequin Syndrome</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Recovered native LV ejects <em>deoxygenated</em> blood that meets retrograde
+                    ECMO flow at an aortic watershed. Upper body (coronaries, brain, R arm) is
+                    perfused by poorly-oxygenated blood. <strong>Monitor right radial SpO₂.</strong>
+                  </p>
+                </div>
+                <div className="p-3 rounded-lg border border-destructive/30 bg-destructive/5">
+                  <p className="font-semibold text-foreground text-sm mb-1">⚠ LV Distension</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Retrograde flow ↑ LV afterload. Failing LV cannot eject → LV distends,
+                    pulmonary oedema, intracardiac thrombus. Vent with IABP, Impella ("ECMELLA"),
+                    or atrial septostomy. Track arterial pulsatility.
+                  </p>
+                </div>
+                <div className="p-3 rounded-lg border border-border bg-card">
+                  <p className="font-semibold text-foreground text-sm mb-1">Distal Limb Perfusion</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Femoral arterial cannula occludes the SFA — add a 6–8 Fr antegrade sheath
+                    distally. Monitor foot SpO₂, NIRS, lactate.
+                  </p>
+                </div>
+              </>
             )}
-
-            <PumpUnit />
-            <Oxygenator />
-            <HeatExchanger />
-            <MonitoringPoints mode={mode} />
-
-            {/* Legend */}
-            <g opacity="0.5">
-              <rect x="8" y="310" width="95" height="42" rx="4" fill="hsl(var(--muted-foreground))" fillOpacity="0.03" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
-              <line x1="14" y1="322" x2="30" y2="322" stroke="url(#ecmo-deoxy)" strokeWidth="3" strokeLinecap="round" />
-              <text x="34" y="324" fontSize="4.5" fill="hsl(var(--muted-foreground))">Deoxygenated</text>
-              <line x1="14" y1="334" x2="30" y2="334" stroke="url(#ecmo-oxy)" strokeWidth="3" strokeLinecap="round" />
-              <text x="34" y="336" fontSize="4.5" fill="hsl(var(--muted-foreground))">Oxygenated</text>
-              <circle cx="22" cy="345" r="2" fill="hsl(45, 70%, 55%)" opacity="0.6" />
-              <text x="34" y="347" fontSize="4.5" fill="hsl(var(--muted-foreground))">Monitoring point</text>
-            </g>
-          </svg>
-        </div>
-
-        {/* Info panel */}
-        <div className="flex-1 min-w-0 space-y-3 animate-fade-in" key={mode}>
-          {mode === "vv" ? (
-            <>
-              <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">VV-ECMO — Respiratory Support Only</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Deoxygenated blood drained from RA (via femoral vein), oxygenated extracorporeally, and returned to RA (via IJV). Blood passes through native heart and lungs — <strong>requires adequate cardiac function</strong>. No increase in MAP or cardiac output.
-                </p>
-              </div>
-              <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Circuit Components</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  <strong>Centrifugal pump:</strong> Non-occlusive, preload-dependent. Flow 3–7 L/min. <strong>Oxygenator:</strong> Polymethylpentene (PMP) hollow fibre membrane — separate gas & blood phases. Sweep gas controls CO₂ removal; FiO₂ controls oxygenation. <strong>Heat exchanger:</strong> Countercurrent water circuit maintains normothermia.
-                </p>
-              </div>
-              <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Monitoring & Recirculation</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Pre-membrane SvO₂ reflects systemic oxygen delivery. Post-membrane PaO₂ should be &gt;40 kPa. ΔP across oxygenator detects clot/fibre degradation. <strong>Recirculation:</strong> Return blood re-entering drainage — reduce by separating cannula tips. Aim recirculation &lt;30%.
-                </p>
-              </div>
-              <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Cannulation Options</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  <strong>Femoro-jugular:</strong> Drainage 23–25 Fr femoral vein, return 19–21 Fr R IJV. <strong>Bicaval dual-lumen (Avalon):</strong> Single R IJV cannula draining from SVC + IVC, return towards tricuspid valve — requires TOE/fluoroscopy for positioning.
-                </p>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">VA-ECMO — Cardiac + Respiratory Support</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Deoxygenated blood drained from RA (femoral vein), oxygenated, and returned to <strong>arterial system</strong> (femoral artery — peripheral, or ascending aorta — central). Provides gas exchange AND circulatory support. Bypasses heart and lungs.
-                </p>
-              </div>
-              <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Harlequin Syndrome</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Peripheral VA: retrograde aortic ECMO flow meets native (poorly oxygenated) antegrade cardiac output at a watershed. <strong>Upper body receives deoxygenated blood</strong> — monitor right radial SpO₂/PaO₂. Solution: convert to VAV or add IJV return cannula.
-                </p>
-              </div>
-              <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">LV Distension & Afterload</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  VA-ECMO increases LV afterload → failing LV cannot eject → LV distension, ↑LVEDP, pulmonary oedema, LV thrombus. Venting strategies: <strong>IABP, Impella, LA/LV vent, atrial septostomy</strong>. Monitor arterial pulsatility — flat trace = no LV ejection.
-                </p>
-              </div>
-              <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Distal Perfusion</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Femoral arterial cannula risks ipsilateral limb ischaemia. <strong>Distal perfusion cannula</strong> (6–8 Fr) inserted into SFA distal to ECMO cannula — supplies antegrade flow to leg. Monitor: foot SpO₂, lactate, NIRS.
-                </p>
-              </div>
-            </>
-          )}
+          </div>
         </div>
       </div>
-    </div>
     </DiagramFigure>
   );
 };
