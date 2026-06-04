@@ -756,12 +756,15 @@ const EquipmentMonitoringTopic = () => {
         </CollapsibleSubsection>
 
         {/* ───── 7. Pre-Use Check ───── */}
-        <CollapsibleSubsection title="7 · Standard Pre-Use Check (AAGBI 2012)">
+        <CollapsibleSubsection title="7 · Standard Pre-Use Check (Association of Anaesthetists 2023)">
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               A structured check is mandatory at the <strong>start of every operating list</strong>, with an abbreviated check
-              between cases. Follow a logical "<strong>upstream-to-downstream</strong>" sequence — from gas supply, through the
-              machine, to the breathing system and patient. Document and attach a "Machine Checked" label.
+              between cases (Association of Anaesthetists, <em>Checking Anaesthetic Equipment 2023</em>
+              <InlineRef topicId="equipment-monitoring" labels={["AAGBI Check 2023"]} /> — supersedes the AAGBI 2012 guideline).
+              Follow a logical "<strong>upstream-to-downstream</strong>" sequence — from gas supply, through the
+              machine, to the breathing system and patient. A <strong>self-inflating bag</strong> must be immediately available
+              and is itself checked. Document and attach a "Machine Checked" label.
             </p>
             <ol className="list-decimal list-inside space-y-2 pl-2">
               <li><strong>Self-test & power.</strong> Mains plugged in, battery back-up ≥30 min, electronic self-test completes uninterrupted.</li>
