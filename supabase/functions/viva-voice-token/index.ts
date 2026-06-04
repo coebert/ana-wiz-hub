@@ -1,25 +1,31 @@
-// Mints a short-lived OpenAI Realtime session token for the voice viva.
+// Mints a short-lived OpenAI Realtime client secret (ephemeral key) for the
+// voice viva. The OpenAI API key never leaves the edge function; the browser
+// only sees an ek_... token, valid ~60 s.
 //
 // Body: { topicTitle, topicDescription?, exam: "primary"|"final"|"fficm" }
-// Returns: the OpenAI sessions response (client_secret.value is the ephemeral key).
-//
-// The OpenAI API key never leaves the edge function; the browser only sees the
-// ephemeral key, which expires within ~60 s and is scoped to a single session.
+// Returns: OpenAI client-secrets response { value, expires_at, session }.
 
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
-const MODEL = "gpt-4o-realtime-preview-2024-12-17";
+const MODEL = "gpt-realtime";
 const VOICE = "alloy";
 
 type Exam = "primary" | "final" | "fficm";
 
 const EXAM_LABEL: Record<Exam, string> = {
-  primary: "FRCA Primary (basic sciences) — expect physics, physiology, pharmacology to a junior trainee standard.",
-  final: "FRCA Final (applied clinical) — expect senior trainee standard with structured clinical reasoning.",
-  fficm: "FFICM (critical care) — expect senior ICM trainee depth on physiology, evidence and decision-making.",
+  primary:
+    "FRCA Primary (basic sciences) — expect physics, physiology, pharmacology to a junior trainee standard.",
+  final:
+    "FRCA Final (applied clinical) — expect senior trainee standard with structured clinical reasoning.",
+  fficm:
+    "FFICM (critical care) — expect senior ICM trainee depth on physiology, evidence and decision-making.",
 };
 
-function buildInstructions(opts: { topicTitle: string; topicDescription?: string; exam: Exam }) {
+function buildInstructions(opts: {
+  topicTitle: string;
+  topicDescription?: string;
+  exam: Exam;
+}) {
   return `You are an experienced UK ${opts.exam.toUpperCase()} viva examiner.
 
 Topic: "${opts.topicTitle}".
@@ -63,9 +69,10 @@ Deno.serve(async (req) => {
     };
 
     const topicTitle = (body.topicTitle ?? "").toString().trim() || "General anaesthesia";
-    const exam: Exam = (body.exam === "primary" || body.exam === "final" || body.exam === "fficm")
-      ? body.exam
-      : "final";
+    const exam: Exam =
+      body.exam === "primary" || body.exam === "final" || body.exam === "fficm"
+        ? body.exam
+        : "final";
 
     const instructions = buildInstructions({
       topicTitle,
@@ -73,27 +80,38 @@ Deno.serve(async (req) => {
       exam,
     });
 
-    const r = await fetch("https://api.openai.com/v1/realtime/sessions", {
+    const r = await fetch("https://api.openai.com/v1/realtime/client_secrets", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
-        "OpenAI-Beta": "realtime=v1",
       },
       body: JSON.stringify({
-        model: MODEL,
-        voice: VOICE,
-        modalities: ["audio", "text"],
-        instructions,
-        input_audio_transcription: { model: "whisper-1" },
-        turn_detection: { type: "server_vad", threshold: 0.5, prefix_padding_ms: 300, silence_duration_ms: 600 },
+        expires_after: { anchor: "created_at", seconds: 600 },
+        session: {
+          type: "realtime",
+          model: MODEL,
+          instructions,
+          audio: {
+            input: {
+              transcription: { model: "whisper-1" },
+              turn_detection: {
+                type: "server_vad",
+                threshold: 0.5,
+                prefix_padding_ms: 300,
+                silence_duration_ms: 600,
+              },
+            },
+            output: { voice: VOICE },
+          },
+        },
       }),
     });
 
     const text = await r.text();
     if (!r.ok) {
       return new Response(
-        JSON.stringify({ error: `OpenAI sessions error ${r.status}: ${text}` }),
+        JSON.stringify({ error: `OpenAI client_secrets error ${r.status}: ${text}` }),
         { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }

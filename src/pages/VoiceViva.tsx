@@ -98,8 +98,7 @@ export default function VoiceViva() {
         },
       });
       if (fnErr) throw new Error(fnErr.message);
-      const ephemeralKey: string | undefined = data?.client_secret?.value;
-      const model: string = data?.model ?? "gpt-4o-realtime-preview-2024-12-17";
+      const ephemeralKey: string | undefined = data?.value;
       if (!ephemeralKey) throw new Error("Missing ephemeral key from session response");
 
       const pc = new RTCPeerConnection();
@@ -134,12 +133,11 @@ export default function VoiceViva() {
       const offer = await pc.createOffer();
       await pc.setLocalDescription(offer);
 
-      const sdpResp = await fetch(`https://api.openai.com/v1/realtime?model=${encodeURIComponent(model)}`, {
+      const sdpResp = await fetch("https://api.openai.com/v1/realtime/calls", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${ephemeralKey}`,
           "Content-Type": "application/sdp",
-          "OpenAI-Beta": "realtime=v1",
         },
         body: offer.sdp ?? "",
       });
