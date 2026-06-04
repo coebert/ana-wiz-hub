@@ -68,7 +68,7 @@ const OhmsLawDiagram = () => (
         {/* DC vs AC */}
         <text x="300" y="330" textAnchor="middle" className="fill-foreground text-[12px] font-bold">DC vs AC Current</text>
         {[
-          "DC (direct current): constant direction of electron flow. Batteries, defibrillators",
+          "DC (direct current): constant direction of electron flow. Batteries (modern defibrillators store charge as DC in a capacitor but deliver a biphasic — i.e. reversing — waveform to the patient)",
           "AC (alternating current): sinusoidal oscillation (50 Hz UK mains). Diathermy uses high-frequency AC (0.4–3 MHz)",
           "Impedance (Z): AC equivalent of resistance. Z = √(R² + (XL − XC)²) where XL = inductive, XC = capacitive reactance",
           "Body impedance falls at high frequencies (capacitive reactance ↓), but the current required to induce VF also rises sharply above ~100 Hz — VF risk is maximal at mains frequency (50–60 Hz), which is why diathermy (>300 kHz) can safely use large currents without inducing fibrillation",
