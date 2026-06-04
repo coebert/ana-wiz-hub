@@ -728,42 +728,7 @@ export type Database = {
       }
     }
     Views: {
-      public_errata: {
-        Row: {
-          created_at: string | null
-          id: string | null
-          message: string | null
-          public_note: string | null
-          quoted_text: string | null
-          reviewed_at: string | null
-          topic_id: string | null
-          topic_title: string | null
-          topic_url: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          id?: string | null
-          message?: string | null
-          public_note?: string | null
-          quoted_text?: string | null
-          reviewed_at?: string | null
-          topic_id?: string | null
-          topic_title?: string | null
-          topic_url?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          id?: string | null
-          message?: string | null
-          public_note?: string | null
-          quoted_text?: string | null
-          reviewed_at?: string | null
-          topic_id?: string | null
-          topic_title?: string | null
-          topic_url?: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       has_role: {
