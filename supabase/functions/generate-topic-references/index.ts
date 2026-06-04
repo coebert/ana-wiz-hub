@@ -101,7 +101,8 @@ Deno.serve(async (req) => {
   }
 
   if (!LOVABLE_API_KEY) {
-    return fail(500, "LOVABLE_API_KEY not configured");
+    console.error("LOVABLE_API_KEY not configured");
+    return fail(503, "Service unavailable");
   }
 
   let body: {
@@ -268,7 +269,8 @@ Deno.serve(async (req) => {
       },
       { onConflict: "topic_id" },
     );
-    return fail(500, message);
+    console.error("generate-topic-references error:", message);
+    return fail(500, "Internal server error");
   }
 });
 
