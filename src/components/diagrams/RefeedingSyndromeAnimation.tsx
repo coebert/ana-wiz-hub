@@ -268,7 +268,7 @@ const RefeedingScene = ({ active }: { active: number }) => {
             className="text-[10px] font-semibold"
             fill="hsl(var(--foreground))"
           >
-            K⁺ · PO₄³⁻ · Mg²⁺
+            K⁺ · PO₄ · Mg²⁺
           </text>
 
           {/* Extracellular (serum) */}
