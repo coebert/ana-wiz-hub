@@ -443,6 +443,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ Paeds Airway 2017", citation: "Harless J, Ramaiah R, Bhananker SM. Pediatric airway management. Int J Crit Illn Inj Sci. 2014;4(1):65-70.", url: "https://doi.org/10.4103/2229-5151.128015" },
     { label: "Weiss & Engelhardt 2010", citation: "Weiss M, Engelhardt T. Proposal for the management of the unexpected difficult pediatric airway. Paediatr Anaesth. 2010;20(5):454-464.", url: "https://doi.org/10.1111/j.1460-9592.2010.03284.x" },
     { label: "AAGBI Standards 2015", citation: "Checketts MR et al. Recommendations for standards of monitoring during anaesthesia and recovery 2015. Anaesthesia. 2016;71(1):85-93.", url: "https://doi.org/10.1111/anae.13316" },
+    { label: "AAGBI Check 2023", citation: "Association of Anaesthetists. Checking Anaesthetic Equipment 2023. Anaesthesia. 2023 (supersedes the 2012 guideline). Structured pre-use machine check, two-bag test, monitor and self-inflating bag verification at the start of every list, with abbreviated checks between cases.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Checking-Anaesthetic-Equipment-2023", excerpt: "The Association of Anaesthetists recommends that a check of the anaesthetic equipment is performed before every operating list, and an abbreviated check between cases. The check should follow an upstream-to-downstream sequence and include a two-bag test of the breathing system. A self-inflating bag must always be immediately available." },
   ],
 
   // ──────── CLINICAL ────────
