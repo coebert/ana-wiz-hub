@@ -1373,6 +1373,24 @@ const AdminDashboard = () => {
               )}
             </div>
 
+            {/* World map of visitors */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-1">
+                <MapIcon className="w-4 h-4 text-primary" />
+                <h2 className="text-sm font-semibold text-foreground">Visitors by Country</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                Choropleth of unique visitors per country. Hover a country for details; scroll or pinch to zoom.
+              </p>
+              {analytics.topCountries.length === 0 ? (
+                <p className="text-sm text-muted-foreground">
+                  No country data yet — countries are recorded from new visits onwards.
+                </p>
+              ) : (
+                <VisitorsWorldMap data={analytics.topCountries} metric="users" />
+              )}
+            </div>
+
             {/* Top countries */}
             <div className="p-4 rounded-xl border border-border bg-card">
               <div className="flex items-center gap-2 mb-1">
