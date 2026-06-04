@@ -467,10 +467,10 @@ export const VAECMOCircuitDiagram = () => {
 
           {/* Compass / orientation */}
           <g transform="translate(40 40)" opacity="0.5">
-            <text x="0" y="-2" fontSize="7" textAnchor="middle" className="fill-muted-foreground">cranial</text>
+            <text x="0" y="-2" fontSize="9" fontWeight="600" textAnchor="middle" className="fill-muted-foreground">cranial</text>
             <line x1="0" y1="0" x2="0" y2="20" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" />
             <polygon points="-3,3 3,3 0,-2" fill="hsl(var(--muted-foreground))" />
-            <text x="0" y="32" fontSize="7" textAnchor="middle" className="fill-muted-foreground">caudal</text>
+            <text x="0" y="33" fontSize="9" fontWeight="600" textAnchor="middle" className="fill-muted-foreground">caudal</text>
           </g>
         </svg>
       </div>
