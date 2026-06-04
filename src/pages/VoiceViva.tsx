@@ -227,7 +227,7 @@ export default function VoiceViva() {
         }
         break;
       case "error":
-        setError(ev.error?.message ?? "Realtime error");
+        setError(toFriendly(new Error(ev.error?.message ?? "Realtime error")));
         break;
     }
   }
