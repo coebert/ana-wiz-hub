@@ -277,6 +277,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Ganong Ch.13", citation: "Barrett KE et al. Ganong's Review of Medical Physiology. 26th ed. Chapter 13: Autonomic Nervous System." },
     { label: "RCUK ALS 2021", citation: "Resuscitation Council UK. Adult Advanced Life Support Guidelines — Bradycardia algorithm (atropine 500 micrograms IV, repeated up to a maximum of 3 mg). 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/adult-advanced-life-support-guidelines" },
     { label: "BJA Educ 2021 (Bradycardia)", citation: "Management of intraoperative bradycardia. BJA Education. 2021. Doses of atropine (10–20 µg/kg IV) and glycopyrrolate (4–8 µg/kg IV) for perioperative bradycardia.", url: "https://doi.org/10.1016/j.bjae.2021.05.001" },
+    { label: "BNFc Atropine", citation: "British National Formulary for Children (BNFc). Atropine sulfate — bradycardia (paediatric): 20 micrograms/kg IV (max per dose 600 micrograms), repeated if needed. Joint Formulary Committee, BMJ Group and Pharmaceutical Press; updated continuously.", url: "https://bnfc.nice.org.uk/drugs/atropine-sulfate/", excerpt: "Bradycardia (by intravenous injection): Child 1 month–11 years, 20 micrograms/kg (max. per dose 600 micrograms), to be repeated if necessary; Child 12–17 years, 300–600 micrograms, to be repeated if necessary." },
   ],
   "neuromuscular": [
     { label: "BJA Educ 2005", citation: "Bowman WC. Neuromuscular block. BJA Education. 2006;6(1):2-6.", url: "https://doi.org/10.1093/bjaceaccp/mki067" },
