@@ -192,7 +192,7 @@ const CircuitSvg = ({ variant, step }: CircuitSvgProps) => {
             Patient
           </text>
           <text x="29" y="138" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">
-            vascath
+            dialysis catheter
           </text>
         </g>
 
