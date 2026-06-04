@@ -25,10 +25,9 @@ const REVISED: CascadeSource = {
 const steps: CascadeStep[] = [
   {
     node: "Intact glycocalyx",
-    detail: "0.5-1 µm glycocalyx layer",
     title: "Healthy semi-permeable barrier",
     body:
-      "A 0.5-1 µm meshwork of membrane-bound proteoglycans (syndecan-1, glypican), glycosaminoglycans (heparan sulphate, hyaluronan, chondroitin) and adsorbed plasma proteins lines every endothelial cell. It excludes large molecules, generates the effective oncotic gradient (πsg) and binds antithrombin, SOD and lipoprotein lipase.",
+      "A 0.5–1 µm meshwork of membrane-bound proteoglycans (syndecan-1, glypican), glycosaminoglycans (heparan sulphate, hyaluronan, chondroitin) and adsorbed plasma proteins lines every endothelial cell. It excludes large molecules, generates the effective oncotic gradient (πsg) and binds antithrombin, SOD and lipoprotein lipase.",
     sources: [REVISED, CHAP14],
   },
   {
