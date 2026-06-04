@@ -424,16 +424,56 @@ export default function VoiceViva() {
               </div>
             </div>
 
+            {(phase === "idle" || phase === "ended") && micPermission !== "granted" && !error && (
+              <div className="mb-4 flex items-start gap-2 rounded-lg border border-border bg-muted/40 p-3 text-xs text-muted-foreground">
+                <HelpCircle className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+                <div>
+                  <p className="font-medium text-foreground">Your browser will ask for microphone access.</p>
+                  <p className="mt-0.5">
+                    {micPermission === "denied"
+                      ? "Access is currently blocked. Use the padlock in the address bar to allow it, then retry."
+                      : "Choose ‘Allow’ when prompted so the examiner can hear you. Audio is streamed to OpenAI for speech only — nothing is stored on our servers."}
+                  </p>
+                </div>
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center gap-2">
               {phase === "idle" || phase === "ended" || phase === "error" ? (
-                <button
-                  type="button"
-                  onClick={start}
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-90"
-                >
-                  <Mic className="h-4 w-4" />
-                  {phase === "ended" ? "Start another" : "Start voice viva"}
-                </button>
+                <>
+                  <button
+                    type="button"
+                    onClick={start}
+                    disabled={requestingMic}
+                    className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-90 disabled:opacity-60"
+                  >
+                    {requestingMic ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : phase === "error" ? (
+                      <RefreshCw className="h-4 w-4" />
+                    ) : (
+                      <Mic className="h-4 w-4" />
+                    )}
+                    {requestingMic
+                      ? "Waiting for microphone…"
+                      : phase === "error"
+                        ? "Try again"
+                        : phase === "ended"
+                          ? "Start another"
+                          : micPermission === "granted"
+                            ? "Start voice viva"
+                            : "Allow mic & start"}
+                  </button>
+                  {phase === "error" && error?.kind === "permission" && (
+                    <button
+                      type="button"
+                      onClick={() => requestMicPermission()}
+                      className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm text-foreground hover:bg-secondary"
+                    >
+                      <Mic className="h-4 w-4" /> Re-request permission
+                    </button>
+                  )}
+                </>
               ) : (
                 <>
                   <button
@@ -462,9 +502,21 @@ export default function VoiceViva() {
             </div>
 
             {error && (
-              <div className="mt-4 flex items-start gap-2 rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">
-                <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" />
-                <span>{error}</span>
+              <div className="mt-4 flex items-start gap-3 rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">
+                {error.kind === "permission" ? (
+                  <ShieldAlert className="h-5 w-5 mt-0.5 shrink-0" />
+                ) : (
+                  <AlertCircle className="h-5 w-5 mt-0.5 shrink-0" />
+                )}
+                <div className="space-y-1">
+                  <p className="font-semibold">{error.title}</p>
+                  <p className="text-destructive/90">{error.message}</p>
+                  {error.hint && (
+                    <p className="text-xs text-destructive/80">
+                      <span className="font-medium">How to fix:</span> {error.hint}
+                    </p>
+                  )}
+                </div>
               </div>
             )}
 
