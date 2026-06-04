@@ -20,6 +20,7 @@ import VivaLauncher from "@/components/VivaLauncher";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
 import { topicReferences } from "@/data/references";
+import { allTopics } from "@/data/curriculum";
 
 type SectionExamMap = { exams: ExamTag[]; curriculumCodes?: string[] };
 
@@ -316,10 +317,19 @@ export const TopicTemplate = ({
           </div>
         )}
 
-        {quizQuestions && quizQuestions.length > 0 && (
+        {quizQuestions && quizQuestions.length > 0 && (() => {
+          const topicMeta = allTopics.find((t) => t.id === topicId);
+          const srs = topicMeta
+            ? {
+                topicId,
+                topicTitle: topicTitle ?? title,
+                topicSection: topicMeta.section,
+                examTags: topicMeta.examTags as string[],
+              }
+            : undefined;
           // QuizSection's prop is loosely typed across the codebase; cast here.
-          <QuizSection questions={quizQuestions as never} />
-        )}
+          return <QuizSection questions={quizQuestions as never} srs={srs} />;
+        })()}
         <ExamSummary
           title={title}
           sectionExamMapping={sectionExamMapping}
