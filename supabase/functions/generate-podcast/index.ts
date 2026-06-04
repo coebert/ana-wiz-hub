@@ -645,6 +645,6 @@ Deno.serve(async (req) => {
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     console.error("Request failed:", message);
-    return jsonResponse({ error: message }, 500);
+    return jsonResponse({ error: "Internal server error" }, 500);
   }
 });
