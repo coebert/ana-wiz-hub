@@ -145,12 +145,32 @@ const RefeedingScene = ({ active }: { active: number }) => {
 
   return (
     <div className="w-full">
+      {/* Accessible phase caption — announced to screen readers and visible
+          above the SVG so the active phase is always explicit. */}
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="mb-2 rounded-md border border-border bg-muted/40 px-3 py-2 animate-fade-in"
+        key={`caption-${active}`}
+      >
+        <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
+          Phase {active + 1} of {rows.length}
+        </p>
+        <p className="text-xs font-semibold text-foreground leading-snug">
+          {rows[active].label}
+        </p>
+        <p className="text-xs text-muted-foreground leading-snug mt-0.5">
+          {rows[active].caption}
+        </p>
+      </div>
       <svg
         viewBox="0 0 380 280"
         className="w-full h-auto overflow-visible"
         role="img"
-        aria-label="Refeeding syndrome cascade — five-step pathophysiology"
+        aria-label={`Refeeding syndrome cascade — phase ${active + 1} of ${rows.length}: ${rows[active].label}. ${rows[active].caption}`}
       >
+
         <defs>
           <linearGradient id="rfs-bg" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0%" stopColor="hsl(var(--card))" />
