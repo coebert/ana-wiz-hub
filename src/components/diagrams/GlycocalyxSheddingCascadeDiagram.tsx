@@ -64,18 +64,45 @@ const steps: CascadeStep[] = [
   },
 ];
 
+/** Concise plain-language caption per phase — surfaced above the interactive
+ *  cascade as an accessible ordered list so screen-reader users (and readers
+ *  who skip the animation) still get the full step-by-step narrative. */
+const PHASE_CAPTIONS: Array<{ phase: string; caption: string }> = [
+  { phase: "Intact glycocalyx", caption: "Healthy endothelial gel layer maintains the oncotic barrier." },
+  { phase: "Insult", caption: "Sepsis, ischaemia, surgery or rapid crystalloid trigger shedding." },
+  { phase: "Shedding", caption: "Heparanase and MMPs cleave the layer — plasma syndecan-1 rises." },
+  { phase: "↑ permeability", caption: "Oncotic gradient collapses; albumin and water leak interstitially." },
+  { phase: "Interstitial oedema", caption: "Lung, gut and tissue oedema — impaired exchange and ileus." },
+];
+
 export const GlycocalyxSheddingCascadeDiagram = () => (
     <DiagramFigure
       id="glycocalyx-shedding-cascade-diagram"
       title="Glycocalyx shedding cascade"
       description="Auto-generated wrapper for the Glycocalyx shedding cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
     >
-            <MechanismCascadeDiagram
-      title="Glycocalyx shedding — capillary leak cascade"
-      subtitle="Why aggressive crystalloid worsens oedema — the revised Starling model in action."
-      accent="physiology"
-      steps={steps}
-    />
+      <ol
+        className="mb-3 rounded-lg border border-border bg-muted/30 p-3 space-y-1.5 text-xs"
+        aria-label="Glycocalyx shedding cascade — phase captions"
+      >
+        {PHASE_CAPTIONS.map((p, i) => (
+          <li key={p.phase} className="flex gap-2">
+            <span className="font-mono font-bold tabular-nums text-physiology shrink-0">
+              {i + 1}.
+            </span>
+            <span className="leading-snug">
+              <span className="font-semibold text-foreground">{p.phase}</span>
+              <span className="text-muted-foreground"> — {p.caption}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+      <MechanismCascadeDiagram
+        title="Glycocalyx shedding — capillary leak cascade"
+        subtitle="Why aggressive crystalloid worsens oedema — the revised Starling model in action."
+        accent="physiology"
+        steps={steps}
+      />
     </DiagramFigure>
   );
 
