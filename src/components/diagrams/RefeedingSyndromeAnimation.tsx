@@ -229,6 +229,21 @@ const RefeedingScene = ({ active }: { active: number }) => {
                     : "hsl(var(--muted))"
                 }
               />
+              {isActive && (
+                <circle
+                  cx="16"
+                  cy="20"
+                  r="10"
+                  fill="none"
+                  stroke={`hsl(var(--${r.token}))`}
+                  strokeWidth="1.5"
+                  opacity="0.6"
+                >
+                  <animate attributeName="r" values="10;16;10" dur="1.6s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.7;0;0.7" dur="1.6s" repeatCount="indefinite" />
+                </circle>
+              )}
+
               <text
                 x="16"
                 y="24"
