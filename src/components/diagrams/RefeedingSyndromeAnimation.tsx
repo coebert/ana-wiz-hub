@@ -127,12 +127,13 @@ const STEPS: AnimatedMechanismStep[] = [
  */
 const RefeedingScene = ({ active }: { active: number }) => {
   const rows = [
-    { label: "Starvation", sub: "Catabolism · ↓insulin · depleted K⁺/PO₄/Mg²⁺", token: "muted-foreground" },
-    { label: "Carbohydrate load", sub: "Feed / dextrose introduced", token: "clinical" },
-    { label: "Insulin surge", sub: "K⁺ · PO₄ · Mg²⁺ → intracellular", token: "pharmacology" },
-    { label: "Thiamine consumed", sub: "PDH cofactor exhausted → lactate", token: "physiology" },
-    { label: "Sequelae", sub: "Arrhythmia · Wernicke · respiratory failure", token: "destructive" },
+    { label: "Starvation", sub: "Catabolism · ↓insulin · depleted K⁺/PO₄/Mg²⁺", token: "muted-foreground", caption: "Body in fasting mode — electrolyte stores already empty even though serum looks normal." },
+    { label: "Carbohydrate load", sub: "Feed / dextrose introduced", token: "clinical", caption: "First carbohydrate hits — glucose rises and insulin secretion is triggered." },
+    { label: "Insulin surge", sub: "K⁺ · PO₄ · Mg²⁺ → intracellular", token: "pharmacology", caption: "Insulin drives potassium, phosphate and magnesium into cells — serum falls rapidly." },
+    { label: "Thiamine consumed", sub: "PDH cofactor exhausted → lactate", token: "physiology", caption: "Thiamine reserves run out — pyruvate cannot enter the TCA cycle, lactate rises." },
+    { label: "Sequelae", sub: "Arrhythmia · Wernicke · respiratory failure", token: "destructive", caption: "End-organ injury: cardiac arrhythmia, respiratory failure and Wernicke's encephalopathy." },
   ];
+
 
   const [showThiamineTip, setShowThiamineTip] = useState(false);
 
