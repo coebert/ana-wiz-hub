@@ -127,12 +127,13 @@ const STEPS: AnimatedMechanismStep[] = [
  */
 const RefeedingScene = ({ active }: { active: number }) => {
   const rows = [
-    { label: "Starvation", sub: "Catabolism · ↓insulin · depleted K⁺/PO₄/Mg²⁺", token: "muted-foreground" },
-    { label: "Carbohydrate load", sub: "Feed / dextrose introduced", token: "clinical" },
-    { label: "Insulin surge", sub: "K⁺ · PO₄ · Mg²⁺ → intracellular", token: "pharmacology" },
-    { label: "Thiamine consumed", sub: "PDH cofactor exhausted → lactate", token: "physiology" },
-    { label: "Sequelae", sub: "Arrhythmia · Wernicke · respiratory failure", token: "destructive" },
+    { label: "Starvation", sub: "Catabolism · ↓insulin · depleted K⁺/PO₄/Mg²⁺", token: "muted-foreground", caption: "Body in fasting mode — electrolyte stores already empty even though serum looks normal." },
+    { label: "Carbohydrate load", sub: "Feed / dextrose introduced", token: "clinical", caption: "First carbohydrate hits — glucose rises and insulin secretion is triggered." },
+    { label: "Insulin surge", sub: "K⁺ · PO₄ · Mg²⁺ → intracellular", token: "pharmacology", caption: "Insulin drives potassium, phosphate and magnesium into cells — serum falls rapidly." },
+    { label: "Thiamine consumed", sub: "PDH cofactor exhausted → lactate", token: "physiology", caption: "Thiamine reserves run out — pyruvate cannot enter the TCA cycle, lactate rises." },
+    { label: "Sequelae", sub: "Arrhythmia · Wernicke · respiratory failure", token: "destructive", caption: "End-organ injury: cardiac arrhythmia, respiratory failure and Wernicke's encephalopathy." },
   ];
+
 
   const [showThiamineTip, setShowThiamineTip] = useState(false);
 
@@ -144,12 +145,32 @@ const RefeedingScene = ({ active }: { active: number }) => {
 
   return (
     <div className="w-full">
+      {/* Accessible phase caption — announced to screen readers and visible
+          above the SVG so the active phase is always explicit. */}
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="mb-2 rounded-md border border-border bg-muted/40 px-3 py-2 animate-fade-in"
+        key={`caption-${active}`}
+      >
+        <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
+          Phase {active + 1} of {rows.length}
+        </p>
+        <p className="text-xs font-semibold text-foreground leading-snug">
+          {rows[active].label}
+        </p>
+        <p className="text-xs text-muted-foreground leading-snug mt-0.5">
+          {rows[active].caption}
+        </p>
+      </div>
       <svg
         viewBox="0 0 380 280"
         className="w-full h-auto overflow-visible"
         role="img"
-        aria-label="Refeeding syndrome cascade — five-step pathophysiology"
+        aria-label={`Refeeding syndrome cascade — phase ${active + 1} of ${rows.length}: ${rows[active].label}. ${rows[active].caption}`}
       >
+
         <defs>
           <linearGradient id="rfs-bg" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0%" stopColor="hsl(var(--card))" />
@@ -208,6 +229,21 @@ const RefeedingScene = ({ active }: { active: number }) => {
                     : "hsl(var(--muted))"
                 }
               />
+              {isActive && (
+                <circle
+                  cx="16"
+                  cy="20"
+                  r="10"
+                  fill="none"
+                  stroke={`hsl(var(--${r.token}))`}
+                  strokeWidth="1.5"
+                  opacity="0.6"
+                >
+                  <animate attributeName="r" values="10;16;10" dur="1.6s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.7;0;0.7" dur="1.6s" repeatCount="indefinite" />
+                </circle>
+              )}
+
               <text
                 x="16"
                 y="24"
