@@ -268,7 +268,7 @@ const MechanicalVentilationTopic = () => {
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             <div className="rounded-lg border border-border bg-muted/20 p-3">
               <p className="font-semibold text-foreground text-sm">Volutrauma</p>
-              <p className="text-xs text-muted-foreground">Over-distension by excessive V<sub>T</sub> — the dominant injury (animal models: high-V<sub>T</sub>/low-pressure injures, low-V<sub>T</sub>/high-pressure does not).</p>
+              <p className="text-xs text-muted-foreground">Over-distension by excessive V<sub>T</sub> — the dominant injury (animal models: high-V<sub>T</sub>/low-pressure injures, low-V<sub>T</sub>/high-pressure does not).<InlineRef topicId="mechanical-ventilation" refLabel="Dreyfuss 1988" /></p>
             </div>
             <div className="rounded-lg border border-border bg-muted/20 p-3">
               <p className="font-semibold text-foreground text-sm">Barotrauma</p>
