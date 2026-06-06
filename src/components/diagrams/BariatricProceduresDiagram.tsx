@@ -146,7 +146,7 @@ const RYGBImage = ({ color }: { color: string }) => (
     <path d="M90 10 L90 50" stroke="hsl(var(--muted-foreground))" strokeWidth="3" fill="none" strokeLinecap="round" />
     {/* Excluded stomach (greyed) */}
     <path d="M90 50 Q60 50 50 80 Q35 130 55 170 Q70 195 100 190 Q130 185 135 150 Q140 120 130 90 Q120 60 90 50Z" fill="hsl(var(--muted))" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.5" />
-    <text x="90" y="130" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.6">excluded</text>
+    <text x="90" y="130" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.6">Excluded stomach</text>
     {/* Small pouch */}
     <rect x="78" y="48" width="24" height="18" rx="4" fill={color} opacity="0.3" stroke={color} strokeWidth="1.5" />
     <text x="90" y="60" textAnchor="middle" fontSize="6" fill={color} fontWeight="bold">pouch</text>

@@ -265,10 +265,7 @@ const PortalFirstPassDiagram = () => {
             {/* Sheen */}
             <path d="M 360 180 Q 460 160 580 180 Q 600 220 560 250 Q 470 240 380 230 Z"
               fill="url(#pf-liver-sheen)" />
-            {/* Gallbladder */}
-            <path d="M 455 295 Q 450 320 460 332 Q 472 332 478 318 Q 478 300 470 293 Z"
-              fill="hsl(80, 55%, 45%)" stroke="hsl(80, 55%, 25%)" strokeWidth="0.75" />
-            <text x={490} y={328} fontSize="8" className="fill-muted-foreground">GB</text>
+            {/* Gallbladder removed — not part of first-pass metabolism pathway */}
   
             <text x={500} y={205} textAnchor="middle" fontSize="14"
               fill="hsl(45, 100%, 96%)" className="font-bold tracking-wide">LIVER</text>

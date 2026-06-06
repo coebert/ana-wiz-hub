@@ -505,7 +505,7 @@ export const SedationDeliveryProfilesDiagram = () => {
               { at: 0.04, label: "loading bolus", dy: 14 },
               { at: 0.1, label: "brief overshoot", dy: -14 },
               { at: 0.4, label: "rate adjusts to hold target", dy: -14 },
-              { at: 0.85, label: "stable Ce — easy titration", dy: 14 },
+              { at: 0.85, label: "stable Cp — easy titration", dy: 14 },
             ]}
           />
         </div>

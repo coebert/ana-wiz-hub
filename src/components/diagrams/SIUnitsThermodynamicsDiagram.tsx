@@ -25,7 +25,7 @@ const SIUnitsDiagram = () => (
           { unit: "second", sym: "s", quantity: "Time", x: 340, y: 45 },
           { unit: "ampere", sym: "A", quantity: "Electric current", x: 480, y: 45 },
           { unit: "kelvin", sym: "K", quantity: "Temperature", x: 100, y: 115 },
-          { unit: "mole", sym: "mol", quantity: "Amount", x: 300, y: 115 },
+          { unit: "mole", sym: "mol", quantity: "Amount of substance", x: 300, y: 115 },
           { unit: "candela", sym: "cd", quantity: "Luminous intensity", x: 490, y: 115 },
         ].map((u) => (
           <g key={u.sym}>
