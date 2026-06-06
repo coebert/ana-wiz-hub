@@ -238,11 +238,17 @@ const LegView = ({
               <path d="M 80 165 L 70 250" />
               {/* Obturator (medial thigh) */}
               <path d="M 110 165 L 120 240 L 122 320" />
+              {/* Common fibular wraps fibular head → superficial fibular (anterolateral leg) */}
+              <path d="M 118 385 L 125 410 L 122 470 L 118 515" />
+              {/* Deep fibular (anterior compartment → 1st web space of dorsum) */}
+              <path d="M 118 385 L 110 430 L 105 490 L 103 525" />
             </g>
             <text x="38" y="170" fontSize="7" fill="hsl(var(--muted-foreground))">LFC</text>
             <text x="32" y="260" fontSize="7" fill="hsl(var(--muted-foreground))">femoral</text>
             <text x="150" y="240" fontSize="7" fill="hsl(var(--muted-foreground))">obturator</text>
             <text x="30" y="470" fontSize="7" fill="hsl(var(--muted-foreground))">saphenous</text>
+            <text x="138" y="455" fontSize="7" fill="hsl(var(--muted-foreground))">sup. fibular</text>
+            <text x="138" y="500" fontSize="7" fill="hsl(var(--muted-foreground))">deep fibular</text>
           </g>
         )}
         {showNerves && view === "posterior" && (
