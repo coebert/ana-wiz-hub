@@ -3,7 +3,7 @@ import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { cardiacAnatomyQuestions } from "@/data/quizzes";
 import CardiacAnatomyDiagram from "@/components/diagrams/CardiacAnatomyDiagram";
-import systemicCirculationOverview from "@/assets/plates/systemic-circulation-overview.jpg";
+import systemicArteriesPlate from "@/assets/plates/systemic-arteries-openstax.jpg.asset.json";
 import CoronaryTerritoryMapDiagram from "@/components/diagrams/CoronaryTerritoryMapDiagram";
 import CoronaryTreeDiagram from "@/components/diagrams/CoronaryTreeDiagram";
 import LVBullseyeDiagram from "@/components/diagrams/LVBullseyeDiagram";
@@ -154,13 +154,13 @@ const CardiacAnatomyTopic = () => {
             </div>
             <figure className="rounded-xl border border-border bg-card overflow-hidden mt-4">
               <img
-                src={systemicCirculationOverview}
-                alt="Annotated diagram of the systemic arterial circulation, great vessels, and an enlarged heart showing chambers and coronary arteries"
+                src={systemicArteriesPlate.url}
+                alt="Anterior labelled diagram of the major systemic arteries: aortic arch and its branches, thoracic and abdominal aorta with visceral branches, common/external/internal iliac arteries, and upper and lower limb arterial tree"
                 className="w-full h-auto"
                 loading="lazy"
               />
               <figcaption className="text-xs text-muted-foreground p-3 border-t border-border">
-                Major arteries of the systemic circulation with great vessels of the heart and pulmonary circulation.
+                Major systemic arteries — anterior view. Adapted from OpenStax College, <em>Anatomy &amp; Physiology</em> (Fig. 20.31), <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" className="underline">CC BY 4.0</a>.
               </figcaption>
             </figure>
             </CollapsibleSubsection>
