@@ -194,6 +194,16 @@ const CoagulationCascadeDiagram = () => {
         const op = factorOpacity(f);
         const isSel = selectedFactor === f.id;
         const hasDrug = f.drugs && f.drugs.length > 0;
+        // Short drug-class labels mapped to specific factor targets, so learners
+        // can read drug classes directly off the cascade (replaces generic "Rx").
+        const drugClassShort: Record<string, string> = {
+          "tf-vii": "Warfarin (↓II/VII/IX/X)",
+          ix: "Warfarin · Heparins",
+          x: "LMWH · Fondaparinux · DOACs (Xa-i)",
+          ii: "Warfarin · UFH · Dabigatran (DTI)",
+          plasminogen: "TXA · Aprotinin",
+        };
+        const drugLabel = hasDrug ? drugClassShort[f.id] : null;
         const w = f.id === "tf-vii" || f.id === "prot-c" ? 110 : f.id === "plasminogen" || f.id === "fdp" || f.id === "atiii" || f.id === "tfpi" ? 95 : 100;
         return (
           <g key={f.id} opacity={op} className="cursor-pointer transition-opacity duration-200"
@@ -202,11 +212,10 @@ const CoagulationCascadeDiagram = () => {
               fill={color} fillOpacity={isSel ? 0.25 : 0.1}
               stroke={color} strokeWidth={isSel ? 2 : 1} />
             <text x={p.x} y={p.y + 4} textAnchor="middle" fontSize="7.5" fill={color} fontWeight="bold">{f.label}</text>
-            {hasDrug && (
-              <>
-                <circle cx={p.x + w / 2 - 4} cy={p.y - 6} r="3" fill="hsl(0,65%,55%)" fillOpacity="0.7" />
-                <text x={p.x + w / 2 - 4} y={p.y - 4} textAnchor="middle" fontSize="4" fill="hsl(var(--background))" fontWeight="bold">Rx</text>
-              </>
+            {drugLabel && (
+              <text x={p.x} y={p.y + 17} textAnchor="middle" fontSize="4.5" fill="hsl(0,65%,45%)" fontWeight="600">
+                {drugLabel}
+              </text>
             )}
           </g>
         );
