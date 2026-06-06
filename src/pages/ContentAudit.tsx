@@ -1046,11 +1046,12 @@ const ContentAudit = () => {
         </Card>
 
         {/* Summary tiles */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
           <StatTile label="Open findings" value={stats.open} />
           <StatTile label="Critical" value={stats.critical} tone="critical" />
           <StatTile label="Major" value={stats.major} tone="major" />
           <StatTile label="Diagram issues" value={stats.diagrams} />
+          <StatTile label="Thin / gap / update" value={stats.expansion} />
         </div>
 
         {/* Companion checks: formulary verification + ESICM dose validator */}
