@@ -149,13 +149,13 @@ const RYGBImage = ({ color }: { color: string }) => (
     <text x="90" y="130" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.6">Excluded stomach</text>
     {/* Small pouch */}
     <rect x="78" y="48" width="24" height="18" rx="4" fill={color} opacity="0.3" stroke={color} strokeWidth="1.5" />
-    <text x="90" y="60" textAnchor="middle" fontSize="6" fill={color} fontWeight="bold">pouch</text>
+    <text x="90" y="60" textAnchor="middle" fontSize="6" fill={color} fontWeight="bold">Gastric pouch</text>
     {/* Roux limb */}
     <path d="M90 66 L90 100 Q90 110 100 115 L140 130 Q155 135 155 150 L155 260" stroke={color} strokeWidth="3" fill="none" strokeLinecap="round" />
     <text x="160" y="200" fontSize="7" fill={color}>Roux limb</text>
     {/* Biliopancreatic limb */}
     <path d="M100 190 L100 220 Q100 230 110 235 L155 250" stroke="hsl(var(--muted-foreground))" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="4 3" />
-    <text x="50" y="220" fontSize="7" fill="hsl(var(--muted-foreground))">BP limb</text>
+    <text x="40" y="220" fontSize="7" fill="hsl(var(--muted-foreground))">Biliopancreatic limb</text>
   </g>
 );
 
