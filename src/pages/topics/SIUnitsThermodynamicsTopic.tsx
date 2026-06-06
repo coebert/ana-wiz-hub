@@ -186,15 +186,15 @@ const SIUnitsThermodynamicsTopic = () => {
               </div>
               <p>
                 <strong>Perioperative temperature management:</strong> Hypothermia (&lt;36 °C) prolongs neuromuscular blockade, reduces MAC, impairs platelet
-                function, increases wound infection rates, and triggers shivering (↑VO₂ 200–400%). NICE guideline
-                <strong> CG65</strong> (Hypothermia: prevention and management in adults having surgery, 2008, last updated December 2016)
-                defines inadvertent perioperative hypothermia as a core temperature &lt;36.0 °C, requires induction not to begin unless the patient
-                is ≥36.0 °C, and instructs that forced-air warming devices be set to maintain a patient temperature of
-                <strong> at least 36.5 °C</strong><InlineRef topicId="si-units-thermodynamics" refLabel="NICE CG65" />. CG65 remains the
-                active hypothermia-specific NICE guideline; the broader <strong>NG180</strong> (Perioperative care in adults, 2020)
-                cross-refers to CG65 rather than superseding it<InlineRef topicId="si-units-thermodynamics" refLabel="NICE NG180" />.
+                function, increases wound infection rates, and triggers shivering (↑VO₂ 200–400%). Current UK guidance is NICE
+                <strong> NG180</strong> (Perioperative care in adults, 2020), which superseded the earlier CG65 (2008/2016).
+                NG180 defines inadvertent perioperative hypothermia as a core temperature &lt;36.0 °C, requires induction not to begin unless the
+                patient is ≥36.0 °C, and instructs that forced-air warming devices be set to maintain a patient temperature of
+                <strong> at least 36.5 °C</strong><InlineRef topicId="si-units-thermodynamics" refLabel="NICE NG180" />. The
+                superseded CG65 is retained on the NICE site for archival reference only<InlineRef topicId="si-units-thermodynamics" refLabel="NICE CG65" />.
               </p>
             </div>
+
             </CollapsibleSubsection>
           </ExamSection>
 
