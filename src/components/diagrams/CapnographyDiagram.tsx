@@ -324,7 +324,7 @@ export const CapnographyDiagram = () => {
   );
 
   const info = pathologies[selected];
-  const yTicks = [0, 0.2, 0.4, 0.6, 0.8, 1.0];
+  const yTicks = [0, 0.25, 0.5, 0.75, 1.0];
   const showAngleAnnotations = showAngles && selected !== "oesophageal";
 
   const alphaColor = "hsl(45, 93%, 47%)";
