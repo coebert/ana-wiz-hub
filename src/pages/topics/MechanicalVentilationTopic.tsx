@@ -11,6 +11,7 @@ import { mechanicalVentilationQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Recognise the four indications for invasive ventilation and pick an initial mode based on the dominant pathology.",
