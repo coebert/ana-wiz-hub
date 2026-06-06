@@ -25,7 +25,7 @@ const workedExamples: WorkedExample[] = [
       "Tissue impedance falls with frequency due to capacitive coupling: Xc = 1/(2πfC).\nAt 50 Hz capacitive reactance is large → current is restricted to nerve/muscle pathways and stimulates depolarisation (microshock at >100 µA via intracardiac catheter; macroshock VF threshold ~100 mA).\nAt 1 MHz, Xc collapses → current passes through tissue without exciting nerves/muscle (above the critical frequency for membrane depolarisation, ~10 kHz).\nLocal heating at the active tip remains intense because of high current density (P = I²R) over a small area.",
     answer:
       "High-frequency current bypasses excitable tissue (no neuromuscular stimulation) yet still produces local Joule heating. This is why a 100 W diathermy at 1 MHz cuts tissue without triggering VF, whereas a few hundred mA at 50 Hz can be lethal.",
-    cites: ["BJA Educ 2017"],
+    cites: ["BJA Educ 2017", "ATOTW 193 (Electricity II)"],
   },
   {
     title: "Defibrillator capacitor sizing",
@@ -70,7 +70,7 @@ const ElectricityMagnetismTopic = () => {
           "BJA Educ 2013 (Basic physics)",
           "BJA Educ 2008 (Electricity)",
         ],
-        workedExamples: ["BJA Educ 2017", "Middleton Ch.15"],
+        workedExamples: ["BJA Educ 2017", "Middleton Ch.15", "ATOTW 193 (Electricity II)"],
       }}
       keyPoints={[
         { text: "Ohm's law: V = IR. Power: P = VI = I²R = V²/R. Series resistances add; parallel: 1/R_total = 1/R₁ + 1/R₂", cites: ["Cross & Plunkett Ch.12-13"] },
