@@ -1285,6 +1285,23 @@ const ContentAudit = () => {
                     ? "Building prompt…"
                     : `Correct all (${filtered.filter((f) => f.status === "open").length})`}
                 </Button>
+                <Button
+                  size="sm"
+                  variant="default"
+                  onClick={expandAll}
+                  disabled={
+                    bulkBusy ||
+                    filtered.filter(
+                      (f) => f.status === "open" && isExpansionFinding(f),
+                    ).length === 0
+                  }
+                  title="Build a Lovable chat prompt that expands thin sections, adds missing subtopics, and updates content for newer guidelines. Copies to clipboard + downloads .md."
+                >
+                  {bulkBusy
+                    ? "Building brief…"
+                    : `Expand thin / gap / update (${filtered.filter((f) => f.status === "open" && isExpansionFinding(f)).length})`}
+                </Button>
+
 
               </div>
             </div>
