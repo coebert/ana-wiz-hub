@@ -265,17 +265,15 @@ const AbdominalWallDiagram = () => {
                       <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fasciaTex)" opacity={isActive ? 0.7 : 0.25} />
                     )}
   
-                    {/* Extraperitoneal fat with vessels */}
+                    {/* Extraperitoneal fat — lateral wall view only.
+                        The inferior epigastric vessels run medially within the
+                        rectus sheath (deep to rectus abdominis) and are NOT in
+                        the TAP plane, so they are not drawn here to avoid
+                        confusing learners about the relevant anatomy for a
+                        lateral TAP block. */}
                     {key === "extraperitoneal" && (
                       <g opacity={isActive ? 0.6 : 0.2}>
                         <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fatTex)" />
-                        {/* Inferior epigastric artery */}
-                        <path d={`M${xOff + 45},${g.y + 2} C${xOff + 55},${g.y + 6} ${xOff + 65},${g.y + 8} ${xOff + 80},${g.y + 5}`}
-                          stroke="hsl(0, 60%, 50%)" strokeWidth="1" fill="none" opacity="0.5" />
-                        <text x={xOff + 85} y={g.y + 7} fontSize="3" fill="hsl(0, 60%, 50%)" opacity="0.5">IEA</text>
-                        {/* Companion vein */}
-                        <path d={`M${xOff + 47},${g.y + 4} C${xOff + 57},${g.y + 8} ${xOff + 67},${g.y + 10} ${xOff + 82},${g.y + 7}`}
-                          stroke="hsl(220, 50%, 50%)" strokeWidth="0.5" fill="none" opacity="0.4" />
                       </g>
                     )}
   

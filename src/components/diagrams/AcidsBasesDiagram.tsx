@@ -74,32 +74,59 @@ export const AcidsBasesDiagram = () => {
               <text x={410} y={92} textAnchor="end" fontSize="9" className="fill-muted-foreground">Alkaline (↓ [H⁺]) →</text>
               <text x={220} y={22} textAnchor="middle" fontSize="10" className="fill-foreground font-semibold">pH Scale</text>
   
-              {/* Clinical markers */}
+              {/* Clinical markers — distinguish pH of substances (circle markers,
+                  plotted on the scale) from pKa values (square markers in a
+                  callout style) so learners do not conflate the two. */}
               {[
-                { ph: 1, label: "Gastric acid", y: 110 },
-                { ph: 7.9, label: "LA pKa ~7.9", y: 145 },
-                { ph: 6.1, label: "pKa CO₂/HCO₃⁻ = 6.1", y: 125 },
-                { ph: 7.35, label: "Acidaemia", y: 110 },
-                { ph: 7.4, label: "Blood pH", y: 135 },
-                { ph: 7.45, label: "Alkalaemia", y: 110 },
-                { ph: 8, label: "Pancreatic\njuice", y: 160 },
-                { ph: 13, label: "Soda lime", y: 110 },
+                { ph: 1,    label: "Gastric acid",          y: 110, kind: "pH"  as const },
+                { ph: 6.1,  label: "pKa CO₂/HCO₃⁻ = 6.1",   y: 125, kind: "pKa" as const },
+                { ph: 7.35, label: "Acidaemia",             y: 110, kind: "pH"  as const },
+                { ph: 7.4,  label: "Blood pH",              y: 135, kind: "pH"  as const },
+                { ph: 7.45, label: "Alkalaemia",            y: 110, kind: "pH"  as const },
+                { ph: 7.9,  label: "LA pKa ~7.9",           y: 145, kind: "pKa" as const },
+                { ph: 8,    label: "Pancreatic\njuice",     y: 160, kind: "pH"  as const },
+                { ph: 13,   label: "Soda lime",             y: 110, kind: "pH"  as const },
               ].map((m, i) => {
                 const x = 30 + (m.ph / 14) * 380;
+                const isPKa = m.kind === "pKa";
                 return (
                       <g key={i}>
-                    <line x1={x} y1={60} x2={x} y2={m.y - 8} stroke="hsl(var(--foreground))" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6" />
-                    <circle cx={x} cy={45} r={3} fill="hsl(var(--foreground))" opacity="0.7" />
+                    <line x1={x} y1={60} x2={x} y2={m.y - 8}
+                      stroke={isPKa ? "hsl(280 60% 45%)" : "hsl(var(--foreground))"}
+                      strokeWidth={isPKa ? "1" : "0.75"}
+                      strokeDasharray={isPKa ? "1 3" : "2 2"}
+                      opacity={isPKa ? 0.9 : 0.6} />
+                    {isPKa ? (
+                      <rect x={x - 4} y={41} width={8} height={8} fill="hsl(280 60% 45%)" opacity="0.85" rx="1" />
+                    ) : (
+                      <circle cx={x} cy={45} r={3} fill="hsl(var(--foreground))" opacity="0.7" />
+                    )}
                     {m.label.split("\n").map((line, j) => (
-                      <text key={j} x={x} y={m.y + j * 10} textAnchor="middle" fontSize="7" className="fill-muted-foreground">{line}</text>
+                      <text key={j} x={x} y={m.y + j * 10} textAnchor="middle" fontSize="7"
+                        className={isPKa ? "fill-foreground" : "fill-muted-foreground"}
+                        fontWeight={isPKa ? "bold" : "normal"}>
+                        {line}
+                      </text>
                     ))}
                   </g>
     );
               })}
-  
+
+              {/* Legend distinguishing pH vs pKa markers */}
+              <g>
+                <circle cx={40} cy={185} r={3} fill="hsl(var(--foreground))" opacity="0.7" />
+                <text x={48} y={188} fontSize="7" className="fill-muted-foreground">pH of substance (where it sits on the scale)</text>
+                <rect x={246} y={181} width={8} height={8} fill="hsl(280 60% 45%)" opacity="0.85" rx="1" />
+                <text x={258} y={188} fontSize="7" className="fill-muted-foreground">pKa — the pH at which the compound is 50% ionised</text>
+              </g>
+
               {/* Normal range highlight */}
               <rect x={30 + (7.35/14)*380} y={30} width={(0.1/14)*380} height={30} fill="hsl(95 55% 38%)" opacity="0.25" rx="2" />
             </svg>
+
+            <p className="text-[11px] text-muted-foreground italic px-1">
+              Note: a pKa value is a property of a compound — the pH at which it is 50% ionised — and is shown here as a reference value, not the intrinsic pH of the substance.
+            </p>
   
             <div className="bg-card rounded-xl border border-border p-4">
               <h4 className="text-xs font-semibold text-foreground mb-2">Key Relationships</h4>
