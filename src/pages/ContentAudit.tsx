@@ -798,6 +798,7 @@ const ContentAudit = () => {
       critical: open.filter((f) => f.severity === "critical").length,
       major: open.filter((f) => f.severity === "major").length,
       diagrams: open.filter((f) => f.category === "diagram").length,
+      expansion: open.filter(isExpansionFinding).length,
     };
   }, [findings]);
 
