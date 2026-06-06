@@ -6,6 +6,7 @@ import ElectricityMagnetismDiagram from "@/components/diagrams/ElectricityMagnet
 import { electricityMagnetismQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { InlineRef } from "@/components/InlineRef";
 
 const objectives = [
   "Apply Ohm's law and the power equations (P = VI = I²R = V²/R) to clinical scenarios",
