@@ -54,9 +54,12 @@ describe("required-citations snapshot", () => {
       const src = read(entry.file);
       if (src === null) {
         errors.push(
-          `${entry.file} is missing (finding ${entry.findingId}, topic ${entry.topicId}). ` +
-            `If the file was renamed, update App.tsx routes and re-run ` +
-            `\`node scripts/generate-required-citations-snapshot.mjs\`.`,
+          `FILE:       ${entry.file}\n` +
+          `  Finding ID: ${entry.findingId}\n` +
+          `  Topic ID:   ${entry.topicId}\n` +
+          `  ERROR:      Topic file does not exist.\n` +
+          `  ACTION:     If the file was renamed, update App.tsx routes and re-run ` +
+          `\`node scripts/generate-required-citations-snapshot.mjs\`.`
         );
         continue;
       }
@@ -64,13 +67,22 @@ describe("required-citations snapshot", () => {
       const present = entry.requiredLabels.filter((l) => src.includes(`"${l}"`));
       if (present.length === 0) {
         errors.push(
-          `${entry.file}: finding ${entry.findingId} (${entry.topicId}) ` +
-            `no longer cites any of [${entry.requiredLabels.map((l) => `"${l}"`).join(", ")}]. ` +
-            `Restore an <InlineRef />, <Cite />, sectionSources, or cites=[...] entry that names one of these labels, ` +
-            `or refresh the snapshot if the finding has been re-opened.`,
+          `FILE:        ${entry.file}\n` +
+          `  Finding ID:  ${entry.findingId}\n` +
+          `  Topic ID:    ${entry.topicId}\n` +
+          `  MISSING:     ${entry.requiredLabels.map((l) => `"${l}"`).join(", ")}\n` +
+          `  ACTION:      Restore an <InlineRef label="…" />, <Cite label="…" />, ` +
+          `sectionSources, or cites=[…] entry that names one of the missing labels.\n` +
+          `               Or, if the finding has been re-opened / invalidated, update the ` +
+          `DB row and re-run \`node scripts/generate-required-citations-snapshot.mjs\`.`
         );
       }
     }
-    expect(errors, "\n" + errors.join("\n")).toEqual([]);
+    expect(
+      errors,
+      "\n\n=== Citation Regression Errors ===\n\n" +
+      errors.join("\n\n---\n\n") +
+      "\n\n===================================\n"
+    ).toEqual([]);
   });
 });
