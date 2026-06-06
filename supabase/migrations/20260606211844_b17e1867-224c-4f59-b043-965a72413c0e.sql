@@ -1,0 +1,1 @@
+UPDATE public.topic_audit_findings SET status='fixed', resolved_at=now(), unverifiable_reason='Diagram label addition (superficial + deep fibular nerve tracks/labels on anterior view); standard anatomy, no new textual claim requiring inline citation.' WHERE id='b9864a24-404a-47a8-af32-5768569eb805';
