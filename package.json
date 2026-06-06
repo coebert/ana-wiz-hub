@@ -24,6 +24,8 @@
     "check:exam-tags:fix": "node scripts/check-exam-tags.mjs --fix",
     "gen:citation-allowlist": "WRITE_CITATION_ALLOWLIST=1 vitest run src/__tests__/citation-coverage.test.ts",
     "check:audit-fixes": "node scripts/verify-audit-fixes.mjs",
+    "gen:required-citations": "node scripts/generate-required-citations-snapshot.mjs",
+    "check:required-citations": "vitest run src/__tests__/required-citations.test.ts",
     "check:source-excerpts": "node scripts/check-source-excerpts.mjs",
     "check:safety-citations": "node scripts/check-safety-citations.mjs",
     "check:safety-citations:report": "node scripts/check-safety-citations.mjs --report",
