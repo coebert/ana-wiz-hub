@@ -105,6 +105,13 @@ const severityColors: Record<string, string> = {
   critical: "bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-200",
 };
 
+// Categories the auditor uses to describe coverage gaps rather than factual
+// errors. These get a dedicated "expansion brief" prompt — Lovable is asked
+// to expand / add content rather than to correct an inaccuracy.
+const EXPANSION_CATEGORIES = new Set(["thin", "gap", "update", "missing"]);
+const isExpansionFinding = (f: { category: string }) =>
+  EXPANSION_CATEGORIES.has(f.category);
+
 const fmtDuration = (ms: number) => {
   if (!Number.isFinite(ms) || ms < 0) return "—";
   const s = Math.floor(ms / 1000);
