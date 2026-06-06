@@ -457,7 +457,12 @@ const FINDING_TOOL = {
                   "citation",
                   "diagram",
                   "terminology",
+                  "thin",
+                  "gap",
+                  "update",
                 ],
+                description:
+                  "factual = wrong fact; outdated = superseded by newer guideline; missing = key concept absent from a section that exists; citation = weak/missing source; diagram = figure issue; terminology = wrong/UK-incorrect wording; thin = section exists but is shallow and needs expanding; gap = a whole subtopic expected by the FRCA/FFICM curriculum is absent and should be added; update = current content is correct but a newer guideline/evidence/dose recommendation supersedes it.",
               },
               summary: { type: "string" },
               details: { type: "string" },
@@ -499,18 +504,40 @@ const TEXT_SYSTEM = `You are a UK anaesthetic and intensive-care content auditor
 
 You will be given:
 - The current text of one topic on the AnaesthesiaCore revision site.
+- The topic's stated scope (title + description).
 - Excerpts from authoritative UK and international reference sources (preferred: BJA Education, BJA, RCoA, FICM, ICS, AAGBI/Association of Anaesthetists, NICE, BNF, Resuscitation Council UK, ESICM).
 
-Your job: flag any statements in the topic that are factually incorrect, outdated, missing key concepts, use incorrect terminology, or cite weak sources, by comparison with the authoritative references provided.
+Your job has TWO equally important halves:
+
+(A) ACCURACY — flag statements that are factually incorrect, use incorrect terminology, cite weak sources, or have been superseded by newer guidelines/doses/evidence.
+
+(B) COVERAGE & DEPTH — flag where the topic is thin, has obvious gaps for an FRCA/FFICM candidate, or is missing whole subtopics that the curriculum / standard reference texts would expect. Be willing to say "this section is too brief", "this key concept is not addressed at all", or "a newer guideline (e.g. NICE NG…, SSC 2021, RCoA 2023) should be added".
+
+Category guide (pick the best fit):
+- factual       — wrong fact, mechanism, value or dose
+- outdated      — content based on a guideline/evidence that has been replaced
+- citation      — claim made without an authoritative source, or weak source used
+- terminology   — wrong wording / non-UK term / mis-spelled drug / wrong unit
+- diagram       — figure issue (handled by separate passes; rarely emit here)
+- missing       — within an existing section a clearly required concept is absent
+- thin          — a section exists but is too shallow for the exam level (1–2 sentences where a paragraph + values + clinical relevance is expected)
+- gap           — a whole subtopic that the FRCA/FFICM curriculum and standard texts expect is absent and should be added as a new section
+- update        — current content is correct but a newer guideline / dose / threshold supersedes it and should be incorporated
+
+Severity guide:
+- critical      — patient-safety risk (wrong drug dose, wrong resus algorithm)
+- major         — wrong mechanism / wrong physiology / missing concept that would be examined
+- minor         — imprecise wording, thin paragraph, dated phrasing
+- info          — stylistic only, nice-to-have expansion
 
 Rules:
-- Only raise a finding when the reference material clearly supports the correction. Do not speculate.
-- Be specific. Quote the offending passage briefly inside "details".
+- Only raise an accuracy finding (factual/outdated/citation/terminology) when the reference material clearly supports it. Do not speculate.
+- For thin/gap/update findings the reference material does not need to contradict the topic — it is enough that an authoritative source covers the area at greater depth or with a newer recommendation than the topic does.
+- Be specific. For accuracy issues, quote the offending passage briefly inside "details". For thin/gap/update issues, name the section that is thin (or that should be added) and outline what content is needed.
+- For thin/gap/update the "suggested_fix" must be actionable: list the subheadings, bullet points, values, or guideline references that should be added.
 - Prefer BJA Education as the gold standard when sources conflict.
-- "severity": critical = patient-safety / wrong drug dose, major = wrong mechanism or wrong physiology, minor = imprecise wording, info = stylistic only.
-- "category": choose the best fit. Use "diagram" only when commenting on figures (handled separately).
 - Always include at least one source URL per finding.
-- If the topic is accurate, return an empty findings array.
+- If the topic is accurate AND has adequate coverage for the exam level, return an empty findings array.
 - Return ONLY the tool call. No prose.`;
 
 const DIAGRAM_SYSTEM = `You are an anatomy / physiology / pharmacology illustration reviewer for UK anaesthetic teaching (FRCA / FFICM).
@@ -789,6 +816,9 @@ async function auditTopic(
     `Topic: ${topic.title}`,
     `Section: ${topic.section}`,
     `URL: ${topic.url}`,
+    `Stated scope (topic description): ${topic.description || "(none)"}`,
+    "",
+    "Audit BOTH (A) accuracy AND (B) coverage/depth. For (B), compare the topic against what an FRCA/FFICM-grade BJA Education / RCoA / FICM treatment of this scope would contain, and raise `thin` / `gap` / `update` findings where appropriate.",
     "",
     "=== CURRENT TOPIC CONTENT (markdown) ===",
     pageMarkdown.slice(0, 12000),

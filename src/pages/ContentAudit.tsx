@@ -105,6 +105,13 @@ const severityColors: Record<string, string> = {
   critical: "bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-200",
 };
 
+// Categories the auditor uses to describe coverage gaps rather than factual
+// errors. These get a dedicated "expansion brief" prompt — Lovable is asked
+// to expand / add content rather than to correct an inaccuracy.
+const EXPANSION_CATEGORIES = new Set(["thin", "gap", "update", "missing"]);
+const isExpansionFinding = (f: { category: string }) =>
+  EXPANSION_CATEGORIES.has(f.category);
+
 const fmtDuration = (ms: number) => {
   if (!Number.isFinite(ms) || ms < 0) return "—";
   const s = Math.floor(ms / 1000);
@@ -513,6 +520,164 @@ const ContentAudit = () => {
     return batches.map((b, i) => buildPromptForBatch(b, i, batches.length));
   };
 
+  // ─── Expansion brief prompt ──────────────────────────────────────────────
+  // For thin / gap / update / missing findings, Lovable should ADD or EXPAND
+  // content rather than just patch an inaccuracy. The prompt is shaped
+  // accordingly: it asks for new subsections, expanded prose with values,
+  // and updated guideline references — and uses the same "auto-mark fixed"
+  // SQL convention so the audit list stays in sync.
+  const buildExpansionPromptForBatch = (
+    batch: Finding[],
+    batchIndex: number,
+    batchCount: number,
+  ) => {
+    const byTopic = new Map<string, Finding[]>();
+    for (const f of batch) {
+      const key = `${f.section}/${f.topic_id}`;
+      if (!byTopic.has(key)) byTopic.set(key, []);
+      byTopic.get(key)!.push(f);
+    }
+    const batchLabel =
+      batchCount > 1 ? ` (batch ${batchIndex + 1} of ${batchCount})` : "";
+    const lines: string[] = [
+      `Please **expand the content** of the topic files below to address the following coverage findings${batchLabel}.`,
+      ``,
+      `These are NOT factual-error corrections. Each finding identifies an area that is too thin, a missing subtopic that should be added, or content that needs updating to reflect a newer guideline / dose / threshold. Treat each finding as an instruction to **add or rewrite the relevant section** so it meets FRCA / FFICM exam depth.`,
+      ``,
+      `For each finding:`,
+      `1. Open the referenced topic file under \`src/pages/topics/\` (the topic id matches the route segment).`,
+      `2. Locate the named section. If the finding is a **gap** and the section does not yet exist, add a new \`CollapsibleSubsection\` (or appropriate sibling block) in the correct logical place inside \`coreConcepts\`.`,
+      `3. Write new content that:`,
+      `   - matches the depth, voice and house style of the surrounding topic,`,
+      `   - includes the specific values, doses, classifications, thresholds and clinical relevance an FRCA/FFICM candidate would be examined on,`,
+      `   - cites every authoritative claim via the existing \`InlineRef\` / \`sectionSources\` / \`references.ts\` pattern using the listed Sources (add new entries to \`src/data/references.ts\` if needed, including an \`excerpt\` verbatim quote where the source supports a specific dose or threshold).`,
+      `4. Where the finding is **thin**, expand the existing prose in place — don't replace it wholesale unless the existing wording is also wrong.`,
+      `5. Where the finding is **update**, integrate the newer guideline alongside (or in place of) the older one, and update the citation.`,
+      ``,
+      `After all edits, run typecheck and \`npm run check:source-excerpts\`.`,
+      ``,
+      `**IMPORTANT — auto-mark fixed:** For every finding you actually actioned (i.e. the source file now contains the expanded / added / updated content with a real citation), mark it fixed in the database by running the SQL block at the bottom of this prompt via \`psql\`. Remove from that SQL any IDs you could not safely action and report them back to me with a one-line reason.`,
+      ``,
+    ];
+    if (batchCount > 1) {
+      lines.push(
+        `> This is **batch ${batchIndex + 1} of ${batchCount}**. The full expansion list was split to stay under the Lovable per-message character limit. Each batch is self-contained — apply only the findings listed here and run the SQL block at the bottom of *this* batch.`,
+        ``,
+      );
+    }
+    lines.push(
+      `---`,
+      ``,
+      `## ${batch.length} expansion finding${batch.length === 1 ? "" : "s"} across ${byTopic.size} topic${byTopic.size === 1 ? "" : "s"}${batchLabel}`,
+      ``,
+    );
+    for (const [key, items] of byTopic) {
+      const t = items[0];
+      lines.push(`### ${t.topic_title}  \`(${key})\``);
+      if (t.topic_url) lines.push(`URL: ${t.topic_url}`);
+      lines.push("");
+      for (const f of items) lines.push(...renderFindingLines(f));
+      lines.push("");
+    }
+    const idList = batch.map((f) => `  '${f.id}'`).join(",\n");
+    lines.push(
+      ``,
+      `---`,
+      ``,
+      `## Mark actioned expansion findings as fixed${batchLabel}`,
+      ``,
+      `After applying the expansions above (and only for the IDs you actually actioned — delete the rest from the list), run this exactly once via \`psql\`:`,
+      ``,
+      "```sql",
+      `UPDATE public.topic_audit_findings`,
+      `SET status = 'fixed', resolved_at = now()`,
+      `WHERE id IN (`,
+      idList,
+      `);`,
+      "```",
+      ``,
+      `> **Citation guard:** the database trigger rejects \`status = 'fixed'\` unless the finding has at least one entry in \`sources\` *or* an \`unverifiable_reason\` is set. Expansion findings should always be backed by the sources listed above, so the trigger will pass for any ID you genuinely actioned.`,
+      ``,
+      `Then tell me how many findings you actioned, and list any IDs you intentionally left open (e.g. needs a chart that the textual prompt can't produce) with a one-line reason.`,
+    );
+    return lines.join("\n");
+  };
+
+  const buildExpansionPromptBatches = (targets: Finding[]): string[] => {
+    if (targets.length === 0) return [];
+    const batches: Finding[][] = [];
+    let current: Finding[] = [];
+    for (const f of targets) {
+      const trial = [...current, f];
+      const size = buildExpansionPromptForBatch(trial, 0, 1).length;
+      if (size > MAX_PROMPT_CHARS && current.length > 0) {
+        batches.push(current);
+        current = [f];
+      } else {
+        current = trial;
+      }
+    }
+    if (current.length > 0) batches.push(current);
+    return batches.map((b, i) =>
+      buildExpansionPromptForBatch(b, i, batches.length),
+    );
+  };
+
+  const expandAll = async () => {
+    const targets = filtered.filter(
+      (f) => f.status === "open" && isExpansionFinding(f),
+    );
+    if (targets.length === 0) return;
+    const prompts = buildExpansionPromptBatches(targets);
+    const batchCount = prompts.length;
+    const batchNote =
+      batchCount > 1
+        ? `\n\nSplit into ${batchCount} batches (each under ${MAX_PROMPT_CHARS.toLocaleString()} chars). Batch 1 will be copied to your clipboard; all batches will download as .md files. Paste them into Lovable chat one at a time.`
+        : `\n\nThe brief will be copied to your clipboard and downloaded as a .md file. Paste it into Lovable chat and the AI will expand / add the listed sections.`;
+    const ok = window.confirm(
+      `Generate a Lovable expansion brief for ${targets.length} thin/gap/update finding${targets.length === 1 ? "" : "s"}?${batchNote}`,
+    );
+    if (!ok) return;
+    setBulkBusy(true);
+    try {
+      const dateStr = new Date().toISOString().slice(0, 10);
+      prompts.forEach((prompt, i) => {
+        const suffix =
+          batchCount > 1 ? `-batch-${i + 1}-of-${batchCount}` : "";
+        const blob = new Blob([prompt], { type: "text/markdown" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `audit-expansion-brief-${dateStr}${suffix}.md`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      });
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(prompts[0]);
+        copied = true;
+      } catch {
+        copied = false;
+      }
+      const base = `${targets.length} expansion finding${targets.length === 1 ? "" : "s"}`;
+      toast.success(
+        batchCount > 1
+          ? `${base} split into ${batchCount} batches. ${copied ? "Batch 1 copied to clipboard; all batches downloaded." : "All batches downloaded."}`
+          : copied
+            ? `Expansion brief for ${base} copied to clipboard and downloaded.`
+            : `Expansion brief downloaded (${base}). Open the .md and paste into Lovable chat.`,
+        { duration: 9000 },
+      );
+    } catch (e: any) {
+      toast.error(e?.message ?? "Failed to build expansion brief");
+    } finally {
+      setBulkBusy(false);
+    }
+  };
+
+
 
   const correctAll = async (
     targetStatus: Finding["status"] = "open",
@@ -633,6 +798,7 @@ const ContentAudit = () => {
       critical: open.filter((f) => f.severity === "critical").length,
       major: open.filter((f) => f.severity === "major").length,
       diagrams: open.filter((f) => f.category === "diagram").length,
+      expansion: open.filter(isExpansionFinding).length,
     };
   }, [findings]);
 
@@ -880,11 +1046,12 @@ const ContentAudit = () => {
         </Card>
 
         {/* Summary tiles */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
           <StatTile label="Open findings" value={stats.open} />
           <StatTile label="Critical" value={stats.critical} tone="critical" />
           <StatTile label="Major" value={stats.major} tone="major" />
           <StatTile label="Diagram issues" value={stats.diagrams} />
+          <StatTile label="Thin / gap / update" value={stats.expansion} />
         </div>
 
         {/* Companion checks: formulary verification + ESICM dose validator */}
@@ -1118,6 +1285,23 @@ const ContentAudit = () => {
                     ? "Building prompt…"
                     : `Correct all (${filtered.filter((f) => f.status === "open").length})`}
                 </Button>
+                <Button
+                  size="sm"
+                  variant="default"
+                  onClick={expandAll}
+                  disabled={
+                    bulkBusy ||
+                    filtered.filter(
+                      (f) => f.status === "open" && isExpansionFinding(f),
+                    ).length === 0
+                  }
+                  title="Build a Lovable chat prompt that expands thin sections, adds missing subtopics, and updates content for newer guidelines. Copies to clipboard + downloads .md."
+                >
+                  {bulkBusy
+                    ? "Building brief…"
+                    : `Expand thin / gap / update (${filtered.filter((f) => f.status === "open" && isExpansionFinding(f)).length})`}
+                </Button>
+
 
               </div>
             </div>
