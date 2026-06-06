@@ -76,7 +76,7 @@ const OhmsLawDiagram = () => (
           <text key={i} x="30" y={350 + i * 18} className="fill-muted-foreground text-[9.5px]">• {t}</text>
         ))}
 
-        <text x="300" y="430" textAnchor="middle" className="fill-foreground text-[10px] font-semibold">Mains supply: 230V AC, 50 Hz (UK). RMS voltage = peak/√2. Current kills: 1 mA perceptible, 15 mA let-go, 50 mA VF (macroshock)</text>
+        <text x="300" y="430" textAnchor="middle" className="fill-foreground text-[10px] font-semibold">Mains supply: 230V AC, 50 Hz (UK). RMS voltage = peak/√2. Current kills: 1 mA perceptible, 15 mA let-go, 100 mA VF (macroshock)</text>
       </svg>
     </div>
   </div>

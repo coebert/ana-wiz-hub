@@ -26,8 +26,8 @@ export const VaporizerDiagram = () => {
   const chamberConc = (agent.svp / 101.3) * 100;
   const targetConc = dialSetting[0];
   const bypassRatio = targetConc > 0 ? ((chamberConc - targetConc) / targetConc).toFixed(1) : "∞";
-  const chamberFlow = targetConc > 0 ? (targetConc / chamberConc * 100).toFixed(0) : "0";
-  const bypassFlow = targetConc > 0 ? (100 - parseFloat(chamberFlow)).toFixed(0) : "100";
+  const chamberFlow = targetConc > 0 ? (targetConc / chamberConc * 100).toFixed(1) : "0";
+  const bypassFlow = targetConc > 0 ? (100 - parseFloat(chamberFlow)).toFixed(1) : "100";
 
   const maxDial = agent.name === "Desflurane" ? 18 : agent.name === "Isoflurane" ? 5 : 8;
 

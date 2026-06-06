@@ -98,6 +98,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2017", citation: "Pollard BJ. Electrical safety in the operating theatre. BJA Education. 2017;17(10):339-344.", url: "https://doi.org/10.1093/bjaed/mkx035" },
     { label: "BJA Educ 2013 (Basic physics)", citation: "Davis PD, Kenny GNC. Basic physics for the anaesthetist. BJA Education. 2013;13(4):115-119. Covers Ohm's law, capacitance, inductance (E = ½LI²) and the macroshock current ranges (50–100 mA → VF).", url: "https://doi.org/10.1093/bjaceaccp/mks065" },
     { label: "BJA Educ 2008 (Electricity)", citation: "Boumphrey S, Marshall N. Electricity and safety. BJA Education. 2008;8(4):133-137.", url: "https://doi.org/10.1093/bjaceaccp/mkn029" },
+    { label: "ATOTW 193 (Electricity II)", citation: "Davies M, Jenkins B. Electricity in Anaesthesia – Part Two: Safety. Anaesthesia Tutorial of the Week 193. World Federation of Societies of Anaesthesiologists.", url: "https://resources.wfsahq.org/atotw/electricity-in-anaesthesia-part-two-safety/", excerpt: "At around 100 mA, ventricular fibrillation (VF) will occur if the current passes through the heart. Lower currents cause perception (≈1 mA) and loss of let-go ability (≈15 mA); currents above ≈100 mA produce sustained myocardial contraction and respiratory arrest." },
   ],
   "pulse-oximetry": [
     { label: "BJA Educ 2014", citation: "Jubran A. Pulse oximetry. Critical Care. 2015;19:272.", url: "https://doi.org/10.1186/s13054-015-0984-8" },
