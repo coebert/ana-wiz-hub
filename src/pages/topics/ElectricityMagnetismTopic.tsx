@@ -118,7 +118,9 @@ const ElectricityMagnetismTopic = () => {
                 current to pass through tissue <em>without</em> stimulating excitable membranes — this is exactly why diathermy
                 operates at 0.4–3 MHz and does not cause neuromuscular contraction or VF. By contrast, the risk of microshock
                 and macroshock is greatest around <strong>mains frequency (50–60 Hz)</strong>, where excitable tissues
-                (myocardium, motor nerves) are maximally responsive.
+                (myocardium, motor nerves) are maximally responsive. Canonical 50 Hz current thresholds: ~1 mA perception,
+                ~15 mA let-go, and <strong>~100 mA → ventricular fibrillation</strong> when current traverses the heart
+                <InlineRef topicId="electricity-magnetism" refLabel="ATOTW 193 (Electricity II)" />.
               </p>
             </div>
             </CollapsibleSubsection>
