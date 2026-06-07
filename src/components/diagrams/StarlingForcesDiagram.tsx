@@ -159,12 +159,16 @@ const StarlingForcesDiagram = () => {
                 </text>
               </g>
   
-              {/* πi arrows (outward from interstitium) */}
+              {/* πsg arrow — sub-glycocalyx oncotic pressure (revised Starling-Levick model) */}
               <g style={{ cursor: "pointer" }} onClick={() => setSelectedForce(selectedForce === "πi" ? null : "πi")}>
-                {drawArrow(470, capY + capH + 6, capY + capH + 35, forces[3].color, selectedForce === "πi")}
-                <text x="470" y={capY + capH + 48} textAnchor="middle" fontSize="7"
+                {drawArrow(470, capY + capH + 6, capY + capH + 20, forces[3].color, selectedForce === "πi")}
+                <text x="470" y={capY + capH + 32} textAnchor="middle" fontSize="7"
                   fill={forces[3].color} fontWeight={selectedForce === "πi" ? "700" : "500"}>
-                  πi ≈ 0
+                  πsg ≈ 0
+                </text>
+                <text x="470" y={capY + capH + 42} textAnchor="middle" fontSize="5"
+                  fill="hsl(var(--muted-foreground))">
+                  (sub-glycocalyx)
                 </text>
               </g>
   
