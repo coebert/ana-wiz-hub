@@ -271,7 +271,7 @@ async function firecrawlScrape(
     const { value, attempts } = await retryWithBackoff<any>(
       `scrape[${strategy}] ${targetUrl}`,
       budgetMs,
-      3,
+      4,
       async (attemptTimeoutMs) => {
         const r = await fetchJsonWithTimeout(
           "https://api.firecrawl.dev/v2/scrape",
