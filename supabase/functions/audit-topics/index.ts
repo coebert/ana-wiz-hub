@@ -189,7 +189,7 @@ async function retryWithBackoff<T>(
       break;
     }
 
-    const delay = backoffDelayMs(attempt);
+    const delay = backoffDelayMs(attempt, result.status);
     const remainingAfter = totalBudgetMs - (Date.now() - startedAt);
     if (remainingAfter - delay < 6_000) {
       console.warn(`[audit-topics] ${label} skipping retry: not enough budget after backoff`);
