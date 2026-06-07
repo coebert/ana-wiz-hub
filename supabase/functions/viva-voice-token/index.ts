@@ -6,8 +6,11 @@
 // Returns: OpenAI client-secrets response { value, expires_at, session }.
 
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 const MODEL = "gpt-realtime";
+const MAX_TOPIC_DESCRIPTION_CHARS = 1000;
+const MAX_TOPIC_TITLE_CHARS = 200;
 const VOICE = "alloy";
 
 type Exam = "primary" | "final" | "fficm";
