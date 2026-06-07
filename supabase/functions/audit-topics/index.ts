@@ -244,7 +244,7 @@ export type ScrapeResult = {
 async function firecrawlScrape(
   url: string,
   withScreenshot: boolean,
-  timeoutMs = 35_000,
+  timeoutMs = 50_000,
 ): Promise<ScrapeResult> {
   // Always request html as well — we use it to extract SVG label text for the
   // per-diagram audit pass. Markdown alone strips <svg><text> nodes.
