@@ -196,6 +196,7 @@ const EmergencySurgeryTopic = () => {
               <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside">
                 <li>Risk assessment documented (P-POSSUM or NELA risk calculator)</li>
                 <li>CT within 2 hours of decision if required</li>
+                <li>Antibiotics within 1 h for known or suspected sepsis (local / national guidelines)</li>
                 <li>Consultant surgeon and anaesthetist present for high-risk cases (predicted mortality &gt;5%)</li>
                 <li>Arrival in theatre within timescale appropriate to urgency</li>
                 <li>Goal-directed fluid therapy (cardiac output monitoring if high risk)</li>
