@@ -449,7 +449,7 @@ export const VAECMOCircuitDiagram = () => {
             {showLabels && <text x="172" y="418" fontSize="9" fontWeight="700" className="fill-[hsl(220_70%_38%)]">R fem v.</text>}
             {/* arterial (L groin) */}
             <circle cx="245" cy="435" r="4.5" fill="hsl(0 70% 38%)" stroke="hsl(var(--background))" strokeWidth="1" />
-            {showLabels && <text x="252" y="430" fontSize="9" fontWeight="700" className="fill-[hsl(0_70%_42%)]">L fem a.</text>}
+            {showLabels && <text x="252" y="430" fontSize="9" fontWeight="700" className="fill-[hsl(0_70%_42%)]">R fem a.</text>}
           </g>
 
           {/* Distal limb perfusion catheter (small antegrade sheath off return cannula) */}
