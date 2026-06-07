@@ -75,20 +75,19 @@ const AddisonianCrisisDiagram = () => {
               </line>
             </g>
   
-            {/* Failed hormones */}
+            {/* Failed hormones — secondary AI from chronic steroid suppression */}
             <g>
               <rect x="270" y="280" width="220" height="70" rx="10" fill="hsl(var(--destructive) / 0.08)" stroke="hsl(var(--destructive))" />
-              <text x="380" y="306" textAnchor="middle" className="fill-foreground" fontSize="13" fontWeight="700">↓↓ Cortisol · ↓↓ Aldosterone</text>
-              <text x="380" y="326" textAnchor="middle" className="fill-muted-foreground" fontSize="10">No glucocorticoid · no mineralocorticoid</text>
-              <text x="380" y="342" textAnchor="middle" className="fill-muted-foreground" fontSize="10">cover for surgical stress</text>
+              <text x="380" y="304" textAnchor="middle" className="fill-foreground" fontSize="13" fontWeight="700">↓↓ Cortisol (glucocorticoid)</text>
+              <text x="380" y="322" textAnchor="middle" className="fill-muted-foreground" fontSize="10">Secondary AI: RAAS / aldosterone preserved —</text>
+              <text x="380" y="338" textAnchor="middle" className="fill-muted-foreground" fontSize="10">hyperkalaemia is NOT a typical feature</text>
             </g>
-  
-            {/* Four downstream consequences */}
+
+            {/* Three downstream consequences — secondary (HPA-suppression) crisis */}
             {[
-              { x: 540, y: 60, label: "Hypotension", detail: "Loss of vascular tone, ↓ catecholamine response", color: "hsl(var(--destructive))" },
-              { x: 540, y: 150, label: "Hyperkalaemia", detail: "Lost aldosterone → ↑ K⁺ retention", color: "hsl(var(--clinical))" },
-              { x: 540, y: 240, label: "Hyponatraemia", detail: "Na⁺ loss + ADH up-regulation", color: "hsl(var(--anatomy))" },
-              { x: 540, y: 330, label: "Hypoglycaemia", detail: "Lost gluconeogenesis", color: "hsl(var(--pharmacology))" },
+              { x: 540, y: 90, label: "Hypotension", detail: "Loss of vascular tone, ↓ catecholamine response", color: "hsl(var(--destructive))" },
+              { x: 540, y: 200, label: "Hyponatraemia", detail: "Cortisol deficiency → unopposed ADH (dilutional)", color: "hsl(var(--anatomy))" },
+              { x: 540, y: 310, label: "Hypoglycaemia", detail: "Lost cortisol-driven gluconeogenesis", color: "hsl(var(--pharmacology))" },
             ].map((c, i) => (
               <g key={c.label}>
                 <path d={`M490 315 Q ${c.x - 30} ${c.y + 25} ${c.x} ${c.y + 25}`} stroke={c.color} strokeWidth="2" fill="none" opacity="0.7">
