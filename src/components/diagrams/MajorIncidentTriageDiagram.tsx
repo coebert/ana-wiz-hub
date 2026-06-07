@@ -166,7 +166,7 @@ export const MajorIncidentTriageDiagram = () => {
               { y: 55, q: "Walking?", yes: "→ P3 Delayed", no: "↓ next", color: PRIORITY.P3.color },
               { y: 100, q: "Breathing after airway opening?", yes: "↓ next", no: "→ Dead", color: PRIORITY.DEAD.color },
               { y: 145, q: "RR < 10 or > 29?", yes: "→ P1 Immediate", no: "↓ next", color: PRIORITY.P1.color },
-              { y: 190, q: "CRT > 2 s or HR > 120?", yes: "→ P1 Immediate", no: "→ P2 Urgent", color: PRIORITY.P1.color },
+              { y: 190, q: "CRT > 2 s or no radial pulse?", yes: "→ P1 Immediate", no: "→ P2 Urgent", color: PRIORITY.P1.color },
             ].map((row, i) => {
               const active = phase === 1 && sieveStep === i;
               return (

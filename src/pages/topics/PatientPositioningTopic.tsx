@@ -147,7 +147,7 @@ const PatientPositioningTopic = () => {
       keyPoints={[
         { text: "Anaesthetist owns positioning shared with the surgical team — document position, padding, eye care and pulses checked AFTER every move.", cites: ["AAGBI Positioning 2018"] },
         { text: "Ulnar neuropathy at the elbow is the commonest peripheral nerve injury after general anaesthesia (~28% of all anaesthesia-related nerve claims). Supinate the forearm and pad the medial epicondyle.", cites: ["ASA Practice Advisory 2020"] },
-        { text: "Brachial plexus injury — abduct arms <90°, externally rotate, avoid shoulder braces on the AC joint in steep Trendelenburg.", cites: ["BJA Educ PION 2017"] },
+        { text: "Brachial plexus injury — abduct arms <90°, externally rotate; the Association of Anaesthetists 2020 positioning guideline recommends AGAINST shoulder braces in steep Trendelenburg (risk of brachial plexus traction / compression regardless of placement). Use non-slip / vacuum mattresses or bean-bags to prevent sliding instead.", cites: ["AAGBI Positioning 2018", "AAGBI Nerve Injuries 2021"] },
         { text: "Common peroneal nerve at the fibular head is the commonest stirrup-related injury (lithotomy / lateral) → foot drop.", cites: ["AAGBI Pressure 2015"] },
         { text: "Well-leg compartment syndrome risk rises sharply after 4 h in stirrups — consider lowering legs every 2 h on long Lloyd-Davies cases.", cites: ["AAGBI Positioning 2018"] },
         { text: "Prone position must keep the abdomen FREE — abdominal compression ↑ IAP → ↓ venous return, ↑ epidural venous engorgement and ↑ surgical bleeding.", cites: ["ASA Practice Advisory 2020"] },
@@ -175,7 +175,7 @@ const PatientPositioningTopic = () => {
             </ol>
             <p className="text-muted-foreground leading-relaxed mt-3 text-sm">
               Document position, padding, monitoring re-check and pulses in the anaesthetic record after every position change.
-              The current Association of Anaesthetists guideline <em>Anaesthesia and patient positioning for adults</em> (<InlineRef topicId="patient-positioning" refLabel="AAGBI Positioning 2018" />, published Anaesthesia 2020;75:1212-1223) and the <InlineRef topicId="patient-positioning" refLabel="ASA Practice Advisory 2020" /> on perioperative peripheral neuropathies are the standard references.
+              The current Association of Anaesthetists guideline <em>Anaesthesia and patient positioning for adults</em> (<InlineRef topicId="patient-positioning" refLabel="AAGBI Positioning 2018" />, published Anaesthesia 2020;75:1212-1223), the Association of Anaesthetists 2021 <em>Management of Peri-operative Peripheral Nerve Injuries</em> guideline (<InlineRef topicId="patient-positioning" refLabel="AAGBI Nerve Injuries 2021" />) and the <InlineRef topicId="patient-positioning" refLabel="ASA Practice Advisory 2020" /> on perioperative peripheral neuropathies are the standard references.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
@@ -198,6 +198,14 @@ const PatientPositioningTopic = () => {
               colorectal, gynaecology). Robotic prostatectomy may use 25–40° tilt for several hours — the major
               concerns are raised IOP/ICP, post-operative visual loss, facial / laryngeal oedema and patient slipping.
               Reverse Trendelenburg (head-up) is used for upper-abdominal and laparoscopic gastric / bariatric work.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              <strong>Anti-slip strategy.</strong> The 2020 Association of Anaesthetists guideline
+              (<InlineRef topicId="patient-positioning" refLabel="AAGBI Positioning 2018" />) and the
+              2021 <InlineRef topicId="patient-positioning" refLabel="AAGBI Nerve Injuries 2021" /> guideline
+              both recommend AGAINST shoulder braces / supports in steep Trendelenburg because of the risk of
+              brachial plexus traction or compression regardless of where the brace is applied. Use a non-slip
+              gel / vacuum mattress, a bean-bag or a memory-foam pad with the arms tucked at the sides instead.
             </p>
             <TrendelenburgIllustration />
             </CollapsibleSubsection>
@@ -325,7 +333,7 @@ const PatientPositioningTopic = () => {
                 </thead>
                 <tbody className="text-muted-foreground">
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Nerve</td><td>Ulnar neuropathy</td><td>Supine (arms tucked, pronated)</td><td>Supinate forearm, pad medial epicondyle</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Nerve</td><td>Brachial plexopathy</td><td>Steep Trendelenburg + shoulder braces; lateral</td><td>Abduct &lt; 90°, axillary roll caudal to axilla, brace on lateral clavicle only</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Nerve</td><td>Brachial plexopathy</td><td>Steep Trendelenburg; lateral; arms abducted &gt;90°</td><td>Abduct &lt; 90°, axillary roll caudal to axilla; AVOID shoulder braces (AoA 2020); use non-slip / vacuum mattress to prevent sliding</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Nerve</td><td>Common peroneal (foot drop)</td><td>Lithotomy, lateral</td><td>Pad fibular head, boot-style stirrups</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Eye</td><td>POVL (ION / CRAO)</td><td>Prone spine (&gt; 6 h), steep Trendelenburg robotic</td><td>Head neutral / above heart, no globe pressure, MAP &gt; 70, document eye check 15-min</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">CVS</td><td>Cerebral hypoperfusion / stroke</td><td>Sitting, beach-chair</td><td>Zero arterial line at tragus, treat hypotension</td></tr>

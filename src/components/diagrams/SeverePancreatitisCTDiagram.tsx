@@ -101,14 +101,14 @@ const findings: Finding[] = [
   },
   {
     id: "gallstone",
-    text: "Gallstone in\nneck of Gallbladder",
+    text: "Cholelithiasis\n(causative)",
     dot: { x: 26, y: 38 },
     side: "left",
     labelY: 12,
     detail: {
-      title: "Gallstone — likely aetiology",
+      title: "Cholelithiasis — likely aetiology",
       body:
-        "Gallstones cause ~50% of acute pancreatitis in the UK. Look for stones in the gallbladder neck, CBD dilatation (>6 mm) and intrahepatic duct dilatation. ERCP within 72 h if cholangitis or persistent biliary obstruction; same-admission cholecystectomy for mild gallstone pancreatitis.",
+        "Gallstones cause ~50% of acute pancreatitis in the UK. The pancreatitis is triggered by a stone passing into and obstructing the distal CBD / ampulla of Vater — not by a stone retained in the gallbladder neck (which causes biliary colic / cholecystitis). On CT look for CBD dilatation (>6 mm), intrahepatic duct dilatation and pneumobilia. ERCP within 72 h if cholangitis or persistent biliary obstruction; same-admission cholecystectomy for mild gallstone pancreatitis.",
       severity: "Aetiological clue",
     },
   },

@@ -54,15 +54,18 @@ const Patient = ({ mode }: { mode: ECMOMode }) => (
     />
     <text x="109" y="115" textAnchor="middle" fontSize="9" fontWeight="600" fill="hsl(var(--foreground))" opacity="0.7">Heart</text>
 
-    {/* SVC (right side, blue) */}
-    <path d="M120,40 L120,84" stroke="hsl(220, 60%, 50%)" strokeWidth="3" fill="none" opacity="0.55" strokeLinecap="round" />
-    <text x="126" y="52" fontSize="8" fill="hsl(220, 55%, 50%)" opacity="0.75">SVC</text>
+    {/* Anterior view: viewer's left = patient's right.
+        SVC + IVC drain into the right atrium on the patient's right (viewer's left).
+        Descending aorta lies to the left of the midline (viewer's right). */}
+    {/* SVC (patient's right / viewer's left, blue) */}
+    <path d="M95,40 L95,84" stroke="hsl(220, 60%, 50%)" strokeWidth="3" fill="none" opacity="0.55" strokeLinecap="round" />
+    <text x="78" y="52" fontSize="8" fill="hsl(220, 55%, 50%)" opacity="0.75">SVC</text>
 
-    {/* IVC (left of heart, blue, down to femoral) */}
+    {/* IVC (patient's right / viewer's left, blue, down to femoral) */}
     <path d="M95,140 L95,265" stroke="hsl(220, 60%, 50%)" strokeWidth="3" fill="none" opacity="0.55" strokeLinecap="round" />
     <text x="78" y="200" fontSize="8" fill="hsl(220, 55%, 50%)" opacity="0.75">IVC</text>
 
-    {/* Aorta (right of heart, red, down) */}
+    {/* Descending aorta (patient's left / viewer's right, red, down) */}
     <path d="M125,108 Q140,108 140,128 L140,265" stroke="hsl(0, 65%, 50%)" strokeWidth="3" fill="none" opacity="0.55" strokeLinecap="round" />
     <text x="146" y="200" fontSize="8" fill="hsl(0, 60%, 50%)" opacity="0.75">Aorta</text>
 
