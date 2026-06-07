@@ -6,8 +6,11 @@
 // Returns: OpenAI client-secrets response { value, expires_at, session }.
 
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 const MODEL = "gpt-realtime";
+const MAX_TOPIC_DESCRIPTION_CHARS = 1000;
+const MAX_TOPIC_TITLE_CHARS = 200;
 const VOICE = "alloy";
 
 type Exam = "primary" | "final" | "fficm";
@@ -54,6 +57,38 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
 
   try {
+    // Require an authenticated Supabase user — viva sessions mint paid OpenAI
+    // Realtime credentials, so anonymous calls would let bots drain credit.
+    const authHeader = req.headers.get("Authorization") ?? "";
+    const token = authHeader.toLowerCase().startsWith("bearer ")
+      ? authHeader.slice(7).trim()
+      : "";
+    if (!token) {
+      return new Response(JSON.stringify({ error: "Authentication required" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
+    if (!supabaseUrl || !supabaseAnonKey) {
+      return new Response(JSON.stringify({ error: "Server misconfigured" }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+      global: { headers: { Authorization: `Bearer ${token}` } },
+    });
+    const { data: userData, error: userError } = await supabase.auth.getUser(token);
+    if (userError || !userData?.user) {
+      return new Response(JSON.stringify({ error: "Invalid or expired session" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const apiKey = Deno.env.get("OPENAI_API_KEY");
     if (!apiKey) {
       return new Response(JSON.stringify({ error: "OPENAI_API_KEY not configured" }), {
@@ -68,7 +103,14 @@ Deno.serve(async (req) => {
       exam?: Exam;
     };
 
-    const topicTitle = (body.topicTitle ?? "").toString().trim() || "General anaesthesia";
+    const topicTitle =
+      ((body.topicTitle ?? "").toString().trim() || "General anaesthesia").slice(
+        0,
+        MAX_TOPIC_TITLE_CHARS,
+      );
+    const topicDescription = body.topicDescription
+      ? body.topicDescription.toString().slice(0, MAX_TOPIC_DESCRIPTION_CHARS)
+      : undefined;
     const exam: Exam =
       body.exam === "primary" || body.exam === "final" || body.exam === "fficm"
         ? body.exam
@@ -76,7 +118,7 @@ Deno.serve(async (req) => {
 
     const instructions = buildInstructions({
       topicTitle,
-      topicDescription: body.topicDescription,
+      topicDescription,
       exam,
     });
 
