@@ -118,7 +118,7 @@ Deno.serve(async (req) => {
 
     const instructions = buildInstructions({
       topicTitle,
-      topicDescription: body.topicDescription,
+      topicDescription,
       exam,
     });
 
