@@ -304,13 +304,13 @@ export const AgonismSpectrumDiagram = () => {
               <circle
                 cx={90}
                 cy={10}
-                r={9}
+                r={11}
                 fill={active.color}
                 stroke="hsl(var(--background))"
                 strokeWidth={1.5}
               />
-              <text x={90} y={13} textAnchor="middle" fontSize="9" className="font-bold" fill="hsl(var(--background))">
-                L
+              <text x={90} y={13} textAnchor="middle" fontSize="7" className="font-bold" fill="hsl(var(--background))">
+                Ligand
               </text>
               {/* Output arrows */}
               <g opacity={Math.max(0.15, Math.abs(displayValue))}>
