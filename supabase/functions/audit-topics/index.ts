@@ -109,10 +109,14 @@ function isRetryableStatus(status: number) {
   return status === 0 || RETRYABLE_STATUSES.has(status);
 }
 
-// Exponential backoff with jitter: 600ms, 1500ms, 3000ms (capped).
-function backoffDelayMs(attempt: number) {
-  const base = Math.min(3000, 600 * Math.pow(2, attempt));
-  return Math.round(base * (0.7 + Math.random() * 0.6));
+// Exponential backoff with jitter. Base doubles each attempt and is capped
+// at 8s so a 4-attempt sequence sleeps roughly: 1s → 2s → 4s → 8s (±30%).
+// 408 (request timeout) gets an extra +1.5s on top because Firecrawl's
+// upstream render usually needs cool-down time before it will succeed.
+function backoffDelayMs(attempt: number, status = 0) {
+  const base = Math.min(8000, 1000 * Math.pow(2, attempt));
+  const jittered = Math.round(base * (0.7 + Math.random() * 0.6));
+  return status === 408 ? jittered + 1500 : jittered;
 }
 
 /**
@@ -185,7 +189,7 @@ async function retryWithBackoff<T>(
       break;
     }
 
-    const delay = backoffDelayMs(attempt);
+    const delay = backoffDelayMs(attempt, result.status);
     const remainingAfter = totalBudgetMs - (Date.now() - startedAt);
     if (remainingAfter - delay < 6_000) {
       console.warn(`[audit-topics] ${label} skipping retry: not enough budget after backoff`);
@@ -240,7 +244,7 @@ export type ScrapeResult = {
 async function firecrawlScrape(
   url: string,
   withScreenshot: boolean,
-  timeoutMs = 35_000,
+  timeoutMs = 50_000,
 ): Promise<ScrapeResult> {
   // Always request html as well — we use it to extract SVG label text for the
   // per-diagram audit pass. Markdown alone strips <svg><text> nodes.
@@ -267,7 +271,7 @@ async function firecrawlScrape(
     const { value, attempts } = await retryWithBackoff<any>(
       `scrape[${strategy}] ${targetUrl}`,
       budgetMs,
-      3,
+      4,
       async (attemptTimeoutMs) => {
         const r = await fetchJsonWithTimeout(
           "https://api.firecrawl.dev/v2/scrape",
@@ -395,11 +399,11 @@ async function firecrawlScrape(
 }
 
 
-async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
+async function firecrawlSearch(query: string, limit = 3, timeoutMs = 20_000) {
   const { value } = await retryWithBackoff<any[]>(
     `search "${query.slice(0, 60)}"`,
     timeoutMs,
-    2,
+    3,
     async (attemptTimeoutMs) => {
       const r = await fetchJsonWithTimeout(
         "https://api.firecrawl.dev/v2/search",
@@ -721,7 +725,7 @@ async function auditTopic(
     const result = await firecrawlScrape(
       topic.url,
       true,
-      Math.min(60_000, Math.max(15_000, remainingBudget() - 25_000)),
+      Math.min(90_000, Math.max(20_000, remainingBudget() - 25_000)),
     );
     page = result.data;
     scrapeDiagnostics = result.diagnostics;

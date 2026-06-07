@@ -73,32 +73,88 @@ async function fetchStatic(url: string): Promise<{ status: number; html: string 
   return { status: res.status, html: await res.text() };
 }
 
+// Transient Firecrawl/HTTP statuses worth retrying. 408 (request timeout) is
+// the dominant failure mode for cold-render scrapes of large SPA pages.
+const RENDERED_RETRYABLE = new Set([408, 425, 429, 500, 502, 503, 504]);
+
+function renderedBackoffMs(attempt: number, status: number) {
+  const base = Math.min(8000, 1000 * Math.pow(2, attempt));
+  const jittered = Math.round(base * (0.7 + Math.random() * 0.6));
+  return status === 408 ? jittered + 1500 : jittered;
+}
+
 async function fetchRendered(url: string): Promise<{ status: number; html: string }> {
-  // Firecrawl v2 scrape — returns the post-JS HTML so client-side
-  // Helmet meta tags are present.
-  const res = await fetch("https://api.firecrawl.dev/v2/scrape", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${firecrawlKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      url,
-      formats: ["rawHtml"],
-      onlyMainContent: false,
-      waitFor: 1500,
-    }),
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(`firecrawl_${res.status}: ${text.slice(0, 200)}`);
+  // Firecrawl v2 scrape — returns the post-JS HTML so client-side Helmet
+  // meta tags are present. Retries on transient 408/429/5xx with growing
+  // per-attempt timeouts so a cold upstream render doesn't fail the scan.
+  const maxAttempts = 4;
+  let lastStatus = 0;
+  let lastError = "";
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    // Per-attempt timeout grows: 30s → 45s → 60s → 75s.
+    const attemptTimeoutMs = 30_000 + attempt * 15_000;
+    const ac = new AbortController();
+    const t = setTimeout(() => ac.abort(), attemptTimeoutMs);
+    try {
+      const res = await fetch("https://api.firecrawl.dev/v2/scrape", {
+        method: "POST",
+        signal: ac.signal,
+        headers: {
+          Authorization: `Bearer ${firecrawlKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url,
+          formats: ["rawHtml"],
+          onlyMainContent: false,
+          waitFor: 2000 + attempt * 500,
+          // Tell Firecrawl itself how long it may spend before returning 408,
+          // leaving a 3s buffer for response transit.
+          timeout: Math.max(15_000, attemptTimeoutMs - 3_000),
+          storeInCache: false,
+          blockAds: true,
+        }),
+      });
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        lastStatus = res.status;
+        lastError = `firecrawl_${res.status}: ${text.slice(0, 200)}`;
+        if (RENDERED_RETRYABLE.has(res.status) && attempt < maxAttempts - 1) {
+          const delay = renderedBackoffMs(attempt, res.status);
+          console.warn(
+            `[run-seo-scan] rendered scrape ${url} status=${res.status} ` +
+            `attempt=${attempt + 1}/${maxAttempts} — retrying in ${delay}ms`,
+          );
+          await new Promise((r) => setTimeout(r, delay));
+          continue;
+        }
+        throw new Error(lastError);
+      }
+      const data = await res.json();
+      const root = data?.data ?? data;
+      const html: string = root?.rawHtml ?? root?.html ?? "";
+      const status: number = root?.metadata?.statusCode ?? 200;
+      return { status, html };
+    } catch (e) {
+      lastError = (e as Error).message;
+      const aborted = (e as Error).name === "AbortError";
+      // AbortError ≈ client-side 408 — treat as retryable.
+      const retryable = aborted || RENDERED_RETRYABLE.has(lastStatus);
+      if (retryable && attempt < maxAttempts - 1) {
+        const delay = renderedBackoffMs(attempt, aborted ? 408 : lastStatus);
+        console.warn(
+          `[run-seo-scan] rendered scrape ${url} error="${lastError}" ` +
+          `attempt=${attempt + 1}/${maxAttempts} — retrying in ${delay}ms`,
+        );
+        await new Promise((r) => setTimeout(r, delay));
+        continue;
+      }
+      throw e;
+    } finally {
+      clearTimeout(t);
+    }
   }
-  const data = await res.json();
-  // v2 may return fields top-level or under data.
-  const root = data?.data ?? data;
-  const html: string = root?.rawHtml ?? root?.html ?? "";
-  const status: number = root?.metadata?.statusCode ?? 200;
-  return { status, html };
+  throw new Error(lastError || "rendered scrape failed after retries");
 }
 
 async function auditPage(url: string, rendered: boolean): Promise<PageAudit> {
