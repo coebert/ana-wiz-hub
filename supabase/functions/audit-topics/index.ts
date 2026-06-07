@@ -109,10 +109,14 @@ function isRetryableStatus(status: number) {
   return status === 0 || RETRYABLE_STATUSES.has(status);
 }
 
-// Exponential backoff with jitter: 600ms, 1500ms, 3000ms (capped).
-function backoffDelayMs(attempt: number) {
-  const base = Math.min(3000, 600 * Math.pow(2, attempt));
-  return Math.round(base * (0.7 + Math.random() * 0.6));
+// Exponential backoff with jitter. Base doubles each attempt and is capped
+// at 8s so a 4-attempt sequence sleeps roughly: 1s → 2s → 4s → 8s (±30%).
+// 408 (request timeout) gets an extra +1.5s on top because Firecrawl's
+// upstream render usually needs cool-down time before it will succeed.
+function backoffDelayMs(attempt: number, status = 0) {
+  const base = Math.min(8000, 1000 * Math.pow(2, attempt));
+  const jittered = Math.round(base * (0.7 + Math.random() * 0.6));
+  return status === 408 ? jittered + 1500 : jittered;
 }
 
 /**
