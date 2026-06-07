@@ -399,11 +399,11 @@ async function firecrawlScrape(
 }
 
 
-async function firecrawlSearch(query: string, limit = 3, timeoutMs = 15_000) {
+async function firecrawlSearch(query: string, limit = 3, timeoutMs = 20_000) {
   const { value } = await retryWithBackoff<any[]>(
     `search "${query.slice(0, 60)}"`,
     timeoutMs,
-    2,
+    3,
     async (attemptTimeoutMs) => {
       const r = await fetchJsonWithTimeout(
         "https://api.firecrawl.dev/v2/search",
