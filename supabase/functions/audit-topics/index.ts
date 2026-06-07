@@ -725,7 +725,7 @@ async function auditTopic(
     const result = await firecrawlScrape(
       topic.url,
       true,
-      Math.min(60_000, Math.max(15_000, remainingBudget() - 25_000)),
+      Math.min(90_000, Math.max(20_000, remainingBudget() - 25_000)),
     );
     page = result.data;
     scrapeDiagnostics = result.diagnostics;
