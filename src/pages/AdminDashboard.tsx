@@ -173,6 +173,7 @@ const AdminDashboard = () => {
   // Raw visits kept for sub-range filtering (e.g. top countries)
   const [allVisits, setAllVisits] = useState<{ visitor_id: string; visited_at: string; country?: string | null; country_name?: string | null }[]>([]);
   const [countriesDateRange, setCountriesDateRange] = useState<"all" | "today" | "7d" | "30d">("all");
+  const [drillCountry, setDrillCountry] = useState<{ code: string; name: string } | null>(null);
 
   // Formulary verification + ESICM dose validator have moved to the unified
   // Content Audit page at /admin/audit so that all topic-accuracy checks are
