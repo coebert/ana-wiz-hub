@@ -1654,7 +1654,9 @@ const ContentAudit = () => {
                       </div>
                     </div>
                   </div>
-                ))
+                  );
+                })
+
               )}
             </div>
           </CardContent>
