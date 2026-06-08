@@ -20,6 +20,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import ContentAudit from "./pages/ContentAudit";
 const AuditDashboard = lazy(() => import("./pages/AuditDashboard"));
+const AuditReport = lazy(() => import("./pages/AuditReport"));
 // Standalone ESICM validator + formulary tab are now unified into Content Audit
 // at /admin/audit. The legacy route below redirects there for back-compat.
 const TopicMap = lazy(() => import("./pages/TopicMap"));
