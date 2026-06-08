@@ -1398,6 +1398,17 @@ const ContentAudit = () => {
                   ))}
                 </SelectContent>
               </Select>
+              <Select value={confidenceFilter} onValueChange={setConfidenceFilter}>
+                <SelectTrigger className="w-[160px]">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All confidence</SelectItem>
+                  <SelectItem value="high">High confidence</SelectItem>
+                  <SelectItem value="medium">Medium confidence</SelectItem>
+                  <SelectItem value="low">Low confidence</SelectItem>
+                </SelectContent>
+              </Select>
               <div className="w-full sm:w-auto sm:ml-auto flex flex-wrap items-center gap-2">
                 <span className="text-xs text-muted-foreground">
                   {filtered.length} shown
