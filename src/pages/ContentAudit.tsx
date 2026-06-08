@@ -112,6 +112,88 @@ const EXPANSION_CATEGORIES = new Set(["thin", "gap", "update", "missing"]);
 const isExpansionFinding = (f: { category: string }) =>
   EXPANSION_CATEGORIES.has(f.category);
 
+const ACCURACY_CATEGORIES = new Set(["factual", "outdated", "citation", "terminology"]);
+const isAccuracyFinding = (f: { category: string }) =>
+  ACCURACY_CATEGORIES.has(f.category);
+
+/**
+ * The audit edge function embeds new structured fields inside `details` as a
+ * machine-parseable header block (so we didn't need a DB migration). Shape:
+ *
+ *   [Confidence: high · Exam: Final]
+ *
+ *   > Topic passage:
+ *   > verbatim text from the page (≤300 char)
+ *
+ *   > Source evidence:
+ *   > verbatim text from the reference (≤400 char)
+ *
+ *   <free-form details>
+ *
+ * This helper splits the block back out so we can render quotes inline.
+ */
+type ParsedFinding = {
+  confidence: "low" | "medium" | "high" | null;
+  exam: "Primary" | "Final" | "FFICM" | "All" | null;
+  topicQuote: string | null;
+  sourceQuote: string | null;
+  rest: string;
+};
+const parseFindingDetails = (raw: string | null | undefined): ParsedFinding => {
+  const out: ParsedFinding = {
+    confidence: null,
+    exam: null,
+    topicQuote: null,
+    sourceQuote: null,
+    rest: "",
+  };
+  if (!raw) return out;
+  let text = String(raw);
+
+  // Header: [Confidence: high · Exam: Final]
+  const header = text.match(/^\s*\[([^\]]+)\]\s*\n+/);
+  if (header) {
+    const inside = header[1];
+    const conf = inside.match(/Confidence:\s*(low|medium|high)/i);
+    if (conf) out.confidence = conf[1].toLowerCase() as ParsedFinding["confidence"];
+    const exam = inside.match(/Exam:\s*(Primary|Final|FFICM|All)/i);
+    if (exam) {
+      const e = exam[1];
+      out.exam = (e.charAt(0).toUpperCase() + e.slice(1).toLowerCase()) as ParsedFinding["exam"];
+      if (e.toUpperCase() === "FFICM") out.exam = "FFICM";
+    }
+    text = text.slice(header[0].length);
+  }
+
+  // Pull quote blocks of the form: "> Topic passage:\n> ...\n> ...\n\n"
+  const pullBlock = (label: RegExp): string | null => {
+    const rx = new RegExp(
+      `>\\s*${label.source}[^\\n]*\\n((?:>\\s?[^\\n]*\\n?)+)`,
+      "i",
+    );
+    const m = text.match(rx);
+    if (!m) return null;
+    const body = m[1]
+      .split("\n")
+      .map((line) => line.replace(/^>\s?/, ""))
+      .join("\n")
+      .trim();
+    text = text.replace(m[0], "").trim();
+    return body || null;
+  };
+  out.topicQuote = pullBlock(/Topic passage:?/);
+  out.sourceQuote = pullBlock(/Source evidence:?/);
+  out.rest = text.trim();
+  return out;
+};
+
+const confidenceColors: Record<string, string> = {
+  high: "bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200",
+  medium: "bg-amber-100 text-amber-900 dark:bg-amber-900/30 dark:text-amber-200",
+  low: "bg-muted text-muted-foreground",
+};
+
+
 const fmtDuration = (ms: number) => {
   if (!Number.isFinite(ms) || ms < 0) return "—";
   const s = Math.floor(ms / 1000);
