@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
@@ -169,6 +169,9 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"overview" | "topics">("overview");
   const [mapMetric, setMapMetric] = useState<"users" | "visits">("users");
+  // Raw visits kept for sub-range filtering (e.g. top countries)
+  const [allVisits, setAllVisits] = useState<{ visitor_id: string; visited_at: string; country?: string | null; country_name?: string | null }[]>([]);
+  const [countriesDateRange, setCountriesDateRange] = useState<"all" | "today" | "7d" | "30d">("all");
 
   // Formulary verification + ESICM dose validator have moved to the unified
   // Content Audit page at /admin/audit so that all topic-accuracy checks are
@@ -360,21 +363,24 @@ const AdminDashboard = () => {
 
 
     // Top countries (by unique visitors, then total visits)
-    const countryVisits = new Map<string, { name: string; users: Set<string>; visits: number }>();
-    visits.forEach((v: { visitor_id: string; country?: string | null; country_name?: string | null }) => {
-      const c = (v.country ?? "").toUpperCase();
-      if (!c || c.length !== 2) return;
-      if (!countryVisits.has(c)) {
-        countryVisits.set(c, { name: v.country_name ?? c, users: new Set(), visits: 0 });
-      }
-      const entry = countryVisits.get(c)!;
-      entry.users.add(v.visitor_id);
-      entry.visits += 1;
-    });
-    const topCountries = Array.from(countryVisits.entries())
-      .map(([country, e]) => ({ country, countryName: e.name, users: e.users.size, visits: e.visits }))
-      .sort((a, b) => b.users - a.users || b.visits - a.visits)
-      .slice(0, 15);
+    const computeTopCountries = (visitList: typeof visits) => {
+      const countryVisits = new Map<string, { name: string; users: Set<string>; visits: number }>();
+      visitList.forEach((v: { visitor_id: string; country?: string | null; country_name?: string | null }) => {
+        const c = (v.country ?? "").toUpperCase();
+        if (!c || c.length !== 2) return;
+        if (!countryVisits.has(c)) {
+          countryVisits.set(c, { name: v.country_name ?? c, users: new Set(), visits: 0 });
+        }
+        const entry = countryVisits.get(c)!;
+        entry.users.add(v.visitor_id);
+        entry.visits += 1;
+      });
+      return Array.from(countryVisits.entries())
+        .map(([country, e]) => ({ country, countryName: e.name, users: e.users.size, visits: e.visits }))
+        .sort((a, b) => b.users - a.users || b.visits - a.visits)
+        .slice(0, 15);
+    };
+    const topCountries = computeTopCountries(visits);
 
     const newUsersToday = Array.from(firstSeen.entries()).filter(
       ([, ts]) => ts >= todayStart,
@@ -686,12 +692,43 @@ const AdminDashboard = () => {
       podcasts: podcastsSummary,
       viva: vivaSummary,
     });
+    setAllVisits(visits);
     setLoading(false);
   };
 
   useEffect(() => {
     if (user && isAdmin) fetchAnalytics();
   }, [user, isAdmin]);
+
+  // Filter top countries by a sub-range independent of the global dashboard range
+  const filteredTopCountries = useMemo(() => {
+    if (!allVisits.length) return [];
+    const now = new Date();
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    const subset = allVisits.filter(v => {
+      if (countriesDateRange === "today") return v.visited_at >= todayStart;
+      if (countriesDateRange === "7d") return v.visited_at >= sevenDaysAgo;
+      if (countriesDateRange === "30d") return v.visited_at >= thirtyDaysAgo;
+      return true;
+    });
+    const countryVisits = new Map<string, { name: string; users: Set<string>; visits: number }>();
+    subset.forEach((v: { visitor_id: string; country?: string | null; country_name?: string | null }) => {
+      const c = (v.country ?? "").toUpperCase();
+      if (!c || c.length !== 2) return;
+      if (!countryVisits.has(c)) {
+        countryVisits.set(c, { name: v.country_name ?? c, users: new Set(), visits: 0 });
+      }
+      const entry = countryVisits.get(c)!;
+      entry.users.add(v.visitor_id);
+      entry.visits += 1;
+    });
+    return Array.from(countryVisits.entries())
+      .map(([country, e]) => ({ country, countryName: e.name, users: e.users.size, visits: e.visits }))
+      .sort((a, b) => b.users - a.users || b.visits - a.visits)
+      .slice(0, 15);
+  }, [allVisits, countriesDateRange]);
 
   if (authLoading || (!user || !isAdmin)) {
     return (
@@ -1421,25 +1458,51 @@ const AdminDashboard = () => {
               <p className="text-xs text-muted-foreground mb-3">
                 Choropleth of {mapMetric === "users" ? "unique visitors" : "total visits"} per country. Hover a country for details; scroll or pinch to zoom.
               </p>
-              {analytics.topCountries.length === 0 ? (
+              {filteredTopCountries.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
                   No country data yet — countries are recorded from new visits onwards.
                 </p>
               ) : (
-                <VisitorsWorldMap data={analytics.topCountries} metric={mapMetric} />
+                <VisitorsWorldMap data={filteredTopCountries} metric={mapMetric} />
               )}
             </div>
 
             {/* Top countries */}
             <div className="p-4 rounded-xl border border-border bg-card">
-              <div className="flex items-center gap-2 mb-1">
-                <Globe className="w-4 h-4 text-primary" />
-                <h2 className="text-sm font-semibold text-foreground">Top Countries</h2>
+              <div className="flex items-center justify-between flex-wrap gap-2 mb-1">
+                <div className="flex items-center gap-2">
+                  <Globe className="w-4 h-4 text-primary" />
+                  <h2 className="text-sm font-semibold text-foreground">Top Countries</h2>
+                </div>
+                <div className="flex gap-1">
+                  {([
+                    { key: "today" as const, label: "Today" },
+                    { key: "7d" as const, label: "7d" },
+                    { key: "30d" as const, label: "30d" },
+                    { key: "all" as const, label: "All" },
+                  ]).map(opt => (
+                    <button
+                      key={opt.key}
+                      onClick={() => setCountriesDateRange(opt.key)}
+                      className={`px-2 py-1 rounded-md text-[11px] font-medium transition-colors ${
+                        countriesDateRange === opt.key
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-secondary/60 text-muted-foreground hover:text-foreground hover:bg-secondary"
+                      }`}
+                      aria-pressed={countriesDateRange === opt.key}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
               </div>
               <p className="text-xs text-muted-foreground mb-3">
                 Distinct visitors and page views grouped by country (resolved at visit time).
+                {countriesDateRange !== "all" && (
+                  <span className="ml-1 italic">Showing {countriesDateRange === "today" ? "today" : countriesDateRange === "7d" ? "last 7 days" : "last 30 days"}.</span>
+                )}
               </p>
-              {analytics.topCountries.length === 0 ? (
+              {filteredTopCountries.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
                   No country data yet — countries are recorded from new visits onwards.
                 </p>
@@ -1454,7 +1517,7 @@ const AdminDashboard = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {analytics.topCountries.map(c => (
+                      {filteredTopCountries.map(c => (
                         <tr key={c.country} className="border-b border-border/50">
                           <td className="py-2 pr-3 text-foreground">
                             <span aria-hidden className="text-base leading-none mr-2">{countryFlag(c.country)}</span>
