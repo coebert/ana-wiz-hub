@@ -56,6 +56,58 @@ const SOURCE_DOMAINS = [
   "esicm.org",
 ];
 
+// ---- FRCA / FFICM freshness anchors --------------------------------------
+// Per-section hints of guidelines / consensus statements that frequently
+// drive content drift. Surfaced to the FRESHNESS LLM pass as PROMPTS only —
+// the model still has to verify against a quoted recent source before
+// raising a finding. Keep entries short; do not assert they ARE outdated.
+const FRESHNESS_ANCHORS_BY_SECTION: Record<string, string[]> = {
+  physics: [
+    "AAGBI/Anaesthetists.org Standards of Monitoring 2021 (and any 2024+ revision)",
+    "MHRA device safety alerts on anaesthetic machines / vaporisers / ventilators",
+    "ISO 80601-2-13 anaesthetic workstation updates",
+  ],
+  physiology: [
+    "BJA Education review articles in the last 3 y on applied physiology",
+    "ESICM / SCCM consensus statements affecting physiological targets",
+  ],
+  pharmacology: [
+    "BNF / BNFc dose changes (most recent edition)",
+    "MHRA Drug Safety Updates (e.g. opioids, gabapentinoids, neuromuscular blockers)",
+    "NICE TA / NG updates on perioperative drug therapy",
+    "Sugammadex, remimazolam, ciprofol — UK licensing status updates",
+  ],
+  clinical: [
+    "Difficult Airway Society (DAS) guidelines — most recent edition",
+    "RCoA / AAGBI consent, monitoring, and preoperative assessment updates",
+    "NAP7 (perioperative cardiac arrest, 2023) implications",
+    "NICE NG45 routine preoperative tests — current revision",
+  ],
+  "intensive-care": [
+    "Surviving Sepsis Campaign (most recent update)",
+    "FICM / ICS guidelines: rehabilitation after critical illness, organ donation, prognostication",
+    "ARDS Berlin / global definition (2023) updates",
+    "ESICM consensus statements (last 3 y)",
+    "NAP7 ICU implications",
+  ],
+  perioperative: [
+    "RCUK ALS / paediatric ALS — most recent edition",
+    "AAGBI peri-operative blood transfusion / anaphylaxis / massive haemorrhage guidance",
+    "NICE NG: VTE prophylaxis, perioperative care in adults (NG180)",
+    "Centre for Perioperative Care (CPOC) consensus documents",
+    "NAP7 (2023) and NAP6 (anaphylaxis) implications",
+  ],
+};
+
+function freshnessHintsFor(section: string): string {
+  const list = FRESHNESS_ANCHORS_BY_SECTION[section];
+  if (!list || list.length === 0) {
+    return "(no section-specific hints — use general UK FRCA/FFICM guideline knowledge)";
+  }
+  return list.map((s, i) => `  ${i + 1}. ${s}`).join("\n");
+}
+
+
 interface TopicRef {
   id: string;
   title: string;
@@ -408,12 +460,26 @@ async function firecrawlScrape(
 }
 
 
-async function firecrawlSearch(query: string, limit = 3, timeoutMs = 20_000) {
+async function firecrawlSearch(
+  query: string,
+  limit = 3,
+  timeoutMs = 20_000,
+  opts: { tbs?: string } = {},
+) {
   const { value } = await retryWithBackoff<any[]>(
     `search "${query.slice(0, 60)}"`,
     timeoutMs,
     3,
     async (attemptTimeoutMs) => {
+      const body: Record<string, unknown> = {
+        query,
+        limit,
+        scrapeOptions: { formats: ["markdown"] },
+      };
+      // Firecrawl v2 supports Google-style time filters via `tbs`
+      // (qdr:d / qdr:w / qdr:m / qdr:y / qdr:y3 etc.). Surfaces recent
+      // guidelines for the freshness pass without scraping the whole web.
+      if (opts.tbs) body.tbs = opts.tbs;
       const r = await fetchJsonWithTimeout(
         "https://api.firecrawl.dev/v2/search",
         {
@@ -422,11 +488,7 @@ async function firecrawlSearch(query: string, limit = 3, timeoutMs = 20_000) {
             Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            query,
-            limit,
-            scrapeOptions: { formats: ["markdown"] },
-          }),
+          body: JSON.stringify(body),
         },
         attemptTimeoutMs,
       );
@@ -438,6 +500,7 @@ async function firecrawlSearch(query: string, limit = 3, timeoutMs = 20_000) {
   );
   return value ?? [];
 }
+
 
 
 
@@ -618,8 +681,48 @@ Severity:
 
 Return ONLY the tool call.`;
 
+// ---- FRESHNESS (Pass C) --------------------------------------------------
+// Dedicated pass that asks the model whether any major UK/international
+// guideline, dose, or threshold relevant to this FRCA/FFICM topic has been
+// updated within the last ~3 years and is NOT yet reflected in the page.
+// Runs against time-filtered Firecrawl search results so the model sees
+// recent guideline excerpts rather than historic ones.
+const FRESHNESS_SYSTEM = `You are a UK FRCA / FFICM curriculum maintainer auditing ONE revision topic for content freshness.
+
+You will be given:
+- The current text of one topic on the AnaesthesiaCore revision site.
+- The topic's stated scope (title + description) and FRCA/FFICM curriculum section.
+- Recent (last ~3 years) reference excerpts from authoritative UK / international bodies — BJA Education, RCoA, FICM, ICS, NICE, BNF, Resus Council UK, ESICM, AAGBI / Anaesthetists.org.
+- Hints about which guidelines / consensus statements are commonly tested for this section (use as prompts, not gospel).
+- A list of previously-raised findings (open + dismissed as false positive).
+
+Your ONLY job is to surface freshness drift — situations where the page is internally consistent but a more recent named guideline, dose, threshold, drug licensing change, NAP report, or consensus statement supersedes or supplements it. You are NOT auditing accuracy or coverage here.
+
+Use these categories:
+- outdated — page repeats an OLD recommendation that has been REPLACED by a named newer guideline (name BOTH old and new + year). topic_quote = the now-outdated passage verbatim. source_quote = the new recommendation.
+- update   — page is correct but does NOT mention a recent (≤3 y) named update / NAP report / NICE NG / consensus statement that an FRCA / FFICM candidate would be expected to know. topic_quote = the related current passage (may be empty if topic is silent). source_quote = the recent recommendation.
+- missing  — a brand-new entity (new drug class, new device, new technique, new pathway) introduced into UK practice within the last ~3 years and clearly within scope is entirely absent. topic_quote = empty string; details MUST name the entity + year + sponsoring body.
+
+Hard rules (violations are discarded):
+1. Every finding must name BOTH the old reference (where applicable) AND the new one, each with year. Generic "this is outdated" without a specific newer source is rejected.
+2. source_quote must be verbatim from one of the supplied recent reference excerpts. If you cannot quote a recent source, do NOT raise the finding.
+3. The newer source must be ≤4 years old at time of writing. Older "updates" belong in the coverage pass, not here.
+4. NEVER re-raise a finding from the FALSE POSITIVES list.
+5. NEVER duplicate an already-open finding on the same passage.
+6. Do NOT raise pure-accuracy findings (wrong fact unrelated to a guideline change) — separate pass handles those.
+7. Quality over quantity: 0–3 specific, dated, sourced findings. An empty array IS the right answer when nothing on the page is genuinely stale.
+
+Severity:
+- critical — patient-safety: superseded resus / airway / dose recommendation still on the page
+- major    — examined recommendation that has clearly moved on (e.g. NAP7 implications, NICE NG update, RCoA consensus)
+- minor    — nomenclature / drug-class change, new guideline that supplements but does not contradict
+- info     — nice-to-mention recent publication
+
+Return ONLY the tool call.`;
+
 // Back-compat alias (used by older code paths).
 const TEXT_SYSTEM = ACCURACY_SYSTEM;
+
 
 const DIAGRAM_SYSTEM = `You are an anatomy / physiology / pharmacology illustration reviewer for UK anaesthetic teaching (FRCA / FFICM).
 
@@ -763,13 +866,17 @@ type Stages = {
   ref_titles: string[];
   text_findings: number;
   coverage_findings?: number;
+  freshness_findings?: number;
+  freshness_refs_count?: number;
   diagram_findings: number;
   diagram_label_findings: number;
   svg_count: number;
   text_error?: string;
   coverage_error?: string;
+  freshness_error?: string;
   diagram_error?: string;
   diagram_label_error?: string;
+
   scrape_error?: string;
   scrape_diagnostics?: ScrapeDiagnostics;
   scrape_last_status?: number;
@@ -1026,6 +1133,82 @@ async function auditTopic(
       console.error(`coverage audit error for ${topic.id}`, e);
     }
   }
+
+  // 3c. FRESHNESS pass — recency-filtered search + dedicated LLM call.
+  // Surfaces `outdated` / `update` / `missing` findings tied to named
+  // guidelines published in the last ~3 years. Runs only when we still have
+  // a comfortable budget; the section→guideline registry is included as a
+  // prompt-hint so the model knows what to look for even when search is thin.
+  if (hasBudget(28_000)) {
+    try {
+      // Time-filtered Firecrawl search (last year, last 3 years). Two narrow
+      // queries beat one broad query for surfacing recent guideline PDFs.
+      const freshQueryGuideline = `${topic.title} guideline update UK ${
+        ["bjaeducation.org", "rcoa.ac.uk", "ficm.ac.uk", "nice.org.uk", "resus.org.uk", "ics.ac.uk"]
+          .map((d) => `site:${d}`)
+          .join(" OR ")
+      }`;
+      const freshQueryReview = `${topic.title} BJA Education review OR consensus statement`;
+
+      const [g1, g2] = await Promise.all([
+        firecrawlSearch(freshQueryGuideline, 3, 12_000, { tbs: "qdr:y3" }),
+        firecrawlSearch(freshQueryReview, 2, 10_000, { tbs: "qdr:y3" }),
+      ]);
+      const recentRefs = [...g1, ...g2]
+        .filter((r) => r?.url && r?.markdown)
+        .filter((r, i, arr) => arr.findIndex((x) => x.url === r.url) === i)
+        .slice(0, 5)
+        .map((r) => ({
+          title: r.title ?? r.metadata?.title ?? r.url,
+          url: r.url,
+          excerpt: String(r.markdown).slice(0, 3000),
+        }));
+      stages.freshness_refs_count = recentRefs.length;
+
+      const recentBlock = recentRefs.length === 0
+        ? "(no recent reference excerpts retrieved — only raise findings you can cite verbatim from a named ≤4y-old guideline; otherwise emit empty findings array)"
+        : recentRefs
+            .map((r, i) => `--- Recent Reference ${i + 1}: ${r.title}\n${r.url}\n${r.excerpt}`)
+            .join("\n\n");
+
+      const freshnessFindings = await callAI({
+        system: FRESHNESS_SYSTEM,
+        userText: [
+          `Topic: ${topic.title}`,
+          `Section: ${topic.section}`,
+          `URL: ${topic.url}`,
+          `Stated scope: ${topic.description || "(none)"}`,
+          "",
+          "FOCUS: content freshness only. Flag outdated content or missing recent (≤3 y) named guideline updates.",
+          "",
+          "=== SECTION FRESHNESS HINTS (prompt, not gospel — must still cite a recent source) ===",
+          freshnessHintsFor(topic.section),
+          "",
+          priorContextBlock,
+          "",
+          "=== CURRENT TOPIC CONTENT (markdown) ===",
+          pageExcerpt,
+          "",
+          "=== RECENT (last ~3 y) REFERENCES ===",
+          recentBlock,
+        ].join("\n"),
+        timeoutMs: Math.min(28_000, Math.max(10_000, Math.floor((remainingBudget() - 25_000) * 0.5))),
+      });
+      stages.freshness_findings = freshnessFindings.length;
+      // Force category to the freshness set if the model strayed.
+      for (const f of freshnessFindings) {
+        if (!["outdated", "update", "missing"].includes(f.category)) {
+          f.category = "update";
+        }
+      }
+      all.push(...freshnessFindings);
+    } catch (e) {
+      stages.freshness_error = (e as Error).message;
+      console.error(`freshness audit error for ${topic.id}`, e);
+    }
+  }
+
+
 
 
   // 4a. Per-diagram label audit (text-only, from extracted SVG labels).
