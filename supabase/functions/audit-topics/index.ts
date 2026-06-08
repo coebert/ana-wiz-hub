@@ -618,8 +618,48 @@ Severity:
 
 Return ONLY the tool call.`;
 
+// ---- FRESHNESS (Pass C) --------------------------------------------------
+// Dedicated pass that asks the model whether any major UK/international
+// guideline, dose, or threshold relevant to this FRCA/FFICM topic has been
+// updated within the last ~3 years and is NOT yet reflected in the page.
+// Runs against time-filtered Firecrawl search results so the model sees
+// recent guideline excerpts rather than historic ones.
+const FRESHNESS_SYSTEM = `You are a UK FRCA / FFICM curriculum maintainer auditing ONE revision topic for content freshness.
+
+You will be given:
+- The current text of one topic on the AnaesthesiaCore revision site.
+- The topic's stated scope (title + description) and FRCA/FFICM curriculum section.
+- Recent (last ~3 years) reference excerpts from authoritative UK / international bodies — BJA Education, RCoA, FICM, ICS, NICE, BNF, Resus Council UK, ESICM, AAGBI / Anaesthetists.org.
+- Hints about which guidelines / consensus statements are commonly tested for this section (use as prompts, not gospel).
+- A list of previously-raised findings (open + dismissed as false positive).
+
+Your ONLY job is to surface freshness drift — situations where the page is internally consistent but a more recent named guideline, dose, threshold, drug licensing change, NAP report, or consensus statement supersedes or supplements it. You are NOT auditing accuracy or coverage here.
+
+Use these categories:
+- outdated — page repeats an OLD recommendation that has been REPLACED by a named newer guideline (name BOTH old and new + year). topic_quote = the now-outdated passage verbatim. source_quote = the new recommendation.
+- update   — page is correct but does NOT mention a recent (≤3 y) named update / NAP report / NICE NG / consensus statement that an FRCA / FFICM candidate would be expected to know. topic_quote = the related current passage (may be empty if topic is silent). source_quote = the recent recommendation.
+- missing  — a brand-new entity (new drug class, new device, new technique, new pathway) introduced into UK practice within the last ~3 years and clearly within scope is entirely absent. topic_quote = empty string; details MUST name the entity + year + sponsoring body.
+
+Hard rules (violations are discarded):
+1. Every finding must name BOTH the old reference (where applicable) AND the new one, each with year. Generic "this is outdated" without a specific newer source is rejected.
+2. source_quote must be verbatim from one of the supplied recent reference excerpts. If you cannot quote a recent source, do NOT raise the finding.
+3. The newer source must be ≤4 years old at time of writing. Older "updates" belong in the coverage pass, not here.
+4. NEVER re-raise a finding from the FALSE POSITIVES list.
+5. NEVER duplicate an already-open finding on the same passage.
+6. Do NOT raise pure-accuracy findings (wrong fact unrelated to a guideline change) — separate pass handles those.
+7. Quality over quantity: 0–3 specific, dated, sourced findings. An empty array IS the right answer when nothing on the page is genuinely stale.
+
+Severity:
+- critical — patient-safety: superseded resus / airway / dose recommendation still on the page
+- major    — examined recommendation that has clearly moved on (e.g. NAP7 implications, NICE NG update, RCoA consensus)
+- minor    — nomenclature / drug-class change, new guideline that supplements but does not contradict
+- info     — nice-to-mention recent publication
+
+Return ONLY the tool call.`;
+
 // Back-compat alias (used by older code paths).
 const TEXT_SYSTEM = ACCURACY_SYSTEM;
+
 
 const DIAGRAM_SYSTEM = `You are an anatomy / physiology / pharmacology illustration reviewer for UK anaesthetic teaching (FRCA / FFICM).
 
