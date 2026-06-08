@@ -266,13 +266,21 @@ async function firecrawlScrape(
     } = {},
   ) => {
     const onlyMainContent = opts.onlyMainContent ?? true;
-    const waitFor = opts.waitFor ?? (opts.actions ? 1200 : 8000);
+    const requestedWaitFor = opts.waitFor ?? (opts.actions ? 1200 : 8000);
     const strategy = opts.strategy ?? "default";
     const { value, attempts } = await retryWithBackoff<any>(
       `scrape[${strategy}] ${targetUrl}`,
       budgetMs,
-      4,
+      3,
       async (attemptTimeoutMs) => {
+        // Firecrawl v2 requires `waitFor <= timeout / 2`. The client-side
+        // AbortController fires at `attemptTimeoutMs`, so the value we send
+        // as `timeout` must be a little smaller than that, and the
+        // resulting `waitFor` cap is roughly half of it.
+        const firecrawlTimeout = Math.max(6_000, attemptTimeoutMs - 2_000);
+        const waitForCap = Math.max(500, Math.floor(firecrawlTimeout / 2) - 500);
+        const waitFor = Math.min(requestedWaitFor, waitForCap);
+
         const r = await fetchJsonWithTimeout(
           "https://api.firecrawl.dev/v2/scrape",
           {
@@ -286,7 +294,7 @@ async function firecrawlScrape(
               formats,
               onlyMainContent,
               waitFor,
-              timeout: Math.max(8_000, attemptTimeoutMs - 3_000),
+              timeout: firecrawlTimeout,
               actions: opts.actions,
               storeInCache: false,
               blockAds: true,
@@ -309,6 +317,7 @@ async function firecrawlScrape(
         };
       },
     );
+
     allAttempts.push(...attempts);
     finalUrl = targetUrl;
     return value;
