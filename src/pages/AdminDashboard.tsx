@@ -700,6 +700,36 @@ const AdminDashboard = () => {
     if (user && isAdmin) fetchAnalytics();
   }, [user, isAdmin]);
 
+  // Filter top countries by a sub-range independent of the global dashboard range
+  const filteredTopCountries = useMemo(() => {
+    if (!allVisits.length) return [];
+    const now = new Date();
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    const subset = allVisits.filter(v => {
+      if (countriesDateRange === "today") return v.visited_at >= todayStart;
+      if (countriesDateRange === "7d") return v.visited_at >= sevenDaysAgo;
+      if (countriesDateRange === "30d") return v.visited_at >= thirtyDaysAgo;
+      return true;
+    });
+    const countryVisits = new Map<string, { name: string; users: Set<string>; visits: number }>();
+    subset.forEach((v: { visitor_id: string; country?: string | null; country_name?: string | null }) => {
+      const c = (v.country ?? "").toUpperCase();
+      if (!c || c.length !== 2) return;
+      if (!countryVisits.has(c)) {
+        countryVisits.set(c, { name: v.country_name ?? c, users: new Set(), visits: 0 });
+      }
+      const entry = countryVisits.get(c)!;
+      entry.users.add(v.visitor_id);
+      entry.visits += 1;
+    });
+    return Array.from(countryVisits.entries())
+      .map(([country, e]) => ({ country, countryName: e.name, users: e.users.size, visits: e.visits }))
+      .sort((a, b) => b.users - a.users || b.visits - a.visits)
+      .slice(0, 15);
+  }, [allVisits, countriesDateRange]);
+
   if (authLoading || (!user || !isAdmin)) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
