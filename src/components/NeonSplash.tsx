@@ -59,9 +59,11 @@ const NeonSplash = () => {
   useLayoutEffect(() => {
     if (typeof window === "undefined" || !mounted) return;
     const measure = () => {
-      const el = document.querySelector(
-        'img[alt="AnaesthesiaCore brain and pulse logo"]',
-      ) as HTMLImageElement | null;
+      const el = (document.querySelector(
+        'img[data-landing-hero-logo]',
+      ) ?? document.querySelector(
+        'img[alt="AnaesthesiaCore brain and pulse logo"]:not(header img)',
+      )) as HTMLImageElement | null;
       if (!el) return;
       const r = el.getBoundingClientRect();
       if (r.width > 0 && r.height > 0) {

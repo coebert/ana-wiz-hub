@@ -139,6 +139,7 @@ const Landing = () => {
             <img
               src={brainLogo}
               alt="AnaesthesiaCore brain and pulse logo"
+              data-landing-hero-logo
               width={288}
               height={288}
               fetchPriority="high"
