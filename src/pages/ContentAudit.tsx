@@ -1473,7 +1473,16 @@ const ContentAudit = () => {
                   No findings match the current filters.
                 </p>
               ) : (
-                filtered.map((f) => (
+                filtered.map((f) => {
+                  const parsed = parseFindingDetails(f.details);
+                  const lens = isAccuracyFinding(f)
+                    ? { label: "Accuracy", cls: "bg-blue-100 text-blue-900 dark:bg-blue-900/30 dark:text-blue-200" }
+                    : isExpansionFinding(f)
+                      ? { label: "Coverage", cls: "bg-purple-100 text-purple-900 dark:bg-purple-900/30 dark:text-purple-200" }
+                      : f.category === "diagram"
+                        ? { label: "Diagram", cls: "bg-pink-100 text-pink-900 dark:bg-pink-900/30 dark:text-pink-200" }
+                        : null;
+                  return (
                   <div
                     key={f.id}
                     className="rounded-md border border-border p-3 space-y-2"
@@ -1486,9 +1495,27 @@ const ContentAudit = () => {
                           >
                             {f.severity}
                           </Badge>
+                          {lens && (
+                            <Badge className={`${lens.cls} border-0`}>
+                              {lens.label}
+                            </Badge>
+                          )}
                           <Badge variant="outline" className="capitalize">
                             {f.category}
                           </Badge>
+                          {parsed.confidence && (
+                            <Badge
+                              className={`${confidenceColors[parsed.confidence]} border-0 capitalize`}
+                              title="Auditor's confidence in this finding"
+                            >
+                              {parsed.confidence} conf.
+                            </Badge>
+                          )}
+                          {parsed.exam && (
+                            <Badge variant="outline" className="font-mono text-[10px]">
+                              {parsed.exam}
+                            </Badge>
+                          )}
                           <Badge variant="secondary" className="capitalize">
                             {f.status}
                           </Badge>
@@ -1523,9 +1550,35 @@ const ContentAudit = () => {
                         <p className="text-sm font-medium text-foreground">
                           {f.summary}
                         </p>
-                        {f.details && (
+
+                        {(parsed.topicQuote || parsed.sourceQuote) && (
+                          <div className="grid gap-2 sm:grid-cols-2 pt-1">
+                            {parsed.topicQuote && (
+                              <div className="rounded-md border border-amber-200 dark:border-amber-900/50 bg-amber-50/60 dark:bg-amber-900/10 p-2">
+                                <div className="text-[10px] font-semibold uppercase tracking-wide text-amber-900/80 dark:text-amber-200/80 mb-1">
+                                  From the topic page
+                                </div>
+                                <blockquote className="text-xs text-foreground whitespace-pre-wrap leading-snug">
+                                  “{parsed.topicQuote}”
+                                </blockquote>
+                              </div>
+                            )}
+                            {parsed.sourceQuote && (
+                              <div className="rounded-md border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50/60 dark:bg-emerald-900/10 p-2">
+                                <div className="text-[10px] font-semibold uppercase tracking-wide text-emerald-900/80 dark:text-emerald-200/80 mb-1">
+                                  From the cited source
+                                </div>
+                                <blockquote className="text-xs text-foreground whitespace-pre-wrap leading-snug">
+                                  “{parsed.sourceQuote}”
+                                </blockquote>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {parsed.rest && (
                           <p className="text-sm text-muted-foreground whitespace-pre-wrap">
-                            {f.details}
+                            {parsed.rest}
                           </p>
                         )}
                         {f.suggested_fix && (
@@ -1534,6 +1587,7 @@ const ContentAudit = () => {
                             {f.suggested_fix}
                           </p>
                         )}
+
                         {f.sources?.length > 0 && (
                           <div className="flex flex-wrap gap-2 pt-1">
                             {f.sources.map((s, i) => (
