@@ -1479,7 +1479,7 @@ const AdminDashboard = () => {
                 <h2 className="text-sm font-semibold text-foreground">Cohort Retention</h2>
               </div>
               <p className="text-xs text-muted-foreground mb-3">
-                Weekly cohorts grouped by first visit. D1 / D7 / D30 = % of cohort users who returned on day 1, 7, or 30 after first seen.
+                Weekly cohorts grouped by first visit. D1 = % active on day 1; D7 = % returning on any day 2–7; D30 = % returning on any day 8–30 (windows are capped at observed age, so recent cohorts aren't penalised).
               </p>
               {analytics.retentionCohorts.length === 0 ? (
                 <p className="text-sm text-muted-foreground">No cohort data yet.</p>
