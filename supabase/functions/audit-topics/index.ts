@@ -1288,7 +1288,40 @@ async function runBatch(jobId: string) {
         );
         logStages = stages as unknown as Record<string, unknown>;
         if (findings.length > 0) {
-          const rows = findings.map((f) => ({
+          // De-dupe against currently-open findings on the same topic so the
+          // dashboard doesn't grow a fresh copy of an issue that's already there.
+          const { data: existing } = await supa
+            .from("topic_audit_findings")
+            .select("summary, category, in_topic_section, status, unverifiable_reason")
+            .eq("topic_id", topic.id)
+            .in("status", ["open", "fixed"]);
+          const norm = (s: string | null | undefined) =>
+            String(s ?? "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().slice(0, 120);
+          const seenKeys = new Set<string>();
+          const dismissedKeys = new Set<string>();
+          for (const e of existing ?? []) {
+            const k = `${e.category}|${norm(e.summary)}|${norm(e.in_topic_section)}`;
+            if (e.status === "fixed" && e.unverifiable_reason) dismissedKeys.add(k);
+            else if (e.status === "open") seenKeys.add(k);
+          }
+
+          // Build a structured, machine-parseable header block so downstream
+          // fix-prompts can extract the verbatim quotes without DB migration.
+          const buildDetails = (f: any) => {
+            const header: string[] = [];
+            if (f.confidence) header.push(`Confidence: ${f.confidence}`);
+            if (f.exam_relevance) header.push(`Exam: ${f.exam_relevance}`);
+            const meta = header.length ? `[${header.join(" · ")}]\n\n` : "";
+            const topicQ = f.topic_quote && String(f.topic_quote).trim()
+              ? `> Topic passage:\n> ${String(f.topic_quote).trim().replace(/\n/g, "\n> ").slice(0, 600)}\n\n`
+              : "";
+            const sourceQ = f.source_quote && String(f.source_quote).trim()
+              ? `> Source evidence:\n> ${String(f.source_quote).trim().replace(/\n/g, "\n> ").slice(0, 800)}\n\n`
+              : "";
+            return `${meta}${topicQ}${sourceQ}${f.details ?? ""}`.trim();
+          };
+
+          const allRows = findings.map((f) => ({
             job_id: jobId,
             topic_id: topic.id,
             topic_title: topic.title,
@@ -1297,7 +1330,7 @@ async function runBatch(jobId: string) {
             severity: f.severity ?? "minor",
             category: f.category ?? "factual",
             summary: String(f.summary ?? "").slice(0, 500),
-            details: f.details ?? "",
+            details: buildDetails(f),
             suggested_fix: f.suggested_fix ?? null,
             sources: f.sources ?? [],
             diagram_ref: f.diagram_ref ?? null,
@@ -1305,13 +1338,29 @@ async function runBatch(jobId: string) {
               typeof f.in_topic_section === "string" && f.in_topic_section.trim()
                 ? f.in_topic_section.trim().slice(0, 200)
                 : null,
+            _key: `${f.category ?? "factual"}|${norm(f.summary)}|${norm(f.in_topic_section)}`,
           }));
-          const { error } = await supa
-            .from("topic_audit_findings")
-            .insert(rows);
-          if (error) throw error;
-          findingsCount += rows.length;
-          topicFindingsCount = rows.length;
+
+          // Skip rows that exactly match an already-open or human-dismissed finding.
+          const rows = allRows.filter((r) => {
+            if (seenKeys.has(r._key) || dismissedKeys.has(r._key)) return false;
+            return true;
+          }).map(({ _key, ...row }) => row);
+
+          const skipped = allRows.length - rows.length;
+          if (skipped > 0) {
+            console.log(`[audit-topics] ${topic.id}: skipped ${skipped} duplicate/dismissed findings`);
+            logStages.deduped = skipped;
+          }
+
+          if (rows.length > 0) {
+            const { error } = await supa
+              .from("topic_audit_findings")
+              .insert(rows);
+            if (error) throw error;
+            findingsCount += rows.length;
+            topicFindingsCount = rows.length;
+          }
         }
         succeeded++;
       } catch (e) {
