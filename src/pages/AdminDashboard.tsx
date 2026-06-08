@@ -695,7 +695,6 @@ const AdminDashboard = () => {
     setAllVisits(visits);
     setLoading(false);
   };
-  };
 
   useEffect(() => {
     if (user && isAdmin) fetchAnalytics();
