@@ -20,6 +20,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import ContentAudit from "./pages/ContentAudit";
 const AuditDashboard = lazy(() => import("./pages/AuditDashboard"));
+const AuditReport = lazy(() => import("./pages/AuditReport"));
 // Standalone ESICM validator + formulary tab are now unified into Content Audit
 // at /admin/audit. The legacy route below redirects there for back-compat.
 const TopicMap = lazy(() => import("./pages/TopicMap"));
@@ -422,6 +423,7 @@ const App = () => (
           <Route path="/admin" element={<RequireAdmin><AdminDashboard /></RequireAdmin>} />
           <Route path="/admin/audit" element={<RequireAdmin><ContentAudit /></RequireAdmin>} />
           <Route path="/admin/audit-dashboard" element={<RequireAdmin><AuditDashboard /></RequireAdmin>} />
+          <Route path="/admin/audit-report" element={<RequireAdmin><AuditReport /></RequireAdmin>} />
           <Route path="/admin/esicm-validator" element={<Navigate to="/admin/audit" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
