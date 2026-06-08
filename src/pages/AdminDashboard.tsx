@@ -531,21 +531,33 @@ const AdminDashboard = () => {
       // For each user, age = how many full days between cohort start and today
       // Use cohort midpoint (start) for window eligibility.
       const ageDays = Math.floor((todayDayStart - cohortStartMs) / msDay);
-      const computeDay = (offset: number): { count: number; pct: number } | null => {
-        // Only compute if cohort has had time to be observed at this offset (need at least offset+1 days since cohort start)
-        if (ageDays < offset) return null;
+      // Range-based retention: a user counts toward Dn if they returned on
+      // ANY day in the window (relative to their own first-seen day).
+      //   D1  = active on day 1
+      //   D7  = active on any day 2–7   (the "first-week return" bucket)
+      //   D30 = active on any day 8–30  (the "first-month return" bucket)
+      // This avoids the false-zero you'd get from requiring an exact-day-7
+      // hit when traffic is sparse but users do return within the window.
+      const computeRange = (startOffset: number, endOffset: number): { count: number; pct: number } | null => {
+        // Need enough elapsed days to observe at least the start of the window.
+        if (ageDays < startOffset) return null;
+        // Cap the window at what we've actually observed so cohorts aren't
+        // penalised for time that hasn't happened yet.
+        const effectiveEnd = Math.min(endOffset, ageDays);
         let count = 0;
         uids.forEach(uid => {
           const firstTs = firstSeen.get(uid)!;
           const firstDayMs = new Date(dayKey(firstTs) + "T00:00:00").getTime();
-          const targetKey = new Date(firstDayMs + offset * msDay).toISOString().slice(0, 10);
-          if (userActiveDays.get(uid)?.has(targetKey)) count++;
+          for (let off = startOffset; off <= effectiveEnd; off++) {
+            const targetKey = new Date(firstDayMs + off * msDay).toISOString().slice(0, 10);
+            if (userActiveDays.get(uid)?.has(targetKey)) { count++; break; }
+          }
         });
         return { count, pct: uids.length > 0 ? Math.round((count / uids.length) * 100) : 0 };
       };
-      const d1 = computeDay(1);
-      const d7 = computeDay(7);
-      const d30 = computeDay(30);
+      const d1 = computeRange(1, 1);
+      const d7 = computeRange(2, 7);
+      const d30 = computeRange(8, 30);
       const startDate = new Date(key + "T00:00:00");
       return {
         cohortStart: key,
