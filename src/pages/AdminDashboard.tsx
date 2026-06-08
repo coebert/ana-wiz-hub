@@ -1458,25 +1458,51 @@ const AdminDashboard = () => {
               <p className="text-xs text-muted-foreground mb-3">
                 Choropleth of {mapMetric === "users" ? "unique visitors" : "total visits"} per country. Hover a country for details; scroll or pinch to zoom.
               </p>
-              {analytics.topCountries.length === 0 ? (
+              {filteredTopCountries.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
                   No country data yet — countries are recorded from new visits onwards.
                 </p>
               ) : (
-                <VisitorsWorldMap data={analytics.topCountries} metric={mapMetric} />
+                <VisitorsWorldMap data={filteredTopCountries} metric={mapMetric} />
               )}
             </div>
 
             {/* Top countries */}
             <div className="p-4 rounded-xl border border-border bg-card">
-              <div className="flex items-center gap-2 mb-1">
-                <Globe className="w-4 h-4 text-primary" />
-                <h2 className="text-sm font-semibold text-foreground">Top Countries</h2>
+              <div className="flex items-center justify-between flex-wrap gap-2 mb-1">
+                <div className="flex items-center gap-2">
+                  <Globe className="w-4 h-4 text-primary" />
+                  <h2 className="text-sm font-semibold text-foreground">Top Countries</h2>
+                </div>
+                <div className="flex gap-1">
+                  {([
+                    { key: "today" as const, label: "Today" },
+                    { key: "7d" as const, label: "7d" },
+                    { key: "30d" as const, label: "30d" },
+                    { key: "all" as const, label: "All" },
+                  ]).map(opt => (
+                    <button
+                      key={opt.key}
+                      onClick={() => setCountriesDateRange(opt.key)}
+                      className={`px-2 py-1 rounded-md text-[11px] font-medium transition-colors ${
+                        countriesDateRange === opt.key
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-secondary/60 text-muted-foreground hover:text-foreground hover:bg-secondary"
+                      }`}
+                      aria-pressed={countriesDateRange === opt.key}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
               </div>
               <p className="text-xs text-muted-foreground mb-3">
                 Distinct visitors and page views grouped by country (resolved at visit time).
+                {countriesDateRange !== "all" && (
+                  <span className="ml-1 italic">Showing {countriesDateRange === "today" ? "today" : countriesDateRange === "7d" ? "last 7 days" : "last 30 days"}.</span>
+                )}
               </p>
-              {analytics.topCountries.length === 0 ? (
+              {filteredTopCountries.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
                   No country data yet — countries are recorded from new visits onwards.
                 </p>
@@ -1491,7 +1517,7 @@ const AdminDashboard = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {analytics.topCountries.map(c => (
+                      {filteredTopCountries.map(c => (
                         <tr key={c.country} className="border-b border-border/50">
                           <td className="py-2 pr-3 text-foreground">
                             <span aria-hidden className="text-base leading-none mr-2">{countryFlag(c.country)}</span>
