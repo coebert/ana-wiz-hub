@@ -753,10 +753,12 @@ type Stages = {
   refs_count: number;
   ref_titles: string[];
   text_findings: number;
+  coverage_findings?: number;
   diagram_findings: number;
   diagram_label_findings: number;
   svg_count: number;
   text_error?: string;
+  coverage_error?: string;
   diagram_error?: string;
   diagram_label_error?: string;
   scrape_error?: string;
