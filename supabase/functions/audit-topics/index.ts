@@ -857,68 +857,165 @@ async function auditTopic(
   }
 
 
-  // 2. Search reputable sources (BJA Education first)
+  // 2. Search reputable sources (BJA Education first + a coverage-oriented query)
   const queryBJA = `site:bjaeducation.org ${topic.title}`;
   const queryGeneral = `${topic.title} anaesthesia UK guideline ${
     SOURCE_DOMAINS.slice(0, 3)
       .map((d) => `site:${d}`)
       .join(" OR ")
   }`;
+  // A separate query aimed at table-of-contents / "what should this topic
+  // cover" results — feeds the COVERAGE pass with structural depth.
+  const queryCoverage = `${topic.title} FRCA exam syllabus BJA Education review`;
 
-  const [bjaResults, generalResults] = hasBudget(35_000)
+  const [bjaResults, generalResults, coverageResults] = hasBudget(40_000)
     ? await Promise.all([
         firecrawlSearch(queryBJA, 2, 12_000),
         firecrawlSearch(queryGeneral, 2, 12_000),
+        firecrawlSearch(queryCoverage, 2, 12_000),
       ])
-    : [[], []];
+    : [[], [], []];
 
-  const refs = [...bjaResults, ...generalResults]
+  const refs = [...bjaResults, ...generalResults, ...coverageResults]
     .filter((r) => r?.url && r?.markdown)
-    .slice(0, 4)
+    // dedupe by url
+    .filter((r, i, arr) => arr.findIndex((x) => x.url === r.url) === i)
+    .slice(0, 6)
     .map((r) => ({
       title: r.title ?? r.metadata?.title ?? r.url,
       url: r.url,
-      excerpt: String(r.markdown).slice(0, 2500),
+      excerpt: String(r.markdown).slice(0, 3500),
     }));
   stages.refs_count = refs.length;
   stages.ref_titles = refs.map((r) => String(r.title).slice(0, 120));
 
-  // 3. Text audit
-  const userText = [
-    `Topic: ${topic.title}`,
-    `Section: ${topic.section}`,
-    `URL: ${topic.url}`,
-    `Stated scope (topic description): ${topic.description || "(none)"}`,
+  // 2b. Fetch prior findings for this topic so the model doesn't re-raise
+  // confirmed false positives or already-open items. We pull both:
+  //   - status='fixed' rows with an unverifiable_reason (= human-confirmed FP)
+  //   - status='open' rows (so the model knows what's already on the list)
+  let priorFalsePositives: Array<{ summary: string; reason: string; category: string }> = [];
+  let priorOpen: Array<{ summary: string; category: string; in_topic_section: string | null }> = [];
+  try {
+    const { data: priors } = await supa
+      .from("topic_audit_findings")
+      .select("summary, category, status, unverifiable_reason, in_topic_section")
+      .eq("topic_id", topic.id)
+      .in("status", ["open", "fixed"])
+      .order("created_at", { ascending: false })
+      .limit(60);
+    for (const p of priors ?? []) {
+      if (p.status === "fixed" && p.unverifiable_reason) {
+        priorFalsePositives.push({
+          summary: String(p.summary ?? "").slice(0, 200),
+          reason: String(p.unverifiable_reason ?? "").slice(0, 250),
+          category: String(p.category ?? ""),
+        });
+      } else if (p.status === "open") {
+        priorOpen.push({
+          summary: String(p.summary ?? "").slice(0, 200),
+          category: String(p.category ?? ""),
+          in_topic_section: p.in_topic_section,
+        });
+      }
+    }
+  } catch (e) {
+    console.warn(`[audit-topics] could not load prior findings for ${topic.id}: ${(e as Error).message}`);
+  }
+
+  const priorContextBlock = [
+    "=== PREVIOUSLY-RAISED FINDINGS (do not duplicate) ===",
+    priorFalsePositives.length === 0
+      ? "Confirmed FALSE POSITIVES: (none)"
+      : "Confirmed FALSE POSITIVES — these were reviewed by a human and dismissed; NEVER raise again:\n" +
+        priorFalsePositives
+          .slice(0, 20)
+          .map((p, i) => `  ${i + 1}. [${p.category}] ${p.summary} — dismissed because: ${p.reason}`)
+          .join("\n"),
     "",
-    "Audit BOTH (A) accuracy AND (B) coverage/depth. For (B), compare the topic against what an FRCA/FFICM-grade BJA Education / RCoA / FICM treatment of this scope would contain, and raise `thin` / `gap` / `update` findings where appropriate.",
-    "",
-    "=== CURRENT TOPIC CONTENT (markdown) ===",
-    pageMarkdown.slice(0, 12000),
-    "",
-    "=== AUTHORITATIVE REFERENCES ===",
-    refs.length === 0
-      ? "(no reference excerpts retrieved — flag this as a citation issue if topic relies on specific guideline numbers/doses)"
-      : refs
-          .map(
-            (r, i) =>
-              `--- Reference ${i + 1}: ${r.title}\n${r.url}\n${r.excerpt}`,
-          )
-          .join("\n\n"),
+    priorOpen.length === 0
+      ? "Currently OPEN findings: (none)"
+      : "Currently OPEN findings — skip if still valid, the dashboard already shows them:\n" +
+        priorOpen
+          .slice(0, 30)
+          .map((p, i) => `  ${i + 1}. [${p.category}${p.in_topic_section ? " / " + p.in_topic_section : ""}] ${p.summary}`)
+          .join("\n"),
   ].join("\n");
 
+  // Larger content window — coverage pass particularly needs it.
+  const pageExcerpt = pageMarkdown.slice(0, 20000);
+
+  const refsBlock = refs.length === 0
+    ? "(no reference excerpts retrieved — for accuracy pass, do not raise findings without a source quote; for coverage pass, name the specific BJA Educ / RCoA / NICE document by title + year inside details)"
+    : refs
+        .map((r, i) => `--- Reference ${i + 1}: ${r.title}\n${r.url}\n${r.excerpt}`)
+        .join("\n\n");
+
+  // 3a. ACCURACY pass
   try {
-    const textFindings = await callAI({
-      system: TEXT_SYSTEM,
-      userText,
-      // Tightened to leave room for the diagram passes below.
-      timeoutMs: Math.min(24_000, Math.max(10_000, remainingBudget() - 30_000)),
+    const accuracyFindings = await callAI({
+      system: ACCURACY_SYSTEM,
+      userText: [
+        `Topic: ${topic.title}`,
+        `Section: ${topic.section}`,
+        `URL: ${topic.url}`,
+        `Stated scope: ${topic.description || "(none)"}`,
+        "",
+        "FOCUS: accuracy only. Every finding needs a verbatim topic_quote AND source_quote.",
+        "",
+        priorContextBlock,
+        "",
+        "=== CURRENT TOPIC CONTENT (markdown) ===",
+        pageExcerpt,
+        "",
+        "=== AUTHORITATIVE REFERENCES ===",
+        refsBlock,
+      ].join("\n"),
+      timeoutMs: Math.min(28_000, Math.max(10_000, Math.floor((remainingBudget() - 40_000) * 0.5))),
     });
-    stages.text_findings = textFindings.length;
-    all.push(...textFindings);
+    stages.text_findings = accuracyFindings.length;
+    all.push(...accuracyFindings);
   } catch (e) {
     stages.text_error = (e as Error).message;
-    console.error(`text audit error for ${topic.id}`, e);
+    console.error(`accuracy audit error for ${topic.id}`, e);
   }
+
+  // 3b. COVERAGE pass — separate call so coverage isn't crowded out by accuracy.
+  if (hasBudget(20_000)) {
+    try {
+      const coverageFindings = await callAI({
+        system: COVERAGE_SYSTEM,
+        userText: [
+          `Topic: ${topic.title}`,
+          `Section: ${topic.section}`,
+          `URL: ${topic.url}`,
+          `Stated scope: ${topic.description || "(none)"}`,
+          "",
+          "FOCUS: coverage and depth only. You are EXPECTED to find at least one gap on most topics. Compare to what an FRCA/FFICM-grade BJA Education / RCoA treatment of this scope would contain.",
+          "",
+          priorContextBlock,
+          "",
+          "=== CURRENT TOPIC CONTENT (markdown) ===",
+          pageExcerpt,
+          "",
+          "=== AUTHORITATIVE REFERENCES (depth/structure cues) ===",
+          refsBlock,
+        ].join("\n"),
+        timeoutMs: Math.min(28_000, Math.max(10_000, Math.floor((remainingBudget() - 25_000) * 0.6))),
+      });
+      stages.coverage_findings = coverageFindings.length;
+      // Force category to be a coverage one if the model strayed.
+      for (const f of coverageFindings) {
+        if (!["thin", "gap", "update"].includes(f.category)) {
+          f.category = f.category === "missing" ? "gap" : "thin";
+        }
+      }
+      all.push(...coverageFindings);
+    } catch (e) {
+      stages.coverage_error = (e as Error).message;
+      console.error(`coverage audit error for ${topic.id}`, e);
+    }
+  }
+
 
   // 4a. Per-diagram label audit (text-only, from extracted SVG labels).
   // This runs even when the screenshot pass fails — it depends only on the
