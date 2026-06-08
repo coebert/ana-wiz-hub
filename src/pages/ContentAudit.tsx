@@ -112,6 +112,88 @@ const EXPANSION_CATEGORIES = new Set(["thin", "gap", "update", "missing"]);
 const isExpansionFinding = (f: { category: string }) =>
   EXPANSION_CATEGORIES.has(f.category);
 
+const ACCURACY_CATEGORIES = new Set(["factual", "outdated", "citation", "terminology"]);
+const isAccuracyFinding = (f: { category: string }) =>
+  ACCURACY_CATEGORIES.has(f.category);
+
+/**
+ * The audit edge function embeds new structured fields inside `details` as a
+ * machine-parseable header block (so we didn't need a DB migration). Shape:
+ *
+ *   [Confidence: high · Exam: Final]
+ *
+ *   > Topic passage:
+ *   > verbatim text from the page (≤300 char)
+ *
+ *   > Source evidence:
+ *   > verbatim text from the reference (≤400 char)
+ *
+ *   <free-form details>
+ *
+ * This helper splits the block back out so we can render quotes inline.
+ */
+type ParsedFinding = {
+  confidence: "low" | "medium" | "high" | null;
+  exam: "Primary" | "Final" | "FFICM" | "All" | null;
+  topicQuote: string | null;
+  sourceQuote: string | null;
+  rest: string;
+};
+const parseFindingDetails = (raw: string | null | undefined): ParsedFinding => {
+  const out: ParsedFinding = {
+    confidence: null,
+    exam: null,
+    topicQuote: null,
+    sourceQuote: null,
+    rest: "",
+  };
+  if (!raw) return out;
+  let text = String(raw);
+
+  // Header: [Confidence: high · Exam: Final]
+  const header = text.match(/^\s*\[([^\]]+)\]\s*\n+/);
+  if (header) {
+    const inside = header[1];
+    const conf = inside.match(/Confidence:\s*(low|medium|high)/i);
+    if (conf) out.confidence = conf[1].toLowerCase() as ParsedFinding["confidence"];
+    const exam = inside.match(/Exam:\s*(Primary|Final|FFICM|All)/i);
+    if (exam) {
+      const e = exam[1];
+      out.exam = (e.charAt(0).toUpperCase() + e.slice(1).toLowerCase()) as ParsedFinding["exam"];
+      if (e.toUpperCase() === "FFICM") out.exam = "FFICM";
+    }
+    text = text.slice(header[0].length);
+  }
+
+  // Pull quote blocks of the form: "> Topic passage:\n> ...\n> ...\n\n"
+  const pullBlock = (label: RegExp): string | null => {
+    const rx = new RegExp(
+      `>\\s*${label.source}[^\\n]*\\n((?:>\\s?[^\\n]*\\n?)+)`,
+      "i",
+    );
+    const m = text.match(rx);
+    if (!m) return null;
+    const body = m[1]
+      .split("\n")
+      .map((line) => line.replace(/^>\s?/, ""))
+      .join("\n")
+      .trim();
+    text = text.replace(m[0], "").trim();
+    return body || null;
+  };
+  out.topicQuote = pullBlock(/Topic passage:?/);
+  out.sourceQuote = pullBlock(/Source evidence:?/);
+  out.rest = text.trim();
+  return out;
+};
+
+const confidenceColors: Record<string, string> = {
+  high: "bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200",
+  medium: "bg-amber-100 text-amber-900 dark:bg-amber-900/30 dark:text-amber-200",
+  low: "bg-muted text-muted-foreground",
+};
+
+
 const fmtDuration = (ms: number) => {
   if (!Number.isFinite(ms) || ms < 0) return "—";
   const s = Math.floor(ms / 1000);
@@ -133,6 +215,9 @@ const ContentAudit = () => {
   const [severityFilter, setSeverityFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("open");
   const [sectionFilter, setSectionFilter] = useState<string>("all");
+  const [lensFilter, setLensFilter] = useState<"all" | "accuracy" | "coverage" | "diagram">("all");
+  const [confidenceFilter, setConfidenceFilter] = useState<string>("all");
+
   const [bulkBusy, setBulkBusy] = useState(false);
   const [topicLogs, setTopicLogs] = useState<TopicLog[]>([]);
   const [expandedLogs, setExpandedLogs] = useState<Set<string>>(new Set());
@@ -787,9 +872,16 @@ const ContentAudit = () => {
         return false;
       if (statusFilter !== "all" && f.status !== statusFilter) return false;
       if (sectionFilter !== "all" && f.section !== sectionFilter) return false;
+      if (lensFilter === "accuracy" && !isAccuracyFinding(f)) return false;
+      if (lensFilter === "coverage" && !isExpansionFinding(f)) return false;
+      if (lensFilter === "diagram" && f.category !== "diagram") return false;
+      if (confidenceFilter !== "all") {
+        const parsed = parseFindingDetails(f.details);
+        if ((parsed.confidence ?? "low") !== confidenceFilter) return false;
+      }
       return true;
     });
-  }, [findings, severityFilter, statusFilter, sectionFilter]);
+  }, [findings, severityFilter, statusFilter, sectionFilter, lensFilter, confidenceFilter]);
 
   const stats = useMemo(() => {
     const open = findings.filter((f) => f.status === "open");
@@ -799,8 +891,26 @@ const ContentAudit = () => {
       major: open.filter((f) => f.severity === "major").length,
       diagrams: open.filter((f) => f.category === "diagram").length,
       expansion: open.filter(isExpansionFinding).length,
+      accuracy: open.filter(isAccuracyFinding).length,
     };
   }, [findings]);
+
+  // Counts per-tab for the lens badges (always over the current status/section/severity scope).
+  const lensCounts = useMemo(() => {
+    const scoped = findings.filter((f) => {
+      if (severityFilter !== "all" && f.severity !== severityFilter) return false;
+      if (statusFilter !== "all" && f.status !== statusFilter) return false;
+      if (sectionFilter !== "all" && f.section !== sectionFilter) return false;
+      return true;
+    });
+    return {
+      all: scoped.length,
+      accuracy: scoped.filter(isAccuracyFinding).length,
+      coverage: scoped.filter(isExpansionFinding).length,
+      diagram: scoped.filter((f) => f.category === "diagram").length,
+    };
+  }, [findings, severityFilter, statusFilter, sectionFilter]);
+
 
   const running = job?.status === "running" || job?.status === "pending";
   const jobFinished = job?.status === "completed" || job?.status === "completed_with_errors";
@@ -1210,6 +1320,46 @@ const ContentAudit = () => {
             <CardTitle className="text-base">Findings</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
+            {/* Lens tabs — Accuracy vs Coverage vs Diagrams */}
+            <div
+              role="tablist"
+              aria-label="Finding lens"
+              className="inline-flex flex-wrap items-center gap-1 rounded-md border border-border bg-muted/40 p-1"
+            >
+              {([
+                { id: "all", label: "All", count: lensCounts.all },
+                { id: "accuracy", label: "Accuracy", count: lensCounts.accuracy },
+                { id: "coverage", label: "Coverage", count: lensCounts.coverage },
+                { id: "diagram", label: "Diagrams", count: lensCounts.diagram },
+              ] as const).map((tab) => {
+                const active = lensFilter === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setLensFilter(tab.id)}
+                    className={
+                      "px-3 py-1.5 text-xs font-medium rounded transition-colors inline-flex items-center gap-2 " +
+                      (active
+                        ? "bg-background shadow-sm text-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-background/60")
+                    }
+                  >
+                    {tab.label}
+                    <span
+                      className={
+                        "text-[10px] px-1.5 py-0.5 rounded " +
+                        (active ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground")
+                      }
+                    >
+                      {tab.count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
             <div className="flex flex-wrap gap-2">
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <SelectTrigger className="w-[150px]">
@@ -1246,6 +1396,17 @@ const ContentAudit = () => {
                       {v.label}
                     </SelectItem>
                   ))}
+                </SelectContent>
+              </Select>
+              <Select value={confidenceFilter} onValueChange={setConfidenceFilter}>
+                <SelectTrigger className="w-[160px]">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All confidence</SelectItem>
+                  <SelectItem value="high">High confidence</SelectItem>
+                  <SelectItem value="medium">Medium confidence</SelectItem>
+                  <SelectItem value="low">Low confidence</SelectItem>
                 </SelectContent>
               </Select>
               <div className="w-full sm:w-auto sm:ml-auto flex flex-wrap items-center gap-2">
@@ -1312,7 +1473,16 @@ const ContentAudit = () => {
                   No findings match the current filters.
                 </p>
               ) : (
-                filtered.map((f) => (
+                filtered.map((f) => {
+                  const parsed = parseFindingDetails(f.details);
+                  const lens = isAccuracyFinding(f)
+                    ? { label: "Accuracy", cls: "bg-blue-100 text-blue-900 dark:bg-blue-900/30 dark:text-blue-200" }
+                    : isExpansionFinding(f)
+                      ? { label: "Coverage", cls: "bg-purple-100 text-purple-900 dark:bg-purple-900/30 dark:text-purple-200" }
+                      : f.category === "diagram"
+                        ? { label: "Diagram", cls: "bg-pink-100 text-pink-900 dark:bg-pink-900/30 dark:text-pink-200" }
+                        : null;
+                  return (
                   <div
                     key={f.id}
                     className="rounded-md border border-border p-3 space-y-2"
@@ -1325,9 +1495,27 @@ const ContentAudit = () => {
                           >
                             {f.severity}
                           </Badge>
+                          {lens && (
+                            <Badge className={`${lens.cls} border-0`}>
+                              {lens.label}
+                            </Badge>
+                          )}
                           <Badge variant="outline" className="capitalize">
                             {f.category}
                           </Badge>
+                          {parsed.confidence && (
+                            <Badge
+                              className={`${confidenceColors[parsed.confidence]} border-0 capitalize`}
+                              title="Auditor's confidence in this finding"
+                            >
+                              {parsed.confidence} conf.
+                            </Badge>
+                          )}
+                          {parsed.exam && (
+                            <Badge variant="outline" className="font-mono text-[10px]">
+                              {parsed.exam}
+                            </Badge>
+                          )}
                           <Badge variant="secondary" className="capitalize">
                             {f.status}
                           </Badge>
@@ -1362,9 +1550,35 @@ const ContentAudit = () => {
                         <p className="text-sm font-medium text-foreground">
                           {f.summary}
                         </p>
-                        {f.details && (
+
+                        {(parsed.topicQuote || parsed.sourceQuote) && (
+                          <div className="grid gap-2 sm:grid-cols-2 pt-1">
+                            {parsed.topicQuote && (
+                              <div className="rounded-md border border-amber-200 dark:border-amber-900/50 bg-amber-50/60 dark:bg-amber-900/10 p-2">
+                                <div className="text-[10px] font-semibold uppercase tracking-wide text-amber-900/80 dark:text-amber-200/80 mb-1">
+                                  From the topic page
+                                </div>
+                                <blockquote className="text-xs text-foreground whitespace-pre-wrap leading-snug">
+                                  “{parsed.topicQuote}”
+                                </blockquote>
+                              </div>
+                            )}
+                            {parsed.sourceQuote && (
+                              <div className="rounded-md border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50/60 dark:bg-emerald-900/10 p-2">
+                                <div className="text-[10px] font-semibold uppercase tracking-wide text-emerald-900/80 dark:text-emerald-200/80 mb-1">
+                                  From the cited source
+                                </div>
+                                <blockquote className="text-xs text-foreground whitespace-pre-wrap leading-snug">
+                                  “{parsed.sourceQuote}”
+                                </blockquote>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {parsed.rest && (
                           <p className="text-sm text-muted-foreground whitespace-pre-wrap">
-                            {f.details}
+                            {parsed.rest}
                           </p>
                         )}
                         {f.suggested_fix && (
@@ -1373,6 +1587,7 @@ const ContentAudit = () => {
                             {f.suggested_fix}
                           </p>
                         )}
+
                         {f.sources?.length > 0 && (
                           <div className="flex flex-wrap gap-2 pt-1">
                             {f.sources.map((s, i) => (
@@ -1439,7 +1654,9 @@ const ContentAudit = () => {
                       </div>
                     </div>
                   </div>
-                ))
+                  );
+                })
+
               )}
             </div>
           </CardContent>
