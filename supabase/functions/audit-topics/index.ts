@@ -1123,6 +1123,82 @@ async function auditTopic(
     }
   }
 
+  // 3c. FRESHNESS pass — recency-filtered search + dedicated LLM call.
+  // Surfaces `outdated` / `update` / `missing` findings tied to named
+  // guidelines published in the last ~3 years. Runs only when we still have
+  // a comfortable budget; the section→guideline registry is included as a
+  // prompt-hint so the model knows what to look for even when search is thin.
+  if (hasBudget(28_000)) {
+    try {
+      // Time-filtered Firecrawl search (last year, last 3 years). Two narrow
+      // queries beat one broad query for surfacing recent guideline PDFs.
+      const freshQueryGuideline = `${topic.title} guideline update UK ${
+        ["bjaeducation.org", "rcoa.ac.uk", "ficm.ac.uk", "nice.org.uk", "resus.org.uk", "ics.ac.uk"]
+          .map((d) => `site:${d}`)
+          .join(" OR ")
+      }`;
+      const freshQueryReview = `${topic.title} BJA Education review OR consensus statement`;
+
+      const [g1, g2] = await Promise.all([
+        firecrawlSearch(freshQueryGuideline, 3, 12_000, { tbs: "qdr:y3" }),
+        firecrawlSearch(freshQueryReview, 2, 10_000, { tbs: "qdr:y3" }),
+      ]);
+      const recentRefs = [...g1, ...g2]
+        .filter((r) => r?.url && r?.markdown)
+        .filter((r, i, arr) => arr.findIndex((x) => x.url === r.url) === i)
+        .slice(0, 5)
+        .map((r) => ({
+          title: r.title ?? r.metadata?.title ?? r.url,
+          url: r.url,
+          excerpt: String(r.markdown).slice(0, 3000),
+        }));
+      stages.freshness_refs_count = recentRefs.length;
+
+      const recentBlock = recentRefs.length === 0
+        ? "(no recent reference excerpts retrieved — only raise findings you can cite verbatim from a named ≤4y-old guideline; otherwise emit empty findings array)"
+        : recentRefs
+            .map((r, i) => `--- Recent Reference ${i + 1}: ${r.title}\n${r.url}\n${r.excerpt}`)
+            .join("\n\n");
+
+      const freshnessFindings = await callAI({
+        system: FRESHNESS_SYSTEM,
+        userText: [
+          `Topic: ${topic.title}`,
+          `Section: ${topic.section}`,
+          `URL: ${topic.url}`,
+          `Stated scope: ${topic.description || "(none)"}`,
+          "",
+          "FOCUS: content freshness only. Flag outdated content or missing recent (≤3 y) named guideline updates.",
+          "",
+          "=== SECTION FRESHNESS HINTS (prompt, not gospel — must still cite a recent source) ===",
+          freshnessHintsFor(topic.section),
+          "",
+          priorContextBlock,
+          "",
+          "=== CURRENT TOPIC CONTENT (markdown) ===",
+          pageExcerpt,
+          "",
+          "=== RECENT (last ~3 y) REFERENCES ===",
+          recentBlock,
+        ].join("\n"),
+        timeoutMs: Math.min(28_000, Math.max(10_000, Math.floor((remainingBudget() - 25_000) * 0.5))),
+      });
+      stages.freshness_findings = freshnessFindings.length;
+      // Force category to the freshness set if the model strayed.
+      for (const f of freshnessFindings) {
+        if (!["outdated", "update", "missing"].includes(f.category)) {
+          f.category = "update";
+        }
+      }
+      all.push(...freshnessFindings);
+    } catch (e) {
+      stages.freshness_error = (e as Error).message;
+      console.error(`freshness audit error for ${topic.id}`, e);
+    }
+  }
+
+
+
 
   // 4a. Per-diagram label audit (text-only, from extracted SVG labels).
   // This runs even when the screenshot pass fails — it depends only on the
