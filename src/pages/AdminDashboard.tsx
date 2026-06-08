@@ -1583,11 +1583,16 @@ const AdminDashboard = () => {
                     </thead>
                     <tbody>
                       {filteredTopCountries.map(c => (
-                        <tr key={c.country} className="border-b border-border/50">
+                        <tr
+                          key={c.country}
+                          className="border-b border-border/50 cursor-pointer hover:bg-muted/40 transition-colors"
+                          onClick={() => setDrillCountry({ code: c.country, name: c.countryName })}
+                          title={`View daily trend for ${c.countryName}`}
+                        >
                           <td className="py-2 pr-3 text-foreground">
                             <span aria-hidden className="text-base leading-none mr-2">{countryFlag(c.country)}</span>
                             <span className="font-mono text-muted-foreground mr-2">{c.country}</span>
-                            {c.countryName}
+                            <span className="underline-offset-2 hover:underline">{c.countryName}</span>
                           </td>
                           <td className="py-2 pr-3 text-right tabular-nums font-medium text-foreground">{c.users.toLocaleString()}</td>
                           <td className="py-2 pr-3 text-right tabular-nums text-muted-foreground">{c.visits.toLocaleString()}</td>
@@ -1595,9 +1600,101 @@ const AdminDashboard = () => {
                       ))}
                     </tbody>
                   </table>
+                  <p className="mt-2 text-[11px] text-muted-foreground">Tip: click a country to see its daily trend.</p>
                 </div>
               )}
             </div>
+
+            {/* Country drill-down dialog */}
+            <Dialog open={!!drillCountry} onOpenChange={(o) => !o && setDrillCountry(null)}>
+              <DialogContent className="max-w-2xl">
+                <DialogHeader>
+                  <DialogTitle className="flex items-center gap-2">
+                    <span aria-hidden className="text-xl leading-none">{drillCountry ? countryFlag(drillCountry.code) : ""}</span>
+                    <span>{drillCountry?.name}</span>
+                    <span className="font-mono text-xs text-muted-foreground">{drillCountry?.code}</span>
+                  </DialogTitle>
+                  <DialogDescription>
+                    Daily users and visits — {countriesDateRange === "today" ? "today" : countriesDateRange === "7d" ? "last 7 days" : countriesDateRange === "30d" ? "last 30 days" : "last 90 days"}.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  <div className="p-3 rounded-md border border-border bg-card">
+                    <div className="text-[11px] uppercase tracking-wide text-muted-foreground">Unique users</div>
+                    <div className="text-xl font-semibold text-foreground tabular-nums">{drillTotals.users.toLocaleString()}</div>
+                  </div>
+                  <div className="p-3 rounded-md border border-border bg-card">
+                    <div className="text-[11px] uppercase tracking-wide text-muted-foreground">Total visits</div>
+                    <div className="text-xl font-semibold text-foreground tabular-nums">{drillTotals.visits.toLocaleString()}</div>
+                  </div>
+                </div>
+                {drillTrend.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">No visits recorded in this range.</p>
+                ) : (
+                  (() => {
+                    const maxV = Math.max(1, ...drillTrend.map(d => d.visits));
+                    const w = 640, h = 180, padL = 28, padR = 8, padT = 8, padB = 22;
+                    const innerW = w - padL - padR;
+                    const innerH = h - padT - padB;
+                    const n = drillTrend.length;
+                    const barW = innerW / n;
+                    const usersMax = Math.max(1, ...drillTrend.map(d => d.users));
+                    const linePts = drillTrend.map((d, i) => {
+                      const x = padL + i * barW + barW / 2;
+                      const y = padT + innerH - (d.users / usersMax) * innerH;
+                      return `${x.toFixed(1)},${y.toFixed(1)}`;
+                    }).join(" ");
+                    const ticks = [0, 0.5, 1].map(t => Math.round(maxV * t));
+                    return (
+                      <div>
+                        <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-auto" role="img" aria-label={`Daily trend for ${drillCountry?.name}`}>
+                          {ticks.map((v, i) => {
+                            const y = padT + innerH - (v / maxV) * innerH;
+                            return (
+                              <g key={i}>
+                                <line x1={padL} x2={w - padR} y1={y} y2={y} stroke="hsl(var(--border))" strokeWidth={0.5} />
+                                <text x={padL - 4} y={y + 3} textAnchor="end" fontSize="9" fill="hsl(var(--muted-foreground))">{v}</text>
+                              </g>
+                            );
+                          })}
+                          {drillTrend.map((d, i) => {
+                            const x = padL + i * barW + 1;
+                            const bh = (d.visits / maxV) * innerH;
+                            const y = padT + innerH - bh;
+                            return (
+                              <rect key={d.date} x={x} y={y} width={Math.max(1, barW - 2)} height={bh} fill="hsl(var(--primary) / 0.35)">
+                                <title>{`${d.date}: ${d.visits} visits, ${d.users} users`}</title>
+                              </rect>
+                            );
+                          })}
+                          <polyline points={linePts} fill="none" stroke="hsl(var(--primary))" strokeWidth={1.5} />
+                          {drillTrend.map((d, i) => {
+                            const x = padL + i * barW + barW / 2;
+                            const y = padT + innerH - (d.users / usersMax) * innerH;
+                            return <circle key={d.date} cx={x} cy={y} r={1.8} fill="hsl(var(--primary))" />;
+                          })}
+                          {(() => {
+                            const labelEvery = Math.max(1, Math.ceil(n / 8));
+                            return drillTrend.map((d, i) => {
+                              if (i % labelEvery !== 0 && i !== n - 1) return null;
+                              const x = padL + i * barW + barW / 2;
+                              const short = d.date.slice(5);
+                              return <text key={d.date} x={x} y={h - 6} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">{short}</text>;
+                            });
+                          })()}
+                        </svg>
+                        <div className="flex items-center gap-4 text-[11px] text-muted-foreground mt-1">
+                          <span className="flex items-center gap-1"><span className="inline-block w-3 h-2 rounded-sm" style={{ background: "hsl(var(--primary) / 0.35)" }} /> Visits</span>
+                          <span className="flex items-center gap-1"><span className="inline-block w-3 h-[2px]" style={{ background: "hsl(var(--primary))" }} /> Unique users</span>
+                        </div>
+                      </div>
+                    );
+                  })()
+                )}
+              </DialogContent>
+            </Dialog>
+
+
 
             {/* Cohort retention */}
 
