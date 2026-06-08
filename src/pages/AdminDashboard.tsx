@@ -169,6 +169,9 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"overview" | "topics">("overview");
   const [mapMetric, setMapMetric] = useState<"users" | "visits">("users");
+  // Raw visits kept for sub-range filtering (e.g. top countries)
+  const [allVisits, setAllVisits] = useState<{ visitor_id: string; visited_at: string; country?: string | null; country_name?: string | null }[]>([]);
+  const [countriesDateRange, setCountriesDateRange] = useState<"all" | "today" | "7d" | "30d">("all");
 
   // Formulary verification + ESICM dose validator have moved to the unified
   // Content Audit page at /admin/audit so that all topic-accuracy checks are
