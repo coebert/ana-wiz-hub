@@ -460,12 +460,26 @@ async function firecrawlScrape(
 }
 
 
-async function firecrawlSearch(query: string, limit = 3, timeoutMs = 20_000) {
+async function firecrawlSearch(
+  query: string,
+  limit = 3,
+  timeoutMs = 20_000,
+  opts: { tbs?: string } = {},
+) {
   const { value } = await retryWithBackoff<any[]>(
     `search "${query.slice(0, 60)}"`,
     timeoutMs,
     3,
     async (attemptTimeoutMs) => {
+      const body: Record<string, unknown> = {
+        query,
+        limit,
+        scrapeOptions: { formats: ["markdown"] },
+      };
+      // Firecrawl v2 supports Google-style time filters via `tbs`
+      // (qdr:d / qdr:w / qdr:m / qdr:y / qdr:y3 etc.). Surfaces recent
+      // guidelines for the freshness pass without scraping the whole web.
+      if (opts.tbs) body.tbs = opts.tbs;
       const r = await fetchJsonWithTimeout(
         "https://api.firecrawl.dev/v2/search",
         {
@@ -474,11 +488,7 @@ async function firecrawlSearch(query: string, limit = 3, timeoutMs = 20_000) {
             Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            query,
-            limit,
-            scrapeOptions: { formats: ["markdown"] },
-          }),
+          body: JSON.stringify(body),
         },
         attemptTimeoutMs,
       );
@@ -490,6 +500,7 @@ async function firecrawlSearch(query: string, limit = 3, timeoutMs = 20_000) {
   );
   return value ?? [];
 }
+
 
 
 
