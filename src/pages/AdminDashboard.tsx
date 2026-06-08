@@ -732,6 +732,69 @@ const AdminDashboard = () => {
       .slice(0, 15);
   }, [allVisits, countriesDateRange]);
 
+  // Drill-down: daily users + visits for the selected country across the same sub-range.
+  const drillTrend = useMemo(() => {
+    if (!drillCountry || !allVisits.length) return [] as { date: string; users: number; visits: number }[];
+    const now = new Date();
+    let startMs = 0;
+    if (countriesDateRange === "today") {
+      startMs = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    } else if (countriesDateRange === "7d") {
+      startMs = now.getTime() - 7 * 24 * 60 * 60 * 1000;
+    } else if (countriesDateRange === "30d") {
+      startMs = now.getTime() - 30 * 24 * 60 * 60 * 1000;
+    } else {
+      startMs = now.getTime() - 90 * 24 * 60 * 60 * 1000; // cap "all" view to last 90d
+    }
+    const code = drillCountry.code.toUpperCase();
+    const buckets = new Map<string, { users: Set<string>; visits: number }>();
+    allVisits.forEach(v => {
+      if ((v.country ?? "").toUpperCase() !== code) return;
+      const t = new Date(v.visited_at).getTime();
+      if (t < startMs) return;
+      const d = new Date(t);
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+      if (!buckets.has(key)) buckets.set(key, { users: new Set(), visits: 0 });
+      const b = buckets.get(key)!;
+      b.users.add(v.visitor_id);
+      b.visits += 1;
+    });
+    // Fill empty days for continuity
+    const startDay = new Date(startMs);
+    startDay.setHours(0, 0, 0, 0);
+    const endDay = new Date();
+    endDay.setHours(0, 0, 0, 0);
+    const out: { date: string; users: number; visits: number }[] = [];
+    for (let d = new Date(startDay); d.getTime() <= endDay.getTime(); d.setDate(d.getDate() + 1)) {
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+      const b = buckets.get(key);
+      out.push({ date: key, users: b ? b.users.size : 0, visits: b ? b.visits : 0 });
+    }
+    return out;
+  }, [allVisits, drillCountry, countriesDateRange]);
+
+  const drillTotals = useMemo(() => {
+    let users = new Set<string>();
+    let visits = 0;
+    if (drillCountry) {
+      const code = drillCountry.code.toUpperCase();
+      const now = Date.now();
+      let startMs = 0;
+      if (countriesDateRange === "today") {
+        const d = new Date(); d.setHours(0,0,0,0); startMs = d.getTime();
+      } else if (countriesDateRange === "7d") startMs = now - 7*86400000;
+      else if (countriesDateRange === "30d") startMs = now - 30*86400000;
+      else startMs = now - 90*86400000;
+      allVisits.forEach(v => {
+        if ((v.country ?? "").toUpperCase() !== code) return;
+        if (new Date(v.visited_at).getTime() < startMs) return;
+        users.add(v.visitor_id);
+        visits += 1;
+      });
+    }
+    return { users: users.size, visits };
+  }, [allVisits, drillCountry, countriesDateRange]);
+
   if (authLoading || (!user || !isAdmin)) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
