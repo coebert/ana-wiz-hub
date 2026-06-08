@@ -203,7 +203,7 @@ const StarlingForcesDiagram = () => {
                       opacity={selectedForce === f.id ? 1 : 0.5} />
                     <text x="12" y="7" fontSize="6" fill="hsl(var(--foreground))"
                       fontWeight={selectedForce === f.id ? "700" : "400"} opacity="0.7">
-                      {f.id} — {f.direction === "out" ? "filtration ↓" : "absorption ↑"}
+                      {f.id} — {f.direction === "out" ? "filtration ↑" : "absorption ↑"}
                     </text>
                   </g>
                 ))}
