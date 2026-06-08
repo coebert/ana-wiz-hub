@@ -855,13 +855,17 @@ type Stages = {
   ref_titles: string[];
   text_findings: number;
   coverage_findings?: number;
+  freshness_findings?: number;
+  freshness_refs_count?: number;
   diagram_findings: number;
   diagram_label_findings: number;
   svg_count: number;
   text_error?: string;
   coverage_error?: string;
+  freshness_error?: string;
   diagram_error?: string;
   diagram_label_error?: string;
+
   scrape_error?: string;
   scrape_diagnostics?: ScrapeDiagnostics;
   scrape_last_status?: number;
