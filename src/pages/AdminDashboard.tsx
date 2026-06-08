@@ -692,7 +692,9 @@ const AdminDashboard = () => {
       podcasts: podcastsSummary,
       viva: vivaSummary,
     });
+    setAllVisits(visits);
     setLoading(false);
+  };
   };
 
   useEffect(() => {
