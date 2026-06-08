@@ -215,6 +215,9 @@ const ContentAudit = () => {
   const [severityFilter, setSeverityFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("open");
   const [sectionFilter, setSectionFilter] = useState<string>("all");
+  const [lensFilter, setLensFilter] = useState<"all" | "accuracy" | "coverage" | "diagram">("all");
+  const [confidenceFilter, setConfidenceFilter] = useState<string>("all");
+
   const [bulkBusy, setBulkBusy] = useState(false);
   const [topicLogs, setTopicLogs] = useState<TopicLog[]>([]);
   const [expandedLogs, setExpandedLogs] = useState<Set<string>>(new Set());
