@@ -307,6 +307,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/drugs/dihydrocodeine</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/drugs/diltiazem</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
