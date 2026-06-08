@@ -439,7 +439,7 @@ const FINDING_TOOL = {
   function: {
     name: "emit_findings",
     description:
-      "Emit accuracy findings for the topic. Empty array means no issues detected.",
+      "Emit findings for the topic. Empty array means no issues detected. EVERY finding must include verbatim evidence (topic_quote AND source_quote where applicable) — never paraphrase.",
     parameters: {
       type: "object",
       properties: {
@@ -468,9 +468,39 @@ const FINDING_TOOL = {
                 description:
                   "factual = wrong fact; outdated = superseded by newer guideline; missing = key concept absent from a section that exists; citation = weak/missing source; diagram = figure issue; terminology = wrong/UK-incorrect wording; thin = section exists but is shallow and needs expanding; gap = a whole subtopic expected by the FRCA/FFICM curriculum is absent and should be added; update = current content is correct but a newer guideline/evidence/dose recommendation supersedes it.",
               },
-              summary: { type: "string" },
+              confidence: {
+                type: "string",
+                enum: ["low", "medium", "high"],
+                description:
+                  "high = directly contradicted (or for thin/gap, directly covered) by a quoted authoritative source; medium = strongly implied by references; low = general knowledge inference. NEVER mark factual/outdated/terminology findings 'high' unless source_quote contains an explicit contradiction.",
+              },
+              exam_relevance: {
+                type: "string",
+                enum: ["Primary", "Final", "FFICM", "All"],
+                description:
+                  "Which UK exam this matters for. 'All' only when it spans every level.",
+              },
+              summary: {
+                type: "string",
+                description:
+                  "Concrete one-line headline. Bad: 'Improve accuracy of section'. Good: 'Paediatric arrest adrenaline dose stated as 100 mcg/kg — RCUK 2021 is 10 mcg/kg.'",
+              },
               details: { type: "string" },
-              suggested_fix: { type: "string" },
+              topic_quote: {
+                type: "string",
+                description:
+                  "VERBATIM ≤300-char passage from the topic markdown that is wrong/thin/superseded. For 'gap' findings (subtopic absent) use empty string. Never paraphrase, never use ellipsis at start/end.",
+              },
+              source_quote: {
+                type: "string",
+                description:
+                  "VERBATIM ≤400-char passage from one of the supplied reference excerpts that supports the finding. Empty string is permitted ONLY for thin/gap findings when no excerpt was supplied; in that case `details` must name a specific guideline (title + year).",
+              },
+              suggested_fix: {
+                type: "string",
+                description:
+                  "Actionable. For factual/outdated/update: state the correct value/dose/threshold and where to place it. For thin/gap: list the subheadings, bullet points, values, formulae or guideline references that should be added. Never write 'add a citation' or 'expand this section' alone.",
+              },
               in_topic_section: {
                 type: "string",
                 description:
@@ -491,8 +521,13 @@ const FINDING_TOOL = {
             required: [
               "severity",
               "category",
+              "confidence",
+              "exam_relevance",
               "summary",
               "details",
+              "topic_quote",
+              "source_quote",
+              "suggested_fix",
               "sources",
             ],
           },
@@ -504,45 +539,78 @@ const FINDING_TOOL = {
   },
 };
 
-const TEXT_SYSTEM = `You are a UK anaesthetic and intensive-care content auditor for FRCA/FFICM revision material.
+// ---- ACCURACY (Pass A) ---------------------------------------------------
+const ACCURACY_SYSTEM = `You are a UK anaesthetic and intensive-care content auditor for FRCA/FFICM revision material. THIS PASS focuses ONLY on accuracy — NOT coverage.
 
 You will be given:
 - The current text of one topic on the AnaesthesiaCore revision site.
 - The topic's stated scope (title + description).
-- Excerpts from authoritative UK and international reference sources (preferred: BJA Education, BJA, RCoA, FICM, ICS, AAGBI/Association of Anaesthetists, NICE, BNF, Resuscitation Council UK, ESICM).
+- Excerpts from authoritative UK and international reference sources.
+- A list of previously-raised findings, INCLUDING any already confirmed as FALSE POSITIVES by a human reviewer.
 
-Your job has TWO equally important halves:
+Raise findings ONLY for:
+- factual     — a stated fact, mechanism, value, dose, or unit is wrong
+- outdated    — content matches an older guideline that has since been replaced (name both old and new guideline + year)
+- terminology — wrong/non-UK term, mis-spelled drug, wrong unit, deprecated nomenclature (e.g. 'peroneal' vs 'fibular')
+- citation    — a specific number/threshold/dose is asserted with NO authoritative source AND a supplied reference contradicts or qualifies it
 
-(A) ACCURACY — flag statements that are factually incorrect, use incorrect terminology, cite weak sources, or have been superseded by newer guidelines/doses/evidence.
+Hard rules (violations are discarded):
+1. EVERY finding MUST include a verbatim topic_quote (≤300 char, copy-pasted from the markdown — no paraphrase, no ellipsis).
+2. EVERY finding MUST include a verbatim source_quote from one of the supplied reference excerpts that explicitly contradicts or supersedes the topic_quote.
+3. If no supplied excerpt explicitly contradicts the topic_quote, DO NOT raise the finding. Conservative is correct.
+4. NEVER re-raise a finding that appears in the FALSE POSITIVES list — those have been reviewed and dismissed.
+5. NEVER re-raise an open finding with the same offending passage.
+6. Do NOT raise coverage / thin / gap / update issues here — separate pass handles those.
+7. Drug doses, vasopressor infusion rates, resus-algorithm numbers, airway-rescue steps must be checked against BNF / RCoA / RCUK / NICE when covered by references. A wrong number here is "critical".
+8. Tabbed / interactive diagrams (e.g. AntibioticPKPDPrimer) may render only one tab in scraped markdown — do NOT raise a "missing tab content" finding; the SVG label list is provided separately.
 
-(B) COVERAGE & DEPTH — flag where the topic is thin, has obvious gaps for an FRCA/FFICM candidate, or is missing whole subtopics that the curriculum / standard reference texts would expect. Be willing to say "this section is too brief", "this key concept is not addressed at all", or "a newer guideline (e.g. NICE NG…, SSC 2021, RCoA 2023) should be added".
+Severity:
+- critical — patient-safety (wrong dose, wrong resus step, wrong airway algorithm)
+- major    — wrong mechanism, wrong physiology, wrong threshold that would be examined
+- minor    — imprecise wording, mildly dated phrasing
+- info     — stylistic
 
-Category guide (pick the best fit):
-- factual       — wrong fact, mechanism, value or dose
-- outdated      — content based on a guideline/evidence that has been replaced
-- citation      — claim made without an authoritative source, or weak source used
-- terminology   — wrong wording / non-UK term / mis-spelled drug / wrong unit
-- diagram       — figure issue (handled by separate passes; rarely emit here)
-- missing       — within an existing section a clearly required concept is absent
-- thin          — a section exists but is too shallow for the exam level (1–2 sentences where a paragraph + values + clinical relevance is expected)
-- gap           — a whole subtopic that the FRCA/FFICM curriculum and standard texts expect is absent and should be added as a new section
-- update        — current content is correct but a newer guideline / dose / threshold supersedes it and should be incorporated
+Return ONLY the tool call.`;
 
-Severity guide:
-- critical      — patient-safety risk (wrong drug dose, wrong resus algorithm)
-- major         — wrong mechanism / wrong physiology / missing concept that would be examined
-- minor         — imprecise wording, thin paragraph, dated phrasing
-- info          — stylistic only, nice-to-have expansion
+// ---- COVERAGE (Pass B) ---------------------------------------------------
+const COVERAGE_SYSTEM = `You are a UK FRCA / FFICM examiner reviewing one revision topic for COVERAGE AND DEPTH. You are NOT auditing accuracy.
 
-Rules:
-- Only raise an accuracy finding (factual/outdated/citation/terminology) when the reference material clearly supports it. Do not speculate.
-- For thin/gap/update findings the reference material does not need to contradict the topic — it is enough that an authoritative source covers the area at greater depth or with a newer recommendation than the topic does.
-- Be specific. For accuracy issues, quote the offending passage briefly inside "details". For thin/gap/update issues, name the section that is thin (or that should be added) and outline what content is needed.
-- For thin/gap/update the "suggested_fix" must be actionable: list the subheadings, bullet points, values, or guideline references that should be added.
-- Prefer BJA Education as the gold standard when sources conflict.
-- Always include at least one source URL per finding.
-- If the topic is accurate AND has adequate coverage for the exam level, return an empty findings array.
-- Return ONLY the tool call. No prose.`;
+You will be given:
+- The current text of one topic.
+- The topic's stated scope (title + description).
+- Reference excerpts from BJA Education / RCoA / FICM / NICE / Resus Council / ESICM.
+- A list of previously-raised coverage findings (open + dismissed as false positive).
+
+Your job is to find places where the page is too thin for an FRCA/FFICM candidate, where a curriculum-expected subtopic is missing entirely, or where a newer guideline / dose / threshold should be added. You ARE EXPECTED TO FIND ISSUES — most revision pages have at least one coverage gap compared to the BJA Education / RCoA treatment of the same scope. An empty findings array is only acceptable when the page is genuinely comprehensive AND deep.
+
+Use these categories:
+- thin   — section exists but is too shallow (1–2 lines where the exam needs values, mechanisms, clinical context). topic_quote = the thin passage verbatim.
+- gap    — a whole subtopic expected by the curriculum is absent. topic_quote = empty string; details MUST name the missing subtopic and what it should contain.
+- update — current content is correct but superseded by a named newer guideline / dose / threshold. topic_quote = the now-outdated passage; source_quote = the newer recommendation.
+
+For EVERY finding:
+- summary names the missing/thin subtopic concretely (NOT 'expand this section').
+- suggested_fix is an actionable outline: list the subheadings, bullet points, values, formulae or guideline references to add — aim for 4–8 concrete items.
+- source_quote should be verbatim from supplied references showing the depth/topic missing. If no excerpt covers it, source_quote may be empty BUT details MUST name a specific BJA Education / RCoA / NICE document (with year) where the gap is addressed.
+- exam_relevance set accurately — FFICM-only gaps must not be marked 'Final'.
+
+Hard rules:
+1. NEVER re-raise a finding from the FALSE POSITIVES list.
+2. NEVER raise the same gap as an existing open finding — check the supplied list first.
+3. Do NOT raise factual errors — separate pass handles those.
+4. Use "high" confidence only when a supplied reference explicitly covers the missing material.
+5. Tabbed / interactive diagrams may render only one tab in markdown — do NOT raise a thin/gap finding about a diagram's content unless the SVG label list confirms the missing content is genuinely absent.
+6. Aim for QUALITY over quantity: 1–4 specific, actionable coverage findings beats 8 vague ones.
+
+Severity:
+- major — curriculum-required subtopic absent or so thin it would lose an exam mark
+- minor — section present but should have more depth
+- info  — nice-to-have expansion
+
+Return ONLY the tool call.`;
+
+// Back-compat alias (used by older code paths).
+const TEXT_SYSTEM = ACCURACY_SYSTEM;
 
 const DIAGRAM_SYSTEM = `You are an anatomy / physiology / pharmacology illustration reviewer for UK anaesthetic teaching (FRCA / FFICM).
 
@@ -685,10 +753,12 @@ type Stages = {
   refs_count: number;
   ref_titles: string[];
   text_findings: number;
+  coverage_findings?: number;
   diagram_findings: number;
   diagram_label_findings: number;
   svg_count: number;
   text_error?: string;
+  coverage_error?: string;
   diagram_error?: string;
   diagram_label_error?: string;
   scrape_error?: string;
@@ -789,68 +859,165 @@ async function auditTopic(
   }
 
 
-  // 2. Search reputable sources (BJA Education first)
+  // 2. Search reputable sources (BJA Education first + a coverage-oriented query)
   const queryBJA = `site:bjaeducation.org ${topic.title}`;
   const queryGeneral = `${topic.title} anaesthesia UK guideline ${
     SOURCE_DOMAINS.slice(0, 3)
       .map((d) => `site:${d}`)
       .join(" OR ")
   }`;
+  // A separate query aimed at table-of-contents / "what should this topic
+  // cover" results — feeds the COVERAGE pass with structural depth.
+  const queryCoverage = `${topic.title} FRCA exam syllabus BJA Education review`;
 
-  const [bjaResults, generalResults] = hasBudget(35_000)
+  const [bjaResults, generalResults, coverageResults] = hasBudget(40_000)
     ? await Promise.all([
         firecrawlSearch(queryBJA, 2, 12_000),
         firecrawlSearch(queryGeneral, 2, 12_000),
+        firecrawlSearch(queryCoverage, 2, 12_000),
       ])
-    : [[], []];
+    : [[], [], []];
 
-  const refs = [...bjaResults, ...generalResults]
+  const refs = [...bjaResults, ...generalResults, ...coverageResults]
     .filter((r) => r?.url && r?.markdown)
-    .slice(0, 4)
+    // dedupe by url
+    .filter((r, i, arr) => arr.findIndex((x) => x.url === r.url) === i)
+    .slice(0, 6)
     .map((r) => ({
       title: r.title ?? r.metadata?.title ?? r.url,
       url: r.url,
-      excerpt: String(r.markdown).slice(0, 2500),
+      excerpt: String(r.markdown).slice(0, 3500),
     }));
   stages.refs_count = refs.length;
   stages.ref_titles = refs.map((r) => String(r.title).slice(0, 120));
 
-  // 3. Text audit
-  const userText = [
-    `Topic: ${topic.title}`,
-    `Section: ${topic.section}`,
-    `URL: ${topic.url}`,
-    `Stated scope (topic description): ${topic.description || "(none)"}`,
+  // 2b. Fetch prior findings for this topic so the model doesn't re-raise
+  // confirmed false positives or already-open items. We pull both:
+  //   - status='fixed' rows with an unverifiable_reason (= human-confirmed FP)
+  //   - status='open' rows (so the model knows what's already on the list)
+  let priorFalsePositives: Array<{ summary: string; reason: string; category: string }> = [];
+  let priorOpen: Array<{ summary: string; category: string; in_topic_section: string | null }> = [];
+  try {
+    const { data: priors } = await supa
+      .from("topic_audit_findings")
+      .select("summary, category, status, unverifiable_reason, in_topic_section")
+      .eq("topic_id", topic.id)
+      .in("status", ["open", "fixed"])
+      .order("created_at", { ascending: false })
+      .limit(60);
+    for (const p of priors ?? []) {
+      if (p.status === "fixed" && p.unverifiable_reason) {
+        priorFalsePositives.push({
+          summary: String(p.summary ?? "").slice(0, 200),
+          reason: String(p.unverifiable_reason ?? "").slice(0, 250),
+          category: String(p.category ?? ""),
+        });
+      } else if (p.status === "open") {
+        priorOpen.push({
+          summary: String(p.summary ?? "").slice(0, 200),
+          category: String(p.category ?? ""),
+          in_topic_section: p.in_topic_section,
+        });
+      }
+    }
+  } catch (e) {
+    console.warn(`[audit-topics] could not load prior findings for ${topic.id}: ${(e as Error).message}`);
+  }
+
+  const priorContextBlock = [
+    "=== PREVIOUSLY-RAISED FINDINGS (do not duplicate) ===",
+    priorFalsePositives.length === 0
+      ? "Confirmed FALSE POSITIVES: (none)"
+      : "Confirmed FALSE POSITIVES — these were reviewed by a human and dismissed; NEVER raise again:\n" +
+        priorFalsePositives
+          .slice(0, 20)
+          .map((p, i) => `  ${i + 1}. [${p.category}] ${p.summary} — dismissed because: ${p.reason}`)
+          .join("\n"),
     "",
-    "Audit BOTH (A) accuracy AND (B) coverage/depth. For (B), compare the topic against what an FRCA/FFICM-grade BJA Education / RCoA / FICM treatment of this scope would contain, and raise `thin` / `gap` / `update` findings where appropriate.",
-    "",
-    "=== CURRENT TOPIC CONTENT (markdown) ===",
-    pageMarkdown.slice(0, 12000),
-    "",
-    "=== AUTHORITATIVE REFERENCES ===",
-    refs.length === 0
-      ? "(no reference excerpts retrieved — flag this as a citation issue if topic relies on specific guideline numbers/doses)"
-      : refs
-          .map(
-            (r, i) =>
-              `--- Reference ${i + 1}: ${r.title}\n${r.url}\n${r.excerpt}`,
-          )
-          .join("\n\n"),
+    priorOpen.length === 0
+      ? "Currently OPEN findings: (none)"
+      : "Currently OPEN findings — skip if still valid, the dashboard already shows them:\n" +
+        priorOpen
+          .slice(0, 30)
+          .map((p, i) => `  ${i + 1}. [${p.category}${p.in_topic_section ? " / " + p.in_topic_section : ""}] ${p.summary}`)
+          .join("\n"),
   ].join("\n");
 
+  // Larger content window — coverage pass particularly needs it.
+  const pageExcerpt = pageMarkdown.slice(0, 20000);
+
+  const refsBlock = refs.length === 0
+    ? "(no reference excerpts retrieved — for accuracy pass, do not raise findings without a source quote; for coverage pass, name the specific BJA Educ / RCoA / NICE document by title + year inside details)"
+    : refs
+        .map((r, i) => `--- Reference ${i + 1}: ${r.title}\n${r.url}\n${r.excerpt}`)
+        .join("\n\n");
+
+  // 3a. ACCURACY pass
   try {
-    const textFindings = await callAI({
-      system: TEXT_SYSTEM,
-      userText,
-      // Tightened to leave room for the diagram passes below.
-      timeoutMs: Math.min(24_000, Math.max(10_000, remainingBudget() - 30_000)),
+    const accuracyFindings = await callAI({
+      system: ACCURACY_SYSTEM,
+      userText: [
+        `Topic: ${topic.title}`,
+        `Section: ${topic.section}`,
+        `URL: ${topic.url}`,
+        `Stated scope: ${topic.description || "(none)"}`,
+        "",
+        "FOCUS: accuracy only. Every finding needs a verbatim topic_quote AND source_quote.",
+        "",
+        priorContextBlock,
+        "",
+        "=== CURRENT TOPIC CONTENT (markdown) ===",
+        pageExcerpt,
+        "",
+        "=== AUTHORITATIVE REFERENCES ===",
+        refsBlock,
+      ].join("\n"),
+      timeoutMs: Math.min(28_000, Math.max(10_000, Math.floor((remainingBudget() - 40_000) * 0.5))),
     });
-    stages.text_findings = textFindings.length;
-    all.push(...textFindings);
+    stages.text_findings = accuracyFindings.length;
+    all.push(...accuracyFindings);
   } catch (e) {
     stages.text_error = (e as Error).message;
-    console.error(`text audit error for ${topic.id}`, e);
+    console.error(`accuracy audit error for ${topic.id}`, e);
   }
+
+  // 3b. COVERAGE pass — separate call so coverage isn't crowded out by accuracy.
+  if (hasBudget(20_000)) {
+    try {
+      const coverageFindings = await callAI({
+        system: COVERAGE_SYSTEM,
+        userText: [
+          `Topic: ${topic.title}`,
+          `Section: ${topic.section}`,
+          `URL: ${topic.url}`,
+          `Stated scope: ${topic.description || "(none)"}`,
+          "",
+          "FOCUS: coverage and depth only. You are EXPECTED to find at least one gap on most topics. Compare to what an FRCA/FFICM-grade BJA Education / RCoA treatment of this scope would contain.",
+          "",
+          priorContextBlock,
+          "",
+          "=== CURRENT TOPIC CONTENT (markdown) ===",
+          pageExcerpt,
+          "",
+          "=== AUTHORITATIVE REFERENCES (depth/structure cues) ===",
+          refsBlock,
+        ].join("\n"),
+        timeoutMs: Math.min(28_000, Math.max(10_000, Math.floor((remainingBudget() - 25_000) * 0.6))),
+      });
+      stages.coverage_findings = coverageFindings.length;
+      // Force category to be a coverage one if the model strayed.
+      for (const f of coverageFindings) {
+        if (!["thin", "gap", "update"].includes(f.category)) {
+          f.category = f.category === "missing" ? "gap" : "thin";
+        }
+      }
+      all.push(...coverageFindings);
+    } catch (e) {
+      stages.coverage_error = (e as Error).message;
+      console.error(`coverage audit error for ${topic.id}`, e);
+    }
+  }
+
 
   // 4a. Per-diagram label audit (text-only, from extracted SVG labels).
   // This runs even when the screenshot pass fails — it depends only on the
@@ -1121,7 +1288,40 @@ async function runBatch(jobId: string) {
         );
         logStages = stages as unknown as Record<string, unknown>;
         if (findings.length > 0) {
-          const rows = findings.map((f) => ({
+          // De-dupe against currently-open findings on the same topic so the
+          // dashboard doesn't grow a fresh copy of an issue that's already there.
+          const { data: existing } = await supa
+            .from("topic_audit_findings")
+            .select("summary, category, in_topic_section, status, unverifiable_reason")
+            .eq("topic_id", topic.id)
+            .in("status", ["open", "fixed"]);
+          const norm = (s: string | null | undefined) =>
+            String(s ?? "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().slice(0, 120);
+          const seenKeys = new Set<string>();
+          const dismissedKeys = new Set<string>();
+          for (const e of existing ?? []) {
+            const k = `${e.category}|${norm(e.summary)}|${norm(e.in_topic_section)}`;
+            if (e.status === "fixed" && e.unverifiable_reason) dismissedKeys.add(k);
+            else if (e.status === "open") seenKeys.add(k);
+          }
+
+          // Build a structured, machine-parseable header block so downstream
+          // fix-prompts can extract the verbatim quotes without DB migration.
+          const buildDetails = (f: any) => {
+            const header: string[] = [];
+            if (f.confidence) header.push(`Confidence: ${f.confidence}`);
+            if (f.exam_relevance) header.push(`Exam: ${f.exam_relevance}`);
+            const meta = header.length ? `[${header.join(" · ")}]\n\n` : "";
+            const topicQ = f.topic_quote && String(f.topic_quote).trim()
+              ? `> Topic passage:\n> ${String(f.topic_quote).trim().replace(/\n/g, "\n> ").slice(0, 600)}\n\n`
+              : "";
+            const sourceQ = f.source_quote && String(f.source_quote).trim()
+              ? `> Source evidence:\n> ${String(f.source_quote).trim().replace(/\n/g, "\n> ").slice(0, 800)}\n\n`
+              : "";
+            return `${meta}${topicQ}${sourceQ}${f.details ?? ""}`.trim();
+          };
+
+          const allRows = findings.map((f) => ({
             job_id: jobId,
             topic_id: topic.id,
             topic_title: topic.title,
@@ -1130,7 +1330,7 @@ async function runBatch(jobId: string) {
             severity: f.severity ?? "minor",
             category: f.category ?? "factual",
             summary: String(f.summary ?? "").slice(0, 500),
-            details: f.details ?? "",
+            details: buildDetails(f),
             suggested_fix: f.suggested_fix ?? null,
             sources: f.sources ?? [],
             diagram_ref: f.diagram_ref ?? null,
@@ -1138,13 +1338,29 @@ async function runBatch(jobId: string) {
               typeof f.in_topic_section === "string" && f.in_topic_section.trim()
                 ? f.in_topic_section.trim().slice(0, 200)
                 : null,
+            _key: `${f.category ?? "factual"}|${norm(f.summary)}|${norm(f.in_topic_section)}`,
           }));
-          const { error } = await supa
-            .from("topic_audit_findings")
-            .insert(rows);
-          if (error) throw error;
-          findingsCount += rows.length;
-          topicFindingsCount = rows.length;
+
+          // Skip rows that exactly match an already-open or human-dismissed finding.
+          const rows = allRows.filter((r) => {
+            if (seenKeys.has(r._key) || dismissedKeys.has(r._key)) return false;
+            return true;
+          }).map(({ _key, ...row }) => row);
+
+          const skipped = allRows.length - rows.length;
+          if (skipped > 0) {
+            console.log(`[audit-topics] ${topic.id}: skipped ${skipped} duplicate/dismissed findings`);
+            logStages.deduped = skipped;
+          }
+
+          if (rows.length > 0) {
+            const { error } = await supa
+              .from("topic_audit_findings")
+              .insert(rows);
+            if (error) throw error;
+            findingsCount += rows.length;
+            topicFindingsCount = rows.length;
+          }
         }
         succeeded++;
       } catch (e) {
