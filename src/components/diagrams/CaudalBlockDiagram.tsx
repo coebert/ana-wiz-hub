@@ -160,8 +160,8 @@ export const CaudalBlockDiagram = () => {
   return (
     <DiagramFigure
       id="caudal-block-diagram"
-      title="Caudal block"
-      description="Auto-generated wrapper for the Caudal block anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      title="Caudal block — sagittal anatomy"
+      description="Sagittal cross-section through the sacrum showing the caudal needle path through the sacrococcygeal membrane into the caudal epidural space, with the levels at which the dural sac and conus medullaris terminate in adults vs neonates."
     >
                   <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">
