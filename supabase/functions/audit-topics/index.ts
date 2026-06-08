@@ -56,6 +56,58 @@ const SOURCE_DOMAINS = [
   "esicm.org",
 ];
 
+// ---- FRCA / FFICM freshness anchors --------------------------------------
+// Per-section hints of guidelines / consensus statements that frequently
+// drive content drift. Surfaced to the FRESHNESS LLM pass as PROMPTS only —
+// the model still has to verify against a quoted recent source before
+// raising a finding. Keep entries short; do not assert they ARE outdated.
+const FRESHNESS_ANCHORS_BY_SECTION: Record<string, string[]> = {
+  physics: [
+    "AAGBI/Anaesthetists.org Standards of Monitoring 2021 (and any 2024+ revision)",
+    "MHRA device safety alerts on anaesthetic machines / vaporisers / ventilators",
+    "ISO 80601-2-13 anaesthetic workstation updates",
+  ],
+  physiology: [
+    "BJA Education review articles in the last 3 y on applied physiology",
+    "ESICM / SCCM consensus statements affecting physiological targets",
+  ],
+  pharmacology: [
+    "BNF / BNFc dose changes (most recent edition)",
+    "MHRA Drug Safety Updates (e.g. opioids, gabapentinoids, neuromuscular blockers)",
+    "NICE TA / NG updates on perioperative drug therapy",
+    "Sugammadex, remimazolam, ciprofol — UK licensing status updates",
+  ],
+  clinical: [
+    "Difficult Airway Society (DAS) guidelines — most recent edition",
+    "RCoA / AAGBI consent, monitoring, and preoperative assessment updates",
+    "NAP7 (perioperative cardiac arrest, 2023) implications",
+    "NICE NG45 routine preoperative tests — current revision",
+  ],
+  "intensive-care": [
+    "Surviving Sepsis Campaign (most recent update)",
+    "FICM / ICS guidelines: rehabilitation after critical illness, organ donation, prognostication",
+    "ARDS Berlin / global definition (2023) updates",
+    "ESICM consensus statements (last 3 y)",
+    "NAP7 ICU implications",
+  ],
+  perioperative: [
+    "RCUK ALS / paediatric ALS — most recent edition",
+    "AAGBI peri-operative blood transfusion / anaphylaxis / massive haemorrhage guidance",
+    "NICE NG: VTE prophylaxis, perioperative care in adults (NG180)",
+    "Centre for Perioperative Care (CPOC) consensus documents",
+    "NAP7 (2023) and NAP6 (anaphylaxis) implications",
+  ],
+};
+
+function freshnessHintsFor(section: string): string {
+  const list = FRESHNESS_ANCHORS_BY_SECTION[section];
+  if (!list || list.length === 0) {
+    return "(no section-specific hints — use general UK FRCA/FFICM guideline knowledge)";
+  }
+  return list.map((s, i) => `  ${i + 1}. ${s}`).join("\n");
+}
+
+
 interface TopicRef {
   id: string;
   title: string;
