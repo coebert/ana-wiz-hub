@@ -1320,6 +1320,46 @@ const ContentAudit = () => {
             <CardTitle className="text-base">Findings</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
+            {/* Lens tabs — Accuracy vs Coverage vs Diagrams */}
+            <div
+              role="tablist"
+              aria-label="Finding lens"
+              className="inline-flex flex-wrap items-center gap-1 rounded-md border border-border bg-muted/40 p-1"
+            >
+              {([
+                { id: "all", label: "All", count: lensCounts.all },
+                { id: "accuracy", label: "Accuracy", count: lensCounts.accuracy },
+                { id: "coverage", label: "Coverage", count: lensCounts.coverage },
+                { id: "diagram", label: "Diagrams", count: lensCounts.diagram },
+              ] as const).map((tab) => {
+                const active = lensFilter === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setLensFilter(tab.id)}
+                    className={
+                      "px-3 py-1.5 text-xs font-medium rounded transition-colors inline-flex items-center gap-2 " +
+                      (active
+                        ? "bg-background shadow-sm text-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-background/60")
+                    }
+                  >
+                    {tab.label}
+                    <span
+                      className={
+                        "text-[10px] px-1.5 py-0.5 rounded " +
+                        (active ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground")
+                      }
+                    >
+                      {tab.count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
             <div className="flex flex-wrap gap-2">
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <SelectTrigger className="w-[150px]">
