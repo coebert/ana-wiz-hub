@@ -277,9 +277,10 @@ async function firecrawlScrape(
         // AbortController fires at `attemptTimeoutMs`, so the value we send
         // as `timeout` must be a little smaller than that, and the
         // resulting `waitFor` cap is roughly half of it.
-        const firecrawlTimeout = Math.max(10_000, attemptTimeoutMs - 2_000);
+        const firecrawlTimeout = Math.max(6_000, attemptTimeoutMs - 2_000);
         const waitForCap = Math.max(500, Math.floor(firecrawlTimeout / 2) - 500);
         const waitFor = Math.min(requestedWaitFor, waitForCap);
+
         const r = await fetchJsonWithTimeout(
           "https://api.firecrawl.dev/v2/scrape",
           {
