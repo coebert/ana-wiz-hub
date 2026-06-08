@@ -872,9 +872,16 @@ const ContentAudit = () => {
         return false;
       if (statusFilter !== "all" && f.status !== statusFilter) return false;
       if (sectionFilter !== "all" && f.section !== sectionFilter) return false;
+      if (lensFilter === "accuracy" && !isAccuracyFinding(f)) return false;
+      if (lensFilter === "coverage" && !isExpansionFinding(f)) return false;
+      if (lensFilter === "diagram" && f.category !== "diagram") return false;
+      if (confidenceFilter !== "all") {
+        const parsed = parseFindingDetails(f.details);
+        if ((parsed.confidence ?? "low") !== confidenceFilter) return false;
+      }
       return true;
     });
-  }, [findings, severityFilter, statusFilter, sectionFilter]);
+  }, [findings, severityFilter, statusFilter, sectionFilter, lensFilter, confidenceFilter]);
 
   const stats = useMemo(() => {
     const open = findings.filter((f) => f.status === "open");
@@ -884,8 +891,26 @@ const ContentAudit = () => {
       major: open.filter((f) => f.severity === "major").length,
       diagrams: open.filter((f) => f.category === "diagram").length,
       expansion: open.filter(isExpansionFinding).length,
+      accuracy: open.filter(isAccuracyFinding).length,
     };
   }, [findings]);
+
+  // Counts per-tab for the lens badges (always over the current status/section/severity scope).
+  const lensCounts = useMemo(() => {
+    const scoped = findings.filter((f) => {
+      if (severityFilter !== "all" && f.severity !== severityFilter) return false;
+      if (statusFilter !== "all" && f.status !== statusFilter) return false;
+      if (sectionFilter !== "all" && f.section !== sectionFilter) return false;
+      return true;
+    });
+    return {
+      all: scoped.length,
+      accuracy: scoped.filter(isAccuracyFinding).length,
+      coverage: scoped.filter(isExpansionFinding).length,
+      diagram: scoped.filter((f) => f.category === "diagram").length,
+    };
+  }, [findings, severityFilter, statusFilter, sectionFilter]);
+
 
   const running = job?.status === "running" || job?.status === "pending";
   const jobFinished = job?.status === "completed" || job?.status === "completed_with_errors";
