@@ -233,8 +233,9 @@ const LaryngectomyAirwayHandoverDiagram = () => {
                 left more horizontal (~45°); origins at the same carinal level. */}
             <path d="M 186 290 L 162 332" stroke={tracheaStroke} strokeWidth="1.5" fill="none" />
             <path d="M 214 290 L 232 332" stroke={tracheaStroke} strokeWidth="2" fill="none" />
-            <text x="140" y="345" fontSize="8" fill={tracheaStroke}>L bronchus</text>
-            <text x="225" y="345" fontSize="8" fill={tracheaStroke}>R bronchus</text>
+            {/* Anterior view: patient's RIGHT = viewer's LEFT. */}
+            <text x="140" y="345" fontSize="8" fill={tracheaStroke}>R bronchus</text>
+            <text x="225" y="345" fontSize="8" fill={tracheaStroke}>L bronchus</text>
 
             {/* Stage label */}
             <text x="10" y="18" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">
