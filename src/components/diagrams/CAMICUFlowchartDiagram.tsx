@@ -326,7 +326,7 @@ export const CAMICUFlowchartDiagram = () => {
               </g>
 
               {/* Feature 4 */}
-              <g {...svgNodeProps("Step 5/5 — Feature 4: Disorganised thinking (>1 error positive)")}>
+              <g {...svgNodeProps("Step 5/5 — Feature 4: Disorganised thinking (≥1 error positive)")}>
                 <title>Feature 4 — Disorganised thinking</title>
                 <rect x="180" y="314" width="280" height="56" rx="6" fill="hsl(var(--physiology))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="334" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
@@ -336,7 +336,7 @@ export const CAMICUFlowchartDiagram = () => {
                   4 yes/no questions + 2-step command
                 </text>
                 <text x="320" y="362" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                  {">"} 1 error = positive
+                  {"≥"} 1 error = positive
                 </text>
               </g>
 
@@ -390,7 +390,7 @@ export const CAMICUFlowchartDiagram = () => {
                 <li>Feature 1 — Acute onset or fluctuating course. If NO, the result is CAM-ICU negative. If YES, continue to Feature 2.</li>
                 <li>Feature 2 — Inattention (SAVEAHAART; more than 2 errors is positive). If NO, the result is CAM-ICU negative. If YES, continue to Feature 3.</li>
                 <li>Feature 3 — Altered consciousness (RASS not equal to 0). If YES, the result is CAM-ICU positive. If NO, continue to Feature 4.</li>
-                <li>Feature 4 — Disorganised thinking (4 yes/no questions plus 2-step command; more than 1 error is positive). If YES, the result is CAM-ICU positive. If NO, the result is CAM-ICU negative.</li>
+                <li>Feature 4 — Disorganised thinking (4 yes/no questions plus 2-step command; 1 or more errors is positive). If YES, the result is CAM-ICU positive. If NO, the result is CAM-ICU negative.</li>
                 <li>CAM-ICU positive: delirium present — apply the ABCDEF bundle. CAM-ICU negative: no delirium.</li>
               </ol>
             </div>

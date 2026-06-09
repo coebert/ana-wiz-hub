@@ -6,6 +6,7 @@ import { ICUSedationComparisonDiagram } from "@/components/diagrams/ICUSedationC
 import { CAMICUFlowchartDiagram } from "@/components/diagrams/CAMICUFlowchartDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { Cite } from "@/components/Cite";
 
 const objectives = [
   "Score sedation depth using RASS and target light sedation (0 to −2) unless a specific indication for deep sedation exists.",
@@ -119,7 +120,7 @@ const IcuSedationDeliriumTopic = () => {
       sectionSources={{
         objectives: ["BJA Educ 2017", "BJA Educ 2019"],
         workedExamples: ["BJA Educ 2017", "DAS-Delirium", "BJA Educ 2019"],
-        keyPoints: ["BJA Educ 2019", "DAS-Delirium", "BJA Educ 2017"],
+        keyPoints: ["BJA Educ 2019", "DAS-Delirium", "BJA Educ 2017", "CAM-ICU Training Manual"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC] },
@@ -195,6 +196,8 @@ const IcuSedationDeliriumTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">
                   4 features: (1) acute onset / fluctuating course + (2) inattention + (3) altered
                   consciousness OR (4) disorganised thinking. Positive = 1 + 2 + (3 or 4).
+                  Feature 4: 4 yes/no questions + 2-step command; ≥1 error = positive
+                  <Cite topicId="icu-sedation-delirium" labels={["CAM-ICU Training Manual"]} />.
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border">
