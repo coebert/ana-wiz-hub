@@ -25,7 +25,7 @@ const ElderlyAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
         <ol className="list-decimal list-inside space-y-1">
           <li>Preoperative: orientation aids (glasses, hearing aids), AMTS baseline, hydration, screen and treat anaemia, review benzodiazepines/anticholinergics</li>
           <li>Anaesthetic technique: regional (spinal or fascia-iliaca) where feasible; if GA, use depth monitoring to avoid burst suppression (BIS 40–60) — ENGAGES showed depth-targeted GA did not reduce delirium but very deep anaesthesia increases risk</li>
-          <li>Avoid deliriogenic drugs: benzodiazepines, pethidine, anticholinergics (atropine over glycopyrrolate); favour paracetamol-based multimodal analgesia</li>
+          <li>Avoid deliriogenic drugs: benzodiazepines, pethidine, anticholinergics (prefer glycopyrrolate over atropine); favour paracetamol-based multimodal analgesia</li>
           <li>Postoperative: HELP bundle (Hospital Elder Life Program) — re-orientation, early mobilisation, sleep hygiene, daily delirium screen with 4AT</li>
           <li>Treat reversible causes promptly: pain, hypoxia, sepsis, urinary retention, constipation, electrolyte disturbance</li>
         </ol>
