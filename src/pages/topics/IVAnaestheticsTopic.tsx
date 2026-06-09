@@ -328,6 +328,35 @@ const IVAnaestheticsTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Remimazolam</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Ultra-short-acting ester-based benzodiazepine (Byfavo), granted UK marketing authorisation by the MHRA in
+            2021 for procedural sedation in adults<InlineRef topicId="iv-anaesthetics" refLabel="MHRA Byfavo 2021" />.
+            Designed as a "soft drug": a methyl ester side-chain is rapidly hydrolysed by non-specific tissue
+            carboxylesterases (predominantly CES-1A) to an inactive carboxylic-acid metabolite (CNS7054), giving a
+            short, predictable offset that is largely independent of infusion duration and of hepatic/renal
+            function<InlineRef topicId="iv-anaesthetics" refLabel="BJA Educ Remimazolam" />.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>Mechanism</strong>: positive allosteric modulator at the α/γ interface of GABA-A receptors —
+            identical site to midazolam, increasing chloride-channel <em>opening frequency</em>. <strong>Dosing
+            (procedural sedation)</strong>: 5–7 mg IV bolus over 1 min, then 2.5 mg top-ups (≥2 min apart) to effect;
+            onset ~1–3 min, clinical duration ~10 min after a single bolus. <strong>PK</strong>: context-sensitive
+            half-time ≈ 7–8 min even after prolonged infusion; Vd ~0.9 L/kg; clearance ~70 L/h, independent of CYP
+            metabolism.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>CVS/RS</strong>: less hypotension than propofol and less respiratory depression than midazolam,
+            but both occur dose-dependently and are synergistic with opioids. <strong>Reversal</strong>: fully
+            antagonised by flumazenil (resedation possible because flumazenil's t½ is shorter than the active drug
+            window when high doses have been used). <strong>Niche</strong>: examinable as a new UK IV agent with a
+            unique esterase-based metabolic profile — useful where rapid, predictable recovery is needed in frail,
+            renally or hepatically impaired patients<InlineRef topicId="iv-anaesthetics" refLabel="BJA Educ Remimazolam" />.
+          </p>
+        </section>
+
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Comparative Table</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
