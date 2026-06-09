@@ -6,6 +6,7 @@ import { ICUSedationComparisonDiagram } from "@/components/diagrams/ICUSedationC
 import { CAMICUFlowchartDiagram } from "@/components/diagrams/CAMICUFlowchartDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { Cite } from "@/components/Cite";
 
 const objectives = [
   "Score sedation depth using RASS and target light sedation (0 to −2) unless a specific indication for deep sedation exists.",
