@@ -390,7 +390,7 @@ export const CAMICUFlowchartDiagram = () => {
                 <li>Feature 1 — Acute onset or fluctuating course. If NO, the result is CAM-ICU negative. If YES, continue to Feature 2.</li>
                 <li>Feature 2 — Inattention (SAVEAHAART; more than 2 errors is positive). If NO, the result is CAM-ICU negative. If YES, continue to Feature 3.</li>
                 <li>Feature 3 — Altered consciousness (RASS not equal to 0). If YES, the result is CAM-ICU positive. If NO, continue to Feature 4.</li>
-                <li>Feature 4 — Disorganised thinking (4 yes/no questions plus 2-step command; more than 1 error is positive). If YES, the result is CAM-ICU positive. If NO, the result is CAM-ICU negative.</li>
+                <li>Feature 4 — Disorganised thinking (4 yes/no questions plus 2-step command; 1 or more errors is positive). If YES, the result is CAM-ICU positive. If NO, the result is CAM-ICU negative.</li>
                 <li>CAM-ICU positive: delirium present — apply the ABCDEF bundle. CAM-ICU negative: no delirium.</li>
               </ol>
             </div>
