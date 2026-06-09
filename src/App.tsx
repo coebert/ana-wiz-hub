@@ -317,6 +317,7 @@ const App = () => (
           <Route path="/pharmacology/volatile-agents" element={<VolatileAgentsTopic />} />
           <Route path="/pharmacology/opioids" element={<OpioidsTopic />} />
           <Route path="/pharmacology/muscle-relaxants" element={<MuscleRelaxantsTopic />} />
+          <Route path="/pharmacology/suxamethonium-vs-rocuronium" element={<SuxVsRocComparisonTopic />} />
           <Route path="/pharmacology/local-anaesthetics" element={<LocalAnaestheticsTopic />} />
           <Route path="/pharmacology/vasoactive-agents" element={<VasoactiveAgentsTopic />} />
           <Route path="/pharmacology/antimicrobials-pharm" element={<AntimicrobialsPharmTopic />} />
