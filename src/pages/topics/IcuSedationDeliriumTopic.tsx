@@ -196,6 +196,8 @@ const IcuSedationDeliriumTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">
                   4 features: (1) acute onset / fluctuating course + (2) inattention + (3) altered
                   consciousness OR (4) disorganised thinking. Positive = 1 + 2 + (3 or 4).
+                  Feature 4: 4 yes/no questions + 2-step command; ≥1 error = positive
+                  <Cite topicId="icu-sedation-delirium" labels={["CAM-ICU Training Manual"]} />.
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border">
