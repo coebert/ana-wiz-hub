@@ -30,6 +30,14 @@ const SuxVsRocComparisonTopic = () => {
       },
       {
         "@type": "Question",
+        name: "What are the RSI doses of suxamethonium and rocuronium?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Suxamethonium is given as 1.0–1.5 mg/kg intravenously. Rocuronium for RSI requires 1.0–1.2 mg/kg IV; the standard 0.6 mg/kg induction dose is inadequate for rapid sequence intubation because onset extends to ~90 seconds and intubating conditions are inferior (Tran et al., Cochrane 2017).",
+        },
+      },
+      {
+        "@type": "Question",
         name: "When should suxamethonium be avoided?",
         acceptedAnswer: {
           "@type": "Answer",
@@ -38,10 +46,34 @@ const SuxVsRocComparisonTopic = () => {
       },
       {
         "@type": "Question",
+        name: "Why is suxamethonium dangerous after burns or spinal cord injury?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "After ~48–72 hours, upregulation of extrajunctional nicotinic acetylcholine receptors causes an exaggerated potassium release with suxamethonium — serum potassium can rise by 5–10 mmol/L, provoking cardiac arrest. Rocuronium does not depolarise the muscle membrane and carries no such risk.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What dose of sugammadex reverses rocuronium?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sugammadex reverses rocuronium in a dose-dependent manner: 2 mg/kg at reappearance of T2 for routine reversal; 4 mg/kg if the TOF count is 1–2 with no T2 yet; and 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose (≥3 minutes after administration). Counsel patients that sugammadex inactivates hormonal contraceptives for 7 days (Schaller & Fink, Anaesthesia 2013; Merck SmPC).",
+        },
+      },
+      {
+        "@type": "Question",
         name: "Can sugammadex reverse rocuronium fast enough to rescue a failed RSI?",
         acceptedAnswer: {
           "@type": "Answer",
           text: "Sugammadex 16 mg/kg reverses a 1.2 mg/kg rocuronium block to a TOF ratio ≥0.9 in approximately 3 minutes — faster than spontaneous recovery from suxamethonium 1.0 mg/kg (~9–10 minutes). However, reversal does not restore upper-airway tone immediately, so it should never replace a proper difficult-airway plan (DAS 2015).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can rocuronium be used for RSI if sugammadex is unavailable?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, but the clinical duration of rocuronium 1.2 mg/kg is 45–70 minutes without sugammadex. In this scenario neostigmine can only be given once four twitches have returned (T2), which may take 30–60 minutes. Suxamethonium remains an acceptable alternative when rapid spontaneous recovery is desired and there are no contraindications.",
         },
       },
     ],
