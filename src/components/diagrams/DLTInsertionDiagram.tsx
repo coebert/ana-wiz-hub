@@ -250,6 +250,21 @@ const DLTInsertionDiagram = () => {
             stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.2" />
           <text x={lbx - 20} y={lby - 30} fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.4">LUL</text>
 
+          {/* RML take-off (anterior, from bronchus intermedius) */}
+          <line x1={rbx - 5} y1={rby + 6} x2={rbx + 14} y2={rby + 14}
+            stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.2" />
+          <text x={rbx + 22} y={rby + 16} fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.4">RML</text>
+
+          {/* RLL continuation (distal right bronchus) */}
+          <line x1={rbx} y1={rby + 4} x2={rbx + 18} y2={rby + 32}
+            stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.2" />
+          <text x={rbx + 22} y={rby + 36} fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.4">RLL</text>
+
+          {/* LLL continuation (distal left bronchus) */}
+          <line x1={lbx} y1={lby + 4} x2={lbx - 18} y2={lby + 32}
+            stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.2" />
+          <text x={lbx - 22} y={lby + 36} fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.4">LLL</text>
+
           {/* DLT tube */}
           {showDLT && (
             <g>
