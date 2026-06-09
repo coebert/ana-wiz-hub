@@ -334,6 +334,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Miller Ch.26", citation: "Miller RD, ed. Miller's Anesthesia. 9th ed. Elsevier; 2020. Chapter 26: Intravenous Anaesthetics." },
     { label: "AAGBI 2018", citation: "Nimmo AF et al. Guidelines for the safe practice of total intravenous anaesthesia (TIVA). Association of Anaesthetists / SIVA. Anaesthesia. 2019;74(2):211-224.", url: "https://doi.org/10.1111/anae.14428" },
     { label: "Peck & Hill Ch.6", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 6: Opioid Analgesics." },
+    { label: "MHRA Byfavo 2021", citation: "Medicines and Healthcare products Regulatory Agency. Byfavo (remimazolam) — Summary of Product Characteristics. UK marketing authorisation granted 2021.", url: "https://www.gov.uk/mhra" },
+    { label: "BJA Educ Remimazolam", citation: "Kilpatrick GJ. Remimazolam: non-clinical and clinical profile of a new sedative/anaesthetic agent. Front Pharmacol. 2021;12:690875.", url: "https://doi.org/10.3389/fphar.2021.690875" },
   ],
   "volatile-agents": [
     { label: "BJA Educ 2014", citation: "Khan KS, Hayes I, Buggy DJ. Pharmacology of anaesthetic agents II: inhalation anaesthetic agents. BJA Education. 2014;14(3):106-111.", url: "https://doi.org/10.1093/bjaceaccp/mkt038" },
