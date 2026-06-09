@@ -326,7 +326,7 @@ export const CAMICUFlowchartDiagram = () => {
               </g>
 
               {/* Feature 4 */}
-              <g {...svgNodeProps("Step 5/5 — Feature 4: Disorganised thinking (>1 error positive)")}>
+              <g {...svgNodeProps("Step 5/5 — Feature 4: Disorganised thinking (≥1 error positive)")}>
                 <title>Feature 4 — Disorganised thinking</title>
                 <rect x="180" y="314" width="280" height="56" rx="6" fill="hsl(var(--physiology))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="334" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
@@ -336,7 +336,7 @@ export const CAMICUFlowchartDiagram = () => {
                   4 yes/no questions + 2-step command
                 </text>
                 <text x="320" y="362" textAnchor="middle" fontSize="9" className="fill-primary-foreground">
-                  {">"} 1 error = positive
+                  {"≥"} 1 error = positive
                 </text>
               </g>
 
