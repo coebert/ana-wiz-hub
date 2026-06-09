@@ -120,7 +120,7 @@ const IcuSedationDeliriumTopic = () => {
       sectionSources={{
         objectives: ["BJA Educ 2017", "BJA Educ 2019"],
         workedExamples: ["BJA Educ 2017", "DAS-Delirium", "BJA Educ 2019"],
-        keyPoints: ["BJA Educ 2019", "DAS-Delirium", "BJA Educ 2017"],
+        keyPoints: ["BJA Educ 2019", "DAS-Delirium", "BJA Educ 2017", "CAM-ICU Training Manual"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC] },
