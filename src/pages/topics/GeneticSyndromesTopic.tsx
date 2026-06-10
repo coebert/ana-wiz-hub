@@ -262,10 +262,16 @@ const GeneticSyndromesTopic = () => {
                       safe: "ETT 0.5–1 size smaller, neutral neck, focused neuro exam, premed + parent presence",
                     },
                     {
-                      syndrome: "Marfan / Loeys-Dietz (FBN1 / TGFBR)",
-                      system: "Aorta, lungs, dura",
-                      hazards: "Aortic dissection, MV prolapse, pneumothorax, dural ectasia → unreliable spinal",
-                      safe: "Continue β-blockade, strict BP/dP/dt control, art line, epidural > spinal, avoid hypertensive surges",
+                      syndrome: "Marfan (FBN1)",
+                      system: "Aorta, lungs, dura, eyes, joints",
+                      hazards: "Aortic root dilatation / dissection, MV prolapse, pneumothorax/bullae, dural ectasia, lens dislocation",
+                      safe: "Continue β-blockers, strict BP/dP/dt control, art line, lowest airway pressures, epidural > spinal, protect eyes",
+                    },
+                    {
+                      syndrome: "Loeys-Dietz (TGFBR)",
+                      system: "Aorta, arteries",
+                      hazards: "Aggressive arterial dissection at smaller diameters than Marfan; aneurysms throughout arterial tree",
+                      safe: "Strict BP control, β-blockade, arterial monitoring, avoid hypertensive surges, imaging-guided vascular access",
                     },
                     {
                       syndrome: "Vascular Ehlers-Danlos (COL3A1)",
