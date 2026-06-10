@@ -388,6 +388,7 @@ const GeneticSyndromesTopic = () => {
         { text: "Marfan / Loeys-Dietz: strict BP control, continue β-blockers, dural ectasia → unreliable spinal.", cites: ["BJA Educ Marfan 2016"] },
         { text: "Sickle cell: avoid the 5 H's; top-up Hb to ~100 g/L (TAPS) for medium-risk surgery.", cites: ["AAGBI Sickle 2020", "TAPS 2013"] },
         { text: "AIP: avoid barbiturates, etomidate, diclofenac, phenytoin; propofol/opioids/sevoflurane safe; cross-check every drug.", cites: ["BJA Educ Porphyria 2017", "Drug Database Porphyria"] },
+        { text: "Achondroplasia (FGFR3): predict difficult airway, foramen magnum stenosis and OSA; keep neck neutral; reduce neuraxial LA dose to 50–75% and dose drugs to lean body weight, not height.", cites: ["BJA Educ Achondroplasia 2018", "Berkowitz Achondroplasia 1990"] },
       
       ]}
     />
