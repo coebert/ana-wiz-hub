@@ -30,7 +30,7 @@ const GeneticSyndromesTopic = () => {
       sectionSources={{
         objectives: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020"],
         workedExamples: ["EMHG 2020 Guidelines", "TAPS 2013", "BJA Educ DMD 2017", "AAGBI MH 2020"],
-        keyPoints: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020", "British Porphyria Association Drug Database", "AAGBI MH 2020", "BJA Educ DMD 2017", "BJA Educ Myotonic 2017", "BJA Educ BChE 2014", "BJA Educ Down 2016", "BJA Educ Marfan 2016", "TAPS 2013", "BJA Educ Porphyria 2017", "Drug Database Porphyria"],
+        keyPoints: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020", "British Porphyria Association Drug Database", "AAGBI MH 2020", "BJA Educ DMD 2017", "BJA Educ Myotonic 2017", "BJA Educ BChE 2014", "BJA Educ Down 2016", "BJA Educ Marfan 2016", "TAPS 2013", "BJA Educ Porphyria 2017", "Drug Database Porphyria", "BJA Educ Achondroplasia 2018", "Berkowitz Achondroplasia 1990"],
       }}
       coreConcepts={
         <>
@@ -133,6 +133,32 @@ const GeneticSyndromesTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Achondroplasia (FGFR3)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Autosomal dominant gain-of-function mutation of fibroblast growth factor receptor 3 (FGFR3) causing the commonest non-lethal skeletal dysplasia: rhizomelic short stature, macrocephaly with frontal bossing, midface hypoplasia and a characteristically small foramen magnum. Anaesthetic risk clusters around the airway, the cervical and lumbar spine, and the lungs.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { label: "Airway", value: "Midface hypoplasia, large tongue, short neck, restricted mouth opening, choanal stenosis, tonsillar/adenoidal hypertrophy. Anticipate difficult mask seal and laryngoscopy; have videolaryngoscope, smaller ETT (size based on weight not age) and SAD backup. Avoid blind nasal intubation." },
+                { label: "Cervical spine", value: "Small foramen magnum with cervicomedullary compression in up to a third of children; atlanto-axial instability uncommon but possible. Maintain neutral neck during induction and positioning; consider awake FOI in adults with myelopathic signs." },
+                { label: "Respiratory", value: "Restrictive chest wall (short ribs, thoracolumbar kyphosis) → reduced FRC, faster desaturation. High prevalence of central and obstructive sleep apnoea (cervicomedullary compression + adenotonsillar hypertrophy); preop sleep history ± polysomnography, consider postop HDU/NIV." },
+                { label: "Neuraxial", value: "Spinal stenosis, short pedicles, exaggerated lumbar lordosis and kyphoscoliosis make spinal/epidural technically difficult and unpredictable. Reduce LA dose (~50–75% of standard); use slow, titrated epidural with imaging guidance where feasible; CSE preferred over single-shot spinal in obstetrics." },
+                { label: "Cardiovascular", value: "Generally structurally normal heart, but obstructive sleep apnoea and chronic hypoxaemia may produce pulmonary hypertension and right-heart strain — screen with echo if symptomatic." },
+                { label: "Practical", value: "Dose drugs to lean body weight, not height-predicted weight. Paediatric-sized BP cuff, careful padding (short limbs), avoid extreme positioning. IV access often easy in childhood but tissue laxity in adults." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs text-muted-foreground">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              No specific association with MH; suxamethonium and volatiles are not contraindicated. The dominant pitfalls are airway and neuraxial planning, not pharmacology.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Haemoglobinopathies">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Sickle cell (HbSS)</strong>: avoid the 5 H's — Hypoxia, Hypothermia, Hypotension/dehydration, Hypoperfusion (stasis), High acidity. Top-up to Hb ~100 g/L for medium-risk surgery (TAPS); exchange to HbS &lt;30% for high-risk (cardiac, neuro). Active warming, generous fluids, supplemental O₂, multimodal analgesia.</li>
@@ -227,6 +253,12 @@ const GeneticSyndromesTopic = () => {
                       system: "Bones, teeth, possible MH link",
                       hazards: "Fractures from positioning/BP cuff, dentinogenesis, kyphoscoliosis",
                       safe: "Padded positioning, manual BP / cycle infrequently, videolaryngoscopy, regional where possible",
+                    },
+                    {
+                      syndrome: "Achondroplasia (FGFR3)",
+                      system: "Airway, C-spine, spine, respiratory",
+                      hazards: "Difficult airway (midface hypoplasia, large tongue), foramen magnum stenosis/cervicomedullary compression, OSA, restrictive chest, unpredictable neuraxial spread",
+                      safe: "Videolaryngoscopy ± awake FOI, neutral neck, reduced neuraxial LA dose (50–75%), titrated epidural, dose to lean weight, postop NIV if OSA",
                     },
                     {
                       syndrome: "Sickle cell (HbSS)",
@@ -356,6 +388,7 @@ const GeneticSyndromesTopic = () => {
         { text: "Marfan / Loeys-Dietz: strict BP control, continue β-blockers, dural ectasia → unreliable spinal.", cites: ["BJA Educ Marfan 2016"] },
         { text: "Sickle cell: avoid the 5 H's; top-up Hb to ~100 g/L (TAPS) for medium-risk surgery.", cites: ["AAGBI Sickle 2020", "TAPS 2013"] },
         { text: "AIP: avoid barbiturates, etomidate, diclofenac, phenytoin; propofol/opioids/sevoflurane safe; cross-check every drug.", cites: ["BJA Educ Porphyria 2017", "Drug Database Porphyria"] },
+        { text: "Achondroplasia (FGFR3): predict difficult airway, foramen magnum stenosis and OSA; keep neck neutral; reduce neuraxial LA dose to 50–75% and dose drugs to lean body weight, not height.", cites: ["BJA Educ Achondroplasia 2018", "Berkowitz Achondroplasia 1990"] },
       
       ]}
     />

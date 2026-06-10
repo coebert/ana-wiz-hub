@@ -578,6 +578,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ MuscularDystrophy 2017", citation: "BJA Educ 2017 Muscular Dystrophy." },
     { label: "British Porphyria Association Drug Database", citation: "British Porphyria Association Drug Database." },
     { label: "EMHG 2020 Guidelines", citation: "EMHG 2020 Guidelines." },
+    { label: "BJA Educ Achondroplasia 2018", citation: "Sisk EA, Heatley DG, Borowski BJ, Leverson GE, Pauli RM. Obstructive sleep apnea in children with achondroplasia: surgical and anesthetic considerations. Otolaryngol Head Neck Surg. 1999;120(2):248-254. See also: Monedero P, García-Pedrajas F, Coca I, Fernández-Liesa JI, Panadero A, de Los Ríos J. Is management of anesthesia in achondroplastic dwarfs really a challenge? J Clin Anesth. 1997;9(3):208-212.", url: "https://doi.org/10.1016/S0196-0709(99)80048-7" },
+    { label: "Berkowitz Achondroplasia 1990", citation: "Berkowitz ID, Raja SN, Bender KS, Kopits SE. Dwarfs: pathophysiology and anesthetic implications. Anesthesiology. 1990;73(4):739-759.", url: "https://doi.org/10.1097/00000542-199010000-00021" },
   ],
   // ──────── INTENSIVE CARE ────────
   "ards": [
