@@ -114,11 +114,36 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL]}>
-            <CollapsibleSubsection title="Connective tissue disorders">
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Marfan syndrome (FBN1)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Autosomal dominant disorder of fibrillin-1 (FBN1) causing abnormal elastic tissue. Cardinal features are aortic root dilatation, arachnodactyly, lens dislocation, and tall stature with arm span exceeding height. Anaesthetic risk is dominated by the aorta — progressive root dilatation and dissection — but the lungs, eyes, spine and joints all matter.
+            </p>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
-                { label: "Marfan (FBN1)", value: "Aortic root dilatation/dissection (continue β-blockers, control BP/dP/dt), MV prolapse, pneumothorax risk, lens dislocation, dural ectasia → unreliable spinal." },
+                { label: "Aorta / cardiovascular", value: "Progressive aortic root dilatation and type-A dissection are the leading causes of death. Continue β-blockers (reduce dP/dt); target systolic BP <120 mmHg and gentle heart rate. Pre-op CT/MRI aorta if not recent. Mitral valve prolapse and regurgitation common. Place defibrillation pads if root >45 mm." },
+                { label: "Respiratory", value: "Pectus excavatum, kyphoscoliosis and apical bullae increase pneumothorax risk — especially with positive pressure ventilation. Use lowest airway pressures possible; high index of suspicion for spontaneous pneumothorax if desaturation or ↑airway pressures." },
+                { label: "Ophthalmology", value: "Lens dislocation (ectopia lentis) — upward/subluxation is characteristic. Protect eyes during positioning; avoid pressure on globes. Consider avoiding anticholinergics (less relevant in modern practice)." },
+                { label: "Neuraxial", value: "Dural ectasia (widening of the spinal canal) makes spinal block unpredictable and increases risk of post-dural-puncture headache. Epidural is preferred if neuraxial chosen; expect patchy spread and higher volumes needed." },
+                { label: "Musculoskeletal", value: "Joint laxity, scoliosis, pectus deformity and long limbs can make positioning difficult. Hyperextensible joints risk nerve stretch — pad well, avoid extreme positions. Cervical spine instability is uncommon but reported." },
+                { label: "Practical", value: "Continue β-blockers on day of surgery; use arterial line for beat-to-beat BP monitoring. Treat intubation response (laryngoscopy → hypertension) with opioid ± esmolol/labetalol. Avoid Valsalva, straining and hypertensive surges perioperatively." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs text-muted-foreground">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              No association with MH. Suxamethonium and volatile agents are safe from an MH perspective, but avoid hypertensive responses to laryngoscopy and intubation.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Other connective tissue disorders">
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
                 { label: "Ehlers-Danlos (vascular type, COL3A1)", value: "Tissue fragility, vessel rupture, easy bruising, poor wound healing. Caution with arterial lines/CVCs, gentle laryngoscopy, avoid IM injections." },
                 { label: "Osteogenesis imperfecta", value: "Brittle bones — careful positioning, avoid BP cuff trauma, difficult intubation (cervical fragility, dentinogenesis imperfecta), risk of MH (low-grade association)." },
                 { label: "Loeys-Dietz", value: "Aggressive arterial dissection at smaller diameters than Marfan — strict BP control essential." },
