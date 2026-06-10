@@ -30,7 +30,7 @@ const GeneticSyndromesTopic = () => {
       sectionSources={{
         objectives: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020"],
         workedExamples: ["EMHG 2020 Guidelines", "TAPS 2013", "BJA Educ DMD 2017", "AAGBI MH 2020"],
-        keyPoints: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020", "British Porphyria Association Drug Database", "AAGBI MH 2020", "BJA Educ DMD 2017", "BJA Educ Myotonic 2017", "BJA Educ BChE 2014", "BJA Educ Down 2016", "BJA Educ Marfan 2016", "TAPS 2013", "BJA Educ Porphyria 2017", "Drug Database Porphyria"],
+        keyPoints: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020", "British Porphyria Association Drug Database", "AAGBI MH 2020", "BJA Educ DMD 2017", "BJA Educ Myotonic 2017", "BJA Educ BChE 2014", "BJA Educ Down 2016", "BJA Educ Marfan 2016", "TAPS 2013", "BJA Educ Porphyria 2017", "Drug Database Porphyria", "BJA Educ Achondroplasia 2018", "Berkowitz Achondroplasia 1990"],
       }}
       coreConcepts={
         <>
