@@ -133,6 +133,32 @@ const GeneticSyndromesTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Achondroplasia (FGFR3)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Autosomal dominant gain-of-function mutation of fibroblast growth factor receptor 3 (FGFR3) causing the commonest non-lethal skeletal dysplasia: rhizomelic short stature, macrocephaly with frontal bossing, midface hypoplasia and a characteristically small foramen magnum. Anaesthetic risk clusters around the airway, the cervical and lumbar spine, and the lungs.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { label: "Airway", value: "Midface hypoplasia, large tongue, short neck, restricted mouth opening, choanal stenosis, tonsillar/adenoidal hypertrophy. Anticipate difficult mask seal and laryngoscopy; have videolaryngoscope, smaller ETT (size based on weight not age) and SAD backup. Avoid blind nasal intubation." },
+                { label: "Cervical spine", value: "Small foramen magnum with cervicomedullary compression in up to a third of children; atlanto-axial instability uncommon but possible. Maintain neutral neck during induction and positioning; consider awake FOI in adults with myelopathic signs." },
+                { label: "Respiratory", value: "Restrictive chest wall (short ribs, thoracolumbar kyphosis) → reduced FRC, faster desaturation. High prevalence of central and obstructive sleep apnoea (cervicomedullary compression + adenotonsillar hypertrophy); preop sleep history ± polysomnography, consider postop HDU/NIV." },
+                { label: "Neuraxial", value: "Spinal stenosis, short pedicles, exaggerated lumbar lordosis and kyphoscoliosis make spinal/epidural technically difficult and unpredictable. Reduce LA dose (~50–75% of standard); use slow, titrated epidural with imaging guidance where feasible; CSE preferred over single-shot spinal in obstetrics." },
+                { label: "Cardiovascular", value: "Generally structurally normal heart, but obstructive sleep apnoea and chronic hypoxaemia may produce pulmonary hypertension and right-heart strain — screen with echo if symptomatic." },
+                { label: "Practical", value: "Dose drugs to lean body weight, not height-predicted weight. Paediatric-sized BP cuff, careful padding (short limbs), avoid extreme positioning. IV access often easy in childhood but tissue laxity in adults." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs text-muted-foreground">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              No specific association with MH; suxamethonium and volatiles are not contraindicated. The dominant pitfalls are airway and neuraxial planning, not pharmacology.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Haemoglobinopathies">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Sickle cell (HbSS)</strong>: avoid the 5 H's — Hypoxia, Hypothermia, Hypotension/dehydration, Hypoperfusion (stasis), High acidity. Top-up to Hb ~100 g/L for medium-risk surgery (TAPS); exchange to HbS &lt;30% for high-risk (cardiac, neuro). Active warming, generous fluids, supplemental O₂, multimodal analgesia.</li>
