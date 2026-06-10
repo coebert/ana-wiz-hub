@@ -255,6 +255,12 @@ const GeneticSyndromesTopic = () => {
                       safe: "Padded positioning, manual BP / cycle infrequently, videolaryngoscopy, regional where possible",
                     },
                     {
+                      syndrome: "Achondroplasia (FGFR3)",
+                      system: "Airway, C-spine, spine, respiratory",
+                      hazards: "Difficult airway (midface hypoplasia, large tongue), foramen magnum stenosis/cervicomedullary compression, OSA, restrictive chest, unpredictable neuraxial spread",
+                      safe: "Videolaryngoscopy ± awake FOI, neutral neck, reduced neuraxial LA dose (50–75%), titrated epidural, dose to lean weight, postop NIV if OSA",
+                    },
+                    {
                       syndrome: "Sickle cell (HbSS)",
                       system: "RBC / microvasculature",
                       hazards: "5 H's: hypoxia, hypothermia, hypotension, hypoperfusion, acidosis → vaso-occlusion",
