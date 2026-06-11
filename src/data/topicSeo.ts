@@ -231,6 +231,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Hepatobiliary anaesthesia", "Liver transplant anaesthesia", "Liver resection anaesthesia", "Low CVP technique", "Post-reperfusion syndrome", "Cirrhotic patient"],
     keywords: ["liver transplant anaesthesia", "low CVP technique", "post reperfusion syndrome", "Pringle manoeuvre", "hepatobiliary FRCA"],
   },
+  "tiva": {
+    title: "TIVA & TCI: Marsh, Schnider, Eleveld Models | FRCA",
+    description: "FRCA Primary & Final guide to TIVA and target-controlled infusion: PK compartment models, Marsh vs Schnider vs Eleveld, plasma vs effect-site targeting, CSHT, PRIS, and practical setup.",
+    aliases: ["TIVA", "Total intravenous anaesthesia", "TCI", "Target-controlled infusion", "Propofol TCI", "Remifentanil TCI", "Marsh model", "Schnider model", "Eleveld model"],
+    keywords: ["TIVA FRCA", "TCI models", "Marsh vs Schnider", "Eleveld propofol", "effect-site targeting", "CSHT", "PRIS", "propofol infusion syndrome"],
+  },
   "burns-plastics": {
     title: "Burns & Plastic Surgery Anaesthesia — Parkland & Airway | FRCA",
     description: "Burns and plastic surgery anaesthesia for FRCA Final: burn assessment and Parkland fluid resuscitation, airway and inhalational injury, carbon monoxide and cyanide poisoning, suxamethonium contraindication.",
