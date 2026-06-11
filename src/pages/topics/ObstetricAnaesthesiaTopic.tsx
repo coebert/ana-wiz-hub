@@ -868,6 +868,44 @@ const ObstetricAnaesthesiaTopic = () => {
               "Massive obstetric haemorrhage: activate MOH protocol, give tranexamic acid within 3 h, target fibrinogen >2 g/L.",
             ]}
           />
+
+          <section id="faq" className="scroll-mt-24 mt-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Labour Epidural & Obstetric Anaesthesia — FAQ
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+              Evidence-based answers to the most common questions about labour epidurals, spinal anaesthesia for caesarean section, post-dural puncture headache and obstetric general anaesthesia — drawn from OAA, RCoA and NAP3 guidance.
+            </p>
+            <Accordion type="single" collapsible className="w-full">
+              {obstetricFaqs.map(([q, a], i) => (
+                <AccordionItem key={q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-sm font-medium text-foreground">
+                    {q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                    {a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+
+          <Helmet>
+            <title>Obstetric Anaesthesia — Labour Epidural & LSCS</title>
+            <meta
+              name="description"
+              content="Obstetric anaesthesia for FRCA and FFICM: labour epidural, spinal for caesarean section, category-1 RSI, post-dural puncture headache, pregnancy physiology and OAA/NAP3 safety evidence."
+            />
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: obstetricFaqs.map(([name, acceptedAnswer]) => ({
+                "@type": "Question",
+                name,
+                acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+              })),
+            })}</script>
+          </Helmet>
         </section>
       </ExamSection>
       }
