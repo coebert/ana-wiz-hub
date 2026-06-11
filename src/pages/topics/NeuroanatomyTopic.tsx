@@ -1,4 +1,11 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
+
+const neuroanatomyFaqs: Array<[string, string]> = [
+  ["What is the Circle of Willis and which artery most commonly aneurysms?", "The Circle of Willis is a polygonal arterial anastomosis at the base of the brain, formed by the anterior and posterior cerebral arteries connected by anterior and posterior communicating arteries. It provides collateral flow if a feeding vessel is occluded. Berry aneurysms most commonly arise at the anterior communicating artery (~35%), then posterior communicating (~30%), then middle cerebral bifurcation (~20%)."],
+  ["How does CSF circulate and where is it absorbed?", "Produced by the choroid plexus of the lateral, third and fourth ventricles (~500 mL/day; total volume 150 mL). It flows lateral → third (via foramina of Monro) → fourth (via aqueduct of Sylvius) → subarachnoid space (via median Magendie and lateral Luschka foramina). It is absorbed at the arachnoid granulations into the dural venous sinuses (superior sagittal sinus)."],
+  ["Which dermatomes are key surface landmarks?", "C4 — clavicle; T4 — nipple line; T6 — xiphisternum; T10 — umbilicus; L1 — inguinal ligament; S2/3/4 — perineum. These are essential for testing the height of a spinal or epidural block and for assessing sensory levels in spinal cord injury."],
+];
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { neuroanatomyQuestions } from "@/data/quizzes";
