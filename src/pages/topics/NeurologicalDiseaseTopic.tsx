@@ -116,7 +116,7 @@ const NeurologicalDiseaseTopic = () => {
         <TopicTableOfContents items={tocItems} />
 
         {/* Myasthenia Gravis */}
-        <section>
+        <section id="section-myasthenia-gravis" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Myasthenia Gravis</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09", "NA_BK_01"]} />
           <MGPathophysDiagram />
@@ -181,7 +181,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Epilepsy */}
-        <section>
+        <section id="section-epilepsy" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Epilepsy</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <EpilepsyPathophysDiagram />
@@ -225,7 +225,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Multiple Sclerosis */}
-        <section>
+        <section id="section-multiple-sclerosis" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Multiple Sclerosis</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <MSPathophysDiagram />
@@ -268,7 +268,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Parkinson's Disease */}
-        <section>
+        <section id="section-parkinsons-disease" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Parkinson's Disease</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <PDPathophysDiagram />
@@ -312,7 +312,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Motor Neuron Disease */}
-        <section>
+        <section id="section-motor-neuron-disease" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Motor Neuron Disease</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <MNDPathophysDiagram />
@@ -354,7 +354,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Muscular Dystrophies */}
-        <section>
+        <section id="section-muscular-dystrophies" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Muscular Dystrophies</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <MDPathophysDiagram />
@@ -397,7 +397,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Spinal Cord Injury */}
-        <section>
+        <section id="section-spinal-cord-injury" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord Injury</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <SCIPathophysDiagram />
