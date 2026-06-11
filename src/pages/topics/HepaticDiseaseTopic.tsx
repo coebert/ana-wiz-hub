@@ -4,8 +4,17 @@ import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { hepaticDiseaseQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+
+const tocItems = [
+  { id: "section-preoperative-risk-stratification", label: "Preoperative Risk Stratification", group: "Assessment" },
+  { id: "section-systemic-features-of-cirrhosis", label: "Systemic Features of Cirrhosis", group: "Core" },
+  { id: "section-pharmacology-in-hepatic-impairment", label: "Pharmacology in Hepatic Impairment", group: "Pharmacology" },
+  { id: "section-intraoperative-management", label: "Intraoperative Management", group: "Management" },
+  { id: "section-perioperative-decompensation", label: "Perioperative Decompensation", group: "Complications" },
+];
 
 const objectives = [
   "Quantify perioperative risk in chronic liver disease using Child-Pugh and MELD, and apply this to elective non-hepatic surgery decisions.",
