@@ -11,6 +11,7 @@ import { VascularAccessTypesDiagram } from "@/components/diagrams/VascularAccess
 import { DwellTimeInfographic } from "@/components/diagrams/DwellTimeInfographic";
 import { vascularAccessDevicesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const VascularAccessDevicesTopicWorkedExamples: WorkedExample[] = [
   {
