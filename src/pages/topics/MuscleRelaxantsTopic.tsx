@@ -381,6 +381,66 @@ const MuscleRelaxantsTopic = () => {
             <h2 className="text-2xl font-serif font-bold text-foreground">Molecular Structures</h2>
             <MuscleRelaxantStructures />
           </section>
+
+          <section className="mb-10" id="faq">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Frequently Asked Questions</h2>
+            <div className="space-y-4 mt-3">
+              {[
+                {
+                  q: "What is the difference between depolarising and non-depolarising muscle relaxants?",
+                  a: "Depolarising agents (only suxamethonium in clinical use) are nicotinic acetylcholine receptor agonists that cause sustained end-plate depolarisation, producing initial fasciculations followed by flaccid paralysis with no TOF fade and no post-tetanic potentiation. Non-depolarising agents (rocuronium, vecuronium, atracurium, cisatracurium) are competitive antagonists at the α-subunits of the nAChR: there are no fasciculations, TOF shows fade, and post-tetanic potentiation is present. Non-depolarising block is reversible (by neostigmine or, for aminosteroids, sugammadex); depolarising block must be allowed to wear off through plasma cholinesterase metabolism.",
+                },
+                {
+                  q: "How does suxamethonium work?",
+                  a: "Suxamethonium is structurally two acetylcholine molecules joined end-to-end. It binds the α-subunits of postjunctional nicotinic ACh receptors at the neuromuscular junction and persistently opens the ion channel, depolarising the motor end-plate. The sustained depolarisation inactivates perijunctional sodium channels, so the muscle membrane cannot repolarise and propagate further action potentials — producing flaccid paralysis (Phase I block). It is hydrolysed by plasma cholinesterase (butyrylcholinesterase); typical onset is 30–60 s and duration 5–10 min at 1–1.5 mg/kg IV.",
+                },
+                {
+                  q: "When should rocuronium replace suxamethonium for rapid sequence induction?",
+                  a: "Rocuronium 1.0–1.2 mg/kg provides intubating conditions in ~60 s — comparable to suxamethonium — and is preferred when suxamethonium is contraindicated: known or suspected malignant hyperthermia susceptibility, hyperkalaemia or conditions predisposing to it (burns >24 h, denervation injury, prolonged immobilisation, severe muscular dystrophy), plasma cholinesterase deficiency, and patient preference to avoid post-suxamethonium myalgia. Sugammadex must be immediately available to reverse the block if intubation fails.",
+                },
+                {
+                  q: "How does sugammadex reverse rocuronium?",
+                  a: "Sugammadex is a modified γ-cyclodextrin with a lipophilic core that encapsulates aminosteroid NMBAs (rocuronium ≫ vecuronium ≫ pancuronium) in a 1:1 complex, removing free drug from plasma. This shifts the equilibrium, drawing drug away from the neuromuscular junction within 2–3 min regardless of block depth. Dosing: 2 mg/kg at reappearance of T2 for routine reversal, 4 mg/kg at PTC 1–2 for deep block, 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose. Adequacy must be confirmed objectively (TOF ratio ≥0.9). Sugammadex is ineffective against benzylisoquinoliniums (atracurium, cisatracurium, mivacurium).",
+                },
+                {
+                  q: "What are the side effects of suxamethonium?",
+                  a: "Hyperkalaemia (≈0.5 mmol/L rise normally; potentially fatal release in burns >24 h, denervation, muscular dystrophy, prolonged immobilisation); bradycardia (especially with a second dose); raised intraocular, intracranial and intragastric pressure; malignant hyperthermia trigger; anaphylaxis (the most common NMBA cause); masseter spasm; post-operative myalgia; and prolonged paralysis (suxamethonium apnoea) in plasma cholinesterase deficiency — managed by sedation and ventilation until spontaneous recovery.",
+                },
+                {
+                  q: "Why does suxamethonium cause hyperkalaemia in burns patients?",
+                  a: "From around 24–48 h after a significant burn, extrajunctional (immature) nicotinic ACh receptors proliferate across the muscle membrane in response to injury and inactivity. Suxamethonium depolarises all of these receptors simultaneously, releasing a massive bolus of intracellular potassium that can produce serum rises of 5–10 mmol/L and cardiac arrest. The risk persists for months (often quoted up to ~1 year) after the burn until the receptor population normalises; suxamethonium is therefore avoided beyond the first 24 h.",
+                },
+                {
+                  q: "What is train-of-four (TOF) monitoring and what does a TOF ratio of 0.9 mean?",
+                  a: "TOF delivers four supramaximal 2 Hz stimuli to a peripheral nerve (commonly the ulnar at the wrist, observing adductor pollicis). With non-depolarising block the response shows progressive fade — the fourth twitch (T4) is smaller than the first (T1). The TOF ratio = T4/T1. A ratio ≥0.9 indicates recovery sufficient to protect airway reflexes and ventilation; below 0.9 there is clinically significant residual paralysis even when the patient appears awake. Quantitative (acceleromyography/electromyography) monitoring is the standard of care because clinical signs such as head-lift and grip are insensitive to residual block.",
+                },
+              ].map((item) => (
+                <details key={item.q} className="group rounded-lg border border-border bg-card p-4">
+                  <summary className="cursor-pointer font-semibold text-foreground">{item.q}</summary>
+                  <p className="mt-2 text-foreground/90 leading-relaxed">{item.a}</p>
+                </details>
+              ))}
+            </div>
+            <Helmet>
+              <script type="application/ld+json">{JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  ["What is the difference between depolarising and non-depolarising muscle relaxants?","Depolarising agents (only suxamethonium in clinical use) are nicotinic acetylcholine receptor agonists that cause sustained end-plate depolarisation, producing initial fasciculations followed by flaccid paralysis with no TOF fade and no post-tetanic potentiation. Non-depolarising agents (rocuronium, vecuronium, atracurium, cisatracurium) are competitive antagonists at the α-subunits of the nAChR: there are no fasciculations, TOF shows fade, and post-tetanic potentiation is present. Non-depolarising block is reversible (by neostigmine or, for aminosteroids, sugammadex); depolarising block must be allowed to wear off through plasma cholinesterase metabolism."],
+                  ["How does suxamethonium work?","Suxamethonium is structurally two acetylcholine molecules joined end-to-end. It binds the α-subunits of postjunctional nicotinic ACh receptors at the neuromuscular junction and persistently opens the ion channel, depolarising the motor end-plate. The sustained depolarisation inactivates perijunctional sodium channels, so the muscle membrane cannot repolarise and propagate further action potentials. It is hydrolysed by plasma cholinesterase; typical onset is 30–60 s and duration 5–10 min at 1–1.5 mg/kg IV."],
+                  ["When should rocuronium replace suxamethonium for rapid sequence induction?","Rocuronium 1.0–1.2 mg/kg provides intubating conditions in ~60 s and is preferred when suxamethonium is contraindicated: malignant hyperthermia susceptibility, hyperkalaemia or conditions predisposing to it (burns >24 h, denervation, prolonged immobilisation, severe muscular dystrophy), plasma cholinesterase deficiency, and to avoid post-suxamethonium myalgia. Sugammadex must be immediately available."],
+                  ["How does sugammadex reverse rocuronium?","Sugammadex is a modified γ-cyclodextrin that encapsulates aminosteroid NMBAs 1:1, removing free drug from plasma and reversing block within 2–3 min regardless of depth. Dosing: 2 mg/kg at T2 for routine reversal, 4 mg/kg at PTC 1–2 for deep block, 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose. Confirm reversal with TOF ratio ≥0.9. Ineffective against benzylisoquinoliniums."],
+                  ["What are the side effects of suxamethonium?","Hyperkalaemia, bradycardia (especially with a second dose), raised intraocular, intracranial and intragastric pressure, malignant hyperthermia, anaphylaxis (most common NMBA cause), masseter spasm, post-operative myalgia, and suxamethonium apnoea in plasma cholinesterase deficiency."],
+                  ["Why does suxamethonium cause hyperkalaemia in burns patients?","From 24–48 h after a significant burn, extrajunctional (immature) nicotinic ACh receptors proliferate across the muscle membrane. Suxamethonium depolarises them simultaneously, releasing a large bolus of intracellular potassium that can cause cardiac arrest. The risk persists for months until the receptor population normalises, so suxamethonium is avoided beyond the first 24 h post-burn."],
+                  ["What is train-of-four (TOF) monitoring and what does a TOF ratio of 0.9 mean?","TOF delivers four supramaximal 2 Hz stimuli to a peripheral nerve. With non-depolarising block the response fades; TOF ratio = T4/T1. A ratio ≥0.9 indicates recovery sufficient to protect the airway. Below 0.9 there is clinically significant residual paralysis. Quantitative monitoring is the standard of care because clinical signs are insensitive to residual block."],
+                ].map(([name, acceptedAnswer]) => ({
+                  "@type": "Question",
+                  name,
+                  acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+                })),
+              })}</script>
+            </Helmet>
+          </section>
           <ExamPitfallsCallout
             accent="pharmacology"
             pitfalls={[
