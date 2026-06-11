@@ -103,6 +103,7 @@ const HeadNeckAnatomyTopic = () => {
         ],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-10 mb-10 [&>div]:scroll-mt-24">
           <CorPictumFolio {...headNeckFolio} suppressOverlayLabels />
