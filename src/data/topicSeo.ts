@@ -273,6 +273,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Preoperative assessment", "Perioperative risk stratification", "RCRI", "SORT", "CPET", "NICE NG45", "Patient blood management", "Pre-op anaemia"],
     keywords: ["preoperative assessment FRCA", "RCRI", "CPET anaerobic threshold", "NICE NG45", "patient blood management", "pre-op anaemia"],
   },
+  "day-surgery": {
+    title: "Day Surgery Anaesthesia: BADS, Selection & Discharge | FRCA",
+    description: "Day surgery anaesthesia for FRCA Final: BADS criteria, patient selection, short-acting agents, multimodal analgesia, PONV prophylaxis and safe discharge criteria.",
+    aliases: ["Day surgery", "Day case anaesthesia", "BADS", "Patient selection day surgery", "Discharge criteria", "PADSS", "Ambulatory anaesthesia"],
+    keywords: ["day surgery anaesthesia FRCA", "BADS criteria", "day case selection", "discharge criteria", "PONV prophylaxis", "multimodal analgesia"],
+  },
   "enhanced-recovery": {
     title: "Enhanced Recovery (ERAS): Pathways, Trials & PONV | FRCA",
     description: "Enhanced Recovery After Surgery for FRCA Final: ERAS principles, surgical stress response, prehabilitation, PONV prophylaxis, landmark trials and specialty protocols.",
