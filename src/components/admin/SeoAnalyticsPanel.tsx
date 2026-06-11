@@ -1,7 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { RefreshCw, TrendingUp, Search, Globe, Smartphone, ExternalLink } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { RefreshCw, TrendingUp, Search, Globe, Smartphone, ExternalLink, CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
+import { type DateRange } from "react-day-picker";
 import {
   ResponsiveContainer,
   LineChart,
