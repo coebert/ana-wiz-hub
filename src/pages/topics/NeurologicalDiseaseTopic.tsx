@@ -113,6 +113,8 @@ const NeurologicalDiseaseTopic = () => {
           Neurological co-existing disease changes drug handling, raises specific intra-operative risks, and dictates choices around regional versus general anaesthesia. This topic covers the high-yield conditions — myasthenia gravis, epilepsy, MS, Parkinson's disease, motor neuron disease, muscular dystrophies, and spinal cord injury — with an emphasis on neuromuscular blocker selection, autonomic safety, and continuation of disease-modifying therapy.
         </p>
 
+        <TopicTableOfContents items={tocItems} />
+
         {/* Myasthenia Gravis */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Myasthenia Gravis</h2>
