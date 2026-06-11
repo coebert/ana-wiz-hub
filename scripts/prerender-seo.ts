@@ -292,6 +292,75 @@ function buildBreadcrumb(path: string, seo: RouteSeo): object | null {
   };
 }
 
+// Sections whose deep pages are clinical/medical content — these get a
+// MedicalWebPage schema so Google can classify them as medical material
+// (eligible for the medical content treatment in SERPs / Knowledge Graph)
+// rather than generic articles.
+const MEDICAL_SECTIONS = new Set([
+  "physics",
+  "physiology",
+  "pharmacology",
+  "clinical",
+  "intensive-care",
+  "perioperative",
+  "anatomy",
+  "chemistry",
+  "drugs",
+]);
+
+function buildMedicalWebPage(path: string, seo: RouteSeo): object | null {
+  const segments = path.split("/").filter(Boolean);
+  // Topic + subtopic pages only: section landing pages (1 segment) and
+  // non-medical app routes (/tools, /viva, /revise, etc.) are excluded.
+  if (segments.length < 2) return null;
+  if (!MEDICAL_SECTIONS.has(segments[0])) return null;
+
+  const canonical = `${SITE}${path}`;
+  const sectionKey = segments[0];
+  const sectionLabel = SECTION_LABELS[sectionKey] ?? "FRCA";
+  const leafSlug = segments[segments.length - 1];
+  // Short human label for `about`/`headline` — strip the SEO suffixes the way
+  // buildBreadcrumb does for leaf names.
+  const leafName = seo.title
+    .split(/\s+[–|]\s+/)[0]
+    .split(/\s*\|\s*/)[0]
+    .trim() || titleCase(leafSlug);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name: seo.title,
+    headline: leafName,
+    description: seo.description,
+    url: canonical,
+    inLanguage: "en-GB",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "AnaesthesiaCore",
+      url: `${SITE}/`,
+    },
+    about: {
+      "@type": "MedicalEntity",
+      name: leafName,
+    },
+    audience: {
+      "@type": "MedicalAudience",
+      audienceType: "Clinician",
+      healthCondition: { "@type": "MedicalCondition", name: sectionLabel },
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "AnaesthesiaCore",
+      url: `${SITE}/`,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE}/brain-logo.png`,
+      },
+    },
+    mainContentOfPage: true,
+  };
+}
+
 function patchHead(
   shell: string,
   path: string,
@@ -417,6 +486,17 @@ function patchHead(
     );
   }
 
+  // MedicalWebPage JSON-LD on every topic / subtopic page so Google can
+  // classify clinical content as medical material rather than a generic
+  // article (eligible for the medical-content treatment in SERPs).
+  const medicalPage = buildMedicalWebPage(path, seo);
+  if (medicalPage) {
+    const mpJson = JSON.stringify(medicalPage).replace(/<\/script>/gi, "<\\/script>");
+    headTags.push(
+      `<script type="application/ld+json" data-prerender="medicalwebpage">${mpJson}</script>`,
+    );
+  }
+
   if (faqs && faqs.length > 0) {
     const faqJsonLd = {
       "@context": "https://schema.org",
@@ -465,6 +545,7 @@ async function main() {
   let withBreadcrumb = 0;
   let withWebSite = 0;
   let withOrg = 0;
+  let withMedical = 0;
 
   for (const path of routes) {
     const seo = seoFor(path);
@@ -481,10 +562,11 @@ async function main() {
     if (path !== "/") withBreadcrumb++;
     withWebSite++;
     withOrg++;
+    if (buildMedicalWebPage(path, seo)) withMedical++;
   }
 
   console.log(
-    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root); ${withWebSite} include WebSite/SearchAction JSON-LD; ${withOrg} include Organization JSON-LD; ${withFaq} include FAQPage JSON-LD; ${withBreadcrumb} include BreadcrumbList JSON-LD.`,
+    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root); ${withWebSite} include WebSite/SearchAction JSON-LD; ${withOrg} include Organization JSON-LD; ${withFaq} include FAQPage JSON-LD; ${withBreadcrumb} include BreadcrumbList JSON-LD; ${withMedical} include MedicalWebPage JSON-LD.`,
   );
 }
 

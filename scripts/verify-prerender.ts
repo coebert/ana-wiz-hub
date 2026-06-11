@@ -215,6 +215,84 @@ function main() {
     return fail(`Organization JSON-LD missing on ${orgFailures.length} route(s)`);
   }
 
+  // ---- MedicalWebPage JSON-LD presence ----
+  // Every topic / subtopic page (2+ segments under a medical section) must
+  // ship a MedicalWebPage schema so Google can classify clinical content as
+  // medical material instead of generic web pages.
+  const MEDICAL_SECTIONS = new Set([
+    "physics",
+    "physiology",
+    "pharmacology",
+    "clinical",
+    "intensive-care",
+    "perioperative",
+    "anatomy",
+    "chemistry",
+    "drugs",
+  ]);
+  const mpFailures: Array<{ path: string; reason: string }> = [];
+  let mpChecked = 0;
+  for (const f of readdirSync(sitemapsDir)) {
+    if (!f.endsWith(".xml")) continue;
+    const xml = readFileSync(join(sitemapsDir, f), "utf8");
+    for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+      const url = m[1];
+      if (!url.startsWith(SITE)) continue;
+      const path = url.slice(SITE.length) || "/";
+      const segments = path.split("/").filter(Boolean);
+      if (segments.length < 2 || !MEDICAL_SECTIONS.has(segments[0])) continue;
+      const file = join(DIST, path, "index.html");
+      if (!existsSync(file)) continue;
+      mpChecked++;
+      const html = readFileSync(file, "utf8");
+      const scriptMatch = html.match(
+        /<script\s+type="application\/ld\+json"\s+data-prerender="medicalwebpage">([\s\S]+?)<\/script>/i,
+      );
+      if (!scriptMatch) {
+        mpFailures.push({ path, reason: "no MedicalWebPage <script> tag" });
+        continue;
+      }
+      try {
+        const json = JSON.parse(scriptMatch[1]);
+        if (json["@type"] !== "MedicalWebPage") {
+          mpFailures.push({ path, reason: `@type is ${json["@type"]}, not MedicalWebPage` });
+          continue;
+        }
+        if (typeof json.name !== "string" || json.name.length === 0) {
+          mpFailures.push({ path, reason: "name missing" });
+          continue;
+        }
+        if (typeof json.url !== "string" || !json.url.endsWith(path)) {
+          mpFailures.push({ path, reason: "url missing or does not match route" });
+          continue;
+        }
+        if (typeof json.description !== "string" || json.description.length === 0) {
+          mpFailures.push({ path, reason: "description missing" });
+          continue;
+        }
+        if (!json.about || json.about["@type"] !== "MedicalEntity") {
+          mpFailures.push({ path, reason: "about/MedicalEntity missing" });
+          continue;
+        }
+        if (!json.publisher || json.publisher["@type"] !== "Organization") {
+          mpFailures.push({ path, reason: "publisher/Organization missing" });
+        }
+      } catch (err) {
+        mpFailures.push({ path, reason: `JSON parse failed: ${(err as Error).message}` });
+      }
+    }
+  }
+
+  if (mpFailures.length > 0) {
+    console.error(
+      `[verify-prerender] ✗ ${mpFailures.length}/${mpChecked} route(s) missing or malformed MedicalWebPage JSON-LD:`,
+    );
+    for (const m of mpFailures.slice(0, 20)) {
+      console.error(`  - ${m.path}  →  ${m.reason}`);
+    }
+    return fail(`MedicalWebPage JSON-LD missing on ${mpFailures.length} route(s)`);
+  }
+
   // ---- WebSite + SearchAction JSON-LD presence ----
   // Every prerendered route must ship a WebSite schema with a SearchAction
   // potentialAction so Google surfaces the site-level search box in SERPs.
@@ -346,6 +424,7 @@ function main() {
       `${orgChecked} Organization JSON-LD blocks valid; ` +
       `${wsChecked} WebSite/SearchAction JSON-LD blocks valid; ` +
       `${bcChecked} BreadcrumbList JSON-LD blocks valid; ` +
+      `${mpChecked} MedicalWebPage JSON-LD blocks valid; ` +
       `${faqExpectedPaths.length} FAQPage JSON-LD blocks valid; ` +
       `${subSitemaps.length} sub-sitemaps linked; robots.txt advertises sitemap.`,
   );
