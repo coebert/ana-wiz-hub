@@ -392,10 +392,17 @@ export default function SeoAnalyticsPanel() {
             {(data?.byDate?.rows ?? []).length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
-                  data={(data?.byDate?.rows ?? []).map(r => ({
-                    date: r.keys?.[0] ?? "",
-                    ctr: Number((r.ctr * 100).toFixed(2)),
-                  }))}
+                  data={(data?.byDate?.rows ?? []).map(r => {
+                    const impressions = r.impressions ?? 0;
+                    const hasImpressions = impressions > 0;
+                    return {
+                      date: r.keys?.[0] ?? "",
+                      ctr: hasImpressions ? Number((r.ctr * 100).toFixed(2)) : null,
+                      impressions,
+                      skipped: !hasImpressions,
+                      lowData: hasImpressions && impressions < LOW_IMPRESSIONS_THRESHOLD,
+                    };
+                  })}
                   margin={{ top: 8, right: 12, left: 0, bottom: 0 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
@@ -418,16 +425,49 @@ export default function SeoAnalyticsPanel() {
                       borderRadius: 8,
                       fontSize: 12,
                     }}
-                    formatter={(value: number) => [`${value}%`, "CTR"]}
+                    formatter={(value: number | null, _name, ctx: any) => {
+                      const p = ctx?.payload ?? {};
+                      if (p.skipped) return ["no data", `CTR (${p.impressions ?? 0} impr.)`];
+                      if (p.lowData) return [`${value}%`, `CTR (low data: ${p.impressions} impr.)`];
+                      return [`${value}%`, "CTR"];
+                    }}
                   />
                   <Legend wrapperStyle={{ fontSize: 12 }} />
+                  {(data?.byDate?.rows ?? [])
+                    .filter(r => !((r.impressions ?? 0) > 0))
+                    .map(r => (
+                      <ReferenceLine
+                        key={`skip-ctr-${r.keys?.[0]}`}
+                        x={r.keys?.[0]}
+                        stroke="hsl(var(--muted-foreground))"
+                        strokeDasharray="3 3"
+                        strokeOpacity={0.4}
+                      />
+                    ))}
                   <Line
                     type="monotone"
                     dataKey="ctr"
                     name="Avg. CTR"
                     stroke="hsl(var(--accent))"
                     strokeWidth={2}
-                    dot={false}
+                    dot={(props: any) => {
+                      const { cx, cy, payload, key } = props;
+                      if (payload?.lowData && cx != null && cy != null) {
+                        return (
+                          <circle
+                            key={key}
+                            cx={cx}
+                            cy={cy}
+                            r={3}
+                            fill="hsl(var(--background))"
+                            stroke="hsl(var(--destructive))"
+                            strokeWidth={1.5}
+                          />
+                        );
+                      }
+                      return <g key={key} />;
+                    }}
+                    connectNulls
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -435,6 +475,16 @@ export default function SeoAnalyticsPanel() {
               <p className="text-sm text-muted-foreground text-center pt-10">No data yet for this window.</p>
             )}
           </div>
+          <p className="text-[11px] text-muted-foreground mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span className="inline-flex items-center gap-1">
+              <span className="inline-block w-3 h-0 border-t border-dashed border-muted-foreground/60" />
+              No data / no impressions
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <span className="inline-block w-2 h-2 rounded-full border-[1.5px] border-destructive bg-background" />
+              Low impressions (&lt;{LOW_IMPRESSIONS_THRESHOLD})
+            </span>
+          </p>
         </div>
       </div>
 
