@@ -170,7 +170,7 @@ const HepaticDiseaseTopic = () => {
             </section>
 
             {/* Systemic features */}
-            <section>
+            <section id="section-systemic-features-of-cirrhosis" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Systemic Features of Cirrhosis</h2>
               <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
