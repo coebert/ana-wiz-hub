@@ -223,6 +223,7 @@ function main() {
 
   console.log(
     `[verify-prerender] ✓ ${checked} sitemap URLs all have prerendered HTML; ` +
+      `${bcChecked} BreadcrumbList JSON-LD blocks valid; ` +
       `${faqExpectedPaths.length} FAQPage JSON-LD blocks valid; ` +
       `${subSitemaps.length} sub-sitemaps linked; robots.txt advertises sitemap.`,
   );
