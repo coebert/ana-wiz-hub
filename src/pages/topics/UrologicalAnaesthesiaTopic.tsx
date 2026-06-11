@@ -1,6 +1,8 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { urologicalAnaesthesiaQuestions } from "@/data/quizzes";
 import TURPSyndromeDiagram from "@/components/diagrams/TURPSyndromeDiagram";
 import PropofolErectionMechanismDiagram from "@/components/diagrams/PropofolErectionMechanismDiagram";
@@ -8,6 +10,67 @@ import PropofolErectionAlgorithmDiagram from "@/components/diagrams/PropofolErec
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const tocItems = [
+  { id: "intro", label: "Introduction", group: "Core" },
+  { id: "turp", label: "TURP syndrome", group: "Core" },
+  { id: "bipolar-laser", label: "Bipolar TURP & laser", group: "Core" },
+  { id: "lithotomy", label: "Lithotomy position", group: "Positioning" },
+  { id: "cystectomy", label: "Radical cystectomy", group: "Major surgery" },
+  { id: "nephrectomy", label: "Nephrectomy & renal surgery", group: "Major surgery" },
+  { id: "propofol-erection", label: "Propofol-induced penile erection", group: "Complications" },
+  { id: "eswl", label: "ESWL", group: "Procedures" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
+
+const uroFaqs: Array<[string, string]> = [
+  [
+    "What is TURP syndrome and how is it managed?",
+    "TURP syndrome is a potentially life-threatening complication of transurethral resection of the prostate in which hypotonic irrigation fluid (classically 1.5% glycine) is absorbed through open prostatic venous sinuses into the circulation. It produces dilutional hyponatraemia, hypo-osmolality, fluid overload, and glycine toxicity. Clinical features include restlessness, confusion, nausea, visual disturbance (glycine is an inhibitory retinal neurotransmitter), seizures, hypertension then hypotension, bradycardia, and pulmonary oedema. Management: tell the surgeon to stop resection immediately and achieve haemostasis. Send urgent U&E, serum osmolality, and ammonia. For severe symptomatic hyponatraemia (Na⁺ <120 mmol/L with seizures or coma), give 3% hypertonic saline 1–2 mL/kg over 10 minutes, repeated until symptoms resolve. The goal is a sodium rise of no more than 10 mmol/L in the first 24 hours to avoid central pontine myelinolysis. Give IV furosemide 20–40 mg for fluid overload. Provide supportive care with oxygen and haemodynamic support. Convert to general anaesthesia with intubation only if airway compromise or uncontrolled seizures occur.",
+  ],
+  [
+    "Why is spinal anaesthesia preferred for monopolar TURP?",
+    "Spinal anaesthesia is preferred for monopolar TURP because it allows early detection of TURP syndrome. An awake patient will develop restlessness, confusion, nausea, visual disturbance, and headache as glycine and fluid are absorbed — signs that are completely masked under general anaesthesia until severe cardiovascular collapse occurs. A sensory block to T10 is sufficient for prostate resection. Spinal anaesthesia also reduces blood loss compared with general anaesthesia (lower mean arterial pressure), avoids airway instrumentation in an often elderly population, and provides excellent postoperative analgesia. The main caveat is that a high spinal can mask the symptoms of bladder perforation (shoulder-tip pain, abdominal distension), so the surgeon must be vigilant and the block level carefully controlled.",
+  ],
+  [
+    "How does bipolar TURP differ from monopolar TURP?",
+    "Monopolar TURP uses a resectoscope loop that passes electrical current from the loop through the patient to a return electrode (diathermy plate) on the skin. Because the current passes through the body, non-conductive hypotonic irrigation fluid (1.5% glycine) must be used to prevent current dispersion — this is what creates the risk of TURP syndrome. Bipolar TURP uses a loop with both active and return electrodes at the tip, so current flows only in the immediate surgical field. This allows the use of isotonic saline irrigation, which eliminates the risk of dilutional hyponatraemia and TURP syndrome. Bipolar resection also produces less tissue burning at the margins and allows longer resection times. Laser techniques (HoLEP, GreenLight PVP) also use saline irrigation. However, fluid overload from excessive absorption remains possible with all techniques, and resection time should still be limited.",
+  ],
+  [
+    "What are the risks of the lithotomy position?",
+    "The lithotomy position places the patient supine with hips flexed 80–90° and legs elevated in stirrups. Risks include: (1) Nerve injury — the common peroneal nerve is compressed at the lateral fibular head by the stirrup, producing foot drop; the femoral nerve is stretched by hip hyperflexion; the obturator and sciatic nerves can also be injured. (2) Compartment syndrome — prolonged elevation (>4 hours), especially with steep Trendelenburg and external compression, can cause raised pressure in the calf compartments leading to ischaemia. (3) Haemodynamic shifts — leg elevation increases venous return and preload initially; when legs are lowered at the end of surgery, there is a sudden fall in preload and potential hypotension. (4) Respiratory compromise — abdominal viscera shift cephalad, reducing functional residual capacity and compliance, similar to the Trendelenburg position. (5) DVT risk — venous stasis in the elevated legs; intermittent pneumatic compression should be used. All pressure points must be padded and stirrups adjusted to minimise hip flexion and external rotation.",
+  ],
+  [
+    "What are the anaesthetic considerations for radical cystectomy?",
+    "Radical cystectomy is major surgery (4–8 hours) with significant blood loss (1–3 L typical) in an often elderly population with smoking history and cardiovascular comorbidity. Preoperative optimisation includes cardiopulmonary assessment, prehabilitation, and nutritional support. Monitoring requires an arterial line, central venous access, cardiac output monitoring (oesophageal Doppler, FloTrac, or PiCCO), and urinary catheter. Cross-match 4–6 units of blood; cell salvage may be used if malignancy is not present at the surgical field. Anaesthetic technique: general anaesthesia with a thoracic epidural (T8–T10) or bilateral TAP/rectus sheath blocks plus patient-controlled analgesia for postoperative pain. Enhanced recovery (ERAS) protocols are standard: early feeding, early mobilisation, alvimopan for postoperative ileus, and avoidance of nasogastric tubes. Temperature management is critical — active warming to maintain normothermia and reduce bleeding. Fluid management should be goal-directed to balance renal perfusion against third-space losses without overloading.",
+  ],
+  [
+    "What is propofol-induced penile erection and how is it managed?",
+    "Propofol-induced penile erection is an uncommon but well-recognised phenomenon in which penile tumescence or full erection occurs after induction or during maintenance with propofol, reported most often in endoscopic urology. The proposed mechanism is central disinhibition of the spinal erection reflex combined with GABA-mediated relaxation of cavernosal smooth muscle and reduced sympathetic tone. Management is escalating: (1) deepen anaesthesia with additional propofol or opioid (fentanyl/alfentanil), which paradoxically resolves the erection in many cases; (2) switch to volatile maintenance or add ketamine; (3) pharmacological detumescence with intracavernosal phenylephrine 100–200 µg (alpha-agonist, with blood pressure and ECG monitoring) or IV ephedrine; (4) mechanical methods (ice packs, compression) are generally ineffective alone; (5) last resort is to abandon the procedure if detumescence fails and instrumentation is unsafe. It should not be confused with priapism — this is a transient anaesthesia-related event without ischaemia. If it persists >4 hours postoperatively, treat as low-flow priapism.",
+  ],
+  [
+    "What are the risks of robotic nephrectomy and prostatectomy?",
+    "Robotic urological surgery (da Vinci system) combines pneumoperitoneum with steep Trendelenburg positioning, producing several physiological challenges: (1) Pneumoperitoneum raises intra-abdominal pressure, reducing venous return, increasing systemic vascular resistance, and causing hypercapnia from CO₂ absorption. (2) Steep Trendelenburg increases intra-ocular pressure (risk in glaucoma), intracranial pressure, and facial/airway oedema — the endotracheal tube may become displaced or the cuff leak may worsen as the head swells. (3) Atelectasis and V/Q mismatch in the dependent lungs reduce compliance. (4) Brachial plexus stretch from arm abduction in the lateral position for nephrectomy. (5) Access-related injuries: trocar insertion can damage vessels or bowel. Anaesthetic management includes: secure ETT with careful fixation and monitoring for displacement; controlled ventilation with increased tidal volume or PEEP to counter atelectasis; monitoring of arterial blood gases; maintaining adequate mean arterial pressure for renal perfusion; and careful positioning with padding of all pressure points.",
+  ],
+  [
+    "How is ESWL performed and what are the anaesthetic considerations?",
+    "Extracorporeal shock wave lithotripsy uses focused shock waves to fragment renal and ureteric calculi. The patient must be immobile because movement dissipates the shock wave energy. Anaesthetic options range from intravenous sedation with analgesia (e.g., remifentanil or alfentanil) to spinal anaesthesia or general anaesthesia, depending on patient factors, stone size, and machine type. Cardiac gating (synchronising shock waves to the R-wave) prevents arrhythmias by avoiding delivery during the vulnerable period of the cardiac cycle. Contraindications include pregnancy, aortic aneurysm in the shock wave path, uncorrected coagulopathy, and pacemakers (unless the device can be programmed to ignore the shock waves). Blood pressure should be controlled because hypertension worsens stone fragmentation. Post-procedure, patients may experience haematuria, flank pain (treated with NSAIDs if renal function permits), and steinstrasse (stone street — ureteric obstruction by fragments).",
+  ],
+  [
+    "What fluid resuscitation principles apply to major urological surgery?",
+    "Major urological surgery (radical cystectomy, nephrectomy, major prostatectomy) involves significant fluid shifts, blood loss, and third-space losses. Principles include: (1) Goal-directed fluid therapy using cardiac output monitoring (oesophageal Doppler, FloTrac, or LiDCO) to optimise stroke volume and avoid both hypovolaemia and fluid overload. (2) Balanced crystalloids (Plasma-Lyte, Hartmann's) are preferred over 0.9% saline to avoid hyperchloraemic metabolic acidosis. (3) Colloids may be used for rapid volume expansion but carry cost and coagulation considerations. (4) Blood transfusion is guided by haemoglobin concentration, ongoing losses, and tissue oxygenation — maintain Hb >80 g/L in most patients, higher if ischaemic heart disease. (5) Mannitol 10–20% may be given before renal clamping to promote osmotic diuresis and protect tubular function. (6) Avoid nephrotoxins (aminoglycosides, NSAIDs in single-kidney patients, contrast) perioperatively. (7) Maintain mean arterial pressure >65 mmHg (higher if chronic hypertension) to preserve renal perfusion.",
+  ],
+  [
+    "What are the anaesthetic considerations for transurethral resection of bladder tumour (TURBT)?",
+    "TURBT shares many considerations with TURP but has additional risks. Fluid absorption still occurs (especially with large, multi-focal, or lateral-wall tumours) and can produce TURP-like syndrome even with saline irrigation because volume overload and dilutional hyponatraemia are possible. Bladder perforation is a specific risk — the thin bladder wall is easily traumatised, and the obturator nerve reflex can cause sudden violent thigh adduction that thrusts the resectoscope through the bladder wall. This risk is reduced by neuromuscular blockade or spinal anaesthesia. If perforation occurs, the awake patient under spinal will complain of shoulder-tip pain, abdominal distension, and nausea; under GA, perforation may be recognised by hypotension, reduced urine output, and abdominal rigidity. Small extraperitoneal perforations are managed conservatively with catheter drainage; intraperitoneal perforation requires surgical repair. Post-TURBT, intravesical chemotherapy (e.g., mitomycin C) may be instilled — the anaesthetist should be aware of timing and potential systemic effects.",
+  ],
+];
 
 const UrologicalAnaesthesiaTopic = () => {
   return (
@@ -38,6 +101,9 @@ const UrologicalAnaesthesiaTopic = () => {
       }}
       coreConcepts={
         <>
+          <TopicTableOfContents items={tocItems} />
+
+          <div id="intro" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
@@ -45,7 +111,9 @@ const UrologicalAnaesthesiaTopic = () => {
             </p>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="turp" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <CollapsibleSubsection title="TURP Syndrome">
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -77,7 +145,9 @@ const UrologicalAnaesthesiaTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="bipolar-laser" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <CollapsibleSubsection title="Bipolar TURP & Laser Prostatectomy">
             <p className="text-muted-foreground leading-relaxed">
@@ -85,7 +155,9 @@ const UrologicalAnaesthesiaTopic = () => {
             </p>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="lithotomy" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <CollapsibleSubsection title="Lithotomy Position">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
@@ -97,7 +169,9 @@ const UrologicalAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="cystectomy" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <CollapsibleSubsection title="Radical Cystectomy">
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -112,7 +186,9 @@ const UrologicalAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="nephrectomy" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Nephrectomy & Renal Surgery">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
@@ -124,7 +200,9 @@ const UrologicalAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="propofol-erection" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <CollapsibleSubsection title="Propofol-Induced Penile Erection">
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -165,7 +243,9 @@ const UrologicalAnaesthesiaTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="eswl" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Extracorporeal Shock Wave Lithotripsy (ESWL)">
             <p className="text-muted-foreground leading-relaxed">
@@ -173,6 +253,8 @@ const UrologicalAnaesthesiaTopic = () => {
             </p>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
+
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
@@ -183,6 +265,44 @@ const UrologicalAnaesthesiaTopic = () => {
               "ESWL: shock waves cause arrhythmias — synchronise to R wave; avoid pacemakers over shock-wave path.",
             ]}
           />
+
+          <section id="faq" className="scroll-mt-24 mt-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Urological Anaesthesia — FAQ
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+              Evidence-based answers to the questions FRCA Final candidates most often ask about TURP syndrome, spinal vs general anaesthesia for TURP, bipolar and laser prostatectomy, lithotomy position risks, radical cystectomy, propofol-induced penile erection, robotic surgery, ESWL, and TURBT.
+            </p>
+            <Accordion type="single" collapsible className="w-full">
+              {uroFaqs.map(([q, a], i) => (
+                <AccordionItem key={q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-sm font-medium text-foreground">
+                    {q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                    {a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+
+          <Helmet>
+            <title>Urological Anaesthesia — TURP syndrome, lithotomy, cystectomy & ESWL</title>
+            <meta
+              name="description"
+              content="Urological anaesthesia for FRCA Final: TURP syndrome and hyponatraemia management, spinal vs general anaesthesia for TURP, bipolar and laser prostatectomy, lithotomy position risks, radical cystectomy and ERAS, nephrectomy and robotic surgery, propofol-induced penile erection, and ESWL."
+            />
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: uroFaqs.map(([name, acceptedAnswer]) => ({
+                "@type": "Question",
+                name,
+                acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+              })),
+            })}</script>
+          </Helmet>
         </>
       }
       workedExamples={[
@@ -211,8 +331,8 @@ const UrologicalAnaesthesiaTopic = () => {
             </div>
           ),
           answer: "Stop surgery, 3% NaCl 1–2 mL/kg, furosemide, controlled Na⁺ rise ≤10 mmol/L/24h.",
-         cites: ["BJA Educ TURP 2014"],
-  },
+          cites: ["BJA Educ TURP 2014"],
+        },
       ]}
       keyPoints={[
         { text: "TURP syndrome: hyponatraemia from glycine absorption — confusion, visual disturbance, seizures", cites: ["BJA Educ TURP 2014"] },
