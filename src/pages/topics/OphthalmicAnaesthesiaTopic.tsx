@@ -1,6 +1,8 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { DiagramSection } from "@/components/DiagramSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ophthalmicAnaesthesiaQuestions } from "@/data/quizzes";
@@ -12,6 +14,64 @@ import {
   TopicalIntracameralIllustration,
 } from "@/components/diagrams/EyeBlockIllustrations";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const tocItems = [
+  { id: "physiology", label: "Ocular physiology & IOP", group: "Foundations" },
+  { id: "regional", label: "Regional techniques", group: "Techniques" },
+  { id: "open-globe", label: "Open-globe injury", group: "Emergency" },
+  { id: "strabismus", label: "Strabismus surgery", group: "Paediatric" },
+  { id: "brainstem", label: "Brainstem anaesthesia", group: "Complications" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
+
+const eyeFaqs: Array<[string, string]> = [
+  [
+    "What is the oculocardiac reflex and how is it managed?",
+    "The oculocardiac reflex is a trigeminovagal reflex produced by traction on extraocular muscles (especially the medial rectus) or pressure on the globe. The afferent pathway is the ophthalmic division of the trigeminal nerve (V₁), and the efferent is the vagus nerve, producing bradycardia, junctional rhythm, or occasionally asystole. It is most common in children undergoing strabismus surgery (incidence 30–90%) and with medial rectus traction. Management: ask the surgeon to release traction immediately — this is the first and most important step. Ensure adequate ventilation and depth of anaesthesia. If bradycardia persists or is profound, give atropine 20 µg/kg IV (or glycopyrrolate 10 µg/kg). The reflex usually fatigues with repeated traction. Routine prophylactic anticholinergics are not recommended because they can mask subsequent events and precipitate tachyarrhythmias.",
+  ],
+  [
+    "How does intra-ocular pressure change during anaesthesia?",
+    "Intra-ocular pressure (normal 10–21 mmHg) is increased by suxamethonium (transient, 5–10 mmHg rise), coughing, straining, vomiting, prone positioning, hypoxia, hypercapnia, light anaesthesia, and external pressure on the eye (tight mask, improper laryngoscope technique). N₂O raises IOP if sulphur hexafluoride (SF₆) or perfluoropropane (C₃F₈) gas has been injected into the vitreous cavity during retinal surgery, because N₂O enters the gas bubble faster than nitrogen leaves, causing expansion. IOP is lowered by propofol, volatile agents, non-depolarising neuromuscular blockers, mannitol, acetazolamide, timolol, hyperventilation, and a smooth induction/emergence without coughing. In open-globe surgery, even small transient rises can cause vitreous extrusion, so every aspect of anaesthesia must be optimised to avoid IOP spikes.",
+  ],
+  [
+    "What are the different regional techniques for ophthalmic surgery?",
+    "Four main regional techniques are used. (1) Sub-Tenon's block: a blunt cannula is inserted through an inferonasal conjunctival incision into the sub-Tenon's space. It is the safest technique with the lowest risk of globe perforation or brainstem spread, provides good akinesia and anaesthesia, and is suitable for most intraocular surgery. (2) Peribulbar block: local anaesthetic is injected outside the muscle cone (inferotemporal, sometimes medial as well). It has a lower risk of brainstem anaesthesia and optic nerve damage than retrobulbar, but onset is slower (10–15 min) and akinesia may be less complete. (3) Retrobulbar block: local anaesthetic is injected inside the muscle cone. It produces rapid, dense akinesia but carries the highest risk of globe perforation, retrobulbar haemorrhage, optic nerve injury, and brainstem anaesthesia. It is now rarely used. (4) Topical ± intracameral: anaesthetic drops with or without injection into the anterior chamber by the surgeon. No akinesia, so patient cooperation is essential. Mainly used for cataract surgery in cooperative adults.",
+  ],
+  [
+    "Why is suxamethonium relatively contraindicated in open-globe injury?",
+    "Suxamethonium causes a transient rise in intra-ocular pressure of 5–10 mmHg due to extraocular muscle fasciculation and increased aqueous humour outflow resistance. In an open-globe injury, any rise in IOP can cause expulsion of vitreous humour and permanent visual loss. However, suxamethonium is not absolutely contraindicated — if the patient has a full stomach and aspiration risk is the dominant concern, the literature supports its use because coughing and vomiting (which occur with a failed or difficult intubation) cause far larger IOP rises than suxamethonium. The preferred technique for open-globe injury with a full stomach is rapid sequence induction with rocuronium 1.2 mg/kg, which provides rapid onset without raising IOP, and sugammadex is available for reversal if needed. A smooth induction, maintenance, and emergence are equally important.",
+  ],
+  [
+    "What is brainstem anaesthesia and how is it managed?",
+    "Brainstem anaesthesia is a rare but life-threatening complication of retrobulbar or peribulbar block in which local anaesthetic tracks along the optic nerve sheath into the subarachnoid space, reaching the brainstem. Onset is within minutes and may include contralateral amaurosis, ptosis, cranial nerve palsies (III, IV, VI), dysarthria, confusion, respiratory depression, apnoea, hypotension, and seizures. Management is supportive: establish airway control and ventilation immediately, provide cardiovascular support with fluids and vasopressors, and monitor in a high-dependency area until the block resolves (typically 1–2 hours). All ophthalmic regional blocks should be performed with full monitoring, intravenous access, resuscitation drugs, and an anaesthetist immediately available. This complication is the main reason retrobulbar blocks have largely been replaced by sub-Tenon's and peribulbar techniques.",
+  ],
+  [
+    "Why must N₂O be avoided after intraocular gas injection?",
+    "Nitrous oxide diffuses into closed gas spaces 34 times faster than nitrogen leaves. Sulphur hexafluoride (SF₆) and perfluoropropane (C₃F₈) are long-acting gases injected into the vitreous cavity during retinal detachment surgery to provide internal tamponade. If N₂O is administered, it rapidly diffuses into the gas bubble, causing expansion and a catastrophic rise in intra-ocular pressure that can compromise retinal blood flow and cause infarction. N₂O must be avoided for the entire duration that the gas remains in the eye — typically 1–3 months for SF₆ and up to 3 months for C₃F₈. Patients with intraocular gas should carry a warning bracelet, and anaesthetists must specifically ask about recent vitrectomy before any anaesthetic.",
+  ],
+  [
+    "What is the best anaesthetic technique for paediatric strabismus surgery?",
+    "Paediatric strabismus surgery requires a secured but unobtrusive airway, anticipation of the oculocardiac reflex, and aggressive PONV prophylaxis. A laryngeal mask airway (LMA) is standard for most children; a reinforced/flexible LMA allows the surgeon to drape and rotate the head without kinking. Maintenance with TIVA (propofol ± remifentanil) is increasingly favoured because it produces markedly lower PONV rates than volatile-based anaesthesia, smoother emergence, and ideal conditions for shared-airway work. Analgesia is provided with paracetamol, NSAIDs, and topical local anaesthetic drops or sub-Tenon's block by the surgeon — avoid long-acting opioids which worsen PONV. Dual antiemetic prophylaxis (ondansetron + dexamethasone) is mandatory because baseline PONV rates approach 60–80% without prophylaxis. Suxamethonium should be avoided because it raises IOP, causes extraocular muscle contracture that confuses surgical testing, and carries a historical association with malignant hyperthermia in this population.",
+  ],
+  [
+    "How do IOP-lowering drugs used in ophthalmic surgery interact with anaesthesia?",
+    "Systemic absorption of topical ophthalmic drops can produce significant physiological effects. Timolol (a non-selective beta-blocker) can cause bradycardia, bronchospasm, and heart block — caution in asthmatics and patients on beta-blockers. Acetazolamide (carbonic anhydrase inhibitor) causes metabolic acidosis, hypokalaemia, and diuresis — check electrolytes if the patient has been on it long-term. Brimonidine (alpha-2 agonist) can cause hypotension and sedation. Apraclonidine has similar alpha-agonist effects. Topical phenylephrine (10%) can produce significant hypertension, tachycardia, and arrhythmias, particularly in elderly patients and those with cardiovascular disease. Cocaine 5–10% (used in nasal surgery) inhibits noradrenaline reuptake and produces sympathomimetic effects — avoid in combination with other vasopressors and halothane. Always ask what eye drops the patient has received preoperatively.",
+  ],
+  [
+    "What are the specific airway considerations for ophthalmic surgery?",
+    "Ophthalmic surgery creates several unique airway challenges. The surgeon works at the head, so the airway must be secured but unobtrusive — south-facing oral RAE tubes, reinforced LMAs, and nasal intubation are commonly used. Prone positioning for posterior segment surgery requires meticulous airway security and pressure-area protection. A throat pack prevents blood and debris entering the larynx and stomach but must be documented and removed — a retained pack is a never event. In paediatric strabismus, a reinforced LMA is standard because it allows head turning without dislodgement. For laser or microlaryngoscopy work, small-bore tubes or tubeless techniques (jet ventilation, THRIVE) are used. Shared-airway discipline is essential: the anaesthetist and surgeon must agree on tube type, ventilation mode, and an emergency plan for accidental extubation before starting.",
+  ],
+  [
+    "What are the anaesthetic considerations for vitreoretinal surgery?",
+    "Vitreoretinal surgery involves the posterior segment and often requires controlled hypotension to reduce bleeding, particularly during scleral buckling or membrane peeling. The patient may be prone, requiring careful airway security and pressure-point protection. Intraocular gas (SF₆ or C₃F₈) may be injected — N₂O is absolutely contraindicated for 1–3 months postoperatively because it expands the gas bubble and raises IOP catastrophically. General anaesthesia is usually required because the surgery is long and delicate, though some macular procedures can be performed under sub-Tenon's block. Postoperative positioning (often face-down for several days) is critical for gas tamponade efficacy but does not affect the immediate anaesthetic plan. PONV is common after vitrectomy; use TIVA and multimodal antiemetics.",
+  ],
+];
 
 const objectives = [
   "Outline the determinants of intra-ocular pressure and the drugs/manoeuvres that raise or lower it",
@@ -75,16 +135,10 @@ const OphthalmicAnaesthesiaTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={[Exam.FINAL]}>
-            <p className="text-muted-foreground leading-relaxed">
-              Ophthalmic anaesthesia is dominated by two priorities: controlling intra-ocular pressure during open-eye surgery, and
-              providing reliable akinesia and analgesia — increasingly through regional rather than general techniques. The
-              oculocardiac reflex remains the classic intra-operative event to anticipate, particularly in paediatric strabismus
-              surgery.
-            </p>
-          </ExamSection>
+          <TopicTableOfContents items={tocItems} />
 
-          <ExamSection id="iop" exams={[Exam.FINAL]}>
+          <div id="physiology" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Ocular Physiology" defaultOpen>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>IOP</strong>: normal 10–21 mmHg. Aqueous humour produced by ciliary body, drains via canal of Schlemm. IOP ↑ by: coughing, straining, prone, N₂O (if SF₆ in eye), suxamethonium, ketamine</li>
@@ -93,8 +147,10 @@ const OphthalmicAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
-          <ExamSection id="regional" exams={[Exam.FINAL]}>
+          <div id="regional" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Regional Techniques">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -116,9 +172,9 @@ const OphthalmicAnaesthesiaTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
           <DiagramSection
-            id="block-illustrations"
             title="Eye Block Procedures — Illustrated"
             intro={
               <p>
@@ -133,7 +189,8 @@ const OphthalmicAnaesthesiaTopic = () => {
             <TopicalIntracameralIllustration />
           </DiagramSection>
 
-          <ExamSection id="open-globe" exams={[Exam.FINAL]}>
+          <div id="open-globe" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Open Globe Injury">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>Avoid ↑ IOP: suxamethonium is <strong>relatively</strong> contraindicated (but may be used if RSI required for life-threatening aspiration risk — benefit vs risk)</li>
@@ -143,8 +200,10 @@ const OphthalmicAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
-          <ExamSection id="strabismus" exams={[Exam.FINAL]}>
+          <div id="strabismus" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Anaesthesia for Strabismus Surgery">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Strabismus (squint) correction is the commonest paediatric ophthalmic procedure. It is short (20–60 min), extra-ocular,
@@ -174,8 +233,10 @@ const OphthalmicAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
-          <ExamSection id="brainstem-anaesthesia" exams={[Exam.FINAL]}>
+          <div id="brainstem" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Brainstem Anaesthesia">
             <p className="text-muted-foreground leading-relaxed">
               A rare but life-threatening complication of retrobulbar (and occasionally peribulbar) block: local anaesthetic tracks
@@ -186,6 +247,8 @@ const OphthalmicAnaesthesiaTopic = () => {
             </p>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
+
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
@@ -196,6 +259,44 @@ const OphthalmicAnaesthesiaTopic = () => {
               "Open-globe injury: 'full stomach' RSI without sux is preferred — use rocuronium + sugammadex if reversal needed.",
             ]}
           />
+
+          <section id="faq" className="scroll-mt-24 mt-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Ophthalmic Anaesthesia — FAQ
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+              Evidence-based answers to the questions FRCA Final candidates most often ask about intra-ocular pressure, the oculocardiac reflex, regional eye blocks, open-globe injury, brainstem anaesthesia, N₂O and intraocular gas, strabismus surgery, and vitreoretinal anaesthesia.
+            </p>
+            <Accordion type="single" collapsible className="w-full">
+              {eyeFaqs.map(([q, a], i) => (
+                <AccordionItem key={q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-sm font-medium text-foreground">
+                    {q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                    {a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+
+          <Helmet>
+            <title>Ophthalmic Anaesthesia — IOP, oculocardiac reflex, eye blocks & open globe</title>
+            <meta
+              name="description"
+              content="Ophthalmic anaesthesia for FRCA Final: intra-ocular pressure control, the oculocardiac reflex, sub-Tenon's peribulbar and retrobulbar blocks, open-globe injury RSI, brainstem anaesthesia, strabismus surgery, and N₂O contraindication after intraocular gas."
+            />
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: eyeFaqs.map(([name, acceptedAnswer]) => ({
+                "@type": "Question",
+                name,
+                acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+              })),
+            })}</script>
+          </Helmet>
         </>
       }
     />
