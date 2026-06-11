@@ -1,4 +1,11 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
+
+const thoracicAnatomyFaqs: Array<[string, string]> = [
+  ["Where does the trachea bifurcate and what is the angle of the main bronchi?", "The carina lies at the sternal angle (T4/5) in adults. The right main bronchus is shorter (~2 cm), wider and more vertical (~25° from midline); the left is longer (~5 cm) and angled ~45°. This explains why aspirated foreign bodies and over-advanced ETTs preferentially enter the right main bronchus."],
+  ["What lies in the safe triangle for chest drain insertion?", "Bounded by the lateral border of pectoralis major (anterior), lateral border of latissimus dorsi (posterior), a horizontal line at the level of the nipple/5th intercostal space (inferior), with the apex at the axilla. Insertion above the rib protects the neurovascular bundle that runs in the subcostal groove of the rib above."],
+  ["What is the surface anatomy of the lung fissures?", "The oblique (major) fissure runs from the spinous process of T3 posteriorly to the 6th costal cartilage anteriorly, bilaterally. The horizontal (minor) fissure on the right alone runs from the 4th costal cartilage anteriorly to meet the oblique fissure in the mid-axillary line at the 5th rib. The fissures separate upper, middle (right) and lower lobes."],
+];
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { thoracicAnatomyQuestions } from "@/data/quizzes";
