@@ -345,6 +345,19 @@ const CapnographyTopic = () => {
               </ul>
             </div>
           </section>
+
+          <Helmet>
+            {/* Title + meta description provided centrally via topicSeo.capnography; FAQPage JSON-LD here targets "capnography waveforms" and "ETCO₂ normal range" queries for rich-result eligibility. */}
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: capnographyFaqs.map(([name, acceptedAnswer]) => ({
+                "@type": "Question",
+                name,
+                acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+              })),
+            })}</script>
+          </Helmet>
         </ExamSection>
       }
     />
