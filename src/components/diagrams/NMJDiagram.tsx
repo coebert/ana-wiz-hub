@@ -340,12 +340,13 @@ export const NMJDiagram = () => {
           );
         })}
 
-        {/* AChE molecules */}
-        {showDegradation && Array.from({ length: 4 }).map((_, i) => (
-          <g key={i} opacity={phaseProgress}>
+        {/* AChE molecules — persistent labels so the canonical enzyme is always visible */}
+        {Array.from({ length: 4 }).map((_, i) => (
+          <g key={i} opacity={showDegradation ? phaseProgress : 0.5}>
             <text x={150 + i * 55} y={178} fontSize="8" className="font-semibold" fill="hsl(0 65% 50%)">AChE</text>
           </g>
         ))}
+
 
         {/* Post-synaptic membrane / motor end plate */}
         <rect x={100} y={200} width={300} height={90} rx="12" fill="hsl(340 40% 95%)" stroke="hsl(340 60% 50%)" strokeWidth="2" />
