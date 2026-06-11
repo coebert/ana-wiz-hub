@@ -183,7 +183,25 @@ const ARDSTopic = () => {
       }}
       coreConcepts={
     <>
+      {/* Table of contents */}
+      <nav aria-label="On this page" className="not-prose rounded-lg border border-border bg-secondary/20 p-4 mb-6">
+        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">On this page</p>
+        <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1 text-sm">
+          <li><a href="#berlin-definition" className="text-icu hover:underline">Berlin definition (2012)</a></li>
+          <li><a href="#lung-protective" className="text-icu hover:underline">Lung-protective ventilation settings</a></li>
+          <li><a href="#peep-strategy" className="text-icu hover:underline">PEEP titration strategies</a></li>
+          <li><a href="#prone" className="text-icu hover:underline">Prone positioning</a></li>
+          <li><a href="#nmb" className="text-icu hover:underline">Neuromuscular blockade</a></li>
+          <li><a href="#ecmo" className="text-icu hover:underline">VV-ECMO &amp; EOLIA</a></li>
+          <li><a href="#fluids-steroids" className="text-icu hover:underline">Fluid &amp; steroid strategy</a></li>
+          <li><a href="#trial-evidence" className="text-icu hover:underline">Landmark trial evidence</a></li>
+          <li><a href="#pitfalls" className="text-icu hover:underline">Exam pitfalls</a></li>
+          <li><a href="#faq" className="text-icu hover:underline">Frequently asked questions</a></li>
+        </ul>
+      </nav>
+
       <section className="space-y-6">
+
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC2.4"]}>
           <CollapsibleSubsection title="Pathophysiology of ARDS" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
