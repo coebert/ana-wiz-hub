@@ -1,6 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { AirwayDevicesDiagram } from "@/components/diagrams/AirwayDevicesDiagram";
 import { BreathingCircuitDiagram } from "@/components/diagrams/BreathingCircuitDiagram";
