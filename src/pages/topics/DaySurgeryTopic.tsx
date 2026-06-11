@@ -93,7 +93,7 @@ const DaySurgeryTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="anaesthetic-technique" exams={[Exam.FINAL]}>
+          <ExamSection id="section-anaesthetic-technique" className="scroll-mt-24" exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Anaesthetic Principles">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Short-acting agents</strong>: propofol, remifentanil, desflurane/sevoflurane, mivacurium/sugammadex</li>
@@ -104,7 +104,7 @@ const DaySurgeryTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="discharge" exams={[Exam.FINAL]}>
+          <ExamSection id="section-discharge" className="scroll-mt-24" exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Discharge Criteria">
             <div className="space-y-3">
               {[
