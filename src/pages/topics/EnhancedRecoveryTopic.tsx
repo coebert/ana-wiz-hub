@@ -8,6 +8,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { TrendingDown, TrendingUp, Award, FlaskConical } from "lucide-react";
 import { InlineRef } from "@/components/InlineRef";
 import { Exam } from "@/data/curriculum";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const objectives = [
   "Outline the three temporal pillars (pre/intra/postoperative) of an ERAS pathway",
@@ -56,6 +57,16 @@ const EnhancedRecoveryTopicWorkedExamples: WorkedExample[] = [
     answer: "Apply the ERAS bundle: carb loading, opioid-sparing analgesia, goal-directed fluids, normothermia, early feeding and mobilisation.",
     cites: ["Ljungqvist 2017", "ERAS Colorectal 2018", "Hughes 2014"],
   },
+];
+
+const tocItems = [
+  { id: "section-eras-principles", label: "ERAS Principles", group: "Core" },
+  { id: "section-surgical-stress-response", label: "Surgical Stress Response", group: "Core" },
+  { id: "section-prehabilitation", label: "Prehabilitation", group: "Core" },
+  { id: "section-ponv", label: "Postoperative Nausea & Vomiting", group: "Core" },
+  { id: "section-evidence-base", label: "Evidence Base", group: "Trials" },
+  { id: "section-specialty-protocols", label: "Specialty Protocols", group: "Protocols" },
+  { id: "section-implementation-audit", label: "Implementation & Audit", group: "Protocols" },
 ];
 
 const EnhancedRecoveryTopic = () => {
