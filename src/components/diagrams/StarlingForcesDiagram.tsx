@@ -37,14 +37,15 @@ const StarlingForcesDiagram = () => {
       desc: "Osmotic pressure exerted by plasma proteins (primarily albumin, ~60%) drawing fluid INTO the capillary. Relatively constant along the capillary (~25 mmHg). Decreased in hypoalbuminaemia (liver failure, nephrotic syndrome, burns, sepsis) → oedema.",
     },
     {
-      id: "πi",
-      label: "Interstitial Oncotic Pressure (πi)",
-      artValue: "0.1 mmHg",
-      venValue: "0.1 mmHg",
+      id: "πsg",
+      label: "Sub-glycocalyx Oncotic Pressure (πsg)",
+      artValue: "≈ 0 mmHg",
+      venValue: "≈ 0 mmHg",
       direction: "out",
       color: "hsl(35, 70%, 55%)",
-      desc: "Oncotic pressure from interstitial proteins drawing fluid OUT. Normally very low (~0.1 mmHg) because the intact glycocalyx prevents protein leakage. In the revised Starling model, it's the sub-glycocalyx oncotic pressure that matters, which is near zero in health. Rises dramatically in sepsis/inflammation when glycocalyx is damaged → increased πi → oedema.",
+      desc: "In the revised Starling-Levick model, the effective oncotic pressure opposing filtration is the sub-glycocalyx oncotic pressure (πsg), not the bulk interstitial oncotic pressure (πi). Because the intact glycocalyx excludes plasma proteins, πsg is near zero in health, so net oncotic pull is essentially σ·πc. Glycocalyx shedding (sepsis, ischaemia-reperfusion, hypervolaemia) raises πsg and drives oedema.",
     },
+
   ], []);
 
   const activeForce = selectedForce ? forces.find(f => f.id === selectedForce) : null;
@@ -160,10 +161,11 @@ const StarlingForcesDiagram = () => {
               </g>
   
               {/* πsg arrow — sub-glycocalyx oncotic pressure (revised Starling-Levick model) */}
-              <g style={{ cursor: "pointer" }} onClick={() => setSelectedForce(selectedForce === "πi" ? null : "πi")}>
-                {drawArrow(470, capY + capH + 6, capY + capH + 20, forces[3].color, selectedForce === "πi")}
+              <g style={{ cursor: "pointer" }} onClick={() => setSelectedForce(selectedForce === "πsg" ? null : "πsg")}>
+                {drawArrow(470, capY + capH + 6, capY + capH + 20, forces[3].color, selectedForce === "πsg")}
                 <text x="470" y={capY + capH + 32} textAnchor="middle" fontSize="7"
-                  fill={forces[3].color} fontWeight={selectedForce === "πi" ? "700" : "500"}>
+                  fill={forces[3].color} fontWeight={selectedForce === "πsg" ? "700" : "500"}>
+
                   πsg ≈ 0
                 </text>
                 <text x="470" y={capY + capH + 42} textAnchor="middle" fontSize="5"

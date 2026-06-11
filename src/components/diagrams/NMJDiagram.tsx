@@ -149,10 +149,12 @@ export const NMJDiagram = () => {
             </g>
           );
         })}
-        {/* VGCC label */}
+        {/* VGCC label — persistent so the diagram always shows this canonical structure */}
+        <text x={100} y={128} fontSize="9" className="font-semibold" fill="hsl(25 90% 40%)">Voltage-gated Ca²⁺ channel (VGCC)</text>
         {vgccOpen > 0.3 && (
-          <text x={100} y={128} fontSize="9" className="font-semibold" fill="hsl(25 90% 40%)" opacity={vgccOpen}>VGCC open</text>
+          <text x={370} y={128} fontSize="9" className="font-semibold" fill="hsl(25 90% 40%)" opacity={vgccOpen}>open</text>
         )}
+
 
         {/* Ca²⁺ ions streaming UP through channels into terminal */}
         {caStreamIntensity > 0.02 && [140, 200, 260, 320, 360].flatMap((x, ci) =>
@@ -338,12 +340,13 @@ export const NMJDiagram = () => {
           );
         })}
 
-        {/* AChE molecules */}
-        {showDegradation && Array.from({ length: 4 }).map((_, i) => (
-          <g key={i} opacity={phaseProgress}>
+        {/* AChE molecules — persistent labels so the canonical enzyme is always visible */}
+        {Array.from({ length: 4 }).map((_, i) => (
+          <g key={i} opacity={showDegradation ? phaseProgress : 0.5}>
             <text x={150 + i * 55} y={178} fontSize="8" className="font-semibold" fill="hsl(0 65% 50%)">AChE</text>
           </g>
         ))}
+
 
         {/* Post-synaptic membrane / motor end plate */}
         <rect x={100} y={200} width={300} height={90} rx="12" fill="hsl(340 40% 95%)" stroke="hsl(340 60% 50%)" strokeWidth="2" />

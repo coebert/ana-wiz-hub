@@ -45,7 +45,7 @@ export const CompartmentModelDiagram = () => {
   const twoCompPath = generateDecayCurve((t) => 60 * Math.exp(-0.8 * t) + 40 * Math.exp(-0.1 * t));
 
   return (
-    <DiagramFigure id="compartment-model" title="Pharmacokinetic compartment models: one, two and three compartment" description="Animated drug movement between central and peripheral compartments with rate constants k10, k12 and k21 driving plasma concentration over time.">
+    <DiagramFigure id="compartment-model" title="Pharmacokinetic compartment models: one and two compartment" description="Animated drug movement between central and peripheral compartments with rate constants k10, k12 and k21 driving plasma concentration over time.">
     <div className="w-full max-w-lg mx-auto">
       {/* Compartment boxes */}
       <div className="flex items-center justify-center gap-4 mb-6">
