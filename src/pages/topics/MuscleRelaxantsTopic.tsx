@@ -80,6 +80,43 @@ const MuscleRelaxantsTopic = () => {
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
+            <h2 id="contents" className="text-2xl font-serif font-bold text-foreground">Contents</h2>
+            <nav className="mt-3 rounded-lg border border-border bg-card p-4">
+              <ul className="space-y-1.5 text-sm">
+                <li><a href="#introduction" className="text-pharmacology hover:underline">Introduction</a></li>
+                <li><a href="#properties-of-the-ideal-muscle-relaxant" className="text-pharmacology hover:underline">Properties of the Ideal Muscle Relaxant</a></li>
+                <li><a href="#nmj-anatomy-nachr-subunits-drug-action" className="text-pharmacology hover:underline">NMJ Anatomy, nAChR Subunits & Drug Action</a></li>
+                <li><a href="#pharmacokinetic-principles" className="text-pharmacology hover:underline">Pharmacokinetic Principles</a></li>
+                <li><a href="#suxamethonium-succinylcholine-mechanism-of-action-dose-side-effects" className="text-pharmacology hover:underline">Suxamethonium: Mechanism of Action, Dose & Side Effects</a></li>
+                <li>
+                  <a href="#non-depolarising-muscle-relaxants" className="text-pharmacology hover:underline">Non-Depolarising Muscle Relaxants</a>
+                  <ul className="ml-4 mt-1 space-y-1 text-muted-foreground">
+                    <li><a href="#aminosteroids" className="hover:text-pharmacology hover:underline">Aminosteroids</a></li>
+                    <li><a href="#benzylisoquinoliniums" className="hover:text-pharmacology hover:underline">Benzylisoquinoliniums</a></li>
+                    <li><a href="#rocuronium-rsi-agent-potency-argument" className="hover:text-pharmacology hover:underline">Why is Rocuronium the RSI Agent?</a></li>
+                  </ul>
+                </li>
+                <li><a href="#comparative-table" className="text-pharmacology hover:underline">Comparative Table</a></li>
+                <li>
+                  <a href="#factors-affecting-neuromuscular-blockade" className="text-pharmacology hover:underline">Factors Affecting Neuromuscular Blockade</a>
+                  <ul className="ml-4 mt-1 space-y-1 text-muted-foreground">
+                    <li><a href="#patient-factors" className="hover:text-pharmacology hover:underline">Patient Factors</a></li>
+                    <li><a href="#drug-interactions" className="hover:text-pharmacology hover:underline">Drug Interactions</a></li>
+                    <li><a href="#determinants-of-onset-bowmans-principle" className="hover:text-pharmacology hover:underline">Determinants of Onset (Bowman's Principle)</a></li>
+                  </ul>
+                </li>
+                <li><a href="#reversal-agents" className="text-pharmacology hover:underline">Reversal Agents</a></li>
+                <li><a href="#neuromuscular-monitoring" className="text-pharmacology hover:underline">Neuromuscular Monitoring</a></li>
+                <li><a href="#residual-neuromuscular-block-postoperative-outcomes" className="text-pharmacology hover:underline">Residual Neuromuscular Block & Postoperative Outcomes</a></li>
+                <li><a href="#nmba-onset-duration-timeline" className="text-pharmacology hover:underline">NMBA Onset & Duration Timeline</a></li>
+                <li><a href="#tof-patterns" className="text-pharmacology hover:underline">TOF Patterns: Depolarising vs Non-Depolarising</a></li>
+                <li><a href="#molecular-structures" className="text-pharmacology hover:underline">Molecular Structures</a></li>
+                <li><a href="#frequently-asked-questions" className="text-pharmacology hover:underline">Frequently Asked Questions</a></li>
+              </ul>
+            </nav>
+          </section>
+
+          <section className="mb-10">
             <h2 id="introduction" className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
             <p className="text-foreground/90 leading-relaxed">
               Muscle relaxants — also called neuromuscular blocking agents (NMBAs), neuromuscular blocking drugs,
@@ -485,7 +522,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10" id="faq">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Frequently Asked Questions</h2>
+            <h2 id="frequently-asked-questions" className="text-2xl font-serif font-bold text-foreground">Frequently Asked Questions</h2>
             <div className="space-y-4 mt-3">
               {[
                 {
