@@ -164,14 +164,17 @@ export default function SeoAnalyticsPanel() {
             )}
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <div role="tablist" aria-label="Date range" className="flex p-1 rounded-md bg-secondary/50">
             {RANGE_OPTIONS.map(r => (
               <button
                 key={r.days}
                 role="tab"
                 aria-selected={days === r.days}
-                onClick={() => setDays(r.days)}
+                onClick={() => {
+                  setDays(r.days);
+                  if (r.days !== 0) setDateRange(undefined);
+                }}
                 className={`px-3 py-1.5 text-sm rounded ${
                   days === r.days ? "bg-background shadow-sm" : "text-muted-foreground hover:text-foreground"
                 }`}
@@ -180,7 +183,32 @@ export default function SeoAnalyticsPanel() {
               </button>
             ))}
           </div>
-          <Button variant="outline" size="sm" onClick={() => load(days)} disabled={loading}>
+
+          {isCustom && (
+            <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
+              <PopoverTrigger asChild>
+                <Button variant="outline" size="sm" className="font-normal">
+                  <CalendarIcon className="w-4 h-4 mr-1" aria-hidden="true" />
+                  {dateRange?.from && dateRange?.to
+                    ? `${format(dateRange.from, "MMM d")} – ${format(dateRange.to, "MMM d")}`
+                    : "Pick dates"}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="range"
+                  selected={dateRange}
+                  onSelect={setDateRange}
+                  numberOfMonths={2}
+                  defaultMonth={dateRange?.from ?? new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)}
+                  disabled={(date) => date > new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)}
+                  className="pointer-events-auto"
+                />
+              </PopoverContent>
+            </Popover>
+          )}
+
+          <Button variant="outline" size="sm" onClick={() => load(days, dateRange)} disabled={loading}>
             <RefreshCw className={`w-4 h-4 mr-1 ${loading ? "animate-spin" : ""}`} aria-hidden="true" />
             Refresh
           </Button>
