@@ -103,6 +103,7 @@ const RANGE_OPTIONS = [
   { label: "7d", days: 7 },
   { label: "28d", days: 28 },
   { label: "90d", days: 90 },
+  { label: "Custom", days: 0 },
 ];
 
 export default function SeoAnalyticsPanel() {
@@ -110,13 +111,18 @@ export default function SeoAnalyticsPanel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [days, setDays] = useState(28);
+  const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
+  const [calendarOpen, setCalendarOpen] = useState(false);
 
-  const load = async (d: number) => {
+  const isCustom = days === 0;
+
+  const load = async (d: number, range?: DateRange) => {
     setLoading(true);
     setError(null);
-    const { data: res, error: err } = await supabase.functions.invoke("seo-analytics", {
-      body: { days: d },
-    });
+    const body = range?.from && range?.to
+      ? { startDate: format(range.from, "yyyy-MM-dd"), endDate: format(range.to, "yyyy-MM-dd") }
+      : { days: d };
+    const { data: res, error: err } = await supabase.functions.invoke("seo-analytics", { body });
     if (err) {
       setError(err.message);
     } else if ((res as any)?.error) {
@@ -128,6 +134,14 @@ export default function SeoAnalyticsPanel() {
   };
 
   useEffect(() => { load(days); /* eslint-disable-next-line */ }, [days]);
+
+  useEffect(() => {
+    if (isCustom && dateRange?.from && dateRange?.to) {
+      load(0, dateRange);
+      setCalendarOpen(false);
+    }
+    // eslint-disable-next-line
+  }, [dateRange]);
 
   const totals = data?.totals?.rows?.[0];
   const maxClick = useMemo(() => {
