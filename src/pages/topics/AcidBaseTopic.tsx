@@ -100,7 +100,8 @@ const AcidBaseTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="systematic-abg" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4"]}>
+          <TopicTableOfContents items={tocItems} />
+          <ExamSection id="section-systematic-abg" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4"]}>
             <CollapsibleSubsection title="Systematic ABG Interpretation" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               A structured approach to arterial blood gas analysis prevents the common pitfall of anchoring on a single derangement and missing mixed disorders. Work through oxygenation, primary acid-base disturbance, expected compensation, anion gap, and the delta ratio in that order — each step adds diagnostic information that the previous one cannot provide.
