@@ -366,6 +366,8 @@ const HeadNeckAnatomyTopic = () => {
           </div>
         </section>
       </ExamSection>
+      <TopicFaqs faqs={headNeckAnatomyFaqs} />
+      </>
       }
     />
   );
