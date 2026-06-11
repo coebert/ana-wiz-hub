@@ -10,6 +10,7 @@ import PhaeochromocytomaDiagram from "@/components/diagrams/PhaeochromocytomaDia
 import AddisonianCrisisDiagram from "@/components/diagrams/AddisonianCrisisDiagram";
 import CarcinoidSyndromeDiagram from "@/components/diagrams/CarcinoidSyndromeDiagram";
 import { Exam } from "@/data/curriculum";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const objectives = [
   "Apply JBDS-IP perioperative diabetes pathway, including VRIII indications and glucose targets.",
@@ -57,6 +58,14 @@ const EndocrineDiseaseTopicWorkedExamples: WorkedExample[] = [
   },
 ];
 
+const tocItems = [
+  { id: "section-diabetes-mellitus", label: "Diabetes Mellitus", group: "Core" },
+  { id: "section-thyroid-disease", label: "Thyroid Disease", group: "Thyroid" },
+  { id: "section-adrenal-disorders", label: "Adrenal Disorders", group: "Adrenal" },
+  { id: "section-phaeochromocytoma", label: "Phaeochromocytoma", group: "Neuroendocrine" },
+  { id: "section-carcinoid-syndrome", label: "Carcinoid Syndrome", group: "Neuroendocrine" },
+];
+
 const EndocrineDiseaseTopic = () => {
   return (
     <TopicTemplate
@@ -82,12 +91,13 @@ const EndocrineDiseaseTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <p className="text-muted-foreground leading-relaxed">
-          Endocrine disease alters perioperative physiology in ways that demand specific planning: glucose targets and insulin handling in diabetes, the catastrophic risk of unrecognised thyroid storm or phaeochromocytoma, and the need for steroid supplementation in patients with HPA-axis suppression. This topic covers the high-yield endocrine conditions encountered in adult anaesthetic practice and the principles that prevent decompensation.
-        </p>
+           Endocrine disease alters perioperative physiology in ways that demand specific planning: glucose targets and insulin handling in diabetes, the catastrophic risk of unrecognised thyroid storm or phaeochromocytoma, and the need for steroid supplementation in patients with HPA-axis suppression. This topic covers the high-yield endocrine conditions encountered in adult anaesthetic practice and the principles that prevent decompensation.
+         </p>
+         <TopicTableOfContents items={tocItems} />
 
-        {/* Diabetes Mellitus */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Diabetes Mellitus</h2>
+         {/* Diabetes Mellitus */}
+         <section id="section-diabetes-mellitus" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Diabetes Mellitus</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -125,9 +135,9 @@ const EndocrineDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* Thyroid Disease */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thyroid Disease</h2>
+         {/* Thyroid Disease */}
+         <section id="section-thyroid-disease" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thyroid Disease</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -163,9 +173,9 @@ const EndocrineDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* Adrenal Disorders */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Adrenal Disorders</h2>
+         {/* Adrenal Disorders */}
+         <section id="section-adrenal-disorders" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Adrenal Disorders</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -191,9 +201,9 @@ const EndocrineDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* Phaeochromocytoma */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Phaeochromocytoma</h2>
+         {/* Phaeochromocytoma */}
+         <section id="section-phaeochromocytoma" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Phaeochromocytoma</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -215,9 +225,9 @@ const EndocrineDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* Carcinoid Syndrome */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Carcinoid Syndrome</h2>
+         {/* Carcinoid Syndrome */}
+         <section id="section-carcinoid-syndrome" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Carcinoid Syndrome</h2>
           <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
