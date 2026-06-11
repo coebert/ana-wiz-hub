@@ -189,6 +189,7 @@ const AcidsBasesBuffersTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={acidsBasesBuffersFaqs} />
         </>
       }
     />
