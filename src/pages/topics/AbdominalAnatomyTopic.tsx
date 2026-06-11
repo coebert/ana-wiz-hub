@@ -117,6 +117,7 @@ const AbdominalAnatomyTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={abdominalAnatomyFaqs} />
         </>
       }
       workedExamples={[
