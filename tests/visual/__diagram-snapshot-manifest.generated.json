@@ -851,6 +851,10 @@
       "route": "/dev/diagram-snapshot/ManometerDiagram"
     },
     {
+      "name": "MHPathophysiologyDiagram",
+      "route": "/dev/diagram-snapshot/MHPathophysiologyDiagram"
+    },
+    {
       "name": "MaplesonEfficiencyDiagram",
       "route": "/dev/diagram-snapshot/MaplesonEfficiencyDiagram"
     },
