@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -15,16 +16,70 @@ import AnticoagRestartTimeline from "@/components/diagrams/AnticoagRestartTimeli
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const tocItems = [
   { id: "dermatomes", label: "Dermatome anatomy", group: "Foundations" },
   { id: "spinal", label: "Spinal anaesthesia", group: "Neuraxial" },
   { id: "epidural", label: "Epidural anaesthesia", group: "Neuraxial" },
+  { id: "spinal-vs-epidural", label: "Spinal vs epidural", group: "Neuraxial" },
   { id: "complications", label: "Neuraxial complications", group: "Neuraxial" },
   { id: "upper-limb", label: "Upper limb & truncal blocks", group: "Peripheral blocks" },
   { id: "block-height", label: "Block height assessment", group: "Assessment" },
   { id: "bromage", label: "Bromage scale", group: "Assessment" },
   { id: "regression", label: "Block regression times", group: "Assessment" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
+
+// SEO-targeted FAQ — answers the highest-volume UK "spinal anaesthesia"
+// question keywords surfaced by Semrush (KDI 23, 1.6K vol head term).
+// Rendered as accordion + FAQPage JSON-LD for rich-result eligibility.
+const regionalFaqs: Array<[string, string]> = [
+  [
+    "What is spinal anaesthesia and how does it work?",
+    "Spinal anaesthesia is the intrathecal injection of local anaesthetic (typically 2.5–3 ml of 0.5% heavy bupivacaine) into the cerebrospinal fluid at the L3/4 or L4/5 interspace, below the conus medullaris. The local anaesthetic blocks sodium channels on spinal nerve roots, producing a dense, rapidly-onset (5–10 min) sympathetic, sensory and motor block of the lower body. Block height is determined by dose, baricity (heavy vs plain), and patient position in the first 10 minutes.",
+  ],
+  [
+    "How long does a spinal anaesthetic last?",
+    "Heavy bupivacaine 0.5% (2.5–3 ml) gives surgical anaesthesia for 2–3 hours, with two-segment sensory regression at 60–90 min and complete motor recovery at 3–4 hours. Prilocaine 2% lasts ~90 min and chloroprocaine 1% only 60 min — both preferred for day-case surgery. Intrathecal fentanyl 15–25 µg or diamorphine 0.2–0.4 mg adds 15–30 min and improves block quality without prolonging motor recovery significantly.",
+  ],
+  [
+    "What is the difference between a spinal and an epidural?",
+    "A spinal places a small dose (2–3 ml) directly into CSF for a rapid, dense, single-shot block. An epidural places a larger dose (10–20 ml) into the epidural (potential) space, typically through a catheter — slower onset (15–30 min), titratable, with a differential block (sensory > motor). Spinals are preferred for short, predictable surgery (e.g. caesarean section, TURP); epidurals for labour analgesia and longer thoracic/abdominal procedures where titration matters.",
+  ],
+  [
+    "Does spinal anaesthesia hurt and is it safe?",
+    "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: permanent neurological injury 1:20,000–1:50,000, epidural haematoma 1:220,000 (spinal) and meningitis < 1:50,000 in NAP3 data. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
+  ],
+  [
+    "Why does spinal anaesthesia drop blood pressure?",
+    "Blockade of preganglionic sympathetic fibres (T1–L2) two dermatomes above the sensory level causes arteriolar and venous dilatation, reducing systemic vascular resistance and venous return. A block above T4 also blocks cardiac accelerator fibres causing bradycardia. Management: fluid co-loading (10–15 ml/kg crystalloid), prophylactic vasopressor (phenylephrine 50–100 µg or noradrenaline infusion in obstetrics), left uterine displacement in pregnancy, and atropine for symptomatic bradycardia.",
+  ],
+  [
+    "What is post-dural puncture headache (PDPH) and how is it treated?",
+    "PDPH is a positional fronto-occipital headache caused by CSF leak through the dural puncture, with traction on meningeal vessels. Incidence: 1–2% after 25–27 G pencil-point spinal needles, 50–80% after accidental 16–18 G epidural Tuohy puncture. Worse on sitting/standing, better lying flat. Conservative management (analgesia, hydration, caffeine) for 24–48 h; epidural blood patch (15–20 ml autologous blood) is the gold standard with 70–90% success and is offered if symptoms persist beyond 24–48 h or are severe.",
+  ],
+  [
+    "When is spinal anaesthesia contraindicated?",
+    "Absolute: patient refusal, raised intracranial pressure, local infection at insertion site, severe coagulopathy or therapeutic anticoagulation outside the AAGBI/ESAIC interval, true allergy to local anaesthetic, fixed-output cardiac lesions (e.g. severe AS — relative in modern practice). Relative: bacteraemia/sepsis, pre-existing neurological disease (document baseline), spinal deformity, hypovolaemia.",
+  ],
+  [
+    "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
+    "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (AAGBI 2010 guideline), avoid lidocaine antiarrhythmics and vasopressin.",
+  ],
+  [
+    "How is block height tested at the bedside?",
+    "Use ethyl chloride cold spray to test loss of cold sensation (Aδ-fibre block — the most reliable correlate of surgical anaesthesia). Calibrate by spraying an unblocked forearm, then start from a blocked dermatome and move cranially until cold returns; document the highest bilateral level. T4 (nipple) is required for caesarean section, T6 (xiphisternum) for upper abdominal, T10 (umbilicus) for hernia and lower abdominal surgery. Pinprick (Aβ) tests touch; Bromage 0–3 grades motor.",
+  ],
+  [
+    "How long should anticoagulants be stopped before a neuraxial block?",
+    "Per AAGBI 2013 / ESAIC 2022: prophylactic LMWH 12 h, treatment-dose LMWH 24 h; unfractionated heparin (s/c prophylaxis) 4 h with normal APTT; warfarin INR < 1.4; clopidogrel 7 days; ticagrelor 5 days; rivaroxaban prophylactic 18 h, treatment 48 h; apixaban prophylactic 24–48 h; dabigatran 48–96 h (renal-function dependent). Aspirin and NSAIDs alone do not preclude neuraxial. The same intervals apply to catheter removal.",
+  ],
 ];
 
 const objectives = [
