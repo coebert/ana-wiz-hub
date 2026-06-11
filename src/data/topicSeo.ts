@@ -219,4 +219,10 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Gynaecological anaesthesia", "Laparoscopic gynaecology", "Robotic gynaecology", "Hysteroscopy anaesthesia", "TURP-equivalent syndrome", "CO₂ gas embolism"],
     keywords: ["gynaecological anaesthesia FRCA", "pneumoperitoneum Trendelenburg", "hysteroscopy fluid absorption", "CO2 gas embolism", "robotic gynaecology"],
   },
+  "plastic-surgery": {
+    title: "Plastic Surgery Anaesthesia: Free Flaps & Microsurgery | FRCA",
+    description: "Plastic and reconstructive anaesthesia for FRCA Final: free flap physiology, haemodilution, vasopressor choice, DIEP and head & neck reconstruction, digital replantation, prolonged surgery.",
+    aliases: ["Plastic surgery anaesthesia", "Free flap anaesthesia", "Microsurgery anaesthesia", "DIEP flap", "Digital replantation", "Head and neck reconstruction"],
+    keywords: ["free flap anaesthesia", "DIEP flap", "microsurgery FRCA", "plastic surgery anaesthesia", "digital replantation"],
+  },
 };
