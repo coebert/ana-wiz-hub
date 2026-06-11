@@ -272,7 +272,7 @@ const HepaticDiseaseTopic = () => {
             </section>
 
             {/* Acute decompensation */}
-            <section>
+            <section id="section-perioperative-decompensation" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Perioperative Decompensation</h2>
               <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
