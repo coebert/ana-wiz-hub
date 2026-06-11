@@ -139,6 +139,7 @@ const NeuroanatomyTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={neuroanatomyFaqs} />
         </>
       }
       workedExamples={[
