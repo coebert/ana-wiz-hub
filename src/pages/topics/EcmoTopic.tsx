@@ -570,6 +570,87 @@ const EcmoTopic = () => {
               </div>
             </div>
 
+            {/* Major trial evidence */}
+            <div>
+              <h2 id="trial-evidence" className="text-2xl font-serif font-bold text-foreground mb-3">Major trial evidence</h2>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border rounded-lg">
+                  <thead className="bg-secondary/30">
+                    <tr>
+                      <th className="text-left p-2 font-semibold">Trial (year)</th>
+                      <th className="text-left p-2 font-semibold">Population</th>
+                      <th className="text-left p-2 font-semibold">Intervention vs comparator</th>
+                      <th className="text-left p-2 font-semibold">Result</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">CESAR (2009)</td><td className="p-2">Severe adult respiratory failure (Murray ≥ 3 or uncompensated hypercapnia)</td><td className="p-2">Referral to a single UK ECMO centre vs conventional management</td><td className="p-2">↑ 6-month disability-free survival (63% vs 47%, RR 0.69, p = 0.03) — referral effect; not all referred patients received ECMO</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">EOLIA (2018)</td><td className="p-2">Severe ARDS meeting EOLIA criteria</td><td className="p-2">Early VV-ECMO vs continued conventional management with crossover</td><td className="p-2">Stopped early for futility — 60-day mortality 35% vs 46% (RR 0.76, p = 0.09); 28% crossover. Bayesian re-analysis: ≥96% probability of mortality benefit</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">EOLIA Bayesian re-analysis (2018)</td><td className="p-2">Same cohort</td><td className="p-2">Bayesian framework with multiple priors</td><td className="p-2">Robust ≥ 88% probability of mortality reduction across priors; underpins current ELSO referral criteria</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">ARREST (2020)</td><td className="p-2">Refractory OHCA with shockable rhythm, Minneapolis (single-centre)</td><td className="p-2">ECPR vs standard ACLS</td><td className="p-2">Stopped early for benefit — survival to hospital discharge 43% vs 7%; selected, system-supported cohort</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Prague-OHCA (2022)</td><td className="p-2">Refractory OHCA, Prague (single-centre)</td><td className="p-2">Invasive strategy (ECPR + immediate angiography) vs standard ACLS</td><td className="p-2">No difference in primary 180-day neurologic outcome; signal for benefit in pre-specified subgroups</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">INCEPTION (2023)</td><td className="p-2">Refractory OHCA, 10 Dutch centres</td><td className="p-2">ECPR vs standard ACLS</td><td className="p-2">Neutral — 30-day survival with good neurologic outcome 20% vs 16% (OR 1.4, p = 0.52); highlights system-performance dependence</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">SUPERNOVA (2019) / REST (2022)</td><td className="p-2">Moderate ARDS</td><td className="p-2">Low-flow ECCO₂R to enable ultra-protective ventilation</td><td className="p-2">SUPERNOVA: feasibility, no mortality signal. REST stopped early — increased serious adverse events, no mortality benefit</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Prognostic scores */}
+            <div>
+              <h2 id="prognostic-scores" className="text-2xl font-serif font-bold text-foreground mb-3">SAVE & RESP prognostic scores</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Two validated tools support patient selection at the bedside.
+                Both stratify pre-ECMO predicted hospital survival into five
+                classes; treat them as decision-support, not absolute
+                contraindications. Discuss borderline cases at MDT and with
+                the regional ECMO retrieval team.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">RESP — VV-ECMO for respiratory failure</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Inputs: age, immunocompromised state, mechanical ventilation
+                    duration pre-ECMO, diagnosis (viral pneumonia favourable,
+                    other less so), CNS dysfunction, acute associated infection,
+                    NMB use, NO use, bicarbonate infusion, cardiac arrest pre-ECMO,
+                    PaCO₂, peak inspiratory pressure. Classes I–V predict
+                    in-hospital survival from 92% to 18%.
+                  </p>
+                </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">SAVE — VA-ECMO for cardiogenic shock</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Inputs: age, weight, diagnosis (myocarditis and post-heart-
+                    transplant favourable; post-cardiotomy less so), CNS, renal,
+                    hepatic, pulmonary failure, duration of ventilation pre-ECMO,
+                    cardiac arrest before ECMO, peak inspiratory pressure, PEEP,
+                    pulse pressure, diastolic BP, HCO₃. Classes I–V predict
+                    survival from 75% to 18%.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Ethics & withdrawal on ECMO */}
+            <div>
+              <h2 id="ethics" className="text-2xl font-serif font-bold text-foreground mb-3">Ethics & withdrawal on ECMO</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                ECMO is a bridge — to recovery, to transplantation, or to a
+                durable device. When none is achievable, the patient is on a
+                <em> bridge to nowhere</em>. Agreeing the exit strategy at
+                cannulation and reviewing it daily prevents protracted,
+                non-beneficial support.
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li><strong>Pre-cannulation conversation:</strong> document the bridge (e.g. "bridge to recovery within 14 days"), the criteria for withdrawal, and what will not be offered (e.g. transplant in a contraindicated patient).</li>
+                <li><strong>Daily review:</strong> trajectory, organ recovery, neurology, eligibility for transplant or VAD. If none of the exits remains achievable, escalate to MDT discussion.</li>
+                <li><strong>Family communication:</strong> ECMO support is highly visible and patients may look "well". Explicit communication about prognosis and the meaning of the device prevents false hope.</li>
+                <li><strong>Withdrawal of ECMO:</strong> usually achieved by reducing sweep gas (VV) or flow (VA) to zero, with continued sedation and symptom management. Decannulation post-mortem may be required for organ donation pathways.</li>
+                <li><strong>Donation after circulatory death on ECMO:</strong> emerging pathway — engage the donation team early.</li>
+              </ul>
+            </div>
+
             {/* Pitfalls */}
             <div>
               <h2 id="pitfalls" className="text-2xl font-serif font-bold text-foreground mb-3">Common exam pitfalls</h2>
@@ -580,8 +661,37 @@ const EcmoTopic = () => {
                 <li>Forgetting the distal perfusion cannula and causing limb ischaemia.</li>
                 <li>Clamping the circuit during a weaning trial — guaranteed circuit thrombosis.</li>
                 <li>Quoting CESAR as proof that "ECMO saves lives" — CESAR proved <em>referral</em> to an ECMO centre improved outcomes; the intervention bundle matters.</li>
+                <li>Conflating ARREST (positive, single-centre) with INCEPTION (neutral, multicentre) — both are true; system performance reconciles them.</li>
+                <li>Treating SAVE/RESP scores as absolute cut-offs; they are decision-support, not gates.</li>
               </ul>
             </div>
+
+            {/* FAQ */}
+            <div>
+              <h2 id="faq" className="text-2xl font-serif font-bold text-foreground mb-3">Frequently asked questions</h2>
+              <div className="space-y-2">
+                {ecmoFaqs.map(([q, a]) => (
+                  <details key={q} className="group rounded-lg border border-border p-3">
+                    <summary className="cursor-pointer font-semibold text-foreground text-sm">{q}</summary>
+                    <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+
+            {/* FAQ JSON-LD for rich-result eligibility */}
+            <Helmet>
+              <script type="application/ld+json">{JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: ecmoFaqs.map(([name, acceptedAnswer]) => ({
+                  "@type": "Question",
+                  name,
+                  acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+                })),
+              })}</script>
+            </Helmet>
+
           </section>
         </ExamSection>
       }
