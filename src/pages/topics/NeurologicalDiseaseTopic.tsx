@@ -38,13 +38,13 @@ const objectives = [
 ];
 
 const tocItems = [
-  { label: "Myasthenia Gravis", href: "#section-myasthenia-gravis", category: "Neuromuscular" },
-  { label: "Epilepsy", href: "#section-epilepsy", category: "Seizure" },
-  { label: "Multiple Sclerosis", href: "#section-multiple-sclerosis", category: "Demyelinating" },
-  { label: "Parkinson's Disease", href: "#section-parkinsons-disease", category: "Neurodegenerative" },
-  { label: "Motor Neuron Disease", href: "#section-motor-neuron-disease", category: "Motor Neuron" },
-  { label: "Muscular Dystrophies", href: "#section-muscular-dystrophies", category: "Muscular" },
-  { label: "Spinal Cord Injury", href: "#section-spinal-cord-injury", category: "Spinal" },
+  { id: "section-myasthenia-gravis", label: "Myasthenia Gravis", group: "Neuromuscular" },
+  { id: "section-epilepsy", label: "Epilepsy", group: "Seizure" },
+  { id: "section-multiple-sclerosis", label: "Multiple Sclerosis", group: "Demyelinating" },
+  { id: "section-parkinsons-disease", label: "Parkinson's Disease", group: "Neurodegenerative" },
+  { id: "section-motor-neuron-disease", label: "Motor Neuron Disease", group: "Motor Neuron" },
+  { id: "section-muscular-dystrophies", label: "Muscular Dystrophies", group: "Muscular" },
+  { id: "section-spinal-cord-injury", label: "Spinal Cord Injury", group: "Spinal" },
 ];
 
 const keyPoints = [
