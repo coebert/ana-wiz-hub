@@ -79,19 +79,36 @@ Deno.serve(async (req) => {
 
   try {
     let days = 28
+    let startStr = ''
+    let endStr = ''
     try {
       const body = req.method === 'POST' ? await req.json() : null
-      if (body && typeof body.days === 'number' && body.days > 0 && body.days <= 90) {
+      if (body && typeof body.startDate === 'string' && typeof body.endDate === 'string') {
+        const s = new Date(body.startDate)
+        const e = new Date(body.endDate)
+        if (!isNaN(s.getTime()) && !isNaN(e.getTime()) && s <= e) {
+          const maxSpan = 90
+          const spanDays = Math.round((e.getTime() - s.getTime()) / (24 * 60 * 60 * 1000)) + 1
+          if (spanDays <= maxSpan) {
+            startStr = fmtDate(s)
+            endStr = fmtDate(e)
+            days = spanDays
+          }
+        }
+      }
+      if (!startStr && body && typeof body.days === 'number' && body.days > 0 && body.days <= 90) {
         days = Math.floor(body.days)
       }
     } catch { /* default */ }
 
     const siteEnc = encodeURIComponent(SITE_URL)
-    // GSC data lags ~2 days; end window 2 days ago for stable numbers.
-    const end = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)
-    const start = new Date(end.getTime() - (days - 1) * 24 * 60 * 60 * 1000)
-    const startStr = fmtDate(start)
-    const endStr = fmtDate(end)
+    if (!startStr) {
+      // GSC data lags ~2 days; end window 2 days ago for stable numbers.
+      const end = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)
+      const start = new Date(end.getTime() - (days - 1) * 24 * 60 * 60 * 1000)
+      startStr = fmtDate(start)
+      endStr = fmtDate(end)
+    }
 
     const query = (extra: Record<string, unknown>) =>
       gscFetch(`/webmasters/v3/sites/${siteEnc}/searchAnalytics/query`, {

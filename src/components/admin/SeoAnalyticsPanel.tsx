@@ -1,7 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { RefreshCw, TrendingUp, Search, Globe, Smartphone, ExternalLink } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { RefreshCw, TrendingUp, Search, Globe, Smartphone, ExternalLink, CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
+import { type DateRange } from "react-day-picker";
 import {
   ResponsiveContainer,
   LineChart,
@@ -99,6 +103,7 @@ const RANGE_OPTIONS = [
   { label: "7d", days: 7 },
   { label: "28d", days: 28 },
   { label: "90d", days: 90 },
+  { label: "Custom", days: 0 },
 ];
 
 export default function SeoAnalyticsPanel() {
@@ -106,13 +111,18 @@ export default function SeoAnalyticsPanel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [days, setDays] = useState(28);
+  const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
+  const [calendarOpen, setCalendarOpen] = useState(false);
 
-  const load = async (d: number) => {
+  const isCustom = days === 0;
+
+  const load = async (d: number, range?: DateRange) => {
     setLoading(true);
     setError(null);
-    const { data: res, error: err } = await supabase.functions.invoke("seo-analytics", {
-      body: { days: d },
-    });
+    const body = range?.from && range?.to
+      ? { startDate: format(range.from, "yyyy-MM-dd"), endDate: format(range.to, "yyyy-MM-dd") }
+      : { days: d };
+    const { data: res, error: err } = await supabase.functions.invoke("seo-analytics", { body });
     if (err) {
       setError(err.message);
     } else if ((res as any)?.error) {
@@ -124,6 +134,14 @@ export default function SeoAnalyticsPanel() {
   };
 
   useEffect(() => { load(days); /* eslint-disable-next-line */ }, [days]);
+
+  useEffect(() => {
+    if (isCustom && dateRange?.from && dateRange?.to) {
+      load(0, dateRange);
+      setCalendarOpen(false);
+    }
+    // eslint-disable-next-line
+  }, [dateRange]);
 
   const totals = data?.totals?.rows?.[0];
   const maxClick = useMemo(() => {
@@ -146,14 +164,17 @@ export default function SeoAnalyticsPanel() {
             )}
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <div role="tablist" aria-label="Date range" className="flex p-1 rounded-md bg-secondary/50">
             {RANGE_OPTIONS.map(r => (
               <button
                 key={r.days}
                 role="tab"
                 aria-selected={days === r.days}
-                onClick={() => setDays(r.days)}
+                onClick={() => {
+                  setDays(r.days);
+                  if (r.days !== 0) setDateRange(undefined);
+                }}
                 className={`px-3 py-1.5 text-sm rounded ${
                   days === r.days ? "bg-background shadow-sm" : "text-muted-foreground hover:text-foreground"
                 }`}
@@ -162,7 +183,32 @@ export default function SeoAnalyticsPanel() {
               </button>
             ))}
           </div>
-          <Button variant="outline" size="sm" onClick={() => load(days)} disabled={loading}>
+
+          {isCustom && (
+            <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
+              <PopoverTrigger asChild>
+                <Button variant="outline" size="sm" className="font-normal">
+                  <CalendarIcon className="w-4 h-4 mr-1" aria-hidden="true" />
+                  {dateRange?.from && dateRange?.to
+                    ? `${format(dateRange.from, "MMM d")} – ${format(dateRange.to, "MMM d")}`
+                    : "Pick dates"}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="range"
+                  selected={dateRange}
+                  onSelect={setDateRange}
+                  numberOfMonths={2}
+                  defaultMonth={dateRange?.from ?? new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)}
+                  disabled={(date) => date > new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)}
+                  className="pointer-events-auto"
+                />
+              </PopoverContent>
+            </Popover>
+          )}
+
+          <Button variant="outline" size="sm" onClick={() => load(days, dateRange)} disabled={loading}>
             <RefreshCw className={`w-4 h-4 mr-1 ${loading ? "animate-spin" : ""}`} aria-hidden="true" />
             Refresh
           </Button>
