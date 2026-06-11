@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -17,9 +18,47 @@ import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
 import { eegTraceContent, postArrestProgContent } from "@/components/diagrams/ecgExpandedContent";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
+const arrestFaqs: Array<[string, string]> = [
+  [
+    "What does the 2021 Resuscitation Council UK / ERC ALS algorithm say for an adult in cardiac arrest?",
+    "Confirm arrest, call for help and start chest compressions at 100–120 min⁻¹, depth 5–6 cm, with full recoil and minimal interruptions. Attach defibrillator pads as soon as available and assess rhythm every 2 minutes. For VF/pVT: deliver a shock (biphasic 120–200 J per manufacturer, then equal or escalating), resume CPR immediately for 2 minutes, give adrenaline 1 mg IV after the third shock and every 3–5 minutes thereafter, and amiodarone 300 mg after the third shock with a further 150 mg after the fifth. For non-shockable rhythms (asystole / PEA): give adrenaline 1 mg IV as soon as access is obtained and every 3–5 minutes, continue CPR, and actively look for reversible causes. Secure the airway (supraglottic device or tracheal tube) and switch to continuous compressions with asynchronous ventilations once an advanced airway is in place. Use waveform capnography throughout.",
+  ],
+  [
+    "What are the 4 Hs and 4 Ts and how do I treat each at the bedside?",
+    "The reversible causes are Hypoxia (high-flow O₂, secure airway, check ETT position and ventilation), Hypovolaemia (rapid IV/IO crystalloid, control haemorrhage, consider blood/MTP), Hyper/hypokalaemia and other metabolic disorders (10 mL 10% calcium chloride, 10 U insulin + 50 mL 50% dextrose, salbutamol, sodium bicarbonate; correct hypoglycaemia and acidosis), and Hypothermia (active rewarming, extended resuscitation and consider eCPR — 'not dead until warm and dead'); Tension pneumothorax (needle decompression / finger thoracostomy then chest drain), Tamponade (pericardiocentesis or resuscitative thoracotomy in trauma), Toxins (antidotes — naloxone, flumazenil, digibind, intralipid 20% for local-anaesthetic toxicity, sodium bicarbonate for TCAs), and Thrombosis (thrombolysis with alteplase 50 mg for suspected pulmonary embolism, then continue CPR for 60–90 minutes; primary PCI for coronary cause).",
+  ],
+  [
+    "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
+    "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. UK and ERC guidance now permit vector change or DSED for refractory VF after the third shock where local protocols allow.",
+  ],
+  [
+    "Does adrenaline actually improve outcome — what did PARAMEDIC2 show?",
+    "PARAMEDIC2 (Perkins, NEJM 2018, n = 8 014 OHCA) compared 1 mg IV adrenaline every 3–5 minutes with placebo. Adrenaline increased survival to 30 days (3.2% vs 2.4%, OR 1.39) but the absolute increase in survivors with favourable neurological outcome (modified Rankin 0–3) was small (2.2% vs 1.9%) and no different statistically, with a higher proportion of survivors having severe neurological impairment (31% vs 18%). Interpretation: adrenaline improves ROSC and short-term survival but the marginal neurological benefit is debated. UK/ERC guidance retains 1 mg IV after the third shock in shockable rhythms and as soon as access is obtained in non-shockable rhythms, recognising the trade-off and the absence of a superior alternative.",
+  ],
+  [
+    "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
+    "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) demonstrated equivalence of 33 °C and 36 °C — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with active normothermia (≤ 37.5 °C, fever treated aggressively) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Contemporary ERC/ESICM 2021 guidance therefore recommends a constant temperature 32–36 °C, with active normothermia ≤ 37.7 °C now the most common pragmatic default; fever (> 37.7 °C) must be prevented for at least 72 hours regardless of strategy. Rewarming should be slow (0.25–0.5 °C / h) when starting from 33 °C.",
+  ],
+  [
+    "Who is an appropriate candidate for eCPR and what does ARREST, Prague OHCA and INCEPTION tell us?",
+    "ARREST (Yannopoulos, Lancet 2020, n = 30, single-centre Minnesota) randomised refractory shockable OHCA and was stopped early for benefit — 43% vs 7% survival to discharge with eCPR. Prague OHCA (Belohlavek, JAMA 2022, n = 256) compared invasive (eCPR + cath lab) with standard advanced ALS and showed a non-significant trend to better 180-day favourable neurological outcome (31.5% vs 22.0%); subgroup analysis favoured the invasive strategy with longer arrest durations. INCEPTION (Suverein, NEJM 2023, n = 134) was a multicentre Dutch trial and was neutral — reflecting the impact of system speed and operator volume. Suitable candidates have: witnessed arrest, bystander CPR, initial shockable rhythm, age < 65–75, no major comorbidity, ETCO₂ > 10 mmHg sustained, and a realistic prospect of cannulation within 60 minutes of collapse. Outside high-volume eCPR centres with rapid pathways, benefit is unlikely.",
+  ],
+  [
+    "What is multimodal neuroprognostication and when do I perform it?",
+    "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 2. ERC/ESICM 2021 require at least two concordant poor-outcome markers from independent modalities before predicting poor outcome: (1) bilaterally absent pupillary AND corneal reflexes (or NPi < 2 on automated pupillometry); (2) bilaterally absent N20 cortical SSEPs; (3) NSE > 60 µg/L at 48 h or > 75 µg/L at 72 h, or a rising trend; (4) highly malignant EEG (suppression < 10 µV, or unreactive burst-suppression); (5) diffuse anoxic injury on CT (loss of grey-white differentiation, GWR < 1.10) or MRI (widespread restricted diffusion). Status myoclonus alone is not sufficient. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+  ],
+  [
+    "How should I manage the airway and ventilator in the first 6 hours post-ROSC?",
+    "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; the EXACT pilot RCT supports normoxic targeting). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
+  ],
+];
+
 
 const tocItems = [
   { id: "overview", label: "Overview & chain of survival", group: "Background" },
+  { id: "als-algorithm", label: "ALS algorithm & 4Hs/4Ts", group: "Intra-arrest" },
   { id: "rosc-bundle", label: "Post-ROSC care bundle", group: "Acute" },
   { id: "ttm", label: "Targeted temperature management", group: "Acute" },
   { id: "haemodynamics", label: "Haemodynamics & ventilation", group: "Acute" },
@@ -28,7 +67,10 @@ const tocItems = [
   { id: "ecpr", label: "ECMO-CPR (eCPR)", group: "Advanced" },
   { id: "ecmo-circuit", label: "VA-ECMO circuit & troubleshooting", group: "Advanced" },
   { id: "ethics", label: "Family, ethics & WLST", group: "Recovery" },
+  { id: "trial-evidence", label: "Landmark trial evidence", group: "Evidence" },
+  { id: "faq", label: "Frequently asked questions", group: "Evidence" },
 ];
+
 
 const objectives = [
   "Deliver the ERC/ESICM 2021 post-ROSC bundle including airway, ventilation, haemodynamic and metabolic targets within the first 6 hours.",
@@ -136,7 +178,85 @@ const coreConcepts = (
     </ExamSection>
 
     {/* ─────────── Post-ROSC bundle ─────────── */}
+    {/* ─────────── ALS algorithm ─────────── */}
+    <ExamSection id="als-algorithm" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+      <CollapsibleSubsection title="Adult ALS Algorithm — RCUK / ERC 2021" defaultOpen>
+        <p className="text-muted-foreground leading-relaxed mb-3">
+          Confirm arrest, call for help, deliver continuous chest compressions
+          (100–120 min⁻¹, depth 5–6 cm, full recoil), attach the defibrillator
+          and assess rhythm <span className="font-medium text-foreground">every 2 minutes</span>.
+          The first pharmacological dose of adrenaline (1 mg IV) follows the
+          third shock in VF/pVT, and is given as soon as access is obtained
+          in non-shockable rhythms.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-3">
+          <div className="p-4 rounded-lg border border-icu/30 bg-icu/5">
+            <p className="text-sm font-semibold text-foreground mb-2">Shockable (VF / pulseless VT)</p>
+            <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+              <li>Shock 1 — biphasic 120–200 J (manufacturer-specified); equal or escalating thereafter</li>
+              <li>Resume CPR immediately for 2 min — do not pulse-check post-shock</li>
+              <li>After shock 3: <span className="font-medium text-foreground">adrenaline 1 mg IV</span> + <span className="font-medium text-foreground">amiodarone 300 mg IV</span></li>
+              <li>After shock 5: amiodarone 150 mg IV (or lidocaine 1 mg/kg if amiodarone unavailable)</li>
+              <li>Repeat adrenaline 1 mg every 3–5 min (alternate loops)</li>
+              <li>Refractory VF after 3 shocks → consider vector change (AP pads) or double sequential external defibrillation (DOSE-VF 2022)</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg border border-icu/30 bg-icu/5">
+            <p className="text-sm font-semibold text-foreground mb-2">Non-shockable (PEA / asystole)</p>
+            <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+              <li>Adrenaline 1 mg IV as soon as access — then every 3–5 min</li>
+              <li>Continuous high-quality CPR; secure airway when feasible</li>
+              <li>Active search for reversible causes (4Hs / 4Ts) — POCUS to identify tamponade, RV strain, hypovolaemia</li>
+              <li>No routine atropine; no routine bicarbonate (except hyperK⁺ / TCA / prolonged arrest with profound acidaemia)</li>
+              <li>Confirm asystole on more than one lead; check leads, gain and pad contact before declaring</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-4 overflow-x-auto -mx-2 sm:mx-0">
+          <table className="w-full text-xs border border-border bg-card rounded-lg">
+            <thead className="bg-muted/40">
+              <tr>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Reversible cause</th>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Bedside clue</th>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Immediate action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Hypoxia", "Desaturation, mucus plug, oesophageal intubation", "100% O₂, confirm ETT placement, capnography, suction"],
+                ["Hypovolaemia", "Trauma, GI bleed, ruptured AAA, anaphylaxis", "Rapid crystalloid + blood, MTP, control haemorrhage, adrenaline if anaphylactic"],
+                ["Hyper/hypokalaemia & metabolic", "Renal failure, crush, rhabdo, DKA", "10 mL 10% CaCl₂, insulin/dextrose, salbutamol, bicarbonate; correct glucose"],
+                ["Hypothermia", "Submersion, environmental, post-operative", "Active rewarming, prolong resus — 'not dead until warm and dead', consider eCPR"],
+                ["Tension pneumothorax", "Tracheal deviation, absent breath sounds, ↑PAW", "Needle decompression 2nd ICS MCL or 5th ICS AAL, then finger thoracostomy + ICD"],
+                ["Tamponade", "Trauma, post-cardiac surgery, malignancy", "POCUS confirmation, pericardiocentesis or resuscitative thoracotomy"],
+                ["Toxins", "Overdose history, occupational exposure", "Naloxone (opioid), digibind (digoxin), intralipid (LA toxicity), bicarbonate (TCA)"],
+                ["Thrombosis (PE / coronary)", "Recent surgery, immobility, chest pain pre-arrest", "Alteplase 50 mg IV for PE, continue CPR 60–90 min; primary PCI for coronary cause"],
+              ].map((r) => (
+                <tr key={r[0]} className="border-t border-border">
+                  <td className="px-3 py-1.5 font-medium text-foreground">{r[0]}</td>
+                  <td className="px-3 py-1.5 text-foreground/85">{r[1]}</td>
+                  <td className="px-3 py-1.5 text-muted-foreground">{r[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="mt-4 p-3 rounded-lg border border-border bg-card">
+          <p className="text-sm font-semibold text-foreground mb-1">Capnography during CPR</p>
+          <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+            <li>ETCO₂ &lt; 1.3 kPa (10 mmHg) after 20 min of ALS predicts very poor outcome (but use as part of the overall picture, never in isolation)</li>
+            <li>Sudden rise in ETCO₂ ≥ 1.3 kPa often heralds ROSC — finish the 2-minute cycle before pulse-checking</li>
+            <li>Persistent flat trace with chest rise strongly suggests oesophageal intubation</li>
+          </ul>
+        </div>
+      </CollapsibleSubsection>
+    </ExamSection>
+
     <ExamSection id="rosc-bundle" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+
       <CollapsibleSubsection title="The Post-ROSC Bundle (ERC/ESICM 2021)">
       <p className="text-muted-foreground leading-relaxed mb-3">
         Within the first 6 h after ROSC, deliver a structured bundle in
@@ -471,8 +591,79 @@ const coreConcepts = (
         "SNOD referral early — even before brain-stem death testing or withdrawal decisions.",
       ]}
     />
+
+    {/* ─────────── Landmark trial evidence ─────────── */}
+    <ExamSection id="trial-evidence" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+      <CollapsibleSubsection title="Landmark trial evidence">
+        <div className="overflow-x-auto -mx-2 sm:mx-0">
+          <table className="w-full text-xs border border-border bg-card rounded-lg">
+            <thead className="bg-muted/40">
+              <tr>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Trial (year)</th>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Question</th>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Result</th>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Practice impact</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["HACA (NEJM 2002)", "32–34 °C × 24 h vs standard care after VF OHCA", "Mortality 41% vs 55%; favourable neuro 55% vs 39%", "Established mild hypothermia as standard"],
+                ["Bernard (NEJM 2002)", "33 °C × 12 h after VF OHCA", "Good outcome 49% vs 26%", "Confirmed HACA in independent cohort"],
+                ["TTM (Nielsen, NEJM 2013)", "33 °C vs 36 °C × 24 h, n = 950", "No difference in mortality (50% vs 48%) or neuro outcome", "Either target acceptable; fever-prevention is what matters"],
+                ["TTM2 (Dankiewicz, NEJM 2021)", "33 °C vs active normothermia (≤ 37.5 °C), n = 1 850", "No difference 6-mo mortality (50% vs 48%)", "Active normothermia ≤ 37.7 °C now acceptable default"],
+                ["TAME (NEJM 2023)", "Mild hypercapnia 6.7–7.3 kPa vs normocapnia post-arrest", "No difference 6-mo good neuro outcome (43.5% vs 44.6%)", "Continue normocapnia 4.5–6.0 kPa"],
+                ["EXACT (Bernard, JAMA 2022)", "SpO₂ 90–94% vs 98–100% during pre-hospital post-ROSC", "Survival to discharge 38.3% vs 47.9% (lower with restrictive)", "Avoid hypoxaemia; do not aim ≤ 94% in pre-hospital phase"],
+                ["BOX (NEJM 2022)", "MAP 63 vs 77 mmHg AND restrictive vs liberal O₂ post-ROSC", "No difference in death/poor neuro outcome at 90 d", "MAP ≥ 65 reasonable; no clear benefit from higher targets"],
+                ["PARAMEDIC2 (NEJM 2018)", "Adrenaline 1 mg IV vs placebo in OHCA, n = 8 014", "30-d survival 3.2% vs 2.4%; severe disability 31% vs 18% of survivors", "Adrenaline retained but with explicit trade-off"],
+                ["DOSE-VF (NEJM 2022)", "Standard vs vector-change vs DSED for refractory VF after 3 shocks", "Survival to discharge: DSED 30.4% vs standard 13.3%", "DSED / vector change now permitted for refractory VF"],
+                ["ARREST (Lancet 2020)", "eCPR vs standard ALS in refractory shockable OHCA, n = 30", "Stopped early — 43% vs 7% survival to discharge", "Proof of concept in optimal system"],
+                ["Prague OHCA (JAMA 2022)", "Invasive (eCPR + cath) vs standard, n = 256", "180-d good neuro 31.5% vs 22.0% (NS overall; benefit in longer arrests)", "Supports eCPR in selected refractory arrest"],
+                ["INCEPTION (NEJM 2023)", "eCPR vs standard ALS, multicentre Dutch, n = 134", "No difference in 30-d good neuro outcome (20% vs 16%)", "Highlights importance of system speed & volume"],
+                ["COACT (NEJM 2019)", "Immediate vs delayed angiography after shockable OHCA without STEMI", "No 90-d mortality difference (64.5% vs 67.2%)", "Defer angiography in stable post-ROSC without STEMI"],
+                ["TOMAHAWK (NEJM 2021)", "Immediate vs selective angiography after OHCA without STEMI", "No 30-d mortality difference (54% vs 46%)", "Reinforces selective approach without ST elevation"],
+                ["AIRWAYS-2 (JAMA 2018)", "Supraglottic airway vs tracheal intubation in paramedic-led OHCA", "No difference in modified Rankin at 30 d", "SGA acceptable initial airway in OHCA"],
+              ].map((r) => (
+                <tr key={r[0]} className="border-t border-border align-top">
+                  <td className="px-3 py-1.5 font-medium text-foreground whitespace-nowrap">{r[0]}</td>
+                  <td className="px-3 py-1.5 text-foreground/85">{r[1]}</td>
+                  <td className="px-3 py-1.5 text-foreground/85">{r[2]}</td>
+                  <td className="px-3 py-1.5 text-muted-foreground">{r[3]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </CollapsibleSubsection>
+    </ExamSection>
+
+    {/* ─────────── FAQ ─────────── */}
+    <ExamSection id="faq" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+      <CollapsibleSubsection title="Frequently asked questions">
+        <Accordion type="single" collapsible className="w-full">
+          {arrestFaqs.map(([q, a], i) => (
+            <AccordionItem key={q} value={`faq-${i}`}>
+              <AccordionTrigger className="text-left text-sm font-medium text-foreground">{q}</AccordionTrigger>
+              <AccordionContent className="text-xs text-muted-foreground leading-relaxed">{a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </CollapsibleSubsection>
+    </ExamSection>
+
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: arrestFaqs.map(([name, acceptedAnswer]) => ({
+          "@type": "Question",
+          name,
+          acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+        })),
+      })}</script>
+    </Helmet>
   </>
 );
+
 
 
 const CardiacArrestPostResusTopic = () => {
