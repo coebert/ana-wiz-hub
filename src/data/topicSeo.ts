@@ -273,6 +273,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Enhanced recovery", "ERAS", "Fast track surgery", "Perioperative care pathway", "Prehabilitation", "PONV prophylaxis"],
     keywords: ["ERAS FRCA", "enhanced recovery surgery", "ERAS principles", "prehabilitation", "PONV prophylaxis", "LAFA trial", "RELIEF trial"],
   },
+  "perioperative-fluids": {
+    title: "Perioperative Fluid Therapy: GDFT, Glycocalyx & Trials | FRCA",
+    description: "Perioperative fluid therapy for FRCA/FFICM: crystalloids vs colloids, goal-directed fluid therapy, revised Starling equation, glycocalyx, and landmark trials (SMART, RELIEF, BaSICS).",
+    aliases: ["Perioperative fluid therapy", "GDFT", "Goal-directed fluid therapy", "Crystalloids vs colloids", "Fluid responsiveness", "Glycocalyx", "Revised Starling equation"],
+    keywords: ["perioperative fluid therapy FRCA", "GDFT", "goal-directed fluid therapy", "crystalloids vs colloids", "SMART trial", "RELIEF trial", "glycocalyx", "fluid responsiveness"],
+  },
   "cardiovascular-disease": {
     title: "Cardiovascular Disease: IHD, Valvular, HF & PH | FRCA",
     description: "Perioperative cardiovascular disease for FRCA Final: IHD, valvular lesions, heart failure, arrhythmias, devices, pulmonary hypertension and ACHD.",
