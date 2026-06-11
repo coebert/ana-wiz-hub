@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Maximize2, Minimize2 } from "lucide-react";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
@@ -102,6 +104,7 @@ const tocItems = [
 ];
 
 const MechanicalVentilationTopic = () => {
+  const [simFullscreen, setSimFullscreen] = useState(false);
   return (
     <TopicTemplate
       title="Mechanical Ventilation"
@@ -267,13 +270,33 @@ const MechanicalVentilationTopic = () => {
               </a>{" "}
               below to apply mode, trigger and cycle concepts on a virtual ICU ventilator without leaving the page.
             </p>
-            <div className="relative w-full overflow-hidden rounded-md border border-border bg-background" style={{ aspectRatio: "16 / 10" }}>
+            <div
+              className={`overflow-hidden rounded-md border border-border bg-background transition-all duration-300 ${
+                simFullscreen
+                  ? "fixed inset-0 z-50 h-screen w-screen rounded-none border-0"
+                  : "relative w-full"
+              }`}
+              style={simFullscreen ? undefined : { aspectRatio: "16 / 10" }}
+            >
+              <button
+                type="button"
+                onClick={() => setSimFullscreen((s) => !s)}
+                className="absolute right-2 top-2 z-10 rounded-md border border-border bg-background/90 p-1.5 text-muted-foreground shadow-sm backdrop-blur-sm transition-colors hover:bg-background hover:text-foreground"
+                aria-label={simFullscreen ? "Exit full screen" : "Enter full screen"}
+                title={simFullscreen ? "Exit full screen" : "Enter full screen"}
+              >
+                {simFullscreen ? (
+                  <Minimize2 className="h-4 w-4" />
+                ) : (
+                  <Maximize2 className="h-4 w-4" />
+                )}
+              </button>
               <iframe
                 src="https://lung-sim-pro.lovable.app"
                 title="Vent Mastery — ICU ventilator simulator"
                 loading="lazy"
                 allow="fullscreen"
-                className="absolute inset-0 h-full w-full"
+                className="h-full w-full"
               />
             </div>
             <p className="mt-2 text-xs text-muted-foreground">
