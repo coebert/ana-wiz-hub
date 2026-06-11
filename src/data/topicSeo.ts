@@ -261,6 +261,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Airway management", "Rapid sequence induction", "RSI anaesthesia", "DAS algorithm", "Difficult airway", "Awake fibreoptic intubation", "Cricothyroidotomy", "Front-of-neck access", "CICO"],
     keywords: ["airway management FRCA", "rapid sequence induction", "DAS 2015 algorithm", "difficult airway", "awake fibreoptic intubation", "supraglottic airway", "videolaryngoscopy", "cricothyroidotomy", "CICO scalpel bougie tube", "NAP4"],
   },
+  "clinical-incidents": {
+    title: "Critical Incidents: Anaphylaxis, MH, LAST & Awareness | FRCA",
+    description: "Perioperative critical incidents for FRCA/FFICM: anaphylaxis management, malignant hyperthermia, local anaesthetic systemic toxicity (LAST), accidental awareness under anaesthesia, and death on the table.",
+    aliases: ["Critical incidents", "Perioperative anaphylaxis", "Malignant hyperthermia", "LAST", "Local anaesthetic systemic toxicity", "Accidental awareness", "NAP5", "NAP6", "NAP7"],
+    keywords: ["perioperative anaphylaxis FRCA", "malignant hyperthermia", "LAST Intralipid", "accidental awareness", "NAP5", "NAP6", "NAP7"],
+  },
   "preoperative-assessment": {
     title: "Preoperative Assessment: RCRI, CPET & NICE NG45 | FRCA",
     description: "Preoperative assessment for FRCA/FFICM: ASA, RCRI, SORT, CPET thresholds, NICE NG45 investigations, medication management and PBM.",
