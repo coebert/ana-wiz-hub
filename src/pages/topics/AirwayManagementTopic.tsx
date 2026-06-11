@@ -187,7 +187,9 @@ const AirwayManagementTopic = () => {
       }}
       coreConcepts={
         <>
+          <TopicTableOfContents items={tocItems} />
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
+
             <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               Airway management is the cornerstone of safe anaesthetic and critical care practice. The Difficult Airway
