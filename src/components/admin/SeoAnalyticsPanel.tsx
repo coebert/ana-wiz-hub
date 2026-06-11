@@ -156,6 +156,17 @@ export default function SeoAnalyticsPanel() {
             <RefreshCw className={`w-4 h-4 mr-1 ${loading ? "animate-spin" : ""}`} aria-hidden="true" />
             Refresh
           </Button>
+          <Button asChild variant="outline" size="sm">
+            <a
+              href={`https://search.google.com/search-console/performance/search-analytics?resource_id=${encodeURIComponent(data?.site ?? "https://anaesthesiacore.app/")}`}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Search Console in a new tab"
+            >
+              <ExternalLink className="w-4 h-4 mr-1" aria-hidden="true" />
+              Search Console
+            </a>
+          </Button>
         </div>
       </header>
 
