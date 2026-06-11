@@ -249,4 +249,10 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Burns anaesthesia", "Burn injury", "Parkland formula", "Inhalation injury", "Carbon monoxide poisoning", "Suxamethonium contraindication"],
     keywords: ["burns anaesthesia FRCA", "Parkland formula", "inhalation injury", "carbon monoxide poisoning", "suxamethonium burns"],
   },
+  "obstetric-anaesthesia": {
+    title: "Obstetric Anaesthesia: Labour Epidural & LSCS | FRCA",
+    description: "Obstetric anaesthesia for FRCA Final and FFICM: labour epidural and CSE, spinal for caesarean section, category-1 RSI, pregnancy physiology, PPH, pre-eclampsia, remifentanil PCA, and OAA/DAS guidelines.",
+    aliases: ["Obstetric anaesthesia", "Labour epidural", "Spinal anaesthesia caesarean", "Category 1 caesarean", "Obstetric GA", "Pre-eclampsia anaesthesia", "PPH management", "Remifentanil PCA labour"],
+    keywords: ["obstetric anaesthesia FRCA", "labour epidural", "spinal caesarean section", "category 1 caesarean", "obstetric RSI", "pre-eclampsia anaesthesia", "remifentanil PCA labour", "PPH management"],
+  },
 };

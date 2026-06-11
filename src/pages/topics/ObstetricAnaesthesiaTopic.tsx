@@ -12,6 +12,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import {
   Accordion,
   AccordionContent,
@@ -66,9 +67,24 @@ const obstetricFaqs: Array<[string, string]> = [
   ],
 ];
 
-
-
-const ObstetricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
+const tocItems = [
+  { id: "section-physiological-changes-of-pregnancy", label: "Physiological Changes of Pregnancy", group: "Core" },
+  { id: "section-anaesthesia-for-caesarean-section", label: "Caesarean Section Anaesthesia", group: "Core" },
+  { id: "section-ga-for-category-1-lscs-step-by-step-conduct", label: "Category 1 LSCS — GA Conduct", group: "Core" },
+  { id: "section-target-mac-at-different-phases", label: "Target MAC", group: "Anaesthesia" },
+  { id: "section-propofol-vs-thiopentone-evidence", label: "Propofol vs Thiopentone", group: "Anaesthesia" },
+  { id: "section-tiva-for-emergency-lscs", label: "TIVA for Emergency LSCS", group: "Anaesthesia" },
+  { id: "section-opioids-on-induction-pros-and-cons", label: "Opioids on Induction", group: "Anaesthesia" },
+  { id: "section-rapid-sequence-spinal-rss", label: "Rapid Sequence Spinal", group: "Anaesthesia" },
+  { id: "section-suggested-neuraxial-doses-by-indication", label: "Neuraxial Doses", group: "Anaesthesia" },
+  { id: "section-obstetric-emergencies", label: "Obstetric Emergencies", group: "Emergencies" },
+  { id: "section-obstetric-medicine-and-labour-management-for-the-anaesthetist", label: "Obstetric Medicine & Labour", group: "Labour" },
+  { id: "section-labour-analgesia", label: "Labour Analgesia", group: "Labour" },
+  { id: "section-remifentanil-pca-for-labour-analgesia", label: "Remifentanil PCA", group: "Labour" },
+  { id: "section-labour-and-delivery-after-intra-uterine-fetal-death", label: "IUFD Delivery", group: "Labour" },
+  { id: "section-postpartum-bladder-bowel-and-lower-limb-neurological-symptoms-after-neuraxial-block", label: "Postpartum Neurology", group: "Postpartum" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
   {
     title: "Category-1 caesarean section under GA",
     scenario: "A G2P1 at 38 weeks with cord prolapse and fetal bradycardia needs immediate delivery. Plan a rapid-sequence GA with awareness mitigation.",
@@ -135,6 +151,7 @@ const ObstetricAnaesthesiaTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6">
+          <TopicTableOfContents items={tocItems} />
         <CollapsibleSubsection title="Physiological Changes of Pregnancy" defaultOpen>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Pregnancy alters virtually every organ system, and the resulting changes shape every aspect of obstetric anaesthetic practice — from rapid desaturation on apnoea to exaggerated hypotension after neuraxial blockade and reduced local anaesthetic dose requirements. Quantitative values below are drawn from <InlineRef topicId="obstetric-anaesthesia" refLabel="BJA Educ 2019" /> and the <InlineRef topicId="obstetric-anaesthesia" refLabel="OAA/DAS 2015" /> obstetric general anaesthesia guideline; airway / failed-intubation incidence and maternal mortality data from <InlineRef topicId="obstetric-anaesthesia" refLabel="MBRRACE-UK" />.
@@ -891,11 +908,6 @@ const ObstetricAnaesthesiaTopic = () => {
           </section>
 
           <Helmet>
-            <title>Obstetric Anaesthesia — Labour Epidural & LSCS</title>
-            <meta
-              name="description"
-              content="Obstetric anaesthesia for FRCA and FFICM: labour epidural, spinal for caesarean section, category-1 RSI, post-dural puncture headache, pregnancy physiology and OAA/NAP3 safety evidence."
-            />
             <script type="application/ld+json">{JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
