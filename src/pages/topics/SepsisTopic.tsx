@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
@@ -12,6 +13,43 @@ import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
 import AlbuminFluidShiftDiagram from "@/components/diagrams/AlbuminFluidShiftDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const sepsisFaqs: Array<[string, string]> = [
+  [
+    "What is the Sepsis-3 definition of sepsis and septic shock?",
+    "Sepsis (Singer, JAMA 2016) is life-threatening organ dysfunction caused by a dysregulated host response to infection, operationalised as a rise of ≥ 2 points in the Sequential Organ Failure Assessment (SOFA) score from baseline in the presence of suspected or proven infection. Septic shock is the subset requiring vasopressors to maintain mean arterial pressure ≥ 65 mmHg AND a serum lactate > 2 mmol/L after adequate fluid resuscitation, identifying a group with hospital mortality > 40%. qSOFA (RR ≥ 22, altered mentation, SBP ≤ 100) is a bedside prompt to consider sepsis — it is a screening tool, not a diagnostic criterion.",
+  ],
+  [
+    "What is the Surviving Sepsis Hour-1 bundle?",
+    "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin rapid 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L; (5) start vasopressors during or after fluid if MAP < 65 mmHg. For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
+  ],
+  [
+    "Why does every hour of delayed antibiotics matter in septic shock?",
+    "Observational data (Kumar 2006; Ferrer 2014; Seymour NEJM 2017 — New York State sepsis mandate cohort) show that each hour of delay in effective antibiotic administration in septic shock is associated with a ~4–8% absolute increase in in-hospital mortality. The 2017 New York data demonstrated an OR of 1.04 per hour for the 3-hour bundle. Empirical cover should target the suspected source and local resistance patterns, be broad enough to cover MRSA and Pseudomonas where clinical features suggest it, and be de-escalated once cultures and clinical course allow.",
+  ],
+  [
+    "Is 30 mL/kg of crystalloid still the recommended initial fluid bolus?",
+    "Yes — SSC 2021 retains a 30 mL/kg balanced crystalloid bolus over the first 3 hours in sepsis-induced hypoperfusion or septic shock as a weak recommendation. Subsequent boluses should be guided by dynamic measures of fluid responsiveness (passive leg raise, stroke-volume variation, end-expiratory occlusion). CLASSIC (Meyhoff, NEJM 2022) showed that a restrictive fluid strategy after initial resuscitation is safe and feasible (no mortality difference vs liberal). CLOVERS (NHLBI 2023) similarly found no difference between early vasopressor-led vs liberal-fluid strategies — both signals support 'don't over-resuscitate after the first bolus'.",
+  ],
+  [
+    "Should I use balanced crystalloids or 0.9% saline?",
+    "Balanced crystalloids (Hartmann's, Plasma-Lyte) are preferred over 0.9% saline. SMART (Semler, NEJM 2018, n = 15 802) showed a lower 30-day composite of death, new RRT, or persistent renal dysfunction with balanced solutions in critically ill adults (15.4% vs 14.3%). BaSICS (Zampieri, JAMA 2021) was neutral overall but supported safety. PLUS (Finfer, NEJM 2022) was also neutral. The aggregate of evidence and pathophysiology (avoidance of hyperchloraemic acidosis) supports balanced crystalloids as first-line in sepsis.",
+  ],
+  [
+    "Which vasopressor should I start first, and when do I add vasopressin and hydrocortisone?",
+    "Noradrenaline is first-line vasopressor in septic shock (SSC 2021, strong recommendation). Target MAP ≥ 65 mmHg, titrated to perfusion (urine output, mental state, lactate clearance, CRT). Add vasopressin 0.03 U/min when noradrenaline reaches 0.25–0.5 µg/kg/min — VANISH (Gordon, JAMA 2016) showed early vasopressin reduced renal-replacement therapy use. Add hydrocortisone 200 mg/day (50 mg QDS or continuous infusion) when vasopressor-dependent for > 4 h — ADRENAL (Venkatesh, NEJM 2018) showed faster shock resolution; APROCCHSS (Annane, NEJM 2018) showed mortality benefit. Adrenaline is a third-line catecholamine; dopamine is not recommended.",
+  ],
+  [
+    "What is the role of steroids, vitamin C, and other adjuncts in sepsis?",
+    "Hydrocortisone 200 mg/day is recommended for adults with septic shock requiring ongoing vasopressor support (SSC 2021). Vitamin C is NOT recommended: LOVIT (Lamontagne, NEJM 2022) showed high-dose IV vitamin C increased the composite of persistent organ dysfunction or death (HR 1.21); the earlier CITRIS-ALI and VICTAS trials were neutral. Selenium, IVIG (except in toxic-shock-like syndromes), and beta-blockers are not routinely recommended. Insulin should target glucose ≤ 10 mmol/L. Stress-ulcer and VTE prophylaxis are standard.",
+  ],
+  [
+    "How is procalcitonin used to guide antibiotic duration?",
+    "Procalcitonin (PCT) rises with bacterial infection and falls with effective source control or treatment. SSC 2021 suggests PCT plus clinical assessment may guide antibiotic discontinuation. Pragmatic stop rules used in trials (ProHOSP, SAPS, PRORATA): stop antibiotics if PCT < 0.5 µg/L or has fallen > 80% from peak. PCT-guided strategies have reduced antibiotic exposure by ~1–2 days without harm in multiple RCTs and meta-analyses. PCT should not delay starting antibiotics in suspected septic shock and is unreliable in the first 6–12 h, post-surgery, burns, and end-stage renal failure.",
+  ],
+];
+
+
 
 const objectives = [
   "Apply Sepsis-3 definitions and use SOFA / qSOFA / NEWS2 to recognise sepsis and septic shock.",
@@ -146,6 +184,24 @@ const SepsisTopic = () => {
       coreConcepts={
     <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-6">
+        {/* Table of contents */}
+        <nav aria-label="On this page" className="not-prose rounded-lg border border-border bg-secondary/20 p-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">On this page</p>
+          <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1 text-sm">
+            <li><a href="#sepsis-3" className="text-icu hover:underline">Sepsis-3 definitions &amp; scores</a></li>
+            <li><a href="#hour-1" className="text-icu hover:underline">SSC Hour-1 bundle</a></li>
+            <li><a href="#antibiotics" className="text-icu hover:underline">Empirical antibiotics &amp; source control</a></li>
+            <li><a href="#fluids" className="text-icu hover:underline">Fluid resuscitation strategy</a></li>
+            <li><a href="#vasopressors" className="text-icu hover:underline">Vasopressor &amp; inotrope ladder</a></li>
+            <li><a href="#steroids" className="text-icu hover:underline">Hydrocortisone in septic shock</a></li>
+            <li><a href="#biomarkers" className="text-icu hover:underline">Lactate, CRP &amp; procalcitonin</a></li>
+            <li><a href="#trial-evidence" className="text-icu hover:underline">Landmark trial evidence</a></li>
+            <li><a href="#pitfalls" className="text-icu hover:underline">Exam pitfalls</a></li>
+            <li><a href="#faq" className="text-icu hover:underline">Frequently asked questions</a></li>
+          </ul>
+        </nav>
+
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
           <p className="text-muted-foreground leading-relaxed">
@@ -537,6 +593,214 @@ const SepsisTopic = () => {
         </p>
         <SepsisManagementDiagram />
       </section>
+
+      {/* Deep-content reference block: anchored H2s for TOC */}
+      <section className="space-y-8 mt-10 scroll-mt-24">
+
+        <div id="sepsis-3">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sepsis-3 definitions &amp; scores</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Sepsis-3 (Singer, JAMA 2016) discarded SIRS in favour of an organ-dysfunction-based definition. The conceptual move: SIRS is a non-specific inflammatory response present in many non-infective insults; sepsis is the <em>dysregulated</em> host response that produces organ failure.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Term</th>
+                <th className="text-left p-2 font-semibold text-foreground">Criteria</th>
+                <th className="text-left p-2 font-semibold text-foreground">Mortality</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground align-top">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Suspected infection</td><td className="p-2">Body fluid cultures sent &amp; antimicrobials given (or planned) within a ±48 h window</td><td className="p-2">Variable</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Sepsis</td><td className="p-2">Suspected infection + acute rise of ≥ 2 in total SOFA score</td><td className="p-2">~10%</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Septic shock</td><td className="p-2">Sepsis + vasopressors to maintain MAP ≥ 65 mmHg AND lactate &gt; 2 mmol/L after adequate fluid</td><td className="p-2">~40%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground mt-3">
+            <strong>qSOFA</strong> (any 2 of RR ≥ 22, altered mentation, SBP ≤ 100): bedside prompt to suspect sepsis outside ICU — sensitive but not diagnostic. <strong>NEWS2</strong> remains the in-hospital track-and-trigger tool of choice in UK practice (NHS England Sepsis CQUIN).
+          </p>
+        </div>
+
+        <div id="hour-1">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">SSC Hour-1 bundle — operational checklist</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Element</th>
+                <th className="text-left p-2 font-semibold text-foreground">Action</th>
+                <th className="text-left p-2 font-semibold text-foreground">Evidence anchor</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground align-top">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Lactate</td><td className="p-2">Measure now; remeasure if &gt; 2 mmol/L</td><td className="p-2">SSC 2021; Jansen 2010 lactate clearance</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Cultures</td><td className="p-2">≥ 2 sets blood cultures before antibiotics if no significant delay (&lt; 45 min)</td><td className="p-2">Cheng 2019 — paired cultures ↑ yield</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Antibiotics</td><td className="p-2">Broad-spectrum within 1 h for septic shock; within 3 h for sepsis without shock if infection probable</td><td className="p-2">Kumar 2006; Seymour NEJM 2017</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Fluids</td><td className="p-2">30 mL/kg balanced crystalloid over 3 h for hypotension or lactate ≥ 4 mmol/L</td><td className="p-2">SSC 2021; CLASSIC 2022; CLOVERS 2023</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Vasopressors</td><td className="p-2">Noradrenaline during or after fluid if MAP &lt; 65 mmHg; consider peripheral start to avoid delay</td><td className="p-2">SOAP-II 2010; SSC 2021</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="antibiotics">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Empirical antibiotics &amp; source control</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Empirical cover must reflect the suspected source, the patient's recent antimicrobial exposure, local antibiogram, and severity. Source control — drainage of pus, debridement of necrotic tissue, removal of infected hardware or lines — should be achieved as soon as logistically feasible, ideally within 6–12 h.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Source</th>
+                <th className="text-left p-2 font-semibold text-foreground">Typical empirical regimen (UK)</th>
+                <th className="text-left p-2 font-semibold text-foreground">Notes</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground align-top">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Unknown / community</td><td className="p-2">Piperacillin-tazobactam 4.5 g IV; add gentamicin/amikacin once if shocked</td><td className="p-2">Add vancomycin if MRSA risk</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Hospital-acquired / ICU</td><td className="p-2">Meropenem 1–2 g IV ± vancomycin / linezolid</td><td className="p-2">Consider antifungal if persistent fever &amp; risk factors</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Severe CAP</td><td className="p-2">Co-amoxiclav + clarithromycin; or ceftriaxone + macrolide</td><td className="p-2">Cover atypicals; add oseltamivir in influenza season</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Urinary</td><td className="p-2">Piperacillin-tazobactam or meropenem if ESBL risk</td><td className="p-2">Drain obstruction urgently (nephrostomy/stent)</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Intra-abdominal</td><td className="p-2">Piperacillin-tazobactam or meropenem ± metronidazole</td><td className="p-2">Imaging-guided drainage or laparotomy</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Necrotising soft-tissue</td><td className="p-2">Piperacillin-tazobactam + clindamycin (toxin suppression) ± IVIG</td><td className="p-2"><strong>Surgical debridement is the treatment</strong></td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Line / device</td><td className="p-2">Vancomycin + anti-pseudomonal cover</td><td className="p-2">Remove the line; send tip + paired cultures</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="fluids">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fluid resuscitation strategy</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The current consensus is &ldquo;resuscitate then restrict&rdquo;: a 30 mL/kg balanced crystalloid bolus in the first 3 h of sepsis-induced hypoperfusion, then dynamic, individualised top-ups guided by passive leg raise, stroke-volume variation, or end-expiratory occlusion — not CVP. Excessive fluid worsens outcomes by driving interstitial oedema, organ injury, and weaning failure.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Fluid</th>
+                <th className="text-left p-2 font-semibold text-foreground">Role</th>
+                <th className="text-left p-2 font-semibold text-foreground">Key evidence</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground align-top">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Balanced crystalloid (Hartmann's, Plasma-Lyte)</td><td className="p-2">First-line resuscitation &amp; maintenance</td><td className="p-2">SMART 2018 (composite outcome ↓); BaSICS 2021 / PLUS 2022 (neutral but safe)</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">0.9% saline</td><td className="p-2">Limited role — large volumes cause hyperchloraemic acidosis &amp; AKI</td><td className="p-2">Avoid as first-line in sepsis</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Albumin 4–5%</td><td className="p-2">Consider when large crystalloid volumes given (&gt; 30–60 mL/kg)</td><td className="p-2">SAFE 2004 (neutral overall, signal of harm in TBI); ALBIOS 2014 (no mortality benefit, signal in septic shock)</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Hydroxyethyl starch (HES)</td><td className="p-2"><strong>Do not use</strong></td><td className="p-2">6S, CHEST: ↑ RRT &amp; mortality; withdrawn EU</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Gelatins</td><td className="p-2">Avoid — no benefit, allergy/AKI risk</td><td className="p-2">SSC 2021 weak recommendation against</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="vasopressors">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Vasopressor &amp; inotrope ladder</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Drug</th>
+                <th className="text-left p-2 font-semibold text-foreground">Receptor / dose</th>
+                <th className="text-left p-2 font-semibold text-foreground">When to use</th>
+                <th className="text-left p-2 font-semibold text-foreground">Evidence</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground align-top">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Noradrenaline</td><td className="p-2">α₁ ≫ β₁; 0.05–1.0 µg/kg/min</td><td className="p-2"><strong>First-line</strong> — target MAP ≥ 65 mmHg</td><td className="p-2">SOAP-II 2010 (fewer arrhythmias vs dopamine)</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Vasopressin</td><td className="p-2">V₁; 0.03 U/min fixed (max 0.04)</td><td className="p-2">Add when NA &gt; 0.25–0.5 µg/kg/min</td><td className="p-2">VASST 2008 (neutral overall, signal in less severe shock); VANISH 2016 (↓ RRT)</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Hydrocortisone</td><td className="p-2">200 mg/day (50 mg QDS or infusion)</td><td className="p-2">Vasopressor-dependent &gt; 4 h</td><td className="p-2">ADRENAL 2018 (faster shock resolution); APROCCHSS 2018 (mortality ↓)</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Adrenaline</td><td className="p-2">α + β; 0.05–1.0 µg/kg/min</td><td className="p-2">Refractory shock; useful if myocardial depression</td><td className="p-2">CAT 2008 (non-inferior to NA + dobutamine but ↑ lactate)</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Dobutamine</td><td className="p-2">β₁; 2.5–20 µg/kg/min</td><td className="p-2">Septic cardiomyopathy / low CO despite MAP target</td><td className="p-2">Guided by echo / advanced monitoring</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Angiotensin II</td><td className="p-2">AT₁; 20 ng/kg/min titrate</td><td className="p-2">Catecholamine-resistant; specialist use</td><td className="p-2">ATHOS-3 2017 (↑ MAP response, no mortality benefit)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground mt-3">
+            <strong>Peripheral noradrenaline</strong> is safe via a proximal large-bore cannula for up to 6 h while CVC access is being obtained (Cardenas-Garcia 2015 cohort); this avoids the mortality cost of waiting for a CVC before starting pressors (CENSER trial — early NA improved shock control).
+          </p>
+        </div>
+
+        <div id="steroids">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hydrocortisone in septic shock</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            SSC 2021 recommends IV hydrocortisone 200 mg/day for adults with septic shock who require ongoing vasopressor support (typically noradrenaline ≥ 0.25 µg/kg/min for ≥ 4 h). Administer as 50 mg every 6 h or a continuous infusion; wean over 2–3 days as vasopressors are weaned. Mineralocorticoid (fludrocortisone) is used in APROCCHSS but not routinely in UK practice. Steroids carry hyperglycaemia and superinfection risk — they are an adjunct, not a replacement for source control or appropriate antibiotics.
+          </p>
+        </div>
+
+        <div id="biomarkers">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lactate, CRP &amp; procalcitonin</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Biomarker</th>
+                <th className="text-left p-2 font-semibold text-foreground">Role in sepsis</th>
+                <th className="text-left p-2 font-semibold text-foreground">Caveats</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground align-top">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Lactate</td><td className="p-2">Marker of perfusion / metabolic stress; falling lactate (&gt; 10–20% / 2 h) suggests adequate resuscitation</td><td className="p-2">Non-specific — also raised in seizures, salbutamol, metformin, hepatic failure, type B (mitochondrial) sepsis</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">CRP</td><td className="p-2">Trend useful for treatment response; rises later than PCT</td><td className="p-2">Not specific for bacterial infection; not a stewardship tool</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Procalcitonin</td><td className="p-2">Bacterial-specific; guides antibiotic <em>discontinuation</em> (stop if &lt; 0.5 µg/L or &gt; 80% fall)</td><td className="p-2">Unreliable in first 6–12 h, post-surgery, burns, ESRD; do not use to <em>withhold</em> antibiotics in shock</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Presepsin (sCD14-ST)</td><td className="p-2">Emerging early marker — rises within 2 h</td><td className="p-2">Not yet routinely available in UK labs</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <SepsisBiomarkerKineticsDiagram />
+        </div>
+
+        <div id="trial-evidence">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Landmark trial evidence</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Trial (year)</th>
+                <th className="text-left p-2 font-semibold text-foreground">Question</th>
+                <th className="text-left p-2 font-semibold text-foreground">Key result</th>
+                <th className="text-left p-2 font-semibold text-foreground">Bottom line</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground align-top">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Rivers EGDT (2001)</td><td className="p-2">Protocolised early goal-directed therapy vs usual care</td><td className="p-2">28-d mortality 33% vs 49%</td><td className="p-2">Founded modern sepsis bundles; superseded by ARISE/ProCESS/ProMISe</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">ARISE / ProCESS / ProMISe (2014–15)</td><td className="p-2">EGDT vs usual care in contemporary practice</td><td className="p-2">No mortality difference</td><td className="p-2">Early recognition &amp; antibiotics matter more than CVP/ScvO₂ targets</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">SOAP-II (2010)</td><td className="p-2">Noradrenaline vs dopamine in shock</td><td className="p-2">No mortality difference; fewer arrhythmias with NA</td><td className="p-2">Noradrenaline first-line</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">VASST (2008)</td><td className="p-2">Low-dose vasopressin vs NA monotherapy</td><td className="p-2">Neutral overall; mortality benefit in less severe shock</td><td className="p-2">Vasopressin is a NA-sparing adjunct</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">VANISH (2016)</td><td className="p-2">Early vasopressin vs NA, ± hydrocortisone</td><td className="p-2">↓ RRT use with vasopressin</td><td className="p-2">Add vasopressin early to spare NA</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">SMART (2018)</td><td className="p-2">Balanced crystalloid vs saline (ICU)</td><td className="p-2">Composite of death/RRT/AKI 14.3% vs 15.4%</td><td className="p-2">Use balanced crystalloid first-line</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">ADRENAL (2018)</td><td className="p-2">Hydrocortisone infusion in septic shock</td><td className="p-2">No 90-d mortality benefit; faster shock resolution; ↓ transfusion</td><td className="p-2">Supports hydrocortisone for vasopressor weaning</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">APROCCHSS (2018)</td><td className="p-2">Hydrocortisone + fludrocortisone vs placebo</td><td className="p-2">90-d mortality 43% vs 49%</td><td className="p-2">Steroids reduce mortality in severe shock</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">CENSER (2019)</td><td className="p-2">Early peripheral NA vs standard</td><td className="p-2">↑ shock control by 6 h; ↓ pulmonary oedema</td><td className="p-2">Don't wait for CVC to start pressors</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">LOVIT (2022)</td><td className="p-2">High-dose IV vitamin C in septic shock</td><td className="p-2">Composite organ dysfunction/death HR 1.21</td><td className="p-2"><strong>Do not use</strong> vitamin C</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">CLASSIC (2022)</td><td className="p-2">Restrictive vs liberal fluid after initial resus</td><td className="p-2">No 90-d mortality difference (42.3% vs 42.1%)</td><td className="p-2">Restrictive strategy is safe</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">CLOVERS (2023)</td><td className="p-2">Early vasopressor vs liberal fluid</td><td className="p-2">No mortality difference (14.0% vs 14.9%)</td><td className="p-2">Either strategy acceptable; avoid over-resuscitation</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">PLUS (2022)</td><td className="p-2">Plasma-Lyte vs saline (ICU)</td><td className="p-2">Neutral 90-d mortality</td><td className="p-2">Balanced crystalloid still preferred on aggregate evidence</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">ATHOS-3 (2017)</td><td className="p-2">Angiotensin II in catecholamine-resistant shock</td><td className="p-2">↑ MAP response; no mortality benefit</td><td className="p-2">Specialist rescue agent</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="pitfalls"></div>
+
+        {/* FAQ */}
+        <div id="faq">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Frequently asked questions</h2>
+          <div className="space-y-2">
+            {sepsisFaqs.map(([q, a]) => (
+              <details key={q} className="group rounded-lg border border-border p-3">
+                <summary className="cursor-pointer font-semibold text-foreground text-sm">{q}</summary>
+                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        {/* FAQ JSON-LD for rich-result eligibility */}
+        <Helmet>
+          <script type="application/ld+json">{JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: sepsisFaqs.map(([name, acceptedAnswer]) => ({
+              "@type": "Question",
+              name,
+              acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+            })),
+          })}</script>
+        </Helmet>
+      </section>
+
+
 
       <SynthesisBlock
         title="Sepsis — Hour-1 Bundle Synthesis"
