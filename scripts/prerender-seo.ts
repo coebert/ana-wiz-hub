@@ -443,6 +443,7 @@ async function main() {
   let overwroteRoot = false;
   let withFaq = 0;
   let withBreadcrumb = 0;
+  let withWebSite = 0;
 
   for (const path of routes) {
     const seo = seoFor(path);
@@ -457,10 +458,11 @@ async function main() {
     if (path === "/") overwroteRoot = true;
     if (faqs && faqs.length > 0) withFaq++;
     if (path !== "/") withBreadcrumb++;
+    withWebSite++;
   }
 
   console.log(
-    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root); ${withFaq} include FAQPage JSON-LD; ${withBreadcrumb} include BreadcrumbList JSON-LD.`,
+    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root); ${withWebSite} include WebSite/SearchAction JSON-LD; ${withFaq} include FAQPage JSON-LD; ${withBreadcrumb} include BreadcrumbList JSON-LD.`,
   );
 }
 
