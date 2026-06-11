@@ -13,6 +13,20 @@ import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
 import AlbuminFluidShiftDiagram from "@/components/diagrams/AlbuminFluidShiftDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+
+const sepsisTocItems = [
+  { id: "sepsis-3", label: "Sepsis-3 definitions & scores", group: "Core" },
+  { id: "hour-1", label: "SSC Hour-1 bundle", group: "Core" },
+  { id: "antibiotics", label: "Antibiotics & source control", group: "Management" },
+  { id: "fluids", label: "Fluid resuscitation", group: "Management" },
+  { id: "vasopressors", label: "Vasopressors & inotropes", group: "Management" },
+  { id: "steroids", label: "Hydrocortisone", group: "Management" },
+  { id: "biomarkers", label: "Lactate, CRP & PCT", group: "Monitoring" },
+  { id: "trial-evidence", label: "Landmark trials", group: "Evidence" },
+  { id: "pitfalls", label: "Exam pitfalls", group: "Reference" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
 
 const sepsisFaqs: Array<[string, string]> = [
   [
