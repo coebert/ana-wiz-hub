@@ -809,6 +809,7 @@ const AdminDashboard = () => {
   const tabs = [
     { key: "overview" as const, label: "Overview", icon: BarChart3, hint: "Headline usage stats and weekly activity" },
     { key: "topics" as const, label: "Topic Analytics", icon: BookOpen, hint: "Most and least visited topics" },
+    { key: "seo" as const, label: "SEO", icon: TrendingUp, hint: "Google Search Console rankings, clicks, and top queries" },
   ];
 
 
