@@ -621,21 +621,72 @@ const AkiRrtTopic = () => {
         </ExamSection>
 
         <ExamSection id="toc-trials" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
-          <CollapsibleSubsection title="Key Trials">
-          <div className="space-y-3">
-            {[
-              { trial: "KDIGO Guidelines", result: "Effluent dose 20-25 ml/kg/hr for CRRT (higher doses no benefit — ATN & RENAL trials)" },
-              { trial: "STARRT-AKI (2020)", result: "Accelerated vs standard timing of RRT initiation — no difference in 90-day mortality. Supports waiting for conventional indications." },
-              { trial: "AKIKI (2016)", result: "Early vs delayed RRT — no mortality benefit from early initiation. Delayed strategy avoided RRT in 49% of patients." },
-            ].map((t) => (
-              <div key={t.trial} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{t.trial}</p>
-                <p className="text-sm text-muted-foreground mt-1">{t.result}</p>
-              </div>
-            ))}
-          </div>
+          <CollapsibleSubsection title="Landmark trial evidence">
+            <div className="overflow-x-auto -mx-2 sm:mx-0">
+              <table className="w-full text-xs border border-border bg-card rounded-lg">
+                <thead className="bg-muted/40">
+                  <tr>
+                    <th className="text-left px-3 py-2 font-semibold text-foreground">Trial (year)</th>
+                    <th className="text-left px-3 py-2 font-semibold text-foreground">Question</th>
+                    <th className="text-left px-3 py-2 font-semibold text-foreground">Result</th>
+                    <th className="text-left px-3 py-2 font-semibold text-foreground">Practice impact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["AKIKI (Gaudry, NEJM 2016)", "Early (≤ 6 h) vs delayed RRT in KDIGO stage 3 AKI, n = 620", "No 60-d mortality difference (48.5% vs 49.7%); 49% of delayed arm avoided RRT", "Supports waiting for AEIOU triggers"],
+                    ["ELAIN (Zarbock, JAMA 2016)", "Early (KDIGO 2) vs delayed (KDIGO 3) RRT, single-centre, n = 231", "90-d mortality 39.3% vs 54.7% with early (HR 0.66)", "Outlier positive; not reproduced in larger trials"],
+                    ["IDEAL-ICU (Barbar, NEJM 2018)", "Early (12 h) vs delayed (48 h) RRT in septic shock + RIFLE-F, n = 488", "Stopped early for futility — no 90-d mortality difference", "No benefit to early initiation in septic AKI"],
+                    ["STARRT-AKI (Bagshaw, NEJM 2020)", "Accelerated (≤ 12 h) vs standard RRT initiation, n = 3 019", "No 90-d mortality difference (43.9% vs 43.7%); MORE dialysis dependence with accelerated (10.4% vs 6.0%)", "Definitive — wait for conventional indications"],
+                    ["AKIKI 2 (Gaudry, Lancet 2021)", "Further delayed vs delayed RRT (very late strategy) in KDIGO 3, n = 278", "No mortality benefit and trend to harm from very late strategy", "Don't delay past urea > 40 mmol/L or 72 h of oliguria"],
+                    ["RENAL (NEJM 2009)", "Higher (40 mL/kg/h) vs lower (25 mL/kg/h) CVVHDF dose, n = 1 508", "No 90-d mortality difference (44.7% vs 44.7%)", "Effluent dose 20–25 mL/kg/h is standard"],
+                    ["ATN (VA/NIH, NEJM 2008)", "Intensive vs less intensive RRT, n = 1 124", "No 60-d mortality difference (53.6% vs 51.5%)", "Confirms standard-dose CRRT/IHD"],
+                    ["RICH (Zarbock, JAMA 2020)", "Regional citrate vs systemic heparin anticoagulation, n = 596", "Citrate: longer circuit life (47 h vs 26 h), fewer bleeding events; no mortality difference", "RCA first-line where citrate available"],
+                    ["CONVINT / HEMODIAFE", "CRRT vs IHD in haemodynamically tolerable AKI", "No mortality difference", "Modality choice driven by haemodynamics, not survival"],
+                    ["PRESERVE (Weisbord, NEJM 2018)", "Saline vs bicarbonate ± N-acetylcysteine for CI-AKI prevention, n = 5 177", "No difference in CI-AKI; NAC ineffective", "Hydration with saline; NAC abandoned"],
+                    ["AMACING (Nijssen, Lancet 2017)", "IV hydration vs no hydration in high-risk contrast exposure, n = 660", "Non-inferiority for AKI; cost-effective", "Selective hydration reasonable in stable outpatients"],
+                    ["SPLIT / SMART", "Balanced crystalloids vs 0.9% saline in critically ill", "SMART: lower MAKE-30 with balanced (14.3% vs 15.4%)", "Prefer balanced crystalloids in ICU/AKI risk"],
+                    ["EARLY-AKI (KDIGO bundle trials)", "KDIGO care bundle (avoid nephrotoxins, optimise haemodynamics, monitor) vs usual care after major surgery", "Reduces AKI incidence ~20–30%", "Implement KDIGO post-op bundle in high-risk surgery"],
+                    ["FST (Furosemide Stress Test, Chawla 2013)", "1.0–1.5 mg/kg furosemide bolus; UO < 200 mL in 2 h predicts AKI progression", "AUC ~ 0.87 for progression to stage 3 / RRT", "Useful adjunct, not a treatment"],
+                  ].map((r) => (
+                    <tr key={r[0]} className="border-t border-border align-top">
+                      <td className="px-3 py-1.5 font-medium text-foreground whitespace-nowrap">{r[0]}</td>
+                      <td className="px-3 py-1.5 text-foreground/85">{r[1]}</td>
+                      <td className="px-3 py-1.5 text-foreground/85">{r[2]}</td>
+                      <td className="px-3 py-1.5 text-muted-foreground">{r[3]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </CollapsibleSubsection>
         </ExamSection>
+
+        <ExamSection id="toc-faq" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
+          <CollapsibleSubsection title="Frequently asked questions">
+            <Accordion type="single" collapsible className="w-full">
+              {akiFaqs.map(([q, a], i) => (
+                <AccordionItem key={q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-sm font-medium text-foreground">{q}</AccordionTrigger>
+                  <AccordionContent className="text-xs text-muted-foreground leading-relaxed">{a}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </CollapsibleSubsection>
+        </ExamSection>
+
+        <Helmet>
+          <script type="application/ld+json">{JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: akiFaqs.map(([name, acceptedAnswer]) => ({
+              "@type": "Question",
+              name,
+              acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+            })),
+          })}</script>
+        </Helmet>
+
 
         <SynthesisBlock
           title="AKI & RRT — At a Glance"
