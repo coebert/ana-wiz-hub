@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
@@ -12,6 +13,7 @@ import PcaEpiduralCalculator from "@/components/diagrams/PcaEpiduralCalculator";
 import { SpinalCordStimulatorDiagram } from "@/components/diagrams/SpinalCordStimulatorDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const objectives = [
   "Distinguish nociceptive, neuropathic and nociplastic pain mechanisms and tailor pharmacotherapy accordingly",
@@ -44,9 +46,86 @@ const workedExamples: WorkedExample[] = [
   },
 ];
 
+
+const tocItems = [
+  { id: "pathways", label: "Pain Pathways & Classification", group: "Core" },
+  { id: "multimodal", label: "Multimodal Analgesia", group: "Core" },
+  { id: "magnesium", label: "IV Magnesium", group: "Adjuncts" },
+  { id: "lidocaine", label: "IV Lidocaine", group: "Adjuncts" },
+  { id: "neuropathic", label: "Neuropathic Pain", group: "Chronic" },
+  { id: "chronic", label: "Chronic Pain Principles", group: "Chronic" },
+  { id: "fibromyalgia", label: "Fibromyalgia", group: "Chronic" },
+  { id: "mecfs", label: "ME/CFS", group: "Chronic" },
+  { id: "crps", label: "CRPS", group: "Chronic" },
+  { id: "cancer", label: "Cancer Pain", group: "Cancer" },
+  { id: "scs", label: "Spinal Cord Stimulation", group: "Interventional" },
+  { id: "nerve-root", label: "Nerve Root Injections", group: "Interventional" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
+
+const painFaqs: Array<[string, string]> = [
+  [
+    "What is the difference between nociceptive, neuropathic and nociplastic pain?",
+    "Nociceptive pain arises from actual or threatened tissue damage — it is the normal physiological response to noxious stimuli (somatic or visceral). Neuropathic pain is caused by a lesion or disease of the somatosensory nervous system — it features burning, shooting, allodynia and hyperalgesia. Nociplastic pain arises from altered nociception despite no clear tissue damage or nerve lesion — the hallmark is central sensitisation, where the CNS amplifies pain signals. Fibromyalgia, chronic primary low back pain and irritable bowel syndrome are classic nociplastic conditions. The distinction matters because drugs that work for one type may be ineffective or harmful for another — for example, NSAIDs and opioids are generally ineffective for nociplastic pain, whereas amitriptyline, duloxetine and graded exercise can help.",
+  ],
+  [
+    "What does NICE NG193 recommend for chronic primary pain?",
+    "NICE NG193 (2021) recommends a deliberate shift away from pharmacological management of chronic primary pain. Paracetamol, NSAIDs, opioids, gabapentinoids and benzodiazepines are explicitly NOT recommended. Instead, offer: (1) supervised group exercise programmes, (2) cognitive behavioural therapy (CBT) or acceptance and commitment therapy (ACT), (3) acupuncture, and (4) certain antidepressants (amitriptyline, citalopram, duloxetine, fluoxetine, paroxetine, sertraline) as a single option if exercise and psychological therapy are insufficient. The guideline reflects evidence that long-term drugs provide minimal benefit and substantial harm in chronic primary pain, whereas exercise and psychological therapy improve function and quality of life.",
+  ],
+  [
+    "How does IV magnesium work as an analgesic?",
+    "Magnesium is a physiological NMDA receptor antagonist and calcium channel blocker. It prevents glutamate-mediated central sensitisation and wind-up in the dorsal horn, potentiates opioid receptor binding, and has anti-inflammatory effects (reduces IL-6, TNF-α and CRP). Dosing: 30–50 mg/kg IV bolus over 15–30 min at induction, then 6–15 mg/kg/hr intraoperatively. The Albrecht 2013 Cochrane review of 25 RCTs found IV magnesium reduced 24-hour morphine consumption by ~25% and decreased PONV without increasing haemodynamic instability. Monitor deep tendon reflexes and respiratory rate — high serum magnesium can cause hypotension, muscle weakness and prolonged neuromuscular blockade.",
+  ],
+  [
+    "What is the evidence for IV lidocaine in perioperative analgesia?",
+    "IV lidocaine blocks voltage-gated sodium channels, inhibits pro-inflammatory cytokines, and has weak NMDA antagonism and glycinergic potentiation. The Weibel 2018 Cochrane review (68 RCTs, 4,525 patients) found IV lidocaine reduced opioid consumption, PONV, ileus duration and hospital length of stay — but primarily in open abdominal surgery. The LOLIPOP trial (2024), a large multicentre RCT in laparoscopic surgery, found no significant benefit over placebo. The consensus is that IV lidocaine has strongest evidence in open abdominal and colorectal surgery (where ERAS protocols include it when epidural is not feasible), but its role in minimally invasive surgery is less convincing. Dosing: 1–1.5 mg/kg bolus then 1–2 mg/kg/hr infusion.",
+  ],
+  [
+    "What are the Budapest criteria for CRPS?",
+    "The Budapest criteria (Harden 2010, IASP-endorsed) require all four to be met: (1) Continuing pain disproportionate to the inciting event; (2) Symptoms reported in at least 3 of 4 categories: sensory (hyperalgesia, allodynia), vasomotor (temperature/skin colour asymmetry), sudomotor/oedema (sweating, swelling), and motor/trophic (weakness, tremor, dystonia, hair/nail/skin changes); (3) Signs at examination in at least 2 of the same 4 categories; (4) No alternative diagnosis better explains the signs and symptoms. The criteria distinguish CRPS-I (no identifiable nerve lesion, ~90%) from CRPS-II (following identifiable nerve injury). Early MDT rehabilitation within 6 months of onset is the single most important predictor of good outcome.",
+  ],
+  [
+    "What is the modern approach to the WHO analgesic ladder for cancer pain?",
+    "The 2018 WHO cancer pain guideline moved away from rigid stepwise progression. Step 2 (weak opioids like codeine and tramadol) is increasingly skipped because these drugs have ceiling effects and poor tolerability. Instead, start low-dose strong opioids (e.g., morphine 5 mg q4h) for moderate–severe pain from the outset. A fourth 'interventional' step has been proposed for refractory pain — coeliac plexus neurolysis, intrathecal drug delivery, and spinal cord stimulation. Adjuvants are essential and mechanism-based: NSAIDs + bisphosphonates for bone pain, gabapentinoids/TCAs/SNRIs for neuropathic pain, and steroids for inflammatory pain. Breakthrough pain is managed with rescue doses equal to 1/6 to 1/10 of the 24-hour oral morphine equivalent.",
+  ],
+  [
+    "How is safe opioid rotation performed?",
+    "Opioid rotation is indicated when analgesia is inadequate, side effects are intolerable, or renal impairment requires a safer agent. Steps: (1) Calculate the 24-hour oral morphine equivalent dose (OMEDD); (2) Convert to the equianalgesic dose of the new opioid using a standard table; (3) Reduce by 25–50% for incomplete cross-tolerance (50% if elderly, frail, or renal/hepatic impairment); (4) Provide rescue doses at 1/6 of the new 24-hour dose; (5) Titrate over 2–3 days. Key ratios: oral morphine 30 mg ≈ oral oxycodone 15–20 mg ≈ oral hydromorphone 4–6 mg. Transdermal fentanyl 25 µg/hr ≈ 60–90 mg oral morphine/day. Methadone has a variable ratio (5–15×) and long unpredictable half-life — specialist initiation only.",
+  ],
+  [
+    "What is spinal cord stimulation and when is it indicated?",
+    "Spinal cord stimulation (SCS) delivers low-voltage electrical pulses to the dorsal columns via an epidural electrode array, modulating pain transmission per the gate control theory. NICE TA159 recommends SCS for chronic neuropathic pain >6 months despite conventional therapy, after a successful percutaneous trial (>50% pain reduction and functional gain). Strongest evidence exists for failed back surgery syndrome with radicular leg pain (PROCESS trial), CRPS (Kemler NEJM 2000), and painful diabetic neuropathy (SENZA-PDN). Newer waveforms include 10 kHz high-frequency, burst, and closed-loop ECAP-controlled systems. Mandatory psychology assessment and a successful trial are prerequisites before permanent implantation.",
+  ],
+  [
+    "What are the key safety principles for nerve root injections?",
+    "Nerve root (transforaminal epidural steroid) injections must be performed with real-time fluoroscopy and iodinated contrast — blind injection is no longer acceptable. Use non-particulate steroid (dexamethasone) for all cervical and thoracic injections, and consider it for lumbar too, because particulate steroids (methylprednisolone, triamcinolone) can embolise into radiculomedullary arteries causing spinal cord infarction. The patient should be awake or only lightly sedated — deep sedation masks intravascular or intrathecal injection. Stop antiplatelets and anticoagulants per ASRA neuraxial guidance. Always confirm contrast spread excludes vascular uptake (rapid washout) and intrathecal spread (myelogram pattern). Keep resuscitation drugs and Intralipid 20% immediately available for local anaesthetic systemic toxicity.",
+  ],
+  [
+    "What are the anaesthetic considerations for spinal cord stimulation implantation?",
+    "SCS trial and percutaneous lead placement are typically performed under local anaesthesia with conscious sedation, because intra-operative paraesthesia mapping requires a cooperative, communicating patient. The IPG pocket and tunnelling may be done under deeper sedation or short GA after lead position is confirmed. Key points: prone position with chest/pelvis bolsters; full AAGBI monitoring plus capnography (sedated prone patients are high-risk for airway obstruction); supplemental O₂ via nasal specs. Target-controlled propofol Ce 0.8–1.5 µg/mL ± remifentanil, or dexmedetomidine 0.2–0.6 µg/kg/hr (preserves cooperation, no respiratory depression). Avoid opioid or benzodiazepine boluses during paraesthesia mapping. Prophylactic IV antibiotics within 60 minutes. Post-op: watch for new neurological deficit (epidural haematoma — urgent MRI within 8 hours), restrict trunk flexion/lifting for 6 weeks to prevent lead migration, and ensure the patient has a device wallet card.",
+  ],
+];
+
 const PainMedicineTopic = () => {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: painFaqs.map(([name, acceptedAnswer]) => ({
+      "@type": "Question",
+      name,
+      acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+    })),
+  };
+
   return (
-    <TopicTemplate
+    <>
+      <Helmet>
+        <title>Pain Medicine: Multimodal, Neuropathic & Cancer | FRCA</title>
+        <meta name="description" content="FRCA Final & FFICM pain medicine: acute and chronic pain mechanisms, multimodal analgesia, neuropathic pain guidelines, CRPS, cancer pain, opioid rotation, SCS, and interventional techniques." />
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+      </Helmet>
+
+      <TopicTemplate
       title="Pain Medicine"
       subtitle="FRCA / FFICM — Clinical Anaesthesia"
       backPath="/clinical"
@@ -105,6 +184,7 @@ const PainMedicineTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <section className="space-y-6">
+        <div id="pathways" className="scroll-mt-24">
         <CollapsibleSubsection title="Pain Pathways & Classification" defaultOpen>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Pain is classified as nociceptive (somatic/visceral), neuropathic (nerve damage), or nociplastic (central sensitisation without tissue/nerve damage).
@@ -123,6 +203,7 @@ const PainMedicineTopic = () => {
 
         <DorsalHornSynapseDiagram />
 
+        <div id="multimodal" className="scroll-mt-24">
         <CollapsibleSubsection title="Multimodal Analgesia (WHO Ladder & Beyond)">
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -146,6 +227,7 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
 
+        <div id="magnesium" className="scroll-mt-24">
         <CollapsibleSubsection title="IV Magnesium as an Analgesic">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Magnesium is a physiological NMDA receptor antagonist and calcium channel blocker with established analgesic properties when used perioperatively.
@@ -181,6 +263,7 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
 
+        <div id="lidocaine" className="scroll-mt-24">
         <CollapsibleSubsection title="IV Lidocaine (Lignocaine) as an Analgesic">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Systemic IV lidocaine infusion has emerged as a key component of multimodal, opioid-sparing analgesia, particularly in abdominal surgery where regional anaesthesia is not possible.
@@ -218,6 +301,7 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
 
+        <div id="neuropathic" className="scroll-mt-24">
         <CollapsibleSubsection title="Neuropathic Pain Management">
           <div className="space-y-2">
             {[
@@ -234,6 +318,7 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
 
+        <div id="chronic" className="scroll-mt-24">
         <CollapsibleSubsection title="Chronic Pain — General Principles">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Chronic pain is defined (IASP / ICD-11, 2019) as pain that persists or recurs for &gt;3 months. It is now formally recognised as a <strong>disease in its own right</strong> when it cannot be better explained by another condition (chronic primary pain) — encompassing fibromyalgia, chronic primary low back pain, primary headaches and CRPS. The dominant biological substrate is <strong>central sensitisation / nociplastic pain</strong>: amplified central nervous system processing without ongoing tissue or nerve damage. Genetic predisposition, adverse childhood experiences, sleep disruption, mood disorder and autonomic dysregulation all contribute.
@@ -310,6 +395,7 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
 
+        <div id="fibromyalgia" className="scroll-mt-24">
         <CollapsibleSubsection title="Fibromyalgia">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Prevalence ~2–4%, F:M ~3:1. Now diagnosed using the <strong>2016 revised ACR criteria</strong>: Widespread Pain Index (WPI) ≥7 + Symptom Severity Score (SSS) ≥5 (or WPI 4–6 + SSS ≥9) for ≥3 months, with no condition that better explains the pain. The original 1990 tender-point criteria are obsolete.
@@ -338,6 +424,7 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
 
+        <div id="mecfs" className="scroll-mt-24">
         <CollapsibleSubsection title="Myalgic Encephalomyelitis / Chronic Fatigue Syndrome (ME/CFS)">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Diagnosed clinically (<strong>NICE NG206, 2021</strong>; IOM 2015 criteria) by ≥3 months of <strong>debilitating fatigue + post-exertional malaise (PEM) + unrefreshing sleep + cognitive dysfunction or orthostatic intolerance</strong>, after exclusion of alternative diagnoses. Often follows a viral illness; long-COVID overlaps clinically and may share mechanisms.
@@ -367,6 +454,7 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
 
+        <div id="crps" className="scroll-mt-24">
         <CollapsibleSubsection title="Complex Regional Pain Syndrome (CRPS)">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Disabling regional pain syndrome typically following a (often minor) limb injury or surgery. <strong>CRPS-I</strong> = no identifiable nerve lesion (~90%); <strong>CRPS-II</strong> = following identifiable peripheral nerve injury. Female:male ~3–4:1, peak 40–60 yr. Diagnosed clinically using the <strong>Budapest criteria (Harden 2010, IASP-endorsed)</strong>:
@@ -406,6 +494,7 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
 
+        <div id="cancer" className="scroll-mt-24">
         <CollapsibleSubsection title="Cancer Pain Management">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Pain affects ~55% of patients during cancer treatment and ~66% of those with advanced disease (van den Beuken-van Everdingen, 2016). Despite decades of guidance it remains <strong>under-treated in around one-third</strong> of patients (the "pain treatment gap"). Modern cancer pain care is mechanism-based, multimodal, integrated with oncology and palliative care, and increasingly involves interventional techniques alongside opioids.
@@ -594,6 +683,7 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
 
+        <div id="scs" className="scroll-mt-24">
         <CollapsibleSubsection title="Spinal Cord Stimulation (SCS) — Neuromodulation">
           <p className="text-muted-foreground leading-relaxed mb-3">
             SCS delivers low-voltage electrical pulses to the dorsal columns via an epidural electrode array, modulating the gate (Melzack &amp; Wall) and supraspinal pain networks. NICE TA159 (2008, reaffirmed) recommends SCS for chronic neuropathic pain &gt; 6 months despite conventional therapy after a successful percutaneous trial. Strongest evidence: <strong>failed back surgery syndrome (FBSS)</strong> with predominant radicular leg pain (PROCESS trial, Kumar 2007), <strong>complex regional pain syndrome (CRPS)</strong>, refractory angina, and painful diabetic neuropathy (SENZA-PDN, Petersen 2021). Newer waveforms — 10 kHz high-frequency (SENZA-RCT, Kapural 2015), burst (DeRidder), and closed-loop ECAP-controlled (Mekhail 2020) — provide sub-perception analgesia without paraesthesia.
@@ -812,6 +902,7 @@ const PainMedicineTopic = () => {
       </ExamSection>
       }
     />
+    </>
   );
 };
 
