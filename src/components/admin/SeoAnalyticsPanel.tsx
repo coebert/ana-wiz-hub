@@ -36,11 +36,53 @@ function fmtPos(n: number | undefined) {
   return n.toFixed(1);
 }
 
-function countryFlag(code: string | undefined) {
-  if (!code || code.length !== 3) return "";
-  // GSC uses ISO 3166-1 alpha-3; convert by mapping first two letters of name fallback.
-  // Simpler: leave blank for unknown alpha-3. We'll just show code uppercased.
-  return code.toUpperCase();
+// GSC returns ISO 3166-1 alpha-3 country codes. Map the common ones to
+// alpha-2 (for the flag emoji) + display name. Unknown codes fall back to
+// the raw code so we never render an empty cell.
+const COUNTRY_MAP: Record<string, { a2: string; name: string }> = {
+  gbr: { a2: "GB", name: "United Kingdom" }, usa: { a2: "US", name: "United States" },
+  irl: { a2: "IE", name: "Ireland" },         aus: { a2: "AU", name: "Australia" },
+  nzl: { a2: "NZ", name: "New Zealand" },     can: { a2: "CA", name: "Canada" },
+  ind: { a2: "IN", name: "India" },           pak: { a2: "PK", name: "Pakistan" },
+  zaf: { a2: "ZA", name: "South Africa" },    nga: { a2: "NG", name: "Nigeria" },
+  ken: { a2: "KE", name: "Kenya" },           egy: { a2: "EG", name: "Egypt" },
+  sgp: { a2: "SG", name: "Singapore" },       mys: { a2: "MY", name: "Malaysia" },
+  hkg: { a2: "HK", name: "Hong Kong" },       are: { a2: "AE", name: "UAE" },
+  sau: { a2: "SA", name: "Saudi Arabia" },    deu: { a2: "DE", name: "Germany" },
+  fra: { a2: "FR", name: "France" },          esp: { a2: "ES", name: "Spain" },
+  ita: { a2: "IT", name: "Italy" },           nld: { a2: "NL", name: "Netherlands" },
+  bel: { a2: "BE", name: "Belgium" },         che: { a2: "CH", name: "Switzerland" },
+  swe: { a2: "SE", name: "Sweden" },          nor: { a2: "NO", name: "Norway" },
+  dnk: { a2: "DK", name: "Denmark" },         fin: { a2: "FI", name: "Finland" },
+  pol: { a2: "PL", name: "Poland" },          prt: { a2: "PT", name: "Portugal" },
+  grc: { a2: "GR", name: "Greece" },          tur: { a2: "TR", name: "Turkey" },
+  bra: { a2: "BR", name: "Brazil" },          mex: { a2: "MX", name: "Mexico" },
+  arg: { a2: "AR", name: "Argentina" },       chl: { a2: "CL", name: "Chile" },
+  col: { a2: "CO", name: "Colombia" },        per: { a2: "PE", name: "Peru" },
+  jpn: { a2: "JP", name: "Japan" },           kor: { a2: "KR", name: "South Korea" },
+  chn: { a2: "CN", name: "China" },           twn: { a2: "TW", name: "Taiwan" },
+  tha: { a2: "TH", name: "Thailand" },        vnm: { a2: "VN", name: "Vietnam" },
+  idn: { a2: "ID", name: "Indonesia" },       phl: { a2: "PH", name: "Philippines" },
+  bgd: { a2: "BD", name: "Bangladesh" },      lka: { a2: "LK", name: "Sri Lanka" },
+  npl: { a2: "NP", name: "Nepal" },           irn: { a2: "IR", name: "Iran" },
+  irq: { a2: "IQ", name: "Iraq" },            isr: { a2: "IL", name: "Israel" },
+  rou: { a2: "RO", name: "Romania" },         hun: { a2: "HU", name: "Hungary" },
+  cze: { a2: "CZ", name: "Czechia" },         aut: { a2: "AT", name: "Austria" },
+  ukr: { a2: "UA", name: "Ukraine" },         rus: { a2: "RU", name: "Russia" },
+};
+
+function flagEmoji(a2: string) {
+  if (a2.length !== 2) return "";
+  const A = 0x1f1e6;
+  return String.fromCodePoint(A + a2.charCodeAt(0) - 65, A + a2.charCodeAt(1) - 65);
+}
+
+function describeCountry(code: string | undefined) {
+  if (!code) return { flag: "", name: "—" };
+  const lc = code.toLowerCase();
+  const m = COUNTRY_MAP[lc];
+  if (m) return { flag: flagEmoji(m.a2), name: m.name };
+  return { flag: "", name: code.toUpperCase() };
 }
 
 const RANGE_OPTIONS = [
@@ -113,6 +155,17 @@ export default function SeoAnalyticsPanel() {
           <Button variant="outline" size="sm" onClick={() => load(days)} disabled={loading}>
             <RefreshCw className={`w-4 h-4 mr-1 ${loading ? "animate-spin" : ""}`} aria-hidden="true" />
             Refresh
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <a
+              href={`https://search.google.com/search-console/performance/search-analytics?resource_id=${encodeURIComponent(data?.site ?? "https://anaesthesiacore.app/")}`}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Search Console in a new tab"
+            >
+              <ExternalLink className="w-4 h-4 mr-1" aria-hidden="true" />
+              Search Console
+            </a>
           </Button>
         </div>
       </header>
@@ -244,13 +297,20 @@ export default function SeoAnalyticsPanel() {
             <Globe className="w-4 h-4 text-primary" aria-hidden="true" /> Top countries
           </h3>
           <ul className="space-y-1.5 text-sm">
-            {(data?.topCountries?.rows ?? []).map((r, i) => (
-              <li key={i} className="flex items-center justify-between">
-                <span className="font-mono uppercase">{countryFlag(r.keys?.[0])}</span>
-                <span className="flex-1 px-3 text-muted-foreground">{fmtNum(r.clicks)} clicks · {fmtNum(r.impressions)} impr.</span>
-                <span className="tabular-nums text-muted-foreground">pos {fmtPos(r.position)}</span>
-              </li>
-            ))}
+            {(data?.topCountries?.rows ?? []).map((r, i) => {
+              const c = describeCountry(r.keys?.[0]);
+              return (
+                <li key={i} className="flex items-center justify-between gap-2">
+                  <span className="flex items-center gap-2 min-w-0">
+                    <span aria-hidden="true">{c.flag}</span>
+                    <span className="truncate">{c.name}</span>
+                  </span>
+                  <span className="text-muted-foreground text-xs tabular-nums shrink-0">
+                    {fmtNum(r.clicks)} clicks · pos {fmtPos(r.position)}
+                  </span>
+                </li>
+              );
+            })}
             {(!data?.topCountries?.rows || data.topCountries.rows.length === 0) && (
               <li className="text-muted-foreground">No data yet.</li>
             )}
