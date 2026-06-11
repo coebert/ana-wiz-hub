@@ -115,7 +115,7 @@ const VascularAccessDevicesTopic = () => {
               <DwellTimeInfographic />
             </DiagramSection>
           </ExamSection>
-          $<ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-classification" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               How to classify vascular access
             </h2>
@@ -158,7 +158,7 @@ const VascularAccessDevicesTopic = () => {
             </div>
           </ExamSection>
 
-          $<ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-peripheral-cannulae" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Peripheral cannulae
             </h2>
@@ -190,7 +190,7 @@ const VascularAccessDevicesTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-midline-catheters" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Midline catheters
             </h2>
@@ -210,7 +210,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-picc-lines" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               PICC lines
             </h2>
@@ -242,7 +242,7 @@ const VascularAccessDevicesTopic = () => {
             </div>
           </ExamSection>
 
-          $<ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-multi-lumen-cvc" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Multi-lumen central venous catheter (CVC)
             </h2>
@@ -282,7 +282,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-vascath-haemodialysis" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Vascath / haemodialysis catheter
             </h2>
@@ -305,7 +305,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-trauma-lines" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Trauma lines — RIC and MAC
             </h2>
@@ -336,7 +336,7 @@ const VascularAccessDevicesTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-swan-ganz-long-term" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Swan-Ganz introducer sheath
             </h2>
@@ -362,7 +362,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-swan-ganz-long-term" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Long-term (tunnelled & implanted) vascular access devices
             </h2>
@@ -433,7 +433,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-dwell-times-scenarios" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Evidence on safe dwell times by device & site
             </h2>
@@ -530,7 +530,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          $<ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-dwell-times-scenarios" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Choosing a device — clinical scenarios
             </h2>
