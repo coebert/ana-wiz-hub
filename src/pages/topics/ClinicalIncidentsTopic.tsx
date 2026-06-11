@@ -8,6 +8,7 @@ import AnaphylaxisPathophysiologyDiagram from "@/components/diagrams/Anaphylaxis
 import { AnaphylaxisCascadeDiagram } from "@/components/diagrams/AnaphylaxisCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { Link } from "react-router-dom";
 
 const objectives = [
   "Recognise and manage perioperative anaphylaxis using the AAGBI/RCoA algorithm (adrenaline first)",
@@ -140,7 +141,7 @@ const ClinicalIncidentsTopic = () => {
           <ExamSection id="anaphylaxis" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
             <CollapsibleSubsection title="Anaphylaxis" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (NAP6). NMBAs are the commonest cause (~60%), followed by antibiotics (especially teicoplanin), chlorhexidine, and patent blue dye.
+              Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (NAP6). <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">NMBAs</Link> are the commonest cause (~60%), followed by antibiotics (especially teicoplanin), chlorhexidine, and patent blue dye.
             </p>
             <div className="rounded-xl border border-border bg-card p-5 space-y-2">
               <p className="font-semibold text-foreground text-sm">AAGBI/RCoA Management Algorithm</p>
@@ -164,7 +165,7 @@ const ClinicalIncidentsTopic = () => {
           <ExamSection id="mh" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Malignant Hyperthermia (MH)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Autosomal dominant ryanodine receptor (RYR1) mutation. Triggered by volatile agents and suxamethonium. Incidence ~1:5,000–15,000. Mortality now &lt; 5% with dantrolene.
+              Autosomal dominant ryanodine receptor (RYR1) mutation. Triggered by volatile agents and <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">suxamethonium</Link>. Incidence ~1:5,000–15,000. Mortality now &lt; 5% with dantrolene.
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-3 rounded-lg border border-border">

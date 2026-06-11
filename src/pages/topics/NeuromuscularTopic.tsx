@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { Link } from "react-router-dom";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { NMJDiagram } from "@/components/diagrams/NMJDiagram";
 import NeuromuscularMonitoringDiagram from "@/components/diagrams/NeuromuscularMonitoringDiagram";
@@ -84,7 +85,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        Sugammadex 2 mg/kg is the cleanest option — predictable, complete reversal within ~2 min. Aim for
+        <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">Sugammadex</Link> 2 mg/kg is the cleanest option — predictable, complete reversal within ~2 min. Aim for
         TOFR &gt; 0.9 before extubation; residual block (TOFR 0.7–0.9) increases postoperative pulmonary
         complications, hypoxaemia, and aspiration risk.
       </>
@@ -132,8 +133,9 @@ const NeuromuscularTopic = () => {
             <p className="text-foreground/90 leading-relaxed">
               Neuromuscular transmission is the process by which a motor nerve impulse is converted into
               muscle contraction at the neuromuscular junction (NMJ). Understanding this process is
-              essential for anaesthetists, as it underpins the pharmacology of neuromuscular blocking
-              agents, their reversal, and neuromuscular monitoring.
+              essential for anaesthetists, as it underpins the pharmacology of{" "}
+              <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">neuromuscular blocking agents</Link>
+              , their reversal, and neuromuscular monitoring.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
@@ -240,7 +242,7 @@ const NeuromuscularTopic = () => {
             <div className="bg-secondary/30 rounded-lg p-4 border border-border">
               <p className="text-sm font-medium text-foreground">Conditions Affecting NM Transmission</p>
               <ul className="text-sm text-muted-foreground mt-2 space-y-1">
-                <li>• <strong>Myasthenia Gravis</strong> — autoantibodies against post-junctional nAChR; increased sensitivity to non-depolarising agents</li>
+                <li>• <strong>Myasthenia Gravis</strong> — autoantibodies against post-junctional nAChR; increased sensitivity to <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">non-depolarising agents</Link></li>
                 <li>• <strong>Lambert–Eaton Syndrome</strong> — antibodies against pre-synaptic Ca²⁺ channels; post-tetanic potentiation occurs</li>
                 <li>• <strong>Burns/Denervation</strong> — upregulation of extrajunctional receptors; risk of hyperkalaemia with suxamethonium</li>
                 <li>• <strong>Aminoglycosides</strong> — reduce pre-synaptic Ca²⁺ entry and potentiate neuromuscular block</li>
