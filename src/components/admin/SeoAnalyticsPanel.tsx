@@ -381,7 +381,6 @@ export default function SeoAnalyticsPanel() {
           </div>
         </div>
       </div>
-      </div>
 
       <div className="grid lg:grid-cols-2 gap-4">
         {/* Top queries */}
