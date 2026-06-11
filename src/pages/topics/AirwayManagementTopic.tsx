@@ -36,6 +36,52 @@ const objectives = [
   "Recognise CICO early and perform scalpel-bougie-tube cricothyroidotomy per DAS guidance.",
 ];
 
+// SEO-targeted FAQ — answers the highest-volume UK question keywords from
+// Semrush in the airway cluster: rapid sequence induction (880/mo, KDI 32)
+// + DAS / difficult airway algorithm (110 + 480/mo, KDI 25).
+const airwayFaqs: Array<[string, string]> = [
+  [
+    "What is a rapid sequence induction (RSI)?",
+    "Rapid sequence induction is an intubation technique used when there is a high risk of pulmonary aspiration (full stomach, bowel obstruction, pregnancy ≥ 16 weeks, severe reflux, trauma, emergency surgery). The patient is pre-oxygenated to an end-tidal O₂ ≥ 0.9, then receives a pre-determined induction agent (propofol 1.5–2.5 mg/kg or ketamine 1–2 mg/kg) immediately followed by a fast-acting neuromuscular blocker (suxamethonium 1–1.5 mg/kg or rocuronium 1.2 mg/kg) without intervening bag-mask ventilation. Tracheal intubation is performed as soon as relaxation is achieved.",
+  ],
+  [
+    "How do you perform a rapid sequence induction step-by-step?",
+    "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Apnoeic oxygenation 15 L/min nasal cannulae (THRIVE). 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm with capnography (sustained ≥ 2 waveforms). 8. Inflate cuff, secure tube, ventilate. 9. Have a Plan B (videolaryngoscope) and Plan D (FONA) ready before induction.",
+  ],
+  [
+    "Is cricoid pressure still recommended in RSI?",
+    "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) showed non-inferiority of sham vs cricoid for aspiration but did not establish equivalence and was underpowered. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
+  ],
+  [
+    "What is the DAS unanticipated difficult intubation algorithm?",
+    "The Difficult Airway Society (DAS) 2015 algorithm has four sequential plans: Plan A — tracheal intubation (maximum 3 + 1 attempts, change something each time: blade, operator, position, bougie, videolaryngoscope). Plan B — supraglottic airway (preferably 2nd-generation i-gel or LMA Supreme, maximum 3 attempts). Plan C — face-mask ventilation, two-person two-handed technique, full relaxation; wake the patient if oxygenation restored. Plan D — emergency front-of-neck access (scalpel-bougie-tube cricothyroidotomy) — declared CICO and performed before SpO₂ < 80 %.",
+  ],
+  [
+    "How do you predict a difficult airway?",
+    "Combine bedside tests rather than relying on one: Mallampati class III–IV (poor specificity alone), thyromental distance < 6.5 cm, mouth opening < 3 cm, restricted neck extension < 35°, prominent upper incisors, beard, obesity (BMI > 30), short thick neck, history of obstructive sleep apnoea or previous difficult intubation. Composite scores (Wilson, LEMON, El-Ganzouri) outperform individual tests but no tool reliably predicts CICO. NAP4 emphasised always planning for failure regardless of predictors.",
+  ],
+  [
+    "When is awake fibreoptic intubation (AFOI) indicated?",
+    "AFOI is the gold standard for the anticipated difficult airway when there is time, consent and a co-operative patient: known difficult intubation/ventilation, unstable cervical spine, severe airway pathology (e.g. supraglottic tumour, Ludwig's angina), morbid obesity with airway concerns, predicted difficult mask ventilation. Topicalise V₁/V₂ (nasal), IX (oropharynx), internal SLN and recurrent laryngeal (larynx/trachea) with 4% lidocaine spray-as-you-go, keep total lidocaine ≤ 9 mg/kg lean weight, sedate cautiously with remifentanil or dexmedetomidine.",
+  ],
+  [
+    "What is CICO and when should front-of-neck access be performed?",
+    "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed to scalpel-bougie-tube cricothyroidotomy before SpO₂ falls below 80%. Technique: extend neck, palpate cricothyroid membrane, transverse stab with size 10 scalpel, rotate blade caudally, railroad a Frova/bougie, advance a 6.0 cuffed tube 2–3 cm, confirm with capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
+  ],
+  [
+    "What's the difference between RSI and a modified RSI?",
+    "Classic RSI: pre-oxygenation, no bag-mask ventilation, cricoid pressure, suxamethonium 1.5 mg/kg. Modified RSI is widely practised but not standardised — typically includes gentle bag-mask ventilation between induction and intubation (peak ≤ 12 cmH₂O to avoid gastric insufflation), opioid co-induction (fentanyl 1–3 µg/kg) to blunt the pressor response, rocuronium 1.2 mg/kg instead of suxamethonium, and optional omission or release of cricoid pressure. It trades the dogma of the original technique for reduced hypoxaemia and haemodynamic stability in sick patients.",
+  ],
+  [
+    "What are the key NAP4 lessons for airway management?",
+    "NAP4 (2011) audited every major UK airway complication for a year: (1) Failure to plan and failure to plan for failure was the single commonest cause. (2) Persistence with failing techniques (especially repeated laryngoscopy) caused harm. (3) Aspiration was the commonest cause of airway-related death. (4) Supraglottic airway misuse in inappropriate patients led to events. (5) Emergency cricothyroidotomy was frequently delayed, performed badly, and the needle technique frequently failed. (6) ICU airway events had a far higher mortality than theatre events.",
+  ],
+  [
+    "How long can you safely be apnoeic after pre-oxygenation?",
+    "After 3 min of pre-oxygenation to FetO₂ ≥ 0.9, a fit non-obese adult tolerates ~8–10 min before SpO₂ falls below 90%. This shortens dramatically in obesity (3–4 min at BMI 40), pregnancy (2–3 min at term), sepsis, anaemia and small children (< 2 min in neonates). Apnoeic oxygenation with high-flow nasal cannulae (THRIVE, 70 L/min) or low-flow nasal cannulae (15 L/min) extends safe apnoea by passive diffusion of O₂ but does not clear CO₂ — PaCO₂ rises by 3–4 mmHg/min.",
+  ],
+];
+
 const workedExamples: WorkedExample[] = [
   {
     title: "Unanticipated CICO at induction",
