@@ -134,8 +134,10 @@ const HepaticDiseaseTopic = () => {
               Patients with chronic liver disease undergoing non-hepatic surgery are a high-risk population whose mortality is driven less by the operation itself than by the severity of underlying hepatic dysfunction. This topic covers preoperative risk stratification, the multi-system features of cirrhosis that change every step of the anaesthetic, and the specific perioperative complications — hepatorenal syndrome, encephalopathy, variceal haemorrhage and acute-on-chronic liver failure — that the anaesthetist must anticipate and treat.
             </p>
 
+            <TopicTableOfContents items={tocItems} />
+
             {/* Risk stratification */}
-            <section>
+            <section id="section-preoperative-risk-stratification" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Preoperative Risk Stratification</h2>
               <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
