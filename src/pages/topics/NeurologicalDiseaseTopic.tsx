@@ -37,6 +37,16 @@ const objectives = [
   "Adjust technique for muscular dystrophies and motor neuron disease (MH risk, sux/volatile avoidance).",
 ];
 
+const tocItems = [
+  { label: "Myasthenia Gravis", href: "#section-myasthenia-gravis", category: "Neuromuscular" },
+  { label: "Epilepsy", href: "#section-epilepsy", category: "Seizure" },
+  { label: "Multiple Sclerosis", href: "#section-multiple-sclerosis", category: "Demyelinating" },
+  { label: "Parkinson's Disease", href: "#section-parkinsons-disease", category: "Neurodegenerative" },
+  { label: "Motor Neuron Disease", href: "#section-motor-neuron-disease", category: "Motor Neuron" },
+  { label: "Muscular Dystrophies", href: "#section-muscular-dystrophies", category: "Muscular" },
+  { label: "Spinal Cord Injury", href: "#section-spinal-cord-injury", category: "Spinal" },
+];
+
 const keyPoints = [
   { text: "Myasthenia gravis: increased sensitivity to non-depolarising NMBAs (use 10–50% of normal dose); resistance to suxamethonium (ED₉₅ 2.6× normal); always use neuromuscular monitoring", cites: ["BJA Educ MG 2018", "AAGBI Neuromuscular"] },
   { text: "Epilepsy: avoid drugs that lower seizure threshold (enflurane, tramadol, high-dose remifentanil); propofol and sevoflurane are generally safe; ensure therapeutic anticonvulsant levels preoperatively", cites: ["BJA Educ Epilepsy 2015"] },
