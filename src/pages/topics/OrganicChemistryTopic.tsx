@@ -1,4 +1,11 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
+
+const organicChemistryFaqs: Array<[string, string]> = [
+  ["Why do ester local anaesthetics act for a shorter duration than amides?", "Esters (procaine, amethocaine) are hydrolysed rapidly by plasma cholinesterase, giving half-lives of 1–10 min. Amides (lidocaine, bupivacaine, ropivacaine) are metabolised slowly by hepatic CYP enzymes with half-lives of 1.5–3.5 h. Ester hydrolysis also liberates PABA, which explains the allergy risk that amides lack."],
+  ["What is a chiral centre and why is ropivacaine an example?", "A chiral centre is a carbon bonded to four different groups, generating two non-superimposable mirror-image enantiomers. Ropivacaine is the pure S(-)-enantiomer of its racemate; the R(+) form is more cardiotoxic. Single-enantiomer formulation gives ropivacaine a safer cardiovascular profile than racemic bupivacaine at equipotent doses."],
+  ["How does pKa influence local anaesthetic onset?", "At tissue pH 7.4, Henderson–Hasselbalch dictates the proportion of un-ionised (lipid-soluble) drug. Lidocaine (pKa 7.9) has more un-ionised drug at injection and crosses the nerve membrane in 2–5 min. Higher-pKa drugs (bupivacaine 8.1, procaine 8.9) are more ionised and slower to act."],
+];
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { OrganicChemistryDiagram } from "@/components/diagrams/OrganicChemistryDiagram";
@@ -124,6 +131,7 @@ const OrganicChemistryTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={organicChemistryFaqs} />
         </>
       }
       workedExamples={[

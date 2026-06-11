@@ -1,4 +1,11 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
+
+const cardiacAnatomyFaqs: Array<[string, string]> = [
+  ["Why does the right coronary artery supply the SA and AV nodes in most people?", "In ~85% of patients (right-dominant circulation) the RCA gives the SA nodal artery and the AV nodal artery before becoming the posterior descending artery. This is why inferior MIs from RCA occlusion frequently cause bradycardia, AV block and right-ventricular involvement — and why right-sided ECG leads (V4R) should be recorded."],
+  ["Where exactly does the apex beat lie and why does it shift?", "Normally in the 5th left intercostal space, just medial to the mid-clavicular line, marking the LV apex. It shifts laterally and inferiorly with LV dilation (chronic AR, dilated cardiomyopathy), and laterally without inferior shift with mediastinal displacement (pneumothorax, large pleural effusion, lobectomy)."],
+  ["Which structures lie immediately posterior to the heart and what is the clinical relevance?", "The oesophagus, descending aorta and left main bronchus lie directly behind the left atrium. A TOE probe therefore gives unparalleled LA and mitral views; a massively enlarged LA can cause dysphagia (and Ortner's sign — hoarseness from recurrent laryngeal nerve compression); and aortic aneurysms can erode into the oesophagus."],
+];
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { cardiacAnatomyQuestions } from "@/data/quizzes";
@@ -165,6 +172,7 @@ const CardiacAnatomyTopic = () => {
             </figure>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={cardiacAnatomyFaqs} />
         </>
       }
       workedExamples={[

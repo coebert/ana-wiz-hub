@@ -1,4 +1,11 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
+
+const abdominalAnatomyFaqs: Array<[string, string]> = [
+  ["Where do the major neurovascular bundles for a TAP block lie?", "The transversus abdominis plane lies between the internal oblique and transversus abdominis muscles. It contains the T7–L1 anterior rami (intercostal, subcostal, iliohypogastric, ilioinguinal) that supply the anterior abdominal wall. A subcostal TAP covers T7–T9; a lateral TAP covers T10–T12 (umbilical territory); an ilioinguinal block targets L1."],
+  ["Which landmarks define the inguinal canal?", "The canal runs from the deep ring (mid-point of the inguinal ligament, lateral to inferior epigastric artery) to the superficial ring (superolateral to pubic tubercle). Floor: inguinal ligament; roof: arching fibres of internal oblique and transversus; anterior wall: external oblique aponeurosis; posterior wall: transversalis fascia and conjoint tendon medially."],
+  ["Why is the spleen at risk from left-sided rib fractures?", "The spleen lies under the 9th–11th left ribs in the left hypochondrium, behind the mid-axillary line. Left lower rib fractures (especially 9–11) are the commonest mechanism of blunt splenic injury — a high-energy mechanism with left flank tenderness mandates contrast CT to exclude haemorrhage from this highly vascular organ (~5% of cardiac output)."],
+];
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { abdominalAnatomyQuestions } from "@/data/quizzes";
@@ -110,6 +117,7 @@ const AbdominalAnatomyTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={abdominalAnatomyFaqs} />
         </>
       }
       workedExamples={[

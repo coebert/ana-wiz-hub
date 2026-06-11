@@ -1,4 +1,11 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
+
+const brachialPlexusFaqs: Array<[string, string]> = [
+  ["What are the five sections of the brachial plexus from medial to lateral?", "Roots (C5–T1, between scalenus anterior and medius) → trunks (upper C5–6, middle C7, lower C8–T1, at the first rib) → divisions (anterior and posterior, behind the clavicle) → cords (lateral, medial, posterior, named relative to the axillary artery) → terminal branches (musculocutaneous, axillary, radial, median, ulnar). Mnemonic: \"Real Texans Drink Cold Beer\"."],
+  ["Which block reliably anaesthetises C8/T1 dermatomes for hand surgery?", "Infraclavicular and axillary blocks reliably cover C8/T1 because they target cords or terminal branches. Interscalene block characteristically misses C8/T1 (ulnar sparing) because the lower trunk lies deep at the scalene level — making it unsuitable as a sole technique for hand surgery, though ideal for shoulder."],
+  ["What is the risk profile of an interscalene block?", "~100% incidence of ipsilateral phrenic nerve palsy (avoid in severe respiratory disease), recurrent laryngeal nerve block (hoarseness), Horner's syndrome (cervical sympathetic involvement), and rare but catastrophic intra-arterial (vertebral artery) injection causing immediate seizures. Pneumothorax risk is low compared with supraclavicular block."],
+];
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { Cite } from "@/components/Cite";
@@ -235,6 +242,7 @@ const BrachialPlexusTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={brachialPlexusFaqs} />
         </>
       }
     />

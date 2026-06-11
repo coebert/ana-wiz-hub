@@ -1,4 +1,11 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
+
+const solutionsConcentrationFaqs: Array<[string, string]> = [
+  ["What is the difference between osmolarity and osmolality?", "Osmolarity is osmoles per litre of solution (mOsm/L); osmolality is osmoles per kilogram of solvent (mOsm/kg). Plasma values overlap at 285–295, but osmolality is preferred clinically because it is independent of temperature and unaffected by the volume occupied by plasma proteins and lipids."],
+  ["Why does 0.9% saline carry a risk of hyperchloraemic acidosis?", "It contains 154 mmol/L Cl⁻ — well above the plasma range of 95–105. Large volumes raise plasma Cl⁻, lowering the strong-ion difference and producing a normal-anion-gap metabolic acidosis. Balanced crystalloids (Hartmann's, Plasma-Lyte) substitute lactate, acetate or gluconate for some Cl⁻ to avoid this."],
+  ["How do you convert percentage concentration to mg/mL?", "A 1% solution = 1 g/100 mL = 10 mg/mL. So 2% lidocaine is 20 mg/mL, 0.5% bupivacaine is 5 mg/mL, and 1:200 000 adrenaline (1 g per 200 000 mL) is 5 µg/mL. This conversion is essential when calculating maximum safe local anaesthetic doses from the syringe label."],
+];
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -167,6 +174,7 @@ const SolutionsConcentrationTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={solutionsConcentrationFaqs} />
         </>
       }
     />
