@@ -202,6 +202,7 @@ const EnhancedRecoveryTopic = () => {
           </section>
 
           <DiagramSection
+            id="section-evidence-base"
             title="Evidence Base — Outcome Effects of ERAS"
             intro={
               <p>
