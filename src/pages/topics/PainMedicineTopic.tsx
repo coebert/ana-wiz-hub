@@ -54,6 +54,7 @@ const tocItems = [
   { id: "lidocaine", label: "IV Lidocaine", group: "Adjuncts" },
   { id: "neuropathic", label: "Neuropathic Pain", group: "Chronic" },
   { id: "chronic", label: "Chronic Pain Principles", group: "Chronic" },
+  { id: "specialised-mdt", label: "Specialised Pain MDT", group: "Chronic" },
   { id: "fibromyalgia", label: "Fibromyalgia", group: "Chronic" },
   { id: "mecfs", label: "ME/CFS", group: "Chronic" },
   { id: "crps", label: "CRPS", group: "Chronic" },
@@ -352,6 +353,7 @@ const PainMedicineTopic = () => {
           <PainMechanismsDiagram />
         </DiagramSection>
 
+        <div id="specialised-mdt" className="scroll-mt-24">
         <CollapsibleSubsection title="Specialised Multidisciplinary Pain Teams">
           <p className="text-muted-foreground leading-relaxed mb-3">
             UK chronic-pain services are organised in tiers per the <strong>British Pain Society / FPM Core Standards (2021)</strong> and the <strong>NHS Long Term Plan</strong>. Specialised pain MDTs offer the best functional outcomes for complex, refractory or high-impact chronic pain.
@@ -401,7 +403,6 @@ const PainMedicineTopic = () => {
             </p>
           </div>
         </CollapsibleSubsection>
-        </div>
 
         <div id="fibromyalgia" className="scroll-mt-24">
         <CollapsibleSubsection title="Fibromyalgia">
@@ -792,6 +793,7 @@ const PainMedicineTopic = () => {
         </CollapsibleSubsection>
         </div>
 
+        <div id="nerve-root" className="scroll-mt-24">
         <CollapsibleSubsection title="Nerve Root Injections (Selective Nerve Root Block &amp; Transforaminal Epidural Steroid Injection)">
           <p className="text-muted-foreground leading-relaxed mb-3">
             A nerve root injection deposits local anaesthetic ± corticosteroid around a specific spinal nerve as it traverses the intervertebral foramen. It is used <strong>diagnostically</strong> (to confirm a single radicular pain generator before surgery or radiofrequency) and <strong>therapeutically</strong> (to relieve radicular pain from disc prolapse, foraminal stenosis, or post-surgical scarring). Evidence is strongest for short- to medium-term relief of acute lumbosacral radiculopathy (NICE NG59 — consider for severe sciatica when surgery is being weighed); chronic and axial low back pain respond less reliably (FDA black-box on particulate steroids in cervical injections, 2014).
@@ -902,6 +904,20 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
         </div>
+
+        <div id="faq" className="scroll-mt-24">
+          <CollapsibleSubsection title="Frequently Asked Questions" defaultOpen>
+            <div className="space-y-4">
+              {painFaqs.map(([question, answer], idx) => (
+                <div key={idx} className="rounded-lg border border-border p-4">
+                  <p className="font-semibold text-foreground text-sm mb-1">{question}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{answer}</p>
+                </div>
+              ))}
+            </div>
+          </CollapsibleSubsection>
+        </div>
+
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
