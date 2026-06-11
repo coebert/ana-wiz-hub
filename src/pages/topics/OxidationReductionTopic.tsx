@@ -1,4 +1,11 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
+
+const oxidationReductionFaqs: Array<[string, string]> = [
+  ["Why is methaemoglobin clinically dangerous?", "In methaemoglobin the haem iron is oxidised from Fe²⁺ to Fe³⁺ and cannot bind oxygen, while remaining haems bind O₂ more tightly (left-shifted curve) — so tissue delivery falls. Levels >15% cause cyanosis unresponsive to oxygen; >50% cause coma; >70% are fatal. Treat with IV methylene blue 1–2 mg/kg, which regenerates Fe²⁺ via NADPH-methaemoglobin reductase."],
+  ["How does a fuel cell oxygen analyser work?", "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb → Pb²⁺ + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts ~12 months because the anode is consumed."],
+  ["Which inhaled anaesthetics are degraded by CO₂ absorbents?", "Sevoflurane reacts with strong bases (KOH, NaOH) in soda-lime to form Compound A, a vinyl ether with renal toxicity in rats. Desflurane, isoflurane and enflurane react with dry CO₂ absorbent to generate carbon monoxide. Both risks are mitigated by using KOH/NaOH-free absorbents (e.g. Amsorb Plus) and avoiding desiccated absorbent."],
+];
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
