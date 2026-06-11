@@ -255,8 +255,8 @@ const MechanicalVentilationTopic = () => {
             </table>
           </div>
           <div className="rounded-lg border border-icu bg-icu/10 p-3 mb-4">
-            <p className="text-sm text-foreground">
-              <strong>Practice ventilator settings interactively</strong> — try the{" "}
+            <p className="text-sm text-foreground mb-3">
+              <strong>Practice ventilator settings interactively</strong> — use the embedded{" "}
               <a
                 href="https://lung-sim-pro.lovable.app"
                 target="_blank"
@@ -265,7 +265,27 @@ const MechanicalVentilationTopic = () => {
               >
                 Vent Mastery simulator
               </a>{" "}
-              to apply mode, trigger and cycle concepts on a virtual ICU ventilator.
+              below to apply mode, trigger and cycle concepts on a virtual ICU ventilator without leaving the page.
+            </p>
+            <div className="relative w-full overflow-hidden rounded-md border border-border bg-background" style={{ aspectRatio: "16 / 10" }}>
+              <iframe
+                src="https://lung-sim-pro.lovable.app"
+                title="Vent Mastery — ICU ventilator simulator"
+                loading="lazy"
+                allow="fullscreen"
+                className="absolute inset-0 h-full w-full"
+              />
+            </div>
+            <p className="mt-2 text-xs text-muted-foreground">
+              Simulator opens in a sandboxed frame. For a full-screen experience,{" "}
+              <a
+                href="https://lung-sim-pro.lovable.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                open Vent Mastery in a new tab
+              </a>.
             </p>
           </div>
           <p className="text-xs text-muted-foreground italic">
