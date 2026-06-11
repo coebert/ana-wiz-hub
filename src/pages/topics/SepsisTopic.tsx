@@ -13,6 +13,20 @@ import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
 import AlbuminFluidShiftDiagram from "@/components/diagrams/AlbuminFluidShiftDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+
+const sepsisTocItems = [
+  { id: "sepsis-3", label: "Sepsis-3 definitions & scores", group: "Core" },
+  { id: "hour-1", label: "SSC Hour-1 bundle", group: "Core" },
+  { id: "antibiotics", label: "Antibiotics & source control", group: "Management" },
+  { id: "fluids", label: "Fluid resuscitation", group: "Management" },
+  { id: "vasopressors", label: "Vasopressors & inotropes", group: "Management" },
+  { id: "steroids", label: "Hydrocortisone", group: "Management" },
+  { id: "biomarkers", label: "Lactate, CRP & PCT", group: "Monitoring" },
+  { id: "trial-evidence", label: "Landmark trials", group: "Evidence" },
+  { id: "pitfalls", label: "Exam pitfalls", group: "Reference" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
 
 const sepsisFaqs: Array<[string, string]> = [
   [
@@ -184,22 +198,7 @@ const SepsisTopic = () => {
       coreConcepts={
     <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-6">
-        {/* Table of contents */}
-        <nav aria-label="On this page" className="not-prose rounded-lg border border-border bg-secondary/20 p-4">
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">On this page</p>
-          <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1 text-sm">
-            <li><a href="#sepsis-3" className="text-icu hover:underline">Sepsis-3 definitions &amp; scores</a></li>
-            <li><a href="#hour-1" className="text-icu hover:underline">SSC Hour-1 bundle</a></li>
-            <li><a href="#antibiotics" className="text-icu hover:underline">Empirical antibiotics &amp; source control</a></li>
-            <li><a href="#fluids" className="text-icu hover:underline">Fluid resuscitation strategy</a></li>
-            <li><a href="#vasopressors" className="text-icu hover:underline">Vasopressor &amp; inotrope ladder</a></li>
-            <li><a href="#steroids" className="text-icu hover:underline">Hydrocortisone in septic shock</a></li>
-            <li><a href="#biomarkers" className="text-icu hover:underline">Lactate, CRP &amp; procalcitonin</a></li>
-            <li><a href="#trial-evidence" className="text-icu hover:underline">Landmark trial evidence</a></li>
-            <li><a href="#pitfalls" className="text-icu hover:underline">Exam pitfalls</a></li>
-            <li><a href="#faq" className="text-icu hover:underline">Frequently asked questions</a></li>
-          </ul>
-        </nav>
+        <TopicTableOfContents items={sepsisTocItems} />
 
 
         <div>
@@ -597,7 +596,7 @@ const SepsisTopic = () => {
       {/* Deep-content reference block: anchored H2s for TOC */}
       <section className="space-y-8 mt-10 scroll-mt-24">
 
-        <div id="sepsis-3">
+        <div id="sepsis-3" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sepsis-3 definitions &amp; scores</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Sepsis-3 (Singer, JAMA 2016) discarded SIRS in favour of an organ-dysfunction-based definition. The conceptual move: SIRS is a non-specific inflammatory response present in many non-infective insults; sepsis is the <em>dysregulated</em> host response that produces organ failure.
@@ -621,7 +620,7 @@ const SepsisTopic = () => {
           </p>
         </div>
 
-        <div id="hour-1">
+        <div id="hour-1" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">SSC Hour-1 bundle — operational checklist</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -641,7 +640,7 @@ const SepsisTopic = () => {
           </div>
         </div>
 
-        <div id="antibiotics">
+        <div id="antibiotics" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Empirical antibiotics &amp; source control</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Empirical cover must reflect the suspected source, the patient's recent antimicrobial exposure, local antibiogram, and severity. Source control — drainage of pus, debridement of necrotic tissue, removal of infected hardware or lines — should be achieved as soon as logistically feasible, ideally within 6–12 h.
@@ -666,7 +665,7 @@ const SepsisTopic = () => {
           </div>
         </div>
 
-        <div id="fluids">
+        <div id="fluids" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fluid resuscitation strategy</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The current consensus is &ldquo;resuscitate then restrict&rdquo;: a 30 mL/kg balanced crystalloid bolus in the first 3 h of sepsis-induced hypoperfusion, then dynamic, individualised top-ups guided by passive leg raise, stroke-volume variation, or end-expiratory occlusion — not CVP. Excessive fluid worsens outcomes by driving interstitial oedema, organ injury, and weaning failure.
@@ -689,7 +688,7 @@ const SepsisTopic = () => {
           </div>
         </div>
 
-        <div id="vasopressors">
+        <div id="vasopressors" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Vasopressor &amp; inotrope ladder</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -714,14 +713,14 @@ const SepsisTopic = () => {
           </p>
         </div>
 
-        <div id="steroids">
+        <div id="steroids" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hydrocortisone in septic shock</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             SSC 2021 recommends IV hydrocortisone 200 mg/day for adults with septic shock who require ongoing vasopressor support (typically noradrenaline ≥ 0.25 µg/kg/min for ≥ 4 h). Administer as 50 mg every 6 h or a continuous infusion; wean over 2–3 days as vasopressors are weaned. Mineralocorticoid (fludrocortisone) is used in APROCCHSS but not routinely in UK practice. Steroids carry hyperglycaemia and superinfection risk — they are an adjunct, not a replacement for source control or appropriate antibiotics.
           </p>
         </div>
 
-        <div id="biomarkers">
+        <div id="biomarkers" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lactate, CRP &amp; procalcitonin</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -741,7 +740,7 @@ const SepsisTopic = () => {
           <SepsisBiomarkerKineticsDiagram />
         </div>
 
-        <div id="trial-evidence">
+        <div id="trial-evidence" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Landmark trial evidence</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -771,10 +770,10 @@ const SepsisTopic = () => {
           </div>
         </div>
 
-        <div id="pitfalls"></div>
+        <div id="pitfalls" className="scroll-mt-24"></div>
 
         {/* FAQ */}
-        <div id="faq">
+        <div id="faq" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Frequently asked questions</h2>
           <div className="space-y-2">
             {sepsisFaqs.map(([q, a]) => (
