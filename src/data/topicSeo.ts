@@ -213,4 +213,10 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Non-technical skills", "Human factors", "ANTS", "Anaesthetists Non-Technical Skills", "Crisis resource management", "CRM", "Debriefing"],
     keywords: ["ANTS", "human factors", "crisis resource management", "non-technical skills FRCA"],
   },
+  "gynaecological-anaesthesia": {
+    title: "Gynaecological Anaesthesia: Laparoscopy, Robotics & Oncology | FRCA",
+    description: "Gynaecological anaesthesia for FRCA Final: pneumoperitoneum and Trendelenburg physiology, robotic surgery airway considerations, hysteroscopy fluid absorption, CO₂ gas embolism, major oncology and ERAS.",
+    aliases: ["Gynaecological anaesthesia", "Laparoscopic gynaecology", "Robotic gynaecology", "Hysteroscopy anaesthesia", "TURP-equivalent syndrome", "CO₂ gas embolism"],
+    keywords: ["gynaecological anaesthesia FRCA", "pneumoperitoneum Trendelenburg", "hysteroscopy fluid absorption", "CO2 gas embolism", "robotic gynaecology"],
+  },
 };
