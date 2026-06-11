@@ -183,6 +183,7 @@ const PainMedicineTopic = () => {
       ]}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
+        <TopicTableOfContents items={tocItems} />
         <section className="space-y-6">
         <div id="pathways" className="scroll-mt-24">
         <CollapsibleSubsection title="Pain Pathways & Classification" defaultOpen>
