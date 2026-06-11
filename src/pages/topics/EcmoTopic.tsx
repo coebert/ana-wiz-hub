@@ -223,7 +223,7 @@ const EcmoTopic = () => {
           <section className="space-y-6">
             {/* Overview */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">What ECMO is — and is not</h2>
+              <h2 id="overview" className="text-2xl font-serif font-bold text-foreground mb-3">What ECMO is — and is not</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Extracorporeal membrane oxygenation is a temporary, miniaturised
                 cardiopulmonary bypass circuit used in the ICU. It does not
@@ -246,7 +246,7 @@ const EcmoTopic = () => {
 
             {/* Circuit */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Circuit components</h2>
+              <h2 id="circuit" className="text-2xl font-serif font-bold text-foreground mb-3">Circuit components</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   { part: "Drainage cannula", detail: "Large-bore (21–29 Fr), multi-fenestrated. Femoral vein → IVC/RA most common. Pre-pump pressure should be negative but > –100 mmHg to avoid haemolysis and cavitation." },
@@ -269,7 +269,7 @@ const EcmoTopic = () => {
 
             {/* Physics of gas exchange */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Controlling oxygenation and CO₂ clearance</h2>
+              <h2 id="gas-exchange" className="text-2xl font-serif font-bold text-foreground mb-3">Controlling oxygenation and CO₂ clearance</h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
                 <li><strong>Oxygenation</strong> depends on circuit blood flow (typically 60–80 mL/kg/min) and FdO₂. The ratio of ECMO flow to native cardiac output determines arterial PaO₂.</li>
                 <li><strong>CO₂ removal</strong> is highly efficient and depends almost entirely on <em>sweep gas flow</em>. A small change in sweep (1–2 L/min) can produce large PaCO₂ swings — change slowly to avoid cerebral vasoconstriction.</li>
@@ -280,7 +280,7 @@ const EcmoTopic = () => {
 
             {/* VV indications and EOLIA */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">VV-ECMO: indications & EOLIA / CESAR evidence</h2>
+              <h2 id="vv-ecmo-indications" className="text-2xl font-serif font-bold text-foreground mb-3">VV-ECMO: indications & EOLIA / CESAR evidence</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Severe ARDS or other reversible hypoxaemic / hypercapnic respiratory
                 failure refractory to lung-protective ventilation, proning and
@@ -305,7 +305,7 @@ const EcmoTopic = () => {
 
             {/* VA indications */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">VA-ECMO: indications</h2>
+              <h2 id="va-ecmo-indications" className="text-2xl font-serif font-bold text-foreground mb-3">VA-ECMO: indications</h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
                 <li>Refractory cardiogenic shock (post-cardiotomy, fulminant myocarditis, decompensated cardiomyopathy, massive PE, drug toxicity).</li>
                 <li>Bridge to recovery, transplantation, or durable LVAD.</li>
@@ -321,7 +321,7 @@ const EcmoTopic = () => {
 
             {/* Complications */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Major complications</h2>
+              <h2 id="complications" className="text-2xl font-serif font-bold text-foreground mb-3">Major complications</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   { name: "Bleeding", detail: "Commonest complication. Cannulation sites, ICH, GI, surgical sites. Driven by heparin, acquired vWF deficiency (high shear), thrombocytopaenia. Target the lowest acceptable APTT/ACT and platelets > 50–80 × 10⁹/L." },
@@ -348,7 +348,7 @@ const EcmoTopic = () => {
 
             {/* ECPR */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ECPR — extracorporeal CPR for refractory arrest</h2>
+              <h2 id="ecpr" className="text-2xl font-serif font-bold text-foreground mb-3">ECPR — extracorporeal CPR for refractory arrest</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Femoral VA cannulation during ongoing mechanical CPR for selected
                 patients with refractory cardiac arrest. ELSO entry criteria:
@@ -372,7 +372,7 @@ const EcmoTopic = () => {
 
             {/* Weaning */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Weaning trials</h2>
+              <h2 id="weaning" className="text-2xl font-serif font-bold text-foreground mb-3">Weaning trials</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="p-3 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">VV-ECMO — sweep-down trial</p>
@@ -399,7 +399,7 @@ const EcmoTopic = () => {
 
             {/* Pitfalls */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Common exam pitfalls</h2>
+              <h2 id="pitfalls" className="text-2xl font-serif font-bold text-foreground mb-3">Common exam pitfalls</h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
                 <li>Confusing VV (gas exchange only) with VA (cardiac + respiratory) — the indication, cannulation and complications differ entirely.</li>
                 <li>Monitoring a left-sided SpO₂ on peripheral VA-ECMO and missing Harlequin syndrome.</li>
