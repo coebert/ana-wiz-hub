@@ -131,6 +131,7 @@ const OrganicChemistryTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={organicChemistryFaqs} />
         </>
       }
       workedExamples={[
