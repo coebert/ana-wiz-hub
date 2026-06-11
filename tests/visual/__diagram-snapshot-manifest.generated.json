@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-11T15:00:00.000Z",
-  "count": 383,
+  "generatedAt": "2026-06-11T14:20:26.977Z",
+  "count": 376,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -539,10 +539,6 @@
       "route": "/dev/diagram-snapshot/EtomidatePharmacologyDiagram"
     },
     {
-      "name": "EpilepsyPathophysDiagram",
-      "route": "/dev/diagram-snapshot/EpilepsyPathophysDiagram"
-    },
-    {
       "name": "ExpandableEcgCard",
       "route": "/dev/diagram-snapshot/ExpandableEcgCard"
     },
@@ -863,10 +859,6 @@
       "route": "/dev/diagram-snapshot/MDRGramNegativeSelector"
     },
     {
-      "name": "MDPathophysDiagram",
-      "route": "/dev/diagram-snapshot/MDPathophysDiagram"
-    },
-    {
       "name": "MechanicalCirculatorySupportDiagram",
       "route": "/dev/diagram-snapshot/MechanicalCirculatorySupportDiagram"
     },
@@ -885,10 +877,6 @@
     {
       "name": "MGNMBASensitivityDiagram",
       "route": "/dev/diagram-snapshot/MGNMBASensitivityDiagram"
-    },
-    {
-      "name": "MGPathophysDiagram",
-      "route": "/dev/diagram-snapshot/MGPathophysDiagram"
     },
     {
       "name": "MicroshockDiagram",
@@ -911,20 +899,12 @@
       "route": "/dev/diagram-snapshot/MModePathologyDiagram"
     },
     {
-      "name": "MNDPathophysDiagram",
-      "route": "/dev/diagram-snapshot/MNDPathophysDiagram"
-    },
-    {
       "name": "MRIPhysicsDiagram",
       "route": "/dev/diagram-snapshot/MRIPhysicsDiagram"
     },
     {
       "name": "MRISuiteFloorPlanDiagram",
       "route": "/dev/diagram-snapshot/MRISuiteFloorPlanDiagram"
-    },
-    {
-      "name": "MSPathophysDiagram",
-      "route": "/dev/diagram-snapshot/MSPathophysDiagram"
     },
     {
       "name": "MultimodalNeuromonitoringDiagram",
@@ -1077,10 +1057,6 @@
     {
       "name": "PaediatricVitalsTable",
       "route": "/dev/diagram-snapshot/PaediatricVitalsTable"
-    },
-    {
-      "name": "PDPathophysDiagram",
-      "route": "/dev/diagram-snapshot/PDPathophysDiagram"
     },
     {
       "name": "PainMechanismsDiagram",
@@ -1273,10 +1249,6 @@
     {
       "name": "SecondGasEffectDiagram",
       "route": "/dev/diagram-snapshot/SecondGasEffectDiagram"
-    },
-    {
-      "name": "SCIPathophysDiagram",
-      "route": "/dev/diagram-snapshot/SCIPathophysDiagram"
     },
     {
       "name": "SedacondaDiagram",
