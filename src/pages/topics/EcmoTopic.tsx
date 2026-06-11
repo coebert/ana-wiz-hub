@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
@@ -6,6 +7,38 @@ import type { WorkedExample } from "@/components/WorkedExamples";
 import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
 import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
 import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
+
+const ecmoFaqs: Array<[string, string]> = [
+  [
+    "What is the difference between VV and VA ECMO?",
+    "VV-ECMO drains and returns blood to the venous system — it provides gas exchange only and is used for refractory respiratory failure with preserved cardiac output. VA-ECMO drains venous blood and returns oxygenated blood to a major artery, providing both gas exchange and circulatory support; it is used for refractory cardiogenic shock and refractory cardiac arrest (ECPR). VA-ECMO increases LV afterload and carries the risk of differential hypoxia (Harlequin syndrome) when cannulated peripherally.",
+  ],
+  [
+    "What is Harlequin (North–South) syndrome?",
+    "In peripheral femoro-femoral VA-ECMO, oxygenated blood is returned retrograde up the descending aorta while a recovering heart ejects native, poorly oxygenated blood antegrade. The watershed between the two flows determines which territory perfuses the coronaries, brain and right arm. Monitor SpO₂ on the right upper limb. Manage by optimising native lung function (increase PEEP and FiO₂, recruit), increasing ECMO flow, adding an internal jugular return cannula (VAV configuration) or converting to central cannulation.",
+  ],
+  [
+    "What are the EOLIA criteria for VV-ECMO referral in ARDS?",
+    "EOLIA criteria for severe ARDS refractory to optimal ventilation and proning: PaO₂/FiO₂ < 50 mmHg for > 3 h, or PaO₂/FiO₂ < 80 mmHg for > 6 h, or arterial pH < 7.25 with PaCO₂ ≥ 60 mmHg for > 6 h with respiratory rate increased to 35 and tidal volume reduced to 4 mL/kg PBW. EOLIA stopped early for futility (p = 0.09) but a pre-specified Bayesian re-analysis estimated a 96% probability of mortality benefit, and contemporary ELSO criteria mirror EOLIA.",
+  ],
+  [
+    "When is ECPR indicated for refractory cardiac arrest?",
+    "ELSO criteria for ECPR: witnessed arrest with bystander CPR started within 5 min, initial shockable rhythm (VF/pVT), no-flow time < 5 min and low-flow time < 60 min, age < 70 with no major comorbidity, end-tidal CO₂ > 1.3 kPa during CPR (a surrogate for adequate chest compressions), and a suspected reversible cause (most commonly acute coronary syndrome). ARREST (Minneapolis) and Prague-OHCA showed mortality benefit in selected single-centre cohorts; INCEPTION (multicentre Dutch RCT) was neutral — the size and reliability of any ECPR benefit depend on low low-flow time and a straight-to-cath-lab pathway.",
+  ],
+  [
+    "How is anticoagulation managed on ECMO?",
+    "First-line is unfractionated heparin bolus 50–100 units/kg at cannulation, followed by continuous infusion titrated to APTT 1.5–2× normal or ACT 180–220 s. Anti-Xa (target 0.3–0.7 IU/mL) is more reliable than APTT in critically ill patients with raised acute-phase reactants. Bivalirudin is the agent of choice when heparin-induced thrombocytopenia is confirmed (4Ts score and anti-PF4 antibody, then functional assay). Bleeding is the commonest complication of ECMO — accept lower anticoagulation targets when active bleeding outweighs thrombotic risk.",
+  ],
+  [
+    "What is the SAVE score and what is the RESP score?",
+    "The SAVE (Survival After Veno-Arterial ECMO) score predicts in-hospital survival for adults receiving VA-ECMO for refractory cardiogenic shock. The RESP (Respiratory ECMO Survival Prediction) score predicts in-hospital survival for adults receiving VV-ECMO for severe acute respiratory failure. Both scores assign points for age, organ failure, pre-ECMO ventilation duration, diagnosis and acute clinical variables, then stratify patients into risk classes from I (lowest mortality) to V (highest). They are decision-support tools — not absolute contraindications — and are most useful when patient selection is borderline.",
+  ],
+  [
+    "How is VV-ECMO weaned?",
+    "Use a sweep-down trial. Maintain blood flow on the circuit (this prevents thrombosis) and reduce sweep gas stepwise to zero over 30–60 min, ventilating the patient on lung-protective settings (Vt 6 mL/kg PBW, PEEP 10, FiO₂ 0.5). Re-check ABG and lung mechanics. If PaO₂/FiO₂ > 150, pH and PaCO₂ stable, and respiratory mechanics acceptable, plan decannulation. Restart sweep promptly if the patient deteriorates.",
+  ],
+];
+
 
 /**
  * Dedicated FFICM / EDIC standalone topic page for Extracorporeal Membrane
