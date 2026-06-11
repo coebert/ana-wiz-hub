@@ -184,6 +184,24 @@ const SepsisTopic = () => {
       coreConcepts={
     <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-6">
+        {/* Table of contents */}
+        <nav aria-label="On this page" className="not-prose rounded-lg border border-border bg-secondary/20 p-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">On this page</p>
+          <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1 text-sm">
+            <li><a href="#sepsis-3" className="text-icu hover:underline">Sepsis-3 definitions &amp; scores</a></li>
+            <li><a href="#hour-1" className="text-icu hover:underline">SSC Hour-1 bundle</a></li>
+            <li><a href="#antibiotics" className="text-icu hover:underline">Empirical antibiotics &amp; source control</a></li>
+            <li><a href="#fluids" className="text-icu hover:underline">Fluid resuscitation strategy</a></li>
+            <li><a href="#vasopressors" className="text-icu hover:underline">Vasopressor &amp; inotrope ladder</a></li>
+            <li><a href="#steroids" className="text-icu hover:underline">Hydrocortisone in septic shock</a></li>
+            <li><a href="#biomarkers" className="text-icu hover:underline">Lactate, CRP &amp; procalcitonin</a></li>
+            <li><a href="#trial-evidence" className="text-icu hover:underline">Landmark trial evidence</a></li>
+            <li><a href="#pitfalls" className="text-icu hover:underline">Exam pitfalls</a></li>
+            <li><a href="#faq" className="text-icu hover:underline">Frequently asked questions</a></li>
+          </ul>
+        </nav>
+
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
           <p className="text-muted-foreground leading-relaxed">
