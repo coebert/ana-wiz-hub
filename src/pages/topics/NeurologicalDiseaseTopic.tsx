@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
@@ -34,6 +35,16 @@ const objectives = [
   "Plan anaesthesia for multiple sclerosis and Parkinson's disease without precipitating relapse or withdrawal.",
   "Recognise and treat autonomic dysreflexia in spinal cord injury.",
   "Adjust technique for muscular dystrophies and motor neuron disease (MH risk, sux/volatile avoidance).",
+];
+
+const tocItems = [
+  { id: "section-myasthenia-gravis", label: "Myasthenia Gravis", group: "Neuromuscular" },
+  { id: "section-epilepsy", label: "Epilepsy", group: "Seizure" },
+  { id: "section-multiple-sclerosis", label: "Multiple Sclerosis", group: "Demyelinating" },
+  { id: "section-parkinsons-disease", label: "Parkinson's Disease", group: "Neurodegenerative" },
+  { id: "section-motor-neuron-disease", label: "Motor Neuron Disease", group: "Motor Neuron" },
+  { id: "section-muscular-dystrophies", label: "Muscular Dystrophies", group: "Muscular" },
+  { id: "section-spinal-cord-injury", label: "Spinal Cord Injury", group: "Spinal" },
 ];
 
 const keyPoints = [
@@ -102,8 +113,10 @@ const NeurologicalDiseaseTopic = () => {
           Neurological co-existing disease changes drug handling, raises specific intra-operative risks, and dictates choices around regional versus general anaesthesia. This topic covers the high-yield conditions — myasthenia gravis, epilepsy, MS, Parkinson's disease, motor neuron disease, muscular dystrophies, and spinal cord injury — with an emphasis on neuromuscular blocker selection, autonomic safety, and continuation of disease-modifying therapy.
         </p>
 
+        <TopicTableOfContents items={tocItems} />
+
         {/* Myasthenia Gravis */}
-        <section>
+        <section id="section-myasthenia-gravis" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Myasthenia Gravis</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09", "NA_BK_01"]} />
           <MGPathophysDiagram />
@@ -168,7 +181,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Epilepsy */}
-        <section>
+        <section id="section-epilepsy" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Epilepsy</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <EpilepsyPathophysDiagram />
@@ -212,7 +225,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Multiple Sclerosis */}
-        <section>
+        <section id="section-multiple-sclerosis" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Multiple Sclerosis</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <MSPathophysDiagram />
@@ -255,7 +268,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Parkinson's Disease */}
-        <section>
+        <section id="section-parkinsons-disease" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Parkinson's Disease</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <PDPathophysDiagram />
@@ -299,7 +312,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Motor Neuron Disease */}
-        <section>
+        <section id="section-motor-neuron-disease" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Motor Neuron Disease</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <MNDPathophysDiagram />
@@ -341,7 +354,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Muscular Dystrophies */}
-        <section>
+        <section id="section-muscular-dystrophies" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Muscular Dystrophies</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <MDPathophysDiagram />
@@ -384,7 +397,7 @@ const NeurologicalDiseaseTopic = () => {
         </section>
 
         {/* Spinal Cord Injury */}
-        <section>
+        <section id="section-spinal-cord-injury" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord Injury</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09"]} />
           <SCIPathophysDiagram />
