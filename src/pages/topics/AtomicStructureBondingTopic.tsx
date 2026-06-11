@@ -210,6 +210,8 @@ const AtomicStructureBondingTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <TopicFaqs faqs={atomicStructureFaqs} />
         </>
       }
     />
