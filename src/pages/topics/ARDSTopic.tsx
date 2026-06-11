@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -135,6 +136,18 @@ const workedExamples: WorkedExample[] = [
   },
 ];
 
+const tocItems = [
+  { id: "section-pathophysiology", label: "Pathophysiology", group: "Core" },
+  { id: "section-berlin", label: "Berlin Definition", group: "Core" },
+  { id: "section-management", label: "Management Strategy", group: "Core" },
+  { id: "section-prone", label: "Prone Positioning", group: "Therapies" },
+  { id: "section-historical", label: "Therapies of Uncertain Benefit", group: "Therapies" },
+  { id: "section-ecmo", label: "ECMO", group: "Rescue" },
+  { id: "section-covid", label: "COVID-19", group: "Special" },
+  { id: "trial-evidence", label: "Landmark Trials", group: "Evidence" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
+
 const ARDSTopic = () => {
   return (
     <TopicTemplate
@@ -183,26 +196,11 @@ const ARDSTopic = () => {
       }}
       coreConcepts={
     <>
-      {/* Table of contents */}
-      <nav aria-label="On this page" className="not-prose rounded-lg border border-border bg-secondary/20 p-4 mb-6">
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">On this page</p>
-        <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1 text-sm">
-          <li><a href="#berlin-definition" className="text-icu hover:underline">Berlin definition (2012)</a></li>
-          <li><a href="#lung-protective" className="text-icu hover:underline">Lung-protective ventilation settings</a></li>
-          <li><a href="#peep-strategy" className="text-icu hover:underline">PEEP titration strategies</a></li>
-          <li><a href="#prone" className="text-icu hover:underline">Prone positioning</a></li>
-          <li><a href="#nmb" className="text-icu hover:underline">Neuromuscular blockade</a></li>
-          <li><a href="#ecmo" className="text-icu hover:underline">VV-ECMO &amp; EOLIA</a></li>
-          <li><a href="#fluids-steroids" className="text-icu hover:underline">Fluid &amp; steroid strategy</a></li>
-          <li><a href="#trial-evidence" className="text-icu hover:underline">Landmark trial evidence</a></li>
-          <li><a href="#pitfalls" className="text-icu hover:underline">Exam pitfalls</a></li>
-          <li><a href="#faq" className="text-icu hover:underline">Frequently asked questions</a></li>
-        </ul>
-      </nav>
+      <TopicTableOfContents items={tocItems} />
 
       <section className="space-y-6">
 
-        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC2.4"]}>
+        <ExamSection id="section-pathophysiology" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC2.4"]}>
           <CollapsibleSubsection title="Pathophysiology of ARDS" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               ARDS is the clinical expression of <strong>diffuse alveolar damage (DAD)</strong> — a stereotyped inflammatory injury to the alveolar–capillary unit triggered by a wide variety of pulmonary (direct) or extra-pulmonary (indirect) insults. The pathological course is conventionally divided into three overlapping phases: an early <strong>exudative</strong> phase (0–7 days) of barrier breakdown and protein-rich oedema, a <strong>proliferative</strong> phase (7–21 days) of epithelial repair, and, in a minority, a late <strong>fibrotic</strong> phase (&gt;3 weeks) of collagen deposition and persistent functional impairment.
@@ -221,7 +219,7 @@ const ARDSTopic = () => {
 
         <ARDSPathophysiologyCascadeDiagram />
 
-        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC2.4"]}>
+        <ExamSection id="section-berlin" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC2.4"]}>
           <CollapsibleSubsection title="Berlin Definition (2012)" defaultOpen>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The Berlin definition replaced the 1994 AECC criteria and stratifies ARDS by oxygenation impairment (PaO₂/FiO₂ on ≥5 cmH₂O PEEP) into mild, moderate, and severe categories — each with a stepwise rise in mortality. Onset must be within 7 days of a known insult, with bilateral opacities not fully explained by cardiac failure or volume overload.
@@ -248,7 +246,7 @@ const ARDSTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+        <ExamSection id="section-management" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
           <CollapsibleSubsection title="Management Strategy">
           <div className="space-y-3">
             {[
@@ -265,7 +263,7 @@ const ARDSTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+        <ExamSection id="section-prone" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
           <CollapsibleSubsection title="Prone Positioning">
           <div className="space-y-4">
             <p className="text-muted-foreground leading-relaxed">
@@ -328,7 +326,7 @@ const ARDSTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+        <ExamSection id="section-historical" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
           <CollapsibleSubsection title="Therapies of Historical / Uncertain Benefit">
           <div className="space-y-3">
             <p className="text-muted-foreground leading-relaxed">
@@ -414,7 +412,7 @@ const ARDSTopic = () => {
 
       <section className="space-y-6 mb-10">
         {/* ECMO Indications & Referral */}
-        <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
+        <ExamSection id="section-ecmo" className="scroll-mt-24" exams={[Exam.FFICM, Exam.EDIC]}>
           <CollapsibleSubsection title="ECMO — Indications & Referral Criteria">
           <div className="space-y-3">
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
@@ -668,7 +666,7 @@ const ARDSTopic = () => {
         </ExamSection>
 
         {/* COVID-19 Severe Respiratory Failure */}
-        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+        <ExamSection id="section-covid" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
           <CollapsibleSubsection title="COVID-19 — Severe Respiratory Failure">
           <p className="text-muted-foreground leading-relaxed mb-4">
             COVID-19 pneumonitis can cause ARDS but may present with atypical features. The evidence base evolved rapidly during the pandemic and continues to be refined. Key principles align with standard ARDS management but with specific pharmacological adjuncts.
@@ -1175,12 +1173,7 @@ const ARDSTopic = () => {
           </div>
         </div>
 
-        <div id="pitfalls"></div>
-        <div id="prone"></div>
-        <div id="nmb"></div>
-        <div id="ecmo"></div>
-        <div id="fluids-steroids"></div>
-
+        <div id="pitfalls">
         <ExamPitfallsCallout
           accent="icu"
           pitfalls={[
@@ -1194,6 +1187,7 @@ const ARDSTopic = () => {
             "Refractory hypoxaemia: refer EARLY to SARF/ECMO centre (P/F <150) — don't wait for EOLIA cannulation criteria.",
           ]}
         />
+        </div>
 
         {/* FAQ */}
         <div id="faq">
