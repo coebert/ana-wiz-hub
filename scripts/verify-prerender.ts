@@ -110,7 +110,7 @@ function main() {
     }
     const html = readFileSync(file, "utf8");
     const scriptMatch = html.match(
-      /<script\s+type="application\/ld\+json"\s+data-prerender="faqpage">([^<]+)<\/script>/i,
+      /<script\s+type="application\/ld\+json"\s+data-prerender="faqpage">([\s\S]+?)<\/script>/i,
     );
     if (!scriptMatch) {
       faqFailures.push({ path, reason: "no FAQPage <script> tag" });
