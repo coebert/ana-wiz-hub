@@ -279,5 +279,11 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Respiratory disease", "Asthma anaesthesia", "COPD surgery", "Obstructive sleep apnoea", "OSA", "Pulmonary fibrosis", "Restrictive lung disease"],
     keywords: ["respiratory disease FRCA", "asthma anaesthesia", "COPD perioperative", "OSA surgery", "pulmonary fibrosis"],
   },
+  "endocrine-disease": {
+    title: "Endocrine Disease: DM, Thyroid, Phaeo & Steroids | FRCA",
+    description: "Perioperative endocrine disease for FRCA Final: diabetes mellitus, thyroid disorders, adrenal insufficiency, phaeochromocytoma and carcinoid syndrome.",
+    aliases: ["Endocrine disease", "Diabetes mellitus surgery", "Thyroid storm", "Phaeochromocytoma anaesthesia", "Adrenal insufficiency", "Carcinoid syndrome", "Steroid supplementation"],
+    keywords: ["endocrine disease FRCA", "diabetes perioperative", "phaeochromocytoma anaesthesia", "thyroid storm", "steroid cover surgery", "carcinoid syndrome"],
+  },
 };
 
