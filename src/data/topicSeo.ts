@@ -255,4 +255,11 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Obstetric anaesthesia", "Labour epidural", "Spinal anaesthesia caesarean", "Category 1 caesarean", "Obstetric GA", "Pre-eclampsia anaesthesia", "PPH management", "Remifentanil PCA labour"],
     keywords: ["obstetric anaesthesia FRCA", "labour epidural", "spinal caesarean section", "category 1 caesarean", "obstetric RSI", "pre-eclampsia anaesthesia", "remifentanil PCA labour", "PPH management"],
   },
+  "airway-management": {
+    title: "Airway Management: RSI, DAS 2015 & Difficult Airway | FRCA",
+    description: "Airway management for FRCA Final and FFICM: rapid sequence induction, DAS 2015 unanticipated difficult intubation algorithm, awake fibreoptic intubation, supraglottic airways, videolaryngoscopy, NAP4 lessons and front-of-neck access.",
+    aliases: ["Airway management", "Rapid sequence induction", "RSI anaesthesia", "DAS algorithm", "Difficult airway", "Awake fibreoptic intubation", "Cricothyroidotomy", "Front-of-neck access", "CICO"],
+    keywords: ["airway management FRCA", "rapid sequence induction", "DAS 2015 algorithm", "difficult airway", "awake fibreoptic intubation", "supraglottic airway", "videolaryngoscopy", "cricothyroidotomy", "CICO scalpel bougie tube", "NAP4"],
+  },
 };
+

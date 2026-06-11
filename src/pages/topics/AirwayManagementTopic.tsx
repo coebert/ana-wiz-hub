@@ -28,7 +28,21 @@ import { airwayFolio } from "@/components/diagrams/anatomyFolios";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { Link } from "react-router-dom";
 
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "section-introduction", label: "Introduction", group: "Core" },
+  { id: "section-pre-operative-airway-assessment", label: "Pre-op Assessment", group: "Assessment" },
+  { id: "section-airway-equipment", label: "Airway Equipment", group: "Equipment" },
+  { id: "section-das-2015-algorithm-four-sequential-plans", label: "DAS 2015 Algorithm", group: "Algorithms" },
+  { id: "section-awake-fibreoptic-intubation", label: "Awake Fibreoptic", group: "Techniques" },
+  { id: "section-front-of-neck-access-fona", label: "Front-of-neck Access (FONA)", group: "Techniques" },
+  { id: "section-partial-airway-obstruction-level-specific-management", label: "Partial Obstruction", group: "Clinical" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
+
 const objectives = [
+
   "Describe a structured airway assessment (LEMON, Mallampati, Wilson) and list red-flag predictors of difficulty.",
   "Apply the DAS 2015 unanticipated difficult intubation algorithm: Plans A → B → C → D with maximum attempts at each step.",
   "Compare 1st vs 2nd-generation supraglottic airways, ETT cuffs, and videolaryngoscopes for routine and rescue ventilation.",
@@ -173,7 +187,9 @@ const AirwayManagementTopic = () => {
       }}
       coreConcepts={
         <>
+          <TopicTableOfContents items={tocItems} />
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
+
             <CollapsibleSubsection title="Introduction" defaultOpen>
             <p className="text-foreground/90 leading-relaxed">
               Airway management is the cornerstone of safe anaesthetic and critical care practice. The Difficult Airway
@@ -482,11 +498,7 @@ const AirwayManagementTopic = () => {
           </section>
 
           <Helmet>
-            <title>Rapid Sequence Induction & Difficult Airway — FRCA</title>
-            <meta
-              name="description"
-              content="Rapid sequence induction (RSI), DAS difficult-airway algorithm, cricoid pressure, awake fibreoptic intubation and front-of-neck access — FRCA and FFICM revision with NAP4 and DAS 2015 evidence."
-            />
+            {/* Title + meta description provided centrally via topicSeo.airway-management; keep FAQPage JSON-LD here for rich-result eligibility. */}
             <script type="application/ld+json">{JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
@@ -497,6 +509,7 @@ const AirwayManagementTopic = () => {
               })),
             })}</script>
           </Helmet>
+
         </>
       }
       keyPoints={[
