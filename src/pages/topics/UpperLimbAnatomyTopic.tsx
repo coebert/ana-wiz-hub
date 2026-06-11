@@ -224,6 +224,8 @@ const UpperLimbAnatomyTopic = () => {
         </div>
         </section>
       </ExamSection>
+      <TopicFaqs faqs={upperLimbAnatomyFaqs} />
+      </>
       }
     />
   );
