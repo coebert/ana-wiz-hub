@@ -281,14 +281,20 @@ const MechanicalVentilationTopic = () => {
               <button
                 type="button"
                 onClick={() => setSimFullscreen((s) => !s)}
-                className="absolute right-2 top-2 z-10 rounded-md border border-border bg-background/90 p-1.5 text-muted-foreground shadow-sm backdrop-blur-sm transition-colors hover:bg-background hover:text-foreground"
+                className="absolute right-2 top-2 z-10 flex items-center gap-1.5 rounded-md border border-border bg-background/95 px-2.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur-sm transition-colors hover:bg-background hover:text-foreground"
                 aria-label={simFullscreen ? "Exit full screen" : "Enter full screen"}
                 title={simFullscreen ? "Exit full screen" : "Enter full screen"}
               >
                 {simFullscreen ? (
-                  <Minimize2 className="h-4 w-4" />
+                  <>
+                    <Minimize2 className="h-3.5 w-3.5" />
+                    <span>Exit</span>
+                  </>
                 ) : (
-                  <Maximize2 className="h-4 w-4" />
+                  <>
+                    <Maximize2 className="h-3.5 w-3.5" />
+                    <span>Fullscreen</span>
+                  </>
                 )}
               </button>
               <iframe
