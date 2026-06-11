@@ -345,6 +345,17 @@ function patchHead(
     `<meta name="twitter:description" content="${descAttr}">`,
   ];
 
+  // BreadcrumbList JSON-LD on every non-root page so Google can map the
+  // section hierarchy (Home › Section › Topic › Subtopic) for rich nav
+  // breadcrumbs in SERPs.
+  const breadcrumb = buildBreadcrumb(path, seo);
+  if (breadcrumb) {
+    const bcJson = JSON.stringify(breadcrumb).replace(/<\/script>/gi, "<\\/script>");
+    headTags.push(
+      `<script type="application/ld+json" data-prerender="breadcrumb">${bcJson}</script>`,
+    );
+  }
+
   if (faqs && faqs.length > 0) {
     const faqJsonLd = {
       "@context": "https://schema.org",
