@@ -191,6 +191,8 @@ const SpinalAnatomyTopic = () => {
         </div>
         </section>
       </ExamSection>
+      <TopicFaqs faqs={spinalAnatomyFaqs} />
+      </>
       }
     />
   );
