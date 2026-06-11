@@ -292,6 +292,75 @@ function buildBreadcrumb(path: string, seo: RouteSeo): object | null {
   };
 }
 
+// Sections whose deep pages are clinical/medical content — these get a
+// MedicalWebPage schema so Google can classify them as medical material
+// (eligible for the medical content treatment in SERPs / Knowledge Graph)
+// rather than generic articles.
+const MEDICAL_SECTIONS = new Set([
+  "physics",
+  "physiology",
+  "pharmacology",
+  "clinical",
+  "intensive-care",
+  "perioperative",
+  "anatomy",
+  "chemistry",
+  "drugs",
+]);
+
+function buildMedicalWebPage(path: string, seo: RouteSeo): object | null {
+  const segments = path.split("/").filter(Boolean);
+  // Topic + subtopic pages only: section landing pages (1 segment) and
+  // non-medical app routes (/tools, /viva, /revise, etc.) are excluded.
+  if (segments.length < 2) return null;
+  if (!MEDICAL_SECTIONS.has(segments[0])) return null;
+
+  const canonical = `${SITE}${path}`;
+  const sectionKey = segments[0];
+  const sectionLabel = SECTION_LABELS[sectionKey] ?? "FRCA";
+  const leafSlug = segments[segments.length - 1];
+  // Short human label for `about`/`headline` — strip the SEO suffixes the way
+  // buildBreadcrumb does for leaf names.
+  const leafName = seo.title
+    .split(/\s+[–|]\s+/)[0]
+    .split(/\s*\|\s*/)[0]
+    .trim() || titleCase(leafSlug);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name: seo.title,
+    headline: leafName,
+    description: seo.description,
+    url: canonical,
+    inLanguage: "en-GB",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "AnaesthesiaCore",
+      url: `${SITE}/`,
+    },
+    about: {
+      "@type": "MedicalEntity",
+      name: leafName,
+    },
+    audience: {
+      "@type": "MedicalAudience",
+      audienceType: "Clinician",
+      healthCondition: { "@type": "MedicalCondition", name: sectionLabel },
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "AnaesthesiaCore",
+      url: `${SITE}/`,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE}/brain-logo.png`,
+      },
+    },
+    mainContentOfPage: true,
+  };
+}
+
 function patchHead(
   shell: string,
   path: string,
