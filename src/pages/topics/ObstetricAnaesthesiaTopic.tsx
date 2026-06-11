@@ -85,6 +85,8 @@ const tocItems = [
   { id: "section-postpartum-bladder-bowel-and-lower-limb-neurological-symptoms-after-neuraxial-block", label: "Postpartum Neurology", group: "Postpartum" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
+
+const ObstetricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
   {
     title: "Category-1 caesarean section under GA",
     scenario: "A G2P1 at 38 weeks with cord prolapse and fetal bradycardia needs immediate delivery. Plan a rapid-sequence GA with awareness mitigation.",
