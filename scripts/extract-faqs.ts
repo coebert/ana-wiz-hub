@@ -69,47 +69,82 @@ function resolveSrc(rel: string): string {
 }
 
 /**
- * Pull every `const <name>Faqs: Array<[string, string]> = [...]` declaration
- * out of the given file and return the parsed FAQ pairs (concatenated if
- * a file declares more than one — none currently do).
+ * Pull every FAQ source out of the given file. We accept three patterns
+ * the codebase uses (all extract to the same `[question, answer]` shape):
+ *
+ *   1. Named array: `const <name>Faqs: Array<[string, string]> = [["q","a"], …]`
+ *   2. Inline tuple form inside JSON-LD: `mainEntity: [["q","a"], …].map(…)`
+ *   3. Inline object form: `mainEntity: [{ "@type": "Question", name: "q",
+ *      acceptedAnswer: { "@type": "Answer", text: "a" } }, …]`
+ *
+ * Pairs are deduped by question text in case a file mixes patterns.
  */
 function extractFaqsFromFile(file: string): FaqPair[] {
   if (!existsSync(file)) return [];
   const src = readFileSync(file, "utf8");
-  const decl = /const\s+\w+Faqs\s*:\s*Array<\[string,\s*string\]>\s*=\s*(\[)/g;
-
   const pairs: FaqPair[] = [];
-  for (const m of src.matchAll(decl)) {
-    const start = m.index! + m[0].length - 1; // position of opening "["
-    const literal = sliceBalanced(src, start);
-    if (!literal) continue;
+
+  const tryEval = (literal: string): unknown => {
     try {
-      // Tuple-of-string-pairs literal: safe to eval. We use Function rather
-      // than JSON.parse because the source uses unquoted keys nowhere but
-      // legitimately uses TS-style trailing commas, template strings, and
-      // string concatenation that JSON.parse rejects.
       // eslint-disable-next-line no-new-func
-      const parsed = new Function(`return (${literal});`)() as unknown;
-      if (Array.isArray(parsed)) {
-        for (const row of parsed) {
-          if (
-            Array.isArray(row) &&
-            row.length === 2 &&
-            typeof row[0] === "string" &&
-            typeof row[1] === "string"
-          ) {
-            pairs.push([row[0], row[1]]);
-          }
-        }
-      }
+      return new Function(`return (${literal});`)();
     } catch (err) {
       console.warn(
         `[extract-faqs] failed to parse FAQ literal in ${file}: ${(err as Error).message}`,
       );
+      return null;
     }
+  };
+
+  const pushIfPair = (q: unknown, a: unknown) => {
+    if (typeof q === "string" && typeof a === "string" && q && a) {
+      pairs.push([q, a]);
+    }
+  };
+
+  const ingest = (parsed: unknown) => {
+    if (!Array.isArray(parsed)) return;
+    for (const row of parsed) {
+      if (Array.isArray(row) && row.length === 2) {
+        pushIfPair(row[0], row[1]);
+      } else if (row && typeof row === "object") {
+        const r = row as Record<string, unknown>;
+        const name = r.name;
+        const ans = r.acceptedAnswer as Record<string, unknown> | undefined;
+        pushIfPair(name, ans?.text);
+      }
+    }
+  };
+
+  // Pattern 1: `const <name>Faqs: Array<[string, string]> = [`
+  for (const m of src.matchAll(
+    /const\s+\w+Faqs\s*:\s*Array<\[string,\s*string\]>\s*=\s*(\[)/g,
+  )) {
+    const start = m.index! + m[0].length - 1;
+    const literal = sliceBalanced(src, start);
+    if (literal) ingest(tryEval(literal));
   }
-  return pairs;
+
+  // Patterns 2 + 3: `mainEntity:` followed by an array literal — only inside
+  // a FAQPage block, so anchor on the "@type": "FAQPage" string and parse
+  // forward to the next mainEntity literal.
+  const faqBlockRe = /"@type":\s*"FAQPage"[\s\S]{0,500}?mainEntity\s*:\s*(\[)/g;
+  for (const m of src.matchAll(faqBlockRe)) {
+    const start = m.index! + m[0].length - 1;
+    const literal = sliceBalanced(src, start);
+    if (literal) ingest(tryEval(literal));
+  }
+
+  // Dedupe by question (a file occasionally declares both a named const
+  // AND inlines it inside the JSON-LD literal via .map()).
+  const seen = new Set<string>();
+  return pairs.filter(([q]) => {
+    if (seen.has(q)) return false;
+    seen.add(q);
+    return true;
+  });
 }
+
 
 /** Read forward from an opening "[" and return the substring through the
  *  matching "]", respecting string literals and nested brackets. */
