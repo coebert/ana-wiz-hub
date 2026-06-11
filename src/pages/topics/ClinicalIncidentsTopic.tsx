@@ -8,6 +8,7 @@ import AnaphylaxisPathophysiologyDiagram from "@/components/diagrams/Anaphylaxis
 import { AnaphylaxisCascadeDiagram } from "@/components/diagrams/AnaphylaxisCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { Link } from "react-router-dom";
 
 const objectives = [
@@ -89,6 +90,14 @@ const workedExamples: WorkedExample[] = [
   },
 ];
 
+const tocItems = [
+  { id: "section-anaphylaxis", label: "Anaphylaxis", group: "Incidents" },
+  { id: "section-mh", label: "Malignant Hyperthermia", group: "Incidents" },
+  { id: "section-last", label: "LAST", group: "Incidents" },
+  { id: "section-awareness", label: "Accidental Awareness", group: "Incidents" },
+  { id: "section-death-on-table", label: "Death on the Table", group: "Incidents" },
+];
+
 const ClinicalIncidentsTopic = () => {
   return (
     <TopicTemplate
@@ -138,7 +147,8 @@ const ClinicalIncidentsTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="anaphylaxis" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
+          <TopicTableOfContents items={tocItems} />
+          <ExamSection id="section-anaphylaxis" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
             <CollapsibleSubsection title="Anaphylaxis" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (NAP6). <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">NMBAs</Link> are the commonest cause (~60%), followed by antibiotics (especially teicoplanin), chlorhexidine, and patent blue dye.
@@ -162,7 +172,7 @@ const ClinicalIncidentsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="mh" exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-mh" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Malignant Hyperthermia (MH)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Autosomal dominant ryanodine receptor (RYR1) mutation. Triggered by volatile agents and <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">suxamethonium</Link>. Incidence ~1:5,000–15,000. Mortality now &lt; 5% with dantrolene.
@@ -185,7 +195,7 @@ const ClinicalIncidentsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="last" exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-last" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Local Anaesthetic Systemic Toxicity (LAST)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               CNS toxicity precedes cardiac toxicity (except with bupivacaine which can cause simultaneous cardiac arrest). Maximum doses: lidocaine 3 mg/kg (7 with adrenaline), bupivacaine 2 mg/kg.
@@ -203,7 +213,7 @@ const ClinicalIncidentsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="awareness" exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-awareness" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Accidental Awareness Under Anaesthesia">
             <p className="text-muted-foreground leading-relaxed">
               NAP5 (2014): incidence ~1:19,000. Risk factors: TIVA without BIS, RSI, cardiac surgery, CS under GA, junior anaesthetist, failure to check equipment. Prevention: processed EEG monitoring (BIS 40–60), end-tidal agent monitoring for volatiles, avoid paralysis unless necessary. Management: immediate acknowledgement, psychological support, formal follow-up.
@@ -211,7 +221,7 @@ const ClinicalIncidentsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="death-on-table" exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-death-on-table" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Death on the Table">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
