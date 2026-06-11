@@ -254,6 +254,7 @@ const EnhancedRecoveryTopic = () => {
           </DiagramSection>
 
           <DiagramSection
+            id="section-specialty-protocols"
             title="Exemplar ERAS Protocols by Surgical Specialty"
             intro={
               <p>
@@ -322,6 +323,7 @@ const EnhancedRecoveryTopic = () => {
           </DiagramSection>
 
           <DiagramSection
+            id="section-implementation-audit"
             title="Implementation, Compliance & Audit"
             intro={
               <p>
