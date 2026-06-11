@@ -49,7 +49,15 @@ const workedExamples: WorkedExample[] = [
   },
 ];
 
-const AcidBaseTopic = () => {
+const tocItems = [
+  { id: "section-systematic-abg", label: "Systematic ABG Interpretation", group: "Core" },
+  { id: "section-henderson-hasselbalch", label: "Henderson–Hasselbalch", group: "Core" },
+  { id: "section-hagma", label: "HAGMA", group: "Disorders" },
+  { id: "section-osmolar-gap", label: "Osmolar Gap", group: "Disorders" },
+  { id: "section-stewart", label: "Stewart Approach", group: "Advanced" },
+  { id: "section-comparing-frameworks", label: "Comparing Frameworks", group: "Advanced" },
+  { id: "section-lactic", label: "Lactic Acidosis", group: "Disorders" },
+];
   return (
     <TopicTemplate
       title="Acid-Base Disorders"
