@@ -80,7 +80,7 @@ const MuscleRelaxantsTopic = () => {
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
+            <h2 id="introduction" className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
             <p className="text-foreground/90 leading-relaxed">
               Muscle relaxants — also called neuromuscular blocking agents (NMBAs), neuromuscular blocking drugs,
               NMJ blockers or NMBAs — produce skeletal muscle relaxation for tracheal intubation, mechanical ventilation
@@ -91,7 +91,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Properties of the Ideal Muscle Relaxant</h2>
+            <h2 id="properties-of-the-ideal-muscle-relaxant" className="text-2xl font-serif font-bold text-foreground">Properties of the Ideal Muscle Relaxant</h2>
             <p className="text-foreground/90 leading-relaxed mb-3">
               A classic viva opener. Frame your answer in physical, pharmacokinetic and clinical buckets:
             </p>
@@ -130,7 +130,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">NMJ Anatomy, nAChR Subunits & Drug Action</h2>
+            <h2 id="nmj-anatomy-nachr-subunits-drug-action" className="text-2xl font-serif font-bold text-foreground">NMJ Anatomy, nAChR Subunits & Drug Action</h2>
             <p className="text-foreground/90 leading-relaxed mb-3">
               The adult nicotinic acetylcholine receptor (nAChR) at the motor end plate is a <strong>pentameric</strong>
               ligand-gated cation channel comprising <strong>2 α, 1 β, 1 δ and 1 ε</strong> subunits. The foetal subtype
@@ -148,7 +148,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Pharmacokinetic Principles</h2>
+            <h2 id="pharmacokinetic-principles" className="text-2xl font-serif font-bold text-foreground">Pharmacokinetic Principles</h2>
             <p className="text-foreground/90 leading-relaxed">
               All clinically used muscle relaxants are <strong>bulky, highly charged (quaternary ammonium) molecules</strong>.
               This single fact explains most of their pharmacokinetic behaviour:
@@ -162,7 +162,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Suxamethonium (Succinylcholine): Mechanism of Action, Dose & Side Effects</h2>
+            <h2 id="suxamethonium-succinylcholine-mechanism-of-action-dose-side-effects" className="text-2xl font-serif font-bold text-foreground">Suxamethonium (Succinylcholine): Mechanism of Action, Dose & Side Effects</h2>
             <p className="text-foreground/90 leading-relaxed">
               The only depolarising NMBA in clinical use. Structurally two ACh molecules joined end-to-end. Dose 1–1.5 mg/kg IV.
               Onset 30–60 s (fastest of all NMBAs). Duration 5–10 min. Metabolised by plasma cholinesterase (butyrylcholinesterase).
@@ -186,14 +186,14 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Non-Depolarising Muscle Relaxants: Rocuronium, Vecuronium, Atracurium &amp; Cisatracurium</h2>
+            <h2 id="non-depolarising-muscle-relaxants" className="text-2xl font-serif font-bold text-foreground">Non-Depolarising Muscle Relaxants: Rocuronium, Vecuronium, Atracurium &amp; Cisatracurium</h2>
             <p className="text-foreground/90 leading-relaxed">
               Competitive antagonists at postjunctional nAChR α subunits. Sub-classified by chemical structure into
               <strong> aminosteroids</strong> and <strong>benzylisoquinoliniums</strong>; structure dictates histamine
               release, elimination pathway and whether sugammadex can reverse the block.
             </p>
 
-            <h3 className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Aminosteroids</h3>
+            <h3 id="aminosteroids" className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Aminosteroids</h3>
             <p className="text-foreground/90 leading-relaxed mb-3">
               Amine-substituted steroid nucleus. <strong>Less histamine release</strong> than benzylisoquinoliniums. The
               steroid ring is the target for <strong>sugammadex</strong>, so block is rapidly reversible at any depth.
@@ -232,7 +232,7 @@ const MuscleRelaxantsTopic = () => {
               </div>
             </div>
 
-            <h3 className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Benzylisoquinoliniums</h3>
+            <h3 id="benzylisoquinoliniums" className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Benzylisoquinoliniums</h3>
             <p className="text-foreground/90 leading-relaxed mb-3">
               Based on a benzylisoquinoline backbone. <strong>More histamine release</strong> (caution in brittle asthma,
               haemodynamic instability). Eliminated by <strong>Hofmann degradation</strong> (spontaneous, pH- and
@@ -270,9 +270,9 @@ const MuscleRelaxantsTopic = () => {
             </div>
 
             <div className="mt-6 rounded-lg border border-primary/30 bg-primary/5 p-4">
-              <h3 className="text-lg font-serif font-semibold text-foreground mb-1">
-                Why is rocuronium the non-depolarising RSI agent? The potency argument
-              </h3>
+            <h3 id="rocuronium-rsi-agent-potency-argument" className="text-lg font-serif font-semibold text-foreground mb-1">
+              Why is rocuronium the non-depolarising RSI agent? The potency argument
+            </h3>
               <p className="text-foreground/90 leading-relaxed text-sm">
                 Counter-intuitively, rocuronium's <strong>low potency</strong> is what gives it a fast onset. Potency
                 is the dose required for a given effect — a less potent drug must be given in a larger absolute dose
@@ -287,7 +287,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Comparative Table</h2>
+            <h2 id="comparative-table" className="text-2xl font-serif font-bold text-foreground">Comparative Table</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -323,14 +323,14 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Factors Affecting Neuromuscular Blockade</h2>
+            <h2 id="factors-affecting-neuromuscular-blockade" className="text-2xl font-serif font-bold text-foreground">Factors Affecting Neuromuscular Blockade</h2>
             <p className="text-foreground/90 leading-relaxed">
               The clinical effect of any neuromuscular blocking drug — onset, depth and duration — is modulated by patient
               physiology, concurrent drugs and the physicochemical properties of the agent itself. The FRCA examiner expects a
               structured answer covering patient factors, drug interactions and the determinants of onset (Bowman's principle).
             </p>
 
-            <h3 className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Patient Factors</h3>
+            <h3 id="patient-factors" className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Patient Factors</h3>
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm border border-border">
                 <thead className="bg-secondary/40">
@@ -358,7 +358,7 @@ const MuscleRelaxantsTopic = () => {
               </table>
             </div>
 
-            <h3 className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Drug Interactions</h3>
+            <h3 id="drug-interactions" className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Drug Interactions</h3>
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm border border-border">
                 <thead className="bg-secondary/40">
@@ -381,7 +381,7 @@ const MuscleRelaxantsTopic = () => {
               </table>
             </div>
 
-            <h3 className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Determinants of Onset (Bowman's Principle)</h3>
+            <h3 id="determinants-of-onset-bowmans-principle" className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Determinants of Onset (Bowman's Principle)</h3>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Bowman's principle</strong>: less potent non-depolarising NMBAs have a faster onset because a larger
               absolute dose is required, generating a steeper plasma-to-effect-site concentration gradient and faster nAChR
@@ -399,7 +399,7 @@ const MuscleRelaxantsTopic = () => {
 
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Reversal Agents</h2>
+            <h2 id="reversal-agents" className="text-2xl font-serif font-bold text-foreground">Reversal Agents</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Neostigmine</strong>: anticholinesterase — increases ACh at NMJ to compete with NDMR. Must be given with
               glycopyrrolate or atropine (to block muscarinic effects: bradycardia, salivation, bronchospasm). Ceiling effect —
@@ -424,7 +424,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Neuromuscular Monitoring</h2>
+            <h2 id="neuromuscular-monitoring" className="text-2xl font-serif font-bold text-foreground">Neuromuscular Monitoring</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Train-of-four (TOF)</strong>: 4 stimuli at 2 Hz. TOF ratio = T4/T1. Ratio &lt;0.9 = clinically significant
               residual blockade. <strong>Post-tetanic count (PTC)</strong>: for deep block (TOF count 0). <strong>Double burst
@@ -434,7 +434,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Residual Neuromuscular Block & Postoperative Outcomes</h2>
+            <h2 id="residual-neuromuscular-block-postoperative-outcomes" className="text-2xl font-serif font-bold text-foreground">Residual Neuromuscular Block & Postoperative Outcomes</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Postoperative residual curarisation (PORC)</strong> is defined as a TOF ratio &lt;0.9 at the adductor
               pollicis after tracheal extubation. It occurs in up to 30–40% of patients reversed with neostigmine when only
@@ -458,7 +458,7 @@ const MuscleRelaxantsTopic = () => {
 
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">NMBA Onset & Duration Timeline</h2>
+            <h2 id="nmba-onset-duration-timeline" className="text-2xl font-serif font-bold text-foreground">NMBA Onset & Duration Timeline</h2>
             <p className="text-foreground/90 leading-relaxed mb-4">
               Compare the onset and clinical duration of all neuromuscular blocking agents side-by-side.
               Press Play to animate a time cursor across the timeline. Vertical markers show when intubation conditions are achieved.
@@ -469,7 +469,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">TOF Patterns: Depolarising vs Non-Depolarising</h2>
+            <h2 id="tof-patterns" className="text-2xl font-serif font-bold text-foreground">TOF Patterns: Depolarising vs Non-Depolarising</h2>
             <p className="text-foreground/90 leading-relaxed mb-4">
               Compare the animated train-of-four response across different block types. Note the key distinguishing
               feature: fade is present in non-depolarising block but absent in Phase I depolarising block.
@@ -480,7 +480,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Molecular Structures</h2>
+            <h2 id="molecular-structures" className="text-2xl font-serif font-bold text-foreground">Molecular Structures</h2>
             <MuscleRelaxantStructures />
           </section>
 
