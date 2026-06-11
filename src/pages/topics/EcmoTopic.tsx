@@ -286,10 +286,106 @@ const EcmoTopic = () => {
               </div>
             </div>
 
+            {/* Cannulation strategy */}
+            <div>
+              <h2 id="cannulation" className="text-2xl font-serif font-bold text-foreground mb-3">Cannulation strategy</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Cannula choice, size and position dictate the maximum achievable
+                flow, recirculation fraction and complication profile. Drainage
+                cannulae are short, large-bore and multi-fenestrated; return
+                cannulae are longer, narrower and side-port-free. Maximum flow
+                is determined by drainage (negative pressure limits cavitation
+                and haemolysis), not by the pump.
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border rounded-lg">
+                  <thead className="bg-secondary/30">
+                    <tr>
+                      <th className="text-left p-2 font-semibold">Approach</th>
+                      <th className="text-left p-2 font-semibold">Typical cannulae</th>
+                      <th className="text-left p-2 font-semibold">Strengths</th>
+                      <th className="text-left p-2 font-semibold">Limitations</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Femoral V → Femoral V (VV)</td>
+                      <td className="p-2">Drainage 23–25 Fr femoral V (tip at hepatic IVC), return 19–21 Fr contralateral femoral V (tip at RA)</td>
+                      <td className="p-2">Fastest peripheral access; suitable for percutaneous insertion in ED/ICU</td>
+                      <td className="p-2">Highest recirculation (10–30%); patient bed-bound; femoral access compromises mobilisation</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Femoral V → Internal Jugular V (VV)</td>
+                      <td className="p-2">Drainage 25 Fr femoral V, return 21 Fr right IJ (tip at SVC/RA junction)</td>
+                      <td className="p-2">Lower recirculation; permits limb mobilisation</td>
+                      <td className="p-2">Two access sites; IJ cannulation in coagulopathy</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Dual-lumen single-cannula (Avalon, Crescent)</td>
+                      <td className="p-2">27–31 Fr right IJ dual-lumen — drainage ports in SVC and IVC, return port directed at tricuspid valve</td>
+                      <td className="p-2">Single access; awake ECMO and ambulation; bridge to lung transplantation</td>
+                      <td className="p-2">Requires fluoroscopy or TOE for accurate positioning; malposition causes recirculation or RV/PA injury</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Peripheral femoro-femoral VA</td>
+                      <td className="p-2">Drainage 23–25 Fr femoral V (tip at RA), return 15–19 Fr femoral A + 6–8 Fr distal perfusion cannula</td>
+                      <td className="p-2">Rapid bedside or cath-lab insertion; standard for cardiogenic shock and ECPR</td>
+                      <td className="p-2">Harlequin syndrome; LV distension; limb ischaemia without distal perfusion cannula</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Central VA (post-cardiotomy)</td>
+                      <td className="p-2">RA drainage, ascending aorta return via open chest</td>
+                      <td className="p-2">Antegrade aortic flow eliminates Harlequin; high flow achievable</td>
+                      <td className="p-2">Sternotomy with open or covered chest; bleeding and mediastinitis risk</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">VAV (peripheral VA + IJ return)</td>
+                      <td className="p-2">Femoral V drainage, femoral A return, plus an IJ return cannula</td>
+                      <td className="p-2">Treats Harlequin by delivering oxygenated blood to the upper body</td>
+                      <td className="p-2">More complex circuit; balance of flow split between A and V return</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                <strong>Sizing rule of thumb:</strong> target circuit blood flow
+                of 60–80 mL/kg/min (full VV support) or 50–70 mL/kg/min (VA
+                support). For a 70 kg adult, this is 4–5 L/min — achievable
+                with a 23–25 Fr drainage and a 19–21 Fr return cannula. The
+                most common cause of inadequate flow is undersized drainage.
+              </p>
+            </div>
+
+            {/* ECMO configurations comparison */}
+            <div>
+              <h2 id="configurations" className="text-2xl font-serif font-bold text-foreground mb-3">ECMO configurations at a glance</h2>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border rounded-lg">
+                  <thead className="bg-secondary/30">
+                    <tr>
+                      <th className="text-left p-2 font-semibold">Configuration</th>
+                      <th className="text-left p-2 font-semibold">Supports</th>
+                      <th className="text-left p-2 font-semibold">Typical indication</th>
+                      <th className="text-left p-2 font-semibold">Key risk</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">VV</td><td className="p-2">Gas exchange only</td><td className="p-2">Severe ARDS, primary graft dysfunction post-lung transplant</td><td className="p-2">Recirculation; does not unload the right heart</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Peripheral VA</td><td className="p-2">Heart + lungs</td><td className="p-2">Cardiogenic shock, ECPR, fulminant myocarditis, massive PE</td><td className="p-2">Harlequin, LV distension, limb ischaemia</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Central VA</td><td className="p-2">Heart + lungs</td><td className="p-2">Post-cardiotomy shock, can't-wean from CPB</td><td className="p-2">Bleeding, open chest, mediastinitis</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">VAV (V→A + V)</td><td className="p-2">Heart + lungs + Harlequin rescue</td><td className="p-2">Peripheral VA with recovering heart causing upper-body hypoxaemia</td><td className="p-2">Flow split between two returns; circuit complexity</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">VV-PA (RVAD)</td><td className="p-2">RV failure with preserved gas exchange</td><td className="p-2">Isolated RV failure (post-LVAD, severe PH crisis)</td><td className="p-2">PA cannula migration; PA rupture</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">ECCO₂R (low-flow)</td><td className="p-2">CO₂ clearance only (0.5–1.5 L/min)</td><td className="p-2">Severe AECOPD; ultra-protective ventilation in moderate ARDS</td><td className="p-2">Bleeding for limited benefit; SUPERNOVA / REST trials neutral or harmful</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
             {/* Interactive VV circuit animation */}
             <div className="not-prose">
               <ECMOCircuitDiagram />
             </div>
+
 
             {/* Physics of gas exchange */}
             <div>
