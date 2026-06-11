@@ -158,6 +158,63 @@ function main() {
     return fail(`BreadcrumbList JSON-LD missing on ${bcFailures.length} route(s)`);
   }
 
+  // ---- Organization JSON-LD presence ----
+  // Every prerendered route must ship a standalone Organization schema so
+  // Google can consistently map site ownership, brand details and the
+  // Knowledge Panel regardless of entry page.
+  const orgFailures: Array<{ path: string; reason: string }> = [];
+  let orgChecked = 0;
+  for (const f of readdirSync(sitemapsDir)) {
+    if (!f.endsWith(".xml")) continue;
+    const xml = readFileSync(join(sitemapsDir, f), "utf8");
+    for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+      const url = m[1];
+      if (!url.startsWith(SITE)) continue;
+      const path = url.slice(SITE.length) || "/";
+      const file = path === "/" ? join(DIST, "index.html") : join(DIST, path, "index.html");
+      if (!existsSync(file)) continue; // already reported above
+      orgChecked++;
+      const html = readFileSync(file, "utf8");
+      const scriptMatch = html.match(
+        /<script\s+type="application\/ld\+json"\s+data-prerender="organization">([\s\S]+?)<\/script>/i,
+      );
+      if (!scriptMatch) {
+        orgFailures.push({ path, reason: "no Organization <script> tag" });
+        continue;
+      }
+      try {
+        const json = JSON.parse(scriptMatch[1]);
+        if (json["@type"] !== "Organization") {
+          orgFailures.push({ path, reason: `@type is ${json["@type"]}, not Organization` });
+          continue;
+        }
+        if (typeof json.name !== "string" || json.name.length === 0) {
+          orgFailures.push({ path, reason: "Organization name missing" });
+          continue;
+        }
+        if (typeof json.url !== "string" || !json.url.startsWith("https://")) {
+          orgFailures.push({ path, reason: "Organization URL missing or invalid" });
+          continue;
+        }
+        if (typeof json.logo !== "string" || !json.logo.startsWith("https://")) {
+          orgFailures.push({ path, reason: "Organization logo missing or invalid" });
+        }
+      } catch (err) {
+        orgFailures.push({ path, reason: `JSON parse failed: ${(err as Error).message}` });
+      }
+    }
+  }
+
+  if (orgFailures.length > 0) {
+    console.error(
+      `[verify-prerender] ✗ ${orgFailures.length}/${orgChecked} route(s) missing or malformed Organization JSON-LD:`,
+    );
+    for (const o of orgFailures.slice(0, 20)) {
+      console.error(`  - ${o.path}  →  ${o.reason}`);
+    }
+    return fail(`Organization JSON-LD missing on ${orgFailures.length} route(s)`);
+  }
+
   // ---- WebSite + SearchAction JSON-LD presence ----
   // Every prerendered route must ship a WebSite schema with a SearchAction
   // potentialAction so Google surfaces the site-level search box in SERPs.
@@ -286,6 +343,7 @@ function main() {
 
   console.log(
     `[verify-prerender] ✓ ${checked} sitemap URLs all have prerendered HTML; ` +
+      `${orgChecked} Organization JSON-LD blocks valid; ` +
       `${wsChecked} WebSite/SearchAction JSON-LD blocks valid; ` +
       `${bcChecked} BreadcrumbList JSON-LD blocks valid; ` +
       `${faqExpectedPaths.length} FAQPage JSON-LD blocks valid; ` +

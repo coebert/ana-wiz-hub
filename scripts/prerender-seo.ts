@@ -386,6 +386,26 @@ function patchHead(
     `<script type="application/ld+json" data-prerender="website">${wsJson}</script>`,
   );
 
+  // Standalone Organization JSON-LD on every route for Google's Knowledge Panel
+  // and consistent brand entity mapping across the entire site.
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "AnaesthesiaCore",
+    url: `${SITE}/`,
+    logo: `${SITE}/brain-logo.png`,
+    description:
+      "FRCA Primary, Final and FFICM revision platform for UK anaesthesia and intensive care trainees.",
+    founder: { "@type": "Person", name: "Dr Rob Coe", jobTitle: "Anaesthetist" },
+    sameAs: [
+      "https://anaesthesiacore.app/",
+    ],
+  };
+  const orgJson = JSON.stringify(orgJsonLd).replace(/<\/script>/gi, "<\\/script>");
+  headTags.push(
+    `<script type="application/ld+json" data-prerender="organization">${orgJson}</script>`,
+  );
+
   // BreadcrumbList JSON-LD on every non-root page so Google can map the
   // section hierarchy (Home › Section › Topic › Subtopic) for rich nav
   // breadcrumbs in SERPs.
@@ -444,6 +464,7 @@ async function main() {
   let withFaq = 0;
   let withBreadcrumb = 0;
   let withWebSite = 0;
+  let withOrg = 0;
 
   for (const path of routes) {
     const seo = seoFor(path);
@@ -459,10 +480,11 @@ async function main() {
     if (faqs && faqs.length > 0) withFaq++;
     if (path !== "/") withBreadcrumb++;
     withWebSite++;
+    withOrg++;
   }
 
   console.log(
-    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root); ${withWebSite} include WebSite/SearchAction JSON-LD; ${withFaq} include FAQPage JSON-LD; ${withBreadcrumb} include BreadcrumbList JSON-LD.`,
+    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root); ${withWebSite} include WebSite/SearchAction JSON-LD; ${withOrg} include Organization JSON-LD; ${withFaq} include FAQPage JSON-LD; ${withBreadcrumb} include BreadcrumbList JSON-LD.`,
   );
 }
 
