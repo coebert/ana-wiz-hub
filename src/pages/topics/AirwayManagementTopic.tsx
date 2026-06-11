@@ -498,11 +498,7 @@ const AirwayManagementTopic = () => {
           </section>
 
           <Helmet>
-            <title>Rapid Sequence Induction & Difficult Airway — FRCA</title>
-            <meta
-              name="description"
-              content="Rapid sequence induction (RSI), DAS difficult-airway algorithm, cricoid pressure, awake fibreoptic intubation and front-of-neck access — FRCA and FFICM revision with NAP4 and DAS 2015 evidence."
-            />
+            {/* Title + meta description provided centrally via topicSeo.airway-management; keep FAQPage JSON-LD here for rich-result eligibility. */}
             <script type="application/ld+json">{JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
@@ -513,6 +509,7 @@ const AirwayManagementTopic = () => {
               })),
             })}</script>
           </Helmet>
+
         </>
       }
       keyPoints={[
