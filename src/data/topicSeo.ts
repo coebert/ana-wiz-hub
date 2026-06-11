@@ -297,6 +297,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Neurological disease", "Myasthenia gravis anaesthesia", "Epilepsy surgery", "Multiple sclerosis anaesthesia", "Parkinson's disease surgery", "Motor neuron disease", "Muscular dystrophy anaesthesia", "Spinal cord injury anaesthesia"],
     keywords: ["neurological disease FRCA", "myasthenia gravis anaesthesia", "epilepsy perioperative", "Parkinson's anaesthesia", "spinal cord injury anaesthesia"],
   },
+  "genetic-syndromes": {
+    title: "Genetic Syndromes & Anaesthesia: MH, DMD, Down, Marfan | FRCA",
+    description: "Perioperative genetic syndromes for FRCA Final: malignant hyperthermia, muscular dystrophies, Down syndrome, Marfan, achondroplasia, sickle cell, porphyria and BChE deficiency.",
+    aliases: ["Genetic syndromes", "Malignant hyperthermia", "Duchenne muscular dystrophy", "Down syndrome anaesthesia", "Marfan syndrome anaesthesia", "Achondroplasia anaesthesia", "Sickle cell anaesthesia", "Porphyria anaesthesia", "Pseudocholinesterase deficiency"],
+    keywords: ["genetic syndromes FRCA", "malignant hyperthermia anaesthesia", "DMD anaesthesia", "Down syndrome anaesthesia", "Marfan syndrome anaesthesia", "sickle cell surgery", "acute intermittent porphyria"],
+  },
 };
 
 
