@@ -20,6 +20,7 @@
  */
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { resolve, join } from "path";
+import { extractFaqsByPath } from "./extract-faqs";
 
 const DIST = resolve("dist");
 const SITE = "https://anaesthesiacore.app";
@@ -92,8 +93,74 @@ function main() {
     return fail(`prerender / sitemap drift — fix before deploying`);
   }
 
+  // ---- FAQPage JSON-LD presence ----
+  // Every route whose source declares FAQ pairs must have a corresponding
+  // FAQPage <script type="application/ld+json" data-prerender="faqpage">
+  // baked into the prerendered HTML. If not, rich-result eligibility falls
+  // back to client-side Helmet — exactly what we just fixed.
+  const expectedFaqs = extractFaqsByPath();
+  const faqExpectedPaths = Object.keys(expectedFaqs);
+  const faqFailures: Array<{ path: string; reason: string }> = [];
+
+  for (const path of faqExpectedPaths) {
+    const file = path === "/" ? join(DIST, "index.html") : join(DIST, path, "index.html");
+    if (!existsSync(file)) {
+      faqFailures.push({ path, reason: "prerendered file missing" });
+      continue;
+    }
+    const html = readFileSync(file, "utf8");
+    const scriptMatch = html.match(
+      /<script\s+type="application\/ld\+json"\s+data-prerender="faqpage">([\s\S]+?)<\/script>/i,
+    );
+    if (!scriptMatch) {
+      faqFailures.push({ path, reason: "no FAQPage <script> tag" });
+      continue;
+    }
+    try {
+      const json = JSON.parse(scriptMatch[1]);
+      if (json["@type"] !== "FAQPage") {
+        faqFailures.push({ path, reason: `script @type is ${json["@type"]}, not FAQPage` });
+        continue;
+      }
+      const main = json.mainEntity;
+      const expectedCount = expectedFaqs[path].length;
+      if (!Array.isArray(main) || main.length !== expectedCount) {
+        faqFailures.push({
+          path,
+          reason: `mainEntity has ${Array.isArray(main) ? main.length : "0"} Qs, expected ${expectedCount}`,
+        });
+        continue;
+      }
+      // Spot-check one entry's shape.
+      const first = main[0];
+      if (
+        !first ||
+        first["@type"] !== "Question" ||
+        typeof first.name !== "string" ||
+        first.acceptedAnswer?.["@type"] !== "Answer" ||
+        typeof first.acceptedAnswer?.text !== "string"
+      ) {
+        faqFailures.push({ path, reason: "Question/Answer shape malformed" });
+      }
+    } catch (err) {
+      faqFailures.push({ path, reason: `JSON parse failed: ${(err as Error).message}` });
+    }
+  }
+
+  if (faqFailures.length > 0) {
+    console.error(
+      `[verify-prerender] ✗ ${faqFailures.length}/${faqExpectedPaths.length} FAQ route(s) missing or malformed FAQPage JSON-LD:`,
+    );
+    for (const f of faqFailures.slice(0, 20)) {
+      console.error(`  - ${f.path}  →  ${f.reason}`);
+    }
+    return fail(`FAQPage JSON-LD missing on ${faqFailures.length} route(s)`);
+  }
+
   console.log(
-    `[verify-prerender] ✓ ${checked} sitemap URLs all have prerendered HTML, ${subSitemaps.length} sub-sitemaps linked, robots.txt advertises sitemap.`,
+    `[verify-prerender] ✓ ${checked} sitemap URLs all have prerendered HTML; ` +
+      `${faqExpectedPaths.length} FAQPage JSON-LD blocks valid; ` +
+      `${subSitemaps.length} sub-sitemaps linked; robots.txt advertises sitemap.`,
   );
 }
 

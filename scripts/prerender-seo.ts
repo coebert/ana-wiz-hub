@@ -28,6 +28,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from "fs";
 import { resolve, dirname, join } from "path";
 import { topicSeo } from "../src/data/topicSeo";
+import { extractFaqsByPath, type FaqPair } from "./extract-faqs";
 
 const SITE = "https://anaesthesiacore.app";
 const DIST = resolve("dist");
@@ -250,7 +251,12 @@ function escapeText(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-function patchHead(shell: string, path: string, seo: RouteSeo): string {
+function patchHead(
+  shell: string,
+  path: string,
+  seo: RouteSeo,
+  faqs: FaqPair[] | undefined,
+): string {
   const canonical = `${SITE}${path === "/" ? "/" : path}`;
   const titleText = escapeText(seo.title);
   const descAttr = escapeAttr(seo.description);
@@ -286,8 +292,9 @@ function patchHead(shell: string, path: string, seo: RouteSeo): string {
     "\n    ",
   );
 
-  // 4. Inject per-route canonical + og + twitter, immediately before </head>.
-  const injected = [
+  // 4. Inject per-route canonical + og + twitter + optional FAQPage JSON-LD,
+  //    immediately before </head>.
+  const headTags: string[] = [
     `<link rel="canonical" href="${canonical}">`,
     `<meta property="og:url" content="${canonical}">`,
     `<meta property="og:type" content="${ogType}">`,
@@ -295,7 +302,29 @@ function patchHead(shell: string, path: string, seo: RouteSeo): string {
     `<meta property="og:description" content="${descAttr}">`,
     `<meta name="twitter:title" content="${titleAttr}">`,
     `<meta name="twitter:description" content="${descAttr}">`,
-  ].join("\n    ");
+  ];
+
+  if (faqs && faqs.length > 0) {
+    const faqJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map(([name, text]) => ({
+        "@type": "Question",
+        name,
+        acceptedAnswer: { "@type": "Answer", text },
+      })),
+    };
+    // JSON.stringify already escapes " and \. A </script> sequence inside an
+    // answer would break the closing tag — defend against it by escaping the
+    // forward slash, which JSON parsers and Google's structured-data parser
+    // both handle transparently.
+    const json = JSON.stringify(faqJsonLd).replace(/<\/script>/gi, "<\\/script>");
+    headTags.push(
+      `<script type="application/ld+json" data-prerender="faqpage">${json}</script>`,
+    );
+  }
+
+  const injected = headTags.join("\n    ");
 
   // Strip the duplicate <meta property="og:type"> the shell ships, since we
   // re-emit our own (website vs article per route).
@@ -315,13 +344,16 @@ async function main() {
   }
   const shell = readFileSync(shellPath, "utf8");
   const routes = collectRoutes();
+  const faqsByPath = extractFaqsByPath();
 
   let written = 0;
   let overwroteRoot = false;
+  let withFaq = 0;
 
   for (const path of routes) {
     const seo = seoFor(path);
-    const html = patchHead(shell, path, seo);
+    const faqs = faqsByPath[path];
+    const html = patchHead(shell, path, seo, faqs);
 
     const targetDir = path === "/" ? DIST : join(DIST, path);
     const targetFile = join(targetDir, "index.html");
@@ -329,10 +361,11 @@ async function main() {
     writeFileSync(targetFile, html);
     written++;
     if (path === "/") overwroteRoot = true;
+    if (faqs && faqs.length > 0) withFaq++;
   }
 
   console.log(
-    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root).`,
+    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root); ${withFaq} include FAQPage JSON-LD.`,
   );
 }
 
