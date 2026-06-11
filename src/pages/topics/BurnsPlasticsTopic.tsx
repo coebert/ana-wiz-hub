@@ -122,7 +122,7 @@ const BurnsPlasticsTopic = () => {
             <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
               <CollapsibleSubsection title="Introduction" defaultOpen>
                 <p className="text-muted-foreground leading-relaxed">
-                  Burns and plastic surgery anaesthesia encompasses the acute resuscitation of major thermal injury, management of inhalational trauma, and the complex reconstructive surgery that follows. Major burns (>20% TBSA) trigger a profound systemic inflammatory response with capillary leak, hypovolaemic shock, and a prolonged hypermetabolic state. Anaesthetic management spans emergency airway control, massive fluid resuscitation, repeated surgical procedures under challenging conditions, and optimisation of free-flap perfusion for reconstruction.
+                  Burns and plastic surgery anaesthesia encompasses the acute resuscitation of major thermal injury, management of inhalational trauma, and the complex reconstructive surgery that follows. Major burns (&gt;20% TBSA) trigger a profound systemic inflammatory response with capillary leak, hypovolaemic shock, and a prolonged hypermetabolic state. Anaesthetic management spans emergency airway control, massive fluid resuscitation, repeated surgical procedures under challenging conditions, and optimisation of free-flap perfusion for reconstruction.
                 </p>
               </CollapsibleSubsection>
             </ExamSection>
