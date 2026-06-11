@@ -279,6 +279,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Perioperative fluid therapy", "GDFT", "Goal-directed fluid therapy", "Crystalloids vs colloids", "Fluid responsiveness", "Glycocalyx", "Revised Starling equation"],
     keywords: ["perioperative fluid therapy FRCA", "GDFT", "goal-directed fluid therapy", "crystalloids vs colloids", "SMART trial", "RELIEF trial", "glycocalyx", "fluid responsiveness"],
   },
+  "vascular-access-devices": {
+    title: "Vascular Access Devices: CVC, PICC, Vascath & RIC | FRCA",
+    description: "Vascular access devices for FRCA Primary/Final/FFICM: peripheral cannulae, midlines, PICCs, CVCs, vascaths, trauma lines (RIC/MAC), Swan-Ganz introducers, and long-term tunnelled devices.",
+    aliases: ["Vascular access devices", "Central venous catheter", "CVC", "PICC", "Peripheral cannula", "Midline catheter", "Vascath", "Trauma line", "RIC", "MAC", "Swan-Ganz sheath", "Portacath", "Hickman line"],
+    keywords: ["vascular access devices FRCA", "CVC anaesthesia", "PICC line", "peripheral cannula", "midline catheter", "vascath", "trauma line RIC MAC", "Swan-Ganz sheath", "Portacath", "Hickman line"],
+  },
   "cardiovascular-disease": {
     title: "Cardiovascular Disease: IHD, Valvular, HF & PH | FRCA",
     description: "Perioperative cardiovascular disease for FRCA Final: IHD, valvular lesions, heart failure, arrhythmias, devices, pulmonary hypertension and ACHD.",

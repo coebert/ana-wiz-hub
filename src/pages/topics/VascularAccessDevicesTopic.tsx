@@ -11,6 +11,7 @@ import { VascularAccessTypesDiagram } from "@/components/diagrams/VascularAccess
 import { DwellTimeInfographic } from "@/components/diagrams/DwellTimeInfographic";
 import { vascularAccessDevicesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const VascularAccessDevicesTopicWorkedExamples: WorkedExample[] = [
   {
@@ -39,6 +40,19 @@ const VascularAccessDevicesTopicWorkedExamples: WorkedExample[] = [
     answer: "Implantable port (e.g., Port-a-Cath) — lowest infection risk and best quality of life for cyclical 6-month therapy.",
     cites: ["NICE TA49", "BJA Educ 2016", "KDIGO 2012"],
   },
+];
+
+const tocItems = [
+  { id: "section-device-overview", label: "Device Overview", group: "Core" },
+  { id: "section-classification", label: "Classification", group: "Core" },
+  { id: "section-peripheral-cannulae", label: "Peripheral Cannulae", group: "Devices" },
+  { id: "section-midline-catheters", label: "Midline Catheters", group: "Devices" },
+  { id: "section-picc-lines", label: "PICC Lines", group: "Devices" },
+  { id: "section-multi-lumen-cvc", label: "Multi-lumen CVC", group: "Devices" },
+  { id: "section-vascath-haemodialysis", label: "Vascath & Haemodialysis", group: "Devices" },
+  { id: "section-trauma-lines", label: "Trauma Lines", group: "Devices" },
+  { id: "section-swan-ganz-long-term", label: "Swan-Ganz & Long-term Devices", group: "Specialist" },
+  { id: "section-dwell-times-scenarios", label: "Dwell Times & Clinical Scenarios", group: "Evidence" },
 ];
 
 const VascularAccessDevicesTopic = () => {
@@ -86,7 +100,8 @@ const VascularAccessDevicesTopic = () => {
       }}
       coreConcepts={
         <>
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <TopicTableOfContents items={tocItems} />
+          <ExamSection id="section-device-overview" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <DiagramSection title="Devices to scale — length and tip position" intro={<p>Catheters compared on a single length axis. Tip position (forearm vein → axillary vein → SVC) determines whether the device is peripheral, midline or central, and therefore which drugs and what flow rates are safe.</p>}>
               <VascularAccessDevicesDiagram />
             </DiagramSection>
@@ -100,7 +115,7 @@ const VascularAccessDevicesTopic = () => {
               <DwellTimeInfographic />
             </DiagramSection>
           </ExamSection>
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-classification" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               How to classify vascular access
             </h2>
@@ -143,7 +158,7 @@ const VascularAccessDevicesTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-peripheral-cannulae" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Peripheral cannulae
             </h2>
@@ -175,7 +190,7 @@ const VascularAccessDevicesTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-midline-catheters" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Midline catheters
             </h2>
@@ -195,7 +210,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-picc-lines" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               PICC lines
             </h2>
@@ -227,7 +242,7 @@ const VascularAccessDevicesTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-multi-lumen-cvc" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Multi-lumen central venous catheter (CVC)
             </h2>
@@ -267,7 +282,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-vascath-haemodialysis" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Vascath / haemodialysis catheter
             </h2>
@@ -290,7 +305,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-trauma-lines" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Trauma lines — RIC and MAC
             </h2>
@@ -321,7 +336,7 @@ const VascularAccessDevicesTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-swan-ganz-long-term" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Swan-Ganz introducer sheath
             </h2>
@@ -347,7 +362,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-swan-ganz-long-term" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Long-term (tunnelled & implanted) vascular access devices
             </h2>
@@ -418,7 +433,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-dwell-times-scenarios" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Evidence on safe dwell times by device & site
             </h2>
@@ -515,7 +530,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-dwell-times-scenarios" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Choosing a device — clinical scenarios
             </h2>
