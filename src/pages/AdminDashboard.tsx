@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick, Headphones, Mic2, Map as MapIcon } from "lucide-react";
 import VisitorsWorldMap from "@/components/admin/VisitorsWorldMap";
+import SeoAnalyticsPanel from "@/components/admin/SeoAnalyticsPanel";
 
 /** Format a number of seconds as "Hh Mm" or "Mm Ss" for compact display. */
 function formatDuration(totalSeconds: number): string {
@@ -168,7 +169,7 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"overview" | "topics">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "topics" | "seo">("overview");
   const [mapMetric, setMapMetric] = useState<"users" | "visits">("users");
   // Raw visits kept for sub-range filtering (e.g. top countries)
   const [allVisits, setAllVisits] = useState<{ visitor_id: string; visited_at: string; country?: string | null; country_name?: string | null }[]>([]);
@@ -808,6 +809,7 @@ const AdminDashboard = () => {
   const tabs = [
     { key: "overview" as const, label: "Overview", icon: BarChart3, hint: "Headline usage stats and weekly activity" },
     { key: "topics" as const, label: "Topic Analytics", icon: BookOpen, hint: "Most and least visited topics" },
+    { key: "seo" as const, label: "SEO", icon: TrendingUp, hint: "Google Search Console rankings, clicks, and top queries" },
   ];
 
 
@@ -1842,6 +1844,16 @@ const AdminDashboard = () => {
                 </div>
               </div>
             )}
+          </section>
+        )}
+
+        {activeTab === "seo" && (
+          <section
+            id="admin-panel-seo"
+            role="tabpanel"
+            aria-labelledby="admin-tab-seo"
+          >
+            <SeoAnalyticsPanel />
           </section>
         )}
 
