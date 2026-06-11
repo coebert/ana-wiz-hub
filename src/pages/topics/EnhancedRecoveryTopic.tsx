@@ -126,7 +126,8 @@ const EnhancedRecoveryTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
           <section className="space-y-6">
-            <div>
+            <TopicTableOfContents items={tocItems} />
+            <div id="section-eras-principles" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ERAS Principles</h2>
           <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_03"]} />
               <p className="text-muted-foreground leading-relaxed mb-3">
@@ -148,7 +149,7 @@ const EnhancedRecoveryTopic = () => {
               </div>
             </div>
 
-            <div>
+            <div id="section-surgical-stress-response" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Surgical Stress Response</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PO_BK_03"]} />
               <p className="text-muted-foreground leading-relaxed mb-3">
@@ -169,7 +170,7 @@ const EnhancedRecoveryTopic = () => {
               </div>
             </div>
 
-            <div>
+            <div id="section-prehabilitation" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Prehabilitation</h2>
           <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_03"]} />
               <div className="grid sm:grid-cols-2 gap-3">
@@ -184,7 +185,7 @@ const EnhancedRecoveryTopic = () => {
               </div>
             </div>
 
-            <div>
+            <div id="section-ponv" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Nausea & Vomiting (PONV)</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PO_BK_03", "PH_BK_12"]} />
               <div className="grid sm:grid-cols-2 gap-3">
