@@ -283,10 +283,13 @@ export default function SeoAnalyticsPanel() {
             {(data?.byDate?.rows ?? []).length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
-                  data={(data?.byDate?.rows ?? []).map(r => ({
-                    date: r.keys?.[0] ?? "",
-                    position: Number(r.position?.toFixed(2)),
-                  }))}
+                  data={(data?.byDate?.rows ?? []).map(r => {
+                    const hasImpressions = (r.impressions ?? 0) > 0;
+                    const pos = hasImpressions && r.position && r.position >= 1
+                      ? Number(r.position.toFixed(2))
+                      : null;
+                    return { date: r.keys?.[0] ?? "", position: pos };
+                  })}
                   margin={{ top: 8, right: 12, left: 0, bottom: 0 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
@@ -298,7 +301,8 @@ export default function SeoAnalyticsPanel() {
                   />
                   <YAxis
                     reversed
-                    domain={[1, "dataMax + 2"]}
+                    domain={[1, (dataMax: number) => Math.ceil((dataMax || 10) + 2)]}
+                    allowDataOverflow={false}
                     tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
                     width={40}
                   />
@@ -309,6 +313,7 @@ export default function SeoAnalyticsPanel() {
                       borderRadius: 8,
                       fontSize: 12,
                     }}
+                    formatter={(value: number) => [value, "Avg. position"]}
                   />
                   <Legend wrapperStyle={{ fontSize: 12 }} />
                   <Line
@@ -318,6 +323,7 @@ export default function SeoAnalyticsPanel() {
                     stroke="hsl(var(--primary))"
                     strokeWidth={2}
                     dot={false}
+                    connectNulls
                   />
                 </LineChart>
               </ResponsiveContainer>
