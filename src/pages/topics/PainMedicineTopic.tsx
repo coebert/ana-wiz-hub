@@ -403,6 +403,7 @@ const PainMedicineTopic = () => {
             </p>
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <div id="fibromyalgia" className="scroll-mt-24">
         <CollapsibleSubsection title="Fibromyalgia">
