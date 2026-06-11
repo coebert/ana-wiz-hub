@@ -231,4 +231,10 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Hepatobiliary anaesthesia", "Liver transplant anaesthesia", "Liver resection anaesthesia", "Low CVP technique", "Post-reperfusion syndrome", "Cirrhotic patient"],
     keywords: ["liver transplant anaesthesia", "low CVP technique", "post reperfusion syndrome", "Pringle manoeuvre", "hepatobiliary FRCA"],
   },
+  "burns-plastics": {
+    title: "Burns & Plastic Surgery Anaesthesia — Parkland & Airway | FRCA",
+    description: "Burns and plastic surgery anaesthesia for FRCA Final: burn assessment and Parkland fluid resuscitation, airway and inhalational injury, carbon monoxide and cyanide poisoning, suxamethonium contraindication.",
+    aliases: ["Burns anaesthesia", "Burn injury", "Parkland formula", "Inhalation injury", "Carbon monoxide poisoning", "Suxamethonium contraindication"],
+    keywords: ["burns anaesthesia FRCA", "Parkland formula", "inhalation injury", "carbon monoxide poisoning", "suxamethonium burns"],
+  },
 };
