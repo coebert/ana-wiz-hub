@@ -1,12 +1,76 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { neuroanaesthesiaQuestions } from "@/data/quizzes";
 import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDiagram";
 import ICPVolumeCurveDiagram from "@/components/diagrams/ICPVolumeCurveDiagram";
 import { RaisedICPCascadeDiagram } from "@/components/diagrams/RaisedICPCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const tocItems = [
+  { id: "physiology", label: "Cerebral physiology (CBF, ICP, CPP)", group: "Foundations" },
+  { id: "agents", label: "Anaesthetic agents & CBF/CMRO₂", group: "Foundations" },
+  { id: "icp", label: "Raised ICP management", group: "Clinical" },
+  { id: "neurosurgical", label: "Posterior fossa & awake craniotomy", group: "Clinical" },
+  { id: "procedures", label: "Procedure-specific anaesthesia", group: "Clinical" },
+  { id: "tbi", label: "TBI & CPP targets", group: "Critical care" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
+
+// SEO-targeted FAQ — answers the highest-volume UK neuroanaesthesia
+// question keywords (CPP, raised ICP, mannitol vs hypertonic saline, VAE,
+// awake craniotomy, RESCUEicp). Rendered as accordion + FAQPage JSON-LD.
+const neuroFaqs: Array<[string, string]> = [
+  [
+    "What is cerebral perfusion pressure (CPP) and what is the target after TBI?",
+    "Cerebral perfusion pressure is the net pressure driving blood through the brain and is calculated as CPP = MAP − ICP (or MAP − CVP if CVP is higher than ICP). Normal CPP is 70–90 mmHg. After traumatic brain injury, the Brain Trauma Foundation (BTF, 2016) recommends targeting CPP 60–70 mmHg in adults to balance ischaemia (CPP <60) against the risk of ARDS from aggressive fluid/vasopressor use (CPP >70). The arterial transducer must be zeroed at the tragus (external auditory meatus) — zeroing at the heart over-estimates CPP in a head-up patient.",
+  ],
+  [
+    "How does PaCO₂ affect cerebral blood flow?",
+    "PaCO₂ is the most potent physiological regulator of cerebral blood flow. CBF changes by approximately 30% (≈3 ml/100 g/min) for every 1 kPa change in PaCO₂ within the linear range of 3–7 kPa. Hypercapnia causes cerebral vasodilation, raises CBF and ICP, and is dangerous in any patient with reduced intracranial compliance. Hypocapnia causes vasoconstriction and is used as a short-term rescue for acute rises in ICP, but PaCO₂ <3.5 kPa risks cerebral ischaemia and should be avoided as a sustained strategy. The pragmatic target during neuro-anaesthesia is PaCO₂ 4.5–5.0 kPa (normocapnia), with brief hyperventilation to 4.0–4.5 kPa only as rescue.",
+  ],
+  [
+    "What is the stepwise management of raised intracranial pressure?",
+    "Tier 1 (general measures): head up 30°, neutral neck, loose tube ties, optimise sedation/analgesia (propofol ± remifentanil), control temperature (avoid pyrexia), maintain PaCO₂ 4.5–5.0 kPa, treat seizures, ensure CPP 60–70 mmHg. Tier 2 (medical escalation): osmotherapy with mannitol 0.25–1 g/kg or hypertonic saline (2.7% or 3% bolus, or 23.4% rescue), brief hyperventilation to PaCO₂ 4.0–4.5 kPa, neuromuscular blockade, and CSF drainage via external ventricular drain. Tier 3 (last-line): barbiturate coma (thiopentone burst-suppression), therapeutic hypothermia, and decompressive craniectomy. RESCUEicp showed decompressive craniectomy reduces mortality but increases survival with severe disability — informed consent is essential.",
+  ],
+  [
+    "Mannitol or hypertonic saline for raised ICP — which is better?",
+    "Both reduce ICP by creating an osmotic gradient that draws water out of brain tissue across an intact blood-brain barrier. Mannitol 0.25–1 g/kg acts within 15–30 minutes and lasts 4–6 hours. It causes osmotic diuresis, which is useful if the patient is fluid-overloaded but harmful in the hypovolaemic or shocked patient; check serum osmolality (stop if >320 mOsm/kg) and watch for rebound. Hypertonic saline (2.7%, 3%, or 23.4%) does not cause diuresis, expands intravascular volume, and is preferred in hypovolaemic or hypotensive TBI patients; limit serum sodium to <155 mmol/L. Recent meta-analyses suggest hypertonic saline may produce a greater ICP reduction. In practice both are first-line; choose based on volume status.",
+  ],
+  [
+    "Why is N₂O avoided in neurosurgery?",
+    "Nitrous oxide raises cerebral blood flow, CMRO₂, and ICP, and it readily diffuses into closed gas spaces faster than nitrogen leaves. After dural opening, residual air in the cranial cavity becomes a closed space; N₂O will expand any pneumocephalus and can cause tension pneumocephalus with neurological deterioration. N₂O is therefore avoided in any procedure involving dural opening (craniotomy, trans-sphenoidal surgery, posterior fossa surgery in sitting position) and during cases at risk of venous air embolism. Most centres now omit it altogether from elective neuroanaesthesia.",
+  ],
+  [
+    "How is venous air embolism in sitting-position posterior fossa surgery managed?",
+    "VAE is detected most sensitively by precordial Doppler (audible 'mill-wheel' or change in tone) and by a fall in end-tidal CO₂. TOE is even more sensitive but rarely used routinely. On suspicion: (1) tell the surgeon to flood the field with saline and pack the wound; (2) compress the jugular veins to raise venous pressure and stop further entrainment; (3) discontinue N₂O if used and increase FiO₂ to 1.0; (4) aspirate air from a multi-orifice right-atrial catheter (placed pre-op via the internal jugular and confirmed with ECG/TOE); (5) support haemodynamics — fluid, vasopressors, lower the head if possible; (6) cardiac arrest requires CPR with the patient flat and management as per ALS plus continued aspiration.",
+  ],
+  [
+    "What is awake craniotomy and how is it conducted?",
+    "Awake craniotomy is used for tumour resection or epilepsy surgery near eloquent cortex (speech, motor, sensory) where intra-operative cortical mapping is required. The two main techniques are asleep–awake–asleep (LMA/ETT with TIVA, woken for mapping, reanaesthetised) and monitored anaesthesia care (sedation throughout, typically remifentanil and dexmedetomidine or propofol target-controlled infusion). Essential components: meticulous scalp block (six nerves: supraorbital, supratrochlear, zygomaticotemporal, auriculotemporal, greater and lesser occipital) with long-acting local anaesthetic; head pinned to allow comfortable mapping; rescue airway plan (LMA + videolaryngoscope) for seizure or airway compromise; psychological preparation. Direct cortical stimulation maps function; seizures during mapping are treated with iced saline and short-acting benzodiazepine.",
+  ],
+  [
+    "Which anaesthetic technique is best for elective craniotomy — TIVA or volatile?",
+    "Both can be used safely. TIVA with propofol ± remifentanil preserves cerebral autoregulation, reduces CBF and ICP in parallel with CMRO₂, and is preferred whenever ICP is critical, when evoked potentials are monitored, or for any case requiring 'tight' brain conditions. Volatile agents up to 1 MAC (sevoflurane is the modern default) are acceptable for routine elective craniotomy with normal ICP — they maintain coupling at low dose. Above 1 MAC all volatiles are cerebral vasodilators and impair autoregulation, so this is the practical ceiling. Nitrous oxide is avoided regardless of the main agent.",
+  ],
+  [
+    "What does the RESCUEicp trial tell us about decompressive craniectomy?",
+    "RESCUEicp (NEJM 2016) randomised 408 adults with refractory raised ICP after TBI to decompressive craniectomy or continued medical therapy. At 6 months, craniectomy reduced mortality (26.9% vs 48.9%) but increased the proportion of survivors in a vegetative state or with severe disability. Overall, more patients in the surgical group survived with an unfavourable outcome. Combined with DECRA (2011), the message is that decompression is a life-saving but disability-preserving intervention — used as last-line rescue after all medical measures have failed, with explicit family discussion about the trade-off between survival and quality of life.",
+  ],
+  [
+    "How is anaesthesia for mechanical thrombectomy in acute ischaemic stroke conducted?",
+    "Mechanical thrombectomy is offered to selected patients with large-vessel occlusion within 6 hours of onset (or up to 24 hours with favourable imaging). The choice between conscious sedation and general anaesthesia is debated; the HERMES collaboration and SIESTA, AnStroke, and GOLIATH trials show no clear outcome difference if door-to-puncture delay is minimised. GA is preferred when the patient is agitated, has airway compromise, or is having a posterior-circulation stroke. Whichever technique, the haemodynamic principle is identical: avoid hypotension (SBP <140 mmHg is a common ceiling pre-recanalisation; <180 post-recanalisation to reduce reperfusion haemorrhage), avoid hypocapnia, use short-acting agents (propofol/remifentanil) for rapid neurological assessment, and ensure rapid induction so radiology is not delayed.",
+  ],
+];
 
 const NeuroanaesthesiaTopic = () => {
   return (
@@ -37,6 +101,9 @@ const NeuroanaesthesiaTopic = () => {
       }}
       coreConcepts={
         <>
+          <TopicTableOfContents items={tocItems} />
+
+          <div id="physiology" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CN_BK_03"]}>
             <CollapsibleSubsection title="Cerebral Physiology for Anaesthesia" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -57,7 +124,9 @@ const NeuroanaesthesiaTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="agents" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CN_BK_03"]}>
             <CollapsibleSubsection title="Anaesthetic Effects on CBF & CMRO₂">
             <div className="overflow-x-auto">
@@ -81,7 +150,9 @@ const NeuroanaesthesiaTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="icp" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CC1.4"]}>
             <CollapsibleSubsection title="ICP Management">
             <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
@@ -107,7 +178,9 @@ const NeuroanaesthesiaTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="neurosurgical" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Specific Neurosurgical Considerations">
             <div className="grid sm:grid-cols-2 gap-3">
@@ -122,7 +195,9 @@ const NeuroanaesthesiaTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="procedures" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Procedure-Specific Anaesthesia">
               <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
@@ -181,16 +256,58 @@ const NeuroanaesthesiaTopic = () => {
               </div>
             </CollapsibleSubsection>
           </ExamSection>
-          <ExamPitfallsCallout
-            accent="clinical"
-            pitfalls={[
-              "CPP = MAP − ICP (or CVP if higher); maintain CPP 60–70 mmHg for adult TBI.",
-              "Volatile agents are cerebral vasodilators >1 MAC — TIVA preferred when ICP is critical or for evoked-potential monitoring.",
-              "Hyperventilation to PaCO₂ 4.0–4.5 kPa is a short-term ICP rescue only — prolonged hypocapnia worsens cerebral ischaemia.",
-              "Mannitol 0.25–1 g/kg or hypertonic saline reduces ICP; check serum osmolality (<320) and sodium (<155) limits.",
-              "Sitting craniotomy carries a high risk of venous air embolism — precordial Doppler and a right-atrial catheter for aspiration are standard.",
-            ]}
-          />
+          </div>
+
+          <div id="tbi" className="scroll-mt-24">
+            <ExamPitfallsCallout
+              accent="clinical"
+              pitfalls={[
+                "CPP = MAP − ICP (or CVP if higher); maintain CPP 60–70 mmHg for adult TBI.",
+                "Volatile agents are cerebral vasodilators >1 MAC — TIVA preferred when ICP is critical or for evoked-potential monitoring.",
+                "Hyperventilation to PaCO₂ 4.0–4.5 kPa is a short-term ICP rescue only — prolonged hypocapnia worsens cerebral ischaemia.",
+                "Mannitol 0.25–1 g/kg or hypertonic saline reduces ICP; check serum osmolality (<320) and sodium (<155) limits.",
+                "Sitting craniotomy carries a high risk of venous air embolism — precordial Doppler and a right-atrial catheter for aspiration are standard.",
+              ]}
+            />
+          </div>
+
+          <section id="faq" className="scroll-mt-24 mt-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Neuroanaesthesia — FAQ
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+              Evidence-based answers to the questions FRCA Final and FFICM candidates most often ask about cerebral perfusion pressure, raised ICP, mannitol vs hypertonic saline, venous air embolism, awake craniotomy, RESCUEicp, and anaesthesia for mechanical thrombectomy.
+            </p>
+            <Accordion type="single" collapsible className="w-full">
+              {neuroFaqs.map(([q, a], i) => (
+                <AccordionItem key={q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-sm font-medium text-foreground">
+                    {q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                    {a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+
+          <Helmet>
+            <title>Neuroanaesthesia — CPP, raised ICP, awake craniotomy & TBI</title>
+            <meta
+              name="description"
+              content="Neuroanaesthesia for FRCA Final and FFICM: cerebral blood flow and CPP targets, anaesthetic effects on CBF/CMRO₂, stepwise raised-ICP management (mannitol, hypertonic saline, RESCUEicp), posterior fossa and awake craniotomy, trans-sphenoidal surgery, and anaesthesia for mechanical thrombectomy."
+            />
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: neuroFaqs.map(([name, acceptedAnswer]) => ({
+                "@type": "Question",
+                name,
+                acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+              })),
+            })}</script>
+          </Helmet>
         </>
       }
       workedExamples={[
@@ -217,8 +334,8 @@ const NeuroanaesthesiaTopic = () => {
             </div>
           ),
           answer: "CPP 46 mmHg → simultaneously lower ICP and raise MAP to achieve CPP 60–70 mmHg.",
-    cites: ["BJA Educ 2015"],
-  },
+          cites: ["BJA Educ 2015"],
+        },
       ]}
       keyPoints={[
         { text: "PaCO₂ is the most potent regulator of CBF — each 1 kPa changes CBF by ~30%", cites: ["Matta et al."] },
