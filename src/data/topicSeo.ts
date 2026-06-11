@@ -285,5 +285,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Endocrine disease", "Diabetes mellitus surgery", "Thyroid storm", "Phaeochromocytoma anaesthesia", "Adrenal insufficiency", "Carcinoid syndrome", "Steroid supplementation"],
     keywords: ["endocrine disease FRCA", "diabetes perioperative", "phaeochromocytoma anaesthesia", "thyroid storm", "steroid cover surgery", "carcinoid syndrome"],
   },
+  "hepatic-disease": {
+    title: "Hepatic Disease: Cirrhosis, MELD & HRS | FRCA",
+    description: "Perioperative hepatic disease for FRCA Final: Child-Pugh and MELD risk, cirrhosis physiology, rebalanced coagulation, drug choices and hepatorenal syndrome.",
+    aliases: ["Hepatic disease", "Cirrhosis anaesthesia", "Child-Pugh score", "MELD score", "Hepatorenal syndrome", "Hepatopulmonary syndrome", "Portopulmonary hypertension"],
+    keywords: ["hepatic disease FRCA", "cirrhosis anaesthesia", "MELD perioperative", "hepatorenal syndrome", "rebalanced haemostasis", "VOCAL-Penn"],
+  },
 };
+
 
