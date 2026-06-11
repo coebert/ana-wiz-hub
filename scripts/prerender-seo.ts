@@ -486,6 +486,17 @@ function patchHead(
     );
   }
 
+  // MedicalWebPage JSON-LD on every topic / subtopic page so Google can
+  // classify clinical content as medical material rather than a generic
+  // article (eligible for the medical-content treatment in SERPs).
+  const medicalPage = buildMedicalWebPage(path, seo);
+  if (medicalPage) {
+    const mpJson = JSON.stringify(medicalPage).replace(/<\/script>/gi, "<\\/script>");
+    headTags.push(
+      `<script type="application/ld+json" data-prerender="medicalwebpage">${mpJson}</script>`,
+    );
+  }
+
   if (faqs && faqs.length > 0) {
     const faqJsonLd = {
       "@context": "https://schema.org",
