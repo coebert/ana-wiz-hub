@@ -267,5 +267,11 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Preoperative assessment", "Perioperative risk stratification", "RCRI", "SORT", "CPET", "NICE NG45", "Patient blood management", "Pre-op anaemia"],
     keywords: ["preoperative assessment FRCA", "RCRI", "CPET anaerobic threshold", "NICE NG45", "patient blood management", "pre-op anaemia"],
   },
+  "cardiovascular-disease": {
+    title: "Cardiovascular Disease: IHD, Valvular, HF & PH | FRCA",
+    description: "Perioperative cardiovascular disease for FRCA Final: IHD, valvular lesions, heart failure, arrhythmias, devices, pulmonary hypertension and ACHD.",
+    aliases: ["Cardiovascular disease", "Ischaemic heart disease", "Valvular heart disease", "Aortic stenosis", "Heart failure", "Pulmonary hypertension", "Adult congenital heart disease", "ACHD"],
+    keywords: ["cardiovascular disease FRCA", "perioperative cardiac risk", "aortic stenosis anaesthesia", "pulmonary hypertension", "heart failure surgery"],
+  },
 };
 

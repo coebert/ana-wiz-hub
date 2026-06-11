@@ -6,6 +6,7 @@ import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { cardiovascularDiseaseQuestions } from "@/data/quizzes";
 import ValvularHaemodynamicsDiagram from "@/components/diagrams/ValvularHaemodynamicsDiagram";
 import { Exam } from "@/data/curriculum";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const objectives = [
   "Stratify perioperative cardiac risk (METs, RCRI, ESC/ESA pathway) and decide on further investigation.",
@@ -53,6 +54,15 @@ const CardiovascularDiseaseTopicWorkedExamples: WorkedExample[] = [
   },
 ];
 
+const tocItems = [
+  { id: "section-ischaemic-heart-disease", label: "Ischaemic Heart Disease", group: "Core" },
+  { id: "section-valvular-heart-disease", label: "Valvular Heart Disease", group: "Core" },
+  { id: "section-heart-failure", label: "Heart Failure", group: "Management" },
+  { id: "section-arrhythmias-pacemakers-and-icds", label: "Arrhythmias, Pacemakers & ICDs", group: "Devices" },
+  { id: "section-pulmonary-hypertension", label: "Pulmonary Hypertension", group: "Specialist" },
+  { id: "section-adult-congenital-heart-disease", label: "Adult Congenital Heart Disease", group: "Specialist" },
+];
+
 const CardiovascularDiseaseTopic = () => {
   return (
     <TopicTemplate
@@ -78,12 +88,13 @@ const CardiovascularDiseaseTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <p className="text-muted-foreground leading-relaxed">
-          Cardiovascular disease is the leading driver of perioperative morbidity and mortality. This topic covers the conditions most likely to influence anaesthetic planning — ischaemic heart disease, valvular pathology, heart failure, arrhythmias and devices, pulmonary hypertension, and adult congenital heart disease — with a focus on risk stratification, optimisation, and intra-operative goals.
-        </p>
+           Cardiovascular disease is the leading driver of perioperative morbidity and mortality. This topic covers the conditions most likely to influence anaesthetic planning — ischaemic heart disease, valvular pathology, heart failure, arrhythmias and devices, pulmonary hypertension, and adult congenital heart disease — with a focus on risk stratification, optimisation, and intra-operative goals.
+         </p>
+         <TopicTableOfContents items={tocItems} />
 
-        {/* Ischaemic Heart Disease */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ischaemic Heart Disease</h2>
+         {/* Ischaemic Heart Disease */}
+         <section id="section-ischaemic-heart-disease" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ischaemic Heart Disease</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -109,9 +120,9 @@ const CardiovascularDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* Valvular Heart Disease */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Valvular Heart Disease</h2>
+         {/* Valvular Heart Disease */}
+         <section id="section-valvular-heart-disease" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Valvular Heart Disease</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <ValvularHaemodynamicsDiagram />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
@@ -152,9 +163,9 @@ const CardiovascularDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* Heart Failure */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Failure</h2>
+         {/* Heart Failure */}
+         <section id="section-heart-failure" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Failure</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -180,9 +191,9 @@ const CardiovascularDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* Arrhythmias & Pacemakers */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Arrhythmias, Pacemakers & ICDs</h2>
+         {/* Arrhythmias & Pacemakers */}
+         <section id="section-arrhythmias-pacemakers-and-icds" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Arrhythmias, Pacemakers & ICDs</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -207,9 +218,9 @@ const CardiovascularDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* Pulmonary Hypertension */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pulmonary Hypertension</h2>
+         {/* Pulmonary Hypertension */}
+         <section id="section-pulmonary-hypertension" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pulmonary Hypertension</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -226,9 +237,9 @@ const CardiovascularDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* Congenital Heart Disease in Adults */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Adult Congenital Heart Disease</h2>
+         {/* Congenital Heart Disease in Adults */}
+         <section id="section-adult-congenital-heart-disease" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Adult Congenital Heart Disease</h2>
           <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
