@@ -202,7 +202,9 @@ const MuscleRelaxantsTopic = () => {
             </p>
             <div className="grid sm:grid-cols-3 gap-3">
               <div className="rounded-lg border border-border bg-card p-3">
-                <p className="text-sm font-semibold text-foreground">Rocuronium</p>
+                <p className="text-sm font-semibold text-foreground">
+                  <a href="/pharmacology/rocuronium" className="text-pharmacology underline">Rocuronium</a>
+                </p>
                 <ul className="text-xs text-muted-foreground list-disc list-inside mt-1 space-y-0.5">
                   <li>Dose: 0.6 mg/kg (intubation); 1.2 mg/kg (RSI)</li>
                   <li>Onset 60–90 s; duration ~30–45 min</li>
