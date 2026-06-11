@@ -242,6 +242,7 @@ const BrachialPlexusTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={brachialPlexusFaqs} />
         </>
       }
     />
