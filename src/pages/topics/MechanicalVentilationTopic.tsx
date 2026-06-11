@@ -105,6 +105,8 @@ const tocItems = [
 
 const MechanicalVentilationTopic = () => {
   const [simFullscreen, setSimFullscreen] = useState(false);
+  const [simLoading, setSimLoading] = useState(true);
+  const [simError, setSimError] = useState(false);
   return (
     <TopicTemplate
       title="Mechanical Ventilation"
@@ -297,12 +299,46 @@ const MechanicalVentilationTopic = () => {
                   </>
                 )}
               </button>
+
+              {simLoading && !simError && (
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-muted/60 backdrop-blur-sm">
+                  <div className="h-8 w-8 animate-spin rounded-full border-2 border-icu border-t-transparent" />
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Loading Vent Mastery simulator…
+                  </p>
+                </div>
+              )}
+
+              {simError && (
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-destructive/10 p-6 text-center">
+                  <p className="text-sm font-medium text-destructive">
+                    Couldn’t load the simulator.
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    The external simulator may be unavailable. You can open it directly:
+                  </p>
+                  <a
+                    href="https://lung-sim-pro.lovable.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-md bg-icu px-3 py-1.5 text-xs font-medium text-white transition-opacity hover:opacity-90"
+                  >
+                    Open Vent Mastery →
+                  </a>
+                </div>
+              )}
+
               <iframe
                 src="https://lung-sim-pro.lovable.app"
                 title="Vent Mastery — ICU ventilator simulator"
                 loading="lazy"
                 allow="fullscreen"
                 className="h-full w-full"
+                onLoad={() => setSimLoading(false)}
+                onError={() => {
+                  setSimLoading(false);
+                  setSimError(true);
+                }}
               />
             </div>
             <p className="mt-2 text-xs text-muted-foreground">
