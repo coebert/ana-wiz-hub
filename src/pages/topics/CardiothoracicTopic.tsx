@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
@@ -11,6 +12,12 @@ import ArrestTimeWindowWidget from "@/components/diagrams/ArrestTimeWindowWidget
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const tocItems = [
   { id: "cpb-overview", label: "CPB circuit & anticoagulation", group: "Cardiac surgery" },
@@ -21,6 +28,54 @@ const tocItems = [
   { id: "cals", label: "Cardiac arrest after cardiac surgery", group: "Cardiac surgery" },
   { id: "olv", label: "One-lung ventilation", group: "Thoracic surgery" },
   { id: "analgesia", label: "Post-operative analgesia", group: "Post-operative" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
+
+// SEO-targeted FAQ — answers the highest-volume UK cardiothoracic-anaesthesia
+// question keywords (one-lung ventilation, DLT sizing, CPB, DHCA, pH-stat vs α-stat,
+// cardiac arrest after surgery, post-thoracotomy analgesia).
+// Rendered as accordion + FAQPage JSON-LD for rich-result eligibility.
+const cardiothoracicFaqs: Array<[string, string]> = [
+  [
+    "What is one-lung ventilation (OLV) and when is it used?",
+    "One-lung ventilation is the mechanical isolation and collapse of one lung to provide a still, bloodless surgical field for thoracic procedures. It is indicated for almost all thoracic surgery including lobectomy, pneumonectomy, oesophagectomy, thymectomy, lung volume reduction, and most VATS procedures. The aims are to deflate the operative lung for surgical access while maintaining adequate gas exchange through the dependent (ventilated) lung. OLV requires a lung-isolation device (DLT or bronchial blocker), correct position confirmed by fibreoptic bronchoscopy, and a stepwise plan for intraoperative hypoxia.",
+  ],
+  [
+    "How do you manage hypoxia during one-lung ventilation?",
+    "Hypoxia during OLV occurs because blood continues to perfuse the non-ventilated (collapsed) lung, creating a right-to-left intrapulmonary shunt. Manage stepwise: (1) increase FiO₂ to 1.0; (2) confirm DLT or blocker position with fibreoptic bronchoscopy — tube migration is the commonest cause; (3) suction secretions and blood from both lungs; (4) apply 5 cmH₂O CPAP to the non-dependent (operative) lung to recruit alveoli and improve oxygenation; (5) add 5 cmH₂O PEEP to the dependent lung; (6) perform a recruitment manoeuvre to the dependent lung; (7) if still hypoxic, intermittently reinflate the operative lung between surgical steps; (8) ultimate rescue: ask the surgeon to clamp the pulmonary artery of the operative lung (eliminates shunt) or revert to two-lung ventilation. Avoid volatiles >1 MAC and vasodilators as these inhibit hypoxic pulmonary vasoconstriction (HPV).",
+  ],
+  [
+    "What is a double-lumen tube (DLT) and how is it sized?",
+    "A double-lumen tube is an endobronchial tube with two lumens and two cuffs — a tracheal cuff and a bronchial cuff — allowing independent ventilation, suction, and CPAP to either lung. Left-sided DLTs are preferred because the left main bronchus is longer (4–5 cm) and less variable than the right, where the right upper lobe bronchus arises close to the carina. Sizes: 35–37 Fr for most women, 39–41 Fr for most men. Always confirm position with fibreoptic bronchoscopy after insertion and after any patient repositioning. Bronchial blockers are an alternative for difficult airways, existing tracheostomies, or when postoperative ventilation is anticipated.",
+  ],
+  [
+    "What is cardiopulmonary bypass (CPB) and how does it work?",
+    "Cardiopulmonary bypass temporarily takes over the function of the heart and lungs during cardiac surgery. Venous blood is drained via cannulae in the right atrium or vena cavae into a reservoir, pumped through an oxygenator and heat exchanger, filtered, and returned under pressure via an arterial cannula (usually the ascending aorta). Full anticoagulation with heparin 300–400 units/kg is required before cannulation, targeting an activated clotting time (ACT) >480 seconds. At the end of bypass, heparin is reversed with protamine sulphate in a 1 mg:100 units ratio. The circuit prime volume (~1.5 L) causes haemodilution, and contact between blood and foreign surfaces activates a systemic inflammatory response (SIRS).",
+  ],
+  [
+    "What is deep hypothermic circulatory arrest (DHCA)?",
+    "DHCA is a controlled period of complete circulatory arrest performed under profound hypothermia (classically 14–20 °C nasopharyngeal, though modern practice with selective cerebral perfusion uses 24–28 °C). Cooling slows cerebral metabolism by approximately 6–7% per °C, providing a finite 'safe' window of ischaemia during which the surgeon can operate on a bloodless aortic arch or great vessels. Neuroprotection includes packing the head in ice, methylprednisolone or dexamethasone, mannitol, and achieving EEG burst-suppression before arrest. Antegrade selective cerebral perfusion (ASCP) via the right axillary or innominate artery at 10 mL/kg/min extends the safe arrest window from ~30 minutes to 60–90 minutes and is now the modern gold standard.",
+  ],
+  [
+    "What is the difference between pH-stat and α-stat management during CPB?",
+    "pH-stat and α-stat are two strategies for managing acid–base balance during hypothermic CPB. pH-stat adds CO₂ to the oxygenator to maintain pH 7.40 and PaCO₂ 5.3 kPa corrected to the patient's actual temperature. This causes cerebral vasodilation, more uniform brain cooling, and luxury perfusion — useful during the cooling phase before DHCA and in paediatric cardiac surgery. α-stat maintains pH 7.40 and PaCO₂ 5.3 kPa measured at 37 °C (uncorrected for temperature), preserving cerebral autoregulation and CO₂ reactivity. It produces less embolic load to the brain and is preferred during rewarming after DHCA and for routine adult cardiac surgery without circulatory arrest. The practical rule: pH-stat during cooling, α-stat during rewarming.",
+  ],
+  [
+    "How is cardiac arrest managed differently after cardiac surgery?",
+    "Cardiac arrest in the first 24–72 hours after cardiac surgery is managed with modified Cardiac Advanced Life Support (CALS), not standard ALS, because the arrest is witnessed, monitored, and usually has a surgically reversible cause. Key modifications: (1) deliver up to three stacked DC shocks (200 J biphasic) BEFORE starting chest compressions for VF/pVT — first-shock success is high and compressions may disrupt grafts; (2) withhold or minimise bolus adrenaline initially because it can cause catastrophic rebound hypertension after recent anastomoses — use pacing for asystole/PEA; (3) prepare for emergency re-sternotomy within 5 minutes (10-minute window from arrest) if no return of spontaneous circulation — internal cardiac massage is more effective and excludes tamponade or graft occlusion; (4) use epicardial pacing wires if available; (5) escalate to VA-ECMO or IABP early if ROSC is not achieved.",
+  ],
+  [
+    "What are the physiological effects of cardiopulmonary bypass?",
+    "CPB causes multiple physiological derangements: (1) SIRS — blood contact with circuit surfaces activates complement, cytokines, and coagulation cascades; (2) haemodilution — the ~1.5 L prime volume reduces haematocrit to ~25%; (3) hypothermia — intentional cooling to 28–32 °C (moderate) or 18–20 °C (deep DHCA), which reduces metabolic rate ~7% per °C but causes platelet dysfunction; (4) non-pulsatile flow — roller pumps produce continuous rather than pulsatile flow, which may impair microcirculation and organ perfusion; (5) coagulopathy — platelet dysfunction, factor consumption, heparin rebound, and fibrinolysis; (6) AKI in 20–30% from low-flow non-pulsatile perfusion and micro-embolism; (7) neurocognitive dysfunction from gaseous and particulate emboli; and (8) pulmonary dysfunction from SIRS-mediated capillary leak and atelectasis.",
+  ],
+  [
+    "What is the best analgesia after thoracotomy?",
+    "Thoracotomy produces severe somatic and visceral pain and carries a high risk of chronic post-surgical pain (CPSP — up to 50% at 1 year). The gold-standard technique is a thoracic epidural or paravertebral catheter, with the PROSPECT 2015 guidelines supporting paravertebral block as equivalent analgesia with significantly fewer side effects (less hypotension, urinary retention, nausea, and pulmonary complications). Both are usually combined with multimodal analgesia: regular paracetamol, NSAIDs if no contraindication, and opioid PCA. Gabapentinoids, ketamine, and IV lidocaine can reduce CPSP. Fascial-plane blocks (erector spinae plane, serratus anterior) are useful alternatives where neuraxial techniques are contraindicated. For VATS, single-shot paravertebral or ESP blocks are usually sufficient and are cornerstone techniques in ERAS-Thoracic pathways.",
+  ],
+  [
+    "What is the difference between on-pump and off-pump CABG?",
+    "On-pump CABG uses cardiopulmonary bypass to arrest the heart with cardioplegia, providing a bloodless, motionless field for grafting. Off-pump CABG (OPCAB) performs grafting on the beating heart using stabiliser devices. On-pump advantages: complete revascularisation easier, controlled haemodynamics during bypass, and standardised technique. Disadvantages: SIRS, coagulopathy, renal dysfunction, and stroke risk from aortic manipulation. OPCAB advantages: reduced SIRS, less bleeding and transfusion, potentially lower stroke rate with 'no-touch' aortic techniques, and reduced renal injury in high-risk patients. Disadvantages: haemodynamic instability during heart displacement, ischaemia during temporary coronary occlusion, higher conversion rate (2–15%), and technically more challenging for posterior vessels. Key trials: ROOBY showed worse composite outcomes with OPCAB; CORONARY showed no difference at 5 years; GOPCABE showed no benefit in elderly patients. Current consensus: on-pump remains standard for most patients; OPCAB may benefit select high-risk cases.",
+  ],
 ];
 
 const objectives = [
@@ -734,6 +789,44 @@ const CardiothoracicTopic = () => {
               "TOE basics: rule out tamponade, regional wall motion abnormality, valve dysfunction, retained air after cardiotomy.",
             ]}
           />
+
+          <section id="faq" className="scroll-mt-24 mt-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Cardiothoracic Anaesthesia — FAQ
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+              Concise, evidence-based answers to the questions trainees and candidates most often ask about one-lung ventilation, DLT sizing, CPB physiology, DHCA conduct, pH-stat vs α-stat, cardiac arrest after surgery, and post-thoracotomy analgesia.
+            </p>
+            <Accordion type="single" collapsible className="w-full">
+              {cardiothoracicFaqs.map(([q, a], i) => (
+                <AccordionItem key={q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-sm font-medium text-foreground">
+                    {q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                    {a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+
+          <Helmet>
+            <title>Cardiothoracic Anaesthesia — CPB, OLV, DHCA &amp; CALS</title>
+            <meta
+              name="description"
+              content="Cardiothoracic anaesthesia explained for FRCA and FFICM: cardiopulmonary bypass, one-lung ventilation and DLT management, deep hypothermic circulatory arrest, pH-stat vs α-stat, cardiac arrest after cardiac surgery (CALS), and post-thoracotomy analgesia."
+            />
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: cardiothoracicFaqs.map(([name, acceptedAnswer]) => ({
+                "@type": "Question",
+                name,
+                acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+              })),
+            })}</script>
+          </Helmet>
         </ExamSection>
       }
     />
