@@ -58,6 +58,7 @@ const arrestFaqs: Array<[string, string]> = [
 
 const tocItems = [
   { id: "overview", label: "Overview & chain of survival", group: "Background" },
+  { id: "als-algorithm", label: "ALS algorithm & 4Hs/4Ts", group: "Intra-arrest" },
   { id: "rosc-bundle", label: "Post-ROSC care bundle", group: "Acute" },
   { id: "ttm", label: "Targeted temperature management", group: "Acute" },
   { id: "haemodynamics", label: "Haemodynamics & ventilation", group: "Acute" },
@@ -66,7 +67,10 @@ const tocItems = [
   { id: "ecpr", label: "ECMO-CPR (eCPR)", group: "Advanced" },
   { id: "ecmo-circuit", label: "VA-ECMO circuit & troubleshooting", group: "Advanced" },
   { id: "ethics", label: "Family, ethics & WLST", group: "Recovery" },
+  { id: "trial-evidence", label: "Landmark trial evidence", group: "Evidence" },
+  { id: "faq", label: "Frequently asked questions", group: "Evidence" },
 ];
+
 
 const objectives = [
   "Deliver the ERC/ESICM 2021 post-ROSC bundle including airway, ventilation, haemodynamic and metabolic targets within the first 6 hours.",
