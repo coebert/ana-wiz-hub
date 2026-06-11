@@ -119,7 +119,7 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="henderson-hasselbalch" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["RCoA Primary — Physiology", "FFICM 4.4"]}>
+          <ExamSection id="section-henderson-hasselbalch" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["RCoA Primary — Physiology", "FFICM 4.4"]}>
             <CollapsibleSubsection title="Henderson–Hasselbalch Approach" defaultOpen>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 The Henderson–Hasselbalch approach treats the body as a single dominant buffer pair — bicarbonate and dissolved CO₂ — and asks: <em>given today's CO₂ tension and bicarbonate concentration, what is the pH?</em> It is the framework taught at medical school, used in every ABG machine's report, and remains the fastest bedside tool for classifying a disturbance as respiratory or metabolic and judging compensation.
@@ -220,7 +220,7 @@ const AcidBaseTopic = () => {
 
 
 
-          <ExamSection id="hagma" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection id="section-hagma" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="High Anion Gap Metabolic Acidosis (HAGMA)">
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <div>
@@ -341,7 +341,7 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="osmolar-gap" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection id="section-osmolar-gap" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="The Osmolar Gap">
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <div>
@@ -431,7 +431,7 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="stewart" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4", "EDIC 5.4"]}>
+          <ExamSection id="section-stewart" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4", "EDIC 5.4"]}>
             <CollapsibleSubsection title="Strong Ion Difference (Stewart) Approach">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Peter Stewart (1981) reformulated acid-base chemistry from first principles. He argued that in any aqueous biological solution, three constraints must hold simultaneously: <strong>electroneutrality</strong> (the sum of all charges = 0), <strong>conservation of mass</strong> for all weak acids, and the <strong>dissociation equilibrium</strong> of water itself. Solving these equations shows that [H⁺] (and therefore pH) and [HCO₃⁻] are <em>dependent</em> variables — fully determined by three <em>independent</em> variables that the body can manipulate.
@@ -509,7 +509,7 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="comparing-frameworks" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection id="section-comparing-frameworks" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Comparing Frameworks">
             <div className="grid sm:grid-cols-3 gap-3">
               <div className="p-4 rounded-lg border border-border">
@@ -528,7 +528,7 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="lactic" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection id="section-lactic" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Lactic Acidosis">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-3 rounded-lg border border-border">
