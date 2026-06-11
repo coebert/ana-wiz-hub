@@ -424,6 +424,28 @@ const MuscleRelaxantsTopic = () => {
               ))}
             </div>
             <Helmet>
+              <title>Neuromuscular Blocking Drugs (NMBAs): Depolarising vs Non-Depolarising | AnaesthesiaCore</title>
+              <meta
+                name="description"
+                content="Neuromuscular blocking drugs for FRCA: depolarising (suxamethonium) vs non-depolarising muscle relaxants (rocuronium, vecuronium, atracurium, cisatracurium), TOF monitoring, sugammadex and neostigmine reversal."
+              />
+              <link rel="canonical" href="https://anaesthesiacore.app/pharmacology/muscle-relaxants" />
+              <meta property="og:title" content="Neuromuscular Blocking Drugs: Depolarising vs Non-Depolarising NMBAs" />
+              <meta property="og:description" content="FRCA pharmacology of depolarising and non-depolarising muscle relaxants — mechanism, TOF, sugammadex reversal." />
+              <meta property="og:url" content="https://anaesthesiacore.app/pharmacology/muscle-relaxants" />
+              <meta property="og:type" content="article" />
+              <script type="application/ld+json">{JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "MedicalWebPage",
+                name: "Neuromuscular Blocking Drugs (Muscle Relaxants)",
+                about: {
+                  "@type": "MedicalEntity",
+                  name: "Neuromuscular blocking agents",
+                  alternateName: ["NMBAs", "NMJ blockers", "Muscle relaxants", "Depolarising muscle relaxant", "Non-depolarising muscle relaxants"],
+                },
+                audience: { "@type": "MedicalAudience", audienceType: "Anaesthetist" },
+                url: "https://anaesthesiacore.app/pharmacology/muscle-relaxants",
+              })}</script>
               <script type="application/ld+json">{JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "FAQPage",
