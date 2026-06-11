@@ -272,82 +272,115 @@ export default function SeoAnalyticsPanel() {
         </div>
       </div>
 
-      {/* Avg position & CTR over time */}
-      <div className="p-4 rounded-xl border border-border bg-card">
-        <h3 className="text-sm font-semibold mb-1">Avg. position & CTR over time</h3>
-        <p className="text-xs text-muted-foreground mb-3">
-          Average Google rank across all queries (lower = better, axis reversed) and click-through rate per day.
-        </p>
-        <div className="h-64">
-          {(data?.byDate?.rows ?? []).length > 0 ? (
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart
-                data={(data?.byDate?.rows ?? []).map(r => ({
-                  date: r.keys?.[0] ?? "",
-                  position: Number(r.position?.toFixed(2)),
-                  ctr: Number((r.ctr * 100).toFixed(2)),
-                }))}
-                margin={{ top: 8, right: 12, left: 0, bottom: 0 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                <XAxis
-                  dataKey="date"
-                  tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
-                  tickFormatter={(d: string) => d.slice(5)}
-                  minTickGap={20}
-                />
-                <YAxis
-                  yAxisId="pos"
-                  reversed
-                  domain={[1, "dataMax + 2"]}
-                  tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
-                  label={{ value: "Avg. position", angle: -90, position: "insideLeft", style: { fontSize: 11, fill: "hsl(var(--muted-foreground))" } }}
-                  width={60}
-                />
-                <YAxis
-                  yAxisId="ctr"
-                  orientation="right"
-                  domain={[0, "dataMax + 1"]}
-                  tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
-                  tickFormatter={(v: number) => `${v}%`}
-                  width={50}
-                />
-                <Tooltip
-                  contentStyle={{
-                    background: "hsl(var(--popover))",
-                    border: "1px solid hsl(var(--border))",
-                    borderRadius: 8,
-                    fontSize: 12,
-                  }}
-                  formatter={(value: number, name: string) =>
-                    name === "CTR" ? [`${value}%`, name] : [value, name]
-                  }
-                />
-                <Legend wrapperStyle={{ fontSize: 12 }} />
-                <Line
-                  yAxisId="pos"
-                  type="monotone"
-                  dataKey="position"
-                  name="Avg. position"
-                  stroke="hsl(var(--primary))"
-                  strokeWidth={2}
-                  dot={false}
-                />
-                <Line
-                  yAxisId="ctr"
-                  type="monotone"
-                  dataKey="ctr"
-                  name="CTR"
-                  stroke="hsl(var(--accent-foreground))"
-                  strokeWidth={2}
-                  dot={false}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          ) : (
-            <p className="text-sm text-muted-foreground text-center pt-10">No data yet for this window.</p>
-          )}
+      {/* Avg position & CTR over time — two separate charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="p-4 rounded-xl border border-border bg-card">
+          <h3 className="text-sm font-semibold mb-1">Avg. Google position over time</h3>
+          <p className="text-xs text-muted-foreground mb-3">
+            Mean rank across all queries (lower = better, axis reversed).
+          </p>
+          <div className="h-64">
+            {(data?.byDate?.rows ?? []).length > 0 ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={(data?.byDate?.rows ?? []).map(r => ({
+                    date: r.keys?.[0] ?? "",
+                    position: Number(r.position?.toFixed(2)),
+                  }))}
+                  margin={{ top: 8, right: 12, left: 0, bottom: 0 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                  <XAxis
+                    dataKey="date"
+                    tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
+                    tickFormatter={(d: string) => d.slice(5)}
+                    minTickGap={20}
+                  />
+                  <YAxis
+                    reversed
+                    domain={[1, "dataMax + 2"]}
+                    tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
+                    width={40}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "hsl(var(--popover))",
+                      border: "1px solid hsl(var(--border))",
+                      borderRadius: 8,
+                      fontSize: 12,
+                    }}
+                  />
+                  <Legend wrapperStyle={{ fontSize: 12 }} />
+                  <Line
+                    type="monotone"
+                    dataKey="position"
+                    name="Avg. position"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            ) : (
+              <p className="text-sm text-muted-foreground text-center pt-10">No data yet for this window.</p>
+            )}
+          </div>
         </div>
+
+        <div className="p-4 rounded-xl border border-border bg-card">
+          <h3 className="text-sm font-semibold mb-1">Avg. CTR over time</h3>
+          <p className="text-xs text-muted-foreground mb-3">
+            Click-through rate (clicks ÷ impressions) per day.
+          </p>
+          <div className="h-64">
+            {(data?.byDate?.rows ?? []).length > 0 ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={(data?.byDate?.rows ?? []).map(r => ({
+                    date: r.keys?.[0] ?? "",
+                    ctr: Number((r.ctr * 100).toFixed(2)),
+                  }))}
+                  margin={{ top: 8, right: 12, left: 0, bottom: 0 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                  <XAxis
+                    dataKey="date"
+                    tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
+                    tickFormatter={(d: string) => d.slice(5)}
+                    minTickGap={20}
+                  />
+                  <YAxis
+                    domain={[0, "dataMax + 1"]}
+                    tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
+                    tickFormatter={(v: number) => `${v}%`}
+                    width={45}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "hsl(var(--popover))",
+                      border: "1px solid hsl(var(--border))",
+                      borderRadius: 8,
+                      fontSize: 12,
+                    }}
+                    formatter={(value: number) => [`${value}%`, "CTR"]}
+                  />
+                  <Legend wrapperStyle={{ fontSize: 12 }} />
+                  <Line
+                    type="monotone"
+                    dataKey="ctr"
+                    name="Avg. CTR"
+                    stroke="hsl(var(--accent))"
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            ) : (
+              <p className="text-sm text-muted-foreground text-center pt-10">No data yet for this window.</p>
+            )}
+          </div>
+        </div>
+      </div>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-4">
