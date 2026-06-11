@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -13,6 +14,41 @@ import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const ardsFaqs: Array<[string, string]> = [
+  [
+    "What is the Berlin definition of ARDS?",
+    "The Berlin definition (2012) requires four criteria: onset within 7 days of a known clinical insult or new/worsening respiratory symptoms; bilateral opacities on chest imaging not fully explained by effusions, lobar collapse or nodules; respiratory failure not fully explained by cardiac failure or fluid overload (objective assessment with echocardiography if no risk factor); and impaired oxygenation on PEEP or CPAP ≥ 5 cmH₂O. Severity is stratified by PaO₂/FiO₂: mild 200–300 mmHg, moderate 100–200 mmHg, severe < 100 mmHg, with stepwise rises in mortality (~27%, 32%, 45%).",
+  ],
+  [
+    "What are the lung-protective ventilation targets in ARDS?",
+    "Tidal volume 6 mL/kg predicted body weight (range 4–8 mL/kg), plateau pressure ≤ 30 cmH₂O, driving pressure (plateau − PEEP) ≤ 15 cmH₂O, PEEP titrated to oxygenation and compliance (higher PEEP tables in moderate–severe disease), and FiO₂ to keep SpO₂ 88–95% or PaO₂ 7.3–10.7 kPa. Permissive hypercapnia (pH ≥ 7.20) is accepted to maintain low tidal volumes. ARDSNet 2000 demonstrated an absolute mortality reduction of 8.8% (39.8% → 31.0%) with 6 vs 12 mL/kg tidal volumes.",
+  ],
+  [
+    "Why is driving pressure important in ARDS?",
+    "Driving pressure (ΔP = plateau − PEEP) approximates the cyclic stress applied to the aerated 'baby lung'. In Amato's 2015 NEJM mediation analysis pooling nine ARDS trials, ΔP was the ventilator variable most strongly associated with mortality — a 1 SD (~7 cmH₂O) increase in ΔP corresponded to a relative mortality increase of ~40%, and reductions in tidal volume or increases in PEEP only improved survival if they lowered ΔP. The widely used target is ΔP ≤ 15 cmH₂O, achieved by reducing tidal volume or increasing PEEP to recruit collapsed lung.",
+  ],
+  [
+    "When should prone positioning be used in ARDS?",
+    "Prone positioning is indicated in moderate-to-severe ARDS with PaO₂/FiO₂ < 150 mmHg on FiO₂ ≥ 0.6 and PEEP ≥ 5 cmH₂O, initiated early (within 36 h of meeting criteria, after a 12–24 h lung-protective stabilisation period), delivered for ≥ 16 h per session, and continued daily until oxygenation improves (PaO₂/FiO₂ ≥ 150 with PEEP ≤ 10 and FiO₂ ≤ 0.6 sustained ≥ 4 h supine). PROSEVA (NEJM 2013) showed a 28-day mortality of 16.0% vs 32.8% (HR 0.39) and 90-day mortality 23.6% vs 41.0%.",
+  ],
+  [
+    "What are the EOLIA criteria for VV-ECMO referral in ARDS?",
+    "EOLIA criteria for VV-ECMO in severe ARDS refractory to optimal ventilation and proning: PaO₂/FiO₂ < 50 mmHg for > 3 h, or PaO₂/FiO₂ < 80 mmHg for > 6 h, or arterial pH < 7.25 with PaCO₂ ≥ 60 mmHg for > 6 h with respiratory rate increased to 35 and tidal volume reduced to 4 mL/kg PBW. EOLIA stopped early for futility (relative risk 0.76, p = 0.09); a pre-specified Bayesian re-analysis estimated ~96% probability of mortality benefit. Refer early (P/F < 150 on FiO₂ ≥ 0.6 PEEP ≥ 10) — do not wait for cannulation criteria.",
+  ],
+  [
+    "Does neuromuscular blockade improve outcomes in ARDS?",
+    "Evidence is conflicting. ACURASYS (Papazian, NEJM 2010) showed 48 h cisatracurium infusion in patients with PaO₂/FiO₂ < 150 reduced adjusted 90-day mortality (HR 0.68) without increasing ICU-acquired weakness. ROSE (PETAL, NEJM 2019) — performed with lighter sedation and higher PEEP — showed no mortality benefit (42.5% vs 42.8%) and more cardiovascular adverse events. Current practice: reserve a 48 h NMB infusion for patients with refractory ventilator dyssynchrony, very high driving pressure or persistent severe hypoxaemia despite deep sedation, rather than routine use in all moderate–severe ARDS.",
+  ],
+  [
+    "What is the conservative fluid strategy in ARDS?",
+    "After initial resuscitation, target a neutral or slightly negative fluid balance using diuresis and fluid restriction guided by CVP < 4 mmHg or PAOP < 8 mmHg (with mean arterial pressure ≥ 60 mmHg and adequate urine output). FACTT (NHLBI ARDS Network, NEJM 2006) compared conservative vs liberal fluid management and showed more ventilator-free days (14.6 vs 12.1) and ICU-free days, with no increase in shock or renal replacement therapy and no mortality difference. It is a respiratory-mechanics intervention, not a survival intervention.",
+  ],
+  [
+    "Do corticosteroids work in ARDS?",
+    "Evidence is heterogeneous and indication-specific. Dexamethasone benefits COVID-19 ARDS needing oxygen or ventilation (RECOVERY, 6 mg OD × 10 d). DEXA-ARDS (Villar, Lancet Respir Med 2020) showed dexamethasone 20 mg × 5 d → 10 mg × 5 d reduced 60-day mortality (21% vs 36%) and increased ventilator-free days in moderate–severe non-COVID ARDS. Hydrocortisone benefits severe community-acquired pneumonia (CAPE COD, NEJM 2023). Routine steroids in all ARDS are not recommended — current practice is targeted (COVID-19, severe CAP, eligible non-COVID moderate–severe ARDS, vasculitis). Avoid in influenza pneumonia.",
+  ],
+];
 
 const objectives = [
   "Apply the Berlin definition to stratify ARDS severity and prognosis.",
