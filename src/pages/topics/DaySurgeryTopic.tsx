@@ -5,6 +5,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { daySurgeryQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const objectives = [
   "Apply BADS-aligned criteria to select patients suitable for day-case surgery",
