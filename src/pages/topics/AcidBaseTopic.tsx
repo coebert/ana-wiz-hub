@@ -16,6 +16,7 @@ import HAGMAWorkupFlowchart from "@/components/diagrams/HAGMAWorkupFlowchart";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const objectives = [
   "Apply a five-step systematic ABG interpretation (oxygenation → primary disorder → compensation → anion gap → delta ratio)",
@@ -46,6 +47,16 @@ const workedExamples: WorkedExample[] = [
       "Pure HAGMA from ketoacidosis with appropriate respiratory compensation. Treat with fluids + fixed-rate insulin + K⁺ replacement; bicarbonate not indicated.",
     cites: ["BJA Educ 2015"],
   },
+];
+
+const tocItems = [
+  { id: "section-systematic-abg", label: "Systematic ABG Interpretation", group: "Core" },
+  { id: "section-henderson-hasselbalch", label: "Henderson–Hasselbalch", group: "Core" },
+  { id: "section-hagma", label: "HAGMA", group: "Disorders" },
+  { id: "section-osmolar-gap", label: "Osmolar Gap", group: "Disorders" },
+  { id: "section-stewart", label: "Stewart Approach", group: "Advanced" },
+  { id: "section-comparing-frameworks", label: "Comparing Frameworks", group: "Advanced" },
+  { id: "section-lactic", label: "Lactic Acidosis", group: "Disorders" },
 ];
 
 const AcidBaseTopic = () => {
@@ -89,7 +100,8 @@ const AcidBaseTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="systematic-abg" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4"]}>
+          <TopicTableOfContents items={tocItems} />
+          <ExamSection id="section-systematic-abg" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4"]}>
             <CollapsibleSubsection title="Systematic ABG Interpretation" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               A structured approach to arterial blood gas analysis prevents the common pitfall of anchoring on a single derangement and missing mixed disorders. Work through oxygenation, primary acid-base disturbance, expected compensation, anion gap, and the delta ratio in that order — each step adds diagnostic information that the previous one cannot provide.
@@ -107,7 +119,7 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="henderson-hasselbalch" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["RCoA Primary — Physiology", "FFICM 4.4"]}>
+          <ExamSection id="section-henderson-hasselbalch" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["RCoA Primary — Physiology", "FFICM 4.4"]}>
             <CollapsibleSubsection title="Henderson–Hasselbalch Approach" defaultOpen>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 The Henderson–Hasselbalch approach treats the body as a single dominant buffer pair — bicarbonate and dissolved CO₂ — and asks: <em>given today's CO₂ tension and bicarbonate concentration, what is the pH?</em> It is the framework taught at medical school, used in every ABG machine's report, and remains the fastest bedside tool for classifying a disturbance as respiratory or metabolic and judging compensation.
@@ -208,7 +220,7 @@ const AcidBaseTopic = () => {
 
 
 
-          <ExamSection id="hagma" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection id="section-hagma" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="High Anion Gap Metabolic Acidosis (HAGMA)">
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <div>
@@ -329,7 +341,7 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="osmolar-gap" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection id="section-osmolar-gap" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="The Osmolar Gap">
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <div>
@@ -419,7 +431,7 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="stewart" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4", "EDIC 5.4"]}>
+          <ExamSection id="section-stewart" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4", "EDIC 5.4"]}>
             <CollapsibleSubsection title="Strong Ion Difference (Stewart) Approach">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Peter Stewart (1981) reformulated acid-base chemistry from first principles. He argued that in any aqueous biological solution, three constraints must hold simultaneously: <strong>electroneutrality</strong> (the sum of all charges = 0), <strong>conservation of mass</strong> for all weak acids, and the <strong>dissociation equilibrium</strong> of water itself. Solving these equations shows that [H⁺] (and therefore pH) and [HCO₃⁻] are <em>dependent</em> variables — fully determined by three <em>independent</em> variables that the body can manipulate.
@@ -497,7 +509,7 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="comparing-frameworks" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection id="section-comparing-frameworks" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Comparing Frameworks">
             <div className="grid sm:grid-cols-3 gap-3">
               <div className="p-4 rounded-lg border border-border">
@@ -516,7 +528,7 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="lactic" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <ExamSection id="section-lactic" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Lactic Acidosis">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-3 rounded-lg border border-border">
