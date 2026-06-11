@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-11T15:39:11.928Z",
-  "count": 378,
+  "generatedAt": "2026-06-11T15:46:08.942Z",
+  "count": 376,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -1443,16 +1443,8 @@
       "route": "/dev/diagram-snapshot/VaporizerDiagram"
     },
     {
-      "name": "VascularAccessCrossSectionDiagram",
-      "route": "/dev/diagram-snapshot/VascularAccessCrossSectionDiagram"
-    },
-    {
       "name": "VascularAccessDevicesDiagram",
       "route": "/dev/diagram-snapshot/VascularAccessDevicesDiagram"
-    },
-    {
-      "name": "VascularAccessTypesDiagram",
-      "route": "/dev/diagram-snapshot/VascularAccessTypesDiagram"
     },
     {
       "name": "VasoactiveReceptorDiagram",
