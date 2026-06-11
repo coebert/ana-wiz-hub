@@ -254,6 +254,20 @@ const MechanicalVentilationTopic = () => {
               </tbody>
             </table>
           </div>
+          <div className="rounded-lg border border-icu bg-icu/10 p-3 mb-4">
+            <p className="text-sm text-foreground">
+              <strong>Practice ventilator settings interactively</strong> — try the{" "}
+              <a
+                href="https://lung-sim-pro.lovable.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-icu font-medium"
+              >
+                Vent Mastery simulator
+              </a>{" "}
+              to apply mode, trigger and cycle concepts on a virtual ICU ventilator.
+            </p>
+          </div>
           <p className="text-xs text-muted-foreground italic">
             Aside: SIMV is no longer recommended for routine weaning (Brochard 1994; Esteban 1995) — direct PSV or T-piece SBTs are superior.
           </p>
