@@ -591,8 +591,79 @@ const coreConcepts = (
         "SNOD referral early — even before brain-stem death testing or withdrawal decisions.",
       ]}
     />
+
+    {/* ─────────── Landmark trial evidence ─────────── */}
+    <ExamSection id="trial-evidence" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+      <CollapsibleSubsection title="Landmark trial evidence">
+        <div className="overflow-x-auto -mx-2 sm:mx-0">
+          <table className="w-full text-xs border border-border bg-card rounded-lg">
+            <thead className="bg-muted/40">
+              <tr>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Trial (year)</th>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Question</th>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Result</th>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Practice impact</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["HACA (NEJM 2002)", "32–34 °C × 24 h vs standard care after VF OHCA", "Mortality 41% vs 55%; favourable neuro 55% vs 39%", "Established mild hypothermia as standard"],
+                ["Bernard (NEJM 2002)", "33 °C × 12 h after VF OHCA", "Good outcome 49% vs 26%", "Confirmed HACA in independent cohort"],
+                ["TTM (Nielsen, NEJM 2013)", "33 °C vs 36 °C × 24 h, n = 950", "No difference in mortality (50% vs 48%) or neuro outcome", "Either target acceptable; fever-prevention is what matters"],
+                ["TTM2 (Dankiewicz, NEJM 2021)", "33 °C vs active normothermia (≤ 37.5 °C), n = 1 850", "No difference 6-mo mortality (50% vs 48%)", "Active normothermia ≤ 37.7 °C now acceptable default"],
+                ["TAME (NEJM 2023)", "Mild hypercapnia 6.7–7.3 kPa vs normocapnia post-arrest", "No difference 6-mo good neuro outcome (43.5% vs 44.6%)", "Continue normocapnia 4.5–6.0 kPa"],
+                ["EXACT (Bernard, JAMA 2022)", "SpO₂ 90–94% vs 98–100% during pre-hospital post-ROSC", "Survival to discharge 38.3% vs 47.9% (lower with restrictive)", "Avoid hypoxaemia; do not aim ≤ 94% in pre-hospital phase"],
+                ["BOX (NEJM 2022)", "MAP 63 vs 77 mmHg AND restrictive vs liberal O₂ post-ROSC", "No difference in death/poor neuro outcome at 90 d", "MAP ≥ 65 reasonable; no clear benefit from higher targets"],
+                ["PARAMEDIC2 (NEJM 2018)", "Adrenaline 1 mg IV vs placebo in OHCA, n = 8 014", "30-d survival 3.2% vs 2.4%; severe disability 31% vs 18% of survivors", "Adrenaline retained but with explicit trade-off"],
+                ["DOSE-VF (NEJM 2022)", "Standard vs vector-change vs DSED for refractory VF after 3 shocks", "Survival to discharge: DSED 30.4% vs standard 13.3%", "DSED / vector change now permitted for refractory VF"],
+                ["ARREST (Lancet 2020)", "eCPR vs standard ALS in refractory shockable OHCA, n = 30", "Stopped early — 43% vs 7% survival to discharge", "Proof of concept in optimal system"],
+                ["Prague OHCA (JAMA 2022)", "Invasive (eCPR + cath) vs standard, n = 256", "180-d good neuro 31.5% vs 22.0% (NS overall; benefit in longer arrests)", "Supports eCPR in selected refractory arrest"],
+                ["INCEPTION (NEJM 2023)", "eCPR vs standard ALS, multicentre Dutch, n = 134", "No difference in 30-d good neuro outcome (20% vs 16%)", "Highlights importance of system speed & volume"],
+                ["COACT (NEJM 2019)", "Immediate vs delayed angiography after shockable OHCA without STEMI", "No 90-d mortality difference (64.5% vs 67.2%)", "Defer angiography in stable post-ROSC without STEMI"],
+                ["TOMAHAWK (NEJM 2021)", "Immediate vs selective angiography after OHCA without STEMI", "No 30-d mortality difference (54% vs 46%)", "Reinforces selective approach without ST elevation"],
+                ["AIRWAYS-2 (JAMA 2018)", "Supraglottic airway vs tracheal intubation in paramedic-led OHCA", "No difference in modified Rankin at 30 d", "SGA acceptable initial airway in OHCA"],
+              ].map((r) => (
+                <tr key={r[0]} className="border-t border-border align-top">
+                  <td className="px-3 py-1.5 font-medium text-foreground whitespace-nowrap">{r[0]}</td>
+                  <td className="px-3 py-1.5 text-foreground/85">{r[1]}</td>
+                  <td className="px-3 py-1.5 text-foreground/85">{r[2]}</td>
+                  <td className="px-3 py-1.5 text-muted-foreground">{r[3]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </CollapsibleSubsection>
+    </ExamSection>
+
+    {/* ─────────── FAQ ─────────── */}
+    <ExamSection id="faq" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+      <CollapsibleSubsection title="Frequently asked questions">
+        <Accordion type="single" collapsible className="w-full">
+          {arrestFaqs.map(([q, a], i) => (
+            <AccordionItem key={q} value={`faq-${i}`}>
+              <AccordionTrigger className="text-left text-sm font-medium text-foreground">{q}</AccordionTrigger>
+              <AccordionContent className="text-xs text-muted-foreground leading-relaxed">{a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </CollapsibleSubsection>
+    </ExamSection>
+
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: arrestFaqs.map(([name, acceptedAnswer]) => ({
+          "@type": "Question",
+          name,
+          acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+        })),
+      })}</script>
+    </Helmet>
   </>
 );
+
 
 
 const CardiacArrestPostResusTopic = () => {
