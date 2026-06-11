@@ -1,9 +1,38 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { capnographyQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import CapnographyWaveformDiagram from "@/components/diagrams/CapnographyWaveformDiagram";
+
+const capnographyFaqs: Array<[string, string]> = [
+  [
+    "What is the normal ETCO₂ range?",
+    "In a healthy ventilated adult the normal end-tidal CO₂ (ETCO₂) range is 4.5–6.0 kPa (35–45 mmHg). ETCO₂ typically sits 0.3–0.7 kPa (2–5 mmHg) below the arterial PaCO₂ because of alveolar dead-space dilution; this PaCO₂–ETCO₂ gradient widens with pulmonary embolism, low cardiac output, COPD/ARDS and high airway pressures.",
+  ],
+  [
+    "What are the four phases of a normal capnography waveform?",
+    "Phase I (inspiratory baseline, CO₂-free gas from the airway dead space, value 0). Phase II (expiratory upstroke, rapid rise as alveolar gas reaches the sensor). Phase III (alveolar plateau, gently rising; the value at its end is ETCO₂). Phase 0 (inspiratory downstroke back to baseline). The alpha angle (II–III) widens with airflow obstruction (shark-fin); the beta angle (III–0) widens with rebreathing.",
+  ],
+  [
+    "What does a shark-fin capnography waveform mean?",
+    "A shark-fin (sloped) trace reflects prolonged, uneven alveolar emptying — the alpha angle becomes obtuse and the plateau slopes upward. It indicates expiratory airflow obstruction: acute severe asthma, COPD exacerbation, anaphylaxis, kinked tracheal tube or partial circuit obstruction. Treat the cause; do not increase ventilator rate before addressing obstruction or you will generate auto-PEEP.",
+  ],
+  [
+    "What is a curare cleft on capnography?",
+    "A curare cleft is a downward notch in the middle of the alveolar plateau (phase III) caused by a spontaneous diaphragmatic effort against a partly paralysed patient on controlled ventilation — neuromuscular blockade is wearing off. Confirm with quantitative neuromuscular monitoring (TOF ratio) and top up the relaxant or wake and reverse, depending on the stage of surgery.",
+  ],
+  [
+    "Why is ETCO₂ used during CPR?",
+    "ETCO₂ reflects pulmonary blood flow during cardiac arrest, so it is a real-time index of chest-compression effectiveness and ROSC. RCUK/ERC guidance: aim for ETCO₂ > 1.3 kPa (10 mmHg) during good-quality CPR; a persistent ETCO₂ < 1.3 kPa after 20 minutes of advanced life support is associated with very low likelihood of survival. A sudden rise in ETCO₂ is one of the earliest signs of ROSC.",
+  ],
+  [
+    "Why does ETCO₂ underestimate PaCO₂?",
+    "ETCO₂ samples mixed alveolar gas, which is diluted by alveolar dead space (well-ventilated, poorly perfused units). In healthy lungs the PaCO₂–ETCO₂ gradient is ~0.5 kPa (4 mmHg). The gradient widens whenever alveolar dead space rises — pulmonary embolism (early sign), low cardiac output, COPD, ARDS, auto-PEEP and arrest (where ETCO₂ approaches zero despite a preserved PaCO₂).",
+  ],
+];
+
 
 /**
  * Standalone FRCA Primary / Final / FFICM topic page for Capnography.
@@ -316,6 +345,19 @@ const CapnographyTopic = () => {
               </ul>
             </div>
           </section>
+
+          <Helmet>
+            {/* Title + meta description provided centrally via topicSeo.capnography; FAQPage JSON-LD here targets "capnography waveforms" and "ETCO₂ normal range" queries for rich-result eligibility. */}
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: capnographyFaqs.map(([name, acceptedAnswer]) => ({
+                "@type": "Question",
+                name,
+                acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+              })),
+            })}</script>
+          </Helmet>
         </ExamSection>
       }
     />

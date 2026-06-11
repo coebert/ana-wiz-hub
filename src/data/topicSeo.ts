@@ -20,6 +20,13 @@ export interface TopicSeo {
 }
 
 export const topicSeo: Record<string, TopicSeo> = {
+  // ===== Physics =====
+  "capnography": {
+    title: "Capnography Waveforms & Normal ETCO₂ Range | FRCA",
+    description: "Capnography for FRCA Primary/Final & FFICM: four waveform phases, abnormal patterns (shark-fin, curare cleft, rebreathing), normal ETCO₂ range (4.5–6.0 kPa / 35–45 mmHg) and CPR use.",
+    aliases: ["Capnography", "Capnograph", "End-tidal CO2", "ETCO2", "EtCO₂", "Waveform capnography", "CO2 monitoring"],
+    keywords: ["capnography", "capnography waveforms", "ETCO2 normal range", "end tidal CO2", "shark fin capnograph", "curare cleft", "waveform capnography FRCA"],
+  },
   // ===== Intensive Care (30 topics) =====
   "mechanical-ventilation": {
     title: "Mechanical Ventilation: Modes, ARDSnet & Weaning | FRCA",
