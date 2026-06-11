@@ -15,7 +15,10 @@ import {
   Tooltip,
   CartesianGrid,
   Legend,
+  ReferenceLine,
 } from "recharts";
+
+const LOW_IMPRESSIONS_THRESHOLD = 10;
 
 interface GscRow {
   keys?: string[];
