@@ -1847,6 +1847,16 @@ const AdminDashboard = () => {
           </section>
         )}
 
+        {activeTab === "seo" && (
+          <section
+            id="admin-panel-seo"
+            role="tabpanel"
+            aria-labelledby="admin-tab-seo"
+          >
+            <SeoAnalyticsPanel />
+          </section>
+        )}
+
         {/* Formulary verification panel has moved to /admin/audit (Content Audit). */}
 
         </main>
