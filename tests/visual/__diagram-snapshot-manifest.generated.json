@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-11T15:35:27.250Z",
-  "count": 377,
+  "generatedAt": "2026-06-11T15:39:11.928Z",
+  "count": 376,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -605,10 +605,6 @@
     {
       "name": "GlycocalyxDiagram",
       "route": "/dev/diagram-snapshot/GlycocalyxDiagram"
-    },
-    {
-      "name": "GlycocalyxSheddingCascadeDiagram",
-      "route": "/dev/diagram-snapshot/GlycocalyxSheddingCascadeDiagram"
     },
     {
       "name": "GramNegativeEnvelopeDiagram",
