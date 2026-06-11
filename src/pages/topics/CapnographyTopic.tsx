@@ -243,6 +243,18 @@ const CapnographyTopic = () => {
 
             <CapnographyWaveformDiagram />
 
+            <p className="text-sm text-muted-foreground italic">
+              Want the pattern-by-pattern interpretation guide? See{" "}
+              <a
+                href="/physics/capnography/waveforms"
+                className="text-physics underline font-medium not-italic"
+              >
+                Capnography waveforms — how to read the trace
+              </a>{" "}
+              for an annotated catalogue of every classic waveform with
+              causes and immediate actions.
+            </p>
+
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
                 Four phases of the normal capnograph
