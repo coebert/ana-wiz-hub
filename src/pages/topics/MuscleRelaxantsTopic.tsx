@@ -323,6 +323,82 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Factors Affecting Neuromuscular Blockade</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              The clinical effect of any neuromuscular blocking drug — onset, depth and duration — is modulated by patient
+              physiology, concurrent drugs and the physicochemical properties of the agent itself. The FRCA examiner expects a
+              structured answer covering patient factors, drug interactions and the determinants of onset (Bowman's principle).
+            </p>
+
+            <h3 className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Patient Factors</h3>
+            <div className="overflow-x-auto">
+              <table className="min-w-full text-sm border border-border">
+                <thead className="bg-secondary/40">
+                  <tr>
+                    <th className="text-left p-2 border-b border-border">Factor</th>
+                    <th className="text-left p-2 border-b border-border">Effect on Block</th>
+                    <th className="text-left p-2 border-b border-border">Mechanism</th>
+                  </tr>
+                </thead>
+                <tbody className="text-foreground/90">
+                  <tr><td className="p-2 border-b border-border">Hepatic failure</td><td className="p-2 border-b border-border">Prolongs aminosteroids; prolongs suxamethonium in severe disease</td><td className="p-2 border-b border-border">↓ biliary excretion (rocuronium, vecuronium); ↓ plasma cholinesterase synthesis</td></tr>
+                  <tr><td className="p-2 border-b border-border">Renal failure</td><td className="p-2 border-b border-border">Prolongs vecuronium, pancuronium; minor effect on rocuronium</td><td className="p-2 border-b border-border">↓ renal clearance of parent drug and active metabolites</td></tr>
+                  <tr><td className="p-2 border-b border-border">Plasma cholinesterase deficiency</td><td className="p-2 border-b border-border">Suxamethonium apnoea (hours rather than minutes)</td><td className="p-2 border-b border-border">↓ hydrolysis of suxamethonium and mivacurium</td></tr>
+                  <tr><td className="p-2 border-b border-border">Neonates / elderly</td><td className="p-2 border-b border-border">Increased sensitivity, prolonged duration</td><td className="p-2 border-b border-border">Immature NMJ (neonates); ↓ organ clearance and altered Vd (elderly)</td></tr>
+                  <tr><td className="p-2 border-b border-border">Hypokalaemia</td><td className="p-2 border-b border-border">Potentiates non-depolarising; antagonises depolarising</td><td className="p-2 border-b border-border">Hyperpolarises end-plate — harder to depolarise</td></tr>
+                  <tr><td className="p-2 border-b border-border">Hyperkalaemia</td><td className="p-2 border-b border-border">Potentiates depolarising; antagonises non-depolarising</td><td className="p-2 border-b border-border">Membrane closer to threshold</td></tr>
+                  <tr><td className="p-2 border-b border-border">Hypermagnesaemia (e.g. pre-eclampsia)</td><td className="p-2 border-b border-border">Potentiates all NMBAs</td><td className="p-2 border-b border-border">↓ pre-synaptic ACh release; ↓ post-junctional sensitivity</td></tr>
+                  <tr><td className="p-2 border-b border-border">Hypocalcaemia</td><td className="p-2 border-b border-border">Potentiates blockade</td><td className="p-2 border-b border-border">↓ Ca²⁺-dependent ACh exocytosis</td></tr>
+                  <tr><td className="p-2 border-b border-border">Respiratory / metabolic acidosis</td><td className="p-2 border-b border-border">Potentiates non-depolarising block; reverses neostigmine effect</td><td className="p-2 border-b border-border">Altered ionisation and receptor binding</td></tr>
+                  <tr><td className="p-2 border-b border-border">Hypothermia</td><td className="p-2 border-b border-border">Prolongs all NMBAs</td><td className="p-2 border-b border-border">↓ hepatic, renal clearance; ↓ Hofmann elimination of atracurium / cisatracurium</td></tr>
+                  <tr><td className="p-2 border-b border-border">Myasthenia gravis</td><td className="p-2 border-b border-border">Resistant to suxamethonium; very sensitive to non-depolarisers</td><td className="p-2 border-b border-border">Autoantibody loss of post-junctional nAChRs — start at 1/10 dose, titrate to TOF</td></tr>
+                  <tr><td className="p-2 border-b border-border">Lambert–Eaton (LEMS)</td><td className="p-2 border-b border-border">Sensitive to both depolarising and non-depolarising</td><td className="p-2 border-b border-border">Antibodies against pre-synaptic voltage-gated Ca²⁺ channels — ↓ ACh release</td></tr>
+                  <tr><td className="p-2 border-b border-border">Burns &gt;24 h, denervation, prolonged immobility</td><td className="p-2 border-b border-border">Hyperkalaemic response to suxamethonium; resistance to non-depolarisers</td><td className="p-2 border-b border-border">Up-regulation of extrajunctional immature (γ-subunit) nAChRs</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Drug Interactions</h3>
+            <div className="overflow-x-auto">
+              <table className="min-w-full text-sm border border-border">
+                <thead className="bg-secondary/40">
+                  <tr>
+                    <th className="text-left p-2 border-b border-border">Drug</th>
+                    <th className="text-left p-2 border-b border-border">Effect</th>
+                    <th className="text-left p-2 border-b border-border">Mechanism</th>
+                  </tr>
+                </thead>
+                <tbody className="text-foreground/90">
+                  <tr><td className="p-2 border-b border-border">Volatile anaesthetics (sevo, des, iso)</td><td className="p-2 border-b border-border">Potentiate (sevo &gt; iso &gt; des in MAC-equivalent)</td><td className="p-2 border-b border-border">Post-junctional membrane stabilisation; central muscle relaxation</td></tr>
+                  <tr><td className="p-2 border-b border-border">Aminoglycosides (gentamicin, tobramycin), tetracyclines, clindamycin</td><td className="p-2 border-b border-border">Potentiate</td><td className="p-2 border-b border-border">↓ pre-synaptic ACh release (Ca²⁺ channel block); post-junctional effects</td></tr>
+                  <tr><td className="p-2 border-b border-border">Local anaesthetics (IV lidocaine)</td><td className="p-2 border-b border-border">Potentiate</td><td className="p-2 border-b border-border">↓ ACh release; membrane stabilisation</td></tr>
+                  <tr><td className="p-2 border-b border-border">Magnesium sulphate</td><td className="p-2 border-b border-border">Marked potentiation</td><td className="p-2 border-b border-border">Competes with Ca²⁺ at the nerve terminal</td></tr>
+                  <tr><td className="p-2 border-b border-border">Calcium-channel blockers, lithium</td><td className="p-2 border-b border-border">Potentiate</td><td className="p-2 border-b border-border">↓ Ca²⁺-dependent ACh release</td></tr>
+                  <tr><td className="p-2 border-b border-border">Furosemide</td><td className="p-2 border-b border-border">Biphasic: potentiates at low dose, antagonises at high dose</td><td className="p-2 border-b border-border">Dose-dependent effects on cAMP and ACh release</td></tr>
+                  <tr><td className="p-2 border-b border-border">Anticholinesterases (neostigmine)</td><td className="p-2 border-b border-border">Antagonise non-depolarising; prolong suxamethonium &amp; mivacurium</td><td className="p-2 border-b border-border">↑ junctional ACh; ↓ plasma cholinesterase</td></tr>
+                  <tr><td className="p-2 border-b border-border">Chronic phenytoin, carbamazepine</td><td className="p-2 border-b border-border">Resistance to non-depolarisers</td><td className="p-2 border-b border-border">Hepatic enzyme induction and up-regulation of nAChRs</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-xl font-serif font-semibold text-foreground mt-6 mb-2">Determinants of Onset (Bowman's Principle)</h3>
+            <p className="text-foreground/90 leading-relaxed">
+              <strong>Bowman's principle</strong>: less potent non-depolarising NMBAs have a faster onset because a larger
+              absolute dose is required, generating a steeper plasma-to-effect-site concentration gradient and faster nAChR
+              occupancy. This is why rocuronium (low potency, ED₉₅ ~0.3 mg/kg) has a faster onset than vecuronium or
+              cisatracurium (high potency, ED₉₅ ~0.05 mg/kg) at equipotent doses. Onset is further accelerated by:
+            </p>
+            <ul className="list-disc list-inside text-foreground/90 leading-relaxed mt-2 space-y-1">
+              <li><strong>↑ dose</strong> (2–3 × ED₉₅ for intubation, 3–4 × ED₉₅ for RSI) — steeper gradient.</li>
+              <li><strong>↑ cardiac output</strong> and high regional muscle blood flow (diaphragm and laryngeal adductors faster than adductor pollicis).</li>
+              <li><strong>Priming</strong>: a sub-paralysing dose (~10% of intubating dose) 3 min before induction occupies spare receptors and shortens onset by ~30 s, at the cost of awake weakness and aspiration risk.</li>
+              <li><strong>Timing principle</strong>: induce at peak onset of NMBA (loss of TOF at orbicularis oculi) rather than at a fixed time interval.</li>
+            </ul>
+          </section>
+
+
+
+          <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Reversal Agents</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Neostigmine</strong>: anticholinesterase — increases ACh at NMJ to compete with NDMR. Must be given with
