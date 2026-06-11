@@ -200,6 +200,7 @@ const PainMedicineTopic = () => {
             </div>
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <DorsalHornSynapseDiagram />
 
@@ -226,6 +227,7 @@ const PainMedicineTopic = () => {
             </table>
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <div id="magnesium" className="scroll-mt-24">
         <CollapsibleSubsection title="IV Magnesium as an Analgesic">
@@ -262,6 +264,7 @@ const PainMedicineTopic = () => {
             </ul>
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <div id="lidocaine" className="scroll-mt-24">
         <CollapsibleSubsection title="IV Lidocaine (Lignocaine) as an Analgesic">
@@ -300,6 +303,7 @@ const PainMedicineTopic = () => {
             </ul>
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <div id="neuropathic" className="scroll-mt-24">
         <CollapsibleSubsection title="Neuropathic Pain Management">
@@ -317,6 +321,7 @@ const PainMedicineTopic = () => {
             ))}
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <div id="chronic" className="scroll-mt-24">
         <CollapsibleSubsection title="Chronic Pain — General Principles">
@@ -333,6 +338,7 @@ const PainMedicineTopic = () => {
             </p>
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <DiagramSection
           title="Nociceptive vs Neuropathic vs Nociplastic — Mechanism Comparison"
@@ -423,6 +429,7 @@ const PainMedicineTopic = () => {
             </div>
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <div id="mecfs" className="scroll-mt-24">
         <CollapsibleSubsection title="Myalgic Encephalomyelitis / Chronic Fatigue Syndrome (ME/CFS)">
@@ -453,6 +460,7 @@ const PainMedicineTopic = () => {
             </div>
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <div id="crps" className="scroll-mt-24">
         <CollapsibleSubsection title="Complex Regional Pain Syndrome (CRPS)">
@@ -493,6 +501,7 @@ const PainMedicineTopic = () => {
             </div>
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <div id="cancer" className="scroll-mt-24">
         <CollapsibleSubsection title="Cancer Pain Management">
@@ -682,6 +691,7 @@ const PainMedicineTopic = () => {
             </div>
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <div id="scs" className="scroll-mt-24">
         <CollapsibleSubsection title="Spinal Cord Stimulation (SCS) — Neuromodulation">
@@ -778,6 +788,7 @@ const PainMedicineTopic = () => {
             </ul>
           </div>
         </CollapsibleSubsection>
+        </div>
 
         <CollapsibleSubsection title="Nerve Root Injections (Selective Nerve Root Block &amp; Transforaminal Epidural Steroid Injection)">
           <p className="text-muted-foreground leading-relaxed mb-3">
