@@ -11,6 +11,7 @@ import OsaCycleDiagram from "@/components/diagrams/OsaCycleDiagram";
 import PulmonaryFibrosisDiagram from "@/components/diagrams/PulmonaryFibrosisDiagram";
 import UrtiAirwayDiagram from "@/components/diagrams/UrtiAirwayDiagram";
 import { Exam } from "@/data/curriculum";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const objectives = [
   "Optimise asthma and COPD preoperatively and select bronchodilator-friendly anaesthetic agents.",
@@ -58,6 +59,14 @@ const RespiratoryDiseaseTopicWorkedExamples: WorkedExample[] = [
   },
 ];
 
+const tocItems = [
+  { id: "section-asthma", label: "Asthma", group: "Core" },
+  { id: "section-chronic-obstructive-pulmonary-disease", label: "COPD", group: "Core" },
+  { id: "section-obstructive-sleep-apnoea", label: "Obstructive Sleep Apnoea", group: "Sleep" },
+  { id: "section-restrictive-lung-disease", label: "Restrictive Lung Disease", group: "Restrictive" },
+  { id: "section-respiratory-infections", label: "Respiratory Infections", group: "Infections" },
+];
+
 const RespiratoryDiseaseTopic = () => {
   return (
     <TopicTemplate
@@ -83,12 +92,13 @@ const RespiratoryDiseaseTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <p className="text-muted-foreground leading-relaxed">
-          Respiratory co-existing disease is a leading driver of postoperative pulmonary complications — atelectasis, pneumonia, prolonged ventilation, and unplanned ICU admission. This topic covers the high-yield conditions: asthma and COPD, obstructive sleep apnoea, restrictive lung disease, pulmonary fibrosis, and the perioperative implications of recent respiratory infection.
-        </p>
+           Respiratory co-existing disease is a leading driver of postoperative pulmonary complications — atelectasis, pneumonia, prolonged ventilation, and unplanned ICU admission. This topic covers the high-yield conditions: asthma and COPD, obstructive sleep apnoea, restrictive lung disease, pulmonary fibrosis, and the perioperative implications of recent respiratory infection.
+         </p>
+         <TopicTableOfContents items={tocItems} />
 
-        {/* Asthma */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Asthma</h2>
+         {/* Asthma */}
+         <section id="section-asthma" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Asthma</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -123,9 +133,9 @@ const RespiratoryDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* COPD */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Chronic Obstructive Pulmonary Disease</h2>
+         {/* COPD */}
+         <section id="section-chronic-obstructive-pulmonary-disease" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Chronic Obstructive Pulmonary Disease</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -155,9 +165,9 @@ const RespiratoryDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* OSA */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Obstructive Sleep Apnoea</h2>
+         {/* OSA */}
+         <section id="section-obstructive-sleep-apnoea" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Obstructive Sleep Apnoea</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -176,9 +186,9 @@ const RespiratoryDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* Restrictive Lung Disease */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Restrictive Lung Disease</h2>
+         {/* Restrictive Lung Disease */}
+         <section id="section-restrictive-lung-disease" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Restrictive Lung Disease</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -206,9 +216,9 @@ const RespiratoryDiseaseTopic = () => {
           </div>
         </section>
 
-        {/* Respiratory Infections */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Respiratory Infections</h2>
+         {/* Respiratory Infections */}
+         <section id="section-respiratory-infections" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Respiratory Infections</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">

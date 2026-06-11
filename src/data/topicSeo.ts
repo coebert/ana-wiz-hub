@@ -273,5 +273,11 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Cardiovascular disease", "Ischaemic heart disease", "Valvular heart disease", "Aortic stenosis", "Heart failure", "Pulmonary hypertension", "Adult congenital heart disease", "ACHD"],
     keywords: ["cardiovascular disease FRCA", "perioperative cardiac risk", "aortic stenosis anaesthesia", "pulmonary hypertension", "heart failure surgery"],
   },
+  "respiratory-disease": {
+    title: "Respiratory Disease: Asthma, COPD, OSA & Fibrosis | FRCA",
+    description: "Perioperative respiratory disease for FRCA Final: asthma, COPD, OSA, restrictive lung disease, pulmonary fibrosis and respiratory infections.",
+    aliases: ["Respiratory disease", "Asthma anaesthesia", "COPD surgery", "Obstructive sleep apnoea", "OSA", "Pulmonary fibrosis", "Restrictive lung disease"],
+    keywords: ["respiratory disease FRCA", "asthma anaesthesia", "COPD perioperative", "OSA surgery", "pulmonary fibrosis"],
+  },
 };
 
