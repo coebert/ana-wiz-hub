@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-11T15:46:08.942Z",
-  "count": 379,
+  "generatedAt": "2026-06-11T15:52:44.884Z",
+  "count": 376,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -49,14 +49,6 @@
     {
       "name": "AnaestheticMachineDiagram",
       "route": "/dev/diagram-snapshot/AnaestheticMachineDiagram"
-    },
-    {
-      "name": "AnaphylaxisCascadeDiagram",
-      "route": "/dev/diagram-snapshot/AnaphylaxisCascadeDiagram"
-    },
-    {
-      "name": "AnaphylaxisPathophysiologyDiagram",
-      "route": "/dev/diagram-snapshot/AnaphylaxisPathophysiologyDiagram"
     },
     {
       "name": "AnatomyPlate",
@@ -849,10 +841,6 @@
     {
       "name": "ManometerDiagram",
       "route": "/dev/diagram-snapshot/ManometerDiagram"
-    },
-    {
-      "name": "MHPathophysiologyDiagram",
-      "route": "/dev/diagram-snapshot/MHPathophysiologyDiagram"
     },
     {
       "name": "MaplesonEfficiencyDiagram",
