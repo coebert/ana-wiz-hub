@@ -320,7 +320,7 @@ const PlasticSurgeryTopic = () => {
                 <li><strong>Assess preload.</strong> Check stroke-volume variation (SVV) or perform a passive leg raise. If fluid-responsive, give 250 mL balanced crystalloid bolus.</li>
                 <li><strong>Check depth.</strong> If BIS is high or MAC low, deepen anaesthesia/add opioid to reduce sympathetic stimulation.</li>
                 <li><strong>Vasopressor choice.</strong> If adequately filled but hypotensive, start <strong>low-dose noradrenaline</strong> (0.02–0.05 µg/kg/min). This is preferred over phenylephrine or metaraminol, which cause direct microvascular vasoconstriction and compromise flap perfusion<InlineRef topicId="plastic-surgery" refLabel="BJA Educ 2021" />.</li>
-                <li><strong>Optimise haematocrit.</strong> Maintain Hct 30–35%. If Hb >110 g/L, consider that relative polycythaemia may increase viscosity; if Hb &lt;80 g/L, consider transfusion.</li>
+                <li><strong>Optimise haematocrit.</strong> Maintain Hct 30–35%. If Hb &gt;110 g/L, consider that relative polycythaemia may increase viscosity; if Hb &lt;80 g/L, consider transfusion.</li>
                 <li><strong>Temperature.</strong> Check core temp. If &lt;36 °C, increase warming — hypothermia causes vasoconstriction and coagulopathy.</li>
                 <li><strong>Communicate.</strong> Inform the microsurgeon of MAP trends and any interventions. They may pause or adjust the anastomosis timing.</li>
               </ol>
