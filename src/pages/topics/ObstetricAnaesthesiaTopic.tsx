@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
@@ -11,6 +12,61 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+// SEO-targeted FAQ — answers high-volume UK question keywords around
+// labour epidural, spinal for caesarean, and obstetric anaesthesia
+// safety. Epidural (14.8K/mo) is the head term; targeting the question
+// long-tail where authority sites (NHS, BabyCentre) leave gaps.
+const obstetricFaqs: Array<[string, string]> = [
+  [
+    "What is obstetric anaesthesia?",
+    "Obstetric anaesthesia is the subspecialty providing pain relief and anaesthesia for labour, caesarean section, instrumental delivery and pregnancy-related surgery. It encompasses labour epidurals, spinal and combined spinal–epidural (CSE) anaesthesia for caesarean section, general anaesthesia for category 1 emergencies, management of pregnancy-related physiological change, and care of high-risk obstetric patients (pre-eclampsia, placenta accreta, haemorrhage, cardiac disease).",
+  ],
+  [
+    "How does a labour epidural work?",
+    "A 16–18 G Tuohy needle is sited at L3/4 or L4/5 using loss-of-resistance to saline. A multi-orifice catheter is threaded 4–5 cm into the epidural space. A test dose (3 ml 2% lidocaine + adrenaline) is given to exclude intravascular or intrathecal placement, followed by a low-dose bolus (e.g. 15 ml 0.1% levobupivacaine + 2 µg/ml fentanyl). Maintenance is via patient-controlled epidural analgesia (PCEA) or programmed intermittent epidural bolus (PIEB), which gives better analgesia and lower motor block than continuous infusion.",
+  ],
+  [
+    "What is the difference between an epidural and a spinal for childbirth?",
+    "A labour epidural uses a catheter to titrate dilute local anaesthetic for hours of analgesia, preserving motor power so the mother can push. A spinal is a single intrathecal injection of concentrated heavy bupivacaine 0.5% (2.2–2.5 ml + fentanyl 15 µg + diamorphine 300 µg) used for caesarean section — it produces a dense, rapid block to T4 lasting 2–3 hours but is not used for labour analgesia. A combined spinal–epidural (CSE) gives the rapid onset of a spinal with the titratability of an epidural catheter.",
+  ],
+  [
+    "Are labour epidurals safe and what are the risks?",
+    "Epidurals are very safe in modern UK obstetric practice. Common side effects: hypotension (~10%), shivering, pruritus (opioid-related), incomplete block (~10%), need for top-up. Serious complications from NAP3 (RCoA, 2009): permanent neurological injury 1:80,000–1:320,000, epidural haematoma 1:168,000, epidural abscess 1:145,000, accidental dural puncture 1% with PDPH in ~70% of those. Maternal mortality directly attributable to neuraxial anaesthesia is < 1:100,000.",
+  ],
+  [
+    "How long does an epidural take to work in labour?",
+    "Analgesia begins at 5–10 minutes and reaches its peak by 15–20 minutes after the loading dose. A combined spinal–epidural (CSE) gives near-instant analgesia (2–5 min) from the intrathecal fentanyl ± bupivacaine component, while the epidural catheter is set up for maintenance.",
+  ],
+  [
+    "Why does spinal anaesthesia for caesarean section cause hypotension?",
+    "The required T4 sensory block also blocks sympathetic outflow (T1–L2), causing arteriolar and venous dilatation and reducing preload. The gravid uterus compounds this by compressing the aorta and inferior vena cava (aortocaval compression) — left lateral tilt of ≥ 15° or manual uterine displacement is mandatory after 20 weeks. Modern management: prophylactic phenylephrine infusion (25–50 µg/min) titrated to baseline BP plus crystalloid co-load. Phenylephrine causes less fetal acidosis than ephedrine and is now first-line.",
+  ],
+  [
+    "When is general anaesthesia used for caesarean section?",
+    "GA is reserved for: category-1 emergencies where speed is critical and no working neuraxial is in situ; contraindications to neuraxial (coagulopathy, severe sepsis at puncture site, patient refusal, fixed cardiac output lesions); failed neuraxial; major haemorrhage with cardiovascular instability. Technique: ramped position, pre-oxygenation to FetO₂ ≥ 0.9, RSI with thiopentone 5 mg/kg or propofol 2 mg/kg + suxamethonium 1.5 mg/kg or rocuronium 1 mg/kg, cricoid pressure, prepare for difficult airway (incidence ~1:300, 8× non-obstetric).",
+  ],
+  [
+    "What is post-dural puncture headache after childbirth?",
+    "PDPH follows breach of the dura by a needle (1–2% after spinal with 25–27 G pencil-point, ~70% after accidental 16–18 G Tuohy puncture). It is a positional fronto-occipital headache, worse on sitting/standing, often with neck stiffness, photophobia and tinnitus. Treatment: conservative (analgesia, hydration, caffeine) for 24–48 h, then epidural blood patch (15–20 ml autologous blood at the same or one space below the original puncture) — 70–90% success, may be repeated once.",
+  ],
+  [
+    "How is anaesthesia given for emergency (Category 1) caesarean section?",
+    "Category 1 = immediate threat to life of mother or baby; target decision-to-delivery interval ≤ 30 min (often 15 min). If a working epidural is in situ, extend with 20 ml 2% lidocaine + 100 µg adrenaline + 100 µg fentanyl (or levobupivacaine/bupivacaine 0.5%) — onset 5–8 min. No epidural: spinal if time allows (2.2–2.5 ml heavy bupivacaine 0.5% + 15 µg fentanyl + 300 µg diamorphine) or GA-RSI. Always have plan B (GA) prepared and antacid prophylaxis (sodium citrate 30 ml + ranitidine 50 mg IV or omeprazole 40 mg IV).",
+  ],
+  [
+    "How does pregnancy change anaesthetic physiology?",
+    "Key changes: cardiac output ↑ 40% by term, blood volume ↑ 45%, FRC ↓ 20% (supine 30%), oxygen consumption ↑ 20%, MAC ↓ 30–40%, gastric emptying delayed, lower oesophageal sphincter tone reduced, plasma cholinesterase ↓ 25% (suxamethonium duration unaffected clinically), aortocaval compression after 20 weeks, difficult airway 8× more common (~1:300), epidural venous engorgement reduces CSF volume so spinal dose is ~⅔ of non-pregnant dose.",
+  ],
+];
+
+
 
 const ObstetricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
   {
