@@ -225,4 +225,10 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Plastic surgery anaesthesia", "Free flap anaesthesia", "Microsurgery anaesthesia", "DIEP flap", "Digital replantation", "Head and neck reconstruction"],
     keywords: ["free flap anaesthesia", "DIEP flap", "microsurgery FRCA", "plastic surgery anaesthesia", "digital replantation"],
   },
+  "hepatobiliary-transplant": {
+    title: "Hepatobiliary & Transplant Anaesthesia: Liver Resection & LT | FRCA",
+    description: "Hepatobiliary and transplant anaesthesia for FRCA Final: low CVP technique, Pringle manoeuvre, liver transplant phases, post-reperfusion syndrome, cirrhotic patient physiology.",
+    aliases: ["Hepatobiliary anaesthesia", "Liver transplant anaesthesia", "Liver resection anaesthesia", "Low CVP technique", "Post-reperfusion syndrome", "Cirrhotic patient"],
+    keywords: ["liver transplant anaesthesia", "low CVP technique", "post reperfusion syndrome", "Pringle manoeuvre", "hepatobiliary FRCA"],
+  },
 };
