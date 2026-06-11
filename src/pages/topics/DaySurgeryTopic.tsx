@@ -34,8 +34,14 @@ const workedExamples: WorkedExample[] = [
       "Voiding is a discharge requirement after spinal/epidural anaesthesia, perianal surgery and inguinal hernia repair due to risk of post-op urinary retention.\nBladder ultrasound to quantify volume; if >600 mL or unable to void, single in-out catheterisation and arrange community follow-up.",
     answer:
       "No — voiding is mandatory in this patient group. Confirm with bladder scan, catheterise (in-out) if >600 mL, and arrange follow-up before discharge. Failure to void is one of the commonest reasons for unplanned overnight admission in day-surgery units.",
-    cites: ["BADS Guidelines"],
+   cites: ["BADS Guidelines"],
   },
+];
+
+const tocItems = [
+  { id: "section-selection", label: "Patient Selection", group: "Core" },
+  { id: "section-anaesthetic-technique", label: "Anaesthetic Principles", group: "Core" },
+  { id: "section-discharge", label: "Discharge Criteria", group: "Core" },
 ];
 
 const DaySurgeryTopic = () => {
