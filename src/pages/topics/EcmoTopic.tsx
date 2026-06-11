@@ -221,6 +221,30 @@ const EcmoTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <section className="space-y-6">
+            {/* Table of contents */}
+            <nav aria-label="On this page" className="not-prose rounded-lg border border-border bg-secondary/20 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">On this page</p>
+              <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1 text-sm">
+                <li><a href="#overview" className="text-icu hover:underline">What ECMO is — and is not</a></li>
+                <li><a href="#circuit" className="text-icu hover:underline">Circuit components</a></li>
+                <li><a href="#cannulation" className="text-icu hover:underline">Cannulation strategy</a></li>
+                <li><a href="#configurations" className="text-icu hover:underline">ECMO configurations (VV, VA, VAV, VVA)</a></li>
+                <li><a href="#gas-exchange" className="text-icu hover:underline">Oxygenation & CO₂ clearance</a></li>
+                <li><a href="#vv-ecmo-indications" className="text-icu hover:underline">VV-ECMO: indications & EOLIA</a></li>
+                <li><a href="#va-ecmo-indications" className="text-icu hover:underline">VA-ECMO: indications</a></li>
+                <li><a href="#anticoagulation" className="text-icu hover:underline">Anticoagulation & monitoring</a></li>
+                <li><a href="#complications" className="text-icu hover:underline">Major complications</a></li>
+                <li><a href="#icu-care-bundle" className="text-icu hover:underline">ICU care bundle on ECMO</a></li>
+                <li><a href="#ecpr" className="text-icu hover:underline">ECPR for refractory arrest</a></li>
+                <li><a href="#trial-evidence" className="text-icu hover:underline">Major trial evidence</a></li>
+                <li><a href="#prognostic-scores" className="text-icu hover:underline">SAVE & RESP prognostic scores</a></li>
+                <li><a href="#weaning" className="text-icu hover:underline">Weaning trials</a></li>
+                <li><a href="#ethics" className="text-icu hover:underline">Ethics & withdrawal on ECMO</a></li>
+                <li><a href="#pitfalls" className="text-icu hover:underline">Common exam pitfalls</a></li>
+                <li><a href="#faq" className="text-icu hover:underline">Frequently asked questions</a></li>
+              </ul>
+            </nav>
+
             {/* Overview */}
             <div>
               <h2 id="overview" className="text-2xl font-serif font-bold text-foreground mb-3">What ECMO is — and is not</h2>
