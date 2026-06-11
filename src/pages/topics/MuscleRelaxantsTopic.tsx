@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
@@ -42,8 +43,8 @@ const workedExamples: WorkedExample[] = [
 const MuscleRelaxantsTopic = () => {
   return (
     <TopicTemplate
-      title="Muscle Relaxants & Neuromuscular Blocking Agents"
-      subtitle="FRCA Primary Pharmacology — Suxamethonium, Rocuronium, Sugammadex"
+      title="Neuromuscular Blocking Drugs (Muscle Relaxants)"
+      subtitle="FRCA Primary Pharmacology — depolarising vs non-depolarising agents: suxamethonium, rocuronium, vecuronium, atracurium, cisatracurium, sugammadex"
       backPath="/pharmacology"
       backLabel="Pharmacology"
       accentColor="text-pharmacology"
@@ -161,7 +162,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Suxamethonium (Succinylcholine)</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground">Suxamethonium (Succinylcholine): Mechanism of Action, Dose & Side Effects</h2>
             <p className="text-foreground/90 leading-relaxed">
               The only depolarising NMBA in clinical use. Structurally two ACh molecules joined end-to-end. Dose 1–1.5 mg/kg IV.
               Onset 30–60 s (fastest of all NMBAs). Duration 5–10 min. Metabolised by plasma cholinesterase (butyrylcholinesterase).
@@ -185,7 +186,7 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-2xl font-serif font-bold text-foreground">Non-Depolarising Muscle Relaxants</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground">Non-Depolarising Muscle Relaxants: Rocuronium, Vecuronium, Atracurium &amp; Cisatracurium</h2>
             <p className="text-foreground/90 leading-relaxed">
               Competitive antagonists at postjunctional nAChR α subunits. Sub-classified by chemical structure into
               <strong> aminosteroids</strong> and <strong>benzylisoquinoliniums</strong>; structure dictates histamine
