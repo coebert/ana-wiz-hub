@@ -21,6 +21,7 @@ import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
 import { topicReferences } from "@/data/references";
 import { allTopics } from "@/data/curriculum";
+import { topicSeo } from "@/data/topicSeo";
 
 type SectionExamMap = { exams: ExamTag[]; curriculumCodes?: string[] };
 
@@ -188,9 +189,33 @@ export const TopicTemplate = ({
     .join(". ")
     .replace(/\.\.$/, ".");
   const blurb = objectiveBlurb || keyPointBlurb;
-  const metaDescription = blurb
+  const computedDescription = blurb
     ? `${title} (${subtitle}). ${blurb}`.replace(/\s+/g, " ").trim()
     : undefined;
+
+  // Per-topic SEO overrides (keyword-tuned title/description + MedicalWebPage
+  // JSON-LD with `alternateName` aliases). Falls back gracefully when no
+  // entry exists for this topic.
+  const seo = topicSeo[topicId];
+  const metaDescription = seo?.description ?? computedDescription;
+  const canonicalUrl = `https://anaesthesiacore.app${location.pathname}`;
+  const medicalWebPageJsonLd = seo
+    ? {
+        "@context": "https://schema.org",
+        "@type": "MedicalWebPage",
+        name: seo.title ?? title,
+        url: canonicalUrl,
+        about: {
+          "@type": "MedicalEntity",
+          name: title,
+          alternateName: seo.aliases,
+        },
+        audience: { "@type": "MedicalAudience", audienceType: "Anaesthetist" },
+        inLanguage: "en-GB",
+        ...(seo.keywords ? { keywords: seo.keywords.join(", ") } : {}),
+        isPartOf: { "@type": "WebSite", name: "AnaesthesiaCore", url: "https://anaesthesiacore.app/" },
+      }
+    : null;
 
   return (
     <SectionLayout
@@ -203,7 +228,13 @@ export const TopicTemplate = ({
       metaDescription={metaDescription}
     >
       <Helmet>
+        {seo?.title && <title>{seo.title}</title>}
+        {seo?.title && <meta property="og:title" content={seo.title} />}
+        {seo?.title && <meta name="twitter:title" content={seo.title} />}
         <script type="application/ld+json">{JSON.stringify(learningResourceJsonLd)}</script>
+        {medicalWebPageJsonLd && (
+          <script type="application/ld+json">{JSON.stringify(medicalWebPageJsonLd)}</script>
+        )}
       </Helmet>
       <div className="space-y-8 sm:space-y-10">
         <TopicExamFilterBar />
