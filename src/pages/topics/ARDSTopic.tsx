@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -13,6 +14,41 @@ import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const ardsFaqs: Array<[string, string]> = [
+  [
+    "What is the Berlin definition of ARDS?",
+    "The Berlin definition (2012) requires four criteria: onset within 7 days of a known clinical insult or new/worsening respiratory symptoms; bilateral opacities on chest imaging not fully explained by effusions, lobar collapse or nodules; respiratory failure not fully explained by cardiac failure or fluid overload (objective assessment with echocardiography if no risk factor); and impaired oxygenation on PEEP or CPAP ≥ 5 cmH₂O. Severity is stratified by PaO₂/FiO₂: mild 200–300 mmHg, moderate 100–200 mmHg, severe < 100 mmHg, with stepwise rises in mortality (~27%, 32%, 45%).",
+  ],
+  [
+    "What are the lung-protective ventilation targets in ARDS?",
+    "Tidal volume 6 mL/kg predicted body weight (range 4–8 mL/kg), plateau pressure ≤ 30 cmH₂O, driving pressure (plateau − PEEP) ≤ 15 cmH₂O, PEEP titrated to oxygenation and compliance (higher PEEP tables in moderate–severe disease), and FiO₂ to keep SpO₂ 88–95% or PaO₂ 7.3–10.7 kPa. Permissive hypercapnia (pH ≥ 7.20) is accepted to maintain low tidal volumes. ARDSNet 2000 demonstrated an absolute mortality reduction of 8.8% (39.8% → 31.0%) with 6 vs 12 mL/kg tidal volumes.",
+  ],
+  [
+    "Why is driving pressure important in ARDS?",
+    "Driving pressure (ΔP = plateau − PEEP) approximates the cyclic stress applied to the aerated 'baby lung'. In Amato's 2015 NEJM mediation analysis pooling nine ARDS trials, ΔP was the ventilator variable most strongly associated with mortality — a 1 SD (~7 cmH₂O) increase in ΔP corresponded to a relative mortality increase of ~40%, and reductions in tidal volume or increases in PEEP only improved survival if they lowered ΔP. The widely used target is ΔP ≤ 15 cmH₂O, achieved by reducing tidal volume or increasing PEEP to recruit collapsed lung.",
+  ],
+  [
+    "When should prone positioning be used in ARDS?",
+    "Prone positioning is indicated in moderate-to-severe ARDS with PaO₂/FiO₂ < 150 mmHg on FiO₂ ≥ 0.6 and PEEP ≥ 5 cmH₂O, initiated early (within 36 h of meeting criteria, after a 12–24 h lung-protective stabilisation period), delivered for ≥ 16 h per session, and continued daily until oxygenation improves (PaO₂/FiO₂ ≥ 150 with PEEP ≤ 10 and FiO₂ ≤ 0.6 sustained ≥ 4 h supine). PROSEVA (NEJM 2013) showed a 28-day mortality of 16.0% vs 32.8% (HR 0.39) and 90-day mortality 23.6% vs 41.0%.",
+  ],
+  [
+    "What are the EOLIA criteria for VV-ECMO referral in ARDS?",
+    "EOLIA criteria for VV-ECMO in severe ARDS refractory to optimal ventilation and proning: PaO₂/FiO₂ < 50 mmHg for > 3 h, or PaO₂/FiO₂ < 80 mmHg for > 6 h, or arterial pH < 7.25 with PaCO₂ ≥ 60 mmHg for > 6 h with respiratory rate increased to 35 and tidal volume reduced to 4 mL/kg PBW. EOLIA stopped early for futility (relative risk 0.76, p = 0.09); a pre-specified Bayesian re-analysis estimated ~96% probability of mortality benefit. Refer early (P/F < 150 on FiO₂ ≥ 0.6 PEEP ≥ 10) — do not wait for cannulation criteria.",
+  ],
+  [
+    "Does neuromuscular blockade improve outcomes in ARDS?",
+    "Evidence is conflicting. ACURASYS (Papazian, NEJM 2010) showed 48 h cisatracurium infusion in patients with PaO₂/FiO₂ < 150 reduced adjusted 90-day mortality (HR 0.68) without increasing ICU-acquired weakness. ROSE (PETAL, NEJM 2019) — performed with lighter sedation and higher PEEP — showed no mortality benefit (42.5% vs 42.8%) and more cardiovascular adverse events. Current practice: reserve a 48 h NMB infusion for patients with refractory ventilator dyssynchrony, very high driving pressure or persistent severe hypoxaemia despite deep sedation, rather than routine use in all moderate–severe ARDS.",
+  ],
+  [
+    "What is the conservative fluid strategy in ARDS?",
+    "After initial resuscitation, target a neutral or slightly negative fluid balance using diuresis and fluid restriction guided by CVP < 4 mmHg or PAOP < 8 mmHg (with mean arterial pressure ≥ 60 mmHg and adequate urine output). FACTT (NHLBI ARDS Network, NEJM 2006) compared conservative vs liberal fluid management and showed more ventilator-free days (14.6 vs 12.1) and ICU-free days, with no increase in shock or renal replacement therapy and no mortality difference. It is a respiratory-mechanics intervention, not a survival intervention.",
+  ],
+  [
+    "Do corticosteroids work in ARDS?",
+    "Evidence is heterogeneous and indication-specific. Dexamethasone benefits COVID-19 ARDS needing oxygen or ventilation (RECOVERY, 6 mg OD × 10 d). DEXA-ARDS (Villar, Lancet Respir Med 2020) showed dexamethasone 20 mg × 5 d → 10 mg × 5 d reduced 60-day mortality (21% vs 36%) and increased ventilator-free days in moderate–severe non-COVID ARDS. Hydrocortisone benefits severe community-acquired pneumonia (CAPE COD, NEJM 2023). Routine steroids in all ARDS are not recommended — current practice is targeted (COVID-19, severe CAP, eligible non-COVID moderate–severe ARDS, vasculitis). Avoid in influenza pneumonia.",
+  ],
+];
 
 const objectives = [
   "Apply the Berlin definition to stratify ARDS severity and prognosis.",
@@ -147,7 +183,25 @@ const ARDSTopic = () => {
       }}
       coreConcepts={
     <>
+      {/* Table of contents */}
+      <nav aria-label="On this page" className="not-prose rounded-lg border border-border bg-secondary/20 p-4 mb-6">
+        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">On this page</p>
+        <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1 text-sm">
+          <li><a href="#berlin-definition" className="text-icu hover:underline">Berlin definition (2012)</a></li>
+          <li><a href="#lung-protective" className="text-icu hover:underline">Lung-protective ventilation settings</a></li>
+          <li><a href="#peep-strategy" className="text-icu hover:underline">PEEP titration strategies</a></li>
+          <li><a href="#prone" className="text-icu hover:underline">Prone positioning</a></li>
+          <li><a href="#nmb" className="text-icu hover:underline">Neuromuscular blockade</a></li>
+          <li><a href="#ecmo" className="text-icu hover:underline">VV-ECMO &amp; EOLIA</a></li>
+          <li><a href="#fluids-steroids" className="text-icu hover:underline">Fluid &amp; steroid strategy</a></li>
+          <li><a href="#trial-evidence" className="text-icu hover:underline">Landmark trial evidence</a></li>
+          <li><a href="#pitfalls" className="text-icu hover:underline">Exam pitfalls</a></li>
+          <li><a href="#faq" className="text-icu hover:underline">Frequently asked questions</a></li>
+        </ul>
+      </nav>
+
       <section className="space-y-6">
+
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC2.4"]}>
           <CollapsibleSubsection title="Pathophysiology of ARDS" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -1011,16 +1065,162 @@ const ARDSTopic = () => {
         </p>
       </SynthesisBlock>
 
-          <ExamPitfallsCallout
-            accent="icu"
-            pitfalls={[
-              "Berlin definition: acute (<7 days), bilateral infiltrates, not explained by cardiac failure, PaO₂/FiO₂ ≤300 on PEEP ≥5.",
-              "Mild 200–300, moderate 100–200, severe ≤100 (mmHg) — mortality rises stepwise.",
-              "Prone for ≥16 h/day in severe ARDS (PaO₂/FiO₂ <150) — PROSEVA showed mortality benefit.",
-              "Neuromuscular blockade for 48 h in severe ARDS reduces barotrauma but ROSE trial showed no mortality benefit.",
-              "Refractory hypoxaemia: consider ECMO referral (Murray score ≥3, PaO₂/FiO₂ <80) — EOLIA trial.",
-            ]}
-          />
+      {/* Deep-content reference block: anchored H2s for TOC */}
+      <section className="space-y-8 mt-10 scroll-mt-24">
+
+        <div id="berlin-definition">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Berlin definition (2012) — at a glance</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            ARDS is defined by four mandatory criteria: <strong>acute onset</strong> within 7 days of a known clinical insult; <strong>bilateral opacities</strong> on chest imaging not fully explained by effusion, lobar collapse or nodules; respiratory failure <strong>not fully explained by cardiac failure or fluid overload</strong> (objective echo if no risk factor); and <strong>impaired oxygenation</strong> on PEEP/CPAP ≥ 5 cmH₂O. Severity is graded by PaO₂/FiO₂.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Severity</th>
+                <th className="text-left p-2 font-semibold text-foreground">PaO₂/FiO₂ (mmHg)</th>
+                <th className="text-left p-2 font-semibold text-foreground">PEEP / CPAP</th>
+                <th className="text-left p-2 font-semibold text-foreground">Observed mortality</th>
+                <th className="text-left p-2 font-semibold text-foreground">Median ventilator-free days</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Mild</td><td className="p-2">200 – 300</td><td className="p-2">≥ 5</td><td className="p-2">~27%</td><td className="p-2">20</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Moderate</td><td className="p-2">100 – 200</td><td className="p-2">≥ 5</td><td className="p-2">~32%</td><td className="p-2">16</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Severe</td><td className="p-2">&lt; 100</td><td className="p-2">≥ 5</td><td className="p-2">~45%</td><td className="p-2">1</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            The 2023 <strong>Global ARDS definition</strong> extends Berlin to non-intubated patients on HFNO ≥ 30 L/min or NIV/CPAP ≥ 5 cmH₂O, and accepts SpO₂/FiO₂ ≤ 315 (with SpO₂ ≤ 97%) where ABG unavailable — broadening recognition in resource-limited and pre-intubation settings.
+          </p>
+        </div>
+
+        <div id="lung-protective">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lung-protective ventilation — the settings</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The single intervention with the most consistent mortality benefit. Targets apply to <strong>all</strong> ARDS severities from the moment of diagnosis, and tidal volumes should always be calculated on <strong>predicted body weight (PBW)</strong>, not actual weight.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Parameter</th>
+                <th className="text-left p-2 font-semibold text-foreground">Target</th>
+                <th className="text-left p-2 font-semibold text-foreground">Why</th>
+                <th className="text-left p-2 font-semibold text-foreground">Evidence</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground align-top">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Tidal volume</td><td className="p-2">6 mL/kg PBW (range 4–8)</td><td className="p-2">Reduces volutrauma to the &ldquo;baby lung&rdquo;</td><td className="p-2">ARDSNet 2000 (NEJM): mortality 31.0% vs 39.8% with 6 vs 12 mL/kg, ARR 8.8%</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Plateau pressure</td><td className="p-2">≤ 30 cmH₂O</td><td className="p-2">Surrogate for end-inspiratory alveolar stress</td><td className="p-2">ARDSNet 2000; ATS/ESICM/SCCM 2017 strong recommendation</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Driving pressure (ΔP)</td><td className="p-2">≤ 15 cmH₂O (Pplat − PEEP)</td><td className="p-2">Strongest ventilator predictor of mortality</td><td className="p-2">Amato 2015 (NEJM): 1 SD ↑ ΔP ⇒ ~40% relative ↑ mortality across 9 RCTs</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">PEEP</td><td className="p-2">Titrated; higher PEEP table in moderate–severe</td><td className="p-2">Recruits collapsed alveoli, reduces atelectrauma</td><td className="p-2">Briel 2010 meta-analysis: mortality benefit only when P/F &lt; 200</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">FiO₂ / SpO₂</td><td className="p-2">Lowest FiO₂ for SpO₂ 88–95% (PaO₂ 7.3–10.7 kPa)</td><td className="p-2">Avoid oxygen toxicity and hyperoxia</td><td className="p-2">LOCO₂ 2020; ICU-ROX 2020 — conservative not inferior</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Respiratory rate</td><td className="p-2">Up to 35/min; pH ≥ 7.20 (permissive hypercapnia)</td><td className="p-2">Maintains minute ventilation at low Vt</td><td className="p-2">ARDSNet protocol; consensus</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Mode</td><td className="p-2">Volume- or pressure-controlled; either acceptable</td><td className="p-2">No mode shown superior; control Vt &amp; Pplat</td><td className="p-2">Chacko 2015 Cochrane — no mortality difference</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Sedation depth</td><td className="p-2">RASS −2 to 0 when feasible</td><td className="p-2">Lighter sedation reduces delirium &amp; weakness</td><td className="p-2">ABCDEF bundle; SLEAP 2012</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            <strong>PBW (male)</strong> = 50 + 0.91 × (height cm − 152.4). <strong>PBW (female)</strong> = 45.5 + 0.91 × (height cm − 152.4). Always set Vt from height, never from admission weight.
+          </p>
+        </div>
+
+        <div id="peep-strategy">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">PEEP titration strategies</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Method</th>
+                <th className="text-left p-2 font-semibold text-foreground">How</th>
+                <th className="text-left p-2 font-semibold text-foreground">Comment</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground align-top">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">ARDSNet FiO₂/PEEP table</td><td className="p-2">Pre-set PEEP for each FiO₂ (low or high table)</td><td className="p-2">Most pragmatic; high-PEEP table for P/F &lt; 200</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Best compliance</td><td className="p-2">Decremental PEEP trial; choose PEEP at peak Crs</td><td className="p-2">Minimises ΔP; widely used</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Oesophageal manometry</td><td className="p-2">Titrate to transpulmonary pressure ≥ 0 end-expiration</td><td className="p-2">EPVent-2 (2019) neutral overall, signal in moderate disease</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Electrical impedance tomography</td><td className="p-2">Balance overdistension vs collapse pixels</td><td className="p-2">Research / specialist; promising</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Aggressive recruitment + decremental PEEP</td><td className="p-2">Stepwise pressure increase then titration</td><td className="p-2"><strong>Harmful</strong> — ART 2017 ↑ 28-day mortality 55.3% vs 49.3%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="trial-evidence">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Landmark trial evidence</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Trial (year)</th>
+                <th className="text-left p-2 font-semibold text-foreground">Population</th>
+                <th className="text-left p-2 font-semibold text-foreground">Intervention</th>
+                <th className="text-left p-2 font-semibold text-foreground">Key result</th>
+                <th className="text-left p-2 font-semibold text-foreground">Bottom line</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground align-top">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">ARDSNet / ARMA (2000)</td><td className="p-2">861 ARDS</td><td className="p-2">Vt 6 vs 12 mL/kg PBW, Pplat ≤ 30</td><td className="p-2">Mortality 31.0% vs 39.8% (p = 0.007)</td><td className="p-2">Founded lung-protective ventilation</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">ALVEOLI (2004)</td><td className="p-2">549 ALI/ARDS</td><td className="p-2">High vs low PEEP table</td><td className="p-2">No mortality difference</td><td className="p-2">PEEP strategy alone neutral</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">FACTT (2006)</td><td className="p-2">1000 ALI</td><td className="p-2">Conservative vs liberal fluids</td><td className="p-2">+2.5 ventilator-free days; no mortality benefit</td><td className="p-2">Dry the lung after resuscitation</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">CESAR (2009)</td><td className="p-2">180 severe ARDS</td><td className="p-2">Referral to ECMO centre</td><td className="p-2">6-mo survival without disability 63% vs 47%</td><td className="p-2">Referral works; whole bundle matters</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">ACURASYS (2010)</td><td className="p-2">340 ARDS P/F &lt; 150</td><td className="p-2">48 h cisatracurium</td><td className="p-2">Adjusted 90-day mortality HR 0.68</td><td className="p-2">NMB may benefit early severe disease</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">OSCILLATE (2013)</td><td className="p-2">548 moderate-severe ARDS</td><td className="p-2">HFOV vs conventional</td><td className="p-2"><strong>Stopped for harm</strong> 47% vs 35%</td><td className="p-2">HFOV not for routine use</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">OSCAR (2013)</td><td className="p-2">795 ARDS</td><td className="p-2">HFOV vs conventional</td><td className="p-2">No difference 41.7% vs 41.1%</td><td className="p-2">Confirms HFOV not beneficial</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">PROSEVA (2013)</td><td className="p-2">466 ARDS P/F &lt; 150</td><td className="p-2">Prone ≥ 16 h/day vs supine</td><td className="p-2">28-d mortality 16.0% vs 32.8% (HR 0.39)</td><td className="p-2">Practice-changing — prone early</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">ART (2017)</td><td className="p-2">1010 moderate-severe ARDS</td><td className="p-2">Stepwise recruitment + decremental PEEP</td><td className="p-2"><strong>↑ 28-d mortality</strong> 55.3% vs 49.3%</td><td className="p-2">Avoid aggressive recruitment</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">EOLIA (2018)</td><td className="p-2">249 very severe ARDS</td><td className="p-2">Early VV-ECMO vs conventional + crossover</td><td className="p-2">60-d mortality 35% vs 46% (RR 0.76, p = 0.09)</td><td className="p-2">Bayesian re-analysis ~96% probability of benefit</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">ROSE (2019)</td><td className="p-2">1006 moderate-severe ARDS</td><td className="p-2">48 h cisatracurium with lighter sedation</td><td className="p-2">No difference 42.5% vs 42.8%</td><td className="p-2">Routine NMB no longer first-line</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">DEXA-ARDS (2020)</td><td className="p-2">277 moderate-severe non-COVID ARDS</td><td className="p-2">Dexamethasone 20 → 10 mg × 10 d</td><td className="p-2">60-d mortality 21% vs 36%</td><td className="p-2">Selective steroid use supported</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">RECOVERY (2021)</td><td className="p-2">6425 COVID-19 inpatients</td><td className="p-2">Dexamethasone 6 mg × 10 d</td><td className="p-2">28-d mortality 22.9% vs 25.7%; biggest benefit if ventilated</td><td className="p-2">Standard of care in COVID-19 needing O₂</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">RECOVERY-RS (2022)</td><td className="p-2">1273 COVID-19 hypoxia</td><td className="p-2">CPAP vs HFNO vs standard O₂</td><td className="p-2">CPAP ↓ intubation/death vs standard (36% vs 44%)</td><td className="p-2">CPAP preferred non-invasive support</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="pitfalls"></div>
+        <div id="prone"></div>
+        <div id="nmb"></div>
+        <div id="ecmo"></div>
+        <div id="fluids-steroids"></div>
+
+        <ExamPitfallsCallout
+          accent="icu"
+          pitfalls={[
+            "Berlin definition: acute (<7 days), bilateral infiltrates, not explained by cardiac failure, PaO₂/FiO₂ ≤300 on PEEP ≥5.",
+            "Mild 200–300, moderate 100–200, severe ≤100 (mmHg) — mortality rises stepwise.",
+            "Set tidal volume on PREDICTED body weight (height-based), not actual weight.",
+            "Driving pressure ≤15 cmH₂O is the single strongest ventilator predictor of survival (Amato 2015).",
+            "Prone for ≥16 h/day in severe ARDS (PaO₂/FiO₂ <150) — PROSEVA showed mortality benefit.",
+            "Neuromuscular blockade for 48 h in severe ARDS reduces barotrauma but ROSE trial showed no mortality benefit.",
+            "Avoid aggressive recruitment manoeuvres — ART (2017) showed increased mortality.",
+            "Refractory hypoxaemia: refer EARLY to SARF/ECMO centre (P/F <150) — don't wait for EOLIA cannulation criteria.",
+          ]}
+        />
+
+        {/* FAQ */}
+        <div id="faq">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Frequently asked questions</h2>
+          <div className="space-y-2">
+            {ardsFaqs.map(([q, a]) => (
+              <details key={q} className="group rounded-lg border border-border p-3">
+                <summary className="cursor-pointer font-semibold text-foreground text-sm">{q}</summary>
+                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        {/* FAQ JSON-LD for rich-result eligibility */}
+        <Helmet>
+          <script type="application/ld+json">{JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: ardsFaqs.map(([name, acceptedAnswer]) => ({
+              "@type": "Question",
+              name,
+              acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+            })),
+          })}</script>
+        </Helmet>
+      </section>
     </>
       }
     />
