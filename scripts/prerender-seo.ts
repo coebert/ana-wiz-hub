@@ -333,7 +333,18 @@ function patchHead(
     "\n    ",
   );
 
-  // 4. Inject per-route canonical + og + twitter + optional FAQPage JSON-LD,
+  // 4. Strip existing WebSite / Organization JSON-LD from the shell so we can
+  //    re-inject a clean, controlled version on every route.
+  html = html.replace(
+    /\s*<script\s+type="application\/ld\+json"[^>]*>[\s\S]*?"@type"\s*:\s*"WebSite"[\s\S]*?<\/script>\s*/gi,
+    "\n    ",
+  );
+  html = html.replace(
+    /\s*<script\s+type="application\/ld\+json"[^>]*>[\s\S]*?"@type"\s*:\s*"Organization"[\s\S]*?<\/script>\s*/gi,
+    "\n    ",
+  );
+
+  // 5. Inject per-route canonical + og + twitter + optional FAQPage JSON-LD,
   //    immediately before </head>.
   const headTags: string[] = [
     `<link rel="canonical" href="${canonical}">`,
@@ -344,6 +355,36 @@ function patchHead(
     `<meta name="twitter:title" content="${titleAttr}">`,
     `<meta name="twitter:description" content="${descAttr}">`,
   ];
+
+  // WebSite + SearchAction JSON-LD on every route so Google understands
+  // site-level search regardless of which page it crawls first.
+  const webSiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "AnaesthesiaCore",
+    url: `${SITE}/`,
+    description:
+      "Unified FRCA Primary, Final and FFICM revision: structured topics, diagrams, quizzes and viva practice across anaesthesia and intensive care.",
+    inLanguage: "en-GB",
+    publisher: {
+      "@type": "Organization",
+      name: "AnaesthesiaCore",
+      url: `${SITE}/`,
+      logo: `${SITE}/brain-logo.png`,
+      description:
+        "FRCA Primary, Final and FFICM revision platform for UK anaesthesia and intensive care trainees.",
+      founder: { "@type": "Person", name: "Dr Rob Coe", jobTitle: "Anaesthetist" },
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE}/revise?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+  const wsJson = JSON.stringify(webSiteJsonLd).replace(/<\/script>/gi, "<\\/script>");
+  headTags.push(
+    `<script type="application/ld+json" data-prerender="website">${wsJson}</script>`,
+  );
 
   // BreadcrumbList JSON-LD on every non-root page so Google can map the
   // section hierarchy (Home › Section › Topic › Subtopic) for rich nav
@@ -402,6 +443,7 @@ async function main() {
   let overwroteRoot = false;
   let withFaq = 0;
   let withBreadcrumb = 0;
+  let withWebSite = 0;
 
   for (const path of routes) {
     const seo = seoFor(path);
@@ -416,10 +458,11 @@ async function main() {
     if (path === "/") overwroteRoot = true;
     if (faqs && faqs.length > 0) withFaq++;
     if (path !== "/") withBreadcrumb++;
+    withWebSite++;
   }
 
   console.log(
-    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root); ${withFaq} include FAQPage JSON-LD; ${withBreadcrumb} include BreadcrumbList JSON-LD.`,
+    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root); ${withWebSite} include WebSite/SearchAction JSON-LD; ${withFaq} include FAQPage JSON-LD; ${withBreadcrumb} include BreadcrumbList JSON-LD.`,
   );
 }
 

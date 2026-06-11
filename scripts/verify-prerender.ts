@@ -158,6 +158,69 @@ function main() {
     return fail(`BreadcrumbList JSON-LD missing on ${bcFailures.length} route(s)`);
   }
 
+  // ---- WebSite + SearchAction JSON-LD presence ----
+  // Every prerendered route must ship a WebSite schema with a SearchAction
+  // potentialAction so Google surfaces the site-level search box in SERPs.
+  const wsFailures: Array<{ path: string; reason: string }> = [];
+  let wsChecked = 0;
+  for (const f of readdirSync(sitemapsDir)) {
+    if (!f.endsWith(".xml")) continue;
+    const xml = readFileSync(join(sitemapsDir, f), "utf8");
+    for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+      const url = m[1];
+      if (!url.startsWith(SITE)) continue;
+      const path = url.slice(SITE.length) || "/";
+      const file = path === "/" ? join(DIST, "index.html") : join(DIST, path, "index.html");
+      if (!existsSync(file)) continue; // already reported above
+      wsChecked++;
+      const html = readFileSync(file, "utf8");
+      const scriptMatch = html.match(
+        /<script\s+type="application\/ld\+json"\s+data-prerender="website">([\s\S]+?)<\/script>/i,
+      );
+      if (!scriptMatch) {
+        wsFailures.push({ path, reason: "no WebSite <script> tag" });
+        continue;
+      }
+      try {
+        const json = JSON.parse(scriptMatch[1]);
+        if (json["@type"] !== "WebSite") {
+          wsFailures.push({ path, reason: `@type is ${json["@type"]}, not WebSite` });
+          continue;
+        }
+        const action = json.potentialAction;
+        if (!action || action["@type"] !== "SearchAction") {
+          wsFailures.push({ path, reason: "missing or malformed potentialAction/SearchAction" });
+          continue;
+        }
+        if (
+          typeof action.target !== "string" ||
+          !action.target.includes("{search_term_string}")
+        ) {
+          wsFailures.push({ path, reason: "SearchAction target missing {search_term_string}" });
+          continue;
+        }
+        if (
+          typeof action["query-input"] !== "string" ||
+          !action["query-input"].includes("search_term_string")
+        ) {
+          wsFailures.push({ path, reason: "SearchAction query-input malformed" });
+        }
+      } catch (err) {
+        wsFailures.push({ path, reason: `JSON parse failed: ${(err as Error).message}` });
+      }
+    }
+  }
+
+  if (wsFailures.length > 0) {
+    console.error(
+      `[verify-prerender] ✗ ${wsFailures.length}/${wsChecked} route(s) missing or malformed WebSite/SearchAction JSON-LD:`,
+    );
+    for (const w of wsFailures.slice(0, 20)) {
+      console.error(`  - ${w.path}  →  ${w.reason}`);
+    }
+    return fail(`WebSite/SearchAction JSON-LD missing on ${wsFailures.length} route(s)`);
+  }
+
   // ---- FAQPage JSON-LD presence ----
   // Every route whose source declares FAQ pairs must have a corresponding
   // FAQPage <script type="application/ld+json" data-prerender="faqpage">
@@ -223,6 +286,7 @@ function main() {
 
   console.log(
     `[verify-prerender] ✓ ${checked} sitemap URLs all have prerendered HTML; ` +
+      `${wsChecked} WebSite/SearchAction JSON-LD blocks valid; ` +
       `${bcChecked} BreadcrumbList JSON-LD blocks valid; ` +
       `${faqExpectedPaths.length} FAQPage JSON-LD blocks valid; ` +
       `${subSitemaps.length} sub-sitemaps linked; robots.txt advertises sitemap.`,
