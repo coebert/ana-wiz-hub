@@ -82,10 +82,12 @@ export const TopicTableOfContents = ({ items }: TopicTableOfContentsProps) => {
         </div>
       </nav>
 
-      {/* Desktop: sticky sidebar */}
+      {/* Desktop: sticky sidebar — anchored just outside the max-w-4xl content column
+          so it never overlaps body content. Hidden when the viewport is too narrow
+          to fit the sidebar next to the content. */}
       <nav
         aria-label="On this page"
-        className="hidden lg:block fixed right-6 top-24 w-56 z-10"
+        className="hidden 2xl:block fixed top-24 w-56 z-10 left-[calc(50%+28rem+1.5rem)]"
       >
         <div className="bg-muted/30 border border-border rounded-xl p-3">
           <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-2 px-2">
