@@ -76,7 +76,8 @@ const DaySurgeryTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="selection" exams={[Exam.FINAL]}>
+          <TopicTableOfContents items={tocItems} />
+          <ExamSection id="section-selection" className="scroll-mt-24" exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Patient Selection" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The British Association of Day Surgery (BADS) recommends that ~80% of elective surgery be delivered as day case.
