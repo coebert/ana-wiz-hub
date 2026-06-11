@@ -90,6 +90,14 @@ const workedExamples: WorkedExample[] = [
   },
 ];
 
+const tocItems = [
+  { id: "section-anaphylaxis", label: "Anaphylaxis", group: "Incidents" },
+  { id: "section-mh", label: "Malignant Hyperthermia", group: "Incidents" },
+  { id: "section-last", label: "LAST", group: "Incidents" },
+  { id: "section-awareness", label: "Accidental Awareness", group: "Incidents" },
+  { id: "section-death-on-table", label: "Death on the Table", group: "Incidents" },
+];
+
 const ClinicalIncidentsTopic = () => {
   return (
     <TopicTemplate
