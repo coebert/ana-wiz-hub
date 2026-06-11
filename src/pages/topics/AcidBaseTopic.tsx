@@ -58,6 +58,8 @@ const tocItems = [
   { id: "section-comparing-frameworks", label: "Comparing Frameworks", group: "Advanced" },
   { id: "section-lactic", label: "Lactic Acidosis", group: "Disorders" },
 ];
+
+const AcidBaseTopic = () => {
   return (
     <TopicTemplate
       title="Acid-Base Disorders"
