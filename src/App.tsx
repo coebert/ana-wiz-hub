@@ -100,6 +100,7 @@ const IVAnaestheticsTopic = lazy(() => import("./pages/topics/IVAnaestheticsTopi
 const VolatileAgentsTopic = lazy(() => import("./pages/topics/VolatileAgentsTopic"));
 const OpioidsTopic = lazy(() => import("./pages/topics/OpioidsTopic"));
 const MuscleRelaxantsTopic = lazy(() => import("./pages/topics/MuscleRelaxantsTopic"));
+const RocuroniumTopic = lazy(() => import("./pages/topics/RocuroniumTopic"));
 const SuxVsRocComparisonTopic = lazy(() => import("./pages/topics/SuxVsRocComparisonTopic"));
 const LocalAnaestheticsTopic = lazy(() => import("./pages/topics/LocalAnaestheticsTopic"));
 const VasoactiveAgentsTopic = lazy(() => import("./pages/topics/VasoactiveAgentsTopic"));
