@@ -789,6 +789,44 @@ const CardiothoracicTopic = () => {
               "TOE basics: rule out tamponade, regional wall motion abnormality, valve dysfunction, retained air after cardiotomy.",
             ]}
           />
+
+          <section id="faq" className="scroll-mt-24 mt-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Cardiothoracic Anaesthesia — FAQ
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+              Concise, evidence-based answers to the questions trainees and candidates most often ask about one-lung ventilation, DLT sizing, CPB physiology, DHCA conduct, pH-stat vs α-stat, cardiac arrest after surgery, and post-thoracotomy analgesia.
+            </p>
+            <Accordion type="single" collapsible className="w-full">
+              {cardiothoracicFaqs.map(([q, a], i) => (
+                <AccordionItem key={q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-sm font-medium text-foreground">
+                    {q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                    {a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+
+          <Helmet>
+            <title>Cardiothoracic Anaesthesia — CPB, OLV, DHCA &amp; CALS</title>
+            <meta
+              name="description"
+              content="Cardiothoracic anaesthesia explained for FRCA and FFICM: cardiopulmonary bypass, one-lung ventilation and DLT management, deep hypothermic circulatory arrest, pH-stat vs α-stat, cardiac arrest after cardiac surgery (CALS), and post-thoracotomy analgesia."
+            />
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: cardiothoracicFaqs.map(([name, acceptedAnswer]) => ({
+                "@type": "Question",
+                name,
+                acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+              })),
+            })}</script>
+          </Helmet>
         </ExamSection>
       }
     />
