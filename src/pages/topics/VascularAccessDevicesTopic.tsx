@@ -100,7 +100,8 @@ const VascularAccessDevicesTopic = () => {
       }}
       coreConcepts={
         <>
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <TopicTableOfContents items={tocItems} />
+          <ExamSection id="section-device-overview" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <DiagramSection title="Devices to scale — length and tip position" intro={<p>Catheters compared on a single length axis. Tip position (forearm vein → axillary vein → SVC) determines whether the device is peripheral, midline or central, and therefore which drugs and what flow rates are safe.</p>}>
               <VascularAccessDevicesDiagram />
             </DiagramSection>
