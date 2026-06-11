@@ -6,6 +6,23 @@ import { AtomicStructureDiagram } from "@/components/diagrams/AtomicStructureDia
 import { PeriodicTableAnaestheticDiagram } from "@/components/diagrams/PeriodicTableAnaestheticDiagram";
 import { atomicStructureQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { TopicFaqs } from "@/components/TopicFaqs";
+
+const atomicStructureFaqs: Array<[string, string]> = [
+  [
+    "Why does desflurane boil at room temperature while halothane boils at 50 °C?",
+    "Halothane carries heavy bromine and chlorine atoms whose large, polarisable electron clouds generate strong van der Waals forces, holding molecules together until ~50 °C. Desflurane has only small fluorine atoms with weak van der Waals attraction, so it boils at 23.5 °C — requiring the heated, pressurised Tec 6 vaporiser to deliver predictable partial pressures clinically.",
+  ],
+  [
+    "Why is sodium chloride soluble in water but not in lipid?",
+    "NaCl is held in a high-energy ionic lattice (~787 kJ/mol). Water's strong O-H dipoles form hydration shells around Na⁺ and Cl⁻ that almost match the lattice energy, so the salt dissolves. Non-polar lipid solvents can only manage weak van der Waals interactions and cannot pay the lattice cost — which is why all electrolyte-containing IV fluids must be aqueous.",
+  ],
+  [
+    "What determines whether a bond is ionic or covalent?",
+    "The electronegativity difference (ΔEN) between the atoms. ΔEN > ~1.7 (e.g. Na-Cl, 2.1) gives ionic bonding with full electron transfer. ΔEN < ~1.7 (e.g. C-H, 0.4) gives covalent bonding with electron sharing — polar covalent if ΔEN is 0.4–1.7 (e.g. O-H), non-polar if essentially zero (e.g. C-C). This in turn dictates solubility, melting point, and how drugs interact with receptors.",
+  ],
+];
+
 
 const objectives = [
   "Explain electron shell structure and predict reactivity from valence-shell configuration",
