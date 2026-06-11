@@ -343,6 +343,7 @@ function main() {
 
   console.log(
     `[verify-prerender] ✓ ${checked} sitemap URLs all have prerendered HTML; ` +
+      `${orgChecked} Organization JSON-LD blocks valid; ` +
       `${wsChecked} WebSite/SearchAction JSON-LD blocks valid; ` +
       `${bcChecked} BreadcrumbList JSON-LD blocks valid; ` +
       `${faqExpectedPaths.length} FAQPage JSON-LD blocks valid; ` +
