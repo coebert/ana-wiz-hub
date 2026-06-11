@@ -178,7 +178,85 @@ const coreConcepts = (
     </ExamSection>
 
     {/* ─────────── Post-ROSC bundle ─────────── */}
+    {/* ─────────── ALS algorithm ─────────── */}
+    <ExamSection id="als-algorithm" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+      <CollapsibleSubsection title="Adult ALS Algorithm — RCUK / ERC 2021" defaultOpen>
+        <p className="text-muted-foreground leading-relaxed mb-3">
+          Confirm arrest, call for help, deliver continuous chest compressions
+          (100–120 min⁻¹, depth 5–6 cm, full recoil), attach the defibrillator
+          and assess rhythm <span className="font-medium text-foreground">every 2 minutes</span>.
+          The first pharmacological dose of adrenaline (1 mg IV) follows the
+          third shock in VF/pVT, and is given as soon as access is obtained
+          in non-shockable rhythms.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-3">
+          <div className="p-4 rounded-lg border border-icu/30 bg-icu/5">
+            <p className="text-sm font-semibold text-foreground mb-2">Shockable (VF / pulseless VT)</p>
+            <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+              <li>Shock 1 — biphasic 120–200 J (manufacturer-specified); equal or escalating thereafter</li>
+              <li>Resume CPR immediately for 2 min — do not pulse-check post-shock</li>
+              <li>After shock 3: <span className="font-medium text-foreground">adrenaline 1 mg IV</span> + <span className="font-medium text-foreground">amiodarone 300 mg IV</span></li>
+              <li>After shock 5: amiodarone 150 mg IV (or lidocaine 1 mg/kg if amiodarone unavailable)</li>
+              <li>Repeat adrenaline 1 mg every 3–5 min (alternate loops)</li>
+              <li>Refractory VF after 3 shocks → consider vector change (AP pads) or double sequential external defibrillation (DOSE-VF 2022)</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg border border-icu/30 bg-icu/5">
+            <p className="text-sm font-semibold text-foreground mb-2">Non-shockable (PEA / asystole)</p>
+            <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+              <li>Adrenaline 1 mg IV as soon as access — then every 3–5 min</li>
+              <li>Continuous high-quality CPR; secure airway when feasible</li>
+              <li>Active search for reversible causes (4Hs / 4Ts) — POCUS to identify tamponade, RV strain, hypovolaemia</li>
+              <li>No routine atropine; no routine bicarbonate (except hyperK⁺ / TCA / prolonged arrest with profound acidaemia)</li>
+              <li>Confirm asystole on more than one lead; check leads, gain and pad contact before declaring</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-4 overflow-x-auto -mx-2 sm:mx-0">
+          <table className="w-full text-xs border border-border bg-card rounded-lg">
+            <thead className="bg-muted/40">
+              <tr>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Reversible cause</th>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Bedside clue</th>
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Immediate action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Hypoxia", "Desaturation, mucus plug, oesophageal intubation", "100% O₂, confirm ETT placement, capnography, suction"],
+                ["Hypovolaemia", "Trauma, GI bleed, ruptured AAA, anaphylaxis", "Rapid crystalloid + blood, MTP, control haemorrhage, adrenaline if anaphylactic"],
+                ["Hyper/hypokalaemia & metabolic", "Renal failure, crush, rhabdo, DKA", "10 mL 10% CaCl₂, insulin/dextrose, salbutamol, bicarbonate; correct glucose"],
+                ["Hypothermia", "Submersion, environmental, post-operative", "Active rewarming, prolong resus — 'not dead until warm and dead', consider eCPR"],
+                ["Tension pneumothorax", "Tracheal deviation, absent breath sounds, ↑PAW", "Needle decompression 2nd ICS MCL or 5th ICS AAL, then finger thoracostomy + ICD"],
+                ["Tamponade", "Trauma, post-cardiac surgery, malignancy", "POCUS confirmation, pericardiocentesis or resuscitative thoracotomy"],
+                ["Toxins", "Overdose history, occupational exposure", "Naloxone (opioid), digibind (digoxin), intralipid (LA toxicity), bicarbonate (TCA)"],
+                ["Thrombosis (PE / coronary)", "Recent surgery, immobility, chest pain pre-arrest", "Alteplase 50 mg IV for PE, continue CPR 60–90 min; primary PCI for coronary cause"],
+              ].map((r) => (
+                <tr key={r[0]} className="border-t border-border">
+                  <td className="px-3 py-1.5 font-medium text-foreground">{r[0]}</td>
+                  <td className="px-3 py-1.5 text-foreground/85">{r[1]}</td>
+                  <td className="px-3 py-1.5 text-muted-foreground">{r[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="mt-4 p-3 rounded-lg border border-border bg-card">
+          <p className="text-sm font-semibold text-foreground mb-1">Capnography during CPR</p>
+          <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+            <li>ETCO₂ &lt; 1.3 kPa (10 mmHg) after 20 min of ALS predicts very poor outcome (but use as part of the overall picture, never in isolation)</li>
+            <li>Sudden rise in ETCO₂ ≥ 1.3 kPa often heralds ROSC — finish the 2-minute cycle before pulse-checking</li>
+            <li>Persistent flat trace with chest rise strongly suggests oesophageal intubation</li>
+          </ul>
+        </div>
+      </CollapsibleSubsection>
+    </ExamSection>
+
     <ExamSection id="rosc-bundle" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+
       <CollapsibleSubsection title="The Post-ROSC Bundle (ERC/ESICM 2021)">
       <p className="text-muted-foreground leading-relaxed mb-3">
         Within the first 6 h after ROSC, deliver a structured bundle in
