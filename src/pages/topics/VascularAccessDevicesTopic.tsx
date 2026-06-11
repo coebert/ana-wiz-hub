@@ -42,6 +42,19 @@ const VascularAccessDevicesTopicWorkedExamples: WorkedExample[] = [
   },
 ];
 
+const tocItems = [
+  { id: "section-device-overview", label: "Device Overview", group: "Core" },
+  { id: "section-classification", label: "Classification", group: "Core" },
+  { id: "section-peripheral-cannulae", label: "Peripheral Cannulae", group: "Devices" },
+  { id: "section-midline-catheters", label: "Midline Catheters", group: "Devices" },
+  { id: "section-picc-lines", label: "PICC Lines", group: "Devices" },
+  { id: "section-multi-lumen-cvc", label: "Multi-lumen CVC", group: "Devices" },
+  { id: "section-vascath-haemodialysis", label: "Vascath & Haemodialysis", group: "Devices" },
+  { id: "section-trauma-lines", label: "Trauma Lines", group: "Devices" },
+  { id: "section-swan-ganz-long-term", label: "Swan-Ganz & Long-term Devices", group: "Specialist" },
+  { id: "section-dwell-times-scenarios", label: "Dwell Times & Clinical Scenarios", group: "Evidence" },
+];
+
 const VascularAccessDevicesTopic = () => {
   return (
     <TopicTemplate
