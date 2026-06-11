@@ -8,6 +8,7 @@ import AnaphylaxisPathophysiologyDiagram from "@/components/diagrams/Anaphylaxis
 import { AnaphylaxisCascadeDiagram } from "@/components/diagrams/AnaphylaxisCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { Link } from "react-router-dom";
 
 const objectives = [
