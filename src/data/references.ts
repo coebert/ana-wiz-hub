@@ -357,6 +357,11 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Peck & Hill Ch.10", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 10: Drugs Acting on the Neuromuscular Junction." },
     { label: "BJA Educ 2019", citation: "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.", url: "https://doi.org/10.1016/j.bjae.2019.04.004" },
   ],
+  "rocuronium": [
+    { label: "BJA Educ 2015", citation: "Appiah-Ankam J, Hunter JM. Pharmacology of neuromuscular blocking drugs. BJA Education. 2004;4(1):2-7.", url: "https://doi.org/10.1093/bjaceaccp/mkh002" },
+    { label: "Peck & Hill Ch.10", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 10: Drugs Acting on the Neuromuscular Junction." },
+    { label: "Fourth National Audit Project", citation: "NAP6: Anaesthesia, Surgery and Life-Threatening Allergic Reactions. Royal College of Anaesthetists; 2018. Rocuronium and suxamethonium are the leading NMBA triggers of perioperative anaphylaxis in the UK.", url: "https://www.nationalauditprojects.org.uk/NAP6home" },
+  ],
   "local-anaesthetics": [
     { label: "BJA Educ 2015", citation: "Taylor A, McLeod G. Basic pharmacology of local anaesthetics. BJA Education. 2020;20(2):34-41.", url: "https://doi.org/10.1016/j.bjae.2019.10.002" },
     { label: "Peck & Hill Ch.8", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 8: Local Anaesthetics." },

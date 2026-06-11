@@ -100,6 +100,7 @@ const IVAnaestheticsTopic = lazy(() => import("./pages/topics/IVAnaestheticsTopi
 const VolatileAgentsTopic = lazy(() => import("./pages/topics/VolatileAgentsTopic"));
 const OpioidsTopic = lazy(() => import("./pages/topics/OpioidsTopic"));
 const MuscleRelaxantsTopic = lazy(() => import("./pages/topics/MuscleRelaxantsTopic"));
+const RocuroniumTopic = lazy(() => import("./pages/topics/RocuroniumTopic"));
 const SuxVsRocComparisonTopic = lazy(() => import("./pages/topics/SuxVsRocComparisonTopic"));
 const LocalAnaestheticsTopic = lazy(() => import("./pages/topics/LocalAnaestheticsTopic"));
 const VasoactiveAgentsTopic = lazy(() => import("./pages/topics/VasoactiveAgentsTopic"));
@@ -317,6 +318,7 @@ const App = () => (
           <Route path="/pharmacology/volatile-agents" element={<VolatileAgentsTopic />} />
           <Route path="/pharmacology/opioids" element={<OpioidsTopic />} />
           <Route path="/pharmacology/muscle-relaxants" element={<MuscleRelaxantsTopic />} />
+          <Route path="/pharmacology/rocuronium" element={<RocuroniumTopic />} />
           <Route path="/pharmacology/suxamethonium-vs-rocuronium" element={<SuxVsRocComparisonTopic />} />
           <Route path="/pharmacology/local-anaesthetics" element={<LocalAnaestheticsTopic />} />
           <Route path="/pharmacology/vasoactive-agents" element={<VasoactiveAgentsTopic />} />
