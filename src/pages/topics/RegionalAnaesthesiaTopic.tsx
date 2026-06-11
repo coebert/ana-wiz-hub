@@ -195,7 +195,8 @@ const RegionalAnaesthesiaTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             Catheter-based technique allowing continuous or bolus top-ups. Needle enters the epidural space (loss of resistance to saline or air).
           </p>
-          <div className="overflow-x-auto">
+          <div id="spinal-vs-epidural" className="overflow-x-auto scroll-mt-24">
+            <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Spinal vs epidural — at a glance</h3>
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="border-b border-border">
