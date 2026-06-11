@@ -466,7 +466,60 @@ const EcmoTopic = () => {
               <ECMOTroubleshootingDiagram />
             </div>
 
-            {/* ECPR */}
+            {/* Anticoagulation & monitoring */}
+            <div>
+              <h2 id="anticoagulation" className="text-2xl font-serif font-bold text-foreground mb-3">Anticoagulation & monitoring</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Anticoagulation is the central balancing act of ECMO: bleeding
+                (40–60% of runs) and thrombosis (oxygenator failure, circuit
+                clot, stroke) compete daily. Use the lowest target that keeps
+                the circuit patent in the context of the patient's bleeding
+                risk and source of bleeding.
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border rounded-lg">
+                  <thead className="bg-secondary/30">
+                    <tr>
+                      <th className="text-left p-2 font-semibold">Agent</th>
+                      <th className="text-left p-2 font-semibold">Indication</th>
+                      <th className="text-left p-2 font-semibold">Monitoring & target</th>
+                      <th className="text-left p-2 font-semibold">Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Unfractionated heparin</td><td className="p-2">First-line</td><td className="p-2">APTT 1.5–2× normal, ACT 180–220 s, anti-Xa 0.3–0.7 IU/mL</td><td className="p-2">Anti-Xa is most reliable in critical illness (raised acute-phase reactants distort APTT)</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Bivalirudin</td><td className="p-2">Confirmed HIT or heparin failure</td><td className="p-2">APTT 1.5–2× normal; dilute pharmacokinetics in renal failure</td><td className="p-2">No reversal agent; useful in HIT; growing use as a primary alternative to heparin</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Argatroban</td><td className="p-2">HIT, hepatically cleared</td><td className="p-2">APTT 1.5–2× normal</td><td className="p-2">Avoid in hepatic failure</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">No anticoagulation (heparin-bonded circuit)</td><td className="p-2">Major active bleeding</td><td className="p-2">Hourly visual circuit inspection, trans-membrane pressure, oxygenator gas exchange</td><td className="p-2">Time-limited; accept higher circuit-change frequency</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                <strong>Daily haematology bundle:</strong> platelets (target
+                &gt; 50 × 10⁹/L, &gt; 80 if bleeding), fibrinogen (&gt; 1.5
+                g/L), Hb (target 70–90 g/L unless ischaemic), D-dimer trend
+                (rising suggests circuit thrombosis), anti-Xa, ACT 4–6 hourly,
+                free Hb (haemolysis), LDH. Acquired von Willebrand syndrome
+                from high shear is a major contributor to bleeding —
+                consider tranexamic acid for mucocutaneous bleeding and DDAVP
+                cautiously.
+              </p>
+            </div>
+
+            {/* ICU care bundle */}
+            <div>
+              <h2 id="icu-care-bundle" className="text-2xl font-serif font-bold text-foreground mb-3">ICU care bundle on ECMO</h2>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li><strong>Ventilation</strong>: ultra-protective settings on VV-ECMO — Vt 3–4 mL/kg PBW, plateau ≤ 25 cmH₂O, PEEP 10–15, RR 10, FiO₂ 0.3 to allow lung rest. Avoid spontaneous over-breathing causing patient self-inflicted lung injury (P-SILI).</li>
+                <li><strong>Sedation</strong>: deep sedation initially (RASS −4 to −5) ± neuromuscular blockade during cannulation; then light sedation (RASS −1 to 0) and consider awake-ECMO programmes for bridge-to-transplant.</li>
+                <li><strong>Mobilisation</strong>: physiotherapy and ambulation are achievable with single-cannula dual-lumen VV configurations and dedicated ECMO–rehab pathways (notably for lung-transplant bridging).</li>
+                <li><strong>Transfusion</strong>: restrictive Hb threshold 70–90 g/L unless ischaemic; platelets &gt; 50 × 10⁹/L (&gt; 80 if bleeding); fibrinogen &gt; 1.5 g/L; FFP only for active bleeding or invasive procedures.</li>
+                <li><strong>Renal</strong>: AKI is common (60–80%); CRRT is usually integrated into the ECMO circuit via a haemofilter or a separate access. Drug clearance is altered by adsorption to the oxygenator (lipophilic drugs, sedatives) and the larger circuit volume.</li>
+                <li><strong>Infection</strong>: surveillance cultures; no routine prophylactic antibiotics; CRBSI rate 10–20 per 1000 ECMO days.</li>
+                <li><strong>Nutrition</strong>: enteral feeding within 24–48 h is safe even on full ECMO support; energy targets per critical-care guidance.</li>
+              </ul>
+            </div>
+
             <div>
               <h2 id="ecpr" className="text-2xl font-serif font-bold text-foreground mb-3">ECPR — extracorporeal CPR for refractory arrest</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
