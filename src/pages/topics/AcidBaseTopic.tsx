@@ -16,6 +16,7 @@ import HAGMAWorkupFlowchart from "@/components/diagrams/HAGMAWorkupFlowchart";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const objectives = [
   "Apply a five-step systematic ABG interpretation (oxygenation → primary disorder → compensation → anion gap → delta ratio)",
