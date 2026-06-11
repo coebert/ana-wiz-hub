@@ -286,13 +286,20 @@ export default function SeoAnalyticsPanel() {
             <Globe className="w-4 h-4 text-primary" aria-hidden="true" /> Top countries
           </h3>
           <ul className="space-y-1.5 text-sm">
-            {(data?.topCountries?.rows ?? []).map((r, i) => (
-              <li key={i} className="flex items-center justify-between">
-                <span className="font-mono uppercase">{countryFlag(r.keys?.[0])}</span>
-                <span className="flex-1 px-3 text-muted-foreground">{fmtNum(r.clicks)} clicks · {fmtNum(r.impressions)} impr.</span>
-                <span className="tabular-nums text-muted-foreground">pos {fmtPos(r.position)}</span>
-              </li>
-            ))}
+            {(data?.topCountries?.rows ?? []).map((r, i) => {
+              const c = describeCountry(r.keys?.[0]);
+              return (
+                <li key={i} className="flex items-center justify-between gap-2">
+                  <span className="flex items-center gap-2 min-w-0">
+                    <span aria-hidden="true">{c.flag}</span>
+                    <span className="truncate">{c.name}</span>
+                  </span>
+                  <span className="text-muted-foreground text-xs tabular-nums shrink-0">
+                    {fmtNum(r.clicks)} clicks · pos {fmtPos(r.position)}
+                  </span>
+                </li>
+              );
+            })}
             {(!data?.topCountries?.rows || data.topCountries.rows.length === 0) && (
               <li className="text-muted-foreground">No data yet.</li>
             )}
