@@ -291,6 +291,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Hepatic disease", "Cirrhosis anaesthesia", "Child-Pugh score", "MELD score", "Hepatorenal syndrome", "Hepatopulmonary syndrome", "Portopulmonary hypertension"],
     keywords: ["hepatic disease FRCA", "cirrhosis anaesthesia", "MELD perioperative", "hepatorenal syndrome", "rebalanced haemostasis", "VOCAL-Penn"],
   },
+  "neurological-disease": {
+    title: "Neurological Disease: MG, Epilepsy, MS, PD & MND | FRCA",
+    description: "Perioperative neurological disease for FRCA Final: myasthenia gravis, epilepsy, multiple sclerosis, Parkinson's, motor neuron disease, muscular dystrophies and spinal cord injury.",
+    aliases: ["Neurological disease", "Myasthenia gravis anaesthesia", "Epilepsy surgery", "Multiple sclerosis anaesthesia", "Parkinson's disease surgery", "Motor neuron disease", "Muscular dystrophy anaesthesia", "Spinal cord injury anaesthesia"],
+    keywords: ["neurological disease FRCA", "myasthenia gravis anaesthesia", "epilepsy perioperative", "Parkinson's anaesthesia", "spinal cord injury anaesthesia"],
+  },
 };
 
 
