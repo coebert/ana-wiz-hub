@@ -272,7 +272,7 @@ const BurnsPlasticsTopic = () => {
           </div>
 
           <div id="pharmacology" className="scroll-mt-24">
-            <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={"RCoA Final — Clinical Anaesthesia"]}>
+            <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}
               <CollapsibleSubsection title="Pharmacological Considerations">
                 <div className="bg-card border border-border rounded-lg p-4 mb-3">
                   <h3 className="font-semibold text-foreground mb-2">Suxamethonium & Burns</h3>
