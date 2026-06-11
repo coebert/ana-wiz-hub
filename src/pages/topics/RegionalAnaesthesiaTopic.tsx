@@ -480,6 +480,44 @@ const RegionalAnaesthesiaTopic = () => {
               "Use ultrasound + nerve stimulation for peripheral blocks; intraneural injection causes high pressures (>15 psi) — stop immediately.",
             ]}
           />
+
+          <section id="faq" className="scroll-mt-24 mt-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Spinal & Epidural Anaesthesia — FAQ
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+              Concise, evidence-based answers to the questions trainees, candidates and patients most often ask about neuraxial blockade — onset, duration, complications, safety and contraindications.
+            </p>
+            <Accordion type="single" collapsible className="w-full">
+              {regionalFaqs.map(([q, a], i) => (
+                <AccordionItem key={q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-sm font-medium text-foreground">
+                    {q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                    {a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+
+          <Helmet>
+            <title>Spinal & Epidural Anaesthesia — FRCA Revision Notes</title>
+            <meta
+              name="description"
+              content="Spinal anaesthesia explained for FRCA and FFICM: how it works, how long it lasts, side effects, PDPH, spinal vs epidural, anticoagulation timing, block height and bedside testing."
+            />
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: regionalFaqs.map(([name, acceptedAnswer]) => ({
+                "@type": "Question",
+                name,
+                acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+              })),
+            })}</script>
+          </Helmet>
         </ExamSection>
       }
     />
