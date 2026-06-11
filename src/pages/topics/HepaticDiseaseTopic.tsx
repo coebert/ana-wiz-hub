@@ -254,7 +254,7 @@ const HepaticDiseaseTopic = () => {
             </section>
 
             {/* Intraoperative management */}
-            <section>
+            <section id="section-intraoperative-management" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intraoperative Management</h2>
               <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
