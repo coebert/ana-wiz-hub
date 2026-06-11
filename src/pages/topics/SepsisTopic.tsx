@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
@@ -12,6 +13,43 @@ import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
 import AlbuminFluidShiftDiagram from "@/components/diagrams/AlbuminFluidShiftDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const sepsisFaqs: Array<[string, string]> = [
+  [
+    "What is the Sepsis-3 definition of sepsis and septic shock?",
+    "Sepsis (Singer, JAMA 2016) is life-threatening organ dysfunction caused by a dysregulated host response to infection, operationalised as a rise of ≥ 2 points in the Sequential Organ Failure Assessment (SOFA) score from baseline in the presence of suspected or proven infection. Septic shock is the subset requiring vasopressors to maintain mean arterial pressure ≥ 65 mmHg AND a serum lactate > 2 mmol/L after adequate fluid resuscitation, identifying a group with hospital mortality > 40%. qSOFA (RR ≥ 22, altered mentation, SBP ≤ 100) is a bedside prompt to consider sepsis — it is a screening tool, not a diagnostic criterion.",
+  ],
+  [
+    "What is the Surviving Sepsis Hour-1 bundle?",
+    "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin rapid 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L; (5) start vasopressors during or after fluid if MAP < 65 mmHg. For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
+  ],
+  [
+    "Why does every hour of delayed antibiotics matter in septic shock?",
+    "Observational data (Kumar 2006; Ferrer 2014; Seymour NEJM 2017 — New York State sepsis mandate cohort) show that each hour of delay in effective antibiotic administration in septic shock is associated with a ~4–8% absolute increase in in-hospital mortality. The 2017 New York data demonstrated an OR of 1.04 per hour for the 3-hour bundle. Empirical cover should target the suspected source and local resistance patterns, be broad enough to cover MRSA and Pseudomonas where clinical features suggest it, and be de-escalated once cultures and clinical course allow.",
+  ],
+  [
+    "Is 30 mL/kg of crystalloid still the recommended initial fluid bolus?",
+    "Yes — SSC 2021 retains a 30 mL/kg balanced crystalloid bolus over the first 3 hours in sepsis-induced hypoperfusion or septic shock as a weak recommendation. Subsequent boluses should be guided by dynamic measures of fluid responsiveness (passive leg raise, stroke-volume variation, end-expiratory occlusion). CLASSIC (Meyhoff, NEJM 2022) showed that a restrictive fluid strategy after initial resuscitation is safe and feasible (no mortality difference vs liberal). CLOVERS (NHLBI 2023) similarly found no difference between early vasopressor-led vs liberal-fluid strategies — both signals support 'don't over-resuscitate after the first bolus'.",
+  ],
+  [
+    "Should I use balanced crystalloids or 0.9% saline?",
+    "Balanced crystalloids (Hartmann's, Plasma-Lyte) are preferred over 0.9% saline. SMART (Semler, NEJM 2018, n = 15 802) showed a lower 30-day composite of death, new RRT, or persistent renal dysfunction with balanced solutions in critically ill adults (15.4% vs 14.3%). BaSICS (Zampieri, JAMA 2021) was neutral overall but supported safety. PLUS (Finfer, NEJM 2022) was also neutral. The aggregate of evidence and pathophysiology (avoidance of hyperchloraemic acidosis) supports balanced crystalloids as first-line in sepsis.",
+  ],
+  [
+    "Which vasopressor should I start first, and when do I add vasopressin and hydrocortisone?",
+    "Noradrenaline is first-line vasopressor in septic shock (SSC 2021, strong recommendation). Target MAP ≥ 65 mmHg, titrated to perfusion (urine output, mental state, lactate clearance, CRT). Add vasopressin 0.03 U/min when noradrenaline reaches 0.25–0.5 µg/kg/min — VANISH (Gordon, JAMA 2016) showed early vasopressin reduced renal-replacement therapy use. Add hydrocortisone 200 mg/day (50 mg QDS or continuous infusion) when vasopressor-dependent for > 4 h — ADRENAL (Venkatesh, NEJM 2018) showed faster shock resolution; APROCCHSS (Annane, NEJM 2018) showed mortality benefit. Adrenaline is a third-line catecholamine; dopamine is not recommended.",
+  ],
+  [
+    "What is the role of steroids, vitamin C, and other adjuncts in sepsis?",
+    "Hydrocortisone 200 mg/day is recommended for adults with septic shock requiring ongoing vasopressor support (SSC 2021). Vitamin C is NOT recommended: LOVIT (Lamontagne, NEJM 2022) showed high-dose IV vitamin C increased the composite of persistent organ dysfunction or death (HR 1.21); the earlier CITRIS-ALI and VICTAS trials were neutral. Selenium, IVIG (except in toxic-shock-like syndromes), and beta-blockers are not routinely recommended. Insulin should target glucose ≤ 10 mmol/L. Stress-ulcer and VTE prophylaxis are standard.",
+  ],
+  [
+    "How is procalcitonin used to guide antibiotic duration?",
+    "Procalcitonin (PCT) rises with bacterial infection and falls with effective source control or treatment. SSC 2021 suggests PCT plus clinical assessment may guide antibiotic discontinuation. Pragmatic stop rules used in trials (ProHOSP, SAPS, PRORATA): stop antibiotics if PCT < 0.5 µg/L or has fallen > 80% from peak. PCT-guided strategies have reduced antibiotic exposure by ~1–2 days without harm in multiple RCTs and meta-analyses. PCT should not delay starting antibiotics in suspected septic shock and is unreliable in the first 6–12 h, post-surgery, burns, and end-stage renal failure.",
+  ],
+];
+
+
 
 const objectives = [
   "Apply Sepsis-3 definitions and use SOFA / qSOFA / NEWS2 to recognise sepsis and septic shock.",
