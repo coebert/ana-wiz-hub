@@ -73,7 +73,7 @@ const PerioperativeFluidsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
+          <ExamSection id="section-gdft" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
             <CollapsibleSubsection title="Goal-Directed Fluid Therapy (GDFT)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Individualised fluid administration guided by haemodynamic monitoring to optimise stroke volume and tissue oxygen delivery. Reduces complications after major surgery.
@@ -91,7 +91,7 @@ const PerioperativeFluidsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-glycocalyx" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Glycocalyx & Revised Starling">
             <DiagramSection
               title="Glycocalyx — Intact vs Shed"
@@ -113,7 +113,7 @@ const PerioperativeFluidsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="section-key-fluid-trials" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Key Fluid Trials">
             <div className="space-y-2">
               {[
