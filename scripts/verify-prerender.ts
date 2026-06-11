@@ -20,6 +20,7 @@
  */
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { resolve, join } from "path";
+import { extractFaqsByPath } from "./extract-faqs";
 
 const DIST = resolve("dist");
 const SITE = "https://anaesthesiacore.app";
