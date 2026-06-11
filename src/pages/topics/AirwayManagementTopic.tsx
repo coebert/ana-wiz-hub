@@ -459,6 +459,44 @@ const AirwayManagementTopic = () => {
               "Awake fibreoptic intubation remains the gold standard for the predicted difficult airway with adequate time and consent.",
             ]}
           />
+
+          <section id="faq" className="scroll-mt-24 mt-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              RSI & Difficult Airway — FAQ
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+              Concise, evidence-based answers to the most-asked questions about rapid sequence induction, cricoid pressure, the DAS difficult-airway algorithm, awake fibreoptic intubation and front-of-neck access.
+            </p>
+            <Accordion type="single" collapsible className="w-full">
+              {airwayFaqs.map(([q, a], i) => (
+                <AccordionItem key={q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-sm font-medium text-foreground">
+                    {q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                    {a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+
+          <Helmet>
+            <title>Rapid Sequence Induction & Difficult Airway — FRCA</title>
+            <meta
+              name="description"
+              content="Rapid sequence induction (RSI), DAS difficult-airway algorithm, cricoid pressure, awake fibreoptic intubation and front-of-neck access — FRCA and FFICM revision with NAP4 and DAS 2015 evidence."
+            />
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: airwayFaqs.map(([name, acceptedAnswer]) => ({
+                "@type": "Question",
+                name,
+                acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+              })),
+            })}</script>
+          </Helmet>
         </>
       }
       keyPoints={[
