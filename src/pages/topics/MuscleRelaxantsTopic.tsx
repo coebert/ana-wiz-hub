@@ -434,6 +434,30 @@ const MuscleRelaxantsTopic = () => {
           </section>
 
           <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Residual Neuromuscular Block & Postoperative Outcomes</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              <strong>Postoperative residual curarisation (PORC)</strong> is defined as a TOF ratio &lt;0.9 at the adductor
+              pollicis after tracheal extubation. It occurs in up to 30–40% of patients reversed with neostigmine when only
+              qualitative (peripheral nerve stimulator) monitoring is used, and is associated with:
+            </p>
+            <ul className="list-disc list-inside text-foreground/90 leading-relaxed mt-2 space-y-1">
+              <li>Upper airway obstruction and pharyngeal dysfunction (loss of airway protective reflexes at TOF ratio 0.7–0.9).</li>
+              <li>Aspiration of pharyngeal contents — silent and clinically unrecognised.</li>
+              <li>Hypoxaemia and atelectasis in the recovery room.</li>
+              <li>Increased incidence of postoperative pulmonary complications (pneumonia, reintubation, prolonged ICU stay).</li>
+              <li>Subjective distress: blurred vision, weakness, inability to swallow or speak clearly.</li>
+            </ul>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              <strong>Prevention</strong>: quantitative TOF monitoring throughout, reversal guided by TOF count (neostigmine
+              only at TOF count ≥2; sugammadex preferred for deep block), and confirmation of TOF ratio ≥0.9 <em>before</em>
+              extubation. The 2023 ESAIC guideline on peri-operative management of NMBAs recommends quantitative monitoring as
+              standard of care whenever a non-depolarising NMBA is administered.
+            </p>
+          </section>
+
+
+
+          <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">NMBA Onset & Duration Timeline</h2>
             <p className="text-foreground/90 leading-relaxed mb-4">
               Compare the onset and clinical duration of all neuromuscular blocking agents side-by-side.
