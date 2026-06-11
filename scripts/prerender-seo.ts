@@ -251,6 +251,47 @@ function escapeText(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
+function buildBreadcrumb(path: string, seo: RouteSeo): object | null {
+  if (path === "/") return null;
+  const segments = path.split("/").filter(Boolean);
+  if (segments.length === 0) return null;
+
+  const items: Array<{ "@type": "ListItem"; position: number; name: string; item: string }> = [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+  ];
+
+  let acc = "";
+  for (let i = 0; i < segments.length; i++) {
+    acc += `/${segments[i]}`;
+    const isLast = i === segments.length - 1;
+    let name: string;
+    if (isLast) {
+      // Prefer the short human label for the leaf: strip suffixes added by our
+      // SEO titles (" – Section | FRCA …", " | AnaesthesiaCore", etc.).
+      name = seo.title
+        .split(/\s+[–|]\s+/)[0]
+        .split(/\s*\|\s*/)[0]
+        .trim() || titleCase(segments[i]);
+    } else if (SECTION_LABELS[segments[i]]) {
+      name = SECTION_LABELS[segments[i]];
+    } else {
+      name = titleCase(segments[i]);
+    }
+    items.push({
+      "@type": "ListItem",
+      position: i + 2,
+      name,
+      item: `${SITE}${acc}`,
+    });
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items,
+  };
+}
+
 function patchHead(
   shell: string,
   path: string,
