@@ -4,6 +4,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { neurologicalDiseaseQuestions } from "@/data/quizzes";
+import { Link } from "react-router-dom";
 import MGNMBASensitivityDiagram from "@/components/diagrams/MGNMBASensitivityDiagram";
 import {
   MGPathophysDiagram,
@@ -55,7 +56,7 @@ const NeurologicalDiseaseTopicWorkedExamples: WorkedExample[] = [
           <li>Pre-op: optimise MG (plasma exchange or IVIG if bulbar/respiratory weakness), continue pyridostigmine (omit morning dose to reduce secretions and unpredictable NMJ response), steroid cover</li>
           <li>Predict difficult ventilation post-op: vital capacity &lt;2.9 L, disease &gt;6 y, pyridostigmine &gt;750 mg/day, COPD (Leventhal score)</li>
           <li>Induction with TIVA (propofol + remifentanil) — avoids volatile-potentiated weakness</li>
-          <li>Avoid or markedly reduce non-depolarising NMB (sensitive — give 10–20% of normal dose, monitor TOF); suxamethonium is resistant (use 1.5–2 mg/kg) but recovery normal</li>
+          <li>Avoid or markedly reduce <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">non-depolarising NMB</Link> (sensitive — give 10–20% of normal dose, monitor TOF); suxamethonium is resistant (use 1.5–2 mg/kg) but recovery normal</li>
           <li>Sugammadex preferred for reversal of rocuronium; plan elective post-op critical care for ventilatory observation</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">

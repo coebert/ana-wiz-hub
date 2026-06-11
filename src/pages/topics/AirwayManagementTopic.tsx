@@ -19,6 +19,7 @@ import { Exam } from "@/data/curriculum";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
 import { airwayFolio } from "@/components/diagrams/anatomyFolios";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { Link } from "react-router-dom";
 
 const objectives = [
   "Describe a structured airway assessment (LEMON, Mallampati, Wilson) and list red-flag predictors of difficulty.",
@@ -31,8 +32,15 @@ const objectives = [
 const workedExamples: WorkedExample[] = [
   {
     title: "Unanticipated CICO at induction",
-    scenario:
-      "A 58-year-old man for elective laparotomy is induced with propofol and rocuronium. Direct laryngoscopy shows Cormack–Lehane IV. Two further attempts (CMAC, repositioning) fail. An i-gel is inserted but inadequate ventilation (PEEP 15, SpO₂ 86 % falling). What do you do next, and at what SpO₂ should FONA be performed?",
+    scenario: (
+      <>
+        A 58-year-old man for elective laparotomy is induced with propofol and{" "}
+        <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">rocuronium</Link>.
+        Direct laryngoscopy shows Cormack–Lehane IV. Two further attempts (CMAC, repositioning) fail.
+        An i-gel is inserted but inadequate ventilation (PEEP 15, SpO₂ 86 % falling). What do you do
+        next, and at what SpO₂ should FONA be performed?
+      </>
+    ),
     working: (
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
@@ -293,7 +301,7 @@ const AirwayManagementTopic = () => {
               <li>Plan for a <strong>smaller-than-predicted ETT</strong> (range of sizes opened: typically 6.0, 5.5, 5.0, microlaryngeal 5.0/4.0). Videolaryngoscopy or flexible scope through an SAD may be required.</li>
               <li>Avoid muscle relaxants and PPV until the cords are visualised — paralysis can convert a partial to a complete obstruction with no rescue.</li>
               <li>Surgical airway must be immediately available; for fixed glottic tumours, awake tracheostomy under local is often the safest primary plan.</li>
-              <li>Post-extubation laryngospasm: jaw thrust + Larson's point pressure, CPAP with 100% O₂, deepen anaesthesia (propofol bolus); if persisting, low-dose suxamethonium 0.1–0.5 mg·kg⁻¹.</li>
+              <li>Post-extubation laryngospasm: jaw thrust + Larson's point pressure, CPAP with 100% O₂, deepen anaesthesia (propofol bolus); if persisting, low-dose <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">suxamethonium</Link> 0.1–0.5 mg·kg⁻¹.</li>
             </ul>
 
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Subglottic & tracheal obstruction</h3>
