@@ -28,7 +28,21 @@ import { airwayFolio } from "@/components/diagrams/anatomyFolios";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { Link } from "react-router-dom";
 
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "section-introduction", label: "Introduction", group: "Core" },
+  { id: "section-pre-operative-airway-assessment", label: "Pre-op Assessment", group: "Assessment" },
+  { id: "section-airway-equipment", label: "Airway Equipment", group: "Equipment" },
+  { id: "section-das-2015-algorithm-four-sequential-plans", label: "DAS 2015 Algorithm", group: "Algorithms" },
+  { id: "section-awake-fibreoptic-intubation", label: "Awake Fibreoptic", group: "Techniques" },
+  { id: "section-front-of-neck-access-fona", label: "Front-of-neck Access (FONA)", group: "Techniques" },
+  { id: "section-partial-airway-obstruction-level-specific-management", label: "Partial Obstruction", group: "Clinical" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
+
 const objectives = [
+
   "Describe a structured airway assessment (LEMON, Mallampati, Wilson) and list red-flag predictors of difficulty.",
   "Apply the DAS 2015 unanticipated difficult intubation algorithm: Plans A → B → C → D with maximum attempts at each step.",
   "Compare 1st vs 2nd-generation supraglottic airways, ETT cuffs, and videolaryngoscopes for routine and rescue ventilation.",
