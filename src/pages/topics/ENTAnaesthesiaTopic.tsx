@@ -1,6 +1,8 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { entAnaesthesiaQuestions } from "@/data/quizzes";
 import LaryngectomyAirwayHandoverDiagram from "@/components/diagrams/LaryngectomyAirwayHandoverDiagram";
 import LeFortFractureDiagram from "@/components/diagrams/LeFortFractureDiagram";
@@ -9,6 +11,68 @@ import JetVentilationDiagram from "@/components/diagrams/JetVentilationDiagram";
 import JetVentilationCycleAnimation from "@/components/diagrams/JetVentilationCycleAnimation";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const tocItems = [
+  { id: "shared-airway", label: "Shared airway", group: "Core" },
+  { id: "tonsillectomy", label: "Tonsillectomy", group: "Core" },
+  { id: "laser", label: "Microlaryngoscopy & laser surgery", group: "Core" },
+  { id: "nasal", label: "Nasal surgery", group: "Specialty" },
+  { id: "middle-ear", label: "Middle ear surgery", group: "Specialty" },
+  { id: "stridor", label: "Airway obstruction & stridor", group: "Emergency" },
+  { id: "tracheostomy", label: "Tracheostomy & laryngectomy", group: "Airway" },
+  { id: "ionm", label: "Intra-operative nerve monitoring", group: "Monitoring" },
+  { id: "thyroid-bleed", label: "Post-thyroidectomy bleeding", group: "Emergency" },
+  { id: "faq", label: "FAQ", group: "Reference" },
+];
+
+const entFaqs: Array<[string, string]> = [
+  [
+    "What is the airway fire drill during laser laryngoscopy?",
+    "If an airway fire occurs during laser surgery, the anaesthetist must simultaneously call out 'Airway fire', stop ventilation, disconnect the breathing circuit, and remove the endotracheal tube. The surgeon turns off the laser and removes any burning material. The field is flooded with saline. Once the fire is extinguished, the patient is ventilated with 100% oxygen via face mask, then re-intubated with a fresh laser-safe tube. Rigid bronchoscopy is performed to assess airway burns. The patient is admitted to ICU with humidified oxygen, dexamethasone for oedema, and a low threshold for tracheostomy if significant thermal injury is found. Prevention is paramount: keep FiO₂ ≤0.30 with air/oxygen mix, never use N₂O, use saline-soaked pledgets at the glottis, and ensure all staff have rehearsed the drill before starting.",
+  ],
+  [
+    "How do you prevent an airway fire during laser laryngoscopy?",
+    "Prevention relies on removing two sides of the fire triangle: oxidiser and fuel. Keep FiO₂ at or below 0.30 using an air/oxygen mix; never use N₂O, which supports combustion. Use a wavelength-matched laser-resistant tube (e.g., Mallinckrodt Laser-Flex for CO₂/KTP; Bivona Fome-Cuf for Nd:YAG). Inflate the cuff with saline tinted with methylene blue — a laser strike produces a visible blue leak and self-quenches. Place saline-soaked pledgets around the tube at the glottis. Wet drapes surround the face. All theatre staff wear wavelength-specific protective eyewear. A designated Laser Protection Supervisor controls access, and a verbal 'laser on / laser off' protocol is enforced.",
+  ],
+  [
+    "What is the safest anaesthetic technique for microlaryngoscopy and laser airway surgery?",
+    "Total intravenous anaesthesia (TIVA) with propofol and remifentanil is preferred because it avoids the combustion risk of volatile agents and provides a stable, bloodless surgical field. Neuromuscular blockade is used to prevent patient movement. For cases requiring an unobstructed glottic view, three ventilation strategies exist: (1) a small-bore microlaryngoscopy tube (MLT, 5.0–6.0 mm ID) with a laser-resistant wrap; (2) supraglottic or subglottic jet ventilation, which removes the tube from the field but introduces barotrauma risk; and (3) THRIVE (transnasal humidified rapid-insufflation ventilatory exchange) — tubeless apnoeic oxygenation with high-flow nasal cannulae at 70 L/min, suitable for short procedures in selected patients but incompatible with open laser ignition.",
+  ],
+  [
+    "How is jet ventilation performed safely for laryngeal surgery?",
+    "Jet ventilation delivers high-pressure oxygen pulses that entrain room air via the Venturi effect. Safety requires: a dedicated jet ventilator with an upper pressure-limit alarm; starting at 1 bar driving pressure and titrating to visible chest rise; an I:E ratio of at least 1:2 (low-frequency) or 1:3 (high-frequency) to allow complete exhalation and prevent breath stacking; auscultation of both sides between breath sets; and a rescue ETT pre-loaded. Stop immediately if the chest fails to fall between breaths, SpO₂ drops, or surgical emphysema appears. Gastric insufflation, mucosal drying, and pneumothorax are the main hazards. TIVA must be used because volatile cannot be delivered.",
+  ],
+  [
+    "What is THRIVE and when is it used in ENT surgery?",
+    "THRIVE (Transnasal Humidified Rapid-Insufflation Ventilatory Exchange) uses high-flow nasal oxygen at 70 L/min in adults to maintain oxygenation and partially clear CO₂ during apnoeic periods, giving the surgeon an unobstructed laryngeal view without an ETT or jet catheter. It combines classical apnoeic oxygenation with flow-dependent CO₂ clearance via turbulent supraglottic gas exchange. Safe apnoea times of 30 minutes with SpO₂ ≥90% are reproducible in elective adults with normal BMI. Contraindications include base-of-skull fracture, active epistaxis, bullous lung disease, raised ICP, pulmonary hypertension, full stomach, and any open laser ignition source. Hypercapnia is the time-limiter, not hypoxia.",
+  ],
+  [
+    "How should post-tonsillectomy bleeding be managed?",
+    "Post-tonsillectomy bleeding is an emergency occurring in 0.5–2% within 24 hours (primary) or 2–4% at 5–10 days (secondary). The patient is hypovolaemic with a full stomach of swallowed blood. Management: resuscitate first with large-bore IV access, fluids, and cross-matched blood before airway intervention. Perform a rapid sequence induction in left lateral head-down tilt with experienced surgical help scrubbed. Use a south-facing RAE tube. Have suction, a difficult airway trolley, and surgical airway equipment immediately available. Avoid codeine in children due to CYP2D6 ultra-rapid metabolism causing fatal respiratory depression. Post-op admission to a high-dependency area is mandatory.",
+  ],
+  [
+    "What are the key principles of anaesthesia for middle ear surgery?",
+    "Nitrous oxide must be avoided because it diffuses into the non-compliant middle ear cavity 34 times faster than nitrogen leaves, raising middle ear pressure and risking tympanic membrane graft displacement or ossicular reconstruction disruption. TIVA with propofol and remifentamil is preferred because it avoids N₂O and provides a bloodless surgical field via controlled hypotension. Facial nerve monitoring is commonly used, so maintenance neuromuscular blockade should be avoided after intubation — use a short-acting agent for intubation only and keep TOF monitoring. PONV incidence is very high due to vestibular stimulation; use aggressive multimodal prophylaxis with dexamethasone, ondansetron, and TIVA rather than volatile.",
+  ],
+  [
+    "How do you manage a patient with post-thyroidectomy neck haematoma?",
+    "Post-thyroidectomy haematoma occurs in 1–2%, most often within 6 hours. It is a time-critical airway emergency because expanding blood under the strap muscles obstructs venous and lymphatic return, producing laryngeal oedema that persists even after clot evacuation. Use the SCOOP sequence: (S) Sit the patient upright, 100% oxygen, call senior help; (C) Cut sutures and open the wound at the bedside to evacuate clot manually — do not wait for the surgeon; (O) Oxygenate and give nebulised adrenaline 1 mg and IV dexamethasone 8 mg as a bridge; (O) Transfer to theatre immediately; (P) Plan the airway — anticipate a difficult intubation due to oedema and distorted anatomy. Awake fibreoptic intubation is safest if time permits; otherwise use an inhalational induction in the sitting position maintaining spontaneous ventilation. Avoid supine RSI with paralysis.",
+  ],
+  [
+    "What nerve monitoring is used in thyroid and parotid surgery, and how does it affect anaesthesia?",
+    "The recurrent laryngeal nerve (RLN) is monitored in thyroid and parathyroid surgery using an EMG endotracheal tube with surface electrodes at the level of the vocal cords. A single intubating dose of suxamethonium or low-dose rocuronium (0.3 mg/kg) is used, with sugammadex reversal before nerve dissection if needed. Maintenance non-depolarising neuromuscular blockade must be avoided because it abolishes the evoked EMG response. The facial nerve (CN VII) is monitored in parotid and middle ear surgery using needle electrodes in orbicularis oculi and orbicularis oris; again, relaxant-free maintenance is required. Quantitative neuromuscular monitoring (acceleromyography) is mandatory whenever intra-operative nerve monitoring is in use.",
+  ],
+  [
+    "What are the considerations for tracheostomy and laryngectomy airway management?",
+    "For surgical tracheostomy under general anaesthesia, the existing endotracheal tube is withdrawn under direct vision to just above the stoma before tracheostomy tube insertion, with FiO₂ 1.0 throughout. At total laryngectomy, the surgeon places an armoured cuffed tube into the divided distal trachea; the anaesthetist connects a sterile circuit and confirms bilateral ventilation and ETCO₂ before removing the oral tube. Post-laryngectomy, the patient is a permanent neck-breather — there is no connection between mouth/nose and trachea, so bag-mask ventilation via the face will not work. Emergency ventilation must be via the stoma. The National Tracheostomy Safety Project (NTSP) red emergency board and colour-coded bedhead signs are mandatory. For percutaneous dilatational tracheostomy (PDT) in ICU, bronchoscopic guidance reduces paratracheal misplacement risk.",
+  ],
+];
 
 const ENTAnaesthesiaTopic = () => {
   return (
@@ -39,6 +103,9 @@ const ENTAnaesthesiaTopic = () => {
       }}
       coreConcepts={
         <>
+          <TopicTableOfContents items={tocItems} />
+
+          <div id="shared-airway" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <CollapsibleSubsection title="Shared Airway" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -52,7 +119,9 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="tonsillectomy" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <CollapsibleSubsection title="Tonsillectomy">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -64,7 +133,9 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="laser" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <CollapsibleSubsection title="Microlaryngoscopy & Laser Surgery">
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -142,7 +213,9 @@ const ENTAnaesthesiaTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="nasal" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Nasal Surgery">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -153,7 +226,9 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="middle-ear" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Middle Ear Surgery">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -164,7 +239,9 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="stridor" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <CollapsibleSubsection title="Airway Obstruction & Stridor">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -175,7 +252,9 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="tracheostomy" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <CollapsibleSubsection title="Tracheostomy & Laryngectomy">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -196,7 +275,9 @@ const ENTAnaesthesiaTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="ionm" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <CollapsibleSubsection title="Intra-operative Nerve Monitoring">
             <p className="text-foreground/90 leading-relaxed mb-3">
@@ -242,7 +323,9 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
 
+          <div id="thyroid-bleed" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <CollapsibleSubsection title="Post-thyroidectomy Bleeding & Neck Swelling — Emergency Management">
             <p className="text-foreground/90 leading-relaxed mb-3">
@@ -287,6 +370,8 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+          </div>
+
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
@@ -297,6 +382,44 @@ const ENTAnaesthesiaTopic = () => {
               "Tracheostomy emergencies (NTSP): patent vs blocked, cuff up/down — algorithm by colour-coded bedhead signs.",
             ]}
           />
+
+          <section id="faq" className="scroll-mt-24 mt-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              ENT & Maxillofacial Anaesthesia — FAQ
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+              Evidence-based answers to the questions FRCA Final candidates most often ask about airway fires, laser surgery safety, jet ventilation, THRIVE, post-tonsillectomy bleeding, middle ear surgery, post-thyroidectomy haematoma, intra-operative nerve monitoring, and tracheostomy management.
+            </p>
+            <Accordion type="single" collapsible className="w-full">
+              {entFaqs.map(([q, a], i) => (
+                <AccordionItem key={q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-sm font-medium text-foreground">
+                    {q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                    {a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+
+          <Helmet>
+            <title>ENT & Maxillofacial Anaesthesia — laser airway, shared airway & stridor</title>
+            <meta
+              name="description"
+              content="ENT and maxillofacial anaesthesia for FRCA Final: shared airway principles, laser airway surgery and fire prevention, jet ventilation and THRIVE, tonsillectomy and post-tonsillectomy bleeding, middle ear surgery, stridor management, tracheostomy and laryngectomy, intra-operative nerve monitoring, and post-thyroidectomy emergency management."
+            />
+            <script type="application/ld+json">{JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: entFaqs.map(([name, acceptedAnswer]) => ({
+                "@type": "Question",
+                name,
+                acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+              })),
+            })}</script>
+          </Helmet>
         </>
       }
       workedExamples={[
@@ -325,8 +448,8 @@ const ENTAnaesthesiaTopic = () => {
             </div>
           ),
           answer: "Stop gas, remove tube, flood with saline, ventilate on air, re-intubate, bronchoscopy, ICU.",
-    cites: ["NAP4 2011"],
-  },
+          cites: ["NAP4 2011"],
+        },
       ]}
       keyPoints={[
         { text: "Shared airway: communication is key. Document throat pack insertion/removal — retained pack is a never event", cites: ["DAS 2015"] },
