@@ -157,6 +157,7 @@ const OxidationReductionTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={oxidationReductionFaqs} />
         </>
       }
     />
