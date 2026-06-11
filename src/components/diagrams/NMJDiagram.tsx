@@ -149,10 +149,12 @@ export const NMJDiagram = () => {
             </g>
           );
         })}
-        {/* VGCC label */}
+        {/* VGCC label — persistent so the diagram always shows this canonical structure */}
+        <text x={100} y={128} fontSize="9" className="font-semibold" fill="hsl(25 90% 40%)">Voltage-gated Ca²⁺ channel (VGCC)</text>
         {vgccOpen > 0.3 && (
-          <text x={100} y={128} fontSize="9" className="font-semibold" fill="hsl(25 90% 40%)" opacity={vgccOpen}>VGCC open</text>
+          <text x={370} y={128} fontSize="9" className="font-semibold" fill="hsl(25 90% 40%)" opacity={vgccOpen}>open</text>
         )}
+
 
         {/* Ca²⁺ ions streaming UP through channels into terminal */}
         {caStreamIntensity > 0.02 && [140, 200, 260, 320, 360].flatMap((x, ci) =>
