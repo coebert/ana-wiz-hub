@@ -172,6 +172,7 @@ const CardiacAnatomyTopic = () => {
             </figure>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={cardiacAnatomyFaqs} />
         </>
       }
       workedExamples={[
