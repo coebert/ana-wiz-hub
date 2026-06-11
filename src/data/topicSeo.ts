@@ -267,6 +267,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Preoperative assessment", "Perioperative risk stratification", "RCRI", "SORT", "CPET", "NICE NG45", "Patient blood management", "Pre-op anaemia"],
     keywords: ["preoperative assessment FRCA", "RCRI", "CPET anaerobic threshold", "NICE NG45", "patient blood management", "pre-op anaemia"],
   },
+  "enhanced-recovery": {
+    title: "Enhanced Recovery (ERAS): Pathways, Trials & PONV | FRCA",
+    description: "Enhanced Recovery After Surgery for FRCA Final: ERAS principles, surgical stress response, prehabilitation, PONV prophylaxis, landmark trials and specialty protocols.",
+    aliases: ["Enhanced recovery", "ERAS", "Fast track surgery", "Perioperative care pathway", "Prehabilitation", "PONV prophylaxis"],
+    keywords: ["ERAS FRCA", "enhanced recovery surgery", "ERAS principles", "prehabilitation", "PONV prophylaxis", "LAFA trial", "RELIEF trial"],
+  },
   "cardiovascular-disease": {
     title: "Cardiovascular Disease: IHD, Valvular, HF & PH | FRCA",
     description: "Perioperative cardiovascular disease for FRCA Final: IHD, valvular lesions, heart failure, arrhythmias, devices, pulmonary hypertension and ACHD.",
