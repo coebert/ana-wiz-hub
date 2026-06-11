@@ -151,6 +151,7 @@ const MechanicalVentilationTopic = lazy(() => import("./pages/topics/MechanicalV
 const VentilatorModesTopic = lazy(() => import("./pages/topics/VentilatorModesTopic"));
 const CapnographyTopic = lazy(() => import("./pages/topics/CapnographyTopic"));
 const CapnographyWaveformsTopic = lazy(() => import("./pages/topics/CapnographyWaveformsTopic"));
+const VenturiMaskTopic = lazy(() => import("./pages/topics/VenturiMaskTopic"));
 const CirculatoryFailureTopic = lazy(() => import("./pages/topics/CirculatoryFailureTopic"));
 const AkiRrtTopic = lazy(() => import("./pages/topics/AkiRrtTopic"));
 const AcuteLiverFailureTopic = lazy(() => import("./pages/topics/AcuteLiverFailureTopic"));
@@ -298,6 +299,7 @@ const App = () => (
           <Route path="/physics/ventilator-modes" element={<VentilatorModesTopic />} />
           <Route path="/physics/capnography" element={<CapnographyTopic />} />
           <Route path="/physics/capnography/waveforms" element={<CapnographyWaveformsTopic />} />
+          <Route path="/physics/venturi-mask" element={<VenturiMaskTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
