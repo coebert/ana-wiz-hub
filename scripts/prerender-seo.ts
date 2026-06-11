@@ -545,6 +545,7 @@ async function main() {
   let withBreadcrumb = 0;
   let withWebSite = 0;
   let withOrg = 0;
+  let withMedical = 0;
 
   for (const path of routes) {
     const seo = seoFor(path);
@@ -561,10 +562,11 @@ async function main() {
     if (path !== "/") withBreadcrumb++;
     withWebSite++;
     withOrg++;
+    if (buildMedicalWebPage(path, seo)) withMedical++;
   }
 
   console.log(
-    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root); ${withWebSite} include WebSite/SearchAction JSON-LD; ${withOrg} include Organization JSON-LD; ${withFaq} include FAQPage JSON-LD; ${withBreadcrumb} include BreadcrumbList JSON-LD.`,
+    `[prerender] Wrote ${written} per-route index.html files (${overwroteRoot ? "incl." : "excl."} root); ${withWebSite} include WebSite/SearchAction JSON-LD; ${withOrg} include Organization JSON-LD; ${withFaq} include FAQPage JSON-LD; ${withBreadcrumb} include BreadcrumbList JSON-LD; ${withMedical} include MedicalWebPage JSON-LD.`,
   );
 }
 
