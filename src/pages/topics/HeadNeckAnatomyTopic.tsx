@@ -1,4 +1,11 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
+
+const headNeckAnatomyFaqs: Array<[string, string]> = [
+  ["Which cricoid landmark identifies the level of cricoid pressure?", "The cricoid cartilage is the only complete tracheal ring, lying anteriorly at C6. Palpate below the thyroid prominence to the first firm transverse band. Backward pressure of ~30 N (10 N awake, 30 N anaesthetised) occludes the oesophagus against the C6 vertebral body — though clinical effectiveness is debated."],
+  ["What is the sensory innervation of the larynx?", "Above the cords: internal branch of the superior laryngeal nerve (vagus). Below the cords and trachea: recurrent laryngeal nerve. All intrinsic laryngeal muscles are supplied by the recurrent laryngeal nerve EXCEPT cricothyroid (external branch of superior laryngeal nerve). Bilateral RLN injury leaves cords in mid-position — stridor and airway emergency."],
+  ["Where is the cricothyroid membrane and how is it located?", "Between the lower thyroid cartilage and upper cricoid, 1–2 cm below the laryngeal prominence in the midline. The \"laryngeal handshake\" — stabilising the larynx between thumb and middle finger while palpating downward with the index finger — reliably identifies it for emergency front-of-neck access."],
+];
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { headNeckAnatomyQuestions } from "@/data/quizzes";
