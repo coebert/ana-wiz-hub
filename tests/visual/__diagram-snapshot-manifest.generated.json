@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-06-11T15:46:08.942Z",
-  "count": 376,
+  "count": 379,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -49,6 +49,14 @@
     {
       "name": "AnaestheticMachineDiagram",
       "route": "/dev/diagram-snapshot/AnaestheticMachineDiagram"
+    },
+    {
+      "name": "AnaphylaxisCascadeDiagram",
+      "route": "/dev/diagram-snapshot/AnaphylaxisCascadeDiagram"
+    },
+    {
+      "name": "AnaphylaxisPathophysiologyDiagram",
+      "route": "/dev/diagram-snapshot/AnaphylaxisPathophysiologyDiagram"
     },
     {
       "name": "AnatomyPlate",
