@@ -424,6 +424,7 @@ function main() {
       `${orgChecked} Organization JSON-LD blocks valid; ` +
       `${wsChecked} WebSite/SearchAction JSON-LD blocks valid; ` +
       `${bcChecked} BreadcrumbList JSON-LD blocks valid; ` +
+      `${mpChecked} MedicalWebPage JSON-LD blocks valid; ` +
       `${faqExpectedPaths.length} FAQPage JSON-LD blocks valid; ` +
       `${subSitemaps.length} sub-sitemaps linked; robots.txt advertises sitemap.`,
   );
