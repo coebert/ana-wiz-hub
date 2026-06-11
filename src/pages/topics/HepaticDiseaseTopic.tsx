@@ -4,8 +4,17 @@ import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { hepaticDiseaseQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+
+const tocItems = [
+  { id: "section-preoperative-risk-stratification", label: "Preoperative Risk Stratification", group: "Assessment" },
+  { id: "section-systemic-features-of-cirrhosis", label: "Systemic Features of Cirrhosis", group: "Core" },
+  { id: "section-pharmacology-in-hepatic-impairment", label: "Pharmacology in Hepatic Impairment", group: "Pharmacology" },
+  { id: "section-intraoperative-management", label: "Intraoperative Management", group: "Management" },
+  { id: "section-perioperative-decompensation", label: "Perioperative Decompensation", group: "Complications" },
+];
 
 const objectives = [
   "Quantify perioperative risk in chronic liver disease using Child-Pugh and MELD, and apply this to elective non-hepatic surgery decisions.",
@@ -125,8 +134,10 @@ const HepaticDiseaseTopic = () => {
               Patients with chronic liver disease undergoing non-hepatic surgery are a high-risk population whose mortality is driven less by the operation itself than by the severity of underlying hepatic dysfunction. This topic covers preoperative risk stratification, the multi-system features of cirrhosis that change every step of the anaesthetic, and the specific perioperative complications — hepatorenal syndrome, encephalopathy, variceal haemorrhage and acute-on-chronic liver failure — that the anaesthetist must anticipate and treat.
             </p>
 
+            <TopicTableOfContents items={tocItems} />
+
             {/* Risk stratification */}
-            <section>
+            <section id="section-preoperative-risk-stratification" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Preoperative Risk Stratification</h2>
               <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
@@ -159,7 +170,7 @@ const HepaticDiseaseTopic = () => {
             </section>
 
             {/* Systemic features */}
-            <section>
+            <section id="section-systemic-features-of-cirrhosis" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Systemic Features of Cirrhosis</h2>
               <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
@@ -216,7 +227,7 @@ const HepaticDiseaseTopic = () => {
             </section>
 
             {/* Pharmacology */}
-            <section>
+            <section id="section-pharmacology-in-hepatic-impairment" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pharmacology in Hepatic Impairment</h2>
               <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
@@ -243,7 +254,7 @@ const HepaticDiseaseTopic = () => {
             </section>
 
             {/* Intraoperative management */}
-            <section>
+            <section id="section-intraoperative-management" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intraoperative Management</h2>
               <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
@@ -261,7 +272,7 @@ const HepaticDiseaseTopic = () => {
             </section>
 
             {/* Acute decompensation */}
-            <section>
+            <section id="section-perioperative-decompensation" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Perioperative Decompensation</h2>
               <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
