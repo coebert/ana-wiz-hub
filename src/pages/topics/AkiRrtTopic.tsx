@@ -60,7 +60,9 @@ const tocItems = [
   { id: "toc-circuit", label: "Circuit" },
   { id: "toc-anticoagulation", label: "Anticoagulation" },
   { id: "toc-trials", label: "Key Trials" },
+  { id: "toc-faq", label: "FAQ" },
 ];
+
 
 const objectives = [
   "Diagnose and stage AKI using KDIGO 2012 (creatinine and urine output criteria).",
