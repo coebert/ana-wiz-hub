@@ -1,9 +1,25 @@
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { ExamSection } from "@/components/ExamSection";
 import { geneticSyndromesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+const tocItems = [
+  { id: "section-framework", label: "Why Genetics Matter", group: "Framework" },
+  { id: "section-malignant-hyperthermia", label: "Malignant Hyperthermia", group: "Core" },
+  { id: "section-muscular-dystrophies", label: "Muscular Dystrophies", group: "Core" },
+  { id: "section-myotonic-dystrophy", label: "Myotonic Dystrophy", group: "Core" },
+  { id: "section-pseudocholinesterase-deficiency", label: "Pseudocholinesterase Deficiency", group: "Core" },
+  { id: "section-down-syndrome", label: "Down Syndrome", group: "Syndromic" },
+  { id: "section-marfan-syndrome", label: "Marfan Syndrome", group: "Syndromic" },
+  { id: "section-connective-tissue-disorders", label: "Other Connective Tissue Disorders", group: "Syndromic" },
+  { id: "section-achondroplasia", label: "Achondroplasia", group: "Syndromic" },
+  { id: "section-haemoglobinopathies", label: "Haemoglobinopathies", group: "Metabolic" },
+  { id: "section-acute-intermittent-porphyria", label: "Acute Intermittent Porphyria", group: "Metabolic" },
+  { id: "section-syndrome-quick-reference", label: "Quick-Reference Grid", group: "Reference" },
+  { id: "section-other-syndromes", label: "Other Syndromes", group: "Reference" },
+];
 
 const GeneticSyndromesTopic = () => {
   return (
@@ -34,7 +50,7 @@ const GeneticSyndromesTopic = () => {
       }}
       coreConcepts={
         <>
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-framework" className="scroll-mt-24">
             <CollapsibleSubsection title="Why genetics matter to the anaesthetist" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
               A handful of inherited disorders are over-represented in critical incidents because they alter the response to commonly used drugs (suxamethonium, volatiles, NMBAs, barbiturates) or because they affect the airway, the cervical spine, the heart or the lungs in ways that surprise the unprepared anaesthetist. A structured framework — <strong>airway, cardiorespiratory, neuromuscular, pharmacology, regional, transfusion</strong> — lets you assess any unfamiliar syndromic patient.
@@ -42,7 +58,9 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <TopicTableOfContents items={tocItems} />
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-malignant-hyperthermia" className="scroll-mt-24">
             <CollapsibleSubsection title="Malignant Hyperthermia (RYR1 / CACNA1S)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Autosomal dominant; uncontrolled SR Ca²⁺ release on exposure to volatiles or suxamethonium → hypermetabolism, masseter spasm, ↑EtCO₂, hyperthermia, rhabdomyolysis, hyperkalaemia, DIC.
@@ -65,7 +83,7 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-muscular-dystrophies" className="scroll-mt-24">
             <CollapsibleSubsection title="Muscular dystrophies (DMD, BMD)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Anaesthesia-induced rhabdomyolysis (AIR)</strong>: hyperkalaemic cardiac arrest with sux ± volatiles — clinically resembles MH but is a different mechanism (membrane fragility, not RYR1).</li>
@@ -77,7 +95,7 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-myotonic-dystrophy" className="scroll-mt-24">
             <CollapsibleSubsection title="Myotonic dystrophy (DM1, DMPK CTG repeat)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li>Myotonia not relieved by NMBAs, regional anaesthesia, or deep volatile — it is a sarcolemmal channelopathy. Triggers: cold, shivering, sux, neostigmine, surgical/electrical stimulation.</li>
@@ -90,7 +108,7 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-pseudocholinesterase-deficiency" className="scroll-mt-24">
             <CollapsibleSubsection title="Pseudocholinesterase deficiency">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Reduced or absent butyrylcholinesterase (BChE) → prolonged sux block (2–8 h with homozygous atypical genotype). TOF shows phase II block (fade, post-tetanic facilitation).
@@ -103,7 +121,7 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-down-syndrome" className="scroll-mt-24">
             <CollapsibleSubsection title="Down syndrome (trisomy 21)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Airway</strong>: macroglossia, midface hypoplasia, narrow nasopharynx, subglottic stenosis (use ETT 0.5–1 size smaller).</li>
@@ -114,7 +132,7 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-marfan-syndrome" className="scroll-mt-24">
             <CollapsibleSubsection title="Marfan syndrome (FBN1)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Autosomal dominant disorder of fibrillin-1 (FBN1) causing abnormal elastic tissue. Cardinal features are aortic root dilatation, arachnodactyly, lens dislocation, and tall stature with arm span exceeding height. Anaesthetic risk is dominated by the aorta — progressive root dilatation and dissection — but the lungs, eyes, spine and joints all matter.
@@ -140,7 +158,7 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL]}>
+          <ExamSection exams={[Exam.FINAL]} id="section-connective-tissue-disorders" className="scroll-mt-24">
             <CollapsibleSubsection title="Other connective tissue disorders">
             <div className="grid sm:grid-cols-2 gap-3">
               {[
@@ -157,7 +175,7 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-achondroplasia" className="scroll-mt-24">
             <CollapsibleSubsection title="Achondroplasia (FGFR3)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Autosomal dominant gain-of-function mutation of fibroblast growth factor receptor 3 (FGFR3) causing the commonest non-lethal skeletal dysplasia: rhizomelic short stature, macrocephaly with frontal bossing, midface hypoplasia and a characteristically small foramen magnum. Anaesthetic risk clusters around the airway, the cervical and lumbar spine, and the lungs.
@@ -183,7 +201,7 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-haemoglobinopathies" className="scroll-mt-24">
             <CollapsibleSubsection title="Haemoglobinopathies">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Sickle cell (HbSS)</strong>: avoid the 5 H's — Hypoxia, Hypothermia, Hypotension/dehydration, Hypoperfusion (stasis), High acidity. Top-up to Hb ~100 g/L for medium-risk surgery (TAPS); exchange to HbS &lt;30% for high-risk (cardiac, neuro). Active warming, generous fluids, supplemental O₂, multimodal analgesia.</li>
@@ -193,7 +211,7 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-acute-intermittent-porphyria" className="scroll-mt-24">
             <CollapsibleSubsection title="Acute intermittent porphyria (HMBS)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Autosomal dominant defect in haem synthesis. Attacks (abdominal pain, autonomic instability, neuropathy, psychiatric features, hyponatraemia from SIADH) are precipitated by enzyme inducers, fasting, dehydration, infection and stress.
@@ -214,7 +232,7 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-syndrome-quick-reference" className="scroll-mt-24">
             <CollapsibleSubsection title="Syndrome quick-reference grid">
             <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
               One-look matrix linking each condition to its dominant anaesthetic hazards and the agents/techniques generally regarded as safe. Use as a pre-list checklist — never as a substitute for a current porphyria/MH database lookup on the day.
@@ -349,7 +367,7 @@ const GeneticSyndromesTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection exams={[Exam.FINAL]}>
+          <ExamSection exams={[Exam.FINAL]} id="section-other-syndromes" className="scroll-mt-24">
             <CollapsibleSubsection title="Other syndromes worth knowing">
             <div className="grid sm:grid-cols-2 gap-3">
               {[
