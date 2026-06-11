@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
@@ -6,6 +7,38 @@ import type { WorkedExample } from "@/components/WorkedExamples";
 import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
 import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
 import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
+
+const ecmoFaqs: Array<[string, string]> = [
+  [
+    "What is the difference between VV and VA ECMO?",
+    "VV-ECMO drains and returns blood to the venous system — it provides gas exchange only and is used for refractory respiratory failure with preserved cardiac output. VA-ECMO drains venous blood and returns oxygenated blood to a major artery, providing both gas exchange and circulatory support; it is used for refractory cardiogenic shock and refractory cardiac arrest (ECPR). VA-ECMO increases LV afterload and carries the risk of differential hypoxia (Harlequin syndrome) when cannulated peripherally.",
+  ],
+  [
+    "What is Harlequin (North–South) syndrome?",
+    "In peripheral femoro-femoral VA-ECMO, oxygenated blood is returned retrograde up the descending aorta while a recovering heart ejects native, poorly oxygenated blood antegrade. The watershed between the two flows determines which territory perfuses the coronaries, brain and right arm. Monitor SpO₂ on the right upper limb. Manage by optimising native lung function (increase PEEP and FiO₂, recruit), increasing ECMO flow, adding an internal jugular return cannula (VAV configuration) or converting to central cannulation.",
+  ],
+  [
+    "What are the EOLIA criteria for VV-ECMO referral in ARDS?",
+    "EOLIA criteria for severe ARDS refractory to optimal ventilation and proning: PaO₂/FiO₂ < 50 mmHg for > 3 h, or PaO₂/FiO₂ < 80 mmHg for > 6 h, or arterial pH < 7.25 with PaCO₂ ≥ 60 mmHg for > 6 h with respiratory rate increased to 35 and tidal volume reduced to 4 mL/kg PBW. EOLIA stopped early for futility (p = 0.09) but a pre-specified Bayesian re-analysis estimated a 96% probability of mortality benefit, and contemporary ELSO criteria mirror EOLIA.",
+  ],
+  [
+    "When is ECPR indicated for refractory cardiac arrest?",
+    "ELSO criteria for ECPR: witnessed arrest with bystander CPR started within 5 min, initial shockable rhythm (VF/pVT), no-flow time < 5 min and low-flow time < 60 min, age < 70 with no major comorbidity, end-tidal CO₂ > 1.3 kPa during CPR (a surrogate for adequate chest compressions), and a suspected reversible cause (most commonly acute coronary syndrome). ARREST (Minneapolis) and Prague-OHCA showed mortality benefit in selected single-centre cohorts; INCEPTION (multicentre Dutch RCT) was neutral — the size and reliability of any ECPR benefit depend on low low-flow time and a straight-to-cath-lab pathway.",
+  ],
+  [
+    "How is anticoagulation managed on ECMO?",
+    "First-line is unfractionated heparin bolus 50–100 units/kg at cannulation, followed by continuous infusion titrated to APTT 1.5–2× normal or ACT 180–220 s. Anti-Xa (target 0.3–0.7 IU/mL) is more reliable than APTT in critically ill patients with raised acute-phase reactants. Bivalirudin is the agent of choice when heparin-induced thrombocytopenia is confirmed (4Ts score and anti-PF4 antibody, then functional assay). Bleeding is the commonest complication of ECMO — accept lower anticoagulation targets when active bleeding outweighs thrombotic risk.",
+  ],
+  [
+    "What is the SAVE score and what is the RESP score?",
+    "The SAVE (Survival After Veno-Arterial ECMO) score predicts in-hospital survival for adults receiving VA-ECMO for refractory cardiogenic shock. The RESP (Respiratory ECMO Survival Prediction) score predicts in-hospital survival for adults receiving VV-ECMO for severe acute respiratory failure. Both scores assign points for age, organ failure, pre-ECMO ventilation duration, diagnosis and acute clinical variables, then stratify patients into risk classes from I (lowest mortality) to V (highest). They are decision-support tools — not absolute contraindications — and are most useful when patient selection is borderline.",
+  ],
+  [
+    "How is VV-ECMO weaned?",
+    "Use a sweep-down trial. Maintain blood flow on the circuit (this prevents thrombosis) and reduce sweep gas stepwise to zero over 30–60 min, ventilating the patient on lung-protective settings (Vt 6 mL/kg PBW, PEEP 10, FiO₂ 0.5). Re-check ABG and lung mechanics. If PaO₂/FiO₂ > 150, pH and PaCO₂ stable, and respiratory mechanics acceptable, plan decannulation. Restart sweep promptly if the patient deteriorates.",
+  ],
+];
+
 
 /**
  * Dedicated FFICM / EDIC standalone topic page for Extracorporeal Membrane
@@ -188,9 +221,33 @@ const EcmoTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <section className="space-y-6">
+            {/* Table of contents */}
+            <nav aria-label="On this page" className="not-prose rounded-lg border border-border bg-secondary/20 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">On this page</p>
+              <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1 text-sm">
+                <li><a href="#overview" className="text-icu hover:underline">What ECMO is — and is not</a></li>
+                <li><a href="#circuit" className="text-icu hover:underline">Circuit components</a></li>
+                <li><a href="#cannulation" className="text-icu hover:underline">Cannulation strategy</a></li>
+                <li><a href="#configurations" className="text-icu hover:underline">ECMO configurations (VV, VA, VAV, VVA)</a></li>
+                <li><a href="#gas-exchange" className="text-icu hover:underline">Oxygenation & CO₂ clearance</a></li>
+                <li><a href="#vv-ecmo-indications" className="text-icu hover:underline">VV-ECMO: indications & EOLIA</a></li>
+                <li><a href="#va-ecmo-indications" className="text-icu hover:underline">VA-ECMO: indications</a></li>
+                <li><a href="#anticoagulation" className="text-icu hover:underline">Anticoagulation & monitoring</a></li>
+                <li><a href="#complications" className="text-icu hover:underline">Major complications</a></li>
+                <li><a href="#icu-care-bundle" className="text-icu hover:underline">ICU care bundle on ECMO</a></li>
+                <li><a href="#ecpr" className="text-icu hover:underline">ECPR for refractory arrest</a></li>
+                <li><a href="#trial-evidence" className="text-icu hover:underline">Major trial evidence</a></li>
+                <li><a href="#prognostic-scores" className="text-icu hover:underline">SAVE & RESP prognostic scores</a></li>
+                <li><a href="#weaning" className="text-icu hover:underline">Weaning trials</a></li>
+                <li><a href="#ethics" className="text-icu hover:underline">Ethics & withdrawal on ECMO</a></li>
+                <li><a href="#pitfalls" className="text-icu hover:underline">Common exam pitfalls</a></li>
+                <li><a href="#faq" className="text-icu hover:underline">Frequently asked questions</a></li>
+              </ul>
+            </nav>
+
             {/* Overview */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">What ECMO is — and is not</h2>
+              <h2 id="overview" className="text-2xl font-serif font-bold text-foreground mb-3">What ECMO is — and is not</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Extracorporeal membrane oxygenation is a temporary, miniaturised
                 cardiopulmonary bypass circuit used in the ICU. It does not
@@ -213,7 +270,7 @@ const EcmoTopic = () => {
 
             {/* Circuit */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Circuit components</h2>
+              <h2 id="circuit" className="text-2xl font-serif font-bold text-foreground mb-3">Circuit components</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   { part: "Drainage cannula", detail: "Large-bore (21–29 Fr), multi-fenestrated. Femoral vein → IVC/RA most common. Pre-pump pressure should be negative but > –100 mmHg to avoid haemolysis and cavitation." },
@@ -229,14 +286,110 @@ const EcmoTopic = () => {
               </div>
             </div>
 
+            {/* Cannulation strategy */}
+            <div>
+              <h2 id="cannulation" className="text-2xl font-serif font-bold text-foreground mb-3">Cannulation strategy</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Cannula choice, size and position dictate the maximum achievable
+                flow, recirculation fraction and complication profile. Drainage
+                cannulae are short, large-bore and multi-fenestrated; return
+                cannulae are longer, narrower and side-port-free. Maximum flow
+                is determined by drainage (negative pressure limits cavitation
+                and haemolysis), not by the pump.
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border rounded-lg">
+                  <thead className="bg-secondary/30">
+                    <tr>
+                      <th className="text-left p-2 font-semibold">Approach</th>
+                      <th className="text-left p-2 font-semibold">Typical cannulae</th>
+                      <th className="text-left p-2 font-semibold">Strengths</th>
+                      <th className="text-left p-2 font-semibold">Limitations</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Femoral V → Femoral V (VV)</td>
+                      <td className="p-2">Drainage 23–25 Fr femoral V (tip at hepatic IVC), return 19–21 Fr contralateral femoral V (tip at RA)</td>
+                      <td className="p-2">Fastest peripheral access; suitable for percutaneous insertion in ED/ICU</td>
+                      <td className="p-2">Highest recirculation (10–30%); patient bed-bound; femoral access compromises mobilisation</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Femoral V → Internal Jugular V (VV)</td>
+                      <td className="p-2">Drainage 25 Fr femoral V, return 21 Fr right IJ (tip at SVC/RA junction)</td>
+                      <td className="p-2">Lower recirculation; permits limb mobilisation</td>
+                      <td className="p-2">Two access sites; IJ cannulation in coagulopathy</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Dual-lumen single-cannula (Avalon, Crescent)</td>
+                      <td className="p-2">27–31 Fr right IJ dual-lumen — drainage ports in SVC and IVC, return port directed at tricuspid valve</td>
+                      <td className="p-2">Single access; awake ECMO and ambulation; bridge to lung transplantation</td>
+                      <td className="p-2">Requires fluoroscopy or TOE for accurate positioning; malposition causes recirculation or RV/PA injury</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Peripheral femoro-femoral VA</td>
+                      <td className="p-2">Drainage 23–25 Fr femoral V (tip at RA), return 15–19 Fr femoral A + 6–8 Fr distal perfusion cannula</td>
+                      <td className="p-2">Rapid bedside or cath-lab insertion; standard for cardiogenic shock and ECPR</td>
+                      <td className="p-2">Harlequin syndrome; LV distension; limb ischaemia without distal perfusion cannula</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Central VA (post-cardiotomy)</td>
+                      <td className="p-2">RA drainage, ascending aorta return via open chest</td>
+                      <td className="p-2">Antegrade aortic flow eliminates Harlequin; high flow achievable</td>
+                      <td className="p-2">Sternotomy with open or covered chest; bleeding and mediastinitis risk</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">VAV (peripheral VA + IJ return)</td>
+                      <td className="p-2">Femoral V drainage, femoral A return, plus an IJ return cannula</td>
+                      <td className="p-2">Treats Harlequin by delivering oxygenated blood to the upper body</td>
+                      <td className="p-2">More complex circuit; balance of flow split between A and V return</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                <strong>Sizing rule of thumb:</strong> target circuit blood flow
+                of 60–80 mL/kg/min (full VV support) or 50–70 mL/kg/min (VA
+                support). For a 70 kg adult, this is 4–5 L/min — achievable
+                with a 23–25 Fr drainage and a 19–21 Fr return cannula. The
+                most common cause of inadequate flow is undersized drainage.
+              </p>
+            </div>
+
+            {/* ECMO configurations comparison */}
+            <div>
+              <h2 id="configurations" className="text-2xl font-serif font-bold text-foreground mb-3">ECMO configurations at a glance</h2>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border rounded-lg">
+                  <thead className="bg-secondary/30">
+                    <tr>
+                      <th className="text-left p-2 font-semibold">Configuration</th>
+                      <th className="text-left p-2 font-semibold">Supports</th>
+                      <th className="text-left p-2 font-semibold">Typical indication</th>
+                      <th className="text-left p-2 font-semibold">Key risk</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">VV</td><td className="p-2">Gas exchange only</td><td className="p-2">Severe ARDS, primary graft dysfunction post-lung transplant</td><td className="p-2">Recirculation; does not unload the right heart</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Peripheral VA</td><td className="p-2">Heart + lungs</td><td className="p-2">Cardiogenic shock, ECPR, fulminant myocarditis, massive PE</td><td className="p-2">Harlequin, LV distension, limb ischaemia</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Central VA</td><td className="p-2">Heart + lungs</td><td className="p-2">Post-cardiotomy shock, can't-wean from CPB</td><td className="p-2">Bleeding, open chest, mediastinitis</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">VAV (V→A + V)</td><td className="p-2">Heart + lungs + Harlequin rescue</td><td className="p-2">Peripheral VA with recovering heart causing upper-body hypoxaemia</td><td className="p-2">Flow split between two returns; circuit complexity</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">VV-PA (RVAD)</td><td className="p-2">RV failure with preserved gas exchange</td><td className="p-2">Isolated RV failure (post-LVAD, severe PH crisis)</td><td className="p-2">PA cannula migration; PA rupture</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">ECCO₂R (low-flow)</td><td className="p-2">CO₂ clearance only (0.5–1.5 L/min)</td><td className="p-2">Severe AECOPD; ultra-protective ventilation in moderate ARDS</td><td className="p-2">Bleeding for limited benefit; SUPERNOVA / REST trials neutral or harmful</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
             {/* Interactive VV circuit animation */}
             <div className="not-prose">
               <ECMOCircuitDiagram />
             </div>
 
+
             {/* Physics of gas exchange */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Controlling oxygenation and CO₂ clearance</h2>
+              <h2 id="gas-exchange" className="text-2xl font-serif font-bold text-foreground mb-3">Controlling oxygenation and CO₂ clearance</h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
                 <li><strong>Oxygenation</strong> depends on circuit blood flow (typically 60–80 mL/kg/min) and FdO₂. The ratio of ECMO flow to native cardiac output determines arterial PaO₂.</li>
                 <li><strong>CO₂ removal</strong> is highly efficient and depends almost entirely on <em>sweep gas flow</em>. A small change in sweep (1–2 L/min) can produce large PaCO₂ swings — change slowly to avoid cerebral vasoconstriction.</li>
@@ -247,7 +400,7 @@ const EcmoTopic = () => {
 
             {/* VV indications and EOLIA */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">VV-ECMO: indications & EOLIA / CESAR evidence</h2>
+              <h2 id="vv-ecmo-indications" className="text-2xl font-serif font-bold text-foreground mb-3">VV-ECMO: indications & EOLIA / CESAR evidence</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Severe ARDS or other reversible hypoxaemic / hypercapnic respiratory
                 failure refractory to lung-protective ventilation, proning and
@@ -272,7 +425,7 @@ const EcmoTopic = () => {
 
             {/* VA indications */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">VA-ECMO: indications</h2>
+              <h2 id="va-ecmo-indications" className="text-2xl font-serif font-bold text-foreground mb-3">VA-ECMO: indications</h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
                 <li>Refractory cardiogenic shock (post-cardiotomy, fulminant myocarditis, decompensated cardiomyopathy, massive PE, drug toxicity).</li>
                 <li>Bridge to recovery, transplantation, or durable LVAD.</li>
@@ -288,7 +441,7 @@ const EcmoTopic = () => {
 
             {/* Complications */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Major complications</h2>
+              <h2 id="complications" className="text-2xl font-serif font-bold text-foreground mb-3">Major complications</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   { name: "Bleeding", detail: "Commonest complication. Cannulation sites, ICH, GI, surgical sites. Driven by heparin, acquired vWF deficiency (high shear), thrombocytopaenia. Target the lowest acceptable APTT/ACT and platelets > 50–80 × 10⁹/L." },
@@ -313,9 +466,62 @@ const EcmoTopic = () => {
               <ECMOTroubleshootingDiagram />
             </div>
 
-            {/* ECPR */}
+            {/* Anticoagulation & monitoring */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ECPR — extracorporeal CPR for refractory arrest</h2>
+              <h2 id="anticoagulation" className="text-2xl font-serif font-bold text-foreground mb-3">Anticoagulation & monitoring</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Anticoagulation is the central balancing act of ECMO: bleeding
+                (40–60% of runs) and thrombosis (oxygenator failure, circuit
+                clot, stroke) compete daily. Use the lowest target that keeps
+                the circuit patent in the context of the patient's bleeding
+                risk and source of bleeding.
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border rounded-lg">
+                  <thead className="bg-secondary/30">
+                    <tr>
+                      <th className="text-left p-2 font-semibold">Agent</th>
+                      <th className="text-left p-2 font-semibold">Indication</th>
+                      <th className="text-left p-2 font-semibold">Monitoring & target</th>
+                      <th className="text-left p-2 font-semibold">Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Unfractionated heparin</td><td className="p-2">First-line</td><td className="p-2">APTT 1.5–2× normal, ACT 180–220 s, anti-Xa 0.3–0.7 IU/mL</td><td className="p-2">Anti-Xa is most reliable in critical illness (raised acute-phase reactants distort APTT)</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Bivalirudin</td><td className="p-2">Confirmed HIT or heparin failure</td><td className="p-2">APTT 1.5–2× normal; dilute pharmacokinetics in renal failure</td><td className="p-2">No reversal agent; useful in HIT; growing use as a primary alternative to heparin</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Argatroban</td><td className="p-2">HIT, hepatically cleared</td><td className="p-2">APTT 1.5–2× normal</td><td className="p-2">Avoid in hepatic failure</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">No anticoagulation (heparin-bonded circuit)</td><td className="p-2">Major active bleeding</td><td className="p-2">Hourly visual circuit inspection, trans-membrane pressure, oxygenator gas exchange</td><td className="p-2">Time-limited; accept higher circuit-change frequency</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                <strong>Daily haematology bundle:</strong> platelets (target
+                &gt; 50 × 10⁹/L, &gt; 80 if bleeding), fibrinogen (&gt; 1.5
+                g/L), Hb (target 70–90 g/L unless ischaemic), D-dimer trend
+                (rising suggests circuit thrombosis), anti-Xa, ACT 4–6 hourly,
+                free Hb (haemolysis), LDH. Acquired von Willebrand syndrome
+                from high shear is a major contributor to bleeding —
+                consider tranexamic acid for mucocutaneous bleeding and DDAVP
+                cautiously.
+              </p>
+            </div>
+
+            {/* ICU care bundle */}
+            <div>
+              <h2 id="icu-care-bundle" className="text-2xl font-serif font-bold text-foreground mb-3">ICU care bundle on ECMO</h2>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li><strong>Ventilation</strong>: ultra-protective settings on VV-ECMO — Vt 3–4 mL/kg PBW, plateau ≤ 25 cmH₂O, PEEP 10–15, RR 10, FiO₂ 0.3 to allow lung rest. Avoid spontaneous over-breathing causing patient self-inflicted lung injury (P-SILI).</li>
+                <li><strong>Sedation</strong>: deep sedation initially (RASS −4 to −5) ± neuromuscular blockade during cannulation; then light sedation (RASS −1 to 0) and consider awake-ECMO programmes for bridge-to-transplant.</li>
+                <li><strong>Mobilisation</strong>: physiotherapy and ambulation are achievable with single-cannula dual-lumen VV configurations and dedicated ECMO–rehab pathways (notably for lung-transplant bridging).</li>
+                <li><strong>Transfusion</strong>: restrictive Hb threshold 70–90 g/L unless ischaemic; platelets &gt; 50 × 10⁹/L (&gt; 80 if bleeding); fibrinogen &gt; 1.5 g/L; FFP only for active bleeding or invasive procedures.</li>
+                <li><strong>Renal</strong>: AKI is common (60–80%); CRRT is usually integrated into the ECMO circuit via a haemofilter or a separate access. Drug clearance is altered by adsorption to the oxygenator (lipophilic drugs, sedatives) and the larger circuit volume.</li>
+                <li><strong>Infection</strong>: surveillance cultures; no routine prophylactic antibiotics; CRBSI rate 10–20 per 1000 ECMO days.</li>
+                <li><strong>Nutrition</strong>: enteral feeding within 24–48 h is safe even on full ECMO support; energy targets per critical-care guidance.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 id="ecpr" className="text-2xl font-serif font-bold text-foreground mb-3">ECPR — extracorporeal CPR for refractory arrest</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Femoral VA cannulation during ongoing mechanical CPR for selected
                 patients with refractory cardiac arrest. ELSO entry criteria:
@@ -339,7 +545,7 @@ const EcmoTopic = () => {
 
             {/* Weaning */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Weaning trials</h2>
+              <h2 id="weaning" className="text-2xl font-serif font-bold text-foreground mb-3">Weaning trials</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="p-3 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">VV-ECMO — sweep-down trial</p>
@@ -364,9 +570,90 @@ const EcmoTopic = () => {
               </div>
             </div>
 
+            {/* Major trial evidence */}
+            <div>
+              <h2 id="trial-evidence" className="text-2xl font-serif font-bold text-foreground mb-3">Major trial evidence</h2>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border rounded-lg">
+                  <thead className="bg-secondary/30">
+                    <tr>
+                      <th className="text-left p-2 font-semibold">Trial (year)</th>
+                      <th className="text-left p-2 font-semibold">Population</th>
+                      <th className="text-left p-2 font-semibold">Intervention vs comparator</th>
+                      <th className="text-left p-2 font-semibold">Result</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">CESAR (2009)</td><td className="p-2">Severe adult respiratory failure (Murray ≥ 3 or uncompensated hypercapnia)</td><td className="p-2">Referral to a single UK ECMO centre vs conventional management</td><td className="p-2">↑ 6-month disability-free survival (63% vs 47%, RR 0.69, p = 0.03) — referral effect; not all referred patients received ECMO</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">EOLIA (2018)</td><td className="p-2">Severe ARDS meeting EOLIA criteria</td><td className="p-2">Early VV-ECMO vs continued conventional management with crossover</td><td className="p-2">Stopped early for futility — 60-day mortality 35% vs 46% (RR 0.76, p = 0.09); 28% crossover. Bayesian re-analysis: ≥96% probability of mortality benefit</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">EOLIA Bayesian re-analysis (2018)</td><td className="p-2">Same cohort</td><td className="p-2">Bayesian framework with multiple priors</td><td className="p-2">Robust ≥ 88% probability of mortality reduction across priors; underpins current ELSO referral criteria</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">ARREST (2020)</td><td className="p-2">Refractory OHCA with shockable rhythm, Minneapolis (single-centre)</td><td className="p-2">ECPR vs standard ACLS</td><td className="p-2">Stopped early for benefit — survival to hospital discharge 43% vs 7%; selected, system-supported cohort</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">Prague-OHCA (2022)</td><td className="p-2">Refractory OHCA, Prague (single-centre)</td><td className="p-2">Invasive strategy (ECPR + immediate angiography) vs standard ACLS</td><td className="p-2">No difference in primary 180-day neurologic outcome; signal for benefit in pre-specified subgroups</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">INCEPTION (2023)</td><td className="p-2">Refractory OHCA, 10 Dutch centres</td><td className="p-2">ECPR vs standard ACLS</td><td className="p-2">Neutral — 30-day survival with good neurologic outcome 20% vs 16% (OR 1.4, p = 0.52); highlights system-performance dependence</td></tr>
+                    <tr className="border-t border-border"><td className="p-2 font-medium text-foreground">SUPERNOVA (2019) / REST (2022)</td><td className="p-2">Moderate ARDS</td><td className="p-2">Low-flow ECCO₂R to enable ultra-protective ventilation</td><td className="p-2">SUPERNOVA: feasibility, no mortality signal. REST stopped early — increased serious adverse events, no mortality benefit</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Prognostic scores */}
+            <div>
+              <h2 id="prognostic-scores" className="text-2xl font-serif font-bold text-foreground mb-3">SAVE & RESP prognostic scores</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Two validated tools support patient selection at the bedside.
+                Both stratify pre-ECMO predicted hospital survival into five
+                classes; treat them as decision-support, not absolute
+                contraindications. Discuss borderline cases at MDT and with
+                the regional ECMO retrieval team.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">RESP — VV-ECMO for respiratory failure</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Inputs: age, immunocompromised state, mechanical ventilation
+                    duration pre-ECMO, diagnosis (viral pneumonia favourable,
+                    other less so), CNS dysfunction, acute associated infection,
+                    NMB use, NO use, bicarbonate infusion, cardiac arrest pre-ECMO,
+                    PaCO₂, peak inspiratory pressure. Classes I–V predict
+                    in-hospital survival from 92% to 18%.
+                  </p>
+                </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">SAVE — VA-ECMO for cardiogenic shock</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Inputs: age, weight, diagnosis (myocarditis and post-heart-
+                    transplant favourable; post-cardiotomy less so), CNS, renal,
+                    hepatic, pulmonary failure, duration of ventilation pre-ECMO,
+                    cardiac arrest before ECMO, peak inspiratory pressure, PEEP,
+                    pulse pressure, diastolic BP, HCO₃. Classes I–V predict
+                    survival from 75% to 18%.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Ethics & withdrawal on ECMO */}
+            <div>
+              <h2 id="ethics" className="text-2xl font-serif font-bold text-foreground mb-3">Ethics & withdrawal on ECMO</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                ECMO is a bridge — to recovery, to transplantation, or to a
+                durable device. When none is achievable, the patient is on a
+                <em> bridge to nowhere</em>. Agreeing the exit strategy at
+                cannulation and reviewing it daily prevents protracted,
+                non-beneficial support.
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li><strong>Pre-cannulation conversation:</strong> document the bridge (e.g. "bridge to recovery within 14 days"), the criteria for withdrawal, and what will not be offered (e.g. transplant in a contraindicated patient).</li>
+                <li><strong>Daily review:</strong> trajectory, organ recovery, neurology, eligibility for transplant or VAD. If none of the exits remains achievable, escalate to MDT discussion.</li>
+                <li><strong>Family communication:</strong> ECMO support is highly visible and patients may look "well". Explicit communication about prognosis and the meaning of the device prevents false hope.</li>
+                <li><strong>Withdrawal of ECMO:</strong> usually achieved by reducing sweep gas (VV) or flow (VA) to zero, with continued sedation and symptom management. Decannulation post-mortem may be required for organ donation pathways.</li>
+                <li><strong>Donation after circulatory death on ECMO:</strong> emerging pathway — engage the donation team early.</li>
+              </ul>
+            </div>
+
             {/* Pitfalls */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Common exam pitfalls</h2>
+              <h2 id="pitfalls" className="text-2xl font-serif font-bold text-foreground mb-3">Common exam pitfalls</h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
                 <li>Confusing VV (gas exchange only) with VA (cardiac + respiratory) — the indication, cannulation and complications differ entirely.</li>
                 <li>Monitoring a left-sided SpO₂ on peripheral VA-ECMO and missing Harlequin syndrome.</li>
@@ -374,8 +661,37 @@ const EcmoTopic = () => {
                 <li>Forgetting the distal perfusion cannula and causing limb ischaemia.</li>
                 <li>Clamping the circuit during a weaning trial — guaranteed circuit thrombosis.</li>
                 <li>Quoting CESAR as proof that "ECMO saves lives" — CESAR proved <em>referral</em> to an ECMO centre improved outcomes; the intervention bundle matters.</li>
+                <li>Conflating ARREST (positive, single-centre) with INCEPTION (neutral, multicentre) — both are true; system performance reconciles them.</li>
+                <li>Treating SAVE/RESP scores as absolute cut-offs; they are decision-support, not gates.</li>
               </ul>
             </div>
+
+            {/* FAQ */}
+            <div>
+              <h2 id="faq" className="text-2xl font-serif font-bold text-foreground mb-3">Frequently asked questions</h2>
+              <div className="space-y-2">
+                {ecmoFaqs.map(([q, a]) => (
+                  <details key={q} className="group rounded-lg border border-border p-3">
+                    <summary className="cursor-pointer font-semibold text-foreground text-sm">{q}</summary>
+                    <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+
+            {/* FAQ JSON-LD for rich-result eligibility */}
+            <Helmet>
+              <script type="application/ld+json">{JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: ecmoFaqs.map(([name, acceptedAnswer]) => ({
+                  "@type": "Question",
+                  name,
+                  acceptedAnswer: { "@type": "Answer", text: acceptedAnswer },
+                })),
+              })}</script>
+            </Helmet>
+
           </section>
         </ExamSection>
       }
