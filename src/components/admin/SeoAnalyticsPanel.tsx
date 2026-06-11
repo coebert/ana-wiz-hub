@@ -2,6 +2,16 @@ import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { RefreshCw, TrendingUp, Search, Globe, Smartphone, ExternalLink } from "lucide-react";
+import {
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Legend,
+} from "recharts";
 
 interface GscRow {
   keys?: string[];
@@ -212,6 +222,84 @@ export default function SeoAnalyticsPanel() {
           })}
           {(!data?.byDate?.rows || data.byDate.rows.length === 0) && (
             <p className="text-sm text-muted-foreground self-center w-full text-center">No data yet for this window.</p>
+          )}
+        </div>
+      </div>
+
+      {/* Avg position & CTR over time */}
+      <div className="p-4 rounded-xl border border-border bg-card">
+        <h3 className="text-sm font-semibold mb-1">Avg. position & CTR over time</h3>
+        <p className="text-xs text-muted-foreground mb-3">
+          Average Google rank across all queries (lower = better, axis reversed) and click-through rate per day.
+        </p>
+        <div className="h-64">
+          {(data?.byDate?.rows ?? []).length > 0 ? (
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={(data?.byDate?.rows ?? []).map(r => ({
+                  date: r.keys?.[0] ?? "",
+                  position: Number(r.position?.toFixed(2)),
+                  ctr: Number((r.ctr * 100).toFixed(2)),
+                }))}
+                margin={{ top: 8, right: 12, left: 0, bottom: 0 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <XAxis
+                  dataKey="date"
+                  tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
+                  tickFormatter={(d: string) => d.slice(5)}
+                  minTickGap={20}
+                />
+                <YAxis
+                  yAxisId="pos"
+                  reversed
+                  domain={[1, "dataMax + 2"]}
+                  tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
+                  label={{ value: "Avg. position", angle: -90, position: "insideLeft", style: { fontSize: 11, fill: "hsl(var(--muted-foreground))" } }}
+                  width={60}
+                />
+                <YAxis
+                  yAxisId="ctr"
+                  orientation="right"
+                  domain={[0, "dataMax + 1"]}
+                  tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
+                  tickFormatter={(v: number) => `${v}%`}
+                  width={50}
+                />
+                <Tooltip
+                  contentStyle={{
+                    background: "hsl(var(--popover))",
+                    border: "1px solid hsl(var(--border))",
+                    borderRadius: 8,
+                    fontSize: 12,
+                  }}
+                  formatter={(value: number, name: string) =>
+                    name === "CTR" ? [`${value}%`, name] : [value, name]
+                  }
+                />
+                <Legend wrapperStyle={{ fontSize: 12 }} />
+                <Line
+                  yAxisId="pos"
+                  type="monotone"
+                  dataKey="position"
+                  name="Avg. position"
+                  stroke="hsl(var(--primary))"
+                  strokeWidth={2}
+                  dot={false}
+                />
+                <Line
+                  yAxisId="ctr"
+                  type="monotone"
+                  dataKey="ctr"
+                  name="CTR"
+                  stroke="hsl(var(--accent-foreground))"
+                  strokeWidth={2}
+                  dot={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          ) : (
+            <p className="text-sm text-muted-foreground text-center pt-10">No data yet for this window.</p>
           )}
         </div>
       </div>
