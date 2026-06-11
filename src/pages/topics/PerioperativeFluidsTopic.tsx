@@ -7,6 +7,14 @@ import { DiagramSection } from "@/components/DiagramSection";
 import GlycocalyxDiagram from "@/components/diagrams/GlycocalyxDiagram";
 import { GlycocalyxSheddingCascadeDiagram } from "@/components/diagrams/GlycocalyxSheddingCascadeDiagram";
 import { Exam } from "@/data/curriculum";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "section-fluid-compartments", label: "Fluid Compartments", group: "Core" },
+  { id: "section-gdft", label: "Goal-Directed Fluid Therapy", group: "Core" },
+  { id: "section-glycocalyx", label: "Glycocalyx & Revised Starling", group: "Core" },
+  { id: "section-key-fluid-trials", label: "Key Fluid Trials", group: "Evidence" },
+];
 
 const PerioperativeFluidsTopic = () => {
   return (
