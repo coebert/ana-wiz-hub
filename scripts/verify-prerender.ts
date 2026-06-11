@@ -93,6 +93,71 @@ function main() {
     return fail(`prerender / sitemap drift — fix before deploying`);
   }
 
+  // ---- BreadcrumbList JSON-LD presence ----
+  // Every non-root prerendered route must ship a BreadcrumbList <script>
+  // so Google can render breadcrumb rich results in SERPs.
+  const bcFailures: Array<{ path: string; reason: string }> = [];
+  let bcChecked = 0;
+  for (const f of readdirSync(sitemapsDir)) {
+    if (!f.endsWith(".xml")) continue;
+    const xml = readFileSync(join(sitemapsDir, f), "utf8");
+    for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+      const url = m[1];
+      if (!url.startsWith(SITE)) continue;
+      const path = url.slice(SITE.length) || "/";
+      if (path === "/") continue;
+      const file = join(DIST, path, "index.html");
+      if (!existsSync(file)) continue; // already reported above
+      bcChecked++;
+      const html = readFileSync(file, "utf8");
+      const scriptMatch = html.match(
+        /<script\s+type="application\/ld\+json"\s+data-prerender="breadcrumb">([\s\S]+?)<\/script>/i,
+      );
+      if (!scriptMatch) {
+        bcFailures.push({ path, reason: "no BreadcrumbList <script> tag" });
+        continue;
+      }
+      try {
+        const json = JSON.parse(scriptMatch[1]);
+        if (json["@type"] !== "BreadcrumbList") {
+          bcFailures.push({ path, reason: `@type is ${json["@type"]}, not BreadcrumbList` });
+          continue;
+        }
+        const items = json.itemListElement;
+        const expectedSegments = path.split("/").filter(Boolean).length;
+        // Home + one per segment.
+        if (!Array.isArray(items) || items.length !== expectedSegments + 1) {
+          bcFailures.push({
+            path,
+            reason: `itemListElement has ${Array.isArray(items) ? items.length : "0"} items, expected ${expectedSegments + 1}`,
+          });
+          continue;
+        }
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (
+          first["@type"] !== "ListItem" || first.position !== 1 || first.name !== "Home" ||
+          last["@type"] !== "ListItem" || typeof last.name !== "string" || typeof last.item !== "string" ||
+          !last.item.endsWith(path)
+        ) {
+          bcFailures.push({ path, reason: "ListItem shape malformed or leaf item URL mismatch" });
+        }
+      } catch (err) {
+        bcFailures.push({ path, reason: `JSON parse failed: ${(err as Error).message}` });
+      }
+    }
+  }
+
+  if (bcFailures.length > 0) {
+    console.error(
+      `[verify-prerender] ✗ ${bcFailures.length}/${bcChecked} route(s) missing or malformed BreadcrumbList JSON-LD:`,
+    );
+    for (const b of bcFailures.slice(0, 20)) {
+      console.error(`  - ${b.path}  →  ${b.reason}`);
+    }
+    return fail(`BreadcrumbList JSON-LD missing on ${bcFailures.length} route(s)`);
+  }
+
   // ---- FAQPage JSON-LD presence ----
   // Every route whose source declares FAQ pairs must have a corresponding
   // FAQPage <script type="application/ld+json" data-prerender="faqpage">
@@ -131,7 +196,6 @@ function main() {
         });
         continue;
       }
-      // Spot-check one entry's shape.
       const first = main[0];
       if (
         !first ||
