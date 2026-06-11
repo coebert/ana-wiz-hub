@@ -8,6 +8,7 @@ import CPETNinePanelDiagram from "@/components/diagrams/CPETNinePanelDiagram";
 import { DiagramSection } from "@/components/DiagramSection";
 import { CheckCircle2, AlertTriangle, XCircle, FlaskConical, Heart } from "lucide-react";
 import { Exam } from "@/data/curriculum";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const PreoperativeAssessmentTopicWorkedExamples: WorkedExample[] = [
   {
@@ -36,6 +37,17 @@ const PreoperativeAssessmentTopicWorkedExamples: WorkedExample[] = [
     answer: "Use objective risk stratification (RCRI, NT-proBNP, CPET) and shared decision-making rather than subjective METs alone; pre-habilitate and plan critical care.",
     cites: ["NICE NG45", "AAGBI 2010", "BJA Educ 2019"],
   },
+];
+
+const tocItems = [
+  { id: "section-risk-assessment", label: "Risk Assessment", group: "Core" },
+  { id: "section-airway-assessment", label: "Airway Assessment", group: "Core" },
+  { id: "section-medication-management", label: "Medication Management", group: "Core" },
+  { id: "section-preoperative-investigations-nice-ng45-evidence-based-approach", label: "Preoperative Investigations", group: "Investigations" },
+  { id: "section-preoperative-blood-pressure-management", label: "Blood Pressure Management", group: "Optimisation" },
+  { id: "section-preoperative-anaemia-hb-targets-and-iron-therapy", label: "Anaemia & Iron Therapy", group: "Optimisation" },
+  { id: "section-glp-1-receptor-agonists-and-anaesthesia", label: "GLP-1 RA & Anaesthesia", group: "Emerging" },
+  { id: "section-cardiopulmonary-exercise-testing-cpet", label: "CPET", group: "Specialist" },
 ];
 
 const PreoperativeAssessmentTopic = () => {
@@ -78,8 +90,9 @@ const PreoperativeAssessmentTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6">
+        <TopicTableOfContents items={tocItems} />
         {/* 1. Broadest: overall risk stratification frameworks */}
-        <div>
+        <div id="section-risk-assessment" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Risk Assessment</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_01"]} />
           <p className="text-muted-foreground leading-relaxed mb-3">
@@ -101,7 +114,7 @@ const PreoperativeAssessmentTopic = () => {
         </div>
 
         {/* 2. Bedside clinical assessment — airway */}
-        <div>
+        <div id="section-airway-assessment" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Assessment</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_01", "CL_BK_01"]} />
           <div className="grid sm:grid-cols-3 gap-2">
@@ -122,7 +135,7 @@ const PreoperativeAssessmentTopic = () => {
         </div>
 
         {/* 3. Common chronic medication management */}
-        <div>
+        <div id="section-medication-management" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Medication Management</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_01"]} />
           <div className="overflow-x-auto">
@@ -149,6 +162,7 @@ const PreoperativeAssessmentTopic = () => {
 
       {/* 4. Broad evidence-based investigation framework */}
       <DiagramSection
+        id="section-preoperative-investigations-nice-ng45-evidence-based-approach"
         title="Preoperative Investigations — NICE NG45 Evidence-Based Approach"
         intro={
           <p>
@@ -248,6 +262,7 @@ const PreoperativeAssessmentTopic = () => {
 
       {/* 5. Common comorbidity — BP management */}
       <DiagramSection
+        id="section-preoperative-blood-pressure-management"
         title="Preoperative Blood Pressure Management"
         intro={
           <p>
@@ -315,6 +330,7 @@ const PreoperativeAssessmentTopic = () => {
 
       {/* 6. Specialist optimisation — patient blood management */}
       <DiagramSection
+        id="section-preoperative-anaemia-hb-targets-and-iron-therapy"
         title="Preoperative Anaemia — Hb Targets & Iron Therapy"
         intro={
           <p>
@@ -438,7 +454,7 @@ const PreoperativeAssessmentTopic = () => {
 
       {/* 7. Specialist niche — emerging GLP-1 RA aspiration risk */}
       <section className="space-y-6">
-        <div>
+        <div id="section-glp-1-receptor-agonists-and-anaesthesia" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">GLP-1 Receptor Agonists & Anaesthesia</h2>
           <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_01"]} />
           <p className="text-muted-foreground leading-relaxed mb-3">
@@ -489,7 +505,7 @@ const PreoperativeAssessmentTopic = () => {
         </div>
 
         {/* 8. Most specialist — CPET tertiary investigation */}
-        <div>
+        <div id="section-cardiopulmonary-exercise-testing-cpet" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiopulmonary Exercise Testing (CPET)</h2>
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_01"]} />
           <p className="text-muted-foreground leading-relaxed mb-3">

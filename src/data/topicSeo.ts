@@ -261,5 +261,11 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Airway management", "Rapid sequence induction", "RSI anaesthesia", "DAS algorithm", "Difficult airway", "Awake fibreoptic intubation", "Cricothyroidotomy", "Front-of-neck access", "CICO"],
     keywords: ["airway management FRCA", "rapid sequence induction", "DAS 2015 algorithm", "difficult airway", "awake fibreoptic intubation", "supraglottic airway", "videolaryngoscopy", "cricothyroidotomy", "CICO scalpel bougie tube", "NAP4"],
   },
+  "preoperative-assessment": {
+    title: "Preoperative Assessment: RCRI, CPET & NICE NG45 | FRCA",
+    description: "Preoperative assessment for FRCA/FFICM: ASA, RCRI, SORT, CPET thresholds, NICE NG45 investigations, medication management and PBM.",
+    aliases: ["Preoperative assessment", "Perioperative risk stratification", "RCRI", "SORT", "CPET", "NICE NG45", "Patient blood management", "Pre-op anaemia"],
+    keywords: ["preoperative assessment FRCA", "RCRI", "CPET anaerobic threshold", "NICE NG45", "patient blood management", "pre-op anaemia"],
+  },
 };
 
