@@ -115,7 +115,7 @@ const VascularAccessDevicesTopic = () => {
               <DwellTimeInfographic />
             </DiagramSection>
           </ExamSection>
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          $<ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               How to classify vascular access
             </h2>
@@ -158,7 +158,7 @@ const VascularAccessDevicesTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          $<ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Peripheral cannulae
             </h2>
@@ -242,7 +242,7 @@ const VascularAccessDevicesTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          $<ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Multi-lumen central venous catheter (CVC)
             </h2>
@@ -530,7 +530,7 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          $<ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Choosing a device — clinical scenarios
             </h2>
