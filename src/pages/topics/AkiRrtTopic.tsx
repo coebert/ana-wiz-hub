@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
@@ -12,6 +13,43 @@ import { akiRrtQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
+const akiFaqs: Array<[string, string]> = [
+  [
+    "How is AKI defined and staged using KDIGO 2012?",
+    "KDIGO defines AKI as ANY of: a rise in serum creatinine of ≥ 26.5 µmol/L (0.3 mg/dL) within 48 hours; or a rise to ≥ 1.5 × baseline known or presumed to have occurred within the prior 7 days; or urine output < 0.5 mL/kg/h for 6 hours. Staging: Stage 1 = creatinine 1.5–1.9 × baseline (or ↑ ≥ 26.5 µmol/L) OR UO < 0.5 mL/kg/h for 6–12 h; Stage 2 = 2.0–2.9 × baseline OR UO < 0.5 mL/kg/h for ≥ 12 h; Stage 3 = ≥ 3.0 × baseline OR creatinine ≥ 354 µmol/L OR initiation of RRT OR (< 18 y) eGFR < 35 mL/min/1.73 m² OR UO < 0.3 mL/kg/h ≥ 24 h OR anuria ≥ 12 h. Stage by whichever criterion (creatinine or urine output) is worst.",
+  ],
+  [
+    "What are the AEIOU indications for renal replacement therapy?",
+    "A — refractory Acidosis (pH < 7.15 despite optimal therapy); E — refractory Electrolyte disturbance, classically hyperkalaemia K⁺ > 6.5 mmol/L or rising despite medical management; I — Intoxication with a dialysable toxin (methanol, ethylene glycol, salicylates, lithium, valproate, metformin-associated lactic acidosis); O — fluid Overload refractory to diuretics, especially with hypoxaemia; U — Uraemic complications (pericarditis, encephalopathy, neuropathy, bleeding diathesis, severe symptomatic uraemia, typically urea > 30 mmol/L). These are the conventional/emergency triggers retained after STARRT-AKI and AKIKI showed no benefit from pre-emptive initiation.",
+  ],
+  [
+    "What did STARRT-AKI, AKIKI and IDEAL-ICU tell us about timing of RRT initiation?",
+    "AKIKI (Gaudry, NEJM 2016, n = 620) randomised KDIGO stage 3 AKI without emergent indications to early (within 6 h) vs delayed RRT (only on conventional indication) — no 60-day mortality difference (48.5% vs 49.7%); 49% of the delayed arm avoided RRT entirely. IDEAL-ICU (Barbar, NEJM 2018, n = 488) in septic shock with RIFLE-F: early (12 h) vs delayed (48 h) — no 90-day mortality difference; stopped early for futility. STARRT-AKI (Bagshaw, NEJM 2020, n = 3 019, the definitive trial) compared accelerated (within 12 h) vs standard initiation — no 90-day mortality difference (43.9% vs 43.7%) and the accelerated arm had MORE dialysis dependence at 90 days (10.4% vs 6.0%) and more adverse events. Conclusion: wait for conventional AEIOU triggers; do not initiate pre-emptively.",
+  ],
+  [
+    "When should I choose CRRT, IHD, SLED or peritoneal dialysis?",
+    "CRRT (CVVHDF most commonly in UK): first-line in the haemodynamically unstable patient, raised ICP (slow solute shift avoids cerebral oedema), and where continuous fluid removal is needed. Effluent dose 20–25 mL/kg/h (RENAL and ATN trials showed no benefit from higher doses — 35–40 mL/kg/h). IHD (intermittent haemodialysis, 3–4 h sessions): preferred in stable patients, urgent K⁺ or toxin removal where rapid clearance is wanted, mobilisation/rehabilitation, and to ease nurse workload. SLED / PIRRT (sustained low-efficiency dialysis, 6–12 h sessions): a hybrid useful when CRRT capacity is limited and patient is borderline-stable. PD: rarely used in adult ICU in the UK; standard in paediatric AKI and resource-limited settings. CONVINT and HEMODIAFE trials show no clear mortality difference between modalities in stable patients — choice is haemodynamics-led.",
+  ],
+  [
+    "How do I prescribe regional citrate anticoagulation safely and what are the pitfalls?",
+    "Regional citrate anticoagulation (RCA) is first-line in most UK ICUs (KDIGO 2012). Trisodium citrate is infused into the pre-filter line; it chelates ionised calcium in the circuit (target circuit iCa²⁺ < 0.35 mmol/L), then calcium is replaced into the patient post-filter (target systemic iCa²⁺ 1.0–1.2 mmol/L). Citrate is metabolised in the liver to bicarbonate (3 mol HCO₃⁻ per mol citrate). Monitor: systemic iCa²⁺ 4–6-hourly, total Ca²⁺ : ionised Ca²⁺ ratio (> 2.5 = citrate accumulation), acid-base, sodium (some citrate preparations are hypertonic). Pitfalls: citrate accumulation in liver failure or shock (rising tCa : iCa ratio, metabolic acidosis with anion gap, hypocalcaemia despite ongoing replacement) — switch to systemic anticoagulation or no anticoagulation; alkalosis from over-feeding citrate; hypernatraemia. RICH (Zarbock, JAMA 2020) showed RCA gave longer circuit life (47 h vs 26 h) and fewer bleeding events than systemic heparin, with similar mortality.",
+  ],
+  [
+    "How do I prevent contrast-induced AKI and is N-acetylcysteine still recommended?",
+    "Risk-stratify with the Mehran score (hypotension, IABP, CCF, age > 75, anaemia, diabetes, eGFR < 60, contrast volume). High risk = eGFR < 60 mL/min/1.73 m², diabetes, hypovolaemia, CCF, age > 75. Prevention: pre/post-procedure IV isotonic crystalloid 1 mL/kg/h for 6–12 h before and after; use iso-osmolar (iodixanol) or low-osmolar contrast; minimise contrast volume; withhold ACE-i / ARB / NSAID / metformin on the day of the procedure. PRESERVE (Weisbord, NEJM 2018, n = 5 177) showed N-acetylcysteine offered NO benefit over placebo, and saline was non-inferior to sodium bicarbonate. Statins given peri-procedure may attenuate risk in statin-naive patients (modest evidence). The major risk factor for AKI in modern practice is procedural haemodynamic instability rather than contrast itself.",
+  ],
+  [
+    "Which drugs require renal dose adjustment in AKI / CRRT and which are nephrotoxic?",
+    "Avoid where possible: NSAIDs, aminoglycosides (gentamicin, amikacin — therapeutic-drug monitoring mandatory if used), IV contrast in high-risk patients, ACE-i / ARB during AKI (then restart for long-term renoprotection), vancomycin without TDM, amphotericin B (use liposomal), tenofovir, calcineurin inhibitors at high trough. Opioids — avoid morphine (active metabolite M6G accumulates → respiratory depression) and pethidine (norpethidine → seizures); fentanyl, alfentanil and remifentanil are safe. Neuromuscular blockers — avoid pancuronium; cisatracurium (Hofmann elimination) and atracurium are first choice. Sugammadex is renally cleared but the sugammadex-rocuronium complex appears safe even in severe renal failure; avoid if eGFR < 30 by manufacturer label but widely used off-label. Antibiotics on CRRT need dose adjustment — meropenem, piperacillin-tazobactam, vancomycin and aminoglycosides need TDM. LMWH (dalteparin, enoxaparin) accumulates if CrCl < 30 — use UFH or anti-Xa monitoring.",
+  ],
+  [
+    "When and how do I manage severe hyperkalaemia in AKI?",
+    "Treat urgently if K⁺ > 6.5 mmol/L OR any K⁺ with ECG changes (peaked T waves, widened QRS, sine wave, bradyarrhythmia). 10 mL of 10% calcium chloride (or 30 mL 10% calcium gluconate) IV over 5–10 min — cardioprotective, onset within minutes, lasts 30–60 min, repeat as needed. Shift K⁺ intracellularly: 10 units soluble insulin in 50 mL 50% dextrose IV (or 100 mL 20% dextrose) over 15–30 min, monitor glucose hourly for 6 h (delayed hypoglycaemia in 10–20%); nebulised salbutamol 10–20 mg (additive with insulin/dextrose). Sodium bicarbonate only if profound metabolic acidosis. Remove K⁺: loop diuretic if responsive, oral / rectal potassium binders (patiromer, sodium zirconium cyclosilicate — replacing calcium resonium), or RRT (definitive in AKI). Address the cause: stop ACE-i / ARB / spironolactone / K⁺ supplements; treat rhabdomyolysis / tumour lysis; haemolysis sample? UK Renal Association 2020 guideline is the reference.",
+  ],
+];
+
 
 const tocItems = [
   { id: "toc-kdigo", label: "KDIGO Staging" },
