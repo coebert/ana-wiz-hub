@@ -225,6 +225,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Plastic surgery anaesthesia", "Free flap anaesthesia", "Microsurgery anaesthesia", "DIEP flap", "Digital replantation", "Head and neck reconstruction"],
     keywords: ["free flap anaesthesia", "DIEP flap", "microsurgery FRCA", "plastic surgery anaesthesia", "digital replantation"],
   },
+  "pain-medicine": {
+    title: "Pain Medicine: Multimodal, Neuropathic & Cancer | FRCA",
+    description: "FRCA Final & FFICM pain medicine: acute and chronic pain mechanisms, multimodal analgesia, neuropathic pain guidelines, CRPS, cancer pain, opioid rotation, SCS, and interventional techniques.",
+    aliases: ["Pain medicine", "Multimodal analgesia", "Neuropathic pain", "Chronic pain", "Cancer pain", "CRPS", "Spinal cord stimulation", "Opioid rotation"],
+    keywords: ["pain medicine FRCA", "multimodal analgesia", "neuropathic pain", "CRPS", "cancer pain", "opioid rotation", "spinal cord stimulation"],
+  },
   "hepatobiliary-transplant": {
     title: "Hepatobiliary & Transplant Anaesthesia: Liver Resection & LT | FRCA",
     description: "Hepatobiliary and transplant anaesthesia for FRCA Final: low CVP technique, Pringle manoeuvre, liver transplant phases, post-reperfusion syndrome, cirrhotic patient physiology.",
