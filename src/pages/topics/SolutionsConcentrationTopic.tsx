@@ -174,6 +174,7 @@ const SolutionsConcentrationTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={solutionsConcentrationFaqs} />
         </>
       }
     />
