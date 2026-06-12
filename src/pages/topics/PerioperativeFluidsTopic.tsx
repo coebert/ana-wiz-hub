@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { ExamSection } from "@/components/ExamSection";
@@ -14,6 +15,12 @@ const tocItems = [
   { id: "section-gdft", label: "Goal-Directed Fluid Therapy", group: "Core" },
   { id: "section-glycocalyx", label: "Glycocalyx & Revised Starling", group: "Core" },
   { id: "section-key-fluid-trials", label: "Key Fluid Trials", group: "Evidence" },
+];
+
+const perioperativeFluidsFaqs: Array<[string, string]> = [
+  ["Why are balanced crystalloids preferred over 0.9% saline for perioperative resuscitation?", "Large volumes of 0.9% saline cause hyperchloraemic metabolic acidosis and are associated with increased acute kidney injury and adverse renal events (SMART, SALT-ED). Balanced crystalloids (Hartmann's, Plasma-Lyte) have a more physiological chloride content."],
+  ["How is fluid responsiveness assessed in a mechanically ventilated patient?", "With dynamic indices such as stroke volume variation or pulse pressure variation >12–13%, in sinus rhythm with tidal volume ≥8 mL/kg; if these conditions are not met, use a passive leg-raise manoeuvre or a 250 mL fluid challenge with stroke-volume reassessment."],
+  ["When are starch-based colloids contraindicated?", "Hydroxyethyl starches should be avoided in sepsis and critical illness (CHEST, 6S — increased AKI and mortality) and are not licensed for ICU use in the UK or EU."],
 ];
 
 const PerioperativeFluidsTopic = () => {
@@ -143,6 +150,7 @@ const PerioperativeFluidsTopic = () => {
               'Albumin 4–5% reasonable for cirrhotic SBP and large-volume paracentesis; avoid in TBI (SAFE — increased mortality).',
             ]}
           />
+          <TopicFaqs faqs={perioperativeFluidsFaqs} />
         </>
       }
       workedExamples={[

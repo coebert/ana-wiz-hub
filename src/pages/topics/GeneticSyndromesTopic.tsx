@@ -1,5 +1,6 @@
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { ExamSection } from "@/components/ExamSection";
@@ -19,6 +20,12 @@ const tocItems = [
   { id: "section-acute-intermittent-porphyria", label: "Acute Intermittent Porphyria", group: "Metabolic" },
   { id: "section-syndrome-quick-reference", label: "Quick-Reference Grid", group: "Reference" },
   { id: "section-other-syndromes", label: "Other Syndromes", group: "Reference" },
+];
+
+const geneticSyndromesFaqs: Array<[string, string]> = [
+  ["How is malignant hyperthermia treated?", "Stop all volatile agents and suxamethonium, switch to TIVA, hyperventilate with 100% oxygen via a clean circuit, give IV dantrolene 2.5 mg/kg repeated up to 10 mg/kg (more if required), cool actively, and treat hyperkalaemia, acidosis and arrhythmias (AAGBI 2020)."],
+  ["Why is suxamethonium contraindicated in Duchenne and Becker muscular dystrophy?", "Even sub-clinical dystrophinopathy can precipitate rhabdomyolysis and hyperkalaemic cardiac arrest after suxamethonium or prolonged volatile exposure — TIVA with non-depolarising NMBs is mandatory."],
+  ["What are the airway considerations in Down syndrome?", "Macroglossia, narrow nasopharynx, subglottic stenosis (use a smaller ETT than predicted) and atlanto-axial instability (careful neck positioning, neutral head) — plus a high prevalence of congenital cardiac disease and obstructive sleep apnoea."],
 ];
 
 const GeneticSyndromesTopic = () => {
@@ -397,6 +404,7 @@ const GeneticSyndromesTopic = () => {
               'Marfan: aortic root dilatation/dissection risk — strict BP control, avoid hypertensive responses to laryngoscopy; cervical spine and lens instability.',
             ]}
           />
+          <TopicFaqs faqs={geneticSyndromesFaqs} />
         </>
       }
       workedExamples={[

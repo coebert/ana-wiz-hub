@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
@@ -64,6 +65,12 @@ const tocItems = [
   { id: "section-adrenal-disorders", label: "Adrenal Disorders", group: "Adrenal" },
   { id: "section-phaeochromocytoma", label: "Phaeochromocytoma", group: "Neuroendocrine" },
   { id: "section-carcinoid-syndrome", label: "Carcinoid Syndrome", group: "Neuroendocrine" },
+];
+
+const endocrineDiseaseFaqs: Array<[string, string]> = [
+  ["What perioperative glucose target and insulin strategy apply in diabetes?", "Aim for capillary blood glucose 6–10 mmol/L (acceptable 4–12). Continue 80% of usual long-acting basal insulin; use a variable-rate insulin infusion (VRIII) for prolonged starvation, complex surgery or poor glycaemic control (CPOC/JBDS 2023)."],
+  ["How is phaeochromocytoma prepared for surgery?", "α-blockade first (phenoxybenzamine or doxazosin titrated over 10–14 days) until orthostatic hypotension is achieved, followed by β-blockade only once α-blockade is established — never β-block first, as unopposed α-activity precipitates hypertensive crisis."],
+  ["How are major-surgery steroid requirements managed in chronic steroid users?", "Continue the usual dose plus IV hydrocortisone — typically 25 mg at induction for minor, 50 mg + 25 mg 8-hourly for moderate, and 100 mg + 50 mg 8-hourly for major surgery — to prevent Addisonian crisis from HPA-axis suppression."],
 ];
 
 const EndocrineDiseaseTopic = () => {
@@ -256,6 +263,7 @@ const EndocrineDiseaseTopic = () => {
               'Carcinoid crisis: treat with IV octreotide 50–100 µg bolus; avoid histamine-releasing drugs (morphine, atracurium), and catecholamines (worsen mediator release).',
             ]}
           />
+          <TopicFaqs faqs={endocrineDiseaseFaqs} />
         </ExamSection>
       }
     />

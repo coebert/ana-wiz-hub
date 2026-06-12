@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
@@ -83,6 +84,12 @@ const NeurologicalDiseaseTopicWorkedExamples: WorkedExample[] = [
     answer: "TIVA, minimise non-depolarising NMB with TOF monitoring, sugammadex reversal, elective post-op HDU/ICU and continuation of immunosuppression.",
     cites: ["BJA Educ MG 2018", "BJA Educ PD 2014", "BJA Educ Epilepsy 2015"],
   },
+];
+
+const neurologicalDiseaseFaqs: Array<[string, string]> = [
+  ["How do myasthenia gravis patients respond to neuromuscular blocking drugs?", "They are markedly sensitive to non-depolarising NMBs (use 10–20% of normal dose, ideally rocuronium with sugammadex reversal) and relatively resistant to suxamethonium. Quantitative neuromuscular monitoring is essential."],
+  ["What are the anaesthetic implications of Parkinson's disease?", "Never omit l-dopa (risk of neuroleptic malignant–like syndrome and rigidity); avoid D2-antagonists (metoclopramide, prochlorperazine, droperidol, haloperidol); and anticipate autonomic instability, aspiration risk and postoperative confusion."],
+  ["Why is suxamethonium dangerous more than 24 hours after spinal cord injury?", "Upregulation of extra-junctional acetylcholine receptors causes massive potassium efflux on depolarisation, producing life-threatening hyperkalaemia and cardiac arrest. Use a non-depolarising NMB instead."],
 ];
 
 const NeurologicalDiseaseTopic = () => {
@@ -449,6 +456,7 @@ const NeurologicalDiseaseTopic = () => {
               'Spinal cord injury >24 h: avoid suxamethonium (extra-junctional ACh receptors → hyperkalaemic arrest); high lesions risk autonomic dysreflexia.',
             ]}
           />
+          <TopicFaqs faqs={neurologicalDiseaseFaqs} />
         </ExamSection>
       }
     />

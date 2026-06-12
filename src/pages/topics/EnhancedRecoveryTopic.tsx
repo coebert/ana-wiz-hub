@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
@@ -67,6 +68,12 @@ const tocItems = [
   { id: "section-evidence-base", label: "Evidence Base", group: "Trials" },
   { id: "section-specialty-protocols", label: "Specialty Protocols", group: "Protocols" },
   { id: "section-implementation-audit", label: "Implementation & Audit", group: "Protocols" },
+];
+
+const enhancedRecoveryFaqs: Array<[string, string]> = [
+  ["What are the core preoperative elements of an ERAS pathway?", "Patient education, optimisation of comorbidities (anaemia, smoking, nutrition), avoidance of prolonged fasting with carbohydrate loading up to 2 hours before induction, and avoidance of routine mechanical bowel preparation in colorectal surgery."],
+  ["Why is goal-directed fluid therapy preferred over fixed-volume regimens in ERAS?", "Stroke-volume optimisation with small balanced crystalloid boluses titrated to dynamic indices reduces postoperative complications and length of stay compared with both liberal and overly restrictive fixed regimens (POM-O, OPTIMISE)."],
+  ["How does opioid-sparing analgesia fit into ERAS?", "A multimodal regimen — paracetamol, NSAIDs (where safe), regional or neuraxial blocks, dexamethasone and adjuncts such as lidocaine or ketamine — reduces opioid requirements, postoperative ileus and PONV, supporting earlier mobilisation and oral intake."],
 ];
 
 const EnhancedRecoveryTopic = () => {
@@ -368,6 +375,7 @@ const EnhancedRecoveryTopic = () => {
               'Audit compliance — ERAS benefit is dose-dependent (≥70% bundle compliance correlates with reduced LOS and morbidity).',
             ]}
           />
+          <TopicFaqs faqs={enhancedRecoveryFaqs} />
         </ExamSection>
       }
     />

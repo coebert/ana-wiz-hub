@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
@@ -94,6 +95,12 @@ const workedExamples: WorkedExample[] = [
       "Regional technique where feasible, individualised coagulation management guided by viscoelastic testing rather than INR, hepatic-friendly drug choices (propofol, fentanyl/remifentanil, cisatracurium, sevoflurane), MAP within 20% of baseline, reduced paracetamol dose, no NSAIDs, and HDU recovery with delirium and AKI surveillance.",
     cites: ["BJA Educ Liver 2010", "Teh 2007", "Northup 2018 Coagulation"],
   },
+];
+
+const hepaticDiseaseFaqs: Array<[string, string]> = [
+  ["How is preoperative risk stratified in cirrhosis for non-hepatic surgery?", "Combine Child-Pugh class (A/B/C) and MELD score — MELD <10 is low risk, 10–15 intermediate, and >15 high (>20 prohibitive for elective surgery). The VOCAL-Penn score outperforms MELD for surgical mortality prediction."],
+  ["Why should FFP not be used to 'correct' the INR in stable cirrhosis?", "Cirrhotic coagulopathy is a rebalanced state — both pro- and anti-coagulant factors are reduced. FFP raises portal pressure (worsening variceal bleeding risk) and adds volume without correcting the underlying defect; thromboelastography (ROTEM/TEG) guides targeted therapy."],
+  ["How is hepatorenal syndrome managed perioperatively?", "Splanchnic vasoconstrictor (terlipressin or noradrenaline) plus 20% human albumin (1 g/kg on day 1, then 20–40 g/day). Diuretics, large-volume crystalloid and low-dose dopamine all worsen outcome; definitive treatment is liver transplantation."],
 ];
 
 const HepaticDiseaseTopic = () => {
@@ -393,9 +400,10 @@ const HepaticDiseaseTopic = () => {
                 "Hepatorenal syndrome is treated with vasoconstrictor + albumin — diuretics, dopamine and aggressive crystalloid worsen outcome.",
                 "Paracetamol limit in established cirrhosis is 2–3 g/24 h — not 4 g.",
               ]}
-            />
-          </div>
-        </ExamSection>
+              />
+              <TopicFaqs faqs={hepaticDiseaseFaqs} />
+            </div>
+          </ExamSection>
       }
     />
   );

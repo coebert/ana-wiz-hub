@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { ExamSection } from "@/components/ExamSection";
@@ -53,6 +54,12 @@ const tocItems = [
   { id: "section-trauma-lines", label: "Trauma Lines", group: "Devices" },
   { id: "section-swan-ganz-long-term", label: "Swan-Ganz & Long-term Devices", group: "Specialist" },
   { id: "section-dwell-times-scenarios", label: "Dwell Times & Clinical Scenarios", group: "Evidence" },
+];
+
+const vascularAccessFaqs: Array<[string, string]> = [
+  ["How is the maximum safe infusion rate for a peripheral cannula determined?", "By Hagen–Poiseuille — flow is proportional to the fourth power of internal radius and inversely proportional to length. A short, wide-bore (16G or 14G) cannula delivers far greater flow than a longer central catheter of equivalent gauge."],
+  ["When is a midline preferred over a PICC?", "For peripherally compatible therapies of 1–4 weeks duration (e.g. antibiotics, fluids, non-irritant chemotherapy). Vesicants, parenteral nutrition or hyperosmolar/extreme-pH drugs require a central-tip device such as a PICC or CVC."],
+  ["What are the key complications of internal jugular CVC insertion?", "Carotid puncture, pneumothorax (lower than subclavian but not zero), arrhythmias from wire or catheter contact, air embolism, catheter-related bloodstream infection, and late venous stenosis or thrombosis. Ultrasound guidance is mandatory (NICE TA49)."],
 ];
 
 const VascularAccessDevicesTopic = () => {
@@ -579,6 +586,7 @@ const VascularAccessDevicesTopic = () => {
               ))}
             </div>
           </ExamSection>
+          <TopicFaqs faqs={vascularAccessFaqs} />
         </>
       }
       keyPoints={[
