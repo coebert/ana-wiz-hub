@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
@@ -48,6 +49,12 @@ const tocItems = [
   { id: "section-preoperative-anaemia-hb-targets-and-iron-therapy", label: "Anaemia & Iron Therapy", group: "Optimisation" },
   { id: "section-glp-1-receptor-agonists-and-anaesthesia", label: "GLP-1 RA & Anaesthesia", group: "Emerging" },
   { id: "section-cardiopulmonary-exercise-testing-cpet", label: "CPET", group: "Specialist" },
+];
+
+const preoperativeAssessmentFaqs: Array<[string, string]> = [
+  ["What is the prognostic value of CPET anaerobic threshold (AT) before major surgery?", "An AT <11 mL/kg/min predicts increased postoperative cardiopulmonary morbidity and 30/90-day mortality after major non-cardiac surgery; 11–14 mL/kg/min is intermediate risk and >14 mL/kg/min low risk (Older 1993; POM-HR)."],
+  ["When should elective non-cardiac surgery be deferred after PCI?", "At least 4 weeks after balloon angioplasty, 6 weeks (ideally 3 months) after a bare-metal stent, and 6 months (ideally 12 months) after a drug-eluting stent — to allow dual antiplatelet therapy without premature interruption (ACC/AHA 2024)."],
+  ["How is the Revised Cardiac Risk Index (Lee) interpreted?", "Six predictors (high-risk surgery, IHD, heart failure, cerebrovascular disease, insulin-treated diabetes, creatinine >177 µmol/L): 0 ≈ 0.4%, 1 ≈ 1%, 2 ≈ 2.4%, ≥3 ≈ 5.4% risk of a major cardiac event at 30 days."],
 ];
 
 const PreoperativeAssessmentTopic = () => {
@@ -538,6 +545,7 @@ const PreoperativeAssessmentTopic = () => {
               'Anaemia (Hb <130 g/L M, <120 g/L F) is an independent risk factor — investigate and treat with IV iron preoperatively (PBM).',
             ]}
           />
+          <TopicFaqs faqs={preoperativeAssessmentFaqs} />
         </ExamSection>
       }
     />

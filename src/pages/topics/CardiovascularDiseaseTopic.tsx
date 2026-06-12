@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
@@ -61,6 +62,12 @@ const tocItems = [
   { id: "section-arrhythmias-pacemakers-and-icds", label: "Arrhythmias, Pacemakers & ICDs", group: "Devices" },
   { id: "section-pulmonary-hypertension", label: "Pulmonary Hypertension", group: "Specialist" },
   { id: "section-adult-congenital-heart-disease", label: "Adult Congenital Heart Disease", group: "Specialist" },
+];
+
+const cardiovascularDiseaseFaqs: Array<[string, string]> = [
+  ["What are the haemodynamic goals for severe aortic stenosis?", "Maintain sinus rhythm, a normal or slightly low heart rate (60–80), adequate preload and high systemic vascular resistance — use phenylephrine or vasopressin first-line for hypotension, and avoid agents that drop SVR or cause tachycardia."],
+  ["How should a pacemaker-dependent patient be managed when monopolar diathermy is required?", "Reprogramme to an asynchronous mode (DOO/VOO) or apply a clinical magnet, position the diathermy return plate so the current path does not cross the device, use short bipolar bursts where possible, and check the device postoperatively."],
+  ["What are the anaesthetic principles in pulmonary hypertension?", "Avoid hypoxia, hypercarbia, acidosis, hypothermia and high airway pressures — all increase pulmonary vascular resistance. Maintain RV preload and coronary perfusion pressure, use noradrenaline or vasopressin for systemic hypotension, and have inhaled pulmonary vasodilators (NO, iloprost) available."],
 ];
 
 const CardiovascularDiseaseTopic = () => {
@@ -265,6 +272,7 @@ const CardiovascularDiseaseTopic = () => {
               'Eisenmenger / right-to-left shunt: meticulous IV de-airing, maintain SVR, avoid PVR rises — extremely high perioperative mortality.',
             ]}
           />
+          <TopicFaqs faqs={cardiovascularDiseaseFaqs} />
         </ExamSection>
       }
     />

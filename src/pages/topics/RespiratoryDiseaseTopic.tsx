@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
@@ -65,6 +66,12 @@ const tocItems = [
   { id: "section-obstructive-sleep-apnoea", label: "Obstructive Sleep Apnoea", group: "Sleep" },
   { id: "section-restrictive-lung-disease", label: "Restrictive Lung Disease", group: "Restrictive" },
   { id: "section-respiratory-infections", label: "Respiratory Infections", group: "Infections" },
+];
+
+const respiratoryDiseaseFaqs: Array<[string, string]> = [
+  ["How should the asthmatic patient be optimised before elective anaesthesia?", "Continue inhalers including on the day of surgery, ensure no recent exacerbation or URTI (defer 2–6 weeks if present), give nebulised salbutamol pre-induction if reactive, and prefer sevoflurane (bronchodilator) over desflurane (airway irritant)."],
+  ["What ventilation strategy minimises COPD-related complications intraoperatively?", "Lung-protective ventilation with tidal volume 6–8 mL/kg IBW, a prolonged expiratory time (low I:E ratio), permissive hypercapnia and judicious PEEP — to avoid dynamic hyperinflation and auto-PEEP."],
+  ["Why is OSA important in postoperative planning?", "STOP-BANG ≥5 indicates high risk of perioperative respiratory adverse events. Patients need opioid-sparing analgesia, CPAP available in recovery and on the ward, and extended monitoring; long-acting opioids and benzodiazepines should be avoided."],
 ];
 
 const RespiratoryDiseaseTopic = () => {
@@ -245,6 +252,7 @@ const RespiratoryDiseaseTopic = () => {
               'Recent URTI in children: defer elective surgery 2–4 weeks — increased perioperative respiratory adverse events (COLDS score).',
             ]}
           />
+          <TopicFaqs faqs={respiratoryDiseaseFaqs} />
         </ExamSection>
       }
     />
