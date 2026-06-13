@@ -20,7 +20,7 @@ import VivaLauncher from "@/components/VivaLauncher";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
 import { topicReferences } from "@/data/references";
-import { allTopics } from "@/data/curriculum";
+import { allTopics, sectionMeta } from "@/data/curriculum";
 import { topicSeo } from "@/data/topicSeo";
 
 type SectionExamMap = { exams: ExamTag[]; curriculumCodes?: string[] };
@@ -235,6 +235,33 @@ export const TopicTemplate = ({
         {medicalWebPageJsonLd && (
           <script type="application/ld+json">{JSON.stringify(medicalWebPageJsonLd)}</script>
         )}
+        {(() => {
+          const topicMeta = allTopics.find((t) => t.id === topicId);
+          const section = topicMeta ? sectionMeta[topicMeta.section] : null;
+          const breadcrumbItems: Array<{ name: string; item: string }> = [
+            { name: "Home", item: "https://anaesthesiacore.app/" },
+          ];
+          if (section) {
+            breadcrumbItems.push({
+              name: section.label,
+              item: `https://anaesthesiacore.app${section.path}`,
+            });
+          }
+          breadcrumbItems.push({ name: title, item: canonicalUrl });
+          const breadcrumbJsonLd = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: breadcrumbItems.map((b, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: b.name,
+              item: b.item,
+            })),
+          };
+          return (
+            <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+          );
+        })()}
       </Helmet>
       <div className="space-y-8 sm:space-y-10">
         <TopicExamFilterBar />
