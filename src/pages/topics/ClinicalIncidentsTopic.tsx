@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -10,6 +11,21 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 import { Link } from "react-router-dom";
+
+const clinicalIncidentsFaqs: Array<[string, string]> = [
+  [
+    "What is the immediate management of a never event in theatre?",
+    "Stop the procedure, ensure patient safety, escalate to consultant and theatre lead, preserve evidence (devices, packaging, monitor traces), follow local critical-incident pathway, complete a Duty of Candour conversation with the patient/family, and submit a Datix/StEIS report. A structured debrief and root-cause analysis follow within 72 hours."
+  ],
+  [
+    "How is a hot debrief structured after a critical incident?",
+    "Use the STOP5 model: Summarise the case, Things that went well, Opportunities to improve, Points to action, then Set a date for follow-up. Run within 30 minutes of the event, include the whole theatre team, focus on systems not individuals, and document outcomes in a learning log."
+  ],
+  [
+    "When must Duty of Candour be triggered?",
+    "When a notifiable safety incident causes moderate harm, severe harm, prolonged psychological harm, or death. The clinician must inform the patient (or NOK) as soon as reasonably practicable, provide a verbal and written apology, explain what happened, what will be done, and offer support. Failure is a regulatory breach (CQC Regulation 20)."
+  ]
+];
 
 const objectives = [
   "Recognise and manage perioperative anaphylaxis using the AAGBI/RCoA algorithm (adrenaline first)",
@@ -286,6 +302,8 @@ const ClinicalIncidentsTopic = () => {
               "Cannot intubate, cannot oxygenate: declare CICO, call for help, scalpel-bougie-tube cricothyroidotomy without delay.",
             ]}
           />
+          <TopicFaqs faqs={clinicalIncidentsFaqs} />
+
         </>
       }
     />

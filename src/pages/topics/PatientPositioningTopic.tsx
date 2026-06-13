@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { InlineRef } from "@/components/InlineRef";
@@ -15,6 +16,21 @@ import {
   ParkBenchDetailedDiagram,
   SittingPositionDetailedDiagram,
 } from "@/components/diagrams/PatientPositioningDiagrams";
+
+const patientPositioningFaqs: Array<[string, string]> = [
+  [
+    "What are the physiological consequences of steep Trendelenburg?",
+    "Increased ICP and IOP, cephalad shift of diaphragm with reduced FRC and atelectasis, increased airway pressures, facial and laryngeal oedema, conjunctival oedema, and increased risk of regurgitation. Cardiovascular: increased preload but reduced cardiac output if prolonged. Mitigate with limited tilt time, PEEP, and lung-protective ventilation."
+  ],
+  [
+    "Which nerves are most commonly injured by intraoperative positioning?",
+    "Ulnar nerve at the elbow (commonest — supine, arms tucked or abducted >90°), brachial plexus (shoulder abduction >90° or shoulder braces in Trendelenburg), common peroneal at the fibular head (lithotomy/lateral), and sciatic (sitting position). ASA Closed Claims show ulnar and brachial plexus injuries account for ~70 % of positioning claims."
+  ],
+  [
+    "How is perioperative visual loss prevented in prone surgery?",
+    "Avoid direct pressure on the globe (use Mayfield pins or a free-floating headrest with mirror check every 20 min), maintain head above heart, keep haematocrit >25 %, avoid prolonged hypotension, limit crystalloid, and consider staging cases predicted to exceed 6 h. ASA Practice Advisory on POVL (2019) recommends informed consent for high-risk prone spinal surgery."
+  ]
+];
 import {
   SupineIllustration,
   TrendelenburgIllustration,

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -7,6 +8,21 @@ import { TransportVentilationDiagram } from "@/components/diagrams/TransportVent
 import { transferMedicineQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const transferMedicineFaqs: Array<[string, string]> = [
+  [
+    "What are the AAGBI categories of inter-hospital transfer?",
+    "Category 1 — life- or limb-threatening (requires consultant anaesthetist and ICU nurse). Category 2 — urgent (specialty input needed but not immediate). Category 3 — non-urgent (repatriation). Category 4 — return to local hospital. Staffing, monitoring and vehicle choice escalate with category."
+  ],
+  [
+    "What is the minimum monitoring required for a critical-care transfer?",
+    "ECG, SpO₂, NIBP (every 5 min) or invasive arterial pressure, EtCO₂ if intubated, temperature, and infusion pump status. A means of measuring CVP if cardiovascularly unstable. All monitors must be battery-powered with ≥2× expected transfer duration and a printed transfer chart kept."
+  ],
+  [
+    "How do you calculate oxygen requirements for a ventilated transfer?",
+    "Oxygen needed (L) = minute ventilation (L/min) × FiO₂ × transfer time (min) × 2 (safety margin) + ventilator driving gas. A full E-cylinder contains ~680 L. Always carry at least double the calculated requirement and a self-inflating bag with reservoir as backup."
+  ]
+];
 
 const objectives = [
   "Apply current UK standards — primarily the Intensive Care Society (ICS) Guidance on the Transfer of the Critically Ill Adult (2019), supplemented by FICM/RCoA recommendations — to plan a safe inter-hospital transfer of the critically ill patient (decision, personnel, equipment)",
@@ -386,6 +402,8 @@ const TransferMedicineTopic = () => {
               "Hand-over with structured tool (SBAR/ATMIST), continuous monitoring throughout, and documented critical-incident review afterwards.",
             ]}
           />
+          <TopicFaqs faqs={transferMedicineFaqs} />
+
         </>
       }
     />

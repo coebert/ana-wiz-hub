@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -11,6 +12,21 @@ import { SedationDecisionGate } from "@/components/SedationDecisionGate";
 import { SedationDischargeChecklist } from "@/components/SedationDischargeChecklist";
 import { SedationCaseScenarios } from "@/components/SedationCaseScenarios";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const proceduralSedationFaqs: Array<[string, string]> = [
+  [
+    "What are the ASA levels of sedation and when does it become anaesthesia?",
+    "Minimal — anxiolysis, normal response to voice. Moderate ('conscious sedation') — purposeful response to voice/touch, airway and ventilation maintained. Deep — purposeful response only to repeated/painful stimulation, airway may need support. General anaesthesia — unrousable, often loss of airway and spontaneous ventilation. Sedation is a continuum; the practitioner must be able to rescue one level deeper than intended."
+  ],
+  [
+    "What monitoring is mandatory for procedural sedation?",
+    "Continuous pulse oximetry, ECG, NIBP every 3–5 min, level of consciousness, and capnography for any moderate or deep sedation (AAGBI/RCoA 2021). Supplemental oxygen, suction, and full resuscitation equipment must be immediately available, and the sedationist must have no other clinical role."
+  ],
+  [
+    "What are the discharge criteria after procedural sedation?",
+    "Return to baseline conscious level and orientation, stable vital signs for ≥30 min, able to tolerate oral fluids, controlled pain and PONV, can mobilise to pre-sedation level, and a responsible adult escort with written instructions. Modified Aldrete or PADSS scores are commonly used."
+  ]
+];
 
 const objectives = [
   "Define sedation and distinguish minimal, moderate, deep sedation and general anaesthesia (ASA continuum)",
@@ -469,6 +485,8 @@ const ProceduralSedationTopic = () => {
               "Discharge only after return to baseline conscious level, stable observations, oral intake tolerated and responsible adult escort.",
             ]}
           />
+          <TopicFaqs faqs={proceduralSedationFaqs} />
+
         </>
       }
     />

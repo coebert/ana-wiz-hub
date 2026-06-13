@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -6,6 +7,21 @@ import { daySurgeryQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+
+const daySurgeryFaqs: Array<[string, string]> = [
+  [
+    "What BMI is acceptable for day-case surgery?",
+    "There is no absolute BMI cutoff. BADS guidance is to assess functional capacity, comorbidity (especially OSA), and surgical complexity rather than weight alone. Many UK units accept BMI up to 50 for appropriate procedures, provided the patient meets all other day-case criteria and a suitable airway plan is in place."
+  ],
+  [
+    "When is voiding mandatory before day-case discharge?",
+    "After spinal/epidural anaesthesia, inguinal/femoral hernia repair, and perianal/urological surgery — because of the risk of urinary retention. For most other day-case procedures, voiding is not required as long as the patient is well, drinking, and has clear instructions on when to seek help if retention develops."
+  ],
+  [
+    "How should a patient with STOP-BANG ≥5 be managed for day surgery?",
+    "Stratify as high OSA risk. Use opioid-sparing multimodal analgesia, prefer regional techniques, avoid long-acting sedatives, and monitor for ≥3 h post-op with continuous SpO₂. CPAP-dependent patients should bring their device. Many units admit STOP-BANG ≥5 patients overnight after general anaesthesia."
+  ]
+];
 
 const objectives = [
   "Apply BADS-aligned criteria to select patients suitable for day-case surgery",
@@ -133,6 +149,8 @@ const DaySurgeryTopic = () => {
               "Avoid long-acting opioids; ensure a responsible adult, written information and 24-h contact details before discharge.",
             ]}
           />
+          <TopicFaqs faqs={daySurgeryFaqs} />
+
         </>
       }
     />
