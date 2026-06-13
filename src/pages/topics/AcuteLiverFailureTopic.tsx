@@ -1,6 +1,7 @@
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { acuteLiverFailureQuestions } from "@/data/quizzes";
 import CLIFCACLFDiagram from "@/components/diagrams/CLIFCACLFDiagram";
 import ALFCerebralOedemaDiagram from "@/components/diagrams/ALFCerebralOedemaDiagram";
