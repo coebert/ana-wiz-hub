@@ -155,6 +155,7 @@ const PostopHighRiskIcuTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Defining the High-Risk Surgical Patient" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -366,6 +367,7 @@ const PostopHighRiskIcuTopic = () => {
           />
         </>
           <TopicFaqs faqs={postopHighRiskIcuFaqs} />
+        </>
       }
     />
   );

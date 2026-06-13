@@ -113,6 +113,7 @@ const NonTechnicalSkillsTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <ExamSection
             id="context"
             exams={[Exam.FFICM, Exam.EDIC]}
@@ -300,6 +301,7 @@ const NonTechnicalSkillsTopic = () => {
           />
         </>
           <TopicFaqs faqs={nonTechnicalSkillsFaqs} />
+        </>
       }
     />
   );

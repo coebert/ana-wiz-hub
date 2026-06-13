@@ -168,6 +168,7 @@ const ToxicologyTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.10"]}>
             <CollapsibleSubsection title="General Principles" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -400,6 +401,7 @@ const ToxicologyTopic = () => {
           />
         </>
           <TopicFaqs faqs={toxicologyFaqs} />
+        </>
       }
     />
   );

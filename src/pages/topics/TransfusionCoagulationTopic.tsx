@@ -113,6 +113,7 @@ const TransfusionCoagulationTopic = () => {
       ]}
       coreConcepts={
         <>
+        <>
           <ExamSection id="cascade" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Coagulation Cascade — Foundations" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -550,6 +551,7 @@ const TransfusionCoagulationTopic = () => {
           />
         </>
           <TopicFaqs faqs={transfusionCoagulationFaqs} />
+        </>
       }
     />
   );

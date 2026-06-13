@@ -155,6 +155,7 @@ const AcutePancreatitisTopic = () => {
         workedExamples: ["IAP/APA 2013", "Atlanta 2012", "WATERFALL 2022"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
         <section className="space-y-6">
           {/* Definition */}
@@ -507,6 +508,7 @@ const AcutePancreatitisTopic = () => {
       </section>
       </ExamSection>
           <TopicFaqs faqs={acutePancreatitisFaqs} />
+        </>
       }
     />
   );

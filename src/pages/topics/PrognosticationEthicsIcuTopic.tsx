@@ -127,6 +127,7 @@ const PrognosticationEthicsIcuTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <ExamSection id="diagrams" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Interactive Tools" defaultOpen>
             <PostCardiacArrestProgDiagram />
@@ -331,6 +332,7 @@ const PrognosticationEthicsIcuTopic = () => {
           />
         </>
           <TopicFaqs faqs={prognosticationEthicsIcuFaqs} />
+        </>
       }
     />
   );

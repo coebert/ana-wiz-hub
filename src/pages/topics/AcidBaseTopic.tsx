@@ -107,6 +107,7 @@ const AcidBaseTopic = () => {
       ]}
       coreConcepts={
         <>
+        <>
           <TopicTableOfContents items={tocItems} />
           <ExamSection id="section-systematic-abg" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4"]}>
             <CollapsibleSubsection title="Systematic ABG Interpretation" defaultOpen>
@@ -561,6 +562,7 @@ const AcidBaseTopic = () => {
           />
         </>
           <TopicFaqs faqs={acidBaseFaqs} />
+        </>
       }
     />
   );

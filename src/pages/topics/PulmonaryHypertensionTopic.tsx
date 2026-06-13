@@ -129,6 +129,7 @@ const PulmonaryHypertensionTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <p className="text-muted-foreground leading-relaxed">
             Pulmonary hypertension is a heterogeneous group of disorders united by elevated pulmonary vascular resistance and right-ventricular vulnerability. Perioperative and ICU mortality is high; the central principle is to protect the right ventricle by maintaining systemic perfusion pressure above pulmonary pressure while avoiding any insult that acutely raises PVR.
           </p>
@@ -441,6 +442,7 @@ const PulmonaryHypertensionTopic = () => {
           />
         </>
           <TopicFaqs faqs={pulmonaryHypertensionFaqs} />
+        </>
       }
     />
   );

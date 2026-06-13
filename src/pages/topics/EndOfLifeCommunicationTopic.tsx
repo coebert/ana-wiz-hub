@@ -114,6 +114,7 @@ const EndOfLifeCommunicationTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <ExamSection
             id="context"
             exams={[Exam.FFICM, Exam.EDIC]}
@@ -302,6 +303,7 @@ const EndOfLifeCommunicationTopic = () => {
           />
         </>
           <TopicFaqs faqs={endOfLifeCommunicationFaqs} />
+        </>
       }
     />
   );

@@ -120,6 +120,7 @@ const OrganDonationTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <ExamSection id="types" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Types of Organ Donation" defaultOpen>
             <div className="grid sm:grid-cols-2 gap-3">
@@ -295,6 +296,7 @@ const OrganDonationTopic = () => {
           />
         </>
           <TopicFaqs faqs={organDonationFaqs} />
+        </>
       }
     />
   );

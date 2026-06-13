@@ -150,6 +150,7 @@ const BronchospasticFailureTopic = () => {
         workedExamples: ["GOLD COPD 2023", "BJA Educ Asthma 2017", "GINA 2023"],
       }}
       coreConcepts={
+        <>
     <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-8 mb-10">
 
@@ -635,6 +636,7 @@ const BronchospasticFailureTopic = () => {
           />
     </ExamSection>
           <TopicFaqs faqs={bronchospasticFailureFaqs} />
+        </>
       }
     />
   );

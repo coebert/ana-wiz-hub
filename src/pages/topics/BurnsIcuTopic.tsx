@@ -142,6 +142,7 @@ const BurnsIcuTopic = () => {
       ]}
       coreConcepts={
         <>
+        <>
           <ExamSection id="pathophysiology" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Pathophysiology of the Major Burn" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -262,6 +263,7 @@ const BurnsIcuTopic = () => {
           />
         </>
           <TopicFaqs faqs={burnsIcuFaqs} />
+        </>
       }
     />
   );

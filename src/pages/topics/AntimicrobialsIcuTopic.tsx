@@ -114,6 +114,7 @@ const AntimicrobialsIcuTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <ExamSection
             id="pkpd"
             exams={[Exam.FFICM, Exam.EDIC]}
@@ -238,6 +239,7 @@ const AntimicrobialsIcuTopic = () => {
           />
         </>
           <TopicFaqs faqs={antimicrobialsIcuFaqs} />
+        </>
       }
     />
   );
