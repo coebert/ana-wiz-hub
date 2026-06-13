@@ -47,6 +47,12 @@ const MaintenanceFluidTool = lazy(() => import("./pages/tools/MaintenanceFluidTo
 const MaxLADoseTool = lazy(() => import("./pages/tools/MaxLADoseTool"));
 const ABGInterpreterTool = lazy(() => import("./pages/tools/ABGInterpreterTool"));
 
+// Long-form SEO notes
+const NotesIndex = lazy(() => import("./pages/notes/NotesIndex"));
+const SugammadexReversesRocuroniumNote = lazy(() => import("./pages/notes/SugammadexReversesRocuroniumNote"));
+const ContextSensitiveHalfTimeNote = lazy(() => import("./pages/notes/ContextSensitiveHalfTimeNote"));
+const P50FetalHaemoglobinNote = lazy(() => import("./pages/notes/P50FetalHaemoglobinNote"));
+
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
 const PhysiologySection = lazy(() => import("./pages/PhysiologySection"));
