@@ -10,6 +10,12 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
 
+const prognosticationEthicsIcuFaqs: Array<[string, string]> = [
+  ["What ethical framework underpins withdrawal of life-sustaining treatment?", "Four principles (Beauchamp & Childress): autonomy, beneficence, non-maleficence, justice — applied through best-interests assessment under the Mental Capacity Act 2005, involving family, IMCA if no representative, and shared decision-making."],
+  ["What is the distinction between withholding and withdrawing treatment?", "Ethically and legally equivalent in UK law — both are decisions not to provide treatment that is not in the patient's best interests; withdrawal is not euthanasia, as intent is to relieve suffering, not to cause death (GMC 2010, Aintree v James 2013)."],
+  ["How are prognostic scores used responsibly at end of life?", "APACHE IV, SOFA and clinical frailty scales inform but never determine individual decisions; integrate with disease trajectory, response to treatment and patient values — never withdraw on score alone."],
+];
+
 const objectives = [
   "Apply multimodal post-cardiac arrest prognostication (ERC/ESICM 2021) at ≥72 h with at least two concordant indicators.",
   "Use validated scoring systems (APACHE II/IV, SOFA, ICNARC, SAPS 3) appropriately for population-level outcome prediction.",

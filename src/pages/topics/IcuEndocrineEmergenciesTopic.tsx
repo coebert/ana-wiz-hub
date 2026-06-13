@@ -43,6 +43,12 @@ const PITFALLS_SOURCES: GuidelineSource[] = [
   { label: "BJA Educ — Vasopressors in shock", url: "https://www.bjaed.org/article/S2058-5349(19)30075-1/fulltext", detail: "Differential for catecholamine-resistant shock including adrenal insufficiency." },
 ];
 
+const icuEndocrineEmergenciesFaqs: Array<[string, string]> = [
+  ["How is diabetic ketoacidosis managed in the first hour?", "0.9% saline 500–1000 mL bolus, fixed-rate insulin 0.1 U/kg/h, replace K⁺ once <5.5 mmol/L (do not start insulin if K⁺ <3.3 mmol/L), and check ketones, glucose and bicarbonate hourly (JBDS 2021)."],
+  ["What distinguishes HHS from DKA and how does management differ?", "HHS: glucose >30, osmolality >320, minimal ketones, no acidosis, profound dehydration (often 8–10 L deficit); fluid resuscitation is the priority — insulin only when glucose stops falling with fluids alone, at lower rates (0.05 U/kg/h) to prevent osmotic shifts."],
+  ["How is myxoedema coma treated?", "IV levothyroxine 200–400 µg load then 50–100 µg daily (or T3 if available), IV hydrocortisone 100 mg 8-hourly until adrenal insufficiency excluded, passive rewarming, treat precipitants and avoid sedatives."],
+];
+
 const objectives = [
   "Recognise and treat diabetic ketoacidosis using the JBDS-IP fixed-rate insulin protocol, including the potassium paradox",
   "Differentiate hyperosmolar hyperglycaemic state (HHS) from DKA and adapt resuscitation accordingly",

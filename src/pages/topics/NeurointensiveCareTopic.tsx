@@ -38,6 +38,12 @@ const tocItems = [
   { id: "toc-synthesis", label: "Synthesis" },
 ];
 
+const neurointensiveCareFaqs: Array<[string, string]> = [
+  ["What are the CPP and ICP targets in severe traumatic brain injury?", "Aim for ICP <22 mmHg and CPP 60–70 mmHg (BTF 2016); avoid CPP >70 mmHg with fluid/pressor to prevent ARDS, and avoid CPP <50 mmHg which risks ischaemia."],
+  ["How are tier-3 interventions for refractory raised ICP escalated?", "After head-up, sedation, paralysis, CSF drainage and osmotherapy: consider barbiturate coma (thiopentone burst-suppression on EEG), moderate hypothermia (35–36 °C) or decompressive craniectomy (RESCUEicp showed reduced mortality but more vegetative survival)."],
+  ["When should hypertonic saline be preferred over mannitol?", "Hypertonic saline is preferred in hypovolaemia, hyponatraemia or established renal impairment; mannitol is contraindicated if serum osmolality >320 mOsm/kg or oliguria. Both reduce ICP via osmotic gradients but HTS also expands intravascular volume."],
+];
+
 const objectives = [
   "Apply BTF targets (ICP, CPP, PaCO₂, temperature, glucose) to prevent secondary brain injury in TBI.",
   "Escalate status epilepticus through benzodiazepine → second-line AED → general anaesthesia with EEG.",

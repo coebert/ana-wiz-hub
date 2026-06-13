@@ -7,6 +7,12 @@ import ALFCerebralOedemaDiagram from "@/components/diagrams/ALFCerebralOedemaDia
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 
+const acuteLiverFailureFaqs: Array<[string, string]> = [
+  ["What are the King's College criteria for liver transplantation in paracetamol-induced ALF?", "Arterial pH <7.30 after resuscitation, OR all three of: PT >100 s (INR >6.5), creatinine >300 µmol/L, and grade III/IV encephalopathy."],
+  ["How is raised intracranial pressure managed in acute liver failure?", "Aim for serum sodium 145–155 mmol/L with hypertonic saline, head-up 30°, mannitol or hypertonic saline boluses for surges, mild hypothermia (35–36 °C) if refractory, and avoid hypotonic fluids and hypercapnia."],
+  ["When is N-acetylcysteine indicated in non-paracetamol ALF?", "NAC improves transplant-free survival in early (grade I–II encephalopathy) non-paracetamol ALF (Lee et al., Gastroenterology 2009); start at the same 21-hour regimen as for paracetamol."],
+];
+
 const objectives = [
   "Define and classify ALF (hyperacute/acute/subacute) and identify common UK aetiologies.",
   "Deliver organ-system-based ICU management of ALF, including ICP control in grade III/IV encephalopathy.",
