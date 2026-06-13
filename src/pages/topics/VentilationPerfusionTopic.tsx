@@ -349,6 +349,8 @@ const VentilationPerfusionTopic = () => {
             ]}
           />
         </section>
+        <TopicFaqs faqs={ventilationPerfusionFaqs} />
+        </>
       }
     />
   );
