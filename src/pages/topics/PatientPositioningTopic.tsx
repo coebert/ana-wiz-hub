@@ -10,6 +10,12 @@ import { Exam } from "@/data/curriculum";
 import { RealismProvider, type RealismLevel } from "@/components/diagrams/patientAnatomy";
 import { cn } from "@/lib/utils";
 import {
+  ProneFaceProtectionDiagram,
+  ProneFrameComparisonDiagram,
+  MayfieldPinSitingDiagram,
+  ParkBenchDetailedDiagram,
+  SittingPositionDetailedDiagram,
+} from "@/components/diagrams/PatientPositioningDiagrams";
 
 const patientPositioningFaqs: Array<[string, string]> = [
   [
@@ -25,12 +31,6 @@ const patientPositioningFaqs: Array<[string, string]> = [
     "Avoid direct pressure on the globe (use Mayfield pins or a free-floating headrest with mirror check every 20 min), maintain head above heart, keep haematocrit >25 %, avoid prolonged hypotension, limit crystalloid, and consider staging cases predicted to exceed 6 h. ASA Practice Advisory on POVL (2019) recommends informed consent for high-risk prone spinal surgery."
   ]
 ];
-  ProneFaceProtectionDiagram,
-  ProneFrameComparisonDiagram,
-  MayfieldPinSitingDiagram,
-  ParkBenchDetailedDiagram,
-  SittingPositionDetailedDiagram,
-} from "@/components/diagrams/PatientPositioningDiagrams";
 import {
   SupineIllustration,
   TrendelenburgIllustration,
