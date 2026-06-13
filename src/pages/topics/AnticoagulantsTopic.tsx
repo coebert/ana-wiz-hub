@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { anticoagulantsQuiz } from "@/data/quizzes";
@@ -7,6 +8,21 @@ import BridgingAnticoagulationPathway from "@/components/diagrams/BridgingAntico
 import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const anticoagulantsFaqs: Array<[string, string]> = [
+  [
+    "What are the perioperative timing recommendations for stopping common anticoagulants?",
+    "Warfarin — stop 5 days before; bridge with LMWH if high thrombotic risk (mechanical valve, recent VTE). DOACs — stop 24–48 h if normal renal function (longer for dabigatran in CKD: 2–4 days). LMWH — prophylactic 12 h, treatment 24 h before neuraxial. Aspirin — usually continued for high cardiovascular risk except neurosurgery/posterior chamber eye. Clopidogrel — 7 days; ticagrelor — 5 days. AAGBI/RCoA regional anaesthesia and antithrombotic guidelines should be followed."
+  ],
+  [
+    "How are warfarin, heparin, dabigatran and rivaroxaban reversed?",
+    "Warfarin — vitamin K 5–10 mg IV (24 h to act) + 4-factor PCC (Beriplex) 25–50 IU/kg for life-threatening bleeding (immediate). Unfractionated heparin — protamine 1 mg per 100 IU (max 50 mg). LMWH — protamine reverses ~60 % of anti-Xa. Dabigatran — idarucizumab 5 g IV (specific antibody). Rivaroxaban/apixaban — andexanet alfa where available; otherwise 4-factor PCC 25–50 IU/kg."
+  ],
+  [
+    "What is HIT and how is it managed?",
+    "Heparin-Induced Thrombocytopenia: immune-mediated platelet activation by anti-PF4-heparin antibodies, causing thrombocytopenia (>50 % drop) AND paradoxical thrombosis 5–10 days after exposure. 4T score for probability. Stop ALL heparin (including flushes/HIT-coated catheters). Anticoagulate with a non-heparin agent (argatroban, danaparoid, or bivalirudin) — do NOT use platelet transfusion or warfarin acutely (paradoxical worsening). Lifelong avoidance of heparin."
+  ]
+];
 
 const heparinComparison = [
   { property: "Source", ufh: "Porcine intestinal mucosa", lmwh: "Depolymerised UFH" },
@@ -97,6 +113,7 @@ const AnticoagulantsTopic = () => {
         workedExamples: ["AAGBI 2016", "BJA Educ 2017"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
@@ -323,6 +340,8 @@ const AnticoagulantsTopic = () => {
           />
         </div>
       </ExamSection>
+          <TopicFaqs faqs={anticoagulantsFaqs} />
+        </>
       }
     />
   );

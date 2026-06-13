@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { DiagramSection } from "@/components/DiagramSection";
@@ -8,6 +9,21 @@ import { Exam } from "@/data/curriculum";
 import { NSAIDMechanismDiagram } from "@/components/diagrams/NSAIDMechanismDiagram";
 import { AAShuntAnimation } from "@/components/diagrams/AAShuntAnimation";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const nsaidsParacetamolFaqs: Array<[string, string]> = [
+  [
+    "What is the maximum dose of paracetamol and when must it be reduced?",
+    "Standard adult: 1 g qds (4 g/day). Reduce to 75 mg/kg/day (max 3 g/day) if weight <50 kg, chronic alcohol use, malnutrition, hepatic impairment, dehydration, glutathione depletion. IV dose: 15 mg/kg up to 1 g per dose, max 4 g/day in adults >50 kg, infused over 15 min. Toxicity above 150 mg/kg single dose (or >75 mg/kg in high-risk groups)."
+  ],
+  [
+    "What are the contraindications and cautions for NSAID use perioperatively?",
+    "Avoid in: renal impairment (eGFR <30), active GI bleeding/ulcer, severe heart failure, allergy/asthma exacerbated by NSAIDs (~10 % of asthmatics), 3rd-trimester pregnancy (premature ductus closure), platelet dysfunction or coagulopathy. Cautious use in elderly, hypovolaemia, ACEi/diuretics (triple whammy → AKI), bariatric surgery (anastomotic leak concerns), and major bone surgery (theoretical impaired healing — evidence weak)."
+  ],
+  [
+    "Outline paracetamol overdose management.",
+    "N-acetylcysteine (NAC) is the antidote — replenishes glutathione and detoxifies NAPQI. Indications: paracetamol level above the 100 mg/L line at 4 h on the UK nomogram (single line since 2012 — treat all above), staggered overdose, unknown timing, late presentation with deranged LFTs. Regime: 150 mg/kg over 1 h, 50 mg/kg over 4 h, 100 mg/kg over 16 h. King's College criteria identify need for transplant referral."
+  ]
+];
 
 const objectives = [
   "Compare COX-1 vs COX-2 selectivity and predict the GI / CV / renal trade-offs of common NSAIDs",
@@ -195,6 +211,8 @@ const NSAIDsParacetamolTopic = () => {
               "Paracetamol toxicity: NAPQI overwhelms glutathione → hepatic necrosis; treat with N-acetylcysteine guided by nomogram (140 mg/kg load).",
             ]}
           />
+          <TopicFaqs faqs={nsaidsParacetamolFaqs} />
+
         </>
       }
     />

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -16,6 +17,21 @@ import { BenzodiazepineComparisonDiagram } from "@/components/diagrams/Benzodiaz
 import { FlumazenilDiagram } from "@/components/diagrams/FlumazenilDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const ivAnaestheticsFaqs: Array<[string, string]> = [
+  [
+    "Compare propofol, thiopentone, ketamine and etomidate for RSI in shock.",
+    "Propofol — smooth, antiemetic, but profound cardiovascular depression; reduce dose 50–70 %. Thiopentone — fast onset, but venodilatation and direct myocardial depression; histamine release. Ketamine — preserves SVR/CO via sympathetic activation, ideal for shock (1–2 mg/kg IV); avoid in raised ICP if uncontrolled hypertension. Etomidate — best haemodynamic profile, but adrenal suppression (single dose still measurable for 24 h) — controversial in sepsis."
+  ],
+  [
+    "What is propofol infusion syndrome and how is it recognised?",
+    "Rare but lethal complication of prolonged high-dose propofol (>4 mg/kg/h for >48 h, especially in children/critically ill). Features: metabolic acidosis (lactate), rhabdomyolysis, hyperkalaemia, hyperlipidaemia, hepatomegaly, refractory bradycardia, cardiac failure. Mechanism: impaired mitochondrial fatty-acid oxidation. Prevention: limit to ≤4 mg/kg/h, monitor lactate/CK/triglycerides; if suspected — stop propofol, switch sedation, supportive care + RRT."
+  ],
+  [
+    "What are the advantages of TCI propofol over manual infusion?",
+    "Target-Controlled Infusion uses a pharmacokinetic model (Marsh, Schnider, Eleveld) and the patient's covariates to compute infusion rates that achieve a user-set plasma or effect-site concentration. Reduces over-/under-dosing on induction and maintenance, predicts wake-up time as concentration is titrated down. Limitations: no feedback on actual concentration — depth-of-anaesthesia monitoring (BIS) is recommended, particularly with NMBAs."
+  ]
+];
 
 const workedExamples: WorkedExample[] = [
   {
@@ -85,6 +101,7 @@ const IVAnaestheticsTopic = () => {
         workedExamples: ["AAGBI 2018", "Peck & Hill Ch.6"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
         <section className="mb-10">
@@ -445,6 +462,8 @@ const IVAnaestheticsTopic = () => {
           />
       </div>
       </ExamSection>
+          <TopicFaqs faqs={ivAnaestheticsFaqs} />
+        </>
       }
     />
   );

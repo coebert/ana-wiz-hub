@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { CompartmentModelDiagram } from "@/components/diagrams/CompartmentModelDiagram";
@@ -7,6 +8,21 @@ import { ADMECascadeDiagram } from "@/components/diagrams/ADMECascadeDiagram";
 import { pharmacokineticsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const pharmacokineticsFaqs: Array<[string, string]> = [
+  [
+    "Define volume of distribution and give a clinical example.",
+    "Vd = total amount of drug in the body / plasma concentration. It is an apparent volume — it can far exceed total body water if the drug binds extensively to tissues (digoxin Vd ~7 L/kg, amiodarone ~70 L/kg). A large Vd predicts a long elimination half-life (T½ = 0.693 × Vd / Cl) and means dialysis is ineffective for removal. Highly water-soluble, plasma-bound drugs (warfarin, heparin) have small Vd (~0.1 L/kg)."
+  ],
+  [
+    "What is context-sensitive half-time and why does it matter for TIVA?",
+    "CSHT = the time for plasma concentration to halve after stopping an infusion that has run for a particular duration (the 'context'). Unlike elimination half-life, CSHT lengthens with infusion duration as peripheral compartments fill. Remifentanil CSHT remains ~3 min regardless of duration (esterase metabolism); fentanyl CSHT rises from 12 min after 1 h to >200 min after 8 h — explains why fentanyl is unsuitable for prolonged TIVA."
+  ],
+  [
+    "Explain first-pass metabolism and its anaesthetic relevance.",
+    "Orally administered drugs absorbed from the gut pass via portal vein to the liver, where they may be largely metabolised before reaching the systemic circulation. Morphine has ~30 % oral bioavailability (heavy first pass), GTN is essentially zero (hence sublingual), midazolam ~40 %. Buccal, sublingual, IV, IM and rectal routes bypass first pass. Hepatic dysfunction increases bioavailability of high-extraction drugs unpredictably."
+  ]
+];
 
 const PharmacokineticsTopic = () => {
   return (

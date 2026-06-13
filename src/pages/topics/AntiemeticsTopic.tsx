@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -8,6 +9,21 @@ import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
 import { InlineRef } from "@/components/InlineRef";
+
+const antiemeticsFaqs: Array<[string, string]> = [
+  [
+    "What is the Apfel score and how does it guide PONV prophylaxis?",
+    "Four risk factors: female sex, non-smoker, history of PONV/motion sickness, postoperative opioid use. Each scores 1; predicted risk 10/20/40/60/80 %. Score 0–1: no prophylaxis or 1 agent. Score 2: 2 agents. Score 3–4: 3 agents + consider TIVA + avoid N₂O. Use drugs from different classes (5-HT3 antagonist + steroid + droperidol or cyclizine)."
+  ],
+  [
+    "Compare the mechanisms of common antiemetics.",
+    "Ondansetron — 5-HT3 antagonist at vagal afferents and chemoreceptor trigger zone; QT prolongation. Dexamethasone — anti-inflammatory and central effects; given at induction (delayed onset 1–2 h, duration 24 h). Cyclizine — H1 antihistamine + anticholinergic; useful for opioid- and motion-related PONV; tachycardia limits use in cardiac disease. Droperidol — D2 antagonist; effective but QT prolongation black-box. Aprepitant — NK1 antagonist; long-acting (24 h)."
+  ],
+  [
+    "What is the role of TIVA in PONV?",
+    "Propofol TIVA reduces PONV incidence by ~25 % compared with volatile anaesthesia (number needed to treat ~6 for high-risk patients). Mechanism is multifactorial — antiemetic action of propofol at low concentrations and avoidance of emetogenic volatiles. Combine with avoidance of N₂O, opioid-sparing techniques (regional, NSAIDs), and a multimodal antiemetic regimen for highest-risk patients."
+  ]
+];
 
 const objectives = [
   "Apply the Apfel score to estimate baseline PONV risk and stratify prophylaxis",
@@ -145,6 +161,8 @@ const AntiemeticsTopic = () => {
               "Cyclizine (H1) is useful but anticholinergic — tachycardia, sedation; avoid in severe heart failure and elderly.",
             ]}
           />
+          <TopicFaqs faqs={antiemeticsFaqs} />
+
         </>
       }
     />

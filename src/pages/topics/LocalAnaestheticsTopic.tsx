@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { PKaDiagram } from "@/components/diagrams/PKaDiagram";
@@ -9,6 +10,21 @@ import LocalAnaestheticStructures from "@/components/diagrams/LocalAnaestheticSt
 import PropofolLidocaineMechanismDiagram from "@/components/diagrams/PropofolLidocaineMechanismDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const localAnaestheticsFaqs: Array<[string, string]> = [
+  [
+    "What are the maximum safe doses of common local anaesthetics?",
+    "Lidocaine — 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine/levobupivacaine — 2 mg/kg (with or without adrenaline; toxicity dominates). Ropivacaine — 3–4 mg/kg. Prilocaine — 6 mg/kg plain, 8 mg/kg with adrenaline (max for Bier's block). Doses should be reduced 30–50 % in the elderly, pregnant, debilitated, and infused at the lowest effective concentration. Always calculate maximum mg before drawing up."
+  ],
+  [
+    "How does pKa of a local anaesthetic relate to onset of action?",
+    "Only the unionised form crosses the nerve membrane. The closer the pKa to physiological pH, the higher the proportion unionised, and the faster the onset. Lidocaine pKa 7.9 — ~25 % unionised → onset 2–5 min. Bupivacaine pKa 8.1 — ~15 % unionised → onset 10–15 min. In infected tissue (low pH), more drug is ionised → poor onset (textbook reason to avoid LA in abscesses). Chloroprocaine (pKa 8.7) is exception — fastest onset due to high concentration used."
+  ],
+  [
+    "Outline the management of local-anaesthetic systemic toxicity (LAST).",
+    "AAGBI 2010 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry."
+  ]
+];
 
 const workedExamples: WorkedExample[] = [
   {
@@ -79,6 +95,7 @@ const LocalAnaestheticsTopic = () => {
         workedExamples: ["AAGBI 2010", "BJA Educ 2016"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
@@ -368,6 +385,8 @@ const LocalAnaestheticsTopic = () => {
           />
         </div>
       </ExamSection>
+          <TopicFaqs faqs={localAnaestheticsFaqs} />
+        </>
       }
     />
   );
