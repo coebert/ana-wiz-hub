@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -8,6 +9,12 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import { BrainstemDeathCascadeDiagram } from "@/components/diagrams/BrainstemDeathCascadeDiagram";
+
+const organDonationFaqs: Array<[string, string]> = [
+  ["What are the UK criteria for brainstem death testing?", "Coma of known irreversible cause, exclusion of confounders (drugs, hypothermia <34 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, oculocephalic, oculovestibular, gag, cough) and apnoea test with PaCO₂ rise >0.5 kPa above 6.0 kPa with pH <7.40 (AoMRC 2008)."],
+  ["What physiological derangements occur after brainstem death?", "Catecholamine storm followed by vasodilation, diabetes insipidus (DDAVP/vasopressin), hypothermia, coagulopathy and pituitary failure; manage with the 'rule of 100s' — SBP >100, urine output ~100 mL/h, PaO₂ >100, Hb >100 g/L."],
+  ["How does DCD differ from DBD for donation?", "DCD (Maastricht III) occurs after planned withdrawal with death by circulatory criteria and a 5-minute 'no-touch' period; warm ischaemic time limits organ viability (typically <30 min for liver, <2 h for kidney) and outcomes are slightly inferior for some grafts but improve donor numbers."],
+];
 
 const objectives = [
   "Distinguish DBD and DCD pathways and the legal time of death for each.",
@@ -287,6 +294,7 @@ const OrganDonationTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={organDonationFaqs} />
       }
     />
   );

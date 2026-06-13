@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { ExamSection } from "@/components/ExamSection";
 import { antimicrobialsIcuQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
@@ -6,6 +7,12 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import AntibioticPKPDPrimer from "@/components/diagrams/AntibioticPKPDPrimer";
+
+const antimicrobialsIcuFaqs: Array<[string, string]> = [
+  ["Why does volume of distribution change for hydrophilic antibiotics in sepsis?", "Capillary leak and aggressive fluid resuscitation expand Vd for β-lactams, aminoglycosides and glycopeptides, often requiring loading doses (e.g. meropenem 2 g, vancomycin 25–30 mg/kg) to reach therapeutic levels."],
+  ["When should antibiotic infusions be used over bolus dosing?", "Time-dependent agents (β-lactams) benefit from extended (3–4 h) or continuous infusion when MICs are high or patient is critically ill (BLING-III, MERCY trials suggest mortality benefit in severe sepsis)."],
+  ["How is antibiotic de-escalation safely performed?", "Review at 48–72 h with cultures and biomarkers (procalcitonin trend); narrow spectrum, stop empirical cover not supported by cultures, and limit duration to 5–7 days for most infections (8 days for HAP/VAP — PneumA trial)."],
+];
 
 const objectives = [
   "Apply PK/PD principles (time-, concentration-, AUC/MIC-dependent killing) to antimicrobial dosing in critical illness.",
@@ -230,6 +237,7 @@ const AntimicrobialsIcuTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={antimicrobialsIcuFaqs} />
       }
     />
   );

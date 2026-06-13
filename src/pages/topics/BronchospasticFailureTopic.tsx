@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
@@ -9,6 +10,12 @@ import SedacondaDiagram from "@/components/diagrams/SedacondaDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+
+const bronchospasticFailureFaqs: Array<[string, string]> = [
+  ["How is severe acute asthma treated in ICU?", "High-flow O₂, back-to-back salbutamol/ipratropium nebs, IV hydrocortisone 100 mg, IV magnesium 2 g over 20 min; escalate to IV salbutamol or aminophylline; intubate for exhaustion, silent chest or PaCO₂ rising despite treatment (BTS 2019)."],
+  ["What ventilator strategy minimises gas trapping in severe asthma?", "Low rate (8–10/min), Vt 6 mL/kg, long expiratory time (I:E ≥1:4), permit hypercapnia (pH ≥7.20), apply minimal PEEP (3–5) below intrinsic PEEP, and use heavy sedation ± paralysis to prevent dyssynchrony."],
+  ["When should ECMO be considered in life-threatening asthma?", "Refractory hypercapnia (pH <7.20), dynamic hyperinflation with haemodynamic compromise, or barotrauma; VV-ECMO allows lung rest and CO₂ clearance with reported survival >80% in this group (ELSO registry)."],
+];
 
 const objectives = [
   "Apply BTS/SIGN criteria to recognise life-threatening and near-fatal asthma and escalate appropriately.",
@@ -627,6 +634,7 @@ const BronchospasticFailureTopic = () => {
             ]}
           />
     </ExamSection>
+          <TopicFaqs faqs={bronchospasticFailureFaqs} />
       }
     />
   );

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -10,6 +11,12 @@ import InhalationInjuryFlowchart from "@/components/diagrams/InhalationInjuryFlo
 import ParklandCalculator from "@/components/diagrams/ParklandCalculator";
 import BurnsIcuCaseStepper from "@/components/diagrams/BurnsIcuCaseStepper";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const burnsIcuFaqs: Array<[string, string]> = [
+  ["How is fluid resuscitation calculated for major burns?", "Modified Parkland: 3–4 mL/kg/%TBSA Hartmann's in the first 24 h, half in the first 8 h from time of burn; titrate to urine output 0.5 mL/kg/h (adults), 1 mL/kg/h (children) — avoid fluid creep."],
+  ["What are the indications for early intubation in inhalational injury?", "Stridor, hoarseness, facial/oropharyngeal burns, soot in the airway, carbonaceous sputum, hypoxia, large body-surface burns (>30%) or anticipated transfer; the airway can swell rapidly after fluid resuscitation."],
+  ["How is carbon monoxide poisoning managed in burns?", "100% oxygen via non-rebreather or ETT (reduces CO half-life from 5 h to ~80 min); consider hyperbaric oxygen if COHb >25%, loss of consciousness, neurological signs, pregnancy or persistent acidosis."],
+];
 
 const objectives = [
   "Recognise major-burn pathophysiology — early shock, SIRS, hypermetabolism and immune dysfunction",
@@ -254,6 +261,7 @@ const BurnsIcuTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={burnsIcuFaqs} />
       }
     />
   );

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Maximize2, Minimize2 } from "lucide-react";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { StickyTOC } from "@/components/StickyTOC";
@@ -14,6 +15,12 @@ import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+
+const mechanicalVentilationFaqs: Array<[string, string]> = [
+  ["What lung-protective tidal volume should I set in ARDS?", "Use 6 mL/kg predicted body weight (ARDSNet), aiming for a plateau pressure ≤30 cmH₂O and driving pressure ≤15 cmH₂O; permit hypercapnia provided pH ≥7.20."],
+  ["How do I choose PEEP in moderate–severe ARDS?", "Titrate to the lowest FiO₂ that achieves SpO₂ 88–95%, using a higher-PEEP/FiO₂ table (ALVEOLI) or oesophageal pressure-guided titration; reassess driving pressure after each step."],
+  ["When should I switch from volume to pressure control?", "Consider pressure control when peak–plateau gradient is high, there is patient–ventilator asynchrony, or in paediatrics/leak around the tube — it delivers a decelerating flow that may improve distribution but tidal volume becomes compliance-dependent."],
+];
 
 const objectives = [
   "Recognise the four indications for invasive ventilation and pick an initial mode based on the dominant pathology.",
@@ -1574,6 +1581,7 @@ const MechanicalVentilationTopic = () => {
             ]}
           />
     </>
+          <TopicFaqs faqs={mechanicalVentilationFaqs} />
       }
     />
   );

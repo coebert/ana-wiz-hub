@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { icuSedationDeliriumQuestions } from "@/data/quizzes";
@@ -7,6 +8,12 @@ import { CAMICUFlowchartDiagram } from "@/components/diagrams/CAMICUFlowchartDia
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { Cite } from "@/components/Cite";
+
+const icuSedationDeliriumFaqs: Array<[string, string]> = [
+  ["What does the ABCDEF bundle entail?", "Assess/treat pain, Both spontaneous awakening and breathing trials, Choice of sedation, Delirium monitoring, Early mobility, Family engagement; bundle adherence reduces ICU mortality and delirium (Pun et al., Crit Care Med 2019)."],
+  ["Which sedation agent is preferred for delirium prevention?", "Dexmedetomidine reduces delirium duration vs benzodiazepines (MENDS, SEDCOM trials) and may reduce mortality in septic patients (DESIST); propofol is acceptable but avoid benzodiazepines except for alcohol withdrawal or seizures."],
+  ["How is ICU delirium screened?", "CAM-ICU or ICDSC at least once per shift; CAM-ICU requires RASS ≥−3 and assesses acute change, inattention (letters A test), altered consciousness and disorganised thinking."],
+];
 
 const objectives = [
   "Score sedation depth using RASS and target light sedation (0 to −2) unless a specific indication for deep sedation exists.",
@@ -264,6 +271,7 @@ const IcuSedationDeliriumTopic = () => {
           />
         </section>
       </ExamSection>
+          <TopicFaqs faqs={icuSedationDeliriumFaqs} />
       }
     />
   );

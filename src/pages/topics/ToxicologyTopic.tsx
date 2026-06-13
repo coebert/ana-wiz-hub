@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { toxicologyQuestions } from "@/data/quizzes";
@@ -7,6 +8,12 @@ import ToxidromeComparatorDiagram from "@/components/diagrams/ToxidromeComparato
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const toxicologyFaqs: Array<[string, string]> = [
+  ["When is haemodialysis indicated in poisoning?", "For low-Vd, low-protein-bound, water-soluble toxins: salicylates (≥7.2 mmol/L or AKI), methanol/ethylene glycol, lithium (>4 mmol/L acute), valproate (severe), metformin-associated lactic acidosis, and theophylline."],
+  ["How is lipid emulsion used in local anaesthetic toxicity?", "20% Intralipid 1.5 mL/kg bolus followed by 0.25 mL/kg/min infusion, repeat boluses up to 3 doses and double the infusion if circulation not restored (AAGBI 2010); maximum 12 mL/kg in 30 min."],
+  ["What is the antidote and threshold for paracetamol overdose?", "N-acetylcysteine using the 21-h SNAP/IV regimen; treat if plasma paracetamol crosses the single 100 mg/L at 4 h treatment line, with staggered ingestion or unknown timing, or in established hepatotoxicity."],
+];
 
 const objectives = [
   "Apply the ABCDE approach to acute poisoning and identify when to escalate to NPIS/TOXBASE.",
@@ -392,6 +399,7 @@ const ToxicologyTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={toxicologyFaqs} />
       }
     />
   );

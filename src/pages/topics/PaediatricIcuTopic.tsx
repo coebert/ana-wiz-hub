@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -7,6 +8,12 @@ import PaediatricVitalsTable from "@/components/diagrams/PaediatricVitalsTable";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const paediatricIcuFaqs: Array<[string, string]> = [
+  ["What fluid resuscitation strategy is recommended for paediatric septic shock?", "10–20 mL/kg balanced crystalloid boluses with reassessment after each, up to 40–60 mL/kg in the first hour; start adrenaline or noradrenaline early if fluid-refractory rather than continuing boluses (FEAST, SSC paediatric 2020)."],
+  ["What is paediatric ARDS (PARDS) and how does ventilation differ?", "Berlin-equivalent criteria (PALICC 2015) using OI rather than P/F ratio; use Vt 5–8 mL/kg PBW, plateau ≤28 cmH₂O, permissive hypercapnia (pH ≥7.20), PEEP titrated 8–15, prone if OI ≥12."],
+  ["How is intraosseous access used in paediatric resuscitation?", "Insert in the proximal tibia (or distal femur/humerus) if IV access fails within 60–90 s in shock or arrest; flow rates approach IV after a 10 mL saline flush, and all resus drugs can be given at standard doses."],
+];
 
 const objectives = [
   "Apply WETFLAG and APLS age-banded vitals to deliver immediate weight-based therapy in a critically unwell child.",
@@ -357,6 +364,7 @@ const PaediatricIcuTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={paediatricIcuFaqs} />
       }
     />
   );

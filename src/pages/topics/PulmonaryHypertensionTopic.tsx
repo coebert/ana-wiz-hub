@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { pulmonaryHypertensionQuestions } from "@/data/quizzes";
@@ -8,6 +9,12 @@ import PHPathophysiologyDiagram from "@/components/diagrams/PHPathophysiologyDia
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const pulmonaryHypertensionFaqs: Array<[string, string]> = [
+  ["What is the haemodynamic definition of pulmonary hypertension?", "Mean PAP >20 mmHg at rest by right heart catheterisation (ESC/ERS 2022); precapillary if PAWP ≤15 and PVR >2 WU, postcapillary if PAWP >15."],
+  ["How should anaesthesia avoid acute right heart failure in PH?", "Maintain sinus rhythm, normovolaemia, avoid hypoxia/hypercapnia/acidosis/hypothermia (all raise PVR), preserve coronary perfusion with noradrenaline/vasopressin, and consider inhaled nitric oxide or epoprostenol for acute crises."],
+  ["When is mechanical support indicated in decompensated pulmonary hypertension?", "VA-ECMO as bridge to transplant or recovery when refractory to inotropes and inhaled pulmonary vasodilators; atrial septostomy is an alternative palliative option in select centres."],
+];
 
 const objectives = [
   "Define pulmonary hypertension using 2022 ESC/ERS haemodynamic criteria and classify by WHO group.",
@@ -433,6 +440,7 @@ const PulmonaryHypertensionTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={pulmonaryHypertensionFaqs} />
       }
     />
   );

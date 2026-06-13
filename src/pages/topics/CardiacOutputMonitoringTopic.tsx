@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { ExamSection } from "@/components/ExamSection";
 import { Exam } from "@/data/curriculum";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -14,6 +15,12 @@ import ThermodilutionDiagram from "@/components/diagrams/ThermodilutionDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import COPitfallsChecklist from "@/components/diagrams/COPitfallsChecklist";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const cardiacOutputMonitoringFaqs: Array<[string, string]> = [
+  ["What is the principle behind transpulmonary thermodilution (PiCCO)?", "Cold saline is injected centrally and the temperature change detected at a femoral arterial thermistor; the Stewart–Hamilton equation gives CO, and the curve also yields global end-diastolic volume and extravascular lung water."],
+  ["Why does the LVOT diameter dominate echo-derived CO error?", "Stroke volume = π(D/2)² × VTI, so a 10% error in LVOT diameter produces a 20% error in SV; meticulous measurement in mid-systole at the annulus is essential."],
+  ["What does a widened veno-arterial CO₂ gap (>6 mmHg) indicate?", "Inadequate cardiac output relative to metabolic demand — even with a normal ScvO₂; it suggests fluid responsiveness or need for inotropy in shock."],
+];
 
 const objectives = [
   "Describe the Fick principle, Stewart-Hamilton equation, Doppler equation and pulse contour analysis as the four physiological bases of bedside CO measurement.",
@@ -391,7 +398,7 @@ const CardiacOutputMonitoringTopic = () => {
         ],
         workedExamples: ["BJA Educ 2018", "BJA Educ 2014", "BJA Educ 2005"],
       }}
-      coreConcepts={<ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24"><CoreConcepts /></ExamSection>}
+      coreConcepts={<><ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24"><CoreConcepts /></ExamSection><TopicFaqs faqs={cardiacOutputMonitoringFaqs} /></>}
       workedExamples={workedExamples}
       keyPoints={keyPoints}
       topicId="cardiac-output-monitoring"

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { arrhythmiasEcgIcuQuestions } from "@/data/quizzes";
@@ -24,6 +25,12 @@ import {
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const arrhythmiasEcgIcuFaqs: Array<[string, string]> = [
+  ["How is new-onset AF in critical illness managed?", "Treat underlying sepsis/electrolytes; rate control with β-blocker (esmolol/metoprolol) or amiodarone if heart failure; DC cardioversion if haemodynamically unstable; anticoagulate per CHA₂DS₂-VASc balanced against bleeding risk."],
+  ["What is the initial management of polymorphic VT (torsades)?", "IV magnesium 2 g, correct K⁺ and Ca²⁺, stop QT-prolonging drugs, overdrive pacing or isoprenaline if bradycardia-dependent; DC shock if unstable."],
+  ["How are wide-complex tachycardias approached when the diagnosis is uncertain?", "Assume VT until proven otherwise — particularly with structural heart disease; treat with synchronised DC if unstable, amiodarone 300 mg IV if stable, avoid verapamil which can collapse VT into VF."],
+];
 
 const objectives = [
   "Apply a reproducible 8-step ECG analysis (rate, rhythm, P, PR, QRS, ST/T, QT, compare) to any ICU strip or 12-lead",
@@ -370,6 +377,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={arrhythmiasEcgIcuFaqs} />
       }
     />
   );

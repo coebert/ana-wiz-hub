@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
@@ -8,6 +9,12 @@ import GoalDirectedTherapyAnimation from "@/components/diagrams/GoalDirectedTher
 import ComplicationBundlesAnimation from "@/components/diagrams/ComplicationBundlesAnimation";
 import PostopRiskCalculators from "@/components/diagrams/PostopRiskCalculators";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const postopHighRiskIcuFaqs: Array<[string, string]> = [
+  ["How are high-risk surgical patients identified preoperatively?", "Combine clinical (frailty, METs <4, P-POSSUM), biochemical (NT-proBNP, troponin) and functional (CPET — anaerobic threshold <11 mL/kg/min, VO₂peak <15) measures; aggregate predicts 30-day mortality >5%."],
+  ["What is the evidence for goal-directed haemodynamic therapy?", "Meta-analyses (OPTIMISE, Cochrane 2013) show GDT with SV optimisation reduces complications and length of stay in moderate–high-risk surgery but no consistent mortality benefit; effect is greatest where baseline care is poor."],
+  ["When should postoperative ICU admission be offered?", "After major surgery in patients with predicted mortality >5%, intra-operative instability requiring vasopressors >2 h, massive transfusion, persistent lactate >2 mmol/L, or unplanned organ support — per RCoA/AAGBI peri-operative care guidelines."],
+];
 
 const objectives = [
   "Define the 'high-risk surgical patient' using validated risk scores (P-POSSUM, SORT, RCRI) and CPET-derived thresholds",
@@ -358,6 +365,7 @@ const PostopHighRiskIcuTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={postopHighRiskIcuFaqs} />
       }
     />
   );
