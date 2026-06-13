@@ -1478,6 +1478,7 @@ const NeurointensiveCareTopic = () => {
             ]}
           />
     </>
+          <TopicFaqs faqs={neurointensiveCareFaqs} />
       }
     />
   );

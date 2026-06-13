@@ -323,6 +323,7 @@ const PrognosticationEthicsIcuTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={prognosticationEthicsIcuFaqs} />
       }
     />
   );

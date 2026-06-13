@@ -370,6 +370,7 @@ const AcuteLiverFailureTopic = () => {
             ]}
           />
     </ExamSection>
+          <TopicFaqs faqs={acuteLiverFailureFaqs} />
       }
     />
   );

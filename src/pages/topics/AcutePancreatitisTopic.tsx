@@ -499,6 +499,7 @@ const AcutePancreatitisTopic = () => {
           />
       </section>
       </ExamSection>
+          <TopicFaqs faqs={acutePancreatitisFaqs} />
       }
     />
   );

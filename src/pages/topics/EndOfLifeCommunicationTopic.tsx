@@ -294,6 +294,7 @@ const EndOfLifeCommunicationTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={endOfLifeCommunicationFaqs} />
       }
     />
   );

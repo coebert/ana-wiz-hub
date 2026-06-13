@@ -345,6 +345,7 @@ const IcuEndocrineEmergenciesTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={icuEndocrineEmergenciesFaqs} />
       }
     />
   );
