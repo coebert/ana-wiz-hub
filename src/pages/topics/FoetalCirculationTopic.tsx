@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -6,6 +7,21 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { foetalCirculationQuestions } from "@/data/quizzes";
 import FoetalCirculationDiagram from "@/components/diagrams/FoetalCirculationDiagram";
 import { Exam } from "@/data/curriculum";
+
+const foetalCirculationFaqs: Array<[string, string]> = [
+  [
+    "Describe the three fetal shunts and what they become postnatally.",
+    "Ductus venosus — bypasses liver from umbilical vein to IVC; becomes ligamentum venosum. Foramen ovale — bypasses pulmonary circulation, RA → LA; becomes fossa ovalis (patent in 25 % of adults). Ductus arteriosus — bypasses lungs, pulmonary artery → aorta; becomes ligamentum arteriosum. All three shunt blood away from the non-functioning fetal lungs toward systemic circulation."
+  ],
+  [
+    "What triggers closure of the ductus arteriosus and how is it managed if it fails?",
+    "At birth: ↑PaO₂, ↓pulmonary vascular resistance, ↓circulating prostaglandins (placenta removed). Functional closure within 24 h, anatomical closure by 3 weeks. Persistent PDA in preterm infants is treated with indomethacin or ibuprofen (COX inhibitors reducing PGE₂). In duct-dependent congenital heart disease, prostaglandin E₁ infusion (alprostadil) is used to keep the duct OPEN until surgical repair."
+  ],
+  [
+    "Why is fetal haemoglobin (HbF) advantageous?",
+    "Two α + two γ chains (vs α₂β₂ in HbA). γ binds 2,3-DPG poorly → left-shifted curve with P50 ~2.5 kPa (vs 3.5 kPa in adult). Higher O₂ affinity allows the fetus to extract O₂ from maternal blood across the placenta (where umbilical venous PO₂ is only 4 kPa). HbF declines from 80 % at birth to <2 % by 6 months."
+  ]
+];
 
 const objectives = [
   "Identify the three foetal shunts and the role of each in directing oxygenated blood.",
@@ -239,6 +255,8 @@ const FoetalCirculationTopic = () => {
               <><strong>HbF</strong> sits left of adult Hb — facilitates placental O₂ uptake but means neonates desaturate quickly when offloading is impaired.</>,
             ]}
           />
+          <TopicFaqs faqs={foetalCirculationFaqs} />
+
         </>
       }
     />

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -8,6 +9,21 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { ChevronDown } from "lucide-react";
 import { Exam } from "@/data/curriculum";
 import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
+
+const ventilationPerfusionFaqs: Array<[string, string]> = [
+  [
+    "What are the West zones of the lung?",
+    "Zone 1 (apex) — alveolar pressure > arterial > venous; no flow (alveolar dead space). Zone 2 — arterial > alveolar > venous; flow driven by arterial − alveolar pressure ('waterfall'). Zone 3 (base) — arterial > venous > alveolar; flow driven by arterial − venous (continuous). Zone 1 normally absent but appears with hypotension, PEEP overshoot, or PE."
+  ],
+  [
+    "Define shunt and V/Q mismatch, and how does 100 % oxygen distinguish them?",
+    "Shunt — perfused but not ventilated (V/Q = 0); blood bypasses gas exchange entirely (pneumonia, atelectasis, ARDS, intracardiac). 100 % O₂ does NOT correct shunt (>30 % shunt: PaO₂ ceiling). V/Q mismatch — areas of low V/Q ratio; partial gas exchange occurs; 100 % O₂ corrects hypoxaemia by filling poorly ventilated alveoli with O₂. Differentiating the two guides therapy (PEEP/recruitment for shunt vs bronchodilators for mismatch)."
+  ],
+  [
+    "What is hypoxic pulmonary vasoconstriction and why does it matter for one-lung ventilation?",
+    "HPV — pulmonary arteriolar constriction in response to low alveolar O₂; diverts blood from poorly ventilated alveoli to better-ventilated regions, reducing shunt. Volatile anaesthetics ≥1 MAC blunt HPV (~20 % attenuation). For one-lung ventilation during thoracic surgery, TIVA preserves HPV better and may improve oxygenation; CPAP to the non-ventilated lung or PEEP to the dependent lung are rescue strategies."
+  ]
+];
 
 const objectives = [
   "Describe the regional V/Q distribution from apex to base in the upright lung.",

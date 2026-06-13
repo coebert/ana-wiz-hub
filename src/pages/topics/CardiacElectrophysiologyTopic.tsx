@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -15,6 +16,21 @@ import BradyarrhythmiaDiagram from "@/components/diagrams/BradyarrhythmiaDiagram
 import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
 import { DiagramTabs } from "@/components/diagrams/DiagramTabs";
 import { Exam } from "@/data/curriculum";
+
+const cardiacElectrophysiologyFaqs: Array<[string, string]> = [
+  [
+    "Describe the phases of the ventricular action potential.",
+    "Phase 0 — rapid depolarisation (Na⁺ in). Phase 1 — initial repolarisation (transient K⁺ out). Phase 2 — plateau (Ca²⁺ in balances K⁺ out, ~200 ms — accounts for refractory period and prevents tetany). Phase 3 — repolarisation (K⁺ out). Phase 4 — resting (−90 mV, maintained by Na⁺/K⁺ ATPase). The SA node is unique — no true Phase 4 rest, gradual Na⁺/Ca²⁺ pacemaker drift to threshold."
+  ],
+  [
+    "What is the QT interval, how is it corrected for heart rate, and why does QTc matter?",
+    "QT measured from start of Q to end of T (~400 ms at HR 60). Corrected QT (Bazett's): QTc = QT / √RR. Normal <440 ms (men), <460 ms (women). QTc >500 ms is high risk for torsades de pointes. Anaesthetic drugs that prolong QT: ondansetron, droperidol, sevoflurane, methadone, antimicrobials (macrolides, fluoroquinolones, antifungals). Check baseline ECG and avoid combinations in at-risk patients."
+  ],
+  [
+    "How does the SA node generate spontaneous action potentials?",
+    "No stable resting potential. Phase 4 'funny current' (If, a slow Na⁺ inflow through HCN channels) gradually depolarises the cell from −60 mV to −40 mV (threshold). At threshold, T-type then L-type Ca²⁺ channels open → upstroke (slow because no Na⁺ channels here). Repolarisation is by K⁺ efflux. Rate is modulated by vagal (ACh slows If) and sympathetic (NA accelerates If) input."
+  ]
+];
 
 const objectives = [
   "Contrast the fast and slow cardiac action potentials and identify the dominant ionic currents in each phase.",
@@ -282,6 +298,8 @@ const CardiacElectrophysiologyTopic = () => {
               <><strong>Phase 4 spontaneous depolarisation</strong> only occurs in pacemaker cells (SA/AV/Purkinje). Suppression by β-blockers ↓ HR; ischaemia of SA node may unmask latent pacemakers.</>,
             ]}
           />
+          <TopicFaqs faqs={cardiacElectrophysiologyFaqs} />
+
         </>
       }
     />

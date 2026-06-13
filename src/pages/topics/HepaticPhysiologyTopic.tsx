@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -8,6 +9,21 @@ import { hepaticPhysiologyQuestions } from "@/data/quizzes";
 import HepaticAcinusDiagram from "@/components/diagrams/HepaticAcinusDiagram";
 import PortalFirstPassDiagram from "@/components/diagrams/PortalFirstPassDiagram";
 import { Exam } from "@/data/curriculum";
+
+const hepaticPhysiologyFaqs: Array<[string, string]> = [
+  [
+    "Describe the hepatic blood supply.",
+    "Total flow ~1500 mL/min = 25 % of cardiac output. Hepatic artery (30 % of flow, 50 % of O₂ supply, 100 mmHg) and portal vein (70 % of flow, 50 % of O₂ supply, 10 mmHg). Hepatic arterial buffer response: when portal flow falls, hepatic artery dilates to compensate (adenosine-mediated). Anaesthesia reduces total flow ~30 % (volatile-induced sympatholysis and ↓CO)."
+  ],
+  [
+    "What are the major synthetic functions of the liver, and how are they assessed?",
+    "Synthesises all coagulation factors except VIII and vWF (made by endothelium); albumin (T½ 20 days); cholinesterase; glucose (gluconeogenesis); urea; bile salts; thrombopoietin. Assessment: INR (factor VII, T½ 4 h — best acute marker), albumin (chronic), ammonia (failure), bilirubin (excretory). LFTs (ALT, AST) reflect hepatocyte injury, not function."
+  ],
+  [
+    "Why are some drugs subject to high hepatic extraction and what is the implication?",
+    "Drugs with hepatic extraction ratio >0.7 (e.g. propofol, fentanyl, lidocaine, morphine) — clearance depends on hepatic blood flow (flow-limited). Reduced CO or hepatic blood flow (cirrhosis, shock, volatile anaesthesia) prolongs their action. Low-extraction drugs (e.g. diazepam, theophylline) depend on enzyme activity (capacity-limited) and are affected by enzyme induction/inhibition and protein binding."
+  ]
+];
 
 const objectives = [
   "Describe the dual hepatic blood supply, hepatic arterial buffer response, and the effect of anaesthesia on flow.",
@@ -268,6 +284,8 @@ const HepaticPhysiologyTopic = () => {
               <><strong>Hepatorenal syndrome</strong>: avoid nephrotoxins (NSAIDs, aminoglycosides, contrast) and treat with terlipressin + albumin.</>,
             ]}
           />
+          <TopicFaqs faqs={hepaticPhysiologyFaqs} />
+
         </>
       }
     />

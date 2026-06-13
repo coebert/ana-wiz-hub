@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -6,6 +7,21 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { OxygenDissociationCurve } from "@/components/diagrams/OxygenDissociationCurve";
 import { oxygenHaemoglobinQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+
+const oxygenHaemoglobinFaqs: Array<[string, string]> = [
+  [
+    "What causes a right shift of the oxygen-haemoglobin dissociation curve?",
+    "Right shift (lower affinity, easier offloading at tissues) is caused by ↑PCO₂, ↑H⁺ (acidaemia), ↑temperature, and ↑2,3-DPG (chronic hypoxia, anaemia). Mnemonic: 'CADET, face Right' — CO₂, Acid, DPG, Exercise, Temperature. The Bohr effect refers specifically to the CO₂/H⁺ shift in active tissues."
+  ],
+  [
+    "What is the P50 and why does fetal haemoglobin have a lower value?",
+    "P50 is the PO₂ at which haemoglobin is 50 % saturated — normally 3.5 kPa (26.6 mmHg) for adult HbA. HbF lacks β-chains (has γ-chains instead) which bind 2,3-DPG poorly, giving a left-shifted curve with P50 ~2.5 kPa. This higher O₂ affinity allows the fetus to extract O₂ from maternal blood across the placenta."
+  ],
+  [
+    "How does carbon-monoxide poisoning affect the dissociation curve?",
+    "CO binds Hb with ~240× the affinity of O₂, forming carboxyhaemoglobin which cannot carry O₂. It also left-shifts the residual oxy-Hb curve, impairing O₂ release to tissues. SpO₂ reads falsely normal (~100 %); diagnosis requires co-oximetry. Treat with 100 % O₂ (half-life 60 min on FiO₂ 1.0 vs 4–5 h on air) ± hyperbaric O₂ for severe cases."
+  ]
+];
 
 const objectives = [
   "Describe the structure of haemoglobin and explain why the ODC is sigmoid (cooperativity).",
@@ -221,6 +237,8 @@ const OxygenHaemoglobinTopic = () => {
               <><strong>Pre-oxygenation</strong> works by filling the FRC, not by raising SaO₂ further — gains apnoea time on the upper plateau.</>,
             ]}
           />
+          <TopicFaqs faqs={oxygenHaemoglobinFaqs} />
+
         </>
       }
     />

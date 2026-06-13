@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -7,6 +8,21 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { giPhysiologyQuestions } from "@/data/quizzes";
 import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
 import { Exam } from "@/data/curriculum";
+
+const gastrointestinalPhysiologyFaqs: Array<[string, string]> = [
+  [
+    "What are the current ASA fasting guidelines?",
+    "Clear fluids — 2 h. Breast milk — 4 h. Infant formula and light meal (toast) — 6 h. Fatty meal — 8 h. Recent ESAIC and APAGBI guidance encourages clear-fluid intake up to 1 h pre-op in children and adults (1-2-6 rule), reducing dehydration and improving comfort without increasing aspiration risk."
+  ],
+  [
+    "What factors increase the risk of aspiration?",
+    "Full stomach (emergency, trauma, recent meal, GI obstruction), pregnancy, hiatus hernia/GORD, raised intra-abdominal pressure (obesity, ascites), diabetic gastroparesis, opioid use, head injury, deep sedation without airway protection. Mendelson's syndrome (1946) — aspiration of acidic gastric contents (pH <2.5, volume >25 mL) causing chemical pneumonitis."
+  ],
+  [
+    "Outline the secretions and pH at each level of the GI tract.",
+    "Saliva — 1.5 L/day, pH 6–7 (amylase). Gastric — 2 L/day, pH 1–3 (HCl from parietal cells, pepsinogen, intrinsic factor). Pancreatic — 1.5 L/day, pH 8 (bicarbonate, enzymes). Bile — 0.5 L/day, pH 7–8 (salts, bilirubin). Small intestine — 1.5 L/day. Total ~7–9 L/day; >98 % is reabsorbed. Major fluid losses (high-output stoma, prolonged NG aspiration) require careful electrolyte replacement."
+  ]
+];
 
 const objectives = [
   "Describe the cellular control of gastric acid secretion and the receptor pharmacology that targets it.",
@@ -275,6 +291,8 @@ const GastrointestinalPhysiologyTopic = () => {
               <><strong>"Empty stomach"</strong> ≠ low risk: pyloric stenosis, achalasia and DKA may retain large volumes despite fasting.</>,
             ]}
           />
+          <TopicFaqs faqs={gastrointestinalPhysiologyFaqs} />
+
         </>
       }
     />

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -12,6 +13,21 @@ import VaccineTypesDiagram from "@/components/diagrams/VaccineTypesDiagram";
 import AsplenicVaccinationFlowchart from "@/components/diagrams/AsplenicVaccinationFlowchart";
 import ImmuneCellLineageDiagram from "@/components/diagrams/ImmuneCellLineageDiagram";
 import { Exam } from "@/data/curriculum";
+
+const haematologyImmunityFaqs: Array<[string, string]> = [
+  [
+    "Outline the coagulation cascade in the cell-based model.",
+    "Three overlapping phases: 1) Initiation — tissue factor exposed at injury site activates factor VII → small thrombin burst on TF-bearing cells. 2) Amplification — thrombin activates platelets, V, VIII, XI on the platelet surface. 3) Propagation — large-scale thrombin generation on activated platelets converts fibrinogen to fibrin. The classical extrinsic/intrinsic pathway model is a useful bedside framework but the cell-based model better reflects in-vivo coagulation."
+  ],
+  [
+    "What are the indications and ratios for major haemorrhage protocol?",
+    "Activate for ongoing bleeding requiring ≥4 units RBC in <1 h, or anticipated need. Initial pack: 4 units RBC + 4 units FFP + 1 pool platelets (1:1:1 ratio, replicates whole blood). Add cryoprecipitate when fibrinogen <1.5 g/L (or <2.0 g/L in obstetric haemorrhage). Tranexamic acid 1 g within 3 h (CRASH-2, WOMAN, MATTERs). Calcium 1 g for every 4 units (citrate chelation). Aim platelets >50, fibrinogen >1.5, INR <1.5, Ca >1.0, T >36, pH >7.2."
+  ],
+  [
+    "What is the difference between innate and adaptive immunity?",
+    "Innate — non-specific, immediate (mins–hrs), no memory. Components: physical barriers, neutrophils, macrophages, NK cells, complement, cytokines. Recognises pathogen-associated molecular patterns (PAMPs) via pattern-recognition receptors (e.g. TLRs). Adaptive — specific, delayed (days), generates memory. Components: T cells (cellular) and B cells/antibodies (humoral). Anaesthesia and surgery transiently impair both arms — clinically relevant in immunocompromised and cancer patients."
+  ]
+];
 
 const objectives = [
   "Describe the cell-based model of coagulation (initiation, amplification, propagation) and the laboratory tests of each pathway.",
@@ -321,6 +337,8 @@ const HaematologyImmunityTopic = () => {
               <><strong>ABO incompatibility</strong> is almost always a clerical error — repeat ID checks at every step.</>,
             ]}
           />
+          <TopicFaqs faqs={haematologyImmunityFaqs} />
+
         </>
       }
     />

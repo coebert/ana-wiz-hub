@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -22,6 +23,21 @@ import { PVRecruitmentDiagram } from "@/components/diagrams/PVRecruitmentDiagram
 import { ControlOfBreathingDiagram } from "@/components/diagrams/ControlOfBreathingDiagram";
 import { DiffusionCapacityDiagram } from "@/components/diagrams/DiffusionCapacityDiagram";
 import { Exam } from "@/data/curriculum";
+
+const lungMechanicsFaqs: Array<[string, string]> = [
+  [
+    "What is the difference between static and dynamic compliance?",
+    "Static compliance = ΔV / (plateau pressure − PEEP) — measured at zero flow; reflects elastic properties of lung and chest wall. Normal 60–100 mL/cmH₂O. Dynamic compliance = ΔV / (peak − PEEP) — includes the resistive component, always lower than static. A widening gap between peak and plateau suggests increased airway resistance (bronchospasm, secretions, kinked tube)."
+  ],
+  [
+    "Define FRC and explain why it falls under anaesthesia.",
+    "Functional Residual Capacity = volume in the lungs at the end of normal tidal expiration ≈ 30 mL/kg (~2.4 L in a 70 kg adult). FRC falls 15–20 % on induction (loss of diaphragmatic tone, supine position, loss of intercostal activity), and another 30–40 % with paralysis. If FRC drops below closing capacity, small airways close in dependent zones → atelectasis and shunt — mitigated by PEEP, recruitment manoeuvres and lower FiO₂."
+  ],
+  [
+    "State the equation of motion of the respiratory system.",
+    "P = (V / C) + (Flow × R) + PEEP. Pressure applied to the airway = elastic component (volume ÷ compliance) + resistive component (flow × resistance) + baseline PEEP. Used to interpret ventilator waveforms: plateau pressure isolates the elastic load, peak − plateau isolates resistance."
+  ]
+];
 
 const objectives = [
   "Define static and dynamic compliance and explain why dynamic < static.",
@@ -601,6 +617,8 @@ const LungMechanicsTopic = () => {
               </table>
             </SynthesisBlock>
           </ExamSection>
+          <TopicFaqs faqs={lungMechanicsFaqs} />
+
         </>
       }
     />
