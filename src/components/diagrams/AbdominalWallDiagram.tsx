@@ -320,12 +320,8 @@ const AbdominalWallDiagram = () => {
                 <text x={xOff - 6} y={layerGeom.skin.y + (layerGeom.peritoneum.y + layerGeom.peritoneum.h - layerGeom.skin.y) / 2} fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" transform={`rotate(-90, ${xOff - 6}, ${layerGeom.skin.y + (layerGeom.peritoneum.y + layerGeom.peritoneum.h - layerGeom.skin.y) / 2})`}>Deep →</text>
               </g>
   
-              {/* Rectus abdominis cross-section hint on right side */}
-              <g opacity="0.2">
-                <rect x={xOff + layerW - 25} y={layerGeom["ext-oblique"].y + 2} width="20" height={layerGeom.transversus.y + layerGeom.transversus.h - layerGeom["ext-oblique"].y - 4} rx="3"
-                  fill="hsl(0, 40%, 50%)" stroke="hsl(0, 30%, 45%)" strokeWidth="0.5" />
-                <text x={xOff + layerW - 15} y={layerGeom["int-oblique"].y + 15} fontSize="3.5" textAnchor="middle" fill="hsl(var(--foreground))">Rectus</text>
-              </g>
+              {/* Rectus abdominis is a midline structure and is not present in the lateral
+                  TAP-block plane shown here, so no rectus label is drawn on this view. */}
             </svg>
           </div>
   
