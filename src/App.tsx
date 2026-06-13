@@ -266,6 +266,11 @@ const App = () => (
           <Route path="/tools/maintenance-fluid" element={<MaintenanceFluidTool />} />
           <Route path="/tools/max-local-anaesthetic-dose" element={<MaxLADoseTool />} />
           <Route path="/tools/abg-interpreter" element={<ABGInterpreterTool />} />
+          {/* Long-form SEO notes */}
+          <Route path="/notes" element={<NotesIndex />} />
+          <Route path="/notes/how-sugammadex-reverses-rocuronium" element={<SugammadexReversesRocuroniumNote />} />
+          <Route path="/notes/context-sensitive-half-time-propofol-vs-remifentanil" element={<ContextSensitiveHalfTimeNote />} />
+          <Route path="/notes/p50-fetal-haemoglobin" element={<P50FetalHaemoglobinNote />} />
           <Route path="/physics" element={<PhysicsSection />} />
           <Route path="/physiology" element={<PhysiologySection />} />
           <Route path="/pharmacology" element={<PharmacologySection />} />
