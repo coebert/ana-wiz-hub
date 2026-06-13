@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { InlineRef } from "@/components/InlineRef";
@@ -7,6 +8,21 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { endocrinePhysiologyQuestions } from "@/data/quizzes";
 import HPAAxisDiagram from "@/components/diagrams/HPAAxisDiagram";
 import { Exam } from "@/data/curriculum";
+
+const endocrinePhysiologyFaqs: Array<[string, string]> = [
+  [
+    "Describe the hypothalamic–pituitary–adrenal axis response to surgical stress.",
+    "Surgical stimulus → hypothalamic CRH → anterior pituitary ACTH → adrenal cortex → cortisol (peaks at 4–6 h, may reach 200–500 mg/day vs basal 30 mg/day for major surgery). Cortisol promotes gluconeogenesis, lipolysis, protein catabolism, sodium retention, immunosuppression, and permissive action on catecholamines. Regional anaesthesia and opioids attenuate this response."
+  ],
+  [
+    "What is the perioperative steroid replacement regimen for adrenal suppression?",
+    "Patients on >5 mg prednisolone/day for >3 weeks are at risk of HPA suppression. Replacement scaled to surgical stress: minor — usual dose + 25 mg hydrocortisone at induction. Moderate — 25 mg at induction + 100 mg/day for 24 h. Major — 100 mg at induction + 200 mg/day for 48–72 h, then taper. Avoid abrupt withdrawal — addisonian crisis is life-threatening."
+  ],
+  [
+    "What are the perioperative implications of thyroid disease?",
+    "Hyperthyroidism — risk of thyroid storm if untreated; defer elective surgery until euthyroid. Treat with carbimazole + β-blocker; consider Lugol's iodine pre-op. Hypothyroidism — increased sensitivity to anaesthetics and opioids, slow drug metabolism, hyponatraemia, hypothermia, ileus. Severe (myxoedema coma): postpone if elective; if emergency, give IV levothyroxine + hydrocortisone (cover possible coexistent adrenal failure)."
+  ]
+];
 
 const objectives = [
   "Outline the hypothalamic-pituitary axis and identify hormones with major perioperative relevance.",
@@ -273,6 +289,8 @@ const EndocrinePhysiologyTopic = () => {
               <><strong>SIADH vs cerebral salt wasting</strong>: both hyponatraemic but volume status differs (euvolaemic vs hypovolaemic) — gets the fluid plan right.</>,
             ]}
           />
+          <TopicFaqs faqs={endocrinePhysiologyFaqs} />
+
         </>
       }
     />

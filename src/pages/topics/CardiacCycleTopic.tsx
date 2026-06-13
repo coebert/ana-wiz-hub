@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -11,6 +12,21 @@ import DichroticNotchComparisonPanel from "@/components/diagrams/DichroticNotchC
 import JVPWaveformDiagram from "@/components/diagrams/JVPWaveformDiagram";
 import { cardiacCycleQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+
+const cardiacCycleFaqs: Array<[string, string]> = [
+  [
+    "Describe the phases of the cardiac cycle and the pressure events.",
+    "Atrial systole (a wave on CVP) → isovolumetric contraction (all valves closed, rapid LV pressure rise) → ejection (aortic valve opens when LV > aortic ~80 mmHg) → isovolumetric relaxation (aortic closes, dicrotic notch) → rapid filling (mitral opens when LV < LA) → diastasis → next atrial systole. Diastole occupies ~⅔ of the cycle at HR 75."
+  ],
+  [
+    "What are the a, c and v waves of the central venous pressure trace?",
+    "a wave — atrial contraction (lost in AF, large 'cannon' waves in complete heart block or junctional rhythm). c wave — tricuspid bulging into the atrium during isovolumetric ventricular contraction. v wave — atrial filling against a closed tricuspid valve (large in tricuspid regurgitation). x descent — atrial relaxation; y descent — tricuspid opening and ventricular filling."
+  ],
+  [
+    "State the Frank–Starling law and its clinical relevance.",
+    "Within physiological limits, stroke volume increases with end-diastolic volume (preload) — the heart pumps what it receives. The curve plateaus and falls in heart failure. Clinically: fluid responsiveness is tested by passive leg raise or fluid challenge; only patients on the steep portion of the curve respond. Dynamic indices (PPV, SVV) predict responsiveness better than CVP."
+  ]
+];
 
 const objectives = [
   "Describe the seven phases of the cardiac cycle and correlate them with the Wiggers diagram and PV loop.",
@@ -465,6 +481,8 @@ const CardiacCycleTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <TopicFaqs faqs={cardiacCycleFaqs} />
+
         </>
       }
     />

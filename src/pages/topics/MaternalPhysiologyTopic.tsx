@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -6,6 +7,21 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { maternalPhysiologyQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import PregnancyTimelineDiagram from "@/components/diagrams/PregnancyTimelineDiagram";
+
+const maternalPhysiologyFaqs: Array<[string, string]> = [
+  [
+    "Summarise the cardiovascular changes of pregnancy.",
+    "By term: blood volume ↑40–50 %, plasma > red cell mass (physiological anaemia), cardiac output ↑40–50 % (↑SV early, ↑HR late), SVR ↓20 %, BP unchanged or slightly lower in 2nd trimester. Aortocaval compression from 20 weeks → 15° left lateral tilt mandatory after this. Labour: further ↑CO with each contraction (~30 %), peaks immediately post-delivery (autotransfusion). Returns to baseline by 2 weeks postpartum."
+  ],
+  [
+    "Why is the pregnant woman at increased risk of failed intubation and rapid desaturation?",
+    "Airway: weight gain, mucosal oedema, breast enlargement, full dentition; failed intubation 1:300 (8× the non-pregnant rate). Reduced FRC (15–20 %) and increased oxygen consumption (20 %) cause desaturation within 1 min of apnoea vs ~3 min in non-pregnant. Strategies: ramped position, pre-oxygenation 3 min with end-tidal O₂ >85 %, smaller ETT (6.5–7.0), video laryngoscopy first-line, OAA/DAS failed-intubation algorithm rehearsed."
+  ],
+  [
+    "Why does the pregnant patient need a reduced MAC and lower local anaesthetic dose?",
+    "MAC for volatiles falls ~30 % (progesterone-mediated CNS sensitivity). Spinal/epidural local anaesthetic requirement falls ~30 % because engorged epidural veins reduce the volume of the epidural and subarachnoid space, plus increased neural sensitivity. Use 2.0–2.5 mL of 0.5 % heavy bupivacaine for spinal at C-section rather than 3.0 mL."
+  ]
+];
 
 const objectives = [
   "Describe the major cardiovascular changes of pregnancy and explain aortocaval compression.",
@@ -246,6 +262,8 @@ const MaternalPhysiologyTopic = () => {
               <><strong>Massive obstetric haemorrhage</strong>: pregnant patients tolerate large blood loss before becoming overtly shocked — act on heart rate and trend, not single BP.</>,
             ]}
           />
+          <TopicFaqs faqs={maternalPhysiologyFaqs} />
+
         </>
       }
     />

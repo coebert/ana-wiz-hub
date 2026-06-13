@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -8,6 +9,21 @@ import { ANSDiagram } from "@/components/diagrams/ANSDiagram";
 import { ANSPathwayDiagram } from "@/components/diagrams/ANSPathwayDiagram";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { Exam } from "@/data/curriculum";
+
+const autonomicNervousFaqs: Array<[string, string]> = [
+  [
+    "What are the neurotransmitters and receptor types at each step of the autonomic nervous system?",
+    "Sympathetic: preganglionic — ACh on nicotinic receptors (paravertebral ganglia); postganglionic — noradrenaline on α/β adrenoceptors (exception: sweat glands — ACh on muscarinic). Parasympathetic: preganglionic — ACh on nicotinic (in the wall of the target organ); postganglionic — ACh on muscarinic. Adrenal medulla is a modified sympathetic ganglion releasing adrenaline directly."
+  ],
+  [
+    "Describe the autonomic features of high spinal anaesthesia.",
+    "Block above T4 abolishes cardiac sympathetic outflow (T1–T4) → unopposed vagal tone → severe bradycardia, hypotension, decreased contractility. Block above C3–5 causes diaphragmatic paralysis → respiratory failure. Treat: atropine 0.5–1 mg, ephedrine/metaraminol/adrenaline, IV fluid, head-down tilt, intubation and ventilation. Always have full resuscitation drugs drawn up for any high block."
+  ],
+  [
+    "What is autonomic dysreflexia and how is it managed?",
+    "Exaggerated sympathetic response in patients with spinal cord injury above T6, triggered by a noxious stimulus below the lesion (commonly bladder distension). Causes severe hypertension, bradycardia (carotid baroreflex), headache, sweating above the lesion, pallor below. Management: sit patient up, remove trigger (catheterise), short-acting antihypertensive (GTN, nifedipine), regional or general anaesthesia for surgery to block the afferent arc."
+  ]
+];
 
 const objectives = [
   "Contrast sympathetic and parasympathetic outflow, neurotransmitters and receptor types.",
@@ -209,6 +225,8 @@ const AutonomicNervousTopic = () => {
               <><strong>Anticholinergic syndrome</strong>: "hot as a hare, dry as a bone, mad as a hatter" — physostigmine reverses central effects but cardiac risk limits use.</>,
             ]}
           />
+          <TopicFaqs faqs={autonomicNervousFaqs} />
+
         </>
       }
     />

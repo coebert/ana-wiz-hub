@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -16,6 +17,21 @@ import { UrineConcentrationSimulator } from "@/components/diagrams/UrineConcentr
 import HyponatraemiaWorkupDiagram from "@/components/diagrams/HyponatraemiaWorkupDiagram";
 import { EGFRCalculator } from "@/components/diagrams/EGFRCalculator";
 import { Exam } from "@/data/curriculum";
+
+const renalPhysiologyFaqs: Array<[string, string]> = [
+  [
+    "How is glomerular filtration rate regulated?",
+    "Autoregulation maintains GFR over MAP 80–180 mmHg via two mechanisms: myogenic (afferent arteriole constricts in response to stretch) and tubuloglomerular feedback (macula densa senses distal tubule Na⁺/Cl⁻ → adenosine release → afferent constriction). Below MAP 80 mmHg, autoregulation fails and GFR becomes pressure-dependent — at risk in shock, ACEi use, NSAIDs."
+  ],
+  [
+    "What is the difference between osmolar and free-water clearance?",
+    "Osmolar clearance = (U_osm × V) / P_osm — volume of plasma cleared of all solute per minute. Free-water clearance = urine volume − osmolar clearance; positive in water diuresis (dilute urine, e.g. DI), negative in water conservation (concentrated urine, e.g. SIADH). Together they describe the kidney's water handling independent of total urine volume."
+  ],
+  [
+    "How do loop diuretics and thiazides differ in mechanism and side effects?",
+    "Loop (furosemide) — blocks Na⁺/K⁺/2Cl⁻ cotransporter in thick ascending limb; potent diuresis up to 25 % of filtered Na⁺. Side effects: hypokalaemia, hypomagnesaemia, ototoxicity, hypovolaemia. Thiazide (bendroflumethiazide) — blocks Na⁺/Cl⁻ cotransporter in distal convoluted tubule; modest diuresis (~5 %), but causes hyperglycaemia, hyperuricaemia, hypercalcaemia and hyponatraemia."
+  ]
+];
 
 const objectives = [
   "Describe the structure of the nephron and the functional differences between cortical and juxtamedullary nephrons.",
@@ -470,6 +486,8 @@ const RenalPhysiologyTopic = () => {
               <><strong>RAAS blockade</strong>: holding ACE-i/ARBs on the morning of major surgery reduces intra-op hypotension but evidence is mixed — discuss case-by-case.</>,
             ]}
           />
+          <TopicFaqs faqs={renalPhysiologyFaqs} />
+
         </>
       }
     />

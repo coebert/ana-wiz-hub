@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -8,6 +9,21 @@ import StarlingForcesDiagram from "@/components/diagrams/StarlingForcesDiagram";
 import GlycocalyxDiagram from "@/components/diagrams/GlycocalyxDiagram";
 import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
+
+const starlingForcesFaqs: Array<[string, string]> = [
+  [
+    "State the Starling equation in its modern form.",
+    "Jv = Kf × [(Pc − Pi) − σ(πp − πg)], where Jv = net filtration; Kf = filtration coefficient; Pc/Pi = capillary/interstitial hydrostatic pressure; πp/πg = plasma/subglycocalyx oncotic pressure; σ = reflection coefficient (1 = impermeable to protein, 0 = freely permeable). The endothelial glycocalyx is the true semi-permeable barrier — not the endothelial cell membrane (revised Starling principle, Levick & Michel 2010)."
+  ],
+  [
+    "What is the endothelial glycocalyx and why is it clinically important?",
+    "Gel-like layer of proteoglycans and glycoproteins on the luminal endothelial surface, ~0.5–1 µm thick. Excludes plasma proteins from contact with the endothelial barrier, generates the effective oncotic gradient, regulates leucocyte adhesion and coagulation. Damaged by sepsis, hyperglycaemia, ischaemia–reperfusion, atrial natriuretic peptide (released by fluid loading). Glycocalyx loss → capillary leak — explains why fluid overload worsens oedema."
+  ],
+  [
+    "Why does hypoalbuminaemia cause oedema less than predicted by classical Starling?",
+    "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), and the glycocalyx-protected subglycocalyx space maintains a large oncotic gradient even at low plasma albumin. Oedema only becomes clinically apparent when these are overwhelmed (albumin typically <20 g/L plus increased capillary pressure or permeability)."
+  ]
+];
 
 const objectives = [
   "State the Starling equation and define each term, including the reflection coefficient (σ).",
@@ -250,6 +266,8 @@ const StarlingForcesTopic = () => {
               <><strong>Goal-directed fluid therapy</strong> minimises both hypovolaemia and the glycocalyx injury of over-resuscitation.</>,
             ]}
           />
+          <TopicFaqs faqs={starlingForcesFaqs} />
+
         </>
       }
     />

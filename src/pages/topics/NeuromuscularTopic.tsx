@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
@@ -8,6 +9,21 @@ import { NMJDiagram } from "@/components/diagrams/NMJDiagram";
 import NeuromuscularMonitoringDiagram from "@/components/diagrams/NeuromuscularMonitoringDiagram";
 import { neuromuscularQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+
+const neuromuscularFaqs: Array<[string, string]> = [
+  [
+    "Describe neuromuscular transmission at the NMJ.",
+    "Action potential opens voltage-gated Ca²⁺ channels in the motor nerve terminal → ACh released from vesicles into the cleft → binds nicotinic ACh receptors (2 α-subunits) on the postjunctional membrane → opens Na⁺/K⁺ channel → end-plate potential → if threshold reached, action potential propagates along sarcolemma → Ca²⁺ release from sarcoplasmic reticulum → cross-bridge cycling. ACh is hydrolysed by acetylcholinesterase (~1 ms)."
+  ],
+  [
+    "How do depolarising and non-depolarising neuromuscular blockers differ?",
+    "Depolarising (suxamethonium) — agonist at nAChR, opens channel, sustained depolarisation prevents repolarisation (Phase I block). TOF: no fade, no post-tetanic facilitation. Non-depolarising (rocuronium, atracurium) — competitive antagonist at nAChR. TOF: fade (T4/T1 <0.9), post-tetanic facilitation, reversed by anticholinesterases or sugammadex (steroidal NMBAs only)."
+  ],
+  [
+    "What TOF ratio is required for safe extubation and how is it monitored?",
+    "TOF ratio ≥0.9 (T4/T1) — below this, pharyngeal coordination is impaired and there is a 4× risk of aspiration and hypoxaemia in recovery. Quantitative monitoring (acceleromyography, electromyography) is required — visual or tactile TOF count cannot detect fade above 0.4. Always confirm full reversal before extubation, especially after sugammadex 2 mg/kg for moderate block or 4 mg/kg for deep block."
+  ]
+];
 
 const objectives = [
   "Describe the sequence of events at the neuromuscular junction from action potential arrival to ACh hydrolysis.",
@@ -260,6 +276,8 @@ const NeuromuscularTopic = () => {
               <><strong>Pseudocholinesterase deficiency</strong>: prolonged sux block — sedate and ventilate until block reverses; check dibucaine number postoperatively.</>,
             ]}
           />
+          <TopicFaqs faqs={neuromuscularFaqs} />
+
         </>
       }
     />
