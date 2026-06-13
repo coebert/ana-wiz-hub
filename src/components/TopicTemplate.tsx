@@ -20,7 +20,7 @@ import VivaLauncher from "@/components/VivaLauncher";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
 import { topicReferences } from "@/data/references";
-import { allTopics } from "@/data/curriculum";
+import { allTopics, sectionMeta } from "@/data/curriculum";
 import { topicSeo } from "@/data/topicSeo";
 
 type SectionExamMap = { exams: ExamTag[]; curriculumCodes?: string[] };
