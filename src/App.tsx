@@ -47,6 +47,12 @@ const MaintenanceFluidTool = lazy(() => import("./pages/tools/MaintenanceFluidTo
 const MaxLADoseTool = lazy(() => import("./pages/tools/MaxLADoseTool"));
 const ABGInterpreterTool = lazy(() => import("./pages/tools/ABGInterpreterTool"));
 
+// Long-form SEO notes
+const NotesIndex = lazy(() => import("./pages/notes/NotesIndex"));
+const SugammadexReversesRocuroniumNote = lazy(() => import("./pages/notes/SugammadexReversesRocuroniumNote"));
+const ContextSensitiveHalfTimeNote = lazy(() => import("./pages/notes/ContextSensitiveHalfTimeNote"));
+const P50FetalHaemoglobinNote = lazy(() => import("./pages/notes/P50FetalHaemoglobinNote"));
+
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
 const PhysiologySection = lazy(() => import("./pages/PhysiologySection"));
@@ -260,6 +266,11 @@ const App = () => (
           <Route path="/tools/maintenance-fluid" element={<MaintenanceFluidTool />} />
           <Route path="/tools/max-local-anaesthetic-dose" element={<MaxLADoseTool />} />
           <Route path="/tools/abg-interpreter" element={<ABGInterpreterTool />} />
+          {/* Long-form SEO notes */}
+          <Route path="/notes" element={<NotesIndex />} />
+          <Route path="/notes/how-sugammadex-reverses-rocuronium" element={<SugammadexReversesRocuroniumNote />} />
+          <Route path="/notes/context-sensitive-half-time-propofol-vs-remifentanil" element={<ContextSensitiveHalfTimeNote />} />
+          <Route path="/notes/p50-fetal-haemoglobin" element={<P50FetalHaemoglobinNote />} />
           <Route path="/physics" element={<PhysicsSection />} />
           <Route path="/physiology" element={<PhysiologySection />} />
           <Route path="/pharmacology" element={<PharmacologySection />} />
