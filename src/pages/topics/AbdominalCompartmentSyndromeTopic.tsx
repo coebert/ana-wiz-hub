@@ -137,6 +137,7 @@ const AbdominalCompartmentSyndromeTopic = () => {
         workedExamples: ["WSACS 2013"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <section className="space-y-6">
             {/* Definitions */}
@@ -335,6 +336,7 @@ const AbdominalCompartmentSyndromeTopic = () => {
           </section>
         </ExamSection>
           <TopicFaqs faqs={abdominalCompartmentSyndromeFaqs} />
+        </>
       }
     />
   );

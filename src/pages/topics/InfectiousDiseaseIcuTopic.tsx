@@ -97,6 +97,7 @@ const InfectiousDiseaseIcuTopic = () => {
       ]}
       coreConcepts={
         <>
+        <>
           <ExamSection id="overview" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Infection is the dominant driver of organ failure on the modern ICU. The site map below previews the anatomical organisation of the topic — from respiratory and bloodstream infections through to fungal, viral, and multi-drug-resistant organisms — with an emphasis on source identification, empirical antimicrobial choice, and infection control.
@@ -1094,6 +1095,7 @@ const InfectiousDiseaseIcuTopic = () => {
           />
         </>
           <TopicFaqs faqs={infectiousDiseaseIcuFaqs} />
+        </>
       }
     />
   );

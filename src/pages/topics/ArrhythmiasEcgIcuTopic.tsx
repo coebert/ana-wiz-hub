@@ -113,6 +113,7 @@ const ArrhythmiasEcgIcuTopic = () => {
       ]}
       coreConcepts={
         <>
+        <>
           <ExamSection id="ecg-approach" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.4"]}>
             <CollapsibleSubsection title="A Systematic ECG Approach in the ICU" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -378,6 +379,7 @@ const ArrhythmiasEcgIcuTopic = () => {
           />
         </>
           <TopicFaqs faqs={arrhythmiasEcgIcuFaqs} />
+        </>
       }
     />
   );

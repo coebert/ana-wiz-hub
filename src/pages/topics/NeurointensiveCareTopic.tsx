@@ -216,6 +216,7 @@ const NeurointensiveCareTopic = () => {
         workedExamples: ["BJA Educ 2018", "BTF 2017", "BJA Educ 2014"],
       }}
       coreConcepts={
+        <>
     <>
       <StickyTOC items={tocItems} />
       <section className="space-y-6">
@@ -1486,6 +1487,7 @@ const NeurointensiveCareTopic = () => {
           />
     </>
           <TopicFaqs faqs={neurointensiveCareFaqs} />
+        </>
       }
     />
   );

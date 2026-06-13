@@ -194,6 +194,7 @@ const HaematologyIcuTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <ExamSection id="ttp" exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]} className="scroll-mt-24">
             <CollapsibleSubsection title="Thrombotic Thrombocytopenic Purpura (TTP)" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -427,6 +428,7 @@ const HaematologyIcuTopic = () => {
           />
         </>
           <TopicFaqs faqs={haematologyIcuFaqs} />
+        </>
       }
     />
   );

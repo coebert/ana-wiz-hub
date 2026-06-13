@@ -184,6 +184,7 @@ const IcuEndocrineEmergenciesTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Hyperglycaemic emergencies — DKA & HHS" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -353,6 +354,7 @@ const IcuEndocrineEmergenciesTopic = () => {
           />
         </>
           <TopicFaqs faqs={icuEndocrineEmergenciesFaqs} />
+        </>
       }
     />
   );

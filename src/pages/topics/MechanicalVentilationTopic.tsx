@@ -146,6 +146,7 @@ const MechanicalVentilationTopic = () => {
         workedExamples: ["BJA Educ 2019", "Lumb Ch.31", "BJA Educ 2018"],
       }}
       coreConcepts={
+        <>
     <>
       <StickyTOC items={tocItems} />
       <section className="space-y-6 mb-10">
@@ -1582,6 +1583,7 @@ const MechanicalVentilationTopic = () => {
           />
     </>
           <TopicFaqs faqs={mechanicalVentilationFaqs} />
+        </>
       }
     />
   );

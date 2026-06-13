@@ -179,6 +179,7 @@ const NeuroprognosticationTopic = () => {
         workedExamples: ["ERC/ESICM 2021 Post-Resus"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <section className="space-y-6">
             {/* Why it matters */}
@@ -378,6 +379,7 @@ const NeuroprognosticationTopic = () => {
           </section>
         </ExamSection>
           <TopicFaqs faqs={neuroprognosticationFaqs} />
+        </>
       }
     />
   );

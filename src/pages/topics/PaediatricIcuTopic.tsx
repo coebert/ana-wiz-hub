@@ -180,6 +180,7 @@ const PaediatricIcuTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <ExamSection id="wetflag" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="WETFLAG & Age-Specific Vital Signs" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -365,6 +366,7 @@ const PaediatricIcuTopic = () => {
           />
         </>
           <TopicFaqs faqs={paediatricIcuFaqs} />
+        </>
       }
     />
   );

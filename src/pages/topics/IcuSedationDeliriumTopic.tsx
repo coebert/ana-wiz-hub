@@ -135,6 +135,7 @@ const IcuSedationDeliriumTopic = () => {
         keyPoints: { exams: [Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
         <section className="space-y-6">
           {/* RASS */}
@@ -272,6 +273,7 @@ const IcuSedationDeliriumTopic = () => {
         </section>
       </ExamSection>
           <TopicFaqs faqs={icuSedationDeliriumFaqs} />
+        </>
       }
     />
   );

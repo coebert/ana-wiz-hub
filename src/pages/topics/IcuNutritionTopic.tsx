@@ -128,6 +128,7 @@ const IcuNutritionTopic = () => {
       }}
       coreConcepts={
         <>
+        <>
           <ExamSection exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]}>
             <CollapsibleSubsection title="Metabolic Response to Critical Illness" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -251,6 +252,7 @@ const IcuNutritionTopic = () => {
           />
         </>
           <TopicFaqs faqs={icuNutritionFaqs} />
+        </>
       }
     />
   );
