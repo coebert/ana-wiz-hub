@@ -8,12 +8,31 @@ interface SeeAlsoProps {
 }
 
 export const SeeAlso = ({ topicId }: SeeAlsoProps) => {
-  const relatedIds = seeAlsoMap[topicId];
-  if (!relatedIds || relatedIds.length === 0) return null;
+  const explicitIds = seeAlsoMap[topicId];
 
-  const relatedTopics = relatedIds
+  // Resolve explicit map entries first.
+  let relatedTopics = (explicitIds ?? [])
     .map((id) => allTopics.find((t) => t.id === id))
-    .filter(Boolean);
+    .filter((t): t is NonNullable<typeof t> => Boolean(t));
+
+  // Fallback: when no explicit map entry, auto-suggest up to 6 topics in the
+  // same section that share at least one exam tag. This keeps every topic
+  // page internally linked — important both for navigation and for crawl
+  // depth/SEO so isolated leaves get discovered and ranked.
+  if (relatedTopics.length === 0) {
+    const self = allTopics.find((t) => t.id === topicId);
+    if (self) {
+      relatedTopics = allTopics
+        .filter(
+          (t) =>
+            t.id !== topicId &&
+            t.section === self.section &&
+            t.available !== false &&
+            t.examTags.some((tag) => self.examTags.includes(tag)),
+        )
+        .slice(0, 6);
+    }
+  }
 
   if (relatedTopics.length === 0) return null;
 
@@ -25,7 +44,6 @@ export const SeeAlso = ({ topicId }: SeeAlsoProps) => {
       </h3>
       <div className="flex flex-wrap gap-2">
         {relatedTopics.map((topic) => {
-          if (!topic) return null;
           const section = sectionMeta[topic.section];
           return (
             <Link
