@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -7,6 +8,21 @@ import { Exam } from "@/data/curriculum";
 import TheatreZoningDiagram from "@/components/diagrams/TheatreZoningDiagram";
 import CssdWasteFlowSubMap from "@/components/diagrams/CssdWasteFlowSubMap";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const operatingTheatreEnvironmentFaqs: Array<[string, string]> = [
+  [
+    "What air-change rate is required for a standard operating theatre?",
+    "≥20 air changes per hour with positive pressure relative to surrounding areas (HTM 03-01). Ultra-clean ventilation (laminar-flow) theatres for joint replacement deliver ≥300 air changes per hour with HEPA-filtered, unidirectional flow over the surgical field, reducing airborne colony-forming units to <10/m³."
+  ],
+  [
+    "What are the steps of the WHO Surgical Safety Checklist?",
+    "Three phases: Sign-In (before induction — identity, site, consent, allergies, airway risk, blood loss); Time-Out (before incision — team introductions, procedure, antibiotics, imaging, anticipated critical events); Sign-Out (before leaving theatre — procedure performed, counts, specimens, equipment problems, recovery plan)."
+  ],
+  [
+    "What temperature and humidity should a theatre maintain?",
+    "Temperature 18–25 °C (typically 20–22 °C; warmer for paediatric/burns 24–26 °C). Relative humidity 40–60 % — lower risks static electricity and patient drying, higher promotes microbial growth and condensation. Fresh air supply ≥1000 L/s. Monitor continuously via the theatre BMS."
+  ]
+];
 
 const objectives = [
   "Describe the zoning of a UK operating theatre complex and the rationale for the protective → clean → sterile gradient",
@@ -271,6 +287,8 @@ const OperatingTheatreEnvironmentTopic = () => {
               "WHO Surgical Safety Checklist (sign-in, time-out, sign-out) is mandatory and reduces mortality and complications.",
             ]}
           />
+          <TopicFaqs faqs={operatingTheatreEnvironmentFaqs} />
+
         </>
       }
     />

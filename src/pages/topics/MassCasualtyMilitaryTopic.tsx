@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -7,6 +8,21 @@ import { Exam } from "@/data/curriculum";
 import { MajorIncidentTriageDiagram } from "@/components/diagrams/MajorIncidentTriageDiagram";
 import { MilitaryRolesFlowDiagram } from "@/components/diagrams/MilitaryRolesFlowDiagram";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const massCasualtyMilitaryFaqs: Array<[string, string]> = [
+  [
+    "What is the difference between primary, secondary and tertiary triage?",
+    "Primary triage (Triage Sieve) at scene uses walking/breathing/pulse-or-capillary-refill to assign P1/P2/P3/Dead in <30 s. Secondary triage (Triage Sort) at casualty clearing applies the Triage Revised Trauma Score (GCS, RR, SBP). Tertiary triage occurs in hospital after initial resuscitation and continuously thereafter."
+  ],
+  [
+    "What are the principles of damage-control resuscitation?",
+    "Permissive hypotension (SBP 80–90 mmHg until haemorrhage controlled, except TBI), haemostatic resuscitation with 1:1:1 plasma:platelets:red cells, early tranexamic acid (1 g within 3 h — CRASH-2/MATTERs), avoidance of crystalloid, active rewarming, and rapid surgical haemorrhage control."
+  ],
+  [
+    "How are nerve-agent (organophosphate) casualties managed?",
+    "Don PPE and decontaminate before any clinical contact. Treat with atropine 2 mg IV repeated every 5 min until secretions dry, pralidoxime 30 mg/kg IV (reactivates acetylcholinesterase if given before ageing), and diazepam for seizures. Support airway, ventilation, and circulation. Avoid suxamethonium — prolonged paralysis."
+  ]
+];
 
 const objectives = [
   "Apply the principles of major-incident command (MIMMS / NHS EPRR) to a mass-casualty event involving multiple critically injured patients",
@@ -279,6 +295,8 @@ const MassCasualtyMilitaryTopic = () => {
               "CBRN: identify hazard, don PPE before patient contact, decontaminate before treatment, specific antidotes (atropine + pralidoxime for nerve agents).",
             ]}
           />
+          <TopicFaqs faqs={massCasualtyMilitaryFaqs} />
+
         </>
       }
     />

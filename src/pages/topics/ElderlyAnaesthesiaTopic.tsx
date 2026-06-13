@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { elderlyAnaesthesiaQuestions } from "@/data/quizzes";
@@ -6,6 +7,21 @@ import FrailtyAssessmentDiagram from "@/components/diagrams/FrailtyAssessmentDia
 import POCDPathophysiologyCascadeDiagram from "@/components/diagrams/POCDPathophysiologyCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const elderlyAnaesthesiaFaqs: Array<[string, string]> = [
+  [
+    "How is frailty assessed preoperatively and why does it matter?",
+    "Clinical Frailty Scale (Rockwood, 1–9) is the validated NHS tool: ≥5 indicates frailty and predicts increased 30-day mortality, longer stay, delirium and discharge to care. Triggers comprehensive geriatric assessment (CGA), shared decision-making about thresholds for invasive treatment, and proactive delirium and pressure-care planning."
+  ],
+  [
+    "What anaesthetic dose adjustments are needed in the elderly?",
+    "Reduce induction doses by 20–40 % (propofol 1.0–1.5 mg/kg, thiopentone 2–3 mg/kg) due to reduced volume of distribution, lower albumin, and increased brain sensitivity. MAC falls ~6 % per decade after 40. Avoid long-acting benzodiazepines and anticholinergics (Beers criteria). Titrate opioids; consider regional techniques to spare systemic agents."
+  ],
+  [
+    "How is postoperative delirium prevented?",
+    "Multicomponent bundle (HELP/NICE CG103): orientation cues, hearing/visual aids, early mobilisation, hydration and nutrition, sleep hygiene, pain control with opioid-sparing regional techniques, avoidance of deliriogenic drugs (benzodiazepines, anticholinergics, pethidine), depth-of-anaesthesia monitoring (BIS 40–60 reduces incidence), and early identification with the 4AT score."
+  ]
+];
 
 const keyPoints = [
   { text: "Physiological reserve is reduced in the elderly — decreased cardiac output, reduced FRC and closing capacity, impaired renal/hepatic drug clearance, and reduced CNS sensitivity thresholds", cites: ["NICE NG111"] },
@@ -83,6 +99,7 @@ const ElderlyAnaesthesiaTopic = () => {
         ],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="space-y-8">
           <p className="text-muted-foreground leading-relaxed">
@@ -334,6 +351,8 @@ const ElderlyAnaesthesiaTopic = () => {
           />
         </div>
       </ExamSection>
+          <TopicFaqs faqs={elderlyAnaesthesiaFaqs} />
+        </>
       }
     />
   );

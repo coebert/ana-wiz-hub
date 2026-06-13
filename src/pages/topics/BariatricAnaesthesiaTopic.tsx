@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { bariatricAnaesthesiaQuestions } from "@/data/quizzes";
@@ -6,6 +7,21 @@ import BariatricProceduresDiagram from "@/components/diagrams/BariatricProcedure
 import StopBangCalculator from "@/components/diagrams/StopBangCalculator";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const bariatricAnaesthesiaFaqs: Array<[string, string]> = [
+  [
+    "How are induction and maintenance drug doses calculated in obesity?",
+    "Use ideal body weight (IBW) for propofol induction and remifentanil; lean body weight (LBW) for propofol maintenance and rocuronium; total body weight (TBW) for suxamethonium, paracetamol (max 4 g/day), and antibiotics; and adjusted body weight for paracetamol if >120 kg. Sugammadex is dosed on TBW."
+  ],
+  [
+    "What is the recommended pre-oxygenation and intubation position for the obese patient?",
+    "Ramped (HELP — Head-Elevated Laryngoscopy Position) with the external auditory meatus aligned with the sternal notch, 25° head-up, 100 % oxygen for ≥3 min with CPAP/NIV if tolerated, and apnoeic oxygenation via nasal cannula. This maximises FRC and prolongs safe apnoea time."
+  ],
+  [
+    "When is awake fibreoptic intubation indicated in bariatric anaesthesia?",
+    "Predicted difficult mask ventilation AND difficult intubation (e.g. neck circumference >60 cm with Mallampati III/IV, severe OSA, prior failed intubation, limited mouth opening or neck extension). Otherwise, ramped position with video laryngoscopy is the default. Always have a Plan B (SAD) and Plan C (front-of-neck access) ready."
+  ]
+];
 
 const BariatricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
   {
@@ -81,6 +97,7 @@ const BariatricAnaesthesiaTopic = () => {
         ],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
         <div>
@@ -306,6 +323,8 @@ const BariatricAnaesthesiaTopic = () => {
           />
       </section>
       </ExamSection>
+          <TopicFaqs faqs={bariatricAnaesthesiaFaqs} />
+        </>
       }
     />
   );

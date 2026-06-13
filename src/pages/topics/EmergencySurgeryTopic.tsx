@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { emergencySurgeryQuestions } from "@/data/quizzes";
@@ -8,6 +9,21 @@ import { EmergencyLaparotomyBundleDiagram } from "@/components/diagrams/Emergenc
 import { EmergencySurgeryGlossaryDrawer } from "@/components/EmergencySurgeryGlossaryDrawer";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const emergencySurgeryFaqs: Array<[string, string]> = [
+  [
+    "What is NELA and how does it influence emergency laparotomy care?",
+    "The National Emergency Laparotomy Audit (NELA) is a mandatory UK audit that records risk-adjusted mortality and process measures for every emergency laparotomy. It drives the NELA care bundle: documented P-POSSUM risk, consultant surgeon and anaesthetist for high-risk cases, theatre within target time, goal-directed fluid therapy, and post-op critical care for predicted mortality ≥5 %."
+  ],
+  [
+    "How is a rapid sequence induction modified in the haemodynamically unstable patient?",
+    "Reduce induction dose (e.g. ketamine 1–2 mg/kg or etomidate 0.2 mg/kg + reduced propofol), pre-load with vasopressor (metaraminol/noradrenaline bolus), have fluid and blood drawn up, use rocuronium 1.2 mg/kg for fast onset with sugammadex available, and maintain cricoid pressure unless it impedes view. Anticipate cardiovascular collapse on induction."
+  ],
+  [
+    "What are the indications for damage-control laparotomy?",
+    "The 'lethal triad' — pH <7.2, temperature <34 °C, INR >1.5 — or massive transfusion >10 units. Aim is haemorrhage and contamination control only, with abdomen left open (laparostomy), planned return to theatre 24–48 h after physiological correction in critical care. Avoid prolonged primary surgery in the unstable patient."
+  ]
+];
 
 const objectives = [
   "Apply the NCEPOD classification to prioritise emergency surgery and resuscitation.",
@@ -78,6 +94,7 @@ const EmergencySurgeryTopic = () => {
         keyPoints: ["NELA Year 9 2023", "BJA Educ 2017", "DAS 2015", "P-POSSUM", "DAS 2015 RSI", "BJA Educ EmLap 2017", "RCoA Emergency Laparotomy", "NCEPOD Knowing the Risk", "NELA Year 9 Report"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
           <div className="flex justify-end">
@@ -311,6 +328,8 @@ const EmergencySurgeryTopic = () => {
           />
         </section>
       </ExamSection>
+          <TopicFaqs faqs={emergencySurgeryFaqs} />
+        </>
       }
     />
   );

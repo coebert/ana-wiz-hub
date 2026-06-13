@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -7,6 +8,21 @@ import ContrastReactionDiagram from "@/components/diagrams/ContrastReactionDiagr
 import tipssIllustration from "@/assets/ir/tipss-procedure.jpg";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const interventionalRadiologyFaqs: Array<[string, string]> = [
+  [
+    "What are the AAGBI recommendations for anaesthesia in remote locations?",
+    "Same standards as theatre: trained anaesthetic assistant, full monitoring including capnography, anaesthetic machine checked, reliable suction and oxygen, emergency drugs and difficult-airway equipment immediately available, two-way communication with the main theatre suite, and a clear plan for transfer if deterioration occurs."
+  ],
+  [
+    "How is contrast-induced nephropathy prevented in IR patients?",
+    "Identify at-risk patients (eGFR <60, diabetes, dehydration, NSAIDs, ACEi). Use the lowest volume of iso- or low-osmolar contrast, pre- and post-procedure IV 0.9 % saline 1 mL/kg/h for 6–12 h, withhold metformin for 48 h if eGFR <30, avoid nephrotoxins, and recheck creatinine at 48–72 h. N-acetylcysteine evidence is weak — no longer routinely recommended."
+  ],
+  [
+    "What are the anaesthetic considerations for endovascular thrombectomy in acute stroke?",
+    "Speed is critical — door-to-puncture <90 min. Conscious sedation is preferred over general anaesthesia where feasible (faster, better functional outcomes in some trials), but GA is needed for agitation or airway risk. Maintain SBP 140–180 mmHg pre-recanalisation and avoid hypotension; tight glycaemic control 6–10 mmol/L; normocapnia; immediate post-procedure neuro-imaging."
+  ]
+];
 
 const objectives = [
   "Apply AAGBI standards for anaesthesia in remote locations to the IR suite",
@@ -210,6 +226,8 @@ const InterventionalRadiologyTopic = () => {
               "EVAR / TIPSS / embolisation: long supine cases — pressure care, temperature management, plan post-procedure HDU bed.",
             ]}
           />
+          <TopicFaqs faqs={interventionalRadiologyFaqs} />
+
         </>
       }
     />

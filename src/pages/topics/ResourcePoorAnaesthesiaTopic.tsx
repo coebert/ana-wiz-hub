@@ -1,10 +1,26 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { resourcePoorAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const resourcePoorAnaesthesiaFaqs: Array<[string, string]> = [
+  [
+    "What are the WHO–WFSA minimum standards for safe anaesthesia?",
+    "Trained anaesthesia provider continuously present; pulse oximetry on every patient (Lifebox initiative); reliable oxygen source; means to deliver positive-pressure ventilation; suction; tilting table; and basic resuscitation drugs. The 2018 update added capnography for every intubation as a 'highly recommended' standard."
+  ],
+  [
+    "How does draw-over anaesthesia differ from continuous-flow?",
+    "Draw-over (e.g. EMO, OMV, Diamedica) uses the patient's own inspiratory effort to draw room air across a vaporiser, with optional O₂ enrichment. It needs no compressed gas, works at any altitude, is rugged and cheap. Continuous-flow machines require reliable medical gas pipelines or cylinders, which are often unavailable in low-resource settings."
+  ],
+  [
+    "What is the role of ketamine in resource-poor anaesthesia?",
+    "Ketamine is the workhorse: preserves airway reflexes and cardiovascular stability, provides analgesia and amnesia, can be given IM (5–10 mg/kg) or IV (1–2 mg/kg), needs no oxygen or ventilator, and is on the WHO Essential Medicines List. Combine with a benzodiazepine to reduce emergence phenomena."
+  ]
+];
 
 const objectives = [
   "Describe the WHO–WFSA International Standards for a Safe Practice of Anaesthesia and how they apply when capacity is constrained",
@@ -196,6 +212,8 @@ const ResourcePoorAnaesthesiaTopic = () => {
               "Lifebox pulse oximetry and SAFE courses (obstetric, paediatric) build capacity and standardise safe practice.",
             ]}
           />
+          <TopicFaqs faqs={resourcePoorAnaesthesiaFaqs} />
+
         </>
       }
     />
