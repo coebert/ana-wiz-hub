@@ -150,6 +150,7 @@ const AcuteLiverFailureTopic = () => {
         workedExamples: ["BJA Educ 2017", "King's Criteria", "BJA Educ 2019"],
       }}
       coreConcepts={
+    <>
     <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-6">
         <div>
