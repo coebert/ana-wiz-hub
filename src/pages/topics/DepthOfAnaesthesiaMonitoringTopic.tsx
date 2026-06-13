@@ -6,11 +6,27 @@ import { eegTraceContent, dsaSpectrogramContent, bisTrendContent } from "@/compo
 import DSASpectrogramDiagram from "@/components/diagrams/DSASpectrogramDiagram";
 import BISTrendDiagram from "@/components/diagrams/BISTrendDiagram";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { depthOfAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const depthOfAnaesthesiaMonitoringFaqs: Array<[string, string]> = [
+  [
+    "What is the target BIS range for general anaesthesia and what is its evidence base?",
+    "BIS 40–60 corresponds to surgical anaesthesia. B-Aware and B-Unaware trials showed BIS-guided anaesthesia reduces awareness in high-risk patients (TIVA, paralysed, low-MAC techniques). NICE DG6 recommends DoA monitoring for TIVA and for any case where end-tidal volatile monitoring is unreliable. BIS values are derived from EEG but are not a direct EEG; they lag by 15–30 s."
+  ],
+  [
+    "How does processed EEG differ from raw EEG?",
+    "Raw EEG — continuous voltage trace, requires expert interpretation. Processed EEG (BIS, Entropy, Narcotrend) applies algorithms (frequency-domain analysis, burst-suppression detection) to produce a single dimensionless number (0–100). Newer monitors (e.g. Sedline) show colour-density spectrograms — clinically more informative than a number, especially in the elderly."
+  ],
+  [
+    "What are the limitations of BIS monitoring?",
+    "Unreliable with ketamine and nitrous oxide (BIS may remain high despite deep anaesthesia), with cerebral ischaemia/hypothermia (artificially low), with neuromuscular blockade absent (frontalis EMG inflates the value), and with paediatric brains <2 years. EMG artefact and electrocautery interfere. BIS does not abolish awareness — it reduces incidence but does not eliminate it."
+  ]
+];
 
 const objectives = [
   "Explain the rationale for processed EEG monitoring with reference to NAP5, NICE and AAGBI guidance.",
@@ -167,6 +183,7 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
         ],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
       {/* Introduction */}
       <section className="space-y-6 mb-10">
@@ -438,6 +455,8 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
             ]}
           />
         </ExamSection>
+          <TopicFaqs faqs={depthOfAnaesthesiaMonitoringFaqs} />
+        </>
       }
     />
   );

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -12,6 +13,21 @@ import CoandaEffectDiagram from "@/components/diagrams/CoandaEffectDiagram";
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const flowMeasurementFaqs: Array<[string, string]> = [
+  [
+    "What is the difference between laminar and turbulent flow, and which gas laws govern each?",
+    "Laminar flow (Re <2000): smooth parallel streamlines, governed by Hagen–Poiseuille — Q ∝ ΔP × r⁴ / (8ηL); depends on viscosity. Turbulent flow (Re >4000): chaotic, Q ∝ √ΔP × r² / √(density × L); depends on density. Reynolds number Re = ρvd/η. In a Venturi or upper-airway obstruction, turbulent flow predominates — hence heliox (low density) helps."
+  ],
+  [
+    "How does a variable-orifice rotameter work?",
+    "A vertical tapered tube with a bobbin floating in a gas stream. Flow holds the bobbin at a height where weight = drag force. At low flow, gap is narrow → laminar flow (viscosity-dependent). At high flow, gap is wide → turbulent (density-dependent). Calibration is therefore gas-specific. Bobbin spins to reduce friction; reading is taken at the top of the bobbin."
+  ],
+  [
+    "How does a pneumotachograph measure flow?",
+    "Gas passes through a fixed-resistance element (Fleisch — fine-bore tubes; or screen) under laminar flow conditions. The pressure drop across it (measured by differential transducer) is proportional to flow (Hagen–Poiseuille). Integration of flow over time gives volume. Temperature and water vapour must be controlled to maintain calibration."
+  ]
+];
 
 const objectives = [
   "Differentiate laminar from turbulent flow and use Reynolds number (Re = ρvd/η) to predict the regime",
@@ -445,6 +461,8 @@ const FlowMeasurementTopic = () => {
               "Heliox lowers density to convert turbulent to laminar flow in upper-airway obstruction.",
             ]}
           />
+          <TopicFaqs faqs={flowMeasurementFaqs} />
+
         </>
       }
     />

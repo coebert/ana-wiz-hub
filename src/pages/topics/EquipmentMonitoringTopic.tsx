@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
@@ -18,6 +19,21 @@ import RitchieWhistleDiagram from "@/components/diagrams/RitchieWhistleDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 import LaryngoscopeBladesDiagram from "@/components/diagrams/LaryngoscopeBladesDiagram";
 import InlineRef from "@/components/InlineRef";
+
+const equipmentMonitoringFaqs: Array<[string, string]> = [
+  [
+    "What are the AAGBI minimum monitoring standards for anaesthesia?",
+    "Continuous pulse oximetry, ECG, NIBP (every 5 min or more frequent), capnography (mandatory whenever the airway is instrumented — ETT, SAD, tracheostomy), inspired and expired volatile concentration, FiO₂, airway pressure, temperature for cases >30 min, neuromuscular monitoring whenever NMBA used. Continuous presence of an anaesthetist."
+  ],
+  [
+    "How does the anaesthetic machine ensure hypoxic gas cannot be delivered?",
+    "Hypoxic guard (mechanical/electronic linkage between O₂ and N₂O flowmeters ensures FiO₂ ≥25 %), pin-index system on cylinders, non-interchangeable Schrader pipeline connectors (colour- and size-coded), oxygen failure alarm (Ritchie whistle), oxygen analyser in the common gas outlet with low-FiO₂ alarm, and an oxygen flush button that bypasses the vaporiser."
+  ],
+  [
+    "What is the difference between disconnection alarms and apnoea alarms?",
+    "Disconnection alarm — triggered by sustained low airway pressure (<10 cmH₂O) during ventilation, indicating circuit disconnect, leak, or ventilator failure. Apnoea alarm — triggered by absent CO₂ on capnography or absent volume signal for a set interval (usually 15–20 s). Both are mandatory whenever the patient is ventilated."
+  ]
+];
 
 const objectives = [
   "Trace the gas pathway from pipeline/cylinder through regulator, flowmeter, vaporizer and breathing system to patient.",
@@ -229,6 +245,7 @@ const EquipmentMonitoringTopic = () => {
         ],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="space-y-12">
 
@@ -820,6 +837,8 @@ const EquipmentMonitoringTopic = () => {
           />
       </div>
       </ExamSection>
+          <TopicFaqs faqs={equipmentMonitoringFaqs} />
+        </>
       }
     />
   );

@@ -1,10 +1,26 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { vaporizersQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { VaporizerDiagram } from "@/components/diagrams/VaporizerDiagram";
 import VaporiserSplittingRatioDiagram from "@/components/diagrams/VaporiserSplittingRatioDiagram";
+
+const vaporisersFaqs: Array<[string, string]> = [
+  [
+    "How does a variable-bypass vaporiser maintain a constant output concentration?",
+    "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip (or expansion bellows) that increases bypass flow as temperature falls (preventing output drop as latent heat of vaporisation cools the agent). Flow compensation accommodates flows 0.2–15 L/min."
+  ],
+  [
+    "Why does desflurane require a heated, pressurised vaporiser (Tec 6)?",
+    "Desflurane has a boiling point of 23.5 °C (close to room temperature) and a saturated vapour pressure of 88 kPa — a conventional variable-bypass vaporiser would deliver unpredictable, dangerously high concentrations. The Tec 6 heats desflurane to 39 °C (vapour pressure 200 kPa) and injects measured vapour into the fresh gas flow; it requires electrical power and a level sensor."
+  ],
+  [
+    "What happens if a vaporiser is tilted or overfilled?",
+    "Tilting may flood the bypass channel with liquid agent, delivering very high concentrations (potentially fatal). Modern vaporisers have anti-spill safeguards but should still be drained before transport. Overfilling is prevented by agent-specific keyed filler systems and a maximum fill line; cross-filling with the wrong agent is a never event and is prevented by the keyed filler."
+  ]
+];
 
 /**
  * Dedicated FRCA Primary / Final standalone topic page for Anaesthetic
@@ -191,6 +207,7 @@ const VaporisersTopic = () => {
         workedExamples: ["BJA Educ 2014", "Al-Shaikh & Stacey Ch.5"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <section className="space-y-6">
             {/* Why it matters */}
@@ -353,6 +370,8 @@ const VaporisersTopic = () => {
             </div>
           </section>
         </ExamSection>
+          <TopicFaqs faqs={vaporisersFaqs} />
+        </>
       }
     />
   );

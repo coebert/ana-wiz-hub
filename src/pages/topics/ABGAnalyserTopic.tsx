@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -6,6 +7,21 @@ import { abgAnalyserQuestions } from "@/data/quizzes";
 import ABGAnalyserDiagram from "@/components/diagrams/ABGAnalyserDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const abgAnalyserFaqs: Array<[string, string]> = [
+  [
+    "What electrodes are used in a blood-gas analyser and what does each measure?",
+    "pH — Sanz (glass) electrode; potential difference across pH-sensitive glass. PCO₂ — Severinghaus (modified pH electrode separated from blood by CO₂-permeable membrane; CO₂ alters pH of bicarbonate solution inside). PO₂ — Clark polarographic electrode; O₂ reduced at platinum cathode under 0.6 V polarising voltage, current proportional to PO₂."
+  ],
+  [
+    "How does a co-oximeter differ from a standard ABG analyser?",
+    "Standard ABG calculates SaO₂ from PaO₂ via the dissociation curve — invalid in dyshaemoglobinaemia. A co-oximeter haemolyses the sample and measures absorbance at 4+ wavelengths to quantify oxy-Hb, deoxy-Hb, COHb and MetHb directly. Essential for suspected CO poisoning, methaemoglobinaemia, or after methylene blue."
+  ],
+  [
+    "What are the standard quality-control checks for a blood-gas analyser?",
+    "Daily multi-level QC with known gas/buffer cartridges; automatic 1- or 2-point calibrations every 30 min; full calibration after each maintenance; participation in external QC (e.g. UK NEQAS). Always inspect the sample for clots and air bubbles; analyse within 10 min if at room temperature, or place on ice for delays."
+  ]
+];
 
 const objectives = [
   "Describe the construction and principle of the pH (Sanz) glass electrode.",
@@ -77,6 +93,7 @@ const ABGAnalyserTopic = () => {
         keyPoints: ["BJA Educ 2017", "Cross & Plunkett Ch.15-16", "Middleton Ch.18"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
           <div>
@@ -473,6 +490,8 @@ const ABGAnalyserTopic = () => {
           />
         </section>
       </ExamSection>
+          <TopicFaqs faqs={abgAnalyserFaqs} />
+        </>
       }
     />
   );

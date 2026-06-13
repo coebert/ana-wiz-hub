@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -7,6 +8,21 @@ import MRISuiteFloorPlanDiagram from "@/components/diagrams/MRISuiteFloorPlanDia
 import { mriPhysicsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const mriPhysicsFaqs: Array<[string, string]> = [
+  [
+    "What are the four MRI safety zones?",
+    "Zone 1 — public, unrestricted. Zone 2 — interface area (changing rooms, screening). Zone 3 — controlled, restricted access (control room), risk of projectiles. Zone 4 — the magnet room itself, only entered after full ferromagnetic screening; the static field is always on, even when 'off'."
+  ],
+  [
+    "What anaesthetic equipment is MRI-safe, MRI-conditional and MRI-unsafe?",
+    "MR-Safe (green) — no ferromagnetic content, safe in any field (plastic, non-magnetic stainless steel). MR-Conditional (yellow) — safe under specified conditions (field strength, distance, anchored). MR-Unsafe (red) — must never enter Zone 4 (laryngoscopes with steel blades, standard infusion pumps, oxygen cylinders unless aluminium and MR-labelled)."
+  ],
+  [
+    "What is quenching and how is it managed?",
+    "Sudden boiling of liquid helium that cools the superconducting magnet; helium escapes as gas. Risk of asphyxiation (oxygen displacement) and frostbite. Quench vent should direct helium outside; if it fails, the room may become hypoxic — open all doors, evacuate, do not re-enter until atmosphere checked. Quench permanently disables the magnet and is reserved for emergencies (e.g. ferromagnetic projectile entrapment)."
+  ]
+];
 
 const objectives = [
   "Explain how nuclear spin, the Larmor equation (ω₀ = γB₀) and resonance generate the MR signal",
@@ -168,6 +184,8 @@ const MRIPhysicsTopic = () => {
               "Anaesthetic risks: projectile injury, RF burns from looped cables/ECG leads, monitor compatibility, and pacemaker/implant safety check.",
             ]}
           />
+          <TopicFaqs faqs={mriPhysicsFaqs} />
+
         </>
       }
     />

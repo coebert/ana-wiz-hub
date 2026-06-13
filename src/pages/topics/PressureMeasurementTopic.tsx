@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -12,6 +13,21 @@ import DampingCurvesDiagram from "@/components/diagrams/DampingCurvesDiagram";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const pressureMeasurementFaqs: Array<[string, string]> = [
+  [
+    "What is the natural frequency of an arterial line and why must it exceed 40 Hz?",
+    "Natural frequency f₀ = (1/2π) × √(πd²E / 4ρLV) — depends on tubing diameter, stiffness, length and fluid density. The pulse pressure waveform contains harmonics up to ~10× heart rate (~25 Hz at HR 150). To reproduce these without resonance distortion, f₀ should exceed 40 Hz. Short, stiff, wide-bore, bubble-free tubing maximises f₀."
+  ],
+  [
+    "What is optimal damping and how is it measured?",
+    "Damping coefficient 0.6–0.7 is optimal — fast response without overshoot. Measured by the fast-flush (square-wave) test: count oscillations after release. ≥2 oscillations = under-damped (overshoots, overestimates SBP); ≤1 oscillation = over-damped (underestimates SBP). MAP is reliable in both cases."
+  ],
+  [
+    "How does a strain-gauge transducer convert pressure into an electrical signal?",
+    "A flexible diaphragm deforms under pressure, stretching wires arranged in a Wheatstone bridge configuration. The resistance change unbalances the bridge, producing a small voltage proportional to applied pressure. The transducer is zeroed at the level of the right atrium (phlebostatic axis) to remove the effect of hydrostatic column."
+  ]
+];
 
 const objectives = [
   "Convert fluently between mmHg, cmH₂O, kPa and bar in clinical pressure measurements",
@@ -206,6 +222,8 @@ const PressureMeasurementTopic = () => {
               "1 mmHg ≈ 1.36 cmH₂O ≈ 133 Pa — unit conversions appear in viva and OSCE stations.",
             ]}
           />
+          <TopicFaqs faqs={pressureMeasurementFaqs} />
+
         </>
       }
     />

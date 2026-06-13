@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -6,6 +7,21 @@ import DefibrillationPacingDiagram from "@/components/diagrams/DefibrillationPac
 import { defibrillationPacingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const defibrillationPacingFaqs: Array<[string, string]> = [
+  [
+    "What is the difference between monophasic and biphasic defibrillation?",
+    "Monophasic — current flows in one direction; 360 J for all shocks (older defibrillators). Biphasic — current reverses direction mid-shock, lowers myocardial damage and skin burns, higher first-shock success at lower energy (120–200 J device-specific). Biphasic is now standard; Resus Council recommends manufacturer's setting, typically 150 J then escalating."
+  ],
+  [
+    "When is synchronised cardioversion indicated and why must the shock be synchronised?",
+    "For unstable tachyarrhythmias with a pulse (AF, atrial flutter, SVT, VT with pulse). Synchronisation delivers the shock on the R wave to avoid the vulnerable T wave period — an unsynchronised shock on the T wave can induce VF. Energy: AF 120–200 J biphasic, atrial flutter and SVT 70–120 J, VT 100 J starting."
+  ],
+  [
+    "What are the indications for temporary transvenous pacing?",
+    "Symptomatic bradycardia unresponsive to atropine: complete heart block, Mobitz II AV block, alternating bundle branch block, asystole, drug-induced bradycardia (β-blocker, digoxin), peri-procedural for high-risk patients (e.g. RCA PCI with RV infarct). Transcutaneous pacing is the bridge until transvenous access — sedation needed as it is painful."
+  ]
+];
 
 const objectives = [
   "Compare monophasic and biphasic defibrillation waveforms in terms of energy, efficacy and myocardial injury",
@@ -261,6 +277,8 @@ const DefibrillationPacingTopic = () => {
               "ICD magnet usually suspends shock therapy without affecting pacing — always confirm with manufacturer's chart.",
             ]}
           />
+          <TopicFaqs faqs={defibrillationPacingFaqs} />
+
         </>
       }
     />

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { pulseOximetryQuiz } from "@/data/quizzes";
@@ -6,6 +7,21 @@ import { AbsorptionSpectraDiagram } from "@/components/diagrams/AbsorptionSpectr
 import { CapnographyDiagram } from "@/components/diagrams/CapnographyDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const pulseOximetryFaqs: Array<[string, string]> = [
+  [
+    "How does a pulse oximeter calculate SpO₂?",
+    "Two LEDs emit red (660 nm) and infrared (940 nm) light through a pulsating vascular bed. Deoxy-Hb absorbs more red; oxy-Hb absorbs more infrared. The probe measures the AC (pulsatile, arterial) component as a ratio of DC (constant — venous, tissue) absorbances. The ratio is converted to SpO₂ via an empirical lookup table (Beer–Lambert calibrated against in-vitro co-oximetry in healthy volunteers 70–100 %)."
+  ],
+  [
+    "What conditions cause pulse-oximeter inaccuracy?",
+    "Falsely low: nail polish (especially blue/black), methylene blue, low perfusion, motion, venous pulsations (tricuspid regurgitation). Falsely high or normal despite hypoxia: carboxyhaemoglobin (reads ~100 %), methaemoglobinaemia (reads ~85 % regardless), severe anaemia. Skin pigmentation may cause overestimation of SpO₂ in hypoxia (more recently recognised)."
+  ],
+  [
+    "What is the difference between SpO₂ and SaO₂?",
+    "SaO₂ — directly measured arterial saturation from a co-oximeter on a blood sample (4-wavelength, distinguishes oxy/deoxy/COHb/MetHb). SpO₂ — non-invasive estimate from a 2-wavelength pulse oximeter; assumes only oxy- and deoxy-Hb are present. SpO₂ ±2 % of SaO₂ in the range 70–100 %; unreliable below 70 % and in dyshaemoglobinaemias."
+  ]
+];
 
 const objectives = [
   "Apply the Beer-Lambert law to explain how pulse oximetry derives SpO₂ from red and infrared absorption.",
@@ -86,6 +102,7 @@ const PulseOximetryTopic = () => {
         ],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
@@ -302,6 +319,8 @@ const PulseOximetryTopic = () => {
           />
         </div>
       </ExamSection>
+          <TopicFaqs faqs={pulseOximetryFaqs} />
+        </>
       }
     />
   );

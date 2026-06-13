@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -11,6 +12,21 @@ import { InlineRef } from "@/components/InlineRef";
 import { humidityGasSamplingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const humidityGasSamplingFaqs: Array<[string, string]> = [
+  [
+    "Why must inspired gases be humidified, and what humidity is required?",
+    "Dry gases (medical pipeline 0 % RH) cause mucosal drying, ciliary paralysis, mucus plugging and atelectasis. The upper airway normally conditions gas to 100 % RH at 37 °C (44 mg/L). Intubated patients bypass this — minimum 60 % RH at 30 °C (~17 mg/L) is required; HMEs deliver ~25–30 mg/L; active humidifiers (heated water bath) achieve full 44 mg/L."
+  ],
+  [
+    "How does an HME work and what are its limits?",
+    "Heat and Moisture Exchanger: hygroscopic + hydrophobic layers trap exhaled water vapour and heat, returning them on inspiration. Efficiency 70–90 %. Adds 1–2 cmH₂O resistance and ~50 mL dead-space. Change every 24 h, or sooner if visibly soiled, bloody, or after nebulisation. Not adequate for >96 h ventilation — switch to active heated humidification."
+  ],
+  [
+    "Compare side-stream and main-stream capnography sampling.",
+    "Side-stream — sample aspirated at 150–200 mL/min through fine tubing to a remote analyser; small footprint, slight delay (1–4 s) and waveform distortion, suction can dilute paediatric tidal volumes. Main-stream — IR cell sits in the airway at the ETT; instant response, no sampling losses, but bulky, heated to prevent condensation, and adds dead-space."
+  ]
+];
 
 const objectives = [
   "Define absolute and relative humidity and recall the saturated value at 37 °C (44 mg/L)",
@@ -495,6 +511,8 @@ const HumidityGasSamplingTopic = () => {
               "Side-stream capnography has a 1–2 s delay; main-stream is faster but adds bulk and dead-space at the airway.",
             ]}
           />
+          <TopicFaqs faqs={humidityGasSamplingFaqs} />
+
         </>
       }
     />

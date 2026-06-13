@@ -1,9 +1,25 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { ventilatorModesQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import VentilatorModesDiagram from "@/components/diagrams/VentilatorModesDiagram";
+
+const ventilatorModesFaqs: Array<[string, string]> = [
+  [
+    "What is the difference between volume-controlled and pressure-controlled ventilation?",
+    "VCV — set tidal volume guaranteed, airway pressure varies with compliance/resistance. Risk: barotrauma if compliance falls (pressure rises). PCV — set inspiratory pressure, tidal volume varies with compliance/resistance. Decelerating flow improves gas distribution; risk: hypoventilation if compliance falls (volume drops). Modern hybrid modes (PRVC, VC+) target a set volume at the lowest pressure."
+  ],
+  [
+    "What is pressure support and when is it used?",
+    "Patient-triggered breaths are augmented to a set pressure; the patient sets rate, depth and inspiratory time, cycling to expiration at a flow threshold (typically 25 % of peak). Used for weaning, in spontaneously breathing patients on a SAD, and in NIV. Reduces work of breathing while preserving patient control. Apnoea backup must always be enabled."
+  ],
+  [
+    "What lung-protective ventilation settings are recommended in ARDS?",
+    "Tidal volume 6 mL/kg predicted body weight, plateau pressure ≤30 cmH₂O, driving pressure ≤15 cmH₂O, PEEP titrated to oxygenation (FiO₂/PEEP table), permissive hypercapnia (pH ≥7.20), and prone positioning for P/F <150 (PROSEVA trial — 28-day mortality 16 % vs 33 %). Apply to all mechanically ventilated patients, not just those with ARDS (lung-protective by default)."
+  ]
+];
 
 /**
  * Standalone FRCA Final / FFICM topic page on ventilator modes. Carved
@@ -188,6 +204,7 @@ const VentilatorModesTopic = () => {
         workedExamples: ["DerangedPhys CC2.3", "Tobin 3rd ed Ch.9"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <section className="space-y-6">
             <div>
@@ -329,6 +346,8 @@ const VentilatorModesTopic = () => {
             </div>
           </section>
         </ExamSection>
+          <TopicFaqs faqs={ventilatorModesFaqs} />
+        </>
       }
     />
   );
