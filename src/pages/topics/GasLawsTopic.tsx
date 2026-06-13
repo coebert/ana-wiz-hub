@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -9,6 +10,21 @@ import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { gasLawsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const gasLawsFaqs: Array<[string, string]> = [
+  [
+    "State Boyle's, Charles's and Gay-Lussac's laws with one anaesthetic application each.",
+    "Boyle: P × V = constant at fixed T (used to calculate cylinder contents — an E-cylinder of O₂ at 137 bar in a 4.7 L water capacity contains ~680 L at atmospheric pressure). Charles: V ∝ T at fixed P (volatile vaporiser output rises with temperature). Gay-Lussac: P ∝ T at fixed V (cylinder pressure rises if stored in a hot ambulance — fire-risk in O₂ cylinders)."
+  ],
+  [
+    "What is the critical temperature of nitrous oxide and why does it matter?",
+    "36.5 °C. Above this, N₂O cannot exist as a liquid regardless of pressure, so cylinder contents must be measured by weight (not pressure gauge as for O₂). At room temperature N₂O is partly liquid; the gauge reads ~44 bar (vapour pressure) until all liquid has evaporated, then falls rapidly."
+  ],
+  [
+    "How does Dalton's law of partial pressures apply to alveolar gas?",
+    "Total pressure = sum of partial pressures. Alveolar O₂ tension = (Patm − PH₂O) × FiO₂ − PaCO₂/RQ. At sea level with FiO₂ 0.21: PAO₂ ≈ (101 − 6.3) × 0.21 − 5.3/0.8 ≈ 13.3 kPa. The alveolar gas equation is derived directly from Dalton's law."
+  ]
+];
 
 const objectives = [
   "State Boyle's, Charles', Gay-Lussac's, Avogadro's, Dalton's and Henry's laws and describe how they combine into the ideal gas equation PV = nRT (Avogadro's law contributing the n term).",

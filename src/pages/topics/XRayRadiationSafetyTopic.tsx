@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -16,6 +17,21 @@ import { Cite, ReferencesList, type Reference } from "@/components/References";
 import { xrayRadiationSafetyQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const xrayRadiationSafetyFaqs: Array<[string, string]> = [
+  [
+    "What are the three principles of radiation protection?",
+    "ALARA — As Low As Reasonably Achievable. Achieved by Time (minimise exposure duration), Distance (inverse-square law — doubling distance quarters dose), and Shielding (lead aprons 0.25–0.5 mm Pb equivalent, thyroid collars, lead glasses, mobile screens)."
+  ],
+  [
+    "What is the annual dose limit for occupationally exposed staff?",
+    "IRR 2017 (UK): whole-body effective dose 20 mSv/year (averaged over 5 years, max 50 mSv in any single year). Equivalent dose limits: lens 20 mSv/year, skin/extremities 500 mSv/year. Pregnant staff — fetal dose ≤1 mSv over the declared pregnancy. Wear film/TLD badges and review records with the RPS."
+  ],
+  [
+    "What is scattered radiation in fluoroscopy and how do you minimise exposure?",
+    "X-rays scatter from the patient in all directions; the operator's main exposure is scatter, not the primary beam. Minimise by: standing on the image-intensifier side (not the X-ray tube), pulsed rather than continuous fluoroscopy, collimating to the field of interest, last-image-hold review, wearing lead apron + thyroid shield + lead glasses, and keeping ≥2 m from the source when not directly required."
+  ]
+];
 
 const REFERENCES: Reference[] = [
   {
@@ -828,6 +844,8 @@ const XRayRadiationSafetyTopic = () => {
               "Annual occupational limit for classified workers: 20 mSv whole-body; lens 20 mSv; extremities 500 mSv.",
             ]}
           />
+          <TopicFaqs faqs={xrayRadiationSafetyFaqs} />
+
         </>
       }
     />

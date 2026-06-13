@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -9,6 +10,21 @@ import SkewDistributionDiagram from "@/components/diagrams/SkewDistributionDiagr
 import CentralTendencyShiftDiagram from "@/components/diagrams/CentralTendencyShiftDiagram";
 import BoxPlotDiagram from "@/components/diagrams/BoxPlotDiagram";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const statisticsEbmFaqs: Array<[string, string]> = [
+  [
+    "What is the difference between type I and type II error?",
+    "Type I (α) — false positive: rejecting a true null hypothesis. Set conventionally at 0.05. Type II (β) — false negative: failing to reject a false null hypothesis. Power = 1 − β, usually set at 0.8. Type I error is reduced by smaller α; Type II error by larger sample size or effect size."
+  ],
+  [
+    "Explain absolute risk reduction, relative risk reduction and number needed to treat.",
+    "ARR = control event rate − treatment event rate. RRR = ARR / control event rate. NNT = 1 / ARR. Example: mortality 10 % → 8 %. ARR = 2 %, RRR = 20 %, NNT = 50 (treat 50 patients to prevent one death). RRR alone exaggerates clinically small effects; always quote ARR and NNT."
+  ],
+  [
+    "What is the difference between sensitivity, specificity and likelihood ratio?",
+    "Sensitivity = true positives / (true positives + false negatives) — ability to detect disease. Specificity = true negatives / (true negatives + false positives) — ability to exclude disease. Likelihood ratio + = sensitivity / (1 − specificity); LR+ >10 strongly increases post-test probability. Unlike PPV/NPV, LRs are independent of disease prevalence."
+  ]
+];
 
 const objectives = [
   "Distinguish RCT, cohort, case-control, cross-sectional and ecological designs and their measures of effect",
@@ -654,6 +670,8 @@ const StatisticsEBMTopic = () => {
               "NNT = 1 / absolute risk reduction; odds ratios approximate relative risk only when outcomes are rare.",
             ]}
           />
+          <TopicFaqs faqs={statisticsEbmFaqs} />
+
         </>
       }
     />

@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { electricalSafetyQuiz } from "@/data/quizzes";
@@ -10,6 +11,21 @@ import { MicroshockDiagram } from "@/components/diagrams/MicroshockDiagram";
 import { DiathermyDiagram } from "@/components/diagrams/DiathermyDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const electricalSafetyFaqs: Array<[string, string]> = [
+  [
+    "What are the classes I, II and III of electrical equipment?",
+    "Class I — basic insulation + protective earth (e.g. floor-standing operating-theatre equipment). Class II — double or reinforced insulation, no earth (e.g. infusion pumps marked with the double-square symbol). Class III — supplied from a safety extra-low voltage source (≤24 V AC / 60 V DC), no shock hazard from the supply."
+  ],
+  [
+    "What is the difference between type B, BF and CF applied parts?",
+    "B — leakage current ≤100 µA, not for direct heart contact (e.g. operating table). BF — floating circuit, leakage ≤100 µA, safer for skin contact (e.g. ECG, NIBP). CF — floating circuit, leakage ≤10 µA, designed for direct cardiac connection (e.g. invasive pressure transducers, pacing wires). 'F' = floating (isolated from earth); 'C' = cardiac."
+  ],
+  [
+    "What is microshock and how is it prevented?",
+    "Microshock is ventricular fibrillation caused by a current as small as 50–100 µA delivered directly to the myocardium via a pacing wire or fluid-filled catheter. Prevention: use only CF-rated equipment for cardiac connections, ensure earth-leakage <10 µA, insulate the proximal end of pacing wires, and avoid touching exposed connectors with bare hands."
+  ]
+];
 
 const objectives = [
   "Define macroshock and microshock and quote the threshold currents that cause perception, let-go, respiratory arrest and VF.",
@@ -94,6 +110,7 @@ const ElectricalSafetyTopic = () => {
         ],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
         <section className="mb-10">
@@ -290,6 +307,8 @@ const ElectricalSafetyTopic = () => {
           />
         </div>
       </ExamSection>
+          <TopicFaqs faqs={electricalSafetyFaqs} />
+        </>
       }
     />
   );

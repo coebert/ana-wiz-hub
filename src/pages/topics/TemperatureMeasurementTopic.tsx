@@ -1,10 +1,26 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { temperatureMeasurementQuiz } from "@/data/quizzes";
 import TemperatureMeasurementDiagram from "@/components/diagrams/TemperatureMeasurementDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const temperatureMeasurementFaqs: Array<[string, string]> = [
+  [
+    "Compare thermistors and thermocouples for clinical use.",
+    "Thermistor — semiconductor whose resistance falls exponentially with temperature. Highly sensitive, small, used in PA catheters and oesophageal probes; non-linear so needs linearising circuit. Thermocouple — two dissimilar metals; voltage proportional to temperature difference (Seebeck effect). Linear, robust, requires a reference junction; used in some skin probes."
+  ],
+  [
+    "Where are core temperature measurements taken and which is the gold standard?",
+    "Pulmonary artery (gold standard — true core). Distal oesophagus (within 0.5 °C of PA; influenced by airway gas), nasopharynx (close to hypothalamus), tympanic membrane (good for brain temperature). Bladder and rectum lag behind. Skin and axilla underestimate core by 1–2 °C and are unreliable intra-operatively."
+  ],
+  [
+    "What are the consequences of perioperative hypothermia (<36 °C)?",
+    "Triples wound infection, increases blood loss and transfusion requirements (impaired coagulation and platelet function), prolongs drug action (especially NMBAs and volatiles), causes shivering with ↑VO₂ up to 400 %, prolongs recovery and ICU stay, and increases cardiac events. NICE CG65 mandates active warming for any operation >30 min."
+  ]
+];
 
 const objectives = [
   "Explain the Seebeck effect and the construction of thermocouples.",
@@ -76,6 +92,7 @@ const TemperatureMeasurementTopic = () => {
         keyPoints: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
 
         <div>
@@ -203,6 +220,8 @@ const TemperatureMeasurementTopic = () => {
             ]}
           />
         </ExamSection>
+          <TopicFaqs faqs={temperatureMeasurementFaqs} />
+        </>
       }
     />
   );

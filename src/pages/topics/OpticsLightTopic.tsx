@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -6,6 +7,21 @@ import OpticsLightDiagram from "@/components/diagrams/OpticsLightDiagram";
 import { opticsLightQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const opticsLightFaqs: Array<[string, string]> = [
+  [
+    "How does the Beer–Lambert law underpin pulse oximetry and capnography?",
+    "A = ε × c × l: absorbance is proportional to molar absorptivity, concentration, and path length. Pulse oximetry uses this at 660 nm and 940 nm to derive the ratio of oxy- to deoxy-haemoglobin. Infrared capnography uses absorbance at 4.26 µm (CO₂'s peak) to derive end-tidal CO₂ concentration."
+  ],
+  [
+    "What is total internal reflection and how is it used in fibreoptic intubation?",
+    "When light passes from a denser to a less dense medium at an angle greater than the critical angle, it is reflected entirely back into the dense medium. Optical fibres exploit this: a high-index core surrounded by lower-index cladding traps light by repeated internal reflection. Coherent bundles transmit images; non-coherent bundles transmit illumination."
+  ],
+  [
+    "What wavelengths are used by common surgical lasers?",
+    "CO₂ — 10 600 nm (far infrared, absorbed by water; surface cutting/vaporisation, airway). Nd:YAG — 1064 nm (deeper penetration; tumour debulking, photocoagulation). KTP — 532 nm (green; vascular lesions, urology). Argon — 488/514 nm (retinal photocoagulation). Each requires wavelength-specific eye protection."
+  ]
+];
 
 const objectives = [
   "State the laws of reflection and refraction (Snell's law) and apply them to clinical optics",
@@ -207,6 +223,8 @@ const OpticsLightTopic = () => {
               "Polarisation and plane-polarised light are exploited in laser physics and optical activity measurement.",
             ]}
           />
+          <TopicFaqs faqs={opticsLightFaqs} />
+
         </>
       }
     />

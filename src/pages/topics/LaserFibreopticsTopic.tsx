@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -7,6 +8,21 @@ import { laserFibreopticsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import InlineRef from "@/components/InlineRef";
+
+const laserFibreopticsFaqs: Array<[string, string]> = [
+  [
+    "What are the key safety measures for airway laser surgery?",
+    "FiO₂ ≤30 %, avoid N₂O (supports combustion), use a laser-resistant ETT (red-rubber wrapped with metallic foil, or purpose-built Mallinckrodt Laser-Flex), saline-filled cuff with methylene blue indicator, eye protection for staff and patient (wavelength-specific goggles), warning signs on theatre doors, smoke evacuation, and immediate access to saline and a backup tube."
+  ],
+  [
+    "What is the management of an airway fire?",
+    "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), perform bronchoscopy to assess thermal injury, administer steroids and humidified O₂. Admit to critical care for observation of progressive airway oedema (peaks 12–24 h)."
+  ],
+  [
+    "How does an optical fibre transmit light?",
+    "Total internal reflection. The core (high refractive index) is surrounded by a cladding (lower refractive index). Light entering within the acceptance cone reflects off the core–cladding boundary at angles greater than the critical angle and propagates along the fibre with minimal loss. Bundles are coherent (image transmission — fibrescope) or non-coherent (light transmission only)."
+  ]
+];
 
 const objectives = [
   "Define LASER and explain the requirement for population inversion in a gain medium",
@@ -171,6 +187,8 @@ const LaserFibreopticsTopic = () => {
               "Fibreoptics rely on total internal reflection within a higher-index core; coherent bundles transmit images, non-coherent bundles transmit light only.",
             ]}
           />
+          <TopicFaqs faqs={laserFibreopticsFaqs} />
+
         </>
       }
     />

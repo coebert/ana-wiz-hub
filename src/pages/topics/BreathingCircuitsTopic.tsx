@@ -1,10 +1,26 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { breathingCircuitsQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import BreathingCircuitsDiagram from "@/components/diagrams/BreathingCircuitsDiagram";
 import MaplesonEfficiencyDiagram from "@/components/diagrams/MaplesonEfficiencyDiagram";
+
+const breathingCircuitsFaqs: Array<[string, string]> = [
+  [
+    "What fresh gas flow is required to prevent rebreathing in a Mapleson D / Bain circuit?",
+    "During spontaneous ventilation, FGF must equal 1.5–2 × minute volume (~150 mL/kg/min). During controlled ventilation (the efficient mode for Mapleson D), 70–100 mL/kg/min is sufficient. The Bain is a coaxial Mapleson D — fresh gas runs through the inner tube to the patient, exhaled gas returns via the outer tube; check inner-tube integrity with the Pethick test."
+  ],
+  [
+    "How does a circle system differ from a Mapleson circuit?",
+    "A circle system uses CO₂ absorber (soda lime) to scrub exhaled CO₂, allowing very low fresh gas flows (≤1 L/min — low-flow anaesthesia). Two unidirectional valves enforce flow direction, an APL valve releases excess gas, a reservoir bag dampens flow. Conserves heat, moisture and volatile agent; key risks are exhausted soda lime (colour change, rising FiCO₂) and degradation products (compound A with sevoflurane at very low flow)."
+  ],
+  [
+    "What are the signs of exhausted soda lime?",
+    "Colour change of indicator (white → violet, or pink → white depending on brand), reduced thermal heat generation (cool to touch), rising inspired CO₂ on capnography, hard granules with cracked surface. Replace when 50–70 % colour-changed, do not wait until exhausted. Modern absorbers without strong alkali (lithium hydroxide, calcium hydroxide) reduce compound A and CO production from desflurane/sevoflurane."
+  ]
+];
 
 /**
  * Standalone FRCA Primary / Final topic page for Anaesthetic Breathing
@@ -197,6 +213,7 @@ const BreathingCircuitsTopic = () => {
         workedExamples: ["BJA Educ 2005", "Al-Shaikh & Stacey Ch.6-7"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <section className="space-y-6">
             {/* Why it matters */}
@@ -308,6 +325,8 @@ const BreathingCircuitsTopic = () => {
             </div>
           </section>
         </ExamSection>
+          <TopicFaqs faqs={breathingCircuitsFaqs} />
+        </>
       }
     />
   );

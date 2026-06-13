@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { InlineRef } from "@/components/InlineRef";
 import { ExamSection } from "@/components/ExamSection";
@@ -8,6 +9,21 @@ import SIUnitsThermodynamicsDiagram from "@/components/diagrams/SIUnitsThermodyn
 import LatentHeatDiagram from "@/components/diagrams/LatentHeatDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const siUnitsThermodynamicsFaqs: Array<[string, string]> = [
+  [
+    "List the seven SI base units.",
+    "Metre (length), kilogram (mass), second (time), ampere (electric current), kelvin (thermodynamic temperature), mole (amount of substance), candela (luminous intensity). All other units are derived from these (e.g. pascal = kg·m⁻¹·s⁻², joule = kg·m²·s⁻²)."
+  ],
+  [
+    "State the first and second laws of thermodynamics with one anaesthetic example.",
+    "First law — energy is conserved; ΔU = Q − W. Example: heat lost by patient (Q) = heat absorbed by cold IV fluids + heat lost by evaporation from open body cavity. Second law — entropy of an isolated system always increases; heat flows from hot to cold. Example: warming a patient requires an active energy input (forced-air warmer), it does not happen spontaneously."
+  ],
+  [
+    "What is the triple point of water and why is it important?",
+    "The unique temperature and pressure (273.16 K, 611.657 Pa) at which solid, liquid and vapour water coexist in equilibrium. It defines the kelvin scale: 1 K = 1/273.16 of the temperature of the triple point. Used as the primary calibration point for thermometers because it is highly reproducible."
+  ]
+];
 
 const objectives = [
   "List the 7 SI base units and the most relevant derived units (Pa, J, W)",
@@ -272,6 +288,8 @@ const SIUnitsThermodynamicsTopic = () => {
               "Absolute zero is 0 K = −273.15 °C; always use Kelvin in gas-law calculations.",
             ]}
           />
+          <TopicFaqs faqs={siUnitsThermodynamicsFaqs} />
+
         </>
       }
     />

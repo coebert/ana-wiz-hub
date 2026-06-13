@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -7,6 +8,21 @@ import TimeConstantDiagram from "@/components/diagrams/TimeConstantDiagram";
 import { mathConceptsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const mathConceptsFaqs: Array<[string, string]> = [
+  [
+    "What is a time constant and how many are needed for completion?",
+    "Time constant (τ) = volume / flow (in compartment kinetics) or R × C (electrical). It is the time taken for an exponential process to reach 63 % of its final value. 3τ reaches 95 %, 5τ reaches 99 % (clinically 'complete'). Example: with FRC 3 L and alveolar ventilation 4 L/min, τ ≈ 0.75 min → wash-in/wash-out ≈ 4 min."
+  ],
+  [
+    "Distinguish zero-order and first-order kinetics with an example.",
+    "Zero-order — constant amount eliminated per unit time, independent of concentration (e.g. ethanol, phenytoin at high dose, aspirin in overdose). First-order — constant fraction eliminated per unit time; rate ∝ concentration (e.g. most drugs at therapeutic doses — propofol, fentanyl). Half-life is constant only in first-order kinetics."
+  ],
+  [
+    "What is the difference between mean, median and mode, and when is each preferred?",
+    "Mean — arithmetic average; appropriate for normally distributed data. Median — middle value; preferred for skewed or ordinal data (e.g. pain scores, length of stay). Mode — most frequent value; used for categorical data. Reporting median (IQR) is more honest than mean (SD) for ICU length-of-stay because of long-tailed distributions."
+  ]
+];
 
 const objectives = [
   "Recognise the canonical graph shapes (linear, exponential decay/rise, sigmoid, hyperbolic) and the equations behind them",
@@ -168,6 +184,8 @@ const MathConceptsTopic = () => {
               "Exponential wash-in and wash-out share the same time constant for first-order processes.",
             ]}
           />
+          <TopicFaqs faqs={mathConceptsFaqs} />
+
         </>
       }
     />

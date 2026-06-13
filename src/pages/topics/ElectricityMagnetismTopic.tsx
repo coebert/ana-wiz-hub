@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -7,6 +8,21 @@ import { electricityMagnetismQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+
+const electricityMagnetismFaqs: Array<[string, string]> = [
+  [
+    "State Ohm's law and apply it to defibrillation.",
+    "V = I × R. In defibrillation, energy delivered = ½ × C × V² (capacitor discharge). Transthoracic impedance (~50 Ω) determines the actual current reaching the myocardium. Impedance is reduced by good pad contact, conductive gel, exhalation phase, and pad placement avoiding bone — biphasic devices compensate by measuring impedance and adjusting waveform."
+  ],
+  [
+    "What is capacitance and how does a defibrillator use it?",
+    "Capacitance (C, in farads) is charge stored per volt: Q = C × V. A defibrillator charges a capacitor from mains, then discharges it across the patient. Energy = ½CV². A typical capacitor of 32 µF charged to 5000 V delivers ~400 J. An inductor in series shapes the waveform from a damped sinusoid (monophasic) to controlled biphasic."
+  ],
+  [
+    "How is electromagnetic interference mitigated for pacemakers in theatre?",
+    "Use bipolar diathermy where possible; if monopolar essential, short bursts <5 s, plate sited so current flows away from the device, do not use within 15 cm of the generator. Have a magnet ready (converts most PPMs to asynchronous mode; deactivates ICD tachy-therapy). Continuous ECG and SpO₂; manufacturer's protocol for reprogramming pre- and post-operatively."
+  ]
+];
 
 const objectives = [
   "Apply Ohm's law and the power equations (P = VI = I²R = V²/R) to clinical scenarios",
@@ -202,6 +218,8 @@ const ElectricityMagnetismTopic = () => {
               "Modern biphasic defibrillators typically use capacitors of ≈ 32 µF (older monophasic devices used larger values, e.g. ≈ 64 µF); stored energy E = ½CV². Know how to derive delivered energy.",
             ]}
           />
+          <TopicFaqs faqs={electricityMagnetismFaqs} />
+
         </>
       }
     />

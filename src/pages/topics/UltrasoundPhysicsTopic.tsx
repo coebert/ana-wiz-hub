@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -6,6 +7,21 @@ import UltrasoundPhysicsDiagram from "@/components/diagrams/UltrasoundPhysicsDia
 import { ultrasoundPhysicsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const ultrasoundPhysicsFaqs: Array<[string, string]> = [
+  [
+    "What is the trade-off between ultrasound frequency, resolution and depth?",
+    "Higher frequency (10–15 MHz) — better axial resolution but rapid attenuation, so only superficial structures (vascular access, peripheral nerves). Lower frequency (2–5 MHz) — penetrates deeper (cardiac, abdominal) at the cost of resolution. Resolution improves with shorter wavelength (λ = c/f, c ≈ 1540 m/s in soft tissue)."
+  ],
+  [
+    "Explain the principle of Doppler in vascular ultrasound.",
+    "Frequency shift (Δf) = 2 × f₀ × v × cosθ / c, where v is blood velocity and θ is the angle between beam and flow. Optimal θ <60° (cos plateau steepens above this — error increases). Colour Doppler maps direction (toward probe = red, away = blue). Pulsed-wave Doppler gives velocity at a specific depth but is limited by Nyquist; continuous-wave measures any velocity but loses depth resolution."
+  ],
+  [
+    "What is the acoustic impedance and how does it cause reflection?",
+    "Z = ρ × c (density × speed of sound). Reflection occurs at boundaries with different Z. A small mismatch (soft tissue–soft tissue ~1 %) gives weak echoes; a large mismatch (tissue–air or tissue–bone) reflects nearly all the energy, casting a shadow. Coupling gel removes the tissue–air interface at the skin."
+  ]
+];
 
 const objectives = [
   "Explain the piezoelectric effect and the components of a clinical ultrasound transducer",
@@ -195,6 +211,8 @@ const UltrasoundPhysicsTopic = () => {
               "Mechanical index quantifies cavitation risk; thermal index quantifies tissue heating — both should be 'as low as reasonably achievable'.",
             ]}
           />
+          <TopicFaqs faqs={ultrasoundPhysicsFaqs} />
+
         </>
       }
     />

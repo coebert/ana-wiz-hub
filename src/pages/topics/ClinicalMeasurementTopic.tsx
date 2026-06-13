@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { clinicalMeasurementQuiz } from "@/data/quizzes";
@@ -6,6 +7,21 @@ import ClinicalMeasurementDiagram from "@/components/diagrams/ClinicalMeasuremen
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+
+const clinicalMeasurementFaqs: Array<[string, string]> = [
+  [
+    "Define accuracy, precision, drift and hysteresis.",
+    "Accuracy — closeness to the true value. Precision — reproducibility (low scatter on repeat measurement); a device can be precise but inaccurate (systematic bias). Drift — slow change in reading over time with no change in input (corrected by re-calibration). Hysteresis — different reading depending on whether the input is rising or falling."
+  ],
+  [
+    "What is the difference between a static and dynamic response of a measurement system?",
+    "Static response — calibration, linearity, sensitivity, accuracy under steady conditions. Dynamic response — how quickly the system tracks a changing input: characterised by natural frequency, damping coefficient and time constant. A pressure transducer with poor dynamic response may give the correct mean but distort the waveform."
+  ],
+  [
+    "What does it mean to 'zero' and 'calibrate' a transducer?",
+    "Zeroing — setting the output to 0 when input is at a reference value (e.g. arterial line transducer open to atmosphere at the phlebostatic axis). Calibration — applying a known input and adjusting gain so output matches (modern transducers are factory-calibrated and need only zeroing). Recalibrate after any disconnect or after large shifts in transducer height."
+  ]
+];
 
 const objectives = [
   "Set up an invasive arterial line correctly (zeroing, levelling, transducer choice).",
@@ -77,6 +93,7 @@ const ClinicalMeasurementTopic = () => {
         keyPoints: ["Cross & Plunkett Ch.16", "Middleton Ch.18", "BJA Educ 2005"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
 
         <div>
@@ -207,6 +224,8 @@ const ClinicalMeasurementTopic = () => {
             ]}
           />
         </ExamSection>
+          <TopicFaqs faqs={clinicalMeasurementFaqs} />
+        </>
       }
     />
   );
