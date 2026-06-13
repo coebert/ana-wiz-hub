@@ -1,8 +1,15 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { abdominalCompartmentSyndromeQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
+
+const abdominalCompartmentSyndromeFaqs: Array<[string, string]> = [
+  ["How is intra-abdominal pressure measured and what defines ACS?", "Bladder pressure with 25 mL saline at end-expiration, supine, transduced at the mid-axillary line; intra-abdominal hypertension ≥12 mmHg, ACS = sustained IAP >20 mmHg with new organ dysfunction (WSACS 2013)."],
+  ["What are the physiological consequences of raised intra-abdominal pressure?", "Reduced venous return and CO, raised airway pressure with reduced FRC, oliguria from renal venous congestion, raised ICP from impaired cerebral venous drainage, and gut ischaemia from reduced splanchnic perfusion."],
+  ["What are the non-surgical options before decompressive laparotomy?", "Nasogastric and rectal decompression, neuromuscular blockade, prokinetics, percutaneous drainage of ascites, deep sedation, and conservative fluid strategy; surgery is reserved for refractory ACS with organ failure."],
+];
 
 const objectives = [
   "Define intra-abdominal hypertension (IAH) and abdominal compartment syndrome (ACS) using WSACS 2013 criteria.",
@@ -327,6 +334,7 @@ const AbdominalCompartmentSyndromeTopic = () => {
             </div>
           </section>
         </ExamSection>
+          <TopicFaqs faqs={abdominalCompartmentSyndromeFaqs} />
       }
     />
   );

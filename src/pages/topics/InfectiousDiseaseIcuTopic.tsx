@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { infectiousDiseaseIcuQuestions } from "@/data/quizzes";
@@ -9,6 +10,12 @@ import PCPManagementFlowchart from "@/components/diagrams/PCPManagementFlowchart
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const infectiousDiseaseIcuFaqs: Array<[string, string]> = [
+  ["When should empirical antifungal therapy be considered in ICU?", "Persistent sepsis on broad antibiotics with multifocal Candida colonisation, prolonged ICU stay, TPN, recent abdominal surgery or immunosuppression; echinocandin (caspofungin or anidulafungin) is first-line (IDSA 2016)."],
+  ["What is the management approach to suspected meningitis in ICU?", "Take blood cultures, give dexamethasone 10 mg + ceftriaxone 2 g IV within 1 h, add amoxicillin if >50 y or immunocompromised (Listeria cover), arrange urgent CT/LP, and consider aciclovir if encephalitic features."],
+  ["What is the approach to invasive aspergillosis in critically ill influenza patients?", "Active surveillance with serum galactomannan and BAL; voriconazole or isavuconazole first-line if positive; up to 20% of severe influenza ICU patients develop IPA (AspICU criteria), with mortality >50%."],
+];
 
 const objectives = [
   "Differentiate the causative organisms, severity scoring and empiric therapy for CAP, HAP and VAP",
@@ -1086,6 +1093,7 @@ const InfectiousDiseaseIcuTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={infectiousDiseaseIcuFaqs} />
       }
     />
   );

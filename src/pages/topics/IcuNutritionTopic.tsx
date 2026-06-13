@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
@@ -8,6 +9,12 @@ import RefeedingSyndromeAnimation from "@/components/diagrams/RefeedingSyndromeA
 import EnergyProteinTargetDiagram from "@/components/diagrams/EnergyProteinTargetDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const icuNutritionFaqs: Array<[string, string]> = [
+  ["When should enteral nutrition be started in the critically ill?", "Within 24–48 h of ICU admission once haemodynamically stable, even at trophic rates; early EN preserves gut mucosa and reduces infectious complications (ESPEN 2019, ASPEN/SCCM 2016)."],
+  ["What energy and protein targets should be used in ICU?", "Aim for 20–25 kcal/kg/day (ramp up from day 3–7) and 1.3 g/kg/day protein using actual body weight; indirect calorimetry is preferred when available to avoid over- and under-feeding."],
+  ["How is refeeding syndrome recognised and prevented?", "Risk factors include BMI <16, >10 days starvation, low pre-feed K/Mg/PO₄; start at ≤10 kcal/kg/day, replace phosphate, potassium, magnesium and thiamine, and increase calories over 4–7 days while monitoring electrolytes daily."],
+];
 
 const objectives = [
   "Describe the metabolic response to critical illness and its implications for feeding strategy",
@@ -243,6 +250,7 @@ const IcuNutritionTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={icuNutritionFaqs} />
       }
     />
   );

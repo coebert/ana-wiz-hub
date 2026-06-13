@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
@@ -12,6 +13,12 @@ import HITPathophysiologyDiagram from "@/components/diagrams/HITPathophysiologyD
 import HITAssessmentBlock from "@/components/HITAssessmentBlock";
 import RebalancedHaemostasisDiagram from "@/components/diagrams/RebalancedHaemostasisDiagram";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const haematologyIcuFaqs: Array<[string, string]> = [
+  ["What restrictive transfusion threshold is recommended in ICU?", "Transfuse RBC when Hb <70 g/L in stable ICU patients (TRICC, TRISS); use a 80 g/L threshold in acute coronary syndromes or active bleeding."],
+  ["How is HIT diagnosed and managed?", "Use the 4Ts score (thrombocytopenia, timing, thrombosis, other causes); if intermediate–high (≥4), stop heparin, send PF4 ELISA and confirm with serotonin release assay, and start a non-heparin anticoagulant (argatroban, danaparoid or fondaparinux)."],
+  ["What is the approach to thrombotic microangiopathies (TTP/HUS) in ICU?", "MAHA + thrombocytopenia + organ dysfunction → urgent ADAMTS13 level; while awaiting, start plasma exchange (TTP), caplacizumab where available, and high-dose steroids; avoid platelet transfusion unless life-threatening bleed."],
+];
 
 const objectives = [
   "Differentiate the thrombotic microangiopathies (TTP, HUS, DIC) using ADAMTS13 activity, coagulation screen, and PLASMIC score.",
@@ -419,6 +426,7 @@ const HaematologyIcuTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={haematologyIcuFaqs} />
       }
     />
   );

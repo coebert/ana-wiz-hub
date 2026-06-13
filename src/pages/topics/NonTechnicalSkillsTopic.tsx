@@ -1,9 +1,16 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { QuizQuestion } from "@/components/QuizSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const nonTechnicalSkillsFaqs: Array<[string, string]> = [
+  ["What are the four domains of ANTS (Anaesthetists' Non-Technical Skills)?", "Task management, team working, situation awareness and decision making — each with behavioural markers used for structured debrief and assessment (Fletcher et al., BJA 2003)."],
+  ["What is the difference between 'shared mental model' and 'situation awareness'?", "Situation awareness is individual perception of cues, comprehension and projection (Endsley); shared mental model is the team-wide common understanding of the problem and plan — built by closed-loop communication and structured handover (e.g. SBAR)."],
+  ["How does cognitive aid use improve crisis management?", "Cognitive aids (e.g. AAGBI Quick Reference Handbook, ASA Critical Events) reduce omission errors in low-frequency emergencies — RCTs show measurable improvement when a dedicated reader is appointed within the team."],
+];
 
 const objectives = [
   "Define the four ANTS categories (situation awareness, decision making, task management, team working) and their elements.",
@@ -292,6 +299,7 @@ const NonTechnicalSkillsTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={nonTechnicalSkillsFaqs} />
       }
     />
   );

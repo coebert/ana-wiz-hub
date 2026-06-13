@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { acidBaseQuestions } from "@/data/quizzes";
@@ -17,6 +18,12 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+
+const acidBaseFaqs: Array<[string, string]> = [
+  ["How do you calculate and interpret the anion gap?", "AG = (Na⁺ + K⁺) − (Cl⁻ + HCO₃⁻); normal 8–12 mmol/L. A raised AG metabolic acidosis points to lactate, ketones, renal failure or toxins (MUDPILES); a normal AG acidosis suggests GI HCO₃⁻ loss or RTA."],
+  ["What is the Stewart approach and when does it help?", "Stewart uses strong ion difference (SID), weak acids (Atot) and pCO₂ as independent determinants of [H⁺]; it explains hyperchloraemic acidosis from saline (SID = 0) and the alkalinising effect of albumin loss better than the Henderson–Hasselbalch view."],
+  ["How is a mixed acid–base disorder identified?", "Apply expected compensation formulae (e.g. Winter's: pCO₂ = 1.5 × HCO₃ + 8 ± 2 for metabolic acidosis); deviation from expected compensation means a second primary disturbance is present."],
+];
 
 const objectives = [
   "Apply a five-step systematic ABG interpretation (oxygenation → primary disorder → compensation → anion gap → delta ratio)",
@@ -553,6 +560,7 @@ const AcidBaseTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={acidBaseFaqs} />
       }
     />
   );

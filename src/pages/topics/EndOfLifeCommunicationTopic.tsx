@@ -1,10 +1,17 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { QuizQuestion } from "@/components/QuizSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+
+const endOfLifeCommunicationFaqs: Array<[string, string]> = [
+  ["What is the SPIKES framework for breaking bad news?", "Setting up, Perception ('what do you understand?'), Invitation (how much do they want to know), Knowledge (information in chunks, warning shot), Empathy (acknowledge emotion), Strategy and Summary."],
+  ["How should family meetings be structured in ICU?", "Pre-meeting team huddle, named clinician leader, quiet private space, introductions, summary of clinical picture, exploration of patient values, shared decision-making, agreed plan and documentation; offer follow-up."],
+  ["What is the role of advance care planning in ICU?", "Advance decisions to refuse treatment (ADRT, valid and applicable under MCA 2005) and lasting power of attorney bind treatment decisions; ReSPECT forms guide but do not bind; always seek patient or representative input before withdrawal."],
+];
 
 const objectives = [
   "Describe the legal and ethical framework for end-of-life decision-making in UK ICU practice (MCA 2005, GMC, FICM/ICS).",
@@ -294,6 +301,7 @@ const EndOfLifeCommunicationTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={endOfLifeCommunicationFaqs} />
       }
     />
   );

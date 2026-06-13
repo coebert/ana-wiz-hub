@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { transfusionCoagulationQuestions } from "@/data/quizzes";
@@ -10,6 +11,12 @@ import CitrateWashSeparationDiagram from "@/components/diagrams/CitrateWashSepar
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const transfusionCoagulationFaqs: Array<[string, string]> = [
+  ["What ratios are used in major haemorrhage protocols?", "Empirical 1:1:1 (RBC:FFP:platelets) until ROTEM/TEG-guided, based on PROPPR trial; activate at predicted 4+ units in 1 h, give TXA 1 g within 3 h (CRASH-2) and target ionised Ca²⁺ >1.0 mmol/L."],
+  ["When is prothrombin complex concentrate preferred over FFP?", "For warfarin reversal in major bleeding (25–50 U/kg with vitamin K, BSH 2018), or factor replacement in liver disease where volume load from FFP is harmful; PCC restores INR within minutes versus hours for FFP."],
+  ["How is ROTEM/TEG used to guide blood product use?", "FIBTEM A5 <12 mm → fibrinogen concentrate or cryoprecipitate; EXTEM CT >80 s → FFP or PCC; EXTEM A5 <40 mm with normal FIBTEM → platelets; ML >15% → tranexamic acid (ITACTIC trial)."],
+];
 
 const objectives = [
   "Describe the composition, shelf-life, donor-to-recipient survival and storage requirements of each blood component",
@@ -542,6 +549,7 @@ const TransfusionCoagulationTopic = () => {
             ]}
           />
         </>
+          <TopicFaqs faqs={transfusionCoagulationFaqs} />
       }
     />
   );

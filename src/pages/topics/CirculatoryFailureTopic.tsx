@@ -1,6 +1,7 @@
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { circulatoryFailureQuestions, ecmoQuestions } from "@/data/quizzes";
 import FluidResponsivenessDiagram from "@/components/diagrams/FluidResponsivenessDiagram";
@@ -9,6 +10,12 @@ import MCSPressureVolumeLoopDiagram from "@/components/diagrams/MCSPressureVolum
 import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
 import CPPSpiralDiagram from "@/components/diagrams/CPPSpiralDiagram";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const circulatoryFailureFaqs: Array<[string, string]> = [
+  ["Which dynamic indices predict fluid responsiveness and when are they invalid?", "PPV, SVV and passive leg raise predict a ≥10–15% SV rise after fluid; they are unreliable in spontaneous breathing, arrhythmia, low tidal volumes (<8 mL/kg), open chest or raised intra-abdominal pressure — use PLR or end-expiratory occlusion instead."],
+  ["What is the first-line vasopressor in septic shock and why?", "Noradrenaline — it raises MAP via α₁ vasoconstriction with minimal tachycardia, preserves CO and reduces arrhythmia compared with dopamine (SOAP II); add vasopressin 0.03 U/min if MAP target unmet."],
+  ["How does the subendocardial ischaemic spiral develop in cardiogenic shock?", "Hypotension lowers DBP and therefore coronary perfusion pressure (DBP − LVEDP), causing subendocardial ischaemia and further LV dysfunction; restoring DBP with noradrenaline interrupts the spiral and is often more important than inotropy."],
+];
 
 const objectives = [
   "Classify shock by mechanism (hypovolaemic, cardiogenic, distributive, obstructive) and recognise the characteristic CVP / CO / SVR pattern of each.",
@@ -388,7 +395,7 @@ const CirculatoryFailureTopic = () => {
         ],
         workedExamples: ["BJA Educ 2019", "IABP-SHOCK II", "SHOCK trial", "FICM ECMO 2021"],
       }}
-      coreConcepts={coreConcepts}
+      coreConcepts={<>{coreConcepts}<TopicFaqs faqs={circulatoryFailureFaqs} /></>}
       workedExamples={workedExamples}
       keyPoints={keyPoints}
       topicId="circulatory-failure"

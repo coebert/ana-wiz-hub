@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { cardiacArrestPostResusQuestions } from "@/data/quizzes";
@@ -12,6 +13,12 @@ import type { WorkedExample } from "@/components/WorkedExamples";
  * cluster ("post-cardiac-arrest neuroprognostication algorithm", "NSE
  * threshold", "highly malignant EEG", "bilateral absent N20 SSEP").
  */
+
+const neuroprognosticationFaqs: Array<[string, string]> = [
+  ["When should neuroprognostication be performed after cardiac arrest?", "≥72 h after ROSC (later if sedation/hypothermia confound), using multimodal assessment: clinical exam (absent pupillary/corneal reflexes, GCS-M ≤2), NSE, EEG, SSEP and CT/MRI (ERC/ESICM 2021)."],
+  ["What clinical signs reliably predict poor outcome after cardiac arrest?", "Bilaterally absent pupillary and corneal reflexes at ≥72 h, bilaterally absent N20 on SSEP, status myoclonus within 72 h with malignant EEG, or NSE >60 µg/L at 48–72 h — used in combination, not alone."],
+  ["What confounders must be excluded before neuroprognostication?", "Residual sedation/paralysis, hypothermia, metabolic derangement, hypotension, seizures and organ failure — all can produce false-positive findings of poor outcome."],
+];
 
 const objectives = [
   "State why neurological injury is the leading cause of in-hospital mortality after ROSC and the rationale for a structured multimodal approach.",
@@ -370,6 +377,7 @@ const NeuroprognosticationTopic = () => {
             </div>
           </section>
         </ExamSection>
+          <TopicFaqs faqs={neuroprognosticationFaqs} />
       }
     />
   );

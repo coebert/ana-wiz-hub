@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/ExamSection";
 import { acutePancreatitisQuestions } from "@/data/quizzes";
@@ -10,6 +11,12 @@ import PancreatitisEvolutionTimeline from "@/components/diagrams/PancreatitisEvo
 import { DiagramSection } from "@/components/DiagramSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const acutePancreatitisFaqs: Array<[string, string]> = [
+  ["How is severity stratified in acute pancreatitis?", "Use the revised Atlanta classification: mild (no organ failure or complications), moderate (transient organ failure <48 h or local complications), severe (persistent organ failure >48 h); supplement with APACHE II and CRP >150 at 48 h."],
+  ["What is the role of early enteral nutrition?", "Start enteral feeding within 24–72 h via nasogastric or nasojejunal route — it maintains gut barrier, reduces infected necrosis and lowers mortality compared with TPN (PYTHON trial, IAP/APA guidelines)."],
+  ["When should antibiotics be given in severe pancreatitis?", "Only for proven or strongly suspected infected necrosis (gas on CT, positive FNA culture) or extra-pancreatic infection — routine prophylactic antibiotics do not improve outcome and promote fungal superinfection."],
+];
 
 const objectives = [
   "Diagnose acute pancreatitis using the Atlanta 2012 criteria and stratify severity with Glasgow (Imrie), APACHE-II and CRP at 48 h.",
@@ -499,6 +506,7 @@ const AcutePancreatitisTopic = () => {
           />
       </section>
       </ExamSection>
+          <TopicFaqs faqs={acutePancreatitisFaqs} />
       }
     />
   );
