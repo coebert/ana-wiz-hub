@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -7,6 +8,21 @@ import { CorticosteroidPharmacodynamicsDiagram } from "@/components/diagrams/Cor
 import { HPAAxisSuppressionDiagram } from "@/components/diagrams/HPAAxisSuppressionDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const corticosteroidsFaqs: Array<[string, string]> = [
+  [
+    "What is the equivalent dose conversion between common steroids?",
+    "Hydrocortisone 20 mg = prednisolone 5 mg = methylprednisolone 4 mg = dexamethasone 0.75 mg. Mineralocorticoid activity: hydrocortisone ++, prednisolone +, methylprednisolone trace, dexamethasone none. For pure glucocorticoid replacement use dexamethasone; for shock/Addisonian crisis use hydrocortisone (mineralocorticoid effect retains Na⁺/water)."
+  ],
+  [
+    "When is perioperative steroid cover required and what regimen is used?",
+    "Required for patients on >5 mg prednisolone/day for >3 weeks (HPA suppression). Minor surgery (e.g. hernia): usual oral dose + 25 mg hydrocortisone IV at induction. Moderate surgery (e.g. colectomy): 25 mg at induction + 100 mg/day for 24 h. Major surgery/critically ill: 100 mg at induction + 200 mg/day for 48–72 h then taper. Continue maintenance dose throughout. Failure to cover risks Addisonian crisis: profound hypotension unresponsive to fluids/pressors, hyponatraemia, hyperkalaemia."
+  ],
+  [
+    "What are the major side effects of long-term corticosteroids?",
+    "Cushingoid (truncal obesity, moon face, buffalo hump), osteoporosis (DXA + bisphosphonates if >5 mg pred for >3 months), hyperglycaemia/diabetes, hypertension, peptic ulcer (especially with NSAIDs), proximal myopathy, immunosuppression, skin thinning/bruising, cataracts, glaucoma, mood disturbance/psychosis, growth retardation in children, adrenal suppression. Withdrawal must be gradual after >3 weeks of treatment to allow HPA recovery."
+  ]
+];
 
 const objectives = [
   "Describe glucocorticoid receptor signalling and distinguish transrepression from transactivation",
@@ -222,6 +238,8 @@ const CorticosteroidsTopic = () => {
               "Dexamethasone is both a potent antiemetic and reduces airway oedema after prolonged intubation or croup.",
             ]}
           />
+          <TopicFaqs faqs={corticosteroidsFaqs} />
+
         </>
       }
     />

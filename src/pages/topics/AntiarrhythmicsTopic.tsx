@@ -1,10 +1,26 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { antiarrhythmicsQuiz } from "@/data/quizzes";
 import VaughanWilliamsAPDiagram from "@/components/diagrams/VaughanWilliamsAPDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const antiarrhythmicsFaqs: Array<[string, string]> = [
+  [
+    "Outline the Vaughan-Williams classification with examples.",
+    "Class I — Na⁺ channel blockers: Ia (procainamide, quinidine — moderate block, prolong AP), Ib (lidocaine — fast block, shortens AP, ventricular only), Ic (flecainide — strong block, no AP change). Class II — β-blockers (atenolol, esmolol). Class III — K⁺ channel blockers prolonging AP (amiodarone, sotalol). Class IV — Ca²⁺ channel blockers (verapamil, diltiazem). Adenosine and digoxin sit outside this classification."
+  ],
+  [
+    "What is the management of unstable AF in theatre?",
+    "Unstable (chest pain, hypotension, heart failure, syncope): synchronised DC cardioversion 120–200 J biphasic. Stable: rate control with β-blocker (esmolol, metoprolol) or calcium-channel blocker (avoid in heart failure); amiodarone 300 mg IV over 30 min if needs rhythm control or rate control fails. Anticoagulation considered if AF >48 h or known chronic. Look for and treat precipitants — hypoxia, electrolytes, sepsis, ischaemia, fluid overload."
+  ],
+  [
+    "Why is amiodarone used despite its toxicity profile?",
+    "Highly effective for both atrial and ventricular arrhythmias; minimal negative inotropy; safe in heart failure. Toxicity (often dose-/duration-related): pulmonary fibrosis, hepatotoxicity, thyroid dysfunction (contains iodine — both hyper- and hypo-), corneal microdeposits, photosensitivity, peripheral neuropathy. Long half-life ~50 days (huge Vd ~70 L/kg). IV: 5 mg/kg over 30 min via central line (peripheral causes thrombophlebitis); 300 mg push in cardiac arrest after 3rd shock."
+  ]
+];
 
 const drugData = [
   { cls: "Ia", action: "Na⁺ block (intermediate dissociation) + ↑ APD", drugs: "Quinidine, Procainamide, Disopyramide", ecg: "↑ QT, widened QRS", notes: "Use-dependent block. Procainamide for VT & WPW. Risk of torsades." },
@@ -103,6 +119,7 @@ const AntiarrhythmicsTopic = () => {
       }}
       
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
@@ -250,6 +267,8 @@ const AntiarrhythmicsTopic = () => {
           />
         </div>
       </ExamSection>
+          <TopicFaqs faqs={antiarrhythmicsFaqs} />
+        </>
       }
     />
   );

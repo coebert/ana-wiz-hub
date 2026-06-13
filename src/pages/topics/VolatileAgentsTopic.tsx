@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ExamSection } from "@/components/ExamSection";
 import { MACDiagram } from "@/components/diagrams/MACDiagram";
@@ -9,6 +10,21 @@ import SecondGasEffectDiagram from "@/components/diagrams/SecondGasEffectDiagram
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+
+const volatileAgentsFaqs: Array<[string, string]> = [
+  [
+    "What is MAC and what factors alter it?",
+    "Minimum Alveolar Concentration that prevents movement to a standard surgical stimulus in 50 % of subjects. ↓ MAC: age (~6 %/decade after 40), hypothermia, pregnancy, hypotension, hyponatraemia, opioids/benzodiazepines, α2-agonists, lithium, acute alcohol intoxication. ↑ MAC: youth (peaks at 6 months), hyperthermia, hyperthyroidism, chronic alcohol, chronic opioid use, hypernatraemia. Race, sex and PaCO₂ (within physiological range) do not affect MAC."
+  ],
+  [
+    "Why is sevoflurane preferred for inhalational induction in children?",
+    "Pleasant odour (vs pungent desflurane/isoflurane), low blood:gas coefficient (0.65) giving rapid onset, minimal airway irritation, and bronchodilation. Halothane was historical standard but causes arrhythmias and hepatitis. Sevoflurane can be given via vital-capacity or tidal-volume technique; reaches MAC of 2 % rapidly. Avoid prolonged low-flow (<1 L/min) due to compound A formation with desiccated soda lime."
+  ],
+  [
+    "What is malignant hyperthermia and how is it treated?",
+    "Autosomal-dominant disorder of skeletal-muscle Ca²⁺ release (RYR1/CACNA1S mutations). Triggered by all volatile anaesthetics and suxamethonium. Features (often early): masseter spasm, ↑EtCO₂ despite ↑MV, tachycardia, mottling, rigidity, hyperthermia (late), rhabdomyolysis, hyperkalaemia, DIC. Management: stop trigger, switch to TIVA, hyperventilate 100 % O₂, dantrolene 2.5 mg/kg IV repeated every 5 min (max 10 mg/kg), active cooling, treat hyperkalaemia/arrhythmias, transfer to ICU. AAGBI MH hotline available 24/7."
+  ]
+];
 
 const workedExamples: WorkedExample[] = [
   {
@@ -78,6 +94,7 @@ const VolatileAgentsTopic = () => {
         workedExamples: ["AAGBI MH 2020", "Peck & Hill Ch.7"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <div className="prose prose-slate max-w-none">
           <section className="mb-10">
@@ -411,6 +428,8 @@ const VolatileAgentsTopic = () => {
           />
         </div>
       </ExamSection>
+          <TopicFaqs faqs={volatileAgentsFaqs} />
+        </>
       }
     />
   );

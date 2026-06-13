@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { DiagramSection } from "@/components/DiagramSection";
@@ -9,6 +10,21 @@ import { DoseResponseCurveDiagram } from "@/components/diagrams/DoseResponseCurv
 import { AgonismSpectrumDiagram } from "@/components/diagrams/AgonismSpectrumDiagram";
 import { ReceptorTimescaleDiagram } from "@/components/diagrams/ReceptorTimescaleDiagram";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const pharmacodynamicsFaqs: Array<[string, string]> = [
+  [
+    "Define affinity, efficacy and potency.",
+    "Affinity — strength with which a drug binds its receptor (related to Kd, the concentration giving 50 % occupancy). Efficacy — maximum effect produced once bound (full agonist = 1, partial agonist 0 < ε < 1, antagonist = 0, inverse agonist <0). Potency — dose required to produce a defined effect (EC50). A drug can be highly potent but with low efficacy (e.g. buprenorphine — partial μ-agonist)."
+  ],
+  [
+    "What is the difference between a competitive and a non-competitive antagonist?",
+    "Competitive antagonist — binds reversibly at the agonist site; effect overcome by ↑agonist concentration (right-shift of dose-response curve, same maximum). Example: rocuronium reversed by neostigmine raising ACh. Non-competitive — binds at a different site (allosteric) or irreversibly; reduces maximum response and cannot be overcome by increasing agonist. Example: phenoxybenzamine on α-receptors (used in phaeochromocytoma)."
+  ],
+  [
+    "Explain agonist, partial agonist, antagonist and inverse agonist with opioid examples.",
+    "Full agonist — produces full receptor response (morphine, fentanyl at μ). Partial agonist — produces submaximal response even at full occupancy; behaves as antagonist in presence of full agonist (buprenorphine — useful for opioid substitution). Antagonist — blocks receptor with no intrinsic activity (naloxone, naltrexone). Inverse agonist — reduces constitutive receptor activity below baseline (no clinically important opioid example; flumazenil at GABA-A is one)."
+  ]
+];
 
 const objectives = [
   "Distinguish potency (EC₅₀) from efficacy (Emax) and read sigmoid log dose-response curves",
@@ -220,6 +236,8 @@ const PharmacodynamicsTopic = () => {
               "Hysteresis describes a lag between plasma concentration and effect — relevant for fentanyl, NMBDs, and ketamine.",
             ]}
           />
+          <TopicFaqs faqs={pharmacodynamicsFaqs} />
+
         </>
       }
     />

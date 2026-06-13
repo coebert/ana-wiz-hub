@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
@@ -11,6 +12,21 @@ import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
 import { InlineRef } from "@/components/InlineRef";
+
+const vasoactiveAgentsFaqs: Array<[string, string]> = [
+  [
+    "Compare noradrenaline, adrenaline, dobutamine and vasopressin.",
+    "Noradrenaline — α >> β1; potent vasoconstrictor, modest inotrope; first-line in septic shock. Adrenaline — α and β1/β2; inotrope + vasoconstrictor + bronchodilator; first-line in anaphylaxis/cardiac arrest. Dobutamine — β1 > β2; inotrope with mild vasodilation; cardiogenic shock with adequate filling. Vasopressin — V1 receptor; non-catecholamine vasoconstrictor effective in acidosis when catecholamines fail; second-line in septic shock at 0.03 U/min."
+  ],
+  [
+    "What is the difference between metaraminol, phenylephrine and ephedrine for spinal hypotension?",
+    "Phenylephrine — pure α1 agonist; reduces CO via reflex bradycardia but maintains uteroplacental perfusion best (preferred for obstetric spinal). Metaraminol — predominantly α1 (some indirect β); similar profile to phenylephrine. Ephedrine — direct and indirect α + β; crosses placenta and causes fetal acidosis (linked to neonatal acidaemia in C-section); now second-line in obstetrics."
+  ],
+  [
+    "When is milrinone preferred over dobutamine?",
+    "Milrinone is a PDE-3 inhibitor → ↑cAMP independent of β-receptor activation. Useful when β-receptors are downregulated (chronic heart failure, prolonged catecholamine infusion) or in pulmonary hypertension (selective pulmonary vasodilation). Causes more vasodilation than dobutamine — often needs noradrenaline co-administration. Long half-life (2–3 h) makes it less titratable; significant accumulation in renal failure."
+  ]
+];
 
 const tocItems = [
   { id: "toc-foundations", label: "Foundations" },
@@ -97,6 +113,7 @@ const VasoactiveAgentsTopic = () => {
         keyPoints: ["BJA Educ 2019", "Peck & Hill Ch.11", "BJA Educ 2004"],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <StickyTOC items={tocItems} />
           <div className="prose prose-slate max-w-none">
@@ -721,6 +738,8 @@ const VasoactiveAgentsTopic = () => {
             ]}
           />
         </ExamSection>
+          <TopicFaqs faqs={vasoactiveAgentsFaqs} />
+        </>
       }
     />
   );

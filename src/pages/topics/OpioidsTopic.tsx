@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
@@ -16,6 +17,21 @@ import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { opioidsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const opioidsFaqs: Array<[string, string]> = [
+  [
+    "Compare morphine, fentanyl and remifentanil pharmacokinetics.",
+    "Morphine — onset 5–10 min IV, duration 3–4 h, active metabolite M6G accumulates in renal failure. Fentanyl — onset 2–3 min, duration 30 min single dose, highly lipid-soluble; CSHT rises with infusion duration. Remifentanil — onset 1 min, esterase metabolism, CSHT constant ~3 min regardless of duration; no active metabolites; ideal for short procedures or sedation in renal/hepatic failure but no residual analgesia."
+  ],
+  [
+    "What is opioid-induced hyperalgesia and how is it managed?",
+    "Paradoxical increase in pain sensitivity following high-dose opioid (especially remifentanil) exposure, mediated by NMDA-receptor sensitisation. Distinct from tolerance. Management: limit intra-op remifentanil dose, use multimodal analgesia (paracetamol, NSAIDs, ketamine 0.15–0.5 mg/kg, regional), magnesium, and α2-agonists. Pre-emptive long-acting opioid before infusion termination."
+  ],
+  [
+    "How is opioid overdose recognised and reversed?",
+    "Triad: pinpoint pupils, respiratory depression (RR <8 or apnoea), reduced GCS. Reversal: naloxone 100–400 µg IV titrated to respiratory rate (not consciousness — avoids precipitating withdrawal/pain). Half-life of naloxone (~30 min) is shorter than most opioids → infusion (5–10 µg/kg/h) or repeated dosing needed. In opioid-dependent patients, smaller doses (40 µg increments) to avoid acute withdrawal and pulmonary oedema."
+  ]
+];
 
 const objectives = [
   "Describe µ, κ and δ receptor signalling (Gi/Go → ↓cAMP, K⁺ efflux, Ca²⁺ closure) and the clinical effects mediated by each.",

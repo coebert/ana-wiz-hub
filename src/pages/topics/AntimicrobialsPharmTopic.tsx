@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ExamSection } from "@/components/ExamSection";
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicFaqs } from "@/components/TopicFaqs";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { antimicrobialsQuiz } from "@/data/quizzes";
@@ -14,6 +15,21 @@ import AntibioticPKPDPrimer from "@/components/diagrams/AntibioticPKPDPrimer";
 import EmpiricalSepsisChooser from "@/components/diagrams/EmpiricalSepsisChooser";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+
+const antimicrobialsPharmFaqs: Array<[string, string]> = [
+  [
+    "When should surgical antibiotic prophylaxis be given?",
+    "Within 60 min before knife-to-skin (within 120 min for vancomycin or fluoroquinolones — slow infusions). Re-dose intra-operatively if procedure exceeds 2 × antibiotic half-life or blood loss >1500 mL. Single dose usually sufficient; continuing beyond 24 h does not reduce SSI but selects for resistance. Allergy: cefuroxime is safe in penicillin allergy unless anaphylaxis (cross-reactivity <1 %); use clindamycin or teicoplanin if severe."
+  ],
+  [
+    "What are the indications for vancomycin therapeutic drug monitoring?",
+    "Narrow therapeutic index; nephrotoxic and ototoxic. Target AUC₂₄ 400–600 mg·h/L (preferred) or trough 15–20 mg/L for serious infections. Monitor pre-4th dose, daily in unstable renal function, every 3–4 days when stable. Loading dose 25–30 mg/kg (actual body weight, max 3 g) gives faster therapeutic levels. Slow infusion ≥1 g/h reduces red-man syndrome (histamine release)."
+  ],
+  [
+    "What is the difference between concentration-dependent and time-dependent killing?",
+    "Concentration-dependent (aminoglycosides, fluoroquinolones, metronidazole) — efficacy correlates with Cmax/MIC ratio; give large doses at extended intervals (once-daily gentamicin). Time-dependent (β-lactams, vancomycin) — efficacy correlates with time above MIC; give frequent doses or extended/continuous infusion (e.g. piperacillin-tazobactam continuous infusion in severe sepsis). Aminoglycoside post-antibiotic effect supports once-daily dosing."
+  ]
+];
 
 type Tab = "antibiotics" | "antifungals" | "antivirals";
 
@@ -155,6 +171,7 @@ const AntimicrobialsTopic = () => {
         ],
       }}
       coreConcepts={
+        <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
         <section className="space-y-8">
           <div>
@@ -348,6 +365,8 @@ const AntimicrobialsTopic = () => {
           />
         </section>
       </ExamSection>
+          <TopicFaqs faqs={antimicrobialsPharmFaqs} />
+        </>
       }
     />
   );
