@@ -143,6 +143,7 @@ const VentilationPerfusionTopic = () => {
         { text: "Central chemoreceptors (CO₂ via H⁺) are the main ventilatory drive; peripheral chemoreceptors detect hypoxia", cites: ["West Ch.5"] },
       ]}
       coreConcepts={
+        <>
         <section className="space-y-6">
           <ExamSection id="vq-matching" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
             <div>
