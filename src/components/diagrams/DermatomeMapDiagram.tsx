@@ -535,7 +535,7 @@ const DermatomeMapDiagram = () => {
           <>
             <text x="158" y="128">← T3 spine of scapula</text>
             <text x="158" y="152">← T7 inf. angle scapula</text>
-            <text x="158" y="278">← iliac crest (L4)</text>
+            <text x="158" y="278">← iliac crest (skin = L1; bony landmark for L4 spinous process)</text>
           </>
         )}
       </g>
