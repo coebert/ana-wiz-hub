@@ -294,7 +294,13 @@ const NonTechnicalSkillsTopic = () => {
           >
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Patient Safety & Incident Response</h2>
             <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-              <li><strong>Just culture</strong> (Reason; Marx) — distinguish human error / at-risk / reckless behaviour. Neither blame-free nor punitive.</li>
+              <li><strong>Just culture</strong> (Reason; Marx 2001) — distinguish three categories of behaviour and respond proportionately. Neither blame-free nor punitive:
+                <ul className="list-[circle] pl-5 mt-1 space-y-0.5">
+                  <li><strong>Human error</strong> — an unintentional slip or lapse. <em>Console</em> the individual and fix the system that allowed the error.</li>
+                  <li><strong>At-risk behaviour</strong> — a choice where the risk is not recognised or is mistakenly believed justified (e.g. a workaround). <em>Coach</em> the individual; remove incentives for the workaround.</li>
+                  <li><strong>Reckless behaviour</strong> — conscious disregard of a substantial and unjustifiable risk. <em>Discipline</em> proportionately.</li>
+                </ul>
+              </li>
               <li><strong>PSIRF</strong> (NHS England Patient Safety Incident Response Framework, 2022) — replaces SI framework; emphasises learning, proportionate response, family/staff involvement.</li>
               <li><strong>Duty of candour</strong> — statutory (England, since 2014); be open and honest when something goes wrong.</li>
               <li><strong>Datix / equivalent</strong> — incident reporting; NRLS, learn from incidents.</li>
