@@ -112,10 +112,10 @@ const PHYS_VARS: Array<{ key: string; label: string; opts: PScoreOption[] }> = [
     { label: ">15", value: 8 },
   ]},
   { key: "na", label: "Sodium (mmol/L)", opts: [
-    { label: ">135", value: 1 },
+    { label: "136–145", value: 1 },
     { label: "131–135", value: 2 },
     { label: "126–130", value: 4 },
-    { label: "<126", value: 8 },
+    { label: "≤125 or >145", value: 8 },
   ]},
   { key: "k", label: "Potassium (mmol/L)", opts: [
     { label: "3.5–5",         value: 1 },
