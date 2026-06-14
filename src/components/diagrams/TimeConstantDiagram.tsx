@@ -77,9 +77,9 @@ export const TimeConstantDiagram = () => {
           aria-label={`Exponential ${mode === "decay" ? "decay" : "wash-in"} curve with time constant markers`}
         >
           {/* Y gridlines */}
-          {[0, 25, 50, 63.2, 75, 95, 100].map((v) => {
+          {yGridValues.map((v) => {
             const y = yScale(v);
-            const emphasise = v === 63.2 || v === 95;
+            const emphasise = mode === "washin" && (v === 63.2 || v === 95);
             return (
               <g key={v}>
                 <line
