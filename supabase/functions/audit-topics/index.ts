@@ -1482,6 +1482,23 @@ async function runBatch(jobId: string) {
           `auditTopic(${topic.id})`,
         );
         logStages = stages as unknown as Record<string, unknown>;
+
+        // Detect upstream scrape outages (e.g. Firecrawl credit exhaustion).
+        // Without this guard the job silently "succeeds" with zero findings
+        // because every page returns no content.
+        if (!stages.scrape_ok) {
+          consecutiveScrapeFailures++;
+          const errStr = `${stages.scrape_error ?? ""} ${stages.scrape_last_status ?? ""}`;
+          if (
+            stages.scrape_last_status === 402 ||
+            /insufficient credits|upgrade your plan|firecrawl\.dev\/pricing/i.test(errStr)
+          ) {
+            creditExhaustionDetected = true;
+          }
+        } else {
+          consecutiveScrapeFailures = 0;
+        }
+
         if (findings.length > 0) {
           // De-dupe against currently-open findings on the same topic so the
           // dashboard doesn't grow a fresh copy of an issue that's already there.
