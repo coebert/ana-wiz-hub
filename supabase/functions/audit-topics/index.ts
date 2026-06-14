@@ -1428,6 +1428,9 @@ async function runBatch(jobId: string) {
 
   const end = Math.min(cursor + BATCH_SIZE, queue.length);
   let jobLastError: string | null = null;
+  let consecutiveScrapeFailures = 0;
+  let creditExhaustionDetected = false;
+
 
   for (let i = cursor; i < end; i++) {
       const { data: state } = await supa
