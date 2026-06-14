@@ -44,7 +44,7 @@ export const TimeConstantDiagram = () => {
     <DiagramFigure
       id="time-constant-graph"
       title="Time constant (τ) — exponential decay and wash-in"
-      description="Negative exponential decay and wash-in curves with markers at 1τ, 2τ, 3τ, 4τ and 5τ illustrating the 63%, 86%, 95%, 98% and 99% rule."
+      description="Toggle between negative exponential decay (% remaining) and exponential wash-in (% complete). Markers at 1τ–5τ illustrate the time-constant rule."
     >
       <div className="w-full max-w-2xl mx-auto">
         <div className="flex gap-2 justify-center mb-4">
