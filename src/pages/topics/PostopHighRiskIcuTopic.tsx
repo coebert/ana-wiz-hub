@@ -197,7 +197,7 @@ const PostopHighRiskIcuTopic = () => {
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">P-POSSUM</td><td>12 physiology + 6 operative variables</td><td>30-day mortality &amp; morbidity; NELA standard. Sodium score = 1 for 136–145 mmol/L (see <InlineRef cites={["MDCalc P-POSSUM"]} />)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">P-POSSUM</td><td>12 physiology + 6 operative variables</td><td>30-day mortality &amp; morbidity; NELA standard. Sodium score = 1 for 136–145 mmol/L (see <InlineRef topicId="postop-high-risk-icu" refLabel="MDCalc P-POSSUM" />)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">SORT</td><td>6 pre-op variables</td><td>Pre-operative 30-day mortality (web/app)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">RCRI / Revised Cardiac Risk Index</td><td>6 clinical factors</td><td>Risk of major perioperative cardiac event</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">CPET</td><td>AT, V̇O₂peak, V̇E/V̇CO₂</td><td>Functional capacity; AT &lt;11 mL/kg/min flags high risk</td></tr>
