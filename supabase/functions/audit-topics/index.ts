@@ -1428,6 +1428,9 @@ async function runBatch(jobId: string) {
 
   const end = Math.min(cursor + BATCH_SIZE, queue.length);
   let jobLastError: string | null = null;
+  let consecutiveScrapeFailures = 0;
+  let creditExhaustionDetected = false;
+
 
   for (let i = cursor; i < end; i++) {
       const { data: state } = await supa
@@ -1479,6 +1482,23 @@ async function runBatch(jobId: string) {
           `auditTopic(${topic.id})`,
         );
         logStages = stages as unknown as Record<string, unknown>;
+
+        // Detect upstream scrape outages (e.g. Firecrawl credit exhaustion).
+        // Without this guard the job silently "succeeds" with zero findings
+        // because every page returns no content.
+        if (!stages.scrape_ok) {
+          consecutiveScrapeFailures++;
+          const errStr = `${stages.scrape_error ?? ""} ${stages.scrape_last_status ?? ""}`;
+          if (
+            stages.scrape_last_status === 402 ||
+            /insufficient credits|upgrade your plan|firecrawl\.dev\/pricing/i.test(errStr)
+          ) {
+            creditExhaustionDetected = true;
+          }
+        } else {
+          consecutiveScrapeFailures = 0;
+        }
+
         if (findings.length > 0) {
           // De-dupe against currently-open findings on the same topic so the
           // dashboard doesn't grow a fresh copy of an issue that's already there.
@@ -1595,8 +1615,26 @@ async function runBatch(jobId: string) {
         updated_at: new Date().toISOString(),
       }).eq("id", jobId);
 
+      // Abort the entire job if the upstream scraper is clearly down — there
+      // is no point burning through 141 topics that all return zero content.
+      if (creditExhaustionDetected || consecutiveScrapeFailures >= 5) {
+        const reason = creditExhaustionDetected
+          ? "Firecrawl returned HTTP 402 (insufficient credits). Top up the Firecrawl plan, then re-run the audit. No content was fetched, so no factual findings were produced."
+          : `Aborted after ${consecutiveScrapeFailures} consecutive scrape failures — upstream fetcher appears to be down. Check Firecrawl status and re-run.`;
+        console.error(`[audit-topics] aborting job ${jobId}: ${reason}`);
+        await supa.from("topic_audit_jobs").update({
+          status: "completed_with_errors",
+          current_topic: null,
+          last_error: reason,
+          completed_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        }).eq("id", jobId);
+        return;
+      }
+
       await new Promise((r) => setTimeout(r, 300));
   }
+
 
   if (cursor >= queue.length) {
     await supa.from("topic_audit_jobs").update({
