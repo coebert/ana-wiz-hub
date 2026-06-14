@@ -369,7 +369,7 @@ const TemperatureMeasurementDiagram = () => {
     <DiagramFigure
       id="temperature-measurement-diagram"
       title="Temperature measurement"
-      description="Auto-generated wrapper for the Temperature measurement anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive comparison of the four electronic thermometers in clinical use. The Thermocouple tab shows two dissimilar metals joined at a measuring and reference junction with a voltmeter (Seebeck EMF). The Thermistor and RTD tabs illustrate the component plus a resistance–temperature curve (exponential NTC vs near-linear PTC). The IR Tympanic tab shows a thermopile detecting infrared radiation from the tympanic membrane (Stefan–Boltzmann, P ∝ T⁴). The Compare tab summarises response time, linearity, sensitivity and clinical site."
     >
                   <div className="space-y-4">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
