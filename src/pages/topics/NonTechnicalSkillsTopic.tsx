@@ -259,12 +259,25 @@ const NonTechnicalSkillsTopic = () => {
                 <p className="text-xs text-muted-foreground">WHO checklist (ICU adaptation), patient ID, planned procedure, anticipated difficulties, role allocation, equipment check, escalation plan.</p>
               </div>
               <div className="rounded-lg border border-border bg-muted/30 p-3">
-                <p className="font-semibold text-foreground text-sm">Hot debrief (within 24 h)</p>
-                <p className="text-xs text-muted-foreground">Brief, structured (e.g. STOP-5: Summary, Things that went well, Opportunities to improve, Points to action, Responsibilities). Reduces moral distress; supports learning.</p>
+                <p className="font-semibold text-foreground text-sm">Hot debrief (within 24 h) — STOP-5</p>
+                <p className="text-xs text-muted-foreground">Brief (3–5 min), at the bedside or in the coffee room, led by any team member. The STOP-5 structure (Walker et al., BJA Educ 2020):</p>
+                <ul className="text-xs text-muted-foreground list-disc pl-5 mt-1 space-y-0.5">
+                  <li><strong>S</strong>ummary of the case — one-sentence factual recap.</li>
+                  <li><strong>T</strong>hings that went well — reinforce positive behaviours.</li>
+                  <li><strong>O</strong>pportunities to improve — non-judgmental.</li>
+                  <li><strong>P</strong>oints to action — concrete, assigned to a named individual with a deadline.</li>
+                  <li><strong>R</strong>esponsibilities — close the loop on who owns each action. Reduces moral distress and supports learning.</li>
+                </ul>
               </div>
               <div className="rounded-lg border border-border bg-muted/30 p-3">
-                <p className="font-semibold text-foreground text-sm">Cold debrief / case review (1–2 weeks)</p>
-                <p className="text-xs text-muted-foreground">Multidisciplinary, structured (e.g. PEARLS, Diamond, Plus-Delta), psychologically safe, action-oriented.</p>
+                <p className="font-semibold text-foreground text-sm">Cold debrief / case review (1–2 weeks) — PEARLS</p>
+                <p className="text-xs text-muted-foreground">Multidisciplinary, psychologically safe, action-oriented. The PEARLS framework (Eppich & Cheng 2015) blends learner self-assessment, focused facilitation and directive feedback across four phases:</p>
+                <ol className="text-xs text-muted-foreground list-decimal pl-5 mt-1 space-y-0.5">
+                  <li><strong>Reactions</strong> — invite initial thoughts and emotions to defuse affect.</li>
+                  <li><strong>Description</strong> — establish a shared understanding of what actually happened.</li>
+                  <li><strong>Analysis</strong> — explore why things happened (advocacy–inquiry, focused facilitation, directive teaching as needed).</li>
+                  <li><strong>Summary / Application</strong> — agree take-home messages and a plan to change practice. Diamond and Plus-Delta are alternative structured models with the same intent.</li>
+                </ol>
               </div>
               <div className="rounded-lg border border-border bg-muted/30 p-3">
                 <p className="font-semibold text-foreground text-sm">Handover tools</p>
