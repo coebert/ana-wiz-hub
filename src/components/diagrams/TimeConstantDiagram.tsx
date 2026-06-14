@@ -35,11 +35,16 @@ export const TimeConstantDiagram = () => {
     { tau: 5, pct: 99.3 },
   ];
 
+  const yGridValues =
+    mode === "decay"
+      ? [0, 25, 50, 75, 100]
+      : [0, 25, 50, 63.2, 75, 95, 100];
+
   return (
     <DiagramFigure
       id="time-constant-graph"
       title="Time constant (τ) — exponential decay and wash-in"
-      description="Negative exponential decay and wash-in curves with markers at 1τ, 2τ, 3τ, 4τ and 5τ illustrating the 63%, 86%, 95%, 98% and 99% rule."
+      description="Toggle between negative exponential decay (% remaining) and exponential wash-in (% complete). Markers at 1τ–5τ illustrate the time-constant rule."
     >
       <div className="w-full max-w-2xl mx-auto">
         <div className="flex gap-2 justify-center mb-4">
@@ -72,9 +77,9 @@ export const TimeConstantDiagram = () => {
           aria-label={`Exponential ${mode === "decay" ? "decay" : "wash-in"} curve with time constant markers`}
         >
           {/* Y gridlines */}
-          {[0, 25, 50, 63.2, 75, 95, 100].map((v) => {
+          {yGridValues.map((v) => {
             const y = yScale(v);
-            const emphasise = v === 63.2 || v === 95;
+            const emphasise = mode === "washin" && (v === 63.2 || v === 95);
             return (
               <g key={v}>
                 <line
