@@ -423,8 +423,8 @@ export const VAECMOCircuitDiagram = () => {
                 <text x="685" y="132" fontSize="10" className="fill-foreground font-bold">PMP</text>
                 <text x="685" y="144" fontSize="10" className="fill-foreground font-bold">membrane</text>
                 <text x="685" y="156" fontSize="10" className="fill-foreground font-bold">oxygenator</text>
-                <text x="685" y="178" fontSize="9" fontWeight="600" className="fill-[hsl(0_70%_42%)]">↑ oxy out</text>
-                <text x="685" y="228" fontSize="9" fontWeight="600" className="fill-[hsl(220_70%_42%)]">↓ deox in</text>
+                <text x="685" y="178" fontSize="9" fontWeight="600" className="fill-[hsl(0_70%_42%)]">Blood outlet (oxygenated) →</text>
+                <text x="685" y="228" fontSize="9" fontWeight="600" className="fill-[hsl(220_70%_42%)]">Blood inlet (deoxygenated) →</text>
               </>
             )}
           </g>

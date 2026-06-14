@@ -673,6 +673,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "PrevAKI 2017", citation: "Meersch M et al. Prevention of cardiac surgery-associated AKI by implementing the KDIGO guidelines (PrevAKI). Intensive Care Med. 2017;43(11):1551-1561.", url: "https://doi.org/10.1007/s00134-016-4670-3" },
     { label: "ABCDEF 2019", citation: "Pun BT et al. Caring for critically ill patients with the ABCDEF bundle: results of the ICU Liberation Collaborative. Crit Care Med. 2019;47(1):3-14.", url: "https://doi.org/10.1097/CCM.0000000000003482" },
     { label: "SORT", citation: "Protopapa KL, Simpson JC, Smith NCE, Moonesinghe SR. Development and validation of the Surgical Outcome Risk Tool (SORT). Br J Surg. 2014;101(13):1774-1783.", url: "https://doi.org/10.1002/bjs.9638" },
+    { label: "MDCalc P-POSSUM", citation: "MDCalc. P-POSSUM Score for Mortality Risk — implementation of the Portsmouth POSSUM physiological and operative scoring system (Prytherch 1998); sodium score = 1 for 136–145 mmol/L, = 8 for ≤125 or >145 mmol/L.", url: "https://www.mdcalc.com/calc/1993/p-possum-score-mortality-risk" },
   ],
   "icu-sedation-delirium": [
     { label: "BJA Educ 2019", citation: "Barr J et al. Clinical practice guidelines for the management of pain, agitation, and delirium (PAD) in adult patients in the ICU. Crit Care Med. 2013;41(1):263-306.", url: "https://doi.org/10.1097/CCM.0b013e3182783b72" },

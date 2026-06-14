@@ -259,12 +259,25 @@ const NonTechnicalSkillsTopic = () => {
                 <p className="text-xs text-muted-foreground">WHO checklist (ICU adaptation), patient ID, planned procedure, anticipated difficulties, role allocation, equipment check, escalation plan.</p>
               </div>
               <div className="rounded-lg border border-border bg-muted/30 p-3">
-                <p className="font-semibold text-foreground text-sm">Hot debrief (within 24 h)</p>
-                <p className="text-xs text-muted-foreground">Brief, structured (e.g. STOP-5: Summary, Things that went well, Opportunities to improve, Points to action, Responsibilities). Reduces moral distress; supports learning.</p>
+                <p className="font-semibold text-foreground text-sm">Hot debrief (within 24 h) — STOP-5</p>
+                <p className="text-xs text-muted-foreground">Brief (3–5 min), at the bedside or in the coffee room, led by any team member. The STOP-5 structure (Walker et al., BJA Educ 2020):</p>
+                <ul className="text-xs text-muted-foreground list-disc pl-5 mt-1 space-y-0.5">
+                  <li><strong>S</strong>ummary of the case — one-sentence factual recap.</li>
+                  <li><strong>T</strong>hings that went well — reinforce positive behaviours.</li>
+                  <li><strong>O</strong>pportunities to improve — non-judgmental.</li>
+                  <li><strong>P</strong>oints to action — concrete, assigned to a named individual with a deadline.</li>
+                  <li><strong>R</strong>esponsibilities — close the loop on who owns each action. Reduces moral distress and supports learning.</li>
+                </ul>
               </div>
               <div className="rounded-lg border border-border bg-muted/30 p-3">
-                <p className="font-semibold text-foreground text-sm">Cold debrief / case review (1–2 weeks)</p>
-                <p className="text-xs text-muted-foreground">Multidisciplinary, structured (e.g. PEARLS, Diamond, Plus-Delta), psychologically safe, action-oriented.</p>
+                <p className="font-semibold text-foreground text-sm">Cold debrief / case review (1–2 weeks) — PEARLS</p>
+                <p className="text-xs text-muted-foreground">Multidisciplinary, psychologically safe, action-oriented. The PEARLS framework (Eppich & Cheng 2015) blends learner self-assessment, focused facilitation and directive feedback across four phases:</p>
+                <ol className="text-xs text-muted-foreground list-decimal pl-5 mt-1 space-y-0.5">
+                  <li><strong>Reactions</strong> — invite initial thoughts and emotions to defuse affect.</li>
+                  <li><strong>Description</strong> — establish a shared understanding of what actually happened.</li>
+                  <li><strong>Analysis</strong> — explore why things happened (advocacy–inquiry, focused facilitation, directive teaching as needed).</li>
+                  <li><strong>Summary / Application</strong> — agree take-home messages and a plan to change practice. Diamond and Plus-Delta are alternative structured models with the same intent.</li>
+                </ol>
               </div>
               <div className="rounded-lg border border-border bg-muted/30 p-3">
                 <p className="font-semibold text-foreground text-sm">Handover tools</p>
@@ -281,7 +294,13 @@ const NonTechnicalSkillsTopic = () => {
           >
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Patient Safety & Incident Response</h2>
             <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-              <li><strong>Just culture</strong> (Reason; Marx) — distinguish human error / at-risk / reckless behaviour. Neither blame-free nor punitive.</li>
+              <li><strong>Just culture</strong> (Reason; Marx 2001) — distinguish three categories of behaviour and respond proportionately. Neither blame-free nor punitive:
+                <ul className="list-[circle] pl-5 mt-1 space-y-0.5">
+                  <li><strong>Human error</strong> — an unintentional slip or lapse. <em>Console</em> the individual and fix the system that allowed the error.</li>
+                  <li><strong>At-risk behaviour</strong> — a choice where the risk is not recognised or is mistakenly believed justified (e.g. a workaround). <em>Coach</em> the individual; remove incentives for the workaround.</li>
+                  <li><strong>Reckless behaviour</strong> — conscious disregard of a substantial and unjustifiable risk. <em>Discipline</em> proportionately.</li>
+                </ul>
+              </li>
               <li><strong>PSIRF</strong> (NHS England Patient Safety Incident Response Framework, 2022) — replaces SI framework; emphasises learning, proportionate response, family/staff involvement.</li>
               <li><strong>Duty of candour</strong> — statutory (England, since 2014); be open and honest when something goes wrong.</li>
               <li><strong>Datix / equivalent</strong> — incident reporting; NRLS, learn from incidents.</li>
