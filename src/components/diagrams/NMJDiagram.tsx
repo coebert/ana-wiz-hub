@@ -170,10 +170,10 @@ export const NMJDiagram = () => {
                 <circle cx={x} cy={y} r={5}
                   fill="hsl(35 95% 55%)" stroke="hsl(25 90% 35%)" strokeWidth="1"
                   opacity={opacity} />
-                <text x={x} y={y + 2} textAnchor="middle" fontSize="5"
+                <text x={x} y={y + 2} textAnchor="middle" fontSize="4.5"
                   className="font-bold" fill="hsl(0 0% 100%)"
                   opacity={opacity}>
-                  Ca
+                  Ca²⁺
                 </text>
               </g>
             );
