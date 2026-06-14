@@ -1,0 +1,1 @@
+UPDATE public.topic_audit_findings SET status = 'fixed', resolved_at = now(), unverifiable_reason = 'Diagram-only fix: removed misleading 63.2% and 95% completion gridlines from decay (% remaining) view. No external citation required for a visual-label correction.' WHERE id = 'b1b80c45-bfe2-4385-918f-1df96db59c01';
