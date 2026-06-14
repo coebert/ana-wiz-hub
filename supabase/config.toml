@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.log-visit]
 verify_jwt = false
+
+[functions.firecrawl-check]
+verify_jwt = false
