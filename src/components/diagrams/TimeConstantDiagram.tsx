@@ -35,6 +35,11 @@ export const TimeConstantDiagram = () => {
     { tau: 5, pct: 99.3 },
   ];
 
+  const yGridValues =
+    mode === "decay"
+      ? [0, 25, 50, 75, 100]
+      : [0, 25, 50, 63.2, 75, 95, 100];
+
   return (
     <DiagramFigure
       id="time-constant-graph"
