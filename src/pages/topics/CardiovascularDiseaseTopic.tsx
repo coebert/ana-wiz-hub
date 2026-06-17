@@ -337,6 +337,9 @@ const CardiovascularDiseaseTopic = () => {
               'Pacemaker-dependent patient + monopolar diathermy: reprogramme to asynchronous (DOO/VOO) or apply magnet; for ICDs disable tachy-therapy and have external pads on.',
               'AF: rate control (β-blocker / diltiazem) usually preferred perioperatively; weigh CHA₂DS₂-VASc vs HAS-BLED for bridging.',
               'Eisenmenger / right-to-left shunt: meticulous IV de-airing, maintain SVR, avoid PVR rises — extremely high perioperative mortality.',
+              'Elective surgery + chronic hypertension: proceed if pre-assessment BP <180/110 mmHg (AAGBI/BHS 2016); do not lower acutely on the day — refer back to primary care above threshold.',
+              'Chronic hypertensives: target intra-operative MAP within 20% of baseline and ≥80 mmHg (POISE-3 2023); omit ACE-I/ARB on the morning of surgery to limit induction hypotension.',
+              'Hypertensive emergency before urgent surgery: lower MAP by ≤20–25% in the first hour with titratable IV agents (labetalol/esmolol/GTN); avoid sublingual nifedipine.',
             ]}
           />
           <TopicFaqs faqs={cardiovascularDiseaseFaqs} />
