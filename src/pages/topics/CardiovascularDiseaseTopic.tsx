@@ -58,6 +58,7 @@ const CardiovascularDiseaseTopicWorkedExamples: WorkedExample[] = [
 const tocItems = [
   { id: "section-ischaemic-heart-disease", label: "Ischaemic Heart Disease", group: "Core" },
   { id: "section-valvular-heart-disease", label: "Valvular Heart Disease", group: "Core" },
+  { id: "section-hypertension", label: "Hypertension", group: "Core" },
   { id: "section-heart-failure", label: "Heart Failure", group: "Management" },
   { id: "section-arrhythmias-pacemakers-and-icds", label: "Arrhythmias, Pacemakers & ICDs", group: "Devices" },
   { id: "section-pulmonary-hypertension", label: "Pulmonary Hypertension", group: "Specialist" },
