@@ -236,6 +236,67 @@ const HaematologicalDiseaseTopic = () => {
                   <li>Escalate to critical care early; admit even if initially stable for IV antibiotics and monitoring</li>
                 </ul>
               </div>
+
+              <div className="bg-card border-2 border-clinical/40 rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-3">Actionable Perioperative Neutropenia Pathway</h3>
+
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <p className="font-semibold text-foreground">Step 1 — Treat as neutropenic sepsis if ANY of:</p>
+                    <ul className="list-disc list-inside space-y-1 mt-1">
+                      <li>Neutrophils ≤0.5 ×10⁹/L (or expected to fall below within 48 h) <strong>AND</strong> temperature ≥38°C (single reading) or ≥37.5°C sustained &gt;1 h</li>
+                      <li>Any neutropenic patient with rigors, hypotension (SBP &lt;90 or MAP &lt;65), tachycardia &gt;90, RR &gt;20, new confusion, mottling, oliguria, or lactate &gt;2</li>
+                      <li>Neutropenic patient who is unwell <em>without</em> fever (steroids, elderly, post-op analgesia may mask pyrexia) — low threshold to treat</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-foreground">Step 2 — Investigations within 1 hour (do not delay antibiotics):</p>
+                    <ul className="list-disc list-inside space-y-1 mt-1">
+                      <li>Peripheral blood cultures <strong>plus</strong> separate cultures from <em>each lumen</em> of any central line / PICC / Hickman / port</li>
+                      <li>FBC, U&amp;E, LFT, CRP, coagulation, lactate, venous/arterial gas, glucose</li>
+                      <li>Urinalysis + MSU, sputum culture if productive, stool culture if diarrhoea, wound/line-site swabs</li>
+                      <li>CXR; further imaging (CT chest/abdomen) if source unclear and patient stable</li>
+                      <li>Viral PCR (respiratory, CMV) and fungal markers (β-D-glucan, galactomannan) if prolonged neutropenia &gt;7 days or recent stem-cell transplant</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-foreground">Step 3 — Empirical antibiotics within 60 min of recognition:</p>
+                    <ul className="list-disc list-inside space-y-1 mt-1">
+                      <li><strong>First line:</strong> piperacillin–tazobactam 4.5 g IV (NICE NG141)</li>
+                      <li><strong>Severe β-lactam allergy / known resistance:</strong> meropenem 1 g IV (assess cross-reactivity first)</li>
+                      <li><strong>Add vancomycin / teicoplanin</strong> only for suspected line infection, MRSA colonisation, severe mucositis, or skin/soft-tissue source</li>
+                      <li><strong>Add antifungal</strong> (e.g. caspofungin) if fever persists &gt;96 h on broad-spectrum antibiotics or high-risk haematology patient</li>
+                      <li>Sepsis-6 in parallel: O₂ to SpO₂ ≥94%, IV crystalloid 500 mL bolus, monitor urine output, repeat lactate at 2 h</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-foreground">Step 4 — Escalation criteria (call critical care immediately):</p>
+                    <ul className="list-disc list-inside space-y-1 mt-1">
+                      <li>Lactate &gt;2 mmol/L after fluid bolus, or &gt;4 mmol/L at any point</li>
+                      <li>Persistent hypotension (MAP &lt;65) after 30 mL/kg crystalloid — vasopressor required</li>
+                      <li>SpO₂ &lt;92% on ≥4 L O₂, RR &gt;25, or new respiratory failure</li>
+                      <li>GCS drop ≥2, new confusion, or seizures</li>
+                      <li>AKI (creatinine rise &gt;26 µmol/L in 48 h or urine output &lt;0.5 mL/kg/h for 6 h)</li>
+                      <li>DIC, profound thrombocytopenia &lt;20 ×10⁹/L with bleeding, or new coagulopathy</li>
+                      <li>NEWS2 ≥7, or any single parameter scoring 3</li>
+                      <li>Failure to improve within 4–6 h of optimal therapy → ICU review for organ support, source control, antimicrobial broadening</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-foreground">Step 5 — Surgical decision-making:</p>
+                    <ul className="list-disc list-inside space-y-1 mt-1">
+                      <li><strong>Elective:</strong> postpone until neutrophils &gt;1.0 ×10⁹/L and afebrile ≥48 h</li>
+                      <li><strong>Urgent (≤24 h):</strong> proceed with antibiotic cover, full barrier precautions, senior anaesthetist + surgeon, HDU/ICU bed booked</li>
+                      <li><strong>Emergency:</strong> do not delay life-saving surgery — give first dose of empirical antibiotics in the anaesthetic room if not already started, take cultures intra-op, plan post-op critical care</li>
+                      <li>Notify haematology/oncology of all neutropenic patients undergoing surgery; consider G-CSF post-op per local protocol</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
