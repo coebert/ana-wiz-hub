@@ -82,7 +82,7 @@ export const Header = () => {
             return (
               <Link to={homeTarget} className="flex items-center gap-2 shrink-0">
                 <img src={brainLogo} alt="AnaesthesiaCore brain and pulse logo" width={24} height={24} decoding="async" className="h-6 w-6" />
-                <span className="text-base font-semibold text-foreground hidden 2xl:inline whitespace-nowrap">
+                <span className="text-base font-semibold text-foreground hidden lg:inline whitespace-nowrap">
                   AnaesthesiaCore
                 </span>
               </Link>
