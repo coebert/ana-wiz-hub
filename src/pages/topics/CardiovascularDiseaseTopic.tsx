@@ -171,6 +171,68 @@ const CardiovascularDiseaseTopic = () => {
           </div>
         </section>
 
+         {/* Hypertension */}
+         <section id="section-hypertension" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hypertension</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Definitions & Staging (NICE NG136, 2023)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Stage 1: clinic BP 140/90–159/99 mmHg with ABPM/HBPM ≥135/85</li>
+                <li>Stage 2: clinic BP 160/100–179/119 mmHg with ABPM/HBPM ≥150/95</li>
+                <li>Stage 3 / severe: clinic systolic ≥180 mmHg <em>or</em> diastolic ≥120 mmHg</li>
+                <li>Treatment thresholds and targets (clinic): &lt;140/90 mmHg under 80 y; &lt;150/90 mmHg ≥80 y</li>
+              </ul>
+            </div>
+
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Elective Surgery — Thresholds (AAGBI/BHS 2016)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Accept primary-care BP &lt;160/100 mmHg documented within the last 12 months without further measurement</li>
+                <li>If no recent reading, measure in pre-assessment using a standardised technique (seated, rested, validated device)</li>
+                <li>Proceed with elective surgery if pre-assessment BP &lt;180 systolic <strong>and</strong> &lt;110 mmHg diastolic</li>
+                <li>Defer and refer back to primary care only if BP ≥180/110 mmHg — no evidence that short-term in-hospital treatment reduces perioperative cardiac risk, and rapid lowering may cause harm</li>
+                <li>End-organ damage (LVH, retinopathy, renal impairment), not the absolute BP alone, drives true perioperative risk — investigate where suspected</li>
+              </ul>
+            </div>
+
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Chronic Antihypertensive Management on the Day</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Continue β-blockers, calcium-channel blockers and centrally acting agents (clonidine, methyldopa) — abrupt withdrawal causes rebound hypertension/ischaemia</li>
+                <li>ACE inhibitors / ARBs: ESC/ESA 2022 and ACC/AHA 2024 both recommend <strong>withholding on the morning of surgery</strong> in patients taking them for hypertension to reduce intra-operative hypotension; POISE-3 (2023) supports a hypotension-avoidance strategy (omit ACE-I/ARB, target MAP ≥80 mmHg) over continued therapy</li>
+                <li>Restart ACE-I/ARB within 48 h post-op once euvolaemic and renal function stable</li>
+                <li>Diuretics: typically omit on the morning of major surgery to avoid hypovolaemia and electrolyte disturbance</li>
+                <li>SGLT2 inhibitors: withhold for ≥3 days (4 days for ertugliflozin) pre-op (MHRA 2024; ACC/AHA 2024) to reduce euglycaemic DKA risk</li>
+                <li>Continue statins and aspirin per surgical/bleeding risk</li>
+              </ul>
+            </div>
+
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Intra-operative Goals</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Target MAP within 20% of the patient's pre-operative baseline; avoid MAP &lt;65 mmHg (and &lt;80 mmHg in those with chronic hypertension) — sustained intra-operative hypotension is strongly associated with myocardial injury, AKI and stroke (POISE-3, 2023)</li>
+                <li>Anticipate exaggerated swings: pronounced hypotension on induction (volume depletion + vasodilator anaesthetics) and surges on laryngoscopy, extubation and emergence</li>
+                <li>Attenuate the pressor response (opioid bolus, lidocaine, β-blocker, deepen anaesthesia); have vasopressors (phenylephrine, noradrenaline) and short-acting vasodilators (labetalol, GTN, esmolol) immediately available</li>
+                <li>Consider invasive arterial monitoring for stage 3 hypertension, end-organ damage, or major surgery</li>
+                <li>Multimodal analgesia and good postoperative pain control prevent sympathetic-driven hypertensive surges</li>
+              </ul>
+            </div>
+
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Urgent / Emergency Surgery</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Time-critical surgery should <strong>not</strong> be delayed to treat chronic hypertension — the risk of acute lowering (cerebral, coronary and renal hypoperfusion in chronically auto-regulated patients) outweighs benefit</li>
+                <li>True hypertensive emergency (BP ≥180/120 mmHg <em>with</em> evolving end-organ damage — encephalopathy, ACS, pulmonary oedema, aortic dissection, eclampsia) requires controlled IV reduction <em>before</em> non-life-saving surgery: lower MAP by no more than 20–25% in the first hour, then to ~160/100 mmHg over the next 2–6 h (NICE NG136; ACC/AHA 2024)</li>
+                <li>Drug choice tailored to the syndrome: labetalol or esmolol for dissection and phaeochromocytoma surge; GTN for pulmonary oedema and ACS; magnesium and labetalol for eclampsia; avoid sublingual nifedipine (uncontrolled drops)</li>
+                <li>Use an arterial line and titrate infusions; correct precipitants (pain, hypoxia, hypercarbia, full bladder, raised ICP) before escalating drugs</li>
+                <li>Restart oral therapy as early as enteral access allows; document a plan for outpatient BP optimisation post-discharge</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
          {/* Heart Failure */}
          <section id="section-heart-failure" className="scroll-mt-24">
            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Failure</h2>
