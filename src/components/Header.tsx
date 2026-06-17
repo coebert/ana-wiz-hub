@@ -82,16 +82,17 @@ export const Header = () => {
             return (
               <Link to={homeTarget} className="flex items-center gap-2 shrink-0">
                 <img src={brainLogo} alt="AnaesthesiaCore brain and pulse logo" width={24} height={24} decoding="async" className="h-6 w-6" />
-                <span className="text-base font-semibold text-foreground hidden 2xl:inline whitespace-nowrap">
+                <span className="text-base font-semibold text-foreground hidden lg:inline whitespace-nowrap">
                   AnaesthesiaCore
                 </span>
               </Link>
             );
           })()}
 
-          {/* Desktop nav — icons only md..xl, full labels at 2xl+ to prevent overflow on 1366 laptops.
-              Labels use whitespace-nowrap so long titles like "Pharmacology" / "Perioperative" never wrap or clip. */}
-          <nav className="hidden md:flex items-center gap-0.5 min-w-0 flex-1 justify-center 2xl:justify-start">
+          {/* Desktop nav — icons only on all desktop sizes. 15 nav items + brand + exam filter chips
+              + support link + toggles + search will not fit horizontally even at 1920px if labels are
+              shown, so we rely on icon + title/aria-label for identification on every breakpoint. */}
+          <nav className="hidden md:flex items-center gap-0.5 min-w-0 flex-1 justify-center">
             {navItems.map((item) => {
               const isActive = location.pathname.startsWith(item.path);
               return (
@@ -100,14 +101,13 @@ export const Header = () => {
                   to={item.path}
                   title={item.label}
                   aria-label={item.label}
-                  className={`flex items-center gap-1.5 px-2 2xl:px-2.5 py-1.5 rounded-lg text-[13px] font-medium transition-colors shrink-0 whitespace-nowrap ${
+                  className={`flex items-center justify-center p-2 rounded-lg transition-colors shrink-0 ${
                     isActive
                       ? "bg-secondary text-foreground"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   }`}
                 >
                   <item.icon className={`h-4 w-4 ${isActive ? item.color : ""}`} />
-                  <span className="hidden 2xl:inline">{item.label}</span>
                 </Link>
               );
             })}
