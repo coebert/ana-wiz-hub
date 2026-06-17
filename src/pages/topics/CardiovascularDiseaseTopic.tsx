@@ -23,6 +23,7 @@ const keyPoints = [
   { text: "Heart failure patients with EF <30% require careful fluid management, avoidance of myocardial depressants, and consideration of cardiac output monitoring for major surgery", cites: ["ESC/ESA 2022", "AHA/ACC 2014"] },
   { text: "Patients with permanent pacemakers/ICDs require device interrogation preoperatively; ICDs should have anti-tachycardia therapy deactivated with external defibrillation available", cites: ["BJA Educ 2017", "AHA/ACC 2014"] },
   { text: "Pulmonary hypertension (mPAP ≥20 mmHg) carries perioperative mortality of 1–7%; avoid hypoxia, hypercarbia, acidosis, and excessive PEEP which increase PVR", cites: ["ESC/ESA 2022"] },
+  { text: "For elective surgery, proceed if pre-assessment BP is <180/110 mmHg; only defer for primary-care optimisation above this threshold (AAGBI/BHS 2016). Withhold ACE-I/ARB on the morning of surgery and target MAP ≥80 mmHg in chronic hypertensives (POISE-3 2023; ACC/AHA 2024)", cites: ["AAGBI HTN 2016", "POISE-3 2023", "ACC/AHA 2024 Periop", "NICE NG136"] },
 
 ];
 
@@ -58,6 +59,7 @@ const CardiovascularDiseaseTopicWorkedExamples: WorkedExample[] = [
 const tocItems = [
   { id: "section-ischaemic-heart-disease", label: "Ischaemic Heart Disease", group: "Core" },
   { id: "section-valvular-heart-disease", label: "Valvular Heart Disease", group: "Core" },
+  { id: "section-hypertension", label: "Hypertension", group: "Core" },
   { id: "section-heart-failure", label: "Heart Failure", group: "Management" },
   { id: "section-arrhythmias-pacemakers-and-icds", label: "Arrhythmias, Pacemakers & ICDs", group: "Devices" },
   { id: "section-pulmonary-hypertension", label: "Pulmonary Hypertension", group: "Specialist" },
@@ -68,6 +70,9 @@ const cardiovascularDiseaseFaqs: Array<[string, string]> = [
   ["What are the haemodynamic goals for severe aortic stenosis?", "Maintain sinus rhythm, a normal or slightly low heart rate (60–80), adequate preload and high systemic vascular resistance — use phenylephrine or vasopressin first-line for hypotension, and avoid agents that drop SVR or cause tachycardia."],
   ["How should a pacemaker-dependent patient be managed when monopolar diathermy is required?", "Reprogramme to an asynchronous mode (DOO/VOO) or apply a clinical magnet, position the diathermy return plate so the current path does not cross the device, use short bipolar bursts where possible, and check the device postoperatively."],
   ["What are the anaesthetic principles in pulmonary hypertension?", "Avoid hypoxia, hypercarbia, acidosis, hypothermia and high airway pressures — all increase pulmonary vascular resistance. Maintain RV preload and coronary perfusion pressure, use noradrenaline or vasopressin for systemic hypotension, and have inhaled pulmonary vasodilators (NO, iloprost) available."],
+  ["At what blood pressure should an elective case be cancelled for hypertension?", "Per the AAGBI/BHS 2016 joint guideline, proceed if pre-assessment BP is <180 mmHg systolic AND <110 mmHg diastolic. Above this, refer back to primary care for optimisation rather than treating acutely on the day — there is no evidence that short-term in-hospital lowering reduces perioperative cardiac risk and rapid drops may cause harm."],
+  ["How should ACE inhibitors and ARBs be managed on the day of surgery?", "Both ESC/ESA 2022 and the 2024 ACC/AHA perioperative guideline recommend withholding ACE-I/ARB on the morning of surgery when they are prescribed for hypertension, to reduce intra-operative hypotension. POISE-3 (2023) supports this 'hypotension-avoidance' approach with a MAP target ≥80 mmHg. Restart within 48 h once the patient is euvolaemic with stable renal function."],
+  ["How do you manage true hypertensive emergency before urgent surgery?", "Use an arterial line and titrate IV antihypertensives (labetalol or esmolol for dissection/phaeochromocytoma surge, GTN for ACS/pulmonary oedema, magnesium + labetalol for eclampsia) to lower MAP by no more than 20–25% in the first hour, then to around 160/100 mmHg over 2–6 h. Treat reversible precipitants (pain, hypoxia, hypercarbia, raised ICP) first. Truly time-critical surgery should not be delayed for chronic hypertension alone."],
 ];
 
 const CardiovascularDiseaseTopic = () => {
@@ -90,7 +95,7 @@ const CardiovascularDiseaseTopic = () => {
        }}
        sectionSources={{
          objectives: ["ESC/ESA 2022", "AHA/ACC 2014"],
-         keyPoints: ["BJA Educ 2017", "ESC/ESA 2022", "BJA Educ Valvular 2015", "AHA/ACC 2014", "NICE CG181"],
+         keyPoints: ["BJA Educ 2017", "ESC/ESA 2022", "BJA Educ Valvular 2015", "AHA/ACC 2014", "NICE CG181", "AAGBI HTN 2016", "POISE-3 2023", "ACC/AHA 2024 Periop", "NICE NG136"],
        }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
@@ -165,6 +170,68 @@ const CardiovascularDiseaseTopic = () => {
                 <li>Fixed low cardiac output; dependent on preload and diastolic filling time</li>
                 <li>Goals: slow rate (60–80), maintain sinus rhythm, adequate preload, maintain SVR</li>
                 <li>Avoid: tachycardia, fluid overload (risk of pulmonary oedema), AF, increased PVR</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+         {/* Hypertension */}
+         <section id="section-hypertension" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hypertension</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Definitions & Staging (NICE NG136, 2023)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Stage 1: clinic BP 140/90–159/99 mmHg with ABPM/HBPM ≥135/85</li>
+                <li>Stage 2: clinic BP 160/100–179/119 mmHg with ABPM/HBPM ≥150/95</li>
+                <li>Stage 3 / severe: clinic systolic ≥180 mmHg <em>or</em> diastolic ≥120 mmHg</li>
+                <li>Treatment thresholds and targets (clinic): &lt;140/90 mmHg under 80 y; &lt;150/90 mmHg ≥80 y</li>
+              </ul>
+            </div>
+
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Elective Surgery — Thresholds (AAGBI/BHS 2016)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Accept primary-care BP &lt;160/100 mmHg documented within the last 12 months without further measurement</li>
+                <li>If no recent reading, measure in pre-assessment using a standardised technique (seated, rested, validated device)</li>
+                <li>Proceed with elective surgery if pre-assessment BP &lt;180 systolic <strong>and</strong> &lt;110 mmHg diastolic</li>
+                <li>Defer and refer back to primary care only if BP ≥180/110 mmHg — no evidence that short-term in-hospital treatment reduces perioperative cardiac risk, and rapid lowering may cause harm</li>
+                <li>End-organ damage (LVH, retinopathy, renal impairment), not the absolute BP alone, drives true perioperative risk — investigate where suspected</li>
+              </ul>
+            </div>
+
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Chronic Antihypertensive Management on the Day</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Continue β-blockers, calcium-channel blockers and centrally acting agents (clonidine, methyldopa) — abrupt withdrawal causes rebound hypertension/ischaemia</li>
+                <li>ACE inhibitors / ARBs: ESC/ESA 2022 and ACC/AHA 2024 both recommend <strong>withholding on the morning of surgery</strong> in patients taking them for hypertension to reduce intra-operative hypotension; POISE-3 (2023) supports a hypotension-avoidance strategy (omit ACE-I/ARB, target MAP ≥80 mmHg) over continued therapy</li>
+                <li>Restart ACE-I/ARB within 48 h post-op once euvolaemic and renal function stable</li>
+                <li>Diuretics: typically omit on the morning of major surgery to avoid hypovolaemia and electrolyte disturbance</li>
+                <li>SGLT2 inhibitors: withhold for ≥3 days (4 days for ertugliflozin) pre-op (MHRA 2024; ACC/AHA 2024) to reduce euglycaemic DKA risk</li>
+                <li>Continue statins and aspirin per surgical/bleeding risk</li>
+              </ul>
+            </div>
+
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Intra-operative Goals</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Target MAP within 20% of the patient's pre-operative baseline; avoid MAP &lt;65 mmHg (and &lt;80 mmHg in those with chronic hypertension) — sustained intra-operative hypotension is strongly associated with myocardial injury, AKI and stroke (POISE-3, 2023)</li>
+                <li>Anticipate exaggerated swings: pronounced hypotension on induction (volume depletion + vasodilator anaesthetics) and surges on laryngoscopy, extubation and emergence</li>
+                <li>Attenuate the pressor response (opioid bolus, lidocaine, β-blocker, deepen anaesthesia); have vasopressors (phenylephrine, noradrenaline) and short-acting vasodilators (labetalol, GTN, esmolol) immediately available</li>
+                <li>Consider invasive arterial monitoring for stage 3 hypertension, end-organ damage, or major surgery</li>
+                <li>Multimodal analgesia and good postoperative pain control prevent sympathetic-driven hypertensive surges</li>
+              </ul>
+            </div>
+
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Urgent / Emergency Surgery</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Time-critical surgery should <strong>not</strong> be delayed to treat chronic hypertension — the risk of acute lowering (cerebral, coronary and renal hypoperfusion in chronically auto-regulated patients) outweighs benefit</li>
+                <li>True hypertensive emergency (BP ≥180/120 mmHg <em>with</em> evolving end-organ damage — encephalopathy, ACS, pulmonary oedema, aortic dissection, eclampsia) requires controlled IV reduction <em>before</em> non-life-saving surgery: lower MAP by no more than 20–25% in the first hour, then to ~160/100 mmHg over the next 2–6 h (NICE NG136; ACC/AHA 2024)</li>
+                <li>Drug choice tailored to the syndrome: labetalol or esmolol for dissection and phaeochromocytoma surge; GTN for pulmonary oedema and ACS; magnesium and labetalol for eclampsia; avoid sublingual nifedipine (uncontrolled drops)</li>
+                <li>Use an arterial line and titrate infusions; correct precipitants (pain, hypoxia, hypercarbia, full bladder, raised ICP) before escalating drugs</li>
+                <li>Restart oral therapy as early as enteral access allows; document a plan for outpatient BP optimisation post-discharge</li>
               </ul>
             </div>
           </div>
@@ -270,6 +337,9 @@ const CardiovascularDiseaseTopic = () => {
               'Pacemaker-dependent patient + monopolar diathermy: reprogramme to asynchronous (DOO/VOO) or apply magnet; for ICDs disable tachy-therapy and have external pads on.',
               'AF: rate control (β-blocker / diltiazem) usually preferred perioperatively; weigh CHA₂DS₂-VASc vs HAS-BLED for bridging.',
               'Eisenmenger / right-to-left shunt: meticulous IV de-airing, maintain SVR, avoid PVR rises — extremely high perioperative mortality.',
+              'Elective surgery + chronic hypertension: proceed if pre-assessment BP <180/110 mmHg (AAGBI/BHS 2016); do not lower acutely on the day — refer back to primary care above threshold.',
+              'Chronic hypertensives: target intra-operative MAP within 20% of baseline and ≥80 mmHg (POISE-3 2023); omit ACE-I/ARB on the morning of surgery to limit induction hypotension.',
+              'Hypertensive emergency before urgent surgery: lower MAP by ≤20–25% in the first hour with titratable IV agents (labetalol/esmolol/GTN); avoid sublingual nifedipine.',
             ]}
           />
           <TopicFaqs faqs={cardiovascularDiseaseFaqs} />
