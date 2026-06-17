@@ -23,6 +23,7 @@ const keyPoints = [
   { text: "Heart failure patients with EF <30% require careful fluid management, avoidance of myocardial depressants, and consideration of cardiac output monitoring for major surgery", cites: ["ESC/ESA 2022", "AHA/ACC 2014"] },
   { text: "Patients with permanent pacemakers/ICDs require device interrogation preoperatively; ICDs should have anti-tachycardia therapy deactivated with external defibrillation available", cites: ["BJA Educ 2017", "AHA/ACC 2014"] },
   { text: "Pulmonary hypertension (mPAP ≥20 mmHg) carries perioperative mortality of 1–7%; avoid hypoxia, hypercarbia, acidosis, and excessive PEEP which increase PVR", cites: ["ESC/ESA 2022"] },
+  { text: "For elective surgery, proceed if pre-assessment BP is <180/110 mmHg; only defer for primary-care optimisation above this threshold (AAGBI/BHS 2016). Withhold ACE-I/ARB on the morning of surgery and target MAP ≥80 mmHg in chronic hypertensives (POISE-3 2023; ACC/AHA 2024)", cites: ["AAGBI HTN 2016", "POISE-3 2023", "ACC/AHA 2024 Periop", "NICE NG136"] },
 
 ];
 
