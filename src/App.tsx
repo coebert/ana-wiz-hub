@@ -52,6 +52,17 @@ const NotesIndex = lazy(() => import("./pages/notes/NotesIndex"));
 const SugammadexReversesRocuroniumNote = lazy(() => import("./pages/notes/SugammadexReversesRocuroniumNote"));
 const ContextSensitiveHalfTimeNote = lazy(() => import("./pages/notes/ContextSensitiveHalfTimeNote"));
 const P50FetalHaemoglobinNote = lazy(() => import("./pages/notes/P50FetalHaemoglobinNote"));
+const MacForAgeNote = lazy(() => import("./pages/notes/MacForAgeNote"));
+const ApfelScoreNote = lazy(() => import("./pages/notes/ApfelScoreNote"));
+const MaplesonBreathingSystemsNote = lazy(() => import("./pages/notes/MaplesonBreathingSystemsNote"));
+const DasDifficultAirwayNote = lazy(() => import("./pages/notes/DasDifficultAirwayNote"));
+const LocalAnaestheticToxicityNote = lazy(() => import("./pages/notes/LocalAnaestheticToxicityNote"));
+const TofRatioExtubationNote = lazy(() => import("./pages/notes/TofRatioExtubationNote"));
+const SevoVsDesfluraneNote = lazy(() => import("./pages/notes/SevoVsDesfluraneNote"));
+const BainCircuitNote = lazy(() => import("./pages/notes/BainCircuitNote"));
+const RotemTegInterpretationNote = lazy(() => import("./pages/notes/RotemTegInterpretationNote"));
+const RapidSequenceInductionNote = lazy(() => import("./pages/notes/RapidSequenceInductionNote"));
+
 
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
