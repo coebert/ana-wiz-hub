@@ -2,20 +2,111 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/Header";
 
+type ExamTag = "primary" | "final" | "fficm" | "edic";
+
 interface NoteEntry {
   slug: string;
   title: string;
   description: string;
   tag: string;
+  examTags: ExamTag[];
 }
 
+const EXAM_LABEL: Record<ExamTag, string> = {
+  primary: "FRCA Primary",
+  final: "FRCA Final",
+  fficm: "FFICM",
+  edic: "EDIC",
+};
+
 const notes: NoteEntry[] = [
+  {
+    slug: "rapid-sequence-induction-drug-doses",
+    title: "Rapid sequence induction: drugs and doses",
+    description:
+      "Adult and paediatric RSI drug doses, modifications for shock, head injury and obstetrics, and the modern role of cricoid pressure.",
+    tag: "Clinical",
+    examTags: ["primary", "final"],
+  },
+  {
+    slug: "das-difficult-airway-algorithm",
+    title: "DAS unanticipated difficult intubation algorithm",
+    description:
+      "Plans A–D, the criteria for each transition, scalpel–bougie–tube front-of-neck access, and the human-factors anchors built into the 2015 algorithm.",
+    tag: "Clinical",
+    examTags: ["final", "fficm"],
+  },
+  {
+    slug: "local-anaesthetic-systemic-toxicity-management",
+    title: "LAST: local anaesthetic systemic toxicity management",
+    description:
+      "Recognition, AAGBI immediate management, Intralipid 20% dosing, modified ALS for bupivacaine arrest, and prevention strategies.",
+    tag: "Pharmacology",
+    examTags: ["primary", "final"],
+  },
+  {
+    slug: "rotem-teg-interpretation",
+    title: "ROTEM/TEG interpretation in major haemorrhage",
+    description:
+      "EXTEM, INTEM, FIBTEM and APTEM channels — what each abnormal pattern means and which blood product to give.",
+    tag: "Clinical",
+    examTags: ["final", "fficm"],
+  },
+  {
+    slug: "tof-ratio-before-extubation",
+    title: "Why TOF ratio ≥ 0.9 before extubation?",
+    description:
+      "Residual neuromuscular block, why clinical signs are not enough, and how to combine quantitative monitoring with sugammadex or neostigmine.",
+    tag: "Pharmacology",
+    examTags: ["primary", "final"],
+  },
+  {
+    slug: "mac-for-age-formula",
+    title: "MAC for age: how MAC changes with age",
+    description:
+      "The Mapleson age-adjustment formula, the ~6% per decade rule, and why titrating to age-adjusted MAC matters in elderly anaesthesia.",
+    tag: "Pharmacology",
+    examTags: ["primary", "final"],
+  },
+  {
+    slug: "sevoflurane-vs-desflurane-recovery",
+    title: "Sevoflurane vs desflurane: recovery and clinical choice",
+    description:
+      "Blood–gas coefficients, emergence times, side-effect profile, environmental footprint, and why UK practice has deselected desflurane.",
+    tag: "Pharmacology",
+    examTags: ["primary", "final"],
+  },
+  {
+    slug: "apfel-score-ponv-risk",
+    title: "Apfel score: predicting postoperative nausea and vomiting",
+    description:
+      "The four risk factors, the 10/20/40/60/80% gradient, and the SAMBA-2020 mapping to multimodal antiemetic prophylaxis.",
+    tag: "Clinical",
+    examTags: ["primary", "final"],
+  },
+  {
+    slug: "mapleson-breathing-systems-explained",
+    title: "Mapleson breathing systems A to F explained",
+    description:
+      "Component order of Mapleson A–F, fresh gas flow requirements for spontaneous vs controlled ventilation, and which system is used when.",
+    tag: "Equipment",
+    examTags: ["primary"],
+  },
+  {
+    slug: "bain-circuit-fresh-gas-flow",
+    title: "Bain circuit fresh gas flow for spontaneous and controlled ventilation",
+    description:
+      "Co-axial Mapleson D anatomy, the Pethick safety test, and why the Bain is efficient for IPPV but wasteful for spontaneous ventilation.",
+    tag: "Equipment",
+    examTags: ["primary"],
+  },
   {
     slug: "how-sugammadex-reverses-rocuronium",
     title: "How does sugammadex reverse rocuronium?",
     description:
       "1:1 cyclodextrin encapsulation, dosing by TOF and PTC, contraceptive failure, and when neostigmine is still the right choice.",
     tag: "Pharmacology",
+    examTags: ["primary", "final"],
   },
   {
     slug: "context-sensitive-half-time-propofol-vs-remifentanil",
@@ -23,6 +114,7 @@ const notes: NoteEntry[] = [
     description:
       "Why propofol's CSHT rises modestly with infusion length, remifentanil's stays flat at ~3–4 minutes, and how to use that in TIVA planning.",
     tag: "Pharmacology",
+    examTags: ["primary", "final"],
   },
   {
     slug: "p50-fetal-haemoglobin",
@@ -30,8 +122,10 @@ const notes: NoteEntry[] = [
     description:
       "Why HbF sits ~7 mmHg left of HbA, the 2,3-DPG mechanism, the double Bohr effect at the placenta, and the perinatal switch to HbA.",
     tag: "Physiology",
+    examTags: ["primary"],
   },
 ];
+
 
 const url = "https://anaesthesiacore.app/notes";
 
