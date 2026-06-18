@@ -76,10 +76,10 @@ const SugammadexReversesRocuroniumNote = () => (
       </li>
     </ul>
     <p>
-      Always confirm reversal objectively with a TOF ratio ≥ 0.9 before
+      Always confirm reversal objectively with a <Link to="/notes/tof-ratio-before-extubation">TOF ratio ≥ 0.9</Link> before
       extubation. Clinical signs such as head-lift or sustained handgrip are
       insensitive to the residual block that drives postoperative pulmonary
-      complications.
+      complications — the underlying receptor reserve is explained in <Link to="/physiology/neuromuscular">neuromuscular junction physiology</Link>.
     </p>
 
     <h2>Onset, offset and re-paralysis</h2>
