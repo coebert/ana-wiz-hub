@@ -78,8 +78,8 @@ const ContextSensitiveHalfTimeNote = () => (
 
     <h2>Clinical pairing</h2>
     <p>
-      Pairing propofol with remifentanil gives a predictable, hypnotic-limited
-      emergence. Two practical consequences follow:
+      Pairing <Link to="/pharmacology/iv-anaesthetics">propofol</Link> with a flat-CSHT <Link to="/pharmacology/opioids">opioid</Link> like remifentanil gives a predictable, hypnotic-limited
+      emergence in <Link to="/clinical/tiva">TIVA</Link>. Two practical consequences follow:
     </p>
     <ul>
       <li>
