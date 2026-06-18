@@ -92,40 +92,55 @@ function* walk(dir: string): Generator<string> {
   }
 }
 
+// Mirror src/test/seo-regression.test.ts HEADING_SKIP_ALLOWLIST so the
+// snapshot doesn't keep flagging intentional, blessed exceptions.
+const HEADING_SKIP_ALLOWLIST = new Set<string>([
+  // DrugDetail renders compact <h1> + utility <h3> labels (no thematic
+  // <h2> needed — the page is one cohesive monograph view).
+  "src/pages/DrugDetail.tsx",
+]);
+
 const pageFiles = [...walk(resolve(ROOT, "src/pages"))];
 let pagesWithH1 = 0;
 const pagesMissingH1: string[] = [];
 const pagesWithSkips: string[] = [];
 
 for (const file of pageFiles) {
+  const rel = file.replace(`${ROOT}/`, "");
   const src = readFileSync(file, "utf8");
   const hasH1 = /<h1[\s>]/.test(src);
   if (hasH1) pagesWithH1++;
-  else pagesMissingH1.push(file.replace(`${ROOT}/`, ""));
+  else pagesMissingH1.push(rel);
 
+  if (HEADING_SKIP_ALLOWLIST.has(rel)) continue;
   // Detect h-level skips (e.g., h1 → h3 with no h2)
   const levels = [...src.matchAll(/<h([1-6])[\s>]/g)].map((m) => Number(m[1]));
   for (let i = 1; i < levels.length; i++) {
     if (levels[i] - levels[i - 1] > 1) {
-      pagesWithSkips.push(file.replace(`${ROOT}/`, ""));
+      pagesWithSkips.push(rel);
       break;
     }
   }
 }
 
-// Topic pages share <TopicTemplate>, which doesn't render an <h1> directly —
-// flag template-level rather than every consumer.
+// TopicTemplate composes SectionLayout — an <h1> in either satisfies the
+// requirement (matches src/test/seo-regression.test.ts).
 const templateSrc = readFileSync(resolve(ROOT, "src/components/TopicTemplate.tsx"), "utf8");
-const templateHasH1 = /<h1[\s>]/.test(templateSrc);
+const sectionLayoutSrc = readFileSync(
+  resolve(ROOT, "src/components/SectionLayout.tsx"),
+  "utf8",
+);
+const templateHasH1 = /<h1[\s>]/.test(templateSrc) || /<h1[\s>]/.test(sectionLayoutSrc);
 
 push({
   id: "heading:topic-template-h1",
   category: "heading",
   severity: templateHasH1 ? "pass" : "fail",
   message: templateHasH1
-    ? "TopicTemplate renders an <h1>"
+    ? "TopicTemplate renders an <h1> (directly or via SectionLayout)"
     : "TopicTemplate is missing an <h1> — every topic page inherits this gap",
 });
+
 
 push({
   id: "heading:pages-with-h1",
