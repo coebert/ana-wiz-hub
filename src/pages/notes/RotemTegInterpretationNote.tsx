@@ -42,7 +42,7 @@ const RotemTegInterpretationNote = () => (
     <ul>
       <li><strong>Initiation</strong> — CT, governed by coagulation-factor concentrations. Long CT = need FFP (or factor concentrate).</li>
       <li><strong>Propagation</strong> — A5/A10, governed by fibrinogen polymerisation and platelet–fibrin interaction. Low A5 = low fibrinogen and/or platelet count.</li>
-      <li><strong>Stability</strong> — ML, governed by fibrinolysis. ML > 15% = hyperfibrinolysis, give TXA.</li>
+      <li><strong>Stability</strong> — ML, governed by fibrinolysis. ML &gt; 15% = hyperfibrinolysis, give TXA.</li>
     </ul>
 
     <h2>Reading the four channels together</h2>
