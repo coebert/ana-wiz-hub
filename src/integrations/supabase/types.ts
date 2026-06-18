@@ -319,6 +319,36 @@ export type Database = {
         }
         Relationships: []
       }
+      note_jump_clicks: {
+        Row: {
+          clicked_at: string
+          id: string
+          note_slug: string
+          target_label: string | null
+          target_path: string
+          target_section: string
+          visitor_id: string | null
+        }
+        Insert: {
+          clicked_at?: string
+          id?: string
+          note_slug: string
+          target_label?: string | null
+          target_path: string
+          target_section: string
+          visitor_id?: string | null
+        }
+        Update: {
+          clicked_at?: string
+          id?: string
+          note_slug?: string
+          target_label?: string | null
+          target_path?: string
+          target_section?: string
+          visitor_id?: string | null
+        }
+        Relationships: []
+      }
       podcasts: {
         Row: {
           audio_path: string | null

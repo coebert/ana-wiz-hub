@@ -3,6 +3,38 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ChevronLeft, Atom, HeartPulse, FlaskConical, Stethoscope, Activity, ClipboardList, ArrowRight } from "lucide-react";
 import { Header } from "@/components/Header";
+import { supabase } from "@/integrations/supabase/client";
+
+/**
+ * Fire-and-forget log of a "Jump to related topic" card click into
+ * public.note_jump_clicks. Read by the admin dashboard to rank which
+ * canonical topics notes actually feed traffic into.
+ */
+function logJumpClick(args: {
+  noteSlug: string;
+  targetPath: string;
+  targetSection: string;
+  targetLabel: string;
+}) {
+  let visitor_id: string | null = null;
+  try {
+    visitor_id = localStorage.getItem("visitor_id");
+  } catch {
+    // ignore storage errors
+  }
+  void supabase
+    .from("note_jump_clicks")
+    .insert({
+      note_slug: args.noteSlug,
+      target_path: args.targetPath,
+      target_section: args.targetSection,
+      target_label: args.targetLabel,
+      visitor_id,
+    })
+    .then(({ error }) => {
+      if (error) console.warn("[note-jump-click] insert failed", error.message);
+    });
+}
 
 const SECTION_META: Record<
   string,
@@ -231,6 +263,14 @@ export const NoteLayout = ({
                       <Link
                         key={t.to}
                         to={t.to}
+                        onClick={() =>
+                          logJumpClick({
+                            noteSlug: slug,
+                            targetPath: t.to,
+                            targetSection: t.section,
+                            targetLabel: meta?.label ?? t.section,
+                          })
+                        }
                         className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-colors ${
                           meta?.tone ?? "border-border bg-card hover:bg-muted/40"
                         }`}
