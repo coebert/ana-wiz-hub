@@ -6,8 +6,18 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- /login and /review intentionally omitted: noindex (personal/auth pages) -->
-
+  <url>
+    <loc>https://anaesthesiacore.app/login</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/review</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://anaesthesiacore.app/revise</loc>
     <lastmod>2026-05-28</lastmod>
@@ -56,8 +66,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
-  <!-- /viva/voice intentionally omitted: noindex (interactive tool, not for indexing) -->
-
+  <url>
+    <loc>https://anaesthesiacore.app/viva/voice</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://anaesthesiacore.app/tools</loc>
     <lastmod>2026-06-04</lastmod>
@@ -104,18 +118,18 @@
     <loc>https://anaesthesiacore.app/notes/how-sugammadex-reverses-rocuronium</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/context-sensitive-half-time-propofol-vs-remifentanil</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/p50-fetal-haemoglobin</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>
