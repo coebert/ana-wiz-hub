@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
 
 const ApfelScoreNote = () => (
@@ -29,15 +30,16 @@ const ApfelScoreNote = () => (
     ]}
     related={[
       { label: "Antiemetics — full topic", to: "/pharmacology/antiemetics" },
-      { label: "Day-case anaesthesia", to: "/perioperative/day-surgery" },
-      { label: "TIVA — pharmacokinetics", to: "/pharmacology/pharmacokinetics" },
+      { label: "Day-case anaesthesia", to: "/clinical/day-surgery" },
+      { label: "TIVA — total intravenous anaesthesia", to: "/clinical/tiva" },
+      { label: "Pharmacokinetics", to: "/pharmacology/pharmacokinetics" },
     ]}
   >
     <h2>Why predict PONV at all?</h2>
     <p>
       PONV is the single biggest patient-rated complaint after anaesthesia and
-      a leading cause of unplanned admission after day surgery. It prolongs
-      recovery, predisposes to wound dehiscence and aspiration, and is highly
+      a leading cause of unplanned admission after <Link to="/clinical/day-surgery">day surgery</Link>.
+      It prolongs recovery, predisposes to wound dehiscence and aspiration, and is highly
       preventable. The Apfel score's value is that it lets you scale
       antiemetic prophylaxis to risk rather than treating everyone the same.
     </p>
@@ -59,7 +61,7 @@ const ApfelScoreNote = () => (
     <ul>
       <li><strong>Low risk (0–1):</strong> single agent (often dexamethasone at induction).</li>
       <li><strong>Moderate risk (2):</strong> dexamethasone 4–8 mg IV + ondansetron 4 mg IV at end of surgery.</li>
-      <li><strong>High risk (3–4):</strong> add a third agent (droperidol 0.625–1.25 mg IV or aprepitant 40 mg PO) and consider TIVA with propofol plus opioid-sparing analgesia (regional, paracetamol, NSAIDs).</li>
+      <li><strong>High risk (3–4):</strong> add a third agent (droperidol 0.625–1.25 mg IV or aprepitant 40 mg PO) and consider <Link to="/clinical/tiva">TIVA with propofol</Link> plus opioid-sparing analgesia (<Link to="/clinical/regional-anaesthesia">regional</Link>, paracetamol, <Link to="/pharmacology/nsaids-paracetamol">NSAIDs</Link>).</li>
     </ul>
 
     <h2>Beyond the score</h2>

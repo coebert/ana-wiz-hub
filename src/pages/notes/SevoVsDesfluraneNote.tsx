@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
 
 const SevoVsDesfluraneNote = () => (
@@ -28,9 +29,11 @@ const SevoVsDesfluraneNote = () => (
       },
     ]}
     related={[
-      { label: "Volatile anaesthetics — full topic", to: "/pharmacology/inhalational-anaesthetics" },
+      { label: "Volatile agents — full topic", to: "/pharmacology/volatile-agents" },
+      { label: "Vaporisers (Tec 5/6/7)", to: "/physics/vaporisers" },
       { label: "MAC for age formula", to: "/notes/mac-for-age-formula" },
-      { label: "Sustainable anaesthesia", to: "/perioperative/sustainability" },
+      { label: "TIVA — total intravenous anaesthesia", to: "/clinical/tiva" },
+      { label: "Pharmacokinetics", to: "/pharmacology/pharmacokinetics" },
     ]}
   >
     <h2>Pharmacokinetic head-to-head</h2>
@@ -50,10 +53,10 @@ const SevoVsDesfluraneNote = () => (
     <h2>Clinical differences that matter</h2>
     <ul>
       <li><strong>Induction:</strong> sevoflurane only.</li>
-      <li><strong>Emergence:</strong> desflurane faster, especially in obese or long cases.</li>
+      <li><strong>Emergence:</strong> desflurane faster, especially in obese or long cases — see <Link to="/notes/mac-for-age-formula">MAC for age</Link> for emergence in elderly patients.</li>
       <li><strong>Cardiovascular:</strong> both reduce SVR; desflurane causes sympathetic stimulation if rapidly increased above 1 MAC (transient hypertension, tachycardia).</li>
       <li><strong>Airway:</strong> desflurane is pungent — avoid in light planes or with LMAs unless deep.</li>
-      <li><strong>Vapouriser:</strong> desflurane needs a heated, pressurised TEC 6 because of its low boiling point (23.5°C).</li>
+      <li><strong>Vapouriser:</strong> desflurane needs a heated, pressurised <Link to="/physics/vaporisers">TEC 6</Link> because of its low boiling point (23.5°C).</li>
     </ul>
 
     <h2>Environmental footprint</h2>
@@ -63,7 +66,7 @@ const SevoVsDesfluraneNote = () => (
       ~7 kg, isoflurane ~22 kg. Coupled with the marginal clinical
       advantage, this is the basis for NHS England's deselection and the
       Royal College's recommendation to default to low-flow sevoflurane or
-      TIVA wherever possible.
+      <Link to="/clinical/tiva"> TIVA</Link> wherever possible.
     </p>
 
     <h2>When to still use desflurane</h2>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
 
 const LocalAnaestheticToxicityNote = () => (
@@ -59,11 +60,11 @@ const LocalAnaestheticToxicityNote = () => (
 
     <h2>Prevention</h2>
     <ul>
-      <li>Calculate maximum dose against lean body weight before drawing up.</li>
-      <li>Use ultrasound guidance and incremental injection (3–5 mL aliquots) with intermittent aspiration.</li>
+      <li>Calculate maximum dose against lean body weight before drawing up — the <Link to="/tools/max-local-anaesthetic-dose">maximum LA dose calculator</Link> handles agent, adrenaline status and weight.</li>
+      <li>Use ultrasound guidance and incremental injection (3–5 mL aliquots) with intermittent aspiration — covered in the <Link to="/clinical/regional-anaesthesia">regional anaesthesia topic</Link>.</li>
       <li>Test dose with adrenaline-containing solution if not contraindicated.</li>
       <li>Continuous verbal contact with the patient to detect early CNS symptoms.</li>
-      <li>Display the AAGBI LAST guideline on every block trolley alongside Intralipid 20%.</li>
+      <li>Display the AAGBI LAST guideline on every block trolley alongside Intralipid 20%. See <Link to="/pharmacology/local-anaesthetics">local anaesthetic pharmacology</Link> for agent-specific safety margins.</li>
     </ul>
   </NoteLayout>
 );

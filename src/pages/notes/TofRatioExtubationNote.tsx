@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
 
 const TofRatioExtubationNote = () => (
@@ -40,7 +41,7 @@ const TofRatioExtubationNote = () => (
       body's hypoxic ventilatory response is blunted by ~30%, and upper
       airway dilator tone is reduced enough to cause airway obstruction at
       end-expiration. Patients can talk, lift their head, and follow
-      commands while still being dangerously weak.
+      commands while still being dangerously weak — see <Link to="/physiology/neuromuscular">neuromuscular junction physiology</Link> for the receptor-occupancy reserve underlying this.
     </p>
 
     <h2>Why qualitative monitoring isn't enough</h2>
@@ -56,8 +57,8 @@ const TofRatioExtubationNote = () => (
     <h2>How to actually achieve TOF ≥ 0.9</h2>
     <ul>
       <li>Apply the monitor at the adductor pollicis before induction and obtain a control.</li>
-      <li>Titrate maintenance doses to TOF rather than fixed time intervals.</li>
-      <li>Match reversal agent and dose to depth of block — see table above.</li>
+      <li>Titrate maintenance doses to TOF rather than fixed time intervals (see <Link to="/pharmacology/muscle-relaxants">muscle relaxants</Link>).</li>
+      <li>Match reversal agent and dose to depth of block — full mechanism in <Link to="/notes/how-sugammadex-reverses-rocuronium">how sugammadex reverses rocuronium</Link>.</li>
       <li>Wait long enough for the chosen reversal agent: neostigmine ≥ 10 min, sugammadex 2–3 min.</li>
       <li>Confirm a numerical TOF ratio ≥ 0.9 before extubation.</li>
     </ul>

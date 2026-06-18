@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
 
 const MaplesonBreathingSystemsNote = () => (
@@ -29,8 +30,9 @@ const MaplesonBreathingSystemsNote = () => (
     ]}
     related={[
       { label: "Bain circuit fresh gas flow", to: "/notes/bain-circuit-fresh-gas-flow" },
-      { label: "Anaesthetic machine — full topic", to: "/physics/anaesthetic-machine" },
-      { label: "Capnography interpretation", to: "/clinical/capnography" },
+      { label: "Breathing circuits — full topic", to: "/physics/breathing-circuits" },
+      { label: "Anaesthetic equipment & monitoring", to: "/physics/equipment-monitoring" },
+      { label: "Capnography", to: "/physics/capnography" },
     ]}
   >
     <h2>The classification at a glance</h2>
@@ -55,8 +57,8 @@ const MaplesonBreathingSystemsNote = () => (
         bag-valve-mask analogue used for transfer; both need ~2× MV.
       </li>
       <li>
-        <strong>D (Bain):</strong> FGI at the patient end, valve at the
-        machine end. Best for IPPV (FGF ≈ 70 mL/kg/min). For spontaneous
+        <strong>D (<Link to="/notes/bain-circuit-fresh-gas-flow">Bain</Link>):</strong> FGI at the patient end, valve at
+        the machine end. Best for IPPV (FGF ≈ 70 mL/kg/min). For spontaneous
         ventilation needs 1.5–2× MV.
       </li>
       <li>
@@ -73,7 +75,7 @@ const MaplesonBreathingSystemsNote = () => (
     <h2>Why Mapleson matters in 2026</h2>
     <p>
       Most modern UK practice uses circle systems with CO₂ absorbers, which
-      decouple fresh gas flow from rebreathing. But Maplesons remain in use
+      decouple fresh gas flow from rebreathing — covered in the wider <Link to="/physics/breathing-circuits">breathing circuits topic</Link>. But Maplesons remain in use
       for transfer (C), paediatric anaesthesia (F), and head-and-neck
       surgery where a co-axial Bain (D) keeps tubing out of the surgical
       field. The classification is also a perennial favourite of the FRCA

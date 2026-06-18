@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
 
 const DasDifficultAirwayNote = () => (
@@ -30,7 +31,8 @@ const DasDifficultAirwayNote = () => (
     related={[
       { label: "Airway management — full topic", to: "/clinical/airway-management" },
       { label: "RSI drugs and doses", to: "/notes/rapid-sequence-induction-drug-doses" },
-      { label: "Capnography interpretation", to: "/clinical/capnography" },
+      { label: "Capnography", to: "/physics/capnography" },
+      { label: "Muscle relaxants", to: "/pharmacology/muscle-relaxants" },
     ]}
   >
     <h2>The four plans</h2>
@@ -64,8 +66,8 @@ const DasDifficultAirwayNote = () => (
     <h3>Plan D — emergency front-of-neck access</h3>
     <p>
       Scalpel cricothyroidotomy using the scalpel–bougie–tube technique.
-      Continue 100% O₂, confirm tube position with capnography, hand over
-      to a definitive surgical airway when stable.
+      Continue 100% O₂, confirm tube position with <Link to="/physics/capnography">capnography</Link>, hand over
+      to a definitive surgical airway when stable. The full <Link to="/clinical/airway-management">airway management topic</Link> walks through pre-eFONA team preparation and post-event human-factors debrief.
     </p>
 
     <h2>Human-factors anchors</h2>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
 
 const BainCircuitNote = () => (
@@ -29,7 +30,9 @@ const BainCircuitNote = () => (
     ]}
     related={[
       { label: "Mapleson breathing systems explained", to: "/notes/mapleson-breathing-systems-explained" },
-      { label: "Anaesthetic machine — full topic", to: "/physics/anaesthetic-machine" },
+      { label: "Anaesthetic equipment & monitoring", to: "/physics/equipment-monitoring" },
+      { label: "Breathing circuits — full topic", to: "/physics/breathing-circuits" },
+      { label: "Capnography", to: "/physics/capnography" },
     ]}
   >
     <h2>Anatomy of the circuit</h2>
@@ -56,9 +59,9 @@ const BainCircuitNote = () => (
     <h2>Safety checks and pitfalls</h2>
     <ul>
       <li><strong>Pethick test</strong> before every use to confirm inner-tube patency.</li>
-      <li><strong>Capnography</strong> from the start — rising baseline CO₂ suggests inadequate FGF or inner-tube disconnection.</li>
+      <li><strong><Link to="/physics/capnography">Capnography</Link></strong> from the start — rising baseline CO₂ suggests inadequate FGF or inner-tube disconnection.</li>
       <li><strong>Avoid kinks</strong> in the inner tube during surgical-field draping.</li>
-      <li><strong>Beware of barotrauma</strong> if the outer tube is occluded — the inner tube can deliver high pressure directly.</li>
+      <li><strong>Beware of barotrauma</strong> if the outer tube is occluded — the inner tube can deliver high pressure directly. See the wider <Link to="/physics/breathing-circuits">breathing circuits topic</Link> for circle-system alternatives.</li>
     </ul>
   </NoteLayout>
 );

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
 
 const RotemTegInterpretationNote = () => (
@@ -29,8 +30,10 @@ const RotemTegInterpretationNote = () => (
     ]}
     related={[
       { label: "Haematological co-existing disease", to: "/perioperative/haematological-disease" },
-      { label: "Major haemorrhage protocol", to: "/clinical/major-haemorrhage" },
-      { label: "Tranexamic acid", to: "/pharmacology/tranexamic-acid" },
+      { label: "Transfusion & coagulation in ICU", to: "/intensive-care/transfusion-coagulation" },
+      { label: "Haematology & immunity", to: "/physiology/haematology-immunity" },
+      { label: "Anticoagulants", to: "/pharmacology/anticoagulants" },
+      { label: "Trauma & emergency anaesthesia", to: "/clinical/trauma-emergency" },
     ]}
   >
     <h2>What the trace shows</h2>
@@ -56,12 +59,12 @@ const RotemTegInterpretationNote = () => (
 
     <h2>Worked algorithm — adult trauma haemorrhage</h2>
     <ol>
-      <li>Activate major haemorrhage protocol, send ROTEM, give 1 g TXA empirically within 3 h of injury (CRASH-2).</li>
+      <li>Activate the local major haemorrhage protocol (see <Link to="/clinical/trauma-emergency">trauma & emergency anaesthesia</Link>), send ROTEM, give 1 g TXA empirically within 3 h of injury (CRASH-2).</li>
       <li>FIBTEM A5 &lt; 9 mm → fibrinogen concentrate 3–4 g (or cryoprecipitate 2 pools).</li>
       <li>EXTEM A5 &lt; 35 mm with FIBTEM ≥ 9 mm → platelets 1 adult therapeutic dose.</li>
-      <li>EXTEM CT &gt; 80 s → FFP 15 mL/kg (or PCC if factor-specific deficit).</li>
+      <li>EXTEM CT &gt; 80 s → FFP 15 mL/kg (or PCC if factor-specific deficit — check pre-injury <Link to="/pharmacology/anticoagulants">anticoagulant</Link> exposure).</li>
       <li>EXTEM ML &gt; 15% → additional TXA 1 g.</li>
-      <li>Repeat ROTEM after each intervention.</li>
+      <li>Repeat ROTEM after each intervention. The <Link to="/intensive-care/transfusion-coagulation">ICU transfusion & coagulation topic</Link> covers post-resuscitation monitoring.</li>
     </ol>
 
     <h2>Why the exam likes it</h2>
