@@ -56,8 +56,8 @@ const RapidSequenceInductionNote = () => (
         <tr><td>Propofol</td><td>1.5–2.5 mg/kg</td><td>Marked hypotension; halve in elderly/shock.</td></tr>
         <tr><td>Ketamine</td><td>1–2 mg/kg</td><td>Preserves BP; agent of choice in shock.</td></tr>
         <tr><td>Etomidate</td><td>0.3 mg/kg</td><td>Adrenal suppression — avoid in sepsis.</td></tr>
-        <tr><td>Suxamethonium</td><td>1.0–1.5 mg/kg</td><td>Onset 45–60 s; 1.5 mg/kg in obstetrics.</td></tr>
-        <tr><td>Rocuronium</td><td>1.0–1.2 mg/kg</td><td>Onset 60 s; reverse with sugammadex 16 mg/kg.</td></tr>
+        <tr><td>Suxamethonium</td><td>1.0–1.5 mg/kg</td><td>Onset 45–60 s; 1.5 mg/kg in <Link to="/clinical/obstetric-anaesthesia">obstetrics</Link>.</td></tr>
+        <tr><td>Rocuronium</td><td>1.0–1.2 mg/kg</td><td>Onset 60 s; reverse with <Link to="/notes/how-sugammadex-reverses-rocuronium">sugammadex 16 mg/kg</Link>.</td></tr>
       </tbody>
     </table>
 
