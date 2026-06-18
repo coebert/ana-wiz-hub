@@ -263,6 +263,14 @@ export const NoteLayout = ({
                       <Link
                         key={t.to}
                         to={t.to}
+                        onClick={() =>
+                          logJumpClick({
+                            noteSlug: slug,
+                            targetPath: t.to,
+                            targetSection: t.section,
+                            targetLabel: meta?.label ?? t.section,
+                          })
+                        }
                         className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-colors ${
                           meta?.tone ?? "border-border bg-card hover:bg-muted/40"
                         }`}
