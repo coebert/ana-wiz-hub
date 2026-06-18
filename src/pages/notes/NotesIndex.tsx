@@ -188,15 +188,26 @@ const NotesIndex = () => (
               to={`/notes/${n.slug}`}
               className="block rounded-lg border border-border bg-card p-4 hover:bg-muted/40 transition-colors"
             >
-              <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1">
-                {n.tag}
-              </p>
+              <div className="flex flex-wrap items-center gap-1.5 mb-1">
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
+                  {n.tag}
+                </span>
+                {n.examTags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded-full border border-pharmacology/30 bg-pharmacology/5 text-pharmacology"
+                  >
+                    {EXAM_LABEL[t]}
+                  </span>
+                ))}
+              </div>
               <h2 className="text-lg font-serif font-bold text-foreground">
                 {n.title}
               </h2>
               <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
                 {n.description}
               </p>
+
             </Link>
           </li>
         ))}
