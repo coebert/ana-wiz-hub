@@ -35,7 +35,7 @@ const P50FetalHaemoglobinNote = () => (
   >
     <h2>Defining P50</h2>
     <p>
-      The oxygen-haemoglobin dissociation curve plots saturation against
+      The <Link to="/physiology/oxygen-haemoglobin">oxygen-haemoglobin dissociation curve</Link> plots saturation against
       partial pressure of oxygen. Its sigmoid shape reflects cooperative
       binding — each O₂ that binds shifts haemoglobin toward its high-affinity
       relaxed (R) state. P50 is the partial pressure at which half the binding
