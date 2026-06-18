@@ -1,8 +1,22 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Atom, HeartPulse, FlaskConical, Stethoscope, Activity, ClipboardList, ArrowRight } from "lucide-react";
 import { Header } from "@/components/Header";
+
+const SECTION_META: Record<
+  string,
+  { label: string; icon: typeof Atom; tone: string }
+> = {
+  physics: { label: "Physics", icon: Atom, tone: "border-physics/40 bg-physics/5 text-physics hover:bg-physics/10" },
+  physiology: { label: "Physiology", icon: HeartPulse, tone: "border-physiology/40 bg-physiology/5 text-physiology hover:bg-physiology/10" },
+  pharmacology: { label: "Pharmacology", icon: FlaskConical, tone: "border-pharmacology/40 bg-pharmacology/5 text-pharmacology hover:bg-pharmacology/10" },
+  clinical: { label: "Clinical", icon: Stethoscope, tone: "border-clinical/40 bg-clinical/5 text-clinical hover:bg-clinical/10" },
+  "intensive-care": { label: "Intensive Care", icon: Activity, tone: "border-icu/40 bg-icu/5 text-icu hover:bg-icu/10" },
+  perioperative: { label: "Perioperative", icon: ClipboardList, tone: "border-perioperative/40 bg-perioperative/5 text-perioperative hover:bg-perioperative/10" },
+};
+
+const CANONICAL_SECTIONS = new Set(["physics", "physiology", "pharmacology", "clinical", "intensive-care", "perioperative"]);
 
 export interface NoteFaq {
   q: string;
