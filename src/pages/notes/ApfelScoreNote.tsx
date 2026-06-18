@@ -38,8 +38,8 @@ const ApfelScoreNote = () => (
     <h2>Why predict PONV at all?</h2>
     <p>
       PONV is the single biggest patient-rated complaint after anaesthesia and
-      a leading cause of unplanned admission after day surgery. It prolongs
-      recovery, predisposes to wound dehiscence and aspiration, and is highly
+      a leading cause of unplanned admission after <Link to="/clinical/day-surgery">day surgery</Link>.
+      It prolongs recovery, predisposes to wound dehiscence and aspiration, and is highly
       preventable. The Apfel score's value is that it lets you scale
       antiemetic prophylaxis to risk rather than treating everyone the same.
     </p>
