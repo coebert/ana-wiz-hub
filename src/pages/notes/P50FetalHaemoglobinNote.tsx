@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
 
 const P50FetalHaemoglobinNote = () => (
@@ -34,7 +35,7 @@ const P50FetalHaemoglobinNote = () => (
   >
     <h2>Defining P50</h2>
     <p>
-      The oxygen-haemoglobin dissociation curve plots saturation against
+      The <Link to="/physiology/oxygen-haemoglobin">oxygen-haemoglobin dissociation curve</Link> plots saturation against
       partial pressure of oxygen. Its sigmoid shape reflects cooperative
       binding — each O₂ that binds shifts haemoglobin toward its high-affinity
       relaxed (R) state. P50 is the partial pressure at which half the binding
@@ -58,8 +59,9 @@ const P50FetalHaemoglobinNote = () => (
 
     <h2>The placental gradient</h2>
     <p>
-      Maternal blood in the intervillous space has a PO₂ of only 30–40 mmHg —
-      well below the PO₂ that fully saturates adult haemoglobin. The fetus
+      Maternal blood (see <Link to="/physiology/maternal-physiology">maternal physiology of pregnancy</Link>) in the intervillous space has a PO₂ of only 30–40 mmHg —
+      well below the PO₂ that fully saturates adult haemoglobin. The fetus,
+      whose unique <Link to="/physiology/foetal-circulation">foetal circulation</Link> shunts oxygenated umbilical-vein blood preferentially to the brain,
       relies on three mechanisms to extract enough oxygen at this low driving
       pressure:
     </p>

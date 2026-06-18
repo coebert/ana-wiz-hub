@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
 
 const SugammadexReversesRocuroniumNote = () => (
@@ -31,6 +32,7 @@ const SugammadexReversesRocuroniumNote = () => (
       { label: "Rocuronium — drug page", to: "/pharmacology/rocuronium" },
       { label: "Suxamethonium vs rocuronium for RSI", to: "/pharmacology/suxamethonium-vs-rocuronium" },
       { label: "Neuromuscular junction physiology", to: "/physiology/neuromuscular" },
+      { label: "TOF ratio ≥ 0.9 before extubation", to: "/notes/tof-ratio-before-extubation" },
     ]}
   >
     <h2>The 1:1 inclusion chemistry</h2>
@@ -75,10 +77,10 @@ const SugammadexReversesRocuroniumNote = () => (
       </li>
     </ul>
     <p>
-      Always confirm reversal objectively with a TOF ratio ≥ 0.9 before
+      Always confirm reversal objectively with a <Link to="/notes/tof-ratio-before-extubation">TOF ratio ≥ 0.9</Link> before
       extubation. Clinical signs such as head-lift or sustained handgrip are
       insensitive to the residual block that drives postoperative pulmonary
-      complications.
+      complications — the underlying receptor reserve is explained in <Link to="/physiology/neuromuscular">neuromuscular junction physiology</Link>.
     </p>
 
     <h2>Onset, offset and re-paralysis</h2>
@@ -87,8 +89,8 @@ const SugammadexReversesRocuroniumNote = () => (
       90–120 seconds to TOF ratio ≥ 0.9. The complex is renally cleared, so
       caution is warranted in severe renal impairment (eGFR &lt; 30) where
       manufacturer data are limited. If re-paralysis is needed within 24 hours,
-      use a non-aminosteroid (cisatracurium or atracurium) or a much larger
-      rocuronium dose (1.2 mg/kg).
+      use a non-aminosteroid (cisatracurium or atracurium — see the <Link to="/pharmacology/muscle-relaxants">muscle relaxants topic</Link>) or a much larger
+      <Link to="/pharmacology/rocuronium"> rocuronium</Link> dose (1.2 mg/kg).
     </p>
 
     <h2>Safety profile</h2>

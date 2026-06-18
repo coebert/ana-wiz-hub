@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
 
 const ContextSensitiveHalfTimeNote = () => (
@@ -30,13 +31,14 @@ const ContextSensitiveHalfTimeNote = () => (
       { label: "Pharmacokinetics — full topic", to: "/pharmacology/pharmacokinetics" },
       { label: "Intravenous induction agents", to: "/pharmacology/iv-anaesthetics" },
       { label: "Opioids", to: "/pharmacology/opioids" },
+      { label: "TIVA — total intravenous anaesthesia", to: "/clinical/tiva" },
     ]}
   >
     <h2>Why elimination half-life is the wrong number</h2>
     <p>
       Elimination half-life (t½β) assumes a single, well-mixed compartment.
       Anaesthetic drugs do not behave that way: lipid-soluble agents move
-      rapidly between plasma and a large peripheral tissue reservoir. After a
+      rapidly between plasma and a large peripheral tissue reservoir — the multi-compartment kinetics covered in the <Link to="/pharmacology/pharmacokinetics">pharmacokinetics topic</Link>. After a
       single bolus, plasma concentration falls fast as drug distributes out;
       after a long infusion, that same reservoir refills plasma when the
       infusion stops, slowing the fall to a crawl. <strong>Context-sensitive
@@ -76,8 +78,8 @@ const ContextSensitiveHalfTimeNote = () => (
 
     <h2>Clinical pairing</h2>
     <p>
-      Pairing propofol with remifentanil gives a predictable, hypnotic-limited
-      emergence. Two practical consequences follow:
+      Pairing <Link to="/pharmacology/iv-anaesthetics">propofol</Link> with a flat-CSHT <Link to="/pharmacology/opioids">opioid</Link> like remifentanil gives a predictable, hypnotic-limited
+      emergence in <Link to="/clinical/tiva">TIVA</Link>. Two practical consequences follow:
     </p>
     <ul>
       <li>
