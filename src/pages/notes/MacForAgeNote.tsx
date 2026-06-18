@@ -66,8 +66,8 @@ const MacForAgeNote = () => (
       roughly 1.3 age-adjusted MAC. This drives intra-operative hypotension,
       contributes to postoperative delirium, and prolongs emergence — all
       tracked outcomes in the SNAP-2 and ENGAGES trials. The ASA and ESAIC
-      now recommend titrating to age-adjusted MAC (0.7–1.3) with depth
-      monitoring in patients ≥ 65.
+      now recommend titrating to age-adjusted MAC (0.7–1.3) with <Link to="/physics/depth-of-anaesthesia">depth
+      monitoring</Link> in patients ≥ 65. See the <Link to="/clinical/elderly-anaesthesia">elderly anaesthesia topic</Link> for the wider geriatric perioperative bundle.
     </p>
 
     <h2>Practical numbers to remember</h2>
