@@ -41,7 +41,7 @@ const TofRatioExtubationNote = () => (
       body's hypoxic ventilatory response is blunted by ~30%, and upper
       airway dilator tone is reduced enough to cause airway obstruction at
       end-expiration. Patients can talk, lift their head, and follow
-      commands while still being dangerously weak.
+      commands while still being dangerously weak — see <Link to="/physiology/neuromuscular">neuromuscular junction physiology</Link> for the receptor-occupancy reserve underlying this.
     </p>
 
     <h2>Why qualitative monitoring isn't enough</h2>
