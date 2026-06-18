@@ -30,8 +30,9 @@ const MaplesonBreathingSystemsNote = () => (
     ]}
     related={[
       { label: "Bain circuit fresh gas flow", to: "/notes/bain-circuit-fresh-gas-flow" },
-      { label: "Anaesthetic machine — full topic", to: "/physics/anaesthetic-machine" },
-      { label: "Capnography interpretation", to: "/clinical/capnography" },
+      { label: "Breathing circuits — full topic", to: "/physics/breathing-circuits" },
+      { label: "Anaesthetic equipment & monitoring", to: "/physics/equipment-monitoring" },
+      { label: "Capnography", to: "/physics/capnography" },
     ]}
   >
     <h2>The classification at a glance</h2>
