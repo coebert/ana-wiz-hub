@@ -31,6 +31,7 @@ const ContextSensitiveHalfTimeNote = () => (
       { label: "Pharmacokinetics — full topic", to: "/pharmacology/pharmacokinetics" },
       { label: "Intravenous induction agents", to: "/pharmacology/iv-anaesthetics" },
       { label: "Opioids", to: "/pharmacology/opioids" },
+      { label: "TIVA — total intravenous anaesthesia", to: "/clinical/tiva" },
     ]}
   >
     <h2>Why elimination half-life is the wrong number</h2>
