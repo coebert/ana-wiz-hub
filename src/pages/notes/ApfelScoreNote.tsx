@@ -61,7 +61,7 @@ const ApfelScoreNote = () => (
     <ul>
       <li><strong>Low risk (0–1):</strong> single agent (often dexamethasone at induction).</li>
       <li><strong>Moderate risk (2):</strong> dexamethasone 4–8 mg IV + ondansetron 4 mg IV at end of surgery.</li>
-      <li><strong>High risk (3–4):</strong> add a third agent (droperidol 0.625–1.25 mg IV or aprepitant 40 mg PO) and consider TIVA with propofol plus opioid-sparing analgesia (regional, paracetamol, NSAIDs).</li>
+      <li><strong>High risk (3–4):</strong> add a third agent (droperidol 0.625–1.25 mg IV or aprepitant 40 mg PO) and consider <Link to="/clinical/tiva">TIVA with propofol</Link> plus opioid-sparing analgesia (<Link to="/clinical/regional-anaesthesia">regional</Link>, paracetamol, <Link to="/pharmacology/nsaids-paracetamol">NSAIDs</Link>).</li>
     </ul>
 
     <h2>Beyond the score</h2>
