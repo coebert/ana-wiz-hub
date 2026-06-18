@@ -66,7 +66,7 @@ const SevoVsDesfluraneNote = () => (
       ~7 kg, isoflurane ~22 kg. Coupled with the marginal clinical
       advantage, this is the basis for NHS England's deselection and the
       Royal College's recommendation to default to low-flow sevoflurane or
-      TIVA wherever possible.
+      <Link to="/clinical/tiva"> TIVA</Link> wherever possible.
     </p>
 
     <h2>When to still use desflurane</h2>
