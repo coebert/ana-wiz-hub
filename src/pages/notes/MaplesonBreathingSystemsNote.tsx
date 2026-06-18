@@ -57,8 +57,8 @@ const MaplesonBreathingSystemsNote = () => (
         bag-valve-mask analogue used for transfer; both need ~2× MV.
       </li>
       <li>
-        <strong>D (Bain):</strong> FGI at the patient end, valve at the
-        machine end. Best for IPPV (FGF ≈ 70 mL/kg/min). For spontaneous
+        <strong>D (<Link to="/notes/bain-circuit-fresh-gas-flow">Bain</Link>):</strong> FGI at the patient end, valve at
+        the machine end. Best for IPPV (FGF ≈ 70 mL/kg/min). For spontaneous
         ventilation needs 1.5–2× MV.
       </li>
       <li>
