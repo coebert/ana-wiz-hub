@@ -53,10 +53,10 @@ const SevoVsDesfluraneNote = () => (
     <h2>Clinical differences that matter</h2>
     <ul>
       <li><strong>Induction:</strong> sevoflurane only.</li>
-      <li><strong>Emergence:</strong> desflurane faster, especially in obese or long cases.</li>
+      <li><strong>Emergence:</strong> desflurane faster, especially in obese or long cases — see <Link to="/notes/mac-for-age-formula">MAC for age</Link> for emergence in elderly patients.</li>
       <li><strong>Cardiovascular:</strong> both reduce SVR; desflurane causes sympathetic stimulation if rapidly increased above 1 MAC (transient hypertension, tachycardia).</li>
       <li><strong>Airway:</strong> desflurane is pungent — avoid in light planes or with LMAs unless deep.</li>
-      <li><strong>Vapouriser:</strong> desflurane needs a heated, pressurised TEC 6 because of its low boiling point (23.5°C).</li>
+      <li><strong>Vapouriser:</strong> desflurane needs a heated, pressurised <Link to="/physics/vaporisers">TEC 6</Link> because of its low boiling point (23.5°C).</li>
     </ul>
 
     <h2>Environmental footprint</h2>
