@@ -32,6 +32,7 @@ const SugammadexReversesRocuroniumNote = () => (
       { label: "Rocuronium — drug page", to: "/pharmacology/rocuronium" },
       { label: "Suxamethonium vs rocuronium for RSI", to: "/pharmacology/suxamethonium-vs-rocuronium" },
       { label: "Neuromuscular junction physiology", to: "/physiology/neuromuscular" },
+      { label: "TOF ratio ≥ 0.9 before extubation", to: "/notes/tof-ratio-before-extubation" },
     ]}
   >
     <h2>The 1:1 inclusion chemistry</h2>
