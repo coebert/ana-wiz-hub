@@ -52,6 +52,17 @@ const NotesIndex = lazy(() => import("./pages/notes/NotesIndex"));
 const SugammadexReversesRocuroniumNote = lazy(() => import("./pages/notes/SugammadexReversesRocuroniumNote"));
 const ContextSensitiveHalfTimeNote = lazy(() => import("./pages/notes/ContextSensitiveHalfTimeNote"));
 const P50FetalHaemoglobinNote = lazy(() => import("./pages/notes/P50FetalHaemoglobinNote"));
+const MacForAgeNote = lazy(() => import("./pages/notes/MacForAgeNote"));
+const ApfelScoreNote = lazy(() => import("./pages/notes/ApfelScoreNote"));
+const MaplesonBreathingSystemsNote = lazy(() => import("./pages/notes/MaplesonBreathingSystemsNote"));
+const DasDifficultAirwayNote = lazy(() => import("./pages/notes/DasDifficultAirwayNote"));
+const LocalAnaestheticToxicityNote = lazy(() => import("./pages/notes/LocalAnaestheticToxicityNote"));
+const TofRatioExtubationNote = lazy(() => import("./pages/notes/TofRatioExtubationNote"));
+const SevoVsDesfluraneNote = lazy(() => import("./pages/notes/SevoVsDesfluraneNote"));
+const BainCircuitNote = lazy(() => import("./pages/notes/BainCircuitNote"));
+const RotemTegInterpretationNote = lazy(() => import("./pages/notes/RotemTegInterpretationNote"));
+const RapidSequenceInductionNote = lazy(() => import("./pages/notes/RapidSequenceInductionNote"));
+
 
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
@@ -272,6 +283,17 @@ const App = () => (
           <Route path="/notes/how-sugammadex-reverses-rocuronium" element={<SugammadexReversesRocuroniumNote />} />
           <Route path="/notes/context-sensitive-half-time-propofol-vs-remifentanil" element={<ContextSensitiveHalfTimeNote />} />
           <Route path="/notes/p50-fetal-haemoglobin" element={<P50FetalHaemoglobinNote />} />
+          <Route path="/notes/mac-for-age-formula" element={<MacForAgeNote />} />
+          <Route path="/notes/apfel-score-ponv-risk" element={<ApfelScoreNote />} />
+          <Route path="/notes/mapleson-breathing-systems-explained" element={<MaplesonBreathingSystemsNote />} />
+          <Route path="/notes/das-difficult-airway-algorithm" element={<DasDifficultAirwayNote />} />
+          <Route path="/notes/local-anaesthetic-systemic-toxicity-management" element={<LocalAnaestheticToxicityNote />} />
+          <Route path="/notes/tof-ratio-before-extubation" element={<TofRatioExtubationNote />} />
+          <Route path="/notes/sevoflurane-vs-desflurane-recovery" element={<SevoVsDesfluraneNote />} />
+          <Route path="/notes/bain-circuit-fresh-gas-flow" element={<BainCircuitNote />} />
+          <Route path="/notes/rotem-teg-interpretation" element={<RotemTegInterpretationNote />} />
+          <Route path="/notes/rapid-sequence-induction-drug-doses" element={<RapidSequenceInductionNote />} />
+
           <Route path="/physics" element={<PhysicsSection />} />
           <Route path="/physiology" element={<PhysiologySection />} />
           <Route path="/pharmacology" element={<PharmacologySection />} />
