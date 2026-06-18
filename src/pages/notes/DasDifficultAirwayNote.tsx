@@ -31,7 +31,8 @@ const DasDifficultAirwayNote = () => (
     related={[
       { label: "Airway management — full topic", to: "/clinical/airway-management" },
       { label: "RSI drugs and doses", to: "/notes/rapid-sequence-induction-drug-doses" },
-      { label: "Capnography interpretation", to: "/clinical/capnography" },
+      { label: "Capnography", to: "/physics/capnography" },
+      { label: "Muscle relaxants", to: "/pharmacology/muscle-relaxants" },
     ]}
   >
     <h2>The four plans</h2>
