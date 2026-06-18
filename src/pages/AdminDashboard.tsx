@@ -1855,6 +1855,9 @@ const AdminDashboard = () => {
             aria-labelledby="admin-tab-seo"
           >
             <SeoAnalyticsPanel />
+            <div className="mt-6">
+              <JumpClicksPanel />
+            </div>
           </section>
         )}
 
