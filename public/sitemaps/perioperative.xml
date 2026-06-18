@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/perioperative/cardiovascular-disease</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -27,6 +27,12 @@
   <url>
     <loc>https://anaesthesiacore.app/perioperative/neurological-disease</loc>
     <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/perioperative/haematological-disease</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
