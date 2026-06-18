@@ -30,7 +30,9 @@ const BainCircuitNote = () => (
     ]}
     related={[
       { label: "Mapleson breathing systems explained", to: "/notes/mapleson-breathing-systems-explained" },
-      { label: "Anaesthetic machine — full topic", to: "/physics/anaesthetic-machine" },
+      { label: "Anaesthetic equipment & monitoring", to: "/physics/equipment-monitoring" },
+      { label: "Breathing circuits — full topic", to: "/physics/breathing-circuits" },
+      { label: "Capnography", to: "/physics/capnography" },
     ]}
   >
     <h2>Anatomy of the circuit</h2>
