@@ -202,6 +202,56 @@ export const NoteLayout = ({
             </p>
           </header>
 
+          {(() => {
+            const jumpTopics = (related ?? [])
+              .map((r) => {
+                const match = r.to.match(/^\/([^/]+)\/[^/]+/);
+                if (!match) return null;
+                const section = match[1];
+                if (!CANONICAL_SECTIONS.has(section)) return null;
+                return { ...r, section };
+              })
+              .filter((x): x is NoteRelated & { section: string } => x !== null);
+
+            if (jumpTopics.length === 0) return null;
+
+            return (
+              <section aria-labelledby="note-jump-to" className="not-prose">
+                <h2
+                  id="note-jump-to"
+                  className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-2"
+                >
+                  Jump to related topic
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                  {jumpTopics.map((t) => {
+                    const meta = SECTION_META[t.section];
+                    const Icon = meta?.icon ?? ArrowRight;
+                    return (
+                      <Link
+                        key={t.to}
+                        to={t.to}
+                        className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-colors ${
+                          meta?.tone ?? "border-border bg-card hover:bg-muted/40"
+                        }`}
+                      >
+                        <Icon className="h-4 w-4 shrink-0" aria-hidden />
+                        <div className="min-w-0 flex-1">
+                          <div className="text-[10px] uppercase tracking-wide font-semibold opacity-70">
+                            {meta?.label ?? t.section}
+                          </div>
+                          <div className="text-sm font-medium text-foreground truncate">
+                            {t.label}
+                          </div>
+                        </div>
+                        <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
+                      </Link>
+                    );
+                  })}
+                </div>
+              </section>
+            );
+          })()}
 
           <div className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-serif prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-8 prose-h3:text-lg prose-h3:mt-6 prose-p:leading-relaxed prose-a:text-pharmacology hover:prose-a:underline">
             {children}
