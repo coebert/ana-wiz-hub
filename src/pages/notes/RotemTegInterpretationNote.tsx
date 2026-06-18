@@ -30,8 +30,10 @@ const RotemTegInterpretationNote = () => (
     ]}
     related={[
       { label: "Haematological co-existing disease", to: "/perioperative/haematological-disease" },
-      { label: "Major haemorrhage protocol", to: "/clinical/major-haemorrhage" },
-      { label: "Tranexamic acid", to: "/pharmacology/tranexamic-acid" },
+      { label: "Transfusion & coagulation in ICU", to: "/intensive-care/transfusion-coagulation" },
+      { label: "Haematology & immunity", to: "/physiology/haematology-immunity" },
+      { label: "Anticoagulants", to: "/pharmacology/anticoagulants" },
+      { label: "Trauma & emergency anaesthesia", to: "/clinical/trauma-emergency" },
     ]}
   >
     <h2>What the trace shows</h2>
