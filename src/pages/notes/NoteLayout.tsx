@@ -62,10 +62,13 @@ export const NoteLayout = ({
   datePublished,
   dateModified,
   lede,
+  examTags,
+  curriculumCodes,
   children,
   faqs,
   related,
 }: NoteLayoutProps) => {
+
   const url = `https://anaesthesiacore.app/notes/${slug}`;
   const articleJsonLd = {
     "@context": "https://schema.org",
