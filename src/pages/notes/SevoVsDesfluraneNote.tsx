@@ -29,9 +29,11 @@ const SevoVsDesfluraneNote = () => (
       },
     ]}
     related={[
-      { label: "Volatile anaesthetics — full topic", to: "/pharmacology/inhalational-anaesthetics" },
+      { label: "Volatile agents — full topic", to: "/pharmacology/volatile-agents" },
+      { label: "Vaporisers (Tec 5/6/7)", to: "/physics/vaporisers" },
       { label: "MAC for age formula", to: "/notes/mac-for-age-formula" },
-      { label: "Sustainable anaesthesia", to: "/perioperative/sustainability" },
+      { label: "TIVA — total intravenous anaesthesia", to: "/clinical/tiva" },
+      { label: "Pharmacokinetics", to: "/pharmacology/pharmacokinetics" },
     ]}
   >
     <h2>Pharmacokinetic head-to-head</h2>
