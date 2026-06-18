@@ -38,7 +38,7 @@ const ContextSensitiveHalfTimeNote = () => (
     <p>
       Elimination half-life (t½β) assumes a single, well-mixed compartment.
       Anaesthetic drugs do not behave that way: lipid-soluble agents move
-      rapidly between plasma and a large peripheral tissue reservoir. After a
+      rapidly between plasma and a large peripheral tissue reservoir — the multi-compartment kinetics covered in the <Link to="/pharmacology/pharmacokinetics">pharmacokinetics topic</Link>. After a
       single bolus, plasma concentration falls fast as drug distributes out;
       after a long infusion, that same reservoir refills plasma when the
       infusion stops, slowing the fall to a crawl. <strong>Context-sensitive
