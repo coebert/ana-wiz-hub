@@ -40,9 +40,9 @@ const RapidSequenceInductionNote = () => (
       <li><strong>Plan and prepare</strong> — assess airway, suction on, tilt available, drugs drawn up, monitoring attached, second IV access if possible, end-tidal CO₂ ready.</li>
       <li><strong>Pre-oxygenate</strong> — 3 minutes of tidal-volume breathing or 8 vital-capacity breaths on 100% O₂ with a tight-fitting mask. Aim FetO₂ &gt; 0.85. Consider apnoeic oxygenation with nasal O₂ at 15 L/min.</li>
       <li><strong>Position</strong> — ear-to-sternal-notch (ramped if obese), 20–30° head-up to reduce reflux.</li>
-      <li><strong>Induction agent + neuromuscular blocker</strong> in immediate succession.</li>
+      <li><strong>Induction agent + <Link to="/pharmacology/muscle-relaxants">neuromuscular blocker</Link></strong> in immediate succession.</li>
       <li><strong>Apply cricoid pressure</strong> — 10 N awake, 30 N once asleep (or omit if departmental policy).</li>
-      <li><strong>Intubate without bag-mask ventilation</strong>, confirm with capnography, inflate cuff, secure.</li>
+      <li><strong>Intubate without bag-mask ventilation</strong>, confirm with <Link to="/physics/capnography">capnography</Link>, inflate cuff, secure. If intubation fails progress to the <Link to="/notes/das-difficult-airway-algorithm">DAS difficult airway algorithm</Link>.</li>
       <li><strong>Release cricoid</strong> after tube confirmed and cuff up.</li>
     </ol>
 
