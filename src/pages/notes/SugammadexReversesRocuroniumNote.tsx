@@ -88,8 +88,8 @@ const SugammadexReversesRocuroniumNote = () => (
       90–120 seconds to TOF ratio ≥ 0.9. The complex is renally cleared, so
       caution is warranted in severe renal impairment (eGFR &lt; 30) where
       manufacturer data are limited. If re-paralysis is needed within 24 hours,
-      use a non-aminosteroid (cisatracurium or atracurium) or a much larger
-      rocuronium dose (1.2 mg/kg).
+      use a non-aminosteroid (cisatracurium or atracurium — see the <Link to="/pharmacology/muscle-relaxants">muscle relaxants topic</Link>) or a much larger
+      <Link to="/pharmacology/rocuronium"> rocuronium</Link> dose (1.2 mg/kg).
     </p>
 
     <h2>Safety profile</h2>
