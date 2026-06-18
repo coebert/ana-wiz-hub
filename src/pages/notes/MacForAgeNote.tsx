@@ -29,10 +29,11 @@ const MacForAgeNote = () => (
       },
     ]}
     related={[
-      { label: "Volatile anaesthetics — full topic", to: "/pharmacology/inhalational-anaesthetics" },
+      { label: "Volatile agents — full topic", to: "/pharmacology/volatile-agents" },
       { label: "MAC for age calculator", to: "/tools/mac-for-age" },
       { label: "Sevoflurane vs desflurane recovery", to: "/notes/sevoflurane-vs-desflurane-recovery" },
-      { label: "Geriatric anaesthesia considerations", to: "/perioperative/elderly" },
+      { label: "Elderly anaesthesia", to: "/clinical/elderly-anaesthesia" },
+      { label: "Depth of anaesthesia monitoring", to: "/physics/depth-of-anaesthesia" },
     ]}
   >
     <h2>What MAC actually measures</h2>
