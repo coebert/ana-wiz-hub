@@ -30,8 +30,9 @@ const ApfelScoreNote = () => (
     ]}
     related={[
       { label: "Antiemetics — full topic", to: "/pharmacology/antiemetics" },
-      { label: "Day-case anaesthesia", to: "/perioperative/day-surgery" },
-      { label: "TIVA — pharmacokinetics", to: "/pharmacology/pharmacokinetics" },
+      { label: "Day-case anaesthesia", to: "/clinical/day-surgery" },
+      { label: "TIVA — total intravenous anaesthesia", to: "/clinical/tiva" },
+      { label: "Pharmacokinetics", to: "/pharmacology/pharmacokinetics" },
     ]}
   >
     <h2>Why predict PONV at all?</h2>
