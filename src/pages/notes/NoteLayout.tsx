@@ -14,6 +14,15 @@ export interface NoteRelated {
   to: string;
 }
 
+export type NoteExamTag = "primary" | "final" | "fficm" | "edic";
+
+const EXAM_LABEL: Record<NoteExamTag, string> = {
+  primary: "FRCA Primary",
+  final: "FRCA Final",
+  fficm: "FFICM",
+  edic: "EDIC",
+};
+
 interface NoteLayoutProps {
   slug: string;
   title: string;
@@ -26,6 +35,10 @@ interface NoteLayoutProps {
   dateModified?: string;
   /** Hero/intro paragraph rendered under the H1. */
   lede: string;
+  /** Exam curriculum mapping shown as small chips under the lede. */
+  examTags?: NoteExamTag[];
+  /** Optional curriculum-reference codes (e.g. RCoA "PO_BK_03"). */
+  curriculumCodes?: string[];
   /** Main long-form body. */
   children: ReactNode;
   /** FAQ block (visible + injected into FAQPage JSON-LD). */
@@ -33,6 +46,7 @@ interface NoteLayoutProps {
   /** Related internal links rendered at the bottom. */
   related?: NoteRelated[];
 }
+
 
 /**
  * Long-form, SEO-targeted note page. Each note is a single dense answer to a
