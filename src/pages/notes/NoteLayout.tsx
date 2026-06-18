@@ -159,11 +159,35 @@ export const NoteLayout = ({
             <p className="mt-3 text-base sm:text-lg text-muted-foreground leading-relaxed">
               {lede}
             </p>
+            {examTags && examTags.length > 0 && (
+              <div className="mt-3 flex flex-wrap items-center gap-1.5">
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mr-1">
+                  Curriculum:
+                </span>
+                {examTags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[10px] uppercase tracking-wide font-semibold px-2 py-0.5 rounded-full border border-pharmacology/30 bg-pharmacology/5 text-pharmacology"
+                  >
+                    {EXAM_LABEL[t]}
+                  </span>
+                ))}
+                {curriculumCodes?.map((c) => (
+                  <span
+                    key={c}
+                    className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-border bg-muted/40 text-muted-foreground"
+                  >
+                    {c}
+                  </span>
+                ))}
+              </div>
+            )}
             <p className="mt-2 text-xs text-muted-foreground">
               Updated <time dateTime={dateModified ?? datePublished}>{(dateModified ?? datePublished).slice(0, 10)}</time>{" "}
               · By Dr Rob Coe
             </p>
           </header>
+
 
           <div className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-serif prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-8 prose-h3:text-lg prose-h3:mt-6 prose-p:leading-relaxed prose-a:text-pharmacology hover:prose-a:underline">
             {children}
