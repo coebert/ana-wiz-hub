@@ -346,6 +346,104 @@ export const SearchVsReferrerPanel = () => {
     return rows.sort((a, b) => b.score - a.score || b.referrer - a.referrer).slice(0, 15);
   }, [gsc, visits]);
 
+  // ── 30-day per-page spoofing-confidence series ─────────────────────────
+  //
+  // For each of the top spoof-suspect pages, compute a daily score using
+  // a trailing 7-day rolling window so the line is smooth enough to spot
+  // when spoofing starts or stops. Per-day real GSC clicks come from the
+  // `byPageDate` dimension; bot UA / visitor data come from app_visits.
+  const { pageSeries, pageSeriesPaths, botRateSeries } = useMemo(() => {
+    const topPaths = spoofedPages.slice(0, MAX_CHART_PAGES).map((p) => p.path);
+    const pathSet = new Set(topPaths);
+
+    // Index app_visits by (path → array of {ts, weight, visitor, bot}).
+    const visitsByPath = new Map<
+      string,
+      { ts: number; visitor: string; bot: boolean }[]
+    >();
+    for (const v of visits) {
+      const p = stripQueryAndHash(v.page_path);
+      if (!pathSet.has(p)) continue;
+      const arr = visitsByPath.get(p) ?? [];
+      arr.push({
+        ts: new Date(v.visited_at).getTime(),
+        visitor: v.visitor_id,
+        bot: isBotUserAgent(v.user_agent),
+      });
+      visitsByPath.set(p, arr);
+    }
+
+    // Index GSC clicks by (path → date → clicks).
+    const gscByPathDate = new Map<string, Map<string, number>>();
+    for (const r of gsc?.byPageDate ?? []) {
+      const p = pathOf(r.page);
+      if (!pathSet.has(p)) continue;
+      const m = gscByPathDate.get(p) ?? new Map<string, number>();
+      m.set(r.date, (m.get(r.date) ?? 0) + r.clicks);
+      gscByPathDate.set(p, m);
+    }
+
+    const days: string[] = [];
+    for (let i = RANGE_DAYS - 1; i >= 0; i--) {
+      days.push(
+        new Date(Date.now() - i * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
+      );
+    }
+
+    // Daily site-wide bot UA rate among google-referrer visits.
+    const botRate = days.map((d) => {
+      const same = visits.filter((v) => v.visited_at.slice(0, 10) === d);
+      const total = same.length;
+      const bots = same.filter((v) => isBotUserAgent(v.user_agent)).length;
+      return {
+        date: d,
+        rate: total === 0 ? 0 : Math.round((bots / total) * 100),
+        sample: total,
+      };
+    });
+
+    // Per-day score for each tracked page using a trailing window.
+    const rows: Record<string, number | string>[] = days.map((d) => {
+      const row: Record<string, number | string> = { date: d };
+      const dayEnd = new Date(d + "T23:59:59Z").getTime();
+      const windowStart = dayEnd - TRAILING_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+      const recencyCutoff = dayEnd - 2 * 24 * 60 * 60 * 1000; // "recent" = last 2 days of window
+      for (const path of topPaths) {
+        const vs = (visitsByPath.get(path) ?? []).filter(
+          (x) => x.ts >= windowStart && x.ts <= dayEnd,
+        );
+        const visitors = new Set(vs.map((x) => x.visitor));
+        const botHits = vs.filter((x) => x.bot).length;
+        const recentHits = vs.filter((x) => x.ts >= recencyCutoff).length;
+        const weightedHits = vs.reduce(
+          (s, x) =>
+            s + Math.pow(0.5, (dayEnd - x.ts) / (DECAY_HALF_LIFE_DAYS * 86400000)),
+          0,
+        );
+        // Real GSC clicks for the page over the same trailing window.
+        let real = 0;
+        const m = gscByPathDate.get(path);
+        if (m) {
+          for (let i = 0; i < TRAILING_WINDOW_DAYS; i++) {
+            const dd = new Date(dayEnd - i * 86400000).toISOString().slice(0, 10);
+            real += m.get(dd) ?? 0;
+          }
+        }
+        row[path] = computeSpoofScore({
+          hits: vs.length,
+          weightedHits,
+          visitors: visitors.size,
+          botHits,
+          recentHits,
+          real,
+        });
+      }
+      return row;
+    });
+
+    return { pageSeries: rows, pageSeriesPaths: topPaths, botRateSeries: botRate };
+  }, [spoofedPages, visits, gsc]);
+
   const maxClicks = Math.max(1, ...topPages.map((p) => p.clicks));
   const maxQueryClicks = Math.max(1, ...topQueries.map((q) => q.clicks));
   const maxDaily = Math.max(1, ...dailyRows.map((d) => Math.max(d.real, d.referrer)));
