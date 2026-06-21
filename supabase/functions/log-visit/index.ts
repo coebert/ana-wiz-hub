@@ -116,6 +116,8 @@ Deno.serve(async (req) => {
 
     const country_name = country ? (COUNTRY_NAMES[country] ?? country) : null;
 
+    const ua = (req.headers.get("user-agent") ?? "").slice(0, 512) || null;
+
     const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
     const { error } = await admin.from("app_visits").insert({
       visitor_id,
@@ -124,6 +126,7 @@ Deno.serve(async (req) => {
       country_name,
       referrer,
       traffic_source,
+      user_agent: ua,
     });
     if (error) throw error;
 
