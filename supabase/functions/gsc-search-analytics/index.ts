@@ -93,10 +93,14 @@ Deno.serve(async (req) => {
     const startDate = fmt(start)
     const endDate = fmt(end)
 
-    const [byDate, byPage, byQuery] = await Promise.all([
+    const [byDate, byPage, byQuery, byPageDate] = await Promise.all([
       gscQuery(startDate, endDate, ['date'], 400),
       gscQuery(startDate, endDate, ['page'], 250),
       gscQuery(startDate, endDate, ['query'], 250),
+      // Per-page-per-day clicks — used by the admin panel to draw a
+      // 30-day spoofing-confidence line per page. Cap at 5000 rows
+      // (≈ 165 pages × 30 days) to stay within GSC quota.
+      gscQuery(startDate, endDate, ['page', 'date'], 5000),
     ])
 
     return new Response(
@@ -125,6 +129,12 @@ Deno.serve(async (req) => {
           impressions: r.impressions,
           ctr: r.ctr,
           position: r.position,
+        })),
+        byPageDate: byPageDate.map((r) => ({
+          page: r.keys[0],
+          date: r.keys[1],
+          clicks: r.clicks,
+          impressions: r.impressions,
         })),
         fetchedAt: new Date().toISOString(),
       }),
