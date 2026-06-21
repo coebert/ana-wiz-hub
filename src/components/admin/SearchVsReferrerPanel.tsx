@@ -168,7 +168,8 @@ export const SearchVsReferrerPanel = () => {
 
   const spoofedPages = useMemo(() => {
     // Pages that received google.com-referrer visits but **no real GSC click**
-    // are the strongest bot-floor candidates.
+    // are the strongest bot-floor candidates. Each page is scored 0–100 on
+    // how confidently the gap looks like spoofed/bot traffic.
     const realByPath = new Map<string, number>();
     for (const r of gsc?.byPage ?? []) {
       const p = pathOf(r.page);
@@ -182,12 +183,42 @@ export const SearchVsReferrerPanel = () => {
       cur.visitors.add(v.visitor_id);
       refByPath.set(p, cur);
     }
-    const rows: { path: string; referrer: number; real: number; visitors: number }[] = [];
+    const rows: {
+      path: string;
+      referrer: number;
+      real: number;
+      visitors: number;
+      score: number;
+      reasons: string[];
+    }[] = [];
     for (const [path, { hits, visitors }] of refByPath) {
       const real = realByPath.get(path) ?? 0;
-      rows.push({ path, referrer: hits, real, visitors: visitors.size });
+      const v = visitors.size;
+      const gap = Math.max(0, hits - real);
+
+      // 1. Mismatch: how much of the referrer-google traffic is unaccounted
+      //    for by real GSC clicks. 1.0 = no real clicks at all.
+      const mismatch = hits > 0 ? gap / hits : 0;
+      // 2. Volume confidence: a single orphan hit is noise; ramp to full
+      //    confidence by ~10 hits.
+      const volume = Math.min(1, hits / 10);
+      // 3. Visitor diversity: same visitor repeating = bot-like. 1.0 means
+      //    every hit is the same visitor, 0 means every hit is unique.
+      const duplication = hits > 0 ? 1 - v / hits : 0;
+
+      const score = Math.round(
+        100 * mismatch * (0.55 + 0.25 * volume + 0.2 * duplication),
+      );
+
+      const reasons: string[] = [];
+      if (mismatch >= 0.9 && hits >= 3) reasons.push("no matching GSC clicks");
+      else if (mismatch >= 0.5) reasons.push("more referrer hits than GSC clicks");
+      if (duplication >= 0.5 && hits >= 4) reasons.push("repeat visitor pattern");
+      if (hits < 3) reasons.push("low sample");
+
+      rows.push({ path, referrer: hits, real, visitors: v, score, reasons });
     }
-    return rows.sort((a, b) => b.referrer - b.real - (a.referrer - a.real)).slice(0, 15);
+    return rows.sort((a, b) => b.score - a.score || b.referrer - a.referrer).slice(0, 15);
   }, [gsc, visits]);
 
   const maxClicks = Math.max(1, ...topPages.map((p) => p.clicks));
