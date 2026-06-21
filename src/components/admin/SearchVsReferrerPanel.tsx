@@ -197,56 +197,98 @@ export const SearchVsReferrerPanel = () => {
   }, [gsc]);
 
   const spoofedPages = useMemo(() => {
-    // Pages that received google.com-referrer visits but **no real GSC click**
-    // are the strongest bot-floor candidates. Each page is scored 0–100 on
-    // how confidently the gap looks like spoofed/bot traffic.
+    // Score 0–100 per page. Combines five normalised factors so we can
+    // prioritise pages that look most like spoofed / bot traffic rather
+    // than just sorting by raw gap.
+    //
+    //   mismatch    weight 0.40  — fraction of weighted referrer hits not
+    //                              explained by real GSC clicks
+    //   volume      weight 0.15  — confidence that the sample is big enough
+    //                              to be more than noise (full at ~8 hits)
+    //   duplication weight 0.15  — share of hits from repeat visitor_ids
+    //   bot UA      weight 0.20  — share of hits with a bot/crawler UA
+    //                              (or no UA at all)
+    //   recency     weight 0.10  — boost for hits clustered in the last
+    //                              ~14 days (half-life decay)
+    //
+    // Hits are weighted by a 14-day half-life decay so a noisy old burst
+    // doesn't outrank an active one.
     const realByPath = new Map<string, number>();
     for (const r of gsc?.byPage ?? []) {
       const p = pathOf(r.page);
       realByPath.set(p, (realByPath.get(p) ?? 0) + r.clicks);
     }
-    const refByPath = new Map<string, { hits: number; visitors: Set<string> }>();
+    const now = Date.now();
+    type Bucket = {
+      hits: number;
+      weightedHits: number;
+      visitors: Set<string>;
+      botHits: number;
+      recentHits: number; // hits within the last half-life window
+    };
+    const refByPath = new Map<string, Bucket>();
     for (const v of visits) {
       const p = stripQueryAndHash(v.page_path);
-      const cur = refByPath.get(p) ?? { hits: 0, visitors: new Set<string>() };
+      const w = recencyWeight(v.visited_at, now);
+      const cur =
+        refByPath.get(p) ??
+        ({ hits: 0, weightedHits: 0, visitors: new Set<string>(), botHits: 0, recentHits: 0 } as Bucket);
       cur.hits += 1;
+      cur.weightedHits += w;
       cur.visitors.add(v.visitor_id);
+      if (isBotUserAgent(v.user_agent)) cur.botHits += 1;
+      if (w >= 0.5) cur.recentHits += 1;
       refByPath.set(p, cur);
     }
     const rows: {
       path: string;
       referrer: number;
+      weighted: number;
       real: number;
       visitors: number;
+      botShare: number;
       score: number;
       reasons: string[];
     }[] = [];
-    for (const [path, { hits, visitors }] of refByPath) {
+    for (const [path, b] of refByPath) {
       const real = realByPath.get(path) ?? 0;
-      const v = visitors.size;
-      const gap = Math.max(0, hits - real);
+      const v = b.visitors.size;
 
-      // 1. Mismatch: how much of the referrer-google traffic is unaccounted
-      //    for by real GSC clicks. 1.0 = no real clicks at all.
-      const mismatch = hits > 0 ? gap / hits : 0;
-      // 2. Volume confidence: a single orphan hit is noise; ramp to full
-      //    confidence by ~10 hits.
-      const volume = Math.min(1, hits / 10);
-      // 3. Visitor diversity: same visitor repeating = bot-like. 1.0 means
-      //    every hit is the same visitor, 0 means every hit is unique.
-      const duplication = hits > 0 ? 1 - v / hits : 0;
+      const mismatch =
+        b.weightedHits > 0
+          ? Math.max(0, b.weightedHits - real) / b.weightedHits
+          : 0;
+      const volume = Math.min(1, b.weightedHits / 8);
+      const duplication = b.hits > 0 ? 1 - v / b.hits : 0;
+      const botShare = b.hits > 0 ? b.botHits / b.hits : 0;
+      const recency = b.hits > 0 ? b.recentHits / b.hits : 0;
 
-      const score = Math.round(
-        100 * mismatch * (0.55 + 0.25 * volume + 0.2 * duplication),
-      );
+      // Weighted blend. Mismatch is the gate (multiplicative) — if real
+      // clicks fully explain the hits, score collapses to 0 regardless of
+      // the other factors.
+      const blend =
+        0.4 + 0.15 * volume + 0.15 * duplication + 0.2 * botShare + 0.1 * recency;
+      const score = Math.round(100 * mismatch * blend);
 
       const reasons: string[] = [];
-      if (mismatch >= 0.9 && hits >= 3) reasons.push("no matching GSC clicks");
+      if (mismatch >= 0.9 && b.hits >= 3) reasons.push("no matching GSC clicks");
       else if (mismatch >= 0.5) reasons.push("more referrer hits than GSC clicks");
-      if (duplication >= 0.5 && hits >= 4) reasons.push("repeat visitor pattern");
-      if (hits < 3) reasons.push("low sample");
+      if (botShare >= 0.5) reasons.push(`bot UA ${Math.round(botShare * 100)}%`);
+      if (duplication >= 0.5 && b.hits >= 4)
+        reasons.push(`repeat visitors ${Math.round(duplication * 100)}%`);
+      if (recency >= 0.6 && b.hits >= 4) reasons.push("recent surge");
+      if (b.hits < 3) reasons.push("low sample");
 
-      rows.push({ path, referrer: hits, real, visitors: v, score, reasons });
+      rows.push({
+        path,
+        referrer: b.hits,
+        weighted: Math.round(b.weightedHits * 10) / 10,
+        real,
+        visitors: v,
+        botShare,
+        score,
+        reasons,
+      });
     }
     return rows.sort((a, b) => b.score - a.score || b.referrer - a.referrer).slice(0, 15);
   }, [gsc, visits]);
