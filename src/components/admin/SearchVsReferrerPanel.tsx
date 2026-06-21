@@ -498,31 +498,86 @@ export const SearchVsReferrerPanel = () => {
           Spoofing confidence by page
         </h3>
         <p className="text-xs text-muted-foreground mb-2">
-          Score 0–100 combines mismatch (referrer hits unexplained by real GSC
-          clicks), volume, and visitor-repeat patterns. Sort top-down to
-          prioritise pages to investigate. Query-level confidence is not shown
-          because <code>app_visits</code> doesn’t carry the source query.
+          Score 0–100 — higher means the referrer-Google traffic is less
+          likely to be real organic search and more worth investigating.
         </p>
+        <details className="mb-3 text-xs text-muted-foreground">
+          <summary className="cursor-pointer text-foreground hover:underline">
+            How is this score calculated?
+          </summary>
+          <div className="mt-2 rounded border border-border bg-muted/30 p-3 space-y-2">
+            <p>
+              Each page bucketed from <code>app_visits</code> with a
+              <code> google.* </code> referrer is scored on five factors,
+              normalised 0–1 and blended into one number out of 100.
+              Mismatch acts as a gate — if real GSC clicks explain the
+              hits, the score collapses to 0 regardless of the rest.
+            </p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>
+                <span className="text-foreground font-medium">Mismatch ×0.40 (gate)</span> —
+                fraction of recency-weighted referrer hits not explained
+                by real Search Console clicks for the same page.
+              </li>
+              <li>
+                <span className="text-foreground font-medium">Volume ×0.15</span> —
+                ramps to full confidence at ~8 weighted hits so a single
+                orphan visit can’t score high.
+              </li>
+              <li>
+                <span className="text-foreground font-medium">Duplication ×0.15</span> —
+                share of hits from repeated <code>visitor_id</code>s; real
+                organic traffic is mostly unique visitors.
+              </li>
+              <li>
+                <span className="text-foreground font-medium">Bot user-agent ×0.20</span> —
+                share of hits whose <code>User-Agent</code> matches known
+                crawler tokens (bot, headless, curl, python-requests,
+                ahrefs, gptbot, …) or is missing entirely.
+              </li>
+              <li>
+                <span className="text-foreground font-medium">Recency ×0.10</span> —
+                share of hits within the last 14 days (half-life decay
+                τ=14d applied to all hit weighting). Live spoofing
+                outranks an old burst.
+              </li>
+            </ul>
+            <p>
+              Query-level confidence isn’t shown because{" "}
+              <code>app_visits</code> doesn’t carry the source query —
+              only the referrer URL, which is what gets spoofed. Bot UA
+              data is only available for visits logged after this column
+              was added; older rows count as “UA missing” (still a bot
+              signal).
+            </p>
+          </div>
+        </details>
         {spoofedPages.length === 0 ? (
           <p className="text-sm text-muted-foreground">
             No referrer-google visits recorded.
           </p>
         ) : (
-          <div className="rounded border border-border overflow-hidden">
-            <table className="w-full text-xs">
+          <div className="rounded border border-border overflow-hidden overflow-x-auto">
+            <table className="w-full text-xs min-w-[720px]">
               <thead className="bg-muted/40 text-muted-foreground">
                 <tr>
                   <th className="text-left px-3 py-1.5 font-medium">Page</th>
-                  <th className="text-right px-3 py-1.5 font-medium">Referrer</th>
+                  <th className="text-right px-3 py-1.5 font-medium" title="Raw referrer hits in 30d window">
+                    Hits
+                  </th>
+                  <th className="text-right px-3 py-1.5 font-medium" title="Recency-weighted hits (14-day half-life)">
+                    Weighted
+                  </th>
                   <th className="text-right px-3 py-1.5 font-medium">Visitors</th>
+                  <th className="text-right px-3 py-1.5 font-medium" title="Share of hits with bot-like or missing User-Agent">
+                    Bot UA
+                  </th>
                   <th className="text-right px-3 py-1.5 font-medium">Real GSC</th>
-                  <th className="text-right px-3 py-1.5 font-medium">Gap</th>
-                  <th className="text-left px-3 py-1.5 font-medium w-[200px]">Confidence</th>
+                  <th className="text-left px-3 py-1.5 font-medium w-[220px]">Confidence</th>
                 </tr>
               </thead>
               <tbody>
                 {spoofedPages.map((r) => {
-                  const gap = r.referrer - r.real;
                   const tone =
                     r.score >= 75
                       ? "bg-destructive text-destructive-foreground"
@@ -533,7 +588,7 @@ export const SearchVsReferrerPanel = () => {
                           : "bg-muted text-muted-foreground";
                   return (
                     <tr key={r.path} className="border-t border-border">
-                      <td className="px-3 py-1 truncate max-w-[260px]">
+                      <td className="px-3 py-1 truncate max-w-[240px]">
                         <a
                           href={r.path}
                           target="_blank"
@@ -545,16 +600,19 @@ export const SearchVsReferrerPanel = () => {
                       </td>
                       <td className="px-3 py-1 text-right tabular-nums">{r.referrer}</td>
                       <td className="px-3 py-1 text-right tabular-nums text-muted-foreground">
+                        {r.weighted}
+                      </td>
+                      <td className="px-3 py-1 text-right tabular-nums text-muted-foreground">
                         {r.visitors}
                       </td>
-                      <td className="px-3 py-1 text-right tabular-nums">{r.real}</td>
                       <td
-                        className={`px-3 py-1 text-right tabular-nums font-medium ${
-                          gap > 0 ? "text-destructive" : "text-muted-foreground"
+                        className={`px-3 py-1 text-right tabular-nums ${
+                          r.botShare >= 0.5 ? "text-destructive font-medium" : "text-muted-foreground"
                         }`}
                       >
-                        {gap > 0 ? `+${gap}` : gap}
+                        {Math.round(r.botShare * 100)}%
                       </td>
+                      <td className="px-3 py-1 text-right tabular-nums">{r.real}</td>
                       <td className="px-3 py-1">
                         <div className="flex items-center gap-2 min-w-0">
                           <span
