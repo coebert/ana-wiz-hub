@@ -37,6 +37,7 @@ const A11yAudit = lazy(() => import("./pages/A11yAudit"));
 const Curriculum = lazy(() => import("./pages/Curriculum"));
 const DiagramSnapshot = lazy(() => import("./pages/DiagramSnapshot"));
 const Errata = lazy(() => import("./pages/Errata"));
+const Trust = lazy(() => import("./pages/Trust"));
 const Login = lazy(() => import("./pages/Login"));
 const Review = lazy(() => import("./pages/Review"));
 const VoiceViva = lazy(() => import("./pages/VoiceViva"));
@@ -260,6 +261,7 @@ const App = () => (
           <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/progress" element={<ProgressTracker />} />
           <Route path="/errata" element={<Errata />} />
+          <Route path="/trust" element={<Trust />} />
           <Route path="/podcasts" element={<PodcastsLibrary />} />
           <Route path="/glossary-audit" element={<GlossaryAudit />} />
           <Route path="/viva" element={<VivaHub />} />
