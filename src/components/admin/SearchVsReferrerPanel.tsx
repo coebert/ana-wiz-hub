@@ -154,7 +154,8 @@ const PAGE_LINE_COLORS = [
   "hsl(var(--perioperative))",
 ];
 const TRAILING_WINDOW_DAYS = 7;
-const MAX_CHART_PAGES = 5;
+const CHART_PAGE_OPTIONS = [5, 10, 20] as const;
+type ChartPageSize = (typeof CHART_PAGE_OPTIONS)[number];
 
 export const SearchVsReferrerPanel = () => {
   const [gsc, setGsc] = useState<GscPayload | null>(null);
@@ -343,7 +344,7 @@ export const SearchVsReferrerPanel = () => {
         reasons,
       });
     }
-    return rows.sort((a, b) => b.score - a.score || b.referrer - a.referrer).slice(0, 15);
+    return rows.sort((a, b) => b.score - a.score || b.referrer - a.referrer);
   }, [gsc, visits]);
 
   // ── 30-day per-page spoofing-confidence series ─────────────────────────
