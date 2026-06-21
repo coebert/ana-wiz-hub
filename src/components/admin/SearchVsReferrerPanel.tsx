@@ -1,5 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
-import { ShieldAlert, Search, RefreshCw, Bot, MousePointerClick, ExternalLink } from "lucide-react";
+import { ShieldAlert, Search, RefreshCw, Bot, MousePointerClick, ExternalLink, LineChart as LineChartIcon } from "lucide-react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+  Legend,
+} from "recharts";
 import { supabase } from "@/integrations/supabase/client";
 
 /**
@@ -10,7 +20,7 @@ import { supabase } from "@/integrations/supabase/client";
  *
  * Data sources:
  *   - GSC searchAnalytics (via gsc-search-analytics edge function), grouped
- *     by date, page, and query for the last 30 days.
+ *     by date, page, query, and page×date for the last 30 days.
  *   - app_visits rows (admin RLS read) with referrer containing "google"
  *     for the same window, grouped by day and by page_path.
  */
@@ -36,6 +46,12 @@ interface GscQueryRow {
   ctr: number;
   position: number;
 }
+interface GscPageDateRow {
+  page: string;
+  date: string;
+  clicks: number;
+  impressions: number;
+}
 interface GscPayload {
   site: string;
   startDate: string;
@@ -44,6 +60,7 @@ interface GscPayload {
   byDate: GscDateRow[];
   byPage: GscPageRow[];
   byQuery: GscQueryRow[];
+  byPageDate?: GscPageDateRow[];
 }
 
 interface VisitRow {
@@ -102,6 +119,42 @@ const recencyWeight = (visitedAt: string, now: number): number => {
   const ageDays = Math.max(0, ageMs / (1000 * 60 * 60 * 24));
   return Math.pow(0.5, ageDays / DECAY_HALF_LIFE_DAYS);
 };
+
+// Single source of truth for the spoofing confidence formula. Used by
+// both the per-page summary table and the 30-day time-series chart so
+// the numbers stay consistent.
+interface ScoreInputs {
+  hits: number;
+  weightedHits: number;
+  visitors: number;
+  botHits: number;
+  recentHits: number;
+  real: number;
+}
+const computeSpoofScore = (i: ScoreInputs): number => {
+  if (i.weightedHits <= 0) return 0;
+  const mismatch = Math.max(0, i.weightedHits - i.real) / i.weightedHits;
+  const volume = Math.min(1, i.weightedHits / 8);
+  const duplication = i.hits > 0 ? 1 - i.visitors / i.hits : 0;
+  const botShare = i.hits > 0 ? i.botHits / i.hits : 0;
+  const recency = i.hits > 0 ? i.recentHits / i.hits : 0;
+  const blend =
+    0.4 + 0.15 * volume + 0.15 * duplication + 0.2 * botShare + 0.1 * recency;
+  return Math.round(100 * mismatch * blend);
+};
+
+// Distinct hues for up to 6 page lines on the time-series chart. Uses
+// existing section design tokens so colours stay on-brand.
+const PAGE_LINE_COLORS = [
+  "hsl(var(--destructive))",
+  "hsl(var(--physiology))",
+  "hsl(var(--pharmacology))",
+  "hsl(var(--clinical))",
+  "hsl(var(--icu))",
+  "hsl(var(--perioperative))",
+];
+const TRAILING_WINDOW_DAYS = 7;
+const MAX_CHART_PAGES = 5;
 
 export const SearchVsReferrerPanel = () => {
   const [gsc, setGsc] = useState<GscPayload | null>(null);
@@ -254,21 +307,21 @@ export const SearchVsReferrerPanel = () => {
       const real = realByPath.get(path) ?? 0;
       const v = b.visitors.size;
 
+      const score = computeSpoofScore({
+        hits: b.hits,
+        weightedHits: b.weightedHits,
+        visitors: v,
+        botHits: b.botHits,
+        recentHits: b.recentHits,
+        real,
+      });
       const mismatch =
         b.weightedHits > 0
           ? Math.max(0, b.weightedHits - real) / b.weightedHits
           : 0;
-      const volume = Math.min(1, b.weightedHits / 8);
       const duplication = b.hits > 0 ? 1 - v / b.hits : 0;
       const botShare = b.hits > 0 ? b.botHits / b.hits : 0;
       const recency = b.hits > 0 ? b.recentHits / b.hits : 0;
-
-      // Weighted blend. Mismatch is the gate (multiplicative) — if real
-      // clicks fully explain the hits, score collapses to 0 regardless of
-      // the other factors.
-      const blend =
-        0.4 + 0.15 * volume + 0.15 * duplication + 0.2 * botShare + 0.1 * recency;
-      const score = Math.round(100 * mismatch * blend);
 
       const reasons: string[] = [];
       if (mismatch >= 0.9 && b.hits >= 3) reasons.push("no matching GSC clicks");
@@ -292,6 +345,104 @@ export const SearchVsReferrerPanel = () => {
     }
     return rows.sort((a, b) => b.score - a.score || b.referrer - a.referrer).slice(0, 15);
   }, [gsc, visits]);
+
+  // ── 30-day per-page spoofing-confidence series ─────────────────────────
+  //
+  // For each of the top spoof-suspect pages, compute a daily score using
+  // a trailing 7-day rolling window so the line is smooth enough to spot
+  // when spoofing starts or stops. Per-day real GSC clicks come from the
+  // `byPageDate` dimension; bot UA / visitor data come from app_visits.
+  const { pageSeries, pageSeriesPaths, botRateSeries } = useMemo(() => {
+    const topPaths = spoofedPages.slice(0, MAX_CHART_PAGES).map((p) => p.path);
+    const pathSet = new Set(topPaths);
+
+    // Index app_visits by (path → array of {ts, weight, visitor, bot}).
+    const visitsByPath = new Map<
+      string,
+      { ts: number; visitor: string; bot: boolean }[]
+    >();
+    for (const v of visits) {
+      const p = stripQueryAndHash(v.page_path);
+      if (!pathSet.has(p)) continue;
+      const arr = visitsByPath.get(p) ?? [];
+      arr.push({
+        ts: new Date(v.visited_at).getTime(),
+        visitor: v.visitor_id,
+        bot: isBotUserAgent(v.user_agent),
+      });
+      visitsByPath.set(p, arr);
+    }
+
+    // Index GSC clicks by (path → date → clicks).
+    const gscByPathDate = new Map<string, Map<string, number>>();
+    for (const r of gsc?.byPageDate ?? []) {
+      const p = pathOf(r.page);
+      if (!pathSet.has(p)) continue;
+      const m = gscByPathDate.get(p) ?? new Map<string, number>();
+      m.set(r.date, (m.get(r.date) ?? 0) + r.clicks);
+      gscByPathDate.set(p, m);
+    }
+
+    const days: string[] = [];
+    for (let i = RANGE_DAYS - 1; i >= 0; i--) {
+      days.push(
+        new Date(Date.now() - i * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
+      );
+    }
+
+    // Daily site-wide bot UA rate among google-referrer visits.
+    const botRate = days.map((d) => {
+      const same = visits.filter((v) => v.visited_at.slice(0, 10) === d);
+      const total = same.length;
+      const bots = same.filter((v) => isBotUserAgent(v.user_agent)).length;
+      return {
+        date: d,
+        rate: total === 0 ? 0 : Math.round((bots / total) * 100),
+        sample: total,
+      };
+    });
+
+    // Per-day score for each tracked page using a trailing window.
+    const rows: Record<string, number | string>[] = days.map((d) => {
+      const row: Record<string, number | string> = { date: d };
+      const dayEnd = new Date(d + "T23:59:59Z").getTime();
+      const windowStart = dayEnd - TRAILING_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+      const recencyCutoff = dayEnd - 2 * 24 * 60 * 60 * 1000; // "recent" = last 2 days of window
+      for (const path of topPaths) {
+        const vs = (visitsByPath.get(path) ?? []).filter(
+          (x) => x.ts >= windowStart && x.ts <= dayEnd,
+        );
+        const visitors = new Set(vs.map((x) => x.visitor));
+        const botHits = vs.filter((x) => x.bot).length;
+        const recentHits = vs.filter((x) => x.ts >= recencyCutoff).length;
+        const weightedHits = vs.reduce(
+          (s, x) =>
+            s + Math.pow(0.5, (dayEnd - x.ts) / (DECAY_HALF_LIFE_DAYS * 86400000)),
+          0,
+        );
+        // Real GSC clicks for the page over the same trailing window.
+        let real = 0;
+        const m = gscByPathDate.get(path);
+        if (m) {
+          for (let i = 0; i < TRAILING_WINDOW_DAYS; i++) {
+            const dd = new Date(dayEnd - i * 86400000).toISOString().slice(0, 10);
+            real += m.get(dd) ?? 0;
+          }
+        }
+        row[path] = computeSpoofScore({
+          hits: vs.length,
+          weightedHits,
+          visitors: visitors.size,
+          botHits,
+          recentHits,
+          real,
+        });
+      }
+      return row;
+    });
+
+    return { pageSeries: rows, pageSeriesPaths: topPaths, botRateSeries: botRate };
+  }, [spoofedPages, visits, gsc]);
 
   const maxClicks = Math.max(1, ...topPages.map((p) => p.clicks));
   const maxQueryClicks = Math.max(1, ...topQueries.map((q) => q.clicks));
@@ -491,6 +642,127 @@ export const SearchVsReferrerPanel = () => {
           )}
         </div>
       </div>
+
+      {/* ── 30-day spoofing confidence trend ───────────────────────────── */}
+      {pageSeriesPaths.length > 0 && (
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-1">
+            <LineChartIcon className="h-4 w-4 text-physiology" aria-hidden />
+            <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground">
+              Spoofing confidence trend · top {pageSeriesPaths.length} pages
+            </h3>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            Trailing {TRAILING_WINDOW_DAYS}-day rolling score per page. Spikes
+            mark when spoofing started; sustained drops to 0 mean it has
+            stopped. Same 0–100 formula as the table below.
+          </p>
+          <div className="h-64 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={pageSeries} margin={{ top: 5, right: 16, left: -16, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <XAxis
+                  dataKey="date"
+                  tickFormatter={fmtDay}
+                  stroke="hsl(var(--muted-foreground))"
+                  fontSize={10}
+                  interval="preserveStartEnd"
+                  minTickGap={24}
+                />
+                <YAxis
+                  domain={[0, 100]}
+                  stroke="hsl(var(--muted-foreground))"
+                  fontSize={10}
+                  width={32}
+                />
+                <Tooltip
+                  contentStyle={{
+                    background: "hsl(var(--popover))",
+                    border: "1px solid hsl(var(--border))",
+                    borderRadius: 6,
+                    fontSize: 11,
+                  }}
+                  labelFormatter={(d) => fmtDay(String(d))}
+                  formatter={(value: number, name: string) => [`${value}/100`, name]}
+                />
+                <Legend
+                  wrapperStyle={{ fontSize: 10 }}
+                  formatter={(value: string) =>
+                    value.length > 32 ? "…" + value.slice(-31) : value
+                  }
+                />
+                {pageSeriesPaths.map((path, idx) => (
+                  <Line
+                    key={path}
+                    type="monotone"
+                    dataKey={path}
+                    name={path}
+                    stroke={PAGE_LINE_COLORS[idx % PAGE_LINE_COLORS.length]}
+                    strokeWidth={2}
+                    dot={false}
+                    isAnimationActive={false}
+                  />
+                ))}
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Bot UA rate across all spoof-suspect visits */}
+          <details className="mt-3 text-xs text-muted-foreground">
+            <summary className="cursor-pointer text-foreground hover:underline inline-flex items-center gap-1.5">
+              <Bot className="h-3.5 w-3.5" /> Daily bot-UA rate across all
+              google-referrer visits
+            </summary>
+            <div className="h-40 w-full mt-2">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={botRateSeries}
+                  margin={{ top: 5, right: 16, left: -16, bottom: 0 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                  <XAxis
+                    dataKey="date"
+                    tickFormatter={fmtDay}
+                    stroke="hsl(var(--muted-foreground))"
+                    fontSize={10}
+                    interval="preserveStartEnd"
+                    minTickGap={24}
+                  />
+                  <YAxis
+                    domain={[0, 100]}
+                    unit="%"
+                    stroke="hsl(var(--muted-foreground))"
+                    fontSize={10}
+                    width={36}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "hsl(var(--popover))",
+                      border: "1px solid hsl(var(--border))",
+                      borderRadius: 6,
+                      fontSize: 11,
+                    }}
+                    labelFormatter={(d) => fmtDay(String(d))}
+                    formatter={(value: number) => [`${value}%`, "Bot UA share"]}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="rate"
+                    stroke="hsl(var(--destructive))"
+                    strokeWidth={2}
+                    dot={false}
+                    isAnimationActive={false}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+            <p className="mt-1">
+              Only counts visits logged after the <code>user_agent</code>
+              column was added; earlier days will read ≈100% (UA missing).
+            </p>
+          </details>
+        </div>
+      )}
 
       {/* ── spoofed pages ─────────────────────────────────────────────── */}
       <div>
