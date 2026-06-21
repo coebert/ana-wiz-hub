@@ -162,6 +162,8 @@ export const SearchVsReferrerPanel = () => {
   const [visits, setVisits] = useState<VisitRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [chartPageSize, setChartPageSize] = useState<ChartPageSize>(5);
+  const [chartPageIndex, setChartPageIndex] = useState(0);
 
   const load = async () => {
     setLoading(true);
@@ -354,7 +356,8 @@ export const SearchVsReferrerPanel = () => {
   // when spoofing starts or stops. Per-day real GSC clicks come from the
   // `byPageDate` dimension; bot UA / visitor data come from app_visits.
   const { pageSeries, pageSeriesPaths, botRateSeries } = useMemo(() => {
-    const topPaths = spoofedPages.slice(0, MAX_CHART_PAGES).map((p) => p.path);
+    const start = chartPageIndex * chartPageSize;
+    const topPaths = spoofedPages.slice(start, start + chartPageSize).map((p) => p.path);
     const pathSet = new Set(topPaths);
 
     // Index app_visits by (path → array of {ts, weight, visitor, bot}).
