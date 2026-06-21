@@ -120,6 +120,42 @@ const recencyWeight = (visitedAt: string, now: number): number => {
   return Math.pow(0.5, ageDays / DECAY_HALF_LIFE_DAYS);
 };
 
+// Single source of truth for the spoofing confidence formula. Used by
+// both the per-page summary table and the 30-day time-series chart so
+// the numbers stay consistent.
+interface ScoreInputs {
+  hits: number;
+  weightedHits: number;
+  visitors: number;
+  botHits: number;
+  recentHits: number;
+  real: number;
+}
+const computeSpoofScore = (i: ScoreInputs): number => {
+  if (i.weightedHits <= 0) return 0;
+  const mismatch = Math.max(0, i.weightedHits - i.real) / i.weightedHits;
+  const volume = Math.min(1, i.weightedHits / 8);
+  const duplication = i.hits > 0 ? 1 - i.visitors / i.hits : 0;
+  const botShare = i.hits > 0 ? i.botHits / i.hits : 0;
+  const recency = i.hits > 0 ? i.recentHits / i.hits : 0;
+  const blend =
+    0.4 + 0.15 * volume + 0.15 * duplication + 0.2 * botShare + 0.1 * recency;
+  return Math.round(100 * mismatch * blend);
+};
+
+// Distinct hues for up to 6 page lines on the time-series chart. Uses
+// existing section design tokens so colours stay on-brand.
+const PAGE_LINE_COLORS = [
+  "hsl(var(--destructive))",
+  "hsl(var(--physiology))",
+  "hsl(var(--pharmacology))",
+  "hsl(var(--clinical))",
+  "hsl(var(--icu))",
+  "hsl(var(--perioperative))",
+];
+const TRAILING_WINDOW_DAYS = 7;
+const MAX_CHART_PAGES = 5;
+
 export const SearchVsReferrerPanel = () => {
   const [gsc, setGsc] = useState<GscPayload | null>(null);
   const [visits, setVisits] = useState<VisitRow[]>([]);
