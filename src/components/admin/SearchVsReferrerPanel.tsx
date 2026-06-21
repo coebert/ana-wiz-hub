@@ -51,9 +51,13 @@ interface VisitRow {
   page_path: string | null;
   referrer: string | null;
   visitor_id: string;
+  user_agent: string | null;
 }
 
 const RANGE_DAYS = 30;
+// Half-life for recency decay, in days. A 14-day half-life means a hit
+// today is worth 1.0, a hit 14 days ago 0.5, and a hit 28 days ago 0.25.
+const DECAY_HALF_LIFE_DAYS = 14;
 
 const fmtDay = (iso: string) => {
   const d = new Date(iso);
@@ -71,6 +75,32 @@ const pathOf = (loc: string) => {
 const stripQueryAndHash = (p: string | null) => {
   if (!p) return "/";
   return p.split(/[?#]/)[0] || "/";
+};
+
+// Tokens that, when present in a User-Agent string, almost always indicate
+// an automated client rather than a real browser. Lowercase substring match.
+const BOT_UA_TOKENS = [
+  "bot", "crawler", "spider", "slurp", "headless", "phantomjs",
+  "puppeteer", "playwright", "selenium", "lighthouse", "pagespeed",
+  "ahrefs", "semrush", "mj12", "dotbot", "petalbot", "yandexbot",
+  "bingpreview", "gptbot", "claudebot", "ccbot", "anthropic", "perplexity",
+  "applebot", "duckduckbot", "facebookexternalhit", "twitterbot",
+  "linkedinbot", "discordbot", "telegrambot", "whatsapp",
+  "dataforseo", "serpapi", "scrapy", "python-requests", "python-urllib",
+  "go-http-client", "java/", "okhttp", "curl/", "wget/", "httpclient",
+  "axios/", "node-fetch", "got (",
+];
+
+const isBotUserAgent = (ua: string | null): boolean => {
+  if (!ua) return true; // missing UA is itself a strong bot signal
+  const s = ua.toLowerCase();
+  return BOT_UA_TOKENS.some((t) => s.includes(t));
+};
+
+const recencyWeight = (visitedAt: string, now: number): number => {
+  const ageMs = now - new Date(visitedAt).getTime();
+  const ageDays = Math.max(0, ageMs / (1000 * 60 * 60 * 24));
+  return Math.pow(0.5, ageDays / DECAY_HALF_LIFE_DAYS);
 };
 
 export const SearchVsReferrerPanel = () => {
@@ -91,7 +121,7 @@ export const SearchVsReferrerPanel = () => {
       }),
       supabase
         .from("app_visits")
-        .select("visited_at,page_path,referrer,visitor_id")
+        .select("visited_at,page_path,referrer,visitor_id,user_agent")
         .gte("visited_at", sinceIso)
         .or("referrer.ilike.%google%,referrer.ilike.%.google.%")
         .order("visited_at", { ascending: false })
@@ -167,56 +197,98 @@ export const SearchVsReferrerPanel = () => {
   }, [gsc]);
 
   const spoofedPages = useMemo(() => {
-    // Pages that received google.com-referrer visits but **no real GSC click**
-    // are the strongest bot-floor candidates. Each page is scored 0–100 on
-    // how confidently the gap looks like spoofed/bot traffic.
+    // Score 0–100 per page. Combines five normalised factors so we can
+    // prioritise pages that look most like spoofed / bot traffic rather
+    // than just sorting by raw gap.
+    //
+    //   mismatch    weight 0.40  — fraction of weighted referrer hits not
+    //                              explained by real GSC clicks
+    //   volume      weight 0.15  — confidence that the sample is big enough
+    //                              to be more than noise (full at ~8 hits)
+    //   duplication weight 0.15  — share of hits from repeat visitor_ids
+    //   bot UA      weight 0.20  — share of hits with a bot/crawler UA
+    //                              (or no UA at all)
+    //   recency     weight 0.10  — boost for hits clustered in the last
+    //                              ~14 days (half-life decay)
+    //
+    // Hits are weighted by a 14-day half-life decay so a noisy old burst
+    // doesn't outrank an active one.
     const realByPath = new Map<string, number>();
     for (const r of gsc?.byPage ?? []) {
       const p = pathOf(r.page);
       realByPath.set(p, (realByPath.get(p) ?? 0) + r.clicks);
     }
-    const refByPath = new Map<string, { hits: number; visitors: Set<string> }>();
+    const now = Date.now();
+    type Bucket = {
+      hits: number;
+      weightedHits: number;
+      visitors: Set<string>;
+      botHits: number;
+      recentHits: number; // hits within the last half-life window
+    };
+    const refByPath = new Map<string, Bucket>();
     for (const v of visits) {
       const p = stripQueryAndHash(v.page_path);
-      const cur = refByPath.get(p) ?? { hits: 0, visitors: new Set<string>() };
+      const w = recencyWeight(v.visited_at, now);
+      const cur =
+        refByPath.get(p) ??
+        ({ hits: 0, weightedHits: 0, visitors: new Set<string>(), botHits: 0, recentHits: 0 } as Bucket);
       cur.hits += 1;
+      cur.weightedHits += w;
       cur.visitors.add(v.visitor_id);
+      if (isBotUserAgent(v.user_agent)) cur.botHits += 1;
+      if (w >= 0.5) cur.recentHits += 1;
       refByPath.set(p, cur);
     }
     const rows: {
       path: string;
       referrer: number;
+      weighted: number;
       real: number;
       visitors: number;
+      botShare: number;
       score: number;
       reasons: string[];
     }[] = [];
-    for (const [path, { hits, visitors }] of refByPath) {
+    for (const [path, b] of refByPath) {
       const real = realByPath.get(path) ?? 0;
-      const v = visitors.size;
-      const gap = Math.max(0, hits - real);
+      const v = b.visitors.size;
 
-      // 1. Mismatch: how much of the referrer-google traffic is unaccounted
-      //    for by real GSC clicks. 1.0 = no real clicks at all.
-      const mismatch = hits > 0 ? gap / hits : 0;
-      // 2. Volume confidence: a single orphan hit is noise; ramp to full
-      //    confidence by ~10 hits.
-      const volume = Math.min(1, hits / 10);
-      // 3. Visitor diversity: same visitor repeating = bot-like. 1.0 means
-      //    every hit is the same visitor, 0 means every hit is unique.
-      const duplication = hits > 0 ? 1 - v / hits : 0;
+      const mismatch =
+        b.weightedHits > 0
+          ? Math.max(0, b.weightedHits - real) / b.weightedHits
+          : 0;
+      const volume = Math.min(1, b.weightedHits / 8);
+      const duplication = b.hits > 0 ? 1 - v / b.hits : 0;
+      const botShare = b.hits > 0 ? b.botHits / b.hits : 0;
+      const recency = b.hits > 0 ? b.recentHits / b.hits : 0;
 
-      const score = Math.round(
-        100 * mismatch * (0.55 + 0.25 * volume + 0.2 * duplication),
-      );
+      // Weighted blend. Mismatch is the gate (multiplicative) — if real
+      // clicks fully explain the hits, score collapses to 0 regardless of
+      // the other factors.
+      const blend =
+        0.4 + 0.15 * volume + 0.15 * duplication + 0.2 * botShare + 0.1 * recency;
+      const score = Math.round(100 * mismatch * blend);
 
       const reasons: string[] = [];
-      if (mismatch >= 0.9 && hits >= 3) reasons.push("no matching GSC clicks");
+      if (mismatch >= 0.9 && b.hits >= 3) reasons.push("no matching GSC clicks");
       else if (mismatch >= 0.5) reasons.push("more referrer hits than GSC clicks");
-      if (duplication >= 0.5 && hits >= 4) reasons.push("repeat visitor pattern");
-      if (hits < 3) reasons.push("low sample");
+      if (botShare >= 0.5) reasons.push(`bot UA ${Math.round(botShare * 100)}%`);
+      if (duplication >= 0.5 && b.hits >= 4)
+        reasons.push(`repeat visitors ${Math.round(duplication * 100)}%`);
+      if (recency >= 0.6 && b.hits >= 4) reasons.push("recent surge");
+      if (b.hits < 3) reasons.push("low sample");
 
-      rows.push({ path, referrer: hits, real, visitors: v, score, reasons });
+      rows.push({
+        path,
+        referrer: b.hits,
+        weighted: Math.round(b.weightedHits * 10) / 10,
+        real,
+        visitors: v,
+        botShare,
+        score,
+        reasons,
+      });
     }
     return rows.sort((a, b) => b.score - a.score || b.referrer - a.referrer).slice(0, 15);
   }, [gsc, visits]);
@@ -426,31 +498,86 @@ export const SearchVsReferrerPanel = () => {
           Spoofing confidence by page
         </h3>
         <p className="text-xs text-muted-foreground mb-2">
-          Score 0–100 combines mismatch (referrer hits unexplained by real GSC
-          clicks), volume, and visitor-repeat patterns. Sort top-down to
-          prioritise pages to investigate. Query-level confidence is not shown
-          because <code>app_visits</code> doesn’t carry the source query.
+          Score 0–100 — higher means the referrer-Google traffic is less
+          likely to be real organic search and more worth investigating.
         </p>
+        <details className="mb-3 text-xs text-muted-foreground">
+          <summary className="cursor-pointer text-foreground hover:underline">
+            How is this score calculated?
+          </summary>
+          <div className="mt-2 rounded border border-border bg-muted/30 p-3 space-y-2">
+            <p>
+              Each page bucketed from <code>app_visits</code> with a
+              <code> google.* </code> referrer is scored on five factors,
+              normalised 0–1 and blended into one number out of 100.
+              Mismatch acts as a gate — if real GSC clicks explain the
+              hits, the score collapses to 0 regardless of the rest.
+            </p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>
+                <span className="text-foreground font-medium">Mismatch ×0.40 (gate)</span> —
+                fraction of recency-weighted referrer hits not explained
+                by real Search Console clicks for the same page.
+              </li>
+              <li>
+                <span className="text-foreground font-medium">Volume ×0.15</span> —
+                ramps to full confidence at ~8 weighted hits so a single
+                orphan visit can’t score high.
+              </li>
+              <li>
+                <span className="text-foreground font-medium">Duplication ×0.15</span> —
+                share of hits from repeated <code>visitor_id</code>s; real
+                organic traffic is mostly unique visitors.
+              </li>
+              <li>
+                <span className="text-foreground font-medium">Bot user-agent ×0.20</span> —
+                share of hits whose <code>User-Agent</code> matches known
+                crawler tokens (bot, headless, curl, python-requests,
+                ahrefs, gptbot, …) or is missing entirely.
+              </li>
+              <li>
+                <span className="text-foreground font-medium">Recency ×0.10</span> —
+                share of hits within the last 14 days (half-life decay
+                τ=14d applied to all hit weighting). Live spoofing
+                outranks an old burst.
+              </li>
+            </ul>
+            <p>
+              Query-level confidence isn’t shown because{" "}
+              <code>app_visits</code> doesn’t carry the source query —
+              only the referrer URL, which is what gets spoofed. Bot UA
+              data is only available for visits logged after this column
+              was added; older rows count as “UA missing” (still a bot
+              signal).
+            </p>
+          </div>
+        </details>
         {spoofedPages.length === 0 ? (
           <p className="text-sm text-muted-foreground">
             No referrer-google visits recorded.
           </p>
         ) : (
-          <div className="rounded border border-border overflow-hidden">
-            <table className="w-full text-xs">
+          <div className="rounded border border-border overflow-hidden overflow-x-auto">
+            <table className="w-full text-xs min-w-[720px]">
               <thead className="bg-muted/40 text-muted-foreground">
                 <tr>
                   <th className="text-left px-3 py-1.5 font-medium">Page</th>
-                  <th className="text-right px-3 py-1.5 font-medium">Referrer</th>
+                  <th className="text-right px-3 py-1.5 font-medium" title="Raw referrer hits in 30d window">
+                    Hits
+                  </th>
+                  <th className="text-right px-3 py-1.5 font-medium" title="Recency-weighted hits (14-day half-life)">
+                    Weighted
+                  </th>
                   <th className="text-right px-3 py-1.5 font-medium">Visitors</th>
+                  <th className="text-right px-3 py-1.5 font-medium" title="Share of hits with bot-like or missing User-Agent">
+                    Bot UA
+                  </th>
                   <th className="text-right px-3 py-1.5 font-medium">Real GSC</th>
-                  <th className="text-right px-3 py-1.5 font-medium">Gap</th>
-                  <th className="text-left px-3 py-1.5 font-medium w-[200px]">Confidence</th>
+                  <th className="text-left px-3 py-1.5 font-medium w-[220px]">Confidence</th>
                 </tr>
               </thead>
               <tbody>
                 {spoofedPages.map((r) => {
-                  const gap = r.referrer - r.real;
                   const tone =
                     r.score >= 75
                       ? "bg-destructive text-destructive-foreground"
@@ -461,7 +588,7 @@ export const SearchVsReferrerPanel = () => {
                           : "bg-muted text-muted-foreground";
                   return (
                     <tr key={r.path} className="border-t border-border">
-                      <td className="px-3 py-1 truncate max-w-[260px]">
+                      <td className="px-3 py-1 truncate max-w-[240px]">
                         <a
                           href={r.path}
                           target="_blank"
@@ -473,16 +600,19 @@ export const SearchVsReferrerPanel = () => {
                       </td>
                       <td className="px-3 py-1 text-right tabular-nums">{r.referrer}</td>
                       <td className="px-3 py-1 text-right tabular-nums text-muted-foreground">
+                        {r.weighted}
+                      </td>
+                      <td className="px-3 py-1 text-right tabular-nums text-muted-foreground">
                         {r.visitors}
                       </td>
-                      <td className="px-3 py-1 text-right tabular-nums">{r.real}</td>
                       <td
-                        className={`px-3 py-1 text-right tabular-nums font-medium ${
-                          gap > 0 ? "text-destructive" : "text-muted-foreground"
+                        className={`px-3 py-1 text-right tabular-nums ${
+                          r.botShare >= 0.5 ? "text-destructive font-medium" : "text-muted-foreground"
                         }`}
                       >
-                        {gap > 0 ? `+${gap}` : gap}
+                        {Math.round(r.botShare * 100)}%
                       </td>
+                      <td className="px-3 py-1 text-right tabular-nums">{r.real}</td>
                       <td className="px-3 py-1">
                         <div className="flex items-center gap-2 min-w-0">
                           <span

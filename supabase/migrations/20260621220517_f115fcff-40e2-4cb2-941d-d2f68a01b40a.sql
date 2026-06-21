@@ -1,0 +1,2 @@
+ALTER TABLE public.app_visits ADD COLUMN IF NOT EXISTS user_agent text;
+COMMENT ON COLUMN public.app_visits.user_agent IS 'Raw User-Agent header captured server-side by log-visit. Used only for bot detection in admin analytics; never displayed to end users.';
