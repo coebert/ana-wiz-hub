@@ -1,0 +1,485 @@
+import { useEffect, useMemo, useState } from "react";
+import { ShieldAlert, Search, RefreshCw, Bot, MousePointerClick, ExternalLink } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+
+/**
+ * Admin SEO panel: splits genuine Google organic clicks (Search Console
+ * ground truth) from app-recorded visits whose referrer claims to be
+ * google.com. The gap between the two columns is the bot / referrer-spoof
+ * floor — useful for sanity-checking dashboard traffic numbers.
+ *
+ * Data sources:
+ *   - GSC searchAnalytics (via gsc-search-analytics edge function), grouped
+ *     by date, page, and query for the last 30 days.
+ *   - app_visits rows (admin RLS read) with referrer containing "google"
+ *     for the same window, grouped by day and by page_path.
+ */
+
+interface GscDateRow {
+  date: string;
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+}
+interface GscPageRow {
+  page: string;
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+}
+interface GscQueryRow {
+  query: string;
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+}
+interface GscPayload {
+  site: string;
+  startDate: string;
+  endDate: string;
+  days: number;
+  byDate: GscDateRow[];
+  byPage: GscPageRow[];
+  byQuery: GscQueryRow[];
+}
+
+interface VisitRow {
+  visited_at: string;
+  page_path: string | null;
+  referrer: string | null;
+  visitor_id: string;
+}
+
+const RANGE_DAYS = 30;
+
+const fmtDay = (iso: string) => {
+  const d = new Date(iso);
+  return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+};
+
+const pathOf = (loc: string) => {
+  try {
+    return new URL(loc).pathname || "/";
+  } catch {
+    return loc;
+  }
+};
+
+const stripQueryAndHash = (p: string | null) => {
+  if (!p) return "/";
+  return p.split(/[?#]/)[0] || "/";
+};
+
+export const SearchVsReferrerPanel = () => {
+  const [gsc, setGsc] = useState<GscPayload | null>(null);
+  const [visits, setVisits] = useState<VisitRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const load = async () => {
+    setLoading(true);
+    setError(null);
+    const since = new Date(Date.now() - RANGE_DAYS * 24 * 60 * 60 * 1000);
+    const sinceIso = since.toISOString();
+
+    const [gscRes, visitsRes] = await Promise.all([
+      supabase.functions.invoke<GscPayload>("gsc-search-analytics", {
+        body: { days: RANGE_DAYS },
+      }),
+      supabase
+        .from("app_visits")
+        .select("visited_at,page_path,referrer,visitor_id")
+        .gte("visited_at", sinceIso)
+        .or("referrer.ilike.%google%,referrer.ilike.%.google.%")
+        .order("visited_at", { ascending: false })
+        .limit(20000),
+    ]);
+
+    if (gscRes.error) {
+      setError(gscRes.error.message);
+    } else if (gscRes.data) {
+      setGsc(gscRes.data);
+    }
+    if (visitsRes.error) {
+      setError((prev) => prev ?? visitsRes.error!.message);
+    }
+    setVisits((visitsRes.data as VisitRow[] | null) ?? []);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    void load();
+  }, []);
+
+  // -- aggregates -----------------------------------------------------------
+
+  const realClicksByDay = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const r of gsc?.byDate ?? []) m.set(r.date, r.clicks);
+    return m;
+  }, [gsc]);
+
+  const spoofByDay = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const v of visits) {
+      const day = v.visited_at.slice(0, 10);
+      m.set(day, (m.get(day) ?? 0) + 1);
+    }
+    return m;
+  }, [visits]);
+
+  const dailyRows = useMemo(() => {
+    const days: { date: string; real: number; referrer: number; suspected: number }[] = [];
+    for (let i = RANGE_DAYS - 1; i >= 0; i--) {
+      const d = new Date(Date.now() - i * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .slice(0, 10);
+      const real = realClicksByDay.get(d) ?? 0;
+      const referrer = spoofByDay.get(d) ?? 0;
+      days.push({ date: d, real, referrer, suspected: Math.max(0, referrer - real) });
+    }
+    return days;
+  }, [realClicksByDay, spoofByDay]);
+
+  const totals = useMemo(() => {
+    const real = dailyRows.reduce((s, r) => s + r.real, 0);
+    const referrer = dailyRows.reduce((s, r) => s + r.referrer, 0);
+    const impressions = (gsc?.byDate ?? []).reduce((s, r) => s + r.impressions, 0);
+    return { real, referrer, suspected: Math.max(0, referrer - real), impressions };
+  }, [dailyRows, gsc]);
+
+  const topPages = useMemo(() => {
+    return (gsc?.byPage ?? [])
+      .slice()
+      .sort((a, b) => b.clicks - a.clicks || b.impressions - a.impressions)
+      .slice(0, 15)
+      .map((r) => ({ ...r, path: pathOf(r.page) }));
+  }, [gsc]);
+
+  const topQueries = useMemo(() => {
+    return (gsc?.byQuery ?? [])
+      .slice()
+      .sort((a, b) => b.clicks - a.clicks || b.impressions - a.impressions)
+      .slice(0, 15);
+  }, [gsc]);
+
+  const spoofedPages = useMemo(() => {
+    // Pages that received google.com-referrer visits but **no real GSC click**
+    // are the strongest bot-floor candidates.
+    const realByPath = new Map<string, number>();
+    for (const r of gsc?.byPage ?? []) {
+      const p = pathOf(r.page);
+      realByPath.set(p, (realByPath.get(p) ?? 0) + r.clicks);
+    }
+    const refByPath = new Map<string, { hits: number; visitors: Set<string> }>();
+    for (const v of visits) {
+      const p = stripQueryAndHash(v.page_path);
+      const cur = refByPath.get(p) ?? { hits: 0, visitors: new Set<string>() };
+      cur.hits += 1;
+      cur.visitors.add(v.visitor_id);
+      refByPath.set(p, cur);
+    }
+    const rows: { path: string; referrer: number; real: number; visitors: number }[] = [];
+    for (const [path, { hits, visitors }] of refByPath) {
+      const real = realByPath.get(path) ?? 0;
+      rows.push({ path, referrer: hits, real, visitors: visitors.size });
+    }
+    return rows.sort((a, b) => b.referrer - b.real - (a.referrer - a.real)).slice(0, 15);
+  }, [gsc, visits]);
+
+  const maxClicks = Math.max(1, ...topPages.map((p) => p.clicks));
+  const maxQueryClicks = Math.max(1, ...topQueries.map((q) => q.clicks));
+  const maxDaily = Math.max(1, ...dailyRows.map((d) => Math.max(d.real, d.referrer)));
+
+  return (
+    <section className="rounded-lg border border-border bg-card p-4 sm:p-6 mt-6">
+      <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
+        <div className="flex items-center gap-2">
+          <ShieldAlert className="h-4 w-4 text-physiology" aria-hidden />
+          <h2 className="text-lg font-semibold text-foreground">
+            Real Google clicks vs referrer-spoof traffic
+          </h2>
+        </div>
+        <button
+          onClick={() => void load()}
+          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+          disabled={loading}
+          aria-label="Refresh"
+        >
+          <RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
+          Refresh
+        </button>
+      </div>
+      <p className="text-xs text-muted-foreground mb-4">
+        Last {RANGE_DAYS} days · Search Console is ground truth; in-app visits
+        with a <code>google.com</code> referrer are compared against it.
+      </p>
+
+      {error && (
+        <p className="text-sm text-destructive mb-3">
+          Couldn’t load Search Console data: {error}
+        </p>
+      )}
+
+      {/* ── headline tiles ────────────────────────────────────────────── */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+        <Tile
+          icon={<MousePointerClick className="h-4 w-4 text-physiology" />}
+          label="Real Google clicks"
+          value={totals.real}
+          sub={`${totals.impressions.toLocaleString()} impressions`}
+        />
+        <Tile
+          icon={<Search className="h-4 w-4 text-muted-foreground" />}
+          label="google.com referrer visits"
+          value={totals.referrer}
+          sub="from app_visits"
+        />
+        <Tile
+          icon={<Bot className="h-4 w-4 text-destructive" />}
+          label="Suspected bot floor"
+          value={totals.suspected}
+          sub={
+            totals.referrer === 0
+              ? "—"
+              : `${Math.round((totals.suspected / totals.referrer) * 100)}% of google referrer hits`
+          }
+          tone="warn"
+        />
+        <Tile
+          icon={<MousePointerClick className="h-4 w-4 text-pharmacology" />}
+          label="Real clicks per day"
+          value={(totals.real / RANGE_DAYS).toFixed(1)}
+          sub={`avg over ${RANGE_DAYS} days`}
+        />
+      </div>
+
+      {/* ── daily comparison ──────────────────────────────────────────── */}
+      <div className="mb-6">
+        <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-2">
+          Daily breakdown
+        </h3>
+        <div className="rounded border border-border overflow-hidden">
+          <table className="w-full text-xs">
+            <thead className="bg-muted/40 text-muted-foreground">
+              <tr>
+                <th className="text-left px-3 py-1.5 font-medium">Day</th>
+                <th className="text-right px-3 py-1.5 font-medium">Real GSC</th>
+                <th className="text-right px-3 py-1.5 font-medium">google.com referrer</th>
+                <th className="text-left px-3 py-1.5 font-medium w-1/2">
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-sm bg-physiology" /> real
+                    <span className="h-2 w-2 rounded-sm bg-muted ml-2" /> referrer
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {dailyRows.map((r) => (
+                <tr key={r.date} className="border-t border-border">
+                  <td className="px-3 py-1 tabular-nums text-muted-foreground">
+                    {fmtDay(r.date)}
+                  </td>
+                  <td className="px-3 py-1 text-right tabular-nums text-foreground font-medium">
+                    {r.real}
+                  </td>
+                  <td className="px-3 py-1 text-right tabular-nums">
+                    <span className={r.suspected > 0 ? "text-destructive" : ""}>
+                      {r.referrer}
+                    </span>
+                  </td>
+                  <td className="px-3 py-1">
+                    <div className="flex items-center gap-1 h-3">
+                      <span
+                        className="h-2 rounded-sm bg-physiology"
+                        style={{ width: `${(r.real / maxDaily) * 100}%` }}
+                        aria-label={`${r.real} real clicks`}
+                      />
+                      <span
+                        className="h-2 rounded-sm bg-muted-foreground/40"
+                        style={{ width: `${(r.referrer / maxDaily) * 100}%` }}
+                        aria-label={`${r.referrer} referrer visits`}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* ── side-by-side: pages + queries ─────────────────────────────── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div>
+          <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-2">
+            Top pages by real Google clicks
+          </h3>
+          {topPages.length === 0 ? (
+            <p className="text-sm text-muted-foreground">No clicks recorded in window.</p>
+          ) : (
+            <ul className="space-y-1">
+              {topPages.map((p) => (
+                <li key={p.page} className="text-sm">
+                  <a
+                    href={p.path}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-3 hover:bg-muted/40 rounded px-2 py-1 transition-colors"
+                  >
+                    <span className="flex-1 min-w-0 truncate text-foreground">
+                      {p.path}
+                    </span>
+                    <span className="tabular-nums text-xs text-muted-foreground w-8 text-right">
+                      {p.clicks}
+                    </span>
+                    <span
+                      className="h-1.5 rounded-full bg-physiology/60"
+                      style={{ width: `${Math.max(6, (p.clicks / maxClicks) * 100)}px` }}
+                      aria-hidden
+                    />
+                  </a>
+                  <div className="px-2 text-[10px] text-muted-foreground tabular-nums">
+                    pos {p.position.toFixed(1)} · {p.impressions.toLocaleString()} impr ·
+                    CTR {(p.ctr * 100).toFixed(1)}%
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <div>
+          <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-2">
+            Top queries by real Google clicks
+          </h3>
+          {topQueries.length === 0 ? (
+            <p className="text-sm text-muted-foreground">
+              No clicks recorded in window — try expanding the date range or check
+              GSC ranking position.
+            </p>
+          ) : (
+            <ul className="space-y-1">
+              {topQueries.map((q) => (
+                <li key={q.query} className="text-sm">
+                  <div className="flex items-center gap-3 px-2 py-1">
+                    <span className="flex-1 min-w-0 truncate text-foreground">
+                      {q.query}
+                    </span>
+                    <span className="tabular-nums text-xs text-muted-foreground w-8 text-right">
+                      {q.clicks}
+                    </span>
+                    <span
+                      className="h-1.5 rounded-full bg-pharmacology/60"
+                      style={{ width: `${Math.max(6, (q.clicks / maxQueryClicks) * 100)}px` }}
+                      aria-hidden
+                    />
+                  </div>
+                  <div className="px-2 text-[10px] text-muted-foreground tabular-nums">
+                    pos {q.position.toFixed(1)} · {q.impressions.toLocaleString()} impr ·
+                    CTR {(q.ctr * 100).toFixed(1)}%
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+
+      {/* ── spoofed pages ─────────────────────────────────────────────── */}
+      <div>
+        <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-2">
+          Pages with google.com-referrer visits but no real GSC clicks
+        </h3>
+        <p className="text-xs text-muted-foreground mb-2">
+          The gap is the floor of bot or referrer-spoofed traffic counted as
+          “organic” in the main analytics tile.
+        </p>
+        {spoofedPages.length === 0 ? (
+          <p className="text-sm text-muted-foreground">
+            No referrer-google visits recorded.
+          </p>
+        ) : (
+          <div className="rounded border border-border overflow-hidden">
+            <table className="w-full text-xs">
+              <thead className="bg-muted/40 text-muted-foreground">
+                <tr>
+                  <th className="text-left px-3 py-1.5 font-medium">Page</th>
+                  <th className="text-right px-3 py-1.5 font-medium">Referrer hits</th>
+                  <th className="text-right px-3 py-1.5 font-medium">Unique visitors</th>
+                  <th className="text-right px-3 py-1.5 font-medium">Real GSC clicks</th>
+                  <th className="text-right px-3 py-1.5 font-medium">Gap</th>
+                </tr>
+              </thead>
+              <tbody>
+                {spoofedPages.map((r) => {
+                  const gap = r.referrer - r.real;
+                  return (
+                    <tr key={r.path} className="border-t border-border">
+                      <td className="px-3 py-1 truncate max-w-[280px]">
+                        <a
+                          href={r.path}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-foreground hover:underline inline-flex items-center gap-1"
+                        >
+                          {r.path} <ExternalLink className="h-3 w-3 opacity-60" />
+                        </a>
+                      </td>
+                      <td className="px-3 py-1 text-right tabular-nums">{r.referrer}</td>
+                      <td className="px-3 py-1 text-right tabular-nums text-muted-foreground">
+                        {r.visitors}
+                      </td>
+                      <td className="px-3 py-1 text-right tabular-nums">{r.real}</td>
+                      <td
+                        className={`px-3 py-1 text-right tabular-nums font-medium ${
+                          gap > 0 ? "text-destructive" : "text-muted-foreground"
+                        }`}
+                      >
+                        {gap > 0 ? `+${gap}` : gap}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
+
+const Tile = ({
+  icon,
+  label,
+  value,
+  sub,
+  tone,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: number | string;
+  sub: string;
+  tone?: "warn";
+}) => (
+  <div
+    className={`rounded-md border bg-background px-3 py-2 ${
+      tone === "warn" ? "border-destructive/40" : "border-border"
+    }`}
+  >
+    <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground uppercase tracking-wide">
+      {icon}
+      <span>{label}</span>
+    </div>
+    <div className="mt-1 text-2xl font-semibold text-foreground tabular-nums">
+      {typeof value === "number" ? value.toLocaleString() : value}
+    </div>
+    <div className="text-[11px] text-muted-foreground">{sub}</div>
+  </div>
+);
+
+export default SearchVsReferrerPanel;

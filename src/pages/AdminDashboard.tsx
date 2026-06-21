@@ -13,6 +13,7 @@ import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3
 import VisitorsWorldMap from "@/components/admin/VisitorsWorldMap";
 import SeoAnalyticsPanel from "@/components/admin/SeoAnalyticsPanel";
 import JumpClicksPanel from "@/components/admin/JumpClicksPanel";
+import SearchVsReferrerPanel from "@/components/admin/SearchVsReferrerPanel";
 
 /** Format a number of seconds as "Hh Mm" or "Mm Ss" for compact display. */
 function formatDuration(totalSeconds: number): string {
@@ -1855,6 +1856,7 @@ const AdminDashboard = () => {
             aria-labelledby="admin-tab-seo"
           >
             <SeoAnalyticsPanel />
+            <SearchVsReferrerPanel />
             <div className="mt-6">
               <JumpClicksPanel />
             </div>
