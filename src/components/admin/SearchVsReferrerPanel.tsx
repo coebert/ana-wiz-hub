@@ -307,21 +307,21 @@ export const SearchVsReferrerPanel = () => {
       const real = realByPath.get(path) ?? 0;
       const v = b.visitors.size;
 
+      const score = computeSpoofScore({
+        hits: b.hits,
+        weightedHits: b.weightedHits,
+        visitors: v,
+        botHits: b.botHits,
+        recentHits: b.recentHits,
+        real,
+      });
       const mismatch =
         b.weightedHits > 0
           ? Math.max(0, b.weightedHits - real) / b.weightedHits
           : 0;
-      const volume = Math.min(1, b.weightedHits / 8);
       const duplication = b.hits > 0 ? 1 - v / b.hits : 0;
       const botShare = b.hits > 0 ? b.botHits / b.hits : 0;
       const recency = b.hits > 0 ? b.recentHits / b.hits : 0;
-
-      // Weighted blend. Mismatch is the gate (multiplicative) — if real
-      // clicks fully explain the hits, score collapses to 0 regardless of
-      // the other factors.
-      const blend =
-        0.4 + 0.15 * volume + 0.15 * duplication + 0.2 * botShare + 0.1 * recency;
-      const score = Math.round(100 * mismatch * blend);
 
       const reasons: string[] = [];
       if (mismatch >= 0.9 && b.hits >= 3) reasons.push("no matching GSC clicks");
