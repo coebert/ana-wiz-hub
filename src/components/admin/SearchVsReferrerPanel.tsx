@@ -446,7 +446,19 @@ export const SearchVsReferrerPanel = () => {
     });
 
     return { pageSeries: rows, pageSeriesPaths: topPaths, botRateSeries: botRate };
-  }, [spoofedPages, visits, gsc]);
+  }, [spoofedPages, visits, gsc, chartPageSize, chartPageIndex]);
+
+  const chartTotalPages = Math.max(
+    1,
+    Math.ceil(spoofedPages.length / chartPageSize),
+  );
+  // Clamp the page index when filters change underneath us.
+  const safeChartPage = Math.min(chartPageIndex, chartTotalPages - 1);
+  const chartRangeStart = safeChartPage * chartPageSize + 1;
+  const chartRangeEnd = Math.min(
+    spoofedPages.length,
+    (safeChartPage + 1) * chartPageSize,
+  );
 
   const maxClicks = Math.max(1, ...topPages.map((p) => p.clicks));
   const maxQueryClicks = Math.max(1, ...topQueries.map((q) => q.clicks));
@@ -853,7 +865,7 @@ export const SearchVsReferrerPanel = () => {
                 </tr>
               </thead>
               <tbody>
-                {spoofedPages.map((r) => {
+                {spoofedPages.slice(0, 15).map((r) => {
                   const tone =
                     r.score >= 75
                       ? "bg-destructive text-destructive-foreground"
