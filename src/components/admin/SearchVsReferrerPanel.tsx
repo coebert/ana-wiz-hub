@@ -168,7 +168,8 @@ export const SearchVsReferrerPanel = () => {
 
   const spoofedPages = useMemo(() => {
     // Pages that received google.com-referrer visits but **no real GSC click**
-    // are the strongest bot-floor candidates.
+    // are the strongest bot-floor candidates. Each page is scored 0–100 on
+    // how confidently the gap looks like spoofed/bot traffic.
     const realByPath = new Map<string, number>();
     for (const r of gsc?.byPage ?? []) {
       const p = pathOf(r.page);
@@ -182,12 +183,42 @@ export const SearchVsReferrerPanel = () => {
       cur.visitors.add(v.visitor_id);
       refByPath.set(p, cur);
     }
-    const rows: { path: string; referrer: number; real: number; visitors: number }[] = [];
+    const rows: {
+      path: string;
+      referrer: number;
+      real: number;
+      visitors: number;
+      score: number;
+      reasons: string[];
+    }[] = [];
     for (const [path, { hits, visitors }] of refByPath) {
       const real = realByPath.get(path) ?? 0;
-      rows.push({ path, referrer: hits, real, visitors: visitors.size });
+      const v = visitors.size;
+      const gap = Math.max(0, hits - real);
+
+      // 1. Mismatch: how much of the referrer-google traffic is unaccounted
+      //    for by real GSC clicks. 1.0 = no real clicks at all.
+      const mismatch = hits > 0 ? gap / hits : 0;
+      // 2. Volume confidence: a single orphan hit is noise; ramp to full
+      //    confidence by ~10 hits.
+      const volume = Math.min(1, hits / 10);
+      // 3. Visitor diversity: same visitor repeating = bot-like. 1.0 means
+      //    every hit is the same visitor, 0 means every hit is unique.
+      const duplication = hits > 0 ? 1 - v / hits : 0;
+
+      const score = Math.round(
+        100 * mismatch * (0.55 + 0.25 * volume + 0.2 * duplication),
+      );
+
+      const reasons: string[] = [];
+      if (mismatch >= 0.9 && hits >= 3) reasons.push("no matching GSC clicks");
+      else if (mismatch >= 0.5) reasons.push("more referrer hits than GSC clicks");
+      if (duplication >= 0.5 && hits >= 4) reasons.push("repeat visitor pattern");
+      if (hits < 3) reasons.push("low sample");
+
+      rows.push({ path, referrer: hits, real, visitors: v, score, reasons });
     }
-    return rows.sort((a, b) => b.referrer - b.real - (a.referrer - a.real)).slice(0, 15);
+    return rows.sort((a, b) => b.score - a.score || b.referrer - a.referrer).slice(0, 15);
   }, [gsc, visits]);
 
   const maxClicks = Math.max(1, ...topPages.map((p) => p.clicks));
@@ -392,11 +423,13 @@ export const SearchVsReferrerPanel = () => {
       {/* ── spoofed pages ─────────────────────────────────────────────── */}
       <div>
         <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-2">
-          Pages with google.com-referrer visits but no real GSC clicks
+          Spoofing confidence by page
         </h3>
         <p className="text-xs text-muted-foreground mb-2">
-          The gap is the floor of bot or referrer-spoofed traffic counted as
-          “organic” in the main analytics tile.
+          Score 0–100 combines mismatch (referrer hits unexplained by real GSC
+          clicks), volume, and visitor-repeat patterns. Sort top-down to
+          prioritise pages to investigate. Query-level confidence is not shown
+          because <code>app_visits</code> doesn’t carry the source query.
         </p>
         {spoofedPages.length === 0 ? (
           <p className="text-sm text-muted-foreground">
@@ -408,18 +441,27 @@ export const SearchVsReferrerPanel = () => {
               <thead className="bg-muted/40 text-muted-foreground">
                 <tr>
                   <th className="text-left px-3 py-1.5 font-medium">Page</th>
-                  <th className="text-right px-3 py-1.5 font-medium">Referrer hits</th>
-                  <th className="text-right px-3 py-1.5 font-medium">Unique visitors</th>
-                  <th className="text-right px-3 py-1.5 font-medium">Real GSC clicks</th>
+                  <th className="text-right px-3 py-1.5 font-medium">Referrer</th>
+                  <th className="text-right px-3 py-1.5 font-medium">Visitors</th>
+                  <th className="text-right px-3 py-1.5 font-medium">Real GSC</th>
                   <th className="text-right px-3 py-1.5 font-medium">Gap</th>
+                  <th className="text-left px-3 py-1.5 font-medium w-[200px]">Confidence</th>
                 </tr>
               </thead>
               <tbody>
                 {spoofedPages.map((r) => {
                   const gap = r.referrer - r.real;
+                  const tone =
+                    r.score >= 75
+                      ? "bg-destructive text-destructive-foreground"
+                      : r.score >= 50
+                        ? "bg-physiology/80 text-white"
+                        : r.score >= 25
+                          ? "bg-muted-foreground/60 text-white"
+                          : "bg-muted text-muted-foreground";
                   return (
                     <tr key={r.path} className="border-t border-border">
-                      <td className="px-3 py-1 truncate max-w-[280px]">
+                      <td className="px-3 py-1 truncate max-w-[260px]">
                         <a
                           href={r.path}
                           target="_blank"
@@ -440,6 +482,19 @@ export const SearchVsReferrerPanel = () => {
                         }`}
                       >
                         {gap > 0 ? `+${gap}` : gap}
+                      </td>
+                      <td className="px-3 py-1">
+                        <div className="flex items-center gap-2 min-w-0">
+                          <span
+                            className={`inline-flex items-center justify-center rounded-sm px-1.5 py-0.5 text-[10px] font-semibold tabular-nums ${tone}`}
+                            aria-label={`Spoofing confidence ${r.score} of 100`}
+                          >
+                            {r.score}
+                          </span>
+                          <span className="text-[10px] text-muted-foreground truncate">
+                            {r.reasons.join(" · ") || "—"}
+                          </span>
+                        </div>
                       </td>
                     </tr>
                   );
