@@ -152,8 +152,12 @@ Deno.serve(async (req) => {
 
     const text = await r.text();
     if (!r.ok) {
+      // Log full upstream detail server-side, return only a generic
+      // message to the caller so we don't leak OpenAI quota state,
+      // model names, or hints about which key is invalid.
+      console.error("viva-voice-token: OpenAI client_secrets error", r.status, text);
       return new Response(
-        JSON.stringify({ error: `OpenAI client_secrets error ${r.status}: ${text}` }),
+        JSON.stringify({ error: "Voice session creation failed — please try again." }),
         { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
@@ -163,9 +167,10 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {
-    return new Response(JSON.stringify({ error: (e as Error).message }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    console.error("viva-voice-token: unhandled error", e);
+    return new Response(
+      JSON.stringify({ error: "Voice session creation failed — please try again." }),
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
   }
 });
