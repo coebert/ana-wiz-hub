@@ -643,6 +643,127 @@ export const SearchVsReferrerPanel = () => {
         </div>
       </div>
 
+      {/* ── 30-day spoofing confidence trend ───────────────────────────── */}
+      {pageSeriesPaths.length > 0 && (
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-1">
+            <LineChartIcon className="h-4 w-4 text-physiology" aria-hidden />
+            <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground">
+              Spoofing confidence trend · top {pageSeriesPaths.length} pages
+            </h3>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            Trailing {TRAILING_WINDOW_DAYS}-day rolling score per page. Spikes
+            mark when spoofing started; sustained drops to 0 mean it has
+            stopped. Same 0–100 formula as the table below.
+          </p>
+          <div className="h-64 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={pageSeries} margin={{ top: 5, right: 16, left: -16, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <XAxis
+                  dataKey="date"
+                  tickFormatter={fmtDay}
+                  stroke="hsl(var(--muted-foreground))"
+                  fontSize={10}
+                  interval="preserveStartEnd"
+                  minTickGap={24}
+                />
+                <YAxis
+                  domain={[0, 100]}
+                  stroke="hsl(var(--muted-foreground))"
+                  fontSize={10}
+                  width={32}
+                />
+                <Tooltip
+                  contentStyle={{
+                    background: "hsl(var(--popover))",
+                    border: "1px solid hsl(var(--border))",
+                    borderRadius: 6,
+                    fontSize: 11,
+                  }}
+                  labelFormatter={(d) => fmtDay(String(d))}
+                  formatter={(value: number, name: string) => [`${value}/100`, name]}
+                />
+                <Legend
+                  wrapperStyle={{ fontSize: 10 }}
+                  formatter={(value: string) =>
+                    value.length > 32 ? "…" + value.slice(-31) : value
+                  }
+                />
+                {pageSeriesPaths.map((path, idx) => (
+                  <Line
+                    key={path}
+                    type="monotone"
+                    dataKey={path}
+                    name={path}
+                    stroke={PAGE_LINE_COLORS[idx % PAGE_LINE_COLORS.length]}
+                    strokeWidth={2}
+                    dot={false}
+                    isAnimationActive={false}
+                  />
+                ))}
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Bot UA rate across all spoof-suspect visits */}
+          <details className="mt-3 text-xs text-muted-foreground">
+            <summary className="cursor-pointer text-foreground hover:underline inline-flex items-center gap-1.5">
+              <Bot className="h-3.5 w-3.5" /> Daily bot-UA rate across all
+              google-referrer visits
+            </summary>
+            <div className="h-40 w-full mt-2">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={botRateSeries}
+                  margin={{ top: 5, right: 16, left: -16, bottom: 0 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                  <XAxis
+                    dataKey="date"
+                    tickFormatter={fmtDay}
+                    stroke="hsl(var(--muted-foreground))"
+                    fontSize={10}
+                    interval="preserveStartEnd"
+                    minTickGap={24}
+                  />
+                  <YAxis
+                    domain={[0, 100]}
+                    unit="%"
+                    stroke="hsl(var(--muted-foreground))"
+                    fontSize={10}
+                    width={36}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "hsl(var(--popover))",
+                      border: "1px solid hsl(var(--border))",
+                      borderRadius: 6,
+                      fontSize: 11,
+                    }}
+                    labelFormatter={(d) => fmtDay(String(d))}
+                    formatter={(value: number) => [`${value}%`, "Bot UA share"]}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="rate"
+                    stroke="hsl(var(--destructive))"
+                    strokeWidth={2}
+                    dot={false}
+                    isAnimationActive={false}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+            <p className="mt-1">
+              Only counts visits logged after the <code>user_agent</code>
+              column was added; earlier days will read ≈100% (UA missing).
+            </p>
+          </details>
+        </div>
+      )}
+
       {/* ── spoofed pages ─────────────────────────────────────────────── */}
       <div>
         <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-2">
