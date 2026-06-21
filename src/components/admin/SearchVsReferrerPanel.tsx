@@ -121,7 +121,7 @@ export const SearchVsReferrerPanel = () => {
       }),
       supabase
         .from("app_visits")
-        .select("visited_at,page_path,referrer,visitor_id")
+        .select("visited_at,page_path,referrer,visitor_id,user_agent")
         .gte("visited_at", sinceIso)
         .or("referrer.ilike.%google%,referrer.ilike.%.google.%")
         .order("visited_at", { ascending: false })
