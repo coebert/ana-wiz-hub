@@ -11,7 +11,7 @@ import { SectionLayout } from "@/components/SectionLayout";
  */
 const Trust = () => {
   return (
-    <SectionLayout>
+    <SectionLayout title="Trust, security & privacy" subtitle="How AnaesthesiaCore handles accounts, data, and content accuracy.">
       <Helmet>
         <title>Trust, security & privacy — AnaesthesiaCore</title>
         <meta
