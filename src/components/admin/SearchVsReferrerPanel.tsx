@@ -51,9 +51,13 @@ interface VisitRow {
   page_path: string | null;
   referrer: string | null;
   visitor_id: string;
+  user_agent: string | null;
 }
 
 const RANGE_DAYS = 30;
+// Half-life for recency decay, in days. A 14-day half-life means a hit
+// today is worth 1.0, a hit 14 days ago 0.5, and a hit 28 days ago 0.25.
+const DECAY_HALF_LIFE_DAYS = 14;
 
 const fmtDay = (iso: string) => {
   const d = new Date(iso);
@@ -71,6 +75,32 @@ const pathOf = (loc: string) => {
 const stripQueryAndHash = (p: string | null) => {
   if (!p) return "/";
   return p.split(/[?#]/)[0] || "/";
+};
+
+// Tokens that, when present in a User-Agent string, almost always indicate
+// an automated client rather than a real browser. Lowercase substring match.
+const BOT_UA_TOKENS = [
+  "bot", "crawler", "spider", "slurp", "headless", "phantomjs",
+  "puppeteer", "playwright", "selenium", "lighthouse", "pagespeed",
+  "ahrefs", "semrush", "mj12", "dotbot", "petalbot", "yandexbot",
+  "bingpreview", "gptbot", "claudebot", "ccbot", "anthropic", "perplexity",
+  "applebot", "duckduckbot", "facebookexternalhit", "twitterbot",
+  "linkedinbot", "discordbot", "telegrambot", "whatsapp",
+  "dataforseo", "serpapi", "scrapy", "python-requests", "python-urllib",
+  "go-http-client", "java/", "okhttp", "curl/", "wget/", "httpclient",
+  "axios/", "node-fetch", "got (",
+];
+
+const isBotUserAgent = (ua: string | null): boolean => {
+  if (!ua) return true; // missing UA is itself a strong bot signal
+  const s = ua.toLowerCase();
+  return BOT_UA_TOKENS.some((t) => s.includes(t));
+};
+
+const recencyWeight = (visitedAt: string, now: number): number => {
+  const ageMs = now - new Date(visitedAt).getTime();
+  const ageDays = Math.max(0, ageMs / (1000 * 60 * 60 * 24));
+  return Math.pow(0.5, ageDays / DECAY_HALF_LIFE_DAYS);
 };
 
 export const SearchVsReferrerPanel = () => {
