@@ -1,5 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
-import { ShieldAlert, Search, RefreshCw, Bot, MousePointerClick, ExternalLink } from "lucide-react";
+import { ShieldAlert, Search, RefreshCw, Bot, MousePointerClick, ExternalLink, LineChart as LineChartIcon } from "lucide-react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+  Legend,
+} from "recharts";
 import { supabase } from "@/integrations/supabase/client";
 
 /**
@@ -10,7 +20,7 @@ import { supabase } from "@/integrations/supabase/client";
  *
  * Data sources:
  *   - GSC searchAnalytics (via gsc-search-analytics edge function), grouped
- *     by date, page, and query for the last 30 days.
+ *     by date, page, query, and page×date for the last 30 days.
  *   - app_visits rows (admin RLS read) with referrer containing "google"
  *     for the same window, grouped by day and by page_path.
  */
@@ -36,6 +46,12 @@ interface GscQueryRow {
   ctr: number;
   position: number;
 }
+interface GscPageDateRow {
+  page: string;
+  date: string;
+  clicks: number;
+  impressions: number;
+}
 interface GscPayload {
   site: string;
   startDate: string;
@@ -44,6 +60,7 @@ interface GscPayload {
   byDate: GscDateRow[];
   byPage: GscPageRow[];
   byQuery: GscQueryRow[];
+  byPageDate?: GscPageDateRow[];
 }
 
 interface VisitRow {
