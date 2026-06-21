@@ -154,13 +154,16 @@ const PAGE_LINE_COLORS = [
   "hsl(var(--perioperative))",
 ];
 const TRAILING_WINDOW_DAYS = 7;
-const MAX_CHART_PAGES = 5;
+const CHART_PAGE_OPTIONS = [5, 10, 20] as const;
+type ChartPageSize = (typeof CHART_PAGE_OPTIONS)[number];
 
 export const SearchVsReferrerPanel = () => {
   const [gsc, setGsc] = useState<GscPayload | null>(null);
   const [visits, setVisits] = useState<VisitRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [chartPageSize, setChartPageSize] = useState<ChartPageSize>(5);
+  const [chartPageIndex, setChartPageIndex] = useState(0);
 
   const load = async () => {
     setLoading(true);
@@ -343,7 +346,7 @@ export const SearchVsReferrerPanel = () => {
         reasons,
       });
     }
-    return rows.sort((a, b) => b.score - a.score || b.referrer - a.referrer).slice(0, 15);
+    return rows.sort((a, b) => b.score - a.score || b.referrer - a.referrer);
   }, [gsc, visits]);
 
   // ── 30-day per-page spoofing-confidence series ─────────────────────────
@@ -353,7 +356,8 @@ export const SearchVsReferrerPanel = () => {
   // when spoofing starts or stops. Per-day real GSC clicks come from the
   // `byPageDate` dimension; bot UA / visitor data come from app_visits.
   const { pageSeries, pageSeriesPaths, botRateSeries } = useMemo(() => {
-    const topPaths = spoofedPages.slice(0, MAX_CHART_PAGES).map((p) => p.path);
+    const start = chartPageIndex * chartPageSize;
+    const topPaths = spoofedPages.slice(start, start + chartPageSize).map((p) => p.path);
     const pathSet = new Set(topPaths);
 
     // Index app_visits by (path → array of {ts, weight, visitor, bot}).
@@ -442,7 +446,19 @@ export const SearchVsReferrerPanel = () => {
     });
 
     return { pageSeries: rows, pageSeriesPaths: topPaths, botRateSeries: botRate };
-  }, [spoofedPages, visits, gsc]);
+  }, [spoofedPages, visits, gsc, chartPageSize, chartPageIndex]);
+
+  const chartTotalPages = Math.max(
+    1,
+    Math.ceil(spoofedPages.length / chartPageSize),
+  );
+  // Clamp the page index when filters change underneath us.
+  const safeChartPage = Math.min(chartPageIndex, chartTotalPages - 1);
+  const chartRangeStart = safeChartPage * chartPageSize + 1;
+  const chartRangeEnd = Math.min(
+    spoofedPages.length,
+    (safeChartPage + 1) * chartPageSize,
+  );
 
   const maxClicks = Math.max(1, ...topPages.map((p) => p.clicks));
   const maxQueryClicks = Math.max(1, ...topQueries.map((q) => q.clicks));
@@ -646,16 +662,73 @@ export const SearchVsReferrerPanel = () => {
       {/* ── 30-day spoofing confidence trend ───────────────────────────── */}
       {pageSeriesPaths.length > 0 && (
         <div className="mb-6">
-          <div className="flex items-center gap-2 mb-1">
-            <LineChartIcon className="h-4 w-4 text-physiology" aria-hidden />
-            <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground">
-              Spoofing confidence trend · top {pageSeriesPaths.length} pages
-            </h3>
+          <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
+            <div className="flex items-center gap-2">
+              <LineChartIcon className="h-4 w-4 text-physiology" aria-hidden />
+              <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground">
+                Spoofing confidence trend
+              </h3>
+            </div>
+            <div className="flex items-center gap-3 text-xs">
+              {/* Page-size chips */}
+              <div
+                role="radiogroup"
+                aria-label="Pages per chart"
+                className="inline-flex rounded border border-border overflow-hidden"
+              >
+                {CHART_PAGE_OPTIONS.map((n) => (
+                  <button
+                    key={n}
+                    role="radio"
+                    aria-checked={chartPageSize === n}
+                    onClick={() => {
+                      setChartPageSize(n);
+                      setChartPageIndex(0);
+                    }}
+                    className={`px-2 py-0.5 tabular-nums ${
+                      chartPageSize === n
+                        ? "bg-physiology text-white"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {n}
+                  </button>
+                ))}
+              </div>
+              {/* Pagination */}
+              {spoofedPages.length > chartPageSize && (
+                <div className="inline-flex items-center gap-1.5 text-muted-foreground">
+                  <button
+                    onClick={() => setChartPageIndex((i) => Math.max(0, i - 1))}
+                    disabled={safeChartPage === 0}
+                    className="px-1.5 py-0.5 rounded border border-border disabled:opacity-40 hover:text-foreground"
+                    aria-label="Previous page of suspect pages"
+                  >
+                    ‹
+                  </button>
+                  <span className="tabular-nums">
+                    {chartRangeStart}–{chartRangeEnd} of {spoofedPages.length}
+                  </span>
+                  <button
+                    onClick={() =>
+                      setChartPageIndex((i) =>
+                        Math.min(chartTotalPages - 1, i + 1),
+                      )
+                    }
+                    disabled={safeChartPage >= chartTotalPages - 1}
+                    className="px-1.5 py-0.5 rounded border border-border disabled:opacity-40 hover:text-foreground"
+                    aria-label="Next page of suspect pages"
+                  >
+                    ›
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
           <p className="text-xs text-muted-foreground mb-3">
-            Trailing {TRAILING_WINDOW_DAYS}-day rolling score per page. Spikes
-            mark when spoofing started; sustained drops to 0 mean it has
-            stopped. Same 0–100 formula as the table below.
+            Trailing {TRAILING_WINDOW_DAYS}-day rolling score per page, ranked
+            by current spoof confidence. Spikes mark when spoofing started;
+            sustained drops to 0 mean it has stopped.
           </p>
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
@@ -849,7 +922,7 @@ export const SearchVsReferrerPanel = () => {
                 </tr>
               </thead>
               <tbody>
-                {spoofedPages.map((r) => {
+                {spoofedPages.slice(0, 15).map((r) => {
                   const tone =
                     r.score >= 75
                       ? "bg-destructive text-destructive-foreground"
