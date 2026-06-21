@@ -662,16 +662,73 @@ export const SearchVsReferrerPanel = () => {
       {/* ── 30-day spoofing confidence trend ───────────────────────────── */}
       {pageSeriesPaths.length > 0 && (
         <div className="mb-6">
-          <div className="flex items-center gap-2 mb-1">
-            <LineChartIcon className="h-4 w-4 text-physiology" aria-hidden />
-            <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground">
-              Spoofing confidence trend · top {pageSeriesPaths.length} pages
-            </h3>
+          <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
+            <div className="flex items-center gap-2">
+              <LineChartIcon className="h-4 w-4 text-physiology" aria-hidden />
+              <h3 className="text-xs uppercase tracking-wider font-semibold text-muted-foreground">
+                Spoofing confidence trend
+              </h3>
+            </div>
+            <div className="flex items-center gap-3 text-xs">
+              {/* Page-size chips */}
+              <div
+                role="radiogroup"
+                aria-label="Pages per chart"
+                className="inline-flex rounded border border-border overflow-hidden"
+              >
+                {CHART_PAGE_OPTIONS.map((n) => (
+                  <button
+                    key={n}
+                    role="radio"
+                    aria-checked={chartPageSize === n}
+                    onClick={() => {
+                      setChartPageSize(n);
+                      setChartPageIndex(0);
+                    }}
+                    className={`px-2 py-0.5 tabular-nums ${
+                      chartPageSize === n
+                        ? "bg-physiology text-white"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {n}
+                  </button>
+                ))}
+              </div>
+              {/* Pagination */}
+              {spoofedPages.length > chartPageSize && (
+                <div className="inline-flex items-center gap-1.5 text-muted-foreground">
+                  <button
+                    onClick={() => setChartPageIndex((i) => Math.max(0, i - 1))}
+                    disabled={safeChartPage === 0}
+                    className="px-1.5 py-0.5 rounded border border-border disabled:opacity-40 hover:text-foreground"
+                    aria-label="Previous page of suspect pages"
+                  >
+                    ‹
+                  </button>
+                  <span className="tabular-nums">
+                    {chartRangeStart}–{chartRangeEnd} of {spoofedPages.length}
+                  </span>
+                  <button
+                    onClick={() =>
+                      setChartPageIndex((i) =>
+                        Math.min(chartTotalPages - 1, i + 1),
+                      )
+                    }
+                    disabled={safeChartPage >= chartTotalPages - 1}
+                    className="px-1.5 py-0.5 rounded border border-border disabled:opacity-40 hover:text-foreground"
+                    aria-label="Next page of suspect pages"
+                  >
+                    ›
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
           <p className="text-xs text-muted-foreground mb-3">
-            Trailing {TRAILING_WINDOW_DAYS}-day rolling score per page. Spikes
-            mark when spoofing started; sustained drops to 0 mean it has
-            stopped. Same 0–100 formula as the table below.
+            Trailing {TRAILING_WINDOW_DAYS}-day rolling score per page, ranked
+            by current spoof confidence. Spikes mark when spoofing started;
+            sustained drops to 0 mean it has stopped.
           </p>
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
