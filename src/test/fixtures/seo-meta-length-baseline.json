@@ -1,0 +1,196 @@
+{
+  "note": "Frozen baseline of pre-existing title/description length offenders. Do not add new entries — the seo-meta-lengths test ratchets: new violations fail CI, removed ones are also flagged so the baseline shrinks over time. Regenerate ONLY when intentionally rewording.",
+  "titleMax": 60,
+  "descMin": 50,
+  "descMax": 160,
+  "titles": {
+    "src/pages/notes/NotesIndex.tsx": [
+      {
+        "value": "Notes — focused answers to common FRCA questions | AnaesthesiaCore",
+        "length": 66
+      }
+    ],
+    "src/pages/topics/BurnsPlasticsTopic.tsx": [
+      {
+        "value": "Burns & Plastic Surgery Anaesthesia — Parkland, airway & CO | FRCA",
+        "length": 66
+      }
+    ],
+    "src/pages/topics/ENTAnaesthesiaTopic.tsx": [
+      {
+        "value": "ENT & Maxillofacial Anaesthesia — laser airway, shared airway & stridor",
+        "length": 71
+      }
+    ],
+    "src/pages/topics/GynaecologicalAnaesthesiaTopic.tsx": [
+      {
+        "value": "Gynaecological Anaesthesia — Laparoscopy, robotic surgery, hysteroscopy & oncology",
+        "length": 82
+      }
+    ],
+    "src/pages/topics/HepatobiliaryTransplantTopic.tsx": [
+      {
+        "value": "Hepatobiliary & Transplant Anaesthesia — Liver resection & LT | FRCA",
+        "length": 68
+      }
+    ],
+    "src/pages/topics/MuscleRelaxantsTopic.tsx": [
+      {
+        "value": "Neuromuscular Blocking Drugs (NMBAs): Depolarising vs Non-Depolarising | AnaesthesiaCore",
+        "length": 88
+      }
+    ],
+    "src/pages/topics/OphthalmicAnaesthesiaTopic.tsx": [
+      {
+        "value": "Ophthalmic Anaesthesia — IOP, oculocardiac reflex, eye blocks & open globe",
+        "length": 74
+      }
+    ],
+    "src/pages/topics/OrthopaedicAnaesthesiaTopic.tsx": [
+      {
+        "value": "Orthopaedic Anaesthesia — BCIS, tourniquets, #NOF & day-case arthroplasty",
+        "length": 73
+      }
+    ],
+    "src/pages/topics/PaediatricAnaesthesiaTopic.tsx": [
+      {
+        "value": "Paediatric Anaesthesia — ETT Sizing, TIVA, Caudal &amp; Fluids",
+        "length": 62
+      }
+    ],
+    "src/pages/topics/PlasticSurgeryTopic.tsx": [
+      {
+        "value": "Plastic Surgery Anaesthesia — Free flap perfusion, DIEP & microsurgery | FRCA",
+        "length": 77
+      }
+    ],
+    "src/pages/topics/RocuroniumTopic.tsx": [
+      {
+        "value": "Rocuronium: Dose, Onset, TOF & Sugammadex Reversal | AnaesthesiaCore",
+        "length": 68
+      }
+    ],
+    "src/pages/topics/TraumaEmergencyTopic.tsx": [
+      {
+        "value": "Trauma & Emergency Anaesthesia — RSI, Damage Control &amp; MTP",
+        "length": 62
+      }
+    ],
+    "src/pages/topics/UrologicalAnaesthesiaTopic.tsx": [
+      {
+        "value": "Urological Anaesthesia — TURP syndrome, lithotomy, cystectomy & ESWL",
+        "length": 68
+      }
+    ],
+    "src/pages/topics/VascularAnaesthesiaTopic.tsx": [
+      {
+        "value": "Vascular Anaesthesia — AAA, CEA, EVAR & aortic cross-clamp physiology",
+        "length": 69
+      }
+    ]
+  },
+  "descriptions": {
+    "src/pages/topics/BurnsPlasticsTopic.tsx": [
+      {
+        "value": "Burns and plastic surgery anaesthesia for FRCA Final: burn assessment and Parkland fluid resuscitation, airway and inhalational injury, carbon monoxide and cyanide poisoning, suxamethonium contraindication, and burns surgery.",
+        "length": 225
+      }
+    ],
+    "src/pages/topics/CardiothoracicTopic.tsx": [
+      {
+        "value": "Cardiothoracic anaesthesia explained for FRCA and FFICM: cardiopulmonary bypass, one-lung ventilation and DLT management, deep hypothermic circulatory arrest, pH-stat vs α-stat, cardiac arrest after cardiac surgery (CALS), and post-thoracotomy analgesia.",
+        "length": 254
+      }
+    ],
+    "src/pages/topics/ENTAnaesthesiaTopic.tsx": [
+      {
+        "value": "ENT and maxillofacial anaesthesia for FRCA Final: shared airway principles, laser airway surgery and fire prevention, jet ventilation and THRIVE, tonsillectomy and post-tonsillectomy bleeding, middle ear surgery, stridor management, tracheostomy and laryngectomy, intra-operative nerve monitoring, and post-thyroidectomy emergency management.",
+        "length": 342
+      }
+    ],
+    "src/pages/topics/GynaecologicalAnaesthesiaTopic.tsx": [
+      {
+        "value": "Gynaecological anaesthesia for FRCA Final: pneumoperitoneum and Trendelenburg physiology, robotic surgery airway considerations, hysteroscopy fluid absorption and TURP-equivalent syndrome, CO₂ gas embolism, major gynaecological oncology and ERAS, and ruptured ectopic pregnancy.",
+        "length": 278
+      }
+    ],
+    "src/pages/topics/HepatobiliaryTransplantTopic.tsx": [
+      {
+        "value": "Hepatobiliary and transplant anaesthesia for FRCA Final: low CVP technique and Pringle manoeuvre, liver transplant phases, post-reperfusion syndrome, cirrhotic patient physiology, and hepatorenal syndrome.",
+        "length": 205
+      }
+    ],
+    "src/pages/topics/MuscleRelaxantsTopic.tsx": [
+      {
+        "value": "Neuromuscular blocking drugs for FRCA: depolarising (suxamethonium) vs non-depolarising muscle relaxants (rocuronium, vecuronium, atracurium, cisatracurium), TOF monitoring, sugammadex and neostigmine reversal.",
+        "length": 210
+      }
+    ],
+    "src/pages/topics/NeuroanaesthesiaTopic.tsx": [
+      {
+        "value": "Neuroanaesthesia for FRCA Final and FFICM: cerebral blood flow and CPP targets, anaesthetic effects on CBF/CMRO₂, stepwise raised-ICP management (mannitol, hypertonic saline, RESCUEicp), posterior fossa and awake craniotomy, trans-sphenoidal surgery, and anaesthesia for mechanical thrombectomy.",
+        "length": 295
+      }
+    ],
+    "src/pages/topics/OphthalmicAnaesthesiaTopic.tsx": [
+      {
+        "value": "Ophthalmic anaesthesia for FRCA Final: intra-ocular pressure control, the oculocardiac reflex, sub-Tenon's peribulbar and retrobulbar blocks, open-globe injury RSI, brainstem anaesthesia, strabismus surgery, and N₂O contraindication after intraocular gas.",
+        "length": 255
+      }
+    ],
+    "src/pages/topics/OrthopaedicAnaesthesiaTopic.tsx": [
+      {
+        "value": "Orthopaedic anaesthesia for FRCA Final: hip fracture standards, tourniquet physiology, bone cement implantation syndrome (BCIS), regional techniques for enhanced recovery (adductor canal, PENG, IPACK), day-case joint replacement, compartment syndrome, and home perineural catheters.",
+        "length": 282
+      }
+    ],
+    "src/pages/topics/PaediatricAnaesthesiaTopic.tsx": [
+      {
+        "value": "Paediatric anaesthesia explained for FRCA and FFICM: airway anatomy differences, ETT sizing and WETFLAG emergency drugs, laryngospasm management, remi-prop TIVA, propofol infusion syndrome, pyloric stenosis, caudal block and paediatric fluid management.",
+        "length": 253
+      }
+    ],
+    "src/pages/topics/PainMedicineTopic.tsx": [
+      {
+        "value": "FRCA Final & FFICM pain medicine: acute and chronic pain mechanisms, multimodal analgesia, neuropathic pain guidelines, CRPS, cancer pain, opioid rotation, SCS, and interventional techniques.",
+        "length": 191
+      }
+    ],
+    "src/pages/topics/PlasticSurgeryTopic.tsx": [
+      {
+        "value": "Plastic and reconstructive anaesthesia for FRCA Final: free flap physiology and the three norms, haemodilution and vasopressor choice, DIEP and head & neck reconstruction, digital replantation, prolonged surgery management, and flap monitoring.",
+        "length": 244
+      }
+    ],
+    "src/pages/topics/RegionalAnaesthesiaTopic.tsx": [
+      {
+        "value": "Spinal anaesthesia explained for FRCA and FFICM: how it works, how long it lasts, side effects, PDPH, spinal vs epidural, anticoagulation timing, block height and bedside testing.",
+        "length": 179
+      }
+    ],
+    "src/pages/topics/TIVATopic.tsx": [
+      {
+        "value": "FRCA Primary & Final guide to TIVA and target-controlled infusion: PK compartment models, Marsh vs Schnider vs Eleveld, plasma vs effect-site targeting, CSHT, PRIS, and practical setup.",
+        "length": 185
+      }
+    ],
+    "src/pages/topics/TraumaEmergencyTopic.tsx": [
+      {
+        "value": "Trauma anaesthesia explained for FRCA and FFICM: RSI in the shocked patient, damage control resuscitation, massive transfusion protocol, TXA timing, permissive hypotension, TBI management, citrate toxicity, and the lethal triad.",
+        "length": 228
+      }
+    ],
+    "src/pages/topics/UrologicalAnaesthesiaTopic.tsx": [
+      {
+        "value": "Urological anaesthesia for FRCA Final: TURP syndrome and hyponatraemia management, spinal vs general anaesthesia for TURP, bipolar and laser prostatectomy, lithotomy position risks, radical cystectomy and ERAS, nephrectomy and robotic surgery, propofol-induced penile erection, and ESWL.",
+        "length": 287
+      }
+    ],
+    "src/pages/topics/VascularAnaesthesiaTopic.tsx": [
+      {
+        "value": "Vascular anaesthesia for FRCA Final: open AAA and EVAR, aortic cross-clamping and unclamping physiology, carotid endarterectomy (GA vs cervical plexus block, cerebral monitoring, shunting), cerebral hyperperfusion syndrome, spinal cord protection, and preoperative cardiac risk stratification.",
+        "length": 293
+      }
+    ]
+  }
+}
