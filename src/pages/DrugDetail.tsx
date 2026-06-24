@@ -834,14 +834,14 @@ export default function DrugDetail() {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>{`${drug.name} — ${drug.drug_class} monograph | AnaesthesiaCore`}</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={metaDescription} />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={`${drug.name} — drug monograph`} />
+        <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="article" />
-        <meta name="twitter:title" content={`${drug.name} — drug monograph`} />
+        <meta name="twitter:title" content={ogTitle} />
         <meta name="twitter:description" content={metaDescription} />
         <script type="application/ld+json">{JSON.stringify(drugJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(medicalPageJsonLd)}</script>
