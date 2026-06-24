@@ -155,18 +155,26 @@ export const NoteLayout = ({
       }
     : null;
 
+  // SEO: cap <title> at 60 chars — drop the " | AnaesthesiaCore" suffix when
+  // the headline alone would push past the limit (matches SectionLayout).
+  const SUFFIX = " | AnaesthesiaCore";
+  const fullTitle = `${title}${SUFFIX}`;
+  const pageTitle = fullTitle.length <= 60 ? fullTitle : title.slice(0, 60);
+  const ogTitleRaw = shortTitle ?? title;
+  const ogTitle = ogTitleRaw.length <= 60 ? ogTitleRaw : `${ogTitleRaw.slice(0, 59).trimEnd()}…`;
+
   return (
     <>
       <Header />
       <Helmet>
-        <title>{title} | AnaesthesiaCore</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={url} />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={shortTitle ?? title} />
+        <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={url} />
-        <meta name="twitter:title" content={shortTitle ?? title} />
+        <meta name="twitter:title" content={ogTitle} />
         <meta name="twitter:description" content={description} />
         <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
