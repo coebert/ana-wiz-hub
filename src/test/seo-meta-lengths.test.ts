@@ -122,42 +122,99 @@ const LITERAL_DESC_TAG =
 const LITERAL_DESC_JSX =
   /<meta\s+name="description"\s+content=\{\s*["'`]([^"'`{}]+)["'`]\s*\}/g;
 
+/**
+ * Frozen baseline of pre-existing offenders. New violations (any file/value
+ * not in the baseline) fail the build — that's the regression guard. Removed
+ * violations (baseline entries that are now clean) also fail so the baseline
+ * shrinks instead of going stale.
+ */
+type BaselineEntry = { value: string; length: number };
+type Baseline = {
+  titles: Record<string, BaselineEntry[]>;
+  descriptions: Record<string, BaselineEntry[]>;
+};
+const baseline = JSON.parse(
+  readFileSync(
+    resolve(ROOT, "src/test/fixtures/seo-meta-length-baseline.json"),
+    "utf8",
+  ),
+) as Baseline;
+
+function inBaseline(
+  bucket: Record<string, BaselineEntry[]>,
+  file: string,
+  value: string,
+): boolean {
+  return (bucket[file] ?? []).some((e) => e.value === value);
+}
+
 describe("per-route Helmet literal titles and descriptions", () => {
-  it(`every static <title> literal is ≤${TITLE_MAX} chars`, () => {
-    const offenders: string[] = [];
+  it(`every static <title> literal is ≤${TITLE_MAX} chars (ratchet vs baseline)`, () => {
+    const newOffenders: string[] = [];
+    const seenBaseline = new Set<string>();
     for (const f of srcFiles) {
       const src = readFileSync(f, "utf8");
-      // Skip files that don't render a Helmet head
       if (!src.includes("<Helmet")) continue;
+      const rel = relative(ROOT, f).replace(/\\/g, "/");
       for (const m of src.matchAll(LITERAL_TITLE_TAG)) {
         const title = m[1].trim();
-        if (title.length > TITLE_MAX) {
-          offenders.push(
-            `${relative(ROOT, f)}: <title> "${title}" is ${title.length} chars`,
+        if (title.length <= TITLE_MAX) continue;
+        if (inBaseline(baseline.titles, rel, title)) {
+          seenBaseline.add(`${rel}::${title}`);
+          continue;
+        }
+        newOffenders.push(
+          `${rel}: <title> "${title}" is ${title.length} chars (max ${TITLE_MAX}) — not in baseline`,
+        );
+      }
+    }
+    // Detect baseline entries that no longer exist — force the baseline to
+    // shrink instead of harbouring obsolete exceptions.
+    const stale: string[] = [];
+    for (const [file, entries] of Object.entries(baseline.titles)) {
+      for (const e of entries) {
+        if (!seenBaseline.has(`${file}::${e.value}`)) {
+          stale.push(
+            `${file}: baseline entry no longer present — remove from src/test/fixtures/seo-meta-length-baseline.json: "${e.value}"`,
           );
         }
       }
     }
-    expect(offenders, offenders.join("\n")).toEqual([]);
+    expect([...newOffenders, ...stale], [...newOffenders, ...stale].join("\n")).toEqual([]);
   });
 
-  it(`every static description literal is ${DESC_MIN}–${DESC_MAX} chars`, () => {
-    const offenders: string[] = [];
+  it(`every static description literal is ${DESC_MIN}–${DESC_MAX} chars (ratchet vs baseline)`, () => {
+    const newOffenders: string[] = [];
+    const seenBaseline = new Set<string>();
     for (const f of srcFiles) {
       const src = readFileSync(f, "utf8");
       if (!src.includes("<Helmet")) continue;
+      const rel = relative(ROOT, f).replace(/\\/g, "/");
       const literals: string[] = [];
       for (const m of src.matchAll(LITERAL_DESC_TAG)) literals.push(m[1]);
       for (const m of src.matchAll(LITERAL_DESC_JSX)) literals.push(m[1]);
       for (const d of literals) {
-        if (d.length < DESC_MIN || d.length > DESC_MAX) {
-          offenders.push(
-            `${relative(ROOT, f)}: description "${d}" is ${d.length} chars (target ${DESC_MIN}–${DESC_MAX})`,
+        if (d.length >= DESC_MIN && d.length <= DESC_MAX) continue;
+        if (inBaseline(baseline.descriptions, rel, d)) {
+          seenBaseline.add(`${rel}::${d}`);
+          continue;
+        }
+        newOffenders.push(
+          `${rel}: description "${d}" is ${d.length} chars (target ${DESC_MIN}–${DESC_MAX}) — not in baseline`,
+        );
+      }
+    }
+    const stale: string[] = [];
+    for (const [file, entries] of Object.entries(baseline.descriptions)) {
+      for (const e of entries) {
+        if (!seenBaseline.has(`${file}::${e.value}`)) {
+          stale.push(
+            `${file}: baseline entry no longer present — remove from src/test/fixtures/seo-meta-length-baseline.json: "${e.value}"`,
           );
         }
       }
     }
-    expect(offenders, offenders.join("\n")).toEqual([]);
+    expect([...newOffenders, ...stale], [...newOffenders, ...stale].join("\n")).toEqual([]);
   });
 });
 
