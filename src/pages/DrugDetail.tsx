@@ -749,13 +749,27 @@ export default function DrugDetail() {
   );
 
   const canonicalUrl = `https://anaesthesiacore.app/drugs/${drug.slug}`;
-  const rawMetaDescription = (
-    drug.indication_oneliner ||
-    `${drug.name} (${drug.drug_class}) monograph: presentation, mechanism, pharmacokinetics, dosing, monitoring and side effects.`
-  );
+  // Descriptive fallback ensures we never fall below the ~50 char SEO floor,
+  // even when indication_oneliner is missing or terse.
+  const richFallback = `${drug.name} (${drug.drug_class}) — anaesthesia drug monograph covering presentation, mechanism, pharmacokinetics, dosing, monitoring, side effects and interactions.`;
+  const oneliner = drug.indication_oneliner?.trim() ?? "";
+  const rawMetaDescription = oneliner.length >= 50 ? oneliner : richFallback;
   const metaDescription = rawMetaDescription.length > 160
     ? `${rawMetaDescription.slice(0, 157).trimEnd()}…`
     : rawMetaDescription;
+  // SEO: cap <title> at 60 chars — drop the class suffix, then the brand
+  // suffix, before truncating.
+  const titleBrandSuffix = " | AnaesthesiaCore";
+  const titleFull = `${drug.name} — ${drug.drug_class} monograph${titleBrandSuffix}`;
+  const titleNoClass = `${drug.name} monograph${titleBrandSuffix}`;
+  const titleNoBrand = `${drug.name} — ${drug.drug_class} monograph`;
+  const pageTitle =
+    titleFull.length <= 60 ? titleFull
+    : titleNoClass.length <= 60 ? titleNoClass
+    : titleNoBrand.length <= 60 ? titleNoBrand
+    : `${drug.name} monograph`.slice(0, 60);
+  const ogTitleRaw = `${drug.name} — drug monograph`;
+  const ogTitle = ogTitleRaw.length <= 60 ? ogTitleRaw : `${drug.name} monograph`.slice(0, 60);
   const drugJsonLd = {
     "@context": "https://schema.org",
     "@type": "Drug",
@@ -820,14 +834,14 @@ export default function DrugDetail() {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>{`${drug.name} — ${drug.drug_class} monograph | AnaesthesiaCore`}</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={metaDescription} />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={`${drug.name} — drug monograph`} />
+        <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="article" />
-        <meta name="twitter:title" content={`${drug.name} — drug monograph`} />
+        <meta name="twitter:title" content={ogTitle} />
         <meta name="twitter:description" content={metaDescription} />
         <script type="application/ld+json">{JSON.stringify(drugJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(medicalPageJsonLd)}</script>
