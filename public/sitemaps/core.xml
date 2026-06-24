@@ -49,6 +49,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/trust</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/podcasts</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -110,25 +116,79 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/how-sugammadex-reverses-rocuronium</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/context-sensitive-half-time-propofol-vs-remifentanil</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/p50-fetal-haemoglobin</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/notes/mac-for-age-formula</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/notes/apfel-score-ponv-risk</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/notes/mapleson-breathing-systems-explained</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/notes/das-difficult-airway-algorithm</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/notes/local-anaesthetic-systemic-toxicity-management</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/notes/tof-ratio-before-extubation</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/notes/sevoflurane-vs-desflurane-recovery</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/notes/bain-circuit-fresh-gas-flow</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/notes/rotem-teg-interpretation</loc>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -136,60 +196,6 @@
     <loc>https://anaesthesiacore.app/notes/rapid-sequence-induction-drug-doses</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/notes/das-difficult-airway-algorithm</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/notes/local-anaesthetic-systemic-toxicity-management</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/notes/rotem-teg-interpretation</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/notes/tof-ratio-before-extubation</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/notes/mac-for-age-formula</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/notes/sevoflurane-vs-desflurane-recovery</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/notes/apfel-score-ponv-risk</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/notes/mapleson-breathing-systems-explained</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/notes/bain-circuit-fresh-gas-flow</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>
