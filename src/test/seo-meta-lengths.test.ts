@@ -64,8 +64,8 @@ describe("index.html head — title and description lengths", () => {
   });
 
   it.each([
-    ["og:title", TITLE_MAX, "max"],
-    ["twitter:title", TITLE_MAX, "max"],
+    ["og:title", TITLE_MAX],
+    ["twitter:title", TITLE_MAX],
   ] as const)(`%s is within %i chars`, (name, max) => {
     const attr = name.startsWith("og:") ? "property" : "name";
     const re = new RegExp(`<meta\\s+${attr}="${name}"\\s+content="([^"]+)"`);
