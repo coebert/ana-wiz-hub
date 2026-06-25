@@ -1,0 +1,23 @@
+# Flagged referring domains / URLs for Google's disavow tool.
+#
+# Format:
+#   - One entry per line.
+#   - `domain:example.com` to disavow all links from that host + subdomains (preferred).
+#   - A full `https://…` URL to disavow a single page.
+#   - Lines starting with `#` and blank lines are comments (ignored).
+#   - Optional inline comment after `  #` on the same line as an entry.
+#
+# After editing this file, run:
+#   bun run scripts/generate-disavow.ts
+# then re-upload docs/seo/disavow.txt at
+#   https://search.google.com/search-console/disavow-links
+
+# Spoofed / SEO-spam referring domains (Semrush backlink audit, 2026-06-25):
+# fake "fiverr SEO success story" pages and seopxl link-farm shops using the
+# anaesthesiacore.app anchor text. None are legitimate references.
+domain:fiverr-seo-for-small-businesses.site
+domain:seo-growth-authority-boost-hub.shop
+domain:seo-growth-optimization-hub.shop
+domain:seopxl-organic-boost-lab.shop
+domain:seopxl-performance-authority-engine.shop
+domain:seopxl-ranking-boost-lab.shop
