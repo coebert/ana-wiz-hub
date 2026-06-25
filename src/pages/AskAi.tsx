@@ -525,7 +525,7 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
-    const sorted = [...entries].sort((a, b) => b.at - a.at);
+    const sorted = [...entries].sort((a, b) => b.updatedAt - a.updatedAt);
     const q = query.trim().toLowerCase();
     if (!q) return sorted;
     return sorted.filter(
