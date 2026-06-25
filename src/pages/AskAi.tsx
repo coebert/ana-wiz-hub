@@ -21,6 +21,7 @@ import { SectionLayout } from "@/components/SectionLayout";
  */
 
 const STORAGE_KEY = "anaesthesiacore.ask.messages.v1";
+const QA_CACHE_KEY = "anaesthesiacore.ask.qa-cache.v1";
 const ENDPOINT = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/kb-chat`;
 
 const SUGGESTED = [
@@ -29,6 +30,76 @@ const SUGGESTED = [
   "What's the difference between SIMV and PSV?",
   "When is voiding mandatory before day-case discharge?",
 ];
+
+interface QAEntry {
+  question: string;
+  normalized: string;
+  tokens: string[];
+  answer: string;
+  at: number;
+}
+
+const STOPWORDS = new Set([
+  "a","an","the","is","are","was","were","be","been","being","of","to","in","on",
+  "for","and","or","but","with","without","as","at","by","from","that","this","it",
+  "its","do","does","did","how","what","why","when","where","which","who","whom",
+  "should","could","would","can","may","might","i","you","we","they","my","your",
+  "about","into","over","under","than","then","so","if","not","no","yes",
+]);
+
+function normalize(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function tokenize(text: string): string[] {
+  return normalize(text)
+    .split(" ")
+    .filter((t) => t.length > 2 && !STOPWORDS.has(t));
+}
+
+function jaccard(a: string[], b: string[]): number {
+  if (a.length === 0 || b.length === 0) return 0;
+  const sa = new Set(a);
+  const sb = new Set(b);
+  let inter = 0;
+  sa.forEach((t) => { if (sb.has(t)) inter += 1; });
+  const union = new Set([...sa, ...sb]).size;
+  return union === 0 ? 0 : inter / union;
+}
+
+function loadQACache(): QAEntry[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(QA_CACHE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) return parsed as QAEntry[];
+  } catch {
+    /* ignore */
+  }
+  return [];
+}
+
+function findCachedMatch(question: string, cache: QAEntry[]): QAEntry | null {
+  const norm = normalize(question);
+  if (!norm) return null;
+  const exact = cache.find((e) => e.normalized === norm);
+  if (exact) return exact;
+  const toks = tokenize(question);
+  if (toks.length < 2) return null;
+  let best: { entry: QAEntry; score: number } | null = null;
+  for (const entry of cache) {
+    const score = jaccard(toks, entry.tokens);
+    if (score >= 0.8 && (!best || score > best.score)) {
+      best = { entry, score };
+    }
+  }
+  return best?.entry ?? null;
+}
 
 function loadInitialMessages(): UIMessage[] {
   if (typeof window === "undefined") return [];
@@ -50,6 +121,23 @@ function partsToText(parts: UIMessage["parts"]): string {
       return part.type === "text" ? part.text ?? "" : "";
     })
     .join("");
+}
+
+function buildCachedReply(entry: QAEntry): string {
+  const when = new Date(entry.at).toLocaleDateString(undefined, {
+    day: "numeric", month: "short", year: "numeric",
+  });
+  return [
+    `**You've asked something very similar before** — here's the answer I gave on ${when} for "_${entry.question}_":`,
+    "",
+    "---",
+    "",
+    entry.answer,
+    "",
+    "---",
+    "",
+    "_If this isn't quite what you meant, clear the conversation or rephrase the question to get a fresh answer._",
+  ].join("\n");
 }
 
 const AskAi = () => {
