@@ -353,15 +353,10 @@ const AskAi = () => {
         <div className="flex items-center justify-between gap-2 border-b border-border px-3 sm:px-4 py-2">
           <div className="text-xs text-muted-foreground">
             {qaCache.length > 0
-              ? `${qaCache.length} saved Q${qaCache.length === 1 ? "" : "s"} in history`
-              : "No saved questions yet"}
+              ? `${qaCache.length} question${qaCache.length === 1 ? "" : "s"} in the shared library`
+              : "Shared library is empty — be the first to ask"}
           </div>
-          <HistoryPanel
-            entries={qaCache}
-            onReopen={reopen}
-            onDelete={deleteEntry}
-            onClearAll={clearHistory}
-          />
+          <HistoryPanel entries={qaCache} onReopen={reopen} />
         </div>
         {/* Transcript */}
         <div
