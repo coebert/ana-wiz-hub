@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown, BookMarked } from "lucide-react";
+import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown, BookMarked, Sparkles } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
 import NeonSplash from "@/components/NeonSplash";
 import { SupportSection } from "@/components/SupportSection";
