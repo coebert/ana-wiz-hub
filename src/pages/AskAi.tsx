@@ -283,6 +283,37 @@ const AskAi = () => {
     textareaRef.current?.focus();
   };
 
+  // Inject a saved Q&A pair into the live conversation so the user can keep
+  // following up. No model call is made.
+  const reopen = (entry: QAEntry) => {
+    const now = Date.now();
+    const userMsg: UIMessage = {
+      id: `history-user-${now}`,
+      role: "user",
+      parts: [{ type: "text", text: entry.question }],
+    };
+    const assistantMsg: UIMessage = {
+      id: `history-assistant-${now}`,
+      role: "assistant",
+      parts: [{ type: "text", text: entry.answer }],
+    };
+    setMessages([...messages, userMsg, assistantMsg]);
+    setQaCache((prev) =>
+      prev.map((e) => (e.normalized === entry.normalized ? { ...e, at: now } : e)),
+    );
+  };
+
+  const deleteEntry = (normalized: string) => {
+    setQaCache((prev) => prev.filter((e) => e.normalized !== normalized));
+  };
+
+  const clearHistory = () => {
+    setQaCache([]);
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem(QA_CACHE_KEY);
+    }
+  };
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     void submit(input);
@@ -294,6 +325,7 @@ const AskAi = () => {
       void submit(input);
     }
   };
+
 
   return (
     <SectionLayout
