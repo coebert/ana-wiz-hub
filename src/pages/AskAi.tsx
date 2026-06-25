@@ -519,26 +519,204 @@ interface HistoryPanelProps {
   onReopen: (entry: QAEntry) => void;
 }
 
+const SEARCH_STOPWORDS = STOPWORDS;
+
+function escapeRegex(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function parseSearchTerms(raw: string): { terms: string[]; phrase: string | null } {
+  const trimmed = raw.trim().toLowerCase();
+  if (!trimmed) return { terms: [], phrase: null };
+  // Quoted phrase: treat as a single must-match term.
+  const phraseMatch = trimmed.match(/"([^"]+)"/);
+  const phrase = phraseMatch ? phraseMatch[1].trim() : null;
+  const rest = phrase ? trimmed.replace(/"[^"]+"/, " ") : trimmed;
+  const tokens = rest
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .split(/\s+/)
+    .filter((t) => t.length >= 2 && !SEARCH_STOPWORDS.has(t));
+  const terms = Array.from(new Set(phrase ? [phrase, ...tokens] : tokens));
+  return { terms, phrase };
+}
+
+function buildHighlightRegex(terms: string[]): RegExp | null {
+  if (terms.length === 0) return null;
+  const sorted = [...terms].sort((a, b) => b.length - a.length);
+  return new RegExp(`(${sorted.map(escapeRegex).join("|")})`, "gi");
+}
+
+function highlightString(text: string, regex: RegExp | null): React.ReactNode {
+  if (!regex || !text) return text;
+  const out: React.ReactNode[] = [];
+  let last = 0;
+  regex.lastIndex = 0;
+  let m: RegExpExecArray | null;
+  while ((m = regex.exec(text)) !== null) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    out.push(
+      <mark
+        key={`${m.index}-${out.length}`}
+        className="rounded-sm bg-primary/25 text-foreground px-0.5"
+      >
+        {m[0]}
+      </mark>,
+    );
+    last = m.index + m[0].length;
+    if (m[0].length === 0) regex.lastIndex += 1;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return <>{out.map((n, i) => <Fragment key={i}>{n}</Fragment>)}</>;
+}
+
+function highlightChildren(children: React.ReactNode, regex: RegExp | null): React.ReactNode {
+  if (!regex) return children;
+  return React.Children.map(children, (child) => {
+    if (typeof child === "string") return highlightString(child, regex);
+    if (typeof child === "number") return child;
+    if (React.isValidElement<{ children?: React.ReactNode }>(child)) {
+      const inner = child.props.children;
+      if (inner == null) return child;
+      return React.cloneElement(child, undefined, highlightChildren(inner, regex));
+    }
+    return child;
+  });
+}
+
+function buildSnippet(answer: string, regex: RegExp | null): string | null {
+  if (!regex || !answer) return null;
+  regex.lastIndex = 0;
+  const m = regex.exec(answer);
+  if (!m) return null;
+  const radius = 80;
+  const start = Math.max(0, m.index - radius);
+  const end = Math.min(answer.length, m.index + m[0].length + radius);
+  const slice = answer
+    .slice(start, end)
+    .replace(/\s+/g, " ")
+    .trim();
+  return `${start > 0 ? "…" : ""}${slice}${end < answer.length ? "…" : ""}`;
+}
+
+interface RankedEntry {
+  entry: QAEntry;
+  score: number;
+  snippet: string | null;
+  answerHits: number;
+  questionHits: number;
+}
+
+function countMatches(text: string, regex: RegExp | null): number {
+  if (!regex || !text) return 0;
+  regex.lastIndex = 0;
+  let n = 0;
+  while (regex.exec(text) !== null) {
+    n += 1;
+    if (regex.lastIndex === 0) regex.lastIndex = 1;
+  }
+  return n;
+}
+
+function rankEntries(
+  entries: QAEntry[],
+  rawQuery: string,
+): { ranked: RankedEntry[]; regex: RegExp | null; terms: string[] } {
+  const { terms, phrase } = parseSearchTerms(rawQuery);
+  const regex = buildHighlightRegex(terms);
+
+  if (!regex) {
+    const ranked = [...entries]
+      .sort((a, b) => b.updatedAt - a.updatedAt)
+      .map((entry) => ({ entry, score: 0, snippet: null, answerHits: 0, questionHits: 0 }));
+    return { ranked, regex: null, terms };
+  }
+
+  const phraseRe = phrase ? new RegExp(escapeRegex(phrase), "i") : null;
+  const recencyAnchor = Date.now();
+
+  const scored: RankedEntry[] = [];
+  for (const entry of entries) {
+    const qLower = entry.question.toLowerCase();
+    const aLower = entry.answer.toLowerCase();
+    const qHits = countMatches(entry.question, regex);
+    const aHits = countMatches(entry.answer, regex);
+    if (qHits === 0 && aHits === 0) continue;
+
+    // Term scoring: question matches are worth far more than answer matches.
+    let score = qHits * 12 + Math.min(aHits, 20) * 2;
+    // Phrase bonuses dominate so exact phrase hits float to the top.
+    if (phraseRe) {
+      if (phraseRe.test(qLower)) score += 80;
+      if (phraseRe.test(aLower)) score += 30;
+    }
+    // Coverage bonus: reward entries that match more distinct terms.
+    const distinctQ = terms.filter((t) => qLower.includes(t)).length;
+    const distinctA = terms.filter((t) => aLower.includes(t)).length;
+    score += distinctQ * 8 + distinctA * 2;
+    // Popularity nudge.
+    score += Math.log2(1 + (entry.askCount ?? 1)) * 2;
+    // Recency tiebreaker — small, never dominates relevance.
+    const ageDays = Math.max(0, (recencyAnchor - entry.updatedAt) / 86_400_000);
+    score -= Math.min(ageDays * 0.05, 5);
+
+    scored.push({
+      entry,
+      score,
+      snippet: buildSnippet(entry.answer, regex),
+      answerHits: aHits,
+      questionHits: qHits,
+    });
+  }
+  scored.sort((a, b) => b.score - a.score || b.entry.updatedAt - a.entry.updatedAt);
+  return { ranked: scored, regex, terms };
+}
+
 const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState<string | null>(null);
 
-  const filtered = useMemo(() => {
-    const sorted = [...entries].sort((a, b) => b.updatedAt - a.updatedAt);
-    const q = query.trim().toLowerCase();
-    if (!q) return sorted;
-    return sorted.filter(
-      (e) =>
-        e.question.toLowerCase().includes(q) ||
-        e.answer.toLowerCase().includes(q),
-    );
-  }, [entries, query]);
+  const { ranked, regex } = useMemo(() => rankEntries(entries, query), [entries, query]);
 
   const handleReopen = (entry: QAEntry) => {
     onReopen(entry);
     setOpen(false);
   };
+
+  const markdownComponents = useMemo(() => {
+    const wrap = (Tag: keyof JSX.IntrinsicElements) =>
+      ({ children, ...rest }: { children?: React.ReactNode }) => {
+        const Comp = Tag as React.ElementType;
+        return <Comp {...rest}>{highlightChildren(children, regex)}</Comp>;
+      };
+    return {
+      p: wrap("p"),
+      li: wrap("li"),
+      strong: wrap("strong"),
+      em: wrap("em"),
+      code: wrap("code"),
+      h1: wrap("h1"),
+      h2: wrap("h2"),
+      h3: wrap("h3"),
+      h4: wrap("h4"),
+      blockquote: wrap("blockquote"),
+      a: ({ href, children, ...rest }: { href?: string; children?: React.ReactNode }) => {
+        const hl = highlightChildren(children, regex);
+        if (href && href.startsWith("/")) {
+          return (
+            <Link to={href} className="text-primary underline-offset-2 hover:underline">
+              {hl}
+            </Link>
+          );
+        }
+        return (
+          <a href={href} target="_blank" rel="noreferrer" {...rest}>
+            {hl}
+          </a>
+        );
+      },
+    };
+  }, [regex]);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -562,7 +740,7 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search questions and answers…"
+              placeholder='Search — try "rapid sequence" or capnograph phases'
               className="pl-8 h-9 text-sm"
             />
             {query && (
@@ -578,7 +756,9 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
           </div>
           {entries.length > 0 && (
             <div className="text-[11px] text-muted-foreground">
-              {filtered.length} of {entries.length}
+              {query.trim()
+                ? `${ranked.length} match${ranked.length === 1 ? "" : "es"} of ${entries.length} · ranked by relevance`
+                : `${entries.length} question${entries.length === 1 ? "" : "s"} · newest first`}
             </div>
           )}
         </div>
@@ -589,13 +769,13 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
               <MessageSquare className="h-8 w-8 mx-auto mb-3 opacity-40" aria-hidden />
               The shared library is empty. Be the first to ask a question.
             </div>
-          ) : filtered.length === 0 ? (
+          ) : ranked.length === 0 ? (
             <div className="p-8 text-center text-sm text-muted-foreground">
-              No matches for "{query}".
+              No matches for "{query}". Try fewer words or a quoted "phrase".
             </div>
           ) : (
             <ul className="divide-y divide-border">
-              {filtered.map((entry) => {
+              {ranked.map(({ entry, snippet, questionHits, answerHits }) => {
                 const isOpen = expanded === entry.id;
                 return (
                   <li key={entry.id} className="p-3">
@@ -604,9 +784,9 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
                       onClick={() => setExpanded(isOpen ? null : entry.id)}
                       className="block w-full text-left text-sm font-medium text-foreground hover:text-primary"
                     >
-                      {entry.question}
+                      {highlightString(entry.question, regex)}
                     </button>
-                    <div className="mt-1 flex items-center gap-2 text-[11px] text-muted-foreground">
+                    <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-muted-foreground">
                       <span>
                         {new Date(entry.updatedAt).toLocaleString(undefined, {
                           day: "numeric", month: "short", year: "numeric",
@@ -614,30 +794,24 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
                         })}
                       </span>
                       <span aria-hidden>·</span>
-                      <span>
-                        asked {entry.askCount}×
-                      </span>
+                      <span>asked {entry.askCount}×</span>
+                      {regex && (questionHits + answerHits) > 0 && (
+                        <>
+                          <span aria-hidden>·</span>
+                          <span>
+                            {questionHits} in question · {answerHits} in answer
+                          </span>
+                        </>
+                      )}
                     </div>
+                    {!isOpen && snippet && (
+                      <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                        {highlightString(snippet, regex)}
+                      </p>
+                    )}
                     {isOpen && (
                       <div className="mt-2 rounded-md border border-border bg-muted/30 p-3 prose prose-sm max-w-none dark:prose-invert prose-headings:font-serif prose-a:text-primary">
-                        <ReactMarkdown
-                          components={{
-                            a: ({ href, children, ...rest }) => {
-                              if (href && href.startsWith("/")) {
-                                return (
-                                  <Link to={href} className="text-primary underline-offset-2 hover:underline">
-                                    {children}
-                                  </Link>
-                                );
-                              }
-                              return (
-                                <a href={href} target="_blank" rel="noreferrer" {...rest}>
-                                  {children}
-                                </a>
-                              );
-                            },
-                          }}
-                        >
+                        <ReactMarkdown components={markdownComponents}>
                           {entry.answer}
                         </ReactMarkdown>
                       </div>
