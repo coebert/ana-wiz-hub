@@ -46,7 +46,7 @@ const views: Record<ViewMode, ViewData> = {
     description: "Complete Sedaconda setup requires a syringe pump with liquid volatile agent, an anaesthetic gas monitor, and a charcoal scavenging filter on the ventilator exhaust. The device is changed every 24 hours.",
     highlights: [
       "Syringe pump: isoflurane 0.5–5 ml/h (or sevoflurane)",
-      "Gas monitor: essential — target Fe'Iso 0.3–1.5%",
+      "Gas monitor: essential — target ETIso 0.3–1.5%",
       "Scavenging: activated charcoal filter on expiratory limb",
       "Change device every 24 h",
       "Compatible with standard ICU ventilators",
@@ -186,7 +186,7 @@ const SedacondaDiagram = () => {
                 opacity={activeView === "setup" ? 1 : 0.5}
               />
               <text x="255" y="283" textAnchor="middle" className="fill-foreground text-[7px] font-semibold">Gas Monitor</text>
-              <text x="255" y="296" textAnchor="middle" className="fill-muted-foreground text-[6px]">Fe'Iso / Fe'Sevo</text>
+              <text x="255" y="296" textAnchor="middle" className="fill-muted-foreground text-[6px]">ETIso / ETSevo</text>
   
               {/* Sampling line */}
               <line x1="255" y1="235" x2="255" y2="265" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray={activeView === "setup" ? "none" : "3,3"} opacity={activeView === "setup" ? 1 : 0.5} />
