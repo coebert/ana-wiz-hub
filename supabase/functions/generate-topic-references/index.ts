@@ -184,6 +184,30 @@ Deno.serve(async (req) => {
     }
   }
 
+  // Generation (cache miss or admin force) triggers a paid AI call. Require an
+  // authenticated session to prevent unauthenticated bots from systematically
+  // walking the topic allowlist to exhaust AI credits. Cached reads above remain
+  // public so signed-out visitors can still see existing references.
+  const authHeader = req.headers.get("Authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return fail(401, "Authentication required to generate references");
+  }
+  try {
+    const userClient = createClient(
+      SUPABASE_URL,
+      Deno.env.get("SUPABASE_ANON_KEY")!,
+      { global: { headers: { Authorization: authHeader } } },
+    );
+    const token = authHeader.replace("Bearer ", "");
+    const { data: claimsData, error: claimsError } =
+      await userClient.auth.getClaims(token);
+    if (claimsError || !claimsData?.claims?.sub) {
+      return fail(401, "Invalid or expired session");
+    }
+  } catch {
+    return fail(401, "Invalid or expired session");
+  }
+
   // Mark pending
   await supabase.from("topic_references").upsert(
     {
@@ -195,6 +219,7 @@ Deno.serve(async (req) => {
     },
     { onConflict: "topic_id" },
   );
+
 
   try {
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
