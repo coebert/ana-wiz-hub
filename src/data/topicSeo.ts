@@ -340,6 +340,36 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Genetic syndromes", "Malignant hyperthermia", "Duchenne muscular dystrophy", "Down syndrome anaesthesia", "Marfan syndrome anaesthesia", "Achondroplasia anaesthesia", "Sickle cell anaesthesia", "Porphyria anaesthesia", "Pseudocholinesterase deficiency"],
     keywords: ["genetic syndromes FRCA", "malignant hyperthermia anaesthesia", "DMD anaesthesia", "Down syndrome anaesthesia", "Marfan syndrome anaesthesia", "sickle cell surgery", "acute intermittent porphyria"],
   },
+  "muscle-relaxants": {
+    title: "Neuromuscular Blocking Drugs (NMJ Blockers) | FRCA Notes",
+    description: "Depolarising and non-depolarising muscle relaxants for FRCA: suxamethonium, rocuronium, vecuronium, atracurium, cisatracurium — mechanism, dosing, monitoring and reversal.",
+    aliases: [
+      "Neuromuscular blocking drugs",
+      "Neuromuscular blocker drugs",
+      "NMJ blockers",
+      "NMBA",
+      "Muscle relaxants",
+      "Depolarising muscle relaxant",
+      "Non-depolarising muscle relaxants",
+      "Suxamethonium",
+      "Rocuronium",
+      "Vecuronium",
+      "Atracurium",
+      "Cisatracurium",
+    ],
+    keywords: [
+      "neuromuscular blocking drugs",
+      "nmj blockers",
+      "depolarising muscle relaxant",
+      "non-depolarising muscle relaxants",
+      "neuromuscular blocker drugs",
+      "muscle relaxants FRCA",
+      "suxamethonium",
+      "rocuronium",
+      "sugammadex reversal",
+    ],
+  },
 };
+
 
 

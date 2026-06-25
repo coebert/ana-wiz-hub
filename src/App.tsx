@@ -50,6 +50,9 @@ const ABGInterpreterTool = lazy(() => import("./pages/tools/ABGInterpreterTool")
 
 // Long-form SEO notes
 const NotesIndex = lazy(() => import("./pages/notes/NotesIndex"));
+const FRCAPrimaryHub = lazy(() => import("./pages/FRCAPrimaryHub"));
+const FRCAFinalHub = lazy(() => import("./pages/FRCAFinalHub"));
+const FFICMHub = lazy(() => import("./pages/FFICMHub"));
 const SugammadexReversesRocuroniumNote = lazy(() => import("./pages/notes/SugammadexReversesRocuroniumNote"));
 const ContextSensitiveHalfTimeNote = lazy(() => import("./pages/notes/ContextSensitiveHalfTimeNote"));
 const P50FetalHaemoglobinNote = lazy(() => import("./pages/notes/P50FetalHaemoglobinNote"));
@@ -280,6 +283,10 @@ const App = () => (
           <Route path="/tools/maintenance-fluid" element={<MaintenanceFluidTool />} />
           <Route path="/tools/max-local-anaesthetic-dose" element={<MaxLADoseTool />} />
           <Route path="/tools/abg-interpreter" element={<ABGInterpreterTool />} />
+          {/* Exam hub pages — high-intent landing pages for FRCA / FFICM searches */}
+          <Route path="/frca-primary" element={<FRCAPrimaryHub />} />
+          <Route path="/frca-final" element={<FRCAFinalHub />} />
+          <Route path="/fficm" element={<FFICMHub />} />
           {/* Long-form SEO notes */}
           <Route path="/notes" element={<NotesIndex />} />
           <Route path="/notes/how-sugammadex-reverses-rocuronium" element={<SugammadexReversesRocuroniumNote />} />
