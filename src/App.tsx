@@ -230,6 +230,7 @@ const OrganicChemistryTopic = lazy(() => import("./pages/topics/OrganicChemistry
 const SolutionsConcentrationTopic = lazy(() => import("./pages/topics/SolutionsConcentrationTopic"));
 const OxidationReductionTopic = lazy(() => import("./pages/topics/OxidationReductionTopic"));
 import { RequireAdmin } from "@/components/RequireAdmin";
+const SpoofedDomains = lazy(() => import("./pages/admin/SpoofedDomains"));
 
 const queryClient = new QueryClient();
 
@@ -478,6 +479,7 @@ const App = () => (
           <Route path="/admin/audit" element={<RequireAdmin><ContentAudit /></RequireAdmin>} />
           <Route path="/admin/audit-dashboard" element={<RequireAdmin><AuditDashboard /></RequireAdmin>} />
           <Route path="/admin/audit-report" element={<RequireAdmin><AuditReport /></RequireAdmin>} />
+          <Route path="/admin/spoofed-domains" element={<RequireAdmin><SpoofedDomains /></RequireAdmin>} />
           <Route path="/admin/esicm-validator" element={<Navigate to="/admin/audit" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
