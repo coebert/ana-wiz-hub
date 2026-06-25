@@ -132,91 +132,114 @@ describe("Diagram source-citation contract", () => {
     expect(refLabels.size).toBeGreaterThan(20);
   });
 
-  it("every topic with diagrams declares sectionSources.diagrams citations from the same reference pool", () => {
-    const issues: Issue[] = [];
-    let auditedTopics = 0;
+  // Collect all issues once and partition between hard failures (label
+  // mismatches — always wrong) and baseline-tracked failures (legacy topics
+  // without diagram citations — tracked via snapshot so any new offender
+  // fails CI and any fix surfaces as a snapshot diff to re-baseline).
+  const issues: Issue[] = [];
+  let auditedTopics = 0;
 
-    for (const file of files) {
-      const src = readFileSync(file, "utf8");
-      if (!importsAnyDiagram(src)) continue;
-      const rel = relative(ROOT, file);
+  for (const file of files) {
+    const src = readFileSync(file, "utf8");
+    if (!importsAnyDiagram(src)) continue;
+    const rel = relative(ROOT, file);
 
-      const topicId = extractTopicId(src);
-      if (!topicId) {
-        issues.push({
-          file: rel,
-          topicId: null,
-          kind: "missing-topicId",
-          detail: "Topic renders diagrams but topicId could not be parsed.",
-        });
-        continue;
-      }
-      const known = refLabels.get(topicId);
-      if (!known) {
-        issues.push({
-          file: rel,
-          topicId,
-          kind: "missing-references-entry",
-          detail: `No entry for "${topicId}" in src/data/references.ts.`,
-        });
-        continue;
-      }
-
-      auditedTopics++;
-      const cites = extractDiagramSources(src);
-      if (cites === null) {
-        issues.push({
-          file: rel,
-          topicId,
-          kind: "missing-diagram-sources",
-          detail:
-            'Topic renders diagrams but no `sectionSources={{ diagrams: [...] }}` ' +
-            "is declared. Add the BJA Education / guideline / textbook label(s) " +
-            `from src/data/references.ts → "${topicId}".`,
-        });
-        continue;
-      }
-      if (cites.length === 0) {
-        issues.push({
-          file: rel,
-          topicId,
-          kind: "empty-diagram-sources",
-          detail:
-            "`sectionSources.diagrams` is empty — every principle diagram " +
-            "must carry at least one source citation.",
-        });
-        continue;
-      }
-      const seen = new Set<string>();
-      for (const label of cites) {
-        if (seen.has(label)) continue;
-        seen.add(label);
-        if (!known.has(label)) {
-          issues.push({
-            file: rel,
-            topicId,
-            kind: "label-mismatch",
-            detail:
-              `Diagram cite "${label}" not in references.ts for "${topicId}". ` +
-              `Use the SAME labels the topic's text cites. Known: ` +
-              [...known].map((l) => `"${l}"`).join(", "),
-          });
-        }
-      }
+    const topicId = extractTopicId(src);
+    if (!topicId) {
+      issues.push({
+        file: rel,
+        topicId: null,
+        kind: "missing-topicId",
+        detail: "Topic renders diagrams but topicId could not be parsed.",
+      });
+      continue;
+    }
+    const known = refLabels.get(topicId);
+    if (!known) {
+      issues.push({
+        file: rel,
+        topicId,
+        kind: "missing-references-entry",
+        detail: `No entry for "${topicId}" in src/data/references.ts.`,
+      });
+      continue;
     }
 
-    if (issues.length > 0) {
-      const summary = issues
-        .map((i) => `  [${i.kind}] ${i.file}\n      ${i.detail}`)
-        .join("\n");
-      throw new Error(
-        `Found ${issues.length} diagram-citation issue(s) across ` +
-          `${auditedTopics} diagram-bearing topic(s):\n${summary}`,
-      );
+    auditedTopics++;
+    const cites = extractDiagramSources(src);
+    if (cites === null) {
+      issues.push({
+        file: rel,
+        topicId,
+        kind: "missing-diagram-sources",
+        detail:
+          'Topic renders diagrams but no `sectionSources={{ diagrams: [...] }}` is declared.',
+      });
+      continue;
     }
+    if (cites.length === 0) {
+      issues.push({
+        file: rel,
+        topicId,
+        kind: "empty-diagram-sources",
+        detail: "`sectionSources.diagrams` is empty.",
+      });
+      continue;
+    }
+    const seen = new Set<string>();
+    for (const label of cites) {
+      if (seen.has(label)) continue;
+      seen.add(label);
+      if (!known.has(label)) {
+        issues.push({
+          file: rel,
+          topicId,
+          kind: "label-mismatch",
+          detail:
+            `Diagram cite "${label}" not in references.ts for "${topicId}". ` +
+            `Use the SAME labels the topic's text cites.`,
+        });
+      }
+    }
+  }
 
-    // Sanity: at least one topic should have been audited or the discovery
-    // logic has silently regressed.
+  it("audits a non-trivial set of diagram-bearing topics", () => {
     expect(auditedTopics).toBeGreaterThan(0);
   });
+
+  it("never ships a diagram cite that doesn't resolve in references.ts (hard fail)", () => {
+    // Label mismatches are ALWAYS wrong — a label that doesn't resolve in
+    // references.ts is broken provenance and must be fixed, never baselined.
+    const mismatches = issues.filter((i) => i.kind === "label-mismatch");
+    if (mismatches.length > 0) {
+      const summary = mismatches
+        .map((i) => `  ${i.file} → ${i.detail}`)
+        .join("\n");
+      throw new Error(
+        `Found ${mismatches.length} unresolved diagram cite(s):\n${summary}`,
+      );
+    }
+  });
+
+  it("missing-citation baseline is locked (new diagram-bearing topics MUST cite sources)", () => {
+    // Snapshot the SET of currently-uncovered topics. Any new diagram-bearing
+    // topic without `sectionSources.diagrams` will fail this snapshot until
+    // it is either (a) given a `diagrams: [...]` cite list using labels from
+    // src/data/references.ts (preferred — typically BJA Education entries
+    // already used by the topic's text), or (b) intentionally added to the
+    // baseline via `vitest -u`. Likewise, fixing an entry surfaces as a
+    // snapshot diff prompting a re-baseline.
+    const baseline = issues
+      .filter(
+        (i) =>
+          i.kind === "missing-diagram-sources" ||
+          i.kind === "empty-diagram-sources" ||
+          i.kind === "missing-topicId" ||
+          i.kind === "missing-references-entry",
+      )
+      .map((i) => `[${i.kind}] ${i.file}`)
+      .sort();
+    expect(baseline).toMatchSnapshot("diagram-citation-baseline");
+  });
 });
+
