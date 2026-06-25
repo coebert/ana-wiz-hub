@@ -550,9 +550,9 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
       </SheetTrigger>
       <SheetContent side="right" className="w-full sm:max-w-md flex flex-col p-0">
         <SheetHeader className="p-4 border-b border-border space-y-1">
-          <SheetTitle className="text-base font-serif">Question history</SheetTitle>
+          <SheetTitle className="text-base font-serif">Shared question library</SheetTitle>
           <SheetDescription className="text-xs">
-            Search and reopen previously asked questions. Stored only in this browser.
+            Every question asked of Ask AnaesthesiaCore is saved here for everyone to browse, search and reopen.
           </SheetDescription>
         </SheetHeader>
 
