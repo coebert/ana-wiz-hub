@@ -214,9 +214,25 @@ const AskAi = () => {
     }
   }, [messages]);
 
-  // Load the shared Q&A library on mount, and refresh it whenever the
-  // database notifies us of inserts/updates so other users' new questions
-  // appear in real time.
+  // Merge a batch of rows into the cache, deduplicating by id so realtime
+  // events never produce duplicate entries (and preserve a stable order by
+  // updatedAt desc, capped at 500 to match the initial fetch window).
+  const mergeRows = (incoming: QAEntry[]) => {
+    if (incoming.length === 0) return;
+    setQaCache((prev) => {
+      const byId = new Map<string, QAEntry>();
+      for (const e of prev) byId.set(e.id, e);
+      for (const e of incoming) byId.set(e.id, e); // upsert by id — no dupes
+      return Array.from(byId.values())
+        .sort((a, b) => b.updatedAt - a.updatedAt)
+        .slice(0, 500);
+    });
+  };
+
+  // Load the shared Q&A library on mount, and stream incremental updates
+  // from postgres_changes so other users' new questions appear in real time
+  // without a full refetch (which would otherwise reshuffle the user's
+  // current pagination window).
   useEffect(() => {
     let cancelled = false;
     void fetchLibrary().then((rows) => { if (!cancelled) setQaCache(rows); });
@@ -224,8 +240,28 @@ const AskAi = () => {
       .channel("ask_qa_library_changes")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "ask_qa_library" },
-        () => { void fetchLibrary().then((rows) => setQaCache(rows)); },
+        { event: "INSERT", schema: "public", table: "ask_qa_library" },
+        (payload) => {
+          const row = payload.new as RawLibraryRow | null;
+          if (row) mergeRows([rowToEntry(row)]);
+        },
+      )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "ask_qa_library" },
+        (payload) => {
+          const row = payload.new as RawLibraryRow | null;
+          if (row) mergeRows([rowToEntry(row)]);
+        },
+      )
+      .on(
+        "postgres_changes",
+        { event: "DELETE", schema: "public", table: "ask_qa_library" },
+        (payload) => {
+          const old = payload.old as { id?: string } | null;
+          if (!old?.id) return;
+          setQaCache((prev) => prev.filter((e) => e.id !== old.id));
+        },
       )
       .subscribe();
     return () => {
@@ -237,12 +273,12 @@ const AskAi = () => {
   // After a streamed answer completes, refetch the library so the newly
   // saved row (written by `kb-chat`'s onFinish hook) is visible immediately
   // — realtime should also deliver it, but this is a guaranteed fallback.
+  // mergeRows ensures the refetch can't introduce duplicates.
   useEffect(() => {
     if (status !== "ready") return;
     if (!pendingQuestionRef.current) return;
     pendingQuestionRef.current = null;
-    // Small delay to give the server's upsert time to commit.
-    const t = setTimeout(() => { void fetchLibrary().then(setQaCache); }, 600);
+    const t = setTimeout(() => { void fetchLibrary().then(mergeRows); }, 600);
     return () => clearTimeout(t);
   }, [status]);
 
@@ -685,12 +721,27 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
   const visible = useMemo(() => ranked.slice(0, visibleCount), [ranked, visibleCount]);
   const hasMore = visibleCount < ranked.length;
 
-  // Reset the window when the query, the sheet, or the underlying ranking
-  // changes — otherwise we'd be paginating into a stale slice.
+  // Reset the window when the user changes the query or reopens the sheet
+  // — but NOT when `entries` changes, otherwise an incoming realtime row
+  // would collapse the user's scroll position back to the first page.
   useEffect(() => { setVisibleCount(PAGE_SIZE); }, [query, open]);
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = 0;
   }, [query]);
+
+  // When realtime adds new entries while the user has already paginated
+  // past the first page, grow `visibleCount` by the delta so the rows the
+  // user was reading stay on screen instead of being bumped off the bottom
+  // by the newer items inserted at the top of the ranking.
+  const prevRankedLenRef = useRef(0);
+  useEffect(() => {
+    const prev = prevRankedLenRef.current;
+    const next = ranked.length;
+    if (open && next > prev && visibleCount > PAGE_SIZE) {
+      setVisibleCount((c) => Math.min(c + (next - prev), next));
+    }
+    prevRankedLenRef.current = next;
+  }, [ranked.length, open, visibleCount]);
 
   // Infinite scroll: when the sentinel intersects the scroll container, grow
   // the window by one page. Falls back to a manual "Load more" button below
