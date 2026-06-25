@@ -1861,6 +1861,7 @@ const AdminDashboard = () => {
             <div className="mt-6">
               <JumpClicksPanel />
             </div>
+            <SpoofedDomainsPanel />
           </section>
         )}
 
