@@ -234,6 +234,21 @@ export default function SpoofedDomainsPanel() {
                   />
                 ))
               )}
+              {s === "confirmed" && filtered.length > 0 ? (
+                <div className="rounded-md border border-border bg-muted/30 p-3 text-sm">
+                  <a
+                    href="https://search.google.com/search-console/disavow-links"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
+                  >
+                    Open Google Search Console disavow tool <ExternalLink className="h-3 w-3" />
+                  </a>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Upload the <code className="font-mono">disavow.txt</code> file above. Uploading replaces the previous list — always upload the full file.
+                  </p>
+                </div>
+              ) : null}
             </TabsContent>
           ))}
         </Tabs>
