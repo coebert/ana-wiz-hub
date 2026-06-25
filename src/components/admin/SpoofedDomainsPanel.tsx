@@ -198,6 +198,35 @@ export default function SpoofedDomainsPanel() {
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
+        <div className="rounded-md border border-border bg-muted/30 p-3 text-sm">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-medium">Search Console disavow tool:</span>
+            <a
+              href="https://search.google.com/search-console/disavow-links"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-mono text-xs text-primary hover:underline break-all"
+            >
+              https://search.google.com/search-console/disavow-links
+              <ExternalLink className="h-3 w-3" />
+            </a>
+            <Button
+              size="sm"
+              variant="outline"
+              className="h-7"
+              onClick={async () => {
+                await navigator.clipboard.writeText("https://search.google.com/search-console/disavow-links");
+                toast({ title: "Link copied", description: "Paste into a new browser tab if Firefox blocked the popup." });
+              }}
+            >
+              <Copy className="mr-1 h-3 w-3" /> Copy link
+            </Button>
+          </div>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Opens in a new tab. If your browser's popup blocker stops it, use <strong>Copy link</strong> and paste into a new tab. Uploading <code className="font-mono">disavow.txt</code> there replaces the previous list — always upload the full file.
+          </p>
+        </div>
+
         {lastSync ? (
           <div className="rounded-md border border-primary/30 bg-primary/5 p-3 text-xs text-muted-foreground">
             Last sync at {fmtDate(lastSync.ranAt)}: scanned <strong className="text-foreground">{lastSync.scannedDomains}</strong> referring
