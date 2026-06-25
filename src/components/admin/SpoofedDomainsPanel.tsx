@@ -185,15 +185,6 @@ export default function SpoofedDomainsPanel() {
           </CardDescription>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button size="sm" variant="outline" asChild>
-            <a
-              href="https://search.google.com/search-console/disavow-links"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <ExternalLink className="mr-2 h-4 w-4" /> Search Console disavow tool
-            </a>
-          </Button>
           <Button size="sm" variant="outline" onClick={copyDisavow} disabled={!disavowFile}>
             <Copy className="mr-2 h-4 w-4" /> Copy disavow.txt
           </Button>
