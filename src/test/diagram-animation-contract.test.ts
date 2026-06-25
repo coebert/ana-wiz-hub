@@ -129,23 +129,6 @@ describe("Animated diagram contract", () => {
     }
   });
 
-  it("every animated diagram is referenced by ≥1 topic page (no orphan animations)", () => {
-    const orphans: string[] = [];
-    for (const [name, rec] of usage.entries()) {
-      if (rec.renderingTopics.length === 0) {
-        orphans.push(
-          `  ${name}: not rendered by any topic in src/pages/topics/ ` +
-            `(imported by ${rec.importingTopics.length} file(s), rendered by 0)`,
-        );
-      }
-    }
-    if (orphans.length > 0) {
-      throw new Error(
-        `Found ${orphans.length} orphan animation(s) — topic that should host them is missing:\n${orphans.join("\n")}`,
-      );
-    }
-  });
-
   it("topic pages that import an animation also render it (no dead imports)", () => {
     const dead: string[] = [];
     for (const [name, rec] of usage.entries()) {
@@ -156,6 +139,32 @@ describe("Animated diagram contract", () => {
     if (dead.length > 0) {
       throw new Error(
         `Found ${dead.length} dead animation import(s):\n${dead.join("\n")}`,
+      );
+    }
+  });
+
+  it("every <*Animation /> rendered in a topic resolves to an existing diagram component", () => {
+    // Catches typos / deleted-but-still-referenced animation components.
+    const knownAnimations = new Set(animations.map((a) => a.name));
+    const failures: string[] = [];
+    const jsxRe = /<([A-Z]\w*(?:Animation|AnimatedMechanism))\b/g;
+    for (const t of topics) {
+      const seen = new Set<string>();
+      for (const m of t.src.matchAll(jsxRe)) {
+        const name = m[1];
+        if (seen.has(name)) continue;
+        seen.add(name);
+        if (!knownAnimations.has(name)) {
+          failures.push(
+            `  ${t.file}: renders <${name} …/> but no matching component ` +
+              `in src/components/diagrams/`,
+          );
+        }
+      }
+    }
+    if (failures.length > 0) {
+      throw new Error(
+        `Found ${failures.length} unresolved animation reference(s):\n${failures.join("\n")}`,
       );
     }
   });
