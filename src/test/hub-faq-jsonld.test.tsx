@@ -3,6 +3,7 @@ import { render, waitFor, cleanup } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { lazy, Suspense, type ComponentType } from "react";
+import { ExamFilterProvider } from "@/contexts/ExamFilterContext";
 
 /**
  * Crawl each FRCA/FFICM hub route, parse the FAQPage JSON-LD that Helmet
