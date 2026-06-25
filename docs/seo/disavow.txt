@@ -1,35 +1,19 @@
 # Disavow file for https://anaesthesiacore.app/
 #
 # Upload at: https://search.google.com/search-console/disavow-links
-# Select the "https://anaesthesiacore.app/" property → Disavow links → upload this file.
+# Uploading REPLACES the previous list — always upload the full file.
 #
-# RULES
-# - One entry per line.
-# - Prefer `domain:example.com` over individual URLs — covers all subdomains
-#   and any future spam paths from the same host.
-# - Lines starting with `#` are comments (ignored by Google).
-# - Uploading REPLACES the previous list. Always upload the full file, not a delta.
-# - Keep this file as the single source of truth in the repo; bump the date
-#   below whenever you add/remove entries, then re-upload.
+# GENERATED FILE — do not hand-edit.
+# Source: docs/seo/flagged-domains.txt
+# Regenerate: bun run scripts/generate-disavow.ts
 #
-# Last updated: 2026-06-25
+# Last generated: 2026-06-25
+# Entries: 6 (6 domains, 0 URLs)
 
-# ---------------------------------------------------------------------------
-# Spoofed / SEO-spam referring domains (sourced from Semrush backlink audit,
-# 2026-06-25). All six referring domains at audit time were spam — fake
-# "fiverr SEO success story" pages and seopxl link-farm shops using the
-# anaesthesiacore.app anchor text. None are legitimate references to the site.
-# ---------------------------------------------------------------------------
+# --- Disavowed domains (covers all subdomains + paths) ---
 domain:fiverr-seo-for-small-businesses.site
 domain:seo-growth-authority-boost-hub.shop
 domain:seo-growth-optimization-hub.shop
 domain:seopxl-organic-boost-lab.shop
 domain:seopxl-performance-authority-engine.shop
 domain:seopxl-ranking-boost-lab.shop
-
-# ---------------------------------------------------------------------------
-# Add new flagged domains/URLs below this line. Examples:
-#
-# domain:another-spam-host.example
-# https://specific-bad-url.example/page-to-disavow
-# ---------------------------------------------------------------------------
