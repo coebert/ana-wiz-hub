@@ -164,6 +164,10 @@ const AskAi = () => {
   });
 
   const [input, setInput] = useState("");
+  const [qaCache, setQaCache] = useState<QAEntry[]>(loadQACache);
+  // Tracks the last question we sent to the server so we know which user
+  // message to pair with the eventual streamed answer when caching it.
+  const pendingQuestionRef = useRef<string | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -176,6 +180,44 @@ const AskAi = () => {
       /* quota etc. — best effort only */
     }
   }, [messages]);
+
+  // Persist the Q&A cache whenever it changes.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      window.localStorage.setItem(QA_CACHE_KEY, JSON.stringify(qaCache));
+    } catch {
+      /* best effort */
+    }
+  }, [qaCache]);
+
+  // After a streamed answer completes, store the (question, answer) pair so
+  // future identical/very-similar questions are served from cache instead of
+  // re-billing the model.
+  useEffect(() => {
+    if (status !== "ready") return;
+    const pending = pendingQuestionRef.current;
+    if (!pending) return;
+    const last = messages[messages.length - 1];
+    if (!last || last.role !== "assistant") return;
+    const answer = partsToText(last.parts).trim();
+    if (!answer) return;
+    pendingQuestionRef.current = null;
+    const normalized = normalize(pending);
+    setQaCache((prev) => {
+      // Replace any existing entry with the same normalized question.
+      const without = prev.filter((e) => e.normalized !== normalized);
+      const next: QAEntry = {
+        question: pending,
+        normalized,
+        tokens: tokenize(pending),
+        answer,
+        at: Date.now(),
+      };
+      // Cap to the most recent 200 entries to keep localStorage bounded.
+      return [next, ...without].slice(0, 200);
+    });
+  }, [status, messages]);
 
   // Auto-scroll to newest message.
   useEffect(() => {
@@ -198,6 +240,32 @@ const AskAi = () => {
     const trimmed = text.trim();
     if (!trimmed || isBusy) return;
     setInput("");
+
+    // 1. Check the local Q&A cache first. If we've answered this (or a very
+    //    similar) question before, surface the prior answer instead of
+    //    spending another model call.
+    const cached = findCachedMatch(trimmed, qaCache);
+    if (cached) {
+      const now = Date.now();
+      const userMsg: UIMessage = {
+        id: `cached-user-${now}`,
+        role: "user",
+        parts: [{ type: "text", text: trimmed }],
+      };
+      const assistantMsg: UIMessage = {
+        id: `cached-assistant-${now}`,
+        role: "assistant",
+        parts: [{ type: "text", text: buildCachedReply(cached) }],
+      };
+      setMessages([...messages, userMsg, assistantMsg]);
+      // Refresh recency so frequently-asked questions stay at the top.
+      setQaCache((prev) =>
+        prev.map((e) => (e.normalized === cached.normalized ? { ...e, at: now } : e)),
+      );
+      return;
+    }
+
+    pendingQuestionRef.current = trimmed;
     await sendMessage({ text: trimmed });
   };
 
