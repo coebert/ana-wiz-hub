@@ -134,39 +134,61 @@ Deno.serve(async (req) => {
   if (guard instanceof Response) return guard;
 
   try {
+    // 0) Pre-flight: read remaining monthly API units so we can skip calls
+    //    that would blow the quota instead of hitting ERROR 134 mid-run.
+    const remainingUnits = await getRemainingUnits();
+    const canAfford = (rows: number) =>
+      remainingUnits == null ? true : remainingUnits - rows * 10 >= MIN_UNITS_FLOOR;
+
     // 1) Pull current referring domains (with authority score).
+    if (!canAfford(REFDOMAINS_LIMIT)) {
+      return new Response(
+        JSON.stringify({
+          ok: false,
+          error: `Semrush quota too low (${remainingUnits} units remaining) — skipping run to avoid TOTAL LIMIT EXCEEDED.`,
+          remainingUnits,
+        }),
+        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
+    }
     const refDomains = await semrushFetch(
       `/backlinks/backlinks_refdomains?target=${TARGET}&target_type=root_domain` +
-        `&export_columns=domain,domain_ascore,backlinks_num,first_seen,last_seen&display_limit=500`,
+        `&export_columns=domain,domain_ascore,backlinks_num,first_seen,last_seen&display_limit=${REFDOMAINS_LIMIT}`,
     );
     const refIdx = Object.fromEntries(refDomains.columnNames.map((c, i) => [c, i]));
 
     // 2) Pull individual backlinks so we can sample anchor text per source domain.
-    //    Best-effort: if the Semrush quota is exhausted, skip enrichment
-    //    rather than failing the whole sync.
+    //    Best-effort: skip if budget can't cover it, or if the live call still
+    //    returns ERROR 134 (e.g. /user/limits wasn't available).
     const anchorByDomain = new Map<string, string>();
     let anchorEnrichmentSkipped: string | null = null;
-    try {
-      const backlinks = await semrushFetch(
-        `/backlinks/backlinks?target=${TARGET}&target_type=root_domain` +
-          `&export_columns=source_url,anchor,last_seen&display_limit=500`,
-      );
-      const blIdx = Object.fromEntries(backlinks.columnNames.map((c, i) => [c, i]));
-      for (const row of backlinks.rows) {
-        const sourceUrl = row[blIdx.source_url] ?? "";
-        const anchor = row[blIdx.anchor] ?? "";
-        try {
-          const host = new URL(sourceUrl).hostname.replace(/^www\./, "");
-          if (!anchorByDomain.has(host)) anchorByDomain.set(host, anchor);
-        } catch { /* skip malformed urls */ }
+    if (!canAfford(REFDOMAINS_LIMIT + BACKLINKS_LIMIT)) {
+      anchorEnrichmentSkipped =
+        `Skipped anchor-text enrichment to preserve Semrush quota (${remainingUnits} units remaining).`;
+    } else {
+      try {
+        const backlinks = await semrushFetch(
+          `/backlinks/backlinks?target=${TARGET}&target_type=root_domain` +
+            `&export_columns=source_url,anchor,last_seen&display_limit=${BACKLINKS_LIMIT}`,
+        );
+        const blIdx = Object.fromEntries(backlinks.columnNames.map((c, i) => [c, i]));
+        for (const row of backlinks.rows) {
+          const sourceUrl = row[blIdx.source_url] ?? "";
+          const anchor = row[blIdx.anchor] ?? "";
+          try {
+            const host = new URL(sourceUrl).hostname.replace(/^www\./, "");
+            if (!anchorByDomain.has(host)) anchorByDomain.set(host, anchor);
+          } catch { /* skip malformed urls */ }
+        }
+      } catch (err) {
+        const msg = (err as Error).message;
+        anchorEnrichmentSkipped = /TOTAL LIMIT EXCEEDED|ERROR 134/i.test(msg)
+          ? "Semrush API quota exhausted — anchor-text enrichment skipped. Referring-domain scan still ran."
+          : `Anchor-text enrichment skipped: ${msg}`;
+        console.warn("anchor enrichment skipped:", msg);
       }
-    } catch (err) {
-      const msg = (err as Error).message;
-      anchorEnrichmentSkipped = /TOTAL LIMIT EXCEEDED|ERROR 134/i.test(msg)
-        ? "Semrush API quota exhausted — anchor-text enrichment skipped. Referring-domain scan still ran."
-        : `Anchor-text enrichment skipped: ${msg}`;
-      console.warn("anchor enrichment skipped:", msg);
     }
+
 
     // 3) Apply heuristics, build upserts.
     const admin = createClient(
