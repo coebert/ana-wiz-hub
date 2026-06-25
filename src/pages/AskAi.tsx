@@ -577,22 +577,8 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
             )}
           </div>
           {entries.length > 0 && (
-            <div className="flex items-center justify-between text-[11px] text-muted-foreground">
-              <span>
-                {filtered.length} of {entries.length}
-              </span>
-              <button
-                type="button"
-                onClick={() => {
-                  if (window.confirm("Clear all saved Q&A history? This cannot be undone.")) {
-                    onClearAll();
-                    setExpanded(null);
-                  }
-                }}
-                className="hover:text-destructive underline-offset-2 hover:underline"
-              >
-                Clear all history
-              </button>
+            <div className="text-[11px] text-muted-foreground">
+              {filtered.length} of {entries.length}
             </div>
           )}
         </div>
@@ -601,7 +587,7 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
           {entries.length === 0 ? (
             <div className="p-8 text-center text-sm text-muted-foreground">
               <MessageSquare className="h-8 w-8 mx-auto mb-3 opacity-40" aria-hidden />
-              Your Q&A history will appear here once you ask your first question.
+              The shared library is empty. Be the first to ask a question.
             </div>
           ) : filtered.length === 0 ? (
             <div className="p-8 text-center text-sm text-muted-foreground">
@@ -610,32 +596,27 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
           ) : (
             <ul className="divide-y divide-border">
               {filtered.map((entry) => {
-                const isOpen = expanded === entry.normalized;
+                const isOpen = expanded === entry.id;
                 return (
-                  <li key={entry.normalized} className="p-3">
-                    <div className="flex items-start justify-between gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setExpanded(isOpen ? null : entry.normalized)}
-                        className="flex-1 text-left text-sm font-medium text-foreground hover:text-primary"
-                      >
-                        {entry.question}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => onDelete(entry.normalized)}
-                        aria-label="Delete this entry"
-                        title="Delete"
-                        className="shrink-0 text-muted-foreground hover:text-destructive p-1 -m-1"
-                      >
-                        <Trash2 className="h-3.5 w-3.5" />
-                      </button>
-                    </div>
-                    <div className="mt-1 text-[11px] text-muted-foreground">
-                      {new Date(entry.at).toLocaleString(undefined, {
-                        day: "numeric", month: "short", year: "numeric",
-                        hour: "2-digit", minute: "2-digit",
-                      })}
+                  <li key={entry.id} className="p-3">
+                    <button
+                      type="button"
+                      onClick={() => setExpanded(isOpen ? null : entry.id)}
+                      className="block w-full text-left text-sm font-medium text-foreground hover:text-primary"
+                    >
+                      {entry.question}
+                    </button>
+                    <div className="mt-1 flex items-center gap-2 text-[11px] text-muted-foreground">
+                      <span>
+                        {new Date(entry.updatedAt).toLocaleString(undefined, {
+                          day: "numeric", month: "short", year: "numeric",
+                          hour: "2-digit", minute: "2-digit",
+                        })}
+                      </span>
+                      <span aria-hidden>·</span>
+                      <span>
+                        asked {entry.askCount}×
+                      </span>
                     </div>
                     {isOpen && (
                       <div className="mt-2 rounded-md border border-border bg-muted/30 p-3 prose prose-sm max-w-none dark:prose-invert prose-headings:font-serif prose-a:text-primary">
