@@ -1,0 +1,235 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Hub FAQ snapshot regression > /fficm: FAQPage JSON-LD snapshot > fficm-faqpage-jsonld 1`] = `
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The FFICM (Fellowship of the Faculty of Intensive Care Medicine) is the UK exit examination for intensive care medicine training. It has two parts: the MCQ paper (MTF + SBA) covering the FICM curriculum, and the OSCE/SOE which tests applied clinical knowledge, data interpretation, equipment, communication and procedural skills.",
+      },
+      "name": "What is the FFICM exam?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Part 1 is the MCQ written paper. Part 2 is a combined OSCE (structured stations covering data, equipment, communication and clinical scenarios) and SOE (structured oral examination on the FICM curriculum). Both parts must be passed within the regulation time window before CCT in ICM.",
+      },
+      "name": "How is the FFICM structured?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "FFICM is sat by trainees in single CCT Intensive Care Medicine, and by dual CCT trainees combining ICM with anaesthesia, acute medicine, emergency medicine or respiratory medicine. Eligibility and timing rules are set by FICM and depend on stage of training and prior exam passes.",
+      },
+      "name": "Who can sit the FFICM?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the FICM curriculum as your master checklist. Combine a reference text (Oh's Intensive Care Manual, ICU Book) with current guidelines (Surviving Sepsis, ICS, FICM, NICE, ERAS), and rehearse the SOE and OSCE under realistic time pressure with peers or seniors. AnaesthesiaCore's intensive care topics are mapped to the FFICM blueprint and end with viva-style questions.",
+      },
+      "name": "How should I revise for FFICM?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "FFICM is the UK Faculty of Intensive Care Medicine exit examination. EDIC (European Diploma in Intensive Care) is run by ESICM and recognised across Europe. Many UK trainees sit both — the syllabuses overlap heavily, but EDIC has a stronger emphasis on European guideline literature and is increasingly taken alongside FFICM.",
+      },
+      "name": "What is the difference between FFICM and EDIC?",
+    },
+  ],
+}
+`;
+
+exports[`Hub FAQ snapshot regression > /fficm: visible FAQ DOM snapshot > fficm-faq-dom 1`] = `
+[
+  {
+    "answer": "The FFICM (Fellowship of the Faculty of Intensive Care Medicine) is the UK exit examination for intensive care medicine training. It has two parts: the MCQ paper (MTF + SBA) covering the FICM curriculum, and the OSCE/SOE which tests applied clinical knowledge, data interpretation, equipment, communication and procedural skills.",
+    "question": "What is the FFICM exam?",
+  },
+  {
+    "answer": "Part 1 is the MCQ written paper. Part 2 is a combined OSCE (structured stations covering data, equipment, communication and clinical scenarios) and SOE (structured oral examination on the FICM curriculum). Both parts must be passed within the regulation time window before CCT in ICM.",
+    "question": "How is the FFICM structured?",
+  },
+  {
+    "answer": "FFICM is sat by trainees in single CCT Intensive Care Medicine, and by dual CCT trainees combining ICM with anaesthesia, acute medicine, emergency medicine or respiratory medicine. Eligibility and timing rules are set by FICM and depend on stage of training and prior exam passes.",
+    "question": "Who can sit the FFICM?",
+  },
+  {
+    "answer": "Use the FICM curriculum as your master checklist. Combine a reference text (Oh's Intensive Care Manual, ICU Book) with current guidelines (Surviving Sepsis, ICS, FICM, NICE, ERAS), and rehearse the SOE and OSCE under realistic time pressure with peers or seniors. AnaesthesiaCore's intensive care topics are mapped to the FFICM blueprint and end with viva-style questions.",
+    "question": "How should I revise for FFICM?",
+  },
+  {
+    "answer": "FFICM is the UK Faculty of Intensive Care Medicine exit examination. EDIC (European Diploma in Intensive Care) is run by ESICM and recognised across Europe. Many UK trainees sit both — the syllabuses overlap heavily, but EDIC has a stronger emphasis on European guideline literature and is increasingly taken alongside FFICM.",
+    "question": "What is the difference between FFICM and EDIC?",
+  },
+]
+`;
+
+exports[`Hub FAQ snapshot regression > /frca-final: FAQPage JSON-LD snapshot > frca-final-faqpage-jsonld 1`] = `
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Final FRCA is the second part of the RCoA Fellowship exam, taken in higher anaesthesia training. It comprises a written paper (SBA + CRQ/SAQ) followed by a structured oral examination. The syllabus covers clinical anaesthesia for every subspecialty, perioperative medicine, intensive care, pain medicine, and the applied basic sciences from the Primary.",
+      },
+      "name": "What is the Final FRCA exam?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Final FRCA written paper combines single best answer (SBA) questions with constructed response questions (CRQ). The structured oral examination (SOE) is split into clinical anaesthesia / clinical science / equipment stations and a long-case structured clinical viva. Both components have to be passed within the RCoA's specified time window.",
+      },
+      "name": "How is the Final FRCA structured?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most UK trainees sit the Final FRCA written paper during ST5–ST6 and the SOE within the following twelve months. The exam window must be cleared before completion of higher training. Earlier attempts are common in trainees taking a fellowship year or pursuing FFICM dual accreditation in parallel.",
+      },
+      "name": "When should I take the Final FRCA?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Final FRCA revision is best structured around real cases. Work through each subspecialty (cardiac, neuro, obstetric, paediatric, regional, ICU) and for each one rehearse a structured anaesthetic plan, the key guidelines, and the likely complications. Pair textbook reading (Oxford Handbook, CEACCP/BJA Education) with timed SBA practice and viva-style discussion in a study group.",
+      },
+      "name": "How should I revise for the Final FRCA?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Primary FRCA tests the basic sciences (physics, physiology, pharmacology, clinical measurement) that underpin anaesthesia. The Final FRCA tests how you apply those sciences to clinical practice across every anaesthetic subspecialty, plus perioperative medicine, intensive care and pain. The two exams sit at different career stages and have different blueprints.",
+      },
+      "name": "What is the difference between FRCA Primary and Final?",
+    },
+  ],
+}
+`;
+
+exports[`Hub FAQ snapshot regression > /frca-final: visible FAQ DOM snapshot > frca-final-faq-dom 1`] = `
+[
+  {
+    "answer": "The Final FRCA is the second part of the RCoA Fellowship exam, taken in higher anaesthesia training. It comprises a written paper (SBA + CRQ/SAQ) followed by a structured oral examination. The syllabus covers clinical anaesthesia for every subspecialty, perioperative medicine, intensive care, pain medicine, and the applied basic sciences from the Primary.",
+    "question": "What is the Final FRCA exam?",
+  },
+  {
+    "answer": "The Final FRCA written paper combines single best answer (SBA) questions with constructed response questions (CRQ). The structured oral examination (SOE) is split into clinical anaesthesia / clinical science / equipment stations and a long-case structured clinical viva. Both components have to be passed within the RCoA's specified time window.",
+    "question": "How is the Final FRCA structured?",
+  },
+  {
+    "answer": "Most UK trainees sit the Final FRCA written paper during ST5–ST6 and the SOE within the following twelve months. The exam window must be cleared before completion of higher training. Earlier attempts are common in trainees taking a fellowship year or pursuing FFICM dual accreditation in parallel.",
+    "question": "When should I take the Final FRCA?",
+  },
+  {
+    "answer": "Final FRCA revision is best structured around real cases. Work through each subspecialty (cardiac, neuro, obstetric, paediatric, regional, ICU) and for each one rehearse a structured anaesthetic plan, the key guidelines, and the likely complications. Pair textbook reading (Oxford Handbook, CEACCP/BJA Education) with timed SBA practice and viva-style discussion in a study group.",
+    "question": "How should I revise for the Final FRCA?",
+  },
+  {
+    "answer": "The Primary FRCA tests the basic sciences (physics, physiology, pharmacology, clinical measurement) that underpin anaesthesia. The Final FRCA tests how you apply those sciences to clinical practice across every anaesthetic subspecialty, plus perioperative medicine, intensive care and pain. The two exams sit at different career stages and have different blueprints.",
+    "question": "What is the difference between FRCA Primary and Final?",
+  },
+]
+`;
+
+exports[`Hub FAQ snapshot regression > /frca-primary: FAQPage JSON-LD snapshot > frca-primary-faqpage-jsonld 1`] = `
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Primary FRCA is the first part of the Royal College of Anaesthetists Fellowship examination, taken in the early years of UK anaesthesia training. It tests the basic sciences underpinning anaesthesia — physics, physiology, pharmacology and clinical measurement — across an MCQ/SBA paper and a structured oral (SOE/OSCE) component.",
+      },
+      "name": "What is the Primary FRCA exam?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pass rates for the Primary FRCA MCQ typically sit around 50–65% per sitting and the SOE around 60–70%. Most candidates who fail underestimate the depth required in physics and pharmacokinetics. Structured topic-by-topic revision against the RCoA syllabus, plenty of question practice and timed mock vivas are the single biggest predictors of success.",
+      },
+      "name": "How difficult is the Primary FRCA?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most UK trainees sit the Primary FRCA MCQ during CT2 and the SOE/OSCE shortly after passing the MCQ, aiming to clear both components before progressing to ST4. Earlier attempts are increasingly common — once you have six to twelve months of consolidated theatre experience plus dedicated revision time, you are usually well placed to sit.",
+      },
+      "name": "When should I take the Primary FRCA?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Work through the RCoA syllabus systematically rather than randomly. Cover every physics, physiology and pharmacology topic — even ones you find easy — and pair each with question practice (MCQs and viva-style questions). Use teaching journals (BJA Education), a core textbook (Peck & Hill, West, Power & Kam) and an active recall tool such as the AnaesthesiaCore quizzes and worked examples.",
+      },
+      "name": "How should I revise for the Primary FRCA?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Strong revision notes are concise, mapped to the RCoA Primary syllabus, and cite peer-reviewed sources. AnaesthesiaCore's Primary FRCA topics are written in that style — every page lists the syllabus reference, the key concepts in exam-shaped wording, diagrams that match common viva questions, and a short quiz to test recall.",
+      },
+      "name": "What are the best Primary FRCA notes?",
+    },
+    {
+      "@type": "Question",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Primary FRCA has two components. The MCQ paper combines multiple true/false (MTF) and single best answer (SBA) questions across physiology, pharmacology, physics & clinical measurement, and statistics. The structured oral (SOE) and OSCE then test applied knowledge through equipment stations, simulated clinical scenarios and structured viva questions on the same syllabus areas.",
+      },
+      "name": "How is the Primary FRCA structured?",
+    },
+  ],
+}
+`;
+
+exports[`Hub FAQ snapshot regression > /frca-primary: visible FAQ DOM snapshot > frca-primary-faq-dom 1`] = `
+[
+  {
+    "answer": "The Primary FRCA is the first part of the Royal College of Anaesthetists Fellowship examination, taken in the early years of UK anaesthesia training. It tests the basic sciences underpinning anaesthesia — physics, physiology, pharmacology and clinical measurement — across an MCQ/SBA paper and a structured oral (SOE/OSCE) component.",
+    "question": "What is the Primary FRCA exam?",
+  },
+  {
+    "answer": "Pass rates for the Primary FRCA MCQ typically sit around 50–65% per sitting and the SOE around 60–70%. Most candidates who fail underestimate the depth required in physics and pharmacokinetics. Structured topic-by-topic revision against the RCoA syllabus, plenty of question practice and timed mock vivas are the single biggest predictors of success.",
+    "question": "How difficult is the Primary FRCA?",
+  },
+  {
+    "answer": "Most UK trainees sit the Primary FRCA MCQ during CT2 and the SOE/OSCE shortly after passing the MCQ, aiming to clear both components before progressing to ST4. Earlier attempts are increasingly common — once you have six to twelve months of consolidated theatre experience plus dedicated revision time, you are usually well placed to sit.",
+    "question": "When should I take the Primary FRCA?",
+  },
+  {
+    "answer": "Work through the RCoA syllabus systematically rather than randomly. Cover every physics, physiology and pharmacology topic — even ones you find easy — and pair each with question practice (MCQs and viva-style questions). Use teaching journals (BJA Education), a core textbook (Peck & Hill, West, Power & Kam) and an active recall tool such as the AnaesthesiaCore quizzes and worked examples.",
+    "question": "How should I revise for the Primary FRCA?",
+  },
+  {
+    "answer": "Strong revision notes are concise, mapped to the RCoA Primary syllabus, and cite peer-reviewed sources. AnaesthesiaCore's Primary FRCA topics are written in that style — every page lists the syllabus reference, the key concepts in exam-shaped wording, diagrams that match common viva questions, and a short quiz to test recall.",
+    "question": "What are the best Primary FRCA notes?",
+  },
+  {
+    "answer": "The Primary FRCA has two components. The MCQ paper combines multiple true/false (MTF) and single best answer (SBA) questions across physiology, pharmacology, physics & clinical measurement, and statistics. The structured oral (SOE) and OSCE then test applied knowledge through equipment stations, simulated clinical scenarios and structured viva questions on the same syllabus areas.",
+    "question": "How is the Primary FRCA structured?",
+  },
+]
+`;
