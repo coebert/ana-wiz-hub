@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic, Pill, GraduationCap, Calculator, Brain, BookOpen } from "lucide-react";
+import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic, Pill, GraduationCap, Calculator, Brain, BookOpen, Sparkles } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
 import { SearchDialog } from "@/components/SearchDialog";
 import { ReduceMotionToggle } from "@/components/ReduceMotionToggle";
@@ -10,6 +10,7 @@ import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { Exam, ExamTag } from "@/data/curriculum";
 
 const navItems = [
+  { label: "Ask AI", path: "/ask", icon: Sparkles, color: "text-primary" },
   { label: "Physics", path: "/physics", icon: Atom, color: "text-physics" },
   { label: "Physiology", path: "/physiology", icon: Heart, color: "text-physiology" },
   { label: "Pharmacology", path: "/pharmacology", icon: FlaskConical, color: "text-pharmacology" },

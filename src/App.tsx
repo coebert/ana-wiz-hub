@@ -47,6 +47,7 @@ const PaedDoseTool = lazy(() => import("./pages/tools/PaedDoseTool"));
 const MaintenanceFluidTool = lazy(() => import("./pages/tools/MaintenanceFluidTool"));
 const MaxLADoseTool = lazy(() => import("./pages/tools/MaxLADoseTool"));
 const ABGInterpreterTool = lazy(() => import("./pages/tools/ABGInterpreterTool"));
+const AskAi = lazy(() => import("./pages/AskAi"));
 
 // Long-form SEO notes
 const NotesIndex = lazy(() => import("./pages/notes/NotesIndex"));
@@ -257,6 +258,7 @@ const App = () => (
         <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/ask" element={<AskAi />} />
           <Route path="/login" element={<Login />} />
           <Route path="/review" element={<Review />} />
           <Route path="/revise" element={<Index />} />
