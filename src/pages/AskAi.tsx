@@ -517,11 +517,9 @@ const Bubble = ({ message }: { message: UIMessage }) => {
 interface HistoryPanelProps {
   entries: QAEntry[];
   onReopen: (entry: QAEntry) => void;
-  onDelete: (normalized: string) => void;
-  onClearAll: () => void;
 }
 
-const HistoryPanel = ({ entries, onReopen, onDelete, onClearAll }: HistoryPanelProps) => {
+const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState<string | null>(null);
