@@ -112,6 +112,14 @@ const choices: LandingChoiceExt[] = [
     accent: "text-clinical",
     iconBg: "bg-clinical/10",
   },
+  {
+    title: "Ask AI",
+    description: "Ask any curriculum question and get a grounded answer with direct links to the relevant topics in the app.",
+    icon: Sparkles,
+    to: "/ask",
+    accent: "text-physics",
+    iconBg: "bg-physics/10",
+  },
 ];
 
 const Landing = () => {
