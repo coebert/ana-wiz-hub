@@ -228,9 +228,17 @@ export const TopicTemplate = ({
       metaDescription={metaDescription}
     >
       <Helmet>
-        {seo?.title && <title>{seo.title}</title>}
-        {seo?.title && <meta property="og:title" content={seo.title} />}
-        {seo?.title && <meta name="twitter:title" content={seo.title} />}
+        {(() => {
+          const fallbackTitle = `${topicTitle ?? title} | AnaesthesiaCore`;
+          const effectiveTitle = seo?.title ?? fallbackTitle;
+          return (
+            <>
+              <title>{effectiveTitle}</title>
+              <meta property="og:title" content={effectiveTitle} />
+              <meta name="twitter:title" content={effectiveTitle} />
+            </>
+          );
+        })()}
         <script type="application/ld+json">{JSON.stringify(learningResourceJsonLd)}</script>
         {medicalWebPageJsonLd && (
           <script type="application/ld+json">{JSON.stringify(medicalWebPageJsonLd)}</script>
