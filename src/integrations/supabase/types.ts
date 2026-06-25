@@ -265,6 +265,48 @@ export type Database = {
         }
         Relationships: []
       }
+      kb_chunks: {
+        Row: {
+          chunk_kind: string
+          content: string
+          content_hash: string
+          created_at: string
+          embedding: string
+          exam_tags: string[]
+          id: string
+          route: string
+          section: string
+          topic_id: string
+          topic_title: string
+        }
+        Insert: {
+          chunk_kind: string
+          content: string
+          content_hash: string
+          created_at?: string
+          embedding: string
+          exam_tags?: string[]
+          id?: string
+          route: string
+          section: string
+          topic_id: string
+          topic_title: string
+        }
+        Update: {
+          chunk_kind?: string
+          content?: string
+          content_hash?: string
+          created_at?: string
+          embedding?: string
+          exam_tags?: string[]
+          id?: string
+          route?: string
+          section?: string
+          topic_id?: string
+          topic_title?: string
+        }
+        Relationships: []
+      }
       lighthouse_runs: {
         Row: {
           branch: string | null
@@ -842,6 +884,20 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      match_kb_chunks: {
+        Args: { match_count?: number; query_embedding: string }
+        Returns: {
+          chunk_kind: string
+          content: string
+          exam_tags: string[]
+          id: string
+          route: string
+          section: string
+          similarity: number
+          topic_id: string
+          topic_title: string
+        }[]
       }
     }
     Enums: {
