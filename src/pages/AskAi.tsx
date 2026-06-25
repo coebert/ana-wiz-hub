@@ -4,9 +4,15 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
-import { Send, Sparkles, Trash2, BookOpen, Loader2 } from "lucide-react";
+import {
+  Send, Sparkles, Trash2, BookOpen, Loader2, History, Search, X, MessageSquare,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import {
+  Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger,
+} from "@/components/ui/sheet";
 import { SectionLayout } from "@/components/SectionLayout";
 
 /**
