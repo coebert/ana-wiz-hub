@@ -12,6 +12,7 @@ import { format } from "date-fns";
 import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick, Headphones, Mic2, Map as MapIcon } from "lucide-react";
 import VisitorsWorldMap from "@/components/admin/VisitorsWorldMap";
 import SeoAnalyticsPanel from "@/components/admin/SeoAnalyticsPanel";
+import SpoofedDomainsPanel from "@/components/admin/SpoofedDomainsPanel";
 import JumpClicksPanel from "@/components/admin/JumpClicksPanel";
 import SearchVsReferrerPanel from "@/components/admin/SearchVsReferrerPanel";
 
