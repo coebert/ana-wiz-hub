@@ -197,14 +197,14 @@ const AskAi = () => {
   });
 
   const [input, setInput] = useState("");
-  const [qaCache, setQaCache] = useState<QAEntry[]>(loadQACache);
-  // Tracks the last question we sent to the server so we know which user
-  // message to pair with the eventual streamed answer when caching it.
+  const [qaCache, setQaCache] = useState<QAEntry[]>([]);
+  // Tracks the last question we sent to the server so the post-stream
+  // refetch can prioritise picking up its new library row.
   const pendingQuestionRef = useRef<string | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
 
-  // Persist on every message change.
+  // Persist the current chat transcript locally.
   useEffect(() => {
     if (typeof window === "undefined") return;
     try {
@@ -214,43 +214,37 @@ const AskAi = () => {
     }
   }, [messages]);
 
-  // Persist the Q&A cache whenever it changes.
+  // Load the shared Q&A library on mount, and refresh it whenever the
+  // database notifies us of inserts/updates so other users' new questions
+  // appear in real time.
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      window.localStorage.setItem(QA_CACHE_KEY, JSON.stringify(qaCache));
-    } catch {
-      /* best effort */
-    }
-  }, [qaCache]);
+    let cancelled = false;
+    void fetchLibrary().then((rows) => { if (!cancelled) setQaCache(rows); });
+    const channel = supabase
+      .channel("ask_qa_library_changes")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "ask_qa_library" },
+        () => { void fetchLibrary().then((rows) => setQaCache(rows)); },
+      )
+      .subscribe();
+    return () => {
+      cancelled = true;
+      void supabase.removeChannel(channel);
+    };
+  }, []);
 
-  // After a streamed answer completes, store the (question, answer) pair so
-  // future identical/very-similar questions are served from cache instead of
-  // re-billing the model.
+  // After a streamed answer completes, refetch the library so the newly
+  // saved row (written by `kb-chat`'s onFinish hook) is visible immediately
+  // — realtime should also deliver it, but this is a guaranteed fallback.
   useEffect(() => {
     if (status !== "ready") return;
-    const pending = pendingQuestionRef.current;
-    if (!pending) return;
-    const last = messages[messages.length - 1];
-    if (!last || last.role !== "assistant") return;
-    const answer = partsToText(last.parts).trim();
-    if (!answer) return;
+    if (!pendingQuestionRef.current) return;
     pendingQuestionRef.current = null;
-    const normalized = normalize(pending);
-    setQaCache((prev) => {
-      // Replace any existing entry with the same normalized question.
-      const without = prev.filter((e) => e.normalized !== normalized);
-      const next: QAEntry = {
-        question: pending,
-        normalized,
-        tokens: tokenize(pending),
-        answer,
-        at: Date.now(),
-      };
-      // Cap to the most recent 200 entries to keep localStorage bounded.
-      return [next, ...without].slice(0, 200);
-    });
-  }, [status, messages]);
+    // Small delay to give the server's upsert time to commit.
+    const t = setTimeout(() => { void fetchLibrary().then(setQaCache); }, 600);
+    return () => clearTimeout(t);
+  }, [status]);
 
   // Auto-scroll to newest message.
   useEffect(() => {
