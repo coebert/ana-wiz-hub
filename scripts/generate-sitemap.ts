@@ -38,7 +38,17 @@ interface SitemapEntry {
 
 // Routes we never want in the sitemap, even if they appear in App.tsx.
 const EXCLUDE_PREFIXES = ["/dev/", "/admin"];
-const EXCLUDE_EXACT = new Set<string>(["*", "/not-found", "/glossary-audit"]);
+// Routes that emit <meta name="robots" content="noindex"> must NOT appear in
+// the sitemap — see src/test/sitemap-robots-noindex.test.ts which enforces this.
+const EXCLUDE_EXACT = new Set<string>([
+  "*",
+  "/not-found",
+  "/glossary-audit",
+  "/login",
+  "/review",
+  "/viva/voice",
+]);
+
 
 // Per-path overrides for changefreq/priority. Anything not listed here gets
 // sensible defaults derived from path depth.
