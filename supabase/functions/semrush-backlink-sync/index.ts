@@ -118,19 +118,30 @@ Deno.serve(async (req) => {
     const refIdx = Object.fromEntries(refDomains.columnNames.map((c, i) => [c, i]));
 
     // 2) Pull individual backlinks so we can sample anchor text per source domain.
-    const backlinks = await semrushFetch(
-      `/backlinks/backlinks?target=${TARGET}&target_type=root_domain` +
-        `&export_columns=source_url,anchor,last_seen&display_limit=500`,
-    );
-    const blIdx = Object.fromEntries(backlinks.columnNames.map((c, i) => [c, i]));
+    //    Best-effort: if the Semrush quota is exhausted, skip enrichment
+    //    rather than failing the whole sync.
     const anchorByDomain = new Map<string, string>();
-    for (const row of backlinks.rows) {
-      const sourceUrl = row[blIdx.source_url] ?? "";
-      const anchor = row[blIdx.anchor] ?? "";
-      try {
-        const host = new URL(sourceUrl).hostname.replace(/^www\./, "");
-        if (!anchorByDomain.has(host)) anchorByDomain.set(host, anchor);
-      } catch { /* skip malformed urls */ }
+    let anchorEnrichmentSkipped: string | null = null;
+    try {
+      const backlinks = await semrushFetch(
+        `/backlinks/backlinks?target=${TARGET}&target_type=root_domain` +
+          `&export_columns=source_url,anchor,last_seen&display_limit=500`,
+      );
+      const blIdx = Object.fromEntries(backlinks.columnNames.map((c, i) => [c, i]));
+      for (const row of backlinks.rows) {
+        const sourceUrl = row[blIdx.source_url] ?? "";
+        const anchor = row[blIdx.anchor] ?? "";
+        try {
+          const host = new URL(sourceUrl).hostname.replace(/^www\./, "");
+          if (!anchorByDomain.has(host)) anchorByDomain.set(host, anchor);
+        } catch { /* skip malformed urls */ }
+      }
+    } catch (err) {
+      const msg = (err as Error).message;
+      anchorEnrichmentSkipped = /TOTAL LIMIT EXCEEDED|ERROR 134/i.test(msg)
+        ? "Semrush API quota exhausted — anchor-text enrichment skipped. Referring-domain scan still ran."
+        : `Anchor-text enrichment skipped: ${msg}`;
+      console.warn("anchor enrichment skipped:", msg);
     }
 
     // 3) Apply heuristics, build upserts.
