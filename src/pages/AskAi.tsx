@@ -14,6 +14,7 @@ import {
   Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger,
 } from "@/components/ui/sheet";
 import { SectionLayout } from "@/components/SectionLayout";
+import { supabase } from "@/integrations/supabase/client";
 
 /**
  * Ask AnaesthesiaCore — a single-conversation tutor that retrieves the most
