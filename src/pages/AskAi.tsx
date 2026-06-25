@@ -792,13 +792,14 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
           {entries.length > 0 && (
             <div className="text-[11px] text-muted-foreground">
               {query.trim()
-                ? `${ranked.length} match${ranked.length === 1 ? "" : "es"} of ${entries.length} · ranked by relevance`
-                : `${entries.length} question${entries.length === 1 ? "" : "s"} · newest first`}
+                ? `Showing ${visible.length} of ${ranked.length} match${ranked.length === 1 ? "" : "es"} (${entries.length} total) · ranked by relevance`
+                : `Showing ${visible.length} of ${entries.length} question${entries.length === 1 ? "" : "s"} · newest first`}
             </div>
           )}
         </div>
 
-        <div className="flex-1 overflow-y-auto">
+        <div ref={scrollRef} className="flex-1 overflow-y-auto">
+
           {entries.length === 0 ? (
             <div className="p-8 text-center text-sm text-muted-foreground">
               <MessageSquare className="h-8 w-8 mx-auto mb-3 opacity-40" aria-hidden />
