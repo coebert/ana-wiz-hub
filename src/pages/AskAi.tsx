@@ -157,11 +157,11 @@ function partsToText(parts: UIMessage["parts"]): string {
 }
 
 function buildCachedReply(entry: QAEntry): string {
-  const when = new Date(entry.at).toLocaleDateString(undefined, {
+  const when = new Date(entry.updatedAt).toLocaleDateString(undefined, {
     day: "numeric", month: "short", year: "numeric",
   });
   return [
-    `**You've asked something very similar before** — here's the answer I gave on ${when} for "_${entry.question}_":`,
+    `**This question is already in the shared Ask AnaesthesiaCore library** — here's the answer saved on ${when} for "_${entry.question}_":`,
     "",
     "---",
     "",
@@ -169,7 +169,7 @@ function buildCachedReply(entry: QAEntry): string {
     "",
     "---",
     "",
-    "_If this isn't quite what you meant, clear the conversation or rephrase the question to get a fresh answer._",
+    "_If this isn't quite what you meant, rephrase the question to get a fresh answer._",
   ].join("\n");
 }
 
