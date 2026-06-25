@@ -70,11 +70,13 @@ describe("Hub FAQPage JSON-LD ↔ visible FAQ parity", () => {
       const Lazy = lazy(hub.loader);
       const { container } = render(
         <HelmetProvider>
-          <MemoryRouter initialEntries={[hub.path]}>
-            <Suspense fallback={null}>
-              <Lazy />
-            </Suspense>
-          </MemoryRouter>
+          <ExamFilterProvider>
+            <MemoryRouter initialEntries={[hub.path]}>
+              <Suspense fallback={null}>
+                <Lazy />
+              </Suspense>
+            </MemoryRouter>
+          </ExamFilterProvider>
         </HelmetProvider>,
       );
 
