@@ -21,9 +21,33 @@ const corsHeaders = {
 const GATEWAY_URL = "https://connector-gateway.lovable.dev/semrush";
 const TARGET = "anaesthesiacore.app";
 
+// Per-run row budgets. Semrush bills ~10 API units per backlink/refdomain row;
+// keep these conservative so a single run can't drain a low monthly quota.
+const REFDOMAINS_LIMIT = 200;
+const BACKLINKS_LIMIT = 100;
+// Skip a call entirely if remaining monthly units would drop below this floor.
+const MIN_UNITS_FLOOR = 500;
+
 const SPAM_TLDS = new Set([".shop", ".site", ".xyz", ".top", ".click"]);
 const SPAM_ANCHOR_RX = /\b(fiverr|seo|boost|revenue|ranking|traffic|backlink|authority)\b|💰|💵|💸|\$\d|\$\s?\d/i;
 const AUTHORITY_THRESHOLD = 5;
+
+async function getRemainingUnits(): Promise<number | null> {
+  try {
+    const data = await semrushFetch(`/user/limits`);
+    const idx = Object.fromEntries(data.columnNames.map((c, i) => [c, i]));
+    const row = data.rows[0] ?? [];
+    // Common column names across Semrush plans
+    const remainingCol = idx.api_units_remaining ?? idx.remaining ?? idx.units_left;
+    if (remainingCol == null) return null;
+    const n = Number(row[remainingCol]);
+    return Number.isFinite(n) ? n : null;
+  } catch (e) {
+    console.warn("could not read /user/limits:", (e as Error).message);
+    return null;
+  }
+}
+
 
 async function semrushFetch(path: string): Promise<{ columnNames: string[]; rows: string[][] }> {
   const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
