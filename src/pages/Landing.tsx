@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown, BookMarked } from "lucide-react";
+import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown, BookMarked, Sparkles } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
 import NeonSplash from "@/components/NeonSplash";
 import { SupportSection } from "@/components/SupportSection";
@@ -112,6 +112,14 @@ const choices: LandingChoiceExt[] = [
     accent: "text-clinical",
     iconBg: "bg-clinical/10",
   },
+  {
+    title: "Ask AI",
+    description: "Ask any curriculum question and get a grounded answer with direct links to the relevant topics in the app.",
+    icon: Sparkles,
+    to: "/ask",
+    accent: "text-physics",
+    iconBg: "bg-physics/10",
+  },
 ];
 
 const Landing = () => {
@@ -167,7 +175,7 @@ const Landing = () => {
 
       <section className="container mx-auto px-4 py-12 md:py-16 flex-1">
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 max-w-6xl mx-auto">
           {choices.map(({ title, description, icon: Icon, to, accent, iconBg }) => (
             <Link
               key={to}
