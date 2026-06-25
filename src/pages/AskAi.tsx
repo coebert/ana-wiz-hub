@@ -81,17 +81,40 @@ function jaccard(a: string[], b: string[]): number {
   return union === 0 ? 0 : inter / union;
 }
 
-function loadQACache(): QAEntry[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = window.localStorage.getItem(QA_CACHE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed)) return parsed as QAEntry[];
-  } catch {
-    /* ignore */
+interface RawLibraryRow {
+  id: string;
+  question: string;
+  normalized: string;
+  answer: string;
+  ask_count: number;
+  updated_at: string;
+}
+
+function rowToEntry(row: RawLibraryRow): QAEntry {
+  return {
+    id: row.id,
+    question: row.question,
+    normalized: row.normalized,
+    tokens: tokenize(row.question),
+    answer: row.answer,
+    askCount: row.ask_count ?? 1,
+    updatedAt: new Date(row.updated_at).getTime(),
+  };
+}
+
+async function fetchLibrary(): Promise<QAEntry[]> {
+  // The shared Q&A library is world-readable via RLS; the publishable anon
+  // key in the default client is enough.
+  const { data, error } = await supabase
+    .from("ask_qa_library")
+    .select("id, question, normalized, answer, ask_count, updated_at")
+    .order("updated_at", { ascending: false })
+    .limit(500);
+  if (error) {
+    console.error("[AskAi] failed to load Q&A library", error);
+    return [];
   }
-  return [];
+  return ((data ?? []) as RawLibraryRow[]).map(rowToEntry);
 }
 
 function findCachedMatch(question: string, cache: QAEntry[]): QAEntry | null {
