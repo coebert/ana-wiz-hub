@@ -70,14 +70,12 @@ describe("Hub FAQPage JSON-LD ↔ visible FAQ parity", () => {
 
   for (const hub of HUBS) {
     it(`${hub.path}: FAQPage JSON-LD matches visible FAQ content`, async () => {
-      const Lazy = lazy(hub.loader);
+      const Hub = hub.Component;
       const { container } = render(
         <HelmetProvider>
           <ExamFilterProvider>
             <MemoryRouter initialEntries={[hub.path]}>
-              <Suspense fallback={null}>
-                <Lazy />
-              </Suspense>
+              <Hub />
             </MemoryRouter>
           </ExamFilterProvider>
         </HelmetProvider>,
