@@ -103,11 +103,17 @@ function indexUsage(
   }
   for (const t of topics) {
     for (const a of animations) {
+      // Use the actual module basename so multi-component modules
+      // (e.g. `PatientPositioningMechanisms.tsx`) match correctly.
+      const moduleBase = a.file
+        .split("/")
+        .pop()!
+        .replace(/\.tsx$/, "");
       const importRe = new RegExp(
-        `import\\s+\\{[^}]*\\b${a.name}\\b[^}]*\\}\\s+from\\s+["']@/components/diagrams/${a.name}["']`,
+        `import\\s+\\{[^}]*\\b${a.name}\\b[^}]*\\}\\s+from\\s+["']@/components/diagrams/${moduleBase}["']`,
       );
       const defaultImportRe = new RegExp(
-        `import\\s+${a.name}\\s+from\\s+["']@/components/diagrams/${a.name}["']`,
+        `import\\s+${a.name}\\s+from\\s+["']@/components/diagrams/${moduleBase}["']`,
       );
       const isImported = importRe.test(t.src) || defaultImportRe.test(t.src);
       if (!isImported) continue;
