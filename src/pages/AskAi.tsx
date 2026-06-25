@@ -21,6 +21,7 @@ import { SectionLayout } from "@/components/SectionLayout";
  */
 
 const STORAGE_KEY = "anaesthesiacore.ask.messages.v1";
+const QA_CACHE_KEY = "anaesthesiacore.ask.qa-cache.v1";
 const ENDPOINT = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/kb-chat`;
 
 const SUGGESTED = [
@@ -29,6 +30,76 @@ const SUGGESTED = [
   "What's the difference between SIMV and PSV?",
   "When is voiding mandatory before day-case discharge?",
 ];
+
+interface QAEntry {
+  question: string;
+  normalized: string;
+  tokens: string[];
+  answer: string;
+  at: number;
+}
+
+const STOPWORDS = new Set([
+  "a","an","the","is","are","was","were","be","been","being","of","to","in","on",
+  "for","and","or","but","with","without","as","at","by","from","that","this","it",
+  "its","do","does","did","how","what","why","when","where","which","who","whom",
+  "should","could","would","can","may","might","i","you","we","they","my","your",
+  "about","into","over","under","than","then","so","if","not","no","yes",
+]);
+
+function normalize(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function tokenize(text: string): string[] {
+  return normalize(text)
+    .split(" ")
+    .filter((t) => t.length > 2 && !STOPWORDS.has(t));
+}
+
+function jaccard(a: string[], b: string[]): number {
+  if (a.length === 0 || b.length === 0) return 0;
+  const sa = new Set(a);
+  const sb = new Set(b);
+  let inter = 0;
+  sa.forEach((t) => { if (sb.has(t)) inter += 1; });
+  const union = new Set([...sa, ...sb]).size;
+  return union === 0 ? 0 : inter / union;
+}
+
+function loadQACache(): QAEntry[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(QA_CACHE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) return parsed as QAEntry[];
+  } catch {
+    /* ignore */
+  }
+  return [];
+}
+
+function findCachedMatch(question: string, cache: QAEntry[]): QAEntry | null {
+  const norm = normalize(question);
+  if (!norm) return null;
+  const exact = cache.find((e) => e.normalized === norm);
+  if (exact) return exact;
+  const toks = tokenize(question);
+  if (toks.length < 2) return null;
+  let best: { entry: QAEntry; score: number } | null = null;
+  for (const entry of cache) {
+    const score = jaccard(toks, entry.tokens);
+    if (score >= 0.8 && (!best || score > best.score)) {
+      best = { entry, score };
+    }
+  }
+  return best?.entry ?? null;
+}
 
 function loadInitialMessages(): UIMessage[] {
   if (typeof window === "undefined") return [];
@@ -50,6 +121,23 @@ function partsToText(parts: UIMessage["parts"]): string {
       return part.type === "text" ? part.text ?? "" : "";
     })
     .join("");
+}
+
+function buildCachedReply(entry: QAEntry): string {
+  const when = new Date(entry.at).toLocaleDateString(undefined, {
+    day: "numeric", month: "short", year: "numeric",
+  });
+  return [
+    `**You've asked something very similar before** — here's the answer I gave on ${when} for "_${entry.question}_":`,
+    "",
+    "---",
+    "",
+    entry.answer,
+    "",
+    "---",
+    "",
+    "_If this isn't quite what you meant, clear the conversation or rephrase the question to get a fresh answer._",
+  ].join("\n");
 }
 
 const AskAi = () => {
@@ -76,6 +164,10 @@ const AskAi = () => {
   });
 
   const [input, setInput] = useState("");
+  const [qaCache, setQaCache] = useState<QAEntry[]>(loadQACache);
+  // Tracks the last question we sent to the server so we know which user
+  // message to pair with the eventual streamed answer when caching it.
+  const pendingQuestionRef = useRef<string | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -88,6 +180,44 @@ const AskAi = () => {
       /* quota etc. — best effort only */
     }
   }, [messages]);
+
+  // Persist the Q&A cache whenever it changes.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      window.localStorage.setItem(QA_CACHE_KEY, JSON.stringify(qaCache));
+    } catch {
+      /* best effort */
+    }
+  }, [qaCache]);
+
+  // After a streamed answer completes, store the (question, answer) pair so
+  // future identical/very-similar questions are served from cache instead of
+  // re-billing the model.
+  useEffect(() => {
+    if (status !== "ready") return;
+    const pending = pendingQuestionRef.current;
+    if (!pending) return;
+    const last = messages[messages.length - 1];
+    if (!last || last.role !== "assistant") return;
+    const answer = partsToText(last.parts).trim();
+    if (!answer) return;
+    pendingQuestionRef.current = null;
+    const normalized = normalize(pending);
+    setQaCache((prev) => {
+      // Replace any existing entry with the same normalized question.
+      const without = prev.filter((e) => e.normalized !== normalized);
+      const next: QAEntry = {
+        question: pending,
+        normalized,
+        tokens: tokenize(pending),
+        answer,
+        at: Date.now(),
+      };
+      // Cap to the most recent 200 entries to keep localStorage bounded.
+      return [next, ...without].slice(0, 200);
+    });
+  }, [status, messages]);
 
   // Auto-scroll to newest message.
   useEffect(() => {
@@ -110,6 +240,32 @@ const AskAi = () => {
     const trimmed = text.trim();
     if (!trimmed || isBusy) return;
     setInput("");
+
+    // 1. Check the local Q&A cache first. If we've answered this (or a very
+    //    similar) question before, surface the prior answer instead of
+    //    spending another model call.
+    const cached = findCachedMatch(trimmed, qaCache);
+    if (cached) {
+      const now = Date.now();
+      const userMsg: UIMessage = {
+        id: `cached-user-${now}`,
+        role: "user",
+        parts: [{ type: "text", text: trimmed }],
+      };
+      const assistantMsg: UIMessage = {
+        id: `cached-assistant-${now}`,
+        role: "assistant",
+        parts: [{ type: "text", text: buildCachedReply(cached) }],
+      };
+      setMessages([...messages, userMsg, assistantMsg]);
+      // Refresh recency so frequently-asked questions stay at the top.
+      setQaCache((prev) =>
+        prev.map((e) => (e.normalized === cached.normalized ? { ...e, at: now } : e)),
+      );
+      return;
+    }
+
+    pendingQuestionRef.current = trimmed;
     await sendMessage({ text: trimmed });
   };
 
