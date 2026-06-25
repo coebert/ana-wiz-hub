@@ -143,8 +143,73 @@ ${routeIndex}`;
     },
   });
 
+  // Build a Supabase admin client we'll reuse to upsert the shared Q&A
+  // library entry once the stream completes.
+  const adminClient = createClient(supabaseUrl, serviceKey, {
+    auth: { persistSession: false },
+  });
+
   return result.toUIMessageStreamResponse({
     headers: corsHeaders,
     originalMessages: messages,
+    onFinish: async ({ responseMessage }) => {
+      try {
+        const normalized = normalizeQuestion(userQuestion);
+        if (!normalized) return;
+        const answer = (responseMessage.parts ?? [])
+          .map((p) => (p as { type: string; text?: string }).type === "text"
+            ? (p as { text?: string }).text ?? ""
+            : "")
+          .join("")
+          .trim();
+        if (!answer) return;
+
+        // Try to bump the ask_count on an existing entry first.
+        const { data: existing, error: lookupErr } = await adminClient
+          .from("ask_qa_library")
+          .select("id, ask_count")
+          .eq("normalized", normalized)
+          .maybeSingle();
+        if (lookupErr) {
+          console.error("[kb-chat] library lookup failed", lookupErr);
+          return;
+        }
+        if (existing) {
+          const { error: updateErr } = await adminClient
+            .from("ask_qa_library")
+            .update({
+              answer,
+              question: userQuestion,
+              ask_count: (existing.ask_count ?? 0) + 1,
+            })
+            .eq("id", existing.id);
+          if (updateErr) console.error("[kb-chat] library update failed", updateErr);
+        } else {
+          const { error: insertErr } = await adminClient
+            .from("ask_qa_library")
+            .insert({
+              normalized,
+              question: userQuestion,
+              answer,
+            });
+          if (insertErr) console.error("[kb-chat] library insert failed", insertErr);
+        }
+      } catch (err) {
+        console.error("[kb-chat] library persist failed", err);
+      }
+    },
   });
 });
+
+/**
+ * Lowercase, strip punctuation, collapse whitespace. MUST stay in sync with
+ * the client-side `normalize()` helper in `src/pages/AskAi.tsx` so cache
+ * lookups behave identically on both sides.
+ */
+function normalizeQuestion(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
