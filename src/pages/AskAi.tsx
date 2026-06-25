@@ -22,13 +22,14 @@ import { supabase } from "@/integrations/supabase/client";
  * FAQs) and streams a grounded answer with links back to the topics the user
  * should read.
  *
- * Storage choice (per user): browser localStorage only. No login, no
- * server-side conversation log. "New conversation" clears the local message
- * history.
+ * Storage:
+ * - Current conversation messages: browser localStorage (single chat).
+ * - Q&A library: shared `ask_qa_library` table — every answered question is
+ *   saved server-side via `kb-chat`'s onFinish hook, then every user can
+ *   browse, search, and reopen the full library.
  */
 
 const STORAGE_KEY = "anaesthesiacore.ask.messages.v1";
-const QA_CACHE_KEY = "anaesthesiacore.ask.qa-cache.v1";
 const ENDPOINT = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/kb-chat`;
 
 const SUGGESTED = [
@@ -39,11 +40,13 @@ const SUGGESTED = [
 ];
 
 interface QAEntry {
+  id: string;
   question: string;
   normalized: string;
   tokens: string[];
   answer: string;
-  at: number;
+  askCount: number;
+  updatedAt: number;
 }
 
 const STOPWORDS = new Set([
