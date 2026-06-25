@@ -32,17 +32,37 @@ const TOPICS_DIR = resolve("src/pages/topics");
 
 const ANIMATION_RE = /(?:^Animated[A-Z]\w*|Animation)\.tsx$/;
 
+/**
+ * An "animated diagram" is any React component whose name matches
+ * `*Animation` or `Animated*`, whether declared in a same-named file
+ * (`FooAnimation.tsx`) or as a named export inside a multi-component
+ * module (e.g. `PatientPositioningMechanisms.tsx` exports several
+ * `*Animation` components).
+ */
 function listAnimationComponents(): Array<{ name: string; file: string; src: string }> {
-  return readdirSync(DIAGRAMS_DIR)
-    .filter((f) => ANIMATION_RE.test(f))
-    .map((f) => {
-      const file = resolve(DIAGRAMS_DIR, f);
-      return {
-        name: f.replace(/\.tsx$/, ""),
-        file,
-        src: readFileSync(file, "utf8"),
-      };
-    });
+  const out: Array<{ name: string; file: string; src: string }> = [];
+  const seen = new Set<string>();
+  const declRe =
+    /export\s+(?:default\s+)?(?:const|function|class)\s+(Animated[A-Z]\w*|\w*Animation)\b/g;
+  for (const f of readdirSync(DIAGRAMS_DIR)) {
+    if (!f.endsWith(".tsx")) continue;
+    const file = resolve(DIAGRAMS_DIR, f);
+    const src = readFileSync(file, "utf8");
+    // Same-named file (e.g. `AAShuntAnimation.tsx`) is the canonical case.
+    const base = f.replace(/\.tsx$/, "");
+    if (ANIMATION_RE.test(f) && !seen.has(base)) {
+      seen.add(base);
+      out.push({ name: base, file, src });
+    }
+    // Plus any named-export animation living inside a multi-component module.
+    for (const m of src.matchAll(declRe)) {
+      const name = m[1];
+      if (seen.has(name)) continue;
+      seen.add(name);
+      out.push({ name, file, src });
+    }
+  }
+  return out;
 }
 
 function listTopicFiles(): Array<{ file: string; src: string }> {
