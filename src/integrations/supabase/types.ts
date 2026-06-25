@@ -241,6 +241,54 @@ export type Database = {
         }
         Relationships: []
       }
+      flagged_domains: {
+        Row: {
+          anchor_text_sample: string | null
+          authority_score: number | null
+          created_at: string
+          domain: string
+          first_seen_at: string
+          id: string
+          last_seen_at: string
+          notes: string | null
+          reason: string | null
+          source: string
+          status: string
+          trust_score: number | null
+          updated_at: string
+        }
+        Insert: {
+          anchor_text_sample?: string | null
+          authority_score?: number | null
+          created_at?: string
+          domain: string
+          first_seen_at?: string
+          id?: string
+          last_seen_at?: string
+          notes?: string | null
+          reason?: string | null
+          source?: string
+          status?: string
+          trust_score?: number | null
+          updated_at?: string
+        }
+        Update: {
+          anchor_text_sample?: string | null
+          authority_score?: number | null
+          created_at?: string
+          domain?: string
+          first_seen_at?: string
+          id?: string
+          last_seen_at?: string
+          notes?: string | null
+          reason?: string | null
+          source?: string
+          status?: string
+          trust_score?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       inaccuracy_reports: {
         Row: {
           contact_email: string | null
