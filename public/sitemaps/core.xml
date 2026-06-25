@@ -7,18 +7,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://anaesthesiacore.app/login</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/review</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://anaesthesiacore.app/revise</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -70,12 +58,6 @@
     <loc>https://anaesthesiacore.app/viva/library</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/viva/voice</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
