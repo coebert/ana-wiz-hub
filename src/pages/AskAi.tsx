@@ -345,6 +345,20 @@ const AskAi = () => {
       </Helmet>
 
       <div className="flex flex-col h-[min(75vh,900px)] rounded-xl border border-border bg-card">
+        {/* Toolbar */}
+        <div className="flex items-center justify-between gap-2 border-b border-border px-3 sm:px-4 py-2">
+          <div className="text-xs text-muted-foreground">
+            {qaCache.length > 0
+              ? `${qaCache.length} saved Q${qaCache.length === 1 ? "" : "s"} in history`
+              : "No saved questions yet"}
+          </div>
+          <HistoryPanel
+            entries={qaCache}
+            onReopen={reopen}
+            onDelete={deleteEntry}
+            onClearAll={clearHistory}
+          />
+        </div>
         {/* Transcript */}
         <div
           ref={scrollerRef}
