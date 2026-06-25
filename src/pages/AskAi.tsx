@@ -671,12 +671,47 @@ function rankEntries(
   return { ranked: scored, regex, terms };
 }
 
+const PAGE_SIZE = 25;
+
 const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const { ranked, regex } = useMemo(() => rankEntries(entries, query), [entries, query]);
+  const visible = useMemo(() => ranked.slice(0, visibleCount), [ranked, visibleCount]);
+  const hasMore = visibleCount < ranked.length;
+
+  // Reset the window when the query, the sheet, or the underlying ranking
+  // changes — otherwise we'd be paginating into a stale slice.
+  useEffect(() => { setVisibleCount(PAGE_SIZE); }, [query, open]);
+  useEffect(() => {
+    if (scrollRef.current) scrollRef.current.scrollTop = 0;
+  }, [query]);
+
+  // Infinite scroll: when the sentinel intersects the scroll container, grow
+  // the window by one page. Falls back to a manual "Load more" button below
+  // for browsers without IntersectionObserver and for keyboard users.
+  useEffect(() => {
+    if (!open || !hasMore) return;
+    const sentinel = sentinelRef.current;
+    const root = scrollRef.current;
+    if (!sentinel || !root || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setVisibleCount((c) => Math.min(c + PAGE_SIZE, Number.MAX_SAFE_INTEGER));
+        }
+      },
+      { root, rootMargin: "200px 0px" },
+    );
+    io.observe(sentinel);
+    return () => io.disconnect();
+  }, [open, hasMore, ranked.length]);
+
 
   const handleReopen = (entry: QAEntry) => {
     onReopen(entry);
@@ -757,13 +792,14 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
           {entries.length > 0 && (
             <div className="text-[11px] text-muted-foreground">
               {query.trim()
-                ? `${ranked.length} match${ranked.length === 1 ? "" : "es"} of ${entries.length} · ranked by relevance`
-                : `${entries.length} question${entries.length === 1 ? "" : "s"} · newest first`}
+                ? `Showing ${visible.length} of ${ranked.length} match${ranked.length === 1 ? "" : "es"} (${entries.length} total) · ranked by relevance`
+                : `Showing ${visible.length} of ${entries.length} question${entries.length === 1 ? "" : "s"} · newest first`}
             </div>
           )}
         </div>
 
-        <div className="flex-1 overflow-y-auto">
+        <div ref={scrollRef} className="flex-1 overflow-y-auto">
+
           {entries.length === 0 ? (
             <div className="p-8 text-center text-sm text-muted-foreground">
               <MessageSquare className="h-8 w-8 mx-auto mb-3 opacity-40" aria-hidden />
@@ -774,65 +810,89 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
               No matches for "{query}". Try fewer words or a quoted "phrase".
             </div>
           ) : (
-            <ul className="divide-y divide-border">
-              {ranked.map(({ entry, snippet, questionHits, answerHits }) => {
-                const isOpen = expanded === entry.id;
-                return (
-                  <li key={entry.id} className="p-3">
-                    <button
-                      type="button"
-                      onClick={() => setExpanded(isOpen ? null : entry.id)}
-                      className="block w-full text-left text-sm font-medium text-foreground hover:text-primary"
-                    >
-                      {highlightString(entry.question, regex)}
-                    </button>
-                    <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-muted-foreground">
-                      <span>
-                        {new Date(entry.updatedAt).toLocaleString(undefined, {
-                          day: "numeric", month: "short", year: "numeric",
-                          hour: "2-digit", minute: "2-digit",
-                        })}
-                      </span>
-                      <span aria-hidden>·</span>
-                      <span>asked {entry.askCount}×</span>
-                      {regex && (questionHits + answerHits) > 0 && (
-                        <>
-                          <span aria-hidden>·</span>
-                          <span>
-                            {questionHits} in question · {answerHits} in answer
-                          </span>
-                        </>
-                      )}
-                    </div>
-                    {!isOpen && snippet && (
-                      <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
-                        {highlightString(snippet, regex)}
-                      </p>
-                    )}
-                    {isOpen && (
-                      <div className="mt-2 rounded-md border border-border bg-muted/30 p-3 prose prose-sm max-w-none dark:prose-invert prose-headings:font-serif prose-a:text-primary">
-                        <ReactMarkdown components={markdownComponents}>
-                          {entry.answer}
-                        </ReactMarkdown>
-                      </div>
-                    )}
-                    <div className="mt-2">
-                      <Button
+            <>
+              <ul className="divide-y divide-border">
+                {visible.map(({ entry, snippet, questionHits, answerHits }) => {
+                  const isOpen = expanded === entry.id;
+                  return (
+                    <li key={entry.id} className="p-3">
+                      <button
                         type="button"
-                        size="sm"
-                        variant="outline"
-                        onClick={() => handleReopen(entry)}
-                        className="h-7 text-xs gap-1.5"
+                        onClick={() => setExpanded(isOpen ? null : entry.id)}
+                        className="block w-full text-left text-sm font-medium text-foreground hover:text-primary"
                       >
-                        <MessageSquare className="h-3 w-3" aria-hidden />
-                        Reopen in chat
-                      </Button>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
+                        {highlightString(entry.question, regex)}
+                      </button>
+                      <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-muted-foreground">
+                        <span>
+                          {new Date(entry.updatedAt).toLocaleString(undefined, {
+                            day: "numeric", month: "short", year: "numeric",
+                            hour: "2-digit", minute: "2-digit",
+                          })}
+                        </span>
+                        <span aria-hidden>·</span>
+                        <span>asked {entry.askCount}×</span>
+                        {regex && (questionHits + answerHits) > 0 && (
+                          <>
+                            <span aria-hidden>·</span>
+                            <span>
+                              {questionHits} in question · {answerHits} in answer
+                            </span>
+                          </>
+                        )}
+                      </div>
+                      {!isOpen && snippet && (
+                        <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                          {highlightString(snippet, regex)}
+                        </p>
+                      )}
+                      {isOpen && (
+                        <div className="mt-2 rounded-md border border-border bg-muted/30 p-3 prose prose-sm max-w-none dark:prose-invert prose-headings:font-serif prose-a:text-primary">
+                          <ReactMarkdown components={markdownComponents}>
+                            {entry.answer}
+                          </ReactMarkdown>
+                        </div>
+                      )}
+                      <div className="mt-2">
+                        <Button
+                          type="button"
+                          size="sm"
+                          variant="outline"
+                          onClick={() => handleReopen(entry)}
+                          className="h-7 text-xs gap-1.5"
+                        >
+                          <MessageSquare className="h-3 w-3" aria-hidden />
+                          Reopen in chat
+                        </Button>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+              {hasMore ? (
+                <div
+                  ref={sentinelRef}
+                  className="flex items-center justify-center p-4"
+                >
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+                    className="text-xs gap-1.5"
+                  >
+                    <Loader2 className="h-3 w-3 animate-spin" aria-hidden />
+                    Load more ({ranked.length - visible.length} remaining)
+                  </Button>
+                </div>
+              ) : ranked.length > PAGE_SIZE ? (
+                <p className="p-4 text-center text-[11px] text-muted-foreground">
+                  End of {query.trim() ? "matches" : "library"}.
+                </p>
+              ) : null}
+            </>
           )}
+
         </div>
       </SheetContent>
     </Sheet>
