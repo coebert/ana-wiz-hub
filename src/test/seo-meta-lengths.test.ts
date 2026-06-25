@@ -251,5 +251,137 @@ describe("dynamic-title templates keep their 60-char cap", () => {
         ).toBe(true);
       }
     },
+);
+});
+
+// ---------- index.html head completeness ----------
+//
+// Beyond length, the static head must carry the tags that browsers and
+// crawlers need to render the page correctly and to build accurate
+// previews. These are sitewide fallbacks — per-route Helmet can override
+// canonical/og:url, but the static defaults must always be valid.
+
+describe("index.html head — canonical, robots, viewport, og:image", () => {
+  it("viewport meta is present and mobile-friendly", () => {
+    const v = pickContent(
+      indexHtml,
+      /<meta\s+name="viewport"\s+content="([^"]+)"/,
+    );
+    expect(v, "index.html missing <meta name=\"viewport\">").toBeTruthy();
+    // width=device-width is the Google mobile-friendly requirement.
+    expect(
+      /width\s*=\s*device-width/i.test(v!),
+      `viewport must include width=device-width, got: "${v}"`,
+    ).toBe(true);
+    expect(
+      /initial-scale\s*=\s*1(\.0+)?/i.test(v!),
+      `viewport must include initial-scale=1, got: "${v}"`,
+    ).toBe(true);
+  });
+
+  it("does not ship a sitewide robots noindex", () => {
+    // A sitewide `<meta name="robots" content="noindex">` would silently
+    // deindex every page. Per-route noindex is fine; the static head must
+    // not block the whole site.
+    const r = pickContent(
+      indexHtml,
+      /<meta\s+name="robots"\s+content="([^"]+)"/i,
+    );
+    if (r) {
+      expect(
+        /noindex/i.test(r),
+        `index.html has sitewide robots="${r}" — noindex would deindex every page`,
+      ).toBe(false);
+    }
+  });
+
+  it("og:image is present, absolute https URL, and has dimensions + alt", () => {
+    const img = pickContent(
+      indexHtml,
+      /<meta\s+property="og:image"\s+content="([^"]+)"/,
+    );
+    expect(img, "index.html missing og:image").toBeTruthy();
+    expect(
+      /^https:\/\//.test(img!),
+      `og:image must be an absolute https URL, got: "${img}"`,
+    ).toBe(true);
+
+    const w = pickContent(
+      indexHtml,
+      /<meta\s+property="og:image:width"\s+content="(\d+)"/,
+    );
+    const h = pickContent(
+      indexHtml,
+      /<meta\s+property="og:image:height"\s+content="(\d+)"/,
+    );
+    expect(w, "og:image:width missing — social previews may render at wrong aspect").toBeTruthy();
+    expect(h, "og:image:height missing — social previews may render at wrong aspect").toBeTruthy();
+    // Facebook/LinkedIn require ≥ 200×200 to render a large card.
+    expect(Number(w), `og:image:width too small: ${w}`).toBeGreaterThanOrEqual(200);
+    expect(Number(h), `og:image:height too small: ${h}`).toBeGreaterThanOrEqual(200);
+
+    const alt = pickContent(
+      indexHtml,
+      /<meta\s+property="og:image:alt"\s+content="([^"]+)"/,
+    );
+    expect(alt, "og:image:alt missing — required for accessibility").toBeTruthy();
+
+    // Twitter cards reuse og:image; make sure twitter:image agrees when present.
+    const tw = pickContent(
+      indexHtml,
+      /<meta\s+name="twitter:image"\s+content="([^"]+)"/,
+    );
+    if (tw) {
+      expect(
+        /^https:\/\//.test(tw),
+        `twitter:image must be an absolute https URL, got: "${tw}"`,
+      ).toBe(true);
+    }
+  });
+
+  it("twitter:card is summary_large_image when twitter:image is present", () => {
+    const tw = pickContent(
+      indexHtml,
+      /<meta\s+name="twitter:image"\s+content="([^"]+)"/,
+    );
+    if (!tw) return;
+    const card = pickContent(
+      indexHtml,
+      /<meta\s+name="twitter:card"\s+content="([^"]+)"/,
+    );
+    expect(card, "twitter:card missing although twitter:image is set").toBeTruthy();
+    expect(["summary", "summary_large_image"]).toContain(card!);
+  });
+});
+
+// ---------- Per-route Helmet completeness ----------
+//
+// Templates that set per-route `<title>`/og:title must also self-reference
+// their canonical URL via `<link rel="canonical">` AND `og:url`. When these
+// disagree (or point at the homepage), crawlers attribute the page's
+// title/description/image to the wrong URL and the per-route tags are
+// silently ignored — see head-meta knowledge file.
+
+const ROUTE_TEMPLATES_WITH_CANONICAL = [
+  "src/pages/DrugDetail.tsx",
+  "src/pages/notes/NoteLayout.tsx",
+];
+
+describe("per-route Helmet templates declare canonical + og:url", () => {
+  it.each(ROUTE_TEMPLATES_WITH_CANONICAL)(
+    "%s sets <link rel=\"canonical\"> and og:url",
+    (file) => {
+      const path = resolve(ROOT, file);
+      expect(existsSync(path), `${file} not found`).toBe(true);
+      const src = readFileSync(path, "utf8");
+      expect(
+        /<link\s+rel="canonical"/.test(src),
+        `${file} missing <link rel="canonical"> inside Helmet`,
+      ).toBe(true);
+      expect(
+        /property="og:url"/.test(src),
+        `${file} missing og:url inside Helmet`,
+      ).toBe(true);
+    },
   );
 });
