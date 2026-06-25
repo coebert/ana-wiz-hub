@@ -671,12 +671,47 @@ function rankEntries(
   return { ranked: scored, regex, terms };
 }
 
+const PAGE_SIZE = 25;
+
 const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const { ranked, regex } = useMemo(() => rankEntries(entries, query), [entries, query]);
+  const visible = useMemo(() => ranked.slice(0, visibleCount), [ranked, visibleCount]);
+  const hasMore = visibleCount < ranked.length;
+
+  // Reset the window when the query, the sheet, or the underlying ranking
+  // changes — otherwise we'd be paginating into a stale slice.
+  useEffect(() => { setVisibleCount(PAGE_SIZE); }, [query, open]);
+  useEffect(() => {
+    if (scrollRef.current) scrollRef.current.scrollTop = 0;
+  }, [query]);
+
+  // Infinite scroll: when the sentinel intersects the scroll container, grow
+  // the window by one page. Falls back to a manual "Load more" button below
+  // for browsers without IntersectionObserver and for keyboard users.
+  useEffect(() => {
+    if (!open || !hasMore) return;
+    const sentinel = sentinelRef.current;
+    const root = scrollRef.current;
+    if (!sentinel || !root || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setVisibleCount((c) => Math.min(c + PAGE_SIZE, Number.MAX_SAFE_INTEGER));
+        }
+      },
+      { root, rootMargin: "200px 0px" },
+    );
+    io.observe(sentinel);
+    return () => io.disconnect();
+  }, [open, hasMore, ranked.length]);
+
 
   const handleReopen = (entry: QAEntry) => {
     onReopen(entry);
