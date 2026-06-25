@@ -18,10 +18,10 @@ import FFICMHub from "@/pages/FFICMHub";
  * answer prose) fails CI before it ships.
  */
 
-const HUBS: Array<{ path: string; loader: () => Promise<{ default: ComponentType }> }> = [
-  { path: "/frca-primary", loader: () => import("@/pages/FRCAPrimaryHub") },
-  { path: "/frca-final", loader: () => import("@/pages/FRCAFinalHub") },
-  { path: "/fficm", loader: () => import("@/pages/FFICMHub") },
+const HUBS: Array<{ path: string; Component: ComponentType }> = [
+  { path: "/frca-primary", Component: FRCAPrimaryHub },
+  { path: "/frca-final", Component: FRCAFinalHub },
+  { path: "/fficm", Component: FFICMHub },
 ];
 
 interface FaqEntry {
