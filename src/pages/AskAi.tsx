@@ -285,10 +285,6 @@ const AskAi = () => {
         parts: [{ type: "text", text: buildCachedReply(cached) }],
       };
       setMessages([...messages, userMsg, assistantMsg]);
-      // Refresh recency so frequently-asked questions stay at the top.
-      setQaCache((prev) =>
-        prev.map((e) => (e.normalized === cached.normalized ? { ...e, at: now } : e)),
-      );
       return;
     }
 
@@ -319,21 +315,8 @@ const AskAi = () => {
       parts: [{ type: "text", text: entry.answer }],
     };
     setMessages([...messages, userMsg, assistantMsg]);
-    setQaCache((prev) =>
-      prev.map((e) => (e.normalized === entry.normalized ? { ...e, at: now } : e)),
-    );
   };
 
-  const deleteEntry = (normalized: string) => {
-    setQaCache((prev) => prev.filter((e) => e.normalized !== normalized));
-  };
-
-  const clearHistory = () => {
-    setQaCache([]);
-    if (typeof window !== "undefined") {
-      window.localStorage.removeItem(QA_CACHE_KEY);
-    }
-  };
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
