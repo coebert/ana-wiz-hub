@@ -2,8 +2,11 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { render, waitFor, cleanup } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { lazy, Suspense, type ComponentType } from "react";
+import type { ComponentType } from "react";
 import { ExamFilterProvider } from "@/contexts/ExamFilterContext";
+import FRCAPrimaryHub from "@/pages/FRCAPrimaryHub";
+import FRCAFinalHub from "@/pages/FRCAFinalHub";
+import FFICMHub from "@/pages/FFICMHub";
 
 /**
  * Crawl each FRCA/FFICM hub route, parse the FAQPage JSON-LD that Helmet
