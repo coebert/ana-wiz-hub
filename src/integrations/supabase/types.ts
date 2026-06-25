@@ -50,6 +50,36 @@ export type Database = {
         }
         Relationships: []
       }
+      ask_qa_library: {
+        Row: {
+          answer: string
+          ask_count: number
+          created_at: string
+          id: string
+          normalized: string
+          question: string
+          updated_at: string
+        }
+        Insert: {
+          answer: string
+          ask_count?: number
+          created_at?: string
+          id?: string
+          normalized: string
+          question: string
+          updated_at?: string
+        }
+        Update: {
+          answer?: string
+          ask_count?: number
+          created_at?: string
+          id?: string
+          normalized?: string
+          question?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       drug_verification_jobs: {
         Row: {
           completed_at: string | null

@@ -14,6 +14,7 @@ import {
   Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger,
 } from "@/components/ui/sheet";
 import { SectionLayout } from "@/components/SectionLayout";
+import { supabase } from "@/integrations/supabase/client";
 
 /**
  * Ask AnaesthesiaCore — a single-conversation tutor that retrieves the most
@@ -21,13 +22,14 @@ import { SectionLayout } from "@/components/SectionLayout";
  * FAQs) and streams a grounded answer with links back to the topics the user
  * should read.
  *
- * Storage choice (per user): browser localStorage only. No login, no
- * server-side conversation log. "New conversation" clears the local message
- * history.
+ * Storage:
+ * - Current conversation messages: browser localStorage (single chat).
+ * - Q&A library: shared `ask_qa_library` table — every answered question is
+ *   saved server-side via `kb-chat`'s onFinish hook, then every user can
+ *   browse, search, and reopen the full library.
  */
 
 const STORAGE_KEY = "anaesthesiacore.ask.messages.v1";
-const QA_CACHE_KEY = "anaesthesiacore.ask.qa-cache.v1";
 const ENDPOINT = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/kb-chat`;
 
 const SUGGESTED = [
@@ -38,11 +40,13 @@ const SUGGESTED = [
 ];
 
 interface QAEntry {
+  id: string;
   question: string;
   normalized: string;
   tokens: string[];
   answer: string;
-  at: number;
+  askCount: number;
+  updatedAt: number;
 }
 
 const STOPWORDS = new Set([
@@ -77,17 +81,40 @@ function jaccard(a: string[], b: string[]): number {
   return union === 0 ? 0 : inter / union;
 }
 
-function loadQACache(): QAEntry[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = window.localStorage.getItem(QA_CACHE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed)) return parsed as QAEntry[];
-  } catch {
-    /* ignore */
+interface RawLibraryRow {
+  id: string;
+  question: string;
+  normalized: string;
+  answer: string;
+  ask_count: number;
+  updated_at: string;
+}
+
+function rowToEntry(row: RawLibraryRow): QAEntry {
+  return {
+    id: row.id,
+    question: row.question,
+    normalized: row.normalized,
+    tokens: tokenize(row.question),
+    answer: row.answer,
+    askCount: row.ask_count ?? 1,
+    updatedAt: new Date(row.updated_at).getTime(),
+  };
+}
+
+async function fetchLibrary(): Promise<QAEntry[]> {
+  // The shared Q&A library is world-readable via RLS; the publishable anon
+  // key in the default client is enough.
+  const { data, error } = await supabase
+    .from("ask_qa_library")
+    .select("id, question, normalized, answer, ask_count, updated_at")
+    .order("updated_at", { ascending: false })
+    .limit(500);
+  if (error) {
+    console.error("[AskAi] failed to load Q&A library", error);
+    return [];
   }
-  return [];
+  return ((data ?? []) as RawLibraryRow[]).map(rowToEntry);
 }
 
 function findCachedMatch(question: string, cache: QAEntry[]): QAEntry | null {
@@ -130,11 +157,11 @@ function partsToText(parts: UIMessage["parts"]): string {
 }
 
 function buildCachedReply(entry: QAEntry): string {
-  const when = new Date(entry.at).toLocaleDateString(undefined, {
+  const when = new Date(entry.updatedAt).toLocaleDateString(undefined, {
     day: "numeric", month: "short", year: "numeric",
   });
   return [
-    `**You've asked something very similar before** — here's the answer I gave on ${when} for "_${entry.question}_":`,
+    `**This question is already in the shared Ask AnaesthesiaCore library** — here's the answer saved on ${when} for "_${entry.question}_":`,
     "",
     "---",
     "",
@@ -142,7 +169,7 @@ function buildCachedReply(entry: QAEntry): string {
     "",
     "---",
     "",
-    "_If this isn't quite what you meant, clear the conversation or rephrase the question to get a fresh answer._",
+    "_If this isn't quite what you meant, rephrase the question to get a fresh answer._",
   ].join("\n");
 }
 
@@ -170,14 +197,14 @@ const AskAi = () => {
   });
 
   const [input, setInput] = useState("");
-  const [qaCache, setQaCache] = useState<QAEntry[]>(loadQACache);
-  // Tracks the last question we sent to the server so we know which user
-  // message to pair with the eventual streamed answer when caching it.
+  const [qaCache, setQaCache] = useState<QAEntry[]>([]);
+  // Tracks the last question we sent to the server so the post-stream
+  // refetch can prioritise picking up its new library row.
   const pendingQuestionRef = useRef<string | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
 
-  // Persist on every message change.
+  // Persist the current chat transcript locally.
   useEffect(() => {
     if (typeof window === "undefined") return;
     try {
@@ -187,43 +214,37 @@ const AskAi = () => {
     }
   }, [messages]);
 
-  // Persist the Q&A cache whenever it changes.
+  // Load the shared Q&A library on mount, and refresh it whenever the
+  // database notifies us of inserts/updates so other users' new questions
+  // appear in real time.
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      window.localStorage.setItem(QA_CACHE_KEY, JSON.stringify(qaCache));
-    } catch {
-      /* best effort */
-    }
-  }, [qaCache]);
+    let cancelled = false;
+    void fetchLibrary().then((rows) => { if (!cancelled) setQaCache(rows); });
+    const channel = supabase
+      .channel("ask_qa_library_changes")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "ask_qa_library" },
+        () => { void fetchLibrary().then((rows) => setQaCache(rows)); },
+      )
+      .subscribe();
+    return () => {
+      cancelled = true;
+      void supabase.removeChannel(channel);
+    };
+  }, []);
 
-  // After a streamed answer completes, store the (question, answer) pair so
-  // future identical/very-similar questions are served from cache instead of
-  // re-billing the model.
+  // After a streamed answer completes, refetch the library so the newly
+  // saved row (written by `kb-chat`'s onFinish hook) is visible immediately
+  // — realtime should also deliver it, but this is a guaranteed fallback.
   useEffect(() => {
     if (status !== "ready") return;
-    const pending = pendingQuestionRef.current;
-    if (!pending) return;
-    const last = messages[messages.length - 1];
-    if (!last || last.role !== "assistant") return;
-    const answer = partsToText(last.parts).trim();
-    if (!answer) return;
+    if (!pendingQuestionRef.current) return;
     pendingQuestionRef.current = null;
-    const normalized = normalize(pending);
-    setQaCache((prev) => {
-      // Replace any existing entry with the same normalized question.
-      const without = prev.filter((e) => e.normalized !== normalized);
-      const next: QAEntry = {
-        question: pending,
-        normalized,
-        tokens: tokenize(pending),
-        answer,
-        at: Date.now(),
-      };
-      // Cap to the most recent 200 entries to keep localStorage bounded.
-      return [next, ...without].slice(0, 200);
-    });
-  }, [status, messages]);
+    // Small delay to give the server's upsert time to commit.
+    const t = setTimeout(() => { void fetchLibrary().then(setQaCache); }, 600);
+    return () => clearTimeout(t);
+  }, [status]);
 
   // Auto-scroll to newest message.
   useEffect(() => {
@@ -264,10 +285,6 @@ const AskAi = () => {
         parts: [{ type: "text", text: buildCachedReply(cached) }],
       };
       setMessages([...messages, userMsg, assistantMsg]);
-      // Refresh recency so frequently-asked questions stay at the top.
-      setQaCache((prev) =>
-        prev.map((e) => (e.normalized === cached.normalized ? { ...e, at: now } : e)),
-      );
       return;
     }
 
@@ -298,21 +315,8 @@ const AskAi = () => {
       parts: [{ type: "text", text: entry.answer }],
     };
     setMessages([...messages, userMsg, assistantMsg]);
-    setQaCache((prev) =>
-      prev.map((e) => (e.normalized === entry.normalized ? { ...e, at: now } : e)),
-    );
   };
 
-  const deleteEntry = (normalized: string) => {
-    setQaCache((prev) => prev.filter((e) => e.normalized !== normalized));
-  };
-
-  const clearHistory = () => {
-    setQaCache([]);
-    if (typeof window !== "undefined") {
-      window.localStorage.removeItem(QA_CACHE_KEY);
-    }
-  };
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -349,15 +353,10 @@ const AskAi = () => {
         <div className="flex items-center justify-between gap-2 border-b border-border px-3 sm:px-4 py-2">
           <div className="text-xs text-muted-foreground">
             {qaCache.length > 0
-              ? `${qaCache.length} saved Q${qaCache.length === 1 ? "" : "s"} in history`
-              : "No saved questions yet"}
+              ? `${qaCache.length} question${qaCache.length === 1 ? "" : "s"} in the shared library`
+              : "Shared library is empty — be the first to ask"}
           </div>
-          <HistoryPanel
-            entries={qaCache}
-            onReopen={reopen}
-            onDelete={deleteEntry}
-            onClearAll={clearHistory}
-          />
+          <HistoryPanel entries={qaCache} onReopen={reopen} />
         </div>
         {/* Transcript */}
         <div
@@ -518,17 +517,15 @@ const Bubble = ({ message }: { message: UIMessage }) => {
 interface HistoryPanelProps {
   entries: QAEntry[];
   onReopen: (entry: QAEntry) => void;
-  onDelete: (normalized: string) => void;
-  onClearAll: () => void;
 }
 
-const HistoryPanel = ({ entries, onReopen, onDelete, onClearAll }: HistoryPanelProps) => {
+const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
-    const sorted = [...entries].sort((a, b) => b.at - a.at);
+    const sorted = [...entries].sort((a, b) => b.updatedAt - a.updatedAt);
     const q = query.trim().toLowerCase();
     if (!q) return sorted;
     return sorted.filter(
@@ -553,9 +550,9 @@ const HistoryPanel = ({ entries, onReopen, onDelete, onClearAll }: HistoryPanelP
       </SheetTrigger>
       <SheetContent side="right" className="w-full sm:max-w-md flex flex-col p-0">
         <SheetHeader className="p-4 border-b border-border space-y-1">
-          <SheetTitle className="text-base font-serif">Question history</SheetTitle>
+          <SheetTitle className="text-base font-serif">Shared question library</SheetTitle>
           <SheetDescription className="text-xs">
-            Search and reopen previously asked questions. Stored only in this browser.
+            Every question asked of Ask AnaesthesiaCore is saved here for everyone to browse, search and reopen.
           </SheetDescription>
         </SheetHeader>
 
@@ -580,22 +577,8 @@ const HistoryPanel = ({ entries, onReopen, onDelete, onClearAll }: HistoryPanelP
             )}
           </div>
           {entries.length > 0 && (
-            <div className="flex items-center justify-between text-[11px] text-muted-foreground">
-              <span>
-                {filtered.length} of {entries.length}
-              </span>
-              <button
-                type="button"
-                onClick={() => {
-                  if (window.confirm("Clear all saved Q&A history? This cannot be undone.")) {
-                    onClearAll();
-                    setExpanded(null);
-                  }
-                }}
-                className="hover:text-destructive underline-offset-2 hover:underline"
-              >
-                Clear all history
-              </button>
+            <div className="text-[11px] text-muted-foreground">
+              {filtered.length} of {entries.length}
             </div>
           )}
         </div>
@@ -604,7 +587,7 @@ const HistoryPanel = ({ entries, onReopen, onDelete, onClearAll }: HistoryPanelP
           {entries.length === 0 ? (
             <div className="p-8 text-center text-sm text-muted-foreground">
               <MessageSquare className="h-8 w-8 mx-auto mb-3 opacity-40" aria-hidden />
-              Your Q&A history will appear here once you ask your first question.
+              The shared library is empty. Be the first to ask a question.
             </div>
           ) : filtered.length === 0 ? (
             <div className="p-8 text-center text-sm text-muted-foreground">
@@ -613,32 +596,27 @@ const HistoryPanel = ({ entries, onReopen, onDelete, onClearAll }: HistoryPanelP
           ) : (
             <ul className="divide-y divide-border">
               {filtered.map((entry) => {
-                const isOpen = expanded === entry.normalized;
+                const isOpen = expanded === entry.id;
                 return (
-                  <li key={entry.normalized} className="p-3">
-                    <div className="flex items-start justify-between gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setExpanded(isOpen ? null : entry.normalized)}
-                        className="flex-1 text-left text-sm font-medium text-foreground hover:text-primary"
-                      >
-                        {entry.question}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => onDelete(entry.normalized)}
-                        aria-label="Delete this entry"
-                        title="Delete"
-                        className="shrink-0 text-muted-foreground hover:text-destructive p-1 -m-1"
-                      >
-                        <Trash2 className="h-3.5 w-3.5" />
-                      </button>
-                    </div>
-                    <div className="mt-1 text-[11px] text-muted-foreground">
-                      {new Date(entry.at).toLocaleString(undefined, {
-                        day: "numeric", month: "short", year: "numeric",
-                        hour: "2-digit", minute: "2-digit",
-                      })}
+                  <li key={entry.id} className="p-3">
+                    <button
+                      type="button"
+                      onClick={() => setExpanded(isOpen ? null : entry.id)}
+                      className="block w-full text-left text-sm font-medium text-foreground hover:text-primary"
+                    >
+                      {entry.question}
+                    </button>
+                    <div className="mt-1 flex items-center gap-2 text-[11px] text-muted-foreground">
+                      <span>
+                        {new Date(entry.updatedAt).toLocaleString(undefined, {
+                          day: "numeric", month: "short", year: "numeric",
+                          hour: "2-digit", minute: "2-digit",
+                        })}
+                      </span>
+                      <span aria-hidden>·</span>
+                      <span>
+                        asked {entry.askCount}×
+                      </span>
                     </div>
                     {isOpen && (
                       <div className="mt-2 rounded-md border border-border bg-muted/30 p-3 prose prose-sm max-w-none dark:prose-invert prose-headings:font-serif prose-a:text-primary">
