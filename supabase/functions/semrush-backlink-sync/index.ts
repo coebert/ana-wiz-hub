@@ -262,8 +262,11 @@ Deno.serve(async (req) => {
         inserted,
         refreshed,
         scanned,
+        remainingUnits,
+        anchorEnrichmentSkipped,
         ranAt: now,
       }),
+
       { headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   } catch (err) {
