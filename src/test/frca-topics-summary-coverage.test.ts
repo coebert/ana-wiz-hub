@@ -158,12 +158,28 @@ function auditTopic(
   const src = readFileSync(entry.file, "utf8");
   audit.usesTopicTemplate = /<TopicTemplate\b/.test(src);
 
-  // Find `keyPoints={` and slice the array literal that follows.
-  const m = /keyPoints\s*=\s*\{\s*(\[)/.exec(src);
-  if (m) {
-    const openIdx = m.index + m[0].length - 1;
+  // Find `keyPoints={` — either inline `keyPoints={[...]}` OR
+  // `keyPoints={identifierName}` referencing a `const identifierName = [...]`
+  // declared elsewhere in the file.
+  const inline = /keyPoints\s*=\s*\{\s*(\[)/.exec(src);
+  if (inline) {
+    const openIdx = inline.index + inline[0].length - 1;
     const literal = sliceBalanced(src, openIdx);
     if (literal) audit.keyPointsCount = countTopLevelEntries(literal);
+  } else {
+    const ref = /keyPoints\s*=\s*\{\s*([A-Za-z_$][\w$]*)\s*\}/.exec(src);
+    if (ref) {
+      const ident = ref[1];
+      const declRe = new RegExp(
+        `const\\s+${ident}\\b[^=]*=\\s*(\\[)`,
+      );
+      const decl = declRe.exec(src);
+      if (decl) {
+        const openIdx = decl.index + decl[0].length - 1;
+        const literal = sliceBalanced(src, openIdx);
+        if (literal) audit.keyPointsCount = countTopLevelEntries(literal);
+      }
+    }
   }
   return audit;
 }
