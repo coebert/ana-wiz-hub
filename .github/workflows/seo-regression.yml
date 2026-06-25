@@ -28,4 +28,4 @@ jobs:
         #  - missing sitewide title/description/og:* in index.html
         #  - any indexable route lacking per-route title / description /
         #    canonical / og:url (or layout that supplies them)
-        run: bunx vitest run src/test/seo-regression.test.ts src/test/seo-meta-lengths.test.ts
+        run: bunx vitest run src/test/seo-regression.test.ts src/test/seo-meta-lengths.test.ts src/test/sitemap-robots-noindex.test.ts
