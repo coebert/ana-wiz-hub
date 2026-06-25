@@ -721,12 +721,27 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
   const visible = useMemo(() => ranked.slice(0, visibleCount), [ranked, visibleCount]);
   const hasMore = visibleCount < ranked.length;
 
-  // Reset the window when the query, the sheet, or the underlying ranking
-  // changes — otherwise we'd be paginating into a stale slice.
+  // Reset the window when the user changes the query or reopens the sheet
+  // — but NOT when `entries` changes, otherwise an incoming realtime row
+  // would collapse the user's scroll position back to the first page.
   useEffect(() => { setVisibleCount(PAGE_SIZE); }, [query, open]);
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = 0;
   }, [query]);
+
+  // When realtime adds new entries while the user has already paginated
+  // past the first page, grow `visibleCount` by the delta so the rows the
+  // user was reading stay on screen instead of being bumped off the bottom
+  // by the newer items inserted at the top of the ranking.
+  const prevRankedLenRef = useRef(0);
+  useEffect(() => {
+    const prev = prevRankedLenRef.current;
+    const next = ranked.length;
+    if (open && next > prev && visibleCount > PAGE_SIZE) {
+      setVisibleCount((c) => Math.min(c + (next - prev), next));
+    }
+    prevRankedLenRef.current = next;
+  }, [ranked.length, open, visibleCount]);
 
   // Infinite scroll: when the sentinel intersects the scroll container, grow
   // the window by one page. Falls back to a manual "Load more" button below
