@@ -134,7 +134,7 @@ export const airwayFolio: CorPictumFolioData = {
       ],
       curriculumLinks: [
         { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Intrinsic laryngeal muscles & cord movement", anchor: "pre-operative-airway-assessment" },
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Recurrent laryngeal nerve — supply & lesions", anchor: "pre-operative-airway-assessment" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Recurrent laryngeal nerve — supply & lesions", anchor: "das-2015-algorithm-four-sequential-plans" },
         { code: "CL_BK_03", exams: [Exam.FINAL], title: "Vocal cord paralysis & post-thyroidectomy stridor", anchor: "das-2015-algorithm-four-sequential-plans" },
       ],
     },
