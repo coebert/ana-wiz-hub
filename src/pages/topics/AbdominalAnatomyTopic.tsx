@@ -42,6 +42,8 @@ const AbdominalAnatomyTopic = () => {
       }}
       coreConcepts={
         <>
+          <span id="anterior-abdominal-wall-layers" aria-hidden="true" />
+          <span id="key-abdominal-organs-anaesthetic-relevance" aria-hidden="true" />
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
             <CollapsibleSubsection title="Anterior Abdominal Wall Layers" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
