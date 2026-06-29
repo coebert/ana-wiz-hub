@@ -152,6 +152,11 @@ export const CURRICULUM_CODES = {
 
   // ---- Perioperative medicine (PO) ----
   PO_BK_01: { title: "Pre-operative assessment & optimisation", exams: ["final"] },
+  PO_BK_03: { title: "Enhanced recovery after surgery (ERAS)", exams: ["final"] },
+  PO_BK_05: { title: "Perioperative cardiovascular & haematological comorbidity", exams: ["final"] },
+  PO_BK_06: { title: "Perioperative respiratory, hepatic & renal comorbidity", exams: ["final"] },
+  PO_BK_08: { title: "Perioperative endocrine & metabolic comorbidity", exams: ["final"] },
+  PO_BK_09: { title: "Perioperative neurological comorbidity", exams: ["final"] },
 
   // ---- Pain medicine (PR) ----
   PR_BK_05: { title: "Pharmacology of analgesic & adjuvant agents", exams: ["primary"] },
