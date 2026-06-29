@@ -356,7 +356,7 @@ export const neuroFolio: CorPictumFolioData = {
       ],
       curriculumLinks: [
         { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Skull base — internal foramina & cranial nerve passages", anchor: "skull-base-foramina" },
-        { code: "AN_BK_07", exams: [Exam.FINAL], title: "Cranial nerve injury patterns at the skull base", anchor: "skull-base-foramina" },
+        { code: "AN_BK_07", exams: [Exam.FINAL], title: "Cranial nerve injury patterns at the skull base", anchor: "intracranial-pressure-meninges" },
       ],
     },
     {
