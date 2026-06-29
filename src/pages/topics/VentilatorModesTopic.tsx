@@ -139,7 +139,7 @@ const workedExamples: WorkedExample[] = [
 const keyPoints = [
   {
     text: "Every ventilator breath is defined by four phase variables: trigger (what starts the breath — time or patient effort), limit (what the breath cannot exceed during inspiration — flow, pressure or volume), cycle (what ends inspiration — time, volume or flow decay), and baseline (PEEP).",
-    cites: ["Tobin 3rd ed Ch.3"],
+    cites: ["Tobin 3rd ed Ch.9"],
   },
   {
     text: "AC/CMV: every breath, whether triggered by patient or timer, receives the same fully supported breath. Pressure-controlled AC delivers a square Pinsp with decelerating flow and variable Vt; volume-controlled AC delivers a fixed Vt with a constant or decelerating flow and variable Pinsp.",

@@ -79,6 +79,7 @@ export const CURRICULUM_CODES = {
   CH_BK_03: { title: "Hepatobiliary anaesthesia & transplantation", exams: ["final"] },
 
   // ---- Airway management (CL) ----
+  CL_BK_01: { title: "Pre-operative airway assessment", exams: ["final"] },
   CL_BK_03: { title: "Airway assessment & difficult airway management", exams: ["final"] },
   CL_BK_07: { title: "Obstetric airway management", exams: ["final"] },
 
@@ -117,6 +118,7 @@ export const CURRICULUM_CODES = {
   IC_BK_03: { title: "Tracheal intubation in critical care", exams: ["fficm"] },
 
   // ---- Neuromuscular (NA) ----
+  NA_BK_01: { title: "Neurological assessment & neurophysiology", exams: ["primary"] },
   NA_BK_03: { title: "Neuromuscular junction & monitoring", exams: ["primary"] },
 
   // ---- General/urological/gynae surgery (OA) ----
@@ -150,6 +152,11 @@ export const CURRICULUM_CODES = {
 
   // ---- Perioperative medicine (PO) ----
   PO_BK_01: { title: "Pre-operative assessment & optimisation", exams: ["final"] },
+  PO_BK_03: { title: "Enhanced recovery after surgery (ERAS)", exams: ["final"] },
+  PO_BK_05: { title: "Perioperative cardiovascular & haematological comorbidity", exams: ["final"] },
+  PO_BK_06: { title: "Perioperative respiratory, hepatic & renal comorbidity", exams: ["final"] },
+  PO_BK_08: { title: "Perioperative endocrine & metabolic comorbidity", exams: ["final"] },
+  PO_BK_09: { title: "Perioperative neurological comorbidity", exams: ["final"] },
 
   // ---- Pain medicine (PR) ----
   PR_BK_05: { title: "Pharmacology of analgesic & adjuvant agents", exams: ["primary"] },

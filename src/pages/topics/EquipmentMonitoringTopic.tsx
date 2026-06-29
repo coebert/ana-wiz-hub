@@ -49,7 +49,7 @@ const keyPoints = [
   { text: "N₂O cylinders contain liquid — pressure constant at 44 bar until exhausted; assess contents by weight; UK filling ratio 0.75.", cites: ["Macintosh 1943"] },
   { text: "Pressure regulators reduce 137 bar → 400 kPa (spring-diaphragm); two-stage minimises seat effect.", cites: ["AAGBI Standards 2015"] },
   { text: "Rotameters: laminar (low flow) viscosity-dependent; turbulent (high) density-dependent; gas-specific; O₂ downstream.", cites: ["Weiss & Engelhardt 2010"] },
-  { text: "SVP depends only on agent + temperature; desflurane (BP 22.8 °C) needs heated TEC 6.", cites: ["BJA Educ Paeds Airway 2017"] },
+  { text: "SVP depends only on agent + temperature; desflurane (BP 22.8 °C) needs heated TEC 6.", cites: ["BJA Educ 2017 (Medical gases)"] },
   { text: "Mapleson A best for SV (FGF ≈ MV); D best for IPPV (FGF 70 mL/kg/min).", cites: ["Cochrane VL 2022"] },
   { text: "Circle system enables low-flow anaesthesia; soda lime exothermic; desiccation → compound A (sevo) and CO (des).", cites: ["BJA Educ Videolaryngoscopy 2016"] },
   { text: "Ascending bellows fail to rise on disconnect — primary visual alarm.", cites: ["NAP4 2011"] },
