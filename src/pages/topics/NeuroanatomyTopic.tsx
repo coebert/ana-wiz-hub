@@ -45,6 +45,9 @@ const NeuroanatomyTopic = () => {
       }}
       coreConcepts={
         <>
+          <span id="intracranial-pressure-meninges" aria-hidden="true" />
+          <span id="cerebral-blood-supply-circle-of-willis" aria-hidden="true" />
+          <span id="skull-base-foramina" aria-hidden="true" />
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_07"]}>
             <CollapsibleSubsection title="Anatomical Atlas" defaultOpen>
               <div className="space-y-4">
