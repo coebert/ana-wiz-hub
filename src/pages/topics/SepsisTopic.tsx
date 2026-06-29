@@ -737,7 +737,6 @@ const SepsisTopic = () => {
               </tbody>
             </table>
           </div>
-          <SepsisBiomarkerKineticsDiagram />
         </div>
 
         <div id="trial-evidence" className="scroll-mt-24">
