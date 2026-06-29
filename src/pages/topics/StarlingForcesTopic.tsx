@@ -99,7 +99,7 @@ const workedExamples: WorkedExample[] = [
         with dynamic measures.
       </>
     ),
-    cites: ["Levick & Michel 2010", "Surviving Sepsis 2021", "Woodcock & Woodcock 2012"],
+    cites: ["Levick & Michel 2010", "SSC 2021", "Woodcock & Woodcock 2012"],
   },
 ];
 

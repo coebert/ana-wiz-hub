@@ -96,7 +96,7 @@ const workedExamples: WorkedExample[] = [
         exchange, treat trigger.
       </>
     ),
-    cites: ["Power & Kam Ch.14", "Resus Council UK 2021"],
+    cites: ["Power & Kam Ch.14", "RCUK ALS 2021"],
   },
 ];
 
