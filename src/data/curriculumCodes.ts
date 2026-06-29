@@ -168,6 +168,12 @@ export const CURRICULUM_CODES = {
   RU_BK_01: { title: "Upper-limb regional anaesthesia", exams: ["final"] },
   RU_BK_02: { title: "Lower-limb & truncal regional anaesthesia", exams: ["final"] },
 
+  // ---- Regional anaesthesia — applied (RA) ----
+  RA_BK_02: { title: "Supraclavicular brachial plexus block landmarks", exams: ["primary", "final"] },
+
+  // ---- Cardiovascular access & monitoring (CV) ----
+  CV_BK_04: { title: "Subclavian central venous access", exams: ["primary"] },
+
   // ---- Vascular surgery (VS) ----
   VS_BK_05: { title: "Vascular surgery — aneurysm repair", exams: ["final"] },
 } as const satisfies Record<string, Pick<CurriculumCodeEntry, "title" | "exams">>;
