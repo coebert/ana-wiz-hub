@@ -127,6 +127,11 @@ export const CURRICULUM_CODES = {
   OA_BK_06: { title: "Autonomic considerations in surgery", exams: ["final"] },
   OA_BK_07: { title: "Haematological considerations in surgery", exams: ["final"] },
 
+  // ---- Ophthalmic anaesthesia (OP) ----
+  OP_BK_01: { title: "Anaesthesia for ophthalmic surgery", exams: ["final"] },
+
+
+
   // ---- Obstetrics (OB) ----
   OB_BK_01: { title: "Neuraxial anaesthesia in obstetrics", exams: ["final"] },
   OB_BK_02: { title: "Obstetric physiology & high-risk pregnancy", exams: ["final"] },
