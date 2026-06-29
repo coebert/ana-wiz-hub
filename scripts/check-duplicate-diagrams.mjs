@@ -24,6 +24,8 @@ const TOPICS_DIR = join(ROOT, "src", "pages", "topics");
 const ALLOW_MULTIPLE = new Set([
   "ExpandableEcgCard",
   "OxygenDissociationCurve",
+  "CorPictumFolio",
+  "PathophysDrugMapper",
 ]);
 
 function listTsxFiles(dir) {
