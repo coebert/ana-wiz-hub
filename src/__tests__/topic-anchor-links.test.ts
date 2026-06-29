@@ -10,7 +10,7 @@ describe("topic pages", () => {
     );
     try {
       const out = execFileSync("node", [script], { encoding: "utf8" });
-      expect(out).toMatch(/No broken topic-page hash anchors/);
+      expect(out).toMatch(/No broken hash anchors/);
     } catch (err: unknown) {
       const e = err as { stdout?: string; stderr?: string };
       throw new Error(
