@@ -91,7 +91,9 @@ const ThoracicAnatomyTopic = () => {
         ],
       }}
       coreConcepts={
-        <>
+       <>
+          <span id="subclavian-cvc" aria-hidden="true" />
+          <span id="supraclavicular-block" aria-hidden="true" />
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
         <section className="space-y-6 mb-10">
         <CorPictumFolio {...thoracicFolio} suppressOverlayLabels />
