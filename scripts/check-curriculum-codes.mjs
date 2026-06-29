@@ -87,11 +87,15 @@ for (const file of files) {
   for (const code of codes) {
     if (seen.has(code)) continue;
     seen.add(code);
+    // Only validate strings that *look like* an RCoA BK code (contain "_BK_").
+    // Free-text descriptors such as "RCoA Final — Clinical Anaesthesia" or
+    // "FFICM 2.4" are accepted by curriculumCodes props and are out of scope.
+    if (!/_BK_/.test(code)) continue;
     if (!CODE_FORMAT_RE.test(code)) {
       issues.push({
         file: relative(ROOT, file),
         kind: "bad-format",
-        detail: `"${code}" does not match XX_BK_NN.`,
+        detail: `"${code}" looks like an RCoA BK code but does not match XX_BK_NN.`,
       });
     } else if (!registered.has(code)) {
       issues.push({
