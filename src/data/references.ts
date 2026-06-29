@@ -554,6 +554,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "CRASH-2 2010", citation: "CRASH-2 trial collaborators. Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients. Lancet. 2010;376:23-32.", url: "https://doi.org/10.1016/S0140-6736(10)60835-5" },
     { label: "BJA Educ 2016", citation: "Woolley T, Thompson P. Trauma resuscitation — damage control. BJA Education. 2013;13(3):110-114.", url: "https://doi.org/10.1093/bjaceaccp/mks072" },
   ],
+  "abdominal-compartment-syndrome": [
+    { label: "WSACS 2013", citation: "Kirkpatrick AW, Roberts DJ, De Waele J, et al. Intra-abdominal hypertension and the abdominal compartment syndrome: updated consensus definitions and clinical practice guidelines from the World Society of the Abdominal Compartment Syndrome. Intensive Care Med. 2013;39(7):1190-1206.", url: "https://doi.org/10.1007/s00134-013-2906-z", excerpt: "Intra-abdominal hypertension (IAH) is defined as a sustained or repeated pathological elevation of IAP ≥ 12 mmHg. Abdominal compartment syndrome (ACS) is defined as a sustained IAP > 20 mmHg (with or without an APP < 60 mmHg) that is associated with new organ dysfunction/failure. Abdominal perfusion pressure (APP) = MAP − IAP and should be maintained ≥ 60 mmHg." },
+    { label: "BJA Educ 2019", citation: "Rajasurya V, Surani S. Abdominal compartment syndrome: often overlooked conditions in medical intensive care units. World J Gastroenterol. 2020;26(3):266-278.", url: "https://doi.org/10.3748/wjg.v26.i3.266" },
+  ],
   "abg-analyser": [
     { label: "BJA Educ 2017", citation: "Thomas DG. Arterial blood gas analysis. BJA Education. 2017;17(9):299-304.", url: "https://doi.org/10.1093/bjaed/mkx008" },
     { label: "Cross & Plunkett Ch.15-16", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapters 15-16: Electrode Systems and Gas Analysis." },

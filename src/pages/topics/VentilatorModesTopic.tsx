@@ -199,7 +199,7 @@ const VentilatorModesTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        objectives: ["Tobin 3rd ed Ch.3", "DerangedPhys CC2.3"],
+        objectives: ["Tobin 3rd ed Ch.9", "DerangedPhys CC2.3"],
         keyPoints: ["Tobin 3rd ed Ch.9", "DerangedPhys CC2.3", "Hess & Kacmarek Ch.5"],
         workedExamples: ["DerangedPhys CC2.3", "Tobin 3rd ed Ch.9"],
       }}

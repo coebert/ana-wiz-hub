@@ -187,6 +187,8 @@ const AirwayManagementTopic = () => {
       }}
       coreConcepts={
         <>
+          <span id="pre-operative-airway-assessment" aria-hidden="true" />
+          <span id="das-2015-algorithm-four-sequential-plans" aria-hidden="true" />
           <TopicTableOfContents items={tocItems} />
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
 
