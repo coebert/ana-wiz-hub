@@ -79,6 +79,7 @@ export const CURRICULUM_CODES = {
   CH_BK_03: { title: "Hepatobiliary anaesthesia & transplantation", exams: ["final"] },
 
   // ---- Airway management (CL) ----
+  CL_BK_01: { title: "Pre-operative airway assessment", exams: ["final"] },
   CL_BK_03: { title: "Airway assessment & difficult airway management", exams: ["final"] },
   CL_BK_07: { title: "Obstetric airway management", exams: ["final"] },
 
