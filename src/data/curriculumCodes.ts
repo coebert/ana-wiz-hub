@@ -118,6 +118,7 @@ export const CURRICULUM_CODES = {
   IC_BK_03: { title: "Tracheal intubation in critical care", exams: ["fficm"] },
 
   // ---- Neuromuscular (NA) ----
+  NA_BK_01: { title: "Neurological assessment & neurophysiology", exams: ["primary"] },
   NA_BK_03: { title: "Neuromuscular junction & monitoring", exams: ["primary"] },
 
   // ---- General/urological/gynae surgery (OA) ----
