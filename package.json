@@ -154,7 +154,7 @@
     "picomatch": "^4.0.2",
     "minimatch": "^10.0.3",
     "glob": "^11.0.3",
-    "serialize-javascript": "^6.0.3",
+    "serialize-javascript": "^7.0.6",
     "ajv": "^8.17.1",
     "brace-expansion": "^2.0.2",
     "@babel/plugin-transform-modules-systemjs": "^7.26.0"
