@@ -1,0 +1,40 @@
+name: External URL link-rot check
+
+on:
+  pull_request:
+    branches: [main]
+  schedule:
+    # Weekly full-network sweep so the cache stays fresh and 4xx rot is
+    # detected even when no PR happens to touch the affected file.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  external-urls:
+    name: check-external-urls
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore URL probe cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/external-urls.json
+          key: external-urls-${{ github.run_id }}
+          restore-keys: |
+            external-urls-
+
+      - name: Run external URL check
+        # PRs: static validation + any previously-cached 4xx still in TTL.
+        # Scheduled / manual runs: re-probe the live network and refresh
+        # the cache so subsequent PRs inherit fresh findings.
+        env:
+          CHECK_EXTERNAL_URLS: ${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && '1' || '0' }}
+        run: node scripts/check-external-urls.mjs
+
+      - name: Save URL probe cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/external-urls.json
+          key: external-urls-${{ github.run_id }}
