@@ -134,6 +134,7 @@ export const CURRICULUM_CODES = {
   // ---- Paediatric anaesthesia (PA) ----
   PA_BK_01: { title: "Foetal & neonatal physiology", exams: ["primary"] },
   PA_BK_02: { title: "Transitional circulation & congenital cardiac disease", exams: ["primary"] },
+  PA_BK_03: { title: "Paediatric regional anaesthesia — caudal block", exams: ["final"] },
 
   // ---- Pharmacology (PH) ----
   PH_BK_01: { title: "Pharmacokinetic principles", exams: ["primary"] },
