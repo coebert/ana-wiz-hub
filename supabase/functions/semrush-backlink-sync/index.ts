@@ -49,27 +49,55 @@ async function getRemainingUnits(): Promise<number | null> {
 }
 
 
+// Retry tuning for HTTP 429 (rate limit) responses from the gateway.
+const MAX_RETRIES = 4;          // total attempts = MAX_RETRIES + 1
+const BASE_BACKOFF_MS = 1000;   // 1s, 2s, 4s, 8s ... capped
+const MAX_BACKOFF_MS = 15000;
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 async function semrushFetch(path: string): Promise<{ columnNames: string[]; rows: string[][] }> {
   const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
   const SEMRUSH_API_KEY = Deno.env.get("SEMRUSH_API_KEY");
   if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
   if (!SEMRUSH_API_KEY) throw new Error("SEMRUSH_API_KEY is not configured");
 
-  const res = await fetch(`${GATEWAY_URL}${path}`, {
-    headers: {
-      Authorization: `Bearer ${LOVABLE_API_KEY}`,
-      "X-Connection-Api-Key": SEMRUSH_API_KEY,
-    },
-  });
-  const text = await res.text();
-  if (!res.ok) {
-    throw new Error(`Semrush ${path} failed [${res.status}]: ${text}`);
+  let lastErr = "";
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    const res = await fetch(`${GATEWAY_URL}${path}`, {
+      headers: {
+        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        "X-Connection-Api-Key": SEMRUSH_API_KEY,
+      },
+    });
+    const text = await res.text();
+
+    if (res.status === 429) {
+      lastErr = `Semrush ${path} rate-limited [429]: ${text}`;
+      if (attempt === MAX_RETRIES) break;
+      // Respect Retry-After header if provided; otherwise exponential backoff
+      // with jitter to avoid synchronised retries.
+      const retryAfterHdr = res.headers.get("retry-after");
+      const retryAfterMs = retryAfterHdr ? Number(retryAfterHdr) * 1000 : NaN;
+      const backoff = Number.isFinite(retryAfterMs) && retryAfterMs > 0
+        ? Math.min(retryAfterMs, MAX_BACKOFF_MS)
+        : Math.min(BASE_BACKOFF_MS * 2 ** attempt, MAX_BACKOFF_MS);
+      const jitter = Math.floor(Math.random() * 250);
+      console.warn(`semrush 429 on ${path}, attempt ${attempt + 1}/${MAX_RETRIES + 1}, sleeping ${backoff + jitter}ms`);
+      await sleep(backoff + jitter);
+      continue;
+    }
+
+    if (!res.ok) {
+      throw new Error(`Semrush ${path} failed [${res.status}]: ${text}`);
+    }
+    const body = JSON.parse(text);
+    if (body?.error) {
+      throw new Error(`Semrush ${path} error: ${body.error}`);
+    }
+    return body.data ?? { columnNames: [], rows: [] };
   }
-  const body = JSON.parse(text);
-  if (body?.error) {
-    throw new Error(`Semrush ${path} error: ${body.error}`);
-  }
-  return body.data ?? { columnNames: [], rows: [] };
+  throw new Error(`${lastErr} (exhausted ${MAX_RETRIES + 1} attempts)`);
 }
 
 function classify(domain: string, authorityScore: number | null, anchorSample: string | null): string[] {
