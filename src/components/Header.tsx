@@ -68,6 +68,71 @@ export const Header = () => {
     setMobileNavOpen(false);
   }, [location.pathname]);
 
+  // ----- Touch swipe gestures for the mobile drawer -----
+  // Edge-swipe-right from the left edge opens the drawer; swipe-left on the
+  // open drawer closes it. Gestures only fire on coarse-pointer devices and
+  // only below the `md` breakpoint where the drawer actually exists.
+  const SWIPE_EDGE_PX = 24;        // start zone for open gesture
+  const SWIPE_THRESHOLD_PX = 60;   // min horizontal distance to count
+  const SWIPE_MAX_VERTICAL_PX = 50; // max vertical drift before we abandon
+  const touchStartRef = useRef<{ x: number; y: number; fromEdge: boolean } | null>(null);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(pointer: coarse) and (max-width: 767px)");
+    if (!mql.matches) return;
+
+    const onStart = (e: TouchEvent) => {
+      const t = e.touches[0];
+      if (!t) return;
+      touchStartRef.current = {
+        x: t.clientX,
+        y: t.clientY,
+        fromEdge: t.clientX <= SWIPE_EDGE_PX,
+      };
+    };
+    const onEnd = (e: TouchEvent) => {
+      const start = touchStartRef.current;
+      touchStartRef.current = null;
+      if (!start) return;
+      const t = e.changedTouches[0];
+      if (!t) return;
+      const dx = t.clientX - start.x;
+      const dy = Math.abs(t.clientY - start.y);
+      if (dy > SWIPE_MAX_VERTICAL_PX) return;
+      // Swipe right from the left edge → open (only when closed).
+      if (!mobileNavOpen && start.fromEdge && dx > SWIPE_THRESHOLD_PX) {
+        setMobileNavOpen(true);
+      }
+    };
+
+    window.addEventListener("touchstart", onStart, { passive: true });
+    window.addEventListener("touchend", onEnd, { passive: true });
+    return () => {
+      window.removeEventListener("touchstart", onStart);
+      window.removeEventListener("touchend", onEnd);
+    };
+  }, [mobileNavOpen]);
+
+  // Per-panel handlers: swipe left on the open drawer closes it.
+  const panelTouchRef = useRef<{ x: number; y: number } | null>(null);
+  const onPanelTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    if (!t) return;
+    panelTouchRef.current = { x: t.clientX, y: t.clientY };
+  };
+  const onPanelTouchEnd = (e: React.TouchEvent) => {
+    const start = panelTouchRef.current;
+    panelTouchRef.current = null;
+    if (!start) return;
+    const t = e.changedTouches[0];
+    if (!t) return;
+    const dx = t.clientX - start.x;
+    const dy = Math.abs(t.clientY - start.y);
+    if (dy > SWIPE_MAX_VERTICAL_PX) return;
+    if (dx < -SWIPE_THRESHOLD_PX) setMobileNavOpen(false);
+  };
+
+
   const goToSupport = (e: React.MouseEvent) => {
     e.preventDefault();
     if (location.pathname === "/") {
