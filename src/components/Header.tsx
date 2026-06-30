@@ -248,6 +248,8 @@ export const Header = () => {
               <SheetContent
                 side="left"
                 className="w-[85vw] max-w-sm p-0 flex flex-col"
+                aria-modal="true"
+                aria-label="Main navigation"
                 onTouchStart={onPanelTouchStart}
                 onTouchEnd={onPanelTouchEnd}
               >
