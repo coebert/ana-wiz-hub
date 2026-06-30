@@ -93,7 +93,7 @@ export const Header = () => {
           {/* Desktop nav — icons only on all desktop sizes. 15 nav items + brand + exam filter chips
               + support link + toggles + search will not fit horizontally even at 1920px if labels are
               shown, so we rely on icon + title/aria-label for identification on every breakpoint. */}
-          <nav className="hidden md:flex items-center gap-0.5 min-w-0 flex-1 justify-center">
+          <nav className="hidden md:flex items-center gap-0.5 min-w-0 flex-1 justify-center overflow-hidden">
             {navItems.map((item) => {
               const isActive = location.pathname.startsWith(item.path);
               return (
