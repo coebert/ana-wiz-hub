@@ -98,8 +98,8 @@ export const LiverTransplantPhasesDiagram = () => {
   return (
     <DiagramFigure
       id="liver-transplant-phases-diagram"
-      title="Liver transplant phases"
-      description="Auto-generated wrapper for the Liver transplant phases anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      title="Orthotopic liver transplant — three-phase haemodynamic and metabolic timeline"
+      description="Schematic mean arterial pressure across the three phases of orthotopic liver transplantation. Phase 1 (Dissection/Pre-anhepatic): variable MAP from bleeding, ascites drainage and citrate-driven hypocalcaemia. Phase 2 (Anhepatic, IVC clamped): preload falls, cardiac output drops up to 50%, and lactate, citrate and drugs accumulate without hepatic metabolism. Phase 3 (Reperfusion/Neo-hepatic): unclamping releases cold, hyperkalaemic, acidotic preservation fluid causing post-reperfusion syndrome (MAP fall >30% lasting >1 min within 5 min), hyperfibrinolysis from graft tPA and risk of arrhythmia or arrest."
     >
                   <div className="my-6 space-y-4">
         <div className="rounded-xl border border-border bg-card p-4 sm:p-5">
