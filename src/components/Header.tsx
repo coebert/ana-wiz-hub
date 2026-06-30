@@ -41,6 +41,7 @@ export const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const { activeExam, setActiveExam } = useExamFilter();
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
