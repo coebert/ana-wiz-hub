@@ -245,7 +245,12 @@ export const Header = () => {
                   <Menu className="h-4 w-4" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[85vw] max-w-sm p-0 flex flex-col">
+              <SheetContent
+                side="left"
+                className="w-[85vw] max-w-sm p-0 flex flex-col"
+                onTouchStart={onPanelTouchStart}
+                onTouchEnd={onPanelTouchEnd}
+              >
                 <SheetHeader className="px-5 pt-5 pb-3 border-b border-border">
                   <SheetTitle className="text-left text-base">Navigation</SheetTitle>
                 </SheetHeader>
