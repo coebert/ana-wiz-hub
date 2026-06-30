@@ -327,6 +327,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2017", citation: "Calvey TN, Williams NE. Pharmacokinetics. In: Principles and Practice of Pharmacology for Anaesthetists. 5th ed. Blackwell; 2008.", url: "https://doi.org/10.1002/9781405194853" },
     { label: "Peck & Hill Ch.2", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 2: Pharmacokinetics." },
     { label: "Stanski & Shafer", citation: "Shafer SL, Stanski DR. Defining depth of anesthesia. Handb Exp Pharmacol. 2008;182:409-423.", url: "https://doi.org/10.1007/978-3-540-74806-9_19" },
+    { label: "BJA Educ PK 2018", citation: "Coppens M, Van Limmen JGM, Schnider T, et al. Pharmacokinetics of anaesthetic drugs. BJA Education. 2018.", url: "https://www.bjaed.org/article/S2058-5349(17)30509-3/fulltext", excerpt: "After an intravenous bolus, the plasma concentration–time profile of a drug that is best described by a two-compartment model is bi-exponential, with a rapid initial fall (the α or distribution phase) followed by a slower decline (the β or elimination phase)." },
   ],
   "iv-anaesthetics": [
     { label: "BJA Educ 2014", citation: "Sahinovic MM, Struys MMRF, Absalom AR. Clinical pharmacokinetics and pharmacodynamics of propofol. Clin Pharmacokinet. 2018;57(12):1539-1558.", url: "https://doi.org/10.1007/s40262-018-0672-3" },
