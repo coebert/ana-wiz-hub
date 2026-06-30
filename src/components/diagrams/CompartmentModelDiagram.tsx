@@ -109,7 +109,32 @@ export const CompartmentModelDiagram = () => {
           <path d={oneCompPath} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="3" strokeLinecap="round" />
         )}
         {modelType >= 2 && (
-          <path d={twoCompPath} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="3" strokeLinecap="round" />
+          <>
+            {/* Dashed α (distribution) and β (elimination) component curves */}
+            <path d={twoCompAlphaPath} fill="none" stroke="hsl(20 75% 50%)" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.85" />
+            <path d={twoCompBetaPath} fill="none" stroke="hsl(220 70% 50%)" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.85" />
+            {/* Combined bi-exponential plasma curve */}
+            <path d={twoCompPath} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="3" strokeLinecap="round" />
+            {/* Phase labels */}
+            <text x={pad.left + plotW * 0.06} y={pad.top + 16} fontSize="10" className="fill-foreground" fontWeight="600" fill="hsl(20 75% 50%)">
+              α (distribution)
+            </text>
+            <text x={pad.left + plotW * 0.55} y={pad.top + plotH - 8} fontSize="10" fontWeight="600" fill="hsl(220 70% 50%)">
+              β (elimination)
+            </text>
+            {/* Inflection marker — knee between α and β phases (~t = 2) */}
+            {(() => {
+              const tKnee = 2;
+              const x = pad.left + (tKnee / maxT) * plotW;
+              const y = pad.top + plotH - (twoCompFn(tKnee) / 100) * plotH;
+              return (
+                <g>
+                  <circle cx={x} cy={y} r={3.5} fill="hsl(170 50% 40%)" stroke="hsl(0 0% 100%)" strokeWidth="1" />
+                  <text x={x + 6} y={y - 6} fontSize="9" className="fill-muted-foreground">knee (α→β)</text>
+                </g>
+              );
+            })()}
+          </>
         )}
       </svg>
 
