@@ -15,10 +15,17 @@ export const CompartmentModelDiagram = () => {
   const t = animFrame / 30; // seconds elapsed
 
   // Concentration decay curves
-  const _oneComp = Math.exp(-0.3 * t) * 100;
-  const twoCompAlpha = 60 * Math.exp(-0.8 * t);
-  const twoCompBeta = 40 * Math.exp(-0.1 * t);
-  const _twoComp = twoCompAlpha + twoCompBeta;
+  // 1-compartment: single exponential elimination (k = 0.15).
+  // 2-compartment: bi-exponential — fast α/distribution phase (k_α = 2.0)
+  // dominates the first ~2τ, then a much slower β/elimination phase
+  // (k_β = 0.08) takes over, producing a visible "knee".
+  const oneCompFn = (t: number) => 100 * Math.exp(-0.15 * t);
+  const twoCompAlphaFn = (t: number) => 75 * Math.exp(-2.0 * t);
+  const twoCompBetaFn = (t: number) => 25 * Math.exp(-0.08 * t);
+  const twoCompFn = (t: number) => twoCompAlphaFn(t) + twoCompBetaFn(t);
+
+  const _oneComp = oneCompFn(t);
+  const _twoComp = twoCompFn(t);
 
   const width = 500;
   const height = 300;
@@ -41,8 +48,10 @@ export const CompartmentModelDiagram = () => {
     return points.join(" ");
   };
 
-  const oneCompPath = generateDecayCurve((t) => Math.exp(-0.3 * t) * 100);
-  const twoCompPath = generateDecayCurve((t) => 60 * Math.exp(-0.8 * t) + 40 * Math.exp(-0.1 * t));
+  const oneCompPath = generateDecayCurve(oneCompFn);
+  const twoCompPath = generateDecayCurve(twoCompFn);
+  const twoCompAlphaPath = generateDecayCurve(twoCompAlphaFn);
+  const twoCompBetaPath = generateDecayCurve(twoCompBetaFn);
 
   return (
     <DiagramFigure id="compartment-model" title="Pharmacokinetic compartment models: one and two compartment" description="Animated drug movement between central and peripheral compartments with rate constants k10, k12 and k21 driving plasma concentration over time.">
