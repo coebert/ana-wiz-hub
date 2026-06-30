@@ -15,10 +15,17 @@ export const CompartmentModelDiagram = () => {
   const t = animFrame / 30; // seconds elapsed
 
   // Concentration decay curves
-  const _oneComp = Math.exp(-0.3 * t) * 100;
-  const twoCompAlpha = 60 * Math.exp(-0.8 * t);
-  const twoCompBeta = 40 * Math.exp(-0.1 * t);
-  const _twoComp = twoCompAlpha + twoCompBeta;
+  // 1-compartment: single exponential elimination (k = 0.15).
+  // 2-compartment: bi-exponential — fast α/distribution phase (k_α = 2.0)
+  // dominates the first ~2τ, then a much slower β/elimination phase
+  // (k_β = 0.08) takes over, producing a visible "knee".
+  const oneCompFn = (t: number) => 100 * Math.exp(-0.15 * t);
+  const twoCompAlphaFn = (t: number) => 75 * Math.exp(-2.0 * t);
+  const twoCompBetaFn = (t: number) => 25 * Math.exp(-0.08 * t);
+  const twoCompFn = (t: number) => twoCompAlphaFn(t) + twoCompBetaFn(t);
+
+  const _oneComp = oneCompFn(t);
+  const _twoComp = twoCompFn(t);
 
   const width = 500;
   const height = 300;
@@ -41,8 +48,10 @@ export const CompartmentModelDiagram = () => {
     return points.join(" ");
   };
 
-  const oneCompPath = generateDecayCurve((t) => Math.exp(-0.3 * t) * 100);
-  const twoCompPath = generateDecayCurve((t) => 60 * Math.exp(-0.8 * t) + 40 * Math.exp(-0.1 * t));
+  const oneCompPath = generateDecayCurve(oneCompFn);
+  const twoCompPath = generateDecayCurve(twoCompFn);
+  const twoCompAlphaPath = generateDecayCurve(twoCompAlphaFn);
+  const twoCompBetaPath = generateDecayCurve(twoCompBetaFn);
 
   return (
     <DiagramFigure id="compartment-model" title="Pharmacokinetic compartment models: one and two compartment" description="Animated drug movement between central and peripheral compartments with rate constants k10, k12 and k21 driving plasma concentration over time.">
@@ -100,7 +109,32 @@ export const CompartmentModelDiagram = () => {
           <path d={oneCompPath} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="3" strokeLinecap="round" />
         )}
         {modelType >= 2 && (
-          <path d={twoCompPath} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="3" strokeLinecap="round" />
+          <>
+            {/* Dashed α (distribution) and β (elimination) component curves */}
+            <path d={twoCompAlphaPath} fill="none" stroke="hsl(20 75% 50%)" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.85" />
+            <path d={twoCompBetaPath} fill="none" stroke="hsl(220 70% 50%)" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.85" />
+            {/* Combined bi-exponential plasma curve */}
+            <path d={twoCompPath} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="3" strokeLinecap="round" />
+            {/* Phase labels */}
+            <text x={pad.left + plotW * 0.06} y={pad.top + 16} fontSize="10" className="fill-foreground" fontWeight="600" fill="hsl(20 75% 50%)">
+              α (distribution)
+            </text>
+            <text x={pad.left + plotW * 0.55} y={pad.top + plotH - 8} fontSize="10" fontWeight="600" fill="hsl(220 70% 50%)">
+              β (elimination)
+            </text>
+            {/* Inflection marker — knee between α and β phases (~t = 2) */}
+            {(() => {
+              const tKnee = 2;
+              const x = pad.left + (tKnee / maxT) * plotW;
+              const y = pad.top + plotH - (twoCompFn(tKnee) / 100) * plotH;
+              return (
+                <g>
+                  <circle cx={x} cy={y} r={3.5} fill="hsl(170 50% 40%)" stroke="hsl(0 0% 100%)" strokeWidth="1" />
+                  <text x={x + 6} y={y - 6} fontSize="9" className="fill-muted-foreground">knee (α→β)</text>
+                </g>
+              );
+            })()}
+          </>
         )}
       </svg>
 
