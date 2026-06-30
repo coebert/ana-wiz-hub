@@ -47,9 +47,9 @@ const PharmacokineticsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["Peck & Hill Ch.2", "BJA Educ 2017"],
-        workedExamples: ["Peck & Hill Ch.2", "Stanski & Shafer", "BJA Educ 2017"],
-        keyPoints: ["Peck & Hill Ch.2", "BJA Educ 2017", "Stanski & Shafer"],
+        objectives: ["Peck & Hill Ch.2", "BJA Educ 2017", "BJA Educ PK 2018"],
+        workedExamples: ["Peck & Hill Ch.2", "Stanski & Shafer", "BJA Educ 2017", "BJA Educ PK 2018"],
+        keyPoints: ["Peck & Hill Ch.2", "BJA Educ 2017", "Stanski & Shafer", "BJA Educ PK 2018"],
       }}
       coreConcepts={
         <>
