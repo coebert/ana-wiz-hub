@@ -63,6 +63,11 @@ export const Header = () => {
     }
   }, [location.pathname, location.hash]);
 
+  // Close the mobile drawer automatically whenever the route changes.
+  useEffect(() => {
+    setMobileNavOpen(false);
+  }, [location.pathname]);
+
   const goToSupport = (e: React.MouseEvent) => {
     e.preventDefault();
     if (location.pathname === "/") {
