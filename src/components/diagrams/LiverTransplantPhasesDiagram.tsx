@@ -154,7 +154,7 @@ export const LiverTransplantPhasesDiagram = () => {
   
             {/* Reference normal MAP line */}
             <line x1="20" y1="105" x2="580" y2="105" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="3 4" opacity="0.5" />
-            <text x="585" y="108" className="fill-muted-foreground" fontSize="8">baseline</text>
+            <text x="575" y="101" textAnchor="end" className="fill-muted-foreground" fontSize="8">baseline</text>
   
             {/* BP trace */}
             <path d={tracePath} fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
