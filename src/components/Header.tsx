@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic, Pill, GraduationCap, Calculator, Brain, BookOpen, Sparkles } from "lucide-react";
+import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic, Pill, GraduationCap, Calculator, Brain, BookOpen, Sparkles, Menu } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
 import { SearchDialog } from "@/components/SearchDialog";
 import { ReduceMotionToggle } from "@/components/ReduceMotionToggle";
@@ -8,6 +8,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { UnitPreferenceMenu } from "@/components/UnitPreferenceMenu";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { Exam, ExamTag } from "@/data/curriculum";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 const navItems = [
   { label: "Ask AI", path: "/ask", icon: Sparkles, color: "text-primary" },
