@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic, Pill, GraduationCap, Calculator, Brain, BookOpen, Sparkles, Menu } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
