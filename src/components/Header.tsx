@@ -83,7 +83,7 @@ export const Header = () => {
             return (
               <Link to={homeTarget} className="flex items-center gap-2 shrink-0">
                 <img src={brainLogo} alt="AnaesthesiaCore brain and pulse logo" width={24} height={24} decoding="async" className="h-6 w-6" />
-                <span className="text-base font-semibold text-foreground hidden lg:inline whitespace-nowrap">
+                <span className="text-base font-semibold text-foreground hidden xl:inline whitespace-nowrap">
                   AnaesthesiaCore
                 </span>
               </Link>
@@ -93,7 +93,7 @@ export const Header = () => {
           {/* Desktop nav — icons only on all desktop sizes. 15 nav items + brand + exam filter chips
               + support link + toggles + search will not fit horizontally even at 1920px if labels are
               shown, so we rely on icon + title/aria-label for identification on every breakpoint. */}
-          <nav className="hidden md:flex items-center gap-0.5 min-w-0 flex-1 justify-center">
+          <nav className="hidden md:flex items-center gap-0.5 min-w-0 flex-1 justify-center overflow-hidden">
             {navItems.map((item) => {
               const isActive = location.pathname.startsWith(item.path);
               return (
@@ -117,12 +117,12 @@ export const Header = () => {
 
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Exam filter chips — slightly larger type and consistent spacing so chips never clip on laptop */}
-            <div className="hidden sm:flex items-center gap-0.5 mr-1 shrink-0">
+            <div className="hidden sm:flex items-center gap-1 mr-1 shrink-0">
               {examFilters.map((f) => (
                 <button
                   key={f.label}
                   onClick={() => setActiveExam(f.value)}
-                  className={`px-2 py-1 rounded text-[11px] font-medium leading-none whitespace-nowrap transition-colors ${
+                  className={`shrink-0 px-2 py-1 rounded text-[11px] font-medium leading-none whitespace-nowrap transition-colors ${
                     activeExam === f.value
                       ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:bg-muted"
