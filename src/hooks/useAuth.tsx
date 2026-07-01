@@ -74,6 +74,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     writeAdminCache(userId, !!data);
   };
 
+  // Stable ref to the current applySession so `signIn` can eagerly commit
+  // the new session BEFORE returning to the caller. Without this, callers
+  // that navigate() immediately after signIn (e.g. AdminLogin) would mount
+  // guarded pages while user/isAdmin are still stale — causing the page to
+  // bounce back to /admin/login and appear to "spontaneously log out".
+  const applySessionRef = useRef<(s: Session | null) => Promise<void>>(
+    async () => {},
+  );
+
   useEffect(() => {
     let cancelled = false;
 
@@ -122,6 +131,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (!cancelled) setLoading(false);
     };
 
+    applySessionRef.current = applySession;
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, nextSession) => {
         // Defer to avoid deadlocks inside the auth callback.
@@ -140,8 +151,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    return { error: error?.message ?? null };
+    // Pre-set loading so any guarded page that mounts between signIn
+    // resolving and the deferred onAuthStateChange handler firing will
+    // wait instead of bouncing the user back to /admin/login.
+    setLoading(true);
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) {
+      setLoading(false);
+      return { error: error.message };
+    }
+    // Eagerly commit the fresh session so context reflects the signed-in
+    // user synchronously — before the caller navigates to a protected route.
+    await applySessionRef.current(data.session ?? null);
+    return { error: null };
   };
 
   const signOut = async () => {
