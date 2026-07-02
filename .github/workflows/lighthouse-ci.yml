@@ -44,13 +44,22 @@ jobs:
       - name: Install Lighthouse CI
         run: npm i -g @lhci/cli@0.14.x
 
-      - name: Run Lighthouse CI (build, serve, assert)
-        id: lhci
+      - name: Run Lighthouse CI — desktop
+        id: lhci_desktop
         run: lhci autorun --config=./.lighthouserc.json
         continue-on-error: true
         env:
           LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
           LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.ref_name }}
+
+      - name: Run Lighthouse CI — mobile
+        id: lhci_mobile
+        run: lhci autorun --config=./.lighthouserc.mobile.json
+        continue-on-error: true
+        env:
+          LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
+          LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.ref_name }}
+
 
       - name: Generate Lighthouse summary
         if: always()
@@ -76,7 +85,8 @@ jobs:
           retention-days: 14
           if-no-files-found: ignore
 
-      - name: Fail job if Lighthouse assertions failed
-        if: always() && steps.lhci.outcome == 'failure'
+      - name: Fail job if any Lighthouse run failed
+        if: always() && (steps.lhci_desktop.outcome == 'failure' || steps.lhci_mobile.outcome == 'failure')
         run: exit 1
+
 
