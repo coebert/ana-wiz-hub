@@ -102,7 +102,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Fail job if any Lighthouse run failed
-        if: always() && (steps.lhci_desktop.outcome == 'failure' || steps.lhci_mobile.outcome == 'failure')
+        if: always() && (steps.lhci_desktop.outcome == 'failure' || steps.lhci_mobile.outcome == 'failure' || steps.hero_lcp.outcome == 'failure')
         run: exit 1
 
 
