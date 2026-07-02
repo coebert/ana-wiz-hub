@@ -5,6 +5,8 @@ import { ChevronLeft } from "lucide-react";
 import { StickyTOC, TOCItem } from "@/components/StickyTOC";
 import { sectionMeta, topicsBySection, type Section } from "@/data/curriculum";
 import { TopicReferencesButton } from "@/components/TopicReferencesButton";
+import { TopicPager } from "@/components/TopicPager";
+
 
 const SITE_URL = "https://anaesthesiacore.app";
 const SITE_NAME = "AnaesthesiaCore";
@@ -281,6 +283,18 @@ export const SectionLayout = ({
       </div>
       {autoItems.length > 0 && <StickyTOC items={autoItems} />}
       <div ref={contentRef}>{children}</div>
+      {(() => {
+        // Crawlable prev/next + section index on every topic page. Kept in
+        // SectionLayout (rather than each topic file) so coverage is
+        // automatic for every route matching /{section}/{topic-id}.
+        if (segments.length !== 2) return null;
+        const sec = segments[0] as Section;
+        if (!(sec in topicsBySection)) return null;
+        const topic = topicsBySection[sec].find((t) => t.id === segments[1]);
+        if (!topic) return null;
+        return <TopicPager section={sec} topic={topic} />;
+      })()}
     </div>
   );
 };
+
