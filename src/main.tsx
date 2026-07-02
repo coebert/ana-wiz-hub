@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import App from "./App.tsx";
 import "./index.css";
 import { startVersionCheck } from "./lib/version-check";
+import { startWebVitalsReporting } from "./lib/web-vitals-reporter";
 
 // Prevent service worker from interfering with Lovable preview
 const isInIframe = (() => {
