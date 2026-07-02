@@ -84,6 +84,7 @@ window.addEventListener("unhandledrejection", (event) => {
 });
 
 startVersionCheck();
+startWebVitalsReporting();
 
 createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
