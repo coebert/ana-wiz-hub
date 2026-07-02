@@ -45,10 +45,27 @@ jobs:
         run: npm i -g @lhci/cli@0.14.x
 
       - name: Run Lighthouse CI (build, serve, assert)
+        id: lhci
         run: lhci autorun --config=./.lighthouserc.json
+        continue-on-error: true
         env:
           LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
           LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.ref_name }}
+
+      - name: Generate Lighthouse summary
+        if: always()
+        run: node scripts/lighthouse-summary.mjs --out lhci-summary.md
+
+      - name: Publish summary to job page
+        if: always()
+        run: cat lhci-summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Comment summary on PR
+        if: always() && github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: lighthouse-ci
+          path: lhci-summary.md
 
       - name: Upload Lighthouse artifacts
         if: always()
@@ -58,3 +75,8 @@ jobs:
           path: .lighthouseci
           retention-days: 14
           if-no-files-found: ignore
+
+      - name: Fail job if Lighthouse assertions failed
+        if: always() && steps.lhci.outcome == 'failure'
+        run: exit 1
+
