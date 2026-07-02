@@ -951,9 +951,66 @@ export type Database = {
         }
         Relationships: []
       }
+      web_vitals: {
+        Row: {
+          connection: string | null
+          created_at: string
+          device_type: string | null
+          id: number
+          metric: string
+          navigation_type: string | null
+          rating: string | null
+          release_sha: string | null
+          route: string
+          session_id: string | null
+          user_agent: string | null
+          value: number
+        }
+        Insert: {
+          connection?: string | null
+          created_at?: string
+          device_type?: string | null
+          id?: never
+          metric: string
+          navigation_type?: string | null
+          rating?: string | null
+          release_sha?: string | null
+          route: string
+          session_id?: string | null
+          user_agent?: string | null
+          value: number
+        }
+        Update: {
+          connection?: string | null
+          created_at?: string
+          device_type?: string | null
+          id?: never
+          metric?: string
+          navigation_type?: string | null
+          rating?: string | null
+          release_sha?: string | null
+          route?: string
+          session_id?: string | null
+          user_agent?: string | null
+          value?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
-      [_ in never]: never
+      web_vitals_p75_daily: {
+        Row: {
+          day: string | null
+          device_type: string | null
+          metric: string | null
+          p50: number | null
+          p75: number | null
+          release_sha: string | null
+          route: string | null
+          samples: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {
