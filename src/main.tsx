@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import App from "./App.tsx";
 import "./index.css";
 import { startVersionCheck } from "./lib/version-check";
+import { startWebVitalsReporting } from "./lib/web-vitals-reporter";
 
 // Prevent service worker from interfering with Lovable preview
 const isInIframe = (() => {
@@ -83,6 +84,7 @@ window.addEventListener("unhandledrejection", (event) => {
 });
 
 startVersionCheck();
+startWebVitalsReporting();
 
 createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
