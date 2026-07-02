@@ -65,6 +65,22 @@ jobs:
         if: always()
         run: node scripts/lighthouse-summary.mjs --out lhci-summary.md
 
+      - name: Assert homepage hero drives LCP
+        id: hero_lcp
+        if: always()
+        run: node scripts/check-hero-lcp.mjs --out hero-lcp-summary.md
+        continue-on-error: true
+
+      - name: Combine summaries
+        if: always()
+        run: |
+          {
+            cat lhci-summary.md
+            echo ""
+            [ -f hero-lcp-summary.md ] && cat hero-lcp-summary.md
+          } > lhci-summary.combined.md
+          mv lhci-summary.combined.md lhci-summary.md
+
       - name: Publish summary to job page
         if: always()
         run: cat lhci-summary.md >> "$GITHUB_STEP_SUMMARY"
