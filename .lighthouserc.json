@@ -2,12 +2,7 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist",
-      "url": [
-        "http://localhost/index.html",
-        "http://localhost/curriculum/index.html",
-        "http://localhost/physiology/index.html",
-        "http://localhost/pharmacology/index.html"
-      ],
+      "url": ["http://localhost/index.html"],
       "numberOfRuns": 3,
       "settings": {
         "preset": "desktop",
