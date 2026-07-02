@@ -145,15 +145,27 @@ const Index = () => {
             <span>Home</span>
           </Link>
           <div className="relative z-0 flex flex-col items-center justify-center mb-4">
-            <img
-              src={brainLogo}
-              alt=""
-              width={224}
-              height={224}
-              fetchPriority="high"
-              decoding="async"
-              className="absolute h-40 w-40 md:h-56 md:w-56 invert brightness-200 opacity-15 pointer-events-none"
-            />
+            <picture>
+              <source
+                type="image/avif"
+                srcSet="/brain-logo-160.avif 160w, /brain-logo-224.avif 224w"
+                sizes="(max-width: 767px) 160px, 224px"
+              />
+              <source
+                type="image/webp"
+                srcSet="/brain-logo-160.webp 160w, /brain-logo-224.webp 224w"
+                sizes="(max-width: 767px) 160px, 224px"
+              />
+              <img
+                src={brainLogo}
+                alt=""
+                width={224}
+                height={224}
+                fetchPriority="high"
+                decoding="async"
+                className="absolute h-40 w-40 md:h-56 md:w-56 invert brightness-200 opacity-15 pointer-events-none"
+              />
+            </picture>
             <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground">
               AnaesthesiaCore — FRCA &amp; FFICM Revision
             </h1>
