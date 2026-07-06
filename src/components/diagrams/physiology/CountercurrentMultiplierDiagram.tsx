@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 interface StepData {
   title: string;

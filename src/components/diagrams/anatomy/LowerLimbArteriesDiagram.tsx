@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type ArteryKey = "external-iliac" | "femoral" | "profunda-femoris" | "popliteal" | "anterior-tibial" | "posterior-tibial" | "peroneal" | "dorsalis-pedis" | "medial-plantar" | "lateral-plantar" | "genicular" | "circumflex-femoral";
 

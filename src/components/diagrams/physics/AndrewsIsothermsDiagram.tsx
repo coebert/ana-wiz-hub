@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Slider } from "@/components/ui/slider";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Andrews' isotherms for N₂O on a P–V diagram.

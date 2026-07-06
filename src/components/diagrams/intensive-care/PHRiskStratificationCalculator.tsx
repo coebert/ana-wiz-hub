@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 // ESC/ERS 2022 four-strata risk model for PAH at follow-up.
 // Each variable scored 1 (low) / 2 (intermediate-low) / 3 (intermediate-high) / 4 (high).

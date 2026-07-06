@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const W = 640;
 const H = 320;

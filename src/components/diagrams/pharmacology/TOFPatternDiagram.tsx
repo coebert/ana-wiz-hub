@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type BlockType = "none" | "ndmr-partial" | "ndmr-complete" | "depol-phase1" | "depol-phase2" | "recovery";
 

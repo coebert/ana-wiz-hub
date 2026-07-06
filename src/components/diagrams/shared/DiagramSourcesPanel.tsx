@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BookOpen, ExternalLink, ImageIcon, ChevronRight } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 
 export interface DiagramSource {

@@ -1,4 +1,4 @@
-import { DiagramFigure, svgImgProps } from "./_shared/DiagramFigure";
+import { DiagramFigure, svgImgProps } from "../_shared/DiagramFigure";
 
 /**
  * HLH/MAS pathophysiology — failed cytotoxic killing → cytokine storm.

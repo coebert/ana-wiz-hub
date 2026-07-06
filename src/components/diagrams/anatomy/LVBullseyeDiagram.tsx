@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { withAlpha } from "@/lib/color-utils";
 import { useCoronarySelection, CoronaryTerritory } from "@/components/diagrams/intensive-care/coronarySelectionContext";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * AHA 17-segment short-axis LV bullseye, colour-keyed to the SAME six coronary

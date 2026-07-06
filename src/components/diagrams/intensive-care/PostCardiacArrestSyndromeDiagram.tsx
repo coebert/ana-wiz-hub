@@ -1,5 +1,5 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "@/components/diagrams/shared/MechanismCascadeDiagram";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const ERC_2021: CascadeSource = {
   label: "ERC/ESICM 2021",

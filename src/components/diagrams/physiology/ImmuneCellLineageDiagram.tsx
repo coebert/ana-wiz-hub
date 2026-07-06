@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import InlineRef from "@/components/references/InlineRef";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type Branch = "myeloid" | "lymphoid";
 type Arm = "innate" | "adaptive" | "bridge";

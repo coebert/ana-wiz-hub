@@ -1,4 +1,4 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 /**
  * Compact, reusable legend for animated pathophysiology diagrams.
  * Renders small inline SVG glyphs that mirror the vocabulary used inside

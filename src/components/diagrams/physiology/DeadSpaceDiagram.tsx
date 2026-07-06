@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type ViewMode = "overview" | "bohr" | "vq";
 

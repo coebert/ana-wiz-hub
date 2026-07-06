@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type PanelId = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 

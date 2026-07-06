@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
-import CorPictumFolio from "../CorPictumFolio";
+import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import {
   airwayFolio,
   headNeckFolio,

@@ -1,5 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "@/components/diagrams/shared/AnimatedMechanism";
-import { DiagramFigure, svgNodeProps } from "./_shared/DiagramFigure";
+import { DiagramFigure, svgNodeProps } from "../_shared/DiagramFigure";
 
 /**
  * NCEPOD urgency classification visualised as a triage clock.

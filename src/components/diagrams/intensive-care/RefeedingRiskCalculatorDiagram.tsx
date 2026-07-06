@@ -3,7 +3,7 @@ import { AlertTriangle, ShieldCheck } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Refeeding Risk Stratifier — interactive NICE CG32 calculator.

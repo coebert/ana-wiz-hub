@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type Pathology = "normal" | "bronchospasm" | "rebreathing" | "oesophageal" | "cardiac-oscillations" | "curare-cleft";
 

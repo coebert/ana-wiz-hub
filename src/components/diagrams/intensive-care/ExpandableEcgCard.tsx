@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import { Maximize2, X, Activity, Layers, AlertTriangle, Stethoscope } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Reusable wrapper for ECG diagrams.

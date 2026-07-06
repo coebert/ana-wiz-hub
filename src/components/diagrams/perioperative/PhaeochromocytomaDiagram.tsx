@@ -1,4 +1,4 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 /**
  * Animated pathophysiology diagram — Phaeochromocytoma.
  * Shows tumour catecholamine secretion, α₁/β₁ effects, and why α-blockade

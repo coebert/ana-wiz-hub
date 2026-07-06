@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const DiffusionCapacityDiagram = () => {
   const [view, setView] = useState<"fick" | "dlco" | "factors">("fick");

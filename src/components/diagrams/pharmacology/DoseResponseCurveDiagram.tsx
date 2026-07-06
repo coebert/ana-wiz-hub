@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Interactive log dose–response curves.

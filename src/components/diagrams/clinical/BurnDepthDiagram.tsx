@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { DiagramFigure, svgImgProps, svgDecorativeProps } from "./_shared/DiagramFigure";
+import { DiagramFigure, svgImgProps, svgDecorativeProps } from "../_shared/DiagramFigure";
 
 /**
  * BurnDepthDiagram

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { useCoronarySelection, CoronaryTerritory } from "@/components/diagrams/intensive-care/coronarySelectionContext";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * 12-lead ECG schematic — fourth synced view of the coronary trio.

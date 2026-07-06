@@ -7,7 +7,7 @@ import proneImg from "@/assets/positioning/prone.jpg";
 import parkBenchImg from "@/assets/positioning/park-bench.jpg";
 import sittingImg from "@/assets/positioning/sitting.jpg";
 import beachChairImg from "@/assets/positioning/beach-chair.jpg";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Illustration-style image plates for the principal surgical positions.

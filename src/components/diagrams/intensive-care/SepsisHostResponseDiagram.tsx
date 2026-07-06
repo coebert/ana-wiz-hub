@@ -1,5 +1,5 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "@/components/diagrams/shared/MechanismCascadeDiagram";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 // Reusable source records — referenced by URL across multiple steps so the
 // consolidated bibliography deduplicates them automatically.

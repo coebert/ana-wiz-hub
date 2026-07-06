@@ -1,4 +1,4 @@
-import { DiagramFigure, svgImgProps } from "./_shared/DiagramFigure";
+import { DiagramFigure, svgImgProps } from "../_shared/DiagramFigure";
 import { Cite } from "@/components/references/Cite";
 
 /**

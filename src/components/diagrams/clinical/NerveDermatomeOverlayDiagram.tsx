@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 import bodyLineArt from "@/assets/dermatome-body-lineart.png";
 
 type Region = {

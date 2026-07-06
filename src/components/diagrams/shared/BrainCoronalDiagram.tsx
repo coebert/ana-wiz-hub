@@ -2,7 +2,7 @@ import brainCoronalImg from "@/assets/brain-anatomy-coronal.jpg";
 import { DiagramSourcesPanel, DiagramSource } from "@/components/diagrams/shared/DiagramSourcesPanel";
 import { BrainRegionsList } from "@/components/diagrams/shared/BrainRegionsList";
 import BrainPlateLabels, { type PlateLabel } from "@/components/diagrams/shared/BrainPlateLabels";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const plateLabels: PlateLabel[] = [
   // Cortex & deep white matter (left hemisphere)

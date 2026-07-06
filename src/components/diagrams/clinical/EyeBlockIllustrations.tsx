@@ -3,7 +3,7 @@ import subTenonsImg from "@/assets/ophthalmic/sub-tenons-block.jpg";
 import peribulbarImg from "@/assets/ophthalmic/peribulbar-block.jpg";
 import retrobulbarImg from "@/assets/ophthalmic/retrobulbar-block.jpg";
 import topicalImg from "@/assets/ophthalmic/topical-intracameral.jpg";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Illustration plates for the four principal ophthalmic regional anaesthesia

@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { RotateCcw } from "lucide-react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type StepKey = "plasmaOsm" | "urineOsm" | "urineNa" | "volume";
 type PlasmaOsm = "low" | "normalHigh";

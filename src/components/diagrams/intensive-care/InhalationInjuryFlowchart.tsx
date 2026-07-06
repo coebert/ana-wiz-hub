@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ChevronRight, AlertTriangle, CheckCircle2, Activity, BookOpen, ExternalLink } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Inhalation-injury management flowchart for burns ICU.

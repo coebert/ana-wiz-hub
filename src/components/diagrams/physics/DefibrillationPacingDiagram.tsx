@@ -2,7 +2,7 @@ import { useState } from "react";
 import { WorkedExampleCallout } from "@/components/diagrams/shared/WorkedExampleCallout";
 import { DiagramLearningPoints } from "@/components/diagrams/shared/DiagramLearningPoints";
 import { ZoomableSVG } from "@/components/diagrams/shared/ZoomableSVG";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type Tab = "waveforms" | "impedance" | "pacemaker" | "emi";
 

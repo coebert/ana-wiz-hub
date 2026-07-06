@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { WorkedExampleCallout } from "@/components/diagrams/shared/WorkedExampleCallout";
 import { DiagramLearningPoints } from "@/components/diagrams/shared/DiagramLearningPoints";
 import { ZoomableSVG } from "@/components/diagrams/shared/ZoomableSVG";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const NuclearSpinTab = () => (
   <div className="space-y-4">

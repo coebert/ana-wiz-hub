@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /* ───────── Corrugated tubing helper (hollow double-walled) ───────── */
 const CorrugatedTube = ({ x1, y1, x2, y2, colour = "hsl(var(--foreground))", width = 12 }: { x1: number; y1: number; x2: number; y2: number; colour?: string; width?: number }) => {

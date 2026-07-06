@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type Scenario = {
   id: string;

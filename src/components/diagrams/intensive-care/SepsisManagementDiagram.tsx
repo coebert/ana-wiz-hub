@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { DiagramFigure, svgNodeProps } from "./_shared/DiagramFigure";
+import { DiagramFigure, svgNodeProps } from "../_shared/DiagramFigure";
 
 const SepsisManagementDiagram = () => {
   const [selectedBundle, setSelectedBundle] = useState<number | null>(null);

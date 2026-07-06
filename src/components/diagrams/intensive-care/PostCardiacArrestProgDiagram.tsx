@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure, svgNodeProps } from "./_shared/DiagramFigure";
+import { DiagramFigure, svgNodeProps } from "../_shared/DiagramFigure";
 
 type TimePoint = "pre72" | "72h" | "modalities" | "decision";
 

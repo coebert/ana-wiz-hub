@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 // Hill equation for ODC
 const hillEquation = (pO2: number, p50: number, n: number = 2.7): number => {

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Interactive SOFA + qSOFA + NEWS2 calculator for sepsis screening &

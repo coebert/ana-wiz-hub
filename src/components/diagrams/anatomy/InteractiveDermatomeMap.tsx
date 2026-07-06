@@ -2,7 +2,7 @@ import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { normaliseLevel, findLocalLevel, type CanonicalLevel } from "@/lib/dermatome-sync";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type Dermatome = {
   level: string;

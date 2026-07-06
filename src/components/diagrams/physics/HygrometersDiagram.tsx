@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatedMechanism, AnimatedMechanismStep } from "@/components/diagrams/shared/AnimatedMechanism";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /* ============================================================
  * Hygrometers — animated diagrams of the four types tested in

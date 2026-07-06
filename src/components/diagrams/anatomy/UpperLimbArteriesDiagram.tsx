@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type ArteryKey = "subclavian" | "axillary" | "brachial" | "profunda-brachii" | "radial" | "ulnar" | "anterior-interosseous" | "posterior-interosseous" | "superficial-palmar" | "deep-palmar" | "princeps-pollicis";
 

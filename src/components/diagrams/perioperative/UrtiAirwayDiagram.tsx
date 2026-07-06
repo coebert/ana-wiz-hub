@@ -1,5 +1,5 @@
 import DiagramAnimationLegend from "@/components/diagrams/shared/DiagramAnimationLegend";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Animated pathophysiology diagram — Recent URTI and airway hyper-reactivity.

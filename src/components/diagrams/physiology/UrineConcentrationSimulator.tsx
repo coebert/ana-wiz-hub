@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 // Segments along the nephron, x positions, and baseline osmolality behaviour.
 // We model osmolality (mOsm/kg) as a function of nephron segment and ADH level (0..1).

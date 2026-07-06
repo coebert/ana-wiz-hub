@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type NodeId = "angiotensinogen" | "renin" | "ang1" | "ace" | "ang2" | "at1" | "at2" | "aldosterone" | "adh" | "acei" | "arb" | "dri" | "mra";
 

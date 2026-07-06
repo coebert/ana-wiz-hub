@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Pill, Clock, AlertTriangle } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Interactive UK paracetamol treatment-line nomogram (Rumack–Matthew, 100 mg/L

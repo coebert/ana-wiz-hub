@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Animated infographic comparing recommended dwell-time approach

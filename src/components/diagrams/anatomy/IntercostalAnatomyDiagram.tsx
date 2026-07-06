@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type LayerKey = "skin" | "ext-intercostal" | "int-intercostal" | "innermost" | "neurovascular" | "endothoracic" | "parietal-pleura" | "pleural-space" | "visceral-pleura" | "lung" | "rib-above" | "rib-below";
 

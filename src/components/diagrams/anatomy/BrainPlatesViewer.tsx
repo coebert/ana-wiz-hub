@@ -4,7 +4,7 @@ import { BrainLateralPlate } from "@/components/diagrams/shared/BrainAnatomyDiag
 import { BrainMedialPlate } from "@/components/diagrams/shared/BrainMedialDiagram";
 import { BrainCoronalPlate } from "@/components/diagrams/shared/BrainCoronalDiagram";
 import { BrainAxialPlate } from "@/components/diagrams/shared/BrainAxialDiagram";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type View = "lateral" | "medial" | "coronal" | "axial";
 

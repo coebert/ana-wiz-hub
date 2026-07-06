@@ -1,5 +1,5 @@
 import React from "react";
-import AnatomyPlate, { ANATOMY_COLORS as C } from "../AnatomyPlate";
+import AnatomyPlate, { ANATOMY_COLORS as C } from "@/components/diagrams/shared/AnatomyPlate";
 
 /**
  * Cardiac — anterior (sternocostal) view.

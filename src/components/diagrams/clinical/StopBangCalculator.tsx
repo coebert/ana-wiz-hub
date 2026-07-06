@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const criteria = [
   { key: "snoring", letter: "S", label: "Snoring", desc: "Do you snore loudly (louder than talking or loud enough to be heard through closed doors)?" },

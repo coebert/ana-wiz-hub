@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 // Sigmoid PV curve: V = Vmax / (1 + e^(-k*(P - P_infl)))
 // Lung: needs positive (transpulmonary) pressure to inflate

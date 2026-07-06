@@ -2,7 +2,7 @@ import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { PlexusCard, PlexusChipRow, PlexusDetailPanel, ROOT_COLORS } from "@/components/diagrams/shared/plexusShared";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /* =========================================================================
    Lower-limb peripheral nerve branches + block coverage.

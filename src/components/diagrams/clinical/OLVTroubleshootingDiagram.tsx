@@ -3,7 +3,7 @@ import { PlayCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import GuidedWalkthroughOverlay, { WalkthroughStep } from "@/components/diagrams/shared/GuidedWalkthroughOverlay";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 interface AlgorithmStep {
   id: string;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type Tab = "si-units" | "gas-laws" | "heat" | "thermodynamics" | "phase-change" | "specific-heat" | "pv-diagrams";
 

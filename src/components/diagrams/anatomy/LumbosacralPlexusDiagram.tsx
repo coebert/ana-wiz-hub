@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { PlexusChipRow, PlexusDetailPanel, ROOT_COLORS } from "@/components/diagrams/shared/plexusShared";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type NerveKey = "femoral" | "obturator" | "lcnt" | "sciatic" | "tibial" | "peroneal" | "pudendal";
 
