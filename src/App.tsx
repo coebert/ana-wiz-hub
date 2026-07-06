@@ -78,8 +78,6 @@ import { topicRouteEntries, TOPIC_REDIRECTS } from "@/routes/topicRoutes";
 import { RequireAdmin } from "@/components/RequireAdmin";
 const SpoofedDomains = lazy(() => import("./pages/admin/SpoofedDomains"));
 
-const queryClient = new QueryClient();
-
 const Loading = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
     <div className="animate-pulse text-muted-foreground">Loading...</div>
@@ -87,15 +85,10 @@ const Loading = () => (
 );
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ProgressProvider>
-    <ExamFilterProvider>
-    <MotionPreferenceProvider>
-    <UnitPreferenceProvider>
-    <AuthProvider>
-    <TooltipProvider>
+  <AppProviders>
       <Toaster />
       <Sonner />
+
       
       <BrowserRouter>
         <Header />
