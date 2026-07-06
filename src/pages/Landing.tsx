@@ -6,6 +6,7 @@ import NeonSplash from "@/components/layout/NeonSplash";
 import { SupportSection } from "@/components/feedback/SupportSection";
 import { CommentWall } from "@/components/feedback/CommentWall";
 import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/viva/DemoVivaStepper";
+import { ContinueBand } from "@/components/landing/ContinueBand";
 import { citationStats } from "@/lib/citationStats";
 
 const nf = new Intl.NumberFormat("en-GB");
