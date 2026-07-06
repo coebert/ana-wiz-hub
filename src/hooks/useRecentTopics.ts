@@ -116,14 +116,7 @@ export function useRecentTopics(): RecentTopicEntry[] {
         visitedAt: new Date(r.visited_at as unknown as string).getTime(),
       }));
       const local = readRecent();
-      const byId = new Map<string, RecentTopicEntry>();
-      for (const e of [...cloud, ...local]) {
-        const prev = byId.get(e.topicId);
-        if (!prev || e.visitedAt > prev.visitedAt) byId.set(e.topicId, e);
-      }
-      const merged = [...byId.values()]
-        .sort((a, b) => b.visitedAt - a.visitedAt)
-        .slice(0, MAX_RECENT);
+      const merged = mergeRecentEntries(cloud, local, MAX_RECENT);
       writeRecent(merged);
       setEntries(merged);
 
