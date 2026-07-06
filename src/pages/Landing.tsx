@@ -142,38 +142,38 @@ const Landing = () => {
         />
         {/* Contrast overlay — ensures text legibility in both light and dark modes */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
-        <div className="relative container mx-auto px-4 py-12 md:py-20">
-          <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
-            <img
-              src={brainLogo}
-              alt="AnaesthesiaCore brain and pulse logo"
-              data-landing-hero-logo
-              width={288}
-              height={288}
-              fetchPriority="high"
-              decoding="async"
-              className="h-52 w-52 md:h-72 md:w-72 mb-6 invert brightness-200 [filter:invert(1)_brightness(2)_drop-shadow(0_4px_12px_rgba(0,0,0,0.35))]"
-            />
-            <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-3 tracking-tight [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
-              AnaesthesiaCore — FRCA &amp; FFICM Revision
-            </h1>
-            <p className="text-base md:text-lg text-white/90 mb-4 max-w-2xl [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
-              AnaesthesiaCore is a study companion for FRCA Primary, Final and FFICM trainees — built around the official curriculum to help you revise efficiently, learn on the move, and rehearse out loud before exam day.
-            </p>
-            <p className="text-sm md:text-base text-white/85 mb-5 max-w-2xl [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
-              Three tools in one place: <strong className="font-semibold text-white">structured curriculum notes</strong> for focused revision, <strong className="font-semibold text-white">AI-generated topic podcasts</strong> for hands-free learning, and an <strong className="font-semibold text-white">AI viva examiner</strong> that listens to your spoken answers and gives rubric-based feedback.
-            </p>
-            <p className="font-display text-2xl md:text-3xl font-semibold text-white/95 mb-2 tracking-tight [text-shadow:0_1px_6px_rgba(0,0,0,0.3)]">
-              How would you like to study today?
-            </p>
-            <p className="text-base md:text-lg text-white/90 [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
-              Pick a mode below — read the notes, listen on the move, or rehearse out loud.
+        <div className="relative container mx-auto px-4 py-8 md:py-10">
+          <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+            <div className="flex items-center justify-center gap-4 md:gap-5 mb-4">
+              <img
+                src={brainLogo}
+                alt="AnaesthesiaCore brain and pulse logo"
+                data-landing-hero-logo
+                width={112}
+                height={112}
+                fetchPriority="high"
+                decoding="async"
+                className="h-16 w-16 md:h-20 md:w-20 invert brightness-200 [filter:invert(1)_brightness(2)_drop-shadow(0_4px_12px_rgba(0,0,0,0.35))]"
+              />
+              <h1 className="font-display text-3xl md:text-5xl font-bold text-white tracking-tight text-left [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
+                AnaesthesiaCore
+                <span className="block text-lg md:text-2xl font-medium text-white/85 mt-0.5">
+                  FRCA &amp; FFICM Revision
+                </span>
+              </h1>
+            </div>
+            <p className="text-sm md:text-base text-white/90 max-w-2xl [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
+              A study companion for FRCA Primary, Final and FFICM trainees. Three tools in one place:{" "}
+              <strong className="font-semibold text-white">structured curriculum notes</strong>,{" "}
+              <strong className="font-semibold text-white">AI-generated topic podcasts</strong>, and an{" "}
+              <strong className="font-semibold text-white">AI viva examiner</strong> that gives rubric-based feedback on your spoken answers.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-12 md:py-16 flex-1">
+
+      <section className="container mx-auto px-4 py-8 md:py-10 flex-1">
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 max-w-6xl mx-auto">
           {choices.map(({ title, description, icon: Icon, to, accent, iconBg }) => (

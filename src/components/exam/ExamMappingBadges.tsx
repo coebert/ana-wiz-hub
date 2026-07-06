@@ -1,6 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap } from "lucide-react";
 import { ExamTag } from "@/data/curriculum";
+import { useShouldRenderExamBadge } from "@/components/exam/ExamBadgeDedupeContext";
+
 
 const EXAM_LABELS: Record<ExamTag, string> = {
   primary: "FRCA Primary",
@@ -45,6 +47,14 @@ export const ExamMappingBadges = ({
   // De-duplicate while preserving order
   const seen = new Set<ExamTag>();
   const uniqueExams = exams.filter((e) => (seen.has(e) ? false : (seen.add(e), true)));
+
+  // Suppress repeated identical badge rows within a single topic (see
+  // ExamBadgeDedupeContext). First occurrence renders; identical repeats
+  // render nothing so long topics don't ship 10+ "MAPS TO … PH_BK_01" ribbons.
+  const signature = `${uniqueExams.join(",")}|${(curriculumCodes ?? []).join(",")}|${label}`;
+  const shouldRender = useShouldRenderExamBadge(signature);
+  if (!shouldRender) return null;
+
 
   return (
     <div

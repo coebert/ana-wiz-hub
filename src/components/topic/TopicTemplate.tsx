@@ -12,7 +12,8 @@ import { SeeAlso } from "@/components/topic/SeeAlso";
 import { TopicCompletionToggle } from "@/components/topic/TopicCompletionToggle";
 import { ReportInaccuracyDialog } from "@/components/feedback/ReportInaccuracyDialog";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
-import { TopicExamFilterBar } from "@/components/topic/TopicExamFilterBar";
+import { ExamBadgeDedupeProvider } from "@/components/exam/ExamBadgeDedupeContext";
+
 import { LazyDiagrams } from "@/components/topic/LazyDiagrams";
 import { ExamSummary } from "@/components/exam/ExamSummary";
 import { TopicPodcastPlayer } from "@/components/topic/TopicPodcastPlayer";
@@ -271,8 +272,9 @@ export const TopicTemplate = ({
           );
         })()}
       </Helmet>
+      <ExamBadgeDedupeProvider>
       <div className="space-y-8 sm:space-y-10">
-        <TopicExamFilterBar />
+
         <TopicPodcastPlayer topicId={topicId} topicTitle={topicTitle ?? title} />
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-lg border border-border bg-muted/30 px-3 sm:px-4 py-3">
           <div className="min-w-0">
@@ -414,6 +416,8 @@ export const TopicTemplate = ({
           <ReportInaccuracyDialog topicId={topicId} topicTitle={topicTitle ?? title} />
         </div>
       </div>
+      </ExamBadgeDedupeProvider>
     </SectionLayout>
+
   );
 };
