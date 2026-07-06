@@ -3,13 +3,17 @@
  * StickyTOC. Extracted from SectionLayout so the DOM-mutation side effect is
  * isolated and the layout can remain declarative.
  *
- * Behaviour is preserved from the previous inline implementation:
+ * Behaviour:
  *  - assigns generated ids to headings that don't already have one
  *  - skips activation when a page has manually rendered a StickyTOC
- *  - only renders when at least `minHeadings` (default 4) h2s are found
+ *  - only renders the sticky TOC when at least `minHeadings` h2s are found
+ *  - if a `topicId` is provided, portals a <SubsectionCheck> next to each h2
+ *    so signed-in users can tick individual subsections as complete
  */
 import { ReactNode, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { StickyTOC, TOCItem } from "@/components/layout/StickyTOC";
+import { SubsectionCheck } from "@/components/topic/SubsectionCheck";
 
 const slugify = (text: string) =>
   text
@@ -25,11 +29,23 @@ interface AutoTOCProps {
   disabled?: boolean;
   /** Minimum h2 count before the TOC is rendered. Defaults to 4. */
   minHeadings?: number;
+  /**
+   * Enables per-subsection completion ticks next to each h2. When set,
+   * each heading gets a portal-rendered <SubsectionCheck> button.
+   */
+  topicId?: string;
 }
 
-export const AutoTOC = ({ children, disabled, minHeadings = 4 }: AutoTOCProps) => {
+interface CheckMount {
+  container: HTMLSpanElement;
+  subsectionId: string;
+  label: string;
+}
+
+export const AutoTOC = ({ children, disabled, minHeadings = 4, topicId }: AutoTOCProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [items, setItems] = useState<TOCItem[]>([]);
+  const [checkMounts, setCheckMounts] = useState<CheckMount[]>([]);
 
   useEffect(() => {
     if (disabled) return;
@@ -37,38 +53,65 @@ export const AutoTOC = ({ children, disabled, minHeadings = 4 }: AutoTOCProps) =
     if (!root) return;
 
     // If the page already rendered a StickyTOC manually, don't duplicate.
-    if (root.querySelector('nav[aria-label="On this page"]')) return;
+    const skipTOC = !!root.querySelector('nav[aria-label="On this page"]');
 
     const headings = Array.from(root.querySelectorAll("h2")) as HTMLHeadingElement[];
     const used = new Set<string>();
-    const next: TOCItem[] = headings
-      .map((h) => {
-        const label = (h.textContent || "").trim();
-        if (!label) return null;
-        let id = h.id || h.closest<HTMLElement>("[id]")?.id || "";
-        if (!id) {
-          const base = `toc-${slugify(label)}`;
-          let candidate = base;
-          let n = 2;
-          while (used.has(candidate) || document.getElementById(candidate)) {
-            candidate = `${base}-${n++}`;
-          }
-          id = candidate;
-          h.id = id;
-          h.classList.add("scroll-mt-24");
-        }
-        used.add(id);
-        return { id, label } as TOCItem;
-      })
-      .filter((x): x is TOCItem => x !== null);
+    const next: TOCItem[] = [];
+    const nextMounts: CheckMount[] = [];
 
-    if (next.length >= minHeadings) setItems(next);
-  }, [children, disabled, minHeadings]);
+    for (const h of headings) {
+      const label = (h.textContent || "").trim();
+      if (!label) continue;
+      let id = h.id || h.closest<HTMLElement>("[id]")?.id || "";
+      if (!id) {
+        const base = `toc-${slugify(label)}`;
+        let candidate = base;
+        let n = 2;
+        while (used.has(candidate) || document.getElementById(candidate)) {
+          candidate = `${base}-${n++}`;
+        }
+        id = candidate;
+        h.id = id;
+        h.classList.add("scroll-mt-24");
+      }
+      used.add(id);
+      next.push({ id, label });
+
+      // Mount a portal container for the SubsectionCheck. Reuse if we
+      // already appended one from a previous render.
+      if (topicId) {
+        let container = h.querySelector<HTMLSpanElement>("span[data-subsection-check]");
+        if (!container) {
+          container = document.createElement("span");
+          container.setAttribute("data-subsection-check", "");
+          container.className = "inline-flex align-middle";
+          h.appendChild(container);
+        }
+        nextMounts.push({ container, subsectionId: id, label });
+      }
+    }
+
+    if (!skipTOC && next.length >= minHeadings) {
+      setItems(next);
+    } else {
+      setItems([]);
+    }
+    setCheckMounts(nextMounts);
+  }, [children, disabled, minHeadings, topicId]);
 
   return (
     <>
       {items.length > 0 && <StickyTOC items={items} />}
       <div ref={contentRef}>{children}</div>
+      {topicId &&
+        checkMounts.map((m) =>
+          createPortal(
+            <SubsectionCheck topicId={topicId} subsectionId={m.subsectionId} label={m.label} />,
+            m.container,
+            `${topicId}:${m.subsectionId}`
+          )
+        )}
     </>
   );
 };
