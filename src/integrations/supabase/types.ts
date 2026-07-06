@@ -912,6 +912,27 @@ export type Database = {
         }
         Relationships: []
       }
+      user_subsection_progress: {
+        Row: {
+          checked_at: string
+          subsection_id: string
+          topic_id: string
+          user_id: string
+        }
+        Insert: {
+          checked_at?: string
+          subsection_id: string
+          topic_id: string
+          user_id: string
+        }
+        Update: {
+          checked_at?: string
+          subsection_id?: string
+          topic_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_topic_progress: {
         Row: {
           completed_at: string
