@@ -64,7 +64,7 @@ const EsicmValidatorPanel = () => {
       `- **missing-excerpt** — add an \`excerpt: "..."\` field containing a verbatim quote from the source that supports the dose/threshold mentioned in the citation. Excerpts must be ≤600 characters and copied verbatim — never paraphrase.`,
       `- **dose-mismatch** — either (a) update the \`excerpt\` so the exact value + unit appears verbatim, or (b) correct the dose in the \`citation\`/\`label\` if the excerpt is right and the citation was wrong.`,
       ``,
-      `After all edits, run \`npm run check:source-excerpts\` to confirm coverage. Do not silently drop or shorten existing excerpts.`,
+      `After all edits, run \`npm run check -- --rule=source-excerpts\` to confirm coverage. Do not silently drop or shorten existing excerpts.`,
       ``,
       `The list below is regenerated live from the validator. Once an entry is fixed in the source file it will automatically disappear from the admin panel on the next HMR reload, so there is no separate "mark fixed" step.`,
       ``,

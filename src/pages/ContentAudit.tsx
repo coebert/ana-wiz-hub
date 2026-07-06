@@ -577,7 +577,7 @@ const ContentAudit = () => {
       `WHERE id = '<id>';`,
       "```",
       ``,
-      `After the UPDATE(s), run \`npm run check:audit-fixes\` to confirm every newly-fixed finding has a matching \`InlineRef\` / \`sectionSources\` citation in the topic file. The script exits non-zero on any failure; fix the citation (or set \`unverifiable_reason\`) before reporting back.`,
+      `After the UPDATE(s), run \`npm run check -- --rule=audit-fixes\` to confirm every newly-fixed finding has a matching \`InlineRef\` / \`sectionSources\` citation in the topic file. The script exits non-zero on any failure; fix the citation (or set \`unverifiable_reason\`) before reporting back.`,
       ``,
       `Then tell me how many findings you marked fixed and list any IDs you intentionally left open with a one-line reason.`,
     );
@@ -639,7 +639,7 @@ const ContentAudit = () => {
       `4. Where the finding is **thin**, expand the existing prose in place — don't replace it wholesale unless the existing wording is also wrong.`,
       `5. Where the finding is **update**, integrate the newer guideline alongside (or in place of) the older one, and update the citation.`,
       ``,
-      `After all edits, run typecheck and \`npm run check:source-excerpts\`.`,
+      `After all edits, run typecheck and \`npm run check -- --rule=source-excerpts\`.`,
       ``,
       `**IMPORTANT — auto-mark fixed:** For every finding you actually actioned (i.e. the source file now contains the expanded / added / updated content with a real citation), mark it fixed in the database by running the SQL block at the bottom of this prompt via \`psql\`. Remove from that SQL any IDs you could not safely action and report them back to me with a one-line reason.`,
       ``,

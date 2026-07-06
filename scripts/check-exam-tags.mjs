@@ -7,8 +7,8 @@
  * and reports any value that isn't one of the valid ExamTag values.
  *
  * Reuses the same rule as `lovable-local/valid-exam-tag` so behaviour
- * stays in sync with ESLint. Run via `npm run check:exam-tags` (or
- * `bun run check:exam-tags`). Exits non-zero on any unfixed violation,
+ * stays in sync with ESLint. Run via `npm run check -- --rule=exam-tags` (or
+ * `bun run check -- --rule=exam-tags`). Exits non-zero on any unfixed violation,
  * suitable for CI / pre-commit hooks.
  *
  * Usage:
