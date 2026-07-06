@@ -6,6 +6,7 @@ import { AutoTOC } from "@/components/layout/AutoTOC";
 import { topicsBySection, type Section } from "@/data/curriculum";
 import { TopicReferencesButton } from "@/components/topic/TopicReferencesButton";
 import { TopicPager } from "@/components/topic/TopicPager";
+import { TopicPagerMini } from "@/components/topic/TopicPagerMini";
 
 interface SectionLayoutProps {
   title: string;
@@ -115,6 +116,9 @@ export const SectionLayout = ({
           </div>
         )}
       </div>
+      {topicForPath && (
+        <TopicPagerMini section={topicForPath.section} topic={topicForPath.topic} />
+      )}
       <AutoTOC disabled={disableAutoTOC} minHeadings={autoTOCMinHeadings}>
         {children}
       </AutoTOC>
