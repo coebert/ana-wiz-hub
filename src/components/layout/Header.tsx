@@ -30,6 +30,21 @@ const navItems = [
   { label: "Viva", path: "/viva", icon: Mic, color: "text-accent" },
 ];
 
+// Primary items get labelled buttons at xl+; everything else lives in the
+// "More" dropdown so the labelled row fits without wrapping or clipping.
+const PRIMARY_LABELS = new Set([
+  "Ask AI",
+  "Physics",
+  "Physiology",
+  "Pharmacology",
+  "Clinical",
+  "ICU",
+  "Periop",
+  "Viva",
+]);
+const primaryNavItems = navItems.filter((i) => PRIMARY_LABELS.has(i.label));
+const overflowNavItems = navItems.filter((i) => !PRIMARY_LABELS.has(i.label));
+
 const examFilters: { label: string; value: ExamTag | null }[] = [
   { label: "All", value: null },
   { label: "Primary", value: Exam.PRIMARY },
