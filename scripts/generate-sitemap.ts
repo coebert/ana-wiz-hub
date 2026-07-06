@@ -105,6 +105,10 @@ const pathToFile = buildPathToFileMap();
 
 // Extract every <Route path="..."> with the *raw* element source so we can
 // detect <Navigate> redirects and drop them from the sitemap.
+//
+// Also parses `src/routes/topicRoutes.ts` for the `TOPIC_ROUTES` data table
+// (each entry `["/path", "ModuleName"]` renders a real <Route> in App.tsx via
+// `topicRouteEntries.map`, but isn't visible to the App.tsx regex above).
 function discoverRoutes(): { path: string; isRedirect: boolean; isParam: boolean }[] {
   const routes: { path: string; isRedirect: boolean; isParam: boolean }[] = [];
   const re = /<Route\s+path="([^"]+)"\s+element=\{([^}]*(?:\{[^}]*\}[^}]*)*)\}/g;
@@ -117,6 +121,24 @@ function discoverRoutes(): { path: string; isRedirect: boolean; isParam: boolean
       isParam: path.includes(":"),
     });
   }
+
+  // Data-driven topic routes (see src/routes/topicRoutes.ts).
+  const topicRoutesFile = resolve("src/routes/topicRoutes.ts");
+  if (existsSync(topicRoutesFile)) {
+    const topicSrc = readFileSync(topicRoutesFile, "utf8");
+    // TOPIC_ROUTES: ["/some/path", "ComponentName"]
+    for (const m of topicSrc.matchAll(/\[\s*"(\/[^"]+)"\s*,\s*"[^"]+"\s*\]/g)) {
+      routes.push({ path: m[1], isRedirect: false, isParam: m[1].includes(":") });
+    }
+    // TOPIC_REDIRECTS: ["/from", "/to"] — flag as redirect so they're skipped.
+    const redirectsBlock = topicSrc.match(/TOPIC_REDIRECTS[\s\S]*?\]\s*as const/);
+    if (redirectsBlock) {
+      for (const m of redirectsBlock[0].matchAll(/\[\s*"(\/[^"]+)"\s*,\s*"\/[^"]+"\s*\]/g)) {
+        routes.push({ path: m[1], isRedirect: true, isParam: false });
+      }
+    }
+  }
+
   return routes;
 }
 
