@@ -66,25 +66,70 @@ export const TopicTableOfContents = ({ items }: TopicTableOfContentsProps) => {
       {/* Mobile: horizontal scroll strip */}
       <nav
         aria-label="On this page"
-        className="lg:hidden sticky top-14 z-20 -mx-4 mb-4 bg-background/85 backdrop-blur border-y border-border"
+        className="lg:hidden sticky top-14 z-20 -mx-4 mb-4 bg-background/85 backdrop-blur border-y border-border px-4 py-2"
       >
-        <div className="flex gap-1.5 overflow-x-auto px-4 py-2 text-xs">
-          {items.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={(e) => handleClick(e, item.id)}
-              className={`whitespace-nowrap px-2.5 py-1 rounded-full border transition-colors ${
-                active === item.id
-                  ? "border-primary bg-primary/10 text-foreground"
-                  : "border-border text-muted-foreground hover:bg-muted/50"
-              }`}
+        {collapsible ? (
+          <>
+            <button
+              type="button"
+              onClick={() => setMobileOpen((o) => !o)}
+              aria-expanded={mobileOpen}
+              aria-controls="topic-toc-list"
+              className="w-full flex items-center justify-between gap-2 py-1 text-xs font-medium text-foreground"
             >
-              {item.label}
-            </a>
-          ))}
-        </div>
+              <span className="inline-flex items-center gap-1.5 min-w-0">
+                <ListOrdered className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden />
+                <span className="text-muted-foreground shrink-0">On this page ({items.length}):</span>
+                <span className="truncate text-foreground">{activeItem?.label}</span>
+              </span>
+              <ChevronDown
+                className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform ${mobileOpen ? "rotate-180" : ""}`}
+                aria-hidden
+              />
+            </button>
+            {mobileOpen && (
+              <ul id="topic-toc-list" className="mt-2 max-h-[50vh] overflow-y-auto flex flex-wrap gap-1.5 pb-1">
+                {items.map((item) => (
+                  <li key={item.id}>
+                    <a
+                      href={`#${item.id}`}
+                      onClick={(e) => {
+                        handleClick(e, item.id);
+                        setMobileOpen(false);
+                      }}
+                      className={`inline-block whitespace-nowrap px-2.5 py-1 rounded-full border text-xs transition-colors ${
+                        active === item.id
+                          ? "border-primary bg-primary/10 text-foreground"
+                          : "border-border text-muted-foreground hover:bg-muted/50"
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </>
+        ) : (
+          <div className="flex gap-1.5 overflow-x-auto text-xs">
+            {items.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleClick(e, item.id)}
+                className={`whitespace-nowrap px-2.5 py-1 rounded-full border transition-colors ${
+                  active === item.id
+                    ? "border-primary bg-primary/10 text-foreground"
+                    : "border-border text-muted-foreground hover:bg-muted/50"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )}
       </nav>
+
 
       {/* Desktop: sticky sidebar — anchored just outside the max-w-4xl content column
           so it never overlaps body content. Hidden when the viewport is too narrow
