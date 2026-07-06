@@ -7,6 +7,8 @@ import { topicsBySection, type Section } from "@/data/curriculum";
 import { TopicReferencesButton } from "@/components/topic/TopicReferencesButton";
 import { TopicPager } from "@/components/topic/TopicPager";
 import { TopicPagerMini } from "@/components/topic/TopicPagerMini";
+import { ReadingProgressBar } from "@/components/layout/ReadingProgressBar";
+import { StickyTopicTitle } from "@/components/layout/StickyTopicTitle";
 
 interface SectionLayoutProps {
   title: string;
