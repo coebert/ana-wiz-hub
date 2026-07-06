@@ -62,6 +62,18 @@ test.describe("sign-out clears local progress caches", () => {
     const baseline = Number(await primaryBar.getAttribute("aria-valuenow"));
     expect(Number.isFinite(baseline)).toBe(true);
 
+    // Snapshot the cloud-only Recent Topics ("Continue where you left off")
+    // hrefs. The section renders nothing when the user has no recent topics,
+    // so we tolerate both an empty and a populated baseline.
+    const continueBand = page.getByRole("region", {
+      name: /continue where you left off/i,
+    });
+    const baselineRecentHrefs = (await continueBand.count())
+      ? await continueBand.getByRole("link").evaluateAll((els) =>
+          (els as HTMLAnchorElement[]).map((a) => new URL(a.href).pathname)
+        )
+      : [];
+
     // 2. Sign out — opens the header account menu, clicks Sign out.
     // signOut() triggers a hard reload to "/", so wait for it.
     await page.getByRole("button", { name: /account|profile|menu/i }).first().click().catch(() => {});
