@@ -56,6 +56,20 @@ function buildRouteMap(): RouteMap {
     const file = componentToFile[m[2]];
     if (file) pathToFile[m[1]] = file;
   }
+
+  // Data-driven topic table: src/routes/topicRoutes.ts — parse `["/path", "ModuleName"]` tuples.
+  const topicRoutesPath = resolve("src/routes/topicRoutes.ts");
+  if (existsSync(topicRoutesPath)) {
+    const topicSrc = readFileSync(topicRoutesPath, "utf8");
+    for (const m of topicSrc.matchAll(
+      /\[\s*"(\/[^"]+)"\s*,\s*"(\w+)"\s*\]/g,
+    )) {
+      const [, urlPath, moduleName] = m;
+      const file = resolve("src/pages/topics", `${moduleName}.tsx`);
+      if (existsSync(file)) pathToFile[urlPath] = file;
+    }
+  }
+
   return { pathToFile };
 }
 
