@@ -31,6 +31,10 @@ const examTagColors: Record<ExamTag, string> = {
 export const TopicCard = ({ title, description, path, section, topicId, examTags, referenceCount }: TopicCardProps) => {
   const { isCompleted } = useProgress();
   const completed = topicId ? isCompleted(topicId) : false;
+  // Tier signal: topics that map to all three exam sittings (Primary + Final + FFICM)
+  // are curriculum "core" — surfaced with a small star so learners can prioritise.
+  const coreExams: ExamTag[] = ["primary", "final", "fficm"];
+  const isCore = !!examTags && coreExams.every((e) => examTags.includes(e));
 
   return (
     <Link to={path} className={`topic-card section-card-${section} block group`}>
