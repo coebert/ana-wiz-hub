@@ -1,11 +1,11 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { temperatureMeasurementQuiz } from "@/data/quizzes";
 import TemperatureMeasurementDiagram from "@/components/diagrams/TemperatureMeasurementDiagram";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const temperatureMeasurementFaqs: Array<[string, string]> = [
   [

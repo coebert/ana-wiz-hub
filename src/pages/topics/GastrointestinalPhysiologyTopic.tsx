@@ -1,10 +1,10 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { InlineRef } from "@/components/InlineRef";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { giPhysiologyQuestions } from "@/data/quizzes";
 import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
 import { Exam } from "@/data/curriculum";

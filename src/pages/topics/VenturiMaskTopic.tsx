@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { SectionLayout } from "@/components/SectionLayout";
+import { SectionLayout } from "@/components/layout/SectionLayout";
 import BernoulliVenturiDiagram from "@/components/diagrams/BernoulliVenturiDiagram";
 
 /**

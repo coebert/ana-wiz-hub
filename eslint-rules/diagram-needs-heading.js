@@ -119,7 +119,7 @@ const rule = {
     schema: [],
     messages: {
       missingHeading:
-        'Diagram <{{name}} /> must sit under an <h2>. Wrap it in <DiagramSection title="…"> from "@/components/DiagramSection", or add a sibling <h2> in the same parent element.',
+        'Diagram <{{name}} /> must sit under an <h2>. Wrap it in <DiagramSection title="…"> from "@/components/topic/DiagramSection", or add a sibling <h2> in the same parent element.',
     },
   },
   create(context) {

@@ -1,11 +1,11 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { antimicrobialsIcuQuestions } from "@/data/quizzes";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { DiagramSection } from "@/components/DiagramSection";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import AntibioticPKPDPrimer from "@/components/diagrams/AntibioticPKPDPrimer";
 
 const antimicrobialsIcuFaqs: Array<[string, string]> = [

@@ -1,10 +1,10 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { SectionTopicsList } from "@/components/SectionTopicsList";
-import { SectionSummary } from "@/components/SectionSummary";
+import { SectionLayout } from "@/components/layout/SectionLayout";
+import { SectionTopicsList } from "@/components/topic/SectionTopicsList";
+import { SectionSummary } from "@/components/topic/SectionSummary";
 import { perioperativeTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
-import { ProgressRing } from "@/components/ProgressRing";
+import { ProgressRing } from "@/components/shared/ProgressRing";
 
 const PerioperativeSection = () => {
   const { getSectionProgress } = useProgress();

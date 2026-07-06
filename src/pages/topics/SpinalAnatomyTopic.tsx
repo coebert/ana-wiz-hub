@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { ExamSection } from "@/components/ExamSection";
-import { TopicFaqs } from "@/components/TopicFaqs";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const spinalAnatomyFaqs: Array<[string, string]> = [
   ["At what vertebral level does the adult spinal cord end?", "The conus medullaris ends at L1/L2 in adults (most commonly the lower border of L1). In neonates it extends to L3 and ascends with growth. Lumbar puncture and spinal anaesthesia are therefore performed at L3/4 or L4/5 — Tuffier's line (intercristal line) traditionally identifies L4 — to avoid cord injury."],
   ["What are the contents of the epidural space?", "The epidural space lies between the dura mater and bony spinal canal. It contains fat (which buffers dose), the internal vertebral (Batson's) venous plexus, lymphatics, segmental nerve roots, and small arteries including the artery of Adamkiewicz (T9–T12 in 75%). Anterior–posterior depth is typically 4–6 mm at lumbar levels."],
   ["Which ligaments does a Tuohy needle pass through during a midline lumbar epidural?", "From superficial to deep: skin → subcutaneous fat → supraspinous ligament → interspinous ligament → ligamentum flavum (where loss of resistance is felt) → epidural space. The paramedian approach bypasses the supraspinous and interspinous ligaments, passing directly through the ligamentum flavum — useful when calcified midline ligaments resist needle advance."],
 ];
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { spinalAnatomyQuestions } from "@/data/quizzes";
 import SpinalCordCrossSectionDiagram from "@/components/diagrams/SpinalCordCrossSectionDiagram";
 import SpinalCordAxialDiagram from "@/components/diagrams/SpinalCordAxialDiagram";

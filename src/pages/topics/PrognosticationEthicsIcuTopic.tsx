@@ -1,15 +1,15 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { prognosticationIcuQuestions } from "@/data/quizzes";
 import PostCardiacArrestProgDiagram from "@/components/diagrams/PostCardiacArrestProgDiagram";
 import APACHEIICalculator from "@/components/diagrams/APACHEIICalculator";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { InlineRef } from "@/components/InlineRef";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const prognosticationEthicsIcuFaqs: Array<[string, string]> = [
   ["What ethical framework underpins withdrawal of life-sustaining treatment?", "Four principles (Beauchamp & Childress): autonomy, beneficence, non-maleficence, justice — applied through best-interests assessment under the Mental Capacity Act 2005, involving family, IMCA if no representative, and shared decision-making."],

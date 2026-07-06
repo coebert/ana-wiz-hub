@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { ExamSection } from "@/components/ExamSection";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import TCISimulatorDiagram from "@/components/diagrams/TCISimulatorDiagram";
 import CSHTDiagram from "@/components/diagrams/CSHTDiagram";
 import DecrementTimeDiagram from "@/components/diagrams/DecrementTimeDiagram";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { tivaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const objectives = [
   "Describe 3-compartment mammillary PK models and the role of V1, V2, V3, k10 and ke0",

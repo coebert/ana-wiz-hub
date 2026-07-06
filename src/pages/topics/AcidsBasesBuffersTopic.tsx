@@ -1,14 +1,14 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const acidsBasesBuffersFaqs: Array<[string, string]> = [
   ["What defines a buffer's effective range?", "A buffer works best within ±1 pH unit of its pKa, where the Henderson–Hasselbalch ratio of weak acid to conjugate base lies between 10:1 and 1:10. The bicarbonate system (pKa 6.1) effectively buffers blood at pH 7.4 only because it is open — CO₂ is continuously removed by ventilation, regenerating capacity and uncoupling it from the closed-system pKa limit."],
   ["How is base excess calculated and what does it mean?", "Base excess is the amount of strong acid or base required to titrate 1 L of blood back to pH 7.40 at PaCO₂ 5.3 kPa, 37 °C and full oxygenation. Values outside ±2 mmol/L indicate a metabolic disturbance — positive in metabolic alkalosis or compensation for chronic respiratory acidosis, negative in metabolic acidosis or compensation for chronic respiratory alkalosis."],
   ["Why does CO₂ acidify blood despite not being an acid?", "CO₂ reacts with water (carbonic anhydrase in red cells) to form H₂CO₃, which dissociates to H⁺ and HCO₃⁻. A rise in PaCO₂ pushes the equilibrium right, generating H⁺ and lowering pH — the basis of respiratory acidosis. Hyperventilation does the reverse and rapidly raises pH."],
 ];
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { AcidsBasesDiagram } from "@/components/diagrams/AcidsBasesDiagram";
 import { acidsBasesQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";

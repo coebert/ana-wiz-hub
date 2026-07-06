@@ -1,5 +1,5 @@
 import { DiagramFigure, svgImgProps } from "./_shared/DiagramFigure";
-import { Cite } from "@/components/Cite";
+import { Cite } from "@/components/references/Cite";
 
 /**
  * HIT type II pathophysiology — 4-step cascade with animated mediator flow.

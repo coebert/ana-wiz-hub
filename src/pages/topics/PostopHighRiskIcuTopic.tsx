@@ -1,15 +1,15 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { InlineRef } from "@/components/InlineRef";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { InlineRef } from "@/components/references/InlineRef";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { postopHighRiskIcuQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import GoalDirectedTherapyAnimation from "@/components/diagrams/GoalDirectedTherapyAnimation";
 import ComplicationBundlesAnimation from "@/components/diagrams/ComplicationBundlesAnimation";
 import PostopRiskCalculators from "@/components/diagrams/PostopRiskCalculators";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const postopHighRiskIcuFaqs: Array<[string, string]> = [
   ["How are high-risk surgical patients identified preoperatively?", "Combine clinical (frailty, METs <4, P-POSSUM), biochemical (NT-proBNP, troponin) and functional (CPET — anaerobic threshold <11 mL/kg/min, VO₂peak <15) measures; aggregate predicts 30-day mortality >5%."],

@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown, BookMarked, Sparkles } from "lucide-react";
 import brainLogo from "/brain-logo.webp";
-import NeonSplash from "@/components/NeonSplash";
-import { SupportSection } from "@/components/SupportSection";
-import { CommentWall } from "@/components/CommentWall";
-import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/DemoVivaStepper";
+import NeonSplash from "@/components/layout/NeonSplash";
+import { SupportSection } from "@/components/feedback/SupportSection";
+import { CommentWall } from "@/components/feedback/CommentWall";
+import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/viva/DemoVivaStepper";
 import { citationStats } from "@/lib/citationStats";
 
 const nf = new Intl.NumberFormat("en-GB");

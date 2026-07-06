@@ -4,9 +4,9 @@ import { Atom, Heart, FlaskConical, GraduationCap, ArrowRight, ArrowLeft, Stetho
 import brainLogo from "/brain-logo.webp";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
-import { ProgressRing } from "@/components/ProgressRing";
+import { ProgressRing } from "@/components/shared/ProgressRing";
 import { Section, topicsBySection } from "@/data/curriculum";
-import { SupportSection } from "@/components/SupportSection";
+import { SupportSection } from "@/components/feedback/SupportSection";
 
 const sections: {
   title: string;

@@ -1,15 +1,15 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { MACDiagram } from "@/components/diagrams/MACDiagram";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { volatileAgentsQuiz } from "@/data/quizzes";
 import VolatileAgentStructures from "@/components/diagrams/VolatileAgentStructures";
 import SecondGasEffectDiagram from "@/components/diagrams/SecondGasEffectDiagram";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { InlineRef } from "@/components/InlineRef";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const volatileAgentsFaqs: Array<[string, string]> = [
   [

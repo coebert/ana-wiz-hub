@@ -1,16 +1,16 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { Exam } from "@/data/curriculum";
-import { ExamSection } from "@/components/ExamSection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { acutePancreatitisQuestions } from "@/data/quizzes";
 import GlasgowImrieScoreDiagram from "@/components/diagrams/GlasgowImrieScoreDiagram";
 import WaterfallFluidDiagram from "@/components/diagrams/WaterfallFluidDiagram";
 import PancreatitisAutodigestionDiagram from "@/components/diagrams/PancreatitisAutodigestionDiagram";
 import SeverePancreatitisCTDiagram from "@/components/diagrams/SeverePancreatitisCTDiagram";
 import PancreatitisEvolutionTimeline from "@/components/diagrams/PancreatitisEvolutionTimeline";
-import { DiagramSection } from "@/components/DiagramSection";
-import type { WorkedExample } from "@/components/WorkedExamples";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { DiagramSection } from "@/components/topic/DiagramSection";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const acutePancreatitisFaqs: Array<[string, string]> = [
   ["How is severity stratified in acute pancreatitis?", "Use the revised Atlanta classification: mild (no organ failure or complications), moderate (transient organ failure <48 h or local complications), severe (persistent organ failure >48 h); supplement with APACHE II and CRP >150 at 48 h."],

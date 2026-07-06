@@ -1,14 +1,14 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { ExamSection } from "@/components/ExamSection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { pulmonaryHypertensionQuestions } from "@/data/quizzes";
 import RVFailureSpiralDiagram from "@/components/diagrams/RVFailureSpiralDiagram";
 import PHRiskStratificationCalculator from "@/components/diagrams/PHRiskStratificationCalculator";
 import PHPathophysiologyDiagram from "@/components/diagrams/PHPathophysiologyDiagram";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const pulmonaryHypertensionFaqs: Array<[string, string]> = [
   ["What is the haemodynamic definition of pulmonary hypertension?", "Mean PAP >20 mmHg at rest by right heart catheterisation (ESC/ERS 2022); precapillary if PAWP ≤15 and PVR >2 WU, postcapillary if PAWP >15."],

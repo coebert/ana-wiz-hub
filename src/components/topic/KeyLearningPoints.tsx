@@ -1,6 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 import { ReactNode } from "react";
-import { Cite } from "@/components/Cite";
+import { Cite } from "@/components/references/Cite";
 
 /**
  * A key learning point: either a plain string (legacy) or an object with

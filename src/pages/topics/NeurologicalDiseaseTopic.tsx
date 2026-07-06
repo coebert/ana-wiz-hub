@@ -1,10 +1,10 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
-import { ExamMappingBadges } from "@/components/ExamMappingBadges";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { neurologicalDiseaseQuestions } from "@/data/quizzes";
 import { Link } from "react-router-dom";
 import MGNMBASensitivityDiagram from "@/components/diagrams/MGNMBASensitivityDiagram";
@@ -18,7 +18,7 @@ import {
   SCIPathophysDiagram,
 } from "@/components/diagrams/NeuroDiseasePathophysDiagram";
 import { PathophysDrugMapper } from "@/components/diagrams/PathophysDrugMapper";
-import { FRCARelevanceCallout } from "@/components/FRCARelevanceCallout";
+import { FRCARelevanceCallout } from "@/components/topic/FRCARelevanceCallout";
 import {
   mgMechanisms,
   epilepsyMechanisms,

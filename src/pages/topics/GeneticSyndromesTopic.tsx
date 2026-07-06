@@ -1,9 +1,9 @@
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { geneticSyndromesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 const tocItems = [

@@ -1,10 +1,10 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
-import { QuizQuestion } from "@/components/QuizSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { QuizQuestion } from "@/components/quiz/QuizSection";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const nonTechnicalSkillsFaqs: Array<[string, string]> = [
   ["What are the four domains of ANTS (Anaesthetists' Non-Technical Skills)?", "Task management, team working, situation awareness and decision making — each with behavioural markers used for structured debrief and assessment (Fletcher et al., BJA 2003)."],

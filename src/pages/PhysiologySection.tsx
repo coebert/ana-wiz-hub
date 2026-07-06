@@ -1,10 +1,10 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { TopicCard } from "@/components/TopicCard";
-import { SectionReferencesPanel } from "@/components/SectionReferencesPanel";
-import { SectionSummary } from "@/components/SectionSummary";
+import { SectionLayout } from "@/components/layout/SectionLayout";
+import { TopicCard } from "@/components/topic/TopicCard";
+import { SectionReferencesPanel } from "@/components/topic/SectionReferencesPanel";
+import { SectionSummary } from "@/components/topic/SectionSummary";
 import { physiologyTopics } from "@/data/curriculum";
 import { Badge } from "@/components/ui/badge";
-import { ProgressRing } from "@/components/ProgressRing";
+import { ProgressRing } from "@/components/shared/ProgressRing";
 import { useProgress } from "@/contexts/ProgressContext";
 
 const PhysiologySection = () => {

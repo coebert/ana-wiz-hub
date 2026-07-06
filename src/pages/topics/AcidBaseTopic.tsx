@@ -1,7 +1,7 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { acidBaseQuestions } from "@/data/quizzes";
 import StewartAcidBaseDiagram from "@/components/diagrams/StewartAcidBaseDiagram";
 import HendersonHasselbalchDiagram from "@/components/diagrams/HendersonHasselbalchDiagram";
@@ -14,10 +14,10 @@ import ToxicAlcoholSalicylateCalculator from "@/components/diagrams/ToxicAlcohol
 import ToxicAlcoholTimelineDiagram from "@/components/diagrams/ToxicAlcoholTimelineDiagram";
 import HAGMAManagementAlgorithm from "@/components/diagrams/HAGMAManagementAlgorithm";
 import HAGMAWorkupFlowchart from "@/components/diagrams/HAGMAWorkupFlowchart";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 
 const acidBaseFaqs: Array<[string, string]> = [
   ["How do you calculate and interpret the anion gap?", "AG = (Na⁺ + K⁺) − (Cl⁻ + HCO₃⁻); normal 8–12 mmol/L. A raised AG metabolic acidosis points to lactate, ketones, renal failure or toxins (MUDPILES); a normal AG acidosis suggests GI HCO₃⁻ loss or RTA."],

@@ -1,9 +1,9 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { ExamSection } from "@/components/ExamSection";
-import { DiagramSection } from "@/components/DiagramSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import {
   VascularAccessDevicesDiagram,
   VascularAccessCrossSectionDiagram,
@@ -12,7 +12,7 @@ import { VascularAccessTypesDiagram } from "@/components/diagrams/VascularAccess
 import { DwellTimeInfographic } from "@/components/diagrams/DwellTimeInfographic";
 import { vascularAccessDevicesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 
 const VascularAccessDevicesTopicWorkedExamples: WorkedExample[] = [
   {

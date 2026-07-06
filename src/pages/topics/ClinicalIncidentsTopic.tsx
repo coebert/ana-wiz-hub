@@ -1,15 +1,15 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { clinicalIncidentsQuestions } from "@/data/quizzes";
 import MHPathophysiologyDiagram from "@/components/diagrams/MHPathophysiologyDiagram";
 import AnaphylaxisPathophysiologyDiagram from "@/components/diagrams/AnaphylaxisPathophysiologyDiagram";
 import { AnaphylaxisCascadeDiagram } from "@/components/diagrams/AnaphylaxisCascadeDiagram";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { Link } from "react-router-dom";
 
 const clinicalIncidentsFaqs: Array<[string, string]> = [

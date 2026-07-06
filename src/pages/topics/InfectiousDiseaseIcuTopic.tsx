@@ -1,15 +1,15 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { infectiousDiseaseIcuQuestions } from "@/data/quizzes";
 import InfectionSiteMapDiagram from "@/components/diagrams/InfectionSiteMapDiagram";
 import HAIPathogenesisCascadeDiagram from "@/components/diagrams/HAIPathogenesisCascadeDiagram";
 import PCPHRCTDiagram from "@/components/diagrams/PCPHRCTDiagram";
 import PCPManagementFlowchart from "@/components/diagrams/PCPManagementFlowchart";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const infectiousDiseaseIcuFaqs: Array<[string, string]> = [
   ["When should empirical antifungal therapy be considered in ICU?", "Persistent sepsis on broad antibiotics with multifocal Candida colonisation, prolonged ICU stay, TPN, recent abdominal surgery or immunosuppression; echinocandin (caspofungin or anidulafungin) is first-line (IDSA 2016)."],

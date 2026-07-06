@@ -1,14 +1,14 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { emergencySurgeryQuestions } from "@/data/quizzes";
 import { NCEPODClassificationDiagram } from "@/components/diagrams/NCEPODClassificationDiagram";
 import { EmergencyRSIDiagram } from "@/components/diagrams/EmergencyRSIDiagram";
 import { EmergencyLaparotomyBundleDiagram } from "@/components/diagrams/EmergencyLaparotomyBundleDiagram";
-import { EmergencySurgeryGlossaryDrawer } from "@/components/EmergencySurgeryGlossaryDrawer";
+import { EmergencySurgeryGlossaryDrawer } from "@/components/clinical/EmergencySurgeryGlossaryDrawer";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const emergencySurgeryFaqs: Array<[string, string]> = [
   [

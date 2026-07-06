@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Link, useSearchParams } from "react-router-dom";
 import { ArrowLeft, Mic, MicOff, Loader2, AlertCircle, ShieldAlert, RefreshCw, HelpCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { allTopics, type ExamTag } from "@/data/curriculum";
 
 type Exam = Extract<ExamTag, "primary" | "final" | "fficm">;

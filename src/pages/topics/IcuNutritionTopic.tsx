@@ -1,14 +1,14 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { icuNutritionQuestions } from "@/data/quizzes";
 import RefeedingRiskCalculatorDiagram from "@/components/diagrams/RefeedingRiskCalculatorDiagram";
 import RefeedingSyndromeAnimation from "@/components/diagrams/RefeedingSyndromeAnimation";
 import EnergyProteinTargetDiagram from "@/components/diagrams/EnergyProteinTargetDiagram";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const icuNutritionFaqs: Array<[string, string]> = [
   ["When should enteral nutrition be started in the critically ill?", "Within 24–48 h of ICU admission once haemodynamically stable, even at trophic rates; early EN preserves gut mucosa and reduces infectious complications (ESPEN 2019, ASPEN/SCCM 2016)."],

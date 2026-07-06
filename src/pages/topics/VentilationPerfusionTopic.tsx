@@ -1,9 +1,9 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { ExamSection } from "@/components/ExamSection";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ventilationPerfusionQuestions } from "@/data/quizzes";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";

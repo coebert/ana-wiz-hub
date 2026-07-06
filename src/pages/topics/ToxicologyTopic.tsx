@@ -1,13 +1,13 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { toxicologyQuestions } from "@/data/quizzes";
 import ParacetamolNomogramDiagram from "@/components/diagrams/ParacetamolNomogramDiagram";
 import ToxidromeComparatorDiagram from "@/components/diagrams/ToxidromeComparatorDiagram";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const toxicologyFaqs: Array<[string, string]> = [
   ["When is haemodialysis indicated in poisoning?", "For low-Vd, low-protein-bound, water-soluble toxins: salicylates (≥7.2 mmol/L or AKI), methanol/ethylene glycol, lithium (>4 mmol/L acute), valproate (severe), metformin-associated lactic acidosis, and theophylline."],

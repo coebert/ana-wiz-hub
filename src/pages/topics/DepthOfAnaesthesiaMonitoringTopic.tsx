@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { ExamSection } from "@/components/ExamSection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import EEGTraceDiagram from "@/components/diagrams/EEGTraceDiagram";
 import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
 import { eegTraceContent, dsaSpectrogramContent, bisTrendContent } from "@/components/diagrams/ecgExpandedContent";
 import DSASpectrogramDiagram from "@/components/diagrams/DSASpectrogramDiagram";
 import BISTrendDiagram from "@/components/diagrams/BISTrendDiagram";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { depthOfAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const depthOfAnaesthesiaMonitoringFaqs: Array<[string, string]> = [
   [

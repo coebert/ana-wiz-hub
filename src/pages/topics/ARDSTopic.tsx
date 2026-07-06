@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { ardsQuestions } from "@/data/quizzes";
 import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
 import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
@@ -10,11 +10,11 @@ import ARDSVentModeComparisonDiagram from "@/components/diagrams/ARDSVentModeCom
 import EOLIAMurrayCalculator from "@/components/diagrams/EOLIAMurrayCalculator";
 import PneumoniaSteroidDecisionTree from "@/components/diagrams/PneumoniaSteroidDecisionTree";
 import ARDSPathophysiologyCascadeDiagram from "@/components/diagrams/ARDSPathophysiologyCascadeDiagram";
-import { DiagramSection } from "@/components/DiagramSection";
-import { ExamSection } from "@/components/ExamSection";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import { DiagramSection } from "@/components/topic/DiagramSection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const ardsFaqs: Array<[string, string]> = [
   [

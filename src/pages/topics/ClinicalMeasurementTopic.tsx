@@ -1,12 +1,12 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { clinicalMeasurementQuiz } from "@/data/quizzes";
 import ClinicalMeasurementDiagram from "@/components/diagrams/ClinicalMeasurementDiagram";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { InlineRef } from "@/components/InlineRef";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const clinicalMeasurementFaqs: Array<[string, string]> = [
   [

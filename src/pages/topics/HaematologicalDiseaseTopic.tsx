@@ -1,12 +1,12 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
-import { ExamMappingBadges } from "@/components/ExamMappingBadges";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { haematologicalDiseaseQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 
 const objectives = [
   "Detect and treat preoperative anaemia (including iron-deficiency anaemia) using patient blood management principles.",

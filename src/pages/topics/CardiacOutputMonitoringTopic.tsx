@@ -1,8 +1,8 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { Exam } from "@/data/curriculum";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { CardiacOutputMonitorDiagram } from "@/components/diagrams/CardiacOutputMonitorDiagram";
 import PiCCODiagram from "@/components/diagrams/PiCCODiagram";
 import PACDiagram from "@/components/diagrams/PACDiagram";
@@ -14,7 +14,7 @@ import OesophagealDopplerDiagram from "@/components/diagrams/OesophagealDopplerD
 import ThermodilutionDiagram from "@/components/diagrams/ThermodilutionDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import COPitfallsChecklist from "@/components/diagrams/COPitfallsChecklist";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const cardiacOutputMonitoringFaqs: Array<[string, string]> = [
   ["What is the principle behind transpulmonary thermodilution (PiCCO)?", "Cold saline is injected centrally and the temperature change detected at a femoral arterial thermistor; the Stewart–Hamilton equation gives CO, and the curve also yields global end-diastolic volume and extravascular lung water."],

@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import FourTsScorePanel, { type FourTsBand } from "@/components/FourTsScorePanel";
+import FourTsScorePanel, { type FourTsBand } from "@/components/clinical/FourTsScorePanel";
 import HITTreatmentFlowchart from "@/components/diagrams/HITTreatmentFlowchart";
 
 /**

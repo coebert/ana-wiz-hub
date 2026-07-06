@@ -1,10 +1,10 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { Link } from "react-router-dom";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { NMJDiagram } from "@/components/diagrams/NMJDiagram";
 import NeuromuscularMonitoringDiagram from "@/components/diagrams/NeuromuscularMonitoringDiagram";
 import { neuromuscularQuiz } from "@/data/quizzes";

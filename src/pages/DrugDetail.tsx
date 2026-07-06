@@ -6,7 +6,7 @@ import { AlertTriangle, ArrowLeft, Pill, ChevronDown, ChevronUp } from "lucide-r
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta } from "@/data/curriculum";
 import { classifyImpact as classifyImpactExternal } from "@/lib/drug-impact-classifier";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 interface InfusionStandard {
   amount_mg?: number;

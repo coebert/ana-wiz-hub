@@ -1,15 +1,15 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { Exam } from "@/data/curriculum";
-import { ExamSection } from "@/components/ExamSection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { bronchospasticFailureQuestions } from "@/data/quizzes";
 import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinflationDiagram";
 import SedacondaDiagram from "@/components/diagrams/SedacondaDiagram";
-import type { WorkedExample } from "@/components/WorkedExamples";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { InlineRef } from "@/components/InlineRef";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const bronchospasticFailureFaqs: Array<[string, string]> = [
   ["How is severe acute asthma treated in ICU?", "High-flow O₂, back-to-back salbutamol/ipratropium nebs, IV hydrocortisone 100 mg, IV magnesium 2 g over 20 min; escalate to IV salbutamol or aminophylline; intubate for exhaustion, silent chest or PaCO₂ rising despite treatment (BTS 2019)."],

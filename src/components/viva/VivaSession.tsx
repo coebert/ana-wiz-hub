@@ -4,9 +4,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import type { ExamTag } from "@/data/curriculum";
-import VivaRubric from "@/components/VivaRubric";
-import MicHelpPanel from "@/components/MicHelpPanel";
-import MicConfidenceMeter, { type ConfidenceSegment } from "@/components/MicConfidenceMeter";
+import VivaRubric from "@/components/viva/VivaRubric";
+import MicHelpPanel from "@/components/viva/MicHelpPanel";
+import MicConfidenceMeter, { type ConfidenceSegment } from "@/components/viva/MicConfidenceMeter";
 
 type Exam = Extract<ExamTag, "primary" | "final" | "fficm">;
 

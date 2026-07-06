@@ -1,7 +1,7 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { arrhythmiasEcgIcuQuestions } from "@/data/quizzes";
 import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDiagram";
 import HeartBlockDiagram from "@/components/diagrams/HeartBlockDiagram";
@@ -22,9 +22,9 @@ import {
   twelveLeadContent,
   wellensContent,
 } from "@/components/diagrams/ecgExpandedContent";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const arrhythmiasEcgIcuFaqs: Array<[string, string]> = [
   ["How is new-onset AF in critical illness managed?", "Treat underlying sepsis/electrolytes; rate control with β-blocker (esmolol/metoprolol) or amiodarone if heart failure; DC cardioversion if haemodynamically unstable; anticoagulate per CHA₂DS₂-VASc balanced against bleeding risk."],

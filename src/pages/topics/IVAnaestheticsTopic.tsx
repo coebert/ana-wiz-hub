@@ -1,9 +1,9 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { InlineRef } from "@/components/InlineRef";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
+import { InlineRef } from "@/components/references/InlineRef";
 import { ivAnaestheticsQuiz } from "@/data/quizzes";
 import IVAnaestheticStructures from "@/components/diagrams/IVAnaestheticStructures";
 import { PropofolTCISimulatorDiagram } from "@/components/diagrams/PropofolTCISimulatorDiagram";
@@ -16,7 +16,7 @@ import { MidazolamPharmacologyDiagram } from "@/components/diagrams/MidazolamPha
 import { BenzodiazepineComparisonDiagram } from "@/components/diagrams/BenzodiazepineComparisonDiagram";
 import { FlumazenilDiagram } from "@/components/diagrams/FlumazenilDiagram";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const ivAnaestheticsFaqs: Array<[string, string]> = [
   [

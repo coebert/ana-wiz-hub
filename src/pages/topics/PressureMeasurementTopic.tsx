@@ -1,9 +1,9 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { DiagramSection } from "@/components/DiagramSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import FinapresDiagram from "@/components/diagrams/FinapresDiagram";
 import NIBPOscillometricDiagram from "@/components/diagrams/NIBPOscillometricDiagram";
 import AuscultatoryNIBPDiagram from "@/components/diagrams/AuscultatoryNIBPDiagram";
@@ -12,7 +12,7 @@ import ManometerDiagram from "@/components/diagrams/ManometerDiagram";
 import DampingCurvesDiagram from "@/components/diagrams/DampingCurvesDiagram";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const pressureMeasurementFaqs: Array<[string, string]> = [
   [

@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import {
   Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger,
 } from "@/components/ui/sheet";
-import { SectionLayout } from "@/components/SectionLayout";
+import { SectionLayout } from "@/components/layout/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 
 /**

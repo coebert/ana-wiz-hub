@@ -1,22 +1,22 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
-import { DiagramSection } from "@/components/DiagramSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { CrossReferenceCallout } from "@/components/topic/CrossReferenceCallout";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
 import { CTScannerDiagram } from "@/components/diagrams/CTScannerDiagram";
 import ElectromagneticSpectrumDiagram from "@/components/diagrams/ElectromagneticSpectrumDiagram";
 import RadiationDoseUnitsDiagram from "@/components/diagrams/RadiationDoseUnitsDiagram";
 import { SinogramFBPWalkthrough } from "@/components/diagrams/SinogramFBPWalkthrough";
 import { CTDoseExplorer } from "@/components/diagrams/CTDoseExplorer";
-import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
-import { RadiationDoseComparisonTable } from "@/components/RadiationDoseComparisonTable";
-import { Cite, ReferencesList, type Reference } from "@/components/References";
+import { RadiationSafetyChecklist } from "@/components/clinical/RadiationSafetyChecklist";
+import { RadiationDoseComparisonTable } from "@/components/clinical/RadiationDoseComparisonTable";
+import { Cite, ReferencesList, type Reference } from "@/components/references/References";
 import { xrayRadiationSafetyQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const xrayRadiationSafetyFaqs: Array<[string, string]> = [
   [

@@ -1,7 +1,7 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { electricalSafetyQuiz } from "@/data/quizzes";
 import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagram";
 import { DefibrillatorCapacitorDiagram } from "@/components/diagrams/DefibrillatorCapacitorDiagram";
@@ -10,7 +10,7 @@ import { RCDDiagram } from "@/components/diagrams/RCDDiagram";
 import { MicroshockDiagram } from "@/components/diagrams/MicroshockDiagram";
 import { DiathermyDiagram } from "@/components/diagrams/DiathermyDiagram";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const electricalSafetyFaqs: Array<[string, string]> = [
   [

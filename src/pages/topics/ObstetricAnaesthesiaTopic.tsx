@@ -1,18 +1,18 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { obstetricAnaesthesiaQuestions } from "@/data/quizzes";
 import PlacentalDrugTransferDiagram from "@/components/diagrams/PlacentalDrugTransferDiagram";
 import PregnancyPhysiologyDiagram from "@/components/diagrams/PregnancyPhysiologyDiagram";
 import PostpartumLegWeaknessDecisionTree from "@/components/diagrams/PostpartumLegWeaknessDecisionTree";
 import { Cat1RSIAnimation } from "@/components/diagrams/Cat1RSIAnimation";
-import { DiagramSection } from "@/components/DiagramSection";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { InlineRef } from "@/components/InlineRef";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import {
   Accordion,
   AccordionContent,

@@ -1,10 +1,10 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
-import { DiagramSection } from "@/components/DiagramSection";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { DiagramSection } from "@/components/topic/DiagramSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ophthalmicAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import {
@@ -13,7 +13,7 @@ import {
   RetrobulbarBlockIllustration,
   TopicalIntracameralIllustration,
 } from "@/components/diagrams/EyeBlockIllustrations";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import {
   Accordion,
   AccordionContent,

@@ -1,13 +1,13 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const upperLimbAnatomyFaqs: Array<[string, string]> = [
   ["Where is the radial artery best palpated for arterial line insertion and why?", "At the volar wrist between the tendon of flexor carpi radialis and the distal radius, where it lies most superficially with the bony radius supporting it for compression. Always confirm collateral palmar arch flow (modified Allen's test or Doppler of the ulnar artery) before cannulation."],
   ["Which nerve is most at risk in supracondylar humeral fracture?", "The median nerve, often the anterior interosseous branch, is most commonly injured — producing weakness of the thumb–index \"OK\" sign (FPL and FDP-2). The brachial artery is also at risk, with compartment syndrome and Volkmann's contracture if missed. Radial and ulnar nerves are less commonly affected."],
   ["How are the cords of the brachial plexus arranged at the axilla relative to the artery?", "At the level of pectoralis minor: lateral cord is lateral to the axillary artery, medial cord medial, posterior cord posterior. This guides ultrasound-guided axillary block — the median nerve typically lies superior/lateral to the artery, ulnar inferomedial, radial deep/posterior."],
 ];
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { upperLimbAnatomyQuestions } from "@/data/quizzes";
 import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
 import BrachialPlexusUltrasoundDiagram from "@/components/diagrams/BrachialPlexusUltrasoundDiagram";

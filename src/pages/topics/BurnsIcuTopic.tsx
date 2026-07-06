@@ -1,8 +1,8 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { burnsIcuQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import BurnResuscitationDiagram from "@/components/diagrams/BurnResuscitationDiagram";
@@ -10,7 +10,7 @@ import BurnShockPathophysiologyDiagram from "@/components/diagrams/BurnShockPath
 import InhalationInjuryFlowchart from "@/components/diagrams/InhalationInjuryFlowchart";
 import ParklandCalculator from "@/components/diagrams/ParklandCalculator";
 import BurnsIcuCaseStepper from "@/components/diagrams/BurnsIcuCaseStepper";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const burnsIcuFaqs: Array<[string, string]> = [
   ["How is fluid resuscitation calculated for major burns?", "Modified Parkland: 3–4 mL/kg/%TBSA Hartmann's in the first 24 h, half in the first 8 h from time of burn; titrate to urine output 0.5 mL/kg/h (adults), 1 mL/kg/h (children) — avoid fluid creep."],

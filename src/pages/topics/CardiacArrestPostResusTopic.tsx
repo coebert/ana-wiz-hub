@@ -1,10 +1,10 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { cardiacArrestPostResusQuestions } from "@/data/quizzes";
-import TopicTableOfContents from "@/components/TopicTableOfContents";
-import { ExamSection } from "@/components/ExamSection";
+import TopicTableOfContents from "@/components/layout/TopicTableOfContents";
+import { ExamSection } from "@/components/exam/ExamSection";
 import TtmTargetExplorerDiagram from "@/components/diagrams/TtmTargetExplorerDiagram";
 import EcprDecisionTreeDiagram from "@/components/diagrams/EcprDecisionTreeDiagram";
 import PostCardiacArrestProgDiagram from "@/components/diagrams/PostCardiacArrestProgDiagram";
@@ -17,7 +17,7 @@ import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodia
 import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
 import { eegTraceContent, postArrestProgContent } from "@/components/diagrams/ecgExpandedContent";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const arrestFaqs: Array<[string, string]> = [

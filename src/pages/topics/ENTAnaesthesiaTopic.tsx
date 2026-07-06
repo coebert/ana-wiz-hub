@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { entAnaesthesiaQuestions } from "@/data/quizzes";
 import LaryngectomyAirwayHandoverDiagram from "@/components/diagrams/LaryngectomyAirwayHandoverDiagram";
 import LeFortFractureDiagram from "@/components/diagrams/LeFortFractureDiagram";
@@ -10,7 +10,7 @@ import LaserAirwayDiagram from "@/components/diagrams/LaserAirwayDiagram";
 import JetVentilationDiagram from "@/components/diagrams/JetVentilationDiagram";
 import JetVentilationCycleAnimation from "@/components/diagrams/JetVentilationCycleAnimation";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import {
   Accordion,
   AccordionContent,
