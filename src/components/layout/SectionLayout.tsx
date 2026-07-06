@@ -7,6 +7,8 @@ import { topicsBySection, type Section } from "@/data/curriculum";
 import { TopicReferencesButton } from "@/components/topic/TopicReferencesButton";
 import { TopicPager } from "@/components/topic/TopicPager";
 import { TopicPagerMini } from "@/components/topic/TopicPagerMini";
+import { ReadingProgressBar } from "@/components/layout/ReadingProgressBar";
+import { StickyTopicTitle } from "@/components/layout/StickyTopicTitle";
 
 interface SectionLayoutProps {
   title: string;
@@ -53,7 +55,10 @@ export const SectionLayout = ({
   // stays comfortable to scan; section listings retain the wider 4xl column.
   const measureClass = topicForPath ? "max-w-3xl" : "max-w-4xl";
   return (
-    <div className={`container mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 ${measureClass}`}>
+    <>
+      {topicForPath && <ReadingProgressBar />}
+      {topicForPath && <StickyTopicTitle title={title} />}
+      <div className={`container mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 ${measureClass}`}>
       <PageMeta title={title} subtitle={subtitle} metaDescription={metaDescription} />
       <nav
         aria-label="Breadcrumb"
@@ -125,7 +130,8 @@ export const SectionLayout = ({
       {topicForPath && (
         <TopicPager section={topicForPath.section} topic={topicForPath.topic} />
       )}
-    </div>
+      </div>
+    </>
   );
 };
 
