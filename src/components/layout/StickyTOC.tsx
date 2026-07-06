@@ -76,25 +76,71 @@ export const StickyTOC = ({ items, offset = 96, className }: StickyTOCProps) => 
           className
         )}
       >
-        <ul className="toc-chip-strip no-scrollbar">
-          {items.map((item) => (
-            <li key={item.id} className="shrink-0">
-              <a
-                href={`#${item.id}`}
-                onClick={(e) => handleClick(e, item.id)}
-                className={cn(
-                  "inline-block px-3 py-1.5 rounded-full text-xs font-medium border whitespace-nowrap transition-colors",
-                  activeId === item.id
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-card text-muted-foreground border-border hover:text-foreground hover:border-foreground/30"
-                )}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        {collapsible ? (
+          <>
+            <button
+              type="button"
+              onClick={() => setMobileOpen((o) => !o)}
+              aria-expanded={mobileOpen}
+              aria-controls="sticky-toc-list"
+              className="w-full flex items-center justify-between gap-2 px-2 py-1.5 rounded-md text-xs font-medium text-foreground hover:bg-muted/50 transition-colors"
+            >
+              <span className="inline-flex items-center gap-1.5 min-w-0">
+                <ListOrdered className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden />
+                <span className="text-muted-foreground shrink-0">On this page ({items.length}):</span>
+                <span className="truncate text-foreground">{activeItem?.label}</span>
+              </span>
+              <ChevronDown
+                className={cn("h-4 w-4 shrink-0 text-muted-foreground transition-transform", mobileOpen && "rotate-180")}
+                aria-hidden
+              />
+            </button>
+            {mobileOpen && (
+              <ul id="sticky-toc-list" className="mt-2 max-h-[50vh] overflow-y-auto flex flex-wrap gap-1.5 pb-1">
+                {items.map((item) => (
+                  <li key={item.id}>
+                    <a
+                      href={`#${item.id}`}
+                      onClick={(e) => {
+                        handleClick(e, item.id);
+                        setMobileOpen(false);
+                      }}
+                      className={cn(
+                        "inline-block px-3 py-1.5 rounded-full text-xs font-medium border whitespace-nowrap transition-colors",
+                        activeId === item.id
+                          ? "bg-primary text-primary-foreground border-primary"
+                          : "bg-card text-muted-foreground border-border hover:text-foreground hover:border-foreground/30"
+                      )}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </>
+        ) : (
+          <ul className="toc-chip-strip no-scrollbar">
+            {items.map((item) => (
+              <li key={item.id} className="shrink-0">
+                <a
+                  href={`#${item.id}`}
+                  onClick={(e) => handleClick(e, item.id)}
+                  className={cn(
+                    "inline-block px-3 py-1.5 rounded-full text-xs font-medium border whitespace-nowrap transition-colors",
+                    activeId === item.id
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-card text-muted-foreground border-border hover:text-foreground hover:border-foreground/30"
+                  )}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </nav>
+
 
       {/* Wide desktop (≥1536px): floating left rail. Position guarantees a
           gap from the centered 4xl (56rem) content column. */}
