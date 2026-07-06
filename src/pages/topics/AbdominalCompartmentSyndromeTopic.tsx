@@ -1,9 +1,9 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { Exam } from "@/data/curriculum";
-import { ExamSection } from "@/components/ExamSection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { abdominalCompartmentSyndromeQuestions } from "@/data/quizzes";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 
 const abdominalCompartmentSyndromeFaqs: Array<[string, string]> = [
   ["How is intra-abdominal pressure measured and what defines ACS?", "Bladder pressure with 25 mL saline at end-expiration, supine, transduced at the mid-axillary line; intra-abdominal hypertension ≥12 mmHg, ACS = sustained IAP >20 mmHg with new organ dysfunction (WSACS 2013)."],

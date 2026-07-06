@@ -1,17 +1,17 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { vasoactiveAgentsQuiz } from "@/data/quizzes";
 import VasoactiveReceptorDiagram from "@/components/diagrams/VasoactiveReceptorDiagram";
 import VasoactiveStructures from "@/components/diagrams/VasoactiveStructures";
 import InotropeSignallingDiagram from "@/components/diagrams/InotropeSignallingDiagram";
-import { StickyTOC } from "@/components/StickyTOC";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { StickyTOC } from "@/components/layout/StickyTOC";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { InlineRef } from "@/components/InlineRef";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const vasoactiveAgentsFaqs: Array<[string, string]> = [
   [

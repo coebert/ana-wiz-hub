@@ -1,13 +1,13 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { Exam } from "@/data/curriculum";
-import { ExamSection } from "@/components/ExamSection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { icuSedationDeliriumQuestions } from "@/data/quizzes";
 import { ICUSedationComparisonDiagram } from "@/components/diagrams/ICUSedationComparisonDiagram";
 import { CAMICUFlowchartDiagram } from "@/components/diagrams/CAMICUFlowchartDiagram";
-import type { WorkedExample } from "@/components/WorkedExamples";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { Cite } from "@/components/Cite";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { Cite } from "@/components/references/Cite";
 
 const icuSedationDeliriumFaqs: Array<[string, string]> = [
   ["What does the ABCDEF bundle entail?", "Assess/treat pain, Both spontaneous awakening and breathing trials, Choice of sedation, Delirium monitoring, Early mobility, Family engagement; bundle adherence reduces ICU mortality and delirium (Pun et al., Crit Care Med 2019)."],

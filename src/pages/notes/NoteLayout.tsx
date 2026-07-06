@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ChevronLeft, Atom, HeartPulse, FlaskConical, Stethoscope, Activity, ClipboardList, ArrowRight } from "lucide-react";
-import { Header } from "@/components/Header";
+import { Header } from "@/components/layout/Header";
 import { supabase } from "@/integrations/supabase/client";
 
 /**

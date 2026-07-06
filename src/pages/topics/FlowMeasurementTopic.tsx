@@ -1,9 +1,9 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { CrossReferenceCallout } from "@/components/topic/CrossReferenceCallout";
 import { FlowDiagram } from "@/components/diagrams/FlowDiagram";
 import { RotameterDiagram } from "@/components/diagrams/RotameterDiagram";
 import PneumotachographDiagram from "@/components/diagrams/PneumotachographDiagram";
@@ -12,7 +12,7 @@ import BernoulliVenturiDiagram from "@/components/diagrams/BernoulliVenturiDiagr
 import CoandaEffectDiagram from "@/components/diagrams/CoandaEffectDiagram";
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const flowMeasurementFaqs: Array<[string, string]> = [
   [

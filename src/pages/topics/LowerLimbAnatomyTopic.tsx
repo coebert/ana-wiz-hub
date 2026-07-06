@@ -1,14 +1,14 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const lowerLimbAnatomyFaqs: Array<[string, string]> = [
   ["At the inguinal level, what is the order of structures from lateral to medial?", "NAVeL: femoral Nerve — femoral Artery — femoral Vein — empty space — Lymphatics (within femoral canal). The artery lies at the mid-inguinal point (midway between ASIS and pubic symphysis); the nerve sits ~1 cm lateral, separated from the artery by the iliopectineal arch — relevant for femoral nerve block needle placement."],
   ["What does a femoral nerve block cover, and what does it miss?", "It covers the anterior thigh (skin and quadriceps), medial leg (saphenous nerve below the knee) and periosteum of the femur — sufficient for analgesia after femoral neck or shaft fracture and for knee surgery in combination with a sciatic block. It misses the posterior thigh (sciatic), hip joint (obturator + sciatic + femoral all contribute), and lateral thigh (lateral cutaneous nerve of thigh)."],
   ["Where does the sciatic nerve divide and why does that matter for popliteal block?", "The sciatic typically divides into tibial and common peroneal branches in the popliteal fossa, ~7 cm proximal to the popliteal crease. Ultrasound-guided popliteal block targets the nerve just proximal to the bifurcation so one injection captures both branches — block below the bifurcation may spare one division and leave the lateral foot (peroneal) or sole (tibial) unblocked."],
 ];
-import { WorkedExample } from "@/components/WorkedExamples";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { lowerLimbAnatomyQuestions } from "@/data/quizzes";
 import LumbosacralPlexusDiagram from "@/components/diagrams/LumbosacralPlexusDiagram";
 import LowerLimbBranchesDiagram from "@/components/diagrams/LowerLimbBranchesDiagram";

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { ExamSection } from "@/components/ExamSection";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { antimicrobialsQuiz } from "@/data/quizzes";
 import AntibioticTargetsDiagram from "@/components/diagrams/AntibioticTargetsDiagram";
 import AntifungalTargetsDiagram from "@/components/diagrams/AntifungalTargetsDiagram";
@@ -14,7 +14,7 @@ import BetaLactamaseClassificationTable from "@/components/diagrams/BetaLactamas
 import AntibioticPKPDPrimer from "@/components/diagrams/AntibioticPKPDPrimer";
 import EmpiricalSepsisChooser from "@/components/diagrams/EmpiricalSepsisChooser";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const antimicrobialsPharmFaqs: Array<[string, string]> = [
   [

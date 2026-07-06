@@ -1,8 +1,8 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import OpioidReceptorDiagram from "@/components/diagrams/OpioidReceptorDiagram";
 import { OpioidReceptorSignalingDiagram } from "@/components/diagrams/OpioidReceptorSignalingDiagram";
 import { OpioidSignallingCascadeAnimation } from "@/components/diagrams/OpioidSignallingCascadeAnimation";
@@ -13,10 +13,10 @@ import { NaloxoneDiagram } from "@/components/diagrams/NaloxoneDiagram";
 import { RemifentanilPKDiagram } from "@/components/diagrams/RemifentanilPKDiagram";
 import CSHTDiagram from "@/components/diagrams/CSHTDiagram";
 import OpioidStructures from "@/components/diagrams/OpioidStructures";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { opioidsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const opioidsFaqs: Array<[string, string]> = [
   [

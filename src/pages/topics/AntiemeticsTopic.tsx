@@ -1,14 +1,14 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { antiemeticsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { DiagramSection } from "@/components/DiagramSection";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
-import { InlineRef } from "@/components/InlineRef";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const antiemeticsFaqs: Array<[string, string]> = [
   [

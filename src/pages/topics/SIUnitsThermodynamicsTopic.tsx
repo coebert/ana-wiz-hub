@@ -1,14 +1,14 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { InlineRef } from "@/components/InlineRef";
-import { ExamSection } from "@/components/ExamSection";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { InlineRef } from "@/components/references/InlineRef";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { siUnitsThermodynamicsQuiz } from "@/data/quizzes";
 import SIUnitsThermodynamicsDiagram from "@/components/diagrams/SIUnitsThermodynamicsDiagram";
 import LatentHeatDiagram from "@/components/diagrams/LatentHeatDiagram";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const siUnitsThermodynamicsFaqs: Array<[string, string]> = [
   [

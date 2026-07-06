@@ -1,5 +1,5 @@
-import { TopicCard } from "@/components/TopicCard";
-import { SectionReferencesPanel } from "@/components/SectionReferencesPanel";
+import { TopicCard } from "@/components/topic/TopicCard";
+import { SectionReferencesPanel } from "@/components/topic/SectionReferencesPanel";
 import { useReferenceCounts } from "@/hooks/useReferenceCounts";
 import { Section, Topic, sectionMeta } from "@/data/curriculum";
 

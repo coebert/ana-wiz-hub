@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { FlaskConical } from "lucide-react";
-import { Cite } from "@/components/Cite";
+import { Cite } from "@/components/references/Cite";
 
 export interface WorkedExample {
   /** Short scenario or calculation title */

@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { Exam } from "@/data/curriculum";
-import { ExamSection } from "@/components/ExamSection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { sepsisQuestions } from "@/data/quizzes";
 import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagram";
 import SepsisBiomarkerKineticsDiagram from "@/components/diagrams/SepsisBiomarkerKineticsDiagram";
@@ -11,9 +11,9 @@ import SepsisScoreCalculator from "@/components/diagrams/SepsisScoreCalculator";
 import LactateCRTTool from "@/components/diagrams/LactateCRTTool";
 import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
 import AlbuminFluidShiftDiagram from "@/components/diagrams/AlbuminFluidShiftDiagram";
-import type { WorkedExample } from "@/components/WorkedExamples";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 
 const sepsisTocItems = [
   { id: "sepsis-3", label: "Sepsis-3 definitions & scores", group: "Core" },

@@ -1,13 +1,13 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { anticoagulantsQuiz } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
 import BridgingAnticoagulationPathway from "@/components/diagrams/BridgingAnticoagulationPathway";
-import { DiagramSection } from "@/components/DiagramSection";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const anticoagulantsFaqs: Array<[string, string]> = [
   [

@@ -9,7 +9,7 @@ import {
   DialogDescription,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import VivaSession from "@/components/VivaSession";
+import VivaSession from "@/components/viva/VivaSession";
 import type { ExamTag } from "@/data/curriculum";
 
 type Exam = Extract<ExamTag, "primary" | "final" | "fficm">;

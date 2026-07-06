@@ -1,14 +1,14 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { perioperativeFluidsQuestions } from "@/data/quizzes";
-import { DiagramSection } from "@/components/DiagramSection";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import GlycocalyxDiagram from "@/components/diagrams/GlycocalyxDiagram";
 import { GlycocalyxSheddingCascadeDiagram } from "@/components/diagrams/GlycocalyxSheddingCascadeDiagram";
 import { Exam } from "@/data/curriculum";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 
 const tocItems = [
   { id: "section-fluid-compartments", label: "Fluid Compartments", group: "Core" },

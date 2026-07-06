@@ -1,12 +1,12 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { AtomicStructureDiagram } from "@/components/diagrams/AtomicStructureDiagram";
 import { PeriodicTableAnaestheticDiagram } from "@/components/diagrams/PeriodicTableAnaestheticDiagram";
 import { atomicStructureQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { TopicFaqs } from "@/components/TopicFaqs";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const atomicStructureFaqs: Array<[string, string]> = [
   [

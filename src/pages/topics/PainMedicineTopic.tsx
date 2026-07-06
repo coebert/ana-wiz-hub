@@ -1,19 +1,19 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
 
-import { WorkedExample } from "@/components/WorkedExamples";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { painMedicineQuestions } from "@/data/quizzes";
 import { DorsalHornSynapseDiagram } from "@/components/diagrams/DorsalHornSynapseDiagram";
-import { DiagramSection } from "@/components/DiagramSection";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import { PainMechanismsDiagram } from "@/components/diagrams/PainMechanismsDiagram";
 import OpioidConversionCalculator from "@/components/diagrams/OpioidConversionCalculator";
 import PcaEpiduralCalculator from "@/components/diagrams/PcaEpiduralCalculator";
 import { SpinalCordStimulatorDiagram } from "@/components/diagrams/SpinalCordStimulatorDiagram";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 
 const objectives = [
   "Distinguish nociceptive, neuropathic and nociplastic pain mechanisms and tailor pharmacotherapy accordingly",

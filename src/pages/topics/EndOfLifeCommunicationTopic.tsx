@@ -1,11 +1,11 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
-import { QuizQuestion } from "@/components/QuizSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { QuizQuestion } from "@/components/quiz/QuizSection";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { InlineRef } from "@/components/InlineRef";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const endOfLifeCommunicationFaqs: Array<[string, string]> = [
   ["What is the SPIKES framework for breaking bad news?", "Setting up, Perception ('what do you understand?'), Invitation (how much do they want to know), Knowledge (information in chunks, warning shot), Empathy (acknowledge emotion), Strategy and Summary."],

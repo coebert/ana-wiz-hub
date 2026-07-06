@@ -1,9 +1,9 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import {
   anaestheticMachineQuiz,
   breathingCircuitsQuiz,
@@ -18,7 +18,7 @@ import ManleyMVDDiagram from "@/components/diagrams/ManleyMVDDiagram";
 import RitchieWhistleDiagram from "@/components/diagrams/RitchieWhistleDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 import LaryngoscopeBladesDiagram from "@/components/diagrams/LaryngoscopeBladesDiagram";
-import InlineRef from "@/components/InlineRef";
+import InlineRef from "@/components/references/InlineRef";
 
 const equipmentMonitoringFaqs: Array<[string, string]> = [
   [
@@ -70,7 +70,7 @@ import servoImg from "@/assets/ventilators/maquet-servo-u.jpg";
 import primaImg from "@/assets/ventilators/penlon-prima-sp.jpg";
 import aisysImg from "@/assets/ventilators/ge-aisys-cs2.jpg";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 /* ───────────────── Data tables ───────────────── */
 

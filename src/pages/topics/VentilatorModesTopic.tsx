@@ -1,9 +1,9 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { Exam } from "@/data/curriculum";
-import { ExamSection } from "@/components/ExamSection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { ventilatorModesQuiz } from "@/data/quizzes";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import VentilatorModesDiagram from "@/components/diagrams/VentilatorModesDiagram";
 
 const ventilatorModesFaqs: Array<[string, string]> = [

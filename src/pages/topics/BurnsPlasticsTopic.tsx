@@ -1,13 +1,13 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { burnsPlasticsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { BurnDepthDiagram } from "@/components/diagrams/BurnDepthDiagram";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { InlineRef } from "@/components/InlineRef";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 import {
   Accordion,
   AccordionContent,

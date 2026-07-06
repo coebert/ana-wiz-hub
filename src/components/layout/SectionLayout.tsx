@@ -2,10 +2,10 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ChevronLeft } from "lucide-react";
-import { StickyTOC, TOCItem } from "@/components/StickyTOC";
+import { StickyTOC, TOCItem } from "@/components/layout/StickyTOC";
 import { sectionMeta, topicsBySection, type Section } from "@/data/curriculum";
-import { TopicReferencesButton } from "@/components/TopicReferencesButton";
-import { TopicPager } from "@/components/TopicPager";
+import { TopicReferencesButton } from "@/components/topic/TopicReferencesButton";
+import { TopicPager } from "@/components/topic/TopicPager";
 
 
 const SITE_URL = "https://anaesthesiacore.app";

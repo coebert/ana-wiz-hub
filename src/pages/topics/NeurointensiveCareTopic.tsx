@@ -1,21 +1,21 @@
 import { lazy, Suspense } from "react";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { StickyTOC } from "@/components/StickyTOC";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { StickyTOC } from "@/components/layout/StickyTOC";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { neurointensiveCareQuestions } from "@/data/quizzes";
 import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevicesDiagram";
 import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
 import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
 import MyastheniaCrisisFlowchart from "@/components/diagrams/MyastheniaCrisisFlowchart";
 import MyasthenicVsCholinergicComparison from "@/components/diagrams/MyasthenicVsCholinergicComparison";
-import type { WorkedExample } from "@/components/WorkedExamples";
-import { SnodReferralDecider } from "@/components/SnodReferralDecider";
-import { DbiTimeline } from "@/components/DbiTimeline";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
+import { SnodReferralDecider } from "@/components/clinical/SnodReferralDecider";
+import { DbiTimeline } from "@/components/clinical/DbiTimeline";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { ChevronRight } from "lucide-react";
 
 const DecompressiveCraniectomyDecisionDiagram = lazy(

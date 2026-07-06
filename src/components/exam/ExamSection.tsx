@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { EyeOff } from "lucide-react";
 import { ExamTag } from "@/data/curriculum";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
-import { ExamMappingBadges } from "@/components/ExamMappingBadges";
+import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
 
 interface ExamSectionProps {
   /** Which exams this subsection maps to. */

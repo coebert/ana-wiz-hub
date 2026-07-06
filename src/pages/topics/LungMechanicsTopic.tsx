@@ -1,8 +1,8 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { ExamSection } from "@/components/ExamSection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { lungMechanicsQuiz } from "@/data/quizzes";
 import { ComplianceDiagram } from "@/components/diagrams/ComplianceDiagram";
 import { FlowVolumeLoopDiagram } from "@/components/diagrams/FlowVolumeLoopDiagram";

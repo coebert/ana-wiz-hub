@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import LabGlossaryPopover from "@/components/LabGlossaryPopover";
+import LabGlossaryPopover from "@/components/clinical/LabGlossaryPopover";
 import type { LabKey as SharedLabKey, SourceLink } from "@/lib/lab-glossary";
 import { DiagramFigure } from "./_shared/DiagramFigure";
 

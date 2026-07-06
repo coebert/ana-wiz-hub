@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { BookOpen, ChevronDown } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Section, Topic } from "@/data/curriculum";
-import { TopicReferencesButton } from "@/components/TopicReferencesButton";
+import { TopicReferencesButton } from "@/components/topic/TopicReferencesButton";
 
 interface Props {
   section: Section;

@@ -16,7 +16,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
-import { ProgressRing } from "@/components/ProgressRing";
+import { ProgressRing } from "@/components/shared/ProgressRing";
 import {
   Section,
   ExamTag,

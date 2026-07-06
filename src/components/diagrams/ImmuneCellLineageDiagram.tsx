@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import InlineRef from "@/components/InlineRef";
+import InlineRef from "@/components/references/InlineRef";
 import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Branch = "myeloid" | "lymphoid";

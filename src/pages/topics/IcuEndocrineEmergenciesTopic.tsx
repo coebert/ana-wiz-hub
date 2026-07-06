@@ -1,8 +1,8 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { icuEndocrineEmergenciesQuestions } from "@/data/quizzes";
 import DKAAnimation from "@/components/diagrams/DKAAnimation";
 import ThyroidStormAnimation from "@/components/diagrams/ThyroidStormAnimation";
@@ -11,9 +11,9 @@ import DKAvsHHSDiagram from "@/components/diagrams/DKAvsHHSDiagram";
 import EndocrineEmergencyAlgorithms from "@/components/diagrams/EndocrineEmergencyAlgorithms";
 import EndocrineEmergencyDrugs from "@/components/diagrams/EndocrineEmergencyDrugs";
 import EndocrineSymptomTriage from "@/components/diagrams/EndocrineSymptomTriage";
-import GuidelineSources, { type GuidelineSource } from "@/components/GuidelineSources";
+import GuidelineSources, { type GuidelineSource } from "@/components/references/GuidelineSources";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 // Section-specific guideline references (BJA Education + primary guidelines)
 const HYPERGLYCAEMIC_SOURCES: GuidelineSource[] = [

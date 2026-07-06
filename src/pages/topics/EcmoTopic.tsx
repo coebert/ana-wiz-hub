@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { Exam } from "@/data/curriculum";
-import { ExamSection } from "@/components/ExamSection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { ecmoQuestions } from "@/data/quizzes";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
 import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
 import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";

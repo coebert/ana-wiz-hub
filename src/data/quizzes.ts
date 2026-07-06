@@ -1,4 +1,4 @@
-import { QuizQuestion } from "@/components/QuizSection";
+import { QuizQuestion } from "@/components/quiz/QuizSection";
 
 export const gasLawsQuiz: QuizQuestion[] = [
   {

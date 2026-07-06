@@ -1,16 +1,16 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { transfusionCoagulationQuestions } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
 import TraliVsTacoDecisionTool from "@/components/diagrams/TraliVsTacoDecisionTool";
 import CellSalvageAnimatedDiagram from "@/components/diagrams/CellSalvageAnimatedDiagram";
 import AcdCitrateChelationDiagram from "@/components/diagrams/AcdCitrateChelationDiagram";
 import CitrateWashSeparationDiagram from "@/components/diagrams/CitrateWashSeparationDiagram";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const transfusionCoagulationFaqs: Array<[string, string]> = [
   ["What ratios are used in major haemorrhage protocols?", "Empirical 1:1:1 (RBC:FFP:platelets) until ROTEM/TEG-guided, based on PROPPR trial; activate at predicted 4+ units in 1 h, give TXA 1 g within 3 h (CRASH-2) and target ionised Ca²⁺ >1.0 mmol/L."],

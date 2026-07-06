@@ -1,15 +1,15 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
-import { ExamMappingBadges } from "@/components/ExamMappingBadges";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { preoperativeAssessmentQuestions } from "@/data/quizzes";
 import CPETNinePanelDiagram from "@/components/diagrams/CPETNinePanelDiagram";
-import { DiagramSection } from "@/components/DiagramSection";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import { CheckCircle2, AlertTriangle, XCircle, FlaskConical, Heart } from "lucide-react";
 import { Exam } from "@/data/curriculum";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 
 const PreoperativeAssessmentTopicWorkedExamples: WorkedExample[] = [
   {

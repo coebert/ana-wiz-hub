@@ -29,7 +29,7 @@
  * co-located files (one `topics/gas-laws.ts` bundling all five arrays) without
  * touching call sites: `getTopic` stays the same, only its innards change.
  */
-import type { QuizQuestion } from "@/components/QuizSection";
+import type { QuizQuestion } from "@/components/quiz/QuizSection";
 import { allTopics, type Section, type ExamTag, type Topic as CurriculumTopic } from "./curriculum";
 import { topicSeo, type TopicSeo } from "./topicSeo";
 import { topicReferences, type Reference } from "./references";

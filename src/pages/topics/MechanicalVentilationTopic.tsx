@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { Maximize2, Minimize2 } from "lucide-react";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { StickyTOC } from "@/components/StickyTOC";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { StickyTOC } from "@/components/layout/StickyTOC";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
 import VentilatorWaveformsGuideDiagram from "@/components/diagrams/VentilatorWaveformsGuideDiagram";
 import APRVWaveformDiagram from "@/components/diagrams/APRVWaveformDiagram";
 import APRVExpiratoryFlowDiagram from "@/components/diagrams/APRVExpiratoryFlowDiagram";
 import { mechanicalVentilationQuestions } from "@/data/quizzes";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { InlineRef } from "@/components/InlineRef";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const mechanicalVentilationFaqs: Array<[string, string]> = [
   ["What lung-protective tidal volume should I set in ARDS?", "Use 6 mL/kg predicted body weight (ARDSNet), aiming for a plateau pressure ≤30 cmH₂O and driving pressure ≤15 cmH₂O; permit hypercapnia provided pH ≥7.20."],

@@ -1,13 +1,13 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { organDonationQuestions } from "@/data/quizzes";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { DiagramSection } from "@/components/DiagramSection";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import { BrainstemDeathCascadeDiagram } from "@/components/diagrams/BrainstemDeathCascadeDiagram";
 
 const organDonationFaqs: Array<[string, string]> = [

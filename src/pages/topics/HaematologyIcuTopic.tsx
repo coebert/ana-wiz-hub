@@ -1,18 +1,18 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import TTPPathophysiologyDiagram from "@/components/diagrams/TTPPathophysiologyDiagram";
 import HUSPathophysiologyDiagram from "@/components/diagrams/HUSPathophysiologyDiagram";
 import DICPathophysiologyDiagram from "@/components/diagrams/DICPathophysiologyDiagram";
 import HLHPathophysiologyDiagram from "@/components/diagrams/HLHPathophysiologyDiagram";
 import HITPathophysiologyDiagram from "@/components/diagrams/HITPathophysiologyDiagram";
-import HITAssessmentBlock from "@/components/HITAssessmentBlock";
+import HITAssessmentBlock from "@/components/clinical/HITAssessmentBlock";
 import RebalancedHaemostasisDiagram from "@/components/diagrams/RebalancedHaemostasisDiagram";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const haematologyIcuFaqs: Array<[string, string]> = [
   ["What restrictive transfusion threshold is recommended in ICU?", "Transfuse RBC when Hb <70 g/L in stable ICU patients (TRICC, TRISS); use a 80 g/L threshold in acute coronary syndromes or active bleeding."],

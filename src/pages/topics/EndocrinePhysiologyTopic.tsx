@@ -1,10 +1,10 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { InlineRef } from "@/components/InlineRef";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { InlineRef } from "@/components/references/InlineRef";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { endocrinePhysiologyQuestions } from "@/data/quizzes";
 import HPAAxisDiagram from "@/components/diagrams/HPAAxisDiagram";
 import { Exam } from "@/data/curriculum";

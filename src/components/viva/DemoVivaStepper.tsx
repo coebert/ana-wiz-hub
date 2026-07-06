@@ -8,8 +8,8 @@ import {
   Quote,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import DemoVivaPlayer from "@/components/DemoVivaPlayer";
-import DemoVivaInteractive from "@/components/DemoVivaInteractive";
+import DemoVivaPlayer from "@/components/viva/DemoVivaPlayer";
+import DemoVivaInteractive from "@/components/viva/DemoVivaInteractive";
 
 export interface DemoVivaQuestion {
   tag: string;

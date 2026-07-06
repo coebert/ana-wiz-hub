@@ -1,4 +1,4 @@
-import ExamHub from "@/components/ExamHub";
+import ExamHub from "@/components/exam/ExamHub";
 
 const FRCAFinalHub = () => (
   <ExamHub

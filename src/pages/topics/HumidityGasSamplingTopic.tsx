@@ -1,17 +1,17 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import HumidityGasSamplingDiagram from "@/components/diagrams/HumidityGasSamplingDiagram";
 import HygrometersDiagram from "@/components/diagrams/HygrometersDiagram";
 import { GasSamplingSiteDiagram } from "@/components/diagrams/GasSamplingSiteDiagram";
 import ParamagneticO2Diagram from "@/components/diagrams/ParamagneticO2Diagram";
-import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
-import { InlineRef } from "@/components/InlineRef";
+import { CrossReferenceCallout } from "@/components/topic/CrossReferenceCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 import { humidityGasSamplingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const humidityGasSamplingFaqs: Array<[string, string]> = [
   [

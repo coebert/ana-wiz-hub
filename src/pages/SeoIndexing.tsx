@@ -6,9 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { RefreshCw, ExternalLink } from "lucide-react";
-import LighthouseHistoryPanel from "@/components/LighthouseHistoryPanel";
-import SeoScanPanel from "@/components/SeoScanPanel";
-import CoverageBreakdownPanel from "@/components/CoverageBreakdownPanel";
+import LighthouseHistoryPanel from "@/components/ops/LighthouseHistoryPanel";
+import SeoScanPanel from "@/components/ops/SeoScanPanel";
+import CoverageBreakdownPanel from "@/components/ops/CoverageBreakdownPanel";
 
 interface SitemapInfo {
   path?: string;

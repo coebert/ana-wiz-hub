@@ -1,11 +1,11 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { haematologyImmunityQuestions } from "@/data/quizzes";
-import { DiagramSection } from "@/components/DiagramSection";
+import { DiagramSection } from "@/components/topic/DiagramSection";
 import ImmuneResponseTimelineDiagram from "@/components/diagrams/ImmuneResponseTimelineDiagram";
 import AntibodyKineticsDiagram from "@/components/diagrams/AntibodyKineticsDiagram";
 import HypersensitivityComparisonDiagram from "@/components/diagrams/HypersensitivityComparisonDiagram";

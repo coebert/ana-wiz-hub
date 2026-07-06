@@ -1,14 +1,14 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { neuroanaesthesiaQuestions } from "@/data/quizzes";
 import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDiagram";
 import ICPVolumeCurveDiagram from "@/components/diagrams/ICPVolumeCurveDiagram";
 import { RaisedICPCascadeDiagram } from "@/components/diagrams/RaisedICPCascadeDiagram";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import {
   Accordion,
   AccordionContent,

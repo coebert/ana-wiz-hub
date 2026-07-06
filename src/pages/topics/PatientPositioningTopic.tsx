@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
-import { InlineRef } from "@/components/InlineRef";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { InlineRef } from "@/components/references/InlineRef";
 import { patientPositioningQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { RealismProvider, type RealismLevel } from "@/components/diagrams/patientAnatomy";
@@ -48,7 +48,7 @@ import {
   ProneIVCFreeAbdomenAnimation,
   PeronealNerveLithotomyAnimation,
 } from "@/components/diagrams/PatientPositioningMechanisms";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const objectives = [
   "Describe the principal surgical positions (supine, Trendelenburg, lithotomy, lateral, prone, park bench, sitting, beach chair) and their physiological consequences",

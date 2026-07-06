@@ -1,18 +1,18 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { ExamSection } from "@/components/exam/ExamSection";
 import PaediatricSurgicalProceduresDiagram from "@/components/diagrams/PaediatricSurgicalProceduresDiagram";
 import CaudalBlockDiagram from "@/components/diagrams/CaudalBlockDiagram";
 import CaudalSurfaceAnatomyDiagram from "@/components/diagrams/CaudalSurfaceAnatomyDiagram";
 import { PaediatricPhysiologyDiagram } from "@/components/diagrams/PaediatricPhysiologyDiagram";
 import PaediatricEquipmentSizer from "@/components/diagrams/PaediatricEquipmentSizer";
-import { DiagramSection } from "@/components/DiagramSection";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { DiagramSection } from "@/components/topic/DiagramSection";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { paediatricAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
-import { InlineRef } from "@/components/InlineRef";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import {
   Accordion,
   AccordionContent,

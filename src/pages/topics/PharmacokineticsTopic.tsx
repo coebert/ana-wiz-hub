@@ -1,13 +1,13 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { CompartmentModelDiagram } from "@/components/diagrams/CompartmentModelDiagram";
 import { CSHTComparisonDiagram } from "@/components/diagrams/CSHTComparisonDiagram";
 import { ADMECascadeDiagram } from "@/components/diagrams/ADMECascadeDiagram";
 import { pharmacokineticsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const pharmacokineticsFaqs: Array<[string, string]> = [
   [

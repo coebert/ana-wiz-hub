@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Shield, Lock, Database, Mail, FileText } from "lucide-react";
-import { SectionLayout } from "@/components/SectionLayout";
+import { SectionLayout } from "@/components/layout/SectionLayout";
 
 /**
  * Public trust & privacy page — `/trust`.

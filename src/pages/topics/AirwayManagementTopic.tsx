@@ -1,14 +1,14 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { AirwayDevicesDiagram } from "@/components/diagrams/AirwayDevicesDiagram";
 import { BreathingCircuitDiagram } from "@/components/diagrams/BreathingCircuitDiagram";
 import DASAlgorithmDiagram from "@/components/diagrams/DASAlgorithmDiagram";
@@ -25,10 +25,10 @@ import { airwayManagementQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
 import { airwayFolio } from "@/components/diagrams/anatomyFolios";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { Link } from "react-router-dom";
 
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 
 const tocItems = [
   { id: "section-introduction", label: "Introduction", group: "Core" },

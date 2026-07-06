@@ -1,12 +1,12 @@
 import { Exam } from "@/data/curriculum";
-import { ExamSection } from "@/components/ExamSection";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { acuteLiverFailureQuestions } from "@/data/quizzes";
 import CLIFCACLFDiagram from "@/components/diagrams/CLIFCACLFDiagram";
 import ALFCerebralOedemaDiagram from "@/components/diagrams/ALFCerebralOedemaDiagram";
-import type { WorkedExample } from "@/components/WorkedExamples";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const acuteLiverFailureFaqs: Array<[string, string]> = [
   ["What are the King's College criteria for liver transplantation in paracetamol-induced ALF?", "Arterial pH <7.30 after resuscitation, OR all three of: PT >100 s (INR >6.5), creatinine >300 µmol/L, and grade III/IV encephalopathy."],

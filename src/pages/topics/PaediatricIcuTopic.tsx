@@ -1,13 +1,13 @@
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
-import { ExamSection } from "@/components/ExamSection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import WETFLAGDiagram from "@/components/diagrams/WETFLAGDiagram";
 import PaediatricVitalsTable from "@/components/diagrams/PaediatricVitalsTable";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const paediatricIcuFaqs: Array<[string, string]> = [
   ["What fluid resuscitation strategy is recommended for paediatric septic shock?", "10–20 mL/kg balanced crystalloid boluses with reassessment after each, up to 40–60 mL/kg in the first hour; start adrenaline or noradrenaline early if fluid-refractory rather than continuing boluses (FEAST, SSC paediatric 2020)."],

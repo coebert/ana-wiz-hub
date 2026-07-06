@@ -3,10 +3,10 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AppProviders } from "@/app/AppProviders";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
-import { Header } from "@/components/Header";
-import { UpdateBanner } from "@/components/UpdateBanner";
+import { Header } from "@/components/layout/Header";
+import { UpdateBanner } from "@/components/layout/UpdateBanner";
 import { CascadePerfBadge } from "@/components/diagrams/_dev/CascadePerfBadge";
-import { VisitTrackerWrapper } from "@/components/VisitTrackerWrapper";
+import { VisitTrackerWrapper } from "@/components/layout/VisitTrackerWrapper";
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -75,7 +75,7 @@ const ChemistrySection = lazy(() => import("./pages/ChemistrySection"));
 
 // Topic routes are data-driven — see src/routes/topicRoutes.ts
 import { topicRouteEntries, TOPIC_REDIRECTS } from "@/routes/topicRoutes";
-import { RequireAdmin } from "@/components/RequireAdmin";
+import { RequireAdmin } from "@/components/layout/RequireAdmin";
 const SpoofedDomains = lazy(() => import("./pages/admin/SpoofedDomains"));
 
 const Loading = () => (

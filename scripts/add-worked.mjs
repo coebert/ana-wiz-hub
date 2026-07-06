@@ -656,10 +656,10 @@ for (const key of KEYS) {
 
   // Add WorkedExample import if missing
   if (!src.includes("WorkedExample")) {
-    if (src.includes('from "@/components/TopicTemplate"')) {
+    if (src.includes('from "@/components/topic/TopicTemplate"')) {
       src = src.replace(
         /(import\s*{\s*TopicTemplate\s*}\s*from\s*"@\/components\/TopicTemplate";)/,
-        `$1\nimport { WorkedExample } from "@/components/WorkedExamples";`
+        `$1\nimport { WorkedExample } from "@/components/topic/WorkedExamples";`
       );
     } else {
       errors.push(`${key}: no TopicTemplate import`);

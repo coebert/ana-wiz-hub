@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { ExamSection } from "@/components/ExamSection";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { WorkedExample } from "@/components/WorkedExamples";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { regionalAnaesthesiaQuestions } from "@/data/quizzes";
 import DermatomeMapDiagram from "@/components/diagrams/DermatomeMapDiagram";
 import NerveDermatomeOverlayDiagram from "@/components/diagrams/NerveDermatomeOverlayDiagram";
@@ -13,9 +13,9 @@ import LowerLimbBranchesDiagram from "@/components/diagrams/LowerLimbBranchesDia
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 import NeuraxialAnticoagRiskTool from "@/components/diagrams/NeuraxialAnticoagRiskTool";
 import AnticoagRestartTimeline from "@/components/diagrams/AnticoagRestartTimeline";
-import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import {
   Accordion,
   AccordionContent,

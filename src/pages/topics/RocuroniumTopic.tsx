@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { WorkedExample } from "@/components/WorkedExamples";
-import { ExamSection } from "@/components/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { WorkedExample } from "@/components/topic/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
 import { muscleRelaxantsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TOFPatternDiagram } from "@/components/diagrams/TOFPatternDiagram";
 import { NMBATimelineDiagram } from "@/components/diagrams/NMBATimelineDiagram";
 import SugammadexDiagram from "@/components/diagrams/SugammadexDiagram";

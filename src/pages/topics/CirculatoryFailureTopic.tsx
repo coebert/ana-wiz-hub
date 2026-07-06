@@ -1,15 +1,15 @@
 import { Exam } from "@/data/curriculum";
-import { ExamSection } from "@/components/ExamSection";
-import { TopicTemplate } from "@/components/TopicTemplate";
-import { TopicFaqs } from "@/components/TopicFaqs";
-import type { WorkedExample } from "@/components/WorkedExamples";
+import { ExamSection } from "@/components/exam/ExamSection";
+import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { circulatoryFailureQuestions, ecmoQuestions } from "@/data/quizzes";
 import FluidResponsivenessDiagram from "@/components/diagrams/FluidResponsivenessDiagram";
 import MechanicalCirculatorySupportDiagram from "@/components/diagrams/MechanicalCirculatorySupportDiagram";
 import MCSPressureVolumeLoopDiagram from "@/components/diagrams/MCSPressureVolumeLoopDiagram";
 import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
 import CPPSpiralDiagram from "@/components/diagrams/CPPSpiralDiagram";
-import { ExamPitfallsCallout } from "@/components/ExamPitfallsCallout";
+import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const circulatoryFailureFaqs: Array<[string, string]> = [
   ["Which dynamic indices predict fluid responsiveness and when are they invalid?", "PPV, SVV and passive leg raise predict a ≥10–15% SV rise after fluid; they are unreliable in spontaneous breathing, arrhythmia, low tidal volumes (<8 mL/kg), open chest or raised intra-abdominal pressure — use PLR or end-expiratory occlusion instead."],

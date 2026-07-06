@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { CollapsibleSubsection } from "@/components/CollapsibleSubsection";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 
 export type TopicFaqPair = [question: string, answer: string];
 
