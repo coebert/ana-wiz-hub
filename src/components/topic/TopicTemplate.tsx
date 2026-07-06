@@ -272,8 +272,9 @@ export const TopicTemplate = ({
           );
         })()}
       </Helmet>
+      <ExamBadgeDedupeProvider>
       <div className="space-y-8 sm:space-y-10">
-        <TopicExamFilterBar />
+
         <TopicPodcastPlayer topicId={topicId} topicTitle={topicTitle ?? title} />
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-lg border border-border bg-muted/30 px-3 sm:px-4 py-3">
           <div className="min-w-0">
