@@ -56,7 +56,16 @@ export function computeUploadableRecent(
   return local.filter((e) => !cloudIds.has(e.topicId));
 }
 
-function readRecent(): RecentTopicEntry[] {
+/**
+ * Read recent-topic entries from localStorage, tolerating every corrupted
+ * shape (invalid JSON, non-array root, wrong-typed fields, extra keys).
+ * Exported for unit tests.
+ *
+ * Contract: NEVER throws, ALWAYS returns a valid `RecentTopicEntry[]` with
+ * every entry's `topicId` string and `visitedAt` number. Bad entries are
+ * silently dropped so the UI degrades to "merged cloud only".
+ */
+export function readRecentFromStorage(): RecentTopicEntry[] {
   if (typeof window === "undefined") return [];
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
@@ -65,12 +74,14 @@ function readRecent(): RecentTopicEntry[] {
     if (!Array.isArray(parsed)) return [];
     return parsed.filter(
       (e): e is RecentTopicEntry =>
-        e && typeof e.topicId === "string" && typeof e.visitedAt === "number"
+        !!e && typeof e.topicId === "string" && typeof e.visitedAt === "number"
     );
   } catch {
     return [];
   }
 }
+
+const readRecent = readRecentFromStorage;
 
 function writeRecent(entries: RecentTopicEntry[]) {
   if (typeof window === "undefined") return;

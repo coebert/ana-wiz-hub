@@ -20,14 +20,28 @@ const ProgressContext = createContext<ProgressContextType | null>(null);
 const STORAGE_KEY = "anaesthesia-core-progress";
 const MIGRATED_FLAG = "anaesthesia-core-progress-cloud-migrated";
 
-const readLocal = (): Set<string> => {
+/**
+ * Read completed-topic ids from localStorage, defending against every
+ * corrupted shape a previous version, a browser extension, or a manual
+ * edit could leave behind. Exported for unit tests.
+ *
+ * Contract: NEVER throws, ALWAYS returns a Set<string>. Non-string entries
+ * are dropped so downstream `.has(id)` lookups remain sound.
+ */
+export const readLocalProgress = (): Set<string> => {
   try {
+    if (typeof localStorage === "undefined") return new Set();
     const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? new Set(JSON.parse(stored)) : new Set();
+    if (!stored) return new Set();
+    const parsed = JSON.parse(stored);
+    if (!Array.isArray(parsed)) return new Set();
+    return new Set(parsed.filter((v): v is string => typeof v === "string"));
   } catch {
     return new Set();
   }
 };
+
+const readLocal = readLocalProgress;
 
 export const ProgressProvider = ({ children }: { children: ReactNode }) => {
   const { user } = useAuth();
