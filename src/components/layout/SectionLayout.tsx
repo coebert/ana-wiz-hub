@@ -116,6 +116,9 @@ export const SectionLayout = ({
           </div>
         )}
       </div>
+      {topicForPath && (
+        <TopicPagerMini section={topicForPath.section} topic={topicForPath.topic} />
+      )}
       <AutoTOC disabled={disableAutoTOC} minHeadings={autoTOCMinHeadings}>
         {children}
       </AutoTOC>
