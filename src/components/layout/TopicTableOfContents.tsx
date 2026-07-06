@@ -19,6 +19,9 @@ interface TopicTableOfContentsProps {
  */
 export const TopicTableOfContents = ({ items }: TopicTableOfContentsProps) => {
   const [active, setActive] = useState<string>(items[0]?.id ?? "");
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const collapsible = items.length > 6;
+  const activeItem = items.find((i) => i.id === active) ?? items[0];
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
