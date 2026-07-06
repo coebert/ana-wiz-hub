@@ -21,6 +21,9 @@ interface StickyTOCProps {
  */
 export const StickyTOC = ({ items, offset = 96, className }: StickyTOCProps) => {
   const [activeId, setActiveId] = useState<string>(items[0]?.id ?? "");
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const collapsible = items.length > 6;
+  const activeItem = items.find((i) => i.id === activeId) ?? items[0];
 
   useEffect(() => {
     if (!items.length) return;
