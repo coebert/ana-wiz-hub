@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from "react";
 import FourTsScorePanel, { type FourTsBand } from "@/components/clinical/FourTsScorePanel";
-import HITTreatmentFlowchart from "@/components/diagrams/HITTreatmentFlowchart";
+import HITTreatmentFlowchart from "@/components/diagrams/shared/HITTreatmentFlowchart";
 
 /**
  * Links the 4Ts pre-test probability score to the HIT treatment flowchart.

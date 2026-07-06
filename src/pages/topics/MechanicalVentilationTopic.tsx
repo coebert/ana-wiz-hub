@@ -6,10 +6,10 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { StickyTOC } from "@/components/layout/StickyTOC";
 import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
-import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
-import VentilatorWaveformsGuideDiagram from "@/components/diagrams/VentilatorWaveformsGuideDiagram";
-import APRVWaveformDiagram from "@/components/diagrams/APRVWaveformDiagram";
-import APRVExpiratoryFlowDiagram from "@/components/diagrams/APRVExpiratoryFlowDiagram";
+import { VentilatorWaveformsDiagram } from "@/components/diagrams/physiology/VentilatorWaveformsDiagram";
+import VentilatorWaveformsGuideDiagram from "@/components/diagrams/intensive-care/VentilatorWaveformsGuideDiagram";
+import APRVWaveformDiagram from "@/components/diagrams/intensive-care/APRVWaveformDiagram";
+import APRVExpiratoryFlowDiagram from "@/components/diagrams/intensive-care/APRVExpiratoryFlowDiagram";
 import { mechanicalVentilationQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";

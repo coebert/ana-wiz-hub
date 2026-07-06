@@ -4,9 +4,9 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { neuroanaesthesiaQuestions } from "@/data/quizzes";
-import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDiagram";
-import ICPVolumeCurveDiagram from "@/components/diagrams/ICPVolumeCurveDiagram";
-import { RaisedICPCascadeDiagram } from "@/components/diagrams/RaisedICPCascadeDiagram";
+import CBFAutoregulationDiagram from "@/components/diagrams/clinical/CBFAutoregulationDiagram";
+import ICPVolumeCurveDiagram from "@/components/diagrams/clinical/ICPVolumeCurveDiagram";
+import { RaisedICPCascadeDiagram } from "@/components/diagrams/clinical/RaisedICPCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import {

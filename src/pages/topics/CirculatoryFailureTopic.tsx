@@ -4,11 +4,11 @@ import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { circulatoryFailureQuestions, ecmoQuestions } from "@/data/quizzes";
-import FluidResponsivenessDiagram from "@/components/diagrams/FluidResponsivenessDiagram";
-import MechanicalCirculatorySupportDiagram from "@/components/diagrams/MechanicalCirculatorySupportDiagram";
-import MCSPressureVolumeLoopDiagram from "@/components/diagrams/MCSPressureVolumeLoopDiagram";
-import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
-import CPPSpiralDiagram from "@/components/diagrams/CPPSpiralDiagram";
+import FluidResponsivenessDiagram from "@/components/diagrams/intensive-care/FluidResponsivenessDiagram";
+import MechanicalCirculatorySupportDiagram from "@/components/diagrams/intensive-care/MechanicalCirculatorySupportDiagram";
+import MCSPressureVolumeLoopDiagram from "@/components/diagrams/intensive-care/MCSPressureVolumeLoopDiagram";
+import VAECMOCircuitDiagram from "@/components/diagrams/intensive-care/VAECMOCircuitDiagram";
+import CPPSpiralDiagram from "@/components/diagrams/intensive-care/CPPSpiralDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const circulatoryFailureFaqs: Array<[string, string]> = [

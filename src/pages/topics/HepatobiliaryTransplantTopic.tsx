@@ -4,7 +4,7 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { hepatobiliaryTransplantQuestions } from "@/data/quizzes";
-import LiverTransplantPhasesDiagram from "@/components/diagrams/LiverTransplantPhasesDiagram";
+import LiverTransplantPhasesDiagram from "@/components/diagrams/clinical/LiverTransplantPhasesDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";

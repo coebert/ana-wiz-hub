@@ -4,9 +4,9 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { urologicalAnaesthesiaQuestions } from "@/data/quizzes";
-import TURPSyndromeDiagram from "@/components/diagrams/TURPSyndromeDiagram";
-import PropofolErectionMechanismDiagram from "@/components/diagrams/PropofolErectionMechanismDiagram";
-import PropofolErectionAlgorithmDiagram from "@/components/diagrams/PropofolErectionAlgorithmDiagram";
+import TURPSyndromeDiagram from "@/components/diagrams/clinical/TURPSyndromeDiagram";
+import PropofolErectionMechanismDiagram from "@/components/diagrams/clinical/PropofolErectionMechanismDiagram";
+import PropofolErectionAlgorithmDiagram from "@/components/diagrams/clinical/PropofolErectionAlgorithmDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";

@@ -6,12 +6,12 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { haematologyImmunityQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/topic/DiagramSection";
-import ImmuneResponseTimelineDiagram from "@/components/diagrams/ImmuneResponseTimelineDiagram";
-import AntibodyKineticsDiagram from "@/components/diagrams/AntibodyKineticsDiagram";
-import HypersensitivityComparisonDiagram from "@/components/diagrams/HypersensitivityComparisonDiagram";
-import VaccineTypesDiagram from "@/components/diagrams/VaccineTypesDiagram";
-import AsplenicVaccinationFlowchart from "@/components/diagrams/AsplenicVaccinationFlowchart";
-import ImmuneCellLineageDiagram from "@/components/diagrams/ImmuneCellLineageDiagram";
+import ImmuneResponseTimelineDiagram from "@/components/diagrams/physiology/ImmuneResponseTimelineDiagram";
+import AntibodyKineticsDiagram from "@/components/diagrams/physiology/AntibodyKineticsDiagram";
+import HypersensitivityComparisonDiagram from "@/components/diagrams/physiology/HypersensitivityComparisonDiagram";
+import VaccineTypesDiagram from "@/components/diagrams/physiology/VaccineTypesDiagram";
+import AsplenicVaccinationFlowchart from "@/components/diagrams/physiology/AsplenicVaccinationFlowchart";
+import ImmuneCellLineageDiagram from "@/components/diagrams/physiology/ImmuneCellLineageDiagram";
 import { Exam } from "@/data/curriculum";
 
 const haematologyImmunityFaqs: Array<[string, string]> = [

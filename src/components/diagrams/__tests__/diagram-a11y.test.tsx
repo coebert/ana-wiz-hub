@@ -19,7 +19,7 @@ import {
   svgNodeProps,
   svgDecorativeProps,
 } from "@/components/diagrams/_shared/DiagramFigure";
-import { CAMICUFlowchartDiagram } from "@/components/diagrams/CAMICUFlowchartDiagram";
+import { CAMICUFlowchartDiagram } from "@/components/diagrams/intensive-care/CAMICUFlowchartDiagram";
 
 expect.extend(toHaveNoViolations);
 

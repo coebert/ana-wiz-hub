@@ -7,9 +7,9 @@ import { DiagramSection } from "@/components/topic/DiagramSection";
 import {
   VascularAccessDevicesDiagram,
   VascularAccessCrossSectionDiagram,
-} from "@/components/diagrams/VascularAccessDevicesDiagram";
-import { VascularAccessTypesDiagram } from "@/components/diagrams/VascularAccessTypesDiagram";
-import { DwellTimeInfographic } from "@/components/diagrams/DwellTimeInfographic";
+} from "@/components/diagrams/perioperative/VascularAccessDevicesDiagram";
+import { VascularAccessTypesDiagram } from "@/components/diagrams/perioperative/VascularAccessTypesDiagram";
+import { DwellTimeInfographic } from "@/components/diagrams/perioperative/DwellTimeInfographic";
 import { vascularAccessDevicesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";

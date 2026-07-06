@@ -1,4 +1,4 @@
-import type { EcgExpandedContent } from "@/components/diagrams/ExpandableEcgCard";
+import type { EcgExpandedContent } from "@/components/diagrams/intensive-care/ExpandableEcgCard";
 
 /**
  * Per-diagram teaching content for the Expand & Learn modal.

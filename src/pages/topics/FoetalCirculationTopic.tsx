@@ -5,7 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { foetalCirculationQuestions } from "@/data/quizzes";
-import FoetalCirculationDiagram from "@/components/diagrams/FoetalCirculationDiagram";
+import FoetalCirculationDiagram from "@/components/diagrams/physiology/FoetalCirculationDiagram";
 import { Exam } from "@/data/curriculum";
 
 const foetalCirculationFaqs: Array<[string, string]> = [

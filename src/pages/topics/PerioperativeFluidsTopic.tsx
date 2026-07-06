@@ -5,8 +5,8 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { perioperativeFluidsQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/topic/DiagramSection";
-import GlycocalyxDiagram from "@/components/diagrams/GlycocalyxDiagram";
-import { GlycocalyxSheddingCascadeDiagram } from "@/components/diagrams/GlycocalyxSheddingCascadeDiagram";
+import GlycocalyxDiagram from "@/components/diagrams/physiology/GlycocalyxDiagram";
+import { GlycocalyxSheddingCascadeDiagram } from "@/components/diagrams/perioperative/GlycocalyxSheddingCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 

@@ -4,9 +4,9 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { icuNutritionQuestions } from "@/data/quizzes";
-import RefeedingRiskCalculatorDiagram from "@/components/diagrams/RefeedingRiskCalculatorDiagram";
-import RefeedingSyndromeAnimation from "@/components/diagrams/RefeedingSyndromeAnimation";
-import EnergyProteinTargetDiagram from "@/components/diagrams/EnergyProteinTargetDiagram";
+import RefeedingRiskCalculatorDiagram from "@/components/diagrams/intensive-care/RefeedingRiskCalculatorDiagram";
+import RefeedingSyndromeAnimation from "@/components/diagrams/intensive-care/RefeedingSyndromeAnimation";
+import EnergyProteinTargetDiagram from "@/components/diagrams/intensive-care/EnergyProteinTargetDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

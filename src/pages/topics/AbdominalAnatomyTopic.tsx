@@ -9,8 +9,8 @@ const abdominalAnatomyFaqs: Array<[string, string]> = [
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { abdominalAnatomyQuestions } from "@/data/quizzes";
-import AbdominalWallDiagram from "@/components/diagrams/AbdominalWallDiagram";
-import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import AbdominalWallDiagram from "@/components/diagrams/anatomy/AbdominalWallDiagram";
+import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { abdominalFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 

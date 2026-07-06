@@ -5,7 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { cardiovascularDiseaseQuestions } from "@/data/quizzes";
-import ValvularHaemodynamicsDiagram from "@/components/diagrams/ValvularHaemodynamicsDiagram";
+import ValvularHaemodynamicsDiagram from "@/components/diagrams/perioperative/ValvularHaemodynamicsDiagram";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 

@@ -4,8 +4,8 @@ import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { vaporizersQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
-import { VaporizerDiagram } from "@/components/diagrams/VaporizerDiagram";
-import VaporiserSplittingRatioDiagram from "@/components/diagrams/VaporiserSplittingRatioDiagram";
+import { VaporizerDiagram } from "@/components/diagrams/physics/VaporizerDiagram";
+import VaporiserSplittingRatioDiagram from "@/components/diagrams/physics/VaporiserSplittingRatioDiagram";
 
 const vaporisersFaqs: Array<[string, string]> = [
   [

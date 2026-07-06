@@ -5,8 +5,8 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { autonomicNervousQuiz } from "@/data/quizzes";
-import { ANSDiagram } from "@/components/diagrams/ANSDiagram";
-import { ANSPathwayDiagram } from "@/components/diagrams/ANSPathwayDiagram";
+import { ANSDiagram } from "@/components/diagrams/physiology/ANSDiagram";
+import { ANSPathwayDiagram } from "@/components/diagrams/physiology/ANSPathwayDiagram";
 import { CrossReferenceCallout } from "@/components/topic/CrossReferenceCallout";
 import { Exam } from "@/data/curriculum";
 

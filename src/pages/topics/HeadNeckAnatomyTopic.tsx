@@ -9,17 +9,17 @@ const headNeckAnatomyFaqs: Array<[string, string]> = [
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { headNeckAnatomyQuestions } from "@/data/quizzes";
-import NeckTrianglesDiagram from "@/components/diagrams/NeckTrianglesDiagram";
-import CervicalPlexusDiagram from "@/components/diagrams/CervicalPlexusDiagram";
-import NeckCrossSectionDiagram from "@/components/diagrams/NeckCrossSectionDiagram";
-import LaryngealNervesDiagram from "@/components/diagrams/LaryngealNervesDiagram";
-import LaryngealCrossSectionDiagram from "@/components/diagrams/LaryngealCrossSectionDiagram";
-import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
-import OrbitAnatomyDiagram from "@/components/diagrams/OrbitAnatomyDiagram";
-import OrbitBonyAnatomyDiagram from "@/components/diagrams/OrbitBonyAnatomyDiagram";
-import TracheobronchialTreeDiagram from "@/components/diagrams/TracheobronchialTreeDiagram";
-import BronchoscopicViewDiagram from "@/components/diagrams/BronchoscopicViewDiagram";
-import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import NeckTrianglesDiagram from "@/components/diagrams/anatomy/NeckTrianglesDiagram";
+import CervicalPlexusDiagram from "@/components/diagrams/anatomy/CervicalPlexusDiagram";
+import NeckCrossSectionDiagram from "@/components/diagrams/anatomy/NeckCrossSectionDiagram";
+import LaryngealNervesDiagram from "@/components/diagrams/anatomy/LaryngealNervesDiagram";
+import LaryngealCrossSectionDiagram from "@/components/diagrams/anatomy/LaryngealCrossSectionDiagram";
+import SkullBaseDiagram from "@/components/diagrams/anatomy/SkullBaseDiagram";
+import OrbitAnatomyDiagram from "@/components/diagrams/anatomy/OrbitAnatomyDiagram";
+import OrbitBonyAnatomyDiagram from "@/components/diagrams/anatomy/OrbitBonyAnatomyDiagram";
+import TracheobronchialTreeDiagram from "@/components/diagrams/anatomy/TracheobronchialTreeDiagram";
+import BronchoscopicViewDiagram from "@/components/diagrams/anatomy/BronchoscopicViewDiagram";
+import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { headNeckFolio, airwayFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 

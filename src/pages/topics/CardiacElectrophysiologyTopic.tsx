@@ -5,16 +5,16 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { cardiacElectrophysiologyQuestions } from "@/data/quizzes";
-import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
-import LongQTTorsadesDiagram from "@/components/diagrams/LongQTTorsadesDiagram";
-import IonChannelTimelineDiagram from "@/components/diagrams/IonChannelTimelineDiagram";
-import BPControlLoopDiagram from "@/components/diagrams/BPControlLoopDiagram";
-import HeartBlockDiagram from "@/components/diagrams/HeartBlockDiagram";
-import BundleBranchBlockDiagram from "@/components/diagrams/BundleBranchBlockDiagram";
-import TachyarrhythmiaDiagram from "@/components/diagrams/TachyarrhythmiaDiagram";
-import BradyarrhythmiaDiagram from "@/components/diagrams/BradyarrhythmiaDiagram";
-import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
-import { DiagramTabs } from "@/components/diagrams/DiagramTabs";
+import CardiacActionPotentialDiagram from "@/components/diagrams/physiology/CardiacActionPotentialDiagram";
+import LongQTTorsadesDiagram from "@/components/diagrams/physiology/LongQTTorsadesDiagram";
+import IonChannelTimelineDiagram from "@/components/diagrams/physiology/IonChannelTimelineDiagram";
+import BPControlLoopDiagram from "@/components/diagrams/physiology/BPControlLoopDiagram";
+import HeartBlockDiagram from "@/components/diagrams/intensive-care/HeartBlockDiagram";
+import BundleBranchBlockDiagram from "@/components/diagrams/intensive-care/BundleBranchBlockDiagram";
+import TachyarrhythmiaDiagram from "@/components/diagrams/intensive-care/TachyarrhythmiaDiagram";
+import BradyarrhythmiaDiagram from "@/components/diagrams/intensive-care/BradyarrhythmiaDiagram";
+import PacingDevicesDiagram from "@/components/diagrams/intensive-care/PacingDevicesDiagram";
+import { DiagramTabs } from "@/components/diagrams/physiology/DiagramTabs";
 import { Exam } from "@/data/curriculum";
 
 const cardiacElectrophysiologyFaqs: Array<[string, string]> = [

@@ -9,7 +9,7 @@ const acidsBasesBuffersFaqs: Array<[string, string]> = [
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
-import { AcidsBasesDiagram } from "@/components/diagrams/AcidsBasesDiagram";
+import { AcidsBasesDiagram } from "@/components/diagrams/chemistry/AcidsBasesDiagram";
 import { acidsBasesQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 

@@ -5,13 +5,13 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
-import TTPPathophysiologyDiagram from "@/components/diagrams/TTPPathophysiologyDiagram";
-import HUSPathophysiologyDiagram from "@/components/diagrams/HUSPathophysiologyDiagram";
-import DICPathophysiologyDiagram from "@/components/diagrams/DICPathophysiologyDiagram";
-import HLHPathophysiologyDiagram from "@/components/diagrams/HLHPathophysiologyDiagram";
-import HITPathophysiologyDiagram from "@/components/diagrams/HITPathophysiologyDiagram";
+import TTPPathophysiologyDiagram from "@/components/diagrams/intensive-care/TTPPathophysiologyDiagram";
+import HUSPathophysiologyDiagram from "@/components/diagrams/intensive-care/HUSPathophysiologyDiagram";
+import DICPathophysiologyDiagram from "@/components/diagrams/intensive-care/DICPathophysiologyDiagram";
+import HLHPathophysiologyDiagram from "@/components/diagrams/intensive-care/HLHPathophysiologyDiagram";
+import HITPathophysiologyDiagram from "@/components/diagrams/intensive-care/HITPathophysiologyDiagram";
 import HITAssessmentBlock from "@/components/clinical/HITAssessmentBlock";
-import RebalancedHaemostasisDiagram from "@/components/diagrams/RebalancedHaemostasisDiagram";
+import RebalancedHaemostasisDiagram from "@/components/diagrams/intensive-care/RebalancedHaemostasisDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const haematologyIcuFaqs: Array<[string, string]> = [

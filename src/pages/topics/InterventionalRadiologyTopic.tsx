@@ -4,7 +4,7 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { interventionalRadiologyQuestions } from "@/data/quizzes";
-import ContrastReactionDiagram from "@/components/diagrams/ContrastReactionDiagram";
+import ContrastReactionDiagram from "@/components/diagrams/clinical/ContrastReactionDiagram";
 import tipssIllustration from "@/assets/ir/tipss-procedure.jpg";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";

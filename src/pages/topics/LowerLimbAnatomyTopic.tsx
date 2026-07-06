@@ -10,12 +10,12 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { lowerLimbAnatomyQuestions } from "@/data/quizzes";
-import LumbosacralPlexusDiagram from "@/components/diagrams/LumbosacralPlexusDiagram";
-import LowerLimbBranchesDiagram from "@/components/diagrams/LowerLimbBranchesDiagram";
-import LowerLimbArteriesDiagram from "@/components/diagrams/LowerLimbArteriesDiagram";
-import LowerLimbVeinsDiagram from "@/components/diagrams/LowerLimbVeinsDiagram";
-import LowerLimbInnervationDiagram from "@/components/diagrams/LowerLimbInnervationDiagram";
-import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import LumbosacralPlexusDiagram from "@/components/diagrams/anatomy/LumbosacralPlexusDiagram";
+import LowerLimbBranchesDiagram from "@/components/diagrams/anatomy/LowerLimbBranchesDiagram";
+import LowerLimbArteriesDiagram from "@/components/diagrams/anatomy/LowerLimbArteriesDiagram";
+import LowerLimbVeinsDiagram from "@/components/diagrams/anatomy/LowerLimbVeinsDiagram";
+import LowerLimbInnervationDiagram from "@/components/diagrams/anatomy/LowerLimbInnervationDiagram";
+import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { lowerLimbFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 

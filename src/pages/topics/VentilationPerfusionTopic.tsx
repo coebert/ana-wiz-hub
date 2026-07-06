@@ -8,7 +8,7 @@ import { ventilationPerfusionQuestions } from "@/data/quizzes";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 import { Exam } from "@/data/curriculum";
-import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
+import { WestZonesDiagram } from "@/components/diagrams/physiology/WestZonesDiagram";
 
 const ventilationPerfusionFaqs: Array<[string, string]> = [
   [

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
-import AnatomyPlate, { type AnatomyLabel } from "./AnatomyPlate";
+import AnatomyPlate, { type AnatomyLabel } from "@/components/diagrams/shared/AnatomyPlate";
 
 describe("AnatomyPlate", () => {
   const labels: AnatomyLabel[] = [

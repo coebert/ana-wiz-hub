@@ -32,7 +32,7 @@ export const FLOWCHART_AUDIT_REGISTRY: FlowchartAuditEntry[] = [
     route: "/intensive-care/icu-sedation-delirium",
     expectedGroups: 15, // 5 steps + 8 branches + 2 outcomes
     component: lazy(() =>
-      import("@/components/diagrams/CAMICUFlowchartDiagram").then((m) => ({
+      import("@/components/diagrams/intensive-care/CAMICUFlowchartDiagram").then((m) => ({
         default: m.CAMICUFlowchartDiagram,
       })),
     ),
@@ -43,7 +43,7 @@ export const FLOWCHART_AUDIT_REGISTRY: FlowchartAuditEntry[] = [
     route: "/perioperative/trauma-emergency",
     expectedGroups: 13, // 4 phases + 4 sieve decisions + 5 stream lanes
     component: lazy(() =>
-      import("@/components/diagrams/MajorIncidentTriageDiagram").then((m) => ({
+      import("@/components/diagrams/clinical/MajorIncidentTriageDiagram").then((m) => ({
         default: m.MajorIncidentTriageDiagram,
       })),
     ),
@@ -53,7 +53,7 @@ export const FLOWCHART_AUDIT_REGISTRY: FlowchartAuditEntry[] = [
     name: "Myasthenic crisis flowchart",
     route: "/pharmacology/muscle-relaxants",
     expectedGroups: 8, // 6 steps + 1 decision + steroid follow-on
-    component: lazy(() => import("@/components/diagrams/MyastheniaCrisisFlowchart")),
+    component: lazy(() => import("@/components/diagrams/intensive-care/MyastheniaCrisisFlowchart")),
   },
   {
     id: "ans-pathway",
@@ -61,7 +61,7 @@ export const FLOWCHART_AUDIT_REGISTRY: FlowchartAuditEntry[] = [
     route: "/physiology/autonomic-nervous",
     expectedGroups: 4, // 4 pathway groups
     component: lazy(() =>
-      import("@/components/diagrams/ANSPathwayDiagram").then((m) => ({
+      import("@/components/diagrams/physiology/ANSPathwayDiagram").then((m) => ({
         default: m.ANSPathwayDiagram,
       })),
     ),
@@ -71,7 +71,7 @@ export const FLOWCHART_AUDIT_REGISTRY: FlowchartAuditEntry[] = [
     name: "Post-cardiac arrest prognostication timeline",
     route: "/intensive-care/post-cardiac-arrest",
     expectedGroups: 6, // TTM phase + 5 modality bars
-    component: lazy(() => import("@/components/diagrams/PostCardiacArrestProgDiagram")),
+    component: lazy(() => import("@/components/diagrams/intensive-care/PostCardiacArrestProgDiagram")),
   },
   {
     id: "military-roles-flow",
@@ -79,7 +79,7 @@ export const FLOWCHART_AUDIT_REGISTRY: FlowchartAuditEntry[] = [
     route: "/perioperative/military-anaesthesia",
     expectedGroups: 5, // 5 NATO Role nodes
     component: lazy(() =>
-      import("@/components/diagrams/MilitaryRolesFlowDiagram").then((m) => ({
+      import("@/components/diagrams/clinical/MilitaryRolesFlowDiagram").then((m) => ({
         default: m.MilitaryRolesFlowDiagram,
       })),
     ),
@@ -90,7 +90,7 @@ export const FLOWCHART_AUDIT_REGISTRY: FlowchartAuditEntry[] = [
     route: "/perioperative/ncepod-classification",
     expectedGroups: 4, // 4 urgency tier wedges
     component: lazy(() =>
-      import("@/components/diagrams/NCEPODClassificationDiagram").then((m) => ({
+      import("@/components/diagrams/clinical/NCEPODClassificationDiagram").then((m) => ({
         default: m.NCEPODClassificationDiagram,
       })),
     ),
@@ -100,6 +100,6 @@ export const FLOWCHART_AUDIT_REGISTRY: FlowchartAuditEntry[] = [
     name: "Sepsis vasopressor escalation",
     route: "/intensive-care/sepsis",
     expectedGroups: 4, // 4 escalation tiers
-    component: lazy(() => import("@/components/diagrams/SepsisManagementDiagram")),
+    component: lazy(() => import("@/components/diagrams/intensive-care/SepsisManagementDiagram")),
   },
 ];

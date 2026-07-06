@@ -10,13 +10,13 @@ const spinalAnatomyFaqs: Array<[string, string]> = [
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { spinalAnatomyQuestions } from "@/data/quizzes";
-import SpinalCordCrossSectionDiagram from "@/components/diagrams/SpinalCordCrossSectionDiagram";
-import SpinalCordAxialDiagram from "@/components/diagrams/SpinalCordAxialDiagram";
-import SpinalCordSagittalDiagram from "@/components/diagrams/SpinalCordSagittalDiagram";
-import DermatomeMyotomeDiagram from "@/components/diagrams/DermatomeMyotomeDiagram";
-import InteractiveDermatomeMap from "@/components/diagrams/InteractiveDermatomeMap";
-import EpiduralSpaceDiagram from "@/components/diagrams/EpiduralSpaceDiagram";
-import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import SpinalCordCrossSectionDiagram from "@/components/diagrams/anatomy/SpinalCordCrossSectionDiagram";
+import SpinalCordAxialDiagram from "@/components/diagrams/anatomy/SpinalCordAxialDiagram";
+import SpinalCordSagittalDiagram from "@/components/diagrams/anatomy/SpinalCordSagittalDiagram";
+import DermatomeMyotomeDiagram from "@/components/diagrams/anatomy/DermatomeMyotomeDiagram";
+import InteractiveDermatomeMap from "@/components/diagrams/anatomy/InteractiveDermatomeMap";
+import EpiduralSpaceDiagram from "@/components/diagrams/anatomy/EpiduralSpaceDiagram";
+import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { spinalFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 

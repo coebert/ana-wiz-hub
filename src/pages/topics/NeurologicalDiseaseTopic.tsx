@@ -7,7 +7,7 @@ import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { neurologicalDiseaseQuestions } from "@/data/quizzes";
 import { Link } from "react-router-dom";
-import MGNMBASensitivityDiagram from "@/components/diagrams/MGNMBASensitivityDiagram";
+import MGNMBASensitivityDiagram from "@/components/diagrams/perioperative/MGNMBASensitivityDiagram";
 import {
   MGPathophysDiagram,
   EpilepsyPathophysDiagram,
@@ -16,8 +16,8 @@ import {
   MNDPathophysDiagram,
   MDPathophysDiagram,
   SCIPathophysDiagram,
-} from "@/components/diagrams/NeuroDiseasePathophysDiagram";
-import { PathophysDrugMapper } from "@/components/diagrams/PathophysDrugMapper";
+} from "@/components/diagrams/perioperative/NeuroDiseasePathophysDiagram";
+import { PathophysDrugMapper } from "@/components/diagrams/perioperative/PathophysDrugMapper";
 import { FRCARelevanceCallout } from "@/components/topic/FRCARelevanceCallout";
 import {
   mgMechanisms,

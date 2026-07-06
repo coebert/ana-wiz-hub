@@ -9,16 +9,16 @@ const cardiacAnatomyFaqs: Array<[string, string]> = [
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { cardiacAnatomyQuestions } from "@/data/quizzes";
-import CardiacAnatomyDiagram from "@/components/diagrams/CardiacAnatomyDiagram";
+import CardiacAnatomyDiagram from "@/components/diagrams/anatomy/CardiacAnatomyDiagram";
 import systemicArteriesPlate from "@/assets/plates/systemic-arteries-openstax.jpg.asset.json";
-import CoronaryTerritoryMapDiagram from "@/components/diagrams/CoronaryTerritoryMapDiagram";
-import CoronaryTreeDiagram from "@/components/diagrams/CoronaryTreeDiagram";
-import LVBullseyeDiagram from "@/components/diagrams/LVBullseyeDiagram";
-import TwelveLeadEcgDiagram from "@/components/diagrams/TwelveLeadEcgDiagram";
-import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDiagram";
+import CoronaryTerritoryMapDiagram from "@/components/diagrams/anatomy/CoronaryTerritoryMapDiagram";
+import CoronaryTreeDiagram from "@/components/diagrams/anatomy/CoronaryTreeDiagram";
+import LVBullseyeDiagram from "@/components/diagrams/anatomy/LVBullseyeDiagram";
+import TwelveLeadEcgDiagram from "@/components/diagrams/intensive-care/TwelveLeadEcgDiagram";
+import CardiacConductionDiagram from "@/components/diagrams/intensive-care/CardiacConductionDiagram";
 import AnteriorCardiacPlate from "@/components/diagrams/anatomy/AnteriorCardiacPlate";
-import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
-import { DiagramTabs } from "@/components/diagrams/DiagramTabs";
+import { CoronarySelectionProvider } from "@/components/diagrams/intensive-care/coronarySelectionContext";
+import { DiagramTabs } from "@/components/diagrams/physiology/DiagramTabs";
 import { Exam } from "@/data/curriculum";
 
 const CardiacAnatomyTopic = () => {

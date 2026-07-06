@@ -4,12 +4,12 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { DiagramSection } from "@/components/topic/DiagramSection";
-import FinapresDiagram from "@/components/diagrams/FinapresDiagram";
-import NIBPOscillometricDiagram from "@/components/diagrams/NIBPOscillometricDiagram";
-import AuscultatoryNIBPDiagram from "@/components/diagrams/AuscultatoryNIBPDiagram";
-import NIBPvsArterialDiagram from "@/components/diagrams/NIBPvsArterialDiagram";
-import ManometerDiagram from "@/components/diagrams/ManometerDiagram";
-import DampingCurvesDiagram from "@/components/diagrams/DampingCurvesDiagram";
+import FinapresDiagram from "@/components/diagrams/physics/FinapresDiagram";
+import NIBPOscillometricDiagram from "@/components/diagrams/physics/NIBPOscillometricDiagram";
+import AuscultatoryNIBPDiagram from "@/components/diagrams/physics/AuscultatoryNIBPDiagram";
+import NIBPvsArterialDiagram from "@/components/diagrams/physics/NIBPvsArterialDiagram";
+import ManometerDiagram from "@/components/diagrams/physics/ManometerDiagram";
+import DampingCurvesDiagram from "@/components/diagrams/physics/DampingCurvesDiagram";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";

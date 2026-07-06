@@ -4,8 +4,8 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { prognosticationIcuQuestions } from "@/data/quizzes";
-import PostCardiacArrestProgDiagram from "@/components/diagrams/PostCardiacArrestProgDiagram";
-import APACHEIICalculator from "@/components/diagrams/APACHEIICalculator";
+import PostCardiacArrestProgDiagram from "@/components/diagrams/intensive-care/PostCardiacArrestProgDiagram";
+import APACHEIICalculator from "@/components/diagrams/intensive-care/APACHEIICalculator";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";

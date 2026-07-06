@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { ExamSection } from "@/components/exam/ExamSection";
-import EEGTraceDiagram from "@/components/diagrams/EEGTraceDiagram";
-import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
+import EEGTraceDiagram from "@/components/diagrams/physics/EEGTraceDiagram";
+import ExpandableEcgCard from "@/components/diagrams/intensive-care/ExpandableEcgCard";
 import { eegTraceContent, dsaSpectrogramContent, bisTrendContent } from "@/components/diagrams/ecgExpandedContent";
-import DSASpectrogramDiagram from "@/components/diagrams/DSASpectrogramDiagram";
-import BISTrendDiagram from "@/components/diagrams/BISTrendDiagram";
+import DSASpectrogramDiagram from "@/components/diagrams/physics/DSASpectrogramDiagram";
+import BISTrendDiagram from "@/components/diagrams/physics/BISTrendDiagram";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";

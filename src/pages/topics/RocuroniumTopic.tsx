@@ -6,9 +6,9 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { muscleRelaxantsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
-import { TOFPatternDiagram } from "@/components/diagrams/TOFPatternDiagram";
-import { NMBATimelineDiagram } from "@/components/diagrams/NMBATimelineDiagram";
-import SugammadexDiagram from "@/components/diagrams/SugammadexDiagram";
+import { TOFPatternDiagram } from "@/components/diagrams/pharmacology/TOFPatternDiagram";
+import { NMBATimelineDiagram } from "@/components/diagrams/pharmacology/NMBATimelineDiagram";
+import SugammadexDiagram from "@/components/diagrams/pharmacology/SugammadexDiagram";
 
 const workedExamples: WorkedExample[] = [
   {

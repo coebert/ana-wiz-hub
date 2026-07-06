@@ -3,8 +3,8 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { acuteLiverFailureQuestions } from "@/data/quizzes";
-import CLIFCACLFDiagram from "@/components/diagrams/CLIFCACLFDiagram";
-import ALFCerebralOedemaDiagram from "@/components/diagrams/ALFCerebralOedemaDiagram";
+import CLIFCACLFDiagram from "@/components/diagrams/intensive-care/CLIFCACLFDiagram";
+import ALFCerebralOedemaDiagram from "@/components/diagrams/intensive-care/ALFCerebralOedemaDiagram";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

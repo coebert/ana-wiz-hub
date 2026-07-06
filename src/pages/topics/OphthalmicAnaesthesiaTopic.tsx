@@ -12,7 +12,7 @@ import {
   PeribulbarBlockIllustration,
   RetrobulbarBlockIllustration,
   TopicalIntracameralIllustration,
-} from "@/components/diagrams/EyeBlockIllustrations";
+} from "@/components/diagrams/clinical/EyeBlockIllustrations";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import {
   Accordion,

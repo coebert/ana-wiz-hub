@@ -5,7 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { preoperativeAssessmentQuestions } from "@/data/quizzes";
-import CPETNinePanelDiagram from "@/components/diagrams/CPETNinePanelDiagram";
+import CPETNinePanelDiagram from "@/components/diagrams/perioperative/CPETNinePanelDiagram";
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import { CheckCircle2, AlertTriangle, XCircle, FlaskConical, Heart } from "lucide-react";
 import { Exam } from "@/data/curriculum";

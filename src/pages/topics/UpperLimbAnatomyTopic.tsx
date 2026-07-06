@@ -9,13 +9,13 @@ const upperLimbAnatomyFaqs: Array<[string, string]> = [
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { upperLimbAnatomyQuestions } from "@/data/quizzes";
-import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
-import BrachialPlexusUltrasoundDiagram from "@/components/diagrams/BrachialPlexusUltrasoundDiagram";
-import UpperLimbArteriesDiagram from "@/components/diagrams/UpperLimbArteriesDiagram";
-import UpperLimbBranchesDiagram from "@/components/diagrams/UpperLimbBranchesDiagram";
-import AntecubitalFossaDiagram from "@/components/diagrams/AntecubitalFossaDiagram";
-import UpperLimbVeinsDiagram from "@/components/diagrams/UpperLimbVeinsDiagram";
-import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import BrachialPlexusDiagram from "@/components/diagrams/anatomy/BrachialPlexusDiagram";
+import BrachialPlexusUltrasoundDiagram from "@/components/diagrams/anatomy/BrachialPlexusUltrasoundDiagram";
+import UpperLimbArteriesDiagram from "@/components/diagrams/anatomy/UpperLimbArteriesDiagram";
+import UpperLimbBranchesDiagram from "@/components/diagrams/anatomy/UpperLimbBranchesDiagram";
+import AntecubitalFossaDiagram from "@/components/diagrams/anatomy/AntecubitalFossaDiagram";
+import UpperLimbVeinsDiagram from "@/components/diagrams/anatomy/UpperLimbVeinsDiagram";
+import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { upperLimbFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 

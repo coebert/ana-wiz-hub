@@ -3,11 +3,11 @@ import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { muscleRelaxantsQuiz } from "@/data/quizzes";
-import MuscleRelaxantStructures from "@/components/diagrams/MuscleRelaxantStructures";
-import { NMBAMechanismDiagram } from "@/components/diagrams/NMBAMechanismDiagram";
-import { TOFPatternDiagram } from "@/components/diagrams/TOFPatternDiagram";
-import { NMBATimelineDiagram } from "@/components/diagrams/NMBATimelineDiagram";
-import SugammadexDiagram from "@/components/diagrams/SugammadexDiagram";
+import MuscleRelaxantStructures from "@/components/diagrams/pharmacology/MuscleRelaxantStructures";
+import { NMBAMechanismDiagram } from "@/components/diagrams/pharmacology/NMBAMechanismDiagram";
+import { TOFPatternDiagram } from "@/components/diagrams/pharmacology/TOFPatternDiagram";
+import { NMBATimelineDiagram } from "@/components/diagrams/pharmacology/NMBATimelineDiagram";
+import SugammadexDiagram from "@/components/diagrams/pharmacology/SugammadexDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

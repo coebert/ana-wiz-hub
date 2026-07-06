@@ -3,17 +3,17 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { arrhythmiasEcgIcuQuestions } from "@/data/quizzes";
-import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDiagram";
-import HeartBlockDiagram from "@/components/diagrams/HeartBlockDiagram";
-import BundleBranchBlockDiagram from "@/components/diagrams/BundleBranchBlockDiagram";
-import TachyarrhythmiaDiagram from "@/components/diagrams/TachyarrhythmiaDiagram";
-import BradyarrhythmiaDiagram from "@/components/diagrams/BradyarrhythmiaDiagram";
-import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
-import TwelveLeadEcgDiagram from "@/components/diagrams/TwelveLeadEcgDiagram";
-import StemiLocalisationDiagram from "@/components/diagrams/StemiLocalisationDiagram";
-import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
-import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
-import WellensSyndromeDiagram from "@/components/diagrams/WellensSyndromeDiagram";
+import CardiacConductionDiagram from "@/components/diagrams/intensive-care/CardiacConductionDiagram";
+import HeartBlockDiagram from "@/components/diagrams/intensive-care/HeartBlockDiagram";
+import BundleBranchBlockDiagram from "@/components/diagrams/intensive-care/BundleBranchBlockDiagram";
+import TachyarrhythmiaDiagram from "@/components/diagrams/intensive-care/TachyarrhythmiaDiagram";
+import BradyarrhythmiaDiagram from "@/components/diagrams/intensive-care/BradyarrhythmiaDiagram";
+import PacingDevicesDiagram from "@/components/diagrams/intensive-care/PacingDevicesDiagram";
+import TwelveLeadEcgDiagram from "@/components/diagrams/intensive-care/TwelveLeadEcgDiagram";
+import StemiLocalisationDiagram from "@/components/diagrams/intensive-care/StemiLocalisationDiagram";
+import { CoronarySelectionProvider } from "@/components/diagrams/intensive-care/coronarySelectionContext";
+import ExpandableEcgCard from "@/components/diagrams/intensive-care/ExpandableEcgCard";
+import WellensSyndromeDiagram from "@/components/diagrams/intensive-care/WellensSyndromeDiagram";
 import {
   bradyContent,
   heartBlockContent,

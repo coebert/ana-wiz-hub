@@ -3,17 +3,17 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { Exam } from "@/data/curriculum";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
-import { CardiacOutputMonitorDiagram } from "@/components/diagrams/CardiacOutputMonitorDiagram";
-import PiCCODiagram from "@/components/diagrams/PiCCODiagram";
-import PACDiagram from "@/components/diagrams/PACDiagram";
-import EchoDiagram from "@/components/diagrams/EchoDiagram";
-import TOEViewsDiagram from "@/components/diagrams/TOEViewsDiagram";
-import MModeDiagram from "@/components/diagrams/MModeDiagram";
-import MModePathologyDiagram from "@/components/diagrams/MModePathologyDiagram";
-import OesophagealDopplerDiagram from "@/components/diagrams/OesophagealDopplerDiagram";
-import ThermodilutionDiagram from "@/components/diagrams/ThermodilutionDiagram";
+import { CardiacOutputMonitorDiagram } from "@/components/diagrams/intensive-care/CardiacOutputMonitorDiagram";
+import PiCCODiagram from "@/components/diagrams/intensive-care/PiCCODiagram";
+import PACDiagram from "@/components/diagrams/intensive-care/PACDiagram";
+import EchoDiagram from "@/components/diagrams/intensive-care/EchoDiagram";
+import TOEViewsDiagram from "@/components/diagrams/intensive-care/TOEViewsDiagram";
+import MModeDiagram from "@/components/diagrams/intensive-care/MModeDiagram";
+import MModePathologyDiagram from "@/components/diagrams/intensive-care/MModePathologyDiagram";
+import OesophagealDopplerDiagram from "@/components/diagrams/intensive-care/OesophagealDopplerDiagram";
+import ThermodilutionDiagram from "@/components/diagrams/intensive-care/ThermodilutionDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
-import COPitfallsChecklist from "@/components/diagrams/COPitfallsChecklist";
+import COPitfallsChecklist from "@/components/diagrams/intensive-care/COPitfallsChecklist";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const cardiacOutputMonitoringFaqs: Array<[string, string]> = [

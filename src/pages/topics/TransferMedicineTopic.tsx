@@ -4,7 +4,7 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { CriticalTransferChecklist } from "@/components/clinical/CriticalTransferChecklist";
-import { TransportVentilationDiagram } from "@/components/diagrams/TransportVentilationDiagram";
+import { TransportVentilationDiagram } from "@/components/diagrams/clinical/TransportVentilationDiagram";
 import { transferMedicineQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";

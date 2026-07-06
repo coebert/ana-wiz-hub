@@ -1,4 +1,4 @@
-import { MechanismNode } from "@/components/diagrams/PathophysDrugMapper";
+import { MechanismNode } from "@/components/diagrams/perioperative/PathophysDrugMapper";
 
 export const mgMechanisms: MechanismNode[] = [
   {

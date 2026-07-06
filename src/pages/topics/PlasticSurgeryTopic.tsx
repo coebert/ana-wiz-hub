@@ -4,7 +4,7 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { plasticSurgeryQuestions } from "@/data/quizzes";
-import FreeFlaPerfusionDiagram from "@/components/diagrams/FreeFlaPerfusionDiagram";
+import FreeFlaPerfusionDiagram from "@/components/diagrams/clinical/FreeFlaPerfusionDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";

@@ -1,4 +1,4 @@
-import type { CorPictumPlate } from "@/components/diagrams/CorPictumFolio";
+import type { CorPictumPlate } from "@/components/diagrams/anatomy/CorPictumFolio";
 import { Exam } from "@/data/curriculum";
 
 import airwaySagittal from "@/assets/plates/airway-sagittal.jpg";

@@ -4,7 +4,7 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
-import { OxygenDissociationCurve } from "@/components/diagrams/OxygenDissociationCurve";
+import { OxygenDissociationCurve } from "@/components/diagrams/physiology/OxygenDissociationCurve";
 import { oxygenHaemoglobinQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 

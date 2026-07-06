@@ -4,7 +4,7 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { abgAnalyserQuestions } from "@/data/quizzes";
-import ABGAnalyserDiagram from "@/components/diagrams/ABGAnalyserDiagram";
+import ABGAnalyserDiagram from "@/components/diagrams/physics/ABGAnalyserDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

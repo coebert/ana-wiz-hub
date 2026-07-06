@@ -6,11 +6,11 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { StickyTOC } from "@/components/layout/StickyTOC";
 import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { neurointensiveCareQuestions } from "@/data/quizzes";
-import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevicesDiagram";
-import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
-import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
-import MyastheniaCrisisFlowchart from "@/components/diagrams/MyastheniaCrisisFlowchart";
-import MyasthenicVsCholinergicComparison from "@/components/diagrams/MyasthenicVsCholinergicComparison";
+import ICPMonitoringDevicesDiagram from "@/components/diagrams/intensive-care/ICPMonitoringDevicesDiagram";
+import CerebralMicrodialysisDiagram from "@/components/diagrams/intensive-care/CerebralMicrodialysisDiagram";
+import MultimodalNeuromonitoringDiagram from "@/components/diagrams/intensive-care/MultimodalNeuromonitoringDiagram";
+import MyastheniaCrisisFlowchart from "@/components/diagrams/intensive-care/MyastheniaCrisisFlowchart";
+import MyasthenicVsCholinergicComparison from "@/components/diagrams/intensive-care/MyasthenicVsCholinergicComparison";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { SnodReferralDecider } from "@/components/clinical/SnodReferralDecider";
 import { DbiTimeline } from "@/components/clinical/DbiTimeline";
@@ -19,10 +19,10 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { ChevronRight } from "lucide-react";
 
 const DecompressiveCraniectomyDecisionDiagram = lazy(
-  () => import("@/components/diagrams/DecompressiveCraniectomyDecisionDiagram")
+  () => import("@/components/diagrams/intensive-care/DecompressiveCraniectomyDecisionDiagram")
 );
 const DecompressiveCraniectomyTimelineDiagram = lazy(
-  () => import("@/components/diagrams/DecompressiveCraniectomyTimelineDiagram")
+  () => import("@/components/diagrams/intensive-care/DecompressiveCraniectomyTimelineDiagram")
 );
 
 const tocItems = [

@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { SectionLayout } from "@/components/layout/SectionLayout";
-import CapnographyWaveformDiagram from "@/components/diagrams/CapnographyWaveformDiagram";
+import CapnographyWaveformDiagram from "@/components/diagrams/physics/CapnographyWaveformDiagram";
 
 /**
  * SEO-focused companion page to /physics/capnography.

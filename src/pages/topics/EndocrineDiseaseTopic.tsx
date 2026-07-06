@@ -5,11 +5,11 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { endocrineDiseaseQuestions } from "@/data/quizzes";
-import PerioperativeDiabetesDiagram from "@/components/diagrams/PerioperativeDiabetesDiagram";
-import ThyroidStormDiagram from "@/components/diagrams/ThyroidStormDiagram";
-import PhaeochromocytomaDiagram from "@/components/diagrams/PhaeochromocytomaDiagram";
-import AddisonianCrisisDiagram from "@/components/diagrams/AddisonianCrisisDiagram";
-import CarcinoidSyndromeDiagram from "@/components/diagrams/CarcinoidSyndromeDiagram";
+import PerioperativeDiabetesDiagram from "@/components/diagrams/perioperative/PerioperativeDiabetesDiagram";
+import ThyroidStormDiagram from "@/components/diagrams/perioperative/ThyroidStormDiagram";
+import PhaeochromocytomaDiagram from "@/components/diagrams/perioperative/PhaeochromocytomaDiagram";
+import AddisonianCrisisDiagram from "@/components/diagrams/perioperative/AddisonianCrisisDiagram";
+import CarcinoidSyndromeDiagram from "@/components/diagrams/perioperative/CarcinoidSyndromeDiagram";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 

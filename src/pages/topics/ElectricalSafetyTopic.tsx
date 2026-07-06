@@ -3,12 +3,12 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { electricalSafetyQuiz } from "@/data/quizzes";
-import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagram";
-import { DefibrillatorCapacitorDiagram } from "@/components/diagrams/DefibrillatorCapacitorDiagram";
-import { IsolationTransformerDiagram } from "@/components/diagrams/IsolationTransformerDiagram";
-import { RCDDiagram } from "@/components/diagrams/RCDDiagram";
-import { MicroshockDiagram } from "@/components/diagrams/MicroshockDiagram";
-import { DiathermyDiagram } from "@/components/diagrams/DiathermyDiagram";
+import ElectricalSafetyDiagram from "@/components/diagrams/physics/ElectricalSafetyDiagram";
+import { DefibrillatorCapacitorDiagram } from "@/components/diagrams/physics/DefibrillatorCapacitorDiagram";
+import { IsolationTransformerDiagram } from "@/components/diagrams/physics/IsolationTransformerDiagram";
+import { RCDDiagram } from "@/components/diagrams/physics/RCDDiagram";
+import { MicroshockDiagram } from "@/components/diagrams/physics/MicroshockDiagram";
+import { DiathermyDiagram } from "@/components/diagrams/physics/DiathermyDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

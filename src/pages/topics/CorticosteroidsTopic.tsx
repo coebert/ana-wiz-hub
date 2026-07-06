@@ -4,8 +4,8 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { corticosteroidsQuestions } from "@/data/quizzes";
-import { CorticosteroidPharmacodynamicsDiagram } from "@/components/diagrams/CorticosteroidPharmacodynamicsDiagram";
-import { HPAAxisSuppressionDiagram } from "@/components/diagrams/HPAAxisSuppressionDiagram";
+import { CorticosteroidPharmacodynamicsDiagram } from "@/components/diagrams/pharmacology/CorticosteroidPharmacodynamicsDiagram";
+import { HPAAxisSuppressionDiagram } from "@/components/diagrams/pharmacology/HPAAxisSuppressionDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

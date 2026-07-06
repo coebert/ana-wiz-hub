@@ -11,9 +11,9 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { Cite } from "@/components/references/Cite";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { brachialPlexusQuestions } from "@/data/quizzes";
-import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
-import BrachialPlexusUltrasoundDiagram from "@/components/diagrams/BrachialPlexusUltrasoundDiagram";
-import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import BrachialPlexusDiagram from "@/components/diagrams/anatomy/BrachialPlexusDiagram";
+import BrachialPlexusUltrasoundDiagram from "@/components/diagrams/anatomy/BrachialPlexusUltrasoundDiagram";
+import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { brachialFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 

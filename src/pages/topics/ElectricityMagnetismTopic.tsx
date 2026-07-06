@@ -3,7 +3,7 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
-import ElectricityMagnetismDiagram from "@/components/diagrams/ElectricityMagnetismDiagram";
+import ElectricityMagnetismDiagram from "@/components/diagrams/physics/ElectricityMagnetismDiagram";
 import { electricityMagnetismQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
