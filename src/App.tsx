@@ -173,13 +173,7 @@ const App = () => (
         </Suspense>
         </VisitTrackerWrapper>
       </BrowserRouter>
-    </TooltipProvider>
-    </AuthProvider>
-    </UnitPreferenceProvider>
-    </MotionPreferenceProvider>
-    </ExamFilterProvider>
-    </ProgressProvider>
-  </QueryClientProvider>
+  </AppProviders>
 );
 
 export default App;
