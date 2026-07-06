@@ -12,7 +12,8 @@ import { SeeAlso } from "@/components/topic/SeeAlso";
 import { TopicCompletionToggle } from "@/components/topic/TopicCompletionToggle";
 import { ReportInaccuracyDialog } from "@/components/feedback/ReportInaccuracyDialog";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
-import { TopicExamFilterBar } from "@/components/topic/TopicExamFilterBar";
+import { ExamBadgeDedupeProvider } from "@/components/exam/ExamBadgeDedupeContext";
+
 import { LazyDiagrams } from "@/components/topic/LazyDiagrams";
 import { ExamSummary } from "@/components/exam/ExamSummary";
 import { TopicPodcastPlayer } from "@/components/topic/TopicPodcastPlayer";
