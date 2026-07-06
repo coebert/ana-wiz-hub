@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ChevronDown, ListOrdered } from "lucide-react";
 
 export interface TocItem {
   id: string;
