@@ -12,6 +12,7 @@
 import { type ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ProgressProvider } from "@/contexts/ProgressContext";
+import { SubsectionProgressProvider } from "@/contexts/SubsectionProgressContext";
 import { AuthProvider } from "@/hooks/useAuth";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
