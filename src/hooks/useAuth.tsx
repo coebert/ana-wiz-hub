@@ -170,10 +170,48 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    // Best-effort revoke the Supabase session. Swallow errors so a network
+    // blip can't strand the user in a half-signed-out state — we always
+    // clear local caches + reload below.
+    try {
+      await supabase.auth.signOut();
+    } catch (e) {
+      console.warn("[auth] supabase.signOut failed, clearing locally", e);
+    }
+
+    setSession(null);
+    setUser(null);
     setIsAdmin(false);
     resolvedAdminForUserRef.current = null;
     clearAdminCache();
+
+    // Purge per-user progress caches so the next account (e.g. a different
+    // Apple ID) does NOT union-merge the previous user's local ticks into
+    // their cloud rows on first sign-in.
+    try {
+      const KEYS = [
+        "anaesthesia-core-progress",
+        "anaesthesia-core-subsection-progress",
+        "anaesthesia-core-recent-topics",
+      ];
+      for (const k of KEYS) localStorage.removeItem(k);
+      // Drop every "…-cloud-migrated:<userId>" flag so a returning user
+      // re-hydrates cleanly from the cloud on next sign-in.
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const key = localStorage.key(i);
+        if (key && key.includes("-cloud-migrated:")) localStorage.removeItem(key);
+      }
+      window.dispatchEvent(new CustomEvent("recent-topics-updated"));
+    } catch {
+      /* ignore quota / access errors */
+    }
+
+    // Hard reload to the landing page so every in-memory context
+    // (ProgressContext, SubsectionProgressContext, recent topics) reboots
+    // from the now-empty localStorage — no stale sets can leak across users.
+    if (typeof window !== "undefined") {
+      window.location.assign("/");
+    }
   };
 
   return (
