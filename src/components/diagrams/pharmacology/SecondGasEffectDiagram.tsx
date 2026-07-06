@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Animated diagrams illustrating two N₂O-related phenomena:

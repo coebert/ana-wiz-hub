@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createLinearScale } from "@/lib/diagram-scale";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const AlveolarGasEquationDiagram = () => {
   const [fio2, setFio2] = useState(21);

@@ -1,5 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "@/components/diagrams/shared/AnimatedMechanism";
-import { svgNodeProps } from "./_shared/DiagramFigure";
+import { svgNodeProps } from "../_shared/DiagramFigure";
 
 /**
  * Myasthenic crisis — animated ICU decision flow.

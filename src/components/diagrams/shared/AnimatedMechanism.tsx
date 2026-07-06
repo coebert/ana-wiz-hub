@@ -2,7 +2,7 @@ import { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "re
 import { Pause, Play, RotateCcw, ChevronLeft, ChevronRight, BookOpen, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const slugifyLabel = (label: string) =>
   label

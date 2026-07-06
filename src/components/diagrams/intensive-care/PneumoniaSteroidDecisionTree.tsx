@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * "Should I give steroids?" decision tree for the unwell pneumonia patient.

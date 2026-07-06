@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 export const AcidsBasesDiagram = () => {
   const [pka, setPka] = useState(7.4);

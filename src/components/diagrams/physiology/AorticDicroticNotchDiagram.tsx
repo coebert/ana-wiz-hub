@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Pause, Play, RotateCcw } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Animated aortic pressure waveform that highlights the dichrotic notch as

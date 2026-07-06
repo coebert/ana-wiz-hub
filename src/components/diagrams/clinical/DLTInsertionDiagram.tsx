@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PlayCircle } from "lucide-react";
 import GuidedWalkthroughOverlay, { WalkthroughStep } from "@/components/diagrams/shared/GuidedWalkthroughOverlay";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 interface Step {
   id: number;

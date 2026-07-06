@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Side-by-side analgesic profile: single-shot peripheral nerve block vs

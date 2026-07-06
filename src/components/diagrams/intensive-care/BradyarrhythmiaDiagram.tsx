@@ -2,7 +2,7 @@ import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { EcgStripFrame } from "@/components/diagrams/shared/EcgStripFrame";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Bradyarrhythmia series — sinus brady, sinus arrest, junctional escape,

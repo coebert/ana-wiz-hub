@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Activity, Eye, Thermometer, Droplets, HeartPulse, Brain } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type ToxidromeKey = "anticholinergic" | "cholinergic" | "sympathomimetic" | "opioid" | "sedative";
 

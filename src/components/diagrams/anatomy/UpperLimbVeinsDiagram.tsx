@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type VeinKey = "cephalic" | "basilic" | "median-cubital" | "median-forearm" | "axillary" | "subclavian" | "brachiocephalic" | "deep-veins" | "dorsal-venous" | "external-jugular";
 

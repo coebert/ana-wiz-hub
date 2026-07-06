@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const hiatus = [
   { name: "Aortic hiatus", level: "T12", contents: "Aorta, thoracic duct, azygos vein", color: "hsl(0, 60%, 55%)", clinical: "Passes BEHIND the crura — not through the diaphragm. Aorta is therefore not compressed during diaphragmatic contraction." },

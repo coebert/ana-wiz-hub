@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const agents = [
   { name: "Suxamethonium", type: "depol", onset: 0.5, duration: 8, color: "hsl(0, 70%, 55%)", intubation: 1 },

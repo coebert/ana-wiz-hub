@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const ManleyMVDDiagram = () => {
   const [phase, setPhase] = useState<"A-delivers" | "B-delivers">("A-delivers");

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type StepId = "trigger" | "pvr" | "rv-dilate" | "septal" | "lv-fill" | "hypotension" | "ischaemia";
 

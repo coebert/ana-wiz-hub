@@ -1,4 +1,4 @@
-import { DiagramFigure, svgImgProps } from "./_shared/DiagramFigure";
+import { DiagramFigure, svgImgProps } from "../_shared/DiagramFigure";
 
 /**
  * DIC pathophysiology — systemic activation of coagulation with consumption.

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Shared visual grammar for nerve plexus diagrams (cervical, brachial, lumbosacral).

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * JetVentilationCycleAnimation — animated single-breath cycle for low-frequency

@@ -1,4 +1,4 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 /**
  * Animated pathophysiology diagram — Addisonian crisis.
  * HPA axis suppression → cortisol/aldosterone collapse →

@@ -1,4 +1,4 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Static educational diagram explaining the chain

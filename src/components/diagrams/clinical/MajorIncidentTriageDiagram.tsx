@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Pause, Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { svgNodeProps } from "./_shared/DiagramFigure";
+import { svgNodeProps } from "../_shared/DiagramFigure";
 
 /**
  * Animated major-incident triage flow.

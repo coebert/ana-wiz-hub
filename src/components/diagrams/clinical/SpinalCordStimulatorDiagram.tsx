@@ -1,4 +1,4 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 /**
  * SpinalCordStimulatorDiagram
  * Annotated sagittal/posterior schematic of a spinal cord stimulator system:

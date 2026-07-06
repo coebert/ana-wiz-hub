@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type VesselKey = "ica-l" | "ica-r" | "aca-l" | "aca-r" | "acomm" | "mca-l" | "mca-r" | "pcomm-l" | "pcomm-r" | "pca-l" | "pca-r" | "basilar" | "vert-l" | "vert-r" | "sca-l" | "sca-r" | "aica-l" | "aica-r" | "pica-l" | "pica-r" | "ophthalmic-l" | "ophthalmic-r";
 

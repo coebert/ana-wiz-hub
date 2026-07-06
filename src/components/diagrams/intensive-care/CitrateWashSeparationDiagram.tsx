@@ -1,4 +1,4 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 /**
  * Animated schematic of how citrate (free Cit³⁻) and the Ca–citrate complex
  * are removed from salvaged blood during the centrifuge wash cycle.

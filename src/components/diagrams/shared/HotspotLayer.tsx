@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, ReactNode } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 export interface HotspotDef {
   id: string;

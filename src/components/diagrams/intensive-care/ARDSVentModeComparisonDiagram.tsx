@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Side-by-side animated ventilator waveform comparison for ARDS:

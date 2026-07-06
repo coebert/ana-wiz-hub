@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 import { Play, Pause, RotateCcw } from "lucide-react";
 
 /**

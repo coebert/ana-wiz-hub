@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type PathwayKey = "beta-camp" | "pde-camp" | "glucagon-camp" | "ca-sensitisation" | "nak-atpase" | "direct-ca";
 

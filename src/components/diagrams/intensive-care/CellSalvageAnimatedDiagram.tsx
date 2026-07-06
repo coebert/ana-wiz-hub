@@ -1,5 +1,5 @@
 import AnimatedMechanism, { AnimatedMechanismStep } from "@/components/diagrams/shared/AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Animated schematic of intra-operative cell salvage (ICS).

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 export const RedoxElectrochemistryDiagram = () => {
   const [activeTab, setActiveTab] = useState<"redox" | "electrodes" | "radicals">("redox");

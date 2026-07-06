@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, RotateCcw, Volume2, VolumeX } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Animated auscultatory (manual / Riva-Rocci) NIBP diagram.

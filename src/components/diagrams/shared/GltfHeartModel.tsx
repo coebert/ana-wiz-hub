@@ -8,7 +8,7 @@ import { SimplifyModifier } from "three/examples/jsm/modifiers/SimplifyModifier.
 import { MeshoptDecoder } from "meshoptimizer";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useDeviceTier, type DeviceTier } from "@/lib/deviceTier";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Heart GLB loader with full optimisation pipeline:

@@ -1,5 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "@/components/diagrams/shared/AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * CICO ("can't intubate, can't oxygenate") — DAS 2015 emergency front-of-neck

@@ -5,7 +5,7 @@
 // uses the same convention.
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type NerveKey =
   | "lumbar-plexus"

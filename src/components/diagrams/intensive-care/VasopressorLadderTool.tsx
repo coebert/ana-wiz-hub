@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Vasopressor & inotrope ladder — Surviving Sepsis Campaign 2021.

@@ -3,7 +3,7 @@ import { Play, RotateCcw, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { HotspotLayer, HotspotHint, type HotspotDef } from "@/components/diagrams/shared/HotspotLayer";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Apply a "seek" to every CSS animation under the container so the user can

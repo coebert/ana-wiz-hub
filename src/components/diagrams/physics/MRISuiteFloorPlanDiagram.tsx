@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Bird's-eye view of an MRI suite.

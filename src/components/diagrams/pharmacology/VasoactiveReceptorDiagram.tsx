@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type Agent = "adrenaline" | "noradrenaline" | "phenylephrine" | "dobutamine" | "dopamine" | "isoprenaline" | "ephedrine";
 

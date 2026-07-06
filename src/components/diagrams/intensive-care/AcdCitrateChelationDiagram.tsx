@@ -1,4 +1,4 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 /**
  * Animated schematic of how ACD-A citrate chelates ionised calcium during
  * intra-operative cell salvage.

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const BagInBottleDiagram = () => {
   const [phase, setPhase] = useState<"insp" | "exp">("exp");

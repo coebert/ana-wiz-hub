@@ -1,4 +1,4 @@
-import { DiagramFigure, svgImgProps } from "./_shared/DiagramFigure";
+import { DiagramFigure, svgImgProps } from "../_shared/DiagramFigure";
 
 /**
  * Rebalanced haemostasis in liver failure — pro- and anti-coagulant factors

@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { GltfHeartModel, useHeartAssetAvailable, probeHeartAsset } from "@/components/diagrams/shared/GltfHeartModel";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 // ── Structure data ────────────────────────────────────────────────────────────
 

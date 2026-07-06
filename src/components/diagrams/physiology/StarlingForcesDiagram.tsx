@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Interactive Starling Forces diagram showing the balance of hydrostatic

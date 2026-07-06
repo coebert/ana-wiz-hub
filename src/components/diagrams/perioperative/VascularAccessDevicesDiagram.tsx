@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Hook: returns true if the user has requested reduced motion at the OS level.

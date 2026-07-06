@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Interactive comparison of paediatric physiology vs adult, by age band.

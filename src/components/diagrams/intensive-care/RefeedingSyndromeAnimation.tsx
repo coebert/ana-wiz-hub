@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnimatedMechanism, AnimatedMechanismStep } from "@/components/diagrams/shared/AnimatedMechanism";
 import LabGlossaryPopover from "@/components/clinical/LabGlossaryPopover";
 import type { LabKey as SharedLabKey, SourceLink } from "@/lib/lab-glossary";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Refeeding syndrome — pathophysiology animation.

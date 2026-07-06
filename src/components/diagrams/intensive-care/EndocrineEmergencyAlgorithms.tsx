@@ -1,6 +1,6 @@
 import { useState, ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Step-by-step emergency treatment algorithms for the four headline endocrine

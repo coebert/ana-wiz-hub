@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { svgNodeProps } from "./_shared/DiagramFigure";
+import { svgNodeProps } from "../_shared/DiagramFigure";
 
 type View = "overview" | "sympathetic" | "parasympathetic" | "adrenal" | "enteric";
 

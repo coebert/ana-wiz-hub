@@ -4,7 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, XCircle, AlertTriangle, Sun, Moon } from "lucide-react";
-import { DiagramFigure, svgNodeProps } from "./_shared/DiagramFigure";
+import { DiagramFigure, svgNodeProps } from "../_shared/DiagramFigure";
 
 type Answer = "yes" | "no" | null;
 

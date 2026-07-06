@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type LayerId = "endothelium" | "gbm" | "podocytes" | "slit-diaphragm" | "mesangial" | "filtrate";
 

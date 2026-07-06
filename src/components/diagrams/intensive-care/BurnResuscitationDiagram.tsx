@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Pause, Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Animated burn resuscitation + zone-progression diagram.

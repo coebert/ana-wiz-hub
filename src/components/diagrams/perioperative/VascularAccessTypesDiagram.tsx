@@ -1,5 +1,5 @@
 import React from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Detailed anatomical schematics of the five archetypal vascular access

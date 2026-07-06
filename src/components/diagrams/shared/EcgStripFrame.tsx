@@ -1,7 +1,7 @@
 import { useState, ReactNode } from "react";
 import { ZoomIn, ZoomOut } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type Zoom = 1 | 1.5 | 2 | 3;
 const STEPS: Zoom[] = [1, 1.5, 2, 3];

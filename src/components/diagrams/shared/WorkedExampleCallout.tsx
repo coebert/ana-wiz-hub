@@ -1,6 +1,6 @@
 import { Calculator } from "lucide-react";
 import { ReactNode } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 interface WorkedExampleCalloutProps {
   title: string;

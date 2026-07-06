@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Play, Pause, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Animated comparison of three IV sedation delivery profiles:

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { clampValue, createLinearScale, makeTicks, niceAxisMax } from "@/lib/diagram-scale";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type Phase = 1 | 2 | 3 | 4;
 

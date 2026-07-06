@@ -1,5 +1,5 @@
 import { GraduationCap, ArrowDownToLine, BookOpen, ExternalLink } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 export interface LearningPointSource {
   /** Short citation label, e.g. "BJA Educ 2018". */

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Pause, Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { DiagramFigure, svgNodeProps } from "./_shared/DiagramFigure";
+import { DiagramFigure, svgNodeProps } from "../_shared/DiagramFigure";
 
 /**
  * Animated handover / resource flow across NATO Roles 1–4 with CCAST in transit.

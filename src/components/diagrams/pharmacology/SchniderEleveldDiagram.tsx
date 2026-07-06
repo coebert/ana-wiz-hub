@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Slider } from "@/components/ui/slider";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 interface PKParams {
   V1: number; V2: number; V3: number;

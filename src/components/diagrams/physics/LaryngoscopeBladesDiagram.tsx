@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
 import InlineRef from "@/components/references/InlineRef";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type BladeKey = "macintosh" | "miller" | "mccoy" | "polio" | "wisconsin" | "videolaryngoscope";
 

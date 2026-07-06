@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { AlertTriangle, Droplets, HeartPulse, Activity, Wind } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * TRALI vs TACO Decision Tool — interactive bedside differential.

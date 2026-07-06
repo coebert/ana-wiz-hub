@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type VeinKey = "great-saphenous" | "small-saphenous" | "femoral-vein" | "popliteal-vein" | "deep-veins-leg" | "external-iliac-vein" | "dorsal-venous-arch" | "perforators" | "saphenofemoral" | "saphenopopliteal";
 

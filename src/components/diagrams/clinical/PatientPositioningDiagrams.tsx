@@ -821,7 +821,7 @@ const FrameCard = ({
  *    forehead/malar bone bears the load.
  */
 import proneFaceProtectorImg from "@/assets/positioning/prone-face-protector.jpg";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 export const ProneFaceProtectionDiagram = () => {
   return (

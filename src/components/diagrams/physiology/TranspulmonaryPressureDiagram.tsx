@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const TranspulmonaryPressureDiagram = () => {
   const [peep, setPeep] = useState(10);

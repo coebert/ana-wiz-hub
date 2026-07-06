@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Play, Pause, RotateCcw } from "lucide-react";
 import { withAlpha } from "@/lib/color-utils";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /* Channel activity windows as fraction of cycle (0..1) for each view */
 const contractileChannels: { id: string; label: string; start: number; end: number; color: string }[] = [

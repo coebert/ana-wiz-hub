@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, Pause, RotateCcw } from "lucide-react";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type Variant = "fleisch" | "lilly";
 
