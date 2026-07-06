@@ -177,6 +177,10 @@ const Landing = () => {
 
       <section className="container mx-auto px-4 py-8 md:py-10 flex-1">
 
+        <div className="max-w-6xl mx-auto mb-6">
+          <HomeDashboard />
+        </div>
+
         <ContinueBand />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 max-w-6xl mx-auto">
