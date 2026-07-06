@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ChevronDown, ListOrdered } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface TOCItem {
