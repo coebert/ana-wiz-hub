@@ -1,14 +1,8 @@
 import { lazy, Suspense } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { ProgressProvider } from "@/contexts/ProgressContext";
-import { ExamFilterProvider } from "@/contexts/ExamFilterContext";
-import { MotionPreferenceProvider } from "@/contexts/MotionPreferenceContext";
-import { UnitPreferenceProvider } from "@/contexts/UnitPreferenceContext";
-import { AuthProvider } from "@/hooks/useAuth";
+import { AppProviders } from "@/app/AppProviders";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
 import { UpdateBanner } from "@/components/UpdateBanner";
 import { CascadePerfBadge } from "@/components/diagrams/_dev/CascadePerfBadge";
