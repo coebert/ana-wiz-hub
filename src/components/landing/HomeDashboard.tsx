@@ -212,7 +212,7 @@ export const HomeDashboard = () => {
             {recommendations.map((t) => (
               <li key={t.id}>
                 <Link
-                  to={t.route}
+                  to={`/${t.section}/${t.id}`}
                   className="flex items-center justify-between px-4 py-3 hover:bg-muted/50 transition-colors"
                 >
                   <span className="text-sm text-foreground truncate mr-3">
