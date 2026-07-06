@@ -416,6 +416,8 @@ export const TopicTemplate = ({
           <ReportInaccuracyDialog topicId={topicId} topicTitle={topicTitle ?? title} />
         </div>
       </div>
+      </ExamBadgeDedupeProvider>
     </SectionLayout>
+
   );
 };
