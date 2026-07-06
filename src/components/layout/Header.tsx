@@ -178,29 +178,84 @@ export const Header = () => {
             );
           })()}
 
-          {/* Desktop nav — icons only on all desktop sizes. 15 nav items + brand + exam filter chips
-              + support link + toggles + search will not fit horizontally even at 1920px if labels are
-              shown, so we rely on icon + title/aria-label for identification on every breakpoint. */}
+          {/* Desktop nav — icons only at md/lg where labels don't fit; labelled
+              buttons at xl+ for primary items with a "More" dropdown for the
+              secondary set so nothing wraps or clips. */}
           <nav className="hidden md:flex items-center gap-0.5 min-w-0 flex-1 justify-center overflow-hidden">
-            {navItems.map((item) => {
-              const isActive = location.pathname.startsWith(item.path);
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  title={item.label}
-                  aria-label={item.label}
-                  className={`flex items-center justify-center p-2 rounded-lg transition-colors shrink-0 ${
-                    isActive
-                      ? "bg-secondary text-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  }`}
-                >
-                  <item.icon className={`h-4 w-4 ${isActive ? item.color : ""}`} />
-                </Link>
-              );
-            })}
+            {/* md/lg: all 16 icons (existing behaviour) */}
+            <div className="flex xl:hidden items-center gap-0.5">
+              {navItems.map((item) => {
+                const isActive = location.pathname.startsWith(item.path);
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    title={item.label}
+                    aria-label={item.label}
+                    className={`flex items-center justify-center p-2 rounded-lg transition-colors shrink-0 ${
+                      isActive
+                        ? "bg-secondary text-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    <item.icon className={`h-4 w-4 ${isActive ? item.color : ""}`} />
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* xl+: primary items with labels + "More" dropdown */}
+            <div className="hidden xl:flex items-center gap-0.5">
+              {primaryNavItems.map((item) => {
+                const isActive = location.pathname.startsWith(item.path);
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    aria-label={item.label}
+                    className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors shrink-0 whitespace-nowrap ${
+                      isActive
+                        ? "bg-secondary text-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    <item.icon className={`h-4 w-4 ${isActive ? item.color : ""}`} />
+                    <span>{item.label}</span>
+                  </Link>
+                );
+              })}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors shrink-0 whitespace-nowrap"
+                    aria-label="More navigation"
+                  >
+                    <MoreHorizontal className="h-4 w-4" />
+                    <span>More</span>
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-52">
+                  {overflowNavItems.map((item) => {
+                    const isActive = location.pathname.startsWith(item.path);
+                    return (
+                      <DropdownMenuItem key={item.path} asChild>
+                        <Link
+                          to={item.path}
+                          className={`flex items-center gap-2 cursor-pointer ${
+                            isActive ? "bg-secondary text-foreground" : ""
+                          }`}
+                        >
+                          <item.icon className={`h-4 w-4 ${isActive ? item.color : "text-muted-foreground"}`} />
+                          <span>{item.label}</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    );
+                  })}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </nav>
+
 
 
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
