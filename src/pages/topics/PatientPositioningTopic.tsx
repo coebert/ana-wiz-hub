@@ -7,7 +7,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { InlineRef } from "@/components/references/InlineRef";
 import { patientPositioningQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { RealismProvider, type RealismLevel } from "@/components/diagrams/patientAnatomy";
+import { RealismProvider, type RealismLevel } from "@/components/diagrams/clinical/patientAnatomy";
 import { cn } from "@/lib/utils";
 import {
   ProneFaceProtectionDiagram,
@@ -15,7 +15,7 @@ import {
   MayfieldPinSitingDiagram,
   ParkBenchDetailedDiagram,
   SittingPositionDetailedDiagram,
-} from "@/components/diagrams/PatientPositioningDiagrams";
+} from "@/components/diagrams/clinical/PatientPositioningDiagrams";
 
 const patientPositioningFaqs: Array<[string, string]> = [
   [
@@ -40,14 +40,14 @@ import {
   ParkBenchIllustration,
   SittingIllustration,
   BeachChairIllustration,
-} from "@/components/diagrams/PatientPositioningIllustrations";
+} from "@/components/diagrams/clinical/PatientPositioningIllustrations";
 import {
   SittingHydrostaticAnimation,
   VAEDetectionLadderAnimation,
   ParkBenchArmTractionAnimation,
   ProneIVCFreeAbdomenAnimation,
   PeronealNerveLithotomyAnimation,
-} from "@/components/diagrams/PatientPositioningMechanisms";
+} from "@/components/diagrams/clinical/PatientPositioningMechanisms";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const objectives = [

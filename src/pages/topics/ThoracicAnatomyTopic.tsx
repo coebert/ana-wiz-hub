@@ -9,11 +9,11 @@ const thoracicAnatomyFaqs: Array<[string, string]> = [
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { thoracicAnatomyQuestions } from "@/data/quizzes";
-import IntercostalAnatomyDiagram from "@/components/diagrams/IntercostalAnatomyDiagram";
-import ParavertebralSpaceDiagram from "@/components/diagrams/ParavertebralSpaceDiagram";
-import FirstRibDiagram from "@/components/diagrams/FirstRibDiagram";
-import DiaphragmDiagram from "@/components/diagrams/DiaphragmDiagram";
-import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import IntercostalAnatomyDiagram from "@/components/diagrams/anatomy/IntercostalAnatomyDiagram";
+import ParavertebralSpaceDiagram from "@/components/diagrams/anatomy/ParavertebralSpaceDiagram";
+import FirstRibDiagram from "@/components/diagrams/anatomy/FirstRibDiagram";
+import DiaphragmDiagram from "@/components/diagrams/anatomy/DiaphragmDiagram";
+import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { thoracicFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 

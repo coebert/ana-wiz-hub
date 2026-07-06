@@ -5,8 +5,8 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { Link } from "react-router-dom";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
-import { NMJDiagram } from "@/components/diagrams/NMJDiagram";
-import NeuromuscularMonitoringDiagram from "@/components/diagrams/NeuromuscularMonitoringDiagram";
+import { NMJDiagram } from "@/components/diagrams/physiology/NMJDiagram";
+import NeuromuscularMonitoringDiagram from "@/components/diagrams/physiology/NeuromuscularMonitoringDiagram";
 import { neuromuscularQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 

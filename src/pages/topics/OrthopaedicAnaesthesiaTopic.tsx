@@ -7,8 +7,8 @@ import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { Cite } from "@/components/references/Cite";
 import { orthopaedicAnaesthesiaQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/topic/DiagramSection";
-import { BlockAnalgesiaProfileDiagram } from "@/components/diagrams/BlockAnalgesiaProfileDiagram";
-import { LowerLimbBlocksDiagram } from "@/components/diagrams/LowerLimbBlocksDiagram";
+import { BlockAnalgesiaProfileDiagram } from "@/components/diagrams/clinical/BlockAnalgesiaProfileDiagram";
+import { LowerLimbBlocksDiagram } from "@/components/diagrams/clinical/LowerLimbBlocksDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import {

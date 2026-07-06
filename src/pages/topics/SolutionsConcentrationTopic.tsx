@@ -9,7 +9,7 @@ const solutionsConcentrationFaqs: Array<[string, string]> = [
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
-import { SolutionsConcentrationDiagram } from "@/components/diagrams/SolutionsConcentrationDiagram";
+import { SolutionsConcentrationDiagram } from "@/components/diagrams/chemistry/SolutionsConcentrationDiagram";
 import { solutionsConcentrationQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 

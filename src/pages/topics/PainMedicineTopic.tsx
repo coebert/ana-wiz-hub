@@ -5,12 +5,12 @@ import { ExamSection } from "@/components/exam/ExamSection";
 
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { painMedicineQuestions } from "@/data/quizzes";
-import { DorsalHornSynapseDiagram } from "@/components/diagrams/DorsalHornSynapseDiagram";
+import { DorsalHornSynapseDiagram } from "@/components/diagrams/clinical/DorsalHornSynapseDiagram";
 import { DiagramSection } from "@/components/topic/DiagramSection";
-import { PainMechanismsDiagram } from "@/components/diagrams/PainMechanismsDiagram";
-import OpioidConversionCalculator from "@/components/diagrams/OpioidConversionCalculator";
-import PcaEpiduralCalculator from "@/components/diagrams/PcaEpiduralCalculator";
-import { SpinalCordStimulatorDiagram } from "@/components/diagrams/SpinalCordStimulatorDiagram";
+import { PainMechanismsDiagram } from "@/components/diagrams/clinical/PainMechanismsDiagram";
+import OpioidConversionCalculator from "@/components/diagrams/clinical/OpioidConversionCalculator";
+import PcaEpiduralCalculator from "@/components/diagrams/clinical/PcaEpiduralCalculator";
+import { SpinalCordStimulatorDiagram } from "@/components/diagrams/clinical/SpinalCordStimulatorDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";

@@ -3,7 +3,7 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
-import UltrasoundPhysicsDiagram from "@/components/diagrams/UltrasoundPhysicsDiagram";
+import UltrasoundPhysicsDiagram from "@/components/diagrams/physics/UltrasoundPhysicsDiagram";
 import { ultrasoundPhysicsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";

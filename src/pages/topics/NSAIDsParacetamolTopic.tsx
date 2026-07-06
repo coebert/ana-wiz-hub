@@ -6,8 +6,8 @@ import { DiagramSection } from "@/components/topic/DiagramSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { nsaidsParacetamolQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { NSAIDMechanismDiagram } from "@/components/diagrams/NSAIDMechanismDiagram";
-import { AAShuntAnimation } from "@/components/diagrams/AAShuntAnimation";
+import { NSAIDMechanismDiagram } from "@/components/diagrams/pharmacology/NSAIDMechanismDiagram";
+import { AAShuntAnimation } from "@/components/diagrams/pharmacology/AAShuntAnimation";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const nsaidsParacetamolFaqs: Array<[string, string]> = [

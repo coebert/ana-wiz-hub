@@ -4,11 +4,11 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { StickyTOC } from "@/components/layout/StickyTOC";
 import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
-import { RRTCircuitDiagram } from "@/components/diagrams/RRTCircuitDiagram";
-import { RRTCircuitFlowDiagram } from "@/components/diagrams/RRTCircuitFlowDiagram";
-import RRTModalitiesDiagram from "@/components/diagrams/RRTModalitiesDiagram";
-import { KDIGOAKIClassifier } from "@/components/diagrams/KDIGOAKIClassifier";
-import { MehranScoreCalculator } from "@/components/diagrams/MehranScoreCalculator";
+import { RRTCircuitDiagram } from "@/components/diagrams/intensive-care/RRTCircuitDiagram";
+import { RRTCircuitFlowDiagram } from "@/components/diagrams/intensive-care/RRTCircuitFlowDiagram";
+import RRTModalitiesDiagram from "@/components/diagrams/intensive-care/RRTModalitiesDiagram";
+import { KDIGOAKIClassifier } from "@/components/diagrams/intensive-care/KDIGOAKIClassifier";
+import { MehranScoreCalculator } from "@/components/diagrams/intensive-care/MehranScoreCalculator";
 import { akiRrtQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";

@@ -6,9 +6,9 @@ import { DiagramSection } from "@/components/topic/DiagramSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { pharmacodynamicsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { DoseResponseCurveDiagram } from "@/components/diagrams/DoseResponseCurveDiagram";
-import { AgonismSpectrumDiagram } from "@/components/diagrams/AgonismSpectrumDiagram";
-import { ReceptorTimescaleDiagram } from "@/components/diagrams/ReceptorTimescaleDiagram";
+import { DoseResponseCurveDiagram } from "@/components/diagrams/pharmacology/DoseResponseCurveDiagram";
+import { AgonismSpectrumDiagram } from "@/components/diagrams/pharmacology/AgonismSpectrumDiagram";
+import { ReceptorTimescaleDiagram } from "@/components/diagrams/pharmacology/ReceptorTimescaleDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const pharmacodynamicsFaqs: Array<[string, string]> = [

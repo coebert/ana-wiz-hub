@@ -4,9 +4,9 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { clinicalIncidentsQuestions } from "@/data/quizzes";
-import MHPathophysiologyDiagram from "@/components/diagrams/MHPathophysiologyDiagram";
-import AnaphylaxisPathophysiologyDiagram from "@/components/diagrams/AnaphylaxisPathophysiologyDiagram";
-import { AnaphylaxisCascadeDiagram } from "@/components/diagrams/AnaphylaxisCascadeDiagram";
+import MHPathophysiologyDiagram from "@/components/diagrams/clinical/MHPathophysiologyDiagram";
+import AnaphylaxisPathophysiologyDiagram from "@/components/diagrams/clinical/AnaphylaxisPathophysiologyDiagram";
+import { AnaphylaxisCascadeDiagram } from "@/components/diagrams/clinical/AnaphylaxisCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";

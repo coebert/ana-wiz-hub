@@ -6,7 +6,7 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { giPhysiologyQuestions } from "@/data/quizzes";
-import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
+import VomitingControlDiagram from "@/components/diagrams/pharmacology/VomitingControlDiagram";
 import { Exam } from "@/data/curriculum";
 
 const gastrointestinalPhysiologyFaqs: Array<[string, string]> = [

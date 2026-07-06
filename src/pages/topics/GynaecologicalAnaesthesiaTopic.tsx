@@ -4,8 +4,8 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { gynaecologicalAnaesthesiaQuestions } from "@/data/quizzes";
-import PneumoperitoneumTrendelenburgDiagram from "@/components/diagrams/PneumoperitoneumTrendelenburgDiagram";
-import TURPSyndromeDiagram from "@/components/diagrams/TURPSyndromeDiagram";
+import PneumoperitoneumTrendelenburgDiagram from "@/components/diagrams/clinical/PneumoperitoneumTrendelenburgDiagram";
+import TURPSyndromeDiagram from "@/components/diagrams/clinical/TURPSyndromeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";

@@ -5,8 +5,8 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { starlingForcesQuestions } from "@/data/quizzes";
-import StarlingForcesDiagram from "@/components/diagrams/StarlingForcesDiagram";
-import GlycocalyxDiagram from "@/components/diagrams/GlycocalyxDiagram";
+import StarlingForcesDiagram from "@/components/diagrams/physiology/StarlingForcesDiagram";
+import GlycocalyxDiagram from "@/components/diagrams/physiology/GlycocalyxDiagram";
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import { Exam } from "@/data/curriculum";
 

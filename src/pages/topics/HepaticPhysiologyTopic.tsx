@@ -6,8 +6,8 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { InlineRef } from "@/components/references/InlineRef";
 import { hepaticPhysiologyQuestions } from "@/data/quizzes";
-import HepaticAcinusDiagram from "@/components/diagrams/HepaticAcinusDiagram";
-import PortalFirstPassDiagram from "@/components/diagrams/PortalFirstPassDiagram";
+import HepaticAcinusDiagram from "@/components/diagrams/physiology/HepaticAcinusDiagram";
+import PortalFirstPassDiagram from "@/components/diagrams/physiology/PortalFirstPassDiagram";
 import { Exam } from "@/data/curriculum";
 
 const hepaticPhysiologyFaqs: Array<[string, string]> = [

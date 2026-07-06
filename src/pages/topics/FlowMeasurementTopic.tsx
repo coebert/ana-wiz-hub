@@ -4,12 +4,12 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { CrossReferenceCallout } from "@/components/topic/CrossReferenceCallout";
-import { FlowDiagram } from "@/components/diagrams/FlowDiagram";
-import { RotameterDiagram } from "@/components/diagrams/RotameterDiagram";
-import PneumotachographDiagram from "@/components/diagrams/PneumotachographDiagram";
-import WrightRespirometerDiagram from "@/components/diagrams/WrightRespirometerDiagram";
-import BernoulliVenturiDiagram from "@/components/diagrams/BernoulliVenturiDiagram";
-import CoandaEffectDiagram from "@/components/diagrams/CoandaEffectDiagram";
+import { FlowDiagram } from "@/components/diagrams/physics/FlowDiagram";
+import { RotameterDiagram } from "@/components/diagrams/physics/RotameterDiagram";
+import PneumotachographDiagram from "@/components/diagrams/physics/PneumotachographDiagram";
+import WrightRespirometerDiagram from "@/components/diagrams/physics/WrightRespirometerDiagram";
+import BernoulliVenturiDiagram from "@/components/diagrams/physics/BernoulliVenturiDiagram";
+import CoandaEffectDiagram from "@/components/diagrams/physics/CoandaEffectDiagram";
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";

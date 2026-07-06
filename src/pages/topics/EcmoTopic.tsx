@@ -4,9 +4,9 @@ import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { ecmoQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
-import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
-import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
-import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
+import ECMOCircuitDiagram from "@/components/diagrams/intensive-care/ECMOCircuitDiagram";
+import VAECMOCircuitDiagram from "@/components/diagrams/intensive-care/VAECMOCircuitDiagram";
+import ECMOTroubleshootingDiagram from "@/components/diagrams/intensive-care/ECMOTroubleshootingDiagram";
 
 const ecmoFaqs: Array<[string, string]> = [
   [

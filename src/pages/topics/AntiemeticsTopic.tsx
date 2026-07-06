@@ -7,7 +7,7 @@ import { antiemeticsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { DiagramSection } from "@/components/topic/DiagramSection";
-import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
+import VomitingControlDiagram from "@/components/diagrams/pharmacology/VomitingControlDiagram";
 import { InlineRef } from "@/components/references/InlineRef";
 
 const antiemeticsFaqs: Array<[string, string]> = [

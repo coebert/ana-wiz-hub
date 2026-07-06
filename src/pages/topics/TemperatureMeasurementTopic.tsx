@@ -3,7 +3,7 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { temperatureMeasurementQuiz } from "@/data/quizzes";
-import TemperatureMeasurementDiagram from "@/components/diagrams/TemperatureMeasurementDiagram";
+import TemperatureMeasurementDiagram from "@/components/diagrams/physics/TemperatureMeasurementDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

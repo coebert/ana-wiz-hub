@@ -5,8 +5,8 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { siUnitsThermodynamicsQuiz } from "@/data/quizzes";
-import SIUnitsThermodynamicsDiagram from "@/components/diagrams/SIUnitsThermodynamicsDiagram";
-import LatentHeatDiagram from "@/components/diagrams/LatentHeatDiagram";
+import SIUnitsThermodynamicsDiagram from "@/components/diagrams/physics/SIUnitsThermodynamicsDiagram";
+import LatentHeatDiagram from "@/components/diagrams/physics/LatentHeatDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

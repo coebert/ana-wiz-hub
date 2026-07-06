@@ -5,12 +5,12 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { respiratoryDiseaseQuestions } from "@/data/quizzes";
-import RespiratoryDrugSafetyDiagram from "@/components/diagrams/RespiratoryDrugSafetyDiagram";
-import AsthmaBronchospasmDiagram from "@/components/diagrams/AsthmaBronchospasmDiagram";
-import CopdPathophysDiagram from "@/components/diagrams/CopdPathophysDiagram";
-import OsaCycleDiagram from "@/components/diagrams/OsaCycleDiagram";
-import PulmonaryFibrosisDiagram from "@/components/diagrams/PulmonaryFibrosisDiagram";
-import UrtiAirwayDiagram from "@/components/diagrams/UrtiAirwayDiagram";
+import RespiratoryDrugSafetyDiagram from "@/components/diagrams/perioperative/RespiratoryDrugSafetyDiagram";
+import AsthmaBronchospasmDiagram from "@/components/diagrams/perioperative/AsthmaBronchospasmDiagram";
+import CopdPathophysDiagram from "@/components/diagrams/perioperative/CopdPathophysDiagram";
+import OsaCycleDiagram from "@/components/diagrams/perioperative/OsaCycleDiagram";
+import PulmonaryFibrosisDiagram from "@/components/diagrams/perioperative/PulmonaryFibrosisDiagram";
+import UrtiAirwayDiagram from "@/components/diagrams/perioperative/UrtiAirwayDiagram";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 

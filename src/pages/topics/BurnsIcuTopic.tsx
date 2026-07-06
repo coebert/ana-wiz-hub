@@ -5,11 +5,11 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { burnsIcuQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import BurnResuscitationDiagram from "@/components/diagrams/BurnResuscitationDiagram";
-import BurnShockPathophysiologyDiagram from "@/components/diagrams/BurnShockPathophysiologyDiagram";
-import InhalationInjuryFlowchart from "@/components/diagrams/InhalationInjuryFlowchart";
-import ParklandCalculator from "@/components/diagrams/ParklandCalculator";
-import BurnsIcuCaseStepper from "@/components/diagrams/BurnsIcuCaseStepper";
+import BurnResuscitationDiagram from "@/components/diagrams/intensive-care/BurnResuscitationDiagram";
+import BurnShockPathophysiologyDiagram from "@/components/diagrams/intensive-care/BurnShockPathophysiologyDiagram";
+import InhalationInjuryFlowchart from "@/components/diagrams/intensive-care/InhalationInjuryFlowchart";
+import ParklandCalculator from "@/components/diagrams/intensive-care/ParklandCalculator";
+import BurnsIcuCaseStepper from "@/components/diagrams/intensive-care/BurnsIcuCaseStepper";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const burnsIcuFaqs: Array<[string, string]> = [

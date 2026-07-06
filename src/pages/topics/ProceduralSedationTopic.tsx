@@ -6,7 +6,7 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { proceduralSedationQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { CrossReferenceCallout } from "@/components/topic/CrossReferenceCallout";
-import { SedationDeliveryProfilesDiagram } from "@/components/diagrams/SedationDeliveryProfilesDiagram";
+import { SedationDeliveryProfilesDiagram } from "@/components/diagrams/clinical/SedationDeliveryProfilesDiagram";
 import { SedationRescueLadder } from "@/components/clinical/SedationRescueLadder";
 import { SedationDecisionGate } from "@/components/clinical/SedationDecisionGate";
 import { SedationDischargeChecklist } from "@/components/clinical/SedationDischargeChecklist";

@@ -6,9 +6,9 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { postopHighRiskIcuQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import GoalDirectedTherapyAnimation from "@/components/diagrams/GoalDirectedTherapyAnimation";
-import ComplicationBundlesAnimation from "@/components/diagrams/ComplicationBundlesAnimation";
-import PostopRiskCalculators from "@/components/diagrams/PostopRiskCalculators";
+import GoalDirectedTherapyAnimation from "@/components/diagrams/intensive-care/GoalDirectedTherapyAnimation";
+import ComplicationBundlesAnimation from "@/components/diagrams/intensive-care/ComplicationBundlesAnimation";
+import PostopRiskCalculators from "@/components/diagrams/intensive-care/PostopRiskCalculators";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const postopHighRiskIcuFaqs: Array<[string, string]> = [

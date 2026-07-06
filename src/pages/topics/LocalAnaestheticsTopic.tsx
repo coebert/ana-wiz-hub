@@ -2,12 +2,12 @@ import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
-import { PKaDiagram } from "@/components/diagrams/PKaDiagram";
-import { HendersonHasselbalchDiagram } from "@/components/diagrams/HendersonHasselbalchDiagram";
-import IonTrappingDiagram from "@/components/diagrams/IonTrappingDiagram";
+import { PKaDiagram } from "@/components/diagrams/pharmacology/PKaDiagram";
+import { HendersonHasselbalchDiagram } from "@/components/diagrams/intensive-care/HendersonHasselbalchDiagram";
+import IonTrappingDiagram from "@/components/diagrams/pharmacology/IonTrappingDiagram";
 import { localAnaestheticsQuiz } from "@/data/quizzes";
-import LocalAnaestheticStructures from "@/components/diagrams/LocalAnaestheticStructures";
-import PropofolLidocaineMechanismDiagram from "@/components/diagrams/PropofolLidocaineMechanismDiagram";
+import LocalAnaestheticStructures from "@/components/diagrams/pharmacology/LocalAnaestheticStructures";
+import PropofolLidocaineMechanismDiagram from "@/components/diagrams/pharmacology/PropofolLidocaineMechanismDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

@@ -4,7 +4,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { ventilatorModesQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
-import VentilatorModesDiagram from "@/components/diagrams/VentilatorModesDiagram";
+import VentilatorModesDiagram from "@/components/diagrams/physics/VentilatorModesDiagram";
 
 const ventilatorModesFaqs: Array<[string, string]> = [
   [

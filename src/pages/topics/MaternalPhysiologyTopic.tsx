@@ -6,7 +6,7 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { maternalPhysiologyQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import PregnancyTimelineDiagram from "@/components/diagrams/PregnancyTimelineDiagram";
+import PregnancyTimelineDiagram from "@/components/diagrams/physiology/PregnancyTimelineDiagram";
 
 const maternalPhysiologyFaqs: Array<[string, string]> = [
   [

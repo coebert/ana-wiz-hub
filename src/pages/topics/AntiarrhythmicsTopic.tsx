@@ -3,7 +3,7 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { antiarrhythmicsQuiz } from "@/data/quizzes";
-import VaughanWilliamsAPDiagram from "@/components/diagrams/VaughanWilliamsAPDiagram";
+import VaughanWilliamsAPDiagram from "@/components/diagrams/pharmacology/VaughanWilliamsAPDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

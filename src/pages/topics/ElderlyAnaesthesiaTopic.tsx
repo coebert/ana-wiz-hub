@@ -3,8 +3,8 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { elderlyAnaesthesiaQuestions } from "@/data/quizzes";
-import FrailtyAssessmentDiagram from "@/components/diagrams/FrailtyAssessmentDiagram";
-import POCDPathophysiologyCascadeDiagram from "@/components/diagrams/POCDPathophysiologyCascadeDiagram";
+import FrailtyAssessmentDiagram from "@/components/diagrams/clinical/FrailtyAssessmentDiagram";
+import POCDPathophysiologyCascadeDiagram from "@/components/diagrams/clinical/POCDPathophysiologyCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

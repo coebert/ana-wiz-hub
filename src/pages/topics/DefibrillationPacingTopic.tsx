@@ -3,7 +3,7 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
-import DefibrillationPacingDiagram from "@/components/diagrams/DefibrillationPacingDiagram";
+import DefibrillationPacingDiagram from "@/components/diagrams/physics/DefibrillationPacingDiagram";
 import { defibrillationPacingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";

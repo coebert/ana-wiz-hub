@@ -5,8 +5,8 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { operatingTheatreEnvironmentQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import TheatreZoningDiagram from "@/components/diagrams/TheatreZoningDiagram";
-import CssdWasteFlowSubMap from "@/components/diagrams/CssdWasteFlowSubMap";
+import TheatreZoningDiagram from "@/components/diagrams/clinical/TheatreZoningDiagram";
+import CssdWasteFlowSubMap from "@/components/diagrams/clinical/CssdWasteFlowSubMap";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const operatingTheatreEnvironmentFaqs: Array<[string, string]> = [

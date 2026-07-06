@@ -4,11 +4,11 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { cardiothoracicQuestions } from "@/data/quizzes";
-import CPBCircuitDiagram from "@/components/diagrams/CPBCircuitDiagram";
-import DLTInsertionDiagram from "@/components/diagrams/DLTInsertionDiagram";
-import OLVTroubleshootingDiagram from "@/components/diagrams/OLVTroubleshootingDiagram";
-import CardiacArrestPostCardiacSurgeryDiagram from "@/components/diagrams/CardiacArrestPostCardiacSurgeryDiagram";
-import ArrestTimeWindowWidget from "@/components/diagrams/ArrestTimeWindowWidget";
+import CPBCircuitDiagram from "@/components/diagrams/clinical/CPBCircuitDiagram";
+import DLTInsertionDiagram from "@/components/diagrams/clinical/DLTInsertionDiagram";
+import OLVTroubleshootingDiagram from "@/components/diagrams/clinical/OLVTroubleshootingDiagram";
+import CardiacArrestPostCardiacSurgeryDiagram from "@/components/diagrams/clinical/CardiacArrestPostCardiacSurgeryDiagram";
+import ArrestTimeWindowWidget from "@/components/diagrams/clinical/ArrestTimeWindowWidget";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";

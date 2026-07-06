@@ -3,8 +3,8 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { pulseOximetryQuiz } from "@/data/quizzes";
-import { AbsorptionSpectraDiagram } from "@/components/diagrams/AbsorptionSpectraDiagram";
-import { CapnographyDiagram } from "@/components/diagrams/CapnographyDiagram";
+import { AbsorptionSpectraDiagram } from "@/components/diagrams/physics/AbsorptionSpectraDiagram";
+import { CapnographyDiagram } from "@/components/diagrams/physics/CapnographyDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 

@@ -6,7 +6,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { endocrinePhysiologyQuestions } from "@/data/quizzes";
-import HPAAxisDiagram from "@/components/diagrams/HPAAxisDiagram";
+import HPAAxisDiagram from "@/components/diagrams/physiology/HPAAxisDiagram";
 import { Exam } from "@/data/curriculum";
 
 const endocrinePhysiologyFaqs: Array<[string, string]> = [

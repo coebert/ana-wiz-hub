@@ -4,8 +4,8 @@ import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { breathingCircuitsQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
-import BreathingCircuitsDiagram from "@/components/diagrams/BreathingCircuitsDiagram";
-import MaplesonEfficiencyDiagram from "@/components/diagrams/MaplesonEfficiencyDiagram";
+import BreathingCircuitsDiagram from "@/components/diagrams/physics/BreathingCircuitsDiagram";
+import MaplesonEfficiencyDiagram from "@/components/diagrams/physics/MaplesonEfficiencyDiagram";
 
 const breathingCircuitsFaqs: Array<[string, string]> = [
   [

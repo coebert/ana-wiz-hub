@@ -5,17 +5,17 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { renalPhysiologyQuiz } from "@/data/quizzes";
-import { NephronDiagram } from "@/components/diagrams/NephronDiagram";
-import { TubularCellDiagram } from "@/components/diagrams/TubularCellDiagram";
-import { CountercurrentMultiplierDiagram } from "@/components/diagrams/CountercurrentMultiplierDiagram";
-import { GlomerularBarrierDiagram } from "@/components/diagrams/GlomerularBarrierDiagram";
-import { JGADiagram } from "@/components/diagrams/JGADiagram";
-import { RAASCascadeDiagram } from "@/components/diagrams/RAASCascadeDiagram";
-import { CorticalJuxtamedullaryDiagram } from "@/components/diagrams/CorticalJuxtamedullaryDiagram";
-import { RenalBloodFlowDiagram } from "@/components/diagrams/RenalBloodFlowDiagram";
-import { UrineConcentrationSimulator } from "@/components/diagrams/UrineConcentrationSimulator";
-import HyponatraemiaWorkupDiagram from "@/components/diagrams/HyponatraemiaWorkupDiagram";
-import { EGFRCalculator } from "@/components/diagrams/EGFRCalculator";
+import { NephronDiagram } from "@/components/diagrams/physiology/NephronDiagram";
+import { TubularCellDiagram } from "@/components/diagrams/physiology/TubularCellDiagram";
+import { CountercurrentMultiplierDiagram } from "@/components/diagrams/physiology/CountercurrentMultiplierDiagram";
+import { GlomerularBarrierDiagram } from "@/components/diagrams/physiology/GlomerularBarrierDiagram";
+import { JGADiagram } from "@/components/diagrams/physiology/JGADiagram";
+import { RAASCascadeDiagram } from "@/components/diagrams/physiology/RAASCascadeDiagram";
+import { CorticalJuxtamedullaryDiagram } from "@/components/diagrams/physiology/CorticalJuxtamedullaryDiagram";
+import { RenalBloodFlowDiagram } from "@/components/diagrams/physiology/RenalBloodFlowDiagram";
+import { UrineConcentrationSimulator } from "@/components/diagrams/physiology/UrineConcentrationSimulator";
+import HyponatraemiaWorkupDiagram from "@/components/diagrams/physiology/HyponatraemiaWorkupDiagram";
+import { EGFRCalculator } from "@/components/diagrams/physiology/EGFRCalculator";
 import { Exam } from "@/data/curriculum";
 
 const renalPhysiologyFaqs: Array<[string, string]> = [

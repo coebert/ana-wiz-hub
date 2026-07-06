@@ -5,8 +5,8 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { massCasualtyMilitaryQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { MajorIncidentTriageDiagram } from "@/components/diagrams/MajorIncidentTriageDiagram";
-import { MilitaryRolesFlowDiagram } from "@/components/diagrams/MilitaryRolesFlowDiagram";
+import { MajorIncidentTriageDiagram } from "@/components/diagrams/clinical/MajorIncidentTriageDiagram";
+import { MilitaryRolesFlowDiagram } from "@/components/diagrams/clinical/MilitaryRolesFlowDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const massCasualtyMilitaryFaqs: Array<[string, string]> = [

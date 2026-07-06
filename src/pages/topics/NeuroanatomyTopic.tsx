@@ -9,11 +9,11 @@ const neuroanatomyFaqs: Array<[string, string]> = [
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { neuroanatomyQuestions } from "@/data/quizzes";
-import CircleOfWillisDiagram from "@/components/diagrams/CircleOfWillisDiagram";
-import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
-import BrainPlatesViewer from "@/components/diagrams/BrainPlatesViewer";
-import CsfFlowDiagram from "@/components/diagrams/CsfFlowDiagram";
-import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import CircleOfWillisDiagram from "@/components/diagrams/anatomy/CircleOfWillisDiagram";
+import SkullBaseDiagram from "@/components/diagrams/anatomy/SkullBaseDiagram";
+import BrainPlatesViewer from "@/components/diagrams/anatomy/BrainPlatesViewer";
+import CsfFlowDiagram from "@/components/diagrams/anatomy/CsfFlowDiagram";
+import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { neuroFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 

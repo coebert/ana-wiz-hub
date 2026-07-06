@@ -5,7 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { burnsPlasticsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { BurnDepthDiagram } from "@/components/diagrams/BurnDepthDiagram";
+import { BurnDepthDiagram } from "@/components/diagrams/clinical/BurnDepthDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
 import {

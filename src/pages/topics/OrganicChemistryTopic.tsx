@@ -8,10 +8,10 @@ const organicChemistryFaqs: Array<[string, string]> = [
 ];
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
-import { OrganicChemistryDiagram } from "@/components/diagrams/OrganicChemistryDiagram";
-import IsomerismDiagram from "@/components/diagrams/IsomerismDiagram";
-import ChiralityAnaesthesiaDiagram from "@/components/diagrams/ChiralityAnaesthesiaDiagram";
-import AmineComparisonDiagram from "@/components/diagrams/AmineComparisonDiagram";
+import { OrganicChemistryDiagram } from "@/components/diagrams/chemistry/OrganicChemistryDiagram";
+import IsomerismDiagram from "@/components/diagrams/chemistry/IsomerismDiagram";
+import ChiralityAnaesthesiaDiagram from "@/components/diagrams/chemistry/ChiralityAnaesthesiaDiagram";
+import AmineComparisonDiagram from "@/components/diagrams/chemistry/AmineComparisonDiagram";
 import { organicChemistryQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 

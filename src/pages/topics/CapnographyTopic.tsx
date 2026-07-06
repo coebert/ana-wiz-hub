@@ -4,7 +4,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { capnographyQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
-import CapnographyWaveformDiagram from "@/components/diagrams/CapnographyWaveformDiagram";
+import CapnographyWaveformDiagram from "@/components/diagrams/physics/CapnographyWaveformDiagram";
 
 const capnographyFaqs: Array<[string, string]> = [
   [

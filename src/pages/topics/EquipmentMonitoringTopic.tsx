@@ -10,14 +10,14 @@ import {
   vaporizersQuiz,
   ventilatorsQuiz,
 } from "@/data/quizzes";
-import AnaestheticMachineDiagram from "@/components/diagrams/AnaestheticMachineDiagram";
-import BreathingCircuitsDiagram from "@/components/diagrams/BreathingCircuitsDiagram";
-import { VaporizerDiagram } from "@/components/diagrams/VaporizerDiagram";
-import BagInBottleDiagram from "@/components/diagrams/BagInBottleDiagram";
-import ManleyMVDDiagram from "@/components/diagrams/ManleyMVDDiagram";
-import RitchieWhistleDiagram from "@/components/diagrams/RitchieWhistleDiagram";
-import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
-import LaryngoscopeBladesDiagram from "@/components/diagrams/LaryngoscopeBladesDiagram";
+import AnaestheticMachineDiagram from "@/components/diagrams/physics/AnaestheticMachineDiagram";
+import BreathingCircuitsDiagram from "@/components/diagrams/physics/BreathingCircuitsDiagram";
+import { VaporizerDiagram } from "@/components/diagrams/physics/VaporizerDiagram";
+import BagInBottleDiagram from "@/components/diagrams/physics/BagInBottleDiagram";
+import ManleyMVDDiagram from "@/components/diagrams/physics/ManleyMVDDiagram";
+import RitchieWhistleDiagram from "@/components/diagrams/physics/RitchieWhistleDiagram";
+import NeuraxialNeedlesDiagram from "@/components/diagrams/physics/NeuraxialNeedlesDiagram";
+import LaryngoscopeBladesDiagram from "@/components/diagrams/physics/LaryngoscopeBladesDiagram";
 import InlineRef from "@/components/references/InlineRef";
 
 const equipmentMonitoringFaqs: Array<[string, string]> = [
