@@ -1,6 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap } from "lucide-react";
 import { ExamTag } from "@/data/curriculum";
+import { useShouldRenderExamBadge } from "@/components/exam/ExamBadgeDedupeContext";
+
 
 const EXAM_LABELS: Record<ExamTag, string> = {
   primary: "FRCA Primary",
