@@ -130,7 +130,8 @@ export const SectionLayout = ({
       {topicForPath && (
         <TopicPager section={topicForPath.section} topic={topicForPath.topic} />
       )}
-    </div>
+      </div>
+    </>
   );
 };
 
