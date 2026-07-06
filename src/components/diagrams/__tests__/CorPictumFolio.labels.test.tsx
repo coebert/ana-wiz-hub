@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
-import CorPictumFolio, { type CorPictumPlate } from "../CorPictumFolio";
+import CorPictumFolio, { type CorPictumPlate } from "@/components/diagrams/anatomy/CorPictumFolio";
 import { upperLimbFolio, lowerLimbFolio } from "../anatomyFolios";
 import { ExamFilterProvider } from "@/contexts/ExamFilterContext";
 
