@@ -149,5 +149,31 @@ test.describe("sign-out clears local progress caches", () => {
       STORAGE_KEYS[0]
     );
     expect(localProgress ?? "").not.toContain(JUNK_TOPIC_ID);
+
+    // 8. Recent Topics UI: assert the ContinueBand shows exactly the same
+    //    cloud-only set as the baseline and the seeded junk topic never
+    //    surfaces as a card. useRecentTopics would union local+cloud on
+    //    first sign-in if signOut had leaked the migrated flag, causing
+    //    the junk id to render here.
+    const continueBand2 = page.getByRole("region", {
+      name: /continue where you left off/i,
+    });
+    const afterRecentHrefs = (await continueBand2.count())
+      ? await continueBand2.getByRole("link").evaluateAll((els) =>
+          (els as HTMLAnchorElement[]).map((a) => new URL(a.href).pathname)
+        )
+      : [];
+    expect(afterRecentHrefs.sort()).toEqual([...baselineRecentHrefs].sort());
+    for (const href of afterRecentHrefs) {
+      expect(href).not.toContain(JUNK_TOPIC_ID);
+    }
+
+    // Belt-and-braces: the localStorage recent-topics cache should also
+    // no longer contain the junk id (cloud hydration overwrites it).
+    const localRecent = await page.evaluate(
+      (k) => localStorage.getItem(k),
+      STORAGE_KEYS[2]
+    );
+    expect(localRecent ?? "").not.toContain(JUNK_TOPIC_ID);
   });
 });
