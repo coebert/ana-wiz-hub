@@ -39,14 +39,15 @@ describe("recoverFromStaleChunk", () => {
       },
     });
     // Stub away browser-only APIs so the helper resolves without touching them.
-    // @ts-expect-error test stub
-    globalThis.caches = { keys: () => Promise.resolve([]), delete: () => Promise.resolve(true) };
+    (globalThis as unknown as { caches: unknown }).caches = {
+      keys: () => Promise.resolve([]),
+      delete: () => Promise.resolve(true),
+    };
   });
 
   afterEach(() => {
     Object.defineProperty(window, "location", { writable: true, value: originalLocation });
-    // @ts-expect-error test cleanup
-    delete globalThis.caches;
+    delete (globalThis as unknown as { caches?: unknown }).caches;
   });
 
   it("triggers a cache-busting reload on first invocation", async () => {
