@@ -29,7 +29,9 @@ export function AppProviders({ children }: { children: ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <ProgressProvider>
-          <TooltipProvider>{children}</TooltipProvider>
+          <SubsectionProgressProvider>
+            <TooltipProvider>{children}</TooltipProvider>
+          </SubsectionProgressProvider>
         </ProgressProvider>
       </AuthProvider>
     </QueryClientProvider>
