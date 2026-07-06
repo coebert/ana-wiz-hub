@@ -18,6 +18,44 @@ export interface RecentTopicEntry {
   visitedAt: number;
 }
 
+/**
+ * Pure union-merge of cloud + local recent-topic entries.
+ * - Deduplicates by `topicId`; when both sides have the same id, the entry
+ *   with the newer `visitedAt` wins.
+ * - Sorts most-recent-first and caps at `cap` entries.
+ * - Cloud is passed first so ties (identical visitedAt) resolve to cloud
+ *   (map insertion order preserves the first-seen when values are equal).
+ *
+ * Exported for unit tests — the sign-out → clear → re-sign-in flow relies
+ * on this being a deterministic pure function of its inputs.
+ */
+export function mergeRecentEntries(
+  cloud: RecentTopicEntry[],
+  local: RecentTopicEntry[],
+  cap: number
+): RecentTopicEntry[] {
+  const byId = new Map<string, RecentTopicEntry>();
+  for (const e of [...cloud, ...local]) {
+    const prev = byId.get(e.topicId);
+    if (!prev || e.visitedAt > prev.visitedAt) byId.set(e.topicId, e);
+  }
+  return [...byId.values()]
+    .sort((a, b) => b.visitedAt - a.visitedAt)
+    .slice(0, cap);
+}
+
+/**
+ * Rows that should be uploaded to cloud on first sign-in — local-only entries
+ * whose topicId isn't already present in cloud. Exported for unit tests.
+ */
+export function computeUploadableRecent(
+  cloud: RecentTopicEntry[],
+  local: RecentTopicEntry[]
+): RecentTopicEntry[] {
+  const cloudIds = new Set(cloud.map((c) => c.topicId));
+  return local.filter((e) => !cloudIds.has(e.topicId));
+}
+
 function readRecent(): RecentTopicEntry[] {
   if (typeof window === "undefined") return [];
   try {
