@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from "react";
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 import {
   DEFAULT_UNIT_PREFERENCES,
   type UnitPreferences,
@@ -9,15 +10,18 @@ import {
 } from "@/lib/units";
 
 /**
- * User preference for measurement units (pressure / temperature / weight /
- * haemoglobin). Persisted in localStorage. Defaults follow UK anaesthesia
- * convention (kPa, °C, kg, g/L) — see resolveDefaults below — but users in
- * other regions can override per family.
+ * User preference for measurement units. Persisted in localStorage.
+ * UK anaesthesia convention (kPa, °C, kg, g/L) is the baseline; users can
+ * override per family.
+ *
+ * Implemented as a zustand store. The `useUnitPreferences` hook shape is
+ * preserved so consumers didn't need to change when we moved off React
+ * context (see review §5).
  */
 
-const STORAGE_KEY = "ac.unit-preferences";
+const defaults = (): UnitPreferences => ({ ...DEFAULT_UNIT_PREFERENCES, pressure: "kPa" });
 
-interface UnitPreferenceContextType {
+interface UnitPreferenceState {
   prefs: UnitPreferences;
   setPressure: (u: PressureUnit) => void;
   setTemperature: (u: TemperatureUnit) => void;
@@ -26,69 +30,49 @@ interface UnitPreferenceContextType {
   reset: () => void;
 }
 
-const UnitPreferenceContext = createContext<UnitPreferenceContextType | null>(null);
+export const useUnitPreferenceStore = create<UnitPreferenceState>()(
+  persist(
+    (set) => ({
+      prefs: defaults(),
+      setPressure: (u) => set((s) => ({ prefs: { ...s.prefs, pressure: u } })),
+      setTemperature: (u) => set((s) => ({ prefs: { ...s.prefs, temperature: u } })),
+      setWeight: (u) => set((s) => ({ prefs: { ...s.prefs, weight: u } })),
+      setHaemoglobin: (u) => set((s) => ({ prefs: { ...s.prefs, haemoglobin: u } })),
+      reset: () => set({ prefs: defaults() }),
+    }),
+    {
+      name: "ac.unit-preferences",
+      storage: createJSONStorage(() => localStorage),
+      partialize: (s) => ({ prefs: s.prefs }),
+      // Merge stored prefs onto current defaults so newly-added unit families
+      // don't come back undefined for users with an older persisted blob.
+      merge: (persisted, current) => {
+        const p = (persisted as { prefs?: Partial<UnitPreferences> } | undefined)?.prefs ?? {};
+        return { ...current, prefs: { ...current.prefs, ...p } };
+      },
+    },
+  ),
+);
 
-const resolveDefaults = (): UnitPreferences => {
-  // UK anaesthesia exam convention is the project baseline.
-  return { ...DEFAULT_UNIT_PREFERENCES, pressure: "kPa" };
+interface UnitPreferenceHook {
+  prefs: UnitPreferences;
+  setPressure: (u: PressureUnit) => void;
+  setTemperature: (u: TemperatureUnit) => void;
+  setWeight: (u: WeightUnit) => void;
+  setHaemoglobin: (u: HaemoglobinUnit) => void;
+  reset: () => void;
+}
+
+export const useUnitPreferences = (): UnitPreferenceHook => {
+  const prefs = useUnitPreferenceStore((s) => s.prefs);
+  const setPressure = useUnitPreferenceStore((s) => s.setPressure);
+  const setTemperature = useUnitPreferenceStore((s) => s.setTemperature);
+  const setWeight = useUnitPreferenceStore((s) => s.setWeight);
+  const setHaemoglobin = useUnitPreferenceStore((s) => s.setHaemoglobin);
+  const reset = useUnitPreferenceStore((s) => s.reset);
+  return { prefs, setPressure, setTemperature, setWeight, setHaemoglobin, reset };
 };
 
-const readStored = (): UnitPreferences => {
-  if (typeof window === "undefined") return resolveDefaults();
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return resolveDefaults();
-    const parsed = JSON.parse(raw) as Partial<UnitPreferences>;
-    return { ...resolveDefaults(), ...parsed };
-  } catch {
-    return resolveDefaults();
-  }
-};
-
-const writeStored = (prefs: UnitPreferences) => {
-  if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
-  } catch {
-    /* ignore */
-  }
-};
-
-export const UnitPreferenceProvider = ({ children }: { children: ReactNode }) => {
-  const [prefs, setPrefs] = useState<UnitPreferences>(() => readStored());
-
-  useEffect(() => {
-    writeStored(prefs);
-  }, [prefs]);
-
-  const update = useCallback(<K extends keyof UnitPreferences>(key: K, value: UnitPreferences[K]) => {
-    setPrefs((p) => ({ ...p, [key]: value }));
-  }, []);
-
-  const value: UnitPreferenceContextType = {
-    prefs,
-    setPressure: (u) => update("pressure", u),
-    setTemperature: (u) => update("temperature", u),
-    setWeight: (u) => update("weight", u),
-    setHaemoglobin: (u) => update("haemoglobin", u),
-    reset: () => setPrefs(resolveDefaults()),
-  };
-
-  return <UnitPreferenceContext.Provider value={value}>{children}</UnitPreferenceContext.Provider>;
-};
-
-export const useUnitPreferences = (): UnitPreferenceContextType => {
-  const ctx = useContext(UnitPreferenceContext);
-  if (!ctx) {
-    // Safe fallback so components outside the provider don't crash.
-    return {
-      prefs: resolveDefaults(),
-      setPressure: () => {},
-      setTemperature: () => {},
-      setWeight: () => {},
-      setHaemoglobin: () => {},
-      reset: () => {},
-    };
-  }
-  return ctx;
-};
+/** No-op provider kept for backward compatibility. */
+export const UnitPreferenceProvider = ({ children }: { children: React.ReactNode }) =>
+  children as React.ReactElement;
