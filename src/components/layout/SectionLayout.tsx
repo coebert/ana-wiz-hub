@@ -48,8 +48,11 @@ export const SectionLayout = ({
     return topic ? { section: sec, topic } : null;
   })();
 
+  // Topic pages get a tighter reading measure (~72ch) so long-form body text
+  // stays comfortable to scan; section listings retain the wider 4xl column.
+  const measureClass = topicForPath ? "max-w-3xl" : "max-w-4xl";
   return (
-    <div className="container mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 max-w-4xl">
+    <div className={`container mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 ${measureClass}`}>
       <PageMeta title={title} subtitle={subtitle} metaDescription={metaDescription} />
       <nav
         aria-label="Breadcrumb"

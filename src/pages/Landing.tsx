@@ -6,6 +6,7 @@ import NeonSplash from "@/components/layout/NeonSplash";
 import { SupportSection } from "@/components/feedback/SupportSection";
 import { CommentWall } from "@/components/feedback/CommentWall";
 import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/viva/DemoVivaStepper";
+import { ContinueBand } from "@/components/landing/ContinueBand";
 import { citationStats } from "@/lib/citationStats";
 
 const nf = new Intl.NumberFormat("en-GB");
@@ -174,6 +175,8 @@ const Landing = () => {
 
 
       <section className="container mx-auto px-4 py-8 md:py-10 flex-1">
+
+        <ContinueBand />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 max-w-6xl mx-auto">
           {choices.map(({ title, description, icon: Icon, to, accent, iconBg }) => (
