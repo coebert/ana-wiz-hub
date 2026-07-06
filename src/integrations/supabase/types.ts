@@ -876,6 +876,24 @@ export type Database = {
         }
         Relationships: []
       }
+      user_recent_topics: {
+        Row: {
+          topic_id: string
+          user_id: string
+          visited_at: string
+        }
+        Insert: {
+          topic_id: string
+          user_id: string
+          visited_at?: string
+        }
+        Update: {
+          topic_id?: string
+          user_id?: string
+          visited_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
@@ -890,6 +908,24 @@ export type Database = {
         Update: {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_topic_progress: {
+        Row: {
+          completed_at: string
+          topic_id: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          topic_id: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          topic_id?: string
           user_id?: string
         }
         Relationships: []

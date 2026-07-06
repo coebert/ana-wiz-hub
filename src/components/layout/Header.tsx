@@ -6,6 +6,7 @@ import { SearchDialog } from "@/components/layout/SearchDialog";
 import { ReduceMotionToggle } from "@/components/layout/ReduceMotionToggle";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { UnitPreferenceMenu } from "@/components/layout/UnitPreferenceMenu";
+import { HeaderAccountMenu } from "@/components/layout/HeaderAccountMenu";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { Exam, ExamTag } from "@/data/curriculum";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -294,6 +295,7 @@ export const Header = () => {
               <ReduceMotionToggle />
             </div>
             <ThemeToggle />
+            <HeaderAccountMenu />
 
             <button
               onClick={() => setSearchOpen(true)}
