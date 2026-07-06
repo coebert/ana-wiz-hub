@@ -12,11 +12,12 @@
 import { type ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ProgressProvider } from "@/contexts/ProgressContext";
-import { ExamFilterProvider } from "@/contexts/ExamFilterContext";
-import { MotionPreferenceProvider } from "@/contexts/MotionPreferenceContext";
-import { UnitPreferenceProvider } from "@/contexts/UnitPreferenceContext";
 import { AuthProvider } from "@/hooks/useAuth";
 import { TooltipProvider } from "@/components/ui/tooltip";
+
+// Motion, Unit and ExamFilter preferences moved off React context into
+// zustand stores (see src/contexts/*Context.tsx). Their hooks work without
+// a provider, so no wrapper is needed here.
 
 // Single QueryClient for the app lifetime — safe to construct at module scope
 // because App.tsx only ever renders one <AppProviders>.
@@ -26,15 +27,9 @@ export function AppProviders({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <ProgressProvider>
-        <ExamFilterProvider>
-          <MotionPreferenceProvider>
-            <UnitPreferenceProvider>
-              <AuthProvider>
-                <TooltipProvider>{children}</TooltipProvider>
-              </AuthProvider>
-            </UnitPreferenceProvider>
-          </MotionPreferenceProvider>
-        </ExamFilterProvider>
+        <AuthProvider>
+          <TooltipProvider>{children}</TooltipProvider>
+        </AuthProvider>
       </ProgressProvider>
     </QueryClientProvider>
   );
