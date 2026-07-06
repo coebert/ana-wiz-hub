@@ -7,6 +7,7 @@ import { SupportSection } from "@/components/feedback/SupportSection";
 import { CommentWall } from "@/components/feedback/CommentWall";
 import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/viva/DemoVivaStepper";
 import { ContinueBand } from "@/components/landing/ContinueBand";
+import { HomeDashboard } from "@/components/landing/HomeDashboard";
 import { citationStats } from "@/lib/citationStats";
 
 const nf = new Intl.NumberFormat("en-GB");
