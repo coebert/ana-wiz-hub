@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { PageSection } from "@/components/layout/PageSection";
 import { Link } from "react-router-dom";
 import { Calculator, Activity, Baby, Droplet, Syringe, Wind } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
@@ -67,7 +68,7 @@ export default function ToolsHub() {
         <meta property="og:url" content={url} />
         <script type="application/ld+json">{JSON.stringify(itemList)}</script>
       </Helmet>
-      <div className="container mx-auto max-w-4xl px-4 py-6">
+      <PageSection spacing="tight" width="default">
         <Breadcrumbs items={[{ label: "Tools" }]} />
         <header className="mb-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs text-secondary-foreground">
@@ -112,7 +113,7 @@ export default function ToolsHub() {
           Educational aids for trained clinicians. Always verify against your local
           formulary.
         </p>
-      </div>
+      </PageSection>
     </main>
   );
 }

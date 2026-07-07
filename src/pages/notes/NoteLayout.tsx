@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { PageSection } from "@/components/layout/PageSection";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ChevronLeft, Atom, HeartPulse, FlaskConical, Stethoscope, Activity, ClipboardList, ArrowRight } from "lucide-react";
@@ -182,7 +183,7 @@ export const NoteLayout = ({
           <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
         )}
       </Helmet>
-      <main className="container mx-auto px-4 py-6 sm:py-10 max-w-3xl">
+      <PageSection as="main" spacing="tight" width="narrow">
         <nav aria-label="Breadcrumb" className="mb-4 text-sm">
           <ol className="flex flex-wrap items-center gap-1 text-muted-foreground">
             <li>
@@ -340,7 +341,7 @@ export const NoteLayout = ({
             </section>
           )}
         </article>
-      </main>
+      </PageSection>
     </>
   );
 };

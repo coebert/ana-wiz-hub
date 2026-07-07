@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { PageSection } from "@/components/layout/PageSection";
 import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/layout/Header";
 
@@ -170,7 +171,7 @@ const NotesIndex = () => (
         ],
       })}</script>
     </Helmet>
-    <main className="container mx-auto px-4 py-6 sm:py-10 max-w-3xl">
+    <PageSection as="main" spacing="tight" width="narrow">
       <header className="mb-6 sm:mb-8">
         <h1 className="text-3xl sm:text-4xl font-serif font-bold text-foreground">
           Notes
@@ -212,7 +213,7 @@ const NotesIndex = () => (
           </li>
         ))}
       </ul>
-    </main>
+    </PageSection>
   </>
 );
 
