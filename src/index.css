@@ -129,9 +129,11 @@
     --popover:            215 28% 12%;
     --popover-foreground: 210 20% 96%;
 
-    --primary:            200 75% 62%;
-    --primary-hover:      200 75% 70%;
-    --primary-foreground: 215 32% 8%;
+    /* Mid-navy in dark mode so white-on-primary stays legible on chips,
+       buttons and the hero gradient. */
+    --primary:            210 65% 48%;
+    --primary-hover:      210 65% 55%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary:            215 22% 18%;
     --secondary-foreground: 210 20% 92%;
