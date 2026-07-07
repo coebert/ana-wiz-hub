@@ -223,10 +223,10 @@ const Index = () => {
                   <section.icon className={`h-8 w-8 ${section.iconColor}`} />
                   <ProgressRing completed={progress.completed} total={progress.total} size={36} strokeWidth={2.5} />
                 </div>
-                <h3 className="text-lg font-serif font-bold text-foreground mb-1.5">
+                <h3 className="h4 mb-1.5">
                   {section.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+                <p className="small mb-3 leading-relaxed">
                   {section.description}
                 </p>
                 <div className="flex items-center justify-between">
