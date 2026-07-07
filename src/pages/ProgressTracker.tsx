@@ -100,7 +100,7 @@ const ProgressTracker = () => {
   const activeDescription = examFilters.find((f) => f.value === activeFilter)?.description ?? "";
 
   return (
-    <div className="container mx-auto px-4 py-8 md:py-12 max-w-6xl">
+    <PageSection spacing="default" width="xwide">
       <Helmet>
         <title>Your Topic Progress – AnaesthesiaCore</title>
         <meta name="description" content="Track your FRCA Primary, Final and FFICM revision progress topic-by-topic. Completion saves locally across every section of AnaesthesiaCore." />
