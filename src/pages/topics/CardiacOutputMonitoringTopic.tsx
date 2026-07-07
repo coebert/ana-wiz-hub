@@ -12,6 +12,7 @@ import MModeDiagram from "@/components/diagrams/intensive-care/MModeDiagram";
 import MModePathologyDiagram from "@/components/diagrams/intensive-care/MModePathologyDiagram";
 import OesophagealDopplerDiagram from "@/components/diagrams/intensive-care/OesophagealDopplerDiagram";
 import ThermodilutionDiagram from "@/components/diagrams/intensive-care/ThermodilutionDiagram";
+import AcumenIQDiagram from "@/components/diagrams/intensive-care/AcumenIQDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import COPitfallsChecklist from "@/components/diagrams/intensive-care/COPitfallsChecklist";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
@@ -228,7 +229,61 @@ const CoreConcepts = () => (
       </div>
     </div>
 
-    {/* 8. Echocardiography */}
+    {/* 6a. Edwards Acumen IQ & HPI */}
+    <div>
+      <h2 className="text-2xl font-serif font-bold text-foreground mb-3">6a. The Edwards Acumen IQ Sensor & Hypotension Prediction Index (HPI)</h2>
+      <p className="text-muted-foreground leading-relaxed mb-3">
+        The <span className="font-medium text-foreground">Acumen IQ</span> is a next-generation arterial-line pressure transducer from Edwards Lifesciences that plugs into the <span className="italic">HemoSphere</span> platform. It uses the fourth-generation FloTrac pulse-contour algorithm, so it is <span className="font-medium text-foreground">minimally invasive and uncalibrated</span> — a peripheral (typically radial) arterial cannula is the only vascular access required. What sets it apart from a standard FloTrac is that it also outputs advanced haemodynamic variables and the machine-learned <span className="font-medium text-foreground">Hypotension Prediction Index (HPI)</span>, a scalar (0–100) that forecasts an impending hypotensive episode (MAP &lt; 65 mmHg for ≥ 1 min) approximately 15 minutes in advance.
+      </p>
+      <div className="mb-4 bg-card rounded-xl border border-border p-4 md:p-6">
+        <AcumenIQDiagram />
+      </div>
+
+      <h3 className="text-lg font-serif font-semibold text-foreground mb-2">How it works</h3>
+      <div className="grid sm:grid-cols-2 gap-3 mb-4">
+        <div className="p-4 rounded-lg border border-border">
+          <p className="font-semibold text-foreground text-sm mb-1">Signal acquisition</p>
+          <p className="text-sm text-muted-foreground">A high-fidelity pressure transducer samples the arterial waveform at 100 Hz. No thermodilution or lithium calibration is required; patient demographics (age, sex, height, weight) initialise the vascular-compliance estimate.</p>
+        </div>
+        <div className="p-4 rounded-lg border border-border">
+          <p className="font-semibold text-foreground text-sm mb-1">FloTrac 4th-gen — CO/SV</p>
+          <p className="text-sm text-muted-foreground">SV = <span className="font-mono">σ<sub>AP</sub> × χ</span>, where σ<sub>AP</sub> is the standard deviation of the arterial pressure over a 20 s window and χ is a compliance/impedance factor updated every 20 s from waveform morphology (skewness, kurtosis, heart rate). CO = SV × HR.</p>
+        </div>
+        <div className="p-4 rounded-lg border border-border">
+          <p className="font-semibold text-foreground text-sm mb-1">Advanced parameters</p>
+          <p className="text-sm text-muted-foreground">Continuous <span className="font-medium text-foreground">SVV</span> and <span className="font-medium text-foreground">PPV</span> (preload responsiveness); <span className="font-medium text-foreground">dP/dt</span> (maximal upstroke slope — a surrogate of LV contractility); <span className="font-medium text-foreground">Eadyn</span> (dynamic arterial elastance = PPV/SVV — predicts MAP response to fluid).</p>
+        </div>
+        <div className="p-4 rounded-lg border border-border">
+          <p className="font-semibold text-foreground text-sm mb-1">HPI — the ML layer</p>
+          <p className="text-sm text-muted-foreground">A logistic-regression model trained on more than 20 features extracted from each pressure beat (upstroke slope, dicrotic notch position and height, systolic area, complexity, beat-to-beat variability). Output is a 0–100 probability score updated every 20 s; an alarm at HPI ≥ 85 flags likely hypotension within ~15 min, prompting a "hypotension bundle" (fluid, vasopressor, or inotrope guided by SVV, SVR and dP/dt).</p>
+        </div>
+      </div>
+
+      <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Evidence base</h3>
+      <div className="rounded-lg border border-border overflow-x-auto mb-3">
+        <table className="w-full text-xs sm:text-sm">
+          <thead className="bg-muted/50">
+            <tr>
+              <th className="px-3 py-2 text-left font-semibold text-foreground">Study</th>
+              <th className="px-3 py-2 text-left font-semibold text-foreground">Design</th>
+              <th className="px-3 py-2 text-left font-semibold text-foreground">Finding</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border text-muted-foreground">
+            <tr><td className="px-3 py-2 font-medium text-foreground">Hatib et al., Anesthesiology 2018</td><td className="px-3 py-2">Algorithm derivation & validation on 1334 arterial waveforms</td><td className="px-3 py-2">HPI predicted hypotension 15 min ahead: sensitivity 88%, specificity 87%, AUROC 0.95. 10 min: 89/90%. 5 min: 92/92%.</td></tr>
+            <tr><td className="px-3 py-2 font-medium text-foreground">Wijnberge et al., <span className="italic">HYPE</span>, JAMA 2020</td><td className="px-3 py-2">Single-centre RCT, 68 adults, elective non-cardiac surgery</td><td className="px-3 py-2">HPI-guided care reduced median time-weighted average of hypotension from 0.44 to 0.10 mmHg (a 74% reduction). No change in AKI or 30-day outcomes in this small trial.</td></tr>
+            <tr><td className="px-3 py-2 font-medium text-foreground">Maheshwari et al., Intensive Care Med 2020</td><td className="px-3 py-2">Multicentre RCT, 214 ICU patients</td><td className="px-3 py-2">No significant reduction in time-weighted MAP &lt; 65 mmHg vs standard care — a reminder that pre-warning alone is not enough; the accompanying treatment protocol matters.</td></tr>
+            <tr><td className="px-3 py-2 font-medium text-foreground">Schneck et al., BJA 2020; Davies et al., A&A 2020</td><td className="px-3 py-2">External validations</td><td className="px-3 py-2">Reproduced 15-min prediction performance, but noted that HPI is strongly correlated with the current MAP itself — some of the "prediction" reflects a MAP already trending down. Interpret HPI in the context of the arterial trace, not in isolation.</td></tr>
+            <tr><td className="px-3 py-2 font-medium text-foreground">EU-HYPROTECT registry, 2023</td><td className="px-3 py-2">Prospective observational, 749 major non-cardiac surgical patients</td><td className="px-3 py-2">HPI-guided haemodynamic management associated with a low burden of intra-operative hypotension, supporting real-world feasibility.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="rounded-lg border border-border bg-muted/30 p-3 text-xs text-muted-foreground">
+        <span className="font-semibold text-foreground">Limitations & controversy:</span> HPI shares all the pulse-contour caveats (aortic regurgitation, IABP, severe arrhythmia, rapid SVR change, damped or under-damped arterial trace). Independent analyses (Enevoldsen &amp; Vistisen, 2022) have argued that a simple "MAP &lt; 72 mmHg now" rule performs almost as well, so HPI's incremental value over vigilant MAP monitoring plus a good treatment protocol remains debated. Currently endorsed as a decision-support tool rather than a standalone target.
+      </div>
+    </div>
+
+
     <div>
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">7. Echocardiography for Haemodynamic Assessment</h2>
       <p className="text-muted-foreground leading-relaxed mb-3">
