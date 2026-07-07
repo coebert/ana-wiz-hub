@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { PageMeta } from "@/components/layout/PageMeta";
+import { PageContainer } from "@/components/layout/PageContainer";
 import { AutoTOC } from "@/components/layout/AutoTOC";
 import { topicsBySection, type Section } from "@/data/curriculum";
 import { TopicReferencesButton } from "@/components/topic/TopicReferencesButton";
@@ -9,6 +10,7 @@ import { TopicPager } from "@/components/topic/TopicPager";
 import { TopicPagerMini } from "@/components/topic/TopicPagerMini";
 import { ReadingProgressBar } from "@/components/layout/ReadingProgressBar";
 import { StickyTopicTitle } from "@/components/layout/StickyTopicTitle";
+
 
 interface SectionLayoutProps {
   title: string;
