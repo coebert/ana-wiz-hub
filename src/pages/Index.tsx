@@ -235,23 +235,8 @@ const Index = () => {
 
       <SupportSection />
 
-      {/* Footer — single muted row */}
-      <footer className="border-t border-border bg-surface">
-        <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-muted-foreground">
-          <p>
-            Content sourced from BJA Education, Miller's Anesthesia, Oh's ICU Manual and established literature. Not a substitute for clinical judgement.
-          </p>
-          <p className="flex items-center gap-4 shrink-0">
-            <span className="text-muted-foreground/70">Dr Rob Coe · BA MA (Oxon) MBBS FRCA FFICM</span>
-            <a
-              href="/sitemap.xml"
-              className="hover:text-foreground underline-offset-4 hover:underline"
-            >
-              Sitemap
-            </a>
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
+
     </div>
   );
 };
