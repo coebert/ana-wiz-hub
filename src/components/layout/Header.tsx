@@ -181,83 +181,33 @@ export const Header = () => {
             );
           })()}
 
-          {/* Desktop nav — icons only across md/lg/xl (no labels wide enough
-              to safely fit alongside exam filter + preference cluster). At
-              2xl+ we upgrade to labelled primary buttons + a "More" dropdown
-              so the wordmark and labels never clip each other. */}
-          <nav className="hidden md:flex items-center gap-0.5 min-w-0 flex-1 justify-center overflow-hidden">
-            {/* md–xl: all 16 icons */}
-            <div className="flex 2xl:hidden items-center gap-0.5">
-              {navItems.map((item) => {
-                const isActive = location.pathname.startsWith(item.path);
-                return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    title={item.label}
-                    aria-label={item.label}
-                    className={`flex items-center justify-center p-2 rounded-lg transition-colors shrink-0 ${
-                      isActive
-                        ? "bg-secondary text-foreground"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                    }`}
-                  >
-                    <item.icon className={`h-4 w-4 ${isActive ? item.color : ""}`} />
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* 2xl+: primary items with labels + "More" dropdown */}
-            <div className="hidden 2xl:flex items-center gap-0.5">
-              {primaryNavItems.map((item) => {
-                const isActive = location.pathname.startsWith(item.path);
-                return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    aria-label={item.label}
-                    className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors shrink-0 whitespace-nowrap ${
-                      isActive
-                        ? "bg-secondary text-foreground"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                    }`}
-                  >
-                    <item.icon className={`h-4 w-4 ${isActive ? item.color : ""}`} />
-                    <span>{item.label}</span>
-                  </Link>
-                );
-              })}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button
-                    className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors shrink-0 whitespace-nowrap"
-                    aria-label="More navigation"
-                  >
-                    <MoreHorizontal className="h-4 w-4" />
-                    <span>More</span>
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-52">
-                  {overflowNavItems.map((item) => {
-                    const isActive = location.pathname.startsWith(item.path);
-                    return (
-                      <DropdownMenuItem key={item.path} asChild>
-                        <Link
-                          to={item.path}
-                          className={`flex items-center gap-2 cursor-pointer ${
-                            isActive ? "bg-secondary text-foreground" : ""
-                          }`}
-                        >
-                          <item.icon className={`h-4 w-4 ${isActive ? item.color : "text-muted-foreground"}`} />
-                          <span>{item.label}</span>
-                        </Link>
-                      </DropdownMenuItem>
-                    );
-                  })}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+          {/* Desktop nav — icons only at every width so the wordmark,
+              exam-filter cluster and preference cluster all coexist
+              without any label ever clipping. Tooltips + aria-labels
+              retain the semantics; the full labelled list is available
+              in the mobile drawer and via ⌘K search. */}
+          <nav
+            aria-label="Sections"
+            className="hidden md:flex items-center gap-0.5 min-w-0 flex-1 justify-center overflow-hidden"
+          >
+            {navItems.map((item) => {
+              const isActive = location.pathname.startsWith(item.path);
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  title={item.label}
+                  aria-label={item.label}
+                  className={`flex items-center justify-center p-2 rounded-md transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                    isActive
+                      ? "bg-secondary text-foreground"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  }`}
+                >
+                  <item.icon className={`h-4 w-4 ${isActive ? item.color : ""}`} />
+                </Link>
+              );
+            })}
           </nav>
 
 
