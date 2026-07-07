@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown, BookMarked, Sparkles } from "lucide-react";
-import brainLogo from "/brain-logo.webp";
+import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown, BookMarked, Sparkles, GraduationCap } from "lucide-react";
 import NeonSplash from "@/components/layout/NeonSplash";
 import { SupportSection } from "@/components/feedback/SupportSection";
 import { CommentWall } from "@/components/feedback/CommentWall";
 import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/viva/DemoVivaStepper";
 import { ContinueBand } from "@/components/landing/ContinueBand";
 import { HomeDashboard } from "@/components/landing/HomeDashboard";
+import { Button } from "@/components/ui/button";
 import { citationStats } from "@/lib/citationStats";
 
 const nf = new Intl.NumberFormat("en-GB");
@@ -76,51 +76,59 @@ const DEMO_QUESTIONS: DemoVivaQuestion[] = [
   },
 ];
 
-interface LandingChoice {
+/**
+ * Landing page (`/`).
+ *
+ * Recomposed to match `/revise`: a calm split editorial hero (brand + factual
+ * lede + primary CTAs on the left, a compact "what you get" summary card on
+ * the right) sits above the personalised dashboard, continue-band, and a
+ * restrained 4-column tool index. Rainbow icon-bg tiles are gone — each tool
+ * card carries a single category dot on the title and a left rule in the
+ * matching HSL token, mirroring the discipline grid on `/revise`. Downstream
+ * bands (evidence, viva demo, comment wall, support) are unchanged in
+ * substance but ride on the new token/elevation system.
+ */
+type Tool = {
   title: string;
   description: string;
   icon: typeof BookOpen;
   to: string;
-  /** Tailwind colour token used for the icon + accent ring. */
-  accent: string;
-}
+  dotClass: string;
+  ruleColorVar: string;
+};
 
-interface LandingChoiceExt extends LandingChoice {
-  iconBg: string;
-}
-
-const choices: LandingChoiceExt[] = [
+const tools: Tool[] = [
   {
     title: "Revise",
     description: "Browse the full curriculum by section and dive into structured topic notes.",
     icon: BookOpen,
     to: "/revise",
-    accent: "text-physiology",
-    iconBg: "bg-physiology/10",
+    dotClass: "bg-physiology",
+    ruleColorVar: "--physiology",
   },
   {
     title: "Podcast",
     description: "Listen to AI-generated topic podcasts on the go — perfect for commutes.",
     icon: Headphones,
     to: "/podcasts",
-    accent: "text-pharmacology",
-    iconBg: "bg-pharmacology/10",
+    dotClass: "bg-pharmacology",
+    ruleColorVar: "--pharmacology",
   },
   {
     title: "Viva Practice",
-    description: "Practise out loud with an AI examiner who listens to your spoken answers and gives constructive, rubric-based feedback.",
+    description: "Practise out loud with an AI examiner who gives rubric-based feedback on spoken answers.",
     icon: Mic,
     to: "/viva",
-    accent: "text-clinical",
-    iconBg: "bg-clinical/10",
+    dotClass: "bg-clinical",
+    ruleColorVar: "--clinical",
   },
   {
     title: "Ask AI",
-    description: "Ask any curriculum question and get a grounded answer with direct links to the relevant topics in the app.",
+    description: "Ask any curriculum question and get a grounded answer linked to the relevant topics.",
     icon: Sparkles,
     to: "/ask",
-    accent: "text-physics",
-    iconBg: "bg-physics/10",
+    dotClass: "bg-physics",
+    ruleColorVar: "--physics",
   },
 ];
 
@@ -137,136 +145,177 @@ const Landing = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/" />
         <meta property="og:url" content="https://anaesthesiacore.app/" />
       </Helmet>
-      <section className="relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ background: "var(--gradient-hero)" }}
-        />
-        {/* Contrast overlay — ensures text legibility in both light and dark modes */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
-        <div className="relative container mx-auto px-4 py-8 md:py-10">
-          <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
-            <div className="flex items-center justify-center gap-4 md:gap-5 mb-4">
-              <img
-                src={brainLogo}
-                alt="AnaesthesiaCore brain and pulse logo"
-                data-landing-hero-logo
-                width={112}
-                height={112}
-                fetchPriority="high"
-                decoding="async"
-                className="h-16 w-16 md:h-20 md:w-20 invert brightness-200 [filter:invert(1)_brightness(2)_drop-shadow(0_4px_12px_rgba(0,0,0,0.35))]"
-              />
-              <h1 className="font-display text-3xl md:text-5xl font-bold text-white tracking-tight text-left [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
-                AnaesthesiaCore
-                <span className="block text-lg md:text-2xl font-medium text-white/85 mt-0.5">
-                  FRCA &amp; FFICM Revision
-                </span>
-              </h1>
+
+      {/* Hero — split editorial layout, matches /revise */}
+      <section className="relative border-b border-border bg-surface">
+        <div className="container mx-auto px-4 py-10 md:py-16">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12 items-start">
+            {/* Left: brand + factual lede + CTAs */}
+            <div>
+              <p className="eyebrow text-muted-foreground mb-3">
+                <GraduationCap className="inline h-3.5 w-3.5 mr-1.5 -mt-0.5" aria-hidden />
+                FRCA Primary · FRCA Final · FFICM
+              </p>
+              <h1 className="display text-foreground">AnaesthesiaCore</h1>
+              <p className="lead mt-4 text-foreground/75">
+                A study companion for FRCA Primary, Final and FFICM trainees. Three tools in one place:{" "}
+                <strong className="font-semibold text-foreground">structured curriculum notes</strong>,{" "}
+                <strong className="font-semibold text-foreground">AI-generated topic podcasts</strong>, and an{" "}
+                <strong className="font-semibold text-foreground">AI viva examiner</strong> that gives rubric-based feedback on your spoken answers.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button asChild variant="cta" size="lg">
+                  <Link to="/revise">
+                    Start revising
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <Link to="/viva">
+                    <Mic className="h-4 w-4" />
+                    Take a viva
+                  </Link>
+                </Button>
+                <Button asChild variant="ghost" size="lg">
+                  <Link to="/ask">
+                    <Sparkles className="h-4 w-4" />
+                    Ask AI
+                  </Link>
+                </Button>
+              </div>
             </div>
-            <p className="text-sm md:text-base text-white/90 max-w-2xl [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
-              A study companion for FRCA Primary, Final and FFICM trainees. Three tools in one place:{" "}
-              <strong className="font-semibold text-white">structured curriculum notes</strong>,{" "}
-              <strong className="font-semibold text-white">AI-generated topic podcasts</strong>, and an{" "}
-              <strong className="font-semibold text-white">AI viva examiner</strong> that gives rubric-based feedback on your spoken answers.
-            </p>
+
+            {/* Right: "What you get" summary card */}
+            <aside
+              aria-label="What you get"
+              className="rounded-xl border border-border bg-card shadow-elev-1 p-5 lg:sticky lg:top-24"
+            >
+              <p className="eyebrow text-muted-foreground mb-4">What you get</p>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-3">
+                  <BookOpen className="h-4 w-4 mt-0.5 shrink-0 text-physiology" aria-hidden />
+                  <span className="text-foreground/85">
+                    <strong className="font-semibold text-foreground">Full curriculum notes</strong>{" "}
+                    — mapped to Primary, Final and FFICM syllabi.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Headphones className="h-4 w-4 mt-0.5 shrink-0 text-pharmacology" aria-hidden />
+                  <span className="text-foreground/85">
+                    <strong className="font-semibold text-foreground">Topic podcasts</strong>{" "}
+                    for on-call and commute revision.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Mic className="h-4 w-4 mt-0.5 shrink-0 text-clinical" aria-hidden />
+                  <span className="text-foreground/85">
+                    <strong className="font-semibold text-foreground">AI viva examiner</strong>{" "}
+                    with structured, rubric-based feedback.
+                  </span>
+                </li>
+              </ul>
+              <div className="mt-5 pt-4 border-t border-border">
+                <p className="text-[11px] text-muted-foreground mono">
+                  {nf.format(CITATION_COUNT)}+ citations · {nf.format(SOURCE_COUNT)}+ sources · {nf.format(TOPIC_COUNT)} topics
+                </p>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
 
-
-      <section className="container mx-auto px-4 py-8 md:py-10 flex-1">
-
-        <div className="max-w-6xl mx-auto mb-6">
+      <section className="container mx-auto px-4 py-10 md:py-14 flex-1">
+        <div className="max-w-6xl mx-auto mb-8">
           <HomeDashboard />
         </div>
 
         <ContinueBand />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 max-w-6xl mx-auto">
-          {choices.map(({ title, description, icon: Icon, to, accent, iconBg }) => (
-            <Link
-              key={to}
-              to={to}
-              className="group relative flex flex-col rounded-2xl border border-border bg-card p-6 md:p-8 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
-              <div className="flex items-center justify-between mb-5">
-                <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${iconBg} ${accent}`}>
-                  <Icon className="h-6 w-6" />
+        {/* Tools — restrained grid, category dot + left rule */}
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-6">
+            <p className="eyebrow text-muted-foreground mb-2">Tools</p>
+            <h2 className="h2">Pick where to start</h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {tools.map(({ title, description, icon: Icon, to, dotClass, ruleColorVar }) => (
+              <Link
+                key={to}
+                to={to}
+                className="group relative flex flex-col rounded-xl border border-border bg-card p-5 shadow-elev-1 transition-[transform,box-shadow,border-color] duration-150 ease-out hover:-translate-y-px hover:shadow-elev-2 hover:border-foreground/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                style={{
+                  borderLeftWidth: "3px",
+                  borderLeftColor: `hsl(var(${ruleColorVar}))`,
+                }}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <Icon className="h-5 w-5 text-muted-foreground" aria-hidden />
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:translate-x-0.5 group-hover:text-foreground transition-all" />
                 </div>
-                <ArrowRight className="h-5 w-5 text-primary/60 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
-              </div>
-              <h2 className="font-display text-2xl font-semibold text-foreground mb-2">
-                {title}
-              </h2>
-              <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                {description}
-              </p>
-            </Link>
-          ))}
+                <h3 className="h4 mb-1 flex items-center gap-2">
+                  <span className={`h-1.5 w-1.5 rounded-full ${dotClass}`} aria-hidden />
+                  {title}
+                </h3>
+                <p className="small leading-relaxed flex-1">{description}</p>
+              </Link>
+            ))}
+          </div>
         </div>
 
+        {/* Evidence base — calm bordered band, no gradient */}
         <section
           aria-label="Evidence base"
-          className="mt-10 md:mt-14 max-w-5xl mx-auto rounded-2xl border border-border bg-card/60 backdrop-blur px-5 py-6 md:px-8 md:py-7 shadow-sm"
+          className="mt-10 md:mt-14 max-w-5xl mx-auto rounded-xl border border-border bg-card shadow-elev-1 px-5 py-6 md:px-8 md:py-7"
         >
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div className="flex items-start gap-3">
-              <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <BookMarked className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
-                  Evidence base
+                <p className="eyebrow text-muted-foreground">Evidence base</p>
+                <p className="h3 mt-1">
+                  <span className="text-primary mono">{nf.format(CITATION_COUNT)}+</span> inline citations across{" "}
+                  <span className="text-primary mono">{nf.format(SOURCE_COUNT)}+</span> peer-reviewed sources
                 </p>
-                <p className="font-display text-xl md:text-2xl font-semibold text-foreground leading-snug">
-                  <span className="text-primary">{nf.format(CITATION_COUNT)}+</span> inline citations across{" "}
-                  <span className="text-primary">{nf.format(SOURCE_COUNT)}+</span> peer-reviewed sources
-                </p>
-                <p className="text-sm text-muted-foreground mt-1">
+                <p className="small mt-1.5 leading-relaxed">
                   BJA Education, NICE, AAGBI, DAS, SSC and the standard FRCA textbooks — every dose, threshold and recommendation links back to a named source.
                 </p>
               </div>
             </div>
             <dl className="grid grid-cols-3 gap-4 md:gap-6 text-center md:text-left md:border-l md:border-border md:pl-6 shrink-0">
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Citations</dt>
-                <dd className="font-display text-2xl font-bold text-foreground">{nf.format(CITATION_COUNT)}+</dd>
+                <dt className="eyebrow text-muted-foreground">Citations</dt>
+                <dd className="mono text-xl font-semibold text-foreground mt-0.5">{nf.format(CITATION_COUNT)}+</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Sources</dt>
-                <dd className="font-display text-2xl font-bold text-foreground">{nf.format(SOURCE_COUNT)}+</dd>
+                <dt className="eyebrow text-muted-foreground">Sources</dt>
+                <dd className="mono text-xl font-semibold text-foreground mt-0.5">{nf.format(SOURCE_COUNT)}+</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Topics</dt>
-                <dd className="font-display text-2xl font-bold text-foreground">{nf.format(TOPIC_COUNT)}</dd>
+                <dt className="eyebrow text-muted-foreground">Topics</dt>
+                <dd className="mono text-xl font-semibold text-foreground mt-0.5">{nf.format(TOPIC_COUNT)}</dd>
               </div>
             </dl>
           </div>
         </section>
 
-        <section className="mt-12 md:mt-16 max-w-5xl mx-auto">
-          <details
-            className="group relative overflow-hidden rounded-2xl border border-primary/20 shadow-sm"
-            style={{ background: "var(--gradient-hero)" }}
-          >
-            {/* Soft overlay so content cards still pop on the gradient */}
-            <div className="absolute inset-0 bg-background/0 dark:bg-background/10 pointer-events-none" />
-            <summary className="relative flex items-center justify-between gap-3 cursor-pointer list-none px-6 py-4 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-              <div className="flex items-center gap-2">
-                <Mic className="h-5 w-5 text-white" />
-                <span className="font-display text-xl md:text-2xl font-semibold text-white tracking-tight [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
-                  See a taste of Viva Practice
+        {/* Viva demo — calm bordered container, no gradient wrap */}
+        <section className="mt-10 md:mt-14 max-w-5xl mx-auto">
+          <details className="group rounded-xl border border-border bg-card shadow-elev-1 overflow-hidden">
+            <summary className="flex items-center justify-between gap-3 cursor-pointer list-none px-5 py-4 md:px-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xl">
+              <div className="flex items-center gap-2.5">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-clinical/10 text-clinical">
+                  <Mic className="h-4 w-4" />
                 </span>
+                <span className="h3">See a taste of Viva Practice</span>
               </div>
-              <ChevronDown className="h-5 w-5 text-white transition-transform group-open:rotate-180" />
+              <ChevronDown className="h-5 w-5 text-muted-foreground transition-transform group-open:rotate-180" />
             </summary>
-
-            <div className="relative px-6 pb-6 pt-2">
-              <p className="text-sm md:text-base text-white/90 mb-6 max-w-2xl [text-shadow:0_1px_4px_rgba(0,0,0,0.25)]">
+            <div className="px-5 pb-6 pt-2 md:px-6 border-t border-border">
+              <p className="small mb-6 max-w-2xl mt-4">
                 A worked example: three viva questions, model candidate answers, and the kind of constructive feedback the AI examiner gives.
               </p>
-
               <DemoVivaStepper questions={DEMO_QUESTIONS} />
             </div>
           </details>
@@ -277,23 +326,21 @@ const Landing = () => {
 
       <SupportSection />
 
-      <footer className="container mx-auto px-4 pb-8 text-center space-y-2">
-        <p className="text-sm text-muted-foreground">
-          App created by Dr Rob Coe BA MA OXON MBBS FRCA FFICM
-        </p>
-        <div className="flex items-center justify-center gap-4">
-          <a
-            href="/sitemap.xml"
-            className="inline-block text-xs text-muted-foreground hover:text-foreground underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-          >
-            Sitemap
-          </a>
-          <a
-            href="/admin"
-            className="inline-block text-xs text-muted-foreground hover:text-foreground underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-          >
-            Admin
-          </a>
+      {/* Footer — single muted row */}
+      <footer className="border-t border-border bg-surface">
+        <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-muted-foreground">
+          <p>
+            Content sourced from BJA Education, Miller's Anesthesia, Oh's ICU Manual and established literature. Not a substitute for clinical judgement.
+          </p>
+          <p className="flex items-center gap-4 shrink-0">
+            <span className="text-muted-foreground/70">Dr Rob Coe · BA MA (Oxon) MBBS FRCA FFICM</span>
+            <a href="/sitemap.xml" className="hover:text-foreground underline-offset-4 hover:underline">
+              Sitemap
+            </a>
+            <a href="/admin" className="hover:text-foreground underline-offset-4 hover:underline">
+              Admin
+            </a>
+          </p>
         </div>
       </footer>
     </main>
