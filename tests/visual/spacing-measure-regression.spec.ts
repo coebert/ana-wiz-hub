@@ -29,10 +29,19 @@ import { test, expect, type Page } from "@playwright/test";
  * Run: npx playwright test tests/visual/spacing-measure-regression.spec.ts
  */
 
+// Tailwind's `sm` breakpoint fires at ≥640px, `lg` at ≥1024px. Gutters
+// step: `px-3` (12px) below sm, `px-4` (16px) at sm/md, `px-6` (24px) at
+// lg+. Widths chosen to cover the common mobile matrix (Android small,
+// iPhone, large phone, phablet, the sm boundary itself) plus tablet and
+// desktop so we catch the boundary-crossing bugs on every side.
 const VIEWPORTS = [
-  { name: "mobile",  width: 390,  height: 844,  expectedPad: 12 },
-  { name: "tablet",  width: 768,  height: 1024, expectedPad: 16 },
-  { name: "desktop", width: 1280, height: 900,  expectedPad: 24 },
+  { name: "mobile-360",  width: 360,  height: 780,  expectedPad: 12 },
+  { name: "mobile-390",  width: 390,  height: 844,  expectedPad: 12 },
+  { name: "mobile-414",  width: 414,  height: 896,  expectedPad: 12 },
+  { name: "mobile-540",  width: 540,  height: 960,  expectedPad: 12 },
+  { name: "mobile-640",  width: 640,  height: 900,  expectedPad: 16 },
+  { name: "tablet-768",  width: 768,  height: 1024, expectedPad: 16 },
+  { name: "desktop-1280", width: 1280, height: 900, expectedPad: 24 },
 ] as const;
 
 const ROUTES = [
@@ -157,7 +166,7 @@ for (const vp of VIEWPORTS) {
         // 3. At desktop, capped columns must sit centred inside the
         //    viewport (mx-auto). Only assert when the cap actually
         //    engages (viewport wider than the measure).
-        if (vp.name === "desktop") {
+        if (vp.name.startsWith("desktop")) {
           for (const s of samples) {
             if (!s.measurePx) continue;
             if (vp.width <= s.measurePx) continue;
