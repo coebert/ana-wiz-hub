@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { PageSection } from "@/components/layout/PageSection";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, BookOpen, Mic, Search, Shuffle } from "lucide-react";
