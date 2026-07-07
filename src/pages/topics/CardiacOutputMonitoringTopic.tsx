@@ -12,6 +12,7 @@ import MModeDiagram from "@/components/diagrams/intensive-care/MModeDiagram";
 import MModePathologyDiagram from "@/components/diagrams/intensive-care/MModePathologyDiagram";
 import OesophagealDopplerDiagram from "@/components/diagrams/intensive-care/OesophagealDopplerDiagram";
 import ThermodilutionDiagram from "@/components/diagrams/intensive-care/ThermodilutionDiagram";
+import AcumenIQDiagram from "@/components/diagrams/intensive-care/AcumenIQDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import COPitfallsChecklist from "@/components/diagrams/intensive-care/COPitfallsChecklist";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
