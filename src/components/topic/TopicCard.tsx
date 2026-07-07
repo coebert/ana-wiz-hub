@@ -67,7 +67,11 @@ export const TopicCard = ({ title, description, path, section, topicId, examTags
             {((examTags && examTags.length > 0) || (referenceCount && referenceCount > 0)) && (
               <div className="flex flex-wrap gap-1 mt-1.5">
                 {examTags?.map((tag) => (
-                  <span key={tag} className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium border ${examTagColors[tag]}`}>
+                  <span
+                    key={tag}
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium border border-border bg-surface text-foreground/80"
+                  >
+                    <span className={`h-1.5 w-1.5 rounded-full ${examTagDot[tag]}`} aria-hidden />
                     {examTagLabels[tag]}
                   </span>
                 ))}
