@@ -8,7 +8,9 @@ import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/viva/DemoVi
 import { ContinueBand } from "@/components/landing/ContinueBand";
 import { HomeDashboard } from "@/components/landing/HomeDashboard";
 import { Button } from "@/components/ui/button";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { citationStats } from "@/lib/citationStats";
+
 
 const nf = new Intl.NumberFormat("en-GB");
 // Round down to the nearest 10 so the headline number reads cleanly while
@@ -326,23 +328,8 @@ const Landing = () => {
 
       <SupportSection />
 
-      {/* Footer — single muted row */}
-      <footer className="border-t border-border bg-surface">
-        <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-muted-foreground">
-          <p>
-            Content sourced from BJA Education, Miller's Anesthesia, Oh's ICU Manual and established literature. Not a substitute for clinical judgement.
-          </p>
-          <p className="flex items-center gap-4 shrink-0">
-            <span className="text-muted-foreground/70">Dr Rob Coe · BA MA (Oxon) MBBS FRCA FFICM</span>
-            <a href="/sitemap.xml" className="hover:text-foreground underline-offset-4 hover:underline">
-              Sitemap
-            </a>
-            <a href="/admin" className="hover:text-foreground underline-offset-4 hover:underline">
-              Admin
-            </a>
-          </p>
-        </div>
-      </footer>
+      <SiteFooter extraLinks={[{ label: "Admin", href: "/admin" }]} />
+
     </main>
   );
 };

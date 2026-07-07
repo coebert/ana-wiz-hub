@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { PageMeta } from "@/components/layout/PageMeta";
+import { PageContainer } from "@/components/layout/PageContainer";
 import { AutoTOC } from "@/components/layout/AutoTOC";
 import { topicsBySection, type Section } from "@/data/curriculum";
 import { TopicReferencesButton } from "@/components/topic/TopicReferencesButton";
@@ -9,6 +10,7 @@ import { TopicPager } from "@/components/topic/TopicPager";
 import { TopicPagerMini } from "@/components/topic/TopicPagerMini";
 import { ReadingProgressBar } from "@/components/layout/ReadingProgressBar";
 import { StickyTopicTitle } from "@/components/layout/StickyTopicTitle";
+
 
 interface SectionLayoutProps {
   title: string;
@@ -51,14 +53,17 @@ export const SectionLayout = ({
     return topic ? { section: sec, topic } : null;
   })();
 
-  // Topic pages get a tighter reading measure (~72ch) so long-form body text
-  // stays comfortable to scan; section listings retain the wider 4xl column.
-  const measureClass = topicForPath ? "max-w-3xl" : "max-w-4xl";
+  // Topic pages get a tighter reading measure (~72ch) so long-form body
+  // text stays comfortable to scan; section listings retain the wider
+  // 4xl column. Widths and gutters flow through the shared
+  // <PageContainer> so every route obeys the same spacing scale.
+  const width = topicForPath ? "narrow" : "default";
   return (
     <>
       {topicForPath && <ReadingProgressBar />}
       {topicForPath && <StickyTopicTitle title={title} />}
-      <div className={`container mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 ${measureClass}`}>
+      <PageContainer width={width} className="py-6 sm:py-8">
+
       <PageMeta title={title} subtitle={subtitle} metaDescription={metaDescription} />
       <nav
         aria-label="Breadcrumb"
@@ -134,7 +139,8 @@ export const SectionLayout = ({
       {topicForPath && (
         <TopicPager section={topicForPath.section} topic={topicForPath.topic} />
       )}
-      </div>
+      </PageContainer>
+
     </>
   );
 };
