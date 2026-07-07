@@ -1,10 +1,11 @@
 import { SectionLayout } from "@/components/layout/SectionLayout";
+import { SectionHeader } from "@/components/layout/SectionHeader";
+import { SectionSubNav } from "@/components/layout/SectionSubNav";
 import { TopicCard } from "@/components/topic/TopicCard";
 import { SectionReferencesPanel } from "@/components/topic/SectionReferencesPanel";
 import { SectionSummary } from "@/components/topic/SectionSummary";
 import { physiologyTopics } from "@/data/curriculum";
 import { Badge } from "@/components/ui/badge";
-import { ProgressRing } from "@/components/shared/ProgressRing";
 import { useProgress } from "@/contexts/ProgressContext";
 
 const PhysiologySection = () => {
@@ -19,50 +20,60 @@ const PhysiologySection = () => {
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-physiology"
+      disableAutoTOC
     >
-      <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">
-        <ProgressRing completed={progress.completed} total={progress.total} size={48} />
-        <div>
-          <p className="text-sm font-medium text-foreground">{progress.completed} of {progress.total} topics completed</p>
-          <p className="text-xs text-muted-foreground">Available physiology topics</p>
-        </div>
-      </div>
-      <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
-        <h2 className="sr-only">Introduction</h2>
-        <p className="text-sm text-foreground leading-relaxed">
-          <strong>Anaesthesia physiology explained.</strong> Applied physiology
-          for FRCA Primary, Final and FFICM trainees — cardiovascular, respiratory,
-          renal, neurological, endocrine and metabolic systems, framed around how
-          anaesthetic drugs, mechanical ventilation and critical illness perturb
-          normal function. Each topic pairs concise revision notes with diagrams,
-          MCQs and structured viva answers so the physiology is exam-ready.
-        </p>
-      </section>
-      <div className="space-y-3">
-        {physiologyTopics.map((topic) => (
-          <div key={topic.id} className="relative">
-            {!topic.available && (
-              <div className="absolute inset-0 bg-background/50 rounded-lg z-10 flex items-center justify-center">
-                <Badge variant="secondary" className="text-xs">Coming soon</Badge>
-              </div>
-            )}
-            <TopicCard
-              title={topic.title}
-              description={topic.description}
-              path={topic.available ? `/physiology/${topic.id}` : "#"}
-              section="physiology"
-              topicId={topic.available ? topic.id : undefined}
-            />
-          </div>
-        ))}
-      </div>
-      <SectionSummary section="physiology" />
-      <SectionReferencesPanel
+      <SectionSubNav />
+      <SectionHeader
         section="physiology"
-        topics={physiologyTopics.filter((t) => t.available)}
+        eyebrow="Physiology · FRCA · FFICM"
+        completed={progress.completed}
+        total={progress.total}
+        intro={
+          <p>
+            <strong>Anaesthesia physiology explained.</strong> Applied physiology
+            for FRCA Primary, Final and FFICM trainees — cardiovascular, respiratory,
+            renal, neurological, endocrine and metabolic systems, framed around how
+            anaesthetic drugs, mechanical ventilation and critical illness perturb
+            normal function. Each topic pairs concise revision notes with diagrams,
+            MCQs and structured viva answers so the physiology is exam-ready.
+          </p>
+        }
       />
+
+      <section id="topics" className="scroll-mt-28">
+        <h2 className="text-lg font-serif font-semibold text-foreground mb-3">
+          Curriculum Topics
+        </h2>
+        <div className="space-y-3">
+          {physiologyTopics.map((topic) => (
+            <div key={topic.id} className="relative">
+              {!topic.available && (
+                <div className="absolute inset-0 bg-background/50 rounded-lg z-10 flex items-center justify-center">
+                  <Badge variant="secondary" className="text-xs">Coming soon</Badge>
+                </div>
+              )}
+              <TopicCard
+                title={topic.title}
+                description={topic.description}
+                path={topic.available ? `/physiology/${topic.id}` : "#"}
+                section="physiology"
+                topicId={topic.available ? topic.id : undefined}
+              />
+            </div>
+          ))}
+        </div>
+        <SectionReferencesPanel
+          section="physiology"
+          topics={physiologyTopics.filter((t) => t.available)}
+        />
+      </section>
+
+      <section id="summary" className="scroll-mt-28">
+        <SectionSummary section="physiology" />
+      </section>
     </SectionLayout>
   );
 };
 
 export default PhysiologySection;
+

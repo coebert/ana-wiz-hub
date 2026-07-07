@@ -1,10 +1,11 @@
 import { SectionLayout } from "@/components/layout/SectionLayout";
+import { SectionHeader } from "@/components/layout/SectionHeader";
+import { SectionSubNav } from "@/components/layout/SectionSubNav";
 import { TopicCard } from "@/components/topic/TopicCard";
 import { SectionReferencesPanel } from "@/components/topic/SectionReferencesPanel";
 import { SectionSummary } from "@/components/topic/SectionSummary";
 import { pharmacologyTopics } from "@/data/curriculum";
 import { Badge } from "@/components/ui/badge";
-import { ProgressRing } from "@/components/shared/ProgressRing";
 import { useProgress } from "@/contexts/ProgressContext";
 
 const PharmacologySection = () => {
@@ -19,48 +20,57 @@ const PharmacologySection = () => {
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-pharmacology"
+      disableAutoTOC
     >
-      <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">
-        <ProgressRing completed={progress.completed} total={progress.total} size={48} />
-        <div>
-          <p className="text-sm font-medium text-foreground">{progress.completed} of {progress.total} topics completed</p>
-          <p className="text-xs text-muted-foreground">Available pharmacology topics</p>
-        </div>
-      </div>
-      <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
-        <h2 className="sr-only">Introduction</h2>
-        <p className="text-sm text-foreground leading-relaxed">
-          <strong>Anaesthesia pharmacology explained.</strong> Drug action,
-          kinetics and dynamics for the FRCA Primary, Final and FFICM exams —
-          induction agents, opioids, neuromuscular blockers, local anaesthetics,
-          inhalational agents, vasoactives and antiemetics. Each drug topic pairs
-          mechanism, dose and side-effect notes with diagrams, MCQs and
-          structured viva answers.
-        </p>
-      </section>
-      <div className="space-y-3">
-        {pharmacologyTopics.map((topic) => (
-          <div key={topic.id} className="relative">
-            {!topic.available && (
-              <div className="absolute inset-0 bg-background/50 rounded-lg z-10 flex items-center justify-center">
-                <Badge variant="secondary" className="text-xs">Coming soon</Badge>
-              </div>
-            )}
-            <TopicCard
-              title={topic.title}
-              description={topic.description}
-              path={topic.available ? `/pharmacology/${topic.id}` : "#"}
-              section="pharmacology"
-              topicId={topic.available ? topic.id : undefined}
-            />
-          </div>
-        ))}
-      </div>
-      <SectionSummary section="pharmacology" />
-      <SectionReferencesPanel
+      <SectionSubNav />
+      <SectionHeader
         section="pharmacology"
-        topics={pharmacologyTopics.filter((t) => t.available)}
+        eyebrow="Pharmacology · FRCA · FFICM"
+        completed={progress.completed}
+        total={progress.total}
+        intro={
+          <p>
+            <strong>Anaesthesia pharmacology explained.</strong> Drug action,
+            kinetics and dynamics for the FRCA Primary, Final and FFICM exams —
+            induction agents, opioids, neuromuscular blockers, local anaesthetics,
+            inhalational agents, vasoactives and antiemetics. Each drug topic pairs
+            mechanism, dose and side-effect notes with diagrams, MCQs and
+            structured viva answers.
+          </p>
+        }
       />
+
+      <section id="topics" className="scroll-mt-28">
+        <h2 className="text-lg font-serif font-semibold text-foreground mb-3">
+          Curriculum Topics
+        </h2>
+        <div className="space-y-3">
+          {pharmacologyTopics.map((topic) => (
+            <div key={topic.id} className="relative">
+              {!topic.available && (
+                <div className="absolute inset-0 bg-background/50 rounded-lg z-10 flex items-center justify-center">
+                  <Badge variant="secondary" className="text-xs">Coming soon</Badge>
+                </div>
+              )}
+              <TopicCard
+                title={topic.title}
+                description={topic.description}
+                path={topic.available ? `/pharmacology/${topic.id}` : "#"}
+                section="pharmacology"
+                topicId={topic.available ? topic.id : undefined}
+              />
+            </div>
+          ))}
+        </div>
+        <SectionReferencesPanel
+          section="pharmacology"
+          topics={pharmacologyTopics.filter((t) => t.available)}
+        />
+      </section>
+
+      <section id="summary" className="scroll-mt-28">
+        <SectionSummary section="pharmacology" />
+      </section>
     </SectionLayout>
   );
 };

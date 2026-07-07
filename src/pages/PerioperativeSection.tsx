@@ -1,10 +1,11 @@
 import { SectionLayout } from "@/components/layout/SectionLayout";
+import { SectionHeader } from "@/components/layout/SectionHeader";
+import { SectionSubNav } from "@/components/layout/SectionSubNav";
 import { SectionTopicsList } from "@/components/topic/SectionTopicsList";
 import { SectionSummary } from "@/components/topic/SectionSummary";
 import { perioperativeTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
-import { ProgressRing } from "@/components/shared/ProgressRing";
 
 const PerioperativeSection = () => {
   const { getSectionProgress } = useProgress();
@@ -20,26 +21,32 @@ const PerioperativeSection = () => {
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-perioperative"
+      disableAutoTOC
     >
-      <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">
-        <ProgressRing completed={progress.completed} total={progress.total} size={48} />
-        <div>
-          <p className="text-sm font-medium text-foreground">{progress.completed} of {progress.total} topics completed</p>
-          <p className="text-xs text-muted-foreground">Perioperative medicine topics</p>
-        </div>
-      </div>
-      <section className="mb-8 p-5 rounded-lg border border-border bg-card/50">
-        <h2 className="sr-only">Introduction</h2>
-        <p className="text-sm text-foreground leading-relaxed">
-          <strong>Perioperative medicine explained.</strong> Preoperative
-          assessment, cardiac and respiratory risk stratification, CPET, frailty
-          scoring, enhanced recovery (ERAS) and postoperative care for FRCA
-          Final and FFICM trainees. Each topic pairs concise notes with
-          diagrams, MCQs and structured viva answers.
-        </p>
+      <SectionSubNav />
+      <SectionHeader
+        section="perioperative"
+        eyebrow="Perioperative Medicine · FRCA Final · FFICM"
+        completed={progress.completed}
+        total={progress.total}
+        intro={
+          <p>
+            <strong>Perioperative medicine explained.</strong> Preoperative
+            assessment, cardiac and respiratory risk stratification, CPET, frailty
+            scoring, enhanced recovery (ERAS) and postoperative care for FRCA
+            Final and FFICM trainees. Each topic pairs concise notes with
+            diagrams, MCQs and structured viva answers.
+          </p>
+        }
+      />
+
+      <section id="topics" className="scroll-mt-28">
+        <SectionTopicsList section="perioperative" topics={visibleTopics} />
       </section>
-      <SectionTopicsList section="perioperative" topics={visibleTopics} />
-      <SectionSummary section="perioperative" />
+
+      <section id="summary" className="scroll-mt-28">
+        <SectionSummary section="perioperative" />
+      </section>
     </SectionLayout>
   );
 };

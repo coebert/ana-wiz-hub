@@ -204,9 +204,15 @@
     /* Belt-and-braces: prevent stray wide content (tables, SVG diagrams,
        long inline tokens) from forcing horizontal page scroll. Components
        that need horizontal overflow (TOC chip strip, wide tables) wrap
-       themselves with overflow-x-auto and remain scrollable. */
-    @apply overflow-x-hidden;
+       themselves with overflow-x-auto and remain scrollable.
+       NOTE: `clip` (not `hidden`) is critical — `overflow-x: hidden`
+       turns html/body into a scroll container, which silently breaks
+       `position: sticky` for every descendant (Header, SectionSubNav,
+       any future sticky rail). `clip` gives the same visual result
+       without creating a scroll container. */
+    overflow-x: clip;
   }
+
 
   body {
     @apply bg-background text-foreground font-sans;

@@ -1,10 +1,11 @@
 import { SectionLayout } from "@/components/layout/SectionLayout";
+import { SectionHeader } from "@/components/layout/SectionHeader";
+import { SectionSubNav } from "@/components/layout/SectionSubNav";
 import { SectionTopicsList } from "@/components/topic/SectionTopicsList";
 import { SectionSummary } from "@/components/topic/SectionSummary";
 import { chemistryTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
-import { ProgressRing } from "@/components/shared/ProgressRing";
 
 const ChemistrySection = () => {
   const { getSectionProgress } = useProgress();
@@ -20,27 +21,33 @@ const ChemistrySection = () => {
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-chemistry"
+      disableAutoTOC
     >
-      <section className="mb-6 p-5 rounded-lg border border-border bg-card/50">
-        <h2 className="sr-only">Introduction</h2>
-        <p className="text-sm text-foreground leading-relaxed">
-          <strong>Anaesthesia chemistry explained.</strong> Foundational
-          chemistry concepts that underpin anaesthetic pharmacology, physiology
-          and physics — atoms and bonding, acids and bases, equilibria, gases
-          and basic organic chemistry. Designed for FRCA trainees without
-          A-level chemistry, with clear notes, diagrams and worked examples so
-          downstream pharmacology and physics topics make sense.
-        </p>
+      <SectionSubNav />
+      <SectionHeader
+        section="chemistry"
+        eyebrow="Chemistry Foundations · FRCA"
+        completed={progress.completed}
+        total={progress.total}
+        intro={
+          <p>
+            <strong>Anaesthesia chemistry explained.</strong> Foundational
+            chemistry concepts that underpin anaesthetic pharmacology, physiology
+            and physics — atoms and bonding, acids and bases, equilibria, gases
+            and basic organic chemistry. Designed for FRCA trainees without
+            A-level chemistry, with clear notes, diagrams and worked examples so
+            downstream pharmacology and physics topics make sense.
+          </p>
+        }
+      />
+
+      <section id="topics" className="scroll-mt-28">
+        <SectionTopicsList section="chemistry" topics={visibleTopics} />
       </section>
-      <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">
-        <ProgressRing completed={progress.completed} total={progress.total} size={48} />
-        <div>
-          <p className="text-sm font-medium text-foreground">{progress.completed} of {progress.total} topics completed</p>
-          <p className="text-xs text-muted-foreground">Chemistry Foundations topics</p>
-        </div>
-      </div>
-      <SectionTopicsList section="chemistry" topics={visibleTopics} />
-      <SectionSummary section="chemistry" />
+
+      <section id="summary" className="scroll-mt-28">
+        <SectionSummary section="chemistry" />
+      </section>
     </SectionLayout>
   );
 };
