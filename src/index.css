@@ -422,7 +422,18 @@
   }
 
   .topic-card {
-    @apply p-4 rounded-lg bg-card border border-border hover:shadow-md transition-all duration-200 cursor-pointer;
+    @apply relative p-4 sm:p-5 rounded-xl bg-card border border-border shadow-elev-1 transition-[transform,box-shadow,border-color] duration-150 ease-out cursor-pointer;
+  }
+  .topic-card:hover {
+    @apply -translate-y-px shadow-elev-2 border-foreground/15;
+  }
+  .topic-card:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .topic-card:hover {
+      transform: none;
+    }
   }
 
   /* Bumps the inline rendering of any ECG diagram wrapped in
