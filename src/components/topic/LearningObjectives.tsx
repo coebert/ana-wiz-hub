@@ -14,7 +14,7 @@ interface LearningObjectivesProps {
 export const LearningObjectives = ({ objectives, blockId = "objectives" }: LearningObjectivesProps) => {
   return (
     <div id={blockId} className="rounded-xl border border-primary/20 bg-primary/5 p-5 scroll-mt-24">
-      <h2 className="flex items-center gap-2 text-lg font-serif font-bold text-foreground mb-3">
+      <h2 className="h3 flex items-center gap-2 mb-3">
         <Target className="h-5 w-5 text-primary" />
         Learning Objectives
       </h2>
