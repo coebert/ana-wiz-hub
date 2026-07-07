@@ -203,10 +203,10 @@ const Index = () => {
 
       {/* Sections */}
       <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground text-center mb-3">
+        <h2 className="h2 text-center mb-3">
           Core Disciplines
         </h2>
-        <p className="text-muted-foreground text-center mb-10 max-w-lg mx-auto">
+        <p className="small text-center mb-10 max-w-lg mx-auto">
           Select a discipline to explore topics with clear explanations, animated diagrams, and exam-focused summaries.
         </p>
 
