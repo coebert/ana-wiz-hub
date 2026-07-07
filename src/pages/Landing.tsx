@@ -228,7 +228,7 @@ const Landing = () => {
         </PageContainer>
       </section>
 
-      <PageSection spacing="default" className="flex-1">
+      <PageSection spacing="default" width="full" className="flex-1">
         <div className="max-w-6xl mx-auto mb-8">
           <HomeDashboard />
         </div>
