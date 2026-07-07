@@ -51,7 +51,7 @@ const VivaHub = () => {
   if (active) {
     return (
       <div className="min-h-screen bg-background">
-        <div className="container mx-auto px-4 py-8 max-w-3xl">
+        <PageSection spacing="tight" width="narrow">
           <button
             onClick={() => setActive(null)}
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6"
@@ -103,7 +103,7 @@ const VivaHub = () => {
               onClose={() => setActive(null)}
             />
           </div>
-        </div>
+        </PageSection>
       </div>
     );
   }
@@ -130,7 +130,7 @@ const VivaHub = () => {
           content="Spoken viva practice with an AI examiner calibrated to FRCA Primary, Final and FFICM standards."
         />
       </Helmet>
-      <div className="container mx-auto px-4 py-8 max-w-5xl">
+      <PageSection spacing="tight" width="wide">
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6"
@@ -238,7 +238,7 @@ const VivaHub = () => {
             </li>
           )}
         </ul>
-      </div>
+      </PageSection>
     </div>
   );
 };
