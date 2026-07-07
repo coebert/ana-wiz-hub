@@ -166,7 +166,7 @@ for (const vp of VIEWPORTS) {
         // 3. At desktop, capped columns must sit centred inside the
         //    viewport (mx-auto). Only assert when the cap actually
         //    engages (viewport wider than the measure).
-        if (vp.name === "desktop") {
+        if (vp.name.startsWith("desktop")) {
           for (const s of samples) {
             if (!s.measurePx) continue;
             if (vp.width <= s.measurePx) continue;
