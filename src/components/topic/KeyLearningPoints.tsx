@@ -32,7 +32,7 @@ export const KeyLearningPoints = ({
       id={blockId}
       className="mt-12 rounded-xl border-2 border-primary/20 bg-secondary/30 p-6 scroll-mt-24"
     >
-      <h3 className="text-xl font-serif font-bold text-foreground mb-4">
+      <h3 className="h2 mb-4">
         Key Learning Points
       </h3>
       <div className="space-y-3">
