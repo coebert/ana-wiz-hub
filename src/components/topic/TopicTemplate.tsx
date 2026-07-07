@@ -319,7 +319,7 @@ export const TopicTemplate = ({
 
         {diagrams && showDiagrams && (
           <section id="diagrams" className="scroll-mt-24">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-4">
+            <h2 className="h2 mb-4">
               Diagrams &amp; Visualisations
             </h2>
             {sectionExamMapping?.diagrams && (
