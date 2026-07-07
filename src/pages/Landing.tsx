@@ -8,7 +8,9 @@ import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/viva/DemoVi
 import { ContinueBand } from "@/components/landing/ContinueBand";
 import { HomeDashboard } from "@/components/landing/HomeDashboard";
 import { Button } from "@/components/ui/button";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { citationStats } from "@/lib/citationStats";
+
 
 const nf = new Intl.NumberFormat("en-GB");
 // Round down to the nearest 10 so the headline number reads cleanly while
