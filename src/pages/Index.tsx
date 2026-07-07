@@ -8,6 +8,8 @@ import { Section, topicsBySection } from "@/data/curriculum";
 import { SupportSection } from "@/components/feedback/SupportSection";
 import { ContinueBand } from "@/components/landing/ContinueBand";
 import { Button } from "@/components/ui/button";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+
 
 /**
  * Phase 5 home recomposition.
