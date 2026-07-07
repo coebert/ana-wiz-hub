@@ -57,7 +57,8 @@ export const SectionSubNav = () => {
   return (
     <nav
       aria-label="Section navigation"
-      className="sticky top-14 z-30 -mx-3 sm:-mx-4 lg:-mx-6 mb-6 border-b border-border bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70"
+      className="sticky top-14 z-30 -mx-3 sm:-mx-4 lg:-mx-6 mb-6 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85"
+
     >
       <div className="px-3 sm:px-4 lg:px-6">
         <ul className="flex items-center gap-1 overflow-x-auto py-2 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
