@@ -181,12 +181,13 @@ export const Header = () => {
             );
           })()}
 
-          {/* Desktop nav — icons only at md/lg where labels don't fit; labelled
-              buttons at xl+ for primary items with a "More" dropdown for the
-              secondary set so nothing wraps or clips. */}
+          {/* Desktop nav — icons only across md/lg/xl (no labels wide enough
+              to safely fit alongside exam filter + preference cluster). At
+              2xl+ we upgrade to labelled primary buttons + a "More" dropdown
+              so the wordmark and labels never clip each other. */}
           <nav className="hidden md:flex items-center gap-0.5 min-w-0 flex-1 justify-center overflow-hidden">
-            {/* md/lg: all 16 icons (existing behaviour) */}
-            <div className="flex xl:hidden items-center gap-0.5">
+            {/* md–xl: all 16 icons */}
+            <div className="flex 2xl:hidden items-center gap-0.5">
               {navItems.map((item) => {
                 const isActive = location.pathname.startsWith(item.path);
                 return (
@@ -207,8 +208,8 @@ export const Header = () => {
               })}
             </div>
 
-            {/* xl+: primary items with labels + "More" dropdown */}
-            <div className="hidden xl:flex items-center gap-0.5">
+            {/* 2xl+: primary items with labels + "More" dropdown */}
+            <div className="hidden 2xl:flex items-center gap-0.5">
               {primaryNavItems.map((item) => {
                 const isActive = location.pathname.startsWith(item.path);
                 return (
