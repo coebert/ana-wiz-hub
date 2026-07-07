@@ -9,66 +9,97 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 215 25% 15%;
+    /* =====================================================================
+       Phase 2 design tokens — clinical reference palette.
 
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 15%;
+       Palette north star: neutral canvas + one deep clinical primary + one
+       warm CTA accent. Per-section category colours are kept but demoted
+       to dot/rule use — their `-light` companions are now defined as an
+       alpha overlay of the base hue so they work equally well on light
+       AND dark surfaces (fixing the washed-out hover in dark mode).
+       ===================================================================== */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 15%;
+    /* Surface stack — three tiers of neutral (sunken < base < raised) */
+    --background:       210 25% 98%;
+    --surface:          210 25% 98%;
+    --surface-sunken:   210 20% 95%;
+    --surface-raised:   0   0% 100%;
+    --foreground:       215 28% 14%;
 
-    --primary: 210 70% 35%;
-    --primary-foreground: 0 0% 100%;
+    --card:               0 0% 100%;
+    --card-foreground:  215 28% 14%;
 
-    --secondary: 180 30% 94%;
-    --secondary-foreground: 210 70% 35%;
+    --popover:            0 0% 100%;
+    --popover-foreground: 215 28% 14%;
 
-    --muted: 210 15% 93%;
-    /* Bumped from 38% → 30% L so muted text clears 4.5:1 on both --background
-       and --muted, with headroom for opacity-modified uses (/80, /70). */
-    --muted-foreground: 215 18% 30%;
+    /* Deep clinical navy — reads as authoritative on white */
+    --primary:            215 55% 24%;
+    --primary-hover:      215 55% 18%;
+    --primary-foreground: 210 30% 98%;
 
-    --accent: 170 50% 40%;
+    --secondary:            210 20% 94%;
+    --secondary-foreground: 215 55% 24%;
+
+    --muted:            210 18% 93%;
+    --muted-foreground: 215 15% 35%;
+
+    /* Teal accent kept for informational chips + section links */
+    --accent:            180 45% 34%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Warm amber — reserved for CTAs and progress fills */
+    --cta:               32 92% 50%;
+    --cta-hover:         32 92% 44%;
+    --cta-foreground:    28 40% 12%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
-    --ring: 210 70% 35%;
+    --destructive:            0 72% 46%;
+    --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.75rem;
+    --border: 215 20% 88%;
+    --input:  215 20% 88%;
+    --ring:   215 55% 24%;
+    --ring-offset: 210 25% 98%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Consistent radius scale (matches Tailwind lg/md/sm derivation) */
+    --radius: 0.625rem;
 
-    /* Custom tokens */
-    --physics: 210 70% 35%;
-    --physics-light: 210 60% 95%;
-    --physiology: 340 60% 45%;
-    --physiology-light: 340 50% 95%;
-    --pharmacology: 170 50% 40%;
-    --pharmacology-light: 170 40% 94%;
-    --clinical: 25 80% 50%;
-    --clinical-light: 25 70% 95%;
-    --icu: 260 50% 50%;
-    --icu-light: 260 40% 95%;
-    --perioperative: 45 70% 45%;
-    --perioperative-light: 45 60% 95%;
-    --anatomy: 190 60% 42%;
-    --anatomy-light: 190 50% 95%;
-    --chemistry: 95 55% 38%;
-    --chemistry-light: 95 45% 94%;
-    --drugs: 285 55% 45%;
-    --drugs-light: 285 45% 96%;
+    /* Elevation — soft, single-direction. Tune per theme. */
+    --shadow-1: 0 1px 2px hsl(215 25% 12% / 0.05);
+    --shadow-2: 0 2px 6px hsl(215 25% 12% / 0.06), 0 1px 2px hsl(215 25% 12% / 0.05);
+    --shadow-3: 0 8px 24px hsl(215 25% 12% / 0.08), 0 2px 6px hsl(215 25% 12% / 0.05);
+
+    --sidebar-background: 210 25% 98%;
+    --sidebar-foreground: 215 15% 30%;
+    --sidebar-primary:    215 55% 24%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent:     210 20% 94%;
+    --sidebar-accent-foreground: 215 55% 24%;
+    --sidebar-border:     215 20% 88%;
+    --sidebar-ring:       215 55% 24%;
+
+    /* -----------------------------------------------------------------
+       Category tokens — use for a dot, left rule, or badge stripe only.
+       `-light` uses `/ 0.08` alpha so it composes cleanly on both
+       light and dark surfaces (no more brittle 95%-L pastels).
+       ----------------------------------------------------------------- */
+    --physics:       210 70% 38%;
+    --physics-light: 210 70% 38% / 0.08;
+    --physiology:       340 62% 42%;
+    --physiology-light: 340 62% 42% / 0.08;
+    --pharmacology:       170 55% 32%;
+    --pharmacology-light: 170 55% 32% / 0.08;
+    --clinical:       22 82% 46%;
+    --clinical-light: 22 82% 46% / 0.08;
+    --icu:       260 50% 48%;
+    --icu-light: 260 50% 48% / 0.10;
+    --perioperative:       38 78% 42%;
+    --perioperative-light: 38 78% 42% / 0.10;
+    --anatomy:       190 62% 36%;
+    --anatomy-light: 190 62% 36% / 0.10;
+    --chemistry:       142 45% 34%;
+    --chemistry-light: 142 45% 34% / 0.10;
+    --drugs:       285 52% 42%;
+    --drugs-light: 285 52% 42% / 0.10;
 
     /* Anatomy plate palette (used by AnatomyPlate SVG primitive) */
     --anatomy-artery: 0 70% 50%;
@@ -81,40 +112,86 @@
     --anatomy-stroke: 215 25% 20%;
     --anatomy-paper: 40 30% 97%;
 
-    --gradient-hero: linear-gradient(135deg, hsl(210 70% 35%), hsl(200 60% 45%), hsl(170 50% 40%));
-    --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%), hsl(210 15% 96%));
+    /* Hero + subtle backgrounds — retuned to the new primary hue */
+    --gradient-hero: linear-gradient(135deg, hsl(215 55% 24%), hsl(200 50% 32%), hsl(180 45% 34%));
+    --gradient-subtle: linear-gradient(180deg, hsl(210 25% 98%), hsl(210 20% 95%));
   }
 
   .dark {
-    --background: 215 25% 10%;
-    --foreground: 210 20% 95%;
-    --card: 215 25% 13%;
-    --card-foreground: 210 20% 95%;
-    --popover: 215 25% 13%;
-    --popover-foreground: 210 20% 95%;
-    --primary: 210 60% 55%;
+    --background:       215 32% 8%;
+    --surface:          215 32% 8%;
+    --surface-sunken:   215 32% 6%;
+    --surface-raised:   215 28% 12%;
+    --foreground:       210 20% 96%;
+
+    --card:               215 28% 12%;
+    --card-foreground:  210 20% 96%;
+    --popover:            215 28% 12%;
+    --popover-foreground: 210 20% 96%;
+
+    /* Mid-navy in dark mode so white-on-primary stays legible on chips,
+       buttons and the hero gradient. */
+    --primary:            210 65% 48%;
+    --primary-hover:      210 65% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 215 20% 18%;
-    --secondary-foreground: 210 20% 90%;
-    --muted: 215 20% 18%;
-    /* Bumped from 72% → 80% L so muted text clears 4.5:1 on dark surfaces
-       even when used with /70–/80 opacity utilities. */
-    --muted-foreground: 215 18% 80%;
-    --accent: 170 45% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 215 20% 20%;
-    --input: 215 20% 20%;
-    --ring: 210 60% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --secondary:            215 22% 18%;
+    --secondary-foreground: 210 20% 92%;
+
+    --muted:            215 22% 18%;
+    --muted-foreground: 215 15% 78%;
+
+    --accent:            180 55% 55%;
+    --accent-foreground: 215 32% 8%;
+
+    --cta:               32 92% 58%;
+    --cta-hover:         32 92% 66%;
+    --cta-foreground:    28 40% 10%;
+
+    --destructive:            0 62% 46%;
+    --destructive-foreground: 210 20% 96%;
+
+    --border: 215 22% 22%;
+    --input:  215 22% 22%;
+    --ring:   200 75% 62%;
+    --ring-offset: 215 32% 8%;
+
+    /* Elevation in dark mode: rely on subtle glow rather than deep shadow */
+    --shadow-1: 0 1px 2px hsl(0 0% 0% / 0.35);
+    --shadow-2: 0 2px 8px hsl(0 0% 0% / 0.45), 0 1px 2px hsl(0 0% 0% / 0.35);
+    --shadow-3: 0 12px 32px hsl(0 0% 0% / 0.5), 0 2px 6px hsl(0 0% 0% / 0.35);
+
+    --sidebar-background: 215 32% 8%;
+    --sidebar-foreground: 210 15% 82%;
+    --sidebar-primary: 200 75% 62%;
+    --sidebar-primary-foreground: 215 32% 8%;
+    --sidebar-accent: 215 22% 18%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 215 22% 22%;
+    --sidebar-ring: 200 75% 62%;
+
+    /* Category hues lift a little in dark mode for legibility */
+    --physics:       210 80% 62%;
+    --physics-light: 210 80% 62% / 0.14;
+    --physiology:       340 72% 62%;
+    --physiology-light: 340 72% 62% / 0.14;
+    --pharmacology:       170 60% 50%;
+    --pharmacology-light: 170 60% 50% / 0.14;
+    --clinical:       22 88% 58%;
+    --clinical-light: 22 88% 58% / 0.14;
+    --icu:       262 70% 68%;
+    --icu-light: 262 70% 68% / 0.16;
+    --perioperative:       40 88% 58%;
+    --perioperative-light: 40 88% 58% / 0.16;
+    --anatomy:       190 72% 52%;
+    --anatomy-light: 190 72% 52% / 0.16;
+    --chemistry:       142 55% 52%;
+    --chemistry-light: 142 55% 52% / 0.16;
+    --drugs:       285 65% 62%;
+    --drugs-light: 285 65% 62% / 0.16;
+
+    --gradient-hero: linear-gradient(135deg, hsl(215 45% 16%), hsl(200 40% 20%), hsl(180 35% 22%));
+    --gradient-subtle: linear-gradient(180deg, hsl(215 32% 8%), hsl(215 32% 6%));
   }
 }
 
