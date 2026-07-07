@@ -9,6 +9,8 @@ import { ContinueBand } from "@/components/landing/ContinueBand";
 import { HomeDashboard } from "@/components/landing/HomeDashboard";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { PageContainer } from "@/components/layout/PageContainer";
+import { PageSection } from "@/components/layout/PageSection";
 import { citationStats } from "@/lib/citationStats";
 
 
@@ -150,7 +152,7 @@ const Landing = () => {
 
       {/* Hero — split editorial layout, matches /revise */}
       <section className="relative border-b border-border bg-surface">
-        <div className="container mx-auto px-4 py-10 md:py-16">
+        <PageContainer className="py-10 md:py-16">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12 items-start">
             {/* Left: brand + factual lede + CTAs */}
             <div>
@@ -223,10 +225,10 @@ const Landing = () => {
               </div>
             </aside>
           </div>
-        </div>
+        </PageContainer>
       </section>
 
-      <section className="container mx-auto px-4 py-10 md:py-14 flex-1">
+      <PageSection spacing="default" width="full" className="flex-1">
         <div className="max-w-6xl mx-auto mb-8">
           <HomeDashboard />
         </div>
@@ -322,7 +324,7 @@ const Landing = () => {
             </div>
           </details>
         </section>
-      </section>
+      </PageSection>
 
       <CommentWall />
 

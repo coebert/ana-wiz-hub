@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { PageSection } from "@/components/layout/PageSection";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { Brain, CheckCircle2, XCircle, ChevronRight, ExternalLink, SlidersHorizontal, X } from "lucide-react";
@@ -148,9 +149,9 @@ export default function Review() {
   if (authLoading || (loading && !rows)) {
     return (
       <div className="min-h-screen bg-background">
-        <main className="container mx-auto px-4 py-8">
+        <PageSection as="main" spacing="tight" width="default">
           <p className="text-sm text-muted-foreground">Loading review queue…</p>
-        </main>
+        </PageSection>
       </div>
     );
   }
@@ -163,7 +164,7 @@ export default function Review() {
         <link rel="canonical" href="https://anaesthesiacore.app/review" />
         <meta name="robots" content="noindex,follow" />
       </Helmet>
-      <main className="container mx-auto px-4 py-8 max-w-3xl">
+      <PageSection as="main" spacing="tight" width="narrow">
         <div className="flex items-start justify-between mb-6">
           <div>
             <div className="flex items-center gap-2 text-primary">
@@ -352,7 +353,7 @@ export default function Review() {
             )}
           </article>
         )}
-      </main>
+      </PageSection>
     </div>
   );
 }

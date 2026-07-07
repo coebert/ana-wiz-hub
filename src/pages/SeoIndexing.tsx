@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { PageSection } from "@/components/layout/PageSection";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -94,7 +95,7 @@ export default function SeoIndexing() {
   const maxImpr = Math.max(1, ...byDateRows.map((r) => r.impressions ?? 0));
 
   return (
-    <main className="container mx-auto max-w-6xl px-4 py-8">
+    <PageSection as="main" spacing="tight" width="xwide">
       <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="font-serif text-3xl font-semibold text-foreground">
@@ -279,7 +280,7 @@ export default function SeoIndexing() {
       <SeoScanPanel />
       <LighthouseHistoryPanel />
 
-    </main>
+    </PageSection>
   );
 }
 

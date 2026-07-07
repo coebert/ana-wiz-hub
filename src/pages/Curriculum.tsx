@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { PageSection } from "@/components/layout/PageSection";
 import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
 import {
@@ -61,7 +62,7 @@ const Curriculum = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/curriculum" />
       </Helmet>
 
-      <section className="container mx-auto px-4 py-8 md:py-12 max-w-7xl">
+      <PageSection spacing="default" width="full" innerClassName="max-w-7xl mx-auto">
         <header className="mb-8 md:mb-10">
           <h1 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
             Curriculum Map
@@ -228,7 +229,7 @@ const Curriculum = () => {
             );
           })}
         </div>
-      </section>
+      </PageSection>
     </main>
   );
 };

@@ -9,6 +9,8 @@ import { SupportSection } from "@/components/feedback/SupportSection";
 import { ContinueBand } from "@/components/landing/ContinueBand";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { PageContainer } from "@/components/layout/PageContainer";
+import { PageSection } from "@/components/layout/PageSection";
 
 
 /**
@@ -92,7 +94,7 @@ const Index = () => {
           <span>Home</span>
         </Link>
 
-        <div className="container mx-auto px-4 py-10 md:py-16">
+        <PageContainer className="py-10 md:py-16">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12 items-start">
             {/* Left: brand + tagline + CTAs */}
             <div>
@@ -170,11 +172,11 @@ const Index = () => {
               )}
             </aside>
           </div>
-        </div>
+        </PageContainer>
       </section>
 
       {/* Sections index */}
-      <section className="container mx-auto px-4 py-12 md:py-16">
+      <PageSection spacing="loose" width="xwide">
         <ContinueBand />
 
         <div className="mb-8 max-w-2xl">
@@ -233,7 +235,7 @@ const Index = () => {
             );
           })}
         </div>
-      </section>
+      </PageSection>
 
       <SupportSection />
 

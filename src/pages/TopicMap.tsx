@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { PageSection } from "@/components/layout/PageSection";
 import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Search, Network, ArrowRight, Sparkles } from "lucide-react";
@@ -121,7 +122,7 @@ const TopicMap = () => {
         <meta name="twitter:title" content="Curriculum Topic Map – AnaesthesiaCore" />
         <meta name="twitter:description" content="Searchable map of every FRCA & FFICM revision topic with cross-references." />
       </Helmet>
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
+      <PageSection spacing="tight" width="full" innerClassName="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-6">
           <Link
@@ -346,7 +347,7 @@ const TopicMap = () => {
             )}
           </div>
         </div>
-      </div>
+      </PageSection>
     </div>
   );
 };

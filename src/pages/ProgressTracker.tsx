@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { PageSection } from "@/components/layout/PageSection";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
@@ -100,7 +101,7 @@ const ProgressTracker = () => {
   const activeDescription = examFilters.find((f) => f.value === activeFilter)?.description ?? "";
 
   return (
-    <div className="container mx-auto px-4 py-8 md:py-12 max-w-6xl">
+    <PageSection spacing="default" width="xwide">
       <Helmet>
         <title>Your Topic Progress – AnaesthesiaCore</title>
         <meta name="description" content="Track your FRCA Primary, Final and FFICM revision progress topic-by-topic. Completion saves locally across every section of AnaesthesiaCore." />
@@ -266,7 +267,7 @@ const ProgressTracker = () => {
       <p className="mt-8 text-xs text-muted-foreground text-center">
         Progress is stored on this device only. Clearing browser data will reset it.
       </p>
-    </div>
+    </PageSection>
   );
 };
 

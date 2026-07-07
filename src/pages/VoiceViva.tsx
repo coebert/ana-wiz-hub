@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { PageSection } from "@/components/layout/PageSection";
 import { Helmet } from "react-helmet-async";
 import { Link, useSearchParams } from "react-router-dom";
 import { ArrowLeft, Mic, MicOff, Loader2, AlertCircle, ShieldAlert, RefreshCw, HelpCircle } from "lucide-react";
@@ -354,7 +355,7 @@ export default function VoiceViva() {
         <link rel="canonical" href="https://anaesthesiacore.app/viva/voice" />
         <meta name="robots" content="noindex" />
       </Helmet>
-      <div className="container mx-auto max-w-3xl px-4 py-6">
+      <PageSection spacing="tight" width="narrow">
         <Breadcrumbs items={[{ label: "Viva", to: "/viva" }, { label: "Live voice" }]} />
         <Link
           to="/viva"
@@ -547,7 +548,7 @@ export default function VoiceViva() {
             </p>
           </section>
         )}
-      </div>
+      </PageSection>
     </main>
   );
 }

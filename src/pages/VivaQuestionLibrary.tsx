@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { PageSection } from "@/components/layout/PageSection";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X, CheckCircle2, Circle, RotateCcw, Flame, CalendarCheck, Rewind, FastForward, Gauge } from "lucide-react";
@@ -686,7 +687,7 @@ const VivaQuestionLibrary = () => {
           <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
         )}
       </Helmet>
-      <div className="container mx-auto px-4 py-8 max-w-5xl">
+      <PageSection spacing="tight" width="wide">
         <Link
           to="/viva"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6"
@@ -1247,7 +1248,7 @@ const VivaQuestionLibrary = () => {
             })}
           </div>
         )}
-      </div>
+      </PageSection>
 
       <AlertDialog
         open={resetConfirm !== null}

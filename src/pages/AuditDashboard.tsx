@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { PageSection } from "@/components/layout/PageSection";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -141,7 +142,7 @@ export default function AuditDashboard() {
   }, [filtered]);
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
+    <PageSection spacing="tight" width="full" innerClassName="max-w-7xl mx-auto">
       <Helmet>
         <title>Audit findings dashboard</title>
         <meta name="robots" content="noindex,nofollow" />
@@ -279,7 +280,7 @@ export default function AuditDashboard() {
           ))}
         </div>
       )}
-    </div>
+    </PageSection>
   );
 }
 

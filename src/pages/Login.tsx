@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { PageSection } from "@/components/layout/PageSection";
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -59,7 +60,7 @@ export default function Login() {
         <link rel="canonical" href="https://anaesthesiacore.app/login" />
         <meta name="robots" content="noindex,follow" />
       </Helmet>
-      <main className="container mx-auto px-4 py-12 max-w-md">
+      <PageSection as="main" spacing="loose" width="full" innerClassName="max-w-md mx-auto">
         <Link to="/" className="text-sm text-muted-foreground hover:text-foreground">← Home</Link>
         <div className="mt-6 mb-8 text-center">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-3">
@@ -168,7 +169,7 @@ export default function Login() {
         <p className="text-xs text-muted-foreground text-center mt-4">
           By continuing you accept that account data is stored on Lovable Cloud.
         </p>
-      </main>
+      </PageSection>
     </div>
   );
 }
