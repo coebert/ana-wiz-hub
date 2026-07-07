@@ -176,7 +176,7 @@ const Index = () => {
       </section>
 
       {/* Sections index */}
-      <PageSection spacing="loose">
+      <PageSection spacing="loose" width="xwide">
         <ContinueBand />
 
         <div className="mb-8 max-w-2xl">
