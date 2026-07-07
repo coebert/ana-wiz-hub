@@ -148,9 +148,9 @@ export default function Review() {
   if (authLoading || (loading && !rows)) {
     return (
       <div className="min-h-screen bg-background">
-        <main className="container mx-auto px-4 py-8">
+        <PageSection as="main" spacing="tight" width="default">
           <p className="text-sm text-muted-foreground">Loading review queue…</p>
-        </main>
+        </PageSection>
       </div>
     );
   }
