@@ -163,7 +163,7 @@ export default function Review() {
         <link rel="canonical" href="https://anaesthesiacore.app/review" />
         <meta name="robots" content="noindex,follow" />
       </Helmet>
-      <main className="container mx-auto px-4 py-8 max-w-3xl">
+      <PageSection as="main" spacing="tight" width="narrow">
         <div className="flex items-start justify-between mb-6">
           <div>
             <div className="flex items-center gap-2 text-primary">
