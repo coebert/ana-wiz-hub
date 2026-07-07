@@ -266,7 +266,7 @@ const ProgressTracker = () => {
       <p className="mt-8 text-xs text-muted-foreground text-center">
         Progress is stored on this device only. Clearing browser data will reset it.
       </p>
-    </div>
+    </PageSection>
   );
 };
 
