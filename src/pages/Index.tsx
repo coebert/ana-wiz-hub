@@ -166,14 +166,14 @@ const Index = () => {
                 className="absolute h-40 w-40 md:h-56 md:w-56 invert brightness-200 opacity-15 pointer-events-none"
               />
             </picture>
-            <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground">
+            <h1 className="display relative text-primary-foreground">
               AnaesthesiaCore — FRCA &amp; FFICM Revision
             </h1>
           </div>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-6">
-            Master the science and clinical practice of anaesthesia and intensive care. Mapped to the FRCA and FFICM curricula.
+          <p className="lead mx-auto mt-4 mb-6 text-primary-foreground/85">
+            A structured reference for FRCA Primary, Final and FFICM — clear notes, diagrams, quizzes and viva practice, mapped to the curriculum.
           </p>
-          <div className="flex items-center justify-center gap-2 text-sm text-primary-foreground/70">
+          <div className="eyebrow flex items-center justify-center gap-2 text-primary-foreground/70">
             <GraduationCap className="h-4 w-4" />
             <span>FRCA Primary · FRCA Final · FFICM</span>
           </div>
