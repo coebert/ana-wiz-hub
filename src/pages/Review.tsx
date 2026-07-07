@@ -352,7 +352,7 @@ export default function Review() {
             )}
           </article>
         )}
-      </main>
+      </PageSection>
     </div>
   );
 }
