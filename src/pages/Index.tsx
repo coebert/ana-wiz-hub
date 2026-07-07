@@ -166,14 +166,14 @@ const Index = () => {
                 className="absolute h-40 w-40 md:h-56 md:w-56 invert brightness-200 opacity-15 pointer-events-none"
               />
             </picture>
-            <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground">
+            <h1 className="display relative text-primary-foreground">
               AnaesthesiaCore — FRCA &amp; FFICM Revision
             </h1>
           </div>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-6">
-            Master the science and clinical practice of anaesthesia and intensive care. Mapped to the FRCA and FFICM curricula.
+          <p className="lead mx-auto mt-4 mb-6 text-primary-foreground/85">
+            A structured reference for FRCA Primary, Final and FFICM — clear notes, diagrams, quizzes and viva practice, mapped to the curriculum.
           </p>
-          <div className="flex items-center justify-center gap-2 text-sm text-primary-foreground/70">
+          <div className="eyebrow flex items-center justify-center gap-2 text-primary-foreground/70">
             <GraduationCap className="h-4 w-4" />
             <span>FRCA Primary · FRCA Final · FFICM</span>
           </div>
@@ -203,10 +203,10 @@ const Index = () => {
 
       {/* Sections */}
       <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground text-center mb-3">
+        <h2 className="h2 text-center mb-3">
           Core Disciplines
         </h2>
-        <p className="text-muted-foreground text-center mb-10 max-w-lg mx-auto">
+        <p className="small text-center mb-10 max-w-lg mx-auto">
           Select a discipline to explore topics with clear explanations, animated diagrams, and exam-focused summaries.
         </p>
 
@@ -223,10 +223,10 @@ const Index = () => {
                   <section.icon className={`h-8 w-8 ${section.iconColor}`} />
                   <ProgressRing completed={progress.completed} total={progress.total} size={36} strokeWidth={2.5} />
                 </div>
-                <h3 className="text-lg font-serif font-bold text-foreground mb-1.5">
+                <h3 className="h4 mb-1.5">
                   {section.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+                <p className="small mb-3 leading-relaxed">
                   {section.description}
                 </p>
                 <div className="flex items-center justify-between">

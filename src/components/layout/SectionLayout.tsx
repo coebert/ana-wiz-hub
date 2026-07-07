@@ -106,10 +106,10 @@ export const SectionLayout = ({
       </nav>
       <div className="mb-6 sm:mb-8 flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <h1 className={`text-2xl sm:text-3xl md:text-4xl font-serif font-bold break-words ${accentColor || "text-foreground"}`}>
+          <h1 className={`h1 break-words ${accentColor || "text-foreground"}`}>
             {title}
           </h1>
-          <p className="text-muted-foreground mt-2 text-base sm:text-lg break-words">{subtitle}</p>
+          <p className="lead mt-2 break-words">{subtitle}</p>
         </div>
         {topicForPath && (
           <div className="shrink-0">
