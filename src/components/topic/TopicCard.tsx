@@ -21,11 +21,15 @@ const examTagLabels: Record<ExamTag, string> = {
   edic: "EDIC",
 };
 
-const examTagColors: Record<ExamTag, string> = {
-  primary: "bg-primary/10 text-primary border-primary/20",
-  final: "bg-amber-500/10 text-amber-700 border-amber-500/20",
-  fficm: "bg-emerald-500/10 text-emerald-700 border-emerald-500/20",
-  edic: "bg-sky-500/10 text-sky-700 border-sky-500/20",
+// Phase 4: exam tags render as neutral outline chips with a small
+// semantic dot on the left, so a topic list of 20+ rows no longer
+// looks like a rainbow. The dot colour keeps the exam curriculum
+// scannable at a glance without flooding the row with tinted fills.
+const examTagDot: Record<ExamTag, string> = {
+  primary: "bg-primary",
+  final: "bg-amber-500",
+  fficm: "bg-emerald-500",
+  edic: "bg-sky-500",
 };
 
 export const TopicCard = ({ title, description, path, section, topicId, examTags, referenceCount }: TopicCardProps) => {
@@ -63,7 +67,11 @@ export const TopicCard = ({ title, description, path, section, topicId, examTags
             {((examTags && examTags.length > 0) || (referenceCount && referenceCount > 0)) && (
               <div className="flex flex-wrap gap-1 mt-1.5">
                 {examTags?.map((tag) => (
-                  <span key={tag} className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium border ${examTagColors[tag]}`}>
+                  <span
+                    key={tag}
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium border border-border bg-surface text-foreground/80"
+                  >
+                    <span className={`h-1.5 w-1.5 rounded-full ${examTagDot[tag]}`} aria-hidden />
                     {examTagLabels[tag]}
                   </span>
                 ))}
