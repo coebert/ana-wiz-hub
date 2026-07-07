@@ -37,7 +37,7 @@ export const SectionLayout = ({
   children,
   accentColor,
   disableAutoTOC,
-  autoTOCMinHeadings = 4,
+  autoTOCMinHeadings = 3,
   metaDescription,
 }: SectionLayoutProps) => {
   const location = useLocation();
