@@ -211,11 +211,110 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', sans-serif;
+    /* Slightly tighter default tracking + optimised legibility for long-form
+       reference reading. */
+    font-feature-settings: "cv11", "ss01", "ss03";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 
-
-  h1, h2, h3 {
+  /* Phase 3: reserve the editorial serif for hero + page H1 only. All other
+     headings inherit Inter for scannability on clinical content. Components
+     that want the serif opt in via `.font-serif` / the `.display` class. */
+  h1 {
     font-family: 'Playfair Display', serif;
+  }
+  h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  /* =====================================================================
+     Phase 3 semantic type scale.
+
+     Fixed size / weight / leading / tracking so pages compose a consistent
+     rhythm without ad-hoc Tailwind combos. Use these classes on the
+     element that owns the semantic role — you can still add colour /
+     spacing utilities alongside them.
+     ===================================================================== */
+
+  /* Small caps eyebrow above a title ("VIVA VOCE PRACTICE", "MAPS TO"). */
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase text-muted-foreground;
+    letter-spacing: 0.09em;
+    line-height: 1.2;
+  }
+
+  /* Hero headline — the only place Playfair scales this large. */
+  .display {
+    font-family: 'Playfair Display', serif;
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-foreground;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  /* Page H1 (topic + section pages). Editorial serif, tighter tracking. */
+  .h1 {
+    font-family: 'Playfair Display', serif;
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold text-foreground;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  /* Section H2 — Inter, no serif; the workhorse of topic pages. */
+  .h2 {
+    font-family: 'Inter', sans-serif;
+    @apply text-xl md:text-2xl font-semibold text-foreground;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  /* Sub-section H3. */
+  .h3 {
+    font-family: 'Inter', sans-serif;
+    @apply text-lg font-semibold text-foreground;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+
+  /* Sub-sub-section / card title. */
+  .h4 {
+    font-family: 'Inter', sans-serif;
+    @apply text-base font-semibold text-foreground;
+    line-height: 1.35;
+  }
+
+  /* Lede / subtitle paragraph immediately under a hero or H1. */
+  .lead {
+    @apply text-lg md:text-xl text-muted-foreground;
+    line-height: 1.55;
+    max-width: 65ch;
+  }
+
+  /* Standard body text. Explicit so it's the same across pages. */
+  .body {
+    @apply text-base text-foreground;
+    line-height: 1.65;
+  }
+
+  /* Small print — captions, meta rows, footer text. */
+  .small {
+    @apply text-sm text-muted-foreground;
+    line-height: 1.5;
+  }
+
+  /* Values, formulae, drug doses — tabular figures for column alignment. */
+  .mono {
+    font-family: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    @apply text-[0.95em];
+  }
+
+  /* Cap prose column width for comfortable reading (60-75ch). Opt-in per
+     content container — don't apply globally. */
+  .prose-measure {
+    max-width: 68ch;
   }
 }
 
