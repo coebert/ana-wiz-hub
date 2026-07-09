@@ -1748,6 +1748,17 @@ const AdminDashboard = () => {
                 {countriesDateRange !== "all" && (
                   <span className="ml-1 italic">Showing {countriesDateRange === "today" ? "today" : countriesDateRange === "7d" ? "last 7 days" : "last 30 days"}.</span>
                 )}
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="inline-flex items-center gap-1 ml-2 rounded-full border border-border bg-muted/50 px-2 py-0.5 text-[11px] cursor-help">
+                      <Info className="w-3 h-3" aria-hidden="true" />
+                      {excludedCountryCounts.visits.toLocaleString()} probable bots excluded
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent side="top" className="max-w-xs">
+                    {excludedCountryCounts.visits.toLocaleString()} visits from {excludedCountryCounts.users.toLocaleString()} visitor IDs were filtered out. Includes user-agents matching known bot/crawler/monitor signatures and visits with no user-agent.
+                  </TooltipContent>
+                </Tooltip>
               </p>
               {filteredTopCountries.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
