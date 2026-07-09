@@ -913,7 +913,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-20 px-4 pb-10">
+    <TooltipProvider>
       <a
         href="#admin-main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-background focus:text-foreground focus:px-3 focus:py-2 focus:rounded-md focus:ring-2 focus:ring-primary"
