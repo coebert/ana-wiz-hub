@@ -438,21 +438,28 @@ const AdminDashboard = () => {
     ).size;
 
     // Last 7 days
+    const isNonBotVisitor = (vid: string) => {
+      const u = uaByVisitor.get(vid);
+      return !!u && u.hasUA && !u.anyBot;
+    };
     const last7Days: { date: string; count: number }[] = [];
+    const last7DaysNonBot: { date: string; count: number }[] = [];
     for (let i = 6; i >= 0; i--) {
       const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
       const dayStart = new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString();
       const dayEnd = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1).toISOString();
       const dayVisits = visits.filter(v => v.visited_at >= dayStart && v.visited_at < dayEnd);
       const dayUnique = new Set(dayVisits.map(v => v.visitor_id));
-      last7Days.push({
-        date: d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" }),
-        count: dayUnique.size,
-      });
+      const label = d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+      last7Days.push({ date: label, count: dayUnique.size });
+      let nonBotCount = 0;
+      dayUnique.forEach(vid => { if (isNonBotVisitor(vid)) nonBotCount += 1; });
+      last7DaysNonBot.push({ date: label, count: nonBotCount });
     }
 
     // Last 30 days (unique users per day)
     const last30Days: { date: string; count: number }[] = [];
+    const last30DaysNonBot: { date: string; count: number }[] = [];
     for (let i = 29; i >= 0; i--) {
       const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
       const dayStart = new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString();
@@ -460,11 +467,13 @@ const AdminDashboard = () => {
       const dayUnique = new Set(
         visits.filter(v => v.visited_at >= dayStart && v.visited_at < dayEnd).map(v => v.visitor_id),
       );
-      last30Days.push({
-        date: d.toLocaleDateString("en-GB", { day: "numeric", month: "short" }),
-        count: dayUnique.size,
-      });
+      const label = d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+      last30Days.push({ date: label, count: dayUnique.size });
+      let nonBotCount = 0;
+      dayUnique.forEach(vid => { if (isNonBotVisitor(vid)) nonBotCount += 1; });
+      last30DaysNonBot.push({ date: label, count: nonBotCount });
     }
+
 
     // Hour-of-day distribution today
     const hourlyToday: { hour: number; count: number }[] = Array.from(
