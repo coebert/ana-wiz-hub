@@ -1192,6 +1192,77 @@ const AdminDashboard = () => {
 
             </div>
 
+            {/* Non-bot users — 7 day trend */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Non-Bot Users — Last 7 Days</h2>
+              <p className="text-xs text-muted-foreground mb-4">
+                Distinct visitors per day with a human-looking user agent (bots, crawlers and monitors excluded)
+              </p>
+              <div className="flex gap-2">
+                <ChartYAxis max={niceMax(Math.max(...analytics.last7DaysNonBot.map(d => d.count), 1))} heightClass="h-40" />
+                <div
+                  className="flex-1 flex items-end gap-2 h-40"
+                  role="img"
+                  aria-label={`Bar chart of non-bot users per day for the last 7 days. ${analytics.last7DaysNonBot.map(d => `${d.date}: ${d.count}`).join(", ")}.`}
+                  style={chartGridStyle}
+                >
+                  {analytics.last7DaysNonBot.map(day => {
+                    const max = niceMax(Math.max(...analytics.last7DaysNonBot.map(d => d.count), 1));
+                    const height = (day.count / max) * 100;
+                    return (
+                      <div key={day.date} className="flex-1 flex flex-col items-center gap-1 h-full justify-end" title={`${day.date}: ${day.count} non-bot users`}>
+                        <span className="text-xs font-medium text-foreground tabular-nums">{day.count}</span>
+                        <div
+                          className="w-full rounded-t bg-emerald-500/70 transition-all duration-300 min-h-[4px]"
+                          style={{ height: `${Math.max(height, 3)}%` }}
+                          aria-hidden="true"
+                        />
+                        <span className="text-[10px] text-muted-foreground leading-tight text-center">{day.date}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Non-bot users — 30 day sparkline */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Non-Bot Users — Last 30 Days</h2>
+              <p className="text-xs text-muted-foreground mb-3">
+                Daily distinct non-bot visitors · {analytics.totalNonBotUsers.toLocaleString()} unique over the full period
+              </p>
+              <div className="flex gap-2">
+                <ChartYAxis max={niceMax(Math.max(...analytics.last30DaysNonBot.map(d => d.count), 1))} heightClass="h-24" />
+                <div className="flex-1">
+                  <div
+                    className="flex items-end gap-[2px] h-24"
+                    role="img"
+                    aria-label="Bar chart of non-bot users per day for the last 30 days"
+                    style={chartGridStyle}
+                  >
+                    {analytics.last30DaysNonBot.map(day => {
+                      const max = niceMax(Math.max(...analytics.last30DaysNonBot.map(d => d.count), 1));
+                      const height = (day.count / max) * 100;
+                      return (
+                        <div
+                          key={day.date}
+                          className="flex-1 bg-emerald-500/60 rounded-t min-h-[2px] hover:bg-emerald-500 transition-colors"
+                          style={{ height: `${Math.max(height, 2)}%` }}
+                          title={`${day.date}: ${day.count} non-bot users`}
+                          aria-hidden="true"
+                        />
+                      );
+                    })}
+                  </div>
+                  <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
+                    <span>{analytics.last30DaysNonBot[0]?.date}</span>
+                    <span>{analytics.last30DaysNonBot[analytics.last30DaysNonBot.length - 1]?.date}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
             {/* Hour of day — configurable window */}
             <HourActivityCard analytics={analytics} />
 
