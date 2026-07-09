@@ -817,6 +817,28 @@ const AdminDashboard = () => {
       .slice(0, 15);
   }, [allVisits, countriesDateRange, nonBotVisitorIds]);
 
+  // Count bot / missing-UA visits and unique visitor IDs that were filtered out
+  // of the country breakdown. Displayed as a badge with a tooltip so the admin
+  // can see the volume of traffic excluded by the bot rules.
+  const excludedCountryCounts = useMemo(() => {
+    if (!allVisits.length) return { visits: 0, users: 0 };
+    const now = new Date();
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    let visits = 0;
+    const users = new Set<string>();
+    allVisits.forEach(v => {
+      if (countriesDateRange === "today" && v.visited_at < todayStart) return;
+      if (countriesDateRange === "7d" && v.visited_at < sevenDaysAgo) return;
+      if (countriesDateRange === "30d" && v.visited_at < thirtyDaysAgo) return;
+      if (nonBotVisitorIds.has(v.visitor_id)) return;
+      visits += 1;
+      users.add(v.visitor_id);
+    });
+    return { visits, users: users.size };
+  }, [allVisits, countriesDateRange, nonBotVisitorIds]);
+
   // Drill-down: daily users + visits for the selected country across the same sub-range.
   const drillTrend = useMemo(() => {
     if (!drillCountry || !allVisits.length) return [] as { date: string; users: number; visits: number }[];
