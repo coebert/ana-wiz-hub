@@ -297,11 +297,15 @@ const AdminDashboard = () => {
     let totalNonBotUsers = 0;
     uaByVisitor.forEach(v => { if (v.hasUA && !v.anyBot) totalNonBotUsers += 1; });
 
-    const todayData = await fetchAllVisits<{ visitor_id: string; visited_at: string }>(
-      "visitor_id, visited_at",
-      (q) => q.gte("visited_at", todayStart).lte("visited_at", now.toISOString()),
+    const todayData = await fetchAllVisits<{
+      visitor_id: string;
+      visited_at: string;
+      user_agent: string | null;
+    }>("visitor_id, visited_at, user_agent", (q) =>
+      q.gte("visited_at", todayStart).lte("visited_at", now.toISOString()),
     );
-    const todayUnique = new Set(todayData.map(v => v.visitor_id));
+    const todayNonBotVisitorIds = buildNonBotVisitorSet(todayData);
+    const todayUnique = todayNonBotVisitorIds;
 
 
     const normaliseSource = (s: string | null | undefined): TrafficSource | null => {
