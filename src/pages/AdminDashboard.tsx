@@ -100,7 +100,9 @@ interface Analytics {
   totalVisits: number;
   todayVisits: number;
   last7Days: { date: string; count: number }[];
+  last7DaysNonBot: { date: string; count: number }[];
   last30Days: { date: string; count: number }[];
+  last30DaysNonBot: { date: string; count: number }[];
   hourlyToday: { hour: number; count: number }[];
   // All visit timestamps in the current dashboard range — used to recompute
   // the hour-of-day chart for any sub-window the user picks.
