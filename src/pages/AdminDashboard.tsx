@@ -67,6 +67,38 @@ function countryFlag(code: string | null | undefined): string {
   return String.fromCodePoint(A + cc.charCodeAt(0) - 65, A + cc.charCodeAt(1) - 65);
 }
 
+/**
+ * Regex matching known bot / crawler / monitor user-agent signatures.
+ * Kept at module scope so overview stats, per-country tables, and drill-downs
+ * all apply the same exclusion rules. `yandex` alone would also match
+ * `YandexBrowser` (a real end-user browser), so we target `yandexbot`.
+ */
+const BOT_UA_RE = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|pingdom|uptimerobot|monitor|headless|phantomjs|puppeteer|playwright|lighthouse|ahrefsbot|semrush|dataforseo|petalbot|yandexbot|duckduckbot|baiduspider|applebot|gptbot|ccbot|claudebot|perplexity/i;
+
+/**
+ * Build the set of visitor_ids that look like real humans: they must have sent
+ * at least one User-Agent header, and none of their UAs may match BOT_UA_RE.
+ * Visitors with no UA at all (can't confirm human) are excluded.
+ */
+function buildNonBotVisitorSet(
+  visits: ReadonlyArray<{ visitor_id: string; user_agent?: string | null }>,
+): Set<string> {
+  const state = new Map<string, { hasUA: boolean; anyBot: boolean }>();
+  visits.forEach(v => {
+    const rawUa = (v as { user_agent?: unknown }).user_agent;
+    const ua = typeof rawUa === "string" ? rawUa.trim() : "";
+    const cur = state.get(v.visitor_id) ?? { hasUA: false, anyBot: false };
+    if (ua.length > 0) {
+      cur.hasUA = true;
+      if (BOT_UA_RE.test(ua)) cur.anyBot = true;
+    }
+    state.set(v.visitor_id, cur);
+  });
+  const out = new Set<string>();
+  state.forEach((v, id) => { if (v.hasUA && !v.anyBot) out.add(id); });
+  return out;
+}
+
 type TrafficSource = "direct" | "search" | "social" | "referral";
 
 const TRAFFIC_SOURCE_META: Record<TrafficSource, { label: string; help: string; icon: typeof Search; color: string }> = {
