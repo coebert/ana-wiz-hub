@@ -406,7 +406,7 @@ const MaplesonTab = () => {
             <PatientEnd cx={450} cy={55} />
 
             <rect x="120" y="78" width="290" height="16" rx="4" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive)/0.3)" strokeWidth="0.75" />
-            <text x="265" y="89" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">⚠ Pethick test: occlude inner tube + flush O₂ → should not pressurise circuit</text>
+            <text x="265" y="89" textAnchor="middle" fontSize="5" fill="hsl(var(--destructive))">⚠ Pethick test: occlude patient end, close APL, flush O₂ → bag should fill. Failure to fill = inner-tube leak &amp; massive dead space.</text>
 
             {phase === "insp" && (
               <AnimFlowArrow x1={135} y1={50} x2={435} y2={50} colour={inspCol} />
