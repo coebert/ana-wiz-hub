@@ -1720,7 +1720,7 @@ const AdminDashboard = () => {
                 </div>
               </div>
               <p className="text-xs text-muted-foreground mb-3">
-                Distinct visitors and page views grouped by country (resolved at visit time).
+                Distinct visitors and page views grouped by country (resolved at visit time; bots and unknown user-agents excluded).
                 {countriesDateRange !== "all" && (
                   <span className="ml-1 italic">Showing {countriesDateRange === "today" ? "today" : countriesDateRange === "7d" ? "last 7 days" : "last 30 days"}.</span>
                 )}
