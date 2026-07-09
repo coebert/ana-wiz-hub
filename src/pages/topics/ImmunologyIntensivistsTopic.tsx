@@ -4,6 +4,10 @@ import { SectionLayout } from "@/components/layout/SectionLayout";
 import AnimatedMechanism, {
   type AnimatedMechanismStep,
 } from "@/components/diagrams/shared/AnimatedMechanism";
+import { InlineRef } from "@/components/references/InlineRef";
+import { ReferencesList } from "@/components/references/ReferencesList";
+
+const TOPIC_ID = "immunology-intensivists";
 
 /**
  * Immunology for Intensivists
