@@ -112,6 +112,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/intensive-care/immunology-intensivists</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/intensive-care/ecmo</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
