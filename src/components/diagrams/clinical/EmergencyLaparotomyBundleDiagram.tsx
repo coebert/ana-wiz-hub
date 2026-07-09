@@ -16,7 +16,7 @@ interface Node {
 
 const NODES: Node[] = [
   { key: "decision", short: "Decision", detail: "Decision-to-operate documented; NELA score calculated", x: 50 },
-  { key: "ct", short: "CT < 2h", detail: "CT (if needed) and senior surgical review within 2 hours", x: 130 },
+  { key: "ct", short: "CT < 90 min", detail: "CT (if needed) reported within 90 minutes of request (NELA 2021 standard); senior surgical review within 2 hours", x: 130 },
   { key: "abx", short: "Antibiotics", detail: "Sepsis-6 if septic — antibiotics within 1 hour of decision", x: 210 },
   { key: "consultant", short: "Consultant", detail: "Consultant surgeon + anaesthetist present if mortality > 5%", x: 290 },
   { key: "theatre", short: "Theatre", detail: "Knife-to-skin within window appropriate to NCEPOD category", x: 370 },
