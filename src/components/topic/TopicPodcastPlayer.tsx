@@ -324,9 +324,12 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
     setRegenSubmitting(true);
     try {
-      const content = extractTopicContent();
-      if (!content || content.length < 200) {
-        setRegenError("Could not extract topic content from the page.");
+      const { content, diagnostics } = extractTopicContent();
+      if (!content || content.length < diagnostics.minChars) {
+        setRegenError(
+          `Could not extract topic content from the page.\n\n` +
+            formatExtractionDiagnostics(diagnostics),
+        );
         return;
       }
 
