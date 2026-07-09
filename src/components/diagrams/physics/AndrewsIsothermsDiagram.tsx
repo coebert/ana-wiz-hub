@@ -248,7 +248,7 @@ export const AndrewsIsothermsDiagram = () => {
                 {isCritical
                   ? "On critical isotherm"
                   : isSubcritical
-                  ? `P_sat ≈ ${pressureBar?.toFixed(1)} bar`
+                  ? `P_sat/Pc ≈ ${sat ? sat.pSat.toFixed(2) : "—"}  (~${pressureBar?.toFixed(1)} bar)`
                   : "Above Tc — gas only"}
               </text>
             </g>
