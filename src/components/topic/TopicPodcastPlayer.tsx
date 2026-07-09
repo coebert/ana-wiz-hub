@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download, RefreshCw, Database, Sparkles, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
@@ -35,6 +35,58 @@ const formatTime = (s: number): string => {
   const m = Math.floor(s / 60);
   const sec = Math.floor(s % 60);
   return `${m}:${sec.toString().padStart(2, "0")}`;
+};
+
+interface TranscriptSegment {
+  text: string;
+  start: number;
+  end: number;
+}
+
+/**
+ * Split a podcast script into timestamped segments. TTS doesn't return
+ * word-level timings, so we estimate each segment's start time by its
+ * proportional character offset within the full script — accurate to a
+ * few seconds for typical spoken pacing.
+ */
+const buildTranscriptSegments = (
+  script: string,
+  totalDuration: number,
+): TranscriptSegment[] => {
+  const clean = script.trim();
+  if (!clean || !Number.isFinite(totalDuration) || totalDuration <= 0) return [];
+
+  // Prefer paragraph breaks; fall back to sentence splits for long single blocks.
+  let chunks = clean.split(/\n{2,}/).map((c) => c.trim()).filter(Boolean);
+  if (chunks.length < 4) {
+    chunks = clean
+      .split(/(?<=[.!?])\s+(?=[A-Z0-9"“'])/)
+      .map((c) => c.trim())
+      .filter(Boolean);
+  }
+  // Group short sentences so segments feel like paragraphs (~2-3 sentences).
+  const grouped: string[] = [];
+  let buf = "";
+  for (const c of chunks) {
+    buf = buf ? `${buf} ${c}` : c;
+    if (buf.length >= 220) {
+      grouped.push(buf);
+      buf = "";
+    }
+  }
+  if (buf) grouped.push(buf);
+
+  const totalChars = grouped.reduce((n, c) => n + c.length, 0) || 1;
+  let acc = 0;
+  return grouped.map((text, i) => {
+    const start = (acc / totalChars) * totalDuration;
+    acc += text.length;
+    const end =
+      i === grouped.length - 1
+        ? totalDuration
+        : (acc / totalChars) * totalDuration;
+    return { text, start, end };
+  });
 };
 
 export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerProps) => {
@@ -405,6 +457,18 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     setCurrentTime(value[0]);
   };
 
+  const seekToSeconds = (t: number) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const clamped = Math.max(0, Math.min(t, audio.duration || t));
+    audio.currentTime = clamped;
+    setCurrentTime(clamped);
+    if (audio.paused) {
+      audio.play().catch(() => {/* ignore autoplay rejection */});
+      setIsPlaying(true);
+    }
+  };
+
   const cycleSpeed = () => {
     const idx = SPEEDS.indexOf(speed);
     setSpeed(SPEEDS[(idx + 1) % SPEEDS.length]);
@@ -543,6 +607,17 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   // Ready → player
   const totalDuration = duration || podcast.duration_seconds || 0;
   const scriptWords = podcast.script ? podcast.script.trim().split(/\s+/).filter(Boolean).length : 0;
+  const transcriptSegments = useMemo(
+    () => (podcast.script ? buildTranscriptSegments(podcast.script, totalDuration) : []),
+    [podcast.script, totalDuration],
+  );
+  const activeSegmentIdx = useMemo(() => {
+    if (!transcriptSegments.length) return -1;
+    for (let i = transcriptSegments.length - 1; i >= 0; i--) {
+      if (currentTime >= transcriptSegments[i].start - 0.25) return i;
+    }
+    return 0;
+  }, [transcriptSegments, currentTime]);
 
   return (
     <div className="rounded-xl border border-border bg-card p-4">
@@ -654,14 +729,60 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       </div>
 
       {showScript && podcast.script && (
-        <div
-          className={cn(
-            "mt-3 max-h-72 overflow-y-auto rounded-lg border border-border bg-muted/40 p-3",
-            "text-sm leading-relaxed text-foreground/85 whitespace-pre-wrap",
-          )}
-        >
-          {podcast.script}
-        </div>
+        transcriptSegments.length > 0 ? (
+          <div
+            className={cn(
+              "mt-3 max-h-72 overflow-y-auto rounded-lg border border-border bg-muted/40 p-2",
+              "text-sm leading-relaxed text-foreground/85",
+            )}
+            aria-label="Podcast transcript with clickable timestamps"
+          >
+            <ol className="space-y-1">
+              {transcriptSegments.map((seg, i) => {
+                const isActive = i === activeSegmentIdx;
+                return (
+                  <li key={i}>
+                    <button
+                      type="button"
+                      onClick={() => seekToSeconds(seg.start)}
+                      className={cn(
+                        "group flex w-full items-start gap-2 rounded-md px-2 py-1.5 text-left transition-colors",
+                        "hover:bg-primary/10 focus-visible:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
+                        isActive && "bg-primary/10 text-foreground",
+                      )}
+                      aria-current={isActive ? "true" : undefined}
+                      aria-label={`Jump to ${formatTime(seg.start)}`}
+                    >
+                      <span
+                        className={cn(
+                          "shrink-0 rounded px-1.5 py-0.5 text-[11px] font-medium tabular-nums",
+                          isActive
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-background/70 text-muted-foreground group-hover:text-foreground",
+                        )}
+                      >
+                        {formatTime(seg.start)}
+                      </span>
+                      <span className="flex-1 whitespace-pre-wrap">{seg.text}</span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+            <p className="mt-2 px-2 text-[10px] text-muted-foreground/70">
+              Timestamps are estimated from script length — accurate to a few seconds.
+            </p>
+          </div>
+        ) : (
+          <div
+            className={cn(
+              "mt-3 max-h-72 overflow-y-auto rounded-lg border border-border bg-muted/40 p-3",
+              "text-sm leading-relaxed text-foreground/85 whitespace-pre-wrap",
+            )}
+          >
+            {podcast.script}
+          </div>
+        )
       )}
 
       <Dialog open={regenOpen} onOpenChange={(o) => !regenSubmitting && setRegenOpen(o)}>
