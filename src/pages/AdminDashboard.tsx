@@ -6,10 +6,12 @@ import { allTopics } from "@/data/curriculum";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick, Headphones, Mic2, Map as MapIcon } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick, Headphones, Mic2, Map as MapIcon, Info } from "lucide-react";
 import VisitorsWorldMap from "@/components/admin/VisitorsWorldMap";
 import SeoAnalyticsPanel from "@/components/admin/SeoAnalyticsPanel";
 import SpoofedDomainsPanel from "@/components/admin/SpoofedDomainsPanel";
@@ -815,6 +817,28 @@ const AdminDashboard = () => {
       .slice(0, 15);
   }, [allVisits, countriesDateRange, nonBotVisitorIds]);
 
+  // Count bot / missing-UA visits and unique visitor IDs that were filtered out
+  // of the country breakdown. Displayed as a badge with a tooltip so the admin
+  // can see the volume of traffic excluded by the bot rules.
+  const excludedCountryCounts = useMemo(() => {
+    if (!allVisits.length) return { visits: 0, users: 0 };
+    const now = new Date();
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    let visits = 0;
+    const users = new Set<string>();
+    allVisits.forEach(v => {
+      if (countriesDateRange === "today" && v.visited_at < todayStart) return;
+      if (countriesDateRange === "7d" && v.visited_at < sevenDaysAgo) return;
+      if (countriesDateRange === "30d" && v.visited_at < thirtyDaysAgo) return;
+      if (nonBotVisitorIds.has(v.visitor_id)) return;
+      visits += 1;
+      users.add(v.visitor_id);
+    });
+    return { visits, users: users.size };
+  }, [allVisits, countriesDateRange, nonBotVisitorIds]);
+
   // Drill-down: daily users + visits for the selected country across the same sub-range.
   const drillTrend = useMemo(() => {
     if (!drillCountry || !allVisits.length) return [] as { date: string; users: number; visits: number }[];
@@ -911,7 +935,8 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-20 px-4 pb-10">
+    <TooltipProvider>
+      <div className="min-h-screen bg-background pt-20 px-4 pb-10">
       <a
         href="#admin-main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-background focus:text-foreground focus:px-3 focus:py-2 focus:rounded-md focus:ring-2 focus:ring-primary"
@@ -1724,6 +1749,17 @@ const AdminDashboard = () => {
                 {countriesDateRange !== "all" && (
                   <span className="ml-1 italic">Showing {countriesDateRange === "today" ? "today" : countriesDateRange === "7d" ? "last 7 days" : "last 30 days"}.</span>
                 )}
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="inline-flex items-center gap-1 ml-2 rounded-full border border-border bg-muted/50 px-2 py-0.5 text-[11px] cursor-help">
+                      <Info className="w-3 h-3" aria-hidden="true" />
+                      {excludedCountryCounts.visits.toLocaleString()} probable bots excluded
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent side="top" className="max-w-xs">
+                    {excludedCountryCounts.visits.toLocaleString()} visits from {excludedCountryCounts.users.toLocaleString()} visitor IDs were filtered out. Includes user-agents matching known bot/crawler/monitor signatures and visits with no user-agent.
+                  </TooltipContent>
+                </Tooltip>
               </p>
               {filteredTopCountries.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
@@ -2023,6 +2059,7 @@ const AdminDashboard = () => {
         </main>
       </div>
     </div>
+    </TooltipProvider>
   );
 };
 
