@@ -140,7 +140,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         // TOKEN_REFRESHED with a stale null shortly after a fresh sign-in,
         // which would otherwise demote the just-authenticated user and
         // bounce them back to /admin/login a few seconds later.
-        if (!nextSession && event !== "SIGNED_OUT" && event !== "USER_DELETED") {
+        if (!nextSession && event !== "SIGNED_OUT") {
           if (resolvedAdminForUserRef.current) return;
         }
         // Defer to avoid deadlocks inside the auth callback.
