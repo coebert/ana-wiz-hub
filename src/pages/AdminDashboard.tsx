@@ -69,9 +69,10 @@ function DailyTrendLineChart({ data, color = "var(--primary)", strokeWidth = 2, 
   if (data.length === 0) return <p className="text-sm text-muted-foreground">No data yet.</p>;
   const max = niceMax(Math.max(...data.map(d => d.count), 1));
   const width = 1000;
-  const padding = { top: 10, right: 24, bottom: 28, left: 8 };
+  const padding = { top: 16, right: 24, bottom: 28, left: 8 };
   const chartWidth = width - padding.left - padding.right;
   const chartHeight = height - padding.top - padding.bottom;
+
   const xFor = (i: number) => padding.left + (chartWidth / (data.length - 1)) * i;
   const yFor = (count: number) => padding.top + chartHeight - (count / max) * chartHeight;
   const points = data.map((d, i) => `${xFor(i)},${yFor(d.count)}`).join(" ");
