@@ -729,14 +729,60 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       </div>
 
       {showScript && podcast.script && (
-        <div
-          className={cn(
-            "mt-3 max-h-72 overflow-y-auto rounded-lg border border-border bg-muted/40 p-3",
-            "text-sm leading-relaxed text-foreground/85 whitespace-pre-wrap",
-          )}
-        >
-          {podcast.script}
-        </div>
+        transcriptSegments.length > 0 ? (
+          <div
+            className={cn(
+              "mt-3 max-h-72 overflow-y-auto rounded-lg border border-border bg-muted/40 p-2",
+              "text-sm leading-relaxed text-foreground/85",
+            )}
+            aria-label="Podcast transcript with clickable timestamps"
+          >
+            <ol className="space-y-1">
+              {transcriptSegments.map((seg, i) => {
+                const isActive = i === activeSegmentIdx;
+                return (
+                  <li key={i}>
+                    <button
+                      type="button"
+                      onClick={() => seekToSeconds(seg.start)}
+                      className={cn(
+                        "group flex w-full items-start gap-2 rounded-md px-2 py-1.5 text-left transition-colors",
+                        "hover:bg-primary/10 focus-visible:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
+                        isActive && "bg-primary/10 text-foreground",
+                      )}
+                      aria-current={isActive ? "true" : undefined}
+                      aria-label={`Jump to ${formatTime(seg.start)}`}
+                    >
+                      <span
+                        className={cn(
+                          "shrink-0 rounded px-1.5 py-0.5 text-[11px] font-medium tabular-nums",
+                          isActive
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-background/70 text-muted-foreground group-hover:text-foreground",
+                        )}
+                      >
+                        {formatTime(seg.start)}
+                      </span>
+                      <span className="flex-1 whitespace-pre-wrap">{seg.text}</span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+            <p className="mt-2 px-2 text-[10px] text-muted-foreground/70">
+              Timestamps are estimated from script length — accurate to a few seconds.
+            </p>
+          </div>
+        ) : (
+          <div
+            className={cn(
+              "mt-3 max-h-72 overflow-y-auto rounded-lg border border-border bg-muted/40 p-3",
+              "text-sm leading-relaxed text-foreground/85 whitespace-pre-wrap",
+            )}
+          >
+            {podcast.script}
+          </div>
+        )
       )}
 
       <Dialog open={regenOpen} onOpenChange={(o) => !regenSubmitting && setRegenOpen(o)}>
