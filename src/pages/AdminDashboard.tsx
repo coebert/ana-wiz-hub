@@ -1679,7 +1679,7 @@ const AdminDashboard = () => {
                 </div>
               </div>
               <p className="text-xs text-muted-foreground mb-3">
-                Choropleth of {mapMetric === "users" ? "unique visitors" : "total visits"} per country. Hover a country for details; scroll or pinch to zoom.
+                Choropleth of {mapMetric === "users" ? "unique visitors" : "total visits"} per country (bots excluded). Hover a country for details; scroll or pinch to zoom.
               </p>
               {filteredTopCountries.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
