@@ -244,12 +244,15 @@ const AdminDashboard = () => {
     // Non-bot users: visitors whose user_agent never matches known bot/crawler
     // signatures. A visitor with any bot-looking UA is excluded, and visitors
     // with no UA at all are also excluded (can't confirm they're human).
-    const BOT_UA_RE = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|pingdom|uptimerobot|monitor|headless|phantomjs|puppeteer|playwright|lighthouse|ahrefsbot|semrush|dataforseo|petalbot|yandex|duckduckbot|baiduspider|applebot|gptbot|ccbot|claudebot|perplexity/i;
+    // Note: `yandex` alone would also match `YandexBrowser` (a real end-user
+    // browser), so we target `yandexbot` specifically.
+    const BOT_UA_RE = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|pingdom|uptimerobot|monitor|headless|phantomjs|puppeteer|playwright|lighthouse|ahrefsbot|semrush|dataforseo|petalbot|yandexbot|duckduckbot|baiduspider|applebot|gptbot|ccbot|claudebot|perplexity/i;
     const uaByVisitor = new Map<string, { hasUA: boolean; anyBot: boolean }>();
     visits.forEach(v => {
-      const ua = (v as any).user_agent as string | null | undefined;
+      const rawUa = (v as { user_agent?: unknown }).user_agent;
+      const ua = typeof rawUa === "string" ? rawUa.trim() : "";
       const cur = uaByVisitor.get(v.visitor_id) ?? { hasUA: false, anyBot: false };
-      if (ua && ua.length > 0) {
+      if (ua.length > 0) {
         cur.hasUA = true;
         if (BOT_UA_RE.test(ua)) cur.anyBot = true;
       }
