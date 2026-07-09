@@ -577,6 +577,61 @@ const ImmunologyIntensivistsTopic = () => {
             <InnateAdaptiveTimeline />
           </section>
 
+          {/* ---------------- Exam mapping ---------------- */}
+          <section className="space-y-3" aria-labelledby="exam-mapping-heading">
+            <h2
+              id="exam-mapping-heading"
+              className="text-2xl font-serif font-bold text-foreground"
+            >
+              Exam mapping — FRCA Primary, Final &amp; FFICM
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              How each sub-section maps to Royal College of Anaesthetists
+              (RCoA) 2021 curriculum learning outcomes for the Primary and
+              Final FRCA, and to the Faculty of Intensive Care Medicine
+              (FICM) 2021 curriculum for the FFICM.
+            </p>
+            <div className="overflow-x-auto rounded-xl border border-border">
+              <table className="w-full text-sm">
+                <thead className="bg-secondary/40 text-foreground">
+                  <tr>
+                    <th className="text-left px-3 py-2 font-semibold w-56">Sub-section</th>
+                    <th className="text-left px-3 py-2 font-semibold">
+                      <span className="inline-block rounded bg-physiology/15 text-physiology px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide mr-1">Primary</span>
+                      FRCA outcome
+                    </th>
+                    <th className="text-left px-3 py-2 font-semibold">
+                      <span className="inline-block rounded bg-clinical/15 text-clinical px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide mr-1">Final</span>
+                      FRCA outcome
+                    </th>
+                    <th className="text-left px-3 py-2 font-semibold">
+                      <span className="inline-block rounded bg-icu/15 text-icu px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide mr-1">FFICM</span>
+                      Domain outcome
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {examMap.map((row) => (
+                    <tr key={row.subsection} className="border-t border-border align-top">
+                      <td className="px-3 py-2 font-medium text-foreground">{row.subsection}</td>
+                      <td className="px-3 py-2 text-muted-foreground">{row.primary}</td>
+                      <td className="px-3 py-2 text-muted-foreground">{row.final}</td>
+                      <td className="px-3 py-2 text-muted-foreground">{row.fficm}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground italic">
+              Outcomes paraphrased from the RCoA 2021 anaesthetics curriculum
+              (Basic Sciences — Physiology &amp; Biochemistry, Microbiology;
+              Applied Clinical Science) and the FICM 2021 curriculum
+              (Domain 2 Basic Sciences, Domain 3 Infection, Domain 4 Sepsis).
+            </p>
+          </section>
+
+
+
           {/* ---------------- Innate / adaptive tiles ---------------- */}
           <section className="grid gap-4 md:grid-cols-2">
             <article className="rounded-xl border border-icu/40 bg-icu/5 p-5 space-y-2">
