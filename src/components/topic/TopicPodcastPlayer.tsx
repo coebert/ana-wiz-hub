@@ -206,11 +206,13 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const handleGenerate = async (opts?: { force?: boolean; regeneratePassword?: string }) => {
     setGenerating(true);
     try {
-      const content = extractTopicContent();
-      if (!content || content.length < 200) {
+      const { content, diagnostics } = extractTopicContent();
+      if (!content || content.length < diagnostics.minChars) {
         setPodcast({
           status: "failed",
-          error: "Could not extract topic content from the page.",
+          error:
+            `Could not extract topic content from the page.\n\n` +
+            formatExtractionDiagnostics(diagnostics),
         });
         return;
       }
