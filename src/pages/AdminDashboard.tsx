@@ -67,6 +67,38 @@ function countryFlag(code: string | null | undefined): string {
   return String.fromCodePoint(A + cc.charCodeAt(0) - 65, A + cc.charCodeAt(1) - 65);
 }
 
+/**
+ * Regex matching known bot / crawler / monitor user-agent signatures.
+ * Kept at module scope so overview stats, per-country tables, and drill-downs
+ * all apply the same exclusion rules. `yandex` alone would also match
+ * `YandexBrowser` (a real end-user browser), so we target `yandexbot`.
+ */
+const BOT_UA_RE = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|pingdom|uptimerobot|monitor|headless|phantomjs|puppeteer|playwright|lighthouse|ahrefsbot|semrush|dataforseo|petalbot|yandexbot|duckduckbot|baiduspider|applebot|gptbot|ccbot|claudebot|perplexity/i;
+
+/**
+ * Build the set of visitor_ids that look like real humans: they must have sent
+ * at least one User-Agent header, and none of their UAs may match BOT_UA_RE.
+ * Visitors with no UA at all (can't confirm human) are excluded.
+ */
+function buildNonBotVisitorSet(
+  visits: ReadonlyArray<{ visitor_id: string; user_agent?: string | null }>,
+): Set<string> {
+  const state = new Map<string, { hasUA: boolean; anyBot: boolean }>();
+  visits.forEach(v => {
+    const rawUa = (v as { user_agent?: unknown }).user_agent;
+    const ua = typeof rawUa === "string" ? rawUa.trim() : "";
+    const cur = state.get(v.visitor_id) ?? { hasUA: false, anyBot: false };
+    if (ua.length > 0) {
+      cur.hasUA = true;
+      if (BOT_UA_RE.test(ua)) cur.anyBot = true;
+    }
+    state.set(v.visitor_id, cur);
+  });
+  const out = new Set<string>();
+  state.forEach((v, id) => { if (v.hasUA && !v.anyBot) out.add(id); });
+  return out;
+}
+
 type TrafficSource = "direct" | "search" | "social" | "referral";
 
 const TRAFFIC_SOURCE_META: Record<TrafficSource, { label: string; help: string; icon: typeof Search; color: string }> = {
@@ -178,7 +210,7 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState<"overview" | "topics" | "seo">("overview");
   const [mapMetric, setMapMetric] = useState<"users" | "visits">("users");
   // Raw visits kept for sub-range filtering (e.g. top countries)
-  const [allVisits, setAllVisits] = useState<{ visitor_id: string; visited_at: string; country?: string | null; country_name?: string | null }[]>([]);
+  const [allVisits, setAllVisits] = useState<{ visitor_id: string; visited_at: string; country?: string | null; country_name?: string | null; user_agent?: string | null }[]>([]);
   const [countriesDateRange, setCountriesDateRange] = useState<"all" | "today" | "7d" | "30d">("all");
   const [drillCountry, setDrillCountry] = useState<{ code: string; name: string } | null>(null);
 
@@ -390,10 +422,14 @@ const AdminDashboard = () => {
 
 
 
-    // Top countries (by unique visitors, then total visits)
+    // Top countries (by unique visitors, then total visits).
+    // Bot / crawler / monitor traffic is excluded so the geo tables reflect
+    // real humans only, matching the "non-bot" numbers shown in the stat cards.
+    const nonBotVisitorIds = buildNonBotVisitorSet(visits);
     const computeTopCountries = (visitList: typeof visits) => {
       const countryVisits = new Map<string, { name: string; users: Set<string>; visits: number }>();
       visitList.forEach((v: { visitor_id: string; country?: string | null; country_name?: string | null }) => {
+        if (!nonBotVisitorIds.has(v.visitor_id)) return;
         const c = (v.country ?? "").toUpperCase();
         if (!c || c.length !== 2) return;
         if (!countryVisits.has(c)) {
@@ -741,6 +777,14 @@ const AdminDashboard = () => {
   }, [user, isAdmin]);
 
   // Filter top countries by a sub-range independent of the global dashboard range
+  // Non-bot visitor ids across the full retained window. Shared by the
+  // per-country panel and country drill-downs so all geo views exclude
+  // crawlers/monitors using the same rules as the top-line stat cards.
+  const nonBotVisitorIds = useMemo(
+    () => buildNonBotVisitorSet(allVisits),
+    [allVisits],
+  );
+
   const filteredTopCountries = useMemo(() => {
     if (!allVisits.length) return [];
     const now = new Date();
@@ -748,6 +792,7 @@ const AdminDashboard = () => {
     const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
     const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
     const subset = allVisits.filter(v => {
+      if (!nonBotVisitorIds.has(v.visitor_id)) return false;
       if (countriesDateRange === "today") return v.visited_at >= todayStart;
       if (countriesDateRange === "7d") return v.visited_at >= sevenDaysAgo;
       if (countriesDateRange === "30d") return v.visited_at >= thirtyDaysAgo;
@@ -768,7 +813,7 @@ const AdminDashboard = () => {
       .map(([country, e]) => ({ country, countryName: e.name, users: e.users.size, visits: e.visits }))
       .sort((a, b) => b.users - a.users || b.visits - a.visits)
       .slice(0, 15);
-  }, [allVisits, countriesDateRange]);
+  }, [allVisits, countriesDateRange, nonBotVisitorIds]);
 
   // Drill-down: daily users + visits for the selected country across the same sub-range.
   const drillTrend = useMemo(() => {
@@ -787,6 +832,7 @@ const AdminDashboard = () => {
     const code = drillCountry.code.toUpperCase();
     const buckets = new Map<string, { users: Set<string>; visits: number }>();
     allVisits.forEach(v => {
+      if (!nonBotVisitorIds.has(v.visitor_id)) return;
       if ((v.country ?? "").toUpperCase() !== code) return;
       const t = new Date(v.visited_at).getTime();
       if (t < startMs) return;
@@ -809,7 +855,7 @@ const AdminDashboard = () => {
       out.push({ date: key, users: b ? b.users.size : 0, visits: b ? b.visits : 0 });
     }
     return out;
-  }, [allVisits, drillCountry, countriesDateRange]);
+  }, [allVisits, drillCountry, countriesDateRange, nonBotVisitorIds]);
 
   const drillTotals = useMemo(() => {
     let users = new Set<string>();
@@ -824,6 +870,7 @@ const AdminDashboard = () => {
       else if (countriesDateRange === "30d") startMs = now - 30*86400000;
       else startMs = now - 90*86400000;
       allVisits.forEach(v => {
+        if (!nonBotVisitorIds.has(v.visitor_id)) return;
         if ((v.country ?? "").toUpperCase() !== code) return;
         if (new Date(v.visited_at).getTime() < startMs) return;
         users.add(v.visitor_id);
@@ -831,7 +878,7 @@ const AdminDashboard = () => {
       });
     }
     return { users: users.size, visits };
-  }, [allVisits, drillCountry, countriesDateRange]);
+  }, [allVisits, drillCountry, countriesDateRange, nonBotVisitorIds]);
 
   if (authLoading || (!user || !isAdmin)) {
     return (
@@ -1632,7 +1679,7 @@ const AdminDashboard = () => {
                 </div>
               </div>
               <p className="text-xs text-muted-foreground mb-3">
-                Choropleth of {mapMetric === "users" ? "unique visitors" : "total visits"} per country. Hover a country for details; scroll or pinch to zoom.
+                Choropleth of {mapMetric === "users" ? "unique visitors" : "total visits"} per country (bots excluded). Hover a country for details; scroll or pinch to zoom.
               </p>
               {filteredTopCountries.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
@@ -1673,7 +1720,7 @@ const AdminDashboard = () => {
                 </div>
               </div>
               <p className="text-xs text-muted-foreground mb-3">
-                Distinct visitors and page views grouped by country (resolved at visit time).
+                Distinct visitors and page views grouped by country (resolved at visit time; bots and unknown user-agents excluded).
                 {countriesDateRange !== "all" && (
                   <span className="ml-1 italic">Showing {countriesDateRange === "today" ? "today" : countriesDateRange === "7d" ? "last 7 days" : "last 30 days"}.</span>
                 )}
