@@ -41,12 +41,14 @@ const STEPS: AnimatedMechanismStep[] = [
     ],
   },
   {
-    label: "CT within 2 hours",
+    label: "CT within 90 minutes",
     detail: (
       <>
-        Senior surgical review within 2 hours of decision. CT abdomen/pelvis with IV contrast if
-        diagnosis or operative plan unclear — should not delay surgery in haemodynamic collapse.
-        Lactate, FBC, U&E, coag, group & save / crossmatch as standard.
+        CT abdomen/pelvis with IV contrast if diagnosis or operative plan is unclear — the{" "}
+        <strong>NELA 2021 standard of care</strong> is that the scan is performed and reported
+        within <strong>90 minutes</strong> of request. Senior surgical review within 2 hours of
+        the decision to operate. Imaging should not delay surgery in haemodynamic collapse.
+        Lactate, FBC, U&amp;E, coag, group &amp; save / crossmatch as standard.
       </>
     ),
     sources: [{ label: "NELA Year 9 Report" }, { label: "RCoA Emergency Laparotomy" }],
