@@ -847,7 +847,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
                     className="flex items-start gap-1.5 text-xs text-destructive"
                   >
                     <AlertCircle className="h-3.5 w-3.5 mt-0.5 shrink-0" aria-hidden="true" />
-                    <span>{regenError}</span>
+                    <span className="whitespace-pre-wrap break-words">{regenError}</span>
                   </p>
                 )}
               </div>
