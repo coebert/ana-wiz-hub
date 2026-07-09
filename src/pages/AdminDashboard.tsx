@@ -233,13 +233,30 @@ const AdminDashboard = () => {
       country_name: string | null;
       referrer: string | null;
       traffic_source: string | null;
-    }>("visitor_id, visited_at, page_path, country, country_name, referrer, traffic_source", (q) => {
+    }>("visitor_id, visited_at, page_path, country, country_name, referrer, traffic_source, user_agent", (q) => {
       let qq = q;
       if (rangeStartIso) qq = qq.gte("visited_at", rangeStartIso);
       if (rangeEndIso) qq = qq.lte("visited_at", rangeEndIso);
       return qq;
     });
     const uniqueVisitors = new Set(visits.map(v => v.visitor_id));
+
+    // Non-bot users: visitors whose user_agent never matches known bot/crawler
+    // signatures. A visitor with any bot-looking UA is excluded, and visitors
+    // with no UA at all are also excluded (can't confirm they're human).
+    const BOT_UA_RE = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|pingdom|uptimerobot|monitor|headless|phantomjs|puppeteer|playwright|lighthouse|ahrefsbot|semrush|dataforseo|petalbot|yandex|duckduckbot|baiduspider|applebot|gptbot|ccbot|claudebot|perplexity/i;
+    const uaByVisitor = new Map<string, { hasUA: boolean; anyBot: boolean }>();
+    visits.forEach(v => {
+      const ua = (v as any).user_agent as string | null | undefined;
+      const cur = uaByVisitor.get(v.visitor_id) ?? { hasUA: false, anyBot: false };
+      if (ua && ua.length > 0) {
+        cur.hasUA = true;
+        if (BOT_UA_RE.test(ua)) cur.anyBot = true;
+      }
+      uaByVisitor.set(v.visitor_id, cur);
+    });
+    let totalNonBotUsers = 0;
+    uaByVisitor.forEach(v => { if (v.hasUA && !v.anyBot) totalNonBotUsers += 1; });
 
     const todayData = await fetchAllVisits<{ visitor_id: string; visited_at: string }>(
       "visitor_id, visited_at",
