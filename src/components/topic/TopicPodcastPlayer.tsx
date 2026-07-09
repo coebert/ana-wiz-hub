@@ -615,17 +615,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   // Ready → player
   const totalDuration = duration || podcast.duration_seconds || 0;
   const scriptWords = podcast.script ? podcast.script.trim().split(/\s+/).filter(Boolean).length : 0;
-  const transcriptSegments = useMemo(
-    () => (podcast.script ? buildTranscriptSegments(podcast.script, totalDuration) : []),
-    [podcast.script, totalDuration],
-  );
-  const activeSegmentIdx = useMemo(() => {
-    if (!transcriptSegments.length) return -1;
-    for (let i = transcriptSegments.length - 1; i >= 0; i--) {
-      if (currentTime >= transcriptSegments[i].start - 0.25) return i;
-    }
-    return 0;
-  }, [transcriptSegments, currentTime]);
+
 
   return (
     <div className="rounded-xl border border-border bg-card p-4">
