@@ -686,6 +686,7 @@ const AdminDashboard = () => {
 
     setAnalytics({
       totalUniqueUsers: uniqueVisitors.size,
+      totalNonBotUsers,
       dailyUsers: todayUnique.size,
       weeklyUsers,
       monthlyUsers,
