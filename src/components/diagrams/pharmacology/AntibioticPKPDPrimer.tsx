@@ -98,8 +98,72 @@ const AntibioticPKPDPrimer = () => {
                   <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">Antibiotic PK/PD primer — three killing patterns</h3>
         <p className="text-xs text-muted-foreground mb-4">
-          Click a tab to compare the pharmacodynamic parameter, dosing strategy and a worked clinical example for each killing pattern.
+          All three patterns shown at-a-glance below. Click a tab for the pharmacodynamic parameter, dosing strategy and a worked clinical example.
         </p>
+
+        {/* At-a-glance: all three killing patterns side-by-side */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-4">
+          {/* Time-dependent thumbnail */}
+          <div className="rounded-lg border border-border bg-background p-2">
+            <p className="text-[10px] uppercase tracking-wide font-semibold text-center" style={{ color: "hsl(210 75% 50%)" }}>
+              Time-dependent · %fT&gt;MIC
+            </p>
+            <svg viewBox="0 0 200 100" className="w-full h-auto">
+              <line x1="15" y1="85" x2="195" y2="85" stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" />
+              <line x1="15" y1="10" x2="15" y2="85" stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" />
+              <line x1="15" y1="55" x2="195" y2="55" stroke="hsl(var(--destructive))" strokeWidth="0.6" strokeDasharray="2 2" />
+              <text x="197" y="57" fontSize="7" fill="hsl(var(--destructive))">MIC</text>
+              {/* Extended infusion sustained above MIC */}
+              <path d="M 15 85 Q 30 40 55 38 L 130 38 Q 160 40 190 55 L 195 65"
+                fill="none" stroke="hsl(210 75% 50%)" strokeWidth="1.5" />
+              <path d="M 15 55 L 195 55 L 195 38 Q 130 36 55 38 L 15 45 Z"
+                fill="hsl(210 75% 50% / 0.18)" />
+              <text x="105" y="30" textAnchor="middle" fontSize="7" fontWeight="600" fill="hsl(210 75% 50%)">fT &gt; MIC</text>
+            </svg>
+            <p className="text-[10px] text-muted-foreground text-center leading-snug">β-lactams · prolong infusion</p>
+          </div>
+
+          {/* Concentration-dependent thumbnail */}
+          <div className="rounded-lg border border-border bg-background p-2">
+            <p className="text-[10px] uppercase tracking-wide font-semibold text-center" style={{ color: "hsl(15 90% 55%)" }}>
+              Concentration · Cmax/MIC
+            </p>
+            <svg viewBox="0 0 200 100" className="w-full h-auto">
+              <line x1="15" y1="85" x2="195" y2="85" stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" />
+              <line x1="15" y1="10" x2="15" y2="85" stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" />
+              <line x1="15" y1="55" x2="195" y2="55" stroke="hsl(var(--destructive))" strokeWidth="0.6" strokeDasharray="2 2" />
+              <text x="197" y="57" fontSize="7" fill="hsl(var(--destructive))">MIC</text>
+              {/* Single tall peak, long trough */}
+              <path d="M 15 85 L 30 15 Q 55 25 90 60 Q 130 80 190 84"
+                fill="none" stroke="hsl(15 90% 55%)" strokeWidth="1.5" />
+              <line x1="30" y1="15" x2="30" y2="85" stroke="hsl(15 90% 55% / 0.35)" strokeWidth="0.6" strokeDasharray="2 2" />
+              <text x="35" y="20" fontSize="7" fontWeight="700" fill="hsl(15 90% 55%)">Cmax</text>
+              <text x="105" y="78" textAnchor="middle" fontSize="7" fontWeight="600" fill="hsl(15 90% 55%)">Cmax/MIC ≥ 8–10</text>
+            </svg>
+            <p className="text-[10px] text-muted-foreground text-center leading-snug">Aminoglycosides · once-daily</p>
+          </div>
+
+          {/* AUC-dependent thumbnail */}
+          <div className="rounded-lg border border-border bg-background p-2">
+            <p className="text-[10px] uppercase tracking-wide font-semibold text-center" style={{ color: "hsl(280 70% 55%)" }}>
+              AUC · AUC₂₄/MIC
+            </p>
+            <svg viewBox="0 0 200 100" className="w-full h-auto">
+              <line x1="15" y1="85" x2="195" y2="85" stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" />
+              <line x1="15" y1="10" x2="15" y2="85" stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" />
+              <line x1="15" y1="55" x2="195" y2="55" stroke="hsl(var(--destructive))" strokeWidth="0.6" strokeDasharray="2 2" />
+              <text x="197" y="57" fontSize="7" fill="hsl(var(--destructive))">MIC</text>
+              {/* Two moderate q12h peaks with AUC shaded */}
+              <path d="M 15 85 L 35 30 Q 60 35 85 50 Q 100 65 110 68 L 115 68 L 135 30 Q 160 35 185 50 Q 192 60 195 65 L 195 85 Z"
+                fill="hsl(280 70% 55% / 0.22)" />
+              <path d="M 15 85 L 35 30 Q 60 35 85 50 Q 100 65 110 68 L 115 68 L 135 30 Q 160 35 185 50 Q 192 60 195 65"
+                fill="none" stroke="hsl(280 70% 55%)" strokeWidth="1.5" />
+              <text x="105" y="80" textAnchor="middle" fontSize="7" fontWeight="700" fill="hsl(280 70% 55%)">AUC₂₄ (shaded)</text>
+            </svg>
+            <p className="text-[10px] text-muted-foreground text-center leading-snug">Vancomycin · Bayesian TDM</p>
+          </div>
+        </div>
+
   
         {/* Tab selector */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-4">

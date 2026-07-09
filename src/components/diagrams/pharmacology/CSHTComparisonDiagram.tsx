@@ -191,7 +191,7 @@ export const CSHTComparisonDiagram = () => {
 
           {/* axis labels */}
           <text x={W / 2} y={H - 4} textAnchor="middle" fontSize="10" fontWeight="600" className="fill-foreground">
-            Infusion duration
+            Infusion duration (hours)
           </text>
           <text
             x={-H / 2} y={14}
