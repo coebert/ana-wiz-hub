@@ -16,6 +16,7 @@ import {
   estimatePodcastTarget,
   extractTopicContent,
   fetchPodcast,
+  formatExtractionDiagnostics,
   generatePodcast,
   isStaleGenerating,
   pollPodcastUntilDone,
@@ -140,7 +141,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     if (loading || (podcast && podcast.status === "ready")) return;
     // Defer to next tick so topic DOM is fully rendered.
     const t = setTimeout(() => {
-      const content = extractTopicContent();
+      const { content } = extractTopicContent();
       if (content && content.length > 50) setEstimate(estimatePodcastTarget(content));
     }, 0);
     return () => clearTimeout(t);
@@ -205,11 +206,13 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const handleGenerate = async (opts?: { force?: boolean; regeneratePassword?: string }) => {
     setGenerating(true);
     try {
-      const content = extractTopicContent();
-      if (!content || content.length < 200) {
+      const { content, diagnostics } = extractTopicContent();
+      if (!content || content.length < diagnostics.minChars) {
         setPodcast({
           status: "failed",
-          error: "Could not extract topic content from the page.",
+          error:
+            `Could not extract topic content from the page.\n\n` +
+            formatExtractionDiagnostics(diagnostics),
         });
         return;
       }
@@ -321,9 +324,12 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
     setRegenSubmitting(true);
     try {
-      const content = extractTopicContent();
-      if (!content || content.length < 200) {
-        setRegenError("Could not extract topic content from the page.");
+      const { content, diagnostics } = extractTopicContent();
+      if (!content || content.length < diagnostics.minChars) {
+        setRegenError(
+          `Could not extract topic content from the page.\n\n` +
+            formatExtractionDiagnostics(diagnostics),
+        );
         return;
       }
 
@@ -533,7 +539,9 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
             {isFailed && podcast?.error && (
               <div className="mt-2 flex items-start gap-2 text-sm text-destructive">
                 <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" />
-                <span>{podcast.error}</span>
+                <pre className="whitespace-pre-wrap break-words font-sans text-sm leading-relaxed">
+                  {podcast.error}
+                </pre>
               </div>
             )}
             <Button
@@ -839,7 +847,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
                     className="flex items-start gap-1.5 text-xs text-destructive"
                   >
                     <AlertCircle className="h-3.5 w-3.5 mt-0.5 shrink-0" aria-hidden="true" />
-                    <span>{regenError}</span>
+                    <span className="whitespace-pre-wrap break-words">{regenError}</span>
                   </p>
                 )}
               </div>

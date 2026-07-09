@@ -47,11 +47,49 @@ export const estimatePodcastTarget = (
  * worked examples) and skip nav, footer, quizzes, and references — quizzes
  * would just leak answers and references aren't useful spoken aloud.
  */
-export const extractTopicContent = (): string => {
+export interface ExtractionDiagnostics {
+  /** Each selector we probed and how many characters it yielded. */
+  selectors: Array<{ selector: string; found: boolean; chars: number }>;
+  /** Roots we scanned for un-IDed <section> fallbacks + how many matched. */
+  roots: Array<{ selector: string; found: boolean; sectionsScanned: number; chars: number }>;
+  /** Final combined character count returned by the extractor. */
+  totalChars: number;
+  /** Minimum characters required before we consider the extraction usable. */
+  minChars: number;
+}
+
+export const EXTRACTION_MIN_CHARS = 200;
+
+export interface ExtractionResult {
+  content: string;
+  diagnostics: ExtractionDiagnostics;
+}
+
+export const formatExtractionDiagnostics = (d: ExtractionDiagnostics): string => {
+  const lines: string[] = [];
+  lines.push(`Extracted ${d.totalChars} chars (need ≥ ${d.minChars}).`);
+  lines.push("Selectors tried:");
+  for (const s of d.selectors) {
+    lines.push(`  • ${s.selector} → ${s.found ? `${s.chars} chars` : "not found"}`);
+  }
+  lines.push("Fallback roots:");
+  for (const r of d.roots) {
+    lines.push(
+      `  • ${r.selector} → ${
+        r.found ? `${r.sectionsScanned} <section>s, ${r.chars} chars` : "not found"
+      }`,
+    );
+  }
+  return lines.join("\n");
+};
+
+export const extractTopicContent = (): ExtractionResult => {
+  const selectorLog: ExtractionDiagnostics["selectors"] = [];
   const collect = (selector: string): string => {
     const el = document.querySelector(selector);
-    if (!el) return "";
-    return (el as HTMLElement).innerText || "";
+    const text = el ? (el as HTMLElement).innerText || "" : "";
+    selectorLog.push({ selector, found: !!el, chars: text.length });
+    return text;
   };
 
   // Objectives + key points are wrapped in their own ids by TopicTemplate.
@@ -68,24 +106,36 @@ export const extractTopicContent = (): string => {
   const isInsideChrome = (el: Element): boolean =>
     !!el.closest("nav, header, footer, aside, [data-podcast-player]");
 
-  const roots: Element[] = [];
-  const main = document.querySelector("main");
-  if (main) roots.push(main);
-  const article = document.querySelector("article");
-  if (article && !roots.includes(article)) roots.push(article);
-  // Final fallback: the whole document body.
-  if (roots.length === 0 && document.body) roots.push(document.body);
+  const rootCandidates: Array<{ selector: string; el: Element | null }> = [
+    { selector: "main", el: document.querySelector("main") },
+    { selector: "article", el: document.querySelector("article") },
+    { selector: "body", el: document.body },
+  ];
 
+  const rootLog: ExtractionDiagnostics["roots"] = [];
   let coreConcepts = "";
-  for (const root of roots) {
-    const sections = root.querySelectorAll("section");
+  const seen = new Set<Element>();
+  for (const { selector, el } of rootCandidates) {
+    if (!el || seen.has(el)) {
+      rootLog.push({ selector, found: !!el, sectionsScanned: 0, chars: 0 });
+      continue;
+    }
+    seen.add(el);
+    const sections = el.querySelectorAll("section");
+    let scanned = 0;
+    let chars = 0;
     sections.forEach((s) => {
       if (s.id && EXCLUDE_IDS.has(s.id)) return;
       if (isInsideChrome(s)) return;
       const text = (s as HTMLElement).innerText?.trim();
-      if (text) coreConcepts += text + "\n\n";
+      if (text) {
+        coreConcepts += text + "\n\n";
+        scanned += 1;
+        chars += text.length;
+      }
     });
-    if (coreConcepts.trim().length > 200) break;
+    rootLog.push({ selector, found: true, sectionsScanned: scanned, chars });
+    if (coreConcepts.trim().length > EXTRACTION_MIN_CHARS) break;
   }
 
   const parts = [
@@ -95,8 +145,19 @@ export const extractTopicContent = (): string => {
     keyPoints && `KEY LEARNING POINTS:\n${keyPoints}`,
   ].filter(Boolean);
 
-  return parts.join("\n\n");
+  const content = parts.join("\n\n");
+  return {
+    content,
+    diagnostics: {
+      selectors: selectorLog,
+      roots: rootLog,
+      totalChars: content.length,
+      minChars: EXTRACTION_MIN_CHARS,
+    },
+  };
 };
+
+
 
 export const fetchPodcast = async (
   topicId: string,
