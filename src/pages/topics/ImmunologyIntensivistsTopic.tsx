@@ -427,6 +427,73 @@ const pathogenResponse: Array<{
 ];
 
 // ---------------------------------------------------------------------------
+// Exam mapping — sub-section → FRCA Primary / Final / FFICM outcomes
+// ---------------------------------------------------------------------------
+type ExamMapRow = {
+  subsection: string;
+  primary: string;
+  final: string;
+  fficm: string;
+};
+
+const examMap: ExamMapRow[] = [
+  {
+    subsection: "Two arms, one system (innate vs adaptive)",
+    primary:
+      "Physiology & Biochemistry — Immunology: outline the innate and adaptive immune systems and the cells and molecules involved.",
+    final:
+      "Applied clinical science — apply immune physiology to the response to infection, trauma and surgery.",
+    fficm:
+      "Domain 2 (Basic sciences): 2.1 Immunology — innate vs adaptive immunity, PAMPs / PRRs, MHC and antigen presentation.",
+  },
+  {
+    subsection: "Humoral vs cell-mediated response",
+    primary:
+      "Physiology & Biochemistry — describe the humoral (B-cell / antibody) and cell-mediated (T-cell) arms of adaptive immunity.",
+    final:
+      "Anaesthesia for the immunocompromised patient — implications of humoral vs cell-mediated deficiency for peri-operative infection risk.",
+    fficm:
+      "2.1 Immunology — differentiate humoral and cell-mediated responses; role of CD4⁺ and CD8⁺ T cells; immunoglobulin classes.",
+  },
+  {
+    subsection: "Key immune cell lines",
+    primary:
+      "Physiology & Biochemistry — classify leucocytes (myeloid vs lymphoid), describe their origin, life-span and function.",
+    final:
+      "Interpret the full blood count and differential in the context of infection, sepsis and immunosuppression.",
+    fficm:
+      "2.1 Immunology & 2.5 Microbiology — function of neutrophils, macrophages, dendritic cells, NK, B and T lymphocytes in critical illness.",
+  },
+  {
+    subsection: "The complement cascade",
+    primary:
+      "Physiology & Biochemistry — describe the complement system, its three activation pathways and biological effects.",
+    final:
+      "Anaphylaxis and hereditary angioedema — recognise C1-INH deficiency; understand complement-mediated reactions and eculizumab.",
+    fficm:
+      "2.1 Immunology — complement pathways, opsonisation, anaphylatoxins and MAC; clinical relevance of complement deficiency and C5 blockade.",
+  },
+  {
+    subsection: "Immune response by pathogen class",
+    primary:
+      "Microbiology — classify bacteria, viruses, fungi, protozoa and prions and outline the host immune response to each.",
+    final:
+      "Management of severe sepsis and specific infections (viral pneumonitis, invasive fungal disease, malaria) in the peri-operative period.",
+    fficm:
+      "2.5 Microbiology & 3.4 Infection — pathogen-specific immunity; opportunistic infection in the immunocompromised ICU patient; prion decontamination.",
+  },
+  {
+    subsection: "ICU clinical pearls (sepsis, hyposplenism, immunosuppression)",
+    primary:
+      "Not directly assessed at Primary — background for sepsis physiology and asplenia.",
+    final:
+      "Sepsis and septic shock — pathophysiology, immunoparalysis (CARS), management of the asplenic and neutropenic patient.",
+    fficm:
+      "3.4 Infection & 4.2 Sepsis — dysregulated host response, secondary infection, opportunistic pathogens in T-cell dysfunction.",
+  },
+];
+
+// ---------------------------------------------------------------------------
 // FAQs (for JSON-LD + on-page)
 // ---------------------------------------------------------------------------
 const faqs: Array<[string, string]> = [
