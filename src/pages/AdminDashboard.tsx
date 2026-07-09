@@ -777,6 +777,14 @@ const AdminDashboard = () => {
   }, [user, isAdmin]);
 
   // Filter top countries by a sub-range independent of the global dashboard range
+  // Non-bot visitor ids across the full retained window. Shared by the
+  // per-country panel and country drill-downs so all geo views exclude
+  // crawlers/monitors using the same rules as the top-line stat cards.
+  const nonBotVisitorIds = useMemo(
+    () => buildNonBotVisitorSet(allVisits),
+    [allVisits],
+  );
+
   const filteredTopCountries = useMemo(() => {
     if (!allVisits.length) return [];
     const now = new Date();
@@ -784,6 +792,7 @@ const AdminDashboard = () => {
     const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
     const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
     const subset = allVisits.filter(v => {
+      if (!nonBotVisitorIds.has(v.visitor_id)) return false;
       if (countriesDateRange === "today") return v.visited_at >= todayStart;
       if (countriesDateRange === "7d") return v.visited_at >= sevenDaysAgo;
       if (countriesDateRange === "30d") return v.visited_at >= thirtyDaysAgo;
@@ -804,7 +813,7 @@ const AdminDashboard = () => {
       .map(([country, e]) => ({ country, countryName: e.name, users: e.users.size, visits: e.visits }))
       .sort((a, b) => b.users - a.users || b.visits - a.visits)
       .slice(0, 15);
-  }, [allVisits, countriesDateRange]);
+  }, [allVisits, countriesDateRange, nonBotVisitorIds]);
 
   // Drill-down: daily users + visits for the selected country across the same sub-range.
   const drillTrend = useMemo(() => {
@@ -823,6 +832,7 @@ const AdminDashboard = () => {
     const code = drillCountry.code.toUpperCase();
     const buckets = new Map<string, { users: Set<string>; visits: number }>();
     allVisits.forEach(v => {
+      if (!nonBotVisitorIds.has(v.visitor_id)) return;
       if ((v.country ?? "").toUpperCase() !== code) return;
       const t = new Date(v.visited_at).getTime();
       if (t < startMs) return;
@@ -845,7 +855,7 @@ const AdminDashboard = () => {
       out.push({ date: key, users: b ? b.users.size : 0, visits: b ? b.visits : 0 });
     }
     return out;
-  }, [allVisits, drillCountry, countriesDateRange]);
+  }, [allVisits, drillCountry, countriesDateRange, nonBotVisitorIds]);
 
   const drillTotals = useMemo(() => {
     let users = new Set<string>();
@@ -860,6 +870,7 @@ const AdminDashboard = () => {
       else if (countriesDateRange === "30d") startMs = now - 30*86400000;
       else startMs = now - 90*86400000;
       allVisits.forEach(v => {
+        if (!nonBotVisitorIds.has(v.visitor_id)) return;
         if ((v.country ?? "").toUpperCase() !== code) return;
         if (new Date(v.visited_at).getTime() < startMs) return;
         users.add(v.visitor_id);
@@ -867,7 +878,7 @@ const AdminDashboard = () => {
       });
     }
     return { users: users.size, visits };
-  }, [allVisits, drillCountry, countriesDateRange]);
+  }, [allVisits, drillCountry, countriesDateRange, nonBotVisitorIds]);
 
   if (authLoading || (!user || !isAdmin)) {
     return (
