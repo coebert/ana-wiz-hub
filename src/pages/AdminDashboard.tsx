@@ -471,12 +471,16 @@ const AdminDashboard = () => {
       ? visitsPerActiveDay.reduce((a, b) => a + b, 0) / visitsPerActiveDay.length
       : 0;
 
-    // 7d / 30d rolling unique
+    // 7d / 30d rolling unique — bots, crawlers and monitors excluded
     const weeklyUsers = new Set(
-      visits.filter(v => v.visited_at >= sevenDaysAgo).map(v => v.visitor_id),
+      visits
+        .filter(v => v.visited_at >= sevenDaysAgo && nonBotVisitorIds.has(v.visitor_id))
+        .map(v => v.visitor_id),
     ).size;
     const monthlyUsers = new Set(
-      visits.filter(v => v.visited_at >= thirtyDaysAgo).map(v => v.visitor_id),
+      visits
+        .filter(v => v.visited_at >= thirtyDaysAgo && nonBotVisitorIds.has(v.visitor_id))
+        .map(v => v.visitor_id),
     ).size;
 
     // Last 7 days
@@ -1174,8 +1178,8 @@ const AdminDashboard = () => {
             {/* User insight tiles */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="User engagement statistics">
               {[
-                { label: "Weekly Active", value: analytics.weeklyUsers, fmt: (v: number) => v.toLocaleString(), icon: Activity, color: "text-sky-500", help: "Distinct visitors in the last 7 days" },
-                { label: "Monthly Active", value: analytics.monthlyUsers, fmt: (v: number) => v.toLocaleString(), icon: CalendarDays, color: "text-indigo-500", help: "Distinct visitors in the last 30 days" },
+                { label: "Weekly Active", value: analytics.weeklyUsers, fmt: (v: number) => v.toLocaleString(), icon: Activity, color: "text-sky-500", help: "Distinct human-looking visitors in the last 7 days (bots, crawlers and monitors excluded)" },
+                { label: "Monthly Active", value: analytics.monthlyUsers, fmt: (v: number) => v.toLocaleString(), icon: CalendarDays, color: "text-indigo-500", help: "Distinct human-looking visitors in the last 30 days (bots, crawlers and monitors excluded)" },
                 { label: "New Today", value: analytics.newUsersToday, fmt: (v: number) => v.toLocaleString(), icon: UserPlus, color: "text-emerald-500", help: "Visitors whose first ever visit is today" },
                 { label: "Returning Users", value: analytics.returningUsers, fmt: (v: number) => `${v.toLocaleString()} (${analytics.returningPct}%)`, icon: Repeat, color: "text-amber-500", help: "Visitors with two or more visits" },
                 { label: "Avg Pages / User", value: analytics.avgPagesPerUser, fmt: (v: number) => v.toFixed(1), icon: Layers, color: "text-rose-500", help: "Total page views ÷ unique visitors" },
