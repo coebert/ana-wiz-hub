@@ -1055,9 +1055,10 @@ const AdminDashboard = () => {
             </div>
 
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="Headline statistics">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-4" role="list" aria-label="Headline statistics">
               {[
                 { label: "Total Unique Users", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500", help: "Distinct visitors ever recorded" },
+                { label: "Total Non-Bot Users", value: analytics.totalNonBotUsers, icon: Users, color: "text-emerald-500", help: "Distinct visitors with a human-looking user agent (bots, crawlers and monitors excluded)" },
                 { label: "Daily Active Users", value: analytics.dailyUsers, icon: CalendarDays, color: "text-green-500", help: "Distinct visitors today" },
                 { label: "Total Page Views", value: analytics.totalVisits, icon: TrendingUp, color: "text-purple-500", help: "All page visits ever recorded" },
                 { label: "Today's Page Views", value: analytics.todayVisits, icon: TrendingUp, color: "text-orange-500", help: "Page visits since midnight" },
