@@ -86,6 +86,7 @@ interface TopicStat {
 
 interface Analytics {
   totalUniqueUsers: number;
+  totalNonBotUsers: number;
   dailyUsers: number;
   weeklyUsers: number;
   monthlyUsers: number;
