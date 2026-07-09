@@ -37,6 +37,58 @@ const formatTime = (s: number): string => {
   return `${m}:${sec.toString().padStart(2, "0")}`;
 };
 
+interface TranscriptSegment {
+  text: string;
+  start: number;
+  end: number;
+}
+
+/**
+ * Split a podcast script into timestamped segments. TTS doesn't return
+ * word-level timings, so we estimate each segment's start time by its
+ * proportional character offset within the full script — accurate to a
+ * few seconds for typical spoken pacing.
+ */
+const buildTranscriptSegments = (
+  script: string,
+  totalDuration: number,
+): TranscriptSegment[] => {
+  const clean = script.trim();
+  if (!clean || !Number.isFinite(totalDuration) || totalDuration <= 0) return [];
+
+  // Prefer paragraph breaks; fall back to sentence splits for long single blocks.
+  let chunks = clean.split(/\n{2,}/).map((c) => c.trim()).filter(Boolean);
+  if (chunks.length < 4) {
+    chunks = clean
+      .split(/(?<=[.!?])\s+(?=[A-Z0-9"“'])/)
+      .map((c) => c.trim())
+      .filter(Boolean);
+  }
+  // Group short sentences so segments feel like paragraphs (~2-3 sentences).
+  const grouped: string[] = [];
+  let buf = "";
+  for (const c of chunks) {
+    buf = buf ? `${buf} ${c}` : c;
+    if (buf.length >= 220) {
+      grouped.push(buf);
+      buf = "";
+    }
+  }
+  if (buf) grouped.push(buf);
+
+  const totalChars = grouped.reduce((n, c) => n + c.length, 0) || 1;
+  let acc = 0;
+  return grouped.map((text, i) => {
+    const start = (acc / totalChars) * totalDuration;
+    acc += text.length;
+    const end =
+      i === grouped.length - 1
+        ? totalDuration
+        : (acc / totalChars) * totalDuration;
+    return { text, start, end };
+  });
+};
+
 export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerProps) => {
   const [podcast, setPodcast] = useState<PodcastResult | null>(null);
   const [loading, setLoading] = useState(true);
