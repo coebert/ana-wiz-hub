@@ -506,6 +506,20 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     }
   };
 
+  // Hooks must run on every render — keep them above any early returns.
+  const transcriptSegments = useMemo(() => {
+    if (!podcast || podcast.status !== "ready" || !podcast.script) return [];
+    const total = duration || podcast.duration_seconds || 0;
+    return buildTranscriptSegments(podcast.script, total);
+  }, [podcast, duration]);
+  const activeSegmentIdx = useMemo(() => {
+    if (!transcriptSegments.length) return -1;
+    for (let i = transcriptSegments.length - 1; i >= 0; i--) {
+      if (currentTime >= transcriptSegments[i].start - 0.25) return i;
+    }
+    return 0;
+  }, [transcriptSegments, currentTime]);
+
   if (loading) {
     return (
       <div className="flex items-center gap-2 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground">
