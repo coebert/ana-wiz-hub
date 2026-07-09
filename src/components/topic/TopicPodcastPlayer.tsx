@@ -457,6 +457,18 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     setCurrentTime(value[0]);
   };
 
+  const seekToSeconds = (t: number) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const clamped = Math.max(0, Math.min(t, audio.duration || t));
+    audio.currentTime = clamped;
+    setCurrentTime(clamped);
+    if (audio.paused) {
+      audio.play().catch(() => {/* ignore autoplay rejection */});
+      setIsPlaying(true);
+    }
+  };
+
   const cycleSpeed = () => {
     const idx = SPEEDS.indexOf(speed);
     setSpeed(SPEEDS[(idx + 1) % SPEEDS.length]);
