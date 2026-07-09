@@ -59,17 +59,33 @@ export const extractTopicContent = (): string => {
   const keyPoints = collect("#key-points");
   const workedExamples = collect("#worked-examples");
 
-  // Core concepts is the only un-IDed top-level <section>. Grab the first
-  // <section> child of <main> that doesn't have a known id.
+  // Core concepts: TopicTemplate pages wrap core content inside <main>, but
+  // many one-off topic pages (e.g. Immunology for Intensivists) render
+  // directly inside PageContainer with no <main>. Search progressively wider
+  // roots so podcast extraction works on both. Exclude sections that are
+  // clearly non-narrative (quiz, references, diagrams gallery, page nav).
+  const EXCLUDE_IDS = new Set(["quiz", "references", "diagrams", "podcast", "faqs"]);
+  const isInsideChrome = (el: Element): boolean =>
+    !!el.closest("nav, header, footer, aside, [data-podcast-player]");
+
+  const roots: Element[] = [];
   const main = document.querySelector("main");
+  if (main) roots.push(main);
+  const article = document.querySelector("article");
+  if (article && !roots.includes(article)) roots.push(article);
+  // Final fallback: the whole document body.
+  if (roots.length === 0 && document.body) roots.push(document.body);
+
   let coreConcepts = "";
-  if (main) {
-    const sections = main.querySelectorAll(":scope section");
+  for (const root of roots) {
+    const sections = root.querySelectorAll("section");
     sections.forEach((s) => {
-      if (!s.id || (s.id !== "diagrams" && s.id !== "quiz" && s.id !== "references")) {
-        coreConcepts += (s as HTMLElement).innerText + "\n\n";
-      }
+      if (s.id && EXCLUDE_IDS.has(s.id)) return;
+      if (isInsideChrome(s)) return;
+      const text = (s as HTMLElement).innerText?.trim();
+      if (text) coreConcepts += text + "\n\n";
     });
+    if (coreConcepts.trim().length > 200) break;
   }
 
   const parts = [
