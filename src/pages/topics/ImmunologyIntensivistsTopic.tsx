@@ -745,3 +745,10 @@ const ImmunologyIntensivistsTopic = () => {
               </li>
             </ul>
           </section>
+        </div>
+      </SectionLayout>
+    </>
+  );
+};
+
+export default ImmunologyIntensivistsTopic;
