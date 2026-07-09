@@ -297,11 +297,15 @@ const AdminDashboard = () => {
     let totalNonBotUsers = 0;
     uaByVisitor.forEach(v => { if (v.hasUA && !v.anyBot) totalNonBotUsers += 1; });
 
-    const todayData = await fetchAllVisits<{ visitor_id: string; visited_at: string }>(
-      "visitor_id, visited_at",
-      (q) => q.gte("visited_at", todayStart).lte("visited_at", now.toISOString()),
+    const todayData = await fetchAllVisits<{
+      visitor_id: string;
+      visited_at: string;
+      user_agent: string | null;
+    }>("visitor_id, visited_at, user_agent", (q) =>
+      q.gte("visited_at", todayStart).lte("visited_at", now.toISOString()),
     );
-    const todayUnique = new Set(todayData.map(v => v.visitor_id));
+    const todayNonBotVisitorIds = buildNonBotVisitorSet(todayData);
+    const todayUnique = todayNonBotVisitorIds;
 
 
     const normaliseSource = (s: string | null | undefined): TrafficSource | null => {
@@ -1147,7 +1151,7 @@ const AdminDashboard = () => {
               {[
                 { label: "Total Unique Users", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500", help: "Distinct visitors ever recorded" },
                 { label: "Total Non-Bot Users", value: analytics.totalNonBotUsers, icon: Users, color: "text-emerald-500", help: "Distinct visitors with a human-looking user agent (bots, crawlers and monitors excluded)" },
-                { label: "Daily Active Users", value: analytics.dailyUsers, icon: CalendarDays, color: "text-green-500", help: "Distinct visitors today" },
+                { label: "Daily Active Users", value: analytics.dailyUsers, icon: CalendarDays, color: "text-green-500", help: "Distinct human-looking visitors today (bots, crawlers and monitors excluded)" },
                 { label: "Total Page Views", value: analytics.totalVisits, icon: TrendingUp, color: "text-purple-500", help: "All page visits ever recorded" },
                 { label: "Today's Page Views", value: analytics.todayVisits, icon: TrendingUp, color: "text-orange-500", help: "Page visits since midnight" },
               ].map(stat => (
