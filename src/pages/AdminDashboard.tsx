@@ -1424,7 +1424,18 @@ const AdminDashboard = () => {
             </div>
 
 
+            {/* Non-bot daily active users — 30-day trend line */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Non-Bot Daily Active Users Trend</h2>
+              <p className="text-xs text-muted-foreground mb-3">
+                30-day trend of distinct human-looking visitors per day (bots, crawlers and monitors excluded)
+              </p>
+              <DailyTrendLineChart data={analytics.last30DaysNonBot} color="hsl(var(--primary))" />
+            </div>
+
+
             {/* Hour of day — configurable window */}
+
             <HourActivityCard analytics={analytics} />
 
 
