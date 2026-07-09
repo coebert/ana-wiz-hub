@@ -699,15 +699,49 @@ const ImmunologyIntensivistsTopic = () => {
               </li>
               <li>
                 Which immune arm dominates depends on pathogen location: <strong>extracellular</strong>
-                bacteria and fungi are cleared by complement, neutrophils and antibody;{
+                bacteria and fungi are cleared by complement, neutrophils and antibody;{" "}
+                <strong>intracellular</strong> viruses and some bacteria require CD8⁺ T cells, NK cells and
+                type I interferons.
+              </li>
+              <li>
+                Splenectomy, hyposplenism, complement (C5–C9) deficiency and anti-C5 monoclonal antibodies
+                (eculizumab) all increase susceptibility to <strong>encapsulated bacteria and Neisseria</strong>.
+              </li>
+              <li>
+                T-cell dysfunction (HIV, transplant, high-dose steroids, calcineurin inhibitors) predisposes
+                to <strong>PJP, CMV, TB, toxoplasmosis and Cryptococcus</strong>.
+              </li>
+              <li>
+                Prions are invisible to the immune system (no PAMPs, no nucleic acid) and require special
+                decontamination (1 M NaOH or prolonged 134 °C autoclaving) because standard disinfection is
+                ineffective.
+              </li>
+            </ul>
+          </section>
+
+          {/* ---------------- See also ---------------- */}
+          <section className="rounded-lg border border-border bg-muted/30 p-4 text-sm">
+            <p className="text-foreground font-semibold mb-1">See also</p>
+            <ul className="list-disc list-inside text-muted-foreground space-y-1">
+              <li>
+                <Link to="/physiology/haematology-immunity" className="text-icu underline">
+                  Haematology &amp; Immunity — coagulation, blood groups, hypersensitivity
+                </Link>
+              </li>
+              <li>
+                <Link to="/intensive-care/sepsis" className="text-icu underline">
+                  Sepsis — Surviving Sepsis, cytokine storm, host response
+                </Link>
+              </li>
+              <li>
+                <Link to="/intensive-care/haematology-icu" className="text-icu underline">
+                  Haematological &amp; Immunological Disorders in ICU
+                </Link>
+              </li>
+              <li>
+                <Link to="/intensive-care/infectious-disease-icu" className="text-icu underline">
+                  Infectious Disease in ICU
                 </Link>
               </li>
             </ul>
           </section>
-        </div>
-      </SectionLayout>
-    </>
-  );
-};
-
-export default ImmunologyIntensivistsTopic;
