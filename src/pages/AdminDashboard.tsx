@@ -178,7 +178,7 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState<"overview" | "topics" | "seo">("overview");
   const [mapMetric, setMapMetric] = useState<"users" | "visits">("users");
   // Raw visits kept for sub-range filtering (e.g. top countries)
-  const [allVisits, setAllVisits] = useState<{ visitor_id: string; visited_at: string; country?: string | null; country_name?: string | null }[]>([]);
+  const [allVisits, setAllVisits] = useState<{ visitor_id: string; visited_at: string; country?: string | null; country_name?: string | null; user_agent?: string | null }[]>([]);
   const [countriesDateRange, setCountriesDateRange] = useState<"all" | "today" | "7d" | "30d">("all");
   const [drillCountry, setDrillCountry] = useState<{ code: string; name: string } | null>(null);
 
