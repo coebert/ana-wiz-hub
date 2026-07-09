@@ -59,6 +59,88 @@ const chartGridStyle: React.CSSProperties = {
   backgroundRepeat: "repeat-y",
 };
 
+/** Simple SVG line chart for a daily count series. */
+function DailyTrendLineChart({ data, color = "var(--primary)", strokeWidth = 2, height = 160 }: {
+  data: { date: string; count: number }[];
+  color?: string;
+  strokeWidth?: number;
+  height?: number;
+}) {
+  if (data.length === 0) return <p className="text-sm text-muted-foreground">No data yet.</p>;
+  const max = niceMax(Math.max(...data.map(d => d.count), 1));
+  const width = 1000;
+  const padding = { top: 16, right: 24, bottom: 28, left: 8 };
+  const chartWidth = width - padding.left - padding.right;
+  const chartHeight = height - padding.top - padding.bottom;
+
+  const xFor = (i: number) => padding.left + (chartWidth / (data.length - 1)) * i;
+  const yFor = (count: number) => padding.top + chartHeight - (count / max) * chartHeight;
+  const points = data.map((d, i) => `${xFor(i)},${yFor(d.count)}`).join(" ");
+  const ticks = [1, 0.75, 0.5, 0.25, 0].map(f => Math.round(max * f));
+
+  return (
+    <div className="flex gap-2">
+      <div className={`flex flex-col justify-between h-40 text-[10px] text-muted-foreground tabular-nums pr-1 text-right shrink-0 min-w-[1.75rem]`} aria-hidden="true">
+        {ticks.map((t, i) => <span key={i} className="leading-none">{t}</span>)}
+      </div>
+      <div className="flex-1 relative">
+        <svg
+          viewBox={`0 0 ${width} ${height}`}
+          className="w-full h-40"
+          preserveAspectRatio="none"
+          role="img"
+          aria-label={`Line chart of daily non-bot active users. ${data.map(d => `${d.date}: ${d.count}`).join(", ")}.`}
+        >
+          {/* horizontal gridlines */}
+          {ticks.map((_, i) => {
+            const y = padding.top + (chartHeight / 4) * i;
+            return (
+              <line
+                key={i}
+                x1={padding.left}
+                x2={width - padding.right}
+                y1={y}
+                y2={y}
+                stroke="hsl(var(--border))"
+                strokeWidth={1}
+                strokeDasharray="4 4"
+              />
+            );
+          })}
+          {/* trend line */}
+          <polyline
+            fill="none"
+            stroke={color}
+            strokeWidth={strokeWidth * (1000 / width)}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            points={points}
+          />
+          {/* data points */}
+          {data.map((d, i) => (
+            <g key={d.date}>
+              <circle
+                cx={xFor(i)}
+                cy={yFor(d.count)}
+                r={5}
+                fill="hsl(var(--card))"
+                stroke={color}
+                strokeWidth={strokeWidth}
+              />
+              <title>{`${d.date}: ${d.count} non-bot daily active users`}</title>
+            </g>
+          ))}
+        </svg>
+        <div className="flex justify-between text-[10px] text-muted-foreground px-1">
+          <span>{data[0]?.date}</span>
+          <span>{data[data.length - 1]?.date}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 
 /** Convert an ISO 3166-1 alpha-2 country code (e.g. "GB") to its flag emoji. */
 function countryFlag(code: string | null | undefined): string {
@@ -1343,7 +1425,18 @@ const AdminDashboard = () => {
             </div>
 
 
+            {/* Non-bot daily active users — 30-day trend line */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Non-Bot Daily Active Users Trend</h2>
+              <p className="text-xs text-muted-foreground mb-3">
+                30-day trend of distinct human-looking visitors per day (bots, crawlers and monitors excluded)
+              </p>
+              <DailyTrendLineChart data={analytics.last30DaysNonBot} color="hsl(var(--primary))" />
+            </div>
+
+
             {/* Hour of day — configurable window */}
+
             <HourActivityCard analytics={analytics} />
 
 
