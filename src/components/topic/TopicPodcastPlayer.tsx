@@ -539,7 +539,9 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
             {isFailed && podcast?.error && (
               <div className="mt-2 flex items-start gap-2 text-sm text-destructive">
                 <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" />
-                <span>{podcast.error}</span>
+                <pre className="whitespace-pre-wrap break-words font-sans text-sm leading-relaxed">
+                  {podcast.error}
+                </pre>
               </div>
             )}
             <Button
