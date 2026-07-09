@@ -562,6 +562,8 @@ const ImmunologyIntensivistsTopic = () => {
         metaDescription="FFICM & EDIC immunology: innate vs adaptive immunity, humoral vs cell-mediated responses, key immune cell lines, complement cascade animation, and immune responses to bacterial, viral, fungal, protozoal and prion infections."
       >
         <div className="space-y-10">
+          <TopicPodcastPlayer topicId={TOPIC_ID} topicTitle="Immunology for Intensivists" />
+
           {/* ---------------- Overview ---------------- */}
           <section className="space-y-3">
             <h2 className="text-2xl font-serif font-bold text-foreground">
