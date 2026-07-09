@@ -671,6 +671,54 @@ const ImmunologyIntensivistsTopic = () => {
             </dl>
           </section>
 
+          {/* ---------------- Key learning points ---------------- */}
+          <section className="rounded-xl border border-icu/40 bg-gradient-to-br from-icu/5 to-card p-5 space-y-3">
+            <h2 className="text-xl font-serif font-semibold text-foreground flex items-center gap-2">
+              <span aria-hidden="true">✓</span>
+              Key learning points
+            </h2>
+            <ul className="text-sm text-muted-foreground leading-relaxed list-disc list-inside space-y-1.5">
+              <li>
+                <strong>Innate immunity</strong> is immediate (minutes–hours), non-specific and
+                memory-less — barriers, complement, neutrophils, macrophages, NK cells and pattern-recognition
+                receptors are the first line.
+              </li>
+              <li>
+                <strong>Adaptive immunity</strong> takes days to peak but is highly specific and
+                generates memory — B cells drive the humoral response (antibodies), while T cells drive
+                cell-mediated killing (CD8⁺ cytotoxic T cells and CD4⁺ helper subsets).
+              </li>
+              <li>
+                Dendritic cells bridge the two arms by presenting antigen on MHC-I to CD8⁺ T cells and
+                on MHC-II to CD4⁺ T cells.
+              </li>
+              <li>
+                The <strong>complement cascade</strong> has three initiating pathways (classical, lectin,
+                alternative) that converge on C3 convertase, producing C3a/C5a anaphylatoxins, C3b opsonin
+                and the C5b–C9 membrane attack complex.
+              </li>
+              <li>
+                Which immune arm dominates depends on pathogen location: <strong>extracellular</strong>
+                bacteria and fungi are cleared by complement, neutrophils and antibody;{" "}
+                <strong>intracellular</strong> viruses and some bacteria require CD8⁺ T cells, NK cells and
+                type I interferons.
+              </li>
+              <li>
+                Splenectomy, hyposplenism, complement (C5–C9) deficiency and anti-C5 monoclonal antibodies
+                (eculizumab) all increase susceptibility to <strong>encapsulated bacteria and Neisseria</strong>.
+              </li>
+              <li>
+                T-cell dysfunction (HIV, transplant, high-dose steroids, calcineurin inhibitors) predisposes
+                to <strong>PJP, CMV, TB, toxoplasmosis and Cryptococcus</strong>.
+              </li>
+              <li>
+                Prions are invisible to the immune system (no PAMPs, no nucleic acid) and require special
+                decontamination (1 M NaOH or prolonged 134 °C autoclaving) because standard disinfection is
+                ineffective.
+              </li>
+            </ul>
+          </section>
+
           {/* ---------------- See also ---------------- */}
           <section className="rounded-lg border border-border bg-muted/30 p-4 text-sm">
             <p className="text-foreground font-semibold mb-1">See also</p>
