@@ -201,6 +201,7 @@ export const intensiveCareTopics: Topic[] = [
   // Haematology
   { id: "transfusion-coagulation", title: "Transfusion & Coagulation", description: "Massive haemorrhage protocols, blood components & lifespans, transfusion reactions (TRALI/TACO), cell salvage, DIC, TEG/ROTEM", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "haematology-icu", title: "Haematological & Immunological Disorders", description: "TTP, HLH/MAS, thrombotic microangiopathies, PLASMIC score, HScore, plasma exchange, and immunosuppression in ICU", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
+  { id: "immunology-intensivists", title: "Immunology for Intensivists", description: "Innate vs adaptive immunity, humoral vs cell-mediated responses, key immune cell lines, complement cascade, and immune responses to bacterial, viral, fungal, protozoal and prion infections", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   // Perioperative critical care
   { id: "postop-high-risk-icu", title: "Critical Care of the High-Risk Surgical Patient", description: "Risk stratification (P-POSSUM/SORT/CPET/CFS), level-2/3 indications, structured handover, goal-directed therapy, MINS surveillance, NELA/CPOC standards", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   // Special Populations
