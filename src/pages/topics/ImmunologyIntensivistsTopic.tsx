@@ -671,28 +671,35 @@ const ImmunologyIntensivistsTopic = () => {
             </dl>
           </section>
 
-          {/* ---------------- See also ---------------- */}
-          <section className="rounded-lg border border-border bg-muted/30 p-4 text-sm">
-            <p className="text-foreground font-semibold mb-1">See also</p>
-            <ul className="list-disc list-inside text-muted-foreground space-y-1">
+          {/* ---------------- Key learning points ---------------- */}
+          <section className="rounded-xl border border-icu/40 bg-gradient-to-br from-icu/5 to-card p-5 space-y-3">
+            <h2 className="text-xl font-serif font-semibold text-foreground flex items-center gap-2">
+              <span aria-hidden="true">✓</span>
+              Key learning points
+            </h2>
+            <ul className="text-sm text-muted-foreground leading-relaxed list-disc list-inside space-y-1.5">
               <li>
-                <Link to="/physiology/haematology-immunity" className="text-icu underline">
-                  Haematology &amp; Immunity — coagulation, blood groups, hypersensitivity
-                </Link>
+                <strong>Innate immunity</strong> is immediate (minutes–hours), non-specific and
+                memory-less — barriers, complement, neutrophils, macrophages, NK cells and pattern-recognition
+                receptors are the first line.
               </li>
               <li>
-                <Link to="/intensive-care/sepsis" className="text-icu underline">
-                  Sepsis — Surviving Sepsis, cytokine storm, host response
-                </Link>
+                <strong>Adaptive immunity</strong> takes days to peak but is highly specific and
+                generates memory — B cells drive the humoral response (antibodies), while T cells drive
+                cell-mediated killing (CD8⁺ cytotoxic T cells and CD4⁺ helper subsets).
               </li>
               <li>
-                <Link to="/intensive-care/haematology-icu" className="text-icu underline">
-                  Haematological &amp; Immunological Disorders in ICU
-                </Link>
+                Dendritic cells bridge the two arms by presenting antigen on MHC-I to CD8⁺ T cells and
+                on MHC-II to CD4⁺ T cells.
               </li>
               <li>
-                <Link to="/intensive-care/infectious-disease-icu" className="text-icu underline">
-                  Infectious Disease in ICU
+                The <strong>complement cascade</strong> has three initiating pathways (classical, lectin,
+                alternative) that converge on C3 convertase, producing C3a/C5a anaphylatoxins, C3b opsonin
+                and the C5b–C9 membrane attack complex.
+              </li>
+              <li>
+                Which immune arm dominates depends on pathogen location: <strong>extracellular</strong>
+                bacteria and fungi are cleared by complement, neutrophils and antibody;{
                 </Link>
               </li>
             </ul>
