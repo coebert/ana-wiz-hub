@@ -2047,6 +2047,7 @@ const AdminDashboard = () => {
         </main>
       </div>
     </div>
+    </TooltipProvider>
   );
 };
 
