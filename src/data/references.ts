@@ -1098,4 +1098,78 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "ICRP 103", citation: "International Commission on Radiological Protection. The 2007 Recommendations of the ICRP (Publication 103). Ann ICRP. 2007;37(2-4).", url: "https://www.icrp.org/publication.asp?id=ICRP+Publication+103" },
     { label: "RCR Radiation 2020", citation: "Royal College of Radiologists. iRefer: Making the best use of clinical radiology. 8th edition. RCR; 2017.", url: "https://www.rcr.ac.uk/our-services/all-our-publications/clinical-radiology-publications/irefer/" },
   ],
+  "immunology-intensivists": [
+    {
+      label: "Janeway's Immunobiology 9e",
+      citation: "Murphy K, Weaver C. Janeway's Immunobiology. 9th ed. Garland Science; 2016. Chapters 1–3 (innate immunity, complement, adaptive immunity); Chapter 11 (dynamics of adaptive immunity).",
+    },
+    {
+      label: "Peakman & Vergani 3e",
+      citation: "Peakman M, Vergani D. Basic and Clinical Immunology. 3rd ed. Elsevier; 2019. Chapters on innate and adaptive immunity, antigen presentation and the complement system.",
+    },
+    {
+      label: "Ricklin Nat Immunol 2010",
+      citation: "Ricklin D, Hajishengallis G, Yang K, Lambris JD. Complement: a key system for immune surveillance and homeostasis. Nature Immunology. 2010;11(9):785–797.",
+      url: "https://doi.org/10.1038/ni.1923",
+      excerpt: "The complement system is composed of more than 30 fluid-phase and cell-surface proteins that act as a first line of defence against microbial intruders. Three canonical pathways of complement activation (classical, lectin and alternative) converge at the cleavage of C3, leading to the generation of the anaphylatoxins C3a and C5a, opsonisation of target surfaces by C3b, and assembly of the C5b–9 membrane attack complex.",
+    },
+    {
+      label: "Merle Front Immunol 2015",
+      citation: "Merle NS, Church SE, Frémeaux-Bacchi V, Roumenina LT. Complement System Part I – Molecular Mechanisms of Activation and Regulation. Frontiers in Immunology. 2015;6:262.",
+      url: "https://doi.org/10.3389/fimmu.2015.00262",
+      excerpt: "The classical pathway is initiated by binding of C1q to antigen–antibody complexes, the lectin pathway by binding of mannose-binding lectin or ficolins to conserved pathogen carbohydrates, and the alternative pathway by spontaneous hydrolysis of C3 (‘tick-over’) on activator surfaces. All three pathways converge on the formation of C3 convertases, which cleave C3 into the opsonin C3b and the anaphylatoxin C3a.",
+    },
+    {
+      label: "Hotchkiss Nat Rev Immunol 2013",
+      citation: "Hotchkiss RS, Monneret G, Payen D. Sepsis-induced immunosuppression: from cellular dysfunctions to immunotherapy. Nature Reviews Immunology. 2013;13(12):862–874.",
+      url: "https://doi.org/10.1038/nri3552",
+      excerpt: "Sepsis is characterised by a concurrent hyperinflammatory response and a compensatory anti-inflammatory response. Persistent sepsis is dominated by immunosuppression — lymphocyte apoptosis, T-cell exhaustion, expansion of regulatory T cells and myeloid-derived suppressor cells, and reactivation of latent viruses such as cytomegalovirus and herpes simplex — which contributes to secondary nosocomial infection and late mortality.",
+    },
+    {
+      label: "Singer JAMA 2016 (Sepsis-3)",
+      citation: "Singer M, Deutschman CS, Seymour CW, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801–810.",
+      url: "https://doi.org/10.1001/jama.2016.0287",
+      excerpt: "Sepsis is defined as life-threatening organ dysfunction caused by a dysregulated host response to infection. Septic shock is a subset of sepsis in which underlying circulatory and cellular/metabolic abnormalities are profound enough to substantially increase mortality.",
+    },
+    {
+      label: "Evans SSC 2021",
+      citation: "Evans L, Rhodes A, Alhazzani W, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Critical Care Medicine. 2021;49(11):e1063–e1143.",
+      url: "https://doi.org/10.1097/CCM.0000000000005337",
+      excerpt: "For adults with possible septic shock or a high likelihood for sepsis, we recommend administering antimicrobials immediately, ideally within 1 hour of recognition. For adults with sepsis-induced hypoperfusion or septic shock, we suggest that at least 30 mL/kg of intravenous crystalloid fluid should be given within the first 3 hours of resuscitation.",
+    },
+    {
+      label: "NICE NG51 Sepsis",
+      citation: "National Institute for Health and Care Excellence. Sepsis: recognition, diagnosis and early management. NICE guideline NG51. 2016 (updated 2024).",
+      url: "https://www.nice.org.uk/guidance/ng51",
+    },
+    {
+      label: "Cook NAP6 2018",
+      citation: "Cook TM, Harper NJN, Farmer L, et al. Anaesthesia, surgery, and life-threatening allergic reactions: protocol and methods of the 6th National Audit Project (NAP6) of the Royal College of Anaesthetists. British Journal of Anaesthesia. 2018;121(1):124–133.",
+      url: "https://doi.org/10.1016/j.bja.2018.04.001",
+    },
+    {
+      label: "Cicardi HAE 2014",
+      citation: "Cicardi M, Aberer W, Banerji A, et al. Classification, diagnosis, and approach to treatment for angioedema: consensus report from the Hereditary Angioedema International Working Group. Allergy. 2014;69(5):602–616.",
+      url: "https://doi.org/10.1111/all.12380",
+      excerpt: "Hereditary angioedema due to C1-inhibitor deficiency is characterised by recurrent bradykinin-mediated angioedema of the skin, gastrointestinal tract, and larynx. Acute attacks do not respond to adrenaline, antihistamines, or corticosteroids and should be treated with plasma-derived or recombinant C1-inhibitor concentrate, the bradykinin B2-receptor antagonist icatibant, or the plasma kallikrein inhibitor ecallantide.",
+    },
+    {
+      label: "Rubin IDSA 2014",
+      citation: "Rubin LG, Levin MJ, Ljungman P, et al. 2013 IDSA clinical practice guideline for vaccination of the immunocompromised host. Clinical Infectious Diseases. 2014;58(3):e44–e100.",
+      url: "https://doi.org/10.1093/cid/cit684",
+      excerpt: "Asplenic patients are at lifelong risk of overwhelming post-splenectomy infection with encapsulated organisms (Streptococcus pneumoniae, Neisseria meningitidis, Haemophilus influenzae type b). Pneumococcal, meningococcal (including serogroup B) and Hib vaccination is recommended, with lifelong antibiotic prophylaxis considered particularly in children and in the first 2 years after splenectomy.",
+    },
+    {
+      label: "McNamara MMWR 2017 (eculizumab)",
+      citation: "McNamara LA, Topaz N, Wang X, Hariri S, Fox L, MacNeil JR. High risk for invasive meningococcal disease among patients receiving eculizumab (Soliris) despite receipt of meningococcal vaccine. MMWR. 2017;66(27):734–737.",
+      url: "https://doi.org/10.15585/mmwr.mm6627e1",
+      excerpt: "Eculizumab, a terminal complement inhibitor, is associated with a 1,000- to 2,000-fold increased risk for meningococcal disease. All patients receiving eculizumab should receive meningococcal conjugate (MenACWY) and serogroup B vaccine, and clinicians should consider antimicrobial prophylaxis for the duration of eculizumab treatment.",
+    },
+    {
+      label: "ACDP TSE 2015",
+      citation: "Advisory Committee on Dangerous Pathogens — Transmissible Spongiform Encephalopathy Subgroup. Minimise transmission risk of CJD and vCJD in healthcare settings. Public Health England / UK Health Security Agency; last updated 2015–2020.",
+      url: "https://www.gov.uk/government/publications/guidance-from-the-acdp-tse-risk-management-subgroup-formerly-tse-working-group",
+      excerpt: "Prion agents are highly resistant to conventional decontamination. Instruments used on high-risk tissues (brain, spinal cord, posterior eye) from patients with, or at increased risk of, CJD or vCJD should be single-use where possible, or decontaminated by prolonged autoclaving at 134–137 °C combined with sodium hydroxide immersion.",
+    },
+  ],
 };

@@ -4,6 +4,10 @@ import { SectionLayout } from "@/components/layout/SectionLayout";
 import AnimatedMechanism, {
   type AnimatedMechanismStep,
 } from "@/components/diagrams/shared/AnimatedMechanism";
+import { InlineRef } from "@/components/references/InlineRef";
+import { ReferencesList } from "@/components/references/ReferencesList";
+
+const TOPIC_ID = "immunology-intensivists";
 
 /**
  * Immunology for Intensivists
@@ -572,7 +576,7 @@ const ImmunologyIntensivistsTopic = () => {
               exquisitely specific and forms long-lived memory through
               clonal expansion of T and B lymphocytes. Dendritic cells
               bridge the two arms by presenting antigen on MHC molecules
-              to prime naïve T cells.
+              to prime naïve T cells.<InlineRef topicId={TOPIC_ID} refLabel="Janeway's Immunobiology 9e" /><InlineRef topicId={TOPIC_ID} refLabel="Peakman & Vergani 3e" />
             </p>
             <InnateAdaptiveTimeline />
           </section>
@@ -715,7 +719,7 @@ const ImmunologyIntensivistsTopic = () => {
               Complement is ~30 plasma proteins produced mainly by the liver.
               It amplifies innate immunity through three initiating pathways
               that converge on C3, generating opsonins (C3b), anaphylatoxins
-              (C3a, C5a) and the membrane attack complex (C5b–C9).
+              (C3a, C5a) and the membrane attack complex (C5b–C9).<InlineRef topicId={TOPIC_ID} refLabel="Ricklin Nat Immunol 2010" /><InlineRef topicId={TOPIC_ID} refLabel="Merle Front Immunol 2015" />
             </p>
             <AnimatedMechanism
               title="Complement cascade — three pathways to MAC"
@@ -736,7 +740,7 @@ const ImmunologyIntensivistsTopic = () => {
               Which arm of the immune system dominates depends on where the
               pathogen lives. Extracellular organisms are killed by
               complement, phagocytes and antibody; intracellular organisms
-              require T-cell-mediated killing of the host cell.
+              require T-cell-mediated killing of the host cell.<InlineRef topicId={TOPIC_ID} refLabel="Janeway's Immunobiology 9e" />
             </p>
             <div className="overflow-x-auto rounded-xl border border-border">
               <table className="w-full text-sm">
@@ -768,13 +772,13 @@ const ImmunologyIntensivistsTopic = () => {
               ICU clinical pearls
             </h2>
             <ul className="text-sm text-muted-foreground leading-relaxed list-disc list-inside space-y-1.5">
-              <li>Sepsis is a dysregulated host response — hyperinflammation (SIRS, cytokine storm) followed by <strong>compensatory anti-inflammatory response syndrome (CARS)</strong> and immunoparalysis, which drives secondary infection.</li>
-              <li>Splenectomised or functionally hyposplenic patients (sickle cell) lose antibody-mediated opsonisation of encapsulated organisms: <strong>Strep pneumoniae, Neisseria meningitidis, Haemophilus influenzae</strong>. Vaccinate and give prophylactic antibiotics.</li>
-              <li>Neutropenic sepsis (ANC &lt;0.5 × 10⁹/L): empirical broad-spectrum antibiotics within 1 h; think fungal (Candida, Aspergillus) if fever persists &gt;96 h.</li>
-              <li>T-cell dysfunction (HIV, transplant, high-dose steroids, calcineurin inhibitors) predisposes to <strong>PJP, CMV, TB, toxoplasma, Cryptococcus</strong>.</li>
-              <li>Eculizumab and ravulizumab block C5 → mandatory meningococcal vaccination and consideration of penicillin prophylaxis.</li>
-              <li>C1 esterase inhibitor deficiency → hereditary angioedema — treat with C1-INH concentrate or icatibant, <em>not</em> adrenaline/steroids.</li>
-              <li>Prion contamination: standard autoclaving is inadequate — use 1 M NaOH soak or 134 °C autoclave for a prolonged cycle; single-use instruments for high-risk tissue.</li>
+              <li>Sepsis is a dysregulated host response — hyperinflammation (SIRS, cytokine storm) followed by <strong>compensatory anti-inflammatory response syndrome (CARS)</strong> and immunoparalysis, which drives secondary infection.<InlineRef topicId={TOPIC_ID} refLabel="Singer JAMA 2016 (Sepsis-3)" /><InlineRef topicId={TOPIC_ID} refLabel="Hotchkiss Nat Rev Immunol 2013" /><InlineRef topicId={TOPIC_ID} refLabel="Evans SSC 2021" /><InlineRef topicId={TOPIC_ID} refLabel="NICE NG51 Sepsis" /></li>
+             <li>Splenectomised or functionally hyposplenic patients (sickle cell) lose antibody-mediated opsonisation of encapsulated organisms: <strong>Strep pneumoniae, Neisseria meningitidis, Haemophilus influenzae</strong>. Vaccinate and give prophylactic antibiotics.<InlineRef topicId={TOPIC_ID} refLabel="Rubin IDSA 2014" /></li>
+             <li>Neutropenic sepsis (ANC &lt;0.5 × 10⁹/L): empirical broad-spectrum antibiotics within 1 h; think fungal (Candida, Aspergillus) if fever persists &gt;96 h.<InlineRef topicId={TOPIC_ID} refLabel="Evans SSC 2021" /></li>
+             <li>T-cell dysfunction (HIV, transplant, high-dose steroids, calcineurin inhibitors) predisposes to <strong>PJP, CMV, TB, toxoplasma, Cryptococcus</strong>.<InlineRef topicId={TOPIC_ID} refLabel="Hotchkiss Nat Rev Immunol 2013" /></li>
+             <li>Eculizumab and ravulizumab block C5 → mandatory meningococcal vaccination and consideration of penicillin prophylaxis.<InlineRef topicId={TOPIC_ID} refLabel="McNamara MMWR 2017 (eculizumab)" /></li>
+             <li>C1 esterase inhibitor deficiency → hereditary angioedema — treat with C1-INH concentrate or icatibant, <em>not</em> adrenaline/steroids.<InlineRef topicId={TOPIC_ID} refLabel="Cicardi HAE 2014" /><InlineRef topicId={TOPIC_ID} refLabel="Cook NAP6 2018" /></li>
+             <li>Prion contamination: standard autoclaving is inadequate — use 1 M NaOH soak or 134 °C autoclave for a prolonged cycle; single-use instruments for high-risk tissue.<InlineRef topicId={TOPIC_ID} refLabel="ACDP TSE 2015" /></li>
             </ul>
           </section>
 
@@ -867,6 +871,9 @@ const ImmunologyIntensivistsTopic = () => {
               </li>
             </ul>
           </section>
+
+          {/* ---------------- References ---------------- */}
+          <ReferencesList topicId={TOPIC_ID} />
         </div>
       </SectionLayout>
     </>
