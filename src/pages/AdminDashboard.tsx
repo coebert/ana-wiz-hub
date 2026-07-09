@@ -422,10 +422,14 @@ const AdminDashboard = () => {
 
 
 
-    // Top countries (by unique visitors, then total visits)
+    // Top countries (by unique visitors, then total visits).
+    // Bot / crawler / monitor traffic is excluded so the geo tables reflect
+    // real humans only, matching the "non-bot" numbers shown in the stat cards.
+    const nonBotVisitorIds = buildNonBotVisitorSet(visits);
     const computeTopCountries = (visitList: typeof visits) => {
       const countryVisits = new Map<string, { name: string; users: Set<string>; visits: number }>();
       visitList.forEach((v: { visitor_id: string; country?: string | null; country_name?: string | null }) => {
+        if (!nonBotVisitorIds.has(v.visitor_id)) return;
         const c = (v.country ?? "").toUpperCase();
         if (!c || c.length !== 2) return;
         if (!countryVisits.has(c)) {
