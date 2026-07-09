@@ -6,6 +6,7 @@ import AnimatedMechanism, {
 } from "@/components/diagrams/shared/AnimatedMechanism";
 import { InlineRef } from "@/components/references/InlineRef";
 import { ReferencesList } from "@/components/references/ReferencesList";
+import { TopicPodcastPlayer } from "@/components/topic/TopicPodcastPlayer";
 
 const TOPIC_ID = "immunology-intensivists";
 
