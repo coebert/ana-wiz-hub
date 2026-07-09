@@ -2205,6 +2205,7 @@ function HourActivityCard({ analytics }: { analytics: Analytics }) {
 
       )}
     </div>
+    </TooltipProvider>
   );
 }
 
