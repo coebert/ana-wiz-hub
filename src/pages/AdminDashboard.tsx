@@ -471,12 +471,16 @@ const AdminDashboard = () => {
       ? visitsPerActiveDay.reduce((a, b) => a + b, 0) / visitsPerActiveDay.length
       : 0;
 
-    // 7d / 30d rolling unique
+    // 7d / 30d rolling unique — bots, crawlers and monitors excluded
     const weeklyUsers = new Set(
-      visits.filter(v => v.visited_at >= sevenDaysAgo).map(v => v.visitor_id),
+      visits
+        .filter(v => v.visited_at >= sevenDaysAgo && nonBotVisitorIds.has(v.visitor_id))
+        .map(v => v.visitor_id),
     ).size;
     const monthlyUsers = new Set(
-      visits.filter(v => v.visited_at >= thirtyDaysAgo).map(v => v.visitor_id),
+      visits
+        .filter(v => v.visited_at >= thirtyDaysAgo && nonBotVisitorIds.has(v.visitor_id))
+        .map(v => v.visitor_id),
     ).size;
 
     // Last 7 days
