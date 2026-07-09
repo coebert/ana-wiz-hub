@@ -141,7 +141,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     if (loading || (podcast && podcast.status === "ready")) return;
     // Defer to next tick so topic DOM is fully rendered.
     const t = setTimeout(() => {
-      const content = extractTopicContent();
+      const { content } = extractTopicContent();
       if (content && content.length > 50) setEstimate(estimatePodcastTarget(content));
     }, 0);
     return () => clearTimeout(t);
