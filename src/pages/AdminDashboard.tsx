@@ -184,11 +184,10 @@ const AdminDashboard = () => {
   // started, monitored, and reviewed from one place.
 
 
-  useEffect(() => {
-    if (!authLoading && (!user || !isAdmin)) {
-      navigate("/admin/login");
-    }
-  }, [user, isAdmin, authLoading, navigate]);
+  // Route protection lives in <RequireAdmin>. A duplicate guard here used
+  // to race the auth state after sign-in and bounce fresh admins back to
+  // /admin/login "a few seconds after logging in".
+
 
   const [dateFrom, setDateFrom] = useState<Date | undefined>(undefined);
   const [dateTo, setDateTo] = useState<Date | undefined>(undefined);

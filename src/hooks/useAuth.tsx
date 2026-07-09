@@ -134,13 +134,24 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     applySessionRef.current = applySession;
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, nextSession) => {
+      (event, nextSession) => {
+        // A null session is only authoritative when it's an explicit sign-out
+        // (or the account was deleted). Some flows fire INITIAL_SESSION /
+        // TOKEN_REFRESHED with a stale null shortly after a fresh sign-in,
+        // which would otherwise demote the just-authenticated user and
+        // bounce them back to /admin/login a few seconds later.
+        if (!nextSession && event !== "SIGNED_OUT") {
+          if (resolvedAdminForUserRef.current) return;
+        }
         // Defer to avoid deadlocks inside the auth callback.
         setTimeout(() => applySession(nextSession), 0);
       }
     );
 
     supabase.auth.getSession().then(({ data: { session: initialSession } }) => {
+      // If signIn already committed a session by the time this resolves,
+      // do NOT overwrite it with a stale null read.
+      if (!initialSession && resolvedAdminForUserRef.current) return;
       applySession(initialSession);
     });
 
