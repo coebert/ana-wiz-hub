@@ -427,6 +427,73 @@ const pathogenResponse: Array<{
 ];
 
 // ---------------------------------------------------------------------------
+// Exam mapping — sub-section → FRCA Primary / Final / FFICM outcomes
+// ---------------------------------------------------------------------------
+type ExamMapRow = {
+  subsection: string;
+  primary: string;
+  final: string;
+  fficm: string;
+};
+
+const examMap: ExamMapRow[] = [
+  {
+    subsection: "Two arms, one system (innate vs adaptive)",
+    primary:
+      "Physiology & Biochemistry — Immunology: outline the innate and adaptive immune systems and the cells and molecules involved.",
+    final:
+      "Applied clinical science — apply immune physiology to the response to infection, trauma and surgery.",
+    fficm:
+      "Domain 2 (Basic sciences): 2.1 Immunology — innate vs adaptive immunity, PAMPs / PRRs, MHC and antigen presentation.",
+  },
+  {
+    subsection: "Humoral vs cell-mediated response",
+    primary:
+      "Physiology & Biochemistry — describe the humoral (B-cell / antibody) and cell-mediated (T-cell) arms of adaptive immunity.",
+    final:
+      "Anaesthesia for the immunocompromised patient — implications of humoral vs cell-mediated deficiency for peri-operative infection risk.",
+    fficm:
+      "2.1 Immunology — differentiate humoral and cell-mediated responses; role of CD4⁺ and CD8⁺ T cells; immunoglobulin classes.",
+  },
+  {
+    subsection: "Key immune cell lines",
+    primary:
+      "Physiology & Biochemistry — classify leucocytes (myeloid vs lymphoid), describe their origin, life-span and function.",
+    final:
+      "Interpret the full blood count and differential in the context of infection, sepsis and immunosuppression.",
+    fficm:
+      "2.1 Immunology & 2.5 Microbiology — function of neutrophils, macrophages, dendritic cells, NK, B and T lymphocytes in critical illness.",
+  },
+  {
+    subsection: "The complement cascade",
+    primary:
+      "Physiology & Biochemistry — describe the complement system, its three activation pathways and biological effects.",
+    final:
+      "Anaphylaxis and hereditary angioedema — recognise C1-INH deficiency; understand complement-mediated reactions and eculizumab.",
+    fficm:
+      "2.1 Immunology — complement pathways, opsonisation, anaphylatoxins and MAC; clinical relevance of complement deficiency and C5 blockade.",
+  },
+  {
+    subsection: "Immune response by pathogen class",
+    primary:
+      "Microbiology — classify bacteria, viruses, fungi, protozoa and prions and outline the host immune response to each.",
+    final:
+      "Management of severe sepsis and specific infections (viral pneumonitis, invasive fungal disease, malaria) in the peri-operative period.",
+    fficm:
+      "2.5 Microbiology & 3.4 Infection — pathogen-specific immunity; opportunistic infection in the immunocompromised ICU patient; prion decontamination.",
+  },
+  {
+    subsection: "ICU clinical pearls (sepsis, hyposplenism, immunosuppression)",
+    primary:
+      "Not directly assessed at Primary — background for sepsis physiology and asplenia.",
+    final:
+      "Sepsis and septic shock — pathophysiology, immunoparalysis (CARS), management of the asplenic and neutropenic patient.",
+    fficm:
+      "3.4 Infection & 4.2 Sepsis — dysregulated host response, secondary infection, opportunistic pathogens in T-cell dysfunction.",
+  },
+];
+
+// ---------------------------------------------------------------------------
 // FAQs (for JSON-LD + on-page)
 // ---------------------------------------------------------------------------
 const faqs: Array<[string, string]> = [
@@ -509,6 +576,61 @@ const ImmunologyIntensivistsTopic = () => {
             </p>
             <InnateAdaptiveTimeline />
           </section>
+
+          {/* ---------------- Exam mapping ---------------- */}
+          <section className="space-y-3" aria-labelledby="exam-mapping-heading">
+            <h2
+              id="exam-mapping-heading"
+              className="text-2xl font-serif font-bold text-foreground"
+            >
+              Exam mapping — FRCA Primary, Final &amp; FFICM
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              How each sub-section maps to Royal College of Anaesthetists
+              (RCoA) 2021 curriculum learning outcomes for the Primary and
+              Final FRCA, and to the Faculty of Intensive Care Medicine
+              (FICM) 2021 curriculum for the FFICM.
+            </p>
+            <div className="overflow-x-auto rounded-xl border border-border">
+              <table className="w-full text-sm">
+                <thead className="bg-secondary/40 text-foreground">
+                  <tr>
+                    <th className="text-left px-3 py-2 font-semibold w-56">Sub-section</th>
+                    <th className="text-left px-3 py-2 font-semibold">
+                      <span className="inline-block rounded bg-physiology/15 text-physiology px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide mr-1">Primary</span>
+                      FRCA outcome
+                    </th>
+                    <th className="text-left px-3 py-2 font-semibold">
+                      <span className="inline-block rounded bg-clinical/15 text-clinical px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide mr-1">Final</span>
+                      FRCA outcome
+                    </th>
+                    <th className="text-left px-3 py-2 font-semibold">
+                      <span className="inline-block rounded bg-icu/15 text-icu px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide mr-1">FFICM</span>
+                      Domain outcome
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {examMap.map((row) => (
+                    <tr key={row.subsection} className="border-t border-border align-top">
+                      <td className="px-3 py-2 font-medium text-foreground">{row.subsection}</td>
+                      <td className="px-3 py-2 text-muted-foreground">{row.primary}</td>
+                      <td className="px-3 py-2 text-muted-foreground">{row.final}</td>
+                      <td className="px-3 py-2 text-muted-foreground">{row.fficm}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground italic">
+              Outcomes paraphrased from the RCoA 2021 anaesthetics curriculum
+              (Basic Sciences — Physiology &amp; Biochemistry, Microbiology;
+              Applied Clinical Science) and the FICM 2021 curriculum
+              (Domain 2 Basic Sciences, Domain 3 Infection, Domain 4 Sepsis).
+            </p>
+          </section>
+
+
 
           {/* ---------------- Innate / adaptive tiles ---------------- */}
           <section className="grid gap-4 md:grid-cols-2">
