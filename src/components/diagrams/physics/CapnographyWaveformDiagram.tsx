@@ -125,7 +125,7 @@ const LabelledReferenceCapnograph = () => {
           x={xFor(p2End) + 6}
           y={yFor(peak * 0.95) + 12}
           fontSize="11"
-          className="fill-physics"
+          fill="hsl(var(--physics))"
           fontFamily="sans-serif"
           fontWeight={600}
         >
@@ -140,7 +140,7 @@ const LabelledReferenceCapnograph = () => {
           y={yFor(peak) - 6}
           fontSize="11"
           textAnchor="end"
-          className="fill-physics"
+          fill="hsl(var(--physics))"
           fontFamily="sans-serif"
           fontWeight={600}
         >
