@@ -490,8 +490,27 @@ export const CapnographyWaveformDiagram = () => {
             stroke="hsl(var(--physiology))"
             strokeWidth={2}
           />
+          {/* X-axis label */}
+          <text
+            x={W - 6}
+            y={H - 4}
+            textAnchor="end"
+            fontSize="10"
+            className="fill-muted-foreground"
+            fontFamily="sans-serif"
+          >
+            Time (seconds) →
+          </text>
         </svg>
       </div>
+
+      <div className="rounded-lg border border-border bg-muted/30 p-3 sm:p-4 space-y-2">
+        <p className="text-xs uppercase tracking-wider text-muted-foreground">
+          Reference — labelled normal capnograph
+        </p>
+        <LabelledReferenceCapnograph />
+      </div>
+
 
       <div className="rounded-lg border border-border bg-muted/40 p-3 sm:p-4 space-y-3">
         <div>
