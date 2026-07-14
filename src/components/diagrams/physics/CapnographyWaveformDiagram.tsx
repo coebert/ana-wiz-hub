@@ -15,6 +15,146 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 type Pattern = "normal" | "obstruction" | "curare" | "rebreathing" | "disconnection" | "cardiac";
 
+/**
+ * Static, fully-labelled reference capnograph. Shows Phase I (inspiratory
+ * baseline), Phase II (expiratory upstroke), Phase III (alveolar plateau)
+ * and Phase 0 (inspiratory downstroke), along with the α angle (II–III
+ * junction, normally ~100–110°; widens in obstruction) and β angle (III–0
+ * junction, normally ~90°; widens with rebreathing). Rendered alongside
+ * the animated trace so learners can map the scrolling waveform onto the
+ * canonical named phases used in the FRCA syllabus.
+ */
+const LabelledReferenceCapnograph = () => {
+  const w = 520;
+  const h = 180;
+  const padL = 40;
+  const padR = 20;
+  const padT = 24;
+  const padB = 36;
+  const plotW = w - padL - padR;
+  const plotH = h - padT - padB;
+  // Phase boundaries as fractions of a single breath (must mirror
+  // waveformPoint()'s "normal" case so the labels stay honest).
+  const p1End = 0.06; // Phase I baseline (compressed for readability)
+  const p2End = 0.20; // Phase II upstroke
+  const p3End = 0.72; // Phase III plateau
+  const p0End = 0.86; // Phase 0 downstroke, then inspiratory baseline
+  const peak = 5.0;
+  const yFor = (kpa: number) => padT + plotH - (kpa / 6) * plotH;
+  const xFor = (frac: number) => padL + frac * plotW;
+  // Build a smoothed idealised waveform
+  const pts: string[] = [];
+  const N = 240;
+  for (let i = 0; i <= N; i++) {
+    const p = i / N;
+    let y = 0;
+    if (p < p1End) y = 0;
+    else if (p < p2End) {
+      const k = (p - p1End) / (p2End - p1End);
+      y = peak * (1 - Math.exp(-k * 3.2));
+    } else if (p < p3End) {
+      const k = (p - p2End) / (p3End - p2End);
+      y = peak * (0.95 + 0.05 * k);
+    } else if (p < p0End) {
+      const k = (p - p3End) / (p0End - p3End);
+      y = peak * Math.exp(-k * 3.5);
+    } else y = 0;
+    pts.push(`${xFor(p).toFixed(1)},${yFor(y).toFixed(1)}`);
+  }
+  return (
+    <svg
+      viewBox={`0 0 ${w} ${h}`}
+      className="w-full h-auto"
+      role="img"
+      aria-label="Labelled reference capnograph showing phases I, II, III and 0, with alpha and beta angles"
+    >
+      {/* Axes */}
+      <line x1={padL} y1={padT} x2={padL} y2={padT + plotH} stroke="hsl(var(--border))" />
+      <line x1={padL} y1={padT + plotH} x2={w - padR} y2={padT + plotH} stroke="hsl(var(--border))" />
+      {/* Y-axis label */}
+      <text x={4} y={padT + 4} fontSize="10" className="fill-muted-foreground" fontFamily="sans-serif">EtCO₂ (kPa)</text>
+      {[0, 2, 4, 6].map((k) => (
+        <g key={k}>
+          <text x={padL - 6} y={yFor(k) + 3} fontSize="9" textAnchor="end" className="fill-muted-foreground" fontFamily="sans-serif">{k}</text>
+          <line x1={padL - 3} x2={padL} y1={yFor(k)} y2={yFor(k)} stroke="hsl(var(--border))" />
+        </g>
+      ))}
+      {/* X-axis label */}
+      <text x={padL + plotW / 2} y={h - 4} fontSize="10" textAnchor="middle" className="fill-muted-foreground" fontFamily="sans-serif">
+        Time (seconds) →
+      </text>
+      {/* Phase dividers */}
+      {[p1End, p2End, p3End, p0End].map((f) => (
+        <line
+          key={f}
+          x1={xFor(f)}
+          x2={xFor(f)}
+          y1={padT}
+          y2={padT + plotH}
+          stroke="hsl(var(--border))"
+          strokeDasharray="2 3"
+          strokeWidth={0.6}
+        />
+      ))}
+      {/* Waveform */}
+      <polyline points={pts.join(" ")} fill="none" stroke="hsl(var(--physiology))" strokeWidth={2} />
+      {/* Phase labels along the top */}
+      {[
+        { c: (0 + p1End) / 2, label: "I" },
+        { c: (p1End + p2End) / 2, label: "II" },
+        { c: (p2End + p3End) / 2, label: "III" },
+        { c: (p3End + p0End) / 2, label: "0" },
+      ].map((s) => (
+        <text
+          key={s.label}
+          x={xFor(s.c)}
+          y={padT - 8}
+          fontSize="11"
+          textAnchor="middle"
+          className="fill-foreground"
+          fontFamily="sans-serif"
+          fontWeight={600}
+        >
+          Phase {s.label}
+        </text>
+      ))}
+      {/* α angle (Phase II→III junction, ~100–110°) */}
+      <g>
+        <circle cx={xFor(p2End)} cy={yFor(peak * 0.95)} r={3} fill="hsl(var(--physics))" />
+        <text
+          x={xFor(p2End) + 6}
+          y={yFor(peak * 0.95) + 12}
+          fontSize="11"
+          className="fill-physics"
+          fontFamily="sans-serif"
+          fontWeight={600}
+        >
+          α (~100–110°)
+        </text>
+      </g>
+      {/* β angle (Phase III→0 junction, ~90°) */}
+      <g>
+        <circle cx={xFor(p3End)} cy={yFor(peak)} r={3} fill="hsl(var(--physics))" />
+        <text
+          x={xFor(p3End) - 6}
+          y={yFor(peak) - 6}
+          fontSize="11"
+          textAnchor="end"
+          className="fill-physics"
+          fontFamily="sans-serif"
+          fontWeight={600}
+        >
+          β (~90°)
+        </text>
+      </g>
+      {/* Sub-caption for the four phases */}
+      <text x={padL} y={h - 20} fontSize="9" className="fill-muted-foreground" fontFamily="sans-serif">
+        I: inspiratory baseline · II: expiratory upstroke · III: alveolar plateau · 0: inspiratory downstroke
+      </text>
+    </svg>
+  );
+};
+
 interface PatternSpec {
   label: string;
   shortLabel: string;
