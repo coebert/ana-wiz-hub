@@ -6,7 +6,7 @@ const SugammadexReversesRocuroniumNote = () => (
     slug="how-sugammadex-reverses-rocuronium"
     title="How does sugammadex reverse rocuronium?"
     shortTitle="Sugammadex reversal of rocuronium"
-    description="How sugammadex encapsulates rocuronium to reverse neuromuscular block — 1:1 cyclodextrin chemistry, dosing by TOF/PTC, contraceptive failure, and when to choose neostigmine instead."
+    description="How sugammadex encapsulates rocuronium: 1:1 cyclodextrin chemistry, dosing by TOF/PTC, contraceptive failure, and when to choose neostigmine instead."
     datePublished="2026-06-13"
     lede="Sugammadex is a modified γ-cyclodextrin that wraps around rocuronium (and vecuronium) in a 1:1 inclusion complex, removing free drug from plasma and reversing neuromuscular block within 2–3 minutes — at any depth, including immediately after a 1.2 mg/kg RSI dose."
     faqs={[

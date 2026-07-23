@@ -6,7 +6,7 @@ const TofRatioExtubationNote = () => (
     slug="tof-ratio-before-extubation"
     title="Why TOF ratio ≥ 0.9 before extubation?"
     shortTitle="TOF ratio ≥ 0.9 before extubation"
-    description="Residual neuromuscular block is common, dangerous and invisible to clinical signs. Why quantitative train-of-four ratio ≥ 0.9 is the modern standard before extubation, and how to achieve it."
+    description="Residual neuromuscular block is common and invisible to clinical signs. Quantitative TOF ratio ≥ 0.9 is the modern extubation standard—how to achieve it."
     datePublished="2026-06-18"
     examTags={["primary", "final"]}
     lede="A train-of-four (TOF) ratio less than 0.9 at the adductor pollicis is the strongest single predictor of postoperative pulmonary complications after non-depolarising neuromuscular block. Quantitative monitoring and reversal to a TOF ratio ≥ 0.9 is the standard recommended by AAGBI 2015, ASA 2023 and ESAIC 2023."

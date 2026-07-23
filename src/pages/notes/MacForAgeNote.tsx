@@ -6,7 +6,7 @@ const MacForAgeNote = () => (
     slug="mac-for-age-formula"
     title="MAC for age: how minimum alveolar concentration changes with age"
     shortTitle="MAC for age formula"
-    description="Minimum alveolar concentration (MAC) falls predictably with age. The Mapleson age-adjustment formula, what MAC actually measures, and why it matters for elderly anaesthesia."
+    description="MAC falls predictably with age. The Mapleson age-adjustment formula, what MAC actually measures, and why it matters for elderly anaesthesia."
     datePublished="2026-06-18"
     examTags={["primary", "final"]}
     lede="MAC is the end-tidal concentration of a volatile agent that prevents movement to a standard surgical stimulus in 50% of patients. It falls by about 6% per decade after age 40 — the Mapleson age-adjustment formula lets you correct any agent's MAC for the patient in front of you."

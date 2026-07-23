@@ -6,7 +6,7 @@ const P50FetalHaemoglobinNote = () => (
     slug="p50-fetal-haemoglobin"
     title="P50 of fetal haemoglobin: why HbF sits left of HbA"
     shortTitle="P50 of fetal haemoglobin"
-    description="Why fetal haemoglobin (HbF) has a lower P50 (~19 mmHg) than adult haemoglobin (~26.6 mmHg), the role of 2,3-DPG, and the placental gas-exchange consequences."
+    description="Why fetal haemoglobin has a lower P50 (~19 mmHg) than adult Hb (~26.6 mmHg), the role of 2,3-DPG, and the placental gas-exchange consequences."
     datePublished="2026-06-13"
     lede="P50 is the oxygen tension at which haemoglobin is 50% saturated. For adult haemoglobin (HbA) it is ~26.6 mmHg; for fetal haemoglobin (HbF) it is ~19 mmHg. The left shift reflects HbF's reduced binding of 2,3-diphosphoglycerate (2,3-DPG) and is essential for placental oxygen transfer."
     faqs={[

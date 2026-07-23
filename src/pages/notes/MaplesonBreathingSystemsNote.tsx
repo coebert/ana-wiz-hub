@@ -6,7 +6,7 @@ const MaplesonBreathingSystemsNote = () => (
     slug="mapleson-breathing-systems-explained"
     title="Mapleson breathing systems A to F: classification and fresh gas flow"
     shortTitle="Mapleson breathing systems"
-    description="The Mapleson A–F classification of semi-closed breathing systems. Component order, fresh gas flow requirements for spontaneous and controlled ventilation, and which system is used when."
+    description="Mapleson A–F classification of semi-closed breathing systems: component order, fresh gas flow for spontaneous and controlled ventilation, and when to use each."
     datePublished="2026-06-18"
     examTags={["primary"]}
     lede="The Mapleson classification (1954) describes five — later six — semi-closed breathing systems by the arrangement of fresh gas inlet, reservoir bag, corrugated tubing and expiratory valve. The efficiency of each depends on the mode of ventilation."
