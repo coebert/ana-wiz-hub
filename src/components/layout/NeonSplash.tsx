@@ -195,7 +195,7 @@ const NeonSplash = () => {
             real landing brain. */}
         <img
           src={brainLogo}
-          alt=""
+          alt="AnaesthesiaCore brain logo"
           width={288}
           height={288}
           className={`relative ${rect ? "w-full h-full" : "h-52 w-52 md:h-72 md:w-72"} ${leaving ? "" : "animate-neon-flicker"}`}
