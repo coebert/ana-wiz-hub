@@ -120,6 +120,10 @@ const RoboticSurgeryAnaesthesiaNote = () => (
         every position change.
       </li>
     </ul>
+
+    <RoboticVentilationStrategyDiagram />
+    <CO2AbsorptionDiagram />
+
     <h3>Cardiovascular</h3>
     <ul>
       <li>
