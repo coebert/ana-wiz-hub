@@ -186,7 +186,7 @@ const TCISimulatorDiagram = () => {
               className={`px-2.5 py-1 rounded-md text-xs font-medium border transition-all ${
                 showMarsh
                   ? "border-[hsl(200,65%,50%)] text-[hsl(200,65%,50%)] bg-[hsl(200,65%,50%)]/10"
-                  : "border-border text-muted-foreground/40"
+                  : "border-border text-muted-foreground/70"
               }`}
             >
               Marsh
@@ -196,7 +196,7 @@ const TCISimulatorDiagram = () => {
               className={`px-2.5 py-1 rounded-md text-xs font-medium border transition-all ${
                 showSchnider
                   ? "border-[hsl(25,70%,55%)] text-[hsl(25,70%,55%)] bg-[hsl(25,70%,55%)]/10"
-                  : "border-border text-muted-foreground/40"
+                  : "border-border text-muted-foreground/70"
               }`}
             >
               Schnider

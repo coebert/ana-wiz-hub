@@ -234,7 +234,7 @@ const ProgressTracker = () => {
                         {done ? (
                           <CheckCircle2 className="h-4 w-4 text-accent shrink-0" />
                         ) : (
-                          <Circle className="h-4 w-4 text-muted-foreground/40 shrink-0" />
+                          <Circle className="h-4 w-4 text-muted-foreground/70 shrink-0" />
                         )}
                         <span
                           className={`text-sm flex-1 min-w-0 truncate ${

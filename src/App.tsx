@@ -61,6 +61,7 @@ const SevoVsDesfluraneNote = lazy(() => import("./pages/notes/SevoVsDesfluraneNo
 const BainCircuitNote = lazy(() => import("./pages/notes/BainCircuitNote"));
 const RotemTegInterpretationNote = lazy(() => import("./pages/notes/RotemTegInterpretationNote"));
 const RapidSequenceInductionNote = lazy(() => import("./pages/notes/RapidSequenceInductionNote"));
+const RoboticSurgeryAnaesthesiaNote = lazy(() => import("./pages/notes/RoboticSurgeryAnaesthesiaNote"));
 
 
 // Lazy load section pages
@@ -144,6 +145,7 @@ const App = () => (
           <Route path="/notes/bain-circuit-fresh-gas-flow" element={<BainCircuitNote />} />
           <Route path="/notes/rotem-teg-interpretation" element={<RotemTegInterpretationNote />} />
           <Route path="/notes/rapid-sequence-induction-drug-doses" element={<RapidSequenceInductionNote />} />
+          <Route path="/notes/anaesthesia-for-robotic-surgery-guide" element={<RoboticSurgeryAnaesthesiaNote />} />
 
           <Route path="/physics" element={<PhysicsSection />} />
           <Route path="/physiology" element={<PhysiologySection />} />

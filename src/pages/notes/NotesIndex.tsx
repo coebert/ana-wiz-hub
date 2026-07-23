@@ -22,6 +22,14 @@ const EXAM_LABEL: Record<ExamTag, string> = {
 
 const notes: NoteEntry[] = [
   {
+    slug: "anaesthesia-for-robotic-surgery-guide",
+    title: "Anaesthesia for robotic surgery: a practical guide",
+    description:
+      "Positioning, pneumoperitoneum and steep Trendelenburg physiology, ventilation, fluids, and emergency undocking for robot-assisted cases.",
+    tag: "Clinical",
+    examTags: ["final", "fficm"],
+  },
+  {
     slug: "rapid-sequence-induction-drug-doses",
     title: "Rapid sequence induction: drugs and doses",
     description:
