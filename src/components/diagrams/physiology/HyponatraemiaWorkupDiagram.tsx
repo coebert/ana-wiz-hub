@@ -396,7 +396,7 @@ const Chip = ({
       <span
     className={`px-2 py-1 rounded-md border text-[10px] font-semibold transition-all ${
       disabled
-        ? "border-border/40 text-muted-foreground/40 bg-transparent"
+        ? "border-border/40 text-muted-foreground/70 bg-transparent"
         : value
         ? "border-primary bg-primary/10 text-primary"
         : active
@@ -408,6 +408,6 @@ const Chip = ({
   </span>
   );
 
-const Arrow = () => <span className="text-muted-foreground/50 text-xs">→</span>;
+const Arrow = () => <span className="text-muted-foreground/75 text-xs">→</span>;
 
 export default HyponatraemiaWorkupDiagram;

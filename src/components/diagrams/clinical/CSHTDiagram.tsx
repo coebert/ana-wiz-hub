@@ -140,7 +140,7 @@ function CSHTDiagram() {
               className={`px-2.5 py-1 rounded-md text-xs font-medium border transition-all ${
                 visible
                   ? "bg-opacity-10"
-                  : "border-border text-muted-foreground/40"
+                  : "border-border text-muted-foreground/70"
               }`}
               style={visible ? {
                 borderColor: drug.color,

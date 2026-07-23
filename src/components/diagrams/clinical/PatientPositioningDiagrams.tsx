@@ -796,7 +796,7 @@ const FrameCard = ({
               Specific positioning issues
             </dt>
             <dd>
-              <ul className="list-disc pl-4 space-y-0.5 text-muted-foreground marker:text-muted-foreground/50">
+              <ul className="list-disc pl-4 space-y-0.5 text-muted-foreground marker:text-muted-foreground/75">
                 {issues.map((it) => (
                   <li key={it}>{it}</li>
                 ))}

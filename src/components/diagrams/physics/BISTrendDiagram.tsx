@@ -331,7 +331,7 @@ const BISTrendDiagram = () => {
             <div className="p-3 rounded-lg border border-border bg-secondary/20 max-h-32 overflow-y-auto">
               <p className="font-semibold text-foreground text-xs mb-1.5">Event Log</p>
               {eventMarkers.length === 0 ? (
-                <p className="text-xs text-muted-foreground/50 italic">Press Start then trigger events…</p>
+                <p className="text-xs text-muted-foreground/75 italic">Press Start then trigger events…</p>
               ) : (
                 <div className="space-y-1">
                   {eventMarkers.slice().reverse().map((m, i) => (

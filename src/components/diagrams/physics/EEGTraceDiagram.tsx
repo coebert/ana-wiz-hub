@@ -234,7 +234,7 @@ const EEGTraceDiagram = () => {
           <div className="flex justify-between mt-1 px-14">
             {stages.map((s, i) => (
               <button key={i} onClick={() => setStageIdx(i)}
-                className={`text-[9px] leading-tight text-center max-w-[60px] transition-colors ${i === stageIdx ? "text-foreground font-semibold" : "text-muted-foreground/50 hover:text-muted-foreground"}`}>
+                className={`text-[9px] leading-tight text-center max-w-[60px] transition-colors ${i === stageIdx ? "text-foreground font-semibold" : "text-muted-foreground/75 hover:text-muted-foreground"}`}>
                 {s.label}
               </button>
             ))}

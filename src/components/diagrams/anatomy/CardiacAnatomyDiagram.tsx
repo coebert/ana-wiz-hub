@@ -1047,43 +1047,43 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
 
           {/* Interior labels */}
           <Html position={[0, 0.75, 0.1]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">fossa ovalis</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">fossa ovalis</span>
           </Html>
           <Html position={[0, -0.15, 0.35]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">IVS</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">IVS</span>
           </Html>
           <Html position={[-0.35, 0.05, 0.25]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">LV wall 12–15mm</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">LV wall 12–15mm</span>
           </Html>
           <Html position={[0.4, 0.05, 0.35]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">RV wall 3–5mm</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">RV wall 3–5mm</span>
           </Html>
           <Html position={[0.3, -0.38, 0.2]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">moderator band</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">moderator band</span>
           </Html>
           <Html position={[-0.4, -0.45, 0.1]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">AL papillary</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">AL papillary</span>
           </Html>
           <Html position={[-0.2, -0.45, -0.15]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">PM papillary</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">PM papillary</span>
           </Html>
           <Html position={[0.58, 0.75, 0.05]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">crista terminalis</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">crista terminalis</span>
           </Html>
           <Html position={[0.02, 1.42, 0.2]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">lig. arteriosum</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">lig. arteriosum</span>
           </Html>
           <Html position={[0.16, 0.72, 0.3]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">RVOT</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">RVOT</span>
           </Html>
           <Html position={[0.5, 0.35, -0.2]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">Eustachian v.</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">Eustachian v.</span>
           </Html>
           <Html position={[0.02, 0.38, 0.05]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">membranous IVS</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">membranous IVS</span>
           </Html>
           <Html position={[0.3, 0.55, -0.25]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">Thebesian v.</span>
+            <span className="text-[7px] text-muted-foreground/75 select-none whitespace-nowrap">Thebesian v.</span>
           </Html>
         </group>
       )}
@@ -1104,10 +1104,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
 
       {/* Vessel labels */}
       <Html position={[0, 1.6, 0]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[8px] text-muted-foreground/40 font-semibold select-none">Aorta</span>
+        <span className="text-[8px] text-muted-foreground/70 font-semibold select-none">Aorta</span>
       </Html>
       <Html position={[-0.05, 1.32, 0.4]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[8px] text-muted-foreground/40 font-semibold select-none">PA</span>
+        <span className="text-[8px] text-muted-foreground/70 font-semibold select-none">PA</span>
       </Html>
       <Html position={[0.55, 1.5, -0.05]} center style={{ pointerEvents: "none" }}>
         <span className="text-[7px] text-muted-foreground/30 select-none">SVC</span>

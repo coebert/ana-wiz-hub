@@ -33,7 +33,7 @@ const Stars = ({
           <Star
             style={{ width: size, height: size }}
             className={
-              filled ? "fill-primary text-primary" : "text-muted-foreground/40"
+              filled ? "fill-primary text-primary" : "text-muted-foreground/70"
             }
           />
         );

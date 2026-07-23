@@ -2018,7 +2018,7 @@ const AdminDashboard = () => {
                     <tbody>
                       {analytics.retentionCohorts.map(c => {
                         const cell = (pct: number | null, count: number | null) => {
-                          if (pct === null) return <span className="text-muted-foreground/50">—</span>;
+                          if (pct === null) return <span className="text-muted-foreground/75">—</span>;
                           // Heatmap: 0 → muted, 100 → primary
                           const alpha = Math.max(0.08, Math.min(0.85, pct / 100));
                           return (
