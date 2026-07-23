@@ -147,6 +147,9 @@ const RoboticSurgeryAnaesthesiaNote = () => (
         insufflation from vagal stretch) are common.
       </li>
     </ul>
+
+    <RoboticHaemodynamicsDiagram />
+
     <h3>Cerebral, ocular and splanchnic</h3>
     <ul>
       <li>
