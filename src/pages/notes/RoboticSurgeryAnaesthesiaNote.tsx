@@ -59,6 +59,9 @@ const RoboticSurgeryAnaesthesiaNote = () => (
       well drilled.
     </p>
 
+    <PneumoperitoneumTrendelenburgDiagram />
+
+
     <h2>FRCA curriculum mapping</h2>
     <p>
       This guide is written against the RCoA 2021 curriculum and the
