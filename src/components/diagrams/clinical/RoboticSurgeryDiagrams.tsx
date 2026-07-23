@@ -43,8 +43,8 @@ export const RoboticVentilationStrategyDiagram = () => {
 
   return (
     <DiagramFigure
-      title="Ventilation strategy in steep Trendelenburg"
-      caption={cfg.caption}
+      id="robotic-ventilation" title="Ventilation strategy in steep Trendelenburg" showCaption
+      description={cfg.caption}
     >
       <div className="flex flex-wrap gap-2 mb-3">
         {(["baseline", "pneumo", "protective"] as const).map((m) => (
@@ -155,8 +155,8 @@ export const CO2AbsorptionDiagram = () => {
 
   return (
     <DiagramFigure
-      title="CO₂ pneumoperitoneum — absorption kinetics"
-      caption="PaCO₂ (red) rises exponentially over ~15–20 min then plateaus; minute ventilation (blue) must rise 20–30% to compensate."
+      id="robotic-co2" title="CO₂ pneumoperitoneum — absorption kinetics" showCaption
+      description="PaCO₂ (red) rises exponentially over ~15–20 min then plateaus; minute ventilation (blue) must rise 20–30% to compensate."
     >
       <svg viewBox="0 0 520 280" className="w-full h-auto" role="img" aria-label="CO2 absorption curve over time">
         {/* Axes */}
@@ -232,8 +232,8 @@ export const RoboticHaemodynamicsDiagram = () => {
 
   return (
     <DiagramFigure
-      title="Haemodynamic response — insufflation & steep Trendelenburg"
-      caption={`Phase ${i + 1}/4 · ${p.label}. CVP is misleading here — hydrostatic transmission, not true preload.`}
+      id="robotic-haemo" title="Haemodynamic response — insufflation &amp; steep Trendelenburg" showCaption
+      description={`Phase ${i + 1}/4 · ${p.label}. CVP is misleading here — hydrostatic transmission, not true preload.`}
     >
       <svg viewBox="0 0 520 260" className="w-full h-auto" role="img" aria-label="Haemodynamic bar chart across phases">
         {/* Phase indicator */}
