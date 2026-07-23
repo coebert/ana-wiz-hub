@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
+import PneumoperitoneumTrendelenburgDiagram from "@/components/diagrams/clinical/PneumoperitoneumTrendelenburgDiagram";
+import {
+  RoboticVentilationStrategyDiagram,
+  CO2AbsorptionDiagram,
+  RoboticHaemodynamicsDiagram,
+} from "@/components/diagrams/clinical/RoboticSurgeryDiagrams";
 
 const RoboticSurgeryAnaesthesiaNote = () => (
   <NoteLayout
@@ -52,6 +58,9 @@ const RoboticSurgeryAnaesthesiaNote = () => (
       can move the patient — a manoeuvre that takes 30–60 seconds even when
       well drilled.
     </p>
+
+    <PneumoperitoneumTrendelenburgDiagram />
+
 
     <h2>FRCA curriculum mapping</h2>
     <p>
@@ -111,6 +120,10 @@ const RoboticSurgeryAnaesthesiaNote = () => (
         every position change.
       </li>
     </ul>
+
+    <RoboticVentilationStrategyDiagram />
+    <CO2AbsorptionDiagram />
+
     <h3>Cardiovascular</h3>
     <ul>
       <li>
@@ -134,6 +147,9 @@ const RoboticSurgeryAnaesthesiaNote = () => (
         insufflation from vagal stretch) are common.
       </li>
     </ul>
+
+    <RoboticHaemodynamicsDiagram />
+
     <h3>Cerebral, ocular and splanchnic</h3>
     <ul>
       <li>
