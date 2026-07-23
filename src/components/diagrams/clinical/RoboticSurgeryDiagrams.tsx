@@ -232,7 +232,7 @@ export const RoboticHaemodynamicsDiagram = () => {
 
   return (
     <DiagramFigure
-      id="robotic-haemo" title="Haemodynamic response — insufflation &amp; steep Trendelenburg" showCaption
+      id="robotic-haemo" title="Haemodynamic response — insufflation and steep Trendelenburg" showCaption
       description={`Phase ${i + 1}/4 · ${p.label}. CVP is misleading here — hydrostatic transmission, not true preload.`}
     >
       <svg viewBox="0 0 520 260" className="w-full h-auto" role="img" aria-label="Haemodynamic bar chart across phases">
