@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
 import { NoteLayout } from "./NoteLayout";
+import PneumoperitoneumTrendelenburgDiagram from "@/components/diagrams/clinical/PneumoperitoneumTrendelenburgDiagram";
+import {
+  RoboticVentilationStrategyDiagram,
+  CO2AbsorptionDiagram,
+  RoboticHaemodynamicsDiagram,
+} from "@/components/diagrams/clinical/RoboticSurgeryDiagrams";
 
 const RoboticSurgeryAnaesthesiaNote = () => (
   <NoteLayout
