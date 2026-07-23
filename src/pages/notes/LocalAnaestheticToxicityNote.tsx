@@ -6,7 +6,7 @@ const LocalAnaestheticToxicityNote = () => (
     slug="local-anaesthetic-systemic-toxicity-management"
     title="Local anaesthetic systemic toxicity (LAST): recognition and management"
     shortTitle="LAST management"
-    description="Local anaesthetic systemic toxicity (LAST) — recognition, AAGBI Safety Guideline management, Intralipid 20% dosing, and prevention strategies."
+    description="Local anaesthetic systemic toxicity (LAST): recognition, AAGBI Safety Guideline management, Intralipid 20% dosing, and prevention strategies."
     datePublished="2026-06-18"
     examTags={["primary", "final"]}
     lede="Local anaesthetic systemic toxicity (LAST) is a life-threatening complication of regional anaesthesia: CNS excitation followed by cardiovascular collapse from sodium-channel block in the myocardium. The 2010/2021 AAGBI Safety Guideline mandates immediate Intralipid 20% as part of the resuscitation."

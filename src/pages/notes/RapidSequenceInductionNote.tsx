@@ -6,7 +6,7 @@ const RapidSequenceInductionNote = () => (
     slug="rapid-sequence-induction-drug-doses"
     title="Rapid sequence induction: drugs, doses and modifications"
     shortTitle="RSI drugs and doses"
-    description="Rapid sequence induction (RSI) — adult and paediatric drug doses, modifications for haemodynamic instability, sepsis, head injury and obstetrics, and the modern role of cricoid pressure."
+    description="Rapid sequence induction: adult and paediatric drug doses, modifications for instability, sepsis, head injury and obstetrics, and modern cricoid pressure."
     datePublished="2026-06-18"
     examTags={["primary", "final"]}
     lede="Rapid sequence induction is the standard technique for protecting the airway in any patient at increased aspiration risk: pre-oxygenation, a rapid-onset induction agent, a rapid-onset neuromuscular blocker, no positive-pressure ventilation until the tube is in place, and confirmation with capnography."

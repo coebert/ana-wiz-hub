@@ -6,7 +6,7 @@ const DasDifficultAirwayNote = () => (
     slug="das-difficult-airway-algorithm"
     title="DAS unanticipated difficult intubation algorithm (Plans A–D)"
     shortTitle="DAS difficult airway algorithm"
-    description="The Difficult Airway Society 2015 unanticipated difficult intubation algorithm in adults: Plans A, B, C and D, the criteria for each transition, and front-of-neck access drill."
+    description="DAS 2015 unanticipated difficult intubation algorithm in adults: Plans A, B, C and D, transition criteria, and the front-of-neck access drill."
     datePublished="2026-06-18"
     examTags={["final", "fficm"]}
     lede="The Difficult Airway Society (DAS) 2015 guideline structures unanticipated difficult intubation in adults into four sequential plans. The key principle is to declare failure early, limit the number of attempts at each stage, and progress to a surgical airway before hypoxia drives haemodynamic collapse."

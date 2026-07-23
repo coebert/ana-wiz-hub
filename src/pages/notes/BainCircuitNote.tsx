@@ -6,7 +6,7 @@ const BainCircuitNote = () => (
     slug="bain-circuit-fresh-gas-flow"
     title="Bain circuit: fresh gas flow for spontaneous and controlled ventilation"
     shortTitle="Bain circuit fresh gas flow"
-    description="The Bain is a co-axial Mapleson D breathing system. Fresh gas flow requirements for spontaneous and controlled ventilation, the Pethick test, and how to scavenge safely."
+    description="The Bain is a co-axial Mapleson D. Fresh gas flow for spontaneous and controlled ventilation, the Pethick test, and safe scavenging."
     datePublished="2026-06-18"
     examTags={["primary"]}
     lede="The Bain is a co-axial Mapleson D circuit: fresh gas runs in an inner tube to the patient end, expired gas returns down the outer tube to the reservoir bag and APL valve at the machine end. It is light, easy to scavenge and well-suited to head-and-neck surgery — provided fresh gas flow is set correctly for the mode of ventilation."

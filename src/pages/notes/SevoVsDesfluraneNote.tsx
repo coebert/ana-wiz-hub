@@ -6,7 +6,7 @@ const SevoVsDesfluraneNote = () => (
     slug="sevoflurane-vs-desflurane-recovery"
     title="Sevoflurane vs desflurane: recovery, kinetics and clinical choice"
     shortTitle="Sevoflurane vs desflurane"
-    description="Sevoflurane vs desflurane head-to-head: blood–gas partition coefficients, emergence times, side effects, environmental impact, and when each is the better choice."
+    description="Sevoflurane vs desflurane: blood–gas partition coefficients, emergence times, side effects, environmental impact, and when each is the better choice."
     datePublished="2026-06-18"
     examTags={["primary", "final"]}
     lede="Desflurane has a lower blood–gas partition coefficient (0.42 vs 0.65) than sevoflurane and therefore the faster emergence, but it costs ~20× more in CO₂-equivalent greenhouse impact and is being deselected across the UK. Knowing the pharmacokinetic, clinical and environmental trade-offs explains why."

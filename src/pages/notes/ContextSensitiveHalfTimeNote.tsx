@@ -6,7 +6,7 @@ const ContextSensitiveHalfTimeNote = () => (
     slug="context-sensitive-half-time-propofol-vs-remifentanil"
     title="Context-sensitive half-time: propofol vs remifentanil"
     shortTitle="Context-sensitive half-time"
-    description="What context-sensitive half-time means, why propofol's rises modestly with infusion duration and remifentanil's stays flat at ~3–4 minutes, and how to use that difference in TIVA planning."
+    description="What context-sensitive half-time means, why propofol's rises with infusion duration while remifentanil's stays ~3–4 min, and how to use it in TIVA planning."
     datePublished="2026-06-13"
     lede="Context-sensitive half-time (CSHT) is the time for plasma drug concentration to fall by 50% once a steady-state infusion is stopped. It depends on how long the infusion has been running because peripheral compartments fill up and then re-release drug back into plasma. CSHT — not elimination half-life — is what predicts emergence."
     faqs={[

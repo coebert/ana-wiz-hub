@@ -6,7 +6,7 @@ const RotemTegInterpretationNote = () => (
     slug="rotem-teg-interpretation"
     title="ROTEM/TEG interpretation in major haemorrhage"
     shortTitle="ROTEM/TEG interpretation"
-    description="Viscoelastic testing in major haemorrhage: which trace abnormality means which product. EXTEM, INTEM, FIBTEM and APTEM interpretation, with NICE/AAGBI 2018 thresholds."
+    description="Viscoelastic testing in major haemorrhage: which trace abnormality means which product. EXTEM, INTEM, FIBTEM and APTEM with NICE/AAGBI 2018 thresholds."
     datePublished="2026-06-18"
     examTags={["final", "fficm"]}
     lede="ROTEM (and the very similar TEG) measure whole-blood clot strength in real time. In major haemorrhage they cut blood-product wastage and inappropriate FFP transfusion by directing fibrinogen, platelets, FFP or tranexamic acid to the patients who actually need them."
