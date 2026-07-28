@@ -60,9 +60,20 @@ function all(regex, str) {
   return [...str.matchAll(regex)];
 }
 
+function decodeEntities(s) {
+  return s
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)));
+}
+
 function attr(tag, name) {
   const m = tag.match(new RegExp(`${name}\\s*=\\s*"([^"]*)"`, "i"));
-  return m ? m[1] : null;
+  return m ? decodeEntities(m[1]) : null;
 }
 
 function checkRoute(route, html) {
