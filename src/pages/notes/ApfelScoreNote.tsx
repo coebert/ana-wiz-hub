@@ -4,7 +4,7 @@ import { NoteLayout } from "./NoteLayout";
 const ApfelScoreNote = () => (
   <NoteLayout
     slug="apfel-score-ponv-risk"
-    title="Apfel score: predicting postoperative nausea and vomiting risk"
+    title="Apfel score: predicting PONV risk"
     shortTitle="Apfel score for PONV"
     description="The four-item Apfel score predicts postoperative nausea and vomiting risk: variables, the 10/20/40/60/80% gradient, and multimodal antiemetic prophylaxis."
     datePublished="2026-06-18"

@@ -4,7 +4,7 @@ import { NoteLayout } from "./NoteLayout";
 const SevoVsDesfluraneNote = () => (
   <NoteLayout
     slug="sevoflurane-vs-desflurane-recovery"
-    title="Sevoflurane vs desflurane: recovery, kinetics and clinical choice"
+    title="Sevoflurane vs desflurane: recovery and choice"
     shortTitle="Sevoflurane vs desflurane"
     description="Sevoflurane vs desflurane: blood–gas partition coefficients, emergence times, side effects, environmental impact, and when each is the better choice."
     datePublished="2026-06-18"
