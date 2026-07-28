@@ -4,7 +4,7 @@ import { NoteLayout } from "./NoteLayout";
 const BainCircuitNote = () => (
   <NoteLayout
     slug="bain-circuit-fresh-gas-flow"
-    title="Bain circuit: fresh gas flow for spontaneous and controlled ventilation"
+    title="Bain circuit: fresh gas flow requirements"
     shortTitle="Bain circuit fresh gas flow"
     description="The Bain is a co-axial Mapleson D. Fresh gas flow for spontaneous and controlled ventilation, the Pethick test, and safe scavenging."
     datePublished="2026-06-18"

@@ -4,7 +4,7 @@ import { NoteLayout } from "./NoteLayout";
 const LocalAnaestheticToxicityNote = () => (
   <NoteLayout
     slug="local-anaesthetic-systemic-toxicity-management"
-    title="Local anaesthetic systemic toxicity (LAST): recognition and management"
+    title="Local anaesthetic systemic toxicity (LAST) management"
     shortTitle="LAST management"
     description="Local anaesthetic systemic toxicity (LAST): recognition, AAGBI Safety Guideline management, Intralipid 20% dosing, and prevention strategies."
     datePublished="2026-06-18"

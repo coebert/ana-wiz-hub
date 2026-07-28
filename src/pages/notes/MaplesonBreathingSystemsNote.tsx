@@ -4,7 +4,7 @@ import { NoteLayout } from "./NoteLayout";
 const MaplesonBreathingSystemsNote = () => (
   <NoteLayout
     slug="mapleson-breathing-systems-explained"
-    title="Mapleson breathing systems A to F: classification and fresh gas flow"
+    title="Mapleson breathing systems A–F explained"
     shortTitle="Mapleson breathing systems"
     description="Mapleson A–F classification of semi-closed breathing systems: component order, fresh gas flow for spontaneous and controlled ventilation, and when to use each."
     datePublished="2026-06-18"

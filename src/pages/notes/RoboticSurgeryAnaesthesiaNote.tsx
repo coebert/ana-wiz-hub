@@ -12,7 +12,7 @@ const RoboticSurgeryAnaesthesiaNote = () => (
     slug="anaesthesia-for-robotic-surgery-guide"
     title="Anaesthesia for robotic surgery: a practical guide"
     shortTitle="Anaesthesia for robotic surgery"
-    description="FRCA-mapped guide to anaesthesia for robotic surgery: physiology of steep Trendelenburg and CO₂ pneumoperitoneum, pharmacology, ventilation, fluids, positioning and emergency undocking."
+    description="FRCA-mapped guide to anaesthesia for robotic surgery: physiology of Trendelenburg and CO₂ pneumoperitoneum, ventilation, positioning and undocking."
     datePublished="2026-07-23"
     examTags={["final", "fficm"]}
     lede="Robot-assisted surgery — most commonly da Vinci robotic prostatectomy, hysterectomy and colorectal resections — combines CO₂ pneumoperitoneum, extreme patient positioning (often 30–45° steep Trendelenburg) and a docked robot that makes rapid access to the patient impossible. Safe anaesthesia hinges on anticipating the cardiorespiratory, cerebral, ocular and airway consequences before docking, because after docking almost every problem must be fixed with the patient still tilted and the robot still attached."

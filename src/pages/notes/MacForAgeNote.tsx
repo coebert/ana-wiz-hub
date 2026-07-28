@@ -4,7 +4,7 @@ import { NoteLayout } from "./NoteLayout";
 const MacForAgeNote = () => (
   <NoteLayout
     slug="mac-for-age-formula"
-    title="MAC for age: how minimum alveolar concentration changes with age"
+    title="MAC for age: how MAC changes with age"
     shortTitle="MAC for age formula"
     description="MAC falls predictably with age. The Mapleson age-adjustment formula, what MAC actually measures, and why it matters for elderly anaesthesia."
     datePublished="2026-06-18"
