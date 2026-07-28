@@ -17,7 +17,7 @@ const IntensiveCareSection = () => {
     <SectionLayout
       title="Intensive Care Medicine Explained"
       subtitle="Intensive care medicine explained — organ support, sepsis, ARDS, shock and neurocritical care for FFICM and FRCA trainees."
-      metaDescription="Intensive care medicine explained for FFICM and FRCA trainees: mechanical ventilation, sepsis, ARDS, shock, AKI, neurocritical care and organ support — concise notes, diagrams, MCQs and structured viva answers."
+      metaDescription="Intensive care for FFICM and FRCA: ventilation, sepsis, ARDS, shock, AKI, neurocritical care and organ support — concise notes and MCQs."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-icu"

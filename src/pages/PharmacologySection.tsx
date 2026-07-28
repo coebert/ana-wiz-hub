@@ -16,7 +16,7 @@ const PharmacologySection = () => {
     <SectionLayout
       title="Anaesthesia Pharmacology Explained"
       subtitle="Anaesthetic drugs explained — pharmacokinetics, pharmacodynamics, induction agents, opioids, neuromuscular blockers and inhalational agents for FRCA and FFICM."
-      metaDescription="Anaesthesia pharmacology explained for FRCA and FFICM exams: pharmacokinetics, pharmacodynamics, induction agents, opioids, neuromuscular blockers, local anaesthetics and inhalational agents — concise notes, diagrams, MCQs and viva practice."
+      metaDescription="Anaesthesia pharmacology for FRCA and FFICM: PK/PD, induction agents, opioids, NMBs, local and inhalational agents — concise notes and MCQs."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-pharmacology"

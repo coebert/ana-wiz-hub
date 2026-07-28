@@ -16,7 +16,7 @@ const PhysiologySection = () => {
     <SectionLayout
       title="Anaesthesia Physiology Explained"
       subtitle="Applied physiology for anaesthesia and intensive care — cardiovascular, respiratory, renal, neuro and endocrine systems for FRCA and FFICM."
-      metaDescription="Anaesthesia physiology explained for FRCA and FFICM: cardiovascular, respiratory, renal, neurological and endocrine systems applied to anaesthesia and intensive care — concise notes, diagrams, MCQs and viva practice."
+      metaDescription="Anaesthesia physiology for FRCA and FFICM: cardiovascular, respiratory, renal, neuro and endocrine systems — concise notes, diagrams and MCQs."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-physiology"
