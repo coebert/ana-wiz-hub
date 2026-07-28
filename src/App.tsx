@@ -147,6 +147,7 @@ const App = () => (
           <Route path="/notes/rotem-teg-interpretation" element={<RotemTegInterpretationNote />} />
           <Route path="/notes/rapid-sequence-induction-drug-doses" element={<RapidSequenceInductionNote />} />
           <Route path="/notes/anaesthesia-for-robotic-surgery-guide" element={<RoboticSurgeryAnaesthesiaNote />} />
+          <Route path="/notes/cardiac-output-formula" element={<CardiacOutputFormulaNote />} />
 
           <Route path="/physics" element={<PhysicsSection />} />
           <Route path="/physiology" element={<PhysiologySection />} />
