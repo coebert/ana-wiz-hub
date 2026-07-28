@@ -206,7 +206,41 @@ interface RouteSeo {
   description: string;
 }
 
-function seoFor(path: string): RouteSeo {
+/**
+ * Enforce the SEO checklist bounds (title ≤ 60, description 50–160). Truncates
+ * gracefully at word/sentence boundaries so the baked head always passes the
+ * strict CI check regardless of upstream copy drift.
+ */
+const TITLE_MAX = 60;
+const DESC_MIN = 50;
+const DESC_MAX = 160;
+
+function clampTitle(raw: string): string {
+  const t = raw.trim();
+  if (t.length <= TITLE_MAX) return t;
+  const cut = t.slice(0, TITLE_MAX).replace(/[\s\-–|:,;]+\S*$/, "").trim();
+  return (cut.length >= 20 ? cut : t.slice(0, TITLE_MAX).trim());
+}
+
+function clampDescription(raw: string, title: string): string {
+  let d = raw.trim();
+  if (d.length > DESC_MAX) {
+    const cut = d.slice(0, DESC_MAX).replace(/[\s.,;:–—-]+\S*$/, "").trim();
+    d = (cut.length >= 80 ? cut : d.slice(0, DESC_MAX).trim());
+  }
+  if (d.length < DESC_MIN) {
+    const pad = ` Exam-focused revision notes for FRCA Primary, Final and FFICM on AnaesthesiaCore.`;
+    d = `${title}: ${d}${pad}`.slice(0, DESC_MAX).trim();
+  }
+  return d;
+}
+
+function clampSeo(raw: RouteSeo): RouteSeo {
+  const title = clampTitle(raw.title);
+  return { title, description: clampDescription(raw.description, title) };
+}
+
+function seoForRaw(path: string): RouteSeo {
   if (CORE_SEO[path]) return CORE_SEO[path];
   if (SECTION_SEO[path]) return SECTION_SEO[path];
 
@@ -237,6 +271,10 @@ function seoFor(path: string): RouteSeo {
     title: fallbackTitle.length > 70 ? `${topicLabel} | ${sectionLabel} | FRCA` : fallbackTitle,
     description: fallbackDesc,
   };
+}
+
+function seoFor(path: string): RouteSeo {
+  return clampSeo(seoForRaw(path));
 }
 
 // ---------- head patching ----------
