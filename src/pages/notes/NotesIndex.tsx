@@ -22,6 +22,14 @@ const EXAM_LABEL: Record<ExamTag, string> = {
 
 const notes: NoteEntry[] = [
   {
+    slug: "cardiac-output-formula",
+    title: "Cardiac output formula: Fick, thermodilution and CO = SV × HR",
+    description:
+      "The three ways to derive cardiac output: SV × HR at the bedside, Fick's V̇O₂ / (CaO₂ − CvO₂), and the Stewart–Hamilton thermodilution equation.",
+    tag: "Physiology",
+    examTags: ["primary", "final", "fficm"],
+  },
+  {
     slug: "anaesthesia-for-robotic-surgery-guide",
     title: "Anaesthesia for robotic surgery: a practical guide",
     description:
