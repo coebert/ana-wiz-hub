@@ -60,9 +60,20 @@ function all(regex, str) {
   return [...str.matchAll(regex)];
 }
 
+function decodeEntities(s) {
+  return s
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)));
+}
+
 function attr(tag, name) {
   const m = tag.match(new RegExp(`${name}\\s*=\\s*"([^"]*)"`, "i"));
-  return m ? m[1] : null;
+  return m ? decodeEntities(m[1]) : null;
 }
 
 function checkRoute(route, html) {
@@ -73,7 +84,7 @@ function checkRoute(route, html) {
   const titles = all(/<title[^>]*>([^<]*)<\/title>/gi, head);
   if (titles.length === 0) errors.push("missing <title>");
   else if (titles.length > 1) errors.push(`duplicate <title> (${titles.length})`);
-  const title = titles[0]?.[1]?.trim() ?? "";
+  const title = decodeEntities(titles[0]?.[1]?.trim() ?? "");
   if (title && (title.length < TITLE_MIN || title.length > TITLE_MAX))
     errors.push(`title length ${title.length} outside ${TITLE_MIN}–${TITLE_MAX}: "${title}"`);
   if (LOVABLE_DEFAULTS.includes(title))
