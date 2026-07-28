@@ -62,6 +62,7 @@ const BainCircuitNote = lazy(() => import("./pages/notes/BainCircuitNote"));
 const RotemTegInterpretationNote = lazy(() => import("./pages/notes/RotemTegInterpretationNote"));
 const RapidSequenceInductionNote = lazy(() => import("./pages/notes/RapidSequenceInductionNote"));
 const RoboticSurgeryAnaesthesiaNote = lazy(() => import("./pages/notes/RoboticSurgeryAnaesthesiaNote"));
+const CardiacOutputFormulaNote = lazy(() => import("./pages/notes/CardiacOutputFormulaNote"));
 
 
 // Lazy load section pages
