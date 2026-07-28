@@ -1,0 +1,27 @@
+name: SEO checklist
+
+# Runs the automated SEO checklist against the production build to catch
+# long titles / descriptions, missing OG tags, and broken canonicals
+# before deployment. Mirrors what `npm run build` triggers locally via
+# the `postbuild` hook, but wired as an explicit CI gate.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  seo-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - name: Build (runs prerender + strict SEO check via postbuild)
+        run: npm run build
+      - name: Re-run SEO checklist explicitly (strict)
+        run: npm run check:seo-meta:strict
