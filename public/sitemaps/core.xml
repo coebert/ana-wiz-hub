@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://anaesthesiacore.app/</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/revise</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -104,13 +104,13 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/frca-primary</loc>
-    <lastmod>2026-07-06</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/frca-final</loc>
-    <lastmod>2026-07-06</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -146,19 +146,19 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/mac-for-age-formula</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/apfel-score-ponv-risk</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/mapleson-breathing-systems-explained</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -170,7 +170,7 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/local-anaesthetic-systemic-toxicity-management</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -182,13 +182,13 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/sevoflurane-vs-desflurane-recovery</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/bain-circuit-fresh-gas-flow</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -206,7 +206,7 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/notes/anaesthesia-for-robotic-surgery-guide</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
