@@ -17,7 +17,7 @@ const PhysicsSection = () => {
     <SectionLayout
       title="Anaesthesia Physics Explained"
       subtitle="Anaesthesia physics explained for FRCA and FFICM — gas laws, flow, pressure, electrical safety and monitoring equipment, with diagrams and viva-ready answers."
-      metaDescription="Anaesthesia physics explained for FRCA and FFICM exams: gas laws, flow and pressure measurement, electrical safety, pulse oximetry, capnography, lasers and temperature monitoring — concise notes with diagrams, MCQs and viva practice."
+      metaDescription="Anaesthesia physics for FRCA and FFICM: gas laws, flow, pressure, electrical safety, pulse oximetry and capnography — notes, diagrams and MCQs."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-physics"

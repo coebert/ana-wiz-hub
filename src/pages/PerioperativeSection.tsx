@@ -17,7 +17,7 @@ const PerioperativeSection = () => {
     <SectionLayout
       title="Perioperative Medicine Explained"
       subtitle="Perioperative medicine explained — preoperative assessment, risk stratification, enhanced recovery and postoperative care for FRCA and FFICM."
-      metaDescription="Perioperative medicine explained for FRCA and FFICM exams: preoperative assessment, cardiac and respiratory risk stratification, enhanced recovery (ERAS), postoperative care and frailty — concise notes, MCQs and viva practice."
+      metaDescription="Perioperative medicine for FRCA and FFICM: preop assessment, cardiac and respiratory risk, ERAS, postoperative care and frailty — notes and MCQs."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-perioperative"

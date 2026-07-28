@@ -20,7 +20,7 @@ const ClinicalSection = () => {
     <SectionLayout
       title="Clinical Anaesthesia Explained"
       subtitle="Subspecialty anaesthesia explained — obstetric, paediatric, neuro, cardiac, regional and trauma anaesthesia for FRCA and FFICM."
-      metaDescription="Clinical anaesthesia explained for FRCA and FFICM exams: obstetric, paediatric, neuro, cardiac, regional, day-case and trauma anaesthesia — concise revision notes, diagrams, MCQs and structured viva answers."
+      metaDescription="Clinical anaesthesia for FRCA and FFICM: obstetric, paediatric, neuro, cardiac, regional, day-case and trauma — concise notes, diagrams and MCQs."
       backPath="/revise"
       backLabel="Core Disciplines"
       accentColor="text-clinical"
