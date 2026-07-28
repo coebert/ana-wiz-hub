@@ -84,7 +84,7 @@ function checkRoute(route, html) {
   const titles = all(/<title[^>]*>([^<]*)<\/title>/gi, head);
   if (titles.length === 0) errors.push("missing <title>");
   else if (titles.length > 1) errors.push(`duplicate <title> (${titles.length})`);
-  const title = titles[0]?.[1]?.trim() ?? "";
+  const title = decodeEntities(titles[0]?.[1]?.trim() ?? "");
   if (title && (title.length < TITLE_MIN || title.length > TITLE_MAX))
     errors.push(`title length ${title.length} outside ${TITLE_MIN}–${TITLE_MAX}: "${title}"`);
   if (LOVABLE_DEFAULTS.includes(title))
