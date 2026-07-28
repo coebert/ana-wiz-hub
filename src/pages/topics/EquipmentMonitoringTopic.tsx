@@ -501,7 +501,7 @@ const EquipmentMonitoringTopic = () => {
               {historicVentilators.map((v) => (
                 <div key={v.name} className="p-4 rounded-xl border border-border bg-card">
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <img src={v.image} alt={v.name} loading="lazy" width={512} height={512} className="w-full sm:w-32 h-32 object-contain rounded-lg bg-white flex-shrink-0" />
+                    <img src={v.image} alt={`${v.name} — ${v.era} ${v.type} anaesthesia ventilator`} loading="lazy" width={512} height={512} className="w-full sm:w-32 h-32 object-contain rounded-lg bg-white flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 mb-1">
                         <h4 className="font-bold text-foreground">{v.name}</h4>
@@ -530,7 +530,7 @@ const EquipmentMonitoringTopic = () => {
               {modernVentilators.map((v) => (
                 <div key={v.name} className="p-4 rounded-xl border border-border bg-card">
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <img src={v.image} alt={v.name} loading="lazy" width={512} height={512} className="w-full sm:w-32 h-32 object-contain rounded-lg bg-white flex-shrink-0" />
+                    <img src={v.image} alt={`${v.name} — ${v.setting} ${v.type} ventilator`} loading="lazy" width={512} height={512} className="w-full sm:w-32 h-32 object-contain rounded-lg bg-white flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 mb-1">
                         <h4 className="font-bold text-foreground">{v.name}</h4>

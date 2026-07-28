@@ -32,7 +32,10 @@ const SECTION_LABELS: Record<string, string> = {
  */
 export function buildPageTitle(title: string): string {
   const suffix = ` – ${SITE_NAME}`;
-  return title.length + suffix.length > 60 ? title : `${title}${suffix}`;
+  const withSuffix = `${title}${suffix}`;
+  if (withSuffix.length <= 60) return withSuffix;
+  if (title.length <= 60) return title;
+  return `${title.slice(0, 59).trimEnd()}…`;
 }
 
 /**
