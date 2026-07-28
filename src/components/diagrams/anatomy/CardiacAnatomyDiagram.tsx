@@ -1110,10 +1110,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
         <span className="text-[8px] text-muted-foreground/70 font-semibold select-none">PA</span>
       </Html>
       <Html position={[0.55, 1.5, -0.05]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[7px] text-muted-foreground/30 select-none">SVC</span>
+        <span className="text-[7px] text-muted-foreground/70 select-none">SVC</span>
       </Html>
       <Html position={[0.52, -0.2, -0.25]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[7px] text-muted-foreground/30 select-none">IVC</span>
+        <span className="text-[7px] text-muted-foreground/70 select-none">IVC</span>
       </Html>
     </group>
   );
