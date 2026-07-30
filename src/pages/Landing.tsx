@@ -147,7 +147,18 @@ const Landing = () => {
           content="Master anaesthesia and intensive care with interactive diagrams, quizzes, and exam-focused summaries. Mapped to FRCA & FFICM curricula."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="AnaesthesiaCore – FRCA & FFICM Revision" />
+        <meta
+          property="og:description"
+          content="Interactive diagrams, quizzes and exam-focused summaries for anaesthesia and intensive care, mapped to the FRCA and FFICM curricula."
+        />
         <meta property="og:url" content="https://anaesthesiacore.app/" />
+        <meta name="twitter:title" content="AnaesthesiaCore – FRCA & FFICM Revision" />
+        <meta
+          name="twitter:description"
+          content="Interactive diagrams, quizzes and exam-focused summaries for anaesthesia and intensive care, mapped to the FRCA and FFICM curricula."
+        />
       </Helmet>
 
       {/* Hero — split editorial layout, matches /revise */}

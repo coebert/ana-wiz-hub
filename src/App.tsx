@@ -63,6 +63,7 @@ const RotemTegInterpretationNote = lazy(() => import("./pages/notes/RotemTegInte
 const RapidSequenceInductionNote = lazy(() => import("./pages/notes/RapidSequenceInductionNote"));
 const RoboticSurgeryAnaesthesiaNote = lazy(() => import("./pages/notes/RoboticSurgeryAnaesthesiaNote"));
 const CardiacOutputFormulaNote = lazy(() => import("./pages/notes/CardiacOutputFormulaNote"));
+const PaediatricMaintenanceFluidsNote = lazy(() => import("./pages/notes/PaediatricMaintenanceFluidsNote"));
 
 
 // Lazy load section pages
@@ -148,6 +149,7 @@ const App = () => (
           <Route path="/notes/rapid-sequence-induction-drug-doses" element={<RapidSequenceInductionNote />} />
           <Route path="/notes/anaesthesia-for-robotic-surgery-guide" element={<RoboticSurgeryAnaesthesiaNote />} />
           <Route path="/notes/cardiac-output-formula" element={<CardiacOutputFormulaNote />} />
+          <Route path="/notes/paediatric-maintenance-fluids-4-2-1-rule" element={<PaediatricMaintenanceFluidsNote />} />
 
           <Route path="/physics" element={<PhysicsSection />} />
           <Route path="/physiology" element={<PhysiologySection />} />

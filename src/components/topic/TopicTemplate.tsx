@@ -238,8 +238,12 @@ export const TopicTemplate = ({
             <>
               <title>{effectiveTitle}</title>
               <meta property="og:title" content={effectiveTitle} />
+              <meta property="og:description" content={metaDescription} />
+              <meta property="og:url" content={canonicalUrl} />
               <meta name="twitter:title" content={effectiveTitle} />
+              <meta name="twitter:description" content={metaDescription} />
             </>
+
           );
         })()}
         <script type="application/ld+json">{JSON.stringify(learningResourceJsonLd)}</script>
