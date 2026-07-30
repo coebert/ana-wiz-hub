@@ -26,7 +26,15 @@ export default function MaintenanceFluidTool() {
         <>
           Hourly maintenance for healthy euvolaemic children and adults of any
           weight, using the Holliday–Segar rule. Add deficit and ongoing losses
-          separately.
+          separately. For the derivation, fluid choice and the move to isotonic
+          solutions, read the{" "}
+          <Link
+            to="/notes/paediatric-maintenance-fluids-4-2-1-rule"
+            className="text-pharmacology hover:underline"
+          >
+            paediatric maintenance fluids guide
+          </Link>
+          .
         </>
       }
       references={
