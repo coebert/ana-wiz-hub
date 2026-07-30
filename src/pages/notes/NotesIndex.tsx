@@ -22,6 +22,14 @@ const EXAM_LABEL: Record<ExamTag, string> = {
 
 const notes: NoteEntry[] = [
   {
+    slug: "paediatric-maintenance-fluids-4-2-1-rule",
+    title: "Paediatric maintenance fluids: the 4-2-1 rule",
+    description:
+      "How the 4-2-1 rule derives paediatric maintenance rates, and why hypotonic fluids were replaced by isotonic balanced crystalloid.",
+    tag: "Clinical",
+    examTags: ["primary", "final"],
+  },
+  {
     slug: "cardiac-output-formula",
     title: "Cardiac output formula: Fick, thermodilution and CO = SV × HR",
     description:
