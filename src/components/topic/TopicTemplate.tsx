@@ -242,6 +242,7 @@ export const TopicTemplate = ({
               <meta property="og:url" content={canonicalUrl} />
               <meta name="twitter:title" content={effectiveTitle} />
               <meta name="twitter:description" content={metaDescription} />
+            </>
 
           );
         })()}
