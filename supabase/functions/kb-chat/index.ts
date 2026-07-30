@@ -20,6 +20,7 @@ import {
   embedTexts,
   LOVABLE_AIG_RUN_ID_HEADER,
 } from "../_shared/ai-gateway.ts";
+import { moderateText } from "../_shared/moderation.ts";
 
 interface MatchedChunk {
   topic_id: string;
