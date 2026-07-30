@@ -103,7 +103,7 @@ const Index = () => {
                 FRCA Primary · FRCA Final · FFICM
               </p>
               <h1 className="display text-foreground">
-                AnaesthesiaCore — FRCA &amp; FFICM Revision
+                Curriculum Revision Hub — FRCA &amp; FFICM
               </h1>
               <p className="lead mt-4 text-foreground/75">
                 A structured reference for anaesthesia and intensive care exams — dense notes,
