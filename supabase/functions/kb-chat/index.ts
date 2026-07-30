@@ -20,6 +20,7 @@ import {
   embedTexts,
   LOVABLE_AIG_RUN_ID_HEADER,
 } from "../_shared/ai-gateway.ts";
+import { moderateText } from "../_shared/moderation.ts";
 
 interface MatchedChunk {
   topic_id: string;
@@ -163,6 +164,20 @@ ${routeIndex}`;
           .join("")
           .trim();
         if (!answer) return;
+
+        // Never publish unmoderated visitor text to the world-readable
+        // ask_qa_library. Reject offensive/spam/prompt-injection questions.
+        if (userQuestion.length > 500) {
+          console.warn("[kb-chat] question too long for library — skipping");
+          return;
+        }
+        const moderation = await moderateText(userQuestion);
+        if (!moderation.allowed) {
+          console.warn("[kb-chat] question rejected by moderation:", moderation.reason);
+          return;
+        }
+
+
 
         // Try to bump the ask_count on an existing entry first.
         const { data: existing, error: lookupErr } = await adminClient
