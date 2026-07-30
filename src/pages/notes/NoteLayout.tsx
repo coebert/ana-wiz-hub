@@ -156,13 +156,21 @@ export const NoteLayout = ({
       }
     : null;
 
-  // SEO: cap <title> at 60 chars — drop the " | AnaesthesiaCore" suffix when
-  // the headline alone would push past the limit (matches SectionLayout).
+  // SEO: keep <title> ≤ 60 chars without cutting mid-word. Prefer the full
+  // headline + suffix, then the shortTitle (+ suffix), then the bare headline,
+  // and only as a last resort trim at a word boundary with an ellipsis.
   const SUFFIX = " | AnaesthesiaCore";
-  const fullTitle = `${title}${SUFFIX}`;
-  const pageTitle = fullTitle.length <= 60 ? fullTitle : title.slice(0, 60);
-  const ogTitleRaw = shortTitle ?? title;
-  const ogTitle = ogTitleRaw.length <= 60 ? ogTitleRaw : `${ogTitleRaw.slice(0, 59).trimEnd()}…`;
+  const trimAtWord = (s: string, max: number) => {
+    if (s.length <= max) return s;
+    const cut = s.slice(0, max - 1);
+    const space = cut.lastIndexOf(" ");
+    return `${(space > max * 0.5 ? cut.slice(0, space) : cut).trimEnd()}…`;
+  };
+  const short = shortTitle ?? title;
+  const candidates = [`${title}${SUFFIX}`, `${short}${SUFFIX}`, title, short];
+  const pageTitle = candidates.find((c) => c.length <= 60) ?? trimAtWord(short, 60);
+  const ogTitleRaw = short;
+  const ogTitle = ogTitleRaw.length <= 60 ? ogTitleRaw : trimAtWord(ogTitleRaw, 60);
 
   return (
     <>

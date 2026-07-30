@@ -150,7 +150,7 @@ const NotesIndex = () => (
   <>
     <Header />
     <Helmet>
-      <title>Notes — focused answers to common FRCA questions | AnaesthesiaCore</title>
+      <title>FRCA Exam Notes — focused answers | AnaesthesiaCore</title>
       <meta
         name="description"
         content="Long-form notes that answer high-yield FRCA Primary and Final exam questions in depth — pharmacokinetics, neuromuscular pharmacology, fetal physiology and more."
