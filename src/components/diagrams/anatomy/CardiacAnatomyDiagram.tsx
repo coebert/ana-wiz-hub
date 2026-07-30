@@ -1090,16 +1090,16 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
 
       {/* ── Chamber labels ── */}
       <Html position={[0.5, 0.75, 0.2]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[10px] text-muted-foreground/35 font-bold italic select-none">RA</span>
+        <span className="text-[10px] text-muted-foreground/70 font-bold italic select-none">RA</span>
       </Html>
       <Html position={[-0.5, 0.75, 0.15]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[10px] text-muted-foreground/35 font-bold italic select-none">LA</span>
+        <span className="text-[10px] text-muted-foreground/70 font-bold italic select-none">LA</span>
       </Html>
       <Html position={[0.35, -0.15, 0.4]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[10px] text-muted-foreground/35 font-bold italic select-none">RV</span>
+        <span className="text-[10px] text-muted-foreground/70 font-bold italic select-none">RV</span>
       </Html>
       <Html position={[-0.4, -0.3, 0.25]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[10px] text-muted-foreground/35 font-bold italic select-none">LV</span>
+        <span className="text-[10px] text-muted-foreground/70 font-bold italic select-none">LV</span>
       </Html>
 
       {/* Vessel labels */}
