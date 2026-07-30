@@ -37,7 +37,7 @@ export const SiteFooter = ({ extraLinks = [] }: SiteFooterProps) => {
           clinical judgement.
         </p>
         <p className="flex items-center gap-4 shrink-0 flex-wrap">
-          <span className="text-muted-foreground/70">
+          <span className="text-muted-foreground">
             Dr Rob Coe · BA MA (Oxon) MBBS FRCA FFICM
           </span>
           {links.map((l) => (
