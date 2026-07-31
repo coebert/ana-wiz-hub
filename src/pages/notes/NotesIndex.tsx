@@ -22,6 +22,14 @@ const EXAM_LABEL: Record<ExamTag, string> = {
 
 const notes: NoteEntry[] = [
   {
+    slug: "wiggers-diagram-explained",
+    title: "Wiggers diagram explained: pressures, ECG and heart sounds",
+    description:
+      "How LV, atrial and aortic pressures, ventricular volume, the ECG and heart sounds line up across the seven phases of the cardiac cycle.",
+    tag: "Physiology",
+    examTags: ["primary", "final", "fficm"],
+  },
+  {
     slug: "paediatric-maintenance-fluids-4-2-1-rule",
     title: "Paediatric maintenance fluids: the 4-2-1 rule",
     description:
