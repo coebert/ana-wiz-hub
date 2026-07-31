@@ -184,7 +184,12 @@ const VivaHub = () => {
         </section>
 
         {/* Search + random */}
-        <section className="mb-4 flex gap-2 flex-wrap">
+        <section className="mb-4" aria-labelledby="viva-find-topic">
+          <h2 id="viva-find-topic" className="sr-only">
+            Find a viva topic
+          </h2>
+          <div className="flex gap-2 flex-wrap">
+
           <div className="relative flex-1 min-w-[200px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
             <Input
