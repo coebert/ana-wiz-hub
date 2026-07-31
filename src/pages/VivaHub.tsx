@@ -152,10 +152,14 @@ const VivaHub = () => {
         </header>
 
         {/* Exam standard picker */}
-        <section className="mb-5">
-          <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-2">
+        <section className="mb-5" aria-labelledby="viva-exam-standard">
+          <h2
+            id="viva-exam-standard"
+            className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-2"
+          >
             Exam standard
-          </p>
+          </h2>
+
           <div className="grid sm:grid-cols-3 gap-2">
             {examOptions.map((opt) => {
               const isActive = opt.value === exam;
@@ -180,7 +184,12 @@ const VivaHub = () => {
         </section>
 
         {/* Search + random */}
-        <section className="mb-4 flex gap-2 flex-wrap">
+        <section className="mb-4" aria-labelledby="viva-find-topic">
+          <h2 id="viva-find-topic" className="sr-only">
+            Find a viva topic
+          </h2>
+          <div className="flex gap-2 flex-wrap">
+
           <div className="relative flex-1 min-w-[200px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
             <Input
@@ -198,10 +207,16 @@ const VivaHub = () => {
               <BookOpen className="h-4 w-4 mr-2" /> Question library
             </Link>
           </Button>
+          </div>
         </section>
 
         {/* Topic list */}
-        <ul className="space-y-2">
+        <section aria-labelledby="viva-topic-list">
+          <h2 id="viva-topic-list" className="sr-only">
+            Viva topics
+          </h2>
+          <ul className="space-y-2">
+
           {filtered.map((t) => (
             <li key={t.id}>
               <div className="rounded-lg border border-border bg-card p-3 hover:border-primary transition-colors">
@@ -238,7 +253,9 @@ const VivaHub = () => {
               No topics match — try a different search or exam standard.
             </li>
           )}
-        </ul>
+          </ul>
+        </section>
+
       </PageSection>
     </div>
   );
