@@ -63,6 +63,7 @@ const RotemTegInterpretationNote = lazy(() => import("./pages/notes/RotemTegInte
 const RapidSequenceInductionNote = lazy(() => import("./pages/notes/RapidSequenceInductionNote"));
 const RoboticSurgeryAnaesthesiaNote = lazy(() => import("./pages/notes/RoboticSurgeryAnaesthesiaNote"));
 const CardiacOutputFormulaNote = lazy(() => import("./pages/notes/CardiacOutputFormulaNote"));
+const WiggersDiagramNote = lazy(() => import("./pages/notes/WiggersDiagramNote"));
 const PaediatricMaintenanceFluidsNote = lazy(() => import("./pages/notes/PaediatricMaintenanceFluidsNote"));
 
 
