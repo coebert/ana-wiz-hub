@@ -150,7 +150,7 @@ const App = () => (
           <Route path="/notes/rapid-sequence-induction-drug-doses" element={<RapidSequenceInductionNote />} />
           <Route path="/notes/anaesthesia-for-robotic-surgery-guide" element={<RoboticSurgeryAnaesthesiaNote />} />
           <Route path="/notes/cardiac-output-formula" element={<CardiacOutputFormulaNote />} />
-          <Route path="/notes/wiggers-diagram-explained" element={<WiggersDiagramNote />} />>
+          <Route path="/notes/wiggers-diagram-explained" element={<WiggersDiagramNote />} />
           <Route path="/notes/paediatric-maintenance-fluids-4-2-1-rule" element={<PaediatricMaintenanceFluidsNote />} />
 
           <Route path="/physics" element={<PhysicsSection />} />
