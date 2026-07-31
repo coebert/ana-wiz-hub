@@ -152,10 +152,14 @@ const VivaHub = () => {
         </header>
 
         {/* Exam standard picker */}
-        <section className="mb-5">
-          <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-2">
+        <section className="mb-5" aria-labelledby="viva-exam-standard">
+          <h2
+            id="viva-exam-standard"
+            className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-2"
+          >
             Exam standard
-          </p>
+          </h2>
+
           <div className="grid sm:grid-cols-3 gap-2">
             {examOptions.map((opt) => {
               const isActive = opt.value === exam;
