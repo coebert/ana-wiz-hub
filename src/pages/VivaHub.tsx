@@ -207,10 +207,16 @@ const VivaHub = () => {
               <BookOpen className="h-4 w-4 mr-2" /> Question library
             </Link>
           </Button>
+          </div>
         </section>
 
         {/* Topic list */}
-        <ul className="space-y-2">
+        <section aria-labelledby="viva-topic-list">
+          <h2 id="viva-topic-list" className="sr-only">
+            Viva topics
+          </h2>
+          <ul className="space-y-2">
+
           {filtered.map((t) => (
             <li key={t.id}>
               <div className="rounded-lg border border-border bg-card p-3 hover:border-primary transition-colors">
