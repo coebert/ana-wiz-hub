@@ -253,7 +253,9 @@ const VivaHub = () => {
               No topics match — try a different search or exam standard.
             </li>
           )}
-        </ul>
+          </ul>
+        </section>
+
       </PageSection>
     </div>
   );
