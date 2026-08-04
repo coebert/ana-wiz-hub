@@ -61,6 +61,32 @@ async function authorize(req: Request): Promise<Response | null> {
   const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
   if (serviceRoleKey && token === serviceRoleKey) return null
 
+  // Fallback service-role check: a legacy HS256 service key can't be verified
+  // against the project's JWKS, so probe an admin-only endpoint with it. Only a
+  // genuine service-role key succeeds.
+  const unverifiedRole = (() => {
+    try {
+      const [, payload] = token.split('.')
+      if (!payload) return undefined
+      const json = JSON.parse(
+        atob(payload.replace(/-/g, '+').replace(/_/g, '/').padEnd(Math.ceil(payload.length / 4) * 4, '=')),
+      )
+      return json?.role as string | undefined
+    } catch { return undefined }
+  })()
+
+  if (unverifiedRole === 'service_role') {
+    const probe = createClient(Deno.env.get('SUPABASE_URL')!, token, {
+      auth: { persistSession: false },
+    })
+    const { error: probeErr } = await probe.auth.admin.listUsers({ page: 1, perPage: 1 })
+    if (!probeErr) return null
+    console.error('service-role probe failed:', probeErr.message)
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+  }
+
   const supabase = createClient(
     Deno.env.get('SUPABASE_URL')!,
     Deno.env.get('SUPABASE_ANON_KEY')!,
@@ -69,10 +95,12 @@ async function authorize(req: Request): Promise<Response | null> {
   const { data, error } = await supabase.auth.getClaims(token)
 
   if (error || !data?.claims) {
+    console.error('getClaims failed:', error?.message ?? 'no claims')
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   }
+
   const role = data.claims.role
   if (role === 'service_role') return null
   const sub = data.claims.sub as string | undefined
