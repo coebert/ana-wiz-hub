@@ -195,8 +195,12 @@ export const NoteLayout = ({
         <meta property="og:url" content={url} />
         <meta name="twitter:title" content={ogTitle} />
         <meta name="twitter:description" content={description} />
-        <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
-        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        {!hasPrerenderedArticle && (
+          <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
+        )}
+        {!hasPrerenderedBreadcrumb && (
+          <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        )}
         {faqJsonLd && (
           <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
         )}
