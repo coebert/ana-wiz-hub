@@ -30,6 +30,14 @@ const notes: NoteEntry[] = [
     examTags: ["primary", "final", "fficm"],
   },
   {
+    slug: "heart-sounds-ecg-cardiac-cycle",
+    title: "Heart sounds and the ECG in the cardiac cycle",
+    description:
+      "S1\u2013S4, added sounds and murmurs timed against the ECG, with the exam findings in AS, MR, MS, AF and heart block.",
+    tag: "Physiology",
+    examTags: ["primary", "final", "fficm"],
+  },
+  {
     slug: "paediatric-maintenance-fluids-4-2-1-rule",
     title: "Paediatric maintenance fluids: the 4-2-1 rule",
     description:
