@@ -149,7 +149,7 @@ const LabelledReferenceCapnograph = () => {
       </g>
       {/* Sub-caption for the four phases */}
       <text x={padL} y={h - 20} fontSize="9" className="fill-muted-foreground" fontFamily="sans-serif">
-        I: inspiratory baseline · II: expiratory upstroke · III: alveolar plateau · 0: inspiratory downstroke
+        I: expiratory baseline (anatomical dead space) · II: expiratory upstroke · III: alveolar plateau · 0: inspiratory downstroke
       </text>
     </svg>
   );
