@@ -144,7 +144,13 @@ export const NoteLayout = ({
       { "@type": "ListItem", position: 3, name: shortTitle ?? title, item: url },
     ],
   };
-  const faqJsonLd = faqs.length
+  // The prerenderer bakes an identical FAQPage block into the static head for
+  // every note route. Skip the client-side copy when it's already there so
+  // crawlers never see two FAQPage graphs on the same page.
+  const hasPrerenderedFaq =
+    typeof document !== "undefined" &&
+    !!document.querySelector('script[data-prerender="faqpage"]');
+  const faqJsonLd = faqs.length && !hasPrerenderedFaq
     ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -155,6 +161,7 @@ export const NoteLayout = ({
         })),
       }
     : null;
+
 
   // SEO: keep <title> ≤ 60 chars without cutting mid-word. Prefer the full
   // headline + suffix, then the shortTitle (+ suffix), then the bare headline,
