@@ -48,6 +48,10 @@ export default function MaintenanceFluidTool() {
           <p>
             NICE NG29: IV fluid therapy in children and young people in hospital.
           </p>
+          <p>
+            NICE CG174: IV fluid therapy in adults in hospital.
+          </p>
+
         </>
       }
     >
