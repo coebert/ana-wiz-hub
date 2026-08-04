@@ -21,14 +21,14 @@ export default function MaintenanceFluidTool() {
   return (
     <ToolShell
       slug="maintenance-fluid"
-      title="Maintenance fluid (4-2-1 rule)"
-      description="Holliday–Segar 4-2-1 hourly maintenance rate and 24-hour requirement by weight."
+      title="4-2-1 Rule Maintenance Fluid Calculator"
+      description="Work out maintenance IV fluids with the 4-2-1 rule (Holliday–Segar): hourly and 24-hour rates by weight, with worked examples for children and adults."
       intro={
         <>
-          Hourly maintenance for healthy euvolaemic children and adults of any
-          weight, using the Holliday–Segar rule. Add deficit and ongoing losses
-          separately. For the derivation, fluid choice and the move to isotonic
-          solutions, read the{" "}
+          Enter a weight to get the hourly and daily maintenance rate from the
+          4-2-1 rule (Holliday–Segar) for healthy euvolaemic children and
+          adults. Add deficit and ongoing losses separately. For the
+          derivation, fluid choice and the move to isotonic solutions, read the{" "}
           <Link
             to="/notes/paediatric-maintenance-fluids-4-2-1-rule"
             className="text-pharmacology hover:underline"
@@ -38,6 +38,7 @@ export default function MaintenanceFluidTool() {
           .
         </>
       }
+
       references={
         <>
           <p>
