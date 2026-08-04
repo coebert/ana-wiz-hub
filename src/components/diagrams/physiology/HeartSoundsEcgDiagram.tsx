@@ -354,7 +354,7 @@ export const HeartSoundsEcgDiagram = () => {
           )}
 
           {/* Murmur envelope */}
-          <text x={-5} y={SOUND_BASE - 14} fontSize="4" fill="hsl(var(--muted-foreground))">
+          <text x={-5} y={SOUND_BASE + 5} fontSize="4" fill="hsl(var(--muted-foreground))">
             Sounds
           </text>
           <line x1={-4} y1={SOUND_BASE} x2={104} y2={SOUND_BASE} stroke="hsl(var(--border))" strokeWidth="0.3" />
@@ -367,10 +367,10 @@ export const HeartSoundsEcgDiagram = () => {
                 strokeWidth="0.4"
               />
               <text
-                x={(scenario.murmur.start + scenario.murmur.end) / 2}
+                x={Math.min(Math.max((scenario.murmur.start + scenario.murmur.end) / 2, 26), 74)}
                 y={SOUND_BASE + 14}
                 textAnchor="middle"
-                fontSize="3.8"
+                fontSize="3.4"
                 fill="hsl(var(--foreground))"
               >
                 {scenario.murmur.label}
