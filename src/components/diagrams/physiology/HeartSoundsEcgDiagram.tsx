@@ -154,7 +154,7 @@ const SCENARIOS: Scenario[] = [
     name: "Mitral stenosis",
     short: "Opening snap + diastolic rumble",
     ecg: { p: [0], qrs: 6, t: 30 },
-    murmur: { start: 58, end: 96, label: "Mid-diastolic rumble with presystolic accentuation", shape: "decrescendo" },
+    murmur: { start: 58, end: 96, label: "Mid-diastolic rumble + presystolic accentuation", shape: "decrescendo" },
     sounds: [
       { t: S1_T, label: "S1", detail: "Loud ('tapping' apex) — the thickened valve is still wide open at the onset of systole and shuts abruptly." },
       { t: S2_T, label: "S2", detail: "Normal." },
@@ -296,7 +296,7 @@ export const HeartSoundsEcgDiagram = () => {
         className="rounded-xl border border-border bg-card p-4"
       >
         <svg
-          viewBox="-6 0 116 100"
+          viewBox="-6 0 116 106"
           className="w-full h-auto"
           role="img"
           aria-labelledby="heart-sounds-ecg-figure-title heart-sounds-ecg-figure-desc"
@@ -367,10 +367,10 @@ export const HeartSoundsEcgDiagram = () => {
                 strokeWidth="0.4"
               />
               <text
-                x={Math.min(Math.max((scenario.murmur.start + scenario.murmur.end) / 2, 26), 74)}
-                y={SOUND_BASE + 14}
+                x={50}
+                y={SOUND_BASE + 13}
                 textAnchor="middle"
-                fontSize="3.4"
+                fontSize="3.2"
                 fill="hsl(var(--foreground))"
               >
                 {scenario.murmur.label}
@@ -428,13 +428,13 @@ export const HeartSoundsEcgDiagram = () => {
           })}
 
           {/* Time axis */}
-          <text x={0} y={96} fontSize="3.6" fill="hsl(var(--muted-foreground))">
+          <text x={0} y={102} fontSize="3.6" fill="hsl(var(--muted-foreground))">
             0
           </text>
-          <text x={100} y={96} textAnchor="end" fontSize="3.6" fill="hsl(var(--muted-foreground))">
+          <text x={100} y={102} textAnchor="end" fontSize="3.6" fill="hsl(var(--muted-foreground))">
             one cardiac cycle
           </text>
-          <line x1={0} y1={90} x2={100} y2={90} stroke="hsl(var(--border))" strokeWidth="0.4" />
+          <line x1={0} y1={96} x2={100} y2={96} stroke="hsl(var(--border))" strokeWidth="0.4" />
         </svg>
       </DiagramFigure>
 
