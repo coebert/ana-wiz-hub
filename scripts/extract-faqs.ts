@@ -123,9 +123,14 @@ function extractFaqsFromFile(file: string): FaqPair[] {
         pushIfPair(row[0], row[1]);
       } else if (row && typeof row === "object") {
         const r = row as Record<string, unknown>;
-        const name = r.name;
-        const ans = r.acceptedAnswer as Record<string, unknown> | undefined;
-        pushIfPair(name, ans?.text);
+        if (typeof r.q === "string" || typeof r.a === "string") {
+          // NoteLayout / note-page shape: { q: "...", a: "..." }
+          pushIfPair(r.q, r.a);
+        } else {
+          const name = r.name;
+          const ans = r.acceptedAnswer as Record<string, unknown> | undefined;
+          pushIfPair(name, ans?.text);
+        }
       }
     }
   };
@@ -134,6 +139,14 @@ function extractFaqsFromFile(file: string): FaqPair[] {
   for (const m of src.matchAll(
     /const\s+\w+Faqs\s*:\s*Array<\[string,\s*string\]>\s*=\s*(\[)/g,
   )) {
+    const start = m.index! + m[0].length - 1;
+    const literal = sliceBalanced(src, start);
+    if (literal) ingest(tryEval(literal));
+  }
+
+  // Pattern 1b: note pages pass FAQs as a prop — `faqs={[{ q: "...", a: "..." }, …]}`
+  // or declare them as `const <name>Faqs: NoteFaq[] = [{ q, a }, …]`.
+  for (const m of src.matchAll(/faqs\s*(?:=\{|:\s*(?:NoteFaq\[\]|Array<NoteFaq>)\s*=)\s*(\[)/g)) {
     const start = m.index! + m[0].length - 1;
     const literal = sliceBalanced(src, start);
     if (literal) ingest(tryEval(literal));
