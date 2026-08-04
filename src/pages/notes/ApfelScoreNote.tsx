@@ -32,6 +32,7 @@ const ApfelScoreNote = () => (
       { label: "Antiemetics — full topic", to: "/pharmacology/antiemetics" },
       { label: "Day-case anaesthesia", to: "/clinical/day-surgery" },
       { label: "TIVA — total intravenous anaesthesia", to: "/clinical/tiva" },
+      { label: "Sevoflurane vs desflurane recovery", to: "/notes/sevoflurane-vs-desflurane-recovery" },
       { label: "Pharmacokinetics", to: "/pharmacology/pharmacokinetics" },
     ]}
   >

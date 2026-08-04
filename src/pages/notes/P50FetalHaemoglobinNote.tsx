@@ -30,6 +30,7 @@ const P50FetalHaemoglobinNote = () => (
     related={[
       { label: "Oxygen-haemoglobin dissociation — full topic", to: "/physiology/oxygen-haemoglobin" },
       { label: "Foetal circulation", to: "/physiology/foetal-circulation" },
+      { label: "Cardiac output formula (Fick and thermodilution)", to: "/notes/cardiac-output-formula" },
       { label: "Maternal physiology of pregnancy", to: "/physiology/maternal-physiology" },
     ]}
   >

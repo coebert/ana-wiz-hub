@@ -31,6 +31,8 @@ const ContextSensitiveHalfTimeNote = () => (
       { label: "Pharmacokinetics — full topic", to: "/pharmacology/pharmacokinetics" },
       { label: "Intravenous induction agents", to: "/pharmacology/iv-anaesthetics" },
       { label: "Opioids", to: "/pharmacology/opioids" },
+      { label: "Sevoflurane vs desflurane recovery", to: "/notes/sevoflurane-vs-desflurane-recovery" },
+      { label: "Anaesthesia for robotic surgery", to: "/notes/anaesthesia-for-robotic-surgery-guide" },
       { label: "TIVA — total intravenous anaesthesia", to: "/clinical/tiva" },
     ]}
   >

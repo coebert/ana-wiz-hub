@@ -33,6 +33,7 @@ const SevoVsDesfluraneNote = () => (
       { label: "Vaporisers (Tec 5/6/7)", to: "/physics/vaporisers" },
       { label: "MAC for age formula", to: "/notes/mac-for-age-formula" },
       { label: "TIVA — total intravenous anaesthesia", to: "/clinical/tiva" },
+      { label: "Context-sensitive half-time: propofol vs remifentanil", to: "/notes/context-sensitive-half-time-propofol-vs-remifentanil" },
       { label: "Pharmacokinetics", to: "/pharmacology/pharmacokinetics" },
     ]}
   >
