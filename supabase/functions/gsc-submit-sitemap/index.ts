@@ -53,13 +53,21 @@ async function authorize(req: Request): Promise<Response | null> {
       status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   }
-  const token = authHeader.replace('Bearer ', '')
+  const token = authHeader.replace('Bearer ', '').trim()
+
+  // CI path: the caller presents the project's service-role key verbatim.
+  // Don't run it through getClaims() — legacy HS256 service keys can't be
+  // verified against the project's JWKS and would be rejected as Unauthorized.
+  const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
+  if (serviceRoleKey && token === serviceRoleKey) return null
+
   const supabase = createClient(
     Deno.env.get('SUPABASE_URL')!,
     Deno.env.get('SUPABASE_ANON_KEY')!,
     { global: { headers: { Authorization: authHeader } } },
   )
   const { data, error } = await supabase.auth.getClaims(token)
+
   if (error || !data?.claims) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
