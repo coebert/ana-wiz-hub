@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { ToolShell } from "@/components/tools/ToolShell";
 
 interface LA {
@@ -44,7 +45,14 @@ export default function MaxLADoseTool() {
         <>
           Maximum safe single-shot dose for the most commonly used local
           anaesthetics. Doses are upper limits in fit adults — reduce in frailty,
-          extremes of age, or hepatic/cardiac disease.
+          extremes of age, or hepatic/cardiac disease. If toxicity occurs, follow the{" "}
+          <Link
+            to="/notes/local-anaesthetic-systemic-toxicity-management"
+            className="text-pharmacology hover:underline"
+          >
+            LAST management guide
+          </Link>{" "}
+          (AAGBI/Association of Anaesthetists algorithm and lipid emulsion dosing).
         </>
       }
       references={
