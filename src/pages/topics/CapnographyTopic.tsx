@@ -261,7 +261,7 @@ const CapnographyTopic = () => {
               </h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
-                  { name: "Phase I — inspiratory baseline / dead-space gas", detail: "Zero CO₂. Start of expiration brings out the apparatus and anatomical dead space (no alveolar gas yet)." },
+                  { name: "Phase I — expiratory baseline / anatomical dead-space gas", detail: "Zero CO₂. Start of expiration brings out the apparatus and anatomical dead space (no alveolar gas yet)." },
                   { name: "Phase II — rapid upstroke", detail: "Mixed dead-space and alveolar gas reaches the sensor. Steep, near-vertical rise. Slope reflects emptying of fast alveoli." },
                   { name: "Phase III — alveolar plateau", detail: "Pure alveolar gas. Mild upward slope (< 5°) reflects continuing V/Q heterogeneity. End of phase III = EtCO₂." },
                   { name: "Phase 0 — inspiration", detail: "Rapid descent to zero as fresh gas (no CO₂) flows past the sensor. β-angle should be near 90°." },
