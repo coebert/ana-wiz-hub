@@ -603,6 +603,16 @@ function patchHead(
     );
   }
 
+  // Article JSON-LD on every /notes/<slug> guide so Google can treat them as
+  // authored articles (byline, publish/update dates) rather than generic pages.
+  const article = buildArticle(path, seo);
+  if (article) {
+    const artJson = JSON.stringify(article).replace(/<\/script>/gi, "<\\/script>");
+    headTags.push(
+      `<script type="application/ld+json" data-prerender="article">${artJson}</script>`,
+    );
+  }
+
   if (faqs && faqs.length > 0) {
     const faqJsonLd = {
       "@context": "https://schema.org",
