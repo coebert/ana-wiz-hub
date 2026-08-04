@@ -399,6 +399,74 @@ function buildMedicalWebPage(path: string, seo: RouteSeo): object | null {
   };
 }
 
+// ---------- Article (guide notes) ----------
+// Every /notes/<slug> page is an authored guide rendered by NoteLayout, which
+// declares `slug`, `shortTitle` and `datePublished` (+ optional
+// `dateModified`) as literal props. Read those straight from the source files
+// so the prerendered Article JSON-LD carries real, page-specific dates rather
+// than a build-time fallback.
+interface NoteMeta {
+  shortTitle?: string;
+  datePublished?: string;
+  dateModified?: string;
+}
+
+let noteMetaCache: Record<string, NoteMeta> | null = null;
+
+function readNoteMeta(): Record<string, NoteMeta> {
+  if (noteMetaCache) return noteMetaCache;
+  const out: Record<string, NoteMeta> = {};
+  const dir = resolve("src/pages/notes");
+  if (!existsSync(dir)) return (noteMetaCache = out);
+  for (const file of readdirSync(dir)) {
+    if (!file.endsWith(".tsx")) continue;
+    const src = readFileSync(join(dir, file), "utf8");
+    const slug = src.match(/\bslug=["']([a-z0-9-]+)["']/)?.[1];
+    if (!slug) continue;
+    out[slug] = {
+      shortTitle: src.match(/\bshortTitle=["']([^"']+)["']/)?.[1],
+      datePublished: src.match(/\bdatePublished=["'](\d{4}-\d{2}-\d{2})["']/)?.[1],
+      dateModified: src.match(/\bdateModified=["'](\d{4}-\d{2}-\d{2})["']/)?.[1],
+    };
+  }
+  return (noteMetaCache = out);
+}
+
+function buildArticle(path: string, seo: RouteSeo): object | null {
+  const segments = path.split("/").filter(Boolean);
+  if (segments.length !== 2 || segments[0] !== "notes") return null;
+  const meta = readNoteMeta()[segments[1]];
+  if (!meta?.datePublished) return null;
+
+  const canonical = `${SITE}${path}`;
+  const headline =
+    meta.shortTitle ??
+    (seo.title.split(/\s+[–|]\s+/)[0].split(/\s*\|\s*/)[0].trim() ||
+      titleCase(segments[1]));
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    name: seo.title,
+    description: seo.description,
+    url: canonical,
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+    inLanguage: "en-GB",
+    datePublished: meta.datePublished,
+    dateModified: meta.dateModified ?? meta.datePublished,
+    author: { "@type": "Person", name: "Dr Rob Coe", jobTitle: "Anaesthetist" },
+    publisher: {
+      "@type": "Organization",
+      name: "AnaesthesiaCore",
+      url: `${SITE}/`,
+      logo: { "@type": "ImageObject", url: `${SITE}/brain-logo.png` },
+    },
+    isPartOf: { "@type": "WebSite", name: "AnaesthesiaCore", url: `${SITE}/` },
+    about: { "@type": "Thing", name: headline },
+  };
+}
+
 function patchHead(
   shell: string,
   path: string,
@@ -532,6 +600,16 @@ function patchHead(
     const mpJson = JSON.stringify(medicalPage).replace(/<\/script>/gi, "<\\/script>");
     headTags.push(
       `<script type="application/ld+json" data-prerender="medicalwebpage">${mpJson}</script>`,
+    );
+  }
+
+  // Article JSON-LD on every /notes/<slug> guide so Google can treat them as
+  // authored articles (byline, publish/update dates) rather than generic pages.
+  const article = buildArticle(path, seo);
+  if (article) {
+    const artJson = JSON.stringify(article).replace(/<\/script>/gi, "<\\/script>");
+    headTags.push(
+      `<script type="application/ld+json" data-prerender="article">${artJson}</script>`,
     );
   }
 
