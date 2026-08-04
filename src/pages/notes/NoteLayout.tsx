@@ -144,12 +144,15 @@ export const NoteLayout = ({
       { "@type": "ListItem", position: 3, name: shortTitle ?? title, item: url },
     ],
   };
-  // The prerenderer bakes an identical FAQPage block into the static head for
-  // every note route. Skip the client-side copy when it's already there so
-  // crawlers never see two FAQPage graphs on the same page.
-  const hasPrerenderedFaq =
+  // The prerenderer bakes Article, BreadcrumbList and FAQPage blocks into the
+  // static head for every note route. Skip the client-side copies when they're
+  // already there so crawlers never see two of the same graph on one page.
+  const hasPrerendered = (kind: string) =>
     typeof document !== "undefined" &&
-    !!document.querySelector('script[data-prerender="faqpage"]');
+    !!document.querySelector(`script[data-prerender="${kind}"]`);
+  const hasPrerenderedFaq = hasPrerendered("faqpage");
+  const hasPrerenderedArticle = hasPrerendered("article");
+  const hasPrerenderedBreadcrumb = hasPrerendered("breadcrumb");
   const faqJsonLd = faqs.length && !hasPrerenderedFaq
     ? {
         "@context": "https://schema.org",
