@@ -64,6 +64,7 @@ const RapidSequenceInductionNote = lazy(() => import("./pages/notes/RapidSequenc
 const RoboticSurgeryAnaesthesiaNote = lazy(() => import("./pages/notes/RoboticSurgeryAnaesthesiaNote"));
 const CardiacOutputFormulaNote = lazy(() => import("./pages/notes/CardiacOutputFormulaNote"));
 const WiggersDiagramNote = lazy(() => import("./pages/notes/WiggersDiagramNote"));
+const HeartSoundsEcgNote = lazy(() => import("./pages/notes/HeartSoundsEcgNote"));
 const PaediatricMaintenanceFluidsNote = lazy(() => import("./pages/notes/PaediatricMaintenanceFluidsNote"));
 
 
@@ -151,6 +152,7 @@ const App = () => (
           <Route path="/notes/anaesthesia-for-robotic-surgery-guide" element={<RoboticSurgeryAnaesthesiaNote />} />
           <Route path="/notes/cardiac-output-formula" element={<CardiacOutputFormulaNote />} />
           <Route path="/notes/wiggers-diagram-explained" element={<WiggersDiagramNote />} />
+          <Route path="/notes/heart-sounds-ecg-cardiac-cycle" element={<HeartSoundsEcgNote />} />
           <Route path="/notes/paediatric-maintenance-fluids-4-2-1-rule" element={<PaediatricMaintenanceFluidsNote />} />
 
           <Route path="/physics" element={<PhysicsSection />} />
