@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { ToolShell } from "@/components/tools/ToolShell";
 
 interface Agent {
@@ -41,7 +42,19 @@ export default function MACForAgeTool() {
       intro={
         <>
           MAC falls ~6% per decade above 40 y (Mapleson/Eger), and ~5% per °C below
-          37 °C. Enter patient age and core temperature for adjusted values.
+          37 °C. Enter patient age and core temperature for adjusted values. For the
+          derivation and exam framing see the{" "}
+          <Link to="/notes/mac-for-age-formula" className="text-pharmacology hover:underline">
+            MAC for age formula guide
+          </Link>
+          , and for agent choice at emergence the{" "}
+          <Link
+            to="/notes/sevoflurane-vs-desflurane-recovery"
+            className="text-pharmacology hover:underline"
+          >
+            sevoflurane vs desflurane recovery guide
+          </Link>
+          .
         </>
       }
       references={

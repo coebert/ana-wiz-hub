@@ -31,6 +31,7 @@ const LocalAnaestheticToxicityNote = () => (
     related={[
       { label: "Local anaesthetics — full topic", to: "/pharmacology/local-anaesthetics" },
       { label: "Maximum LA dose calculator", to: "/tools/max-local-anaesthetic-dose" },
+      { label: "Paediatric maintenance fluids (4-2-1 rule)", to: "/notes/paediatric-maintenance-fluids-4-2-1-rule" },
       { label: "Regional anaesthesia — full topic", to: "/clinical/regional-anaesthesia" },
     ]}
   >

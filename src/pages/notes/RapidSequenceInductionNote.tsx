@@ -32,6 +32,8 @@ const RapidSequenceInductionNote = () => (
       { label: "Airway management — full topic", to: "/clinical/airway-management" },
       { label: "DAS difficult airway algorithm", to: "/notes/das-difficult-airway-algorithm" },
       { label: "Sugammadex reversal of rocuronium", to: "/notes/how-sugammadex-reverses-rocuronium" },
+      { label: "Local anaesthetic systemic toxicity (LAST)", to: "/notes/local-anaesthetic-systemic-toxicity-management" },
+      { label: "ROTEM / TEG interpretation", to: "/notes/rotem-teg-interpretation" },
       { label: "Obstetric anaesthesia", to: "/clinical/obstetric-anaesthesia" },
     ]}
   >

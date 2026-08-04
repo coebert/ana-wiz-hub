@@ -33,6 +33,7 @@ const RotemTegInterpretationNote = () => (
       { label: "Transfusion & coagulation in ICU", to: "/intensive-care/transfusion-coagulation" },
       { label: "Haematology & immunity", to: "/physiology/haematology-immunity" },
       { label: "Anticoagulants", to: "/pharmacology/anticoagulants" },
+      { label: "RSI drug doses", to: "/notes/rapid-sequence-induction-drug-doses" },
       { label: "Trauma & emergency anaesthesia", to: "/clinical/trauma-emergency" },
     ]}
   >

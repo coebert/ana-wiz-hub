@@ -138,6 +138,9 @@ const CardiacOutputFormulaNote = () => (
       { label: "Cardiac cycle — full topic", to: "/physiology/cardiac-cycle" },
       { label: "Cardiovascular monitoring", to: "/clinical/cardiovascular-monitoring" },
       { label: "Oxygen delivery (DO₂) and consumption", to: "/physiology/oxygen-delivery" },
+      { label: "P50 and fetal haemoglobin", to: "/notes/p50-fetal-haemoglobin" },
+      { label: "Wiggers diagram explained", to: "/notes/wiggers-diagram-explained" },
+      { label: "Heart sounds and ECG in the cardiac cycle", to: "/notes/heart-sounds-ecg-cardiac-cycle" },
       { label: "Pulmonary artery catheter", to: "/clinical/pulmonary-artery-catheter" },
     ]}
   >

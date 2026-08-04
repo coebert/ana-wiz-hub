@@ -43,6 +43,8 @@ const RoboticSurgeryAnaesthesiaNote = () => (
       { label: "Patient positioning and nerve injury", to: "/perioperative/patient-positioning" },
       { label: "One-lung ventilation and lung-protective strategy", to: "/clinical/one-lung-ventilation" },
       { label: "TIVA — total intravenous anaesthesia", to: "/clinical/tiva" },
+      { label: "TOF ratio ≥ 0.9 before extubation", to: "/notes/tof-ratio-before-extubation" },
+      { label: "Context-sensitive half-time: propofol vs remifentanil", to: "/notes/context-sensitive-half-time-propofol-vs-remifentanil" },
       { label: "Enhanced recovery after surgery", to: "/perioperative/enhanced-recovery" },
     ]}
   >
