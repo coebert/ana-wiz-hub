@@ -350,7 +350,17 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2016", citation: "Pathan H, Williams J. Basic opioid pharmacology: an update. BJA Education. 2012;12(3):142-147.", url: "https://doi.org/10.1093/bjaceaccp/mkr061" },
     { label: "Peck & Hill Ch.6", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 6: Opioid Analgesics." },
     { label: "Miller Ch.28", citation: "Miller RD, ed. Miller's Anesthesia. 9th ed. Chapter 28: Opioids." },
+    { label: "Trujillo & Akil 1991", citation: "Trujillo KA, Akil H. Inhibition of morphine tolerance and dependence by the NMDA receptor antagonist MK-801. Science. 1991;251(4991):85-87.", url: "https://doi.org/10.1126/science.1824728" },
+    { label: "Mao 1995", citation: "Mao J, Price DD, Mayer DJ. Mechanisms of hyperalgesia and morphine tolerance: a current view of their possible interactions. Pain. 1995;62(3):259-274.", url: "https://doi.org/10.1016/0304-3959(95)00073-2" },
+    { label: "Angst & Clark 2006", citation: "Angst MS, Clark JD. Opioid-induced hyperalgesia: a qualitative systematic review. Anesthesiology. 2006;104(3):570-587.", url: "https://doi.org/10.1097/00000542-200603000-00025" },
+    { label: "Joly 2005", citation: "Joly V, Richebe P, Guignard B, et al. Remifentanil-induced postoperative hyperalgesia and its prevention with small-dose ketamine. Anesthesiology. 2005;103(1):147-155.", url: "https://doi.org/10.1097/00000542-200507000-00022" },
+    { label: "Loftus 2010", citation: "Loftus RW, Yeager MP, Clark JA, et al. Intraoperative ketamine reduces perioperative opiate consumption in opiate-dependent patients with chronic back pain undergoing back surgery. Anesthesiology. 2010;113(3):639-646.", url: "https://doi.org/10.1097/ALN.0b013e3181e90914" },
+    { label: "Laskowski 2011", citation: "Laskowski K, Stirling A, McKay WP, Lim HJ. A systematic review of intravenous ketamine for postoperative analgesia. Can J Anaesth. 2011;58(10):911-923.", url: "https://doi.org/10.1007/s12630-011-9560-0" },
+    { label: "Nielsen 2017", citation: "Nielsen RV, Fomsgaard JS, Siegel H, et al. Intraoperative ketamine reduces immediate postoperative opioid consumption after spinal fusion surgery in chronic pain patients with opioid dependency: a randomized, blinded trial. Pain. 2017;158(3):463-470.", url: "https://doi.org/10.1097/j.pain.0000000000000782" },
+    { label: "Schwenk 2018", citation: "Schwenk ES, Viscusi ER, Buvanendran A, et al. Consensus guidelines on the use of intravenous ketamine infusions for acute pain management from ASRA, AAPM and ASA. Reg Anesth Pain Med. 2018;43(5):456-466.", url: "https://doi.org/10.1097/AAP.0000000000000806" },
+    { label: "Brinck 2018", citation: "Brinck EC, Tiippana E, Heesen M, et al. Perioperative intravenous ketamine for acute postoperative pain in adults. Cochrane Database Syst Rev. 2018;12:CD012033.", url: "https://doi.org/10.1002/14651858.CD012033.pub4" },
   ],
+
   "muscle-relaxants": [
     { label: "BJA Educ 2015", citation: "Appiah-Ankam J, Hunter JM. Pharmacology of neuromuscular blocking drugs. BJA Education. 2004;4(1):2-7.", url: "https://doi.org/10.1093/bjaceaccp/mkh002" },
     { label: "Peck & Hill Ch.7", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 7: Neuromuscular Blocking Drugs." },

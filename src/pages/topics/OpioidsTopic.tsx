@@ -17,6 +17,8 @@ import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { opioidsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
+
 
 const opioidsFaqs: Array<[string, string]> = [
   [
@@ -266,6 +268,154 @@ const OpioidsTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PR_BK_05"]}>
+            <CollapsibleSubsection title="Ketamine and “re-setting” opioid receptors in tolerant patients">
+              <p className="text-foreground/90 leading-relaxed">
+                Patients on long-term opioids frequently arrive with a right-shifted, flattened dose–response
+                curve: escalating doses give diminishing analgesia and increasing side effects. The clinical
+                observation that a <strong>low-dose ketamine infusion restores opioid responsiveness</strong> — often
+                with a lower total opioid requirement afterwards — is widely described as “re-setting” or
+                “re-sensitising” the opioid receptor. The phrase is a useful shorthand, but it is important to be
+                precise about what it does and does not mean.
+              </p>
+
+              <div className="mt-3 rounded-md border border-primary/30 bg-primary/5 p-3">
+                <p className="text-sm text-foreground/90 leading-relaxed">
+                  <strong>What “re-set” really means.</strong> Ketamine does not bind the µ-opioid receptor (MOR) in any
+                  clinically meaningful way at analgesic doses, and there is no human evidence that it restores
+                  receptor <em>number</em>. What it does is interrupt the <strong>NMDA-receptor-dependent adaptive
+                  plasticity</strong> that maintains tolerance and opioid-induced hyperalgesia (OIH), allowing the
+                  pre-existing MOR population to signal effectively again. Functionally the patient behaves as if
+                  the receptor has been re-set; mechanistically the change is in the downstream and network-level
+                  adaptations, not in the receptor protein itself.<InlineRef topicId="opioids" refLabel="Mao 1995" />
+                </p>
+              </div>
+
+              <h4 className="mt-5 font-semibold text-foreground">Why tolerance and OIH share a mechanism</h4>
+              <p className="text-foreground/90 leading-relaxed mt-1">
+                Sustained MOR agonism produces two parallel sets of changes. <strong>Receptor-level (homologous)
+                desensitisation</strong>: GRK-mediated phosphorylation of the MOR C-terminus, β-arrestin-2 recruitment,
+                uncoupling from Gi/Go and receptor internalisation, with agonist-specific differences (morphine
+                internalises the receptor poorly and therefore desensitises without efficient resensitisation —
+                one explanation for its relatively rapid tolerance). <strong>Network-level (heterologous)
+                sensitisation</strong>: increased excitatory drive in the dorsal horn that opposes whatever analgesia
+                remains. The second process is <em>NMDA-dependent</em>, and it is the target of ketamine.<InlineRef topicId="opioids" refLabel="Angst & Clark 2006" />
+              </p>
+
+              <h4 className="mt-5 font-semibold text-foreground">Molecular mechanisms — how ketamine reverses the adaptation</h4>
+              <ol className="list-decimal list-outside ml-5 mt-2 space-y-2 text-foreground/90 leading-relaxed">
+                <li>
+                  <strong>Open-channel NMDA blockade (PCP site).</strong> Chronic opioid exposure removes the Mg²⁺
+                  block and increases NMDA-receptor conductance. Ketamine binds within the open pore, use-dependently
+                  silencing the sensitised receptors that carry most of the wind-up current while sparing normal
+                  low-frequency transmission — the pharmacological basis for a low-dose, sub-anaesthetic infusion
+                  being sufficient.
+                </li>
+                <li>
+                  <strong>Interrupting the PKC → MOR phosphorylation loop.</strong> NMDA-mediated Ca²⁺ entry activates
+                  protein kinase C, which phosphorylates the MOR and uncouples it from its G-protein
+                  (heterologous desensitisation) <em>and</em> further relieves the Mg²⁺ block on NMDA receptors — a
+                  self-reinforcing positive-feedback loop. Blocking NMDA breaks the loop; PKC activity falls and
+                  MOR–G-protein coupling recovers. This is the closest mechanistic correlate of “re-setting”.<InlineRef topicId="opioids" refLabel="Mao 1995" />
+                </li>
+                <li>
+                  <strong>Reduced Ca²⁺/CaMKII and nNOS–NO–cGMP signalling.</strong> CaMKII autophosphorylation and
+                  nitric oxide generation in dorsal-horn neurones maintain long-term potentiation of nociceptive
+                  synapses; both are downstream of NMDA Ca²⁺ flux and both fall with ketamine.
+                </li>
+                <li>
+                  <strong>Attenuated descending facilitation and spinal dynorphin.</strong> Chronic opioids increase
+                  on-cell activity in the rostral ventromedial medulla and upregulate spinal dynorphin, which
+                  drives pro-nociceptive CGRP/substance-P release. NMDA blockade dampens this pain-facilitating arm.
+                </li>
+                <li>
+                  <strong>Glial and neuroinflammatory modulation.</strong> Opioids activate microglia via TLR4/P2X7 →
+                  IL-1β, TNF-α and BDNF release; BDNF–TrkB signalling downregulates the KCC2 chloride transporter and
+                  converts GABA-ergic inhibition towards excitation. Ketamine has direct anti-inflammatory and
+                  microglia-inhibiting actions in addition to its NMDA effect.
+                </li>
+                <li>
+                  <strong>Reduced β-arrestin-2-biased signalling.</strong> Because ketamine allows the same analgesia at
+                  a lower opioid dose, agonist occupancy and therefore GRK/β-arrestin-2 recruitment, receptor
+                  internalisation and adenylyl-cyclase superactivation all fall — an indirect but real contribution
+                  to restored receptor responsiveness.
+                </li>
+                <li>
+                  <strong>Secondary targets.</strong> HCN1 channel inhibition, adenosine A₁-receptor recruitment,
+                  monoaminergic reuptake inhibition, and — for the metabolite (2R,6R)-hydroxynorketamine — AMPA-receptor
+                  and mTORC1-dependent synaptic plasticity that may explain benefits outlasting the infusion.
+                </li>
+              </ol>
+
+              <h4 className="mt-5 font-semibold text-foreground">Study evidence</h4>
+              <div className="mt-2 overflow-x-auto">
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left p-2 text-foreground">Study</th>
+                      <th className="text-left p-2 text-foreground">Design</th>
+                      <th className="text-left p-2 text-foreground">Key finding</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-border/50">
+                      <td className="p-2 text-foreground font-medium">Trujillo &amp; Akil, <em>Science</em> 1991</td>
+                      <td className="p-2 text-muted-foreground">Rodent, MK-801 + morphine</td>
+                      <td className="p-2 text-muted-foreground">NMDA antagonism prevented development of morphine tolerance and dependence without blocking acute analgesia — the founding proof of concept.</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="p-2 text-foreground font-medium">Joly et al., <em>Anesthesiology</em> 2005</td>
+                      <td className="p-2 text-muted-foreground">RCT, major abdominal surgery, high-dose remifentanil</td>
+                      <td className="p-2 text-muted-foreground">Small-dose ketamine (0.5 mg/kg then 5 µg/kg/min) abolished remifentanil-induced peri-incisional hyperalgesia and reduced morphine use — evidence that OIH is NMDA-mediated and preventable.</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="p-2 text-foreground font-medium">Loftus et al., <em>Anesthesiology</em> 2010</td>
+                      <td className="p-2 text-muted-foreground">RCT, 102 opioid-dependent patients, spinal surgery</td>
+                      <td className="p-2 text-muted-foreground">Intra-operative ketamine (0.5 mg/kg bolus + 10 µg/kg/min) cut 48-h morphine equivalents by ~37 % and lowered pain scores at 6 weeks — the key trial in the tolerant population.</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="p-2 text-foreground font-medium">Laskowski et al., <em>Can J Anaesth</em> 2011</td>
+                      <td className="p-2 text-muted-foreground">Systematic review, 70 trials</td>
+                      <td className="p-2 text-muted-foreground">IV ketamine reduced opioid consumption and pain scores in ~half of trials; greatest benefit in painful surgery and opioid-tolerant patients; no increase in psychotomimetic effects at low dose.</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="p-2 text-foreground font-medium">Nielsen et al., <em>Pain</em> 2017</td>
+                      <td className="p-2 text-muted-foreground">RCT, 147 opioid-dependent spinal-fusion patients</td>
+                      <td className="p-2 text-muted-foreground">Ketamine reduced 0–24 h morphine consumption (median 79 vs 121 mg) with fewer patients requiring rescue — replication of Loftus in a larger cohort.</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="p-2 text-foreground font-medium">Brinck et al., Cochrane 2018</td>
+                      <td className="p-2 text-muted-foreground">Meta-analysis, 130 studies, 8341 participants</td>
+                      <td className="p-2 text-muted-foreground">Perioperative IV ketamine reduces opioid consumption and postoperative nausea/vomiting; benefit is modest overall but consistent, with low adverse-event rates.</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="p-2 text-foreground font-medium">ASRA/AAPM/ASA consensus 2018</td>
+                      <td className="p-2 text-muted-foreground">Guideline</td>
+                      <td className="p-2 text-muted-foreground">Opioid tolerance/dependence is an explicitly supported indication; suggested bolus ≤ 0.35 mg/kg and infusion ≤ 1 mg/kg/h in a monitored setting.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-foreground/90 leading-relaxed mt-3">
+                Honest appraisal for the viva: effect sizes are modest, heterogeneity is high, and no human study has
+                demonstrated normalisation of receptor density or G-protein coupling — the “re-set” is inferred from
+                restored opioid responsiveness, not measured directly. Some trials in opioid-naïve patients show
+                little benefit, which is itself consistent with the mechanism: if there is no NMDA-dependent
+                adaptation to reverse, ketamine has little to add beyond mild direct analgesia.<InlineRef topicId="opioids" refLabel="Brinck 2018" />
+              </p>
+
+              <h4 className="mt-5 font-semibold text-foreground">Practical regimen in the opioid-tolerant patient</h4>
+              <ul className="list-disc list-outside ml-5 mt-2 space-y-1 text-foreground/90 leading-relaxed">
+                <li><strong>Intra-operative:</strong> ketamine 0.25–0.5 mg/kg at induction, then 0.1–0.2 mg/kg/h (≈2–5 µg/kg/min), stopped at or shortly before closure.<InlineRef topicId="opioids" refLabel="Loftus 2010" /></li>
+                <li><strong>Postoperative:</strong> 0.05–0.2 mg/kg/h for 24–72 h on a monitored ward, or a ketamine-containing PCA, with acute-pain-team review.<InlineRef topicId="opioids" refLabel="Schwenk 2018" /></li>
+                <li><strong>Continue</strong> the patient's baseline opioid (do not attempt withdrawal perioperatively) and layer paracetamol, NSAID, regional block, α₂-agonist, magnesium and gabapentinoid.</li>
+                <li><strong>Cautions:</strong> poorly controlled hypertension or ischaemic heart disease, raised ICP with impaired autoregulation, psychosis, severe hepatic impairment; add a benzodiazepine only if psychotomimetic effects emerge (routine co-administration is not recommended).</li>
+                <li><strong>Set expectations:</strong> the goal is functional analgesia and a reduced opioid requirement, not zero pain, and the effect on tolerance is partial and may not persist for months.</li>
+              </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PR_BK_05"]}>
             <CollapsibleSubsection title="Naloxone">
             <p className="text-foreground/90 leading-relaxed">
               Competitive µ, κ, δ antagonist. IV dose 1–4 µg/kg titrated. Onset 1–2 min. Duration 30–60 min — shorter than most
@@ -330,7 +480,11 @@ const OpioidsTopic = () => {
         { text: "Alfentanil: pKa 6.5 → 90 % un-ionised → fastest onset despite lower lipid solubility than fentanyl.", cites: ["Miller Ch.28"] },
         { text: "Naloxone: competitive antagonist, duration 30–60 min. Risk of re-narcotisation — titrate carefully and consider infusion.", cites: ["Peck & Hill Ch.6"] },
         { text: "OIH: diffuse new-distribution pain that worsens with dose escalation. Manage with dose reduction, opioid rotation, ketamine and multimodal analgesia.", cites: ["BJA Educ 2016"] },
+        { text: "Ketamine \u201Cre-sets\u201D opioid responsiveness by blocking NMDA-dependent plasticity (PKC\u2013MOR uncoupling loop, CaMKII/nNOS, descending facilitation, glial BDNF\u2013KCC2) \u2014 not by acting at the \u00B5 receptor or restoring receptor number.", cites: ["Mao 1995", "Angst & Clark 2006"] },
+        { text: "Evidence: Trujillo & Akil 1991 (NMDA antagonism prevents tolerance), Joly 2005 (prevents remifentanil OIH), Loftus 2010 and Nielsen 2017 (~30\u201340 % less opioid in tolerant spinal-surgery patients); Cochrane 2018 confirms a modest but consistent opioid-sparing effect.", cites: ["Trujillo & Akil 1991", "Loftus 2010", "Nielsen 2017", "Brinck 2018"] },
+        { text: "Regimen in tolerant patients: 0.25\u20130.5 mg/kg bolus then 0.1\u20130.2 mg/kg/h intra-op, 0.05\u20130.2 mg/kg/h for 24\u201372 h post-op; continue baseline opioid and add multimodal adjuncts.", cites: ["Schwenk 2018"] },
       ]}
+
     />
   );
 };
