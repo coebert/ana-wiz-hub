@@ -17,6 +17,8 @@ import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { opioidsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
+
 
 const opioidsFaqs: Array<[string, string]> = [
   [
