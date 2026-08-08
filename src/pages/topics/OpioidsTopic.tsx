@@ -7,6 +7,8 @@ import OpioidReceptorDiagram from "@/components/diagrams/pharmacology/OpioidRece
 import { OpioidReceptorSignalingDiagram } from "@/components/diagrams/pharmacology/OpioidReceptorSignalingDiagram";
 import { OpioidSignallingCascadeAnimation } from "@/components/diagrams/pharmacology/OpioidSignallingCascadeAnimation";
 import { OIHToleranceDiagram } from "@/components/diagrams/pharmacology/OIHToleranceDiagram";
+import { KetamineToleranceReversalDiagram } from "@/components/diagrams/pharmacology/KetamineToleranceReversalDiagram";
+
 import { MethadonePharmacologyDiagram } from "@/components/diagrams/pharmacology/MethadonePharmacologyDiagram";
 import { BuprenorphinePharmacologyDiagram } from "@/components/diagrams/pharmacology/BuprenorphinePharmacologyDiagram";
 import { NaloxoneDiagram } from "@/components/diagrams/pharmacology/NaloxoneDiagram";
@@ -345,6 +347,15 @@ const OpioidsTopic = () => {
                   and mTORC1-dependent synaptic plasticity that may explain benefits outlasting the infusion.
                 </li>
               </ol>
+
+              <div className="mt-6 bg-card rounded-xl border border-border p-4 md:p-6">
+                <h2 className="text-base font-serif font-semibold text-foreground">
+                  Animated: the seven mechanisms of ketamine-mediated tolerance reversal
+                </h2>
+                <KetamineToleranceReversalDiagram />
+              </div>
+
+
 
               <h4 className="mt-5 font-semibold text-foreground">Study evidence</h4>
               <div className="mt-2 overflow-x-auto">
