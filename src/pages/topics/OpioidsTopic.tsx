@@ -7,6 +7,8 @@ import OpioidReceptorDiagram from "@/components/diagrams/pharmacology/OpioidRece
 import { OpioidReceptorSignalingDiagram } from "@/components/diagrams/pharmacology/OpioidReceptorSignalingDiagram";
 import { OpioidSignallingCascadeAnimation } from "@/components/diagrams/pharmacology/OpioidSignallingCascadeAnimation";
 import { OIHToleranceDiagram } from "@/components/diagrams/pharmacology/OIHToleranceDiagram";
+import { KetamineToleranceReversalDiagram } from "@/components/diagrams/pharmacology/KetamineToleranceReversalDiagram";
+
 import { MethadonePharmacologyDiagram } from "@/components/diagrams/pharmacology/MethadonePharmacologyDiagram";
 import { BuprenorphinePharmacologyDiagram } from "@/components/diagrams/pharmacology/BuprenorphinePharmacologyDiagram";
 import { NaloxoneDiagram } from "@/components/diagrams/pharmacology/NaloxoneDiagram";
