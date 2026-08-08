@@ -480,7 +480,11 @@ const OpioidsTopic = () => {
         { text: "Alfentanil: pKa 6.5 → 90 % un-ionised → fastest onset despite lower lipid solubility than fentanyl.", cites: ["Miller Ch.28"] },
         { text: "Naloxone: competitive antagonist, duration 30–60 min. Risk of re-narcotisation — titrate carefully and consider infusion.", cites: ["Peck & Hill Ch.6"] },
         { text: "OIH: diffuse new-distribution pain that worsens with dose escalation. Manage with dose reduction, opioid rotation, ketamine and multimodal analgesia.", cites: ["BJA Educ 2016"] },
+        { text: "Ketamine \u201Cre-sets\u201D opioid responsiveness by blocking NMDA-dependent plasticity (PKC\u2013MOR uncoupling loop, CaMKII/nNOS, descending facilitation, glial BDNF\u2013KCC2) \u2014 not by acting at the \u00B5 receptor or restoring receptor number.", cites: ["Mao 1995", "Angst & Clark 2006"] },
+        { text: "Evidence: Trujillo & Akil 1991 (NMDA antagonism prevents tolerance), Joly 2005 (prevents remifentanil OIH), Loftus 2010 and Nielsen 2017 (~30\u201340 % less opioid in tolerant spinal-surgery patients); Cochrane 2018 confirms a modest but consistent opioid-sparing effect.", cites: ["Trujillo & Akil 1991", "Loftus 2010", "Nielsen 2017", "Brinck 2018"] },
+        { text: "Regimen in tolerant patients: 0.25\u20130.5 mg/kg bolus then 0.1\u20130.2 mg/kg/h intra-op, 0.05\u20130.2 mg/kg/h for 24\u201372 h post-op; continue baseline opioid and add multimodal adjuncts.", cites: ["Schwenk 2018"] },
       ]}
+
     />
   );
 };
