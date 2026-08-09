@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Pause, Play } from "lucide-react";
+import { BookOpen, ExternalLink, Pause, Play } from "lucide-react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 import { useMotionPreference } from "@/contexts/MotionPreferenceContext";
 
@@ -23,6 +23,14 @@ interface Mechanism {
   summary: string;
   consequence: string;
   colour: string;
+  /** Studies from the "Ketamine and re-setting opioid receptors" section that support this mechanism. */
+  sources: MechSource[];
+}
+
+interface MechSource {
+  /** Short label — matches the entry in the topic's References list. */
+  label: string;
+  url: string;
 }
 
 const MECHANISMS: Mechanism[] = [
@@ -35,6 +43,11 @@ const MECHANISMS: Mechanism[] = [
       "Chronic opioid exposure relieves the Mg²⁺ block and increases NMDA conductance. Ketamine enters the open pore and blocks use-dependently, silencing the high-frequency, wind-up-carrying receptors while sparing normal transmission.",
     consequence: "↓ Ca²⁺ influx at sensitised synapses — the upstream event for every mechanism below.",
     colour: "hsl(210 75% 52%)",
+    sources: [
+      { label: "Trujillo & Akil 1991", url: "https://doi.org/10.1126/science.1824728" },
+      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2" },
+      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025" },
+    ],
   },
   {
     id: 2,
@@ -45,6 +58,10 @@ const MECHANISMS: Mechanism[] = [
       "Ca²⁺ activates PKC, which phosphorylates and uncouples the MOR from Gi/Go (heterologous desensitisation) and simultaneously relieves the Mg²⁺ block on NMDA — a self-reinforcing loop. NMDA blockade breaks it and MOR–G-protein coupling recovers.",
     consequence: "Closest mechanistic correlate of “re-setting” the receptor: same receptors, restored signalling.",
     colour: "hsl(280 60% 55%)",
+    sources: [
+      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2" },
+      { label: "Trujillo & Akil 1991", url: "https://doi.org/10.1126/science.1824728" },
+    ],
   },
   {
     id: 3,
@@ -55,6 +72,10 @@ const MECHANISMS: Mechanism[] = [
       "Autophosphorylated CaMKII and nitric-oxide generation maintain long-term potentiation of nociceptive synapses. Both are downstream of NMDA Ca²⁺ flux and both fall with ketamine.",
     consequence: "Reversal of established spinal LTP — pain memory is de-potentiated.",
     colour: "hsl(160 55% 42%)",
+    sources: [
+      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2" },
+      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025" },
+    ],
   },
   {
     id: 4,
@@ -65,6 +86,10 @@ const MECHANISMS: Mechanism[] = [
       "Chronic opioids drive RVM “on-cell” activity and upregulate spinal dynorphin, which promotes CGRP/substance-P release. NMDA blockade dampens this pro-nociceptive descending arm.",
     consequence: "Shifts the descending balance back towards inhibition.",
     colour: "hsl(24 80% 52%)",
+    sources: [
+      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025" },
+      { label: "Joly 2005", url: "https://doi.org/10.1097/00000542-200507000-00022" },
+    ],
   },
   {
     id: 5,
@@ -75,6 +100,10 @@ const MECHANISMS: Mechanism[] = [
       "Opioids activate microglia releasing IL-1β, TNF-α and BDNF; BDNF–TrkB downregulates the KCC2 chloride transporter so GABA-ergic inhibition becomes excitatory. Ketamine is directly anti-inflammatory and microglia-inhibiting.",
     consequence: "Restores the chloride gradient and therefore inhibitory tone.",
     colour: "hsl(0 68% 55%)",
+    sources: [
+      { label: "Loftus 2010", url: "https://doi.org/10.1097/ALN.0b013e3181e90914" },
+      { label: "Schwenk 2018", url: "https://doi.org/10.1097/AAP.0000000000000806" },
+    ],
   },
   {
     id: 6,
@@ -85,6 +114,11 @@ const MECHANISMS: Mechanism[] = [
       "Because ketamine delivers the same analgesia at a lower opioid dose, agonist occupancy falls — with it GRK phosphorylation, β-arrestin-2 recruitment, receptor internalisation and adenylyl-cyclase superactivation.",
     consequence: "Indirect but real: fewer receptors withdrawn from the membrane.",
     colour: "hsl(45 85% 45%)",
+    sources: [
+      { label: "Joly 2005", url: "https://doi.org/10.1097/00000542-200507000-00022" },
+      { label: "Nielsen 2017", url: "https://doi.org/10.1097/j.pain.0000000000000782" },
+      { label: "Loftus 2010", url: "https://doi.org/10.1097/ALN.0b013e3181e90914" },
+    ],
   },
   {
     id: 7,
@@ -95,6 +129,11 @@ const MECHANISMS: Mechanism[] = [
       "HCN1 inhibition, adenosine A₁ recruitment and monoamine reuptake inhibition add analgesia. The metabolite (2R,6R)-HNK drives AMPA-receptor and mTORC1-dependent synaptic plasticity independent of NMDA blockade.",
     consequence: "May explain benefit that outlasts the infusion by days to weeks.",
     colour: "hsl(330 60% 55%)",
+    sources: [
+      { label: "Laskowski 2011", url: "https://doi.org/10.1007/s12630-011-9560-0" },
+      { label: "Brinck 2018", url: "https://doi.org/10.1002/14651858.CD012033.pub4" },
+      { label: "Schwenk 2018", url: "https://doi.org/10.1097/AAP.0000000000000806" },
+    ],
   },
 ];
 
@@ -104,6 +143,7 @@ export const KetamineToleranceReversalDiagram = () => {
   const { reduceMotion } = useMotionPreference();
   const [active, setActive] = useState<MechId>(1);
   const [playing, setPlaying] = useState(false);
+  const [showSources, setShowSources] = useState(false);
 
   useEffect(() => {
     if (reduceMotion) setPlaying(false);
@@ -151,6 +191,20 @@ export const KetamineToleranceReversalDiagram = () => {
               {playing ? "Pause" : "Play all"}
             </button>
           )}
+          <button
+            type="button"
+            onClick={() => setShowSources((v) => !v)}
+            aria-pressed={showSources}
+            aria-label={showSources ? "Hide on-diagram source citations" : "Show on-diagram source citations"}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
+              showSources
+                ? "border-foreground bg-foreground/10 text-foreground"
+                : "border-border text-foreground hover:border-foreground/50"
+            }`}
+          >
+            <BookOpen className="h-3.5 w-3.5" />
+            Sources
+          </button>
           {MECHANISMS.map((m) => (
             <button
               key={m.id}
@@ -298,8 +352,13 @@ export const KetamineToleranceReversalDiagram = () => {
               {mech.id}. {mech.title}
             </text>
             <text x="410" y="537" textAnchor="middle" className="fill-foreground" fontSize="10">
-              {mech.target}
+              {showSources ? mech.sources.map((s) => s.label).join(" · ") : mech.target}
             </text>
+            {showSources && (
+              <text x="70" y="514" className="fill-muted-foreground" fontSize="9" fontWeight="600">
+                EVIDENCE
+              </text>
+            )}
           </svg>
         </div>
 
@@ -317,13 +376,36 @@ export const KetamineToleranceReversalDiagram = () => {
             <span className="font-semibold">Net effect: </span>
             {mech.consequence}
           </p>
+          {showSources && (
+            <div className="mt-3 pt-3 border-t border-border">
+              <p className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mb-1.5">
+                <BookOpen className="h-3 w-3" /> Sources for mechanism {mech.id}
+              </p>
+              <ul className="flex flex-wrap gap-1.5">
+                {mech.sources.map((s) => (
+                  <li key={s.label}>
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-2 py-0.5 text-[11px] font-medium text-foreground hover:bg-muted hover:border-foreground/40 transition-colors"
+                      title={`Open ${s.label}`}
+                    >
+                      {s.label}
+                      <ExternalLink className="h-2.5 w-2.5 text-muted-foreground" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Static text fallback — always in the DOM for screen readers and print */}
         <ol className="sr-only">
           {MECHANISMS.map((m) => (
             <li key={m.id}>
-              {m.title} ({m.target}). {m.summary} {m.consequence}
+              {m.title} ({m.target}). {m.summary} {m.consequence} Sources: {m.sources.map((s) => s.label).join("; ")}.
             </li>
           ))}
         </ol>
