@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Pause, Play } from "lucide-react";
+import { BookOpen, ExternalLink, Pause, Play } from "lucide-react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 import { useMotionPreference } from "@/contexts/MotionPreferenceContext";
 
@@ -143,6 +143,7 @@ export const KetamineToleranceReversalDiagram = () => {
   const { reduceMotion } = useMotionPreference();
   const [active, setActive] = useState<MechId>(1);
   const [playing, setPlaying] = useState(false);
+  const [showSources, setShowSources] = useState(false);
 
   useEffect(() => {
     if (reduceMotion) setPlaying(false);
@@ -190,6 +191,20 @@ export const KetamineToleranceReversalDiagram = () => {
               {playing ? "Pause" : "Play all"}
             </button>
           )}
+          <button
+            type="button"
+            onClick={() => setShowSources((v) => !v)}
+            aria-pressed={showSources}
+            aria-label={showSources ? "Hide on-diagram source citations" : "Show on-diagram source citations"}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
+              showSources
+                ? "border-foreground bg-foreground/10 text-foreground"
+                : "border-border text-foreground hover:border-foreground/50"
+            }`}
+          >
+            <BookOpen className="h-3.5 w-3.5" />
+            Sources
+          </button>
           {MECHANISMS.map((m) => (
             <button
               key={m.id}
@@ -337,8 +352,13 @@ export const KetamineToleranceReversalDiagram = () => {
               {mech.id}. {mech.title}
             </text>
             <text x="410" y="537" textAnchor="middle" className="fill-foreground" fontSize="10">
-              {mech.target}
+              {showSources ? mech.sources.map((s) => s.label).join(" · ") : mech.target}
             </text>
+            {showSources && (
+              <text x="70" y="514" className="fill-muted-foreground" fontSize="9" fontWeight="600">
+                EVIDENCE
+              </text>
+            )}
           </svg>
         </div>
 
@@ -356,13 +376,36 @@ export const KetamineToleranceReversalDiagram = () => {
             <span className="font-semibold">Net effect: </span>
             {mech.consequence}
           </p>
+          {showSources && (
+            <div className="mt-3 pt-3 border-t border-border">
+              <p className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mb-1.5">
+                <BookOpen className="h-3 w-3" /> Sources for mechanism {mech.id}
+              </p>
+              <ul className="flex flex-wrap gap-1.5">
+                {mech.sources.map((s) => (
+                  <li key={s.label}>
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-2 py-0.5 text-[11px] font-medium text-foreground hover:bg-muted hover:border-foreground/40 transition-colors"
+                      title={`Open ${s.label}`}
+                    >
+                      {s.label}
+                      <ExternalLink className="h-2.5 w-2.5 text-muted-foreground" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Static text fallback — always in the DOM for screen readers and print */}
         <ol className="sr-only">
           {MECHANISMS.map((m) => (
             <li key={m.id}>
-              {m.title} ({m.target}). {m.summary} {m.consequence}
+              {m.title} ({m.target}). {m.summary} {m.consequence} Sources: {m.sources.map((s) => s.label).join("; ")}.
             </li>
           ))}
         </ol>
