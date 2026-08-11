@@ -401,6 +401,62 @@ export const KetamineToleranceReversalDiagram = () => {
           )}
         </div>
 
+        {/* Expandable full reference list for all seven mechanisms */}
+        <details className="mt-4 group rounded-lg border border-border bg-card overflow-hidden">
+          <summary className="flex items-center justify-between gap-3 cursor-pointer list-none px-4 py-3 text-sm font-medium text-foreground hover:bg-muted/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+            <span className="flex items-center gap-2">
+              <BookOpen className="h-4 w-4 text-muted-foreground" aria-hidden />
+              Full reference list
+            </span>
+            <svg
+              className="h-4 w-4 text-muted-foreground transition-transform group-open:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div className="px-4 pb-4 pt-1 border-t border-border">
+            <ol className="space-y-4">
+              {MECHANISMS.map((m) => (
+                <li key={m.id}>
+                  <div className="flex items-start gap-2 mb-1.5">
+                    <span
+                      className="inline-flex items-center justify-center h-5 w-5 rounded-full text-[10px] font-bold text-background shrink-0 mt-0.5"
+                      style={{ backgroundColor: m.colour }}
+                    >
+                      {m.id}
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{m.title}</p>
+                      <p className="text-xs text-muted-foreground">{m.target}</p>
+                    </div>
+                  </div>
+                  <ul className="flex flex-wrap gap-1.5 pl-7">
+                    {m.sources.map((s) => (
+                      <li key={s.label}>
+                        <a
+                          href={s.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 rounded-full border border-border bg-muted/50 px-2 py-0.5 text-[11px] font-medium text-foreground hover:bg-muted hover:border-foreground/40 transition-colors"
+                          title={`Open ${s.label}`}
+                        >
+                          {s.label}
+                          <ExternalLink className="h-2.5 w-2.5 text-muted-foreground" />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </details>
+
         {/* Static text fallback — always in the DOM for screen readers and print */}
         <ol className="sr-only">
           {MECHANISMS.map((m) => (
