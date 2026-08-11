@@ -30,7 +30,10 @@ interface Mechanism {
 interface MechSource {
   /** Short label — matches the entry in the topic's References list. */
   label: string;
+  /** DOI deep link. */
   url: string;
+  /** PubMed ID for direct linking to the NCBI record. */
+  pmid: string;
 }
 
 const MECHANISMS: Mechanism[] = [
