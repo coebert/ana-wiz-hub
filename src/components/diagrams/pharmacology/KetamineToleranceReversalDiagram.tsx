@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BookOpen, ExternalLink, Pause, Play } from "lucide-react";
+import { BookOpen, Pause, Play } from "lucide-react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 import { useMotionPreference } from "@/contexts/MotionPreferenceContext";
 
