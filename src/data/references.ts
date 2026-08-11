@@ -3,8 +3,10 @@ export interface Reference {
   label: string;
   /** Full citation text */
   citation: string;
-  /** URL if available (BJA Education, PubMed, guideline) */
+  /** URL if available (BJA Education, DOI, guideline) */
   url?: string;
+  /** PubMed ID for direct linking to the NCBI record. */
+  pmid?: string;
   /**
    * Verbatim guideline / paper excerpt that supports the dose, threshold,
    * value, or recommendation this reference is being cited for. Shown
