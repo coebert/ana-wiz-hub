@@ -77,24 +77,46 @@ export const SectionReferences = ({
             {matched.map((ref) => (
               <li key={ref.label} className="text-muted-foreground flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                  {ref.url ? (
+                  <span className="font-medium text-foreground">{ref.label}</span>
+                  {" — "}
+                  {ref.url || ref.pmid ? (
                     <a
-                      href={ref.url}
+                      href={ref.pmid ? `https://pubmed.ncbi.nlm.nih.gov/${ref.pmid}/` : ref.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:underline"
                     >
-                      <span className="font-medium text-primary">{ref.label}</span>
-                      {" — "}
                       <span>{ref.citation}</span>
                       <ExternalLink className="inline h-3 w-3 ml-1 text-primary/60" />
                     </a>
                   ) : (
-                    <>
-                      <span className="font-medium text-foreground">{ref.label}</span>
-                      {" — "}
-                      {ref.citation}
-                    </>
+                    <span>{ref.citation}</span>
+                  )}
+                  {(ref.pmid || ref.url) && (
+                    <span className="inline-flex items-center gap-1 ml-1.5 align-middle">
+                      {ref.pmid && (
+                        <a
+                          href={`https://pubmed.ncbi.nlm.nih.gov/${ref.pmid}/`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-semibold text-background hover:opacity-90 transition-opacity"
+                          style={{ backgroundColor: "hsl(210 75% 42%)" }}
+                        >
+                          PubMed <ExternalLink className="h-2.5 w-2.5" />
+                        </a>
+                      )}
+                      {ref.url && (
+                        <a
+                          href={ref.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-semibold text-background hover:opacity-90 transition-opacity"
+                          style={{ backgroundColor: "hsl(160 55% 35%)" }}
+                        >
+                          DOI <ExternalLink className="h-2.5 w-2.5" />
+                        </a>
+                      )}
+                    </span>
                   )}
                   {ref.excerpt && (
                     <blockquote className="mt-1 border-l-2 border-primary/40 bg-background/60 pl-2 pr-1.5 py-1 italic text-foreground/75 rounded-r text-[11px] leading-snug">
