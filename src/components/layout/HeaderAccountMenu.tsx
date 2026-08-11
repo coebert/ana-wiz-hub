@@ -16,7 +16,7 @@ import {
  * the admin flow — admins still use /admin/login.
  */
 export const HeaderAccountMenu = () => {
-  const { user, loading, signOut } = useAuth();
+  const { user, loading, isAdmin, signOut } = useAuth();
 
   if (loading) {
     return <div className="w-8 h-8" aria-hidden />;
