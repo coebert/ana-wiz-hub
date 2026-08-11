@@ -118,7 +118,7 @@ const ExamProgressCard = ({
 };
 
 export const HomeDashboard = () => {
-  const { user, loading } = useAuth();
+  const { user, loading, isAdmin } = useAuth();
   const { completedTopics, getExamProgress } = useProgress();
   const { activeExam } = useExamFilter();
   const streak = useStudyStreak(user?.id);
