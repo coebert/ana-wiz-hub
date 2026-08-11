@@ -47,9 +47,9 @@ const MECHANISMS: Mechanism[] = [
     consequence: "↓ Ca²⁺ influx at sensitised synapses — the upstream event for every mechanism below.",
     colour: "hsl(210 75% 52%)",
     sources: [
-      { label: "Trujillo & Akil 1991", url: "https://doi.org/10.1126/science.1824728" },
-      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2" },
-      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025" },
+      { label: "Trujillo & Akil 1991", url: "https://doi.org/10.1126/science.1824728", pmid: "1824728" },
+      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2", pmid: "8657426" },
+      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025", pmid: "16508405" },
     ],
   },
   {
