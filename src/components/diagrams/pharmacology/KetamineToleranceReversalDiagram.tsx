@@ -62,8 +62,8 @@ const MECHANISMS: Mechanism[] = [
     consequence: "Closest mechanistic correlate of “re-setting” the receptor: same receptors, restored signalling.",
     colour: "hsl(280 60% 55%)",
     sources: [
-      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2" },
-      { label: "Trujillo & Akil 1991", url: "https://doi.org/10.1126/science.1824728" },
+      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2", pmid: "8657426" },
+      { label: "Trujillo & Akil 1991", url: "https://doi.org/10.1126/science.1824728", pmid: "1824728" },
     ],
   },
   {
