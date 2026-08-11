@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LogIn, LogOut, User as UserIcon } from "lucide-react";
+import { LogIn, LogOut, User as UserIcon, LayoutDashboard } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import {
   DropdownMenu,
@@ -16,7 +16,7 @@ import {
  * the admin flow — admins still use /admin/login.
  */
 export const HeaderAccountMenu = () => {
-  const { user, loading, signOut } = useAuth();
+  const { user, loading, isAdmin, signOut } = useAuth();
 
   if (loading) {
     return <div className="w-8 h-8" aria-hidden />;
@@ -61,6 +61,13 @@ export const HeaderAccountMenu = () => {
             <UserIcon className="h-4 w-4 mr-2" aria-hidden /> My progress
           </Link>
         </DropdownMenuItem>
+        {isAdmin && (
+          <DropdownMenuItem asChild>
+            <Link to="/admin" className="cursor-pointer">
+              <LayoutDashboard className="h-4 w-4 mr-2" aria-hidden /> Admin dashboard
+            </Link>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuItem
           onSelect={(e) => {
             e.preventDefault();
