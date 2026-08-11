@@ -61,6 +61,13 @@ export const HeaderAccountMenu = () => {
             <UserIcon className="h-4 w-4 mr-2" aria-hidden /> My progress
           </Link>
         </DropdownMenuItem>
+        {isAdmin && (
+          <DropdownMenuItem asChild>
+            <Link to="/admin" className="cursor-pointer">
+              <LayoutDashboard className="h-4 w-4 mr-2" aria-hidden /> Admin dashboard
+            </Link>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuItem
           onSelect={(e) => {
             e.preventDefault();
