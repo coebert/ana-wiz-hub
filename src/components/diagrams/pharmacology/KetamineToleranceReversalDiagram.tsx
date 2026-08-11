@@ -76,8 +76,8 @@ const MECHANISMS: Mechanism[] = [
     consequence: "Reversal of established spinal LTP — pain memory is de-potentiated.",
     colour: "hsl(160 55% 42%)",
     sources: [
-      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2" },
-      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025" },
+      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2", pmid: "8657426" },
+      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025", pmid: "16508405" },
     ],
   },
   {
@@ -90,8 +90,8 @@ const MECHANISMS: Mechanism[] = [
     consequence: "Shifts the descending balance back towards inhibition.",
     colour: "hsl(24 80% 52%)",
     sources: [
-      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025" },
-      { label: "Joly 2005", url: "https://doi.org/10.1097/00000542-200507000-00022" },
+      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025", pmid: "16508405" },
+      { label: "Joly 2005", url: "https://doi.org/10.1097/00000542-200507000-00022", pmid: "15983467" },
     ],
   },
   {
@@ -104,8 +104,8 @@ const MECHANISMS: Mechanism[] = [
     consequence: "Restores the chloride gradient and therefore inhibitory tone.",
     colour: "hsl(0 68% 55%)",
     sources: [
-      { label: "Loftus 2010", url: "https://doi.org/10.1097/ALN.0b013e3181e90914" },
-      { label: "Schwenk 2018", url: "https://doi.org/10.1097/AAP.0000000000000806" },
+      { label: "Loftus 2010", url: "https://doi.org/10.1097/ALN.0b013e3181e90914", pmid: "20693876" },
+      { label: "Schwenk 2018", url: "https://doi.org/10.1097/AAP.0000000000000806", pmid: "29870457" },
     ],
   },
   {
@@ -118,9 +118,9 @@ const MECHANISMS: Mechanism[] = [
     consequence: "Indirect but real: fewer receptors withdrawn from the membrane.",
     colour: "hsl(45 85% 45%)",
     sources: [
-      { label: "Joly 2005", url: "https://doi.org/10.1097/00000542-200507000-00022" },
-      { label: "Nielsen 2017", url: "https://doi.org/10.1097/j.pain.0000000000000782" },
-      { label: "Loftus 2010", url: "https://doi.org/10.1097/ALN.0b013e3181e90914" },
+      { label: "Joly 2005", url: "https://doi.org/10.1097/00000542-200507000-00022", pmid: "15983467" },
+      { label: "Nielsen 2017", url: "https://doi.org/10.1097/j.pain.0000000000000782", pmid: "28067693" },
+      { label: "Loftus 2010", url: "https://doi.org/10.1097/ALN.0b013e3181e90914", pmid: "20693876" },
     ],
   },
   {
@@ -133,9 +133,9 @@ const MECHANISMS: Mechanism[] = [
     consequence: "May explain benefit that outlasts the infusion by days to weeks.",
     colour: "hsl(330 60% 55%)",
     sources: [
-      { label: "Laskowski 2011", url: "https://doi.org/10.1007/s12630-011-9560-0" },
-      { label: "Brinck 2018", url: "https://doi.org/10.1002/14651858.CD012033.pub4" },
-      { label: "Schwenk 2018", url: "https://doi.org/10.1097/AAP.0000000000000806" },
+      { label: "Laskowski 2011", url: "https://doi.org/10.1007/s12630-011-9560-0", pmid: "21773855" },
+      { label: "Brinck 2018", url: "https://doi.org/10.1002/14651858.CD012033.pub4", pmid: "30570761" },
+      { label: "Schwenk 2018", url: "https://doi.org/10.1097/AAP.0000000000000806", pmid: "29870457" },
     ],
   },
 ];
