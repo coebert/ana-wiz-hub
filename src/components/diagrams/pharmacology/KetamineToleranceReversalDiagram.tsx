@@ -462,16 +462,7 @@ export const KetamineToleranceReversalDiagram = () => {
                   <ul className="flex flex-wrap gap-1.5 pl-7">
                     {m.sources.map((s) => (
                       <li key={s.label}>
-                        <a
-                          href={s.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 rounded-full border border-border bg-muted/50 px-2 py-0.5 text-[11px] font-medium text-foreground hover:bg-muted hover:border-foreground/40 transition-colors"
-                          title={`Open ${s.label}`}
-                        >
-                          {s.label}
-                          <ExternalLink className="h-2.5 w-2.5 text-muted-foreground" />
-                        </a>
+                        <SourceLinks source={s} />
                       </li>
                     ))}
                   </ul>
