@@ -164,9 +164,21 @@ export const HomeDashboard = () => {
   return (
     <section aria-label="Your progress" className="space-y-4">
       <div className="flex items-baseline justify-between gap-3">
-        <h2 className="text-lg font-serif font-semibold text-foreground">
-          Welcome back
-        </h2>
+        <div className="flex items-baseline gap-3">
+          <h2 className="text-lg font-serif font-semibold text-foreground">
+            Welcome back
+          </h2>
+          {isAdmin && (
+            <Link
+              to="/admin"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-xs font-medium hover:bg-primary/15 transition-colors"
+              aria-label="Admin dashboard"
+            >
+              <LayoutDashboard className="h-3.5 w-3.5" aria-hidden />
+              Admin
+            </Link>
+          )}
+        </div>
         <div
           className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-medium"
           title="Consecutive days with a completion or visit"
