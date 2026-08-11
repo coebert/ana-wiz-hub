@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BookOpen, ExternalLink, Pause, Play } from "lucide-react";
+import { BookOpen, Pause, Play } from "lucide-react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 import { useMotionPreference } from "@/contexts/MotionPreferenceContext";
 
@@ -30,7 +30,10 @@ interface Mechanism {
 interface MechSource {
   /** Short label — matches the entry in the topic's References list. */
   label: string;
+  /** DOI deep link. */
   url: string;
+  /** PubMed ID for direct linking to the NCBI record. */
+  pmid: string;
 }
 
 const MECHANISMS: Mechanism[] = [
@@ -44,9 +47,9 @@ const MECHANISMS: Mechanism[] = [
     consequence: "↓ Ca²⁺ influx at sensitised synapses — the upstream event for every mechanism below.",
     colour: "hsl(210 75% 52%)",
     sources: [
-      { label: "Trujillo & Akil 1991", url: "https://doi.org/10.1126/science.1824728" },
-      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2" },
-      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025" },
+      { label: "Trujillo & Akil 1991", url: "https://doi.org/10.1126/science.1824728", pmid: "1824728" },
+      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2", pmid: "8657426" },
+      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025", pmid: "16508405" },
     ],
   },
   {
@@ -59,8 +62,8 @@ const MECHANISMS: Mechanism[] = [
     consequence: "Closest mechanistic correlate of “re-setting” the receptor: same receptors, restored signalling.",
     colour: "hsl(280 60% 55%)",
     sources: [
-      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2" },
-      { label: "Trujillo & Akil 1991", url: "https://doi.org/10.1126/science.1824728" },
+      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2", pmid: "8657426" },
+      { label: "Trujillo & Akil 1991", url: "https://doi.org/10.1126/science.1824728", pmid: "1824728" },
     ],
   },
   {
@@ -73,8 +76,8 @@ const MECHANISMS: Mechanism[] = [
     consequence: "Reversal of established spinal LTP — pain memory is de-potentiated.",
     colour: "hsl(160 55% 42%)",
     sources: [
-      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2" },
-      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025" },
+      { label: "Mao 1995", url: "https://doi.org/10.1016/0304-3959(95)00073-2", pmid: "8657426" },
+      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025", pmid: "16508405" },
     ],
   },
   {
@@ -87,8 +90,8 @@ const MECHANISMS: Mechanism[] = [
     consequence: "Shifts the descending balance back towards inhibition.",
     colour: "hsl(24 80% 52%)",
     sources: [
-      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025" },
-      { label: "Joly 2005", url: "https://doi.org/10.1097/00000542-200507000-00022" },
+      { label: "Angst & Clark 2006", url: "https://doi.org/10.1097/00000542-200603000-00025", pmid: "16508405" },
+      { label: "Joly 2005", url: "https://doi.org/10.1097/00000542-200507000-00022", pmid: "15983467" },
     ],
   },
   {
@@ -101,8 +104,8 @@ const MECHANISMS: Mechanism[] = [
     consequence: "Restores the chloride gradient and therefore inhibitory tone.",
     colour: "hsl(0 68% 55%)",
     sources: [
-      { label: "Loftus 2010", url: "https://doi.org/10.1097/ALN.0b013e3181e90914" },
-      { label: "Schwenk 2018", url: "https://doi.org/10.1097/AAP.0000000000000806" },
+      { label: "Loftus 2010", url: "https://doi.org/10.1097/ALN.0b013e3181e90914", pmid: "20693876" },
+      { label: "Schwenk 2018", url: "https://doi.org/10.1097/AAP.0000000000000806", pmid: "29870457" },
     ],
   },
   {
@@ -115,9 +118,9 @@ const MECHANISMS: Mechanism[] = [
     consequence: "Indirect but real: fewer receptors withdrawn from the membrane.",
     colour: "hsl(45 85% 45%)",
     sources: [
-      { label: "Joly 2005", url: "https://doi.org/10.1097/00000542-200507000-00022" },
-      { label: "Nielsen 2017", url: "https://doi.org/10.1097/j.pain.0000000000000782" },
-      { label: "Loftus 2010", url: "https://doi.org/10.1097/ALN.0b013e3181e90914" },
+      { label: "Joly 2005", url: "https://doi.org/10.1097/00000542-200507000-00022", pmid: "15983467" },
+      { label: "Nielsen 2017", url: "https://doi.org/10.1097/j.pain.0000000000000782", pmid: "28067693" },
+      { label: "Loftus 2010", url: "https://doi.org/10.1097/ALN.0b013e3181e90914", pmid: "20693876" },
     ],
   },
   {
@@ -130,14 +133,44 @@ const MECHANISMS: Mechanism[] = [
     consequence: "May explain benefit that outlasts the infusion by days to weeks.",
     colour: "hsl(330 60% 55%)",
     sources: [
-      { label: "Laskowski 2011", url: "https://doi.org/10.1007/s12630-011-9560-0" },
-      { label: "Brinck 2018", url: "https://doi.org/10.1002/14651858.CD012033.pub4" },
-      { label: "Schwenk 2018", url: "https://doi.org/10.1097/AAP.0000000000000806" },
+      { label: "Laskowski 2011", url: "https://doi.org/10.1007/s12630-011-9560-0", pmid: "21773855" },
+      { label: "Brinck 2018", url: "https://doi.org/10.1002/14651858.CD012033.pub4", pmid: "30570761" },
+      { label: "Schwenk 2018", url: "https://doi.org/10.1097/AAP.0000000000000806", pmid: "29870457" },
     ],
   },
 ];
 
 const CYCLE_MS = 5200;
+
+const pubmedUrl = (pmid: string) => `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`;
+
+const SourceLinks = ({ source }: { source: MechSource }) => (
+  <span className="inline-flex items-center gap-1 rounded-full border border-border bg-card pl-2 pr-1 py-0.5 text-[11px] font-medium text-foreground hover:border-foreground/40 transition-colors">
+    <span className="truncate max-w-[10rem]">{source.label}</span>
+    <span className="inline-flex items-center gap-0.5">
+      <a
+        href={pubmedUrl(source.pmid)}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`Open PubMed record for ${source.label}`}
+        className="inline-flex items-center rounded px-1 py-0.5 text-[10px] font-semibold text-background hover:opacity-90 transition-opacity"
+        style={{ backgroundColor: "hsl(210 75% 42%)" }}
+      >
+        PubMed
+      </a>
+      <a
+        href={source.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`Open DOI for ${source.label}`}
+        className="inline-flex items-center rounded px-1 py-0.5 text-[10px] font-semibold text-background hover:opacity-90 transition-opacity"
+        style={{ backgroundColor: "hsl(160 55% 35%)" }}
+      >
+        DOI
+      </a>
+    </span>
+  </span>
+);
 
 export const KetamineToleranceReversalDiagram = () => {
   const { reduceMotion } = useMotionPreference();
@@ -384,16 +417,7 @@ export const KetamineToleranceReversalDiagram = () => {
               <ul className="flex flex-wrap gap-1.5">
                 {mech.sources.map((s) => (
                   <li key={s.label}>
-                    <a
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-2 py-0.5 text-[11px] font-medium text-foreground hover:bg-muted hover:border-foreground/40 transition-colors"
-                      title={`Open ${s.label}`}
-                    >
-                      {s.label}
-                      <ExternalLink className="h-2.5 w-2.5 text-muted-foreground" />
-                    </a>
+                    <SourceLinks source={s} />
                   </li>
                 ))}
               </ul>
@@ -438,16 +462,7 @@ export const KetamineToleranceReversalDiagram = () => {
                   <ul className="flex flex-wrap gap-1.5 pl-7">
                     {m.sources.map((s) => (
                       <li key={s.label}>
-                        <a
-                          href={s.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 rounded-full border border-border bg-muted/50 px-2 py-0.5 text-[11px] font-medium text-foreground hover:bg-muted hover:border-foreground/40 transition-colors"
-                          title={`Open ${s.label}`}
-                        >
-                          {s.label}
-                          <ExternalLink className="h-2.5 w-2.5 text-muted-foreground" />
-                        </a>
+                        <SourceLinks source={s} />
                       </li>
                     ))}
                   </ul>

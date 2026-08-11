@@ -77,15 +77,31 @@ export const InlineRef = ({
             “{ref.excerpt}”
           </blockquote>
         )}
-        {ref.url && (
-          <a
-            href={ref.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-perioperative hover:underline font-medium"
-          >
-            Open source <ExternalLink className="h-3 w-3" />
-          </a>
+        {(ref.pmid || ref.url) && (
+          <div className="flex flex-wrap items-center gap-2">
+            {ref.pmid && (
+              <a
+                href={`https://pubmed.ncbi.nlm.nih.gov/${ref.pmid}/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[11px] font-semibold text-background hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: "hsl(210 75% 42%)" }}
+              >
+                PubMed <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+            {ref.url && (
+              <a
+                href={ref.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[11px] font-semibold text-background hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: "hsl(160 55% 35%)" }}
+              >
+                DOI <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
         )}
 
         {hasKeyPoints && (
