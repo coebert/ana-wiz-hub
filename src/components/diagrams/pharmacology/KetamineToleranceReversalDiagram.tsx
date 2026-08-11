@@ -142,6 +142,36 @@ const MECHANISMS: Mechanism[] = [
 
 const CYCLE_MS = 5200;
 
+const pubmedUrl = (pmid: string) => `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`;
+
+const SourceLinks = ({ source }: { source: MechSource }) => (
+  <span className="inline-flex items-center gap-1 rounded-full border border-border bg-card pl-2 pr-1 py-0.5 text-[11px] font-medium text-foreground hover:border-foreground/40 transition-colors">
+    <span className="truncate max-w-[10rem]">{source.label}</span>
+    <span className="inline-flex items-center gap-0.5">
+      <a
+        href={pubmedUrl(source.pmid)}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`Open PubMed record for ${source.label}`}
+        className="inline-flex items-center rounded px-1 py-0.5 text-[10px] font-semibold text-background hover:opacity-90 transition-opacity"
+        style={{ backgroundColor: "hsl(210 75% 42%)" }}
+      >
+        PubMed
+      </a>
+      <a
+        href={source.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`Open DOI for ${source.label}`}
+        className="inline-flex items-center rounded px-1 py-0.5 text-[10px] font-semibold text-background hover:opacity-90 transition-opacity"
+        style={{ backgroundColor: "hsl(160 55% 35%)" }}
+      >
+        DOI
+      </a>
+    </span>
+  </span>
+);
+
 export const KetamineToleranceReversalDiagram = () => {
   const { reduceMotion } = useMotionPreference();
   const [active, setActive] = useState<MechId>(1);
