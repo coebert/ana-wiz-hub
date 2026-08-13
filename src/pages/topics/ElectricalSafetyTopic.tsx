@@ -116,9 +116,14 @@ const ElectricalSafetyTopic = () => {
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
           <p className="text-foreground/90 leading-relaxed">
-            Operating theatres contain numerous electrical devices in close proximity to patients. Understanding electrical
-            hazards (microshock and macroshock), protection mechanisms, and the safe use of diathermy and defibrillation
-            is a core FRCA primary topic.
+            Anaesthesia electrical safety is a high-yield <strong>FRCA Primary physics</strong> topic. Operating theatres
+            contain numerous electrical devices in close proximity to patients, so the exam focuses on three things:
+            the <strong>shock thresholds</strong> that define harm (perception ~1 mA, let-go ~15 mA, macroshock VF
+            ~100 mA, microshock VF ~100 µA), <strong>equipment classification</strong> under IEC 60601-1 (Class I
+            earthed, Class II double-insulated, Class III low-voltage; applied parts type B, BF and CF), and the
+            protective systems that limit leakage current — isolated power supplies with line isolation monitors,
+            RCDs, theatre humidity and antistatic flooring. The same physics underpins the safe use
+            of <strong>monopolar and bipolar diathermy</strong> and capacitor-based <strong>defibrillation</strong>.
           </p>
         </section>
 
