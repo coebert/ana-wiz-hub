@@ -27,6 +27,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Capnography", "Capnograph", "End-tidal CO2", "ETCO2", "EtCO₂", "Waveform capnography", "CO2 monitoring"],
     keywords: ["capnography", "capnography waveforms", "ETCO2 normal range", "end tidal CO2", "shark fin capnograph", "curare cleft", "waveform capnography FRCA"],
   },
+  "electrical-safety": {
+    title: "Electrical Safety: Shock Thresholds & Classes | FRCA",
+    description: "Anaesthesia electrical safety for FRCA Primary physics: shock thresholds, equipment classification (Class I–III, type B/BF/CF), diathermy, defibrillation.",
+    aliases: ["Electrical safety", "Microshock", "Macroshock", "Diathermy safety", "Equipment classification", "Type CF equipment"],
+    keywords: ["FRCA Primary physics", "anaesthesia electrical safety", "equipment classification", "shock thresholds", "microshock", "macroshock", "type CF", "diathermy", "isolated power supply"],
+  },
   // ===== Intensive Care (30 topics) =====
   "mechanical-ventilation": {
     title: "Mechanical Ventilation: Modes, ARDSnet & Weaning | FRCA",
