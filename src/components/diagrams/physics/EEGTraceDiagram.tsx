@@ -360,7 +360,7 @@ const EEGTraceDiagram = () => {
           </div>
   
           {/* Description panel */}
-          <div className="flex-1 min-w-0 space-y-3 animate-fade-in" key={stageIdx}>
+          <div className="w-full lg:w-[260px] lg:shrink-0 space-y-3 animate-fade-in" key={stageIdx}>
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm flex items-center gap-2">
                 <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: bisColor }} />
