@@ -216,9 +216,10 @@ const BISTrendDiagram = () => {
         </div>
   
         <div className="flex flex-col lg:flex-row gap-4 items-start">
-          <div className="flex-shrink-0 mx-auto lg:mx-0">
-            <svg viewBox={`0 0 ${svgW} ${svgH}`} width={svgW} height={svgH}
-              className="border border-border rounded bg-gradient-to-b from-background to-secondary/10 max-w-full">
+          <div className="w-full lg:flex-1 lg:min-w-0">
+            <svg viewBox={`0 0 ${svgW} ${svgH}`} width="100%" height="auto" preserveAspectRatio="xMidYMid meet"
+              className="w-full h-auto border border-border rounded bg-gradient-to-b from-background to-secondary/10">
+
   
               {/* Target zone */}
               <rect x={plotX} y={zoneY1} width={plotW} height={zoneY2 - zoneY1}
@@ -304,7 +305,7 @@ const BISTrendDiagram = () => {
           </div>
   
           {/* Info panel */}
-          <div className="flex-1 min-w-0 space-y-3">
+          <div className="w-full lg:w-[260px] lg:shrink-0 space-y-3">
             {/* Live BIS display */}
             <div className="p-3 rounded-lg border border-border">
               <div className="flex items-center justify-between">

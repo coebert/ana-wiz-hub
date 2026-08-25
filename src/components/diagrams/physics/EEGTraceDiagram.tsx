@@ -242,9 +242,10 @@ const EEGTraceDiagram = () => {
         </div>
   
         <div className="flex flex-col lg:flex-row gap-4 items-start">
-          <div className="flex-shrink-0 mx-auto lg:mx-0">
-            <svg viewBox={`0 0 ${svgW} ${svgH}`} width={svgW} height={svgH}
-              className="border border-border rounded bg-gradient-to-b from-background to-secondary/10 max-w-full">
+          <div className="w-full lg:flex-1 lg:min-w-0">
+            <svg viewBox={`0 0 ${svgW} ${svgH}`} width="100%" height="auto" preserveAspectRatio="xMidYMid meet"
+              className="w-full h-auto border border-border rounded bg-gradient-to-b from-background to-secondary/10">
+
   
               {/* ═══ EEG TRACE (top) ═══ */}
               {[0.25, 0.5, 0.75].map(frac => (
@@ -359,7 +360,7 @@ const EEGTraceDiagram = () => {
           </div>
   
           {/* Description panel */}
-          <div className="flex-1 min-w-0 space-y-3 animate-fade-in" key={stageIdx}>
+          <div className="w-full lg:w-[260px] lg:shrink-0 space-y-3 animate-fade-in" key={stageIdx}>
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm flex items-center gap-2">
                 <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: bisColor }} />

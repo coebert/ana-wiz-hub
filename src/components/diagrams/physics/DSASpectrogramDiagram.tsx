@@ -215,7 +215,7 @@ const DSASpectrogramDiagram = () => {
         </p>
   
         <div className="flex flex-col xl:flex-row gap-4 items-start">
-          <div className="w-full xl:w-[600px] xl:shrink-0 min-w-0">
+          <div className="w-full xl:flex-1 xl:min-w-0">
             <svg viewBox={`0 0 ${svgW} ${svgH}`}
               className="w-full h-auto border border-border rounded bg-[hsl(240,20%,6%)]">
 
@@ -325,7 +325,7 @@ const DSASpectrogramDiagram = () => {
           </div>
   
           {/* Info panel */}
-          <div className="w-full flex-1 min-w-0 space-y-3 animate-fade-in" key={hoveredPhase}>
+          <div className="w-full xl:w-[280px] xl:shrink-0 space-y-3 animate-fade-in" key={hoveredPhase}>
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">{info.label}</p>
               <p className="text-[10px] text-muted-foreground opacity-60 mb-1">{info.timeLabel} · BIS {info.bisRange}</p>
