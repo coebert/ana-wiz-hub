@@ -215,7 +215,7 @@ const DSASpectrogramDiagram = () => {
         </p>
   
         <div className="flex flex-col xl:flex-row gap-4 items-start">
-          <div className="w-full xl:w-[600px] xl:shrink-0 min-w-0">
+          <div className="w-full xl:flex-1 xl:min-w-0">
             <svg viewBox={`0 0 ${svgW} ${svgH}`}
               className="w-full h-auto border border-border rounded bg-[hsl(240,20%,6%)]">
 
