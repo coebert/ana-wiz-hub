@@ -1224,7 +1224,7 @@ const CardiacAnatomyDiagram = () => {
               </Canvas>
             </div>
   
-            <div className="flex-1 min-w-0 space-y-3">
+            <div className="w-full sm:w-[260px] md:w-[300px] sm:shrink-0 space-y-3">
               {/* Dissect-mode stepper */}
               {dissectMode && (
                 <div className="rounded-lg border border-primary/40 bg-primary/5 p-3 space-y-2">

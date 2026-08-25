@@ -206,7 +206,7 @@ const TCISimulatorDiagram = () => {
   
         <div className="flex flex-col lg:flex-row gap-4 items-start">
           {/* SVG Chart */}
-          <div className="flex-shrink-0 mx-auto lg:mx-0 overflow-x-auto">
+          <div className="w-full lg:flex-1 min-w-0 mx-auto lg:mx-0">
             <svg viewBox={`0 0 ${svgW} ${svgH}`} width={svgW} height={svgH}
               className="border border-border rounded bg-gradient-to-b from-background to-secondary/10 max-w-full">
   
@@ -341,7 +341,7 @@ const TCISimulatorDiagram = () => {
           </div>
   
           {/* Info panel */}
-          <div className="flex-1 min-w-0 space-y-3 animate-fade-in" key={targetCe}>
+          <div className="w-full lg:w-[280px] lg:shrink-0 space-y-3 animate-fade-in" key={targetCe}>
             {/* Comparison table */}
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm mb-2">Model Comparison at Ce {targetCe} µg/mL</p>
