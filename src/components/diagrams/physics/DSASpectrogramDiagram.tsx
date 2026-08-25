@@ -214,10 +214,11 @@ const DSASpectrogramDiagram = () => {
           Colour-coded frequency × time display showing power spectral changes through induction, maintenance, and emergence. Hover or tap a phase to see details.
         </p>
   
-        <div className="flex flex-col lg:flex-row gap-4 items-start">
-          <div className="flex-shrink-0 mx-auto lg:mx-0 overflow-x-auto">
-            <svg viewBox={`0 0 ${svgW} ${svgH}`} width={svgW} height={svgH}
-              className="border border-border rounded bg-[hsl(240,20%,6%)] max-w-full">
+        <div className="flex flex-col xl:flex-row gap-4 items-start">
+          <div className="w-full xl:w-[600px] xl:shrink-0 min-w-0">
+            <svg viewBox={`0 0 ${svgW} ${svgH}`}
+              className="w-full h-auto border border-border rounded bg-[hsl(240,20%,6%)]">
+
   
               {/* Background */}
               <rect x={plotX} y={plotY} width={plotW} height={plotH} fill="hsl(240, 30%, 5%)" />
@@ -324,7 +325,7 @@ const DSASpectrogramDiagram = () => {
           </div>
   
           {/* Info panel */}
-          <div className="flex-1 min-w-0 space-y-3 animate-fade-in" key={hoveredPhase}>
+          <div className="w-full flex-1 min-w-0 space-y-3 animate-fade-in" key={hoveredPhase}>
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">{info.label}</p>
               <p className="text-[10px] text-muted-foreground opacity-60 mb-1">{info.timeLabel} · BIS {info.bisRange}</p>
