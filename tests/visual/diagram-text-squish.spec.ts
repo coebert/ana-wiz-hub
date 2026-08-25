@@ -72,6 +72,8 @@ async function findSquishedText(page: Page, minWidth: number) {
           const text = (el.textContent || "").trim();
           // Ignore short chips/badges — they legitimately hug their content.
           if (text.length < 25) return;
+          // Ignore visually-hidden (sr-only) captions and descriptions.
+          if (el.closest(".sr-only") || r.width <= 2 || r.height <= 2) return;
 
           if (r.width < minWidth) {
             out.push({
