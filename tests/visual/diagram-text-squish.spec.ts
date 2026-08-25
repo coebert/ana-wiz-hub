@@ -70,8 +70,13 @@ async function findSquishedText(page: Page, minWidth: number) {
           const r = el.getBoundingClientRect();
           if (r.width === 0 || r.height === 0) return;
           const text = (el.textContent || "").trim();
-          // Ignore short chips/badges — they legitimately hug their content.
-          if (text.length < 25) return;
+          // Ignore short chips/badges and compact stat tiles — they
+          // legitimately hug their content.
+          if (text.length < 40) return;
+          const parentDisplay = el.parentElement
+            ? getComputedStyle(el.parentElement).display
+            : "";
+          if (parentDisplay.includes("grid")) return;
           // Ignore visually-hidden (sr-only) captions and descriptions.
           if (el.closest(".sr-only") || r.width <= 2 || r.height <= 2) return;
 
@@ -110,6 +115,20 @@ async function findRigidWidths(page: Page) {
           if (!parent) return;
           const available = parent.clientWidth;
           if (!available) return;
+
+          // A rigid width is fine when it lives in its own horizontal
+          // scroller (opt-in wide tables / wide diagrams).
+          let scroller: HTMLElement | null = parent;
+          let scrolls = false;
+          while (scroller && scroller !== document.documentElement) {
+            const s = getComputedStyle(scroller);
+            if (s.overflowX === "auto" || s.overflowX === "scroll") {
+              scrolls = true;
+              break;
+            }
+            scroller = scroller.parentElement;
+          }
+          if (scrolls) return;
 
           const minW = px(cs.minWidth);
           if (Number.isFinite(minW) && minW > available + 1) {
