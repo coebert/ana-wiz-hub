@@ -276,7 +276,7 @@ const HAGMAManagementAlgorithm = () => {
         </p>
 
         {/* 4-column algorithm */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-3 mb-4 animate-fade-in" key={`grid-${cause.key}`}>
+        <div className="grid md:grid-cols-2 gap-3 mb-4 animate-fade-in" key={`grid-${cause.key}`}>
           {columns.map((col) => {
             const Icon = col.icon;
             return (

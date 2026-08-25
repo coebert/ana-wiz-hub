@@ -83,9 +83,9 @@ const StarlingForcesDiagram = () => {
         </p>
   
         <div className="flex flex-col lg:flex-row gap-4 items-start">
-          <div className="flex-shrink-0 mx-auto lg:mx-0 overflow-x-auto">
-            <svg viewBox={`0 0 ${w} ${h}`} width={w} height={h}
-              className="border border-border rounded bg-gradient-to-b from-background to-secondary/10 max-w-full">
+          <div className="w-full lg:flex-1 min-w-0 mx-auto lg:mx-0">
+            <svg viewBox={`0 0 ${w} ${h}`}
+              className="w-full h-auto max-w-[560px] border border-border rounded bg-gradient-to-b from-background to-secondary/10">
   
               {/* Interstitial space background */}
               <rect x="40" y={capY + capH + 8} width={w - 80} height="100" rx="8"
@@ -214,7 +214,7 @@ const StarlingForcesDiagram = () => {
           </div>
   
           {/* Info panel */}
-          <div className="flex-1 min-w-0 space-y-3">
+          <div className="w-full lg:w-[280px] lg:shrink-0 space-y-3">
             {activeForce ? (
               <div className="p-3 rounded-lg border border-border animate-fade-in" key={activeForce.id}>
                 <p className="font-semibold text-foreground text-sm" style={{ color: activeForce.color }}>

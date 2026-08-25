@@ -231,7 +231,7 @@ const JetVentilationDiagram = () => {
               </div>
             </div>
   
-            <div className="grid sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-2">
               <div className="p-2.5 rounded-lg border border-emerald-500/30 bg-emerald-500/5">
                 <p className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 mb-1">Pearls</p>
                 <ul className="space-y-1">

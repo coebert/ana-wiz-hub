@@ -436,7 +436,7 @@ const EndocrineEmergencyDrugs = () => {
           </div>
   
           {/* Drug grid */}
-          <div className="grid sm:grid-cols-2 gap-2">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-2">
             {visible.map((d) => {
               const meta = CLASS_META[d.cls];
               const isOpen = openId === d.id;
@@ -497,7 +497,7 @@ const EndocrineEmergencyDrugs = () => {
                         </pre>
                       </div>
   
-                      <div className="grid sm:grid-cols-2 gap-2">
+                      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-2">
                         <div>
                           <p className="text-[9px] uppercase tracking-wider font-semibold text-muted-foreground">
                             Onset

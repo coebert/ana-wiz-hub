@@ -508,7 +508,7 @@ const ModalityDetail = ({ m }: { m: Modality }) => (
     <p className="text-xs text-foreground mb-2">
       <strong>Threshold:</strong> <span className="text-muted-foreground">{m.threshold}</span>
     </p>
-    <div className="grid sm:grid-cols-2 gap-2">
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-2">
       <div>
         <p className="text-[11px] font-bold text-foreground uppercase tracking-wide mb-1">✓ Strengths</p>
         <ul className="text-[11px] text-muted-foreground space-y-1 list-disc list-inside leading-snug">

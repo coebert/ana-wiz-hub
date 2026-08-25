@@ -190,7 +190,7 @@ const ECMOCircuitDiagram = () => {
 
         <div className="flex flex-col lg:flex-row gap-5 items-start">
           {/* SVG */}
-          <div className="flex-shrink-0 w-full lg:w-[560px]">
+          <div className="w-full lg:flex-1 min-w-0">
             <svg viewBox="0 0 520 440" className="w-full h-auto border border-border rounded-lg bg-gradient-to-br from-background to-secondary/10">
               <defs>
                 <linearGradient id="oxy-gradient" x1="0" y1="1" x2="0" y2="0">
@@ -275,7 +275,7 @@ const ECMOCircuitDiagram = () => {
           </div>
 
           {/* Info panel */}
-          <div className="flex-1 min-w-0 space-y-3 animate-fade-in" key={mode}>
+          <div className="w-full lg:w-[290px] lg:shrink-0 space-y-3 animate-fade-in" key={mode}>
             {mode === "vv" ? (
               <>
                 <div className="p-3 rounded-lg border border-border bg-card">

@@ -402,7 +402,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
         {/* Atlas header strip */}
         <div className="px-4 sm:px-6 pt-4 pb-3 border-b border-border bg-muted/20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-            <div>
+            <div className="min-w-[16rem] sm:flex-1">
               <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
                 {atlasTitle}
               </p>
