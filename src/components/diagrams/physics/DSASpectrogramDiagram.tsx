@@ -325,7 +325,7 @@ const DSASpectrogramDiagram = () => {
           </div>
   
           {/* Info panel */}
-          <div className="w-full flex-1 min-w-0 space-y-3 animate-fade-in" key={hoveredPhase}>
+          <div className="w-full xl:w-[280px] xl:shrink-0 space-y-3 animate-fade-in" key={hoveredPhase}>
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">{info.label}</p>
               <p className="text-[10px] text-muted-foreground opacity-60 mb-1">{info.timeLabel} · BIS {info.bisRange}</p>
