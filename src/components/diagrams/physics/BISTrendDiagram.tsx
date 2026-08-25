@@ -305,7 +305,7 @@ const BISTrendDiagram = () => {
           </div>
   
           {/* Info panel */}
-          <div className="flex-1 min-w-0 space-y-3">
+          <div className="w-full lg:w-[260px] lg:shrink-0 space-y-3">
             {/* Live BIS display */}
             <div className="p-3 rounded-lg border border-border">
               <div className="flex items-center justify-between">
