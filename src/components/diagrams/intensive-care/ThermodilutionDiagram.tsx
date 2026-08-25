@@ -485,7 +485,7 @@ export const ThermodilutionDiagram = () => {
         </div>
   
         {/* Step explanations */}
-        <div className="mt-3 grid grid-cols-1 md:grid-cols-4 gap-2 text-[11px]">
+        <div className="mt-3 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-2 text-[11px]">
           {[
             { label: "1. Inject", body: "10 mL iced saline at the RA port at end-expiration." },
             { label: "2. Mix", body: "Bolus traverses RV — the thermal indicator equilibrates with blood." },

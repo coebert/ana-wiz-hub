@@ -265,7 +265,7 @@ export const LongQTTorsadesDiagram = () => {
         </div>
   
         {/* Cascade explanation */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-3">
           {[
             { step: "1", title: "Trigger", body: "Class III drug, hypoK/hypoMg, congenital channelopathy, or bradycardia/pause." },
             { step: "2", title: "Phase 3 prolongation", body: "↓ IKr (± IKs) → repolarisation slows → APD ↑ → QT interval prolongs (>500 ms = high risk)." },
