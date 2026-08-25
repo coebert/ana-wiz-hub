@@ -272,7 +272,7 @@ function CSHTDiagram() {
         </div>
 
         {/* Info panel */}
-        <div className="flex-1 min-w-0 space-y-3 animate-fade-in" key={hoveredDrug || "default"}>
+        <div className="w-full lg:w-[260px] lg:shrink-0 space-y-3 animate-fade-in" key={hoveredDrug || "default"}>
           {activeDrug ? (
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm flex items-center gap-2">
