@@ -207,8 +207,8 @@ const TCISimulatorDiagram = () => {
         <div className="flex flex-col lg:flex-row gap-4 items-start">
           {/* SVG Chart */}
           <div className="w-full lg:flex-1 min-w-0 mx-auto lg:mx-0">
-            <svg viewBox={`0 0 ${svgW} ${svgH}`} width={svgW} height={svgH}
-              className="border border-border rounded bg-gradient-to-b from-background to-secondary/10 max-w-full">
+            <svg viewBox={`0 0 ${svgW} ${svgH}`}
+              className="w-full h-auto max-w-[640px] border border-border rounded bg-gradient-to-b from-background to-secondary/10">
   
               {/* Grid */}
               {Array.from({ length: 6 }, (_, i) => {

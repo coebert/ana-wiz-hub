@@ -84,8 +84,8 @@ const StarlingForcesDiagram = () => {
   
         <div className="flex flex-col lg:flex-row gap-4 items-start">
           <div className="w-full lg:flex-1 min-w-0 mx-auto lg:mx-0">
-            <svg viewBox={`0 0 ${w} ${h}`} width={w} height={h}
-              className="border border-border rounded bg-gradient-to-b from-background to-secondary/10 max-w-full">
+            <svg viewBox={`0 0 ${w} ${h}`}
+              className="w-full h-auto max-w-[560px] border border-border rounded bg-gradient-to-b from-background to-secondary/10">
   
               {/* Interstitial space background */}
               <rect x="40" y={capY + capH + 8} width={w - 80} height="100" rx="8"
