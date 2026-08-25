@@ -155,9 +155,10 @@ function CSHTDiagram() {
       </div>
 
       <div className="flex flex-col lg:flex-row gap-4 items-start">
-        <div className="flex-shrink-0 mx-auto lg:mx-0 overflow-x-auto">
-          <svg viewBox={`0 0 ${svgW} ${svgH}`} width={svgW} height={svgH}
-            className="border border-border rounded bg-gradient-to-b from-background to-secondary/10 max-w-full"
+        <div className="w-full lg:flex-1 lg:min-w-0">
+          <svg viewBox={`0 0 ${svgW} ${svgH}`} width="100%" height="auto" preserveAspectRatio="xMidYMid meet"
+            className="w-full h-auto border border-border rounded bg-gradient-to-b from-background to-secondary/10"
+
             onMouseMove={e => {
               const rect = (e.target as SVGElement).closest("svg")?.getBoundingClientRect();
               if (!rect) return;
