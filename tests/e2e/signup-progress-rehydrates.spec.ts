@@ -22,6 +22,10 @@ import { test, expect, type Page } from "@playwright/test";
  */
 
 const TOPIC_PATH = "/physics/temperature-measurement";
+const SECOND_TOPIC_PATH = "/physics/venturi-mask";
+
+/** Escape a string for safe use inside a RegExp. */
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 const PROGRESS_KEYS = [
   "anaesthesia-core-progress",
