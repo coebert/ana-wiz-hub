@@ -34,17 +34,30 @@ export default function Login() {
         if (error) throw error;
         toast({ title: "Welcome back" });
       } else {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: { emailRedirectTo: `${window.location.origin}/review` },
         });
         if (error) throw error;
-        toast({
-          title: "Account created",
-          description: "Check your inbox if email confirmation is enabled, otherwise you're signed in.",
-        });
+        // Supabase returns an identities array of length 0 when the email is
+        // already registered (it does not error, to avoid account enumeration).
+        if (data.user && (data.user.identities?.length ?? 0) === 0) {
+          toast({
+            title: "Account already exists",
+            description: "That email is already registered — sign in instead, or reset your password.",
+          });
+          setMode("signin");
+        } else if (data.session) {
+          toast({ title: "Account created", description: "You're signed in — your progress will now sync across devices." });
+        } else {
+          toast({
+            title: "Confirm your email",
+            description: `We've sent a confirmation link to ${email}. Open it to activate your account and sync progress across devices.`,
+          });
+        }
       }
+
     } catch (err) {
       toast({ title: "Authentication failed", description: (err as Error).message, variant: "destructive" });
     } finally {
