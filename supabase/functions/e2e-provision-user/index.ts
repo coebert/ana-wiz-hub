@@ -68,7 +68,8 @@ Deno.serve(async (req) => {
 
   const email = (body.email ?? '').trim().toLowerCase()
   const password = body.password ?? ''
-  const action = body.action === 'delete' ? 'delete' : 'provision'
+  const action =
+    body.action === 'delete' || body.action === 'confirm' ? body.action : 'provision'
 
   if (!EMAIL_RE.test(email)) {
     return json({ error: 'Email must match e2e-<slug>@e2e.anaesthesiacore.test' }, 400)
@@ -90,7 +91,23 @@ Deno.serve(async (req) => {
     (u: { id: string; email?: string }) => (u.email ?? '').toLowerCase() === email,
   )
 
+  // Confirm an account that was just created through the normal signup UI,
+  // so the e2e run doesn't need access to the confirmation e-mail.
+  if (action === 'confirm') {
+    if (!existing) return json({ error: 'No such test user', email }, 404)
+    const patch: Record<string, unknown> = { email_confirm: true }
+    if (password.length >= 10) patch.password = password
+    const upRes = await fetch(`${SUPABASE_URL}/auth/v1/admin/users/${existing.id}`, {
+      method: 'PUT',
+      headers: adminHeaders,
+      body: JSON.stringify(patch),
+    })
+    if (!upRes.ok) return json({ error: 'Confirm failed', detail: await upRes.text() }, 500)
+    return json({ email, userId: existing.id, confirmed: true })
+  }
+
   if (existing) {
+
     const delRes = await fetch(`${SUPABASE_URL}/auth/v1/admin/users/${existing.id}`, {
       method: 'DELETE',
       headers: adminHeaders,
