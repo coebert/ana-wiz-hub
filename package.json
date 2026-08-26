@@ -33,7 +33,8 @@
     "test:watch": "vitest",
     "gen:diagram-snapshots": "node scripts/generate-diagram-snapshot-registry.mjs",
     "test:layout": "playwright test tests/visual/diagram-text-squish.spec.ts",
-    "test:diagram-snapshots": "npm run gen:diagram-snapshots && playwright test tests/visual/diagram-snapshots.spec.ts"
+    "test:diagram-snapshots": "npm run gen:diagram-snapshots && playwright test tests/visual/diagram-snapshots.spec.ts",
+    "test:e2e": "playwright test tests/e2e --project=chromium --project=firefox --project=webkit"
   },
   "dependencies": {
     "@ai-sdk/openai-compatible": "^2.0.51",
