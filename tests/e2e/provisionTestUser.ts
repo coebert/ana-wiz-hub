@@ -67,6 +67,14 @@ export async function provisionTestUser(
   return { email, password };
 }
 
+/**
+ * Confirm an account that was just created through the app's own signup UI —
+ * the test-mode equivalent of clicking the confirmation link in the e-mail.
+ */
+export async function confirmTestUser(email: string, password?: string): Promise<void> {
+  await callProvision({ email, password, action: "confirm" });
+}
+
 /** Best-effort teardown so the auth table doesn't accumulate test accounts. */
 export async function deleteTestUser(email: string): Promise<void> {
   try {

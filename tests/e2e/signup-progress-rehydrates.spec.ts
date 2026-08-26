@@ -1,5 +1,10 @@
 import { test, expect, type Page } from "@playwright/test";
-import { provisionTestUser, deleteTestUser, TEST_PASSWORD } from "./provisionTestUser";
+import {
+  confirmTestUser,
+  deleteTestUser,
+  testEmail,
+  TEST_PASSWORD,
+} from "./provisionTestUser";
 
 /**
  * End-to-end proof that account creation persists progress across sessions.
@@ -74,12 +79,23 @@ test.describe("progress survives sign-out and a fresh session", () => {
   });
 
   test("a new account's topic completion rehydrates from the cloud", async ({ page }) => {
-    // ---- 1. Provision + sign in to a deterministic account ------------
-    const { email, password } = await provisionTestUser("progress", PASSWORD);
+    // ---- 1. Create the account through the real signup UI -------------
+    // The address lives in the reserved e2e domain, so the backend can
+    // confirm it for us instead of us needing the confirmation e-mail.
+    const email = testEmail("progress");
+    const password = PASSWORD;
     provisionedEmail = email;
 
-    await submitAuthForm(page, "signin", email, password);
-    const signedIn = await hasSession(page);
+    await submitAuthForm(page, "signup", email, password);
+    let signedIn = await hasSession(page);
+
+    if (!signedIn) {
+      // Email confirmation is enabled — confirm the account server-side
+      // (test-mode bypass) and sign in normally.
+      await confirmTestUser(email, password);
+      await submitAuthForm(page, "signin", email, password);
+      signedIn = await hasSession(page);
+    }
 
     expect(signedIn, "expected an authenticated session after account creation").toBe(true);
 
