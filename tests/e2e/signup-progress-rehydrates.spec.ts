@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { provisionTestUser, deleteTestUser, TEST_PASSWORD } from "./provisionTestUser";
 
 /**
  * End-to-end proof that account creation persists progress across sessions.
@@ -11,11 +12,11 @@ import { test, expect, type Page } from "@playwright/test";
  *   5. Sign back in and assert the topic still reads "Completed!" — i.e. the
  *      state came from the cloud, not from local storage.
  *
- * The signup path only yields a session when email confirmation is disabled
- * on the project. When confirmation is on, `signUp()` returns no session and
- * the new account cannot be used unattended — in that case the spec falls
- * back to TEST_USER_EMAIL / TEST_USER_PASSWORD if provided, and otherwise
- * skips rather than failing spuriously.
+ * Email confirmation is enabled on the project, so `signUp()` alone yields no
+ * usable session. Rather than skipping, the spec provisions a deterministic,
+ * pre-confirmed account in the reserved `e2e.anaesthesiacore.test` domain via
+ * the `e2e-provision-user` edge function, then signs in with it. The account
+ * is recreated per run (empty cloud progress) and deleted afterwards.
  *
  * Run:
  *   npx playwright test tests/e2e/signup-progress-rehydrates.spec.ts
@@ -33,12 +34,7 @@ const PROGRESS_KEYS = [
   "anaesthesia-core-recent-topics",
 ];
 
-const FALLBACK_EMAIL = process.env.TEST_USER_EMAIL;
-const FALLBACK_PASSWORD = process.env.TEST_USER_PASSWORD;
-
-const uniqueEmail = () =>
-  `e2e-progress-${Date.now()}-${Math.floor(Math.random() * 10000)}@example.com`;
-const PASSWORD = "E2e-Progress-Test!2026";
+const PASSWORD = TEST_PASSWORD;
 
 /** Fill and submit the /login form in the requested mode. */
 async function submitAuthForm(page: Page, mode: "signin" | "signup", email: string, password: string) {
@@ -71,25 +67,20 @@ const completionToggle = (page: Page) =>
   page.getByRole("button", { name: /mark as completed|completed!/i }).first();
 
 test.describe("progress survives sign-out and a fresh session", () => {
+  let provisionedEmail: string | undefined;
+
+  test.afterAll(async () => {
+    if (provisionedEmail) await deleteTestUser(provisionedEmail);
+  });
+
   test("a new account's topic completion rehydrates from the cloud", async ({ page }) => {
-    // ---- 1. Create the account ----------------------------------------
-    let email = uniqueEmail();
-    let password = PASSWORD;
+    // ---- 1. Provision + sign in to a deterministic account ------------
+    const { email, password } = await provisionTestUser("progress", PASSWORD);
+    provisionedEmail = email;
 
-    await submitAuthForm(page, "signup", email, password);
-    let signedIn = await hasSession(page);
+    await submitAuthForm(page, "signin", email, password);
+    const signedIn = await hasSession(page);
 
-    if (!signedIn) {
-      // Email confirmation is enabled — the new account is unusable here.
-      test.skip(
-        !FALLBACK_EMAIL || !FALLBACK_PASSWORD,
-        "Email confirmation is enabled; set TEST_USER_EMAIL/TEST_USER_PASSWORD to run this spec"
-      );
-      email = FALLBACK_EMAIL!;
-      password = FALLBACK_PASSWORD!;
-      await submitAuthForm(page, "signin", email, password);
-      signedIn = await hasSession(page);
-    }
     expect(signedIn, "expected an authenticated session after account creation").toBe(true);
 
     // ---- 2. Record progress on a topic --------------------------------
