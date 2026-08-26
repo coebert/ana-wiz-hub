@@ -72,17 +72,21 @@ const completionToggle = (page: Page) =>
   page.getByRole("button", { name: /mark as completed|completed!/i }).first();
 
 test.describe("progress survives sign-out and a fresh session", () => {
+  // Runs on chromium, firefox and webkit — each browser provisions its own
+  // account, so the projects are safe to run in parallel.
+  test.slow();
+
   let provisionedEmail: string | undefined;
 
   test.afterAll(async () => {
     if (provisionedEmail) await deleteTestUser(provisionedEmail);
   });
 
-  test("a new account's topic completion rehydrates from the cloud", async ({ page }) => {
+  test("a new account's topic completion rehydrates from the cloud", async ({ page, browserName }) => {
     // ---- 1. Create the account through the real signup UI -------------
     // The address lives in the reserved e2e domain, so the backend can
     // confirm it for us instead of us needing the confirmation e-mail.
-    const email = testEmail("progress");
+    const email = testEmail(`progress-${browserName}`);
     const password = PASSWORD;
     provisionedEmail = email;
 
