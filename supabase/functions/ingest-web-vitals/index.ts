@@ -4,6 +4,7 @@
 // from the client), so no rate limiting beyond gateway defaults.
 
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { z } from "npm:zod@3.23.8";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
