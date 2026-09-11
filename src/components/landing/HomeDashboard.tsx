@@ -188,6 +188,14 @@ export const HomeDashboard = () => {
             <BarChart3 className="h-3.5 w-3.5" aria-hidden />
             Progress overview
           </Link>
+          <Link
+            to="/study-stats"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-muted text-foreground text-xs font-medium hover:bg-muted/70 transition-colors"
+            aria-label="Study stats"
+          >
+            <Timer className="h-3.5 w-3.5" aria-hidden />
+            Study stats
+          </Link>
           <div
             className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-medium"
             title="Consecutive days with a completion or visit"

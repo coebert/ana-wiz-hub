@@ -19,6 +19,7 @@ const AuditReport = lazy(() => import("./pages/AuditReport"));
 // at /admin/audit. The legacy route below redirects there for back-compat.
 const TopicMap = lazy(() => import("./pages/TopicMap"));
 const ProgressTracker = lazy(() => import("./pages/ProgressTracker"));
+const StudyStats = lazy(() => import("./pages/StudyStats"));
 const PodcastsLibrary = lazy(() => import("./pages/PodcastsLibrary"));
 const GlossaryAudit = lazy(() => import("./pages/GlossaryAudit"));
 const VivaHub = lazy(() => import("./pages/VivaHub"));
@@ -111,6 +112,7 @@ const App = () => (
           <Route path="/map" element={<TopicMap />} />
           <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/progress" element={<ProgressTracker />} />
+          <Route path="/study-stats" element={<StudyStats />} />
           <Route path="/errata" element={<Errata />} />
           <Route path="/trust" element={<Trust />} />
           <Route path="/podcasts" element={<PodcastsLibrary />} />
