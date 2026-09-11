@@ -15,13 +15,21 @@ import {
   Circle,
   Trophy,
   GraduationCap,
+  History,
+  ListChecks,
+  LayoutDashboard,
 } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
+import { useSubsectionProgress } from "@/contexts/SubsectionProgressContext";
+import { useRecentTopics } from "@/hooks/useRecentTopics";
+import { useAuth } from "@/hooks/useAuth";
 import { ProgressRing } from "@/components/shared/ProgressRing";
 import {
   Section,
   ExamTag,
   Exam,
+  Topic,
+  allTopics,
   topicsBySection,
 } from "@/data/curriculum";
 
@@ -55,10 +63,63 @@ const sectionMeta: {
 
 const pct = (c: number, t: number) => (t > 0 ? Math.round((c / t) * 100) : 0);
 
+/** Relative "x ago" label for recent-topic timestamps. */
+const timeAgo = (ts: number): string => {
+  const mins = Math.round((Date.now() - ts) / 60000);
+  if (mins < 1) return "just now";
+  if (mins < 60) return `${mins} min ago`;
+  const hours = Math.round(mins / 60);
+  if (hours < 24) return `${hours} hr ago`;
+  const days = Math.round(hours / 24);
+  if (days < 30) return `${days} day${days === 1 ? "" : "s"} ago`;
+  return new Date(ts).toLocaleDateString();
+};
+
 const ProgressTracker = () => {
   const { isCompleted, getOverallProgress, getExamProgress, getSectionProgress, getExamSectionProgress } =
     useProgress();
+  const { ticks } = useSubsectionProgress();
+  const recentTopics = useRecentTopics();
+  const { user } = useAuth();
   const [activeFilter, setActiveFilter] = useState<ExamFilter>("all");
+
+  // Fast lookup: topicId -> topic + its section path, for overview links.
+  const topicLookup = useMemo(() => {
+    const pathBySection = new Map(sectionMeta.map((s) => [s.key, s.path]));
+    const map = new Map<string, { topic: Topic; path: string }>();
+    for (const t of allTopics) {
+      const base = pathBySection.get(t.section);
+      if (base) map.set(t.id, { topic: t, path: `${base}/${t.id}` });
+    }
+    return map;
+  }, []);
+
+  const completedList = useMemo(
+    () =>
+      allTopics.filter((t) => t.available && isCompleted(t.id)),
+    [isCompleted]
+  );
+
+  const subsectionSummary = useMemo(() => {
+    const entries = Object.entries(ticks)
+      .filter(([topicId, ids]) => ids.size > 0 && topicLookup.has(topicId))
+      .map(([topicId, ids]) => ({
+        topicId,
+        count: ids.size,
+        ...topicLookup.get(topicId)!,
+      }))
+      .sort((a, b) => b.count - a.count);
+    const totalTicks = entries.reduce((n, e) => n + e.count, 0);
+    return { entries, totalTicks };
+  }, [ticks, topicLookup]);
+
+  const recentList = useMemo(
+    () =>
+      recentTopics
+        .filter((e) => topicLookup.has(e.topicId))
+        .map((e) => ({ ...e, ...topicLookup.get(e.topicId)! })),
+    [recentTopics, topicLookup]
+  );
 
   // Header summary cards always show all curricula side-by-side, regardless of filter.
   const summary = useMemo(
@@ -123,8 +184,133 @@ const ProgressTracker = () => {
           Your topic progress
         </h1>
         <p className="text-muted-foreground max-w-2xl">
-          Track completion across the FRCA Primary, Final, and FFICM curricula. Mark topics complete from any topic page — your progress saves locally.
+          Track completion across the FRCA Primary, Final, and FFICM curricula. Mark topics complete from any topic page — sign in and your progress follows you across devices.
         </p>
+      </div>
+
+      {/* At-a-glance overview */}
+      <div className="mb-8">
+        <div className="flex items-center gap-2 mb-3">
+          <LayoutDashboard className="h-4 w-4 text-primary" />
+          <h2 className="text-xl font-serif font-bold text-foreground">At a glance</h2>
+        </div>
+        <div className="grid grid-cols-3 gap-3 mb-4">
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="text-2xl font-bold text-foreground">
+              {summary.all.completed}
+              <span className="text-sm font-normal text-muted-foreground">/{summary.all.total}</span>
+            </div>
+            <div className="text-xs text-muted-foreground mt-0.5">Topics completed</div>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="text-2xl font-bold text-foreground">{subsectionSummary.totalTicks}</div>
+            <div className="text-xs text-muted-foreground mt-0.5">
+              Subsection ticks across {subsectionSummary.entries.length} topic
+              {subsectionSummary.entries.length === 1 ? "" : "s"}
+            </div>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="text-2xl font-bold text-foreground">{recentList.length}</div>
+            <div className="text-xs text-muted-foreground mt-0.5">Recently visited</div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-3">
+          {/* Recent topics */}
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="flex items-center gap-2 mb-3">
+              <History className="h-4 w-4 text-primary" />
+              <h3 className="text-sm font-semibold text-foreground">Recent topics</h3>
+            </div>
+            {recentList.length === 0 ? (
+              <p className="text-sm text-muted-foreground">
+                Topics you open will appear here for quick access.
+              </p>
+            ) : (
+              <ul className="space-y-1">
+                {recentList.slice(0, 6).map((e) => (
+                  <li key={e.topicId}>
+                    <Link
+                      to={e.path}
+                      className="group flex items-baseline justify-between gap-2 rounded-md px-2 py-1.5 -mx-2 hover:bg-muted/40 transition-colors"
+                    >
+                      <span className="text-sm text-foreground truncate group-hover:text-primary transition-colors">
+                        {e.topic.title}
+                      </span>
+                      <span className="text-[11px] text-muted-foreground shrink-0">
+                        {timeAgo(e.visitedAt)}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Completed topics */}
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="flex items-center gap-2 mb-3">
+              <CheckCircle2 className="h-4 w-4 text-accent" />
+              <h3 className="text-sm font-semibold text-foreground">Completed topics</h3>
+            </div>
+            {completedList.length === 0 ? (
+              <p className="text-sm text-muted-foreground">
+                Mark a topic complete from its page and it will show up here.
+              </p>
+            ) : (
+              <ul className="space-y-1 max-h-64 overflow-y-auto pr-1">
+                {completedList.map((t) => {
+                  const entry = topicLookup.get(t.id);
+                  if (!entry) return null;
+                  return (
+                    <li key={t.id}>
+                      <Link
+                        to={entry.path}
+                        className="group flex items-center gap-2 rounded-md px-2 py-1.5 -mx-2 hover:bg-muted/40 transition-colors"
+                      >
+                        <CheckCircle2 className="h-3.5 w-3.5 text-accent shrink-0" />
+                        <span className="text-sm text-foreground truncate group-hover:text-primary transition-colors">
+                          {t.title}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+
+          {/* Subsection ticks */}
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="flex items-center gap-2 mb-3">
+              <ListChecks className="h-4 w-4 text-primary" />
+              <h3 className="text-sm font-semibold text-foreground">Subsection ticks</h3>
+            </div>
+            {subsectionSummary.entries.length === 0 ? (
+              <p className="text-sm text-muted-foreground">
+                Tick off sections as you read them — your running tally appears here.
+              </p>
+            ) : (
+              <ul className="space-y-1 max-h-64 overflow-y-auto pr-1">
+                {subsectionSummary.entries.map((e) => (
+                  <li key={e.topicId}>
+                    <Link
+                      to={e.path}
+                      className="group flex items-baseline justify-between gap-2 rounded-md px-2 py-1.5 -mx-2 hover:bg-muted/40 transition-colors"
+                    >
+                      <span className="text-sm text-foreground truncate group-hover:text-primary transition-colors">
+                        {e.topic.title}
+                      </span>
+                      <span className="text-[11px] text-muted-foreground shrink-0">
+                        {e.count} tick{e.count === 1 ? "" : "s"}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Per-exam summary tiles */}
@@ -265,7 +451,9 @@ const ProgressTracker = () => {
 
       {/* Footer note */}
       <p className="mt-8 text-xs text-muted-foreground text-center">
-        Progress is stored on this device only. Clearing browser data will reset it.
+        {user
+          ? "Signed in — your progress syncs to your account and follows you across devices."
+          : "Progress is stored on this device. Sign in to sync it across every device and browser."}
       </p>
     </PageSection>
   );
