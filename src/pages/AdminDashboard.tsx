@@ -882,7 +882,10 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
-    if (user && isAdmin) fetchAnalytics();
+    if (user && isAdmin) {
+      fetchAnalytics();
+      fetchRegisteredUsers();
+    }
   }, [user, isAdmin]);
 
   // Filter top countries by a sub-range independent of the global dashboard range
