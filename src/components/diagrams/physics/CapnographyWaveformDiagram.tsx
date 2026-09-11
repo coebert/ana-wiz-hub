@@ -185,20 +185,40 @@ const PATTERNS: Record<Pattern, PatternSpec> = {
       "Phase III slope < 5° — a steeper slope is the earliest sign of obstruction.",
     ],
   },
-  obstruction: {
-    label: "Obstructive (shark-fin) waveform",
-    shortLabel: "Obstruction",
-    tagline: "Sloping phase II and steep, prolonged phase III with no clear plateau.",
+  bronchospasm: {
+    label: "Bronchospasm (shark-fin) waveform",
+    shortLabel: "Bronchospasm",
+    tagline:
+      "Lower-airway (intrathoracic) obstruction: sloping phase II merging into an upsloping phase III with no true plateau — obtuse α angle.",
     causes: [
-      "Asthma / bronchospasm",
-      "COPD",
-      "Kinked or partially obstructed ETT",
-      "Foreign body or secretions in the airway",
+      "Acute asthma / anaphylactic bronchospasm",
+      "COPD with expiratory flow limitation",
+      "Light anaesthesia with airway irritation (ETT, secretions, cold dry gas)",
+      "Small-airway secretions or mucus plugging",
     ],
     pearls: [
-      "Slope of phase III correlates with degree of bronchospasm.",
-      "Resolution of the shark-fin shape is a sensitive marker of bronchodilator response.",
+      "Mechanism: heterogeneous small-airway time constants — fast alveoli empty first, slow CO₂-rich alveoli empty late, so the trace keeps climbing.",
+      "Slope of phase III correlates with the degree of bronchospasm; flattening of the fin is a sensitive marker of bronchodilator response.",
       "EtCO₂ underestimates PaCO₂ disproportionately because alveolar emptying is incomplete.",
+      "Ventilate with a long expiratory time (I:E 1:3–1:4) — otherwise auto-PEEP accumulates.",
+    ],
+  },
+  upperAirway: {
+    label: "Upper (extrathoracic) airway obstruction",
+    shortLabel: "Upper airway",
+    tagline:
+      "Whole breath is delayed and small: slurred phase II, low amplitude, but a recognisable plateau is still reached — the fin shape is blunted, not progressive.",
+    causes: [
+      "Laryngospasm or partial glottic closure",
+      "Soft-tissue / tongue obstruction in a sedated spontaneously breathing patient",
+      "Kinked, bitten or secretion-plugged tracheal tube; supraglottic airway malposition",
+      "Airway oedema, tumour, foreign body above the carina",
+    ],
+    pearls: [
+      "Mechanism: a single fixed resistance to bulk flow — all alveoli still empty with the same (uniform) composition, so once gas arrives the plateau is flat.",
+      "Distinguishing feature: bronchospasm has NO plateau (continuous rise); upper-airway obstruction has a delayed but flat plateau with reduced tidal volume.",
+      "Often accompanied by an irregular rate, low-amplitude 'nibbled' breaths and rocking chest movement; stridor rather than wheeze.",
+      "Salbutamol will not fix it — relieve the obstruction (jaw thrust, CPAP, deepen anaesthesia, suxamethonium for laryngospasm, check/replace the tube).",
     ],
   },
   curare: {
