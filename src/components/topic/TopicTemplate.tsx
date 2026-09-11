@@ -127,6 +127,7 @@ export const TopicTemplate = ({
 }: TopicTemplateProps) => {
   const { activeExam } = useExamFilter();
   useRecordRecentTopic(topicId);
+  useTrackStudyTime(topicId);
 
   // Auto-derive section sources from inline `cites` arrays so authors don't
   // have to maintain a parallel `sectionSources` map. Explicit props always
