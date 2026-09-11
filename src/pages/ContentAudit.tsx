@@ -66,6 +66,14 @@ type Finding = {
   details: string | null;
   suggested_fix: string | null;
   sources: { title: string; url: string }[];
+  /** Citable evidence the auditor based the finding on (research databases). */
+  evidence_quote: string | null;
+  evidence_doi: string | null;
+  evidence_pmid: string | null;
+  evidence_journal: string | null;
+  evidence_year: number | null;
+  evidence_is_open_access: boolean | null;
+
   diagram_ref: string | null;
   in_topic_section: string | null;
   status: "open" | "acknowledged" | "fixed" | "dismissed";
@@ -1588,6 +1596,47 @@ const ContentAudit = () => {
                           </p>
                         )}
 
+                        {(f.evidence_doi || f.evidence_pmid) && (
+
+                          <div className="rounded-md border border-border/60 bg-muted/40 p-2 space-y-1">
+                            <p className="text-xs font-medium text-foreground">
+                              Evidence
+                              {f.evidence_journal ? ` · ${f.evidence_journal}` : ""}
+                              {f.evidence_year ? ` (${f.evidence_year})` : ""}
+                              {f.evidence_is_open_access ? " · open access" : ""}
+                            </p>
+                            {f.evidence_quote && (
+                              <blockquote className="text-xs italic text-muted-foreground border-l-2 border-border pl-2">
+                                {f.evidence_quote}
+                              </blockquote>
+                            )}
+                            <div className="flex flex-wrap gap-2 pt-0.5">
+                              {f.evidence_doi && (
+                                <a
+                                  href={`https://doi.org/${f.evidence_doi}`}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="text-xs px-2 py-0.5 rounded bg-background border border-border hover:bg-muted inline-flex items-center gap-1"
+                                >
+                                  doi:{f.evidence_doi}
+                                  <ExternalLink className="w-3 h-3" />
+                                </a>
+                              )}
+                              {f.evidence_pmid && (
+                                <a
+                                  href={`https://pubmed.ncbi.nlm.nih.gov/${f.evidence_pmid}/`}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="text-xs px-2 py-0.5 rounded bg-background border border-border hover:bg-muted inline-flex items-center gap-1"
+                                >
+                                  PubMed {f.evidence_pmid}
+                                  <ExternalLink className="w-3 h-3" />
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        )}
+
                         {f.sources?.length > 0 && (
                           <div className="flex flex-wrap gap-2 pt-1">
                             {f.sources.map((s, i) => (
@@ -1611,6 +1660,7 @@ const ContentAudit = () => {
                             rel="noreferrer"
                             className="block mt-2"
                           >
+
                             <img
                               src={f.diagram_ref}
                               alt="Inspected diagram"

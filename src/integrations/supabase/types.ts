@@ -80,6 +80,189 @@ export type Database = {
         }
         Relationships: []
       }
+      audit_content_gaps: {
+        Row: {
+          created_at: string
+          gap_kind: string
+          id: string
+          rationale: string | null
+          resolved_at: string | null
+          resolved_by: string | null
+          section: string | null
+          source_doi: string | null
+          source_is_open_access: boolean | null
+          source_journal: string | null
+          source_pmid: string | null
+          source_title: string | null
+          source_year: number | null
+          status: string
+          suggested_addition: string | null
+          summary: string
+          topic_id: string
+          topic_title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          gap_kind?: string
+          id?: string
+          rationale?: string | null
+          resolved_at?: string | null
+          resolved_by?: string | null
+          section?: string | null
+          source_doi?: string | null
+          source_is_open_access?: boolean | null
+          source_journal?: string | null
+          source_pmid?: string | null
+          source_title?: string | null
+          source_year?: number | null
+          status?: string
+          suggested_addition?: string | null
+          summary: string
+          topic_id: string
+          topic_title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          gap_kind?: string
+          id?: string
+          rationale?: string | null
+          resolved_at?: string | null
+          resolved_by?: string | null
+          section?: string | null
+          source_doi?: string | null
+          source_is_open_access?: boolean | null
+          source_journal?: string | null
+          source_pmid?: string | null
+          source_title?: string | null
+          source_year?: number | null
+          status?: string
+          suggested_addition?: string | null
+          summary?: string
+          topic_id?: string
+          topic_title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      audit_job_state: {
+        Row: {
+          consecutive_rate_limits: number
+          created_at: string
+          cursor_topic_id: string | null
+          id: string
+          last_batch_size: number | null
+          last_run_at: string | null
+          lease_expires_at: string | null
+          lease_owner: string | null
+          paused: boolean
+          paused_at: string | null
+          paused_reason: string | null
+          topics_audited_total: number
+          updated_at: string
+        }
+        Insert: {
+          consecutive_rate_limits?: number
+          created_at?: string
+          cursor_topic_id?: string | null
+          id?: string
+          last_batch_size?: number | null
+          last_run_at?: string | null
+          lease_expires_at?: string | null
+          lease_owner?: string | null
+          paused?: boolean
+          paused_at?: string | null
+          paused_reason?: string | null
+          topics_audited_total?: number
+          updated_at?: string
+        }
+        Update: {
+          consecutive_rate_limits?: number
+          created_at?: string
+          cursor_topic_id?: string | null
+          id?: string
+          last_batch_size?: number | null
+          last_run_at?: string | null
+          lease_expires_at?: string | null
+          lease_owner?: string | null
+          paused?: boolean
+          paused_at?: string | null
+          paused_reason?: string | null
+          topics_audited_total?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      audit_reference_checks: {
+        Row: {
+          checked_at: string
+          citation: string
+          created_at: string
+          doi: string | null
+          has_erratum: boolean
+          id: string
+          is_retracted: boolean
+          pmid: string | null
+          problems: Json
+          reference_label: string
+          resolved_journal: string | null
+          resolved_title: string | null
+          resolved_year: number | null
+          section: string | null
+          status: string
+          title_similarity: number | null
+          topic_id: string
+          topic_title: string
+          updated_at: string
+          url: string | null
+        }
+        Insert: {
+          checked_at?: string
+          citation: string
+          created_at?: string
+          doi?: string | null
+          has_erratum?: boolean
+          id?: string
+          is_retracted?: boolean
+          pmid?: string | null
+          problems?: Json
+          reference_label: string
+          resolved_journal?: string | null
+          resolved_title?: string | null
+          resolved_year?: number | null
+          section?: string | null
+          status?: string
+          title_similarity?: number | null
+          topic_id: string
+          topic_title: string
+          updated_at?: string
+          url?: string | null
+        }
+        Update: {
+          checked_at?: string
+          citation?: string
+          created_at?: string
+          doi?: string | null
+          has_erratum?: boolean
+          id?: string
+          is_retracted?: boolean
+          pmid?: string | null
+          problems?: Json
+          reference_label?: string
+          resolved_journal?: string | null
+          resolved_title?: string | null
+          resolved_year?: number | null
+          section?: string | null
+          status?: string
+          title_similarity?: number | null
+          topic_id?: string
+          topic_title?: string
+          updated_at?: string
+          url?: string | null
+        }
+        Relationships: []
+      }
       drug_verification_jobs: {
         Row: {
           completed_at: string | null
@@ -664,6 +847,12 @@ export type Database = {
           created_at: string
           details: string | null
           diagram_ref: string | null
+          evidence_doi: string | null
+          evidence_is_open_access: boolean | null
+          evidence_journal: string | null
+          evidence_pmid: string | null
+          evidence_quote: string | null
+          evidence_year: number | null
           id: string
           in_topic_section: string | null
           job_id: string
@@ -685,6 +874,12 @@ export type Database = {
           created_at?: string
           details?: string | null
           diagram_ref?: string | null
+          evidence_doi?: string | null
+          evidence_is_open_access?: boolean | null
+          evidence_journal?: string | null
+          evidence_pmid?: string | null
+          evidence_quote?: string | null
+          evidence_year?: number | null
           id?: string
           in_topic_section?: string | null
           job_id: string
@@ -706,6 +901,12 @@ export type Database = {
           created_at?: string
           details?: string | null
           diagram_ref?: string | null
+          evidence_doi?: string | null
+          evidence_is_open_access?: boolean | null
+          evidence_journal?: string | null
+          evidence_pmid?: string | null
+          evidence_quote?: string | null
+          evidence_year?: number | null
           id?: string
           in_topic_section?: string | null
           job_id?: string
