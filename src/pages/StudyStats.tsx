@@ -186,7 +186,7 @@ const StudyStats = () => {
                     month: "short",
                   });
                   return (
-                    <div key={d.day} className="flex-1 flex flex-col items-center gap-1 min-w-0">
+                    <div key={d.day} className="flex-1 h-full flex flex-col justify-end items-center min-w-0">
                       <div
                         className={`w-full rounded-t-sm ${d.seconds > 0 ? "bg-primary" : "bg-muted"}`}
                         style={{ height: `${heightPct}%` }}
