@@ -311,8 +311,12 @@ function waveformPoint(pattern: Pattern, phase: number, breathIdx: number): numb
     return v + 1.0; // baseline lifted ~1 kPa
   }
 
-  if (pattern === "obstruction") {
+  if (pattern === "bronchospasm") {
     return baseObstruction(phase, expEnd, peakNormal - 0.3);
+  }
+
+  if (pattern === "upperAirway") {
+    return baseUpperAirway(phase, expEnd, peakNormal - 1.2);
   }
 
   if (pattern === "curare") {
