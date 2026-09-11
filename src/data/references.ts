@@ -106,6 +106,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2014", citation: "Jubran A. Pulse oximetry. Critical Care. 2015;19:272.", url: "https://doi.org/10.1186/s13054-015-0984-8" },
     { label: "BJA Educ 2003", citation: "Moyle JTB. Principles of pulse oximetry. BJA Education. 2003;3(5):153-156.", url: "https://doi.org/10.1093/bjaceaccp/mkg038" },
     { label: "Cross & Plunkett Ch.15", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 15: Pulse Oximetry." },
+    { label: "Sensors 2020 (Oximetric techniques)", citation: "Kyriacou PA, Shafqat K, Pal SK. The Various Oximetric Techniques Used for the Evaluation of Blood Oxygenation. Sensors (Basel). 2020;20(17):4844.", url: "https://doi.org/10.3390/s20174844" },
+    { label: "BJA 2008 (Pleth Variability Index)", citation: "Cannesson M, Desebbe O, Rosamel P, et al. Pleth variability index to monitor the respiratory variations in the pulse oximeter plethysmographic waveform amplitude and predict fluid responsiveness in the operating theatre. Br J Anaesth. 2008;101(2):200-206.", url: "https://doi.org/10.1093/bja/aen133" },
+    { label: "Physiol Meas 2023 (Skin pigmentation)", citation: "Okunlola OE, Lipnick MS, Batchelder PB, et al. A review of the effect of skin pigmentation on pulse oximeter accuracy. Physiol Meas. 2023;44(5).", url: "https://doi.org/10.1088/1361-6579/acd51a" },
   ],
   "clinical-measurement": [
     { label: "Cross & Plunkett Ch.16", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 16: Clinical Measurement." },
