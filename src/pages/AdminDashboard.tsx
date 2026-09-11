@@ -2152,6 +2152,9 @@ const AdminDashboard = () => {
               <JumpClicksPanel />
             </div>
             <SpoofedDomainsPanel />
+            <div className="mt-8 border-t border-border pt-8">
+              <WebVitalsPanel />
+            </div>
           </section>
         )}
 
