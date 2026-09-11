@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Flame, Sparkles, ChevronRight, LayoutDashboard } from "lucide-react";
+import { Flame, Sparkles, ChevronRight, LayoutDashboard, BarChart3 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useProgress } from "@/contexts/ProgressContext";
@@ -163,7 +163,7 @@ export const HomeDashboard = () => {
 
   return (
     <section aria-label="Your progress" className="space-y-4">
-      <div className="flex items-baseline justify-between gap-3">
+      <div className="flex flex-wrap items-baseline justify-between gap-3">
         <div className="flex items-baseline gap-3">
           <h2 className="text-lg font-serif font-semibold text-foreground">
             Welcome back
@@ -179,12 +179,22 @@ export const HomeDashboard = () => {
             </Link>
           )}
         </div>
-        <div
-          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-medium"
-          title="Consecutive days with a completion or visit"
-        >
-          <Flame className="h-3.5 w-3.5" aria-hidden />
-          <span>{streak ?? "…"} day streak</span>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/progress"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-muted text-foreground text-xs font-medium hover:bg-muted/70 transition-colors"
+            aria-label="Progress overview"
+          >
+            <BarChart3 className="h-3.5 w-3.5" aria-hidden />
+            Progress overview
+          </Link>
+          <div
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-medium"
+            title="Consecutive days with a completion or visit"
+          >
+            <Flame className="h-3.5 w-3.5" aria-hidden />
+            <span>{streak ?? "…"} day streak</span>
+          </div>
         </div>
       </div>
 
