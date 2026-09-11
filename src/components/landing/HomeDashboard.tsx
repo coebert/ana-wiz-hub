@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Flame, Sparkles, ChevronRight, LayoutDashboard, BarChart3, Timer } from "lucide-react";
+import { Flame, Sparkles, ChevronRight, LayoutDashboard, BarChart3, Timer, CalendarClock } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useProgress } from "@/contexts/ProgressContext";
@@ -187,6 +187,14 @@ export const HomeDashboard = () => {
           >
             <BarChart3 className="h-3.5 w-3.5" aria-hidden />
             Progress overview
+          </Link>
+          <Link
+            to="/study-plan"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-muted text-foreground text-xs font-medium hover:bg-muted/70 transition-colors"
+            aria-label="Study plan"
+          >
+            <CalendarClock className="h-3.5 w-3.5" aria-hidden />
+            Study plan
           </Link>
           <Link
             to="/study-stats"
