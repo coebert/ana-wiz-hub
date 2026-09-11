@@ -11,7 +11,7 @@ import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/comp
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick, Headphones, Mic2, Map as MapIcon, Info } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick, Headphones, Mic2, Map as MapIcon, Info, UserCheck } from "lucide-react";
 import VisitorsWorldMap from "@/components/admin/VisitorsWorldMap";
 import SeoAnalyticsPanel from "@/components/admin/SeoAnalyticsPanel";
 import SpoofedDomainsPanel from "@/components/admin/SpoofedDomainsPanel";
@@ -291,6 +291,8 @@ const AdminDashboard = () => {
   const { user, isAdmin, loading: authLoading, signOut } = useAuth();
   const navigate = useNavigate();
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
+  const [registeredUsers, setRegisteredUsers] = useState<number | null>(null);
+  const [confirmedUsers, setConfirmedUsers] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"overview" | "topics" | "seo">("overview");
   const [mapMetric, setMapMetric] = useState<"users" | "visits">("users");
@@ -311,6 +313,20 @@ const AdminDashboard = () => {
 
   const [dateFrom, setDateFrom] = useState<Date | undefined>(undefined);
   const [dateTo, setDateTo] = useState<Date | undefined>(undefined);
+
+  const fetchRegisteredUsers = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke("admin-user-count", { method: "GET" });
+      if (error) {
+        console.warn("[admin] failed to fetch registered users", error);
+        return;
+      }
+      if (typeof data?.total === "number") setRegisteredUsers(data.total);
+      if (typeof data?.confirmed === "number") setConfirmedUsers(data.confirmed);
+    } catch (e) {
+      console.warn("[admin] registered users request failed", e);
+    }
+  };
 
   const fetchAnalytics = async (rangeFrom?: Date | null, rangeTo?: Date | null) => {
     setLoading(true);
@@ -866,7 +882,10 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
-    if (user && isAdmin) fetchAnalytics();
+    if (user && isAdmin) {
+      fetchAnalytics();
+      fetchRegisteredUsers();
+    }
   }, [user, isAdmin]);
 
   // Filter top countries by a sub-range independent of the global dashboard range
@@ -1046,7 +1065,10 @@ const AdminDashboard = () => {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => fetchAnalytics()}
+              onClick={() => {
+                fetchAnalytics();
+                fetchRegisteredUsers();
+              }}
               disabled={loading}
               aria-label={loading ? "Refreshing analytics" : "Refresh analytics"}
             >
@@ -1234,28 +1256,37 @@ const AdminDashboard = () => {
             </div>
 
 
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-4" role="list" aria-label="Headline statistics">
+            <div className="grid grid-cols-2 lg:grid-cols-6 gap-4" role="list" aria-label="Headline statistics">
               {[
                 { label: "Total Unique Users", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500", help: "Distinct visitors ever recorded" },
                 { label: "Total Non-Bot Users", value: analytics.totalNonBotUsers, icon: Users, color: "text-emerald-500", help: "Distinct visitors with a human-looking user agent (bots, crawlers and monitors excluded)" },
+                { label: "Registered Accounts", value: registeredUsers ?? "—", icon: UserCheck, color: "text-indigo-500", help: "Accounts created in Supabase Auth (confirmed / unconfirmed)" },
                 { label: "Daily Active Users", value: analytics.dailyUsers, icon: CalendarDays, color: "text-green-500", help: "Distinct human-looking visitors today (bots, crawlers and monitors excluded)" },
                 { label: "Total Page Views", value: analytics.totalVisits, icon: TrendingUp, color: "text-purple-500", help: "All page visits ever recorded" },
                 { label: "Today's Page Views", value: analytics.todayVisits, icon: TrendingUp, color: "text-orange-500", help: "Page visits since midnight" },
-              ].map(stat => (
-                <div
-                  key={stat.label}
-                  role="listitem"
-                  className="p-4 rounded-xl border border-border bg-card focus-within:ring-2 focus-within:ring-primary"
-                  aria-label={`${stat.label}: ${stat.value.toLocaleString()}. ${stat.help}`}
-                >
-                  <div className="flex items-center gap-2 mb-2">
-                    <stat.icon className={`w-5 h-5 ${stat.color}`} aria-hidden="true" />
-                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</span>
+              ].map(stat => {
+                const valueText = typeof stat.value === "number" ? stat.value.toLocaleString() : String(stat.value);
+                return (
+                  <div
+                    key={stat.label}
+                    role="listitem"
+                    className="p-4 rounded-xl border border-border bg-card focus-within:ring-2 focus-within:ring-primary"
+                    aria-label={`${stat.label}: ${valueText}. ${stat.help}`}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <stat.icon className={`w-5 h-5 ${stat.color}`} aria-hidden="true" />
+                      <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</span>
+                    </div>
+                    <p className="text-3xl font-bold text-foreground tabular-nums whitespace-nowrap" aria-hidden="true">{valueText}</p>
+                    {stat.label === "Registered Accounts" && typeof registeredUsers === "number" && typeof confirmedUsers === "number" && (
+                      <p className="text-[11px] text-muted-foreground mt-1">{confirmedUsers.toLocaleString()} confirmed</p>
+                    )}
+                    {!(stat.label === "Registered Accounts" && typeof registeredUsers === "number" && typeof confirmedUsers === "number") && (
+                      <p className="text-[11px] text-muted-foreground mt-1">{stat.help}</p>
+                    )}
                   </div>
-                  <p className="text-3xl font-bold text-foreground tabular-nums" aria-hidden="true">{stat.value.toLocaleString()}</p>
-                  <p className="text-[11px] text-muted-foreground mt-1">{stat.help}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* User insight tiles */}
