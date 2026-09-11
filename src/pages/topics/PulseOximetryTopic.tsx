@@ -7,6 +7,9 @@ import { AbsorptionSpectraDiagram } from "@/components/diagrams/physics/Absorpti
 import { CapnographyDiagram } from "@/components/diagrams/physics/CapnographyDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
+
+const TOPIC_ID = "pulse-oximetry";
 
 const pulseOximetryFaqs: Array<[string, string]> = [
   [
@@ -141,19 +144,78 @@ const PulseOximetryTopic = () => {
               (~805 nm) is where both species absorb equally.
             </p>
             <p className="text-foreground/90 leading-relaxed mt-3">
-              The oximeter calculates the <strong>ratio R = (AC/DC)₆₆₀ / (AC/DC)₉₄₀</strong>. The AC component (pulsatile
-              arterial blood) is isolated from the DC component (tissue, venous blood, non-pulsatile arterial blood). R is
-              compared to an empirical calibration curve: R = 1 → SpO₂ ≈ 85%; R = 0.4 → SpO₂ ≈ 100%.
+              The oximeter derives SpO₂ from the <strong>ratio of ratios, R = (AC/DC)₆₆₀ / (AC/DC)₉₄₀</strong>.
+              This is calculated in stages:<InlineRef topicId={TOPIC_ID} refLabel="Sensors 2020 (Oximetric techniques)" />
             </p>
+            <ol className="list-decimal list-inside space-y-1.5 mt-2 text-foreground/90 leading-relaxed">
+              <li>At <strong>each wavelength</strong> (red 660 nm and infrared 940 nm), the photodetector measures the total light transmitted through the tissue.</li>
+              <li>Each signal comprises a large steady <strong>DC component</strong> (absorption by tissue, bone, venous blood and non-pulsatile arterial blood) and a small pulsatile <strong>AC component</strong> (~1–5% of DC) produced by the cyclical influx of arterial blood with each heartbeat.</li>
+              <li>The microprocessor isolates the pulsatile component and computes the normalised pulsatile absorption at the red wavelength: <strong>AC₆₆₀ / DC₆₆₀</strong>.</li>
+              <li>It simultaneously computes the same ratio at the infrared wavelength: <strong>AC₉₄₀ / DC₉₄₀</strong>. Dividing AC by DC at each wavelength normalises for tissue thickness, skin tone and total haemoglobin, making the measurement largely independent of probe site.</li>
+              <li>The <strong>ratio of ratios</strong> is then calculated: <strong>R = (AC₆₆₀ / DC₆₆₀) / (AC₉₄₀ / DC₉₄₀)</strong>.</li>
+              <li>This R value is mapped to a displayed SpO₂ via the device's internal <strong>look-up table</strong> — an empirical calibration curve derived from volunteer desaturation studies against co-oximetry: R = 1 → SpO₂ ≈ 85%; R = 0.4 → SpO₂ ≈ 100%.</li>
+            </ol>
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
               <p className="text-sm font-medium text-foreground">Sources of Error</p>
               <p className="text-sm text-muted-foreground mt-1">
                 <strong>COHb</strong>: reads as ~SpO₂ 100% (absorbs similarly to oxyHb at 660 nm). <strong>MetHb</strong>:
                 SpO₂ tends toward 85% regardless of true SaO₂ (R → 1). Motion artefact. Poor perfusion. Nail polish
-                (blue/green/black). Ambient light. Intravenous dyes (methylene blue). Skin pigmentation may affect accuracy
-                at low saturations.
+                (blue/green/black). Ambient light. Intravenous dyes (methylene blue). Skin pigmentation — see the
+                dedicated subsection below.
               </p>
             </div>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Skin Pigmentation and Accuracy</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              Pulse oximeters may <strong>overestimate SpO₂ in individuals with darker skin pigmentation</strong>,
+              particularly at lower true saturations.<InlineRef topicId={TOPIC_ID} refLabel="Physiol Meas 2023 (Skin pigmentation)" /> Increased
+              melanin in the epidermis acts as an <strong>additional optical absorber</strong> that is not accounted for
+              in the empirical calibration curve, altering the effective AC/DC ratios and biasing the displayed value.
+            </p>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              The clinically important consequence is <strong>occult hypoxaemia</strong>: a true SaO₂ that is dangerously
+              low while the displayed SpO₂ remains reassuring. Although the <strong>mean bias is small</strong> (typically
+              1–2%), it is consistently <strong>positive in patients with darkly pigmented skin</strong> and can be
+              clinically significant in individual patients at the hypoxic end of the scale. This issue was re-evaluated
+              prominently during the COVID-19 pandemic, when retrospective studies demonstrated higher rates of missed
+              hypoxaemia in Black patients, prompting regulatory review of device calibration and labelling.
+            </p>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              <strong>Practical implication:</strong> interpret borderline SpO₂ values with extra caution in patients with
+              darker skin, correlate with the clinical picture, and have a low threshold for arterial blood gas
+              co-oximetry when the reading does not fit.
+            </p>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Advanced Waveform Analysis</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              Beyond SpO₂, the plethysmographic waveform yields secondary physiological parameters of increasing
+              relevance to FRCA Final and FFICM practice.
+            </p>
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Perfusion Index (PI)</h3>
+            <p className="text-foreground/90 leading-relaxed">
+              PI is the ratio of the <strong>pulsatile (AC) to non-pulsatile (DC)</strong> component of the infrared
+              signal, expressed as a percentage — effectively a non-invasive index of peripheral perfusion. It falls
+              with vasoconstriction (hypovolaemia, hypothermia, high sympathetic tone) and rises with vasodilatation.
+              Clinical uses include a perfusion/ sympathetic-tone marker in <strong>sepsis</strong> and an objective
+              early sign of successful <strong>regional blockade</strong> (sympathectomy raises PI in the blocked limb).
+            </p>
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Pleth Variability Index (PVI)</h3>
+            <p className="text-foreground/90 leading-relaxed">
+              PVI is an automated, continuous measure of the <strong>dynamic respiratory variation in PI</strong> over
+              the ventilatory cycle (PI<sub>max</sub> − PI<sub>min</sub>)/PI<sub>max</sub> × 100. In mechanically
+              ventilated patients under general anaesthesia it predicts <strong>fluid responsiveness</strong>: a PVI
+              &gt;14% before volume expansion discriminates responders from non-responders with 81% sensitivity and
+              100% specificity.<InlineRef topicId={TOPIC_ID} refLabel="BJA 2008 (Pleth Variability Index)" />
+            </p>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              <strong>Limitations:</strong> PVI is validated only in <strong>fully mechanically ventilated</strong>
+              patients with a regular rhythm — spontaneous breathing, arrhythmias, low tidal volumes, vasopressors and
+              poor peripheral perfusion all degrade its accuracy.
+            </p>
           </section>
 
           <section className="mb-10">
