@@ -1837,8 +1837,8 @@ async function runBatch(jobId: string) {
 
       if (creditExhaustionDetected || consecutiveScrapeFailures >= 5) {
         const reason = creditExhaustionDetected
-          ? "Firecrawl returned HTTP 402 (insufficient credits). Top up the Firecrawl plan, then re-run the audit. No content was fetched, so no factual findings were produced."
-          : `Aborted after ${consecutiveScrapeFailures} consecutive scrape failures — upstream fetcher appears to be down. Check Firecrawl status and re-run.`;
+          ? "AI credits are exhausted (HTTP 402). Top up credits, then resume the audit."
+          : `Aborted after ${consecutiveScrapeFailures} consecutive topic failures — the source corpus or literature service appears unavailable. Rebuild the corpus (npm run build:audit-corpus) and re-run.`;
         console.error(`[audit-topics] aborting job ${jobId}: ${reason}`);
         await supa.from("topic_audit_jobs").update({
           status: "completed_with_errors",
@@ -1867,6 +1867,9 @@ async function runBatch(jobId: string) {
 
   if (cursor < queue.length) {
     await reinvokeContinue(jobId);
+  }
+  } finally {
+    await releaseLease();
   }
 }
 
