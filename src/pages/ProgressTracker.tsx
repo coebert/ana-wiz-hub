@@ -184,7 +184,7 @@ const ProgressTracker = () => {
           Your topic progress
         </h1>
         <p className="text-muted-foreground max-w-2xl">
-          Track completion across the FRCA Primary, Final, and FFICM curricula. Mark topics complete from any topic page — your progress saves locally.
+          Track completion across the FRCA Primary, Final, and FFICM curricula. Mark topics complete from any topic page — sign in and your progress follows you across devices.
         </p>
       </div>
 
