@@ -1277,7 +1277,7 @@ const AdminDashboard = () => {
                       <stat.icon className={`w-5 h-5 ${stat.color}`} aria-hidden="true" />
                       <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</span>
                     </div>
-                    <p className="text-3xl font-bold text-foreground tabular-nums" aria-hidden="true">{valueText}</p>
+                    <p className="text-3xl font-bold text-foreground tabular-nums whitespace-nowrap" aria-hidden="true">{valueText}</p>
                     {stat.label === "Registered Accounts" && typeof registeredUsers === "number" && typeof confirmedUsers === "number" && (
                       <p className="text-[11px] text-muted-foreground mt-1">{confirmedUsers.toLocaleString()} confirmed</p>
                     )}
