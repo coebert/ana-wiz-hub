@@ -135,6 +135,26 @@ export function recommendTopics(input: RecommendInput): Recommendation[] {
   return out.sort((a, b) => b.score - a.score);
 }
 
+/**
+ * Spread a ranked list so consecutive picks come from different sections —
+ * a session pairing physiology with pharmacology beats six physiology topics
+ * in a row. Picks the highest-scoring topic whose section differs from the
+ * previous one, falling back to plain rank order when none does.
+ */
+export function diversifyBySection(ranked: Recommendation[]): Recommendation[] {
+  const remaining = [...ranked];
+  const out: Recommendation[] = [];
+  let lastSection: Section | null = null;
+  while (remaining.length > 0) {
+    let index = remaining.findIndex((r) => r.topic.section !== lastSection);
+    if (index === -1) index = 0;
+    const [picked] = remaining.splice(index, 1);
+    out.push(picked);
+    lastSection = picked.topic.section;
+  }
+  return out;
+}
+
 export interface ScheduleConfig {
   /** 0 = Sunday … 6 = Saturday, matching Date#getDay. */
   weekdays: number[];

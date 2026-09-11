@@ -23,6 +23,7 @@ import {
   ScheduleConfig,
   SECTION_TITLES,
   buildSchedule,
+  diversifyBySection,
   formatSessionDate,
   isoDate,
   readStoredPlan,
@@ -79,9 +80,10 @@ const StudyPlan = () => {
     [completedTopics, recentIds, byTopic, config.exam]
   );
 
-  const sessions = useMemo(() => buildSchedule(config, ranked), [config, ranked]);
+  const spread = useMemo(() => diversifyBySection(ranked), [ranked]);
+  const sessions = useMemo(() => buildSchedule(config, spread), [config, spread]);
 
-  const topPicks = ranked.slice(0, 6);
+  const topPicks = spread.slice(0, 6);
   const perSession = topicsPerSession(config.minutesPerSession);
   const plannedTopics = sessions.reduce((n, s) => n + s.topics.length, 0);
   const plannedMinutes = sessions.length * config.minutesPerSession;
