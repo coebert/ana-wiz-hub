@@ -15,6 +15,7 @@ import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3
 import VisitorsWorldMap from "@/components/admin/VisitorsWorldMap";
 import SeoAnalyticsPanel from "@/components/admin/SeoAnalyticsPanel";
 import SpoofedDomainsPanel from "@/components/admin/SpoofedDomainsPanel";
+import WebVitalsPanel from "@/components/admin/WebVitalsPanel";
 import JumpClicksPanel from "@/components/admin/JumpClicksPanel";
 import SearchVsReferrerPanel from "@/components/admin/SearchVsReferrerPanel";
 
@@ -2152,6 +2153,9 @@ const AdminDashboard = () => {
               <JumpClicksPanel />
             </div>
             <SpoofedDomainsPanel />
+            <div className="mt-8 border-t border-border pt-8">
+              <WebVitalsPanel />
+            </div>
           </section>
         )}
 
