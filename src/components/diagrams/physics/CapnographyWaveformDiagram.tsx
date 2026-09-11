@@ -707,6 +707,10 @@ export const CapnographyWaveformDiagram = () => {
         <LabelledReferenceCapnograph />
       </div>
 
+      <ObstructionComparison />
+
+
+
 
       <div className="rounded-lg border border-border bg-muted/40 p-3 sm:p-4 space-y-3">
         <div>
