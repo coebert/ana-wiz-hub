@@ -13,7 +13,14 @@ import { useEffect, useMemo, useRef, useState } from "react";
  * cardiac oscillations.
  */
 
-type Pattern = "normal" | "obstruction" | "curare" | "rebreathing" | "disconnection" | "cardiac";
+type Pattern =
+  | "normal"
+  | "bronchospasm"
+  | "upperAirway"
+  | "curare"
+  | "rebreathing"
+  | "disconnection"
+  | "cardiac";
 
 /**
  * Static, fully-labelled reference capnograph. Shows Phase I (inspiratory
