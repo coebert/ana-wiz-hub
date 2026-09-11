@@ -41,6 +41,16 @@ const waveformPatterns: Array<{
       "Treat the obstruction first (bronchodilator, suction, check the tube and circuit). Do NOT just increase the rate — you'll generate auto-PEEP.",
   },
   {
+    id: "upper-airway-obstruction",
+    name: "Upper (extrathoracic) airway obstruction",
+    description:
+      "A delayed, low-amplitude breath that still reaches a genuinely FLAT plateau. Phase II is slurred and prolonged and the downstroke is slow, but the α-angle is close to normal once flow is established. Contrast with bronchospasm, where a single fixed resistance is replaced by thousands of small airways with different time constants, so the trace climbs continuously and never plateaus.",
+    causes:
+      "Laryngospasm or partial glottic closure, soft-tissue/tongue obstruction in a sedated patient, kinked or bitten tracheal tube, malpositioned supraglottic airway, airway oedema, tumour or foreign body above the carina.",
+    action:
+      "Bronchodilators will not help. Jaw thrust and CPAP, deepen anaesthesia, suxamethonium for laryngospasm, pass a suction catheter or replace the tube. Look for stridor and see-saw breathing rather than wheeze.",
+  },
+  {
     id: "curare-cleft",
     name: "Curare cleft",
     description:
