@@ -20,6 +20,7 @@ import { TopicPodcastPlayer } from "@/components/topic/TopicPodcastPlayer";
 import VivaLauncher from "@/components/viva/VivaLauncher";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { useRecordRecentTopic } from "@/hooks/useRecentTopics";
+import { useTrackStudyTime } from "@/hooks/useStudyTime";
 import { ExamTag } from "@/data/curriculum";
 import { topicReferences } from "@/data/references";
 import { allTopics, sectionMeta } from "@/data/curriculum";
@@ -126,6 +127,7 @@ export const TopicTemplate = ({
 }: TopicTemplateProps) => {
   const { activeExam } = useExamFilter();
   useRecordRecentTopic(topicId);
+  useTrackStudyTime(topicId);
 
   // Auto-derive section sources from inline `cites` arrays so authors don't
   // have to maintain a parallel `sectionSources` map. Explicit props always

@@ -1113,6 +1113,30 @@ export type Database = {
         }
         Relationships: []
       }
+      user_study_time: {
+        Row: {
+          day: string
+          seconds: number
+          topic_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          day?: string
+          seconds?: number
+          topic_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          day?: string
+          seconds?: number
+          topic_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_subsection_progress: {
         Row: {
           checked_at: string
@@ -1271,6 +1295,10 @@ export type Database = {
       }
     }
     Functions: {
+      add_study_time: {
+        Args: { _day?: string; _seconds: number; _topic_id: string }
+        Returns: undefined
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
