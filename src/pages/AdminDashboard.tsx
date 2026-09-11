@@ -1261,21 +1261,29 @@ const AdminDashboard = () => {
                 { label: "Daily Active Users", value: analytics.dailyUsers, icon: CalendarDays, color: "text-green-500", help: "Distinct human-looking visitors today (bots, crawlers and monitors excluded)" },
                 { label: "Total Page Views", value: analytics.totalVisits, icon: TrendingUp, color: "text-purple-500", help: "All page visits ever recorded" },
                 { label: "Today's Page Views", value: analytics.todayVisits, icon: TrendingUp, color: "text-orange-500", help: "Page visits since midnight" },
-              ].map(stat => (
-                <div
-                  key={stat.label}
-                  role="listitem"
-                  className="p-4 rounded-xl border border-border bg-card focus-within:ring-2 focus-within:ring-primary"
-                  aria-label={`${stat.label}: ${stat.value.toLocaleString()}. ${stat.help}`}
-                >
-                  <div className="flex items-center gap-2 mb-2">
-                    <stat.icon className={`w-5 h-5 ${stat.color}`} aria-hidden="true" />
-                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</span>
+              ].map(stat => {
+                const valueText = typeof stat.value === "number" ? stat.value.toLocaleString() : String(stat.value);
+                return (
+                  <div
+                    key={stat.label}
+                    role="listitem"
+                    className="p-4 rounded-xl border border-border bg-card focus-within:ring-2 focus-within:ring-primary"
+                    aria-label={`${stat.label}: ${valueText}. ${stat.help}`}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <stat.icon className={`w-5 h-5 ${stat.color}`} aria-hidden="true" />
+                      <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</span>
+                    </div>
+                    <p className="text-3xl font-bold text-foreground tabular-nums" aria-hidden="true">{valueText}</p>
+                    {stat.label === "Registered Accounts" && typeof registeredUsers === "number" && typeof confirmedUsers === "number" && (
+                      <p className="text-[11px] text-muted-foreground mt-1">{confirmedUsers.toLocaleString()} confirmed</p>
+                    )}
+                    {!(stat.label === "Registered Accounts" && typeof registeredUsers === "number" && typeof confirmedUsers === "number") && (
+                      <p className="text-[11px] text-muted-foreground mt-1">{stat.help}</p>
+                    )}
                   </div>
-                  <p className="text-3xl font-bold text-foreground tabular-nums" aria-hidden="true">{stat.value.toLocaleString()}</p>
-                  <p className="text-[11px] text-muted-foreground mt-1">{stat.help}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* User insight tiles */}
