@@ -1438,6 +1438,7 @@ async function auditTopic(
 // runtime's ~150s limit. Invocations must run strictly one-at-a-time for a
 // given job; scheduling the successor before the current topic completed led
 // to overlapping workers, false "failed" states, and racing job counters.
+const LEASE_MS = 10 * 60 * 1000;
 const BATCH_SIZE = 1;
 // Hard cap per topic. Stage budgets sum to ~70s in the happy path
 // (scrape 30 + search 10 + AI text 25 + diagram 0–15); the extra headroom
@@ -1516,6 +1517,31 @@ async function runBatch(jobId: string) {
     return;
   }
 
+  // Single-flight lease: a second concurrent invocation (self-chain overlap,
+  // scheduled run landing on a manual run) exits instead of double-auditing.
+  const leaseOwner = `${jobId}:${crypto.randomUUID()}`;
+  const nowIso = new Date().toISOString();
+  const leaseUntil = new Date(Date.now() + LEASE_MS).toISOString();
+  const { data: leased } = await supa
+    .from("audit_job_state")
+    .update({ lease_owner: leaseOwner, lease_expires_at: leaseUntil, last_run_at: nowIso, updated_at: nowIso })
+    .eq("id", "content-audit")
+    .or(`lease_owner.is.null,lease_expires_at.lt.${nowIso}`)
+    .select("lease_owner")
+    .maybeSingle();
+  if (!leased) {
+    console.warn("[audit-topics] another audit batch holds the lease — exiting");
+    return;
+  }
+  const releaseLease = async () => {
+    await supa
+      .from("audit_job_state")
+      .update({ lease_owner: null, lease_expires_at: null, updated_at: new Date().toISOString() })
+      .eq("id", "content-audit")
+      .eq("lease_owner", leaseOwner);
+  };
+
+  try {
   if (
     job.status === "cancelled" ||
     job.status === "completed" ||
