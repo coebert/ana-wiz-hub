@@ -15,13 +15,21 @@ import {
   Circle,
   Trophy,
   GraduationCap,
+  History,
+  ListChecks,
+  LayoutDashboard,
 } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
+import { useSubsectionProgress } from "@/contexts/SubsectionProgressContext";
+import { useRecentTopics } from "@/hooks/useRecentTopics";
+import { useAuth } from "@/hooks/useAuth";
 import { ProgressRing } from "@/components/shared/ProgressRing";
 import {
   Section,
   ExamTag,
   Exam,
+  Topic,
+  allTopics,
   topicsBySection,
 } from "@/data/curriculum";
 
