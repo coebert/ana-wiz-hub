@@ -359,6 +359,32 @@ function waveformPoint(pattern: Pattern, phase: number, breathIdx: number): numb
     return 0;
   }
 
+  /**
+   * Upper (extrathoracic) airway obstruction. A single fixed resistance
+   * delays and reduces bulk flow: phase II is slurred and prolonged, the
+   * amplitude is low (small tidal volume), but because alveolar gas is
+   * uniform the trace still reaches a genuine FLAT plateau before a slow
+   * downstroke. This is the visual counterpoint to the bronchospasm fin,
+   * which never plateaus at all.
+   */
+  function baseUpperAirway(p: number, eEnd: number, peak: number) {
+    if (p < 0.04) return 0;
+    const upEnd = 0.26; // slurred, prolonged phase II
+    if (p < upEnd) {
+      const k = (p - 0.04) / (upEnd - 0.04);
+      return peak * (1 - Math.exp(-k * 2.6));
+    }
+    if (p < eEnd + 0.06) {
+      // short but genuinely flat plateau
+      const k = (p - upEnd) / (eEnd + 0.06 - upEnd);
+      return peak * (0.93 + 0.02 * k);
+    }
+    // slow downstroke — expiration is impeded on the way out too
+    const k = (p - (eEnd + 0.06)) / 0.16;
+    if (k < 1) return peak * 0.95 * Math.exp(-k * 2.2);
+    return 0;
+  }
+
   function baseCurare(p: number, eEnd: number, peak: number) {
     const v = baseNormal(p, eEnd, peak);
     // cleft only on the plateau region (alternating breaths for emphasis)
