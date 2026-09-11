@@ -63,10 +63,63 @@ const sectionMeta: {
 
 const pct = (c: number, t: number) => (t > 0 ? Math.round((c / t) * 100) : 0);
 
+/** Relative "x ago" label for recent-topic timestamps. */
+const timeAgo = (ts: number): string => {
+  const mins = Math.round((Date.now() - ts) / 60000);
+  if (mins < 1) return "just now";
+  if (mins < 60) return `${mins} min ago`;
+  const hours = Math.round(mins / 60);
+  if (hours < 24) return `${hours} hr ago`;
+  const days = Math.round(hours / 24);
+  if (days < 30) return `${days} day${days === 1 ? "" : "s"} ago`;
+  return new Date(ts).toLocaleDateString();
+};
+
 const ProgressTracker = () => {
   const { isCompleted, getOverallProgress, getExamProgress, getSectionProgress, getExamSectionProgress } =
     useProgress();
+  const { ticks } = useSubsectionProgress();
+  const recentTopics = useRecentTopics();
+  const { user } = useAuth();
   const [activeFilter, setActiveFilter] = useState<ExamFilter>("all");
+
+  // Fast lookup: topicId -> topic + its section path, for overview links.
+  const topicLookup = useMemo(() => {
+    const pathBySection = new Map(sectionMeta.map((s) => [s.key, s.path]));
+    const map = new Map<string, { topic: Topic; path: string }>();
+    for (const t of allTopics) {
+      const base = pathBySection.get(t.section);
+      if (base) map.set(t.id, { topic: t, path: `${base}/${t.id}` });
+    }
+    return map;
+  }, []);
+
+  const completedList = useMemo(
+    () =>
+      allTopics.filter((t) => t.available && isCompleted(t.id)),
+    [isCompleted]
+  );
+
+  const subsectionSummary = useMemo(() => {
+    const entries = Object.entries(ticks)
+      .filter(([topicId, ids]) => ids.size > 0 && topicLookup.has(topicId))
+      .map(([topicId, ids]) => ({
+        topicId,
+        count: ids.size,
+        ...topicLookup.get(topicId)!,
+      }))
+      .sort((a, b) => b.count - a.count);
+    const totalTicks = entries.reduce((n, e) => n + e.count, 0);
+    return { entries, totalTicks };
+  }, [ticks, topicLookup]);
+
+  const recentList = useMemo(
+    () =>
+      recentTopics
+        .filter((e) => topicLookup.has(e.topicId))
+        .map((e) => ({ ...e, ...topicLookup.get(e.topicId)! })),
+    [recentTopics, topicLookup]
+  );
 
   // Header summary cards always show all curricula side-by-side, regardless of filter.
   const summary = useMemo(
