@@ -314,6 +314,20 @@ const AdminDashboard = () => {
   const [dateFrom, setDateFrom] = useState<Date | undefined>(undefined);
   const [dateTo, setDateTo] = useState<Date | undefined>(undefined);
 
+  const fetchRegisteredUsers = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke("admin-user-count", { method: "GET" });
+      if (error) {
+        console.warn("[admin] failed to fetch registered users", error);
+        return;
+      }
+      if (typeof data?.total === "number") setRegisteredUsers(data.total);
+      if (typeof data?.confirmed === "number") setConfirmedUsers(data.confirmed);
+    } catch (e) {
+      console.warn("[admin] registered users request failed", e);
+    }
+  };
+
   const fetchAnalytics = async (rangeFrom?: Date | null, rangeTo?: Date | null) => {
     setLoading(true);
     const from = rangeFrom === null ? undefined : (rangeFrom ?? dateFrom);
