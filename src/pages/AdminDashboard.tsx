@@ -291,6 +291,8 @@ const AdminDashboard = () => {
   const { user, isAdmin, loading: authLoading, signOut } = useAuth();
   const navigate = useNavigate();
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
+  const [registeredUsers, setRegisteredUsers] = useState<number | null>(null);
+  const [confirmedUsers, setConfirmedUsers] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"overview" | "topics" | "seo">("overview");
   const [mapMetric, setMapMetric] = useState<"users" | "visits">("users");
