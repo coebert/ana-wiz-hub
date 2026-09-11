@@ -285,6 +285,145 @@ const PATTERNS: Record<Pattern, PatternSpec> = {
   },
 };
 
+/**
+ * Static side-by-side comparison of the two obstruction waveforms that
+ * candidates most often confuse: lower-airway bronchospasm (shark fin,
+ * no plateau) versus upper/extrathoracic airway obstruction (delayed,
+ * low-amplitude breath that still plateaus).
+ */
+const ObstructionComparison = () => {
+  const w = 260;
+  const h = 150;
+  const padL = 26;
+  const padB = 26;
+  const padT = 18;
+  const plotW = w - padL - 10;
+  const plotH = h - padT - padB;
+  const yFor = (kpa: number) => padT + plotH - (kpa / 6) * plotH;
+  const xFor = (f: number) => padL + f * plotW;
+
+  const build = (fn: (p: number) => number) => {
+    const pts: string[] = [];
+    for (let i = 0; i <= 200; i++) {
+      const p = i / 200;
+      pts.push(`${xFor(p).toFixed(1)},${yFor(fn(p)).toFixed(1)}`);
+    }
+    return pts.join(" ");
+  };
+
+  // Two breaths' worth of shape compressed into one panel each.
+  const fin = (p: number) => {
+    if (p < 0.05) return 0;
+    if (p < 0.72) return 4.7 * (1 - Math.exp(-((p - 0.05) / 0.67) * 1.6));
+    const k = (p - 0.72) / 0.16;
+    return k < 1 ? 4.7 * 0.82 * Math.exp(-k * 3) : 0;
+  };
+  const upper = (p: number) => {
+    if (p < 0.08) return 0;
+    if (p < 0.44) return 3.5 * (1 - Math.exp(-((p - 0.08) / 0.36) * 2.6));
+    if (p < 0.74) return 3.5 * 0.95;
+    const k = (p - 0.74) / 0.22;
+    return k < 1 ? 3.5 * 0.95 * Math.exp(-k * 2.2) : 0;
+  };
+
+  const Panel = ({
+    title,
+    subtitle,
+    fnc,
+    annotation,
+  }: {
+    title: string;
+    subtitle: string;
+    fnc: (p: number) => number;
+    annotation: string;
+  }) => (
+    <div className="flex-1 min-w-[220px]">
+      <p className="text-sm font-semibold text-foreground">{title}</p>
+      <p className="text-xs text-muted-foreground mb-1">{subtitle}</p>
+      <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-auto" role="img" aria-label={`${title}: ${annotation}`}>
+        <line x1={padL} y1={padT} x2={padL} y2={padT + plotH} stroke="hsl(var(--border))" />
+        <line x1={padL} y1={padT + plotH} x2={w - 10} y2={padT + plotH} stroke="hsl(var(--border))" />
+        {[0, 2, 4, 6].map((k) => (
+          <g key={k}>
+            <text x={padL - 5} y={yFor(k) + 3} fontSize="8" textAnchor="end" className="fill-muted-foreground" fontFamily="sans-serif">{k}</text>
+            <line x1={padL} x2={w - 10} y1={yFor(k)} y2={yFor(k)} stroke="hsl(var(--border))" strokeDasharray="2 4" strokeWidth={0.4} />
+          </g>
+        ))}
+        <text x={2} y={12} fontSize="8" className="fill-muted-foreground" fontFamily="sans-serif">kPa</text>
+        <polyline points={build(fnc)} fill="none" stroke="hsl(var(--physiology))" strokeWidth={2} />
+        <text x={w - 10} y={h - 6} fontSize="8" textAnchor="end" className="fill-muted-foreground" fontFamily="sans-serif">Time →</text>
+        <text x={padL + 4} y={padT + 10} fontSize="9" className="fill-foreground" fontFamily="sans-serif" fontWeight={600}>
+          {annotation}
+        </text>
+      </svg>
+    </div>
+  );
+
+  return (
+    <div className="rounded-lg border border-border bg-muted/30 p-3 sm:p-4 space-y-3">
+      <div>
+        <p className="text-xs uppercase tracking-wider text-muted-foreground">
+          Side by side — bronchospasm vs upper airway obstruction
+        </p>
+        <p className="text-sm text-muted-foreground mt-1">
+          Both are &ldquo;obstruction&rdquo;, but they obstruct at different levels and
+          therefore make different shapes. Bronchospasm is <em>many small airways with
+          different time constants</em>; upper-airway obstruction is <em>one fixed
+          resistance</em> to bulk flow.
+        </p>
+      </div>
+      <div className="flex flex-wrap gap-4">
+        <Panel
+          title="Bronchospasm (lower airway)"
+          subtitle="Asthma, COPD, anaphylaxis, small-airway plugging"
+          fnc={fin}
+          annotation="No plateau — continuous rise"
+        />
+        <Panel
+          title="Upper airway obstruction"
+          subtitle="Laryngospasm, soft tissue, kinked/bitten tube, glottic mass"
+          fnc={upper}
+          annotation="Delayed, low, but flat plateau"
+        />
+      </div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm border-collapse min-w-[520px]">
+          <thead>
+            <tr className="text-left">
+              <th className="py-1.5 pr-3 font-semibold text-foreground border-b border-border">Feature</th>
+              <th className="py-1.5 pr-3 font-semibold text-foreground border-b border-border">Bronchospasm</th>
+              <th className="py-1.5 font-semibold text-foreground border-b border-border">Upper airway obstruction</th>
+            </tr>
+          </thead>
+          <tbody className="text-muted-foreground">
+            {[
+              ["Site", "Intrathoracic small airways", "Extrathoracic / large airway or tube"],
+              ["Phase II upstroke", "Sloped and merges into phase III", "Slurred and delayed, but still distinct"],
+              ["Phase III", "Never flat — climbs throughout expiration", "Flat plateau reached late"],
+              ["α angle", "Obtuse (>110°) and worsens with severity", "Near-normal once flow is established"],
+              ["Amplitude / EtCO₂", "Peak may be preserved; underestimates PaCO₂", "Low amplitude — small tidal volumes"],
+              ["Breath-to-breath", "Consistent fin on every breath", "Irregular, variable-size breaths; may be lost entirely"],
+              ["Clinical signs", "Wheeze, high airway pressures, auto-PEEP", "Stridor, see-saw breathing, tracheal tug"],
+              ["Response", "Improves with bronchodilators / deepening", "Bronchodilators useless — relieve the obstruction"],
+            ].map((row) => (
+              <tr key={row[0]} className="align-top">
+                <td className="py-1.5 pr-3 border-b border-border/50 font-medium text-foreground">{row[0]}</td>
+                <td className="py-1.5 pr-3 border-b border-border/50">{row[1]}</td>
+                <td className="py-1.5 border-b border-border/50">{row[2]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="text-xs text-muted-foreground italic">
+        Bedside rule: if the trace never flattens, the problem is in the small airways;
+        if it flattens but arrives late and small, the problem is above the carina (or in
+        the tube).
+      </p>
+    </div>
+  );
+};
+
 const W = 760;
 const H = 200;
 const SAMPLES = 600;
