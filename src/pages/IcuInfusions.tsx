@@ -5,6 +5,7 @@ import { ArrowLeft, Droplets, Search, TriangleAlert } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import InfusionCalculator from "@/components/icu/InfusionCalculator";
 import {
   formatMlPerHour,
   icuInfusionCount,
@@ -89,6 +90,8 @@ const IcuInfusions = () => {
             library, and never run incompatible drugs through the same lumen.
           </p>
         </div>
+
+        <InfusionCalculator weight={weight} />
 
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end">
           <div className="relative max-w-md flex-1">
