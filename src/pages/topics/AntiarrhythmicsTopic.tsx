@@ -6,6 +6,7 @@ import { antiarrhythmicsQuiz } from "@/data/quizzes";
 import VaughanWilliamsAPDiagram from "@/components/diagrams/pharmacology/VaughanWilliamsAPDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const antiarrhythmicsFaqs: Array<[string, string]> = [
   [
@@ -171,16 +172,25 @@ const AntiarrhythmicsTopic = () => {
               <div className="rounded-lg p-4 border border-border bg-card">
                 <p className="font-bold text-foreground mb-1">Ia — Intermediate</p>
                 <p className="text-muted-foreground">↑ APD (blocks K⁺ too). Widens QRS <em>and</em> prolongs QT. Effective for both atrial and ventricular arrhythmias.</p>
+                <p className="text-xs text-foreground/80 mt-2"><strong>Agents:</strong> procainamide, quinidine, disopyramide. Procainamide remains an option for stable monomorphic VT and pre-excited AF; quinidine has a role in Brugada syndrome and disopyramide in HOCM (negative inotropy is useful there).</p>
               </div>
               <div className="rounded-lg p-4 border border-border bg-card">
                 <p className="font-bold text-foreground mb-1">Ib — Fast</p>
                 <p className="text-muted-foreground">↓ APD. Minimal effect on normal tissue — selectively binds inactivated channels in ischaemic myocardium. Lidocaine is the prototype.</p>
+                <p className="text-xs text-foreground/80 mt-2"><strong>Agents:</strong> lidocaine (IV, ventricular arrhythmias in ischaemia), mexiletine (oral analogue, used in long QT3 and refractory VT) and phenytoin (historically for digoxin-induced arrhythmias)<InlineRef topicId="antiarrhythmics" refLabel="CCM 2000 Proarrhythmia" />.</p>
               </div>
               <div className="rounded-lg p-4 border border-border bg-card">
                 <p className="font-bold text-foreground mb-1">Ic — Slow</p>
                 <p className="text-muted-foreground">No change in APD. Markedly slows conduction (phase 0). Contraindicated in structural heart disease (CAST trial — ↑ mortality post-MI).</p>
+                <p className="text-xs text-foreground/80 mt-2"><strong>Agents:</strong> flecainide and propafenone (which also has weak β-blocking activity) — used for pharmacological cardioversion and “pill-in-the-pocket” in structurally normal hearts only.</p>
               </div>
             </div>
+            <p className="text-sm text-foreground/80 mt-4">
+              For completeness across the remaining classes: <strong>Class II</strong> — bisoprolol, metoprolol, esmolol (short-acting,
+              titratable, ideal in critical care), atenolol, propranolol. <strong>Class III</strong> — amiodarone, sotalol (also class II),
+              dronedarone, ibutilide, vernakalant. <strong>Class IV</strong> — verapamil and diltiazem (avoid in reduced ejection
+              fraction and with intravenous β-blockade).
+            </p>
           </section>
 
           <section className="mb-10">
@@ -255,6 +265,41 @@ const AntiarrhythmicsTopic = () => {
               <li><strong>Risk factors:</strong> ↓K⁺, ↓Mg²⁺, ↑QTc, structural heart disease, renal impairment, drug interactions</li>
             </ul>
           </section>
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Electrical Storm</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Electrical storm is defined as <strong>three or more distinct episodes of sustained VT, VF or appropriate ICD therapies
+              within 24 hours</strong>. It is a state of life-threatening electrical instability with high short-term mortality, and
+              treatment must simultaneously suppress the arrhythmia, remove triggers and address the underlying substrate<InlineRef topicId="antiarrhythmics" refLabel="JACC 2023 Electrical Storm" />.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+              <div className="rounded-lg p-4 border border-border bg-card">
+                <p className="font-bold text-foreground mb-1">Immediate goals</p>
+                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                  <li>Terminate and suppress recurrent arrhythmia.</li>
+                  <li>Find and correct reversible triggers: ischaemia, electrolyte disturbance, decompensated heart failure, hypoxia, sepsis, drug toxicity or a pro-arrhythmic drug, and inappropriate ICD programming.</li>
+                  <li>Support haemodynamics and reduce sympathetic drive.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg p-4 border border-border bg-card">
+                <p className="font-bold text-foreground mb-1">Initial management</p>
+                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                  <li>Optimise electrolytes: K⁺ &gt;4.5 mmol/L, Mg²⁺ &gt;1.2 mmol/L.</li>
+                  <li>Intravenous β-blockade first line — esmolol infusion (titratable) or propranolol; sympathetic blockade is more effective than escalating antiarrhythmics alone.</li>
+                  <li>Amiodarone loading 300 mg IV then 900 mg/24 h; lidocaine as an alternative in ischaemic VT.</li>
+                  <li>Adequate sedation and analgesia — pain and anxiety from repeated shocks drive further catecholamine release.</li>
+                  <li>Reprogramme the ICD (raise VT detection rate, enable anti-tachycardia pacing) to reduce shock burden.</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-sm text-foreground/80 mt-3">
+              <strong>Escalation for refractory storm:</strong> deep sedation with general anaesthesia and neuromuscular blockade,
+              percutaneous stellate ganglion block or thoracic epidural for sympathetic modulation, urgent catheter ablation, overdrive
+              pacing for pause-dependent torsades, and mechanical circulatory support (IABP, Impella, VA-ECMO) as a bridge to ablation
+              or transplantation.
+            </p>
+          </section>
+
           <ExamPitfallsCallout
             accent="pharmacology"
             pitfalls={[

@@ -10,6 +10,7 @@ import { TOFPatternDiagram } from "@/components/diagrams/pharmacology/TOFPattern
 import { NMBATimelineDiagram } from "@/components/diagrams/pharmacology/NMBATimelineDiagram";
 import SugammadexDiagram from "@/components/diagrams/pharmacology/SugammadexDiagram";
 import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const workedExamples: WorkedExample[] = [
   {
@@ -285,12 +286,75 @@ const RocuroniumTopic = () => {
             <section className="mb-10">
               <h2 className="text-2xl font-serif font-bold text-foreground">Adverse Effects</h2>
               <ul className="list-disc list-inside text-foreground/90 leading-relaxed space-y-1">
-                <li><strong>Anaphylaxis</strong>: ~1:2500–1:5000 — second commonest NMBA trigger after suxamethonium (NAP6).</li>
+                <li><strong>Anaphylaxis</strong>: ~1:2500–1:5000 — with suxamethonium, the commonest NMBA trigger of perioperative anaphylaxis in NAP6. Hypotension dominates the presentation and bronchospasm occurs in roughly half of cases<InlineRef topicId="rocuronium" refLabel="NAP6 2018" />.</li>
                 <li><strong>Pain on injection</strong>: ~50–80% of awake patients; mitigated by lidocaine pre-treatment or post-induction administration.</li>
-                <li><strong>Cardiovascular</strong>: minimal — mild vagolytic effect, occasional modest tachycardia.</li>
                 <li><strong>Histamine release</strong>: clinically insignificant (vs benzylisoquinoliniums).</li>
-                <li><strong>Prolonged duration</strong>: hepatic failure, severe renal impairment, hypothermia, acidosis, hypermagnesaemia, aminoglycoside antibiotics.</li>
                 <li><strong>Not</strong> a malignant hyperthermia trigger; safe in plasma cholinesterase deficiency.</li>
+              </ul>
+              <div className="grid md:grid-cols-2 gap-3 mt-4 text-sm">
+                <div className="rounded-lg border border-border bg-card p-4">
+                  <p className="font-semibold text-foreground mb-1">Cardiovascular effects</p>
+                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                    <li>At clinical doses rocuronium is essentially cardiostable — no ganglion blockade and no significant histamine release, so blood pressure and systemic vascular resistance are maintained.</li>
+                    <li>Weak vagolytic (M₂ antagonist) activity at high doses (≥0.9–1.2 mg/kg) may cause a modest rise in heart rate of about 5–10 beats/min; this is far less than pancuronium.</li>
+                    <li>Any marked tachycardia, hypotension or cardiovascular collapse after rocuronium should be treated as anaphylaxis rather than a direct drug effect.</li>
+                    <li>Because rocuronium does not blunt the sympathetic response to laryngoscopy, an opioid or additional induction agent is still needed in patients where hypertension is hazardous.</li>
+                  </ul>
+                </div>
+                <div className="rounded-lg border border-border bg-card p-4">
+                  <p className="font-semibold text-foreground mb-1">Respiratory effects</p>
+                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                    <li>Complete apnoea from diaphragmatic and intercostal paralysis — ventilation must always be controlled.</li>
+                    <li>Bronchospasm is uncommon as a direct effect (minimal histamine release) but is a leading feature of rocuronium anaphylaxis; consider it in the differential for high airway pressures after induction.</li>
+                    <li>Residual block (TOF ratio &lt;0.9) causes pharyngeal dysfunction, impaired airway protection, hypoxaemia and post-operative pulmonary complications — quantitative monitoring and full reversal are mandatory.</li>
+                    <li>Rapid loss of upper airway tone contributes to airway collapse if mask ventilation is difficult; a plan for failed intubation (including sugammadex 16 mg/kg for immediate reversal) is essential.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section className="mb-10">
+              <h2 className="text-2xl font-serif font-bold text-foreground">Factors Potentiating Rocuronium Block</h2>
+              <p className="text-sm text-muted-foreground mb-3">Onset, depth and duration are modified by patient physiology, co-administered drugs and neuromuscular disease<InlineRef topicId="rocuronium" refLabel="BJA 2008 NMB Factors" />.</p>
+              <div className="grid md:grid-cols-2 gap-3 text-sm">
+                <div className="rounded-lg border border-border bg-card p-4">
+                  <p className="font-semibold text-foreground mb-1">Physiological and metabolic</p>
+                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                    <li>Hypothermia — reduced hepatic clearance and slowed receptor kinetics.</li>
+                    <li>Respiratory acidosis and metabolic acidosis.</li>
+                    <li>Hypokalaemia, hypocalcaemia and hypermagnesaemia (magnesium reduces pre-junctional ACh release — obstetric patients on magnesium need markedly reduced doses).</li>
+                    <li>Hepatic failure (main route of elimination) and severe renal impairment (about 30% renal excretion) both prolong duration.</li>
+                    <li>Elderly patients: reduced hepatic blood flow and muscle mass slow onset and prolong recovery.</li>
+                  </ul>
+                </div>
+                <div className="rounded-lg border border-border bg-card p-4">
+                  <p className="font-semibold text-foreground mb-1">Drugs and disease</p>
+                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                    <li>Volatile anaesthetics (desflurane &gt; sevoflurane &gt; isoflurane &gt; nitrous oxide/TIVA) — dose-dependent potentiation.</li>
+                    <li>Aminoglycoside, polymyxin, clindamycin and tetracycline antibiotics.</li>
+                    <li>Local anaesthetics, magnesium sulphate, lithium, dantrolene, calcium channel blockers.</li>
+                    <li>Prior suxamethonium increases the intensity of subsequent non-depolarising block.</li>
+                    <li>Myasthenia gravis (marked sensitivity — use a fraction of the dose with quantitative monitoring), Eaton–Lambert syndrome, muscular dystrophies, critical illness myopathy.</li>
+                    <li><strong>Resistance</strong> instead occurs in burns (&gt;24 h), chronic anticonvulsant therapy, prolonged immobilisation and upper motor neurone lesions from receptor upregulation.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section className="mb-10">
+              <h2 className="text-2xl font-serif font-bold text-foreground">Use in Intensive Care</h2>
+              <p className="text-foreground/90 leading-relaxed">
+                Rocuronium is used in critical care for tracheal intubation (1.0–1.2 mg/kg for rapid sequence induction, where it is
+                the alternative to suxamethonium in hyperkalaemia, burns, spinal cord injury and malignant hyperthermia
+                susceptibility) and occasionally by infusion (typically 0.3–0.6 mg/kg/h) for severe ventilator dyssynchrony,
+                therapeutic hypothermia, raised intracranial pressure or prone positioning.
+              </p>
+              <ul className="list-disc list-inside text-foreground/90 leading-relaxed mt-3 space-y-1">
+                <li><strong>Choice of agent:</strong> cisatracurium is generally preferred for prolonged infusions because organ-independent Hofmann elimination avoids accumulation; rocuronium accumulates in hepatic and renal failure, giving unpredictably prolonged paralysis.</li>
+                <li><strong>Evidence for infusions in ARDS:</strong> the ROSE trial found no mortality benefit from early continuous neuromuscular blockade with a high-PEEP strategy compared with lighter sedation, so infusions are now reserved for specific indications rather than routine use<InlineRef topicId="rocuronium" refLabel="ROSE 2019" />.</li>
+                <li><strong>Mandatory co-interventions:</strong> deep sedation and analgesia (a paralysed patient cannot signal awareness), eye care, pressure area and thromboprophylaxis, and secure ventilator alarms — accidental disconnection is rapidly fatal.</li>
+                <li><strong>Monitoring:</strong> daily interruption and quantitative TOF (target 1–2 twitches) to use the minimum effective dose; deep prolonged block increases the risk of ICU-acquired weakness and critical illness neuromyopathy, especially with corticosteroids and hyperglycaemia.</li>
+                <li><strong>Reversal:</strong> sugammadex 16 mg/kg reverses profound block within 3 min and is the rescue option in a can't intubate, can't oxygenate scenario; standard reversal doses are 2 mg/kg (TOF count ≥2) and 4 mg/kg (post-tetanic count 1–2).</li>
               </ul>
             </section>
 

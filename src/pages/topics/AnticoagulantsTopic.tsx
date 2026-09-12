@@ -8,6 +8,7 @@ import BridgingAnticoagulationPathway from "@/components/diagrams/pharmacology/B
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const anticoagulantsFaqs: Array<[string, string]> = [
   [
@@ -188,6 +189,33 @@ const AnticoagulantsTopic = () => {
                   </p>
                 </div>
               </div>
+              <div className="mt-4 rounded-lg p-4 border border-border bg-card">
+                <p className="font-bold text-foreground mb-1">Diagnosis of type II HIT</p>
+                <p className="text-sm text-foreground/80">
+                  Diagnosis is a two-step process: estimate pre-test probability with the <strong>4Ts score</strong> (0–2 points each,
+                  maximum 8), then confirm with laboratory testing. A low score (0–3) makes HIT very unlikely and heparin can usually
+                  continue; intermediate (4–5) or high (6–8) scores mandate stopping heparin and starting a non-heparin anticoagulant
+                  while tests are awaited<InlineRef topicId="anticoagulants" refLabel="BSH HIT 2012" />.
+                </p>
+                <div className="overflow-x-auto mt-3">
+                  <table className="min-w-full text-sm border border-border rounded-lg">
+                    <thead><tr className="bg-secondary/50"><th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">4Ts component</th><th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">2 points</th><th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">0 points</th></tr></thead>
+                    <tbody className="text-foreground/90">
+                      <tr className="border-b border-border/50"><td className="px-3 py-2 font-medium text-foreground">Thrombocytopenia</td><td className="px-3 py-2">Fall &gt;50% and nadir ≥20 × 10⁹/L</td><td className="px-3 py-2">Fall &lt;30% or nadir &lt;10 × 10⁹/L</td></tr>
+                      <tr className="border-b border-border/50"><td className="px-3 py-2 font-medium text-foreground">Timing of fall</td><td className="px-3 py-2">Days 5–10, or ≤1 day with heparin in the last 30 days</td><td className="px-3 py-2">Fall &lt;4 days without recent exposure</td></tr>
+                      <tr className="border-b border-border/50"><td className="px-3 py-2 font-medium text-foreground">Thrombosis or sequelae</td><td className="px-3 py-2">New confirmed thrombosis, skin necrosis, or systemic reaction after a bolus</td><td className="px-3 py-2">None</td></tr>
+                      <tr className="border-b border-border/50"><td className="px-3 py-2 font-medium text-foreground">Other causes</td><td className="px-3 py-2">None apparent</td><td className="px-3 py-2">Definite alternative cause (sepsis, DIC, dilution, drugs)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-sm text-foreground/80 mt-3">
+                  <strong>Immunoassay:</strong> ELISA for anti-PF4/heparin antibodies — highly sensitive (a negative result effectively
+                  excludes HIT) but poorly specific, since many patients form non-pathogenic antibodies after cardiac surgery.
+                  <strong> Functional assay:</strong> serotonin release assay (SRA) or heparin-induced platelet aggregation (HIPA)
+                  demonstrates platelet activation and is both sensitive and specific — the reference standard, but available only in
+                  specialist laboratories with a slow turnaround, so treatment is started on clinical grounds.
+                </p>
+              </div>
             </div>
 
             <div className="mb-6">
@@ -213,8 +241,32 @@ const AnticoagulantsTopic = () => {
               <div className="rounded-lg p-4 border border-border bg-card">
                 <h3 className="font-semibold text-foreground">Pharmacokinetics</h3>
                 <p className="text-sm text-foreground/80 mt-1">
-                  Oral bioavailability ~100%. ~99% protein-bound. CYP2C9 (S-warfarin) and CYP3A4 (R-warfarin). t½ 36–42 h.
-                  Monitored by INR. Therapeutic range 2.0–3.0 (mechanical valves: 2.5–3.5).
+                  Oral bioavailability ~100%. ~99% protein-bound (albumin). Racemic mixture: <strong>S-warfarin is 3–5 times more
+                  potent</strong> than R-warfarin and is cleared by CYP2C9, while R-warfarin is metabolised by CYP3A4 and CYP1A2.
+                  t½ 36–42 h. Monitored by INR; therapeutic range 2.0–3.0 (mechanical valves 2.5–3.5).
+                </p>
+                <p className="text-sm text-foreground/80 mt-2">
+                  Because the active enantiomer depends on a single polymorphic enzyme, <strong>CYP2C9 *2 and *3 alleles</strong> reduce
+                  S-warfarin clearance and are associated with lower dose requirements and a higher bleeding risk; VKORC1 promoter
+                  variants alter target sensitivity<InlineRef topicId="anticoagulants" refLabel="CYP2C9 Warfarin 2005" />.
+                </p>
+                <div className="overflow-x-auto mt-3">
+                  <table className="min-w-full text-sm border border-border rounded-lg">
+                    <thead><tr className="bg-secondary/50"><th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Mechanism</th><th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Effect on INR</th><th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Examples</th></tr></thead>
+                    <tbody className="text-foreground/90">
+                      <tr className="border-b border-border/50"><td className="px-3 py-2">CYP2C9/3A4 inhibition</td><td className="px-3 py-2">↑ INR</td><td className="px-3 py-2">Amiodarone, fluconazole and other azoles, metronidazole, macrolides, ciprofloxacin, omeprazole</td></tr>
+                      <tr className="border-b border-border/50"><td className="px-3 py-2">CYP induction</td><td className="px-3 py-2">↓ INR</td><td className="px-3 py-2">Rifampicin, carbamazepine, phenytoin, St John's wort, chronic alcohol</td></tr>
+                      <tr className="border-b border-border/50"><td className="px-3 py-2">Reduced absorption / enterohepatic binding</td><td className="px-3 py-2">↓ INR</td><td className="px-3 py-2">Cholestyramine, sucralfate</td></tr>
+                      <tr className="border-b border-border/50"><td className="px-3 py-2">Displacement from albumin (with added antiplatelet or gastric injury)</td><td className="px-3 py-2">↑ bleeding risk (transient ↑ INR)</td><td className="px-3 py-2">NSAIDs, aspirin, high-dose sulfonamides</td></tr>
+                      <tr className="border-b border-border/50"><td className="px-3 py-2">Reduced vitamin K availability</td><td className="px-3 py-2">↑ INR</td><td className="px-3 py-2">Broad-spectrum antibiotics (gut flora), poor oral intake, malabsorption</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-sm text-foreground/80 mt-2">
+                  <strong>Diet:</strong> a high vitamin K intake (green leafy vegetables) lowers the INR while a sudden reduction raises
+                  it — consistency matters more than restriction. <strong>Liver disease</strong> both impairs synthesis of the
+                  vitamin K-dependent factors and reduces warfarin clearance, so the baseline INR is already prolonged and the
+                  response to a given dose is exaggerated and unpredictable; heart failure with hepatic congestion behaves similarly.
                 </p>
               </div>
               <div className="rounded-lg p-4 border border-border bg-card">
@@ -320,6 +372,32 @@ const AnticoagulantsTopic = () => {
               </table>
             </div>
             <p className="text-sm text-muted-foreground italic mt-2">Based on AAGBI/ESRA/ASRA guidelines.</p>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">DOAC Reversal Agents</h2>
+            <div className="space-y-4">
+              <div className="rounded-lg p-4 border border-border bg-card">
+                <h3 className="font-semibold text-foreground">Idarucizumab (Praxbind®)</h3>
+                <ul className="text-sm text-foreground/80 mt-1 space-y-1 list-disc list-inside">
+                  <li><strong>Mechanism:</strong> humanised monoclonal antibody fragment (Fab) that binds dabigatran with roughly 350 times the affinity of dabigatran for thrombin, forming an inactive complex cleared renally.</li>
+                  <li><strong>Indication:</strong> dabigatran reversal for emergency surgery or an urgent procedure, and for life-threatening or uncontrolled bleeding.</li>
+                  <li><strong>Dose:</strong> 5 g total — two consecutive 2.5 g intravenous infusions over 5–10 min each (or bolus), given no more than 15 min apart.</li>
+                  <li><strong>Onset and duration:</strong> immediate; dilute thrombin time and ecarin clotting time normalise within minutes in essentially all patients. Redistribution of dabigatran from tissues can cause re-elevation of clotting times at 12–24 h, so a second 5 g dose is occasionally needed<InlineRef topicId="anticoagulants" refLabel="RE-VERSE AD 2017" />.</li>
+                  <li><strong>Practical points:</strong> no procoagulant effect of its own; dabigatran is also dialysable (~60% removed in 2–3 h) if idarucizumab is unavailable. Restart anticoagulation as soon as haemostasis allows, since thrombotic risk returns.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg p-4 border border-border bg-card">
+                <h3 className="font-semibold text-foreground">Andexanet alfa (Ondexxya®)</h3>
+                <ul className="text-sm text-foreground/80 mt-1 space-y-1 list-disc list-inside">
+                  <li><strong>Mechanism:</strong> recombinant, catalytically inactive modified human factor Xa that acts as a decoy, binding and sequestering direct Xa inhibitors (and, via tissue factor pathway inhibitor binding, indirectly restoring thrombin generation).</li>
+                  <li><strong>Indication:</strong> apixaban or rivaroxaban reversal in life-threatening or uncontrolled bleeding (notably intracranial haemorrhage).</li>
+                  <li><strong>Dose:</strong> two-part regimen — intravenous bolus followed by a 2-hour infusion. Low dose (400 mg bolus, 480 mg infusion) or high dose (800 mg bolus, 960 mg infusion) depending on the agent, the last dose taken and the interval since it.</li>
+                  <li><strong>Considerations:</strong> effect is transient and sustained only during the infusion, with anti-Xa activity rebounding afterwards; thrombotic events occurred in about 10% of patients at 30 days, so it carries a boxed warning and anticoagulation should be resumed when safe. It also interferes with heparin monitoring and with unfractionated heparin used for cardiopulmonary bypass<InlineRef topicId="anticoagulants" refLabel="ANNEXA-4 2019" />.</li>
+                  <li><strong>Alternative:</strong> where andexanet is unavailable, four-factor PCC 25–50 IU/kg is used, accepting weaker evidence.</li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <DiagramSection

@@ -15,6 +15,7 @@ import AntibioticPKPDPrimer from "@/components/diagrams/pharmacology/AntibioticP
 import EmpiricalSepsisChooser from "@/components/diagrams/pharmacology/EmpiricalSepsisChooser";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const antimicrobialsPharmFaqs: Array<[string, string]> = [
   [
@@ -287,6 +288,26 @@ const AntimicrobialsTopic = () => {
           </div>
 
           <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Antibacterial Use in Pregnancy and Lactation</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The guiding principle is to balance maternal benefit against fetal or neonatal risk: untreated maternal sepsis is far more dangerous than almost any antibacterial, so effective therapy is never withheld, but agent choice should favour drugs with the longest safety record<InlineRef topicId="antimicrobials-pharm" refLabel="BJA Educ 2018 Pregnancy" />.
+            </p>
+            <div className="overflow-x-auto rounded-lg border border-border">
+              <table className="w-full text-sm">
+                <thead className="bg-secondary/40"><tr><th className="p-3 text-left">Category</th><th className="p-3 text-left">Agents</th><th className="p-3 text-left">Comment</th></tr></thead>
+                <tbody className="divide-y divide-border text-muted-foreground">
+                  <tr><td className="p-3 font-medium text-foreground">Generally safe</td><td className="p-3">Penicillins, cephalosporins, azithromycin (and erythromycin base), metronidazole after the first trimester, clindamycin</td><td className="p-3">Extensive human data; used routinely for obstetric sepsis and caesarean prophylaxis. Renal clearance rises in pregnancy, so avoid under-dosing.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Use with caution</td><td className="p-3">Gentamicin and other aminoglycosides, vancomycin, nitrofurantoin (avoid at term), trimethoprim after the first trimester</td><td className="p-3">Aminoglycosides carry a theoretical fetal ototoxicity/nephrotoxicity risk — reserve for serious infection, use short courses with therapeutic drug monitoring. Nitrofurantoin near delivery risks neonatal haemolysis.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Avoid</td><td className="p-3">Tetracyclines, fluoroquinolones, trimethoprim in the first trimester, chloramphenicol, sulfonamides near term</td><td className="p-3">Tetracyclines cause dental staining and affect fetal bone; quinolones cause arthropathy in animal studies; trimethoprim is a folate antagonist (neural tube risk); sulfonamides displace bilirubin (kernicterus).</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Lactation:</strong> most antibacterials appear in breast milk in small amounts and are compatible with feeding. Penicillins, cephalosporins and macrolides are well tolerated; tetracyclines, fluoroquinolones and chloramphenicol are usually avoided, and high-dose metronidazole may impart a bitter taste and cause infant loose stools. Check the BNF or a specialist source for individual agents<InlineRef topicId="antimicrobials-pharm" refLabel="BNF" />.
+            </p>
+          </div>
+
+          <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Antimicrobial Resistance Mechanisms</h2>
             <div className="space-y-3">
               {[
@@ -312,6 +333,51 @@ const AntimicrobialsTopic = () => {
                 { label: "Continuous β-Lactam Infusion", value: "Maximises T>MIC. Evidence supports continuous or extended infusions of piperacillin/tazobactam and meropenem in critically ill patients." },
                 { label: "Aminoglycoside Dosing", value: "Once-daily (Hartford nomogram) vs multiple daily dosing. ODD maximises Cmax/MIC and reduces nephrotoxicity. Monitor troughs (<1 mg/L for gentamicin)." },
                 { label: "Antifungal Empirical Therapy", value: "Echinocandins first-line for invasive candidiasis. Voriconazole first-line for invasive aspergillosis. Consider in patients failing to respond to broad-spectrum antibacterials." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs font-semibold text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{item.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Therapeutic Drug Monitoring in the ICU</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Critical illness distorts antimicrobial pharmacokinetics: capillary leak and fluid loading expand the volume of distribution of hydrophilic drugs, hypoalbuminaemia raises the free fraction of highly bound agents, augmented renal clearance produces sub-therapeutic exposure, while acute kidney injury, renal replacement therapy and ECMO circuits move exposure in the opposite direction. Fixed dosing therefore predicts concentration poorly, and the 2020 ESICM/ESCMID position paper recommends routine monitoring of aminoglycosides, β-lactams, linezolid, teicoplanin, vancomycin and voriconazole in critically ill patients<InlineRef topicId="antimicrobials-pharm" refLabel="ESICM TDM 2020" />.
+            </p>
+            <div className="overflow-x-auto rounded-lg border border-border">
+              <table className="w-full text-sm">
+                <thead className="bg-secondary/40"><tr><th className="p-3 text-left">Drug</th><th className="p-3 text-left">Target</th><th className="p-3 text-left">Practical note</th></tr></thead>
+                <tbody className="divide-y divide-border text-muted-foreground">
+                  <tr><td className="p-3 font-medium text-foreground">Meropenem / piperacillin (β-lactams)</td><td className="p-3">Trough 2–4× MIC; aim for 100% fT&gt;MIC in severe infection</td><td className="p-3">Extended or continuous infusion makes the target achievable; sample at steady state (after ~4–5 doses).</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Vancomycin</td><td className="p-3">AUC₂₄/MIC 400–600 mg·h/L (trough 15–20 mg/L if AUC unavailable)</td><td className="p-3">AUC-guided dosing reduces nephrotoxicity compared with trough-only targets.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Gentamicin (once daily)</td><td className="p-3">Peak 8–10× MIC; trough &lt;1 mg/L</td><td className="p-3">Concentration-dependent killing with a long post-antibiotic effect; the trough governs toxicity.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Teicoplanin</td><td className="p-3">Trough 15–30 mg/L (higher for endocarditis or bone)</td><td className="p-3">Requires loading doses; check after loading is complete.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Voriconazole</td><td className="p-3">Trough 1–5.5 mg/L</td><td className="p-3">Non-linear kinetics, CYP2C19 polymorphism; high troughs cause hepatotoxicity, visual and neurological toxicity.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Linezolid</td><td className="p-3">Trough 2–8 mg/L</td><td className="p-3">High troughs predict thrombocytopenia; low troughs occur with augmented clearance.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              Barriers to implementation are practical rather than conceptual: assays for β-lactams and linezolid are available in few laboratories, turnaround time often exceeds the dosing interval, sampling errors (wrong timing, drawing from the infusion limb) invalidate results, and interpretation needs an MIC and a clinician or pharmacist able to act on it.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Antimicrobial Stewardship</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Stewardship aims to optimise clinical outcome while minimising the unintended consequences of antimicrobial use — toxicity, <em>Clostridioides difficile</em> infection, selection of resistance and cost. The Surviving Sepsis Campaign requires daily reassessment of therapy for de-escalation, and supports biomarkers such as procalcitonin to help stop empirical antibiotics<InlineRef topicId="antimicrobials-pharm" refLabel="SSC 2013" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { label: "The four Ds", value: "Right drug (guided by likely pathogen and local resistance), right dose (PK/PD-based, with TDM where available), right duration, and de-escalation once cultures return." },
+                { label: "De-escalation", value: "Narrow the spectrum to the identified organism, stop redundant cover (double anaerobic or dual Gram-negative therapy), and switch intravenous to oral when absorption and clinical state allow." },
+                { label: "Duration", value: "Use the shortest effective course with a documented stop or review date — 7 days for most ventilator-associated pneumonia and intra-abdominal sepsis with adequate source control." },
+                { label: "Biomarkers", value: "Procalcitonin-guided cessation shortens courses without harm, but it rises in non-infective inflammation (surgery, trauma, cardiac arrest) and falls late in abscess or endocarditis — use trends alongside clinical judgement, never alone." },
+                { label: "Source control", value: "Drainage, debridement or device removal achieves more than any escalation of spectrum; unexplained failure should prompt re-imaging rather than a broader antibiotic." },
+                { label: "Multidisciplinary team", value: "Infection specialists, medical microbiologists and antimicrobial pharmacists on ward rounds improve compliance, prescribing quality and outcomes; audit and feedback sustain the gains." },
               ].map((item) => (
                 <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                   <p className="text-xs font-semibold text-foreground">{item.label}</p>

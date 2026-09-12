@@ -10,6 +10,7 @@ import LocalAnaestheticStructures from "@/components/diagrams/pharmacology/Local
 import PropofolLidocaineMechanismDiagram from "@/components/diagrams/pharmacology/PropofolLidocaineMechanismDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 const localAnaestheticsFaqs: Array<[string, string]> = [
@@ -23,7 +24,7 @@ const localAnaestheticsFaqs: Array<[string, string]> = [
   ],
   [
     "Outline the management of local-anaesthetic systemic toxicity (LAST).",
-    "AAGBI 2010 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry."
+    "RCoA/Association of Anaesthetists 2024 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry."
   ]
 ];
 
@@ -37,7 +38,7 @@ const workedExamples: WorkedExample[] = [
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
           <li>Call for help and the LAST trolley. Stop injecting LA immediately. Manage airway and ventilate with 100% O₂ — hypoxia and acidosis worsen toxicity.</li>
-          <li>Terminate the seizure: small-dose benzodiazepine (midazolam 1–2 mg) preferred. Avoid propofol if cardiovascularly unstable.</li>
+          <li>Terminate the seizure: small-dose benzodiazepine (midazolam 1–2 mg) preferred. Propofol is not recommended if there is any cardiovascular instability — it is a myocardial depressant and is not a substitute for lipid emulsion.</li>
           <li>Start ALS if pulseless. CPR may need to be prolonged (&gt;60 min) because bupivacaine binds avidly to sodium channels.</li>
           <li>Give 20% lipid emulsion (Intralipid): 1.5 mL/kg bolus over 1 min then 15 mL/kg/h infusion. Repeat bolus every 5 min up to 3 times if circulation not restored; double the infusion rate if BP remains low. Max cumulative dose 12 mL/kg.</li>
           <li>Modify ALS drugs: reduce adrenaline to ≤1 µg/kg boluses; avoid vasopressin, calcium channel blockers, β-blockers, and lidocaine.</li>
@@ -54,7 +55,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Stop LA, secure airway with 100% O₂, suppress seizures with midazolam, start ALS (with reduced adrenaline ≤1 µg/kg, no lidocaine/vasopressin/calcium blockers), and give 20% lipid emulsion 1.5 mL/kg bolus then 15 mL/kg/h infusion. Continue CPR for ≥60 min if needed and admit to ICU for ≥12 h after ROSC.",
-    cites: ["AAGBI 2010","BJA Educ 2016"],
+    cites: ["AA LAST 2024","BJA Educ 2016"],
   },
 ];
 const LocalAnaestheticsTopic = () => {
@@ -73,15 +74,15 @@ const LocalAnaestheticsTopic = () => {
         "Apply the Henderson–Hasselbalch equation and the concept of ion trapping to clinical scenarios (infected tissue, foetal acidosis)",
         "Distinguish ester from amide LAs by metabolism, allergy potential and clinical use",
         "Calculate maximum safe doses for lidocaine, bupivacaine, ropivacaine and prilocaine, with and without adrenaline",
-        "Recognise and manage local anaesthetic systemic toxicity (LAST) using AAGBI 2010 guidance and 20% lipid emulsion",
+        "Recognise and manage local anaesthetic systemic toxicity (LAST) using the RCoA/Association of Anaesthetists 2024 guideline and 20% lipid emulsion",
       ]}
       keyPoints={[
         { text: "LAs are weak bases; the unionised form crosses the membrane, the ionised form blocks the Na⁺ channel intracellularly.", cites: ["Peck & Hill Ch.8"] },
         { text: "pKa determines onset speed: lower pKa → more unionised at pH 7.4 → faster onset (lidocaine pKa 7.9 > bupivacaine pKa 8.1).", cites: ["BJA Educ 2015"] },
-        { text: "Lipid solubility determines potency; protein binding determines duration of action.", cites: ["AAGBI 2010"] },
+        { text: "Lipid solubility determines potency; protein binding determines duration of action.", cites: ["AA LAST 2024"] },
         { text: "Infected/acidotic tissue has more ionised drug → less membrane penetration → LA failure.", cites: ["Peck & Hill Ch.8"] },
         { text: "Amides (lidocaine, bupivacaine, ropivacaine) are hepatically metabolised; esters are hydrolysed by plasma cholinesterases.", cites: ["BJA Educ 2015"] },
-        { text: "Differential blockade: autonomic → pain/temperature → touch → motor. Recovery is in reverse.", cites: ["AAGBI 2010"] },
+        { text: "Differential blockade: autonomic → pain/temperature → touch → motor. Recovery is in reverse.", cites: ["AA LAST 2024"] },
         { text: "LAST presents as CNS excitation then cardiovascular collapse. Treat with Intralipid 20% (1.5 mL/kg bolus then 15 mL/kg/h infusion).", cites: ["Peck & Hill Ch.8"] },
         { text: "Bupivacaine is most cardiotoxic due to slow dissociation from cardiac Na⁺ channels; ropivacaine is the safer S-enantiomer alternative.", cites: ["BJA Educ 2015"] },
       ]}
@@ -91,9 +92,9 @@ const LocalAnaestheticsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2015", "Peck & Hill Ch.8", "AAGBI 2010"],
-        keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.8", "AAGBI 2010"],
-        workedExamples: ["AAGBI 2010", "BJA Educ 2016"],
+        objectives: ["BJA Educ 2015", "Peck & Hill Ch.8", "AA LAST 2024"],
+        keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.8", "AA LAST 2024"],
+        workedExamples: ["AA LAST 2024", "BJA Educ 2016"],
       }}
       coreConcepts={
         <>
@@ -154,6 +155,63 @@ const LocalAnaestheticsTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Metabolised by hepatic amidases (CYP450). Very rare true allergy. Remember: amides have two "i"s in the name.</p>
               </div>
             </div>
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Classification by Potency and Duration</h3>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              A second, clinically more useful classification groups the agents by potency and duration of action, which follow lipid
+              solubility and protein binding respectively<InlineRef topicId="local-anaesthetics" refLabel="BJA 1986 LA Pharmacology" />.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border border-border rounded-lg">
+                <thead><tr className="bg-muted/50"><th className="text-left p-3 font-semibold text-foreground">Group</th><th className="text-left p-3 font-semibold text-foreground">Agents</th><th className="text-left p-3 font-semibold text-foreground">Typical clinical use</th></tr></thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-t border-border"><td className="p-3 font-medium text-foreground">Low potency, short duration</td><td className="p-3">Procaine, chloroprocaine (esters)</td><td className="p-3">Chloroprocaine for rapid epidural top-up (onset ~5 min, rapid ester hydrolysis limits fetal exposure) and short spinal anaesthesia for day-case surgery; procaine is largely historical.</td></tr>
+                  <tr className="border-t border-border"><td className="p-3 font-medium text-foreground">Intermediate potency and duration</td><td className="p-3">Lidocaine, prilocaine, mepivacaine</td><td className="p-3">Lidocaine for infiltration, airway topicalisation and dentistry; prilocaine for Bier's block (least cardiotoxic, but methaemoglobinaemia with o-toluidine) and dental use; mepivacaine for peripheral blocks needing quick onset and moderate duration.</td></tr>
+                  <tr className="border-t border-border"><td className="p-3 font-medium text-foreground">High potency, long duration</td><td className="p-3">Bupivacaine, levobupivacaine, ropivacaine, tetracaine (amethocaine), etidocaine</td><td className="p-3">Bupivacaine and levobupivacaine for spinal, epidural and peripheral blocks; ropivacaine for infusions where motor sparing and a better cardiotoxicity profile matter; tetracaine as topical gel (Ametop) for cannulation.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Additives to Local Anaesthetics</h2>
+            <div className="space-y-3 text-sm">
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Adrenaline (typically 1:200,000 = 5 µg/mL)</p>
+                <p className="text-muted-foreground mt-1">α₁-mediated vasoconstriction slows systemic absorption, so peak plasma concentration falls, duration is prolonged (most marked for lidocaine and prilocaine, least for bupivacaine and ropivacaine, which are already highly protein-bound) and the maximum safe dose rises. It also serves as an intravascular marker (tachycardia on test dose). Avoid in digital, penile and ear blocks by tradition, and in unstable ischaemic heart disease or uncontrolled hypertension.</p>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Sodium bicarbonate</p>
+                <p className="text-muted-foreground mt-1">Raising solution pH increases the proportion of unionised base available to cross the axonal membrane, speeding onset and reducing injection pain. A practical recipe is 1 mL of 8.4% sodium bicarbonate added to 10 mL of lidocaine (use only about 0.1 mL per 10 mL for bupivacaine, which precipitates readily). Mix immediately before use.</p>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Opioids (fentanyl, diamorphine, morphine)</p>
+                <p className="text-muted-foreground mt-1">Act synergistically at pre- and post-synaptic µ-receptors in the dorsal horn when given neuraxially, improving block quality without added motor block. Intrathecal fentanyl 10–25 µg improves intra-operative comfort at caesarean section; diamorphine 300–400 µg or preservative-free morphine gives 12–24 h analgesia at the cost of pruritus, nausea and a risk of delayed respiratory depression.</p>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Clonidine and dexmedetomidine (α₂-agonists)</p>
+                <p className="text-muted-foreground mt-1">Prolong both sensory and motor block, probably through hyperpolarisation of C fibres and spinal α₂ effects; clonidine 1 µg/kg is a common peripheral adjunct. Dose-limiting sedation, hypotension and bradycardia.</p>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Dexamethasone and others</p>
+                <p className="text-muted-foreground mt-1">Perineural or intravenous dexamethasone prolongs analgesia after brachial plexus block; hyaluronidase aids spread in ophthalmic blocks; sodium metabisulfite and other preservatives are relevant to neurotoxicity concerns rather than efficacy.</p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Use in Obstetric Anaesthesia</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Obstetric practice demands high-quality block with minimal motor weakness and minimal fetal exposure. Inadequate neuraxial
+              anaesthesia for elective caesarean section is common — roughly one in ten women needs supplementation and a small
+              proportion require conversion to general anaesthesia — so dose, level testing and a plan for supplementation matter<InlineRef topicId="local-anaesthetics" refLabel="Anaesthesia 2022 Neuraxial CS" />.
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-sm text-foreground/90">
+              <li><strong>Labour epidural:</strong> low-concentration mixtures — bupivacaine or levobupivacaine 0.0625–0.125% (or ropivacaine 0.1–0.2%) with fentanyl 2 µg/mL, given by intermittent bolus or programmed intermittent epidural bolus with patient-controlled top-ups. Low concentration preserves motor power and reduces instrumental delivery.</li>
+              <li><strong>Caesarean section (spinal):</strong> hyperbaric bupivacaine 0.5% 2.0–2.5 mL (10–12.5 mg) with fentanyl 10–25 µg and diamorphine 300–400 µg, aiming for a block to T4 (loss of cold to T4, light touch to T5) before incision.</li>
+              <li><strong>Epidural top-up for category 1–2 section:</strong> 2% lidocaine with adrenaline and fentanyl, or 0.5% bupivacaine/levobupivacaine; chloroprocaine 3% where the fastest onset is required.</li>
+              <li><strong>Ion trapping:</strong> local anaesthetics cross the placenta as the unionised base. In the acidotic fetus, more of the drug is protonated and cannot diffuse back, so it accumulates in the fetal circulation. This is most marked with lidocaine and prilocaine (lower pKa, less protein binding) and least with bupivacaine, which is highly protein-bound with a low umbilical:maternal ratio. Clinically it means fetal distress with acidosis increases fetal drug load — a reason for avoiding repeated large maternal doses and for treating maternal hypotension and uterine hyperstimulation promptly.</li>
+              <li><strong>Physiological caveats:</strong> engorged epidural veins reduce the dose requirement by about a third and increase the risk of intravascular injection; progesterone increases neural sensitivity; aortocaval compression exaggerates the hypotension of sympathetic block.</li>
+            </ul>
           </section>
 
           <section className="mb-10">
@@ -245,8 +303,11 @@ const LocalAnaestheticsTopic = () => {
                 <li>• Initial bolus: 1.5 mL/kg over 1 minute</li>
                 <li>• Infusion: 15 mL/kg/h (or 0.25 mL/kg/min)</li>
                 <li>• Repeat bolus after 5 min if cardiovascular instability persists (max 2 further boluses)</li>
-                <li>• Maximum cumulative dose: 12 mL/kg</li>
-                <li>• AAGBI guidelines recommend Intralipid be available wherever regional anaesthesia is performed</li>
+                <li>• Maximum cumulative dose: approximately 12 mL/kg (about 1000 mL in a 70 kg adult)</li>
+                <li>• Modify ALS: adrenaline boluses &lt;1 µg/kg; avoid vasopressin, calcium channel blockers, β-blockers and further local anaesthetic<InlineRef topicId="local-anaesthetics" refLabel="ASRA LAST 2020" /></li>
+                <li>• Paediatric doses are the same per kilogram; the 2020 update brought paediatric lipid resuscitation into the main guideline<InlineRef topicId="local-anaesthetics" refLabel="AA LAST 2020" /></li>
+                <li>• Post-event care: critical care for at least 12 h (delayed cardiotoxicity), check triglycerides/amylase, and report to the national registry<InlineRef topicId="local-anaesthetics" refLabel="AA LAST 2024" /></li>
+                <li>• The RCoA/Association of Anaesthetists 2024 guideline requires lipid emulsion to be immediately available wherever local anaesthetic is used, with a laminated checklist</li>
               </ul>
             </div>
           </section>
@@ -380,7 +441,7 @@ const LocalAnaestheticsTopic = () => {
               "Onset depends on pKa (closer to 7.4 = faster); duration depends on protein binding (higher = longer); potency depends on lipid solubility.",
               "Maximum safe doses: lidocaine 3 mg/kg (7 with adrenaline); bupivacaine 2 mg/kg; ropivacaine 3 mg/kg — body-weight ideal, not actual.",
               "LAST (local anaesthetic systemic toxicity): CNS first (perioral tingling, seizures), then cardiovascular collapse — bupivacaine is most cardiotoxic.",
-              "Treat LAST: stop injection, ABC, control seizures, then 20% Intralipid 1.5 mL/kg bolus + 0.25 mL/kg/min infusion (AAGBI guideline).",
+              "Treat LAST: stop injection, ABC, control seizures, then 20% Intralipid 1.5 mL/kg bolus + 0.25 mL/kg/min infusion (RCoA/Association of Anaesthetists 2024 guideline).",
               "Adrenaline-containing solutions prolong duration and reduce systemic absorption; avoid in end-arteries (digits, penis, nose).",
             ]}
           />
