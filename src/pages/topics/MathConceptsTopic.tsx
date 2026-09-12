@@ -47,7 +47,7 @@ const workedExamples: WorkedExample[] = [
   {
     title: "Why a single time constant fails for remifentanil",
     scenario:
-      "A trainee tries to model remifentanil's offset by taking its context-sensitive half-time (CSHT) of ~3 min after a 4-hour infusion (Ultiva SmPC) and converting it to a single time constant. Critique this approach and contrast it with a true single-compartment example.",
+      "A trainee tries to model remifentanil's offset by taking its context-sensitive half-time (CSHT), which is known to be short — around 3–4 minutes even after prolonged infusion (Ultiva SmPC) — and converting it to a single time constant. Critique this approach and contrast it with a true single-compartment example.",
     working:
       "Naïve calculation: τ = t½ / 0.693 = 3 / 0.693 ≈ 4.3 min, predicting ~95% decline at 3τ ≈ 13 min.\nWhy this is wrong: remifentanil is described by a 3-compartment PK model. Plasma concentration after stopping an infusion is a sum of exponentials (rapid, slow and terminal phases), not a single first-order decay. CSHT was defined precisely because no single half-life or τ adequately describes a multi-compartment drug — it is the time for plasma concentration to fall by 50% after a continuous infusion of a given duration, and it varies with infusion length.\nA true single-compartment exponential — and therefore a setting where one τ is appropriate — is nitrogen wash-out during pre-oxygenation (τ = FRC / alveolar ventilation), or the discharge of a defibrillator capacitor (τ = RC).",
     answer:
