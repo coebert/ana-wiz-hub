@@ -287,9 +287,76 @@ const EndOfLifeCommunicationTopic = () => {
               <li><strong>Coroner referral</strong> — unexpected, traumatic, peri-operative within 30 days, suspected industrial disease, custody.</li>
               <li><strong>Medical Examiner</strong> review for all in-hospital deaths (England & Wales since 2024).</li>
               <li><strong>Bereavement</strong> — written information, follow-up letter or call at 4–8 weeks; consider bereavement clinic.</li>
-              <li><strong>Team debrief</strong> — hot debrief within 24 h, cold debrief at 1–2 weeks; recognise moral distress and burnout risk.</li>
               <li><strong>Mortality & morbidity review</strong> — learning, not blame.</li>
             </ul>
+
+            <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">
+              Staff support & moral distress
+              <InlineRef topicId="end-of-life-communication" refLabel="CCM EoL Barriers 2024" />
+              <InlineRef topicId="end-of-life-communication" refLabel="FICM/ICS 2019" />
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              <strong>Moral distress</strong> is the psychological suffering that arises when a clinician knows the ethically appropriate action but feels constrained — by institutional, hierarchical or resource barriers — from taking it. Common ICU triggers include perceived non-beneficial or burdensome treatment continued beyond reasonable benefit, family conflict over goals of care, delayed or avoided decision-making, and staffing pressures that limit time for communication and symptom control.
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              <strong>Recognition</strong> — emotional exhaustion, a sense of "moral residue" that accumulates across repeated episodes, depersonalisation, and intention to leave the profession or unit. Moral distress should be distinguished from burnout (a broader syndrome of exhaustion, cynicism and reduced efficacy from chronic workplace stress) and from PTSD (intrusive re-experiencing and avoidance after a discrete traumatic event) — though all three can coexist and compound one another.
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              <strong>Mitigation</strong> — proactive, standardised family meetings held early rather than reactively; a <strong>hot debrief within 24 h</strong> of a death or critical incident to address immediate emotional and factual needs, and a <strong>cold debrief at 1–2 weeks</strong> once the initial reaction has settled, allowing structured reflection and system learning; ready access to clinical psychology, chaplaincy and occupational health, plus informal peer support; <strong>Schwartz rounds</strong> for reflective multidisciplinary discussion of the emotional impact of work; referral to the <strong>clinical ethics committee</strong> or formal ethics consultation for recurring or unresolved dilemmas; attention to rota design and workload to protect time for end-of-life communication; and visible leadership that models open ethical discourse and normalises seeking support.
+            </p>
+          </ExamSection>
+
+          <ExamSection
+            id="brainstem-death"
+            exams={[Exam.FFICM, Exam.EDIC]}
+            curriculumCodes={["FFICM 5.5", "EDIC 12"]}
+            className="scroll-mt-24"
+          >
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Diagnosing Death by Neurological Criteria (Brainstem Death)
+              <InlineRef topicId="end-of-life-communication" refLabel="AoMRC DNC 2008" />
+              <InlineRef topicId="end-of-life-communication" refLabel="GMC EoL" />
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              Death by neurological criteria (brainstem death) is legally accepted in the UK as death of the person, defined as the irreversible loss of the capacity for consciousness combined with irreversible loss of the capacity to breathe, following the Academy of Medical Royal Colleges Code of Practice for the Diagnosis and Confirmation of Death (2008).
+            </p>
+
+            <h3 className="text-lg font-semibold text-foreground mt-2 mb-2">Preconditions</h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>Irreversible brain damage of known aetiology (e.g. hypoxic-ischaemic injury, catastrophic haemorrhage, severe traumatic brain injury) sufficient to account for loss of brainstem function.</li>
+              <li>Apnoeic and dependent on mechanical ventilation, with the patient deeply unconscious.</li>
+              <li>Exclusion of reversible contributors: sedative and neuromuscular blocking drug effect must have worn off (check levels/train-of-four if in doubt), core temperature ≥ 34 °C, no severe electrolyte, glucose, endocrine or acid–base derangement, and mean arterial pressure adequate to sustain cerebral perfusion.</li>
+            </ul>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Clinical tests of brainstem reflexes</h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>Pupils fixed and unreactive to light (both direct and consensual).</li>
+              <li>Absent corneal reflex bilaterally.</li>
+              <li>Absent oculovestibular reflex — no eye movement on cold caloric testing (with the tympanic membranes confirmed clear and intact).</li>
+              <li>No motor response within the cranial nerve distribution to adequate supraorbital pressure (spinal reflexes below the neck may persist and do not exclude brainstem death).</li>
+              <li>Absent gag reflex and absent cough response to bronchial suctioning.</li>
+            </ul>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Apnoea test</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Pre-oxygenate with 100% FiO2, then allow PaCO2 to rise to a stimulus threshold above 6.0 kPa with pH &lt; 7.40 before disconnecting from the ventilator (pre-existing CO2 retainers require a higher baseline). Observe for 5 minutes off the ventilator (with oxygen delivered via catheter into the trachea to prevent hypoxaemia) for any respiratory effort; the test is positive for brainstem death if there is no respiratory movement despite a documented PaCO2 rise of at least 0.5 kPa above the threshold.
+            </p>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Procedural requirements</h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>Testing performed by two registered medical practitioners, each at least 5 years post full registration and competent in the procedure, at least one of whom must be a consultant.</li>
+              <li>Neither examiner should be a member of the transplant team.</li>
+              <li>Two complete sets of testing (preconditions, brainstem reflexes and apnoea test) are performed, usually together by both clinicians, though only one apnoea test is mandatory.</li>
+              <li>The legal time of death is the time at which the <strong>first</strong> set of tests is completed, once the second set confirms the diagnosis.</li>
+            </ul>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Communicating with relatives</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Explain in plain, unambiguous language: "The tests confirm that your relative has died — the brain has been irreversibly and catastrophically damaged and can no longer control breathing or consciousness. The ventilator is moving air in and out of the chest, which is why the body still looks as though it is breathing, but this is not the same as the person breathing for themselves; the brain itself has permanently stopped working." Avoid ambiguous terms such as "life support" without clarifying that death has already occurred by the time testing is complete.
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Once death has been diagnosed and confirmed, this is the point at which donation after brainstem death (DBD) can proceed if in the patient's presumed or expressed wishes; early involvement of the Specialist Nurse for Organ Donation (SNOD) — ideally before or around the time of testing — supports timely, sensitive discussion with the family and optimises donation opportunities.
+            </p>
           </ExamSection>
           <ExamPitfallsCallout
             accent="icu"
