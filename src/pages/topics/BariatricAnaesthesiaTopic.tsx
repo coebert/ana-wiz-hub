@@ -333,9 +333,41 @@ const BariatricAnaesthesiaTopic = () => {
             <li><strong>Recovery position</strong>: 30–45° head-up. Continuous SpO₂ monitoring. Resume CPAP immediately if OSA</li>
             <li><strong>Analgesia</strong>: multimodal — paracetamol, NSAIDs (if renal function permits), TAP/rectus sheath blocks, ketamine infusion, opioid-sparing. PCA if needed (dose to LBW)</li>
             <li><strong>HDU/ICU</strong>: consider if BMI &gt;50, severe OSA/OHS, significant comorbidities, or intraoperative complications</li>
-            <li><strong>VTE prophylaxis</strong>: extended duration (up to 28 days post-discharge for high-risk). Mechanical + pharmacological</li>
+            <li><strong>VTE prophylaxis</strong>: mechanical + pharmacological, extended duration (see below)</li>
           </ul>
+
+          <div className="mt-4 bg-card border border-border rounded-lg p-4">
+            <h3 className="font-semibold text-foreground mb-2">Extubation Strategy in the Obese Patient</h3>
+            <p className="text-sm text-muted-foreground mb-2">
+              Extubation, not intubation, is when most obese patients come to harm — reduced FRC, upper-airway collapsibility, residual opioid and neuromuscular blockade all converge in recovery<InlineRef topicId="bariatric-anaesthesia" refLabel="AAGBI Obesity 2015" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Criteria before extubation</strong>: fully awake and obeying commands, TOF ratio ≥0.9 confirmed by quantitative monitoring (reverse with sugammadex on TBW if any doubt), adequate tidal volumes with a regular respiratory pattern, normothermia, effective analgesia with minimal residual opioid, and haemodynamic stability</li>
+              <li><strong>Position</strong>: extubate in the sitting or 30–45° head-up (ramped) position — never supine; this preserves FRC and reduces the work of breathing</li>
+              <li><strong>Technique</strong>: pre-oxygenate to EtO₂ &gt;90%, apply a recruitment manoeuvre then extubate on CPAP/PEEP to avoid derecruitment, and consider an <strong className="text-foreground">airway exchange catheter</strong> where intubation was difficult, the airway is oedematous, or re-intubation is anticipated (DAS extubation guidelines — "at-risk" extubation)</li>
+              <li><strong>Immediate postoperative support</strong>: apply the patient's own CPAP or NIV promptly in known OSA/OHS, before hypoventilation develops; high-flow nasal oxygen is a useful alternative</li>
+              <li><strong>Monitoring</strong>: extended recovery with continuous SpO₂ (and capnography where opioids are running); admit to HDU/level 2 if BMI &gt;50, severe OSA/OHS, significant comorbidity, opioid-dependent analgesia or a difficult airway</li>
+              <li><strong>Readiness to re-intubate</strong>: keep the difficult airway trolley, videolaryngoscope, a skilled assistant and drugs immediately available in recovery, and document a clear re-intubation plan; do not transfer the patient to the ward until stable off support</li>
+            </ul>
+          </div>
+
+          <div className="mt-4 bg-card border border-border rounded-lg p-4">
+            <h3 className="font-semibold text-foreground mb-2">Venous Thromboembolism Risk & Prophylaxis</h3>
+            <p className="text-sm text-muted-foreground mb-2">
+              Obesity is an independent risk factor for VTE, and bariatric surgery adds pelvic venous stasis, pneumoperitoneum and reduced early mobility. Pulmonary embolism remains a leading cause of postoperative death after bariatric surgery<InlineRef topicId="bariatric-anaesthesia" refLabel="AAGBI Obesity 2015" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Pathophysiology</strong>: adipose tissue is pro-inflammatory and pro-thrombotic — raised fibrinogen, factor VIII, von Willebrand factor and PAI-1 with impaired fibrinolysis; raised intra-abdominal pressure and venous stasis in the lower limbs; endothelial dysfunction and chronic low-grade inflammation. This is Virchow's triad in full</li>
+              <li><strong>Additional risk factors</strong>: BMI ≥40 (especially ≥50), previous VTE or known thrombophilia, immobility, OSA/OHS and pulmonary hypertension, venous insufficiency, malignancy, oestrogen-containing contraception or HRT, smoking, age &gt;40, and prolonged (&gt;3 h) or revisional laparoscopic surgery</li>
+              <li><strong>Weight-adjusted LMWH</strong>: standard fixed prophylactic doses under-dose obese patients. Typical practice is enoxaparin 40 mg 12-hourly for BMI &gt;40 or weight &gt;120 kg (or a weight-based 0.5 mg/kg 12-hourly regimen), with the first dose timed to surgical haemostasis. Consider <strong className="text-foreground">anti-Xa monitoring</strong> (peak 3–4 h post-dose, prophylactic target ~0.2–0.5 IU/mL) at weight extremes, in renal impairment, or where dosing is uncertain</li>
+              <li><strong>Mechanical prophylaxis</strong>: correctly sized intermittent pneumatic compression applied <em>before</em> induction and continued until mobile; graduated stockings often fit poorly in severe obesity. IPC is essential when pharmacological prophylaxis must be delayed for bleeding risk</li>
+              <li><strong>Extended prophylaxis</strong>: continue for <strong className="text-foreground">up to 28 days after discharge</strong> in high-risk patients (previous VTE, BMI ≥50, prolonged or revisional surgery, reduced mobility, thrombophilia, malignancy) — most post-bariatric VTE occurs after the patient has gone home</li>
+              <li><strong>Early mobilisation and hydration</strong>: mobilise within hours of surgery as part of the enhanced recovery pathway, maintain euvolaemia, and provide clear written discharge advice on injection technique and the symptoms of DVT and PE</li>
+              <li><strong>IVC filters</strong> are not recommended routinely — evidence of harm without mortality benefit</li>
+            </ul>
+          </div>
         </div>
+
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
