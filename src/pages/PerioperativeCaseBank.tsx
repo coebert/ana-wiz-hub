@@ -323,7 +323,7 @@ const PerioperativeCaseBank = () => {
           <BookOpenCheck className="h-8 w-8 text-perioperative" aria-hidden />
           <div>
             <h2 className="text-lg font-semibold text-foreground">How the cases work</h2>
-            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">Pause at each stage, commit to an assessment or management plan, then reveal the model answer. Complete every stage to unlock a detailed second pass with the clinical reasoning, practical management and common pitfalls. The patients are fictionalised composites; no identifiable patient information is used.</p>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">Pause at each stage, commit to an assessment or management plan, then reveal the model answer. Answers can be hidden again for re-testing, and each case has a shareable summary. Complete every stage to unlock a detailed second pass with the clinical reasoning, practical management and common pitfalls. The patients are fictionalised composites; no identifiable patient information is used.</p>
           </div>
         </div>
       </section>
