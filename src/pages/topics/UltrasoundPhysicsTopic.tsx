@@ -233,10 +233,27 @@ const UltrasoundPhysicsTopic = () => {
                 </p>
                 <p>
                   The <strong>thermal index (TI)</strong> is the ratio of emitted acoustic power to the power estimated to raise tissue
-                  temperature by 1 °C. Use TIS for soft tissue, TIB when bone is near the focus and TIC for cranial scanning. The
-                  <strong> mechanical index (MI) = peak rarefactional pressure / √frequency</strong> estimates non-thermal cavitation risk;
-                  lower frequency and higher negative pressure increase it. For routine non-obstetric scanning, keep displayed TI and MI
-                  below 1 where practicable, minimise spectral-Doppler dwell time and reduce output before reducing image quality controls
+                  temperature by 1 °C, i.e. it reflects heating from absorbed energy. Subtypes: <strong>TIS</strong> (soft tissue),
+                  <strong> TIB</strong> (bone near the focus — bone absorbs strongly and heats adjacent tissue) and <strong>TIC</strong>
+                  (cranial bone, for transcranial scanning). Heating is greatest with spectral Doppler and colour Doppler, which use a
+                  stationary beam and high time-averaged intensity, and matters most in <strong>fetal scanning</strong> (embryonic
+                  tissue, ossifying bone, no protective perfusion) and neonatal transcranial imaging.
+                </p>
+                <p>
+                  The <strong>mechanical index (MI) = peak rarefactional pressure / √frequency</strong> estimates non-thermal
+                  <strong> cavitation</strong> risk. In <em>stable</em> (non-inertial) cavitation, existing gas nuclei oscillate in size
+                  with the pressure cycle, producing microstreaming and shear at cell membranes. In <em>inertial</em> (transient)
+                  cavitation, bubbles grow then collapse violently, with local high temperatures, free radicals and mechanical
+                  disruption. Higher negative pressure and lower frequency raise MI; an <strong>MI &gt; 0.7</strong> is the accepted
+                  theoretical threshold at which lung capillary haemorrhage becomes possible, particularly where gas bodies exist
+                  (lung, bowel) or contrast microbubbles have been given
+                  <InlineRef topicId="ultrasound-physics" refLabel="BJA Educ Ultrasound Physics 2020" />.
+                </p>
+                <p>
+                  For routine anaesthetic and ICU applications — vascular access, regional blocks, gastric or lung scanning — measured
+                  bioeffects are negligible and no diagnostic ultrasound injury has been demonstrated at these outputs. Operators should
+                  nonetheless keep displayed TI and MI below 1 where practicable, minimise scanning and spectral-Doppler dwell time,
+                  avoid holding a Doppler gate over one spot, and reduce acoustic output before degrading gain or image-quality controls
                   <InlineRef topicId="ultrasound-physics" refLabel="BMUS Safety Guidelines" />.
                 </p>
               </div>
