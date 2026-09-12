@@ -283,16 +283,30 @@ const EndocrineDiseaseTopic = () => {
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Diagnosis and Preoperative Preparation</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Catecholamine-secreting tumour of adrenal medulla (90%) or extra-adrenal paraganglia</li>
-                <li>Classic triad: headache, sweating, palpitations with paroxysmal hypertension</li>
-                <li>Preoperative preparation (10–14 days): α-blockade first (phenoxybenzamine 10 mg BD, titrate up), then β-blockade (propranolol) once α-blocked</li>
-                <li>Never give β-blockers without prior α-blockade → unopposed α-stimulation → hypertensive crisis</li>
-                <li>Volume expansion: patients are chronically vasoconstricted and intravascularly depleted; encourage salt and fluid intake</li>
-                <li>Readiness criteria: BP &lt;130/80 sitting, postural drop present, no ST changes, nasal congestion developing</li>
-                <li>Intraoperative: arterial line + CVP essential; have phentolamine (α-blocker), SNP, GTN, esmolol, and magnesium drawn up</li>
-                <li>Tumour handling → catecholamine surge → hypertension/tachycardia; after venous ligation → risk of profound hypotension</li>
-                <li>Postoperative: risk of hypotension (depleted catecholamines) and hypoglycaemia (rebound insulin secretion)</li>
+                <li>Catecholamine-secreting tumour of the adrenal medulla (90%) or extra-adrenal paraganglia; "rule of 10s" (10% bilateral, 10% extra-adrenal, 10% malignant, ~10% familial — higher in modern series with genetic screening)</li>
+                <li>Classic triad: headache, sweating, and palpitations with paroxysmal hypertension; may also present with anxiety, pallor, tremor, or catecholamine-induced cardiomyopathy</li>
+                <li>Biochemical diagnosis: plasma free metanephrines (or 24-h urinary fractionated metanephrines/catecholamines) — plasma metanephrines have the highest sensitivity and are the preferred first-line test; imaging (CT/MRI, MIBG scintigraphy) localises the tumour after biochemical confirmation</li>
+                <li>Preoperative preparation (10–14 days minimum): α-blockade first — phenoxybenzamine (non-competitive, long-acting) starting 10 mg BD and titrated up (often to 1 mg/kg/day in divided doses) until postural hypotension develops, or doxazosin (competitive, selective α1-blocker, shorter-acting, less reflex tachycardia) starting 1–2 mg OD/BD and titrated up to effect</li>
+                <li>β-blockade (e.g. propranolol 10–40 mg TDS, or atenolol) is added only once α-blockade is established, usually after 2–3 days, to control reflex tachycardia and any catecholamine-induced arrhythmia</li>
+                <li>Never give β-blockers before adequate α-blockade → unopposed α-adrenergic vasoconstriction → severe hypertensive crisis and potential acute heart failure/pulmonary oedema</li>
+                <li>Volume repletion: patients are chronically vasoconstricted and intravascularly volume-depleted despite hypertension; encourage a high-salt diet and oral fluid intake during preparation, and give generous IV crystalloid preoperatively to blunt the post-ligation hypotension</li>
+                <li>Readiness criteria (Roizen's criteria): BP consistently &lt;160/90 mmHg (some sources &lt;130/80 sitting), orthostatic drop present but systolic &gt;80 mmHg standing, no ST-T changes for 1 week, and no more than one ventricular ectopic every 5 minutes</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Intraoperative Management and Crisis Drugs</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Invasive monitoring: arterial line pre-induction, central venous access; consider cardiac output monitoring for large/complex tumours</li>
+                <li>Avoid histamine-releasing agents and drugs that provoke catecholamine release (e.g. ketamine, ephedrine, atracurium in large doses, metoclopramide)</li>
+                <li>Tumour handling causes catecholamine surges with severe hypertension and tachy-arrhythmia; have the following drawn up and immediately available:</li>
+                <li>Magnesium sulfate 2–4 g IV bolus (then infusion) — reduces catecholamine release, causes vasodilatation, and has anti-arrhythmic effect</li>
+                <li>Phentolamine 1–5 mg IV boluses (short-acting competitive α-blocker) titrated for acute hypertensive spikes</li>
+                <li>Sodium nitroprusside 0.5–1.5 µg/kg/min IV infusion titrated to effect — rapid-onset arterial and venous vasodilator for refractory hypertension (watch for cyanide toxicity with prolonged high-dose use)</li>
+                <li>Esmolol 0.5 mg/kg IV loading bolus then 50–200 µg/kg/min infusion — short-acting cardioselective β-blocker for tachyarrhythmia, only once adequate α-blockade/vasodilatation is present</li>
+                <li>After venous ligation of the tumour, circulating catecholamines fall abruptly → risk of profound hypotension; treat with rapid volume loading, and vasopressors (noradrenaline) if fluid alone is insufficient — communicate with the surgeon before ligation to prepare</li>
+                <li>Postoperative: continue close monitoring for hypotension (from residual α-blockade and depleted catecholamines) and hypoglycaemia (rebound hyperinsulinaemia after removal of the catecholamine-driven suppression of insulin secretion) — check glucose regularly for 24–48 h</li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">

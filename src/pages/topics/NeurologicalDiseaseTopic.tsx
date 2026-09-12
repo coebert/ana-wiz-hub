@@ -607,6 +607,58 @@ const NeurologicalDiseaseTopic = () => {
             </div>
           </div>
         </section>
+
+        {/* Stroke, Perioperative Cognition & ICP cross-links */}
+        <section id="section-stroke-cognitive" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Stroke, Perioperative Cognitive Dysfunction & ICP Cross-Links</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09", "NA_BK_01"]} />
+          <FRCARelevanceCallout
+            bottomLine="Recent stroke and carotid disease markedly raise perioperative cerebrovascular risk; elective surgery should be deferred where possible, and blood pressure managed to avoid both hypoperfusion and haemorrhagic extension."
+            implications={[
+              "Defer elective surgery for at least 9 months after stroke/TIA where possible — risk of recurrent perioperative stroke and mortality is highest in the first 3 months and falls progressively thereafter.",
+              "Maintain intraoperative blood pressure within 20% of the patient's normal range; avoid hypotension in patients with significant carotid stenosis.",
+              "Symptomatic carotid stenosis ≥70% warrants carotid endarterectomy before elective non-cardiac, non-vascular surgery where feasible.",
+              "Postoperative delirium and cognitive dysfunction are more frequent and more severe in patients with pre-existing neurodegenerative or cerebrovascular disease — screen with CAM/4AT and use multicomponent prevention bundles.",
+            ]}
+            buzzwords={[
+              "9-month elective surgery rule",
+              "Perioperative stroke risk highest at 0–3 months",
+              "Carotid stenosis ≥70%",
+              "Watershed hypoperfusion",
+              "POCD vs POD",
+              "CAM-ICU / 4AT",
+            ]}
+            vivaStem="A patient had an ischaemic stroke 3 months ago and now needs elective hip replacement — how do you counsel and plan for this?"
+          />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Timing of Elective Surgery After Stroke</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Large retrospective cohort data show the risk of recurrent perioperative stroke, cardiovascular events and 30-day mortality is substantially elevated when elective surgery is performed within 3 months of a stroke, remains elevated at 3–6 months, and only approaches baseline risk by around 9 months post-stroke — the "9-month rule" is a widely used pragmatic threshold for deferring elective (non-urgent) surgery</li>
+                <li>Risk factors amplifying perioperative stroke risk: atrial fibrillation, carotid disease, recent MI, and haemodynamic instability during anaesthesia (both hypotension and hypertension)</li>
+                <li>For urgent/semi-urgent surgery that cannot wait, involve stroke medicine/neurology, optimise antiplatelet/anticoagulant management, and plan meticulous perioperative blood pressure and glycaemic control</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Blood Pressure Targets & Carotid Disease</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Cerebral autoregulation is impaired for weeks to months after acute stroke and in chronic significant carotid stenosis — perfusion of at-risk (watershed) territory becomes pressure-dependent, so avoid intraoperative hypotension; a practical target is to keep mean arterial/systolic pressure within about 20% of the patient's usual (chronic) values, erring towards the upper end in known cerebrovascular disease rather than accepting standard "permissive hypotension" targets</li>
+                <li>Symptomatic carotid stenosis ≥70% (by NASCET criteria) is an indication for carotid endarterectomy or stenting, which should generally be performed before elective non-cardiac, non-vascular surgery to reduce perioperative stroke risk; asymptomatic stenosis is managed more conservatively with risk-factor modification</li>
+                <li>Continue antiplatelet therapy (aspirin ± clopidogrel) through the perioperative period wherever surgical bleeding risk allows, given the high risk of thrombotic stroke if stopped; discuss bridging/timing with the multidisciplinary team when high bleeding-risk surgery is planned</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Postoperative Delirium and Cognitive Dysfunction</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Postoperative delirium (POD) is an acute, fluctuating disturbance of attention and awareness typically arising within the first few postoperative days; postoperative cognitive dysfunction (POCD) is a more subtle, often persistent decline in memory, concentration and executive function detected on formal testing weeks to months after surgery — both are more common and more severe in patients with pre-existing neurodegenerative disease (Parkinson's, dementia) or cerebrovascular disease</li>
+                <li>Risk factors: advanced age, pre-existing cognitive impairment, stroke/cerebrovascular disease, polypharmacy (especially anticholinergics and benzodiazepines), uncontrolled pain, sleep deprivation, dehydration, hypoxaemia and metabolic derangement</li>
+                <li>Screening tools: Confusion Assessment Method (CAM/CAM-ICU) and the 4AT (Alertness, AMT4, Attention, Acute change) are validated rapid bedside screens for delirium</li>
+                <li>Prevention bundle: avoid deliriogenic drugs where possible, ensure adequate analgesia, maintain hydration/nutrition, promote normal sleep-wake cycles, early mobilisation, sensory aids (glasses/hearing aids), and reorientation strategies; depth-of-anaesthesia monitoring (e.g. BIS) to avoid excessively deep anaesthesia has some evidence for reducing POD incidence</li>
+                <li>Cross-reference: severe traumatic brain injury and raised intracranial pressure management (osmotherapy, CPP-targeted care, decompressive craniectomy) and neuromuscular respiratory failure (ventilatory support thresholds, weaning) are covered in detail in the dedicated Neurocritical Care and Neuromuscular Respiratory Failure topics — the principles of avoiding secondary neuronal injury (hypoxaemia, hypotension, hyperthermia, hypo/hyperglycaemia) apply equally to the stroke and cognitively vulnerable patient perioperatively</li>
+              </ul>
+            </div>
+          </div>
+        </section>
         <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[

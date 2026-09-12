@@ -384,20 +384,31 @@ const CardiovascularDiseaseTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Atrial Fibrillation</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Most common perioperative arrhythmia; present in 5–10% of surgical patients &gt;65</li>
-                <li>Rate control (β-blocker/diltiazem) preferred over rhythm control perioperatively</li>
-                <li>Anticoagulation management: bridge with LMWH if CHA₂DS₂-VASc ≥2 and high thrombotic risk</li>
+                <li>Most common perioperative arrhythmia; present in 5–10% of surgical patients &gt;65, and new-onset in up to 10% after major non-cardiac surgery</li>
+                <li>Perioperative rate control target: resting HR &lt;110 bpm (lenient control acceptable if asymptomatic and haemodynamically stable); β-blocker (IV metoprolol/esmolol) or diltiazem/verapamil first-line — avoid calcium-channel blockers in significant LV impairment</li>
+                <li>Rhythm control (amiodarone, DC cardioversion) reserved for haemodynamic instability or where rate control fails, rather than routine perioperative use</li>
+                <li>New-onset perioperative AF: correct precipitants first (pain, hypovolaemia, hypoxia, electrolyte disturbance — especially K⁺/Mg²⁺, sepsis, anaemia) before/alongside rate control</li>
+                <li>Anticoagulation management: bridge with LMWH only if CHA₂DS₂-VASc ≥2 and high thrombotic risk (e.g. mechanical valve, recent stroke); balance against HAS-BLED bleeding risk and surgical bleeding risk category — most patients on a DOAC for AF alone do not need heparin bridging</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
-              <h3 className="font-semibold text-foreground mb-2">Pacemakers & ICDs</h3>
+              <h3 className="font-semibold text-foreground mb-2">Cardiac Implantable Electronic Devices (CIEDs) — Preoperative Checks</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Preoperative device check: type, indication, dependency, battery life, last check date</li>
-                <li>Pacemaker-dependent patients: consider reprogramming to asynchronous mode (DOO/VOO) if diathermy needed</li>
-                <li>ICDs: disable anti-tachycardia therapy; apply external defibrillation pads</li>
-                <li>Bipolar diathermy preferred; if monopolar used, place return electrode away from device</li>
-                <li>Magnet application: converts pacemaker to asynchronous mode; disables ICD shock therapy (device-specific)</li>
-                <li>Postoperative device re-interrogation mandatory</li>
+                <li>Identify device type (pacemaker vs ICD vs CRT), manufacturer, indication, underlying rhythm, and whether the patient is pacemaker-dependent</li>
+                <li>Obtain the most recent interrogation report (should be within the last 12 months for a pacemaker, 6 months for an ICD, per HRS/BHRS guidance) — check battery status/elective replacement indicator and lead integrity</li>
+                <li>Classify surgical electromagnetic interference (EMI) risk: high risk includes surgery above the umbilicus, monopolar diathermy near the device/leads, and procedures using electrocautery, RF ablation, lithotripsy or MRI</li>
+                <li>Liaise with cardiac physiology/pacing team before high-risk procedures for a documented perioperative plan</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Intraoperative Management: Reprogramming, Magnets and Diathermy</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Pacemaker-dependent patient + high-EMI-risk surgery:</strong> formally reprogramme to an asynchronous fixed-rate mode (DOO/VOO) or activate rate-responsive-off before surgery — EMI can be misinterpreted as intrinsic activity and cause inappropriate inhibition (asystole in a dependent patient)</li>
+                <li><strong>Magnet response — pacemakers:</strong> placing a clinical magnet over most pacemakers converts them to an asynchronous mode (typically DOO/VOO) for as long as the magnet remains in place, protecting against oversensing-induced inhibition — but the response is device-specific and not guaranteed, so formal reprogramming is preferred whenever the device is dependent and the surgery is high-risk</li>
+                <li><strong>Magnet response — ICDs:</strong> a magnet over an ICD suspends anti-tachycardia therapy (detection and shock delivery) but does <em>not</em> change any underlying pacing mode — removing the magnet restores tachytherapy; always have external defibrillator pads placed and a manual defibrillator immediately available before disabling an ICD</li>
+                <li><strong>Diathermy precautions:</strong> use bipolar diathermy wherever possible; if monopolar diathermy is required, use short bursts at the lowest effective power, and position the return (indifferent) electrode so the current path does not cross the device or leads (i.e. does not pass through the thorax) — never diathermy within 15 cm of the generator</li>
+                <li><strong>Reprogramming indications:</strong> pacemaker-dependency with anticipated high-EMI surgery, biventricular/CRT devices (loss of resynchronisation with asynchronous pacing can precipitate heart failure), rate-responsive sensors that may misfire with vibration/electrocautery, and any planned use of MRI, external defibrillation, or radiofrequency ablation near the device</li>
+                <li>Postoperative: re-interrogate and, if reprogrammed, restore original settings before discharge; document that device function was checked</li>
               </ul>
             </div>
           </div>
@@ -428,13 +439,52 @@ const CardiovascularDiseaseTopic = () => {
           <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">General Principles</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Increasingly common as paediatric surgical survival improves; complex anatomy and physiology</li>
-                <li>Eisenmenger syndrome: irreversible pulmonary hypertension with reversed (R→L) shunt; extremely high perioperative mortality</li>
-                <li>Right-to-left shunts: avoid air embolism (meticulous de-airing of IV lines), reduced effect of inhalational induction, faster IV induction</li>
-                <li>Left-to-right shunts: increased pulmonary blood flow, may develop pulmonary hypertension</li>
-                <li>Antibiotic prophylaxis for endocarditis: no longer routinely recommended (NICE 2008) but consider in high-risk lesions</li>
-                <li>Specialist centre involvement recommended for moderate/complex ACHD</li>
+                <li>Increasingly common as paediatric surgical survival improves; complex anatomy and physiology — over 90% of children with congenital heart disease now survive to adulthood</li>
+                <li>Left-to-right shunts (ASD, VSD, PDA): increased pulmonary blood flow; over years may cause pulmonary vascular remodelling and progression to pulmonary hypertension</li>
+                <li>Antibiotic prophylaxis for endocarditis: not routinely recommended (NICE CG64/2008, reaffirmed) but individualised discussion in the highest-risk lesions (prosthetic valve/material, previous endocarditis, unrepaired cyanotic disease) is reasonable per specialist advice</li>
+                <li>Specialist centre involvement mandatory for moderate/complex ACHD (per Bethesda/ESC classification) — anaesthesia at a non-specialist centre should be limited to minor, low-risk procedures</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Eisenmenger Syndrome and Right-to-Left Shunts</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Eisenmenger syndrome: a long-standing large left-to-right shunt causes progressive, irreversible pulmonary vascular disease until pulmonary vascular resistance exceeds systemic — the shunt reverses (right-to-left) causing cyanosis; associated with the highest perioperative mortality of any ACHD lesion (historically quoted as high as 20–40% for non-cardiac surgery, hence "do not operate unless essential")</li>
+                <li>Any fall in SVR or rise in PVR increases right-to-left shunting and worsens cyanosis — avoid vasodilating anaesthetic agents/regional sympathectomy without vasopressor support, and treat any factor that raises PVR (hypoxia, hypercarbia, acidosis, hypothermia, pain, high airway pressure)</li>
+                <li>Maintain SVR with vasopressors (phenylephrine/noradrenaline) to limit right-to-left shunt; maintain adequate preload and avoid excessive positive pressure ventilation</li>
+                <li>Meticulous air-bubble precautions on <em>all</em> IV lines are mandatory in any right-to-left or bidirectional shunt — even small volumes of air can cross to the systemic circulation (paradoxical embolism) causing stroke or coronary embolism; use in-line air filters where available</li>
+                <li>Reduced pulmonary blood flow slows uptake of inhalational agents (right-to-left shunt bypasses the lungs) but speeds the effect of IV induction agents (bypass of first-pass pulmonary uptake) — expect a faster-than-usual IV induction and a slower inhalational induction</li>
+                <li>These patients should be managed at, or after direct discussion with, a specialist pulmonary hypertension/ACHD centre; avoid elective surgery wherever possible and plan level 2/3 postoperative care</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Postoperative Cardiac Care */}
+        <section id="section-postoperative-care" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Cardiac Care</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Planning Level of Postoperative Care</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Level 1 (enhanced ward care): stable cardiac disease, low-risk surgery, RCRI 0–1, no active symptoms</li>
+                <li>Level 2 (HDU — single organ support, e.g. invasive monitoring/vasopressors): RCRI ≥2, NYHA III, moderate-to-severe valve disease undergoing intermediate/high-risk surgery, need for arterial line/cardiac output monitoring or closely titrated vasoactive therapy</li>
+                <li>Level 3 (ICU): NYHA IV, decompensated heart failure, severe symptomatic AS/pulmonary hypertension, Eisenmenger physiology, LVAD patients undergoing major surgery, or anticipated need for multi-organ/ventilatory support</li>
+                <li>Level of care should be agreed at multidisciplinary preoperative review (anaesthetist, surgeon, cardiologist) and documented in the anaesthetic plan, with a named escalation pathway</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Perioperative Myocardial Infarction — Recognition and Management</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Most perioperative MIs are silent (masked by analgesia/sedation) — active troponin surveillance (see Risk Stratification) is essential as clinical symptoms alone will miss the majority</li>
+                <li>Distinguish <strong>Type 1 MI</strong> (plaque rupture/thrombosis — ACS pathway applies) from the more common <strong>Type 2 MI</strong> (supply–demand mismatch from tachycardia, hypotension, anaemia, hypoxia without plaque rupture) — management differs</li>
+                <li>Immediate steps: 12-lead ECG, repeat troponin, correct precipitants (treat hypotension, tachyarrhythmia, anaemia — transfuse to maintain haemoglobin ≥70–80 g/L or higher with active ischaemia, hypoxia, sepsis)</li>
+                <li>Urgent cardiology review for all confirmed perioperative MI/MINS; echocardiography to assess new wall motion abnormality and LV function</li>
+                <li>Antithrombotic therapy (aspirin, P2Y12 inhibitor, anticoagulation) and consideration of urgent revascularisation (PCI) must be balanced against surgical bleeding risk in the immediate postoperative period — individualised, multidisciplinary decision</li>
+                <li>Secondary prevention once bleeding risk allows: aspirin, statin, β-blocker, ACE-I as tolerated; address modifiable risk factors before discharge</li>
+                <li>Escalate to level 2/3 care for haemodynamic instability, arrhythmia, or evolving ECG changes; involve critical care outreach early</li>
               </ul>
             </div>
           </div>
