@@ -85,6 +85,7 @@ const PharmacologyCaseBank = lazy(() => import("./pages/PharmacologyCaseBank"));
 const IntensiveCareCaseBank = lazy(() => import("./pages/IntensiveCareCaseBank"));
 const IcuDrugDoses = lazy(() => import("./pages/IcuDrugDoses"));
 const IcuInfusions = lazy(() => import("./pages/IcuInfusions"));
+const IcuDrugMechanisms = lazy(() => import("./pages/IcuDrugMechanisms"));
 
 const AnatomySection = lazy(() => import("./pages/AnatomySection"));
 const ChemistrySection = lazy(() => import("./pages/ChemistrySection"));
