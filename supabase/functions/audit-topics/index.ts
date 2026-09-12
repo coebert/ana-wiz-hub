@@ -2042,9 +2042,16 @@ Deno.serve(async (req) => {
     const action = body.action ?? "start";
 
     // Authorise: either an internal token (self-chain / cron) or an admin JWT.
+    // Scheduled runs come from the database, which cannot read the service-role
+    // key, so they present the dedicated AUDIT_CRON_TOKEN instead. Without this
+    // every scheduled audit and every recovery attempt failed with 401.
+    const cronToken = Deno.env.get("AUDIT_CRON_TOKEN") ?? "";
     const internalToken = req.headers.get("x-internal-token");
     const isInternal =
-      !!internalToken && internalToken === SUPABASE_SERVICE_ROLE_KEY;
+      !!internalToken &&
+      (internalToken === SUPABASE_SERVICE_ROLE_KEY ||
+        (cronToken.length > 0 && internalToken === cronToken));
+
 
     if (!isInternal) {
       const authHeader = req.headers.get("Authorization");
