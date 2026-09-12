@@ -190,6 +190,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["High-risk surgical patient", "Perioperative critical care", "P-POSSUM", "SORT", "CPET", "MINS", "NELA", "CPOC"],
     keywords: ["high risk surgical patient", "P-POSSUM", "CPET", "MINS surveillance", "NELA"],
   },
+  "paediatric-physiology": {
+    title: "Paediatric Physiology: Neonatal Cardiac Output & Thermoregulation",
+    description: "Neonatal and infant physiology for FRCA: rate-dependent cardiac output, transitional circulation and PPHN, oxygen consumption, fetal haemoglobin, and thermoregulation with brown fat.",
+    aliases: ["Neonatal physiology", "Infant physiology", "Neonatal cardiac output", "Non-shivering thermogenesis", "Neutral thermal environment"],
+    keywords: ["neonatal physiology", "neonatal cardiac output", "neonatal oxygen consumption", "non-shivering thermogenesis", "brown adipose tissue", "fetal haemoglobin"],
+  },
   "paediatric-core": {
     title: "Paediatric Core Essentials: Physiology, Fluids, Dosing | FRCA",
     description: "Paediatric core essentials for FRCA: age-specific physiology, Holliday-Segar maintenance fluids, weight-based drug dosing, WETFLAG, and pain scoring (FLACC, FACES, NRS).",

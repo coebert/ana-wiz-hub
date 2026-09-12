@@ -500,14 +500,14 @@ const PaediatricPhysiologyTopic = () => {
                   </div>
                 </Link>
                 <Link
-                  to="/physiology/temperature-regulation"
+                  to="/physiology/foetal-circulation"
                   className="flex items-start gap-3 rounded-lg border border-border p-3 hover:border-primary/50 transition-colors"
                 >
                   <Thermometer className="h-5 w-5 text-physiology mt-0.5 shrink-0" aria-hidden="true" />
                   <div>
-                    <div className="font-medium text-foreground text-sm">Temperature Regulation</div>
+                    <div className="font-medium text-foreground text-sm">Foetal Circulation</div>
                     <div className="text-xs text-muted-foreground">
-                      Adult thermoregulation, redistribution and perioperative hypothermia
+                      Foetal shunts, HbF, transitional circulation and PPHN
                     </div>
                   </div>
                 </Link>
