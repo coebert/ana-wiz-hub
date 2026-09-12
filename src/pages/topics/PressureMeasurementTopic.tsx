@@ -198,6 +198,21 @@ const PressureMeasurementTopic = () => {
                   airway pressures, impairs venous return and cardiac output, and compromises splanchnic perfusion; it is independently
                   associated with acute kidney injury <InlineRef topicId="pressure-measurement" refLabel="Intensive Care Med 2008 IAP" />.
                 </p>
+                <p>
+                  <strong>Kron technique, step by step</strong>: drain and clamp the urinary catheter, connect a three-way tap and
+                  transducer set to the sampling port, instil 20–25 mL of sterile saline into the empty bladder, clamp the drainage tubing
+                  distal to the port, zero the transducer at the level of the <strong>symphysis pubis</strong> (the original description) or
+                  the mid-axillary line at the iliac crest (the WSACS reference), wait 30–60 seconds for detrusor relaxation, and read at
+                  end-expiration in the complete supine position. Normal IAP in a ventilated adult is 5–7 mmHg and IAP &lt;12 mmHg is
+                  normal overall <InlineRef topicId="pressure-measurement" refLabel="WSACS IAP Consensus" />.
+                </p>
+                <p>
+                  <strong>Sources of error</strong>: an incorrectly levelled or unzeroed transducer, head-up or lateral positioning (each
+                  degree of head-up tilt raises the reading), detrusor contraction or a small contracted bladder, instilling excess volume
+                  (&gt;25 mL falsely elevates IAP), a blocked or kinked catheter, abdominal muscle activity, coughing or straining, reading
+                  during inspiration on positive-pressure ventilation, obesity and pregnancy (chronically raised baseline), and air bubbles
+                  in the fluid column.
+                </p>
               </div>
             </CollapsibleSubsection>
           </ExamSection>
