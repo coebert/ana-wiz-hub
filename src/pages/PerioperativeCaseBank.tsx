@@ -327,6 +327,66 @@ const caseSeeds: CaseSeed[] = [
       { title: "Plan postoperative surveillance", prompt: "What should handover emphasise?", answer: ["State cumulative TXA exposure and renal function.", "Distinguish seizure from delayed emergence, shivering and embolic stroke.", "Maintain route separation so TXA cannot enter a neuraxial pathway."] },
     ], takeHome: "In cardiac surgery, TXA should be protocolised and dose-accounted; renal function and seizure risk constrain exposure.", sourceLinks: [sources.poise3],
   },
+  {
+    id: "coexist-dialysis-hyperkalaemia", title: "Dialysis-dependent patient with hyperkalaemia for urgent surgery", category: "Co-existing disease", difficulty: "Intermediate",
+    patient: "A 58-year-old man on thrice-weekly haemodialysis missed yesterday's session and now needs urgent drainage of a forearm abscess.",
+    presentation: "Potassium is 6.8 mmol/L, bicarbonate 16 mmol/L, creatinine 620 µmol/L; the ECG shows peaked T waves and a QRS of 130 ms. He is 3 kg above dry weight with a functioning left brachiocephalic fistula.",
+    stages: [
+      { title: "Prioritise the potassium", prompt: "What is your immediate management?", answer: ["ECG change with potassium 6.8 mmol/L is an emergency: give 10 mL 10% calcium chloride (or 30 mL 10% calcium gluconate) for membrane stabilisation.", "Give 10 units soluble insulin in 50 mL 50% glucose and nebulised salbutamol 10–20 mg to shift potassium intracellularly.", "Arrange urgent dialysis — shifting agents last only a few hours and remove no potassium."] },
+      { title: "Plan the anaesthetic", prompt: "How will you anaesthetise him, and what will you avoid?", answer: ["Regional anaesthesia (supraclavicular or axillary block, avoiding the fistula limb) is attractive if coagulation and sepsis permit.", "If general anaesthesia is needed, avoid suxamethonium (raises potassium about 0.5 mmol/L) and use rocuronium 1.2 mg/kg with sugammadex 16 mg/kg immediately available.", "Reduce induction doses for autonomic dysfunction and anaemia, and use invasive pressure monitoring with careful preload assessment against dry weight."] },
+      { title: "Protect the graft and prescribe safely", prompt: "What practical precautions and prescribing changes are needed?", answer: ["Protect the fistula arm: no cuff, cannula or arterial line on that side, and document a limb-alert.", "Avoid NSAIDs and nephrotoxins, and adjust renally cleared drugs — morphine metabolite accumulation, gabapentinoids and low-molecular-weight heparin all need reduction.", "Recheck potassium, ionised calcium and bicarbonate after each intervention and plan postoperative dialysis timing with the renal team."] },
+    ], takeHome: "In dialysis-dependent patients, treat hyperkalaemia with membrane stabilisation and shifting agents, but only dialysis removes potassium — and every drug, cuff and line choice must respect the graft and renal clearance.", sourceLinks: [sources.poise3],
+  },
+  {
+    id: "coexist-dapt-pci", title: "Recent drug-eluting stent listed for hemicolectomy", category: "Co-existing disease", difficulty: "Advanced",
+    patient: "A 71-year-old woman had a drug-eluting stent to the left anterior descending artery six weeks ago for stable angina and is on aspirin and ticagrelor. She has a resectable colonic cancer.",
+    presentation: "The surgeon requests theatre next week and asks you to stop both antiplatelet drugs for seven days.",
+    stages: [
+      { title: "Advise on timing", prompt: "When should this surgery ideally occur?", answer: ["Elective non-cardiac surgery is best deferred to at least six months after elective drug-eluting stent implantation; one month is the minimum where surgery cannot wait.", "Cancer surgery has a competing time-critical risk, so the decision is a joint cardiology, surgical, oncology and anaesthetic one, documented with the patient.", "Perioperative stent thrombosis carries mortality of up to a third, which reframes 'just stop the tablets'."] },
+      { title: "Manage antiplatelet therapy", prompt: "What do you do with aspirin and ticagrelor?", answer: ["Continue aspirin throughout unless the surgery is intracranial or in another closed space.", "Stop ticagrelor five days preoperatively (clopidogrel five days, prasugrel seven days) if the bleeding consequence justifies it.", "Restart the P2Y12 inhibitor within 24–72 hours, with a loading dose when thrombotic risk is high, and never bridge with heparin — it does not prevent stent thrombosis."] },
+      { title: "Plan perioperative surveillance", prompt: "How will you detect and treat ischaemia?", answer: ["Use invasive pressure monitoring, maintain coronary perfusion pressure, avoid tachycardia and treat anaemia and hypovolaemia promptly.", "Arrange a monitored bed with continuous ECG and troponin at 24 and 48 hours in this high-risk patient.", "For suspected stent thrombosis — new ST change, hypotension, arrhythmia — obtain an immediate 12-lead ECG, contact cardiology and consider urgent angiography."] },
+    ], takeHome: "Aspirin continues, the P2Y12 inhibitor is interrupted only when necessary and restarted early, timing follows the ESC Non-Cardiac Surgery 2022 intervals, and heparin bridging is never a substitute.", sourceLinks: [sources.poise3],
+  },
+  {
+    id: "coexist-cirrhosis-obstruction", title: "Decompensated cirrhosis for emergency laparotomy", category: "Co-existing disease", difficulty: "Advanced",
+    patient: "A 55-year-old man with alcohol-related cirrhosis, tense ascites and grade 2 encephalopathy has small bowel obstruction with a raised lactate.",
+    presentation: "INR is 2.1, platelets 62 ×10⁹/L, bilirubin 96 µmol/L, albumin 24 g/L, creatinine rising from 90 to 165 µmol/L. The surgeon asks for plasma and platelets to 'correct' the coagulation before knife-to-skin.",
+    stages: [
+      { title: "Quantify the risk", prompt: "How do you frame his perioperative risk?", answer: ["Child–Pugh C and a high MELD score predict mortality that can exceed 50% for emergency laparotomy.", "Physiology is hyperdynamic and vasodilated with restrictive respiratory mechanics from ascites and a high aspiration risk.", "Discuss ceilings of care, critical-care admission and realistic outcomes with the patient, family and surgical team before theatre."] },
+      { title: "Answer the coagulation request", prompt: "Do you give plasma and platelets to hit target numbers?", answer: ["No — cirrhotic coagulopathy is rebalanced: procoagulant and anticoagulant factors both fall, so INR does not predict bleeding and thrombosis remains possible.", "Use fibrinogen concentration and viscoelastic testing to guide targeted replacement, treat only demonstrated deficits or active bleeding, and give vitamin K if deficiency is likely.", "Excess plasma raises portal pressure and worsens bleeding as well as causing volume overload."] },
+      { title: "Deliver the anaesthetic", prompt: "Outline your technique and organ protection.", answer: ["Rapid sequence induction with reduced-dose propofol or ketamine, and atracurium or cisatracurium for organ-independent elimination.", "Avoid nephrotoxins and long-acting benzodiazepines; give albumin and terlipressin where hepatorenal syndrome is suspected and treat sepsis without delay.", "Monitor glucose, lactate, intra-abdominal pressure and urine output; plan critical care, treat encephalopathy precipitants and use lactulose and rifaximin."] },
+    ], takeHome: "In cirrhosis, quantify risk with Child–Pugh and MELD, treat coagulopathy by viscoelastic evidence rather than INR targets, and protect renal function with albumin, perfusion pressure and avoidance of nephrotoxins.", sourceLinks: [sources.steroid],
+  },
+  {
+    id: "coexist-opioid-substitution", title: "Opioid substitution therapy and major painful surgery", category: "Co-existing disease", difficulty: "Intermediate",
+    patient: "A 42-year-old woman takes methadone 80 mg daily and is listed for open reduction and internal fixation of a tibial plateau fracture.",
+    presentation: "The admitting team has withheld the methadone because she is nil by mouth and has prescribed codeine 30 mg six-hourly as required.",
+    stages: [
+      { title: "Correct the prescription", prompt: "What is wrong with the current plan?", answer: ["Withholding maintenance methadone precipitates withdrawal and uncontrolled pain: confirm the dose with the prescriber and dispensing pharmacy and continue it, converting route if needed.", "Codeine is a weak prodrug and is inadequate in an opioid-tolerant patient; requirements may be two to three times opioid-naive equivalents.", "Check a 12-lead ECG for QTc prolongation, which methadone causes dose-dependently."] },
+      { title: "Build the analgesic plan", prompt: "What multimodal strategy do you use?", answer: ["Regional analgesia — femoral/adductor canal and sciatic block or catheter — is the cornerstone for this fracture.", "Add paracetamol, an NSAID where safe, ketamine 0.1–0.3 mg/kg/h and consider clonidine or dexmedetomidine and a lidocaine infusion by local protocol.", "Use patient-controlled analgesia with larger boluses on top of maintenance and monitor sedation score and respiratory rate rather than cumulative dose."] },
+      { title: "Look wider and plan discharge", prompt: "What else must be assessed and arranged?", answer: ["Screen for hepatitis B and C, HIV, endocarditis, difficult venous access and concurrent alcohol, benzodiazepine or stimulant use.", "Never use buprenorphine or other partial or mixed agonists as rescue in a patient on a full agonist.", "Involve the acute pain and addiction services, document a taper plan, and communicate with the community prescriber before discharge."] },
+    ], takeHome: "Continue the maintenance opioid, layer regional and non-opioid analgesia on top, expect substantially higher opioid requirements, and never rescue with a partial agonist.", sourceLinks: [sources.steroid],
+  },
+  {
+    id: "coexist-transplant-immunosuppression", title: "Renal transplant recipient for elective cholecystectomy", category: "Co-existing disease", difficulty: "Intermediate",
+    patient: "A 49-year-old man three years after renal transplantation takes tacrolimus, mycophenolate and prednisolone 7.5 mg daily. Baseline creatinine is 130 µmol/L.",
+    presentation: "He is listed for laparoscopic cholecystectomy. Pre-assessment has stopped all three drugs 'because of infection risk' and started clarithromycin for a chest infection.",
+    stages: [
+      { title: "Reverse the immunosuppression error", prompt: "What is the problem with stopping his drugs?", answer: ["Interrupting immunosuppression risks acute rejection and graft loss; it is never stopped without transplant-team advice.", "Continue all agents perioperatively, converting to intravenous dosing (with protocol dose adjustment) if the gut is unusable, and check tacrolimus trough levels around surgery.", "Clarithromycin inhibits CYP3A4 and will raise tacrolimus levels and nephrotoxicity — change the antibiotic or plan level monitoring with dose reduction."] },
+      { title: "Address the steroid and infection risk", prompt: "What supplementation and precautions are needed?", answer: ["Prednisolone 7.5 mg daily for years implies HPA suppression: give hydrocortisone 100 mg IV at induction and 200 mg over 24 hours for this procedure's stress, then return to baseline.", "Use strict asepsis for all lines and neuraxial procedures; infection may present without fever or leucocytosis.", "Consider opportunistic infection including CMV and Pneumocystis if he deteriorates postoperatively."] },
+      { title: "Protect the graft", prompt: "How do you preserve graft function intraoperatively?", answer: ["Maintain normovolaemia and avoid hypotension; graft perfusion is pressure-dependent and denervated.", "Avoid NSAIDs, aminoglycosides and, where possible, iodinated contrast; use the lowest effective pneumoperitoneum pressure.", "Monitor creatinine, potassium, magnesium and glucose daily and involve the transplant team in postoperative review."] },
+    ], takeHome: "Immunosuppression continues, interactions such as macrolides and azoles are actively managed, steroid cover is given, and graft protection means perfusion pressure and avoiding nephrotoxins.", sourceLinks: [sources.steroid],
+  },
+  {
+    id: "coexist-rheumatoid-airway", title: "Rheumatoid arthritis with a threatened cervical spine and airway", category: "Co-existing disease", difficulty: "Advanced",
+    patient: "A 67-year-old woman with 25 years of seropositive rheumatoid arthritis presents for total shoulder replacement. She takes methotrexate, adalimumab and prednisolone 5 mg daily.",
+    presentation: "She has hoarseness, mouth opening of 2.5 cm, occipital headache and tingling in both hands when she looks down. Haemoglobin is 96 g/L.",
+    stages: [
+      { title: "Recognise the red flags", prompt: "What do her symptoms suggest?", answer: ["Occipital pain with bilateral paraesthesia on flexion suggests atlantoaxial subluxation with cord compromise — present in up to a quarter of long-standing rheumatoid disease.", "Hoarseness suggests cricoarytenoid involvement with glottic narrowing; limited mouth opening reflects temporomandibular disease.", "Obtain flexion–extension or cross-sectional cervical imaging and a documented neurological examination before theatre."] },
+      { title: "Plan the airway and positioning", prompt: "How will you secure the airway?", answer: ["Plan awake fibreoptic intubation or videolaryngoscopy with manual in-line stabilisation, avoiding neck extension and hyperflexion throughout.", "Use a smaller tracheal tube than predicted because of possible glottic narrowing, and have a difficult airway trolley and senior help present.", "Position with the whole team, padding joints meticulously and confirming neutral neck alignment before draping; a regional interscalene block reduces opioid need but does not remove airway risk."] },
+      { title: "Manage drugs and recovery", prompt: "What about her medication and postoperative period?", answer: ["Continue methotrexate and hydroxychloroquine; hold adalimumab for one dosing interval before major surgery per rheumatology advice and restart once the wound is healing.", "Provide steroid supplementation for chronic prednisolone according to surgical stress.", "Extubate awake with a plan for postoperative stridor from cricoarytenoid oedema, and document any new neurological deficit immediately."] },
+    ], takeHome: "In rheumatoid disease, assume cervical instability and cricoarytenoid narrowing until excluded: image the neck, avoid extension, downsize the tube and watch for postoperative stridor.", sourceLinks: [sources.steroid],
+  },
 ];
 
 /**
@@ -338,7 +398,7 @@ export const perioperativeCases: PerioperativeCase[] = caseSeeds.map((caseData) 
   detailedAnswer: detailedAnswers[caseData.id] ?? [],
 }));
 
-const categories: Array<"All" | CaseCategory> = ["All", "Steroid cover", "Phaeochromocytoma", "Antifibrinolytics"];
+const categories: Array<"All" | CaseCategory> = ["All", "Steroid cover", "Phaeochromocytoma", "Antifibrinolytics", "Co-existing disease"];
 const difficulties: Array<"All" | PerioperativeCase["difficulty"]> = ["All", "Foundation", "Intermediate", "Advanced"];
 
 const caseSearchText = (caseData: PerioperativeCase): string => [
@@ -372,8 +432,8 @@ const PerioperativeCaseBank = () => {
   return (
     <SectionLayout
       title="Perioperative Case Bank"
-      subtitle="Eighteen progressive, exam-focused composite cases in steroid cover, phaeochromocytoma and antifibrinolytic therapy."
-      metaDescription="Work through 18 progressive perioperative cases covering steroid cover, phaeochromocytoma and tranexamic acid for FRCA and FFICM revision."
+      subtitle="Twenty-four progressive, exam-focused composite cases in steroid cover, phaeochromocytoma, antifibrinolytic therapy and anaesthesia for co-existing disease."
+      metaDescription="Work through 24 progressive perioperative cases covering steroid cover, phaeochromocytoma, tranexamic acid and co-existing renal, cardiac, hepatic, psychiatric, transplant and rheumatoid disease."
       backPath="/perioperative"
       backLabel="Perioperative Medicine"
       accentColor="text-perioperative"
