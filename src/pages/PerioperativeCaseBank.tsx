@@ -299,7 +299,11 @@ const caseSeeds: CaseSeed[] = [
   },
 ];
 
-const cases: PerioperativeCase[] = caseSeeds.map((caseData) => ({
+/**
+ * Exported so the content-audit corpus builder can read the full case text
+ * (stages, model answers and detailed answers) without rendering the page.
+ */
+export const perioperativeCases: PerioperativeCase[] = caseSeeds.map((caseData) => ({
   ...caseData,
   detailedAnswer: detailedAnswers[caseData.id] ?? [],
 }));
@@ -324,7 +328,7 @@ const PerioperativeCaseBank = () => {
   const [query, setQuery] = useState("");
   const visibleCases = useMemo(() => {
     const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-    return cases.filter((item) => {
+    return perioperativeCases.filter((item) => {
       if (category !== "All" && item.category !== category) return false;
       if (difficulty !== "All" && item.difficulty !== difficulty) return false;
       if (terms.length === 0) return true;
@@ -397,7 +401,7 @@ const PerioperativeCaseBank = () => {
       </div>
 
       <p className="text-sm text-muted-foreground mb-4" aria-live="polite">
-        Showing {visibleCases.length} of {cases.length} cases
+        Showing {visibleCases.length} of {perioperativeCases.length} cases
         {hasFilters && (
           <Button type="button" variant="link" size="sm" className="ml-2 h-auto p-0 align-baseline" onClick={clearFilters}>
             Clear filters

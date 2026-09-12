@@ -16,6 +16,10 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { resolve, dirname } from "path";
 import { allTopics, sectionMeta } from "../src/data/curriculum";
 import { topicReferences } from "../src/data/references";
+import { caseBanks } from "../src/data/cases";
+import { perioperativeCaseIndex } from "../src/data/perioperativeCaseIndex";
+import { perioperativeCases } from "../src/pages/PerioperativeCaseBank";
+import type { PerioperativeCase } from "../src/components/perioperative/ProgressiveCase";
 
 const ROOT = resolve(import.meta.dirname ?? __dirname, "..");
 const OUT = resolve(ROOT, "supabase/functions/audit-topics/audit-corpus.json");
@@ -43,6 +47,98 @@ export interface AuditCorpusEntry {
   /** Citations declared for this topic in src/data/references.ts. */
   references: Array<{ label: string; citation: string; url?: string; pmid?: string; excerpt?: string }>;
   text_chars: number;
+  /**
+   * Case-bank cases mapped to this topic, with their staged model answers and
+   * detailed discussion in full — audited alongside the topic prose so the
+   * clinical reasoning in cases is held to the same accuracy standard.
+   */
+  case_ids: string[];
+  case_bank_chars: number;
+}
+
+// ------------------------------------------------------------------ case banks
+
+/** Flatten one case into plain text: stem, staged model answers, discussion. */
+function caseToText(c: PerioperativeCase): string {
+  return [
+    `Case: ${c.title} (${c.category}, ${c.difficulty})`,
+    `Patient: ${c.patient}`,
+    `Presentation: ${c.presentation}`,
+    ...c.stages.flatMap((s, i) => [
+      `Stage ${i + 1} — ${s.title}`,
+      `  Question: ${s.prompt}`,
+      ...s.answer.map((a) => `  Model answer: ${a}`),
+    ]),
+    ...c.detailedAnswer.map((d) => `Discussion — ${d.title}: ${d.content}`),
+    `Take-home: ${c.takeHome}`,
+    c.sourceLinks.length > 0
+      ? `Cited sources: ${c.sourceLinks.map((s) => `${s.label} (${s.href})`).join("; ")}`
+      : "Cited sources: (none)",
+  ].join("\n");
+}
+
+interface CaseBankTextEntry {
+  case_id: string;
+  title: string;
+  bank: string;
+  path: string;
+  text: string;
+}
+
+/** topicId → every case (any bank) whose topicIds include it. */
+function buildCaseIndex(): Map<string, CaseBankTextEntry[]> {
+  const index = new Map<string, CaseBankTextEntry[]>();
+  const add = (topicIds: string[], entry: CaseBankTextEntry) => {
+    for (const topicId of topicIds) {
+      const list = index.get(topicId) ?? [];
+      list.push(entry);
+      index.set(topicId, list);
+    }
+  };
+
+  for (const bank of caseBanks) {
+    for (const c of bank.cases) {
+      add(c.topicIds, {
+        case_id: c.id,
+        title: c.title,
+        bank: bank.title,
+        path: `${bank.path}#${c.id}`,
+        text: caseToText(c),
+      });
+    }
+  }
+
+  // The perioperative bank keeps its case text in the page and its topic
+  // mapping in src/data/perioperativeCaseIndex.ts.
+  const perioperativeById = new Map(perioperativeCases.map((c) => [c.id, c]));
+  for (const item of perioperativeCaseIndex) {
+    const c = perioperativeById.get(item.id);
+    if (!c) continue;
+    add(item.topicIds, {
+      case_id: c.id,
+      title: c.title,
+      bank: "Perioperative Case Bank",
+      path: `/perioperative/case-bank#${c.id}`,
+      text: caseToText(c),
+    });
+  }
+
+  return index;
+}
+
+const CASE_INDEX = buildCaseIndex();
+
+/**
+ * Every case, stored once and referenced by id from each topic entry. A case can
+ * belong to four topics, so inlining its text per topic bloated the corpus JSON
+ * past the edge-function deploy limit.
+ */
+export function buildCaseDictionary(): Record<string, CaseBankTextEntry> {
+  const dict: Record<string, CaseBankTextEntry> = {};
+  for (const list of CASE_INDEX.values()) {
+    for (const entry of list) dict[entry.case_id] = entry;
+  }
+  return dict;
 }
 
 // ---------------------------------------------------------------- source reading
@@ -258,6 +354,8 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
     .join("\n")
     .slice(0, MAX_TEXT_CHARS);
 
+  const caseEntries = CASE_INDEX.get(topic.id) ?? [];
+
   return {
     topic_id: topic.id,
     topic_title: topic.title,
@@ -278,6 +376,8 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
       excerpt: r.excerpt,
     })),
     text_chars: text.length,
+    case_ids: caseEntries.map((c) => c.case_id),
+    case_bank_chars: caseEntries.reduce((n, c) => n + c.text.length, 0),
   };
 }
 
@@ -306,6 +406,7 @@ function main() {
         generated_at: new Date().toISOString(),
         topic_count: entries.length,
         entries,
+        cases: buildCaseDictionary(),
       },
       null,
       0,

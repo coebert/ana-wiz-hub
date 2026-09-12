@@ -40,11 +40,26 @@ interface CorpusEntry {
     excerpt?: string;
   }>;
   text_chars: number;
+  /** Ids into the shared CASE_TEXTS dictionary (cases can belong to several topics). */
+  case_ids?: string[];
+  case_bank_chars?: number;
+}
+
+interface CorpusCase {
+  case_id: string;
+  title: string;
+  bank: string;
+  path: string;
+  text: string;
 }
 
 const CORPUS: Map<string, CorpusEntry> = new Map(
   ((corpusData as { entries: CorpusEntry[] }).entries ?? []).map((e) => [e.topic_id, e]),
 );
+/** Case-bank cases, stored once in the corpus and referenced by id per topic. */
+const CASE_TEXTS: Record<string, CorpusCase> =
+  (corpusData as { cases?: Record<string, CorpusCase> }).cases ?? {};
+
 const CORPUS_GENERATED_AT = (corpusData as { generated_at?: string }).generated_at ?? null;
 
 function getCorpusEntry(topicId: string): CorpusEntry | undefined {
@@ -670,6 +685,9 @@ const ACCURACY_SYSTEM = `You are a UK anaesthetic and intensive-care content aud
 
 You will be given:
 - The current text of one topic on the AnaesthesiaCore revision site.
+- Any case-bank cases mapped to this topic (staged model answers + discussion) and viva model answers
+  generated for it. These are published learner-facing content: audit them exactly as you audit the
+  topic prose, and label such findings via in_topic_section ("Case bank: <title>" / "Viva model answer: ...").
 - The topic's stated scope (title + description).
 - Excerpts from authoritative UK and international reference sources.
 - A list of previously-raised findings, INCLUDING any already confirmed as FALSE POSITIVES by a human reviewer.
@@ -681,7 +699,7 @@ Raise findings ONLY for:
 - citation    — a specific number/threshold/dose is asserted with NO authoritative source AND a supplied reference contradicts or qualifies it
 
 Hard rules (violations are discarded):
-1. EVERY finding MUST include a verbatim topic_quote (≤300 char, copy-pasted from the markdown — no paraphrase, no ellipsis).
+1. EVERY finding MUST include a verbatim topic_quote (≤300 char, copy-pasted from the topic markdown OR from the case-bank / viva model-answer blocks — no paraphrase, no ellipsis).
 2. EVERY finding MUST include a verbatim source_quote from one of the supplied reference excerpts that explicitly contradicts or supersedes the topic_quote.
 3. If no supplied excerpt explicitly contradicts the topic_quote, DO NOT raise the finding. Conservative is correct.
 4. NEVER re-raise a finding that appears in the FALSE POSITIVES list — those have been reviewed and dismissed.
@@ -702,7 +720,8 @@ Return ONLY the tool call.`;
 const COVERAGE_SYSTEM = `You are a UK FRCA / FFICM examiner reviewing one revision topic for COVERAGE AND DEPTH. You are NOT auditing accuracy.
 
 You will be given:
-- The current text of one topic.
+- The current text of one topic, plus any case-bank cases and viva model answers attached to it
+  (these count as part of the topic's teaching content for coverage purposes).
 - The topic's stated scope (title + description).
 - Reference excerpts from BJA Education / RCoA / FICM / NICE / Resus Council / ESICM.
 - A list of previously-raised coverage findings (open + dismissed as false positive).
@@ -744,7 +763,9 @@ Return ONLY the tool call.`;
 const FRESHNESS_SYSTEM = `You are a UK FRCA / FFICM curriculum maintainer auditing ONE revision topic for content freshness.
 
 You will be given:
-- The current text of one topic on the AnaesthesiaCore revision site.
+- The current text of one topic on the AnaesthesiaCore revision site, plus any case-bank cases and
+  viva model answers attached to it — these are published learner-facing content and are equally
+  subject to freshness drift (label such findings via in_topic_section).
 - The topic's stated scope (title + description) and FRCA/FFICM curriculum section.
 - Recent (last ~3 years) reference excerpts from authoritative UK / international bodies — BJA Education, RCoA, FICM, ICS, NICE, BNF, Resus Council UK, ESICM, AAGBI / Anaesthetists.org.
 - Hints about which guidelines / consensus statements are commonly tested for this section (use as prompts, not gospel).
@@ -944,6 +965,13 @@ type Stages = {
   evidence_reputable?: number;
   evidence_retracted?: number;
 
+  // Extra auditable content beyond the topic prose
+  case_bank_cases?: number;
+  case_bank_chars?: number;
+  viva_answers?: number;
+  viva_answers_chars?: number;
+  viva_error?: string;
+
 };
 
 async function auditTopic(
@@ -1125,6 +1153,85 @@ async function auditTopic(
   // Larger content window — coverage pass particularly needs it.
   const pageExcerpt = pageMarkdown.slice(0, 20000);
 
+  // 2c. Extra auditable content that lives outside the topic prose but is read
+  // by learners as if it were part of the topic:
+  //   - case-bank cases mapped to this topic (staged model answers + discussion)
+  //   - viva model answers generated for this topic
+  // Both make clinical assertions (doses, thresholds, algorithms), so they are
+  // audited against the same evidence as the topic itself.
+  const caseBank = (corpusEntry.case_ids ?? [])
+    .map((id) => CASE_TEXTS[id])
+    .filter((c): c is CorpusCase => Boolean(c));
+  stages.case_bank_cases = caseBank.length;
+  stages.case_bank_chars = caseBank.reduce((n, c) => n + c.text.length, 0);
+  const caseBankBlock = caseBank.length === 0
+    ? ""
+    : [
+        "=== CASE-BANK CASES MAPPED TO THIS TOPIC (audit these too) ===",
+        "Each case below is published on the site and linked from this topic. The staged",
+        "'Model answer' lines and 'Discussion' paragraphs are model answers a candidate is",
+        "expected to learn, so they are auditable content. When a finding concerns a case,",
+        'set in_topic_section to "Case bank: <case title>" and quote the case text verbatim in topic_quote.',
+        "",
+        caseBank
+          .map((c) => `--- [${c.bank}] ${c.path}\n${c.text}`)
+          .join("\n\n")
+          .slice(0, 26_000),
+      ].join("\n");
+
+  // Viva model answers live in the database (generated per question), not in the
+  // source corpus, so they are fetched at audit time.
+  let vivaBlock = "";
+  try {
+    const { data: vivaRows } = await supa
+      .from("viva_model_answers")
+      .select("question, exam, model_answer, high_yield_points, pitfalls")
+      .eq("topic_title", topic.title)
+      .order("created_at", { ascending: false })
+      .limit(25);
+    const viva = vivaRows ?? [];
+    stages.viva_answers = viva.length;
+    if (viva.length > 0) {
+      const asList = (v: unknown): string[] =>
+        Array.isArray(v) ? v.map((x) => String(x)) : [];
+      const body = viva
+        .map((r, i) =>
+          [
+            `--- Viva question ${i + 1} (${String(r.exam ?? "").toUpperCase()}): ${r.question}`,
+            `Model answer: ${String(r.model_answer ?? "")}`,
+            asList(r.high_yield_points).length
+              ? `High-yield points: ${asList(r.high_yield_points).join(" · ")}`
+              : "",
+            asList(r.pitfalls).length ? `Pitfalls: ${asList(r.pitfalls).join(" · ")}` : "",
+          ]
+            .filter(Boolean)
+            .join("\n"),
+        )
+        .join("\n\n")
+        .slice(0, 26_000);
+      stages.viva_answers_chars = body.length;
+      vivaBlock = [
+        "=== VIVA MODEL ANSWERS FOR THIS TOPIC (audit these too) ===",
+        "These are the model answers shown to candidates in the viva question library.",
+        "They assert doses, thresholds and algorithms and must be held to the same",
+        'accuracy standard as the topic prose. When a finding concerns one of them, set',
+        'in_topic_section to "Viva model answer: <first 8 words of the question>" and quote',
+        "the model answer verbatim in topic_quote.",
+        "",
+        body,
+      ].join("\n");
+    }
+  } catch (e) {
+    stages.viva_error = (e as Error).message;
+    console.warn(`[audit-topics] viva model answers unavailable for ${topic.id}: ${(e as Error).message}`);
+  }
+
+  const extraContentBlock = [caseBankBlock, vivaBlock].filter(Boolean).join("\n\n");
+  console.log(
+    `[audit-topics] extra content ${topic.id}: ${caseBank.length} cases, ` +
+      `${stages.viva_answers ?? 0} viva model answers`,
+  );
+
   const refsBody = refs.length === 0
     ? "(no literature records retrieved — for the accuracy pass, do NOT raise findings without a source quote; for the coverage pass, name the specific BJA Education / RCoA / NICE document by title + year inside details)"
     : refs
@@ -1172,6 +1279,8 @@ async function auditTopic(
         "=== CURRENT TOPIC CONTENT (markdown) ===",
         pageExcerpt,
         "",
+        extraContentBlock,
+        "",
         "=== AUTHORITATIVE REFERENCES ===",
         refsBlock,
       ].join("\n"),
@@ -1201,6 +1310,8 @@ async function auditTopic(
           "",
           "=== CURRENT TOPIC CONTENT (markdown) ===",
           pageExcerpt,
+          "",
+          extraContentBlock,
           "",
           "=== AUTHORITATIVE REFERENCES (depth/structure cues) ===",
           refsBlock,
@@ -1275,6 +1386,8 @@ async function auditTopic(
           "",
           "=== CURRENT TOPIC CONTENT (markdown) ===",
           pageExcerpt,
+          "",
+          extraContentBlock,
           "",
           "=== RECENT (last ~3 y) REFERENCES ===",
           recentBlock,
