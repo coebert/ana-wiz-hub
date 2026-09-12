@@ -230,7 +230,7 @@ const EquipmentMonitoringTopic = () => {
           "Weiss & Engelhardt 2010",
           "AAGBI Standards 2015",
         ],
-        keyPoints: [
+        keyPoints: ["HSE EH40/2005", "AoA Standards of Monitoring 2021", "AoA Equipment Checklist", 
           "Macintosh 1943",
           "Miller 1941",
           "McCoy & Mirakhur 1993",

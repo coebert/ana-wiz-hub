@@ -38,7 +38,7 @@ const AbdominalAnatomyTopic = () => {
       sectionSources={{
         objectives: ["Ellis & Feldman Ch.4", "Miller Ch.47"],
         workedExamples: ["BJA Educ 2015", "Miller Ch.47"],
-        keyPoints: ["Ellis & Feldman Ch.4", "BJA Educ 2015", "Miller Ch.47"],
+        keyPoints: ["BJA Educ 2018 (Abdominal wall blocks)", "Ellis & Feldman Ch.4", "BJA Educ 2015", "Miller Ch.47"],
       }}
       coreConcepts={
         <>

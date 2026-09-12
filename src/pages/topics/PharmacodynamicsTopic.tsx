@@ -138,7 +138,7 @@ const PharmacodynamicsTopic = () => {
           "BJA Educ 2016",
           "Rang & Dale Ch.2",
         ],
-        keyPoints: [
+        keyPoints: ["BJA Educ 2022 (Drug-receptor)", 
           "Rang & Dale Ch.2",
           "Rang & Dale Ch.2",
           "Peck & Hill Ch.2",
