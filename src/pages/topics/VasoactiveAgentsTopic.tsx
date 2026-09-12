@@ -116,6 +116,7 @@ const VasoactiveAgentsTopic = () => {
         <>
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <StickyTOC items={tocItems} />
+          <DrugDosesCallout focus="vasopressor and inotrope infusion rates" />
           <div className="prose prose-slate max-w-none">
         {/* ================= 1. ORIENTATION ================= */}
         <section id="toc-foundations" className="mb-10 scroll-mt-24">
