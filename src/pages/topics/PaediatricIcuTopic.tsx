@@ -717,7 +717,7 @@ const PaediatricIcuTopic = () => {
           <ExamSection id="ethics" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Safeguarding & End-of-Life">
             <p className="text-muted-foreground text-sm">
-              All PICU staff need Level 3 safeguarding. Best-interests framework — parents central to decision-making but cannot demand futile treatment. Brainstem death testing requires &gt;2 months age (NOT applicable &lt;37 weeks corrected gestational age), 2 consultants, 2 sets of tests. Family-centred care: open visiting, parental presence, play specialists, bereavement support.
+              All PICU staff need Level 3 safeguarding; unexplained or inconsistent injury, retinal haemorrhage and infant subdural haemorrhage mandate referral and information sharing <InlineRef topicId="paediatric-icu" refLabel="NICE NG76" />. Best-interests framework — parents central to decision-making but cannot demand futile or burdensome treatment <InlineRef topicId="paediatric-icu" refLabel="RCPCH Framework 2015" />. Death by neurological criteria can be diagnosed from 37 weeks corrected gestation, with separate RCPCH criteria for infants under 2 months, and requires two doctors performing two sets of tests <InlineRef topicId="paediatric-icu" refLabel="RCPCH DNC Infants 2015" />. Family-centred care: open visiting, parental presence, play specialists, bereavement support — and staffing, retrieval and escalation standards follow the PCCS quality standards <InlineRef topicId="paediatric-icu" refLabel="PCCS Standards 2021" />.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
