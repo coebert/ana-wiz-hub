@@ -7,6 +7,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import AntibioticPKPDPrimer from "@/components/diagrams/pharmacology/AntibioticPKPDPrimer";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const antimicrobialsIcuFaqs: Array<[string, string]> = [
   ["Why does volume of distribution change for hydrophilic antibiotics in sepsis?", "Capillary leak and aggressive fluid resuscitation expand Vd for β-lactams, aminoglycosides and glycopeptides, often requiring loading doses (e.g. meropenem 2 g, vancomycin 25–30 mg/kg) to reach therapeutic levels."],
@@ -106,6 +107,7 @@ const AntimicrobialsIcuTopic = () => {
         objectives: ["SSC 2021 Antimicrobials", "BJA Educ 2016", "NICE NG51"],
         workedExamples: ["BJA Educ 2016", "NICE NG51"],
         keyPoints: ["SSC 2021 Antimicrobials", "BJA Educ 2016", "NICE NG51"],
+        coreConcepts: ["Nat Rev Microbiol 2015 (Resistance mechanisms)", "NICE NG15"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.7", "EDIC 5.3"] },
@@ -205,6 +207,40 @@ const AntimicrobialsIcuTopic = () => {
             </div>
           </ExamSection>
 
+
+          <ExamSection
+            id="resistance-mechanisms"
+            exams={[Exam.FFICM, Exam.EDIC]}
+            curriculumCodes={["FFICM 4.7"]}
+            className="scroll-mt-24"
+          >
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Mechanisms of Antimicrobial Resistance</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Four core mechanisms account for almost all clinically important resistance on the ICU, and organisms frequently combine several at once <InlineRef topicId="antimicrobials-icu" refLabel="Nat Rev Microbiol 2015 (Resistance mechanisms)" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Enzymatic degradation</p>
+                <p className="text-xs text-muted-foreground mt-1">β-lactamases hydrolyse the β-lactam ring. Extended-spectrum β-lactamases (ESBLs) confer resistance to penicillins and cephalosporins but spare carbapenems; carbapenemases (KPC, NDM-1, OXA-48) additionally destroy carbapenems. This is why β-lactamase inhibitors (tazobactam, avibactam) are co-administered and why carbapenem-sparing strategies matter — indiscriminate carbapenem use selects for carbapenemase-producing organisms with few remaining options. Aminoglycoside-modifying enzymes (acetyltransferases, phosphotransferases) inactivate gentamicin/amikacin similarly.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Target-site modification</p>
+                <p className="text-xs text-muted-foreground mt-1"><em>mecA</em>-encoded PBP2a in MRSA has low affinity for all β-lactams; mutations in DNA gyrase/topoisomerase IV reduce fluoroquinolone binding; 23S rRNA methylation (erm genes) blocks macrolide binding to the ribosome; <em>vanA</em> replaces the D-Ala-D-Ala peptidoglycan terminus with D-Ala-D-Lac, abolishing glycopeptide binding in VRE.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Reduced permeability</p>
+                <p className="text-xs text-muted-foreground mt-1">Loss or downregulation of outer-membrane porin channels (e.g. OprD loss in <em>Pseudomonas aeruginosa</em> conferring carbapenem resistance, porin loss in <em>Klebsiella</em>) limits drug entry. The Gram-negative outer membrane is intrinsically far less permeable than the Gram-positive cell wall, which is one reason Gram-negative MDR organisms are harder to treat than Gram-positive ones.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Active efflux</p>
+                <p className="text-xs text-muted-foreground mt-1">Efflux pumps such as MexAB-OprM in <em>Pseudomonas</em> actively export tetracyclines, macrolides and fluoroquinolones out of the cell faster than they accumulate, keeping intracellular concentration below the therapeutic threshold despite adequate dosing.</p>
+              </div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mt-3">
+              These mechanisms are not mutually exclusive: a single carbapenem-resistant <em>Klebsiella</em> isolate may carry a carbapenemase, porin loss and an efflux pump simultaneously, producing very high MICs. Resistance genes spread horizontally between organisms via plasmids and transposons (not just vertically by clonal expansion), which explains rapid outbreak spread of CPE/ESBL organisms on ICUs and the rationale for contact precautions and screening in addition to antibiotic stewardship <InlineRef topicId="antimicrobials-icu" refLabel="Nat Rev Microbiol 2015 (Resistance mechanisms)" />.
+            </p>
+          </ExamSection>
+
           <ExamSection
             id="stewardship"
             exams={[Exam.FFICM, Exam.EDIC]}
@@ -212,6 +248,9 @@ const AntimicrobialsIcuTopic = () => {
             className="scroll-mt-24"
           >
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Antimicrobial Stewardship</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Effective stewardship combines the "Start Smart Then Focus" principles below with structural programme elements <InlineRef topicId="antimicrobials-icu" refLabel="NICE NG15" />: formulary restriction, prospective audit and feedback, antibiogram-driven guidelines, systematic de-escalation, consumption/resistance surveillance and prescriber education.
+            </p>
             <div className="space-y-2">
               {[
                 { principle: "Start Smart", detail: "Take cultures before antibiotics (do NOT delay first dose >45 min in septic shock). Empiric broad-spectrum within 1 h of sepsis recognition (SSC 2021). Follow local guidelines and antibiogram." },
@@ -219,6 +258,11 @@ const AntimicrobialsIcuTopic = () => {
                 { principle: "Duration", detail: "Shorter is safer: CAP 5 days (NICE), HAP/VAP 7 days (PneumA), uncomplicated Gram-neg bacteraemia 7 days (Yahav 2019), intra-abdominal 4 days post-source control (STOP-IT). Procalcitonin-guided de-escalation reduces exposure further." },
                 { principle: "MDR organisms", detail: "ESBL: meropenem (MERINO). MRSA: vancomycin/linezolid/daptomycin. VRE: linezolid/daptomycin. CPE: ceftazidime-avibactam, meropenem-vaborbactam, cefiderocol. C. difficile: oral vancomycin/fidaxomicin (NOT metronidazole first-line). Always consult microbiology." },
                 { principle: "Route & TDM", detail: "Switch to oral when tolerating diet, afebrile 24 h, falling inflammatory markers, no high-risk infection (endocarditis, CNS, prosthetic). TDM mandatory: vancomycin, gentamicin, voriconazole; consider for β-lactams in ARC or CRRT." },
+                { principle: "Formulary restriction & pre-authorisation", detail: "Protected/restricted agents (carbapenems, linezolid, ceftazidime-avibactam, daptomycin) require prior microbiology or infectious diseases approval before or shortly after the first dose, preventing unnecessary broad-spectrum use and preserving agents for MDR infection." },
+                { principle: "Prospective audit and feedback", detail: "Daily multidisciplinary review by an ICU pharmacist and microbiologist of every patient on antimicrobials, with real-time recommendations on choice, dose, route and duration fed back directly to the prescribing team." },
+                { principle: "Guidelines, bundles and local antibiograms", detail: "Empiric choice is driven by locally agreed guidelines, sepsis care bundles and the unit's own antibiogram (which reflects local resistance patterns) rather than generic national guidance alone." },
+                { principle: "Surveillance and feedback", detail: "Unit-level antimicrobial consumption (expressed as defined daily doses, DDDs) and resistance rates are tracked and fed back to clinicians to detect drift towards broader-spectrum prescribing and emerging resistance." },
+                { principle: "Prescriber education", detail: "Ongoing education of medical and nursing staff on stewardship principles, local guidelines and the harms of unnecessary or prolonged antimicrobial exposure (C. difficile, resistance selection, toxicity)." },
               ].map((p) => (
                 <div key={p.principle} className="p-3 rounded-lg bg-secondary/30 border border-border">
                   <p className="font-semibold text-foreground text-sm">{p.principle}</p>

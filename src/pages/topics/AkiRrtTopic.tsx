@@ -13,6 +13,7 @@ import { akiRrtQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const akiFaqs: Array<[string, string]> = [
@@ -52,6 +53,7 @@ const akiFaqs: Array<[string, string]> = [
 
 
 const tocItems = [
+  { id: "toc-classification", label: "Classification of Causes" },
   { id: "toc-kdigo", label: "KDIGO Staging" },
   { id: "toc-ci-aki", label: "CI-AKI" },
   { id: "toc-drug-dosing", label: "Drug Dosing" },
@@ -59,6 +61,7 @@ const tocItems = [
   { id: "toc-modalities", label: "Modalities" },
   { id: "toc-circuit", label: "Circuit" },
   { id: "toc-anticoagulation", label: "Anticoagulation" },
+  { id: "toc-complications", label: "RRT Complications" },
   { id: "toc-trials", label: "Key Trials" },
   { id: "toc-faq", label: "FAQ" },
 ];
@@ -196,6 +199,67 @@ const AkiRrtTopic = () => {
     <>
       <StickyTOC items={tocItems} />
       <div className="prose prose-slate max-w-none">
+        <ExamSection id="toc-classification" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
+          <CollapsibleSubsection title="Classification of AKI Causes">
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            AKI is traditionally classified anatomically into <strong>pre-renal</strong>, <strong>intrinsic renal</strong>
+            and <strong>post-renal</strong> causes — a framework that also structures the bedside work-up
+            <InlineRef topicId="aki-rrt" refLabel="BJA Educ 2018" />.
+          </p>
+          <div className="overflow-x-auto rounded-xl border border-border bg-card mb-6">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr className="border-b border-border">
+                  <th className="text-left p-3 font-semibold text-foreground">Category</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Mechanism / examples</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Pre-renal</td>
+                  <td className="p-3 align-top text-foreground/80">
+                    <em>Systemic hypoperfusion</em> — sepsis, haemorrhage, dehydration, cardiogenic shock (reduced
+                    renal blood flow with intact tubular function). <em>Localised hypoperfusion</em> — renal artery
+                    stenosis, abdominal compartment syndrome (raised intra-abdominal pressure compressing renal veins).
+                    Reversible if perfusion restored promptly; if prolonged, progresses to intrinsic ATN.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Intrinsic renal</td>
+                  <td className="p-3 align-top text-foreground/80">
+                    <strong>ATN</strong> — from prolonged ischaemia (uncorrected pre-renal insult) or nephrotoxins
+                    (IV contrast, aminoglycosides, myoglobin in rhabdomyolysis). <strong>Acute interstitial nephritis</strong> —
+                    drug-induced (penicillins, cephalosporins, NSAIDs, PPIs, allopurinol) or infective, classically with
+                    fever, rash, eosinophilia. <strong>Glomerulonephritis</strong> — ANCA vasculitis, lupus nephritis,
+                    anti-GBM disease. <strong>Vascular</strong> — renal artery/vein thromboembolism, cholesterol
+                    atheroemboli (post-angiography).
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Post-renal (obstructive)</td>
+                  <td className="p-3 align-top text-foreground/80">
+                    Ureteric stones or external compression (pelvic malignancy, retroperitoneal fibrosis) — needs
+                    bilateral obstruction (or single functioning kidney) to cause AKI. Bladder neck obstruction —
+                    BPH, blocked/kinked urinary catheter. Urethral stricture. Always exclude first — most rapidly
+                    reversible cause.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-foreground/90 leading-relaxed mb-2">
+            <strong>Practical discriminators at the bedside:</strong>
+          </p>
+          <ul className="list-disc pl-6 space-y-1 text-foreground/90 mb-4">
+            <li><strong>Urine output pattern</strong> — oliguria/anuria with a palpable bladder or sudden anuria suggests obstruction; gradual oliguria with poor perfusion suggests pre-renal.</li>
+            <li><strong>Urinary sodium / FeNa</strong> — pre-renal: urine Na⁺ &lt; 20 mmol/L, FeNa &lt; 1% (avid sodium reabsorption); ATN: urine Na⁺ &gt; 40 mmol/L, FeNa &gt; 2% (tubular dysfunction). Unreliable if diuretics given.</li>
+            <li><strong>Urinalysis</strong> — muddy brown granular casts and tubular epithelial cells in ATN; red cell casts/dysmorphic RBCs in glomerulonephritis; eosinophiluria classically in AIN; haematuria in stones/malignancy.</li>
+            <li><strong>Bladder scan</strong> — quick bedside screen for urinary retention.</li>
+            <li><strong>Renal tract ultrasound within 24 h</strong> if obstruction is suspected or cause is unclear<InlineRef topicId="aki-rrt" refLabel="NICE CG169" />, looking for hydronephrosis.</li>
+          </ul>
+          </CollapsibleSubsection>
+        </ExamSection>
+
         <ExamSection id="toc-kdigo" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
           <CollapsibleSubsection title="KDIGO Definition & Staging" defaultOpen>
           <p className="text-foreground/90 leading-relaxed mb-4">
@@ -586,6 +650,87 @@ const AkiRrtTopic = () => {
             Compare the major continuous and intermittent renal replacement modalities side-by-side.
           </p>
           <RRTModalitiesDiagram />
+          <h3 className="text-lg font-serif font-bold text-foreground mt-6 mb-2">Core physical principles</h3>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            All RRT modalities combine up to three physical processes across a semi-permeable membrane
+            <InlineRef topicId="aki-rrt" refLabel="BJA Educ 2018" />:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-4">
+            <li>
+              <strong>Diffusion</strong> — solute movement down a concentration gradient across the membrane.
+              Dominant mode in <strong>IHD</strong> and <strong>CVVHD</strong>. Most efficient for small molecules
+              (urea, creatinine, K⁺, H⁺) because they diffuse fastest; poor clearance of middle/large molecules.
+              Dialysate flows counter-current to blood flow to maximise the concentration gradient along the
+              whole length of the filter.
+            </li>
+            <li>
+              <strong>Convection</strong> — solvent drag: water is pushed across the membrane down a
+              transmembrane pressure gradient, dragging dissolved solutes with it regardless of size. Dominant
+              mode in <strong>CVVH</strong>. Better than diffusion for clearing middle/large molecules (cytokines,
+              myoglobin, some antibiotics) because clearance is less size-dependent. Requires large-volume
+              replacement fluid, given <em>pre-filter</em> (pre-dilution — reduces filtration fraction and
+              circuit clotting, but dilutes blood solute concentration and so reduces clearance efficiency) or
+              <em> post-filter</em> (post-dilution — more efficient clearance but higher filtration fraction and
+              greater clotting/haemoconcentration risk).
+            </li>
+            <li>
+              <strong>Ultrafiltration</strong> — bulk movement of plasma water down a hydrostatic pressure
+              gradient generated across the membrane; this is the pure fluid-removal component present in
+              every modality (with or without solute clearance).
+            </li>
+          </ul>
+          <h3 className="text-lg font-serif font-bold text-foreground mt-6 mb-2">Modalities at a glance</h3>
+          <div className="overflow-x-auto rounded-xl border border-border bg-card mb-4">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr className="border-b border-border">
+                  <th className="text-left p-3 font-semibold text-foreground">Modality</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Principle</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Fluids used</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Notes</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">SCUF</td>
+                  <td className="p-3 align-top text-foreground/80">Ultrafiltration only</td>
+                  <td className="p-3 align-top text-foreground/80">None (no dialysate or replacement fluid)</td>
+                  <td className="p-3 align-top text-foreground/80">Isolated fluid removal, e.g. diuretic-resistant fluid overload without solute clearance need</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">CVVH</td>
+                  <td className="p-3 align-top text-foreground/80">Convection</td>
+                  <td className="p-3 align-top text-foreground/80">Replacement fluid (pre- or post-filter)</td>
+                  <td className="p-3 align-top text-foreground/80">Good middle-molecule clearance</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">CVVHD</td>
+                  <td className="p-3 align-top text-foreground/80">Diffusion</td>
+                  <td className="p-3 align-top text-foreground/80">Dialysate (counter-current)</td>
+                  <td className="p-3 align-top text-foreground/80">Good small-molecule clearance</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">CVVHDF</td>
+                  <td className="p-3 align-top text-foreground/80">Diffusion + convection</td>
+                  <td className="p-3 align-top text-foreground/80">Dialysate <em>and</em> replacement fluid</td>
+                  <td className="p-3 align-top text-foreground/80"><strong>Most commonly used continuous modality in UK ICUs</strong> — efficient clearance across small and middle molecules</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-foreground/90 leading-relaxed mb-2">
+            Target continuous effluent dose is <strong>20–25 mL/kg/h</strong> (RENAL and ATN trials showed no added
+            benefit from higher intensity, 35–40 mL/kg/h)<InlineRef topicId="aki-rrt" refLabel="KDIGO 2012" />.
+            Intermittent options — <strong>IHD</strong> (high diffusive clearance over 3–4 h) and <strong>SLED</strong>
+            (hybrid sustained low-efficiency dialysis, 6–12 h) — trade continuous haemodynamic tolerability for
+            faster, more efficient intermittent clearance.
+          </p>
+          <ExamPitfallsCallout
+            accent="icu"
+            pitfalls={[
+              "Confusing diffusion and convection is a common viva failure: diffusion = concentration gradient, best for small molecules (CVVHD/IHD); convection = pressure-driven solvent drag, best for middle/large molecules (CVVH), and needs replacement fluid.",
+            ]}
+          />
           </CollapsibleSubsection>
         </ExamSection>
 
@@ -617,6 +762,47 @@ const AkiRrtTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Prostacyclin (PGI₂) infused pre-filter — inhibits platelet aggregation and provides regional circuit anticoagulation. Short half-life (~6 min) so effect largely confined to the circuit. Useful when citrate is contraindicated (severe liver failure, citrate accumulation) or in HIT. Main side-effect is systemic hypotension at higher doses. Typical dose 2-5 ng/kg/min. Can be combined with low-dose heparin for synergistic effect.</p>
             </div>
           </div>
+          </CollapsibleSubsection>
+        </ExamSection>
+
+        <ExamSection id="toc-complications" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
+          <CollapsibleSubsection title="Complications of RRT">
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Complications of RRT arise from vascular access, the extracorporeal circuit, the physiological effect of
+            solute/fluid removal, and drug handling<InlineRef topicId="aki-rrt" refLabel="ESICM AKI 2017" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Access-related</p>
+              <p className="text-sm text-muted-foreground mt-1">Haemorrhage/haematoma at insertion; pneumothorax (subclavian approach — avoid where possible); inadvertent arterial puncture; catheter-related bloodstream infection (CRBSI); central vein thrombosis/stenosis (subclavian &gt; femoral &gt; IJV risk, important if future AV fistula planned).</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Haemodynamic</p>
+              <p className="text-sm text-muted-foreground mt-1">Hypotension — much more common with IHD (rapid fluid/solute shifts) than CRRT; dialysis disequilibrium syndrome (rapid urea clearance causing cerebral oedema — headache, confusion, seizures, especially with high starting urea); arrhythmias from rapid electrolyte shifts (K⁺, Ca²⁺).</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Circuit-related</p>
+              <p className="text-sm text-muted-foreground mt-1">Filter/circuit clotting (reduced clearance, blood loss on discard); air embolism; significant blood loss on circuit rupture or accidental disconnection; membrane bioincompatibility reactions (first-use syndrome — anaphylactoid, especially with older cellulose-based membranes).</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Metabolic</p>
+              <p className="text-sm text-muted-foreground mt-1">Hypothermia (large extracorporeal volume cooling blood); hypokalaemia; <strong>hypophosphataemia — the commonest metabolic complication of CRRT</strong> (proactive phosphate replacement or phosphate-containing replacement fluid needed); hypomagnesaemia; acid-base disturbance (alkalosis with citrate/bicarbonate-buffered fluids); citrate accumulation with regional citrate anticoagulation (rising total:ionised Ca ratio &gt;2.5) in liver failure/shock.</p>
+            </div>
+          </div>
+          <p className="text-foreground/90 leading-relaxed mb-2">
+            <strong>Drug dosing:</strong> RRT adds a clearance route that is easily forgotten, risking under-dosing
+            of antibiotics and other renally-cleared drugs if the effluent/dialysate flow rate is not accounted for.
+            Beta-lactams (e.g. meropenem, piperacillin-tazobactam) are significantly cleared by high-flux CRRT and
+            typically need standard or even increased/extended-infusion dosing (not simple renal-impairment
+            dose reduction) to avoid treatment failure. Vancomycin requires therapeutic drug monitoring on CRRT —
+            levels can swing from sub-therapeutic (missed dose after filter change) to toxic (filter clotted,
+            drug accumulating) within hours.
+          </p>
+          <p className="text-foreground/90 leading-relaxed">
+            <strong>Bleeding</strong> may occur from systemic effects of anticoagulation (systemic heparin — bleeding,
+            HIT) or from platelet consumption/activation by the extracorporeal circuit itself, even with regional
+            citrate anticoagulation.
+          </p>
           </CollapsibleSubsection>
         </ExamSection>
 

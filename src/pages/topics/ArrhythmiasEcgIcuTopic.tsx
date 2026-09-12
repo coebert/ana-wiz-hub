@@ -346,7 +346,7 @@ const ArrhythmiasEcgIcuTopic = () => {
                 <p className="font-semibold text-foreground text-sm mb-2">Tachycardia algorithm</p>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>1. <span className="font-medium text-foreground">Adverse features?</span> Shock · Syncope · Myocardial ischaemia · Heart failure → <span className="font-medium text-foreground">synchronised DCCV ×3</span> (sedate / GA), then amiodarone 300 mg over 10–20 min and re-shock.</li>
-                  <li>2. Stable + <span className="font-medium text-foreground">narrow regular</span>: vagal manoeuvres → adenosine 6 mg, then 12 mg, then a further 12 mg if required <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK 2021 Tachycardia" />.</li>
+                  <li>2. Stable + <span className="font-medium text-foreground">narrow regular</span>: vagal manoeuvres → adenosine 6 mg, then 12 mg, then a further 12 mg if required (not 18 mg — the 2021 RCUK adult tachycardia algorithm caps escalation at 12 mg for the third dose) <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK 2021 Tachycardia" />.</li>
                   <li>3. Stable + <span className="font-medium text-foreground">narrow irregular</span>: probable AF → rate control (β-blocker / diltiazem; amiodarone if HF) ± anticoagulate.</li>
                   <li>4. Stable + <span className="font-medium text-foreground">wide regular</span>: assume VT → amiodarone 300 mg IV over 20–60 min.</li>
                   <li>5. Stable + <span className="font-medium text-foreground">wide irregular</span>: AF + BBB, polymorphic VT (Mg²⁺), pre-excited AF (DCCV — avoid AV nodal blockers).</li>

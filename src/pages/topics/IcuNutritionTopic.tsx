@@ -9,6 +9,7 @@ import RefeedingSyndromeAnimation from "@/components/diagrams/intensive-care/Ref
 import EnergyProteinTargetDiagram from "@/components/diagrams/intensive-care/EnergyProteinTargetDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import InlineRef from "@/components/references/InlineRef";
 
 const icuNutritionFaqs: Array<[string, string]> = [
   ["When should enteral nutrition be started in the critically ill?", "Within 24–48 h of ICU admission once haemodynamically stable, even at trophic rates; early EN preserves gut mucosa and reduces infectious complications (ESPEN 2019, ASPEN/SCCM 2016)."],
@@ -246,6 +247,43 @@ const IcuNutritionTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]}>
+            <CollapsibleSubsection title="Micronutrients">
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Trace element and vitamin deficiency is common but under-recognised in critical illness <InlineRef topicId="icu-nutrition" refLabel="Curr Opin Anaesthesiol 2018 (ICU nutrition)" />. Groups at particular risk include patients on <strong>CRRT</strong> (sieving losses of water-soluble vitamins and trace elements across the filter), those who have received <strong>large-volume fluid resuscitation</strong> (dilution), <strong>burns</strong> and other large exudative losses, <strong>malabsorption/short bowel</strong>, <strong>chronic alcohol excess</strong>, prolonged ICU stay, and anyone meeting <strong>NICE CG32</strong> refeeding-risk criteria.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Thiamine (vitamin B1)</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Essential co-factor for pyruvate dehydrogenase, α-ketoglutarate dehydrogenase and transketolase; deficiency blocks aerobic entry of pyruvate into the Krebs cycle, forcing anaerobic metabolism and causing a lactic acidosis. Indications beyond refeeding include suspected septic shock with an otherwise unexplained metabolic/lactic acidosis, chronic alcohol excess, and suspected Wernicke&apos;s encephalopathy. Typical dosing: 100 mg IV daily as prophylaxis, 200–300 mg IV daily in high-risk patients, and Pabrinex for suspected Wernicke&apos;s.
+                  </p>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Vitamin C</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Antioxidant and co-factor for catecholamine and cortisol synthesis; plasma levels are frequently low in sepsis. Early observational and small RCT data suggested benefit from high-dose vitamin C combined with hydrocortisone and thiamine, but larger, later RCTs — including LOVIT — did not confirm a mortality benefit (and suggested possible harm), so high-dose vitamin C is not standard of care.
+                  </p>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Selenium</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Co-factor for glutathione peroxidase and part of antioxidant defence; lost in burns and CRRT effluent. High-dose selenium monotherapy has not shown outcome benefit in trials.
+                  </p>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Zinc</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Required for wound healing and immune function; significant losses occur with diarrhoea, burns and high-output stoma losses.
+                  </p>
+                </div>
+              </div>
+              <p className="text-muted-foreground leading-relaxed mt-3">
+                Practical approach <InlineRef topicId="icu-nutrition" refLabel="ESPEN 2019" />: replace deficiencies to <strong>normal</strong>, not supraphysiological, levels — high-dose antioxidant/vitamin supplementation has not translated into outcome benefit in large trials. All patients receiving parenteral nutrition should receive a daily multivitamin and trace-element preparation as standard.
+              </p>
             </CollapsibleSubsection>
           </ExamSection>
 

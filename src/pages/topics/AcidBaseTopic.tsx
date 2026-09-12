@@ -18,6 +18,7 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const acidBaseFaqs: Array<[string, string]> = [
   ["How do you calculate and interpret the anion gap?", "AG = (Na⁺ + K⁺) − (Cl⁻ + HCO₃⁻); normal 8–12 mmol/L. A raised AG metabolic acidosis points to lactate, ketones, renal failure or toxins (MUDPILES); a normal AG acidosis suggests GI HCO₃⁻ loss or RTA."],
@@ -60,9 +61,11 @@ const tocItems = [
   { id: "section-systematic-abg", label: "Systematic ABG Interpretation", group: "Core" },
   { id: "section-henderson-hasselbalch", label: "Henderson–Hasselbalch", group: "Core" },
   { id: "section-hagma", label: "HAGMA", group: "Disorders" },
+  { id: "section-nagma", label: "NAGMA & RTA", group: "Disorders" },
   { id: "section-osmolar-gap", label: "Osmolar Gap", group: "Disorders" },
   { id: "section-stewart", label: "Stewart Approach", group: "Advanced" },
   { id: "section-comparing-frameworks", label: "Comparing Frameworks", group: "Advanced" },
+  { id: "section-citrate", label: "Citrate Anticoagulation", group: "Advanced" },
   { id: "section-lactic", label: "Lactic Acidosis", group: "Disorders" },
 ];
 
@@ -349,6 +352,57 @@ const AcidBaseTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+
+          <ExamSection id="section-nagma" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Normal Anion Gap Metabolic Acidosis (NAGMA)">
+              <div className="text-muted-foreground leading-relaxed space-y-4">
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Definition &amp; mechanism</p>
+                  <p className="text-sm">
+                    NAGMA (hyperchloraemic acidosis) occurs when HCO₃⁻ is lost or fails to be regenerated <em>without</em> accumulation of an unmeasured anion — Cl⁻ rises 1:1 to preserve electroneutrality, so the anion gap stays normal (8–12 mEq/L). Two broad mechanisms: extra-renal loss of HCO₃⁻-rich fluid, or a primary renal defect in H⁺ excretion/HCO₃⁻ reabsorption (renal tubular acidosis, RTA) <InlineRef topicId="acid-base" refLabel="Brandis" />.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Renal Tubular Acidosis — the three clinically relevant types</p>
+                  <p className="text-sm mb-2">All RTAs share a failure either to reabsorb filtered bicarbonate proximally or to secrete H⁺ distally, despite normal or near-normal GFR.</p>
+                  <div className="grid sm:grid-cols-1 gap-2">
+                    <div className="p-3 rounded-lg border border-border">
+                      <p className="text-sm font-semibold text-foreground">Type 1 — Distal RTA</p>
+                      <p className="text-xs text-muted-foreground mt-1">Impaired distal tubular H⁺ secretion (α-intercalated cell dysfunction). Urine pH persistently <strong>&gt; 5.5</strong> even with systemic acidaemia. Associated hypokalaemia (impaired H⁺/K⁺ competition), nephrocalcinosis and renal stones (alkaline urine + hypercalciuria promotes calcium phosphate stone formation). Causes: autoimmune (Sjögren's, RA, SLE), amphotericin B, lithium, hereditary.</p>
+                    </div>
+                    <div className="p-3 rounded-lg border border-border">
+                      <p className="text-sm font-semibold text-foreground">Type 2 — Proximal RTA</p>
+                      <p className="text-xs text-muted-foreground mt-1">Reduced proximal tubular HCO₃⁻ reabsorption — the tubule "leaks" filtered bicarbonate until plasma HCO₃⁻ falls low enough that the reduced filtered load can be reabsorbed distally. Urine pH is <em>variable</em>: alkaline while bicarbonaturia is ongoing, but can fall <strong>&lt; 5.5</strong> once plasma HCO₃⁻ has stabilised at a new, lower steady state. Hypokalaemia is typical. Often part of Fanconi syndrome (generalised proximal tubulopathy — glycosuria, phosphaturia, aminoaciduria). Causes: multiple myeloma (light chains), acetazolamide (carbonic anhydrase inhibition), heavy metals, ifosfamide.</p>
+                    </div>
+                    <div className="p-3 rounded-lg border border-border">
+                      <p className="text-sm font-semibold text-foreground">Type 4 — Hyperkalaemic RTA</p>
+                      <p className="text-xs text-muted-foreground mt-1">Aldosterone deficiency or tubular resistance to aldosterone → reduced distal Na⁺ reabsorption and impaired K⁺/H⁺ secretion. Defined by <strong>hyperkalaemia</strong> (unlike types 1 and 2), with urine pH usually <strong>&lt; 5.5</strong> (ammoniagenesis is suppressed by hyperkalaemia, but titratable acid excretion continues). The commonest RTA in adults. Causes: diabetic nephropathy (hyporeninaemic hypoaldosteronism), ACE inhibitors/ARBs, spironolactone/eplerenone, trimethoprim, adrenal insufficiency.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Other causes of NAGMA</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>GI bicarbonate loss:</strong> diarrhoea, ileostomy/high-output fistula, pancreatic/biliary drainage.</li>
+                    <li><strong>Large-volume 0.9% saline:</strong> dilutional/hyperchloraemic acidosis from a low-SID fluid load.</li>
+                    <li><strong>Ileal conduit / ureterosigmoidostomy:</strong> urinary Cl⁻ exchanged for HCO₃⁻ across bowel mucosa in contact with urine.</li>
+                    <li><strong>Total parenteral nutrition:</strong> excess chloride-containing amino acid solutions.</li>
+                    <li><strong>Carbonic anhydrase inhibitors:</strong> acetazolamide — causes a mild proximal-RTA-like picture.</li>
+                  </ul>
+                </div>
+
+                <div className="rounded-md border border-border bg-secondary/30 p-3">
+                  <p className="font-semibold text-foreground mb-1">Localising the cause — urinary anion gap</p>
+                  <p className="text-sm">
+                    <strong>UAG = (urine Na⁺ + urine K⁺) − urine Cl⁻</strong>. It is a surrogate for urinary NH₄⁺ excretion (NH₄⁺ is excreted with Cl⁻, which is not otherwise measured). A <strong>negative UAG</strong> implies appropriate renal ammoniagenesis/acid excretion in response to acidaemia — pointing to a <em>GI</em> cause of NAGMA (e.g. diarrhoea). A <strong>positive UAG</strong> implies the kidney cannot appropriately acidify the urine despite systemic acidaemia — pointing to a <em>renal</em> cause (RTA).
+                  </p>
+                </div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="section-osmolar-gap" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="The Osmolar Gap">
             <div className="text-muted-foreground leading-relaxed space-y-4">
@@ -514,6 +568,55 @@ const AcidBaseTopic = () => {
                 </p>
               </div>
             </div>
+
+            <div className="mt-4 p-5 rounded-lg border-2 border-primary/20 bg-primary/5">
+              <h3 className="text-lg font-serif font-bold text-foreground mb-2">Bedside Quantification (Simplified Fencl-Stewart)</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                The full Stewart equations require iterative solving and are impractical at the bedside. The simplified Fencl-Stewart method (Story, Kellum et al.) partitions the standard base excess (SBE) into four additive components, each attributable to a specific mechanism <InlineRef topicId="acid-base" refLabel="BJA 2004 (Simplified Fencl-Stewart)" />:
+              </p>
+              <div className="space-y-2 mb-3">
+                <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-sm font-semibold text-foreground">1. Free-water effect</p>
+                  <p className="text-sm text-muted-foreground mt-1">Dilution or concentration of plasma water shifts SID toward or away from zero, producing a dilutional acidosis (free-water excess) or contraction alkalosis (free-water deficit). Tracks [Na⁺] but is not easily quantified numerically at the bedside — read qualitatively from the [Na⁺] trend.</p>
+                </div>
+                <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-sm font-semibold text-foreground">2. Sodium-chloride (SID) effect</p>
+                  <p className="text-sm text-muted-foreground mt-1 font-mono">BE<sub>Na-Cl</sub> ≈ [Na⁺] − [Cl⁻] − 38 meq/L</p>
+                  <p className="text-sm text-muted-foreground mt-1">Reflects relative retention/loss of Cl⁻ versus Na⁺ (e.g. saline-induced hyperchloraemia). A negative value = acidifying.</p>
+                </div>
+                <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-sm font-semibold text-foreground">3. Albumin effect</p>
+                  <p className="text-sm text-muted-foreground mt-1 font-mono">BE<sub>Alb</sub> ≈ 0.25 × (42 − albumin g/L)</p>
+                  <p className="text-sm text-muted-foreground mt-1">Quantifies the alkalinising effect of hypoalbuminaemia (fewer weak-acid anions). Always positive when albumin &lt; 42 g/L.</p>
+                </div>
+                <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-sm font-semibold text-foreground">4. Lactate effect</p>
+                  <p className="text-sm text-muted-foreground mt-1 font-mono">BE<sub>Lactate</sub> ≈ 1 − [lactate]</p>
+                  <p className="text-sm text-muted-foreground mt-1">Negative once lactate &gt; 1 mmol/L — the acidifying contribution of lactate accumulation.</p>
+                </div>
+                <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-sm font-semibold text-foreground">5. Unmeasured-ion effect (the residual)</p>
+                  <p className="text-sm text-muted-foreground mt-1 font-mono">BE<sub>unmeasured</sub> = SBE − (BE<sub>Na-Cl</sub> + BE<sub>Alb</sub> + BE<sub>Lactate</sub>)</p>
+                  <p className="text-sm text-muted-foreground mt-1">Whatever base excess is left over once the three explicable components are subtracted — analogous to the strong ion gap/SIG. A large negative residual implies unmeasured strong anions (ketoacids, sulphate, toxin metabolites).</p>
+                </div>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-secondary/30 mb-2">
+                <p className="text-sm font-semibold text-foreground mb-1">Worked example</p>
+                <p className="text-sm text-muted-foreground">
+                  SBE = −16 mEq/L. Na⁺ 138, Cl⁻ 112, albumin 20 g/L, lactate 6 mmol/L.
+                </p>
+                <p className="text-sm text-muted-foreground font-mono mt-1">
+                  BE<sub>Na-Cl</sub> = 138 − 112 − 38 = −12<br/>
+                  BE<sub>Alb</sub> = 0.25 × (42 − 20) = +5.5<br/>
+                  BE<sub>Lactate</sub> = 1 − 6 = −5<br/>
+                  BE<sub>unmeasured</sub> = −16 − (−12 + 5.5 − 5) = −16 − (−11.5) = −4.5
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Interpretation: a hyperchloraemic (saline) component (−12), partly offset by hypoalbuminaemic alkalosis (+5.5), plus lactate (−5) and a residual −4.5 mEq/L of unmeasured strong anions (e.g. sepsis-related ketoacids/sulphate) not explained by chloride, albumin or lactate alone.
+                </p>
+              </div>
+              <p className="text-xs text-muted-foreground italic">Sign convention: a negative component is acidifying (drives SBE more negative); a positive component is alkalinising. The four components sum exactly to SBE by construction.</p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -533,6 +636,50 @@ const AcidBaseTopic = () => {
                 <p className="text-xs text-muted-foreground mt-1">SIDa → SIDe → SIG → Atot. Best for complex ICU patients with hypoalbuminaemia, renal/liver failure, massive transfusion. Increasingly examined in Final/FFICM.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </ExamSection>
+
+          <ExamSection id="section-citrate" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Acid-Base Effects of Regional Citrate Anticoagulation">
+              <div className="text-muted-foreground leading-relaxed space-y-4">
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Mechanism</p>
+                  <p className="text-sm">
+                    Citrate is infused pre-filter during CRRT and chelates ionised calcium (iCa²⁺) within the extracorporeal circuit, preventing activation of the clotting cascade. Target circuit (post-filter) iCa²⁺ is <strong>&lt; 0.35 mmol/L</strong>. Most citrate-calcium complex is removed in the effluent; the remainder returns to the patient with a separate systemic calcium infusion to restore physiological ionised calcium <InlineRef topicId="acid-base" refLabel="Ann Intensive Care 2023 (Citrate)" />.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Metabolic (alkalinising) effect</p>
+                  <p className="text-sm">
+                    Citrate returned to the patient is metabolised via the Krebs cycle, predominantly in the liver (also skeletal muscle and renal cortex), generating <strong>3 mmol of bicarbonate per mmol of citrate metabolised</strong>. This is the intended, physiological source of buffer replacement in citrate CRRT, but over-prescription or an already-alkalotic patient can tip into a <strong>metabolic alkalosis</strong> — manage by reducing the citrate dose/blood flow ratio or increasing the systemic bicarbonate deficit tolerance.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Citrate accumulation / toxicity</p>
+                  <p className="text-sm">
+                    When citrate metabolism is impaired — <strong>liver failure</strong>, <strong>shock with reduced hepatic/muscle perfusion</strong>, or a citrate load that exceeds metabolic capacity — citrate accumulates systemically. Because citrate itself is an unmeasured anion and continues to chelate calcium systemically, accumulation produces a <strong>high anion gap metabolic acidosis with a falling systemic ionised calcium despite a normal or even rising total calcium</strong> (calcium is "trapped" as calcium citrate).
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Monitoring</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Systemic (post-return) ionised calcium target <strong>1.0–1.2 mmol/L</strong>, checked 4–6 hourly.</li>
+                    <li><strong>Total-to-ionised calcium ratio &gt; 2.5</strong> is the classic marker suggesting citrate accumulation.</li>
+                    <li>Trend the anion gap — a widening AG with falling systemic iCa²⁺ on citrate CRRT should prompt suspicion of accumulation.</li>
+                    <li>Watch sodium — some citrate/replacement solutions are hypertonic and can contribute to hypernatraemia.</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Management of accumulation</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Reduce or stop the citrate infusion.</li>
+                    <li>Increase dialysate/effluent flow to enhance clearance of accumulated citrate.</li>
+                    <li>Give calcium replacement to correct systemic hypocalcaemia.</li>
+                    <li>Switch to systemic heparin anticoagulation (or no anticoagulation) if accumulation is severe or recurrent.</li>
+                  </ul>
+                </div>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 

@@ -314,6 +314,23 @@ const coreConcepts = (
           In a hypotensive patient with myocardial ischaemia, the question "won't a vasopressor make ischaemia worse by raising afterload?" is answered by <strong>CPP = DBP − LVEDP</strong>. Restoring DBP almost always wins because subendocardial perfusion is the rate-limiting step. The strategy fails only when SVR is driven so high that LV wall stress and MVO₂ rise faster than coronary supply — hence the appeal of <em>combining</em> a vasopressor with an inotrope or mechanical unloading device in cardiogenic shock.
         </p>
       </div>
+
+      <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Choosing an inotrope in cardiogenic shock</h3>
+      <p className="text-foreground/90 leading-relaxed mb-2">
+        The SCAI SHOCK staging system (A–E, from "at risk" to "extremis") is a useful common language for escalation decisions and trial reporting <InlineRef topicId="circulatory-failure" refLabel="SCAI SHOCK 2022" />; the choice of inotrope in stages C–E depends on receptor pharmacology as much as haemodynamic target:
+      </p>
+      <ul className="list-disc pl-6 space-y-1 text-foreground/90 text-sm">
+        <li><strong>Dobutamine:</strong> predominantly β₁ agonist with some β₂ activity — increases contractility and heart rate; the β₂ component can cause peripheral vasodilatation and hypotension, particularly at higher doses. Very short half-life (~2 min) allows rapid titration, but tachyphylaxis develops with prolonged infusion (β₁ downregulation). Typical dose 2.5–10 mcg/kg/min <InlineRef topicId="circulatory-failure" refLabel="Br J Pharmacol 2012 (Inotropes)" />.</li>
+        <li><strong>Milrinone:</strong> a phosphodiesterase-3 inhibitor that raises intracellular cAMP downstream of, and independently of, β-receptors — so it retains inotropic and vasodilator effect in patients on chronic beta-blockade. It is an "inodilator" (↓ SVR and ↓ PVR as well as ↑ contractility), useful in RV failure and pulmonary hypertension, but causes more hypotension than dobutamine. Half-life ~2 h and renally cleared, so accumulates in renal impairment — reduce dose or avoid in AKI/CKD. Typical dose 0.375–0.75 mcg/kg/min <InlineRef topicId="circulatory-failure" refLabel="Br J Pharmacol 2012 (Inotropes)" />.</li>
+        <li><strong>Levosimendan:</strong> a calcium sensitiser that binds troponin C to enhance myofilament calcium responsiveness, increasing contractility <em>without</em> raising intracellular calcium or myocardial oxygen demand; it also opens ATP-sensitive K⁺ channels causing vasodilatation. Its active metabolite OR-1896 has a long half-life, producing haemodynamic effects lasting 7–9 days after a single infusion. LEVO-CTS and SURVIVE showed a neutral mortality effect versus placebo/dobutamine, so it is reserved for beta-blocked patients or as a bridge where prolonged effect is desirable <InlineRef topicId="circulatory-failure" refLabel="Br J Pharmacol 2012 (Inotropes)" />.</li>
+        <li><strong>Adrenaline:</strong> potent combined α and β agonist; reserved as a second-line agent because it raises lactate (β₂-mediated) and carries a higher arrhythmia risk. The OptimaCC trial signalled more refractory shock and higher lactate/arrhythmia with adrenaline compared with noradrenaline-dobutamine in cardiogenic shock <InlineRef topicId="circulatory-failure" refLabel="Br J Pharmacol 2012 (Inotropes)" />.</li>
+      </ul>
+      <div className="bg-muted/40 rounded-lg p-4 border border-border mt-3">
+        <p className="text-sm font-medium text-foreground">Practical selection</p>
+        <p className="text-sm text-muted-foreground mt-1">
+          <strong>Beta-blocked patient:</strong> milrinone or levosimendan (act independently of β-receptors) rather than dobutamine. <strong>Renal failure:</strong> avoid or reduce milrinone (renally cleared, accumulates); dobutamine or levosimendan preferred. <strong>RV failure/pulmonary hypertension:</strong> milrinone's pulmonary vasodilator effect is favourable, though systemic hypotension may need concurrent noradrenaline. <strong>Need for chronotropy</strong> (relative bradycardia): dobutamine's β₁ effect raises heart rate; levosimendan and milrinone are more heart-rate neutral. Adrenaline is kept in reserve when other agents fail to achieve adequate perfusion.
+        </p>
+      </div>
     </div>
 
     <div>

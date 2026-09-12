@@ -289,8 +289,14 @@ const BronchospasticFailureTopic = () => {
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">IV aminophylline</td>
-                  <td>Phosphodiesterase inhibitor. Loading 5 mg/kg over 20 min (omit if on theophylline), then 0.5 mg/kg/h infusion<InlineRef topicId="bronchospastic-failure" refLabel="BTS/SIGN Asthma 2019" />. Narrow therapeutic index.</td>
-                  <td>Weak bronchodilator, improves diaphragm contractility. Toxicity: arrhythmias, seizures, vomiting. Measure theophylline levels (10–20 mg/L). Drug interactions (CYP1A2): erythromycin, ciprofloxacin increase levels.</td>
+                  <td>Phosphodiesterase inhibitor. Loading 5 mg/kg over 20 min (omit if already on oral theophylline), then 0.5 mg/kg/h infusion<InlineRef topicId="bronchospastic-failure" refLabel="BTS/SIGN Asthma 2019" />. Narrow therapeutic index — therapeutic range 10–20 mg/L<InlineRef topicId="bronchospastic-failure" refLabel="BNF Aminophylline" />.</td>
+                  <td>
+                    Weak bronchodilator, improves diaphragm contractility.
+                    <br /><strong>Contraindications:</strong> hypersensitivity, pre-existing tachyarrhythmia, acute porphyria.
+                    <br /><strong>Cautions:</strong> cardiac disease, hepatic impairment, peptic ulceration, seizure disorder, elderly, fever, and concurrent CYP1A2 inhibitors (ciprofloxacin, macrolides, fluvoxamine) which reduce clearance and increase levels; smoking and enzyme inducers increase clearance and lower levels.
+                    <br /><strong>Toxicity:</strong> tachycardia, SVT/VT, nausea and vomiting, tremor, agitation, hypokalaemia, hypotension, seizures — seizures may occur without preceding warning features.
+                    <br /><strong>Management of toxicity:</strong> stop the infusion, supportive care with IV fluids and antiemetics, correct hypokalaemia and hypomagnesaemia, treat seizures with benzodiazepines, treat tachyarrhythmias cautiously with a short-acting beta-blocker (e.g. esmolol), multiple-dose activated charcoal to enhance elimination, haemodialysis in severe or refractory toxicity.
+                  </td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">IV ketamine</td>
@@ -319,7 +325,13 @@ const BronchospasticFailureTopic = () => {
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">NIV in Asthma (Limited Evidence)</p>
               <p className="text-xs text-muted-foreground mt-1">
-                NOT first-line in acute asthma (BTS/SIGN). May be considered as a bridge in selected patients with hypercapnic respiratory failure who are tiring but not immediately requiring intubation. Risk of pneumothorax. CPAP/BiPAP may reduce work of breathing and counterbalance auto-PEEP. Close monitoring — low threshold for intubation if deteriorating.
+                NOT first-line in acute asthma<InlineRef topicId="bronchospastic-failure" refLabel="BTS/SIGN Asthma 2019" />. May be considered as a bridge in selected patients with hypercapnic respiratory failure who are tiring but not immediately requiring intubation.
+                <br /><strong>Rationale:</strong> unloads respiratory muscles, reduces work of breathing, may improve V/Q matching, and allows concurrent nebuliser delivery.
+                <br /><strong>Risks:</strong> delaying necessary intubation is the dominant hazard; also gastric insufflation and aspiration, barotrauma from worsening dynamic hyperinflation, inability to clear secretions, and mask intolerance.
+                <br /><strong>Patient selection:</strong> conscious, cooperative, able to protect the airway, haemodynamically stable — only in a critical care area with immediate intubation capability and a defined 1-hour review point.
+                <br /><strong>Contraindications specific to asthma:</strong> any life-threatening feature — exhaustion, confusion, silent chest, bradycardia, peri-arrest, vomiting, copious secretions, pneumothorax.
+                <br /><strong>Suggested settings:</strong> EPAP 5–8 cmH₂O, IPAP 10–15 cmH₂O, with close monitoring of pH/PaCO₂ at 1 hour and a low threshold for intubation.
+                <br />BTS/SIGN maintains a cautious stance, restricting use to experienced specialist centres.
               </p>
             </div>
           </div>
@@ -409,10 +421,12 @@ const BronchospasticFailureTopic = () => {
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Monitoring for Hyperinflation</h3>
           <div className="space-y-2 mb-4">
             {[
-              { label: "Plateau Pressure (Pplat)", detail: <>Aim &lt;30 cmH₂O<InlineRef topicId="bronchospastic-failure" refLabel="BJA Educ Asthma 2017" />. Reflects alveolar pressure at end-inspiration. High Pplat suggests hyperinflation or lung injury risk.</> },
-              { label: "Auto-PEEP (Intrinsic PEEP)", detail: "Measured by end-expiratory hold. If >10–15 cmH₂O, gas trapping is significant — reduce RR, increase expiratory time, or disconnect briefly." },
-              { label: "Expiratory Flow Waveform", detail: "If flow does not return to zero before the next inspiration, gas trapping is occurring. The most immediate bedside indicator." },
+              { label: "Plateau Pressure (Pplat)", detail: <>Measured on an inspiratory hold — the key barotrauma marker, target &lt;30 cmH₂O<InlineRef topicId="bronchospastic-failure" refLabel="BJA Educ Asthma 2017" />. Reflects alveolar pressure at end-inspiration. A high Pplat despite a low tidal volume confirms severe gas trapping rather than poor lung compliance.</> },
+              { label: "Auto-PEEP (Intrinsic PEEP)", detail: "Measured by end-expiratory hold; >10–15 cmH₂O is significant. Reduces venous return causing hypotension and can mimic cardiac tamponade. The measured value underestimates true alveolar pressure when airways close during expiration ('choke point' phenomenon). Increases patient trigger work and causes ineffective triggering efforts on the ventilator." },
+              { label: "Driving Pressure", detail: "Pplat minus total PEEP — target <15 cmH₂O as the lung-protective marker, integrating both barotrauma and hyperinflation risk." },
+              { label: "Expiratory Flow Waveform", detail: "Flow should return to zero before the next breath is delivered — the bedside real-time guide to titrating respiratory rate and I:E ratio. If flow does not return to zero, gas trapping is ongoing." },
               { label: "VEI (End-Inspiratory Volume)", detail: "Total volume above FRC — measured by collecting all exhaled gas during apnoea. Target <20 ml/kg to avoid haemodynamic compromise." },
+              { label: "Responding to High Pplat or Auto-PEEP", detail: "Reduce respiratory rate (permissive hypercapnia); reduce tidal volume to 6 mL/kg predicted body weight; increase inspiratory flow / shorten inspiratory time to lengthen expiratory time; check for and treat obstruction (bronchospasm, secretions, kinked/blocked ETT); in extremis, disconnect the circuit and apply manual chest compression to allow full exhalation while excluding pneumothorax." },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                 <p className="font-semibold text-foreground text-sm">{item.label}</p>
@@ -439,7 +453,8 @@ const BronchospasticFailureTopic = () => {
           </div>
           <div className="space-y-2 mb-4">
             {[
-              { label: "Medical Management", detail: "Controlled oxygen (24–28% Venturi, target SpO₂ 88–92%). Nebulised salbutamol + ipratropium (air-driven nebulisers if hypercapnic — or use O₂-driven with 6 min limit). Prednisolone 30 mg PO × 5 days (REDUCE trial). Antibiotics if purulent sputum (amoxicillin, doxycycline, or co-amoxiclav; local guidelines). Aminophylline if inadequate response." },
+              { label: "Medical Management", detail: <>Controlled oxygen (24–28% Venturi, target SpO₂ 88–92%). Nebulised salbutamol + ipratropium (air-driven nebulisers if hypercapnic — or use O₂-driven with 6 min limit). Prednisolone 30 mg PO × 5 days (REDUCE trial). Aminophylline if inadequate response.
+                <br /><strong>Antibiotics<InlineRef topicId="bronchospastic-failure" refLabel="NICE NG114" /><InlineRef topicId="bronchospastic-failure" refLabel="GOLD COPD 2023" />:</strong> indicated when purulent sputum is accompanied by increased sputum volume and/or increased dyspnoea (Anthonisen criteria). No risk factors for resistance: amoxicillin, doxycycline, or clarithromycin for 5 days. Risk factors for treatment failure or resistance (&gt;3 exacerbations/year, recent hospitalisation, antibiotics within the last 3 months, severe underlying COPD) — use co-amoxiclav. Risk of <em>Pseudomonas</em> (previous isolation, bronchiectasis, recent hospitalisation, very severe COPD, chronic oral steroids) — use ciprofloxacin or levofloxacin with specialist microbiology advice. Send sputum culture when antibiotics fail or resistance is likely.</> },
               { label: "Weaning from Ventilation", detail: "Often more challenging than asthma. Diaphragm weakness, malnutrition, and deconditioning contribute. Early tracheostomy may facilitate weaning. Pressure support weaning trials. NIV can be used as step-down from invasive ventilation. Physiotherapy for secretion clearance. COPD patients may not return to pre-admission baseline." },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
