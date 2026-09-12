@@ -1303,6 +1303,66 @@ const AdminDashboard = () => {
               })}
             </div>
 
+            {/* Learner completion funnel: signed-up accounts vs. actual study activity */}
+            <div className="rounded-xl border border-border bg-card p-4">
+              <div className="flex items-center gap-2 mb-3">
+                <CheckCircle2 className="w-5 h-5 text-emerald-500" aria-hidden="true" />
+                <h2 className="text-sm font-semibold text-foreground">Learner completions</h2>
+                <span className="text-[11px] text-muted-foreground">signed-up learners who actually study</span>
+              </div>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="Learner completion statistics">
+                {[
+                  {
+                    label: "Learners completing topics",
+                    value: learnerStats?.learnersCompletingTopics,
+                    icon: UserCheck,
+                    color: "text-emerald-500",
+                    help: registeredUsers && learnerStats
+                      ? `${Math.round((learnerStats.learnersCompletingTopics / Math.max(registeredUsers, 1)) * 100)}% of registered accounts`
+                      : "Accounts with at least one completed topic",
+                  },
+                  {
+                    label: "Topic completions",
+                    value: learnerStats?.topicCompletions,
+                    icon: BookOpen,
+                    color: "text-blue-500",
+                    help: "Total topics marked complete across all accounts",
+                  },
+                  {
+                    label: "Learners ticking subsections",
+                    value: learnerStats?.learnersTickingSubsections,
+                    icon: Users,
+                    color: "text-indigo-500",
+                    help: "Accounts with at least one subsection ticked",
+                  },
+                  {
+                    label: "Subsection ticks",
+                    value: learnerStats?.subsectionTicks,
+                    icon: Layers,
+                    color: "text-fuchsia-500",
+                    help: "Total subsection checkboxes ticked across all accounts",
+                  },
+                ].map(stat => {
+                  const valueText = typeof stat.value === "number" ? stat.value.toLocaleString() : "—";
+                  return (
+                    <div
+                      key={stat.label}
+                      role="listitem"
+                      className="p-4 rounded-xl border border-border bg-muted/30"
+                      aria-label={`${stat.label}: ${valueText}. ${stat.help}`}
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <stat.icon className={`w-5 h-5 ${stat.color}`} aria-hidden="true" />
+                        <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</span>
+                      </div>
+                      <p className="text-3xl font-bold text-foreground tabular-nums whitespace-nowrap" aria-hidden="true">{valueText}</p>
+                      <p className="text-[11px] text-muted-foreground mt-1">{stat.help}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* User insight tiles */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="User engagement statistics">
               {[
