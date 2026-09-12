@@ -262,6 +262,54 @@ const PlasticSurgeryTopic = () => {
             </ExamSection>
           </div>
 
+          <div id="vte" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
+              <CollapsibleSubsection title="DVT Prophylaxis & Caprini Risk Assessment">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Reconstructive patients combine several VTE risk factors — malignancy, prolonged immobile surgery, pelvic or abdominal donor sites and postoperative bed rest. Pulmonary embolism is a leading non-flap cause of death after major reconstruction, so prophylaxis must be planned rather than deferred<InlineRef topicId="plastic-surgery" refLabel="Curr Opin Anaesthesiol 2019" />.
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground mb-3">
+                  <li><strong className="text-foreground">Caprini risk assessment</strong>: the validated tool for plastic and reconstructive surgery. Weighted points are given for age, BMI &gt;25, malignancy, previous VTE or family history, thrombophilia, sepsis, immobility, central venous access, oestrogen therapy and surgery lasting &gt;45 minutes. Scores stratify risk: 0–2 low, 3–4 moderate, 5–6 high, 7–8 very high, ≥9 highest risk — free-flap patients commonly score ≥7, which mandates combined mechanical <em>and</em> pharmacological prophylaxis and often extended-duration LMWH</li>
+                  <li><strong className="text-foreground">Intermittent pneumatic compression from induction</strong>: correctly sized calf or thigh IPC applied <em>before</em> induction and continued until the patient is mobile. It is the only prophylaxis available during the flap dissection window and does not increase bleeding risk. Avoid IPC on a lower limb that is a donor site (e.g. fibula flap)</li>
+                  <li><strong className="text-foreground">LMWH timing</strong>: give the first prophylactic dose <strong>6–12 hours after stable surgical haemostasis</strong> is confirmed (typically that evening or the following morning), then continue daily. Weight-adjust in obesity; reduce or extend the interval in renal impairment</li>
+                  <li><strong className="text-foreground">Balancing bleeding and thrombosis</strong>: haematoma under a flap causes pedicle compression and flap loss, so the surgeon must confirm haemostasis before pharmacological prophylaxis; equally, omitting LMWH beyond 24 hours in a Caprini high-risk patient is rarely justifiable. Where both risks are high, rely on IPC, keep prophylaxis at prophylactic (not therapeutic) dose, and review daily with the surgical team. Note that flap-salvage antithrombotics (aspirin, dextran, heparin infusion) do not substitute for VTE prophylaxis</li>
+                  <li><strong className="text-foreground">Epidural and catheter adjustments</strong>: insert or remove a neuraxial catheter at least 12 hours after a prophylactic LMWH dose and 24 hours after a therapeutic dose, and wait ≥4 hours after removal before the next dose. If postoperative therapeutic anticoagulation or a heparin infusion is planned, avoid neuraxial techniques altogether and use TAP, rectus sheath or peripheral catheters instead; document the timing plan clearly so ward staff do not give LMWH around catheter removal<InlineRef topicId="plastic-surgery" refLabel="BAPRAS 2020" /></li>
+                  <li><strong className="text-foreground">Extended prophylaxis</strong>: consider continuing LMWH for up to 28 days after discharge in patients with malignancy, previous VTE, or prolonged immobility</li>
+                </ul>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
+          <div id="complications" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
+              <CollapsibleSubsection title="Postoperative Complications & Management">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Complications divide into flap-related and systemic. Both are common after prolonged reconstruction and both are examined<InlineRef topicId="plastic-surgery" refLabel="BAPRAS 2020" />.
+                </p>
+                <div className="bg-card border border-border rounded-lg p-4 mb-3">
+                  <h3 className="font-semibold text-foreground mb-2">Flap-related</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong className="text-foreground">Haematoma</strong>: expanding swelling, rising drain output, falling Doppler signal and a tense, dusky flap. It compresses the pedicle and causes secondary thrombosis — treat as an emergency with immediate return to theatre for evacuation and haemostasis, correction of coagulopathy, and reassessment of anticoagulation. In head and neck flaps a neck haematoma also threatens the airway: open the wound and plan an advanced airway approach</li>
+                    <li><strong className="text-foreground">Infection</strong>: usually days 3–7 — cellulitis, purulent discharge, wound breakdown or systemic sepsis. Take cultures, start broad-spectrum antibiotics per local policy (narrow when sensitivities return), drain collections, and involve microbiology for prosthetic or bone reconstruction. Poorly controlled infection precipitates anastomotic thrombosis</li>
+                    <li><strong className="text-foreground">Partial flap loss</strong>: distal or marginal necrosis with a viable pedicle, often from venous congestion or excessive tension. Manage with dressings and observation, then delayed <em>debridement</em> of demarcated tissue with skin grafting or local flap coverage</li>
+                    <li><strong className="text-foreground">Total flap loss</strong>: no Doppler signal, cold pale (arterial) or fixed dusky (venous) flap. Immediate re-exploration offers salvage within 4–6 hours; if the flap is unsalvageable it must be <em>debrided</em> and reconstruction planned — a second free flap, a pedicled alternative, or negative-pressure dressings and delayed reconstruction. Anaesthetic implications: repeat prolonged surgery, further blood loss, and a physiologically depleted patient</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Systemic</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong className="text-foreground">Pulmonary embolism</strong>: sudden dyspnoea, tachycardia, hypoxia, pleuritic pain or unexplained hypotension. Give oxygen, obtain ECG and CTPA (echocardiography if unstable), and start therapeutic anticoagulation after discussing the flap bleeding risk with the surgical team; thrombolysis is reserved for haemodynamic collapse. Prevention through Caprini-guided prophylaxis is the exam answer</li>
+                    <li><strong className="text-foreground">Pneumonia</strong>: risk is highest after head and neck reconstruction (aspiration, tracheostomy, impaired swallow) and after prolonged ventilation. Manage with sputum culture, targeted antibiotics, physiotherapy, sitting up, effective analgesia to allow coughing, speech-and-language assessment before oral intake, and early mobilisation. Escalate to level 2 care for respiratory support</li>
+                    <li><strong className="text-foreground">Acute kidney injury</strong>: from intraoperative hypovolaemia, blood loss, rhabdomyolysis after prolonged immobility, sepsis or nephrotoxins. Monitor urine output hourly, check creatinine and creatine kinase, restore euvolaemia (remembering that flap patients are deliberately run on restricted crystalloid — hypovolaemia harms both kidney and flap), stop NSAIDs and other nephrotoxins, treat the cause, and involve critical care for renal replacement if needed</li>
+                    <li>Other recognised problems: delirium in older patients, pressure injuries, corneal abrasion, hypothermia-related coagulopathy, PONV and poor nutrition — all reduced by structured enhanced recovery care</li>
+                  </ul>
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
+
+
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
