@@ -58,6 +58,13 @@ export const CaseDosingReference = ({ caseData }: CaseDosingReferenceProps) => {
                   >
                     Mechanism &amp; metabolism
                   </Link>
+                  <span aria-hidden>·</span>
+                  <Link
+                    to={`/intensive-care/drug-safety?slug=${safetySlug}#${safetySlug}-withdrawal`}
+                    className="underline underline-offset-4 hover:text-foreground"
+                  >
+                    Withdrawal &amp; tapering
+                  </Link>
                 </span>
               ) : null}
               {calculatorHref ? (
