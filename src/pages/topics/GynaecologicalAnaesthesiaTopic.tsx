@@ -256,6 +256,40 @@ const GynaecologicalAnaesthesiaTopic = () => {
             </ExamSection>
           </div>
 
+          <div id="hipec" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>
+              <CollapsibleSubsection title="HIPEC — Hyperthermic Intraperitoneal Chemotherapy">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Cytoreductive surgery followed by intraperitoneal perfusion of heated chemotherapy (commonly cisplatin, mitomycin C or paclitaxel at 41–43 °C for 30–90 minutes) combines a long, bloody laparotomy with a deliberate hyperthermic insult<InlineRef topicId="gynaecological-anaesthesia" refLabel="HIPEC Anaesth 2013" />.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                  {[
+                    { label: "Fluid shifts", value: "Massive third-space loss from peritonectomy plus perfusate-driven capillary leak — requirements often 8–12 mL/kg/h; goal-directed therapy with cardiac output monitoring rather than fixed regimens" },
+                    { label: "Haemodynamics", value: "Hyperthermic phase causes vasodilatation, tachycardia and rising cardiac index (up to 50%) with falling SVR; vasopressor support (noradrenaline) is usually needed, followed by cooling and instability once perfusion stops" },
+                    { label: "Temperature", value: "Monitor core AND peripheral/oesophageal-versus-bladder temperature. Active cooling during perfusion (stop warming devices, cool fluids, reduce theatre temperature), then aggressive active rewarming afterwards to avoid post-perfusion hypothermia and coagulopathy" },
+                    { label: "Electrolytes & metabolism", value: "Hyponatraemia, hypokalaemia, hypomagnesaemia and hypophosphataemia; metabolic acidosis and hyperglycaemia. Check ABG, electrolytes, lactate and glucose at least hourly during perfusion" },
+                    { label: "Renal protection", value: "Cisplatin nephrotoxicity — maintain generous urine output (1–2 mL/kg/h), consider sodium thiosulfate per local protocol, avoid NSAIDs and other nephrotoxins" },
+                    { label: "Coagulation & analgesia", value: "Dilutional and hyperthermia-related coagulopathy — viscoelastic testing and targeted product replacement; thoracic epidural (if not coagulopathic) or bilateral TAP/rectus sheath catheters with opioid PCA" },
+                    { label: "Staff safety", value: "Cytotoxic precautions: closed perfusion circuit, double gloves, gown, eye protection, smoke evacuation, minimal theatre traffic, spill kit available, and cytotoxic-waste handling of urine and drains for 48 h" },
+                    { label: "Postoperative care", value: "Level 2/3 care expected — ongoing fluid resuscitation, vasopressors, rewarming, renal monitoring and prolonged ileus management" },
+                  ].map((item) => (
+                    <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                      <p className="text-xs text-muted-foreground">{item.label}</p>
+                      <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
+                  <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
+                  <p className="text-xs text-muted-foreground">
+                    HIPEC is a two-phase problem: a hyperthermic, hyperdynamic, vasodilated phase requiring cooling and vasopressors, followed by a hypothermic, coagulopathic phase requiring warming and product replacement. Say that structure and the rest of the answer follows.
+                  </p>
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
+
           <div id="oncology" className="scroll-mt-24">
             <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>
               <CollapsibleSubsection title="Major Gynaecological Oncology">
