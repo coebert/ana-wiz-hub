@@ -317,6 +317,16 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Propofol may cause dyskinesia in some patients; remifentanil and rocuronium are safe</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Advanced Therapies</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Deep brain stimulation (DBS):</strong> check device manufacturer, battery status and current settings preoperatively with the neurology/functional neurosurgery team; use bipolar diathermy only, with the return (neutral) pad sited remote from the implanted pulse generator and leads; switch the device off before diathermy or external defibrillation to prevent current induction, tissue heating and hardware damage, then confirm settings on reprogramming; stimulation on/off state affects emergence (rigidity/tremor may return when off) and can produce artefact on EEG-based depth-of-anaesthesia monitoring; MRI is generally contraindicated or requires MR-conditional mode and specialist protocols</li>
+                <li><strong>Duodopa (levodopa–carbidopa intestinal gel):</strong> delivered continuously via a jejunal (PEG-J) tube; protect the PEG-J site and stoma during positioning and surgery, and continue the pump perioperatively wherever feasible; if interrupted (e.g. abdominal surgery, tube displacement), plan an equivalent oral, enteral or transdermal replacement using levodopa-equivalent dosing to avoid acute akinesia and NMS-like withdrawal</li>
+                <li><strong>Apomorphine infusion:</strong> a potent subcutaneous dopamine agonist used for severe motor fluctuations; causes severe nausea and vomiting — pretreat/cover with domperidone; avoid ondansetron and other 5-HT3 antagonists in combination, as this can precipitate profound, severe hypotension and collapse</li>
+                <li><strong>Rotigotine transdermal patch:</strong> useful bridging therapy when the patient is nil by mouth or the enteral route is unavailable perioperatively; convert the usual oral dopaminergic regimen using published levodopa-equivalent dose tables</li>
+                <li>Across all regimens, avoid metoclopramide, prochlorperazine, haloperidol and droperidol — central D2-antagonism can precipitate severe rigidity and an NMS-like crisis <InlineRef topicId="neurological-disease" refLabel="BJA Educ PD 2014" /> <InlineRef topicId="neurological-disease" refLabel="NICE NG71 (Parkinsons)" /></li>
+              </ul>
+            </div>
           </div>
         </section>
 
