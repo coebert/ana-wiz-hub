@@ -9,10 +9,14 @@ import GlycocalyxDiagram from "@/components/diagrams/physiology/GlycocalyxDiagra
 import { GlycocalyxSheddingCascadeDiagram } from "@/components/diagrams/perioperative/GlycocalyxSheddingCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const tocItems = [
   { id: "section-fluid-compartments", label: "Fluid Compartments", group: "Core" },
   { id: "section-gdft", label: "Goal-Directed Fluid Therapy", group: "Core" },
+  { id: "section-rose", label: "Phases of Fluid Therapy (ROSE)", group: "Core" },
+  { id: "section-paediatric-fluids", label: "Paediatric Fluid Management", group: "Core" },
+  { id: "section-fluid-tolerance", label: "Fluid Tolerance & Venous Congestion", group: "Core" },
   { id: "section-glycocalyx", label: "Glycocalyx & Revised Starling", group: "Core" },
   { id: "section-key-fluid-trials", label: "Key Fluid Trials", group: "Evidence" },
 ];
@@ -48,7 +52,7 @@ const PerioperativeFluidsTopic = () => {
       sectionSources={{
         objectives: ["NICE CG174", "BJA Educ 2017"],
         workedExamples: ["BJA Educ 2019", "NICE CG174", "SMART 2018", "RELIEF 2018", "BJA Educ GDFT 2016"],
-        keyPoints: ["BJA Educ 2017", "NICE CG174", "BJA Educ 2019", "SMART 2018", "BJA Educ GDFT 2016", "RELIEF 2018", "Chappell 2019 (Glycocalyx)"],
+        keyPoints: ["BJA Educ 2017", "NICE CG174", "BJA Educ 2019", "SMART 2018", "BJA Educ GDFT 2016", "RELIEF 2018", "Chappell 2019 (Glycocalyx)", "Front Med Fluids 2025", "BJA Paediatric Fluids 2006"],
       }}
       coreConcepts={
         <>
@@ -95,6 +99,76 @@ const PerioperativeFluidsTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">PPV, SVV (arterial waveform analysis). Reliable only in sinus rhythm + controlled ventilation + VT ≥8 ml/kg. PLR test for spontaneous breathing.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+
+          <ExamSection id="section-rose" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
+            <CollapsibleSubsection title="Phases of Fluid Therapy — the ROSE Model">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Fluid therapy is not a single decision but progresses through distinct phases across an illness or perioperative course. The ROSE model (Resuscitation, Optimisation, Stabilisation, Evacuation) frames when to give fluid, when to titrate it, and when to actively remove it.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Resuscitation (salvage)</p>
+                <p className="text-sm text-muted-foreground mt-1">Life-threatening hypoperfusion/profound shock. Rapid boluses (e.g. 250–500 mL crystalloid) to restore macrocirculatory perfusion — minutes to hours.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Optimisation</p>
+                <p className="text-sm text-muted-foreground mt-1">Titrate fluid using GDFT and dynamic indices — SVV/PPV &gt;13%, or stroke volume rise ≥10% after a fluid bolus or passive leg raise — to optimise tissue oxygen delivery.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Stabilisation</p>
+                <p className="text-sm text-muted-foreground mt-1">Maintenance fluid plus replacement of ongoing losses only; aim for a neutral cumulative balance rather than further expansion.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Evacuation (de-resuscitation)</p>
+                <p className="text-sm text-muted-foreground mt-1">Once stable, actively remove excess fluid (diuretics or ultrafiltration/RRT) to limit fluid-overload harm — oedema, ileus, impaired wound and anastomotic healing.</p>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              Failure to progress through these phases — continuing "resuscitation-style" boluses into stabilisation, or never actively de-resuscitating — is a major driver of fluid-overload morbidity seen in trials such as RELIEF and underlies GDFT protocols. <InlineRef label="Front Med Fluids 2025" /> <InlineRef label="RELIEF 2018" /> <InlineRef label="BJA Educ GDFT 2016" />
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-paediatric-fluids" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
+            <CollapsibleSubsection title="Paediatric Fluid Management">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Maintenance fluid requirements in children are calculated using the Holliday–Segar 4-2-1 rule: 4 mL/kg/h for the first 10 kg, 2 mL/kg/h for the next 10 kg, and 1 mL/kg/h for each kg thereafter.
+            </p>
+            <div className="p-4 rounded-lg border border-border mb-3">
+              <p className="text-sm font-semibold text-foreground">Worked example — 22 kg child</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                First 10 kg: 10 × 4 = 40 mL/h. Next 10 kg: 10 × 2 = 20 mL/h. Remaining 2 kg: 2 × 1 = 2 mL/h. Total = 40 + 20 + 2 = <strong className="text-foreground">62 mL/h</strong>.
+              </p>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Historically, hypotonic maintenance fluids (0.18% saline/4% dextrose) were used, but these caused a wave of iatrogenic hyponatraemia and hyponatraemic encephalopathy. The mechanism is non-osmotic ADH release driven by surgical stress, pain, nausea and opioids, which promotes free-water retention — administering hypotonic fluid in this state produces dilutional hyponatraemia. <InlineRef label="BJA Paediatric Fluids 2006" />
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Current NICE CG174 and APAGBI guidance therefore recommends isotonic balanced/crystalloid solutions (e.g. Plasma-Lyte, Hartmann's) for both maintenance and replacement in children, with glucose added where hypoglycaemia risk is significant (e.g. neonates and infants, or prolonged fasting). Postoperatively, maintenance is often restricted to 50–70% of calculated requirement, with regular monitoring of serum sodium to detect evolving hyponatraemia early. <InlineRef label="NICE CG174" />
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-fluid-tolerance" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
+            <CollapsibleSubsection title="Assessing Fluid Tolerance and Venous Congestion">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Fluid responsiveness (a rise in stroke volume with a bolus) does not equal fluid requirement. Exceeding a patient's fluid tolerance causes harm even when they remain "fluid responsive": congestive nephropathy, hepatic congestion, gut oedema and ileus, and impaired wound/anastomotic healing.
+            </p>
+            <div className="p-4 rounded-lg border border-border mb-3">
+              <p className="text-sm font-semibold text-foreground">VExUS grading (Venous Excess Ultrasound)</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Combines IVC diameter with Doppler of the hepatic vein (systolic flow reversal), portal vein (pulsatility fraction &gt;30–50%), and intrarenal vein (biphasic → monophasic flow) to grade venous congestion and guide de-resuscitation decisions.
+              </p>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Guyton's framing is useful conceptually: organ perfusion pressure = MAP − CVP (or venous pressure). Raising CVP with further fluid, without a corresponding rise in MAP, narrows the perfusion pressure gradient and can worsen organ perfusion despite an apparently "positive" fluid challenge.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Practical implication: in right ventricular dysfunction or established venous congestion, further boluses risk worsening RV distension and downstream congestion — prefer a vasopressor/inotrope to support MAP and consider active de-resuscitation (diuretics/ultrafiltration) rather than continued fluid loading. <InlineRef label="Front Med Fluids 2025" />
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
